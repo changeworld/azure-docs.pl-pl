@@ -1,6 +1,6 @@
 ---
-title: Wykonaj przeglądami dostępu w zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak rozpocząć Przegląd dostępu w Privileged Identity Management zasobów Azure
+title: Przeprowadź przeglądów dostępu w ramach zasobów platformy Azure, używając Privileged Identity Management | Dokumentacja firmy Microsoft
+description: Wyjaśnia, jak rozpocząć Przegląd dostępu w Privileged Identity Management dla zasobów platformy Azure
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,65 +9,65 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5c2f13386a996a6c7895bd4755b6cf609a5df72
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f963e63aa92e15205f20ecb3e502065b8dd2c58c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233258"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443073"
 ---
-# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Wykonaj przeglądami dostępu w zasobów platformy Azure przy użyciu Privileged Identity Management
-Przypisania ról nieodświeżone "", gdy użytkownicy mają uprzywilejowany dostęp, które nie wymagają już. Aby zmniejszyć ryzyko skojarzoną z tych przypisań ról starych, ról uprzywilejowanych powinni regularnie sprawdzić ról. W tym dokumencie opisano kroki do uruchamiania w zarządzania tożsamości uprzywilejowanych (PIM) Przegląd dostępu do zasobów platformy Azure.
+# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Przeprowadź przeglądów dostępu w ramach zasobów platformy Azure, używając Privileged Identity Management
+Przypisania ról stają się "starych", gdy użytkownicy mają uprzywilejowany dostęp, które nie potrzebują już. Aby zmniejszyć ryzyko, że jest skojarzona z te przypisania roli starych, Administratorzy ról uprzywilejowanych regularnie należy przejrzeć role. W tym dokumencie opisano kroki do uruchamiania przeglądu dostępu w Privileged Identity Management (PIM) dla zasobów platformy Azure.
 
 Na stronie głównej aplikacji PIM przejdź do:
 
-* **Dostęp do przeglądu** > **Dodaj**
+* **Przeglądów dostępu** > **Dodaj**
 
-![Dodaj przeglądami dostępu](media/azure-pim-resource-rbac/rbac-access-review-home.png)
+![Dodaj przeglądów dostępu](media/azure-pim-resource-rbac/rbac-access-review-home.png)
 
-Po wybraniu **Dodaj** przycisku **utworzyć Przegląd dostępu** zostanie wyświetlony blok. W tym bloku należy skonfigurować przeglądu przy użyciu nazwy i limit czasu, wybierz rolę, aby przejrzeć i zdecydować, kto wykonuje przeglądu.
+Po wybraniu **Dodaj** przycisku **tworzenie przeglądu dostępu** zostanie wyświetlony blok. W tym bloku Konfigurowanie przeglądu przy użyciu nazwy i limit czasu, wybierz rolę, aby przejrzeć i zdecydować, kto wykonuje przeglądu.
 
 ![Utwórz przegląd dostępu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
 
-### <a name="configure-the-review"></a>Skonfiguruj przeglądu
-Aby utworzyć Przegląd dostępu, najpierw nadaj jej nazwę, a następnie ustaw daty początkową i końcową.
+### <a name="configure-the-review"></a>Konfigurowanie przeglądu
+Aby utworzyć przeglądu dostępu, najpierw nadaj jej nazwę, a następnie ustaw datę początkową i końcową.
 
-![Skonfiguruj przeglądu — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-1.png)
+![Konfigurowanie przeglądu — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-1.png)
 
-Należy długość przeglądu wystarczająco długo, użytkowników ją zakończyć. Jeśli kończyły się wcześniejsza od daty zakończenia one zawsze wyłączyć przeglądu wcześniej.
+Wprowadź długość przeglądu wystarczająco długi, służący do jego wykonania. Jeśli kończą się wcześniejsza od daty zakończenia, są zawsze zatrzymać przeglądu wcześnie.
 
-### <a name="choose-a-role-to-review"></a>Wybierz rolę do przeglądu
-Każdego przeglądu koncentruje się na tylko jedną rolę. O ile nie został uruchomiony Przegląd dostępu bloku konkretnej roli, należy wybrać rolę teraz.
+### <a name="choose-a-role-to-review"></a>Wybierz rolę, aby zapoznać się z
+Przejrzyj każdy koncentruje się na tylko jedną rolę. Jeśli nie rozpoczęto przeglądu dostępu z poziomu bloku konkretnej roli, musisz wybrać rolę teraz.
 
-1. Przejdź do **Przejrzyj członkostwo roli**
+1. Przejdź do **przeglądanie członkostwa w roli**
    
-    ![Przejrzyj członkostwo roli — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-2.png)
+    ![Przeglądanie członkostwa w roli — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-2.png)
 2. Wybierz jedną rolę z listy.
 
-### <a name="decide-who-will-perform-the-review"></a>Zdecyduj, który przeprowadzi przeglądu
-Dostępne są trzy opcje umożliwiające wykonywanie przeglądu. Przegląd można przypisać do innej osoby, aby zakończyć, możesz to zrobić samodzielnie lub każdy użytkownik może przeglądać własne dostępu.
+### <a name="decide-who-will-perform-the-review"></a>Zdecyduj, który będzie wykonywać przeglądu
+Istnieją trzy opcje dla przeprowadzania przeglądu. Przegląd można przypisać do kogoś innego, aby zakończyć, możesz zrobić to samodzielnie, lub każdy użytkownik może dokonać przeglądu własnego dostępu.
 
 1. Wybierz jedną z opcji:
    
-   * **Wybranych użytkowników**: Użyj tej opcji, jeśli nie wiesz, który musi mieć dostęp. Po wybraniu tej opcji można przypisać do właściciela zasobów lub menedżera grupy do ukończenia przeglądu.
-   * **Przypisany (samoobsługowego)**: Użyj tej opcji, aby przejrzeć swoje własne przypisań ról użytkowników.
+   * **Wybranych użytkowników**: Użyj tej opcji, kiedy nie wiesz, który wymaga dostępu. Po wybraniu tej opcji można przypisać przeglądu właściciel zasobu lub kierownik grupy, aby zakończyć.
+   * **Przypisany (własne)**: Użyj tej opcji, aby użytkownicy mogli przejrzeć swoje własne przypisań ról.
    
-2. Przejdź do **Wybierz recenzentów**.
+2. Przejdź do **wybór recenzentów**.
    
-    ![Wybierz osoby dokonujące przeglądu — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-3.png)
+    ![Wybór recenzentów — zrzut ekranu](media/azure-pim-resource-rbac/rbac-access-review-setting-3.png)
 
-### <a name="start-the-review"></a>Uruchom przeglądu
-Na koniec można wymagać podania Przyczyna zatwierdzania dostępu użytkowników. Jeśli chcesz dodać opis przeglądu. Następnie wybierz **Start**.
+### <a name="start-the-review"></a>Rozpocznij Przegląd
+Na koniec można wymagać użytkowników podania przyczyny zatwierdzania dostępu. Jeśli chcesz dodać opis przeglądu. Następnie wybierz pozycję **Start**.
 
-Upewnij się, że poinformować użytkowników, wiadomo, że jest przegląd dostępu oczekiwanie na ich i wyświetlić je [jak przeprowadzić przegląd dostępu](pim-resource-roles-perform-access-review.md).
+Upewnij się, możesz umożliwić użytkownikom wiedzieć, że jest oczekiwanie na ich przeglądu dostępu i pokazać je [jak przeprowadzić przegląd dostępu](pim-resource-roles-perform-access-review.md).
 
-## <a name="manage-the-access-review"></a>Zarządzanie Przegląd dostępu
-Na pulpicie nawigacyjnym zasobów PIM Azure postęp można śledzić w recenzentów zakończenia uwag. Nie prawa dostępu są zmieniane w katalogu do [zakończył przegląd](pim-resource-roles-complete-access-review.md).
+## <a name="manage-the-access-review"></a>Zarządzanie przeglądu dostępu
+Na pulpicie nawigacyjnym zasobów PIM Azure postęp można śledzić, jak recenzenci wykonać ich przeglądów. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończył przegląd](pim-resource-roles-complete-access-review.md).
 
-Aż do okresu przeglądu Przypomnij użytkowników przeprowadzenie ich przeglądu, lub Zatrzymaj przeglądu wcześniej w sekcji przeglądami dostępu.
+Do momentu okres przeglądu za pośrednictwem można Przypomnij przeprowadzenie ich przeglądu lub Zakończ przegląd wcześnie w sekcji przeglądów dostępu.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs dzienników diagnostycznych | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania dzienników diagnostycznych usługi event hubs na platformie Azure.
+title: Dzienniki diagnostyczne platformy Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne na potrzeby usługi event hubs w systemie Azure.
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,79 +13,79 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/30/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 451fc42f573db2b60985912cfa63617e04f09e6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fd7b85d18aeb1674ad7a5e67dd9ac65345c56887
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28932719"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435035"
 ---
-# <a name="event-hubs-diagnostic-logs"></a>Dzienniki diagnostyczne centra zdarzeń
+# <a name="event-hubs-diagnostic-logs"></a>Centra zdarzeń, dzienniki diagnostyczne
 
-Dla usługi Azure Event Hubs można wyświetlić dwa typy dzienników:
+Możesz wyświetlić dwa typy dzienników dla usługi Azure Event Hubs:
 
-* **[Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: te dzienniki ma informacje o operacji wykonywanych w zadaniu. Dzienniki są zawsze włączone.
-* **[Dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: dzienników diagnostycznych bardziej zaawansowane funkcje dostępne w widoku wszystkich podejmowanych można skonfigurować za pomocą zadania. Dzienniki diagnostyczne obejmują działania, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działania, które są wykonywane, gdy zadanie jest uruchomione.
+* **[Dzienniki aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: te dzienniki ma informacji o operacji wykonywanych na zadania. Dzienniki są zawsze włączone.
+* **[Dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: można skonfigurować dzienniki diagnostyczne na potrzeby bardziej rozbudowane widok wszystko, czego zachodzącej z zadaniem. Dzienniki diagnostyczne czynności tytułowa, od czasu utworzenia zadania do momentu usunięcia zadania, w tym aktualizacje i działań, które występują, gdy zadanie jest uruchomione.
 
 ## <a name="enable-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
-Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne:
+Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne, wykonaj następujące kroki:
 
-1.  W [portalu Azure](https://portal.azure.com)w obszarze **monitorowanie i zarządzanie**, kliknij przycisk **dzienników diagnostycznych**.
+1.  W [witryny Azure portal](https://portal.azure.com)w obszarze **monitorowanie + zarządzanie**, kliknij przycisk **dzienniki diagnostyczne**.
 
     ![W okienku nawigacji do dzienników diagnostycznych](./media/event-hubs-diagnostic-logs/image1.png)
 
 2.  Kliknij zasób, który chcesz monitorować.
 
-3.  Kliknij przycisk **Włącz diagnostykę**.
+3.  Kliknij pozycję **Włącz diagnostykę**.
 
     ![Włączanie dzienników diagnostycznych](./media/event-hubs-diagnostic-logs/image2.png)
 
 4.  Aby uzyskać **stan**, kliknij przycisk **na**.
 
-    ![Zmień stan dzienników diagnostycznych](./media/event-hubs-diagnostic-logs/image3.png)
+    ![Zmiana stanu dzienników diagnostycznych](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Ustaw element docelowy archiwum, które mają; na przykład konto magazynu, Centrum zdarzeń lub Analiza dzienników Azure.
+5.  Ustaw docelowy archiwum, który ma; na przykład konto magazynu, Centrum zdarzeń lub usługi Azure Log Analytics.
 
 6.  Zapisz nowe ustawienia diagnostyki.
 
-Nowe ustawienia zaczęły obowiązywać w ciągu około 10 minut. Po wykonaniu tej dzienników pojawia się w celu archiwizacji skonfigurowany, w **dzienników diagnostycznych** okienka.
+Nowe ustawienia zaczną obowiązywać w ciągu około 10 minut. Po tym dzienników pojawia się w skonfigurowanym archiwizacji lokalizacji docelowej w **dzienniki diagnostyczne** okienka.
 
-Aby uzyskać więcej informacji na temat konfigurowania diagnostyki, zobacz [omówienie Azure dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Aby uzyskać więcej informacji na temat konfigurowania diagnostyki zobacz [Przegląd dzienniki diagnostyczne platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
-## <a name="diagnostic-logs-categories"></a>Dzienniki diagnostyczne kategorii
+## <a name="diagnostic-logs-categories"></a>Kategorie dzienników diagnostycznych
 
-Centra zdarzeń przechwytuje dzienniki diagnostyczne dla dwóch kategorii:
+Usługa Event Hubs przechwytuje dzienniki diagnostyczne na dwie kategorie:
 
-* **Archiwum dzienniki**: dzienniki związane z archiwami usługi Event Hubs, w szczególności, dzienniki związane z archiwum błędy.
-* **Operacyjne dzienniki**: informacje o tym, co dzieje się podczas operacji usługi Event Hubs, w szczególności operacji typu, łącznie z tworzenia Centrum zdarzeń, zasoby używane i stan operacji.
+* **Archiwizuj dzienniki**: dzienniki związane z archiwum usługi Event Hubs, w szczególności, dzienniki związane z archiwum błędy.
+* **Dzienniki operacyjne**: informacje o tym, co się dzieje podczas operacji usługi Event Hubs, w szczególności typ operacji, w tym tworzenie Centrum zdarzeń, zasoby używane i stanu operacji.
 
 ## <a name="diagnostic-logs-schema"></a>Dzienniki diagnostyczne schematu
 
-Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis ma pól ciągów, które używają formatu opisane w poniższych sekcjach.
+Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis ma pola ciągów, w formacie opisane w poniższych sekcjach.
 
-### <a name="archive-logs-schema"></a>Schemat dzienniki archiwum
+### <a name="archive-logs-schema"></a>Archiwizuj dzienniki schematu
 
 Ciągi JSON dziennika archiwum obejmują elementy wymienione w poniższej tabeli:
 
 Name (Nazwa) | Opis
 ------- | -------
-TaskName | Opis zadań, które zakończyły się niepowodzeniem.
+TaskName | Opis zadania, które nie powiodło się.
 Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia.
 trackingId | Wewnętrzny identyfikator używany do śledzenia.
 resourceId | Identyfikator usługi Azure Resource Manager zasobu.
-eventHub | Centrum zdarzeń Pełna nazwa (w tym nazwę przestrzeni nazw).
-partitionId | Zapisywana partycji Centrum zdarzeń.
+eventHub | Centrum zdarzeń Pełna nazwa (z uwzględnieniem nazwy obszaru nazw).
+Identyfikator partycji | Trwa zapisywanie do partycji Centrum zdarzeń.
 archiveStep | ArchiveFlushWriter
 startTime | Godzina rozpoczęcia awarii.
-błędy | Liczba wystąpił błąd.
+niepowodzenia | Liczba przypadków, gdy wystąpił błąd.
 durationInSeconds | Czas trwania awarii.
 message | Komunikat o błędzie.
 category | ArchiveLogs
 
-Następujący kod jest przykładem dziennika archiwum ciągu JSON:
+Poniższy kod jest przykładem Archiwizowanie dziennika ciągu JSON:
 
 ```json
 {
@@ -104,23 +104,23 @@ Następujący kod jest przykładem dziennika archiwum ciągu JSON:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Schemat operacyjne dzienniki
+### <a name="operational-logs-schema"></a>Dzienniki operacyjne schematu
 
-Dziennik operacyjny JSON ciągi zawierać elementy wymienione w poniższej tabeli:
+Dziennik operacyjny ciągów JSON obejmują elementy wymienione w poniższej tabeli:
 
 Name (Nazwa) | Opis
 ------- | -------
-Identyfikator działania | Wewnętrzny identyfikator służący do śledzenia cel.
+Identyfikator działania | Wewnętrzny identyfikator służący do śledzenia celów.
 EventName | Nazwa operacji.  
 resourceId | Identyfikator usługi Azure Resource Manager zasobu.
 SubscriptionId | Identyfikator subskrypcji.
 EventTimeString | Czas operacji.
 EventProperties | Właściwości operacji.
 Stan | Stan operacji.
-Obiekt wywołujący | Obiekt wywołujący operacji (Azure portalu lub zarządzania klienta).
+Obiekt wywołujący | Obiekt wywołujący operacji (klient usługi Azure portal lub zarządzania).
 category | OperationalLogs
 
-Następujący kod jest przykładem ciągu JSON dziennik operacji:
+Poniższy kod jest przykładem dziennik operacyjny ciągu JSON:
 
 ```json
 Example:

@@ -1,107 +1,107 @@
 ---
-title: Przepływ pracy zatwierdzania role zasobów platformy Azure Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Zawiera opis procesu przepływu pracy zatwierdzania zasobów platformy Azure.
+title: Przepływ pracy zatwierdzania dla ról zasobów platformy Azure w Privileged Identity Management | Dokumentacja firmy Microsoft
+description: Zawiera opis procesu przepływu pracy zatwierdzania dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: de15a02e706ec7f7b4cff0af303ea30fc87b8f34
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 42b0a8f94ff09b308a579b962bc99c4796c73c2e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233771"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443039"
 ---
-# <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Przepływ pracy zatwierdzania role zasobów platformy Azure Privileged Identity Management
+# <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Przepływ pracy zatwierdzania dla ról zasobów platformy Azure w Privileged Identity Management
 
-Z procedury zatwierdzania w zarządzania tożsamości uprzywilejowanych (PIM) dla ról zasobów platformy Azure Administratorzy mogą dodatkowo ochrona lub ograniczyć dostęp do kluczowych zasobów. Oznacza to, że administratorzy mogą wymagać zatwierdzenia, aby aktywować przypisania roli. 
+Za pomocą przepływu pracy zatwierdzania w Privileged Identity Management (PIM) dla ról zasobów platformy Azure Administratorzy mogą dodatkowo ochrony lub ograniczyć dostęp do kluczowych zasobów. Oznacza to, że administratorzy mogą wymagać od zatwierdzenia do aktywowania przypisań ról. 
 
-Koncepcja hierarchii zasobów jest unikatowy dla ról zasobów platformy Azure. Taka hierarchia umożliwia dziedziczenia przypisań ról z obiektu zasobu nadrzędnego w dół do wszystkich zasobów podrzędnych w kontenerze nadrzędnym. 
+Koncepcja hierarchii zasobu jest unikatowe dla ról zasobów platformy Azure. Taka hierarchia umożliwia dziedziczenia przypisań ról z obiektu zasobu nadrzędnego w dół do wszystkich zasobów podrzędnych w kontenerze nadrzędnym. 
 
-Na przykład: Robert, administrator zasobów używa PIM można przypisać Alicja jako element członkowski kwalifikujących się do właściciela roli w ramach subskrypcji firmy Contoso. Z tym przypisaniem Alicja jest kwalifikujących się właścicielem wszystkich kontenerów grupy zasobów w ramach subskrypcji firmy Contoso. Alicja jest również kwalifikujących się właścicielem wszystkich zasobów (np. maszyny wirtualne) w każdej grupie zasobów subskrypcji. 
+Na przykład: Roberta, administratorem zasobów przypisuje Alicja jako kwalifikującego się elementu członkowskiego do roli właściciel, w ramach subskrypcji firmy Contoso przy użyciu usługi PIM. Z tym przypisaniem Alicja jest kwalifikujących się właścicielem wszystkich kontenerów grupy zasobów w ramach subskrypcji firmy Contoso. Alicja jest również właścicielem kwalifikujących się wszystkie zasoby (takie jak maszyny wirtualne) w każdej grupie zasobów subskrypcji. 
 
-Załóżmy, że istnieją trzy grupy zasobów w subskrypcji Contoso: Test firmy Fabrikam, Fabrikam deweloperów i Fabrikam produkcyjną. Każda z tych grup zasobów zawiera jednej maszyny wirtualnej.
+Załóżmy, że istnieją trzy grupy zasobów w subskrypcji firmy Contoso: testów firmy Fabrikam, deweloperów firmy Fabrikam i produkcyjne firmy Fabrikam. Każda z tych grup zasobów zawiera jedną maszynę wirtualną.
 
-Ustawienia usługi PIM są konfigurowane dla poszczególnych ról zasobu. W przeciwieństwie do przypisania te ustawienia nie są dziedziczone i zastosować wyłącznie do zasobów. [Dowiedz się więcej o kwalifikujących się zadania i widoczność zasobów](pim-resource-roles-eligible-visibility.md).
+Ustawień usługi PIM są skonfigurowane dla każdej roli zasobu. W przeciwieństwie do przypisania te ustawienia nie są dziedziczone i zastosować wyłącznie do roli zasobu. [Dowiedz się więcej o kwalifikującymi się przypisaniami i widoczność zasobów](pim-resource-roles-eligible-visibility.md).
 
-Przykładzie: Roberta, który używa usługi PIM wymagające wszystkich elementów członkowskich w roli właściciela Contoso subskrypcji żądania zatwierdzenia aktywacji. Aby lepiej chronić zasoby w grupie zasobów produkcyjną firmy Fabrikam, Roberta, który wymaga zatwierdzenia dla członków roli właściciela tego zasobu. Role właściciela w firmie Fabrikam testowym i deweloperów firmy Fabrikam nie wymagają zatwierdzenia aktywacji.
+Przykładzie: Robert korzysta z usługi PIM będą musieli wszystkich elementów członkowskich w roli właściciela zatwierdzenia żądania subskrypcji Contoso zostanie uaktywniony. Aby lepiej chronić zasoby w grupie zasobów Prod firmy Fabrikam, Robert wymaga zatwierdzenia dla członków roli właściciela tego zasobu. Role właściciela w firmie Fabrikam testowych i deweloperskich firmy Fabrikam nie wymagają zatwierdzenia aktywacji.
 
-Gdy Alicja żądań aktywacji jego rolę właściciela subskrypcji firmy Contoso, osoba zatwierdzająca musi zatwierdzić lub odrzucić swoje żądanie, zanim użytkownik staje się aktywny w roli. Jeśli Alicja zdecyduje się na [zakres jej aktywacji](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) do grupy zasobów produkcyjną firmy Fabrikam, osoba zatwierdzająca musi zatwierdzić lub odrzucić to żądanie, za. Ale jeśli Alicja decyduje się na zakres jej aktywacji do jednego lub obu tych testów Fabrikam lub deweloperów firmy Fabrikam, zatwierdzenia nie jest wymagane.
+Gdy Alicja żądań aktywacji jej roli właściciela subskrypcji firmy Contoso, osoba zatwierdzająca musi zatwierdzić lub odrzucić swoje żądanie, zanim użytkownik staje się aktywny w roli. Jeśli Alicja zdecyduje się na [zakres jej aktywacji](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) do grupy zasobów Prod firmy Fabrikam, osoba zatwierdzająca musi Zatwierdź lub Odrzuć to żądanie zbyt. Ale jeśli Alicja zdecyduje się na zakres jej aktywacji do jednego lub obu tych testów Fabrikam lub deweloperów firmy Fabrikam, zatwierdzenia nie jest wymagane.
 
-Przepływ pracy zatwierdzania nie może być konieczne dla wszystkich członków z roli. Rozważmy scenariusz, w którym organizacja wynajmuje kilka stowarzyszonych kontraktu ułatwiające projektowanie aplikacji, który zostanie wykonany w subskrypcji platformy Azure. Jako administrator zasobów pracownicy mają mieć dostęp kwalifikujących się bez wymagane zatwierdzenie, ale stowarzyszonych umowy musisz zażądać zatwierdzenia. Aby skonfigurować przepływ pracy zatwierdzania dla tylko stowarzyszonych kontraktu, można utworzyć niestandardową rolę z takimi samymi uprawnieniami jak od roli przypisanej do pracowników. Można zażądać zatwierdzenia do aktywowania tej niestandardowej roli zabezpieczeń. [Więcej informacji o niestandardowych rolach](pim-resource-roles-custom-role-policy.md).
+Przepływ pracy zatwierdzania nie może być wymagane dla wszystkich członków roli. Rozważmy scenariusz, w których Twoja organizacja zatrudnia kilka kojarzy umowy, aby pomóc w rozwoju aplikacji, która jest uruchamiana w subskrypcji platformy Azure. Będąc administratorem zasobów pracownicy mają mieć dostępu uprawnionego bez wymagane zatwierdzenie, ale kojarzy kontraktu musi on zażądać zatwierdzenia. Aby skonfigurować przepływ pracy zatwierdzania dla tylko kojarzy kontraktu, utworzeniem roli niestandardowej takie same uprawnienia, jak rola przypisana do pracowników. Może wymagać zatwierdzenia do aktywowania tej roli niestandardowej. [Dowiedz się więcej o niestandardowych rolach](pim-resource-roles-custom-role-policy.md).
 
-Aby skonfigurować przepływ pracy zatwierdzania i określ, kto może zatwierdzanie lub odrzucanie żądań, należy użyć poniższych procedur.
+Aby skonfigurować przepływ pracy zatwierdzania i określ, kto może zatwierdzać lub odrzucać żądania, należy użyć poniższych procedur.
 
 ## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia w celu aktywacji
 
-1. Przejdź do usługi PIM w portalu Azure, a następnie wybierz zasób z listy.
+1. Przejdź do usługi PIM w witrynie Azure portal, a następnie wybierz zasób z listy.
 
    ![Okienko "Zasobów platformy azure" z wybranego zasobu](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
-2. W okienku po lewej stronie wybierz **ustawienia roli**.
+2. W okienku po lewej stronie wybierz **ustawień roli**.
 
-3. Wyszukaj i wybierz rolę, a następnie wybierz **Edytuj** Aby zmodyfikować ustawienia.
+3. Wyszukaj i wybierz rolę, a następnie wybierz **Edytuj** na modyfikowanie ustawień.
 
-   ![Przycisk "Edytuj" dla roli operatora](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+   ![Przycisk "Edit" dla roli operatora](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
 
-4. W **aktywacji** zaznacz **wymagają zatwierdzenia, aby aktywować** pole wyboru.
+4. W **aktywacji** zaznacz **Wymagaj zatwierdzenia do aktywowania** pole wyboru.
 
-   !["Aktywacja" części ustawień roli](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
+   ![Sekcja "Aktywacja" Ustawienia roli](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
 
 ## <a name="specify-approvers"></a>Określanie osób zatwierdzających
 
-Kliknij przycisk **wybierz osób zatwierdzających** otworzyć **Wybieranie użytkownika lub grupy** okienka.
+Kliknij przycisk **wybierz osoby zatwierdzające** otworzyć **zaznacz użytkownika lub grupę** okienka.
 
 >[!NOTE]
->Musisz wybrać co najmniej jednego użytkownika lub grupę, aby zaktualizować ustawienia. Nie ma żadnych osób zatwierdzających domyślne.
+>Musisz wybrać co najmniej jednego użytkownika lub grupę, aby zaktualizować ustawienia. Nie istnieją żadne osoby zatwierdzające domyślne.
 
-Zasób Administratorzy mogą dodawać dowolną kombinację użytkowników i grup do listy. 
+Zasób Administratorzy mogą dodawać dowolną kombinację użytkowników i grup, do listy osób zatwierdzających. 
 
-!["Wybierz użytkownika lub grupę" okienko z użytkownikiem, który został wybrany](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
+![W okienku "Wybierz użytkownika lub grupy" przy użyciu wybranego przez użytkownika](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
 
-## <a name="request-approval-to-activate"></a>Żądania zatwierdzenia aktywacji
+## <a name="request-approval-to-activate"></a>Żądania zatwierdzenia do aktywowania
 
-Oczekiwanie na zatwierdzenie nie ma wpływu na tej procedury, która jest elementem członkowskim należy wykonać, aby aktywować. [Przejrzyj kroki, aby aktywować rolę](pim-resource-roles-activate-your-roles.md).
+Żądanie zatwierdzenia nie ma wpływu na procedury, która członka należy wykonać, aby aktywować. [Przejrzyj procedurę, aby aktywować rolę](pim-resource-roles-activate-your-roles.md).
 
-Jeśli element członkowski żądanie aktywacji roli, która wymaga zatwierdzenia i rola nie jest już wymagane, element członkowski można anulować żądania w PIM.
+Jeśli członek żądanie aktywacji roli wymagającej zatwierdzenia, rola nie jest już wymagany element członkowski może anulować żądanie w usłudze PIM.
 
-Aby anulować, przejdź do usługi PIM i wybierz **Moje żądania**. Znajdź żądania i wybierz **anulować**.
+Aby anulować, przejdź do usługi PIM, a następnie wybierz pozycję **Moje żądania**. Zlokalizuj na żądanie i wybierz **anulować**.
 
 ![Okienko "Moje żądania"](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
 
-## <a name="approve-or-deny-a-request"></a>Zatwierdzanie lub odrzucanie żądań
+## <a name="approve-or-deny-a-request"></a>Zatwierdź lub Odrzuć żądania
 
-Zatwierdzanie lub odrzucanie żądań, użytkownik musi należeć do listy osoby zatwierdzającej. 
+Aby zatwierdzić lub odrzucić żądanie, musi być członkiem listy osoby zatwierdzającej. 
 
-1. PIM, wybierz **zatwierdzać żądania** z karty w menu po lewej stronie i Znajdź żądania.
+1. W usłudze PIM, wybierz **zatwierdzanie żądań** z karty w menu po lewej stronie i Znajdź żądania.
 
-   ![W okienku "Zatwierdzać żądania"](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+   ![Okienko "Zatwierdź żądania"](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
 
-2. Wybierz żądanie, podaj uzasadnienie decyzji, a następnie wybierz **Zatwierdź** lub **Odmów**. Żądanie jest rozpoznana.
+2. Wybierz żądanie, podać uzasadnienie, aby decyzję, a następnie wybierz **Zatwierdź** lub **Odmów**. Następnie usunięciu żądania.
 
-   ![Wybrane żądanie szczegółowe informacje](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
+   ![Wybrane żądania wraz ze szczegółowymi informacjami](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
 
 ## <a name="workflow-notifications"></a>Powiadomienia dotyczące przepływu pracy
 
-Poniżej przedstawiono informacje na temat powiadomień przepływu pracy:
+Poniżej przedstawiono informacje na temat powiadomienia dotyczące przepływu pracy:
 
-- Wszystkie elementy członkowskie na liście osoba zatwierdzająca są powiadomienie e-mail podczas ich przeglądu oczekuje na żądanie dla roli. Powiadomienia e-mail zawierają bezpośredniego łącza do żądania, gdzie osoba zatwierdzająca można zatwierdzać lub odrzucać.
-- Żądania są rozpoznawane przez pierwszego elementu członkowskiego z listy, który zaakceptuje lub nie zezwala na. 
-- Gdy osoba zatwierdzająca odpowiada na żądanie, wszystkie elementy członkowskie na liście osoba zatwierdzająca jest powiadamiany o akcji. 
-- Administratorzy zasobów są powiadamiani, kiedy składnik zatwierdzone staje się aktywny w danej roli. 
+- Wszyscy członkowie listy Osoba zatwierdzająca powiadomienie za pośrednictwem poczty e-mail, gdy żądanie dla roli oczekuje na ich przeglądu. Powiadomienia e-mail zawierają bezpośredni link do żądania, gdy osoba zatwierdzająca mogli zatwierdzać lub odrzucać.
+- Żądania są rozpoznawane przez pierwszego elementu członkowskiego listy, która zatwierdza lub odrzuca. 
+- Gdy osoba zatwierdzająca odpowiada na żądanie, wszyscy członkowie listy Osoba zatwierdzająca powiadomienie o akcji. 
+- Administratorom zasobów są powiadamiani, gdy zatwierdzonego elementu członkowskiego staje się aktywny w danej roli. 
 
 >[!Note]
->Administrator zasobu, który określa, że zatwierdzone Członkowskie nie powinny być active można usunąć przypisania roli active w PIM. Mimo że administratorzy zasobu nie jest powiadamiany o oczekujących żądań o ile nie są oni członkami listy Osoba zatwierdzająca, mogą wyświetlać i anulowania oczekującego żądania wszystkich użytkowników, wyświetlając żądań oczekujących w PIM. 
+>Administrator zasobu, który uważa, że zatwierdzonego elementu członkowskiego nie powinien być aktywny, można usunąć przypisania roli active w usłudze PIM. Mimo że administratorom zasobów nie są powiadamiani o oczekujących żądań, chyba że są one członków listy osoby zatwierdzającej, mogą wyświetlać i anulować oczekujące żądania wszystkim użytkownikom wyświetlanie oczekujących żądań w usłudze PIM. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zastosuj ustawienia PIM do unikatowych grup użytkowników](pim-resource-roles-custom-role-policy.md)
+[Stosowanie ustawień usługi PIM dla unikatowych grup użytkowników](pim-resource-roles-custom-role-policy.md)

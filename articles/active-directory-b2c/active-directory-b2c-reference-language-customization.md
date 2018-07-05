@@ -6,79 +6,79 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 72a2bd20d08cd12cc1965bd06090d2cd705fc111
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: affd52352dcc745557dd66c61ccfa1e7a99dcdb7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711940"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442325"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Dostosowywanie języka w usłudze Azure Active Directory B2C
 
-Dostosowywanie języka w usłudze Azure Active Directory B2C (Azure AD B2C) umożliwia zasady, aby zmieścił się w różnych językach, w zależności od potrzeb klientów.  Firma Microsoft udostępnia tłumaczenia dla [36 języków](#supported-languages), ale można też podać własne tłumaczenia dla żadnego języka. Nawet jeśli środowiska jest dostarczany tylko jednego języka, można dostosować tekst na stronach.  
+Dostosowywanie języka w usłudze Azure Active Directory B2C (Azure AD B2C), umożliwia zasady, aby uwzględnić w różnych językach, w zależności od potrzeb klienta.  Firma Microsoft udostępnia tłumaczenia na języki [36 języków](#supported-languages), ale możesz też podać własne tłumaczenia w dowolnym języku. Nawet wtedy, gdy środowisko jest dostępne w jednym języku, możesz dostosować tekst na stronach.  
 
-## <a name="how-language-customization-works"></a>Jak działa dostosowania języka
-Dostosowywanie języka umożliwia wybierz języki, które są dostępne w podróży użytkownika. Po włączeniu tej funkcji można podać parametru ciągu zapytania `ui_locales`, z poziomu aplikacji. Po wywołaniu do usługi Azure AD B2C strony jest translacja ustawień regionalnych, który ma. Ten typ konfiguracji zapewnia pełną kontrolę nad językach w podróży użytkownika i ignoruje ustawienia języka w przeglądarce klienta. 
+## <a name="how-language-customization-works"></a>Jak działa Dostosowywanie języka
+Dostosowywanie języka umożliwia wybierz języki, które swoją podróż po użytkownik jest dostępna w. Po włączeniu tej funkcji możesz podać parametr ciągu zapytania, `ui_locales`, z poziomu aplikacji. Po wywołaniu do usługi Azure AD B2C, strona jest tłumaczony ustawień regionalnych, które mają określony przez użytkownika. Ten typ konfiguracji zapewnia pełną kontrolę nad językach swoją podróż po użytkownik i ignoruje ustawień języka w przeglądarce klienta. 
 
-Ten poziom kontroli nad jakich języków klienta widzi nie może być konieczne. Jeśli nie podasz `ui_locales` parametru klienta zależy od ustawień ich przeglądarki.  Można wybrać języki podróży użytkownika jest translacji na, dodając ją jako obsługiwanego języka. Jeśli przeglądarka klienta ustawiono Pokaż języka, które nie mają być obsługiwane, język, w którym wybrana jako domyślna w obsługiwanych kultur jest wyświetlany zamiast tego.
+Ten poziom kontroli nad jakich języków klienta widzi nie może być konieczne. Jeśli nie podasz `ui_locales` parametru, środowisko klienta zależy od ustawień ich przeglądarki.  Można wybrać, które języki są przekształcane swoją podróż po użytkownik przez dodawanie ich jako obsługiwanego języka. Jeśli przeglądarka klienta jest ustawiony na wyświetlanie języka, które nie mają być obsługiwane, języka, który jest wybrany jako domyślny w obsługiwanych kultur jest wyświetlany zamiast tego.
 
-- **Ustawienia regionalne interfejsu użytkownika określony język**: po włączeniu dostosowania języka podróży użytkownika jest translacja język, który został określony w tym miejscu.
-- **Żądanie przeglądarki języka**: Jeśli nie `ui_locales` określono parametr, podróży użytkownika jest przetłumaczony na język żądanie przeglądarki *Jeśli jest obsługiwany przez język*.
-- **Język domyślny zasad**: Jeśli przeglądarka nie określa język, lub określa, który nie jest obsługiwany, podróży użytkownika jest translacji na język domyślny zasad.
+- **Ustawienia regionalne interfejsu użytkownika określony język**: Dostosowywanie języka jest włączona, swoją podróż po użytkownik jest przetłumaczony na język, który jest określony w tym miejscu.
+- **Zażądano przeglądarki języka**: Jeśli nie `ui_locales` parametr został określony, swoją podróż po użytkownik jest tłumaczona na język żądane przeglądarki *Jeśli jest obsługiwany przez język*.
+- **Język domyślny zasad**: Jeśli przeglądarka nie określa język, lub określa, który nie jest obsługiwany, podróży użytkownika jest tłumaczona na język domyślny zasad.
 
 >[!NOTE]
->Jeśli używasz atrybutów niestandardowych użytkownika, musisz podać własne tłumaczenia. Aby uzyskać więcej informacji, zobacz [dostosować z ciągów](#customize-your-strings).
+>Jeśli używasz atrybutów niestandardowych użytkowników należy udostępnić własne tłumaczenia. Aby uzyskać więcej informacji, zobacz [dostosować Twoimi ciągami](#customize-your-strings).
 >
 
-## <a name="support-requested-languages-for-uilocales"></a>Obsługa języków żądanego ui_locales 
-Zasady, które zostały utworzone przed ogólnej dostępności dostosowania języka, należy najpierw włączyć tę funkcję. Zasady, które zostały utworzone po ma dostosowania języka domyślnie włączone. 
+## <a name="support-requested-languages-for-uilocales"></a>Obsługa języków Żądana wartość ui_locales 
+Zasady, które zostały utworzone przed ogólną dostępność Dostosowywanie języka, należy najpierw włączyć tę funkcję. Zasady, które zostały utworzone po mają Dostosowywanie języka domyślnie włączone. 
 
-Podczas dostosowywania języka zasad zostanie włączone, można kontrolować języka podróży użytkownika przez dodanie `ui_locales` parametru.
-1. [Przejdź do strony funkcji B2C w portalu Azure](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings).
+Po włączeniu Dostosowywanie języka Włącz zasady, możesz kontrolować języka podróży użytkownika, dodając `ui_locales` parametru.
+1. [Przejdź do strony funkcji B2C w witrynie Azure portal](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings).
 2. Przejdź do zasad, które chcesz włączyć tłumaczenia.
-3. Wybierz **dostosowywania języka**.  
-4. Wybierz **włączenia dostosowywania języka**.
-5. Przeczytaj informacje w oknie dialogowym, a następnie wybierz **tak**.
+3. Wybierz **Dostosowywanie języka**.  
+4. Wybierz **użytkowania Włącz dostosowywanie języka**.
+5. Przeczytaj informacje w oknie dialogowym, a następnie wybierz pozycję **tak**.
 
-## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Wybierz języki w podróży użytkownika są włączone 
-Włącz zestaw języków dla podróży użytkownika do przetłumaczenia na żądanie przeglądarki bez `ui_locales` parametru.
-1. Sprawdź, czy zasady ma włączyć za pomocą poprzedniej instrukcje dostosowywania języka.
-2. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
+## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Wybierz języki w swojej podróży użytkownika mają być włączone 
+Włączanie zestawu języków dla Twojej podróży użytkownika mają być tłumaczone na żądanie w przeglądarce, bez `ui_locales` parametru.
+1. Upewnij się, że zasad ma Dostosowywanie języka włączyć za pomocą poprzednich instrukcji.
+2. Z **Edytuj zasady** wybierz opcję **Dostosowywanie języka**.
 3. Wybierz język, który ma być obsługiwana.
-4. W okienku właściwości Zmień **włączone** do **tak**.  
-5. Wybierz **zapisać** w górnej części okienka właściwości.
+4. W okienku właściwości zmienić **włączone** do **tak**.  
+5. Wybierz **Zapisz** w górnej części okienka właściwości.
 
 >[!NOTE]
->Jeśli `ui_locales` parametr nie zostanie podany, strony jest przetłumaczony na język przeglądarki klienta tylko wtedy, gdy jest włączona.
+>Jeśli `ui_locales` parametr nie zostanie podany, strona jest tłumaczona na język przeglądarki klienta, tylko wtedy, gdy jest włączone.
 >
 
-## <a name="customize-your-strings"></a>Dostosowywanie z ciągów
-Dostosowywanie języka umożliwia dostosowanie dowolny ciąg w podróży użytkownika.
-1. Sprawdź, czy zasady ma włączyć za pomocą poprzedniej instrukcje dostosowywania języka.
-2. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
+## <a name="customize-your-strings"></a>Dostosowywanie Twoimi ciągami
+Dostosowywanie języka pozwala dostosowywania dowolny ciąg w swojej podróży użytkownika.
+1. Upewnij się, że zasad ma Dostosowywanie języka włączyć za pomocą poprzednich instrukcji.
+2. Z **Edytuj zasady** wybierz opcję **Dostosowywanie języka**.
 3. Wybierz język, który chcesz dostosować.
-4. Wybierz stronę, który chcesz edytować.
-5. Wybierz **pobrać ustawień domyślnych** (lub **Pobierz zastąpienia** po zakończeniu edycji wcześniej ten język). 
+4. Wybierz stronę, którą chcesz edytować.
+5. Wybierz **pobieranie domyślnych** (lub **pobieranie zastąpień** Jeśli edytowano wcześniej ten język). 
 
-Następujące kroki umożliwiają pliku JSON, który służy do edytowana z ciągów.
+Poniższe kroki umożliwiają pliku JSON, który można użyć w celu rozpoczęcia edycji Twoimi ciągami.
 
-### <a name="change-any-string-on-the-page"></a>Zmień dowolny ciąg na stronie
-1. Otwórz plik JSON pobrane z czynności opisanych w części edytora JSON.
-2. Znajdź element, który chcesz zmienić.  Można znaleźć `StringId` ciągu szukasz, lub Wyszukaj `Value` atrybut, który chcesz zmienić.
-3. Aktualizacja `Value` atrybut o to, co ma być wyświetlany.
+### <a name="change-any-string-on-the-page"></a>Zmień dowolny ciąg, na stronie
+1. Otwórz plik JSON, pobrany z poprzednich instrukcji w edytorze kodu JSON.
+2. Znajdź element, który chcesz zmienić.  Możesz znaleźć `StringId` ciągu, czego szukasz, lub poszukać `Value` atrybut, który chcesz zmienić.
+3. Aktualizacja `Value` atrybut o jakie, które mają być wyświetlane.
 4. Każdy ciąg, który chcesz zmienić, można zmienić `Override` do `true`.
-5. Zapisz plik i Przekaż zmiany. (W tym samym miejscu jako którego został pobrany plik JSON można znaleźć formantu przekazywania). 
+5. Zapisz plik i Przekaż zmiany. (W tym samym miejscu co którego został pobrany plik JSON można znaleźć formantu przekazywania). 
 
 >[!IMPORTANT]
->Jeśli potrzebujesz zastąpić ciąg, należy ustawić `Override` do wartości `true`.  Jeśli wartość nie ulega zmianie, wpis zostanie zignorowany. 
+>Jeśli potrzebujesz zastąpić ciąg, upewnij się ustawić `Override` wartość `true`.  Jeśli wartość nie jest zmieniona, jest ignorowany wpis. 
 >
 
-### <a name="change-extension-attributes"></a>Zmień atrybuty rozszerzenia
-Jeśli chcesz zmienić ciąg atrybutu niestandardowego użytkownika lub aby dodać je do formatu JSON, należy w następującym formacie:
+### <a name="change-extension-attributes"></a>Zmienianie atrybutów rozszerzenia
+Jeśli chcesz zmienić parametry dla atrybutu użytkownika niestandardowego, a chcesz dodać do kodu JSON jest w następującym formacie:
 ```JSON
 {
   "LocalizedStrings": [
@@ -95,10 +95,10 @@ Jeśli chcesz zmienić ciąg atrybutu niestandardowego użytkownika lub aby doda
 
 Zastąp `<ExtensionAttribute>` o nazwie atrybut użytkownika niestandardowego.  
 
-Zastąp `<ExtensionAttributeValue>` o nowe parametry, które mają być wyświetlane.
+Zastąp `<ExtensionAttributeValue>` za pomocą nowego ciągu znaków, które mają być wyświetlane.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Podaj listę wartości przy użyciu LocalizedCollections
-Jeśli chcesz udostępnić listę zestaw wartości dla odpowiedzi, należy utworzyć `LocalizedCollections` atrybutu.  `LocalizedCollections` jest tablicą `Name` i `Value` pary. Kolejność elementów będzie kolejność ich wyświetlania.  Aby dodać `LocalizedCollections`, użyj następującego formatu:
+Jeśli chcesz udostępnić listę wartości dla odpowiedzi, należy utworzyć `LocalizedCollections` atrybutu.  `LocalizedCollections` jest tablicą `Name` i `Value` pary. Kolejność elementów będzie kolejności, w której są wyświetlane.  Aby dodać `LocalizedCollections`, użyj następującego formatu:
 
 ```JSON
 {
@@ -123,60 +123,60 @@ Jeśli chcesz udostępnić listę zestaw wartości dla odpowiedzi, należy utwor
 ```
 
 * `ElementId` jest atrybut użytkownika, że `LocalizedCollections` atrybut jest odpowiedź.
-* `Name` jest to wartość, która jest pokazywana użytkownikowi.
-* `Value` to, co jest zwracany w oświadczenia, jeśli ta opcja jest zaznaczona.
+* `Name` to wartość, która jest wyświetlana użytkownikowi.
+* `Value` to, co jest zwracany w oświadczeniu, jeśli ta opcja jest zaznaczona.
 
 ### <a name="upload-your-changes"></a>Przekazywanie zmian
 1. Po zakończeniu zmiany do pliku JSON, wróć do dzierżawy usługi B2C.
-2. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
-3. Wybierz język, w którym mają zostać przetłumaczone do.
-4. Wybierz stronę, której chcesz zapewnić tłumaczenia.
+2. Z **Edytuj zasady** wybierz opcję **Dostosowywanie języka**.
+3. Wybierz język, którego chcesz przetłumaczyć na.
+4. Wybierz stronę, której chcesz podać tłumaczenia.
 5. Wybierz ikonę folderu, a następnie wybierz plik JSON do przekazania.
  
-Zmiany są automatycznie zapisywane do zasad.
+Zmiany są zapisywane automatycznie do zasad.
 
-## <a name="customize-the-page-ui-by-using-language-customization"></a>Dostosowywanie interfejsu użytkownika strony za pomocą języka dostosowania
+## <a name="customize-the-page-ui-by-using-language-customization"></a>Dostosowywanie strony interfejsu użytkownika przy użyciu Dostosowywanie języka
 
-Istnieją dwa sposoby do zlokalizowania zawartości HTML. Jednym ze sposobów jest włączenie [dostosowywania języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego.  Serwer zawartości można Użyj tego parametru, aby zapewnić dostosowanych stron HTML określonego języka.
+Istnieją dwa sposoby, aby zlokalizować zawartość HTML. Jednym ze sposobów jest włączenie [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego usługi.  Serwer zawartości ten parametr służy do zapewnienia dostosowanych stron HTML określonego języka.
 
-Alternatywnie można pobierać zawartość z różnych miejsc, oparte na ustawienia regionalne, który jest używany. Punkt końcowy z obsługą CORS można skonfigurować strukturę folderów do hosta zawartości dla określonych języków. Właściwy będzie wywołania w przypadku użyj wartości symbolu wieloznacznego `{Culture:RFC5646}`.  Załóżmy na przykład, że jest to niestandardowej strony identyfikatora URI:
+Alternatywnie możesz ściągnąć zawartość z różnych miejsc, w oparciu o ustawienia regionalne, który jest używany. Punkt końcowy z obsługą mechanizmu CORS można skonfigurować strukturę folderów do hostowania zawartości dla określonych języków. Będzie wywołać właściwy, jeśli używasz wartości symboli wieloznacznych `{Culture:RFC5646}`.  Na przykład załóżmy, że to niestandardowy identyfikator URI strony:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
-Można załadować strony w `fr`. Po stronie ściąga zawartości HTML i CSS, jest ściąganie z:
+Możesz załadować strony w `fr`. Po stronie ściąga zawartość HTML i CSS, ciągnie się od:
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
 ## <a name="add-custom-languages"></a>Dodaj niestandardowe języki
 
-Można również dodać języki, które aktualnie nie oferuje tłumaczenia. Należy podać tłumaczenia dla wszystkich ciągów w zasadach.  Kody język i ustawienia regionalne są ograniczone do tych w normie ISO 639-1. 
+Można również dodać języki, które firma Microsoft obecnie udostępnia tłumaczenia na języki. Musisz podać tłumaczenia dla wszystkich ciągów w zasadach.  Kody język i ustawienia regionalne są ograniczone do tych w normie ISO 639-1. 
 
-1. Z **edytować zasady** wybierz pozycję **dostosowywania języka**.
-2. Wybierz **dodać niestandardowe język** w górnej części strony.
-3. W okienku kontekstu zidentyfikować język, który jest zapewnienie tłumaczenia podając kod ustawień regionalnych prawidłowe.
-4. Dla każdej strony można pobrać zestaw zastąpień dla języka angielskiego i pracować nad tłumaczenia.
-5. Po zakończeniu korzystania z pliki w formacie JSON, możesz przekazać je dla poszczególnych stron.
-6. Wybierz **włączyć**, i zgodnie z zasadami można teraz wyświetlić ten język dla użytkowników.
-7. Zapisz ten język.
+1. Z **Edytuj zasady** wybierz opcję **Dostosowywanie języka**.
+2. Wybierz **Dodaj język niestandardowy** w górnej części strony.
+3. W okienku kontekstu identyfikowanie języka, w którym udostępniasz tłumaczenia na języki, wprowadzając kod ustawień regionalnych prawidłowe.
+4. Dla każdej strony można pobrać zestawu przesłonięcia dla języka angielskiego i pracować nad tłumaczenia.
+5. Po zakończeniu korzystania z plików JSON, możesz je przekazać dla każdej strony.
+6. Wybierz **Włącz**, i zasad można teraz wyświetlić ten język dla użytkowników.
+7. Zapisz język.
 
 >[!IMPORTANT]
->Należy włączyć obsługę języków niestandardowych lub Przekaż zastąpienia go przed zapisaniem.
+>Należy włączyć obsługę języków niestandardowych lub przekazywanie zastąpień dla niego, zanim będzie można zapisać.
 >
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-### <a name="page-ui-customization-labels-as-overrides"></a>Etykiety dostosowania interfejsu użytkownika strony jako zastąpień
-Po włączeniu dostosowania języka wcześniejszych zmian dla etykiet przy użyciu dostosowywania interfejsu użytkownika strony są zachowywane w pliku JSON dla języka angielskiego (en). Możesz zmienić etykiety i innych ciągów przekazując zasobów językowych w języku dostosowania.
+### <a name="page-ui-customization-labels-as-overrides"></a>Dostosowywanie interfejsu użytkownika strony etykiet zastąpień
+Po włączeniu Dostosowywanie języka zmian poprzednim etykiet przy użyciu dostosowywania interfejsu użytkownika strony są utrwalane w pliku JSON dla języka angielskiego (en). Można kontynuować zmienić etykiety i inne parametry, przekazując zasobów językowych w Dostosowywanie języka.
 ### <a name="up-to-date-translations"></a>Aktualne tłumaczenia
-Firma Microsoft dokłada starań, aby udostępniać aktualne tłumaczeń do użycia. Firma Microsoft stale zwiększa tłumaczenia i przechowuje je w zgodności dla Ciebie. Microsoft będzie zidentyfikować usterek i zmiany w terminologii globalne i upewnij aktualizacje, które będą działać bezproblemowo w podróży użytkownika.
+Firma Microsoft jest zobowiązana do zapewnienia najbardziej aktualne tłumaczeń do użycia. Firma Microsoft stale zwiększa tłumaczenia i pozostaną w zakresie zgodności dla Ciebie. Firma Microsoft identyfikowanie błędów i zmiany w terminologii globalnych i wprowadzić aktualizacje, które będzie działać bezproblemowo w podróży użytkownika.
 ### <a name="support-for-right-to-left-languages"></a>Obsługa języków od prawej do lewej
-Firma Microsoft obecnie nie zapewnia obsługi języków od prawej do lewej. Można to zrobić przy użyciu niestandardowych ustawień regionalnych i CSS Aby zmienić sposób wyświetlania ciągi.  Jeśli chcesz dodać tę funkcję, należy głosowania dla niego w [opinii Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
-### <a name="social-identity-provider-translations"></a>Tłumaczenie dostawcy tożsamości społecznościowych
-Firma Microsoft udostępnia `ui_locales` OIDC parametr społecznościowych logowania. Jednak niektóre dostawców tożsamości społecznościowych, w tym Facebook i Google, nie uwzględnić je. 
+Firma Microsoft obecnie nie zapewnia obsługi języków od prawej do lewej. Można to zrobić przy użyciu niestandardowych ustawień regionalnych i przy użyciu CSS, aby zmienić sposób, w jaki ciągi są wyświetlane.  Jeśli potrzebujesz tej funkcji, głosować na na [opinii Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+### <a name="social-identity-provider-translations"></a>Tłumaczenia dostawcy tożsamości dla sieci społecznościowej
+Firma Microsoft udostępnia `ui_locales` OIDC parametr społecznościowych nazw logowania. Ale niektórzy dostawcy tożsamości społecznościowych, w tym usługi Facebook i Google, nie uznaje ich. 
 ### <a name="browser-behavior"></a>Zachowanie przeglądarki
-Chrome i Firefox zarówno zażądać ich języka zestawu. Jeśli jest obsługiwanych języków, jest on wyświetlany przed domyślny. Krawędź obecnie nie żąda języka i przechodzą wprost do język domyślny.
+Chrome i Firefox zarówno zażądać dla swojego języka zestawu. Jeśli jest obsługiwany język, jest poprzedzana domyślnie. Krawędź obecnie nie żąda języka i przechodzi bezpośrednio do języka domyślnego.
 
 ### <a name="supported-languages"></a>Obsługiwane języki
 
@@ -206,15 +206,15 @@ Chrome i Firefox zarówno zażądać ich języka zestawu. Jeśli jest obsługiwa
 | Holenderski                 | nl            |
 | Pendżabski               | pa            |
 | Polski                | pl            |
-| Portugalski (Brazylia)   | pt-br         |
-| Portugalski (Portugalia) | pt-pt         |
+| Portugalski — Brazylia   | pt-br         |
+| Portugalski — Portugalia | pt-pt         |
 | Rumuński              | ro            |
 | Rosyjski               | ru            |
 | Słowacki                | SK            |
 | Szwedzki               | sv            |
 | Tamilski                 | ta            |
-| Telugu                | te            |
+| Telugu                | Usuń            |
 | Tajlandzki                  | .            |
 | Turecki               | TR            |
-| Chiński (uproszczony)  | zh-hans       |
-| Chiński — tradycyjny | zh-hant       |
+| Chiński (uproszczony)  | nazwy zh-hans       |
+| Chiński — tradycyjny | nazwy zh-hant       |

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie i zarządzanie problemy dotyczące Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera listę często zadawanych pytań dotyczących konfiguracji i zarządzania dla usługi w chmurze Microsoft Azure.
+title: Konfiguracja i zarządzanie nim problemy dotyczące często zadawane pytania dotyczące systemu Microsoft Azure Cloud Services | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę często zadawane pytania dotyczące konfiguracji i zarządzania dla usług Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -15,133 +15,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 8cb7cd84e68420006e7c598c224580c9150ab1c7
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6cdfb40ce02cc5f80e3347b921e2b2c75ae3d8ea
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34070502"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437141"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurowanie i zarządzanie problemy dotyczące usług Azure Cloud Services: często zadawane pytania (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfiguracja i zarządzanie nim problemów dotyczących usług Azure Cloud Services: często zadawane pytania (FAQ)
 
-Ten artykuł zawiera często zadawane pytania dotyczące problemów dotyczących konfiguracji i zarządzania dla [usługi w chmurze Microsoft Azure](https://azure.microsoft.com/services/cloud-services). Można również znaleźć [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) dla informacji o rozmiarze.
+Ten artykuł zawiera często zadawane pytania dotyczące konfiguracji i zarządzania problemy dotyczące [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Można także zapoznać się [strony rozmiar maszyny Wirtualnej usługi w chmurze](cloud-services-sizes-specs.md) Aby uzyskać informacje o rozmiarze.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 **Certyfikaty**
 
 - [Łańcuch certyfikatów certyfikatu SSL usługi w chmurze jest niekompletna](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
-- [Co to jest celem "Systemu Windows Azure Tools szyfrowania certyfikatu dla rozszerzenia"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
-- [Jak mogę wygenerować certyfikat żądania Podpisania bez "Używać protokołu RDP" w do wystąpienia?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
-- [Wygasa certyfikatu zarządzania usługi chmury. Jak odnowić go?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Jak zautomatyzować instalację główny certyfikat SSL (.pfx) i pośredniego certificate(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
-- [Co to jest celem certyfikatu "Microsoft Azure usługi zarządzania dla MachineKey"?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
+- [Co to jest celem "Windows Azure Tools szyfrowania dla rozszerzenia certyfikatów"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
+- [Jak mogę wygenerować żądania podpisania certyfikatu (CSR) bez "RDP-ing" w do wystąpienia?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
+- [Moja chmura usługi zarządzania certyfikat wygaśnie. Jak go odnowić?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
+- [Jak zautomatyzować instalację głównych certificate(.pfx) protokołu SSL i pośredniego certificate(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Co to jest celem "Microsoft Azure Service Management dla" certyfikatu MachineKey?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Monitorowanie i rejestrowanie**
 
-- [Jakie są nadchodzących możliwości usługi w chmurze w portalu Azure, które ułatwiają zarządzanie i monitorowanie aplikacji?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
-- [Dlaczego IIS zaprzestanie zapisywania katalogu dziennika?](#why-does-iis-stop-writing-to-the-log-directory)
+- [Jakie są możliwości usługi w chmurze nadchodzących w witrynie Azure portal, co może pomóc zarządzać i monitorować aplikacje?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
+- [Dlaczego IIS zatrzymanie zapisywania katalogu dziennika?](#why-does-iis-stop-writing-to-the-log-directory)
 
 **Konfiguracja sieci**
 
-- [Jak ustawić limit czasu bezczynności dla usługi równoważenia obciążenia Azure?](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
+- [Jak ustawić limit czasu bezczynności dla modułu równoważenia obciążenia platformy Azure?](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
 - [Jak skojarzyć statycznego adresu IP do usługi w chmurze?](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
-- [Co to są funkcje i możliwości dostępnych adresów IP/identyfikatorów Azure podstawowe i przed atakami DDOS?](#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
-- [Jak włączyć HTTP/2 na maszynie Wirtualnej usługi w chmurze?](#how-to-enable-http2-on-cloud-services-vm)
+- [Co to są funkcje i możliwości udostępnianych przez Azure podstawowe adresy IP/Identyfikatory i przed atakami DDOS?](#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Jak włączyć protokołu HTTP/2 na maszynie Wirtualnej Services chmurze?](#how-to-enable-http2-on-cloud-services-vm)
 
 **Uprawnienia**
 
-- [Można pulpitu zdalnego firmy Microsoft inżynierowie wewnętrzny do wystąpień usługi w chmurze bez uprawnienia?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Nie mogę pulpitu zdalnego do maszyny Wirtualnej usługi chmury, za pomocą pliku RDP. Pobierz I następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Czy pulpit zdalny wewnętrznych inżynierów firmy Microsoft do wystąpień usługi w chmurze bez zgody?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
+- [Nie mogę Pulpit zdalny dla maszyny Wirtualnej usługi w chmurze przy użyciu pliku RDP. Czy mogę uzyskać następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Skalowanie**
 
-- [Nie można skalować poza X wystąpień](#i-cannot-scale-beyond-x-instances)
-- [Jak można skonfigurować oparty na pamięci metryki automatycznego skalowania](#how-can-i-configure-auto-scale-based-on-memory-metrics)
+- [Nie mogę skalować poza X wystąpień](#i-cannot-scale-beyond-x-instances)
+- [Jak skonfigurować automatyczne skalowanie na podstawie metryk pamięci?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
 **Ogólny**
 
 - [Jak dodać "nosniff" do witryny sieci Web?](#how-do-i-add-nosniff-to-my-website)
 - [Jak dostosować usług IIS dla roli sieci web?](#how-do-i-customize-iis-for-a-web-role)
 - [Co to jest limit przydziału dla usługi w chmurze?](#what-is-the-quota-limit-for-my-cloud-service)
-- [Dlaczego dysk na maszynie Wirtualnej usługi w chmurze Wyświetla bardzo mało wolnego miejsca na dysku?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
-- [Jak dodać rozszerzenie ochrony przed złośliwym oprogramowaniem dla usługi w chmurze w zautomatyzowany sposób?](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
-- [Jak włączyć oznaczenia nazwy serwera (SNI) dla usług w chmurze?](#how-to-enable-server-name-indication-sni-for-cloud-services)
+- [Dlaczego dysk na maszynie Wirtualnej usługi w chmurze pokazać bardzo mało wolnego miejsca na dysku?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
+- [Jak mogę dodać rozszerzenia ochrony przed złośliwym kodem dla usług w chmurze w zautomatyzowany sposób?](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Jak włączyć oznaczaniem nazwy serwera (SNI) dla usług w chmurze?](#how-to-enable-server-name-indication-sni-for-cloud-services)
 - [Jak dodać tagi do usługi w chmurze Azure](#how-can-i-add-tags-to-my-azure-cloud-service)
 - [Wersja zestawu SDK usługi w chmurze nie są wyświetlane w portalu Azure. Jak uzyskać który?](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [Chcę wyłączyć usługę w chmurze dla kilku miesięcy. Jak zmniejszyć koszt rozliczeń usługi w chmurze bez utraty adres IP?](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Chcę zamknąć usługę w chmurze w ciągu kilku miesięcy. Jak zmniejszyć koszt rozliczeń usługi w chmurze bez utraty adres IP?](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>Certyfikaty
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Łańcuch certyfikatów certyfikatu SSL usługi w chmurze jest niekompletna
     
-Firma Microsoft zaleca klientom zainstalowanie pełny łańcuch certyfikatów wysyłany (certyfikatu liścia, certyfikaty pośrednich i certyfikatu głównego) zamiast tylko certyfikatu liścia. Po zainstalowaniu właśnie certyfikatu liścia użytkownik korzysta z systemu Windows, można utworzyć łańcucha certyfikatu przez krótki listy CTL. Jeśli sieci sporadyczne problemy lub usługą DNS wystąpić w Azure lub usługi Windows Update, gdy system Windows podejmuje próbę weryfikacji certyfikatu, certyfikat może być uznawane za nieprawidłowe. Instalując łańcucha certyfikatów pełne, można uniknąć tego problemu. Blog na [jak zainstalować certyfikat SSL łańcuchowa](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) pokazano, jak to zrobić.
+Firma Microsoft zaleca klientom zainstalowanie pełnego łańcucha certyfikatów (certyfikatu liścia, certyfikaty pośrednie i certyfikatu głównego) zamiast po prostu certyfikatu liścia. Po zainstalowaniu tylko certyfikatu liścia, możesz polegać na Windows do tworzenia łańcucha certyfikatów przez zalet listy CTL. Jeśli sieciowych okresowymi lub problemy z usługą DNS na platformie Azure lub Windows Update podczas Windows do weryfikacji certyfikatu, certyfikat może być uznawane za nieprawidłowe. Instalując łańcucha certyfikatów pełną, można uniknąć tego problemu. Blog znajduje się na [jak zainstalować łańcuchowy certyfikat SSL](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) pokazuje, jak to zrobić.
 
-### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Co to jest celem "Systemu Windows Azure Tools szyfrowania certyfikatu dla rozszerzenia"?
+### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Co to jest celem "Windows Azure Tools szyfrowania dla rozszerzenia certyfikatów"?
 
-Te certyfikaty są tworzone automatycznie, gdy rozszerzenie zostanie dodane do usługi w chmurze. Najczęściej jest to rozszerzenie WAD lub z rozszerzeniem RDP, ale może to być inne, takie jak rozszerzenie ochrony przed złośliwym oprogramowaniem lub moduł zbierający dzienniki. Te certyfikaty są używane tylko do szyfrowania i odszyfrowywania konfiguracji prywatnej rozszerzenia. Data wygaśnięcia nigdy nie jest zaznaczone, przez co nie ma znaczenia, jeśli certyfikat wygasł. 
+Te certyfikaty są tworzone automatycznie, gdy rozszerzenie zostanie dodany do usługi w chmurze. Najczęściej jest to rozszerzenie WAD lub rozszerzenia RDP, ale może to być inne, takie jak rozszerzenia ochrony przed złośliwym oprogramowaniem lub moduł zbierający dzienniki. Te certyfikaty są używane tylko do szyfrowania i odszyfrowywania konfiguracji prywatnej rozszerzenia. Data wygaśnięcia nigdy nie jest zaznaczone, więc nie ma znaczenia, jeśli certyfikat wygasł. 
 
-Te certyfikaty, można zignorować. Jeśli chcesz wyczyścić certyfikatów, możesz spróbować usuwając je wszystkie. Azure zgłosi błąd przy próbie można usunąć certyfikatu, który jest używany.
+Można zignorować te certyfikaty. Jeśli chcesz wyczyścić certyfikatów, można próbować usunąć je wszystkie. Azure będzie sygnalizować błąd, jeśli próbujesz usunąć certyfikat, który jest używany.
 
-### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Jak mogę wygenerować certyfikat żądania Podpisania bez "Używać protokołu RDP" w do wystąpienia?
+### <a name="how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance"></a>Jak mogę wygenerować żądania podpisania certyfikatu (CSR) bez "RDP-ing" w do wystąpienia?
 
 Zobacz następujące wytyczne:
 
-[Uzyskiwanie certyfikatu do użytku z systemem Windows Azure witryn sieci Web (WAWS)](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
+[Uzyskiwanie certyfikatu do użycia z Windows Azure Web Sites (WAWS)](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-Renderowanie po stronie klienta jest tylko plik tekstowy. Nie ma ma zostać utworzony z maszyny, w którym będzie ostatecznie używany certyfikat. Chociaż ten dokument jest przeznaczony dla usług aplikacji, tworzenie CSR jest rodzajowy i ma zastosowanie również do usługi w chmurze.
+Plik CSR jest po prostu plikiem tekstowym. Nie ma ma zostać utworzony na komputerze, w której ostatecznie będzie można użyć certyfikatu. Chociaż ten dokument jest przeznaczony dla usługi App Service, tworzenia żądania CSR jest ogólny i ma zastosowanie również w przypadku usług Cloud Services.
 
-### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>Wygasa certyfikatu zarządzania usługi chmury. Jak odnowić go?
+### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>Moja chmura usługi zarządzania certyfikat wygaśnie. Jak go odnowić?
 
-Aby odnowić certyfikaty zarządzania służy następujących poleceń programu PowerShell:
+Aby odnowić certyfikaty zarządzania, można użyć następujących poleceń programu PowerShell:
 
     Add-AzureAccount
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-AzurePublishSettingsFile** utworzy nowy certyfikat zarządzania w **subskrypcji** > **certyfikaty zarządzania** w portalu Azure. Nazwa nowego świadectwa wygląda "YourSubscriptionNam]-[CurrentDate] - poświadczenia".
+**Get AzurePublishSettingsFile** spowoduje utworzenie nowego certyfikatu zarządzania w **subskrypcji** > **certyfikaty zarządzania** w witrynie Azure portal. Nazwa nowego certyfikatu wygląda "YourSubscriptionNam]-[CurrentDate] - poświadczenia".
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację główny certyfikat SSL (.pfx) i pośredniego certificate(.p7b)?
+### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację głównych certificate(.pfx) protokołu SSL i pośredniego certificate(.p7b)?
 
-Można zautomatyzować to zadanie za pomocą skryptu uruchomieniowego (partii cmd/PowerShell) i zarejestrować tego skryptu do uruchomienia w pliku definicji usługi. Dodaj zarówno uruchomienia skryptu, jak i certyfikat (plik p7b) w folderze projektu w tym samym katalogu skryptu uruchomieniowego.
+Można zautomatyzować to zadanie przy użyciu skryptu uruchamiania (/ cmd/programu PowerShell usługi batch) i zarejestrować tego skryptu uruchamiania w pliku definicji usługi. Dodaj skrypt uruchamiania i certyfikatu .p7b pliku w folderze projektu w tym samym katalogu skryptu uruchamiania.
 
-### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Co to jest celem certyfikatu "Microsoft Azure usługi zarządzania dla MachineKey"?
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Co to jest celem "Microsoft Azure Service Management dla" certyfikatu MachineKey?
 
-Ten certyfikat jest używany do szyfrowania kluczy komputera na role sieci Web platformy Azure. Aby dowiedzieć się więcej, zapoznaj się tym poradniku [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
+Ten certyfikat jest używany do szyfrowania kluczy maszyn dla ról internetowych platformy Azure. Aby dowiedzieć się więcej, zapoznaj się z tym biuletynie [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Typowe zadania uruchamiania usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Popularne zadania uruchamiania usługi w chmurze](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
 ## <a name="monitoring-and-logging"></a>Monitorowanie i rejestrowanie
 
-### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Jakie są nadchodzących możliwości usługi w chmurze w portalu Azure, które ułatwiają zarządzanie i monitorowanie aplikacji?
+### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Jakie są możliwości usługi w chmurze nadchodzących w witrynie Azure portal, co może pomóc zarządzać i monitorować aplikacje?
 
-Możliwość generuje nowy certyfikat dla protokołu RDP (Remote Desktop) będzie dostępna wkrótce. Alternatywnie możesz uruchomić ten skrypt:
+Możliwość generowania nowego certyfikatu dla protokołu RDP (Remote Desktop) będzie dostępna wkrótce. Alternatywnie możesz uruchomić ten skrypt:
 
 ```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 20 48 -KeySpec "KeyExchange"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Wybieranie obiektów blob lub lokalnej dla Twoich csdef i cscfg przekazać lokalizacji będzie dostępna wkrótce. Przy użyciu [AzureDeployment nowy](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0), można ustawić wartości w każdej lokalizacji.
+Możliwość wybrania lokalnych lub obiektu blob dla Twoich csdef i cscfg przekazywania lokalizacji będzie dostępna wkrótce. Za pomocą [New AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0), można ustawić wartość w każdej lokalizacji.
 
-Możliwość monitorowania metryki na poziomie wystąpienia. Dostępne są dodatkowe funkcje monitorowania [jak usługi w chmurze Monitor](cloud-services-how-to-monitor.md).
+Możliwość monitorowania metryk na poziomie wystąpienia. Dodatkowe funkcje monitorowania są dostępne w [jak monitorowanie usług Cloud Services](cloud-services-how-to-monitor.md).
 
-### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Dlaczego IIS zaprzestanie zapisywania katalogu dziennika?
-Wykorzystał zapisu do katalogu dziennika limit przydziału magazynu lokalnego. Aby rozwiązać ten problem, wykonaj jedno z trzech zdarzeń:
+### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>Dlaczego IIS zatrzymanie zapisywania katalogu dziennika?
+Wyczerpano limit przydziału magazynu lokalnego do zapisywania katalogu dziennika. Aby rozwiązać ten problem, wykonaj jedną z trzech czynności:
 * Włącz diagnostykę dla usług IIS i diagnostyki okresowo przeniesione do magazynu obiektów blob.
-* Ręcznie usuń pliki dziennika z katalogu rejestrowania.
+* Ręcznie usuń pliki dziennika z katalog rejestrowania.
 * Zwiększ limit przydziału dla zasobów lokalnych.
 
-Aby uzyskać więcej informacji można znaleźć w następujących dokumentach:
+Więcej informacji na ten temat można znaleźć w następujących dokumentach:
 * [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
-* [Dzienniki programu IIS zatrzymywanie, zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [Dzienniki usług IIS zatrzymywanie, zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ## <a name="network-configuration"></a>Konfiguracja sieci
 
-### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Jak ustawić limit czasu bezczynności dla usługi równoważenia obciążenia Azure?
+### <a name="how-do-i-set-the-idle-timeout-for-azure-load-balancer"></a>Jak ustawić limit czasu bezczynności dla modułu równoważenia obciążenia platformy Azure?
 Limit czasu można określić w pliku definicji (csdef) usługi następująco:
 
 ```xml
@@ -160,90 +160,90 @@ Limit czasu można określić w pliku definicji (csdef) usługi następująco:
     </Endpoints>
   </WorkerRole>
 ```
-Zobacz [nowy: można skonfigurować limit czasu bezczynności dla usługi równoważenia obciążenia Azure](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Aby uzyskać więcej informacji.
+Zobacz [New: można skonfigurować limit czasu bezczynności dla modułu równoważenia obciążenia Azure](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Aby uzyskać więcej informacji.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak skojarzyć statycznego adresu IP do usługi w chmurze?
-Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżonego adresu IP. Ten zastrzeżony adres IP może być skojarzony, do nowej usługi w chmurze lub do istniejącego wdrożenia. Zobacz szczegółowe informacje w następujących dokumentach:
-* [Tworzenie zastrzeżonego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Rezerwacja adresu IP istniejącej usługi w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Skojarzyć zastrzeżonego adresu IP do nowej usługi w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Skojarzyć zastrzeżonego adresu IP do uruchomionego wdrożenia](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Skojarzyć zastrzeżonego adresu IP do usługi w chmurze przy użyciu pliku konfiguracji usługi](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżonego adresu IP. Ten zastrzeżony adres IP może być skojarzone z nową usługą w chmurze lub do istniejącego wdrożenia. Zobacz następujące dokumenty, aby uzyskać szczegółowe informacje:
+* [Jak utworzyć zastrzeżonego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
+* [Zastrzec adres IP istniejącej usługi w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Skojarzenie zastrzeżonego adresu IP z nową usługą w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Skojarzenie zastrzeżonego adresu IP do uruchomionego wdrożenia](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Skojarzenie zastrzeżonego adresu IP do usługi w chmurze przy użyciu pliku konfiguracji usługi](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Co to są funkcje i możliwości dostępnych adresów IP/identyfikatorów Azure podstawowe i przed atakami DDOS?
-Platforma Azure ma adresów IP/identyfikatorów w centrum danych serwerów fizycznych do ochrony przed zagrożeniami. Ponadto klienci mogą wdrożyć rozwiązania innych firm zabezpieczeń, takie jak zapory aplikacji sieci web, zapory sieciowe ochrony przed złośliwym kodem, wykrywania nieautoryzowanego dostępu, systemów zapobiegania (Identyfikatory/IP) i więcej. Aby uzyskać więcej informacji, zobacz [ochrony danych i zasobów i być zgodne ze standardami zabezpieczeń globalnych](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
+### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Co to są funkcje i możliwości udostępnianych przez Azure podstawowe adresy IP/Identyfikatory i przed atakami DDOS?
+Platforma Azure ma adresy IP/Identyfikatory w centrum danych serwerów fizycznych do obrony przed zagrożeniami. Ponadto klienci mogą wdrażać rozwiązań zabezpieczeń innych firm, takich jak zapory aplikacji sieci web, zapory sieciowe, ochrony przed złośliwym oprogramowaniem, Wykrywanie nieautoryzowanego dostępu, zapobiegania systemów (IDS/IPS) i inne. Aby uzyskać więcej informacji, zobacz [Chroń swoje dane i zasoby i zgodność ze standardami zabezpieczeń globalnych](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).
 
-Microsoft stale monitoruje serwery, sieci i aplikacje w celu wykrycia zagrożeń. Używa wykrywania nieautoryzowanego dostępu platformy Azure multipronged zarządzanie zagrożeniami podejście, dystrybuowane typu "odmowa usługi" (DDoS) zapobieganie atakom, penetracji testowania, behawioralnej analytics wykrywania anomalii i stale zwiększenia poziomu jej obrony i zmniejszyć ryzyko uczenia maszynowego. Antimalware Microsoft Azure chroni usług Azure Cloud Services i maszyn wirtualnych. Istnieje możliwość wdrażania rozwiązań innych firm zabezpieczeń dodatkowo, takich jak okno zapory aplikacji sieci web, zapory sieciowe, ochrony przed złośliwym oprogramowaniem i nieautoryzowanego dostępu i zapobiegania systemów (Identyfikatory/adresów IP).
+Firma Microsoft stale monitoruje serwery, sieci i aplikacji w celu wykrywania zagrożeń. Wykrywanie nieautoryzowanego dostępu platformy Azure multipronged zarządzanie zagrożeniami podejście używa, rozproszonej typu "odmowa usługi" (DDoS) zapobieganie atakom, penetracji badań behawioralnych analizy, wykrywanie anomalii i uczenia maszynowego, aby stale wzmocnienie jego obrony i zmniejszenia ryzyka. Microsoft Antimalware dla platformy Azure chroni maszyny wirtualne i usługi Azure Cloud Services. Masz możliwość Ponadto wdrażanie rozwiązań zabezpieczeń innych firm, takich jak okno zapory aplikacji sieci web, zapory sieciowe, ochrony przed złośliwym oprogramowaniem i wykrywania i zapobiegania im oraz systemy włamań (IDS/IPS).
 
-### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Jak włączyć HTTP/2 na maszynie Wirtualnej usługi w chmurze?
+### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Jak włączyć protokołu HTTP/2 na maszynie Wirtualnej Services chmurze?
 
-Windows 10 i Windows Server 2016 pochodzić z obsługą protokołu HTTP/2 po stronie klienta i serwera. Jeśli nawiązuje połączenie z klienta (przeglądarki) na serwerze IIS za pośrednictwem protokołu TLS który negocjuje HTTP/2 za pośrednictwem rozszerzenia protokołu TLS, a następnie jest konieczne wprowadzenie zmian po stronie serwera. To dlatego za pośrednictwem protokołu TLS, domyślnie jest wysyłane nagłówka h2 14 określający użycie protokołu HTTP/2. Jeśli klient wysyła z drugiej strony uaktualnienia nagłówka do uaktualnienia do wersji HTTP/2, następnie należy zmienić poniżej po stronie serwera, aby upewnić się, że działa uaktualniania, a na końcu połączenie HTTP/2. 
+Windows 10 i Windows Server 2016 pochodzą z obsługą protokołu HTTP/2 po stronie klienta i serwera. Jeśli Twój klient (przeglądarka) nawiązuje połączenie z serwerem usług IIS za pośrednictwem protokołu TLS, negocjuje protokołu HTTP/2 za pośrednictwem rozszerzenia protokołu TLS, a następnie nie trzeba wprowadzać zmian po stronie serwera. Jest to spowodowane za pośrednictwem protokołu TLS, nagłówka h2-14, określając korzystanie z protokołu HTTP/2 są domyślnie wysyłane. Jeśli z drugiej strony klienta wysyła uaktualnienia nagłówka, aby uaktualnić do protokołu HTTP/2, należy wprowadzić zmianę poniżej po stronie serwera, aby upewnić się, że uaktualnienie działa i znajdą się za pośrednictwem połączenia HTTP/2. 
 
 1. Uruchom regedit.exe.
-2. Przejdź do klucza rejestru: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Przejdź do klucza rejestru: pozycji HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Utwórz nową wartość DWORD o nazwie **DuoEnabled**.
-4. Ustaw dla niego wartość 1.
+4. Ustaw jego wartość na 1.
 5. Uruchom ponownie serwer.
-6. Przejdź do Twojej **domyślna witryna sieci Web** i w obszarze **powiązania**, Utwórz nowe powiązanie, TLS z właśnie utworzony certyfikat z podpisem własnym. 
+6. Przejdź do swojej **domyślna witryna sieci Web** i w obszarze **powiązania**, Utwórz nowe powiązanie protokołu TLS z właśnie utworzony certyfikat z podpisem własnym. 
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2)
-- [Wideo: HTTP/2 w systemie Windows 10: przeglądarki, aplikacji i serwer sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2)
+- [Wideo: Protokołu HTTP/2 w systemie Windows 10: przeglądarki, aplikacji i serwera sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
-Te kroki można można zautomatyzować za pomocą zadania uruchamiania, dzięki czemu zawsze, gdy nowe wystąpienie PaaS pobiera utworzony, można wykonać zmiany powyżej w rejestrze systemu. Aby uzyskać więcej informacji, zobacz [sposób konfigurowania i uruchamiania zadań uruchamiania dla usługi w chmurze](cloud-services-startup-tasks.md).
+Te kroki można zautomatyzować za pomocą zadań uruchamiania, tak, aby zawsze wtedy, gdy tworzone jest nowe wystąpienie PaaS, można to zrobić zmiany powyżej w rejestrze systemu. Aby uzyskać więcej informacji, zobacz [sposób konfigurowania i uruchamiania zadania uruchamiania dla usługi w chmurze](cloud-services-startup-tasks.md).
 
  
-Po przeprowadzeniu, można sprawdzić, czy włączono HTTP/2 nie przy użyciu jednej z następujących metod:
+Po zostało to zrobione, można sprawdzić, czy włączono protokołu HTTP/2 nie przy użyciu jednej z następujących metod:
 
-- Włącz wersja protokołu w dziennikach usług IIS i poszukaj w dziennikach usług IIS. Wyświetli HTTP/2 w dziennikach. 
+- Włącz wersja protokołu w dzienniku dzienniki usług IIS i możliwość przejrzenia dzienników usług IIS. Protokołu HTTP/2 będzie wyświetlany w dziennikach. 
 - Włącz narzędzia dla deweloperów F12 w Internet Explorer/Microsoft Edge i przejść do karty sieciowej można zweryfikować protokołu. 
 
-Aby uzyskać więcej informacji, zobacz [HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2).
+Aby uzyskać więcej informacji, zobacz [protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2).
 
 ## <a name="permissions"></a>Uprawnienia
 
-### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Jak wdrożyć dostępu opartej na rolach dla usługi w chmurze?
-Usługi w chmurze nie obsługuje modelu kontroli dostępu opartej na rolach (RBAC), ponieważ nie jest usługa Azure Resource Manager na podstawie.
+### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Sposób implementacji opartej na rolach dostęp do usług w chmurze
+Usługi cloud Services nie obsługuje modelu kontroli dostępu opartej na rolach, ponieważ nie jest to usługa oparta na usłudze Azure Resource Manager.
 
-Zobacz [Azure RBAC, a administratorzy subskrypcji klasycznego](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators).
+Zobacz [zrozumienie różnych ról na platformie Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ## <a name="remote-desktop"></a>Pulpit zdalny
 
-### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Można pulpitu zdalnego firmy Microsoft inżynierowie wewnętrzny do wystąpień usługi w chmurze bez uprawnienia?
-Microsoft z jej właściciela lub ich osobę przez wyznaczoną wynika strict procesu, który nie zezwala na wewnętrzny inżynierów do usług pulpitu zdalnego do usługi w chmurze bez pisemnej zgody (adres e-mail lub innych pisemnej).
+### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Czy pulpit zdalny wewnętrznych inżynierów firmy Microsoft do wystąpień usługi w chmurze bez zgody?
+Microsoft stosuje rygorystyczne procesu, który nie pozwoli na wewnętrznych inżynierów do usług pulpitu zdalnego w usłudze w chmurze bez pisemnej zgody (adres e-mail lub inne rodzaje komunikacji pisemnej) z jej właściciela lub ich osobę przez wyznaczoną.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Nie mogę pulpitu zdalnego do maszyny Wirtualnej usługi chmury, za pomocą pliku RDP. Pobierz I następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Nie mogę Pulpit zdalny dla maszyny Wirtualnej usługi w chmurze przy użyciu pliku RDP. Czy mogę uzyskać następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)
 
-Ten błąd może wystąpić, jeżeli używany jest plik RDP na komputerze, który jest przyłączony do usługi Azure Active Directory. Aby rozwiązać ten problem, wykonaj następujące kroki:
+Ten błąd może wystąpić, jeśli używasz pliku RDP na komputerze, który jest przyłączony do usługi Azure Active Directory. Aby rozwiązać ten problem, wykonaj następujące kroki:
 
-1. Kliknij prawym przyciskiem myszy pobrany plik RDP, a następnie wybierz **Edytuj**.
-2. Dodaj "&#92;" jako prefiksu przed nazwy użytkownika. Na przykład użyć **. \username** zamiast **username**.
+1. Kliknij prawym przyciskiem myszy pobrany plik RDP, a następnie wybierz pozycję **Edytuj**.
+2. Dodaj "&#92;" jako prefiksu przed nazwą użytkownika. Na przykład użyć **. \username** zamiast **username**.
 
 ## <a name="scaling"></a>Skalowanie
 
-### <a name="i-cannot-scale-beyond-x-instances"></a>Nie można skalować poza X wystąpień
-Subskrypcji platformy Azure ma limit liczby rdzeni, których można użyć. Skalowanie nie będzie działać, jeśli zostały użyte wszystkie dostępne rdzenie. Na przykład jeśli istnieje limit liczby rdzeni (100), oznacza to, może mieć 100 wystąpień maszyna wirtualna A1 o rozmiarze dla usługi w chmurze lub wystąpieniu maszyny wirtualnej o rozmiarze 50 A2.
+### <a name="i-cannot-scale-beyond-x-instances"></a>Nie mogę skalować poza X wystąpień
+Twojej subskrypcji platformy Azure ma limit liczby rdzeni, których można użyć. Skalowanie nie będzie działać, jeśli używano dostępnych rdzeni. Na przykład jeśli masz limitem rdzeni 100, oznacza to, może mieć 100 wystąpień maszyn wirtualnych A1 wielkości dla usługi w chmurze lub 50 A2 o rozmiarach wystąpień maszyny wirtualnej.
 
-### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Jak można skonfigurować oparty na pamięci metryki automatycznego skalowania
+### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>Jak skonfigurować automatyczne skalowanie na podstawie metryk pamięci?
 
-Oparciu metryki pamięci dla usług w chmurze automatycznego skalowania nie jest obecnie obsługiwane. 
+Automatyczne skalowanie na podstawie pamięci metryk dla usług w chmurze nie jest obecnie obsługiwane. 
 
-Aby obejść ten problem, można użyć usługi Application Insights. Automatyczne skalowanie obsługuje usługi Application Insights jako źródło metryki i można go skalować liczbę wystąpień roli w oparciu metryki gościa, takich jak "Pamięci".  Należy skonfigurować usługi Application Insights w pliku pakietu (*.cspkg) projektu usługi w chmurze i włączyć rozszerzenie Azure Diagnostics na usługę, aby zaimplementować to feat.
+Aby obejść ten problem, można użyć usługi Application Insights. Automatycznego skalowania obsługuje usługi Application Insights jako źródło metryki i możesz skalować liczbę wystąpień roli w oparciu metryki gościa, takich jak "Pamięci".  Należy skonfigurować usługę Application Insights w pliku pakietu projektu usługi w chmurze (*.cspkg) i włączanie rozszerzenia diagnostyki Azure na usługę, aby zaimplementować to feat.
 
-Aby uzyskać więcej informacji na temat sposobu korzystania niestandardowa Metryka za pomocą usługi Application Insights, aby skonfigurować automatyczne skalowanie na usługi w chmurze, zobacz [Rozpoczynanie pracy z Skalowanie automatyczne według metryki niestandardowe na platformie Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
+Aby uzyskać więcej informacji na temat Korzystanie z metryk niestandardowych za pomocą usługi Application Insights, aby skonfigurować automatyczne skalowanie w usługach Cloud Services, zobacz [wprowadzenie automatyczne skalowanie według metryki niestandardowe na platformie Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
 
-Aby uzyskać więcej informacji na temat integracji Azure Diagnostics z usługi Application Insights dla usługi w chmurze, zobacz [wysyłania usługi w chmurze maszyny wirtualnej i sieci szkieletowej usług danych diagnostycznych do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+Aby uzyskać więcej informacji na temat sposobu integrowania usługi Azure Diagnostics za pomocą usługi Application Insights dla usług Cloud Services, zobacz [wysyłania usługi w chmurze, maszyny wirtualnej lub usługi Service Fabric danych diagnostycznych do usługi Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 
-Aby uzyskać więcej informacji o włączenie usługi Application Insights dla usługi w chmurze, zobacz [usługi Application Insights dla usługi w chmurze Azure](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+Aby uzyskać więcej informacji na temat Włącz usługę Application Insights dla usług Cloud Services, zobacz [usługi Application Insights dla usług Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
-Aby uzyskać więcej informacji o sposobie włączania rejestrowania diagnostyki Azure dla usługi w chmurze, zobacz [Ustaw diagnostyki dla usług Azure Cloud Services i maszyny wirtualne](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+Aby uzyskać więcej informacji o tym, jak włączyć rejestrowanie diagnostyki Azure dla usług Cloud Services, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i virtual machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
 ## <a name="generic"></a>Ogólny
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Jak dodać "nosniff" do witryny sieci Web?
-Aby uniemożliwić klientom wykrywanie typów MIME, Dodaj ustawienie w Twojej *web.config* pliku.
+Aby uniemożliwić klientom wykrywanie typów MIME, należy dodać ustawienie w swojej *web.config* pliku.
 
 ```xml
 <configuration>
@@ -257,60 +257,60 @@ Aby uniemożliwić klientom wykrywanie typów MIME, Dodaj ustawienie w Twojej *w
 </configuration>
 ```
 
-Można również dodać to ustawienie w usługach IIS. Użyj następującego polecenia z [typowe zadania uruchamiania](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) artykułu.
+Można również dodać to ustawienie w usługach IIS. Użyj następującego polecenia z [popularne zadania uruchamiania](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) artykułu.
 
 ```cmd
 %windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
 ```
 
 ### <a name="how-do-i-customize-iis-for-a-web-role"></a>Jak dostosować usług IIS dla roli sieci web?
-Użyj skryptu uruchamiania usług IIS z [typowe zadania uruchamiania](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) artykułu.
+Użyj skryptu uruchamiania usług IIS z [popularne zadania uruchamiania](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe) artykułu.
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>Co to jest limit przydziału dla usługi w chmurze?
 Zobacz [ogranicza specyficzne dla usługi](../azure-subscription-service-limits.md#subscription-limits).
 
-### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Dlaczego dysk na maszynie Wirtualnej usługi w chmurze Wyświetla bardzo mało wolnego miejsca na dysku?
-Jest to oczekiwane zachowanie, a nie powinny powodować jakikolwiek problem do aplikacji. Rejestrowanie jest włączone dla dysku % approot % w maszynach wirtualnych PaaS platformy Azure, który zużywa zasadniczo double ilość miejsca na pliki zwykle zajmują. Istnieją jednak kilka kwestii, które należy pamiętać, że zasadniczo włączenie tej funkcji do innych niż problem.
+### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Dlaczego dysk na maszynie Wirtualnej usługi w chmurze pokazać bardzo mało wolnego miejsca na dysku?
+Jest to oczekiwane zachowanie i nie powinna spowodować, że wszelkie problemy z aplikacją. Rejestrowanie jest włączone dla dysku % approot % na maszynach wirtualnych PaaS platformy Azure, która zasadniczo zużywa double ilość miejsca na pliki, ale zazwyczaj zajmują. Jednak istnieje kilka sposobów, aby wiedzieć, który zasadniczo przekształcając to bez problemu.
 
-Rozmiar dysku % approot % jest obliczany jako wartość < rozmiar cspkg + rozmiar maksymalny dziennika > + margines wolnego miejsca lub 1,5 GB w zależności od jest większy. Rozmiar maszyny Wirtualnej nie ma żadnych wpływu na tego obliczenia. (Rozmiar maszyny Wirtualnej tylko wpływa na rozmiar tymczasowej dysk C:). 
+Rozmiar dysku % approot % jest obliczany jako < rozmiar cspkg + rozmiar maksymalny dziennika > + margines wolnego miejsca lub 1,5 GB pamięci, która kwota jest większa. Rozmiar maszyny Wirtualnej nie ma wpływu na to obliczenie. (Rozmiar maszyny Wirtualnej tylko wpływa na rozmiar dysku tymczasowego C:). 
 
-Go nie jest obsługiwana na zapis na dysku % approot %. Podczas pisania do maszyny Wirtualnej Azure, należy to zrobić w tymczasowej zasobów LocalStorage (lub innych opcji, takie jak magazyn obiektów Blob, plików Azure itp.). Dlatego ilość wolnego miejsca w folderze % approot % nie ma sensu. Jeśli nie masz pewności, czy aplikacja jest zapisywania na dysku % approot %, zawsze można pozostawić usługi Uruchom kilka dni, a następnie porównaj "przed" i "after" rozmiary. 
+Go nie jest obsługiwany do zapisu na dysku % approot %. Jeśli piszesz maszyną wirtualną platformy Azure, należy to zrobić w zasobie LocalStorage tymczasowego (lub innych opcji, takich jak usługi Blob storage, Azure Files, itp.). Zatem ilość wolnego miejsca w folderze % approot % nie ma sensu. Jeśli nie masz pewności, jeśli aplikacja zapisuje na dysku % approot %, zawsze można pozostawić usługi, uruchom przez kilka dni, a następnie porównaj "przed" i "after" rozmiary. 
 
-Azure nie zapisze żadnych na dysku % approot %. Wirtualny dysk twardy jest utworzone na podstawie Twojej cspkg i instalowany w Maszynie wirtualnej Azure, jedynym elementem, który może zapisać do tego dysku po aplikacji. 
+Azure nie zapisze żadnych dysku % approot %. Wirtualny dysk twardy jest tworzone na podstawie Twojej cspkg i zainstalowany na maszynie Wirtualnej platformy Azure, jedynym elementem, który może zapisać do tego dysku po aplikacji. 
 
 Ustawienia dziennika są niemożliwą do skonfigurowania, więc nie można wyłączyć go.
 
-### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Jak dodać rozszerzenie ochrony przed złośliwym oprogramowaniem dla usługi w chmurze w zautomatyzowany sposób?
+### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Jak mogę dodać rozszerzenia ochrony przed złośliwym kodem dla usług w chmurze w zautomatyzowany sposób?
 
-Można włączyć rozszerzenia ochrony przed złośliwym kodem przy użyciu skryptu programu PowerShell w ramach zadania uruchamiania. Wykonaj kroki opisane w następujących artykułach do zaimplementowania go: 
+Można włączyć rozszerzenia ochrony przed złośliwym oprogramowaniem, za pomocą skryptu programu PowerShell w zadaniu uruchamiania. Wykonaj kroki opisane w tych artykułach, do jej wdrożenia: 
  
 - [Utwórz zadanie uruchamiania programu PowerShell](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Aby uzyskać więcej informacji na temat scenariuszy wdrażania ochrony przed złośliwym oprogramowaniem i jak włączyć go w portalu, zobacz [scenariuszy wdrażania ochrony przed złośliwym kodem](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+Aby uzyskać więcej informacji o scenariuszach wdrażania ochrony przed złośliwym oprogramowaniem i jak go włączyć z poziomu portalu, zobacz [scenariusze wdrażania ochrony przed złośliwym oprogramowaniem](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
 
-### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Jak włączyć oznaczenia nazwy serwera (SNI) dla usług w chmurze?
+### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Jak włączyć oznaczaniem nazwy serwera (SNI) dla usług w chmurze?
 
-Można włączyć SNI usług w chmurze przy użyciu jednej z następujących metod:
+Należy włączyć SNI w usługach w chmurze przy użyciu jednej z następujących metod:
 
 **Metoda 1: Przy użyciu programu PowerShell**
 
-Powiązanie SNI można skonfigurować przy użyciu polecenia cmdlet programu PowerShell **WebBinding nowy** zadania uruchamiania dla wystąpienia roli usługi w chmurze, jak pokazano poniżej:
+Powiązanie SNI można skonfigurować przy użyciu polecenia cmdlet programu PowerShell **New WebBinding** w zadaniu uruchamiania dla wystąpienia roli usługi w chmurze, tak jak pokazano poniżej:
     
     New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
     
-Zgodnie z opisem [tutaj](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags może być jedna z wartości w następujący sposób:
+Zgodnie z opisem [tutaj](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags może być jedną z wartości zgodnie z poniższymi:
 
 |Wartość|Znaczenie|
 ------|------
 |0|Nie SNI|
-|1|Funkcja SNI włączone |
-|2 |Z systemem innym niż SNI powiązania, który używa centralnego magazynu certyfikatów|
-|3|Przechowywanie SNI powiązania, który używa certyfikatu z centralnej |
+|1|Rozszerzenie SNI włączone |
+|2 |SNI bez powiązania, który używa Store certyfikatu centralnego|
+|3|Powiązanie SNI, która używa certyfikatu centralnego przechowywania |
  
-**Metoda 2: Użyj kodu**
+**Metoda 2: Użycie kodu**
 
-Powiązanie SNI można również skonfigurować za pomocą kodu przy uruchamianiu roli zgodnie z opisem w tym [wpis w blogu](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
+Powiązanie SNI można również skonfigurować za pomocą kodu w uruchamiania roli zgodnie z opisem w tym [wpis w blogu](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
     
     //<code snip> 
@@ -321,25 +321,25 @@ Powiązanie SNI można również skonfigurować za pomocą kodu przy uruchamiani
                     serverManager.CommitChanges(); 
     //</code snip> 
     
-Przy użyciu jednej z metod powyżej, odpowiednich certyfikatów (*.pfx) dla określonej nazwy hostów muszą być najpierw zainstalowane dla wystąpień roli za pomocą zadania uruchamiania lub za pośrednictwem kodu w kolejności dla powiązania SNI były skuteczne.
+Przy użyciu dowolnej z metod powyżej, odpowiednich certyfikatów (*.pfx) dla określonej nazwy hostów trzeba najpierw zainstalować na wystąpieniach roli za pomocą zadania uruchamiania lub za pośrednictwem kodu, aby powiązanie SNI zaczęła obowiązywać.
 
 ### <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>Jak dodać tagi do usługi w chmurze Azure 
 
-Usługi w chmurze jest zasobem klasycznego. Tylko zasoby utworzone za pomocą tagów pomocy technicznej usługi Azure Resource Manager. Nie można zastosować tagi Classic zasoby, takie jak usługi w chmurze. 
+Usługa w chmurze jest zasobem model klasyczny. Tylko zasobów utworzonych za pomocą tagów pomocy technicznej usługi Azure Resource Manager. Tagi nie dotyczą klasyczne zasoby, takie jak usługi w chmurze. 
 
 ### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Wersja zestawu SDK usługi w chmurze nie są wyświetlane w portalu Azure. Jak uzyskać który?
 
-Pracujemy nad wprowadzeniem tej funkcji w portalu Azure. W tym samym czasie służy następujących poleceń programu PowerShell do pobrania wersji zestawu SDK:
+Pracujemy nad udostępnieniem tej funkcji w witrynie Azure portal. W tym samym czasie służy następujących poleceń programu PowerShell można pobrać wersji zestawu SDK:
 
     Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
 
-### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Chcę wyłączyć usługę w chmurze dla kilku miesięcy. Jak zmniejszyć koszt rozliczeń usługi w chmurze bez utraty adres IP?
+### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Chcę zamknąć usługę w chmurze w ciągu kilku miesięcy. Jak zmniejszyć koszt rozliczeń usługi w chmurze bez utraty adres IP?
 
-Już raz wdrożonej usługi w chmurze pobiera rozliczane dla zasobów obliczeniowych i magazynu używa. Tak nawet w przypadku zamykania maszyny Wirtualnej platformy Azure można będzie nadal uzyskać użyta dla magazynu. 
+Zasobów obliczeniowych i magazynu używa jest naliczana dla już wdrożonej usługi w chmurze. Dlatego nawet wtedy, gdy maszyna wirtualna platformy Azure zostanie zamknięta, będzie naliczana do przechowywania. 
 
-Oto, co możesz zrobić, aby zmniejszyć rozliczeniowego bez utraty adres IP dla usługi:
+Oto, co można zrobić, aby zmniejszyć rozliczeniami bez utraty adres IP dla usługi:
 
-1. [Zastrzec adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md) przed usunięcie jego wdrożeń.  Tylko będą naliczane dla tego adresu IP. Aby uzyskać więcej informacji dotyczących rozliczeń adresu IP, zobacz [adresy IP cennik](https://azure.microsoft.com/pricing/details/ip-addresses/).
-2. Usunięcie jego wdrożeń. Nie należy usuwać xxx.cloudapp.net, tak aby można go używać przyszłość.
-3. Jeśli chcesz ponownie wdrożyć usługę w chmurze przy użyciu tego samego adresu IP rezerwy zarezerwowane w ramach subskrypcji, zobacz [zarezerwowane adresy IP dla usługi w chmurze i maszyn wirtualnych](https://azure.microsoft.com/blog/reserved-ip-addresses/).
+1. [Zastrzec adres IP](../virtual-network/virtual-networks-reserved-public-ip.md) przed usunięciem wdrożeń.  Możesz tylko jest naliczana dla tego adresu IP. Aby uzyskać więcej informacji o rozliczeniach adresu IP, zobacz [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/).
+2. Usunięcie jego wdrożeń. Nie należy usuwać xxx.cloudapp.net, tak, aby używać go do przyszłości.
+3. Jeśli chcesz ponownie wdrożyć usługę w chmurze przy użyciu tego samego adresu IP rezerwy zarezerwowanego w ramach subskrypcji, zobacz [zastrzeżone adresy IP dla maszyn wirtualnych i usług w chmurze](https://azure.microsoft.com/blog/reserved-ip-addresses/).
 

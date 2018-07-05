@@ -1,6 +1,6 @@
 ---
-title: Problem za pomocą dostępu do aplikacji Sklep internetowy | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów związanych z dostępem do aplikacji Sklep internetowy do
+title: Problem za pomocą Samoobsługowego dostępu do aplikacji | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów związanych z samoobsługowego dostępu do aplikacji
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -15,87 +15,87 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 35abd97072f2156424bb910d68923be18f917792
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cdd554b71cc17019d7818e2b509433df621da84f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331261"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446830"
 ---
-# <a name="problem-using-self-service-application-access"></a>Problem za pomocą dostępu do aplikacji Sklep internetowy
+# <a name="problem-using-self-service-application-access"></a>Problem za pomocą Samoobsługowego dostępu do aplikacji
 
-Dostęp do aplikacji Sklep internetowy jest to dobry sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, opcjonalnie zezwolić grupie biznesowej, aby zatwierdzić dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników do prawej jednokrotnego hasła w aplikacji z ich paneli dostępu.
+Opcjonalnie samoobsługowego dostępu do aplikacji jest to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, umożliwiają grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników po prawej stronie hasło logowania jednokrotnego w aplikacji w swoich panelach dostępu.
 
-Zanim użytkownicy mogą odnajdować własnym aplikacji z ich panel dostępu, należy włączyć **dostęp do aplikacji Sklep internetowy** do dowolnych aplikacji, które chcesz zezwolić użytkownikom na własnym odnajdywania i żądania dostępu do.
+Zanim użytkownicy mogą odnajdować samodzielnie aplikacje z panelu dostępu, musisz włączyć **samoobsługowego dostępu do aplikacji** do dowolnych aplikacji, które użytkownicy mogą samodzielnie odnajdywanie i żądania dostępu do.
 
-## <a name="general-issues-to-check-first"></a>Ogólne problemy, aby sprawdzić w pierwszej kolejności
+## <a name="general-issues-to-check-first"></a>Zagadnienia ogólne w celu sprawdzenia
 
--   Upewnij się, że poprawnie skonfigurowano dostęp do aplikacji Sklep internetowy. Zobacz sekcję "Jak skonfigurować dostęp do aplikacji Sklep internetowy".
+-   Upewnij się, że prawidłowo skonfigurowano samoobsługowego dostępu do aplikacji. Zobacz sekcję "Jak skonfigurować samoobsługowego dostępu do aplikacji".
 
--   Upewnij się, że włączono użytkownika lub grupy, aby zażądać dostępu do aplikacji Sklep internetowy.
+-   Upewnij się, że użytkownik lub grupa został włączony, aby zażądać samoobsługowego dostępu do aplikacji.
 
--   Upewnij się, że użytkownik jest odwiedzający odpowiednie miejsce dostępu do aplikacji Sklep internetowy. Użytkownicy mogą przechodzić do ich [panelu dostępu aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacji, dla których włączono samoobsługi dostępu.
+-   Upewnij się, że użytkownik odwiedził prawidłowe miejsce samoobsługowego dostępu do aplikacji. Użytkownicy mogą przejść do ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacje, dla których włączono dostęp samoobsługowy.
 
--   Jeśli dostęp do aplikacji Sklep internetowy niedawno została skonfigurowana, spróbuj logowanie i wylogowywanie ponownie do panelu dostępu użytkownika po kilku minutach się jeśli zmian dostępu samoobsługi pojawiły się w temacie.
+-   Jeśli niedawno została skonfigurowana samoobsługowego dostępu do aplikacji, spróbuj zarejestrować i pomniejszać ponownie do panelu dostępu użytkownika po kilku minutach aby zobaczyć, jeśli zmiany dostęp samoobsługowy pojawiły się.
 
-## <a name="how-to-configure-self-service-application-access"></a>Jak skonfigurować dostęp do aplikacji Sklep internetowy
+## <a name="how-to-configure-self-service-application-access"></a>Konfigurowanie samoobsługowego dostępu do aplikacji
 
-Aby włączyć samoobsługowe aplikacji dostęp do aplikacji, wykonaj następujące czynności:
+Aby włączyć samoobsługowego dostępu do aplikacji do aplikacji, wykonaj następujące czynności:
 
-1.  Otwórz [ **Azure Portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure Portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
 
-2.  Otwórz **rozszerzenia usług Azure Active Directory** klikając **wszystkie usługi** w górnej części menu nawigacji głównego po lewej stronie.
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu nawigacji głównego po lewej stronie ekranu.
 
-3.  Wpisz w **"Azure Active Directory**" w polu wyszukiwania filtr a wybierz **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** w menu nawigacji po lewej stronie usługi Azure Active Directory.
+4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z poziomu menu nawigacji po lewej stronie ekranu w usłudze Azure Active Directory.
 
 5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie ma aplikacji ma tutaj będą wyświetlane, użyj **filtru** kontroli nad **listę wszystkich aplikacji** i ustaw **Pokaż** opcji w celu **wszystkich Aplikacje.**
+  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
 
-6.  Wybierz aplikację, aby umożliwić samoobsługi dostęp do z listy.
+6.  Wybierz aplikację, aby umożliwić Samoobsługowe dostęp do, z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **samoobsługi** z menu nawigacji po lewej stronie aplikacji.
+7.  Po załadowaniu aplikacji, kliknij przycisk **samoobsługi** z poziomu menu nawigacji po lewej stronie ekranu w aplikacji.
 
-8.  Aby włączyć dostęp do aplikacji Sklep internetowy dla tej aplikacji, należy włączyć **Zezwalaj użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz, aby **tak.**
+8.  Aby włączyć samoobsługowego dostępu do aplikacji dla tej aplikacji, należy wyłączyć **zezwalać użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz, aby **tak.**
 
-9.  Następnie wybierz grupę, do których użytkownicy, którzy żądają dostępu do tej aplikacji można dodać, kliknij przycisk wyboru obok etykiety **do grupy, do której ma zostać dodany przypisanych użytkowników?** i wybierz grupę.
+9.  Następnie, aby wybrać grupę, do których użytkownicy, którzy żądają dostępu do tej aplikacji można dodać, kliknij selektor obok etykiety **grupę, do której należy dodać przypisanych użytkowników?** i wybrać grupę.
 
-10. **Opcjonalnie:** aby wymagają zatwierdzenia biznesowych, przed użytkownicy mają dostęp, ustaw **wymagają zatwierdzenia przed udzieleniem im dostępu do tej aplikacji?** Przełącz, aby **tak**.
+10. **Opcjonalnie:** Jeśli użytkownik chce wymagane zatwierdzenie firmy, zanim użytkownicy mogą dostęp, należy ustawić **wymagają zatwierdzenia, zanim zostanie przyznany dostęp do tej aplikacji?** Przełącz, aby **tak**.
 
-11. **Opcjonalnie: dla aplikacji za pomocą hasła jednokrotnego na tylko** Jeśli chcesz umożliwić tych osób zatwierdzających firm określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **Zezwalaj osób zatwierdzających do ustawienia użytkownika hasła dla tej aplikacji?**  Przełącz, aby **tak**.
+11. **Opcjonalnie: dla aplikacji za pomocą logowania jednokrotnego hasła na tylko** Jeśli chcesz zezwolić na te osoby zatwierdzające w firmie określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **zezwalać osobom zatwierdzającym Ustawianie użytkownika hasła dla tej aplikacji?**  Przełącz, aby **tak**.
 
-12. **Opcjonalnie:** do określenia osób zatwierdzających biznesowych, którzy mogą zatwierdzić dostęp do tej aplikacji, kliknij przycisk wyboru obok etykiety **kto może zatwierdzić dostęp do tej aplikacji?** do wybranych do 10 osób zatwierdzających biznesowych.
+12. **Opcjonalnie:** do określenia osoby zatwierdzające w firmie, którzy mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety **kto może zatwierdzać dostęp do tej aplikacji?** wybrać maksymalnie 10 osoby osoby zatwierdzające w firmie.
 
  >[!NOTE]
  > Grupy nie są obsługiwane.
  >
  >
 
-13. **Opcjonalnie:** **dla aplikacji, które ujawnia ról**, jeśli chcesz przypisać do roli użytkowników samoobsługi zatwierdzone, kliknij selektor **do roli należy użytkowników można przypisać w tej aplikacji?** Wybierz rolę, do której można przypisać tych użytkowników.
+13. **Opcjonalnie:** **dla aplikacji, które ujawniają role**, jeśli chcesz przypisać samoobsługi dla zatwierdzonych użytkowników do roli, kliknij selektor **do jakiej roli powinni być przypisani użytkownicy w tej aplikacji?** Aby wybrać rolę, do której można przypisać tych użytkowników.
 
-14. Kliknij przycisk **zapisać** na górze bloku, aby zakończyć.
+14. Kliknij przycisk **Zapisz** znajdujący się u góry bloku, aby zakończyć.
 
-Po zakończeniu konfiguracji samoobsługi aplikacji, użytkownicy mogą przechodzić do ich [panelu dostępu aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacji, dla których włączono samoobsługi dostęp. Osób zatwierdzających firm również wyświetlone powiadomienie w ich [panelu dostępu aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z informacją, gdy użytkownik żąda dostępu do aplikacji, która wymaga zatwierdzenia. 
+Po ukończeniu konfiguracji samoobsługowego aplikacji użytkownicy mogą przejść do ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacje, dla których włączono Samoobsługowe dostęp. Osoby zatwierdzające w firmie również wyświetlone powiadomienie w ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z powiadomieniem je, gdy użytkownik poprosi o dostęp do aplikacji, która wymaga zatwierdzenia. 
 
-Te zatwierdzenia obsługuje pojedynczy przepływów pracy, co oznacza, że jeśli określisz wiele osób zatwierdzających żadnych jedna osoba zatwierdzająca może zatwierdzić dostęp do aplikacji.
+Te zatwierdzenia obsługuje pojedynczy przepływy pracy zatwierdzania, co oznacza, że jeśli określisz wiele osób zatwierdzających, wszelkie jedną osobą zatwierdzającą może zatwierdzić dostęp do aplikacji.
 
 ## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Jeśli te kroki rozwiązywania problemów nie rozwiąże problemu 
 
-Otwórz bilet pomocy technicznej następujące informacje, jeśli są dostępne:
+Otwórz bilet pomocy technicznej, używając następujących informacji, jeśli jest dostępny:
 
 -   Identyfikator błędu korelacji
 
--   Nazwa UPN (adres e-mail użytkownika)
+-   Nazwy UPN (adres e-mail użytkownika)
 
--   Dla identyfikatora dzierżawcy
+-   Identyfikator dzierżawy
 
 -   Typ przeglądarki
 
--   Strefa czasowa i przedziału czasu/czasu podczas błąd występuje
+-   Występuje, strefę czasową i przedziału czasu/czasu podczas błędu
 
--   Ślady fiddler
+-   Ślady narzędzia fiddler
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Konfigurowanie usługi Azure Active Directory do zarządzania grupami samoobsługi](active-directory-accessmanagement-self-service-group-management.md)
+[Konfigurowanie usługi Azure Active Directory do samoobsługowego zarządzania grupami](users-groups-roles/groups-self-service-management.md)

@@ -1,86 +1,62 @@
 ---
-title: Dostępne w stosie Azure zestawach skali maszyn wirtualnych upewnij | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać skalowania maszyny wirtualnej w portalu Azure Marketplace stosu operatorowi chmury
+title: Udostępnianie zestawów skalowania maszyn wirtualnych w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać zestawy skalowania maszyn wirtualnych w portalu Azure Marketplace stosu operator chmury
 services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "34800644"
 ---
-# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnia zestawy skalowania maszyny wirtualnej Azure stosu
+# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnianie zestawów skalowania maszyn wirtualnych w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Zestawy skalowania maszyny wirtualnej są zasobów obliczeniowych Azure stosu. Można używać ich do wdrażania i zarządzania zestaw wiele identycznych maszyn wirtualnych. Z wszystkie maszyny wirtualne skonfigurowane tak samo, zestawy skalowania nie wymagają wstępnego inicjowania obsługi administracyjnej maszyn wirtualnych. Możliwe jest łatwiejsze tworzenie usług na dużą skalę, przeznaczonych dla dużych obliczeniowych, dane big data i konteneryzowanych obciążeń.
+Zestawy skalowania maszyn wirtualnych to zasób obliczeniowych usługi Azure Stack. Umożliwia ich wdrożenie zestawu identycznych maszyn wirtualnych oraz zarządzanie. Za pomocą wszystkich maszyn wirtualnych skonfigurowane tak samo, zestawów skalowania nie wymagają wstępnego inicjowania obsługi administracyjnej maszyn wirtualnych. Jest łatwiejsze tworzenie wielkoskalowych usług, przeznaczonych dla dużych wystąpień obliczeniowych, danych big data i obciążenia konteneryzowane.
 
-W tym artykule prowadzi użytkownika przez proces, aby udostępnić zestawy skalowania w portalu Azure Marketplace stosu. Po zakończeniu tej procedury użytkownicy mogą dodawać zestawy skalowania maszyny wirtualnej do subskrypcji.
+Ten artykuł przeprowadzi Cię przez proces, aby udostępnić zestawy skalowania w witrynie Azure Marketplace stosu. Po wykonaniu tej procedury, użytkownicy mogą dodawać, czy zestawy skalowania maszyn wirtualnych do swojej subskrypcji.
 
-Zestawy skalowania maszyny wirtualnej na stosie Azure są podobne zestawy skalowania maszyny wirtualnej na platformie Azure. Aby uzyskać więcej informacji zobacz następujące filmy wideo:
+Zestawy skalowania maszyn wirtualnych w usłudze Azure Stack są podobne zestawy skalowania maszyn wirtualnych na platformie Azure. Aby uzyskać więcej informacji zobacz następujące filmy wideo:
 * [Mark Russinovich omawia zestawy skalowania na platformie Azure](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [Zestawy skalowania maszyn wirtualnych według Guya Bowermana](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-Na stosie Azure zestawy skalowania maszyny wirtualnej nie obsługuje automatycznego skalowania. Można dodać więcej wystąpień do skalowania, ustawić za pomocą portalu Azure stosu, szablony usługi Resource Manager lub programu PowerShell.
+W usłudze Azure Stack zestawów skalowania maszyn wirtualnych nie obsługuje automatycznego skalowania. Można dodać więcej wystąpień zestawu skalowania przy użyciu szablonów usługi Resource Manager, interfejsu wiersza polecenia lub programu PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Narzędzia i programu PowerShell**
 
-   Instalowanie i PowerShell skonfigurowanych dla stosu Azure i narzędzi Azure stosu. Zobacz [rozpocząć pracę przy użyciu programu PowerShell w stosie Azure](azure-stack-powershell-configure-quickstart.md).
+- **Syndykacja witryny Marketplace**  
+    Zarejestruj globalnej platformy Azure, aby włączyć syndykacji Marketplace usługi Azure Stack. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
+- **Obraz systemu operacyjnego**  
+    Jeśli nie dodano obrazu systemu operacyjnego, w portalu Azure Marketplace stosu, zobacz [Dodawanie elementu portalu marketplace usługi Azure Stack z platformy Azure](asdk/asdk-marketplace-item.md).
 
-   Po zainstalowaniu narzędzi Azure stosu, upewnij się, należy zaimportować następujące moduł programu PowerShell (ścieżka względem. \ComputeAdmin folderu w folderze AzureStack Narzędzia główne):
-  ````PowerShell
-        Import-Module .\AzureStack.ComputeAdmin.psm1
-  ````
+## <a name="add-the-virtual-machine-scale-set"></a>Dodaj zestaw skalowania maszyn wirtualnych
 
-* **Obraz systemu operacyjnego**
+1. Otwórz w portalu Azure Marketplace stosu i łączenie z platformą Azure. Wybierz **zarządzania Marketplace**> **+ Dodaj na platformie Azure**.
 
-   Jeśli nie dodano obrazu systemu operacyjnego do programu Azure Marketplace stosu, zobacz [Dodaj obraz maszyny Wirtualnej systemu Windows Server 2016 do stosu Azure marketplace](azure-stack-add-default-image.md).
+    ![Zarządzanie w portalu Marketplace](media/azure-stack-compute-add-scalesets/image01.png)
 
-   Obsługę systemu Linux, Pobierz Ubuntu Server 16.04 i dodać go za pomocą ```Add-AzsPlatformImage``` z następującymi parametrami: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+2. Dodawanie i pobieranie elementów portalu marketplace zestawu skalowania maszyn wirtualnych.
 
+    ![Zestaw skalowania maszyn wirtualnych](media/azure-stack-compute-add-scalesets/image02.png)
 
-## <a name="add-the-virtual-machine-scale-set"></a>Dodaj zestaw skali maszyny wirtualnej
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizowanie obrazów w zestawie skalowania maszyn wirtualnych
 
-Edytuj poniższy skrypt programu PowerShell dla danego środowiska, a następnie uruchom go, aby dodać zestaw do programu Azure Marketplace stosu skalowania maszyny wirtualnej. 
+Po utworzeniu zestawu skalowania maszyn wirtualnych, użytkownicy mogą zaktualizować obrazów w skali bez zestawu konieczności można odtworzyć skalowania. Proces aktualizacji obrazu, zależy od następujących scenariuszy:
 
-``$User`` to konto, które są używane do łączenia z portalu administratora. Na przykład serviceadmin@contoso.onmicrosoft.com.
+1. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **określa najnowsza wersja** dla *wersji*:  
 
-````PowerShell  
-$Arm = "https://adminmanagement.local.azurestack.external"
-$Location = "local"
+   Gdy *wersji* jest ustawiony jako **najnowsze** w *imageReference* części szablonu skalowania ustawiona, skalowanie operacji przy użyciu zestawu skalowania najnowszej dostępnej wersji Obraz skali zestawu wystąpień. Po zakończeniu skalowania w górę, możesz usunąć starsze wystąpień zestawów skalowania maszyn wirtualnych.  (Wartości *wydawcy*, *oferują*, i *jednostki sku* pozostają bez zmian). 
 
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint $Arm
-
-$Password = ConvertTo-SecureString -AsPlainText -Force "<your Azure Stack administrator password>"
-
-$User = "<your Azure Stack service administrator user name>"
-
-$Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
-
-$AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-
-Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
-
-Add-AzsVMSSGalleryItem -Location $Location
-````
-
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizowanie obrazów w zestawie skalowania maszyn wirtualnych 
-Po utworzeniu zestawu skalowania maszyn wirtualnych użytkowników można aktualizować obrazów w skali bez zestaw musi zostać ponownie utworzone skalowania. Proces aktualizacji obrazu jest zależna od następujących scenariuszy:
-
-1. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **określa najnowszych** dla *wersji*:  
-
-   Gdy *wersji* jest ustawiony jako **najnowsze** w *elementu imageReference* sekcji szablonu dla skalowania ustawić, skalowanie w górę operacje przy użyciu zestawu skali najnowszej dostępnej wersji obrazu skali ustawić wystąpień. Po zakończeniu skalowania w górę, można usunąć starszej wystąpień zestawów skalowania maszyn wirtualnych.  (Wartości *wydawcy*, *oferują*, i *sku* pozostają niezmienione). 
-
-   Poniżej przedstawiono przykład określenia *najnowsze*:  
+   Oto przykład określenia *najnowsze*:  
 
     ```Json  
     "imageReference": {
@@ -91,32 +67,32 @@ Po utworzeniu zestawu skalowania maszyn wirtualnych użytkowników można aktual
         }
     ```
 
-   Zanim skalowania w górę, można użyć nowego obrazu, należy pobrać nowe obrazu:  
+   Skalowanie w górę można korzystać z nowego obrazu, należy pobrać tego nowego obrazu:  
 
-   - Gdy obraz w witrynie Marketplace jest nowsza wersja niż obrazu w zestawie skalowania: Pobierz nowy obraz, który zastępuje starsze obrazu. Po obrazu zostanie zastąpiony, użytkownik może przejść do skalowanie w górę. 
+   - Gdy obraz w witrynie Marketplace jest dostępna nowsza wersja niż obrazu w zestawie skalowania: Pobierz nowy obraz, który zastępuje starsze obrazu. Po obrazu zostanie zastąpiony, użytkownik można przejść do skalowania w górę. 
 
-   - Gdy wersja obrazu w witrynie Marketplace jest taka sama jak obrazu w zestawie skalowania: Usuń obraz, który jest używany w zestawie skalowania, a następnie Pobierz nowy obraz. W okresie między po usunięciu oryginalnego obrazu i pobieranie obrazu nie skalowanie w górę. 
+   - Gdy wersja obrazu w portalu Marketplace jest taka sama jak obrazu w zestawie skalowania: Usuń obraz, który jest używany w zestawie skalowania, a następnie Pobierz nowy obraz. W czasie między usunięcie oryginalnego obrazu i pobieranie obrazu nie skalowanie w górę. 
       
-     Ten proces jest wymagany do resyndicate obrazów, dzięki któremu używać formatu plików rozrzedzonych, wprowadzonym w wersji 1803. 
+     Proces ten jest wymagany do resyndicate obrazy, wchodzące używają formatu pliku rozrzedzonego, wprowadzonym w wersji 1803. 
  
 
-2. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **nie określa najnowszych** dla *wersji* i zamiast tego Określa numer wersji:  
+2. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **nie określa najnowsza wersja** dla *wersji* i zamiast tego Określa numer wersji:  
 
-     W przypadku pobrania obrazu przy użyciu nowszej wersji (co spowoduje zmianę wersji dostępnych), zestaw skalowania nie skalowanie w górę. To jest celowe jako wersja obrazu określonego w szablonie zestaw skali musi być dostępna.  
+    Jeśli pobierzesz obraz za pomocą nowszej wersji (co powoduje zmianę dostępnej wersji), zestaw skalowania nie można skalować w górę. Jest to celowe wersję obrazu określonego w szablonie zestawu skalowania muszą być dostępne.  
 
-Aby uzyskać więcej informacji, zobacz [dysków systemu operacyjnego i obrazy](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+Aby uzyskać więcej informacji, zobacz [dyski systemu operacyjnego i obrazy](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
 
-## <a name="remove-a-virtual-machine-scale-set"></a>Usuń zestaw skali maszyny wirtualnej
+## <a name="remove-a-virtual-machine-scale-set"></a>Usuń zestaw skalowania maszyn wirtualnych
 
-Aby usunąć maszynę wirtualną skalować zestawu z elementem galerii, uruchom następujące polecenie programu PowerShell:
+Aby usunąć maszynę wirtualną elementu galerii w zestawie skalowania, uruchom następujące polecenie programu PowerShell:
 
 ```PowerShell  
-    Remove-AzsVMSSGalleryItem
+    Remove-AzsGalleryItem
 ````
 
 > [!NOTE]
-> Nie można bezpośrednio usunąć elementu galerii. Nocy należy odświeżyć portalu kilka razy, aby element będzie wyświetlany jako usunięte z portalu Marketplace.
+> Nie można usunąć natychmiast elementu galerii. Noc musisz odświeżyć portal kilka razy, zanim element będzie wyświetlany jako usunięty z witryny Marketplace.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Często zadawane pytania dotyczące usługi Azure stosu](azure-stack-faq.md)
+[Często zadawane pytania dotyczące usługi Azure Stack](azure-stack-faq.md)

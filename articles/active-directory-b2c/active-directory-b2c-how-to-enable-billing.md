@@ -1,97 +1,97 @@
 ---
-title: Jak połączyć subskrypcji platformy Azure do usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Przewodnik krok po kroku, aby włączyć rozliczeń dla dzierżawy usługi Azure AD B2C do subskrypcji platformy Azure.
+title: Jak połączyć subskrypcję platformy Azure z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Przewodnik krok po kroku do włączenia opcji naliczania opłat dla dzierżawy usługi Azure AD B2C do subskrypcji platformy Azure.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4dd99d492fe4f337509cacfce0e2b254e8465424
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712083"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445945"
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Łączenie subskrypcji platformy Azure do dzierżawy usługi Azure AD B2C
+# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Łączenie subskrypcji platformy Azure z dzierżawy usługi Azure AD B2C
 
 > [!IMPORTANT]
-> Najnowsze informacje dotyczące użycia rozliczeniach i cenach usługi Azure AD B2C jest na następującej stronie: [cennik usługi Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Najnowsze informacje dotyczące użycia, rozliczeniach i cenach usługi Azure AD B2C jest na następującej stronie: [cennik usługi Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-Opłaty za użycie dla usługi Azure AD B2C są rozliczane z subskrypcją platformy Azure. Podczas tworzenia dzierżawy usługi Azure AD B2C, administrator dzierżawy musi jawnie łącze dzierżawy usługi Azure AD B2C do subskrypcji platformy Azure. W tym artykule opisano sposób.
+Opłaty za użycie w usłudze Azure AD B2C są rozliczane z subskrypcją platformy Azure. Po utworzeniu dzierżawy usługi Azure AD B2C, administrator dzierżawy musi jawnie utworzyć łącze dzierżawy usługi Azure AD B2C z subskrypcją platformy Azure. W tym artykule przedstawiono, jak.
 
 > [!NOTE]
-> Tylko można subskrypcji połączone z dzierżawy usługi Azure AD B2C rozliczenia użycia usługi Azure AD B2C. Subskrypcja nie może służyć do dodania innych usług platformy Azure lub usługi Office 365 licencji *w ramach dzierżawy usługi Azure AD B2C*.
+> Subskrypcji połączonej z dzierżawą usługi Azure AD B2C należy używać tylko na Naliczanie opłat za użycie usługi Azure AD B2C. Subskrypcja nie może służyć do dodawania innych usług platformy Azure lub licencji usługi Office 365 *w ramach dzierżawy usługi Azure AD B2C*.
 
- Link do subskrypcji jest to osiągane przez utworzenie usługi Azure AD B2C "Zasób" w docelowym subskrypcji platformy Azure. W ramach jednej subskrypcji platformy Azure oraz innych zasobów platformy Azure (na przykład maszyny wirtualne, pamięci masowej, LogicApps) można utworzyć wiele usługi Azure AD B2C "zasoby". Można wyświetlić wszystkie zasoby w ramach subskrypcji, przechodząc do dzierżawy usługi Azure AD, która jest skojarzona subskrypcja.
+ Link do subskrypcji można uzyskać, tworząc usługi Azure AD B2C "Zasób" w ramach docelowa subskrypcja platformy Azure. Wiele usługi Azure AD B2C "zasoby" mogą być tworzone w ramach pojedynczej subskrypcji platformy Azure wraz z innymi zasobami platformy Azure (na przykład maszyny wirtualne, Magazyn danych, LogicApps). Widać wszystkie zasoby w ramach subskrypcji, przechodząc do dzierżawy usługi Azure AD, która jest skojarzona subskrypcja.
 
-Ważnej subskrypcji platformy Azure jest potrzebna, aby kontynuować.
+Aby kontynuować, potrzebna jest ważnej subskrypcji platformy Azure.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Tworzenie dzierżawy usługi Azure AD B2C
 
-Należy najpierw [tworzenie dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md) chcesz połączyć subskrypcję. Jeśli utworzono już dzierżawy usługi Azure AD B2C, Pomiń ten krok.
+Należy najpierw [tworzenie dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md) chcesz połączyć subskrypcję. Pomiń ten krok, jeśli utworzono już dzierżawę usługi Azure AD B2C.
 
-## <a name="open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Otwórz portal Azure w dzierżawie usługi Azure AD, pokazujący subskrypcji platformy Azure
+## <a name="open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Otwórz portal Azure w ramach dzierżawy usługi Azure AD, pokazujący subskrypcji platformy Azure
 
-Przejdź do dzierżawy usługi Azure AD, która zawiera subskrypcji platformy Azure. Otwórz [portalu Azure](https://portal.azure.com)i przejdź do dzierżawy usługi Azure AD, pokazujący subskrypcji platformy Azure, czy chcesz użyć.
+Przejdź do dzierżawy usługi Azure AD, pokazujący subskrypcji platformy Azure. Otwórz [witryny Azure portal](https://portal.azure.com)i przełącz się do dzierżawy usługi Azure AD, pokazujący subskrypcji platformy Azure, czy chcesz użyć.
 
 ![Przełączanie do dzierżawy usługi Azure AD](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
-## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Znajdź usługi Azure AD B2C w portalu Azure Marketplace
+## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Znajdowanie usługi Azure AD B2C w witrynie Azure Marketplace
 
 Kliknij przycisk **Utwórz zasób** przycisku. W polu **Szukaj w witrynie Marketplace** wprowadź wartość `B2C`.
 
-![Dodaj podświetlony przycisk i tekst usługi Azure AD B2C w wyszukiwania w polu marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Podświetlony przycisk Dodaj i tekst Azure AD B2C w wyszukiwaniu pola witryny marketplace](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 Na liście wyników wybierz **usługi Azure AD B2C**.
 
-![Usługa Azure AD B2C wybranych z listy wyników](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
+![Usługa Azure AD B2C wybrana na liście wyników](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
 Wyświetlane są szczegóły dotyczące usługi Azure AD B2C. Aby rozpocząć konfigurowanie swojej nowej dzierżawy usługi Azure Active Directory B2C, kliknij przycisk **Utwórz**.
 
-Na ekranie tworzenia zasobów wybierz **dzierżawy łącze istniejącej usługi Azure AD B2C do subskrypcji platformy Azure**.
+Na ekranie tworzenia zasobów wybierz **dzierżawy moją subskrypcję systemu Azure łączy istniejące usługi Azure AD B2C**.
 
 ## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>Utwórz zasób usługi Azure AD B2C w ramach subskrypcji platformy Azure
 
-W oknie dialogowym Tworzenie zasobu z listy rozwijanej wybierz opcję dzierżawy usługi Azure AD B2C. Są wyświetlane wszystkie dzierżawcami, które jest administratorem globalnym oraz te, które nie są już połączone z subskrypcją.
+W oknie dialogowym Tworzenie zasobów wybierz dzierżawę usługi Azure AD B2C z listy rozwijanej. Zobaczysz wszystkie dzierżaw, których jesteś administratorem globalnym i te, które nie są już połączone z subskrypcją.
 
 Nazwa zasobu usługi Azure AD B2C zostaną wstępnie wybrane, aby dopasować nazwę domeny dzierżawy usługi Azure AD B2C.
 
 W przypadku subskrypcji należy wybrać aktywną subskrypcją platformy Azure, którego jesteś administratorem.
 
-Wybierz grupę zasobów i lokalizacja grupy zasobów. Zaznaczenie w tym miejscu nie ma wpływu na lokalizację dzierżawy usługi Azure AD B2C, wydajność lub rozliczeń stanu.
+Wybierz grupę zasobów i lokalizacja grupy zasobów. Wybrany na tym etapie nie ma wpływu na lokalizację dzierżawy usługi Azure AD B2C, wydajności lub stan rozliczeń.
 
 ![Utwórz zasób B2C](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Zarządzanie zasobami dzierżawy usługi Azure AD B2C
 
-Po pomyślnym utworzeniu zasobu usługi Azure AD B2C w ramach subskrypcji platformy Azure, powinien zostać wyświetlony nowy zasób typu "Dzierżawy B2C" dodane równolegle z innymi zasobami platformy Azure.
+Po pomyślnym utworzeniu zasobu usługi Azure AD B2C w ramach subskrypcji platformy Azure, powinien zostać wyświetlony nowy zasób typu "Dzierżawy B2C" dodany wraz z innymi zasobami platformy Azure.
 
-Możesz użyć tego zasobu do:
+Możesz użyć tego zasobu, aby:
 
-- Przejdź do subskrypcji, aby przejrzeć informacje związane z rozliczeniami.
+- Przejdź do subskrypcji, aby przejrzeć informacje rozliczeniowe.
 - Przejdź do dzierżawy usługi Azure AD B2C
 - Prześlij żądanie pomocy technicznej
-- Przenoszenie zasobu dzierżawy usługi Azure AD B2C do innej subskrypcji platformy Azure lub innej grupie zasobów.
+- Przenoszenie zasobu dzierżawy usługi Azure AD B2C do innej subskrypcji platformy Azure lub do innej grupy zasobów.
 
-![Ustawienia zasobu B2C](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Ustawienia zasób B2C](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>Znane problemy
 
 ### <a name="csp-subscriptions"></a>Subskrypcje dostawcy usług Kryptograficznych
 
-Obecnie dzierżawy usługi Azure AD B2C **nie** link do subskrypcji dostawcy usług Kryptograficznych.
+Obecnie dzierżawę usługi Azure AD B2C **nie** link do subskrypcji programu CSP.
 
-### <a name="self-imposed-restrictions"></a>Własnym narzuconego ograniczenia.
+### <a name="self-imposed-restrictions"></a>Samodzielnie narzuconego ograniczenia
 
-Użytkownik może ustanowić regionalnych ograniczenia dotyczące tworzenia zasobów platformy Azure. To ograniczenie może uniemożliwić tworzenie zasobów usługi Azure AD B2C. Aby uniknąć, należy złagodzenie tego ograniczenia.
+Użytkownik może ustanowić regionalnych ograniczeń do tworzenia zasobów platformy Azure. To ograniczenie może uniemożliwić tworzenie zasobów usługi Azure AD B2C. Aby rozwiązać problem, może Poluzować to ograniczenie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zakończeniu tych kroków dla każdego dzierżawcy usługi Azure AD B2C, subskrypcji platformy Azure są rozliczane zgodnie z szczegóły bezpośrednie Azure lub umowy Enterprise Agreement.
+Gdy te kroki są ukończony dla każdego dzierżawcy usługi Azure AD B2C, Twoja subskrypcja platformy Azure jest rozliczana zgodnie ze swojego bezpośrednia platformy Azure lub umowy Enterprise Agreement.
 
-W ramach wybranej subskrypcji Azure, możesz przejrzeć użycia i szczegóły płatności. Można także przejrzeć szczegółowe dane użycia każdego dnia raportów za pomocą [użycia raportowania interfejsu API](active-directory-b2c-reference-usage-reporting-api.md).
+W ramach wybranej subskrypcji platformy Azure, możesz przejrzeć użycia i szczegółów rozliczeń. Możesz również przejrzeć szczegóły użycia każdego dnia raportów za pomocą [użycia interfejsu API raportowania](active-directory-b2c-reference-usage-reporting-api.md).

@@ -1,53 +1,53 @@
 ---
 title: Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat dotyczący funkcje dostosowywania interfejsu użytkownika w usłudze Azure Active Directory B2C.
+description: Temat na funkcje dostosowywania interfejsu użytkownika w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 385c13194063761d6449fafa49714d8627f6c6fc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754592"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447057"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Usługa Azure Active Directory B2C: Dostosowywanie interfejsu użytkownika (UI) usługi Azure AD B2C
 
-Środowisko użytkownika jest podstawowym w aplikacji klientów.  Zwiększ bazę swoich klientów przez obsługuje tworzenie użytkownika, korzystając z wygląd i działanie oznakowanie. Usługa Azure Active Directory B2C (Azure AD B2C) umożliwia dostosowanie edycji profilu rejestracji, logowania, i stron z formantem pikseli idealny resetowania hasła.
+Środowisko użytkownika jest najważniejsze klientów, połączonego z aplikacji.  Rozbudowywać bazę danych przy tworzeniu środowisk użytkowników dzięki wygląd i działanie Twojej marki. Usługa Azure Active Directory B2C (Azure AD B2C) umożliwia dostosowanie, profilu rejestracji, logowania, edytowania i stron za pomocą kontrolki doskonałe rozwiązanie pikseli resetowania hasła.
 
 > [!NOTE]
-> Funkcja dostosowania interfejsu użytkownika strony opisane w tym artykule nie dotyczy tylko zasad logowania, jego towarzyszący stronę resetowania hasła i sprawdzania wiadomości e-mail.  Użyj tych funkcji [firmowe funkcji](../active-directory/fundamentals/customize-branding.md) zamiast tego.
+> Funkcja dostosowywania interfejsu użytkownika strony opisanych w tym artykule dotyczy tylko zasad logowania, jego towarzyszący strony resetowania hasła i weryfikacji wiadomości e-mail.  Te funkcje korzystają z [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md) zamiast tego.
 >
-> Podobnie jeśli użytkownik intiates edytowanie profilu zasad *przed* zalogowaniu użytkownik zostanie przekierowany do strony, który można dostosować za pomocą [firmowe funkcji](../active-directory/fundamentals/customize-branding.md).
+> Podobnie jeśli użytkownik intiates zasad profilu edycji *przed* logowania, użytkownik zostanie przekierowany do strony, który można dostosować za pomocą [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md).
 
 W tym artykule omówiono następujące tematy:
 
-* Funkcja dostosowania interfejsu użytkownika strony.
-* Narzędzie do przekazywania zawartości HTML do magazynu obiektów Blob Azure do użycia z funkcją dostosowania interfejsu użytkownika strony.
-* Elementy interfejsu użytkownika używane przez usługę Azure AD B2C, który można dostosować przy użyciu kaskadowych arkuszy stylów (CSS).
-* Najlepsze rozwiązania podczas wykonywania tej funkcji.
+* Funkcja dostosowywania interfejsu użytkownika strony.
+* Narzędzie do przekazywania zawartości HTML do magazynu obiektów Blob Azure do użycia z funkcją dostosowywania interfejsu użytkownika strony.
+* Elementy interfejsu użytkownika korzystają z usługi Azure AD B2C, który można dostosować przy użyciu kaskadowych arkuszy stylów (CSS).
+* Najlepsze rozwiązania w przypadku wykonywania tej funkcji.
 
-## <a name="the-page-ui-customization-feature"></a>Dostosowywanie funkcji interfejsu użytkownika strony
+## <a name="the-page-ui-customization-feature"></a>Funkcja dostosowywania interfejsu użytkownika strony
 
-Można dostosować wygląd i działanie odbiorcy rejestrację, logowanie (zobacz powyżej Uwaga wyjątki dotyczące znakowania), resetowania hasła i edytowanie profilu stron (konfigurując [zasady](active-directory-b2c-reference-policies.md)). Klienci uzyskać bezproblemowe podczas nawigowania między aplikacji i strony obsługiwanych przez usługę Azure AD B2C.
+Można dostosować wygląd i działanie odbiorcy, rejestracji i logowania (zobacz powyżej Uwaga do obsługi wyjątków związanych z znakowania), resetowania hasła i edytowania profilu stron (konfigurując [zasady](active-directory-b2c-reference-policies.md)). Klienci uzyskują nie zakłóca pracy podczas przechodzenia między aplikacją i stron obsługiwanych przez usługę Azure AD B2C.
 
-W przeciwieństwie do innych usług, których opcji interfejsu użytkownika, usługi Azure AD B2C używa proste i nowoczesne podejścia do dostosowania interfejsu użytkownika.
+W przeciwieństwie do innych usług, których opcje interfejsu użytkownika, usługi Azure AD B2C używa prostego i nowoczesne podejście do dostosowywania interfejsu użytkownika.
 
-Oto jak to działa: usługi Azure AD B2C kod w przeglądarce klienta, korzysta z podejścia nowoczesnych o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/).  W czasie wykonywania zawartość została załadowana z adresu URL, który określisz w zasadach. Możesz określić inny adres URL do różnych stron. Po zawartości załadowana z adresu URL jest scalany z fragment kodu HTML z usługi Azure AD B2C, ta strona jest wyświetlana dla klienta. Wszystko, co należy zrobić to:
+Oto jak to działa: usługi Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/).  W czasie wykonywania zawartość zostanie załadowana z adresu URL, który określisz w zasadach. Możesz określić inny adres URL dla różnych stronach. Po zawartości załadowanej z adresu URL jest scalany z fragment kodu HTML wstawione z usługi Azure AD B2C, ta strona jest wyświetlana do klienta. Wszystko, co należy zrobić to:
 
-1. Tworzenie zawartości z pustą poprawnie sformułowanym HTML5 `<div id="api"></div>` element znajduje się gdzieś w `<body>`. Znaczniki ten element gdzie dodaje się zawartość usługi Azure AD B2C.
-1. Udostępnić zawartość w punkcie końcowym HTTPS (z CORS dozwolone). Należy pamiętać, zarówno GET i opcje żądania metody musi być włączona podczas konfigurowania CORS.
-1. Użyj CSS do określania stylu usługi Azure AD B2C Wstawia elementy interfejsu użytkownika.
+1. Tworzenie zawartości z pustą sformułowany HTML5 `<div id="api"></div>` element znajduje się gdzieś w `<body>`. Ten element znaczniki, polegający na wstawieniu zawartości usługi Azure AD B2C.
+1. Hostowanie zawartości w punkcie końcowym protokołu HTTPS (przy użyciu mechanizmu CORS dozwolone). Należy pamiętać, zarówno GET i opcje żądania metody musi być włączona, podczas konfigurowania mechanizmu CORS.
+1. Wykorzystanie arkuszy CSS do określania stylu elementów interfejsu użytkownika, który wstawia usługi Azure AD B2C.
 
 ### <a name="a-basic-example-of-customized-html"></a>Podstawowy przykład dostosowany HTML
 
-Poniższy przykład jest najbardziej podstawowa zawartość HTML, którego można używać do testowania tej możliwości. Użyj [Narzędzie Pomocnik](active-directory-b2c-reference-ui-customization-helper-tool.md) Aby przekazać i skonfigurować tę zawartość w magazynie obiektów Blob platformy Azure. Następnie można sprawdzić, czy podstawowe, stylized przycisków i pola formularza na każdej stronie są wyświetlane i funkcjonalności.
+Poniższy przykład jest najbardziej podstawowym zawartość HTML, która służy do testowania tej funkcji. Użyj [Narzędzie Pomocnik](active-directory-b2c-reference-ui-customization-helper-tool.md) Aby przekazać i skonfigurować tę zawartość w usłudze Azure Blob storage. Możesz sprawdzić, czy podstawowe, stylized przyciski i pola formularza na każdej stronie są wyświetlane i funkcjonalne.
 
 ```HTML
 <!DOCTYPE html>
@@ -61,21 +61,21 @@ Poniższy przykład jest najbardziej podstawowa zawartość HTML, którego możn
 </html>
 ```
 
-## <a name="test-out-the-ui-customization-feature"></a>Przetestowanie dostosowywanie funkcji interfejsu użytkownika
+## <a name="test-out-the-ui-customization-feature"></a>Przetestowania funkcji dostosowywania interfejsu użytkownika
 
-Czy chcesz wypróbować dostosowywanie funkcji interfejsu użytkownika za pomocą naszej próbki kodu HTML i CSS zawartości?  Udostępniliśmy [Narzędzie Pomocnik](active-directory-b2c-reference-ui-customization-helper-tool.md) który przekazuje i konfiguruje przykładowej zawartości w magazynie obiektów Blob platformy Azure.
+Chcesz wypróbować funkcji dostosowywania interfejsu użytkownika, korzystając z naszych przykładowy kod HTML i CSS zawartości?  Udostępniliśmy [Narzędzie Pomocnik](active-directory-b2c-reference-ui-customization-helper-tool.md) która przekazuje i konfiguruje przykładowej zawartości w usłudze Azure Blob storage.
 
 > [!NOTE]
-> Można udostępnić zawartość interfejsu użytkownika dowolnym: na serwerach sieci web, CDN, usług AWS S3, systemy udostępniania plików itp. Tak długo, jak zawartość znajduje się na publicznie dostępny punkt końcowy HTTPS z włączonym mechanizmem CORS, możesz są gotowe. Użyto magazynu obiektów Blob platformy Azure tylko w celach ilustracyjnych.
+> Można hostować swoją zawartość interfejsu użytkownika w dowolnym miejscu: na serwerach sieci web, usługi CDN, AWS S3 systemów do udostępniania plików itp. Tak długo, jak na publicznie dostępnego punktu końcowego HTTPS z włączonym mechanizmem CORS hostowana jest zawartość, jest gotowe. Użyto usługi Azure Blob storage tylko w celach ilustracyjnych.
 >
 
-## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Fragmenty interfejsu użytkownika osadzone przez usługę Azure AD B2C
+## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Fragmenty interfejsu użytkownika, embedded za pomocą usługi Azure AD B2C
 
-W poniższych sekcjach wymieniono fragmenty HTML5, które usługi Azure AD B2C scala `<div id="api"></div>` element znajduje się w treści. **Nie wstawiono tych fragmentów w zawartości HTML 5.** Usługę Azure AD B2C wstawia je w czasie wykonywania. Użyj tych fragmentów jako odwołanie podczas projektowania własnych kaskadowych arkuszy stylów (CSS).
+W poniższych sekcjach wymieniono fragmenty HTML5, które usługi Azure AD B2C, scala `<div id="api"></div>` element znajduje się w zawartości. **Nie należy wstawiać te fragmenty we własnych treściach HTML 5.** Usługi Azure AD B2C wstawia je w czasie wykonywania. Użyj tych fragmentów jako odniesienia podczas projektowania własnych kaskadowych arkuszy stylów (CSS).
 
-### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Fragment do "tożsamości dostawcy wybór page"
+### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Fragment wstawiony "Strona wyboru dostawcy tożsamości"
 
-Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać podczas tworzenia konta lub logowania. Przyciski te obejmują dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (w oparciu nazwa użytkownika lub adres e-mail).
+Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas tworzenia konta lub logowania. Przyciski te obejmują dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail).
 
 ```HTML
 <div id="api" data-name="IdpSelections">
@@ -99,9 +99,9 @@ Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybra
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Fragment do "stronę tworzenia konta lokalnego konta"
+### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Fragment wstawiony "page rejestracji konta lokalnego"
 
-Ta strona zawiera formularza dla lokalnego konta tworzenia konta na podstawie adresu e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru.
+Ta strona zawiera formularza dla lokalnego konta, zarejestruj się na podstawie adresu e-mail lub nazwę użytkownika. Formularz może zawierać innej kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru.
 
 ```HTML
 <div id="api" data-name="SelfAsserted">
@@ -214,13 +214,13 @@ Ta strona zawiera formularza dla lokalnego konta tworzenia konta na podstawie ad
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment do "strony rejestracji społecznościowych konta"
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment wstawiony "page rejestracji konta w sieci społecznościowej"
 
-Ta strona może pojawić się podczas rejestracji przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +.  Jest używany podczas dodatkowe informacje muszą zostać pobrane od użytkownika końcowego za pomocą formularza tworzenia konta. Ta strona jest podobne do konta lokalnego strony zapisów (wyświetlone w poprzedniej sekcji) z wyjątkiem pól wprowadzania hasła.
+Na tej stronie może pojawić się podczas logowania przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +.  Jest używany podczas dodatkowe informacje muszą zostać pobrane od użytkownika końcowego za pomocą formularza rejestracji. Ta strona jest podobna do lokalnego konta rejestracji (pokazane w poprzedniej sekcji) z wyjątkiem pól wprowadzania hasła.
 
-### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Fragment do "Unified rejestracji i logowania strony"
+### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Fragment wstawiony "ujednoliconego tworzenia konta lub logowania page"
 
-Ta strona obsługuje zarówno rejestracji i logowania klientów, którzy mogą używać dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
+Ta strona obsługuje zarówno rejestracji i logowania klientów, którzy mogą korzystać z dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
 
 ```HTML
 <div id="api" data-name="Unified">
@@ -271,9 +271,9 @@ Ta strona obsługuje zarówno rejestracji i logowania klientów, którzy mogą u
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Fragment do "page usługi Multi-Factor authentication"
+### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Fragment wstawiony "page Multi-Factor authentication"
 
-Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania.
+Na tej stronie użytkowników można sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania.
 
 ```HTML
 <div id="api" data-name="Phonefactor">
@@ -315,7 +315,7 @@ Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy uży
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Fragment wstawione na stronę"błąd"
+### <a name="fragment-inserted-into-the-error-page"></a>Fragment wstawiony "Błąd page"
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
@@ -332,27 +332,27 @@ Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy uży
 
 ## <a name="localizing-your-html-content"></a>Lokalizacja zawartości HTML
 
-Istnieją dwa sposoby do zlokalizowania zawartości HTML. Jednym ze sposobów jest włączenie [dostosowywania języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego.  Serwer zawartości można Użyj tego parametru, aby zapewnić dostosowanych stron HTML określonego języka.
+Istnieją dwa sposoby, aby zlokalizować zawartość HTML. Jednym ze sposobów jest włączenie [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md). Włączenie tej funkcji umożliwia usłudze Azure AD B2C do przekazywania parametru Open ID Connect `ui-locales`, do punktu końcowego usługi.  Serwer zawartości ten parametr służy do zapewnienia dostosowanych stron HTML określonego języka.
 
-Alternatywnie można pobierać zawartość z różnych miejsc, oparte na ustawienia regionalne, który jest używany. Punkt końcowy z obsługą CORS można skonfigurować strukturę folderów do hosta zawartości dla określonych języków. Właściwy będzie wywołania w przypadku użyj wartości symbolu wieloznacznego `{Culture:RFC5646}`.  Załóżmy na przykład, że jest to niestandardowej strony identyfikatora URI:
+Alternatywnie możesz ściągnąć zawartość z różnych miejsc, w oparciu o ustawienia regionalne, który jest używany. Punkt końcowy z obsługą mechanizmu CORS można skonfigurować strukturę folderów do hostowania zawartości dla określonych języków. Będzie wywołać właściwy, jeśli używasz wartości symboli wieloznacznych `{Culture:RFC5646}`.  Na przykład załóżmy, że to niestandardowy identyfikator URI strony:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
-Można załadować strony w `fr`. Po stronie ściąga zawartości HTML i CSS, jest ściąganie z:
+Możesz załadować strony w `fr`. Po stronie ściąga zawartość HTML i CSS, ciągnie się od:
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="things-to-remember-when-building-your-own-content"></a>Warto zapamiętać podczas tworzenia własnych zawartości
+## <a name="things-to-remember-when-building-your-own-content"></a>Warto zapamiętać podczas tworzenia własnej zawartości
 
-Jeśli zamierzasz korzystać z funkcji dostosowywania interfejsu użytkownika strony, przejrzyj poniższe najlepsze rozwiązania:
+Jeśli zamierzasz korzystać z funkcji dostosowywania interfejsu użytkownika strony, przejrzyj następujące najlepsze rozwiązania:
 
-* Nie skopiuj zawartość domyślny usługi Azure AD B2C i próbuje zmodyfikować go. Najlepiej tworzenia zawartości HTML5 od początku i użyj domyślnej zawartości jako odwołanie.
-* Ze względów bezpieczeństwa firma Microsoft nie pozwala na obejmują wszystkie JavaScript w zawartości. Większość potrzebnych powinien być dostępny poza pole. Jeśli nie, użyj [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) żądania nowych funkcji.
+* Nie Kopiuj zawartość domyślna usługi Azure AD B2C i modyfikowania go. Najlepiej do tworzenia zawartości języków HTML5 od podstaw i użyj domyślnej zawartości jako odwołanie.
+* Ze względów bezpieczeństwa firma Microsoft nie umożliwiają dołączanie dowolnego języka JavaScript w zawartości. Większość potrzebnych powinny być dostępne gotowe. Jeśli nie, użyj [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) żądanie nowych funkcji.
 * Obsługiwane wersje przeglądarki:
   * Program Internet Explorer 11, 10, krawędzi
   * Ograniczona obsługa programu Internet Explorer 9, 8
-  * Google Chrome 42.0 i powyżej.
-  * Mozilla Firefox 38.0 i powyżej.
-* Upewnij się, że nie zawierają `<form>` tagów w kodzie HTML, jak to będzie zakłócać operacji POST, generowanych przez wprowadzony kod HTML z usługi Azure AD B2C.
+  * Google Chrome 42.0 i nowsze wersje
+  * Mozilla Firefox 38.0 i nowsze wersje
+* Upewnij się, że nie uwzględniają `<form>` tagów w kodzie HTML, jak to będzie zakłócać operacji POST, generowanych przez wprowadzonego kodu HTML z usługi Azure AD B2C.

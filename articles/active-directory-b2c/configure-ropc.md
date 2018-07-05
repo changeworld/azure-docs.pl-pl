@@ -1,68 +1,68 @@
 ---
-title: Konfigurowanie przepływu poświadczenia hasła właściciela zasobu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować przepływ poświadczenia hasła właściciela zasobu w usłudze Azure AD B2C.
+title: Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 073af4a57d55eb8b2f3608482159b57c7b408f3b
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5d68f8fe28b7f029d19a0ed0c03e5324c32f29c0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102604"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446813"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczenia hasła właściciela zasobu w usłudze Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfiguruj przepływ poświadczeń hasła właściciela zasobu w usłudze Azure AD B2C
 
-Przepływu poświadczeń (ROPC) hasło właściciela zasobów jest przepływ standardowego uwierzytelniania OAuth, gdzie aplikacja, znanej także jako uzależnionej wymiany prawidłowe poświadczenia, takie jak nazwa użytkownika i hasło dla tokenu identyfikator, token dostępu i token odświeżania. 
+Zasób przepływ poświadczeń hasła właściciela (ROPC) jest przepływ standardowego uwierzytelniania OAuth, gdzie aplikacji, znany także jako podmiotu zależnego wymienia prawidłowe poświadczenia, takie jak nazwa użytkownika i hasło dla tokenu identyfikator, token dostępu i token odświeżania. 
 
 > [!NOTE]
 > Ta funkcja jest dostępna w wersji zapoznawczej.
 
 W usłudze Azure Active Directory (Azure AD) B2C obsługiwane są następujące opcje:
 
-- **Aplikacja Native Client**: interakcji użytkownika podczas uwierzytelniania się stanie, jeśli kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może zostać przenośnych aplikacja, która jest uruchomiona w macierzystym systemu operacyjnego, takich jak Android, działającego w przeglądarce, takich jak JavaScript.
-- **Przepływ publicznego klienta**: tylko poświadczenia użytkownika, zebranych przez aplikację, są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
-- **Dodawanie nowych oświadczeń**: identyfikator tokenu zawartość do dodawania nowych oświadczeń, można zmienić. 
+- **Natywny klient**: interakcji z użytkownikiem podczas uwierzytelniania się dzieje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikację mobilną, która jest uruchomiona w macierzystym systemu operacyjnego, takich jak Android, lub korzystania z przeglądarki, takich jak JavaScript.
+- **Przepływ publicznych klienta**: tylko poświadczenia użytkownika, zebranych przez aplikację, są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
+- **Dodawanie nowych oświadczeń**: Identyfikator zawartości tokenu, można ją zmienić na dodawania nowych oświadczeń. 
 
-Nie są obsługiwane następujące przepływów:
+Następujące przepływy nie są obsługiwane:
 
-- **Serwer serwer**: system ochrony tożsamości potrzebuje niezawodnej adres IP gromadzone wywołujący (klientami) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Po przekroczeniu progu dynamiczne uwierzytelnianie nie powiodło się, system ochrony tożsamości mogą identyfikować powtarzane adresu IP jako osoba atakująca.
-- **Przepływ poufne klienta**: identyfikator klienta aplikacji jest weryfikowane, ale nie jest sprawdzana poprawność klucz tajny aplikacji.
+- **Serwer serwer**: system ochrony tożsamości musi niezawodne adres IP zgromadzone od elementu wywołującego (natywny klient) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Przekroczeniu progu dynamicznego nieudanych uwierzytelnień systemu ochrony tożsamości może zidentyfikować dopuszczalnych adresów IP jako osoba atakująca.
+- **Przepływ poufne klienta**: identyfikator klienta aplikacji jest weryfikowane, ale nie zostanie zweryfikowana klucz tajny aplikacji.
 
-##  <a name="create-a-resource-owner-policy"></a>Utwórz zasadę właściciel zasobu
+##  <a name="create-a-resource-owner-policy"></a>Utwórz zasady właściciela zasobu
 
-1. Zaloguj się do portalu Azure jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się do witryny Azure portal jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Aby przełączyć się do dzierżawy usługi Azure AD B2C, wybierz katalog usługi B2C w prawym górnym rogu portalu.
-3. W obszarze **zasady**, wybierz pozycję **zasady właściciel zasobu**.
-4. Podaj nazwę zasad, takich jak *ROPC_Auth*, a następnie wybierz **oświadczenia aplikacji**.
-5. Wybrać oświadczenia aplikacji, wymagane dla aplikacji, takich jak *Nazwa wyświetlana*, *adres E-mail*, i *dostawcy tożsamości*.
+3. W obszarze **zasady**, wybierz opcję **zasady właściciela zasobu**.
+4. Podaj nazwę zasad, takich jak *ROPC_Auth*, a następnie wybierz pozycję **oświadczeń aplikacji**.
+5. Wybrać oświadczenia aplikacji, potrzebne dla aplikacji, takich jak *nazwę wyświetlaną*, *adres E-mail*, i *dostawcy tożsamości*.
 6. Wybierz przycisk **OK**, a następnie wybierz pozycję **Utwórz**.
 
-   Zostanie wyświetlony punkt końcowy, np. w tym przykładzie:
+   Następnie zobaczysz punkt końcowy, np. w tym przykładzie:
 
    `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
 
 
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
-1. W ustawieniach B2C wybierz **aplikacji**, a następnie wybierz **Dodaj**.
-2. Wprowadź nazwę aplikacji, takich jak *ROPC_Auth_app*.
-3. Wybierz **nr** dla **interfejsu API sieci Web i aplikacji sieci Web**, a następnie wybierz **tak** dla **Native client**.
-4. Pozostaw wszystkie inne wartości są, a następnie wybierz **Utwórz**.
-5. Wybierz nową aplikację i Zanotuj identyfikator aplikacji do późniejszego użycia.
+1. W ustawieniach usługi B2C należy wybrać **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+2. Wprowadź nazwę aplikacji, taką jak *ROPC_Auth_app*.
+3. Wybierz **nie** dla **interfejsu API sieci Web i aplikacji sieci Web**, a następnie wybierz pozycję **tak** dla **Native client**.
+4. Pozostaw inne wartości, ponieważ są, a następnie wybierz **Utwórz**.
+5. Wybierz nową aplikację i Zanotuj identyfikator aplikacji na potrzeby późniejszego użycia.
 
 ## <a name="test-the-policy"></a>Testowanie zasad
 
-Generuj wywołania interfejsu API za pomocą ulubionych aplikacji programowanie interfejsu API i przejrzyj odpowiedzi do debugowania zasady. Utworzyć wywołania takie informacje w poniższej tabeli jako treści żądania POST:
-- Zastąp  *\<yourtenant.onmicrosoft.com >* o nazwie dzierżawy usługi B2C.
-- Zastąp  *\<B2C_1A_ROPC_Auth >* o pełnej nazwie zasadami poświadczenia hasła właściciela zasobu.
-- Zastąp  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* wraz z Identyfikatorem aplikacji z rejestracji.
+Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplikacji rozwoju i zapoznać się z odpowiedzią do debugowania zasady. Utworzyć takie wywołanie z informacjami w poniższej tabeli jako treść żądania POST:
+- Zastąp  *\<yourtenant.onmicrosoft.com >* nazwą dzierżawy usługi B2C.
+- Zastąp  *\<B2C_1A_ROPC_Auth >* pełną nazwą zasady poświadczeń hasła właściciela zasobu.
+- Zastąp  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* identyfikatorem aplikacji z Twojej rejestracji.
 
 `https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
@@ -70,14 +70,14 @@ Generuj wywołania interfejsu API za pomocą ulubionych aplikacji programowanie 
 | --- | ----- |
 | nazwa użytkownika | leadiocl@outlook.com |
 | hasło | Passxword1 |
-| Typ grant_type | hasło |
+| grant_type | hasło |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| response_type | Token żądaniu |
+| response_type | id_token tokenu |
 
 *Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymywać token odświeżania. 
 
-Rzeczywiste żądania POST wygląda następująco:
+Rzeczywiste żądanie POST wygląda podobnie do poniższego:
 
 ```
 POST /yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
@@ -88,7 +88,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Odpowiedź oznaczająca Powodzenie dostęp w trybie offline wygląda następująco:
+Pomyślnej odpowiedzi z dostęp w trybie offline będzie wyglądać następująco:
 
 ```
 { 
@@ -100,25 +100,25 @@ Odpowiedź oznaczająca Powodzenie dostęp w trybie offline wygląda następują
 } 
 ```
 
-## <a name="redeem-a-refresh-token"></a>Realizowanie token odświeżania
+## <a name="redeem-a-refresh-token"></a>Realizowanie tokenu odświeżania
 
-Utworzyć wywołanie metody POST, tak jak pokazano tutaj informacje w poniższej tabeli jako treść żądania:
+Utworzyć wywołanie metody POST, tak jak pokazano tutaj z informacjami w poniższej tabeli jako treść żądania:
 
 `https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | Klucz | Wartość |
 | --- | ----- |
-| Typ grant_type | refresh_token |
-| response_type | żądaniu |
+| grant_type | refresh_token |
+| response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | zasób | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* i *zasobów* wartości zanotowanych wcześniej jako identyfikator aplikacji. *Refresh_token* jest tokenem otrzymany w już wspomniano połączenia uwierzytelniającego.
+*Client_id* i *zasobów* są wartościami, które zanotowaną wcześniej jako identyfikator aplikacji. *Refresh_token* jest token, który trafiła uwierzytelniającego wymienionych wcześniej.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Wdrożenia z preferowanych natywnego zestawu SDK lub Użyj uwierzytelniania aplikacji
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Wdrożenia przy użyciu preferowanego natywnym zestawem SDK lub Użyj uwierzytelniania aplikacji
 
-Wdrożenia usługi Azure AD B2C spełnia standardy protokołu OAuth 2.0 na potrzeby poświadczenia hasła właściciela zasobu publicznego klienta oraz powinien być zgodny z klientem większość zestawów SDK. Przetestowano tego przepływu w szerokim zakresie, w środowisku produkcyjnym z AppAuth dla systemu iOS i AppAuth dla systemu Android. Aby uzyskać najnowsze informacje, zobacz [natywny zestaw SDK aplikacji OAuth 2.0 i OpenID Connect implementacja nowoczesnych najlepsze rozwiązania](https://appauth.io/).
+Wdrożenie usługi Azure AD B2C spełnia standardy poświadczenia hasła właściciela zasobu publicznych klienta OAuth 2.0 i powinien być zgodny z większość zestawów SDK klienta. Przetestowaliśmy ten przepływ w szerokim zakresie, w środowisku produkcyjnym za pomocą AppAuth dla systemu iOS i AppAuth dla systemu Android. Aby uzyskać najnowsze informacje, zobacz [natywnego zestawu SDK aplikacji OAuth 2.0 i OpenID Connect, implementacja nowoczesnych najlepsze rozwiązania](https://appauth.io/).
 
 Pobierz przykłady pracy, które zostały skonfigurowane do użycia z usługą Azure AD B2C z serwisu GitHub, [dla systemu Android](https://aka.ms/aadb2cappauthropc) i [dla systemu iOS](https://aka.ms/aadb2ciosappauthropc).
 

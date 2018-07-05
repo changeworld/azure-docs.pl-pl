@@ -1,6 +1,6 @@
 ---
-title: Instalacja sterownika N-series usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft
-description: Jak skonfigurować wersji sterowników procesora GPU NVIDIA dla maszyn wirtualnych N-series systemem Linux na platformie Azure
+title: Instalacja sterowników serii N usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft
+description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -13,41 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/29/2018
+ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c8f043fdcaa7554d73be6ac3928a37630baab845
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654287"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450098"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych N-series systemem Linux
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
-Aby skorzystać z możliwości procesora GPU N-series maszyny wirtualne platformy Azure systemem Linux, muszą zostać zainstalowane sterowniki grafiki NVIDIA. Ten artykuł zawiera kroki konfiguracji sterownika po wdrożeniu maszyny Wirtualnej N serii. Informacje o instalacji sterowników jest również dostępny do [maszyn wirtualnych systemu Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aby móc korzystać z możliwości procesora GPU platformy Azure maszyn wirtualnych serii N z systemem Linux, muszą być zainstalowane sterowniki procesora GPU firmy NVIDIA. [Rozszerzenia sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub siatki na maszynie Wirtualnej serii N. Zainstaluj lub zarządzać rozszerzenia za pomocą witryny Azure portal lub narzędzi, takich jak szablony wiersza polecenia platformy Azure lub usługi Azure Resource Manager. Zobacz [dokumentację dotyczącą rozszerzeń sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) obsługiwane dystrybucje i kroki związane z wdrażaniem.
 
-Dane techniczne, wielkości magazynu i dysku szczegóły wirtualna N-series, zobacz [rozmiarów maszyn wirtualnych systemu Linux GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Jeśli zdecydujesz się zainstalować sterowniki procesora GPU ręcznie, ten artykuł zawiera obsługiwane dystrybucje, sterowników i kroki instalacji i weryfikacji. Informacje o konfiguracji ręcznej sterownik jest również dostępna dla [maszyn wirtualnych Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+Specyfikacje, pojemności magazynu i dysku szczegółów maszyn wirtualnych serii N dla [rozmiarów maszyn wirtualnych systemu Linux GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
 ## <a name="install-cuda-drivers-on-n-series-vms"></a>Zainstaluj sterowniki CUDA na maszynach wirtualnych serii N
 
-Poniżej przedstawiono kroki, aby zainstalować sterowniki CUDA z zestawu narzędzi CUDA NVIDIA na maszynach wirtualnych N serii. 
+Poniżej przedstawiono kroki, aby zainstalować sterowniki CUDA w zestawie narzędzi programu NVIDIA CUDA, na maszynach wirtualnych serii N. 
 
 
-Deweloperzy C i C++ może opcjonalnie zainstalować pełny zestaw narzędzi do tworzenia aplikacji przyspieszony procesora GPU. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+Programiści C i C++ może opcjonalnie zainstalować pełny zestaw narzędzi do kompilowania aplikacji accelerated procesora GPU. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-Aby zainstalować sterowniki CUDA, należy utworzyć połączenie SSH na każdej maszynie Wirtualnej. Aby zweryfikować, że system ma obsługą CUDA procesora GPU, uruchom następujące polecenie:
+Aby zainstalować sterowniki CUDA, Utwórz połączenie SSH do każdej maszyny Wirtualnej. Aby sprawdzić, czy system ma obsługą CUDA procesora GPU, uruchom następujące polecenie:
 
 ```bash
 lspci | grep -i NVIDIA
 ```
-Zostaną wyświetlone dane wyjściowe podobne do poniższego przykładu (pokazywanie karty NVIDIA tesla — K80):
+Zostanie wyświetlone dane wyjściowe podobne do poniższego przykładu (wyświetlanie karty procesory GPU NVIDIA Tesla K80):
 
 ![dane wyjściowe polecenia lspci](./media/n-series-driver-setup/lspci.png)
 
-Następnie uruchom instalację polecenia specyficzne dla dystrybucji.
+Następnie polecenia uruchamiania instalacji specyficzne dla Twojej dystrybucji.
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -71,17 +73,17 @@ Następnie uruchom instalację polecenia specyficzne dla dystrybucji.
 
   Instalacja może zająć kilka minut.
 
-2. Opcjonalnie zainstalować pełny zestaw CUDA, wpisz:
+2. Opcjonalnie można zainstalować pełny zestaw narzędzi CUDA, wpisz:
 
   ```bash
   sudo apt-get install cuda
   ```
 
-3. Ponowny rozruch maszyny Wirtualnej, a następnie przejdź do weryfikacji instalacji.
+3. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
 #### <a name="cuda-driver-updates"></a>Aktualizacje sterowników CUDA
 
-Firma Microsoft zaleca okresowej aktualizacji sterowników CUDA po wdrożeniu.
+Firma Microsoft zaleca, okresowo aktualizować CUDA sterowników po wdrożeniu.
 
 ```bash
 sudo apt-get update
@@ -95,9 +97,9 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS lub Red Hat Enterprise Linux 7.3 lub 7.4
+### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS i Red Hat Enterprise Linux w wersji 7.3 lub wersji 7.4
 
-1. Zaktualizuj jądra.
+1. Zaktualizuj jądro.
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -118,7 +120,7 @@ sudo reboot
   sudo reboot
   ```
  
-3. Połącz się ponownie do maszyny Wirtualnej i kontynuować instalację za pomocą następujących poleceń:
+3. Ponowne łączenie z maszyną wirtualną i kontynuować instalację za pomocą następujących poleceń:
 
   ```bash
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -138,45 +140,45 @@ sudo reboot
 
   Instalacja może zająć kilka minut. 
 
-4. Opcjonalnie zainstalować pełny zestaw CUDA, wpisz:
+4. Opcjonalnie można zainstalować pełny zestaw narzędzi CUDA, wpisz:
 
   ```bash
   sudo yum install cuda
   ```
 
-5. Ponowny rozruch maszyny Wirtualnej, a następnie przejdź do weryfikacji instalacji.
+5. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
-### <a name="verify-driver-installation"></a>Sprawdzić, czy instalacja sterownika
+### <a name="verify-driver-installation"></a>Weryfikacja instalacji sterowników
 
-Się zapytanie o stan urządzenia procesora GPU, SSH maszyny Wirtualnej i uruchom [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane ze sterownikiem narzędzie wiersza polecenia. 
+Zapytanie procesora GPU stanie urządzenia, SSH do maszyn wirtualnych i uruchamiany [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane ze sterownikiem narzędzie wiersza polecenia. 
 
-Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następującego. Należy pamiętać, że **GPU Util** przedstawia 0%, chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Wersja sterownika, a szczegóły GPU mogą być inne niż te wyświetlane.
+Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następujących. Należy pamiętać, że **GPU Util** pokazuje 0%, chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Twoja wersja sterownika i szczegóły procesora GPU mogą różnić się od wyświetlonych.
 
 ![Stan urządzenia NVIDIA](./media/n-series-driver-setup/smi.png)
 
 ## <a name="rdma-network-connectivity"></a>Połączenie sieciowe RDMA
 
-Połączenie sieciowe RDMA można włączyć dla z funkcją RDMA N serii maszyn wirtualnych, takie jak NC24r wdrożone w tym samym zestawie dostępności lub w grupie pojedynczego umieszczania w zestawie skalowania maszyn wirtualnych. Sieć RDMA obsługuje ruch interfejsu Message (Passing) dla aplikacji działających z Intel MPI 5.x lub nowszej wersji. Wykonaj dodatkowe wymagania:
+Łączności sieciowej RDMA można włączyć na maszynach wirtualnych z serii N funkcją RDMA, takie jak NC24r wdrożonych w tym samym zestawie dostępności lub w pojedynczej grupy umieszczania w zestawie skalowania maszyn wirtualnych. Sieć RDMA obsługuje ruch interfejsu przekazywania komunikatów (MPI) dla aplikacji uruchamianych przy użyciu Intel MPI 5.x lub nowszej wersji. Wykonaj dodatkowe wymagania:
 
 ### <a name="distributions"></a>Dystrybucje
 
-Wdrożenie funkcją RDMA N serii maszyn wirtualnych z jednego z obrazów w portalu Azure Marketplace, obsługująca łączność RDMA na maszynach wirtualnych N-series:
+Wdrażanie z obsługą dostępu RDMA maszyny wirtualne z serii N z jednego z obrazów w portalu Azure Marketplace obsługuje połączenia RDMA na maszynach wirtualnych serii N:
   
-* **Ubuntu 16.04 LTS** — Konfigurowanie sterowniki RDMA na maszynie Wirtualnej i rejestrowanie z Intel, aby pobrać Intel MPI:
+* **Ubuntu 16.04 LTS** — Konfigurowanie sterowników RDMA na maszynie Wirtualnej i zarejestrowanie firmy Intel, Intel MPI pobierania:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **Na podstawie centOS 7.4 HPC** -sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
+* **Opartych na systemie centOS 7.4 HPC** — sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>Zainstaluj sterowniki siatki na maszynach wirtualnych z wirtualizacją sieci serii
+## <a name="install-grid-drivers-on-nv-series-vms"></a>Zainstaluj sterowniki siatki na maszyny wirtualne z serii NV
 
-Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualizacją sieci serii, utworzyć połączenie SSH na każdej maszynie Wirtualnej i wykonaj procedurę dystrybucji systemu Linux. 
+Aby zainstalować sterowniki NVIDIA GRID na maszyny wirtualne z serii NV, Utwórz połączenie SSH do każdej maszyny Wirtualnej, a następnie postępuj zgodnie z instrukcjami dla Twojej dystrybucji systemu Linux. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Uruchom `lspci` polecenia. Sprawdź, czy karta NVIDIA M60 lub karty są widoczne jako PCI urządzenia.
+1. Uruchom `lspci` polecenia. Sprawdź, czy karty M60 firmy NVIDIA lub kart są widoczne jako urządzenia PCI.
 
-2. Zainstaluj aktualizacje.
+2. Instalowanie aktualizacji.
 
   ```bash
   sudo apt-get update
@@ -187,7 +189,7 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Wyłącz Nouveau sterownik jądra, który jest niezgodny ze sterownikiem NVIDIA. (Tylko użyć sterownika NVIDIA na maszynach wirtualnych z wirtualizacją sieci). W tym celu należy utworzyć plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartość:
+3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na maszynach wirtualnych z serii NV). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
   ```
   blacklist nouveau
@@ -196,13 +198,13 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
   ```
 
 
-4. Ponowny rozruch maszyny Wirtualnej i ponownie. Serwer X zakończenia:
+4. Ponowne uruchomienie maszyny Wirtualnej i ponownie. Serwer X zakończenia:
 
   ```bash
   sudo systemctl stop lightdm.service
   ```
 
-5. Pobieranie i instalowanie sterownika siatki:
+5. Pobierz i zainstaluj sterownik siatki:
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -212,25 +214,25 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
   sudo ./NVIDIA-Linux-x86_64-grid.run
   ``` 
 
-6. Gdy pojawi się monit Czy chcesz uruchomić narzędzie nvidia xconfig aktualizacji X pliku konfiguracji, wybierz **tak**.
+6. Gdy pojawi się prośba czy chcesz uruchomić narzędzie nvidia xconfig, aby zaktualizować plik konfiguracji X, wybierz **tak**.
 
-7. Po zakończeniu instalacji, skopiuj /etc/nvidia/gridd.conf.template do nowego gridd.conf pliku w lokalizacji/etc/nvidia /
+7. Po zakończeniu instalacji należy skopiować /etc/nvidia/gridd.conf.template do nowych gridd.conf pliku w lokalizacji/etc/nvidia /
 
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
 
-8. Dodaj następujący kod do `/etc/nvidia/gridd.conf`:
+8. Dodaj następujące polecenie, aby `/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. Ponowny rozruch maszyny Wirtualnej, a następnie przejdź do weryfikacji instalacji.
+9. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
 
-### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS lub Red Hat Enterprise Linux 
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS i Red Hat Enterprise Linux 
 
-1. Jądra i DKMS aktualizacji.
+1. Zaktualizuj jądro i DKMS.
  
   ```bash  
   sudo yum update
@@ -242,7 +244,7 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
   sudo yum install dkms
   ```
 
-2. Wyłącz Nouveau sterownik jądra, który jest niezgodny ze sterownikiem NVIDIA. (Tylko użyć sterownika NVIDIA na maszynach wirtualnych z wirtualizacją sieci). W tym celu należy utworzyć plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartość:
+2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na maszynach wirtualnych z serii NV). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
   ```
   blacklist nouveau
@@ -250,7 +252,7 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
   blacklist lbm-nouveau
   ```
  
-3. Ponowny rozruch maszyny Wirtualnej, połącz się ponownie i zainstaluj najnowszą [usługi integracji systemu Linux dla funkcji Hyper-V i Azure](https://www.microsoft.com/download/details.aspx?id=55106).
+3. Uruchom ponownie maszynę Wirtualną, połącz się ponownie i zainstaluj najnowszą wersję [usługi integracji systemu Linux dla funkcji Hyper-V i platformą Azure](https://www.microsoft.com/download/details.aspx?id=55106).
  
   ```bash
   wget https://aka.ms/lis
@@ -265,9 +267,9 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
 
   ```
  
-4. Ponowne łączenie się z maszyny Wirtualnej i uruchom `lspci` polecenia. Sprawdź, czy karta NVIDIA M60 lub karty są widoczne jako PCI urządzenia.
+4. Ponownie połączyć się z maszyną Wirtualną i uruchom `lspci` polecenia. Sprawdź, czy karty M60 firmy NVIDIA lub kart są widoczne jako urządzenia PCI.
  
-5. Pobieranie i instalowanie sterownika siatki:
+5. Pobierz i zainstaluj sterownik siatki:
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -276,33 +278,33 @@ Aby zainstalować sterowniki NVIDIA siatki na maszynach wirtualnych z wirtualiza
 
   sudo ./NVIDIA-Linux-x86_64-grid.run
   ``` 
-6. Gdy pojawi się monit Czy chcesz uruchomić narzędzie nvidia xconfig aktualizacji X pliku konfiguracji, wybierz **tak**.
+6. Gdy pojawi się prośba czy chcesz uruchomić narzędzie nvidia xconfig, aby zaktualizować plik konfiguracji X, wybierz **tak**.
 
-7. Po zakończeniu instalacji, skopiuj /etc/nvidia/gridd.conf.template do nowego gridd.conf pliku w lokalizacji/etc/nvidia /
+7. Po zakończeniu instalacji należy skopiować /etc/nvidia/gridd.conf.template do nowych gridd.conf pliku w lokalizacji/etc/nvidia /
   
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
   
-8. Dodaj następujący kod do `/etc/nvidia/gridd.conf`:
+8. Dodaj następujące polecenie, aby `/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. Ponowny rozruch maszyny Wirtualnej, a następnie przejdź do weryfikacji instalacji.
+9. Uruchom ponownie maszynę Wirtualną, a następnie przejść do weryfikowania instalacji usług.
 
-### <a name="verify-driver-installation"></a>Sprawdzić, czy instalacja sterownika
+### <a name="verify-driver-installation"></a>Weryfikacja instalacji sterowników
 
 
-Się zapytanie o stan urządzenia procesora GPU, SSH maszyny Wirtualnej i uruchom [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane ze sterownikiem narzędzie wiersza polecenia. 
+Zapytanie procesora GPU stanie urządzenia, SSH do maszyn wirtualnych i uruchamiany [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane ze sterownikiem narzędzie wiersza polecenia. 
 
-Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następującego. Należy pamiętać, że **GPU Util** przedstawia 0%, chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Wersja sterownika, a szczegóły GPU mogą być inne niż te wyświetlane.
+Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następujących. Należy pamiętać, że **GPU Util** pokazuje 0%, chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Twoja wersja sterownika i szczegóły procesora GPU mogą różnić się od wyświetlonych.
 
 ![Stan urządzenia NVIDIA](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11 serwera
-Jeśli potrzebujesz X11 serwera dla połączenia zdalne z wirtualizacją sieci maszyny Wirtualnej, [x11vnc](http://www.karlrunge.com/x11vnc/) jest zalecana, ponieważ umożliwia przyspieszanie sprzętowe grafiki. BusID urządzenia M60 należy dodać ręcznie do pliku xconfig (`etc/X11/xorg.conf` na Ubuntu 16.04 LTS, `/etc/X11/XF86config` CentOS 7.3 lub Red Hat Enterprise Server 7.3). Dodaj `"Device"` sekcji podobny do następującego:
+Jeśli potrzebujesz X11 serwera dla połączeń zdalnych na maszynie Wirtualnej NV [x11vnc](http://www.karlrunge.com/x11vnc/) jest zalecana, ponieważ umożliwia przyspieszanie sprzętowe grafiki. BusID urządzenia M60 należy ręcznie dodać do X11 pliku konfiguracji (zazwyczaj `etc/X11/xorg.conf`). Dodaj `"Device"` podobne do następujących sekcji:
  
 ```
 Section "Device"
@@ -310,33 +312,40 @@ Section "Device"
     Driver         "nvidia"
     VendorName     "NVIDIA Corporation"
     BoardName      "Tesla M60"
-    BusID          "your-BusID:0:0:0"
+    BusID          "PCI:0@your-BusID:0:0"
 EndSection
 ```
  
-Ponadto aktualizacji z `"Screen"` sekcji, aby korzystać z tego urządzenia.
+Ponadto należy zaktualizować swoje `"Screen"` sekcji, aby używać tego urządzenia.
  
-Dziesiętnego BusID znajduje się przez uruchomienie
+Separatora dziesiętnego BusID można znaleźć, uruchamiając
 
 ```bash
-echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-BusID można zmienić, gdy maszyny Wirtualnej pobiera przydzielić lub ponownego uruchomienia. W związku z tym warto utworzyć skrypt, aby zaktualizować BusID w X11 konfiguracji po ponownym uruchomieniu maszyny Wirtualnej. Na przykład utworzyć skrypt o nazwie `busidupdate.sh` (lub inną wybraną nazwę wybierzesz) z następującą zawartość:
+BusID można zmienić, gdy na maszynie Wirtualnej pobiera ponownie przydzielane lub ponownie uruchomiony. W związku z tym, możesz chcieć utworzyć skrypt, aby zaktualizować BusID w X11 Konfiguracja w przypadku ponownego rozruchu maszyny Wirtualnej. Na przykład utworzyć skrypt o nazwie `busidupdate.sh` (lub inną wybraną nazwę wybranej) z zawartością podobny do następującego:
 
 ```bash 
 #!/bin/bash
-BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+XCONFIG="/etc/X11/xorg.conf"
+OLDBUSID=`awk '/BusID/{gsub(/"/, "", $2); print $2}' ${XCONFIG}`
+NEWBUSID=`nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'`
 
-if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+if [[ "${OLDBUSID}" == "${NEWBUSID}" ]] ; then
+        echo "NVIDIA BUSID not changed - nothing to do"
+else
+        echo "NVIDIA BUSID changed from \"${OLDBUSID}\" to \"${NEWBUSID}\": Updating ${XCONFIG}" 
+        sed -e 's|BusID.*|BusID          '\"${NEWBUSID}\"'|' -i ${XCONFIG}
+fi
 ```
 
-Następnie należy utworzyć wpis dla skryptu aktualizacji w `/etc/rc.d/rc3.d` , skrypt zostanie wywołany jako główny na rozruchu.
+Następnie należy utworzyć wpis dla skryptu aktualizacji w `/etc/rc.d/rc3.d` , skrypt jest wywoływana jako główny urząd certyfikacji na rozruch.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-* Można ustawić w trybie trwałości `nvidia-smi` , dane wyjściowe polecenia jest szybsze, gdy trzeba karty zapytania. Aby ustawić tryb trwałości, należy wykonać `nvidia-smi -pm 1`. Należy pamiętać, że jeśli maszyna wirtualna zostanie ponownie uruchomiony, ustawienie trybu zniknie. Ustawienie trybu do wykonania podczas uruchamiania zawsze można skryptu.
+* Można ustawić w trybie trwałości `nvidia-smi` , dane wyjściowe polecenia jest szybsza, kiedy trzeba karty zapytania. Aby ustawić tryb trwałości, należy wykonać `nvidia-smi -pm 1`. Należy pamiętać, że jeśli maszyna wirtualna zostanie ponownie uruchomiony, ustawienie trybu stanie się niepotrzebna. Można zawsze skryptu ustawienie trybu do wykonywania podczas uruchamiania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby przechwycić obraz maszyny Wirtualnej systemu Linux z zainstalowanych sterowników NVIDIA, zobacz [generalize i przechwytywaniu maszyny wirtualnej systemu Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Aby przechwycić obraz maszyny Wirtualnej systemu Linux zainstalowane sterowniki NVIDIA, zobacz [jak uogólnić i przechwycić maszynę wirtualną z systemem Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

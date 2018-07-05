@@ -1,6 +1,6 @@
 ---
-title: Używanie metadanych w bazy wiedzy wraz z interfejsu API GenerateAnswer | Dokumentacja firmy Microsoft
-description: Przy użyciu metadanych z interfejsem API GenerateAnswer
+title: Używanie metadanych w wiedzy wraz z interfejsem API GenerateAnswer | Dokumentacja firmy Microsoft
+description: Metadane przy użyciu GenerateAnswer interfejsu API
 services: cognitive-services
 author: pchoudhari
 manager: rsrikan
@@ -9,60 +9,60 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 94e3632884d7033971ff1c45b455afb9a09ee798
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 8ad51edde1fc90329e908f8150aadcbf4f401126
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35356043"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448224"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Przy użyciu metadanych i interfejsu API GenerateAnswer
 
-Maker — strona główna umożliwia dodanie metadanych, w postaci pary klucz wartość do Twojej zestawy pytań i odpowiedzi. Te informacje można na różne sposoby, takie jak filtrowanie wyników zapytania użytkownika, zwiększanie wyniku niektórych wyników i przechowywanie dodatkowe informacje, które mogą być używane w kolejnych konwersacji. Aby uzyskać więcej informacji, zobacz [wiedzy](../Concepts/knowledge-base.md).
+Narzędzie QnA Maker umożliwia dodanie metadanych, w postaci par klucz wartość do zestawów z pytań i odpowiedzi. Te informacje mogą służyć na różne sposoby, takie jak filtrowanie wyników zapytania użytkowników, zwiększania wyniku niektórych wyników i przechowywanie dodatkowe informacje, które mogą być używane w kolejnych konwersacji. Aby uzyskać więcej informacji, zobacz [wiedzy](../Concepts/knowledge-base.md).
 
-## <a name="qna-entity"></a>Jednostki — strona główna
+## <a name="qna-entity"></a>Jednostki pytań i odpowiedzi
 
-Najpierw ważne jest zrozumienie, jak Maker — strona główna przechowuje dane pytań i odpowiedzi. Na poniższej ilustracji przedstawiono jednostki — strona główna:
+Najpierw ważne jest zrozumienie, jak usługa QnA Maker przechowuje dane pytań i odpowiedzi. Na poniższej ilustracji przedstawiono jednostki pytań i odpowiedzi:
 
-![Jednostki — strona główna](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
+![Jednostki pytań i odpowiedzi](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
 
-Każdy obiekt — strona główna ma identyfikator unikatowy i trwałe. Identyfikator może służyć do wprowadzania aktualizacji danego podmiotu — strona główna.
+Każda jednostka pytań i odpowiedzi ma identyfikator unikatowy i trwałe. Identyfikator może służyć do wykonywania aktualizacji danego podmiotu pytań i odpowiedzi.
 
 ## <a name="generateanswer-api"></a>GenerateAnswer interfejsu API
 
-Za pomocą interfejsu API GenerateAnswer w aplikacji lub Bot zapytania bazy wiedzy z pytaniem użytkownika, aby uzyskać najlepsze dopasowanie z zestawów pytań i odpowiedzi.
+Zapytanie bazy wiedzy przy użyciu pytanie użytkownika, aby uzyskać najlepsze dopasowanie z zestawów pytań i odpowiedzi za pomocą interfejsu API GenerateAnswer w aplikacji lub Botów.
 
 ### <a name="generateanswer-endpoint"></a>Punkt końcowy GenerateAnswer
 
-Po opublikowaniu bazy wiedzy, albo z [Maker — strona główna portalu](https://www.qnamaker.ai), lub za pomocą [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), można uzyskać szczegółowe informacje o GenerateAnswer punktu końcowego.
+Po opublikowaniu wiedzy, albo z [portalu narzędzia QnA Maker](https://www.qnamaker.ai), lub za pomocą [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), możesz uzyskać szczegółowe informacje o punkcie końcowym usługi GenerateAnswer.
 
-Aby uzyskać szczegóły punktu końcowego:
+Aby uzyskać informacje dotyczące punktu końcowego:
 1. Zaloguj się do [ https://www.qnamaker.ai ](https://www.qnamaker.ai).
-2. W **Moje baz wiedzy**, kliknij **kod widoku** dla bazy wiedzy.
-![Moje baz wiedzy](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
-3. Pobierz szczegóły GenerateAnswer punktu końcowego.
+2. W **moich baz wiedzy**, kliknij pozycję **Wyświetl kod** dla Twojej bazy wiedzy.
+![Moje bazy wiedzy](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+3. Pobranie szczegółowych informacji o GenerateAnswer punktu końcowego.
 
 ![szczegóły punktu końcowego](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-Można także uzyskać szczegóły punktu końcowego z **ustawienia** kartę bazy wiedzy.
+Możesz też pobrać Twoje szczegóły punktu końcowego z **ustawienia** kartę bazy wiedzy.
 
 ### <a name="generateanswer-request"></a>Żądanie GenerateAnswer
 
-GenerateAnswer zostanie wywołana za pomocą żądania HTTP POST. Przykładowy kod przedstawia sposób wywołania GenerateAnswer, zobacz [quickstarts](../quickstarts/csharp.md).
+Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy kod przedstawia sposób wywołania GenerateAnswer, zobacz [przewodników Szybki Start](../quickstarts/csharp.md).
 
-- **Adres URL żądania**: punktu końcowego Maker https://{QnA} /knowledgebases/ {identyfikator bazy wiedzy knowledge base} / generateAnswer
+- **Adres URL żądania**: punkt końcowy Maker https://{QnA} /knowledgebases/ {identyfikator bazy wiedzy knowledge base} / generateAnswer
 
 - **Parametry żądania**: 
-    - **Identyfikator bazy wiedzy Knowledge base** (ciąg): identyfikator GUID dla bazy wiedzy.
-    - **Punkt końcowy QnAMaker** (ciąg): Nazwa hosta punktu końcowego wdrożone w ramach subskrypcji platformy Azure.
+    - **Identyfikator bazy wiedzy** (ciąg): identyfikator GUID dla Twojej bazy wiedzy.
+    - **Punkt końcowy interfejsu QnAMaker** (ciąg): Nazwa hosta punktu końcowego, wdrożonych w ramach subskrypcji platformy Azure.
 - **Nagłówki żądania**
-    - **Content-Type** (ciąg): typ nośnika treści wysyłane do interfejsu API.
-    - **Autoryzacji** (ciąg): klucz punktu końcowego.
+    - **Content-Type** (ciąg): typ nośnika treści wysłanej do interfejsu API.
+    - **Autoryzacja** (ciąg): usługi klucza punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Treść żądania**
-    - **pytanie** (ciąg): pytanie użytkownika, aby być zapytanie względem bazy wiedzy.
-    - **TOP** (opcjonalne, liczba całkowita): liczba wyników uporządkowanej według rangi do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.
-    - **Identyfikator userId** (opcjonalne, ciąg): Unikatowy identyfikator do identyfikacji użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmów.
-    - **strictFilters** (opcjonalne, ciąg): Jeśli zostanie określona, informuje Maker — strona główna można udzielać tylko odpowiedzi, które mają określonych metadanych. Aby uzyskać więcej informacji zobacz poniżej.
+    - **pytanie** (ciąg): pytanie użytkownika, aby być wyszukiwane względem bazy wiedzy.
+    - **TOP** (opcjonalne, liczba całkowita): liczba rangi wyników do uwzględnienia w danych wyjściowych. Wartość domyślna to 1.
+    - **Identyfikator userId** (opcjonalnie, ciąg): Unikatowy identyfikator, aby zidentyfikować użytkownika. Ten identyfikator będą rejestrowane w dziennikach rozmowy.
+    - **strictFilters** (opcjonalnie, ciąg): Jeśli zostanie określony, informuje narzędzie QnA Maker, aby zwrócić tylko odpowiedzi, które mają określonych metadanych. Aby uzyskać więcej informacji zobacz poniżej.
     ```json
     {
         "question": "qna maker and luis",
@@ -78,14 +78,14 @@ GenerateAnswer zostanie wywołana za pomocą żądania HTTP POST. Przykładowy k
 
 ### <a name="generateanswer-response"></a>GenerateAnswer odpowiedzi
 
-- **Odpowiedź 200** -pomyślnego połączenia zwraca wynik zapytania. Odpowiedź zawiera następujące pola:
-    - **odpowiedzi** — Lista odpowiedzi na zapytanie użytkownika, posortowane według kolejności Klasyfikacja wynik.
-        - **wynik**: wynik klasyfikację od 0 do 100.
-        - **pytania**: pytania podanego przez użytkownika.
-        - **źródło**: nazwę źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedzi.
+- **Odpowiedź 200** -pomyślnego wywołania zwraca wynik zapytania. Odpowiedź zawiera następujące pola:
+    - **odpowiedzi** — Lista odpowiedzi na zapytanie użytkownika, sortowane malejąco według klasyfikacji wynik.
+        - **wynik**: wynik klasyfikacji od 0 do 100.
+        - **pytania dotyczące**: pytania, dostarczone przez użytkownika.
+        - **źródło**: nazwę źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.
         - **metadane**: metadane skojarzone z odpowiedzią.
-            - Nazwa: Nazwa metadanych. (ciąg, długość maksymalna: 100, wymagane)
-            - wartość: wartość metadanych. (ciąg, długość maksymalna: 100, wymagane)
+            - Nazwa: Nazwa metadanych. (string, długość maksymalna: 100, wymagane)
+            - wartość: wartość metadanych. (string, długość maksymalna: 100, wymagane)
         - **Identyfikator**: Unikatowy identyfikator przypisany do odpowiedzi.
     ```json
     {
@@ -111,13 +111,13 @@ GenerateAnswer zostanie wywołana za pomocą żądania HTTP POST. Przykładowy k
 
 ## <a name="metadata-example"></a>Przykład metadanych
 
-Należy wziąć pod uwagę poniżej restauracji w Hyderabad często zadawane pytania dotyczące danych. Dodaj metadane do bazy wiedzy, klikając ikonę Koło zębate.
+Należy wziąć pod uwagę poniższe dane — często zadawane pytania dotyczące restauracje w Hyderabad. Dodaj metadane do bazy wiedzy, klikając ikonę koła zębatego.
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters"></a>Filtrowanie wyników z strictFilters
+### <a name="filter-results-with-strictfilters"></a>Filtrowanie wyników za pomocą strictFilters
 
-Należy wziąć pod uwagę pytanie użytkownika "Gdy jest to hoteli Zamknij?" której celem jest domniemane dla restauracji "Paradise."
+Należy wziąć pod uwagę pytanie użytkownika "Podczas odbywa się to hotelu Zamknij?" których celem jest implikowane dla restauracji "Paradise."
 
 Ponieważ wyniki są wymagane tylko w przypadku restauracji "Paradise", można ustawić filtr w wywołaniu GenerateAnswer na metadanych "Restauracji Name", w następujący sposób.
 
@@ -134,7 +134,7 @@ Ponieważ wyniki są wymagane tylko w przypadku restauracji "Paradise", można u
 ```
 
 ### <a name="keep-context"></a>Zachowaj kontekstu
-Odpowiedź GenerateAnswer zawiera odpowiednie metadane zestawu zgodnych pytanie/odpowiedzi, w następujący sposób.
+Odpowiedź GenerateAnswer zawiera odpowiednie informacje o metadanych zestawu dopasowane/odpowiedź na pytanie, w następujący sposób.
 
 ```json
 {
@@ -162,7 +162,7 @@ Odpowiedź GenerateAnswer zawiera odpowiednie metadane zestawu zgodnych pytanie/
 }
 ```
 
-Te informacje może służyć do rejestrowania kontekście poprzedniej konwersacji do użycia w późniejszym konwersacji. 
+Te informacje może służyć do rejestrowania kontekście poprzedniej rozmowy dla danego Użyj nowszego konwersacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

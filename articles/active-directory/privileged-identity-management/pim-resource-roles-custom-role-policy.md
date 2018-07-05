@@ -1,52 +1,52 @@
 ---
-title: Użyj niestandardowych ról do ustawienia Privileged Identity Management obiektu docelowego dla zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania niestandardowych ról dla zasobów platformy Azure przy użyciu usługi PIM.
+title: Użyj ról niestandardowych do ustawienia Privileged Identity Management obiektu docelowego dla zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób używania ról niestandardowych dla zasobów platformy Azure za pomocą usługi PIM.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03904990d54db0dd39ed7059f57a0a13efe0aaca
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f086d8038e6d27990c49749438ee05e3e39a5aec
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233383"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442913"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Użyj niestandardowych ról do ustawień obiektu docelowego Privileged Identity Management
+# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Używanie ról niestandardowych do ustawienia Privileged Identity Management obiektu docelowego
 
-Konieczne może być rygorystyczne zarządzania tożsamości uprzywilejowanych (PIM) dotyczą niektóre elementy członkowskie roli, zapewniając większą niezależność dla innych użytkowników. Rozważmy scenariusz, w którym organizacja wynajmuje kilka stowarzyszonych kontraktu w rozwoju aplikacji, który zostanie wykonany w subskrypcji platformy Azure.
+Może być konieczne rygorystyczne Privileged Identity Management (PIM) dotyczą niektórych członków roli, zapewniając większą niezależność dla innych użytkowników. Rozważmy scenariusz, w którym organizacja zatrudnia kilka kojarzy umowy, aby pomóc w rozwoju aplikacji, która jest uruchamiana w subskrypcji platformy Azure.
 
-Administrator zasobów ma pracownikom na kwalifikować się do dostępu bez konieczności zatwierdzenia. Jednak wszystkie skojarzone kontraktu musi być zatwierdzony próbujące uzyskać dostęp do zasobów organizacji.
+Jako administrator zasobu ma pracownikom uprawnionych do dostępu bez konieczności zatwierdzania. Jednak wszystkie kojarzy kontraktu musi być zatwierdzony, gdy będą one żądać dostępu do zasobów organizacji.
 
-Wykonaj kroki opisane w następnej sekcji, aby skonfigurować docelowe PIM ustawienia dla ról zasobów platformy Azure.
+Wykonaj kroki opisane w następnej sekcji, aby skonfigurować docelowych ustawień usługi PIM dla ról zasobów platformy Azure.
 
-## <a name="create-the-custom-role"></a>Tworzenie niestandardowych ról
+## <a name="create-the-custom-role"></a>Tworzenie roli niestandardowej
 
-Aby utworzyć niestandardową rolę zasobu, wykonaj czynności opisane w [Tworzenie niestandardowych ról dla kontroli dostępu](../role-based-access-control-custom-roles.md).
+Aby utworzyć niestandardową rolę zasobu, wykonaj czynności opisane w [tworzenie ról niestandardowych dla kontroli dostępu](../role-based-access-control-custom-roles.md).
 
-Po utworzeniu niestandardowej roli zabezpieczeń zawierają nazwę opisową, dlatego możesz łatwe do zapamiętania wbudowanej roli mają zostać zduplikowane.
+Podczas tworzenia roli niestandardowej obejmują nazwę opisową, dzięki czemu można łatwo zapamiętać wbudowaną rolę, która ma zduplikowane.
 
 > [!NOTE]
-> Upewnij się, że rola niestandardowa jest duplikatem wbudowanej roli, które mają zostać zduplikowane oraz że jej zakres zgodny z wbudowanych ról.
+> Upewnij się, że rola niestandardowa jest duplikatem rolę wbudowaną, którą chcesz zduplikować, i że jego zakres odpowiada wbudowana rola.
 
-## <a name="apply-pim-settings"></a>Zastosuj ustawienia usługi PIM
+## <a name="apply-pim-settings"></a>Stosowanie ustawień usługi PIM
 
-Po utworzeniu roli w dzierżawie w portalu Azure, przejdź do **Privileged Identity Management - zasobów Azure** okienka. Wybierz zasób, którego dotyczy roli.
+Po utworzeniu roli w swojej dzierżawie, w witrynie Azure portal przejdź do **Privileged Identity Management — zasoby platformy Azure** okienka. Wybierz zasób, który dotyczy roli.
 
-!["Privileged Identity Management - zasobów platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+!["Privileged Identity Management — zasoby platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
-[Skonfiguruj ustawienia roli PIM](pim-resource-roles-configure-role-settings.md) który stosuje się do tych członków roli.
+[Konfigurowanie ustawień roli usługi PIM](pim-resource-roles-configure-role-settings.md) , stosuje się do tych członków roli.
 
-Na koniec [Przypisz role](pim-resource-roles-assign-roles.md) grupie unikatowych elementów członkowskich, które ma być docelowa przy użyciu tych ustawień.
+Na koniec [Przypisz role](pim-resource-roles-assign-roles.md) różne grupy elementów członkowskich, które ma pod kątem przy użyciu tych ustawień.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Właściciele subskrypcji przeglądu i dostępem](pim-resource-roles-perform-access-review.md)
+[I właścicielom subskrypcji przeglądu dostępu](pim-resource-roles-perform-access-review.md)

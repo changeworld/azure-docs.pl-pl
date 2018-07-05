@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 6/28/2018
+ms.date: 07/03/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fb870cbfbc233725752b3d97fc0ad048a7c14040
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341736"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446979"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Szablony rozwiązań łańcucha bloków w usłudze Azure Ethereum stosu
 
@@ -69,7 +69,7 @@ Szablon lidera konsorcjum konfiguruje zużycie pierwszego elementu członkowskie
     ADMINUSERNAME | Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej | 1 - 64 znaki | gethadmin
     ADMINPASSWORD (typ uwierzytelniania = hasło)| Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących warunków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|
     ADMINSSHKEY (typ uwierzytelniania = sshPublicKey) | Klucz protokołu secure shell, używany do logowania zdalnego. | |
-    GENESISBLOCK | Ciąg JSON reprezentujący niestandardowe genesis bloku. | |
+    GENESISBLOCK | Ciąg JSON reprezentujący niestandardowe genesis bloku.  Określenie wartości tego parametru jest opcjonalne. | |
     ETHEREUMACCOUNTPSSWD | Hasło administratora, używany do zabezpieczania konta Ethereum. | |
     ETHEREUMACCOUNTPASSPHRASE | Hasło używane do generowania klucza prywatnego skojarzonego z kontem Ethereum. | |
     ETHEREUMNETWORKID | Identyfikator sieci konsorcjum. | Używać dowolnej wartości z zakresu od 5 do 999,999,999 | 72

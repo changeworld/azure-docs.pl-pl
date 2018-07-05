@@ -1,6 +1,6 @@
 ---
 title: Nazwa ustawienia zasad grupy dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Jak skonfigurować wygaśnięcia dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
+description: Jak skonfigurować wygaśnięcie dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,71 +14,71 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 71367737a1364925f49c79f5c9562989752d26bc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594554"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450118"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
-Aby wymusić spójne konwencji nazewnictwa grup usługi Office 365 utworzonych lub edytowanych przez użytkowników, należy skonfigurować grupę nazewnictwa zasad dla dzierżawców w usłudze Azure Active Directory (Azure AD). Na przykład można użyć zasad nazewnictwa do komunikowania się funkcji grupy członkostwa, regionu geograficznego lub twórca grupy. Zasady nazewnictwa mogą również wykorzystać do skategoryzowania grup w książce adresowej. Zasady służy do blokowania słów z użycia grupy nazw i aliasów.
+Aby wymusić spójne konwencje nazewnictwa dla grup usługi Office 365 utworzonych lub edytowanych przez użytkowników, należy skonfigurować grupę zasady nazewnictwa dla dzierżawców w usłudze Azure Active Directory (Azure AD). Na przykład można użyć zasad nazewnictwa do komunikowania się funkcji grupę, członkostwo, regionu geograficznego lub twórca grupy. Zasady nazewnictwa mogą również wykorzystać do kategoryzowania grup w książce adresowej. Aby zablokować określone słowa w grupie nazwy i aliasy użycia, można użyć zasad.
 
 > [!IMPORTANT]
-> Przy użyciu zasad nazewnictwa grup Office 365 w wersji zapoznawczej wymaga licencji usługi Azure Active Directory Premium P1 i Azure AD podstawowa Education licencji dla każdego unikatowego użytkownika należącego do jednej lub więcej grup usługi Office 365.
+> Za pomocą zasad nazewnictwa grup Office 365 w wersji zapoznawczej wymaga licencji usługi Azure Active Directory Premium P1 i licencji usługi Azure AD podstawowa EDU każdy unikatowy użytkownik, który jest członkiem jednej lub kilku grup usługi Office 365.
 
-Zasady nazewnictwa są stosowane do tworzenia lub edytowania grup utworzonych przez obciążenia (na przykład, Outlook, Teams firmy Microsoft, SharePoint, Exchange lub planowania). Jest stosowana do nazwy grupy i aliasu grupy. Jeśli istnieje już grupa wymiany zasad nazewnictwa skonfigurować zasady nazewnictwa w usłudze Azure AD, Azure AD nazewnictwa zasad została zastosowana.
+Nazewnictwa zasady są stosowane do tworzenia lub edytowania grup utworzonych na potrzeby różnych obciążeń (na przykład programu Outlook, Microsoft Teams, SharePoint, Exchange lub terminarz). Jest stosowany do nazwy grupy i alias grupy. Jeśli masz istniejącą grupę Exchange zasady nazewnictwa skonfigurować zasady nazewnictwa w usłudze Azure AD, są stosowane zasady nazewnictwa usługi Azure AD.
 
 ## <a name="naming-policy-features"></a>Funkcje zasad nazewnictwa
-Zasady nazewnictwa dla grup usługi Office 365 można wymusić na dwa sposoby:
+Za wymuszania zasad nazewnictwa dla grup usługi Office 365 na dwa sposoby:
 
--   **Zasady nazewnictwa prefiksu i sufiksu** można zdefiniować prefiksy lub sufiksy nazw, które następnie są automatycznie dodawane do wymuszania konwencję nazewnictwa grup (na przykład w nazwie grupy "DGRP\_Japonii\_Moja grupa\_ Działu inżynierii", DGRP\_Japonii\_ prefiksu, i \_Engineering jest sufiksem). 
+-   **Zasady nazewnictwa prefiksu i sufiksu** można zdefiniować prefiksów lub sufiksów, które następnie są automatycznie dodawane do wymusić konwencję nazewnictwa grup (na przykład, w polu Nazwa grupy "DGRP\_Japonii\_Moja grupa\_ Działu inżynierii", DGRP\_Japonii\_ jest prefiksem, a \_inżynierii jest sufiksem). 
 
--   **Niestandardowe zablokowane słowa** możesz przekazać zestaw wyrazów zablokowanych określonych dla organizacji, zablokowanie grup utworzonych przez użytkowników (na przykład "Prezes, Lista płac, HR").
+-   **Niestandardowe zablokowane wyrazy** zbiór słów zablokowanych określonych możesz przekazać do Twojej organizacji zostanie zablokowane w grup utworzonych przez użytkowników (na przykład "wp list płac, Dyrektor Generalny").
 
 ### <a name="prefix-suffix-naming-policy"></a>Zasady nazewnictwa prefiksu i sufiksu
 
-Ogólna struktura konwencji nazewnictwa jest "Prefiks [Nazwa_grupy] sufiks". Podczas można zdefiniować wiele prefiksów i sufiksów, może mieć tylko jedno wystąpienie [Nazwa_grupy] w ustawieniu. Prefiksy lub sufiksy może być stały ciągów lub atrybutów użytkownika takich jak \[działu\] które są zastępowane oparte na użytkownika, który jest tworzona grupa. Dopuszczalna liczba znaków z ciągów prefiksu i sufiksu łączyć to 53 znaków. 
+Ogólną strukturę konwencji nazewnictwa jest "Prefiks [GroupName] sufiks". Chociaż można zdefiniować wiele prefiksów i sufiksów, w ustawieniu może mieć tylko jedno wystąpienie elementu [GroupName]. Prefiksy lub sufiksy może być stałych ciągów lub atrybutów użytkownika takich jak \[działu\] są zastępowane, zależnie od użytkownika, który jest tworzona grupa. Dopuszczalna liczba znaków w ciągach z prefiksem i sufiksem, połączone to 53 znaków. 
 
-Prefiksy i sufiksów może zawierać znaków specjalnych, które są obsługiwane przez nazwę grupy i aliasu grupy. Znaki prefiksu lub sufiksu, które nie są obsługiwane w aliasie grupy nadal są stosowane w polu Nazwa grupy, ale usunięte z aliasu grupy. Z powodu tego ograniczenia prefiksów i sufiksów stosować do nazwy grupy mogą się różnić od, które są stosowane do aliasu grupy. 
+Prefiksy i sufiksów może zawierać znaków specjalnych, które są obsługiwane przez nazwę grupy i alias grupy. Wszystkie znaki w prefiksu lub sufiksu, które nie są obsługiwane przez alias grupy nadal są stosowane w polu Nazwa grupy, ale usunięta z aliasu grupy. Ze względu na to ograniczenie może się różnić od zasad stosowanych do aliasu grupy prefiksy i sufiksów stosowane do nazwy grupy. 
 
-#### <a name="fixed-strings"></a>Ciągi o stałej
+#### <a name="fixed-strings"></a>Stałych ciągów
 
-Ciągi umożliwia łatwiejsze do skanowania i odróżnienia go od grupy globalnej liście adresowej i linki nawigacji po lewej stronie obciążeń grupy. Niektóre typowe prefiksy są słowa kluczowe, takie jak "DGRP\_nazwy", "\#nazwy","\_nazwę"
+Aby ułatwić skanowania i rozróżniania grup w globalnej liście adresowej i łącza nawigacji po lewej stronie obciążeń grupy, można użyć ciągów. Niektóre typowe prefiksy są słowami kluczowymi, takich jak "DGRP\_Name", "\#Nazwa ','\_nazwę"
 
 #### <a name="user-attributes"></a>Atrybuty użytkownika
 
-Można użyć atrybutów, które mogą pomóc Ci i zidentyfikować użytkowników, działów, office lub regionu geograficznego, dla którego utworzono grupę. Na przykład w przypadku definiowania zasad nazewnictwa jako `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`, i `User’s department = Engineering`, nazwa grupy wymuszone może być "DGRP mojej grupy Engineering." Obsługiwane usługi Azure AD atrybuty \[działu\], \[firmy\], \[Office\], \[StanLubProwincja\], \[CountryOrRegion \], \[Tytuł\]. Atrybuty użytkownika nieobsługiwany są traktowane jako ciągi fixed; na przykład "\[KodPocztowy\]". Atrybuty rozszerzenia oraz atrybuty niestandardowe nie są obsługiwane.
+Można użyć atrybuty, które mogą pomóc Ci i zidentyfikować użytkowników, działów, pakietu office lub regionie geograficznym, w którym grupa została utworzona. Na przykład po zdefiniowaniu zasad nazewnictwa jako `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`, i `User’s department = Engineering`, a następnie nazwę grupy wymuszone, może być "DGRP Moje grupy Engineering." Obsługiwane usługi Azure AD atrybuty są \[działu\], \[firmy\], \[Office\], \[StanLubProwincja\], \[CountryOrRegion \], \[Tytuł\]. Atrybuty użytkownika nieobsługiwany są traktowane jako stałych ciągów; na przykład "\[KodPocztowy\]". Rozszerzeń atrybuty oraz atrybuty niestandardowe nie są obsługiwane.
 
-Firma Microsoft zaleca użycie atrybuty, które mają wartości wypełnione dla wszystkich użytkowników w organizacji i nie używaj atrybutów, które mają długi wartości.
+Firma Microsoft zaleca używanie atrybutów, które mają wartości wypełnione dla wszystkich użytkowników w Twojej organizacji i nie używaj atrybuty, które mają długi wartości.
 
-### <a name="custom-blocked-words"></a>Niestandardowe słowa zablokowanych
+### <a name="custom-blocked-words"></a>Podasz niestandardowe wyrazy zablokowane
 
-Listę zablokowanych word jest rozdzielana przecinkami lista fraz zablokowanie grupy nazw i aliasów. Brak wyszukiwań podciąg są wykonywane. Dokładnego dopasowania między nazwą grupy i co najmniej jeden niestandardowy wyrazów zablokowanych jest wymagana do wyzwolenia awarii. Nie jest prowadzone wyszukiwanie podciąg, dzięki czemu użytkownicy mogą używać popularnych wyrazów, takich jak "Class", nawet jeśli "klasy" jest słowem zablokowany.
+Listę zablokowanych wyrazów jest przecinkami lista wyrażeń do zablokowania w grupie nazwy i aliasy. Nie wyszukiwania ciągów podrzędne są wykonywane. Dokładne dopasowanie między nazwę grupy i co najmniej jeden niestandardowy słów zablokowanych jest wymagana do wyzwolenia błąd. Wyszukiwanie zamienionego nie jest wykonywane, dzięki czemu użytkownicy mogą używać popularne wyrazy, takie jak "Class", nawet jeśli "klasy" jest blokowane słowo.
 
-Reguły listy zablokowanych word:
-- Zablokowane wyrazy nie są z uwzględnieniem wielkości liter.
-- Gdy użytkownik wprowadza zablokowanych word jako część nazwy grupy, zobaczy komunikat o błędzie wyrazem zablokowany.
-- Nie ma żadnych ograniczeń znak słowa zablokowany.
-- Brak maksymalnie 5000 wyrażeń, które można skonfigurować na liście zablokowanych słów. 
+Blokowane słowo reguł listy:
+- Zablokowane słowa nie są z uwzględnieniem wielkości liter.
+- Gdy użytkownik wprowadzi zablokowanego wyrazu, jako część nazwy grupy, zobaczą komunikat o błędzie z zablokowanego wyrazu.
+- Istnieją ograniczenia znak słowa zablokowane.
+- Brak górny limit 5000 wyrażeń, które można skonfigurować na liście zablokowanych słów. 
 
 ### <a name="administrator-override"></a>Zastąpienie administratora
 
-Wybrane Administratorzy mogą być wyłączone z tych zasad, we wszystkich obciążeń grupy i punktów końcowych, tak, aby mogli tworzyć grup przy użyciu słowa zablokowane i z własnych konwencje nazewnictwa. Poniżej przedstawiono listę ról administratora wykluczone z grupy zasad nazewnictwa.
+Wybranym administratorom można wykluczone z tych zasad we wszystkich obciążeń grupy i punktów końcowych w celu tworzenia grup przy użyciu słowa zablokowane i własnych konwencji nazewnictwa. Poniżej przedstawiono listę ról administratora jest wyłączone z grupy, zasady nazewnictwa.
 
 - Administrator globalny
-- Obsługa warstwy 1 partnera
-- Obsługa warstwy 2 partnera
-- Administrator konta użytkownika
+- Pomoc techniczna dla partnerów warstwy 1
+- Pomoc techniczna dla partnerów warstwy 2
+- Administrator kont użytkowników
 - Zapisywanie katalogów
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Zainstaluj polecenia cmdlet programu PowerShell, aby skonfigurować zasady nazewnictwa
 
-Należy odinstalować wszelkie starszej wersji środowiska PowerShell usługi Azure Active Directory Graph modułu dla środowiska Windows PowerShell i zainstalować [Azure Active Directory PowerShell wykresu — publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed ponownym uruchomieniem Polecenia programu PowerShell. 
+Pamiętaj odinstalować dowolną starszą wersję usługi Azure Active Directory PowerShell dla modułu programu Graph dla Windows PowerShell i zainstaluj [Azure Active Directory PowerShell Graph — publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed uruchomieniem Polecenia programu PowerShell. 
 
 1. Otwórz aplikację programu Windows PowerShell jako administrator.
-2. Odinstaluj wszelkie wcześniejsze wersje AzureADPreview.
+2. Odinstalowywanie poprzednich wersji AzureADPreview.
   
   ````
   Uninstall-Module AzureADPreview
@@ -88,11 +88,11 @@ Należy odinstalować wszelkie starszej wersji środowiska PowerShell usługi Az
   ````
   Install-Module AzureADPreview
   ````
-Jeśli zostanie wyświetlony monit o dostępie do niezaufanych repozytorium, wpisz **Y**. Może upłynąć kilka minut, aż do zainstalowania nowego modułu.
+Jeśli zostanie wyświetlony monit o dostęp do niezaufanych repozytorium, wpisz **Y**. Może upłynąć kilka minut, zanim nowy moduł do zainstalowania.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurowanie grupy nazewnictwa zasad dla dzierżawy przy użyciu programu PowerShell usługi Azure AD
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurowanie grupy, zasady nazewnictwa dla dzierżawcy przy użyciu usługi Azure AD PowerShell
 
-1. Otwórz okno programu Windows PowerShell na komputerze. Możesz otworzyć go bez podniesionych uprawnień.
+1. Otwórz okno programu Windows PowerShell na komputerze. Możesz go otworzyć, bez podwyższonego poziomu uprawnień.
 
 2. Uruchom następujące polecenia, aby przygotować się do uruchamiania poleceń cmdlet.
   
@@ -100,13 +100,13 @@ Jeśli zostanie wyświetlony monit o dostępie do niezaufanych repozytorium, wpi
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-  W **Zaloguj się do swojego konta** ekranu, który zostanie otwarty, wprowadź konto administratora i hasło, należy połączyć się z usługą, a następnie wybierz **Zaloguj**.
+  W **Zaloguj się do swojego konta** ekran, który zostanie otwarty, wprowadź swoje konto administratora i hasło, aby połączyć się z usługą z, a następnie wybierz pozycję **Zaloguj**.
 
-3. Postępuj zgodnie z instrukcjami [poleceń cmdlet usługi Azure Active Directory do konfigurowania ustawień grupy](active-directory-accessmanagement-groups-settings-cmdlets.md) można utworzyć grupy ustawień dla tej dzierżawy.
+3. Postępuj zgodnie z instrukcjami w [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](users-groups-roles/groups-settings-cmdlets.md) można utworzyć grupy ustawień dla tej dzierżawy.
 
 ### <a name="view-the-current-settings"></a>Wyświetl bieżące ustawienia
 
-1. Pobierz bieżące zasady nazewnictwa, aby wyświetlić bieżące ustawienia.
+1. Pobrać bieżące zasady nazewnictwa, aby wyświetlić bieżące ustawienia.
   
   ````
   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
@@ -118,33 +118,33 @@ Jeśli zostanie wyświetlony monit o dostępie do niezaufanych repozytorium, wpi
   $Setting.Values
   ````
   
-### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i niestandardowych słów zablokowanych
+### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Ustaw zasady nazewnictwa i podasz niestandardowe wyrazy zablokowane
 
-1. Ustaw grupy prefiksów i sufiksów nazw w programie Azure AD PowerShell.
+1. Ustaw grupę prefiksów i sufiksów nazw w programie Azure AD PowerShell.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
   ````
   
-2. Ustaw niestandardowe zablokowanych słowa, które ma zostać ograniczony. Poniższy przykład przedstawia sposób dodawania niestandardowych słów.
+2. Ustaw niestandardowy zablokowanych wyrazy, które chcesz ograniczyć. W poniższym przykładzie pokazano, jak dodać własne niestandardowe słowa.
   
   ````
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
   ````
   
-3. Zapisz ustawienia nowych zasad zadziałało, takich jak w poniższym przykładzie.
+3. Zapisz ustawienia nowych zasad zaczęła obowiązywać, takie jak w poniższym przykładzie.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
   ````
   
-To już wszystko. Został ustawiony zasad nazewnictwa i dodać zablokowanych słów.
+To już wszystko. Już skonfigurować zasady nazewnictwa i dodać zablokowanych słów.
 
-## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Eksportowanie lub importowanie listę niestandardowych słów zablokowanych
+## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Eksportowanie lub importowanie listy zablokowanych podasz niestandardowe wyrazy
 
-Aby uzyskać więcej informacji, zobacz artykuł [poleceń cmdlet usługi Azure Active Directory do konfigurowania ustawień grupy](active-directory-accessmanagement-groups-settings-cmdlets.md).
+Aby uzyskać więcej informacji, zobacz artykuł [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](users-groups-roles/groups-settings-cmdlets.md).
 
-Poniżej przedstawiono przykładowy skrypt programu PowerShell, aby wyeksportować wiele słów zablokowany:
+Poniżej przedstawiono przykładowy skrypt programu PowerShell można wyeksportować wiele słów zablokowany:
 
 ````
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
@@ -167,42 +167,42 @@ $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ````
 
-## <a name="naming-policy-experiences-across-office-365-apps"></a>Zasady nazewnictwa napotka w aplikacjach pakietu Office 365
+## <a name="naming-policy-experiences-across-office-365-apps"></a>Zasady nazewnictwa napotka w aplikacjach usługi Office 365
 
-Po ustawieniu zasad grupy nazewnictwa w usłudze Azure AD, gdy użytkownik tworzy grupę w aplikacji usługi Office 365, zobaczy: 
+Po ustawieniu zasady nazewnictwa grup w usłudze Azure AD, gdy użytkownik tworzy grupę w aplikacji usługi Office 365, zobaczy: 
 
-* A Podgląd nazwy zgodnie z zasadami nazewnictwa (z prefiksów i sufiksów) tak szybko, jak typy użytkownika w polu Nazwa grupy
-* Jeśli użytkownik wprowadzi zablokowanych wyrazy, będzie zobaczy komunikat o błędzie, będą oni mogli usunąć zablokowanych słów.
+* A w wersji zapoznawczej nazwy zgodnie z zasadami nazewnictwa (ze prefiksy lub sufiksy) tak szybko, jak użytkownik wpisze nazwę grupy
+* Jeśli użytkownik wprowadzi zablokowanych słów, zobaczą komunikat o błędzie, mogą usuwać zablokowanych słów.
 
 Obciążenie | Zgodność
 ----------- | -------------------------------
-Portale usługi Azure Active Directory | Portalu usługi Azure AD i portalu panelu dostępu wyświetlić nazwy wymuszona zasada, gdy użytkownik wpisze w polu Nazwa grupy, podczas tworzenia lub edytowania grupy. Gdy użytkownik wprowadza niestandardowych word zablokowanych, komunikat o błędzie wyrazem zablokowanych jest wyświetlana, dzięki czemu użytkownik może go usunąć.
-Outlook Web Access (OWA) | W programie Outlook Web Access zawiera zasady nazewnictwa wymuszane nazwy, gdy użytkownik wpisuje nazwę grupy lub aliasu grupy. Gdy użytkownik wprowadza niestandardowych word zablokowanych, komunikat o błędzie jest wyświetlany w interfejsu użytkownika wraz z zablokowanych word, dzięki czemu użytkownik może go usunąć.
-Aplikacja klasyczna Outlook | Grupy utworzone w aplikacja klasyczna Outlook są zgodne z ustawieniami zasad nazewnictwa. Aplikacja klasyczna Outlook jeszcze nie wyświetla nazwę grupy wymuszone w wersji zapoznawczej i nie zwraca błędy niestandardowe word zablokowane, gdy użytkownik wprowadza nazwę grupy. Zasady nazewnictwa jest stosowana automatycznie, podczas tworzenia lub edytowania grupy i użytkownicy widzą komunikaty o błędach w przypadku niestandardowych słów zablokowanych nazwę grupy lub alias.
-Microsoft Teams | Teams firmy Microsoft zawiera grupę nazewnictwa Nazwa zasady wymuszane, gdy użytkownik wprowadza nazwę zespołu. Gdy użytkownik wprowadza niestandardowych word zablokowanych, komunikat o błędzie jest wyświetlany wraz z zablokowanych word, dzięki czemu użytkownik może go usunąć.
-Sharepoint  |  Programu SharePoint zawiera nazwy wymuszona zasada typy użytkowników, a witryna nazwa lub adres e-mail grupy. Kiedy użytkownik wprowadzi niestandardowych word zablokowanych komunikat o błędzie jest wyświetlany, wraz z zablokowanych word, dzięki czemu użytkownik może go usunąć.
-Microsoft Stream | Stream firmy Microsoft zawiera grupę nazewnictwa Nazwa zasady wymuszane, gdy użytkownik wpisuje nazwę grupy lub alias e-mail grupy. Gdy użytkownik wprowadza niestandardowych word zablokowanych, komunikat o błędzie jest wyświetlany wyrazem zablokowanych, użytkownik może go usunąć.
-IOS programu Outlook i aplikacji systemu Android | Grupy utworzone w aplikacji Outlook są zgodne ze skonfigurowanymi zasadami nazewnictwa. Outlook aplikacji mobilnej jeszcze nie wyświetla podgląd nazwy zasad wymuszane, a nie zwraca błędy niestandardowe word zablokowane, gdy użytkownik wprowadza nazwę grupy. Jednak po kliknięciu przycisku Utwórz/Edytuj automatycznie są stosowane zasady nazewnictwa i użytkowników wyświetlić komunikaty o błędach w przypadku niestandardowych słów zablokowanych nazwę grupy lub aliasu.
-Grupy aplikacji mobilnej | Grupy utworzone w aplikacji mobilnej grup są zgodne z zasadami nazewnictwa. Grupy aplikacji mobilnej nie są wyświetlane w wersji zapoznawczej zasad nazewnictwa i nie zwraca błędy niestandardowe word zablokowane, gdy użytkownik wprowadza nazwę grupy. Podczas tworzenia lub edytowania grupy są automatycznie stosowane zasady nazewnictwa, a użytkowników zostanie zaprezentowany odpowiednie błędy występują niestandardowe słowa zablokowanych nazwę grupy lub alias.
-Planner | Planowanie jest zgodne z zasadami nazewnictwa. Planowanie Podgląd nazewnictwa zasad podczas wprowadzania nazwy planu. Gdy użytkownik wprowadza niestandardowych zablokowanych programu word, komunikat o błędzie jest wyświetlany podczas tworzenia planu.
-Dynamics 365 naboru klienta | Dynamics 365 naboru klienta jest zgodne z zasadami nazewnictwa. Dynamics 365 zawiera nazwy wymuszona zasada, gdy użytkownik wpisuje nazwę grupy lub alias e-mail grupy. Gdy użytkownik wprowadzi niestandardowych word zablokowanych, komunikat o błędzie jest wyświetlany wyrazem zablokowanych, użytkownik może go usunąć.
-Synchronizacja danych służbowych (SDS) | Grup utworzonych za pomocą SDS są zgodne z zasadami nazewnictwa, ale nie jest automatycznie stosowane zasady nazewnictwa. Administratorzy SDS mają dołączyć prefiksów i sufiksów nazw klas, dla których grup należy utworzyć i następnie przekazywane do SDS. Utwórz grupy lub edycji nie powiedzie się inaczej.
-Menedżer klienta programu Outlook (OCM) | Menedżer klienta programu Outlook jest zgodne z zasadami nazewnictwa, który jest automatycznie stosowane do grupy utworzone w Menedżerze klienta programu Outlook. W przypadku wykrycia niestandardowych word zablokowanych tworzenie grup w OCM jest zablokowane, a użytkownik jest zablokowany za pomocą aplikacji OCM.
-Klasy aplikacji | Grupy utworzone w klasie aplikacji jest zgodne z zasadami nazewnictwa, ale zasady nazewnictwa nie jest stosowana automatycznie, a nazewnictwa Podgląd zasad nie jest widoczne dla użytkowników podczas wprowadzania nazwy grupy klas. Użytkownicy muszą wprowadzić nazwę grupy wymuszone klasy z prefiksów i sufiksów. Jeśli nie, Grupa klas tworzenia lub edytowania operacja kończy się niepowodzeniem z błędami.
+Usługa Azure Active Directory portali | W portalu usługi Azure AD i portalu panelu dostępu Pokaż nazwy wymuszona zasada po użytkownik wpisuje nazwę grupy, podczas tworzenia lub edytowania grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie z zablokowanego wyrazu jest wyświetlana tak, aby je usunąć użytkownika.
+Outlook Web Access (OWA) | W programie Outlook Web Access zawiera zasady nazewnictwa wymuszane nazwa, gdy użytkownik wpisuje nazwę grupy lub alias grupy. Kiedy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany w Interfejsie użytkownika wraz z zablokowanego wyrazu, aby je usunąć użytkownika.
+Aplikacja klasyczna Outlook | Grupy utworzone w aplikacja klasyczna Outlook są zgodne z ustawieniami zasad nazewnictwa. Aplikacja klasyczna Outlook jeszcze nie wyświetla nazwę grupy wymuszone w wersji zapoznawczej i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy. Jednak zasady nazewnictwa jest automatycznie stosowane podczas tworzenia lub edytowania grupy i użytkownicy widzą komunikaty o błędach, jeśli podasz niestandardowe wyrazy zablokowane w grupie nazwę lub alias.
+Microsoft Teams | Microsoft Teams zawiera grupy nazewnictwa nazwa_zasad wymuszane, gdy użytkownik wprowadzi nazwę zespołu. Po użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany wraz z zablokowanego wyrazu tak, aby je usunąć użytkownika.
+Sharepoint  |  Program SharePoint jest wyświetlana nazwa nazewnictwa wymuszona zasada po użytkownik wpisze w witrynie nazwę lub adres e-mail grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany, wraz z zablokowanego wyrazu tak, aby je usunąć użytkownika.
+Microsoft Stream | Microsoft Stream przedstawiono grupy nazewnictwa nazwa_zasad wymuszane, gdy użytkownik wpisuje nazwę grupy lub alias e-mail grupy. Po użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany z zablokowanego wyrazu, dzięki czemu użytkownik może usunąć go.
+Program Outlook dla systemów iOS i aplikacji dla systemu Android | Grupy utworzone w aplikacji Outlook są zgodne ze skonfigurowanymi zasadami nazewnictwa. Aplikacja mobilna Outlook jeszcze nie wyświetla nazwy wymuszona zasada w wersji zapoznawczej i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy. Jednak zasady nazewnictwa stosowany jest automatycznie po kliknięciu przycisku Utwórz/Edytuj, a użytkownicy widzą komunikaty o błędach, jeśli podasz niestandardowe wyrazy zablokowane w grupie nazwę lub alias.
+Grupy aplikacji mobilnej | Grupy utworzone w aplikacji mobilnej grup są zgodne z zasadami nazewnictwa. Aplikacja mobilna grup nie są wyświetlane zasady nazewnictwa w wersji zapoznawczej i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy. Ale nazewnictwa zasady są stosowane automatycznie, podczas tworzenia lub edytowania grupy i użytkownicy są prezentowane z błędami odpowiednie, jeśli podasz niestandardowe wyrazy zablokowane w grupie nazwę lub alias.
+Planner | Planista to zgodne z zasadami nazewnictwa. Planista pokazuje nazewnictwa zasad (wersja zapoznawcza), podczas wprowadzania nazwy planu. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany, gdy utworzony plan.
+Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement jest zgodne z zasadami nazewnictwa. Dynamics 365 zawiera nazwy wymuszona zasada, gdy użytkownik wpisuje nazwę grupy lub alias e-mail grupy. Gdy użytkownik wprowadzi niestandardowe zablokowanego wyrazu, komunikat o błędzie jest wyświetlany za pomocą zablokowanego wyrazu, dzięki czemu użytkownik może usunąć go.
+School Data Sync (SDS) | Przestrzegać zasady nazewnictwa grup utworzonych przy użyciu narzędzia SDS, ale zasady nazewnictwa nie są stosowane automatycznie. Administratorzy SDS mają można dołączyć prefiksów i sufiksów do nazw klas, dla których grupy muszą być tworzone i następnie przekazywane do narzędzia SDS. Tworzenie grupy lub edytowanie może zakończyć się niepowodzeniem w przeciwnym razie.
+Program Outlook Customer Manager (OCM) | Program Outlook Customer Manager jest zgodne z zasadami nazewnictwa, która jest automatycznie stosowany do grupy utworzone w programie Outlook Customer Manager. W przypadku wykrycia niestandardowe zablokowanego wyrazu, tworzenie grupy w OCM jest zablokowane, a użytkownik jest zablokowany za pomocą aplikacji OCM.
+Aplikacja classroom | Grup utworzonych w aplikacji Classroom, który jest zgodne z zasadami nazewnictwa, ale zasady nazewnictwa nie są stosowane automatycznie, a nazewnictwa zasad (wersja zapoznawcza) nie jest widoczne dla użytkowników podczas podawania nazwy grupy klas. Użytkownicy muszą wprowadzić nazwę grupy wymuszone klasy za pomocą prefiksów i sufiksów. W przeciwnym razie grupy klas, tworzenia lub edytowania operacja kończy się niepowodzeniem z błędami.
 Power BI | Obszary robocze programu Power BI są zgodne z zasadami nazewnictwa.    
-Yammer | Gdy użytkownik zalogowany do usługi Yammer do swojego konta usługi Azure Active Directory tworzy grupę lub edytuje nazwę grupy, nazwę grupy będą stosować się zasady nazewnictwa. Dotyczy to zarówno do grup usługi Office 365 połączone i wszystkie inne grupy Yammer.<br>Jeśli podłączonej grupy usługi Office 365 został utworzony przed zasad nazewnictwa jest już na miejscu, nazwa grupy nie zostaną automatycznie wprowadzone zasady nazewnictwa. Gdy użytkownik edytuje nazwę grupy, zostanie wyświetlony monit, aby dodać prefiksu i sufiksu.
-StaffHub  | Zespoły StaffHub nie są zgodne z zasadami nazewnictwa, ale nie podstawowej grupy usługi Office 365. Nazwa zespołu StaffHub nie ma zastosowania prefiksów i sufiksów i nie sprawdza niestandardowych słów zablokowany. Jednak StaffHub zastosować prefiksów i sufiksów i usuwa zablokowanych słowa z podstawowej grupy usługi Office 365.
-Exchange PowerShell | Polecenia cmdlet programu PowerShell programu Exchange są zgodne z zasadami nazewnictwa. Użytkownicy będą otrzymywać wiadomości odpowiednie błąd z sugerowanych prefiksów i sufiksów i niestandardowych słów zablokowane, jeśli nie stosują zasady nazewnictwa Nazwa grupy i aliasu grupy (mailNickname).
-Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure | Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure są zgodne z zasadami nazewnictwa. Użytkownicy będą otrzymywać wiadomości odpowiednie błąd z sugerowanych prefiksów i sufiksów i niestandardowych słów zablokowane, jeśli nie stosują konwencji nazewnictwa nazwy grup i aliasu grupy.
-Centrum administracyjne Exchange | Centrum administracyjne Exchange jest zgodne z zasadami nazewnictwa. Użytkownicy będą otrzymywać wiadomości odpowiednie błąd z sugerowanych prefiksów i sufiksów i niestandardowych słów zablokowane, jeśli nie stosują konwencji nazewnictwa, nazwa_grupy i aliasu grupy.
-Centrum administracyjne usługi Office 365 | Centrum administracyjne usługi Office 365 jest zgodne z zasadami nazewnictwa. Gdy użytkownik tworzy lub zmiany nazwy grup, automatycznie są stosowane zasady nazewnictwa i użytkownicy otrzymują odpowiednie błędy po wprowadzeniu niestandardowych słów zablokowany. Centrum administracyjne usługi Office 365 jeszcze nie wyświetla podgląd zasad nazewnictwa i nie zwraca błędy niestandardowe word zablokowane, gdy użytkownik wprowadza nazwę grupy.
+Yammer | Gdy użytkownik zalogowany do usługi Yammer za pomocą konta usługi Azure Active Directory tworzy grupę lub umożliwia edytowanie nazwy grupy, nazwę grupy będą stosować się zasady nazewnictwa. Dotyczy to zarówno do grupy usługi Office 365, połączonych i innych grup w usłudze Yammer.<br>Jeśli połączonej grupy usługi Office 365 zostało utworzone przed zasady nazewnictwa znajduje się w miejscu, nazwa grupy nie zostaną automatycznie wprowadzone zasady nazewnictwa. Gdy użytkownik edytuje nazwę grupy, zostanie wyświetlony monit można dodać prefiksu i sufiksu.
+StaffHub  | Zespoły usługi StaffHub nie wykonuj zasady nazewnictwa, ale nie podstawowej grupy usługi Office 365. Nazwa zespołu StaffHub nie ma zastosowania, prefiksów i sufiksów i nie sprawdza obecności podasz niestandardowe wyrazy zablokowane. Ale StaffHub mają zastosowanie prefiksów i sufiksów i usuwa zablokowanych słów z podstawowej grupy usługi Office 365.
+Exchange PowerShell | Polecenia cmdlet programu PowerShell programu Exchange są zgodne z zasadami nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli nie stosują zasady nazewnictwa nazwę grupy i alias grupy (mailNickname).
+Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure | Polecenia cmdlet środowiska PowerShell usługi Active Directory systemu Azure są zgodne z zasady nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli ich nie są zgodne z konwencją nazw grup i alias grupy.
+Centrum administracyjne Exchange | Centrum administracyjne Exchange jest zgodna z zasady nazewnictwa. Użytkownicy otrzymają odpowiedniego komunikatu o błędzie z sugerowanych prefiksów i sufiksów, a dla zablokowanych podasz niestandardowe wyrazy, jeśli ich nie są zgodne z konwencji nazewnictwa, nazwę grupy i alias grupy.
+Centrum administracyjne usługi Office 365 | Centrum administracyjne usługi Office 365 jest zgodna z zasady nazewnictwa. Gdy użytkownik tworzy lub zmiany nazwy grupy, zasady nazewnictwa jest automatycznie stosowany i użytkownicy otrzymają odpowiednie błędy po użytkownik podał podasz niestandardowe wyrazy zablokowane. W Centrum administracyjnym usługi Office 365 jeszcze nie wyświetla podgląd zasady nazewnictwa i nie zwraca błędy niestandardowe zablokowanego wyrazu, gdy użytkownik wprowadzi nazwę grupy.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Te artykuły zawierają dodatkowe informacje o grup usługi Azure AD.
+Te artykuły zawierają dodatkowe informacje na temat grup usługi Azure AD.
 
-* [Zobacz istniejących grup](active-directory-groups-view-azure-portal.md)
-* [Zasady wygasania dla grup usługi Office 365](active-directory-groups-lifecycle-azure-portal.md)
-* [Zarządzanie ustawieniami grupy](active-directory-groups-settings-azure-portal.md)
-* [Elementy członkowskie grupy zarządzania](active-directory-groups-members-azure-portal.md)
-* [Zarządzanie członkostwami grup](active-directory-groups-membership-azure-portal.md)
+* [Zobacz istniejących grup](fundamentals/active-directory-groups-view-azure-portal.md)
+* [Zasady wygasania grup usługi Office 365](active-directory-groups-lifecycle-azure-portal.md)
+* [Zarządzanie ustawieniami grupy](fundamentals/active-directory-groups-settings-azure-portal.md)
+* [Zarządzanie elementami członkowskimi grupy](fundamentals/active-directory-groups-members-azure-portal.md)
+* [Zarządzanie członkostwami grup](fundamentals/active-directory-groups-membership-azure-portal.md)
 * [Dynamiczne reguły dla użytkowników w grupie zarządzania](active-directory-groups-dynamic-membership-azure-portal.md)

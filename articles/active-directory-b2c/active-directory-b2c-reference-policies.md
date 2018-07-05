@@ -1,36 +1,36 @@
 ---
 title: Wbudowane zasady w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat w ramach rozszerzalnych zasad usługi Azure Active Directory B2C i o sposobach tworzenia różnych typów zasad.
+description: Temat na rozszerzalna struktura zasad usługi Azure Active Directory B2C i jak tworzyć różne typy zasad.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 840de51f2aeff2c14cba0f90fe9072ba7ceb7fcf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712117"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444826"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Usługi Azure Active Directory B2C: Wbudowane zasady
 
 
-Rozszerzona platforma zasad usługi Azure Active Directory (Azure AD) B2C jest siły podstawowe usługi. Zasady pełni opisano funkcje tożsamości konsumentów takich jak konta, logowania lub edytowanie profilu. Na przykład zasad rejestracji umożliwia kontrolowanie zachowania, konfigurując następujące ustawienia:
+Rozszerzalna struktura zasad usługi Azure Active Directory (Azure AD) B2C jest siły podstawowe usługi. Zasady pełni Opisuje funkcje tożsamości klientów takich jak rejestracji, logowania i edytowania profilu. Na przykład zasady rejestracji pozwala na kontrolowanie zachowania, konfigurując następujące ustawienia:
 
-* Typy kont (kont społecznościowych takimi jak Facebook) lub kont lokalnych, takie jak adresy e-mail, których klienci mogą korzystać zalogowania się do aplikacji
-* Atrybuty (na przykład imię, kod pocztowy i rozmiarze buta) mają być zbierane od konsumenta podczas tworzenia konta
+* Typy kont (kont społecznościowych, takich jak Facebook) lub kont lokalnych, takich jak adresy e-mail, które klienci mogą korzystać w celu uzyskania aplikacji
+* Atrybuty (na przykład imię, kod pocztowy i rozmiar buta) mają być zbierane od użytkownika podczas rejestracji
 * Korzystanie z usługi Azure Multi-Factor Authentication
-* Wygląd i działanie wszystkie strony
-* Informacje (które manifesty jako oświadczenia w tokenie) czy po otrzymaniu kiedy zasad, uruchom zakończenie
+* Wygląd i działanie wszystkich stron rejestracji
+* Informacje (które manifesty jako oświadczenia w tokenie), aplikacja otrzyma po zasad uruchamiania zostanie zakończone
 
-Można utworzyć wiele zasad o różnych typach w dzierżawie i używać ich w aplikacji, zgodnie z potrzebami. Zasady mogą być ponownie używane w aplikacjach. Tego rodzaju elastyczności umożliwia deweloperom definiowanie i modyfikowanie środowiska tożsamości użytkownika z minimalnym lub Brak zmian do ich kodu.
+Można utworzyć wiele zasad o różnych typach w dzierżawie i używać ich w aplikacjach, zgodnie z potrzebami. Zasady mogą być ponownie używane w aplikacjach. Ta elastyczność umożliwia deweloperom definiowanie i modyfikowanie środowiska tożsamości konsumentów przy minimalnym lub jedynie minimalnych zmianach w ich kodu.
 
-Zasady są dostępne do użycia przy użyciu interfejsu dewelopera proste. Wyzwala zasady przy użyciu standardowego żądania uwierzytelniania HTTP (przekazywanie parametru zasad w żądaniu) i otrzymuje token dostosowane odpowiedzi aplikacji. Jedyną różnicą między żądań, które wywołują zasad logowania i żądań, które wywołują zasad rejestracji jest na przykład nazwę zasad, która jest używana w "p" parametru ciągu zapytania:
+Zasady są dostępne do użycia przy użyciu interfejsu dewelopera proste. Wyzwala zasadę przy użyciu standardowych żądania uwierzytelniania HTTP (przekazywania parametru zasad w żądaniu) i odbiera token dostosowanych jako odpowiedzi aplikacji. Na przykład jedyną różnicą między żądań, które wywołują zasady rejestracji i żądań, które wywołują zasad logowania jest nazwa zasad, który jest używany w "p" parametru ciągu zapytania:
 
 ```
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Tworzenie zasad rejestracji lub logowania
 
-Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z pojedynczą konfiguracją. Konsumenci są doprowadziło do prawej ścieżki (rejestracji lub logowania), w zależności od kontekstu. Omówiono także zawartość tokenów, które otrzymają aplikacji po pomyślnej napędza rejestracje lub logowania.  Przykład kodu dla **rejestracji i logowania** zasad jest [dostępne tutaj](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Zaleca się używać tych zasad za pośrednictwem **rejestracji** zasad lub **logowania** zasad.  
+Ta zasada obsługuje zarówno konsumenta rejestracji i logowania środowiska za pomocą jednej konfiguracji. Odbiorcy są doprowadziło do prawego ścieżki (rejestracji lub logowania), w zależności od kontekstu. Omówiono także zawartość tokenów, które aplikacja otrzyma po pomyślnej rejestracji lub logowania.  Przykład kodu służącego do **rejestracji lub logowania** zasady [dostępne tutaj](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Zaleca się używać tych zasad za pośrednictwem **rejestracji** zasad lub **logowania** zasad.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -70,7 +70,7 @@ Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z
 
 [!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
 
-## <a name="create-a-sign-in-policy"></a>Tworzenie zasad logowania
+## <a name="create-a-sign-in-policy"></a>Utwórz zasady logowania
 
 [!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
 
@@ -82,25 +82,25 @@ Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-## <a name="preview-policies"></a>Podgląd zasad
+## <a name="preview-policies"></a>Zasady (wersja zapoznawcza)
 
-Jak możemy zwalniają nowe funkcje, niektóre z nich nie można na istniejące zasady.  Firma Microsoft planuje Zamień starsze wersje przy użyciu najnowszych danych tego samego typu, po tych zasad należy wprowadzić po  Nie spowoduje zmiany istniejących zasad i aby korzystać z nowych funkcji musisz utworzyć nowe zasady.
+Jak wydaniu nowych funkcji, niektóre z nich mogą nie można na istniejące zasady.  Planujemy odłożyć starszych wersji za pomocą najnowszej wersji tego samego typu, gdy te zasady należy wprowadzić po ogólnym udostępnieniu produktu  Nie zmieni swoje istniejące zasady i aby można było korzystać z zalet nowych funkcji, należy utworzyć nowe zasady.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak połączyć zasady rejestracji lub logowania za pomocą zasad resetowania hasła
-Po utworzeniu **rejestracji i logowania** zasad (za pomocą kont lokalnych), zobacz **nie pamiętam hasła?** łącza na pierwszej stronie środowisko. Kliknięcie tego łącza nie automatycznie wyzwalacza hasła zasady resetowania. 
+### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak połączyć zasad rejestracji lub logowania za pomocą zasad resetowania haseł?
+Podczas tworzenia **rejestracji lub logowania** zasad (przy użyciu kont lokalnych), zostanie wyświetlony **nie pamiętasz hasła?** łącze na pierwszej stronie środowiska. Kliknięcie tego linku nie automatycznie wyzwalacza hasła zasad resetowania. 
 
-Zamiast tego kodu błędu **`AADB2C90118`** jest zwracana do aplikacji. Twoja aplikacja powinna obsługiwać tego kodu błędu za pomocą zasad resetowania hasła określone. Aby uzyskać więcej informacji, zobacz [przykład przedstawiający metodę łączenia zasad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+Zamiast tego kod błędu: **`AADB2C90118`** jest zwracana do aplikacji. Twoja aplikacja powinna obsługiwać tego kodu błędu, wywołując zasad resetowania haseł określonych. Aby uzyskać więcej informacji, zobacz [przykład demonstrujący podejście łączenie zasad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
-### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Należy użyć zasad rejestracji i logowania lub zasad rejestracji i logowania zasady?
-Firma Microsoft zaleca użycie **rejestracji i logowania** zasady przez **rejestracji** zasad i **logowania** zasad.  
+### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Należy użyć zasad rejestracji lub logowania lub zasady tworzenia konta i zasady logowania?
+Firma Microsoft zaleca użycie **rejestracji lub logowania** zasady przez **rejestracji** zasad i **logowania** zasad.  
 
-**Rejestracji i logowania** zasad ma więcej możliwości niż **logowania** zasad. Również umożliwia dostosowywanie interfejsu użytkownika strony i ma lepszą obsługę lokalizacji. 
+**Rejestracji lub logowania** zasad ma więcej możliwości niż **logowania** zasad. Ponadto umożliwia dostosowywanie interfejsu użytkownika strony i ma lepsze wsparcie dla lokalizacji. 
 
-**Logowania** zasad jest zalecane, nie należy do zlokalizowania zasad tylko potrzeby znakowania możliwości personalizacji i mają hasło resetowania wbudowanych.
+**Logowania** Jeśli nie potrzebujesz zlokalizować zasad, tylko potrzebne możliwości dostosowywania pomocnicza znakowania i ma hasła, zalecane jest zasad resetowania wbudowanych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Token sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md)
-* [Wyłączyć weryfikację wiadomości e-mail podczas tworzenia konta użytkownika](active-directory-b2c-reference-disable-ev.md)
+* [Tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md)
+* [Wyłączanie weryfikacji e-mail podczas rejestracji klienta](active-directory-b2c-reference-disable-ev.md)
 

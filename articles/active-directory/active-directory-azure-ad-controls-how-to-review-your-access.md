@@ -1,6 +1,6 @@
 ---
-title: Przejrzyj dostęp | Dokumentacja firmy Microsoft
-description: Przejrzyj programu access w usłudze Azure Active Directory
+title: Przejrzeć swój dostęp | Dokumentacja firmy Microsoft
+description: Przejrzeć swój dostęp w usłudze Azure Active Directory
 author: rolyon
 manager: mtillman
 editor: markwahl-msft
@@ -8,41 +8,41 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 32cdbf75025c1368ff3d5173307883179af184c7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085627"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446131"
 ---
-# <a name="review-your-access"></a>Przejrzyj dostęp
+# <a name="review-your-access"></a>Przejrzeć swój dostęp
 
-Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i innych usług Microsoft Online Services przy użyciu funkcji o nazwie dostęp monitoruje. Prawdopodobnie odebrał wiadomość e-mail od firmy Microsoft z prośbą o Przejrzyj dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji. 
+Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostęp. Być może otrzymasz wiadomość e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników dla członków grupy lub użytkownicy z dostępem do aplikacji. 
 
 ## <a name="open-an-access-review"></a>Otwórz przegląd dostępu
 
-Aby wyświetlić przeglądy oczekujące dostępu, wybierz łącze w wiadomości e-mail. Jeśli nie masz wiadomość e-mail, możesz znaleźć przeglądy dostępu, wykonaj następujące czynności:
+Aby wyświetlić przeglądów dostępu oczekujące, wybierz link w wiadomości e-mail. Jeśli nie masz wiadomości e-mail, możesz znaleźć przeglądów dostępu, wykonaj następujące czynności:
 
-1. Zaloguj się na [panel dostępu usługi Azure AD](https://myapps.microsoft.com).
+1. Zaloguj się na [panelu dostępu usługi Azure AD](https://myapps.microsoft.com).
 
-2. Wybierz symbol użytkownika w prawym górnym rogu strony, która wyświetla nazwę i domyślny organizacji. Jeśli jest wymieniona więcej niż jednej z organizacji, wybierz żądany Przegląd dostępu organizacji.
+2. Wybierz symbol użytkownika w prawym górnym rogu strony, który wyświetla nazwę i domyślny organizacji. Jeśli więcej niż jednej z organizacji jest wymieniony, wybierz organizacji, który zażądał przeglądu dostępu.
 
-3. Jeśli Kafelek z etykietą **dostępu przeglądami** znajduje się w prawej części strony, wybierz go. Jeśli Kafelek nie jest widoczny, nie ma żadnych przeglądami dostępu do wykonania dla tej organizacji, a w tej chwili nie jest potrzebne nie działanie.
+3. Jeśli Kafelek oznaczone jako **przeglądów dostępu** jest w prawej części strony wybierz opcję. Jeśli Kafelek nie jest widoczna, nie Brak sprawdzeń dostępu do przeprowadzenia tej organizacji i w tej chwili jest wymagana żadna akcja.
 
-## <a name="fill-out-an-access-review"></a>Wypełnianie Przegląd dostępu
+## <a name="fill-out-an-access-review"></a>Wypełnij przeglądu dostępu
 
-Po wybraniu Przegląd dostępu na liście widać dostęp. Wybierz wiersz i zdecydować się na zatwierdzenie lub odrzucenie potrzeby nieprzerwanego dostępu.
+Po wybraniu przeglądu dostępu na liście widać dostępu. Zaznacz wiersz i określ, czy chcesz zatwierdzić lub odrzucić swoje potrzeby opinię dotyczącą przedłużenia dostępu.
 
-Osoba dokonująca przeglądu mogą wymagać podania uzasadnienie zatwierdzanie nieprzerwanego dostępu.
+Recenzent może wymagać, aby podać uzasadnienie zatwierdzenie przedłużenia dostępu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odmowa dostępu nie są natychmiast usuwane. Jeśli chcesz zmienić odpowiedzi i zatwierdzania, zresetuj odpowiedzi i wybierz nową odpowiedź. Aby wykonać ten krok, dopiero po zakończeniu Przegląd dostępu.
+Odmowa dostępu nie są natychmiast usuwane. Jeśli chcesz zmienić odpowiedzi i zatwierdzenie, zresetować odpowiedzi i wybierz nową odpowiedź. Aby wykonać ten krok, dopiero po zakończeniu przeglądu dostępu.
 
 
 

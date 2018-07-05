@@ -1,66 +1,66 @@
 ---
-title: Jak zarządzać ustawienia aktywacji dla roli | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić ustawienia domyślne dla uprzywilejowanymi tożsamościami przy rozszerzenia usługi Azure Active Directory Privileged Identity Management.
+title: Jak zarządzać ustawień aktywacji roli | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zmienić ustawienia domyślne uprzywilejowanymi tożsamościami przy użyciu rozszerzenia usługi Azure Active Directory Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4557457e28a9a9b8bcd7f5c3bda40fbba8cdd24b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9735023fa8aefe942892fc10d5f186cca62ab6be
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233309"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446925"
 ---
-# <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>Jak zarządzać ustawienia roli aktywacji w usłudze Azure AD Privileged Identity Management
-Administrator ról uprzywilejowanych można dostosować w usłudze Azure AD Privileged Identity Management (PIM) w organizacji, łącznie ze zmianą środowisko dla użytkownika, który jest aktywowanie przypisania roli kwalifikujących się.
+# <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>Jak zarządzać ustawień aktywacji roli w usłudze Azure AD Privileged Identity Management
+Administrator ról uprzywilejowanych, można dostosować usługi Azure AD Privileged Identity Management (PIM) w organizacji, w tym zmian środowiska dla użytkownika, który jest aktywacja kwalifikujące się przypisanie roli.
 
 ## <a name="manage-the-role-activation-settings"></a>Zarządzanie ustawieniami aktywacji roli
-1. Przejdź do [portalu Azure](https://portal.azure.com) i wybierz **Azure AD Privileged Identity Management** aplikacji z poziomu pulpitu nawigacyjnego.
-2. Wybierz **Zarządzanie ról uprzywilejowanych** > **ustawienia** > **ról uprzywilejowanych**.
+1. Przejdź do [witryny Azure portal](https://portal.azure.com) i wybierz **usługi Azure AD Privileged Identity Management** aplikacji z poziomu pulpitu nawigacyjnego.
+2. Wybierz **Zarządzanie rolami uprzywilejowanymi** > **ustawienia** > **ról uprzywilejowanych**.
 3. Wybierz rolę, którego ustawienia chcesz zarządzać.
 
-Na stronie Ustawienia dla każdej roli istnieje wiele ustawień, które można skonfigurować. Te ustawienia dotyczą tylko użytkownicy, którzy są kwalifikujących się Administratorzy, Administratorzy nie trwałych.
+Na stronie Ustawienia dla każdej roli istnieje wiele ustawień, które można skonfigurować. Te ustawienia dotyczą tylko użytkowników, którzy są administratorów uprawnionych administratorów nie trwałych.
 
-**Aktywacje**: czas, w godzinach, które roli pozostaje aktywne, przed jego wygaśnięciem. Może to być w przedziale od 1 do 72 godzin.
+**Aktywacje**: czasu w godzinach, które rola pozostaje aktywna, przed jego wygaśnięciem. Może to być z zakresu od 1 do 72 godzin.
 
-**Powiadomienia**: można wybrać, czy system wysyła wiadomości e-mail do administratorów potwierdzenie ich uaktywniono rolę. Może to być przydatne do wykrywania nieautoryzowanego lub nielegalne aktywacji.
+**Powiadomienia**: Możesz wybrać, informację określającą, czy system wysyła wiadomości e-mail do administratorów potwierdzenie ich uaktywniono rolę. Może to być przydatne w przypadku wykrycia nieautoryzowanego lub nielegalne aktywacji.
 
-**Zdarzenie/żądania biletu**: można wybrać, czy należy wymagać Administratorzy kwalifikujących się do dołączenia numer biletu, gdy aktywują ich roli. Może to być przydatne podczas wykonywania inspekcji dostępu do roli.
+**Bilet zdarzenia/żądania**: można wybrać, czy nie będą musieli uprawnionymi administratorami, aby dołączyć numer biletu podczas aktywacji ich ról. Może to być przydatne, gdy wykonujesz inspekcje dostępu do roli.
 
-**Uwierzytelnianie wieloskładnikowe**: można wybrać, czy należy wymagać od użytkowników zweryfikować swoją tożsamość za pomocą usługi MFA aktywować ich ról. Mają można zweryfikować tego raz dla sesji, nie za każdym razem, gdy ich aktywowania roli. Istnieją dwa porady należy wziąć pod uwagę podczas włączania uwierzytelniania Wieloskładnikowego:
+**Uwierzytelnianie wieloskładnikowe**: można wybrać, czy wymagać od użytkowników zweryfikować swoją tożsamość za pomocą uwierzytelniania Wieloskładnikowego, zanim użytkownik może dokonać aktywacji ich ról. Mają tylko sprawdzić to raz dla sesji, nie za każdym razem, gdy ich aktywowania roli. Istnieją dwa wskazówki, aby mieć na uwadze, po włączeniu usługi MFA:
 
-* Użytkownicy, którzy mają konta Microsoft do ich adresów e-mail (zazwyczaj @outlook.com, ale nie zawsze) nie można zarejestrować w usłudze Azure MFA. Jeśli chcesz przypisać role do użytkowników z kontami Microsoft, możesz były administratorów trwałych lub Wyłącz uwierzytelnianie wieloskładnikowe dla tej roli.
-* Nie można wyłączyć usługi MFA dla wysoko uprzywilejowane ról dla usługi Azure AD i usługi Office 365. Jest to zabezpieczenie, ponieważ te role powinny być starannie chronione:  
+* Użytkownicy, którzy mają konta Microsoft dla swoich adresów e-mail (zazwyczaj @outlook.com, ale nie zawsze) nie można zarejestrować usługi Azure MFA. Jeśli chcesz przypisać role do użytkowników z kontami Microsoft, możesz zwiększyć ich administratorów trwałych lub wyłączanie usługi MFA dla tej roli.
+* Nie można wyłączyć uwierzytelnianie wieloskładnikowe dla ról o wysokim poziomie uprawnień dla usługi Azure AD i Office 365. Jest to funkcja bezpieczeństwa, ponieważ te role powinny być dokładnie chronione:  
   
   * Administrator aplikacji
   * Administrator serwera Proxy aplikacji
   * Administrator rozliczeń  
   * Administrator do spraw zgodności  
-  * Administrator programu CRM usługi
-  * Osoba zatwierdzająca dostępu skrytki klienta
+  * Administrator usługi CRM
+  * Osoba zatwierdzająca dostęp do skrytki klienta
   * Składnik zapisywania katalogu  
   * Administrator programu Exchange  
   * Administrator globalny
   * Administrator usługi Intune
-  * Skrzynki pocztowej administratora  
+  * Administrator skrzynki pocztowej  
   * Pomoc techniczna dla partnerów (warstwa 1)  
   * Pomoc techniczna dla partnerów (warstwa 2)  
   * Administrator roli uprzywilejowanej   
   * Administrator zabezpieczeń  
   * Administrator programu SharePoint  
   * Administrator programu Skype dla firm  
-  * Administrator konta użytkownika  
+  * Administrator kont użytkowników  
 
-Aby uzyskać więcej informacji na temat przy użyciu usługi MFA w usłudze PIM zobacz [sposobu wymagać uwierzytelniania MFA](active-directory-privileged-identity-management-how-to-require-mfa.md).
+Aby uzyskać więcej informacji o używaniu MFA za pomocą usługi PIM zobacz [jak wymagać uwierzytelniania Wieloskładnikowego](active-directory-privileged-identity-management-how-to-require-mfa.md).
 
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 

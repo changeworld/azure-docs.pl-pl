@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie dostępem do aplikacji przy użyciu usługi Azure AD | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak Azure Active Directory umożliwia organizacjom określić aplikacje, do których każdy użytkownik ma dostęp.
+description: W tym artykule opisano, jak usługi Azure Active Directory umożliwia organizacjom określić aplikacje, do których każdy użytkownik ma dostęp.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: 019bdecd315f6da91fef8e7ed5d088e328253ef6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f03516bf22f46f1b5e4869409ad7e999dc9960f1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35304087"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450073"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
-Zarządzanie dostępem trwającą, użycia oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępu do aplikacji. Czasami przypisania jest wykonywane przez zespół IT ogólne lub działów. Często decyzji przypisania ma na celu delegować do podejmującą biznesowych, wymaganie zatwierdzenia przed sprawia, że IT przypisania.  Inne organizacje inwestycji w Integracja z istniejącą automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub kontroli dostępu na podstawie atrybutu (ABAC). Integracji i rozwoju reguły zwykle specjalistyczne i kosztowne. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne, kosztowne i skomplikowane.
+Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.
 
 ## <a name="how-does-azure-active-directory-help"></a>Jak pomaga usługi Azure Active Directory?
- Usługi Azure AD obsługuje zarządzanie szeroką gamę dostępu skonfigurowanych aplikacji umożliwia organizacjom łatwe osiągnięcia zakresu z automatycznego na podstawie atrybutów przydziału (scenariusze ABAC lub RBAC) do delegowania i, w tym zasady odpowiednich uprawnień dostępu Zarządzanie administratorami. Z usługą Azure AD można łatwo uzyskać złożone zasady łączenie wielu modeli zarządzania dla jednej aplikacji i może nawet ponownie użyć zasad zarządzania dla aplikacji z tej samej grupy odbiorców.
+ Usługi Azure AD obsługuje zarządzanie doskonały dostęp skonfigurowanych aplikacji, umożliwiając organizacjom łatwo korzystać z zasad odpowiednich uprawnień dostępu — od przypisania automatycznego, oparte na atrybutach (scenariusze ABAC lub RBAC) za pośrednictwem delegowania oraz, takich jak Zarządzanie administratorami. Za pomocą usługi Azure AD można łatwo osiągnąć złożone zasady, łącząc wiele modeli zarządzania dla pojedynczej aplikacji, a nawet można ponownie użyć zasad zarządzania aplikacji przy użyciu tej samej grupy odbiorców.
 
-* [Dodawanie nowych lub istniejących aplikacji](configure-single-sign-on-portal.md)
+* [Dodanie nowej lub istniejącej aplikacji](configure-single-sign-on-portal.md)
 
- Przypisanie aplikacji usługi Azure AD koncentruje się na dwóch trybów przypisania głównej:
+ Przypisania aplikacji usługi Azure AD koncentruje się na dwóch trybach podstawowy przypisania:
 
-* **Przypisanie poszczególnych** administratora z uprawnieniami administratora globalnego katalogu można wybrać poszczególnych kont użytkowników i przyznano im dostęp do aplikacji.
-* **Przypisanie oparte na grupach (płatnej tylko usługi Azure AD)** administratora z uprawnieniami administratora globalnego katalogu można przypisać grupę aplikacji. Dostęp do określonych użytkowników zależy od tego, czy są oni członkami grupy w momencie próbują uzyskać dostęp do aplikacji. Innymi słowy administrator może efektywnie utworzyć regułę przypisania, podając "wszelkie bieżący element członkowski grupy przypisanej ma dostęp do aplikacji". Użycie tej opcji przypisania, Administratorzy mogą korzystać z tych opcji zarządzania grupami usługi Azure AD, w tym [opartych na atrybutach grup dynamicznych](../active-directory-groups-create-azure-portal.md), grup systemu zewnętrznego (na przykład w infrastrukturze lokalnej usługi Active Directory lub pracy), lub zarządzana przez administratora lub zarządzane eksploatacyjnych niezależne grup. Pojedynczej grupy mogą być łatwo przypisane do wielu aplikacji, zmniejsza się złożoność zarządzania ogólną zapewnienie, że aplikacje przypisania koligacji mogą współużytkować reguły przypisania. Należy pamiętać, że grup zagnieżdżonych członkostwa nie są obsługiwane dla grupy przypisywania do aplikacji w tej chwili.
+* **Przypisanie indywidualne** administratora z uprawnieniami administratora globalnego katalogu można wybrać poszczególnych kont użytkowników i przyznać im dostęp do aplikacji.
+* **Przypisanie oparte na grupach, (płatność tylko usługi Azure AD)** administratora z uprawnieniami administratora globalnego katalogu można przypisać grupę do aplikacji. Dostęp do określonych użytkowników zależy od tego, czy są członkowie grupy w czasie użytkownik próbuje uzyskać dostęp do aplikacji. Innymi słowy administrator może skutecznie utworzyć reguły przypisania z informacją "bieżący członkom grupy przypisane ma dostęp do aplikacji". Przy użyciu tej opcji przypisania, Administratorzy mogą korzystać z dowolnej opcji zarządzania grupami usługi Azure AD, w tym [grupy dynamiczne oparte na atrybutach](../fundamentals/active-directory-groups-create-azure-portal.md), grup zewnętrznych systemu (na przykład w lokalnej usługi Active Directory lub pracy), lub grupy, zarządzane przez administratora lub zarządzanych eksploatacyjnych samoobsługowego. Pojedynczej grupy można łatwo przypisać do wielu aplikacji, upewniając się, aplikacje z użyciem koligacji przypisania udostępnić reguły przypisania, co zmniejsza ogólną złożoność zarządzania. Należy pamiętać, że członkostwo w grupach zagnieżdżonych nie są obsługiwane w przypadku oparte na grupach przypisywania do aplikacji, w tym momencie.
 
-Korzystanie z tych trybów dwóch przypisania, Administratorzy można osiągnąć wszystkie przypisania pożądane podejścia do zarządzania.
+Za pomocą tych trybów dwóch przypisania, Administratorzy mogą osiągnąć wszystkie przypisania pożądane podejścia do zarządzania.
 
-Z usługą Azure AD użycia i przydział raportowania jest w pełni zintegrowana, umożliwiające administratorom łatwe raport dotyczący stan przypisania, błędy przydziału i użycia nawet.
+Za pomocą usługi Azure AD użycia i przypisanie raportowania jest w pełni zintegrowana, dzięki czemu nawet administratorzy łatwo sporządzić raport na temat stanu przypisania, błędy przypisania i nawet użycia.
 
-## <a name="complex-application-assignment-with-azure-ad"></a>Przypisanie złożonych aplikacji z usługą Azure AD
-Należy wziąć pod uwagę aplikacji, takie jak Salesforce. W wielu organizacjach Salesforce jest używany głównie przez organizacje sprzedaży i marketingu. Często członkowie zespołu marketingu wysokiej mają uprzywilejowany dostęp do usług Salesforce, podczas gdy członkowie zespołu sprzedaży mają ograniczony dostęp do. W wielu przypadkach szerokie populacji pracowników przetwarzających informacje ograniczyć dostęp do aplikacji. Wyjątki od tych reguł skomplikować kwestii. Często jest prawa poszczególnych zespołów kierowniczej marketing lub sprzedaży, aby udzielić użytkownikowi dostępu lub zmienić ich ról niezależnie od zasady ogólne.
+## <a name="complex-application-assignment-with-azure-ad"></a>Przypisanie aplikacji złożonych z usługą Azure AD
+Rozważmy aplikację, takich jak Salesforce. W wielu organizacjach Salesforce jest używany głównie przez organizacje sprzedaży i marketingu. Często członków zespołu ds. marketingu wysoce ma uprzywilejowany dostęp do usługi Salesforce, gdy członkowie zespołu sprzedaży mają ograniczony dostęp. W wielu przypadkach szerokiego populacji pracowników przetwarzających informacje ma ograniczony dostęp do aplikacji. Wyjątki od tych reguł skomplikować. Często jest prawa poszczególnych zespoły kierownicze marketingu i sprzedaży, aby udzielić użytkownikowi dostępu lub zmień ich ról, niezależnie od tych ogólnych reguł.
 
-Z usługą Azure AD można wstępnie skonfigurowane dla rejestracji jednokrotnej (SSO) i automatyczne Inicjowanie obsługi aplikacji, takich jak Salesforce. Gdy aplikacja jest skonfigurowana, Administrator może przejąć Akcja jednorazowa, aby utworzyć i przypisać odpowiednie grupy. W tym przykładzie administrator może wykonać następujące przypisania:
+Z usługą Azure AD aplikacji, takich jak Salesforce, można wstępnie skonfigurowane dla logowania jednokrotnego (SSO) i automatyczną aprowizację. Gdy aplikacja jest skonfigurowana, Administrator może przejąć Akcja jednorazowa, aby utworzyć i przypisać odpowiednie grupy. W tym przykładzie administrator można wykonać następujące przypisania:
 
-* [Grupami dynamicznymi](../active-directory-groups-create-azure-portal.md) można zdefiniować automatycznie reprezentujący wszystkie elementy członkowskie zespołami sprzedaży i marketingu, za pomocą atrybutów, takich jak dział lub roli:
+* [Grupy dynamiczne](../fundamentals/active-directory-groups-create-azure-portal.md) można zdefiniować, aby automatycznie reprezentują wszyscy członkowie zespołów sprzedaży i marketingu, przy użyciu atrybutów, takich jak dział lub ról:
   
   * Wszyscy członkowie grupy marketing, może zostać przypisana do roli "marketing" w usłudze Salesforce
-  * Wszyscy członkowie zespołu sprzedaży, które grupy może zostać przypisana do roli "sprzedaż" w usłudze Salesforce. Dalsze dopracowanie można użyć wielu grup, które reprezentują regionalnych zespoły przypisane do różnych ról usług Salesforce.
-* Aby włączyć mechanizm wyjątków, można utworzyć grupy samoobsługi dla każdej roli. Na przykład grupę "Salesforce marketingu wyjątek" można utworzyć jako grupa samoobsługi. Grupy można przypisać do roli marketing Salesforce i marketingu kadry kierowniczej mogą być dokonywane właścicieli. Członkami marketing kadry kierowniczej można dodać lub usunąć użytkowników, ustawić zasady sprzężenia, lub nawet zatwierdzanie lub odrzucanie żądań poszczególnych użytkowników, aby dołączyć. Jest to obsługiwane przez środowisko odpowiednie procesu roboczego informacje, które nie wymagają specjalistyczne szkolenie właścicieli lub elementy członkowskie.
+  * Wszyscy członkowie zespołu sprzedaży, które grupy zostanie przypisana do roli "terminy sprzedaż" w usłudze Salesforce. Dalsze dopracowanie można użyć wielu grup, które reprezentują regionalnych zespołów sprzedaży, przypisane do różnych ról usługi Salesforce.
+* Aby włączyć mechanizm wyjątków, można utworzyć grupy samoobsługi dla każdej roli. Na przykład "Salesforce marketingowych wyjątek" grupy tworzyć jako grupa samoobsługi. Grupy można przypisać do marketingu rola usługi Salesforce i zespołu ds. marketingu kierownictwo może się właścicieli. Członkowie zespołu ds. marketingu kierownictwo może dodać lub usunąć użytkowników, ustawić zasady dołączania lub nawet zatwierdzenia lub odmowy żądania dołączenia do poszczególnych użytkowników. Ten mechanizm jest obsługiwany za pośrednictwem informacji procesu roboczego odpowiednie środowisko, które wymagają specjalistycznego szkolenia dla właścicieli i członków.
 
-W takim przypadku wszystkich użytkowników przypisanych będzie automatycznie przygotowana do usług Salesforce, gdy są one dodawane do różnych grup, będzie można aktualizować ich przypisanie roli w usłudze Salesforce. Użytkownicy będą mogli na potrzeby odnajdywania i uzyskiwać dostęp do usług Salesforce, za pomocą panelu dostępu do aplikacji firmy Microsoft, klientom sieci web pakietu Office, lub nawet przechodząc do ich organizacyjnej strony logowania usługi Salesforce. Administratorzy będą mogli w łatwy sposób wyświetlania stanu użycia i przydział, za pomocą raportów usługi Azure AD.
+W tym przypadku wszystkich przypisanych użytkowników będzie automatycznie aprowizowane do usługi Salesforce, gdy są one dodawane do różnych grup, ich przypisanie roli może zostać zaktualizowane w usłudze Salesforce. Użytkownicy będą mogli odnaleźć i dostęp do usługi Salesforce, za pomocą panelu dostępu do aplikacji firmy Microsoft, klientów sieci web pakietu Office, lub nawet przechodząc do ich organizacji strony logowania usługi Salesforce. Administratorzy będzie można łatwo wyświetlić stan użycia i przydziałów za pomocą raportowania usługi Azure AD.
 
-Administratorzy mogą stosować [dostępu warunkowego dla usługi Azure AD](../active-directory-conditional-access-azure-portal.md) można ustawić zasady dostępu dla określonych ról. Te zasady mogą obejmować, czy dostęp jest dozwolony poza środowiska firmy i nawet uwierzytelnianie wieloskładnikowe wymagania lub urządzenia do uzyskania dostępu w przypadku różnych.
+Administratorzy mogą stosować [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md) można ustawić zasady dostępu dla określonych ról. Zasady te mogą obejmować, czy dostęp jest dozwolony w środowisku firmowym i nawet Multi-Factor Authentication urządzenie wymagania lub uzyskanie dostępu w różnych przypadkach poza.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Ochrona aplikacji przy użyciu dostępu warunkowego](../active-directory-conditional-access-azure-portal.md)
-* [Zarządzanie grupami samoobsługi/SSAA](../active-directory-accessmanagement-self-service-group-management.md)
+* [Zarządzanie grupami samoobsługi/SSAA](../users-groups-roles/groups-self-service-management.md)

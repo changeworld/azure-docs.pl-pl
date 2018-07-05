@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 7342e0fe69cf3c82ec82bf1a864e7325449fff22
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342256"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436407"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git
 
@@ -226,7 +226,7 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 ### <a name="groups-folder"></a>folder grupy
 `groups` Zawiera folder dla każdej grupy zdefiniowane w wystąpieniu usługi.
 
-* `groups\<group name>\configuration.json` — jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [Pobierz określoną grupę](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operacji.
+* `groups\<group name>\configuration.json` — jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [Pobierz określoną grupę](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) operacji.
 * `groups\<group name>\description.html` — to jest opis grupy i odpowiada `description` właściwość [grupy jednostek](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>folder zasady
@@ -246,7 +246,7 @@ Ustawienie ostatecznego `$ref-policy`, mapy do pliku instrukcje zasad globalnych
 ### <a name="products-folder"></a>folder produktów
 `products` Zawiera folder dla każdego produktu z definicją w wystąpieniu usługi.
 
-* `products\<product name>\configuration.json` — jest to konfiguracja dla produktu. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [pobrać określonego produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operacji.
+* `products\<product name>\configuration.json` — jest to konfiguracja dla produktu. Jest to te same informacje, które zostaną zwrócone, jeśli nastąpi wywołanie [pobrać określonego produktu](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) operacji.
 * `products\<product name>\product.description.html` — to jest opis produktu i odpowiada `description` właściwość [jednostkę produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) w interfejsie API REST.
 
 ### <a name="templates"></a>templates

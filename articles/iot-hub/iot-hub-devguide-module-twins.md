@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie twins modułu Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera - twins moduł używany do synchronizacji danych stanu i konfiguracji między centrum IoT i urządzeniami
+title: Zrozumienie bliźniaczych reprezentacjach modułów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — bliźniaczych reprezentacjach modułów Użyj do synchronizacji danych stanu i konfiguracji między centrum IoT Hub i urządzeniach
 author: chrissie926
 manager: ''
 ms.service: iot-hub
@@ -8,49 +8,49 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 71d762b6f1c199db17058ac107aad7a0b3260ae7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633499"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436323"
 ---
-# <a name="understand-and-use-module-twins-in-iot-hub"></a>W zrozumieniu i użytkowaniu twins modułu w Centrum IoT
+# <a name="understand-and-use-module-twins-in-iot-hub"></a>Zrozumieniu i użytkowaniu bliźniaczych reprezentacjach modułów usługi IoT Hub
 
-W tym artykule przyjęto przeczytane [w zrozumieniu i użytkowaniu twins urządzenie w Centrum IoT] [ lnk-devguide-device-twins] pierwszy. W Centrum IoT w ramach każdej tożsamości urządzenia można utworzyć maksymalnie 20 tożsamości modułu. Każda tożsamość moduł generuje niejawnie dwie modułu. Bardzo podobne do twins urządzenia, są twins modułu dokumentów JSON, które przechowują metadane, konfiguracji i warunki w tym informacje o stanie modułu. Centrum IoT Azure obsługuje dwie moduł, dla każdego modułu podłączoną do Centrum IoT. 
+W tym artykule założono, użytkownik przeczytał [zrozumieniu i użytkowaniu bliźniaczych reprezentacji urządzeń w usłudze IoT Hub] [ lnk-devguide-device-twins] pierwszy. W usłudze IoT Hub w ramach każdej tożsamości urządzenia można utworzyć maksymalnie 20 tożsamości modułu. Każda tożsamość moduł generuje niejawnie bliźniaczą reprezentację modułu. Bardzo podobnie jak bliźniacze reprezentacje urządzeń, dokumenty JSON, które przechowują informacje o stanie modułu w tym metadane, konfiguracje i warunki są bliźniaczych reprezentacjach modułów. Usługa Azure IoT Hub utrzymuje bliźniaczą reprezentację modułu, dla każdego modułu, w którym jest nawiązywane połączenie usługi IoT Hub. 
 
-Na stronie urządzenia zestawy SDK urządzenia IoT Hub umożliwiają tworzenie modułów, których każda otwiera niezależnie od połączenia z Centrum IoT. Pozwala na użycie oddzielnych przestrzeni nazw dla różnych składników na urządzeniu. Na przykład masz na komputerze automaty, który ma trzy różne czujników. Każdy czujnik jest kontrolowana przez różnych działów w firmie. Można utworzyć modułu dla każdej czujnika. W ten sposób każdy dział jest tylko możliwość wysyłania zadań lub metody bezpośredniego czujnika decydować, co pozwala uniknąć konfliktów i błędy użytkownika.
+Zestawy SDK urządzeń IoT Hub po stronie urządzenia umożliwiają tworzenie modułów, których każda otwiera niezależnych połączenie do usługi IoT Hub. Dzięki temu można używać oddzielnych przestrzeni nazw dla różnych składników na urządzeniu. Na przykład masz Automat, która ma trzy różne czujniki. Każdy czujnik jest kontrolowana przez różne działy w Twojej firmie. Można utworzyć modułu dla każdego czujnika. W ten sposób każdy dział jest tylko możliwość wysyłania zadań lub metod bezpośrednich do czujnika, które mogą kontrolować, unikanie konfliktów i błędy użytkowników.
 
- Moduł tożsamości i moduł dwie zapewnia te same możliwości jak tożsamości urządzenia i dwie urządzenia, ale dokładniej. To bardziej szczegółowy umożliwia urządzeń obsługujących, takie jak system operacyjny na podstawie urządzeń lub urządzeń oprogramowania układowego zarządzania wiele składników, aby odizolować konfiguracji i warunki dla każdego z tych składników. Moduł tożsamości i twins modułu zapewniają separacji zarządzania, podczas pracy z urządzeniami IoT, które składniki oprogramowania modułowych. Firma Microsoft celem obsługujący wszystkie funkcje dwie urządzenia na poziomie dwie modułu przez moduł dwie ogólnej dostępności. 
+ Bliźniacza reprezentacja modułu i tożsamości modułu zawiera te same możliwości jak tożsamość urządzenia i bliźniaczej reprezentacji urządzenia, ale w bardziej szczegółowy. To bardziej szczegółowy umożliwia urządzeń obsługujących, takich jak system operacyjny na podstawie urządzenia lub oprogramowania układowego zarządzania wiele składników, aby odizolować konfiguracji i warunki dla każdego z tych składników. Moduł tożsamości i bliźniaczych reprezentacjach modułów zapewniają separacji zarządzania, podczas pracy z urządzeń IoT, które mają składniki modułowe oprogramowanie. Firma Microsoft mają na celu wspieranie wszystkie funkcje bliźniaczej reprezentacji urządzenia na poziomie bliźniaczej reprezentacji modułu wg ogólnej dostępności bliźniaczej reprezentacji modułu. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 W tym artykule opisano:
 
-* Struktura dwie modułu: *tagi*, *żądany* i *zgłosił właściwości*.
-* Operacje, które moduły i zaplecza, które mogą wykonywać na twins modułu.
+* Struktura bliźniaczą reprezentację modułu: *tagi*, *żądaną* i *zgłaszanych właściwości*.
+* Operacje, które moduły i zapleczy, które mogą wykonywać na bliźniaczych reprezentacjach modułów.
 
-Zapoznaj się [wskazówki komunikację urządzenia do chmury] [ lnk-d2c-guidance] wskazówki dotyczące przy użyciu właściwości zgłoszone, wiadomości urządzenia do chmury lub przekazywania pliku.
-Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] wskazówki na temat używania żądanej właściwości, metody bezpośredniego lub komunikaty chmury do urządzenia.
+Zapoznaj się [wskazówki dotyczące komunikacji urządzenia do chmury] [ lnk-d2c-guidance] wskazówki dotyczące za pomocą zgłoszonych właściwości, komunikaty z urządzenia do chmury lub przekazywanie pliku.
+Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] wskazówki na temat korzystania z żądanych właściwości, metod bezpośrednich lub komunikatów z chmury do urządzeń.
 
-## <a name="module-twins"></a>Moduł twins
-Moduł twins przechowywać informacje związane z modułu który:
+## <a name="module-twins"></a>Bliźniaczych reprezentacjach modułów
+Bliźniaczych reprezentacjach modułów przechowywać informacje dotyczące modułu który:
 
-* Modułów na urządzeniu i Centrum IoT umożliwia synchronizowanie modułu warunków i konfiguracji.
-* Zaplecze rozwiązania służy do zapytań i docelowego długotrwałą operacji.
+* Moduły na urządzeniu i Centrum IoT Hub można służy do synchronizowania modułu warunków i konfiguracji.
+* Zaplecze rozwiązania służy do zapytań i docelowy długotrwałych operacji.
 
-Cykl życia dwie modułu jest połączony z odpowiadającego [tożsamości modułu][lnk-identity]. Moduły twins niejawnie są tworzone i usuwane po utworzeniu lub usunięciu w Centrum IoT tożsamości modułu.
+Cykl życia bliźniaczą reprezentację modułu jest połączony z odpowiednich [tożsamości modułu][lnk-identity]. Moduły twins niejawnie są tworzone i usunięte po utworzeniu lub usunięciu w usłudze IoT Hub z modułu tożsamości.
 
-Dwie modułu jest dokumentem JSON, który zawiera:
+Bliźniacza reprezentacja modułu jest dokumentem JSON, który zawiera:
 
-* **Tagi**. Sekcja zaplecza rozwiązania można odczytywać i zapisywać do dokumentu JSON. Tagi nie są widoczne dla modułów na urządzeniu. Tagi są ustawione na potrzeby zapytań o celu.
-* **Żądany właściwości**. Używać razem z właściwości zgłoszony do synchronizowania warunki lub konfiguracji modułu. Zaplecza rozwiązania można ustawić odpowiednie właściwości, oraz moduł aplikacji można je odczytać. Moduł aplikacji może również odbierać powiadomienia o zmianach w odpowiednich właściwościach.
-* **Zgłoszone właściwości**. Umożliwia oraz odpowiednie właściwości synchronizacji konfiguracji modułu lub warunków. Moduł aplikacji można ustawić właściwości zgłoszone, a zaplecze rozwiązania może odczytywać i wyszukiwać w nich.
-* **Właściwości tożsamości modułu**. Głównego dokumentu JSON dwie modułu zawiera właściwości tylko do odczytu z odpowiedniego tożsamości modułu przechowywane w [rejestru tożsamości][lnk-identity].
+* **Tagi**. Sekcja dokumentu JSON, który zaplecze rozwiązania może odczytywać i zapisywać. Tagi nie są widoczne dla modułów na urządzeniu. Tagi są ustawiane podczas wykonywania zapytań w celu.
+* **Żądane właściwości**. Używać razem z zgłaszanych właściwości, aby zsynchronizować konfiguracji modułu lub warunki. Zaplecze rozwiązania może ustawić żądanych właściwości, a aplikacja moduł może je odczytać. Aplikacja moduł może również odbierać powiadomienia o zmianach w odpowiednich właściwości.
+* **Zgłaszane właściwości**. Używać razem z żądanych właściwości, aby zsynchronizować konfiguracji modułu lub warunki. Aplikacja moduł można ustawić zgłaszanych właściwości, a zaplecze rozwiązania może odczytywać i wyszukiwać w nich.
+* **Właściwości tożsamości modułu**. Katalog główny dokumentów JSON bliźniaczej reprezentacji modułu zawiera właściwości tylko do odczytu z odpowiedniej tożsamości modułu, przechowywane w [rejestr tożsamości][lnk-identity].
 
 ![][img-module-twin]
 
-W poniższym przykładzie przedstawiono dwie modułu dokumentu JSON:
+Bliźniacza reprezentacja modułu dokument JSON można znaleźć w poniższym przykładzie:
 
 ```json
 {
@@ -97,18 +97,18 @@ W poniższym przykładzie przedstawiono dwie modułu dokumentu JSON:
 }
 ```
 
-W obiekcie głównym są moduł właściwości tożsamości i kontener obiektów na `tags` i oba `reported` i `desired` właściwości. `properties` Kontener zawiera niektóre elementy tylko do odczytu (`$metadata`, `$etag`, i `$version`) opisano w [metadanych dwie] [ lnk-module-twin-metadata] i [ Optymistycznej współbieżności] [ lnk-concurrency] sekcje.
+W głównym obiekcie są moduł właściwości tożsamości i obiekty kontenera dla `tags` i wartościami `reported` i `desired` właściwości. `properties` Kontener zawiera niektóre elementy tylko do odczytu (`$metadata`, `$etag`, i `$version`) opisanego w [metadane bliźniaczej reprezentacji modułu] [ lnk-module-twin-metadata] i [ Optymistyczna współbieżność] [ lnk-concurrency] sekcje.
 
-### <a name="reported-property-example"></a>Przykład zgłoszony właściwości
-W poprzednim przykładzie zawiera dwie modułu `batteryLevel` właściwości zgłaszane przez moduł aplikacji. Ta właściwość umożliwia zapytania i działają na modułów na podstawie ostatniego poziomu zgłoszone baterii. Przykładami innych możliwości modułu raportowania modułu aplikacji lub opcji łączności.
+### <a name="reported-property-example"></a>Przykład zgłaszanej właściwości
+W poprzednim przykładzie zawiera bliźniaczą reprezentację modułu `batteryLevel` właściwości, który jest zgłaszany przez aplikację moduł. Ta właściwość umożliwia zapytania i działają na moduły na podstawie ostatniego poziomu zgłoszone baterii. Przykłady innych opcji łączności lub moduł funkcji modułu raportowania aplikacji.
 
 > [!NOTE]
-> Właściwości zgłoszone uprościć scenariuszy, w którym zaplecza rozwiązania jest zainteresowana ostatniej znanej wartości właściwości. Użyj [wiadomości urządzenia do chmury] [ lnk-d2c] zaplecza rozwiązania musi przetworzyć moduł telemetrii w postaci sekwencji zdarzeń oznaczony znacznikiem czasowym, takich jak szeregów czasowych.
+> Zgłaszane właściwości uproszczenia scenariuszy, w których zaplecze rozwiązania jest zainteresowany ostatniej znanej wartości właściwości. Użyj [komunikatów z urządzenia do chmury] [ lnk-d2c] zaplecze rozwiązania musi przetwarzać telemetrię modułu w postaci sekwencje zdarzenia oznaczony sygnaturą czasową, takie jak szeregów czasowych.
 
 ### <a name="desired-property-example"></a>Przykład żądanej właściwości
-W poprzednim przykładzie `telemetryConfig` potrzebne dwie modułu i zgłoszone właściwości są używane przez zaplecze rozwiązania i aplikacji modułu zsynchronizować konfiguracji dane telemetryczne dla tego modułu. Na przykład:
+W poprzednim przykładzie `telemetryConfig` żądanego bliźniaczą reprezentację modułu oraz zgłaszane właściwości są używane przez zaplecze rozwiązania i aplikacja moduł zsynchronizować konfiguracji dane telemetryczne dla tego modułu. Na przykład:
 
-1. Zaplecze rozwiązania ustawia żądanej właściwości na wartość wymaganą konfiguracją. Poniżej przedstawiono fragment dokumentu przy użyciu zestawu żądanej właściwości:
+1. Zaplecze rozwiązania ustawia żądaną właściwość z wartością żądaną konfiguracją. Poniżej przedstawiono część dokumentu z odpowiednią właściwością:
 
     ```json
     ...
@@ -121,7 +121,7 @@ W poprzednim przykładzie `telemetryConfig` potrzebne dwie modułu i zgłoszone 
     ...
     ```
 
-2. Powiadomienie do aplikacji modułu zmian natychmiast, jeśli połączone lub przy pierwszym próba ponownego połączenia. Aplikacja modułu następnie raporty zaktualizowanej konfiguracji (lub warunek błędu przy użyciu `status` właściwości). Poniżej przedstawiono część zgłoszonych właściwości:
+2. Powiadomienie do aplikacji modułu zmian natychmiast, jeśli połączone lub na pierwszym próba ponownego połączenia. Aplikacja moduł następnie raportów zaktualizowanej konfiguracji (lub warunek błędu przy użyciu `status` właściwości). Poniżej przedstawiono część zgłaszanych właściwości:
 
     ```json
     ...
@@ -135,18 +135,18 @@ W poprzednim przykładzie `telemetryConfig` potrzebne dwie modułu i zgłoszone 
     ...
     ```
 
-3. Zaplecze rozwiązania można śledzić wyniki operacji konfiguracji we wszystkich modułach wiele przez [badania] [ lnk-query] twins modułu.
+3. Zaplecze rozwiązania może śledzić wyniki operacja konfiguracji między wiele modułów przez [zapytań] [ lnk-query] bliźniaczych reprezentacjach modułów.
 
 > [!NOTE]
-> Poprzedni fragmenty kodu są przykłady, zoptymalizowana pod kątem czytelności, z jednym ze sposobów kodowania konfigurację modułu i jego stan. Centrum IoT nie nakłada określonego schematu dwie modułu potrzeby i podać właściwości w twins modułu.
+> Poprzedzających fragmentów są przykładami, zoptymalizowane pod kątem czytelności jednym ze sposobów kodowanie konfiguracji modułu i jego stan. Bliźniacza reprezentacja modułu żądanego i zgłoszonych właściwości w bliźniaczych reprezentacjach modułów usługi IoT Hub nie nakłada określonego schematu.
 > 
 > 
 
 ## <a name="back-end-operations"></a>Operacje zaplecza
-Zaplecze rozwiązania działa na dwie modułu przy użyciu następujących operacji niepodzielnych za pośrednictwem protokołu HTTPS:
+Zaplecze rozwiązania operuje na bliźniaczą reprezentację modułu przy użyciu następujących niepodzielne operacje udostępniane za pośrednictwem protokołu HTTPS:
 
-* **Pobieranie modułu dwie według Identyfikatora**. Ta operacja zwraca dokument dwie modułu, tym tagów i właściwości żądaną i podać systemu.
-* **Częściowego zaktualizowania dwie modułu**. Ta operacja umożliwia zaplecza rozwiązania celu częściowego zaktualizowania znaczników i odpowiednie właściwości w dwie modułu. Częściowej aktualizacji jest wyrażona jako dokument JSON, który dodaje lub aktualizuje dowolną właściwość. Wartość właściwości `null` zostaną usunięte. Poniższy przykład tworzy nową właściwość odpowiednią wartością `{"newProperty": "newValue"}`, spowoduje zastąpienie istniejącej wartości `existingProperty` z `"otherNewValue"`i usuwa `otherOldProperty`. Nie zmian do istniejących żądanej właściwości bądź tagi:
+* **Pobieranie bliźniaczą reprezentację modułu za pomocą Identyfikatora**. Ta operacja zwraca dokumentu bliźniaczej reprezentacji modułu, tym tagów i właściwości żądaną i podać systemu.
+* **Częściowo aktualizował bliźniaczą reprezentację modułu**. Ta operacja umożliwia zapleczu rozwiązania celu częściowego zaktualizowania tagi i żądane właściwości w bliźniaczej reprezentacji modułu. Częściową aktualizację jest wyrażona jako dokument JSON, który dodaje lub aktualizuje dowolną właściwość. Właściwości ustawione na `null` są usuwane. Poniższy przykład tworzy nowy żądaną właściwość z wartością `{"newProperty": "newValue"}`, zastępuje istniejącą wartość z `existingProperty` z `"otherNewValue"`i usuwa `otherOldProperty`. Żadne inne zmiany zostaną wprowadzone do istniejącego żądane właściwości lub tagi:
 
     ```json
     {
@@ -162,9 +162,9 @@ Zaplecze rozwiązania działa na dwie modułu przy użyciu następujących opera
     }
     ```
 
-* **Zastąp odpowiednie właściwości**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpić wszystkie istniejące odpowiednie właściwości i Zastąp nowy dokument JSON dla `properties/desired`.
-* **Zastąp znaczniki**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpić wszystkie istniejące znaczniki i Zastąp nowy dokument JSON dla `tags`.
-* **Odbieranie powiadomień dwie**. Ta operacja pozwala zaplecza rozwiązania otrzymać powiadomienie, gdy dwie jest modyfikowany. Aby to zrobić, rozwiązania IoT musi utworzyć trasę i ustaw źródło danych *twinChangeEvents*. Domyślnie są wysyłane żadne powiadomienia dwie, oznacza to, że istnieje wstępnie ma takie tras. Jeśli szybkość zmian jest zbyt duża lub z innych powodów, takich jak wewnętrzne błędy, Centrum IoT może wysłać tylko jedno powiadomienie, który zawiera wszystkie zmiany. W związku z tym jeśli aplikacja wymaga niezawodnej inspekcji i rejestrowania wszystkich stanów pośredniego, należy użyć wiadomości urządzenia do chmury. Komunikat powiadomienia dwie zawiera właściwości, oraz i treść.
+* **Zastąp żądane właściwości**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpienie wszystkich istniejących żądane właściwości i Wstaw nowy dokument JSON dla `properties/desired`.
+* **Zastąp tagi**. Ta operacja umożliwia zaplecza rozwiązania całkowicie zastąpienie wszystkich istniejących tagów i Wstaw nowy dokument JSON dla `tags`.
+* **Otrzymuj powiadomienia bliźniaczej reprezentacji**. Ta operacja umożliwia zapleczu rozwiązania otrzymywać powiadomienia po zmodyfikowaniu bliźniaczej reprezentacji. Aby to zrobić, rozwiązanie IoT musi utworzyć trasę i ustaw źródło danych jest równa *twinChangeEvents*. Domyślnie są wysyłane żadne powiadomienia bliźniaczej reprezentacji, oznacza to, że istnieje wstępnie nie takich tras. Jeśli szybkość zmian jest zbyt duża lub z innych powodów, takich jak wewnętrzne błędy, usługa IoT Hub może wysłać tylko jedno powiadomienie, który zawiera wszystkie zmiany. W związku z tym jeśli aplikacja wymaga inspekcji i rejestrowania dla wszystkich pośrednich stanów niezawodne, należy użyć komunikatów z urządzenia do chmury. Bliźniacza reprezentacja komunikat powiadomienia zawiera właściwości i treść.
 
     - Właściwości
 
@@ -173,19 +173,19 @@ Zaplecze rozwiązania działa na dwie modułu przy użyciu następujących opera
     $content — typ | application/json |
     $iothub-enqueuedtime |  Czas wysłania powiadomienia |
     $iothub-message-source | twinChangeEvents |
-    $content-kodowania | UTF-8 |
+    $content — kodowanie | UTF-8 |
     deviceId | Identyfikator urządzenia |
     moduleId | Identyfikator modułu |
-    hubName | Nazwa centrum IoT |
-    operationTimestamp | [ISO8601] sygnatury czasowej operacji |
+    hubName | Nazwa centrum IoT Hub |
+    operationTimestamp | [ISO8601] sygnatura czasowa operacji |
     iothub-message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" lub "updateTwin" |
 
-    Właściwości systemu wiadomości są poprzedzane prefiksem `'$'` symbolu.
+    Właściwości systemu komunikat mają prefiks `'$'` symboli.
 
     - Treść
         
-    Ta sekcja zawiera wszystkie zmiany dwie w formacie JSON. Używa tego samego formatu poprawek, z tą różnicą, że może zawierać wszystkie dwie sekcje: tagi, properties.reported properties.desired i czy zawiera on elementy "$metadata". Na przykład:
+    Ta sekcja zawiera wszystkie zmiany bliźniaczą reprezentację w formacie JSON. Używa tego samego formatu poprawek, z tą różnicą, że może zawierać wszystkie sekcje bliźniaczej reprezentacji: tagi, properties.reported, properties.desired i czy zawiera on elementy "$metadata". Na przykład:
 
     ```json
     {
@@ -206,29 +206,29 @@ Zaplecze rozwiązania działa na dwie modułu przy użyciu następujących opera
     }
     ```
 
-Obsługuje wszystkie poprzednie operacje [optymistycznej współbieżności] [ lnk-concurrency] i wymagają **ServiceConnect** uprawnienia, zgodnie z definicją w [zabezpieczeń] [ lnk-security] artykułu.
+Obsługa wszystkich poprzednich operacji [optymistycznej współbieżności] [ lnk-concurrency] i wymagają **ServiceConnect** uprawnienia, zgodnie z definicją w [zabezpieczeń] [ lnk-security] artykułu.
 
-Oprócz tych operacji można zaplecza rozwiązania:
+Oprócz tych operacji zaplecze rozwiązania może:
 
-* Zapytanie twins modułu przy użyciu przypominającego SQL [język zapytań Centrum IoT][lnk-query].
+* Zapytań bliźniaczych reprezentacjach modułów przy użyciu przypominającego SQL [język zapytań usługi IoT Hub][lnk-query].
 
 ## <a name="module-operations"></a>Operacje modułu
-Moduł aplikacji działa na dwie modułu przy użyciu operacji niepodzielnych w następujących:
+Aplikacja moduł operuje na bliźniaczą reprezentację modułu przy użyciu następujących niepodzielne operacje:
 
-* **Pobieranie modułu dwie**. Ta operacja zwraca dokument dwie moduł (w tym znaczniki i właściwości żądaną i podać system) dla aktualnie podłączonego modułu.
-* **Częściowego zaktualizowania właściwości zgłoszone**. Ta operacja umożliwia częściowej aktualizacji właściwości zgłoszone aktualnie połączonych modułu. Ta operacja używa tego samego formatu aktualizacji JSON, że rozwiązanie kopię celu zastosowania częściowej aktualizacji żądanej właściwości.
-* **Sprawdź odpowiednie właściwości**. Aktualnie połączonych modułu można otrzymywać powiadomienia o aktualizacjach do żądanej właściwości, gdy wystąpią. Moduł odbiera tego samego formularza aktualizacji (pełnych lub wymiana) wykonywane przez zaplecza rozwiązania.
+* **Pobieranie bliźniaczą reprezentację modułu**. Ta operacja zwraca dokument bliźniaczej reprezentacji modułu (w tym tagów i właściwości żądaną i podać system) dla aktualnie połączonych modułu.
+* **Częściowo aktualizowania zgłoszonych właściwości**. Ta operacja umożliwia częściową aktualizację zgłoszone właściwości aktualizuje aktualnie połączonych modułu. Ta operacja używa tego samego formatu aktualizacji JSON, że rozwiązanie kopię końcowych zastosowań częściową aktualizację żądane właściwości.
+* **Obserwuj żądane właściwości**. Moduł aktualnie połączonych można otrzymywać powiadomienia o aktualizacjach, żądanych właściwości, gdy wystąpią. Moduł odbiera tego samego formularza update (wymiana częściowego lub pełnego) wykonywana przez zaplecze rozwiązania.
 
-Wszystkie poprzednie operacje wymagają **ModuleConnect** uprawnienia, zgodnie z definicją w [zabezpieczeń] [ lnk-security] artykułu.
+Wymagaj wszystkich poprzednich operacji **ModuleConnect** uprawnienia, zgodnie z definicją w [zabezpieczeń] [ lnk-security] artykułu.
 
-[Urządzenia Azure IoT SDK] [ lnk-sdks] ułatwiają używać poprzedniej operacji z wielu języków i platform.
+[Zestawy SDK urządzeń Azure IoT] [ lnk-sdks] ułatwiają używać poprzedniej operacji z wielu języków i platform.
 
-## <a name="tags-and-properties-format"></a>Format znaczników i właściwości
-Znaczniki, odpowiednie właściwości i zgłoszone właściwości są obiektów JSON z następującymi ograniczeniami:
+## <a name="tags-and-properties-format"></a>Format właściwości i tagów
+Tagi, żądanych właściwości i zgłaszane właściwości są obiektami JSON z następującymi zastrzeżeniami:
 
-* Wszystkie klucze w obiektów JSON jest rozróżniana wielkość liter 64 bajtów ciągów UNICODE UTF-8. Dozwolone znaki kontrolne UNICODE (segmenty C0 i C1), Wyklucz znaków i `'.'`, `' '`, i `'$'`.
-* Wszystkie wartości w formacie JSON obiekty mogą być następujące typy JSON: wartość logiczna, liczba, ciąg, obiekt. Tablice nie są dozwolone. Maksymalna wartość dla liczb całkowitych jest 4503599627370495 i-4503599627370496 jest minimalny liczb całkowitych.
-* Wszystkie obiekty JSON w tagach, żądane i podać właściwości mogą mieć maksymalną głębokość 5. Na przykład następujący obiekt jest prawidłowy:
+* Wszystkie klucze w obiekty JSON jest rozróżniana wielkość liter 64 bajtów ciągów UNICODE UTF-8. Dozwolone znaki wykluczenia znaków kontrolnych UNICODE (segmenty C0 i C1) i `'.'`, `' '`, i `'$'`.
+* Wszystkie wartości w obiekty JSON może być następujących typów JSON: atrybut typu wartość logiczna, liczba, ciąg, obiekt. Tablice są niedozwolone. Maksymalna wartość dla liczb całkowitych jest 4503599627370495, a wartość minimalna dla liczb całkowitych jest-4503599627370496.
+* Wszystkie obiekty JSON w tagi i żądane i zgłaszanych właściwości może mieć maksymalną głębokość 5. Na przykład następujący obiekt jest prawidłowy:
 
     ```json
     {
@@ -250,15 +250,15 @@ Znaczniki, odpowiednie właściwości i zgłoszone właściwości są obiektów 
     }
     ```
 
-* Wszystkie wartości ciągu może mieć maksymalnie 4 KB długości.
+* Wszystkie ciągi mogą mieć maksymalnie 4 KB długości.
 
-## <a name="module-twin-size"></a>Rozmiar dwie modułu
-Centrum IoT wymusza ograniczenie rozmiaru 8KB na wszystkich odpowiednich wartości całkowitej `tags`, `properties/desired`, i `properties/reported`, z wyjątkiem elementów tylko do odczytu.
-Rozmiar jest obliczany poprzez zliczanie wszystkie znaki oprócz znaków sterujących UNICODE (segmenty C0 i C1) i spacje, które znajdują się poza stałe typu string.
-Centrum IoT z powodu błędu odrzuca wszystkie operacje, które spowoduje zwiększenie rozmiaru tych dokumentów powyżej limitu.
+## <a name="module-twin-size"></a>Rozmiar bliźniaczej reprezentacji modułu
+Usługa IoT Hub wymusza ograniczenie rozmiaru 8KB na wszystkich odpowiednich wartości całkowitej `tags`, `properties/desired`, i `properties/reported`, z wyłączeniem elementów tylko do odczytu.
+Rozmiar jest obliczany od policzenia wszystkich znaków, z wyjątkiem znaków kontrolnych UNICODE (segmenty C0 i C1) i miejsca do magazynowania, które znajdują się poza stałe typu string.
+Usługa IoT Hub z powodu błędu odrzuca wszystkie operacje, które spowoduje zwiększenie rozmiaru dokumentów, które przekracza limit.
 
-## <a name="module-twin-metadata"></a>Moduł dwie metadanych
-Centrum IoT przechowuje sygnatura czasowa ostatniej aktualizacji dla każdego obiektu JSON w module dwie potrzeby i podać właściwości. Sygnatury czasowe są w UTC i kodowany w [ISO8601] format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+## <a name="module-twin-metadata"></a>Metadane bliźniaczej reprezentacji modułu
+Usługa IoT Hub utrzymuje sygnaturę czasową ostatniej aktualizacji dla każdego obiektu JSON w bliźniaczej reprezentacji modułu żądanego i zgłaszanych właściwości. Sygnatury czasowe są w UTC i zakodowane w [ISO8601] format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Na przykład:
 
 ```json
@@ -306,20 +306,20 @@ Na przykład:
 }
 ```
 
-Ta informacja jest przechowywana na każdym poziomie (nie tylko liście strukturze JSON) do zachowania aktualizacji, które usunąć obiekt kluczy.
+Te informacje są przechowywane na każdym poziomie (nie tylko liście strukturze JSON), aby zachować aktualizacje, które usunąć klucze obiektów.
 
 ## <a name="optimistic-concurrency"></a>Optymistyczna współbieżność
-Tagi, potrzeby i podać właściwości wszystkich optymistycznej współbieżności pomocy technicznej.
-Tagi przypada tag ETag jako [RFC7232], reprezentujący reprezentacja JSON znacznika. Elementy etag w operacjach aktualizowania warunkowego z zaplecza rozwiązania służy do zapewnienia spójności.
+Tagi, żądane i zgłaszanych właściwości wszystkich Obsługa optymistycznej współbieżności.
+Tagi mają element ETag zgodnie [RFC7232], reprezentujący reprezentacji JSON znacznika. W celu zapewnienia spójności, można użyć elementów etag w operacjach aktualizowania warunkowe z zapleczem rozwiązania.
 
-Dwie modułu potrzeby i podać właściwości nie ma elementy etag, ale `$version` wartość, która może być przyrostowe. Podobnie do tag ETag wersji mogą być używane przez stronę aktualizacji do wymuszania zgodności aktualizacji. Na przykład Moduł aplikacji dla zgłoszonego właściwości lub zaplecza rozwiązania dla żądanej właściwości.
+Bliźniacza reprezentacja modułu żądanego i zgłaszanych właściwości nie ma elementów etag, ale `$version` wartość, która może być przyrostowe. Podobnie na element ETag wersji może służyć przez stronę aktualizacji do wymuszenia spójności aktualizacji. Na przykład moduł aplikacją zgłaszanych właściwości lub zaplecze rozwiązania dla żądanej właściwości.
 
-Wersje są także przydatne, gdy observing agenta (np. aplikacji modułu obserwowania odpowiednie właściwości) należy uzgodnić szczepy między wynik operacji pobierania i powiadomienie o aktualizacji. Sekcja [przepływu ponowne łączenie urządzenia] [ponownego łączenia lnk] zawiera więcej informacji. 
+Wersje są również przydatne, gdy observing agenta (np. aplikacji modułu obserwowania żądane właściwości), należy uzgodnić sam między wynik operacji pobierania i powiadomienie o aktualizacji. Sekcja [urządzenia ponowne nawiązanie połączenia z usługi flow] [lnk-ponowne nawiązanie połączenia] zawiera więcej informacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki Centrum IoT:
+Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki usługi IoT Hub:
 
-* [Rozpoczynanie pracy z Centrum IoT modułu tożsamości i moduł dwie przy użyciu kopii zapasowej .NET i .NET urządzenia][lnk-module-twin-tutorial]
+* [Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu zaplecza platformy .NET i .NET urządzenia][lnk-module-twin-tutorial]
 
 <!-- links and images -->
 

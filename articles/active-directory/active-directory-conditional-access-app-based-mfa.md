@@ -1,8 +1,8 @@
 ---
-title: Szybki Start - wymusić uwierzytelnianie wieloskładnikowe (MFA) dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Z tego przewodnika Szybki Start dowiesz się, jak można powiązać wymagań uwierzytelniania do typu aplikacji w chmurze używanych przy użyciu dostępu warunkowego w usłudze Azure Active Directory (Azure AD).
+title: Przewodnik Szybki Start — Wymagaj uwierzytelniania wieloskładnikowego (MFA) dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: W tym przewodniku Szybki Start dowiesz się, jak powiązać Twoje wymagania dotyczące uwierzytelniania dla typu aplikacji w chmurze używanych przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD).
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,21 +13,21 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 1501ca1c036a8db1d53b9b27170d9ae05d41f797
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a2cddec1308b96b960cd0bbc5ccae9fd1a1a9a7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724119"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450154"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki Start: Wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
-Aby uprościć proces logowania użytkowników, można zezwolić im na Zaloguj się do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach jest co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formę weryfikacji konta, takich jak uwierzytelnianie wieloskładnikowe (MFA). Może to być na przykład wartość true, dostępu do systemu poczty e-mail w organizacji lub HR aplikacji. W usłudze Azure Active Directory (Azure AD) można wykonywać w tym celu za pomocą zasad dostępu warunkowego.    
+Aby uprościć środowisko logowania użytkowników, można zezwolić im na Zaloguj się do aplikacji w chmurze przy użyciu nazwy użytkownika i hasła. Jednak w wielu środowiskach ma co najmniej kilka aplikacji, dla których zaleca się wymagają silniejszego formularz weryfikacji konta, takie jak uwierzytelnianie wieloskładnikowe (MFA). Może to być na przykład wartość true, aby uzyskać dostęp do systemu poczty e-mail w organizacji lub aplikacji działu KADR. W usłudze Azure Active Directory (Azure AD) można osiągnąć ten cel, za pomocą zasad dostępu warunkowego.    
 
-Ta opcja szybkiego startu przedstawia sposób konfigurowania [zasady dostępu warunkowego usługi Azure AD](active-directory-conditional-access-azure-portal.md) wymagającego uwierzytelniania wieloskładnikowego dla wybranej chmury aplikacji w danym środowisku.
+Ten przewodnik Szybki Start przedstawia sposób konfigurowania [zasad dostępu warunkowego usługi Azure AD](active-directory-conditional-access-azure-portal.md) wymagającym uwierzytelniania wieloskładnikowego dla wybranej chmury aplikacji w danym środowisku.
 
 ![Tworzenie zasad](./media/active-directory-conditional-access-app-based-mfa/32.png)
 
@@ -38,27 +38,37 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Aby ukończyć ten scenariusz, w tym szybkiego startu, należy:
+Aby ukończyć ten scenariusz, w tym przewodniku Szybki Start, potrzebne są:
 
-- **Dostęp do usługi Azure AD — wersja Premium** -dostępu warunkowego dla usługi Azure AD jest możliwość usługi Azure AD Premium. 
+- **Dostęp do usługi Azure AD — wersja Premium** — dostęp warunkowy usługi Azure AD jest możliwość usługi Azure AD Premium. 
 
-- **Konto testu o nazwie Isabella Simonsen** — Jeśli nie wiadomo, jak utworzyć testowe konto, zobacz [Dodaj użytkowników w chmurze](add-users-azure-active-directory.md#add-cloud-based-users).
+- **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
 
+
+## <a name="test-your-sign-in"></a>Testowanie logowania
+
+Celem tego kroku jest sobie pogląd logowania bez zasad dostępu warunkowego.
+
+**Aby zainicjować środowisko:**
+
+1. Zaloguj się do witryny Azure portal jako Isabella Simonsen.
+
+2. Wyloguj się.
 
 
 ## <a name="create-your-conditional-access-policy"></a>Utwórz zasady dostępu warunkowego 
 
-W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany. Scenariusz, w tym szybkiego startu używa:
+W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany. Scenariusz, w tym przewodniku Szybki Start używa:
 
-- Portalu Azure jako symbolu zastępczego dla aplikacji w chmurze, która wymaga usługi MFA. 
-- Przykładowe użytkownika do testowania zasad dostępu warunkowego.  
+- Witryny Azure portal jako symbol zastępczy dla aplikacji w chmurze, która wymaga uwierzytelniania Wieloskładnikowego. 
+- Przykładowy użytkownik do testowania zasad dostępu warunkowego.  
 
 Ustaw w zasadach:
 
 |Ustawienie |Wartość|
 |---     | --- |
 |Użytkownicy i grupy | Isabella Simonsen |
-|Aplikacje w chmurze | Zarządzania Microsoft Azure |
+|Aplikacje w chmurze | Zarządzania platformą Microsoft Azure |
 |Udzielanie dostępu | Wymagaj uwierzytelniania wieloskładnikowego |
  
 
@@ -69,21 +79,21 @@ Ustaw w zasadach:
 
 **Aby skonfigurować zasady dostępu warunkowego:**
 
-1. Zaloguj się do Twojego [portalu Azure](https://portal.azure.com) jako administrator globalny.
+1. Zaloguj się do Twojej [witryny Azure portal](https://portal.azure.com) jako administratora globalnego, administratora zabezpieczeń lub administrator dostępu warunkowego.
 
-2. W portalu Azure na lewy pasek nawigacyjny, kliknij przycisk **usługi Azure Active Directory**. 
+2. W witrynie Azure portal, w lewym pasku nawigacyjnym kliknij **usługi Azure Active Directory**. 
 
     ![Usługa Azure Active Directory](./media/active-directory-conditional-access-app-based-mfa/02.png)
 
-3. Na **usługi Azure Active Directory** strony w **Zarządzaj** kliknij **dostępu warunkowego**.
+3. Na **usługi Azure Active Directory** stronie **Zarządzaj** kliknij **dostępu warunkowego**.
 
     ![Dostęp warunkowy](./media/active-directory-conditional-access-app-based-mfa/03.png)
  
-4. Na **dostępu warunkowego** na pasku narzędzi u góry, kliknij przycisk **Dodaj**.
+4. Na **dostępu warunkowego** w pasku narzędzi u góry, kliknij **Dodaj**.
 
     ![Add](./media/active-directory-conditional-access-app-based-mfa/04.png)
 
-5. Na **nowy** strony w **nazwa** pole tekstowe, typ **wymagają usługi MFA dla dostępu do portalu Azure**.
+5. Na **New** strony w **nazwa** polu tekstowym wpisz **wymagają usługi MFA, aby uzyskać dostęp do portalu Azure**.
 
     ![Name (Nazwa)](./media/active-directory-conditional-access-app-based-mfa/05.png)
 
@@ -91,23 +101,23 @@ Ustaw w zasadach:
 
     ![Użytkownicy i grupy](./media/active-directory-conditional-access-app-based-mfa/06.png)
 
-7. Na **użytkowników i grup** wykonaj następujące czynności:
+7. Na **użytkowników i grup** strony, wykonaj następujące czynności:
 
     ![Użytkownicy i grupy](./media/active-directory-conditional-access-app-based-mfa/24.png)
 
-    a. Kliknij przycisk **Wybierz użytkowników i grupy**, a następnie wybierz **użytkowników i grup**.
+    a. Kliknij przycisk **Wybieranie użytkowników i grup**, a następnie wybierz pozycję **użytkowników i grup**.
 
     b. Kliknij pozycję **Wybierz**.
 
     c. Na **wybierz** wybierz **Isabella Simonsen**, a następnie kliknij przycisk **wybierz**.
 
-    d. Na **użytkowników i grup** kliknij przycisk **gotowe**.
+    d. Na **użytkowników i grup** kliknij **gotowe**.
 
-8. Kliknij przycisk **aplikacji w chmurze**.
+8. Kliknij przycisk **aplikacje w chmurze**.
 
     ![Aplikacje w chmurze](./media/active-directory-conditional-access-app-based-mfa/08.png)
 
-9. Na **aplikacji w chmurze** wykonaj następujące czynności:
+9. Na **aplikacje w chmurze** strony, wykonaj następujące czynności:
 
     ![Wybierz aplikacje w chmurze](./media/active-directory-conditional-access-app-based-mfa/26.png)
 
@@ -117,20 +127,20 @@ Ustaw w zasadach:
 
     c. Na **wybierz** wybierz **Microsoft Azure Management**, a następnie kliknij przycisk **wybierz**.
 
-    d. Na **aplikacji w chmurze** kliknij przycisk **gotowe**.
+    d. Na **aplikacje w chmurze** kliknij **gotowe**.
 
 
-10. W **dostęp do formantów** kliknij **Grant**.
+10. W **kontrole dostępu** kliknij **Grant**.
 
     ![Kontrole dostępu](./media/active-directory-conditional-access-app-based-mfa/10.png)
 
-11. Na **Grant** wykonaj następujące czynności:
+11. Na **Grant** strony, wykonaj następujące czynności:
 
     ![Udziel](./media/active-directory-conditional-access-app-based-mfa/11.png)
 
     a. Wybierz **udzielić dostępu**.
 
-    a. Wybierz **wymusić uwierzytelnianie wieloskładnikowe**.
+    a. Wybierz **Wymagaj uwierzytelniania wieloskładnikowego**.
 
     b. Kliknij pozycję **Wybierz**.
 
@@ -141,19 +151,19 @@ Ustaw w zasadach:
 13. Kliknij przycisk **Utwórz**.
 
 
-## <a name="evaluate-a-simulated-sign-in"></a>Ocena symulowane logowanie
+## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowania
 
-Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa on zgodnie z oczekiwaniami. Pierwszym krokiem należy użyć dostępu warunkowego, co zrobić, jeśli zasady narzędzia, aby symulować logowanie dla użytkownika testowego. Symulacja szacuje wpływu tego logowania ma na zasad i generuje raport symulacji.  
+Teraz, gdy skonfigurowano zasady dostępu warunkowego, prawdopodobnie chcesz wiedzieć, czy działa zgodnie z oczekiwaniami. Pierwszym krokiem należy używać dostępu warunkowego, zasady narzędzie analizy warunkowej w celu symulowania logowania dla użytkownika testowego. Symulacja szacuje wpływ tym logowania ma zasady i generuje raport symulacji.  
 
-Zainicjować co jeśli narzędzie oceny zasad, wartość:
+Można zainicjować co, jeśli narzędzie oceny zasad, ustaw:
 
 - **Isabella Simonsen** jako użytkownik 
-- **Microsoft Azure Management** jako aplikacji w chmurze
+- **Usługa Microsoft Azure Management** jako aplikacja w chmurze
 
- Kliknięcie przycisku **co zrobić, jeśli** tworzy symulacji raportu, który zawiera:
+ Klikając **co zrobić, jeśli** tworzy raport symulacji, który pokazuje:
 
-- **Uwierzytelniania MFA można wymagać dla dostępu do portalu Azure** w obszarze **zasad, które będą miały zastosowania** 
-- **Wymagaj uwierzytelniania wieloskładnikowego** jako **formanty Grant**.
+- **Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp do portalu Azure** w obszarze **zasady, które będą miały zastosowanie** 
+- **Wymagaj uwierzytelniania wieloskładnikowego** jako **Udziel kontroli**.
 
 ![Co zrobić, jeśli narzędzie zasad](./media/active-directory-conditional-access-app-based-mfa/23.png)
 
@@ -165,48 +175,49 @@ Zainicjować co jeśli narzędzie oceny zasad, wartość:
  
     ![What If](./media/active-directory-conditional-access-app-based-mfa/14.png)
 
-2. Kliknij przycisk **użytkowników**, wybierz pozycję **Isabella Simonsen**, a następnie kliknij przycisk **wybierz**.
+2. Kliknij przycisk **użytkowników**, wybierz opcję **Isabella Simonsen**, a następnie kliknij przycisk **wybierz**.
 
     ![Użytkownik](./media/active-directory-conditional-access-app-based-mfa/15.png)
 
-2. Aby wybrać aplikacji w chmurze, wykonaj następujące czynności:
+2. Aby wybrać aplikację w chmurze, wykonaj następujące czynności:
 
     ![Aplikacje w chmurze](./media/active-directory-conditional-access-app-based-mfa/16.png)
 
-    a. Kliknij przycisk **aplikacji w chmurze**.
+    a. Kliknij przycisk **aplikacje w chmurze**.
 
-    b. Na **strona aplikacje w chmurze**, kliknij przycisk **Wybierz aplikacje**.
+    b. Na **stronę aplikacji w chmurze**, kliknij przycisk **Wybierz aplikacje**.
 
     c. Kliknij pozycję **Wybierz**.
 
-    d. Na **wybierz** wybierz Microsoft Azure Management **, a następnie kliknij przycisk **wybierz**.
+    d. Na **wybierz** wybierz **Microsoft Azure Management**, a następnie kliknij przycisk **wybierz**.
 
     e. Na stronie aplikacji w chmurze kliknij **gotowe**.
 
 3. Kliknij przycisk **co zrobić, jeśli**.
 
 
-## <a name="test-your-conditional-access-policy"></a>Testowanie zasady dostępu warunkowego
+## <a name="test-your-conditional-access-policy"></a>Testowanie zasad dostępu warunkowego
 
-W poprzedniej sekcji zapoznaniu do oceny symulowane logowanie. Oprócz symulację należy również przetestować zasady dostępu warunkowego, aby upewnić się, że działa zgodnie z oczekiwaniami. 
+W poprzedniej sekcji mają pokazaliśmy, jak można obliczyć symulowane logowania. Oprócz symulacji należy przetestować również zasady dostępu warunkowego, aby upewnić się, że działa zgodnie z oczekiwaniami. 
 
-Aby przetestować zasady, spróbuj zalogować się do sieci [portalu Azure](https://portal.azure.com) przy użyciu programu **Isabella Simonsen** przetestować konto. Powinny zostać wyświetlone okno dialogowe, które należy ustawić konta do dodatkowej weryfikacji zabezpieczeń.
+Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal](https://portal.azure.com) przy użyciu usługi **Isabella Simonsen** przetestować konto. Powinieneś zobaczyć okno dialogowe, które wymaga ustawienia konta dla dodatkowej weryfikacji zabezpieczeń.
 
 ![Uwierzytelnianie wieloskładnikowe](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, Usuń użytkownika testowego i zasad dostępu warunkowego:
+Gdy nie są już potrzebne, Usuń użytkownika testowego i zasady dostępu warunkowego:
 
-- Jeśli nie wiadomo, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
 
-- Aby usunąć zasady, wybierz zasady, a następnie kliknij **usunąć** na pasku narzędzi Szybki dostęp.
+- Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 
     ![Uwierzytelnianie wieloskładnikowe](./media/active-directory-conditional-access-app-based-mfa/33.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-azure-portal.md).
-
+> [!div class="nextstepaction"]
+> [Wymagane warunki użytkowania, należy zaakceptować](./active-directory-conditional-access-tou.md)
+> [zablokować dostęp po wykryciu zagrożenia sesji](./active-directory-conditional-access-app-sign-in-risk.md)

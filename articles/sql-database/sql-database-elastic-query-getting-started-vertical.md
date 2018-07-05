@@ -1,109 +1,117 @@
 ---
-title: Wprowadzenie do zapytań między bazami danych (partycjonowanie pionowe) | Dokumentacja firmy Microsoft
-description: jak używać zapytania elastycznej bazy danych z baz danych w pionie podzielonym na partycje
+title: Rozpoczynanie pracy z bazami danych zapytań (partycje pionowe) | Dokumentacja firmy Microsoft
+description: jak używać zapytania elastycznej bazy danych z baz danych partycjonowanej w pionie
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/03/2018
 ms.author: sstein
-ms.openlocfilehash: f5f54edb9ddbbf3386cd6a3b14daf642e504b5c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 62dda46f2f78b01722016a9bbd1e6db05814a0bf
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645399"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448564"
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Wprowadzenie do zapytań między bazami danych (partycjonowanie pionowe) (wersja zapoznawcza)
-Zapytanie elastycznej bazy danych (wersja zapoznawcza) w bazie danych SQL Azure umożliwia uruchamianie zapytania T-SQL, obejmującej wiele baz danych przy użyciu pojedynczy punkt połączenia. Ten temat dotyczy [w pionie na partycje baz danych](sql-database-elastic-query-vertical-partitioning.md).  
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Rozpoczynanie pracy z bazami danych zapytań (partycje pionowe) (wersja zapoznawcza)
 
-Po zakończeniu zostanie: informacje o sposobie konfigurowania i korzystania z bazy danych SQL Azure do wykonywania zapytań, obejmującej wiele powiązanych baz danych. 
+Zapytanie elastycznej bazy danych (wersja zapoznawcza) dla usługi Azure SQL Database umożliwia uruchamianie zapytania T-SQL, które obejmują wiele baz danych przy użyciu pojedynczy punkt połączenia. Ten artykuł dotyczy [partycje pionowe bazy danych](sql-database-elastic-query-vertical-partitioning.md).  
 
-Aby uzyskać więcej informacji o funkcji zapytania elastycznej bazy danych, zobacz [bazy danych SQL Azure elastycznej bazy danych zapytań — omówienie](sql-database-elastic-query-overview.md). 
+Po zakończeniu będzie: informacje o sposobie konfigurowania i używania usługi Azure SQL Database do wykonywania zapytań obejmujących wiele powiązanych baz danych.
+
+Aby uzyskać więcej informacji na temat funkcji zapytanie elastycznej bazy danych, zobacz [Przegląd zapytanie elastycznej bazy danych Azure SQL Database](sql-database-elastic-query-overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączany uprawnienie ALTER DATABASE. Aby odwołać się do źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
+Wymagane jest uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE. Aby odwołać się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 
-## <a name="create-the-sample-databases"></a>Tworzenie bazy danych przykładowych
-Do uruchomienia z należy utworzyć dwie bazy danych, **klientów** i **zamówień**, albo w tych samych lub różnych serwerów logicznych.   
+## <a name="create-the-sample-databases"></a>Tworzenie przykładowych baz danych
 
-Wykonaj następujące kwerendy w **zamówień** bazy danych do utworzenia **OrderInformation** tabeli i przykładowych danych wejściowych. 
+Na początek z utworzyć dwie bazy danych, **klientów** i **zamówienia**, albo w tej samej lub różnych serwerów logicznych.
 
-    CREATE TABLE [dbo].[OrderInformation]( 
-        [OrderID] [int] NOT NULL, 
-        [CustomerID] [int] NOT NULL 
-        ) 
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1) 
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2) 
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2) 
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
+Wykonaj następujące zapytania na **zamówienia** bazy danych do utworzenia **OrderInformation** tabeli i przykładowe dane wejściowe.
 
-Teraz, wykonaj następujące zapytanie w **klientów** bazy danych do utworzenia **CustomerInformation** tabeli i przykładowych danych wejściowych. 
+    CREATE TABLE [dbo].[OrderInformation](
+        [OrderID] [int] NOT NULL,
+        [CustomerID] [int] NOT NULL
+        )
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1)
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2)
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2)
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-    CREATE TABLE [dbo].[CustomerInformation]( 
-        [CustomerID] [int] NOT NULL, 
-        [CustomerName] [varchar](50) NULL, 
-        [Company] [varchar](50) NULL 
-        CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC) 
-    ) 
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC') 
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ') 
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO') 
+Teraz, wykonaj następujące zapytanie w **klientów** bazy danych do utworzenia **CustomerInformation** tabeli i przykładowe dane wejściowe.
+
+    CREATE TABLE [dbo].[CustomerInformation](
+        [CustomerID] [int] NOT NULL,
+        [CustomerName] [varchar](50) NULL,
+        [Company] [varchar](50) NULL
+        CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC)
+    )
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC')
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ')
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO')
 
 ## <a name="create-database-objects"></a>Tworzenie obiektów bazy danych
-### <a name="database-scoped-master-key-and-credentials"></a>Baza danych o zakresie klucz główny i poświadczenia
+
+### <a name="database-scoped-master-key-and-credentials"></a>Klucz główny i poświadczeń w zakresie bazy danych
+
 1. Otwórz program SQL Server Management Studio lub SQL Server Data Tools w programie Visual Studio.
-2. Połączenie z bazą danych zleceń i wykonaj następujące polecenia T-SQL:
-   
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
-        WITH IDENTITY = '<username>', 
+2. Połączenia z bazą danych zamówień i wykonaj następujące polecenia języka T-SQL:
+
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+        WITH IDENTITY = '<username>',
         SECRET = '<password>';  
-   
-    "Nazwa użytkownika" i "password" powinna być nazwa użytkownika i hasło używane do logowania do bazy danych klientów.
-    Uwierzytelnianie przy użyciu usługi Azure Active Directory z zapytaniami elastyczne nie jest obecnie obsługiwane.
+
+    "Username" i "password" powinna być nazwa użytkownika i hasło używane do logowania do bazy danych klientów.
+    Uwierzytelnianie przy użyciu usługi Azure Active Directory za pomocą elastycznych zapytań nie jest obecnie obsługiwane.
 
 ### <a name="external-data-sources"></a>Zewnętrzne źródła danych
-Aby utworzyć zewnętrznego źródła danych, uruchom następujące polecenie w bazie danych zleceń: 
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
-        (TYPE = RDBMS, 
-        LOCATION = '<server_name>.database.windows.net', 
-        DATABASE_NAME = 'Customers', 
-        CREDENTIAL = ElasticDBQueryCred, 
+Aby utworzyć zewnętrzne źródło danych, wykonaj następujące polecenie w bazie danych zamówień:
+
+    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+        (TYPE = RDBMS,
+        LOCATION = '<server_name>.database.windows.net',
+        DATABASE_NAME = 'Customers',
+        CREDENTIAL = ElasticDBQueryCred,
     ) ;
 
 ### <a name="external-tables"></a>Tabele zewnętrzne
-Tworzenie tabeli zewnętrznej w bazie danych zamówień odpowiadającego definicja tabeli CustomerInformation:
 
-    CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
-    ( [CustomerID] [int] NOT NULL, 
-      [CustomerName] [varchar](50) NOT NULL, 
-      [Company] [varchar](50) NOT NULL) 
-    WITH 
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
+Tworzenie zewnętrznej tabeli w bazie danych zamówień, który pasuje do definicji tabeli CustomerInformation:
+
+    CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
+    ( [CustomerID] [int] NOT NULL,
+      [CustomerName] [varchar](50) NOT NULL,
+      [Company] [varchar](50) NOT NULL)
+    WITH
+    ( DATA_SOURCE = MyElasticDBQueryDataSrc)
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Wykonywanie przykładowego zapytania T-SQL elastycznej bazy danych
-Po zdefiniowaniu zewnętrznym źródle danych i tabele zewnętrzne T-SQL można teraz używać do badania tabel zewnętrznych. Wykonaj tę kwerendę w bazie danych zleceń: 
 
-    SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
-    FROM OrderInformation 
-    INNER JOIN CustomerInformation 
-    ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
+Po zdefiniowaniu zewnętrznym źródle danych i tabel zewnętrznych teraz umożliwia języka T-SQL do wykonywania zapytań tabel zewnętrznych. Wykonaj tę kwerendę w bazie danych zamówień:
+
+    SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
+    FROM OrderInformation
+    INNER JOIN CustomerInformation
+    ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
 ## <a name="cost"></a>Koszty
-Obecnie funkcja zapytania elastycznej bazy danych jest dostępna do kosztu bazy danych SQL Azure.  
 
-Aby uzyskać informacje o cenach zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database). 
+Obecnie funkcji zapytanie elastycznej bazy danych znajduje się w koszt usługi Azure SQL Database.  
+
+Aby uzyskać informacje o cenach, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Omówienie elastycznej zapytania, zobacz [elastycznej zapytań — omówienie](sql-database-elastic-query-overview.md).
-* Dla zapytań dotyczących danych pionowo podzielonym na partycje i składnię i przykład, zobacz [zapytań w pionie na partycje danych)](sql-database-elastic-query-vertical-partitioning.md)
-* Samouczek poziomych partycji (dzielenia na fragmenty), zobacz [wprowadzenie elastycznej zapytania poziome partycjonowania (dzielenia na fragmenty)](sql-database-elastic-query-getting-started.md).
-* Dla zapytań dotyczących danych poziomie podzielonym na partycje i składnię i przykład, zobacz [zapytań w poziomie na partycje danych)](sql-database-elastic-query-horizontal-partitioning.md)
-* Zobacz [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję Transact-SQL w jednym zdalnej bazy danych SQL Azure lub zestaw baz danych, służąc jako odłamków w poziomie schemat partycjonowania.
+* Omówienie zapytanie elastyczne, zobacz [omówienie zapytania elastycznego](sql-database-elastic-query-overview.md).
+* Składnia i przykładowe zapytania dotyczące danych partycjonowanych w pionie, można zobaczyć [zapytań w pionie partycjonowania danych)](sql-database-elastic-query-vertical-partitioning.md)
+* Samouczek partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do zapytań elastycznych dla partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
+* Aby uzyskać składnię i przykładowe zapytania dotyczące danych partycjonowanej w poziomie, zobacz [zapytań w poziomie partycjonowania danych)](sql-database-elastic-query-horizontal-partitioning.md)
+* Zobacz [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury przechowywanej, która wykonuje instrukcję Transact-SQL na jednej zdalnej usługi Azure SQL Database lub zestawu baz danych, służąc jako fragmentów w poziomie schematu partycjonowania.

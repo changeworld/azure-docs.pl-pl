@@ -1,39 +1,36 @@
 ---
-title: 'Biznesowe ciągłości i odzyskiwanie po awarii (BCDR): łączyć regiony platformy Azure | Dokumentacja firmy Microsoft'
-description: Dowiedz się więcej o Azure regionalnych parowania, aby upewnić się, że aplikacje są odporne podczas awarii centrum danych.
-services: site-recovery
-documentationcenter: ''
+title: 'Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure | Dokumentacja firmy Microsoft'
+description: Dowiedz się więcej o usłudze Azure parowanie regionalne, aby upewnić się, że aplikacje są odporne na błędy podczas awarii centrum danych.
 author: rayne-wiselman
-manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: e2c288af881fa925c1680efdb0f86deec60b7510
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34302682"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436913"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Biznesowe ciągłości i odzyskiwanie po awarii (BCDR): łączyć regiony platformy Azure
+# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
 
-## <a name="what-are-paired-regions"></a>Co to są skojarzone regionów?
+## <a name="what-are-paired-regions"></a>Co to są sparowane regiony?
 
-Azure działa w wielu lokalizacji geograficznych na całym świecie. Geograficzne Azure jest zdefiniowany obszar świata, który zawiera co najmniej jeden Region platformy Azure. Region platformy Azure jest obszar wewnątrz obiektu geograficznego, zawierający co najmniej jeden centrów danych.
+Platforma Azure działa w wielu lokalizacji geograficznych na całym świecie. Lokalizacja geograficzna platformy Azure jest zdefiniowany obszar świata, który zawiera co najmniej jednego regionu platformy Azure. Region platformy Azure jest obszar w lokalizacji geograficznej, zawierający co najmniej jedno centrum danych.
 
-Każdy region platformy Azure jest skojarzone z innego regionu w tej samej lokalizacji geograficznej, razem wprowadzeniem regionalnych pary. Wyjątek stanowi Brazylia Południowa, który jest łączyć się z obszarem poza jego lokalizacji geograficznej.
+Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego razem wprowadzania parę regionalną. Wyjątek stanowi Brazylii Południowej, który jest powiązany z regionem poza jego lokalizacji geograficznej.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Rysunek 1 — Azure pary regionalne
+Rysunek 1 — pary regionalne platformy Azure
 
 | Lokalizacja geograficzna | Sparowane regiony |  |
 |:--- |:--- |:--- |
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
-| Australia |Australia Środkowa |Australia Środkowa (2) |
-| Brazylia |Brazylia Południowa (2) |Środkowo-południowe stany USA |
+| Australia |Australia Środkowa |Australia Środkowa 2 |
+| Brazylia |Brazylia Południowa 2 |Środkowo-południowe stany USA |
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Europa |Europa Północna |Europa Zachodnia |
@@ -49,51 +46,51 @@ Rysunek 1 — Azure pary regionalne
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
 | Departamentu Obrony USA |US DoD — wschodnie stany |US DoD — środkowe stany |
 | Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
-| Rząd USA |Iowa wersji dla instytucji rządowych Stanów Zjednoczonych (3) |Administracja USA — Wirginia |
-| Rząd USA |Virginia wersji dla instytucji rządowych Stanów Zjednoczonych (4) |Administracja USA — Teksas |
+| Rząd USA |Administracja USA — Iowa (3) |Administracja USA — Wirginia |
+| Rząd USA |Administracja USA — Wirginia (4) |Administracja USA — Teksas |
 
-Tabela 1 - mapowania par regionalnych Azure
+Tabela 1 — mapowanie pary regionalne platformy Azure
 
-- (1) Indie Zachodnie jest inny, ponieważ jest on łączyć się z innego regionu tylko w jednym kierunku. Indie Południowe jest region pomocniczy Indie Zachodnie, lecz region pomocniczy Indie Południowe Indie środkowe.
-- (2) Brazylia Południowa jest unikatowa, ponieważ jest łączyć się z obszarem poza jego własnej lokalizacji geograficznej. Brazylia Południowa region pomocniczy jest południowo-środkowe stany, ale południowo-środkowe stany w regionie pomocniczym nie jest Brazylia Południowa.
-- (3) region pomocniczy Iowa wersji dla instytucji rządowych Stanów Zjednoczonych jest Virginia nam wersji dla instytucji rządowych, ale region pomocniczy Virginia nam wersji dla instytucji rządowych nie Iowa nam wersji dla instytucji rządowych.
-- (4) region pomocniczy Virginia wersji dla instytucji rządowych Stanów Zjednoczonych jest Texas nam wersji dla instytucji rządowych, ale region pomocniczy Texas nam wersji dla instytucji rządowych nie Virginia nam wersji dla instytucji rządowych.
+- (1) Indie Zachodnie jest inny, ponieważ jest powiązany z innym regionem tylko w jednym kierunku. Indie Zachodnie w regionie pomocniczym jest Indie Południowe, ale Indie Południowe w regionie pomocniczym jest Indie środkowe.
+- (2) Brazylia Południowa jest unikatowa, ponieważ jest powiązany z regionem poza jego własnej lokalizacji geograficznej. Region pomocniczy w regionie Brazylia Południowa jest południowo-środkowe stany USA, ale południowo-środkowe stany USA w regionie pomocniczym nie jest Brazylia Południowa.
+- (3) Administracja USA — Iowa w regionie pomocniczym jest Administracja USA — Wirginia, ale nie jest w regionie pomocniczym Administracja USA — Wirginia Administracja USA — Iowa.
+- (4) Administracja USA — Wirginia w regionie pomocniczym jest Administracja USA — Teksas, ale nie jest w regionie pomocniczym Administracja USA — Teksas Administracja USA — Wirginia.
 
 
-Firma Microsoft zaleca replikować obciążenia między regionalnych pary do korzystania z platformy Azure zasad izolacji i dostępności. Na przykład aktualizacje planowane systemu Azure są wdrażane kolejno (nie w tym samym czasie) w parach regionach. Oznacza to, że nawet w rzadkich błędny aktualizacji obu regionów nie zostaną zmienione jednocześnie. Ponadto na wypadek awarii szerokie priorytetu jest Odzyskiwanie co najmniej jeden region poza każdej pary.
+Firma Microsoft zaleca replikować obciążenia w pary regionalne do korzystania z zasad izolacji i dostępności platformy Azure. Na przykład aktualizacje systemu platformy Azure planowane są wdrażane po kolei (nie w tym samym czasie) w sparowanych regionach. Oznacza to, że nawet w przypadku rzadko wadliwe aktualizacji, oba regiony nie zostaną zmienione jednocześnie. Ponadto w mało prawdopodobnym przypadku odzyskiwanie co najmniej jednego regionu z każdej pary ma przydzielany wyższy priorytet.
 
-## <a name="an-example-of-paired-regions"></a>Przykład sparowanego regionów
-Na rysunku 2 poniżej przedstawiono hipotetyczny aplikacji, która używa regionalnych pary odzyskiwania po awarii. Zielony numery zaznacz działania region między trzy usług platformy Azure (Azure obliczeniowe magazynu i bazy danych) i jak są skonfigurowane do replikacji w regionach. Unikatowy zalet wdrażania w różnych regionach sparowanego są wyróżnione pomarańczowy liczbami.
+## <a name="an-example-of-paired-regions"></a>Przykładem sparowane regiony
+Na rysunku 2 poniżej przedstawiono hipotetyczny aplikację, która używa pary regionalnej dla odzyskiwania po awarii. Zielony numery zaznacz działań między regionami w trzech usług platformy Azure (Azure compute, storage i bazy danych) i jak są skonfigurowane do replikacji między regionami. Z wyjątkowych zalet wdrażania w sparowanych regionach zostały wyróżnione na pomarańczowy liczb.
 
-![Omówienie zalet sparowanego regionu](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
+![Omówienie zalet sparowanym regionie](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
-Rysunek 2 — hipotetyczny Azure pary regionalne
+Rysunek 2 — hipotetyczny pary regionalne platformy Azure
 
-## <a name="cross-region-activities"></a>Region między działaniami
+## <a name="cross-region-activities"></a>Działania między regionami
 Określone na rysunku 2.
 
-![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **(PaaS) rozwiązań usługi obliczenia Azure** — należy udostępnić zasoby obliczeniowe z wyprzedzeniem, aby upewnić się, zasoby są dostępne w innym regionie podczas awarii. Aby uzyskać więcej informacji, zobacz [wskazówki techniczne Azure odporności](resiliency/resiliency-technical-guidance.md).
+![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **usługi Azure Compute (PaaS)** — należy aprowizować dodatkowe zasoby obliczeniowe wcześniej, aby zapewnić zasoby są dostępne w innym regionie podczas awarii. Aby uzyskać więcej informacji, zobacz [wskazówek technicznych odporność platformy Azure](resiliency/resiliency-technical-guidance.md).
 
-![Magazyn](./media/best-practices-availability-paired-regions/2Green.png) **usługi Azure Storage** — magazyn geograficznie nadmiarowy (GRS) jest domyślnie skonfigurowany podczas tworzenia konta usługi Azure Storage. W wypadku magazynu GRS dane są automatycznie replikowane trzy razy w regionie podstawowym i trzy razy w regionie pary. Aby uzyskać więcej informacji, zobacz [opcje nadmiarowość magazynu Azure](storage/common/storage-redundancy.md).
+![Magazyn](./media/best-practices-availability-paired-regions/2Green.png) **usługi Azure Storage** -magazyn geograficznie nadmiarowy (GRS) jest domyślnie skonfigurowana podczas tworzenia konta usługi Azure Storage. W przypadku magazynu GRS dane są automatycznie replikowane trzy razy w regionie podstawowym i trzy razy w sparowanym regionie. Aby uzyskać więcej informacji, zobacz [Opcje nadmiarowości magazynu Azure](storage/common/storage-redundancy.md).
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **baz danych SQL Azure** — z usługi Azure SQL standardowa replikacja geograficzna, możesz konfigurować replikację asynchroniczną transakcji sparowanego regionu. Premium replikacja geograficzna można skonfigurować replikację na dowolny region w świecie; jednak zaleca się wdrażanie tych zasobów w regionie sparowanego większości scenariuszy odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [— replikacja geograficzna w bazie danych SQL Azure](sql-database/sql-database-geo-replication-overview.md).
+![Usługi Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **baz danych SQL Azure** — za pomocą usługi Azure SQL standardowej replikacji geograficznej, można skonfigurować Replikacja asynchroniczna transakcje w sparowanym regionie. Dzięki premium replikacji geograficznej można skonfigurować replikacji w dowolnym regionie na świecie; jednak zalecamy wdrażania tych zasobów w sparowanym regionie, w przypadku większości scenariuszy odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [replikacja geograficzna w usłudze Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 
-![Menedżer zasobów](./media/best-practices-availability-paired-regions/4Green.png) **usługi Azure Resource Manager** -Resource Manager zapewnia z założenia izolacji logicznej składników usługi zarządzania w regionach. Oznacza to, że błędów logicznych w jeden region jest mniej prawdopodobne wpłynąć na inny.
+![Menedżer zasobów](./media/best-practices-availability-paired-regions/4Green.png) **usługi Azure Resource Manager** — usługa Resource Manager zapewnia natury izolacji logicznej składników zarządzania usługi między regionami. Oznacza to, że błędy logiczne w jednym regionie są mniej prawdopodobne wpłynąć na inny.
 
-## <a name="benefits-of-paired-regions"></a>Korzyści sparowanego regionów
+## <a name="benefits-of-paired-regions"></a>Zalety sparowane regiony
 Określone na rysunku 2.  
 
 ![Izolacja](./media/best-practices-availability-paired-regions/5Orange.png)
-**fizycznych izolacji** — Jeśli to możliwe, Azure preferuje co najmniej 300 mil rozdzielenie centrów danych w parze regionalnych, chociaż nie jest praktyczne lub możliwe w wszystkich regionów geograficznych. Rozdzielenie fizycznego centrum danych zmniejsza prawdopodobieństwo klęski żywiołowej, unrest cywilnego, awarie zasilania lub awarie sieci fizycznej wpływających na obu regionów jednocześnie. Izolacja podlega ograniczeń w ramach geograficznych (rozmiar obiektu geograficznego, dostępność infrastruktury zasilania i sieci, wykonawcze itp.).  
+**fizyczne odizolowanie** — gdy to możliwe, Azure preferuje co najmniej 300 mil separacji między centrami danych w parę regionalną, chociaż nie jest to praktyczne, czy możliwa wszystkich obszarach geograficznych. Rozdzielenie fizycznego centrum danych zmniejsza prawdopodobieństwo klęski żywiołowe, społeczne, przerwy w zasilaniu lub awarie sieci fizycznych będą wpływać na obydwa regiony na raz. Izolacja jest podlegających ograniczeniom w lokalizacji geograficznej (rozmiar lokalizacji geograficznej, dostępność infrastruktury zasilania i sieci, regulacjami itp.).  
 
 ![Replikacja](./media/best-practices-availability-paired-regions/6Orange.png)
-**replikacji dostarczane przez platformę** — automatyczne replikacji do regionu sparowanego Podaj niektórych usług, takich jak magazyn geograficznie nadmiarowy.
+**replikacji dostarczone przez platformę** -pewnych usług, takich jak magazyn geograficznie nadmiarowy oferowane automatyczną replikację do regionu sparowanego.
 
 ![Odzyskiwanie](./media/best-practices-availability-paired-regions/7Orange.png)
-**kolejności odzyskiwania Region** — w przypadku awarii szerokie, odzyskiwania jeden region jest priorytety poza każdej pary. Aplikacje, które są wdrażane w regionach sparowanego dotrą do ma regionów odzyskane o priorytecie. Jeśli aplikacja jest wdrażana w regionach, które nie są skojarzone, odzyskiwania mogą być opóźnione — w najgorszym przypadku wybranych regionów może być ostatnie dwa mają zostać odzyskane.
+**Region ściągnięciu** — w przypadku awarii szerokie, odzyskiwania jeden region jest podzielony na priorytety z każdej pary. Aplikacje, które są wdrażane w sparowanych regionach są musi mieć jeden z regionów odzyskać z priorytetem. Jeśli aplikacja jest wdrażana w różnych regionach, które nie są skojarzone, odzyskiwania mogą być opóźnione — w najgorszym przypadku wybranych regionów może być ostatnie dwa do odzyskania.
 
 ![Aktualizacje](./media/best-practices-availability-paired-regions/8Orange.png)
-**kolejnych aktualizacji** — aktualizacje systemu Azure planowane są wprowadzanie do regionów sparowanego sekwencyjnie (nie w tym samym czasie) aby zminimalizować czas przestoju, wpływ usterek i błędów logicznych w rzadkich zły Aktualizacja.
+**kolejnych aktualizacji** — Azure planowane aktualizacje systemu są realizowane w sparowanych regionach po kolei (nie w tym samym czasie) aby zminimalizować przestoje, efekt usterek i błędów logicznych w rzadkich zły Aktualizacja.
 
 ![Dane](./media/best-practices-availability-paired-regions/9Orange.png)
-**siedziby danych** — region znajduje się w tej samej lokalizacji geograficznej, jako jego para (z wyjątkiem Brazylia Południowa) w celu spełnienia wymagań siedziby danych do celów właściwość wymuszania podatku i prawa.
+**rezydencji danych** — region znajduje się w tej samej lokalizacji geograficznej co para (z wyjątkiem Brazylii Południowej), aby spełnić wymagania dotyczące rezydencji danych na potrzeby podatku i prawa wymuszania jurysdykcji.

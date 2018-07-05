@@ -1,81 +1,81 @@
 ---
-title: Zarządzanie tożsamościami uprzywilejowanymi zasobów Azure - Włącz Zarządzanie subskrypcją | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak globalne Administratorzy mogą zarządzać subskrypcjami w dzierżawie.
+title: Privileged Identity Management dla zasobów platformy Azure — Włączanie zarządzania subskrypcjami | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak globalnego administratorzy mogli zarządzać subskrypcjami w dzierżawie.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: how-to
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 628ee70f7eb59673d4229441e3c4242e1ef8e0d3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6aeb82ff1feb3521f3a09dc1b28186754568bb27
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234276"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442994"
 ---
-# <a name="enable-subscription-management-in-your-tenant"></a>Włącz Zarządzanie subskrypcją, w Twojej dzierżawie
+# <a name="enable-subscription-management-in-your-tenant"></a>Włączanie zarządzania subskrypcjami w Twojej dzierżawie
 
-Jako administrator globalny katalogu może nie ma domyślnego dostępu do wszystkich zasobów subskrypcji w dzierżawie. W tym artykule przedstawiono kroki, aby zapewnić sobie dostęp do wszystkich subskrypcji w dzierżawie. Umożliwia także zalecane podejście do pozostałych zgodne z żadnych opcji zabezpieczeń, które organizacja wymaga po otrzymaniu dostępu.
+Jako administrator globalny katalogu możesz nie mieć domyślnego dostępu do wszystkich zasobów w Twojej dzierżawie. W tym artykule opisano kroki, aby zapewnić sobie dostęp do wszystkich subskrypcji w ramach dzierżawy. Umożliwia także zalecane podejście do pozostałych zgodne z dowolnej opcji zabezpieczeń, które Twoja organizacja wymaga, aby po otrzymaniu dostępu.
 
-## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Kto może włączyć zarządzanie subskrypcji w katalogu Moje?
+## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Kto może włączyć zarządzanie subskrypcjami w moim katalogu?
 
-Każdy użytkownik przypisany do roli administratora globalnego, wykonaj poniższe kroki, aby włączyć Zarządzanie subskrypcją. Po włączeniu subskrypcji zarządzania dla siebie innych administratorów globalnych, którzy mogą wymagać zasobów można dodać także dostępu. Brak ustawienie bez katalogu, który umożliwia dostęp do wszystkich członków z roli administrator globalny.
+Każdy użytkownik przypisany do roli administratora globalnego, należy wykonać poniższe kroki, aby włączyć zarządzanie subskrypcjami. Po włączeniu zarządzania subskrypcjami dla siebie, można dodać innych administratorów globalnych, którzy mogą potrzebować zasobów także dostępu. Nie ma żadnego ustawienia katalogu, który umożliwia uzyskiwanie dostępu do wszystkich elementów członkowskich w roli administratora globalnego.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do portalu Azure przy użyciu konta z jest uprawniona lub active należącego do roli administratora globalnego. Jeśli konto jest uprawniona administratora globalnego, musisz aktywować rolę przed przejściem do następnego kroku.
+Zaloguj się do witryny Azure portal przy użyciu konta, które jest elementem członkowskim roli administratora globalnego kwalifikujących się lub aktywny. Jeśli konto jest uprawniona administrator globalny, należy aktywować rolę przed przejściem do następnego kroku.
 
 ## <a name="access-the-azure-active-directory-admin-center"></a>Dostęp do Centrum administracyjnego usługi Azure Active Directory
 
-Teraz, gdy użytkownik jest zalogowany do portalu Azure jako administrator globalny, można edytować ustawienia, które zapewniają dostęp do subskrypcji platformy Azure. Przejdź do Centrum administracyjnego usługi Azure Active Directory (Azure AD), a następnie wybierz **właściwości**.
+Teraz, gdy użytkownik jest zalogowany do witryny Azure portal jako administrator globalny, można edytować ustawienia, które zapewniają dostęp do subskrypcji platformy Azure. Przejdź do Centrum administracyjnego usługi Azure Active Directory (Azure AD), a następnie wybierz pozycję **właściwości**.
 
-![Zrzut ekranu Azure AD Centrum administracyjnego, z wyróżnioną pozycją właściwości](media/azure-pim-resource-rbac/aad_properties.png)
+![Zrzut ekranu programu Azure AD Centrum administracyjnego, z właściwościami wyróżniony](media/azure-pim-resource-rbac/aad_properties.png)
 
-Na liście właściwości w obszarze **Administrator globalny może zarządzać subskrypcjami platformy Azure**, wybierz pozycję **tak**.
+Na liście właściwości w obszarze **Administrator globalny może zarządzać subskrypcjami platformy Azure**, wybierz opcję **tak**.
 
-![Zrzut ekranu właściwości strony, z ustawioną wartość Yes przełączania](media/azure-pim-resource-rbac/aad_properties_save.png)
+![Zrzut ekranu właściwości zawierającej Przełącz wartość tak](media/azure-pim-resource-rbac/aad_properties_save.png)
 
-Teraz Twoje konto jest automatycznie dodawane do roli administratora dostępu dla każdego zasobu subskrypcji w dzierżawie.
+Twoje konto jest automatycznie dodany do roli administrator dostępu użytkowników dla każdego zasobu subskrypcji w ramach dzierżawy.
 
-## <a name="browse-to-azure-ad-pim"></a>Przejdź do usługi Azure AD PIM
+## <a name="browse-to-azure-ad-pim"></a>Przejdź do aplikacji Azure AD PIM
 
- W tym miejscu przejdź do Azure AD Privileged Identity zarządzania (PIM). W obszarze **Zarządzaj**, wybierz pozycję **zasobów Azure**.
+ W tym miejscu przejdź do usługi Azure AD Privileged Identity Management (PIM). W obszarze **Zarządzaj**, wybierz opcję **zasobów platformy Azure**.
 
-![Zrzut ekranu PIM, z wyróżnionym zasobów platformy Azure](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+![Zrzut ekranu z usługi PIM, z wyróżnioną pozycją zasobami platformy Azure](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-## <a name="manage-and-discover-resources"></a>Zarządzanie i odnajdywania zasobów
+## <a name="manage-and-discover-resources"></a>Zarządzanie i odnajdywanie zasobów
 
-Jeśli Twoja organizacja już używa usługi Azure AD PIM do ochrony administratorów w usłudze Azure AD, można wyświetlić listę subskrypcji, podczas ładowania bloku.
+Jeśli Twoja organizacja używa już usługi Azure AD PIM do ochrony administratorów w usłudze Azure AD, możesz wyświetlić listę subskrypcji, podczas ładowania bloku.
 
-![Zrzut ekranu PIM, z listy subskrypcji wyświetlane w bloku](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+![Zrzut ekranu z usługi PIM, z listy wyświetlane w bloku subskrypcji](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
 > [!NOTE]
-> Jeśli nie ma żadnych zasobów, upewnij się, że:
->- Rolę administratora globalnego nie wygasł. 
+> Jeśli nie widzisz żadnych zasobów, upewnij się, że:
+>- Twoja rola administratora globalnego nie wygasł. 
 >- Twoja organizacja ma subskrypcję platformy Azure.
 
-![Zrzut ekranu PIM, z listy zasobów pusty](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
+![Zrzut ekranu z usługi PIM, z listy zasobów pusty](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
 
-## <a name="configure-assignments"></a>Konfigurowanie przypisania
+## <a name="configure-assignments"></a>Konfigurowanie przypisań
 
-Wybierz subskrypcję z listy i przypisywania samodzielnie (lub grupy, które są członkami) jako kwalifikujących się właścicielem zasobu. 
-[Dowiedz się więcej o przypisywanie ról](pim-resource-roles-assign-roles.md).
+Wybierz subskrypcję z listy i przypisz siebie (lub grupy, które są członkami) jako uprawnionych właściciela zasobu. 
+[Przeczytaj więcej na temat przypisywania ról](pim-resource-roles-assign-roles.md).
 
-Powtórz ten proces dla każdego zasobu przed przejściem do następnego kroku.
+Powtórz tę procedurę dla każdego zasobu przed przejściem do następnego kroku.
 
-## <a name="clean-up-standing-access"></a>Wyczyść stałego dostępu
+## <a name="clean-up-standing-access"></a>Czyszczenie stałego dostępu
 
-Teraz, gdy masz kwalifikujących się przydziałów ważne subskrypcje w Twojej organizacji, możesz wyczyścić stałego dostępu przez wyłączenie opcji we właściwościach katalogu.
+Teraz, gdy kwalifikującymi się przypisaniami ważne subskrypcje w Twojej organizacji, możesz wyczyścić stałego dostępu przez wyłączenie opcji w oknie właściwości katalogu.
 
-![Zrzut ekranu właściwości strony, z Przełącz ustawiona na nie](media/azure-pim-resource-rbac/aad_properties_no.png)
+![Zrzut ekranu właściwości zawierającej Przełącz ustawiona na nie](media/azure-pim-resource-rbac/aad_properties_no.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

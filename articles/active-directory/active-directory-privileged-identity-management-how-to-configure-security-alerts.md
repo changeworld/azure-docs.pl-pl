@@ -7,62 +7,62 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9b1779ed409a01356615561b1eb6fea0235529f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233924"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447561"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak skonfigurować alerty zabezpieczeń w usłudze Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
-Azure Privileged Identity zarządzania (PIM) generuje alerty w przypadku podejrzanej lub niebezpieczna działania w danym środowisku. Po wyzwoleniu alertu jest wyświetlane na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
+Azure Privileged Identity Management (PIM) generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
 
-![Alerty zabezpieczeń pulpitu nawigacyjnego PIM — zrzut ekranu][1]
+![Alerty zabezpieczeń pulpitu nawigacyjnego usługi PIM — zrzut ekranu][1]
 
 | Alerty | Ważność | Wyzwalacz | Zalecenie |
 | --- | --- | --- | --- |
-| **Role są przypisywane poza usługą PIM** |Wysoka |Użytkownik trwale przypisano rolę uprzywilejowaną, poza interfejsu usługi PIM. |Przejrzyj użytkowników na liście i anulowanie przypisania je z uprzywilejowany role przypisane poza usługą PIM. |
-| **Role są aktywowane zbyt często** |Medium |Znaleziono zbyt wiele reaktywacje z tego samego elementu role w określonym terminie w ustawieniach. |Skontaktuj się z użytkownika, aby zobaczyć, dlaczego ich uaktywniono rolę tak wiele razy. Być może limit czasu jest zbyt krótka dla ich do wykonywania swoich zadań lub może być one używane skrypty do automatycznie aktywować rolę. Upewnij się, że czas trwania aktywacji dla roli ich ustawiono wystarczająco długo, aby je do wykonywania swoich zadań. |
-| **Role nie wymagają uwierzytelniania wieloskładnikowego w celu aktywacji** |Medium |Dostępne są role bez włączone w ustawieniach usługi MFA. |Firma Microsoft uwierzytelniania MFA można wymagać dla ról najbardziej wysoko uprzywilejowane, ale zdecydowanie zaleca się włączenie usługi MFA do aktywacji wszystkich ról. |
-| **Użytkownicy nie są przy użyciu ich ról uprzywilejowanych** |Małe |Brak kwalifikujących się Administratorzy, które nie zostały ostatnio aktywowane ich ról. |Uruchom Przegląd dostępu, aby określić użytkowników, którzy nie potrzebują już dostępu. |
-| **Istnieje zbyt wiele administratorów globalnych** |Małe |Brak administratorów globalnych niż zalecane. |Jeśli masz dużą liczbę administratorów globalnych, istnieje prawdopodobieństwo, że użytkownicy uzyskują więcej uprawnień niż jest to wymagane. Przenieść użytkowników do ról uprzywilejowanych mniej lub upewnij niektóre z nich kwalifikuje się do roli zamiast trwale przypisana. |
+| **Role są przypisywane poza usługą PIM** |Wysoka |Użytkownikowi przypisano trwale ról uprzywilejowanych, poza interfejsu usługi PIM. |Przejrzyj użytkowników na liście i Cofnij przypisanie, ich z uprzywilejowane role przypisane poza usługą PIM. |
+| **Role są aktywowane zbyt często** |Medium |Wystąpiło zbyt wiele reaktywacji o tej samej roli w ustalonym terminie w ustawieniach. |Skontaktuj się z użytkownika, aby zobaczyć, dlaczego one uaktywniono rolę tak wiele razy. Może być limitu czasu jest zbyt mała w przypadku ich do wykonywania swoich zadań lub może ich za pomocą skryptów automatycznej aktywacji roli. Upewnij się, że czas trwania aktywacji w ramach swojej roli ustawiono wystarczająco długo, aby je do wykonywania ich zadań. |
+| **Role nie wymagają uwierzytelniania wieloskładnikowego w celu aktywacji** |Medium |Dostępne są role, bez włączony w ustawieniach usługi MFA. |Firma Microsoft wymaga uwierzytelniania Wieloskładnikowego dla najbardziej wysoce uprzywilejowanych ról, ale zdecydowanie zachęcamy włączyć usługę MFA do aktywacji wszystkich ról. |
+| **Użytkownicy nie są z ich ról uprzywilejowanych** |Małe |Ma kwalifikujących się Administratorzy, którzy nie został ostatnio aktywowany ich ról. |Uruchamianie przeglądu dostępu w celu określenia użytkowników, którzy nie muszą już mieć dostęp. |
+| **Istnieje zbyt wiele Administratorzy globalni** |Małe |Istnieją administratorzy charakter bardziej globalny niż zalecane. |Jeśli masz dużą liczbę administratorów globalnych, jest prawdopodobne, że użytkownicy otrzymują więcej uprawnień niż jest to wymagane. Przenieść użytkowników do mniej uprzywilejowanych ról lub upewnij niektóre z nich kwalifikuje się do roli zamiast trwale przypisane. |
 
 ### <a name="severity"></a>Ważność
 * **Wysoka**: wymaga natychmiastowego działania z powodu naruszenia zasad. 
-* **Średnia liczba godzin**: nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
-* **Niski**: nie wymagać natychmiastowego działania, ale sugeruje zmianę preferrable zasady.
+* **Średnia**: nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
+* **Niska**: nie wymagać natychmiastowego działania, ale sugeruje zmianę preferrable zasady.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurowanie ustawień alertów zabezpieczeń
-Niektóre alerty zabezpieczeń w PIM do pracy z własnego środowiska i cele zabezpieczeń można dostosować. Wykonaj następujące kroki, aby osiągnąć bloku ustawienia:
+Można dostosować niektóre alerty zabezpieczeń w usłudze PIM chcesz pracować w swoim środowisku i cele zabezpieczeń. Wykonaj następujące kroki, aby dotrzeć do bloku ustawienia:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/) i wybierz **Azure AD Privileged Identity Management** kafelka na pulpicie nawigacyjnym.
-2. Wybierz **zarządzane ról uprzywilejowanych** > **ustawienia** > **alerty ustawienia**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz **usługi Azure AD Privileged Identity Management** kafelka na pulpicie nawigacyjnym.
+2. Wybierz **zarządzane ról uprzywilejowanych** > **ustawienia** > **ustawienia alertów**.
    
     ![Przejdź do ustawień alertów zabezpieczeń][2]
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>Alert "Role są aktywowane zbyt często"
-Ten alert jest wyzwalane, gdy użytkownik aktywuje tej samej roli uprzywilejowanej wiele razy w danym okresie. Możesz skonfigurować zarówno okres czasu, jak i liczbę aktywacji.
+Ten alert jest wyzwalana, gdy użytkownik aktywuje tej samej roli uprzywilejowanej wiele razy w danym okresie. Można skonfigurować zarówno okres czasu, jak i liczbę aktywacji.
 
-* **Okres odnawiania aktywacji**: Określ w dni, godziny, minuty, a w drugim okresie chcesz użyć do śledzenia podejrzanych odnowienia.
-* **Liczba odnowień aktywacji**: Określ liczbę aktywacji od 2 do 100, które należy wziąć pod uwagę warta alertu, w ramach czasowych została wybrana opcja. Możesz zmienić to ustawienie za pomocą suwaka, lub wpisz liczbę w polu tekstowym.
+* **Okres odnowienia uaktywnienia**: Określ w dni, godziny, minuty i sekundy okres czasu, którego chcesz użyć do śledzenia podejrzanych odnowienia.
+* **Liczba odnowień aktywacji**: Określ liczbę aktywacji od 2 do 100, które uważasz za Alberta alertu w przedziale czasu została wybrana opcja. Możesz zmienić to ustawienie za pomocą suwaka lub wpisanie liczby w polu tekstowym.
 
-### <a name="there-are-too-many-global-administrators-alert"></a>Alert "są zbyt wielu administratorów globalnych"
-PIM wyzwala ten alert, jeśli są spełnione dwa różne kryteria, a obie z nich można skonfigurować. Najpierw należy nawiązać pewnej wartości progowej administratorów globalnych. Po drugie określonego procentu przypisania roli całkowita musi być administratorów globalnych. Jeśli tylko spełnia jednego z tych wskaźników, nie powoduje wyświetlenia alertu.  
+### <a name="there-are-too-many-global-administrators-alert"></a>Alert "Istnieją zbyt wielu administratorów globalnych"
+PIM wyzwala alert, jeśli są spełnione dwa różne kryteria, a następnie możesz skonfigurować oba z nich. Najpierw należy do osiągnięcia progu administratorów globalnych. Po drugie procent swoje przypisania roli całkowita musi być administratorów globalnych. Jeśli tylko spełniać jeden z tych pomiarów, alert nie jest widoczna.  
 
-* **Minimalna liczba administratorów globalnych**: Określ liczbę administratorów globalnych od 2 do 100, należy rozważyć kwotę niebezpieczne.
-* **Procent administratorów globalnych**: Określanie wartości procentowej Administratorzy, którzy administratorów globalnych, od 0 do 100%, która jest niebezpieczne w danym środowisku.
+* **Minimalna liczba administratorów globalnych**: liczba administratorów globalnych, od 2 do 100, należy rozważyć niebezpieczne kwoty.
+* **Procent administratorów globalnych**: Określ wartość procentową administratorów, którzy Administratorzy globalni, od 0% do 100%, to niebezpieczne w danym środowisku.
 
-### <a name="administrators-arent-using-their-privileged-roles-alert"></a>Alert "Administratorzy nie są używane role uprzywilejowane"
-Ten alert wyzwala, jeśli użytkownik przejdzie do pewnego czasu bez uaktywniania roli.
+### <a name="administrators-arent-using-their-privileged-roles-alert"></a>Alert "Administratorzy nie są za pomocą ich ról uprzywilejowanych"
+Ten alert wyzwalacze, jeśli użytkownik przejdzie określoną ilość czasu, bez uaktywniania roli.
 
-* **Liczba dni**: Określ liczbę dni z zakresu od 0 do 100, które użytkownik może przejść bez uaktywniania roli.
+* **Liczba dni**: Określ liczbę dni z zakresu od 0 do 100, które użytkownik może go bez uaktywniania roli.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

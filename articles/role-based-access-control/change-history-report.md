@@ -1,6 +1,6 @@
 ---
-title: Wyświetl dzienniki aktywności RBAC zmian na platformie Azure | Dokumentacja firmy Microsoft
-description: Widok działania w dziennikach kontroli dostępu opartej na rolach (RBAC) zmiany w ciągu ostatnich 90 dni.
+title: Wyświetlanie dzienników aktywności zmiany RBAC na platformie Azure | Dokumentacja firmy Microsoft
+description: Wyświetl dzienniki aktywności dla kontroli dostępu opartej na rolach (RBAC) zmiany w ciągu ostatnich 90 dni.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,27 +8,27 @@ manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c24c6d652a65f5ba851de66a1f2fe595a46a5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293391"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437653"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Wyświetl dzienniki aktywności zmiany RBAC
+# <a name="view-activity-logs-for-rbac-changes"></a>Wyświetlanie dzienników aktywności dla zmian RBAC
 
-Czasami potrzebny informacji na temat zmiany kontroli dostępu opartej na rolach, takich jak dla inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania roli lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Można wyświetlać dzienniki aktywności, aby wyświetlić wszystkie zmiany RBAC w ciągu ostatnich 90 dni.
+Czasami potrzebujesz informacji na temat zmian kontroli dostępu opartej na rolach, takich jak inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania ról lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Możesz wyświetlić dzienniki aktywności, aby wyświetlić wszystkie zmiany funkcji RBAC w ciągu ostatnich 90 dni.
 
-## <a name="operations-that-are-logged"></a>Operacje związane z unikatowymi
+## <a name="operations-that-are-logged"></a>Operacje, które są rejestrowane
 
-Poniżej przedstawiono operacji związanych z RBAC, które są rejestrowane w dzienniku aktywności:
+Oto operacje związane z RBAC, które są rejestrowane w dzienniku aktywności:
 
 - Utwórz przypisanie roli
 - Usuń przypisanie roli
@@ -37,11 +37,11 @@ Poniżej przedstawiono operacji związanych z RBAC, które są rejestrowane w dz
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Najłatwiejszym sposobem na rozpoczęcie pracy jest aby wyświetlić dzienniki aktywności w portalu Azure. Poniższy zrzut ekranu przedstawia przykład dziennik aktywności, która została przefiltrowana do wyświetlenia operacji definicji roli i przypisanie roli. Zawiera również link do pobierania dzienników jako plik CSV.
+Najprostszym sposobem na rozpoczęcie pracy jest wyświetlanie dzienników aktywności w witrynie Azure portal. Poniższy zrzut ekranu przedstawia przykład dziennika aktywności, która została przefiltrowana do wyświetlania przypisania roli i operacje definicji roli. Zawiera także łącza do pobierania dzienników do pliku CSV.
 
-![Dzienniki aktywności za pomocą portalu — zrzut ekranu](./media/change-history-report/activity-log-portal.png)
+![Dzienniki aktywności przy użyciu portalu — zrzut ekranu](./media/change-history-report/activity-log-portal.png)
 
-Dziennik aktywności w portalu ma kilka filtrów. Poniżej przedstawiono filtry powiązane RBAC:
+Dziennik aktywności w portalu ma kilka filtrów. W tym miejscu znajdują się filtry dotyczące kontroli RBAC:
 
 |Filtr  |Wartość  |
 |---------|---------|
@@ -49,13 +49,13 @@ Dziennik aktywności w portalu ma kilka filtrów. Poniżej przedstawiono filtry 
 |Operacja     | <ul><li>Utwórz przypisanie roli</li> <li>Usuń przypisanie roli</li> <li>Utwórz lub zaktualizuj niestandardową definicję roli</li> <li>Usuń niestandardową definicję roli</li></ul>      |
 
 
-Aby uzyskać więcej informacji o Dzienniki aktywności, zobacz [wyświetlać zdarzenia w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Aby uzyskać więcej informacji na temat dzienników aktywności, zobacz [wyświetlać zdarzenia w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 Aby wyświetlić dzienniki aktywności przy użyciu programu Azure PowerShell, użyj [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) polecenia.
 
-To polecenie wyświetla listę wszystkich zmian w przypisaniu roli w ramach subskrypcji w ciągu ostatnich siedmiu dni:
+To polecenie wyświetla wszystkie zmiany przypisania roli w ramach subskrypcji w ciągu ostatnich siedmiu dni:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
@@ -67,7 +67,7 @@ To polecenie wyświetla listę wszystkich zmian definicji roli w grupie zasobów
 Get-AzureRmLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-To polecenie wyświetla listę wszystkich przypisania roli i zmiany definicji roli w ramach subskrypcji w ciągu ostatnich siedmiu dni i wyświetla wyniki w postaci listy:
+To polecenie wyświetla wszystkie przypisania roli i zmiany definicji roli w ramach subskrypcji w ciągu ostatnich siedmiu dni i wyświetla wyniki w postaci listy:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
@@ -92,15 +92,15 @@ Properties              :
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby wyświetlić dzienniki aktywności z wiersza polecenia platformy Azure, użyj [listy dziennik aktywności monitora az](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) polecenia.
+Aby wyświetlić dzienniki aktywności z wiersza polecenia platformy Azure, użyj [az monitor dziennika aktywności listy](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) polecenia.
 
-To polecenie wyświetla Dzienniki aktywności w grupie zasobów od czasu rozpoczęcia:
+To polecenie wyświetla listę dzienników aktywności w grupie zasobów, od czasu rozpoczęcia:
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
 ```
 
-To polecenie wyświetla Dzienniki aktywności dla dostawcy zasobów autoryzacji od czasu rozpoczęcia:
+To polecenie wyświetla listę dzienników aktywności dla dostawcy zasobów autoryzacji od czasu rozpoczęcia:
 
 ```azurecli
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
@@ -108,26 +108,26 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Analiza dzienników Azure](../log-analytics/log-analytics-overview.md) jest inne narzędzie służy do zbierania i analizowania zmian RBAC dla wszystkich zasobów na platformie Azure. Analiza dzienników ma następujące zalety:
+[Usługa Azure Log Analytics](../log-analytics/log-analytics-overview.md) to kolejne narzędzie, które umożliwia zbieranie i analizowanie zmian RBAC dla wszystkich zasobów platformy Azure. Usługa log Analytics ma następujące zalety:
 
-- Pisanie logiki i złożonych zapytań
-- Integracja z alertów, usługa Power BI i inne narzędzia
+- Zapis złożonych kwerend i Logic Apps
+- Integracja z alertów, usługa Power BI i innymi narzędziami
 - Zapisz dane przez dłuższy czas przechowywania
-- Wstawienia odsyłacza z innych dzienniki zabezpieczeń, maszyny wirtualnej i niestandardowe
+- Uzyskane z innych dzienników, takie jak zabezpieczenia, maszyny wirtualnej i niestandardowe
 
-Poniżej przedstawiono podstawowe kroki, aby rozpocząć:
+Poniżej przedstawiono podstawowe kroki, aby rozpocząć pracę:
 
-1. [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. [Konfigurowanie rozwiązania analizy dzienników działania](../log-analytics/log-analytics-activity.md#configuration) obszaru roboczego.
+1. [Skonfiguruj rozwiązanie Activity Log Analytics](../log-analytics/log-analytics-activity.md#configuration) dla obszaru roboczego.
 
-1. [Wyświetl dzienniki aktywności](../log-analytics/log-analytics-activity.md#using-the-solution). Szybko przejść do strony Przegląd analizy dziennika aktywności jest kliknięcie **analizy dzienników** opcji.
+1. [Wyświetlanie dzienników aktywności](../log-analytics/log-analytics-activity.md#using-the-solution). Szybko przejść do strony przegląd działań usługi Log Analytics jest kliknięcie **usługi Log Analytics** opcji.
 
-   ![Opcja analizy dziennika w portalu](./media/change-history-report/azure-log-analytics-option.png)
+   ![Log Analytics opcji w portalu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Opcjonalnie użyj [wyszukiwania dziennika](../log-analytics/log-analytics-log-search.md) strony lub [portal analityka zaawansowane](https://docs.loganalytics.io/docs/Learn) zapytań, sprawdź dzienniki. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [strony wyszukiwania dziennika lub w portalu analityka zaawansowane](../log-analytics/log-analytics-log-search-portals.md).
+1. Opcjonalnie użyć [wyszukiwanie w dzienniku](../log-analytics/log-analytics-log-search.md) strony lub [portalu analizy zaawansowanej](https://docs.loganalytics.io/docs/Learn) zapytania i wyświetlić dzienniki. Aby uzyskać więcej informacji na temat tych dwóch opcji, zobacz [strony wyszukiwanie w dziennikach lub portalu analizy zaawansowanej](../log-analytics/log-analytics-log-search-portals.md).
 
-Oto zapytanie zwracające nowych przypisań ról są zorganizowane według dostawcy zasobów docelowych:
+Oto zapytanie zwracające nowego przypisania roli organizowane przez dostawcę zasobów docelowych:
 
 ```
 AzureActivity
@@ -145,7 +145,7 @@ AzureActivity
 | render timechart
 ```
 
-![Dzienniki aktywności za pomocą portalu analityka zaawansowane — zrzut ekranu](./media/change-history-report/azure-log-analytics.png)
+![Dzienniki aktywności przy użyciu portalu analizy zaawansowanej — zrzut ekranu](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wyświetlanie zdarzeń w dzienniku aktywności](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)

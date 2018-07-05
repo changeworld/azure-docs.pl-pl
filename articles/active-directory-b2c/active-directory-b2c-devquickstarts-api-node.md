@@ -1,21 +1,21 @@
 ---
 title: Zabezpieczanie interfejsu API sieci web przy użyciu środowiska Node.js w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak utworzyć środowiska Node.js składnika web API, który akceptuje tokeny od dzierżawcy usługi B2C.
+description: Jak utworzyć środowiska Node.js internetowego interfejsu API, który akceptuje tokeny od dzierżawcy usługi B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 42d2f79e53017bad0f27e8c162ab4f00b6b3014e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711454"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442427"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Usługa Azure AD B2C: zabezpieczanie interfejsu API sieci Web przy użyciu środowiska Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -27,7 +27,7 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia zabezpieczanie interfej
 >
 >
 
-**Passport** to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Jest to elastyczne i modułowe oprogramowanie, które można dyskretnie zainstalować w dowolnej aplikacji sieci Web opartej na module Express lub Restify. Kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu m.in. nazwy użytkownika i hasła lub kont w serwisach Facebook i Twitter. Opracowaliśmy strategię dla usługi Azure Active Directory (Azure AD). Polega ona na zainstalowaniu tego modułu, a następnie dodaniu wtyczki `passport-azure-ad` usługi Azure AD.
+**Passport** to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Jest to elastyczne i modułowe oprogramowanie, które można dyskretnie zainstalować w dowolnej aplikacji internetowej opartej na module Express lub Restify. Kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu m.in. nazwy użytkownika i hasła lub kont w serwisach Facebook i Twitter. Opracowaliśmy strategię dla usługi Azure Active Directory (Azure AD). Polega ona na zainstalowaniu tego modułu, a następnie dodaniu wtyczki `passport-azure-ad` usługi Azure AD.
 
 Aby pracować z tą próbką, należy:
 
@@ -41,7 +41,7 @@ Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 Następnie należy utworzyć aplikację w katalogu B2C, która dostarcza do usługi Azure AD pewne informacje, które są potrzebne w celu bezpiecznego komunikowania się z aplikacją. W takim przypadku zarówno aplikacja klienta, jak i interfejs API sieci Web, są reprezentowane przez jeden **Identyfikator aplikacji**, ponieważ stanowią jedną aplikację logiczną. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
 
-* Dołącz do aplikacji **aplikację sieci Web/interfejs API sieci Web**.
+* Dołącz do aplikacji **aplikację internetową/internetowy interfejs API**.
 * Wprowadź `http://localhost/TodoListService` w polu **Adres URL odpowiedzi**. Jest to domyślny adres URL dla tej próbki kodu.
 * Utwórz **klucz tajny aplikacji** i skopiuj go. Te dane będą potrzebne później. Pamiętaj, że aby go użyć, jego wartość musi być [ujęta w kodzie XML w znaki ucieczki](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape).
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Te dane będą potrzebne później.
@@ -57,7 +57,7 @@ W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy uż
 
 Po utworzeniu trzech zbiorów zasad można rozpocząć tworzenie aplikacji.
 
-Aby dowiedzieć się, jak działają zasady w usłudze Azure AD B2C, należy najpierw zapoznać się z [samouczkiem ułatwiającym rozpoczęcie pracy z aplikacją sieci Web platformy .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Aby dowiedzieć się, jak działają zasady w usłudze Azure AD B2C, należy najpierw zapoznać się z [samouczkiem ułatwiającym rozpoczęcie pracy z aplikacją internetową platformy .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
 
 ## <a name="download-the-code"></a>Pobieranie kodu
 Kod używany w tym samouczku [jest przechowywany w serwisie GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Aby samodzielnie tworzyć przykładowy kod w trakcie pracy, możesz [pobrać plik ZIP ze szkieletem projektu](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Można również sklonować szkielet:

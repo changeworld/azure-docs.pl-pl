@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie język zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — opis Centrum IoT przypominającego SQL zapytania język używany do pobierania informacji o urządzeniu/modułu twins i zadania z Centrum IoT.
+title: Zrozumienie języka zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — opis usługi IoT Hub podobnego do SQL zapytania język używany do pobierania informacji o urządzeniu/modułu bliźniaczych reprezentacji i zadań z usługi IoT hub.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -8,25 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633516"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444188"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia i moduł twins, zadań i rozsyłania wiadomości
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
-Centrum IoT zapewnia zaawansowane języka przypominającego SQL, aby pobrać informacje dotyczące [twins urządzenia] [ lnk-twins] i [zadania][lnk-jobs], i [rozsyłania wiadomości][lnk-devguide-messaging-routes]. W tym artykule przedstawiono:
+IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń] [ lnk-twins] i [zadania][lnk-jobs]i [routing komunikatów][lnk-devguide-messaging-routes]. Ten artykuł przedstawia:
 
-* Wprowadzenie do najważniejszych funkcji języka kwerend Centrum IoT, i
+* Wprowadzenie do najważniejszych funkcji języka zapytań usługi IoT Hub, a
 * Szczegółowy opis języka.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Urządzenia i moduł dwie zapytań
-[Urządzenie twins] [ lnk-twins] i twins moduł może zawierać dowolne obiekty JSON jako znaczniki i właściwości. Centrum IoT umożliwia twins urządzenia zapytania i twins modułu jako pojedynczego dokumentu JSON zawierający wszystkie informacje dwie.
-Załóżmy na przykład, że Twoje twins urządzenia Centrum IoT ma następującą strukturę (dwie moduł będzie podobny tylko z dodatkowych moduleId):
+## <a name="device-and-module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu
+[Bliźniacze reprezentacje urządzeń] [ lnk-twins] i bliźniaczych reprezentacjach modułów mogą zawierać dowolne obiekty JSON jako tagów i właściwości. Usługa IoT Hub umożliwia zapytań bliźniaczych reprezentacji urządzeń i bliźniaczych reprezentacjach modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
+Załóżmy na przykład, że bliźniaczych reprezentacji urządzeń usługi IoT hub mają następującą strukturę (bliźniaczą reprezentację modułu mogą być podobne tylko przy użyciu dodatkowych moduleId):
 
 ```json
 {
@@ -78,26 +78,26 @@ Załóżmy na przykład, że Twoje twins urządzenia Centrum IoT ma następując
 }
 ```
 
-### <a name="device-twin-queries"></a>Urządzenie dwie zapytań
+### <a name="device-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń
 
-Centrum IoT udostępnia twins urządzenia jako kolekcji dokumentów o nazwie **urządzeń**.
-Dlatego poniższe zapytanie pobiera cały zestaw twins urządzenia:
+Usługa IoT Hub udostępnia bliźniaczych reprezentacji urządzeń jako kolekcji dokumentów o nazwie **urządzeń**.
+Dlatego następujące zapytanie pobiera cały zestaw bliźniaczych reprezentacji urządzeń:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Zestawy Azure SDK IoT] [ lnk-hub-sdks] obsługuje stronicowania duże wyniki.
+> [Usługa Azure IoT SDKs] [ lnk-hub-sdks] Obsługuj stronicowanie dużych wyników.
 
-Centrum IoT umożliwia pobieranie filtrowania z warunkami dowolnego twins urządzenia. Na przykład, aby otrzymać urządzenia twins where **location.region** ma ustawioną wartość tagu **USA** Użyj następującego zapytania:
+Usługa IoT Hub umożliwia pobieranie bliźniaczych reprezentacji urządzeń filtrowanie przy użyciu dowolnego warunków. Na przykład do otrzymywania urządzenia bliźniaczych reprezentacji gdzie **location.region** ustawiony jest tag **USA** Użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Operatory logiczne i arytmetyczne porównania są obsługiwane również. Na przykład aby uzyskać urządzenia twins znajdujące się w Stanach Zjednoczonych i skonfigurowany, aby wysłać dane telemetryczne co mniej niż minutę, wykonaj następujące zapytanie:
+Operatory logiczne i porównań arytmetycznej są również obsługiwane. Na przykład można pobrać urządzenia twins znajduje się w Stanach Zjednoczonych i skonfigurowane do wysyłania telemetrii za mniej niż minutę, użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Dla wygody istnieje również możliwość użycia tablicowych z **IN** i **nW** operatory (nie w). Na przykład aby pobrać twins urządzenia, które zgłosiły sieci Wi-Fi lub łączności przewodowej Użyj następującego zapytania:
+Dla wygody, jest również możliwość użycia tablicowych o **w** i **nW** operatorów (nie w). Na przykład można pobrać bliźniaczych reprezentacji urządzeń podlegających łączności przewodowej lub Wi-Fi, użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Często jest niezbędne w celu ustalenia wszystkich twins urządzenia zawierające określoną właściwość. Centrum IoT obsługuje funkcję `is_defined()` w tym celu. Na przykład, aby pobrać twins urządzenia, które definiują `connectivity` właściwości użyj następującego zapytania:
+Często jest niezbędne do identyfikowania wszystkich bliźniaków urządzeń, które zawierają określoną właściwość. Usługa IoT Hub obsługuje funkcję `is_defined()` do tego celu. Na przykład aby bliźniaczych reprezentacji urządzeń pobierania, które definiują `connectivity` właściwości użyj następującego zapytania:
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-Zapoznaj się [klauzuli WHERE] [ lnk-query-where] sekcję, aby pełną dokumentację funkcji filtrowania.
+Zapoznaj się [klauzuli WHERE] [ lnk-query-where] sekcji pełną dokumentację funkcji filtrowania.
 
-Grupowanie i agregacje są również obsługiwane. Na przykład można znaleźć liczba urządzeń w każdej telemetrii stan konfiguracji, użyj następującego zapytania:
+Grupowanie i agregacje są również obsługiwane. Na przykład można znaleźć liczby urządzeń w każdym telemetrii stan konfiguracji, użyj następującego zapytania:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-To zapytanie grupowania zwróci wynik podobny do poniższego przykładu:
+To grupowanie zapytanie zwróci wynik podobny do poniższego przykładu:
 
 ```json
 [
@@ -149,36 +149,36 @@ To zapytanie grupowania zwróci wynik podobny do poniższego przykładu:
 ]
 ```
 
-W tym przykładzie trzy urządzeń zgłoszonych Konfiguracja zakończyła się pomyślnie, nadal są dwa stosowania konfiguracji i jedną zgłosił błąd.
+W tym przykładzie trzech urządzeń. raportowane Konfiguracja zakończyła się pomyślnie, nadal są dwa stosowania konfiguracji i jedną zgłosił błąd.
 
-Kwerend projekcji umożliwiają deweloperom zwracać tylko właściwości, które ich interesują. Na przykład można pobrać ostatniego działania wszystkich rozłączona urządzeń, użyj następującej kwerendy:
+Kwerend projekcji umożliwiają deweloperom wróć do właściwości, które ich interesują. Na przykład można pobrać ostatniego działania wszystkich odłączone urządzenia, użyj następującego zapytania:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>Kwerendy dwie modułu
+### <a name="module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji modułu
 
-Wykonywanie zapytania na twins modułu jest podobny do zapytania na urządzeniu twins, ale za pomocą różnych kolekcji/przestrzeni nazw, tj. zamiast "z urządzenia" można wysyłać zapytania
+Zapytań o bliźniaczych reprezentacjach modułów jest podobny do wykonywania zapytań na bliźniacze reprezentacje urządzeń, ale przy użyciu innej kolekcji/przestrzeni nazw, czyli zamiast "z urządzenia" można tworzyć zapytania
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-Firma Microsoft nie zezwalaj na sprzężenie między urządzeniami i devices.modules kolekcji. Jeśli chcesz twins modułu zapytania na urządzeniach, to oparte na tagi zrobić. To zapytanie spowoduje zwrócenie wszystkich twins moduł dla wszystkich urządzeń ze stanem skanowania:
+Firma Microsoft nie zezwalaj na sprzężenie między urządzeniami i devices.modules kolekcji. Jeśli chcesz bliźniaczych reprezentacjach modułów zapytania na urządzeniach należy go na podstawie tagów. To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów dla wszystkich urządzeń ze stanem skanowania:
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning'
+Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-To zapytanie spowoduje zwrócenie wszystkich twins modułu o stanie skanowania, ale tylko w określonym podzestawie urządzeń.
+To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów ze stanem skanowania, ale tylko na określony podzbiór urządzeń.
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
-### <a name="c-example"></a>Przykład C#
-Funkcje zapytań jest udostępniany przez [C# usługi SDK] [ lnk-hub-sdks] w **RegistryManager** klasy.
+### <a name="c-example"></a>Przykład w języku C#
+Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi C#] [ lnk-hub-sdks] w **RegistryManager** klasy.
 Oto przykład prostego zapytania:
 
 ```csharp
@@ -193,12 +193,12 @@ while (query.HasMoreResults)
 }
 ```
 
-**Zapytania** utworzeniu wystąpienia obiektu z rozmiarem strony (maksymalnie 100). Następnie wiele stron są pobierane przez wywołanie metody **GetNextAsTwinAsync** metody wiele razy.
+**Zapytania** o rozmiarze strony (maksymalnie 100) jest tworzone wystąpienie obiektu. Następnie wiele stron są pobierane przez wywołanie metody **GetNextAsTwinAsync** metody wiele razy.
 
-Obiekt zapytania udostępnia wiele **dalej** wartości, w zależności od opcji deserializacji wymagane przez zapytanie. Na przykład dwie lub zadanie obiekty urządzeń lub zwykły JSON przy użyciu projekcji.
+Obiekt zapytania udostępnia wiele **dalej** wartości w zależności od opcji deserializacji wymagane przez zapytanie. Na przykład obiekty zadanie lub bliźniaczych reprezentacji urządzeń lub zwykły JSON, korzystając z projekcji.
 
-### <a name="nodejs-example"></a>Przykład node.js
-Funkcje zapytań jest udostępniany przez [usługi Azure IoT SDK dla środowiska Node.js] [ lnk-hub-sdks] w **rejestru** obiektu.
+### <a name="nodejs-example"></a>Przykład platformy node.js
+Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi Azure IoT dla środowiska Node.js] [ lnk-hub-sdks] w **rejestru** obiektu.
 Oto przykład prostego zapytania:
 
 ```nodejs
@@ -220,21 +220,21 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-**Zapytania** utworzeniu wystąpienia obiektu z rozmiarem strony (maksymalnie 100). Następnie wiele stron są pobierane przez wywołanie metody **nextAsTwin** metody wiele razy.
+**Zapytania** o rozmiarze strony (maksymalnie 100) jest tworzone wystąpienie obiektu. Następnie wiele stron są pobierane przez wywołanie metody **nextAsTwin** metoda wiele razy.
 
-Obiekt zapytania udostępnia wiele **dalej** wartości, w zależności od opcji deserializacji wymagane przez zapytanie. Na przykład dwie lub zadanie obiekty urządzeń lub zwykły JSON przy użyciu projekcji.
+Obiekt zapytania udostępnia wiele **dalej** wartości w zależności od opcji deserializacji wymagane przez zapytanie. Na przykład obiekty zadanie lub bliźniaczych reprezentacji urządzeń lub zwykły JSON, korzystając z projekcji.
 
 ### <a name="limitations"></a>Ograniczenia
 
 > [!IMPORTANT]
-> Wyniki zapytania może mieć kilka minut opóźnienie względem ostatnie wartości twins urządzenia. Jeśli zapytanie twins poszczególne urządzenia przez identyfikator, za pomocą interfejsu API dwie pobrać urządzenia. Ten interfejs API zawsze zawiera najnowsze wartości i ma wyższy ograniczenie.
+> Wyniki zapytania może mieć tylko kilka minut opóźnienia w odniesieniu do najnowszych wartości bliźniaczych reprezentacji urządzeń. Jeśli podczas badania indywidualnych bliźniacze reprezentacje urządzeń za pomocą Identyfikatora, należy użyć pobierania bliźniaczej reprezentacji urządzenia z interfejsu API. Ten interfejs API zawsze zawiera najnowsze wartości i ma wyższy limity ograniczania przepływności.
 
-Obecnie porównania są obsługiwane tylko między typy pierwotne (nie obiektów), na przykład `... WHERE properties.desired.config = properties.reported.config` jest obsługiwana tylko w przypadku pierwotnych wartości tych właściwości.
+Obecnie porównania są obsługiwane tylko między typami pierwotnymi (nie obiektów), na przykład `... WHERE properties.desired.config = properties.reported.config` jest obsługiwana tylko wtedy, gdy te właściwości mają wartości pierwotnych.
 
-## <a name="get-started-with-jobs-queries"></a>Wprowadzenie do kwerend zadania
+## <a name="get-started-with-jobs-queries"></a>Wprowadzenie do zapytań zadania
 
-[Zadania] [ lnk-jobs] umożliwiają wykonywanie operacji na zestawy urządzeń. Dwie każdego urządzenia zawiera informacje o wszystkich zadań, które jest częścią kolekcji o nazwie **zadania**.
-Logicznie,
+[Zadania] [ lnk-jobs] umożliwiają wykonywanie operacji na zestawach urządzeń. Każdy bliźniaczej reprezentacji urządzenia zawiera informacje o wszystkich zadań, które jest częścią kolekcji o nazwie **zadań**.
+Logicznie
 
 ```json
 {
@@ -265,23 +265,23 @@ Logicznie,
 }
 ```
 
-Ta kolekcja jest obecnie kolejność jako **devices.jobs** w Centrum IoT języka zapytań.
+Obecnie ta kolekcja jest odpytywalny jako **devices.jobs** języka zapytań usługi IoT Hub.
 
 > [!IMPORTANT]
-> Obecnie właściwości zadania nigdy nie jest zwracana podczas wykonywania zapytania twins urządzenia. Oznacza to, zapytania, które zawierają "z urządzeń". Właściwości zadania są dostępne tylko bezpośrednio przy użyciu zapytań `FROM devices.jobs`.
+> Obecnie właściwości zadania nigdy nie jest zwracana podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji urządzeń. Oznacza to, że te zapytania, które zawierają "z urządzenia". Właściwości zadania może zostać oceniony jedynie bezpośrednio z zapytania przy użyciu `FROM devices.jobs`.
 >
 >
 
-Na przykład aby Pobierz wszystkie zadania (ostatnich i zaplanowane), które mają wpływ na jednym urządzeniu, można użyć następującej kwerendy:
+Na przykład aby uzyskać wszystkie zadania (ostatnie i zaplanowane), które wpływają na jednym urządzeniu, można użyć następującego zapytania:
 
 ```sql
 SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Należy zwrócić uwagę, jak to zapytanie informuje o stanie specyficzne dla urządzenia (oraz prawdopodobnie odpowiedzi metoda bezpośrednia) każde zadanie zwrócone.
-Istnieje również możliwość filtrowania z dowolnego warunków logicznych na wszystkie właściwości obiektu w **devices.jobs** kolekcji.
-Na przykład aby pobrać wszystkie urządzenia ukończone dwie aktualizacji zadania, które zostały utworzone po września 2016 dla określonego urządzenia, użyj następującego zapytania:
+Należy pamiętać o tym, jak to zapytanie zawiera stan specyficznych dla urządzenia (i ewentualnie odpowiedzi metody bezpośredniej) każde zadanie zwracane.
+Użytkownik może również filtrować za pomocą dowolnego warunków logicznych na temat wszystkich właściwości obiektu w **devices.jobs** kolekcji.
+Na przykład aby pobrać wszystkie ukończone urządzenia bliźniaczej reprezentacji zadania aktualizacji, które zostały utworzone od września 2016 roku dla określonego urządzenia, użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -291,7 +291,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-Można również pobierać wyników na urządzenie z jednym zadaniu.
+Możesz również pobrać wyniki poszczególnych urządzeń pojedynczego zadania.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -301,19 +301,19 @@ WHERE devices.jobs.jobId = 'myJobId'
 ### <a name="limitations"></a>Ograniczenia
 Obecnie zapytanie na **devices.jobs** nie obsługują:
 
-* Projekcji, w związku z tym tylko `SELECT *` jest możliwe.
-* Warunki, które odwołują się do dwie urządzenia, oprócz właściwości zadania (zobacz poprzednią sekcję).
-* Wykonywanie agregacji, takie jak liczba, avg, Grupuj według.
+* Projekcji, dlatego tylko `SELECT *` jest możliwe.
+* Warunki, które odwołują się do bliźniaczej reprezentacji urządzenia, oprócz właściwości zadania (zobacz poprzednią sekcję).
+* Wykonuje agregacje, takie jak liczba, avg, Grupuj według.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Wyrażenia zapytań tras wiadomości urządzenia do chmury
+## <a name="device-to-cloud-message-routes-query-expressions"></a>Trasy wiadomości z urządzenia do chmury, wyrażeniach zapytań
 
-Przy użyciu [trasy urządzenia do chmury][lnk-devguide-messaging-routes], można skonfigurować Centrum IoT wysłania wiadomości urządzenia do chmury do różnych punktów końcowych. Podczas wysyłania jest oparta na wyrażenia porównywany poszczególne wiadomości.
+Za pomocą [trasy urządzenia do chmury][lnk-devguide-messaging-routes], można skonfigurować usługę IoT Hub do wysyłania komunikatów urządzenie chmura do różnych punktów końcowych. Wysyła opiera się na wyrażeniach obliczone dla poszczególnych wiadomości.
 
-Trasa [warunku] [ lnk-query-expressions] używa tego samego języka zapytań Centrum IoT jako warunki w zapytaniach dwie i zadania. Warunki trasy są oceniane w nagłówkach wiadomości oraz i treść. Routingu wyrażeniu zapytania może obejmować tylko nagłówki komunikatów treść komunikatu lub oba. Centrum IoT zakłada określonego schematu w nagłówkach i treści wiadomości celu kierowania wiadomości. W poniższych sekcjach opisano, co jest wymagane dla Centrum IoT można przekierować poprawnie.
+Trasa [warunek] [ lnk-query-expressions] używa tego samego języka zapytań usługi IoT Hub jako warunki zapytań bliźniaczych reprezentacji i zadań. Warunki trasy są oceniane w nagłówkach wiadomości oraz treść. Usługi routingu wyrażeniu zapytania może obejmować tylko nagłówki wiadomości, treść wiadomości i / lub. Usługi IoT Hub zakłada określonego schematu dla nagłówki i treść wiadomości w celu kierowanie komunikatów w postaci. W poniższych sekcjach opisano, co jest wymagane dla usługi IoT Hub prawidłowo trasy.
 
 ### <a name="routing-on-message-headers"></a>Routing w nagłówkach wiadomości
 
-Centrum IoT przyjmuje następujące reprezentacja JSON w nagłówkach wiadomości do rozsyłania wiadomości:
+Usługa IoT Hub zakłada następującą reprezentację JSON nagłówków wiadomości do rozsyłania wiadomości:
 
 ```json
 {
@@ -335,23 +335,23 @@ Centrum IoT przyjmuje następujące reprezentacja JSON w nagłówkach wiadomośc
 }
 ```
 
-Właściwości systemu wiadomości są poprzedzane prefiksem `'$'` symbolu.
-Właściwości użytkownika są zawsze dostępne z jego nazwą. Jeśli nazwa właściwości użytkownika pokrywa się z właściwością systemu (takich jak `$contentType`), właściwości użytkownika są pobierane z `$contentType` wyrażenia.
-Zawsze dostęp do właściwości systemu za pomocą nawiasów `{}`: na przykład można użyć wyrażenia `{$contentType}` do dostępu do właściwości systemu `contentType`. Nazwy właściwości w nawiasach kwadratowych zawsze pobierają odpowiadających im właściwości systemu.
+Właściwości systemu komunikat mają prefiks `'$'` symboli.
+Właściwości użytkownika są zawsze dostępne przy użyciu ich nazw. Jeśli nazwa właściwości użytkownika pokrywa się z właściwością systemu (takich jak `$contentType`), właściwości użytkownika jest pobierany za pomocą `$contentType` wyrażenia.
+Zawsze dostęp do właściwości systemu, używając nawiasów `{}`: na przykład można użyć wyrażenia `{$contentType}` do dostępu do właściwości systemu `contentType`. Nazwy właściwości w nawiasach kwadratowych zawsze pobierają odpowiednie właściwości systemu.
 
-Należy pamiętać, że nazwy właściwości bez uwzględniania wielkości liter.
+Należy pamiętać, że nazwy właściwości jest rozróżniana wielkość liter.
 
 > [!NOTE]
-> Wszystkie właściwości wiadomości są ciągami. Właściwości systemu, zgodnie z opisem w [przewodnik dewelopera po][lnk-devguide-messaging-format], nie są obecnie dostępne do użycia w zapytaniach.
+> Wszystkie właściwości wiadomości są ciągami. Właściwości systemu, zgodnie z opisem w [przewodnik dla deweloperów][lnk-devguide-messaging-format], nie są obecnie dostępne do użycia w zapytaniach.
 >
 
-Na przykład, jeśli używasz `messageType` właściwość, należy kierować wszystkie dane telemetryczne jeden punkt końcowy, a wszystkie alerty do innego punktu końcowego. Można napisać poniższe wyrażenie można przekierować danych telemetrii:
+Na przykład, jeśli używasz `messageType` właściwości, możesz chcieć przekierować wszystkie dane telemetryczne jeden punkt końcowy, a wszystkie alerty do innego punktu końcowego. Można napisać następujące wyrażenie, aby kierować dane telemetryczne:
 
 ```sql
 messageType = 'telemetry'
 ```
 
-I następującego wyrażenia do rozsyłania komunikatów alertu:
+I następujące wyrażenie, aby kierować komunikaty alertów:
 
 ```sql
 messageType = 'alert'
@@ -363,13 +363,13 @@ Wyrażenia logiczne i funkcje są również obsługiwane. Ta funkcja umożliwia 
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-Zapoznaj się [wyrażenie i warunki] [ lnk-query-expressions] sekcję, aby pełną listę obsługiwanych operatory i funkcje.
+Zapoznaj się [wyrażeń i warunków] [ lnk-query-expressions] sekcji, aby uzyskać pełną listę obsługiwanych operatorów i funkcji.
 
 ### <a name="routing-on-message-bodies"></a>Routing w treści wiadomości
 
-Centrum IoT można kierować tylko oparte na treść komunikatu zawartość, jeśli treść jest poprawnie sformułowany JSON zakodowane w formacie UTF-8, UTF-16 lub UTF-32. Ustaw typ zawartości wiadomości `application/json`. Ustaw zawartość, kodowanie obsługiwane kodowania UTF w nagłówkach wiadomości. Jeśli jeden z nagłówków nie zostanie określony, Centrum IoT nie próbuje ocenić żadnych wyrażenie zapytania dotyczące treści dla komunikatu. Jeśli wiadomość nie jest komunikat JSON lub jeśli wiadomość nie określa typu zawartości i kodowania zawartości, nadal służy rozsyłania wiadomości do rozsyłania wiadomości oparte na nagłówkach wiadomości.
+Usługa IoT Hub tylko umożliwia kierowanie oparte na treść komunikatu zawartość, jeśli treść jest poprawnie sformułowany JSON zakodowane w formacie UTF-8, UTF-16 i UTF-32. Ustaw typ zawartości komunikatu do `application/json`. Ustaw zawartość, kodowanie obsługiwane kodowania UTF w nagłówkach wiadomości. Jeśli jeden z nagłówków nie zostanie określony, usługi IoT Hub nie próbuje obliczyć dowolne wyrażenie zapytania obejmujące treści dla komunikatu. Jeśli wiadomość nie jest komunikat JSON lub komunikat nie określa typu zawartości i kodowania zawartości, nadal umożliwia routing komunikatów do rozsyłania wiadomości, oparte na nagłówki wiadomości.
 
-Poniższy przykład pokazuje, jak utworzyć wiadomości o poprawnie sformułowany i zakodowanej treści JSON:
+Poniższy przykład pokazuje, jak utworzyć wiadomości z poprawnie sformułowane i zakodowany treść kodu JSON:
 
 ```csharp
 string messageBody = @"{ 
@@ -416,7 +416,7 @@ using (var message = new Message(messageBytes))
 }
 ```
 
-Można użyć `$body` w wyrażeniu zapytania do rozsyłania wiadomości. Proste treści odwołania, typu odwołania tablicy treści lub wiele odwołań treści można użyć w wyrażeniu zapytania. Wyrażenie zapytania można także połączyć treści odwołanie z odwołaniem nagłówka wiadomości. Na przykład poniżej przedstawiono wszystkie wyrażenia prawidłową kwerendę:
+Możesz użyć `$body` w wyrażeniu zapytania do rozsyłania wiadomości. Treść proste odwołanie, odwołanie do tablicy treści lub wiele odwołań treść można użyć w wyrażeniu zapytania. Wyrażenie zapytania, można także połączyć odwołanie treści z odwołaniem do nagłówka komunikatu. Na przykład poniżej przedstawiono wszystkie wyrażenia prawidłowe zapytanie:
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb'
@@ -425,8 +425,8 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
-## <a name="basics-of-an-iot-hub-query"></a>Podstawowe informacje o kwerendzie Centrum IoT
-Każdej kwerendy Centrum IoT składa się wybierz i z klauzulami, w której opcjonalne i klauzul GROUP BY. Każdy zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład twins urządzenia. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć na (**urządzeń** lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Z agregacji, wyniki tego kroku są grupowane jak określono w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
+## <a name="basics-of-an-iot-hub-query"></a>Podstawowe informacje dotyczące zapytań usługi IoT Hub
+Składa się każdego zapytania usługi IoT Hub, wybierz opcję i z klauzul, w której opcjonalne oraz klauzule GROUP BY. Każdego zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć w (**urządzeń** lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Za pomocą agregacji są pogrupowane wyniki tego kroku określone w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -435,19 +435,19 @@ FROM <from_specification>
 [GROUP BY <group_specification>]
 ```
 
-## <a name="from-clause"></a>Klauzula FROM
-**z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **z urządzeń** do twins urządzenia zapytania, lub **z devices.jobs** do szczegółów na urządzenie zadania zapytania.
+## <a name="from-clause"></a>FROM — klauzula
+**z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **URZĄDZENIOM** do zapytań bliźniaczych reprezentacji urządzeń lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
 
 ## <a name="where-clause"></a>Klauzula WHERE
-**Gdzie < filter_condition >** klauzula jest opcjonalne. Określa się, że co najmniej jeden warunek, że JSON dokumentów w kolekcji FROM muszą spełniać być dołączane jako część wyniku. Każdy dokument JSON musi być określone warunki "true", aby było uwzględnione w wyniku.
+**Gdzie < filter_condition >** klauzula jest opcjonalne. Określa ona, że co najmniej jeden warunek, że za pomocą pliku JSON dokumenty w kolekcji FROM musi spełniać być dołączane jako część wyniku. Dowolny dokument JSON musi być określone warunki "true", mają zostać uwzględnione w wynikach.
 
-Dozwolone warunki opisane w sekcji [wyrażeń i warunki][lnk-query-expressions].
+Dozwolone warunki są opisane w sekcji [wyrażeń i warunków][lnk-query-expressions].
 
 ## <a name="select-clause"></a>Klauzula SELECT
-**Wybierz < select_list >** jest wymagana i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON ma być używany do generowania nowych obiektów JSON.
-Dla każdego elementu filtrowane (i opcjonalnie grupowanych) podzestaw kolekcji FROM faza projekcji generuje nowy obiekt JSON. Ten obiekt jest tworzony przy użyciu wartości określone w klauzuli SELECT.
+**Wybierz < select_list >** jest obowiązkowy i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON, które będą używane do generowania nowych obiektów JSON.
+Dla każdego elementu filtrowane (i opcjonalnie pogrupowanych) podzbiorem kolekcji od fazy projekcji generuje nowy obiekt JSON. Ten obiekt jest konstruowany przy użyciu wartości określone w klauzuli SELECT.
 
-Gramatyka klauzuli SELECT jest następujący:
+Poniżej przedstawiono gramatyki w klauzuli SELECT:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -469,14 +469,14 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** odwołuje się do żadnej właściwości w kolekcji z dokumentu JSON. Przykłady klauzule SELECT można znaleźć w [wprowadzenie do zapytań dwie urządzenia] [ lnk-query-getstarted] sekcji.
+**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM. Kilka przykładów klauzule SELECT można znaleźć w [wprowadzenie do zapytań bliźniaczych reprezentacji urządzeń] [ lnk-query-getstarted] sekcji.
 
-Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w zapytaniach agregacji w twins urządzenia.
+Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w agregacji zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 
 ## <a name="group-by-clause"></a>Klauzula GROUP BY
-**GROUP BY < group_specification >** klauzuli to krok opcjonalny, który jest wykonywany po określony w klauzuli WHERE, a przed projekcji określonej w polu Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak określono w klauzuli SELECT.
+**GROUP BY < group_specification >** klauzula jest opcjonalny krok, który jest wykonywany po określony w klauzuli WHERE i przed projekcji określonej we właściwości w oknie Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak to określono w klauzuli SELECT.
 
-Przykładem zapytanie, używając GROUP BY jest:
+Przykładem zapytania za pomocą GROUP BY jest:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -485,7 +485,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Posiadanie składnia GROUP BY jest:
+Posiadanie składnia GROUP BY jest następująca:
 
 ```
 GROUP BY <group_by_element>
@@ -494,17 +494,17 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**Attribute_name** odwołuje się do żadnej właściwości w kolekcji z dokumentu JSON.
+**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM.
 
-Obecnie w klauzuli GROUP BY jest obsługiwana tylko podczas wykonywania zapytania twins urządzenia.
+Obecnie w klauzuli GROUP BY jest obsługiwana tylko podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 
-## <a name="expressions-and-conditions"></a>Wyrażenia i warunki
+## <a name="expressions-and-conditions"></a>Wyrażeń i warunków
 Na wysokim poziomie *wyrażenie*:
 
-* Daje w wyniku wystąpienia typu JSON (na przykład logiczną, liczbą, string, tablicy lub obiektu).
-* Jest zdefiniowana przez manipulację danymi pochodzących z dokumentu JSON urządzenia oraz stałe za pomocą wbudowanych operatorów i funkcji.
+* Daje w wyniku wystąpienia typu JSON (np. atrybut typu wartość logiczna, liczba, ciąg, tablicy lub obiektu).
+* Jest definicją manipulowanie danymi pochodzące z dokumentu JSON urządzenia i stałe, za pomocą wbudowanych operatorów i funkcji.
 
-*Warunki* są wyrażenia, które zwrócą wartość logiczną. Wszystkie inne niż wartość logiczna stała **true** jest uznawany za **false**. Ta reguła zawiera **null**, **Niezdefiniowany**, wystąpienie obiektu ani tablicy, dowolnego ciągu i typu Boolean **false**.
+*Warunki* są wyrażeniami, które dają wartość logiczną. Dowolna inna niż atrybut typu wartość logiczna stała **true** jest traktowany jako **false**. Ta reguła zawiera **null**, **niezdefiniowane**, dowolnego wystąpienia obiektu lub tablicy i dowolny ciąg, wartość logiczna **false**.
 
 Składnia wyrażeń jest następująca:
 
@@ -534,16 +534,16 @@ Składnia wyrażeń jest następująca:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Aby zrozumieć, co oznacza każdy symbol w składni wyrażeń, można skorzystać z poniższej tabeli:
+Aby zrozumieć, co oznacza każdy symbol w składni wyrażenia, zapoznaj się z poniższą tabelą:
 
 | Symbol | Definicja |
 | --- | --- |
 | attribute_name | Dokument JSON w dowolnej właściwości **FROM** kolekcji. |
 | binary_operator | Wszelkie operatora binarnego na liście [operatory](#operators) sekcji. |
-| nazwa_funkcji| Dowolne funkcje wymienione w [funkcje](#functions) sekcji. |
-| decimal_literal |Float, wyrażone w notacji dziesiętnej. |
-| hexadecimal_literal |Liczba wyrażona w ciągu '0 x' następuje ciąg cyfr szesnastkowych. |
-| literał |Literały ciągu są reprezentowane przez sekwencję zero lub więcej znaków Unicode lub sekwencji unikowych ciągów Unicode. Literały ciągu są ujęte w apostrofy lub podwójny cudzysłów. Dozwolone specjalne: `\'`, `\"`, `\\`, `\uXXXX` znaków Unicode, zdefiniowane przez 4 cyfr szesnastkowych. |
+| nazwa_funkcji| Dowolnej funkcji, na liście [funkcje](#functions) sekcji. |
+| decimal_literal |Liczba zmiennoprzecinkowa wyrażona w notacji dziesiętnej. |
+| hexadecimal_literal |Liczba wyrażona przez ciąg "0 x" następuje ciąg cyfr szesnastkowych. |
+| string_literaL |Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągów są ujęte w apostrofy lub podwójnych cudzysłowów. Dozwolone sekwencje ucieczki: `\'`, `\"`, `\\`, `\uXXXX` dla znaków Unicode, zdefiniowane przez 4 cyfr szesnastkowych. |
 
 ### <a name="operators"></a>Operatory
 Obsługiwane są następujące operatory:
@@ -555,55 +555,55 @@ Obsługiwane są następujące operatory:
 | porównanie |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Funkcje
-Podczas wykonywania zapytania twins i zadania, którego jedynym obsługiwanym funkcja jest:
+Podczas wykonywania zapytań dotyczących bliźniaczych reprezentacji i zadań, które obsługuje tylko funkcja jest następująca:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| IS_DEFINED(Property) | Zwraca wartość Boolean wskazującą, czy właściwość zostanie przypisana wartość (w tym `null`). |
+| IS_DEFINED(Property) | Zwraca wartość Boolean wskazującą, jeśli właściwość zostanie przypisana wartość (w tym `null`). |
 
-W warunkach tras obsługiwane są następujące funkcje matematyczne:
+Obsługiwane są następujące funkcje matematyczne w warunkach trasy:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| ABS(x) | Zwraca wartość bezwzględną (dodatnia) z określonego wyrażenia liczbowego. |
-| EXP(x) | Zwraca wartość określonego wyrażenia liczbowego wykładniczej (e ^ x). |
-| Power(x,y) | Zwraca wartość określonego wyrażenia do podanej potęgi (x ^ y).|
+| ABS(x) | Zwraca wartość bezwzględną (pozytywna) wartość podanego wyrażenia liczbowego. |
+| EXP(x) | Zwraca wartość określonego wyrażenia liczbowego (e ^ x). |
+| Power(x,y) | Zwraca wartość z określonego wyrażenia do wskazanej potęgi (x ^ y).|
 | SQUARE(x) | Zwraca kwadrat określoną wartość liczbową. |
-| CEILING(x) | Zwraca najmniejszą wartość całkowita większa lub równa określonej wyrażenia liczbowego. |
-| FLOOR(x) | Zwraca największą liczbę całkowitą mniejszą niż określona wyrażenia liczbowego. |
-| SIGN(x) | Zwraca plus (+ 1), 0 (zero) lub znakiem minus (-1) z określonego wyrażenia liczbowego.|
+| CEILING(x) | Zwraca najmniejszą wartość liczby całkowitej większa lub równa określonej wyrażenia liczbowego. |
+| FLOOR(x) | Zwraca największą liczbę całkowitą, mniejsze niż lub równe określonego wyrażenia liczbowego. |
+| SIGN(x) | Zwraca wynik dodatni (+ 1), wartość zero (0) lub minus (-1) z określonego wyrażenia liczbowego.|
 | SQRT(x) | Zwraca pierwiastek kwadratowy z określoną wartość liczbową. |
 
-W warunkach trasy następujące Sprawdzanie typu i rzutowanie funkcje są obsługiwane:
+W warunkach trasy następujące sprawdzania typu i rzutowania funkcje są obsługiwane:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| AS_NUMBER | Konwertuje ciąg wejściowy liczbą. `noop` Jeśli dane wejściowe jest liczbą; `Undefined` czy ciąg reprezentuje liczbę.|
-| IS_ARRAY — | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest typem tablicy. |
-| IS_BOOL | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenie jest wartością logiczną. |
-| IS_DEFINED | Zwraca wartość Boolean wskazującą, czy właściwość zostanie przypisana wartość. |
-| IS_NULL | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest wartość null. |
-| IS_NUMBER | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest liczbą. |
-| IS_OBJECT | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest obiektem JSON. |
-| IS_PRIMITIVE | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest właściwością pierwotną (string, Boolean, numeryczną, lub `null`). |
-| IS_STRING | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest ciągiem. |
+| AS_NUMBER | Konwertuje ciąg wejściowy na liczbę. `noop` Jeśli wartość wejściowa jest numerem; `Undefined` Jeśli ciąg nie reprezentuje liczbę.|
+| IS_ARRAY | Zwraca wartość logiczną wskazującą, czy Tablica typu z określonego wyrażenia. |
+| IS_BOOL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie jest wartością logiczną. |
+| IS_DEFINED | Zwraca wartość Boolean wskazującą, jeśli właściwość zostanie przypisana wartość. |
+| IS_NULL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie ma wartość null. |
+| IS_NUMBER | Zwraca wartość logiczną wskazującą, jeżeli typ podanego wyrażenia jest liczbą. |
+| IS_OBJECT | Zwraca wartość logiczną wskazującą, czy obiekt JSON typu z określonego wyrażenia. |
+| IS_PRIMITIVE | Zwraca wartość logiczną wskazującą, czy podstawowy typu z określonego wyrażenia (string, Boolean, numeryczne, lub `null`). |
+| IS_STRING | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia ciągu. |
 
 Obsługiwane są następujące funkcje ciągów w warunkach trasy:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Zwraca ciąg, który jest wynikiem łączenie dwóch lub więcej wartości ciągu. |
+| CONCAT (x, y,...) | Zwraca ciąg, który jest wynikiem złączenie co najmniej dwóch wartości ciągu. |
 | LENGTH(x) | Zwraca liczbę znaków z określonego wyrażenia ciągu.|
-| LOWER(x) | Zwraca wyrażenie ciągu po konwersji danych wielką literę na małe litery. |
-| UPPER(x) | Zwraca wyrażenie ciągu po konwersji danych małą literę na wielkie litery. |
-| SUBSTRING (ciąg, start [, długość]) | Zwraca część wyrażenia ciągu, zaczynając od pozycji określony znak liczony od zera i kontynuuje określonej długości lub końca ciągu. |
-| INDEX_OF (ciąg, fragment) | Zwraca pozycję początkową pierwszego wystąpienia drugi ciąg wyrażenia w pierwszym wyrażeniu określony ciąg lub wartość -1, jeśli nie zostanie znaleziony ciąg.|
-| STARTS_WITH (x, y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu rozpoczyna się od drugiego. |
-| ENDS_WITH (x, y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu kończy się na sekundę. |
-| CONTAINS(x,y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu zawiera drugi. |
+| LOWER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych wielkiej litery na małe litery. |
+| UPPER(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych małej litery na wielkie litery. |
+| SUBSTRING (string, start [, długość]) | Zwraca część wyrażenia ciągu, zaczynając od pozycji liczony od zera określony znak i kontynuuje do określonej długości lub do końca ciągu. |
+| INDEX_OF (string, fragment) | Zwraca pozycję początkową pierwsze wystąpienie ciągu drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli nie zostanie znaleziony ciąg.|
+| STARTS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego. |
+| ENDS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi. |
+| CONTAINS(x,y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenie zawiera drugą. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak wykonywać zapytania w aplikacjach za pomocą [Azure IoT SDK][lnk-hub-sdks].
+Dowiedz się, jak wykonywać zapytania w aplikacjach przy użyciu [Azure IoT SDKs][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

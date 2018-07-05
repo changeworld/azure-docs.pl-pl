@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.component: protection
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/17/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 882f76b8f6529e2a6e72a5bbc1b24842150e1af0
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
-ms.translationtype: HT
+ms.openlocfilehash: 6a9e4a93df02e55deb29ba372dc874ae1fac308c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233241"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446030"
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Rozpoczynanie używania aplikacji Azure AD Privileged Identity Management
 
@@ -50,7 +50,7 @@ Po skonfigurowaniu usługi Azure AD Privileged Identity Management zobaczysz blo
 - **Role w katalogach usługi Azure AD** — dostępna w obszarze zarządzania lewego menu nawigacji zawiera pulpit nawigacyjny dla administratorów ról uprzywilejowanych, który umożliwia m.in. zarządzanie przypisaniami ról, zmienianie ustawień aktywacji ról i rozpoczynanie przeglądów dostępu. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie.
 - **Role zasobów platformy Azure (wersja zapoznawcza)** — dostępna w obszarze zarządzania lewego menu nawigacji zawiera listę zasobów subskrypcji wybranych przez przypisania ról. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Temat [Azure AD Privileged Identity Management overview](active-directory-privileged-identity-management-configure.md) (Omówienie aplikacji Azure AD Privileged Identity Management) zawiera więcej informacji dotyczących zarządzania dostępem administracyjnym w organizacji.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

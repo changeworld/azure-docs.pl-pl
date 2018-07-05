@@ -1,21 +1,21 @@
 ---
-title: Secure web API platformy ASP.NET w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Zabezpieczanie web API platformy ASP.NET w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Jak utworzyć interfejs API sieci Web programu .NET przy użyciu usługi Azure Active Directory B2C zabezpieczonej przy użyciu tokenów dostępu protokołu OAuth 2.0 na potrzeby uwierzytelniania.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8eb4045338476254fa9687a367d45b3646aeb9c1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712372"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447591"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: tworzenie interfejsu API sieci Web platformy .NET
 
@@ -33,8 +33,8 @@ Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog
 
 Następnie musisz utworzyć aplikację interfejsu API sieci Web w katalogu usługi B2C. Dzięki temu informacje wymagane do bezpiecznego komunikowania się z aplikacją będą przekazywane do usługi Azure AD. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
 
-* Uwzględnij **aplikację sieci Web** lub **interfejs API sieci Web** w aplikacji.
-* Użyj **identyfikatora URI przekierowania** `https://localhost:44332/` dla aplikacji sieci Web. Jest to domyślna lokalizacja klienta aplikacji sieci Web dla tego przykładu kodu.
+* Uwzględnij **aplikację internetową** lub **internetowy interfejs API** w aplikacji.
+* Użyj **identyfikatora URI przekierowania**`https://localhost:44332/` dla aplikacji internetowej. Jest to domyślna lokalizacja klienta aplikacji internetowej dla tego przykładu kodu.
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Będzie on potrzebny później.
 * Wprowadź identyfikator aplikacji do **identyfikatora URI aplikacji**. Skopiuj cały **identyfikator URI aplikacji**. Będzie on potrzebny później.
 * Dodaj uprawnienia za pomocą menu **Opublikowane zakresy**.
@@ -59,7 +59,7 @@ Kod używany w tym samouczku [jest przechowywany w serwisie GitHub](https://gith
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. Plik rozwiązania zawiera dwa projekty: `TaskWebApp` i `TaskService`. `TaskWebApp` to aplikacja sieci Web z architekturą MVC, z której korzysta użytkownik. `TaskService` to interfejs API zaplecza aplikacji, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Ten artykuł zawiera jedynie omówienie aplikacji `TaskService`. Aby dowiedzieć się, jak utworzyć `TaskWebApp`, używając usługi Azure AD B2C, zobacz nasz [samouczek dotyczący aplikacji sieci Web platformy .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
+Po pobraniu przykładu kodu otwórz plik SLN programu Visual Studio, aby rozpocząć. Plik rozwiązania zawiera dwa projekty: `TaskWebApp` i `TaskService`. `TaskWebApp` to aplikacja internetowa z architekturą MVC, z której korzysta użytkownik. `TaskService` to interfejs API zaplecza aplikacji, który przechowuje listy zadań do wykonania poszczególnych użytkowników. Ten artykuł zawiera jedynie omówienie aplikacji `TaskService`. Aby dowiedzieć się, jak utworzyć `TaskWebApp`, używając usługi Azure AD B2C, zobacz nasz [samouczek dotyczący aplikacji internetowej platformy .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md).
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Aktualizowanie konfiguracji usługi Azure AD B2C
 
@@ -72,8 +72,8 @@ Nasz przykład został skonfigurowany do używania zasad i identyfikatora klient
 
 2. Otwórz plik `web.config` w projekcie `TaskWebApp` i zastąp wartości
     * `ida:Tenant` nazwą dzierżawy
-    * `ida:ClientId` identyfikatorem aplikacji sieci Web
-    * `ida:ClientSecret` kluczem tajnym aplikacji sieci Web
+    * `ida:ClientId` identyfikatorem aplikacji internetowej
+    * `ida:ClientSecret` kluczem tajnym aplikacji internetowej
     * `ida:SignUpSignInPolicyId` nazwą zasady tworzenia konta/logowania
     * `ida:EditProfilePolicyId` nazwą zasady edycji profilu
     * `ida:ResetPasswordPolicyId` nazwą zasady resetowania hasła

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 6/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dad35f26496306558a6e0105db86321c497a8306
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d44ea5afca15519fee1bc8a4ebd6c2ba1f36d760
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342973"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448632"
 ---
 # <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Zapewnienie rejestracji i logowania użytkowników z kontami usługi Twitter za pomocą usługi Azure AD B2C
 
@@ -26,7 +26,7 @@ Aby korzystać z usługi Twitter jako dostawcy tożsamości w usłudze Azure Act
 1. Przejdź do [aplikacji w usłudze Twitter](https://apps.twitter.com/) i zaloguj się przy użyciu poświadczeń.
 2. Kliknij przycisk **Utwórz nową aplikację**.
 3. W formularzu, należy podać wartość parametru **nazwa**, **opis**, i **witryny sieci Web**.
-4. Aby uzyskać **adresów URL wywołania zwrotnego**, wprowadź `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Upewnij się zastąpić **{dzierżawa}** z nazwą (na przykład contosob2c.onmicrosoft.com) i {policyId} dzierżawy za pomocą identyfikatora zasad (na przykład b2c_1_policy).  To wywołanie zwrotne adres URL musi być zapisana w same małe litery. Należy dodać adres URL wywołania zwrotnego dla wszystkich zasad, które używają logowania usługi Twitter. Upewnij się, że używasz `b2clogin.com` zamiast ` login.microsoftonline.com` Jeśli używasz go w aplikacji.
+4. Aby uzyskać **adresów URL wywołania zwrotnego**, wprowadź `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Upewnij się zastąpić **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c.onmicrosoft.com) i **{policyId}** za pomocą identyfikatora zasad (na przykład b2c_1_policy).  **Wywołanie zwrotne adres URL musi być zapisana w same małe litery.** Należy dodać adres URL wywołania zwrotnego dla wszystkich zasad, które używają logowania usługi Twitter. Upewnij się, że używasz `b2clogin.com` zamiast ` login.microsoftonline.com` Jeśli używasz go w aplikacji.
 5. Pole wyboru, aby zaakceptować **umowy deweloperskich** i kliknij przycisk **tworzenie aplikacji usługi Twitter**.
 6. Po utworzeniu aplikacji, wybierz ją z listy wybierz **ustawienia** kartę, a następnie kliknij przycisk **zaktualizuj ustawienia**.
 7. Wybierz **klucze i tokeny dostępu** kartę.

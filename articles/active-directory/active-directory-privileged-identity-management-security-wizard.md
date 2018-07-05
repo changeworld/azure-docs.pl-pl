@@ -1,43 +1,43 @@
 ---
 title: Kreator zabezpieczeń usługi Azure AD Privileged Identity Management
-description: Użyj rozszerzenia usługi Azure Active Directory Privileged Identity Management po raz pierwszy zostanie wyświetlona za pomocą Kreatora zabezpieczeń. W tym artykule opisano kroki dotyczące korzystania z kreatora.
+description: Użyj rozszerzenia usługi Azure Active Directory Privileged Identity Management po raz pierwszy zostanie wyświetlone za pomocą Kreatora zabezpieczeń. W tym artykule opisano kroki dotyczące korzystania z kreatora.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: cb08e5143814db29a7bec8c46226f07a26e51d25
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: d380c8076fbe1a6c9e06acb6f583d719f43aaba4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233024"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448598"
 ---
 # <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management 
-Jeśli jesteś pierwszą osobą, która Uruchom Azure Privileged Identity zarządzania (PIM) dla organizacji, użytkownik zobaczy za pomocą kreatora. Kreator pomaga w zrozumieniu zagrożenia bezpieczeństwa tożsamości uprzywilejowanych oraz sposobu używania usługi PIM te zagrożenia. Nie trzeba wprowadzać żadnych zmian w istniejących przypisań ról w kreatorze, aby zrobić to później.
+Jeśli jesteś pierwszą osobą do uruchamiania usługi Azure Privileged Identity Management (PIM) dla Twojej organizacji, zobaczysz za pomocą kreatora. Kreator pomoże Ci zrozumieć zagrożenia dla bezpieczeństwa uprzywilejowanych tożsamości oraz jak używać aplikacji PIM, aby ograniczyć te zagrożenia. Nie musisz wprowadzać żadnych zmian istniejących przypisań ról w kreatorze, aby zrobić to później.
 
 ## <a name="what-to-expect"></a>Czego oczekiwać
-Przed rozpoczęciem organizacji przy użyciu usługi PIM są trwałe, wszystkie przypisania roli: użytkownicy są zawsze w ramach tych ról, nawet jeśli ich nie są obecnie wymagane ich uprawnienia.  Pierwszy krok kreatora zawiera listę ról z wysokim poziomem i ilu użytkowników aktualnie znajdują się w tych ról. Można przejść do określonej roli, aby uzyskać więcej informacji użytkowników, jeśli jeden lub jeden z nich jest nieznane.
+Przed rozpoczęciem Twojej organizacji za pomocą usługi PIM są trwałe, wszystkie przypisania roli: użytkownicy są zawsze w ramach tych ról nawet wtedy, gdy nie ma obecnie potrzeby swoich uprawnień.  Pierwszym krokiem, który Kreator pokazuje listę ról z wysokim poziomem uprawnień i jak wielu użytkowników są obecnie dostępne w tych ról. Możesz przejść do określonej roli, aby uzyskać więcej informacji użytkownikom, jeśli jeden lub jeden z nich jest nieznane.
 
-Drugim kroku kreatora daje możliwość zmiany przypisań ról administratora.  
+Drugiego kroku kreatora daje możliwość zmiany przypisania ról administratora.  
 
 > [!WARNING]
-> Jest ważne, czy masz co najmniej jednego administratora globalnego i więcej niż jeden administrator ról uprzywilejowanych za pomocą konta organizacyjnego (a nie kontem Microsoft). Jeśli istnieje tylko jeden administrator ról uprzywilejowanych, organizacji, nie będzie mógł zarządzać PIM usunięcie tego konta.
-> Ponadto przypisań ról Zachowaj stałe, jeśli użytkownik ma konto Microsoft (konta używanego do logowania do usług firmy Microsoft, takich jak Skype i Outlook.com). Jeśli planujesz wymagają usługi MFA do aktywacji dla tej roli użytkownika zostanie zablokowane.
+> Jest ważne, że masz co najmniej jeden administrator globalny i więcej niż jeden administrator ról uprzywilejowanych przy użyciu konta organizacji (nie konta Microsoft). Jeśli istnieje tylko jeden administrator ról uprzywilejowanych, organizacja nie będzie można Zarządzanie usługą PIM, jeśli to konto zostanie usunięte.
+> Ponadto przypisań ról zachować stały, jeśli użytkownik ma konto Microsoft (konto używane do logowania do usług firmy Microsoft, takich jak Skype i Outlook.com). Jeśli planowane jest wymagane uwierzytelnianie MFA do aktywacji dla tej roli, ten użytkownik zostanie zablokowany.
 > 
 > 
 
-Po dokonaniu zmian, Kreator będzie już wyświetlany. Następnym razem, użytkownik lub inny administrator ról uprzywilejowanych używać aplikacji PIM, zostanie wyświetlony pulpit nawigacyjny usługi PIM.  
+Po dokonaniu zmiany kreatora będą już widoczne. Następnym razem użytkownik lub inny administrator ról uprzywilejowanych używanie usługi PIM, zostanie wyświetlony pulpit nawigacyjny usługi PIM.  
 
-* Jeśli chcesz dodać lub usunąć użytkowników z ról lub zmienić przypisania z stałe kwalifikujących się Dowiedz się więcej o [jak dodać lub usunąć rolę użytkownika](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
-* Jeśli chcesz umożliwić użytkownikom więcej dostęp do zarządzania PIM, Dowiedz się więcej o [sposób udzielić dostępu do zarządzania w PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
+* Jeśli chcesz dodać lub usunąć użytkowników z ról lub zmienić przypisania trwałego na kwalifikujących się Dowiedz się więcej o [jak dodawanie i usuwanie roli użytkownika](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
+* Jeśli chcesz zapewnić większą liczbę użytkowników dostęp umożliwiający zarządzanie usługą PIM, Dowiedz się więcej o [udzielanie dostępu do zarządzania w usłudze PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

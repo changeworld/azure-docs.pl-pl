@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 106c4796bde838e28b91771454e971f9999194e1
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116551"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436616"
 ---
-Jeśli znasz MSI, zapoznaj się [omówienie zarządzane tożsamość usługi](~/articles/active-directory/managed-service-identity/overview.md), i **należy przejrzeć [różnica między MSI przypisane systemu i przypisany użytkownik](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)** . Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+Jeśli znasz MSI, zapoznaj się z [Przegląd tożsamości usługi zarządzanej](~/articles/active-directory/managed-service-identity/overview.md), i **należy przejrzeć [różnicę między MSI przypisana przez system i użytkownik przypisany](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)** . Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.

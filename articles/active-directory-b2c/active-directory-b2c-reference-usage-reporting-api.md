@@ -1,38 +1,38 @@
 ---
-title: Przykłady interfejsu API raportowania użycia i definicje w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Przewodnik i przykłady dotyczące konfigurowania raportów dzierżawcy usługi Azure AD B2C, użytkowników, uwierzytelnianie i operacje uwierzytelniania wieloskładnikowego.
+title: Przykłady interfejsu API z raportowania użycia i definicji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Przewodnik i przykłady dotyczące konfigurowania raportów, w dzierżawie usługi Azure AD B2C, użytkowników, uwierzytelnienia i uwierzytelnienia Multi-Factor Authentication.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dc7f18e29367a3979a2650a87465366d9727cff6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711634"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445538"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Uzyskiwanie dostępu do raportów użycia w usłudze Azure AD B2C za pośrednictwem interfejsu API raportowania
 
-Usługa Azure Active Directory B2C (Azure AD B2C) zapewnia uwierzytelnianie na podstawie użytkownika, logowanie i uwierzytelnianie wieloskładnikowe Azure. Uwierzytelnianie jest dostępna dla użytkowników końcowych rodziny aplikacji przez dostawców tożsamości. Gdy wiesz, liczbę użytkowników zarejestrowanych w dzierżawie, dostawców używanego do rejestrowania i liczbę uwierzytelnień według typu, pozwala odpowiedzieć na pytania, takich jak:
+Usługa Azure Active Directory B2C (Azure AD B2C) udostępnia uwierzytelnianie oparte na użytkownika, logowanie i uwierzytelnianie wieloskładnikowe systemu Azure. Uwierzytelnianie jest obsługiwane dla użytkowników końcowych w Twojej rodzinie aplikacji w różnych dostawców tożsamości. Gdy wiadomo, liczbę użytkowników zarejestrowanych w dzierżawie, dostawcy, które są używane do rejestrowania i liczbę uwierzytelnień według typu, możesz odpowiadać na pytania, takie jak:
 * Ilu użytkowników z każdego typu dostawcy tożsamości (na przykład konto Microsoft lub LinkedIn) zostały zarejestrowane w ciągu ostatnich 10 dni?
-* Ile uwierzytelnienia przy użyciu usługi Multi-Factor Authentication została ukończona pomyślnie w ostatnim miesiącu?
-* Ile uwierzytelnienia logowania w podstawie zostały ukończone w tym miesiącu? Dziennie? Na aplikację?
-* Jak można oszacować oczekiwanego miesięczny koszt działania dzierżawy usługi Azure AD B2C
+* Ile uwierzytelnienia za pomocą uwierzytelniania wieloskładnikowego zostały ukończone pomyślnie w ciągu ostatniego miesiąca?
+* Ile uwierzytelnienia logowania w podstawie zostały ukończone w tym miesiącu? Każdego dnia? Na aplikację?
+* Jak oszacować oczekiwany koszt miesięczny Moje działanie dzierżawy usługi Azure AD B2C
 
-Ten artykuł dotyczy powiązane rozliczeń działalność, która jest oparta na liczbę użytkowników, rozliczeniowy Zaloguj się w podstawie uwierzytelnienia i uwierzytelnienia wieloskładnikowego raportów.
+Ten artykuł koncentruje się na raportach powiązane działania rozliczeniowe, która jest oparta na liczbie użytkowników, płatnych uwierzytelnienia logowania w oparciu i uwierzytelnienia Multi-Factor Authentication.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem pracy należy wykonać czynności opisane w [wymagania wstępne dotyczące raportowania interfejsów API usługi Azure AD dostęp](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Tworzenie aplikacji, uzyskać klucz tajny i przyznać jej dostęp prawa do dzierżawy usługi Azure AD B2C raportów. *Bash skryptu* i *skrypt w języku Python* zamieszczono przykłady, które również w tym miejscu. 
+Przed rozpoczęciem pracy należy wykonać czynności opisane w [wymagania wstępne dotyczące raportowania interfejsów API usługi Azure AD dostęp](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Tworzenie aplikacji, uzyskać klucz tajny i przyznać jej dostęp uprawnienia do raportów w dzierżawie usługi Azure AD B2C. *Skryptu powłoki systemowej* i *skrypt w języku Python* przykłady znajdują się także w tym miejscu. 
 
 ## <a name="powershell-script"></a>Skrypt programu PowerShell
-Ten skrypt pokazuje tworzenia raportów użycia czterech przy użyciu `TimeStamp` parametru i `ApplicationId` filtru.
+Ten skrypt demonstruje tworzenie cztery raporty użycia za pomocą `TimeStamp` parametru i `ApplicationId` filtru.
 
 ```powershell
 # This script will require the Web Application and permissions setup in Azure Active Directory
@@ -97,31 +97,31 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Definicje raportów użycia
-* **tenantUserCount**: liczba użytkowników w dzierżawie według typu dostawcy tożsamości, dziennie w ciągu ostatnich 30 dni. (Opcjonalnie `TimeStamp` filtru zawiera liczby użytkowników z określonej daty do daty bieżącej). Raport zawiera:
-  * **TotalUserCount**: liczba wszystkie obiekty użytkowników.
+* **tenantUserCount**: liczba użytkowników w dzierżawie, typ dostawcy tożsamości, dziennie w ciągu ostatnich 30 dni. (Opcjonalnie `TimeStamp` filtru zawiera liczby użytkowników z określonej daty do daty bieżącej). Raport zawiera:
+  * **TotalUserCount**: liczba wszystkich obiektów użytkownika.
   * **OtherUserCount**: liczba użytkowników usługi Azure Active Directory (nie użytkowników usługi Azure AD B2C).
   * **LocalUserCount**: liczba kont użytkowników usługi Azure AD B2C utworzone przy użyciu poświadczeń lokalnych do dzierżawy usługi Azure AD B2C.
 
-* **AlternateIdUserCount**: liczba użytkowników usługi Azure AD B2C zarejestrowane przy pomocy dostawcy tożsamości zewnętrznych (na przykład, Facebook, konta Microsoft lub innej dzierżawy usługi Azure Active Directory, nazywana także `OrgId`).
+* **AlternateIdUserCount**: liczba użytkowników usługi Azure AD B2C zarejestrowanych za pomocą dostawców tożsamości zewnętrznych (na przykład, Facebook, konta Microsoft lub innej dzierżawy usługi Azure Active Directory, zwaną także `OrgId`).
 
-* **b2cAuthenticationCountSummary**: Podsumowanie codzienne numer rozliczeniowy uwierzytelnienia w ciągu ostatnich 30 dni dzień, a typ Przepływ uwierzytelniania.
+* **b2cAuthenticationCountSummary**: Podsumowanie dziennej liczby płatnych uwierzytelnień ostatnich 30 dni, dzień, a typ przepływu uwierzytelniania.
 
-* **b2cAuthenticationCount**: liczbę uwierzytelnień w przedziale czasu. Wartość domyślna to ostatnich 30 dni.  (Opcjonalnie: na rozpoczęcie i zakończenie `TimeStamp` parametry definiują w określonym przedziale czasu.) Dane wyjściowe obejmują `StartTimeStamp` (najwcześniejsza data działania dla tej dzierżawy) i `EndTimeStamp` (najnowsza aktualizacja).
+* **b2cAuthenticationCount**: liczbę uwierzytelnień w przedziale czasu. Wartość domyślna to 30 ostatnich dni.  (Opcjonalne: początek i koniec `TimeStamp` parametry definiują określonym przedziale czasu.) Dane wyjściowe obejmują `StartTimeStamp` (najwcześniejsza data działania dla tej dzierżawy) i `EndTimeStamp` (najnowsza aktualizacja).
 
-* **b2cMfaRequestCountSummary**: podsumowanie liczby codzienne operacje uwierzytelniania wieloskładnikowego, dzień, a typ (SMS lub głosowych).
+* **b2cMfaRequestCountSummary**: Podsumowanie dziennej liczby uwierzytelnienia Multi-Factor Authentication, według dnia i typów (SMS lub głosowych).
 
 
 ## <a name="limitations"></a>Ograniczenia
-Użytkownik liczba dane są odświeżane co 24 do 48 godzin. Uwierzytelnienia są aktualizowane kilka razy dziennie. Korzystając z `ApplicationId` filtru odpowiedzi pusty raport może być spowodowane jedną z następujących warunków:
-  * Identyfikator aplikacji nie istnieje w dzierżawie. Upewnij się, że jest poprawny.
-  * Identyfikator aplikacji istnieje, ale nie znaleziono danych w tym okresie raportowania. Przejrzyj parametry daty/godziny.
+Dane dotyczące liczby użytkowników są odświeżane co 24-48 godzin. Uwierzytelnienia są aktualizowane kilka razy dziennie. Korzystając z `ApplicationId` filtr, odpowiedź pusty raport może być spowodowane jedną z następujących warunków:
+  * Identyfikator aplikacji nie istnieje w dzierżawie. Upewnij się, że jest on poprawny.
+  * Identyfikator aplikacji istnieje, ale nie znaleziono danych w okresie raportowania. Przejrzyj parametry daty/godziny.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-### <a name="monthly-bill-estimates-for-azure-ad"></a>Rachunek miesięczny szacuje dla usługi Azure AD
-W połączeniu z [najbardziej bieżące usługi Azure AD B2C ceny dostępne](https://azure.microsoft.com/pricing/details/active-directory-b2c/), można oszacować dzienne, tygodniowe i miesięczne wykorzystania platformy Azure.  Szacowana jest szczególnie przydatne podczas planowania zmiany w zachowaniu dzierżawy, który może mieć wpływ na całkowity koszt. Możesz przejrzeć koszty rzeczywiste w Twojej [połączonej subskrypcji Azure](active-directory-b2c-how-to-enable-billing.md).
+### <a name="monthly-bill-estimates-for-azure-ad"></a>Miesięczny rachunek szacuje się dla usługi Azure AD
+W połączeniu z [najbardziej aktualne usługi Azure AD B2C dostępne ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/), można oszacować dzienne, tygodniowe i miesięczne użycie platformy Azure.  Oszacowanie jest szczególnie przydatne podczas planowania związanego z zmiany w zachowaniu dzierżawy, mogą mieć wpływ na całkowity koszt. Możesz przejrzeć faktyczne koszty w swojej [połączonej subskrypcji platformy Azure](active-directory-b2c-how-to-enable-billing.md).
 
-### <a name="options-for-other-output-formats"></a>Opcje dla innych formatów wyjściowych
+### <a name="options-for-other-output-formats"></a>Opcje dla innych formatów danych wyjściowych
 Poniższy kod przedstawia przykłady wysyłanie danych wyjściowych do formatu JSON, listy wartości nazw i XML:
 ```powershell
 # to output to JSON use following line in the PowerShell sample

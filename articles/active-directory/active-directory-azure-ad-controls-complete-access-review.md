@@ -1,6 +1,6 @@
 ---
-title: Zakończenie przeglądu dostępu do elementów członkowskich grupy lub użytkownikom dostępu do aplikacji z usługą Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji w usłudze Azure Active Directory.
+title: Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji za pomocą usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zakończyć Przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,49 +10,49 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: f054455154fab1a7d4a8f161700def6b6634335c
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: e4199f9c201f80cac3df1b7e3af687e507b9fe9a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084780"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448581"
 ---
-# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Zakończenie przeglądu dostępu do elementów członkowskich grupy lub użytkownikom dostępu do aplikacji w usłudze Azure AD
+# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji w usłudze Azure AD
 
-Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](active-directory-azure-ad-controls-create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługi Azure AD automatycznie wysyła wiadomość e-mail zawierająca monit o ich sprawdzaj dostęp osoby dokonujące przeglądu. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać je zgodnie z instrukcjami [Przejrzyj dostęp](active-directory-azure-ad-controls-perform-access-review.md). (Należy pamiętać, że gości, którzy są przypisane jako osób dokonujących przeglądu, ale nie zostały zaakceptowane zaproszenie nie otrzymają wiadomość e-mail z przeglądami dostępu, jak będą musieli najpierw zaakceptować zaproszenie przed recenzowania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje Przegląd dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
+Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](active-directory-azure-ad-controls-create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługa Azure AD automatycznie wysyła wiadomość e-mail z monitami, aby przeprowadzić przegląd dostępu recenzentów. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać im instrukcje [przejrzeć swój dostęp](active-directory-azure-ad-controls-perform-access-review.md). (Należy zauważyć, że goście, którzy są przypisywane recenzentów, ale nie zaakceptowali zaproszenia nie otrzyma wiadomość e-mail z przeglądów dostępu, zgodnie z ich musisz najpierw zaakceptować zaproszenie przed przeglądania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje przeglądu dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>Wyświetl przegląd dostępu w portalu Azure
+## <a name="view-an-access-review-in-the-azure-portal"></a>Wyświetl przeglądu dostępu w witrynie Azure portal
 
-1. Przejdź do [dostępu monitoruje strony](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), wybierz pozycję **programy**i wybierz program, który zawiera przegląd kontroli dostępu.
+1. Przejdź do [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), wybierz opcję **programy**i wybierz program, który zawiera formant Przegląd dostępu.
 
-2. Wybierz **Zarządzaj**i wybierz kontroli dostępu przeglądu. Jeśli program zawiera wiele kontroli, możesz filtrować kontrole pod kątem określonego typu i sortować je według stanu. Istnieje również możliwość wyszukiwania według nazwy kontroli przeglądu dostępu lub nazwy wyświetlanej jej twórcy. 
+2. Wybierz **Zarządzaj**i wybierz formant Przegląd dostępu. Jeśli program zawiera wiele kontroli, możesz filtrować kontrole pod kątem określonego typu i sortować je według stanu. Istnieje również możliwość wyszukiwania według nazwy kontroli przeglądu dostępu lub nazwy wyświetlanej jej twórcy. 
 
-## <a name="stop-a-review-that-hasnt-finished"></a>Zatrzymaj przeglądu, która nie została zakończona
+## <a name="stop-a-review-that-hasnt-finished"></a>Zatrzymaj Przegląd, który nie zakończono
 
-Jeśli przeglądu nie osiągnięto planowana data zakończenia, administrator może wybrać **zatrzymać** wczesne zakończenia przeglądu. Po zatrzymaniu przeglądu użytkownicy nie mogą być przeglądane. Nie można ponownie uruchomić przeglądu, po zatrzymaniu.
+W przypadku przeglądu nie osiągnięcia planowanej dacie zakończenia, administrator może wybrać opcję **zatrzymać** do końca wcześnie przeglądu. Po zatrzymaniu przeglądu użytkowników nie będzie można wyświetlić. Nie można ponownie uruchomić przeglądu, po jej zatrzymaniu.
 
 ## <a name="apply-the-changes"></a>Zastosuj zmiany 
 
-Po zakończeniu Przegląd dostępu, albo ponieważ osiągnął Data zakończenia lub ręcznie zatrzymany przez administratora i automatycznie Zastosuj nie został skonfigurowany do przeglądu, można wybrać **Zastosuj** Aby ręcznie zastosować zmiany. Wyniku przeglądu jest implementowany przez aktualizację aplikacji lub grupy. Jeśli w przeglądzie, nastąpiła odmowa dostępu użytkownika, gdy administrator może wybrać tę opcję, usługi Azure AD usuwa przypisanie ich członkostwa lub aplikacji. 
+Po zakończeniu przeglądu dostępu albo ponieważ osiągnęła ona Data zakończenia lub ręcznie zatrzymana przez administratora i automatycznie Zastosuj nie został skonfigurowany do przeglądu, możesz wybrać **Zastosuj** ręcznie zastosować zmiany. Wyniku przeglądu jest implementowany przez zaktualizowanie grupę lub aplikację. Jeśli w przeglądzie, nastąpiła odmowa dostępu użytkownika, gdy administrator może wybrać tę opcję, usługi Azure AD spowoduje usunięcie ich przypisania członkostwa lub aplikacji. 
 
-Po zakończeniu Przegląd dostępu i automatycznie Zastosuj został skonfigurowany, stan przeglądu ulegnie zmianie z ukończono za pośrednictwem pośrednich stanów i na koniec zostanie zmieniony na stan zastosowano. Należy się spodziewać odmowy użytkowników, jeśli dowolne usuwana z zasobu grupy aplikacji lub członkostwa przypisania za kilka minut.
+Po zakończeniu przeglądu dostępu i automatycznie Zastosuj została skonfigurowana, stan przeglądu ulegnie zmianie z ukończono za pośrednictwem pośrednich stanów, a na koniec zostanie zmieniony na stan zastosowano. Należy się spodziewać się zablokowani użytkownicy, jeśli dowolny usuwana z zasobu grupy przypisania aplikacji lub członkostwa w ciągu kilku minut.
 
-Skonfigurowane automatyczne stosowanie przeglądu, lub wybierz **Zastosuj** nie ma wpływu na grupę, która pochodzi z katalogu lokalnego lub grupą dynamiczną. Jeśli chcesz zmienić grupę, która pochodzi z lokalnymi pobierania wyników i zastosować te zmiany do reprezentacji grupy, w tym katalogu.
+Automatycznie skonfigurowany, zastosowanie przeglądu lub wybierając **Zastosuj** nie ma wpływu na grupy, który pochodzi z katalogu lokalnego lub grupy dynamicznej. Jeśli chcesz zmienić grupę, która pochodzi w środowisku lokalnym, Pobierz wyniki i stosowanie tych zmian na reprezentację w postaci grupy, w tym katalogu.
 
 ## <a name="download-the-results-of-the-review"></a>Pobieranie wyników przeglądu
 
-Aby pobrać wyników przeglądu, wybierz **zatwierdzenia** , a następnie wybierz **Pobierz**. Wynikowy plik CSV można wyświetlić w programie Excel lub w inne programy, które otwierają UTF-8 zakodowane plików CSV.
+Aby pobrać wyników przeglądu, wybierz **zatwierdzenia** , a następnie wybierz **Pobierz**. Wynikowy plik CSV można wyświetlać w programie Excel lub w innych programach, które otwierają UTF-8 zakodowane pliki CSV.
 
-## <a name="optional-delete-a-review"></a>Opcjonalnie: Usuń przeglądu
-Jeśli możesz już nie są zainteresowane w przeglądzie, można go usunąć. Wybierz **usunąć** usunąć przeglądu z usługi Azure AD.
+## <a name="optional-delete-a-review"></a>Opcjonalnie: Usuwanie przeglądu
+Jeśli interesuje Cię już przeglądu, możesz go usunąć. Wybierz **Usuń** usuwanie przeglądu usługi Azure AD.
 
 > [!IMPORTANT]
-> Nie istnieje żadne ostrzeżenie, zanim nastąpi jego usunięcia, dlatego należy się upewnić, że chcesz usunąć przeglądu.
+> Nie ma żadnych ostrzeżenie, zanim nastąpi usunięcie upewnij się, że chcesz usunąć przeglądu.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: Automatycznie włączaj ustawień diagnostycznych przy użyciu szablonu usługi Resource Manager
-description: Dowiedz się, jak szablon Menedżera zasobów do tworzenia ustawień diagnostycznych, które umożliwi strumienia dzienników diagnostycznych do usługi Event Hubs lub przechowywać je na koncie magazynu.
+title: Automatyczne włączanie ustawień diagnostycznych przy użyciu szablonu usługi Resource Manager
+description: Dowiedz się, jak używać szablonu usługi Resource Manager do tworzenia ustawień diagnostycznych, umożliwiające przesyłanie strumieniowe dzienników diagnostycznych do usługi Event Hubs lub przechowywać je w ramach konta magazynu.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6c202afaca893609d41384ee8302b0c4c6c4a6f6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a69cefc3c9363c0e8378a90c44d6a466780402b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263392"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434491"
 ---
-# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatycznie włączaj ustawień diagnostycznych na tworzenie zasobów przy użyciu szablonu usługi Resource Manager
-W tym artykule zostanie przedstawiony sposób korzystania [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych zasobu podczas jego tworzenia. Umożliwia to automatyczne uruchamianie przesyłanych strumieniowo z dzienników diagnostycznych i metryk do usługi Event Hubs, archiwizacji je na koncie magazynu lub wysyłania ich do analizy dzienników po utworzeniu zasobu.
+# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
+W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
 
-Metoda Włączanie dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager zależy od typu zasobu.
+Metody włączania dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager, zależy od typu zasobu.
 
-* **Inne niż obliczeń** używany przez zasoby (na przykład automatyzacji grup zabezpieczeń sieci, Logic Apps) [ustawień diagnostycznych opisane w tym artykule](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **Obliczenia bazy danych** zasobów (WAD/LAD w oparciu o), użyj [WAD/LAD pliku konfiguracji opisanych w tym artykule](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Non-Compute** używany przez zasoby (na przykład automatyzacji sieciowych grup zabezpieczeń, Logic Apps) [ustawień diagnostycznych opisanych w tym artykule](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
+* **Obliczenia** używany przez zasoby (WAD/LAD oparte) [WAD/LAD pliku konfiguracji opisanych w tym artykule](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-W tym artykule możemy opisano sposób konfigurowania diagnostyki za pomocą jednej z metod.
+W tym artykule opisano sposób konfigurowania diagnostyki za pomocą jednej z metod.
 
 Podstawowe kroki są następujące:
 
-1. Tworzenie szablonu w formacie JSON, który opisuje sposób utworzenia zasobu i Włącz diagnostykę.
+1. Utwórz szablon jako plik JSON, który zawiera opis sposobu tworzenia zasobu i Włącz diagnostykę.
 2. [Wdrażanie szablonu przy użyciu dowolnej metody wdrażania](../azure-resource-manager/resource-group-template-deploy.md).
 
-Poniżej możemy podać przykład pliku JSON szablonu, który chcesz wygenerować z systemem innym niż obliczeniowych i zasobów obliczeniowych.
+Poniżej podajemy przykładowy plik JSON szablonu, czego potrzebujesz do generowania dla innych wystąpień obliczeniowych i zasobów obliczeniowych.
 
-## <a name="non-compute-resource-template"></a>Zasób obliczeniowy bez szablonu
-Dla zasobów obliczeniowych nie należy wykonać dwie czynności:
+## <a name="non-compute-resource-template"></a>Zasób obliczeniowy inne niż szablonu
+W przypadku zasobów-Compute należy wykonać dwie czynności:
 
-1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego analizy dzienników (Włączanie archiwizacji dzienników diagnostycznych na konto magazynu, przesyłania strumieniowego dzienników do usługi Event Hubs i/lub wysyłania dzienników do analizy dzienników).
+1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego usługi Log Analytics (Włączanie archiwizowanie dzienników diagnostycznych na koncie magazynu, przesyłanie strumieniowe dzienników do usługi Event Hubs i/lub wysyłania dzienników do usługi Log Analytics).
    
     ```json
     "settingName": {
@@ -75,7 +75,7 @@ Dla zasobów obliczeniowych nie należy wykonać dwie czynności:
     "resources": [
       {
         "type": "providers/diagnosticSettings",
-        "name": "Microsoft.Insights/[parameters('settingName')]",
+        "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
         "dependsOn": [
           "[/*resource Id for which Diagnostic Logs will be enabled>*/]"
         ],
@@ -111,9 +111,9 @@ Dla zasobów obliczeniowych nie należy wykonać dwie czynności:
     ]
     ```
 
-Właściwości obiektu blob dla ustawienie diagnostyczne następuje [opisany w tym artykule](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodawanie `metrics` właściwości umożliwi to również wysłać metryki zasobów do tych samym dane wyjściowe, pod warunkiem, że [zasób obsługuje metryki Azure Monitor](monitoring-supported-metrics.md).
+Następujące właściwości obiektu blob na potrzeby ustawienia diagnostyczne [formacie opisanym w tym artykule](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Dodawanie `metrics` właściwość umożliwia również wysyłanie metryk zasobów do tych tych samych danych wyjściowych, pod warunkiem, że [zasób obsługuje metryk usługi Azure Monitor](monitoring-supported-metrics.md).
 
-W tym miejscu jest pełny przykład, która tworzy aplikację logiki i włącza opcję przesyłania strumieniowego centra zdarzeń i magazynu w ramach konta magazynu.
+Oto pełny przykład, który służy do tworzenia aplikacji logiki i włącza funkcję przesyłania strumieniowego do usługi Event Hubs i magazynu na koncie magazynu.
 
 ```json
 
@@ -205,7 +205,7 @@ W tym miejscu jest pełny przykład, która tworzy aplikację logiki i włącza 
       "resources": [
         {
           "type": "providers/diagnosticSettings",
-          "name": "Microsoft.Insights/[parameters('settingName')]",
+          "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
           "dependsOn": [
             "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
@@ -246,21 +246,21 @@ W tym miejscu jest pełny przykład, która tworzy aplikację logiki i włącza 
 
 ```
 
-## <a name="compute-resource-template"></a>Obliczenia bazy danych zasobów szablonu
-Aby włączyć diagnostykę na zasobów obliczeniowych, na przykład klaster maszyny wirtualnej lub usługi Service Fabric należy:
+## <a name="compute-resource-template"></a>Szablon zasobów obliczeniowych
+Aby włączyć diagnostykę na zasób obliczeniowy, na przykład klaster maszyny wirtualnej lub usługi Service Fabric, musisz:
 
-1. Dodaj rozszerzenie diagnostyki Azure w definicji zasobu maszyny Wirtualnej.
-2. Określ konta i/lub zdarzenia koncentratora magazynu jako parametr.
-3. Dodaj zawartość pliku WADCfg XML do właściwości XMLCfg, prawidłowo anulowanie wszystkich znaków XML.
+1. Dodaj rozszerzenie diagnostyki platformy Azure w definicji zasobu maszyny Wirtualnej.
+2. Określ Centrum konta i/lub zdarzenia magazynu jako parametr.
+3. Dodaj zawartość pliku WADCfg XML do właściwości XMLCfg prawidłowo anulowania zapewnianego element wszystkie znaki XML.
 
 > [!WARNING]
-> Ten ostatni krok mogą być nieco kłopotliwe prawo. [Znajduje się w artykule](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) przykład dzielącą schemat konfiguracji diagnostyki na zmiennych, które są anulowane i prawidłowo sformatowane.
+> Ten ostatni krok może być trudne uzyskać odpowiednie. [Ten artykuł](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) przykład dzielącą schemat konfiguracji diagnostyki na zmienne, które są poprzedzone znakiem zmiany znaczenia i poprawnie sformatowany.
 > 
 > 
 
-Cały proces, w tym przykłady, jest opisany [w tym dokumencie](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Opisano cały proces, w tym przykłady, [w tym dokumencie](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Następne kroki
-* [Więcej informacji na temat dzienników diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
-* [Strumienia Azure dzienników diagnostycznych do usługi Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
+* [Stream dzienniki diagnostyczne platformy Azure do usługi Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

@@ -1,22 +1,22 @@
 ---
-title: Instalowanie bramy danych lokalnych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i skonfigurować bramę danych lokalnego.
+title: Zainstaluj lokalną bramę danych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i skonfigurować lokalną bramę danych.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9681d4895de4b5c5c5488fffa85a3314532b41a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598195"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444943"
 ---
-# <a name="install-and-configure-an-on-premises-data-gateway"></a>Zainstaluj i skonfiguruj bramę danych lokalnych
-Bramę danych lokalnych jest wymagany, gdy łączą się lokalnych źródeł danych z co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie. Aby dowiedzieć się więcej o bramie, zobacz [bramy danych lokalnych](analysis-services-gateway.md).
+# <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
+Lokalna brama danych jest wymagana, gdy co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie, łączenie ze źródłami danych w środowisku lokalnym. Aby dowiedzieć się więcej na temat bramy, zobacz [lokalnej bramy danych](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 **Minimalne wymagania:**
@@ -27,18 +27,18 @@ Bramę danych lokalnych jest wymagany, gdy łączą się lokalnych źródeł dan
 **Zalecane:**
 
 * 8 rdzeni procesora CPU
-* 8 GB pamięci
-* 64-bitowej wersji systemu Windows 2012 R2 (lub nowszy)
+* 8 GB pamięci RAM
+* 64-bitowej wersji systemu Windows 2012 R2 (lub nowszym)
 
-**Ważne kwestie:**
+**Ważne uwagi:**
 
-* Podczas instalacji przy rejestracji bramy w usłudze Azure wybrano domyślnego regionu dla Twojej subskrypcji. Można wybrać inny region. Jeśli masz serwery w więcej niż jeden region, należy zainstalować bramy dla każdego regionu. 
-* Brama nie można zainstalować na kontrolerze domeny.
+* Podczas instalacji, podczas rejestracji bramy przy użyciu platformy Azure wybrano domyślnego regionu dla Twojej subskrypcji. Możesz wybrać inny region. W przypadku serwerów w więcej niż jednym regionie, należy zainstalować bramę dla każdego regionu. 
+* Nie można zainstalować bramy na kontrolerze domeny.
 * Na jednym komputerze można zainstalować tylko jedną bramę.
-* Zainstalować bramę na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
-* Nie należy instalować bramy na komputerze bezprzewodowo podłączony do sieci. Wydajność może być mniejsza.
-* Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tego samego [dzierżawy](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, gdy instalowanie i rejestrowanie bramy.
-* (Unified) bramy, opisanych w tym miejscu nie jest obsługiwana w regionach suwerennych Azure dla instytucji rządowych, platformy Azure w Niemczech i Chińskiej wersji platformy Azure. Użyj **brama lokalna dedykowane dla usług Azure Analysis Services**zainstalowany na serwerze server **Szybki Start** w portalu. 
+* Instalowanie bramy na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
+* Nie należy instalować bramy na komputerze bezprzewodowo podłączonej do sieci. Wydajność może być mniejsza.
+* Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) co subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
+* (Ujednoliconej) bramy, które są opisane w tym miejscu nie jest obsługiwana w niezależne regiony platformy Azure Government, Azure (Niemcy) i Azure (Chiny). Użyj **dedykowanych lokalnej bramy dla usług Azure Analysis Services**zainstalowanego na serwerze server **— Szybki Start** w portalu. 
 
 
 ## <a name="download"></a>Pobierz
@@ -52,65 +52,65 @@ Bramę danych lokalnych jest wymagany, gdy łączą się lokalnych źródeł dan
 
    ![Zainstaluj lokalizacji oraz postanowienia licencyjne](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. Zaloguj się do platformy Azure. Konto musi znajdować się w Twojej dzierżawy usługi Azure Active Directory. To konto jest używane dla administratora bramy. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, gdy instalowanie i rejestrowanie bramy.
+3. Zaloguj się do platformy Azure. Konto musi być dzierżawy usługi Azure Active Directory. To konto jest używane dla administratora bramy. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, podczas instalowania i rejestrowania bramy.
 
    ![Logowanie do platformy Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
-   > Jeśli możesz zalogować się przy użyciu konta domeny, jest mapowany do konta organizacyjnego w usłudze Azure AD. Konta organizacyjnego służy jako administratora bramy.
+   > Jeśli zalogujesz się przy użyciu konta domeny w usłudze Azure AD jest mapowany do swojego konta organizacyjnego. Konta organizacji jest używane jako administrator bramy.
 
-## <a name="register"></a>Rejestr
-Aby utworzyć zasób bramy na platformie Azure, możesz zarejestrować lokalne wystąpienie instalowania z usługi bramy w chmurze. 
+## <a name="register"></a>Zarejestruj się
+W celu utworzenia zasobu bramy na platformie Azure, możesz zarejestrować lokalne wystąpienie, który został zainstalowany przy użyciu usługi bramy w chmurze. 
 
-1.  Wybierz **zarejestrować nową bramę na tym komputerze**.
+1.  Wybierz **Zarejestruj nową bramę na tym komputerze**.
 
     ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. Wpisz nazwę i odzyskiwanie klucza bramy. Domyślnie przy użyciu brama swoją subskrypcję domyślnego regionu. Jeśli chcesz wybrać inny region, wybierz **Region zmiany**.
+2. Wpisz nazwę i klucz odzyskiwania dla bramy. Domyślnie Twoja subskrypcja domyślnego regionu używa brama. Jeśli musisz wybrać inny region, wybierz opcję **Zmień Region**.
 
     > [!IMPORTANT]
-    > Klucz odzyskiwania należy zapisać w bezpiecznym miejscu. Klucz odzyskiwania jest wymagany w kolejności do przejęcia, migracji lub przywracania bramy. 
+    > Klucz odzyskiwania należy zapisać w bezpiecznym miejscu. Klucz odzyskiwania jest wymagany w prawidłowej kolejności do przejęcia, migracji lub przywracania bramy. 
 
    ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-resource"></a>Utwórz zasób Azure bramy
-Po zainstalowaniu i zarejestrować bramę, należy utworzyć zasób bramy w Twojej subskrypcji platformy Azure. Zaloguj się do platformy Azure z tego samego konta używanego podczas rejestrowania bramy.
+## <a name="create-resource"></a>Tworzenie zasobu brama platformy Azure
+Po został zainstalowany i zarejestrowany bramy, należy do utworzenia zasobu bramy w Twojej subskrypcji platformy Azure. Zaloguj się do platformy Azure przy użyciu tego samego konta, którego użyto podczas rejestracji bramy.
 
-1. W portalu Azure kliknij **Utwórz nową usługę** > **integracji przedsiębiorstwa** > **bramy danych lokalnych** > **Utwórz**.
+1. W witrynie Azure portal kliknij **Utwórz nową usługę** > **integracji dla przedsiębiorstw** > **lokalnej bramy danych**  >   **Utwórz**.
 
    ![Utwórz zasób bramy](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
 2. W **Utwórz bramę połączenia**, wprowadź następujące ustawienia:
 
-    * **Nazwa**: Wprowadź nazwę dla zasobu bramy. 
+    * **Nazwa**: Wprowadź nazwę zasobu bramy. 
 
-    * **Subskrypcja**: Wybierz subskrypcję platformy Azure do skojarzenia z zasobu bramy. 
+    * **Subskrypcja**: Wybierz subskrypcję platformy Azure, aby skojarzyć z zasobem usługi bramy. 
    
-      Domyślna subskrypcja opiera się na konto platformy Azure, używany do logowania.
+      Domyślna subskrypcja opiera się na konto platformy Azure, która użyte do zalogowania.
 
     * **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
 
-    * **Lokalizacja**: Wybierz region, w zarejestrowany bramy w.
+    * **Lokalizacja**: Wybierz region, zarejestrować bramę.
 
-    * **Nazwa instalacji**: Jeśli instalacji bramy nie została jeszcze wybrana, wybierz bramę, w zarejestrowany. 
+    * **Nazwa instalacji**: Jeśli Twoja instalacja bramy nie została jeszcze wybrana, wybierz bramy, zarejestrowane. 
 
     Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
 
 ## <a name="connect-servers"></a>Połącz serwery do zasobu bramy
 
-1. W sieci — Omówienie serwera usług Azure Analysis Services kliknij **bramy danych lokalnych**.
+1. W sieci — Omówienie serwera usług Azure Analysis Services kliknij **lokalnej bramy danych**.
 
-   ![Połącz serwer bramy](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
+   ![Połączyć serwer bramy](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. W **wybierz bramę danych lokalnego, aby połączyć**wybierz zasób bramy, a następnie kliknij przycisk **wybranej bramy Połącz**.
+2. W **wybierz lokalną bramę danych do łączenia z**wybierz zasób bramy, a następnie kliknij przycisk **Połącz wybraną bramę**.
 
-   ![Połącz serwer bramy zasobów](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
+   ![Połącz serwer do zasobu bramy](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
-    > Jeśli na liście nie ma bramy, serwer, prawdopodobnie nie w tym samym regionie co region określone podczas rejestrowania bramy. 
+    > Jeśli na liście nie ma bramy, serwer, prawdopodobnie nie w tym samym regionie, co region określone podczas rejestracji bramy. 
 
-To już wszystko. Jeśli trzeba otworzyć porty lub czy rozwiązywania wszelkich problemów, koniecznie zapoznaj się z [bramy danych lokalnych](analysis-services-gateway.md).
+To już wszystko. Jeśli potrzebujesz otwarcie portów lub wykonaj rozwiązywania wszelkich problemów, koniecznie zapoznaj się z [lokalnej bramy danych](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie usług Analysis Services](analysis-services-manage.md)   

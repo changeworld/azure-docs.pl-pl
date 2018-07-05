@@ -3,23 +3,24 @@ title: Przeglądy dostępu w usłudze Azure AD | Microsoft Docs
 description: Przeglądy dostępu w usłudze Azure Active Directory umożliwiają kontrolowanie członkostwa w grupie i dostępu do aplikacji w celu spełnienia wymagań organizacji dotyczących ładu, zgodności oraz zarządzania ryzykiem.
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 31f3ce4ae7915ef463a557a9be60c651acdbabe6
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
-ms.translationtype: HT
+ms.reviewer: mwahl
+ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233275"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446058"
 ---
 # <a name="azure-ad-access-reviews"></a>Przeglądy dostępu w usłudze Azure AD
 
@@ -36,7 +37,7 @@ Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają orga
 - Możesz ponownie certyfikować przypisanie roli użytkowników administracyjnych, którzy zostali przypisani do ról usługi Azure AD, np. roli Administrator globalny, lub ról subskrypcji platformy Azure.  Ta funkcja jest uwzględniona w usłudze Azure AD Privileged Identity Management.
     
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)

@@ -1,102 +1,107 @@
 ---
-title: Szyfrowanie usługi Magazyn Azure dla danych magazynowanych | Dokumentacja firmy Microsoft
-description: Szyfrowanie magazynu obiektów Blob platformy Azure na stronie usługi, gdy dane są przechowywane przy użyciu funkcji szyfrowanie usługi Magazyn Azure, a go odszyfrować podczas pobierania danych.
+title: Szyfrowanie usługi Azure Storage dla danych magazynowanych | Dokumentacja firmy Microsoft
+description: Szyfrowanie usługi Azure Blob storage po stronie usługi, w przypadku przechowywania danych za pomocą funkcji szyfrowania usługi Storage platformy Azure i je odszyfrować, podczas pobierania danych.
 services: storage
 author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 06/12/2018
 ms.author: lakasa
-ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d469dfb5092f1269a6600ee8ee2f81778fd83b96
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37450090"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
 
-Azure szyfrowanie usługi Magazyn danych magazynowanych pomaga chronić dane w celu spełnienia organizacji bezpieczeństwa i zgodności zobowiązań. W przypadku tej funkcji usługi Magazyn Azure automatycznie szyfruje dane przed trwałym go do magazynu Azure i odszyfrowuje dane przed pobierania. Obsługa szyfrowania, szyfrowanie w rest, odszyfrowywania i zarządzania kluczami w programie szyfrowanie usługi Magazyn jest niewidoczny dla użytkowników. Wszystkie dane zapisane w magazynie Azure są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednego bloku najwyższy szyfrów dostępne.
+Szyfrowanie usługi Azure Storage dla danych w spoczynku pomaga chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Dzięki tej funkcji usługi Azure Storage automatycznie szyfruje dane przed utrwaleniem go do usługi Azure Storage i odszyfrowuje je przed pobierania. Obsługa szyfrowania, szyfrowanie nieużywanych danych, odszyfrowywania i zarządzania kluczami w programie Storage Service Encryption jest niewidoczne dla użytkowników. Wszystkie dane zapisywane w magazynie platformy Azure są szyfrowane za pomocą 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
 
-Nie można wyłączyć szyfrowanie usługi Magazyn, jest włączona dla wszystkich kont magazynu nowych i istniejących. Ponieważ domyślnie jest zabezpieczone dane, nie należy modyfikować z kodu lub aplikacji, aby móc korzystać z magazynu usługi szyfrowania.
+Szyfrowanie usługi Storage jest włączona dla wszystkich kont magazynu z nowymi i istniejącymi i nie może być wyłączony. Ponieważ Twoje dane są zabezpieczane domyślnie, nie trzeba modyfikować kodu lub aplikacji, aby móc korzystać z szyfrowania usługi Storage.
 
-Automatyczne szyfrowanie danych w przez funkcję:
+Ta funkcja automatycznie szyfruje dane:
 
-- Obu warstwach wydajności (Standard i Premium).
+- Obu warstwach wydajności (standardowa i Premium).
 - Oba modele wdrażania (usługi Azure Resource Manager i model klasyczny).
-- Wszystkie usługi Azure Storage services (magazynu obiektów Blob, magazyn kolejek, Magazyn tabel i plików Azure). 
+- Wszystkie usługi Azure Storage services (usługi Blob storage, Queue storage, Table storage i Azure Files). 
 
-Szyfrowanie usługi magazynu nie ma wpływu na wydajność magazynu Azure.
+Szyfrowanie usługi Storage nie wpływa na wydajność usługi Azure Storage.
 
-Klucze szyfrowania zarządzany przez firmę Microsoft można używać z szyfrowanie usługi Magazyn lub może używać kluczy szyfrowania. Aby uzyskać więcej informacji o korzystaniu z własnych kluczy, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Za pomocą kluczy zarządzanych przez firmę Microsoft szyfrowania szyfrowanie usługi Storage lub użyć własnych kluczy szyfrowania. Aby uzyskać więcej informacji na temat korzystania z własnych kluczy, zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
-## <a name="view-encryption-settings-in-the-azure-portal"></a>Wyświetl ustawienia szyfrowania w portalu Azure
+## <a name="view-encryption-settings-in-the-azure-portal"></a>Wyświetl ustawienia szyfrowania w witrynie Azure portal
 
-Aby wyświetlić ustawienia szyfrowanie usługi Magazyn, zaloguj się do [portalu Azure](https://portal.azure.com) i wybierz konto magazynu. W **ustawienia** okienku wybierz **szyfrowania** ustawienie.
+Aby wyświetlić ustawienia szyfrowania usługi magazynu, zaloguj się do [witryny Azure portal](https://portal.azure.com) i wybierz konto magazynu. W **ustawienia** okienku wybierz **szyfrowania** ustawienie.
 
-![Portal zrzut ekranu pokazujący ustawienia szyfrowania](./media/storage-service-encryption/image1.png)
+![Portal zrzut ekranu przedstawiający ustawienie szyfrowania](./media/storage-service-encryption/image1.png)
 
-## <a name="faq-for-storage-service-encryption"></a>Często zadawane pytania dotyczące szyfrowanie usługi magazynu
+## <a name="faq-for-storage-service-encryption"></a>Często zadawane pytania dotyczące szyfrowania usługi Storage
 
-**Pytanie: czy masz konto magazynu klasycznego. Szyfrowanie usługi magazynu można włączyć na nim?**
+**Pytanie: Mam klasycznego konta magazynu. Szyfrowanie usługi Storage można włączyć na nim?**
 
-Szyfrowanie usługi Magazyn A: jest domyślnie włączona dla wszystkich kont magazynu (klasyczne i Resource Manager).
+Odp.: Storage Service Encryption jest włączona dla wszystkich kont magazynu (klasyczne i usługi Resource Manager).
 
-**Pytanie: jak szyfrować dane w moim koncie magazynu classic**
+**P: jak szyfrowania danych na moim koncie magazynu klasycznego**
 
-Odp.: z szyfrowaniem, domyślnie włączona magazyn Azure szyfruje automatycznie nowych danych. 
+Odp.: z szyfrowaniem, domyślnie włączone usługi Azure Storage automatycznie szyfruje nowych danych. 
 
-**Pytanie: czy masz konto magazynu Menedżera zasobów. Szyfrowanie usługi magazynu można włączyć na nim?**
+**Pytanie: mam konta magazynu usługi Resource Manager. Szyfrowanie usługi Storage można włączyć na nim?**
 
-A: szyfrowanie usługi Magazyn jest włączona domyślnie na wszystkich istniejących kont magazynu Menedżera zasobów. Ta jest obsługiwana w przypadku magazynu obiektów Blob, Magazyn tabel, magazyn kolejek i plików platformy Azure. 
+Odp.: storage Service Encryption jest domyślnie włączona na wszystkich istniejących kont magazynu usługi Resource Manager. Jest to obsługiwane dla usługi Blob storage, Table storage, Queue storage i Azure Files. 
 
-**Pytanie: jak szyfrowania danych na koncie magazynu Resource Manager?**
+**P: jak szyfrować dane w ramach konta magazynu usługi Resource Manager?**
 
-Szyfrowanie usługi Magazyn A: jest domyślnie włączona dla wszystkich kont magazynu — klasycznego i Resource Manager wszystkie istniejące pliki w ramach konta magazynu utworzone przed włączeniem szyfrowania będzie wstecznie uzyskać szyfrowane przez proces szyfrowania w tle.
+Szyfrowanie usługi Storage A: jest włączona dla wszystkich kont magazynu — klasyczne i usługi Resource Manager, wszelkie istniejące pliki na konto magazynu utworzone przed włączeniem szyfrowania zostaną wstecznie zaszyfrowane przez proces szyfrowania w tle.
 
-**Pytanie: czy można utworzyć konta magazynu przy użyciu szyfrowania usługi magazynu przy użyciu programu Azure PowerShell i interfejsu wiersza polecenia Azure?**
+**P: czy można utworzyć konta magazynu przy użyciu szyfrowania usługi Storage, włączana przy użyciu programu Azure PowerShell i wiersza polecenia platformy Azure?**
 
-Szyfrowanie usługi Magazyn A: jest domyślnie włączona w czasie tworzenia dowolne konto magazynu (klasyczne lub Resource Manager). Właściwości konta można sprawdzić, używając programu Azure PowerShell i interfejsu wiersza polecenia Azure.
+Odp.: Storage Service Encryption jest domyślnie włączona w czasie tworzenia wszystkich kont magazynu (klasyczne lub usługi Resource Manager). Aby sprawdzić właściwości konta, przy użyciu programu Azure PowerShell i wiersza polecenia platformy Azure.
 
-**Pytanie: jak bardziej usługi Azure Storage koszt Jeśli włączono szyfrowanie usługi Magazyn?**
+**P: jak dużo bardziej kosztuje się usługa Azure Storage, jeśli włączono szyfrowanie usługi Storage?**
 
-Odpowiedź: nie istnieje bez dodatkowych kosztów.
+Odp.: nie ma żadnych dodatkowych kosztów.
 
-**Pytanie: czy można użyć własnych kluczy szyfrowania?**
+**P: czy można użyć własnych kluczy szyfrowania?**
 
-Odpowiedź: tak, można użyć własnych kluczy szyfrowania. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Odp. tak, można użyć własnych kluczy szyfrowania. Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
-**Pytanie: czy czy można odwołać dostęp do kluczy szyfrowania?**
+**P: czy można odwołać dostęp do kluczy szyfrowania?**
 
-A. tak, jeśli użytkownik [używać kluczy szyfrowania](storage-service-encryption-customer-managed-keys.md) w usłudze Azure Key Vault.
+Odp.: tak, jeśli użytkownik [korzystania z własnych kluczy szyfrowania](storage-service-encryption-customer-managed-keys.md) w usłudze Azure Key Vault.
 
-**Pytanie: jest domyślnie włączone szyfrowanie usługi magazynu podczas tworzenia konta magazynu?**
+**P: czy domyślnie włączone szyfrowanie usługi Storage, tworząc konto magazynu?**
 
-Odpowiedź: tak, szyfrowanie usługi Magazyn jest domyślnie włączona dla wszystkich kont magazynu oraz wszystkie usługi Magazyn Azure.
+Odp. tak, szyfrowanie usługi Storage jest włączona dla wszystkich kont magazynu i wszystkich usług Azure Storage.
 
-**Pytanie: jak różni się od szyfrowania dysków Azure?**
+**P: jak różni się od usługi Azure Disk Encryption?**
 
-A: szyfrowanie dysków azure jest używany do szyfrowania dysków systemu operacyjnego i danych na maszynach wirtualnych IaaS. Aby uzyskać więcej informacji, zobacz [przewodnik zabezpieczeń magazynu](../storage-security-guide.md).
+Odp.: Usługa azure Disk Encryption umożliwia szyfrowanie dysków systemu operacyjnego i danych na maszynach wirtualnych IaaS. Aby uzyskać więcej informacji, zobacz [Przewodnik po zabezpieczeniach magazynu](../storage-security-guide.md).
 
-**Pytanie: co zrobić, jeśli włączyć szyfrowania dysków Azure na mój dysk danych?**
+**P: co mogę zrobić, jeśli włączyć usługi Azure Disk Encryption na dyski z danymi?**
 
-A: to będzie działać bezproblemowo. Obie metody zostanie szyfrowania danych.
+Odp.: to będzie działać bezproblemowo. Obie metody będą szyfrowania danych.
 
-**Pytanie: moim koncie magazynu skonfigurowano powinny być replikowane geograficznie nadmiarowości. Przy użyciu szyfrowania usługi magazynu nadmiarowych kopii także będą zaszyfrowane?**
+**Pytanie: Moja konto magazynu jest skonfigurowane do replikacji geograficznej nadmiarowości. Przy użyciu szyfrowania usługi Storage będą nadmiarowych kopii również szyfrowane?**
 
-Odpowiedź: tak, wszystkie kopie konta magazynu są szyfrowane. Nadmiarowość wszystkie opcje są obsługiwane — magazyn lokalnie nadmiarowy, Magazyn strefowo nadmiarowy magazynu geograficznie nadmiarowego i magazynu geograficznie nadmiarowego dostęp do odczytu.
+Odp. tak, szyfrowane są wszystkie kopie na koncie magazynu. Nadmiarowość wszystkie opcje są obsługiwane — magazyn lokalnie nadmiarowy, Magazyn strefowo nadmiarowy, Magazyn geograficznie nadmiarowy i Magazyn geograficznie nadmiarowy z dostępem do odczytu.
 
-**Pytanie: czy można wyłączyć szyfrowania na moim koncie magazynu?**
+**P: czy można wyłączyć szyfrowania na moim koncie usługi storage?**
 
-Odpowiedź: szyfrowanie jest włączone domyślnie i nie można wyłączyć szyfrowania dla konta magazynu. 
+Odp.: szyfrowanie jest włączone domyślnie i nie można wyłączyć szyfrowania dla konta magazynu. 
 
-**Pytanie: jest szyfrowanie usługi magazynu jest dozwolony tylko w określonych regionach?**
+**P: czy szyfrowanie usługi Storage można używać tylko w określonych regionach?**
 
-A: szyfrowanie usługi Magazyn jest dostępna we wszystkich regionach dla wszystkich usług. 
+Odp.: storage Service Encryption jest dostępna we wszystkich regionach dla wszystkich usług.
 
-**Pytanie: jak można skontaktować się z osobą czy problemów lub chcesz wyrazić swoją opinię?**
+**P: czy szyfrowanie usługi Storage FIPS 140-2 zgodne?**
 
-A: kontaktu [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) dla jakiekolwiek problemy lub opinii związanych z magazynu usługi szyfrowania.
+Odp. tak, szyfrowanie usługi Storage to FIPS 140-2 zgodny.
+
+**P: jak mam się kontaktować ktoś czy jakichkolwiek problemów lub chcesz wyrazić swoją opinię?**
+
+Odp.: Skontaktuj się z [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) dla jakiekolwiek problemy lub opinię szyfrowanie usługi Storage.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Magazyn Azure oferuje ustawienie Zaawansowane funkcje zabezpieczeń tym razem pomocy deweloperzy aplikacji bezpiecznego kompilacji. Aby uzyskać więcej informacji, zobacz [przewodnik zabezpieczeń magazynu](../storage-security-guide.md).
+Usługa Azure Storage zapewnia kompleksowy zestaw funkcji zabezpieczeń tego razem zapewniają deweloperom tworzenie bezpiecznych aplikacji. Aby uzyskać więcej informacji, zobacz [Przewodnik po zabezpieczeniach magazynu](../storage-security-guide.md).

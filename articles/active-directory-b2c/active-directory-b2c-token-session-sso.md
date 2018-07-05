@@ -1,113 +1,113 @@
 ---
-title: Token, sesji i Konfiguracja pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Token sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
+title: Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Tokenów, sesji i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0ee39f4b6f80d13cc0f71c77ae87b2a4ee74e390
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710638"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444835"
 ---
-# <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Usługa Azure Active Directory B2C: Tokenu sesji i konfiguracji rejestracji jednokrotnej
+# <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Usługa Azure Active Directory B2C: Tokenów, sesji i konfiguracji rejestracji jednokrotnej
 
-Ta funkcja umożliwia szczegółową kontrolę na [podstawy-policy](active-directory-b2c-reference-policies.md), z:
+Ta funkcja umożliwia szczegółową kontrolę na [-policy podstawę](active-directory-b2c-reference-policies.md), programu:
 
-1. Okres istnienia tokenów zabezpieczających emitowane przez usługi Azure Active Directory (Azure AD) B2C.
-2. Okresy istnienia sesji aplikacji sieci web, zarządzane przez usługę Azure AD B2C.
-3. Formaty ważne oświadczenia w tokenach zabezpieczających emitowane przez usługę Azure AD B2C.
-4. Logowanie jednokrotne (SSO) zachowanie na różnych aplikacji i zasad w dzierżawcy usługi B2C.
+1. Okresy istnienia tokenów zabezpieczających wyemitowane przez usługi Azure Active Directory (Azure AD) B2C.
+2. Okres istnienia sesji aplikacji sieci web zarządzanych przez usługę Azure AD B2C.
+3. Formaty ważne oświadczenia w tokeny zabezpieczające emitowane przez usługę Azure AD B2C.
+4. Logowanie jednokrotne (SSO) zachowanie w wielu aplikacji i zasad w swojej dzierżawy usługi B2C.
 
-Wbudowane zasady służy tej funkcji w katalogu usługi Azure AD B2C w następujący sposób:
+Wbudowane zasady umożliwia tej funkcji w katalogu usługi Azure AD B2C w następujący sposób:
 
-1. Wykonaj następujące kroki, aby [przejdź do menu funkcji B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w portalu Azure.
-2. Kliknij przycisk **zasad rejestracji i logowania**. * Uwaga: Możesz użyć tej funkcji na każdego typu zasad, nie tylko w ** rejestracji i logowania zasady ***.
-3. Otwórz zasadę, klikając go. Na przykład kliknięcie **B2C_1_SiUpIn**.
+1. Wykonaj następujące kroki, aby [przejdź do menu funkcji B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w witrynie Azure portal.
+2. Kliknij przycisk **zasady rejestracji lub logowania**. * Uwaga: Możesz użyć tej funkcji z każdym typem zasad, nie tylko w ** rejestracji lub logowania zasady ***.
+3. Otwórz zasady, klikając go. Na przykład kliknąć **B2C_1_SiUpIn**.
 4. Kliknij przycisk **Edytuj** w górnej części menu.
-5. Kliknij przycisk **Token, sesji i konfiguracji rejestracji jednokrotnej**.
+5. Kliknij przycisk **tokenu, sesji i konfiguracji rejestracji jednokrotnej**.
 6. Wprowadź żądane zmiany. Więcej informacji na temat dostępnych właściwości w kolejnych sekcjach.
 7. Kliknij przycisk **OK**.
-8. Kliknij przycisk **zapisać** górnej części menu.
+8. Kliknij przycisk **Zapisz** górnej części menu.
 
-## <a name="token-lifetimes-configuration"></a>Konfiguracja okresy istnienia tokenu
+## <a name="token-lifetimes-configuration"></a>Konfiguracja okresów istnienia tokenu
 
-Usługa Azure AD B2C obsługuje [protokół OAuth 2.0](active-directory-b2c-reference-protocols.md) umożliwiający bezpieczny dostęp do chronionych zasobów. Aby zaimplementować tę obsługę, usługi Azure AD B2C emituje różnych [tokeny zabezpieczające](active-directory-b2c-reference-tokens.md). Są to właściwości, których można użyć do zarządzania okresy istnienia tokenów zabezpieczających emitowane przez usługę Azure AD B2C:
+Usługa Azure AD B2C obsługuje [Protokół autoryzacji OAuth 2.0](active-directory-b2c-reference-protocols.md) umożliwiające bezpieczny dostęp do chronionych zasobów. Aby zaimplementować tę obsługę, usługi Azure AD B2C emituje różnych [tokenów zabezpieczających](active-directory-b2c-reference-tokens.md). Poniżej przedstawiono właściwości, których można użyć do zarządzania okresy istnienia tokenów zabezpieczających emitowane przez usługę Azure AD B2C:
 
-* **Dostęp do & Identyfikator tokenu okresy istnienia (w minutach)**: okres istnienia tokenu elementu nośnego OAuth 2.0 używane do uzyskiwania dostępu do chronionych zasobów.
+* **Dostęp czas życia tokenu Identyfikatora (w minutach)**: okres istnienia tokenu elementu nośnego OAuth 2.0 używane do uzyskiwania dostępu do chronionego zasobu.
   * Domyślne = 60 minut.
-  * Minimalna (włącznie) = 5 minut.
+  * Minimum (włącznie) = 5 minut.
   * Maksymalna (włącznie) = 1440 minut.
-* **Okres istnienia tokenu odświeżania (dni)**: okres maksymalny czas, przed którym token odświeżania może służyć do uzyskania dostępu do nowych lub identyfikator tokenu (i opcjonalnie nowy token odświeżania, jeśli przyznano aplikacji `offline_access` zakresu).
+* **Czas życia tokenu odświeżania (dni)**: maksymalny okres, przed którym token odświeżania może służyć do uzyskania nowego dostępu lub tokenu Identyfikacyjnego (i opcjonalnie, nowego tokena odświeżania, jeśli aplikacja została udzielona `offline_access` zakresu).
   * Domyślne = 14 dni.
-  * Minimalna (włącznie) = 1 dzień.
+  * Minimum (włącznie) = 1 dzień.
   * Maksymalna (włącznie) = 90 dni.
-* **Odśwież okres istnienia tokenu przesuwanego okna (w dniach)**: po tym okresie użytkownik będzie zmuszony do ponownego uwierzytelnienia, niezależnie od okresu ważności ostatniego odświeżenia tokenu uzyskaną przez aplikację. Może być udostępniony tylko, jeśli przełącznik ma ustawioną wartość **Bounded**. Musi być większa lub równa **okres istnienia tokenu odświeżania (dni)** wartość. Jeśli przełącznik ma ustawioną wartość **Unbounded**, nie można podać określoną wartość.
+* **Czas życia okna przewijania tokenu odświeżania (dni)**: po upłynięciu tego okresu użytkownik jest zmuszony do ponownego uwierzytelnienia, niezależnie od ostatniego okresu ważności tokenu odświeżania uzyskanego przez aplikację. Może być udostępniony tylko, jeśli przełącznik jest równa **powiązana**. Musi być większa lub równa **czas życia tokenu odświeżania (dni)** wartość. Jeśli przełącznik jest równa **niepowiązane**, nie może dostarczyć określonej wartości.
   * Domyślna = 90 dni.
-  * Minimalna (włącznie) = 1 dzień.
+  * Minimum (włącznie) = 1 dzień.
   * Maksymalna (włącznie) = 365 dni.
 
-Oto kilka przypadków użycia, które można włączyć za pomocą tych właściwości:
+Poniżej przedstawiono kilka przypadków użycia, które można włączyć za pomocą tych właściwości:
 
-* Umożliwia użytkownikowi być zarejestrowany w aplikacji mobilnej, jak długo użytkownik jest ciągle aktywne w aplikacji. Można to zrobić przez ustawienie **odświeżania przesuwanego okna okres istnienia tokenu (dni)** przełączyć się do **Unbounded** w zasadach rejestracji.
-* Spełnia wymagania dotyczące zgodności z branży zabezpieczeń i ustawiając okresy istnienia tokenu dostępu.
+* Pozwala użytkownikowi na czas nieokreślony, pozostanie zalogowany do aplikacji mobilnej, tak długo, jak jest ciągle aktywne w aplikacji. Można to zrobić, ustawiając **przesuwanego okna czas życia tokenu odświeżania (dni)** przełączyć się do **niepowiązane** zasad logowania.
+* Spełnia wymagania dotyczące zgodności w branży zabezpieczeń i ustawiając okresów istnienia tokenu odpowiedni dostęp.
 
     > [!NOTE]
-    > Te ustawienia nie są dostępne dla zasady resetowania hasła.
+    > Te ustawienia nie są dostępne w przypadku zasad resetowania haseł.
     > 
     > 
 
 ## <a name="token-compatibility-settings"></a>Ustawienia zgodności tokenu
 
-Wprowadziliśmy zmiany formatowania do ważne oświadczenia w tokenach zabezpieczających emitowane przez usługę Azure AD B2C. To zostało zrobione poprawy naszych Obsługa standardowego protokołu i lepsze współdziałanie z bibliotek tożsamości innych firm. Jednak aby uniknąć dzielenia istniejących aplikacji, utworzyliśmy umożliwiają klientom w razie potrzeby następujących właściwości:
+Wprowadziliśmy zmiany formatowania ważne oświadczenia w tokeny zabezpieczające emitowane przez usługę Azure AD B2C. Zostało to zrobione, aby poprawić obsługę standardowy protokół i lepsze współdziałanie z biblioteki tożsamości innych firm. Jednak aby uniknąć dzielenia istniejących aplikacji, utworzyliśmy następujące właściwości, aby umożliwić klientom na uczestnictwo zgodnie z potrzebami:
 
-* **Oświadczenia wystawcy (iss)**: identyfikuje dzierżawy usługi Azure AD B2C, która wystawiła token.
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Jest to wartość domyślna.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ta wartość zawiera identyfikatory dla dzierżawy B2C i zasad stosowanych w żądania tokenu. Jeśli dana aplikacja lub biblioteka musi usługi Azure AD B2C, aby było zgodne z [spec OpenID Connect 1.0 odnajdywania](http://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
-* **Oświadczenia podmiotu (sub)**: identyfikuje jednostki, np. użytkownika, dla którego token deklaracji rozkazujących informacji.
+* **Oświadczenie wystawcy (iss)**: identyfikuje dzierżawy usługi Azure AD B2C, który wystawił token.
+  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: To jest wartością domyślną.
+  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Ta wartość obejmuje identyfikatory dla dzierżawy usługi B2C i zasad stosowanych w żądania tokenu. Jeśli aplikacji lub biblioteki musi być zgodne z usługi Azure AD B2C [specyfikacji protokołu OpenID Connect 1.0 odnajdywania](http://openid.net/specs/openid-connect-discovery-1_0.html), użyj tej wartości.
+* **Oświadczenia podmiotu (pod)**: identyfikuje jednostkę, czyli użytkownik, dla której token określa informacje.
   * **Identyfikator obiektu**: jest to wartość domyślna. Wypełnia identyfikator obiektu użytkownika w katalogu do `sub` oświadczenia w tokenie.
-  * **Nieobsługiwane**: jest to dostępna wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do **ObjectID** jak tylko można.
-* **Oświadczenia reprezentujący identyfikator zasad**: identyfikuje typ oświadczenia, do którego jest wypełniana identyfikator zasad używana w żądania tokenu.
+  * **Nieobsługiwane**: jest to świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do **ObjectID** jak tylko można.
+* **Oświadczenie reprezentujące identyfikator zasad**: identyfikuje typ oświadczenia, do którego jest wypełniana identyfikator zasad używany w żądania tokenu.
   * **tfp**: jest to wartość domyślna.
-  * **acr**: jest to dostępna wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do `tfp` jak tylko można.
+  * **rejestru Azure container Registry**: jest to świadczona wyłącznie dla zgodności z poprzednimi wersjami, a firma Microsoft zaleca, aby przełączyć się do `tfp` jak tylko można.
 
 ## <a name="session-behavior"></a>Zachowanie sesji
 
-Usługa Azure AD B2C obsługuje [protokołu uwierzytelniania OpenID Connect](active-directory-b2c-reference-oidc.md) umożliwiających bezpieczne logowanie do aplikacji sieci web. Są to właściwości, które można użyć do zarządzania sesjami aplikacji sieci web:
+Usługa Azure AD B2C obsługuje [protokołu uwierzytelniania OpenID Connect](active-directory-b2c-reference-oidc.md) włączania bezpiecznego logowania do aplikacji sieci web. Poniżej przedstawiono właściwości, których można użyć do zarządzania sesji aplikacji sieci web:
 
-* **Aplikacja sieci Web okres istnienia sesji (w minutach)**: czas istnienia pliku cookie sesji usługi Azure AD B2C przechowywanych w przeglądarce po pomyślnym uwierzytelnieniu.
+* **Aplikacja sieci Web okres istnienia sesji (w minutach)**: okres istnienia przechowywanych w przeglądarce użytkownika po pomyślnym uwierzytelnieniu pliku cookie sesji usługi Azure AD B2C.
   * Domyślne = 1440 minut.
-  * Minimalna (włącznie) = 15 minut.
+  * Minimum (włącznie) = 15 minut.
   * Maksymalna (włącznie) = 1440 minut.
-* **Limit czasu sesji aplikacji sieci Web**: Jeśli ten parametr ma ustawioną wartość **bezwzględną**, użytkownik będzie zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez **aplikacji sieci Web okres istnienia sesji (w minutach)** upływa. Jeśli ten parametr ma ustawioną wartość **stopniowych** (ustawienie domyślne), użytkownik pozostanie zalogowany, tak długo, jak długo użytkownik jest ciągle aktywne w aplikacji sieci web.
+* **Limit czasu sesji aplikacji sieci Web**: Jeśli ten przełącznik jest równa **bezwzględne**, użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez **aplikacji sieci Web okres istnienia sesji (w minutach)** upływa. Jeśli ten przełącznik jest równa **stopniowe** (ustawienie domyślne), użytkownik pozostaje zalogowany, tak długo, jak użytkownik jest stale aktywny w aplikacji sieci web.
 
-Oto kilka przypadków użycia, które można włączyć za pomocą tych właściwości:
+Poniżej przedstawiono kilka przypadków użycia, które można włączyć za pomocą tych właściwości:
 
-* Spełnia wymagania dotyczące zabezpieczeń i zgodności z branży przez ustawienie sesji aplikacji sieci web odpowiednie okresy istnienia.
-* Wymusić ponowne uwierzytelnianie po ustawionym okresie podczas interakcji z częścią określającą wysokich zabezpieczeń aplikacji sieci web. 
+* Spełnia wymagania dotyczące zabezpieczeń i zgodności w branży, ustawiając sesji aplikacji sieci web odpowiednią okresy istnienia.
+* Wymuś ponowne uwierzytelnianie po upływie określonego czasu ustawione podczas interakcji z części o wysokim poziomie zabezpieczeń aplikacji sieci web. 
 
     > [!NOTE]
-    > Te ustawienia nie są dostępne dla zasady resetowania hasła.
+    > Te ustawienia nie są dostępne w przypadku zasad resetowania haseł.
     > 
     > 
 
-## <a name="single-sign-on-sso-configuration"></a>Konfiguracja rejestracji jednokrotnej (SSO)
-Jeśli masz wiele aplikacji i zasad w dzierżawie usługi B2C można zarządzać interakcji użytkowników między nimi przy użyciu **konfiguracji rejestracji jednokrotnej** właściwości. Można ustawić właściwości do jednego z następujących ustawień:
+## <a name="single-sign-on-sso-configuration"></a>Konfiguracja logowania jednokrotnego (SSO)
+Jeśli masz wiele aplikacji i zasad dzierżawy usługi B2C, możesz zarządzać interakcje użytkownika między nimi przy użyciu **konfiguracji rejestracji jednokrotnej** właściwości. Właściwość można ustawić na jeden z następujących ustawień:
 
-* **Dzierżawy**: jest to ustawienie domyślne. Za pomocą tego ustawienia umożliwia wiele aplikacji i zasad w dzierżawie usługi B2C na współużytkowanie tej samej sesji użytkownika. Na przykład gdy użytkownik zaloguje się do aplikacji, zakupów firmy Contoso dany użytkownik może również bezproblemowo Zaloguj się do innego jeden, farmacji firmy Contoso, podczas dostępu do niego.
-* **Aplikacja**: pozwala to zachować sesję użytkownika wyłącznie dla aplikacji, niezależnie od innych aplikacji. Na przykład jeśli chcesz użytkownika do logowania się na farmacji Contoso (z tymi samymi poświadczeniami), nawet jeśli użytkownik jest już zarejestrowany do zakupów firmy Contoso, inną aplikację na tym samym B2C dzierżawy. 
-* **Zasady**: pozwala to zachować sesję użytkownika wyłącznie do zasad, niezależnie od aplikacji za jego pomocą. Na przykład jeśli użytkownik ma już zalogowany i ukończyć kroku multi Multi-Factor authentication (MFA), użytkownik może uzyskać dostęp do wyższy poziom zabezpieczeń części wiele aplikacji tak długo, jak sesji powiązane z zasadami nie wygasa.
-* **Wyłączone**: wymusza użytkownika ma być uruchamiana w podróży całego użytkownika przy każdym wykonaniu zasad. Na przykład dzięki temu wielu użytkownikom logowanie do aplikacji (w scenariuszu z udostępnionego pulpitu), nawet podczas jeden użytkownik pozostanie zalogowany podczas przez cały czas.
+* **Dzierżawy**: to ustawienie domyślne. Przy użyciu tego ustawienia umożliwia wielu aplikacji i zasad w swojej dzierżawy usługi B2C do udostępniania tej samej sesji użytkownika. Na przykład po użytkownik zaloguje się do aplikacji, zakupy firmy Contoso dany użytkownik może również bezproblemowo zalogować się do innego jeden, farmacji firmy Contoso, podczas uzyskiwania dostępu do jej.
+* **Aplikacja**: dzięki temu można zachować sesję użytkownika wyłącznie dla aplikacji, niezależnie od innych aplikacji. Na przykład jeśli chcesz to użytkownikowi logowanie się farmacji Contoso (przy użyciu tych samych poświadczeń), nawet wtedy, gdy użytkownik jest już zalogowali się do zakupów firmy Contoso, inną aplikację na tym samym B2C dzierżawy. 
+* **Zasady**: dzięki temu można zachować sesję użytkownika wyłącznie do zasad, niezależnie od aplikacji korzystania z niego. Na przykład jeśli użytkownik ma już zalogowany i ukończyć krok multi factor authentication (MFA), użytkownik może mieć dostęp do lepsze zabezpieczenia części wielu aplikacji tak długo, jak sesji powiązane z zasadami nie wygasa.
+* **Wyłączone**: wymusza użytkownika ma być uruchamiana podróży całego użytkownika przy każdym wykonaniu zasad. Na przykład ta opcja pozwala wielu użytkowników zarejestrować się do aplikacji (w przypadku klasycznych udostępnionego), nawet podczas jeden użytkownik pozostaje zalogowany przez cały czas.
 
     > [!NOTE]
-    > Te ustawienia nie są dostępne dla zasady resetowania hasła.
+    > Te ustawienia nie są dostępne w przypadku zasad resetowania haseł.
     > 
     > 
 

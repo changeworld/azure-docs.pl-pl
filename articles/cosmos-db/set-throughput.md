@@ -1,129 +1,133 @@
 ---
-title: Przepływność udostępniania dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ustawić udostępnionej przepływności dla containsers bazy danych Azure rozwiązania Cosmos, kolekcje, wykresów i tabel.
+title: Aprowizowanie przepływności usługi Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ustawić aprowizowanej przepływności containsers usługi Azure Cosmos DB, kolekcje, wykresów i tabel.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: d8b7ed593fcd307e6709c17bafbcb5a22661dc83
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 99cd7fe6f9f46ff4d6dbbf6a6e024b3b32679724
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285777"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444270"
 ---
-# <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustawianie i pobieranie przepływności bazy danych Azure rozwiązania Cosmos kontenery i bazy danych
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
-Można ustawić przepływności kontenera Azure DB rozwiązania Cosmos lub zestaw kontenerów przy użyciu portalu Azure lub za pomocą zestawów SDK klienta. Podczas obsługi administracyjnej przepływności zestawu kontenery tych kontenerach udostępnianie udostępnionej przepływności. Przepływność inicjowania obsługi administracyjnej dla poszczególnych kontenerów zagwarantuje rezerwację przepustowości dla określonego kontenera. Z drugiej strony inicjowania obsługi administracyjnej przepływności bazy danych pozwala na współużytkowanie przepływności wśród wszystkich kontenerów, które należą do tej bazy danych. W bazie danych bazy danych Azure rozwiązania Cosmos może mieć zestaw kontenerów, których udostępnianie przepływności, a także kontenerów, które są wyposażone w dedykowane przepływności. 
+Możesz ustawić przepływności kontenera usługi Azure Cosmos DB lub zestaw kontenerów przy użyciu witryny Azure portal lub za pomocą zestawów SDK klienta. 
 
-W oparciu o udostępnionej przepływności, bazy danych Azure rozwiązania Cosmos przyzna fizycznej partycji do obsługi danych kontenerów i podziałów/rebalances między partycjami jako ich przyrostu.
+**Aprowizowanie przepływności dla poszczególnych kontenera:** podczas aprowizowania przepływności zestaw kontenerów tych kontenerów udostępnianie aprowizowanej przepływności. Przepływność inicjowania obsługi administracyjnej dla poszczególnych kontenerów gwarantuje rezerwację przepustowości dla tego określonego kontenera. Podczas przypisywania jednostek żądań na sekundę na poziomie poszczególnych kontenerów, kontenery mogą być tworzone jako *stałej* lub *nieograniczone*. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć nieograniczonego kontenera, musisz określić minimalną przepustowość 1000 jednostek RU/s i [klucza partycji](partition-data.md). Ponieważ Twoje dane mogą mieć ma być podzielony na wiele partycji, jest konieczne pobranie klucza partycji, która ma wysoką Kardynalność (od 100 do milionów wartości odrębnych). Wybierając klucza partycji przy użyciu wielu różnych wartości, można zapewnić, że żądań i kontener/tabeli/wykresu może być skalowana w jednolity sposób przez usługę Azure Cosmos DB. 
 
-Podczas przypisywania RU/s na poziomie poszczególnych kontenera, kontenerów może zostać utworzony jako *stałej* lub *nieograniczone*. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć kontener nieograniczone, należy określić minimalną przepustowość 1 000 RU/s i [klucza partycji](partition-data.md). Ponieważ danych może być konieczne można podzielić na wiele partycji, jest konieczne pobranie klucz partycji, który ma dużej kardynalności (od 100 do milionów unikatowe wartości). Wybierając klucza partycji z wielu różnych wartości upewnieniu się, że żądania i wykres kontenera/tabeli mogą być skalowane jednolicie Azure DB rozwiązania Cosmos. 
+**Aprowizowanie przepływności dla zestawu, kontenerów lub bazy danych:** Aprowizowanie przepływności bazy danych umożliwia udostępnianie informacji o przepływności między wszystkie kontenery, które należą do tej bazy danych. W bazie danych Azure Cosmos DB może mieć zestaw kontenerów, który udostępnia przepływności, a także kontenery, które są wyposażone w dedykowane przepływności. Podczas przypisywania jednostek żądań na sekundę w zestawie kontenerów, kontenery należące do tego zestawu są traktowane jako *nieograniczone* kontenerów i muszą określać klucz partycji.
 
-Podczas przypisywania RU/s w zestawie kontenerów, kontenerów należących do tego zestawu są traktowane jako *nieograniczone* kontenery i muszą określać klucz partycji.
+Na podstawie aprowizowanej przepływności, usługa Azure Cosmos DB przyzna partycje fizyczne do hostowania kontenerów i dzieli dane/rebalances danych między partycjami, zgodnie z ich przyrostu. Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Oznacza to, należy utworzyć nową bazę danych lub nową kolekcję, a następnie przeprowadzić migrację danych za pomocą [biblioteki wykonawca zbiorcze](bulk-executor-overview.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Na poniższym obrazie przedstawiono aprowizowania przepływności na różnych poziomach:
 
-![Inicjowanie obsługi administracyjnej jednostki żądania dla poszczególnych kontenerów i zestaw kontenerów](./media/request-units/provisioning_set_containers.png)
+![Aprowizacja jednostek żądania dla poszczególnych kontenerów i zestaw kontenerów](./media/request-units/provisioning_set_containers.png)
 
-W tym artykule przedstawiono kroki wymagane do skonfigurowania przepływności na różnych poziomach konta bazy danych Azure rozwiązania Cosmos. 
+W kolejnych sekcjach dowiesz się, kroki wymagane do skonfigurowania przepływności na różnych poziomach dla konta usługi Azure Cosmos DB. 
 
-## <a name="provision-throughput-by-using-azure-portal"></a>Zainicjuj obsługę przepływność przy użyciu portalu Azure
+## <a name="provision-throughput-by-using-azure-portal"></a>Aprowizowanie przepływności za pomocą witryny Azure portal
 
-### <a name="provision-throughput-for-a-container-collectiongraphtable"></a>Przepływność udostępniania dla kontenera (kolekcji wykres/tabela)
+### <a name="provision-throughput-for-a-container-collectiongraphtable"></a>Aprowizowanie przepływności dla kontenera (tabeli bezużytecznych/graph)
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
-2. W nawigacji po lewej stronie, wybierz **wszystkie zasoby** i Znajdź konto bazy danych Azure rozwiązania Cosmos.  
-3. Przepływność można skonfigurować podczas tworzenia kontenera (kolekcji, wykres, tabelę) lub przepływności aktualizacji dla istniejącego kontenera.  
-4. Aby przypisać przepływności podczas tworzenia kontenera, otwórz **Eksploratora danych** bloku, a następnie wybierz **nowej kolekcji** (nowy wykres, nową tabelę dla innych interfejsów API)  
-5. Wypełnij formularz **Dodaj kolekcji** bloku. Pola w tym bloku są opisane w poniższej tabeli:  
+2. W lewym okienku nawigacji wybierz **wszystkie zasoby** i Znajdź swoje konto usługi Azure Cosmos DB.  
+3. Przepływności można skonfigurować podczas tworzenia kontenera (kolekcja, wykres, tabela) lub przepływność aktualizacji dla istniejącego kontenera.  
+4. Aby przypisać przepływności podczas tworzenia kontenera, otwórz **Eksplorator danych** bloku, a następnie wybierz pozycję **Nowa kolekcja** (nowy wykres, nową tabelę dla innych interfejsów API)  
+5. Wypełnij formularz **Dodaj kolekcję** bloku. W poniższej tabeli opisano pola, w tym bloku:  
 
    |**Ustawienie**  |**Opis**  |
    |---------|---------|
-   |Identyfikator bazy danych  |  Podaj unikatową nazwę identyfikującą bazy danych. Baza danych jest kontenerem logicznym z co najmniej jedną kolekcję. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków /, \\, #, ? ani mieć spacji na końcu. |
+   |Identyfikator bazy danych  |  Podaj unikatową nazwę, aby zidentyfikować bazy danych. Baza danych jest kontenerem logicznym co najmniej jednej kolekcji. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków /, \\, #, ? ani mieć spacji na końcu. |
    |Identyfikator kolekcji  | Podaj unikatową nazwę identyfikującą kolekcji. W przypadku identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jak dla nazw baz danych. |
-   |Pojemność magazynu   | Ta wartość przedstawia pojemność magazynu bazy danych. Podczas inicjowania obsługi administracyjnej przepływność dla poszczególnych kolekcji, pojemności magazynu może być **stałe (10 GB)** lub **nieograniczone**. Pojemność magazynu nieograniczone wymaga ustawienia klucza partycji dla danych.  |
-   |Przepływność   | Każdej kolekcji i bazy danych mogą mieć przepływności w jednostkach żądań na sekundę.  Stałe pojemności minimalna przepływność wynosi 400 jednostek żądań na sekundę (RU/s), nieograniczony magazyn pojemności, minimalna przepustowość ustawiono 1000 RU/s.|
+   |Pojemność magazynu   | Ta wartość reprezentuje pojemność magazynu bazy danych. Podczas aprowizowania przepływności dla poszczególnych kolekcji, pojemności magazynu można **stała (10 GB)** lub **nieograniczone**. Nieograniczonej pojemności magazynu, należy ustawić klucz partycji dla danych.  |
+   |Przepływność   | Każdej kolekcji i bazy danych może mieć przepływność w jednostkach żądania na sekundę.  Pojemność magazynu stałych minimalna przepływność to 400 jednostek żądań na sekundę (RU/s), uzyskać nieograniczony magazyn pojemności, minimalna przepływność jest ustawiona na 1000 jednostek RU/s.|
 
-6. Po wprowadzeniu wartości dla tych pól, wybierz **OK** Aby zapisać ustawienia.  
+6. Po wprowadzeniu wartości dla tych pól, zaznacz **OK** Aby zapisać ustawienia.  
 
-   ![Zestaw przepływność dla kolekcji](./media/set-throughput/set-throughput-for-container.png)
+   ![Ustawianie przepływności dla kolekcji](./media/set-throughput/set-throughput-for-container.png)
 
-7. Aby zaktualizować przepływność dla istniejącego kontenera, rozwiń węzeł bazy danych i kontener, a następnie kliknij przycisk **ustawienia**. W nowym oknie, wpisz nową wartość przepływności, a następnie wybierz **zapisać**.  
+7. Aby zaktualizować przepływność istniejący kontener, rozwiń węzeł bazy danych i kontener, a następnie kliknij przycisk **ustawienia**. W nowym oknie wpisz nową wartość przepływności, a następnie wybierz pozycję **Zapisz**.  
 
-   ![Zaktualizuj przepływność dla kolekcji](./media/set-throughput/update-throughput-for-container.png)
+   ![Aktualizuj przepływność dla kolekcji](./media/set-throughput/update-throughput-for-container.png)
 
-### <a name="provision-throughput-for-a-set-of-containers-or-at-the-database-level"></a>Przepływność udostępniania dla zestawu kontenerów lub na poziomie bazy danych
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
-2. W nawigacji po lewej stronie, wybierz **wszystkie zasoby** i Znajdź konto bazy danych Azure rozwiązania Cosmos.  
-3. Przepływność można skonfigurować podczas tworzenia bazy danych lub aktualizacji przepływności istniejącej bazy danych.  
-4. Aby przypisać przepływności podczas tworzenia bazy danych, otwórz **Eksploratora danych** bloku, a następnie wybierz **nowej bazy danych**  
-5. Wypełnij **bazy danych o identyfikatorze** wartość wyboru **przepływności należy** opcji i skonfigurować wartość przepływności. Bazy danych może zostać zainicjowana obsługa przepustowość minimalną wartość 50 000 RU/s.  
-
-   ![Ustaw przepustowość z nowej opcji bazy danych](./media/set-throughput/set-throughput-with-new-database-option.png)
-
-6. Aby zaktualizować przepływności istniejącej bazy danych, rozwiń węzeł bazy danych i kontener, a następnie kliknij przycisk **skali**. W nowym oknie, wpisz nową wartość przepływności, a następnie wybierz **zapisać**.  
-
-   ![Przepływność aktualizacji bazy danych](./media/set-throughput/update-throughput-for-database.png)
-
-### <a name="provision-throughput-for-a-set-of-containers-as-well-as-for-an-individual-container-in-a-database"></a>Przepływność udostępniania dla zestawu kontenerów, jak również poszczególnych kontenera w bazie danych
+### <a name="provision-throughput-for-a-set-of-containers-or-at-the-database-level"></a>Aprowizowanie przepływności dla zestawu, kontenerów lub na poziomie bazy danych
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
-2. W nawigacji po lewej stronie, wybierz **wszystkie zasoby** i Znajdź konto bazy danych Azure rozwiązania Cosmos.  
-3. Utwórz bazę danych i przypisać przepływności. Otwórz **Eksploratora danych** bloku, a następnie wybierz **nowej bazy danych**  
-4. Wypełnij **bazy danych o identyfikatorze** wartość wyboru **przepływności należy** opcji i skonfigurować wartość przepływności. Bazy danych może zostać zainicjowana obsługa przepustowość minimalną wartość 50 000 RU/s.  
+2. W lewym okienku nawigacji wybierz **wszystkie zasoby** i Znajdź swoje konto usługi Azure Cosmos DB.  
+3. Podczas tworzenia bazy danych lub aktualizacji przepływności istniejącej bazy danych, możesz skonfigurować przepływność.  
+4. Aby przypisać przepływności podczas tworzenia bazy danych, otwórz **Eksplorator danych** bloku, a następnie wybierz pozycję **nowej bazy danych**  
+5. Wypełnij **bazy danych o identyfikatorze** wartość, sprawdź **Aprowizowanie przepływności** opcji i skonfigurować wartość przepływności. Bazy danych może być obsługiwana za pomocą przepustowość minimalną wartość 50 000 jednostek RU/s.  
 
-   ![Ustaw przepustowość z nowej opcji bazy danych](./media/set-throughput/set-throughput-with-new-database-option.png)
+   ![Ustawianie przepływności za pomocą nowej opcji bazy danych](./media/set-throughput/set-throughput-with-new-database-option.png)
 
-5. Następnie utwórz kolekcję w ramach bazy danych utworzonej w powyżej kroku. Aby utworzyć kolekcję, kliknij prawym przyciskiem myszy bazę danych i wybierz **nowej kolekcji**.  
+6. Aby zaktualizować przepływność dla istniejącej bazy danych, rozwiń węzeł bazy danych i kontener, a następnie kliknij przycisk **skalowania**. W nowym oknie wpisz nową wartość przepływności, a następnie wybierz pozycję **Zapisz**.  
 
-6. W **Dodaj kolekcji** bloku, wprowadź nazwę kolekcji, a klucz partycji. Opcjonalnie można udostępnić przepustowości dla określonego kontenera, jeśli nie chcesz przypisać wartość przepływności, przepływności przypisane do bazy danych jest udostępniony w kolekcji.  
+   ![Aktualizuj przepływności bazy danych](./media/set-throughput/update-throughput-for-database.png)
 
-   ![Opcjonalnie ustawić przepływności kontenera](./media/set-throughput/optionally-set-throughput-for-the-container.png)
+### <a name="provision-throughput-for-a-set-of-containers-as-well-as-for-an-individual-container-in-a-database"></a>Aprowizowanie przepływności dla zestawu kontenerów, a także pojedynczy kontener w bazie danych
 
-## <a name="considerations-when-provisioning-throughput"></a>Zagadnienia dotyczące inicjowania obsługi administracyjnej przepływności
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).  
+2. W lewym okienku nawigacji wybierz **wszystkie zasoby** i Znajdź swoje konto usługi Azure Cosmos DB.  
+3. Tworzenie bazy danych i przypisać jej przepływności. Otwórz **Eksplorator danych** bloku, a następnie wybierz pozycję **nowej bazy danych**  
+4. Wypełnij **bazy danych o identyfikatorze** wartość, sprawdź **Aprowizowanie przepływności** opcji i skonfigurować wartość przepływności. Bazy danych może być obsługiwana za pomocą przepustowość minimalną wartość 50 000 jednostek RU/s.  
 
-Poniżej znajdują się pewne kwestie, które ułatwiają podejmowanie decyzji o strategię rezerwacji przepustowości.
+   ![Ustawianie przepływności za pomocą nowej opcji bazy danych](./media/set-throughput/set-throughput-with-new-database-option.png)
 
-Należy wziąć pod uwagę, udostępniania przepływności na poziomie bazy danych (do którego jest zestaw kontenery) w następujących przypadkach:
+5. Następnie należy utworzyć kolekcję w bazie danych utworzonej w powyżej kroku. Aby utworzyć kolekcję, kliknij prawym przyciskiem myszy bazę danych i wybierz pozycję **Nowa kolekcja**.  
 
-* Jeśli masz dwanaście lub więcej liczbę kontenerów, które można udostępniać przepustowość między niektóre lub wszystkie z nich.  
+6. W **Dodaj kolekcję** bloku, wprowadź nazwę kolekcji, a klucz partycji. Opcjonalnie może aprowizować przepływność mierzoną dla tego określonego kontenera, jeśli nie chcesz przypisać wartość przepływności, przepływności przypisanych do bazy danych jest udostępniana do kolekcji.  
 
-* Podczas migracji z pojedynczej dzierżawy bazy danych, która jest przeznaczony do uruchamiania na IaaS hostowanych maszyn wirtualnych lub lokalnymi (na przykład NoSQL lub relacyjnych baz danych) do bazy danych rozwiązania Cosmos Azure i mają wiele kontenerów.  
+   ![Opcjonalnie Ustaw przepływność dla kontenera](./media/set-throughput/optionally-set-throughput-for-the-container.png)
 
-* Jeśli chcesz wziąć pod uwagę nieplanowane największego obciążenia przy użyciu puli przepływności na poziomie bazy danych.  
+## <a name="considerations-when-provisioning-throughput"></a>Uwagi dotyczące aprowizowania przepływności
 
-* Zamiast ustawienia przepustowości w kontenerze poszczególnych myślisz o przygotowaniu łącznej przepływności zestawu kontenery w bazie danych.
+Poniżej przedstawiono pewne zagadnienia, które ułatwiają decyzję w sprawie strategii rezerwacji przepustowości.
 
-Należy wziąć pod uwagę, udostępniania przepływności na poszczególnych kontenera w następujących przypadkach:
+### <a name="considerations-when-provisioning-throughput-at-the-database-level"></a>Uwagi dotyczące aprowizowania przepływności na poziomie bazy danych
 
-* Jeśli masz mniejszą liczbę kontenerów bazy danych Azure rozwiązania Cosmos.  
+Weź pod uwagę aprowizowania przepływności na poziomie bazy danych (czyli zestaw kontenerów) w następujących przypadkach:
 
-* Jeśli chcesz pobrać gwarantowane przepustowość do danego kontenera przez umowy dotyczącej poziomu usług.
+* Jeśli masz tuzina co najmniej liczbę kontenerów, które można udostępniać przepływność w niektóre lub wszystkie z nich.  
 
-## <a name="throughput-ranges"></a>Przepływność zakresów
+* Podczas migracji z jedną dzierżawą bazy danych, który jest przeznaczony do uruchamiania na IaaS hostowanych maszyn wirtualnych lub lokalnie (na przykład NoSQL lub relacyjnych baz danych) do usługi Azure Cosmos DB i mieć wiele kontenerów.  
 
-W poniższej tabeli wymieniono dostępne dla kontenerów przepływności:
+* Jeśli chcesz wziąć pod uwagę nieplanowane skoków obciążeń przy użyciu puli przepływności na poziomie bazy danych.  
+
+* Zamiast ustawienie przepływności na pojedynczy kontener interesują Cię wprowadzenie zagregowanej przepływności w zestawie kontenerów w bazie danych.
+
+### <a name="considerations-when-provisioning-throughput-at-the-container-level"></a>Uwagi dotyczące aprowizowania przepływności na poziomie kontenera
+
+Weź pod uwagę aprowizowania przepływności pojedynczy kontener w następujących przypadkach:
+
+* Jeśli masz mniejszą liczbę kontenerów usługi Azure Cosmos DB.  
+
+* Jeśli chcesz pobrać gwarantowaną przepływność na dany kontener objęte umową SLA.
+
+## <a name="throughput-ranges"></a>Zakresy przepływności
+
+W poniższej tabeli wymieniono przepustowość dostępna dla kontenerów:
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
             <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>Kontener jednej partycji</strong></p></td>
-            <td valign="top"><p><strong>Kontener podzielonym na partycje</strong></p></td>
-            <td valign="top"><p><strong>Zbiór kontenerów</strong></p></td>
+            <td valign="top"><p><strong>Jedna partycja kontenera</strong></p></td>
+            <td valign="top"><p><strong>Kontener podzielony na partycje</strong></p></td>
+            <td valign="top"><p><strong>Zestaw kontenerów</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>Przepustowość minimalna</p></td>
             <td valign="top"><p>400 jednostek żądań na sekundę</p></td>
-            <td valign="top"><p>1000 jednostek żądania na sekundę</p></td>
+            <td valign="top"><p>1000 jednostek żądań na sekundę</p></td>
             <td valign="top"><p>50 000 jednostek żądań na sekundę</p></td>
         </tr>
         <tr>
-            <td valign="top"><p>Maksymalna przepustowość</p></td>
+            <td valign="top"><p>Maksymalna przepływność</p></td>
             <td valign="top"><p>10 000 jednostek żądań na sekundę</p></td>
             <td valign="top"><p>Nieograniczona liczba</p></td>
             <td valign="top"><p>Nieograniczona liczba</p></td>
@@ -133,9 +137,10 @@ W poniższej tabeli wymieniono dostępne dla kontenerów przepływności:
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="set-throughput-by-using-sql-api-for-net"></a>Ustaw przepływność przy użyciu interfejsu API SQL dla platformy .NET
+## <a name="set-throughput-by-using-sql-api-for-net"></a>Ustawianie przepływności za pomocą interfejsu SQL API dla platformy .NET
 
-Oto fragment kodu dotyczący tworzenia kontenera o 3000 jednostki żądania na sekundę dla poszczególnych kontenera przy użyciu zestawu SDK .NET interfejsu API SQL:
+### <a name="set-throughput-at-the-container-level"></a>Ustawianie przepływności na poziomie kontenera
+Poniżej przedstawiono fragment kodu do tworzenia kontenera za pomocą 3000 jednostek żądań na sekundę dla poszczególnych kontenera przy użyciu zestawu .NET SDK interfejsu API SQL:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -148,7 +153,9 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Oto fragment kodu dla inicjowania obsługi administracyjnej 100 000 jednostek na sekundę żądania w zestawie kontenerów przy użyciu zestawu SDK .NET interfejsu API SQL:
+### <a name="set-throughput-at-the-for-a-set-of-containers-or-at-the-database-level"></a>Ustawianie przepływności na dla zestawu, kontenerów lub na poziomie bazy danych
+
+Poniżej przedstawiono fragment kodu dotyczący inicjowania obsługi administracyjnej 100 000 jednostek żądania na sekundę w zestawie kontenerów za pomocą zestawu .NET SDK interfejsu API SQL:
 
 ```csharp
 // Provision 100,000 RU/sec at the database level. 
@@ -175,9 +182,9 @@ dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
 await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
 ```
 
-Azure DB rozwiązania Cosmos działa modelu rezerwacji przepustowości. Oznacza to, że są rozliczane ilości przepływności *zastrzeżone*, niezależnie od tego, jaka część tego przepływności jest aktywnie *używane*. Aplikacją na obciążenia, danych i stosowania zmian wzorce, można łatwo skalować liczbę w górę i w dół zastrzeżone RUs za pomocą zestawów SDK lub przy użyciu [Azure Portal](https://portal.azure.com).
+Usługa Azure Cosmos DB działa w modelu rezerwacji przepustowości. Oznacza to, że opłaty są naliczane ilości przepływności *zarezerwowanych*, niezależnie od tego, ile że przepustowość jest aktywnie *używane*. Jak aplikacja na zmiany wzorców obciążenia, danych i użycia, można łatwo skalować w górę i w dół liczbę zarezerwowane jednostki żądania za pośrednictwem zestawów SDK lub przy użyciu [witryny Azure Portal](https://portal.azure.com).
 
-Każdy kontener lub zbiór kontenerów, jest mapowany na `Offer` zasobów w usłudze Azure DB rozwiązania Cosmos mającej metadane dotyczące udostępnionej przepływności. Możesz zmienić przydzielone przepływności wyszukiwania odpowiadający jej zasób oferta dla kontenera, a następnie zaktualizowaniem go przy użyciu nowej wartości przepływności. Oto fragment kodu do zmiany przepływności kontenera do 5000 jednostek żądania na drugi przy użyciu zestawu .NET SDK. Po zmianie przepływność, należy odświeżyć żadnych istniejących Azure portalu systemu windows dla zmienione przepływności wyświetlani. 
+Każdy kontener lub zestaw kontenerów, są mapowane na `Offer` zasobu w usłudze Azure Cosmos DB, która ma metadane o aprowizowanej przepływności. Przydzielone przepływności można zmienić, wyszukanie odpowiednich zasobów oferty dla kontenera, a następnie aktualizowania z nową wartością przepływności. Poniżej przedstawiono fragment kodu do zmiany przepływności kontenera do 5000 jednostek żądań na sekundę przy użyciu zestawu .NET SDK. Po zmianie przepustowości, należy odświeżyć okien już istniejących Azure portalu zmienione przepływności do wyświetlenia. 
 
 ```csharp
 // Fetch the resource to be updated
@@ -194,13 +201,13 @@ offer = new OfferV2(offer, 5000);
 await client.ReplaceOfferAsync(offer);
 ```
 
-Nie ma to wpływu na dostępność z kontenera lub zbiór kontenerów, po zmianie przepływność. Zazwyczaj nowe zarezerwowaną przepływnością obowiązuje w ciągu kilku sekund na stosowanie nowych przepływności.
+Nie ma to wpływu na dostępność kontenera lub zestaw kontenerów, po zmianie przepływność. Zazwyczaj nowe zarezerwowaną przepływnością obowiązuje w ciągu kilku sekund w aplikacji nowa przepływność.
 
 <a id="set-throughput-java"></a>
 
-## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>Aby ustawić przepływność przy użyciu interfejsu API SQL dla języka Java
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>Ustawianie przepływności za pomocą interfejsu API SQL dla języka Java
 
-Poniższy fragment kodu pobiera bieżący przepływności i zmieni 500 RU/s. Kompletny kod przykładowy, [OfferCrudSamples.java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) pliku w witrynie GitHub. 
+Poniższy fragment kodu pobiera bieżący przepływności i zmienia ją na 500 jednostek RU/s. Aby uzyskać kompletny przykład kodu, zobacz [OfferCrudSamples.java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) pliku w usłudze GitHub. 
 
 ```Java
 // find offer associated with this collection
@@ -219,11 +226,11 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>Pobierz przepływności za pomocą polecenia GetLastRequestStatistics API bazy danych MongoDB
+## <a id="GetLastRequestStatistics"></a>Uzyskiwanie informacji o przepływności za pomocą interfejsu MongoDB API GetLastRequestStatistics polecenia
 
-Interfejs API bazy danych MongoDB obsługuje polecenia niestandardowych, *getLastRequestStatistics*, pobierania opłat żądania dla danej operacji.
+Interfejs API usługi MongoDB obsługuje polecenie niestandardowe *getLastRequestStatistics*, pobierane opłaty żądania dla danej operacji.
 
-Na przykład w powłokę Mongo, należy wykonać operację, którą chcesz zweryfikować opłata żądania dla.
+Na przykład w powłoki Mongo, wykonaj operację, którą chcesz zweryfikować opłata za żądanie.
 ```
 > db.sample.find()
 ```
@@ -240,36 +247,36 @@ Następnie wykonaj polecenie *getLastRequestStatistics*.
 }
 ```
 
-Jedną z metod do oszacowania ilości zarezerwowaną przepływnością wymagane przez aplikację jest Rejestruj opłata jednostki żądania skojarzonego z typowymi operacjami uruchamiania elementu reprezentatywny używanych przez aplikację i następnie oszacować liczbę operacje przewidywania do wykonania w ciągu sekundy.
+Jedną z metod do oszacowania ilości zarezerwowanej przepływności wymaganej przez aplikację jest do rejestrowania żądań opłat za jednostkę, związanych z uruchamianiem typowych operacji względem elementu reprezentatywny używanych przez aplikację i następnie oszacować liczbę operacje przewidywania do wykonania każdej sekundy.
 
 > [!NOTE]
-> Jeśli masz typów elementów, które różnią się znacznie pod względem rozmiaru i liczby właściwości indeksowanych rejestrowania opłata jednostki żądanie dotyczy operacji związanych z każdym *typu* typowe elementu.
+> W przypadku typów elementów, które różnią się znacząco pod względem rozmiaru i liczby właściwości indeksowanych rejestrowania odpowiednich operacji żądania opłat za jednostkę związany z każdą *typu* dla typowego elementu o wielkości.
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Uzyskiwanie przepływność przy użyciu portalu metryki interfejsu API bazy danych MongoDB
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Uzyskiwanie informacji o przepływności za pomocą interfejsu API usługi MongoDB metrykami w portalu
 
-Najprostszym sposobem, aby uzyskać dobrą oszacowanie żądania opłat jednostki bazy danych MongoDB interfejsu API jest użycie [portalu Azure](https://portal.azure.com) metryki. Z *liczba żądań* i *opłat żądania* wykresy, możesz uzyskać szacunkową liczbę jednostek żądania, każdy zajmuje operacji i liczbę jednostek żądania zużywają względem siebie.
+Najprostszym sposobem, aby prawidłowo oszacować żądania opłat za jednostki dla interfejsu API usługi MongoDB bazy danych jest użycie [witryny Azure portal](https://portal.azure.com) metryki. Za pomocą *liczba żądań* i *opłata za żądanie wyrażana* wykresy, możesz uzyskać szacunkową liczbę jednostek żądania, każdy zużywa operacji i liczbę jednostek żądania zużywają względem siebie nawzajem.
 
-![Metryki portalu API bazy danych MongoDB][1]
+![Portal metryki interfejsu API usługi MongoDB][1]
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływnością w interfejsie API bazy danych MongoDB
-Aplikacje, które przekraczają udostępnionej przepływności dla kontenera lub grupy kontenerów będzie ograniczony szybkość dopóki stopę zużycia spadnie poniżej elastycznie przepustowość. W przypadku ograniczenia szybkości wewnętrznej bazy danych zakończy się żądanie z `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API bazy danych MongoDB ma automatycznie ponawiać próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. W przypadku otrzymania wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania próby w aplikacji Błąd procedury obsługi lub [zwiększyć przepływność dla kontenera](set-throughput.md).
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływność w interfejsie API bazy danych MongoDB
+Aplikacje, które przekroczyły aprowizowaną przepływność w kontenerze lub zestaw kontenerów będzie limited współczynnik dopóki stopę zużycia spadnie poniżej stawki aprowizowanej przepływności. W przypadku ograniczenia szybkości wewnętrznej bazy danych zakończy się żądania o `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API usługi MongoDB automatycznie ponawia próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. Jeśli otrzymujesz wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania obsługi procedury błędów aplikacji lub [zwiększysz aprowizowaną przepływność w kontenerze](set-throughput.md).
 
 ## <a name="throughput-faq"></a>Przepływność — często zadawane pytania
 
-**Można ustawić Moje przepływności na mniej niż 400 RU/s?**
+**Mogę ustawić Moje przepływności na mniejszy niż 400 jednostek RU/s?**
 
-400 RU/s jest minimalna przepływność DB rozwiązania Cosmos kontenerów jednej partycji (minimum dla kontenerów podzielonym na partycje jest 1000 RU/s). Żądanie jednostki są ustawiane w 100 RU/s odstępach czasu, ale przepływności nie można ustawić na 100 RU/s lub dowolną wartość mniejszą niż 400 RU/s. Jeśli szukasz ekonomiczne metody umożliwiające opracowanie i przetestowanie rozwiązania Cosmos DB mogą korzystać z BEZPŁATNEJ [Azure rozwiązania Cosmos DB emulatora](local-emulator.md), które można wdrożyć lokalnie bez ponoszenia kosztów. 
+400 jednostek RU/s jest minimalna przepływność w kontenerach jednej partycji usługi Cosmos DB (1000 jednostek RU/s jest to minimum potrzebne do kontenerów podzielonym na partycje). Żądanie jednostki są ustawiane za 100 jednostek RU/s odstępach czasu, ale przepływność nie można ustawić na 100 jednostek RU/s lub wartość mniejszy niż 400 RU/s. Jeśli szukasz ekonomiczna metoda do tworzenia i testowania usługi Cosmos DB można korzystać z BEZPŁATNEJ [emulatora usługi Azure Cosmos DB](local-emulator.md), którą można wdrożyć lokalnie bez ponoszenia kosztów. 
 
-**Jak ustawić przepływność przy użyciu interfejsu API bazy danych MongoDB?**
+**Jak ustawić przepływność przy użyciu interfejsu API usługi MongoDB?**
 
-Brak bez rozszerzenia interfejsu API bazy danych MongoDB, można ustawić przepływności. Zalecane jest używanie interfejsu API SQL, jak pokazano w [można ustawić przepływność przy użyciu interfejsu API SQL dla platformy .NET](#set-throughput-sdk).
+Nie ma rozszerzenia interfejsu API usługi MongoDB można ustawić przepustowości. Zaleca się korzystania z interfejsu API SQL, jak pokazano na [skonfigurować przepływność przy użyciu interfejsu API SQL dla platformy .NET](#set-throughput-sdk).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się o szacowaniu jednostek przepływności i żądanie, zobacz [żądania jednostki i planowania przepływności w usłudze Azure DB rozwiązania Cosmos](request-units.md)
+* Aby uzyskać informacje dotyczące szacowania jednostki przepływności i żądania, zobacz [żądania jednostki i planowania przepływności w usłudze Azure Cosmos DB](request-units.md)
 
-* Aby dowiedzieć się więcej o zasięgu planety będzie DB rozwiązania Cosmos i udostępniania, zobacz [dzielenia na partycje i skalowania rozwiązania Cosmos DB](partition-data.md).
+* Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej i będzie skalowana w skali za pomocą usługi Cosmos DB, zobacz [partycjonowanie i skalowanie za pomocą usługi Cosmos DB](partition-data.md).
 
 [1]: ./media/set-throughput/api-for-mongodb-metrics.png

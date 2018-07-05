@@ -1,47 +1,47 @@
 ---
 title: Często zadawane pytania dotyczące usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące usługi Azure Active Directory B2C.
+description: Często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11335079373b627bab923f63eda148b0a74307ea
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: eb9e4c58343e1f628ff862009b1d12dad07a1c91
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100525"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442444"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
-Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Sprawdzanie wstecz do aktualizacji.
+Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
 
-### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Funkcji usługi Azure AD B2C można korzystać w mojej istniejącej, na podstawie pracownika dzierżawy usługi Azure AD?
-Usługi Azure AD i Azure AD B2C ofert osobnego produktu i nie mogą współistnieć w tej samej dzierżawy.  Dzierżawa usługi Azure AD reprezentuje organizacji.  Dzierżawy usługi Azure AD B2C reprezentuje kolekcję tożsamości do użycia z aplikacjami danej firmy.  Przy użyciu zasad niestandardowych (w publicznej wersji zapoznawczej) usługi Azure AD B2C można było wykonać Federację do usługi Azure AD stosowanie uwierzytelniania pracowników w organizacji.
+### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Czy można używać funkcji usługi Azure AD B2C, w ramach mojej dzierżawy usługi Azure AD istniejących, na podstawie pracownik?
+Usługa Azure AD i usługi Azure AD B2C są osobne oferty nie mogą współistnieć w tej samej dzierżawy.  Organizacja dzierżawę usługi Azure AD.  Dzierżawy usługi Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami danej firmy.  Za pomocą niestandardowych zasad (w publicznej wersji zapoznawczej) usługi Azure AD B2C może tworzyć federacje z usługą Azure AD, dzięki czemu uwierzytelnienia pracowników w organizacji.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Czy za pomocą usługi Azure AD B2C można podać logowania społecznościowych (Facebook i Google +) do usługi Office 365
-Azure AD B2C nie może być używany do uwierzytelniania użytkowników dla usługi Microsoft Office 365.  Usługi Azure AD jest rozwiązanie firmy Microsoft do zarządzania dostępu pracowników do aplikacji SaaS i zawiera funkcji służących do tego celu, takich jak licencjonowania i warunkowego dostępu.  Usługa Azure AD B2C zapewnia platformy do zarządzania tożsamościami i dostępem do tworzenia sieci web i aplikacji dla urządzeń przenośnych.  Po skonfigurowaniu usługi Azure AD B2C możliwości utworzenia Federacji do dzierżawy usługi Azure AD dzierżawy usługi Azure AD zarządza dostępu pracowników do aplikacji, które zależą od usługi Azure AD B2C.
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Czego służy usługa Azure AD B2C do udostępniania funkcji logowania społecznościowych (Facebook i Google +) do usługi Office 365?
+Usługa Azure AD B2C nie może służyć do uwierzytelniania użytkowników w usłudze Microsoft Office 365.  Usługa Azure AD to rozwiązanie firmy Microsoft w celu zarządzania dostępem pracowników do aplikacji SaaS i ma funkcje przeznaczone do tego celu, takich jak licencjonowania i warunkowego dostępu.  Usługa Azure AD B2C zapewnia platformę zarządzania tożsamościami i dostępem do tworzenia aplikacji internetowych i mobilnych.  Po skonfigurowaniu usługi Azure AD B2C w celu sfederowania do dzierżawy usługi Azure AD dzierżawy usługi Azure AD umożliwia zarządzanie dostępem pracowników do aplikacji, które zależą od usługi Azure AD B2C.
 
-### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co to są lokalne konta w usłudze Azure AD B2C? Jak różnią się one od kont służbowych w usłudze Azure AD?
-W dzierżawie usługi Azure AD, użytkownicy, którzy należą do dzierżawy logowania przy użyciu adresu e-mail w postaci `<xyz>@<tenant domain>`.  `<tenant domain>` Jest jednym z zweryfikowanych domen w dzierżawie lub początkowej `<...>.onmicrosoft.com` domeny. Ten typ konta jest konta firmowego lub szkolnego.
+### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Jakie są lokalne konta w usłudze Azure AD B2C? Czym różnią się one z kont służbowych w usłudze Azure AD?
+W dzierżawie usługi Azure AD użytkownicy, którzy należą do dzierżawy Zaloguj się przy użyciu adresu e-mail w formularzu `<xyz>@<tenant domain>`.  `<tenant domain>` Jest jednym ze zweryfikowanym domenom w dzierżawie lub początkowego `<...>.onmicrosoft.com` domeny. Ten typ konta jest konta firmowego lub szkolnego.
 
-W dzierżawie usługi Azure AD B2C większości aplikacji ma użytkownikowi na logowanie z dowolnego adresu e-mail dowolnego (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com, lub jim@live.com). Ten typ konta jest kontem lokalnym.  Obsługujemy również nazwy dowolnego użytkownika jako kont lokalnych (na przykład Jan, Roberta, Anetą lub jim). Podczas konfigurowania dostawców tożsamości dla usługi Azure AD B2C w portalu Azure można wybrać jedną z tych dwóch typów kont lokalnych. W dzierżawie usługi Azure AD B2C, kliknij przycisk **dostawców tożsamości** , a następnie wybierz **Username** w obszarze kont lokalnych. 
+W dzierżawie usługi Azure AD B2C, większość aplikacji ma użytkownikowi Zaloguj się przy użyciu dowolnego adresu e-mail dowolnego (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com, lub jim@live.com). Ten typ konta jest kontem lokalnym.  Obsługujemy również nazwy użytkownika jest swobodny, jak w przypadku kont lokalnych (na przykład Jan, Robert, sarah lub jim). Można wybrać jedną z tych dwóch typów konta lokalnego, podczas konfigurowania dostawców tożsamości dla usługi Azure AD B2C w witrynie Azure portal. W swojej dzierżawie usługi Azure AD B2C, kliknij przycisk **dostawców tożsamości** , a następnie wybierz **Username** w ramach kont lokalnych. 
 
-Zawsze należy utworzyć konta użytkowników dla aplikacji za pośrednictwem zasad rejestracji rejestracji lub znak — w zasadach lub przy użyciu interfejsu API Azure AD Graph. Konta użytkowników utworzone w portalu Azure są używane tylko do administrowania dzierżawcy.
+Należy zawsze tworzyć konta użytkowników dla aplikacji za pomocą rejestracji zasady rejestracji lub logowania — w zasadach lub za pomocą interfejsu API programu Graph usługi Azure AD. Konta użytkowników utworzone w witrynie Azure portal są używane tylko do administrowania dzierżawy.
 
-### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Które dostawców tożsamości społecznościowych możesz obsługują teraz? Te, które zamierzasz obsługiwać w przyszłości?
-Firma Microsoft obsługuje obecnie Facebook, Google + LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych dostawców tożsamości społecznościowych popularnych na życzenie klientów.
+### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Dostawców tożsamości społecznościowych, które są obsługiwane teraz? Te, które planujesz obsługiwać w przyszłości?
+Obecnie obsługujemy Facebook, Google +, LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych popularnych społecznościowych dostawców tożsamości na podstawie oczekiwań klienta.
 
-Usługa Azure AD B2C dodano również obsługę [niestandardowych zasad](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Te [zasady niestandardowe](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) umożliwia deweloperom tworzenie własnych zasad, który z dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
+Usługa Azure AD B2C dodano również obsługę [zasady niestandardowe](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Te [zasady niestandardowe](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) umożliwia deweloperom tworzenie własnych zasad, który za pomocą dowolnego dostawcy tożsamości, która obsługuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) lub SAML. 
 
-Wprowadzenie do zasad niestandardowych przez wyewidencjonowanie naszych [pakiet początkowy zasady niestandardowe](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
+Wprowadzenie do zasad niestandardowych, sprawdzając naszych [pakiet startowy niestandardowe zasady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Można skonfigurować zakresy, aby zebrać więcej informacji na temat użytkowników z różnych dostawców tożsamości społecznościowych?
-Nie, ale ta funkcja jest naszego planu. Zakresy domyślna używana dla naszego zestawu obsługiwanych dostawców tożsamości społecznościowych są:
+Nie, ale ta funkcja jest w naszym harmonogramie działania. Zakresy domyślne używane do naszego zestawu obsługiwanych dostawców tożsamości dla sieci społecznościowej są następujące:
 
 * Facebook: wiadomości e-mail
 * Google +: wiadomości e-mail
@@ -49,81 +49,81 @@ Nie, ale ta funkcja jest naszego planu. Zakresy domyślna używana dla naszego z
 * Amazon: profil
 * LinkedIn: r_emailaddress, r_basicprofile
 
-### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Czy Moja aplikacja musi działać na platformie Azure, do jego działania w usłudze Azure AD B2C?
-Nie można obsługiwać aplikacji z dowolnego miejsca (w chmurze lub lokalnie). Wszystkie niezbędne do interakcji z usługą Azure AD B2C jest możliwość wysyłania i odbierania żądań HTTP na publicznie punktów końcowych.
+### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Moja aplikacja ma działające na platformie Azure, do jego działania w usłudze Azure AD B2C?
+Nie można hostować swoją aplikację w dowolnym miejscu (w chmurze lub lokalnie). Wszystko, czego potrzeba interakcji z usługą Azure AD B2C jest możliwość wysyłania i odbierania żądań HTTP na dostępny publicznie punktów końcowych.
 
-### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mam wiele dzierżaw usługi Azure AD B2C. Jak zarządzać nimi w portalu Azure?
-Przed otwarciem usługi Azure AD B2C w menu po lewej stronie portalu Azure, musisz przełączyć się do katalogu, którą chcesz zarządzać.  Przełącz katalogi, klikając swoją tożsamość w prawym górnym rogu portalu Azure, a następnie wybierz katalog na liście rozwijanej, która pojawia się.  Aby uzyskać szczegółowe instrukcje wraz z obrazów, zobacz [przejdź do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mam wiele dzierżaw usługi Azure AD B2C. Jak mogę zarządzać nimi w witrynie Azure portal?
+Przed otwarciem usługi Azure AD B2C w witrynie Azure portal w menu po lewej stronie, musisz przełączyć się do katalogu w którym chcesz zarządzać.  Przełącz katalogi, klikając swoją tożsamość w prawym górnym rogu witryny Azure portal, a następnie wybierz katalog, w menu rozwijanym, pojawia się.  Aby uzyskać instrukcje krok po kroku z obrazami, zobacz [przejdź do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 
-### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Jak dostosować weryfikacyjnych wiadomości e-mail (zawartość i "od:" pole) wysyłane przez usługę Azure AD B2C?
-Można użyć [firmowe funkcji](../active-directory/fundamentals/customize-branding.md) Aby dostosować zawartość weryfikacyjnych wiadomości e-mail. W szczególności można dostosować te dwa elementy wiadomości e-mail:
+### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>W jaki sposób dostosować weryfikacji wiadomości e-mail (zawartość i "od:" pole) wysyłane przez usługę Azure AD B2C?
+Możesz użyć [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md) Dostosowywanie zawartości wiadomości e-mail z weryfikacji. W szczególności można dostosować te dwa elementy wiadomości e-mail:
 
-* **Banner Logo**: wyświetlany w prawym dolnym rogu.
+* **Baner Logo**: wyświetlany w prawym dolnym rogu.
 * **Kolor tła**: wyświetlaną u góry.
 
-    ![Zrzut ekranu przedstawiający wiadomość e-mail z dostosowanych weryfikacji](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![Zrzut ekranu przedstawiający dostosowany weryfikacyjnej wiadomości e-mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-Podpis e-mail zawiera nazwę dzierżawy usługi Azure AD B2C, podane podczas tworzenia dzierżawy usługi Azure AD B2C. Można zmienić nazwę, korzystając z tych instrukcji:
+Podpis wiadomości e-mail zawiera nazwę dzierżawy usługi Azure AD B2C, podane podczas tworzenia dzierżawy usługi Azure AD B2C. Możesz zmienić nazwę przy użyciu tych instrukcji:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/) jako Administrator globalny.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator globalny.
 1. Otwórz **usługi Azure Active Directory** bloku.
 1. Kliknij przycisk **właściwości** kartę.
-1. Zmień **nazwa** pola.
-1. Kliknij przycisk **zapisać** w górnej części strony.
+1. Zmiana **nazwa** pola.
+1. Kliknij przycisk **Zapisz** w górnej części strony.
 
-Obecnie nie istnieje sposób zmiany "od:" w wiadomości e-mail. Głosowania [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) planuje się Dostosowywanie treść wiadomości e-mail weryfikacji.
+Obecnie nie ma możliwości zmiany "od:" na adres e-mail. Zagłosuj [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) interesuje Cię Dostosowywanie treść wiadomości e-mail weryfikującej.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak można przeprowadzić migrację mojej istniejącej nazwy użytkownika, hasła i profile z bazy danych usługi Azure AD B2C?
-Można użyć interfejsu API programu Azure AD Graph do zapisania narzędzia do migracji. Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) szczegółowe informacje.
+Można zapisać narzędzie do migracji, można użyć interfejsu API programu Graph usługi Azure AD. Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakie zasady haseł jest używana dla kont lokalnych w usłudze Azure AD B2C?
-Zasady usługi Azure AD B2C haseł dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługi Azure AD B2C do tworzenia konta, zapisywania lub logowania i hasło zresetować używa zasad siły "silnego" hasła i nie wygasa hasła. Odczyt [zasady haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) więcej szczegółów.
+### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakie zasady haseł jest używany dla kont lokalnych w usłudze Azure AD B2C?
+Zasady haseł usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowania i hasło resetowania używa zasad siły "silnego" hasła i wygaśnięcia hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji.
 
-### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Aby przeprowadzić migrację tożsamości użytkownika, które są przechowywane na moje lokalnej usługi Active Directory do usługi Azure AD B2C można użyć Azure AD Connect?
-Nie, usługi Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API programu Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) szczegółowe informacje.
+### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Aby przeprowadzić migrację tożsamości klientów, które są przechowywane na mojej lokalnej usługi Active Directory do usługi Azure AD B2C można używać program Azure AD Connect?
+Nie, usługa Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API programu Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
 
-### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Moja aplikacja może otwarcie strony usługi Azure AD B2C w obrębie elementu iFrame?
-Nie, ze względów bezpieczeństwa nie można otworzyć usługi Azure AD B2C stron w ramce.  Nasza usługa komunikuje się za pośrednictwem przeglądarki, aby zabronić ramek IFRAME.  Zaleca się przy użyciu ramek iframe dla środowiska tożsamości z powodu ryzyka miejsca kliknij społeczności zabezpieczeń w ogólne i specyfikację OAUTH2.
+### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Strony usługi Azure AD B2C w elemencie iFrame otworzyć mojej aplikacji?
+Nie, ze względów bezpieczeństwa strony usługi Azure AD B2C nie można otworzyć w elemencie iFrame.  Nasza usługa komunikuje się za pośrednictwem przeglądarki, aby uniemożliwić ramek IFRAME.  Zaleca się korzystania ramek iframe dla środowiska tożsamości ze względu na ryzyko miejsca kliknij branży zabezpieczeń w ogóle i specyfikację OAUTH2.
 
-### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Usługi Azure AD B2C działa z systemów CRM, takich jak Microsoft Dynamics?
-Integracja z usługą Microsoft Dynamics 365 portalu jest dostępny.  Zobacz [Konfigurowanie Dynamics 365 portalu usługi Azure AD B2C do uwierzytelniania](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Usługa Azure AD B2C działa z systemów CRM, takich jak Microsoft Dynamics?
+Integracja z portalu usługi Microsoft Dynamics 365 jest dostępna.  Zobacz [Konfigurowanie portalu Dynamics 365, aby używać usługi Azure AD B2C do uwierzytelniania](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
-### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Usługi Azure AD B2C jest korzystanie z programu SharePoint 2016 lokalnymi lub starszym?
-Usługa Azure AD B2C nie jest przeznaczona dla programu SharePoint zewnętrznych udostępnianie partnera scenariusza; zobacz [B2B usługi Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) zamiast tego.
+### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Usługa Azure AD B2C jest działają z lokalnego programu SharePoint 2016 lub starszym?
+Usługa Azure AD B2C nie jest przeznaczona dla programu SharePoint zewnętrzne udostępnianie partnera scenariusza; zobacz [usługi Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) zamiast tego.
 
-### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Do zarządzania tożsamościami zewnętrznego należy używać usługi Azure AD B2C lub B2B?
-Przeczytaj ten artykuł o [tożsamości zewnętrznych](../active-directory/active-directory-b2b-compare-external-identities.md) Aby dowiedzieć się więcej na temat stosowania odpowiednie funkcje do scenariuszy tożsamości zewnętrznych.
+### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Zarządzanie tożsamościami zewnętrznego należy użyć usługi Azure AD B2C lub B2B?
+Przeczytaj ten artykuł [tożsamości zewnętrznych](../active-directory/active-directory-b2b-compare-external-identities.md) Aby dowiedzieć się więcej na temat stosowania funkcji odpowiednich do scenariuszy z tożsamości zewnętrznej.
 
-### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Jakie raportowania i inspekcji funkcje usługi Azure AD B2C oferuje? Są one takie same jak Azure AD Premium?
-Nie, usługi Azure AD B2C obsługuje ten sam zestaw raportów, jako Azure AD Premium. Istnieje jednak wiele commonalities:
+### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Jakie raportowania i inspekcji funkcji usługi Azure AD B2C zapewnia? Są one takie same jak w usłudze Azure AD w wersji Premium?
+Nie, usługa Azure AD B2C nie obsługuje ten sam zestaw raportów co program Azure AD Premium. Istnieją jednak wiele commonalities:
 
-* **Raporty logowania** Podaj rejestr każdego logowania z obniżonych szczegółów.
-* **Raporty dotyczące inspekcji** obejmują zarówno aktywność administratora, a także działania aplikacji. 
-* **Raporty użycia** obejmują liczbę użytkowników, liczba logowań i wolumin MFA. 
+* **Raportów logowania** udostępniają zapis każdym logowaniu się ze szczegółami mniejsze.
+* **Raporty inspekcji** zawierają zarówno działania administratora, jak i działanie aplikacji. 
+* **Raporty użycia** obejmują liczbę użytkowników, liczba logowań i ilości usługi MFA. 
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Czy można zlokalizować interfejsu użytkownika obsługiwanych przez usługę Azure AD B2C stron? Jakich języków są obsługiwane?
-Tak!  Przeczytaj informacje o [dostosowywania języka](active-directory-b2c-reference-language-customization.md), która znajduje się w publicznej wersji zapoznawczej.  Firma Microsoft udostępnia tłumaczenia dla 36 języków, można zmienić dowolny ciąg, w zależności od potrzeb.
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Czy można zlokalizować interfejsu użytkownika strony obsługiwanych przez usługę Azure AD B2C? Jakie języki są obsługiwane?
+Tak!  Przeczytaj o [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md), która znajduje się w publicznej wersji zapoznawczej.  Firma Microsoft zapewnia tłumaczeń w językach 36, a może zastąpić dowolny ciąg, w zależności od potrzeb.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Czy można użyć własnych adresów URL na stronach rejestracji i logowania, które są obsługiwane przez usługę Azure AD B2C? Na przykład można zmienić adres URL z login.microsoftonline.com na login.contoso.com?
-Nie można obecnie. Ta funkcja jest naszego planu. Weryfikowanie domeny w **domen** kartę w portalu Azure nie realizację tego celu.
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Na stronach rejestracji i logowania, które są obsługiwane przez usługę Azure AD B2C można używać własnego adresy URL? Na przykład można zmienić adres URL z: login.microsoftonline.com na domeny login.contoso.com?
+Obecnie nie. Ta funkcja jest w naszym harmonogramie działania. Weryfikowanie Twojej domeny w **domen** kartę w witrynie Azure portal nie realizację tego celu.
 
-### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak usunąć mojej dzierżawy usługi Azure AD B2C?
-Wykonaj następujące kroki, aby usunąć dzierżawy usługi Azure AD B2C:
+### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak usunąć moją dzierżawę usługi Azure AD B2C?
+Wykonaj następujące kroki, aby usunąć dzierżawę usługi Azure AD B2C:
 
-1. Wykonaj następujące kroki, aby [przejdź do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w portalu Azure.
-1. Przejdź do **aplikacji**, **dostawców tożsamości**, i **wszystkich zasad** i Usuń wszystkie wpisy w każdej z nich.
-1. Zaloguj się teraz do [portalu Azure](https://portal.azure.com/) jako Administrator subskrypcji. (Użyj tej samej pracy lub konta służbowego lub tego samego konta Microsoft, który był używany podczas tworzenia konta platformy Azure).
+1. Wykonaj następujące kroki, aby [Przechodzenie do ustawień usługi Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w witrynie Azure portal.
+1. Przejdź do **aplikacje**, **dostawców tożsamości**, i **wszystkie zasady** i Usuń wszystkie wpisy w każdym z nich.
+1. Teraz Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator subskrypcji. (Użyj tej samej pracy lub konta służbowego lub tego samego konta Microsoft, którego użyto podczas tworzenia konta na platformie Azure).
 1. Przełącz do dzierżawy usługi Azure AD B2C chcesz usunąć.
-2. Przejdź do menu usługi Active Directory po lewej stronie.
+2. Przejdź do menu po lewej stronie usługi Active Directory.
 3. Wybierz **użytkowników i grup**.
-4. Wybierz każdego użytkownika z kolei (wykluczyć użytkownika administratora subskrypcji, który jest obecnie zalogowany jako). Kliknij przycisk **usunąć** w dolnej części strony i kliknij przycisk **tak** po wyświetleniu monitu.
-5. Kliknij przycisk **rejestracji aplikacji**.
-6. Wybierz aplikację o nazwie **b2c rozszerzeń aplikacji**. Kliknij przycisk **usunąć** i kliknij przycisk **tak** po wyświetleniu monitu.
+4. Zaznacz każdy użytkownik z kolei (Wyklucz użytkownika administratora subskrypcji, który jest aktualnie zalogowany jako). Kliknij przycisk **Usuń** w dolnej części strony i kliknij przycisk **tak** po wyświetleniu monitu.
+5. Kliknij przycisk **rejestracje aplikacji**.
+6. Wybierz aplikację o nazwie **b2c-extensions-app**. Kliknij przycisk **Usuń** i kliknij przycisk **tak** po wyświetleniu monitu.
 7. Wybierz pozycję **Przegląd**.
-8. Kliknij przycisk **Usuń katalog**. Aby ukończyć proces, postępuj zgodnie z instrukcjami na ekranie.
+8. Kliknij przycisk **usunąć katalog**. Aby ukończyć proces, postępuj zgodnie z instrukcjami na ekranie.
 
-### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Czy można uzyskać usługi Azure AD B2C jako część pakietu Enterprise Mobility Suite?
-Nie, usługi Azure AD B2C jest płatność za rzeczywiste użycie usługi Azure, nie jest częścią pakietu Enterprise Mobility Suite.
+### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Czy można uzyskać usługi Azure AD B2C, jako część pakietu Enterprise Mobility Suite?
+Nie, usługa Azure AD B2C jest rozliczana według bieżącego użycia usług platformy Azure, nie jest częścią pakietu Enterprise Mobility Suite.
 
 ### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>Jak zgłosić problemy z usługą Azure AD B2C?
-Zobacz [pliku żądania pomocy technicznej usługi Azure Active Directory B2C](active-directory-b2c-support.md).
+Zobacz [pliku żądania pomocy technicznej dla usługi Azure Active Directory B2C](active-directory-b2c-support.md).

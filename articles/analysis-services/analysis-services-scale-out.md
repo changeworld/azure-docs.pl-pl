@@ -1,43 +1,43 @@
 ---
-title: Skalowalne usług Azure Analysis Services | Dokumentacja firmy Microsoft
-description: Replikacja serwerów usług Azure Analysis Services z skalowalnego w poziomie
+title: Usługa Azure Analysis Services skalowalnego w poziomie | Dokumentacja firmy Microsoft
+description: Replikacja serwerów usług Azure Analysis Services za pomocą skalowalnego w poziomie
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4cb7b165311f57fadd63770646907ddfc0378844
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597131"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445024"
 ---
-# <a name="azure-analysis-services-scale-out"></a>Skalowalne usług Azure Analysis Services
+# <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
-Z skalowalnego w poziomie, zapytań klienta mogą być dystrybuowane między wieloma *zapytania replik* w puli zapytania, zmniejszyć czasy odpowiedzi w ciągu zapytania wysokiej obciążeń. Można też oddzielić przetwarzania z puli zapytania, zapewnienie, że zapytań klienta nie wpływały niekorzystnie na przetworzenie operacji. Skalowalny w poziomie można skonfigurować w portalu Azure lub za pomocą interfejsu API REST usług analizy.
+Za pomocą skalowalnego w poziomie, zapytań klienta mogą być dystrybuowane między wieloma *replikami zapytania* w puli zapytania, zmniejszając czasy odpowiedzi podczas obciążeń związanych z zapytaniami wysokiej. Można też oddzielić przetwarzania od puli zapytania, zapewnienie, że zapytań klienta nie dotkną operacji przetwarzania. Skalowalny w poziomie można skonfigurować w witrynie Azure portal lub za pomocą interfejsu API REST usługi Analysis Services.
 
 ## <a name="how-it-works"></a>Jak to działa
 
-We wdrożeniu serwera typowe jeden serwer służy jako serwer przetwarzania i serwer kwerend. Jeśli liczba zapytań klienta dotyczących modeli na serwerze przekracza zapytania przetwarzania jednostki (QPU) dla serwera planu, lub modelu przetwarzanie odbywa się w tym samym czasie jako wysoki zapytania obciążeń, może obniżyć wydajność. 
+W przypadku wdrożenia serwera typowe jeden serwer służy jako zarówno serwera przetwarzania i serwera zapytania. Jeśli liczba zapytań klienta względem modele na serwerze przekracza zapytania przetwarzania jednostek (jednostek QPU) dla planu danych na serwerze lub modelu przetwarzanie odbywa się w tym samym czasie jako obciążeń związanych z zapytaniami o wysokiej, może obniżyć wydajność. 
 
-Z skalowalnego w poziomie można utworzyć pulę zapytania z replikami dodatkowe zapytania do siedmiu (łącznie osiem, łącznie z serwera). Liczba replik zapytania do spełnienia wymagań QPU w czasie krytyczne można skalować i w dowolnym momencie można oddzielić serwer przetwarzania z puli zapytania. Wszystkie repliki zapytania są tworzone w tym samym regionie co serwer.
+Za pomocą skalowalnego w poziomie można utworzyć pulę zapytania z nawet siedmioma dodatkowymi replikami zapytania (łącznie ośmioma, wliczając serwer). Możesz skalować liczbę replik zapytań do spełnienia wymagań jednostek QPU przez czas krytycznych i w dowolnym momencie możesz oddzielić serwer przetwarzania od puli zapytania. Wszystkie repliki zapytania są tworzone w tym samym regionie co serwer.
 
-Niezależnie od liczby replik zapytania, znajdującym się w puli zapytania obciążenia przetwarzaniem danych nie są dystrybuowane między replikami zapytania. Pojedynczy serwer służy jako serwer przetwarzania. Zapytanie replik służyć tylko kwerend dotyczących modeli synchronizowane między każdej replice w puli zapytania. 
+Niezależnie od liczby replik zapytań, znajdującym się w puli zapytania obciążeń przetwarzania nie są dystrybuowane między replikami zapytań. Pojedynczy serwer służy jako serwer przetwarzania. Repliki zapytania służyć tylko zapytania względem modeli synchronizowane między każdej replice w puli zapytania. 
 
-Po zakończeniu operacji przetwarzania odbywa się synchronizacja między serwerem przetwarzania i serwery repliki zapytania. Automatyzacja operacji przetwarzania, należy skonfigurować synchronizację, po pomyślnym ukończeniu operacji przetwarzania. Można wykonać synchronizację ręcznie w portalu lub przy użyciu programu PowerShell lub interfejsu API REST.
-
-> [!NOTE]
-> Skalowalny w poziomie jest dostępna dla serwerów w standardowej warstwie cenowej. Jest on rozliczany każdej repliki zapytania w tym samym poziomie jak serwer.
+Po zakończeniu operacji przetwarzania odbywa się synchronizacja między serwerem przetwarzania a serwerami repliki zapytania. Automatyzacja operacji przetwarzania, należy skonfigurować operacji synchronizacji po pomyślnym zakończeniu operacji przetwarzania. Można przeprowadzić synchronizację ręcznie w portalu lub przy użyciu programu PowerShell lub interfejsu API REST.
 
 > [!NOTE]
-> Skalowalny w poziomie nie zwiększyć ilość dostępnej pamięci serwera. Aby zwiększyć ilość pamięci, należy uaktualnić swój plan.
+> Skalowalny w poziomie jest dostępna dla serwerów warstwy cenowej standardowa. Każdej repliki zapytania jest rozliczana przy użyciu stawki stosowanej jako serwer.
+
+> [!NOTE]
+> Skalowalny w poziomie nie zwiększa ilość dostępnej pamięci na serwerze. Aby zwiększyć ilość pamięci, musisz uaktualnić swój plan.
 
 ## <a name="region-limits"></a>Limity regionu
 
-Liczba replik zapytania, które można skonfigurować są ograniczone przez serwer znajduje się w regionie. Stosuje się następujące ograniczenia:
+Liczba replik zapytań, które można skonfigurować są ograniczone według regionu, w której znajduje się serwer. Poniższe limity mają zastosowanie:
 
 |Region  |Maksymalna liczba replik  |
 |---------|---------|
@@ -47,69 +47,69 @@ Liczba replik zapytania, które można skonfigurować są ograniczone przez serw
 |Zachodnie stany USA     |     7    |
 |Środkowe stany USA     |     3    |
 |Azja Południowo-Wschodnia    |     3    |
-|Innych regionów  |   1    |
+|Inne regiony  |   1    |
 
 
 
-## <a name="monitor-qpu-usage"></a>Monitorowanie użycia QPU
+## <a name="monitor-qpu-usage"></a>Użycie jednostek QPU monitora
 
- Aby ustalić, czy skalowalnego w poziomie serwera jest niezbędne, serwer w portalu Azure należy monitorować za pomocą metryki. Jeśli Twoje QPU regularnie maxes wychodzących, oznacza to, że liczba zapytań dotyczących modeli przekracza limit QPU dla planu. Metryka długość kolejki zadania puli zapytania zwiększa także liczby zapytań w kolejki puli wątków zapytania przekracza dostępne QPU. Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
+ Aby ustalić, czy skalowalnego w poziomie serwera jest niezbędne, serwer w witrynie Azure portal należy monitorować za pomocą metryk. Jeśli Twoje QPU regularnie wydłużyć, oznacza to, że liczba zapytań dotyczących modeli przekracza limit jednostek QPU dla planu. Metryka długość kolejki zadania puli zapytania zwiększa także dostępne QPU przekroczenia liczby zapytań w kolejce puli wątków zapytań. Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
 
 ## <a name="configure-scale-out"></a>Skonfiguruj skalowalny w poziomie
 
-### <a name="in-azure-portal"></a>W portalu Azure
+### <a name="in-azure-portal"></a>W witrynie Azure portal
 
-1. W portalu kliknij **skalowalnego w poziomie**. Wybierz liczbę serwerów repliki zapytania za pomocą suwaka. Liczba replik wybrany jest oprócz istniejącego serwera.
+1. W portalu, kliknij przycisk **skalowalnego w poziomie**. Wybierz liczbę serwerów replik zapytań za pomocą suwaka. Liczba replik, które wybierzesz jest oprócz istniejącego serwera.
 
-2. W **oddzielić serwer przetwarzania z puli podczas badania**, wybierz opcję Tak, aby wykluczyć z serwerów zapytania serwera przetwarzania.
+2. W **oddziel serwer przetwarzania od puli zapytań**, wybierz opcję Tak, aby wykluczyć serwer przetwarzania z serwerów z zapytania.
 
    ![Suwak skalowalnego w poziomie](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
-3. Kliknij przycisk **zapisać** do obsługi administracyjnej nowych serwerów repliki zapytania. 
+3. Kliknij przycisk **Zapisz** do aprowizowania nowych serwerów repliki zapytania. 
 
-Modele tabelaryczne na podstawowym serwerze są synchronizowane z serwerów repliki. Po ukończeniu synchronizacji rozpocznie się puli zapytania dystrybucja zapytania przychodzące między serwery replik. 
+Modele tabelaryczne na podstawowym serwerze są synchronizowane z serwerem funkcji replica. Po ukończeniu synchronizacji rozpocznie się puli zapytania, dystrybucja przychodzące zapytania na serwery repliki. 
 
 
 ## <a name="synchronization"></a>Synchronizacja 
 
-Podczas obsługi administracyjnej nowych replik kwerendy usług Azure Analysis Services automatycznie replikuje modeli we wszystkich replik. Można również wykonać ręczną synchronizację za pomocą portalu lub interfejsu API REST. Podczas przetwarzania modeli, należy wykonać synchronizację, więc aktualizacje są synchronizowane między repliki zapytania.
+Podczas aprowizacji nowej repliki zapytania usług Azure Analysis Services automatycznie replikuje swoje modele we wszystkich replik. Można również wykonać ręczną synchronizację za pomocą portalu lub interfejsu API REST. W przypadku przetwarzania modeli, należy wykonać synchronizację, dlatego aktualizacje są synchronizowane między repliki zapytania.
 
-### <a name="in-azure-portal"></a>W portalu Azure
+### <a name="in-azure-portal"></a>W witrynie Azure portal
 
-W **omówienie** > modelu > **modelu Synchronizuj**.
+W **Przegląd** > model > **modelu Synchronize**.
 
 ![Suwak skalowalnego w poziomie](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>Interfejs API REST
 Użyj **synchronizacji** operacji.
 
-#### <a name="synchronize-a-model"></a>Synchronizacji modelu   
+#### <a name="synchronize-a-model"></a>Synchronizowanie modelu   
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>Pobierz stan synchronizacji  
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-Przed rozpoczęciem korzystania z programu PowerShell, [Zainstaluj lub zaktualizuj moduł najnowsze AzureRM](https://github.com/Azure/azure-powershell/releases). 
+Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktualizowanie najnowszy moduł AzureRM](https://github.com/Azure/azure-powershell/releases). 
 
-Aby ustawić liczbę replik zapytanie, należy użyć [AzureRmAnalysisServicesServer zestawu](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Określ opcjonalny `-ReadonlyReplicaCount` parametru.
+Aby ustawić liczba replik zapytań, należy użyć [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
 
-Aby uruchomić synchronizację, należy użyć [AzureAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Aby uruchomić synchronizacji, użyj [AzureAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
 
 
 ## <a name="connections"></a>Połączenia
 
-Na stronie Przegląd serwera istnieją dwie nazwy serwera. Jeśli jeszcze nie skonfigurowano skalowalnego w poziomie serwera, obie nazwy serwera działa w ten sam. Po skonfigurowaniu skalowalnego w poziomie serwera, należy określić nazwę serwera odpowiedniej w zależności od typu połączenia. 
+Na stronie przeglądu serwera istnieją dwie nazwy serwera. Jeśli nie skonfigurowano jeszcze skalowalnego w poziomie serwera, obie nazwy serwera działać tak samo. Po skonfigurowaniu skalowalnego w poziomie serwera, należy określić nazwę odpowiedniego serwera, w zależności od typu połączenia. 
 
-Dla połączeń klienckich przez użytkownika końcowego, takich jak Power BI Desktop, Excel i niestandardowych aplikacji, użyj **nazwy serwera**. 
+Dla połączeń klienckich użytkowników końcowych, takich jak Power BI Desktop, Excel i aplikacje niestandardowe, użyj **nazwy serwera**. 
 
-SSMS, narzędzi SSDT i parametry połączenia w programie PowerShell, użyj funkcji platformy Azure, aplikacji i obiektach AMO, **nazwy serwera zarządzania**. Nazwa serwera zarządzania obejmuje specjalnego `:rw` kwalifikator (odczytu i zapisu). Wszystkie operacje przetwarzania odbywa się na serwerze zarządzania.
+SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funkcji platformy Azure i AMO, **nazwa serwera zarządzania**. Nazwa serwera zarządzania obejmuje specjalny `:rw` kwalifikator (odczyt zapis). Wszystkie operacje przetwarzania są wykonywane na serwerze zarządzania.
 
 ![Nazwy serwerów](media/analysis-services-scale-out/aas-scale-out-name.png)
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-[Metryki serwera monitora](analysis-services-monitor.md)   
+[Monitorowanie metryk serwera](analysis-services-monitor.md)   
 [Zarządzanie usług Azure Analysis Services](analysis-services-manage.md) 
 

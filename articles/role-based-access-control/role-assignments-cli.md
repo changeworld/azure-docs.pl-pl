@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) i wiersza polecenia platformy Azure. W tym jak lista dostępu, udzielić dostępu i spowodować usunięcie dostępu.
+title: Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz wiersza polecenia platformy Azure. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,39 +8,39 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 16577339f1aa33fbd1a8b90f4beaef1ee4ce806c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316400"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437103"
 ---
 # <a name="manage-access-using-rbac-and-azure-cli"></a>Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure
 
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) jest sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC oraz wiersza polecenia platformy Azure.
+[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zarządzać dostępem, jedną z następujących należy:
+Aby zarządzać dostępem, jedną z następujących potrzebne są:
 
-* [Bash w chmurze Azure powłoki](/azure/cloud-shell/overview)
+* [Powłoka bash w usłudze Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Interfejs wiersza polecenia platformy Azure](/cli/azure)
 
-## <a name="list-roles"></a>Lista ról
+## <a name="list-roles"></a>Tworzenie listy ról
 
-Aby wyświetlić listę wszystkich dostępnych definicji ról, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list):
+Aby wyświetlić listę wszystkich dostępnych definicji ról, należy użyć [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
 ```
 
-Poniższy przykład zawiera nazwę i opis wszystkich dostępnych definicji ról:
+Poniższy przykład wyświetla nazwę i opis wszystkich dostępnych definicji ról:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -63,7 +63,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-Poniższy przykład zawiera listę wszystkich definicji wbudowanej roli:
+Poniższy przykład wyświetla listę wszystkich definicji roli wbudowanej:
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -89,15 +89,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>Akcje listy roli
+### <a name="list-actions-of-a-role"></a>Lista akcji roli
 
-Aby wyświetlić listę akcji definicji roli, należy użyć [listy definicji roli az](/cli/azure/role/definition#az-role-definition-list):
+Aby wyświetlić listę akcje definicji roli, należy użyć [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-Na poniższych listach przykład *współautora* definicji roli:
+Na poniższych listach przykład *Współautor* definicji roli:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -134,7 +134,7 @@ az role definition list --name "Contributor"
 ]
 ```
 
-Na poniższych listach przykład *akcje* i *notActions* z *współautora* roli:
+Na poniższych listach przykład *akcje* i *notActions* z *Współautor* roli:
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -153,7 +153,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-Poniższy przykład zawiera listę działań *Współautor·maszyny·wirtualnej* roli:
+Poniższy przykład wyświetla działania *Współautor maszyny wirtualnej* roli:
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -177,21 +177,21 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-access"></a>Dostęp do listy
+## <a name="list-access"></a>Tworzenie listy dostępu
 
-W RBAC na liście dostępu, możesz listę przypisań ról.
+RBAC dostęp do listy, możesz liście przypisań ról.
 
-### <a name="list-role-assignments-for-a-user"></a>Lista przypisań ról dla użytkownika
+### <a name="list-role-assignments-for-a-user"></a>Tworzenie listy przypisań ról dla użytkownika
 
-Aby wyświetlić listę przypisań ról określonego użytkownika, należy użyć [listy przypisania roli az](/cli/azure/role/assignment#az-role-assignment-list):
+Aby wyświetlić listę przypisań ról określonego użytkownika, należy użyć [Lista przypisywanie roli az](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
 ```
 
-Domyślnie będą wyświetlane tylko przypisania ograniczone do subskrypcji. Aby wyświetlić przypisania ograniczone w zależności od zasobów w grupie, należy użyć `--all`.
+Domyślnie pojawi się tylko do przypisania zakresie subskrypcji. Aby wyświetlić przypisania zakresie zasobu lub grupy, należy użyć `--all`.
 
-Poniższy przykład zawiera listę przypisań ról, które są przypisane bezpośrednio do *patlong@contoso.com* użytkownika:
+Poniższy przykład wyświetla przypisania ról, które są przypisane bezpośrednio do *patlong@contoso.com* użytkownika:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -210,15 +210,15 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 }
 ```
 
-### <a name="list-role-assignments-for-a-resource-group"></a>Lista przypisań ról dla grupy zasobów.
+### <a name="list-role-assignments-for-a-resource-group"></a>Tworzenie listy przypisań ról dla grupy zasobów
 
-Aby wyświetlić listę przypisań ról, które istnieją dla grupy zasobów, należy użyć [listy przypisania roli az](/cli/azure/role/assignment#az-role-assignment-list):
+Aby wyświetlić listę przypisań ról, które istnieją dla grupy zasobów, użyj [Lista przypisywanie roli az](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
 ```
 
-Poniższy przykład zawiera listę przypisań ról *pharma sprzedaży projectforecast* grupy zasobów:
+Poniższy przykład wyświetla przypisania ról *pharma — sprzedaż — projectforecast* grupy zasobów:
 
 ```azurecli
 az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -239,23 +239,23 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
-W RBAC Aby udzielić dostępu, należy utworzyć przypisania roli.
+Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
-### <a name="create-a-role-assignment-for-a-user"></a>Tworzy przypisanie roli użytkownika
+### <a name="create-a-role-assignment-for-a-user"></a>Tworzenie przypisania roli dla użytkownika
 
-Aby utworzyć przypisanie roli użytkownika w zakresie grupy zasobów, użyj [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create):
+Aby utworzyć przypisania roli dla użytkownika w zakresie grupy zasobów, użyj [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-W poniższym przykładzie przypisano *współautora maszyny wirtualnej* rolę *patlong@contoso.com* użytkownika na *pharma sprzedaży projectforecast* zakres grupy zasobów:
+Poniższy przykład przypisuje *Współautor maszyny wirtualnej* roli *patlong@contoso.com* użytkownika na *pharma — sprzedaż — projectforecast* zakresie grupy zasobów:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
 ```
 
-### <a name="create-a-role-assignment-for-a-group"></a>Tworzy przypisanie roli w grupie
+### <a name="create-a-role-assignment-for-a-group"></a>Tworzenie przypisania roli dla grupy
 
 Aby utworzyć przypisanie roli, grupy, użyj [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create):
 
@@ -263,19 +263,19 @@ Aby utworzyć przypisanie roli, grupy, użyj [utworzenia przypisania roli az](/c
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-W poniższym przykładzie przypisano *czytnika* rolę *zespołu Mack pods* z Identyfikatorem 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji. Aby uzyskać identyfikator grupy, można użyć [listy grup ad az](/cli/azure/ad/group#az-ad-group-list) lub [Pokaż grupy ad az](/cli/azure/ad/group#az-ad-group-show).
+Poniższy przykład przypisuje *czytnika* roli *zespołu Mack pods* grupy za pomocą Identyfikatora 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji. Aby uzyskać identyfikator grupy, można użyć [listy grup usługi ad az](/cli/azure/ad/group#az-ad-group-list) lub [Pokaż grupy ad az](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-W poniższym przykładzie przypisano *współautora maszyny wirtualnej* rolę *zespołu Mack pods* z Identyfikatorem 22222222-2222-2222-2222-222222222222 w zakresie zasobów dla sieci wirtualnej o nazwie *projektu sieci, pharma sprzedaży w-*:
+Poniższy przykład przypisuje *Współautor maszyny wirtualnej* roli *zespołu Mack pods* grupy za pomocą Identyfikatora 22222222-2222-2222-2222-222222222222 w zakresie zasobów dla sieci wirtualnej o nazwie *projektu sieci, pharma sprzedaży w-*:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/pharma-sales-projectforecast/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
 ```
 
-### <a name="create-a-role-assignment-for-an-application"></a>Tworzenie przypisania roli dla aplikacji
+### <a name="create-a-role-assignment-for-an-application"></a>Tworzenie przypisania roli aplikacji
 
 Aby utworzyć rolę dla aplikacji, należy użyć [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create):
 
@@ -283,27 +283,27 @@ Aby utworzyć rolę dla aplikacji, należy użyć [utworzenia przypisania roli a
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-W poniższym przykładzie przypisano *Współautor·maszyny·wirtualnej* roli do aplikacji z 44444444-4444-4444-4444-444444444444 Identyfikatora obiektu w *pharma sprzedaży projectforecast* grupy zasobów zakres. Aby uzyskać identyfikator aplikacji, można użyć [listy aplikacji usługi ad az](/cli/azure/ad/app#az-ad-app-list) lub [Pokaż aplikacji ad az](/cli/azure/ad/app#az-ad-app-show).
+Poniższy przykład przypisuje *Współautor maszyny wirtualnej* roli do aplikacji za pomocą 44444444-4444-4444-4444-444444444444 Identyfikatora obiektu w *pharma — sprzedaż — projectforecast* grupy zasobów zakres. Aby uzyskać identyfikator obiektu aplikacji, można użyć [az ad app list](/cli/azure/ad/app#az-ad-app-list) lub [az ad app show](/cli/azure/ad/app#az-ad-app-show).
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-access"></a>Usuń dostęp
+## <a name="remove-access"></a>Usuwanie dostępu
 
-RBAC, aby usunąć dostęp, można usunąć przypisania roli używając [usunąć przypisanie roli az](/cli/azure/role/assignment#az-role-assignment-delete):
+RBAC, aby spowodować usunięcie dostępu, możesz usunąć przypisania roli używając [Usuń przypisanie roli az](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-Poniższy przykład umożliwia usunięcie *Współautor·maszyny·wirtualnej* przypisania roli z *patlong@contoso.com* użytkownika na *pharma sprzedaży projectforecast* zasobów Grupa:
+Poniższy przykład usuwa *Współautor maszyny wirtualnej* przypisania roli z *patlong@contoso.com* użytkownika na *pharma — sprzedaż — projectforecast* zasobów Grupa:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
 ```
 
-Poniższy przykład umożliwia usunięcie *czytnika* rolę z *zespołu Mack pods* z Identyfikatorem 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji. Aby uzyskać identyfikator grupy, można użyć [listy grup ad az](/cli/azure/ad/group#az-ad-group-list) lub [Pokaż grupy ad az](/cli/azure/ad/group#az-ad-group-show).
+Poniższy przykład usuwa *czytnika* rolę z *zespołu Mack pods* grupy za pomocą Identyfikatora 22222222-2222-2222-2222-222222222222 w zakresie subskrypcji. Aby uzyskać identyfikator grupy, można użyć [listy grup usługi ad az](/cli/azure/ad/group#az-ad-group-list) lub [Pokaż grupy ad az](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -311,5 +311,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Tworzenie niestandardowej roli zabezpieczeń przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
-- [Użyj wiersza polecenia platformy Azure do zarządzania zasobami Azure i grup zasobów](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [Samouczek: Tworzenie roli niestandardowej przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
+- [Używanie wiersza polecenia platformy Azure do zarządzania zasobami i grupami zasobów platformy Azure](../azure-resource-manager/xplat-cli-azure-resource-manager.md)

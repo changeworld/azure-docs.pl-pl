@@ -1,6 +1,6 @@
 ---
-title: Sprawdzaj dostęp za pomocą usługi Azure AD dostęp przeglądami | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i sprawdzaj dostęp przy użyciu przeglądami dostępu do usługi Azure Active Directory.
+title: Przegląd dostępu wszystkich użytkowników w usłudze Azure AD przeglądów dostępu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić przegląd dostępu za pomocą przeglądów dostępu w usłudze Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,43 +9,43 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: e6a109e499395e09be27770a510427038872da38
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52d832de10de93c5bd4b91df821f96845b3b21be
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085127"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446643"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Przejrzyj dostępu z usługą Azure AD dostęp do przeglądu
+# <a name="review-access-with-azure-ad-access-reviews"></a>Przegląd dostępu wszystkich użytkowników z usługą Azure AD przeglądów dostępu
 
-Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i innych usług Microsoft Online Services przy użyciu funkcji o nazwie dostęp monitoruje. Prawdopodobnie odebrał wiadomość e-mail od firmy Microsoft z prośbą o Przejrzyj dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji. 
+Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostęp. Być może otrzymasz wiadomość e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników dla członków grupy lub użytkownicy z dostępem do aplikacji. 
 
 ## <a name="open-an-access-review"></a>Otwórz przegląd dostępu
 
-Aby wyświetlić przeglądy oczekujące dostępu, wybierz łącze w wiadomości e-mail. Jeśli nie masz wiadomość e-mail, możesz znaleźć przeglądy dostępu, wykonaj następujące czynności:
+Aby wyświetlić przeglądów dostępu oczekujące, wybierz link w wiadomości e-mail. Jeśli nie masz wiadomości e-mail, możesz znaleźć przeglądów dostępu, wykonaj następujące czynności:
 
-1. Zaloguj się na [panel dostępu usługi Azure AD](https://myapps.microsoft.com).
+1. Zaloguj się na [panelu dostępu usługi Azure AD](https://myapps.microsoft.com).
 
-2. Wybierz symbol użytkownika w prawym górnym rogu strony, która wyświetla nazwę i domyślny organizacji. Jeśli jest wymieniona więcej niż jednej z organizacji, wybierz żądany Przegląd dostępu organizacji.
+2. Wybierz symbol użytkownika w prawym górnym rogu strony, który wyświetla nazwę i domyślny organizacji. Jeśli więcej niż jednej z organizacji jest wymieniony, wybierz organizacji, który zażądał przeglądu dostępu.
 
-3. Jeśli Kafelek z etykietą **dostępu przeglądami** znajduje się w prawej części strony, wybierz go. Jeśli Kafelek nie jest widoczny, nie ma żadnych przeglądami dostępu do wykonania dla tej organizacji, a w tej chwili nie jest potrzebne nie działanie.
+3. Jeśli Kafelek oznaczone jako **przeglądów dostępu** jest w prawej części strony wybierz opcję. Jeśli Kafelek nie jest widoczna, nie Brak sprawdzeń dostępu do przeprowadzenia tej organizacji i w tej chwili jest wymagana żadna akcja.
 
-## <a name="fill-out-an-access-review"></a>Wypełnianie Przegląd dostępu
+## <a name="fill-out-an-access-review"></a>Wypełnij przeglądu dostępu
 
-Po wybraniu Przegląd dostępu z listy widać nazwy użytkowników, którzy wymagają przejrzenia. Może pojawić tylko jedną nazwę — własne — Jeśli żądanie zostało Aby przejrzeć swoje własne dostępu.
+Po wybraniu przeglądu dostępu z listy zobaczysz nazwy użytkowników, którzy muszą być analizowane. Widoczne mogą być tylko jedną nazwę — własne — Jeśli żądanie zostało do przeglądu własnego dostępu.
 
-Dla każdego wiersza na liście można zdecydować, czy do zatwierdzenia lub odmowy dostępu. Wybierz wiersz i zdecyduj, czy chcesz zaakceptować lub odrzucić. (Jeśli nie znasz użytkownika, można wskazać, że zbyt.)
+Dla każdego wiersza na liście możesz zdecydować, czy zatwierdzić lub odrzucić dany użytkownik ma dostęp. Zaznacz wiersz i określ, czy chcesz zatwierdzić lub odrzucić. (Jeśli użytkownik nie jest znany, można wskazać, że zbyt.)
 
-Osoba dokonująca przeglądu może wymagać, aby podać uzasadnienie zatwierdzanie nieprzerwanego dostępu lub członkostwa w grupie.
+Recenzent może wymagać, że możesz podać uzasadnienie zatwierdzenie przedłużenia dostępu oraz członkostwa w grupie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Użytkownikowi odmówiono dostępu nie są natychmiast usuwane. Można usunąć, po zakończeniu działania przeglądu, lub kiedy administrator przestaje przeglądu. Jeśli chcesz zmienić odpowiedź, a użytkownik wcześniej odmowy zatwierdzenia lub odmowy zatwierdzone wcześniej użytkownika, zaznacz wiersz, zresetuj odpowiedzi, a następnie wybierz nową odpowiedź. Aby wykonać ten krok, dopiero po zakończeniu Przegląd dostępu.
+Odmowa dostępu użytkownika nie jest usuwana natychmiast. Można je usunąć, po zakończeniu przeglądu lub administrator zatrzymania przeglądu. Jeśli chcesz zmienić odpowiedzi, a następnie zatwierdzić wcześniej zabronionych użytkownika lub Odmów użytkownikowi zatwierdzonego wcześniej, wybierz wiersz, zresetuj odpowiedzi, a następnie wybierz nową odpowiedź. Aby wykonać ten krok, dopiero po zakończeniu przeglądu dostępu.
 
 
 
