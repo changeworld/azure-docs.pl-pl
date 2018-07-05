@@ -1,35 +1,35 @@
 
-# <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>Wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
+# <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>Wywołanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu iOS
 
-Ten przewodnik przedstawia, jak aplikacji natywnej dla systemu iOS (Swift) mogą wywoływać interfejsy API, które wymagają tokenów dostępu z punktem końcowym v2.0 Microsoft Azure Active Directory (Azure AD). Przewodnika opisano sposób uzyskiwania tokenów dostępu i używać ich w wywołaniach interfejsu API programu Graph firmy Microsoft i innych interfejsów API.
+W tym przewodniku przedstawiono, jak aplikacji natywnych dla systemów iOS (Swift) może wywołać interfejsy API, które wymagają tokenów dostępu z punktu końcowego v2.0 Microsoft Azure Active Directory (Azure AD). Przewodnik wyjaśnia, jak uzyskiwanie tokenów dostępu i używać ich w wywołaniach interfejsu API programu Microsoft Graph i innych interfejsów API.
 
-Po ukończeniu ćwiczeń opisanych w tym przewodniku, aplikacja może wywoływać chronionego interfejsu API z firmy lub organizacji, która ma usługę Azure AD. Aplikacja wprowadzić chronionych wywołań interfejsu API przy użyciu kont osobistych, takich jak outlook.com, live.com i innych użytkowników, a także konta firmowego lub szkolnego.
+Po wykonaniu ćwiczeń opisanych w tym przewodniku, aplikacja może wywoływać interfejs API chroniony z firmy lub organizacji, która ma usługę Azure AD. Aplikację można utworzyć chronionych wywołań interfejsu API przy użyciu konta służbowego lub szkolnego, a także kont osobistych, takich jak outlook.com, live.com i innych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- XCode w wersji 8.x jest wymagany dla przykładu, który jest tworzony w tym przewodniku. Możesz pobrać XCode z [witryny sieci Web programu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "adresu URL pobierania w środowisku XCode").
-- [Carthage](https://github.com/Carthage/Carthage) Menedżer zależności jest wymagany dla pakietu administracyjnego.
+- XCode w wersji 8.x jest wymagany dla przykładu, który jest tworzony w tym przewodniku. Możesz pobrać środowisko XCode ze [witryny sieci Web w programie iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "adres URL pobierania w środowisku XCode").
+- [Carthage](https://github.com/Carthage/Carthage) Menedżera zależności jest wymagana do zarządzania pakietami.
 
-## <a name="how-this-guide-works"></a>Jak działa w tym przewodniku
+## <a name="how-this-guide-works"></a>Jak działa ten przewodnik
 
-![Jak działa w tym przewodniku](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![Jak działa ten przewodnik](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
 
-W tym przewodniku przykładowej aplikacji umożliwia aplikacji systemu iOS zapytania interfejsu API programu Microsoft Graph lub składnika web API, który akceptuje tokeny od punktu końcowego v2.0 usługi Azure AD. W tym scenariuszu token jest dodawany do żądań HTTP przy użyciu **autoryzacji** nagłówka. Token nabycia i odnawiania są obsługiwane przez biblioteki uwierzytelniania firmy Microsoft (MSAL).
+W tym przewodniku przykładowej aplikacji umożliwia aplikacji systemu iOS do wykonywania zapytań interfejsu API programu Microsoft Graph lub internetowy interfejs API, który akceptuje tokeny od punktu końcowego v2.0 usługi Azure AD. W tym scenariuszu token zostanie dodany do żądań HTTP za pomocą **autoryzacji** nagłówka. Uzyskanie tokenu i odnawianie są obsługiwane przez Microsoft Authentication Library (MSAL).
 
 
-### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>Dojście nabycia tokenu dostępu do chronionego interfejsów API sieci web
+### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>Pozyskiwanie tokenu dostępu do chronionego interfejsów API sieci web
 
-Po użytkownik jest uwierzytelniany, przykładowa aplikacja odbiera token. Token służy do interfejsu API programu Microsoft Graph lub sieci web interfejsu API, który jest chroniony przez punktu końcowego v2.0 usługi Azure AD.
+Po użytkownik jest uwierzytelniany, przykładowa aplikacja odbiera token. Token jest używany do wykonywania zapytań interfejsu API programu Microsoft Graph lub internetowy interfejs API, która jest zabezpieczony przez punktu końcowego v2.0 usługi Azure AD.
 
-Interfejsy API, takich jak Microsoft Graph wymagają tokenu dostępu, aby zezwolić na dostęp do określonych zasobów. Tokeny są wymagane do odczytu profilu użytkownika, dostęp do kalendarza użytkownika, Wyślij wiadomość e-mail i tak dalej. Aplikacja może wysłać żądanie tokenu dostępu przy użyciu MSAL i określając zakresy interfejsu API. Token dostępu jest dodawany do HTTP **autoryzacji** nagłówek dla każdego wywołania utworzona przed chronionego zasobu.
+Interfejsy API, takich jak program Microsoft Graph wymaga tokenu dostępu, aby zezwolić na dostęp do określonych zasobów. Tokeny są wymagane do odczytuj profil użytkownika, dostęp użytkownika kalendarza, Wyślij wiadomość e-mail i tak dalej. Twoja aplikacja może zażądać tokenu dostępu przy użyciu biblioteki MSAL i określając zakresy interfejsu API. Token dostępu zostanie dodany do HTTP **autoryzacji** nagłówka za każde wywołanie skierowanego do chronionego zasobu.
 
-MSAL zarządza buforowanie i odświeżanie tokenów dostępu, więc nie trzeba aplikacji.
+Biblioteka MSAL zarządza buforowanie i odświeżanie tokenów dostępu, dzięki czemu Twoja aplikacja nie wymaga.
 
 
 ## <a name="libraries"></a>Biblioteki
 
-W tym przewodniku korzysta z biblioteki następujące:
+W tym przewodniku używane są następujące biblioteki:
 
 |Biblioteka|Opis|
 |---|---|
-|[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Podgląd biblioteki uwierzytelniania firmy Microsoft dla systemu iOS|
+|[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Microsoft Authentication Library w wersji zapoznawczej dla systemu iOS|
 
