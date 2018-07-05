@@ -1,11 +1,11 @@
 ---
-title: Jak używać usługi Azure API Management w sieci wirtualnej z bramą aplikacji | Dokumentacja firmy Microsoft
-description: Informacje o sposobie instalacji i konfiguracji usługi Azure API Management w wewnętrznej sieci wirtualnej z aplikacji bramy (WAF) jako serwera sieci Web
+title: Jak używać usługi Azure API Management w sieci wirtualnej z usługą Application Gateway | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i skonfigurować usługi Azure API Management w wewnętrznej sieci wirtualnej za pomocą aplikacji bramy (WAF) jako serwera sieci Web
 services: api-management
 documentationcenter: ''
 author: solankisamir
 manager: kjoshi
-editor: antonba
+editor: vlvinogr
 ms.assetid: a8c982b2-bca5-4312-9367-4a0bbc1082b1
 ms.service: api-management
 ms.workload: mobile
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 595abcaafdea5cde3f868567bac7fb9cf0ee424b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c7d4351a9691c9787c42107306220e075f8648a0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936109"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435127"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Zintegrować zarządzanie interfejsami API w wewnętrznej sieci Wirtualnej z bramy aplikacji 
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway
 
-##<a name="overview"> </a> Omówienie
- 
-Usługi interfejsu API zarządzania można skonfigurować w sieci wirtualnej w trybie wewnętrznej, dzięki czemu dostępny tylko w obrębie sieci wirtualnej. Bramy aplikacji Azure to usługa PAAS, która udostępnia usługi równoważenia obciążenia warstwy 7. Pełni rolę usługi proxy odwrotnie, a udostępnia między oferty zapory aplikacji sieci Web (WAF).
+##<a name="overview"> </a> Przegląd
 
-Łączenie usługi API Management udostępniane w wewnętrznej sieci Wirtualnej z frontonu bramy aplikacji umożliwia następujące scenariusze:
+Usługa API Management można skonfigurować w sieci wirtualnej w trybie wewnętrznego, dzięki czemu dostępny tylko w obrębie sieci wirtualnej. Usługa Azure Application Gateway jest to usługa PAAS, co zapewnia modułu równoważenia obciążenia warstwy 7. Ona działa jako usługa zwrotnego serwera proxy i zapewnia między oferty zapory aplikacji sieci Web (WAF).
 
-* Użyj tego samego zasobu interfejsu API zarządzania zużycia zarówno przez użytkowników wewnętrznych i zewnętrznych konsumentów.
-* Użyj pojedynczego zasobu interfejsu API zarządzania i podzestawu interfejsów API zdefiniowanych w usłudze API Management dostępne dla użytkowników zewnętrznych.
-* Umożliwiają gotowe włączenie i wyłączenie z publicznego Internetu dostępu do interfejsu API zarządzania. 
+Łączenie usługi API Management aprowizowane w wewnętrznej sieci Wirtualnej za pomocą frontonu bramy Application Gateway umożliwia następujące scenariusze:
+
+* Użyj tego samego zasobu usługi API Management do użycia przez klientów wewnętrznych i zewnętrznych klientów.
+* Użyj pojedynczego zasobu usługi API Management i podzestawu interfejsów API zdefiniowane w usłudze API Management jest dostępna dla klientów zewnętrznych.
+* Zapewnia sposób setką kompleksowych włączenie i wyłączenie z publicznej sieci Internet. dostęp do usługi API Management.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym artykule, musi mieć:
+Aby wykonać kroki opisane w tym artykule, musisz mieć:
 
 + Aktywna subskrypcja platformy Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Wystąpienie APIM. Aby uzyskać więcej informacji, zobacz [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
++ Wystąpienie usługi APIM. Aby uzyskać więcej informacji, zobacz [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 
 ##<a name="scenario"> </a> Scenariusz
-W tym artykule opisano sposób używania jednej usługi Zarządzanie interfejsami API dla użytkowników wewnętrznych i zewnętrznych i stał się działać jako pojedynczy frontonu dla obu lokalnego i w chmurze interfejsów API. Widoczne będzie także sposób ujawniać tylko podzestaw swoje interfejsy API (w tym przykładzie, które są wyróżnione zielony) wykorzystania zewnętrznych za pomocą funkcji PathBasedRouting dostępnych w bramy aplikacji.
+W tym artykule opisano sposób użycia jednej usługi API Management dla wewnętrznych i zewnętrznych klientów i przypisz ją do działania jako pojedynczy frontonu dla obu lokalnie i w chmurze interfejsów API. Zobaczysz również jak udostępniać tylko podzbioru interfejsów API (w tym przykładzie, które zostaną one wyróżnione w kolorze zielonym) do użytku zewnętrznego za pomocą funkcji PathBasedRouting dostępnych w usłudze Application Gateway.
 
-W pierwszym przykładzie Instalatora wszystkich interfejsów API są zarządzane tylko z sieci wirtualnej. Konsumenci wewnętrzny (wyróżniane na kolor pomarańczowy) mogą uzyskiwać dostęp do wszystkich sieci wewnętrznych i zewnętrznych interfejsów API. Ruch nigdy nie trafia do Internetu, wysokiej wydajności jest dostarczany za pomocą obwodów Express Route.
+W pierwszym przykładzie konfiguracji wszystkie interfejsy API są zarządzane tylko z w ramach sieci wirtualnej. Wewnętrzny konsumentów (wyróżnione w kolorze pomarańczowym) mają dostęp do wszystkich wewnętrznych i zewnętrznych interfejsów API. Ruch nigdy nie trafia do internetowego o wysokiej wydajności są dostarczane za pośrednictwem obwodów Expressroute.
 
 ![trasy adresu URL](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
 ## <a name="before-you-begin"> </a> Przed rozpoczęciem
 
 1. Zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell za pomocą Instalatora platformy sieci Web. Najnowszą wersję można pobrać i zainstalować z sekcji **Windows PowerShell** strony [Pliki do pobrania](https://azure.microsoft.com/downloads/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-2. Tworzenie sieci wirtualnej i Utwórz oddzielne podsieci dla interfejsu API zarządzania i bramy aplikacji. 
-3. Jeśli chcesz utworzyć niestandardowy serwer DNS dla sieci wirtualnej, zrobić przed rozpoczęciem wdrażania. Dobrze Sprawdź, czy działa przez zapewnienie im maszyny wirtualnej utworzonej w nową podsieć w sieci wirtualnej można rozwiązać i dostęp do wszystkich punktów końcowych usługi Azure.
+2. Utwórz sieć wirtualną i Utwórz oddzielne podsieci dla usługi API Management i Application Gateway.
+3. Jeśli zamierzasz utworzyć niestandardowego serwera DNS dla sieci wirtualnej, to zrobić przed rozpoczęciem wdrażania. Sprawdź, który działa przez zapewnienie im maszyny wirtualnej utworzonej w nowej podsieci w sieci wirtualnej można rozwiązać i dostęp do wszystkich punktów końcowych platformy Azure.
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co to jest wymagana do utworzenia integracja interfejsu API zarządzania i bramę aplikacji?
+## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co to jest wymagane do utworzenia integrację usługi API Management i Application Gateway?
 
-* **Pula serwerów zaplecza:** wewnętrzny wirtualny adres IP usługi Zarządzanie interfejsami API.
+* **Pula serwerów zaplecza:** wewnętrznego wirtualny adres IP usługi API Management.
 * **Ustawienia puli serwerów zaplecza:** każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są stosowane do wszystkich serwerów w puli.
-* **Port frontonu:** jest to port publiczny, który jest otwarty na bramie aplikacji. Naciśnięcie on ruch jest kierowany do jednego z serwerów zaplecza.
+* **Port frontonu:** to port publiczny, który jest otwierany w bramie aplikacji. Ruch osiągnięcia go jest przekierowywany do jednego z serwerów zaplecza.
 * **Odbiornik:** odbiornik ma port frontonu, protokół (Http lub Https, z uwzględnieniem wielkości liter) oraz nazwę certyfikatu SSL (w przypadku konfigurowania odciążania protokołu SSL).
-* **Reguła:** reguły wiąże odbiornik pulę serwerów zaplecza.
-* **Niestandardowe sondy kondycji:** bramy aplikacji domyślnie używa sond na podstawie adresu IP do ustalenia w BackendAddressPool serwerów, które są aktywne. Zarządzanie interfejsami API, które usługa tylko odpowiada na żądania, które mają nagłówek hosta poprawne, dlatego sond domyślne zakończyć się niepowodzeniem. Sondy kondycji niestandardowy musi być zdefiniowana, aby ustalić, że usługa jest aktywne i powinny przekazywania żądań bramy aplikacji.
-* **Certyfikat domeny niestandardowej:** dostęp do interfejsu API zarządzania z Internetu, należy utworzyć mapowanie CNAME jego nazwy hosta na nazwę DNS frontonu bramy aplikacji. To zapewnia, że nagłówek nazwy hosta i certyfikatu wysłanego na bramie aplikacji, które jest przekazywane do interfejsu API zarządzania jest jeden APIM rozpoznać jako prawidłowy.
+* **Reguła:** reguła wiąże odbiornik z pulą serwerów zaplecza.
+* **Niestandardowe sondy kondycji:** Application Gateway, domyślnie używa sondy na podstawie adresów IP, aby zorientować się w BackendAddressPool serwerów, które są aktywne. API Management, którą usługa tylko odpowiada na żądania, które mają nagłówek hosta poprawne, dlatego sondy domyślne zakończyć się niepowodzeniem. Sonda kondycji niestandardowy musi można zdefiniować, aby ułatwić usługa application gateway, sprawdzić, czy usługa jest aktywny i należy go przekazywania żądań.
+* **Certyfikat domeny niestandardowej:** dostęp do usługi API Management z Internetu, należy utworzyć mapowanie rekordu CNAME jego nazwy hosta na nazwę DNS frontonu bramy aplikacji. To zapewnia, że nagłówek nazwy hosta i certyfikatu wysłanego do usługi Application Gateway, który jest przekazywany do usługi API Management jest jedna APIM rozpoznać jako prawidłowy.
 
-## <a name="overview-steps"> </a> Kroki wymagane do integracji interfejsu API zarządzania i bramy aplikacji 
+## <a name="overview-steps"> </a> Kroki wymagane do integrowania usługi API Management i usługa Application Gateway
 
 1. Utworzenie grupy zasobów dla usługi Resource Manager.
-2. Tworzenie sieci wirtualnej, podsieci i publicznego adresu IP dla bramy aplikacji. Utwórz inną podsieć dla interfejsu API zarządzania.
-3. Tworzenie usługi Zarządzanie interfejsami API w podsieci sieci Wirtualnej utworzone powyżej i upewnij się, że w przypadku korzystania z trybu wewnętrznego.
-4. Konfiguracja niestandardowa nazwa domeny w usłudze API Management.
-5. Utwórz obiekt konfiguracji bramy aplikacji.
-6. Utwórz zasób aplikacji bramy.
-7. Utwórz rekord CNAME z bramy aplikacji na nazwę hosta serwera proxy usługi API Management publicznej nazwy DNS.
+2. Tworzenie sieci wirtualnej, podsieci i publicznego adresu IP dla bramy Application Gateway. Utwórz inną podsieć dla usługi API Management.
+3. Tworzenie usługi API Management w podsieci sieci Wirtualnej utworzonej powyżej i upewnij się, że korzystania z trybu wewnętrznego.
+4. Konfigurowanie niestandardowej nazwy domeny w usłudze API Management.
+5. Tworzenie obiektu konfiguracji bramy aplikacji.
+6. Utwórz zasób usługi Application Gateway.
+7. Utwórz rekord CNAME z publicznej nazwy DNS bramy aplikacji do nazwy hosta serwera proxy usługi API Management.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Tworzenie grupy zasobów dla usługi Resource Manager
 
@@ -88,11 +88,11 @@ Zaloguj się do platformy Azure.
 Connect-AzureRmAccount
 ```
 
-Uwierzytelnianie przy użyciu poświadczeń.<BR>
+Uwierzytelnianie przy użyciu swoich poświadczeń.<BR>
 
 ### <a name="step-2"></a>Krok 2
 
-Sprawdź subskrypcje dla konta i zaznacz go.
+Sprawdź subskrypcje dla konta, a następnie wybierz ją.
 
 ```powershell
 Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmSubscription
@@ -105,15 +105,15 @@ Utwórz grupę zasobów (ten krok można pominąć, jeśli używasz istniejącej
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-Usługa Azure Resource Manager wymaga, aby wszystkie grupy zasobów określały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia, aby utworzyć bramę aplikacji używać tej samej grupie zasobów.
+Usługa Azure Resource Manager wymaga, aby wszystkie grupy zasobów określały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkich poleceniach służących do tworzenia bramy aplikacji użyj tej samej grupie zasobów.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Utwórz sieć wirtualną i podsieć bramy aplikacji
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Utwórz sieć wirtualną i podsieć dla bramy application gateway
 
 Poniższy przykład pokazuje, jak utworzyć sieć wirtualną przy użyciu zasobu manager.
 
 ### <a name="step-1"></a>Krok 1
 
-Przypisz zakresu adresów 10.0.0.0/24 do zmiennej podsieci do użycia dla bramy aplikacji podczas tworzenia sieci wirtualnej.
+Przypisz zakres adresów 10.0.0.0/24 do zmiennej podsieci do użycia podczas tworzenia sieci wirtualnej dla usługi Application Gateway.
 
 ```powershell
 $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
@@ -121,7 +121,7 @@ $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -Addres
 
 ### <a name="step-2"></a>Krok 2
 
-Przypisz 10.0.1.0/24 zakres adresów do zmiennej podsieci do użycia dla interfejsu API zarządzania podczas tworzenia sieci wirtualnej.
+Przypisz 10.0.1.0/24 zakresu adresów do zmiennej podsieci do użycia podczas tworzenia sieci wirtualnej dla usługi API Management.
 
 ```powershell
 $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
@@ -129,7 +129,7 @@ $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefi
 
 ### <a name="step-3"></a>Krok 3
 
-Tworzenie sieci wirtualnej o nazwie **appgwvnet** w grupie zasobów **apim-appGw-zarządcy zasobów** dla regionu zachodnie stany USA, przy użyciu 10.0.0.0/16 prefiks podsieci 10.0.0.0/24 i 10.0.1.0/24.
+Tworzenie sieci wirtualnej o nazwie **appgwvnet** w grupie zasobów **apim-appGw-RG** dla regionu zachodnie stany USA, użyciu prefiksu 10.0.0.0/16 i podsieci 10.0.0.0/24 i 10.0.1.0/24.
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-appGw-RG" -Location "West US" -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -137,41 +137,41 @@ $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-app
 
 ### <a name="step-4"></a>Krok 4
 
-Przypisanie zmiennej podsieci następne kroki
+Przypisz zmienną podsieci dla następnych kroków
 
 ```powershell
 $appgatewaysubnetdata=$vnet.Subnets[0]
 $apimsubnetdata=$vnet.Subnets[1]
 ```
-## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Tworzenie usługi Zarządzanie interfejsami API w sieci Wirtualnej w trybie wewnętrzny
+## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Tworzenie usługi API Management w sieci Wirtualnej w trybie wewnętrznego
 
-Poniższy przykład pokazuje, jak można utworzyć usługi Zarządzanie interfejsami API w sieci Wirtualnej skonfigurowana dla tylko wewnętrzny dostępu.
+Poniższy przykład pokazuje sposób tworzenia usługi API Management w sieci Wirtualnej skonfigurowana dla tylko wewnętrzne dostęp.
 
 ### <a name="step-1"></a>Krok 1
-Utwórz obiekt sieci wirtualnej interfejsu API zarządzania za pomocą podsieci $apimsubnetdata utworzone powyżej.
+Utwórz obiekt sieci wirtualnej usługi API Management przy użyciu podsieci $apimsubnetdata utworzonego powyżej.
 
 ```powershell
 $apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId $apimsubnetdata.Id
 ```
 ### <a name="step-2"></a>Krok 2
-Tworzenie usługi Zarządzanie interfejsami API w sieci wirtualnej.
+Tworzenie usługi API Management w sieci wirtualnej.
 
 ```powershell
 $apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
-Po pomyślnym zainicjowaniu powyższego polecenia dotyczą [konfiguracji DNS wymagany dostęp do wewnętrznych usługi Zarządzanie interfejsami API sieci Wirtualnej](api-management-using-with-internal-vnet.md#apim-dns-configuration) do niego dostęp.
+Po pomyślnym powyższego polecenia dotyczą [konfiguracji DNS wymagane do uzyskania dostępu usługi wewnętrznej sieci Wirtualnej usługa API Management](api-management-using-with-internal-vnet.md#apim-dns-configuration) do niego dostęp.
 
-## <a name="set-up-a-custom-domain-name-in-api-management"></a>Ustawienie niestandardowej nazwy domeny w usłudze API Management
+## <a name="set-up-a-custom-domain-name-in-api-management"></a>Konfigurowanie niestandardowej nazwy domeny w usłudze API Management
 
 ### <a name="step-1"></a>Krok 1
-Przekaż certyfikat z kluczem prywatnym w domenie. W tym przykładzie będzie `*.contoso.net`. 
+Przekaż certyfikat z kluczem prywatnym dla domeny. W tym przykładzie będzie `*.contoso.net`.
 
 ```powershell
 $certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
 ```
 
 ### <a name="step-2"></a>Krok 2
-Po przesłaniu certyfikatu, Utwórz obiekt konfiguracji nazwę hosta dla serwera proxy z nazwą hosta z `api.contoso.net`, ponieważ certyfikat przykład stanowi źródło dla `*.contoso.net` domeny. 
+Po przekazaniu tego certyfikatu, Utwórz obiekt konfiguracji nazwy hosta dla serwera proxy z nazwą hosta `api.contoso.net`, ponieważ certyfikat przykład zapewnia urzędu `*.contoso.net` domeny.
 
 ```powershell
 $proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname "api.contoso.net"
@@ -180,7 +180,7 @@ $result = Set-AzureRmApiManagementHostnames -Name "ContosoApi" -ResourceGroupNam
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Tworzenie publicznego adresu IP dla konfiguracji frontonu
 
-Utwórz zasób publicznego adresu IP **publicIP01** w grupie zasobów **apim-appGw-zarządcy zasobów** dla regionu zachodnie stany USA.
+Utwórz zasób publicznego adresu IP **publicIP01** w grupie zasobów **apim-appGw-RG** dla regionu zachodnie stany USA.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -name "publicIP01" -location "West US" -AllocationMethod Dynamic
@@ -188,7 +188,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -name 
 
 Adres IP jest przypisywany do bramy aplikacji w chwili uruchamiania usługi.
 
-## <a name="create-application-gateway-configuration"></a>Tworzenie konfiguracji bramy aplikacji
+## <a name="create-application-gateway-configuration"></a>Utwórz konfigurację bramy aplikacji
 
 Wszystkie elementy konfiguracji muszą zostać skonfigurowane przed utworzeniem bramy aplikacji. Poniższe kroki umożliwiają utworzenie elementów konfiguracji wymaganych w przypadku zasobu bramy aplikacji.
 
@@ -202,7 +202,7 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "gatewayIP01" -S
 
 ### <a name="step-2"></a>Krok 2
 
-Skonfiguruj port IP frontonu publiczny punkt końcowy IP. Jest to port, podłączoną do użytkowników końcowych.
+Skonfiguruj port adresu IP frontonu dla punktu końcowego publicznego adresu IP. Ten port jest numer portu, którego użytkownicy końcowi nawiązywać połączenie.
 
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "port01"  -Port 443
@@ -217,7 +217,7 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-4"></a>Krok 4
 
-Skonfiguruj certyfikat bramy aplikacji, używane do odszyfrowania i zaszyfrowanie ruchu przechodzącego przez.
+Konfigurowanie certyfikatu dla usługi Application Gateway, używany do odszyfrowania i ponownie zaszyfrować ruch przechodzi przez.
 
 ```powershell
 $cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path to .pfx file> -Password <password for certificate file>
@@ -225,7 +225,7 @@ $cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateF
 
 ### <a name="step-5"></a>Krok 5
 
-Utwórz odbiornik HTTP bramy aplikacji. Przypisać IP frontonu certyfikatu konfiguracji, portu i protokołu ssl.
+Utwórz odbiornik HTTP bramy Application Gateway. Przypisać adresu IP frontonu certyfikatu konfiguracji, portu i protokołu ssl.
 
 ```powershell
 $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert
@@ -233,11 +233,11 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-6"></a>Krok 6
 
-Tworzenie niestandardowych sondy do usługi API Management `ContosoApi` punktu końcowego domeny serwera proxy. Ścieżka `/status-0123456789abcdef` jest domyślnego kondycji punktu końcowego hostowanych na wszystkie usługi Zarządzanie interfejsami API. Ustaw `api.contoso.net` jako nazwę hosta niestandardowego sondy do zabezpiecz ją przy użyciu certyfikatu SSL.
+Tworzenie niestandardowej sondy do usługi API Management `ContosoApi` punktu końcowego domeny serwera proxy. Ścieżka `/status-0123456789abcdef` jest punkt końcowy kondycji na domyślne hostowanych na wszystkie usługi API Management. Ustaw `api.contoso.net` jako nazwę hosta niestandardowej sondy, aby zabezpieczyć go za pomocą certyfikatu SSL.
 
 > [!NOTE]
-> Nazwa hosta `contosoapi.azure-api.net` jest nazwą hosta serwera proxy domyślne, które zostały skonfigurowane podczas usługi o nazwie `contosoapi` jest tworzony w publicznej Azure. 
-> 
+> Nazwa hosta `contosoapi.azure-api.net` jest domyślną nazwę hosta serwera proxy, skonfigurować usługi o nazwie `contosoapi` jest tworzony w publicznej Azure.
+>
 
 ```powershell
 $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName "api.contoso.net" -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
@@ -245,7 +245,7 @@ $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Pr
 
 ### <a name="step-7"></a>Krok 7
 
-Przekaż certyfikat do użycia zasobów puli wewnętrznej bazy danych z włączoną obsługą protokołu SSL. Jest to ten sam certyfikat, który podano w kroku 4 powyżej.
+Przekaż certyfikat do użycia na zasobów w puli zaplecza z włączonym protokołem SSL. Jest to ten sam certyfikat, który podana w kroku 4 powyżej.
 
 ```powershell
 $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path to .cer file>
@@ -253,7 +253,7 @@ $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitel
 
 ### <a name="step-8"></a>Krok 8
 
-Skonfiguruj ustawienia HTTP zaplecza bramy aplikacji. Dotyczy to również ustawienie limitu czasu, po którym są anulowane żądania wewnętrznej bazy danych. Ta wartość jest inny niż limit czasu sondowania.
+Skonfiguruj ustawienia zaplecza HTTP bramy Application Gateway. Dotyczy to również ustawienie limitu czasu dla żądania wewnętrznej bazy danych, po upływie którego zostały anulowane. Ta wartość jest inna niż limit czasu sondy.
 
 ```powershell
 $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
@@ -261,7 +261,7 @@ $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimP
 
 ### <a name="step-9"></a>Krok 9
 
-Skonfiguruj pulę adresów IP zaplecza, o nazwie **apimbackend** z wewnętrznego wirtualnego adresu IP adresu usługi Zarządzanie interfejsami API utworzone powyżej.
+Skonfiguruj pulę adresów IP zaplecza o nazwie **apimbackend** za pomocą wewnętrznego wirtualnego adresu IP adres usługi API Management utworzonego powyżej.
 
 ```powershell
 $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.StaticIPs[0]
@@ -269,21 +269,21 @@ $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "a
 
 ### <a name="step-10"></a>Krok 10
 
-Tworzenie ustawień dla fikcyjnego zaplecza (nieistniejącego). Żądania do ścieżki interfejsu API, które nie chcemy ujawniać z interfejsu API zarządzania za pośrednictwem bramy aplikacji będzie trafień tego wewnętrznej bazy danych i zwróć 404.
+Utwórz ustawienia fikcyjnego zaplecza (nieistniejącej). Żądania do ścieżek interfejsu API, które firma Microsoft nie należy udostępniać z usługi API Management za pośrednictwem bramy aplikacji zostanie osiągnięty to zaplecze i zwrócić kod 404.
 
-Skonfiguruj ustawienia HTTP zaplecza zastępczego.
+Skonfiguruj ustawienia HTTP zaplecza fikcyjnego z rolą.
 
 ```powershell
 $dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Skonfiguruj fikcyjny zaplecza **dummyBackendPool**, który wskazuje adres FQDN **dummybackend.com**. Ten adres FQDN nie istnieje w sieci wirtualnej.
+Konfigurowanie fikcyjnego zaplecza **dummyBackendPool**, który wskazuje na adres FQDN **dummybackend.com**. Ten adres FQDN nie istnieje w sieci wirtualnej.
 
 ```powershell
 $dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
 ```
 
-Utwórz ustawienie reguł używanego domyślnie wskazujący na wewnętrznej bazy danych nie istnieje bramę aplikacji **dummybackend.com** w sieci wirtualnej.
+Utwórz ustawienie reguły, która Application Gateway będzie używana domyślnie, które wskazuje do wewnętrznej bazy danych nie istnieje **dummybackend.com** w sieci wirtualnej.
 
 ```powershell
 $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistentapis" -Paths "/*" -BackendAddressPool $dummyBackendPool -BackendHttpSettings $dummyBackendSetting
@@ -291,25 +291,25 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 
 ### <a name="step-11"></a>Krok 11
 
-Konfiguruj adres URL reguły ścieżki dla pul zaplecza. Dzięki temu, wybierając tylko niektóre z interfejsów API z interfejsu API zarządzania dla są udostępniane publicznie. Na przykład, jeśli istnieją `Echo API` (/ echo /), `Calculator API` (/calc/) itd. Sprawdź tylko `Echo API` dostępny z Internetu). 
+Konfigurowanie adresu URL reguły ścieżki dla puli zaplecza. Dzięki temu można wybierać tylko niektóre z interfejsów API z usługi API Management są dostępne publicznie. Na przykład, jeśli istnieją `Echo API` (/ echo /) `Calculator API` Marka (/calc/) itp. tylko `Echo API` dostępny z Internetu).
 
-Poniższy przykład tworzy Prosta reguła dla "/ echo /" ścieżkę routingu ruchu sieciowego do wewnętrznej "apimProxyBackendPool".
+Poniższy przykład tworzy prostą regułę dla "/ echo /" ścieżki routingu ruchu do zaplecza "apimProxyBackendPool".
 
 ```powershell
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Jeśli ścieżka nie odpowiada reguły ścieżki, chcemy, aby umożliwić z interfejsu API zarządzania, Konfiguracja mapowania ścieżki reguły konfiguruje również domyślną pulę adresów zaplecza o nazwie **dummyBackendPool**. Na przykład http://api.contoso.net/calc/sum przechodzi do **dummyBackendPool** określone jako domyślna pula cofanie dopasowane ruchu.
+Jeśli ścieżka nie odpowiada reguły ścieżki, chcemy, aby włączyć z poziomu usługi API Management, konfigurację reguły ścieżki mapy konfiguruje również domyślną pulę adresów zaplecza o nazwie **dummyBackendPool**. Na przykład http://api.contoso.net/calc/sum przechodzi do **dummyBackendPool** jak jest zdefiniowany jako domyślna pula nie dopasowany ruchu.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
-Powyższy krok zapewnia, że tylko żądania dla ścieżki "/ echo" są dozwolone przez bramę aplikacji. Żądania do innych interfejsów API skonfigurowane w usłudze API Management spowoduje zgłoszenie błędów 404 z bramy aplikacji podczas uzyskiwania dostępu do z Internetu. 
+Powyższy krok zapewnia, że tylko żądania dla ścieżki "/ echo" są dozwolone za pośrednictwem bramy aplikacji. Żądania do innych interfejsów API skonfigurowany w usłudze API Management spowoduje zgłoszenie błędów 404 z bramy aplikacji z Internetu.
 
 ### <a name="step-12"></a>Krok 12
 
-Utwórz ustawienie reguły dla bramy aplikacji korzystać z routingu na podstawie ścieżki adresu URL.
+Utwórz ustawienie reguły w usłudze Application Gateway do użycia, routingu opartego na ścieżkach URL.
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
@@ -317,7 +317,7 @@ $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleTyp
 
 ### <a name="step-13"></a>Krok 13
 
-Skonfiguruj liczbę wystąpień i rozmiaru bramy aplikacji. W tym miejscu używamy [SKU zapory aplikacji sieci Web](../application-gateway/application-gateway-webapplicationfirewall-overview.md) Aby zwiększyć bezpieczeństwo zasobu interfejsu API zarządzania.
+Skonfiguruj liczbę wystąpień i rozmiar bramy aplikacji. Tutaj używamy [jednostki SKU zapory aplikacji sieci Web](../application-gateway/application-gateway-webapplicationfirewall-overview.md) Aby zwiększyć bezpieczeństwo zasobu usługi API Management.
 
 ```powershell
 $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -325,37 +325,37 @@ $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity
 
 ### <a name="step-14"></a>Krok 14
 
-Konfigurowanie zapory aplikacji sieci Web w trybie "Zapobiegania".
+Konfigurowanie zapory aplikacji sieci Web, aby być w trybie "Zapobieganie".
 ```powershell
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Utwórz bramę aplikacji
+## <a name="create-application-gateway"></a>Tworzenie bramy aplikacji
 
-Utwórz bramę aplikacji ze wszystkimi obiektami konfiguracji z powyższych kroków.
+Tworzenie bramy aplikacji przy użyciu obiektów konfiguracji z poprzednich kroków.
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGroupName $resourceGroupName  -Location $location -BackendAddressPools $apimProxyBackendPool, $dummyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $dummyBackendSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME nazwy hosta serwera proxy usługi API Management do publicznej nazwy DNS zasobu bramy aplikacji
+## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME nazwę hosta serwera proxy usługi API Management do publicznej nazwy DNS zasobu usługi Application Gateway
 
-Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu na potrzeby komunikacji. Korzystając z publicznym adresem IP, brama aplikacji wymaga przypisywany dynamicznie nazwy DNS, które nie mogą być łatwe w użyciu. 
+Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu na potrzeby komunikacji. Korzystając z publicznym adresem IP, brama aplikacji wymaga dynamicznie przypisywanej nazwy DNS, które nie mogą być łatwe w użyciu.
 
-Brama aplikacji w nazwa DNS należy utworzyć rekord CNAME, który wskazuje nazwę hosta serwera proxy APIM (np. `api.contoso.net` w powyższych przykładach) do tej nazwy DNS. Aby skonfigurować rekord IP CNAME serwera sieci Web, należy pobrać szczegółów bramy aplikacji i jej skojarzonej nazwy IP DNS za pomocą elementu publicznego adresu IP. Użycie rekordów A nie jest zalecane, ponieważ adres VIP może się zmieniać podczas ponownego uruchomienia bramy.
+Aby utworzyć rekord CNAME, który wskazuje nazwę hosta serwera proxy usługi APIM, oznacza należy użyć nazwy DNS bramy aplikacji (np. `api.contoso.net` w powyższych przykładach) do tej nazwy DNS. Aby skonfigurować rekord CNAME dla adresu IP frontonu, Pobierz szczegóły bramy aplikacji i skojarzone nazwy DNS adresu IP używając elementu PublicIPAddress. Korzystanie z rekordów A nie jest zalecane, ponieważ wirtualne adresy IP mogą ulec zmianie po ponownym uruchomieniu bramy.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ```
 
 ##<a name="summary"> </a> Podsumowanie
-Skonfigurowane w sieci Wirtualnej platformy Azure API Management oferuje interfejs pojedyncza brama dla wszystkich skonfigurowanych interfejsów API, czy są one lokalnego hostowanej lub w chmurze. Integrowanie aplikacji bramy z interfejsu API zarządzania zapewnia elastyczność selektywne włączenie określonego interfejsów API, aby być dostępna w Internecie, a także dostarczając zapory aplikacji sieci Web frontonu do Twojego wystąpienia usługi API Management.
+Usługa Azure API Management skonfigurowany w sieci Wirtualnej zapewnia interfejs jednej bramy dla wszystkich skonfigurowanych interfejsów API, czy są one hostowane lokalnie lub w chmurze. Integrowanie bramy aplikacji z usługą API Management zapewnia elastyczność selektywnie Włączanie określonego interfejsy API dostępne w Internecie, a także zapewnianie zapory aplikacji sieci Web jako frontonu do Twojego wystąpienia usługi API Management.
 
 ##<a name="next-steps"> </a> Następne kroki
-* Dowiedz się więcej na temat bramy aplikacji Azure
-  * [Omówienie bramy aplikacji](../application-gateway/application-gateway-introduction.md)
-  * [Zapora aplikacji sieci Web bramy aplikacji](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Brama aplikacji przy użyciu routingu na podstawie ścieżki](../application-gateway/application-gateway-create-url-route-arm-ps.md)
-* Dowiedz się więcej o interfejsu API zarządzania i sieci wirtualnych
-  * [Za pomocą interfejsu API zarządzania dostępny tylko w ramach sieci Wirtualnej](api-management-using-with-internal-vnet.md)
-  * [Za pomocą interfejsu API zarządzania w sieci Wirtualnej](api-management-using-with-vnet.md)
+* Dowiedz się więcej o usłudze Azure Application Gateway
+  * [Application Gateway — omówienie](../application-gateway/application-gateway-introduction.md)
+  * [Zapory aplikacji sieci Web usługi Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
+  * [Bramy aplikacji przy użyciu routingu opartego na ścieżkach](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+* Dowiedz się więcej na temat usługi API Management i sieciami wirtualnymi
+  * [Korzystanie z API Management jest dostępna tylko w obrębie sieci Wirtualnej](api-management-using-with-internal-vnet.md)
+  * [Za pomocą usługi API Management w sieci Wirtualnej](api-management-using-with-vnet.md)

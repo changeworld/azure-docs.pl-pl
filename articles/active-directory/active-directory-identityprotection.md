@@ -1,8 +1,8 @@
 ---
-title: Ochronę tożsamości usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia.
+title: Usługa Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak usługa Azure AD Identity Protection umożliwia ograniczenie możliwości osobie atakującej wykorzystanie tożsamości ze złamanymi zabezpieczeniami lub urządzenia oraz ochronę tożsamości lub urządzeń, które wcześniej podejrzewa lub znane naruszenia.
 services: active-directory
-keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
+keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,79 +16,79 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: faeeebb21c6dde73be855af469e03ede4c6d0b5d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713188"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444960"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
-Azure Active Directory Identity Protection to funkcja wersji Azure AD Premium P2, które umożliwia:
+Usługa Azure Active Directory Identity Protection to funkcja wersji Azure AD Premium P2, która pozwala na:
 
-- Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości organizacji
+- Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji
 
-- Skonfiguruj automatyczne odpowiedzi wykrytych podejrzanych działań, które są związane z tożsamości organizacji  
+- Skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania, that are related to tożsamości w organizacji  
 
-- Zbadaj podejrzane zdarzeń i podejmij odpowiednią akcję, aby je rozwiązać   
+- Badanie podejrzanych zdarzeń i podejmij odpowiednią akcję, aby je rozwiązać   
 
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Microsoft ma zabezpieczone oparte na chmurze tożsamości przez ponad dekadę. Z usługi Azure Active Directory Identity Protection w danym środowisku, można użyć tego samego systemy ochrony, wykorzystywane przez firmę Microsoft do zabezpieczania tożsamości.
+Tożsamości w chmurze dla ponad dekadę ma bezpieczne Microsoft. Za pomocą usługi Azure Active Directory Identity Protection w danym środowisku, można użyć tych samych systemach ochrony, używaną przez firmę Microsoft do zabezpieczania tożsamości.
 
-Większość naruszeń zabezpieczeń ma miejsce, gdy osoby atakujące uzyskania dostępu do środowiska kradzieży tożsamości użytkownika. Całościowo osoby atakujące stały się coraz bardziej skuteczne w wykorzystaniu naruszeń innych firm i za pomocą zaawansowanej wyłudzania. Jak osoba atakująca uzyska dostęp do nawet niski uprzywilejowanych kont, jest względnie łatwe uzyskanie dostępu do zasobów firmy ważne za pośrednictwem penetracji sieci.
+Większość naruszenia zabezpieczeń ma miejsce, gdy osoby atakujące uzyskują dostęp do środowiska, kradzież tożsamości użytkownika. W ciągu lat osoby atakujące stały się coraz bardziej efektywne w wykorzystaniu naruszeń innych firm i za pomocą zaawansowanych wyłudzanie informacji. Tak szybko, jak osoba atakująca uzyska dostęp do nawet użytkownika niski uprzywilejowanych kont, jest stosunkowo łatwe uzyskanie dostępu do zasobów firmy ważne za pośrednictwem ruchu poprzecznego.
 
-W wyniku tego należy:
+W wyniku tego następujące czynności:
 
-- Ochrona wszystkich tożsamości, niezależnie od ich poziom uprawnień
+- Ochrona wszystkich tożsamości, niezależnie od ich poziomu uprawnień
 
-- Aktywne uniemożliwić złamany tożsamości są użyte
+- Proaktywnie uniemożliwić ze złamanymi zabezpieczeniami tożsamości są użyte
 
-Odnajdywanie złamany tożsamości jest bez łatwe zadania. Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjną i heurystyki w celu wykrycia nieprawidłowości i podejrzane zdarzenia, które wskazują potencjalnie naruszony tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które pozwalają ocenić wykrytych problemów i podjąć odpowiednie środki zaradcze lub akcji korygowania.
+Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem. Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmów heurystycznych w celu wykrycia anomalii i podejrzanych zdarzeń, które wskazują na potencjalne naruszenia tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które umożliwiają użytkownikowi oceniać wykryte problemy i podjąć odpowiednie środki zaradcze lub działania korygujące.
 
-Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. Aby chronić tożsamości organizacji, umożliwiają konfigurowanie zasad ryzyka automatycznie odpowiadać na wykryte błędy, jeśli został osiągnięty poziom określonego ryzyka. Te zasady, oprócz innych kontroli dostępu warunkowego zapewniane przez usługę Azure Active Directory i EMS, można automatycznie blokować lub zainicjować akcji korygowania adaptacyjną, które resetowania haseł włącznie i wymuszania uwierzytelnianie wieloskładnikowe.
+Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. W celu ochrony tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie odpowiadać na wykryte problemy, jeśli osiągnięty poziom ryzyka określony. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure Active Directory i usług EMS można automatycznie blokować lub zainicjować akcji adaptacyjne korygowania, które resetowania haseł w tym i wymuszanie uwierzytelniania wieloskładnikowego.
 
 
 #### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości
 
-**Wykrywanie luk w zabezpieczeniach i ryzykowne kont:**  
+**Wykrywanie luk w zabezpieczeniach i ryzykowne konta:**  
 
-* Zapewnianie niestandardowych zalecenia dotyczące poprawy ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach
-* Obliczanie poziomów ryzyka do logowania
+* Zapewnianie niestandardowych zalecenia, aby poprawić ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach
+* Obliczanie poziomy ryzyka logowania
 * Obliczanie poziomów ryzyka użytkownika
 
 
-**Badanie zdarzenia ryzyka:**
+**Badanie zdarzeń o podwyższonym ryzyku:**
 
-* Wysyłanie powiadomienia o zdarzeniach ryzyka
-* Badania ryzyka zdarzeń za pomocą odpowiednich i kontekstowych informacji
-* Zapewnienie podstawowych przepływów pracy do śledzenia kontroli
-* Zapewniając łatwy dostęp do akcji korygowania, takich jak Resetowanie hasła
+* Wysyłanie powiadomień dla zdarzeń o podwyższonym ryzyku
+* Badanie zdarzeń o podwyższonym ryzyku, korzystając z informacji istotnych i kontekstowych
+* Zapewnienie podstawowych przepływów pracy do śledzenia dochodzenia
+* Zapewnianiu łatwego dostępu do akcji korygowania, takie jak resetowanie haseł
 
-**Zasady dostępu warunkowego opartego na ryzyka:**
+**Zasady dostępu warunkowego na podstawie ryzyka:**
 
-* Zasady, aby ograniczyć ryzykowne logowania przez blokowanie logowania lub wymaganie uwierzytelniania wieloskładnikowego wyzwania
-* Zasady na wartość Blokuj lub kont użytkowników ryzykowne bezpieczne
-* Zasady, aby wymagać od użytkowników rejestracji w usłudze Multi-Factor authentication
+* Zasady wyeliminowanie ryzykowne logowania za pomocą blokowania logowania bądź wymagają takiej wezwań do uwierzytelnienia Multi-Factor Authentication
+* Zasady na wartość Blokuj lub kont bezpiecznego ryzykownych użytkowników
+* Zasady, aby wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego
 
 
 
 ## <a name="identity-protection-roles"></a>Role ochrony tożsamości
 
-Na potrzeby równoważenia obciążenia zarządzaniem wokół implementacji ochronę tożsamości, można przypisać kilka ról. Azure AD Identity Protection obsługuje 3 role katalogu:
+Aby zrównoważyć obciążenie działań z zakresu zarządzania całym implementacji Identity Protection, można przypisać kilku ról. Usługa Azure AD Identity Protection obsługuje 3 role katalogu:
 
-| Rola                         | Możliwość                          | Nie można wykonać
+| Rola                         | Można zrobić                          | Nie można wykonać
 | :--                          | ---                                |  ---   |
-| Administrator globalny         | Pełny dostęp do ochrony tożsamości, dołączyć Identity Protection| |
-| Administrator zabezpieczeń       | Pełny dostęp do Identity Protection | Dołączyć ochronę tożsamości, zresetuj hasła dla użytkownika |
-| Czytelnik zabezpieczeń              | Dostęp tylko do odczytu do Identity Protection | Dołączyć ochronę tożsamości użytkowników remidiate skonfigurować zasady, resetowania haseł |
+| Administrator globalny         | Pełny dostęp do usługi Identity Protection dołączanie Identity Protection| |
+| Administrator zabezpieczeń       | Pełny dostęp do usługi Identity Protection | Dołączanie Identity Protection, resetować hasła dla użytkownika |
+| Czytelnik zabezpieczeń              | Dostęp tylko do odczytu do usługi Identity Protection | Dołączanie Identity Protection, użytkownicy remidiate skonfigurować zasady, resetowania haseł |
 
 
 
 
-Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md)
+Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md)
 
 
 
@@ -96,325 +96,325 @@ Aby uzyskać więcej informacji, zobacz [przypisywanie ról administratorów w u
 
 ### <a name="vulnerabilities"></a>Luki w zabezpieczeniach
 
-Azure Active Directory Identity Protection analizy konfiguracji i wykrywa luk w zabezpieczeniach, które mogą mieć wpływ na tożsamości użytkownika. Aby uzyskać więcej informacji, zobacz [luk w zabezpieczeniach wykrywanych przez usługę Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md).
+Usługa Azure Active Directory Identity Protection analizuje konfigurację i wykrywa luki w zabezpieczeniach, które mogą mieć wpływ na tożsamości użytkownika. Aby uzyskać więcej informacji, zobacz [luk w zabezpieczeniach wykrywanych przez usługi Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md).
 
 ### <a name="risk-events"></a>Zdarzenia o podwyższonym ryzyku
 
-Usługi Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjną i heurystyki do wykrycia podejrzanych działań, które są związane z tożsamości użytkownika. System tworzy rekord dla każdego wykrytego podejrzane działania. Te rekordy są także nazywane zdarzenia ryzyka.  
+Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmy heurystyczne wykryć podejrzane akcje, które są związane z tożsamościami użytkowników. System tworzy rekord dla każdego wykryte podejrzane działania. Te rekordy są również nazywane zdarzeń o podwyższonym ryzyku.  
 Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](active-directory-identity-protection-risk-events.md).
 
 
 ## <a name="investigation"></a>Badanie
-Podróży za pomocą ochrony tożsamości zwykle zaczyna się od pulpit nawigacyjny ochrony tożsamości.
+Ci się podróż przez ochronę tożsamości zwykle zaczyna się od pulpitu nawigacyjnego Identity Protection.
 
 ![Korygowanie](./media/active-directory-identityprotection/1000.png "korygowania")
 
-Pulpit nawigacyjny umożliwia dostęp do:
+Pulpit nawigacyjny zapewnia dostęp do:
 
-* Raporty takie jak **użytkownicy oflagowani ryzyka**, **ryzyka zdarzenia** i **luk w zabezpieczeniach**
-* Ustawienia, takie jak konfiguracja sieci **zasady zabezpieczeń**, **powiadomienia** i **rejestracji usługi Multi-Factor authentication**
+* Raporty takie jak **użytkownicy oflagowani w związku z ryzykiem**, **zdarzeń o podwyższonym ryzyku** i **luk w zabezpieczeniach**
+* Ustawienia, takie jak konfiguracja usługi **zasad zabezpieczeń**, **powiadomienia** i **rejestracji uwierzytelniania wieloskładnikowego**
 
-Zwykle to punkt startowy dla badania, czyli proces oceny działania, dzienników i inne istotne informacje powiązane ze zdarzeniem ryzyka zdecydować, czy korygowania lub ograniczenie kroki są niezbędne, i jak tożsamość zostało naruszone i zrozumieć korzystania ze złamanymi zabezpieczeniami tożsamości.
+Zwykle to punkt początkowy dla badania, czyli procesu recenzowania działania, dzienniki i inne istotne informacje związane z zdarzenie o podwyższonym ryzyku, można zdecydować, czy kroki korygowania i ograniczania ryzyka są niezbędne, i jak oceniasz tożsamości naruszone i zrozumieć używania tożsamości ze złamanymi zabezpieczeniami.
 
-Można powiązać działaniach badań do [powiadomienia](active-directory-identityprotection-notifications.md) usługi Azure Active Directory Protection wysyła na wiadomości e-mail.
+Możesz powiązać badanie działań mających na celu [powiadomienia](active-directory-identityprotection-notifications.md) ochrony usługi Azure Active Directory, wysyła wiadomości e-mail.
 
-Poniższe sekcje zawierają więcej szczegółowych informacji i kroki, które są związane z dochodzenia.  
+Poniższe sekcje zawierają szczegółowe informacje i czynności, które są powiązane z badania.  
 
 
 ## <a name="risky-sign-ins"></a>Ryzykowne logowania
 
-Usługa Azure Active Directory wykryje [ryzyka typów zdarzeń](active-directory-reporting-risk-events.md#risk-event-types) w czasie rzeczywistym i w trybie offline. Każde zdarzenie zagrożenia wykrytego dla logowanie użytkownika przyczynia się do pojęcie logiczne, nazywane ryzykowne logowania. Ryzykowne logowanie jest wskaźnik prób logowania, które nie mogły zostać wykonane przez uprawnionego właściciela konta użytkownika.
+Usługa Azure Active Directory wykrywa [typy zdarzeń ryzyka](active-directory-reporting-risk-events.md#risk-event-types) w czasie rzeczywistym, jak i offline. Każdego zdarzenia o podwyższonym ryzyku, która została wykryta podczas logowania użytkownika przyczynia się do logiczne koncepcji o nazwie ryzykowne logowania. Ryzykowne logowanie jest wskaźnikiem próby logowania, które nie mogły zostać wykonane przez prawowitym właścicielem konta użytkownika.
 
 
 ### <a name="sign-in-risk-level"></a>Poziom ryzyka logowania
 
-Poziom ryzyka logowania jest wskazanie (wysoki, średni lub niski) prawdopodobieństwa, że próba logowania nie została wykonana przez wiarygodnego właściciela konta użytkownika.
+Poziom ryzyka logowania jest wskazanie (wysoki, średni lub niski) prawdopodobieństwa, że próba logowania nie było wykonywane przez prawowitym właścicielem konta użytkownika.
 
-### <a name="mitigating-sign-in-risk-events"></a>Zmniejszenia zdarzenia logowania ryzyka
+### <a name="mitigating-sign-in-risk-events"></a>Łagodzenie zdarzenia ryzyka logowania
 
-Środki zaradcze jest akcji, aby ograniczyć możliwość atakujący wykorzystać złamany tożsamości lub urządzenia bez przywrócenia tożsamości lub urządzenie to bezpieczne. Środki zaradcze nie można rozpoznać poprzednie zdarzenia logowania ryzyko związane z tożsamości lub urządzenia.
+Ograniczenie to działanie, aby ograniczyć możliwość wykorzystać tożsamości ze złamanymi zabezpieczeniami lub urządzenia bez przywracania do tożsamości lub urządzenia do stanu bezpiecznego osoba atakująca. Ograniczenia nie można rozpoznać poprzednie zdarzenia ryzyka logowania skojarzone z tożsamością lub urządzenia.
 
-Aby uniknąć automatycznie ryzykowne logowania, można skonfigurować ryzyka logowania zasad zabezpieczeń. Korzystając z tych zasad, należy wziąć pod uwagę poziom ryzyka użytkownika lub przy logowaniu do blokowania ryzykowne logowania lub użytkownik przeprowadzać uwierzytelnianie wieloskładnikowe. Te akcje mogą uniemożliwiać osobie atakującej wykorzystanie kradzieży tożsamości, aby spowodować szkody i może spowodować pewien czas do zabezpieczania tożsamości.
+Aby automatycznie rozwiązać problem dotyczący ryzykownych logowań, można skonfigurować zasady zabezpieczeń ryzyka logowania. Korzystając z tych zasad, należy rozważyć poziom ryzyka dotyczący użytkownika lub identyfikator logowania do blokowania ryzykowne logowania lub wymagać od użytkownika wykonywać uwierzytelnianie wieloskładnikowe. Te akcje mogą uniemożliwić osobie atakującej wykorzystanie kradzieży tożsamości spowodować szkodę i może stanowić trochę czasu, aby zabezpieczyć tożsamość.
 
-### <a name="sign-in-risk-security-policy"></a>Zasady zabezpieczeń logowania ryzyka
-Zasady logowania ryzyko jest zasady dostępu warunkowego, która ocenia ryzyko dla określonych logowanie i stosuje środki zaradcze, na podstawie wstępnie zdefiniowane warunki i zasady.
+### <a name="sign-in-risk-security-policy"></a>Zasady zabezpieczeń ryzyka logowania
+Zasady ryzyka logowania jest zasady dostępu warunkowego, która ocenia ryzyko dla określonych logowania i stosuje ograniczenia na podstawie wstępnie zdefiniowanych warunków i zasad.
 
-![Zasady logowania ryzyka](./media/active-directory-identityprotection/1014.png "logowania zasad ryzyka")
+![Zasady ryzyka logowania](./media/active-directory-identityprotection/1014.png "zasad ryzyka logowania")
 
-Azure AD Identity Protection pomaga w zarządzaniu łagodzenie ryzykowne logowania umożliwiając:
+Usługa Azure AD Identity Protection pomaga w zarządzaniu zapobieganie ryzykownych logowań, umożliwiając:
 
-* Ustaw użytkowników i grup, których dotyczy zasada:
+* Ustaw użytkowników i grup, których dotyczą te zasady:
 
-    ![Zasady logowania ryzyka](./media/active-directory-identityprotection/1015.png "logowania zasad ryzyka")
-* Należy ustawić logowania ryzyka poziomu próg (niski, średni lub wysoki) wyzwalania zasad:
+    ![Zasady ryzyka logowania](./media/active-directory-identityprotection/1015.png "zasad ryzyka logowania")
+* Ustaw ryzyka logowania poziomu wartość progową (niski, średni lub wysoki) wyzwalającego zasad:
 
-    ![Zasady logowania ryzyka](./media/active-directory-identityprotection/1016.png "logowania zasad ryzyka")
-* Ustaw formanty mają być egzekwowane, gdy wyzwala zasad:  
+    ![Zasady ryzyka logowania](./media/active-directory-identityprotection/1016.png "zasad ryzyka logowania")
+* Ustawienie kontroli, które mają być egzekwowane po wyzwoleniu zasad:  
 
-    ![Zasady logowania ryzyka](./media/active-directory-identityprotection/1017.png "logowania zasad ryzyka")
-* Przełącz stan tej zasady:
+    ![Zasady ryzyka logowania](./media/active-directory-identityprotection/1017.png "zasad ryzyka logowania")
+* Przełącz stan zasad:
 
-    ![Rejestracja usługi MFA](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
-* Przegląd i ocena wpływu zmiany przed uaktywnieniem go:
+    ![Rejestracja w usłudze MFA](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
+* Przegląd i ocena wpływu zmiany przed aktywowaniem go:
 
-    ![Zasady logowania ryzyka](./media/active-directory-identityprotection/1018.png "logowania zasad ryzyka")
+    ![Zasady ryzyka logowania](./media/active-directory-identityprotection/1018.png "zasad ryzyka logowania")
 
-#### <a name="what-you-need-to-know"></a>Co należy wiedzieć
-Można skonfigurować zasady zabezpieczeń ryzyka logowania, aby wymusić uwierzytelnianie wieloskładnikowe:
+#### <a name="what-you-need-to-know"></a>Co musisz wiedzieć
+Można skonfigurować zasady zabezpieczeń ryzyka logowania, które wymagają uwierzytelniania wieloskładnikowego:
 
-![Zasady logowania ryzyka](./media/active-directory-identityprotection/1017.png "logowania zasad ryzyka")
+![Zasady ryzyka logowania](./media/active-directory-identityprotection/1017.png "zasad ryzyka logowania")
 
-Jednak ze względu na bezpieczeństwo, to ustawienie działa tylko dla użytkowników, które zostały już zarejestrowane w usłudze Multi-Factor authentication. Jeśli spełniony jest warunek wymaganie uwierzytelniania wieloskładnikowego dla użytkownika, który nie jest jeszcze zarejestrowany w usłudze Multi-Factor authentication, użytkownik jest zablokowany.
+Jednak ze względu na bezpieczeństwo, to ustawienie działa tylko dla użytkowników, którzy mają już zarejestrowany do uwierzytelniania wieloskładnikowego. Jeśli warunek, którego chcesz wymagać uwierzytelniania wieloskładnikowego jest spełniony dla użytkownika, który nie jest jeszcze zarejestrowany do uwierzytelniania wieloskładnikowego, użytkownik jest zablokowany.
 
-Najlepszym rozwiązaniem Jeśli chcesz wymusić uwierzytelnianie wieloskładnikowe ryzykowne logowania, wykonaj następujące czynności:
+Najlepszym rozwiązaniem Jeśli chcesz wymagać uwierzytelniania wieloskładnikowego w celu ryzykownych logowań następujące czynności:
 
-1. Włącz [zasady rejestracji usługi Multi-Factor authentication](#multi-factor-authentication-registration-policy) określonych użytkowników.
-2. Wymaga odpowiednich użytkowników, aby logowania w sesji ryzykowne do wykonania rejestracji usługi MFA
+1. Włącz [zasady rejestracji uwierzytelniania wieloskładnikowego](#multi-factor-authentication-registration-policy) dla użytkowników, których to dotyczy.
+2. Wymagaj dotkniętych użytkowników do logowania w sesji — ryzykowne do przeprowadzenia rejestracji usługi MFA
 
-Wykonanie tych kroków gwarantuje, że uwierzytelnianie wieloskładnikowe jest wymagany dla ryzykownych logowanie.
+Wykonanie tych kroków gwarantuje, że to uwierzytelnianie wieloskładnikowe jest wymagany do ryzykowne logowania.
 
 #### <a name="best-practices"></a>Najlepsze praktyki
-Wybieranie **wysokiej** próg zmniejsza liczbę razy zasadę wyzwoleniu oraz zminimalizować wpływ na użytkowników.  
+Wybieranie **wysokiej** próg zmniejsza liczbę razy, zasada zostanie wyzwolony i minimalizuje wpływ na użytkowników.  
 
-Jednak nie obejmuje **małej** i **średni** logowania oznaczona flagą ryzyko związane z zasad, które nie mogą blokować osoba atakująca możliwości wykorzystania złamany tożsamości.
+Jednakże nie obejmuje **niski** i **średni** logowania oznaczonych flagą ryzyka z zasad, które nie mogą blokować atakujący korzystający z wykorzystanie tożsamości ze złamanymi zabezpieczeniami.
 
 Podczas ustawiania zasad
 
-* Wyklucz użytkowników, którzy nie / nie można wprowadzić uwierzytelnianie wieloskładnikowe
-* Wyklucz użytkowników, w których włączenie zasad nie jest praktyczne ustawień regionalnych (na przykład brak dostępu do działu pomocy technicznej)
-* Wyklucz użytkowników, które mogą generować dużą alarmów false (deweloperów, analityków zabezpieczeń)
-* Użyj **wysokiej** próg podczas początkowej zasad zbiorczego, lub jeśli należy zminimalizować problemy, które zostały odebrane przez użytkowników końcowych.
-* Użyj **małej** progu, jeśli organizacja wymaga wyższego poziomu bezpieczeństwa. Wybieranie **małej** próg wprowadzono dodatkowe użytkownika logowania wyzwania, ale zwiększyć bezpieczeństwo.
+* Wyklucz użytkowników, którzy nie obsługują / nie może mieć uwierzytelnianie wieloskładnikowe
+* Wyklucz użytkowników w lokalizacjach, w którym włączenie zasad nie jest możliwe (na przykład brak dostępu do działu pomocy technicznej)
+* Wyklucz użytkowników, którzy mogą wygenerować dużą liczbę fałszywych alarmów (deweloperzy, analityków zabezpieczeń)
+* Użyj **wysokiej** próg podczas wdrażania zasad początkowej, czy należy zminimalizować wyzwania widoczne dla użytkowników końcowych.
+* Użyj **niski** próg, jeśli Twoja organizacja wymaga zwiększenia bezpieczeństwa. Wybieranie **niski** próg wprowadza dodatkowego użytkownika logowania wyzwania, ale wyższy poziom bezpieczeństwa.
 
-Jest zalecana domyślna w przypadku większości organizacji do skonfigurowania reguły dla **średni** próg uzyskanie równowagi między użyteczność i zabezpieczeń.
+Zalecana domyślna w przypadku większości organizacji jest skonfigurowanie reguły dla **średni** próg, aby zachować równowagę pomiędzy użyteczność i zabezpieczeń.
 
-Zasady logowania ryzyka są:
+Zasady ryzyka logowania to:
 
-* Stosowane do całego ruchu w przeglądarce i logowania korzystających z nowoczesnego uwierzytelniania.
-* Nie dotyczy aplikacji przy użyciu starszych protokołów zabezpieczeń przez wyłączenie punkt końcowy protokołu WS-Trust w federacyjnym dostawców tożsamości, takie jak usługi AD FS.
+* Stosowane do całego ruchu w przeglądarce i logowania korzystające z nowoczesnego uwierzytelniania.
+* Nie są stosowane do aplikacji przy użyciu starszych protokołów zabezpieczeń przez wyłączenie punktu końcowego protokołu WS-Trust u dostawcy tożsamości federacyjnych, takich jak usługi AD FS.
 
-**Zdarzenia o podwyższonym ryzyku** w konsoli programu Identity Protection Wyświetla listę wszystkich zdarzeń:
+**Zdarzeń o podwyższonym ryzyku** strony w konsoli usługi Identity Protection Wyświetla listę wszystkich zdarzeń:
 
 * Ta zasada została zastosowana do
-* Można sprawdzić działanie i ustalić, czy akcja została odpowiednie
+* Możesz sprawdzić działanie i określić, czy akcja została odpowiednie
 
-Omówienie powiązane funkcje użytkownika Zobacz:
+Omówienie środowiska użytkownika Zobacz:
 
-* [Ryzykowne odzyskiwania logowania](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
-* [Ryzykowne logowania zablokowane](active-directory-identityprotection-flows.md#risky-sign-in-blocked)  
-* [Logowanie, korzystając z usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
+* [Ryzykowne logowania odzyskiwania](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+* [Ryzykowne logowanie zablokowane](active-directory-identityprotection-flows.md#risky-sign-in-blocked)  
+* [Środowisko logowania za pomocą usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
 
-**Aby otworzyć okno dialogowe elementami konfiguracji**:
+**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
 
-- Na **Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **logowania zasad ryzyka**.
+- Na **usługi Azure AD Identity Protection** bloku, w **Konfiguruj** , kliknij przycisk **zasad ryzyka logowania**.
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1014.png "zasad ryzyka użytkownika")
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1014.png "zasad ryzyka dla użytkownika")
 
 
 
 ## <a name="users-flagged-for-risk"></a>Użytkownicy oflagowani w związku z ryzykiem
 
-Wszystkie aktywne [ryzyka zdarzenia](active-directory-identity-protection-risk-events.md) zostały wykryte przez usługę Azure Active Directory dla użytkownika współtworzyć pojęcie logiczne o nazwie użytkownika ryzyka. Użytkownik oznaczona flagą ryzyko jest wskaźnikiem dla konta użytkownika, który może być zagrożone.
+Wszystkie aktywne [zdarzeń o podwyższonym ryzyku](active-directory-identity-protection-risk-events.md) zostały wykryte przez usługę Azure Active Directory dla użytkownika Współtworzenie logiczne koncepcji o nazwie ryzyka związanego z użytkownikiem. Użytkownik oznaczonych flagą ryzyka jest wskaźnikiem konta użytkownika, który może być zabezpieczenia mogły zostać naruszone.
 
 ![Użytkownicy oflagowani w związku z ryzykiem](./media/active-directory-identityprotection/1200.png)
 
 
 ### <a name="user-risk-level"></a>Poziom ryzyka użytkownika
 
-Poziom ryzyka użytkownika będzie wskazywać prawdopodobieństwo, że tożsamość użytkownika została naruszona poufność (wysoki, średni lub niski). Jest obliczana na podstawie zdarzeń ryzyka użytkownika, które są skojarzone z tożsamością użytkownika.
+Poziom ryzyka użytkownika jest wskazanie (wysoki, średni lub niski) prawdopodobieństwo, że tożsamość użytkownika został złamany. Jego jest obliczany na podstawie zdarzeń o podwyższonym ryzyku użytkownika, które są skojarzone z tożsamością użytkownika.
 
-Stan zdarzenia ryzyko jest **Active** lub **zamknięte**. Tylko ryzyka zdarzenia, które są **Active** przyczyniają się do obliczania poziomu ryzyka użytkownika.
+Stan zdarzenia o podwyższonym ryzyku jest **Active** lub **zamknięte**. Tylko podejrzanych zdarzeń, które są **Active** przyczyniają się do obliczania poziomu ryzyka użytkownika.
 
 Poziom ryzyka użytkownika jest obliczana przy użyciu następujących danych wejściowych:
 
-* Zdarzenia aktywne ryzyka wpływu na użytkownika
+* Zdarzenia aktywnego ryzyka wpływających na użytkownika
 * Poziom ryzyka tych zdarzeń
-* Określa, czy wykonano wszystkie akcje naprawcze wykonane
+* Czy wykonano wszystkie akcje naprawcze wykonane
 
-![Ryzyko użytkownika](./media/active-directory-identityprotection/1031.png "zagrożeń użytkownika")
+![Ryzyka użytkownika](./media/active-directory-identityprotection/1031.png "ryzyka użytkownika")
 
-Umożliwia tworzenie zasad dostępu warunkowego, które blokują ryzykowne użytkownikom logowanie użytkownika poziomów ryzyka lub mogą bezpiecznie zmienić swoje hasło.
+Poziomy ryzyka użytkownika umożliwia tworzenie zasad dostępu warunkowego, które blokują ryzykownych użytkowników, logowanie lub Wymuś je bezpiecznie zmiany hasła.
 
-### <a name="closing-risk-events-manually"></a>Zamknięcie zdarzenia o podwyższonym ryzyku ręcznie
+### <a name="closing-risk-events-manually"></a>Ręczne zamykanie zdarzeń o podwyższonym ryzyku
 
-W większości przypadków potrwa akcji korygowania, takich jak bezpieczny resetowania hasła, aby automatycznie zamknąć zdarzenia ryzyka. Jednak to może nie być możliwe.  
-To, na przykład sytuacji, gdy:
+W większości przypadków potrwa akcji korygowania, takie jak bezpieczny resetowania hasła, aby automatycznie zamknąć zdarzeń o podwyższonym ryzyku. Jednak to może nie zawsze jest możliwe.  
+Jest to, na przykład tak, gdy:
 
-* Użytkownik z zdarzenia Active ryzyka został usunięty.
-* Badanie wykaże, że zdarzenie zagrożenia zgłoszony został wykonać przez wiarygodnego użytkownika
+* Użytkownik ze zdarzeniami aktywnego ryzyka został usunięty
+* Badanie wykaże, że zdarzenia ryzyka zgłaszanej zostały wykonywać na przez wiarygodnego użytkownika
 
-Ponieważ zdarzenia ryzyka, które są **Active** przyczyniają się do obliczania ryzyka użytkownika, może być konieczne ręczne obniżyć poziom ryzyka zamknięcie zdarzenia o podwyższonym ryzyku ręcznie.  
-W trakcie badania można wykonać dowolną z tych akcji, aby zmienić stan zdarzenia ryzyka:
+Ponieważ zdarzenia o podwyższonym ryzyku są **Active** przyczyniają się do obliczeń ryzyka użytkownika, może być konieczne ręczne obniżyć jej poziom ryzyka przez ręczne zamykanie zdarzeń o podwyższonym ryzyku.  
+W trakcie badania można wykonać dowolną z tych akcji zmiany stanu zdarzenia o podwyższonym ryzyku:
 
-![Akcje](./media/active-directory-identityprotection/34.png "akcje")
+![Akcje](./media/active-directory-identityprotection/34.png "akcji")
 
-* **Rozwiąż** — Jeśli po zbadaniu zdarzenia ryzyka, trwało akcji korygowania odpowiednie poza ochrony tożsamości i uważasz, że zdarzenie ryzyka należy traktować jako zamknięty, oznaczenia zdarzeń jako rozwiązane. Rozwiązane zdarzeń ustawi stan zdarzenia ryzyka zamknięte i zdarzenia ryzyka już przyczyniają się do użytkownika ryzyka.
-* **Oznacz jako fałszywie dodatnich** — w niektórych przypadkach można zbadać zdarzenia ryzyka i wykryć, czy został niepoprawnie oznaczone jako ryzykowne. Można ograniczyć liczbę wystąpień takich przez oznaczenie zdarzeń ryzyka jako fałszywie dodatnich. Dzięki temu algorytmów, aby zwiększyć w przyszłości klasyfikacji zdarzenia podobne uczenia maszynowego. Status zdarzenia fałszywie dodatnich **zamknięte** i nie wpływają one ryzyko użytkownika.
-* **Ignoruj** — Jeśli nie miały żadnych działań korygujących, ale można usunąć z listy aktywne zdarzenie ryzyka można oznaczyć zdarzeniem ryzyka Ignoruj i stan zdarzenia zostanie zamknięty. Zignorowano zdarzenia nie przyczyniają się ryzyko użytkownika. Tej opcji należy używać tylko w niezwykłych okolicznościach.
-* **Uaktywnij ponownie** -ryzyka zdarzenia, które zostały ręcznie zamknięty (przez wybranie **rozwiązać**, **wynik fałszywie dodatni**, lub **Ignoruj**) można ponownie uaktywnić, ustawienia zdarzenia stanu z powrotem do **Active**. Zdarzenia ponownie uaktywnione ryzyka przyczyniają się do obliczania poziomu ryzyka użytkownika. Nie można ponownie uaktywnić zamknięte przy użyciu funkcji korygowania (takie jak resetowania hasła bezpiecznego) zdarzenia ryzyka.
+* **Rozwiąż** — Jeśli po przeanalizowaniu zdarzenie o podwyższonym ryzyku, zajęło akcji korygowania odpowiednie poza ochrony tożsamości i uważasz, że zdarzenie o podwyższonym ryzyku powinna być uznana zamknięte, oznaczenia zdarzeń jako rozwiązane. Rozwiązane zdarzenia wartość stanu zdarzenia o podwyższonym ryzyku zamknięte i nie jest już przyczynia się zdarzenie o podwyższonym ryzyku do ryzyka związanego z użytkownikiem.
+* **Oznacz jako wyników fałszywie dodatnich** — w niektórych przypadkach może zbadać zdarzenie o podwyższonym ryzyku i odnajdywanie, że został niepoprawnie oflagowana jako ryzykowne. Możesz pomóc zmniejszyć liczbę takich wystąpień, oznaczanie zdarzenia ryzyka jako fałszywie dodatnie. Ułatwi to algorytmów w celu klasyfikacji zdarzenia podobne w przyszłości uczenia maszynowego. Status zdarzenia fałszywie dodatnie **zamknięte** i już nie wpływają one ryzyka związanego z użytkownikiem.
+* **Ignoruj** — Jeśli to ustawienie nie miały żadnych akcji korygowania, ale ma zdarzenia o podwyższonym ryzyku, który ma zostać usunięty z listy aktywnych, można oznaczyć zdarzenie o podwyższonym ryzyku Ignoruj i stanu zdarzenia zostaną zamknięte. Zignorowano zdarzenia nie przyczyniają się do ryzyka związanego z użytkownikiem. Ta opcja powinna być używana tylko w nietypowych sytuacjach.
+* **Uaktywnij ponownie** -podejrzanych zdarzeń, które zostały ręcznie zamknięte (wybierając **rozwiązać**, **wynik fałszywie dodatni**, lub **Ignoruj**) można ponownie uaktywnić, ustawiła zdarzenie stan z powrotem do **Active**. Zdarzenia ryzyka ponownie uaktywnione przyczyniają się do obliczania poziomu ryzyka użytkownika. Nie można ponownie uaktywnić zdarzenia o podwyższonym ryzyku zamknięty przy użyciu funkcji korygowania (takie jak Resetowanie hasła bezpiecznego).
 
-**Aby otworzyć okno dialogowe elementami konfiguracji**:
+**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
 
-1. Na **Azure AD Identity Protection** bloku, w obszarze **zbadaj**, kliknij przycisk **ryzyka zdarzenia**.
+1. Na **usługi Azure AD Identity Protection** bloku, w obszarze **zbadaj**, kliknij przycisk **zdarzeń o podwyższonym ryzyku**.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1002.png "resetowania hasła ręczne")
-2. W **ryzyka zdarzenia** kliknij zagrożenie.
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1002.png "resetowania haseł usługi ręczna")
+2. W **zdarzeń o podwyższonym ryzyku** kliknij zagrożenie.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1003.png "resetowania hasła ręczne")
-3. W bloku ryzyka kliknij prawym przyciskiem myszy przez użytkownika.
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1003.png "resetowania haseł usługi ręczna")
+3. W bloku o podwyższonym ryzyku kliknij prawym przyciskiem myszy użytkownika.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1004.png "resetowania hasła ręczne")
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1004.png "resetowania haseł usługi ręczna")
 
-### <a name="closing-all-risk-events-for-a-user-manually"></a>Ręczne zamknięcie wszystkich zdarzeń ryzyka dla użytkownika
-Zamiast ręcznie indywidualnie zamknięcie zdarzenia ryzyka dla użytkownika, Azure Active Directory Identity Protection zapewnia także metodę Zamknij wszystkie zdarzenia dla użytkownika z jednego kliknięcia.
+### <a name="closing-all-risk-events-for-a-user-manually"></a>Zamykanie wszystkich zdarzeń o podwyższonym ryzyku dla użytkownika ręcznie
+Zamiast indywidualnie Ręczne zamykanie zdarzeń o podwyższonym ryzyku dla użytkownika, usługi Azure Active Directory Identity Protection zapewnia także metody, aby zamknąć wszystkie zdarzenia dla użytkownika za pomocą jednego kliknięcia.
 
-![Akcje](./media/active-directory-identityprotection/2222.png "akcje")
+![Akcje](./media/active-directory-identityprotection/2222.png "akcji")
 
-Po kliknięciu **odrzucić wszystkie zdarzenia**, wszystkie zdarzenia zostaną zamknięte i użytkownika, którego dotyczy nie jest już na ryzyko.
+Po kliknięciu **Odrzuć wszystkie zdarzenia**, wszystkie zdarzenia są zamknięte i użytkownika, którego dotyczy nie jest już na ryzyko.
 
-### <a name="remediating-user-risk-events"></a>Zdarzenia o podwyższonym ryzyku korygując użytkownika
+### <a name="remediating-user-risk-events"></a>Korygowanie działań na podstawie zdarzeń o podwyższonym ryzyku użytkownika
 
-Korygowanie jest czynnością do zabezpieczania tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia. Akcja korygowania przywraca tożsamości lub urządzenie to bezpieczne i usuwa poprzednie zdarzenia ryzyko związane z tożsamości lub urządzenia.
+Korygowanie jest akcję, aby zabezpieczyć tożsamość lub urządzeń, które wcześniej podejrzewa lub znane naruszenia. Akcja korygowania przywraca tożsamości lub urządzenia do stanu bezpiecznego i jest rozpoznawana jako poprzednie zdarzenia o podwyższonym ryzyku skojarzone z tożsamością lub urządzenia.
 
-Aby skorygować użytkownika zdarzenia o podwyższonym ryzyku, można:
+Korygowania zdarzeń o podwyższonym ryzyku użytkownika, możesz wykonywać następujące czynności:
 
-* Bezpieczne hasło zresetować ręcznie skorygować zdarzenia o podwyższonym ryzyku użytkownika
-* Konfigurowanie zasad zabezpieczeń użytkownika ryzyko ograniczenia lub automatycznie korygować zdarzenia o podwyższonym ryzyku użytkownika
-* Ponowne instalowanie obrazu zainfekowanych urządzeń  
+* Bezpieczne hasło resetowania ręcznego korygowania zdarzeń o podwyższonym ryzyku użytkownika
+* Konfigurowanie zasad zabezpieczeń ryzyka użytkownika do ograniczenia lub automatycznego korygowania zdarzeń o podwyższonym ryzyku użytkownika
+* Ponowne instalowanie obrazu zainfekowanego urządzenia  
 
-#### <a name="manual-secure-password-reset"></a>Resetowanie ręczne bezpiecznego hasła
-Bezpieczne hasło jest skuteczne korygowania w przypadku wielu zdarzeń ryzyka i wykonywana, automatycznie powoduje zamknięcie zdarzenia o podwyższonym ryzyku i ponownie oblicza poziom ryzyka użytkownika. Pulpit nawigacyjny ochrony tożsamości służy do inicjowania resetowania hasła dla użytkownika ryzykowne.
+#### <a name="manual-secure-password-reset"></a>Resetowanie ręczne bezpieczne hasło
+Resetowanie hasła bezpiecznego jest skuteczne rozwiązywanie problemu dotyczącego wielu zdarzeń o podwyższonym ryzyku i wykonywane, automatycznie powoduje zamknięcie tych zdarzeń o podwyższonym ryzyku i ponownie oblicza poziom ryzyka użytkownika. Pulpit nawigacyjny ochrony tożsamości służy do inicjowania resetowania hasła dla użytkownika ryzykowne.
 
-Określone okno zapewnia dwie różne metody, aby zresetować hasło:
+Określone okno oferuje dwie różne metody, aby zresetować hasło:
 
-**Zresetuj hasło** — wybierz tę opcję **wymagają od użytkownika do zresetowania swojego hasła** Aby zezwolić użytkownikowi na własnym odzyskania, jeśli użytkownik został zarejestrowany w usłudze Multi-Factor authentication. Podczas jego następnego logowania użytkownik będzie wymagane do rozwiązania pomyślnie żądanie uwierzytelniania wieloskładnikowego i następnie wymuszone, aby zmienić hasło. Ta opcja jest niedostępna, jeśli konto użytkownika nie jest już zarejestrowany uwierzytelnianie wieloskładnikowe.
+**Resetuj hasło** — wybierz tę opcję **wymaga od użytkownika do zresetowania swojego hasła** do Zezwalaj użytkownikowi na własnym odzyskiwania, jeśli użytkownik został zarejestrowany do uwierzytelniania wieloskładnikowego. Podczas jego następnego logowania użytkownik będzie wymagane do rozwiązania pomyślnie wezwanie do uwierzytelnienia Multi-Factor Authentication i następnie zmuszany do zmiany hasła. Ta opcja jest niedostępna, jeśli konto użytkownika nie jest już zarejestrowane usługi Multi-Factor authentication.
 
-**Hasło tymczasowe** — wybierz tę opcję **wygenerować hasło tymczasowe** natychmiast unieważnia istniejące hasło i utworzenie nowego hasła tymczasowego dla użytkownika. Alternatywny adres e-mail użytkownika lub menedżerem użytkownika, należy wysłać nowe hasło tymczasowe. Ponieważ hasło tymczasowe, użytkownik pojawi się monit o zmianę hasła podczas logowania.
+**Hasło tymczasowe** — wybierz tę opcję **wygenerowania hasła tymczasowego** natychmiast unieważnia istniejące hasło i utworzenie nowego hasła tymczasowego dla tego użytkownika. Wyślij nowe hasło tymczasowe, alternatywny adres e-mail użytkownika lub jego menedżera. Ponieważ hasło tymczasowe, użytkownik zostanie wyświetlony monit zmiany hasła podczas logowania.
 
 ![Zasady](./media/active-directory-identityprotection/1005.png "zasad")
 
-**Aby otworzyć okno dialogowe elementami konfiguracji**:
+**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
 
-1. Na **Azure AD Identity Protection** bloku, kliknij przycisk **użytkownicy oflagowani ryzyka**.
+1. Na **usługi Azure AD Identity Protection** bloku kliknij **użytkownicy oflagowani w związku z ryzykiem**.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1006.png "resetowania hasła ręczne")
-2. Z listy użytkowników wybierz użytkownika z ryzykiem co najmniej jednego zdarzenia.
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1006.png "resetowania haseł usługi ręczna")
+2. Z listy użytkowników wybierz użytkownika z zdarzeń o podwyższonym ryzyku w co najmniej jeden.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1007.png "resetowania hasła ręczne")
-3. W bloku użytkownika kliknij **resetowania hasła**.
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1007.png "resetowania haseł usługi ręczna")
+3. W bloku użytkownika kliknij **Resetuj hasło**.
 
-    ![Resetowania hasła ręczne](./media/active-directory-identityprotection/1008.png "resetowania hasła ręczne")
+    ![Resetowanie hasła ręczne](./media/active-directory-identityprotection/1008.png "resetowania haseł usługi ręczna")
 
-### <a name="user-risk-security-policy"></a>Zasady zabezpieczeń użytkownika ryzyka
-Zasady zabezpieczeń użytkownika ryzyko jest zasady dostępu warunkowego, które ocenia poziom ryzyka dla określonego użytkownika, a następnie stosuje akcje korygowania i środki zaradcze, na podstawie wstępnie zdefiniowane warunki i zasady.
+### <a name="user-risk-security-policy"></a>Zasady zabezpieczeń ryzyka użytkownika
+Zasady zabezpieczeń ryzyka użytkownika jest zasady dostępu warunkowego, który ocenia poziom ryzyka dla określonego użytkownika, a następnie stosuje akcje korygowania i ograniczania ryzyka na podstawie wstępnie zdefiniowanych warunków i zasad.
 
-![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1009.png "zasad ryzyka użytkownika")
+![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1009.png "zasad ryzyka dla użytkownika")
 
-Azure AD Identity Protection pomaga w zarządzaniu łagodzenia i korygowania oflagowane ryzyka, umożliwiając użytkownikom:
+Usługa Azure AD Identity Protection pomaga w zarządzaniu ograniczania ryzyka i korygowania użytkowników oznaczonych flagą ryzyka, ponieważ umożliwia:
 
-* Ustaw użytkowników i grup, których dotyczy zasada:
+* Ustaw użytkowników i grup, których dotyczą te zasady:
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1010.png "zasad ryzyka użytkownika")
-* Należy ustawić użytkownika ryzyka poziomu próg (niski, średni lub wysoki) wyzwalania zasad:
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1010.png "zasad ryzyka dla użytkownika")
+* Ustaw użytkownika poziomu granice ryzyka (niski, średni lub wysoki) wyzwalającego zasad:
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1011.png "zasad ryzyka użytkownika")
-* Ustaw formanty mają być egzekwowane, gdy wyzwala zasad:
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1011.png "zasad ryzyka dla użytkownika")
+* Ustawienie kontroli, które mają być egzekwowane po wyzwoleniu zasad:
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1012.png "zasad ryzyka użytkownika")
-* Przełącz stan tej zasady:
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1012.png "zasad ryzyka dla użytkownika")
+* Przełącz stan zasad:
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
-* Przegląd i ocena wpływu zmiany przed uaktywnieniem go:
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/403.png "rejestracji usługi MFA")
+* Przegląd i ocena wpływu zmiany przed aktywowaniem go:
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1013.png "zasad ryzyka użytkownika")
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1013.png "zasad ryzyka dla użytkownika")
 
-Wybieranie **wysokiej** próg zmniejsza liczbę razy zasadę wyzwoleniu oraz zminimalizować wpływ na użytkowników.
-Jednak nie obejmuje **małej** i **średni** użytkowników oznaczona flagą ryzyko związane z zasad, które mogą nie zapewnić tożsamości lub urządzenia, który zostały wcześniej podejrzanych lub znane naruszenia.
+Wybieranie **wysokiej** próg zmniejsza liczbę razy, zasada zostanie wyzwolony i minimalizuje wpływ na użytkowników.
+Jednakże nie obejmuje **niski** i **średni** użytkowników generujących ryzyko związane z zasad, które mogą nie zapewnić tożsamości lub urządzeń, zostały wcześniej podejrzenie lub znane naruszenia.
 
 Podczas ustawiania zasad
 
-* Wyklucz użytkowników, które mogą generować dużą alarmów false (deweloperów, analityków zabezpieczeń)
-* Wyklucz użytkowników, w których włączenie zasad nie jest praktyczne ustawień regionalnych (na przykład brak dostępu do działu pomocy technicznej)
-* Użyj **wysokiej** próg podczas początkowej zasad zbiorczego, lub jeśli należy zminimalizować problemy, które zostały odebrane przez użytkowników końcowych.
-* Użyj **małej** progu, jeśli organizacja wymaga wyższego poziomu bezpieczeństwa. Wybieranie **małej** próg wprowadzono dodatkowe użytkownika logowania wyzwania, ale zwiększyć bezpieczeństwo.
+* Wyklucz użytkowników, którzy mogą wygenerować dużą liczbę fałszywych alarmów (deweloperzy, analityków zabezpieczeń)
+* Wyklucz użytkowników w lokalizacjach, w którym włączenie zasad nie jest możliwe (na przykład brak dostępu do działu pomocy technicznej)
+* Użyj **wysokiej** próg podczas wdrażania zasad początkowej, czy należy zminimalizować wyzwania widoczne dla użytkowników końcowych.
+* Użyj **niski** próg, jeśli Twoja organizacja wymaga zwiększenia bezpieczeństwa. Wybieranie **niski** próg wprowadza dodatkowego użytkownika logowania wyzwania, ale wyższy poziom bezpieczeństwa.
 
-Jest zalecana domyślna w przypadku większości organizacji do skonfigurowania reguły dla **średni** próg uzyskanie równowagi między użyteczność i zabezpieczeń.
+Zalecana domyślna w przypadku większości organizacji jest skonfigurowanie reguły dla **średni** próg, aby zachować równowagę pomiędzy użyteczność i zabezpieczeń.
 
-Omówienie powiązane funkcje użytkownika Zobacz:
+Omówienie środowiska użytkownika Zobacz:
 
-* [Złamania zabezpieczeń konta przepływu odzyskiwania](active-directory-identityprotection-flows.md#compromised-account-recovery).  
+* [Naruszenia zabezpieczeń konta odzyskiwania przepływ](active-directory-identityprotection-flows.md#compromised-account-recovery).  
 * [Naruszone zablokowano konto przepływu](active-directory-identityprotection-flows.md#compromised-account-blocked).  
 
-**Aby otworzyć okno dialogowe elementami konfiguracji**:
+**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
 
-- Na **Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **zasad ryzyka użytkownika**.
+- Na **usługi Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **zasad ryzyka dla użytkownika**.
 
-    ![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1009.png "zasad ryzyka użytkownika")
+    ![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1009.png "zasad ryzyka dla użytkownika")
 
-### <a name="mitigating-user-risk-events"></a>Zmniejszenia zdarzenia o podwyższonym ryzyku użytkownika
-Administratorzy mogą skonfigurować zasady zabezpieczeń ryzyka użytkownika, aby uniemożliwić użytkownikom na logowanie się w zależności od poziomu zagrożenia.
+### <a name="mitigating-user-risk-events"></a>Ograniczanie ryzyka użytkownika zdarzeń o podwyższonym ryzyku
+Administratorzy mogą ustawić zasady zabezpieczeń ryzyka użytkownika w celu zablokowania użytkowników podczas logowania się w zależności od poziomu zagrożenia.
 
-Blokowanie logowania:
+Blokowania logowania:
 
-* Uniemożliwia wygenerowanie nowego zdarzenia ryzyka użytkownika dla użytkownika, którego dotyczy
-* Administratorzy mogą ręcznie skorygować zdarzenia o podwyższonym ryzyku wpływających na tożsamości użytkownika i przywrócenia stanu bezpiecznego
+* Zapobiega generowania nowego użytkownika zdarzeń o podwyższonym ryzyku dla użytkownika, którego dotyczy
+* Administratorzy mogą ręcznie korygowania zdarzeń o podwyższonym ryzyku wpływających na tożsamości użytkownika i przywracania go w bezpiecznym stanu
 
 
 
 ## <a name="multi-factor-authentication-registration-policy"></a>Zasady rejestracji uwierzytelniania wieloskładnikowego
-Uwierzytelnianie wieloskładnikowe platformy Azure jest metodę weryfikacji tożsamości, która wymaga użycia więcej niż tylko nazwę użytkownika i hasło. Zapewnia drugą warstwę zabezpieczeń do logowania użytkowników i transakcji.  
-Firma Microsoft zaleca wymagane uwierzytelnianie wieloskładnikowe platformy Azure logowania użytkownika, ponieważ jego:
+Usługa Azure Multi-Factor authentication jest metodą weryfikacji tożsamości, która wymaga użycia więcej niż tylko nazwy użytkownika i hasła. Zapewnia drugą warstwę zabezpieczeń do logowania użytkowników i transakcji.  
+Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor authentication do logowania użytkownika, ponieważ jego:
 
-* Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe
-* Odgrywa kluczową rolę w przygotowywanie organizacji do ochrony i odzyskiwania z dokonywania konta
+* Zapewnia silne uwierzytelnianie z szerokim zakresem prostych opcji weryfikacji
+* Odgrywa kluczową rolę w przygotowywanie organizacji do ochrony i odzyskiwania z naruszeń konta
 
-![Zasady użytkownika ryzyka](./media/active-directory-identityprotection/1019.png "zasad ryzyka użytkownika")
+![Zasady dotyczące ryzyka związanego z użytkownika](./media/active-directory-identityprotection/1019.png "zasad ryzyka dla użytkownika")
 
-Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](authentication/multi-factor-authentication.md)
+Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe systemu Azure?](authentication/multi-factor-authentication.md)
 
-Azure AD Identity Protection pomaga w zarządzaniu wdrożenie uwierzytelniania wieloskładnikowego rejestracji przez skonfigurowanie zasad, które umożliwia:
+Usługa Azure AD Identity Protection pomaga w zarządzaniu wdrożenie rejestracji uwierzytelniania wieloskładnikowego przez skonfigurowanie zasad, która pozwala na:
 
-* Ustaw użytkowników i grup, których dotyczy zasada:
+* Ustaw użytkowników i grup, których dotyczą te zasady:
 
     ![Zasady MFA](./media/active-directory-identityprotection/1020.png "zasad MFA")
-* Ustawianie formantów, które mają być egzekwowane, gdy zasady wyzwala::  
+* Ustawienie kontroli, które mają być egzekwowane po wyzwoleniu zasady::  
 
     ![Zasady MFA](./media/active-directory-identityprotection/1021.png "zasad MFA")
-* Przełącz stan tej zasady:
+* Przełącz stan zasad:
 
     ![Zasady MFA](./media/active-directory-identityprotection/403.png "zasad MFA")
 * Wyświetl bieżący stan rejestracji:
 
     ![Zasady MFA](./media/active-directory-identityprotection/1022.png "zasad MFA")
 
-Omówienie powiązane funkcje użytkownika Zobacz:
+Omówienie środowiska użytkownika Zobacz:
 
-* [Uwierzytelnianie wieloskładnikowe rejestracji przepływu](active-directory-identityprotection-flows.md#multi-factor-authentication-registration).  
-* [Logowanie napotyka przy użyciu usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md).  
+* [Uwierzytelnianie wieloskładnikowe rejestracji w usłudze flow](active-directory-identityprotection-flows.md#multi-factor-authentication-registration).  
+* [Logowania środowisk przy użyciu usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md).  
 
-**Aby otworzyć okno dialogowe elementami konfiguracji**:
+**Aby otworzyć okno dialogowe związanej z nimi konfiguracji**:
 
-- Na **Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **rejestracji usługi Multi-Factor authentication**.
+- Na **usługi Azure AD Identity Protection** bloku, w **Konfiguruj** kliknij **rejestracji uwierzytelniania wieloskładnikowego**.
 
     ![Zasady MFA](./media/active-directory-identityprotection/1019.png "zasad MFA")
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Kanał 9: Usługi Azure AD i Pokaż tożsamości: Podgląd ochrony tożsamości](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Witrynie Channel 9: Usługi Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-* [Włączenie ochrony tożsamości usługi Azure Active Directory](active-directory-identityprotection-enable.md)
+* [Włączanie usługi Azure Active Directory Identity Protection](active-directory-identityprotection-enable.md)
 
-* [Luk w zabezpieczeniach wykrywanych przez usługę Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md)
+* [Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md)
 
-* [Zdarzenia o podwyższonym ryzyku Azure Active Directory](active-directory-identity-protection-risk-events.md)
+* [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](active-directory-identity-protection-risk-events.md)
 
-* [Azure Active Directory Identity Protection powiadomienia](active-directory-identityprotection-notifications.md)
+* [Powiadomienia usługi Azure Active Directory Identity Protection](active-directory-identityprotection-notifications.md)
 
-* [Azure podręcznikowym ochronę tożsamości w usłudze Active Directory](active-directory-identityprotection-playbook.md)
+* [Podręcznik usługi Azure Active Directory Identity Protection](active-directory-identityprotection-playbook.md)
 
-* [Azure Active Directory Identity Protection słownik](active-directory-identityprotection-glossary.md)
+* [Słownik platformy Azure Active Directory Identity Protection](active-directory-identityprotection-glossary.md)
 
-* [Logowanie, korzystając z usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md)
+* [Środowisko logowania za pomocą usługi Azure AD Identity Protection](active-directory-identityprotection-flows.md)
 
-* [Azure Active Directory Identity Protection — sposób odblokowania użytkowników](active-directory-identityprotection-unblock-howto.md)
+* [Usługa Azure Active Directory Identity Protection - sposób odblokowania użytkowników](active-directory-identityprotection-unblock-howto.md)
 
-* [Wprowadzenie do usługi Azure Active Directory Identity Protection oraz Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
+* [Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)

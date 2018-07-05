@@ -1,29 +1,29 @@
 ---
-title: Dodaj logowanie do aplikacji sieci web Node.js w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak utworzyć aplikację sieci web Node.js, który loguje się użytkowników z usługi Azure Active Directory B2C.
+title: Dodawanie logowania do aplikacji sieci web Node.js w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Jak utworzyć aplikacji sieci web Node.js, który się zaloguje użytkowników za pomocą usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9c589f8bf8189961f88a6ae1d66f1fd9e17e9bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ee8dab24d53c7f3563d741ff74e49b0b87cda6da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711114"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442507"
 ---
-# <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: dodawanie funkcji logowania się do aplikacji sieci Web w środowisku Node.js
+# <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: dodawanie funkcji logowania się do aplikacji internetowej w środowisku Node.js
 
-**Passport** to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Jest to elastyczne i modułowe oprogramowanie, które można dyskretnie zainstalować w dowolnej aplikacji sieci Web opartej na module Express lub Restify. Kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu m.in. nazwy użytkownika i hasła lub kont w serwisach Facebook i Twitter.
+**Passport** to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Jest to elastyczne i modułowe oprogramowanie, które można dyskretnie zainstalować w dowolnej aplikacji internetowej opartej na module Express lub Restify. Kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu m.in. nazwy użytkownika i hasła lub kont w serwisach Facebook i Twitter.
 
 Usługi Azure Active Directory (Azure AD), można zainstalować ten moduł i następnie dodać usługi Azure AD `passport-azure-ad` wtyczki.
 
-Należy:
+Następujące czynności:
 
 1. Zarejestrować aplikację w usłudze Azure AD.
 2. Skonfigurować aplikację do korzystania z wtyczki `passport-azure-ad`.
@@ -44,7 +44,7 @@ Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog
 
 Następnie musisz utworzyć aplikację w katalogu usługi B2C. Dzięki temu do usługi Azure AD będą przekazywane informacje wymagane do bezpiecznego komunikowania się z aplikacją. Zarówno aplikacja klienta, jak i interfejs API sieci Web będą reprezentowane przez jeden **Identyfikator aplikacji**, ponieważ stanowią jedną aplikację logiczną. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
 
-- Dołącz do aplikacji **aplikację sieci Web**/**interfejs API sieci Web**.
+- Dołącz do aplikacji **aplikację internetową**/**internetowy interfejs API**.
 - Wprowadź `http://localhost:3000/auth/openid/return` w polu **Adres URL odpowiedzi**. Jest to domyślny adres URL dla tej próbki kodu.
 - Utwórz **klucz tajny aplikacji** i skopiuj go. Będzie potrzebny później. Pamiętaj, że aby go użyć, jego wartość musi być [ujęta w kodzie XML w znaki ucieczki](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape).
 - Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. On również będzie później potrzebny.
@@ -61,7 +61,7 @@ W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy uż
 
 Po utworzeniu trzech zbiorów zasad można rozpocząć tworzenie aplikacji.
 
-Należy pamiętać, że w tym artykule nie opisano sposobu korzystania z nowo utworzonych zasad. Aby dowiedzieć się, jak działają zasady w usłudze Azure AD B2C, należy najpierw zapoznać się z [samouczkiem ułatwiającym rozpoczęcie pracy z aplikacją sieci Web platformy .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Należy pamiętać, że w tym artykule nie opisano sposobu korzystania z nowo utworzonych zasad. Aby dowiedzieć się, jak działają zasady w usłudze Azure AD B2C, należy najpierw zapoznać się z [samouczkiem ułatwiającym rozpoczęcie pracy z aplikacją internetową platformy .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
 
 ## <a name="add-prerequisites-to-your-directory"></a>Dodawanie wymagań wstępnych do katalogu
 

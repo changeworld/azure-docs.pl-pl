@@ -1,6 +1,6 @@
 ---
-title: 'Omówienie: Wykonywać Przegląd dostępu w Privileged Identity Management zasobów platformy Azure | Dokumentacja firmy Microsoft'
-description: Tym dokumencie opisano, jak przeprowadzić przegląd dostępu w PIM dla zasobów platformy Azure.
+title: 'Omówienie: Wykonywanie przeglądu dostępu w Privileged Identity Management dla zasobów platformy Azure | Dokumentacja firmy Microsoft'
+description: W tym dokumencie opisano, jak przeprowadzić przegląd dostępu w usłudze PIM dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,34 +10,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b53ae66d927dfacd1048a6bd0fa9abdb6f2a7862
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 9e9053c62f2ead3b6ae7d4ca3c6c38fd1063b8da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751156"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441509"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Pulpit nawigacyjny zasobów umożliwia wykonywanie przeglądu dostępu
+# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Wykonywanie przeglądu dostępu przy użyciu pulpitu nawigacyjnego zasobu
 
-Pulpit nawigacyjny zasobów można użyć do wykonania w zarządzania tożsamości uprzywilejowanych (PIM) Przegląd dostępu dla zasobów platformy Azure. Pulpit nawigacyjny widoku administracyjnej ma trzy główne składniki:
+Zasób pulpit nawigacyjny umożliwia wykonywanie przeglądu dostępu w Privileged Identity Management (PIM) dla zasobów platformy Azure. Administrator Wyświetl pulpit nawigacyjny ma trzy główne składniki:
 
-- Graficzna reprezentacja zasobu roli aktywacji.
-- Dwa wykresy dystrybucji przypisań ról przez typ przypisania.
-- Obszar danych dotyczących nowych przypisań ról.
+- Graficzna reprezentacja aktywacji roli zasobu.
+- Dwa wykresy, które wyświetlają rozkład przypisań ról, typ przypisania.
+- Obszar danych, odnoszące się do nowego przypisania roli.
 
-![Zrzut ekranu przedstawiający Admin widoku pulpitu nawigacyjnego, wyświetlanie wykresów i wykresy](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Zrzut ekranu pulpitu nawigacyjnego widok administratora i wykresy](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-![Zrzut ekranu przedstawiający Admin widoku pulpitu nawigacyjnego, przedstawiający listę danych](media/azure-pim-resource-rbac/role-settings.png)
+![Zrzut ekranu pulpitu nawigacyjnego widok administratora i listę danych](media/azure-pim-resource-rbac/role-settings.png)
 
-Graficzna reprezentacja zasobu roli aktywacji obejmuje ostatnich siedmiu dni. Te dane zakresie znajduje się wybrany zasób i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, administrator dostępu użytkowników) i dla wszystkich ról połączone.
+Graficzna reprezentacja zasobu aktywacji roli obejmuje ostatnich siedmiu dni. Te dane są ograniczone do wybranego zasobu i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, administrator dostępu użytkowników), a także dla wszystkich ról w połączeniu.
 
-Po prawej stronie wykresu aktywacji dwa wykresy wyświetlić typ przydziału dla użytkowników i grup dystrybucji przypisań ról. Należy zmienić wartość na wartość procentową (lub odwrotnie), wybierając wycinek wykresu.
+Z prawej strony wykresu aktywacji dwa wykresy wyświetlane rozkład przypisań ról według typu przypisania, dla użytkowników i grup. Wartość do wartości procentowej (lub odwrotnie), można zmienić, wybierając wycinek wykresu.
 
-Poniżej wykresy zostanie wyświetlony w ciągu ostatnich 30 dni oraz listę ról posortowane według całkowitej przypisania (w kolejności malejącej) liczbę użytkowników i grup z nowych przypisań ról.
+Poniżej wykresów zobaczysz liczbę użytkowników i grup za pomocą nowego przypisania roli w ciągu ostatnich 30 dni oraz listę ról, posortowane według łączna liczba przypisań (w kolejności malejącej).
 
 

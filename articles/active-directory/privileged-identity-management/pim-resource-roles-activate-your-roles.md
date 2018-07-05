@@ -1,53 +1,53 @@
 ---
 title: Uaktywnij role zasobów platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Opisuje sposób aktywują role w ramach usługi PIM.
+description: Opisuje sposób aktywowania ról w usłudze PIM.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 30032229c3c24a7f7450b3f590ed1d3acd18b47d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: d2f61f1ebdd473a24115c7774801f5b7694f224f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233135"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443209"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Uaktywnij role zasobów platformy Azure przy użyciu Privileged Identity Management
-Zarządzanie tożsamości uprzywilejowanych (PIM) wprowadzono nowe środowisko w aktywowania ról dla zasobów platformy Azure. Członkowie roli kwalifikujących się zaplanować aktywacji dla przyszłych daty i godziny. Można również określić czas trwania aktywacji określonym terminie (skonfigurowanych przez administratorów). Aby uzyskać więcej informacji, zobacz [jak aktywować lub dezaktywować role w programie Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Privileged Identity Management (PIM) wprowadzono nowe środowisko w aktywowania role zasobów platformy Azure. Elementy członkowskie kwalifikowania się do roli można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Aby uzyskać więcej informacji, zobacz [jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ## <a name="activate-roles"></a>Uaktywnij role
-Przejdź do **Moje ról** sekcji w okienku po lewej stronie. Wybierz **Aktywuj** dla roli, która ma być aktywowana.
+Przejdź do **Moje role** sekcji w okienku po lewej stronie. Wybierz **Aktywuj** dla roli, która ma zostać uaktywniona.
 
-![Karta "Kwalifikujących się role" w okienku "Mój ról".](media/azure-pim-resource-rbac/rbac-roles.png)
+![Karta "Kwalifikujące się role" w okienku "Moje role".](media/azure-pim-resource-rbac/rbac-roles.png)
 
-Z **aktywacji** menu, wprowadź datę rozpoczęcia i czas, aby aktywować rolę. Opcjonalnie, Zmniejsz czas trwania aktywacji (długość czasu, przez który rola jest aktywna), a następnie wprowadź uzasadnienie, jeśli to konieczne. Następnie wybierz opcję **Aktywuj**.
+Z **aktywacji** menu, wprowadź datę rozpoczęcia i czasu aktywacji roli. Opcjonalnie można zmniejszyć czas trwania aktywacji (długość czasu, przez jaki rola jest aktywna) i podać uzasadnienie, jeśli to konieczne. Następnie wybierz **Aktywuj**.
 
-Jeśli nie zostaną zmodyfikowane datę i godzinę, w sekundach uaktywnieniu roli. W **Moje ról** okienku komunikat transparentu pokazuje, czy rola jest przechowywane w kolejce w celu aktywacji. Wybierz przycisk Odśwież, aby wyczyścić tę wiadomość.
+Jeśli data i godzina rozpoczęcia nie są modyfikowane, rola jest aktywowane w ciągu kilku sekund. W **Moje role** okienku komunikat transparentu pokazuje, że rola znajduje się w kolejce do aktywacji. Wybierz przycisk Odśwież, aby wyczyścić ten komunikat.
 
-![Okienko "Mój ról" komunikat transparentu i powiadomienia o oczekuje na zatwierdzenie](media/azure-pim-resource-rbac/rbac-activate-notification.png)
+![Okienko "Moje role" komunikat transparentu i powiadomienia o oczekujących na zatwierdzenie](media/azure-pim-resource-rbac/rbac-activate-notification.png)
 
-Jeśli aktywacja jest zaplanowane na przyszłe daty i godziny, oczekujące żądania jest wyświetlana na **oczekujących żądań** okienka po lewej stronie. Aktywacja roli nie jest już potrzebne, można anulować żądania, wybierając **anulować** przycisku.
+Jeśli aktywacja jest zaplanowana do przyszłej daty i godziny, oczekujące żądanie pojawi się na **oczekujących żądań** kartę okienka po lewej stronie. Jeśli aktywacji roli jest już potrzebne, można anulować żądania, wybierając **anulować** przycisku.
 
 ![Lista oczekujących żądań z przyciski "Anuluj"](media/azure-pim-resource-rbac/rbac-activate-pending.png)
 
 
-## <a name="apply-just-enough-administration-practices"></a>Zastosuj tylko tyle praktyki administracyjne
+## <a name="apply-just-enough-administration-practices"></a>Stosowanie praktyk Just Enough Administration
 
-Przy użyciu najlepszych rozwiązań tylko tyle administracyjnej (JEA) z przypisaniami roli zasobu jest proste PIM dla zasobów platformy Azure. Użytkownicy i członkowie grupy z przydziałami w subskrypcji platformy Azure lub grupy zasobów można aktywować ich istniejącym przypisaniu roli na zmniejszenie zakresu. 
+Przy użyciu tylko tyle administracji (JEA) najlepszych rozwiązań za pomocą przypisań ról z zasobu jest prostym, zawierającym PIM dla zasobów platformy Azure. Użytkownicy i członkowie grupy za pomocą przypisań do grup zasobów lub subskrypcji platformy Azure można aktywować istniejące przypisania roli w ograniczonym zakresie. 
 
-Ze strony wyszukiwania Znajdź podrzędnego zasób, który trzeba zarządzać.
+Ze strony wyszukiwania Znajdź zasób podrzędny, który trzeba zarządzać.
 
-![Wybieranie zasobu](media/azure-pim-resource-rbac/azure-resources-02.png)
+![Wybierz zasób](media/azure-pim-resource-rbac/azure-resources-02.png)
 
-Wybierz **Moje ról** w okienku po lewej stronie i wybierz odpowiednią rolę, aby aktywować. Typ przydziału jest **dziedziczonych** ponieważ rola została przypisana w ramach subskrypcji, a nie w grupie zasobów.
+Wybierz **Moje role** z okienka po lewej stronie i wybierz odpowiednią rolę, aby aktywować. Typ przypisania **dziedziczone** ponieważ rola została przypisana w ramach subskrypcji, a nie w grupie zasobów.
 
-![Lista przypisania ról kwalifikujących się z wyróżnionym typem przypisania](media/azure-pim-resource-rbac/my-roles-02.png)
+![Listę kwalifikujących się przypisań ról, z wyróżnionym typem przypisania](media/azure-pim-resource-rbac/my-roles-02.png)

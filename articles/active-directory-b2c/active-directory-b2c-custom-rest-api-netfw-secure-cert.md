@@ -1,91 +1,91 @@
 ---
-title: Zabezpieczanie usługi RESTful przy użyciu certyfikatów klientów w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Zabezpieczenia sieci niestandardowe wymiany oświadczenia interfejsu API REST w sieci Azure AD B2C przy użyciu certyfikatów klientów
+title: Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Zabezpieczanie usługi niestandardowe wymianą oświadczenia interfejsu API REST usługi Azure AD B2C przy użyciu certyfikatów klienta
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fc95974fb7db856d0a255d4a5d1d754649b71eca
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0832b3b8e0b2b6d7459eeddb8d8e5a93a7f17d09
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098451"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448353"
 ---
-# <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klientów
+# <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W artykule powiązane należy [tworzenia usługi RESTful](active-directory-b2c-custom-rest-api-netfw.md) który współdziała z usługi Azure Active Directory B2C (Azure AD B2C).
+W powiązanym artykule możesz [tworzenia usługi RESTful](active-directory-b2c-custom-rest-api-netfw.md) która współdziała z usługi Azure Active Directory B2C (Azure AD B2C).
 
-W tym artykule możesz dowiedzieć się, jak ograniczyć dostęp do aplikacji sieci web platformy Azure (interfejs API RESTful) przy użyciu certyfikatu klienta. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania TLS, lub *uwierzytelnianie certyfikatu klienta*. Tylko usługi, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C można uzyskać dostęp do usługi.
+W tym artykule dowiesz się, jak ograniczyć dostęp do aplikacji sieci web platformy Azure (interfejs API RESTful) przy użyciu certyfikatu klienta. Mechanizm ten jest nazywany wzajemnego uwierzytelniania protokołu TLS lub *uwierzytelnianie certyfikatu klienta*. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C, może uzyskać dostęp do usługi.
 
 >[!NOTE]
->Można również zabezpieczyć przy użyciu usługi RESTful [podstawowe uwierzytelnianie HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md). Jednak uwierzytelnianie podstawowe HTTP jest uważany za mniej bezpieczne za pośrednictwem certyfikatu klienta. Nasze zalecenie jest zapewnienie usługi RESTful przy użyciu wstępnego uwierzytelniania certyfikatu klienta, zgodnie z opisem w tym artykule.
+>Można również Zabezpieczanie usługi RESTful przy użyciu [podstawowe uwierzytelnianie HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md). Jednak podstawowe uwierzytelnianie HTTP jest uważany za mniej bezpieczna opcja za pośrednictwem certyfikatu klienta. Nasze zalecenie jest Zabezpieczanie usługi RESTful przy użyciu uwierzytelniania certyfikatu klienta, zgodnie z opisem w tym artykule.
 
-Szczegóły tego artykułu jak:
-* Konfigurowanie aplikacji sieci web, aby użyć uwierzytelniania certyfikatu klienta.
+Ten artykuł zawiera instrukcje:
+* Skonfiguruj aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta.
 * Przekaż certyfikat do kluczy zasad usługi Azure AD B2C.
-* Konfigurowanie zasad niestandardowych do używania certyfikatu klienta.
+* Konfigurowanie niestandardowych zasad do użycia certyfikatu klienta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Wykonaj kroki [integracji interfejsu API REST oświadczeń wymiany](active-directory-b2c-custom-rest-api-netfw.md) artykułu.
-* Pobierz certyfikat (plik pfx z kluczem prywatnym).
+* Wykonaj kroki [integracja interfejsu API REST oświadczeń wymiany](active-directory-b2c-custom-rest-api-netfw.md) artykułu.
+* Uzyskaj prawidłowy certyfikat (plik PFX przy użyciu klucza prywatnego).
 
-## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>Krok 1: Konfigurowanie aplikacji sieci web uwierzytelniania certyfikatu klienta
-Aby skonfigurować **usłudze Azure App Service** aby wymagać certyfikaty klienta, należy ustawić aplikacji sieci web `clientCertEnabled` lokacji ustawienie, aby *true*. Aby to zrobić, w portalu Azure, otwórz stronę aplikacji sieci web. W lewym obszarze nawigacji w obszarze **ustawienia** wybierz **ustawienia protokołu SSL**. W **certyfikaty klienta** sekcji, Włącz **certyfikatu klienta przychodzące** opcji.
-
->[!NOTE]
->Upewnij się, że planu usługi aplikacji Azure jest Standard lub większą. Aby uzyskać więcej informacji, zobacz [szczegółowe omówienie planów usługi aplikacji Azure](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>Krok 1: Konfigurowanie aplikacji sieci web do uwierzytelniania certyfikatu klienta
+Aby skonfigurować **usługi Azure App Service** aby wymagać certyfikaty klienta, należy ustawić w aplikacji sieci web `clientCertEnabled` lokacji ustawienie, aby *true*. Aby wprowadzić tę zmianę, w witrynie Azure portal, otwórz stronę aplikacji sieci web. W lewym obszarze nawigacji w obszarze **ustawienia** wybierz **ustawienia protokołu SSL**. W **certyfikaty klienta** sekcji, Włącz **przychodzący certyfikat klienta** opcji.
 
 >[!NOTE]
->Aby uzyskać więcej informacji o ustawieniu **clientCertEnabled** właściwości, zobacz [Konfigurowanie TLS wzajemnego uwierzytelniania dla aplikacji sieci web](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Upewnij się, że planu usługi Azure App Service jest standardowy lub nowszej. Aby uzyskać więcej informacji, zobacz [szczegółowe omówienie planów usługi Azure App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
-## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>Krok 2: Przekaż certyfikat na klucze zasad usługi Azure AD B2C
-Po ustawieniu `clientCertEnabled` do *true*, komunikacji z interfejsem API RESTful, wymaga certyfikatu klienta. Uzyskaj, przekazywanie i z certyfikatem klienta w dzierżawie usługi Azure AD B2C, wykonaj następujące czynności: 
-1. W dzierżawie usługi Azure AD B2C, wybierz **ustawieniami B2C** > **Framework obsługi tożsamości**.
+>[!NOTE]
+>Aby uzyskać więcej informacji o ustawieniu **elementu clientCertEnabled** właściwości, zobacz [Konfigurowanie wzajemnego uwierzytelniania protokołu TLS dla aplikacji sieci web](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-2. Zaznacz, aby wyświetlić klucze, które są dostępne w Twojej dzierżawie **klucze zasad**.
+## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>Krok 2: Przekaż certyfikat na platformę klucze zasad usługi Azure AD B2C
+Po ustawieniu `clientCertEnabled` do *true*, komunikacji za pomocą interfejsu API RESTful wymaga certyfikatu klienta. Uzyskaj przekazywania oraz przechowywania certyfikatu klienta w Twojej dzierżawie usługi Azure AD B2C, wykonaj następujące czynności: 
+1. W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C** > **struktura środowiska tożsamości**.
+
+2. Aby wyświetlić klucze, które są dostępne w Twojej dzierżawie, wybierz **klucze zasad**.
 
 3. Wybierz pozycję **Dodaj**.  
     **Utwórz klucz** zostanie otwarte okno.
 
-4. W **opcje** wybierz opcję **przekazać**.
+4. W **opcje** wybierz opcję **przekazywanie**.
 
 5. W **nazwa** wpisz **B2cRestClientCertificate**.  
     Prefiks *B2C_1A_* jest automatycznie dodawany.
 
-6. W **przekazywania pliku** wybierz plik .pfx certyfikatu z kluczem prywatnym.
+6. W **przekazywanie pliku** wybierz plik PFX certyfikatu z kluczem prywatnym.
 
 7. W **hasło** wpisz hasło do certyfikatu.
 
-    ![Przekazywanie klucza zasad](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![Przekaż klucz zasad](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
 7. Wybierz pozycję **Utwórz**.
 
-8. Aby wyświetlić klucze, które są dostępne w Twojej dzierżawie i upewnij się, że utworzono `B2C_1A_B2cRestClientCertificate` klucza, wybierz pozycję **klucze zasad**.
+8. Aby wyświetlić klucze, które są dostępne w Twojej dzierżawie i upewnij się, że utworzono `B2C_1A_B2cRestClientCertificate` klucza, wybierz opcję **klucze zasad**.
 
-## <a name="step-3-change-the-technical-profile"></a>Krok 3: Zmiany techniczne profilu
-Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowych, należy zmienić techniczne profil w następujący sposób:
+## <a name="step-3-change-the-technical-profile"></a>Krok 3: Zmień profil techniczny
+Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowych, należy zmienić profil techniczny, wykonując następujące czynności:
 
-1. W katalogu roboczym, otwórz *TrustFrameworkExtensions.xml* rozszerzenia pliku zasad.
+1. W katalogu roboczym otwórz *TrustFrameworkExtensions.xml* rozszerzenie pliku zasad.
 
-2. Wyszukaj `<TechnicalProfile>` węzła, który zawiera `Id="REST-API-SignUp"`.
+2. Wyszukaj `<TechnicalProfile>` węzeł, który zawiera `Id="REST-API-SignUp"`.
 
-3. Zlokalizuj `<Metadata>` elementu.
+3. Znajdź `<Metadata>` elementu.
 
-4. Zmień *AuthenticationType* do *ClientCertificate*w następujący sposób:
+4. Zmiana *AuthenticationType* do *ClientCertificate*, wykonując następujące czynności:
 
     ```xml
     <Item Key="AuthenticationType">ClientCertificate</Item>
     ```
 
-5. Natychmiast po upływie `<Metadata>` elementu, Dodaj następujący fragment kodu XML: 
+5. Natychmiast po zamykającym `<Metadata>` elementu, Dodaj następujący fragment kodu XML: 
 
     ```xml
     <CryptographicKeys>
@@ -93,39 +93,39 @@ Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowyc
     </CryptographicKeys>
     ```
 
-    Po dodaniu fragmentu profilu techniczne powinna wyglądać następujący kod XML:
+    Po dodaniu fragment kodu, profilu technicznego powinien wyglądać podobnie do poniższego kodu XML:
 
     ![Ustaw elementy XML uwierzytelniania ClientCertificate](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: Przekaż zasady dla Twojej dzierżawy
 
-1. W [portalu Azure](https://portal.azure.com), przełącz się do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz **usługi Azure AD B2C**.
+1. W [witryny Azure portal](https://portal.azure.com), przełącz się do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz pozycję **usługi Azure AD B2C**.
 
-2. Wybierz **Framework obsługi tożsamości**.
+2. Wybierz **struktura środowiska tożsamości**.
 
-3. Wybierz **wszystkich zasad**.
+3. Wybierz **wszystkie zasady**.
 
 4. Wybierz **przekazywać zasady**.
 
-5. Wybierz **zastąpić zasady, jeśli istnieje** pole wyboru.
+5. Wybierz **Zastąp zasady Jeśli istnieje** pole wyboru.
 
-6. Przekaż *TrustFrameworkExtensions.xml* pliku, a następnie upewnij się, że przekazaniem sprawdzania poprawności.
+6. Przekaż *TrustFrameworkExtensions.xml* pliku, a następnie upewnij się, że przekazuje sprawdzania poprawności.
 
-## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Testowanie zasad niestandardowych za pomocą Uruchom teraz
-1. Otwórz **ustawienia usługi Azure AD B2C**, a następnie wybierz **Framework obsługi tożsamości**.
+## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
+1. Otwórz **ustawienia usługi Azure AD B2C**, a następnie wybierz pozycję **struktura środowiska tożsamości**.
 
     >[!NOTE]
-    >Uruchom teraz wymaga co najmniej jednej aplikacji można preregistered dla dzierżawcy. Aby dowiedzieć się, jak zarejestrować aplikacji, zapoznaj się z usługi Azure AD B2C [wprowadzenie](active-directory-b2c-get-started.md) artykułu lub [Rejestracja aplikacji](active-directory-b2c-app-registration.md) artykułu.
+    >Uruchom teraz wymaga co najmniej jedną aplikację, aby być jest wstępnie zarejestrowane w ramach dzierżawy. Aby dowiedzieć się, jak zarejestrować aplikacji, zobacz temat usługi Azure AD B2C [wprowadzenie](active-directory-b2c-get-started.md) artykułu lub [rejestracji aplikacji](active-directory-b2c-app-registration.md) artykułu.
 
-2. Otwórz **B2C_1A_signup_signin**, jednostki uzależnionej strony (RP) zasad niestandardowych, które można przekazać, a następnie wybierz **Uruchom teraz**.
+2. Otwórz **B2C_1A_signup_signin**, jednostki uzależnionej strona (RP) zasad niestandardowych, które przekazane, a następnie wybierz **Uruchom teraz**.
 
-3. Testowanie procesu, wpisując **testu** w **imię** pole.  
+3. Przetestuj proces, wpisując **testu** w **imię** pole.  
     Usługa Azure AD B2C wyświetla komunikat o błędzie w górnej części okna.    
 
-    ![Testowanie tożsamości interfejsu API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![Testowanie swoją tożsamość interfejsu API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
 4. W **imię** wpisz nazwę (innego niż "Test").  
-    Usługa Azure AD B2C zarejestrowaniu użytkownika, a następnie wysyła numer lojalność do aplikacji. Zanotuj liczbę podaną w tym przykładzie JWT:
+    Usługa Azure AD B2C loguje się użytkownik, a następnie wysyła numer lojalności do aplikacji. Zanotuj liczbę podaną w tym przykładzie token JWT:
 
    ```
    {
@@ -149,18 +149,18 @@ Aby obsługiwać uwierzytelnianie certyfikatu klienta w zasadach niestandardowyc
    ```
 
    >[!NOTE]
-   >Jeśli zostanie wyświetlony komunikat o błędzie *nazwa jest nieprawidłowa, podaj prawidłową nazwę*, oznacza to, że usługi Azure AD B2C pomyślnie wywoływana z usługą RESTful, gdy on przedstawiony certyfikat klienta. Następnym krokiem jest do weryfikacji certyfikatu.
+   >Jeśli zostanie wyświetlony komunikat o błędzie *nazwa nie jest prawidłowa, podaj prawidłową nazwę*, oznacza to, że usługi Azure AD B2C pomyślnie wywołać usługi RESTful, gdy on przedstawiony certyfikat klienta. Następnym krokiem jest do weryfikacji certyfikatu.
 
-## <a name="step-6-add-certificate-validation"></a>Krok 6: Dodawanie certyfikatu weryfikacji
-Certyfikat klienta usługi Azure AD B2C wysyła do usługi RESTful nie podlegają weryfikacji przez platformę Azure Web Apps, z wyjątkiem przypadków, aby sprawdzić, czy certyfikat istnieje. Sprawdzanie poprawności certyfikatu jest odpowiedzialny za aplikacji sieci web. 
+## <a name="step-6-add-certificate-validation"></a>Krok 6: Dodawanie sprawdzania poprawności certyfikatu
+Certyfikat klienta usługi Azure AD B2C wysyła do usługi RESTful zostały poddane weryfikacji przez platformę Azure Web Apps, z wyjątkiem sytuacji, aby sprawdzić, czy certyfikat istnieje. Sprawdzanie poprawności certyfikatu jest odpowiedzialność aplikacji sieci web. 
 
-W tej sekcji możesz dodać przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
+W tej sekcji dodasz przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
 
 > [!NOTE]
->Aby uzyskać więcej informacji dotyczących konfigurowania uwierzytelniania certyfikatu klienta usługi Azure App Service, zobacz [Konfigurowanie TLS wzajemnego uwierzytelniania dla aplikacji sieci web](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
+>Aby uzyskać więcej informacji na temat konfigurowania usługi Azure App Service do uwierzytelniania certyfikatu klienta, zobacz [Konfigurowanie wzajemnego uwierzytelniania protokołu TLS dla aplikacji sieci web](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
 
-### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 Dodaj ustawienia aplikacji do pliku web.config projektu
-W projekt programu Visual Studio, który został utworzony wcześniej, należy dodać następujące ustawienia aplikacji, aby *web.config* plików po `appSettings` elementu:
+### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 Dodawanie ustawień aplikacji do pliku web.config projektu
+W projekcie Visual Studio, który został utworzony wcześniej, należy dodać następujące ustawienia aplikacji, aby *web.config* pliku po `appSettings` elementu:
 
 ```XML
 <add key="ClientCertificate:Subject" value="CN=Subject name" />
@@ -168,10 +168,10 @@ W projekt programu Visual Studio, który został utworzony wcześniej, należy d
 <add key="ClientCertificate:Thumbprint" value="Certificate thumbprint" />
 ```
 
-Zastąp certyfikatu **nazwa podmiotu**, **Nazwa wystawcy**, i **odcisk palca certyfikatu** wartości własnymi wartościami certyfikatu.
+Zastąp certyfikatu **nazwy podmiotu**, **Nazwa wystawcy**, i **odcisk palca certyfikatu** wartości wartościami własnego certyfikatu.
 
-### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2 funkcja IsValidClientCertificate dodać
-Otwórz *Controllers\IdentityController.cs* pliku, a następnie dodaj do `Identity` kontrolera klasy następujących funkcji: 
+### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2 Dodaj funkcję IsValidClientCertificate
+Otwórz *Controllers\IdentityController.cs* pliku, a następnie dodaj do `Identity` kontrolera klasy następującą funkcję: 
 
 ```csharp
 private bool IsValidClientCertificate()
@@ -263,17 +263,17 @@ private bool IsValidClientCertificate()
 }
 ```
 
-W poprzednim przykładowym kodzie możemy zaakceptować certyfikat jako prawidłowe tylko wtedy, gdy są spełnione wszystkie następujące warunki:
-* Certyfikat nie utracił ważności i jest aktywny bieżący czas na serwerze.
+W poprzednim kodzie przykład możemy zaakceptować certyfikat jako prawidłowe tylko wtedy, gdy są spełnione wszystkie następujące warunki:
+* Certyfikat nie wygasł i jest aktywna przez bieżący czas na serwerze.
 * `Subject` Nazwa certyfikatu jest równa `ClientCertificate:Subject` wartość ustawienia aplikacji.
 * `Issuer` Nazwa certyfikatu jest równa `ClientCertificate:Issuer` wartość ustawienia aplikacji.
 * `thumbprint` Certyfikatu jest równa `ClientCertificate:Thumbprint` wartość ustawienia aplikacji.
 
 >[!IMPORTANT]
->W zależności od czułość usługi może być konieczne Dodaj więcej operacji sprawdzania poprawności. Na przykład należy sprawdzić, czy powiązany ten certyfikat zaufanego głównego urzędu certyfikacji, sprawdzanie poprawności nazwy organizacji wystawcy i tak dalej.
+>W zależności od stopnia usługi może być konieczne dodanie więcej operacji sprawdzania poprawności. Na przykład może być konieczne Sprawdź, czy powiązany ten certyfikat zaufanego głównego urzędu certyfikacji, sprawdzanie poprawności nazwy organizacji wystawcy i tak dalej.
 
-### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3 wywołanie funkcji IsValidClientCertificate
-Otwórz *Controllers\IdentityController.cs* pliku, a następnie na początku `SignUp()` funkcji, Dodaj poniższy fragment kodu: 
+### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3 Wywołaj funkcję IsValidClientCertificate
+Otwórz *Controllers\IdentityController.cs* pliku a następnie na początku `SignUp()` działa, Dodaj poniższy fragment kodu: 
 
 ```csharp
 if (IsValidClientCertificate() == false)
@@ -282,21 +282,21 @@ if (IsValidClientCertificate() == false)
 }
 ```
 
-Po dodaniu fragmentu, Twoje `Identity` kontroler powinien wyglądać podobnie do następującego kodu:
+Po dodaniu tego fragmentu kodu z `Identity` kontroler powinien wyglądać podobnie do poniższego kodu:
 
-![Dodawanie certyfikatu weryfikacji kodu](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
+![Dodać kod sprawdzania poprawności certyfikatu](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
 ## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>Krok 7: Publikowanie projektu na platformie Azure i przetestować go
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **Contoso.AADB2C.API** projektu, a następnie wybierz **publikowania**.
+1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **Contoso.AADB2C.API** projektu, a następnie wybierz **Publikuj**.
 
-2. Powtórz "Krok 6", a następnie ponownie testów weryfikacji certyfikatu zasad niestandardowych. Spróbuj uruchomić zasady i upewnij się, że wszystko działa po dodaniu sprawdzania poprawności.
+2. Powtórz "Krok 6" i ponownie przetestuj niestandardowych zasad weryfikacji certyfikatu. Spróbuj uruchomić zasady i upewnij się, że wszystko działa po dodaniu sprawdzania poprawności.
 
-3. W Twojej *web.config* pliku, zmień wartość `ClientCertificate:Subject` do **nieprawidłowy**. Ponownie uruchom Zasady i powinien zostać wyświetlony komunikat o błędzie.
+3. W swojej *web.config* plików, zmień wartość właściwości `ClientCertificate:Subject` do **nieprawidłowy**. Ponownie uruchom zasad i powinien zostać wyświetlony komunikat o błędzie.
 
-4. Zmień wartość z powrotem do **prawidłową**i upewnij się, że zasady można wywołać interfejsu API REST.
+4. Zmień wartość z powrotem na **prawidłowe**i upewnij się, że zasady można wywołać interfejsu API REST.
 
-Jeśli potrzebujesz rozwiązać ten krok, zobacz [zbieranie dzienników przy użyciu usługi Application Insights](active-directory-b2c-troubleshoot-custom.md).
+Jeśli trzeba rozwiązać tego kroku, zobacz [zbieranie dzienników za pomocą usługi Application Insights](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(Opcjonalnie) Pobierz pliki pełną zasad i kod
-* Po ukończeniu [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) wskazówki, zaleca się tworzenia scenariusz przy użyciu plików zasady niestandardowe. Użytkownikowi, firma Microsoft umieściła [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert).
-* Możesz pobrać pełną kod z [przykładowe rozwiązanie Visual Studio dla odwołania](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API). 
+## <a name="optional-download-the-complete-policy-files-and-code"></a>(Opcjonalnie) Pobierz pliki zasad kompletny i kodu
+* Po ukończeniu [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) wskazówki, firma Microsoft zaleca tworzenie scenariusza za pomocą plików zasad niestandardowych. Dla Twojej informacji udostępniliśmy [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert).
+* Możesz pobrać kompletny kod z [przykładowe rozwiązanie Visual Studio dla odwołania](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API). 

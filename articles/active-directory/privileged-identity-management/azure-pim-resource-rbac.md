@@ -1,6 +1,6 @@
 ---
-title: Omówienie zasobów Azure PIM RBAC | Dokumentacja firmy Microsoft
-description: Zapoznaj się z omówieniem funkcji RBAC w PIM tym terminologii i powiadomienia
+title: Przegląd aplikacji Azure PIM zasobów RBAC | Dokumentacja firmy Microsoft
+description: Zapoznaj się z omówieniem funkcji RBAC w usłudze PIM terminologii i powiadomienia
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,107 +9,107 @@ editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f8eb574a98294b2858edd2ae36293c2857a50403
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261036"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447588"
 ---
-# <a name="pim-for-azure-resources"></a>PIM dla zasobów platformy Azure
+# <a name="pim-for-azure-resources"></a>Usługa PIM dla zasobów platformy Azure
 
-Z usługi Azure Active Directory uprzywilejowanych tożsamości zarządzania (PIM), mogą teraz zarządzać, kontrolę i monitorowanie dostępu do zasobów platformy Azure w ramach danej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w portalu Azure, która korzysta z funkcji Azure roli na podstawie kontroli dostępu (RBAC) korzystać ze wszystkich niezwykłych zabezpieczeń i możliwości zarządzania cyklem życia Azure AD PIM musi oferować i nowe, fantastyczne funkcje planujemy doprowadzić do Wkrótce role w AD platformy Azure. 
+Za pomocą usługi Azure Active Directory Privileged Identity Management (PIM), możesz teraz zarządzać, kontrolę i monitorowanie dostępu do zasobów platformy Azure w Twojej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w witrynie Azure portal, która korzysta z funkcji Azure roli na podstawie kontroli dostępu (RBAC) mogą korzystać z wszystkich doskonałe zabezpieczenia i funkcje zarządzania cyklem życia usługi Azure AD PIM ma do zaoferowania, i przedstawić nowe przydatne funkcje planujemy do Role usługi Azure AD wkrótce. 
 
-## <a name="pim-for-azure-resources-helps-resource-administrators"></a>PIM zasobów Azure ułatwia administratorom zasobów
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Usługa PIM dla zasobów platformy Azure pomaga administratorom zasobów
 
-- Zobacz, którzy użytkownicy i grupy są przypisane role dla zasobów platformy Azure, którą możesz administrować
-- Włącz na żądanie, "just in time" dostęp do zarządzania zasobami subskrypcji, grupy zasobów i więcej
-- Dostęp do zasobów przypisanych użytkowników/grupy automatycznie przy użyciu nowych ustawień przypisania granicy czasu wygaśnięcia
-- Przypisz dostęp do zasobów tymczasowego szybkie zadań lub harmonogramów na wywołanie
-- Wymusić uwierzytelnianie wieloskładnikowe, aby uzyskać dostęp do zasobów w dowolnej roli wbudowanych lub niestandardowych 
-- Uzyskaj raporty dotyczące działania zasobów skorelowane dostępu do zasobów podczas aktywnej sesji użytkownika
-- Alerty, gdy nowych użytkowników lub grup są przypisane dostęp do zasobów i aktywują przypisania kwalifikujących się
+- Zobacz, którzy użytkownicy i grupy są przypisane role zasobów platformy Azure, którymi administrujesz
+- Włącz na żądanie, dostęp "just in time" do zarządzania zasobami, takimi jak subskrypcji, grupy zasobów i więcej
+- Wygasa automatycznie z nowymi ustawieniami przypisania czasowo, dostęp do zasobów przypisanych użytkowników/grup
+- Przypisz dostęp do zasobów tymczasowego dla szybkich zadań lub harmonogramów dyżurów
+- Wymuszanie uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do zasobów w dowolnej roli wbudowanej lub niestandardowej 
+- Uzyskiwanie raportów o działaniu zasobów skorelowane dostępu do zasobów podczas aktywnej sesji użytkownika
+- Otrzymuj alerty, gdy nowych użytkowników lub grup są przypisywane dostęp do zasobów, a podczas aktywacji z kwalifikującymi się przypisaniami
 
-Azure AD PIM można zarządzać wbudowane role zasobów Azure, a także niestandardowych ról (RBAC), w tym (między innymi):
+Usługa Azure AD PIM można zarządzać wbudowane role zasobów platformy Azure, a także niestandardowych ról (RBAC), w tym (między innymi):
 
 - Właściciel
 - Administrator dostępu użytkowników
 - Współautor
 - Administrator zabezpieczeń
-- Menedżer zabezpieczeń i inne
+- Menedżer zabezpieczeń i nie tylko
 
 >[!NOTE]
-Użytkowników lub członków grupy przypisane do ról właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy może Przypisz role, skonfiguruj ustawienia roli, a następnie przejrzyj dostępu do zasobów Azure przy użyciu usługi PIM. Wyświetl listę [wbudowane role zasobów Azure](../../role-based-access-control/built-in-roles.md).
+Użytkownicy lub członkowie grupy przypisane do roli właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy mogą przypisać role, konfigurowanie ustawień roli i przegląd dostępu za pomocą usługi PIM dla zasobów platformy Azure. Wyświetl listę [wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="tasks"></a>Zadania
 
-PIM umożliwia wygodne dostęp do aktywowania usługi ról, wyświetlanie oczekujących aktywacji /, oczekujących żądań zatwierdzenia (dla [ról katalogu usługi Azure AD](azure-ad-pim-approval-workflow.md)) i monitoruje oczekuje na Twoją odpowiedź z sekcji zadań menu nawigacji po lewej stronie.
+PIM udostępnia wygodne uzyskiwanie dostępu do aktywowania ról, wyświetlanie oczekujących aktywacji/żądań oczekujących zatwierdzeń (dla [ról katalogu usługi Azure AD](azure-ad-pim-approval-workflow.md)) i przeglądy oczekujące odpowiedzi z sekcji zadania w menu nawigacji po lewej stronie.
 
-Podczas uzyskiwania dostępu do żadnego z elementów menu zadania z punktu wejścia Przegląd, wynikowy widok zawiera wyniki zarówno usługi Azure AD directory ról i zasobów Azure. 
+Podczas uzyskiwania dostępu do żadnego z elementów menu zadań z punktu wejścia Przegląd, wynikowym widoku zawiera wyniki dla ról katalogu usługi Azure AD i role zasobów platformy Azure. 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-Moje role zawierają listę przypisania roli active i kwalifikujących się ról katalogu usługi Azure AD i ról zasobów Azure.
+Moje role zawierają listę swoje przypisania roli aktywnych i kwalifikujących się ról katalogu usługi Azure AD i role zasobów platformy Azure.
 
 ## <a name="activate-roles"></a>Uaktywnij role
 
-Aktywacja ról zasobów Azure wprowadza nową funkcjonalność, która umożliwia członkom roli kwalifikujących się do planowania aktywacji dla przyszłych daty/godziny i wybierz czas trwania aktywacji określonym terminie (skonfigurowanych przez administratorów). Dowiedz się więcej o [Aktywacja usługi Azure AD ról tutaj](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Uaktywnianie ról dla zasobów platformy Azure wprowadza nową funkcjonalność, która umożliwia członkom kwalifikowania się do roli planowanie aktywacji dla przyszłej daty/godziny i wybierz czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
-Z menu aktywacji wprowadź odpowiednią datę i godzinę rozpoczęcia aktywowania roli. Opcjonalnie Zmniejsz czas trwania aktywacji (czas roli jest aktywny), a następnie wprowadź uzasadnienie, jeśli jest to wymagane; Kliknij przycisk Aktywuj.
+Z menu aktywacji wprowadź odpowiednią datę i godzinę rozpoczęcia aktywacji roli. Opcjonalnie skrócić czas trwania aktywacji (czas roli jest aktywny) i Wprowadź uzasadnienie, w razie potrzeby; Kliknij przycisk Aktywuj.
 
-W przypadku braku modyfikacji datę i godzinę, w ciągu kilku sekund zostanie uaktywniona roli. Pojawi się, że rola w kolejce w celu aktywacji komunikat transparentu na stronie Moja ról. Kliknij przycisk Odśwież, aby wyczyścić tę wiadomość.
+Jeśli data i godzina rozpoczęcia nie jest modyfikowany, rola zostanie uaktywniona w ciągu kilku sekund. Zobaczysz, że rola w kolejce do aktywacji komunikat transparentu, na stronie Moje role. Kliknij przycisk Odśwież, aby wyczyścić ten komunikat.
 
 ![](media/azure-pim-resource-rbac/my-roles.png)
 
-Jeśli aktywacja jest zaplanowane na czas datę w przyszłości, oczekujące żądania będą wyświetlane na karcie oczekujących żądań w menu nawigacji po lewej stronie. W przypadku aktywacji ról nie jest już wymagana, użytkownik może anulować żądanie, klikając przycisk Anuluj w prawej części strony.
+Jeśli aktywacja jest zaplanowane przez czas w przyszłości, oczekujące żądanie pojawi się na karcie oczekujących żądań w menu nawigacji po lewej stronie. W przypadku aktywacji roli nie jest już wymagana, użytkownik może anulować żądanie, klikając przycisk anulowania w prawej części strony.
 
 ![](media/azure-pim-resource-rbac/pending-requests.png)
 
-## <a name="discover-and-manage-azure-resources"></a>Odnajdywanie i zarządzania zasobami Azure
+## <a name="discover-and-manage-azure-resources"></a>Odnajdywanie i zarządzanie zasobami platformy Azure
 
-Aby znaleźć i zarządzanie rolami dla zasobów Azure, wybierz zasobów platformy Azure na karcie Zarządzanie w menu nawigacji po lewej stronie. Użyj filtrów lub pasek wyszukiwania w górnej części strony, aby znaleźć zasobu.
+Aby znaleźć i zarządzanie rolami dla zasobu platformy Azure, wybierz zasoby platformy Azure, w menu nawigacji po lewej stronie na karcie Zarządzanie. Użyj filtrów lub pasek wyszukiwania w górnej części strony, aby znaleźć zasobu.
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 
 ## <a name="resource-dashboards"></a>Pulpity nawigacyjne zasobów
 
-Widok administratora pulpit nawigacyjny zawiera cztery podstawowe składniki. Graficzna reprezentacja zasobu roli aktywacji w ciągu ostatnich siedmiu dni. Te dane zakresie znajduje się wybrany zasób i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, Administrator dostępu użytkowników), a wszystkie role, w połączeniu.
+Widok administratora pulpit nawigacyjny zawiera cztery główne składniki. Graficzna reprezentacja zasobu aktywacje ról w ciągu ostatnich siedmiu dni. Te dane są ograniczone do wybranego zasobu i wyświetla aktywacji dla najbardziej typowe role (właściciela, współautora, Administrator dostępu użytkowników) i wszystkich ról w połączeniu.
 
-Po prawej stronie wykresu aktywacji są dwa wykresy dystrybucji przypisań ról przez typ przydziału dla użytkowników i grup. Wybór wycinek wykresu zmienia wartość na wartość procentową (lub odwrotnie).
+Z prawej strony wykresu aktywacji są dwa wykresy, które wyświetlają rozkład przypisań ról według typu przypisania, dla użytkowników i grup. Wybieranie wycinek wykresu zmienia wartość do wartości procentowej (lub odwrotnie).
 
 ![](media/azure-pim-resource-rbac/admin-view.png)
 
-Poniżej wykresy zobacz temat liczby użytkowników i grup z nowych przypisań ról w ciągu ostatnich 30 dni (po lewej), a lista ról posortowane według całkowitej przypisania (malejąco).
+Poniżej wykresów zobaczysz liczbę użytkowników i grup za pomocą nowego przypisania roli w ciągu ostatnich 30 dni (po lewej) i listę ról, posortowane według łączna liczba przypisań (malejąco).
 
 ![](media/azure-pim-resource-rbac/role-settings.png)
 
 ## <a name="manage-role-assignments"></a>Zarządzanie przypisaniami ról
 
-Administratorzy mogą zarządzać przypisań ról, wybierając ról lub elementy członkowskie z lewym pasku nawigacyjnym. Wybieranie ról pozwala administratorom zakres ich zadań zarządzania do konkretnej roli, gdy elementy członkowskie Wyświetla wszystkie przypisania ról użytkowników i grup dla zasobu.
+Administratorzy mogą zarządzać przypisaniami ról, wybierając ról lub elementów członkowskich z nawigacji po lewej stronie. Wybieranie ról umożliwia administratorom ograniczyć zakres ich zadań zarządzania, z określoną rolą, podczas gdy elementy członkowskie Wyświetla wszystkie przypisania ról użytkowników i grup dla zasobu.
 
 ![](media/azure-pim-resource-rbac/roles.png)
 
 ![](media/azure-pim-resource-rbac/members.png)
 
 >[!NOTE]
-Jeśli masz roli do czasu aktywacji transparencie powiadomienia jest wyświetlane w górnej części strony, gdy wyświetlanie członkostwa.
+W przypadku roli do czasu aktywacji transparent powiadomienia jest wyświetlany w górnej części strony, podczas wyświetlania członkostwa.
 
 ## <a name="assign-roles"></a>Przypisz role
 
-Aby przypisać do roli użytkownika lub grupę, wybierz rolę (Jeśli wyświetlanie role), lub kliknij przycisk Dodaj na pasku akcji (jeśli są w widoku elementów członkowskich).
+Aby przypisać użytkownika lub grupę do roli, wybierz rolę (Jeśli wyświetlanie role), lub kliknij przycisk Dodaj, na pasku akcji (jeśli są w widoku elementów członkowskich).
 
 ![](media/azure-pim-resource-rbac/members2.png)
 
 >[!NOTE]
-Dodawanie użytkownika lub grupy na karcie elementy członkowskie, musisz wybierz z menu Dodaj rolę, zanim będzie można wybrać użytkownika lub grupę.
+Dodawanie użytkownika lub grupy na karcie elementy członkowskie, musisz wybierz rolę z menu Dodaj, aby można było wybrać użytkownika lub grupy.
 
 ![](media/azure-pim-resource-rbac/select-role.png)
 
@@ -117,53 +117,53 @@ Wybierz użytkownika lub grupy z katalogu.
 
 ![](media/azure-pim-resource-rbac/choose.png)
 
-Wybierz typ odpowiednie przypisanie z menu rozwijanego. 
+Wybierz typ przypisania odpowiednich z menu rozwijanego. 
 
-**Tylko w czasie przypisania:** zawiera członków użytkownika lub grupy z kwalifikujących się, ale nie trwały dostęp do roli w określonym przedziale czasu lub nieskończoność (jeśli została skonfigurowana w ustawieniach roli). 
+**Dokładnie na czas przypisania:** zawiera elementy członkowskie użytkownika lub grupy z kwalifikujących się, ale nie trwałego dostępu do roli w określonym przedziale czasu lub nieokreślony (jeśli jest skonfigurowane w ustawieniach roli). 
 
-**Bezpośrednie przypisywanie:** nie wymaga użytkownika lub grupę elementów członkowskich aktywować przypisania roli (nazywane trwały dostęp). Firma Microsoft zaleca korzystanie z bezpośredniego przypisania krótkoterminowej Użyj takie jak zmiany na wywołanie lub czas działania poufne, których dostęp nie będzie wymagany po zakończeniu zadania.
+**Bezpośrednie przypisanie:** nie wymaga użytkownika lub grupy elementów członkowskich można aktywować przypisania roli (znanych jako trwały dostęp). Firma Microsoft zaleca korzystanie z bezpośredniego przypisania krótkoterminowej użycia takich jak zmiany na wywołanie lub czas działania poufnych, których dostęp nie będzie wymagane po ukończeniu zadania.
 
 ![](media/azure-pim-resource-rbac/membership-settings.png)
 
-Pole wyboru poniżej listy rozwijanej Typ przypisania służy do określenia Jeśli przypisanie powinno być stałe (trwale kwalifikuje się do aktywowania tylko w czasie przypisania/trwale active dla przypisania bezpośredniego). Aby określić czas trwania danego przydziału, usuń zaznaczenie pola wyboru i zmodyfikować uruchomienia i/lub kończyć pól daty i godziny.
+Pole wyboru poniżej listy rozwijanej Typ przypisanie umożliwia określenie Jeśli przypisanie powinno być stałe (trwale zakwalifikowane do aktywowania Just in czasu przypisania/trwałe aktywne przypisania bezpośredniego). Aby określić czas trwania określone przypisanie, usuń zaznaczenie pola wyboru i modyfikować uruchomienia i/lub pól daty i godziny zakończenia.
 
 >[!NOTE]
-Pole wyboru może być unmodifiable, jeśli inny administrator ma określone przypisania maksymalny czas trwania dla każdego typu przydziału w ustawieniach roli.
+Pole może być niemodyfikowalnych, jeśli inny administrator ma określony czas trwania maksymalna przypisania dla każdego typu przydziału w ustawieniach roli.
 
 ![](media/azure-pim-resource-rbac/calendar.png)
 
-## <a name="view-activation-and-azure-resource-activity"></a>Wyświetl aktywacji i działania zasobów Azure
+## <a name="view-activation-and-azure-resource-activity"></a>Wyświetl aktywacji i działanie zasobów platformy Azure
 
-W przypadku, gdy potrzebujesz zobaczyć, jakie akcje trwało określonego użytkownika na różnych zasobów, można przejrzeć działania zasobów Azure skojarzonego z okresem danego aktywacji (w przypadku uprawnionych użytkowników). Rozpocznij od wybór użytkownika z widoku elementów członkowskich lub z listy elementów członkowskich w określonej roli. Wynik zawiera graficzne przedstawienie akcje użytkownika zasobów Azure według daty i ostatnie aktywacji roli w tym samym czasie.
+W przypadku potrzebujesz zobaczyć, jakie akcje określony użytkownik nie wykonał dla różnych zasobów, możesz sprawdzić działanie zasobów platformy Azure skojarzone z okresem danego aktywacji (w przypadku uprawnionych użytkowników). Rozpocznij od wybranie użytkownika z widoku elementów członkowskich lub listę elementów członkowskich w określonej roli. Wynik przedstawia widok graficzny akcje użytkownika dla zasobów platformy Azure według daty, a ostatnie aktywacje ról w tym samym przedziale czasu.
 
 ![](media/azure-pim-resource-rbac/user-details.png)
 
-Wybieranie aktywacji konkretnej roli zostaną wyświetlone szczegóły aktywacji dla roli, a odpowiadające mu działanie zasobów Azure, który wystąpił podczas aktywnego użytkownika.
+Wybieranie aktywacji określonej roli zostaną wyświetlone szczegóły uaktywnienia roli, a odpowiadającego im działania zasobów platformy Azure, który wystąpił podczas, gdy ten użytkownik był aktywny.
 
 ![](media/azure-pim-resource-rbac/audits.png)
 
-## <a name="modify-existing-assignments"></a>Zmodyfikuj istniejące przypisania
+## <a name="modify-existing-assignments"></a>Modyfikuj istniejące przypisania
 
-Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz opcję Zmień ustawienia na pasku akcji w górnej części strony. Zmień typ przypisania tylko w przypisanie czasu lub bezpośredniego przypisania.
+Aby zmodyfikować istniejące przypisania z widoku szczegółów użytkownika/grupy, wybierz opcję Zmień ustawienia na pasku akcji w górnej części strony. Po prostu w przypisanie czasu lub przypisania bezpośredniego, należy zmienić typ przypisania.
 
 ![](media/azure-pim-resource-rbac/change-settings.png)
 
-## <a name="review-who-has-access-in-a-subscription"></a>Sprawdź, kto ma dostęp w ramach subskrypcji
+## <a name="review-who-has-access-in-a-subscription"></a>Przejrzyj, kto ma dostęp w ramach subskrypcji
 
-Aby przejrzeć przypisań ról w ramach subskrypcji, wybierz kartę członków z nawigacji po lewej stronie, lub wybierz role, a następnie wybierz pozycję konkretnej roli można przejrzeć elementy członkowskie. 
+Aby zapoznać się z przypisań ról w ramach subskrypcji, wybierz kartę elementy członkowskie w lewym obszarze nawigacji, lub wybierz role, a następnie wybierz określoną rolę, aby zapoznać się z elementów członkowskich. 
 
-Wybierz przeglądu na pasku akcji Wyświetl istniejący recenzje dostępu i wybierz pozycję Dodaj, aby utworzyć nowy przeglądu.
+Wybierz pozycję Przegląd, na pasku akcji, aby wyświetlić istniejące przeglądów dostępu, a następnie wybierz pozycję Dodaj, aby utworzyć nowy Przegląd.
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[Dowiedz się więcej o przeglądami dostępu](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[Dowiedz się więcej o przeglądach dostępu](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
 
 >[!NOTE]
-Przeglądy są obsługiwane tylko dla typów zasobów subskrypcji w tym momencie.
+Recenzje są obsługiwane tylko dla typów zasobów subskrypcji w tej chwili.
 
 ## <a name="configure-role-settings"></a>Konfigurowanie ustawień roli
 
-Konfigurowanie ustawień roli zdefiniować ustawienia domyślne stosowane do przypisania w środowisku usługi PIM. Aby zdefiniować te dla zasobu, wybierz kartę Ustawienia roli z nawigacji po lewej stronie, lub przycisk ustawień roli na pasku akcji w każdej roli, aby wyświetlić bieżące opcje.
+Konfigurowanie ustawień roli definiują ustawienia domyślne stosowane do przypisania w środowisku usługi PIM. Aby zdefiniować te zasobu bazy danych, wybierz kartę ustawień roli w nawigacji po lewej stronie, lub przycisk Ustawienia roli na pasku akcji w każdej roli, aby wyświetlić bieżące opcje.
 
 Klikając przycisk Edytuj na pasku akcji w górnej części strony umożliwia modyfikowanie każdego ustawienia.
 
@@ -171,30 +171,30 @@ Klikając przycisk Edytuj na pasku akcji w górnej części strony umożliwia mo
 
 ![](media/azure-pim-resource-rbac/owner02.png)
 
-Zmiany ustawień są rejestrowane na stronie Ustawienia roli, łącznie z ostatniego Data aktualizacji i administratora, który zmienił ustawień.
+Zmiany ustawień są rejestrowane na stronie ustawień roli w tym zaktualizowanego Data godzina ostatniej i administratora, który zmianie ustawień.
 
 ![](media/azure-pim-resource-rbac/role-settings-02.png)
 
 ## <a name="resource-audit"></a>Inspekcja zasobu
 
-Inspekcji zasobów umożliwia wyświetlanie wszystkich działań roli dla zasobu. Można filtrować dane przy użyciu wstępnie zdefiniowanych datę lub zakres niestandardowych.
-![](media/azure-pim-resource-rbac/last-day.png) Inspekcji zasobów również zapewnia szybki dostęp, aby wyświetlić szczegóły działania użytkownika. W widoku wszystkie akcje "Uaktywnij rolę" podano linki do działania zasobu określonego obiektu żądającego.
+Inspekcja zasobu zapewnia wgląd w całą aktywność roli dla zasobu. Można filtrować informacje przy użyciu wstępnie zdefiniowanych datę lub zakres niestandardowy.
+![](media/azure-pim-resource-rbac/last-day.png) Inspekcja zasobu również zapewnia szybki dostęp, aby wyświetlić szczegóły dotyczące działania użytkownika. W widoku wszystkie akcje "Aktywuj rolę" podano linki do działań zasobu określonego obiektu żądającego.
 ![](media/azure-pim-resource-rbac/resource-audit.png)
 
-## <a name="just-enough-administration"></a>Wystarczającego administracji
+## <a name="just-enough-administration"></a>Wystarczający zakres administracji
 
-Przy użyciu wystarczającego najlepsze praktyki administracyjne (JEA) z przypisaniami roli zasobu jest proste — PIM zasobów Azure. Użytkownicy i członkowie grupy z przydziałami w subskrypcji platformy Azure lub grupy zasobów można aktywować ich istniejącym przypisaniu roli na zmniejszenie zakresu. 
+Najlepsze rozwiązania wystarczający tylko administracyjnej (JEA) przy użyciu zasobów przypisania roli jest proste — usługa PIM dla zasobów platformy Azure. Użytkownicy i członkowie grupy za pomocą przypisań do grup zasobów lub subskrypcji platformy Azure można aktywować istniejące przypisania roli w ograniczonym zakresie. 
 
-Ze strony wyszukiwania Znajdź podrzędnego zasób, który trzeba zarządzać.
+Ze strony wyszukiwania Znajdź zasób podrzędny, który trzeba zarządzać.
 
 ![](media/azure-pim-resource-rbac/azure-resources-02.png)
 
-Wybierz z menu nawigacji po lewej stronie Moje ról, a następnie wybierz odpowiednią rolę, aby aktywować. Powiadomienie typ przydziału jest dziedziczone, ponieważ rola została przypisana w subskrypcji, a nie w grupie zasobów, jak pokazano poniżej.
+Wybierz Moje role z menu nawigacji po lewej stronie i wybierz odpowiednią rolę, aby aktywować. Zwróć uwagę, typ przypisania są dziedziczone, ponieważ rola została przypisana w subskrypcji, a nie w grupie zasobów, jak pokazano poniżej.
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md)
-- Dowiedz się więcej o [aktywowanie tutaj ról usługi Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)
-- [PIM przepływów pracy](azure-ad-pim-approval-workflow.md)
+- Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- [Przepływy pracy zatwierdzania usługi PIM](azure-ad-pim-approval-workflow.md)

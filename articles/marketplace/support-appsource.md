@@ -1,10 +1,10 @@
 ---
-title: Obsługa AppSource | Azure
-description: Informacje pomocy technicznej i linki prowadzące do AppSource.
+title: Obsługa usługi AppSource | Azure
+description: Informacje pomocy technicznej i linki do usługi AppSource.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: jm-aditi-ms
-manager: pabutler
+author: ellacroi
+manager: nunoc
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -12,26 +12,26 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: b2ca55456a735a19f4739b20d7c7530efc357621
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 447453abb59507e0f3a8505410ceb52640914f22
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825239"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436580"
 ---
-# <a name="support-for-appsource"></a>Obsługa AppSource  
-Opcje pomocy technicznej dla AppSource.  
+# <a name="support-for-appsource"></a>Obsługa usługi AppSource  
+Opcje pomocy technicznej dla usługi AppSource.  
 
 ## <a name="technical"></a>Techniczna  
 
-| Obsługa kanału | Opis |  
+| Kanał obsługi | Opis |  
 |:--- |:--- |  
-| Formularze MSDN: Azure Active Directory znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum w witrynie Microsoft Developer Network. |  
-| StackOverflow: Azure Active Directory znajduje się w [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD w witrynie stackoverflow") | Stack Overflow środowiska do rozwiązania, a następnie zadać pytania dotyczące wszystkie elementy związane z usługą Azure Active Directory (Azure AD). |  
+| Formularze sieci MSDN: Usługa Azure Active Directory znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
+| Witrynie StackOverflow: Usługi Azure Active Directory znajdującym się [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD na stronie stackoverflow") | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z usługą Azure Active Directory (Azure AD). |  
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
+Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
  
 ---  

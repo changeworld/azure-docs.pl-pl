@@ -1,52 +1,52 @@
 ---
-title: Interfejs API REST oświadczeń wymiany jako Weryfikacja w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Interfejs API REST oświadczeń wymiany jako sprawdzania poprawności w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Temat w zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2c8b676ffff0f95a0966bfe18ce171de888265b9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709176"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440667"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Wskazówki: Integrowanie wymiany oświadczenia interfejsu API REST usługi Azure AD B2C podróży użytkownika jako sprawdzanie poprawności danych wejściowych użytkownika
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Wskazówki: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tożsamość środowiska Framework (IEF) źródłową Azure Active Directory B2C (Azure AD B2C) umożliwia deweloperowi tożsamości integracji interakcji z interfejsu API RESTful w podróży użytkownika.  
+Tożsamość środowisko Framework (IEF) źródłową Azure Active Directory B2C (Azure AD B2C) umożliwia dewelopera tożsamości zintegrować interakcję z interfejsu API RESTful w podróży użytkownika.  
 
-Na końcu tego przewodnika można utworzyć przebieg użytkownika usługi Azure AD B2C, która współdziała z usług RESTful.
+Na końcu tego instruktażu można utworzyć podróży użytkownika usługi Azure AD B2C, który współdziała z usług RESTful.
 
-IEF wysyła dane w oświadczeniach i odbiera dane z powrotem w oświadczeniach. Interakcja z interfejsu API:
+IEF wysyła dane jako oświadczenia i odbiera dane z powrotem w oświadczeniach. Interakcja z interfejsem API:
 
-- Może być zaprojektowana jako exchange oświadczenia interfejsu API REST lub profil sprawdzania poprawności, które odbywa się w kroku aranżacji.
-- Zwykle sprawdza poprawność danych wejściowych od użytkownika. W przypadku odrzucenia wartość od użytkownika, użytkownik spróbować ponownie wprowadź prawidłową wartość możliwość zwraca komunikat o błędzie.
+- Może być zaprojektowane jako wymiana oświadczeń interfejsu API REST lub profil sprawdzania poprawności, które odbywa się wewnątrz kroku aranżacji.
+- Zwykle sprawdza poprawność danych wejściowych od użytkownika. W przypadku odrzucenia wartości przez użytkownika użytkownik może ponownie spróbować Wprowadź prawidłową wartość z szansą sprzedaży, aby zwrócić komunikat o błędzie.
 
-Można również projektować interakcji krok aranżacji. Aby uzyskać więcej informacji, zobacz [wskazówki: integrowanie interfejsu API REST oświadczeń wymiany w podróży użytkownika usługi Azure AD B2C krok aranżacji](active-directory-b2c-rest-api-step-custom.md).
+Istnieje również możliwość projektowania interakcji w kroku aranżacji. Aby uzyskać więcej informacji, zobacz [Instruktaż: integracja interfejsu API REST oświadczeń wymianą swoją podróż po użytkownik usługi Azure AD B2C w kroku aranżacji](active-directory-b2c-rest-api-step-custom.md).
 
-Na przykład profil sprawdzania poprawności użyjemy podróży profilu użytkownika edycji w pliku pakietu starter ProfileEdit.xml.
+Na przykład profil sprawdzania poprawności użyjemy podróży użytkownika Edycja profilu w pliku pakietu startowego ProfileEdit.xml.
 
-Możemy zweryfikować, że nazwa podana przez użytkownika w edycji profilu nie jest częścią listy wykluczeń.
+Firma Microsoft może zweryfikować, czy nazwa podana przez użytkownika w trakcie edycji profilu nie jest częścią listy wykluczeń.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dzierżawy usługi Azure AD B2C, skonfigurowany tak, aby ukończyć konta lokalnego konta-konta/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
-- Punkt końcowy interfejsu API REST do interakcji z. W ramach tego przewodnika skonfigurowaliśmy pokaz lokacji o nazwie [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) za pomocą usługi interfejsu API REST.
+- Dzierżawy usługi Azure AD B2C skonfigurowany tak, aby ukończyć konta lokalnego konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+- Punkt końcowy interfejsu API REST do interakcji z. W tym przewodniku skonfigurowaliśmy pokaz lokacji o nazwie [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) za pomocą usługi interfejsu API REST.
 
 ## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Przygotowanie funkcji interfejsu API REST
 
 > [!NOTE]
-> Instalator funkcji interfejsu API REST jest poza zakres tego artykułu. [Środowisko Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) zapewnia doskonałą zestawu narzędzi do tworzenia usługi RESTful w chmurze.
+> Ustawienia funkcji interfejsu API REST znajduje się poza zakres tego artykułu. [Usługa Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) zapewnia doskonałą zestaw narzędzi do tworzenia RESTful usług w chmurze.
 
-Utworzyliśmy Azure funkcja, która otrzymuje oświadczenia, że klient oczekuje jako `playerTag`. Funkcja weryfikuje, czy istnieje tego oświadczenia. Dostęp można uzyskać kod pełną funkcji platformy Azure w [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Utworzono funkcję platformy Azure, która otrzymuje oświadczenia, że klient oczekuje jako `playerTag`. Funkcja sprawdza, czy istnieje tego oświadczenia. Możesz uzyskać dostęp kodu pełne funkcji platformy Azure w [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -73,14 +73,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-Oczekuje IEF `userMessage` oświadczenie, które zwraca funkcja platformy Azure. To oświadczenie zostanie wyświetlone jako ciąg do użytkownika w przypadku niepowodzenia weryfikacji, na przykład gdy stan 409 Konflikt są zwracane w poprzednim przykładzie.
+Oczekuje IEF `userMessage` oświadczenia, które zwraca funkcję platformy Azure. To oświadczenie zostanie wyświetlone jako ciąg znaków do użytkownika, jeśli weryfikacja zakończy się niepowodzeniem, np. gdy zwracany jest stan 409 konflikt w poprzednim przykładzie.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurowanie programu exchange oświadczenia interfejsu API RESTful jako profil techniczne w pliku TrustFrameworkExtensions.xml
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2: Konfigurowanie interfejsu API RESTful wymiana oświadczeń jako profil techniczny w pliku TrustFrameworkExtensions.xml
 
-Techniczne profil jest pełną konfigurację programu exchange potrzeby z usługą RESTful. Otwórz plik TrustFrameworkExtensions.xml i Dodaj następujący fragment kodu XML wewnątrz `<ClaimsProviders>` elementu.
+Profil techniczny jest pełną konfigurację programu exchange żądanego przy użyciu usługi RESTful. Otwórz plik TrustFrameworkExtensions.xml i Dodaj następujący fragment kodu XML wewnątrz `<ClaimsProviders>` elementu.
 
 > [!NOTE]
-> W poniższych XML dostawcy RESTful `Version=1.0.0.0` jest określane jako protokół. Należy wziąć pod uwagę ją jako funkcję, która będzie współpracować z zewnętrznej usługi. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> Następujący kod XML dostawcy typu RESTful `Version=1.0.0.0` jest określana jako protokołu. Należy wziąć pod uwagę jej jako funkcja, która wchodzi w interakcje z zewnętrznej usługi. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -108,26 +108,26 @@ Techniczne profil jest pełną konfigurację programu exchange potrzeby z usług
 </ClaimsProvider>
 ```
 
-`InputClaims` Element definiuje oświadczenia, które będą wysyłane do usługi REST IEF. W tym przykładzie zawartość oświadczenia `givenName` będą wysyłane do usługi REST jako `playerTag`. W tym przykładzie IEF nie oczekuje oświadczeń z powrotem. Zamiast tego czeka na odpowiedź z usługi REST i działania na podstawie kodów stanu, które otrzymuje.
+`InputClaims` Element definiuje oświadczenia, które będą wysyłane z IEF usługi REST. W tym przykładzie zawartość oświadczenie `givenName` będą wysyłane do usługi REST jako `playerTag`. W tym przykładzie IEF nie oczekuje oświadczeń z powrotem. Zamiast tego oczekuje na odpowiedź z usługi REST i działa na podstawie kodów stanu, które otrzymuje.
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: Dołącz exchange oświadczeń usługi RESTful własnym potwierdzona profilu techniczne której chcesz sprawdzić poprawność danych wejściowych użytkownika
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3: Objęte wymiana oświadczeń typu RESTful usługi samodzielnie profilu technicznego, które chcesz sprawdzić poprawność danych wejściowych użytkownika
 
-Najczęściej kroku walidacji jest w interakcji z użytkownikiem. Wszystkie interakcje, gdy użytkownik powinien zapewniać dane wejściowe są *własnym potwierdzone techniczne profile*. W tym przykładzie dodamy weryfikacji do profilu techniczne niezależne Asserted ProfileUpdate. Jest to techniczne profil, który pliku zasad jednostki uzależnionej strony (RP) `Profile Edit` używa.
+Jest najbardziej popularnym zastosowaniem kroku sprawdzania poprawności w interakcji z użytkownikiem. Wszystkie interakcje, gdzie użytkownik powinien zapewniać dane wejściowe są *własnym potwierdzone profile techniczne*. W tym przykładzie dodamy sprawdzania poprawności do profilu technicznego samoobsługowego Asserted ProfileUpdate. Jest to techniczne profilu, który pliku jednostki uzależnionej zasad firmy (RP) `Profile Edit` używa.
 
-Aby dodać exchange oświadczenia do własnym potwierdzona profilu techniczne:
+Aby dodać wymiana oświadczeń do samodzielnie profilu technicznego:
 
 1. Otwórz plik TrustFrameworkBase.xml i wyszukaj `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Sprawdź konfigurację tego profilu technicznych. Sprawdź, jak zdefiniowano jako oświadczenia, które będą proszeni użytkownika (oświadczenia wejściowe) i oświadczenia, które będzie można oczekiwać od dostawcy własnym potwierdzona (oświadczeń wyjściowych) programu exchange z użytkownikiem.
-3. Wyszukaj `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`i zwróć uwagę, że ten profil jest wywoływany jako aranżacji kroku 4 `<UserJourney Id="ProfileEdit">`.
+2. Sprawdź konfigurację tego profilu technicznego. Sprawdź, jak program exchange z użytkownikiem jest zdefiniowany jako oświadczenia, które pojawi się prośba o użytkownika (oświadczeń wejściowych) i oświadczenia, które będzie można oczekiwać od dostawcy samodzielnie (oświadczeń danych wyjściowych).
+3. Wyszukaj `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`i zwróć uwagę, że ten profil jest wywoływana jako aranżacji krok 4 `<UserJourney Id="ProfileEdit">`.
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Przekaż i przetestować plik zasad RP edycji profilu
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Przekaż i przetestować plik zasad profilu edycji planu odzyskiwania
 
 1. Przekaż nową wersję pliku TrustFrameworkExtensions.xml.
-2. Użyj **Uruchom teraz** do testowania pliku zasad RP edycji profilu.
-3. Testowanie weryfikacji udostępniając jedno z istniejących nazw (na przykład mcvinny) w **imię** pola. Jeśli wszystko jest poprawnie skonfigurowane, powinien zostać wyświetlony komunikat, który powiadamia użytkownika player tag jest już używana.
+2. Użyj **Uruchom teraz** do testowania pliku zasad profilu edycji planu odzyskiwania.
+3. Test weryfikacji, podając jeden z istniejących nazw (na przykład mcvinny) w **imię** pola. Jeśli wszystko jest prawidłowo skonfigurowane, otrzymasz komunikat, który powoduje powiadomienie użytkownika o player tag jest już używana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Modyfikowanie profilu rejestracji edycji i użytkownika uzyskanie dodatkowych informacji od użytkowników](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Modyfikowanie profilu rejestracji edycji i użytkownika do zbierania dodatkowych informacji od użytkowników](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
-[Wskazówki: Integrowanie wymiany oświadczenia interfejsu API REST w podróży użytkownika usługi Azure AD B2C krok aranżacji](active-directory-b2c-rest-api-step-custom.md)
+[Wskazówki: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C w kroku aranżacji](active-directory-b2c-rest-api-step-custom.md)

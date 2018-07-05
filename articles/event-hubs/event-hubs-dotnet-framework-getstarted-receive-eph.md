@@ -12,30 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 8fd70380dbb88f379789e1a4730934dcd38cac5a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4f74b0f90795362d3e509fdbd33e5f358227f147
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29393222"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436875"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Odbieranie zdarzeń z usługi Azure Event Hubs za pomocą programu .NET Framework
 
 ## <a name="introduction"></a>Wprowadzenie
 
-Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT).
+Azure Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z połączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT).
 
-W tym samouczku pokazano, jak napisać aplikację konsoli .NET Framework, która odbiera komunikaty z centrum zdarzeń za pomocą **[hosta procesora zdarzeń][EventProcessorHost]**. Aby wysyłać zdarzenia przy użyciu programu .NET Framework, zobacz artykuł [Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) lub kliknij odpowiedni język wysyłający w spisie treści po lewej stronie.
+W tym samouczku pokazano, jak napisać aplikację konsoli .NET Framework, która odbiera komunikaty z centrum zdarzeń za pomocą **[hosta procesora zdarzeń][Event Processor Host]**. Aby wysyłać zdarzenia przy użyciu programu .NET Framework, zobacz artykuł [Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework](event-hubs-dotnet-framework-getstarted-send.md) lub kliknij odpowiedni język wysyłający w spisie treści po lewej stronie.
 
-[Host procesora zdarzeń][EventProcessorHost] jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi. Za pomocą [hosta procesora zdarzeń][Event Processor Host] można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać [hosta procesora zdarzeń][EventProcessorHost] dla jednego odbiornika. W przykładzie [Skalowanie przetwarzania zdarzeń][Scale out Event Processing with Event Hubs] przedstawiono instrukcje korzystania z [hosta procesora zdarzeń][EventProcessorHost] z wieloma odbiornikami.
+[Host procesora zdarzeń][EventProcessorHost] jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi. Za pomocą hosta procesora zdarzeń, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie pokazano, jak używać hosta procesora zdarzeń dla jednego odbiornika. [Skalowanie przetwarzania zdarzeń] [ Scale out Event Processing with Event Hubs] przykład pokazuje, jak używać hosta procesora zdarzeń z wieloma odbiornikami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* [Program Microsoft Visual Studio w wersji 2015 lub nowszej](http://visualstudio.com). Na zrzutach ekranów przedstawionych w tym samouczku używany jest program Visual Studio 2017.
+* [Microsoft Visual Studio 2017 lub nowszego](http://visualstudio.com).
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
@@ -46,15 +46,19 @@ Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azur
 
 Aby móc korzystać z [hosta procesora zdarzeń][EventProcessorHost], trzeba mieć [konto usługi Azure Storage][Azure Storage account]:
 
-1. Zaloguj się do [portalu Azure][Azure portal]i kliknij przycisk **Utwórz zasób** w lewym górnym rogu ekranu.
+1. Zaloguj się do [witryny Azure portal][Azure portal]i kliknij przycisk **Utwórz zasób** w lewym górnym rogu ekranu.
+
 2. Kliknij pozycję **Magazyn**, a następnie pozycję **Konto magazynu**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
-3. W **utworzyć konto magazynu** okienku, wpisz nazwę konta magazynu. Wybierz subskrypcję platformy Azure, grupę zasobów i lokalizację, w której chcesz utworzyć zasób. Następnie kliknij pozycję **Utwórz**.
+
+3. W **Tworzenie konta magazynu** okienko, wpisz nazwę konta magazynu. Wybierz subskrypcję platformy Azure, grupę zasobów i lokalizację, w której chcesz utworzyć zasób. Następnie kliknij pozycję **Utwórz**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+
 4. Na liście kont magazynu kliknij nowo utworzone konto.
-5. W okienku konta magazynu, kliknij **klucze dostępu**. Skopiuj wartość **klucz1**, aby użyć jej w dalszej części tego samouczka.
+
+5. W okienku konta magazynu, kliknij przycisk **klucze dostępu**. Skopiuj wartość **klucz1**, aby użyć jej w dalszej części tego samouczka.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
@@ -168,7 +172,7 @@ Gratulacje! Odebrano komunikaty z centrum zdarzeń za pomocą hosta procesora zd
 
 Teraz, gdy masz utworzoną działającą aplikację, która tworzy centrum zdarzeń oraz wysyła i odbiera dane, możesz dowiedzieć się więcej, odwiedzając jeden z następujących linków:
 
-* [Host procesora zdarzeń][Event Processor Host]
+* [Przegląd hosta procesora zdarzeń][Event Processor Host]
 * [Przegląd usługi Event Hubs][Event Hubs overview]
 * [Event Hubs — często zadawane pytania](event-hubs-faq.md)
 
@@ -179,10 +183,10 @@ Teraz, gdy masz utworzoną działającą aplikację, która tworzy centrum zdarz
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[EventProcessorHost]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Hubs overview]: event-hubs-about.md
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Event Hubs Programming Guide]: event-hubs-programming-guide.md
 [Azure Storage account]:../storage/common/storage-create-storage-account.md
-[Event Processor Host]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+[Event Processor Host]: event-hubs-event-processor-host.md
 [Azure portal]: https://portal.azure.com

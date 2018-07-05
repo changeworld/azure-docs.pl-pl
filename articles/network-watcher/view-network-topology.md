@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
 ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
+ms.lasthandoff: 07/04/2018
 ms.locfileid: "35942621"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Wyświetlanie topologii sieci wirtualnej platformy Azure

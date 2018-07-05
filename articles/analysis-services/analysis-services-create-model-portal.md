@@ -1,31 +1,31 @@
 ---
-title: Tworzenie modelu tabelarycznego przy użyciu narzędzia Projektant sieci Web Azure Analysis Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć modelu tabelarycznego usług Azure Analysis Services przy użyciu narzędzia Projektant sieci Web w portalu Azure.
+title: Tworzenie modelu tabelarycznego przy użyciu projektanta sieci Web usługi Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia modelu tabelarycznego usług Azure Analysis Services przy użyciu projektanta sieci Web w witrynie Azure portal.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443549b9456d8e7d29e807fb00a9f25be00e6faa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597845"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441679"
 ---
-# <a name="create-a-model-in-azure-portal"></a>Tworzenie modelu w portalu Azure
+# <a name="create-a-model-in-azure-portal"></a>Tworzenie modelu w witrynie Azure portal
 
-Funkcja projektanta (wersja zapoznawcza) w sieci web usług Azure Analysis Services w portalu Azure zapewnia szybki i łatwy sposób tworzenia i edytowania modele tabelaryczne i zapytania modelu danych bezpośrednio w przeglądarce. 
+Z funkcji projektanta (wersja zapoznawcza) w sieci web usług Azure Analysis Services w witrynie Azure portal umożliwia szybkie i łatwe do tworzenia i edytowania modele tabelaryczne i zapytania modelu danych bezpośrednio w przeglądarce. 
 
-Należy pamiętać, Projektant stron sieci web jest **Podgląd**. Funkcje są ograniczone. Do bardziej zaawansowanego modelu programowania i testowania najlepiej jest używać programu Visual Studio (SSDT) i SQL Server Management Studio (SSMS).
+Należy pamiętać, Projektant stron sieci web jest **Podgląd**. Funkcja jest ograniczona. Dla bardziej zaawansowanych modeli programowania i testowania najlepiej jest używać programu Visual Studio (SSDT) i SQL Server Management Studio (SSMS).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-- Serwer usług Azure Analysis Services w warstwy standardowa lub dewelopera. Nowe modele utworzone przy użyciu narzędzia Projektant sieci Web są zapytania bezpośredniego, obsługiwane tylko przez te warstwy.
-- Baza danych SQL Azure, Magazyn danych SQL Azure lub pliku Power BI Desktop (pbix) jako źródła danych. Nowe modele utworzone na podstawie pomocy technicznej usługi Power BI Desktop pliki bazy danych SQL Azure i usługi Azure SQL Data Warehouse.
-- Konto programu SQL Server i hasło do nawiązywania połączenia z bazą danych SQL Azure lub usługi Azure SQL Data Warehouse źródeł danych.
+- Serwer usługi Azure Analysis Services w warstwie standardowa lub dewelopera. Nowe modele utworzone przy użyciu narzędzia Projektant sieci Web są zapytania bezpośredniego, które są obsługiwane tylko przez te warstwy.
+- Usługi Azure SQL Database, Azure SQL Data Warehouse lub plik programu Power BI Desktop (pbix) jako źródła danych. Nowe modele utworzone na podstawie pomocy technicznej usługi Power BI Desktop plików usługi Azure SQL Database i Azure SQL Data Warehouse.
+- Konto programu SQL Server i hasło dla połączenia ze źródłami danych Azure SQL Database lub Azure SQL Data Warehouse.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -33,41 +33,41 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="to-create-a-new-tabular-model"></a>Aby utworzyć nowy model tabelaryczny
 
-1. Na serwerze **omówienie** > **Projektant stron sieci Web**, kliknij przycisk **Otwórz**.
+1. Na serwerze **Przegląd** > **Projektant stron sieci Web**, kliknij przycisk **Otwórz**.
 
-    ![Tworzenie modelu w portalu Azure](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
+    ![Tworzenie modelu w witrynie Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 
-2. W **Projektant stron sieci Web** > **modele**, kliknij przycisk **+ Dodaj**.
+2. W **Projektant stron sieci Web** > **modeli**, kliknij przycisk **+ Dodaj**.
 
-    ![Tworzenie modelu w portalu Azure](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
+    ![Tworzenie modelu w witrynie Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
 
 3. W **nowy model**, wpisz nazwę modelu, a następnie wybierz źródło danych.
 
-    ![Okno dialogowe nowego modelu w portalu Azure](./media/analysis-services-create-model-portal/aas-create-portal-new-model.png)
+    ![Okno dialogowe Nowy model w witrynie Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-new-model.png)
 
 4. W **Connect**, wprowadź właściwości połączenia. Nazwa użytkownika i hasło musi być kontem programu SQL Server.
 
-     ![Połącz okna dialogowego w portalu Azure](./media/analysis-services-create-model-portal/aas-create-portal-connect.png)
+     ![Łączenie z okna dialogowego w witrynie Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-connect.png)
 
-5. W **tabele i widoki**, wybierz tabele, aby dołączyć do modelu, a następnie kliknij przycisk **Utwórz**. Automatycznie tworzyć relacji między tabelami w pary kluczy.
+5. W **tabele i widoki**, wybierz tabele do uwzględnienia w modelu, a następnie kliknij przycisk **Utwórz**. Relacje są tworzone automatycznie między tabelami parą kluczy.
 
-     ![Wybierz tabele i widoki](./media/analysis-services-create-model-portal/aas-create-portal-tables.png)
+     ![Wybieranie tabel i widoków](./media/analysis-services-create-model-portal/aas-create-portal-tables.png)
 
-Nowy model zostanie wyświetlona w przeglądarce. W tym miejscu można wykonywać następujące czynności:   
+Nowy model zostanie wyświetlony w przeglądarce. W tym miejscu możesz wykonywać następujące czynności:   
 
-- Zapytania modelu danych przez przeciąganie pól do projektanta zapytań i dodawanie filtrów.
+- Wykonywanie zapytań o dane w modelu, przeciągając pola do projektanta zapytań i filtrów.
 - Utwórz nowe miary w tabelach.
 - Edytowanie metadanych modelu przy użyciu edytora json.
-- Otwórz model w programie Visual Studio (SSDT), Power BI Desktop lub programu Excel.
+- Otworzyć modelu w Visual Studio (SSDT), usługa Power BI Desktop lub Excel.
 
-![Wybierz tabele i widoki](./media/analysis-services-create-model-portal/aas-create-portal-query.png)
+![Wybieranie tabel i widoków](./media/analysis-services-create-model-portal/aas-create-portal-query.png)
 
 > [!NOTE]
-> Podczas edytowania metadanych modelu lub utworzyć nowe miary w przeglądarce, te zmiany są zapisywane do modelu w systemie Azure. Jeśli pracujesz także do modelu w SSDT, Power BI Desktop lub programu Excel, modelu można uzyskać zsynchronizowane.
+> Podczas edytowania metadanych modelu, lub Utwórz nowe miary w przeglądarce, te zmiany są zapisywane na modelu na platformie Azure. Jeśli pracujesz również na model w programie SSDT, Power BI Desktop lub Excel, model można uzyskać zsynchronizowane.
 
 
 ## <a name="next-steps"></a>Kolejne kroki 
-[Zarządzanie ról bazy danych i użytkowników](analysis-services-database-users.md)  
+[Zarządzanie rolami bazy danych i użytkowników](analysis-services-database-users.md)  
 [Łączenie z programem Excel](analysis-services-connect-excel.md)  
 
 

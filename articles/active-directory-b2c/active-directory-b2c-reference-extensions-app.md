@@ -1,48 +1,48 @@
 ---
-title: Rozszerzenia aplikacji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Przywracanie aplikacji rozszerzeń b2c.
+title: Aplikacja rozszerzeń w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Przywracanie b2c-extensions-app.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 9/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad908e7408c2d14a843af49bc091fea725bfba1d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad3d459b1211d2777f57169f3ee896d2ab5618bc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712287"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442828"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Usługa Azure AD B2C: Rozszerzeń aplikacji
+# <a name="azure-ad-b2c-extensions-app"></a>Usługi Azure AD B2C: Aplikacja rozszerzeń
 
-Podczas tworzenia katalogu usługi Azure AD B2C aplikacja o nazwie `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` jest tworzony automatycznie wewnątrz nowego katalogu. Ta aplikacja, nazywany **b2c rozszerzeń aplikacji**, jest widoczny w *rejestracji aplikacji*. Jest on używany przez usługę Azure AD B2C do przechowywania informacji o użytkownikach i atrybuty niestandardowe. Usunięcie aplikacji usługi Azure AD B2C nie będzie działać prawidłowo, i będzie mieć wpływ na środowisko produkcyjne.
+Po utworzeniu katalogu usługi Azure AD B2C aplikacja o nazwie `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` automatycznie jest tworzony w nowym katalogu. Tej aplikacji, nazywane **b2c-extensions-app**, jest widoczna w *rejestracje aplikacji*. Używane przez usługę Azure AD B2C do przechowywania informacji o użytkownikach i atrybuty niestandardowe. Usunięcie aplikacji usługi Azure AD B2C nie będzie działać prawidłowo, i będzie mieć wpływ na środowisko produkcyjne.
 
 > [!IMPORTANT]
-> Nie należy usuwać aplikacji rozszerzeń b2c, jeśli zamierzasz natychmiast usunąć dzierżawy. Jeśli aplikacja pozostaje usunięte przez dłużej niż 30 dni, informacje o użytkowniku zostaną trwale utracone.
+> Nie należy usuwać b2c-extensions-app, chyba że zamierzasz natychmiast usunąć dzierżawy. Jeśli aplikacja pozostaje usuniętych przez dłużej niż 30 dni, informacje o użytkowniku zostaną trwale utracone.
 
-## <a name="verifying-that-the-extensions-app-is-present"></a>Weryfikowanie, czy znajduje się w aplikacji rozszerzenia
+## <a name="verifying-that-the-extensions-app-is-present"></a>Weryfikowanie, czy aplikacja rozszerzeń jest obecna
 
-Aby sprawdzić, czy znajduje się w aplikacji rozszerzeń b2c:
+Aby sprawdzić, czy występuje b2c-extensions-app:
 
-1. W dzierżawie usługi Azure AD B2C, kliknij **wszystkie usługi** w menu nawigacji po lewej stronie.
-1. Wyszukaj i Otwórz **rejestracji aplikacji**.
-1. Wyszukaj aplikację, która rozpoczyna się od **b2c rozszerzeń aplikacji**
+1. W dzierżawie usługi Azure AD B2C, kliknij pozycję **wszystkich usług** w menu nawigacji po lewej stronie.
+1. Wyszukaj i Otwórz **rejestracje aplikacji**.
+1. Wyszukaj aplikację, która rozpoczyna się od **b2c-extensions-app**
 
-## <a name="recover-the-extensions-app"></a>Odzyskiwanie aplikacji rozszerzenia
+## <a name="recover-the-extensions-app"></a>Odzyskiwanie aplikacji rozszerzeń
 
-Jeśli przypadkowo usunięto aplikacji rozszerzeń b2c, masz 30 dni, aby go odzyskać. Możesz przywrócić aplikacji przy użyciu interfejsu API programu Graph:
+Jeśli przypadkowo usunięty b2c-extensions-app, dostępna 30 dni, aby ją odzyskać. Można przywrócić aplikację za pomocą interfejsu API programu Graph:
 
 1. Przejdź do [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/).
-1. Zaloguj się do witryny jako administrator globalny katalogu usługi Azure AD B2C, której chcesz przywrócić usuniętego aplikacji dla. Ten administrator globalny musi mieć adres e-mail jest podobny do następującego: `username@{yourTenant}.onmicrosoft.com`.
-1. Wystawiać HTTP GET względem adresu URL `https://graph.windows.net/myorganization/deletedApplications` z interfejsu api-version = 1.6. Ta operacja spowoduje wyświetlenie listy wszystkich aplikacji, które zostały usunięte w ciągu ostatnich 30 dni.
-1. Znajdź aplikację na liście, których nazwa rozpoczyna się od "ruch aplikacji b2c rozszerzenia" i skopiuj jej `objectid` wartości właściwości.
-1. Wystawiać POST protokołu HTTP względem adresu URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Zastąp `{OBJECTID}` część adresu URL z `objectid` z poprzedniego kroku. 
+1. Zaloguj się do witryny jako administratora globalnego dla katalogu usługi Azure AD B2C, który chcesz przywrócić usunięte aplikacji dla. Ten administrator globalny musi mieć adres e-mail, który jest podobny do następującego: `username@{yourTenant}.onmicrosoft.com`.
+1. Wystawiać GET protokołu HTTP względem adresu URL `https://graph.windows.net/myorganization/deletedApplications` z wersją api-version = 1.6. Ta operacja spowoduje wyświetlenie listy wszystkich aplikacji, które zostały usunięte w ciągu ostatnich 30 dni.
+1. Znajdź aplikację na liście, których nazwa rozpoczyna się od "b2c-rozszerzenia app" i skopiuj jej `objectid` wartości właściwości.
+1. Wystawiać metodę POST protokołu HTTP względem adresu URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Zastąp `{OBJECTID}` część adresu URL za pomocą `objectid` z poprzedniego kroku. 
 
-Teraz powinno być możliwe do [przywróconej aplikacja](#verifying-that-the-extensions-app-is-present) w portalu Azure.
+Teraz powinno być możliwe do [przywróconej aplikacja](#verifying-that-the-extensions-app-is-present) w witrynie Azure portal.
 
 > [!NOTE]
-> Aplikację można przywrócić tylko, jeśli został on usunięty w ciągu ostatnich 30 dni. Jeśli został on więcej niż 30 dni, dane zostaną trwale utracone. Aby uzyskać pomoc pliku biletu pomocy technicznej.
+> Aplikację można przywrócić tylko, jeśli został on usunięty w ciągu ostatnich 30 dni. Jeśli minęło ponad 30 dni, dane zostaną trwale utracone. Aby uzyskać dodatkową pomoc Utwórz bilet pomocy technicznej.

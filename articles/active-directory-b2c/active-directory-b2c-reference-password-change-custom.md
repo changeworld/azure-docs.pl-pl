@@ -1,38 +1,38 @@
 ---
-title: Zmiana hasła samoobsługi w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat pokazująca, jak skonfigurować zmiany hasła Samoobsługowe przez użytkowników w usłudze Azure Active Directory B2C.
+title: Zmiany haseł w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Temat pokazująca, jak skonfigurować zmiany haseł przez użytkowników w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5474f469c6271a0c1348004664ead8b190de08c7
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 028d10b5c005be2db7cfd9c5ca5210ab55f0592a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709142"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448139"
 ---
-# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj zmiany hasła w niestandardowych zasad  
+# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Usługa Azure Active Directory B2C: Skonfiguruj zmiany hasła w zasadach niestandardowych  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Z funkcją zmiany hasła, zalogowany użytkowników (przy użyciu kont lokalnych) można zmieniać swoje hasła bez potwierdzenia autentyczności ich przez Weryfikacja adresu e-mail, zgodnie z opisem w [samoobsługowego resetowania hasła przepływu.](active-directory-b2c-reference-sspr.md) Jeśli sesja wygasa w czasie, klient pobiera hasło przepływ zmian, użytkownik zostanie poproszony o Zaloguj się ponownie. 
+Przy użyciu funkcji zmiany hasła zalogowanego konsumentów (przy użyciu kont lokalnych) mogą zmieniać hasła bez konieczności potwierdzenia autentyczności ich przez Weryfikacja adresu e-mail, zgodnie z opisem w [samoobsługowego resetowania haseł usługi flow.](active-directory-b2c-reference-sspr.md) Jeśli sesja wygaśnie według czasu pobiera konsumenta hasło przepływ zmian, użytkownik jest monitowany o ponowne zarejestrowanie. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dzierżawy usługi Azure AD B2C, skonfigurowany tak, aby ukończyć konta lokalnego konta-konta/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+Dzierżawy usługi Azure AD B2C skonfigurowany tak, aby ukończyć konta lokalnego konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-change-in-custom-policy"></a>Jak skonfigurować zmiany hasła w zasadach niestandardowych
+## <a name="how-to-configure-password-change-in-custom-policy"></a>Jak skonfigurować zmianę hasła w zasadach niestandardowych
 
-Aby skonfigurować zmiany hasła w zasadach niestandardowych wprowadź następujące zmiany w zasadach rozszerzenia framework zaufania 
+Aby skonfigurować zmiany hasła w zasadach niestandardowych należy wprowadzić następujące zmiany w zasadach zaufania framework rozszerzenia 
 
-## <a name="define-a-claimtype-oldpassword"></a>Zdefiniuj typ oświadczenia "Stare_hasło"
+## <a name="define-a-claimtype-oldpassword"></a>Zdefiniuj oświadczenia "oldPassword"
 
-Ogólna struktura zasad niestandardowych musi zawierać `ClaimsSchema`i zdefiniuj nowy `ClaimType` "Stare_hasło, jak pokazano poniżej, 
+Musi zawierać ogólną strukturę zasad niestandardowych `ClaimsSchema`i zdefiniuj nowy `ClaimType` "oldPassword, tak jak pokazano poniżej, 
 
 ```XML
   <BuildingBlocks>
@@ -47,20 +47,20 @@ Ogólna struktura zasad niestandardowych musi zawierać `ClaimsSchema`i zdefiniu
   </BuildingBlocks>
 ```
 
-Przeznaczenie tych elementów jest następujący:
+Przeznaczenie tych elementów jest następująca:
 
-- `ClaimsSchema` Definiuje, które oświadczenia jest sprawdzana.  W takim przypadku zostanie zweryfikowana "stare hasło". 
+- `ClaimsSchema` Definiuje, które oświadczenia jest weryfikowany.  W takim przypadku zostanie zweryfikowana "stare hasło". 
 
-## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Dodawanie dostawcy oświadczeń zmiany hasła z jego elementów pomocniczych
+## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Dodawanie dostawcy oświadczeń zmiany hasła ze swoimi elementami pomocnicze
 
-Oświadczenia, który dostawca będzie zmiany hasła
+Oświadczenia, które będą dostawcy o zmianie hasła
 
-1. Uwierzytelnić użytkownika stare hasło
-2. A jeśli "nowe hasło" zgodny, "Potwierdź nowe hasło", ta wartość jest przechowywana w B2C magazynu danych i dlatego pomyślnie zmieniono hasło. 
+1. Uwierzytelnianie użytkownika przed stare hasło
+2. A jeśli 'nowe hasło' pasuje do "Potwierdź nowe hasło", ta wartość jest przechowywana w magazynu danych usługi B2C i dlatego pomyślnie zmieniono hasło. 
 
 ![img](images/passwordchange.jpg)
 
-Dodaj następujące dostawcy oświadczeń do rozszerzenia zasad. 
+Dodaj następującego dostawcy oświadczeń zasad dotyczących rozszerzeń. 
 
 ```XML
 <ClaimsProviders>
@@ -148,25 +148,25 @@ Dodaj następujące dostawcy oświadczeń do rozszerzenia zasad.
 
 
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Dodaj identyfikatory aplikacji do zasad niestandardowych
+### <a name="add-the-application-ids-to-your-custom-policy"></a>Dodawanie identyfikatorów aplikacji do zdefiniowania zasad niestandardowych
 
 Dodaj identyfikatory aplikacji do pliku rozszerzenia (`TrustFrameworkExtensions.xml`):
 
-1. W pliku rozszerzenia (TrustFrameworkExtensions.xml), Znajdź element `<TechnicalProfile Id="login-NonInteractive">` i `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. W pliku rozszerzeń (TrustFrameworkExtensions.xml) można znaleźć elementu `<TechnicalProfile Id="login-NonInteractive">` i `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
-2. Zastąp wszystkie wystąpienia `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji Framework obsługi tożsamości aplikacji zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md). Oto przykład:
+2. Zastąp wszystkie wystąpienia zmiennej `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md). Oto przykład:
 
    ```
    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
    ```
 
-3. Zastąp wszystkie wystąpienia `ProxyIdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji Framework obsługi tożsamości serwera Proxy aplikacji zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+3. Zastąp wszystkie wystąpienia zmiennej `ProxyIdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości serwera Proxy, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
 
 4. Zapisz plik rozszerzenia.
 
 
 
-## <a name="create-a-password-change-user-journey"></a>Utwórz użytkownika podróży zmiany hasła
+## <a name="create-a-password-change-user-journey"></a>Utwórz podróży użytkownika Zmień hasło
 
 ```XML
  <UserJourneys>
@@ -194,26 +194,26 @@ Dodaj identyfikatory aplikacji do pliku rozszerzenia (`TrustFrameworkExtensions.
   </UserJourneys>
 ```
 
-Po zakończeniu modyfikowania pliku rozszerzenia. Zapisz i przekazywanie tego pliku. Upewnij się, że wszystkie operacje sprawdzania poprawności powiodło się.
+Po zakończeniu modyfikowania pliku rozszerzenia. Zapisz, a następnie przekaż ten plik. Upewnij się, że wszystkie sprawdzenia powiodło się.
 
 
 
-## <a name="create-a-relying-party-rp-file"></a>Utwórz plik jednostki uzależnionej strony (RP)
+## <a name="create-a-relying-party-rp-file"></a>Utwórz plik jednostki uzależnionej strona (RP)
 
-Następnie zaktualizuj jednostki uzależnionej pliku strony (RP), który inicjuje przebieg użytkownika, który został utworzony:
+Następnie zaktualizuj plik innych firm (RP) jednostki uzależnionej, który inicjuje podróży użytkownika, który został utworzony:
 
-1. Utwórz kopię ProfileEdit.xml w katalogu roboczym. Następnie należy zmienić jego nazwę (na przykład PasswordChange.xml).
-2. Otwórz nowy plik i aktualizacji `PolicyId` atrybutu dla `<TrustFrameworkPolicy>` z unikatową wartość. Jest to nazwa zasady (na przykład PasswordChange).
-3. Modyfikowanie `ReferenceId` atrybutu w `<DefaultUserJourney>` odpowiadające `Id` nowe podróży użytkownika utworzony (na przykład PasswordChange).
+1. Utwórz kopię ProfileEdit.xml w katalogu roboczym. Następnie zmień jego nazwę (na przykład PasswordChange.xml).
+2. Otwórz nowy plik i zaktualizuj `PolicyId` atrybutu dla `<TrustFrameworkPolicy>` przy użyciu unikatowej wartości. To jest nazwa zasady (na przykład PasswordChange).
+3. Modyfikowanie `ReferenceId` atrybutu w `<DefaultUserJourney>` do dopasowania `Id` nowe podróży użytkownika, który został utworzony (na przykład PasswordChange).
 4. Zapisz zmiany, a następnie przekazać plik.
-5. Testowanie zasad niestandardowych, który został przekazany, w portalu Azure, przejdź do bloku zasady, a następnie kliknij przycisk **Uruchom teraz**.
+5. Aby przetestować zasad niestandardowych, który został przekazany, w witrynie Azure portal, przejdź do bloku zasady, a następnie kliknij **Uruchom teraz**.
 
 
 
 
-## <a name="link-to-password-change-sample-policy"></a>Łącze do przykładowe zmiany hasła
+## <a name="link-to-password-change-sample-policy"></a>Link do przykładowej zmiany hasła
 
-Można znaleźć zasady próbki [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+Można znaleźć zasad przykładowe [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
 
 
 

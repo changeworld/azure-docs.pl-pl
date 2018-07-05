@@ -1,6 +1,6 @@
 ---
-title: Przed wdrożeniem usługi aplikacji Azure stosu | Dokumentacja firmy Microsoft
-description: Kroki, aby zakończyć przed wdrożeniem usługi aplikacji Azure stosu
+title: Przed wdrożeniem usługi App Service w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Kroki, aby ukończyć przed wdrożeniem usługi App Service w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 37d6ee2f047768f08ea7a113b7d97911d58a46e2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 660532118549a23416f4c0571845ec3517cb1b5b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110579"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436222"
 ---
-# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługi aplikacji Azure stosu
+# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Przed wdrożeniem usługi Azure App Service na stosie Azure, wykonaj wymagane wstępnie kroki w tym artykule.
+Przed wdrożeniem usługi Azure App Service w usłudze Azure Stack, należy wykonać kroki wymagań wstępnych, w tym artykule.
 
 > [!IMPORTANT]
-> Zastosowanie aktualizacji 1804 systemu Azure stosu zintegrowane lub wdrożyć najnowszą Azure stosu Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.2.
+> Zastosowanie aktualizacji 1804 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.2.
 
-## <a name="download-the-installer-and-helper-scripts"></a>Pobierz skrypty Instalatora i pomocnika
+## <a name="download-the-installer-and-helper-scripts"></a>Pobieranie skryptów Instalatora i pomocnika
 
-1. Pobierz [usługi aplikacji na skryptów pomocnika wdrażania stosu Azure](https://aka.ms/appsvconmashelpers).
-2. Pobierz [usługi aplikacji na stos Azure Instalatora](https://aka.ms/appsvconmasinstaller).
-3. Wyodrębnij pliki z pliku zip skryptów pomocnika. Następujące pliki i foldery są wyodrębniane:
+1. Pobierz [usługi App Service na skrypty pomocnika wdrożenia usługi Azure Stack](https://aka.ms/appsvconmashelpers).
+2. Pobierz [usługi App Service w usłudze Azure Stack Instalatora](https://aka.ms/appsvconmasinstaller).
+3. Wyodrębnij pliki z pliku zip skrypty pomocnika. Wyodrębnione są następujące pliki i foldery:
 
    - Common.ps1
    - Create-AADIdentityApp.ps1
@@ -47,21 +47,21 @@ Przed wdrożeniem usługi Azure App Service na stosie Azure, wykonaj wymagane ws
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-Aktualizacja 1802 stosu Azure dodano obsługę domen błędów. Nowe wdrożenia usługi Azure App Service na stosie Azure będą dystrybuowane między domenami usterek i zapewnienia odporności na uszkodzenia.
+Aktualizacja usługi Azure Stack w wersji 1802 dodano obsługę domen błędów. Nowych wdrożeń usługi Azure App Service w usłudze Azure Stack będą znajdować się w domenach błędów i zapewnienia odporności na uszkodzenia.
 
-Aby istniejące wdrożenia usługi Azure App Service na stosie Azure, które zostały wdrożone przed aktualizacją 1802, zobacz [Rebalance dostawcy zasobów usługi aplikacji w domenach awarii](azure-stack-app-service-fault-domain-update.md) artykułu.
+Dla istniejących wdrożeń usługi Azure App Service w usłudze Azure Stack, które zostały wdrożone przed aktualizacją 1802, zobacz [ponowne zrównoważenie dostawcy zasobów usługi App Service w domenach błędów](azure-stack-app-service-fault-domain-update.md) artykułu.
 
-Ponadto wdrażanie serwera plików wymaganych i wystąpień programu SQL Server w konfiguracji o wysokiej dostępności.
+Ponadto wdrażanie serwera plików wymaganych i wystąpień programu SQL Server w konfiguracji wysokiej dostępności.
 
-## <a name="get-certificates"></a>Uzyskanie certyfikatów
+## <a name="get-certificates"></a>Pobierz certyfikaty
 
-### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Usługa Azure Resource Manager certyfikat główny dla stosu Azure
+### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Usługa Azure Resource Manager certyfikat główny dla usługi Azure Stack
 
-Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień na komputerze, który można osiągnąć punktu końcowego uprzywilejowanych Azure stosu zintegrowany System lub Azure stosu Development Kit Host.
+Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień na komputerze, który może osiągnąć uprzywilejowanych punktu końcowego usługi Azure Stack zintegrowany System lub Azure stosu Development Kit Host.
 
-Uruchom *Get AzureStackRootCert.ps1* skryptu z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt tworzy certyfikat główny, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
+Uruchom *Get AzureStackRootCert.ps1* skryptów z folderu, w którym została rozpakowana skrypty pomocnika. Skrypt utworzy certyfikat główny, w tym samym folderze co skrypt, który potrzebuje tworzenia certyfikatów usługi App Service.
 
-Po uruchomieniu następującego polecenia programu PowerShell będzie konieczne podanie AzureStack\CloudAdmin uprzywilejowanych punktu końcowego i poświadczeń.
+Po uruchomieniu następującego polecenia programu PowerShell należy przewidzieć AzureStack\CloudAdmin uprzywilejowanych punktu końcowego i poświadczenia.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -71,37 +71,37 @@ Po uruchomieniu następującego polecenia programu PowerShell będzie konieczne 
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| PrivilegedEndpoint | Wymagane | AzS-ERCS01 | Uprzywilejowane punktu końcowego |
-| CloudAdminCredential | Wymagane | AzureStack\CloudAdmin | Poświadczenia konta domeny dla administratorów chmury Azure stosu |
+| PrivilegedEndpoint | Wymagane | AzS-ERCS01 | Punkt końcowy uprzywilejowanych |
+| CloudAdminCredential | Wymagane | AzureStack\CloudAdmin | Poświadczenia konta domeny dla administratorów chmury Azure Stack |
 
-### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Certyfikaty wymagane ASDK wdrożenia usługi Azure App Service
+### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Certyfikaty wymagane do wdrożenia ASDK usługi Azure App Service
 
-*AppServiceCerts.ps1 Utwórz* działania skryptu z urzędu certyfikacji stosu Azure można utworzyć cztery certyfikaty, które wymaga usługi aplikacji.
+*AppServiceCerts.ps1 Utwórz* działania skryptu z urzędem certyfikacji usługi Azure Stack, aby utworzyć cztery certyfikatów, których usługa App Service.
 
 | Nazwa pliku | Użycie |
 | --- | --- |
 | _.appservice.local.azurestack.external.pfx | Hasło domyślnego certyfikatu protokołu SSL usługi App Service |
-| api.appservice.local.azurestack.external.pfx | Certyfikat SSL interfejsu API usługi aplikacji |
-| ftp.appservice.local.azurestack.external.pfx | Certyfikat SSL wydawcy usługi aplikacji |
-| sso.appservice.local.azurestack.external.pfx | Certyfikat aplikacji tożsamości usługi aplikacji |
+| api.appservice.local.azurestack.external.pfx | Certyfikat protokołu SSL interfejsu API usługi aplikacji |
+| ftp.appservice.local.azurestack.external.pfx | Certyfikat protokołu SSL wydawcy usługi App Service |
+| sso.appservice.local.azurestack.external.pfx | Certyfikat aplikacji tożsamości usługi App Service |
 
 Aby utworzyć certyfikaty, wykonaj następujące kroki:
 
-1. Zaloguj się przy użyciu konta AzureStack\AzureStackAdmin hosta Azure stosu Development Kit.
+1. Zaloguj się przy użyciu konta AzureStack\AzureStackAdmin hosta usługi Azure Stack Development Kit.
 2. Otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień.
-3. Uruchom *AppServiceCerts.ps1 Utwórz* skryptu z folderu, w którym została rozpakowana skrypty pomocnika. Ten skrypt tworzy cztery certyfikatów, w tym samym folderze, skrypt, który wymaga usługi aplikacji do tworzenia certyfikatów.
-4. Wprowadź hasło, aby zabezpieczyć pliki PFX i zapisz go. Musisz wprowadzić go w usłudze App Service w Instalatorze stosu Azure.
+3. Uruchom *AppServiceCerts.ps1 Utwórz* skryptów z folderu, w którym została rozpakowana skrypty pomocnika. Ten skrypt tworzy cztery certyfikaty, w tym samym folderze co skrypt, który potrzebuje tworzenia certyfikatów usługi App Service.
+4. Wprowadź hasło, aby zabezpieczyć pliki PFX, a następnie zanotuj go. Musisz wprowadzić go w usłudze App Service na temat Instalatora usługi Azure Stack.
 
 #### <a name="create-appservicecertsps1-script-parameters"></a>Utwórz AppServiceCerts.ps1 Parametry skryptu
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| pfxPassword | Wymagane | Null | Hasła, która pomaga chronić klucz prywatny certyfikatu |
-| DomainName | Wymagane | local.azurestack.external | Azure sufiks regionu i domeny stosu |
+| pfxPassword | Wymagane | Null | Hasło, które chroni klucz prywatny certyfikatu |
+| DomainName | Wymagane | local.azurestack.external | Azure Stack region i domeny sufiks |
 
-### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certyfikaty wymagane w przypadku wdrożenia produkcyjnego stosu Azure usługi Azure App Service
+### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certyfikaty wymagane do wdrożenia produkcyjnego usługi Azure Stack w usłudze Azure App Service
 
-Aby uruchomić dostawcy zasobów w środowisku produkcyjnym, należy podać następujących certyfikatów:
+Aby uruchomić dostawcy zasobów w środowisku produkcyjnym, należy podać następujące certyfikaty:
 
 - Domyślny certyfikat domeny
 - Certyfikat interfejsu API
@@ -110,9 +110,9 @@ Aby uruchomić dostawcy zasobów w środowisku produkcyjnym, należy podać nast
 
 #### <a name="default-domain-certificate"></a>Domyślny certyfikat domeny
 
-Domyślny certyfikat domeny jest umieszczany w roli Serwer sieci Web. Aplikacje użytkownika dla symbolu wieloznacznego lub wartość domyślną żądania domeny w usłudze Azure App Service użycie tego certyfikatu. Certyfikat służy także do operacji kontroli źródła (Kudu).
+Domyślny certyfikat domeny jest umieszczany w roli frontonu. Aplikacje użytkownika dla symboli wieloznacznych lub domyślne żądania domeny w usłudze Azure App Service, użyj tego certyfikatu. Certyfikat służy także do operacji kontroli źródła (Kudu).
 
-Należy certyfikat uniwersalny trzech podmiotu certyfikatu i musi być w formacie pfx. To wymaganie umożliwia jeden certyfikat pokrywał się zarówno w domenie domyślnej, jak i punktu końcowego SCM operacji kontroli źródła.
+Certyfikat musi być w formacie pfx i powinna być certyfikat wieloznaczny podmiotu trzeciego. To wymaganie umożliwia jeden certyfikat pokrywać zarówno domyślnej domeny i punkt końcowy SCM dla operacji kontroli źródła.
 
 | Format | Przykład |
 | --- | --- |
@@ -122,7 +122,7 @@ Należy certyfikat uniwersalny trzech podmiotu certyfikatu i musi być w formaci
 
 #### <a name="api-certificate"></a>Certyfikat interfejsu API
 
-Certyfikat interfejsu API zostanie umieszczony w roli zarządzania. Dostawca zasobów używa go, aby ułatwić bezpieczne wywołania interfejsu API. Certyfikat do opublikowania musi zawierać którego podmiot odpowiada wpis DNS interfejsu API.
+Certyfikat interfejsu API jest umieszczany w roli zarządzania. Dostawca zasobów używa go, aby pomóc bezpiecznych wywołań interfejsu API. Certyfikat do publikacji musi zawierać podmiotem, który odpowiada wpis DNS interfejsu API.
 
 | Format | Przykład |
 | --- | --- |
@@ -130,7 +130,7 @@ Certyfikat interfejsu API zostanie umieszczony w roli zarządzania. Dostawca zas
 
 #### <a name="publishing-certificate"></a>Publikowanie certyfikatów
 
-Certyfikat dla roli wydawcy zabezpiecza ruch FTPS dla właścicieli aplikacji, gdy ich przekazać zawartość. Certyfikat do opublikowania musi zawierać którego podmiot odpowiada wpis FTPS DNS.
+Certyfikat dla roli wydawcy zabezpiecza ruch FTPS dla właścicieli aplikacji, gdy ich przekazywanie zawartości. Certyfikat do publikacji musi zawierać podmiotem, który odpowiada wpis FTPS DNS.
 
 | Format | Przykład |
 | --- | --- |
@@ -138,12 +138,12 @@ Certyfikat dla roli wydawcy zabezpiecza ruch FTPS dla właścicieli aplikacji, g
 
 #### <a name="identity-certificate"></a>Certyfikat tożsamości
 
-Certyfikat tożsamości aplikacji umożliwia:
+Certyfikat aplikacji tożsamości umożliwia:
 
-- Integrację usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) katalogu stosu Azure i usługi aplikacji do obsługi integracji z dostawcy zasobów obliczeniowych.
-- Pojedynczy logowania jednokrotnego scenariusze dotyczące narzędzia dla zaawansowanych programistów w usłudze Azure App Service na stosie Azure.
+- Integrację usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) katalogu usługi Azure Stack i App Service pozwala na integrację z dostawcą zasobów obliczeniowych.
+- Pojedynczego logowania scenariusze dotyczące narzędzi dla zaawansowanych programistów w ramach usługi Azure App Service w usłudze Azure Stack.
 
-Certyfikat tożsamości musi zawierać którego podmiot odpowiada następujący format.
+Certyfikat tożsamości musi zawierać podmiotem, który odpowiada następujący format.
 
 | Format | Przykład |
 | --- | --- |
@@ -151,9 +151,9 @@ Certyfikat tożsamości musi zawierać którego podmiot odpowiada następujący 
 
 ## <a name="virtual-network"></a>Sieć wirtualna
 
-Usługa aplikacji Azure na stosie Azure umożliwia wdrażanie dostawcy zasobów do istniejącej sieci wirtualnej lub pozwala utworzyć sieć wirtualną jako część wdrożenia. Za pomocą istniejącej sieci wirtualnej umożliwia korzystanie z wewnętrznych adresów IP do nawiązania połączenia przez serwer plików i programu SQL server wymagane przez usługę Azure App Service na stosie Azure. Sieć wirtualna musi być skonfigurowany z następujące podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service na stosie Azure:
+Usługa Azure App Service w usłudze Azure Stack umożliwia wdrażanie dostawcy zasobów do istniejącej sieci wirtualnej lub umożliwia tworzenie sieci wirtualnej jako część wdrożenia. Korzystanie z istniejącej sieci wirtualnej umożliwia użycie wewnętrznych adresów IP, aby nawiązać połączenie serwera plików i programu SQL server wymagane przez usługę Azure App Service w usłudze Azure Stack. Sieć wirtualna musi być skonfigurowany z następujących podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service w usłudze Azure Stack:
 
-Sieć wirtualna — / 16 do /
+Sieć wirtualna - /16
 
 Podsieci
 
@@ -163,16 +163,16 @@ Podsieci
 - PublishersSubnet /24
 - WorkersSubnet /21
 
-## <a name="prepare-the-file-server"></a>Przygotowywanie serwera plików
+## <a name="prepare-the-file-server"></a>Przygotowanie serwera plików
 
-Usługa aplikacji Azure wymaga użycia serwera plików. Wdrożeń produkcyjnych serwer plików musi być skonfigurowane jako wysokiej dostępności i może obsługiwać błędy.
+Usługa Azure App Service wymaga użycia serwera plików. W przypadku wdrożeń produkcyjnych serwera plików musi być skonfigurowane wysoko dostępne i zdolne do obsługi błędów.
 
-Azure stosu Development Kit tylko w przypadku wdrożeń, można użyć [Szablon wdrożenia usługi Azure Resource Manager przykład](https://aka.ms/appsvconmasdkfstemplate) do wdrożenia serwera skonfigurowanego pliku jednym węzłem. Serwer plików z jednym węzłem będą należeć do grupy roboczej.
+W przypadku usługi Azure Stack Development Kit tylko w przypadku wdrożeń, można użyć [przykładowy szablon wdrożenia usługi Azure Resource Manager](https://aka.ms/appsvconmasdkfstemplate) do wdrożenia skonfigurowano jednowęzłowy serwer plików. Serwer plików z pojedynczym węzłem będzie należeć do grupy roboczej.
 
 >[!IMPORTANT]
-> Jeśli wybierzesz do wdrożenia usługi aplikacji w ramach istniejącej sieci wirtualnej z serwerem plików powinny zostać wdrożone w osobnej podsieci z usługi aplikacji.
+> Jeśli wybierzesz do wdrożenia usługi App Service w istniejącej sieci wirtualnej serwera plików powinny być wdrażane w osobnej podsieci z usługi App Service.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Zapewnij grup i kont w usłudze Active Directory
+### <a name="provision-groups-and-accounts-in-active-directory"></a>Aprowizowanie grup i kont w usłudze Active Directory
 
 1. Utwórz następujące grupy zabezpieczeń globalnych usługi Active Directory:
 
@@ -184,7 +184,7 @@ Azure stosu Development Kit tylko w przypadku wdrożeń, można użyć [Szablon 
    - FileShareOwner
    - FileShareUser
 
-   Bezpieczeństwa najlepiej użytkowników dla tych kont (i dla wszystkich ról sieci web) powinny być unikatowe i mają silnej nazwy użytkowników i hasła. Ustaw hasła z następujących warunków:
+   Zabezpieczeń najlepszym rozwiązaniem jest użytkowników dla tych kont (i dla wszystkich ról sieci web) powinna być unikatowa i ma silnej nazwy użytkowników i hasła. Ustawianie haseł, które z następujących warunków:
 
    - Włącz **hasło nigdy nie wygasa**.
    - Włącz **użytkownik nie może zmienić hasła**.
@@ -192,44 +192,46 @@ Azure stosu Development Kit tylko w przypadku wdrożeń, można użyć [Szablon 
 
 3. Dodaj konta do członkostwa w grupach w następujący sposób:
 
-   - Dodaj **właściciel udziału plików** do **FileShareOwners** grupy.
+   - Dodaj **FileShareOwner** do **FileShareOwners** grupy.
    - Dodaj **FileShareUser** do **FileShareUsers** grupy.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zapewnij grup i kont w grupie roboczej
+### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Aprowizowanie grup i kont w grupie roboczej
 
 >[!NOTE]
-> Gdy konfigurujesz serwer plików, uruchom następujące polecenia z **wiersza polecenia administratora**. <br>***Nie używaj programu PowerShell.***
+> Gdy konfigurujesz serwer plików, uruchom następujące polecenia z **wiersza polecenia administratora**. <br>***Nie należy używać programu PowerShell.***
 
-Gdy używasz szablonu usługi Azure Resource Manager, użytkownicy, zostały już utworzone.
+W przypadku użycia szablonu usługi Azure Resource Manager, użytkownicy, zostały już utworzone.
 
-1. Uruchom następujące polecenia, aby utworzyć konta Właściciel udziału plików i FileShareUser. Zastąp `<password>` z własne wartości.
+1. Uruchom następujące polecenia, aby utworzyć konta FileShareOwner i FileShareUser. Zastąp `<password>` własnymi wartościami.
 
-    ``` DOS
-    net user FileShareOwner <password> /add /expires:never /passwordchg:no
-    net user FileShareUser <password> /add /expires:never /passwordchg:no
-    ```
-2. Ustaw hasła dla konta, które nigdy nie wygasa, uruchamiając następujące polecenia WMIC:
+``` DOS
+net user FileShareOwner <password> /add /expires:never /passwordchg:no
+net user FileShareUser <password> /add /expires:never /passwordchg:no
+```
 
-    ``` DOS
-    WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-    WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
-    ```
+2. Ustawianie hasła dla kont, które nigdy nie wygasa, uruchamiając następujące polecenia WMIC:
+
+``` DOS
+WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+```
+
 3. Utwórz grupy lokalne FileShareUsers i FileShareOwners i dodać konta w pierwszym kroku do nich:
 
-    ``` DOS
-    net localgroup FileShareUsers /add
-    net localgroup FileShareUsers FileShareUser /add
-    net localgroup FileShareOwners /add
-    net localgroup FileShareOwners FileShareOwner /add
-    ```
+``` DOS
+net localgroup FileShareUsers /add
+net localgroup FileShareUsers FileShareUser /add
+net localgroup FileShareOwners /add
+net localgroup FileShareOwners FileShareOwner /add
+```
 
-### <a name="provision-the-content-share"></a>Udostępnianie zawartości udostępnionej
+### <a name="provision-the-content-share"></a>Aprowizowanie udział zawartości
 
-Udział zawartości zawiera zawartość witryny sieci Web dzierżawy. Procedura udostępniania zawartości udostępnionej na jednym serwerze plików jest taka sama dla środowisk usługi Active Directory, jak i grupy roboczej. Ale różni się w klastrze pracy awaryjnej w usłudze Active Directory.
+Udział zawartości zawiera zawartość witryny sieci Web w dzierżawie. Procedura do udostępniania zawartości udostępnionej na pojedynczy serwer plików jest taka sama dla środowisk usługi Active Directory, jak i grupy roboczej. Ale różni się dla klastra trybu failover w usłudze Active Directory.
 
-#### <a name="provision-the-content-share-on-a-single-file-server-active-directory-or-workgroup"></a>Udostępnianie zawartości udostępnionej na jednym serwerze plików (usługi Active Directory lub grupy roboczej)
+#### <a name="provision-the-content-share-on-a-single-file-server-active-directory-or-workgroup"></a>Aprowizowanie udziału zawartości na jednym serwerze plików (usługi Active Directory lub grupie roboczej)
 
-Na jednym serwerze plików, uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień. Zastąp wartość `C:\WebSites` z odpowiednich ścieżkach w danym środowisku.
+Na jednym serwerze plików, uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień. Zastąp wartość `C:\WebSites` ścieżkami odpowiedniego w danym środowisku.
 
 ```DOS
 set WEBSITES_SHARE=WebSites
@@ -241,11 +243,11 @@ net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
 
 ### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>Dodaj grupę FileShareOwners do lokalnej grupy administratorów
 
-Dla zdalnego zarządzania systemem Windows działała prawidłowo należy dodać grupę FileShareOwners do lokalnej grupy Administratorzy.
+Do zdalnego zarządzania Windows działało poprawnie należy dodać grupę FileShareOwners do lokalnej grupy Administratorzy.
 
 #### <a name="active-directory"></a>Usługa Active Directory
 
-Uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze plików lub na każdym serwerze plików, który działa jako węzeł klastra pracy awaryjnej. Zastąp wartość `<DOMAIN>` wraz z nazwą domeny, którego chcesz używać.
+Uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze plików lub na każdym serwerze plików, który działa jako węzeł klastra trybu failover. Zastąp wartość `<DOMAIN>` z nazwą domeny, którego chcesz używać.
 
 ```DOS
 set DOMAIN=<DOMAIN>
@@ -260,9 +262,9 @@ Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem upr
 net localgroup Administrators FileShareOwners /add
 ```
 
-### <a name="configure-access-control-to-the-shares"></a>Konfigurowanie kontroli dostępu do udziałów
+### <a name="configure-access-control-to-the-shares"></a>Skonfiguruj kontrolę dostępu do udziałów
 
-Uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze plików lub w węźle klastra trybu failover, który jest bieżącym właścicielem zasobu klastra. Zastąp wartości kursywą wartości, które są specyficzne dla danego środowiska.
+Uruchom następujące polecenia w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze plików lub węzła klastra trybu failover, który jest bieżącym właścicielem zasobu klastra. Zastąp wartości kursywą wartościami, które są specyficzne dla danego środowiska.
 
 #### <a name="active-directory"></a>Usługa Active Directory
 
@@ -289,52 +291,52 @@ icacls %WEBSITES_FOLDER% /grant FileShareUsers:(CI)(S,X,RA)
 icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
-## <a name="prepare-the-sql-server-instance"></a>Przygotowanie wystąpienie programu SQL Server
+## <a name="prepare-the-sql-server-instance"></a>Przygotowywanie wystąpienia programu SQL Server
 
-Usługi aplikacji Azure na zliczania baz danych i hostingu Azure stosu należy przygotować wystąpienia programu SQL Server do przechowywania bazy danych usługi aplikacji.
+Azure App Service dla hostingu usługi Azure Stack i pomiarów baz danych należy przygotować wystąpienia programu SQL Server do przechowywania bazy danych usługi App Service.
 
-W przypadku wdrożeń Azure stosu Development Kit można użyć programu SQL Server Express 2014 z dodatkiem SP2 lub nowszym.
+W przypadku wdrożeń usługi Azure Stack Development Kit, można użyć programu SQL Server Express 2014 z dodatkiem SP2 lub nowszym.
 
-Do celów wysokiej dostępności i produkcji, należy użyć pełną wersję programu SQL Server 2014 SP2 lub później, Włącz uwierzytelnianie w trybie mieszanym i wdrożyć w [konfiguracji wysokiej dostępności](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
+Do produkcji i wysokiej dostępności należy użyć pełnej wersji programu SQL Server 2014 z dodatkiem SP2 lub później, Włącz uwierzytelnianie trybu mieszanego i wdrażanie w [konfiguracji wysokiej dostępności](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
-Wystąpienie programu SQL Server dla usługi Azure App Service na stosie Azure musi być dostępny ze wszystkich ról usługi aplikacji. Można wdrożyć program SQL Server w ramach subskrypcji domyślny dostawca w stosie Azure. Można też użyć istniejącej infrastruktury, w ramach organizacji (o ile istnieje łączność stos Azure). Jeśli używasz portalu Azure Marketplace obrazu, należy odpowiednio skonfigurować zaporę.
+Wystąpienie programu SQL Server dla usługi Azure App Service w usłudze Azure Stack muszą być dostępne ze wszystkich ról usługi App Service. Możesz wdrożyć program SQL Server w ramach subskrypcji dostawcy domyślne w usłudze Azure Stack. Czy też mają być wykorzystanie istniejącej infrastruktury w Twojej organizacji (o ile ma łączność do usługi Azure Stack). Jeśli używasz obrazu witryny Azure Marketplace, pamiętaj, aby odpowiednio skonfigurować zaporę.
 
 >[!NOTE]
-> Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pośrednictwem funkcji zarządzania Marketplace. Upewnij się, że zawsze pobieranie najnowszej wersji rozszerzenia IaaS SQL, przed wdrożeniem maszyny Wirtualnej przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak SQL maszyn wirtualnych, które są dostępne w systemie Azure. Dla maszyn wirtualnych SQL utworzony na podstawie tych obrazów, rozszerzenia IaaS i odpowiedniego rozszerzenia portalu udostępnia funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
+> Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pomocą funkcji zarządzania portalu Marketplace. Upewnij się, że zawsze pobieranie najnowszej wersji rozszerzenie SQL IaaS, zanim wdrożysz maszynę Wirtualną przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak maszyn wirtualnych SQL, które są dostępne na platformie Azure. Dla maszyn wirtualnych SQL z utworzonego na podstawie tych obrazów, rozszerzenie IaaS i odpowiadających im rozszerzenia portalu oferują funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
 >
-Dla każdej z ról serwera SQL można użyć wystąpienie domyślne lub nazwane wystąpienie. Jeśli używasz nazwanego wystąpienia, należy ręcznie uruchomić usługę SQL Server Browser i otworzyć port 1434.
+Dla każdej z ról programu SQL Server można użyć wystąpienia domyślnego lub nazwanego wystąpienia. Jeśli używasz nazwane wystąpienie, należy ręcznie uruchomić usługę SQL Server Browser i otwórz port 1434.
 
 >[!IMPORTANT]
-> Jeśli wybierzesz do wdrożenia usługi aplikacji w ramach istniejącej sieci wirtualnej programu SQL Server powinny zostać wdrożone w osobnej podsieci z usługi aplikacji i serwerze plików.
+> Jeśli wybierzesz do wdrożenia usługi App Service w istniejącej sieci wirtualnej programu SQL Server powinny być wdrażane w osobnej podsieci z usługi App Service i serwera plików.
 >
 
 ## <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
 
-Skonfiguruj nazwę główną usługi Azure AD do obsługi następujących operacji:
+Konfigurowanie jednostki usługi Azure AD, aby obsługiwać następujące operacje:
 
-- Zestawu skalowania maszyn wirtualnych integracji, w warstwach procesu roboczego.
-- Usługa rejestracji Jednokrotnej dla narzędzi deweloperskich portalu i zaawansowane funkcje platformy Azure.
+- Zestaw skalowania maszyn wirtualnych integracji, na warstwy procesu roboczego.
+- Logowanie Jednokrotne do usługi Azure Functions narzędzi deweloperskich portalu, jak i zaawansowanych.
 
-Czynności te dotyczą tylko w środowiskach stosu Azure zabezpieczonej przez usługi AD platformy Azure.
+Te kroki mają zastosowanie tylko w środowiskach platformy Azure zabezpieczonych przez usługi AD Azure Stack.
 
 Administratorzy, należy skonfigurować logowanie Jednokrotne:
 
 - Włącz narzędzia dla zaawansowanych programistów w ramach usługi App Service (Kudu).
-- Korzystanie z obsługi portalu usługi Azure Functions.
+- Korzystanie z środowisko pracy w portalu usługi Azure Functions.
 
 Wykonaj następujące kroki:
 
 1. Otwórz wystąpienie programu PowerShell jako azurestack\AzureStackAdmin.
-2. Przejdź do lokalizacji skrypty, które pobrane i wyodrębnione w [wymagań wstępnych krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
-3. [Instalowanie programu PowerShell dla usługi Azure stosu](azure-stack-powershell-install.md).
-4. Uruchom **AADIdentityApp.ps1 Utwórz** skryptu. Po wyświetleniu monitu wprowadź identyfikator dzierżawy usługi Azure AD, używany dla danego wdrożenia stosu Azure. Na przykład wprowadź **myazurestack.onmicrosoft.com**.
-5. W **poświadczeń** okna, wprowadź konto administratora usługi Azure AD i hasło. Kliknij przycisk **OK**.
-6. Wprowadź hasło certyfikatu i ścieżka do pliku certyfikatu [wcześniej utworzony certyfikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
-7. Skrypt tworzy nową aplikację w wystąpieniu usługi Azure AD dzierżawy. Zanotuj identyfikator aplikacji, który jest zwracany w danych wyjściowych programu PowerShell. To potrzebne podczas instalacji.
-8. Otwórz nowe okno przeglądarki i zaloguj się do [portalu Azure](https://portal.azure.com) jako administratora usługi Azure Active Directory.
+2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
+4. Uruchom **AADIdentityApp.ps1 Utwórz** skryptu. Po wyświetleniu monitu wprowadź identyfikator dzierżawy usługi Azure AD, który używany w przypadku wdrożenia usługi Azure Stack. Na przykład, wprowadź **myazurestack.onmicrosoft.com**.
+5. W **poświadczeń** okna, podaj konto administratora usługi Azure AD i hasło. Kliknij przycisk **OK**.
+6. Wprowadź hasło certyfikatu i ścieżka do pliku certyfikatu [certyfikatu utworzony wcześniej](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
+7. Skrypt tworzy nową aplikację w dzierżawie wystąpienia usługi Azure AD. Zanotuj identyfikator aplikacji, który jest zwracany w danych wyjściowych programu PowerShell. Potrzebujesz tych informacji podczas instalacji.
+8. Otwórz nowe okno przeglądarki i zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administratora usługi Azure Active Directory
 9. Otwórz dostawcy zasobów usługi Azure AD.
-10. Wybierz **rejestracji aplikacji**.
-11. Wyszukaj identyfikator aplikacji zwracane w ramach kroku 7. Aplikacja usługi aplikacji znajduje się.
+10. Wybierz **rejestracje aplikacji**.
+11. Wyszukaj identyfikator aplikacji zwracane w ramach kroku 7. Znajduje się aplikacja usługi App Service.
 12. Wybierz **aplikacji** na liście.
 13. Wybierz **ustawienia**.
 14. Wybierz **wymagane uprawnienia** > **udzielić uprawnień** > **tak**.
@@ -345,34 +347,34 @@ Wykonaj następujące kroki:
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Wymagane | Null | Identyfikator dzierżawy usługi Azure AD Podaj identyfikator GUID lub ciąg. Przykładem jest myazureaaddirectory.onmicrosoft.com. |
+| DirectoryTenantName | Wymagane | Null | Identyfikatora dzierżawy usługi Azure AD Podaj identyfikator GUID lub ciąg. Przykładem jest myazureaaddirectory.onmicrosoft.com. |
 | AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
-| TenantARMEndpoint | Wymagane | Null | Punkt końcowy usługi Azure Resource Manager dzierżawy. Przykładem jest management.local.azurestack.external. |
-| AzureStackAdminCredential | Wymagane | Null | Poświadczenie administratora usługi Azure AD. |
-| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** wcześniej wygenerowany plik certyfikatu tożsamości aplikacji. |
-| CertificatePassword | Wymagane | Null | Hasło chroni klucz prywatny certyfikatu. |
+| TenantARMEndpoint | Wymagane | Null | Punkt końcowy dzierżawy usługi Azure Resource Manager. Przykładem jest management.local.azurestack.external. |
+| AzureStackAdminCredential | Wymagane | Null | Poświadczenia administratora usługi Azure AD. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do wcześniej wygenerowany plik certyfikatu aplikacji tożsamości. |
+| CertificatePassword | Wymagane | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Tworzenie aplikacji usług federacyjnych Active Directory
 
-W przypadku środowisk Azure stosu zabezpieczonej przez usługi AD FS należy skonfigurować nazwy głównej usługi AD FS do obsługi następujących operacji:
+W środowiskach usługi Azure Stack, zabezpieczone przez usługi AD FS należy skonfigurować z jednostki usługi AD FS do obsługi następujących operacji:
 
-- Zestawu skalowania maszyn wirtualnych integracji, w warstwach procesu roboczego.
-- Usługa rejestracji Jednokrotnej dla narzędzi deweloperskich portalu i zaawansowane funkcje platformy Azure.
+- Zestaw skalowania maszyn wirtualnych integracji, na warstwy procesu roboczego.
+- Logowanie Jednokrotne do usługi Azure Functions narzędzi deweloperskich portalu, jak i zaawansowanych.
 
 Administratorzy, należy skonfigurować logowanie Jednokrotne:
 
-- Konfigurowanie nazwy głównej usługi integracji zestawu skali maszyny wirtualnej w warstwach procesu roboczego.
+- Skonfiguruj nazwę główną usługi do integracji zestawu skalowania maszyn wirtualnych na warstwy procesu roboczego.
 - Włącz narzędzia dla zaawansowanych programistów w ramach usługi App Service (Kudu).
-- Korzystanie z obsługi portalu usługi Azure Functions.
+- Korzystanie z środowisko pracy w portalu usługi Azure Functions.
 
 Wykonaj następujące kroki:
 
 1. Otwórz wystąpienie programu PowerShell jako azurestack\AzureStackAdmin.
-2. Przejdź do lokalizacji skrypty, które pobrane i wyodrębnione w [wymagań wstępnych krok](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
-3. [Instalowanie programu PowerShell dla usługi Azure stosu](azure-stack-powershell-install.md).
+2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 4. Uruchom **ADFSIdentityApp.ps1 Utwórz** skryptu.
-5. W **poświadczeń** okna, wprowadź konto administratora usług AD FS chmury i hasło. Kliknij przycisk **OK**.
-6. Ścieżka do pliku certyfikatu i hasła certyfikatu dla [wcześniej utworzony certyfikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
+5. W **poświadczeń** okna, podaj konto administratora chmury usług AD FS i hasło. Kliknij przycisk **OK**.
+6. Ścieżka do pliku certyfikatu i hasła certyfikatu dla [certyfikatu utworzony wcześniej](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certyfikat utworzony dla tego kroku, domyślnie jest **sso.appservice.local.azurestack.external.pfx**.
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1
@@ -382,10 +384,10 @@ Wykonaj następujące kroki:
 | --- | --- | --- | --- |
 | AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
 | PrivilegedEndpoint | Wymagane | Null | Punkt końcowy uprzywilejowanych. Przykładem jest AzS ERCS01. |
-| CloudAdminCredential | Wymagane | Null | Poświadczenia konta domeny dla administratorów chmury Azure stosu. Przykładem jest Azurestack\CloudAdmin. |
-| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do pliku PFX certyfikatu tożsamości aplikacji. |
-| CertificatePassword | Wymagane | Null | Hasło chroni klucz prywatny certyfikatu. |
+| CloudAdminCredential | Wymagane | Null | Poświadczenia konta domeny dla administratorów chmury Azure Stack. Przykładem jest Azurestack\CloudAdmin. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do pliku PFX certyfikatu aplikacji tożsamości. |
+| CertificatePassword | Wymagane | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zainstaluj dostawcę zasobów usługi aplikacji](azure-stack-app-service-deploy.md)
+[Zainstaluj dostawcę zasobów usługi App Service](azure-stack-app-service-deploy.md)

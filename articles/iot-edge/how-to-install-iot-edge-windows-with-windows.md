@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: b2878f9d7aa32b2502487cdc081896e5ba306af1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346380"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437845"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów Windows
 
@@ -162,6 +162,12 @@ W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z *
 
 ```powershell
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
+```
+
+Zmienna środowiskowa ulegają zmianie podczas ponownego uruchamiania.
+
+```powershell
+SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"
 ```
 
 Na koniec upewnij się, **sieci:** w obszarze **moby_runtime:** jest odkomentowana i **translatora adresów sieciowych**

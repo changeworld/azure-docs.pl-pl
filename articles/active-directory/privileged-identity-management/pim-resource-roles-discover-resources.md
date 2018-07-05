@@ -1,68 +1,68 @@
 ---
-title: Odnajdywanie i zarządzania zasobami Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
-description: Opisuje sposób ochrony zasobów platformy Azure przy użyciu usługi PIM.
+title: Odnajdywanie i zarządzanie zasobami platformy Azure przy użyciu Privileged Identity Management | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak chronić zasoby platformy Azure za pomocą usługi PIM.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 563c7f24ec4045b46d5bdcf0dc267dbdda2d5a5e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: aca218a33d148e9f53f405f9cda98a701a7443cc
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234475"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442529"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Odnajdywanie i zarządzania zasobami Azure przy użyciu Privileged Identity Management
+# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Odnajdywanie i zarządzanie zasobami platformy Azure przy użyciu Privileged Identity Management
 
-Informacje o sposobie odnajdywania i zarządzania zasobami Azure, korzystając z zarządzania tożsamości uprzywilejowanych (PIM) w usłudze Azure Active Directory (Azure AD). Te informacje mogą być pomocne w organizacji, które już używają PIM, aby chronić zasoby administratora oraz właściciele subskrypcji, którzy chcą zabezpieczanie zasobów w środowisku produkcyjnym.
+Dowiedz się, jak odnajdywanie i zarządzanie zasobami platformy Azure, korzystając z Privileged Identity Management (PIM) w usłudze Azure Active Directory (Azure AD). Te informacje mogą być pomocne, aby organizacje, które już używają usługi PIM do ochrony zasobów administratora, a do właścicieli subskrypcji, którzy chcą zabezpieczanie zasobów w środowisku produkcyjnym.
 
-Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć i wybierz zasobów chronionych przez usługi PIM. Nie ma żadnego limitu liczby zasobów, którymi można zarządzać w programie PIM. Firma Microsoft zaleca jednak począwszy od najważniejszych zasobów (środowisko produkcyjne).
+Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć i wybrać zasoby, które mają być chronione przez usługę PIM. Nie ma żadnego limitu liczby zasobów, którymi można zarządzać za pomocą usługi PIM. Firma Microsoft zaleca jednak począwszy od najbardziej krytycznych zasobów (produkcja).
 
 > [!NOTE]
-> Można jedynie wyszukać i wybrać zasoby subskrypcji można zarządzać za pomocą usługi PIM. Podczas zarządzania subskrypcją w PIM można również zarządzać zasoby podrzędne w subskrypcji.
+> Można jedynie wyszukiwanie i wybieranie subskrypcji zasobów do zarządzania za pomocą usługi PIM. Podczas zarządzania subskrypcją w usłudze PIM, można również zarządzać zasoby podrzędne w ramach subskrypcji.
 
 ## <a name="discover-resources"></a>Odnajdź zasoby
 
-W portalu Azure, przejdź do **Privileged Identity Management** okienka. W menu po lewej stronie w **ZARZĄDZAJ** zaznacz **zasobów Azure**.
+W witrynie Azure portal przejdź do **Privileged Identity Management** okienka. W menu po lewej stronie w **ZARZĄDZAJ** zaznacz **zasobów platformy Azure**.
 
-!["Privileged Identity Management - zasobów platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+!["Privileged Identity Management — zasoby platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-Jeśli jest to pierwsza przy użyciu usługi PIM dla zasobów platformy Azure, najpierw uruchom odnajdywanie w celu odnalezienia zasobów do zarządzania. W **odnajdywania zasobów** okienku wybierz **odnajdywania zasobów** przycisk, aby uruchomić proces odnajdowania.
+Jeśli po raz pierwszy używasz usługi PIM dla zasobów platformy Azure, należy najpierw uruchomić odnajdywanie w celu odnalezienia zasobów do zarządzania. W **odnajdywania zasobów** okienku wybierz **odnajdywania zasobów** przycisk, aby uruchomić proces odnajdowania.
 
-![W okienku "Odnajdywania zasobów"](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
+![W okienku "Odnajdź zasoby"](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
 
-Jeśli inny zasób lub katalogu administrator w organizacji jest już Zarządzanie zasobem platformy Azure przy użyciu usługi PIM lub jeśli przypisania roli kwalifikujących się do zasobu, widok listy wyświetli komunikat **odnajdywania zasobów lub aktywacji Przypisanie roli kwalifikujących się, aby kontynuować**. 
+Czy innego zasobu lub katalogu administratora w Twojej organizacji zarządza już zasób platformy Azure za pomocą usługi PIM, w przypadku kwalifikujące się przypisanie roli dla zasobu w widoku listy wyświetla komunikat **odnajdź zasoby lub Aktywuj kwalifikujące się przypisanie roli kontynuować**. 
 
-![Przycisk "Odnajdywania zasobów" w "Privileged Identity Manager - zasobów platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
+![Przycisk "Odnajdź zasoby" w "Privileged Identity Manager — zasoby platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
 
-Po wybraniu **odnajdywania zasobów** przycisku, czy z górnego menu lub w środku okienku zostanie wyświetlona lista subskrypcji, którymi można zarządzać. Subskrypcje, które są wyróżnione są już chronione przez usługi PIM.
+Po wybraniu **odnajdywania zasobów** przycisk, czy z górnego menu lub w środku okienku zostanie wyświetlona lista subskrypcji, którymi można zarządzać. Subskrypcje, które są wyróżnione są już chronione przez usługę PIM.
 
 > [!NOTE]
-> Aby uniemożliwić usunięcie ustawienia PIM po subskrypcji jest równa zarządzane inny administrator zasobów, subskrypcja nie może być niezarządzane.
+> Aby uniemożliwić usunięcie ustawień usługi PIM, po subskrypcji jest równa zarządzane inny administrator zasobów, subskrypcji nie może być niezarządzane.
 
-!["Zasobów platformy Azure — odnajdywania" okienko](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
+!["Zasobów platformy Azure — odnajdywanie" okienko](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
 
-W **zasobów** kolumny, umieść wskaźnik myszy nad subskrypcji, który chcesz chronić za pomocą usługi PIM. Zaznacz pola wyboru po lewej stronie nazwy zasobu. Jednocześnie można wybrać wiele subskrypcji.
+W **zasobów** kolumny, umieść wskaźnik myszy na subskrypcję, która ma być chroniony za pomocą usługi PIM. Następnie zaznacz pole wyboru po lewej stronie nazwy zasobu. Możesz wybrać wiele subskrypcji w danym momencie.
 
-![Lista zasobów w "zasobów platformy Azure — odnajdywania" okienko](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
+![Lista zasobów w "zasobów platformy Azure — odnajdywanie" okienko](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
 
-Aby zainicjować proces dołączania, w menu górnym, wybierz **zarządzać zasobem**.
+Aby zainicjować proces dołączania w górnym menu wybierz **zarządzanie zasobami**.
 
-![Przycisk "Zarządzanie zasobów" w "zasobów platformy Azure — odnajdywania" okienko](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
+![Przycisk "Manage zasobów" w "zasobów platformy Azure — odnajdywanie" okienko](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
 
-Wybrane zasoby są teraz zarządzane przez usługi PIM. Aby zamknąć ekran odnajdywania, w prawym górnym rogu wybierz **X**. Aby rozpocząć zarządzanie ustawieniami PIM i przypisywanie elementów członkowskich, w menu u góry **Privileged Identity Management - zasobów Azure** okienku wybierz **Odśwież** przycisku.
+Wybrane zasoby są teraz zarządzane przez usługę PIM. Aby zamknąć ekran odnajdywania, w prawym górnym rogu wybierz **X**. Aby rozpocząć zarządzanie ustawień usługi PIM i przypisywanie elementów członkowskich, w menu w górnej części **Privileged Identity Management — zasoby platformy Azure** okienku wybierz **Odśwież** przycisku.
 
-![Przycisk "Odśwież" w górnym menu "Privileged Identity Management - zasobów platformy Azure" okienko](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
+![Przycisk "Odśwież" na "Privileged Identity Management — zasoby platformy Azure" w menu u góry okienka](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Konfigurowanie ustawień roli](pim-resource-roles-configure-role-settings.md)
-- [Przypisywanie ról usługi PIM](pim-resource-roles-assign-roles.md)
+- [Przypisywanie ról w usłudze PIM](pim-resource-roles-assign-roles.md)

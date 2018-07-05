@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z RBAC na platformie Azure | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z kontroli dostępu opartej na rolach na platformie Azure (RBAC).
+description: Rozwiązywanie problemów przy użyciu kontroli dostępu opartej na rolach na platformie Azure (RBAC).
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -10,77 +10,77 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 186bcf26639f5cff2dcbf1e805913ac7edab7df4
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295404"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437370"
 ---
 # <a name="troubleshooting-rbac-in-azure"></a>Rozwiązywanie problemów z RBAC na platformie Azure
 
-Ten artykuł zawiera odpowiedzi często zadawane pytania dotyczące kontroli dostępu opartej na rolach (RBAC), tak aby wiedzieli, czego można oczekiwać, korzystając z ról w portalu Azure i może rozwiązać problemy z dostępem do. Te trzy role opisano wszystkie typy zasobów:
+W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostępu opartej na rolach (RBAC), dzięki czemu będzie wiadomo, czego można oczekiwać, gdy przy użyciu ról w witrynie Azure portal i możesz rozwiązać problemy z dostępem do. Te trzy role obejmują wszystkie typy zasobów:
 
 * Właściciel  
 * Współautor  
 * Czytelnik  
 
-Właściciele i współautorzy mają pełny dostęp do możliwości zarządzania, ale współautora nie może udzielić dostępu do innych użytkowników lub grup. Elementy poznasz nieco bardziej interesującego z rolą czytnika, dzięki czemu to, gdzie będzie poświęcić trochę czasu. Informacje o tym, jak udostępnić seee [zarządzanie dostępem przy użyciu RBAC i portalu Azure](role-assignments-portal.md).
+Właściciele i współautorzy mają pełny dostęp do środowiska zarządzania, ale Współautor nie może przyznawać dostępu innym użytkownikom lub grupom. Elementy Pobierz nieco bardziej interesująca z rolą Czytelnik tak to, gdzie będzie poświęcić trochę czasu. Aby uzyskać informacje o tym, jak udzielić dostępu, seee [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md).
 
 ## <a name="app-service"></a>App Service
-### <a name="write-access-capabilities"></a>Możliwości zapisu
-Przyznanie dostępu użytkowników tylko do odczytu w aplikacji sieci web jednej, niektóre funkcje zostały wyłączone, że nie może spodziewać się. Następujące funkcje zarządzania wymagają **zapisu** dostęp do aplikacji sieci web (współautora lub właściciela), a nie są dostępne w jakimkolwiek scenariuszu tylko do odczytu.
+### <a name="write-access-capabilities"></a>Możliwości dostępu do zapisu
+Jeśli możesz udzielić użytkownikowi dostępu tylko do odczytu do pojedynczej aplikacji sieci web, niektóre funkcje są wyłączone, że może nie oczekujesz. Następujące funkcje zarządzania wymagają **zapisu** dostęp do aplikacji sieci web (współautora lub właściciela), a nie są dostępne w każdym scenariuszu tylko do odczytu.
 
-* Polecenia (na przykład Uruchom, Zatrzymaj, itp.)
-* Zmiana ustawień, takich jak konfiguracja ogólna, ustawienia skalowania ustawienia kopii zapasowej i ustawienia monitorowania
-* Uzyskiwanie dostępu do poświadczeń publikowania i innych informacji poufnych, takich jak ustawienia aplikacji i parametry połączenia
+* Poleceń (takich jak uruchamianie, zatrzymywanie i itp.)
+* Zmiany ustawień, takich jak konfiguracja ogólna, ustawienia skalowania, ustawienia kopii zapasowej i ustawienia monitorowania
+* Uzyskiwanie dostępu do poświadczeń publikowania i inne wpisy tajne, takie jak ustawienia aplikacji i parametry połączenia
 * Przesyłanie strumieniowe dzienników
 * Dzienniki diagnostyczne konfiguracji
 * W konsoli (wiersza polecenia)
-* Ostatnie i Active wdrożenia (ciągłe wdrażanie lokalnej git)
+* Aktywne i ostatnie wdrożenia (ciągłe wdrażanie lokalnej usługi git)
 * Szacowane wydatki
 * Testy sieci Web
 * Sieć wirtualna (widoczne tylko dla czytnika, jeśli wcześniej skonfigurowano sieci wirtualnej przez użytkownika z uprawnieniami do zapisu).
 
-Jeśli nie masz dostępu do żadnego z tych kafelków, należy skontaktować się z administratorem współautora dostępu do aplikacji sieci web.
+Jeśli nie masz dostępu do żadnego z tych kafelków, należy poprosić administratora o prawa dostępu współautora do aplikacji sieci web.
 
-### <a name="dealing-with-related-resources"></a>Zajmujących się zasoby pokrewne
-Aplikacje sieci Web są skomplikowane obecności kilka różnych zasobów, które wzajemne oddziaływanie. W tym miejscu jest grupą typowych zasobów z kilku witryn sieci Web:
+### <a name="dealing-with-related-resources"></a>Obsługa wraz z powiązanymi zasobami
+Aplikacje sieci Web są skomplikowane przez obecność kilku różnych zasobów, które wzajemne oddziaływania wykresów. Oto grupę zasobów typowe za kilka witryn sieci Web:
 
-![Grupa zasobów aplikacji sieci Web](./media/troubleshooting/website-resource-model.png)
+![Grupy zasobów aplikacji sieci Web](./media/troubleshooting/website-resource-model.png)
 
-Dzięki temu, jeśli ktoś dostępu tylko w aplikacji sieci web, wiele funkcji w bloku witryny sieci Web w portalu Azure jest wyłączona.
+W rezultacie, gdy przyznasz ktoś dostęp tylko w aplikacji sieci web, wiele funkcji w bloku witryny sieci Web w witrynie Azure portal jest wyłączony.
 
-Te elementy wymagają **zapisu** dostęp do **planu usługi aplikacji** odnosi się do witryny sieci Web:  
+Te elementy wymagają **zapisu** dostęp do **planu usługi App Service** odnosi się do witryny sieci Web:  
 
-* Wyświetlanie aplikacji sieci web firmy cenowym (wolne lub standardowy)  
-* Skala konfiguracji (liczba wystąpień, rozmiar maszyny wirtualnej, ustawienia skalowania automatycznego)  
+* Wyświetlanie w aplikacji sieci web cenowych warstwy (bezpłatna lub standardowa)  
+* Konfiguracja skalowania (liczba wystąpień, rozmiar maszyny wirtualnej, ustawienia automatycznego skalowania)  
 * Przydziały (magazynu, przepustowości, procesor CPU)  
 
 Te elementy wymagają **zapisu** dostęp do całego **grupy zasobów** zawierający witryny sieci Web:  
 
-* Certyfikaty SSL i powiązań (certyfikaty SSL można udostępniać między lokacjami w tej samej grupie zasobów i lokalizacja geograficzna)  
+* Certyfikaty SSL i powiązań (certyfikaty SSL mogą być współużytkowane między lokacjami w tej samej grupie zasobów i lokalizacja geograficzna)  
 * Reguły alertów  
-* Ustawienia skalowania automatycznego  
+* Ustawienia automatycznego skalowania  
 * Składniki usługi Application Insights  
 * Testy sieci Web  
 
 ## <a name="azure-functions"></a>Azure Functions
-Niektóre funkcje [usługi Azure Functions](../azure-functions/functions-overview.md) wymagają dostępu do zapisu. Na przykład jeśli użytkownik jest przypisać rolę czytelnika, nie będą mogli wyświetlać funkcje w aplikacji funkcji. Zostaną wyświetlone w portalu **(bez dostępu)**.
+Niektóre funkcje [usługi Azure Functions](../azure-functions/functions-overview.md) wymagają dostępu do zapisu. Na przykład jeśli użytkownik jest przypisany roli Czytelnik, nie będą mogli wyświetlać funkcje w ramach aplikacji funkcji. Wyświetli portalu **(Brak dostępu)**.
 
-![Funkcja Brak dostępu do aplikacji](./media/troubleshooting/functionapps-noaccess.png)
+![Brak dostępu aplikacje funkcji](./media/troubleshooting/functionapps-noaccess.png)
 
-Można kliknąć czytnik **funkcji platformy** a następnie kliknij pozycję **wszystkie ustawienia** Aby wyświetlić niektóre ustawienia związane z aplikacji funkcji (podobnie do aplikacji sieci web), ale nie mogą modyfikować tych ustawień.
+Czytelnik mogą kliknąć **funkcje platformy** kartę, a następnie kliknij przycisk **wszystkie ustawienia** Aby wyświetlić niektóre ustawienia związane z aplikacją funkcji (podobne do aplikacji sieci web), ale nie mogą modyfikować dowolne z tych ustawień.
 
 ## <a name="virtual-machine"></a>Maszyna wirtualna
-Wiele takich jak z aplikacjami sieci web, niektóre funkcje w bloku maszyny wirtualnej wymagają dostęp do zapisu do maszyny wirtualnej lub do innych zasobów w grupie zasobów.
+Znacznie takich jak w aplikacji sieci web, niektóre funkcje, w bloku maszyny wirtualnej jest wymagany dostęp do zapisu do maszyny wirtualnej lub do innych zasobów w grupie zasobów.
 
-Maszyny wirtualne są powiązane z nazwy domeny, sieci wirtualne, konta magazynu i reguł alertów.
+Maszyny wirtualne są związane z nazwy domeny, sieci wirtualne, konta magazynu i reguł alertów.
 
 Te elementy wymagają **zapisu** dostęp do **maszyny wirtualnej**:
 
@@ -89,15 +89,15 @@ Te elementy wymagają **zapisu** dostęp do **maszyny wirtualnej**:
 * Dyski  
 * Rozszerzenia  
 
-Wymagają one wykonywania **zapisu** dostęp do **maszyny wirtualnej**i **grupy zasobów** (wraz z nazwą domeny) jest it:  
+Wymagają one **zapisu** dostęp do obu **maszyny wirtualnej**i **grupy zasobów** (wraz z nazwą domeny) aby znajdował się w:  
 
 * Zestaw dostępności  
 * Zestawu o zrównoważonym obciążeniu  
 * Reguły alertów  
 
-Jeśli nie masz dostępu do żadnego z tych kafelków, skontaktuj się z administratorem współautora dostępu do grupy zasobów.
+Jeśli nie masz dostępu do żadnego z tych kafelków, poproś administratora dostępu współautora do grupy zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Zarządzanie dostępem przy użyciu RBAC i portalu Azure](role-assignments-portal.md)
-* [Wyświetl dzienniki aktywności zmiany RBAC](change-history-report.md)
+* [Zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md)
+* [Wyświetlanie dzienników aktywności dla zmian RBAC](change-history-report.md)
 

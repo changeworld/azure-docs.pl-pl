@@ -1,80 +1,80 @@
 ---
 title: Uwagi dla deweloperów na temat używania zasad niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Uwagi dla deweloperów na skonfigurowaniu i utrzymywaniu z niestandardowych zasad usługi Azure AD B2C.
+description: Uwagi dla deweloperów, od konfigurowania i konserwowania usługi Azure AD B2C za pomocą zasad niestandardowych.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce323972dcdbf673311b407f427bc452fbe6dc3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 31ca79976ec2ecf2755b975749e9c9150c4a49e8
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709730"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441077"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Informacje o wersji dla publicznej wersji zapoznawczej usługi Azure Active Directory B2C zasad niestandardowych
-Zestaw funkcji niestandardowych zasad jest teraz dostępna w wersji ewaluacyjnej w publicznej wersji zapoznawczej dla wszystkich usługi Azure Active Directory B2C (Azure AD B2C) klientów. Ten zestaw funkcji jest przeznaczona dla deweloperów zaawansowane tożsamości tworzenia najbardziej złożonych rozwiązań tożsamości.  
+Zestaw funkcji niestandardowych zasad jest teraz dostępna w wersji ewaluacyjnej w publicznej wersji zapoznawczej dla wszystkich usługi Azure Active Directory B2C (Azure AD B2C) klientów. Ten zestaw funkcji jest przeznaczona dla deweloperów tożsamości zaawansowanego tworzenia najbardziej złożonych rozwiązań tożsamości.  
 
-Obecnie ten zestaw funkcji wymaga deweloperom skonfigurowania struktury obsługi tożsamości bezpośrednio za pomocą edycji pliku XML. Ta metoda konfiguracji jest wydajny i złożone. Zaawansowane tożsamości deweloperzy przy użyciu platformy obsługi tożsamości należy zaplanować inwestycji pewien czas ukończenia przewodników i odczytywanie dokumentów odwołania. 
+Obecnie ten zestaw funkcji wymaga deweloperom konfigurowanie w struktura środowiska tożsamości bezpośrednio przez edytowanie plików XML. Tej metody konfiguracji jest zaawansowanych i złożonych. Zaawansowane tożsamości deweloperzy korzystający z platformy środowiska tożsamości należy zaplanować inwestować trochę czasu na ukończenie przewodników i odczytywanie dokumenty referencyjne. 
 
-## <a name="features-included-in-this-public-preview"></a>Funkcje zawarte w tym publicznej wersji zapoznawczej
-Z nowych funkcji wprowadzonych w publicznej wersji zapoznawczej deweloperzy mogą wykonywać następujące zadania:<br>
+## <a name="features-included-in-this-public-preview"></a>Funkcje zawarte w tej publicznej wersji zapoznawczej
+Za pomocą nowych funkcji wprowadzonych w publicznej wersji zapoznawczej deweloperzy mogą wykonywać następujące zadania:<br>
 
-* Tworzenie i przekazywanie niestandardowe uwierzytelnianie użytkownika podróże za pomocą niestandardowych zasad. 
-   * Opisano krok po kroku jako wymiany podróże użytkownika od dostawcy oświadczeń. 
-   * Zdefiniuj rozgałęzień warunkowych w podróży użytkownika. 
-* Integracja usług korzystających z interfejsu API REST w podróży użytkownika z uwierzytelniania niestandardowego.  
-* Dodaj federacji z dostawców tożsamości, zgodnych ze standardowych OpenIDConnect. <br>
-* Dodaj federacji z dostawców tożsamości, które jest zgodna z protokołu SAML 2.0. 
+* Tworzenie i przekazywanie niestandardowe uwierzytelnianie użytkownika podróży za pomocą zasad niestandardowych. 
+   * Opisz podróży użytkownika krok po kroku, jak wymiany między dostawców oświadczeń. 
+   * Zdefiniuj rozgałęzienia warunkowe w podróży użytkownika. 
+* Integracja usług korzystających z interfejsu API REST w swojej podróży użytkownika uwierzytelniania niestandardowego.  
+* Dodaj Federację z dostawcami tożsamości, które są zgodne ze standardowych OpenIDConnect. <br>
+* Dodaj Federację z dostawcami tożsamości, zgodne z protokołu SAML 2.0. 
 
 ## <a name="terms-of-the-public-preview"></a>Warunki publicznej wersji zapoznawczej
 
-* Firma Microsoft zachęca do korzystania z nowych funkcji wyłącznie do celów ewaluacyjnych.<br>
+* Zachęcamy do korzystania z nowych funkcji wyłącznie do celów oceny.<br>
 * Nowe funkcje nie są przeznaczone do użytku w środowisku produkcyjnym.<br>
-* Nowe funkcje nie dotyczą umów dotyczących poziomu usług (SLA). <br>
-* Żądania pomocy technicznej można złożyć za pośrednictwem kanałów regularne pomocy technicznej. <br>
-* Brak bez uzgodnionej daty dla ogólnej dostępności.<br>
-* Nasze uznania z dowolnej przyczyny Microsoft może Flaga i odrzucić lub ograniczyć scenariuszy i podróże użytkownika, które wykraczają poza karty produktu usługi Azure AD B2C do służy jako platforma zarządzania (CIAM) tożsamości i dostępu klienta.
+* Umowy dotyczące poziomu usług (SLA) nie są stosowane do nowych funkcji. <br>
+* Żądania pomocy technicznej można zgłosić za pośrednictwem kanałów pomocy technicznej regularne. <br>
+* Brak bez daty uzgodnionego za usługi ogólnie dostępne.<br>
+* Uznania z dowolnej przyczyny Microsoft może Flaga i odrzucić lub ograniczyć scenariuszy i podróży użytkownika, które wykraczają poza zakres karty produktu usługi Azure AD B2C ma pełnić rolę klienta tożsamościami i dostępem (CIAM) platforma do zarządzania.
 
-## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Obowiązki deweloperów zestaw funkcji zasad niestandardowych
-Konfiguracja zasad ręczne udziela dostępu niższego poziomu podstawowej platformy Azure AD B2C i spowoduje powstanie framework unikatowy zaufania można swobodnie dostosowywać. Możliwych kombinacji dostawców tożsamości niestandardowej, relacje zaufania, integracji z usługami zewnętrznych i przepływy pracy krok po kroku umieścić większa zapotrzebowanie na zaawansowanych deweloperów korzystających z nich.
+## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>Obowiązki deweloperom zestaw funkcji zasad niestandardowych
+Konfiguracja zasad ręczne udziela niższego poziomu dostępu dla podstawowej platformy usługi Azure AD B2C i spowoduje powstanie framework unikatowy zaufania można swobodnie dostosowywać. Możliwych kombinacji niestandardowych dostawców tożsamości, relacje zaufania, integracji z usługami zewnętrznymi i instrukcje krok po kroku przepływami pracy umieścić większe zapotrzebowanie na zaawansowanych deweloperów korzystanie z nich.
 
-Aby w pełni skorzystać z publicznej wersji zapoznawczej, zalecamy deweloperom korzystanie z niestandardowych zasad zestaw funkcji jest zgodna z następującymi zasadami:
-* Zapoznanie się z języka konfiguracji Framework obsługi tożsamości i klucz/klucze tajne zarządzania.
-* Przejmowanie na własność scenariuszy i niestandardowej integracji.
+Aby w pełni korzystać z publicznej wersji zapoznawczej, zaleca się, czy deweloperom korzystanie z zestawu funkcji niestandardowych zasad przestrzegać następujących wytycznych:
+* Zapoznanie się z języka konfiguracji platformy środowiska tożsamości i zarządzania klucza lub kluczy tajnych.
+* Przejęcie na własność scenariuszy i niestandardowych integracji.
 * Testowanie metodyczny scenariusza.
-* Wykonaj rozwoju oprogramowania i przejściowych najlepszych rozwiązań z co najmniej jeden programowanie i środowiska testowego i jednego środowiska produkcyjnego.
-* Aktualne informacje o nowych rozwiązań z dostawców tożsamości i usługi, którą można zintegrować z. Na przykład śledzenie pracy w kluczy tajnych i planowanych i nieplanowanych zmiany w usłudze.
-* Konfigurowanie aktywnego monitorowania i monitorowanie czasu reakcji środowisk produkcyjnych.
-* Aktualizuj adresy e-mail kontaktów w subskrypcji platformy Azure i pozostać odbierać wiadomości e-mail na żywo witryny zespołu firmy Microsoft.
-* Podjąć działania odpowiednim przypadku zaleca się, aby to zrobić przez zespół live witryny firmy Microsoft. 
+* Postępuj zgodnie z tworzenia oprogramowania i przemieszczania najlepsze rozwiązania z co najmniej jednego środowiska deweloperskiego i testowego oraz jednego środowiska produkcyjnego.
+* Aktualne informacje na temat nowych rozwiązań od dostawcy tożsamości i usług, z których możesz zintegrować z usługą. Na przykład śledzenie pracy w wpisów tajnych i planowanych i nieplanowanych zmian wprowadzonych w usłudze.
+* Konfigurowanie aktywnego monitorowania i monitorować czas reakcji w środowisku produkcyjnym.
+* Aktualizuj adresy e-mail kontaktu w subskrypcji platformy Azure i przygotuj reagują na wiadomości e-mail z działającej witryny zespołu firmy Microsoft.
+* Podejmij działanie aktualnych przypadku zaleca się, aby to zrobić przez zespół aktywnej witryny firmy Microsoft. 
 
-## <a name="features-by-stage-and-known-issues"></a>Funkcje w etapie i znane problemy
-Niestandardowe zasady/Identity Framework środowisko możliwości opracowywane są stałe i szybkie.  Ta tabela jest indeks dostępność funkcji/składników.
+## <a name="features-by-stage-and-known-issues"></a>Funkcje według etapów i znane problemy
+Niestandardowe funkcje platformy środowiska tożsamości/zasady opracowywane są szybkie i stałych.  Ta tabela to indeks dostępności funkcji/składników.
 
-Opublikuj pytania na przepełnienie stosu w [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)
+Publikuj pytania w witrynie Stack Overflow w [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)
 
 
 ### <a name="identity-providers-tokens-protocols"></a>Dostawcy tokenów, protokoły
-Interfejsy o składnikach zewnętrznych i aplikacji
+Interfejsy z zewnętrznych składników i aplikacji
 
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | na przykład Google + |
-| IDP OAUTH2 |  | x |  | na przykład usługi Facebook  |
-| IDP OAUTH1 |  | x |  | na przykład w usłudze Twitter |
+| DOSTAWCA TOŻSAMOŚCI OAUTH2 |  | x |  | na przykład w serwisie Facebook  |
+| DOSTAWCA TOŻSAMOŚCI OAUTH1 |  | x |  | na przykład w usłudze Twitter |
 | IDP-SAML |  | x |  | na przykład Salesforce, usług AD FS |
 | IDP-WSFED | x |  |  |  |
 | Jednostki uzależnionej firm OAUTH |  | x |  |  |
-| Jednostki uzależnionej OIDC firm |  | x |  |  |
-| Jednostki uzależnionej firm SAML | x |  |  |  |
-| Jednostki uzależnionej WSFED firm | x |  |  |  |
-| Interfejs API REST z uwierzytelniania basic i certyfikatu. należy |  | x |  | na przykład usługi Azure Functions |
+| Jednostki uzależnionej firm OIDC |  | x |  |  |
+| Jednostki uzależnionej SAML innych firm | x |  |  |  |
+| Jednostki uzależnionej firm WSFED | x |  |  |  |
+| Interfejs API REST za pomocą uwierzytelniania basic i certyfikat |  | x |  | na przykład usługi Azure Functions |
 
 
 ### <a name="component-support"></a>Obsługa składników
@@ -84,59 +84,59 @@ Interfejsy o składnikach zewnętrznych i aplikacji
 |-------------------------------------------|-------------|---------|----|-------|
 | Usługa Azure Multi-Factor Authentication |  | x |  |  |
 | Usługa Azure Active Directory jako katalogu lokalnego |  | x |  |  |
-| Azure podsystemu 2FA poczty E-mail |  | x |  |  |
+| Usługa Azure podsystem poczty E-mail dla funkcji 2FA |  | x |  |  |
 | Obsługa wielu języków|  | x |  |  |
 | Złożoność hasła | x |  |  |  |
 
 
-### <a name="content-definition"></a>Definicja zawartości
+### <a name="content-definition"></a>Definicję zawartości
 
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   Strona błędu, api.error |  | x |  |  |
-|   Strona wybierania IDP, api.idpselections |  | x |  |  |
-|   Wybór dostawców tożsamości dla rejestracji, api.idpselections.signup |  | x |  |  |
+|   Strona wyboru dostawcy tożsamości, api.idpselections |  | x |  |  |
+|   Wybieranie dostawcy tożsamości do rejestracji, api.idpselections.signup |  | x |  |  |
 |   Nie pamiętasz hasła, api.localaccountpasswordreset |  | x |  |  |
 |   Lokalne konto logowania, api.localaccountsignin |  | x |  |  |
-|   Api.localaccountsignup rejestrację konta lokalnego |  | x |  |  |
-|   Strona usługi MFA, api.phonefactor |  | x |  |  |
-|   Własnym potwierdzone — na przykład api.selfasserted sig wzbudzania społecznościowych konta |  | x |  |  |
-|   Własnym potwierdzone aktualizacji profilu api.selfasserted.profileupdate |  | x |  |  |
-|   Ujednolicone signup lub strony logowania, api.signuporsignin |  | x |  |  |
+|   Zarejestruj się, api.localaccountsignup konta lokalnego |  | x |  |  |
+|   Strona uwierzytelniania Wieloskładnikowego, api.phonefactor |  | x |  |  |
+|   Samodzielnie określonych — na przykład api.selfasserted sig telefoniczny konta społecznościowego |  | x |  |  |
+|   Samodzielnie określonych aktualizacji profilu api.selfasserted.profileupdate |  | x |  |  |
+|   Ujednolicone rejestracji lub strony logowania, api.signuporsignin |  | x |  |  |
 
 
 ### <a name="app-ief-integration"></a>Integracja aplikacji IEF
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | Id_token_hint parametr ciągu zapytania | x |  |  |  |
-| Domain_hint parametr ciągu zapytania |  | x |  | dostępne, ponieważ oświadczenia, mogą zostać przekazane do IDP |
-| Login_hint parametr ciągu zapytania |  | x |  | dostępne, ponieważ oświadczenia, mogą zostać przekazane do IDP |
-| Wstaw JSON do UserJourney za pośrednictwem client_assertion | x |  |  | zostaną wycofane |
-| Wstawianie JSON do UserJourney jako id_token_hint | x |  |  | podejście do przodu przejdź do przekazania JSON |
+| Element domain_hint parametr ciągu zapytania |  | x |  | dostępne jako oświadczenia, mogą być przekazywane do dostawcy tożsamości |
+| Login_hint parametr ciągu zapytania |  | x |  | dostępne jako oświadczenia, mogą być przekazywane do dostawcy tożsamości |
+| Wstawianie UserJourney JSON za pośrednictwem client_assertion | x |  |  | staną się przestarzałe |
+| Wstawianie UserJourney JSON jako id_token_hint | x |  |  | Przejdź na następny podejście do przekazania JSON |
 
 
 ### <a name="session-management"></a>Zarządzanie sesjami
 
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------|-------------|---------|----|-------|
-| Dostawca sesji rejestracji Jednokrotnej |  | x |  |  |
+| Dostawcy sesji logowania jednokrotnego |  | x |  |  |
 | Dostawcy sesji logowania zewnętrznego |  | x |  |  |
-| Dostawca sesji logowania jednokrotnego SAML |  | x |  |  |
+| Dostawcy sesji logowania jednokrotnego SAML |  | x |  |  |
 
 
 ### <a name="security"></a>Bezpieczeństwo
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------------------|-------------|---------|----|-------|
-| Zasady kluczy generowania, ręczne przekazywanie |  | x |  |  |
-| Zasady kluczy - RSA/certyfikatów, kluczy tajnych |  | x |  |  |
+| Zasady kluczy — Generowanie, ręczna, przekazywania |  | x |  |  |
+| Zasady kluczy - RSA/Cert wpisów tajnych |  | x |  |  |
 
 
-### <a name="developer-interface"></a>Interfejs Developer
+### <a name="developer-interface"></a>Interfejs dla deweloperów
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------------------|-------------|---------|----|-------|
-| Portal Azure — IEF UX |  | x |  |  |
-| Application Insights UserJourney dzienniki  |  | x |  |  |
-| Dzienniki zdarzeń aplikacji Insights |x|  |  |  |
+| Portal Azure — IEF środowiska użytkownika |  | x |  |  |
+| Dzienniki UserJourney Insights aplikacji  |  | x |  |  |
+| Dzienniki zdarzeń szczegółowe informacje w aplikacji |x|  |  |  |
 
 
 

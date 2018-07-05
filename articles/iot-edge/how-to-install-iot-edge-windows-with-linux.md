@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: a5b7845522769393826057c4bc92bda56e557258
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 503dfc0c7606d44a1b9ab635aa0d479df61f3820
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346151"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435477"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów systemu Linux
 
@@ -162,6 +162,12 @@ W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z *
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
+Zmienna środowiskowa ulegają zmianie podczas ponownego uruchamiania.
+
+```powershell
+SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"
+```
+
 Na koniec upewnij się, **sieci:** w obszarze **moby_runtime:** jest odkomentowana i **azure-iot-edge**
 
 ```yaml
@@ -208,7 +214,7 @@ I uruchomione moduły z listy:
 iotedge list
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli występują problemy z środowiska uruchomieniowego usługi Edge instalacji prawidłowo, wyewidencjonowania [Rozwiązywanie problemów z] [ lnk-trouble] strony.
 

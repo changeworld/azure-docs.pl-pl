@@ -1,34 +1,34 @@
 ---
-title: Język dostosowania w zasadach niestandardowych usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać zlokalizowania zawartości w zasady niestandardowe dla wielu języków.
+title: Dostosowywanie języka w zasadach niestandardowych usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać zlokalizowania zawartości w niestandardowe zasady dla wielu języków.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6269ac65e5db20521346d5312bcbadd0905c36e2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711760"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440568"
 ---
-# <a name="language-customization-in-custom-policies"></a>Język dostosowania w zasadach niestandardowych
+# <a name="language-customization-in-custom-policies"></a>Dostosowywanie języka w zasadach niestandardowych
 
 > [!NOTE]
 > Ta funkcja jest dostępna w publicznej wersji zapoznawczej.
 > 
 
-W zasadach niestandardowych dostosowania języka działa tak samo, jak wbudowane zasady.  Zobacz wbudowane [dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) opisujący zachowanie, w jaki język jest wybierany na podstawie parametrów i ustawienia przeglądarki.
+W zasadach niestandardowych Dostosowywanie języka działa tak samo, jak wbudowane zasady.  Zobacz wbudowane [dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) opisujący zachowanie w jak język jest wybierany w oparciu o parametry i ustawienia przeglądarki.
 
 ## <a name="enable-supported-languages"></a>Włącz obsługiwane języki
-Jeśli nie określono ustawień regionalnych interfejsu użytkownika przeglądarki użytkownika wprowadza się jeden z tych języków, obsługiwane języki są wyświetlane dla użytkownika.  
+Jeśli nie określono ustawienia regionalne interfejsu użytkownika przeglądarki użytkownika prosi o jeden z tych języków, obsługiwane języki są wyświetlane użytkownikowi.  
 
-Obsługiwane języki są definiowane w `<BuildingBlocks>` w następującym formacie:
+Obsługiwane języki są zdefiniowane w `<BuildingBlocks>` w następującym formacie:
 
 ```XML
 <BuildingBlocks>
@@ -41,19 +41,19 @@ Obsługiwane języki są definiowane w `<BuildingBlocks>` w następującym forma
 </BuildingBlocks>
 ```
 
-Język domyślny i obsługiwanych języków zachowują się w taki sam sposób jak w przypadku wbudowanych zasad.
+Domyślny język i obsługiwane języki, zachowują się w taki sam sposób jak w przypadku wbudowanych zasad.
 
-## <a name="enable-custom-language-strings"></a>Włącz ciągi języka niestandardowych
+## <a name="enable-custom-language-strings"></a>Włącz ciągów języka niestandardowego
 
-Tworzenie niestandardowych języka ciągów wymaga wykonania dwóch kroków:
-1. Edytuj `<ContentDefinition>` dla strony, aby określić identyfikator zasobu żądane języki
-2. Utwórz `<LocalizedResources>` z odpowiednich identyfikatorów w sieci `<BuildingBlocks>`
+Tworzenie ciągów języka niestandardowego wymaga dwóch kroków:
+1. Edytuj `<ContentDefinition>` dla strony Aby określić identyfikator zasobu żądane języki
+2. Utwórz `<LocalizedResources>` z odpowiadające im identyfikatory w sieci `<BuildingBlocks>`
 
-Należy pamiętać, że można umieścić `<ContentDefinition>` i `<BuildingBlock>` w pliku rozszerzenie lub w pliku zasad jednostki uzależnionej, w zależności od tego, czy chcesz zachować zmiany we wszystkich zasadach dziedziczących lub nie.
+Należy pamiętać, że możesz umieścić `<ContentDefinition>` i `<BuildingBlock>` w pliku rozszerzenie lub w pliku zasad jednostki uzależnionej, w zależności od tego, czy chcesz zachować zmiany we wszystkich zasadach dziedziczącej lub nie.
 
 ### <a name="edit-the-contentdefinition-for-the-page"></a>Edytuj ContentDefinition strony
 
-Dla każdej strony, aby zlokalizować, można określić w `<ContentDefinition>` język zasobów do wyszukiwania dla każdego języka kodu.
+Dla każdej strony, aby zlokalizować, można określić w `<ContentDefinition>` jakie zasoby języka, aby wyszukać każdy kod języka.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -64,12 +64,12 @@ Dla każdej strony, aby zlokalizować, można określić w `<ContentDefinition>`
 </ContentDefinition>
 ```
 
-W tym przykładzie francuski (fr) i niestandardowe ciągi angielski (en) są dodawane do strony tworzenia konta lub logowanie Unified.  `LocalizedResourcesReferenceId` Dla każdego `LocalizedResourcesReference` jest taka sama jak ich ustawień regionalnych, ale można użyć dowolnego ciągu jako identyfikator.  Każda kombinacja języka i strony należy utworzyć odpowiedni `<LocalizedResources>` pokazano poniżej.
+W tym przykładzie francuski (fr) i angielski (en) — niestandardowe ciągi są dodawane do ujednoliconego strony rejestracji lub logowania.  `LocalizedResourcesReferenceId` Dla każdego `LocalizedResourcesReference` jest taka sama jak ich ustawień regionalnych, ale można użyć dowolnego ciągu jako identyfikator.  Dla każdej kombinacji języka i strony, należy utworzyć odpowiednią `<LocalizedResources>` pokazano poniżej.
 
 
 ### <a name="create-the-localizedresources"></a>Utwórz LocalizedResources
 
-Wprowadzone zastąpienia są zawarte w Twojej `<BuildingBlocks>` i ma `<LocalizedResources>` dla każdej strony i języka określonego w `<ContentDefinition>` dla każdej strony.  Każdy zastąpienia jest określony jako `<LocalizedString>` takich jak w poniższym przykładzie:
+Przesłonięć są zawarte w Twojej `<BuildingBlocks>` i ma `<LocalizedResources>` dla każdej strony i języka określonego w `<ContentDefinition>` dla każdej strony.  Zastępują jest określony jako `<LocalizedString>` takich jak w poniższym przykładzie:
 
 ```XML
 <BuildingBlocks>
@@ -88,8 +88,8 @@ Wprowadzone zastąpienia są zawarte w Twojej `<BuildingBlocks>` i ma `<Localize
 </BuildingBlocks>
 ```
 
-Istnieją cztery typy elementów ciąg na stronie:
+Istnieją cztery rodzaje elementów ciąg na stronie:
 
-**ClaimsProvider** -etykiety dla Twojego dostawcy tożsamości (Facebook, Google, usługi Azure AD itp.) **Typ oświadczenia** -etykiety z atrybutów i odpowiednie tekst pomocy lub pola błędy sprawdzania poprawności **UxElement** — innych elementów na stronie, które są domyślnie, takie jak przyciski, linki lub tekst ciągu**ErrorMessage** -tworzą komunikatów o błędach
+**ClaimsProvider** -etykiety dostawców tożsamości (Facebook, Google, usługa Azure AD itp.) **Element ClaimType** — etykiety dla atrybutów i odpowiadające im tekst pomocy lub pola błędy sprawdzania poprawności **UxElement** — inne ciągu elementów na stronie, które są domyślnie, takie jak przyciski, linki lub tekst **Komunikat o błędzie** — komunikaty o błędach weryfikacji formularza
 
-Upewnij się, że `StringId`s odpowiada strony używanym w przeciwnym razie zastąpienia jest zablokowany przez sprawdzanie zasad podczas przekazywania.  
+Upewnij się, że `StringId`s odpowiada stronie korzystają te zastąpienia w przeciwnym razie jest zablokowany przez sprawdzanie poprawności zasad podczas przesyłania.  

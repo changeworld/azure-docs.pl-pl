@@ -1,39 +1,39 @@
 ---
-title: Złożoność hasła w niestandardowych zasad w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Jak skonfigurować wymagania dotyczące złożoności haseł w zasadach niestandardowych.
+title: Złożoność hasła jako w zasadach niestandardowych w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Jak skonfigurować zasady niestandardowe wymagania co do złożoności haseł.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712168"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440795"
 ---
-# <a name="configure-password-complexity-in-custom-policies"></a>Skonfigurowania złożoności hasła w ramach zasad niestandardowych
+# <a name="configure-password-complexity-in-custom-policies"></a>Skonfigurować złożoność hasła jako zasady niestandardowe
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule jest zaawansowane opis działania złożoności hasła i jest włączony, za pomocą niestandardowych zasad usługi Azure AD B2C.
+W tym artykule jest zaawansowane opis sposobu działania złożoność hasła i jest włączony, za pomocą zasad niestandardowych usługi Azure AD B2C.
 
 ## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Usługa Azure AD B2C: Konfigurowanie wymagań dotyczących złożoności haseł
 
-Usługa Azure Active Directory B2C (Azure AD B2C) obsługuje zmienianie wymagania dotyczące złożoności haseł dostarczone przez użytkownika końcowego podczas tworzenia konta.  Domyślnie używa usługi Azure AD B2C **silne** hasła.  Usługa Azure AD B2C obsługuje również opcje kontroli złożoności haseł, których klienci mogą używać konfiguracji.  Ten artykuł zawiera informacje o sposobu skonfigurowania złożoności hasła w zasadach niestandardowych.  Istnieje również możliwość użycia [skonfigurowania złożoności hasła w wbudowane zasady](active-directory-b2c-reference-password-complexity.md).
+Usługa Azure Active Directory B2C (Azure AD B2C) obsługuje zmieniające się wymagania dotyczące złożoności haseł podane przez użytkownika końcowego podczas tworzenia konta.  Domyślnie program Azure AD B2C używa **silne** hasła.  Usługa Azure AD B2C obsługuje również opcji konfiguracji służących do kontrolowania złożoności haseł, których klienci mogą używać.  W tym artykule opowiada, jak skonfigurować złożoność hasła jako zasady niestandardowe.  Istnieje również możliwość użycia [skonfigurować złożoność hasła jako wbudowane zasady](active-directory-b2c-reference-password-complexity.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dzierżawy usługi Azure AD B2C, skonfigurowany tak, aby ukończyć konta lokalnego konta-konta/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
+Dzierżawy usługi Azure AD B2C skonfigurowany tak, aby ukończyć konta lokalnego konta-dokonywania/logowania, zgodnie z opisem w [wprowadzenie](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Jak skonfigurować złożoności hasła w zasadach niestandardowych
+## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Jak skonfigurować złożoność hasła jako w zasadach niestandardowych
 
-W celu skonfigurowania złożoności hasła w zasadach niestandardowych, musi zawierać ogólną strukturę zasad niestandardowych `ClaimsSchema`, `Predicates`, i `InputValidations` element wewnątrz `BuildingBlocks`.
+Aby skonfigurować złożoność hasła jako zasady niestandardowe, mogą zawierać ogólną strukturę zasad niestandardowych `ClaimsSchema`, `Predicates`, i `InputValidations` element wewnątrz `BuildingBlocks`.
 
 ```XML
   <BuildingBlocks>
@@ -43,15 +43,15 @@ W celu skonfigurowania złożoności hasła w zasadach niestandardowych, musi za
   </BuildingBlocks>
 ```
 
-Przeznaczenie tych elementów jest następujący:
+Przeznaczenie tych elementów jest następująca:
 
-- Każdy `Predicate` element definiuje ciąg podstawowe sprawdzanie poprawności, która zwraca wartość PRAWDA lub FAŁSZ.
-- `InputValidations` Element ma co najmniej jeden `InputValidation` elementów.  Każdy `InputValidation` jest tworzony przy użyciu serii `Predicate` elementów. Ten element umożliwia wykonywanie logiczna agregacji (podobnie jak `and` i `or`).
-- `ClaimsSchema` Definiuje, które oświadczenia jest sprawdzana.  Które następnie definiuje `InputValidation` reguła jest używana do sprawdzania poprawności tego oświadczenia.
+- Każdy `Predicate` element definiuje ciąg podstawowe sprawdzenie poprawności, która zwraca wartość PRAWDA lub FAŁSZ.
+- `InputValidations` Element ma co najmniej jeden `InputValidation` elementów.  Każdy `InputValidation` jest konstruowany przy użyciu szeregu `Predicate` elementów. Ten element umożliwia wykonywanie logiczna agregacji (podobnie jak `and` i `or`).
+- `ClaimsSchema` Definiuje, które oświadczenia jest weryfikowany.  Następnie definiuje, które `InputValidation` reguła jest używana do zweryfikowania tego oświadczenia.
 
 ### <a name="defining-a-predicate-element"></a>Definiowanie predykatu elementu
 
-Predykaty ma dwa typy metody: IsLengthRange lub MatchesRegex. Załóżmy Przejrzyj przykład każdego z nich.  Najpierw mamy przykładem MatchesRegex, który służy do dopasowania do wyrażenia regularnego.  W tym przykładzie odpowiada ciąg, który zawiera numery.
+Predykaty ma dwa typy metoda: IsLengthRange lub MatchesRegex. Omówmy teraz każdy przykład.  Najpierw udostępniamy przykład MatchesRegex, który jest używany do dopasowywania wyrażenia regularnego.  W tym przykładzie dopasowuje ciąg, który zawiera cyfry.
 
 ```XML
       <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
@@ -61,7 +61,7 @@ Predykaty ma dwa typy metody: IsLengthRange lub MatchesRegex. Załóżmy Przejrz
       </Predicate>
 ```
 
-Następny umożliwia zapoznaj się z przykładem IsLengthRange.  Ta metoda przyjmuje długość ciągu minimalną i maksymalną.
+Następny Omówmy przykładem IsLengthRange.  Ta metoda przyjmuje długość ciągu minimalną i maksymalną.
 
 ```XML
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
@@ -72,11 +72,11 @@ Następny umożliwia zapoznaj się z przykładem IsLengthRange.  Ta metoda przyj
       </Predicate>
 ```
 
-Użyj `HelpText` atrybutu Podaj komunikat o błędzie dla użytkowników końcowych, jeśli sprawdzenie zakończy się niepowodzeniem.  Ten ciąg może być lokalizowany przy użyciu [funkcji dostosowanie języka](active-directory-b2c-reference-language-customization.md).
+Użyj `HelpText` atrybutu, aby podać komunikat o błędzie dla użytkowników końcowych, jeśli sprawdzenie zakończy się niepowodzeniem.  Ten ciąg może być lokalizowane za pomocą [funkcji dostosowywania języka](active-directory-b2c-reference-language-customization.md).
 
 ### <a name="defining-an-inputvalidation-element"></a>Definiowanie elementu InputValidation
 
-`InputValidation` Jest agregacji `PredicateReferences`. Każdy `PredicateReferences` musi mieć wartość true, aby `InputValidation` powiodło się.  Jednak wewnątrz `PredicateReferences` Użyj elementu o nazwie atrybutu `MatchAtLeast` Aby określić, ile `PredicateReference` kontroli musi zwrócić wartość true.  Opcjonalnie można zdefiniować `HelpText` atrybut do przesłonięcia komunikat o błędzie zdefiniowany w `Predicate` elementów, których się odwołuje.
+`InputValidation` To Agregacja `PredicateReferences`. Każdy `PredicateReferences` musi mieć wartość true, aby `InputValidation` zakończyło się sukcesem.  Jednak wewnątrz `PredicateReferences` użycia elementu o nazwie atrybutu `MatchAtLeast` Aby określić, ile `PredicateReference` kontroli musi zwracać wartość true.  Opcjonalnie można zdefiniować `HelpText` atrybutu, aby zastąpić komunikat o błędzie zdefiniowane w `Predicate` elementów, których się odwołuje.
 
 ```XML
       <InputValidation Id="PasswordValidation">
@@ -92,9 +92,9 @@ Użyj `HelpText` atrybutu Podaj komunikat o błędzie dla użytkowników końcow
       </InputValidation>
 ```
 
-### <a name="defining-a-claimsschema-element"></a>Definiowanie elementu ClaimsSchema
+### <a name="defining-a-claimsschema-element"></a>Definiowanie elementów ClaimsSchema
 
-Typy oświadczeń `newPassword` i `reenterPassword` są traktowane jako specjalne, dlatego nie należy zmieniać nazwy.  Interfejs użytkownika weryfikuje użytkownika poprawnie ponownie wprowadzić swoje hasło podczas tworzenia konta w oparciu o te `ClaimType` elementów.  Aby znaleźć takie same `ClaimType` elementów, Szukaj w TrustFrameworkBase.xml w pakiecie programu początkowego.  Nowości w tym przykładzie jest, że firma Microsoft są zastępowanie tych elementów, aby zdefiniować `InputValidationReference`. `ID` Atrybut ten nowy element wskazuje `InputValidation` zdefiniowanego elementu.
+Typy oświadczeń `newPassword` i `reenterPassword` są traktowane jako specjalne, więc nie należy zmieniać nazwy.  Interfejs użytkownika weryfikuje użytkownika poprawnie ponownie wprowadzić swoje hasło podczas tworzenia konta, w oparciu o te `ClaimType` elementów.  Aby znaleźć takie same `ClaimType` elementów, Szukaj w TrustFrameworkBase.xml w dany pakiet startowy.  Co nowego w tym przykładzie jest, że firma Microsoft zastępowanie te elementy, aby zdefiniować `InputValidationReference`. `ID` Atrybut ten nowy element wskazuje `InputValidation` element, który zdefiniowaliśmy.
 
 ```XML
     <ClaimsSchema>
@@ -107,19 +107,19 @@ Typy oświadczeń `newPassword` i `reenterPassword` są traktowane jako specjaln
     </ClaimsSchema>
 ```
 
-### <a name="putting-it-all-together"></a>Składanie wszystkiego razem
+### <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
 
-W tym przykładzie pokazano sposób wszystkich części dopasowania do utworzenia zasad pracy.  Aby użyć w tym przykładzie:
+Ten przykład przedstawia sposób dopasowania wszystkich elementów w celu utworzenia zasady pracy.  Aby użyć tego przykładu:
 
-1. Postępuj zgodnie z instrukcjami wstępnymi [wprowadzenie](active-directory-b2c-get-started-custom.md) Aby pobrać, skonfigurować i przekazać TrustFrameworkBase.xml i TrustFrameworkExtensions.xml
-1. Utwórz plik SignUporSignIn.xml przy użyciu zawartości przykładzie w tej sekcji.
+1. Postępuj zgodnie z instrukcjami wymaganie wstępne [wprowadzenie](active-directory-b2c-get-started-custom.md) do pobrania, należy skonfigurować i przekazać TrustFrameworkBase.xml i TrustFrameworkExtensions.xml
+1. Utwórz plik SignUporSignIn.xml przy użyciu przykłady w tej sekcji.
 1. Aktualizowanie, zastępowanie SignUporSignIn.xml `yourtenant` nazwą dzierżawy usługi Azure AD B2C.
 1. Przekaż plik zasad SignUporSignIn.xml ostatnio.
 
-W tym przykładzie zawiera weryfikacji haseł numeru pin i jeden dla silne hasła:
+Ten przykład zawiera weryfikacji haseł numeru pin, a drugi dla silne hasła:
 
 - Wyszukaj `PINpassword`. To `InputValidation` element sprawdza poprawność kodu pin o dowolnej długości.  Nie są używane w tej chwili, ponieważ nie odwołuje się do niego `InputValidationReference` element wewnątrz `ClaimType`. 
-- Wyszukaj `PasswordValidation`. To `InputValidation` element weryfikuje hasło jest 8 do 16 znaków i zawiera 3 spośród 4 wielkich i małych liter, cyfr lub symboli.  Odwołuje się do niego `ClaimType`.  W związku z tym ta reguła jest wymuszany w tej zasadzie.
+- Wyszukaj `PasswordValidation`. To `InputValidation` element sprawdza poprawność hasła to 8 do 16 znaków i zawiera 3 z 4 cyfry, wielkie litery, małe litery lub symboli.  Odwołuje się do niego `ClaimType`.  W związku z tym ta zasada jest wymuszana w tych zasadach.
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

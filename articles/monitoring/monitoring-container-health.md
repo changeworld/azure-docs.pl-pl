@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie kondycji usługi Kubernetes Azure (AKS) (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak łatwo można przejrzeć wydajność sieci kontener AKS, aby szybko poznać użycie środowiska Kubernetes hostowanej.
+title: Monitorowanie kondycji usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak łatwo można przejrzeć wydajności kontenera AKS do szybkiego zrozumienia wykorzystania hostowanym środowiskiem Kubernetes.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,91 +12,91 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
+ms.date: 07/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e7d3fdf9e6f027ab1c23a057ad6e039d50cab9ad
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335758"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436426"
 ---
-# <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera Azure Kubernetes usługi (AKS) (wersja zapoznawcza)
+# <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
-W tym artykule opisano sposób konfigurowania i używania kondycji kontenera Azure Monitor do monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes hostowanej na platformie Azure usługa Kubernetes (AKS).  Monitorowanie klastra i kontenerów usługi Kubernetes ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego o dużej skali i z wieloma aplikacjami.
+W tym artykule opisano sposób konfigurowania i używania usługi Azure Monitor kondycji kontenera w celu monitorowania wydajności obciążeń wdrożonych do rozwiązania Kubernetes środowisk hostowanych w usłudze Azure Kubernetes Service (AKS).  Monitorowanie klastra i kontenerów usługi Kubernetes ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego o dużej skali i z wieloma aplikacjami.
 
-Kontener kondycji umożliwia monitorowanie możliwości na zbieranie pamięci i procesora metryki z kontrolerów, węzły i kontenery dostępne w Kubernetes za pośrednictwem interfejsu API metryki wydajności.  Po włączeniu kondycji kontenera te metryki są automatycznie pobierane przy użyciu konteneryzowanych wersję agenta pakietu OMS dla systemu Linux i przechowywane w Twojej [analizy dzienników](../log-analytics/log-analytics-overview.md) obszaru roboczego.  Wstępnie zdefiniowanych widoków dołączonych Pokaż przechowywanych obciążeń kontenera i co jest wpływające na kondycję wydajności klastra Kubernetes, więc można zrozumieć:  
+Kondycji kontenera zapewnia możliwość przez zbieranie pamięci i procesora metryki kontrolery, węzły i dostępnych w usłudze Kubernetes za pomocą interfejsu API metryki kontenerów do monitorowania wydajności.  Po włączeniu kondycji kontenera te metryki są automatycznie zbierane przy użyciu konteneryzowanych wersję agenta pakietu OMS dla systemu Linux i przechowywane w swojej [usługi Log Analytics](../log-analytics/log-analytics-overview.md) obszaru roboczego.  Wstępnie zdefiniowanych widoków, dostępnych Pokaż przechowywanych obciążeń kontenerów i co ma wpływ na wydajności kondycji klastra usługi Kubernetes, aby umożliwić poznanie:  
 
-* Jakie kontenery są uruchomione w węźle i ich średnie wykorzystanie procesora i pamięci do identyfikowania wąskich gardeł w zasobach
-* Określenie, której kontenera znajduje się w kontrolerze i/lub stanowiskami, aby wyświetlić ogólną wydajność dla kontrolera lub pod 
-* Sprawdź wykorzystanie zasobów obciążeń uruchomionych na hoście niezwiązanych ze sobą na standardowe procedury obsługi pod
-* Zrozumienie zachowania klastra w obszarze średni i największe obciążenia do identyfikacji wymagań wydajności i określić maksymalne obciążenie, który może kontynuować działanie 
+* Jakie kontenery są uruchomione na węźle i ich średnie wykorzystanie procesora i pamięci do identyfikowania wąskich gardeł zasobów
+* Określenie, której kontenera znajduje się w kontrolerze i/lub zasobników, aby wyświetlić ogólną wydajność dla kontrolera lub zasobników 
+* Sprawdź wykorzystanie zasobów obciążenia uruchomione na hoście niezwiązanych ze sobą do standardowych procesów obsługi zasobnik
+* Zrozumienie zachowania klastra pod obciążeniem średnią i największym, aby pomóc w zidentyfikowaniu potrzeby związane z pojemnością i określenia maksymalnego obciążenia, który może kontynuować działanie 
 
-Jeśli interesuje Cię w monitorowaniu i zarządzania systemu Windows i Docker hostów kontenera konfiguracji widoku, inspekcji i wykorzystania zasobów, zobacz [rozwiązanie monitorowanie kontenera](../log-analytics/log-analytics-containers.md).
+Jeśli interesuje Cię monitorowania i zarządzania platformy Docker i Windows hostach kontenerów, Wyświetl konfigurację, inspekcji i wykorzystanie zasobów, zobacz [rozwiązanie do monitorowania kontenerów](../log-analytics/log-analytics-containers.md).
 
 ## <a name="requirements"></a>Wymagania 
-Przed rozpoczęciem, przejrzyj następujące informacje, aby zrozumieć, obsługiwane wymagania wstępne.
+Przed rozpoczęciem, przejrzyj następujące informacje, aby umożliwić poznanie obsługiwanych wymagań wstępnych.
 
 - Nowego lub istniejącego klastra AKS
-- Konteneryzowanych agent pakietu OMS dla wersji systemu Linux microsoft / oms:ciprod04202018 i nowszych. Ten agent jest instalowany automatycznie podczas dołączania kondycji kontenera.  
-- Obszar roboczy usługi Log Analytics.  Można tworzyć, gdy monitorowanie nowego klastra AKS lub można go utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub z [portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md).
-- Członek roli współautora analizy dzienników, aby włączyć monitorowanie kontenera.  Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego analizy dzienników, zobacz [zarządzanie obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
+- Konteneryzowane agenta pakietu OMS dla systemu Linux w wersji microsoft / oms:ciprod04202018 i nowszych. Numer wersji jest reprezentowany przez wartość typu date zgodnie z formatem — *mmddyyyy*.  Jest on instalowany automatycznie zestawu dokumentacji podczas dołączania kondycji kontenera.  
+- Obszar roboczy usługi Log Analytics.  Można tworzyć, gdy monitorowanie nowego klastra AKS, lub możesz je utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub z [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+- Członek roli Współautor usługi Log Analytics, aby włączyć monitorowanie kontenerów.  Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="components"></a>Składniki 
 
-Ta funkcja opiera się na konteneryzowanych Agent pakietu OMS dla systemu Linux w celu zbierania danych dotyczących zdarzeń i wydajności ze wszystkich węzłów w klastrze.  Agent automatycznie wdrożeniu i zarejestrowaniu z określonego obszaru roboczego analizy dzienników po włączeniu monitorowania kontenera. 
+Ta funkcja opiera się na konteneryzowanych agenta pakietu OMS dla systemu Linux na zbieranie danych zdarzeń i wydajności ze wszystkich węzłów w klastrze.  Agent automatycznie wdrożeniu i zarejestrowaniu z określonym obszarem roboczym usługi Log Analytics, po włączeniu monitorowanie kontenerów. 
 
 >[!NOTE] 
->Jeśli zostały już wdrożone AKS klastra, zostanie włączone monitorowanie za pomocą podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta programu.  
+>Jeśli masz już wdrożone w klastrze AKS, zostanie włączone monitorowanie za pomocą podanego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, Usuń, Wdróż ponownie lub wdrożyć agenta.  
 >
 
 ## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
-## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Włącz monitorowanie kondycji kontener dla nowego klastra
-Można włączyć tylko monitorowanie AKS klastra podczas jego wdrażania przy użyciu portalu Azure.  Wykonaj kroki opisane w artykule szybkiego startu [wdrażanie klastra usługi Kubernetes Azure (AKS)](../aks/kubernetes-walkthrough-portal.md).  Jeśli jesteś na **monitorowanie** wybierz pozycję **tak** opcji **Włącz monitorowanie** można włączyć, a następnie wybierz istniejącą lub Utwórz nowy obszar roboczy analizy dzienników.  
+## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Włącz monitorowanie kondycji kontenera dla nowego klastra
+Można włączyć tylko monitorowanie klastra usługi AKS podczas wdrażania w witrynie Azure portal.  Postępuj zgodnie z instrukcjami w artykule przewodnika Szybki Start [wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Jeśli korzystasz z **monitorowanie** wybierz opcję **tak** opcji **Włącz monitorowanie** można włączyć, a następnie wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  
 
-Po włączeniu monitorowania wszystkie zadania konfiguracji zostały zakończone pomyślnie, można monitorować wydajność klastra z jednym z dwóch sposobów:
+Po włączeniu monitorowania wszystkich zadań konfiguracji zostaną ukończone pomyślnie, można monitorować wydajność klastra z jednego z dwóch sposobów:
 
-1. Bezpośrednio z klastra AKS, wybierając **kondycji** w lewym okienku.<br><br> 
-2. Klikając **monitorowanie kondycji kontenera** kafelka na stronie AKS klastra dla wybranego klastra.  W monitorze Azure, wybierz **kondycji** w lewym okienku.  
+1. Bezpośrednio z poziomu klastra AKS, wybierając **kondycji** z okienka po lewej stronie.<br><br> 
+2. Klikając **monitorowania kondycji kontenera** kafelka na stronie klastra AKS dla wybranego klastra.  W usłudze Azure Monitor, wybierz **kondycji** z okienka po lewej stronie.  
 
-![Opcje, aby wybrać kondycji kontenera w AKS](./media/monitoring-container-health/container-performance-and-health-select-01.png)
+![Opcje, aby wybrać kondycji kontenera w usłudze AKS](./media/monitoring-container-health/container-performance-and-health-select-01.png)
 
-Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra.  
+Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra.  
 
-## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Włącz monitorowanie kondycji kontener dla istniejących klastrów zarządzanych
-Włączanie monitorowania z kontenera AKS już wdrożony można zrobić w portalu Azure lub przy użyciu dostarczonego szablonu usługi Azure Resource Manager przy użyciu polecenia cmdlet programu PowerShell **AzureRmResourceGroupDeployment nowy** lub Azure CLI.  
+## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Włącz monitorowanie kondycji kontenera dla istniejących zarządzane klastry
+Włączanie monitorowania kontenera AKS już wdrożenie może się odbywać w witrynie Azure portal lub za pomocą podanego szablonu Azure Resource Manager przy użyciu polecenia cmdlet programu PowerShell **New-AzureRmResourceGroupDeployment** lub Interfejs wiersza polecenia platformy Azure.  
 
 
-### <a name="enable-from-azure-portal"></a>Włącz z portalu Azure
-Wykonaj poniższe kroki, aby włączyć funkcję monitorowania z kontenera AKS z portalu Azure.
+### <a name="enable-from-azure-portal"></a>Korzystanie z witryny Azure portal
+Wykonaj poniższe kroki, aby włączyć monitorowanie kontenera usługi AKS w witrynie Azure portal.
 
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **kontenery**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usług Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **kontenery**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usługi Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
 2. Na liście kontenerów Wybierz kontener.
-3. Na stronie Przegląd kontenera wybierz **monitorowanie kondycji kontenera** i **dołączania do kontenera kondycji i dzienniki** zostanie wyświetlona strona.
-4. Na **dołączania do kontenera kondycji i dzienniki** strony, jeśli masz istniejące usługi Analiza dzienników obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślny obszar roboczy i lokalizację kontenera AKS jest wdrożona w subskrypcji. Umożliwia wybranie **Utwórz nowy** i określ nowy obszar roboczy w tej samej subskrypcji.<br><br> ![Aby włączyć monitorowanie kondycji kontenera AKS](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+3. Na stronie Przegląd kontenera wybierz **monitorowania kondycji kontenera** i **dołączenie do kondycji kontenera i dzienniki** zostanie wyświetlona strona.
+4. Na **dołączenie do kondycji kontenera i dzienniki** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślnego obszaru roboczego i lokalizację kontenera w usłudze AKS jest wdrożona w ramach subskrypcji. Możesz też wybrać opcję **Utwórz nowy** i określić nowy obszar roboczy w tej samej subskrypcji.<br><br> ![Włącz monitorowanie kondycji kontenera w usłudze AKS](./media/monitoring-container-health/container-health-enable-brownfield.png) 
 
-    W przypadku wybrania **Utwórz nowy**, **Utwórz nowy obszar roboczy** pojawi się okienko. **Region** wartość domyślna to region zasobu kontener jest tworzony w i można zaakceptować ustawienie domyślne lub wybierz inny region, a następnie określ nazwę obszaru roboczego.  Kliknij przycisk **Utwórz** aby zaakceptować wybór.<br><br> ![Definiowanie obszaru roboczego dla monintoring kontenera](./media/monitoring-container-health/create-new-workspace-01.png)  
+    Jeśli wybierzesz **Utwórz nowy**, **Utwórz nowy obszar roboczy** zostanie wyświetlone okienko. **Region** wartość domyślna to region zasobu kontenera jest tworzony w i możesz zaakceptować wartości domyślne lub wybrać inny region, a następnie określ nazwę obszaru roboczego.  Kliknij przycisk **Utwórz** aby zaakceptować wybór.<br><br> ![Zdefiniuj obszar roboczy dla monintoring kontenera](./media/monitoring-container-health/create-new-workspace-01.png)  
 
     >[!NOTE]
-    >W tej chwili nie można utworzyć nowego obszaru roboczego w regionie Zachód centralnej nam wstępnie istniejącym obszarem roboczym można wybrać tylko w tym regionie.  Mimo tego regionu można wybrać z listy, wdrożenia zostanie uruchomiony, ale nie jest on wkrótce później.  
+    >W tej chwili nie można utworzyć nowy obszar roboczy w regionie zachodnio-środkowe stany USA istniejącego obszaru roboczego można wybrać tylko w tym regionie.  Mimo że można wybrać tego regionu z listy, rozpocznie się wdrożenie, ale nie jest on wkrótce potem.  
     >
  
-Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra. 
+Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra. 
 
-### <a name="enable-using-azure-resource-manager-template"></a>Włącz przy użyciu szablonu Azure Resource Manager
-Ta metoda obejmuje dwa szablony JSON, jeden szablon Określa konfigurację, aby włączyć monitorowanie i szablonie JSON zawiera wartości parametrów, które określają następujące czynności:
+### <a name="enable-using-azure-resource-manager-template"></a>Włącz przy użyciu szablonu usługi Azure Resource Manager
+Ta metoda obejmuje dwa szablony JSON, jeden szablon Określa konfigurację, aby włączyć monitorowanie i szablon JSON zawiera wartości parametrów, które można skonfigurować w celu określ następujące ustawienia:
 
-* Identyfikator zasobu kontenera AKS 
-* Grupa zasobów klastra jest wdrażany w 
-* Obszar roboczy analizy dzienników i regionie można utworzyć obszaru roboczego w 
+* Identyfikator zasobu kontenerów AKS 
+* Grupa zasobów klastra jest wdrożony w 
+* Obszar roboczy usługi log Analytics i region, aby utworzyć obszar roboczy w 
 
-Obszar roboczy analizy dzienników ma zostać utworzone ręcznie.  Aby utworzyć obszaru roboczego, można skonfigurować jeden za pośrednictwem [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), z [portalu Azure](../log-analytics/log-analytics-quick-create-workspace.md).
+Obszar roboczy usługi Log Analytics ma zostać utworzone ręcznie.  Aby utworzyć obszar roboczy, możesz skonfigurować jedną za pośrednictwem [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), z [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-Jeśli nie znasz pojęcia związane z wdrażaniem zasobów przy użyciu programu PowerShell przy użyciu szablonu z, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)lub interfejsu wiersza polecenia Azure, zobacz [wdrożenie zasobów z Szablony Menedżera zasobów i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
+Jeśli nie znasz pojęć dotyczących wdrażania zasobów przy użyciu szablonu przy użyciu programu PowerShell, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)lub wiersza polecenia platformy Azure, zobacz temat [wdrażanie zasobów przy użyciu Szablony usługi Resource Manager i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
 
-Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw zainstalować i używać interfejsu wiersza polecenia lokalnie.  Jest to wymagane używasz interfejsu wiersza polecenia Azure w wersji 2.0.27 lub nowszej. Uruchom `az --version` do identyfikowania wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli została wybrana opcja używania wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie.  Jest to wymagane czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom `az --version` do identyfikowania wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 #### <a name="create-and-execute-template"></a>Tworzenie i wykonywanie szablonu
 
@@ -213,16 +213,16 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
     }
     ```
 
-4. Edytuj wartość **aksResourceId**, **aksResourceLocation** z wartościami, które można znaleźć w **omówienie AKS** strony AKS klastra.  Wartość **workspaceResourceId** jest pełny identyfikator zasobu obszaru roboczego analizy dzienników, która zawiera nazwę obszaru roboczego.  Również określić lokalizację obszar roboczy znajduje się w przypadku **workspaceRegion**.    
+4. Edytuj wartość dla **aksResourceId**, **aksResourceLocation** z wartościami, które można znaleźć na **Omówienie usługi AKS** strony dla klastra usługi AKS.  Wartość **workspaceResourceId** jest pełny identyfikator zasobu obszaru roboczego usługi Log Analytics, która zawiera nazwę obszaru roboczego.  Również określić lokalizację, obszar roboczy jest w dla **workspaceRegion**.    
 5. Zapisz ten plik jako **existingClusterParam.json** do folderu lokalnego.
 6. Wszystko jest teraz gotowe do wdrożenia tego szablonu. 
 
-    * Użyj następujących poleceń programu PowerShell z folderu zawierającego szablon:
+    * Użyj następujących poleceń programu PowerShell z poziomu folderu zawierającego szablon:
 
         ```powershell
         New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
         ```
-        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:
 
         ```powershell
         provisioningState       : Succeeded
@@ -236,17 +236,53 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
         ```
 
-        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:
 
         ```azurecli
         provisioningState       : Succeeded
         ```
-Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić danych operacyjnych dla klastra.  
+Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra.  
 
-## <a name="verify-agent-deployed-successfully"></a>Sprawdź pomyślnie wdrożony agent
-Aby sprawdzić, agent pakietu OMS prawidłowo wdrożony, uruchom następujące polecenie: `kubectl get ds omsagent --namespace=kube-system`.
+## <a name="verify-agent-deployed-successfully"></a>Sprawdź pomyślnego wdrożenia agenta
 
-Dane wyjściowe powinno przypominać następujące wskazujący, który został wdrożony prawidłowo:
+### <a name="agent-version-06072018-and-higher"></a>Wersja agenta 06072018 lub nowszy
+Aby sprawdzić wersję agenta pakietu OMS *06072018* lub nowszego jest wdrażany prawidłowo, uruchom następujące polecenia: 
+
+```
+kubectl get ds omsagent --namespace=kube-system
+```
+
+Wynik powinien przypominać następujące wskazujący, który został wdrożony prawidłowo:
+
+```
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
+omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
+```  
+
+Aby zweryfikować nowe wdrożenie, uruchom następujące polecenie:
+
+```
+kubectl get deployment omsagent-rs -n=kube-system
+```
+
+Wynik powinien przypominać następujące wskazujący, który został wdrożony prawidłowo:
+
+```
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
+omsagent   1         1         1            1            3h
+```
+
+### <a name="agent-version-earlier-than-06072018"></a>Agent w wersji wcześniejszej niż 06072018
+
+Aby sprawdzić wersję agenta pakietu OMS wydanych przed *06072018* jest wdrażany prawidłowo, uruchom następujące polecenie:  
+
+```
+kubectl get ds omsagent --namespace=kube-system
+```
+
+Wynik powinien przypominać następujące wskazujący, który został wdrożony prawidłowo:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -255,122 +291,122 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Widok wydajności użycia
-Po otwarciu kondycji kontener strony natychmiast przedstawia użycie wydajności przez węzły klastra.  Wyświetlanie informacji o klastrze AKS jest podzielone na trzy perspektyw:
+Po otwarciu kondycji kontenera, strony natychmiast przedstawia informacje o wykorzystaniu wydajności węzły klastra.  Wyświetlanie informacji na temat klastra usługi AKS jest podzielony na trzy perspektyw:
 
 - Węzły 
 - Kontrolery  
 - Containers
 
-Hierarchia wiersza następuje modelu obiektu Kubernetes, począwszy od węzła w klastrze.  Rozwiń węzeł i zobaczysz jednego lub więcej stanowiskami uruchomione w węźle, a jeśli istnieje więcej niż jeden kontener grupowane pod, są wyświetlane jako ostatni wiersz w hierarchii.<br><br> ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-health/container-performance-and-health-view-03.png)
+Hierarchia wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze.  Rozwiń węzeł i zostanie wyświetlona co najmniej jeden zasobników, uruchomione w węźle, a jeśli istnieje więcej niż jednego kontenera grupowania zasobnik, są wyświetlane jako ostatni wiersz w hierarchii.<br><br> ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-health/container-performance-and-health-view-03.png)
 
-Możesz wybrać kontrolerów lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Aby filtrować według przestrzeni nazw usługi i węzła, użyj pola listy rozwijanej w górnej części ekranu. Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci, z **Metryka** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**.  **Pamięć RSS** jest obsługiwana tylko dla Kubernetes wersji 1.8 i nowszych. W przeciwnym razie zobacz wartości **AVG %** przedstawiający jako *NaN %*, która jest wartością typu danych liczbowych, reprezentujący wartość niezdefiniowane lub unrepresentable. 
+Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Użyj pola listy rozwijanej w górnej części ekranu, aby filtrować według przestrzeni nazw, usługi i języka node. Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci, od **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**.  **Pamięć RSS** jest obsługiwana tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie zostaną wyświetlone wartości dla **AVG %** wyświetlane jako *NaN %*, która jest wartością typu dane liczbowe, reprezentującą wartość niezdefiniowana lub wyniku. 
 
 ![Widok wydajności węzłów wydajności kontenera](./media/monitoring-container-health/container-performance-and-health-view-04.png)
 
-Domyślnie dane wydajności są oparte na ostatnich sześciu godzin, ale można zmienić okna z **zakres czasu** znaleziono listy rozwijanej w prawym górnym rogu strony. W tej chwili strony nie automatycznego odświeżania, dlatego należy go ręcznie odświeżyć. 
+Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale można zmienić okno z **zakres czasu** odnaleźć listy rozwijanej w prawym górnym rogu strony. W tej chwili strony nie automatycznego odświeżania, więc musisz ręcznie odświeżyć je. 
 
-W poniższym przykładzie, można zauważyć dla węzła *aks-obiektu agentpool-3402399-0*, wartość **kontenery** to 10, który jest to wartość zbiorcza z całkowitej liczby kontenery wdrożone.<br><br> ![Pakiet zbiorczy kontenerów, na przykład węzła](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ułatwia on szybkie ustalenie, czy nie ma właściwej równowagi kontenerów między węzłami w klastrze.  
+W poniższym przykładzie można zauważyć dla węzła *aks-obiektu agentpool-3402399-0*, wartość **kontenery** wynosi 10, który stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.<br><br> ![Pakiet zbiorczy kontenerów na przykład węzeł](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ułatwia ona szybkie ustalenie, czy nie ma właściwej równowagi kontenerów między węzłami w klastrze.  
 
-W poniższej tabeli opisano informacje podane podczas wyświetlania węzłów.
+W poniższej tabeli opisano informacje znajdujące się po wyświetleniu węzłów.
 
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa hosta |
-| Stan | Widok stanu węzła Kubernetes |
-| % ŚR. | Średni procent węzła oparte na wybrana Metryka czas wybrana wartość czasu trwania. |
-| ŚREDNIA | Średnia węzły na podstawie wartości rzeczywistej wybrany Metryka wybrana wartość czasu trwania.  Średnia wartość jest mierzony z Procesora/pamięci limit ustawiony dla węzła; stanowiskami i kontenerów jest średnia wartość zgłaszaną przez hosta. |
+| Stan | Widok stanu węzła usługi Kubernetes |
+| % ŚREDNI | Średni procent węzła opartego na wybranej metryki dla wybranych czas trwania. |
+| ŚREDNIA | Średnia węzłów na podstawie rzeczywistej wartości wybrane metryki dla wybrany czas trwania.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla węzła; dla zasobników i kontenerów to wartość średnia zgłaszaną przez hosta. |
 | Containers | Liczba kontenerów. |
 | Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
-| Zasobnik | Tylko dla kontenerów. Przedstawia on, które pods go znajdującej się. |
-| Kontrolery | Tylko w przypadku kontenerów i stanowiskami. Przedstawia on kontrolera, który jest znajdującej się. Nie wszystkie stanowiskami będzie w kontrolerze, więc niektóre mogą być wyświetlane n/d. | 
-| Trend AVG % | Trend wykres słupkowy w oparciu metryki % avg kontenera i węzła. |
+| Zasobnik | Tylko w przypadku kontenerów. Pokazuje, które pods go znajdującej się. |
+| Kontrolery | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. Nie wszystkie zasobników będą w kontrolerze, więc niektóre z nich mogą być wyświetlane n/d. | 
+| Trend AVG % | Trend wykres słupkowy w oparciu metryki % avg kontenera i języka node. |
 
 
-Selektor, wybrać **kontrolerów**.<br><br> ![Wybierz kontrolerów widoku](./media/monitoring-container-health/container-performance-and-health-view-08.png)
+W obszarze wyboru wybierz **kontrolerów**.<br><br> ![Wybierz kontrolerów widoku](./media/monitoring-container-health/container-performance-and-health-view-08.png)
 
 Tutaj można zobaczyć kondycję wydajności kontrolerów.<br><br> ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-performance-and-health-view-05.png)
 
-Hierarchia wiersz rozpoczyna się od kontrolera i rozwija kontrolera i zobaczysz jednego lub więcej stanowiskami lub kontenerach.  Rozwiń pod i kontener grupowane pod Pokaż ostatni wiersz.  
+Hierarchii wiersz rozpoczyna się od kontrolera i rozwija kontrolera i zobacz, co najmniej jeden zasobników lub co najmniej jeden kontener.  Rozwiń zasobnik i ostatni wiersz Pokaż kontener grupowania zasobnik.  
 
-W poniższej tabeli opisano informacje podane podczas wyświetlania kontrolerów.
+W poniższej tabeli opisano informacje znajdujące się po wyświetleniu kontrolerów.
 
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera|
-| Stan | Stan kontenery po ukończeniu uruchomione o stanie, takie jak *zwolniony*, *zatrzymane*, lub *Paused*. Jeśli kontener jest uruchomiona, ale stan był niepoprawnie przedstawione lub nie została pobrana przez agenta nie odpowiedział ponad 30 minut, stan będzie *nieznany*. |
-| % ŚR. | Przedstawia średnią średni procent każdej jednostki dla wybranego metryki. |
-| ŚREDNIA | Przedstawia średnią millicore lub pamięci wydajność Procesora kontenera.  Średnia wartość jest podawana z Procesora/pamięci limit ustawiony dla pod. |
-| Containers | Całkowita liczba kontenery pod lub kontrolera. |
+| Stan | Stan kontenery po ukończeniu uruchomione o stanie, takie jak *zwolniony*, *zatrzymane*, lub *Paused*. Jeśli kontener jest uruchomiony, ale stan był nie zostało prawidłowo prezentowane lub nie została pobrana przez agenta nie odpowiedział ponad 30 minut, będzie w stanie *nieznany*. |
+| % ŚREDNI | Przedstawia średnią średni procent każdej jednostki wybranej metryki. |
+| ŚREDNIA | Przedstawia średnią Procesora pamięci lub millicore wydajności kontenera.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
+| Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Rzutowanie liczby ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
-| Zasobnik | Tylko dla kontenerów. Przedstawia on, które pods go znajdującej się. |
-| Węzeł | Tylko w przypadku kontenerów i stanowiskami. Przedstawia on kontrolera, który jest znajdującej się. | 
-| Trend AVG % | Trend wykres słupkowy przedstawiający średni procent metryki kontenera. |
+| Zasobnik | Tylko w przypadku kontenerów. Pokazuje, które pods go znajdującej się. |
+| Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
+| Trend AVG % | Trend wykres słupkowy prezentowanie średni procent metryki kontenera. |
 
-Selektor, wybrać **kontenery**.<br><br> ![Wybierz kontenery widoku](./media/monitoring-container-health/container-performance-and-health-view-09.png)
+W obszarze wyboru wybierz **kontenery**.<br><br> ![Wybierz kontenery widoku](./media/monitoring-container-health/container-performance-and-health-view-09.png)
 
-W tym miejscu możemy sprawdzić kondycję wydajności kontenerów.<br><br> ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-performance-and-health-view-06.png)
+Tutaj widzimy kondycji wydajności kontenerów.<br><br> ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-performance-and-health-view-06.png)
 
-W poniższej tabeli opisano informacje podane podczas wyświetlania kontenerów.
+W poniższej tabeli opisano informacje znajdujące się po wyświetleniu kontenerów.
 
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera|
 | Stan | Zbiorczy stan kontenerów, jeśli istnieje. |
-| % ŚR. | Przedstawia średnią średni procent każdej jednostki dla wybranego metryki. |
-| ŚREDNIA | Przedstawia średnią millicore lub pamięci wydajność Procesora kontenera. Średnia wartość jest podawana z Procesora/pamięci limit ustawiony dla pod. |
-| Containers | Całkowita liczba kontenerów dla kontrolera.|
+| % ŚREDNI | Przedstawia średnią średni procent każdej jednostki wybranej metryki. |
+| ŚREDNIA | Przedstawia średnią Procesora pamięci lub millicore wydajności kontenera. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
+| Containers | Łączna liczba kontenerów dla kontrolera.|
 | Ponowne uruchomienie | Reprezentuje czas od momentu uruchomienia kontenera. |
-| Czas pracy | Reprezentuje czas, ponieważ kontener został uruchomiony lub ponownego uruchomienia. |
+| Czas pracy | Reprezentuje czas, ponieważ kontener został uruchomiony lub ponownie uruchomiony. |
 | Zasobnik | Informacje, w którym znajduje się pod. |
 | Węzeł |  Węzeł, w którym znajduje się kontener.  | 
-| Trend AVG % | Trend wykres słupkowy przedstawiający średni procent metryki kontenera. |
+| Trend AVG % | Trend wykres słupkowy prezentowanie średni procent metryki kontenera. |
 
-## <a name="container-data-collection-details"></a>Szczegóły pobierania danych kontenera
-Kontener kondycji służy do zbierania różnych metryki i dziennika danych z hostów kontenera i kontenery. Dane są zbierane co trzy minuty.
+## <a name="container-data-collection-details"></a>Szczegóły zbierania danych kontenera
+Kondycji kontenera zbiera różne dane metryk i dzienników wydajności hostach kontenerów i kontenery. Dane są gromadzone co trzy minuty.
 
-### <a name="container-records"></a>Rejestruje kontenera
+### <a name="container-records"></a>Rekordów kontenera
 
-W poniższej tabeli przedstawiono przykłady rekordów zebrane przez kontener kondycji i typy danych, które są wyświetlane w wynikach wyszukiwania dziennika.
+W poniższej tabeli przedstawiono przykłady rekordów zbieranych przez kondycji kontenera i typy danych, które są wyświetlane w wynikach wyszukiwania w dzienniku.
 
-| Typ danych | Typ danych w dzienniku wyszukiwania | Pola |
+| Typ danych | Typ danych podczas wyszukiwania dziennika | Pola |
 | --- | --- | --- |
-| Wydajność dla hostów i kontenerów | `Perf` | Komputer, nazwa obiektu, CounterName &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, użycie pamięć (MB), sieci odbieranie bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem |
-| Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwę kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, CreatedTime, StartedTime, FinishedTime, SourceSystem, identyfikatora kontenera, ImageID |
-| Kontener magazynu obrazu | `ContainerImageInventory` | TimeGenerated, komputer, obraz, ImageTag, ImageSize, VirtualSize, działa wstrzymana, zatrzymana, nie powiodło się, SourceSystem, ImageID, TotalContainer |
-| Kontener dziennika | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, nazwy kontenera, LogEntrySource, LogEntry, SourceSystem, identyfikatora kontenera |
+| Wydajność dla hostów i kontenerów | `Perf` | CounterName komputera, nazwa obiektu, &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, MB użycia pamięci, sieci odbierania bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, system źródłowy |
+| Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwa kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, wartością CreatedTime, StartedTime, FinishedTime, system źródłowy, ContainerID, ImageID |
+| Spis obrazów kontenera | `ContainerImageInventory` | TimeGenerated, komputer, obraz, ImageTag, ImageSize, VirtualSize, uruchamianie, wstrzymana, zatrzymana, nie powiodło się, system źródłowy, ImageID, TotalContainer |
+| Dziennik kontenera | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, pola Nazwa kontenera LogEntrySource, LogEntry, system źródłowy, ContainerID |
 | Dziennik usługi kontenera | `ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
-| Kontener węzła magazynu | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Spis węzłów kontenerów | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Proces kontenera | `ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Spis stanowiskami w klastrze Kubernetes | `KubePodInventory` | TimeGenerated, komputer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus, Identyfikatora kontenera, ContainerName, nazwa, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
-| Magazynu węzłami częścią klastra Kubernetes | `KubeNodeInventory` | TimeGenerated, komputera, ClusterName, ClusterId, LastTransitionTimeReady, etykiet, stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Zdarzenia Kubernetes | `KubeEvents_CL` | TimeGenerated, komputer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, wiadomości, SourceSystem | 
-| Usługi w klastrze Kubernetes | `KubeServices_CL` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metryki wydajności dla węzłów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SNode" | Komputer, nazwa obiektu, CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem | 
-| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Wydajności &#124; gdzie ObjectName == "K8SContainer" | CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem | 
+| Spis zasobników w klastrze Kubernetes | `KubePodInventory` | TimeGenerated, komputer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, element ControllerName, ContainerStatus, ContainerID, ContainerName, PodLabel, adresem IP zasobnika, Namespace, ClusterName, nazwa, PodStatus, system źródłowy |
+| Spis węzłów będących częścią klastra Kubernetes | `KubeNodeInventory` | TimeGenerated, komputera, ClusterName, ClusterId, LastTransitionTimeReady, etykiety, stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, system źródłowy | 
+| Zdarzenia Kubernetes | `KubeEvents_CL` | TimeGenerated, komputera, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, komunikat o błędzie, system źródłowy | 
+| Usługi w klastrze Kubernetes | `KubeServices_CL` | TimeGenerated, ServiceName_s, SelectorLabels_s, ServiceType_s, ClusterId_s, ClusterIP_s, Namespace_s, ClusterName_s, system źródłowy | 
+| Metryki wydajności dla części węzłów klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SNode" | CounterName komputera, nazwa obiektu, &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, networkRxBytes, networkTxBytes, restartTimeEpoch, networkRxBytesPerSec, networkTxBytesPerSec, cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, system źródłowy | 
+| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SContainer" | CounterName &#40;cpuUsageNanoCores, memoryWorkingSetBytes, memoryRssBytes, restartTimeEpoch, cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryLimitBytes&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, System źródłowy | 
 
-## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizowania danych
-Analiza dzienników ułatwiają obserwować trendy, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie.  Wstępnie zdefiniowane dziennik wyszukiwania podano aby od razu rozpocząć korzystanie z lub dostosować w celu zwracania informacji w taki sposób, który ma. 
+## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizy danych
+Usługa log Analytics może pomóc wyszukiwania trendach, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie.  Wstępnie zdefiniowane wyszukiwań w dziennikach znajdują się od razu rozpocząć korzystanie z lub dostosować w celu zwracania informacji w żądany sposób. 
 
-W obszarze roboczym można wykonać analizy interakcyjnej danych, wybierając **znajdują się w dzienniku** opcja jest dostępna w prawej po rozwinięciu kontenera.  **Zaloguj się wyszukiwania** zostanie wyświetlona strona prawo powyżej strony był w portalu.<br><br> ![Analizowanie danych analizy dzienników](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
+W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **Wyświetl dziennik** opcja jest dostępna na końcu po prawej stronie po rozwinięciu kontenera.  **Wyszukiwania w dzienniku** prawo powyżej strony wcześniej w portalu zostanie wyświetlona strona.<br><br> ![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
 
-Dane wyjściowe dzienników kontenera przekazywane do analizy dzienników są STDOUT i STDERR. Ponieważ Azure Kubernetes zarządzanych (AKS) jest monitorowanie kondycji kontenera, Kube systemu nie są zbierane dzisiaj z powodu dużej ilości danych wygenerowanych.     
+Dane wyjściowe dzienników kontenera, które zostały przekazane do usługi Log Analytics to STDOUT i STDERR. Ponieważ usługa Azure Kubernetes zarządzanych (AKS) jest monitorowanie kondycji kontenera, systemu Kubernetes nie są zbierane już dziś z powodu dużej ilości danych wygenerowanych.     
 
-### <a name="example-log-search-queries"></a>Przykładowe zapytania wyszukiwania dziennika
-Często jest przydatne do tworzenia zapytań w programie przykład lub dwóch, a następnie modyfikując je zgodnie z własnymi wymaganiami. Możesz eksperymentować z następujące przykładowe zapytania do tworzenia bardziej zaawansowanych zapytań.
+### <a name="example-log-search-queries"></a>Przykład zapytania wyszukiwania w Dzienniku
+Często jest to przydatne do tworzenia zapytań, począwszy od przykładem lub dwóch, a następnie modyfikować ją zgodnie z wymaganiami. Możesz eksperymentować z następujące przykładowe zapytania w celu ułatwienia tworzenia bardziej zaawansowanych zapytań.
 
 | Zapytanie | Opis | 
 |-------|-------------|
-| ContainerInventory<br> &#124;Projekt komputera, nazwa, obraz, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124;Renderowanie tabeli | Lista cyklu życia kontenera wszystkich informacji| 
-| KubeEvents_CL<br> &#124;gdzie not(isempty(Namespace_s))<br> &#124;Sortuj według TimeGenerated desc<br> &#124;Renderowanie tabeli | Zdarzenia Kubernetes|
-| ContainerImageInventory<br> &#124;Podsumuj AggregatedValue = count() przez obraz, ImageTag, uruchamianie | Obraz magazynu | 
-| **Zaawansowane analizy wybierz wykresy liniowe**:<br> Wydajności<br> &#124;Gdzie ObjectName == i CounterName "Kontener" == "% czasu procesora"<br> &#124;Podsumuj AvgCPUPercent = avg(CounterValue) przez bin (TimeGenerated, 30m), InstanceName | Kontener Procesora | 
-| **Zaawansowane analizy wybierz wykresy liniowe**:<br> Wydajności &#124; gdzie ObjectName == i CounterName "Kontener" == "Pamięć użycia (MB)"<br> &#124;Podsumuj AvgUsedMemory = avg(CounterValue) przez bin (TimeGenerated, 30m), InstanceName | Kontener pamięci |
+| ContainerInventory<br> &#124;Projekt komputera, nazwa, obraz, ImageTag, ContainerState, wartością CreatedTime, StartedTime, FinishedTime<br> &#124;Renderowanie tabeli | Listę wszystkich kontenerów informacje o cyklu życia| 
+| KubeEvents_CL<br> &#124;gdzie not(isempty(Namespace_s))<br> &#124;Sortuj według malejącej TimeGenerated<br> &#124;Renderowanie tabeli | Zdarzenia Kubernetes|
+| ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by obrazu, ImageTag, działa | Spis obrazów | 
+| **Advanced Analytics wybierz wykresów liniowych**:<br> Wydajności<br> &#124;Gdzie ObjectName == "Container" i CounterName == "% czasu procesora"<br> &#124;Podsumowanie AvgCPUPercent avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
+| **Advanced Analytics wybierz wykresów liniowych**:<br> Perf &#124; gdzie ObjectName == "Container" i CounterName == "MB użycia pamięci"<br> &#124;Podsumowanie AvgUsedMemory avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Pamięci kontenera |
 
-## <a name="how-to-stop-monitoring-with-container-health"></a>Jak zatrzymać monitorowanie z kontenera kondycji
-Po włączeniu monitorowania z kontenera AKS okażą się nie chcą, aby ją monitorować, możesz *zrezygnować* za pomocą podanego szablonów usługi Azure Resource Manager za pomocą polecenia cmdlet programu PowerShell  **Nowy AzureRmResourceGroupDeployment** lub interfejsu wiersza polecenia platformy Azure.  Jeden szablon JSON Określa konfigurację do *zrezygnować* i szablonie JSON zawiera wartości parametrów, które można skonfigurować w celu określenia AKS grupy zasobów klastra identyfikator i zasobów klastra jest wdrażana w.  Jeśli nie znasz pojęcia związane z wdrażaniem zasobów przy użyciu programu PowerShell przy użyciu szablonu z, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) lub interfejsu wiersza polecenia Azure, zobacz [wdrożenie zasobów z Szablony Menedżera zasobów i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
+## <a name="how-to-stop-monitoring-with-container-health"></a>Jak zatrzymać monitorowanie za pomocą programu health kontenera
+Po włączeniu monitorowania kontenera AKS okażą się już nie chcesz go monitorować, możesz *zrezygnować* przy użyciu dostarczonych szablonów usługi Azure Resource Manager za pomocą polecenia cmdlet programu PowerShell  **Nowe AzureRmResourceGroupDeployment** lub wiersza polecenia platformy Azure.  Jeden szablon JSON Określa konfigurację *zrezygnować* i szablon JSON zawiera wartości parametrów, które można skonfigurować w celu określenia AKS grupę zasobów klastra identyfikator i zasobów w klastrze jest wdrożony.  Jeśli nie znasz pojęć dotyczących wdrażania zasobów przy użyciu szablonu przy użyciu programu PowerShell, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) lub wiersza polecenia platformy Azure, zobacz temat [wdrażanie zasobów przy użyciu Szablony usługi Resource Manager i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
 
-Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw zainstalować i używać interfejsu wiersza polecenia lokalnie.  Jest to wymagane używasz interfejsu wiersza polecenia Azure w wersji 2.0.27 lub nowszej. Uruchom `az --version` do identyfikowania wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli została wybrana opcja używania wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie.  Jest to wymagane czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom `az --version` do identyfikowania wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-and-execute-template"></a>Tworzenie i wykonywanie szablonu
 
@@ -435,9 +471,9 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
     }
     ```
 
-4. Edytuj wartość **aksResourceId** i **aksResourceLocation** wartościami AKS klastra, który można znaleźć na **właściwości** strony dla wybranego klastra.<br><br> ![Strona właściwości kontenera](./media/monitoring-container-health/container-properties-page.png)<br>
+4. Edytuj wartość dla **aksResourceId** i **aksResourceLocation** przy użyciu wartości klastra AKS, który można znaleźć na **właściwości** strona dla wybranego klastra.<br><br> ![Strona właściwości kontenera](./media/monitoring-container-health/container-properties-page.png)<br>
 
-    Podczas **właściwości** pozycję także skopiować **identyfikator zasobu obszaru roboczego**.  Ta wartość jest wymagana, jeśli zdecydujesz, że chcesz usunąć obszar roboczy analizy dzienników później, który nie jest wykonywane w ramach tego procesu.  
+    Gdy jesteś w **właściwości** strony, również skopiować **identyfikator zasobu obszaru roboczego**.  Ta wartość jest wymagana, jeśli zdecydujesz, że chcesz usunąć obszar roboczy analizy dzienników później, który nie jest wykonywane jako część tego procesu.  
 
 5. Zapisz ten plik jako **OptOutParam.json** do folderu lokalnego.
 6. Wszystko jest teraz gotowe do wdrożenia tego szablonu. 
@@ -450,7 +486,7 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         New-AzureRmResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
         ```
 
-        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższego, który zawiera wynik:
 
         ```powershell
         ProvisioningState       : Succeeded
@@ -464,31 +500,45 @@ Jeśli wybrano opcję Użyj interfejsu wiersza polecenia Azure, należy najpierw
         az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
         ```
 
-        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższych opcji obejmujących wynik:
+        Zmiana konfiguracji może potrwać kilka minut. Po ukończeniu, jest zwracany komunikat podobny do poniższego, który zawiera wynik:
 
         ```azurecli
         ProvisioningState       : Succeeded
         ```
 
-Jeśli utworzono obszar roboczy tylko do obsługi monitorowania klastra i nie jest już potrzebne, należy ręcznie je usunąć. Jeśli nie masz doświadczenia w obsłudze jak usunąć obszar roboczy, zobacz [usunąć obszarem roboczym usługi Analiza dzienników Azure przy użyciu portalu Azure](../log-analytics/log-analytics-manage-del-workspace.md).  Nie zapomnij o **identyfikator zasobu obszaru roboczego** możemy skopiowany wcześniej w kroku 4, który należy zacząć.  
+Jeśli obszar roboczy został utworzony tylko do obsługi monitorowania klastra i nie jest już potrzebny, należy ręcznie je usunąć. Jeśli nie znasz sposób usuwania obszaru roboczego, zobacz [usunąć obszar roboczy usługi Azure Log Analytics w witrynie Azure portal](../log-analytics/log-analytics-manage-del-workspace.md).  Nie zapomnij o **identyfikator zasobu obszaru roboczego** możemy skopiowany wcześniej w kroku 4, możesz zacząć potrzebna.  
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Ta sekcja zawiera informacje ułatwiające rozwiązywanie problemów z kontenera kondycji.
+Ta sekcja zawiera informacje ułatwiające rozwiązywanie problemów z usługą kondycji kontenera.
 
-Jeśli kondycja kontenera została pomyślnie włączona i skonfigurowana, ale są nie zobaczysz informacje o stanie lub powoduje analizy dzienników przy wyszukiwaniu dziennika, można wykonać następujące kroki, aby pomóc w zdiagnozowaniu problemu.   
+Jeśli kondycji kontenera, została pomyślnie włączona i skonfigurowana, ale są nie widzisz, informacje o stanie lub wyniki w usłudze Log Analytics podczas wykonywania przeszukiwania dzienników, można wykonać poniższe kroki, aby pomóc w zdiagnozowaniu problemu.   
 
-1. Sprawdź stan agenta, uruchamiając następujące polecenie: `kubectl get ds omsagent --namespace=kube-system`
+1. Sprawdź stan agenta, uruchamiając następujące polecenie: 
 
-    Dane wyjściowe powinny przypominać następujące wskazujący, które agent jest uruchomiony na wszystkich węzłów w klastrze.  Na przykład ten klaster zawiera dwa węzły i należy spodziewać się wartości równej liczby węzłów.  
+    `kubectl get ds omsagent --namespace=kube-system`
+
+    Wynik powinien przypominać następujące wskazujący, który został wdrożony prawidłowo:
 
     ```
-    User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
+    User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-    ```
-2. Sprawdź stan pod, aby sprawdzić, czy jest uruchomiona lub nie, uruchamiając następujące polecenie: `kubectl get pods --namespace=kube-system`
+    ```  
+2. Sprawdź stan wdrożenia agenta w wersji *06072018* lub nowszej, uruchamiając następujące polecenie:
 
-    Dane wyjściowe powinny przypominać następujące — z stan *systemem* dla omsagent:
+    `kubectl get deployment omsagent-rs -n=kube-system`
+
+    Wynik powinien przypominać następujące wskazujący, który został wdrożony prawidłowo:
+
+    ```
+    User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+    NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
+    omsagent   1         1         1            1            3h
+    ```
+
+3. Sprawdź stan zasobników, aby sprawdzić, czy jest uruchomiona lub nie przez uruchomienie następującego polecenia: `kubectl get pods --namespace=kube-system`
+
+    Dane wyjściowe powinny wyglądać podobnie do poniższego ze stanem *systemem* dla omsagent:
 
     ```
     User@aksuser:~$ kubectl get pods --namespace=kube-system 
@@ -500,7 +550,7 @@ Jeśli kondycja kontenera została pomyślnie włączona i skonfigurowana, ale s
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-3. Sprawdź dziennik agenta. Po wdrożeniu agenta konteneryzowanych pobiera uruchamia szybkie sprawdzenie przez uruchomienie poleceń OMI i jest wyświetlana wersja agenta i dostawcy Docker. Aby sprawdzić, czy agent został został załadowany z pomyślnie, uruchom następujące polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. Sprawdź dzienniki agenta. Gdy agent konteneryzowanych zostanie wdrożona, uruchamia szybkie sprawdzenie, uruchamiając polecenia OMI i wyświetla wersję agenta i dostawcy platformy Docker. Aby sprawdzić, czy agent zakończy się powodzeniem dołączone, uruchom następujące polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Stan powinien wyglądać w następujący sposób:
 
@@ -527,4 +577,4 @@ Jeśli kondycja kontenera została pomyślnie włączona i skonfigurowana, ale s
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wyszukaj dzienniki](../log-analytics/log-analytics-log-search.md) Aby wyświetlić szczegółowe kontenera kondycji i aplikacji informacje o wydajności.  
+[Przeszukiwanie dzienników](../log-analytics/log-analytics-log-search.md) Aby wyświetlić szczegółowe kontenera kondycji i aplikacji informacje o wydajności.  

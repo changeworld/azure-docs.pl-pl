@@ -1,19 +1,19 @@
 ---
 title: 'Samouczek Azure Analysis Services: lekcja 9 — tworzenie hierarchii | Microsoft Docs'
-description: Opisuje sposób tworzenia hierarchii w modelu tabelarycznego.
+description: W tym artykule opisano, jak tworzyć hierarchie w modelu tabelarycznego.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c29036c9cdcf39b579782070191c586a8442938d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 928fe227a74c5c63ccdfb364b0e2423d7b544864
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599647"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443022"
 ---
 # <a name="create-hierarchies"></a>Tworzenie hierarchii
 

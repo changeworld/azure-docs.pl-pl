@@ -1,35 +1,35 @@
 ---
 title: Konfigurowanie bezpośredniego logowania przy użyciu usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wstępnie nazwą logowania lub Przekieruj bezpośrednio do dostawcy tożsamości społecznościowych.
+description: Dowiedz się, jak wstępnie wypełnić nazwą logowania lub przekierowywanie sterowania bezpośrednio do dostawcy tożsamości społecznościowych.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cc3baa8fe4139acec94a722bf8c2bccb708a9470
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 62ded87067bf597a2f40ec8e8405142297d4fb78
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102530"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440540"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Konfigurowanie bezpośredniego logowania przy użyciu usługi Azure Active Directory B2C
 
-Podczas konfigurowania logowania dla aplikacji za pomocą usługi Azure Active Directory (AD) B2C, można wstępnie wypełnić nazwą logowania lub bezpośredniego logowania do dostawcy określonej tożsamości społecznościowych, takich jak Facebook, LinkedIn lub konta Microsoft. 
+Podczas konfigurowania logowania dla aplikacji za pomocą usługi Azure Active Directory (AD) B2C, możesz wstępnie wypełnić nazwą logowania lub bezpośrednie logowanie do określonych społecznościowego dostawcy tożsamości, takich jak Facebook, LinkedIn lub konta Microsoft. 
 
-## <a name="prepopulate-the-sign-in-name"></a>Wstępnie nazwy logowania
+## <a name="prepopulate-the-sign-in-name"></a>Wstępne wprowadzanie nazwy logowania
 
-Podczas podróży logowania użytkownika jednostki uzależnionej aplikacji firm mogą odnosić się do określonej nazwy użytkownika lub domeny. Gdy użytkownik, aplikacja może określić, w żądaniu autoryzacji `login_hint` parametr z nazwą logowania użytkownika zapytania. Azure AD B2C automatycznie wypełni nazwy logowania, gdy użytkownik musi tylko podać hasło.
+Podczas podróży logowania użytkownika aplikację jednostki uzależnionej mogą odnosić się do określonej nazwy użytkownika lub domenę. Gdy użytkownik, aplikacja może określić, w żądaniu autoryzacji `login_hint` parametr z nazwą logowania użytkownika zapytania. Usługa Azure AD B2C spowoduje automatyczne wypełnienie nazwy logowania podczas, gdy użytkownik musi tylko podać hasło.
 
 ![przy użyciu wskazówki logowania](./media/direct-signin/login-hint.png) 
 
-Użytkownik będzie mógł Zmień wartość w polu tekstowym logowania.
+Użytkownik będzie mógł zmienić wartość w polu tekstowym logowania.
 
-Jeśli używane są zasady niestandardowe, należy zastąpić `SelfAsserted-LocalAccountSignin-Email` techniczne profilu. W `<InputClaims>` sekcji, ustaw właściwość DefaultValue oświadczenia signInName na `{OIDC:LoginHint}`. `{OIDC:LoginHint}` Zmienna uwzględnia wartość `login_hint` parametru. Usługa Azure AD B2C odczytuje wartości oświadczenia signInName i wstępnie wypełnia pole tekstowe signInName.
+Jeśli używane są zasady niestandardowe, należy zastąpić `SelfAsserted-LocalAccountSignin-Email` profilu technicznego. W `<InputClaims>` sekcji, ustaw właściwość DefaultValue oświadczenia signInName do `{OIDC:LoginHint}`. `{OIDC:LoginHint}` Zmienna zawiera wartość `login_hint` parametru. Usługa Azure AD B2C odczytuje wartość oświadczenia signInName i wstępnie wypełnia pole tekstowe signInName.
 
 ```xml
 <ClaimsProvider>
@@ -45,11 +45,11 @@ Jeśli używane są zasady niestandardowe, należy zastąpić `SelfAsserted-Loca
 </ClaimsProvider>
 ```
 
-## <a name="redirect-sign-in-to-a-social-provider"></a>Logowanie przekierowania do dostawcy społecznościowych
+## <a name="redirect-sign-in-to-a-social-provider"></a>Przekieruj zalogować się do mediów społecznościowych
 
-Jeśli skonfigurowano przebieg logowania dla aplikacji do uwzględnienia kont społecznościowych, takich jak Facebook, LinkedIn lub Google, można określić `domain_hint` parametru. Ten parametr zapytania zawiera wskazówkę do usługi Azure AD B2C o dostawcy tożsamości społecznościowych, które mają być używane do logowania. Na przykład, jeśli aplikacja Określa `domain_hint=facebook.com`, logowania trafia bezpośrednio do strony logowania usługi Facebook.
+Jeśli skonfigurowano podróż logowania dla swojej aplikacji uwzględnić kont społecznościowych, takich jak Facebook, LinkedIn i Google, możesz określić `domain_hint` parametru. Ten parametr zapytania stanowi wskazówkę do usługi Azure AD B2C o dostawcy tożsamości społecznościowych, które mają być używane do logowania. Na przykład, jeśli aplikacja Określa `domain_hint=facebook.com`, zaloguj się przechodzi bezpośrednio do strony logowania serwisu Facebook.
 
-![przy użyciu wskazówki domeny](./media/direct-signin/domain-hint.png) 
+![za pomocą wskazówkę dotyczącą domeny](./media/direct-signin/domain-hint.png) 
 
 Jeśli używasz zasad niestandardowych, można skonfigurować przy użyciu nazwy domeny `<Domain>domain name</Domain>` — element XML dowolnego `<ClaimsProvider>`. 
 

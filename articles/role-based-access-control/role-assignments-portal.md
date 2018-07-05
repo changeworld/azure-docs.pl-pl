@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0aec1f50225bea25d5f68289c22ccc7b69703f7a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: HT
+ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317950"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435621"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -170,7 +170,7 @@ Za pomocą poleceń Azure RBAC można przypisywać role i zarządzać dostępem 
 * [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
 * [Interfejs API REST](role-assignments-rest.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)
 * [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)

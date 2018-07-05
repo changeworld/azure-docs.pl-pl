@@ -1,49 +1,49 @@
 ---
-title: Dostosowywanie interfejsu użytkownika w podróży użytkownika z niestandardowych zasad | Dokumentacja firmy Microsoft
-description: Informacje o zasadach niestandardowych usługi Azure Active Directory B2C.
+title: Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0980c79ccd9ebd170e747514bba712c498e1387c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711913"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442359"
 ---
-# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika w podróży użytkownika przy użyciu zasad niestandardowych
+# <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> W tym artykule jest zaawansowane opis działania dostosowywania interfejsu użytkownika i jak włączyć za pomocą niestandardowych zasad usługi Azure AD B2C, przy użyciu platformy obsługi tożsamości.
+> Ten artykuł stanowi zaawansowane opis sposobu działania dostosowywania interfejsu użytkownika i jak włączyć za pomocą niestandardowych zasad usługi Azure AD B2C, przy użyciu platformy środowiska tożsamości.
 
 
-Nie zakłóca pracy użytkowników jest kluczem dla dowolnego rozwiązania biznesowe z klientem. Nie zakłóca pracy użytkowników to środowisko, na urządzeniu lub w przeglądarce, gdzie jest odróżnienia od obsługi klienta, które używają przebieg użytkownika za pośrednictwem usługi.
+Nie zakłóca pracy użytkowników jest klucz dla dowolnego rozwiązania firma klient. Nie zakłóca pracy użytkowników to środowisko, na urządzeniu lub w przeglądarce, gdzie podróży użytkownika za pośrednictwem usługi jest odróżnienia od obsługi klienta, z których korzystają.
 
-## <a name="understand-the-cors-way-for-ui-customization"></a>Zrozumienie sposobu CORS do dostosowania interfejsu użytkownika
+## <a name="understand-the-cors-way-for-ui-customization"></a>Zrozumieć sposób CORS do dostosowania interfejsu użytkownika
 
-Usługa Azure AD B2C umożliwia dostosowanie wyglądu i działania środowisko użytkownika (UX) na różnych stronach, które są obsługiwane i wyświetlane przez usługę Azure AD B2C za pomocą niestandardowych zasad.
+Usługa Azure AD B2C umożliwia dostosowanie wyglądu i działania programu użytkownika środowiska na różnych stronach, które są obsługiwane i wyświetlane przez usługę Azure AD B2C za pomocą niestandardowych zasad.
 
-W tym celu usługi Azure AD B2C kod w przeglądarce sieci klienta, korzysta z podejścia nowoczesnych i standard [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/) załadować niestandardowej zawartości z określonym adresem URL określonym w zasadach niestandardowych, aby wskazywał szablonów HTML5/CSS. CORS jest mechanizm umożliwiający ograniczone zasoby, takie jak czcionki, na stronie sieci web wymagane z innej domeny spoza domeny, z którego pochodzi zasobu.
+W tym celu usługi Azure AD B2C kodu w przeglądarce usługi konsumenta, korzysta z nowoczesnego i standardowego podejścia [udostępniania zasobów między źródłami (CORS)](http://www.w3.org/TR/cors/) załadować niestandardowej zawartości z określonych adresów URL, określonej w zasadach niestandardowych, aby wskazywał Szablony HTML5/CSS. CORS to mechanizm, który umożliwia ograniczone zasoby, takie jak czcionki, na stronie sieci web wymagane z innej domeny spoza domeny, z której pochodzi zasobu.
 
-W porównaniu do starego tradycyjny sposób, gdzie strony szablonu należą do firmy przy użyciu rozwiązania, gdzie podane ograniczone tekstu i obrazów, w którym została przyjęta ograniczone kontrolę nad układ i sposób działania prowadzące do więcej niż trudności do osiągnięcia bezproblemowej występują, sposób CORS obsługuje HTML5 i CSS i umożliwiają:
+W porównaniu do tradycyjnych stary sposób, gdzie strony szablonów są własnością rozwiązania, w miejscu podania ograniczone tekstu i obrazów, w przypadku, gdy ograniczoną kontrolę nad układu i sposobu działania zaoferował, co prowadzi do więcej niż trudności do osiągnięcia nie zakłóca pracy sposób mechanizmu CORS obsługuje HTML5 i CSS i pozwalają na:
 
-- Hostowanie zawartości i rozwiązanie injects jego formantów za pomocą skryptu po stronie klienta.
-- Mają pełną kontrolę nad każdego piksela układ i działania.
+- Hostowanie zawartości i rozwiązanie wprowadza jego formantów, za pomocą skryptu po stronie klienta.
+- Mają pełną kontrolę nad każdego piksela układu i sposobu działania.
 
-Możesz podać przez obsługuje tworzenie pliki HTML5/CSS, takich jak dowolną liczbę stron zawartości.
+Możesz podać dowolną liczbę stron zawartości, jak chcesz przy tworzeniu plików HTML5/CSS, zgodnie z potrzebami.
 
 > [!NOTE]
-> Ze względów bezpieczeństwa użycie JavaScript jest obecnie zablokowany do dostosowania. Aby odblokować JavaScript, nazwy domeny niestandardowej dla dzierżawy usługi Azure AD B2C są potrzebne.
+> Ze względów bezpieczeństwa korzystanie z języka JavaScript jest obecnie zablokowana do dostosowania. Aby odblokować JavaScript, korzystania z niestandardowej nazwy domeny dla dzierżawy usługi Azure AD B2C jest potrzebna.
 
-W każdej z szablonów HTML5/CSS, można zapewnić *zakotwiczenia* element, który odpowiada wymaganych `<div id=”api”>` element w kodzie HTML lub strony zawartości, jak ilustrują poniżej. Usługa Azure AD B2C musi mieć wszystkie strony z zawartością tego określonego div.
+W każdym z szablonów HTML5/CSS, podaj *zakotwiczenia* element, który odnosi się do wymaganych `<div id=”api”>` elementu w kodzie HTML lub strony zawartości, tak jak pokazują poniżej. Usługa Azure AD B2C wymaga wszystkich stron zawartości tego określonego div.
 
 ```
 <!DOCTYPE html>
@@ -57,115 +57,115 @@ W każdej z szablonów HTML5/CSS, można zapewnić *zakotwiczenia* element, któ
 </html>
 ```
 
-Azure AD B2C związane z zawartości dla strony wstrzykuje się ten element div, podczas pozostałej części strony jest Twój do formantu. Kod JavaScript usługi Azure AD B2C ściąga zawartości i injects HTML do tego elementu div określone. Usługa Azure AD B2C injects następujące formanty odpowiednio: wybór Kontrola konta, zaloguj się w formantach, wieloskładnikowego formantów (obecnie telefoniczny) i atrybutu kolekcji formantów. Usługa Azure AD B2C zapewnia, że wszystkie formanty są HTML5 zgodne i jest dostępny, wszystkie formanty można całkowicie stylem i czy nie zbadanie kontroli wersji.
+Zawartość usługi Azure AD B2C, związane z strony wstrzykuje się ten element div, podczas gdy pozostałej części strony jest Twój formant. Kod JavaScript w usłudze Azure AD B2C ściąga we własnych treściach i wprowadza HTML do tego elementu div określone. Usługa Azure AD B2C wprowadza następujące elementy sterujące zgodnie z potrzebami: Formant selektora konta, zalogować się kontrolki, Multi-Factor Authentication (obecnie telefoniczny) kontrolek i kontrolki kolekcji atrybutów. Usługa Azure AD B2C zapewnia, że wszystkie formanty są HTML5, zgodne i jest dostępny, można w pełni różne wszystkich kontrolek, a wersja kontrolki nie zbadanie.
 
-Scalone zawartości ostatecznie jest wyświetlana jako dynamiczny dokumentu z klientem.
+Scalone zawartości po pewnym czasie jest wyświetlana jako dynamiczny dokumentu do konsumentów.
 
-Aby upewnić się, że wszystko działa zgodnie z oczekiwaniami, należy:
+Aby upewnić się, że wszystko działa zgodnie z oczekiwaniami, musisz mieć:
 
-- Upewnij się, że zawartość jest HTML5 zgodne i jest dostępny
-- Upewnij się, że serwer zawartości jest włączona dla CORS.
-- Udostępniać zawartość za pośrednictwem protokołu HTTPS.
-- Takie jak używać bezwzględnych adresów URL https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
-
-> [!TIP]
-> Aby sprawdzić, czy są hostingu zawartości na lokacji ma włączonego mechanizmu CORS i żądań CORS testu, można skorzystać z witryny http://test-cors.org/. Dzięki tej lokacji możesz wysłać żądanie CORS do serwera zdalnego (do testowania, jeśli jest obsługiwana przez CORS) lub Wyślij żądanie CORS na serwerze testowym (aby eksplorować niektórych funkcji CORS).
+- Upewnij się, że Twoja zawartość jest HTML5, zgodne i jest dostępny
+- Upewnij się, że serwer zawartości jest włączona dla mechanizmu CORS.
+- Udostępniać zawartość przy użyciu protokołu HTTPS.
+- Używać bezwzględnych adresów URL, takich jak https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
 
 > [!TIP]
-> Witryny http://enable-cors.org/ stanowi również ponad przydatne zasoby na CORS.
+> Aby sprawdzić, czy włączono mechanizm CORS lokacji zawartości są hosting w systemie i przetestować żądań CORPS, można skorzystać z witryny http://test-cors.org/. Dzięki rozłożeniu w tej witrynie możesz wysyłać żądania CORS na serwerze zdalnym (tak, aby sprawdzić, czy CORS jest obsługiwany) lub wysyłać żądania CORS serwer testowy (zapoznaj się z pewnych funkcji CORS).
 
-Dzięki użyciu tej metody na podstawie specyfikacji CORS użytkownicy końcowi mają spójne działanie pomiędzy aplikacją i stron obsługiwanych przez usługę Azure AD B2C.
+> [!TIP]
+> Witryna http://enable-cors.org/ stanowi również bardziej niż przydatne zasoby na mechanizmu CORS.
+
+Dzięki rozłożeniu w tym podejściu z mechanizmu CORS użytkownicy końcowi mają spójnego środowiska między aplikacją i stron, obsługiwane przez usługę Azure AD B2C.
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Warunkiem wstępnym musisz utworzyć konto magazynu. Potrzebujesz subskrypcji platformy Azure, aby utworzyć konto magazynu obiektów Blob Azure. Możesz utworzyć konto bezpłatnej wersji próbnej na [witryny sieci Web Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jako warunek wstępny musisz utworzyć konto magazynu. Musisz mieć subskrypcję platformy Azure do utworzenia konta usługi Azure Blob Storage. Możesz utworzyć konto bezpłatnej wersji próbnej w [witryny sieci Web Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-1. Otwórz sesję przeglądania i przejdź do [portalu Azure](https://portal.azure.com).
+1. Otwórz sesję przeglądania i przejdź do [witryny Azure portal](https://portal.azure.com).
 2. Zaloguj się przy użyciu poświadczeń administracyjnych.
-3. Kliknij przycisk **Utwórz zasób** > **magazynu** > **konta magazynu**.  A **utworzyć konto magazynu** otwiera okienka.
-4. W **nazwa**, podaj nazwę konta magazynu, na przykład *contoso369b2c*. Ta wartość jest później określone jako *storageAccountName*.
-5. Wybierz odpowiednie opcje dla warstwy cenowej, grupy zasobów i subskrypcji. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij przycisk **Utwórz**.
-6. Wróć do tablicy startowej, a następnie kliknij przycisk utworzone konto magazynu.
-7. W **usług** kliknij **obiekty BLOB**. A **obiektu Blob usługa okienku** otwiera.
+3. Kliknij przycisk **Utwórz zasób** > **magazynu** > **konta magazynu**.  A **Tworzenie konta magazynu** otwarcie okienka.
+4. W **nazwa**, podaj nazwę konta magazynu, na przykład *contoso369b2c*. Ta wartość jest później określany jako *storageAccountName*.
+5. Wybierz odpowiednie opcje dla grupy zasobów, subskrypcji i warstwy cenowej. Upewnij się, że masz **Przypnij do tablicy startowej** zaznaczoną opcją. Kliknij przycisk **Utwórz**.
+6. Wróć do tablicy startowej, a następnie kliknij konto magazynu, który został utworzony.
+7. W **usług** kliknij **obiektów blob**. A **okienko usługi obiektów Blob** zostanie otwarty.
 8. Kliknij przycisk **+ kontener**.
 9. W **nazwa**, podaj nazwę kontenera, na przykład *b2c*. Ta wartość jest później nazywany *containerName*.
-9. Wybierz **obiektu Blob** jako **dostęp typu**. Kliknij przycisk **Utwórz**.
-10. Kontener, który został utworzony zostanie wyświetlony na liście w **obiektu Blob usługa okienku**.
-11. Zamknij **obiekty BLOB** okienka.
-12. Na **okienko konta magazynu**, kliknij przycisk **klucza** ikony. **Okienko klucze dostępu** otwiera.  
-13. Zanotuj wartość **klucz1**. Ta wartość jest później określane jako *klucz1*.
+9. Wybierz **Blob** jako **dostęp typu**. Kliknij przycisk **Utwórz**.
+10. Kontener, który został utworzony, pojawia się na liście na **okienko usługi obiektów Blob**.
+11. Zamknij **obiektów blob** okienka.
+12. Na **okienko konta magazynu**, kliknij przycisk **klucz** ikony. **Okienko klucze dostępu** zostanie otwarty.  
+13. Zanotuj wartość **klucz1**. Ta wartość jest nazywana później *klucz1*.
 
 ## <a name="downloading-the-helper-tool"></a>Pobranie narzędzia pomocy
 
 1.  Pobierz narzędzie Pomocnik z [GitHub](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip).
-2.  Zapisz *B2C-AzureBlobStorage-klienta master.zip* plik na komputerze lokalnym.
-3.  Wyodrębnij zawartość pliku B2C-AzureBlobStorage-klienta master.zip na lokalnym dysku, na przykład w obszarze **pakietu w przypadku dostosowania interfejsu użytkownika** folder, który tworzy *B2C-AzureBlobStorage-klienta master*folderu poniżej.
-4.  Otwórz ten folder i Wyodrębnij zawartość pliku archiwum *B2CAzureStorageClient.zip* w nim.
+2.  Zapisz *B2C-usłudze Azure blob Storage-klient master.zip* pliku na komputerze lokalnym.
+3.  Wyodrębnij zawartość pliku B2C-usłudze Azure blob Storage-klient master.zip na dysku lokalnym, na przykład w obszarze **pakiet w przypadku dostosowania interfejsu użytkownika** folderu, który tworzy *B2C-usłudze Azure blob Storage — klient master*folderu poniżej.
+4.  Otwórz ten folder i Wyodrębnij zawartość pliku archiwum *B2CAzureStorageClient.zip* znajdujący się w nim.
 
-## <a name="upload-the-ui-customization-pack-sample-files"></a>Przekaż przykładowych plików pakietu w przypadku dostosowania interfejsu użytkownika
+## <a name="upload-the-ui-customization-pack-sample-files"></a>Przekazywanie plików przykładowych pakiet w przypadku dostosowania interfejsu użytkownika
 
-1.  Przy użyciu Eksploratora Windows przejdź do folderu *B2C-AzureBlobStorage-klienta master* znajduje się w obszarze *pakietu w przypadku dostosowania interfejsu użytkownika* folder utworzony w poprzedniej sekcji.
-2.  Uruchom *B2CAzureStorageClient.exe* pliku. Ten program będzie przekazywać wszystkie pliki w katalogu, określić, czy Twoje konto magazynu i włączyć CORS dostęp do tych plików.
+1.  Za pomocą Eksploratora Windows przejdź do folderu *B2C-usłudze Azure blob Storage — klient master* znajdujący się w folderze *pakiet w przypadku dostosowania interfejsu użytkownika* folderu utworzonego w poprzedniej sekcji.
+2.  Uruchom *B2CAzureStorageClient.exe* pliku. Ten program służy do przekazywania wszystkich plików w katalogu, określić, czy konto magazynu i włączyć dostęp CORS dla tych plików.
 3.  Po wyświetleniu monitu podaj:.  Nazwa konta magazynu *storageAccountName*, na przykład *contoso369b2c*.
-    b.  Podstawowy klucz dostępu magazynu obiektów blob platformy azure, *klucz1*, na przykład *contoso369b2c*.
-    c.  Nazwa kontenera magazynu obiektów blob z magazynu *containerName*, na przykład *b2c*.
-    d.  Ścieżka *początkowego pakietu* próbki plików, na przykład *... \B2CTemplates\wingtiptoys*.
+    b.  Podstawowy klucz dostępu usługi azure blob Storage, *klucz1*, na przykład *contoso369b2c*.
+    c.  Nazwa kontenera magazynu obiektów blob usługi storage *containerName*, na przykład *b2c*.
+    d.  Ścieżka *pakiet startowy* przykładowe pliki, na przykład *... \B2CTemplates\wingtiptoys*.
 
-Po wykonaniu powyższych kroków pliki CSS i HTML5 *pakietu w przypadku dostosowania interfejsu użytkownika* w fikcyjnej firmie **wingtiptoys** teraz wskazuje konta magazynu.  Aby sprawdzić, czy zawartość, został przesłany poprawnie, otwierając okienko pokrewne kontenera w portalu Azure. Alternatywnie można sprawdzić, czy zawartość, został przesłany prawidłowo po zalogowaniu się do strony w przeglądarce. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory B2C: Narzędzie Pomocnik, używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Po wykonaniu powyższych kroków, HTML5 i CSS pliki *pakiet w przypadku dostosowania interfejsu użytkownika* w fikcyjnej firmie **wingtiptoys** jest teraz skierowana do swojego konta magazynu.  Aby sprawdzić, czy zawartość został przekazany poprawnie, otwierając okienko powiązane kontenera w witrynie Azure portal. Można też sprawdzić, czy zawartość został przekazany poprawnie, uzyskując dostęp do strony w przeglądarce. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory B2C: Narzędzie Pomocnik, używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
-## <a name="ensure-the-storage-account-has-cors-enabled"></a>Upewnij się, że konto magazynu ma włączonego mechanizmu CORS
+## <a name="ensure-the-storage-account-has-cors-enabled"></a>Upewnij się, że włączono mechanizm CORS konta magazynu
 
-CORS (Cross-Origin Resource Sharing) musi być włączona punktu końcowego dla usługi Azure AD B2C do załadowania zawartości. Jest to spowodowane zawartości znajduje się na innej domeny niż domena usługi Azure AD B2C będzie obsługująca stronę z.
+Mechanizm CORS (Cross-Origin Resource Sharing) musi być włączona w punkcie końcowym usługi Azure AD B2C do załadowania zawartości. Jest to spowodowane zawartości znajduje się w innej domenie niż domena, do którego usługa Azure AD B2C będzie obsługująca stronę z.
 
-Aby sprawdzić, czy magazyn, które prowadzą hosting zawartości na ma włączonego mechanizmu CORS, kontynuować następujące czynności:
+Aby sprawdzić, czy magazyn, które hostują zawartości na ma włączono mechanizm CORS, wykonaj następujące czynności:
 
-1. Otwórz sesję przeglądania i przejdź do strony *unified.html* przy użyciu pełny adres URL lokalizacji na koncie magazynu `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Na przykład https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Przejdź do adresu http://test-cors.org. Tej lokacji pozwala sprawdzić, czy strona, której używasz ma włączonego mechanizmu CORS.  
+1. Otwieranie sesji przeglądania i przejdź do strony *unified.html* przy użyciu pełny adres URL lokalizacji na koncie magazynu `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Na przykład https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
+2. Przejdź do adresu http://test-cors.org. Ta witryna pozwala sprawdzić, czy strony, którego używasz, ma włączono mechanizm CORS.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->
 
-3. W **zdalnego adresu URL**, wprowadź pełny adres URL dla zawartości unified.html i kliknij przycisk **Wyślij żądanie**.
-4. Sprawdź, czy dane wyjściowe w **wyniki** sekcja zawiera *stan XHR: 200*, co oznacza, że włączono CORS.
+3. W **zdalnego adresu URL**, wprowadź pełny adres URL zawartości unified.html i kliknij przycisk **Wyślij żądanie**.
+4. Upewnij się, że dane wyjściowe w **wyniki** sekcja zawiera *stan XHR: 200*, co oznacza, że włączono mechanizm CORS.
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
-Konto magazynu powinien zawierać teraz kontenera obiektów blob o nazwie *b2c* na ilustracji, który zawiera następujące szablony wingtiptoys z *początkowego pakietu*.
+Konto magazynu nie powinien zawierać kontenera obiektów blob o nazwie *b2c* na ilustracji, który zawiera następujące szablony wingtiptoys z *pakiet startowy*.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)
 -->
 
-W poniższej tabeli opisano przeznaczenie stron HTML5.
+Poniższa tabela opisuje przeznaczenie stron HTML5.
 
-| Szablon HTML5 | Opis |
+| Szablon języka HTML5 | Opis |
 |----------------|-------------|
-| *phonefactor.html* | Ta strona może służyć jako szablon dla strony uwierzytelniania wieloskładnikowego. |
-| *resetpassword.html* | Ta strona może służyć jako szablon dla nie pamiętasz hasła strony. |
-| *selfasserted.html* | Ta strona służy jako szablon dla kont społecznościowych, zarejestruj się strony, strony logowania konta lokalnego lub stronę logowania konta lokalnego. |
-| *unified.html* | Ta strona może służyć jako szablon ujednoliconego rejestracji lub strony logowania. |
-| *updateprofile.html* | Ta strona może służyć jako szablon strony aktualizacji profilu. |
+| *phonefactor.html* | Na tej stronie może służyć jako szablon dla strony uwierzytelniania wieloskładnikowego. |
+| *resetpassword.html* | Na tej stronie mogą być używane jako szablon strona obsługi zapomnianego hasła. |
+| *selfasserted.html* | Na tej stronie mogą służyć jako szablonu dla konta społecznościowego Zarejestruj stronę, konta lokalnego stronę w górę lub strony logowania konta lokalnego. |
+| *unified.html* | Na tej stronie może służyć jako szablon ujednoliconego rejestracji lub logowania strony. |
+| *updateprofile.html* | Na tej stronie może służyć jako szablon dla strony aktualizacji profilu. |
 
-## <a name="add-a-link-to-your-html5css-templates-to-your-user-journey"></a>Dodaj łącze do szablonów HTML5/CSS do podróży użytkownika
+## <a name="add-a-link-to-your-html5css-templates-to-your-user-journey"></a>Dodaj link do szablonów HTML5/CSS do Twojej podróży użytkownika
 
-Można dodać łącza do szablonów HTML5/CSS do podróży użytkownika bezpośrednio edytując zasadę niestandardową.
+Można dodać łącze do szablonów HTML5/CSS do swoją podróż po użytkownik bezpośrednio edytując zasad niestandardowych.
 
-Szablony niestandardowe HTML5/CSS do użycia w podróży użytkownika ma określonych na liście zawartości definicje, które mogą być używane w podróży tych użytkowników. W tym celu opcjonalny *<ContentDefinitions>* — element XML musi być zadeklarowana w obszarze *<BuildingBlocks>* sekcji w pliku XML zasady niestandardowe.
+Niestandardowe szablony HTML5/CSS w podróż użytkownika, musisz określić listę definicji zawartości, które mogą być używane w tych podróży użytkownika. W tym celu, opcjonalny *<ContentDefinitions>* — element XML musi być zadeklarowana w obszarze *<BuildingBlocks>* sekcji w pliku XML zasady niestandardowe.
 
-W poniższej tabeli opisano zestaw identyfikatorów definicji rozpoznał tożsamości usługi Azure AD B2C może wystąpić aparatu i typ strony, które odnoszą się do nich zawartości.
+W poniższej tabeli opisano zestaw identyfikatorów definicji rozpoznał tożsamości usługi Azure AD B2C środowiska aparatu i na typ stron, które odnoszą się do nich zawartości.
 
 | Identyfikator definicji zawartości | Opis |
 |-----------------------|-------------|
-| *api.error* | **Strona błędu**. Ta strona jest wyświetlana po napotkaniu wyjątku lub wystąpił błąd. |
-| *API.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać podczas logowania. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (w oparciu nazwa użytkownika lub adres e-mail). |
-| *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać podczas tworzenia konta. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (w oparciu nazwa użytkownika lub adres e-mail). |
-| *api.localaccountpasswordreset* | **Nie pamiętasz hasła strony**. Ta strona zawiera formularz, który użytkownik ma do wypełnienia zainicjować ich resetowania hasła.  |
-| *api.localaccountsignin* | **Strona logowania konta lokalnego**. Ta strona zawiera formularz logowania, który użytkownik musi podać podczas logowania się za pomocą konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola do wprowadzania tekstu, a w polu wprowadzania hasła. |
-| *API.localaccountsignup* | **Stronę tworzenia konta lokalnego konta**. Ta strona zawiera wypełnieniu formularza, który użytkownik musi podać podczas zapisywania się do konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru. |
-| *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
-| *api.selfasserted* | **Strony rejestracji społecznościowych konta**. Ta strona zawiera wypełnieniu formularza, który użytkownik musi podać podczas logowania przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobny do poprzedniej strony rejestracji społecznościowych konta, z wyjątkiem pól wprowadzania hasła. |
-| *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownik może użyć do zaktualizowania swój profil. Ta strona jest podobny do poprzedniej strony rejestracji społecznościowych konta, z wyjątkiem pól wprowadzania hasła. |
-| *api.signuporsignin* | **Ujednolicone stronę tworzenia konta lub logowania**.  Ta strona obsługuje zarówno rejestracji i logowania użytkowników można używać w organizacji dostawcy tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
+| *api.error* | **Strona błędu**. Ta strona jest wyświetlana, gdy występuje wyjątek lub komunikat o błędzie. |
+| *API.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas logowania. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
+| *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybierać podczas rejestracji. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
+| *api.localaccountpasswordreset* | **Strona obsługi zapomnianego hasła**. Ta strona zawiera formularz, który użytkownik będzie musiał wypełnienia inicjować ich resetowania hasła.  |
+| *api.localaccountsignin* | **Strona logowania dla kont lokalnych**. Ta strona zawiera formularz logowania, które użytkownik będzie musiał podać podczas logowania się za pomocą konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola wprowadzania tekstu, a pole wprowadzania hasła. |
+| *API.localaccountsignup* | **Strona rejestracji dla kont lokalnych**. Ta strona zawiera formularz rejestracji, który użytkownik będzie musiał podać podczas tworzenia konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać innej kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
+| *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkowników można sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
+| *api.selfasserted* | **Strona rejestracji dla kont społecznościowych**. Ta strona zawiera formularz rejestracji, który użytkownik będzie musiał podać podczas logowania się przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobna do poprzedniej strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
+| *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownik może użyć, aby zaktualizować swój profil. Ta strona jest podobna do poprzedniej strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
+| *api.signuporsignin* | **Ujednolicona strona rejestracji lub logowania**.  Ta strona obsługuje zarówno rejestracji i logowania użytkowników, którzy mogą korzystać z dostawców tożsamości organizacji, dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Odwołanie: Zrozumieć, jak niestandardowe zasady współpracują w ramach obsługi tożsamości w B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)
+[Odwołanie: Zrozumieć, jak niestandardowe zasady działają z platformy środowiska tożsamości w B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)

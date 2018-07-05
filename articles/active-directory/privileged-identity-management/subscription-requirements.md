@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management subskrypcje - Azure | Dokumentacja firmy Microsoft
-description: Wyjaśniono, subskrypcja i wymagania dotyczące zarządzania i przy użyciu usługi Azure AD Privileged Identity Management w dzierżawie licencjonowania
+title: Privileged Identity Management subskrypcji — Azure | Dokumentacja firmy Microsoft
+description: Wyjaśnia, subskrypcję i wymaganiach dotyczących licencjonowania dla i zarządzanie nimi za pomocą usługi Azure AD Privileged Identity Management w ramach dzierżawy
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,55 +11,55 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a83b1b32bc7c1ba8dcfb0e96b11540253903a01f
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085151"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442376"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania subskrypcji w usłudze Azure Active Directory Privileged Identity Management
+# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania dotyczące subskrypcji usługi Azure Active Directory Privileged Identity Management
 
-Azure AD Privileged Identity Management jest dostępny w ramach wersji Premium P2 usługi Azure AD. Aby uzyskać więcej informacji o innych funkcjach P2 oraz porównaniu z Premium P1, zobacz [wersje usługi Azure Active Directory](../active-directory-editions.md).
+Usługa Azure AD Privileged Identity Management jest dostępna w ramach usługi Azure AD w wersji Premium P2. Aby uzyskać więcej informacji na temat innych funkcji P2 i porównać ją w warstwie Premium P1, zobacz [usługi Azure Active Directory w wersjach](../active-directory-editions.md).
 
 >[!NOTE]
-Gdy w wersji zapoznawczej usługi Azure Active Directory (Azure AD) Privileged Identity Management, nie było nie są sprawdzane licencji dla dzierżawcy wypróbować usługę.  Teraz, Azure AD Privileged Identity Management została osiągnięta ogólnej dostępności, subskrypcji próbnej lub płatnej musi być obecny dla dzierżawcy kontynuować przy użyciu Privileged Identity Management po grudnia 2016.
+Podczas usługi Azure Active Directory (Azure AD) Privileged Identity Management w wersji zapoznawczej nie wystąpiły żadne testy licencji dla dzierżawcy Wypróbuj tę usługę.  Teraz, gdy publicznym udostępnieniu produktów usługi Azure AD Privileged Identity Management to subskrypcji próbnej lub płatnej musi znajdować się dla dzierżawy kontynuować korzystanie z Privileged Identity Management od grudnia 2016 r.
   
 
-## <a name="confirm-your-trial-or-paid-subscription"></a>Potwierdzenie Twojej wersji próbnej lub płatnej subskrypcji
+## <a name="confirm-your-trial-or-paid-subscription"></a>Potwierdzenie informacji o subskrypcji próbnej lub płatnej
 
-Jeśli nie masz pewności, czy Twoja organizacja ma okres próbny lub zakupić subskrypcję, można sprawdzić czy za pomocą polecenia uwzględnione w Azure Active Directory modułu dla Windows PowerShell V1 jest subskrypcji w dzierżawie. 
+Jeśli nie masz pewności, czy Twoja organizacja ma korzystać z wersji próbnej lub kupić subskrypcję, można sprawdzić czy za pomocą poleceń, objęte usługi Azure Active Directory modułu dla Windows PowerShell w wersji 1 jest subskrypcji w ramach dzierżawy. 
 1. Otwórz okno programu PowerShell.
 2. Wprowadź `Connect-MsolService` do uwierzytelnienia się jako użytkownik w dzierżawie.
 3. Wprowadź `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
 
-To polecenie pobiera listę subskrypcji w dzierżawie. Jeśli nie ma żadnych wierszy, zwracane, należy uzyskać wersji próbnej i komercyjnej Azure AD Premium P2 EMS E5 subskrypcję usługi Azure AD Privileged Identity Management lub subskrypcji usługi Azure AD Premium P2.  Aby uzyskać wersji próbnej i rozpocząć korzystanie z usługi Azure AD Privileged Identity Management, przeczytaj [wprowadzenie do usługi Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+To polecenie pobiera listę subskrypcji w ramach dzierżawy. Jeśli nie ma żadnych wierszy, zwrócone, konieczne będzie uzyskania wersji próbnej i komercyjnej usługi Azure AD Premium P2 subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji do użycia usługi Azure AD Privileged Identity Management.  Aby uzyskać wersję próbną i Rozpocznij korzystanie z usługi Azure AD Privileged Identity Management, przeczytaj [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
 
-Jeśli to polecenie zwraca wiersz, w które SkuPartNumber jest "AAD_PREMIUM_P2" lub "EMSPREMIUM" i IsTrial ma "wartość prawda", oznacza to, że wersji próbnej platformy Azure AD Premium P2 znajduje się w dzierżawie.  Jeśli stan subskrypcji nie jest włączona, a nie masz subskrypcji usługi Azure AD Premium P2 lub EMS E5 zakupu, następnie należy zakupić subskrypcję usługi Azure AD Premium P2 lub subskrypcji EMS E5, aby kontynuować korzystanie z usługi Azure AD Privileged Identity Management.
+Jeśli to polecenie zwróci wiersz, w które SkuPartNumber jest "AAD_PREMIUM_P2" lub "EMSPREMIUM" i IsTrial jest "True", oznacza to, że wersji próbnej usługi Azure AD Premium P2 znajduje się w dzierżawie.  Jeśli stan subskrypcji nie jest włączona, a nie masz subskrypcji P2 usługi Azure AD Premium lub EMS E5 zakupu, następnie należy zakupić subskrypcję usługi Azure AD Premium P2 lub EMS E5 aby kontynuować korzystanie z usługi Azure AD Privileged Identity Management.
 
-Jest dostępna za pośrednictwem usługi Azure AD Premium P2 [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu licencjonowania zbiorowego Open](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)i [dostawców rozwiązań w chmurze programu](https://partner.microsoft.com/en-US/cloud-solution-provider). Subskrybenci platformy Azure i usługi Office 365 można również kupić Azure AD Premium P2 w trybie online.  Więcej informacji na temat cen usługi Azure AD Premium i sposób sortowania w trybie online można znaleźć w folderze [Azure Active Directory cennik](https://azure.microsoft.com/pricing/details/active-directory/).
+Usługa Azure AD Premium P2 jest dostępna za pośrednictwem [umowy Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu licencjonowania zbiorowego Open](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)i [programu dostawców rozwiązań w chmurze](https://partner.microsoft.com/en-US/cloud-solution-provider). Subskrybenci platformy Azure i usługi Office 365 mogą też kupić usługę Azure AD Premium P2 w trybie online.  Więcej informacji na temat cen usługi Azure AD Premium i jak Zamów w trybie online, można znaleźć w folderze [usługi Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Nie jest dostępna w dzierżawie usługi Azure AD Privileged Identity Management
+## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Usługa Azure AD Privileged Identity Management nie jest dostępna w dzierżawie
 
-Azure AD Privileged Identity Management nie będą już dostępne w Twojej dzierżawie jeśli:
-- Organizacji została przy użyciu usługi Azure AD Privileged Identity Management w wersji zapoznawczej i nie zakupu subskrypcji usługi Azure AD Premium P2 lub EMS E5 subskrypcji.
-- Twoja organizacja nie usługi Azure AD Premium P2 lub E5 EMS wersji próbnej, która wygasła.
-- Twoja organizacja ma zakupiono subskrypcję, która wygasła.
+Azure AD Privileged Identity Management nie będzie już dostępna w dzierżawie, jeśli:
+- Twoja organizacja została przy użyciu usługi Azure AD Privileged Identity Management w wersji zapoznawczej i nie kupuje subskrypcję usługi Azure AD Premium P2 lub EMS E5.
+- Twoja organizacja ma P2 usługi Azure AD Premium lub EMS E5 wersji próbnej, która wygasła.
+- Twoja organizacja ma zakupioną subskrypcję, która wygasła.
 
-Po wygaśnięciu subskrypcji Azure AD Premium P2 lub subskrypcji EMS E5 lub jako organizacja, która była za pomocą usługi Azure AD Privileged Identity Management w wersji zapoznawczej nie uzyskał P2 Azure AD Premium lub pakietu EMS E5 subskrypcji:
+Po wygaśnięciu subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji lub moduł organizacji, która używała usługi Azure AD Privileged Identity Management w wersji zapoznawczej nie uzyskać subskrypcji P2 usługi Azure AD Premium lub EMS E5:
 
-- Przypisania ról stałych do usługi Azure AD role pozostaną nienaruszone.
-- Rozszerzenie usługi Azure AD Privileged Identity Management w portalu Azure, a także interfejsu API programu Graph i polecenia cmdlet programu PowerShell interfejsów Azure AD Privileged Identity Management, nie będą już dostępne dla użytkowników na aktywację ról uprzywilejowanych, zarządzanie uprawnieniami dostępu lub wykonaj dostępu Przegląd ról uprzywilejowanych.
-- Przypisania ról kwalifikujących się ról usługi Azure AD zostaną usunięte zgodnie z użytkowników nie będzie już można uaktywniać role uprzywilejowane.
-- Zakończy wszystkie przeglądy trwającą dostępu ról usługi Azure AD i będzie można usunąć ustawień konfiguracji usługi Azure AD Privileged Identity Management.
-- Azure AD Privileged Identity Management nie będzie wysyłać wiadomości e-mail na zmiany przypisania roli.
+- Będzie to miało wpływu trwałego roli przypisania do ról usługi Azure AD.
+- Rozszerzenie usługi Azure AD Privileged Identity Management w witrynie Azure portal oraz poleceń cmdlet interfejsu API programu Graph i interfejsy programu PowerShell usługi Azure AD Privileged Identity Management, nie będzie już użytkownikom aktywację ról uprzywilejowanych, zarządzanie poziomem uprawnień dostęp lub wykonać przeglądów ról uprzywilejowanych.
+- Kwalifikujące się przypisania ról ról usługi Azure AD zostanie usunięty, ponieważ użytkownicy nie będą mogły uaktywniać swoje role uprzywilejowane.
+- Zakończy się dowolnym bieżących przeglądów ról usługi Azure AD, a ustawienia konfiguracji usługi Azure AD Privileged Identity Management zostanie usunięta.
+- Usługa Azure AD Privileged Identity Management nie jest już będzie wysyłać wiadomości e-mail na zmianach przypisania roli.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wprowadzenie do usługi Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
+- [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
 - [Role w usłudze Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)

@@ -1,5 +1,5 @@
 ---
-title: Sprawdź poprawność konfiguracji konta usługi Automatyzacja Azure
+title: Sprawdzanie poprawności konfiguracji konta usługi Azure Automation
 description: W tym artykule został opisany sposób potwierdzania, że konfiguracja konta usługi Automation jest poprawna.
 services: automation
 ms.service: automation
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c1ac698a1774a7a6242506ec65193434bb81cc25
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: af1d05c171eb5544104b12aebb6c7be937061f6a
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598773"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437182"
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Sprawdzanie uwierzytelniania konta Uruchom jako usługi Azure Automation
 Po pomyślnym utworzeniu konta usługi Automation możesz wykonać prosty test, aby potwierdzić, że możesz poprawnie przeprowadzić uwierzytelnienie w usłudze Azure Resource Manager lub klasycznym wdrożeniu platformy Azure przy użyciu nowo utworzonego lub zaktualizowanego konta Uruchom jako usługi Automation.    
@@ -60,12 +60,12 @@ Poniżej przedstawiono kod przykładowy umożliwiający [utworzenie elementu run
        Write-Output ("")
     } 
 
-Zwróć uwagę, polecenia cmdlet używane do uwierzytelniania w elemencie runbook - **Connect-AzureRmAccount**, używa *ServicePrincipalCertificate* zestaw parametrów.  Uwierzytelnia się ono za pomocą certyfikatu nazwy głównej usługi, a nie poświadczeń.  
+Zwróć uwagę, polecenie cmdlet służące do uwierzytelniania w elemencie runbook — **Connect-AzureRmAccount**, używa *ServicePrincipalCertificate* zestaw parametrów.  Uwierzytelnia się ono za pomocą certyfikatu nazwy głównej usługi, a nie poświadczeń.  
 
 > [!IMPORTANT]
-> **Dodaj-AzureRmAccount** jest teraz aliasem **Connect-AzureRMAccount**. Jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Add-AzureRmAccount**, lub zaktualizować moduły na Twoim koncie automatyzacji.
+> **Add-AzureRmAccount** teraz jest aliasem dla **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementów, jeśli nie widzisz **Connect-AzureRMAccount**, możesz użyć **Add-AzureRmAccount**, lub na koncie usługi Automation można zaktualizować moduły.
 
-Gdy możesz [uruchamiania elementu runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) można sprawdzić poprawności konta Uruchom jako [zadanie elementu runbook](automation-runbook-execution.md) utworzeniu zadania zostanie wyświetlona strona i wyświetlić stan zadania w **Podsumowanie zadania** kafelka. Zadanie będzie miało początkowy stan *W kolejce*, wskazujący, że trwa oczekiwanie na udostępnienie procesu roboczego elementu Runbook w chmurze. Następnym stanem będzie *Uruchamianie*, gdy proces roboczy wywołuje zadanie, a następnie *Uruchomiono*, gdy element Runbook faktycznie zacznie działać.  Po zakończeniu zadania elementu Runbook powinniśmy zobaczyć stan **Ukończono**.
+Po użytkownik [uruchomienia elementu runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) do zweryfikowania konta Uruchom jako [zadania elementu runbook](automation-runbook-execution.md) utworzeniu zadania zostanie wyświetlona strona i wyświetlany stan zadania **Podsumowanie zadania** kafelka. Zadanie będzie miało początkowy stan *W kolejce*, wskazujący, że trwa oczekiwanie na udostępnienie procesu roboczego elementu Runbook w chmurze. Następnym stanem będzie *Uruchamianie*, gdy proces roboczy wywołuje zadanie, a następnie *Uruchomiono*, gdy element Runbook faktycznie zacznie działać.  Po zakończeniu zadania elementu Runbook powinniśmy zobaczyć stan **Ukończono**.
 
 Aby wyświetlić szczegółowe wyniki elementu Runbook, kliknij kafelek **Dane wyjściowe**.  Na stronie **Dane wyjściowe** powinna być wyświetlana informacja o pomyślnym uwierzytelnieniu elementu oraz powinna zostać zwrócona lista wszystkich zasobów we wszystkich grupach zasobów w ramach subskrypcji.  
 

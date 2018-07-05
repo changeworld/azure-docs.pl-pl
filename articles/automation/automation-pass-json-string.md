@@ -1,6 +1,6 @@
 ---
 title: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
-description: Jak do przekazania parametrów do elementu runbook jako obiekt JSON
+description: Jak przekazać parametry do elementu runbook jako obiekt JSON
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,22 +9,22 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-keywords: środowiska PowerShell, elementu runbook, json, usługi Automatyzacja azure
-ms.openlocfilehash: b0eaa13baa3e787db14e7a6f915018c3a4f280a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+keywords: Program PowerShell, elementów runbook, json, usługa azure automation
+ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193054"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435767"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 
-Może być przydatne do przechowywania danych, które mają zostać przekazane do elementu runbook w pliku JSON.
-Na przykład może utworzyć pliku JSON, który zawiera wszystkie parametry, które mają zostać przekazane do elementu runbook.
-Aby to zrobić, należy skonwertowane do ciągu JSON, a następnie wykonać konwersję ciąg obiekt programu PowerShell przed przekazaniem ich do elementu runbook z jego zawartość.
+Może być przydatne do przechowywania danych, które mają być przekazane do elementu runbook w pliku JSON.
+Na przykład może utworzyć pliku JSON, który zawiera wszystkie parametry, które mają być przekazane do elementu runbook.
+Aby to zrobić, musisz przekonwertować na ciąg za pomocą pliku JSON, a następnie przekonwertowania ciągu na obiekt programu PowerShell przed przekazaniem jej zawartość do elementu runbook.
 
-W tym przykładzie utworzymy skrypt programu PowerShell, który wywołuje [Start AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) uruchomienia elementu runbook programu PowerShell, przekazywanie zawartości JSON do elementu runbook.
-Element runbook programu PowerShell uruchamia maszyny Wirtualnej platformy Azure, pobieranie parametrów dla maszyny Wirtualnej z formatu JSON, która została przekazana.
+W tym przykładzie utworzymy skrypt programu PowerShell, który wywołuje [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) można uruchomić elementu runbook programu PowerShell, przekazanie zawartości za pomocą pliku JSON do elementu runbook.
+Element runbook programu PowerShell uruchamia Maszynę wirtualną platformy Azure, wprowadzenie parametrów dla maszyny Wirtualnej z formatu JSON, która została przekazana.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
@@ -32,11 +32,11 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub <a href="/pricing/free-account/" target="_blank">[utworzyć bezpłatne konto](https://azure.microsoft.com/free/).
 * [Konto usługi Automation](automation-sec-configure-azure-runas-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure.  To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
 * Maszyna wirtualna platformy Azure. Będziemy uruchamiać i zatrzymywać tę maszynę, dlatego należy użyć maszyny innej niż produkcyjna.
-* Program Azure Powershell jest zainstalowane na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) informacji o sposobie pobrania programu Azure PowerShell.
+* Program Azure Powershell zainstalowane na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) uzyskać informacji na temat sposobu uzyskania programu Azure PowerShell.
 
 ## <a name="create-the-json-file"></a>Utwórz plik JSON
 
-Wpisz następującego testu w pliku tekstowym, a następnie zapisz go jako `test.json` pozwalającego na komputerze lokalnym.
+Wpisz następujący test w pliku tekstowym, a następnie zapisz go jako `test.json` pozwalającego na komputerze lokalnym.
 
 ```json
 {
@@ -47,12 +47,12 @@ Wpisz następującego testu w pliku tekstowym, a następnie zapisz go jako `test
 
 ## <a name="create-the-runbook"></a>Tworzenie elementu runbook
 
-Utwórz nowy element runbook programu PowerShell o nazwie "Test-Json" automatyzacji Azure.
-Aby dowiedzieć się, jak utworzyć nowy element runbook programu PowerShell, zobacz [Moje pierwszego elementu runbook programu PowerShell](automation-first-runbook-textual-powershell.md).
+Utwórz nowy element runbook programu PowerShell o nazwie "Test-Json" w usłudze Azure Automation.
+Aby dowiedzieć się, jak utworzyć nowy element runbook programu PowerShell, zobacz [Mój pierwszy element runbook programu PowerShell](automation-first-runbook-textual-powershell.md).
 
-Aby zaakceptować dane JSON, elementu runbook musi pobrać obiektu jako parametr wejściowy.
+Aby zaakceptować danych JSON, element runbook musi podjąć obiekt jako parametr wejściowy.
 
-Element runbook można użyć właściwości zdefiniowane w formacie JSON.
+Element runbook może następnie używać właściwości zdefiniowane w formacie JSON.
 
 ```powershell
 Param(
@@ -72,24 +72,28 @@ $json = $json | ConvertFrom-Json
 Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
  ```
 
- Zapisz i Opublikuj ten element runbook do Twojego konta automatyzacji.
+ Zapisz i Opublikuj ten element runbook na Twoim koncie usługi Automation.
 
-## <a name="call-the-runbook-from-powershell"></a>Wywołanie elementu runbook z programu PowerShell
+## <a name="call-the-runbook-from-powershell"></a>Wywołaj element runbook za pomocą programu PowerShell
 
-Teraz można wywołać elementu runbook z komputera lokalnego przy użyciu programu Azure PowerShell.
-Uruchom następujące polecenia programu PowerShell:
+Teraz możesz wywołać element runbook z komputera lokalnego przy użyciu programu Azure PowerShell.
+Uruchom następujące polecenia środowiska PowerShell:
 
 1. Logowanie do platformy Azure:
    ```powershell
    Connect-AzureRmAccount
    ```
     Monit o podanie poświadczeń platformy Azure.
-1. Pobierz zawartość pliku JSON i przekonwertować na ciąg:
+
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** teraz jest aliasem dla **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementów, jeśli nie widzisz **Connect-AzureRMAccount**, możesz użyć **Add-AzureRmAccount**, lub na koncie usługi Automation można zaktualizować moduły.
+
+1. Pobierz zawartość pliku JSON, a następnie przekonwertować na ciąg:
     ```powershell
     $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
-    `JsonPath` jest to ścieżka, w którym zapisano plik JSON.
-1. Konwertowanie wartości ciągu `$json` na obiekt programu PowerShell:
+    `JsonPath` jest to ścieżka, w której zapisano plik JSON.
+1. Konwertuj zawartość ciągu `$json` na obiekt programu PowerShell:
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
@@ -102,17 +106,17 @@ Uruchom następujące polecenia programu PowerShell:
         Parameters = $JsonParams
    }
    ```
-   Zwróć uwagę, że ustawiasz wartość `Parameters` na obiekt programu PowerShell, który zawiera wartości z pliku JSON. 
+   Należy zauważyć, że ustawiono wartość `Parameters` na obiekt programu PowerShell, który zawiera wartości z pliku JSON. 
 1. Uruchamianie elementu runbook
    ```powershell
    $job = Start-AzureRmAutomationRunbook @RBParams
    ```
 
-Element runbook używa wartości z pliku JSON do uruchamiania maszyny Wirtualnej.
+Element runbook używa wartości z pliku JSON, aby uruchomić Maszynę wirtualną.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat edytowania elementów runbook programu PowerShell i przepływ pracy programu PowerShell za pomocą edytora tekstową, zobacz [edycji tekstową elementy runbook automatyzacji Azure](automation-edit-textual-runbook.md) 
-* Aby dowiedzieć się więcej o tworzeniu i importowania elementów runbook, zobacz [Tworzenie lub importowanie elementu runbook automatyzacji Azure](automation-creating-importing-runbook.md)
+* Aby dowiedzieć się więcej o edytowaniu elementów runbook programu PowerShell i przepływie pracy programu PowerShell w programie Edytor tekstów, zobacz [edytowanie tekstowych elementów runbook w usłudze Azure Automation](automation-edit-textual-runbook.md) 
+* Aby dowiedzieć się więcej o tworzeniu i importowanie elementów runbook, zobacz [Tworzenie lub importowanie elementu runbook w usłudze Azure Automation](automation-creating-importing-runbook.md)
 
 

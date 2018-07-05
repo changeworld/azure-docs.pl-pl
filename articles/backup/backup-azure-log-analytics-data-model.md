@@ -1,79 +1,79 @@
 ---
 title: Model danych usługi Log Analytics na potrzeby usługi Azure Backup
-description: Ten artykuł zawiera informacje o szczegóły modelu danych analizy dzienników dla danych kopii zapasowej Azure.
+description: Ten artykuł zawiera informacje o szczegóły modelu danych usługi Log Analytics dla danych usługi Azure Backup.
 services: backup
-author: JPallavi
-manager: vijayts
+author: adiganmsft
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: pajosh
+ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a2ba1d523e7a6364420302eee095f24fd08eadb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605777"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448394"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dziennika dla danych kopia zapasowa Azure
-W tym artykule opisano model danych używany do wypychania danych raportowania do analizy dzienników. Użycie tego modelu danych, można tworzyć zapytania niestandardowe pulpity nawigacyjne i wykorzystanie go w analizy dzienników. 
+# <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dzienników dla danych usługi Azure Backup
+Tworzenie raportów przy użyciu modelu danych usługi Log Analytics. Z modelem danych utworzenia niestandardowych kwerend i pulpitów nawigacyjnych lub dostosowywanie danych usługi Azure Backup możesz dowolnie.
 
-## <a name="using-azure-backup-data-model"></a>Za pomocą usługi Kopia zapasowa Azure modelu danych
-Następujące pola w ramach modelu danych służy do tworzenia elementów wizualnych, niestandardowych kwerend i pulpitu nawigacyjnego zgodnie z wymaganiami.
+## <a name="using-azure-backup-data-model"></a>Przy użyciu modelu danych usługi Azure Backup
+Następujące pola, które są udostępniane w ramach modelu danych umożliwia tworzenie wizualizacji, zapytania niestandardowe i pulpit nawigacyjny zgodnie z wymaganiami.
 
 ### <a name="alert"></a>Alerty
-Ta tabela zawiera szczegóły dotyczące alertu związane pola.
+Ta tabela zawiera szczegółowe informacje dotyczące alertów powiązanych pól.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | AlertUniqueId_s |Tekst |Unikatowy identyfikator wygenerowany alert |
-| AlertType_s |Tekst |Typ wygenerowany alert, na przykład kopii zapasowej |
+| AlertType_s |Tekst |Typ alertu, na przykład kopię zapasową |
 | AlertStatus_s |Tekst |Stan alertu, na przykład aktywny |
 | AlertOccurenceDateTime_s |Data/godzina |Data i godzina utworzenia alertu |
-| AlertSeverity_s |Tekst |Ważność alertu, na przykład krytyczne |
-| EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej, do którego należy ten alert |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu alertu, na przykład aktywny, usunięte |
+| AlertSeverity_s |Tekst |Ważność alertu, na przykład, krytyczny |
+| EventName_s |Tekst |Nazwa zdarzenia. Zawsze AzureBackupCentralReport |
+| BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej skojarzonego z alertem |
+| SchemaVersion_s |Tekst |Bieżąca wersja schematu, na przykład **V1** |
+| State_s |Tekst |Bieżący stan alertu obiektu, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten alert |
-| OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - alertu |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator elementu chronionej, do którego należy ten alert |
-| VaultUniqueId_s |Tekst |Unikatowy identyfikator elementu chronionej, do którego należy ten alert |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| OperationName |Tekst |Nazwa bieżącej operacji, na przykład Alert |
+| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Log Analytics. Zawsze AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, skojarzonych z tym alertem |
+| VaultUniqueId_s |Tekst |Unikatowy identyfikator chronionego magazynu skojarzonego z alertem |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Unikatowy identyfikator dla zasobu o tym, jakie dane są zbierane. Na przykład identyfikator zasobu magazynu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="backupitem"></a>BackupItem
-Ta tabela zawiera szczegółowe informacje dotyczące tworzenia kopii zapasowej pól związanych z elementu.
+Ta tabela zawiera szczegółowe informacje o kopii zapasowej pól powiązanych elementów.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |  
+| EventName_s |Tekst |Nazwa zdarzenia. Zawsze AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej |
 | BackupItemId_s |Tekst |Identyfikator elementu kopii zapasowej |
 | BackupItemName_s |Tekst |Nazwa elementu kopii zapasowej |
 | BackupItemFriendlyName_s |Tekst |Przyjazna nazwa elementu kopii zapasowej |
-| BackupItemType_s |Tekst |Typ elementu kopii zapasowej, na przykład maszynę Wirtualną, FileFolder |
-| ProtectedServerName_s |Tekst |Nazwa serwera chronionego, do którego kopii zapasowej elementu należy do |
-| ProtectionState_s |Tekst |Bieżący stan ochrony elementu kopii zapasowej, na przykład chronione, ProtectionStopped |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu elementu kopii zapasowej, na przykład aktywny, usunięte |
+| BackupItemType_s |Tekst |Typ elementu kopii zapasowej, na przykład maszyna wirtualna FileFolder |
+| ProtectedServerName_s |Tekst |Nazwa chronionego serwera, do którego element kopii zapasowej należy do |
+| ProtectionState_s |Tekst |Bieżący stan ochrony w element kopii zapasowej, na przykład chronione, ProtectionStopped |
+| SchemaVersion_s |Tekst |Wersja schematu, na przykład **V1** |
+| State_s |Tekst |Stan obiektu elementów kopii zapasowej, na przykład, aktywne, usunięte |
 | BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten element kopii zapasowej |
-| OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - BackupItem |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| OperationName |Tekst |Nazwa operacji, na przykład BackupItem |
+| Kategoria |Tekst |Kategoria danych diagnostycznych wypchnięte do usługi Log Analytics. Zawsze AzureBackupReport |
+| Zasób |Tekst |Zasób danych, które są zbierane, na przykład nazwa magazynu usługi Recovery Services |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu dla zbieranych danych, na przykład magazyn usługi Recovery Services identyfikatora zasobu |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (na przykład. Magazyn usługi Recovery Services) dla zbieranych danych |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (na przykład. Magazyn usługi Recovery Services) dla zbieranych danych |
+| ResourceProvider |Tekst |Dostawca zasobów dla danych zbieranych, na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu dla danych, które są zbierane, na przykład magazyny. |
 
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia elementu kopii zapasowej z różnymi jednostkami.
@@ -82,51 +82,51 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia elementu kopii
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu skojarzenia elementu kopii zapasowej, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten element kopii zapasowej |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu skojarzenia elementu kopii zapasowej, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - BackupItemAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad, który element kopii zapasowej jest skojarzony z |
-| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, do którego należy ten element kopii zapasowej |
-| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten element kopii zapasowej |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad skojarzonych z elementu kopii zapasowej |
+| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, skojarzony element kopii zapasowej |
+| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu zawierającego element kopii zapasowej |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (na przykład. Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (na przykład. Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów dla danych zbieranych, na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu dla danych są gromadzone, na przykład magazyny |
 
 ### <a name="job"></a>Zadanie
 Ta tabela zawiera szczegółowe informacje o polach związanych z pracą.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej, do którego należy to zadanie |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu zadania, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy to zadanie |
+| EventName_s |Tekst |Nazwa zdarzenia. Zawsze AzureBackupCentralReport |
+| BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej |
+| SchemaVersion_s |Tekst |Wersja schematu, na przykład **V1** |
+| State_s |Tekst |Bieżący stan obiektu zadania, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — zadanie |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator chronionej do którego należy to zadanie |
-| VaultUniqueId_s |Tekst |Unikatowy identyfikator chronionej do którego należy to zadanie |
-| JobOperation_s |Tekst |Operacja, dla którego zadanie jest uruchamiane na przykład kopii zapasowych, przywracania, konfigurowanie usługi Kopia zapasowa |
-| JobStatus_s |Tekst |Stan zadania zakończono, na przykład ukończone, nie powiodło się |
-| JobFailureCode_s |Tekst |Ciąg kodu błędu z powodu którego wystąpiło niepowodzenie zadania |
-| JobStartDateTime_s |Data/godzina |Data i godzina podczas zadań uruchomiona wprowadzenie |
-| BackupStorageDestination_s |Tekst |Miejsce docelowe magazynu kopii zapasowej, na przykład chmury, dysku  |
-| JobDurationInSecs_s | Liczba |Zadanie całkowity czas w sekundach |
-| DataTransferredInMB_s | Liczba |Dane przekazywane w MB dla tego zadania|
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego skojarzone zadania |
+| VaultUniqueId_s |Tekst |Unikatowy identyfikator chronionego magazynu. |
+| JobOperation_s |Tekst |Operacja, dla którego zadanie jest uruchamiane na przykład kopii zapasowej, przywracanie, skonfiguruj w kopii zapasowej |
+| JobStatus_s |Tekst |Stan zadania zakończone, na przykład, zakończone, nie powiodło się |
+| JobFailureCode_s |Tekst |Z powodu którego wystąpiło niepowodzenie zadania ciągu kodu błędu |
+| JobStartDateTime_s |Data/godzina |Data i godzina, kiedy zadania uruchamiania wprowadzenie |
+| BackupStorageDestination_s |Tekst |Docelowy magazyn kopii zapasowych, na przykład, chmura, dysku  |
+| JobDurationInSecs_s | Liczba |Czas trwania zadania łączna liczba w ciągu kilku sekund |
+| DataTransferredInMB_s | Liczba |Dane przesyłane w Megabajtach dla tego zadania|
 | JobUniqueId_g |Tekst |Unikatowy identyfikator zadania |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services|
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="policy"></a>Zasady
 Ta tabela zawiera szczegółowe informacje o polach związane z zasadami.
@@ -134,39 +134,39 @@ Ta tabela zawiera szczegółowe informacje o polach związane z zasadami.
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu zasad, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ta zasada |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu zasad, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — zasady |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasady |
-| PolicyName_s |Tekst |Nazwa zdefiniowane zasady |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad |
+| PolicyName_s |Tekst |Nazwy zdefiniowane zasady |
 | BackupFrequency_s |Tekst |Częstotliwość, z którym są uruchamiane kopii zapasowych, na przykład, codziennie, co tydzień |
-| BackupTimes_s |Tekst |Data i godzina, kiedy zaplanowane tworzenie kopii zapasowych |
-| BackupDaysOfTheWeek_s |Tekst |Dni tygodnia, gdy zaplanowanych kopii zapasowych |
-| RetentionDuration_s |Liczby całkowitej |Czas przechowywania kopii zapasowych skonfigurowany |
-| DailyRetentionDuration_s |Liczby całkowitej |Czas trwania całkowita przechowywania w dniach skonfigurowanych kopii zapasowych |
-| DailyRetentionTimes_s |Tekst |Data i godzina, gdy skonfigurowano przechowywania codziennych |
-| WeeklyRetentionDuration_s |Liczba dziesiętna |Całkowita liczba tygodniowy czas przechowywania w tygodniach skonfigurowanych kopii zapasowych |
-| WeeklyRetentionTimes_s |Tekst |Data i godzina, gdy jest skonfigurowany co tydzień przechowywania |
-| WeeklyRetentionDaysOfTheWeek_s |Tekst |Wybrane dni tygodnia do przechowywania co tydzień |
-| MonthlyRetentionDuration_s |Liczba dziesiętna |Czas przechowywania całkowitej w miesiącach skonfigurowanych kopii zapasowych |
-| MonthlyRetentionTimes_s |Tekst |Data i godzina, gdy miesięczne przechowywania jest skonfigurowany |
-| MonthlyRetentionFormat_s |Tekst |Typ konfiguracji miesięczne okresu przechowywania, na przykład codziennie na podstawie co tydzień na podstawie tydzień dzień |
-| MonthlyRetentionDaysOfTheWeek_s |Tekst |Wybrane dni tygodnia do przechowywania miesięcznego |
-| MonthlyRetentionWeeksOfTheMonth_s |Tekst |Tygodnie miesiąca, jeśli została skonfigurowana miesięczne przechowywania, na przykład pierwszy, ostatni itp. |
-| YearlyRetentionDuration_s |Liczba dziesiętna |Czas przechowywania całkowitej w latach skonfigurowanych kopii zapasowych |
-| YearlyRetentionTimes_s |Tekst |Data i godzina, gdy corocznych przechowywania jest skonfigurowany |
-| YearlyRetentionMonthsOfTheYear_s |Tekst |Wybrane miesięcy do przechowywania roczne |
-| YearlyRetentionFormat_s |Tekst |Typ konfiguracji corocznych okresu przechowywania, na przykład codziennie na podstawie co tydzień na podstawie tydzień dzień |
-| YearlyRetentionDaysOfTheMonth_s |Tekst |Daty miesiąca wybrany do przechowywania roczne |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| BackupTimes_s |Tekst |Data i godzina, kiedy są zaplanowane kopie zapasowe |
+| BackupDaysOfTheWeek_s |Tekst |Dni tygodnia, gdy zostały zaplanowane kopie zapasowe |
+| RetentionDuration_s |Liczba całkowita |Czas trwania przechowywania skonfigurowane kopie zapasowe |
+| DailyRetentionDuration_s |Liczba całkowita |Czas trwania przechowywania całkowitej dni skonfigurowane kopie zapasowe |
+| DailyRetentionTimes_s |Tekst |Data i godzina, gdy skonfigurowano przechowywanie codziennego |
+| WeeklyRetentionDuration_s |Liczba dziesiętna |Łączny czas przechowywania co tydzień, w ciągu tygodni skonfigurowanych kopii zapasowych |
+| WeeklyRetentionTimes_s |Tekst |Data i godzina, jeśli skonfigurowano przechowywanie tygodniowego |
+| WeeklyRetentionDaysOfTheWeek_s |Tekst |Dni tygodnia wybrane do przechowywania danych co tydzień |
+| MonthlyRetentionDuration_s |Liczba dziesiętna |Czas trwania przechowywania całkowitej miesiące w przypadku skonfigurowane kopie zapasowe |
+| MonthlyRetentionTimes_s |Tekst |Data i godzina, po skonfigurowaniu przechowywanie miesięcznego |
+| MonthlyRetentionFormat_s |Tekst |Typ konfiguracji do miesięcznych przechowywania danych, na przykład codziennie na podstawie co tydzień w oparciu o tydzień dzień |
+| MonthlyRetentionDaysOfTheWeek_s |Tekst |Dni tygodnia wybrane do przechowywania miesięczne |
+| MonthlyRetentionWeeksOfTheMonth_s |Tekst |Tygodnie miesiąca, gdy miesięczne przechowywanie jest skonfigurowany, na przykład pierwszy, ostatni itp. |
+| YearlyRetentionDuration_s |Liczba dziesiętna |Czas trwania przechowywania całkowitej lat skonfigurowane kopie zapasowe |
+| YearlyRetentionTimes_s |Tekst |Data i godzina, po skonfigurowaniu roczne przechowywanie |
+| YearlyRetentionMonthsOfTheYear_s |Tekst |Miesiące roku wybrane do przechowywania roczne |
+| YearlyRetentionFormat_s |Tekst |Typ konfiguracji do rocznych przechowywania danych, na przykład codziennie na podstawie co tydzień w oparciu o tydzień dzień |
+| YearlyRetentionDaysOfTheMonth_s |Tekst |Daty, miesiąca, wybrane do przechowywania roczne |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="policyassociation"></a>PolicyAssociation
 Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia zasad z różnymi jednostkami.
@@ -174,20 +174,20 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia zasad z różn
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu zasad, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej na przykład IaaSVM FileFolder, do którego należy ta zasada |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu zasad, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - PolicyAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasady |
-| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ta zasada |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasad |
+| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do których te zasady należy do |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="protectedserver"></a>ProtectedServer
 Ta tabela zawiera szczegółowe informacje o chronionych polach związanych z serwerem.
@@ -195,90 +195,90 @@ Ta tabela zawiera szczegółowe informacje o chronionych polach związanych z se
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| ProtectedServerName_s |Tekst |Nazwa serwera chronionego |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu serwera chronionego, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej na przykład IaaSVM FileFolder, do którego należy ten serwer chroniony |
+| ProtectedServerName_s |Tekst |Nazwa chronionego serwera |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu chronionego serwera, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - ProtectedServer |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego |
 | RegisteredContainerId_s |Tekst |Identyfikator kontenera zarejestrowany dla kopii zapasowej |
-| ProtectedServerType_s |Tekst |Typ serwera chronionego kopię zapasową na przykład systemu Windows |
-| ProtectedServerFriendlyName_s |Tekst |Przyjazna nazwa serwera chronionego |
-| AzureBackupAgentVersion_s |Tekst |Numer wersji wersja agenta kopii zapasowej |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| ProtectedServerType_s |Tekst |Typ serwera chronionego, na przykład Windows |
+| ProtectedServerFriendlyName_s |Tekst |Przyjazna nazwa chronionego serwera |
+| AzureBackupAgentVersion_s |Tekst |Numer wersji agenta w wersji kopii zapasowej |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
-Ta tabela zawiera szczegółowe informacje o serwerze chronionym powiązania z innych jednostek.
+Ta tabela zawiera szczegółowe informacje o serwerze chronionym skojarzenia z innymi jednostkami.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu skojarzenia chronionego serwera, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ten serwer chroniony |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu skojarzenia chronionego serwera, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - ProtectedServerAssociation |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego |
-| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten serwer chroniony |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten chroniony serwer |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="storage"></a>Magazyn
-Ta tabela zawiera szczegółowe informacje dotyczące pola dotyczące magazynu.
+Ta tabela zawiera szczegółowe informacje o polach związane z magazynowaniem.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Liczba dziesiętna |Magazynu kopii zapasowej w chmurze używane przez kopie zapasowe, które są obliczane na podstawie najnowszej wartości |
-| ProtectedInstances_s |Liczba dziesiętna |Liczba służące do obliczania magazynu frontonu w rozliczeń, obliczonej na podstawie wartości najnowsze wystąpienia chronione |
+| CloudStorageInBytes_s |Liczba dziesiętna |Magazyn kopii zapasowych w chmurze używany przez kopie zapasowe, które są obliczane na podstawie najnowszej wartości |
+| ProtectedInstances_s |Liczba dziesiętna |Liczba chronionych wystąpień służące do obliczania magazynu frontonu w rozliczeń, obliczonej na podstawie wartości najnowsze |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu magazynu, na przykład aktywny, usunięte |
-| BackupManagementType_s |Tekst |Typ dostawcy do wykonywania kopii zapasowej, na przykład IaaSVM FileFolder, do którego należy ta pamięć masowa |
-| OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — magazyn |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
-| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, dla której jest obliczany magazynu |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |
+| BackupManagementType_s |Tekst |Typ dostawcy dla serwera, wykonując zadania tworzenia kopii zapasowej, na przykład IaaSVM, FileFolder |
+| OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji - Storage |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
+| ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, dla którego jest obliczana magazynu |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu dla magazynu jest obliczana. |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |Typ zasobu, dla których są zbierane dane - magazynów representse tego pola |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ### <a name="vault"></a>Magazyn
-Ta tabela zawiera szczegółowe informacje dotyczące pola związane z magazynem.
+Ta tabela zawiera szczegółowe informacje dotyczące pól związanych z magazynu.
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |To pole określa bieżącą wersję schematu, jest **V1** |
-| State_s |Tekst |Bieżący stan obiektu magazynu, na przykład aktywny, usunięte |
+| SchemaVersion_s |Tekst |To pole wskazuje bieżącą wersję schematu, jest **V1** |
+| State_s |Tekst |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |
 | OperationName |Tekst |To pole reprezentuje nazwę bieżącej operacji — magazyn |
-| Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
-| Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
+| Kategoria |Tekst |To pole reprezentuje kategorię danych diagnostycznych wypchnięte do usługi Log Analytics, jest AzureBackupReport |
+| Zasób |Tekst |Jest to zasób, dla którego dane są zbierane, pokazuje nazwę magazynu usługi Recovery Services |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu |
 | VaultName_s |Tekst |Nazwa magazynu |
 | AzureDataCenter_s |Tekst |Centrum danych, w którym znajduje się magazyn |
 | StorageReplicationType_s |Tekst |Typ replikacji magazynu dla magazynu, na przykład GeoRedundant |
-| SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
-| SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
-| ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
-| ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
-| ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
+| SourceSystem |Tekst |Źródłowy system aktualnych danych — Azure |
+| ResourceId |Tekst |Identyfikator zasobu zbieranych danych. Na przykład Magazyn identyfikator zasobu usługi Recovery Services |
+| SubscriptionId |Tekst |Identyfikator subskrypcji zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceGroup |Tekst |Grupa zasobów zasobu (np.) Magazyn usługi Recovery Services) dla których dane są zbierane |
+| ResourceProvider |Tekst |Dostawca zasobów, dla którego dane są zbierane. Na przykład dostawcy Microsoft.RecoveryServices |
+| ResourceType |Tekst |Typ zasobu, dla którego dane są zbierane. Na przykład magazyny |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po przejrzeniu modelu danych do tworzenia raportów usługi Kopia zapasowa Azure można rozpocząć [Tworzenie pulpitu nawigacyjnego](../log-analytics/log-analytics-dashboards.md) w analizy dzienników.
+Po przejrzeniu modelu danych do tworzenia raportów usługi Azure Backup, możesz rozpocząć [Tworzenie pulpitu nawigacyjnego](../log-analytics/log-analytics-dashboards.md) w usłudze Log Analytics.

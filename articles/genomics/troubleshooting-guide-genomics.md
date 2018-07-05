@@ -1,8 +1,8 @@
 ---
-title: 'Microsoft genomika: przewodnik rozwiązywania problemów | Dokumentacja firmy Microsoft'
+title: 'Microsoft Genomics: przewodnik rozwiązywania problemów | Dokumentacja firmy Microsoft'
 titleSuffix: Azure
-description: Dowiedz się więcej o strategie rozwiązywania problemów
-keywords: Rozwiązywanie problemu dotyczącego błędu, debugowania
+description: Dowiedz się więcej na temat strategii rozwiązywania problemów
+keywords: Rozwiązywanie problemów, błąd, debugowania
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -12,69 +12,68 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 04/13/2018
-ms.openlocfilehash: 18761c02cc423affe7b1050700e560b1f0b0594d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34627368"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
-Tym omówieniu przedstawiono strategie, aby rozwiązać typowe problemy podczas korzystania z usługi Microsoft Genomics. Ogólne — często zadawane pytania dla [często zadawane pytania](frequently-asked-questions-genomics.md). 
+W tym omówieniu opisano strategie, aby rozwiązać typowe problemy podczas korzystania z usługi Microsoft Genomics. Aby uzyskać ogólne — często zadawane pytania, zobacz [często zadawane pytania dotyczące](frequently-asked-questions-genomics.md). 
 
 
-## <a name="how-do-i-check-my-job-status"></a>Jak sprawdzić Mój stan zadania?
-Sprawdź stan przepływu pracy, przez wywołanie metody `msgen status` z wiersza polecenia, jak pokazano. 
+## <a name="how-do-i-check-my-job-status"></a>Jak sprawdzić stan zadania, Moje?
+Sprawdź stan przepływu pracy, wywołując `msgen status` z wiersza polecenia, jak pokazano. 
 
 ```
 msgen status -u URL -k KEY -w ID [-f CONFIG] 
 ```
 
-Istnieją trzy wymaganych argumentów:
-* Adres URL — podstawowy identyfikator URI dla interfejsu API
-* KLUCZ — klucz dostępu dla konta genomika. 
+Istnieją trzy wymagane argumenty:
+* Adresa URL – podstawowy identyfikator URI dla interfejsu API
+* KLUCZ — klucz dostępu dla konta usługi Genomics. 
 * ID — identyfikator przepływu pracy
 
-Znajdowanie adresu URL i klucza, przejdź do portalu Azure i Otwórz stronę genomika konta. W obszarze **zarządzania** nagłówek, wybierz **klucze dostępu**. Możesz znaleźć zarówno adres URL interfejsu API i kluczy dostępu.
+Aby znaleźć adres URL i klucz, przejdź do witryny Azure portal i otwórz strony swojego konta usługi Genomics. W obszarze **zarządzania** nagłówka, wybierz **klucze dostępu**. Tam możesz znaleźć adres URL interfejsu API i kluczy dostępu.
 
-Alternatywnie możesz podać ścieżkę do pliku konfiguracji zamiast bezpośrednio wprowadzania adresu URL i klucza. Należy pamiętać, że jeśli w wierszu polecenia, a także plik konfiguracji tych argumentów, argumenty wiersza polecenia będzie mieć pierwszeństwo. 
+Alternatywnie możesz dołączyć ścieżkę do pliku konfiguracji zamiast bezpośrednio wprowadzać adres URL i klucz. Należy pamiętać, że te argumenty zostaną umieszczone w wierszu polecenia, a także plik konfiguracji, argumenty wiersza polecenia będzie mieć pierwszeństwo. 
 
-Po wywołaniu `msgen status`, przyjazny komunikat będą wyświetlane, opisujące, czy przepływ pracy zakończyło się pomyślnie lub podając przyczyny niepowodzenia zadania. 
+Po wywołaniu `msgen status`, przyjazny dla użytkownika komunikat zostanie wyświetlony, opisująca, czy przepływ pracy zakończyło się pomyślnie lub co daje przyczynę niepowodzenia zadania. 
 
 
-## <a name="get-more-information-about-my-workflow-status"></a>Uzyskaj więcej informacji o Mój stan przepływu pracy
+## <a name="get-more-information-about-my-workflow-status"></a>Uzyskaj więcej informacji na temat Mój stan przepływu pracy
 
-Aby uzyskać więcej informacji na temat dlaczego zadania może nie zakończyło się pomyślnie, można sprawdzić pliki dziennika utworzone podczas przepływu pracy. W kontenerze Twoje dane wyjściowe, powinna zostać wyświetlona `[youroutputfilename].logs.zip` folderu.  Rozpakować tego folderu, zostaną wyświetlone następujące elementy:
+Aby uzyskać więcej informacji na temat przyczyny zadanie może nie zakończyły się powodzeniem, możesz eksplorować pliki dziennika generowane podczas przepływu pracy. W Twoim kontenerze danych wyjściowych, powinien zostać wyświetlony `[youroutputfilename].logs.zip` folderu.  Rozpakowywanie tego folderu, pojawią się następujące elementy:
 
-* outputFileList.txt — lista pliki wyjściowe tworzone podczas przepływu pracy
+* outputFileList.txt — lista pliki wyjściowe utworzone podczas przepływu pracy
 * StandardError.txt — ten plik jest pusty.
 * StandardOutput.txt — zawiera rejestrowania najwyższego poziomu przepływu pracy. 
-* Pliki — wszystkie pliki w dziennika GATK `logs` folderu
+* Plików — wszystkie pliki w dziennika GATK `logs` folderu
 
-`standardoutput.txt` Plik jest dobrym miejscem do uruchomienia określić, dlaczego przepływu pracy nie powiodła się, ponieważ zawiera więcej informacji niskiego poziomu przepływu pracy. 
+`standardoutput.txt` Plik jest dobrym miejscem do uruchomienia można określić, dlaczego przepływu pracy nie powiodła się, ponieważ zawiera więcej informacji niskiego poziomu przepływu pracy. 
 
 ## <a name="common-issues-and-how-to-resolve-them"></a>Typowe problemy i ich rozwiązania
-W tej sekcji przedstawiono krótkie typowe problemy i ich rozwiązania.
+W tej sekcji przedstawiono pokrótce typowe problemy i ich rozwiązania.
 
 ### <a name="fastq-files-are-unmatched"></a>Pliki Fastq są niezgodne
-Pliki Fastq tylko powinny różnić się końcowe /1 lub /2 w identyfikatorze próbki. Niedopasowane pliki FASTQ przypadkowo zostały przesłane, może zostać wyświetlone następujące komunikaty o błędach podczas wywoływania metody `msgen status`.
+Pliki Fastq powinien różnią się tylko końcowe /1 lub /2 w identyfikatorze próbki. Jeśli przypadkowo prześlesz niedopasowane plików FASTQ, można napotkać następujące komunikaty o błędach podczas wywoływania `msgen status`.
 * `Encountered an unmatched read`
 * `Error reading a FASTQ file, make sure the input files are valid and paired correctly` 
 
 Aby rozwiązać ten problem, przejrzyj, jeśli pliki fastq przesłane do przepływu pracy są faktycznie dopasowane zestawu. 
 
 
-### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>Błąd podczas przekazywania pliku .bam. Istnieje już obiekt blob danych wyjściowych, a opcja zastępowania została ustawiona na False.
-Jeśli zostanie wyświetlony komunikat o błędzie następujących, `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, folder wyjściowy zawiera już plik wyjściowy o takiej samej nazwie.  Usuń istniejący plik wyjściowy lub Włącz opcję zastępowania w pliku konfiguracji. Następnie prześlij ponownie przepływ pracy.
+### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>Błąd podczas przekazywania pliku .bam. Wyjściowy obiekt blob już istnieje, a następnie opcję zastępowania została ustawiona na wartość False.
+Jeśli zostanie wyświetlony komunikat o błędzie następujących funkcji `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, folder wyjściowy zawiera już plik wyjściowy o takiej samej nazwie.  Usuń istniejący plik danych wyjściowych albo włączyć opcję zastąpienia w pliku konfiguracji. Następnie należy ponownie przesłać przepływ pracy.
 
 ### <a name="when-to-contact-microsoft-genomics-support"></a>Kiedy należy się z pomocą techniczną firmy Microsoft Genomics
-Jeśli widzisz następujące komunikaty o błędach, wystąpił błąd wewnętrzny. 
+Jeśli zobaczysz następujące komunikaty o błędach, wystąpił błąd wewnętrzny. 
 
 * `Error locating input files on worker machine`
 * `Process management failure`
 
-Spróbuj ponownie przesłać do przepływu pracy. Jeśli nadal błędami zadania lub jakichkolwiek innych pytań, się z pomocą techniczną Microsoft genomika z portalu Azure.
-
-![Skontaktuj się z pomocą techniczną w portalu Azure](./media/troubleshooting-guide/genomics-contact-support.png "się z pomocą techniczną w portalu Azure")
+Spróbuj ponownie przesłać przepływ pracy. Jeśli nadal występują błędy zadań lub jeśli masz inne pytania, skontaktuj się z pomocą techniczną usługi Microsoft Genomics w witrynie Azure portal. Dodatkowe informacje na temat przesłać żądanie pomocy technicznej można znaleźć [tutaj](file-support-ticket-genomics.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób rozwiązywania i rozwiązywania typowych problemów z usługą Microsoft Genomics. Aby uzyskać więcej informacji i bardziej ogólne — często zadawane pytania, zobacz [często zadawane pytania](frequently-asked-questions-genomics.md). 
+W tym artykule przedstawiono sposób rozwiązać typowe problemy związane z usługą Microsoft Genomics. Aby uzyskać więcej informacji i bardziej ogólnych — często zadawane pytania, zobacz [często zadawane pytania dotyczące](frequently-asked-questions-genomics.md). 

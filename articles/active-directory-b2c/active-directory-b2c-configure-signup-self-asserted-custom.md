@@ -1,38 +1,38 @@
 ---
 title: Modyfikowanie logowania się w zasadach niestandardowych i skonfigurować własny potwierdzone dostawcy | Dokumentacja firmy Microsoft
-description: Wskazówki dotyczące dodawania oświadczeń utworzyć konto i skonfigurować dane wejściowe użytkownika
+description: Wskazówki dotyczące dodawania oświadczeń zarejestrować się i konfigurowanie danych wejściowych użytkownika
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1a949007750ae9607ac31f02d23e39204b9f58e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710801"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440505"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Usługa Azure Active Directory B2C: Zmodyfikuj logowania się do dodawania nowych oświadczeń i skonfigurować dane wejściowe użytkownika.
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Usługa Azure Active Directory B2C: Zmodyfikuj logowania się do dodawania nowych oświadczeń i konfigurowanie danych wejściowych użytkownika.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule nowy wpis podane przez użytkownika (oświadczenie) doda do zapisywania podróży użytkownika.  Skonfigurujesz wpis jako listy rozwijanej i umożliwia określenie, czy jest to wymagane.
+W tym artykule dodasz nowy wpis podane przez użytkownika (oświadczenia) do podróż użytkownika rejestracji.  Skonfigurujesz wpis jako listę rozwijaną i umożliwia określenie, czy jest to wymagane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wykonaj kroki w artykule [wprowadzenie zasady niestandardowe](active-directory-b2c-get-started-custom.md).  Przetestuj podróży signup/logowanie użytkownika do zapisywania nowego konta lokalnego, przed kontynuowaniem.
+* Wykonaj kroki opisane w artykule [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).  Przetestuj podróż tworzenia konta/logowania użytkownika na potrzeby rejestracji nowego konta lokalnego, przed kontynuowaniem.
 
 
-Gromadzenia danych początkowych z użytkowników odbywa się za pośrednictwem signup/signin.  Dodatkowe oświadczenia można zbierać później za pomocą podróże użytkownika edycji profilu. Zastosowano w ramach obsługi tożsamości w dowolnym momencie usługi Azure AD B2C interaktywnie zbiera informacje bezpośrednio od użytkownika, jego `selfasserted provider`. Poniższe kroki mają zastosowanie w dowolnym momencie ten dostawca jest używany.
+Gromadzenia danych początkowych użytkowników odbywa się za pośrednictwem tworzenia konta/logowania.  Dodatkowe oświadczenia, które można później gromadzić za pośrednictwem podróży użytkownika edycji profilu. W dowolnym momencie usługi Azure AD B2C interaktywnie zbiera informacje bezpośrednio od użytkownika, używa platformy środowiska tożsamości jego `selfasserted provider`. Poniższe kroki mają zastosowanie w dowolnym momencie tego dostawcy jest używany.
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Zdefiniuj oświadczenia, jego nazwa wyświetlana i typ danych wejściowych użytkownika
-Umożliwia poprosić użytkownika o ich miasta.  Dodaj następujący element do `<ClaimsSchema>` elementu w pliku zasad TrustFrameworkBase:
+## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Zdefiniuj oświadczenia, jego nazwę wyświetlaną i typ danych wejściowych użytkownika
+Umożliwia, poproś użytkownika o ich miasta.  Dodaj następujący element do `<ClaimsSchema>` elementu w pliku zasad TrustFrameworkBase:
 
 ```xml
 <ClaimType Id="city">
@@ -42,13 +42,13 @@ Umożliwia poprosić użytkownika o ich miasta.  Dodaj następujący element do 
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosować oświadczenia.  Pełny schemat, można znaleźć w temacie **tożsamości środowiska Framework techniczne podręcznik**.  W tym przewodniku wkrótce zostaną opublikowane zamieszczone w tej sekcji.
+Dostępne są dodatkowe opcje, możesz wprowadzić tutaj aby dostosować oświadczenia.  Pełnego schematu można znaleźć **tożsamości środowisko Framework odwołanie podręcznik techniczny**.  Ten przewodnik wkrótce zostaną opublikowane zamieszczone w tej sekcji.
 
-* `<DisplayName>` ciąg, który definiuje dla użytkownika jest *etykiety*
+* `<DisplayName>` jest ciągiem, który definiuje użytkownika skierowaną *etykiety*
 
-* `<UserHelpText>` ułatwia użytkownikom zrozumienie, co jest wymagane
+* `<UserHelpText>` pomaga użytkownikom zrozumieć, co jest wymagane
 
-* `<UserInputType>` czy ukończona ma następujących opcji:
+* `<UserInputType>` zawiera cztery następujące opcje, które przedstawiono poniżej:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -73,9 +73,9 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect` — Umożliwia zaznaczenie tylko prawidłowe wartości.
+    * `DropdownSingleSelect` — Umożliwia wybranie tylko prawidłowe wartości.
 
-![Zrzut ekranu opcji listy rozwijanej](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Zrzut ekranu: klikanie opcji menu rozwijanego](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 
 ```xml
@@ -94,7 +94,7 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
 
 * `CheckboxMultiSelect` Umożliwia wybór co najmniej jedną wartość.
 
-![Zrzut ekranu opcji wyboru wielokrotnego](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Zrzut ekranu przedstawiający opcji wyboru wielokrotnego](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 
 ```xml
@@ -110,9 +110,9 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Dodawanie oświadczenia do logowania w górę/logowania użytkownika podróży
+## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Dodaj oświadczenie do logowania w górę/logowanie w podróży użytkownika
 
-1. Dodaj oświadczenie jako `<OutputClaim ClaimTypeReferenceId="city"/>` do TechnicalProfile `LocalAccountSignUpWithLogonEmail` (które można znaleźć w pliku zasad TrustFrameworkBase).  Należy zauważyć, że ta TechnicalProfile używa SelfAssertedAttributeProvider.
+1. Dodaj oświadczenie jako `<OutputClaim ClaimTypeReferenceId="city"/>` do profilu technicznego `LocalAccountSignUpWithLogonEmail` (które można znaleźć w pliku zasad TrustFrameworkBase).  Należy pamiętać, że SelfAssertedAttributeProvider korzysta z tego profilu technicznego.
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -149,7 +149,7 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
   </TechnicalProfile>
   ```
 
-2. Dodawanie oświadczenia do usługi AAD-UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />` zapisu oświadczenia do katalogu usługi AAD po zebraniu go przez użytkownika. Może pominąć ten krok, jeśli nie chcesz zachować oświadczeń w katalogu do użytku w przyszłości.
+2. Dodawanie oświadczenia do usługi AAD — UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />` do zapisania oświadczenia do katalogu usługi AAD po zebraniu go przez użytkownika. Jeśli nie chcesz zachować oświadczenia w katalogu do użytku w przyszłości, możesz pominąć ten krok.
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -185,7 +185,7 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
   </TechnicalProfile>
   ```
 
-3. Dodawanie oświadczenia do TechnicalProfile, która odczytuje z katalogu, gdy użytkownik zaloguje się jako `<OutputClaim ClaimTypeReferenceId="city" />`
+3. Dodaj oświadczenie do profilu technicznego, która odczytuje z katalogu, gdy użytkownik zaloguje się jako `<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -213,7 +213,7 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
   </TechnicalProfile>
   ```
 
-4. Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` zasad RP pliku SignUporSignIn.xml, więc tego oświadczenia są wysyłane do aplikacji w tokenie po przebieg pomyślne użytkownika.
+4. Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` do jednostki Uzależnionej zasad pliku SignUporSignIn.xml, dzięki czemu tego oświadczenia są wysyłane do aplikacji w tokenie po podróży użytkownika pomyślne.
 
   ```xml
   <RelyingParty>
@@ -237,15 +237,15 @@ Dostępne są dodatkowe opcje, które można wprowadzać w tym miejscu dostosowa
 
 ## <a name="test-the-custom-policy-using-run-now"></a>Testowanie zasad niestandardowych za pomocą "Uruchom teraz"
 
-1. Otwórz **bloku usługi Azure AD B2C** i przejdź do **tożsamości środowiska Framework > zasady niestandardowe**.
-2. Wybierz zasady niestandardowe przekazywane i kliknij przycisk **Uruchom teraz** przycisku.
-3. Należy zalogowanie przy użyciu adresu e-mail.
+1. Otwórz **bloku usługi Azure AD B2C** i przejdź do **struktura środowiska tożsamości > zasady niestandardowe**.
+2. Wybierz zasady niestandardowe, które przekazane i kliknij przycisk **Uruchom teraz** przycisku.
+3. Powinien móc zarejestrować się przy użyciu adresu e-mail.
 
-Ekran rejestracji w trybie testowym powinny wyglądać podobnie do poniższego:
+Ekran rejestracji w trybie testowym powinien wyglądać mniej więcej tak:
 
-![Zrzut ekranu przedstawiający zmodyfikowane opcją](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+![Zrzut ekranu przedstawiający modyfikacji opcji rejestracji](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  Token do aplikacji będzie zawierają teraz `city` oświadczenia, jak pokazano poniżej
+  Token do aplikacji będzie teraz obejmować `city` oświadczenia, jak pokazano poniżej
 ```json
 {
   "exp": 1493596822,
@@ -266,18 +266,18 @@ Ekran rejestracji w trybie testowym powinny wyglądać podobnie do poniższego:
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Opcjonalnie: Usuń e-mail weryfikacji w podróży rejestracji
+## <a name="optional-remove-email-verification-from-signup-journey"></a>Opcjonalnie: Usuń wiadomość e-mail weryfikacji podróż rejestracji
 
-Aby pominąć Weryfikacja adresu e-mail, tworzenie zasad może być usunięty `PartnerClaimType="Verified.Email"`. Adres e-mail zostanie wymagane, ale nie zweryfikowane, chyba że "Wymagane" = true zostanie usunięta.  Należy rozważyć, jeśli ta opcja jest odpowiednia dla Twojej przypadki użycia!
+Aby pominąć weryfikację poczty e-mail, autor zasad może być usunięty `PartnerClaimType="Verified.Email"`. Adres e-mail zostanie wymagane, ale nie jest to zweryfikować, chyba że "Required" = true zostanie usunięty.  Zastanów się, jeśli ta opcja jest odpowiednia dla Twojej przypadki użycia!
 
-Zweryfikować adres e-mail jest domyślnie włączone w `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` w pliku zasad TrustFrameworkBase w pakiecie starter:
+Zweryfikowane, adres e-mail jest domyślnie włączone w `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` w pliku zasad TrustFrameworkBase w pakiecie początkowy:
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dodaj nowe oświadczenie do przepływów dla logowania do kont społecznościowych, zmieniając TechnicalProfiles wymienionych poniżej. Są one używane przez federacyjne/społecznego konto logowania do zapisu i odczytu danych użytkownika za pomocą alternativeSecurityId jako Lokalizator.
+Dodaj nowe oświadczenie do przepływów w dotyczące logowania się do konta w sieci społecznościowej, zmieniając profili Technicalprofile wymienione poniżej. Są one używane przez konto ubezpieczenia/niepowodzenia federacyjnych logowań do zapisu i odczytu danych użytkownika za pomocą alternativeSecurityId jako lokalizatora.
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

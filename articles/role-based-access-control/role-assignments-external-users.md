@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem dla użytkowników zewnętrznych na platformie Azure przy użyciu funkcji RBAC | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem dla użytkowników spoza organizacji przy użyciu kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
+title: Zarządzanie dostępem dla użytkowników zewnętrznych, korzystając z modelu RBAC na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem użytkowników spoza organizacji za pomocą kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,126 +9,126 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296218"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437039"
 ---
-# <a name="manage-access-for-external-users-using-rbac"></a>Zarządzanie dostępem dla użytkowników zewnętrznych przy użyciu funkcji RBAC
+# <a name="manage-access-for-external-users-using-rbac"></a>Zarządzanie dostępem dla użytkowników zewnętrznych, korzystając z modelu RBAC
 
-Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji oraz dla małych i średnich firmach praca z zewnętrznym współpracownikom, dostawców lub freelancers, które wymagają dostępu do określonych zasobów w danym środowisku, ale niekoniecznie do całej Infrastruktura lub żadnych zakresów związanych z rozliczeniami. RBAC umożliwia elastyczność będący właścicielem jedną subskrypcją platformy Azure zarządzanych przez administratora konta (usługi roli administrator na poziomie subskrypcji) i mieć wielu użytkowników zaproszenie do pracy w ramach tej samej subskrypcji, ale bez jakichkolwiek praw administracyjnych dla niego.
+Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji i dla małych i średnich firmach praca z zewnętrznych współpracowników, dostawców lub freelancers, którzy potrzebują dostępu do określonych zasobów w danym środowisku, ale niekoniecznie do całego infrastruktury ani żadnych zakresów związanych z rozliczeniami. RBAC umożliwia elastyczną będącej właścicielem jedną subskrypcję platformy Azure zarządza konta administratora (roli administratora usługi na poziomie subskrypcji) i zaprosili wielu użytkowników do pracy w ramach tej samej subskrypcji, ale bez żadnych praw administracyjnych dla niego .
 
 > [!NOTE]
-> Licencje usługi Azure Active Directory lub subskrypcji usługi Office 365 (na przykład: dostęp do usługi Azure Active Directory) pobranego z Centrum nie kwalifikuje się do przy użyciu funkcji RBAC Office 365 Admin.
+> Subskrypcje usługi Office 365 lub licencji usługi Azure Active Directory (na przykład: dostęp do usługi Azure Active Directory) z administracyjnego usługi Office 365 Centrum nie spełniam jej wymagań przy użyciu funkcji RBAC.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Przypisz role RBAC w zakresie subskrypcji
 
-Istnieją dwie typowe przykłady dotyczące RBAC jest używana (między innymi):
+Istnieją dwie typowe przykłady dotyczące kontroli RBAC jest używana (między innymi):
 
-* Użytkowników zewnętrznych z organizacji (nie jest częścią dzierżawy usługi Azure Active Directory dla użytkownika administracyjnego) zaproszenie do zarządzania niektórych zasobów lub całej subskrypcji
-* Praca z użytkownikami w organizacji (są one częścią dzierżawy usługi Azure Active Directory użytkownika), ale należy do różnych zespołów lub grup, wymagających szczegółowego dostępu do całej subskrypcji lub do określonych grup zasobów lub zakresy zasobów w środowisku
+* Zewnętrznych użytkowników z organizacji (nie jest częścią użytkownika administratora dzierżawy Azure Active Directory) zaproszenie do zarządzania niektórych zasobów lub subskrypcji całego
+* Praca z użytkowników w organizacji (są one częścią dzierżawy usługi Azure Active Directory użytkownika), ale należy do różnych zespołów lub grupy, którzy muszą szczegółową dostępu do całej subskrypcji lub do określonych grup zasobów lub zakresy zasobów w środowisku
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udziel dostępu na poziomie subskrypcji dla użytkownika poza usługą Azure Active Directory
+## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Udzielanie dostępu na poziomie subskrypcji dla użytkownika poza usługą Azure Active Directory
 
-Role RBAC może zostać przydzielony tylko przez **właścicieli** subskrypcji. W związku z tym administrator musi zalogować się jako użytkownik, który zawiera tę rolę wstępnie przypisany lub została utworzona subskrypcja platformy Azure.
+Role RBAC, które mogą być przyznane tylko przez **właścicieli** subskrypcji. W związku z tym administrator musi być zalogowany jako użytkownik posiadający tę rolę wstępnie przypisane lub została utworzona subskrypcja platformy Azure.
 
-W portalu Azure po zalogowaniu się jako administrator, wybierz "Subskrypcji" i wybierz jedno.
-![Subskrypcja bloku w portalu Azure](./media/role-assignments-external-users/0.png) domyślnie, jeśli dla użytkownika administracyjnego kupiła subskrypcji platformy Azure, użytkownik będzie wyświetlany jako **administrator konta**, to jest rola subskrypcji. Aby uzyskać więcej informacji o rolach subskrypcji platformy Azure, zobacz [Dodawanie lub zmienianie ról administrator usługi Azure, które zarządzają subskrypcji lub usługi](../billing/billing-add-change-azure-subscription-administrator.md).
+W witrynie Azure portal po zalogowaniu się jako administrator, wybierz pozycję "Subskrypcje" i wybierz opcję jedno.
+![Blok subskrypcji w witrynie Azure portal](./media/role-assignments-external-users/0.png) domyślnie, jeśli administrator subskrypcji platformy Azure, użytkownik będzie wyświetlany jako **administrator konta**, to jest rola subskrypcji. Aby uzyskać więcej informacji na temat ról subskrypcji platformy Azure, zobacz [apletu Dodaj lub zmień role administratora platformy Azure, które zarządzają subskrypcją lub usługami](../billing/billing-add-change-azure-subscription-administrator.md).
 
-W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** z "Bezpłatnej wersji próbnej" subskrypcji w usłudze AAD dzierżawy "Dzierżawy Azure Default". Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure z początkowej Account Microsoft "Outlook" (Account Microsoft = programu Outlook, Live itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników dodane w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"**. Zgodnie z projektem składni nowej domeny jest tworzony przez zestawienie nazwę użytkownika i domenę nazwę użytkownika, który utworzył dzierżawcy i dodawanie rozszerzenia **". onmicrosoft.com"**.
-Ponadto użytkownicy mogą zalogować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat sposobu zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](/active-directory/active-directory-add-domain).
+W tym przykładzie użytkownik "alflanigan@outlook.com" jest **właściciela** "Bezpłatna wersja próbna" dzierżawy "Domyślna dzierżawa usługi Azure" subskrypcji w usłudze AAD. Ponieważ ten użytkownik jest twórca subskrypcji platformy Azure za pomocą początkowego Account Microsoft "Outlook" (Account Microsoft = programu Outlook, na żywo itp.) będzie domyślna nazwa domeny dla wszystkich innych użytkowników, dodać w tej dzierżawie **"\@ alflaniganuoutlook.onmicrosoft.com"**. Zgodnie z projektem składni nowej domeny jest tworzona przez zestawiania nazwy użytkownika i domena nazwa użytkownika, który utworzył dzierżawy oraz dodawania rozszerzenia **". onmicrosoft.com"**.
+Ponadto użytkownicy mogą zarejestrować się przy użyciu niestandardowej nazwy domeny w dzierżawie po dodaniu i weryfikowanie jego dla nowej dzierżawy. Aby uzyskać więcej informacji na temat zweryfikować niestandardowej nazwy domeny w dzierżawie usługi Azure Active Directory, zobacz [Dodawanie niestandardowej nazwy domeny do katalogu](/active-directory/active-directory-add-domain).
 
-W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko użytkownicy z nazwą domeny "\@alflanigan.onmicrosoft.com".
+W tym przykładzie katalog "Domyślna dzierżawa usługi Azure" zawiera tylko użytkownicy z tą nazwą domeny "\@alflanigan.onmicrosoft.com".
 
-Po wybraniu subskrypcji, administrator musi kliknij **kontroli dostępu (IAM)** , a następnie **dodania roli**.
+Po wybraniu subskrypcji, należy kliknąć przycisk administratora **kontrola dostępu (IAM)** i następnie **dodać nową rolę**.
 
-![Funkcja IAM kontroli dostępu w portalu Azure](./media/role-assignments-external-users/1.png)
+![Funkcja zarządzania tożsamościami i Dostępem kontroli dostępu w witrynie Azure portal](./media/role-assignments-external-users/1.png)
 
-![Dodaj nowego użytkownika w funkcja IAM kontroli dostępu w portalu Azure](./media/role-assignments-external-users/2.png)
+![Dodawanie nowego użytkownika w funkcji zarządzania tożsamościami i Dostępem kontroli dostępu w witrynie Azure portal](./media/role-assignments-external-users/2.png)
 
-Następnym krokiem jest wybranie roli do przypisania i użytkownika, którego rola RBAC zostanie przypisana do. W **roli** menu rozwijanym administratora użytkownik widzi tylko wbudowane role RBAC, które są dostępne w systemie Azure. Aby uzyskać bardziej szczegółowe wyjaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role](built-in-roles.md).
+Następnym krokiem jest wybierz rolę do przypisania i użytkownik, któremu zostanie przypisana rola RBAC do. W **roli** menu rozwijane administratora widzi tylko wbudowane role kontroli RBAC, które są dostępne na platformie Azure. Aby uzyskać bardziej szczegółowe objaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role](built-in-roles.md).
 
-Następnie administrator musi dodać adres e-mail użytkownika zewnętrznego. Oczekiwane zachowanie jest dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po Zaproszono użytkownika zewnętrznego, on będą widoczne w obszarze **subskrypcji > kontroli dostępu (IAM)** z wszystkich bieżących użytkowników, które są obecnie przypisane roli RBAC w zakresie subskrypcji.
+Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego. To oczekiwane zachowanie dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po użytkownik zewnętrzny zostali zaproszeni, on będą widoczne w obszarze **subskrypcje > Kontrola dostępu (IAM)** przy użyciu wszystkich bieżących użytkowników, które są obecnie przypisane rolę RBAC w zakresie subskrypcji.
 
 ![Dodaj uprawnienia do nowej roli RBAC](./media/role-assignments-external-users/3.png)
 
 ![Lista ról RBAC na poziomie subskrypcji](./media/role-assignments-external-users/4.png)
 
-Użytkownik "chessercarlton@gmail.com" zaproszono jako **właściciela** dla subskrypcji "Bezpłatnej wersji próbnej". Po wysłaniu zaproszenia, zewnętrznych użytkownik otrzyma wiadomość e-mail z potwierdzeniem z link aktywacji.
-![wiadomość e-mail z zaproszeniem dla roli RBAC](./media/role-assignments-external-users/5.png)
+Użytkownik "chessercarlton@gmail.com" został zaproszony jako **właściciela** dla subskrypcji "Bezpłatna wersja próbna". Po wysłaniu zaproszenia, zewnętrzne użytkownik otrzyma wiadomość e-mail z potwierdzeniem z łącze do aktywacji.
+![wiadomość e-mail z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/5.png)
 
-Trwa spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Będzie można utworzyć po uzyskaniu zgody użytkownika zewnętrznego mają być rejestrowane w katalogu, który jest skojarzony z subskrypcją został przydzielony do roli.
+Jest spoza organizacji, nowy użytkownik nie ma żadnych istniejących atrybutów w katalogu "Domyślna dzierżawa usługi Azure". Zostaną one utworzone po użytkownik zewnętrzny wyraził zgody rejestruje się w katalogu, który jest skojarzony z tą subskrypcją został przydzielony do roli.
 
-![wiadomość e-mail zaproszenia dla roli RBAC](./media/role-assignments-external-users/6.png)
+![wiadomości z zaproszeniem dla ról RBAC](./media/role-assignments-external-users/6.png)
 
-Pokazuje użytkownika zewnętrznego w dzierżawcy usługi Azure Active Directory od teraz jako użytkownik zewnętrzny i to można wyświetlić w portalu Azure.
+Pokazuje użytkownika zewnętrznego w dzierżawie usługi Azure Active Directory od teraz jako użytkownik zewnętrzny i to można wyświetlić w witrynie Azure portal.
 
-![Użytkownicy portalu Azure usługi active directory bloku azure](./media/role-assignments-external-users/7.png)
+![witryny Azure portal użytkowników bloku azure active directory](./media/role-assignments-external-users/7.png)
 
-W **użytkowników** widoku, użytkownicy zewnętrzni mogą być rozpoznawane przez typ inną ikonę w portalu Azure.
+W **użytkowników** widoku, użytkownicy zewnętrzni mogą być rozpoznawane przez typ inną ikonę w witrynie Azure portal.
 
-Jednak udzielanie **właściciela** lub **współautora** dostępu do użytkownika zewnętrznego w **subskrypcji** zakresu, nie zezwala na dostęp do katalogu dla użytkownika administracyjnego, chyba że **administratora globalnego** pozwala. W ich właściwości użytkownika **typ użytkownika**, który ma dwie typowe parametry, **elementu członkowskiego** i **gościa** mogą zostać zidentyfikowane. Element członkowski jest użytkownik, który jest zarejestrowany w katalogu, gdy Gość jest użytkownikiem zaproszenie do katalogu z zewnętrznego źródła. Aby uzyskać więcej informacji, zobacz [jak Administratorzy usługi Azure Active Directory dodać użytkowników współpracy B2B](../active-directory/active-directory-b2b-admin-add-users.md).
+Jednak udzielenie **właściciela** lub **Współautor** dostęp do użytkownika zewnętrznego w **subskrypcji** zakresu, nie zezwala na dostęp do katalogu użytkownika administracyjnego, chyba że **Administratora globalnego** to umożliwia. W ich właściwości użytkownika **typ użytkownika**, który ma dwie typowe parametry, **elementu członkowskiego** i **gościa** mogą zostać zidentyfikowane. Element członkowski jest użytkownik, który jest zarejestrowany w katalogu, a Gość jest użytkownikiem, który został zaproszony do katalogu z zewnętrznego źródła. Aby uzyskać więcej informacji, zobacz [jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B](../active-directory/active-directory-b2b-admin-add-users.md).
 
 > [!NOTE]
-> Upewnij się, że po wprowadzeniu poświadczeń w portalu, użytkownik zewnętrzny wybiera do logowania się w poprawnym katalogu. Tego samego użytkownika może mieć dostęp do wielu katalogów i można wybrać jedną z nich, klikając nazwę użytkownika w góry po prawej stronie w portalu Azure a następnie wybierz odpowiedniego katalogu z listy rozwijanej.
+> Upewnij się, że po wprowadzeniu poświadczeń w portalu, zewnętrzne użytkownik wybierze poprawnego katalogu do logowania się na. Ten sam użytkownik może mieć dostęp do wielu katalogów i można wybrać jeden z nich, klikając nazwę użytkownika w prawej górnej w witrynie Azure portal a następnie wybierz odpowiedniego katalogu z listy rozwijanej.
 
-Będąc gościa w katalogu użytkownika zewnętrznego mogą zarządzać zasobami wszystkich subskrypcji platformy Azure, ale nie można uzyskać dostępu do katalogu.
+Będąc gościa w katalogu, użytkowników zewnętrznych mogą zarządzać wszystkie zasoby w subskrypcji platformy Azure, ale nie można uzyskać dostępu do katalogu.
 
-![dostęp ograniczony do portalu Azure usługi azure active directory](./media/role-assignments-external-users/9.png)
+![dostęp ograniczony do portalu Azure usługi active directory azure](./media/role-assignments-external-users/9.png)
 
-Azure Active Directory i subskrypcji platformy Azure nie ma relacji relacji nadrzędny podrzędny, takich jak innych zasobów platformy Azure (na przykład: maszyn wirtualnych, sieci wirtualnych, aplikacje sieci web, magazynu itp.) z subskrypcją platformy Azure. Wszystkie ostatnie jest utworzony, zarządzane i rozliczany w ramach subskrypcji platformy Azure, podczas gdy subskrypcji platformy Azure jest używany do zarządzania dostępem do usługi Azure directory. Aby uzyskać więcej informacji, zobacz [subskrypcji jak Azure jest powiązana z usługą Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
+Usługa Azure Active Directory i subskrypcję platformy Azure nie mają relacji relacji nadrzędny podrzędny, podobnie jak inne zasoby platformy Azure (na przykład: maszyny wirtualne, sieci wirtualne, aplikacje sieci web, Magazyn itp.) z subskrypcją platformy Azure. Wszystkie one utworzone, zarządzane i rozliczane w ramach subskrypcji platformy Azure, natomiast subskrypcji platformy Azure służy do zarządzania dostępem do usługi Azure directory. Aby uzyskać więcej informacji, zobacz [subskrypcji platformy Azure jest powiązany z usługą Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
 
-Z wszystkich wbudowane role RBAC **właściciela** i **współautora** oferują pełnego zarządzania dostęp do wszystkich zasobów w środowisku różnica, że współautora nie może tworzyć i usuwać nowe role RBAC. Inne role wbudowane, takich jak **współautora maszyny wirtualnej** oferować pełnego zarządzania dostęp tylko do zasobów, jest określany przez nazwę, niezależnie od tego **grupy zasobów** jest tworzona w.
+Z wszystkie wbudowane role kontroli RBAC **właściciela** i **Współautor** oferują dostęp do pełnego zarządzania, do wszystkich zasobów w środowisku, a różnica, możliwe, że Współautor nie mogą tworzyć i usuwać nowe role RBAC . Inne role wbudowane, takie jak **Współautor maszyny wirtualnej** oferują dostęp do pełnego zarządzania, tylko do zasobów, jest określany przez nazwę, niezależnie od tego **grupy zasobów** są one tworzone w.
 
-Przypisywanie roli RBAC wbudowanych **Współautor·maszyny·wirtualnej** na poziomie subskrypcji, oznacza, że użytkownikowi przypisano rolę:
+Przypisanie wbudowanej roli RBAC **Współautor maszyny wirtualnej** na poziomie subskrypcji, oznacza, że użytkownik przypisany do roli:
 
-* Można wyświetlić wszystkich maszyn wirtualnych niezależnie od daty wdrożenia i grupy zasobów, które są częścią
-* Ma dostęp do pełnego zarządzania do maszyn wirtualnych w subskrypcji
+* Można wyświetlić wszystkich maszyn wirtualnych niezależnie od tego, daty ich wdrożenia i grupy zasobów, które są częścią
+* Dostępem do pełnego zarządzania z maszynami wirtualnymi w subskrypcji
 * Nie można wyświetlić inne typy zasobów w subskrypcji
 * Nie można wykonać operacji zmiany z punktu widzenia rozliczeń
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Przypisywanie roli RBAC wbudowanych do użytkownika zewnętrznego
+## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Przypisywanie roli wbudowanej RBAC do użytkownika zewnętrznego
 
-Dla innego scenariusza, w tym teście użytkownika zewnętrznego "alflanigan@gmail.com" zostanie dodany jako **Współautor·maszyny·wirtualnej**.
+Inny scenariusz w tym teście użytkownika zewnętrznego "alflanigan@gmail.com" zostanie dodany jako **Współautor maszyny wirtualnej**.
 
-![wbudowana Rola współautora maszyny wirtualnej](./media/role-assignments-external-users/11.png)
+![wbudowana rola Współautor maszyny wirtualnej](./media/role-assignments-external-users/11.png)
 
-Normalne zachowanie dla tego użytkownika zewnętrznego z tą rolą wbudowanych jest wyświetlanie i zarządzanie nimi tylko maszyny wirtualne i ich sąsiadujących ze sobą Menedżer zasobów tylko zasoby niezbędne podczas wdrażania. Zgodnie z projektem te role ograniczone zapewniają dostęp tylko do ich zasobów odpowiedniego utworzone w portalu Azure.
+Normalne zachowanie dla tego użytkownika zewnętrznego, z tą rolą wbudowanych jest wyświetlanie i zarządzanie nimi, tylko maszyny wirtualne i ich sąsiadujących zasoby usługi Resource Manager tylko niezbędne podczas wdrażania. Zgodnie z projektem te role ograniczone oferują dostęp tylko do ich odpowiedniego zasoby utworzone w witrynie Azure portal.
 
-![Omówienie roli współautora maszyny wirtualnej w portalu Azure](./media/role-assignments-external-users/12.png)
+![Omówienie roli Współautor maszyny wirtualnej w witrynie Azure portal](./media/role-assignments-external-users/12.png)
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Udziel dostępu na poziomie subskrypcji dla użytkownika w tym samym katalogu
+## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>Udzielanie dostępu na poziomie subskrypcji dla użytkownika, w tym samym katalogu
 
-Przepływ procesu jest taki sam jak dodawanie użytkownika zewnętrznego, zarówno z perspektywy administracyjnej przyznania roli RBAC, a także użytkownika zostanie im przyznany dostęp do roli. Różnica polega na tym że zaproszonych użytkownik nie będzie otrzymywać żadnych zaproszeń do skorzystania z poczty e-mail, jak wszystkie zakresy zasobów w subskrypcji będą dostępne na pulpicie nawigacyjnym po zalogowaniu się.
+Przepływ procesu jest taka sama jak dodawanie użytkownika zewnętrznego, zarówno z perspektywy administratora, udzielanie rolę RBAC, a także użytkownika zostanie im przyznany dostęp do roli. W tym miejscu różnica polega na tym, że zaproszonego użytkownika nie otrzyma żadnych zaproszeń e-mail ponieważ wszystkie zakresy zasobów w ramach subskrypcji będą dostępne na pulpicie nawigacyjnym po zalogowaniu się.
 
 ## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>Przypisz role RBAC w zakresie grupy zasobów
 
-Przypisywanie roli RBAC **grupy zasobów** zakres ma taki sam proces przypisywania roli na poziomie subskrypcji dla obu typów użytkownicy — zewnętrznym lub wewnętrznym (część z tym samym katalogu). Użytkownicy, którym przypisano rolę RBAC ma zobacz w swoim środowisku tylko grupy zasobów z przypisanym dostępem z **grup zasobów** ikonę w portalu Azure.
+Przypisz rolę RBAC w **grupy zasobów** zakres ma identyczne proces trwa przypisywanie roli na poziomie subskrypcji, dla obu typów użytkowników — zewnętrznego lub wewnętrznego (część tego samego katalogu). Użytkownicy, którym przypisano rolę RBAC jest, aby zobaczyć w swoim środowisku, tylko do grupy zasobów zostały przypisane dostęp z **grup zasobów** ikony w witrynie Azure portal.
 
 ## <a name="assign-rbac-roles-at-the-resource-scope"></a>Przypisz role RBAC w zakresie zasobów
 
-Przypisywanie roli RBAC w zakresie zasobów na platformie Azure mają identyczne proces przypisywania roli na poziomie subskrypcji lub na poziomie grupy zasobów, po tym samym przepływie pracy w obydwu scenariuszach. Ponownie, użytkowników, którym przypisano rolę RBAC można wyświetlanie tylko tych elementów, które przypisano dostępu do w **wszystkie zasoby** kartę lub bezpośrednio w ich pulpitu nawigacyjnego.
+Przypisz rolę RBAC w zakresie zasobów na platformie Azure ma identyczne proces trwa przypisywanie roli na poziomie subskrypcji lub na poziomie grupy zasobów zgodnie z tym samym przepływie pracy oba scenariusze. Użytkownicy, którym przypisano rolę RBAC można znajduje się w artykule tylko elementy, które zostali przypisani dostęp do jednej w **wszystkie zasoby** karty lub bezpośrednio na pulpicie nawigacyjnym.
 
-Istotnym elementem do RBAC zarówno w zakresie grupy zasobów lub zasobów zakresie jest przeznaczony dla użytkowników upewnić się zarejestrować się w poprawnym katalogu.
+Ważnym aspektem dla RBAC, zarówno w zakresie grupy zasobów lub w zakresie zasobów jest przeznaczony dla użytkowników upewnić się zarejestrować się w katalogu poprawny.
 
-![katalog logowania w portalu Azure](./media/role-assignments-external-users/13.png)
+![katalog logowania w witrynie Azure portal](./media/role-assignments-external-users/13.png)
 
 ## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>Przypisz role RBAC dla grupy usługi Azure Active Directory
 
-Wszystkie scenariusze na trzy różne zakresy na platformie Azure przy użyciu funkcji RBAC oferują uprawnienie Zarządzanie, wdrażanie i administrowanie różnych zasobów jako przypisany użytkownik bez konieczności zarządzania osobiste subskrypcji. Niezależnie od przypisano rolę RBAC dla subskrypcji, grupy zasobów lub zasobów zakresu, wszystkie zasoby utworzone dalej przez przypisanych użytkowników są rozliczane zgodnie z jedną subskrypcją platformy Azure, której użytkownicy mają dostęp do. Dzięki temu użytkowników, którzy mają rozliczeń uprawnień administratora dla całej subskrypcji platformy Azure ma pełny przegląd zużycia, niezależnie od tego, kto jest zarządzania zasobami.
+Wszystkie scenariusze przy użyciu funkcji RBAC w trzech różnych zakresów na platformie Azure oferuje uprawnienia zarządzania, wdrażania i administrowania zasobami różnych jako przypisanych użytkowników bez konieczności zarządzania subskrypcją osobistych. Niezależnie od tego dla subskrypcji, grupy zasobów lub zasobu zakresu jest przypisywana rola RBAC, wszystkie zasoby, które są utworzone dalej przypisanych użytkowników są naliczane w ramach jednej subskrypcji platformy Azure, w której użytkownicy mają dostęp do. Dzięki temu użytkownicy, którzy mają rozliczeń uprawnień administratora dla tej subskrypcji platformy Azure cały ma pełny przegląd zużycia, niezależnie od tego, który zarządza zasobami.
 
-W przypadku większych organizacji role RBAC można zastosować w taki sam sposób dla uwzględnieniu perspektywy administrator chce szczegółowego dostęp dla zespołów lub całego działów, indywidualnie dla każdego użytkownika, w związku z tym uwzględnieniu bardzo czas i zarządzanie wydajne opcja grup usługi Azure Active Directory. Przykład ilustrujący **współautora** rola została dodana do jednej z grup w dzierżawie na poziomie subskrypcji.
+W przypadku większych organizacji można stosować w taki sam sposób dla grup usługi Azure Active Directory, biorąc pod uwagę z punktu widzenia użytkownika administrator chce udzielić dostępu szczegółowej całego działów lub zespołów, indywidualnie dla każdego użytkownika, w związku z tym biorąc pod uwagę role RBAC go jako bardzo czasu i zarządzania wydajne opcję. Aby zilustrować ten przykład **Współautor** rola została dodana do jednej z grup w dzierżawie na poziomie subskrypcji.
 
 ![Dodaj rolę RBAC dla grup usługi AAD](./media/role-assignments-external-users/14.png)
 
-Grupy te są grup zabezpieczeń, które są udostępniane i zarządzane tylko w ramach usługi Azure Active Directory.
+Te grupy to grupy zabezpieczeń, które są aprowizowane i zarządzane tylko w ramach usługi Azure Active Directory.
 
