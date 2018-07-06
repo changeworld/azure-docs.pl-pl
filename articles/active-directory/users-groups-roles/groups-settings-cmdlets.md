@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 79d78d282d454586f5930d54248467365f2e684f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 658ec5bb2aa7c15fb1d38da5249ff9b13973cf41
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450036"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868001"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące korzystania z poleceń cmdlet programu PowerShell usługi Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko do grup usługi Office 365 (czasami nazywany grupy ujednolicone). 
@@ -98,8 +98,8 @@ Poniżej przedstawiono ustawienia zdefiniowane w Group.Unified SettingsTemplate.
 |  <ul><li>UsageGuidelinesUrl<li>Typ: ciąg<li>Wartość domyślna: "" |Łącze do wytyczne dotyczące grupowego użycia. |
 |  <ul><li>ClassificationDescriptions<li>Typ: ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista Opisy klasyfikacji. |
 |  <ul><li>DefaultClassification<li>Typ: ciąg<li>Wartość domyślna: "" | Klasyfikacja, który ma być używana jako domyślna klasyfikacja dla grupy, jeśli żaden nie został określony.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencji nazewnictwa skonfigurowane dla grup usługi Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365 (wersja zapoznawcza)](../groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg rozdzielony przecinkami wyrażeń, które użytkownicy mogą nie używać w grupie nazw ani aliasów. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365 (wersja zapoznawcza)](../groups-naming-policy.md). |
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencji nazewnictwa skonfigurowane dla grup usługi Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg rozdzielony przecinkami wyrażeń, które użytkownicy mogą nie używać w grupie nazw ani aliasów. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Typ: wartość logiczna<li>Wartość domyślna: "False" | Nie używaj
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: wartość logiczna<li>Domyślnie: False | Wartość logiczna wskazująca, czy użytkownik-Gość może być właścicielem grupy. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: wartość logiczna<li>Domyślnie: True | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup usługi Office 365.  To ustawienie nie wymaga licencji usługi Azure Active Directory Premium P1.|

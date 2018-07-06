@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b9298b081baf94350ab19a5d9a8af2705327eed6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a77724bd5ed14bf8eb91bf64a1837ce7106edd06
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102374"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867899"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Rozpoczynanie pracy z przykładem bazy danych Apache HBase w usłudze HDInsight
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem prób korzystania z tego przykładu bazy danych HBase należ
 * [Program curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Tworzenie klastra HBase
-W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat używania Data Lake magazynu Gen2, zobacz [Szybki Start: Ustawianie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworzenia klastra HBase i zależnego domyślnego konta usługi Azure Storage. Aby zapoznać się z parametrami używanymi w tej procedurze oraz innymi metodami tworzenia klastra, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać więcej informacji na temat korzystania z Data Lake Storage Gen2, zobacz [Szybki Start: konfigurowanie klastrów w HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknij poniższy obraz, aby otworzyć szablon w usłudze Azure Portal. Szablon znajduje się w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/).
    
@@ -43,7 +43,7 @@ W poniższej procedurze użyto szablonu usługi Azure Resource Manager do utworz
 2. W bloku **Wdrożenie niestandardowe** wprowadź następujące wartości:
    
    * **Subskrypcja**: wybierz subskrypcję platformy Azure używaną do utworzenia klastra.
-   * **Grupa zasobów**: tworzenie zasobów Azure grupy zarządzania lub użyć istniejącego.
+   * **Grupa zasobów**: Utwórz grupę zasobów platformy Azure management lub użyj istniejącej.
    * **Lokalizacja**: określ lokalizację grupy zasobów. 
    * **ClusterName**: wprowadź nazwę klastra HBase.
    * **Nazwa logowania i hasło klastra**: domyślna nazwa logowania to **admin**.
@@ -248,7 +248,7 @@ Baza danych HBase w usłudze HDInsight jest dostarczana z interfejsem użytkowni
 
 **Aby uzyskać dostęp do głównego interfejsu użytkownika HBase**
 
-1. Zaloguj się do internetowego interfejsu użytkownika systemu Ambari pod adresem https://&lt;nazwa_klastra>.azurehdinsight.net.
+1. Logowanie do interfejsu użytkownika sieci Web systemu Ambari pod https://&lt;Nazwa_klastra >. azurehdinsight.net.
 2. W menu po lewej kliknij pozycję **HBase**.
 3. Na górze strony kliknij pozycję **Szybkie linki**, wskaż aktywny link węzła dozorcy, a następnie kliknij pozycję **Główny interfejs użytkownika bazy danych HBase**.  Interfejs użytkownika zostanie otwarty w innej karcie przeglądarki:
 

@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79d64a5a7eb339c6904fe026209292202632f640
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342015"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867957"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -57,6 +57,7 @@ Poniższe kroki umożliwiają konfigurowanie śledzenia plików na komputerach z
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie obejmuje pliki/katalogi, do których odwołuje się.<br>**Postępuj zgodnie z** — śledzi linki symboliczne podczas rekursji i zawiera również pliki/katalogi, do których odwołuje się.<br>**Zarządzanie** — śledzi linki symboliczne i umożliwia zmienianie zwracanej zawartości.     |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku na śledzonych zmianach. Dostępne opcje: **True** lub **False**.|
 
 > [!NOTE]
 > Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.
@@ -75,6 +76,13 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
 |Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\mojplik.txt”       |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku na śledzonych zmianach. Dostępne opcje: **True** lub **False**.|
+
+## <a name="configure-file-content-tracking"></a>Konfigurowanie śledzenia zawartość pliku
+
+Można wyświetlić zawartości przed i po zmianie pliku przy użyciu pliku zawartości śledzenie zmian. Jest on dostępny w przypadku plików Windows i Linux, dla każdej zmiany w pliku, zawartość pliku jest przechowywany na koncie magazynu i przedstawia plik przed i po nim zmiany, wbudowane lub obok siebie. Aby dowiedzieć się więcej, zobacz [wyświetlić zawartość pliku śledzonych](change-tracking-file-contents.md).
+
+![Wyświetl zmiany w pliku](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Konfigurowanie kluczy rejestru Windows do śledzenia
 

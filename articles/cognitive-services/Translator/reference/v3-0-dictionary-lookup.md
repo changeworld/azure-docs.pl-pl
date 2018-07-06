@@ -1,6 +1,6 @@
 ---
-title: Metoda wyszukiwania słownika interfejsu API tekst Microsoft Translator | Dokumentacja firmy Microsoft
-description: Metoda Microsoft Translator tekst interfejsu API słownika wyszukiwania.
+title: Metoda wyszukiwania słownika interfejs API tekstu usługi Microsoft Translator | Dokumentacja firmy Microsoft
+description: Metoda Microsoft Translator tekstu interfejsu API słownika wyszukiwania.
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -9,20 +9,20 @@ ms.technology: microsoft translator
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 31435fcfca61517bfc72d534e911a1dcadbee52b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349268"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868089"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>Tekst interfejsu API 3.0: Słownika wyszukiwania
+# <a name="text-api-30-dictionary-lookup"></a>3.0 interfejs API tłumaczenia tekstu: Wyszukiwanie słownika
 
-Udostępnia alternatywne tłumaczenia dla programów word i niewielką liczbę idiomatyczne fraz. Każde tłumaczenie ma części mowy i listę tłumaczeń Wstecz. Tłumaczenie wstecz umożliwić użytkownikowi zrozumieć tłumaczenia w kontekście. [Przykład słownika](.\v3-0-dictionary-examples.md) operacji umożliwia przejdź do Zobacz przykład używa każdej pary tłumaczenia dalszych szczegółów.
+Dostarcza alternatywnych tłumaczeń dla programów word i małą liczbą wyrażenia idiomatyczne. Każde tłumaczenie części mowy i ma listę wstecz tłumaczenia. Tłumaczenia wstecz umożliwić użytkownikowi zrozumieć tłumaczenie w kontekście. [Przykład słownika](.\v3-0-dictionary-examples.md) operacja umożliwia dalsze do przechodzenia do szczegółów Zobacz przykład użycia każdej pary tłumaczenia.
 
 ## <a name="request-url"></a>Adres URL żądania
 
-Wyślij `POST` żądanie:
+Wyślij `POST` limit czasu żądania:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
@@ -30,22 +30,22 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Żądania są parametry przekazywane w ciągu kwerendy:
+Żądania, parametry przekazane w ciągu zapytania są:
 
 <table width="100%">
   <th width="20%">Parametr zapytania</th>
   <th>Opis</th>
   <tr>
     <td>wersja interfejsu API</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądanego przez klienta. Wartość musi być `3.0`.</td>
+    <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
     <td>z</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jedną z [obsługiwanych języków](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwanych języków](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
+    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi mieć jedną z [obsługiwane języki](.\v3-0-languages.md) objęte `dictionary` zakresu.</td>
   </tr>
 </table>
 
@@ -56,25 +56,25 @@ Nagłówki żądania obejmują:
   <th>Opis</th>
   <tr>
     <td>_Jeden autoryzacji_<br/>_header_</td>
-    <td>*Nagłówek żądania wymagane*.<br/>Zobacz [dostępne opcje dla uwierzytelniania](./v3-0-reference.md#authentication).</td>
+    <td>*Nagłówek żądania wymagane*.<br/>Zobacz [dostępne opcje uwierzytelniania](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Content-Type</td>
     <td>*Nagłówek żądania wymagane*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
   </tr>
   <tr>
-    <td>Content-Length.</td>
+    <td>Długość zawartości</td>
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
     <td>X ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Generowane przez klientów identyfikator GUID, aby jednoznacznie zidentyfikować żądania. Jeśli dołączysz identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie można pominąć ten nagłówek `ClientTraceId`.</td>
+    <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Treść żądania
 
-Treść żądania jest tablica JSON. Każdy element tablicy jest obiektem JSON z właściwości ciągu o nazwie `Text`, który reprezentuje terminu wyszukiwania.
+Treść żądania jest tablicą JSON. Każdy element tablicy jest obiekt JSON z właściwością ciągu o nazwie `Text`, która reprezentuje termin do wyszukiwania.
 
 ```json
 [
@@ -82,64 +82,64 @@ Treść żądania jest tablica JSON. Każdy element tablicy jest obiektem JSON z
 ]
 ```
 
-Mają zastosowanie następujące ograniczenia:
+Obowiązują następujące ograniczenia:
 
-* Tablica może mieć maksymalnie 10 elementów.
-* Wartość tekstowego elementu tablicy nie może przekraczać 100 znaków, łącznie ze spacjami.
+* Tablica może mieć co najwyżej 10 elementów.
+* Wartość tekstowa elementu tablicy nie może przekraczać 100 znaków, łącznie ze spacjami.
 
 ## <a name="response-body"></a>Treść odpowiedzi
 
-Odpowiedź oznaczająca Powodzenie to tablica JSON o jeden wynik dla każdego ciągu w tablicy wejściowej. Obiekt wyniku zawiera następujące właściwości:
+Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ciągu w tabeli wejściowej. Obiekt wyniku zawiera następujące właściwości:
 
-  * `normalizedSource`: Ciąg, podając znormalizowana postać warunku źródła. Na przykład jeśli żądanie jest "Jan", znormalizowana postać będzie "Jan". Zawartość tego pola staje się dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
+  * `normalizedSource`: Ciąg, zapewniając znormalizowana postać okresu źródła. Na przykład jeśli żądanie jest "JOHN", znormalizowana postać będzie "john". Zawartość tego pola staje się dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
     
-  * `displaySource`: Ciąg nadanie termin źródłowy w postaci najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Na przykład, jeśli dane wejściowe "Jan", Wyświetl formularz będzie odzwierciedlać zwykle pisownię nazwy: "Jan". 
+  * `displaySource`: Ciąg, dzięki czemu termin źródłowy w postaci najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Na przykład, jeśli dane wejściowe są "JOHN", Wyświetl formularz zostanie naliczona zwykle pisownię nazwy: "John". 
 
-  * `translations`: Lista tłumaczeń terminu źródła. Każdy element listy jest obiektem z następującymi właściwościami:
+  * `translations`: Lista tłumaczeń termin źródła. Każdy element listy jest obiektem z następującymi właściwościami:
 
-    * `normalizedTarget`: Ciąg, podając znormalizowana postać tego warunku w języku docelowym. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
+    * `normalizedTarget`: Ciąg, dzięki czemu znormalizowana postać tego warunku w języku docelowym. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).
 
-    * `displayTarget`: Ciąg nadawaniu termin w języku docelowym oraz w formie najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Ogólnie rzecz biorąc, to zostanie różnią się tylko z `normalizedTarget` pod względem wielkości liter. Na przykład rzeczownikiem poprawnej takich jak "Juan" będzie mieć `normalizedTarget = "juan"` i `displayTarget = "Juan"`.
+    * `displayTarget`: Ciąg, podając wyrażenie w języku docelowym oraz w formie najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Ogólnie rzecz biorąc, to będzie tylko różnią się od `normalizedTarget` pod względem wielkości liter. Na przykład stoi takie jak "Juan" będą mieć `normalizedTarget = "juan"` i `displayTarget = "Juan"`.
 
-    * `posTag`: Ciąg skojarzenie tego terminu przy użyciu tagu części z mowy.
+    * `posTag`: Ciąg skojarzenie tego terminu za pomocą tagów części mowy.
 
         | Nazwa tagu | Opis  |
         |----------|--------------|
         | PR      | Określeniem   |
-        | ADV      | Parametrów      |
-        | CONJ     | Spójników |
+        | ZAAWANSOWANA      | Parametrów      |
+        | CONJ     | Spójniki |
         | DET      | Determiners  |
         | MODALNE    | Zlecenia        |
         | RZECZOWNIK     | Rzeczowniki        |
-        | PRZEDPRODUKCYJNYM     | Przyimki |
+        | PRZYGOTOWYWANIE     | Przyimkami |
         | PRON     | Zaimki     |
-        | ZLECENIE     | Zlecenia        |
+        | ZLECENIA     | Zlecenia        |
         | INNE    | Inne        |
 
-        Jako notatek wykonania te znaczniki zostały określone przez część elementu mowy znakowanie angielskiej wersji językowej po stronie, a następnie biorąc najczęstsze tagu dla każdej pary źródłowy i docelowy. Więc jeśli osób tłumaczenie często hiszpańskim programu word do znacznika różnych części programu mowy w języku angielskim, tagi może nastąpić przejście jest nieprawidłowy (względem hiszpańskim programu word).
+        Jako notatka implementacji te znaczniki zostały określone przez części mowy znakowanie angielskim po stronie, a następnie wykonywanie najczęściej tagu dla każdej pary źródło i cel. Dlatego jeśli ludzie często tłumaczenie hiszpańskim słowem do różnych tagów części mowy w języku angielskim, znaczniki może pozostać problemy (względem hiszpańskim słowem).
 
-    * `confidence`: Wartość z zakresu od 0,0 do 1,0, który reprezentuje "zaufania" (lub bardziej dokładnie, "prawdopodobieństwo w danych szkoleniowych") tej pary tłumaczenia. Suma wyniki zaufania dla źródła o jedno słowo może lub nie może Suma, umożliwiającej 1.0. 
+    * `confidence`: Wartość z zakresu od 0.0 do 1.0, który reprezentuje "zaufania" (lub bardziej precyzyjnie, "prawdopodobieństwo w danych szkoleniowych") pary tej tłumaczeń. Suma wyniki zaufania dla jednego słowa źródła może lub nie może być suma, umożliwiającej 1.0. 
 
-    * `prefixWord`Nadanie ciąg programu word, który będzie wyświetlany jako prefiksu tłumaczenia. Obecnie jest gendered determiner z rzeczowniki w językach, które mają gendered determiners. Na przykład prefiks hiszpańskim słowo "mosca" jest "la", ponieważ "mosca" jest żeński rzeczownik w języku hiszpańskim. Jest to tylko zależnych na tłumaczenia, a nie w źródle. Jeśli nie ma żadnego prefiksu, będzie pusty ciąg.
+    * `prefixWord`: Ciąg, zapewniając programu word do wyświetlenia jako prefiksu tłumaczenia. Obecnie jest gendered determiner z rzeczowniki w językach, które mają gendered determiners. Na przykład prefiks hiszpańskim słowem "mosca" jest "la", ponieważ "mosca" żeński rzeczowników w języku hiszpańskim. Jest to tylko zależnych na tłumaczenia, a nie na "source". Jeśli nie ma żadnego prefiksu, będzie pusty ciąg.
     
-    * `backTranslations`: Lista "back tłumaczeń" elementu docelowego. Na przykład źródła słowa, które element docelowy może przełożyć na. Lista jest gwarantowana zawierać słowo źródła, którego zażądano (np. Jeśli trwa word źródła wyszukiwana jest "udać", a następnie będzie gwarancji, że "udać" będzie `backTranslations` listy). Jednak nie jest gwarantowana się na pierwszym miejscu i często nie będzie. Każdy element `backTranslations` listy jest obiektem opisanego przez następujących właściwościach:
+    * `backTranslations`: Lista "tłumaczenia Wstecz" element docelowy. Na przykład źródło wyrazy, które element docelowy można przełożyć na. Listy może zawierać słowo źródła, którego zażądano (np. w przypadku, gdy trwa źródłowego programu word wyszukiwana jest "podnoszenia", a następnie gwarantuje, że "podnoszenia" będzie `backTranslations` listy). Jednak nie może być na pierwszym miejscu i często nie będzie. Każdy element obiektu `backTranslations` lista jest obiektem opisanym przez następujące właściwości:
 
-        * `normalizedText`: Ciąg, podając znormalizowana postać warunku źródła będący wstecz translację elementu docelowego. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).        
+        * `normalizedText`: Ciąg, zapewniając znormalizowana postać składnika źródłowego, który jest tłumaczeniem kopii obiektu docelowego. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md).        
 
-        * `displayText`: Ciąg nadanie terminu źródłowego, który jest tłumaczenie wstecz obiektu docelowego w postaci najlepsze nadaje się do wyświetlania przez użytkownika końcowego.
+        * `displayText`: Ciąg, zapewniając termin źródłowego, który jest ponownie tłumaczenie obiektu docelowego w formie najlepszych dostosowane do wyświetlenia przez użytkownika końcowego.
 
-        * `numExamples`: Całkowitą reprezentującą liczbę przykłady, które są dostępne dla tej pary tłumaczenia. Rzeczywiste przykłady musi zostać pobrany z wymaga oddzielnego wywołania do [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md). Liczba jest przeważnie mająca na celu ułatwienie wyświetlania w UX. Na przykład interfejsu użytkownika mogą Dodawanie hiperłącza do tłumaczenia zwrotnego, jeśli wiele przykładów jest większa niż zero i Pokaż tłumaczenia wstecz jako zwykły tekst, jeśli istnieją nie przykłady. Należy pamiętać, że rzeczywista liczba przykłady zwrócony przez wywołanie do [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md) może być mniejsza niż `numExamples`, ponieważ filtrowania dodatkowe mogą być stosowane na bieżąco, aby usunąć przykłady "zły".
+        * `numExamples`: Liczba całkowita reprezentująca liczbę przykładów, które są dostępne dla tej pary tłumaczenia. Rzeczywiste przykłady musi zostać pobrany z oddzielnym wywołaniu [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md). Liczba jest przede wszystkim mająca na celu ułatwienie ekran w najlepsze środowisko użytkownika. Na przykład interfejs użytkownika może dodać hiperłącze do tłumaczenia Wstecz, jeśli wiele przykładów jest większa niż zero i Pokaż tłumaczenia wstecz jako zwykły tekst, jeśli istnieją żadnych przykładów. Należy pamiętać, że rzeczywista liczba przykłady zwracane przez wywołanie [Przykłady wyszukiwania](.\v3-0-dictionary-examples.md) może być mniejsza niż `numExamples`, ponieważ filtrowania dodatkowych można stosować na bieżąco, aby usunąć przykłady "złe".
         
-        * `frequencyCount`: Liczba całkowita reprezentująca częstotliwość tej pary tłumaczenia w danych. Głównym celem tego pola jest zapewnienie interfejs użytkownika umożliwia sortowanie tłumaczeń Wstecz, terminy najczęściej są po raz pierwszy.
+        * `frequencyCount`: Liczba całkowita reprezentująca częstotliwość Ta para tłumaczenia w danych. Głównym celem tego pola jest udostępniają interfejs użytkownika umożliwia sortowanie tłumaczenia Wstecz, więc terminy najczęściej są po raz pierwszy.
 
     > [!NOTE]
-    > Jeśli termin jest tablicą up nie istnieje w słowniku, odpowiedź jest 200 (OK), ale `translations` lista jest pusta lista.
+    > Jeśli termin jest tablicą w górę nie istnieje w słowniku, odpowiedź jest 200 (OK), ale `translations` lista jest pusta lista.
 
 ## <a name="examples"></a>Przykłady
 
-W tym przykładzie przedstawiono sposób wyszukiwania alternatywne tłumaczenia w języku hiszpańskim angielski termin `fly` .
+W tym przykładzie pokazano, jak wyszukać alternatywnych tłumaczeń w języku hiszpańskim okresu angielskiej `fly` .
 
-# <a name="curltabcurl"></a>[Narzędzie curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -147,7 +147,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 ---
 
-Treść odpowiedzi (skrót dla jasności) jest:
+Treść odpowiedzi (skrót dla jasności) to:
 
 ```
 [
@@ -188,9 +188,9 @@ Treść odpowiedzi (skrót dla jasności) jest:
 ]
 ```
 
-Ten przykład przedstawia, co się stanie, gdy są wyszukiwane termin nie istnieje dla pary prawidłowy słownik.
+Ten przykład pokazuje, co się stanie, gdy termin są wyszukiwane nie istnieje dla pary prawidłowe słownika.
 
-# <a name="curltabcurl"></a>[Narzędzie curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
@@ -198,7 +198,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?ap
 
 ---
 
-Ponieważ termin nie zostanie znaleziony w słowniku, treść odpowiedzi zawiera pustą `translations` listy.
+Ponieważ wyrażenie nie zostanie znaleziony w słowniku, treść odpowiedzi zawiera pustą `translations` listy.
 
 ```
 [
