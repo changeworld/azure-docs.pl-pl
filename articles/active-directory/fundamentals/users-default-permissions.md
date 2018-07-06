@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: 991feaa61a73d5ac96159fbd6a7dd1fdd420fd3c
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36291416"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448156"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Uprawnienia domyślne użytkowników w usłudze Azure Active Directory
 
@@ -50,8 +50,8 @@ Poniżej opisano sposoby ograniczania domyślnych uprawnień użytkowników będ
 
 Uprawnienie | Wyjaśnienie ustawienia
 ---------- | ------------
-Możliwość tworzenia grup zabezpieczeń | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup zabezpieczeń. Administratorzy globalni i administratorzy kont użytkowników mogą nadal tworzyć grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../active-directory-accessmanagement-groups-settings-cmdlets.md).
-Możliwość tworzenia grup usługi Office 365 | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup usługi Office 365. Ustawienie tej opcji na wartość Niektóre umożliwia wybranemu zestawowi użytkowników tworzenie grup usługi Office 365. Administratorzy globalni i administratorzy kont użytkowników będą nadal mogli tworzyć grupy usługi Office 365. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../active-directory-accessmanagement-groups-settings-cmdlets.md).
+Możliwość tworzenia grup zabezpieczeń | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup zabezpieczeń. Administratorzy globalni i administratorzy kont użytkowników mogą nadal tworzyć grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
+Możliwość tworzenia grup usługi Office 365 | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup usługi Office 365. Ustawienie tej opcji na wartość Niektóre umożliwia wybranemu zestawowi użytkowników tworzenie grup usługi Office 365. Administratorzy globalni i administratorzy kont użytkowników będą nadal mogli tworzyć grupy usługi Office 365. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
 Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom uzyskanie dostępu do portalu usługi Azure Active Directory.
 Możliwość odczytywania innych użytkowników | To ustawienie jest dostępne tylko w programie PowerShell. Ustawienie tej opcji na wartość $false uniemożliwia użytkownikom nieadministracyjnym odczytywanie informacji o użytkowniku z katalogu. Nie zapobiega to jednak odczytywaniu informacji o użytkowniku w innych usługach firmy Microsoft, takich jak Exchange Online. To ustawienie powinno być używane tylko w specjalnych okolicznościach i ustawianie go na wartość $false nie jest zalecane.
 

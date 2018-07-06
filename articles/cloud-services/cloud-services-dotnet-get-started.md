@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160025"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342297"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
@@ -99,7 +99,7 @@ Gdy użytkownik przesyła obraz, fronton uruchomiony w roli Sieć Web zapisuje o
 
      ![Strona szczegółów](./media/cloud-services-dotnet-get-started/details.png)
 
-Aplikacja działała całkowicie na komputerze lokalnym — bez połączenia z chmurą. Emulator magazynu przechowuje dane kolejek i obiektów blob w bazie danych SQL Server Express LocalDB, a aplikacja przechowuje dane reklam w innej bazie danych LocalDB. Platforma Entity Framework Code First automatycznie utworzyła bazę danych reklam, gdy aplikacja sieci Web po raz pierwszy próbowała uzyskać do niej dostęp.
+Aplikacja działała całkowicie na komputerze lokalnym — bez połączenia z chmurą. Emulator magazynu przechowuje dane kolejek i obiektów blob w bazie danych SQL Server Express LocalDB, a aplikacja przechowuje dane reklam w innej bazie danych LocalDB. Platforma Entity Framework Code First automatycznie utworzyła bazę danych reklam, gdy aplikacja internetowa po raz pierwszy próbowała uzyskać do niej dostęp.
 
 W poniższej sekcji skonfigurujesz rozwiązanie do użycia zasobów w chmurze Azure dla kolejek, obiektów blob i bazy danych aplikacji na potrzeby uruchamiania w chmurze. Możesz to zrobić, jeśli chcesz kontynuować uruchamianie lokalnie, ale korzystać z zasobów magazynu i bazy danych w chmurze. Jest to jedynie kwestia ustawienia parametrów połączenia — pokażemy, jak to zrobić.
 
@@ -291,7 +291,7 @@ Ustawienie `<Instances>` określa liczbę maszyn wirtualnych, na których platfo
 
     ![Krok Ustawienia](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Domyślne ustawienia na karcie **Zaawansowane** są wystarczające w przypadku tego samouczka. Informacje o karcie Zaawansowane można znaleźć w temacie [Kreator publikowania aplikacji platformy Azure](http://msdn.microsoft.com/library/hh535756.aspx).
+    Domyślne ustawienia na karcie **Zaawansowane** są wystarczające w przypadku tego samouczka. Informacje o karcie Zaawansowane można znaleźć w temacie [Kreator publikowania aplikacji platformy Azure](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
 4. W kroku **Podsumowanie** kliknij pozycję **Opublikuj**.
 
     ![Krok Podsumowanie](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -302,7 +302,7 @@ Ustawienie `<Instances>` określa liczbę maszyn wirtualnych, na których platfo
     Wdrożenie może potrwać 5 minut lub dłużej.
 
     ![Okno Dziennik aktywności platformy Azure](./media/cloud-services-dotnet-get-started/waal.png)
-6. Gdy stan wdrożenia będzie wskazywać na jego ukończenie, kliknij pozycję **Adres URL aplikacji sieci Web** w celu uruchomienia aplikacji.
+6. Gdy stan wdrożenia będzie wskazywać na jego ukończenie, kliknij pozycję **Adres URL aplikacji internetowej** w celu uruchomienia aplikacji.
 7. Teraz możesz przetestować aplikację, tworząc, wyświetlając i edytując niektóre reklamy, tak jak w przypadku lokalnego uruchomienia aplikacji.
 
 > [!NOTE]
@@ -533,7 +533,7 @@ Plik *Views\Home\Index.cshtml* umożliwia wyświetlanie linków kategorii na str
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb — AdController.cs
 W pliku *AdController.cs* konstruktor wywołuje metodę `InitializeStorage` w celu utworzenia obiektów biblioteki klienta usługi Azure Storage, które będą dostarczać interfejs API do pracy z kolejkami i obiektami blob.
 
-Następnie kod pobiera odwołanie do kontenera obiektów blob *obrazów*, jak było to widać wcześniej w pliku *Global.asax.cs*. W tym czasie ustawiane są domyślne [zasady ponawiania](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) odpowiednie dla aplikacji sieci Web. Domyślne zasady ponawiania wykładniczego wycofywania mogą powodować zawieszanie aplikacji sieci Web na czas dłuższy niż minuta w przypadku kolejnych prób i wystąpienia błędu przejściowego. Zasady ponawiania określone w tym miejscu powodują oczekiwanie przez trzy sekundy po każdej próbie. Maksymalna liczba prób to trzy.
+Następnie kod pobiera odwołanie do kontenera obiektów blob *obrazów*, jak było to widać wcześniej w pliku *Global.asax.cs*. W tym czasie ustawiane są domyślne [zasady ponawiania](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) odpowiednie dla aplikacji internetowej. Domyślne zasady ponawiania wykładniczego wycofywania mogą powodować zawieszanie aplikacji internetowej na czas dłuższy niż minuta w przypadku kolejnych prób i wystąpienia błędu przejściowego. Zasady ponawiania określone w tym miejscu powodują oczekiwanie przez trzy sekundy po każdej próbie. Maksymalna liczba prób to trzy.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();

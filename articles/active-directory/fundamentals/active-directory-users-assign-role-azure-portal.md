@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 7ed564d5954841f96109568b33183908d25bb8be
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939544"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440752"
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Przypisywanie użytkownika do ról administratorów w usłudze Azure Active Directory
 W tym artykule wyjaśniono, jak przypisać użytkownikowi rolę administracyjną w usłudze Azure Active Directory (Azure AD). Aby uzyskać informacje dotyczące dodawania nowych użytkowników w organizacji, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](../add-users-azure-active-directory.md). Dodani użytkownicy domyślnie nie mają uprawnień administratora, ale możesz przypisać im role w dowolnym momencie.
@@ -30,7 +30,7 @@ W tym artykule wyjaśniono, jak przypisać użytkownikowi rolę administracyjną
 
     ![Otwieranie okna zarządzania użytkownikami](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 
-3. Dla wybranego użytkownika wybierz pozycję **Role katalogu**, wybierz polecenie **Dodaj rolę**, a następnie wybierz odpowiednie role administratora z listy **Role katalogu**, na przykład **Administrator dostępu warunkowego**. Aby uzyskać więcej informacji o rolach administratorów, zobacz [Przypisywanie ról administratorów w usłudze Azure AD](../active-directory-assign-admin-roles-azure-portal.md). 
+3. Dla wybranego użytkownika wybierz pozycję **Role katalogu**, wybierz polecenie **Dodaj rolę**, a następnie wybierz odpowiednie role administratora z listy **Role katalogu**, na przykład **Administrator dostępu warunkowego**. Aby uzyskać więcej informacji o rolach administratorów, zobacz [Przypisywanie ról administratorów w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md). 
 
     ![Przypisywanie użytkownika do roli](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 
