@@ -1,143 +1,143 @@
 ---
-title: Dokument analiza kolekcji - Azure | Dokumentacja firmy Microsoft
-description: Sposób podsumowywania i analizowania dużych kolekcji dokumentów, w tym technik, takich jak learning frazy, temacie modelowania i tematu modelu analizy przy użyciu usługi Azure ML Workbench.
+title: Dokumentowanie analiza kolekcji — Azure | Dokumentacja firmy Microsoft
+description: Sposób podsumowywania i analizowanie duży zbiór dokumentów, łącznie z technik, takich jak learning frazy, tematu, modelowanie i analizy modelu tematu przy użyciu aplikacji Azure ML Workbench.
 services: machine-learning
 author: kehuan
 ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 60d65b17d4cbe8a45ff3fb62b06852d7b945e8f1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832863"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861786"
 ---
 # <a name="document-collection-analysis"></a>Analiza kolekcji dokumentów
 
-W tym scenariuszu przedstawiono sposób podsumowywania i analizowania dużych kolekcji dokumentów, w tym technik, takich jak learning frazy, temacie modelowania i tematu modelu analizy przy użyciu usługi Azure ML Workbench. Azure Machine Learning Workbench zapewnia łatwo skalę dla kolekcji dokumentów bardzo duże i zawiera mechanizmy do nauczenia i dostrajania modeli w różnych kontekstach obliczeń, od lokalnego obliczeniowych do danych nauki maszyny wirtualne do klastra Spark. Łatwość programowania jest zapewniana za pomocą notesów Jupyter w ramach usługi Azure Machine Learning Workbench.
+W tym scenariuszu pokazano, jak sumować i analizować duży zbiór dokumentów, łącznie z technik, takich jak learning frazy, tematu, modelowanie i analizy modelu tematu przy użyciu aplikacji Azure ML Workbench. Usługa Azure Machine Learning Workbench umożliwia łatwe skalowanie dla kolekcji bardzo dużych dokumentów i udostępnia mechanizmy do nauczenia i dostrajania modeli w ramach różnych konteksty obliczeniowe, od lokalnego obliczeń do maszyn wirtualnych do nauki o danych do klastra Spark. Łatwe projektowanie jest oferowana w ramach notesów programu Jupyter w usłudze Azure Machine Learning Workbench.
 
 ## <a name="link-to-the-gallery-github-repository"></a>Połącz z repozytorium GitHub galerii
 
-W tym scenariuszu rzeczywistych publicznego repozytorium GitHub zawiera wszystkich materiałów, w tym przykłady kodu, potrzebne w tym przykładzie:
+Publicznego repozytorium GitHub, w tym scenariuszu rzeczywistych zawiera wszystkie materiały, w tym przykłady kodu, potrzebne w tym przykładzie:
 
 [https://github.com/Azure/MachineLearningSamples-DocumentCollectionAnalysis](https://github.com/Azure/MachineLearningSamples-DocumentCollectionAnalysis)
 
 ## <a name="overview"></a>Przegląd
 
-W przypadku dużej ilości danych (szczególnie niestrukturalnych tekst) zbierane codziennie istotne wyzwanie jest organizacji, wyszukiwanie i zrozumieć ogromnych ilości tekstów. Ten scenariusz analizy kolekcji dokumentów pokazuje wydajne i automatyczne end-to-end przepływu pracy do analizowania dużych dokumentów kolekcji i włączenie zadań NLP podrzędne.
+Z dużą ilością danych (dane tekstowe szczególnie niestrukturalnych) zebrane codziennie znaczące wyzwane jest organizowania, wyszukiwanie i zrozumieć ogromnych ilości tekstów. Ten scenariusz analiza kolekcji dokumentów pokazuje efektywne i automatyczne end-to-end przepływu pracy do analizowania dużych dokumentów kolekcji i włączenie zadania podrzędne przetwarzaniu języka naturalnego.
 
-Kluczowe elementy dostarczane w tym scenariuszu są:
+Dostępne są następujące kluczowe elementy, które są dostarczane przez ten scenariusz:
 
-1. Learning istotne frazy słowa wielu z dokumentów.
+1. Nauki najważniejsze fraza słowa wielu z dokumentów.
 
-1. Odnajdywanie podstawowe tematy przedstawione w kolekcji dokumentów.
+1. Odnajdywanie podstawowych tematów przedstawionych w kolekcji dokumentów.
 
-1. Reprezentującymi dokumenty przez miejscowego dystrybucji.
+1. Reprezentującymi dokumenty przez funkcję dystrybucji istotna.
 
-1. Przedstawienie metody organizowanie, wyszukiwanie i podsumowywanie dokumentów na podstawie zawartości miejscowego.
+1. Przedstawienie metody organizowania, wyszukiwanie i podsumowywanie dokumentów na podstawie zawartości istotna.
 
-Metod przedstawionych w tym scenariuszu można włączyć szereg krytycznych obciążeń przemysłowej, takich jak wykrywania anomalii trendów tematu, podsumowania kolekcji dokumentów i podobne wyszukiwania dokumentu. Można go zastosować dla wielu typów analizy dokumentu, takie jak ustawodawstwa dla instytucji rządowych, wiadomości, recenzje produktów, opinie klientów i artykuły naukowych.
+Metod przedstawionych w tym scenariuszu można włączyć szereg krytycznych obciążeń przemysłowych, takich jak odnajdywania anomalii trendów tematów, podsumowania kolekcji dokumentu i podobne wyszukiwania dokumentu. Mogą być stosowane dla wielu typów analizy dokumentu, takich jak przestrzegania dla instytucji rządowych, najnowsze, recenzje produktów, opinie klientów i artykuły badań naukowych.
 
-Algorytmów uczenia maszynowego techniki/używaną w tym scenariuszu obejmują:
+To algorytmów uczenia maszynowego technik/używaną w tym scenariuszu:
 
 1. Przetwarzanie tekstu i czyszczenia
 
 1. Learning frazy
 
-1. Temat modelowania
+1. Modelowanie tematu
 
-1. Boże podsumowania
+1. Podsumowanie korpus
 
-1. Miejscowego trendów i wykrywania anomalii
+1. Istotna trendów i anomalii
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
-* Upewnij się, że poprawnie zainstalowano [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) wykonując [zainstalować i utworzyć szybkiego startu](../service/quickstart-installation.md).
+* Upewnij się, że poprawnie zainstalowano [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) postępując zgodnie z [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md).
 
-* W tym przykładzie można uruchomić na dowolnym kontekście obliczeń. Jednak zaleca się uruchamiania na maszynie wielordzeniowych z co najmniej 16GB pamięci RAM i miejsca na dysku 5GB.
+* W tym przykładzie, może uruchomić w dowolnym kontekście obliczeniowym. Jednak zaleca się ją uruchomić na maszynie wielordzeniowych z co najmniej 16GB pamięci RAM i miejsca na dysku 5GB.
 
-## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt Workbench
+## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji Workbench
 
-Utwórz nowy projekt za pomocą tego przykładu jako szablon:
-1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
-3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
-4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Analizy kolekcji dokumentów" i wybierz szablon
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
+1.  Otwieranie usługi Azure Machine Learning Workbench
+2.  Na **projektów** kliknij **+** zalogować się i wybrać **nowy projekt**
+3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu
+4.  W **Wyszukaj szablony projektów** polu wyszukiwania wpisz "Analiza kolekcji dokumentów" i wybierz szablon
 5.  Kliknij przycisk **Utwórz**
 
-## <a name="data-description"></a>Opis elementu danych
+## <a name="data-description"></a>Opis danych
 
-Zestaw danych, w tym scenariuszu zawiera tekst podsumowania i skojarzone metadane dla każdej prawne akcję wykonywaną przez Kongres NAS. Dane są zbierane z [GovTrack.us](https://www.govtrack.us/), który śledzi działania Kongres Stanów Zjednoczonych i pomaga obywateli brać udziału w procesu prawa krajowego. Dane zbiorcze można pobrać za pomocą [to łącze](https://www.govtrack.us/data/congress/) za pomocą ręcznej skryptu, który nie jest zawarty w tym scenariuszu. Szczegółów dotyczących sposobu pobierania danych można znaleźć w [dokumentacji interfejsu API GovTrack](https://www.govtrack.us/developers/api).
+Zestaw danych, w tym scenariuszu zawiera tekst podsumowania i skojarzone metadane dla każdej akcji legislacyjne podjęte przez Kongres USA. Dane są zbierane z [GovTrack.us](https://www.govtrack.us/), który śledzi działania Kongres Stanów Zjednoczonych i pomaga Amerykanów uczestniczyć w ich krajowych legislacyjne procesu. Zbiorcze danych można pobrać za pośrednictwem [ten link](https://www.govtrack.us/data/congress/) przy użyciu skryptu ręczne, która nie znajduje się w tym scenariuszu. Szczegóły dotyczące sposobu pobierania danych zostało odnalezione w [dokumentacji interfejsu API GovTrack](https://www.govtrack.us/developers).
 
 ### <a name="data-source"></a>Źródło danych
 
-W tym scenariuszu nieprzetworzone dane zbierane jest serią działań prawnych wynikające z NAMI kongresem (rachunków proponowany i rozwiązania) z 1973 do czerwca 2017 (93rd 115th kongresy). Zebrane dane w formacie JSON i zawiera bogaty zestaw informacji o akcjach prawnych. Zapoznaj się [to łącze GitHub](https://github.com/unitedstates/congress/wiki/bills) szczegółowy opis pól danych. W tym celu pokaz w tym scenariuszu tylko podzestaw danych pola zostały wyodrębnione pliki w formacie JSON. Wstępnie skompilowanym plikiem TSV `CongressionalDataAll_Jun_2017.tsv` zawierającego rekordy te akcje prawnych znajduje się w tym scenariuszu. Plik TSV można pobrać automatycznie przez notebooki `1_Preprocess_Text.ipynb` w folderze notesu lub `preprocessText.py` w pakiet języka Python.
+W tym scenariuszu nieprzetworzone dane zebrane jest szereg działań legislacyjne wprowadzona przez nas Kongres (proponowane rachunków i rozwiązania) od 1973 do czerwca 2017 r. (93rd 115th kongresy). Zebranych danych jest w formacie JSON i zawiera bogaty zestaw informacji o akcjach prawnych. Zapoznaj się [ten link GitHub](https://github.com/unitedstates/congress/wiki/bills) szczegółowy opis pola danych. Dla celów demonstracyjnych w ramach tego scenariusza tylko podzbiór pól danych zostały wyodrębnione pliki w formacie JSON. Wstępnie skompilowany plik TSV `CongressionalDataAll_Jun_2017.tsv` zawierającego rekordy te czynności prawne znajduje się w tym scenariuszu. Plik TSV mogły być pobierane automatycznie przez notesów `1_Preprocess_Text.ipynb` w folderze notesu lub `preprocessText.py` w pakiet języka Python.
 
 ### <a name="data-structure"></a>Struktura danych
 
-W pliku danych jest dziewięciu pól danych. Poniżej wymieniono nazwy pól i opisy.
+Istnieje dziewięciu pól danych w pliku danych. Nazwy pól i opisy są wyświetlane w następujący sposób.
 
-| Nazwa pola | Typ | Opis | Brak wartości zawierają |
+| Nazwa pola | Typ | Opis | Zawiera wartości Brak |
 |------------|------|-------------|---------------|
-| `ID` | Ciąg | Identyfikator rachunku/rozwiązania. Format tego pola jest [bill_type] [numer]-[Kongres]. Na przykład "hconres1-93" oznacza, że typ rachunek jest "hconres" (dokonane dla rozpoznawania równoczesnych DOM odwoływać się do [tego dokumentu](https://github.com/unitedstates/congress/wiki/bills#basic-information)), liczba rachunek jest "1"i numer Kongres jest 93". | Nie |
-| `Text` | Ciąg | Zawartość rachunku/rozwiązania. | Nie |
-| `Date` | Ciąg | Data początkowo proponowane rachunku/rozwiązania. W formacie "rrrr mm-dd". | Nie |
-| `SponsorName` | Ciąg | Nazwa głównej sponsor proponowana rachunku/rozwiązania. | Yes |
-| `Type` | Ciąg | Typ podstawowy tytuł sponsorować "rep" (przedstawiciel) lub "Wyślij" (senator). | Yes |
-| `State` | Ciąg | Stan sponsor podstawowego. | Yes |
-| `District` | Liczba całkowita | Numer regionalnego głównej sponsor Jeśli tytuł sponsor jest przedstawicielem. | Yes |
-| `Party` | Ciąg | Strona sponsor podstawowego. | Yes |
-| `Subjects` | Ciąg | Warunki podmiotu do zestawienia, a następnie dodać zbiorczo przez biblioteki Kongres. Warunki są łączone przecinkami. Te warunki są zapisywane przez człowieka w bibliotece Kongres i nie są zwykle dostępne po pierwszym opublikowaniu informacji na. Mogą one dodane w dowolnym momencie. W związku z tym do końca okresu rachunek niektórych podmiotu może nie być odpowiednie już. | Yes |
+| `ID` | Ciąg | Identyfikator rachunek/rozwiązania. Format tego pola jest [bill_type] [liczba]-[Kongres]. Na przykład "hconres1 93" oznacza, że typ rachunek jest "hconres" (stoisk dla rozpoznawania współbieżnych DOM odnoszą się do [w tym dokumencie](https://github.com/unitedstates/congress/wiki/bills#basic-information)), liczba rachunek jest "1"i liczba Kongres jest 93". | Nie |
+| `Text` | Ciąg | Zawartość rachunek/rozwiązania. | Nie |
+| `Date` | Ciąg | Data początkowo proponowane rachunek/rozwiązania. W formacie "rrrr mm-dd". | Nie |
+| `SponsorName` | Ciąg | Nazwa głównej sponsora, który proponowane rozwiązanie/na rachunku. | Yes |
+| `Type` | Ciąg | Tytuł typu podstawowego sponsoruj "rep" (przedstawiciel) lub "Wyślij" (senator). | Yes |
+| `State` | Ciąg | Stan sponsora podstawowego. | Yes |
+| `District` | Liczba całkowita | Numer district podstawowego sponsora, jeśli tytuł sponsora przedstawicielem. | Yes |
+| `Party` | Ciąg | Strona sponsora podstawowego. | Yes |
+| `Subjects` | Ciąg | Warunki podmiotu, na rachunku, a następnie dodać łącznie przez bibliotekę Kongres. Warunki są łączone przecinkami. Te warunki są zapisywane przez człowieka w bibliotece Kongres, a nie są zwykle obecne po pierwszym opublikowaniu informacje o rachunku. Mogą one dodane w dowolnym momencie. Dlatego do końca cyklu życia rachunek niektóre podmiotu mogą nie być odpowiednie już. | Yes |
 
-## <a name="scenario-structure"></a>Scenariusz — struktura
+## <a name="scenario-structure"></a>Struktura scenariusza
 
-Przykład analizy kolekcji dokumentu jest podzielony na dwa rodzaje materiałów. Pierwszy typ jest szereg iPython notebooki, które zawierają szczegółowe opisy całego przepływu pracy. Drugi typ jest pakiet języka Python, jak również przykłady kodu do użycia tego pakietu. Pakiet języka Python jest ogólny, aby obsługiwać wiele przypadków użycia.
+Przykład analiza kolekcji dokumentów jest podzielony na dwa rodzaje cele do zrealizowania. Pierwszy typ to seria iPython notesów, przedstawiających szczegółowe opisy całego przepływu pracy. Drugi typ to pakiet języka Python, a także przykłady kodu dotyczące używania tego pakietu. Pakiet języka Python jest ogólny do wielu zastosowań.
 
 Pliki w tym przykładzie są zorganizowane w następujący sposób.
 
 | Nazwa pliku | Typ | Opis |
 |-----------|------|-------------|
-| `aml_config` | Folder | Folder konfiguracji w usłudze Azure Machine Learning Workbench, zapoznaj się [tej dokumentacji](./experimentation-service-configuration-reference.md) szczegółowe eksperymentu wykonywania konfiguracji |
-| `Code` | Folder | Folder kod używany do zapisania skrypty języka Python i pakiet języka Python |
-| `Data` | Folder | Folder danych używany do zapisania plików pośrednich |
-| `notebooks` | Folder | Folder Notesy Jupyter |
-| `Code/documentAnalysis/__init__.py` | Plik Python | Plik init pakiet języka Python |
-| `Code/documentAnalysis/configs.py` | Plik Python | Plik konfiguracji używany podczas analizy dokumentu pakiet języka Python, w tym stałe wstępnie zdefiniowane |
-| `Code/documentAnalysis/preprocessText.py` | Plik Python | Plik języka Python, używany do wstępnego przetworzenia danych dla zadania podrzędne |
-| `Code/documentAnalysis/phraseLearning.py` | Plik Python | Plik Python używany do nauczenia fraz z danych i przekształcania danych pierwotnych |
-| `Code/documentAnalysis/topicModeling.py` | Plik Python | Plik języka Python, używany do uczenia modelu tematu ukryty Dirichlet alokacji (LDA) |
-| `Code/step1.py` | Plik Python | Krok 1 analizy kolekcji dokumentów: przetwarzanie wstępne tekstu |
-| `Code/step2.py` | Plik Python | Krok 2 analizy kolekcji dokumentów: frazę learning |
-| `Code/step3.py` | Plik Python | Krok 3 analizy kolekcji dokumentów: nauczanie i Ewaluacja modelu tematu LDA |
-| `Code/runme.py` | Plik Python | Przykład uruchomienia wszystkich kroków w jednym pliku |
-| `notebooks/1_Preprocess_Text.ipynb` | iPython notesu | Przetwarzanie wstępne tekstu i przekształcanie danych pierwotnych |
-| `notebooks/2_Phrase_Learning.ipynb` | iPython notesu | Dowiedz się fraz z danych tekstowych (po przekształcania danych) |
-| `notebooks/3_Topic_Model_Training.ipynb` | iPython notesu | Train LDA tematu modelu |
-| `notebooks/4_Topic_Model_Summarization.ipynb` | iPython notesu | Podsumowanie zawartości kolekcji dokumentów na podstawie uczonego modelu tematu LDA |
-| `notebooks/5_Topic_Model_Analysis.ipynb` | iPython notesu | Analizowanie miejscowego zawartości kolekcji dokumentów tekstowych i skorelowania miejscowego informacje pod kątem innych metadane skojarzone z tą kolekcją dokumentu |
-| `notebooks/6_Interactive_Visualization.ipynb` | iPython notesu | Interakcyjne wizualizacji modelu zapamiętanych tematu |
-| `notebooks/winprocess.py` | Plik Python | Skrypt w języku python dla przetwarzanie wieloprocesorowe używany przez komputery przenośne |
-| `README.md` | Pliku markdown | Plik README języka znaczników markdown |
+| `aml_config` | Folder | Folder konfiguracji w usłudze Azure Machine Learning Workbench, zapoznaj się [tej dokumentacji](./experimentation-service-configuration-reference.md) konfiguracji wykonywania szczegółowe eksperymentu |
+| `Code` | Folder | Folder kodu, używany do zapisywania skryptów w języku Python i pakiet języka Python |
+| `Data` | Folder | Folder danych używany do zapisywania plików pośrednich |
+| `notebooks` | Folder | Folder Notesy programu Jupyter |
+| `Code/documentAnalysis/__init__.py` | Soubor Pythonu | Plik init pakietami języka Python |
+| `Code/documentAnalysis/configs.py` | Soubor Pythonu | Plik konfiguracji używany podczas analizy dokumentu pakiet języka Python, w tym wstępnie zdefiniowanych stałych |
+| `Code/documentAnalysis/preprocessText.py` | Soubor Pythonu | Plik języka Python, używany do wstępnego przetworzenia danych dla zadań podrzędnych |
+| `Code/documentAnalysis/phraseLearning.py` | Soubor Pythonu | Plik języka Python, używany fraz z danych i przekształcaj pierwotne dane |
+| `Code/documentAnalysis/topicModeling.py` | Soubor Pythonu | Plik języka Python, używane do trenowania modelu tematu ukrytego Bayesian alokacji (LDA) |
+| `Code/step1.py` | Soubor Pythonu | Krok 1 analiza kolekcji dokumentów: wstępne przetwarzanie tekstu |
+| `Code/step2.py` | Soubor Pythonu | Krok 2 analiza kolekcji dokumentów: frazę nauki |
+| `Code/step3.py` | Soubor Pythonu | Krok 3 Analiza kolekcji dokumentów: nauczanie i ocena LDA tematu modelu |
+| `Code/runme.py` | Soubor Pythonu | Przykład wykonać wszystkie czynności w jednym pliku |
+| `notebooks/1_Preprocess_Text.ipynb` | Program iPython Notebook | Wstępne przetwarzanie tekstu i przekształcanie danych pierwotnych |
+| `notebooks/2_Phrase_Learning.ipynb` | Program iPython Notebook | Dowiedz się frazy z tekstu danych (po przekształcania danych) |
+| `notebooks/3_Topic_Model_Training.ipynb` | Program iPython Notebook | Szkolenie LDA tematu modelu |
+| `notebooks/4_Topic_Model_Summarization.ipynb` | Program iPython Notebook | Podsumowanie zawartości z kolekcji dokumentów na podstawie uczonego modelu tematu LDA |
+| `notebooks/5_Topic_Model_Analysis.ipynb` | Program iPython Notebook | Analizowanie miejscowego zawartości z kolekcji dokumenty tekstowe i korelowanie miejscowego informacje pod kątem innych metadane skojarzone z kolekcji dokumentów |
+| `notebooks/6_Interactive_Visualization.ipynb` | Program iPython Notebook | Interaktywna wizualizacja tematu nauczony model |
+| `notebooks/winprocess.py` | Soubor Pythonu | Skrypt języka python dla przetwarzania wieloprocesowego posługują się notesów |
+| `README.md` | Plik markdown | Plik README w języku znaczników markdown |
 
-### <a name="data-ingestion-and-transformation"></a>Wprowadzanie danych i transformacja
+### <a name="data-ingestion-and-transformation"></a>Pozyskiwanie danych i transformacji
 
-Skompilowany zestaw danych `CongressionalDataAll_Jun_2017.tsv` jest zapisany w magazynie obiektów Blob i jest dostępny zarówno z notesów i skrypty języka Python. Istnieją dwa kroki dla wprowadzanie danych i transformacja: przetwarzanie wstępne danych tekstowych oraz zwrot learning.
+Skompilowany zestaw danych `CongressionalDataAll_Jun_2017.tsv` zostanie zapisany w magazynie obiektów Blob i jest dostępny zarówno z poziomu w ramach notesów i skryptów w języku Python. Istnieją dwa kroki pozyskiwania i przekształcania: wstępne przetwarzanie danych tekstowych i frazę uczenia.
 
 #### <a name="preprocess-text-data"></a>Przetwarzanie wstępne danych tekstowych
 
-Krok przetwarzania wstępnego stosuje techniki przetwarzania języka naturalnego do czyszczenia i przygotowania danych pierwotnych tekstu. Służy on jako macierzystych uczenie nienadzorowane frazy i modelowania ukryty tematu. Szczegółowy opis krok po kroku można znaleźć w notesie `1_Preprocess_Text.ipynb`. Jest także skrypt w języku Python `step1.py` odnosi się do tego notesu.
+Przetwarzania wstępnego krok ma zastosowanie technik przetwarzania języka naturalnego, aby oczyszczaj i przygotowuj dane nieprzetworzony tekst. Służy on jako wstępnym i niezbędnym warunkiem celów edukacyjnych nienadzorowanych frazy i modelowanie ukrytego tematu. Szczegółowy opis krok po kroku można znaleźć w notesie `1_Preprocess_Text.ipynb`. Jest także skrypt w języku Python `step1.py` odnosi się do tego notesu.
 
-W tym kroku plik danych TSV jest pobierany z magazynu obiektów Blob platformy Azure i zaimportowana jako Pandas DataFrame. Każdy element wiersza DataFrame to pojedynczy spójny ciąg tekstu lub dokumentu. Każdy dokument następnie jest dzielony na fragmenty tekstu, które mogą być zdania, wyrażenia lub subphrases. Podziału zaprojektowano w celu zakazać frazy uczenia procesu z używania ciągów między zdanie lub frazę między wyrazu, podczas nauki fraz.
+W tym kroku plik TSV danych jest pobierane z usługi Azure Blob Storage i zaimportować jako Pandas DataFrame. Każdy element wiersz ramki danych jest spójnych pojedynczego długi ciąg tekstu lub dokumentu. Każdy dokument następnie jest dzielony na fragmenty tekstu, które mogą być zdania, fraz lub subphrases. Podział jest przeznaczony do Stanów Zjednoczonych zabraniają frazy uczenia procesu z korzystania z ciągów cross zdania lub krzyżowe fraza słowa podczas nauki fraz.
 
-Istnieje wiele funkcji, zdefiniowanych na potrzeby przetwarzania wstępnego etapu notesu i pakiet języka Python. Większość zadań można osiągnąć przez wywołanie metody te dwa wiersze kodów.
+Istnieje wiele funkcji, zdefiniowanych na potrzeby przetwarzania wstępnego etapu, zarówno w notesie i pakiet języka Python. Większość zadań można osiągnąć przez wywołanie metody te dwa wiersze kodów.
 
 ```python
 # Read raw data into a Pandas DataFrame
@@ -149,9 +149,9 @@ cleanedDataFrame = CleanAndSplitText(textDF, saveDF=True)
 
 #### <a name="phrase-learning"></a>Learning frazy
 
-Krok learning frazy implementuje podstawową strukturę, aby dowiedzieć się klucza fraz między dużą kolekcję dokumentów. Opisano w dokumencie pod tytułem "[modelowania fraz Multiword ograniczone drzewo wyrażeń ulepszone tematu modelowania z konwersacji rozpoznawania mowy](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf)", który pierwotnie został przedstawiony w Workshop IEEE 2012 na używany język Technologia. Szczegółowe wykonania kroku learning frazy jest wyświetlany w obszarze iPython notesu `2_Phrase_Learning.ipynb` i skrypt w języku Python `step2.py`.
+Krok uczenia frazy implementuje podstawowe struktury stosowane do informacje kluczowe frazy wśród dużych kolekcji dokumentów. Opisano w dokumencie pt. "[modelowania wyrażeń Multiword za pomocą ograniczonego drzewa wyrażeń ulepszone tematu modelowania z konwersacji rozpoznawania mowy](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf)", który pierwotnie został przedstawiony w Workshop IEEE 2012 na używany język Technologia. Szczegółowe implementacji frazy, krok uczenia jest wyświetlany w iPython Notebook `2_Phrase_Learning.ipynb` i skrypt w języku Python `step2.py`.
 
-Ten krok zajmuje oczyszczony tekstu jako dane wejściowe i uzyskuje informacje o najbardziej istotne fraz, obecny w dużych kolekcji dokumentów. Learning frazy jest procesem iteracyjnym, które mogą być podzielone na trzy zadania: liczba n g, rank potencjalnych fraz ważone Pointwise wzajemne informacje ich składowych słów i przepisywania frazę do tekstu. Te trzy zadania są wykonywane sekwencyjnie w przejść przez wiele iteracji, dopóki nie znasz określonego wyrażenia.
+Ten krok zajmuje oczyszczony tekst jako dane wejściowe i uczy się najbardziej istotne fraz, istnieje w dużych kolekcji dokumentów. Nauka frazy jest procesem iteracyjnym, które mogą zostać podzielone na trzy zadania: liczba n gramy, rank potencjalnych fraz ważona Pointwise wzajemnego informacje o ich składowe słów i napisz ponownie wyrażenie na tekst. Te trzy zadania są wykonywane sekwencyjnie w wiele iteracji, dopóki zawarto określonego wyrażenia.
 
 W pakiecie Python analizy dokumentu, klasa Python `PhraseLearner` jest zdefiniowany w `phraseLearning.py` pliku. Poniżej przedstawiono fragment kodu umożliwia poznanie fraz.
 
@@ -172,26 +172,26 @@ phraseLearner.RunConfiguration(textData,
 ```
 
 > [!NOTE]
-> Krok learning frazy zaimplementowano z przetwarzaniem wieloprocesorowym. Jednak wykonać większej liczby rdzeni procesora CPU **nie** oznacza skrócić czas wykonywania. Nasze testy z więcej niż osiem rdzeni ze względu na obciążenie związane z przetwarzaniem wieloprocesorowym nie jest zwiększenie wydajności. Zajęło około dwóch i pół godziny, aby dowiedzieć się 25 000 fraz na maszynie z osiem rdzeni (3,6 GHz).
+> Krok uczenia frazy jest implementowany z przetwarzaniem wieloprocesorowym. Jednak zrobić więcej rdzeni procesora CPU **nie** oznacza krótszy czas wykonywania. W naszym testy wydajności nie jest widokiem z więcej niż osiem rdzeni ze względu na obciążenie przetwarzania wieloprocesowego. Aby dowiedzieć się, 25 000 fraz na maszynie z ośmioma rdzeniami (3,6 GHz) zajęło to około dwóch i pół godziny.
 >
 
-### <a name="topic-modeling"></a>Temat modelowania
+### <a name="topic-modeling"></a>Modelowanie tematu
 
-Learning Użyj modelu ukryty tematu LDA stanowi trzeci krok w tym scenariuszu. [Gensim](https://radimrehurek.com/gensim/) pakiet języka Python jest wymagany w tym kroku, aby dowiedzieć się [LDA tematu modelu](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation). Odpowiednie Notes dla tego kroku jest `3_Topic_Model_Training.ipynb`. Można także odwoływać się do `step3.py` dotyczącymi używania pakietu analizy dokumentu.
+Użyj modelu ukrytego temacie uczenia LDA stanowi trzeci krok w tym scenariuszu. [Gensim](https://radimrehurek.com/gensim/) pakiet języka Python jest wymagany w tym kroku, aby dowiedzieć się więcej [modelu tematu LDA](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation). Notes odpowiednie dla tego kroku jest `3_Topic_Model_Training.ipynb`. Może również dotyczyć `step3.py` dotyczącymi używania pakietu analizy dokumentu.
 
-W tym kroku głównym zadaniem jest do nauczenia modelu tematu LDA i dostrajanie parametrów funkcji hyper. Istnieje wiele parametrów muszą być dopasowane podczas uczenia modelu LDA najważniejszą parametru jest jednak liczbę tematów. Za mało tematy nie może mieć wgląd w kolekcji dokumentów; Podczas wybierania zbyt wiele spowoduje "nadmiernie grupowania" Boże na wiele małych, bardzo podobne tematy. Ten scenariusz ma na celu pokazują, jak dostosować liczbę tematów. Azure Machine Learning Workbench zapewnia swobody uruchamiać eksperymenty z innym parametrem konfiguracji na obliczeń różnych kontekstach.
+W tym kroku głównym zadaniem jest model LDA tematu i dostrajanie parametrów funkcji hyper. Istnieje wiele parametrów muszą być dostosowane podczas uczenia modelu LDA, ale parametr najważniejsze jest to liczba tematów. Zbyt mało tematy nie może mieć wgląd w kolekcji dokumentów; Podczas wybierania zbyt wiele wynikiem będzie "nadmiernie grupowania" korpus do wielu małych, wysoce podobnego tematów. Ten scenariusz ma na celu pokazują, jak dostosować liczbę tematów. Usługa Azure Machine Learning Workbench zapewnia swobodę uruchamiania eksperymentów przy użyciu różnych parametrów konfiguracji w kontekstach obliczeniowej.
 
-W pakiecie dokumentu analizy Python kilka funkcji zostały zdefiniowane ułatwia użytkownikom zorientować się najlepiej liczbę tematów. Pierwszym sposobem jest wyniku obliczenia spójności modelu tematu. Istnieją cztery macierzy oceny obsługiwane: `u_mass`, `c_v`, `c_uci`, i `c_npmi`. Szczegółowe informacje o tych czterech metryk, omówiono w [w tym dokumencie](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Drugi podejście jest dokonanie oceny perplexity na Boże przechowywanych w poziomie.
+W pakiecie Python analizy dokumentu zdefiniowano kilka funkcji ułatwiających użytkowników ustalenie najlepszych liczba tematów. Pierwszym sposobem jest poprzez ocenę spójność modelu tematu. Istnieją cztery macierzy oceny obsługiwane: `u_mass`, `c_v`, `c_uci`, i `c_npmi`. Szczegółowe informacje o tych czterech metryk zostały omówione w [w tym dokumencie](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Drugiej metody jest oceny perplexity na korpus przechowywanych w poziomie.
 
-Oceny perplexity krzywej kształtu "U" powinien sprawdzić najlepsze liczbę tematów. I pozycji kątowa jest najlepszym rozwiązaniem. Zalecane jest aby obliczyć wiele razy z różnych Inicjator losowy i uzyskać średnią. Ocena spójności powinien być "n" kształtu, co oznacza, że zwiększa spójność, zwiększając liczbę tematów, a następnie zmniejszyć. Przykład wykres perplexity i `c_v` spójności jest wyświetlany w następujący sposób.
+Oceny perplexity kształtu krzywej "U" oczekuje się, aby dowiedzieć się, najlepsze liczba tematów. I pozycja kątowa jest najlepszym wyborem. Zalecane jest ocena wiele razy przy użyciu różnych Inicjator losowy i Uzyskaj średnią. Oceń spójności powinien być "n" kształtu, co oznacza, że zwiększa spójność uwzględni się rosnącą liczbę tematów, a następnie zmniejszyć. Przykładowy wykres perplexity i `c_v` spójności jest wyświetlane w następujący sposób.
 
 ![Perplexity](./media/scenario-document-collection-analysis/Perplexity_Value.png)
 
 ![c_v spójności](./media/scenario-document-collection-analysis/c_v_Coherence.png)
 
-W tym scenariuszu perplexity zwiększa się znacznie po 200 tematy, a wartość spójności znacznie zmniejsza się po także tematy 200. Na podstawie tych wykresów i potrzeby bardziej ogólne tematy i za pośrednictwem tematy klastrowanych, wybierz 200 tematy powinny być dobrym rozwiązaniem.
+W tym scenariuszu perplexity zwiększa się znacznie po 200 tematów, a wartość spójności znacznie zmniejsza się po także tematy 200. Oparte na tych wykresach i wymaganą dla bardziej ogólnych tematów w porównaniu z klastrowanego tematy, wybierz 200 tematy powinny być dobrym rozwiązaniem.
 
-Możesz to zrobić później jedną LDA modelu tematu w eksperymencie co uruchomić, lub nauczanie i Ewaluacja wielu modeli LDA z konfiguracjami numer innego tematu w eksperymencie pojedynczego uruchomienia. Zaleca się uruchamiać wiele razy dla jednej konfiguracji, a następnie zachęcić średni oceny spójności i/lub perplexity. Szczegóły dotyczące używania pakietu analizy dokumentu znajdują się w `step3.py` pliku. Poniżej przedstawiono przykład fragment kodu.
+Możesz uczyć jeden LDA modelu tematu w jednego eksperymentu uruchamiać, lub nauczanie i ocena wielu modeli LDA z konfiguracjami numer innego tematu w eksperymencie Uruchom. Zalecane jest wykonywany wielokrotnie dla jednej konfiguracji, a następnie średnią ocen spójności i/lub perplexity. Szczegółowe informacje dotyczące używania pakietu analizy dokumentu można znaleźć w `step3.py` pliku. Fragment kodu przykładu są następujące:
 
 ```python
 topicmodeler = TopicModeler(docs,
@@ -218,35 +218,35 @@ perplex = topicmodeler.EvaluatePerplexity(lda)
 ```
 
 > [!NOTE]
-> Czas wykonania do uczenia modelu tematu LDA zależy od wielu czynników, takich jak rozmiar Boże, hyper parametru konfiguracji, a także liczby rdzeni na maszynie. Przy użyciu wiele rdzeni procesora CPU przygotowuje szybsze modelu. Z tego samego parametru funkcji hyper ustawienie większej liczby rdzeni oznacza jednak mniej aktualizacji podczas uczenia. Zalecane jest aby **co najmniej 100 aktualizacji do uczenia modelu LDA konwergentnej**. Relacja między liczbą aktualizacji i parametry funkcji hyper została szczegółowo opisana w [tego wpisu](https://groups.google.com/forum/#!topic/gensim/ojySenxQHi4) i [ten wpis](http://miningthedetails.com/blog/python/lda/GensimLDA/). Nasze testy zajęło około 3 godziny do uczenia modelu LDA z 200 tematów za pomocą konfiguracji `workers=15`, `passes=10`, `chunksize=1000` na maszynie z 16 rdzeni (2,0 GHz).
+> Czas wykonywania w celu nauczenia modelu tematu LDA zależy od wielu czynników, takich jak rozmiar korpus, konfiguracja hyper parametru, a także liczby rdzeni na maszynie. Za pomocą wiele rdzeni procesora CPU przygotowuje szybciej modelu. Za pomocą tego samego parametru hyper ustawienie więcej rdzeni oznacza jednak mniejszej liczby aktualizacji podczas szkolenia. Zaleca się mieć **co najmniej 100 aktualizacji do nauczenia modelu LDA osiągnięcia zbieżności**. Relacja między liczbą aktualizacji i parametry hyper została omówiona w [ten wpis](https://groups.google.com/forum/#!topic/gensim/ojySenxQHi4) i [ten wpis](http://miningthedetails.com/blog/python/lda/GensimLDA/). W naszym testy, jaki zajęło około 3 godziny do nauczenia modelu LDA 200 tematy, przy użyciu konfiguracji `workers=15`, `passes=10`, `chunksize=1000` na maszynie z 16 rdzeni (2,0 GHz).
 >
 
 ### <a name="topic-summarization-and-analysis"></a>Podsumowanie tematu i analiza
 
-Podsumowania tematu i analizy składa się z dwóch notesów, gdy istnieją nie odpowiednie funkcje w pakiecie analizy dokumentu.
+Podsumowania tematu i analizy składa się z dwa notesy, gdy istnieją żadne odpowiednie funkcje w pakiecie analizy dokumentu.
 
-W `4_Topic_Model_Summarization.ipynb`, przedstawiono podsumowanie zawartości dokumentu na podstawie uczonego modelu tematu LDA. Podsumowanie zastosowano do modelu tematu LDA uzyskane w kroku 3. Widoczny jest sposób mierzenia znaczenie lub jakości tematu przy użyciu tematu miarę czystości dokumentu. To jest miara czystości przyjęto założenie, że ukryty tematy, które dominują w aplikacjach dokumentów, w których są wyświetlane są bardziej semantycznie ważne niż ukryty tematy, które są słabo rozłożyć na wiele dokumentów. To pojęcie została wprowadzona w tym dokumencie "[ukryty modelowania tematu dla podsumowania Boże Audio](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf)."
+W `4_Topic_Model_Summarization.ipynb`, przedstawiono podsumowanie zawartości dokumentu na podstawie uczonego modelu tematu LDA. Podsumowanie jest stosowany do modelu tematu LDA uzyskane w kroku 3. Widoczny jest sposób mierzenia ważność lub jakości tematu przy użyciu tematu, aby zmierzyć czystości dokumentu. Ta miara czystości przyjęto założenie, że ukryte tematów, które dominują dokumentów, w których są wyświetlane są bardziej semantycznie ważne, niż ukrytego tematów, które są słabo rozkładają się na wiele dokumentów. To pojęcie została wprowadzona w dokumencie "[ukrytego modelowanie temat podsumowania korpus Audio](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf)."
 
-Notesu `5_Topic_Model_Analysis.ipynb` pokazano, jak analizować miejscowego zawartości kolekcji dokumentów i skorelowania miejscowego informacje pod kątem innych metadane skojarzone z tą kolekcją dokumentu. Kilka powierzchni zostały wprowadzone w tym notesie, aby ułatwić użytkownikom lepiej zrozumieć zapamiętanych tematu i kolekcji dokumentów.
+Notes `5_Topic_Model_Analysis.ipynb` pokazuje, jak analizować miejscowego zawartość w kolekcji dokumentów, możesz też skorelować miejscowego informacje pod kątem innych metadane skojarzone z kolekcji dokumentów. W ten notes, aby ułatwić użytkownikom lepsze zrozumienie nauczony tematu i kolekcji dokumentów, wprowadzono kilka powierzchni.
 
-Notesu `6_Interactive_Visualization.ipynb` pokazano, jak interaktywnie wizualizować tematu nauczony model. Obejmuje cztery zadania interakcyjne wizualizacje.
+Notes `6_Interactive_Visualization.ipynb` pokazuje, jak interaktywnie wizualizować tematu nauczony model. Obejmuje to cztery zadania interaktywnej wizualizacji.
 
 ## <a name="conclusion"></a>Podsumowanie
 
-W tym scenariuszu rzeczywistych prezentuje sposób użycia dobrze znanego tekstu analytics techniki (ten przypadek, learning frazy i modelowania tematu LDA) do tworzenia modelu niezawodny i jak Azure Machine Learning Workbench pomaga śledzić wydajność modelu oraz bezproblemowo Uruchom uczących na zwiększenia skali. Bardziej szczegółowo:
+W tym scenariuszu rzeczywistych prezentuje sposób użycia WKT text analytics technik (na w tym przypadku, nauki frazy i modelowanie tematu LDA) do tworzenia niezawodnych modeli i jak Azure Machine Learning Workbench może pomóc śledzić wydajność modelu i bezproblemowo uruchomić uczących się w większej skali. Bardziej szczegółowo:
 
-* Użyj frazy uczenie i modelowanie tematu do przetwarzania kolekcję dokumentów i tworzenie niezawodnych modelu. W przypadku dużych kolekcji dokumentów, Azure Machine Learning Workbench można łatwo go skalować w górę i out. Ponadto użytkownicy mają swobody Uruchom eksperymenty w kontekście różnych obliczeń z wewnątrz usługi Azure Machine Learning Workbench.
+* Użyj frazy uczenia i modelowanie tematu do przetwarzania kolekcji dokumentów i twórz niezawodne modelu. W przypadku duży zbiór dokumentów, Azure Machine Learning Workbench można łatwo skalować ją w górę i out. Ponadto użytkownicy mają możliwość uruchamiania eksperymentów w kontekście obliczeniowej z w ramach usługi Azure Machine Learning Workbench.
 
-* Azure Machine Learning Workbench zawiera obie opcje do uruchomienia notesów w sposób krok po kroku oraz skryptu Python całego eksperymentu.
+* Usługa Azure Machine Learning Workbench udostępnia zarówno funkcje umożliwiające uruchamianie notesów w sposób krok po kroku oraz skrypt języka Python, aby uruchomić eksperyment całego.
 
-* Potrzebne parametru funkcji Hyper dostrajanie, przy użyciu usługi Azure Machine Learning Workbench można znaleźć najlepsze liczbę tematów dowiedzieć się więcej. Azure Machine Learning Workbench może pomóc śledzenia wydajności modelu i bezproblemowo jednocześnie różnych uczących zwiększenia skali.
+* Potrzebne parametru funkcji Hyper dostrajanie, za pomocą usługi Azure Machine Learning Workbench można znaleźć najlepszą liczba tematów dowiedzieć się więcej. Usługa Azure Machine Learning Workbench może pomóc śledzić wydajność modelu i bezproblemowo uruchomić różne uczących w większej skali.
 
-* Azure Machine Learning Workbench można zarządzać Historia uruchomień i zapamiętanych modeli. Umożliwia on analityków danych, aby szybko zidentyfikować najbardziej modeli, a także znalezienia skryptów i danych używany do generowania je.
+* Usługa Azure Machine Learning Workbench można zarządzać w historii uruchamiania i nauczony modeli. Umożliwia on analitykom danych szybkie identyfikowanie najlepiej modeli oraz skrypty i dane używane do generowania ich.
 
 ## <a name="references"></a>Dokumentacja
 
-* **Hazen J. Tymotka, Krzysztof Richardson**, [ _Multiword fraz drzewo wyrażeń ograniczone do modelowania ulepszone modelowania tematu konwersacji mowy_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Język rozmowy technologii Workshop (SLT) 2012 IEEE. IEEE, 2012.
+* **Hazen J. Tymotka, Leonard Fred**, [ _modelowania Multiword fraz z drzewa wyrażeń ograniczone dla ulepszone modelowania temat konwersacji mowy_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Język mówiony technologii Workshop (SLT) 2012 IEEE. IEEE, 2012.
 
-* **Tymotka J. Hazen**, [ _modelowania ukryty tematu dla podsumowania Boże Audio_](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf). 12 Konferencji roczne skojarzeń komunikacji międzynarodowe mowy. 2011.
+* **Timothy J. Hazen**, [ _modelowanie ukrytego temat podsumowania Audio korpus_](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf). 12 corocznej konferencji skojarzeń komunikacji międzynarodowych mowy. 2011.
 
-* **Jan Roder, Andreasowi zarówno, Alexander Hinneburg**, [ _eksploracji miejsca tematu spójności środków_](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Postępowanie ósmego ACM międzynarodowe konferencji wyszukiwanie w sieci Web i wyszukiwania danych. ACM, 2015.
+* **Michael Roder, Andreas obu, Alexander Hinneburg**, [ _Eksplorowanie miejsca na temat spójności środków_](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf). Postępowanie ósmego ACM międzynarodowej konferencji dotyczącej wyszukiwania w Internecie i analizą danych. ACM, 2015 R.

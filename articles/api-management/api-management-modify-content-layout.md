@@ -3,7 +3,7 @@ title: Modyfikowanie zawartości stron w portalu deweloperów w usłudze Azure A
 description: Dowiedz się, jak edytować zawartość stron w portalu deweloperów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
-author: antonba
+author: vlvinogr
 manager: vlvinogr
 editor: ''
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: bcf48ab8dd3b57ace70fa713074b13a992940002
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: vlvinogr
+ms.openlocfilehash: 4a372b54ace87816b9e7cccbd38466331b5ebfc7
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29377803"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437600"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Modyfikowanie zawartości i układu stron w portalu deweloperów w usłudze Azure API Management
 Istnieją trzy podstawowe sposoby dostosowywania portalu deweloperów w usłudze Azure API Management:
@@ -34,7 +34,7 @@ Portal deweloperów jest oparty na systemie zarządzania zawartością. Układ k
 
 ![Struktura stron portalu deweloperów][api-management-customization-widget-structure]
 
-Wszystkie widżety można edytować. 
+Wszystkie widżety można edytować.
 * Podstawowa zawartość poszczególnych stron znajduje się w widżecie „Zawartość”. Edycja strony polega na edytowaniu zawartości tego widżetu.
 * Wszystkie elementy układu strony są zawarte w pozostałych widżetach. Zmiany wprowadzone w tych widżetach są stosowane do wszystkich stron. Są one nazywane „widżetami układu”.
 
@@ -42,12 +42,12 @@ W ramach codziennej edycji stron zwykle modyfikowany jest tylko widżet Zawarto�
 
 ## <a name="modify-layout-widget"> </a>Modyfikowanie zawartości widżetu układu
 
-Portal deweloperów jest dostępny z poziomu witryny Azure Portal. 
+Portal deweloperów jest dostępny z poziomu witryny Azure Portal.
 
 1. Kliknij pozycję **Portal deweloperów** na pasku narzędzi wystąpienia usługi API Management.
-2. Aby edytować zawartość widżetów, w menu **Portalu deweloperów** po lewej stronie kliknij ikonę przedstawiającą dwa pędzle. 
+2. Aby edytować zawartość widżetów, w menu **Portalu deweloperów** po lewej stronie kliknij ikonę przedstawiającą dwa pędzle.
 3. Aby zmodyfikować zawartość nagłówka, przewiń listę po lewej stronie do sekcji **Nagłówek**.
-    
+
     Widżety można edytować w polach.
 4. Gdy zmiany będą gotowe do opublikowania, kliknij pozycję **Publikuj** w dolnej części strony.
 

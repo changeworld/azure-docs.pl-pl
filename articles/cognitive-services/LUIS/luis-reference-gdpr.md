@@ -1,6 +1,6 @@
 ---
-title: Eksport i usuwanie danych klienta - LUIS — kognitywnych usług Azure || Dokumentacja firmy Microsoft
-description: Odwołanie do eksportowania i usunięcie danych klienta z języka opis usługi (LUIS).
+title: Eksportowanie i usunięcia danych klienta - usługi LUIS — usług Azure Cognitive Services || Dokumentacja firmy Microsoft
+description: Odwołanie do eksportowania i usuwania danych klienta z usługi Language Understanding (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,40 +9,40 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: v-geberr;
-ms.openlocfilehash: f684b8ab875e2fbb774dc4a29bce25be41b24e6d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8b4f9c17557b405bc5f4e78947952826724fc784
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349581"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865066"
 ---
-# <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Wyeksportowanie i usunięcie danych klienta w języku opis (LUIS) w usługach kognitywnych
+# <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Eksportowanie i usunąć swoje dane klienta w Language Understanding (LUIS) w usługach Cognitive Services
 
 ## <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
-Usługa inteligentnego opis języka (LUIS) zachowuje zawartość klienta działanie usługi, ale LUIS użytkownik ma pełną kontrolę nad wyświetlanie, eksportowanie i usuwanie ich danych. Można to zrobić za pośrednictwem sieci web LUIS [portal](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions) lub [LUIS programowe interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+Language Understanding Intelligent Service (LUIS) pozwala zachować zawartość klienta w celu oferowania usługi, ale użytkownik usługi LUIS ma pełną kontrolę nad wyświetlania, eksportowania i usuwania ich danych. Można to zrobić za pośrednictwem sieci web usługi LUIS [portal](luis-reference-regions.md) lub [programistycznych interfejsów API usługi LUIS](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Zawartość klienta jest przechowywany jako zaszyfrowany w magazynie Azure regionalnych firmy Microsoft i obejmuje:
+Zawartość klienta jest przechowywane w postaci zaszyfrowanej w usłudze Azure storage regionalnych firmy Microsoft i zawiera:
 
 - Zawartość konta użytkownika zebranych podczas rejestracji
-- Dane szkoleniowe wymagane do tworzenia modeli (tj. zamiar & jednostki)
-- Zapytania użytkownika rejestrowane w czasie wykonywania, aby pomóc w udoskonalaniu modeli użytkownika
-  - Użytkownicy mogą wyłączyć rejestrowanie zapytań przez dołączenie `&log=false` na żądanie szczegółów [tutaj](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-resources-faq#how-can-i-disable-the-logging-of-utterances)
+- Dane szkoleniowe, które są wymagane do tworzenia modeli (np. celem & jednostki)
+- Zapytania użytkowników rejestrowane w czasie wykonywania, aby pomóc w ulepszaniu modeli użytkownika
+  - Użytkownicy mogą wyłączyć rejestrowanie zapytań, dodając `&log=false` na żądanie, szczegóły [tutaj](luis-resources-faq.md#how-can-i-disable-the-logging-of-utterances)
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
-LUIS użytkownicy mają pełną kontrolę, można usunąć żadnej zawartości użytkownika przy użyciu portalu sieci web LUIS lub interfejsów API programowe LUIS. W poniższej tabeli przedstawiono łącza z obu:
+Usługa LUIS użytkownicy mają pełną kontrolę nad usuwania zawartości użytkownika, za pośrednictwem portalu sieci web usługi LUIS lub programistycznych interfejsów API usługi LUIS. Poniższa tabela zawiera linki z obu:
 
-| | **Konto użytkownika** | **Aplikacji** | **Utterance(s)** | **Zapytania użytkownika końcowego** |
+| | **Konto użytkownika** | **Aplikacja** | **Utterance(s)** | **Zapytania użytkowników końcowych** |
 | --- | --- | --- | --- | --- |
-| **Portal** | [Link](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-account-settings) | [Link](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#delete-app) | [Link](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#delete-app) | [Link](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app#delete-app) |
-| **Interfejsy API** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
+| **Portal** | [Link](luis-how-to-account-settings.md) | [Link](create-new-app.md#delete-app) | [Link](create-new-app.md#delete-app) | [Link](create-new-app.md#delete-app) |
+| **Interfejsy API** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
-LUIS użytkownicy mają pełną kontrolę do wyświetlania danych w portalu, jednak musi być eksportowany za pośrednictwem interfejsów API programowe LUIS. W poniższej tabeli przedstawiono łącza z eksportuje dane za pośrednictwem interfejsów API programowe LUIS:
+Użytkownicy usługi LUIS mają pełną kontrolę do wyświetlania danych w portalu, jednak musi być eksportowany za pomocą programistycznych interfejsów API usługi LUIS. Poniższa tabela zawiera linki ułatwiających eksportowanie danych za pomocą programistycznych interfejsów API usługi LUIS:
 
-| | **Konto użytkownika** | **Aplikacji** | **Utterance(s)** | **Zapytania użytkownika końcowego** |
+| | **Konto użytkownika** | **Aplikacja** | **Utterance(s)** | **Zapytania użytkowników końcowych** |
 | --- | --- | --- | --- | --- |
 | **Interfejsy API** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
@@ -50,4 +50,4 @@ LUIS użytkownicy mają pełną kontrolę do wyświetlania danych w portalu, jed
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Odwołanie do LUIS regionów](./luis-reference-regions.md)
+> [Odwołanie do regionów usługi LUIS](./luis-reference-regions.md)

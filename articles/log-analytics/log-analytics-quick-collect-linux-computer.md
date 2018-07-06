@@ -3,7 +3,7 @@ title: Zbieranie danych z lokalnych komputerów z systemem Linux przy użyciu us
 description: Dowiedz się, jak wdrożyć agenta Log Analytics dla systemu Linux i włączyć zbieranie danych z tego systemu operacyjnego przy użyciu usługi Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -15,12 +15,13 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: af385a7cbf97ff15156cc78c77f8b54e2f79badb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: aca8ee7305f919068733dfa3cb636a0f9bad7b05
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637637"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127173"
 ---
 # <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Zbieranie danych z komputerów z systemem Linux hostowanych w danym środowisku
 Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z fizycznego lub wirtualnego komputera z systemem Linux i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku prostych krokach skonfigurować i rozpocząć zbieranie danych z komputera z systemem Linux.  Aby uzyskać informacje dotyczące maszyn wirtualnych platformy Azure z systemem Linux, zobacz następujący temat [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
