@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc05ff8c6961cd9389a12ff9c082867eecb79bca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eff93b37be2ff770b90518f886bd4b54fa0ca2a1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450086"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868994"
 ---
 # <a name="what-is-the-access-panel"></a>Co to jest panelu dostępu?
 
@@ -104,6 +104,10 @@ Aby użyć wewnętrznego firmy adresy URL, podczas pracy zdalnej przy użyciu ro
 2. [Opublikuj aplikację](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) i adresem URL za pośrednictwem serwera Proxy aplikacji.
 3. Zainstaluj rozszerzenie, a następnie zalogować się w niej, wybierając pozycję Zaloguj się na rozpoczęcie pracy.
 4. Możesz teraz przejść do adresu URL wewnętrzne firmy, nawet w trakcie zdalnego.
+
+> [!NOTE]
+> Mogą także wyłączyć automatyczne przekierowanie do adresów URL firmy koło zębate ustawień w menu głównym a zaznaczając **poza** firmy wewnętrzny adres URL przekierowania opcji.
+
 
 ## <a name="mobile-app-support"></a>Obsługa aplikacji mobilnych
 

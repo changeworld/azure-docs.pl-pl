@@ -1,6 +1,6 @@
 ---
-title: Używany jest łącznik serwera programu SharePoint w aplikacji logiki | Dokumentacja firmy Microsoft
-description: Rozpoczynanie pracy przy użyciu łącznika serwera programu SharePoint w aplikacji logiki
+title: Używanie łącznika serwera programu SharePoint w aplikacji logiki | Dokumentacja firmy Microsoft
+description: Rozpoczęcie korzystania z łącznika serwera programu SharePoint w aplikacji logiki
 services: logic-apps
 documentationcenter: ''
 author: ecfan
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: c153b4987e37a5d97b95d4f1249de1ed92e851b3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3ac3105231017cdbf8bfcf143b26451a68da5283
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295948"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868705"
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>Rozpoczynanie pracy z łącznikiem programu SharePoint
-Łącznik programu SharePoint zapewnia sposób pracy z listy w programie SharePoint.
+Łącznik programu SharePoint udostępnia sposób pracy z listami w programie SharePoint.
 
-Rozpoczynanie pracy przez tworzenie aplikacji logiki; zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Zacznij od utworzenia aplikacji logiki; zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-sharepoint"></a>Utwórz połączenie programu SharePoint
 Do korzystania z łącznika programu SharePoint, należy najpierw utworzyć **połączenia** następnie podaj szczegóły tych właściwości: 
@@ -34,25 +34,25 @@ Do korzystania z łącznika programu SharePoint, należy najpierw utworzyć **po
 | --- | --- | --- |
 | Token |Yes |Podaj poświadczenia programu SharePoint |
 
-Aby nawiązać połączenie **SharePoint**, wprowadź swoją tożsamość, (nazwa użytkownika i hasło, poświadczeń karty inteligentnej i tak dalej). Po uwierzytelniono, można przystąpić do korzystania z łącznika programu SharePoint w aplikacji logiki. 
+Aby nawiązać połączenie **SharePoint**, wprowadź swoją tożsamość (nazwa użytkownika i hasło, poświadczeń karty inteligentnej i tak dalej). Po użytkownik został uwierzytelniony, możesz przejść do korzystania z łącznika programu SharePoint w aplikacji logiki. 
 
-W Projektancie aplikacji logiki, wykonaj następujące kroki, aby Zaloguj się i utworzyć **połączenia** do użycia w aplikacji logiki:
+Znajduje się w Projektancie aplikacji logiki, wykonaj następujące kroki, aby logowanie i tworzenie **połączenia** do użycia w aplikacji logiki:
 
-1. Wprowadź w polu wyszukiwania programu SharePoint i poczekaj, aż wyszukiwania zwrócić wszystkie wpisy z programem SharePoint w nazwie:   
+1. W polu wyszukiwania wprowadź programu SharePoint i poczekaj na wyszukiwanie, aby zwrócić wszystkie wpisy z programem SharePoint w imieniu:   
    ![Konfigurowanie programu SharePoint][1]  
 2. Wybierz **SharePoint — po utworzeniu pliku**   
-3. Wybierz **Zaloguj się do programu SharePoint**:   
+3. Wybierz **logowanie w programie SharePoint**:   
    ![Konfigurowanie programu SharePoint][2]    
 4. Podaj poświadczenia programu SharePoint, aby zalogować się do uwierzytelniania za pomocą programu SharePoint   
    ![Konfigurowanie programu SharePoint][3]     
-5. Po zakończeniu uwierzytelniania są przekierowywane do aplikacji logiki do ukończenia jej przez skonfigurowanie SharePoint **podczas tworzenia pliku** okna dialogowego.          
+5. Po ukończeniu uwierzytelniania są przekierowywane w do aplikacji logiki do jego wykonania, konfigurując dla programu SharePoint **po utworzeniu pliku** okna dialogowego.          
    ![Konfigurowanie programu SharePoint][4]  
 6. Następnie można dodać inne wyzwalacze i akcje, które należy wykonać aplikację logiki.   
-7. Zapisz swoją pracę, wybierając **zapisać** menu (w kierunku do góry).
+7. Zapisz swoją pracę, wybierając **Zapisz** menu (u góry).
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/sharepoint/).
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/sharepoint/).
 
 ## <a name="more-connectors"></a>Więcej łączników
 Wróć do [listy interfejsów API](apis-list.md).

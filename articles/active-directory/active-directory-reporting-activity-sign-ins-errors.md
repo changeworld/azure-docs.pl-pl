@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cc5b4955d6bd239f99a9be0ab158ac8003f67ddf
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 8892f9a2699d18fbaf9161ffb01906a071ab2243
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110525"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856760"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -75,6 +75,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50008|Brak potwierdzenia SAML lub zostało ono nieprawidłowo skonfigurowane w tokenie. Skontaktuj się z dostawcą federacji.|
 |50010|Weryfikacja identyfikatora URI odbiorców dla aplikacji nie powiodła się, ponieważ nie skonfigurowano żadnych odbiorców z tokenem. Skontaktuj się z właścicielem aplikacji|
 |50011|Brak adresu zwrotnego, został nieprawidłowo skonfigurowany lub jest inny niż adresy zwrotne skonfigurowane dla aplikacji. Wypróbuj rozwiązanie opisane tutaj: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Jeśli nadal występują problemy, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji|
+|50012| Jest ogólny komunikat, który wskazuje, że uwierzytelnianie nie powiodło się. Może to nastąpić powodów, takich jak brakujące lub nieprawidłowe poświadczenia lub oświadczenia w żądaniu. Upewnij się, że żądanie jest wysyłane z prawidłowymi poświadczeniami i oświadczeń. |
 |50013|Potwierdzenie jest nieprawidłowe z różnych przyczyn: — wystawca tokenu nie odpowiada wersji interfejsu API w jej prawidłowym zakresie czasu, — wygasło, — jest źle sformułowane, — token odświeżania w potwierdzeniu nie jest głównym tokenem odświeżania.|
 |50017|Weryfikacja certyfikacji nie powiodła się z następujących powodów:<ul><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Nie można odnaleźć oczekiwanego elementu CrlSegment</li><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Punkt dystrybucji różnicowej listy CRL jest skonfigurowany bez odpowiedniego punktu dystrybucji listy CRL</li><li>Nie można pobrać prawidłowych segmentów listy CRL z powodu przekroczenia limitu czasu</li><li>Nie można pobrać listy CRL</li></ul>Skontaktuj się z administratorem dzierżawy.|
 |50020|Użytkownik nie jest autoryzowany — nie można wystawić tokenów z powodu problemu z wersją — nie podano nazwy wystawcy — problemy z nazwą wystawcy (wartość null — maksymalna długość). Skontaktuj się z właścicielem aplikacji|
@@ -104,7 +105,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50120|Problem z nagłówkiem JWT. Skontaktuj się z administratorem dzierżawy.|
 |50124|Przekształcenie oświadczeń zawiera nieprawidłowy parametr wejściowy. Skontaktuj się z administratorem dzierżawy, aby zaktualizować zasady.|
 |50125|Logowanie zostało przerwane z powodu wpisu dotyczącego resetowania lub rejestracji hasła|
-|50126|Nieprawidłowa nazwa użytkownika lub hasło lub lokalnego Nieprawidłowa nazwa użytkownika lub hasło.|
+|50126|Nieprawidłowa nazwa użytkownika lub hasło lub nieprawidłowy lokalnej nazwy użytkownika i hasła.|
 |50127|Użytkownik musi zainstalować aplikację brokera, aby uzyskać dostęp do tej zawartości.|
 |50128|Nieprawidłowa nazwa domeny — żadne informacje identyfikujące dzierżawę nie zostały znalezione w żądaniu ani nie są implikowane przez jakiekolwiek podane poświadczenia|
 |50129|Urządzenie nie jest dołączone w miejscu pracy — dołączanie w miejscu pracy jest wymagane do zarejestrowania urządzenia.|
@@ -173,7 +174,9 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |81001|Bilet Kerberos użytkownika jest zbyt duży. Może to się zdarzyć, jeśli użytkownik jest w zbyt wielu grupach i w związku z tym bilet Kerberos zawiera zbyt wiele członkostw w grupach. Zmniejsz liczbę członkostw użytkownika w grupach i spróbuj ponownie.|
 |81005|Pakiet uwierzytelniania nie jest obsługiwany|
 |81007|Dzierżawa nie jest włączona dla bezproblemowego logowania jednokrotnego|
-
+|90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. 
+|90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|
+|90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

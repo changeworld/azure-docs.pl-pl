@@ -1,6 +1,6 @@
 ---
-title: Poziomy spójności w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Azure DB rozwiązania Cosmos ma pięć poziomy spójności, aby ułatwić równoważenie ostatecznego spójności, dostępnością i opóźnieniem kompromis.
+title: Poziomy spójności w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Usługa Azure Cosmos DB ma pięć poziomów spójności, aby ułatwić równoważenie ostatecznej spójnością, dostępnością i opóźnieniem wad i zalet.
 keywords: eventual consistency, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e60a69e69f13dd6b8b34fafaa384f032f2ece11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611827"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857188"
 ---
-# <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności danych dostosowywalne w usłudze Azure DB rozwiązania Cosmos
-Azure DB rozwiązania Cosmos jest zaprojektowany od podstaw się z globalnego dystrybucji pamiętać dla każdego modelu danych. Zaprojektowano go do zapewnienia gwarancje przewidywalną małe opóźnienia i wielu modeli dobrze zdefiniowany swobodna spójności. Obecnie bazy danych Azure rozwiązania Cosmos zawiera pięć poziomów spójności: silne, nieaktualność, sesji, prefiks spójne i "ostateczna". Nieaktualność, sesji prefiks spójne i ostatecznego są nazywane "swobodna spójności modeli" świadczą one mniej spójności niż silne, czyli większości wysokiej spójny model dostępne. 
+# <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności dostosowania danych w usłudze Azure Cosmos DB
+Usługa Azure Cosmos DB została zaprojektowana od podstaw się o globalnej dystrybucji, należy pamiętać, dla każdego modelu danych. Jest przeznaczony do oferty gwarancje przewidywalne małe opóźnienia i wiele dobrze zdefiniowanych swobodna modeli spójności. Obecnie usługa Azure Cosmos DB oferuje pięć poziomów spójności: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Powiązana nieaktualność, sesja, spójny prefiks i ostateczna są określane jako "modele rozluźnionej spójności", ponieważ zapewniają one mniej spójności od jego siły, czyli większość wysoce spójny model, dostępne. 
 
-Oprócz **silne** i **spójność ostateczna** modeli często oferowane przez rozproszonych baz danych, bazy danych rozwiązania Cosmos Azure udostępnia trzy modele więcej starannie wersja i operationalized spójności:  **ograniczone nieaktualności**, **sesji**, i **spójne prefiks**. Przydatność każdego z tych poziomów spójności została zweryfikowana względem rzeczywistych przypadków użycia. Zbiorczo te poziomy spójności pięć umożliwiają należy dobrze uzasadnione kompromis między spójności, dostępnością i opóźnieniem. 
+Oprócz **silne** i **spójności ostatecznej** modele często oferowane przez rozproszonych baz danych, usługi Azure Cosmos DB oferuje trzy więcej modeli spójności uważnie wersja i zoperacjonalizowanej:  **powiązana nieaktualność**, **sesji**, i **spójny prefiks**. Użyteczność każdego z tych poziomów spójności został zweryfikowany w kontekście świata rzeczywistego, przypadki użycia. Zbiorczo te poziomy spójności pięć umożliwiają wykonywanie dobrze uzasadnione kompromis między spójnością, dostępnością i opóźnieniem. 
 
-W poniższego klipu wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure przedstawiono funkcje gotowe dystrybucji globalnego.
+W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu pokazuje funkcje kompleksowa dystrybucja globalna.
 
 >[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
 
-## <a name="distributed-databases-and-consistency"></a>Rozproszone baz danych i spójności
-Komercyjnych rozproszonej bazy danych można podzielić na dwie kategorie: baz danych, które nie oferują opcji dobrze zdefiniowany możliwością ich kontrolowania spójności na wszystkich i baz danych, które oferują dwie możliwości programowania extreme (silne a spójność ostateczna). 
+## <a name="distributed-databases-and-consistency"></a>Rozproszonych baz danych i spójność
+Komercyjnie rozpowszechniane bazy danych można podzielić na dwie kategorie: bazy danych, które nie są one dobrze zdefiniowanych sprawdzalnych opcji spójności na wszystkich i baz danych, które oferują dwie skrajne opcje programowania (spójność silna lub ostateczna). 
 
-Pierwsze zmuszają deweloperów aplikacji do zajmowania się drobnymi szczegółami protokołów replikacji i wymagają dokonywania trudnych wyborów między spójnością, dostępnością, opóźnieniem i przepływnością. Drugie kładą nacisk na konieczność wyboru między dwoma skrajnościami. Pomimo mnogości badań i ponad 50 propozycji modeli spójności społeczność związana z rozpowszechnianymi bazami danych nie była w stanie skomercjalizować poziomów spójności poza spójnością silną i ostateczną. Rozwiązania cosmos DB umożliwia deweloperom wybór między pięć modeli dobrze zdefiniowany spójności wzdłuż spektrum spójności — siły, spójność powiązanej nieaktualności [sesji](http://dl.acm.org/citation.cfm?id=383631), prefiks spójne i "ostateczna". 
+Pierwsze zmuszają deweloperów aplikacji do zajmowania się drobnymi szczegółami protokołów replikacji i wymagają dokonywania trudnych wyborów między spójnością, dostępnością, opóźnieniem i przepływnością. Drugie kładą nacisk na konieczność wyboru między dwoma skrajnościami. Pomimo mnogości badań i ponad 50 propozycji modeli spójności społeczność związana z rozpowszechnianymi bazami danych nie była w stanie skomercjalizować poziomów spójności poza spójnością silną i ostateczną. Usługa cosmos DB umożliwia deweloperom wybranie pięć dokładnie zdefiniowanych modeli spójności wzdłuż spektrum spójności — silna, powiązana nieaktualność [sesji](http://dl.acm.org/citation.cfm?id=383631), spójny prefiks i "eventual". 
 
 ![Usługa Azure Cosmos DB oferuje wiele dobrze zdefiniowanych (swobodniejszych) modeli spójności do wyboru](./media/consistency-levels/five-consistency-levels.png)
 
@@ -40,101 +40,101 @@ W poniższej tabeli przedstawiono poszczególne gwarancje oferowane przez każdy
 
 | Poziom spójności | Gwarancje |
 | --- | --- |
-| Silna | Linearizability. Odczyty dotrą do zwrócenia najnowszej wersji elementu.|
-| Powiązana nieaktualność | Spójny prefiks. Odczyty opóźniona zapisy, przez co najwyżej k prefiksy lub interwał t |
+| Silna | Atomowych. Operacje odczytu mają gwarancję zwracają najbardziej aktualną wersję elementu.|
+| Powiązana nieaktualność | Spójny prefiks. Odczyty opóźnione w stosunku do zapisów o co najwyżej k prefiksów lub interwał równy t |
 | Sesja   | Spójny prefiks. Monotoniczne odczyty, monotoniczne zapisy, odczytywanie swoich zapisów, zapisy następują po odczytach |
 | Spójny prefiks | Zwracane aktualizacje to pewne prefiksy ze wszystkich aktualizacji, bez przerw |
 | Ostateczna  | Odczyty poza kolejnością |
 
-Na koncie usługi Cosmos DB można skonfigurować domyślny poziom spójności (i później przesłonić spójność dla określonego żądania odczytu). Wewnętrznie domyślny poziom spójności stosuje się do danych w ramach zestawy partycji, które mogą obejmować regionów. Spójność powiązanej nieaktualności preferowane jest około 73% spójność sesji Użyj dzierżaw usługi Azure DB rozwiązania Cosmos i 20%. Około 3% klientów bazy danych Azure rozwiązania Cosmos wypróbować różne poziomy spójności początkowo przed rozpoczęciem na wybór spójności określonych aplikacji. Tylko 2% dzierżaw usługi Azure DB rozwiązania Cosmos zastąpić poziomy spójności na podstawie danego żądania. 
+Na koncie usługi Cosmos DB można skonfigurować domyślny poziom spójności (i później przesłonić spójność dla określonego żądania odczytu). Wewnętrznie domyślny poziom spójności ma zastosowanie do danych w zestawach partycji, które może obejmować regiony. Preferuj powiązana nieaktualność, około 73% spójność sesji Użyj dzierżaw usługi Azure Cosmos DB i 20%. Około 3% klientów usługi Azure Cosmos DB eksperymentować z różnymi poziomami spójności początkowo przed rozpoczęciem na wybranie określonych spójności w swojej aplikacji. Tylko 2% dzierżaw usługi Azure Cosmos DB musi zostać zastąpiona poziomów spójności na podstawie danego żądania. 
 
-W DB rozwiązania Cosmos Odczyty podawane w sesji, prefiks spójne i spójność ostateczna dwukrotnie są jako tanie jako odczyty z nieaktualności silne lub ograniczonych. Rozwiązania cosmos bazy danych ma branży kompleksowe umów SLA, w tym gwarancje spójności oraz dostępność, przepustowości i opóźnień. Wykorzystuje bazę danych systemu Azure rozwiązania Cosmos [sprawdzania linearizability](http://dl.acm.org/citation.cfm?id=1806634), które stale pracuje nad telemetrii usługi i jawnie raporty naruszenie spójności dla Ciebie. Spójność powiązanej nieaktualności bazy danych Azure rozwiązania Cosmos monitoruje i raportuje wszelkie naruszenia granice k i t. Dla wszystkich pięciu poziomów spójności swobodna udostępnia również bazy danych Azure rozwiązania Cosmos [probabilistically ograniczone Metryka nieaktualności](http://dl.acm.org/citation.cfm?id=2212359) bezpośrednio do użytkownika.  
+W usłudze Cosmos DB odczytuje udostępnione pod sesja, spójny prefiks, i spójności ostatecznej dwa razy są jak tania jako odczyty z spójnością silną lub ograniczonych nieaktualność. Usługa cosmos DB ma branży kompleksowe umowy SLA, w tym gwarancje spójności oraz dostępność, przepływność i opóźnienie. Usługa Azure Cosmos DB wykorzystuje [sprawdzania atomowych](http://dl.acm.org/citation.cfm?id=1806634), który działa w sposób ciągły telemetrii usługi i jawnie raporty naruszenia wszelkich spójności. Dla powiązana nieaktualność usługi Azure Cosmos DB, monitoruje i zgłasza wszelkie naruszenia granic k i t. Dla wszystkich pięciu poziomów rozluźnionej spójności, również raporty usługi Azure Cosmos DB [probabilistically powiązana nieaktualność metryki](http://dl.acm.org/citation.cfm?id=2212359) bezpośrednio do użytkownika.  
 
 ## <a name="service-level-agreements"></a>Umowy dotyczące poziomu usług
 
-Azure DB rozwiązania Cosmos oferuje kompleksowe 99,99% [SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) które przepływności gwarancji, spójności, dostępnością i opóźnieniem dla bazy danych Azure rozwiązania Cosmos bazy danych konta ograniczone do jednego regionu Azure skonfigurowany z żadnym z pięciu spójności poziomy, lub konta bazy danych obejmujących wiele regiony platformy Azure, skonfigurowanych za pomocą dowolnego z czterech poziomów spójności swobodna. Ponadto niezależnie od wyboru poziomu spójności, bazy danych rozwiązania Cosmos Azure oferuje 99,999% umowy SLA dla dostępności odczytu dla konta bazy danych obejmujących co najmniej dwóch regionach platformy Azure.
+Usługa Azure Cosmos DB oferuje kompleksową dostępność przez 99,99% [umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) które przepływności gwarancji, spójnością, dostępnością i opóźnieniem dla usługi Azure Cosmos DB, bazy danych kont ograniczone do jednego regionu platformy Azure skonfigurowano dowolne pięć spójności poziomy lub konta bazy danych obejmujące wiele regionów platformy Azure skonfigurowano przy użyciu dowolnego z czterech poziomów rozluźnionej spójności. Ponadto niezależnie od wybranego poziomu spójności, usługi Azure Cosmos DB oferuje umowy SLA 99,999% dostępności odczytu dla konta bazy danych obejmujące co najmniej dwóch regionach platformy Azure.
 
 ## <a name="scope-of-consistency"></a>Zakres spójności
-Poziom szczegółowości spójności obejmuje żądanie jednego użytkownika. Żądanie zapisu może odpowiadać insert, replace, upsert lub usunąć transakcji. Podobnie jak w przypadku operacji zapisu, transakcji odczytu/zapytania ma również zakres na żądanie użytkownika. Użytkownik może być konieczna w dużej z podziałem na strony zestawu wyników, obejmujących wiele partycji, ale każda odczytać transakcji jest ograniczone do jednej strony i udostępniane przez w ramach jednej partycji.
+Poziom szczegółowości spójności jest ograniczony do żądań pojedynczego użytkownika. Żądania zapisu może odpowiadać insert, replace, upsert lub usunąć transakcji. Podobnie jak w przypadku zapisu transakcji odczytu/zapytania również obejmuje żądań pojedynczego użytkownika. Użytkownik może być konieczne stronicowanie za pośrednictwem duży zestaw wyników, obejmujące wiele partycji, ale każdy odczyt transakcja jest ograniczone do pojedynczej strony i udostępniana z w obrębie jednej partycji.
 
 ## <a name="consistency-levels"></a>Poziomy spójności
-Domyślny poziom spójności można skonfigurować na Twoim koncie bazy danych, która ma zastosowanie do wszystkich kolekcji (i baz danych) na koncie DB rozwiązania Cosmos. Domyślnie wszystkie odczyty i zapytań wystawiony na podstawie zasoby zdefiniowane przez użytkownika będą używać domyślnego poziomu spójności określonego na konto bazy danych. Może osłabić poziomu spójności odczytu/zapytania określonego żądania, używając w każdej z obsługiwanych interfejsów API. Istnieje pięć typów poziomy spójności obsługiwane przez protokół replikacji bazy danych Azure rozwiązania Cosmos zapewniające wyczyść zależność między spójności określone gwarancje i wydajności, zgodnie z opisem w tej sekcji.
+Domyślny poziom spójności na Twoje konto bazy danych, która ma zastosowanie do wszystkich kontenerów (i baz danych) można skonfigurować w ramach konta usługi Cosmos DB. Domyślnie wszystkie operacje odczytu i zapytania względem zasobów zdefiniowanych przez użytkownika używa domyślny poziom spójności określony na koncie bazy danych. Umożliwiają nieprzestrzeganie poziomu spójności odczytu/zapytania określonego żądania przy użyciu w każdej z obsługiwanych interfejsów API. Istnieje pięć typów poziomów spójności obsługiwane przez protokół replikacji usługi Azure Cosmos DB, zapewniających wyczyść kompromis między wydajnością, a gwarancje spójności określonych, zgodnie z opisem w tej sekcji.
 
 <a id="strong"></a>
 **Silne**: 
 
-* Zapewnia wysoki poziom spójności [linearizability](https://aphyr.com/posts/313-strong-consistency-models) gwarancja odczyty gwarancji, aby powrócić do najnowszej wersji elementu. 
-* Silna spójność gwarantuje, że zapis jest widoczny dopiero w po jest trwałym zatwierdzeniu przez większość kworum replik. Zapis jest albo synchronicznie trwałym zatwierdzeniu przez serwera podstawowego i kworum replik pomocniczych, lub jest zostało przerwane. Odczytu zawsze zostaje potwierdzony głosów kworum do odczytu, klient nigdy nie widzą zapisu niezatwierdzone lub jej część jest zawsze gwarantowane można odczytać najnowszych potwierdzonego zapisu. 
-* Azure DB rozwiązania Cosmos kont, które są skonfigurowane do używania wysoki poziom spójności nie można skojarzyć więcej niż jeden region platformy Azure z użyciem konta bazy danych Azure rozwiązania Cosmos.  
-* Koszt operacja odczytu (w postaci liczby [jednostek żądania](request-units.md) używane) z wysoki poziom spójności jest wyższy niż sesji i "ostateczna", ale taka sama jak spójność powiązanej nieaktualności.
+* Zapewnia wysoki poziom spójności [atomowych](https://aphyr.com/posts/313-strong-consistency-models) gwarancja odczyty gwarancję zwracania najbardziej aktualną wersję elementu. 
+* Wysoki poziom spójności gwarantuje, że operacja zapisu jest tylko widoczne po jest trwale zatwierdzone przez kworum z większością replik. Zapis albo synchronicznie stawia trwale zarówno podstawowego, jak i kworum replik pomocniczych lub została ona przerwana. Odczyt jest zawsze potwierdzane przez większością odczytu kworum, klient nigdy nie zobaczy zapisu niezatwierdzone lub częściowe i zawsze musi odczytać najnowszy potwierdzony zapis. 
+* Konta usługi Cosmos DB platformy Azure, które są skonfigurowane do używania wysoki poziom spójności nie można skojarzyć więcej niż jednego regionu platformy Azure przy użyciu swojego konta usługi Azure Cosmos DB.  
+* Koszt operacji odczytu (pod względem [jednostek żądania](request-units.md) używane) za pomocą silnej spójności jest wyższa niż sesji oraz "eventual", ale taka sama jak powiązana nieaktualność.
 
 <a id="bounded-staleness"></a>
-**Ograniczone nieaktualności**: 
+**Powiązana nieaktualność**: 
 
-* Ograniczone nieaktualności gwarantuje spójności odczytami może opóźniona zapisy, przez co najwyżej *K* wersji lub prefiksy elementu lub *t* interwał czasu. 
-* W związku z tym podczas wybierania ograniczone nieaktualności, "nieaktualności" można skonfigurować na dwa sposoby: numer wersji *K* elementu za pomocą którego odczytami opóźniona zapisami i przedział czasu *t* 
-* Ograniczone nieaktualności oferty globalne zamówienia z wyjątkiem "okna nieaktualności." Istnieje monotoniczna gwarancje odczytu w obrębie regionu zarówno wewnątrz i na zewnątrz "nieaktualności okno." 
-* Spójność powiązanej nieaktualności zapewnia gwarancję spójności silniejsze niż sesji, spójne prefiksu lub spójność ostateczna. Dla aplikacji rozproszonych globalnie zaleca się, że używasz spójność powiązanej nieaktualności w scenariuszach, gdzie chcesz mieć wysoki poziom spójności, jednak dostępności 99,99% i małe opóźnienia.   
-* Azure kont rozwiązania Cosmos bazy danych, które są skonfigurowane przy użyciu spójność powiązanej nieaktualności można skojarzyć dowolną liczbę regiony platformy Azure z użyciem konta bazy danych Azure rozwiązania Cosmos. 
-* Koszt operacja odczytu (pod względem używane RUs) z spójność powiązanej nieaktualności jest wyższy niż sesji i spójność ostateczna, ale taka sama jak wysoki poziom spójności.
+* Powiązana nieaktualność gwarancje spójności, które odczytami może być opóźniona zapisów o co najwyżej *K* wersje lub prefiksy elementu lub *t* przedział czasu. 
+* W związku z tym, podczas wybierania powiązana nieaktualność, "nieaktualność" można skonfigurować na dwa sposoby: numer wersji *K* elementu za pomocą którego odczyty opóźnione w stosunku zapisami i przedział czasu *t* 
+* Powiązana nieaktualność oferty całkowitej globalnej kolejności z wyjątkiem w ramach "okno nieaktualność." Monotoniczny gwarancje odczytu istnieją w obrębie regionu zarówno wewnątrz i na zewnątrz "nieaktualność okna." 
+* Powiązana nieaktualność zapewnia gwarancję spójności silniejsza niż sesja, spójny prefiks lub spójność ostateczna. Dla aplikacji dystrybuowanych globalnie firma Microsoft zaleca, powiązana nieaktualność możesz używać dla scenariuszy, gdzie chcesz mieć wysoki poziom spójności, jednak dostępność przez 99,99% dostępności i małym opóźnieniu.   
+* Kont usługi Cosmos DB platformy Azure, które są skonfigurowane przy użyciu spójności powiązana nieaktualność można skojarzyć dowolną liczbę regionów platformy Azure przy użyciu swojego konta usługi Azure Cosmos DB. 
+* Koszt operacji odczytu (w postaci liczby RU) przy użyciu powiązana nieaktualność jest wyższa niż sesji i spójność ostateczną, ale taka sama jak silnej spójności.
 
 <a id="session"></a>
 **Sesja**: 
 
-* W odróżnieniu od oferowanych przez poziomy spójności nieaktualności silne i ograniczonego modeli globalne spójności spójność sesji obejmuje sesji klienta. 
-* Spójność sesji jest idealny dla wszystkich scenariuszy, w którym sesję użytkownika lub urządzenia uczestniczy, ponieważ gwarantuje monotoniczna odczyty, monotoniczna zapisu i odczytu gwarancje własne zapisów (RYW). 
-* Spójność sesji zapewnia przewidywalną spójność sesji i maksymalnie odczytać przepływności jednocześnie zapewniając najmniejsza opóźnienia zapisów i odczytów. 
-* Azure kont rozwiązania Cosmos bazy danych, które są skonfigurowane przy użyciu spójność sesji można skojarzyć dowolną liczbę regiony platformy Azure z użyciem konta bazy danych Azure rozwiązania Cosmos. 
-* Koszt operacja odczytu (pod względem używane RUs) z poziomu spójności sesji jest mniejsze niż silne i ograniczonego nieaktualności, ale spójność ostateczna więcej niż.
+* W przeciwieństwie do modeli spójności globalnego, oferowane przez poziomów spójności silnych i powiązana nieaktualność spójność sesji jest ograniczony do sesji klienta. 
+* Spójność sesji to idealne rozwiązanie w przypadku wszystkich scenariuszy, gdzie zaangażowana jest sesję użytkownika lub urządzenia, ponieważ gwarantuje monotoniczne odczyty, zapisy monotoniczny i odczytu gwarantuje własne operacje zapisu (RYW). 
+* Spójność sesji zapewnia przewidywalnej spójności dla sesji i maksymalna przepływność zapisu, jednocześnie oferując najniższe opóźnienia zapisów i operacji odczytu. 
+* Kont usługi Cosmos DB platformy Azure, które są skonfigurowane przy użyciu spójność sesji można skojarzyć dowolną liczbę regionów platformy Azure przy użyciu swojego konta usługi Azure Cosmos DB. 
+* Koszt operacji odczytu (w postaci liczby RU) z poziomu spójności sesji jest mniej niż silnych i powiązana nieaktualność, ale więcej niż spójność.
 
 <a id="consistent-prefix"></a>
-**Prefiks spójne**: 
+**Spójny prefiks**: 
 
-* Prefiks spójne gwarantuje, że w przypadku braku kolejnych zapisów repliki w grupie ostatecznie zbieżność. 
-* Prefiks spójne gwarantuje, że odczyty nigdy nie zobaczyć zapisy poza kolejnością. Jeśli wykonano operacji zapisu w kolejności `A, B, C`, klient widzi albo `A`, `A,B`, lub `A,B,C`, ale nigdy nie poza kolejnością jak `A,C` lub `B,A,C`.
-* Azure kont rozwiązania Cosmos bazy danych, które są skonfigurowane przy użyciu prefiksu spójne spójności można skojarzyć dowolną liczbę regiony platformy Azure z użyciem konta bazy danych Azure rozwiązania Cosmos. 
+* Spójny prefiks gwarantuje, że w przypadku braku dalszy zapis replik w grupie ostatecznie zbiegają się. 
+* Spójny prefiks gwarantuje, że odczyty nigdy nie zobaczy zapisów poza kolejnością. Jeśli zapisy były wykonywane w kolejności `A, B, C`, a następnie klient będzie widział albo `A`, `A,B`, lub `A,B,C`, ale nigdy nie poza kolejnością takich jak `A,C` lub `B,A,C`.
+* Kont usługi Cosmos DB platformy Azure, które są skonfigurowane przy użyciu spójności spójny prefiks można skojarzyć dowolną liczbę regionów platformy Azure przy użyciu swojego konta usługi Azure Cosmos DB. 
 
 <a id="eventual"></a>
-**Ewentualne**: 
+**Ostateczna**: 
 
-* Spójność ostateczna gwarantuje, że w przypadku braku kolejnych zapisów repliki w grupie ostatecznie zbieżność. 
-* Spójność ostateczna jest postaci najsłabszą spójność, których klient może pobrać wartości, które są starsze niż te, które miały zauważony.
-* Spójność ostateczna zapewnia najsłabszą spójność odczytów, ale dzięki uzyskać najmniejsze opóźnienia zarówno odczytów i zapisów.
-* Azure kont rozwiązania Cosmos bazy danych, które są skonfigurowane przy użyciu spójność ostateczna można skojarzyć dowolną liczbę regiony platformy Azure z użyciem konta bazy danych Azure rozwiązania Cosmos. 
-* Koszt operacja odczytu (pod względem używane RUs) z spójność ostateczna poziom jest najniższa wszystkie poziomy spójności bazy danych Azure rozwiązania Cosmos.
+* Spójność ostateczna gwarantuje, że w przypadku braku dalszy zapis replik w grupie ostatecznie zbiegają się. 
+* Spójności ostatecznej jest najsłabsza formą spójności, w których klient może pobrać wartości, które są starsze niż te, które miały zauważony.
+* Spójność ostateczna zapewnia najsłabsza spójności odczytu, ale oferuje najmniejszego opóźnienia do odczytów i zapisów.
+* Konta platformy Azure Cosmos DB, które są skonfigurowane przy użyciu spójności ostatecznej można skojarzyć dowolną liczbę regionów świadczenia usługi Azure za pomocą konta usługi Azure Cosmos DB. 
+* Koszt operacji odczytu (ru) w zakresie spójności ostatecznej poziom jest najniższy wszystkich poziomów spójności usługi Azure Cosmos DB.
 
-## <a name="configuring-the-default-consistency-level"></a>Konfigurowanie poziomu spójności domyślne
-1. W [portalu Azure](https://portal.azure.com/), na pasku przechodzenia kliknij **bazy danych Azure rozwiązania Cosmos**.
+## <a name="configuring-the-default-consistency-level"></a>Konfigurowanie domyślny poziom spójności
+1. W [witryny Azure portal](https://portal.azure.com/), na pasku dostępu kliknij **usługi Azure Cosmos DB**.
 2. Na stronie usługi **Azure Cosmos DB** wybierz konto bazy danych do modyfikacji.
-3. Na stronie konta, kliknij przycisk **domyślna spójność**.
-4. W **domyślna spójność** , wybierz nowy poziom spójności i kliknij przycisk **zapisać**.
+3. Na stronie konta kliknij **domyślna spójność**.
+4. W **ustawienie domyślna spójność** stronie, wybierz nowy poziom spójności i kliknij **Zapisz**.
    
-    ![Zrzut ekranu: wyróżnianie ikonę ustawień i spójności domyślny wpis](./media/consistency-levels/database-consistency-level-1.png)
+    ![Zrzut ekranu: wyróżnianie ikonę ustawień i wpis ustawienie domyślna spójność](./media/consistency-levels/database-consistency-level-1.png)
 
-## <a name="consistency-levels-for-queries"></a>Poziomy spójności dla zapytań
-Domyślnie dla użytkownika zasobów poziomu spójności dla zapytań jest taka sama jak poziomu spójności dla odczytów. Domyślnie indeks jest aktualizowana synchronicznie na każdym insert, Zamień lub usuń elementu do kontenera DB rozwiązania Cosmos. Dzięki temu zapytania uwzględnić poziomu spójności co odczyty punktu. Podczas zapisu zoptymalizowany i obsługuje stałej ilości zapisy, indeks synchroniczne konserwacji i obsługująca spójne zapytania bazy danych Azure rozwiązania Cosmos można skonfigurować pewne kolekcji, aby zaktualizować ich indeksu w trybie opóźnienia. Dodatkowo indeksowanie z opóźnieniem zwiększa wydajność zapisu i jest idealne dla scenariuszy wprowadzanie zbiorczego obciążenia jest głównie ciężki odczytu.  
+## <a name="consistency-levels-for-queries"></a>Poziomy spójności w przypadku zapytań
+Domyślnie dla zasobów zdefiniowanych przez użytkownika poziomu spójności dla zapytań jest taka sama jak poziomu spójności dla operacji odczytu. Domyślnie zaktualizowaniu indeksu synchronicznie na każdym insert, Zamień lub Usuń element do kontenera usługi Cosmos DB. Dzięki temu zapytań, aby przestrzegać tego samego poziomu spójności, jak w przypadku odczytów punktu. Azure Cosmos DB jest zoptymalizowane pod kątem zapisu i obsługuje stałą woluminy zapisy, konserwacja indeksu synchroniczne i obsługuje zapytania zgodne, można skonfigurować niektóre kontenerów, aby zaktualizować ich indeksu opóźnieniem. Dalsze opóźnieniem indeksowania zwiększa wydajność zapisu i jest idealny dla scenariuszy pozyskiwania zbiorcze, gdy obciążenie jest głównie odczytu dużą ilością zawartości.  
 
 | Tryb indeksowania | Czyta | Zapytania |
 | --- | --- | --- |
-| Spójność (ustawienie domyślne) |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Wybierz jedną z nieaktualności silne, ograniczone, sesji lub ostatecznego |
-| Lazy |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Ostateczna |
-| Brak |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Nie dotyczy |
+| Spójność (ustawienie domyślne) |Wybierz jedną z sesji silne, powiązana nieaktualność, spójny prefiks i ostateczna |Wybierz jedną z silne, powiązana nieaktualność, sesja lub ostateczna |
+| Lazy |Wybierz jedną z sesji silne, powiązana nieaktualność, spójny prefiks i ostateczna |Ostateczna |
+| Brak |Wybierz jedną z sesji silne, powiązana nieaktualność, spójny prefiks i ostateczna |Nie dotyczy |
 
-Jako z żądaniami odczytu, możesz obniżyć poziom spójności żądania określonej kwerendy w każdym interfejsu API.
+Jak z żądaniami odczytu, możesz obniżyć poziom spójności żądania określonej kwerendy w każdy interfejs API.
 
-## <a name="consistency-levels-for-the-mongodb-api"></a>Poziomy spójności dla interfejsu API bazy danych MongoDB
+## <a name="consistency-levels-for-the-mongodb-api"></a>Poziomy spójności dla interfejsu API usługi MongoDB
 
-Azure DB rozwiązania Cosmos implementuje obecnie bazy danych MongoDB w wersji 3.4, mają dwa ustawienia spójności silne i "ostateczna". Ponieważ bazy danych rozwiązania Cosmos Azure multi-api, ustawienia zgodności są stosowane na poziomie konta i wymuszania spójności jest kontrolowany przez każdego interfejsu API.  Do 3,6 bazy danych MongoDB, nie było żadnych koncepcji spójność sesji, więc jeśli ustawisz konto bazy danych MongoDB interfejsu API, które będzie używane spójność sesji spójności jest obniżona do ostatecznego podczas korzystania z bazy danych MongoDB interfejsów API. Jeśli potrzebujesz gwarancji your właścicielem zapisu i odczytu konta bazy danych MongoDB interfejsu API, domyślny poziom spójności dla konta powinien być ustawiony na silne lub ograniczonych nieaktualności.
+Usługa Azure Cosmos DB implementuje obecnie bazy danych MongoDB w wersji 3.4, która ma dwa ustawienia spójności silną i ostateczną. Ze względu na to, że usługa Azure Cosmos DB obejmuje wiele interfejsów API, ustawienia spójności mają zastosowanie na poziomie konta i wymuszanie spójności jest kontrolowane przez poszczególne interfejsy API.  Przed wprowadzeniem usługi MongoDB 3.6 koncepcja spójności sesji nie istniała, więc w przypadku ustawienia konta interfejsu API usługi MongoDB do korzystania ze spójności sesji spójność zostanie obniżona do ostatecznej podczas używania interfejsów API usługi MongoDB. Jeśli potrzebujesz gwarancji odczytu własnego zapisu do konta interfejsu API usługi MongoDB, domyślny poziom spójności dla konta powinien zostać ustawiony na silny lub na powiązaną nieaktualność.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli chcesz zrobić więcej informacje o poziomy spójności i wady i zalety, zaleca się następujące zasoby:
+Jeśli chcesz zrobić więcej informacje o poziomy spójności i wady, zaleca się następujące zasoby:
 
-* [Wyjaśniono spójności replikowanych danych za pośrednictwem baseball (klip wideo) przez Jakuba Dougowi](https://www.youtube.com/watch?v=gluIh8zd26I)
-* [Wyjaśniono spójności replikowanych danych za pośrednictwem baseball (dokument oficjalny) przez Jakuba Dougowi](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* [Gwarancje sesji dla słabo spójności replikowanych danych](http://dl.acm.org/citation.cfm?id=383631)
-* [Wady i zalety spójności w projekcie: nowoczesnych systemów bazy danych dystrybucji: zakończenie jest tylko część wątku](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* [Spójność powiązanej nieaktualności prawdopodobieństwa (PBS) do praktycznych częściowe kworum](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* [Ostateczna spójne — poprawione](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+* [Wyjaśnienie pojęcia spójności danych replikowanych baseballu (wideo) przez Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
+* [Wyjaśnienie pojęcia spójności danych replikowanych baseballu (dokument oficjalny) przez Doug Terry](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
+* [Sesja gwarancje słabo spójności replikowanych danych](http://dl.acm.org/citation.cfm?id=383631)
+* [Wady i zalety spójności w nowoczesny wygląd systemy bazy danych dystrybucji: limit to tylko część wątku](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [Powiązana nieaktualność probabilistyczny (PBS) dla praktyczne kworum częściowe](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+* [Ostateczna spójne — poprawiony](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 * [Obciążenia, wydajność i dostępność systemów kworum dziennika SIAM obliczeniowych](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* [Wersje: pełne i automatyczne linearizability sprawdzania, postępowania 2010 konferencji ACM SIGPLAN programowania w języku projektowanie i wdrażanie](http://dl.acm.org/citation.cfm?id=1806634)
-* [Probabilistically spójność powiązanej nieaktualności do praktycznych częściowe kworum](http://dl.acm.org/citation.cfm?id=2212359)
+* [Seria: atomowych kompletne i automatycznego sprawdzania, materiały z konferencji ACM SIGPLAN 2010 na programowania języka projektowania i implementacji](http://dl.acm.org/citation.cfm?id=1806634)
+* [Probabilistically powiązana nieaktualność uzyskać praktyczne kworum częściowe](http://dl.acm.org/citation.cfm?id=2212359)

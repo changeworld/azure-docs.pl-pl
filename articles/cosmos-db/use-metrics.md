@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 9b9f72812b1a1f0e30379c32e10d316fcbf71d3b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345593"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858667"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorowanie i debugowaniu za pomocą metryk w usłudze Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Najczęściej kod statusu błędu jest 429 (ocenić, ograniczając ograniczania)
 
 ## <a name="determining-the-throughput-distribution-across-partitions"></a>Określająca dystrybucji przepływności na partycje
 
-Dobre Kardynalność klucze partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład przepływność kolekcji partycjonowanej z podziałem na partycje, przejdź do **blok metryk** w [witryny Azure portal](https://portal.azure.com). W **przepływności** karcie Podział magazynu jest wyświetlany w **maks. zużycie RU/s na każdą fizyczną partycję** wykresu. Poniższa ilustracja przedstawia przykład niską dystrybucji danych, co dowodzi niesymetryczne partycji na końcu z lewej strony. 
+Dobre Kardynalność klucze partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład przepływność dowolnego kontener podzielony na partycje z podziałem na partycje, przejdź do **blok metryk** w [witryny Azure portal](https://portal.azure.com). W **przepływności** karcie Podział magazynu jest wyświetlany w **maks. zużycie RU/s na każdą fizyczną partycję** wykresu. Poniższa ilustracja przedstawia przykład niską dystrybucji danych, co dowodzi niesymetryczne partycji na końcu z lewej strony. 
 
 ![Jedna partycja, widzisz duże obciążenie na 15:05:00](media/use-metrics/metrics-17.png)
 
@@ -47,7 +47,7 @@ Rozkład normalny przepływności może spowodować, że *gorąca* partycji, co 
 
 ## <a name="determining-the-storage-distribution-across-partitions"></a>Określająca dystrybucji magazynu na partycje
 
-Dobre Kardynalność partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład przepływność kolekcji partycjonowanej z podziałem na partycje, przejdź do bloku metryk w [witryny Azure portal](https://portal.azure.com). Na karcie przepływności Podział magazynu jest wyświetlana w maks. zużycie RU/s według poszczególnych wykresów fizyczną partycję. Poniższa ilustracja przedstawia niską dystrybucji danych, co dowodzi niesymetryczne partycji na końcu z lewej strony. 
+Dobre Kardynalność partycji jest istotne dla skalowalnej aplikacji. Aby określić rozkład przepływność dowolnego kontener podzielony na partycje z podziałem na partycje, przejdź do bloku metryk w [witryny Azure portal](https://portal.azure.com). Na karcie przepływności Podział magazynu jest wyświetlana w maks. zużycie RU/s według poszczególnych wykresów fizyczną partycję. Poniższa ilustracja przedstawia niską dystrybucji danych, co dowodzi niesymetryczne partycji na końcu z lewej strony. 
 
 ![Przykład dystrybucji niską danych](media/use-metrics/metrics-07.png)
 
@@ -55,7 +55,7 @@ Można główna przyczyna, w których klucza partycji jest pochylanie dystrybucj
 
 ![Klucz partycji jest pochylanie dystrybucji](media/use-metrics/metrics-05.png)
 
-Po identyfikacji klucza partycji, który jest przyczyną pochylenia dystrybucji, może być na partycje kolekcji z bardziej rozproszonymi kluczem partycji. Aby uzyskać więcej informacji na temat partycjonowania w usłudze Azure Cosmos DB, zobacz [partycji i skali w usłudze Azure Cosmos DB](./partition-data.md).
+Po identyfikacji klucza partycji, który jest przyczyną pochylenia dystrybucji, może być na partycje kontenera przy użyciu bardziej rozproszonymi klucza partycji. Aby uzyskać więcej informacji na temat partycjonowania w usłudze Azure Cosmos DB, zobacz [partycji i skali w usłudze Azure Cosmos DB](./partition-data.md).
 
 ## <a name="comparing-data-size-against-index-size"></a>Porównując rozmiar danych względem rozmiar indeksu
 
@@ -90,7 +90,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* zawiera szczegółowe informacje na jak długo trwało każdy składnik kwerendy do wykonania. Najbardziej typowe przyczyny do uruchomienia długie zapytania są skanowania (zapytanie nie może korzystać z indeksów), które mogą być rozwiązane za pomocą lepsze warunku filtru.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, wyjaśniono, jak monitorować i debugowanie problemów przy użyciu metryk w witrynie Azure portal, można dowiedzieć się więcej na temat zwiększania wydajności bazy danych, czytając następujące artykuły:
 

@@ -1,7 +1,7 @@
 ---
-title: Obsługa zapory DB rozwiązania Cosmos & IP Azure kontrola dostępu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać zasad kontroli dostępu dla adresu IP dla strony Obsługa zapory na kontach bazy danych Azure DB rozwiązania Cosmos.
-keywords: Kontrola dostępu do adresu IP, obsługi zapory
+title: Kontrola dostępu do usługi Azure Cosmos DB, obsługa zapory & IP | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać zasad kontroli dostępu IP obsługę zapory dla kont bazy danych Azure Cosmos DB.
+keywords: Kontrola dostępu do adresów IP, obsługa zapory
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -11,86 +11,86 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e67fc5e00a638f116a69dbb36c60cf183cbde808
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317290"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857834"
 ---
-# <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure DB rozwiązania Cosmos
-Aby zabezpieczyć dane przechowywane na koncie Azure DB rozwiązania Cosmos bazy danych, bazy danych Azure rozwiązania Cosmos udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości Hash-based silne (HMAC). Oprócz modelu autoryzacji na podstawie tajnego bazy danych Azure rozwiązania Cosmos obsługuje teraz, zasady kontroli dostępu na podstawie adresu IP dla strony Obsługa zapory dla ruchu przychodzącego zmiennych. Ten model jest podobne do reguł zapory systemu tradycyjne bazy danych i zapewnia dodatkowy poziom zabezpieczeń do bazy danych Azure rozwiązania Cosmos konta bazy danych. Z tym modelem można teraz skonfigurować konto bazy danych DB rozwiązania Cosmos Azure można uzyskiwać tylko z zatwierdzonych zbiór maszyny i/lub usług w chmurze. Dostęp do zasobów bazy danych Azure rozwiązania Cosmos z tych zestawów zatwierdzonych komputery i usługi wymagają nadal obiekt wywołujący, aby przedstawić token prawidłowego autoryzacji.
+# <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure Cosmos DB
+Aby zabezpieczyć dane przechowywane na koncie bazy danych usługi Azure Cosmos DB, Azure Cosmos DB udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości bazujących na skrótach silne (metoda HMAC). Oprócz modelu autoryzacji na podstawie tajnego usługi Azure Cosmos DB obsługuje teraz, zasad opartych na kontroli dostępu opartych na protokole IP, obsługi zapory dla ruchu przychodzącego. Ten model jest podobne do reguł zapory systemu tradycyjnych baz danych i zapewnia dodatkowy poziom zabezpieczeń do konta bazy danych Azure Cosmos DB. W tym modelu można teraz skonfigurować kontem bazy danych usługi Azure Cosmos DB, aby były dostępne tylko z zatwierdzonego zestawu maszyn i/lub usług w chmurze. Dostęp do zasobów usługi Azure Cosmos DB z tych zestawów zatwierdzone komputery i usługi nadal wymaga obiekt wywołujący, aby przedstawić prawidłowy token autoryzacji.
 
 > [!NOTE]
-> Obsługa zapory jest obecnie dostępne dla interfejsu API Azure rozwiązania Cosmos bazy danych SQL i interfejsu API Mongo kont. Możliwość konfigurowania zapory dla innych interfejsów API i suwerennych chmury, takich jak platformy Azure w Niemczech lub Azure dla instytucji rządowych będzie wkrótce dostępna. Jeśli zamierzasz skonfigurować punkt końcowy usługi listy ACL dla Twojego konta bazy danych Azure rozwiązania Cosmos, który nie ma istniejących zapory IP skonfigurowany, należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie skonfiguruj listy ACL punktu końcowego usługi. Po skonfigurowaniu punktu końcowego usługi można ponownie włączyć zapory IP, jeśli to konieczne.
+> Obecnie Obsługa zapory jest dostępna dla kont usługi Azure Cosmos DB — interfejs API SQL i Mongo interfejsu API. Możliwość konfigurowania zapory dla innych interfejsów API i w chmurach suwerennych, takich jak Azure (Niemcy) lub Azure dla instytucji rządowych będą dostępne wkrótce. Jeśli planujesz skonfigurować punkt końcowy usługi listy ACL dla Twojego konta usługi Azure Cosmos DB, które ma istniejącej zapory adresów IP, które są skonfigurowane, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie skonfiguruj listy ACL punktów końcowych usługi. Po skonfigurowaniu punktu końcowego usługi, można ponownie włączyć zapory adresów IP, jeśli to konieczne.
 
-## <a name="ip-access-control-overview"></a>Omówienie kontroli dostępu dla adresu IP
-Domyślnie konto usługi Azure Cosmos DB jest dostępne z publicznej sieci Internet, o ile do żądania dołączono prawidłowy token autoryzacji. Aby skonfigurować kontrolę dostępu opartą na zasadach IP, użytkownik musi podać zestaw adresów IP lub zakresów adresów IP w formacie CIDR, które będą uwzględniane jako lista dozwolonych adresów IP klienta dla danego konta bazy danych. Po zastosowaniu konfiguracji wszystkie żądania pochodzące z maszyn spoza tej listy dozwolonych będą blokowane przez serwer.  Na poniższym diagramie przedstawiono połączenia przetwarzania przepływu kontroli dostępu na podstawie adresu IP:
+## <a name="ip-access-control-overview"></a>Omówienie kontroli dostępu IP
+Domyślnie konto usługi Azure Cosmos DB jest dostępne z publicznej sieci Internet, o ile do żądania dołączono prawidłowy token autoryzacji. Aby skonfigurować kontrolę dostępu opartą na zasadach IP, użytkownik musi podać zestaw adresów IP lub zakresów adresów IP w formacie CIDR, które będą uwzględniane jako lista dozwolonych adresów IP klienta dla danego konta bazy danych. Po zastosowaniu konfiguracji wszystkie żądania pochodzące z maszyn spoza tej listy dozwolonych będą blokowane przez serwer.  Połączenie przetwarzania przepływ kontroli dostępu opartych na protokole IP przedstawiono na poniższym diagramie:
 
-![Diagram przedstawiający proces łączenia dla kontroli dostępu na podstawie adresu IP](./media/firewall-support/firewall-support-flow.png)
+![Diagram przedstawiający proces łączenia dla kontroli dostępu opartych na protokole IP](./media/firewall-support/firewall-support-flow.png)
 
 ## <a id="configure-ip-policy"></a> Konfigurowanie zasad kontroli dostępu IP
-Zasady kontroli dostępu IP można ustawić w portalu Azure lub programistycznie za pomocą [interfejsu wiersza polecenia Azure](cli-samples.md), [programu Azure Powershell](powershell-samples.md), lub [interfejsu API REST](/rest/api/cosmos-db/) aktualizując **ipRangeFilter** właściwości. 
+Zasady kontroli dostępu IP można ustawić w witrynie Azure portal lub programowo za pomocą [wiersza polecenia platformy Azure](cli-samples.md), [programu Azure Powershell](powershell-samples.md), lub [interfejsu API REST](/rest/api/cosmos-db/) , aktualizując **ipRangeFilter** właściwości. 
 
-Aby ustawić zasady kontroli dostępu do adresu IP w portalu Azure, przejdź do strony konta bazy danych rozwiązania Cosmos Azure, kliknij przycisk **zapory i sieci wirtualne** w menu nawigacji następnie zmienić **zezwolić na dostęp z** wartości Aby **wybrane sieci**, a następnie kliknij przycisk **zapisać**. 
+Aby ustawić zasady kontroli dostępu IP w witrynie Azure portal, przejdź na stronę konta usługi Azure Cosmos DB, kliknij przycisk **zapory i sieci wirtualne** w menu nawigacji, następnie zmienić **dostęp z** wartość Aby **wybrane sieci**, a następnie kliknij przycisk **Zapisz**. 
 
-![Zrzut ekranu pokazujący sposób otworzyć stronę zapory w portalu Azure](./media/firewall-support/azure-portal-firewall.png)
+![Zrzut ekranu przedstawiający sposób otworzyć stronę zapory w witrynie Azure portal](./media/firewall-support/azure-portal-firewall.png)
 
-Po IP kontroli dostępu w portalu zapewnia możliwość określenia adresów IP i zakresów, a także przełączników, aby umożliwić dostęp do innych usług platformy Azure i portalu Azure. Dodatkowe informacje na temat tych przełączników znajduje się w poniższych sekcjach.
+Po włączeniu kontroli dostępu IP, portal zapewnia możliwość określenia adresów IP i zakresów, a także przełączników, aby umożliwić dostęp do innych usług platformy Azure i portalu Azure. Dodatkowe informacje na temat tych parametrów, podano w poniższych sekcjach.
 
 > [!NOTE]
-> Przez włączenie IP zasady kontroli dostępu dla konta bazy danych Azure rozwiązania Cosmos bazy danych, dostęp do konta bazy danych Azure rozwiązania Cosmos bazy danych z komputerów poza skonfigurowanego dozwolone listę zakresów adresów IP są zablokowane. Z tym modelem przeglądanie operacji płaszczyzna danych z portalu będzie również zablokowany do zapewnienia integralności kontroli dostępu.
+> Po włączeniu zasady kontroli dostępu IP dla Twojego konta bazy danych Azure Cosmos DB cały dostęp do Twojego konta bazy danych Azure Cosmos DB z maszyn spoza skonfigurowanych dozwolone listę zakresów adresów IP są zablokowane. Ze względu na ten model przeglądania operacji płaszczyzny danych z poziomu portalu będzie również zablokowany do zapewnienia integralności kontroli dostępu.
 
-## <a name="connections-from-the-azure-portal"></a>Połączenia z portalu Azure 
+## <a name="connections-from-the-azure-portal"></a>Połączenia z witryny Azure portal 
 
-Po włączeniu zasady kontroli dostępu IP programowo, należy dodać adres IP portalu Azure, aby **ipRangeFilter** właściwości w celu uzyskania dostępu. Portal adresy IP są:
+Po włączeniu zasady kontroli dostępu IP programowo, należy dodać adres IP dla portalu Azure w celu **ipRangeFilter** właściwości, aby zachować dostęp. Portal adresy IP są:
 
 |Region|Adres IP|
 |------|----------|
-|Wszystkie regiony, z wyjątkiem tych określonych poniżej|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
+|We wszystkich regionach z wyjątkiem tych określony poniżej|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 |Niemcy|51.4.229.218|
 |Chiny|139.217.8.252|
 |Rząd USA|52.244.48.71|
 
-Dostęp do portalu Azure jest domyślnie włączona po zmianie ustawienia zapory, aby **wybrane sieci** w portalu Azure. 
+Dostęp do portalu Azure jest domyślnie włączona, gdy zmienią się w ustawieniach zapory, aby **wybrane sieci** w witrynie Azure portal. 
 
-![Zrzut ekranu pokazujący sposób włączania dostępu do portalu Azure](./media/firewall-support/enable-azure-portal.png)
+![Zrzut ekranu pokazujący sposób umożliwić dostęp do portalu Azure](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Połączenia z centrów danych globalnych Azure lub usługi Azure PaaS
-Na platformie Azure PaaS usług takich jak Azure Stream analytics, usługi Azure Functions i usłudze Azure App Service są używane w połączeniu z bazy danych Azure rozwiązania Cosmos. Aby włączyć dostęp do bazy danych Azure rozwiązania Cosmos konto bazy danych z tych usług, których adresy IP nie są łatwo dostępne, należy dodać adres IP 0.0.0.0 do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure DB rozwiązania Cosmos programowo. 
+## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Połączenia z centrami danych globalnej platformy Azure lub usług PaaS platformy Azure
+Na platformie Azure usług PaaS, takich jak Azure Stream analytics, usługi Azure Functions i Azure App Service są używane w połączeniu z usługą Azure Cosmos DB. Aby umożliwić dostęp do usługi Azure Cosmos DB konto bazy danych z tych usług, których adresy IP nie są łatwo dostępne, należy dodać adres IP 0.0.0.0 do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure Cosmos DB programowo. 
 
-Dostęp do połączeń z wewnątrz Globalne centra danych platformy Azure jest domyślnie włączona po zmianie ustawienia zapory, aby **wybrane sieci** w portalu Azure. 
+Dostęp do połączeń z w ramach globalnych centrów danych platformy Azure jest domyślnie włączona, gdy zmienią się w ustawieniach zapory, aby **wybrane sieci** w witrynie Azure portal. 
 
-![Zrzut ekranu pokazujący sposób otworzyć stronę zapory w portalu Azure](./media/firewall-support/enable-azure-services.png)
+![Zrzut ekranu przedstawiający sposób otworzyć stronę zapory w witrynie Azure portal](./media/firewall-support/enable-azure-services.png)
 
-## <a name="connections-from-your-current-ip"></a>Połączenia z bieżącym IP
+## <a name="connections-from-your-current-ip"></a>Połączenia z usługi bieżący adres IP
 
-Aby ułatwić projektowanie, portalu Azure ułatwia Identyfikuj i Dodaj adres IP komputera klienta do listy dozwolonych, dzięki czemu aplikacje działające na tym komputerze można uzyskać dostęp do konta bazy danych Azure rozwiązania Cosmos. Adres IP klienta tutaj wykryto widziany przez portal. Może to być adres IP klienta na komputerze, ale może być również adres IP bramy sieci. Pamiętaj usunąć go przed przejściem do środowiska produkcyjnego.
+Można Uproszczenie projektowania aplikacji, witryny Azure portal ułatwia Identyfikuj i Dodaj adres IP swojej maszyny klienta do listy dozwolonych, dzięki czemu aplikacje działające na tym komputerze można uzyskać dostępu do konta usługi Azure Cosmos DB. Adres IP klienta w tym miejscu jest wykrywany widziany przez portal. Może to być adres IP klienta na komputerze, ale może być również adres IP bramy Twojej sieci. Pamiętaj go usunąć przed skierowaniem do produkcji.
 
-Aby włączyć użytkownika bieżącego adresu IP, wybierz **dodać mojego bieżącego adresu IP**, który dodaje bieżącego IP na liście adresów IP, a następnie kliknij **zapisać**.
+Aby włączyć Twój bieżący adres IP, zaznacz **Dodaj mój bieżący adres IP**, który dodaje Twój bieżący adres IP do listy adresów IP, a następnie kliknij przycisk **Zapisz**.
 
 ![Zrzut ekranu pokazujący sposób konfigurowania ustawień zapory dla bieżącego adresu IP](./media/firewall-support/enable-current-ip.png)
 
-## <a name="connections-from-cloud-services"></a>Połączenia z usługi w chmurze
-Na platformie Azure usługi w chmurze są często stosowana metoda do hostowania warstwy środkowej logiki usługi przy użyciu bazy danych Azure rozwiązania Cosmos. Aby włączyć dostęp do bazy danych Azure rozwiązania Cosmos konta bazy danych z usługi w chmurze, publiczny adres IP usługi w chmurze należy dodać do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure DB rozwiązania Cosmos przez [Konfigurowanie dostępu do adresu IP kontrolowanie zasad](#configure-ip-policy). Gwarantuje to, że wszystkich wystąpień roli usługi w chmurze dostęp do Twojego konta bazy danych Azure DB rozwiązania Cosmos. Można pobrać adresy IP dla usług w chmurze w portalu Azure, jak pokazano na poniższym zrzucie ekranu:
+## <a name="connections-from-cloud-services"></a>Połączenia z usługami w chmurze
+Na platformie Azure usługi cloud services są często stosowaną metodą do hostowania logiką usługi warstwy środkowej za pomocą usługi Azure Cosmos DB. Aby włączyć dostęp do konta bazy danych usługi Azure Cosmos DB z usługi w chmurze, publiczny adres IP usługi w chmurze należy dodać do listy dozwolonych adresów IP skojarzonych z Twoim kontem bazy danych Azure Cosmos DB, [Konfigurowanie dostępu do adresów IP kontrolowanie zasad](#configure-ip-policy). Gwarantuje to, że wszystkie wystąpienia roli usług w chmurze mają dostęp do Twojego konta bazy danych Azure Cosmos DB. Możesz pobrać adresy IP dla usług cloud services w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu:
 
-![Zrzut ekranu przedstawiający publiczny adres IP w usłudze w chmurze wyświetlane w portalu Azure](./media/firewall-support/public-ip-addresses.png)
+![Zrzut ekranu przedstawiający publiczny adres IP dla usługi w chmurze wyświetlane w witrynie Azure portal](./media/firewall-support/public-ip-addresses.png)
 
-Podczas skalowanie usługi w chmurze, dodając rolę dodatkowe wystąpienia tych nowych wystąpień automatycznie mają dostęp do bazy danych Azure rozwiązania Cosmos konto bazy danych, ponieważ są one częścią tej samej usługi w chmurze.
+Podczas skalowania usługi w chmurze, dodając rolę dodatkowego wystąpienia tych nowych wystąpień automatycznie uzyskają dostęp do bazy danych usługi Azure Cosmos DB, ponieważ są one częścią tej samej usługi w chmurze.
 
-## <a name="connections-from-virtual-machines"></a>Połączenia z maszyn wirtualnych
-[Maszyny wirtualne](https://azure.microsoft.com/services/virtual-machines/) lub [zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) może również służyć do hostowania warstwy środkowej usług przy użyciu bazy danych Azure rozwiązania Cosmos.  Skonfiguruj konto bazy danych DB rozwiązania Cosmos Azure, aby zezwolić na dostęp z maszyn wirtualnych, publicznych adresów IP maszyny wirtualnej i/lub maszyny wirtualnej zestawu skali musi być skonfigurowany jako jeden z dozwolonych adresów IP dla konta bazy danych Azure DB rozwiązania Cosmos przez [Konfigurowanie zasad kontroli dostępu IP](#configure-ip-policy). Można pobrać adresy IP dla maszyn wirtualnych w portalu Azure, jak pokazano na poniższym zrzucie ekranu.
+## <a name="connections-from-virtual-machines"></a>Połączenia z maszynami wirtualnymi
+[Maszyny wirtualne](https://azure.microsoft.com/services/virtual-machines/) lub [zestawy skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) może również służyć do hostowania usług warstwy środkowej za pomocą usługi Azure Cosmos DB.  Aby skonfigurować konto bazy danych Azure Cosmos DB, aby zezwolić na dostęp z maszyn wirtualnych, publiczne adresy IP maszyn wirtualnych i/lub maszyny wirtualnej zestawu skalowania musi być skonfigurowany jako jeden z dozwolonych adresów IP dla Twojego konta bazy danych Azure Cosmos DB, [Konfigurowanie zasad kontroli dostępu IP](#configure-ip-policy). Możesz pobrać adresy IP dla maszyn wirtualnych w witrynie Azure portal, jak pokazano na poniższym zrzucie ekranu.
 
-![Zrzut ekranu przedstawiający publicznego adresu IP dla maszyny wirtualnej, wyświetlane w portalu Azure](./media/firewall-support/public-ip-addresses-dns.png)
+![Zrzut ekranu przedstawiający publiczny adres IP dla maszyny wirtualnej, wyświetlane w witrynie Azure portal](./media/firewall-support/public-ip-addresses-dns.png)
 
-Po dodaniu wystąpień dodatkowych maszyn wirtualnych do grupy są automatycznie udostępniane dostęp do Twojego konta bazy danych Azure DB rozwiązania Cosmos.
+Po dodaniu wystąpień dodatkowych maszyn wirtualnych do grupy są automatycznie dostarczane dostęp do Twojego konta bazy danych Azure Cosmos DB.
 
 ## <a name="connections-from-the-internet"></a>Połączenia z Internetu
-Gdy uzyskujesz dostęp do bazy danych Azure rozwiązania Cosmos konto bazy danych z komputera w Internecie, adres IP klienta lub zakres adresów IP komputera, należy dodać do listy dozwolonych adresów IP do bazy danych Azure rozwiązania Cosmos konta bazy danych. 
+Gdy uzyskujesz dostęp do konta bazy danych usługi Azure Cosmos DB z komputer połączony z Internetem, adres IP klienta lub zakres adresów IP komputera, należy dodać do listy dozwolonych adresów IP do bazy danych usługi Azure Cosmos DB. 
 
-## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>Za pomocą szablonu usługi Resource Manager Azure skonfigurować kontroli dostępu IP
+## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>Aby skonfigurować kontroli dostępu IP przy użyciu szablonu Azure Resource Manager
 
-Dodaj następujący kod JSON do szablonu, aby skonfigurować IP kontroli dostępu. Szablon usługi Resource Manager dla konta, ma atrybut ipRangeFilter, który jest listą zakresów IP, które powinny być białej.
+Dodaj następujący kod JSON do szablonu, aby skonfigurować kontrolę dostępu do adresów IP. Szablon usługi Resource Manager dla konta mają atrybut ipRangeFilter, który jest listą zakresów adresów IP, które powinny być na liście dozwolonych.
 
 ```json
    {
@@ -107,13 +107,13 @@ Dodaj następujący kod JSON do szablonu, aby skonfigurować IP kontroli dostęp
    }
 ```
 
-## <a name="troubleshooting-the-ip-access-control-policy"></a>Rozwiązywanie problemów z zasady kontroli dostępu do adresu IP
-### <a name="portal-operations"></a>Operacje portalu
-Przez włączenie IP zasady kontroli dostępu dla konta bazy danych Azure rozwiązania Cosmos bazy danych, dostęp do konta bazy danych Azure rozwiązania Cosmos bazy danych z komputerów poza skonfigurowanego dozwolone listę zakresów adresów IP są zablokowane. W związku z tym jeśli chcesz włączyć danych portalu płaszczyzny operacje, takie jak przeglądanie kolekcje i kwerendy dokumentów, musisz jawnie zezwolić na korzystanie z dostępu do portalu Azure **zapory** w portalu. 
+## <a name="troubleshooting-the-ip-access-control-policy"></a>Rozwiązywanie problemów z zasady kontroli dostępu IP
+### <a name="portal-operations"></a>Operacje w portalu
+Po włączeniu zasady kontroli dostępu IP dla Twojego konta bazy danych Azure Cosmos DB cały dostęp do Twojego konta bazy danych Azure Cosmos DB z maszyn spoza skonfigurowanych dozwolone listę zakresów adresów IP są zablokowane. W związku z tym jeśli chcesz włączyć operacje płaszczyzny danych portalu, takich jak przeglądanie kontenerów i tworzenia zapytań dotyczących dokumentów, musisz jawnie zezwolić na dostęp do portalu Azure za pomocą **zapory** strony w portalu. 
 
-### <a name="sdk--rest-api"></a>Zestaw SDK & Rest API
-Dla zabezpieczeń ze względu na dostęp za pomocą zestawu SDK lub interfejsu API REST z komputerów nie ma na liście dozwolonych zwróci ogólnego 404 odpowiedzi nie znaleziono z nie dodatkowych szczegółów. Sprawdź IP skonfigurowanych dla tego konta bazy danych Azure DB rozwiązania Cosmos listy dozwolonych, aby upewnić się, że konfiguracja prawidłowe zasady zostanie zastosowana do bazy danych Azure rozwiązania Cosmos konta bazy danych.
+### <a name="sdk--rest-api"></a>Interfejs API zestawu SDK & Rest
+Dla zabezpieczeń ze względu na dostęp za pośrednictwem zestawu SDK lub interfejsu API REST z komputerów nie ma na liście dozwolonych zwróci ogólny 404 Nie znaleziono odpowiedzi za pomocą dodatkowych szczegółów. Sprawdź IP skonfigurowany dla Twojego konta bazy danych Azure Cosmos DB listy dozwolonych, aby upewnić się, że konfiguracja zasad poprawne jest stosowany do Twojego konta bazy danych Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Informacje o porady dotyczące wydajności związane z siecią, zobacz [porady dotyczące wydajności](performance-tips.md).
+Aby uzyskać informacji na temat porady dotyczące wydajności związane z siecią, zobacz [porady dotyczące wydajności](performance-tips.md).
 

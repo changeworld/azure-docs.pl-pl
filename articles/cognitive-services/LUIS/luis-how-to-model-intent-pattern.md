@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9dd23fd5f8a0024f127b71160899d10042037a66
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 26fb9c6349b46e0c920506c39ba53b26f215d330
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346012"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867192"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak dodać wzorców w celu zwiększenia dokładności prognozy
 Gdy aplikacją usługi LUIS otrzyma wypowiedzi punktu końcowego, należy użyć [koncepcji](luis-concept-patterns.md) wzorców w celu zwiększenia dokładności prognozy dla wypowiedzi zawiera wzorca w porządku program word i wybór programu word. Wzorce użycia [jednostek](luis-concept-entity-types.md) i ich ról, aby wyodrębnić dane przy użyciu składni z określonym wzorcem. 
@@ -57,7 +57,7 @@ Wyszukiwanie umożliwia wyszukiwanie wzorców, które zawierają dany tekst.
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>Edytuj wzorzec
-1. Aby edytować wzorzec, wybierz ikonę wielokropek (...) na prawym końcu wiersza dla tego wzorca, a następnie wybierz **Edytuj**. 
+1. Aby edytować wzorzec, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wzorca, a następnie wybierz **Edytuj**. 
 
     ![Zrzut ekranu edycji elementu menu, w wierszu wzorzec](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ Do ponownego przypisania kilka wzorców do innego zamiaru, zaznacz pole wyboru n
 
 ## <a name="delete-a-single-pattern"></a>Usuwanie pojedynczej wzorzec
 
-1. Aby usunąć wzorzec, wybierz ikonę wielokropek (...) na prawym końcu wiersza dla tego wzorca, a następnie wybierz **Usuń**. 
+1. Aby usunąć wzorzec, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wzorca, a następnie wybierz **Usuń**. 
 
     ![Zrzut ekranu Usuń wypowiedź](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ Filtr zostanie usunięty, i wyświetlić wszystkie wzorce.
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Dodawanie wzorca z istniejących wypowiedź przeznaczenie lub jednostki strony
 Wzorzec można utworzyć na podstawie istniejących wypowiedź w dowolnym **intencji** lub **jednostki** strony. Wszystkie wypowiedzi na dowolnej stronie przeznaczenie lub jednostki są wyświetlane na liście z prawej kolumnie tabeli, takich jak dające dostęp do opcji na poziomie wypowiedź **Edytuj**, **Usuń**, i **Dodaj jako wzorzec**.
 
-1. W zaznaczonym wierszu wypowiedź wybierz wielokropek (...) po prawej stronie wypowiedź, a następnie wybierz **Dodaj jako wzorca**.
+1. W zaznaczonym wierszu wypowiedź wybierz przycisk wielokropka (***...*** ) znajdujący się po prawej stronie wypowiedź i wybierz **Dodaj jako wzorca**.
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Zrzut ekranu przedstawiający wypowiedzi tabeli za pomocą wzorca Dodaj wyróżnione w menu Opcje")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
@@ -134,7 +134,7 @@ Wzorzec można utworzyć na podstawie istniejących wypowiedź w dowolnym **inte
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>Uczenie aplikacji po zmianie modelu wzorami
 Po dodaniu, edytować, usunąć lub ponownie przypisać wzorzec [szkolenie](luis-how-to-train.md) i [publikowania](luis-how-to-publish-app.md) aplikacji zmiany wpływają na zapytania punktu końcowego. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, jak [kompilacji wzorzec](luis-tutorial-pattern.md) pattern.any i ról.
 * Dowiedz się, jak [szkolenie](luis-how-to-train.md) aplikacji.

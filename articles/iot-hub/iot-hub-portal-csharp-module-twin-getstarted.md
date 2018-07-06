@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.openlocfilehash: b4502dfc8f856516989326c8d748a5d13fdba02b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b4b193751606883548e25e731dcece4ae72ba7b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634594"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858368"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu portalu i urządzenia platformy .NET
 
@@ -26,12 +26,12 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 2. Aktualizowanie bliźniaczej reprezentacji modułu za pomocą zestawu SDK urządzenia platformy .NET z poziomu Twojego urządzenia.
 
 > [!NOTE]
-> Artykuł [Zestawy SDK usługi Azure IoT][lnk-hub-sdks] zawiera informacje dotyczące zestawów SDK usługi Azure IoT, przy użyciu których można tworzyć aplikacje zarówno do uruchamiania na urządzaniach, jak i w zapleczu rozwiązania.
+> Artykuł [Azure IoT SDKs][lnk-hub-sdks] (Zestawy SDK usługi Azure IoT) zawiera informacje dotyczące zestawów SDK usługi Azure IoT, przy użyciu których można tworzyć aplikacje zarówno do uruchamiania na urządzaniach, jak i w zapleczu rozwiązania.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Program Visual Studio 2015 lub Visual Studio 2017.
-* Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut).
+* Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -43,7 +43,7 @@ Teraz masz własne centrum IoT Hub. Otwórz [portal](https://portal.azure.com) i
 
 Po zapisaniu na liście tożsamości urządzeń można zobaczyć, że tożsamość MyFirstDevice została pomyślnie utworzona.
 
-![Utworzona tożsamość urządzenia][11]
+![Identyfikator urządzenia utworzone][11]
 
 Teraz kliknij wiersz. Zostaną wyświetlone szczegóły urządzenia.
 
@@ -68,7 +68,7 @@ Pomyślnie utworzono tożsamość modułu w centrum IoT Hub. Spróbujmy nawiąza
 
     ![Tworzenie projektu programu Visual Studio][13]
 
-2. **Zainstaluj najnowsze urządzenia Azure IoT Hub .NET SDK** — moduł dwie tożsamości i moduł znajduje się w publicznej wersji zapoznawczej. Są one dostępne tylko w wersjach wstępnych zestawów SDK urządzeń usługi IoT Hub. W programie Visual Studio wybierz pozycję Narzędzia > Menedżer pakietów NuGet > Zarządzaj pakietami NuGet dla rozwiązania. Wyszukaj ciąg Microsoft.Azure.Devices.Client. Upewnij się, że zaznaczono pole wyboru Uwzględnij wersję wstępną. Wybierz najnowszą wersję, a następnie zainstalować. Teraz masz dostęp do wszystkich funkcji modułu. 
+2. **Zainstaluj najnowszy zestaw SDK urządzeń Azure IoT Hub dla środowiska .NET** -bliźniaczą reprezentację modułu i tożsamości modułu jest w publicznej wersji zapoznawczej. Są one dostępne tylko w wersjach wstępnych zestawów SDK urządzeń usługi IoT Hub. W programie Visual Studio wybierz pozycję Narzędzia > Menedżer pakietów NuGet > Zarządzaj pakietami NuGet dla rozwiązania. Wyszukaj ciąg Microsoft.Azure.Devices.Client. Upewnij się, że zaznaczono pole wyboru Uwzględnij wersję wstępną. Wybierz najnowszą wersję i instalowanie. Teraz masz dostęp do wszystkich funkcji modułu. 
 
     ![Instalowanie zestawu SDK usługi platformy .NET usługi Azure IoT Hub w wersji 1.16.0-preview-005][14]
 
@@ -143,18 +143,17 @@ Pomyślnie utworzono tożsamość modułu w centrum IoT Hub. Spróbujmy nawiąza
     ```
 
     Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizacji zgłoszonych właściwości za pomocą protokołu AMQP. W publicznej wersji zapoznawczej na potrzeby operacji bliźniaczych reprezentacji modułów obsługujemy tylko protokół AMQP.
-    ```
 
-## Run the apps
+## <a name="run-the-apps"></a>Uruchamianie aplikacji
 
-You are now ready to run the apps. In Visual Studio, in Solution Explorer, right-click your solution, and then click **Set StartUp projects**. Select **Multiple startup projects**, and then select **Start** as the action for the console app. And then press F5 to start both apps running. 
+Teraz można przystąpić do uruchomienia aplikacji. W programie Visual Studio w Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij przycisk **Ustaw projekty startowe**. Wybierz pozycję **Wiele projektów startowych**, a następnie wybierz pozycję **Uruchom** jako akcję dla aplikacji konsolowej. A następnie naciśnij klawisz F5, aby uruchomić obie aplikacje. 
 
-## Next steps
+## <a name="next-steps"></a>Kolejne kroki
 
-To continue getting started with IoT Hub and to explore other IoT scenarios, see:
+Aby kontynuować wprowadzenie do usługi IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
 
-* [Get started with IoT Hub module identity and module twin using .NET backup and .NET device][lnk-csharp-csharp-getstarted]
-* [Getting started with IoT Edge][lnk-iot-edge]
+* [Rozpoczynanie pracy z usługą IoT Hub tożsamości i moduł bliźniaczą reprezentację modułu przy użyciu kopii zapasowej platformy .NET i .NET urządzenia][lnk-csharp-csharp-getstarted]
+* [Getting started with IoT Edge][lnk-iot-edge] (Wprowadzenie do usługi IoT Edge)
 
 
 <!-- Images. -->

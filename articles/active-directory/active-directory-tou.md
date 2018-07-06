@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: f22190d81d8ffbb91e9573974d93d4b1ad35af18
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444348"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856420"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -30,7 +30,7 @@ Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać info
 Warunki użytkowania usługi Azure AD umożliwiają wykonanie następujących czynności:
 - Wymaganie od pracowników i gości zgody na Twoje warunki użytkowania przed uzyskaniem dostępu.
 - Prezentowanie ogólnych warunków użytkowania obowiązujących wszystkich użytkowników w organizacji.
-- Prezentowanie specyficznych warunków użytkowania zależnych od atrybutów użytkownika (np. warunki dla lekarzy różnią się od warunków dla pielęgniarek, a pracownicy krajowi mają inne warunki niż pracownicy międzynarodowi) za pomocą [grup dynamicznych](active-directory-groups-dynamic-membership-azure-portal.md).
+- Prezentowanie specyficznych warunków użytkowania zależnych od atrybutów użytkownika (np. warunki dla lekarzy różnią się od warunków dla pielęgniarek, a pracownicy krajowi mają inne warunki niż pracownicy międzynarodowi) za pomocą [grup dynamicznych](users-groups-roles/groups-dynamic-membership.md).
 - Prezentowanie specyficznych warunków użytkowania podczas korzystania z aplikacji mających duży wpływ na działalność biznesową, takich jak Salesforce.
 - Prezentowanie warunków użytkowania w innych językach.
 - Wyświetlanie listy użytkowników, którzy wyrazili lub nie wyrazili zgody na warunki użytkowania.

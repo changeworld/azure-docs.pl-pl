@@ -1,6 +1,6 @@
 ---
-title: Szybki Start języka Python dla programu Microsoft — strona główna Maker interfejsu API (V4) - kognitywnych usług platformy Azure | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API usługi Microsoft Translator tekstu w kognitywnych usług Microsoft Azure.
+title: Python przewodnika Szybki Start dotyczącego usługi Microsoft QnA Maker API (V4) — usługi Azure Cognitive Services | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,48 +9,48 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: add5322dde89f3e3f44fddc1e3c63eb2f91013a8
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: c0d02a0f586857f6dd303fc98407da71b2addb9b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301750"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869123"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Szybki Start dla programu Microsoft — strona główna Maker interfejsu API za pomocą języka Python 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Przewodnik Szybki start dotyczący usługi QnA Maker API za pomocą języka Python dla firmy Microsoft 
 <a name="HOLTop"></a>
 
-W tym artykule przedstawiono sposób użycia [interfejsu API usługi Microsoft — strona główna Maker](../Overview/overview.md) z języka Python, wykonaj następujące czynności.
+W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA Maker](../Overview/overview.md) przy użyciu języka Python, wykonaj następujące czynności.
 
-- [Tworzenie nowej wiedzy.](#Create)
+- [Tworzenie nowej bazy wiedzy.](#Create)
 - [Aktualizowanie istniejącej bazy wiedzy knowledge base.](#Update)
-- [Pobierz stan żądania do tworzenia lub aktualizowania bazy wiedzy.](#Status)
+- [Pobierz stan żądania można utworzyć lub zaktualizować wiedzy.](#Status)
 - [Publikowanie istniejącej bazy wiedzy knowledge base.](#Publish)
-- [Zamień zawartość istniejącej bazy wiedzy knowledge base.](#Replace)
-- [Pobierz zawartość z bazy wiedzy.](#GetQnA)
-- [Uzyskaj odpowiedzi na pytanie, używając bazy wiedzy.](#GetAnswers)
-- [Pobiera informacje o bazie wiedzy.](#GetKB)
-- [Pobiera informacje o wszystkich baz wiedzy należące do określonego użytkownika.](#GetKBsByUser)
-- [Usuwanie bazy wiedzy.](#Delete)
-- [Pobieranie bieżącego kluczy punktu końcowego.](#GetKeys)
-- [Ponownie wygenerować klucze bieżący punkt końcowy.](#PutKeys)
-- [Pobierz bieżący zestaw zmian programu word.](#GetAlterations)
-- [Zastąp bieżący zestaw zmian programu word.](#PutAlterations)
+- [Zastąp zawartość istniejącej bazy wiedzy knowledge base.](#Replace)
+- [Pobierz zawartość bazy wiedzy.](#GetQnA)
+- [Uzyskaj odpowiedzi na pytanie przy użyciu wiedzy.](#GetAnswers)
+- [Pobierz informacje o wiedzy.](#GetKB)
+- [Pobierz informacje o wszystkich baz wiedzy należące do określonego użytkownika.](#GetKBsByUser)
+- [Usuń z bazy wiedzy.](#Delete)
+- [Uzyskaj bieżące klucze punktu końcowego.](#GetKeys)
+- [Ponowne generowanie bieżące klucze punktu końcowego.](#PutKeys)
+- [Uzyskaj bieżący zestaw zmian w programie word.](#GetAlterations)
+- [Zastąp bieżący zestaw zmian w programie word.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [Python 3.x](https://www.python.org/downloads/) do uruchomienia tego kodu.
+Konieczne będzie [Python 3.x](https://www.python.org/downloads/) do uruchamiania tego kodu.
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API usługi Microsoft — strona główna Maker**. Konieczne będzie klucza płatnej subskrypcji, z Twojego [pulpitu nawigacyjnego Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API programu Microsoft QnA Maker**. Konieczne będzie klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
 ## <a name="create-knowledge-base"></a>Tworzenie bazy wiedzy
 
-Poniższy kod tworzy podstawowy, za pomocą nowej wiedzy [Utwórz](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metody.
+Poniższy kod tworzy bazę danych, przy użyciu nowej wiedzy [Utwórz](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -144,9 +144,9 @@ while False == done:
         done = True
 ```
 
-**Tworzenie odpowiedzi wiedzy**
+**Tworzenie bazy wiedzy knowledge base odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -179,13 +179,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="Update"></a>
 
-## <a name="update-knowledge-base"></a>Aktualizacja wiedzy
+## <a name="update-knowledge-base"></a>Aktualizowanie bazy wiedzy
 
-Poniższy kod aktualizuje wiedzy na temat podstawowej za pomocą [aktualizacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metody.
+Poniższy kod aktualizuje istniejące wiedzy, za pomocą [aktualizacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -284,9 +284,9 @@ while False == done:
         done = True
 ```
 
-**Zaktualizuj odpowiedzi wiedzy**
+**Aktualizowanie bazy wiedzy knowledge base odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -314,7 +314,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Pobierz stan żądania
 
-Możesz wywołać [operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) , aby sprawdzić stan żądania do tworzenia lub aktualizowania bazy wiedzy. Aby zobaczyć, jak ta metoda jest używana, można znaleźć w przykładowym kodzie dla [Utwórz](#Create) lub [aktualizacji](#Update) metody.
+Możesz wywołać [operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) , aby sprawdzić stan żądania można utworzyć lub zaktualizować wiedzy. Aby zobaczyć, jak ta metoda jest używana, zobacz przykładowy kod dla [Utwórz](#Create) lub [aktualizacji](#Update) metody.
 
 [Powrót do początku](#HOLTop)
 
@@ -322,11 +322,11 @@ Możesz wywołać [operacji](https://westus.dev.cognitive.microsoft.com/docs/ser
 
 ## <a name="publish-knowledge-base"></a>Publikowanie bazy wiedzy
 
-Poniższy kod publikuje wiedzy na temat podstawowej za pomocą [publikowania](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metody.
+Poniższy kod publikuje istniejących wiedzy, za pomocą [Publikuj](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -375,7 +375,7 @@ print (pretty_print(result))
 
 **Publikowanie bazy wiedzy knowledge base odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -387,13 +387,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>Zastąp wiedzy
+## <a name="replace-knowledge-base"></a>Zastąp bazy wiedzy
 
-Poniższy kod zastępuje zawartość określonego znajomości podstawowej za pomocą [Zastąp](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
+Poniższy kod zastępuje zawartość określonego wiedzy, za pomocą [Zastąp](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -461,9 +461,9 @@ result = replace_kb (path, content)
 print (pretty_print(result))
 ```
 
-**Zastąp odpowiedzi wiedzy**
+**Zastąp odpowiedzi bazy wiedzy**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -475,13 +475,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>Pobierz zawartość z bazy wiedzy
+## <a name="download-the-contents-of-a-knowledge-base"></a>Pobierz zawartość bazy wiedzy
 
-Poniższy kod pobiera zawartość określonego znajomości podstawowej za pomocą [Pobierz wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
+Poniższy kod pobiera zawartość określonej wiedzy, za pomocą [Pobierz wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -525,9 +525,9 @@ result = get_qna (path)
 print (pretty_print(result))
 ```
 
-**Pobierz odpowiedzi wiedzy**
+**Pobierz odpowiedzi bazy wiedzy**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -564,15 +564,15 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Odpowiedzi na pytanie za pomocą bazy wiedzy
+## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Uzyskaj odpowiedzi na pytanie przy użyciu wiedzy
 
-Poniższy kod pobiera odpowiedzi na pytanie, przy użyciu określonej bazie wiedzy, używając **Generowanie odpowiedzi** metody.
+Poniższy kod pobiera odpowiedzi na pytania przy użyciu określonej bazie wiedzy knowledge base, przy użyciu **Generowanie odpowiedzi** metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-1. Dodaj kod poniżej.
-1. Zastąp `host` wartość nazwą witryny sieci Web dla Twojej subskrypcji Maker — strona główna. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi Maker — strona główna](../How-To/set-up-qnamaker-service-azure.md).
-1. Zastąp `endpoint_key` wartości z klucza prawidłowy punkt końcowy dla Twojej subskrypcji. Należy pamiętać, że nie jest taka sama jak klucz subskrypcji. Można uzyskać przy użyciu kluczy punktu końcowego [pobieranie punktu końcowego kluczy](#GetKeys) metody.
-1. Zastąp `kb` wartości z Identyfikatorem wiedzy, aby wysłać zapytanie do odpowiedzi. Należy pamiętać, to wiedzy musi już zostały opublikowane przy użyciu [publikowania](#Publish) metody.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+1. Dodaj kod, przedstawione poniżej.
+1. Zastąp `host` wartość nazwą witryny sieci Web dla Twojej subskrypcji usługi QnA Maker. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
+1. Zastąp `endpoint_key` wartość za pomocą klucza prawidłowego punktu końcowego dla Twojej subskrypcji. Należy pamiętać, że to nie jest taka sama jak klucz subskrypcji. Możesz uzyskać klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](#GetKeys) metody.
+1. Zastąp `kb` wartość o identyfikatorze wiedzy, które chcesz zbadać odpowiedzi. Należy pamiętać, tej wiedzy musi już zostały opublikowane za pomocą [Publikuj](#Publish) metody.
 1. Uruchom program.
 
 ```python
@@ -628,7 +628,7 @@ print (pretty_print(result))
 
 **Uzyskaj odpowiedzi odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -652,13 +652,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>Pobierz informacje o bazie wiedzy
+## <a name="get-information-about-a-knowledge-base"></a>Pobierz informacje o wiedzy
 
-Poniższy kod pobiera informacje o wiedzy określony podstawowy, za pomocą [uzyskiwanie szczegółowych informacji z bazy wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
+Poniższy kod umożliwia pobranie informacji o określonym wiedzy podstawowego tworzonego przy użyciu [uzyskiwanie szczegółowych informacji w bazie wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -699,9 +699,9 @@ result = get_kb (path)
 print (pretty_print(result))
 ```
 
-**Uzyskaj odpowiedzi szczegóły wiedzy**
+**Uzyskiwanie wiedzy szczegóły odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -725,13 +725,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>Pobierz wszystkie baz wiedzy dla użytkownika
+## <a name="get-all-knowledge-bases-for-a-user"></a>Pobierz wszystkie bazy wiedzy dla użytkownika
 
-Poniższy kod pobiera informacje o wszystkich baz wiedzy dla określonego użytkownika, za pomocą [uzyskać baz wiedzy dla użytkownika](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
+Poniższy kod umożliwia pobranie informacji o wszystkich baz wiedzy dla określonego użytkownika przy użyciu [Pobierz bazy wiedzy dla użytkownika](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -769,9 +769,9 @@ result = get_kbs (path)
 print (pretty_print(result))
 ```
 
-**Pobierz baz wiedzy na odpowiedź użytkownika**
+**Pobieranie baz wiedzy o odpowiedź użytkownika**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -811,13 +811,13 @@ Press any key to continue.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>Usuwanie bazy wiedzy
+## <a name="delete-a-knowledge-base"></a>Usuń z bazy wiedzy
 
-Poniższy kod usuwa określony znajomości podstawowej za pomocą [usunąć wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
+Poniższy kod usuwa określony wiedzy, za pomocą [usuwania z bazy wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -864,9 +864,9 @@ result = delete_kb (path, '')
 print (pretty_print(result))
 ```
 
-**Usuń odpowiedź wiedzy**
+**Usuń odpowiedź z bazy wiedzy**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -878,13 +878,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Pobieranie punktu końcowego kluczy
+## <a name="get-endpoint-keys"></a>Pobierz klucze punktu końcowego
 
-Poniższy kod pobiera bieżące klucze punkt końcowy, za pomocą [pobieranie punktu końcowego kluczy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
+Poniższy kod pobiera bieżące klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -922,9 +922,9 @@ result = get_keys (path)
 print (pretty_print(result))
 ```
 
-**Uzyskaj odpowiedzi kluczy punktu końcowego**
+**Uzyskaj odpowiedzi klucze punktu końcowego**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -937,13 +937,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="PutKeys"></a>
 
-## <a name="refresh-endpoint-keys"></a>Odśwież kluczy punktu końcowego
+## <a name="refresh-endpoint-keys"></a>Odśwież klucze punktu końcowego
 
-Poniższy kod generuje klucze bieżący punkt końcowy, za pomocą [Odśwież kluczy punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
+Poniższy kod generuje ponownie bieżące klucze punktu końcowego przy użyciu [odświeżyć klucze punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -990,9 +990,9 @@ result = refresh_keys (path, '')
 print (pretty_print(result))
 ```
 
-**Odśwież odpowiedzi kluczy punktu końcowego**
+**Odświeżenie punktu końcowego klucze odpowiedzi**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -1005,13 +1005,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Pobierz zmiany w programie word
+## <a name="get-word-alterations"></a>Pobieranie zmian w programie word
 
-Poniższy kod pobiera bieżące zmiany word, przy użyciu [Pobierz zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
+Poniższy kod pobiera bieżące zmiany programu word, za pomocą [pobrać zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -1049,9 +1049,9 @@ result = get_alterations (path)
 print (pretty_print(result))
 ```
 
-**Uzyskaj odpowiedzi zmiany word**
+**Uzyskaj odpowiedzi zmiany programu word**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -1070,13 +1070,13 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Zastąp zmiany w programie word
+## <a name="replace-word-alterations"></a>Zastąp zmiany programu word
 
-Poniższy kod zastępuje bieżące zmiany word, przy użyciu [Zastąp zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
+Poniższy kod zastępuje bieżące zmiany programu word, za pomocą [Zastąp zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
 
-1. Utwórz nowy projekt języka Python w Twoje ulubione IDE.
-2. Dodaj kod poniżej.
-3. Zastąp `key` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
+1. Utwórz nowy projekt języka Python w Twoim ulubionym środowisku IDE.
+2. Dodaj kod, przedstawione poniżej.
+3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```python
@@ -1133,9 +1133,9 @@ result = put_alterations (path, content)
 print (pretty_print(result))
 ```
 
-**Zastąp odpowiedzi zmiany word**
+**Zastąp odpowiedzi zmiany programu word**
 
-Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
 
 ```json
 {
@@ -1148,8 +1148,8 @@ Odpowiedź oznaczająca Powodzenie jest zwracany w formacie JSON, jak pokazano w
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST Maker — strona główna (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Dokumentacja interfejsu API REST usługi QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Omówienie Maker — strona główna](../Overview/overview.md)
+[Omówienie usługi QnA Maker](../Overview/overview.md)

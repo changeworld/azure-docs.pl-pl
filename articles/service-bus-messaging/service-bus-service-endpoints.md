@@ -1,6 +1,6 @@
 ---
 title: Punkty końcowe usługi sieci wirtualnej i zasady usługi Azure Service Bus | Dokumentacja firmy Microsoft
-description: Dodaj punkt końcowy usługi Microsoft.ServiceBus do sieci wirtualnej.
+description: Dodaj punkt końcowy usługi elementu Microsoft.ServiceBus z siecią wirtualną.
 services: event-hubs
 documentationcenter: ''
 author: clemensv
@@ -8,38 +8,44 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 7716ff503bd492cc4b5d510758cb20d74eb82a4f
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f8874a1d9db754485e9624596465560981bd6425
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036715"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858049"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Service Bus
 
-Integracja usługi Service Bus z [punktów końcowych usługi Virtual Network (VNet)] [ vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń, takich jak maszyny wirtualne, które są powiązane z siecią wirtualną , ze ścieżką ruchu sieciowego są zabezpieczone po obu stronach. 
+Integracja usługi Service Bus za pomocą [punkty końcowe usługi Virtual Network (VNet)] [ vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń, takie jak maszyny wirtualne, które są powiązane z sieciami wirtualnymi , przy użyciu ścieżki ruchu sieciowego zabezpieczonego na obu końcach. 
 
-Po skonfigurowaniu może być powiązane z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej odpowiednich przestrzeń nazw magistrali usług nie będzie akceptował ruchu z dowolnego miejsca, ale uprawnień sieci wirtualnej. Z perspektywy sieci wirtualnej powiązanie dla punktu końcowego przestrzeni nazw usługi Service Bus konfiguruje izolowane sieci tunelu w podsieci sieci wirtualnej z usługą obsługi wiadomości.
+Po skonfigurowaniu, może być powiązane z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej, odpowiednich przestrzeni nazw usługi Service Bus nie będzie już akceptować ruch z dowolnego miejsca, ale uprawnień sieci wirtualnych. Z perspektywy sieci wirtualnej powiązanie przestrzeni nazw usługi Service Bus z punktu końcowego usługi służy do konfigurowania izolowanych sieci tunelu z podsieci sieci wirtualnej do obsługi wiadomości usługi.
 
-Wynik jest prywatny i izolowane relację między obciążeń związanych z podsieci i odpowiednich nazw usługi Service Bus, mimo adres sieciowy zauważalne obsługi komunikatów usługi punktu końcowego są w zakresie publicznego adresu IP.
+Wynik jest prywatne i izolowany relacji między obciążeniami usług związanych z podsieci i odpowiednich przestrzeni nazw usługi Service Bus, pomimo adres sieciowy dostrzegalnych obsługi komunikatów usługi punktu końcowego są w zakresie publicznych adresów IP.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez integrację sieci wirtualnej 
+## <a name="enable-service-endpoints-with-service-bus"></a>Włączyć punkty końcowe usługi z usługą Service Bus
 
-Rozwiązania wymagające zabezpieczeń ścisłej i związane i gdy podsieci sieci wirtualnej zapewniają segmentacji między usługami compartmentalized, zazwyczaj nadal konieczne ścieżki komunikacji między usługami znajdującej się w tych przedziałów.
+Sieci wirtualne są obsługiwane tylko w [w warstwie Premium](service-bus-premium-messaging.md) przestrzeni nazw usługi Service Bus. 
 
-Wszelkie natychmiastowego trasy IP między przedziałów, w tym te wartości HTTPS za pośrednictwem protokołu TCP/IP, niesie ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieci w górę. Moduł obsługi Podaj ścieżki komunikacji całkowicie izolowanych, w których wiadomości nawet są zapisywane na dysku, zgodnie z ich przechodzenie między stronami. Obciążeń w dwóch odrębnych sieci wirtualnych znajdujących się w tym samym wystąpieniu usługi Service Bus są powiązane mogą komunikować się wydajne i niezawodne za pośrednictwem wiadomości, gdy integralności granic izolacji sieci odpowiednich są zachowywane.
+Ważną kwestią w przypadku korzystania z punktów końcowych usługi sieci wirtualnej z usługą Service Bus jest, nie należy włączać tych punktów końcowych w aplikacji, które mieszać przestrzeni nazw usługi Service Bus warstwy standardowa i Premium. Ponieważ w warstwie standardowa nie obsługuje sieci wirtualne, punkt końcowy jest ograniczona do Premium przestrzeni nazw w warstwie tylko. Sieć wirtualna spowoduje zablokowanie ruchu do standardowych przestrzeni nazw. 
+
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez Integracja sieci wirtualnej 
+
+Rozwiązania, które wymagają bezpieczeństwa ścisłej i związane i gdzie podsieci sieci wirtualnej segmentacji między usługami compartmentalized ogólnie rzecz biorąc nadal potrzebują zaufanych ścieżek komunikacji między usługami znajdującymi się w tych przedziałów.
+
+Wszelkie natychmiastowego trasy IP między przedziały, w tym te wartości protokołu HTTPS za pośrednictwem protokołu TCP/IP, niesie ze sobą ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieciowej w górę. Usługi przesyłania komunikatów zapewniają zaufanych ścieżek komunikacji w pełni izolowane, gdzie komunikaty nawet są zapisywane na dysku, ponieważ ich przejść między stronami. Obciążeń z dwóch odrębnych sieci wirtualnych, które to samo wystąpienie usługi Service Bus są powiązane mogą komunikować się sprawnie i niezawodnie za pośrednictwem wiadomości, gdy integralności granic izolacji sieci odpowiednich są zachowywane.
  
-Oznacza to, że compartments bezpieczeństwa poufnych rozwiązań w chmurze nie tylko dostęp do platformy Azure w branży niezawodnych i skalowalne asynchroniczne możliwości obsługi komunikatów, ale mogą teraz przy użyciu wiadomości do tworzenia ścieżek komunikacji między bezpieczne rozwiązanie, które są z założenia bezpieczniejsze niż jest to poprzez dowolny tryb komunikacji peer-to-peer, łącznie z protokołu HTTPS i innych protokołów zabezpieczonego protokołem TLS gniazda.
+Oznacza to, że compartments bezpieczeństwa poufnych rozwiązań w chmurze nie tylko dostęp do możliwości platformy Azure wiodącą w branży niezawodne i skalowalne asynchronicznej obsługi komunikatów, ale mogą teraz używać wiadomości do tworzenie zaufanych ścieżek komunikacji między bezpiecznych rozwiązań, które są natury bezpieczniejszy niż co to jest osiągalna z dowolnym trybie komunikacji peer-to-peer, łącznie z protokołu HTTPS i innych protokołów gniazda korzystającej z protokołu TLS.
 
-## <a name="binding-service-bus-to-virtual-networks"></a>Powiązanie usługi Service Bus do sieci wirtualnych
+## <a name="binding-service-bus-to-virtual-networks"></a>Powiązania usługi Service Bus z sieciami wirtualnymi
 
-*Zasady sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy serwer usługi Azure Service Bus akceptuje połączenia z podsiecią określonej sieci wirtualnej.
+*Reguły sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy serwer usługi Azure Service Bus akceptuje połączenia z podsieci określonej sieci wirtualnej.
 
-Powiązanie nazw usługi Service Bus do sieci wirtualnej jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi sieci wirtualnej** w podsieci sieci wirtualnej i włącz go do "Microsoft.ServiceBus", jak wyjaśniono w [omówienie punktu końcowego usługi] [ vnet-sep]. Po dodaniu punktu końcowego usługi można powiązać przestrzeni nazw usługi Service Bus za pomocą *reguły sieci wirtualnej*.
+Powiązania przestrzeni nazw usługi Service Bus z siecią wirtualną jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi sieci wirtualnej** w podsieci sieci wirtualnej i włącz ją dla elementu "Microsoft.ServiceBus", jak wyjaśniono w [Przegląd punktów końcowych usługi] [ vnet-sep]. Po dodaniu punktu końcowego usługi, możesz powiązać przestrzeni nazw usługi Service Bus za pomocą *reguły sieci wirtualnej*.
 
-Reguła sieci wirtualnej jest skojarzenie nazwanych przestrzeni nazw usługi Service Bus z podsiecią sieci wirtualnej. Gdy istnieje reguła, wszystkie obciążenia związane z podsiecią udzielany jest dostęp do przestrzeni nazw usługi Service Bus. Usługi Service Bus sama nigdy nie ustanawia wychodzące połączenie, nie trzeba uzyskać dostęp i jest w związku z tym nigdy nie uzyskuje dostęp do podsieci, należy włączyć tę regułę.
+Reguła sieci wirtualnej jest skojarzeniem o nazwie przestrzeni nazw usługi Service Bus z podsiecią sieci wirtualnej. Gdy istnieje reguła, wszystkie obciążenia związane z podsiecią uzyskują dostęp do przestrzeni nazw usługi Service Bus. Usługi Service Bus sama nigdy nie nawiązuje połączenia wychodzące, nie trzeba uzyskać dostęp i w związku z tym nigdy nie udzielany jest dostęp umożliwiający podsieci, należy włączyć tę regułę.
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -47,9 +53,9 @@ Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci 
 
 Parametry szablonu:
 
-* **Nazwa przestrzeni nazw**: przestrzeń nazw magistrali usług.
-* **vnetRuleName**: nazwę reguły sieć wirtualna ma zostać utworzony.
-* **virtualNetworkingSubnetId**: w pełni kwalifikowana Menedżera zasobów dla podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
+* **namespaceName**: przestrzeń nazw magistrali usług.
+* **vnetRuleName**: nazwę reguły sieci wirtualnej ma zostać utworzony.
+* **virtualNetworkingSubnetId**: pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
 
 Szablon:
 
@@ -90,14 +96,14 @@ Szablon:
 }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dla [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o sieciach wirtualnych zobacz następujące linki:
+Aby uzyskać więcej informacji na temat sieci wirtualnych zobacz następujące linki:
 
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vnet-sep]
-- [Filtrowanie Azure Service Bus IP][ip-filtering]
+- [Filtrowanie IP magistrali usługi platformy Azure][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md

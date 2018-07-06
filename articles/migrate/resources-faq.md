@@ -1,111 +1,135 @@
 ---
-title: Migrowanie Azure — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
-description: Często zadawane pytania na migrację Azure adresów
+title: Usługa Azure Migrate — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/03/2018
 ms.author: snehaa
-ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: c85e512dede7c14e7b678297ed524fa7a1d7e79d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285709"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859527"
 ---
-# <a name="azure-migrate---frequently-asked-questions-faq"></a>Migrowanie Azure — często zadawane pytania (FAQ)
+# <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
-Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure migracji. Jeśli masz dodatkowe pytania po przeczytaniu tego artykułu, opublikuj je na [forum migracji Azure](http://aka.ms/AzureMigrateForum).
+Ten artykuł zawiera często zadawane pytania dotyczące usługi Azure Migrate. Jeśli masz dodatkowe pytania po przeczytaniu tego artykułu, opublikuj je na [forum usługi Azure Migrate](http://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Ogólne
 
-### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak migrować Azure różni się od usługi Azure Site Recovery?
+### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Czym różni się usługa Azure Migrate z usługi Azure Site Recovery?
 
-Migracji Azure jest usługą ocenę, która pomaga wykrywać obciążeń lokalnych oraz planowanie migracji do usługi Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), wraz z stanowi rozwiązanie odzyskiwania po awarii, ułatwia migrację obciążeń lokalnych do maszyn wirtualnych IaaS na platformie Azure.
+Usługa Azure Migrate jest usługą ocenę, która ułatwia odnajdywanie obciążeń lokalnych i Zaplanuj migrację na platformę Azure. [Usługa Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), oraz że rozwiązanie odzyskiwania po awarii, pomaga w migrowaniu obciążeń lokalnych do maszyn wirtualnych IaaS na platformie Azure.
 
-### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Jak migrować Azure różni się od Azure lokacji odzyskiwania wdrożenia Planistę?
+### <a name="whats-the-difference-between-using-azure-migrate-for-assessments-and-the-map-toolkit"></a>Jaka jest różnica między za pomocą usługi Azure Migrate dla ocen i narzędzi?
 
-Azure migracji jest migracji za pomocą narzędzia do planowania i Azure lokacji odzyskiwania wdrożenia Planistę odzyskiwania awaryjnego (DR), narzędzia do planowania.
+[Usługa Azure Migrate](migrate-overview.md) zapewnia ocenę migracji specjalnie, aby ułatwić przygotowanie do migracji i ocena obciążeń lokalnych na platformę Azure. [Microsoft Assessment i zestaw narzędzi do planowania (MAP)](https://www.microsoft.com/en-us/download/details.aspx?id=7826) ma inne funkcje. Na przykład migracja planowania dla nowszej wersji systemu Windows klienckich i serwerowych systemów operacyjnych, oprogramowania użycia śledzenia itp. W tych scenariuszach nadal używać narzędzi.
 
-**Migracja z programu VMware do platformy Azure**: Jeśli planujesz migrację obciążeń lokalnych do platformy Azure, użyj migracji Azure dotyczące planowania migracji. Azure migracji ocenia obciążeń lokalnych i zawiera wskazówki, szczegółowych informacji i mechanizmów ułatwi migracji do usługi Azure. Po zakończeniu plan migracji, można użyć usług, takich jak usługi Azure Site Recovery i usługa migracji bazy danych Azure do migracji maszyn na platformie Azure.
 
-**Migracja z funkcji Hyper-V w systemie Azure**: Migrowanie Azure aktualnie obsługuje tylko oceny maszyn wirtualnych VMware do migracji do usługi Azure. Obsługa funkcji Hyper-V znajduje się na plan dla migracji Azure. W międzyczasie można użyć automatycznego wdrożenia Planistę. Po włączeniu obsługi funkcji Hyper-V w migracji Azure można migrować Azure dotyczące planowania migracji obciążeń funkcji Hyper-V.
+### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Czym różni się usługa Azure Migrate z Planisty wdrożenia usługi Azure Site Recovery?
 
-**Odzyskiwanie po awarii z VMware/funkcji Hyper-V do platformy Azure**: Jeśli planowane jest wykonanie odzyskiwania awaryjnego (DR) na platformie Azure za pomocą odzyskiwania lokacji Azure (ASR), na użytek automatycznego wdrożenia Planistę planowanie odzyskiwania po awarii. Planowanie wdrożenia usługi ASR ma bezpośredni, specyficzne dla usługi ASR oceny środowiska lokalnego. Zawiera zalecenia, które są wymagane przez ASR dla pomyślnej operacji odzyskiwania po awarii, takich jak replikacji, pracy awaryjnej maszyn wirtualnych.  
+Usługa Azure Migrate jest migracji za pomocą narzędzia do planowania i planista wdrażania usługi Azure Site Recovery jest Odzyskiwanie po awarii (DR), narzędzia do planowania.
 
-### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy migracja Azure potrzebuje serwerowi odnajdywania w środowisku programu VMware vCenter?
+**Migracja z programu VMware na platformę Azure**: Aby przeprowadzić migrację lokalnych obciążeń na platformę Azure, używać usługi Azure Migrate dotyczące planowania migracji. Usługa Azure Migrate ocenia obciążenia lokalne i zapewnia wskazówki, szczegółowe informacje i mechanizmy, aby pomóc w migracji do platformy Azure. Jeśli wszystko jest gotowe dla planu migracji, można użyć usług, takich jak Azure Site Recovery i Azure Database Migration Service, przeprowadzić migrację maszyn na platformę Azure.
 
-Tak, migracja Azure wymaga serwera odnajdywania w środowisku programu VMware vCenter. Nie obsługuje odnajdowania hostach ESXi, które nie są zarządzane przez oprogramowanie vCenter Server.
+**Migracja z funkcji Hyper-V na platformę Azure**: Usługa Azure Migrate aktualnie obsługuje tylko oceny maszyn wirtualnych VMware do migracji na platformę Azure. Obsługa funkcji Hyper-V znajduje się w planie dla usługi Azure Migrate. W międzyczasie można użyć Planisty wdrożenia usługi Site Recovery. Po włączeniu obsługi funkcji Hyper-V w usłudze Azure Migrate służy usługa Azure Migrate dotyczące planowania migracji obciążeń funkcji Hyper-V.
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Regiony platformy Azure są obsługiwane przez migrację Azure?
+**Odzyskiwanie po awarii z programu VMware/funkcji Hyper-V na platformę Azure**: Jeśli użytkownik zamierza wykonać odzyskiwanie po awarii (DR) na platformie Azure przy użyciu usługi Azure Site Recovery (Usługa Site Recovery), na użytek planista wdrażania usługi Site Recovery planowania odzyskiwania po awarii. Planista wdrażania usługi Site Recovery wykonuje głęboką, specyficzne dla usługi ASR oceny środowiska lokalnego. Zapewnia zaleceń, które są wymagane przez usługę Site Recovery dla pomyślnego operacji odzyskiwania po awarii, takich jak replikacja, failover maszyn wirtualnych.  
 
-Azure migracji obecnie obsługuje wschodnie stany USA i zachodnie centralnej nam jako lokalizacje projektu. Należy pamiętać, że nawet jeśli projekty migracji można tworzyć tylko w zachodnie centralnej nam i wschodnie stany USA, można nadal oceny, maszynach dla [wiele lokalizacji docelowej](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Lokalizacja projektu jest używana tylko do przechowywania odnalezionych danych.
+### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Czy usługa Azure Migrate potrzebuje programu vCenter Server, aby dowiedzieć się, w środowisku programu VMware?
 
-## <a name="discovery"></a>Odnajdowanie
+Tak, usługa Azure Migrate wymaga programu vCenter Server, aby dowiedzieć się, w środowisku VMware. Nie obsługuje odnajdywanie hostów ESXi, które nie są zarządzane przez program vCenter Server.
 
-### <a name="what-data-is-collected-by-azure-migrate"></a>Jakie dane są zbierane przez migrację Azure?
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Które regiony platformy Azure są obsługiwane przez usługę Azure Migrate?
 
-Migracji Azure obsługuje dwa rodzaje odnajdywania, oparte na urządzeniu odnajdywania i odnajdowania opartego na agenta.
-Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące maszyn wirtualnych lokalnie, poniżej przedstawiono pełną listę metadanych zebrany przez urządzenia:
+### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak lokacją lokalną łączyć się z usługi Azure Migrate?
+
+Połączenie może być za pośrednictwem Internetu lub korzystać z usługi ExpressRoute w publicznej komunikacji równorzędnej.
+
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Z maszyny Wirtualnej można zabezpieczyć. OVA szablonu?
+
+Dodatkowe składniki (na przykład oprogramowanie antywirusowe) można dodać do. OVA tak długo, jak komunikacja i reguł zapory wymagane dla usługi Azure Migrate urządzenia do pracy pozostało jako jest szablon.   
+
+
+## <a name="discovery-and-assessment"></a>Odnajdywanie i ocena
+
+### <a name="what-data-is-collected-by-azure-migrate"></a>Jakie dane są zbierane przez usługę Azure Migrate?
+
+Usługa Azure Migrate obsługuje dwa rodzaje odnajdywania, odnajdywanie na podstawie urządzenia i odnajdywanie na podstawie agenta.
+Odnajdywanie oparte na urządzeniu zbiera metadane dotyczące lokalnych maszyn wirtualnych, pełną listę metadane zbierane przez urządzenie znajduje się poniżej:
 
 **Dane konfiguracji maszyny wirtualnej**
-- Nazwa wyświetlana maszyny Wirtualnej (w programie vCenter)
-- Ścieżka spisu maszyny Wirtualnej (host/klaster/folder w programie vCenter)
+- Nazwa wyświetlana maszyny Wirtualnej (na klawiaturze vCenter)
+- Ścieżka magazynu maszyny Wirtualnej (host/klaster/folder w programie vCenter)
 - Adres IP
 - Adres MAC
 - System operacyjny
 - Liczba rdzeni, dysków, kart sieciowych
-- Rozmiar pamięci, rozmiarów dysków
+- Rozmiar pamięci, rozmiary dysków
 
-**Dane o wydajności maszyny wirtualnej**
+**Dane dotyczące wydajności maszyny wirtualnej**
 - Użycie procesora CPU
 - Użycie pamięci
-- Dla każdego dysku dołączony do maszyny Wirtualnej:
+- Dla każdego dysku, podłączonego do maszyny Wirtualnej:
   - Przepływność odczytu z dysku
-  - Przepływność zapisu dysku
-  - Operacje na sekundę odczytu dysku
-  - Zapisu dysku na sekundę
-- Dla każdej karty sieciowej podłączony do maszyny Wirtualnej:
-  - Sieci w
-  - Sieci limit
+  - Przepływność zapisu na dysku
+  - Odczyt z dysku operacji na sekundę
+  - Dysk zapisuje operacji na sekundę
+- Dla każdej karty sieciowej jest dołączony do maszyny Wirtualnej:
+  - Sieć — wejście
+  - Sieć — wyjście
 
-Odnajdywanie agenta na podstawie opcja jest dostępna na górze odnajdywania oparte na urządzeniu i ułatwia klientom [wizualizowanie zależności](how-to-create-group-machine-dependencies.md) lokalnych maszyn wirtualnych. Agentów zależności zbieranie szczegóły, takie jak nazwy FQDN, systemu operacyjnego, IP address, adres MAC, procesów uruchomionych wewnątrz maszyny Wirtualnej i połączeń TCP przychodzącego/wychodzącego z maszyny Wirtualnej. Odnajdywanie agenta na podstawie jest opcjonalna i użytkownik może zainstalować agentów nie, jeśli nie chcesz wizualizowanie zależności maszyn wirtualnych.
+Odnajdywanie oparte na agentach opcja jest dostępna na podstawie odnajdywania oparte na urządzeniu i pomaga klientom [wizualizacja zależności](how-to-create-group-machine-dependencies.md) lokalnych maszyn wirtualnych. Agenci zależności zbierać szczegółowe informacje, takie jak nazwy FQDN, system operacyjny, IP adresu, adres MAC, procesów uruchomionych wewnątrz maszyny Wirtualnej i połączenia wychodzące/przychodzące TCP z maszyny Wirtualnej. Odnajdywanie oparte na agentach jest opcjonalny, a użytkownik może nie zainstalować agentów, jeśli nie chcesz wizualizacja zależności maszyn wirtualnych.
 
-### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Gdzie jest zebrane dane przechowywane i jak długo?
+### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Gdzie jest zebranych danych przechowywanych i na jak długo?
 
-Dane zebrane przez moduł zbierający urządzenie znajduje się w lokalizacji platformy Azure, które można określić podczas tworzenia projektu migracji. Dane są bezpiecznie przechowywane w ramach subskrypcji firmy Microsoft i są usuwane, gdy użytkownik usuwa Azure migracji projektu.
+Dane zebrane przez urządzenie modułu zbierającego znajduje się w lokalizacji platformy Azure, które należy określić podczas tworzenia projektu migracji. Dane są bezpiecznie przechowywane w ramach subskrypcji firmy Microsoft i zostanie usunięta, gdy użytkownik usuwa projekt usługi Azure Migrate.
 
-Dla wizualizacji zależności zainstalowanie agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym pakietu OMS utworzona w subskrypcji użytkownika. Usuwanie danych odbywa się po obszar roboczy OMS w subskrypcji jej lub jego usunięcia przez użytkownika. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym pakietu OMS utworzonego w subskrypcji użytkownika. Usuwanie danych odbywa się podczas usuwania obszaru roboczego pakietu OMS w ramach subskrypcji. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
-### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak moduł zbierający komunikacji z serwerem vCenter i usługę Azure migracji?
+### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>Jak moduł zbierający komunikacji przy użyciu programu vCenter Server i usługi Azure Migrate?
 
-Moduł zbierający urządzenie łączy się programu vCenter Server (port 443) przy użyciu poświadczeń dostarczonych przez użytkownika w urządzeniu. Zapytanie programu vCenter Server za pomocą VMware PowerCLI do zbierania metadanych dotyczących maszyn wirtualnych zarządzanych przez serwer vCenter. Zbiera dane konfiguracji obu maszyn wirtualnych (rdzenie, pamięci, dysków, kart itp.) oraz wydajności historię każdej maszyny Wirtualnej przez ostatni miesiąc z vCenter Server. Zebranych metadanych są następnie wysyłane do usługi Azure migracji (za pośrednictwem Internetu za pośrednictwem protokołu https) do oceny. [Dowiedz się więcej](concepts-collector.md)
+Urządzenie modułu zbierającego łączy z programem vCenter Server (port 443) przy użyciu poświadczeń dostarczonych przez użytkownika na urządzeniu. Wykonuje kwerendę w programie vCenter Server przy użyciu interfejs PowerCLI programu VMware można zebrać metadanych informacje o maszynach wirtualnych zarządzanych przez program vCenter Server. Zbiera dane konfiguracji obu maszyn wirtualnych (rdzeni, pamięć, dyski, karta sieciowa itp.) oraz historii wydajności każdej maszyny wirtualnej dla ostatniego miesiąca z programu vCenter Server. Zebrane metadane są następnie wysyłane do usługi Azure Migrate (za pośrednictwem sieci internet za pośrednictwem protokołu https) dla oceny. [Dowiedz się więcej](concepts-collector.md)
+
+### <a name="can-i-connect-to-multiple-vcenter-servers"></a>Można połączyć z wieloma serwerami vCenter?
+
+Potrzebujesz urządzenia łącznika dla każdego serwera.
+
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Jest. Szablon OVA używane przez usługę Site Recovery jest zintegrowana z usługą. OVA używane przez usługę Azure Migrate?
+
+Obecnie nie ma żadnych integracji. . Szablon OVA w usłudze Site Recovery jest używany do konfigurowania serwera konfiguracji Usługa Site Recovery w celu replikacji serwera fizycznego/VMware, maszyny Wirtualnej. . OVA używane przez usługę Azure Migrate służy do odnalezienia maszyn wirtualnych VMware, zarządzane przez serwer vCenter, na potrzeby oceny migracji.
+
+### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Czy mogę zmienić mój rozmiar maszyny. Czy można ponownie uruchomić ocenę?
+
+Jeśli zmienisz ustawienia na maszynie Wirtualnej, którą chcesz ocenić, wyzwalacz Dowiedz się ponownie przy użyciu urządzenia modułu zbierającego. W urządzeniu, należy użyć **ponownie uruchom zbieranie** opcję, aby to zrobić. Po zakończeniu zbierania wybierz **ponownie Oblicz** opcję oceny w witrynie portal można pobrać wyniki oceny zaktualizowane.
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Czy dane są szyfrowane podczas przechowywania i przesyłanych?
 
-Tak, zebranych danych jest szyfrowany przy rest i podczas przesyłania. Metadane zebrany przez urządzenia jest bezpiecznie wysyłane do usługi Azure migracji za pośrednictwem Internetu za pośrednictwem protokołu https. Zebrane metadane są przechowywane w [DB rozwiązania Cosmos](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) i [magazynu obiektów blob Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) w ramach subskrypcji firmy Microsoft i jest szyfrowane, gdy.
+Tak, zebrane dane są szyfrowane zarówno magazynowanych i przesyłanych. Metadane zbierane przez urządzenie są bezpiecznie wysyłane do usługi Azure Migrate za pośrednictwem sieci internet za pośrednictwem protokołu https. Zebrane metadane są przechowywane w [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) i [usługi Azure blob storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) w ramach subskrypcji firmy Microsoft i jest szyfrowane, gdy.
 
-Dane zebrane przez agentów zależności jest również zaszyfrowane w przesyłania (https bezpiecznego kanału) i są przechowywane w obszarze roboczym analizy dzienników w subskrypcji użytkownika. Również są szyfrowane w stanie spoczynku.
+Dane zbierane przez agentów zależności jest również zaszyfrowane na tranzyt (https bezpiecznej channel) i są przechowywane w obszarze roboczym usługi Log Analytics w subskrypcji użytkownika. Jest ona również są szyfrowane w stanie spoczynku.
 
-### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak mogą odnajdować środowiska z wieloma dzierżawami w migracji Azure?
+### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak można odnaleźć środowiska z wieloma dzierżawami w usłudze Azure Migrate?
 
-Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywać maszyn wirtualnych z jednego dzierżawcy w subskrypcji innej dzierżawy, można użyć pola zakresu w urządzeniu modułu zbierającego do określania zakresu odnajdywania. Dzierżawcy udostępniania hostów, Utwórz poświadczeniami, które mają dostęp tylko do odczytu, aby tylko maszyny wirtualne należące do określonej dzierżawy, a następnie użyć tych poświadczeń w urządzeniu moduł zbierający i określ zakres jako hosta w celu odnajdywania. Alternatywnie można także utworzyć foldery w programie vCenter Server (Załóżmy, że folder1 dla tenant1 folder2 dla tenant2), w obszarze udostępnionego hosta przenoszenia maszyn wirtualnych dla tenant1 do folder1 i tenant2 do folder2 i odpowiednio określić zakres odnajdywania w moduł zbierający określając odpowiedni folder.
+Jeśli masz środowisko, który jest współużytkowany przez dzierżawców i nie chcesz odnajdywanie maszyn wirtualnych z jednej dzierżawy w innej dzierżawie subskrypcji, można użyć pola zakresu w urządzenia modułu zbierającego do określania zakresu odnajdywania. Jeśli dzierżawy współużytkują hostów, Utwórz poświadczenie, które ma dostęp tylko do odczytu do tylko maszyny wirtualne należące do określonej dzierżawy, a następnie korzystać z poświadczenia urządzenia modułu zbierającego i określ zakres jako hosta w celu odnajdywania. Alternatywnie można także utworzyć foldery, w programie vCenter Server (Załóżmy, że folder1 dla tenant1 folder2 dla tenant2), w obszarze udostępnionego hosta, Przenieś maszyny wirtualne dla tenant1 do folder1 i tenant2 do folder2 i zakres odnajdywania w module zbierającym w związku z tym określając odpowiedni folder.
 
-### <a name="how-many-virtual-machines-can-be-discovered-in-a-single-migration-project"></a>Liczbę maszyn wirtualnych można odnaleźć w projekcie migracji?
+### <a name="how-many-virtual-machines-can-be-discovered-in-a-single-migration-project"></a>Ile maszyn wirtualnych można znaleźć w projekcie migracji?
 
-Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz więcej maszyn w środowisku lokalnym [więcej](how-to-scale-assessment.md) o jak odkrywasz duże środowisko w Azure migracji.
+Może odnajdywać 1500 maszyn wirtualnych w projekcie migracji. Jeśli masz więcej maszyn w środowisku lokalnych [więcej](how-to-scale-assessment.md) o jak odkryjesz dużym środowisku, w usłudze Azure Migrate.
 
 ## <a name="dependency-visualization"></a>Wizualizacja zależności
 
-### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Należy zwrócić do użycia funkcji wizualizacji zależności?
+### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Czy muszę płacić za używanie funkcji wizualizacji zależności?
 
 Usługa Azure Migrate jest dostępna bez dodatkowych opłat. Więcej informacji o cenach usługi Azure Migrate można uzyskać [tutaj](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Dla wizualizacji zależności można używać istniejący obszar roboczy?
+### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Czy można używać istniejącego obszaru roboczego w celu wizualizacji zależności?
 
-Azure migracji nie obsługuje korzystania z istniejącym obszarem roboczym dla wizualizacji zależności, jednak obsługuje wielu Microsoft Monitoring Agent (MMA) i umożliwia wysyłanie danych do wielu obszarów roboczych. Dlatego jeśli masz już agentów wdrożone i skonfigurowane do obszaru roboczego, można korzystać z wielu homing w MMA agent i skonfigurować go do obszaru roboczego migracji Azure (oprócz istniejący obszar roboczy) i własnych preferencji. [W tym miejscu](https://blogs.technet.microsoft.com/msoms/2016/05/26/oms-log-analytics-agent-multi-homing-support/) jest blog, w jaki można włączyć wielu homing w MMA agent.
+Usługa Azure Migrate nie obsługuje używania istniejącego obszaru roboczego dla wizualizacji zależności, jednak program Microsoft Monitoring Agent (MMA) obsługuje multihosting i umożliwia wysyłanie danych do wielu obszarów roboczych. Dlatego jeśli masz już agentów wdrożona i skonfigurowana do obszaru roboczego, możesz korzystać z obsługą wielu regionów w agenta MMA i skonfigurować go do obszaru roboczego usługi Azure Migrate (oprócz istniejącego obszaru roboczego) i upewnij się, że działa. [W tym miejscu](https://blogs.technet.microsoft.com/msoms/2016/05/26/oms-log-analytics-agent-multi-homing-support/) jest blogu w sposób umożliwiania multihosting agenta MMA.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Odczyt [migracji Azure — omówienie](migrate-overview.md)
-- Dowiedz się, jak [odnajdywania i oceny](tutorial-assessment-vmware.md) środowisku programu VMware
+- Odczyt [usługi Azure Migrate — Przegląd](migrate-overview.md)
+- Dowiedz się, jak [odnajdywanie i ocenianie](tutorial-assessment-vmware.md) środowisku programu VMware

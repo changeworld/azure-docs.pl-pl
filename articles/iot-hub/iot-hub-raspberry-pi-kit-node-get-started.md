@@ -1,160 +1,172 @@
 ---
-title: Pi malinowe do chmury (Node.js) - Połącz Pi malina z Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować i Pi malina nawiązać połączenia z Centrum IoT Azure pi malina do wysyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
+title: Urządzenie raspberry Pi w chmurze (Node.js) - łączenie urządzenia Raspberry Pi dla usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i połączyć urządzenia Raspberry Pi do usługi Azure IoT Hub dla urządzenia Raspberry Pi w celu wysyłania danych do platformy w chmurze w ramach tego samouczka.
 author: rangv
 manager: ''
-keywords: pi Azure iot malinowe, Centrum iot malinowe pi, pi malinowe wysyłania danych do chmury, malinowe pi do chmury
+keywords: Usługa Azure iot urządzenia raspberry pi, usługi iot hub dla urządzenia raspberry pi, urządzenia raspberry pi wysyłania danych do chmury, urządzenia raspberry pi w chmurze
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 034a864cd98bb383e97f1def8eff1c6f9842a554
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 144669e52b8883f4dcebde02a487da865e198e5b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635750"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857965"
 ---
-# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Pi malinowe nawiązać połączenia z Centrum IoT Azure (Node.js)
+# <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie urządzenia Raspberry Pi do usługi Azure IoT Hub (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-W tym samouczku Rozpocznij od uczenia podstawy pracy z Pi malina, który działa Raspbian. Następnie Dowiedz się jak bezproblemowo połączyć z urządzenia do chmury przy użyciu [Centrum IoT Azure](iot-hub-what-is-iot-hub.md). Dla przykładów Windows 10 IoT Core, przejdź do [Centrum deweloperów systemu Windows](http://www.windowsondevices.com/).
+W tym samouczku rozpoczniesz od podstawy pracy z urządzeniem Raspberry Pi, w którym działa Raspbian uczenia. Następnie dowiesz się, jak bezproblemowe łączenie urządzeń do chmury przy użyciu [usługi Azure IoT Hub](iot-hub-what-is-iot-hub.md). Aby uzyskać przykłady Windows 10 IoT Core, przejdź do [Centrum deweloperów Windows](http://www.windowsondevices.com/).
 
-Nie masz jeszcze zestawu? Spróbuj [symulatora online Pi malina](iot-hub-raspberry-pi-web-simulator-get-started.md). Lub kupowanie nowej kit [tutaj](https://azure.microsoft.com/develop/iot/starter-kits).
+Nie masz jeszcze zestawu? Spróbuj [symulatora w trybie online urządzenia Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md). Lub Kup nowy zestaw [tutaj](https://azure.microsoft.com/develop/iot/starter-kits).
 
 
-## <a name="what-you-do"></a>Co zrobić
+## <a name="what-you-do"></a>Co należy zrobić
 
 * Tworzenie Centrum IoT.
-* Zarejestruj urządzenie pi w Centrum IoT.
-* Konfigurowanie malina Pi.
-* Uruchom przykładową aplikację na Pi do wysyłania danych czujnika do Centrum IoT.
+* Zarejestruj urządzenie Pi w usłudze IoT hub.
+* Konfigurowanie urządzenia Raspberry Pi.
+* Uruchom przykładową aplikację na Pi do wysyłania danych czujnika do usługi IoT hub.
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-* Sposób tworzenia Centrum Azure IoT i uzyskać nowy ciąg połączenia urządzenia.
-* Jak nawiązać połączenia z czujnika BME280 Pi.
-* Jak zbierać dane czujników, uruchamiając przykładową aplikację na Pi.
-* Jak wysyłać dane czujników do Centrum IoT.
+* Jak utworzyć Centrum Azure IoT hub i uzyskać nowe parametry połączenia urządzenia.
+* Jak połączyć Pi z czujnikiem BME280.
+* Jak zbierać dane z czujników po uruchomieniu aplikacji przykładowej na Pi.
+* Jak wysyłać danych czujnika do usługi IoT hub.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
 ![Co jest potrzebne](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* Malina Pi 2 lub 3 Pi malina tablicy.
-* Aktywna subskrypcja platformy Azure. Jeśli nie masz konta platformy Azure, [utworzyć bezpłatne konto próbne Azure](https://azure.microsoft.com/free/) za kilka minut.
-* Monitor, USB klawiatury i myszy, który łączy do Pi.
-* Mac lub komputera z systemem Windows lub Linux.
+* Raspberry Pi 2 lub Raspberry Pi 3 tablicy.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Monitor, USB klawiatury i myszy, który nawiązuje połączenie z Pi.
+* Mac lub komputerze z systemem Windows lub Linux.
 * Połączenie internetowe.
-* 16 GB lub powyżej karty microSD.
-* USB-karty sieciowej lub microSD na kartach SD Nagraj obraz systemu operacyjnego na karcie microSD.
-* 5 volt potęgą 2-amp dostarczyć stopy 6 micro kabel USB.
+* 16 GB lub nowszej karcie microSD.
+* USB-karty lub microSD na kartach SD Nagraj obraz systemu operacyjnego na karcie microSD.
+* Podaj potęgą 2 i 5 wolt za pomocą kabla USB wczesnych metr 6.
 
 Opcjonalne są następujące elementy:
 
-* Złożony Adafruit BME280 temperatury, wykorzystania i wilgotności czujnika.
+* Zmontowanych Adafruit BME280 temperatury, wykorzystanie i wilgotności czujnika.
 * Breadboard.
-* 6 F/M zworek przewodów.
+* Przewodów jumper 6 F/M.
 * Rozproszona LED 10 mm.
 
-
 > [!NOTE] 
-Jeśli nie masz elementy opcjonalne, można użyć danych czujnika symulowane.
+> Jeśli nie masz opcjonalne elementy, można użyć danych z symulowanych czujników.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="set-up-raspberry-pi"></a>Konfigurowanie Pi malina
+## <a name="set-up-raspberry-pi"></a>Konfigurowanie urządzenia Raspberry Pi
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Instalowanie systemu operacyjnego Raspbian pi
+### <a name="install-the-raspbian-operating-system-for-pi"></a>Zainstaluj system operacyjny Raspbian pi
 
-Przygotuj karty microSD instalacji obrazu Raspbian.
+Przygotuj karcie microSD instalacji obrazu Raspbian.
 
 1. Pobierz Raspbian.
-   1. [Pobierz Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (pliku .zip).
+
+   a. [Pobierz Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (plik zip).
 
    > [!WARNING]
-   > Użyj powyżej łącze aby pobrać `raspbian-2017-07-5` obraz zip. Najnowszą wersję obrazów Raspbian ma niektóre znane problemy z węzłem Pi połączeń, które mogą spowodować niepowodzenie w innej.
-   1. Wyodrębnij obrazu Raspbian do folderu na komputerze.
+   > Użyj powyższe łącze, aby pobrać `raspbian-2017-07-5` obraz pliku zip. Najnowszą wersję obrazów Raspbian ma znane problemy z węzłem Pi dwużyłowa, co może prowadzić do awarii w następnych krokach.
+ 
+   b. Wyodrębnij obraz Raspbian do folderu na komputerze.
 
-1. Zainstaluj Raspbian karty microSD.
-   1. [Pobierz i zainstaluj narzędzie palnika karty Etcher SD](https://etcher.io/).
-   1. Uruchom Etcher i wybierz obraz Raspbian, który został wyodrębniony w kroku 1.
-   1. Wybierz dysk karty microSD. Etcher już być może wybrano poprawnego dysku.
-   1. Kliknij przycisk Flash instalowanie Raspbian karty microSD.
-   1. Karta microSD należy usunąć z komputera po zakończeniu instalacji. Jest bezpiecznie usunąć karta microSD bezpośrednio, ponieważ Etcher automatycznie wysuwa lub odinstalowuje karty microSD po zakończeniu.
-   1. Włóż kartę microSD do Pi.
+2. Zainstaluj Raspbian karcie microSD.
 
-### <a name="enable-ssh-and-i2c"></a>Włącz SSH i I2C
+   a. [Pobierz i zainstaluj narzędzie nagrywarka karty Etcher SD](https://etcher.io/).
+
+   b. Uruchom Etcher, a następnie wybierz obraz Raspbian, który został wyodrębniony w kroku 1.
+
+   c. Wybierz dysk karty microSD. Etcher już być może wybrano poprawny dysk.
+
+   d. Kliknij przycisk Flash, aby zainstalować Raspbian na karcie microSD.
+
+   e. Karta microSD należy usunąć z komputera po zakończeniu instalacji. Jest bezpiecznie usunąć karcie microSD bezpośrednio, ponieważ Etcher automatycznie wysuwa lub odinstalowuje karcie microSD po jego ukończeniu.
+
+   f. Wstaw karcie microSD do Pi.
+
+### <a name="enable-ssh-and-i2c"></a>Włączanie protokołu SSH i I2C
 
 1. Pi nawiązać monitora, klawiatury i myszy. 
-1. Start Pi, a następnie zaloguj Raspbian przy użyciu `pi` jako nazwy użytkownika i `raspberry` jako hasło.
-1. Kliknij ikonę malinowe > **preferencje** > **malina Pi konfiguracji**.
 
-   ![Menu Preferencje Raspbian](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+2. Rozpocznij Pi, a następnie zaloguj się w Raspbian przy użyciu `pi` jako nazwy użytkownika i `raspberry` jako hasło.
 
-1. Na **interfejsów** ustaw **I2C** i **SSH** do **włączyć**, a następnie kliknij przycisk **OK**. Jeśli nie masz fizycznych czujników i chcesz użyć danych czujnika symulowane, ten krok jest opcjonalny.
+3. Kliknij ikonę Raspberry > **preferencje** > **Raspberry Pi konfiguracji**.
 
-   ![Włącz I2C i SSH na malinowe Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
+   ![W menu Preferencje Raspbian](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+
+4. Na **interfejsów** kartę, należy ustawić **I2C** i **SSH** do **Włącz**, a następnie kliknij przycisk **OK**. Jeśli nie masz fizycznego czujniki i chcesz użyć danych z symulowanych czujników, ten krok jest opcjonalny.
+
+   ![Włącz I2C i ustawieniami SSH na urządzeniu Raspberry Pi](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Aby włączyć SSH i I2C, można znaleźć więcej dokumentacji na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) i [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+> Aby włączyć protokół SSH i I2C, można znaleźć więcej dokumentów odwołania na [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) i [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
 
-### <a name="connect-the-sensor-to-pi"></a>Połącz z czujnika do Pi
+### <a name="connect-the-sensor-to-pi"></a>Łączenie z czujnika do Pi
 
-Użyj przewodów breadboard i zworek LED i nawiązywać BME280 Pi w następujący sposób. Jeśli nie masz czujnika, [pominąć tę sekcję](#connect-pi-to-the-network).
+Użyj przewodów breadboard i jumper nawiązać DIODĘ i BME280 Pi w następujący sposób. Jeśli nie masz czujnik [pominąć tę sekcję](#connect-pi-to-the-network).
 
-![Pi malina i czujnik połączenia](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Połączenie urządzenia Raspberry Pi i czujnik](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-Czujnik BME280 może zbierać dane temperatury i wilgotności. LED miga, gdy urządzenie wysyła komunikat do chmury. 
+Czujnik BME280 może zbierać dane temperatury i wilgotności. Dioda LED miga, gdy urządzenie wysyła komunikat do chmury. 
 
 Czujnik numery PIN można użyć następujących połączeń:
 
 | Uruchom (czujnik & LED)     | Końcowy (tablica)            | Kolor kabel   |
 | -----------------------  | ---------------------- | ------------: |
-| VDD (Pin: 5 GB/S)             | 3, 3V PWR (Pin 1)       | Białe kabel   |
-| GND (Pin 7 GB/S)             | GND (Pin 6)            | Brązowy kabel   |
-| SDI (Pin 10 GB/S)            | I2C1 SDA (Pin 3)       | Czerwony kabel     |
-| SCK (Pin 8 GB/S)             | I2C1 SCL (Pin 5)       | Kabel pomarańczowy  |
-| VDD LED (Pin 18F)        | Interfejs GPIO 24 (Pin 18)       | Białe kabel   |
-| GND LED (Pin 17F)        | GND (Pin 20)           | Czarne kabel   |
+| VDD (Pin 5G)             | 3, 3V PWR (Pin 1)       | Kabel biały   |
+| GND (Pin 7G)             | GND (Pin 6)            | Brązowy kabel   |
+| SDI (Pin 10G)            | I2C1 SDA (Pin 3)       | Czerwony kabel     |
+| SCK (Pin 8 K)             | I2C1 SCL (Pin 5)       | Kabel pomarańczowy  |
+| VDD LED (Pin 18F)        | Interfejs GPIO 24 (Pin 18)       | Kabel biały   |
+| GND LED (Pin 17F)        | GND (Pin 20)           | Czarnego przewodu   |
 
-Kliknij, aby wyświetlić [malina Pi 2 i 3 mapowania kodu pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) użytkownikowi.
+Kliknij, aby wyświetlić [Raspberry Pi 2 i 3 mapowania kodu pin](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) użytkownikowi.
 
-Po pomyślnie nawiązano połączenie BME280 Twojego Pi malina, należy go jak poniżej obrazu.
+Po pomyślnym nawiązaniu BME280 urządzenia Raspberry Pi, należy go jak poniżej obrazu.
 
 ![Pi połączonych i BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
-### <a name="connect-pi-to-the-network"></a>Połączenie z siecią Pi
+### <a name="connect-pi-to-the-network"></a>Pi się z siecią
 
-Włącz Pi przy użyciu micro kabla USB i zasilania. Łączenie Pi sieci przewodowej lub wykonaj przy użyciu kabla Ethernet [instrukcji Foundation Pi malina](https://www.raspberrypi.org/learning/software-guide/wifi/) do nawiązania połączenia z siecią bezprzewodową Pi. Po Twoje Pi została pomyślnie podłączona do sieci, należy pamiętać o [adres IP Twojego Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
+Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łączenia Pi sieci przewodowej lub postępuj zgodnie z [instrukcji z urządzeniem Raspberry Pi podstawę](https://www.raspberrypi.org/learning/software-guide/wifi/) do Pi nawiązać połączenie z sieci bezprzewodowej. Po Twojej Pi została pomyślnie podłączona do sieci, należy pamiętać o [adres IP Twojego Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Podłączony do sieci przewodowej](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Podłączone do sieci przewodowej](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
-> Upewnij się, że Pi jest podłączony do sieci z komputera. Na przykład jeśli komputer jest połączony z siecią bezprzewodową, gdy Pi jest połączony z siecią przewodową, może nie być wyświetlana w danych wyjściowych devdisco adres IP.
+> Upewnij się, że Pi jest podłączony do sieci z komputera. Na przykład jeśli komputer jest połączony z siecią bezprzewodową, gdy Pi jest połączony z siecią przewodową, możesz nie zobaczyć adres IP w danych wyjściowych devdisco.
 
-## <a name="run-a-sample-application-on-pi"></a>Uruchom przykładową aplikację na Pi
+## <a name="run-a-sample-application-on-pi"></a>Uruchamianie przykładowej aplikacji na Pi
 
-### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Sklonuj przykładową aplikację i zainstalować wstępnie wymagane pakiety
+### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Sklonuj przykładową aplikację i zainstaluj wstępnie wymagane pakiety
 
-1. Nawiązywanie połączenia z Pi malina jeden z następujących klientów SSH z komputera-hosta:
+1. Połącz z urządzenia Raspberry Pi przy użyciu jednego z następujących klientów SSH z komputera hosta:
    
-   **Użytkownicy systemu Windows**
-   1. Pobierz i zainstaluj [PuTTY](http://www.putty.org/) dla systemu Windows. 
-   1. Skopiuj adres IP z sekcji Pi na nazwę hosta (lub adres IP) i wybierz typ połączenia SSH.
+   **Użytkownicy Windows**
+  
+   a. Pobierz i zainstaluj [PuTTY](http://www.putty.org/) for Windows. 
+
+   b. Skopiuj adres IP w sekcji Pi do nazwy hosta (lub adres IP), a następnie wybierz typ połączenia SSH.
    
    ![Programu puTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
-   **Mac i Ubuntu użytkowników**
+   **Mac i użytkownicy systemu Ubuntu**
    
-   Ubuntu lub macOS, korzystając z wbudowanego klienta SSH. Może być konieczne uruchomienie `ssh pi@<ip address of pi>` nawiązać Pi za pośrednictwem protokołu SSH.
-   > [!NOTE] 
-   Domyślna nazwa użytkownika to `pi` , a hasło to `raspberry`.
+   Użyj wbudowanego klienta SSH w systemie Ubuntu lub z systemem macOS. Może być konieczne uruchomienie `ssh pi@<ip address of pi>` połączyć Pi za pośrednictwem protokołu SSH.
 
-1. Zainstaluj z Pi Node.js i NPM.
+   > [!NOTE] 
+   > Domyślna nazwa użytkownika to `pi` , a hasło to `raspberry`.
+
+2. Do Twojej Pi, należy zainstalować środowisko Node.js i NPM.
    
    Najpierw sprawdź wersję środowiska Node.js. 
    
@@ -162,27 +174,27 @@ Włącz Pi przy użyciu micro kabla USB i zasilania. Łączenie Pi sieci przewod
    node -v
    ```
 
-   Jeśli wersja jest starsza niż 4.x lub jeśli w Twojej Pi nie nie Node.js, zainstaluj najnowszą wersję.
+   Jeśli wersja jest niższa niż 4.x, czy na Twoje Pi jest nie Node.js, zainstaluj najnowszą wersję.
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. Klonowanie przykładowej aplikacji.
+3. Klonowanie przykładowej aplikacji.
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. Zainstaluj wszystkie pakiety przykładowej. Instalacja obejmuje urządzenia Azure IoT SDK, czujnik BME280 biblioteki i biblioteki połączeń Pi.
+4. Zainstaluj wszystkie pakiety dla przykładu. Instalacja obejmuje zestaw SDK urządzeń Azure IoT, czujnik BME280 biblioteki i biblioteki dołączenie Pi.
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
    > [!NOTE] 
-   Może upłynąć kilka minut na zakończenie tego procesu instalacji, w zależności od połączenia sieciowego.
+   >Może upłynąć kilka minut na zakończenie tego procesu instalacji, w zależności od połączenia sieciowego.
 
 ### <a name="configure-the-sample-application"></a>Konfigurowanie przykładowej aplikacji
 
@@ -194,30 +206,30 @@ Włącz Pi przy użyciu micro kabla USB i zasilania. Łączenie Pi sieci przewod
 
    ![Plik konfiguracji](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   Istnieją dwa elementy w tym pliku, które można skonfigurować. Pierwsza z nich jest `interval`, która określa interwał (w milisekundach) między wiadomości wysyłane do chmury. Drugim jest `simulatedData`, który jest wartość logiczna, czy należy użyć danych czujnika symulowane lub nie.
+   Istnieją dwa elementy w tym pliku, które można skonfigurować. Pierwsza z nich jest `interval`, która definiuje interwał (w milisekundach) między komunikaty wysyłane do chmury. Drugim jest `simulatedData`, który jest wartość logiczna wskazująca, czy używać danych z czujników symulowanych lub nie.
 
-   Jeśli użytkownik **nie ma czujnika**, ustaw `simulatedData` do wartości `true` dokonanie przykładowej aplikacji, tworzenia i używania danych czujnika symulowane.
+   Jeśli użytkownik **nie ma czujnika**ustaw `simulatedData` wartość `true` się do aplikacji przykładowej, tworzenia i używania danych z symulowanych czujników.
 
-1. Zapisz i zamknij wpisując formantu O > Enter > Control X.
+2. Zapisz i zamknij go, wpisując formantu O > Wprowadź > Control X.
 
 ### <a name="run-the-sample-application"></a>Uruchamianie przykładowej aplikacji
 
-Uruchom przykładową aplikację, uruchamiając następujące polecenie:
+Uruchamianie przykładowej aplikacji, uruchamiając następujące polecenie:
 
    ```bash
    sudo node index.js '<YOUR AZURE IOT HUB DEVICE CONNECTION STRING>'
    ```
 
    > [!NOTE] 
-   Upewnij się, możesz kopiowania i wklejania ciąg połączenia urządzenia w pojedynczy cudzysłów.
+   > Upewnij się, możesz kopiowania i wklejania parametry połączenia urządzenia w apostrofy.
 
 
-Powinny zostać wyświetlone następujące dane wyjściowe, który zawiera dane czujników i komunikaty, które są wysyłane do Centrum IoT.
+Powinny być widoczne następujące dane wyjściowe, dane czujników i komunikaty, które są wysyłane do usługi IoT hub.
 
-![Dane wyjściowe — dane czujników wysłanych z Pi malina Centrum IoT](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Dane wyjściowe — dane czujników wysyłanych z urządzenia Raspberry Pi do Centrum IoT hub](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Uruchomiono przykładowej aplikacji do zbierania danych czujników i wysyłania go do Centrum IoT. Wyświetlanie komunikatów wysłanych do Centrum IoT z Pi malina lub wysyłać wiadomości do Twojej Pi malina za pomocą interfejsu wiersza polecenia, zobacz [Zarządzaj chmury urządzenia wiadomości z Centrum iothub explorer samouczek](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
+Po uruchomieniu aplikacji przykładowej, zbieranie danych z czujników i wysyłać je do Centrum IoT hub. Aby wyświetlić komunikaty, które urządzenia Raspberry Pi zostało wysłane do Centrum IoT hub lub wysyłać komunikaty do urządzenia Raspberry Pi w interfejsie wiersza polecenia, zobacz [Zarządzaj chmury urządzeń, obsługa komunikatów za pomocą narzędzia iothub-explorer samouczek](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

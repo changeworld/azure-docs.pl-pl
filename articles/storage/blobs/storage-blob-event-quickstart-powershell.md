@@ -1,31 +1,31 @@
 ---
-title: Trasy do punktu końcowego sieci web niestandardowego - Powershell zdarzenia magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+title: Kierowanie zdarzeń usługi Azure Blob storage do niestandardowego internetowego punktu końcowego — Powershell | Dokumentacja firmy Microsoft
 description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
 services: storage,event-grid
 keywords: ''
 author: david-stanford
 ms.author: dastanfo
-ms.date: 05/24/2018
+ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: b6764ffa0e7cfbc888f11c22af855d48d8160372
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2c61c58398b8c095002db4bc59afed1c95e3550f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650506"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865424"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Zdarzenia magazynu obiektów Blob trasy do punktu końcowego niestandardowe sieci web przy użyciu programu PowerShell
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Kierowanie zdarzeń usługi Blob storage do niestandardowego internetowego punktu końcowego przy użyciu programu PowerShell
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule subskrybować zdarzenia magazynu obiektów Blob, wyzwalacz zdarzenia przy użyciu programu Azure PowerShell i wyświetlenia wyników. 
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule subskrybowanie zdarzeń usługi Blob storage, wyzwalacz zdarzenia, za pomocą programu Azure PowerShell i wyświetlić wyniki. 
 
-Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, który przetwarza dane zdarzenia i wykonuje akcje. Jednak aby uprościć w tym artykule, możesz wysłać zdarzenia do aplikacji sieci web, który zbiera i wyświetla komunikaty.
+Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
 
-Po zakończeniu, zobacz, czy dane zdarzenie zostało wysłane do aplikacji sieci web.
+Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
 
-![Wyświetl wyniki](./media/storage-blob-event-quickstart-powershell/view-results.png)
+![Wyświetlanie wyników](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 Ten artykuł wymaga używania najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
@@ -38,9 +38,9 @@ Connect-AzureRmAccount
 ```
 
 > [!NOTE]
-> Dostępność dla magazynu zdarzenia jest powiązany z siatki zdarzeń [dostępności](../../event-grid/overview.md) i będą dostępne w różnych regionach, tak jak w przypadku zdarzeń siatki.
+> Dostępność dla zdarzenia magazynu jest powiązana z usługi Event Grid [dostępności](../../event-grid/overview.md) i będą dostępne w innych regionach, jak usługa Event Grid.
 
-W tym przykładzie użyto **westus2** i przechowuje zaznaczenie w zmiennej do wykorzystania w całej.
+W tym przykładzie użyto **westus2** i przechowuje zaznaczenie w zmiennej, do wykorzystania w całej.
 
 ```powershell
 $location = "westus2"
@@ -61,12 +61,12 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Aby używać zdarzenia magazynu obiektów Blob, należy albo [kontem magazynu obiektów Blob](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konta magazynu ogólnego przeznaczenia v2](../common/storage-account-options.md#general-purpose-v2). **Ogólnego przeznaczenia v2 (GPv2)** są konta magazynu, które obsługują wszystkie funkcje dla wszystkich usług magazynu, w tym obiekty BLOB, plików, kolejek i tabel. A **kontem magazynu obiektów Blob** to specjalne konto magazynu do przechowywania danych bez struktury jako obiekty BLOB (obiekty) w usłudze Azure Storage. Konta magazynu obiektów blob są podobne do kont magazynu ogólnego przeznaczenia i udostępniać wszystkie trwałości, dostępności, skalowalności i wydajności zalety że używane obecnie, łącznie z 100% spójnością interfejsu API dla blokowych obiektów blob i uzupełnialnych obiektów blob. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage.  
+Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Blob Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../common/storage-account-options.md#general-purpose-v2). Konta **ogólnego przeznaczenia w wersji 2 (GPv2)** to konta magazynu, które obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage.  
 
-Utwórz konto magazynu obiektów Blob przy użyciu replikacji LRS [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), następnie pobrać kontekst konta magazynu, który definiuje konto magazynu do użycia. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia. W tym przykładzie tworzy konto magazynu o nazwie **gridstorage** z magazyn lokalnie nadmiarowy (LRS). 
+Tworzenie konta usługi Blob storage z replikacją LRS za pomocą polecenia [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), następnie Pobierz kontekst konta magazynu, który definiuje konto magazynu ma być używany. Wykonując działania względem konta magazynu, możesz odwoływać się do kontekstu, zamiast wielokrotnie podawać poświadczenia. W tym przykładzie tworzone jest konto magazynu o nazwie **gridstorage** z magazynem lokalnie nadmiarowym (LRS). 
 
 > [!NOTE]
-> Nazwy konta magazynu są w przestrzeni nazwy globalnych, więc należy dołączyć niektórych losowo wybranych znaków na nazwę podaną w tym skrypcie.
+> Nazwy kont magazynu są w przestrzeni globalnej nazwy, więc należy dołączyć kilka losowo wybranych znaków, aby nazwa podana w tym skrypcie.
 
 ```powershell
 $storageName = "gridstorage"
@@ -82,9 +82,9 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj punktu końcowego wykonuje akcje na podstawie danych zdarzenia. Aby uprościć tego przewodnika Szybki Start, wdrażanie [aplikacji sieci web wbudowanych](https://github.com/dbarkol/azure-event-grid-viewer) który wyświetla komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi aplikacji, aplikacji sieci web usługi aplikacji i kodu źródłowego z usługi GitHub.
+Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/dbarkol/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
 
-Zastąp `<your-site-name>` o unikatowej nazwie dla aplikacji sieci web. Nazwa aplikacji sieci web musi być unikatowa, ponieważ jest ona częścią wpisu DNS.
+Zastąp `<your-site-name>` unikatową nazwą aplikacji sieci Web. Nazwa aplikacji sieci Web musi być unikatowa, ponieważ stanowi część wpisu DNS.
 
 ```powershell
 $sitename="<your-site-name>"
@@ -96,13 +96,15 @@ New-AzureRmResourceGroupDeployment `
   -hostingPlanName viewerhost
 ```
 
-Wdrażanie może potrwać kilka minut. Po pomyślnym wdrożeniu wyświetlić aplikację sieci web, aby zapewnić, że jest uruchomiona. W przeglądarce sieci web przejdź do: `https://<your-site-name>.azurewebsites.net`
+Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświetlić aplikację sieci Web i upewnić się, że jest uruchomiona. W przeglądarce sieci Web przejdź do: `https://<your-site-name>.azurewebsites.net`
 
-Powinny pojawić lokacji z żadnych komunikatów aktualnie wyświetlany.
+Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych komunikatów.
 
-## <a name="subscribe-to-your-storage-account"></a>Subskrypcja konta magazynu
+[!INCLUDE [event-grid-register-provider-powershell.md](../../../includes/event-grid-register-provider-powershell.md)]
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje konta magazynu utworzone i przekazuje adres URL z aplikacji sieci web jako punktu końcowego powiadomienia o zdarzeniach. Punkt końcowy dla aplikacji sieci web musi zawierać sufiks `/api/updates/`.
+## <a name="subscribe-to-your-storage-account"></a>Subskrybowanie do konta magazynu
+
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład ilustruje subskrybowanie konta magazynu, został utworzony i przekazanie adresu URL z aplikacji sieci web jako punktu końcowego dla powiadomień o zdarzeniach. Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -114,13 +116,13 @@ New-AzureRmEventGridSubscription `
   -ResourceId $storageId
 ```
 
-Ponownie wyświetlić aplikację sieci web i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało wysłane do niej. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Siatki zdarzeń wysyła zdarzenia weryfikacji punktu końcowego można sprawdzić, czy chce odbierać dane zdarzenia. Aplikacja sieci web zawiera kod do sprawdzania poprawności subskrypcji.
+Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja sieci Web zawiera kod do sprawdzania poprawności subskrypcji.
 
-![Widok subskrypcji zdarzeń](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
+![Wyświetlanie zdarzenia subskrypcji](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Wyzwalanie zdarzenia z usługi Blob Storage
 
-Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Najpierw utwórz kontener i obiektu. Następnie możemy przekazać obiekt do kontenera.
+Teraz wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze Utwórzmy kontenera i obiektu. Następnie należy przekazać do kontenera obiektu.
 
 ```powershell
 $containerName = "gridcontainer"
@@ -131,7 +133,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci web, aby wyświetlić zdarzenia, które zostały wysłane.
+Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Wyświetl aplikację sieci Web, aby wyświetlić właśnie wysłane zdarzenie.
 
 ```json
 [{

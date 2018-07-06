@@ -1,43 +1,43 @@
 ---
-title: Wsadowe testowanie aplikacji LUIS - Azure | Dokumentacja firmy Microsoft
-description: Umożliwia testowanie partii ciągłą pracę w swojej aplikacji, aby dostosować go i zwiększyć jej opis języka.
+title: Batch test aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Umożliwia testowanie partii stale Praca nad aplikacją, aby dostosować go i zwiększyć jej interpretacji języka.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f0366e805c9ae809a2800b0f4be53d08d9fc3d60
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348184"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857912"
 ---
-# <a name="batch-testing-in-luis"></a>Testowanie w LUIS partii
+# <a name="batch-testing-in-luis"></a>Testowanie w LUIS usługi Batch
 
-Testowanie partii weryfikuje użytkownika [active](luis-concept-version.md#active-version) uczonego modelu do mierzenia jego dokładności prognozy. Test partii ułatwia przeglądanie dokładność każdego zamiar i jednostek w bieżącym uczonego modelu na wykresie. Przejrzyj wyniki testu partii podjęcie odpowiednich działań, aby poprawić dokładność, takie jak dodanie więcej zniesławiających przykład celem, jeśli aplikację często nie można zidentyfikować poprawne opcje.
+Batch testowania weryfikuje Twoje [active](luis-concept-version.md#active-version) uczonego modelu do pomiaru jego dokładności prognozy. Test usługi batch ułatwia przeglądanie dokładność każdego intencji i jednostek w bieżącym modelu uczonego na wykresie. Przejrzyj wyniki testów usługi batch, aby podjąć odpowiednie działania w celu zwiększenia dokładności, takie jak dodanie więcej wypowiedzi przykład intencji, jeśli aplikacja często nie można zidentyfikować poprawne intencji.
 
-## <a name="group-data-for-batch-test"></a>Grupowanie danych w partii testu
-Należy pamiętać, że używane do testowania partii zniesławiających dopiero zaczynasz korzystać z LUIS. Jeśli masz elementu dataset zniesławiających dzielenia zniesławiających do trzech zestawów: zniesławiających dodane do celem, zniesławiających odebranych z opublikowanych punktu końcowego i zniesławiających używany do testów partii LUIS po jego przygotowaniu. 
+## <a name="group-data-for-batch-test"></a>Dane grupy dla usługi batch testu
+Jest ważne, czy jesteś nowym użytkownikiem usługi LUIS wypowiedzi używane do testowania usługi batch. Jeśli masz zestaw wypowiedzi, Podziel wypowiedzi w trzech zestawów: wypowiedzi dodane do intencji, wypowiedzi otrzymane od opublikowanych punktu końcowego i wypowiedzi używany do testów partii usługi LUIS, po jego przygotowaniu. 
 
-## <a name="a-dataset-of-utterances"></a>Element dataset zniesławiających
-Przesyłanie pliku wsadowego zniesławiających, znany jako *dataset*, testowania partii. Zestaw danych jest plik w formacie JSON zawierającą maksymalnie 1000 etykietą **z systemem innym niż duplikat** zniesławiających. Można testować maksymalnie 10 zestawów danych w aplikacji. Jeśli potrzebujesz więcej testów, usunąć zestaw danych, a następnie dodaj nową.
+## <a name="a-dataset-of-utterances"></a>Zestaw wypowiedzi
+Prześlij plik wsadowy w wypowiedzi, znane jako *dataset*, do testowania usługi batch. Zestaw danych jest pliku w formacie JSON zawierającego maksymalnie 1000 etykietą **niepowieloną** wypowiedzi. Można testować maksymalnie 10 zestawów danych w aplikacji. Jeśli potrzebujesz więcej testów, należy usunąć zestaw danych, a następnie dodaj nową.
 
 |**Reguły**|
 |--|
-|* Nie zduplikowane zniesławiających|
-|Brak elementów podrzędnych hierarchiczna jednostki|
-|zniesławiających 1000 lub mniej|
+|* Nie zduplikowane wypowiedzi|
+|Żadne elementy podrzędne jednostki hierarchicznych|
+|wyrażenia o 1000 lub mniej|
 
-* Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowań, które są najpierw stokenizowanego. 
+* Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowania, które są najpierw stokenizowanego. 
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
 ## <a name="batch-file-format"></a>Format pliku wsadowego
-Plik wsadowy składa się z zniesławiających. Każdy utterance musi mieć oczekiwanego prognozowania konwersji oraz wszelkie [rozpoznane maszyny jednostek](luis-concept-entity-types.md#types-of-entities) mają zostać wykryte. 
+Plik wsadowy składa się z wypowiedzi. Każdy wypowiedź musi mieć oczekiwanego prognozowania intencji, wraz z wszelkimi [maszyny do opanowania jednostek](luis-concept-entity-types.md#types-of-entities) oczekujesz, że zostało wykryte. 
 
 Przykładowy plik wsadowy następująco:
 
@@ -47,31 +47,32 @@ Przykładowy plik wsadowy następująco:
 ## <a name="common-errors-importing-a-batch"></a>Typowe błędy importowania partii
 Typowe błędy: 
 
-> * Więcej niż 1000 zniesławiających
-> * Obiekt JSON utterance, który nie ma właściwości jednostki
+> * Więcej niż 1000 wypowiedzi
+> * Wypowiedź obiekt JSON, który nie ma właściwości jednostki
+> * Wyrazy z etykietą w wielu jednostkach
 
-## <a name="batch-test-state"></a>Stan testu partii
-LUIS śledzi stan każdego zestawu danych ostatniego testu. W tym datę ostatniego uruchomienia rozmiar (liczba zniesławiających w partii) i wynik ostatniego (Liczba pomyślnie przewidywane zniesławiających).
+## <a name="batch-test-state"></a>Stan testu usługi Batch
+Usługa LUIS śledzi stan ostatniego testu każdego zestawu danych. Obejmuje to data ostatniego uruchomienia rozmiar (liczba wypowiedzi w zadaniu wsadowym) i wynik ostatniego (Liczba pomyślnie przewidywane wypowiedzi).
 
 <a name="sections-of-the-results-chart"></a>
-## <a name="batch-test-results"></a>Wyniki testu partii
-Wynik testu partii jest wykres punktowy, znany jako błąd macierzy. Ten wykres jest porównanie sposób 4 zniesławiających w pliku i przewidywane zamiar bieżącego modelu i jednostek. 
+## <a name="batch-test-results"></a>Wyniki testu usługi Batch
+Wynik testu usługi batch jest wykres punktowy, znane jako macierz błędu. Ten wykres jest porównanie sposób 4 wypowiedzi w pliku i bieżący model przewidywane intencji i jednostek. 
 
-Punktów danych na **fałszywych** i **False ujemna** sekcje wskazać błędów, które należy zbadać. W przypadku wszystkich punktów danych na **dodatnią wartość True,** i **ujemna wartość True** sekcje dokładność aplikacji jest idealne dla tego zestawu danych.
+Punkty danych na **fałszywie dodatnie** i **fałszywie ujemny** sekcje sygnalizowania błędów, które należy zbadać. W przypadku wszystkich punktów danych na **prawdziwie dodatni** i **True ujemna** sekcjach, a następnie dokładność Twojej aplikacji jest doskonałym rozwiązaniem, w tym zestawie danych.
 
 ![Cztery sekcje wykresu](./media/luis-concept-batch-test/chart-sections.png)
 
-Ten wykres ułatwia zniesławiających, które prognozuje LUIS niepoprawnie oparte na jego bieżący szkolenia. Wyniki są wyświetlane na region wykresu. Wybierz poszczególne punktów na wykresie, aby zapoznać się z informacjami utterance lub wybierz nazwę regionu, aby przejrzeć wyniki utterance w tym regionie.
+Ten wykres ułatwia znajdowanie wypowiedzi przewiduje LUIS niepoprawnie oparte na jego bieżący szkolenia. Wyniki są wyświetlane na region wykresu. Wybierać poszczególne punkty na wykresie, aby przejrzeć informacje o wypowiedź lub wybierz nazwę region, aby przejrzeć wyniki wypowiedź w danym regionie.
 
-![Testowanie usługi partia zadań](./media/luis-concept-batch-test/batch-testing.png)
+![Testowanie wsadowe](./media/luis-concept-batch-test/batch-testing.png)
 
 ## <a name="errors-in-the-results"></a>Błędy w wynikach
-Błędy w teście partii wskazują lokalizacji docelowych, które nie są przewidzieć zgodnie z opisem w pliku wsadowego. Błędy są oznaczone w sekcjach red wykresu. 
+Błędy w teście partii wskazują intencji, które nie są przewidzieć, jak wspomniano w pliku wsadowym. Błędy są oznaczone w sekcjach czerwony wykresu. 
 
-Sekcji dodatnią wartość false wskazuje, że utterance dopasować zamiar lub jednostki podczas nie powinien on zawierać. Ujemna wartość false oznacza, że utterance niezgodny zamiar lub jednostki po powinien mieć. 
+Sekcji dodatnią wartość false wskazuje, że wypowiedź dopasowane przeznaczenie lub jednostki, gdy go nie powinny mieć. Ujemna wartość false wskazuje, że wypowiedź niezgodny przeznaczenie lub jednostki usługi podczas powinien mieć. 
 
-## <a name="fixing-batch-errors"></a>Naprawianie błędów partii
-Jeśli występują błędy podczas testowania partii, możesz dodać więcej zniesławiających do celem lub etykietę więcej zniesławiających z jednostką ułatwiające LUIS należy rozróżnić lokalizacji docelowych. Jeśli dodaniu zniesławiających i etykietą get ich i nadal prognozowania błędy podczas testowania partii, należy rozważyć dodanie [listy frazy](luis-concept-feature.md) funkcji z słownictwa specyficznego dla domeny ułatwiające LUIS szybciej Dowiedz się więcej. 
+## <a name="fixing-batch-errors"></a>Naprawianie błędów usługi batch
+Jeśli występują błędy podczas badania usługi batch, możesz dodać więcej wypowiedzi do intencji lub etykiety więcej wypowiedzi o jednostkę którą chcesz pomóc upewnić rozróżnić intencje usługi LUIS. Jeśli masz dodano wypowiedzi i oznaczone get je i nadal prognozowania błędy podczas badania usługi batch, Rozważ dodanie [listy fraz](luis-concept-feature.md) funkcję za pomocą słownika specyficznego dla domeny do pomocy usługi LUIS uczysz się szybciej. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

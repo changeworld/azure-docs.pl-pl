@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu profilów wersji interfejsu API z Ruby w stosie Azure | Dokumentacja firmy Microsoft
-description: Informacje o używaniu profile w wersji interfejsu API z Ruby w stosie Azure.
+title: Za pomocą profilami wersji interfejsu API za pomocą języka Ruby w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o korzystaniu z profilami wersji interfejsu API za pomocą języka Ruby w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: dd8130ac12f9c7c2095f9329dc4ce8a34187cf62
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4d62c192b4e74980fc8cd8a671a702ba2ddfdbcb
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011218"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866597"
 ---
-# <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Profile w wersji interfejsu API za pomocą Ruby w stosie Azure
+# <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Ruby w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-## <a name="ruby-and-api-version-profiles"></a>Profile w wersji Ruby i interfejsu API
+## <a name="ruby-and-api-version-profiles"></a>Profilami wersji interfejsu API i Ruby
 
-Ruby zestawu SDK dla usługi Azure stosu Resource Manager udostępnia narzędzia umożliwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu w języku Ruby. Profile interfejsu API w zestawie SDK Ruby włączyć programowanie chmura hybrydowa pomaga przełączać się między globalne zasobów platformy Azure i zasoby na stosie Azure.
+Ruby SDK dla usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu przy użyciu języka Ruby. Profile interfejsu API w zestawie SDK dla języka Ruby Włącz projektowania aplikacji w chmurze hybrydowej, która ułatwia przełączanie między zasobami w usłudze Azure Stack i globalnych zasobów platformy Azure.
 
-Profil interfejsu API jest kombinacją dostawców zasobów i wersji usługi. Profil interfejsu API umożliwia łączenie różnych typów zasobów.
+Profil interfejsu API jest kombinacją dostawcy zasobów i ich wersji usługi. Łączenie różnych typów zasobów, można użyć profilu usługi interfejsu API.
 
- - Aby korzystać z najnowszej wersji wszystkich usług **najnowsze** profilu gem zbiorczego zestawu Azure SDK.
- - Aby użyć usługi zgodne z stosu Azure, użyj **V2017_03_09** profilu gem zbiorczego zestawu Azure SDK.
- - Aby korzystać z najnowszą wersją interfejsu api usługi, użyj **najnowsze** profilu określonego gem. Na przykład, jeśli chcesz używać najnowszej wersji interfejsu api usługi obliczeniowe tylko, użyj **najnowsze** profilu **obliczeniowe** gem.
- - Aby użyć określonej wersji interfejsu api dla usługi, użyj określonych wersji interfejsu API, zdefiniowane wewnątrz gem.
+ - Aby korzystać z najnowszej wersji wszystkich usług, użyj **najnowsze** profilu gem zbiorczego zestawu Azure SDK.
+ - Aby korzystać z usług, które są zgodne z usługą Azure Stack, należy użyć **V2017_03_09** profilu gem zbiorczego zestawu Azure SDK.
+ - Aby korzystać z najnowszej wersji interfejsu api usługi, użyj **najnowsze** profilu określonego rozwiązania gem. Na przykład, jeśli chcesz używać najnowszej wersji interfejsu api usług obliczeniowych samodzielnie, użyj **najnowsze** profil **obliczenia** gem.
+ - Aby użyć określonej wersji interfejsu api dla usługi, należy użyć określonej wersji interfejsu API, zdefiniowane wewnątrz gem.
 
 > [!Note]   
-> Możesz łączyć wszystkie opcje w tej samej aplikacji.
+> Możesz połączyć wszystkie opcje dostępne w tej samej aplikacji.
 
-## <a name="install-the-azure-ruby-sdk"></a>Zainstaluj zestaw Azure SDK dopisków fonetycznych
+## <a name="install-the-azure-ruby-sdk"></a>Zainstaluj zestaw Azure Ruby SDK
 
- - Postępuj zgodnie z oficjalnego instrukcje dotyczące instalacji [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
- - Postępuj zgodnie z oficjalnego instrukcje dotyczące instalacji [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
-    - Podczas instalacji wybierz **Dodaj element do zmiennej ścieżki**
-    - Zainstaluj zestaw deweloperów podczas instalacji dopisków fonetycznych po wyświetleniu monitu.
+ - Postępuj zgodnie z instrukcjami oficjalne zainstalował [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+ - Postępuj zgodnie z instrukcjami oficjalne zainstalował [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+    - Podczas instalowania wybrać **Dodawanie języka Ruby do zmiennej PATH**
+    - Podczas instalacji języka Ruby, po wyświetleniu monitu, należy zainstalować zestaw deweloperski.
     - Następnie zainstaluj program instalujący niezamówione pakiety przy użyciu następującego polecenia:  
       `Gem install bundler`
- - Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji do użycia później. Instrukcje dotyczące tworzenia subskrypcji są [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
- - Tworzenie nazwy głównej usługi, a następnie zapisz jego identyfikator i klucz tajny. Instrukcje dotyczące tworzenia nazwy głównej usługi dla stosu Azure są [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals). 
- - Upewnij się, że nazwy głównej usługi ma rolę współautora/właściciela na subskrypcję. Instrukcje dotyczące sposobu przypisywania roli do nazwy głównej usługi są [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+ - Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji ma być używany w dalszej części. Instrukcje, aby utworzyć subskrypcję [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
+ - Tworzenie jednostki usługi, a następnie zapisz jego identyfikator i klucz tajny. Instrukcje dotyczące tworzenia jednostki usługi dla usługi Azure Stack to [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals). 
+ - Upewnij się, że jednostki usługi rola właściciel/Współautor subskrypcji. Instrukcje dotyczące sposobu przypisywania roli do jednostki usługi są [tutaj](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
-## <a name="install-the-rubygem-packages"></a>Zainstaluj pakiety rubygem
+## <a name="install-the-rubygem-packages"></a>Instalowanie pakietów rubygem
 
-Można zainstalować te pakiety azure rubygem bezpośrednio.
+Można bezpośrednio zainstalować pakiety rubygem platformy azure.
 
 ````Ruby  
 gem install azure_mgmt_compute
@@ -68,13 +68,13 @@ gem 'azure_mgmt_resources'
 gem 'azure_mgmt_network'
 ````
 
-Należy pamiętać, zestaw SDK usługi Azure Resource Manager Ruby jest w wersji zapoznawczej i prawdopodobnie będzie mieć fundamentalne zmiany interfejsu w kolejnych wersjach. Zwiększenie liczby w wersji pomocniczej może wskazywać na istotne zmiany.
+Należy pamiętać, zestaw SDK usługi Azure Resource Manager języka Ruby jest w wersji zapoznawczej i prawdopodobnie będzie mieć istotne zmiany w interfejsie w przyszłych wydaniach. Zwiększonej ilości w wersji pomocniczej może wskazywać istotne zmiany.
 
-## <a name="usage-of-the-azuresdk-gem"></a>Użycie azure_sdk gem
+## <a name="usage-of-the-azuresdk-gem"></a>Użycie rozwiązania gem azure_sdk
 
-Gem, azure_sdk, to zbiór wszystkich obsługiwanych gems w zestawie SDK Ruby. Ta gem składa się z **najnowsze** profil, który obsługuje najnowszą wersję wszystkich usług. Podaj profil numerów wersji **V2017_03_09** profilu jest skompilowany dla platformy Azure stosu.
+Rozwiązania gem, azure_sdk, stanowi zbiór wszystkich obsługiwanych Klejnoty w zestawie SDK dla języka Ruby. Obejmuje to rozwiązania gem **najnowsze** profil, który obsługuje najnowszą wersję wszystkich usług. Podaj profil numerów wersji **V2017_03_09** profil, który zaprojektowano pod kątem usługi Azure Stack.
 
-Gem zbiorczy azure_sdk można zainstalować przy użyciu następującego polecenia:  
+Azure_sdk gem zbiorczego można zainstalować za pomocą następującego polecenia:  
 
 ````Ruby  
   gem install 'azure_sdk
@@ -82,25 +82,25 @@ Gem zbiorczy azure_sdk można zainstalować przy użyciu następującego polecen
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Aby użyć zestawu SDK usługi Azure Ruby stosu Azure, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Zapoznaj się z instrukcjami pod tabelą systemu operacyjnego na temat ustawiania zmiennych środowiskowych. 
+Aby można było używać zestawu Azure SDK dla języka Ruby przy użyciu usługi Azure Stack, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Zapoznaj się z instrukcjami pod tabelą systemu operacyjnego na temat ustawiania zmiennych środowiskowych. 
 
 | Wartość | Zmienne środowiskowe | Opis | 
 | --- | --- | --- | --- |
-| Identyfikator dzierżawy | AZURE_TENANT_ID | Wartość stosu Azure [Identyfikatorem dzierżawy](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
-| Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisane podczas nazwy głównej usługi został utworzony w poprzedniej sekcji tego dokumentu.  |
-| Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest dostęp do oferty Azure stosu. |
-| Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
-| Punkt końcowy Menedżera zasobów | ARM_ENDPOINT | Zobacz [stosu Azure resource manager endpoin](#The-azure-stack-resource-manager-endpoint).  |
+| Identyfikator dzierżawy | AZURE_TENANT_ID | Zalety usługi Azure Stack [identyfikator dzierżawy](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
+| Identyfikator klienta | AZURE_CLIENT_ID | Usługa identyfikator podmiotu zabezpieczeń aplikacji zapisywał informacje o nazwę główną usługi został utworzony w poprzedniej sekcji niniejszego dokumentu.  |
+| Identyfikator subskrypcji | AZURE_SUBSCRIPTION_ID | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
+| Wpis tajny klienta | AZURE_CLIENT_SECRET | Klucz tajny aplikacji nazwy głównej usługi zapisane podczas tworzenia nazwy głównej usługi. |
+| Punkt końcowy usługi Resource Manager | ARM_ENDPOINT | Zobacz [endpoin Menedżera zasobów usługi Azure Stack](#The-azure-stack-resource-manager-endpoint).  |
 
-### <a name="the-azure-stack-resource-manager-endpoint"></a>Punkt końcowy Menedżera zasobów Azure stosu
+### <a name="the-azure-stack-resource-manager-endpoint"></a>Punktu końcowego Menedżera zasobów usługi Azure Stack
 
-Microsoft Azure Resource Manager to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania w grupie, a nie pojedynczo, w ramach jednej operacji.
+Menedżer zasobów platformy Azure to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania jako grupę, a nie indywidualnie, w ramach jednej operacji.
 
-Z punktu końcowego usługi Resource Manager można uzyskać informacji o metadanych. Punkt końcowy zwraca plik JSON o informacje wymagane do uruchomienia kodu.
+Możesz uzyskać informacje o metadanych z punktu końcowego usługi Resource Manager. Punkt końcowy zwraca plik w formacie JSON z informacjami wymaganymi do uruchomienia kodu.
 
   > [!Note]  
-  > **ResourceManagerUrl** jest w Azure stosu Development Kit (ASDK): `https://management.local.azurestack.external/`  
-  > **ResourceManagerUrl** w systemach zintegrowane jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+  > **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/`  
+  > **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
   Przykładowy plik JSON:
@@ -116,13 +116,13 @@ Z punktu końcowego usługi Resource Manager można uzyskać informacji o metada
   }
   ```
 
-### <a name="set-environmental-variables"></a>Ustaw zmienne środowiskowe
+### <a name="set-environmental-variables"></a>Ustawianie zmiennych środowiskowych
 
-**Microsoft Windows**  
-Aby ustawić zmienne środowiskowe w wierszu polecenia systemu Windows, użyj następującego formatu:  
+**Program Microsoft Windows**  
+Aby ustawić zmienne środowiskowe w wierszu polecenia Windows, użyj następującego formatu:  
 `set AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 
-**System macOS, Linux i systemy oparte na systemie Unix**  
+**System macOS, Linux i komputerach z systemem Unix**  
 W systemach Unix, na podstawie można użyć polecenia takie jak:  
 `export AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 
@@ -131,15 +131,15 @@ W systemach Unix, na podstawie można użyć polecenia takie jak:
 Gem zbiorczy azure_sdk ma następujące dwa profile:
 
 1. **V2017_03_09**  
-  Profil skompilowany dla platformy Azure stosu. Za pomocą tego profilu usługi do najbardziej zgodna ze stosu Azure.
-2. **najnowsze**  
+  Profil stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi ma być najbardziej zgodna z usługą Azure Stack.
+2. **Najnowsze**  
   Profil zawiera najnowsze wersje wszystkich usług. Za pomocą najnowszej wersji wszystkich usług.
 
-Aby uzyskać więcej informacji o profilach stosu Azure i interfejsu API, zobacz [profile podsumowanie interfejsu API](azure-stack-version-profiles.md#summary-of-api-profiles).
+Aby uzyskać więcej informacji na temat profilów Azure Stack i interfejsu API, zobacz [profilami podsumowanie interfejsu API](azure-stack-version-profiles.md#summary-of-api-profiles).
 
-## <a name="azure-ruby-sdk-api-profile-usage"></a>Użycie Ruby interfejsu API zestawu SDK platformy Azure w profilu
+## <a name="azure-ruby-sdk-api-profile-usage"></a>Użycie profilów usługi platformy Azure interfejs API zestawu SDK języka Ruby
 
-Następujące wiersze należy używać do tworzenia wystąpienia klienta profilu. Ten parametr jest tylko wymagane przez stos Azure lub innych chmur prywatnych. Globalne Azure ma już te ustawienia domyślne.
+Następujące wiersze powinny służyć do tworzenia wystąpienia klienta profilu. Ten parametr jest tylko wymagane dla usługi Azure Stack lub innych chmur prywatnych. Global Azure jest już te ustawienia domyślne.
 
 ````Ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
@@ -162,7 +162,7 @@ options = {
 client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
 ````
 
-Profil klienta można uzyskać dostępu do dostawcy pojedynczego zasobu, na przykład obliczeniowych, magazynu i sieci.
+Profil klienta może służyć do dostępu do dostawców poszczególnych zasobów, takich jak obliczenia, Magazyn i sieć.
 
 ````Ruby  
 # To access the operations associated with Compute
@@ -176,9 +176,9 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 purchase_plan_obj = Azure::Profiles::V2017_03_09::Compute::Mgmt::Models::PurchasePlan.new
 ````
 
-## <a name="define-azurestack-environment-setting-functions"></a>Zdefiniuj funkcje ustawienie środowiska AzureStack
+## <a name="define-azurestack-environment-setting-functions"></a>Zdefiniuj AzureStack środowiska ustawienia funkcji
 
-W celu uwierzytelnienia nazwy głównej usługi do środowiska Azure stosu zdefiniować punkty końcowe przy użyciu **get_active_directory_settings()**. Ta metoda używa **ARM_Endpoint** zmiennej środowiskowej, która jest ustawiany podczas ustanawiania zmiennych środowiskowych.
+Na potrzeby uwierzytelniania jednostki usługi do środowiska usługi Azure Stack, zdefiniuj punktów końcowych przy użyciu **get_active_directory_settings()**. Ta metoda używa **ARM_Endpoint** zmiennej środowiskowej, który został ustawiony podczas ustanawiania zmiennych środowiskowych.
 
 ````Ruby  
 # Get Authentication endpoints using Arm Metadata Endpoints
@@ -200,63 +200,63 @@ end
 
 ## <a name="samples-using-api-profiles"></a>Przykłady korzystania z profilów interfejsu API
 
-Można użyć w GitHub repositoreis znaleziono następujące przykłady jako odwołanie tworzenie rozwiązań z profilami Ruby i interfejsu API Azure stosu:
+Można użyć poniższych przykładów, znaleziono w usłudze GitHub repositoreis dotyczącym tworzenia rozwiązań przy użyciu profilów Ruby i interfejsu API usługi Azure Stack:
 
  - [Zarządzanie zasobami i grupami zasobów platformy Azure przy użyciu języka Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)
- - [Zarządzanie maszynami wirtualnymi przy użyciu Ruby](https://github.com/Azure-Samples/compute-ruby-manage-vm/tree/master/Hybrid)
- - [Wdrażanie SSH włączone maszyny Wirtualnej z szablonu w języku Ruby](https://github.com/Azure-Samples/resource-manager-ruby-template-deployment/tree/master/Hybrid)
+ - [Zarządzanie maszynami wirtualnymi za pomocą języka Ruby](https://github.com/Azure-Samples/compute-ruby-manage-vm/tree/master/Hybrid)
+ - [Wdrażanie protokołu SSH maszyny Wirtualnej przy użyciu szablonu w języku Ruby z obsługą](https://github.com/Azure-Samples/resource-manager-ruby-template-deployment/tree/master/Hybrid)
 
 ### <a name="sample-resource-manager-and-groups"></a>Przykładowe Resource Manager i grupy
 
-Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz programu Visual Studio Code, Pobierz zestaw SDK Ruby, jak również rozszerzenie. 
+Do uruchomienia przykładu, upewnij się, że zainstalowano język Ruby. Jeśli używasz programu Visual Studio Code, należy pobrać zestaw SDK języka Ruby, jako rozszerzenie także. 
 
 > [!Note]  
-> Możesz też uzyskać repozytorium próbki w "[zasobów zarządzania Azure i grup zasobów z Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
+> Możesz uzyskać repozytorium na potrzeby przykładu u "[zarządzanie zasobami platformy Azure i grup zasobów za pomocą języka Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
 
-1. Klonowanie repozytorium.
+1. Sklonuj repozytorium.
 
     ````Bash
     git clone https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups.git
     ````
 
-2. Zainstaluj zależności przy użyciu pakietu.
+2. Zainstalowanie zależności za pomocą pakietu.
 
     ````Bash
     cd resource-manager-ruby-resources-and-groups\Hybrid\
     bundle install
     ````
 
-3. Tworzenie nazwy głównej usługi Azure przy użyciu programu PowerShell i pobrać wymagane wartości. 
+3. Tworzenie jednostki usługi platformy Azure przy użyciu programu PowerShell i pobieranie wartości wymagane. 
 
-  Aby uzyskać instrukcje dotyczące tworzenia nazwy głównej usługi, zobacz [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi przy użyciu certyfikatu](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+  Aby uzyskać instrukcje dotyczące tworzenia jednostki usługi, zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi za pomocą certyfikatu](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
-  Wartości potrzebne są następujące:
+  Wartości wymagane są następujące:
   - Identyfikator dzierżawy
   - Identyfikator klienta
   - Wpis tajny klienta
   - Identyfikator subskrypcji
-  - Punkt końcowy Menedżera zasobów
+  - Punkt końcowy usługi Resource Manager
 
-  Ustaw następujące zmienne środowiskowe, korzystając z informacji podanych pobierane z usługi podmiot zabezpieczeń został utworzony.
+  Ustaw następujące zmienne środowiskowe, korzystając z informacji pobrane z nazwy głównej usługi został utworzony.
 
-  - Eksportuj AZURE_TENANT_ID = {identyfikator dzierżawy}
-  - Eksportuj AZURE_CLIENT_ID = {identyfikator klienta}
+  - Eksportuj AZURE_TENANT_ID = {swój identyfikator dzierżawy}
+  - Eksportuj AZURE_CLIENT_ID = {identyfikatora klienta}
   - Eksportuj AZURE_CLIENT_SECRET = {klucz tajny klienta}
   - Eksportuj AZURE_SUBSCRIPTION_ID = {identyfikator subskrypcji}
   - Eksportuj ARM_ENDPOINT = {adres url Menedżera zasobów AzureStack}
 
   > [!Note]  
-  > W systemie Windows należy użyć zestawu zamiast eksportu.
+  > W Windows należy użyć zestawu, zamiast eksportowania.
 
 4. Upewnij się, że ustawiono zmienną lokalizacji do lokalizacji AzureStack. Na przykład lokalnego = "local"
 
-5. Dodaj w następującym wierszu kodu, jeśli używasz stosu Azure lub innych chmur prywatnych pod kątem punktów końcowych prawo active directory.
+5. Dodać następujący wiersz kodu, jeśli używasz usługi Azure Stack lub innych chmur prywatnych docelowych punktów końcowych bezpośrednio active directory.
 
   ````Ruby  
   active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
   ````
 
-6. Wewnątrz zmiennej opcji Dodaj ustawienia usługi active directory i podstawowy adres URL do pracy z stosu Azure. 
+6. Wewnątrz zmiennej opcji należy dodać ustawienia usługi active directory i podstawowy adres URL do pracy z usługą Azure Stack. 
 
   ````Ruby  
   options = {
@@ -267,13 +267,13 @@ Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz 
   }
   ````
 
-7. Tworzenie profilu klienta, przeznaczonego dla profilu Azure stosu:
+7. Utwórz profil klienta, który jest przeznaczony dla profilu usługi Azure Stack:
 
   ````Ruby  
     client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)
   ````
 
-8. Do uwierzytelnienia nazwy głównej usługi Azure stosu, należy zdefiniować punkty końcowe przy użyciu **get_active_directory_settings()**. Ta metoda używa **ARM_Endpoint** zmiennej środowiskowej, która jest ustawiany podczas ustanawiania zmiennych środowiskowych.
+8. Na potrzeby uwierzytelniania jednostki usługi z usługą Azure Stack, należy zdefiniować punktów końcowych przy użyciu **get_active_directory_settings()**. Ta metoda używa **ARM_Endpoint** zmiennej środowiskowej, który został ustawiony podczas ustanawiania zmiennych środowiskowych.
 
   ````Ruby  
   def get_active_directory_settings(armEndpoint)
@@ -303,4 +303,4 @@ Aby uruchomić przykład, upewnij się, że zainstalowano Ruby. Jeśli używasz 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalowanie programu PowerShell dla usługi Azure Stack)
-* [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](azure-stack-powershell-configure-user.md)  
+* [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](azure-stack-powershell-configure-user.md)  

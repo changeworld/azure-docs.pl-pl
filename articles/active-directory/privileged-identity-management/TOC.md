@@ -1,6 +1,6 @@
 # Omówienie
 ## [Co to jest usługa Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Bezpieczny dostęp uprzywilejowany](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Bezpieczny dostęp uprzywilejowany](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Role katalogów w usłudze PIM](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Usługa PIM dla zasobów platformy Azure](azure-pim-resource-rbac.md)
 ## [Przepływ pracy zatwierdzania usługi PIM](azure-ad-pim-approval-workflow.md)

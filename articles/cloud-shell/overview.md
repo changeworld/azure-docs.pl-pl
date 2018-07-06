@@ -1,6 +1,6 @@
 ---
-title: Omówienie powłoki chmury Azure | Dokumentacja firmy Microsoft
-description: Omówienie powłoki chmury Azure.
+title: Omówienie usługi Azure Cloud Shell | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure Cloud Shell.
 services: ''
 documentationcenter: ''
 author: jluk
@@ -14,60 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 72338a4c168b4d3b7c918fbb16758724f73fefc2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4ee02bc2a1956994da0ba49a24eefabf9608565c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29844109"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856464"
 ---
-# <a name="overview-of-azure-cloud-shell"></a>Omówienie powłoki w chmurze Azure
-Powłoki chmury Azure jest interaktywny, dostępny w przeglądarce powłoki zarządzania zasobami platformy Azure.
-Zapewnia elastyczność wyboru środowisko powłoki, który najlepiej odpowiada sposobu pracy.
+# <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
+Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
+Zapewnia elastyczność wyboru powłoki, która najlepiej pasuje do sposobu, w jaki pracujesz.
 Użytkownicy systemu Linux mogą wybrać korzystanie z powłoki Bash, zaś użytkownicy systemu Windows mogą wybrać środowisko PowerShell.
 
-Spróbuj z shell.azure.com za pomocą tego przycisku.
+Wypróbuj od shell.azure.com za pomocą tego przycisku.
 
-[![](https://shell.azure.com/images/launchcloudshell.png "Uruchom powłokę chmury Azure")](https://shell.azure.com)
+[![](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
 
-Spróbuj z portalu Azure, korzystając z ikony w chmurze powłoki.
+Spróbuj z witryny Azure portal za pomocą ikony usługi Cloud Shell.
 
-![Uruchomienie portalu](media/overview/portal-launch-icon.png)
+![Uruchamianie portalu](media/overview/portal-launch-icon.png)
 
 ## <a name="features"></a>Funkcje
-### <a name="browser-based-shell-experience"></a>Środowisko powłoki przeglądarki
-Chmury powłoki zapewnia dostęp do wiersza polecenia w przeglądarce skompilowanej za pomocą zadań zarządzania platformy Azure na uwadze.
-Zapewniają powłoki chmury wykorzystać do pracy autonomiczne z komputera lokalnego w sposób tylko chmury.
+### <a name="browser-based-shell-experience"></a>Oparte na przeglądarce środowisko powłoki
+Usługi cloud Shell umożliwia dostęp do opartego na przeglądarce środowisko wiersza polecenia utworzonych za pomocą zadań zarządzania platformy Azure na uwadze.
+Wykorzystaj Cloud Shell, aby pracować autonomiczne z komputera lokalnego w sposób tylko chmura może zapewnić.
 
-### <a name="choice-of-preferred-shell-experience"></a>Wybór preferowanego powłoki środowisko
-Linux użytkownicy mogą używać Bash w chmurze powłoki, podczas gdy użytkownicy systemu Windows można użyć programu PowerShell w chmurze powłoki (wersja zapoznawcza) z listy rozwijanej powłoki.
+### <a name="choice-of-preferred-shell-experience"></a>Wybór preferowaną powłokę
+Użytkownicy systemu Linux użyć narzędzia Bash w usłudze Cloud Shell, podczas gdy użytkownicy Windows mogą używać programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza) z listy rozwijanej powłoki.
 
-![Bash w powłoce chmury](media/overview/overview-bash-pic.png)
+![Powłoka bash w usłudze Cloud Shell](media/overview/overview-bash-pic.png)
 
-![PowerShell w chmurze powłoki (wersja zapoznawcza)](media/overview/overview-ps-pic.png)
+![Program PowerShell w usłudze Cloud Shell (wersja zapoznawcza)](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Uwierzytelniony i skonfigurowane Azure stacji roboczej
-Powłoka chmury jest zarządzany przez firmę Microsoft, pochodzi z popularnych narzędzi wiersza polecenia i język pomocy technicznej. Chmura powłoki także bezpiecznie uwierzytelnia automatycznie dla natychmiastowy dostęp do zasobów za pomocą poleceń cmdlet Azure CLI w wersji 2.0 lub Azure PowerShell.
+Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona z obsługą języka i popularnych narzędzi wiersza polecenia. Aby uzyskać natychmiastowy dostęp do zasobów przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub programu Azure PowerShell polecenia cmdlet usługi cloud Shell jednocześnie możliwość bezpiecznego uwierzytelnia automatycznie.
 
-Wyświetl listę narzędzi Pełny dla [Bash środowisko](features.md#tools) i [środowiska PowerShell (wersja zapoznawcza).](features-powershell.md#tools)
+Wyświetlić pełne [lista narzędzi.](features.md#tools)
 
 ### <a name="multiple-access-points"></a>Wiele punktów dostępu
-Powłoka chmury jest elastyczny narzędzie, które mogą być używane z:
+Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Dokumentację platformy Azure "Wypróbuj" 2.0 interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
-* [Aplikacji mobilnej Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [VS konto platformy Azure kod rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Dokumentacja usługi Azure CLI 2.0 "Wypróbuj"](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Aplikacja mobilna platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [Rozszerzenie kodu Azure Account programu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-microsoft-azure-files-storage"></a>Magazyn plików Azure Microsoft Connect
-Chmury maszyn powłoki są tymczasowe i wymagają udział plików Azure można zainstalować jako `clouddrive` do utrwalenia plików.
+### <a name="connect-your-microsoft-azure-files-storage"></a>Połącz magazyn plików pakietu Microsoft Azure
+Cloud Shell maszyn są tymczasowe i wymagają udziału plików platformy Azure ma zostać zainstalowany jako `clouddrive` do utrwalania plików.
 
-Na pierwszego uruchomienia powłoki chmury monituje o Utwórz zasób grupy, konto magazynu i plików Azure udział w Twoim imieniu. To jest jednorazowe kroku i być automatycznie dołączane do wszystkich sesji. Jeden udział pliku można zamapować i będzie używana przez Bash i programu PowerShell w chmurze powłoki (wersja zapoznawcza).
+Przy pierwszym uruchomieniu usługi Cloud Shell monituje o utworzenie zasobu grupy, konto magazynu i usługi Azure Files udział w Twoim imieniu. Jest to jednorazowy krok i zostanie automatycznie dołączone do wszystkich sesji. Jeden udział pliku można zamapować i będą używane przez zarówno w przypadku powłoki Bash, jak i programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza).
 
 #### <a name="create-new-storage"></a>Tworzenie nowego magazynu
 ![](media/overview/basic-storage.png)
 
-Magazyn lokalnie nadmiarowy (LRS) konta i udział plików Azure można tworzyć w Twoim imieniu. Udział plików Azure będzie używany dla środowisk zarówno Bash, jak i programu PowerShell, jeśli chcesz korzystać z obu. Koszty przechowywania regularne mają zastosowanie.
+Konto magazynu lokalnie nadmiarowego (LRS) i udział plików platformy Azure można tworzyć w Twoim imieniu. Udział plików platformy Azure będą używane w przypadku środowisk zarówno powłoki Bash, jak i programu PowerShell, jeśli zdecydujesz się używać ich obu. Obowiązują koszty związane z regularnych magazynu.
 
 Trzy zasoby zostaną utworzone w Twoim imieniu:
 1. Grupa zasobów o nazwie: `cloud-shell-storage-<region>`
@@ -75,33 +75,33 @@ Trzy zasoby zostaną utworzone w Twoim imieniu:
 3. Udział plików o nazwie: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 > [!Note]
-> Domyślny obraz dysku 5 GB, aby utrwalić tworzy także bash w chmurze powłoki `$Home`. Wszystkie pliki w katalogu $Home, takie jak klucze SSH są trwale przechowywane w udziale plików na platformę Azure zainstalowanego obrazu dysku użytkownika. Podczas zapisywania plików w katalogu $Home i udziału plików na platformę Azure zainstalowanego mają zastosowanie najlepszych rozwiązań.
+> Powłoka bash w usłudze Cloud Shell tworzy również domyślny obraz dysku 5 GB, aby utrwalić `$Home`. Wszystkie pliki w katalogu $Home takie jak klucze SSH są zachowywane w obrazie dysku użytkownika przechowywanych w udziale plików platformy Azure zainstalowany. Podczas zapisywania plików w katalogu $Home i udziału plików platformy Azure zainstalowany, należy stosować najlepsze rozwiązania.
 
 #### <a name="use-existing-resources"></a>Korzystać z istniejących zasobów
 ![](media/overview/advanced-storage.png)
 
-Zaawansowana opcja podano do skojarzenia z istniejącymi zasobami chmury powłoki.
-Kliknij przycisk "Pokaż zaawansowane ustawienia" w wierszu polecenia instalacji magazynu, aby wyświetlić dodatkowe opcje.
+Zaawansowana opcja znajduje się do skojarzenia z istniejących zasobów do usługi Cloud Shell.
+Kliknij pozycję "Pokaż zaawansowane ustawienia" w wierszu polecenia instalacji magazynu, aby wyświetlić dodatkowe opcje.
 
 > [!Note]
-> Listę rozwijaną są filtrowane wstępnie przypisany region powłoki w chmurze i kont magazynu LRS/GRS/ZRS.
+> Listy rozwijane są filtrowane wstępnie przypisanych regionu usługi Cloud Shell i kont magazynu LRS/GRS/ZRS.
 
-[Informacje na temat magazynowania powłoki chmury aktualizowanie udziały plików platformy Azure i przekazywanie pobierania plików.](persisting-shell-storage.md)
+[Informacje na temat magazynowania usługi Cloud Shell, aktualizowanie udziałów plików platformy Azure i Trwa przekazywanie/pobieranie plików.](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>Pojęcia
-* Powłoka działa na hoście tymczasowego na sesji, konkretnych użytkowników w chmurze
-* Chmura powłoki upłynie limit czasu po upływie 20 minut bez interaktywnego działania
-* Udział plików na platformę Azure ma zostać zainstalowany wymaga powłoki chmury
-* Chmura powłoki używa tego samego udziału plików na platformę Azure zarówno Bash, jak i programu PowerShell
-* Chmura powłoki przypisano na jednym komputerze na konto użytkownika
-* Bash będzie się powtarzał $Home przy użyciu obrazu 5 GB przechowywany w udziale plików
-* Uprawnienia zostały ustawione jako zwykły użytkownik w Bash systemu Linux
+* Usługi cloud Shell jest uruchamiane na hoście tymczasowe na sesji, konkretnych użytkowników
+* Usługa cloud Shell upłynie limit czasu po upływie 20 minut bez interaktywnych działań
+* Usługa cloud Shell wymaga udziału plików platformy Azure ma zostać zainstalowany
+* Usługa cloud Shell używa tego samego udziału plików platformy Azure dla zarówno powłoki Bash, jak i programu PowerShell
+* Usługa cloud Shell jest przypisany jeden komputer dla konta użytkownika
+* Usługa cloud Shell będzie się powtarzał $Home przy użyciu obrazu 5 GB przechowywanych w udziale plików
+* Uprawnienia zostały ustawione jako zwykły użytkownik systemu Linux w powłoce Bash
 
-Dowiedz się więcej o funkcjach [Bash w chmurze powłoki](features.md) i [programu PowerShell w chmurze powłoki (wersja zapoznawcza)](features-powershell.md).
+Dowiedz się więcej o funkcjach [Bash w usłudze Cloud Shell](features.md) i [programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza)](features-powershell.md).
 
 ## <a name="pricing"></a>Cennik
-Komputer, na którym powłoki chmury jest wolne, wymaga wstępnie posiadania zainstalowany udział plików Azure. Koszty przechowywania regularne mają zastosowanie.
+Komputer, na którym usługa Cloud Shell jest bezpłatną, wstępnie posiadania zainstalowanego udziału plików platformy Azure. Obowiązują koszty związane z regularnych magazynu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Bash w chmurze powłoki Szybki Start](quickstart.md) <br>
-[PowerShell w chmurze powłoki (wersja zapoznawcza) — Szybki Start](quickstart-powershell.md)
+[Powłoka bash w usłudze Cloud Shell przewodnika Szybki Start](quickstart.md) <br>
+[Program PowerShell w przewodniku Szybki Start usługi Cloud Shell (wersja zapoznawcza)](quickstart-powershell.md)

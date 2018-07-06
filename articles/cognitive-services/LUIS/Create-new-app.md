@@ -1,6 +1,6 @@
 ---
-title: Utwórz nową aplikację z LUIS | Dokumentacja firmy Microsoft
-description: Utwórz i Zarządzaj aplikacjami na stronie sieci Web opis języka (LUIS).
+title: Tworzenie nowej aplikacji z użyciem usługi LUIS | Dokumentacja firmy Microsoft
+description: Utwórz aplikacje i zarządzaj nimi na stronie sieci Web Language Understanding (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,76 +9,76 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-geberr
-ms.openlocfilehash: 75edd39346995cdef72bb1e1fcb9eaff53d29702
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 998a85720f5707fbf6ed4c5cfa3ed0dab5d1cc0e
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349788"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865049"
 ---
 # <a name="create-an-app"></a>Tworzenie aplikacji
 Możesz utworzyć nową aplikację na różne sposoby: 
 
-* [Uruchom](#create-new-app) z pustą aplikację i Utwórz lokalizacji docelowych, zniesławiających i jednostek.
-* [Uruchom](#create-new-app) z pustą aplikację i Dodaj [wbudowane domeny](luis-how-to-use-prebuilt-domains.md).
-* [Importuj aplikację LUIS](#import-new-app) z pliku JSON, który zawiera już opcji, zniesławiających i jednostek.
+* [Rozpocznij](#create-new-app) z pustą aplikację i utworzyć intencji, wypowiedzi i jednostek.
+* [Rozpocznij](#create-new-app) z pustą aplikacją i Dodaj [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md).
+* [Importowanie aplikacji usługi LUIS](#import-new-app) z pliku JSON, który zawiera już intencji, wypowiedzi i jednostek.
 
 ## <a name="what-is-an-app"></a>Co to jest aplikacja
-Ta aplikacja zawiera [wersji](luis-how-to-manage-versions.md) modelu, jak również żadnego [współpracownicy](luis-how-to-collaborate.md) dla aplikacji. Podczas tworzenia aplikacji wybierz kultury ([języka](luis-supported-languages.md)) który **nie można zmienić później**. 
+Ta aplikacja zawiera [wersji](luis-how-to-manage-versions.md) modelu, a także dowolnego [współpracowników](luis-how-to-collaborate.md) dla aplikacji. Podczas tworzenia aplikacji wybierz kulturę ([języka](luis-supported-languages.md)) który **nie można później zmienić**. 
 
-Domyślna wersja nowej aplikacji jest "0,1." 
+Domyślna wersja nowej aplikacji jest "0.1". 
 
-Można tworzyć i zarządzać aplikacjami na **Moje aplikacje** strony. Można zawsze dostęp do tej strony, wybierając **Moje aplikacje** na górnym pasku nawigacyjnym z [LUIS](luis-reference-regions.md) witryny sieci Web. 
+Można tworzyć i zarządzanie aplikacjami na **Moje aplikacje** strony. Są zawsze dostępne na tej stronie, wybierając **Moje aplikacje** na górnym pasku nawigacyjnym z [LUIS](luis-reference-regions.md) witryny sieci Web. 
 
 [![](media/luis-create-new-app/apps-list.png "Zrzut ekranu przedstawiający listę aplikacji")](media/luis-create-new-app/apps-list.png#lightbox)
 
-## <a name="create-new-app"></a>Utwórz nową aplikację
+## <a name="create-new-app"></a>Tworzenie nowej aplikacji
 
-1. Na **Moje aplikacje** wybierz pozycję **Utwórz nową aplikację**.
-2. W oknie dialogowym nazwy aplikacji "TravelAgent".
+1. Na **Moje aplikacje** wybierz opcję **Utwórz nową aplikację**.
+2. W oknie dialogowym Nazwa aplikacji "TravelAgent".
 
-    ![Tworzenie nowej aplikacji okna dialogowego](./media/luis-create-new-app/create-app.png)
+    ![Utwórz nowe okno dialogowe aplikacji](./media/luis-create-new-app/create-app.png)
 
-3. Wybierz kultury Twojej aplikacji (dla aplikacji TravelAgent, wybierz język angielski), a następnie wybierz **gotowe**. 
+3. Wybierz Twojej kulturze aplikacji (TravelAgent aplikacji, wybierz język angielski), a następnie wybierz pozycję **gotowe**. 
 
     >[!NOTE]
-    >Kultura nie można zmienić po utworzeniu aplikacji. 
+    >Nie można zmienić kulturę, gdy aplikacja zostanie utworzona. 
 
 ## <a name="import-new-app"></a>Importuj nowej aplikacji
-Można ustawić nazwę (50 char max), wersji (10 char max) i opis aplikacji w pliku JSON. Przykłady pliki JSON aplikacji są dostępne pod adresem [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
+Nazwa (50 char max), wersja (10 char max) i opis aplikacji można ustawić w pliku JSON. Przykładowe pliki JSON aplikacji są dostępne pod adresem [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
 
-1. Na **Moje aplikacje** wybierz pozycję **importu nowej aplikacji**.
-2. W **importu nowej aplikacji** okno dialogowe, wybierz plik JSON definiujący LUIS aplikacji.
+1. Na **Moje aplikacje** wybierz opcję **importowania Nowa aplikacja**.
+2. W **importowania Nowa aplikacja** okno dialogowe, wybierz plik JSON definiujący aplikacji usługi LUIS.
 
-    ![Importuj nowe okno aplikacji](./media/luis-create-new-app/import-app.png)
+    ![Importuj nowe okno dialogowe aplikacji](./media/luis-create-new-app/import-app.png)
 
 ## <a name="export-app"></a>Eksportowanie aplikacji
-1. Na **Moje aplikacje** wybierz wielokropek (...) na końcu wiersza aplikacji.
+1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji.
 
-    [![](media/luis-create-new-app/apps-list.png "Zrzut ekranu przedstawiający okno podręczne akcji dla aplikacji")](media/luis-create-new-app/three-dots.png#lightbox)
+    [![](media/luis-create-new-app/apps-list.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe akcji dla aplikacji")](media/luis-create-new-app/three-dots.png#lightbox)
 
-2. Wybierz **aplikacji eksportu** z menu. 
+2. Wybierz **eksportowania aplikacji** z menu. 
 
 ## <a name="rename-app"></a>Zmień nazwę aplikacji
 
-1. Na **Moje aplikacje** wybierz wielokropek (...) na końcu wiersza aplikacji. 
-2. Wybierz **zmienić** z menu.
-3. Wprowadź nową nazwę aplikacji i wybierz **gotowe**.
+1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
+2. Wybierz **Zmień nazwę** z menu.
+3. Wprowadź nową nazwę aplikacji, a następnie wybierz pozycję **gotowe**.
 
 ## <a name="delete-app"></a>Usuwanie aplikacji
 
 > [!CAUTION]
-> W przypadku usuwania aplikacji dla wszystkich współpracowników i właściciela. [Eksportuj](#export-app) aplikacji przed jego usunięciem. 
+> Usuwasz aplikację dla wszystkich współpracowników i właściciela. [Eksportuj](#export-app) aplikacji przed jej usunięciem. 
 
-1. Na **Moje aplikacje** wybierz wielokropek (...) na końcu wiersza aplikacji. 
-2. Wybierz **usunąć** z menu.
+1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
+2. Wybierz **Usuń** z menu.
 3. Wybierz **Ok** w oknie potwierdzenia.
 
 ## <a name="export-endpoint-logs"></a>Eksportuj dzienniki punktu końcowego
-Dzienniki zawiera zapytania, czasu UTC, a odpowiedź LUIS JSON.
+Dzienniki zawierają zapytanie, czasem UTC i odpowiedź JSON usługi LUIS.
 
-1. Na **Moje aplikacje** wybierz wielokropek (...) na końcu wiersza aplikacji. 
-2. Wybierz **Eksportowały dzienniki punktu końcowego** z menu.
+1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
+2. Wybierz **Eksportuj dzienniki punktu końcowego** z menu.
 
 ```
 Query,UTC DateTime,Response
@@ -87,4 +87,4 @@ text i'm driving and will be 30 minutes late to the meeting,02/13/2018 15:18:43,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pierwsze zadanie w aplikacji jest [dodać intencje](luis-how-to-add-intents.md).
+Pierwsze zadanie w aplikacji jest [Dodawanie intencji](luis-how-to-add-intents.md).

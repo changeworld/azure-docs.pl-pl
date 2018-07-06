@@ -1,51 +1,51 @@
-# <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w powłoce chmury Azure
-Powłoka chmury wykorzystuje magazyn plików Azure, aby zachować pliki między sesjami.
+# <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
+Usługa cloud Shell korzysta z usługi Azure File storage, aby utrwalać pliki między sesjami.
 
 ## <a name="set-up-a-clouddrive-file-share"></a>Konfigurowanie udziału plików clouddrive
-Na początkowej start powłoki chmury monituje o skojarzyć udział plików nowego lub istniejącego zachowywane między sesjami plików.
+W menu start początkowej usługi Cloud Shell monituje o skojarzyć udział plików nowej lub istniejącej utrwalanie plików między sesjami.
 
 > [!NOTE]
-> Bash i programu PowerShell używają tego samego udziału plików. Tylko jeden plik udziału można skojarzyć z automatyczną instalację w powłoce chmury.
+> Udostępnij ten sam udział plików, bash, jak i programu PowerShell. Tylko jednego udziału plików można skojarzyć z automatyczne instalowanie w usłudze Cloud Shell.
 
 ### <a name="create-new-storage"></a>Tworzenie nowego magazynu
 
-Po za pomocą podstawowych ustawień i wybierz tylko subskrypcję, powłoki chmury tworzy trzy zasoby w Twoim imieniu w obsługiwanym regionie, najbliższą możesz:
+Gdy korzystasz z podstawowych ustawień i wybierz tylko subskrypcję, usługa Cloud Shell tworzy trzy zasoby w Twoim imieniu w obsługiwanym regionie znajdującym się najbliżej Twojej lokalizacji:
 * Grupa zasobów: `cloud-shell-storage-<region>`
 * Konto magazynu: `cs<uniqueGuid>`
-* Udziału plików: `cs-<user>-<domain>-com-<uniqueGuid>`
+* Udział plików: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Ustawienia subskrypcji](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
-Instaluje udziału plików jako `clouddrive` w Twojej `$Home` katalogu. To działanie jednorazowe i udziału plików automatycznie instaluje się w kolejnych sesjach. 
+Udział plików na komputerze instalująca jako `clouddrive` w swojej `$Home` katalogu. Jest to akcja jednorazowa, a udział plików automatycznie instaluje się w kolejnych sesjach. 
 
 > [!NOTE]
-> Zabezpieczeń każdy użytkownik powinien udostępniać swoje własne konta magazynu.  Do kontroli dostępu opartej na rolach (RBAC) użytkownicy musi mieć dostęp współautora lub powyżej w magazynie konta poziomu.
+> Aby zapewnić bezpieczeństwo każdy użytkownik zainicjować obsługę administracyjną własnego konta magazynu.  Dla kontroli dostępu opartej na rolach (RBAC) użytkownicy muszą prawa dostępu współautora lub powyżej w magazynie konta poziomu.
 
-W Bash, udziału plików zawiera także obraz 5 GB, który jest tworzony której automatycznie będzie się powtarzał danych w sieci `$Home` katalogu. 
+W powłoce Bash, udziału plików zawiera także obraz 5 GB, który jest tworzony który automatycznie utrzymuje danych w Twojej `$Home` katalogu. 
 
 ### <a name="use-existing-resources"></a>Korzystać z istniejących zasobów
 
-Przy użyciu opcji zaawansowanych, można skojarzyć istniejących zasobów. Gdy zostanie wyświetlony monit konfiguracji magazynu, wybierz **Pokaż zaawansowane ustawienia** Aby wyświetlić dodatkowe opcje. Menu rozwijane są filtrowane pod kątem przypisanej regionu powłoki chmury oraz Magazyn lokalnie nadmiarowy i kont magazynu geograficznie nadmiarowego.
+Za pomocą zaawansowanych opcji, należy skojarzyć istniejących zasobów. Gdy zostanie wyświetlony monit o konfiguracji magazynu, wybierz pozycję **Pokaż zaawansowane ustawienia** Aby wyświetlić dodatkowe opcje. Menu rozwijane zostały przefiltrowane pod kątem przypisanej regionu usługi Cloud Shell i Magazyn lokalnie nadmiarowy i kont usługi storage geograficznie nadmiarowy.
 
-W Bash, istniejących udziałów plików wyświetlany obraz 5 GB utworzone automatycznie utrwalić Twojej `$Home` katalogu.
+Udziały plików wyświetlany obraz 5 GB do utrwalenia swoje `$Home` katalogu.
 
-![Ustawienia grupy zasobów](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
+![Ustawienie Grupa zasobów](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
 ### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Ogranicz tworzenie zasobów przy użyciu zasad zasobów platformy Azure
-Konta magazynu, utworzone w chmurze powłoki są oznaczane `ms-resource-usage:azure-cloud-shell`. Jeśli chcesz uniemożliwić użytkownikom tworzenie kont magazynu w chmurze powłoki, Utwórz [zasad zasobów platformy Azure dla tagów](../articles/azure-policy/json-samples.md) wyzwolenia przy tym konkretnym elementem tag.
+Konta magazynu, które tworzysz w usłudze Cloud Shell są oznaczane za pomocą `ms-resource-usage:azure-cloud-shell`. Jeśli chcesz uniemożliwić użytkownikom tworzenie kont magazynu w usłudze Cloud Shell, Utwórz [zasady zasobów platformy Azure dla tagów](../articles/azure-policy/json-samples.md) , są wyzwalane przez to określony tag.
 
-## <a name="supported-storage-regions"></a>Regiony obsługiwanego magazynu
-Skojarzone konta musi znajdować się w tym samym regionie co maszyny powłoki w chmurze, która jest instalowanie, ich do magazynu Azure.
+## <a name="supported-storage-regions"></a>Obsługiwane regiony
+Skojarzonych kont muszą znajdować się w tym samym regionie, co komputer Cloud Shell, na którym jest zainstalowanie, ich do magazynu platformy Azure.
 
-Aby znaleźć przypisaną regionu, użytkownik może:
-* Umożliwia wyświetlenie notatki w oknie dialogowym "Zaawansowane magazynu ustawienia"
-* Odwołuje się do nazwy konta magazynu utworzone (przykład: `cloud-shell-storage-westus`)
-* Uruchom `env` i Znajdź zmiennej `ACC_LOCATION`
+Aby znaleźć swój region przypisany użytkownik może:
+* Wyświetl notatki w oknie dialogowym "Zaawansowane miejsca do magazynowania"
+* Odnoszą się do nazwy konta magazynu utworzonego dla Ciebie (np: `cloud-shell-storage-westus`)
+* Uruchom `env` i Znajdź zmienną `ACC_LOCATION`
 
-Komputer powłoki chmura istnieje w następujących regionach:
+Cloud Shell maszyn istnieją w następujących regionach:
 |Obszar|Region|
 |---|---|
-|Ameryki|Wschodnie stany USA, południowo środkowe stany USA, zachodnie stany USA|
+|Ameryki|Wschodnie stany USA, południowo-środkowe stany USA, zachodnie stany USA|
 |Europa|Europa Północna, Europa Zachodnia|
-|Azja i Pacyfik|Indie centralnej, południowo-Azja.|
+|Azja i Pacyfik|Indie środkowe, południowo-Azja Wschodnia|
 

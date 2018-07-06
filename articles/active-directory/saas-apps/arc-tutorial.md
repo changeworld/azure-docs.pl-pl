@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z łuk publikowania - logowania jednokrotnego | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i łuk publikowania - logowania jednokrotnego.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą łuk publikowania — Usługa rejestracji Jednokrotnej | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i łuk publikowania — Usługa rejestracji Jednokrotnej.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: bf811d789c0c6effd6f8940ad433092ea9ba04cb
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9decab5c35cda03e8532c48654203be7d95a5801
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210075"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858847"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Samouczek: Azure Active Directory integracji z łuk publikowania — Usługa rejestracji Jednokrotnej
+# <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą łuk publikowania — Usługa rejestracji Jednokrotnej
 
-Z tego samouczka dowiesz się integrowanie łuk publikowania — Usługa rejestracji Jednokrotnej w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować łuk publikowania — logowanie Jednokrotne w usłudze Azure Active Directory (Azure AD).
 
-Integrowanie publikowanie łuk — logowanie Jednokrotne z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie łuk publikowania — logowanie Jednokrotne z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do łuk publikowania - logowania jednokrotnego.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane na łuk publikowania - SSO (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do łuk publikowania — Usługa rejestracji Jednokrotnej.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do łuk publikowania — SSO (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z łuk publikowania — logowanie Jednokrotne, potrzebne są następujące elementy:
+Do konfigurowania integracji z usługą Azure AD z łuk publikowania — logowanie Jednokrotne, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Publikowanie łuk — logowanie Jednokrotne logowanie jednokrotne włączone subskrypcji
@@ -46,86 +46,86 @@ Aby skonfigurować integrację usługi Azure AD z łuk publikowania — logowani
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie publikowanie łuk — Usługa rejestracji Jednokrotnej z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie publikowania łuk — Usługa rejestracji Jednokrotnej z galerii
+1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Dodawanie publikowanie łuk — Usługa rejestracji Jednokrotnej z galerii
-Aby skonfigurować integrację łuk publikowania - logowania jednokrotnego do usługi Azure AD, należy dodać łuk publikowania - rejestracji Jednokrotnej z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-arc-publishing---sso-from-the-gallery"></a>Dodawanie publikowania łuk — Usługa rejestracji Jednokrotnej z galerii
+Aby skonfigurować integrację łuk publikowania — logowanie Jednokrotne w usłudze Azure AD należy dodać łuk publikowania — Usługa rejestracji Jednokrotnej z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać łuk publikowania — Usługa rejestracji Jednokrotnej z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **łuk publikowania - logowania jednokrotnego**, wybierz pozycję **łuk publikowania - logowania jednokrotnego** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W polu wyszukiwania wpisz **łuk publikowania — Usługa rejestracji Jednokrotnej**, wybierz opcję **łuk publikowania — Usługa rejestracji Jednokrotnej** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Publikowanie łuk - rejestracji Jednokrotnej z listy wyników](./media/arc-tutorial/tutorial_arc_addfromgallery.png)
+    ![Publikowanie łuk — logowanie Jednokrotne na liście wyników](./media/arc-tutorial/tutorial_arc_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z łuk publikowania — Usługa rejestracji Jednokrotnej w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu publikowania łuk — Usługa rejestracji Jednokrotnej w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Logowanie jednokrotne do pracy usługi Azure AD musi znać użytkownika odpowiednika w publikacji łuk — Usługa rejestracji Jednokrotnej jest dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi w publikacji łuk — logowania jednokrotnego musi się.
+Logowanie jednokrotne do pracy usługi Azure AD musi wiedzieć, jakie użytkownik odpowiednika w publikacji łuk — Usługa rejestracji Jednokrotnej jest dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w publikacji łuk — logowania jednokrotnego musi nawiązane.
 
-Do konfigurowania i testowania usługi Azure AD rejestracji jednokrotnej z publikowania łuk — logowanie Jednokrotne, należy wykonać poniższe bloki konstrukcyjne:
+Do konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu publikowania łuk — logowanie Jednokrotne, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Utwórz publikowania łuk — użytkownik testowy logowania jednokrotnego](#create-an-arc-publishing---sso-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta łuk publikowania - logowania jednokrotnego połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Tworzenie publikacji łuk — Usługa rejestracji Jednokrotnej testowe użytkownika](#create-an-arc-publishing---sso-test-user)**  — aby odpowiednikiem Britta Simon w łuk publikowania — logowanie Jednokrotne połączonej z usługi Azure AD reprezentacja użytkownika.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w sieci łuk publikowania — Usługa rejestracji Jednokrotnej w aplikacji.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w swojej łuk publikowania — Usługa rejestracji Jednokrotnej w aplikacji.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z łuk publikowania — logowanie Jednokrotne, należy wykonać następujące czynności:**
+**Aby skonfigurować usługę Azure AD w logowanie jednokrotne za pomocą łuk publikowania — logowanie Jednokrotne, wykonaj następujące czynności:**
 
-1. W portalu Azure na **łuk publikowania - logowania jednokrotnego** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **łuk publikowania — Usługa rejestracji Jednokrotnej** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/arc-tutorial/tutorial_arc_samlbase.png)
 
-3. Na **łuk publikowania — domena logowania jednokrotnego i adresy URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+1. Na **łuk publikowania — Usługa rejestracji Jednokrotnej, domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Publikowanie łuk — domena logowania jednokrotnego i adresów URL jednym logowania jednokrotnego informacji](./media/arc-tutorial/tutorial_arc_url.png)
+    ![Publikowanie łuk — domena logowania jednokrotnego i adresy URL pojedynczego logowania jednokrotnego informacji](./media/arc-tutorial/tutorial_arc_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://www.okta.com/saml2/service-provider/<Unique ID>`
+    1. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.okta.com/saml2/service-provider/<Unique ID>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    1. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Publikowanie łuk — domena logowania jednokrotnego i adresów URL jednym logowania jednokrotnego informacji](./media/arc-tutorial/tutorial_arc_url1.png)
+    ![Publikowanie łuk — domena logowania jednokrotnego i adresy URL pojedynczego logowania jednokrotnego informacji](./media/arc-tutorial/tutorial_arc_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
      
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [łuk publikowania - zespołem pomocy technicznej klienta logowania jednokrotnego](mailto:inf@washpost.com) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [łuk publikowania — zespół obsługi klienta logowania jednokrotnego](mailto:inf@washpost.com) do uzyskania tych wartości. 
 
-5. Publikowanie łuk — aplikacja rejestracji Jednokrotnej oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z **atrybuty użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+1. Publikowanie łuk — Usługa rejestracji Jednokrotnej aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/arc-tutorial/tutorial_arc_attribute.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/arc-tutorial/tutorial_arc_attribute.png)
 
-6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |    
@@ -134,116 +134,116 @@ W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azur
     | wyślij wiadomość e-mail | User.mail |
     | grupy | User.assignedroles |
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+    1. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-     ![Konfigurowanie rejestracji jednokrotnej](./media/arc-tutorial/tutorial_attribute_04.png)
+     ![Konfigurowanie logowania jednokrotnego](./media/arc-tutorial/tutorial_attribute_04.png)
 
-     ![Konfigurowanie rejestracji jednokrotnej](./media/arc-tutorial/tutorial_attribute_05.png)
+     ![Konfigurowanie logowania jednokrotnego](./media/arc-tutorial/tutorial_attribute_05.png)
     
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    1. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
     
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    1. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
-    d. Pozostaw **Namespace** puste.
+    1. Pozostaw **Namespace** puste.
     
-    d. Kliknij przycisk **Ok**
+    1. Kliknij przycisk **Ok**
 
     > [!NOTE]
-    > W tym miejscu **grup** atrybutu jest zamapowana z **user.assignedroles**. Są to role niestandardowe utworzone w usłudze Azure AD do mapowania nazwy grupy w aplikacji. Można znaleźć więcej wskazówek [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) na temat tworzenia niestandardowych ról w usłudze Azure AD. 
+    > W tym miejscu **grup** atrybutu jest zamapowana z **user.assignedroles**. Są to role niestandardowe utworzone w usłudze Azure AD do mapowania nazwy grup w aplikacji. Można znaleźć więcej wskazówek [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) na temat tworzenia niestandardowych ról w usłudze Azure AD. 
 
-7. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/arc-tutorial/tutorial_arc_certificate.png) 
+    ![Link pobierania certyfikatu](./media/arc-tutorial/tutorial_arc_certificate.png) 
 
-8. Kliknij przycisk **zapisać** przycisku.
+1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/arc-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/arc-tutorial/tutorial_general_400.png)
     
-9. Na **łuk publikowania — Konfiguracja logowania jednokrotnego** , kliknij przycisk **skonfigurować łuk publikowania - logowania jednokrotnego** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+1. Na **łuk publikowania — Konfiguracja logowania jednokrotnego** , kliknij przycisk **skonfigurować łuk publikowania — Usługa rejestracji Jednokrotnej** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Publikowanie łuk — Konfiguracja logowania jednokrotnego](./media/arc-tutorial/tutorial_arc_configure.png) 
+    ![Publikowanie łuk - konfiguracji logowania jednokrotnego](./media/arc-tutorial/tutorial_arc_configure.png) 
 
-10. Skonfigurować logowanie jednokrotne w **łuk publikowania - logowania jednokrotnego** stronie, musisz wysłać pobrany **certyfikatu (Base64), adres URL Sign-Out identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** do [łuk Publikowanie - zespołem pomocy technicznej usługi logowania jednokrotnego](mailto:inf@washpost.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+1. Aby skonfigurować logowanie jednokrotne na **łuk publikowania — Usługa rejestracji Jednokrotnej** stronie, musisz wysłać pobrany **certyfikat (Base64), adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [łuk Publikowanie — Usługa rejestracji Jednokrotnej, zespół pomocy technicznej](mailto:inf@washpost.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/arc-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/arc-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/arc-tutorial/create_aaduser_02.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/arc-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/arc-tutorial/create_aaduser_04.png)
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    1. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    1. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    1. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    1. Kliknij przycisk **Utwórz**.
  
-### <a name="create-an-arc-publishing---sso-test-user"></a>Utwórz łuk publikowania - logowania jednokrotnego użytkownika testowego
+### <a name="create-an-arc-publishing---sso-test-user"></a>Utwórz łuk publikowania — logowanie Jednokrotne użytkownika testowego
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w łuk publikowania - logowania jednokrotnego. Publikowanie łuk — logowania jednokrotnego obsługę w czasie, który jest domyślnie włączone. Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu łuk publikowania - logowania jednokrotnego, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w łuk publikowania — Usługa rejestracji Jednokrotnej. Publikowanie łuk — Usługa rejestracji Jednokrotnej obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu łuk publikowania — Usługa rejestracji Jednokrotnej, jeśli go jeszcze nie istnieje.
 
 >[!Note]
->Jeśli trzeba ręcznie utworzyć użytkownika, skontaktuj się z [łuk publikowania - zespołem pomocy technicznej usługi logowania jednokrotnego](mailto:inf@washpost.com).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [łuk publikowania — Usługa rejestracji Jednokrotnej, zespół pomocy technicznej](mailto:inf@washpost.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu łuk publikowania - logowania jednokrotnego.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do łuk publikowania — Usługa rejestracji Jednokrotnej.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta łuk publikowania — logowanie Jednokrotne, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon łuk publikowania — logowanie Jednokrotne, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **łuk publikowania - logowania jednokrotnego**.
+1. Na liście aplikacji wybierz **łuk publikowania — Usługa rejestracji Jednokrotnej**.
 
-    ![Publikowanie łuk - logowania jednokrotnego łącza na liście aplikacji](./media/arc-tutorial/tutorial_arc_app.png)  
+    ![Publikowanie łuk - linku logowania jednokrotnego na liście aplikacji](./media/arc-tutorial/tutorial_arc_app.png)  
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+1. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu przycisku łuk publikowania - kafelka logowania jednokrotnego w panelu dostępu należy należy pobrać automatycznie zalogowane do Twojej łuk publikowania — Usługa rejestracji Jednokrotnej w aplikacji.
+Po kliknięciu łuk publikowania — Kafelek rejestracji Jednokrotnej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do Twojej łuk publikowania — Usługa rejestracji Jednokrotnej w aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

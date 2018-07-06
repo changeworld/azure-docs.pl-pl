@@ -1,6 +1,6 @@
 ---
-title: Jak włączyć wirtualizacji zagnieżdżonych w maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Jak włączyć wirtualizacji zagnieżdżonych w maszynach wirtualnych platformy Azure
+title: Jak włączać wirtualizację zagnieżdżoną w usłudze Azure Virtual Machines | Dokumentacja firmy Microsoft
+description: Jak włączyć wirtualizacji zagnieżdżonej na maszynach wirtualnych platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -11,30 +11,30 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526522"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857948"
 ---
-# <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć zagnieżdżonych wirtualizacji w maszynie Wirtualnej platformy Azure
+# <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak włączyć wirtualizacji zagnieżdżonej na Maszynie wirtualnej platformy Azure
 
-Zagnieżdżone wirtualizacji jest obsługiwane w serii Dv3 i Ev3 maszyn wirtualnych platformy Azure. Ta funkcja zapewnia dużą elastyczność w obsługi scenariuszy, takich jak środowiska programowania, testowania, szkolenia i pokaz. 
+Wirtualizacja zagnieżdżona jest obsługiwana w serii Dv3 i Ev3 maszyn wirtualnych platformy Azure. Ta funkcja zapewnia dużą elastyczność w obsłudze scenariuszy, takich jak środowiska programowania, testowania, szkolenia i demonstracyjnych. 
 
-Ta procedura artykułu przez włączenie zagnieżdżonych wirtualizacji na maszynie Wirtualnej platformy Azure i konfigurowanie łączności z Internetem do tej maszyny wirtualnej gościa.
+Wszystkie Dv3 i Ev3 maszyn wirtualnych z serii obsługuje zagnieżdżone wirtualizacji bez konieczności dodano czynności konfiguracyjnych.  Tym artykule omówiono włączanie funkcji Hyper-V na Maszynie wirtualnej platformy Azure i konfigurowanie połączenia internetowego z tej maszyny wirtualnej gościa.
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Utwórz Dv3 lub Ev3 serii maszyny Wirtualnej Azure
+## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Tworzenie maszyny Wirtualnej platformy Azure serii Dv3 i Ev3
 
-Tworzenie nowego systemu Windows Server 2016 Azure maszyny Wirtualnej, a następnie wybierz rozmiar z serii Dv3 lub Ev3. Upewnij się, że wybierz rozmiar wystarczająco duży, aby obsługiwał wymagań maszyny wirtualnej gościa. W tym przykładzie użyto D3_v3 rozmiar maszyny Wirtualnej platformy Azure. 
+Utwórz nowy systemu Windows Server 2016 maszyny Wirtualnej platformy Azure i wybierz rozmiar z serii Dv3 i Ev3. Upewnij się, że zdecydujesz o rozmiarze wystarczająco duży, do obsługi wymagań maszyny wirtualnej gościa. W tym przykładzie używamy D3_v3 rozmiar maszyny Wirtualnej platformy Azure. 
 
-Możesz wyświetlić regionalnych dostępność maszyn wirtualnych serii Dv3 lub Ev3 [tutaj](https://azure.microsoft.com/regions/services/).
+Możesz wyświetlić dostępności regionalnej maszyn wirtualnych serii Dv3 i Ev3 [tutaj](https://azure.microsoft.com/regions/services/).
 
 >[!NOTE]
 >
->Aby uzyskać szczegółowe instrukcje dotyczące tworzenia nowej maszyny wirtualnej, zobacz [tworzenie i zarządzanie maszynami wirtualnymi systemu Windows z modułu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+>Aby uzyskać szczegółowe instrukcje dotyczące tworzenia nowej maszyny wirtualnej, zobacz [tworzenie i zarządzanie maszynami wirtualnymi Windows za pomocą modułu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
     
-## <a name="connect-to-your-azure-vm"></a>Połączenie z maszyną wirtualną Azure
+## <a name="connect-to-your-azure-vm"></a>Łączenie do maszyny Wirtualnej platformy Azure
 
 Utwórz połączenie pulpitu zdalnego z maszyną wirtualną.
 
@@ -46,17 +46,17 @@ Utwórz połączenie pulpitu zdalnego z maszyną wirtualną.
 
 4. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij przycisk **Tak** lub **Kontynuuj**, aby kontynuować nawiązywanie połączenia.
 
-## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Włączanie funkcji Hyper-V na maszynie Wirtualnej Azure
-Te ustawienia można skonfigurować ręcznie lub firma Microsoft umieściła skrypt programu PowerShell, aby zautomatyzować konfigurację.
+## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Włącz funkcję Hyper-V na maszynie Wirtualnej platformy Azure
+Te ustawienia można skonfigurować ręcznie lub zostały zamieszczone, aby skrypt programu PowerShell, aby zautomatyzować konfigurację.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Opcja 1: Umożliwia skonfigurowanie zagnieżdżonych wirtualizacji skrypt programu PowerShell
-Skrypt programu PowerShell, aby włączyć zagnieżdżonych wirtualizacji na hoście systemu Windows Server 2016 jest dostępna w [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Skrypt sprawdza wymagania wstępne, a następnie konfiguruje zagnieżdżonych wirtualizacji na maszynie Wirtualnej Azure. Ponowne uruchomienie maszyny wirtualnej Azure jest niezbędne do ukończenia konfiguracji. Ten skrypt może działać w innych środowiskach, ale nie jest gwarantowana. Sprawdź wpis w blogu Azure z pokaz wideo na żywo na zagnieżdżonych wirtualizacji działających na platformie Azure! https://aka.ms/AzureNVblog.
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Opcja 1: Użycie skryptu programu PowerShell do konfigurowania wirtualizacji zagnieżdżonej
+Skrypt programu PowerShell, aby włączyć wirtualizacji zagnieżdżonej na hoście systemu Windows Server 2016 jest dostępny w [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Skrypt sprawdza wymagania wstępne, a następnie konfiguruje wirtualizacji zagnieżdżonej na maszynie Wirtualnej platformy Azure. Ponowne uruchomienie maszyny Wirtualnej platformy Azure jest niezbędne do ukończenia konfiguracji. Ten skrypt może działać w innych środowiskach, ale nie ma żadnej gwarancji. Sprawdź wpis w blogu platformy Azure przy użyciu pokaz wideo na żywo na wirtualizacji zagnieżdżonej na platformie Azure! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>Opcja 2: Skonfiguruj ręcznie zagnieżdżonych wirtualizacji
+### <a name="option-2-configure-nested-virtualization-manually"></a>Opcja 2: Ręcznie skonfigurować wirtualizacji zagnieżdżonej
 
-1. Na maszynie Wirtualnej Azure Otwórz program PowerShell jako Administrator. 
+1. Na maszynie Wirtualnej platformy Azure Otwórz program PowerShell jako Administrator. 
 
-2. Włączanie funkcji Hyper-V i narzędzia do zarządzania.
+2. Włącz funkcję Hyper-V i narzędzia do zarządzania.
 
     ```powershell
     Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
@@ -64,16 +64,16 @@ Skrypt programu PowerShell, aby włączyć zagnieżdżonych wirtualizacji na ho�
 
     >[!WARNING] 
     >
-    >To polecenie powoduje ponowne uruchomienie maszyny Wirtualnej platformy Azure. Zostaną utracone podczas procesu ponownego połączenia RDP.
+    >To polecenie powoduje ponowne uruchomienie maszyny Wirtualnej platformy Azure. Użytkownik utraci połączenie RDP podczas procesu ponownego uruchomienia.
     
-3. Po ponownym uruchomieniu maszyny Wirtualnej Azure, ponownie nawiąż połączenie z maszyną Wirtualną za pomocą protokołu RDP.
+3. Po ponownym uruchomieniu maszyny Wirtualnej platformy Azure, ponownie nawiązać połączenie z maszyną Wirtualną przy użyciu protokołu RDP.
 
 ## <a name="set-up-internet-connectivity-for-the-guest-virtual-machine"></a>Skonfiguruj połączenie z Internetem dla maszyny wirtualnej gościa
-Utwórz nowy wirtualnej karty sieciowej dla maszyny wirtualnej gościa i skonfigurować bramę translatora adresów Sieciowych, aby umożliwić łączność z Internetem.
+Tworzenie nowego wirtualnej karty sieciowej dla maszyny wirtualnej gościa i skonfigurować bramę translatora adresów Sieciowych, aby włączyć łączność z Internetem.
 
-### <a name="create-a-nat-virtual-network-switch"></a>Utwórz przełącznik sieci wirtualnej translatora adresów Sieciowych
+### <a name="create-a-nat-virtual-network-switch"></a>Tworzenie przełącznika sieci wirtualnej translatora adresów Sieciowych
 
-1. Na maszynie Wirtualnej Azure Otwórz program PowerShell jako Administrator.
+1. Na maszynie Wirtualnej platformy Azure Otwórz program PowerShell jako Administrator.
    
 2. Tworzenie przełącznika wewnętrznego.
 
@@ -81,7 +81,7 @@ Utwórz nowy wirtualnej karty sieciowej dla maszyny wirtualnej gościa i skonfig
     New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
     ```
 
-3. Wyświetl właściwości przełącznika i zanotuj ifIndex nowej karty.
+3. Wyświetlanie właściwości przełącznika i zanotuj ifIndex nowej karty.
 
     ```powershell
     Get-NetAdapter
@@ -91,26 +91,26 @@ Utwórz nowy wirtualnej karty sieciowej dla maszyny wirtualnej gościa i skonfig
 
     >[!NOTE] 
     >
-    >Zanotuj "ifIndex" dla przełącznika wirtualnego, który został utworzony.
+    >Zwróć uwagę na "ifIndex" dla przełącznika wirtualnego, który został utworzony.
     
 4. Utwórz adres IP dla bramy translatora adresów Sieciowych.
     
-Aby skonfigurować bramę, należy niektóre informacje o sieci:    
-  * Adres IP — adres IP translatora adresów Sieciowych bramy Określa adres IPv4 lub IPv6 do użycia jako adres bramy domyślnej dla podsieci sieci wirtualnej. Formularz ogólny to a.b.c.1 (na przykład "192.168.0.1"). Podczas końcowego pozycji nie musi być.1, jego zwykle (oparte na długość prefiksu). Zwykle należy używać RFC 1918 przestrzeń adresową sieci prywatnej. 
-  * PrefixLength - długość prefiksu podsieci określa rozmiar podsieci lokalnej (maski podsieci). Długość prefiksu podsieci będzie całkowitą z przedziału od 0 do 32. 0 może mapować cały internet, 32 umożliwiałyby tylko jeden adres IP mapowane. Typowe wartości należą do zakresu od 24 do 12, w zależności od tego, jak wiele adresów IP muszą być podłączone do translatora adresów sieciowych. Typowe PrefixLength jest 24 — jest to maską podsieci 255.255.255.0.
-  * InterfaceIndex - **ifIndex** jest indeksem przełącznik wirtualny utworzony w poprzednim kroku. 
+Aby skonfigurować bramę, potrzebne będą pewne informacje o sieci:    
+  * Adres IP — adres IP translatora adresów Sieciowych bramy Określa adres IPv4 lub IPv6 do użycia jako adres bramy domyślnej dla podsieci sieci wirtualnej. Formularz ogólny to a.b.c.1 (na przykład "192.168.0.1"). Gdy pozycja końcowego nie musi być.1, on zazwyczaj (oparte na długość prefiksu). Zazwyczaj należy użyć przestrzeń adresową sieci prywatnej RFC 1918. 
+  * PrefixLength — długość prefiksu podsieci definiuje rozmiar podsieci lokalnej (maska podsieci). Długość prefiksu podsieci będzie całkowitą z zakresu od 0 do 32. 0 mapującej cały internet, 32 pozwoliłoby tylko jeden adres IP zamapowany. Typowe wartości należą do zakresu od 24 do 12, w zależności od tego, jak wiele adresów IP muszą być dołączone do translatora adresów sieciowych. Typowe PrefixLength wynosi 24 — jest to maską podsieci 255.255.255.0.
+  * InterfaceIndex - **ifIndex** jest indeksem przełącznika wirtualnego utworzonego w poprzednim kroku. 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
     ```
 
-### <a name="create-the-nat-network"></a>Tworzenie sieci translatora adresów Sieciowych
+### <a name="create-the-nat-network"></a>Tworzenie sieci NAT.
 
-Aby skonfigurować bramę, konieczne będzie podawanie informacji o sieci i translatora adresów Sieciowych bramy:
+Aby skonfigurować bramę, należy podać informacje dotyczące sieci i translatora adresów Sieciowych bramy:
   * Nazwa — jest to nazwa sieci translatora adresów Sieciowych. 
-  * Prefiks podsieci translatora adresów Sieciowych InternalIPInterfaceAddressPrefix - opisano zarówno prefiks IP translatora adresów Sieciowych bramy z powyższych, jak i długość prefiksu podsieci translatora adresów Sieciowych z powyższych. Formularz ogólny będzie a.b.c.0/NAT długość prefiksu podsieci. 
+  * InternalIPInterfaceAddressPrefix — prefiks podsieci translatora adresów Sieciowych w tym artykule opisano zarówno prefiks IP bramy translatora adresów Sieciowych z powyższych, jak i długość prefiksu podsieci translatora adresów Sieciowych z góry. Formularz ogólny będzie a.b.c.0/NAT długość prefiksu podsieci. 
 
-W programie PowerShell Utwórz nową sieć translatora adresów Sieciowych.
+W programie PowerShell należy utworzyć nową sieć translatora adresów Sieciowych.
 ```powershell
 New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ```
@@ -118,7 +118,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>Tworzenie maszyny wirtualnej gościa
 
-1. Otwórz Menedżera funkcji Hyper-V i tworzenie nowej maszyny wirtualnej. Skonfiguruj maszynę wirtualną do używania nowych sieci wewnętrznej, utworzony.
+1. Otwórz Menedżera funkcji Hyper-V i utworzenie nowej maszyny wirtualnej. Skonfiguruj maszynę wirtualną, aby użyć nowych sieci wewnętrznej, utworzony.
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
     
@@ -126,16 +126,16 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
     
     >[!NOTE] 
     >
-    >Potrzebny jest nośnik instalacyjny systemu operacyjnego do zainstalowania na maszynie Wirtualnej. W tym przypadku użyto systemu Windows 10 Enterprise.
+    >Potrzebny jest nośnik instalacyjny systemu operacyjnego do zainstalowania na maszynie Wirtualnej. W tym przypadku używamy systemu Windows 10 Enterprise.
 
-## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>Przypisz adres IP na maszynie wirtualnej gościa
+## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>Przypisz adres IP do maszyny wirtualnej gościa
 
-Adres IP można przypisać do maszyny wirtualnej gościa, ręcznie Ustawianie statycznego adresu IP na maszynie wirtualnej gościa lub konfigurowanie protokołu DHCP na maszynie Wirtualnej Azure można dynamicznie przypisać adres IP.
+Adres IP można przypisać do maszyny wirtualnej gościa, ręcznie ustawienie statycznego adresu IP na maszynie wirtualnej gościa lub konfigurowanie protokołu DHCP na maszynie Wirtualnej platformy Azure, aby dynamicznie przypisać adres IP.
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Opcja 1: Konfigurowanie protokołu DHCP można dynamicznie przypisać adres IP na maszynie wirtualnej gościa
-Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na host maszyny wirtualnej do przypisywania adresów dynamicznych.
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Opcja 1: Konfigurowanie serwera DHCP, aby dynamicznie przypisany adres IP maszyny wirtualnej gościa
+Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na hosta maszyny wirtualnej w przypadku przypisywania adresów dynamicznych.
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>Zainstaluj serwer DHCP na Maszynie wirtualnej platformy Azure
+#### <a name="install-dchp-server-on-the-azure-vm"></a>Zainstaluj serwer DHCP na maszynie Wirtualnej platformy Azure
 
 1. Otwórz Menedżera serwera. Na pulpicie nawigacyjnym kliknij **Dodaj role i funkcje**. Dodaj role i funkcje kreatora jest wyświetlana.
   
@@ -149,28 +149,28 @@ Wykonaj poniższe kroki, aby skonfigurować serwer DHCP na host maszyny wirtualn
 
 1. Otwórz Menedżera usługi DHCP.
   
-2. W okienku nawigacji rozwiń nazwę serwera, kliknij prawym przyciskiem myszy **IPv4**i kliknij przycisk **nowego zakresu**. Kreator nowych zakresów, kliknij polecenie **dalej**.
+2. W okienku nawigacji rozwiń nazwę serwera, kliknij prawym przyciskiem myszy **IPv4**i kliknij przycisk **nowego zakresu**. Pojawi się Kreator nowych zakresów, kliknij przycisk **dalej**.
   
 3. Wprowadź nazwę i opis dla zakresu, a następnie kliknij przycisk **dalej**.
   
-4. Zdefiniuj zakres IP serwera DHCP (na przykład 192.168.0.100: aby 192.168.0.200).
+4. Zdefiniuj zakres adresów IP dla serwera DHCP (na przykład 192.168.0.100: aby 192.168.0.200).
   
-5. Kliknij przycisk **dalej** aż do strony brama domyślna. Wprowadź adres IP został utworzony wcześniej (na przykład 192.168.0.1) jako brama domyślna.
+5. Kliknij przycisk **dalej** aż do strony brama domyślna. Wprowadź adres IP utworzonego wcześniej (na przykład od 192.168.0.1) jako brama domyślna.
   
-6. Kliknij przycisk **dalej** aż kreator zakończy pracę, pozostawiając wszystkie wartości domyślne, następnie kliknij przycisk **Zakończ**.
+6. Kliknij przycisk **dalej** aż kreator zakończy pracę, pozostawiając wszystkich wartości domyślnych, następnie kliknij przycisk **Zakończ**.
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Opcja 2: Ręcznie ustawić statyczny adres IP na maszynie wirtualnej gościa
-Jeśli nie skonfigurowano protokołu DHCP można dynamicznie przypisać adres IP na maszynie wirtualnej gościa, wykonaj następujące kroki, aby określić statyczny adres IP.
+Jeśli nie skonfigurowano serwera DHCP do dynamiczne przypisywanie adresu IP do maszyny wirtualnej gościa, wykonaj następujące kroki, aby skonfigurować statyczny adres IP.
 
-1. Na maszynie Wirtualnej Azure Otwórz program PowerShell jako Administrator.
+1. Na maszynie Wirtualnej platformy Azure Otwórz program PowerShell jako Administrator.
 
 2. Kliknij prawym przyciskiem myszy maszyny wirtualnej gościa, a następnie kliknij przycisk Połącz.
 
-3. Zaloguj się na maszynie wirtualnej gościa.
+3. Zaloguj się do maszyny wirtualnej gościa.
 
 4. Na maszynie wirtualnej gościa Otwórz Centrum sieci i udostępniania.
 
-5. Skonfiguruj kartę sieciową dla adresów w zasięgu sieci translatora adresów Sieciowych, utworzony w poprzedniej sekcji.
+5. Skonfiguruj kartę sieciową dla adresów w zakresie sieci translatora adresów Sieciowych, który został utworzony w poprzedniej sekcji.
 
 W tym przykładzie będzie używać adresu w zakresie 192.168.0.0/24.
 

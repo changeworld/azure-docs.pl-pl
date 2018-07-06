@@ -1,6 +1,6 @@
 ---
-title: Apache Storm zapisu do przechowywania/Data Lake Store - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zapisywanie zgodnego systemem plików HDFS magazynu dla usługi HDInsight przy użyciu platformy Apache Storm. Azure magazynu lub usługi Azure Data Lake Store zapewnienia magazynu dla systemu plików HDFS comptabile dla usługi HDInsight. Ten dokument i skojarzone przykład pokazują, jak składnika HdfsBolt może służyć do zapisu w magazynie domyślne platformy Storm w klastrze usługi HDInsight.
+title: Zapisywanie systemu Apache Storm w usłudze magazynu/Data Lake Store — Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać platformy Apache Storm można zapisać do magazynu zgodnego z systemem HDFS dla HDInsight. Usługa Azure Storage lub Azure Data Lake Store Obejmij HDInsight storage comptabile systemu plików HDFS. Ten dokument i skojarzone przykład pokazują, jak składnik HdfsBolt może służyć do zapisu do domyślnego magazynu platformy Storm w klastrze HDInsight.
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 95dea2896bf1d116a14d8b51ada9e17f186d4373
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131739"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856260"
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zapis do systemu plików HDFS z systemu Apache Storm w usłudze HDInsight
+# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu systemu plików HDFS z systemu Storm Apache na HDInsight
 
-Dowiedz się, jak używać systemu Storm do zapisu danych do magazynu zgodny z systemem plików HDFS używane przez Apache Storm w usłudze HDInsight. HDInsight można użyć zarówno usługi Azure Storage i Azure Data Lake przechowywane jako magazyn zgodnego systemem plików HDFS. STORM udostępnia [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) składnik, który zapisuje dane do systemu plików HDFS. Ten dokument zawiera informacje o pisaniu do dowolnego typu magazynu z HdfsBolt. 
+Dowiedz się, jak używać systemu Storm można zapisać danych do magazynu zgodnego z systemem HDFS, używane przez system Apache Storm w HDInsight. HDInsight można korzystać zarówno usługi Azure Storage i Azure Data Lake przechowywane jako magazynu zgodnego systemem plików HDFS. System STORM udostępnia [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) składnik, który zapisuje dane do systemu plików HDFS. Ten dokument zawiera informacje na temat pisania do dowolnego typu magazynu z HdfsBolt. 
 
 > [!IMPORTANT]
-> Przykładową topologię używane w tym dokumencie polega na składnikach, które są dołączone do systemu Storm w usłudze HDInsight. Może wymagać modyfikacji do pracy z usługi Azure Data Lake Store w przypadku użycia z innych klastrów platformy Apache Storm.
+> Przykładową topologię używane w tym dokumencie opiera się na składniki, które są dołączone do systemu Storm w HDInsight. Może wymagać modyfikacji, aby pracować z usługi Azure Data Lake Store przypadku użycia z innymi klastrów Apache Storm.
 
 ## <a name="get-the-code"></a>Uzyskiwanie kodu
 
-Projekt zawierający Ta topologia jest dostępny do pobrania z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+Projekt zawierający Ta topologia jest dostępna do pobrania z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
-Aby skompilować ten projekt, należy następującej konfiguracji dla swojego środowiska programowania:
+Aby skompilować ten projekt, potrzebne jest następująca konfiguracja środowiska deweloperskiego:
 
 * Zestaw [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) lub nowszy. Usługa HDInsight w wersji 3.5 lub nowszej wymaga środowiska Java 8.
 
@@ -46,30 +46,30 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
     * `JAVA_HOME\bin` (lub równoważną ścieżkę).
     * Katalog, w którym zainstalowano narzędzie Maven.
 
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak używać HdfsBolt z usługą HDInsight
+## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak używać HdfsBolt z HDInsight
 
 > [!IMPORTANT]
-> Przed użyciem HdfsBolt z systemu Storm w usłudze HDInsight, musisz najpierw użyć akcji skryptu można skopiować pliki jar wymagane do `extpath` systemu STORM. Aby uzyskać więcej informacji, zobacz [skonfigurować klaster](#configure) sekcji.
+> Przed użyciem HdfsBolt z systemu Storm w HDInsight, należy najpierw użyć akcji skryptu można skopiować pliki jar wymagane do `extpath` dla usługi Storm. Aby uzyskać więcej informacji, zobacz [skonfigurować klaster](#configure) sekcji.
 
-HdfsBolt wykorzystuje schemat pliku dostarczające zrozumienie, jak można zapisać w systemie plików HDFS. Z usługą HDInsight użyj jednej z następujących systemów:
+HdfsBolt wykorzystuje schemat pliku, zapewniające zrozumienie, jak można zapisać do systemu plików HDFS. Za pomocą HDInsight wykonaj jedną z następujących systemów:
 
-* `wasb://`: Używany przy użyciu konta usługi Azure Storage.
-* `adl://`: Używane z usługi Azure Data Lake Store.
+* `wasb://`: Używany z konta usługi Azure Storage.
+* `adl://`: Używany z usługi Azure Data Lake Store.
 
-Poniższa tabela zawiera przykłady użycia systemu plików dla różnych scenariuszy:
+Poniższa tabela zawiera przykłady użycia systemu plików w różnych scenariuszach:
 
 | Schemat | Uwagi |
 | ----- | ----- |
-| `wasb:///` | Domyślne konto magazynu jest kontenera obiektów blob na koncie magazynu Azure |
-| `adl:///` | Domyślne konto magazynu jest katalogiem w usłudze Azure Data Lake Store. Podczas tworzenia klastra określ katalog w Data Lake Store, który jest elementem głównym klastra systemu plików HDFS. Na przykład `/clusters/myclustername/` katalogu. |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Konto magazynu platformy Azure (dodatkowe) innych niż domyślne skojarzone z klastrem. |
-| `adl://STORENAME/` | Katalog główny usługi Data Lake Store używane przez klaster. Ten program umożliwia dostęp do danych znajdujących się poza katalog, który zawiera klastra systemu plików. |
+| `wasb:///` | Domyślne konto magazynu jest kontener obiektów blob na koncie usługi Azure Storage |
+| `adl:///` | Domyślne konto magazynu jest katalogiem w usłudze Azure Data Lake Store. Podczas tworzenia klastra należy określić katalog, w Data Lake Store, który jest elementem głównym systemu HDFS z klastra. Na przykład `/clusters/myclustername/` katalogu. |
+| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Konto inne niż domyślne, (dodatkowe) usługi Azure storage skojarzonym z klastrem. |
+| `adl://STORENAME/` | Katalog główny Data Lake Store, używane przez klaster. Ten schemat umożliwia dostęp do danych znajdujących się poza katalogiem, który zawiera klastra systemu plików. |
 
 Aby uzyskać więcej informacji, zobacz [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odwołania w serwisie Apache.org.
 
 ### <a name="example-configuration"></a>Przykładowa konfiguracja
 
-Następujące yaml programu znajduje się fragment `resources/writetohdfs.yaml` plików zawarte w przykładzie. Ten plik definiuje przy użyciu topologii Storm [strumień](https://storm.apache.org/releases/1.1.0/flux.html) framework Apache STORM.
+Poniższego kodu YAML znajduje się fragment `resources/writetohdfs.yaml` pliku zawartym w przykładzie. Ten plik definiuje przy użyciu topologii Storm [strumień](https://storm.apache.org/releases/1.1.2/flux.html) umożliwiająca Apache Storm.
 
 ```yaml
 components:
@@ -125,52 +125,52 @@ bolts:
         args: [ref: "syncPolicy"]
 ```
 
-Ta yaml programu definiuje następujące elementy:
+Ta YAML definiuje następujące elementy:
 
-* `syncPolicy`: Określa, kiedy pliki są zsynchronizowane/opróżnione do systemu plików. W tym przykładzie każdy krotek 1000.
-* `fileNameFormat`: Definiuje wzorzec nazwa i ścieżka pliku do użycia podczas zapisywania plików. W tym przykładzie ścieżka znajduje się w środowisku uruchomieniowym przy użyciu filtru i rozszerzenie pliku jest `.txt`.
-* `recordFormat`: Definiuje wewnętrzny format plików zapisywane. W tym przykładzie pola są rozdzielone `|` znaków.
+* `syncPolicy`: Określa, kiedy pliki są zsynchronizowane/opróżniany do systemu plików. W tym przykładzie każdy krotek 1000.
+* `fileNameFormat`: Określa ścieżkę i wzorzec nazwy do użycia podczas zapisywania plików. W tym przykładzie ścieżka jest podana w czasie wykonywania przy użyciu filtru, a plik ma rozszerzenie `.txt`.
+* `recordFormat`: Definiuje wewnętrzny format pliki zapisane. W tym przykładzie te pola są rozdzielone `|` znaków.
 * `rotationPolicy`: Określa, kiedy do obracania plików. W tym przykładzie jest wykonywane bez obrotu.
 * `hdfs-bolt`: Używa poprzednie składniki jako parametry konfiguracji `HdfsBolt` klasy.
 
-Aby uzyskać więcej informacji w ramach strumienia, zobacz [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
+Aby uzyskać więcej informacji na strukturze strumienia, zobacz [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurowanie klastra
 
-Domyślnie Storm w usłudze HDInsight nie zawiera składniki używane do komunikacji z magazynu Azure lub usługi Data Lake Store w ścieżce Storm w HdfsBolt. Użyj następujących akcji skryptu można dodać te składniki `extlib` katalogu systemu STORM w klastrze:
+Domyślnie system Storm w HDInsight nie ma składników, które HdfsBolt używa do komunikowania się za pomocą usługi Azure Storage lub Data Lake Store w ścieżce systemu Storm w. Użyj następujących akcji skryptu, aby dodać te składniki mogą `extlib` katalogu dla usługi Storm w klastrze:
 
 * Identyfikator URI skryptu: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
-* Węzły do zastosowania do: Nimbus, opiekuna
+* Węzły mają dotyczyć: Nimbus, nadzorca
 * Parametry: Brak
 
-Aby uzyskać informacji na temat używania tego skryptu z klastrem, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](./../hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
+Aby uzyskać informacje przy użyciu tego skryptu z klastrem, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](./../hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
 
-## <a name="build-and-package-the-topology"></a>Tworzenie i pakietu topologii
+## <a name="build-and-package-the-topology"></a>Tworzenie i pakowanie topologii
 
-1. Pobierz przykładowy projekt z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) w środowisku deweloperskim.
+1. Pobierz przykładowy projekt z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) do swojego środowiska projektowego.
 
-2. Z wiersza polecenia terminala lub skorupach sesji, zmień katalogi na katalog główny pobranego projektu. Aby skompilować i pakiet topologii, użyj następującego polecenia:
+2. Z poziomu wiersza polecenia terminal lub skorupach sesji Zmień katalogi na katalog główny pobranego projektu. Aby skompilować i pakiet topologii, użyj następującego polecenia:
    
         mvn compile package
    
-    Po zakończeniu kompilacji i opakowanie jest nowy katalog o nazwie `target`, który zawiera plik o nazwie `StormToHdfs-1.0-SNAPSHOT.jar`. Ten plik zawiera skompilowanych topologii.
+    Po zakończeniu kompilacji i pakowanie jest nowy katalog o nazwie `target`, który zawiera plik o nazwie `StormToHdfs-1.0-SNAPSHOT.jar`. Ten plik zawiera skompilowanych topologii.
 
 ## <a name="deploy-and-run-the-topology"></a>Wdrażanie i uruchamianie topologii
 
-1. Użyj następującego polecenia, aby skopiować topologii do klastra usługi HDInsight. Zastąp **użytkownika** z nazwą użytkownika SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
+1. Użyj następującego polecenia, aby skopiować topologii do klastra HDInsight. Zastąp **użytkownika** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
-    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli używasz klucza publicznego zamiast hasła, może być konieczne użycie `-i` parametr, aby określić ścieżkę do odpowiedniego klucza prywatnego.
+    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli klucz publiczny jest używany zamiast hasła, może być konieczne użycie `-i` parametru do określenia ścieżki do odpowiedniego klucza prywatnego.
    
    > [!NOTE]
    > Aby uzyskać więcej informacji na temat używania polecenia `scp` w usłudze HDInsight, zobacz [Korzystanie z protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Po zakończeniu przekazywania, użyj następującego polecenia nawiązać połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH. Zastąp **użytkownika** z nazwą użytkownika SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
+2. Po ukończeniu przekazywania, użyj następującego polecenia, aby połączyć się z klastrem HDInsight przy użyciu protokołu SSH. Zastąp **użytkownika** z nazwą użytkownika protokołu SSH, które są używane podczas tworzenia klastra. Zamień ciąg **CLUSTERNAME** na nazwę klastra.
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli używasz klucza publicznego zamiast hasła, może być konieczne użycie `-i` parametr, aby określić ścieżkę do odpowiedniego klucza prywatnego.
+    Po wyświetleniu monitu wprowadź hasło użyte podczas tworzenia użytkownika SSH dla klastra. Jeśli klucz publiczny jest używany zamiast hasła, może być konieczne użycie `-i` parametru do określenia ścieżki do odpowiedniego klucza prywatnego.
    
    Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -184,17 +184,17 @@ Aby uzyskać informacji na temat używania tego skryptu z klastrem, zobacz [HDIn
         hdfs.url: wasb:///
 
     > [!IMPORTANT]
-    > W tym przykładzie przyjęto założenie, że klaster używa konta usługi Azure Storage jako domyślnego magazynu. Jeśli klaster używa usługi Azure Data Lake Store, użyj `hdfs.url: adl:///` zamiast tego.
+    > W tym przykładzie przyjęto założenie, że klaster używa konta usługi Azure Storage jako magazynu domyślnego. Jeśli klaster używa usługi Azure Data Lake Store, użyj `hdfs.url: adl:///` zamiast tego.
     
-    Aby zapisać plik, użyj __Ctrl + X__, następnie __Y__, a na końcu __Enter__. Wartości w tym pliku Ustaw adres URL usługi Data Lake i nazwę katalogu, którego dane są zapisywane.
+    Aby zapisać plik, użyj __Ctrl + X__, następnie __Y__, a na koniec __Enter__. Wartości w tym pliku Ustaw adres URL usługi Data Lake store i nazwę katalogu, który dane są zapisywane.
 
-3. Użyj następującego polecenia, aby uruchomić topologii:
+3. Użyj następującego polecenia, aby rozpocząć topologii:
    
         storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
 
-    To polecenie uruchamia topologię za pomocą framework strumienia poprzez przesłanie go do węzeł Nimbus klastra. Topologia jest definiowana za pomocą `writetohdfs.yaml` pliku jar. `dev.properties` Plik jest przekazywany jako filtr i wartości zawartych w pliku są odczytywane przez topologii.
+    To polecenie uruchamia topologii przy użyciu platformy strumienia, przesyłając do węzeł Nimbus klastra. Topologia jest definiowany przez `writetohdfs.yaml` plik dołączony plik jar. `dev.properties` Plik jest przekazywany jako filtr, a wartości zawarte w pliku są odczytywane przez topologię.
 
-## <a name="view-output-data"></a>Widok danych wyjściowych
+## <a name="view-output-data"></a>Wyświetlanie danych wyjściowych
 
 Aby wyświetlić dane, użyj następującego polecenia:
 
@@ -202,7 +202,7 @@ Aby wyświetlić dane, użyj następującego polecenia:
 
 Zostanie wyświetlona lista plików utworzonych przez tej topologii.
 
-Poniżej znajduje się przykład danych zwróconej przez poprzednie polecenia:
+Poniżej przedstawiono przykładowy danych zwróconej przez poprzednie polecenia:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
@@ -213,7 +213,7 @@ Poniżej znajduje się przykład danych zwróconej przez poprzednie polecenia:
 
 ## <a name="stop-the-topology"></a>Zatrzymywanie topologii
 
-STORM topologie działają aż do zatrzymania lub usunąć klastra. Aby zatrzymać topologii, użyj następującego polecenia:
+STORM topologie działają aż do zatrzymania lub klaster jest usuwany. Aby zatrzymać topologię, użyj następującego polecenia:
 
     storm kill hdfswriter
 
@@ -223,5 +223,5 @@ STORM topologie działają aż do zatrzymania lub usunąć klastra. Aby zatrzyma
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak używać systemu Storm do zapisu do usługi Azure Storage i Azure Data Lake Store, odnajdywanie innych [Storm przykłady dla usługi HDInsight](apache-storm-example-topology.md).
+Teraz, gdy wiesz jak używać systemu Storm można zapisać do usługi Azure Storage i Azure Data Lake Store, Odkryj inne [Storm przykłady for HDInsight](apache-storm-example-topology.md).
 

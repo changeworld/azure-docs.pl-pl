@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128064"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856209"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -23,24 +23,24 @@ Jeśli wystąpią problemy z uruchamianiem usługi Azure IoT Edge w danym środo
 
 W przypadku wystąpienia problemu dowiedz się więcej o stanie urządzenia usługi IoT Edge, przeglądając dzienniki kontenera i komunikaty przekazywane do i z urządzenia. Użyj poleceń i narzędzi w tej sekcji, aby zebrać informacje. 
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Sprawdź stan Menedżera zabezpieczeń krawędzi IoT i jej dzienników:
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Sprawdź stan IoT Edge Security Manager i jej dzienników:
 
 W systemie Linux:
-- Aby wyświetlić stan Menedżera zabezpieczeń krawędzi IoT:
+- Aby wyświetlić stan Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-- Aby wyświetlić dzienniki Menedżera zabezpieczeń krawędzi IoT:
+- Aby wyświetlić dzienniki Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-- Aby wyświetlić bardziej szczegółowe dzienniki Menedżera zabezpieczeń krawędzi IoT:
+- Aby wyświetlić bardziej szczegółowe dzienniki Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
-   - Edytuj ustawienia demon iotedge:
+   - Edytuj ustawienia demona iotedge:
 
       ```bash
       sudo systemctl edit iotedge.service
@@ -53,7 +53,7 @@ W systemie Linux:
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
     
-   - Uruchom ponownie demona zabezpieczeń krawędzi IoT:
+   - Ponownie uruchom demona zabezpieczeń usługi IoT Edge:
     
       ```bash
       sudo systemctl cat iotedge.service
@@ -62,13 +62,13 @@ W systemie Linux:
       ```
 
 W systemie Windows:
-- Aby wyświetlić stan Menedżera zabezpieczeń krawędzi IoT:
+- Aby wyświetlić stan Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
    ```powershell
    Get-Service iotedge
    ```
 
-- Aby wyświetlić dzienniki Menedżera zabezpieczeń krawędzi IoT:
+- Aby wyświetlić dzienniki Menedżera zabezpieczeń przeglądarki Microsoft Edge IoT:
 
    ```powershell
    # Displays logs from today, newest at the bottom.
@@ -80,10 +80,10 @@ W systemie Windows:
    sort-object @{Expression="TimeCreated";Descending=$false}
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Jeśli Menedżera zabezpieczeń krawędzi IoT nie jest uruchomiona, należy sprawdzić plik konfiguracyjny yaml programu
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Jeśli Menedżer zabezpieczeń IoT Edge nie jest uruchomiona, sprawdź plik konfiguracji yaml
 
 > [!WARNING]
-> Pliki yaml programu nie może zawierać kart jako identation. Zamiast tego użyj spacji 2.
+> Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
 
 W systemie Linux:
 
@@ -97,17 +97,17 @@ W systemie Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>Sprawdź dzienniki kontenera problemów
+### <a name="check-container-logs-for-issues"></a>Sprawdź dzienniki kontenerów w przypadku problemów
 
-Po uruchomieniu demona IoT krawędzi zabezpieczeń, należy znaleźć w dziennikach, kontenerów do wykrywania problemów. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: Agent usługi Edge i Centrum usługi Edge. Dzienniki agenta usługi Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki centrum usługi Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
+Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontenerów, aby wykryć problemy. Rozpocznij od wdrożonych kontenerów, a następnie sprawdź kontenery, które tworzą środowisko uruchomieniowe usługi IoT Edge: Agent usługi Edge i Centrum usługi Edge. Dzienniki agenta usługi Edge zwykle zawierają informacje o cyklu życia każdego kontenera. Dzienniki centrum usługi Edge zawierają informacje dotyczące obsługi komunikatów i routingu. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>Wyświetlanie komunikatów pośrednictwa Centrum krawędzi
+### <a name="view-the-messages-going-through-the-edge-hub"></a>Przejrzyj komunikaty przechodzące przez Centrum usługi Edge
 
-Wyświetlanie komunikatów pośrednictwa Centrum Edge i zbierać szczegółowych informacji o aktualizacji właściwości urządzenia z dziennikami verbose z kontenerów środowiska uruchomieniowego edgeAgent i edgeHub. Aby włączyć pełne dzienniki do tych kontenerów, ustaw `RuntimeLogLevel` zmiennej środowiskowej: 
+Przejrzyj komunikaty przechodzące przez Centrum usługi Edge i Zbierz analizy dotyczące aktualizacji właściwości urządzenia za pomocą szczegółowych dzienników z kontenerów środowiska wykonawczego edgeAgent i edgeHub. Aby włączyć pełne dzienniki w tych kontenerach, należy ustawić `RuntimeLogLevel` zmienną środowiskową: 
 
 W systemie Linux:
     
@@ -124,21 +124,21 @@ W systemie Windows:
 Możesz także sprawdzić komunikaty przesyłane między usługą IoT Hub i urządzeniami usługi IoT Edge. Te komunikaty można wyświetlić przy użyciu rozszerzenia [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) programu Visual Studio Code. Więcej pomocy zawiera temat [Handy tool when you develop with Azure IoT (Przydatne narzędzie dla programowania w usłudze Azure IoT)](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Uruchom ponownie kontenerów
-Po zbadaniu dzienniki i komunikaty, aby uzyskać informacje, można spróbować uruchomić kontenerów:
+Po przeanalizowaniu dzienników i komunikatów, aby uzyskać informacje, możesz spróbować ponownego uruchamiania kontenerów:
 
 ```
 iotedge restart <container name>
 ```
 
-Uruchom ponownie kontenery środowiska uruchomieniowego krawędzi IoT:
+Uruchom ponownie usługę kontenerów środowiska uruchomieniowego usługi IoT Edge:
 
 ```
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>Ponownie uruchom Menedżera zabezpieczeń krawędzi IoT
+### <a name="restart-the-iot-edge-security-manager"></a>Ponownie uruchom Menedżera zabezpieczeń usługi IoT Edge
 
-Jeśli problem nadal jest trwałym, można spróbować uruchomić Menedżera zabezpieczeń IoT krawędzi.
+Jeśli problem nadal jest przechowywanie, możesz spróbować ponownie uruchomić Menedżera zabezpieczeń usługi IoT Edge.
 
 W systemie Linux:
 
@@ -199,9 +199,9 @@ Uruchomienie kontenera nie powodzi się, a w dziennikach agenta usługi Edge jes
 Agent usługi Edge nie ma uprawnień dostępu do obrazu modułu. 
 
 ### <a name="resolution"></a>Rozwiązanie
-Upewnij się, że poświadczenia rejestru są poprawnie określona w manifeście wdrażania
+Upewnij się, czy poświadczenia rejestru są poprawnie określone w manifeście wdrożenia
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Demon zabezpieczeń krawędzi IoT kończy się niepowodzeniem z nieprawidłową nazwę hosta
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Demon zabezpieczeń usługi IoT Edge kończy się niepowodzeniem z nieprawidłową nazwę hosta
 
 Polecenie `sudo journalctl -u iotedge` nie powiedzie się i wyświetla następujący komunikat: 
 
@@ -210,19 +210,19 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ```
 
 ### <a name="root-cause"></a>Główna przyczyna
-Środowisko uruchomieniowe krawędzi IoT może obsługiwać tylko nazwy hostów, które są krótsze niż 64 znaki. To zwykle nie jest problemem w przypadku komputerów fizycznych, ale może wystąpić podczas konfigurowania środowiska uruchomieniowego na maszynie wirtualnej. Automatycznie generowane nazwy hostów dla maszyn wirtualnych systemu Windows hostowana na platformie Azure, w szczególności, zwykle za długa. 
+Środowisko uruchomieniowe usługi IoT Edge może obsługiwać tylko nazwy hostów, które są mniej niż 64 znaki. To zwykle nie jest problemem w przypadku komputerów fizycznych, ale mogą wystąpić podczas konfigurowania środowiska uruchomieniowego na maszynie wirtualnej. Automatycznie generowanych nazw hostów dla maszyn wirtualnych Windows hostowanych na platformie Azure, w szczególności, zwykle za długa. 
 
 ### <a name="resolution"></a>Rozwiązanie
-Gdy zostanie wyświetlony ten błąd, można rozwiązać, konfigurowanie nazwę DNS maszyny wirtualnej, a następnie ustawić nazwę DNS jako nazwa hosta polecenia Instalatora.
+Gdy zostanie wyświetlony ten błąd, możesz rozwiązać ten problem, konfigurowanie nazwę DNS maszyny wirtualnej, a następnie ustawić nazwę DNS jako nazwa hosta polecenia Instalatora.
 
-1. W portalu Azure przejdź do strony Przegląd maszyny wirtualnej. 
-2. Wybierz **skonfigurować** pod nazwą DNS. Maszyna wirtualna ma już skonfigurowaną nazwę DNS, nie trzeba skonfigurować nowy. 
+1. W witrynie Azure portal przejdź do strony Przegląd swojej maszyny wirtualnej. 
+2. Wybierz **skonfigurować** pod nazwą DNS. Jeśli maszyna wirtualna ma już nazwę DNS skonfigurowany, nie trzeba skonfigurować nowe konto. 
 
    ![Konfigurowanie nazwy DNS](./media/troubleshoot/configure-dns.png)
 
-3. Podaj wartość dla **etykieta nazwy DNS** i wybierz **zapisać**.
-4. Skopiuj nowej nazwy DNS, która powinna być w formacie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
-5. Na maszynie wirtualnej Użyj następującego polecenia, aby skonfigurować środowisko uruchomieniowe krawędzi IoT z nazwą DNS:
+3. Wprowadź wartość w polu **etykiety nazwy DNS** i wybierz **Zapisz**.
+4. Skopiuj nową nazwę DNS, która powinna być w formacie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
+5. Na maszynie wirtualnej Użyj następującego polecenia, aby skonfigurować środowisko uruchomieniowe usługi IoT Edge z Twoją nazwą DNS:
 
    - W systemie Linux:
 
@@ -236,5 +236,37 @@ Gdy zostanie wyświetlony ten błąd, można rozwiązać, konfigurowanie nazwę 
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+## <a name="stability-issues-on-resource-constrained-devices"></a>Problemów ze stabilnością zasobu ograniczonego urządzeń 
+Mogą wystąpić problemy stabilności na urządzeniach ograniczone, takich jak Raspberry Pi, szczególnie w przypadku, gdy używany jako brama. Objawy to poza wyjątkami pamięci w module Centrum usługi edge, podrzędne urządzenia nie można nawiązać połączenia lub urządzenia zatrzymuje, wysyła komunikaty telemetryczne po kilku godzinach.
+
+### <a name="root-cause"></a>Główna przyczyna
+Centrum usługi edge, która jest częścią środowiska uruchomieniowego usługi edge, zoptymalizowana pod kątem wydajności domyślnie i próbuje przydzielić dużych bloków pamięci. To nie jest idealnym rozwiązaniem dla urządzeń brzegowych ograniczone i może powodować problemy stabilności.
+
+### <a name="resolution"></a>Rozwiązanie
+Dla przeglądarki edge hub ustawić zmienną środowiskową **OptimizeForPerformance** do **false**. Istnieją dwa sposoby, w tym celu:
+
+W interfejsie użytkownika: W portalu pochodzące ze *szczegóły urządzenia*->*Ustaw moduły*->*skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge*, Utwórz środowisko zmiennej o nazwie *OptimizeForPerformance* który jest skonfigurowany do *false* dla *Centrum usługi Edge*.
+
+![optimizeforperformance][img-optimize-for-perf]
+
+W manifeście wdrożenia:
+
+```json
+  "edgeHub": {
+    "type": "docker",
+    "settings": {
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+      "createOptions": <snipped>
+    },
+    "env": {
+      "OptimizeForPerformance": {
+          "value": "false"
+      }
+    },
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues), aby umożliwić nam naprawę. 
+
+<!-- Images -->
+[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

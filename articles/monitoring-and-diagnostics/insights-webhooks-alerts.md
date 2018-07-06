@@ -1,6 +1,6 @@
 ---
-title: Klasycznym alertu metryki powiadomić systemu Azure z systemem innym niż przy użyciu elementu webhook
-description: Dowiedz się, jak przekierować Azure metryki alerty do innych, innych niż Azure systemów.
+title: Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
+description: Dowiedz się, jak przekierować alertów dotyczących metryk platformy Azure z systemami innych, spoza platformy Azure.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,65 +8,62 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 429c68c009e3784546b15dbcc1286d551274d2be
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262355"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856277"
 ---
-# <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurowanie elementu webhook na alert metryki Azure
-Elementów webhook służy do kierowania powiadomień o alertach Azure z innymi systemami przetwarzania końcowego lub niestandardowych działań. Elementu webhook na alert służy do kierowania go do usługi, które wysyłanie wiadomości SMS do dziennika błędów do powiadamiania zespołu za pomocą rozmowy lub usług obsługi wiadomości, lub dla różnych innych działań. 
+# <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurowanie elementu webhook dla alertu dotyczącego metryki platformy Azure
+Elementy webhook umożliwia kierowanie powiadomień o alertach platformy Azure z innymi systemami przetwarzania końcowego lub niestandardowych akcji. Element webhook dla alertu dotyczącego służy do kierowania go do usługi, które wysyłanie wiadomości SMS, aby rejestrować błędy, aby powiadomić zespół za pośrednictwem czatu lub usług obsługi wiadomości lub różne inne akcje. 
 
-W tym artykule opisano sposób ustawiania elementu webhook na alert metryki platformy Azure. Przedstawia on także wygląda ładunek dla HTTP POST do elementu webhook. Informacje o instalacji i schematu dla działania usługi Azure alert dziennika (alert zdarzeń), zobacz [wywołać elementu webhook dla alertu dziennik aktywności platformy Azure](insights-auditlog-to-webhook-email.md).
+W tym artykule opisano sposób ustawiania elementu webhook dla alertu dotyczącego metryki platformy Azure. Pokazano także, jak wygląda ładunek HTTP POST do elementu webhook. Informacje o instalacji i schematu dla działania platformy Azure alertu dziennika (alert zdarzeń), zobacz [wywoływania elementu webhook dla alertu dotyczącego dziennika aktywności platformy Azure](insights-auditlog-to-webhook-email.md).
 
-Alerty Azure używają HTTP POST do wysyłania alertów zawartość w formacie JSON do elementu webhook identyfikator URI, który należy podać podczas tworzenia alertu. Schemat jest zdefiniowany w dalszej części tego artykułu. Identyfikator URI musi być prawidłowy punkt końcowy HTTP lub HTTPS. Azure wpisów jednego wpisu na żądanie, gdy alert jest aktywny.
+Alerty platformy Azure za pomocą żądania HTTP POST wysyłać zawartość alertu w formacie JSON element webhook identyfikator URI, który podajesz podczas tworzenia alertu. Schemat jest zdefiniowana w dalszej części tego artykułu. Identyfikator URI musi być prawidłowy punkt końcowy HTTP lub HTTPS. Azure publikuje jednego wpisu na żądanie, gdy alert jest aktywny.
 
-## <a name="configure-webhooks-via-the-azure-portal"></a>Konfigurowanie elementów webhook za pośrednictwem portalu Azure
-Aby dodać lub zaktualizować identyfikator URI elementu webhook w [portalu Azure](https://portal.azure.com/), przejdź do **alerty Create/Update**.
+## <a name="configure-webhooks-via-the-azure-portal"></a>Konfigurowanie elementów webhook w witrynie Azure portal
+Aby dodać lub zaktualizować elementu webhook identyfikatora URI w [witryny Azure portal](https://portal.azure.com/), przejdź do **tworzenia/aktualizacji alertów**.
 
-![Dodawanie okienka reguły alertu](./media/insights-webhooks-alerts/Alertwebhook.png)
+![Dodawanie okienek reguły alertu](./media/insights-webhooks-alerts/Alertwebhook.png)
 
-Istnieje również możliwość skonfigurowania alertu do wysłania do elementu webhook identyfikator URI przy użyciu [poleceń cmdlet programu Azure PowerShell](insights-powershell-samples.md#create-metric-alerts), [interfejsu wiersza polecenia i platform](insights-cli-samples.md#work-with-alerts), lub [interfejsów API REST Monitor Azure](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Można również skonfigurować alertu do wysłania do elementu webhook identyfikatora URI za pomocą [poleceń cmdlet programu Azure PowerShell](insights-powershell-samples.md#create-metric-alerts), [międzyplatformowego interfejsu wiersza polecenia](insights-cli-samples.md#work-with-alerts), lub [interfejsów API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>Uwierzytelnianie elementu webhook
-Elementu webhook można uwierzytelniać za pomocą opartego na tokenie autoryzacji. Identyfikator URI elementu webhook jest zapisywany przy użyciu identyfikatora tokenu. Na przykład: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+Element webhook można uwierzytelniać za pomocą opartego na tokenach autoryzacji. Identyfikator URI elementu webhook jest zapisywany z tokenu identyfikatora. Na przykład: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
-## <a name="payload-schema"></a>Schemat ładunku
-Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich alertów na podstawie Metryka:
+## <a name="payload-schema"></a>Ładunek schematu
+Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wszystkich alertów na podstawie metryki:
 
 ```JSON
 {
-    "WebhookName": "Alert1515515157799",
-    "RequestBody": {
-        "status": "Activated",
-        "context": {
-            "timestamp": "2015-08-14T22:26:41.9975398Z",
-            "id": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.insights/alertrules/ruleName1",
-            "name": "ruleName1",
-            "description": "some description",
-            "conditionType": "Metric",
-            "condition": {
-                "metricName": "Requests",
-                "metricUnit": "Count",
-                "metricValue": "10",
-                "threshold": "10",
-                "windowSize": "15",
-                "timeAggregation": "Average",
-                "operator": "GreaterThanOrEqual"
-            },
-            "subscriptionId": "s1",
-            "resourceGroupName": "useast",
-            "resourceName": "mysite1",
-            "resourceType": "microsoft.foo/sites",
-            "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
-            "resourceRegion": "centralus",
-            "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
+    "status": "Activated",
+    "context": {
+        "timestamp": "2015-08-14T22:26:41.9975398Z",
+        "id": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.insights/alertrules/ruleName1",
+        "name": "ruleName1",
+        "description": "some description",
+        "conditionType": "Metric",
+        "condition": {
+            "metricName": "Requests",
+            "metricUnit": "Count",
+            "metricValue": "10",
+            "threshold": "10",
+            "windowSize": "15",
+            "timeAggregation": "Average",
+            "operator": "GreaterThanOrEqual"
         },
-        "properties": {
-            "key1": "value1",
-            "key2": "value2"
-        }
+        "subscriptionId": "s1",
+        "resourceGroupName": "useast",
+        "resourceName": "mysite1",
+        "resourceType": "microsoft.foo/sites",
+        "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
+        "resourceRegion": "centralus",
+        "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
+    },
+    "properties": {
+        "key1": "value1",
+        "key2": "value2"
     }
 }
 ```
@@ -74,38 +71,38 @@ Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich ale
 
 | Pole | Obowiązkowy | Ustalony zbiór wartości | Uwagi |
 |:--- |:--- |:--- |:--- |
-| status |Tak |Aktywna, rozwiązane |Stan alertu na podstawie wybranych warunków ustawieniu. |
-| Kontekst |Tak | |Kontekst alertu. |
-| sygnatura czasowa |Tak | |Czas, w którym alert został uruchomiony. |
-| id |Tak | |Każda reguła alertów ma unikatowy identyfikator. |
+| status |Tak |Aktywna, rozwiązane |Stan alertu na podstawie warunków można ustawić. |
+| kontekst |Tak | |Kontekst alertu. |
+| sygnatura czasowa |Tak | |Czas wyzwolenia alertu. |
+| id |Tak | |Każda reguła alertu ma unikatowy identyfikator. |
 | name |Tak | |Nazwa alertu. |
 | description |Tak | |Opis alertu. |
-| conditionType |Tak |Metryki i zdarzenia |Obsługiwane są dwa typy alertów: metryk i zdarzeń. Metryki alerty są oparte na stanie metryki. Alerty zdarzeń są oparte na zdarzenie w dzienniku aktywności. Użyj tej wartości, aby sprawdzić, czy alert jest oparta na metrykę lub zdarzenia. |
+| conditionType |Tak |Metryki i zdarzenia |Obsługiwane są dwa typy alertów: metryk i zdarzeń. Alerty metryki są oparte na warunku metryki. Alerty zdarzeń są oparte na zdarzenie w dzienniku aktywności. Użyj tej wartości, aby sprawdzić, czy alert jest na podstawie metryki lub zdarzenia. |
 | warunek |Tak | |Na podstawie określonych pól do sprawdzenia **conditionType** wartości. |
-| metricName |Metryki alertów | |Nazwa metryki, który definiuje reguły monitoruje. |
-| metricUnit |Metryki alertów |Bajty, BytesPerSecond, Count, CountPerSecond, wartość procentowa, w sekundach |Jednostka może metryki. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
-| metricValue |Metryki alertów | |Rzeczywista wartość metryki, który spowodował alert. |
-| Próg |Metryki alertów | |Wartość progowa, w którym włączono alert. |
-| windowSize |Metryki alertów | |Czas, który jest używany do monitorowania alertów działania oparte na wartość progową. Wartość musi należeć do zakresu od 5 minut do 1 dnia. Wartość musi być w formacie czasu trwania ISO 8601. |
-| timeAggregation |Metryki alertów |Średnia, Last, maksimum, Minimum, None, łączna liczba |Jak można łączyć dane, które są zbierane wraz z upływem czasu. Wartość domyślna to średnia. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| Operator |Metryki alertów | |Operator, który służy do porównywania bieżące dane metryk do ustalonego progu. |
+| metricName |Dla alertów dotyczących metryk | |Nazwa metryki, który definiuje reguły monitoruje. |
+| metricUnit |Dla alertów dotyczących metryk |BytesPerSecond, Count, CountPerSecond, procent, w sekundach, w bajtach |Jednostka dozwolone w metrykę. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricValue |Dla alertów dotyczących metryk | |Wartość rzeczywista metryk, który spowodował wygenerowanie alertu. |
+| Próg |Dla alertów dotyczących metryk | |Wartość progowa, w którym aktywowano alert. |
+| windowSize |Dla alertów dotyczących metryk | |Czas, który jest używany do monitorowania działania alertu, w oparciu o wartość progową. Wartość musi być od 5 minut do 1 dnia. Wartość musi być w formacie czasu trwania ISO 8601. |
+| timeAggregation |Dla alertów dotyczących metryk |Średnia, ostatnie, maksimum, Minimum, None, łączna liczba |Jak można łączyć dane, które są zbierane wraz z upływem czasu. Wartość domyślna to średnia. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+| operator |Dla alertów dotyczących metryk | |Operator, który służy do porównywania bieżących danych metryki z wartością progową zestawu. |
 | subscriptionId |Tak | |Identyfikator subskrypcji platformy Azure. |
-| resourceGroupName |Tak | |Nazwa grupy zasobów dla zasobu. |
+| resourceGroupName |Tak | |Nazwa grupy zasobów dla odpowiedniego zasobu. |
 | resourceName |Tak | |Nazwa zasobu zasobu. |
 | Typ zasobu |Tak | |Typ zasobu zasobu. |
 | resourceId |Tak | |Identyfikator zasobu zasobu. |
-| resourceRegion |Tak | |Obszar lub lokalizacja zasobu. |
-| portalLink |Tak | |Bezpośrednie łącze na stronie Podsumowanie zasobów portalu. |
-| properties |Nie |Optional (Opcjonalność) |Zestaw pary klucz wartość zawiera informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. Niestandardowy interfejs użytkownika lub przepływ pracy oparty na aplikację logiki użytkownicy mogą wprowadzać pary klucz wartość, które mogą zostać przekazane za pośrednictwem ładunku. Alternatywny sposób, aby przekazywać właściwości niestandardowych elementu webhook jest za pośrednictwem elementu webhook identyfikatora URI się (jako parametry kwerendy). |
+| resourceRegion |Tak | |Region lub lokalizacji zasobu. |
+| portalLink |Tak | |Bezpośredni link do strony Podsumowanie zasobu portalu. |
+| properties |Nie |Optional (Opcjonalność) |Zestaw par klucz wartość zawiera informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. W przypadku niestandardowego interfejsu użytkownika lub przepływu pracy opartego na aplikacji logiki użytkownicy mogą wprowadzać pary klucz/wartość, które mogą być przekazywane za pośrednictwem ładunku. Alternatywny sposób, aby przekazywać niestandardowe właściwości elementu webhook jest za pomocą elementu webhook identyfikator URI sam (jako parametry kwerendy). |
 
 > [!NOTE]
-> Można ustawić **właściwości** pole tylko przy użyciu [interfejsów API REST Monitor Azure](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+> Możesz ustawić **właściwości** pole tylko przy użyciu [interfejsów API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 >
 >
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o alertach Azure i elementów webhook wideo [integracji Azure alerty PagerDuty](http://go.microsoft.com/fwlink/?LinkId=627080).
-* Dowiedz się, jak [wykonywanie skryptów automatyzacji Azure (elementów runbook) Azure alerty](http://go.microsoft.com/fwlink/?LinkId=627081).
-* Dowiedz się, jak [użycie aplikacji logiki do wysyłania wiadomości SMS za pośrednictwem usługi Twilio z poziomu alertu Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
-* Dowiedz się, jak [użyj aplikacji logiki, aby wysłać wiadomość Slack z poziomu alertu Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
-* Dowiedz się, jak [użyj aplikacji logiki, aby wysłać komunikat do kolejki systemu Azure z poziomu alertu Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+* Dowiedz się więcej na temat alertów platformy Azure i elementami webhook w filmie wideo [integracji usługi Azure alerts przy użyciu usługi PagerDuty](http://go.microsoft.com/fwlink/?LinkId=627080).
+* Dowiedz się, jak [wykonywanie skryptów w usłudze Azure Automation (elementy runbook) na alertów platformy Azure](http://go.microsoft.com/fwlink/?LinkId=627081).
+* Dowiedz się, jak [wysyłać wiadomości SMS za pośrednictwem usługi Twilio, z poziomu alertu usługi Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
+* Dowiedz się, jak [wysyłać wiadomość Slack z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
+* Dowiedz się, jak [użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).

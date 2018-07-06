@@ -1,6 +1,6 @@
 ---
-title: Jak używać zestawu Azure Mobile Apps SDK dla systemu Android | Dokumentacja firmy Microsoft
-description: Jak używać zestawu Azure Mobile Apps SDK dla systemu Android
+title: Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android | Dokumentacja firmy Microsoft
+description: Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
@@ -13,47 +13,47 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: d89aa308ab8f6684cebbec49bbefdcb54d77c886
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869720"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859561"
 ---
-# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu Azure Mobile Apps SDK dla systemu Android
+# <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 
-Ten przewodnik przedstawia sposób użycia klienta dla systemu Android SDK for Mobile Apps do zaimplementowania typowych scenariuszy, takich jak:
+Ten przewodnik pokazuje, jak kliencką dla systemu Android SDK dla aplikacji mobilnych umożliwiają implementowanie typowych scenariuszy, takich jak:
 
-* Wyszukiwanie danych (wstawiania, aktualizowania i usuwania).
+* Wykonywanie zapytania dla danych (Wstawianie, aktualizowanie i usuwanie).
 * Uwierzytelnianie.
 * Obsługa błędów.
 * Dostosowywanie klienta.
 
-Ten przewodnik koncentruje się na zestaw SDK systemu Android po stronie klienta.  Aby uzyskać więcej informacji na temat zestawów SDK po stronie serwera dla Mobile Apps, zobacz [pracować z zaplecza .NET SDK] [ 10] lub [sposób użycia zaplecza Node.js SDK][11].
+Ten przewodnik koncentruje się na zestaw SDK systemu Android po stronie klienta.  Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla aplikacji mobilnych, zobacz [pracy z zapleczem platformy .NET SDK] [ 10] lub [jak do użycia zaplecza Node.js SDK][11].
 
-## <a name="reference-documentation"></a>Dokumentacji
+## <a name="reference-documentation"></a>Dokumentacja referencyjna
 
-Można znaleźć [dokumentacja interfejsu API Javadocs] [ 12] biblioteki klienta dla systemu Android w witrynie GitHub.
+Możesz znaleźć [dokumentacja interfejsu API Javadocs] [ 12] dla biblioteki klienckiej systemu Android w witrynie GitHub.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
-Zestaw SDK aplikacji mobilnych Azure dla systemu Android obsługuje poziomy interfejsu API 19 do 24 (KitKat za pośrednictwem nugacie) Telefon i tablet rozmiarach.  Uwierzytelnianie, w szczególności korzysta z typowym podejściem framework sieci web do zbierania poświadczeń.  Uwierzytelnianie serwera przepływu nie działa z niewielkich współczynnik urządzeń, takich jak obserwowanie.
+Azure Mobile Apps SDK dla systemu Android obsługuje poziomy interfejsu API 19-24 (KitKat za pośrednictwem określić wersję Nougat) standardy telefony i tablety.  Uwierzytelnianie, w szczególności korzysta z typowym podejściem framework sieci web w celu zbierania poświadczeń.  Uwierzytelnianie serwera przepływu nie działa z niewielkich współczynnik urządzeń, takich jak czujki.
 
 ## <a name="setup-and-prerequisites"></a>Instalacji i wymagania wstępne
 
-Zakończenie [szybkiego startu Mobile Apps](app-service-mobile-android-get-started.md) samouczka.  To zadanie gwarantuje, że zostały spełnione wszystkie wymagania wstępne związane z opracowywaniem Azure Mobile Apps.  Procedury szybkiego startu pomaga również skonfigurować konta i utworzyć pierwszy zaplecza aplikacji mobilnej.
+Wykonaj [Mobile Apps — Szybki Start](app-service-mobile-android-get-started.md) samouczka.  To zadanie gwarantuje, że zostały spełnione wszystkie wymagania wstępne dotyczące tworzenia usługi Azure Mobile Apps.  Samouczek Szybki Start pomaga również skonfigurować swoje konto i Utwórz pierwsze zaplecze aplikacji mobilnej.
 
-Jeśli nie chcesz Ukończ samouczek Szybki Start, należy wykonać następujące zadania:
+Jeśli zdecydujesz się na ukończenie tego samouczka Szybki Start, wykonaj następujące zadania:
 
-* [Tworzenie zaplecza aplikacji mobilnej] [ 13] do korzystania z aplikacji systemu Android.
-* W programie Android Studio [aktualizacji Gradle kompilacja plików](#gradle-build).
+* [Tworzenie zaplecza aplikacji mobilnej] [ 13] za pomocą aplikacji dla systemu Android.
+* W programie Android Studio [pliki kompilacji aktualizacji Gradle](#gradle-build).
 * [Włącz uprawnień internetowych](#enable-internet).
 
 ### <a name="gradle-build"></a>Zaktualizuj plik kompilacji narzędzia Gradle
 
-Zmiana obu **build.gradle** plików:
+Zmień **build.gradle** plików:
 
-1. Dodaj ten kod do *projektu* poziom **build.gradle** pliku wewnątrz *buildscript* tagu:
+1. Dodaj następujący kod do *projektu* poziom **build.gradle** pliku wewnątrz *buildscript* tag:
 
     ```text
     buildscript {
@@ -63,32 +63,32 @@ Zmiana obu **build.gradle** plików:
     }
     ```
 
-2. Dodaj ten kod do *aplikacji modułu* poziom **build.gradle** pliku wewnątrz *zależności* tagu:
+2. Dodaj następujący kod do *aplikacji modułu* poziom **build.gradle** pliku wewnątrz *zależności* tag:
 
     ```text
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
-    Najnowsza wersja jest obecnie 3.4.0. Obsługiwane wersje są wyświetlane [w serwisie bintray][14].
+    Obecnie najnowsza wersja to 3.4.0. Obsługiwane wersje są wymienione [w serwisie bintray][14].
 
 ### <a name="enable-internet"></a>Włącz uprawnień internetowych
 
-Aby uzyskać dostęp do platformy Azure, aplikacji musi mieć włączone uprawnień internetowych. Jeśli nie zostało jeszcze jest włączone, Dodaj następujący wiersz kodu do Twojej **AndroidManifest.xml** pliku:
+Aby uzyskać dostęp do platformy Azure, aplikacji musi mieć włączone uprawnienie INTERNET. Jeśli jeszcze nie jest włączona, Dodaj następujący wiersz kodu, aby Twoje **AndroidManifest.xml** pliku:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## <a name="create-a-client-connection"></a>Utwórz połączenie klienta
+## <a name="create-a-client-connection"></a>Tworzenie połączenia klienta
 
-Azure Mobile Apps udostępnia cztery funkcje dla twojej aplikacji mobilnej:
+Usługa Azure Mobile Apps udostępnia cztery funkcje dla twojej aplikacji mobilnej:
 
-* Dostęp do danych i synchronizacji z usługą Azure Mobile Services aplikacje w trybie Offline.
-* Wywoływania niestandardowych interfejsów API napisany za pomocą zestawu SDK usługi Azure Mobile Apps serwera.
-* Uwierzytelnianie za pomocą usługi aplikacji Azure uwierzytelniania i autoryzacji.
-* Rejestracja powiadomień z koncentratorami powiadomień wypychanych.
+* Dostęp do danych i synchronizacji z usługą mobilną systemu Azure aplikacje w trybie Offline.
+* Wywoływanie niestandardowych interfejsów API napisanych przy użyciu zestawu SDK serwera usługi Azure Mobile Apps.
+* Uwierzytelnianie za pomocą usługi Azure App Service, uwierzytelniania i autoryzacji.
+* Push rejestracji powiadomień z usługą Notification Hubs.
 
-Każda z tych funkcji wymaga najpierw utworzenia `MobileServiceClient` obiektu.  Tylko jeden `MobileServiceClient` obiekt powinien zostać utworzony w ramach sieci klientów urządzeń przenośnych (to znaczy, należy go wzorzec Singleton).  Aby utworzyć `MobileServiceClient` obiektu:
+Każda z tych funkcji najpierw wymaga utworzenia `MobileServiceClient` obiektu.  Tylko jeden `MobileServiceClient` obiekt powinien zostać utworzony w ramach Twojego klienta mobilnego (oznacza to, należy go wzorzec Singleton).  Aby utworzyć `MobileServiceClient` obiektu:
 
 ```java
 MobileServiceClient mClient = new MobileServiceClient(
@@ -96,11 +96,11 @@ MobileServiceClient mClient = new MobileServiceClient(
     this);                  // Your application Context
 ```
 
-`<MobileAppUrl>` Jest ciągiem lub obiekt adres URL, który wskazuje z zaplecza aplikacji mobilnych.  Korzystania z usługi aplikacji Azure do hostowania zaplecza przenośnych upewnij się, możesz użyć bezpiecznego `https://` wersję adresu URL.
+`<MobileAppUrl>` To ciąg lub obiekt adresu URL, który wskazuje na zapleczu mobilnym.  Jeśli używasz usługi Azure App Service do hostowania usługi zaplecza aplikacji mobilnych, upewnij się, używasz bezpiecznego `https://` wersję adresu URL.
 
-Klient wymaga również dostęp do działania lub kontekstu - `this` parametru w przykładzie.  Konstrukcja MobileServiceClient powinno się zdarzyć w `onCreate()` odwołuje do metody działania `AndroidManifest.xml` pliku.
+Klient wymaga również dostęp do działań lub kontekst — `this` parametru w przykładzie.  Konstrukcja MobileServiceClient powinno mieć miejsce, w ramach `onCreate()` odwołuje do metody działania `AndroidManifest.xml` pliku.
 
-Jako najlepsze rozwiązanie należy abstrakcyjnej komunikacji z serwerem do własnej klasy (wzorca singleton).  W takim przypadku należy przekazać działaniem określonym w Konstruktorze odpowiednio skonfigurować usługę.  Na przykład:
+Najlepszym rozwiązaniem należy abstrakcyjna komunikacji z serwerem w jej własnej klasy (wzorzec singleton).  W takim przypadku należy przekazać działań w Konstruktorze odpowiednio skonfigurować usługi.  Na przykład:
 
 ```java
 package com.example.appname.services;
@@ -142,21 +142,21 @@ public class AzureServiceAdapter {
 }
 ```
 
-Można teraz wywołać `AzureServiceAdapter.Initialize(this);` w `onCreate()` metody działania głównego.  Inne metody potrzeby uzyskiwania dostępu do użycia klienta `AzureServiceAdapter.getInstance();` uzyskać odwołania do karty usługi.
+Teraz można wywołać `AzureServiceAdapter.Initialize(this);` w `onCreate()` metody działania głównego.  Inne metody potrzeby uzyskiwania dostępu do używania klienta `AzureServiceAdapter.getInstance();` uzyskać odwołanie z kartą usługi.
 
 ## <a name="data-operations"></a>Operacje na danych
 
-Podstawowy zestaw SDK usługi Azure Mobile Apps jest zapewnienie dostępu do danych przechowywanych w ramach usług SQL Azure na zaplecza aplikacji mobilnej.  Można uzyskać dostępu do te dane przy użyciu klasy jednoznacznie (preferowane) lub wykonywania kwerend (niezalecane).  Zbiorczego ta sekcja dotyczy przy użyciu silnie typizowanej klasy.
+Podstawowy zestaw SDK usług Azure Mobile Apps jest zapewnienie dostępu do danych przechowywanych w ramach usługi SQL Azure na zaplecza aplikacji mobilnej.  Dostęp tych danych za pomocą silnie typizowanej klasy (preferowany) lub wykonywania kwerend (niezalecane).  Duża część tej sekcji zajmuje się za pomocą silnie typizowanej klasy.
 
 ### <a name="define-client-data-classes"></a>Definiowanie klas danych klienta
 
-Dostęp do danych z tabel SQL Azure, definiowania klas danych klienta, które odpowiadają z tabelami w zaplecza aplikacji mobilnej. Przykłady w tym temacie założono tabela o nazwie **MyDataTable**, która zawiera następujące kolumny:
+Dostęp do danych z tabel SQL Azure, definiowania klas danych klienta, które odpowiadają z tabelami w wewnętrznej bazie danych aplikacji mobilnej. Przykłady w tym temacie przyjęto założenie, tabela o nazwie **MyDataTable**, która zawiera następujące kolumny:
 
 * id
-* Tekst
-* Zakończenie
+* tekst
+* Wykonaj
 
-Odpowiedni obiekt typu po stronie klienta znajduje się w pliku o nazwie **MyDataTable.java**:
+Odpowiedni typizowany obiekt po stronie klienta znajdują się w pliku o nazwie **MyDataTable.java**:
 
 ```java
 public class ToDoItem {
@@ -166,7 +166,7 @@ public class ToDoItem {
 }
 ```
 
-Dodaj metody pobierającej i ustawiającej dla każdego pola, które można dodać.  Jeśli tabela SQL Azure zawiera więcej kolumn, należy dodać odpowiednie pola do tej klasy.  Na przykład jeśli DTO kolumna priorytet liczb całkowitych miał (obiektu transferu danych), a następnie można dodać tego pola, wraz z jego metody pobierającej i ustawiającej:
+Dodaj metody getter i setter dla każdego pola, które można dodać.  Jeśli tabela SQL Azure zawiera więcej kolumn, należy dodać odpowiednich pól do tej klasy.  Na przykład jeśli obiekt DTO (data transfer object) ma priorytet kolumna liczb całkowitych, a następnie można dodać tego pola, wraz z jego metody getter i setter:
 
 ```java
 private Integer priority;
@@ -189,17 +189,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Aby dowiedzieć się, jak utworzyć dodatkowe tabele w zapleczu swojej Mobile Apps, zobacz [porady: Definiowanie kontrolera tabeli] [ 15] (zaplecze .NET) lub [zdefiniuj tabel za pomocą dynamicznej schematu] [ 16] (zaplecza Node.js).
+Aby dowiedzieć się, jak utworzyć dodatkowe tabele w kodzie zaplecza funkcji Mobile Apps, zobacz [porady: Definiowanie kontrolera tabeli] [ 15] (zaplecze .NET) lub [Definiowanie tabel przy użyciu schematu dynamicznego] [ 16] (Zaplecze środowiska Node.js).
 
-Azure Mobile Apps tabeli wewnętrznej bazy danych definiuje pięć specjalne pól, z których cztery są dostępne dla klientów:
+Tabeli wewnętrznej bazy danych usługi Azure Mobile Apps definiuje pięć specjalne pola, cztery z nich są dostępne dla klientów:
 
-* `String id`: Globalnie unikatowy identyfikator dla rekordu.  Najlepszym rozwiązaniem, wprowadź identyfikator reprezentację ciągu [UUID] [ 17] obiektu.
-* `DateTimeOffset updatedAt`: Data/godzina ostatniej aktualizacji.  Pole updatedAt jest ustawiana przez serwer i nie powinno być używane przez kod klienta.
-* `DateTimeOffset createdAt`: Data/godzina utworzenia obiektu.  Pole createdAt jest ustawiana przez serwer i nie powinno być używane przez kod klienta.
-* `byte[] version`: Zazwyczaj reprezentowany jako ciąg, wersja również jest ustawiana przez serwer.
-* `boolean deleted`: Wskazuje, że rekord została usunięta, ale nie jest jeszcze przeczyszczane.  Nie używaj `deleted` jako właściwość w klasie.
+* `String id`: Globalnie unikatowy identyfikator rekordu.  Najlepszym rozwiązaniem jest wprowadzić identyfikator reprezentację ciągu [UUID] [ 17] obiektu.
+* `DateTimeOffset updatedAt`: Data/godzina ostatniej aktualizacji.  Pole updatedAt jest ustawiana przez serwer i nigdy nie powinna być ustawiona przez kod klienta.
+* `DateTimeOffset createdAt`: Data/godzina utworzenia obiektu.  Pole createdAt jest ustawiana przez serwer i nigdy nie powinna być ustawiona przez kod klienta.
+* `byte[] version`: Zwykle reprezentowany jako ciąg znaków, wersja jest również ustawiona przez serwer.
+* `boolean deleted`: Wskazuje, że rekord została usunięta, ale nie przeczyszczono jeszcze.  Nie używaj `deleted` jako właściwość w klasie.
 
-`id` Pole jest wymagane.  `updatedAt` Pola i `version` pola są używane do synchronizacji w trybie offline (przyrostowej synchronizacji i wystąpi konflikt rozpoznawania odpowiednio).  `createdAt` Pole jest polem Odwołanie i nie jest używana przez klienta.  Nazwy "w locie" nazw właściwości i nie są zmieniane.  Można jednak utworzyć mapowanie między obiektu i nazwy "w locie" przy użyciu [gson] [ 3] biblioteki.  Na przykład:
+Pole `id` jest wymagane.  `updatedAt` Pola i `version` pola są używane do synchronizacji w trybie offline (dla przyrostowych synchronizacji i konflikt rozpoznawania odpowiednio).  `createdAt` Pole jest polem Odwołanie i nie jest używany przez klienta.  Nazwy są "w locie" nazw właściwości i nie są zmieniane.  Jednak można utworzyć mapowanie między obiektu oraz nazwy "w locie", przy użyciu [gson] [ 3] biblioteki.  Na przykład:
 
 ```java
 package com.example.zumoappname;
@@ -259,7 +259,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Tworzenie odwołania do tabeli
 
-Do uzyskania dostępu do tabeli, należy najpierw utworzyć [MobileServiceTable] [ 8] obiektu przez wywołanie metody **getTable** metoda [MobileServiceClient][9].  Ta metoda ma dwa przeciążenia:
+Aby uzyskać dostęp do tabeli, należy najpierw utworzyć [MobileServiceTable] [ 8] obiektu przez wywołanie metody **getTable** metody [MobileServiceClient] [9].  Ta metoda ma dwa przeciążenia:
 
 ```java
 public class MobileServiceClient {
@@ -268,32 +268,32 @@ public class MobileServiceClient {
 }
 ```
 
-W poniższym kodzie **mClient** jest odwołaniem do obiektu MobileServiceClient.  Pierwszy przeciążenia jest używana, gdzie nazwa klasy i nazwy tabeli są takie same i jest co najmniej jedna używana z opcją szybkiego startu:
+W poniższym kodzie **element mClient** jest odwołaniem do obiektu MobileServiceClient.  Pierwsze przeciążenie jest używany, gdy nazwę klasy i nazwy tabeli są takie same, a ten służy w przewodniku Szybki Start:
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 ```
 
-Przeciążenie drugi jest używany podczas Nazwa tabeli jest inna niż nazwa klasy: Nazwa tabeli jest pierwszym parametrem.
+Drugie przeciążenie jest używany, gdy nazwa tabeli jest inny niż nazwa klasy: pierwszy parametr jest nazwą tabeli.
 
 ```java
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 ```
 
-## <a name="query"></a>Zapytania dotyczącego tabeli wewnętrznej bazy danych
+## <a name="query"></a>Wysłać zapytanie do tabeli wewnętrznej bazy danych
 
-Najpierw należy uzyskać odwołania do tabeli.  Następnie można wykonać zapytania na odwołania do tabeli.  Zapytanie jest dowolną kombinację:
+Najpierw Uzyskaj odwołanie do tabeli.  Następnie można wykonać zapytania w odwołaniu do tabeli.  Zapytanie jest dowolnej kombinacji:
 
 * A `.where()` [klauzuli filtru](#filtering).
-* `.orderBy()` [Porządkowanie klauzuli](#sorting).
+* `.orderBy()` [Klauzula ordering](#sorting).
 * A `.select()` [pola wyboru klauzuli](#selection).
-* A `.skip()` i `.top()` dla [stronicowanej wyniki](#paging).
+* A `.skip()` i `.top()` dla [stronicowanych wyników](#paging).
 
-Klauzule musi być podana w wyżej wymieniona kolejność.
+Klauzule muszą być przedstawione w poprzednich kolejności.
 
 ### <a name="filter"></a> Filtrowanie wyników
 
-Formularz ogólny kwerendy jest:
+Ogólna postać zapytania jest:
 
 ```java
 List<MyDataTable> results = mDataTable
@@ -302,11 +302,11 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-Poprzedni przykład zwraca wszystkie wyniki (maksymalnie maksymalny rozmiar strony ustawiony przez serwer).  `.execute()` Metoda wykonuje zapytanie do wewnętrznej bazy danych.  Zapytanie jest konwertowana na [OData v3] [ 19] zapytania przed ich przesłaniem do zaplecza aplikacji mobilnej.  Po otrzymaniu zaplecza aplikacji mobilnej konwertuje zapytania do instrukcji SQL przed jej wykonanie w wystąpieniu programu SQL Azure.  Ponieważ sieci działania dopiero po pewnym czasie `.execute()` metoda zwraca [ `ListenableFuture<E>` ] [ 18].
+Powyższy przykład zwraca wszystkie wyniki (maksymalnie maksymalny rozmiar strony ustawiony przez serwer).  `.execute()` Metoda wykonuje zapytanie do wewnętrznej bazy danych.  Zapytanie jest konwertowany na [OData v3] [ 19] zapytania przed ich przesłaniem do zaplecza usługi Mobile Apps.  Po otrzymaniu zaplecze funkcji Mobile Apps konwertuje zapytania do instrukcji SQL przed wykonaniem go na wystąpienie usług SQL Azure.  Ponieważ aktywności sieciowej dopiero po pewnym czasie `.execute()` metoda zwraca [ `ListenableFuture<E>` ] [ 18].
 
-### <a name="filtering"></a>Filtr zwrócił danych
+### <a name="filtering"></a>Filtruj dane zwrotne
 
-Następujące wykonywania zapytania zwraca wszystkie elementy z **ToDoItem** tabeli where **pełną** jest równe **false**.
+Następujące wykonywania zapytania zwraca wszystkie elementy z **ToDoItem** tabeli gdzie **pełną** jest równa **false**.
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -316,11 +316,11 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-**mToDoTable** jest odwołanie do tabeli usługi mobilnej, który utworzono wcześniej.
+**mToDoTable** jest odwołanie do tabeli usługi mobilnej, która utworzony wcześniej.
 
-Zdefiniuj filtr przy użyciu **gdzie** wywołanie metody dla odwołania do tabeli. **Gdzie** następuje metody **pola** metody następuje metodę, która określa logicznej predykatu. Predykatu metod uwzględnić **eq** (równe), **ne** (nie równa), **gt** (większe niż) **ge** (większe lub równe), **lt** (poniżej), **le** (mniejsze niż lub równe). Te metody umożliwiają porównanie pola numer i ciąg do określonej wartości.
+Zdefiniowanie filtru używającego **gdzie** wywołania metody odwołania do tabeli. **Gdzie** metody następuje **pola** metody następuje metodę, która określa logiczną predykat. Możliwe metody predykatu obejmują **eq** (równe) **ne** (nie równa się), **gt** (większe niż) **ge** (większe niż lub równe) **lt** (mniejsze niż), **le** (mniejsze niż lub równe). Te metody umożliwiają porównanie pola numeru i ciąg do konkretnych wartości.
 
-Można filtrować według daty. Następujące metody umożliwiają porównanie pola Data całego lub części daty: **roku**, **miesiąca**, **dzień**, **godzina**, **minutę**, i **drugi**. Poniższy przykład umożliwia dodanie filtru dla elementów których *termin* jest równe 2013.
+Można filtrować według daty. Poniższe metody pozwalają porównać pole daty całego lub części daty: **roku**, **miesiąca**, **dzień**, **godzinę**,  **minuty**, i **drugi**. Poniższy przykład umożliwia dodanie filtru dla elementów którego *termin* jest równe 2013.
 
 ```java
 List<ToDoItem> results = MToDoTable
@@ -330,7 +330,7 @@ List<ToDoItem> results = MToDoTable
     .get();
 ```
 
-Następujące metody obsługi złożonych filtrów w polach ciąg: **startsWith**, **endsWith**, **concat**, **podciąg**, **indexOf**, **Zastąp**, **toLower**, **toUpper**, **trim**, i **długość**. Następujące przykładowe filtry w tabeli wiersze, w których *tekst* kolumny rozpoczyna się od "PRI0."
+Następujące metody obsługi złożonych filtrów na pól ciągów: **startsWith**, **endsWith**, **concat**, **podciąg**, **indexOf**, **Zastąp**, **toLower**, **toUpper**, **trim**, i **długość** . Następujące przykładowe filtry dla tabeli wiersze, w których *tekstu* kolumny zaczyna się od "PRI0."
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -340,7 +340,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Następujące metody operator są obsługiwane na pola numerów: **dodać**, **sub**, **mul**, **div**, **mod**, **floor**, **limitu**, i **zaokrąglona**. Następujące przykładowe filtry w tabeli wiersze, w których **czas trwania** jest liczbą parzystą.
+Następujących metod operatorów są obsługiwane w numerów pól: **Dodaj**, **sub**, **mul**, **div**, **mod**, **floor**, **ceiling**, i **zaokrąglanie**. Następujące przykładowe filtry dla tabeli wiersze, w których **czas trwania** jest liczbą parzystą.
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -360,7 +360,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Operatory logiczne grupy i gniazda:
+Operatory logiczne grupy i zagnieżdżonych:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -374,11 +374,11 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-Aby uzyskać bardziej szczegółowe omówienie i przykłady filtrowania, zobacz [eksploracji formatem model zapytań klienta dla systemu Android][20].
+Aby uzyskać bardziej szczegółowe dyskusji i przykłady, filtrowania, zobacz [Eksplorowanie bogactwa model zapytań klienta systemu Android][20].
 
-### <a name="sorting"></a>Sortowanie zwrócone dane
+### <a name="sorting"></a>Sortuj zwrócone dane
 
-Poniższy kod zwraca wszystkie elementy z tabeli z **ToDoItems** sortowane w kolejności rosnącej przez *tekst* pola. *mToDoTable* jest odwołanie do utworzonego wcześniej tabeli wewnętrznej bazy danych:
+Poniższy kod zwraca wszystkie elementy z tabeli **ToDoItems** posortowane rosnąco *tekstu* pola. *mToDoTable* jest odwołanie do tabeli wewnętrznej bazy danych, który został utworzony wcześniej:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -387,11 +387,11 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-Pierwszy parametr **orderBy** metoda jest taka sama jak nazwa pola, w których mają być sortowane ciąg. Drugi parametr używa **QueryOrder** wyliczeniu, aby określić, czy mają być sortowane w kolejności rosnącej lub malejącej.  Jeśli filtrowania przy użyciu ***gdzie*** metody ***gdzie*** metody należy wywołać przed ***orderBy*** — metoda.
+Pierwszy parametr **orderBy** metodą jest taka sama jak nazwa pola do sortowania ciągu. Drugi parametr używa **QueryOrder** wyliczeniu, aby określić, czy mają być sortowane w kolejności rosnącej lub malejącej.  Jeśli używasz filtrowania, za pomocą ***gdzie*** metody ***gdzie*** metoda musi być wywoływana przed ***orderBy*** metody.
 
 ### <a name="selection"></a>Wybrać określone kolumny
 
-Poniższy kod przedstawia sposób zwrócenia wszystkich elementów z tabeli z **ToDoItems**, ale wyświetlane są tylko **pełną** i **tekst** pola. **mToDoTable** jest odwołanie do tabeli wewnętrznej bazy danych utworzonej wcześniej.
+Poniższy kod ilustruje sposób zwracania wszystkich elementów z tabeli **ToDoItems**, ale wyświetlane są tylko **pełną** i **tekstu** pola. **mToDoTable** jest odwołaniem do utworzonej wcześniej tabeli wewnętrznej bazy danych.
 
 ```java
 List<ToDoItemNarrow> result = mToDoTable
@@ -400,13 +400,13 @@ List<ToDoItemNarrow> result = mToDoTable
     .get();
 ```
 
-Parametry funkcji wybierz są ciąg nazwy kolumn w tabeli, które chcesz przywrócić.  **Wybierz** metody musi wykonać metody, takie jak **gdzie** i **orderBy**. Może występować przez metody stronicowania, takie jak **pominąć** i **górnej**.
+Parametry funkcji wybierz są ciąg nazwy kolumn w tabeli, które mają być zwracane.  **Wybierz** metoda musi postępuj zgodnie z metod, takich jak **gdzie** i **orderBy**. Można wykonać za pomocą metod stronicowania, takich jak **pominąć** i **górnej**.
 
-### <a name="paging"></a>Zwróć dane strony
+### <a name="paging"></a>Zwróć dane na stronach
 
-Dane są **zawsze** zwracane w stronach.  Maksymalną liczbę rekordów zwróconych jest ustawiana przez serwer.  Jeśli klient żąda więcej rekordów, serwer zwraca maksymalną liczbę rekordów.  Domyślnie maksymalny rozmiar strony na serwerze jest 50 rekordów.
+Dane są **zawsze** zwrócony na stronach.  Maksymalną liczbę rekordów zwróconych jest ustawiony przez serwer.  Jeśli klient żąda więcej rekordów, serwer zwraca maksymalną liczbę rekordów.  Domyślnie maksymalny rozmiar strony na serwerze jest 50 rekordów.
 
-Pierwszym przykładzie pokazano, jak wybrać pierwsze pięć elementy z tabeli. Zwraca elementy z tabeli **ToDoItems**. **mToDoTable** jest odwołanie do utworzonego wcześniej tabeli wewnętrznej bazy danych:
+Pierwszy przykład pokazuje sposób wybierania pierwszych pięć elementów z tabeli. Zwraca elementy z tabeli **ToDoItems**. **mToDoTable** jest odwołanie do tabeli wewnętrznej bazy danych, który został utworzony wcześniej:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -415,7 +415,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Oto zapytanie, które pomija pierwszych pięciu elementów, a następnie zwraca następnych pięciu:
+Oto zapytanie, które pomija pierwszych pięć elementów, a następnie zwraca następny 5:
 
 ```java
 List<ToDoItem> result = mToDoTable
@@ -424,7 +424,7 @@ List<ToDoItem> result = mToDoTable
     .get();
 ```
 
-Jeśli chcesz pobrać wszystkie rekordy w tabeli, zaimplementuj kod, aby przejść przez wszystkie strony:
+Jeśli chcesz pobrać wszystkie rekordy w tabeli, należy zaimplementować kod, aby przejść przez wszystkie strony:
 
 ```java
 List<MyDataModel> results = new List<MyDataModel>();
@@ -441,14 +441,14 @@ do {
 } while (nResults > 0);
 ```
 
-Żądanie dla wszystkich rekordów za pomocą tej metody tworzy co najmniej dwa żądania do zaplecza aplikacji mobilnej.
+Żądania dla wszystkich rekordów przy użyciu tej metody powoduje utworzenie co najmniej dwa żądania do zaplecza usługi Mobile Apps.
 
 > [!TIP]
-> Wybieranie rozmiaru prawej strony jest kompromis między użycia pamięci podczas żądania jest wykonywane, przepustowości i opóźnienia w całkowicie odbiera dane.  Wartość domyślna (50 rekordów) jest odpowiednia dla wszystkich urządzeń.  Wyłącznie w przypadku obsługi większych urządzeń pamięci, należy zwiększyć do 500.  Znaleźliśmy że zwiększenie rozmiaru strony ponad 500 rejestruje wyniki nie do przyjęcia opóźnienia i problemy z dużej ilości pamięci.
+> Wybieranie rozmiaru prawej strony jest kompromis między użycie pamięci, gdy żądanie się dzieje, przepustowości i opóźnienia w całkowicie odbiera dane.  Wartość domyślna (50 rekordów) jest odpowiednia dla wszystkich urządzeń.  W przypadku wyłącznie działają na większych urządzeniach pamięci, należy zwiększyć maksymalnie 500.  Znaleźliśmy, że zwiększenie rozmiaru strony ponad 500 rekordów skutkuje niedopuszczalne opóźnienia i problemy z dużej ilości pamięci.
 
-### <a name="chaining"></a>Porady: łączenie metody zapytania
+### <a name="chaining"></a>Porady: łączenie metody zapytań
 
-Metody stosowane badania tabel zaplecza może zostać dołączona. Łańcucha metody zapytań można wybrać określone kolumny filtrowane wierszy, które są sortowane i stronicowana. Można tworzyć złożone filtry logiczne.  Każda metoda zapytanie zwraca obiekt zapytania. Aby zakończyć szereg metod i faktycznie uruchom zapytanie, należy wywołać **wykonania** metody. Na przykład:
+Metody stosowane w tworzenie zapytań o tabele wewnętrznej bazy danych mogą być łączone. Łańcucha metody zapytań pozwala wybrać określone kolumny przefiltrowano wiersze, które są sortowane i stronicowanej. Można tworzyć złożone filtry logiczne.  Każda metoda zapytanie zwraca obiekt zapytania. Aby zakończyć szereg metod i faktycznie uruchomić zapytanie, należy wywołać **wykonania** metody. Na przykład:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -464,26 +464,26 @@ List<ToDoItem> results = mToDoTable
         .get();
 ```
 
-Metody zapytań łańcuchowa muszą być uporządkowane w następujący sposób:
+Metody zapytań łańcuchowych muszą być uporządkowane w następujący sposób:
 
-1. Filtrowanie (**gdzie**) metod.
-2. Sortowanie (**orderBy**) metod.
-3. Wybór (**wybierz**) metod.
-4. stronicowanie (**pominąć** i **górnej**) metod.
+1. Filtrowanie (**gdzie**) metody.
+2. Sortowanie (**orderBy**) metody.
+3. Wybór (**wybierz**) metody.
+4. stronicowanie (**pominąć** i **górnej**) metody.
 
-## <a name="binding"></a>Wiązanie danych do interfejsu użytkownika
+## <a name="binding"></a>Powiąż dane z interfejsu użytkownika
 
 Powiązanie danych obejmuje trzy składniki:
 
 * Źródło danych
 * Układ ekranu
-* Karta, który wiąże ze sobą dwa.
+* Karty, która łączy ze sobą dwa.
 
-W naszym przykładowym kodzie zwróconych danych z tabeli Mobile Apps SQL Azure **ToDoItem** do tablicy. To działanie jest wspólnego wzorca dla danych aplikacji.  Zapytania bazy danych często zwracać kolekcji wierszy, do których klient pobiera listy lub tablicy. W tym przykładzie tablicy jest źródłem danych.  Kod określa układ ekranu, który definiuje widoku danych, który pojawia się na urządzeniu.  Dwa powiązanych wraz z karty, którego ten kod jest rozszerzeniem z **ArrayAdapter&lt;ToDoItem&gt;**  klasy.
+W naszym przykładowym kodzie zostanie zwrócona dane z tabeli Mobile Apps SQL Azure **ToDoItem** do tablicy. To działanie jest typowy wzorzec dla aplikacji przetwarzających dane.  Zapytania bazy danych często zwracają zbiór wierszy, które klient pobiera listy lub tablicy. W tym przykładzie tablica jest źródło danych.  Kod ten określa układ ekranu, który definiuje widoku danych, który pojawia się na urządzeniu.  Dwa są powiązane wraz z adapter, czyli w tym kodzie rozszerzenia z **ArrayAdapter&lt;ToDoItem&gt;**  klasy.
 
-#### <a name="layout"></a>Definiowania układu
+#### <a name="layout"></a>Definiowanie układu
 
-Układ jest definiowany przez kilka fragmentów kodu XML. Biorąc pod uwagę istniejącego układu, poniższy kod przedstawia **ListView** chcemy wypełnić z naszych danych serwera.
+Układ jest definiowany przez kilka fragmentów kodu XML. Biorąc pod uwagę istniejącego układu, poniższy kod przedstawia **ListView** ma zostać wypełniony przy użyciu naszych danych serwera.
 
 ```xml
     <ListView
@@ -494,7 +494,7 @@ Układ jest definiowany przez kilka fragmentów kodu XML. Biorąc pod uwagę ist
     </ListView>
 ```
 
-W powyższym kodzie *listitem* atrybut określa identyfikator układu dla pojedynczego wiersza na liście. Ten kod pobiera utworzyć raz dla każdego elementu na liście i określa pole wyboru i jego tekst. Nie są wyświetlane w tym układzie **identyfikator** pola i bardziej złożonej układu określić dodatkowe pola na ekranie. Ten kod jest **row_list_to_do.xml** pliku.
+W poprzednim kodzie *listitem* atrybut określa identyfikator układ dla pojedynczego wiersza na liście. Ten kod określa pole wyboru i jego tekst i pobiera jednorazowego dla każdego elementu na liście. Nie są wyświetlane w tym układzie **identyfikator** pola i bardziej złożonych układ określić dodatkowych pól na ekranie. Ten kod znajduje się w **row_list_to_do.xml** pliku.
 
 ```java
 <?xml version="1.0" encoding="utf-8"?>
@@ -511,14 +511,14 @@ W powyższym kodzie *listitem* atrybut określa identyfikator układu dla pojedy
 ```
 
 #### <a name="adapter"></a>Zdefiniuj karty
-Ponieważ naszych widoku źródła danych jest tablicą **ToDoItem**, możemy podklasy naszych karty z **ArrayAdapter&lt;ToDoItem&gt;**  klasy. To podklasa tworzy widok dla każdego **ToDoItem** przy użyciu **row_list_to_do** układu.  W naszym kodzie definiujemy następujące klasy, która jest rozszerzeniem **ArrayAdapter&lt;E&gt;**  klasy:
+Ponieważ naszych widoku źródła danych jest tablicą **ToDoItem**, firma Microsoft podklasy naszej karty z **ArrayAdapter&lt;ToDoItem&gt;**  klasy. Tej podklasy generuje widok dla każdego **ToDoItem** przy użyciu **row_list_to_do** układu.  W naszym kodzie definiujemy następujące klasy, która jest rozszerzeniem **ArrayAdapter&lt;E&gt;**  klasy:
 
 ```java
 public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Zastąpienie kart **getView** metody. Na przykład:
+Zastąp kart **getView** metody. Na przykład:
 
 ```
     @Override
@@ -554,23 +554,23 @@ Zastąpienie kart **getView** metody. Na przykład:
     }
 ```
 
-Tworzymy wystąpienie tej klasy w naszych działań w następujący sposób:
+Możemy utworzyć wystąpienie tej klasy w naszych działań w następujący sposób:
 
 ```java
     ToDoItemAdapter mAdapter;
     mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 ```
 
-Drugi parametr dla konstruktora ToDoItemAdapter jest odwołanie do układu. Firma Microsoft można teraz utworzyć wystąpienie **ListView** i przypisz do karty **ListView**.
+Drugi parametr do konstruktora ToDoItemAdapter jest odwołanie do układu. Firma Microsoft może teraz utworzyć wystąpienie **ListView** i przypisz kartę, która ma **ListView**.
 
 ```java
     ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
     listViewToDo.setAdapter(mAdapter);
 ```
 
-#### <a name="use-adapter"></a>Użyj karty do tworzenia powiązań interfejsu użytkownika
+#### <a name="use-adapter"></a>Użyj karty do powiązania w interfejsie użytkownika
 
-Teraz można przystąpić do używania wiązania z danymi. Poniższy kod pokazuje, jak można pobrać elementów w tabeli i wypełnia zwracane elementy lokalne karty.
+Teraz można przystąpić do użycia powiązanie danych. Poniższy kod ilustruje sposób uzyskania elementów w tabeli i wypełnia karta lokalna zwróconych elementów.
 
 ```java
     public void showAll(View view) {
@@ -599,13 +599,13 @@ Teraz można przystąpić do używania wiązania z danymi. Poniższy kod pokazuj
     }
 ```
 
-Wywołaj karty żadnych modyfikacji **ToDoItem** tabeli. Ponieważ zmiany są wykonywane na podstawie rekordu na podstawie, można obsługiwać pojedynczy wiersz zamiast kolekcji. Po wstawieniu elementu wywołać **dodać** metody na karcie; podczas usuwania, wywołaj **Usuń** — metoda.
+Wywołania adapter kiedykolwiek zmodyfikujesz **ToDoItem** tabeli. Ponieważ zmiany są wykonywane na podstawie rekordu na podstawie, możesz obsługiwać pojedynczy wiersz zamiast kolekcji. Podczas wstawiania elementu wywołania **Dodaj** metoda karty; podczas usuwania, należy wywołać **Usuń** metody.
 
-Znajduje się pełny przykład w [projektu szybkiego startu dla systemu Android][21].
+Możesz znaleźć pełny przykład w [projekt dla systemu Android Przewodnik Szybki Start][21].
 
 ## <a name="inserting"></a>Wstawianie danych do wewnętrznej bazy danych
 
-Tworzy wystąpienie *ToDoItem* klasy i ustawienia swoich właściwości.
+Tworzy wystąpienie elementu *ToDoItem* klasy i ustaw jego właściwości.
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -613,7 +613,7 @@ item.text = "Test Program";
 item.complete = false;
 ```
 
-Następnie użyj **operacji insert()** do wstawienia obiektu:
+Następnie użyj **insert()** do wstawienia obiektu:
 
 ```java
 ToDoItem entity = mToDoTable
@@ -621,19 +621,19 @@ ToDoItem entity = mToDoTable
     .get();
 ```
 
-Dopasowań zwróconą jednostkę danych wstawione do tabeli wewnętrznej bazy danych zawiera identyfikator i inne wartości (takie jak `createdAt`, `updatedAt`, i `version` pól) Ustaw do wewnętrznej bazy danych.
+Dopasowuje zwróconą jednostkę danych wstawione do tabeli wewnętrznej bazy danych są uwzględnione identyfikator i innych wartości (takich jak `createdAt`, `updatedAt`, i `version` pól) Ustaw do wewnętrznej bazy danych.
 
-Tabele Mobile Apps, wymagają kolumna klucza podstawowego o nazwie **identyfikator**. Ta kolumna musi być ciągiem. Domyślna wartość w kolumnie identyfikator jest identyfikatorem GUID.  Możesz podać inne unikatowe wartości, takie jak adresy e-mail lub nazwy użytkowników. Jeśli nie podano wartość Identyfikatora ciągu wstawionego rekordu, wewnętrznej bazy danych generuje nowy identyfikator GUID.
+Tabele Mobile Apps, wymagają kolumna klucza podstawowego o nazwie **identyfikator**. Ta kolumna musi być ciągiem. Wartość domyślna w kolumnie identyfikator jest identyfikatorem GUID.  Możesz podać inne unikatowe wartości, takie jak adresy e-mail lub nazwy użytkowników. Wartość Identyfikatora ciągu nie jest dostępna do wstawionego rekordu, zaplecze generuje nowy identyfikator GUID.
 
-Identyfikator ciągami zapewniają następujące korzyści:
+Wartości Identyfikatora ciągu zapewniają następujące korzyści:
 
-* Identyfikatory mogą być generowane bez wprowadzania podróż do bazy danych.
+* Identyfikatory mogą być generowane, bez konieczności szukania komunikacji dwustronnej w bazie danych.
 * Rekordy są łatwiejsze do scalenia z różnych tabel lub baz danych.
-* Wartości Identyfikatora lepszą integrację z logiki aplikacji.
+* Wartości Identyfikatora lepszej integracji za pomocą aplikacji logiki.
 
-Ciąg Identyfikatora wartości są **REQUIRED** obsługę synchronizacji w trybie offline.  Nie można zmienić identyfikatora, gdy jest on przechowywany w bazie danych zaplecza.
+Wartości Identyfikatora ciągu są **wymagane** obsługę synchronizacji w trybie offline.  Nie można zmienić identyfikatora, gdy jest on przechowywany w bazie danych zaplecza.
 
-## <a name="updating"></a>Aktualizuj dane w aplikacji mobilnej
+## <a name="updating"></a>Aktualizowanie danych w aplikacji mobilnej
 
 Aby zaktualizować dane w tabeli, należy przekazać nowy obiekt do **update()** metody.
 
@@ -643,18 +643,18 @@ mToDoTable
     .get();
 ```
 
-W tym przykładzie *elementu* jest odwołanie do wiersza w *ToDoItem* tabeli, która wystąpiła niektóre zmiany wprowadzone do niego.  Wiersz o takim samym **identyfikator** jest aktualizowany.
+W tym przykładzie *elementu* jest odwołanie do wiersza w *ToDoItem* tabeli, która miała niektóre zmiany wprowadzone do niego.  Wiersz o takim samym **identyfikator** jest aktualizowana.
 
-## <a name="deleting"></a>Usuwanie danych w aplikacji mobilnej
+## <a name="deleting"></a>Usuń dane w aplikacji mobilnej
 
-Poniższy kod przedstawia sposób usuwania danych z tabeli, określając obiektu danych.
+Poniższy kod pokazuje, jak usunąć dane z tabeli, określając obiektu danych.
 
 ```java
 mToDoTable
     .delete(item);
 ```
 
-Można również usunąć element, określając **identyfikator** pole wiersza do usunięcia.
+Można również usunąć element, określając **identyfikator** pola wiersza do usunięcia.
 
 ```java
 String myRowId = "2FA404AB-E458-44CD-BC1B-3BC847EF0902";
@@ -664,7 +664,7 @@ mToDoTable
 
 ## <a name="lookup"></a>Wyszukiwanie określonego elementu według identyfikatora
 
-Wyszukiwanie elementu z określonym **identyfikator** pole z **lookUp()** metody:
+Wyszukaj element z określonym **identyfikator** pole **lookUp()** metody:
 
 ```java
 ToDoItem result = mToDoTable
@@ -674,11 +674,11 @@ ToDoItem result = mToDoTable
 
 ## <a name="untyped"></a>Porady: Praca z danymi bez typu
 
-Nieuwzględniające typów modelu programowania zapewnia dokładną kontrolę nad serializacji JSON.  Brak niektórych typowych scenariuszy, w których warto użyć bez typu modelu programowania. Na przykład, jeśli tabela wewnętrznej bazy danych zawiera wiele kolumn, należy odwoływać podzestaw kolumn.  Model typu wymaga zdefiniowania wszystkich kolumn, które są zdefiniowane w zaplecza aplikacji mobilnej w klasie danych.  Większość wywołań interfejsu API w celu uzyskania dostępu do danych są podobne do typu wywołania programowania. Główną różnicą jest to, czy w modelu bez typu wywołuje metody na **MobileServiceJsonTable** obiektu, a nie **MobileServiceTable** obiektu.
+Nietypizowane model programowania zapewnia dokładną kontrolę nad serializacji JSON.  Istnieje kilka typowych scenariuszy, w których warto korzystać z modelu programowania bez typu. Jeśli na przykład tabeli wewnętrznej bazy danych zawiera wiele kolumn, należy odwoływać się do podzestawu kolumn.  Typizowany model wymaga zdefiniowania wszystkich kolumn, które są zdefiniowane w zaplecza funkcji Mobile Apps w klasie danych.  Większość wywołań interfejsu API do uzyskiwania dostępu do danych są podobne do typizowanych wywołania programowania. Główną różnicą jest to, że w modelu danych można wywoływać metody na **MobileServiceJsonTable** obiektu, zamiast **MobileServiceTable** obiektu.
 
-### <a name="json_instance"></a>Utwórz wystąpienie tabeli bez typu
+### <a name="json_instance"></a>Utwórz wystąpienie obiektu tabeli danych
 
-Podobnie jak typu modelu, możesz uruchomić pobierania odwołania do tabeli, ale w takim przypadku jest **MobileServicesJsonTable** obiektu. Uzyskaj odwołanie wywołując **getTable** metody w wystąpieniu klienta:
+Podobnie jak typizowany model, możesz uruchomić pobieranie odwołania do tabeli, ale w tym przypadku jest **MobileServicesJsonTable** obiektu. Uzyskaj odwołanie, wywołując **getTable** metody na instancji klienta:
 
 ```java
 private MobileServiceJsonTable mJsonToDoTable;
@@ -686,7 +686,7 @@ private MobileServiceJsonTable mJsonToDoTable;
 mJsonToDoTable = mClient.getTable("ToDoItem");
 ```
 
-Po utworzeniu wystąpienia **MobileServiceJsonTable**, praktycznie ma tego samego interfejsu API dostępne jako typu modelu programowania. W niektórych przypadkach metody zająć bez typu parametru zamiast parametru typu.
+Po utworzeniu wystąpienia **MobileServiceJsonTable**, praktycznie ma tego samego interfejsu API dostępne jako typizowany model programowania. W niektórych przypadkach metody przyjmują parametru bez typu, a nie typizowany parametr.
 
 ### <a name="json_insert"></a>Wstaw do tabeli bez typu
 Poniższy kod przedstawia sposób wykonywania instrukcji insert. Pierwszym krokiem jest utworzenie [JsonObject][1], który jest częścią [gson] [ 3] biblioteki.
@@ -697,7 +697,7 @@ jsonItem.addProperty("text", "Wake up");
 jsonItem.addProperty("complete", false);
 ```
 
-Następnie należy użyć **operacji insert()** można wstawić nieuwzględniające typów obiektów do tabeli.
+Następnie należy użyć **insert()** można wstawić obiektu danych do tabeli.
 
 ```java
 JsonObject insertedItem = mJsonToDoTable
@@ -705,27 +705,27 @@ JsonObject insertedItem = mJsonToDoTable
     .get();
 ```
 
-Aby uzyskać identyfikator obiektu wstawionego, należy użyć **getAsJsonPrimitive()** metody.
+Aby uzyskać identyfikator obiektu wstawiono, należy użyć **getAsJsonPrimitive()** metody.
 
 ```java
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
 ### <a name="json_delete"></a>Usuń z tabeli bez typu
-Poniższy kod przedstawia sposób usuwania wystąpienia, w tym przypadku to samo wystąpienie elementu **JsonObject** utworzony wcześniej *Wstaw* przykład. Kod jest taki sam, podobnie jak w przypadku typu wielkość liter, ale metoda ma inny podpis, ponieważ odwołuje się on **JsonObject**.
+Poniższy kod przedstawia sposób usunąć wystąpienie, w tym przypadku to samo wystąpienie elementu **JsonObject** utworzonej wcześniej *Wstaw* przykład. Kod jest taki sam, podobnie jak w przypadku wpisane, ale metoda ma inny podpis, ponieważ odwołuje się do **JsonObject**.
 
 ```java
 mToDoTable
     .delete(insertedItem);
 ```
 
-Możesz także usunąć wystąpienia bezpośrednio za pomocą jego Identyfikatora:
+Możesz także usunąć wystąpienie bezpośrednio za pomocą jego Identyfikatora:
 
 ```java
 mToDoTable.delete(ID);
 ```
 
 ### <a name="json_get"></a>Zwracanie wszystkich wierszy z tabeli bez typu
-Poniższy kod przedstawia sposób pobierania całej tabeli. Ponieważ używasz tabeli JSON można selektywnie można pobrać niektórych kolumn tabeli.
+Poniższy kod przedstawia sposób pobierania całą tabelę. Ponieważ używasz tabeli JSON można selektywnie można pobierać tylko niektóre kolumny tabeli.
 
 ```java
 public void showAllUntyped(View view) {
@@ -761,20 +761,20 @@ public void showAllUntyped(View view) {
 }
 ```
 
-Ten sam zestaw filtrowania filtrowania i stronicowania metod, które są dostępne dla typu modelu są dostępne dla modelu bez typu.
+Ten sam zestaw filtrowania, filtrowanie i stronicowanie metod, które są dostępne dla typizowanego modelu są dostępne dla modelu danych.
 
 ## <a name="offline-sync"></a>Implementowanie synchronizacji w trybie Offline
 
-Zestaw SDK usługi Azure Mobile Apps klienta implementuje również synchronizacji danych w trybie offline przy użyciu bazy danych SQLite do przechowywania kopii danych serwera lokalnie.  Operacje wykonywane w trybie offline tabeli nie jest wymagana łączność do pracy.  Synchronizacja w trybie offline pomocy wydajność kosztem bardziej złożonej logice do rozwiązywania konfliktów i odporność.  Zestaw SDK usługi Azure Mobile Apps klient wykonuje następujące funkcje:
+Zestaw SDK klienta usługi Azure Mobile Apps implementuje również synchronizacji danych w trybie offline przy użyciu bazy danych SQLite, aby przechowywać kopię dane serwera lokalnie.  Operacje wykonywane na tabelę w trybie offline nie wymagają łączności mobilnej do pracy.  Synchronizacja w trybie offline ułatwia odporność i wydajność kosztem bardziej złożona logika do rozwiązywania konfliktów.  Zestaw SDK klienta usługi Azure Mobile Apps implementuje następujące funkcje:
 
 * Synchronizacja przyrostowa: Tylko zaktualizowanych i nowych rekordów są pobierane, zapisywanie zużycie przepustowości i pamięci.
-* Optymistycznej współbieżności: Operacje są uznawane za powiodło się.  Rozwiązywanie konfliktów jest odłożona do aktualizacji są wykonywane na serwerze.
-* Rozwiązywanie konfliktów: Zestaw SDK wykrywa przypadku powodujące konflikt zmiany zostały wprowadzone na serwerze oraz udostępnia punkty zaczepienia, aby ostrzec użytkownika.
-* Usuwania nietrwałego: Usunięte rekordy są oznaczane usuniętych, dzięki czemu inne urządzenia, aby zaktualizować pamięci podręcznej w trybie offline.
+* Optymistyczna współbieżność: Operacje są uznawane za zakończyło się sukcesem.  Rozwiązywanie konfliktów jest odroczone do czasu aktualizacje są wykonywane na serwerze.
+* Rozwiązywanie konfliktów: Zestaw SDK wykrywa, gdy powodująca konflikt zmiana stało się na serwerze i zapewnia punkty zaczepienia, aby ostrzec użytkownika.
+* Usuwanie nietrwałe: Usunięte rekordy są oznaczane usuniętych, dzięki czemu inne urządzenia, aby zaktualizować ich pamięci podręcznej offline.
 
 ### <a name="initialize-offline-sync"></a>Inicjowanie synchronizacji w trybie Offline
 
-Każda tabela w trybie offline, musi być zdefiniowana w pamięci podręcznej w trybie offline przed użyciem.  Zwykle definicji tabeli odbywa się natychmiast po utworzeniu klienta:
+Każda tabela w trybie offline, musi być zdefiniowany w pamięci podręcznej offline przed użyciem.  Normalnie definicja tabeli jest wykonywane natychmiast po utworzeniu klienta:
 
 ```java
 AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
@@ -819,17 +819,17 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 
 ### <a name="obtain-a-reference-to-the-offline-cache-table"></a>Uzyskaj odwołanie do tabeli pamięci podręcznej w trybie Offline
 
-Dla tabeli online, możesz użyć `.getTable()`.  Do tabeli w trybie offline, należy użyć `.getSyncTable()`:
+W tabeli usługi online, należy użyć `.getTable()`.  Do tabeli w trybie offline, należy użyć `.getSyncTable()`:
 
 ```java
 MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
-Wszystkie metody, które są dostępne dla online tabel (w tym filtrowania, sortowania, stronicowania, wstawiania danych, aktualizowanie danych i usunięcie danych) działa równie dobrze w tabelach w trybie online i jest w trybie offline.
+Wszystkie metody, które są dostępne dla usługi online tabel (w tym filtrowanie, sortowanie, stronicowanie, wstawianie danych, aktualizowanie danych i usunięcie danych) działa równie dobrze w tabelach w trybie online i offline.
 
 ### <a name="synchronize-the-local-offline-cache"></a>Synchronizowanie lokalnej pamięci podręcznej w trybie Offline
 
-Synchronizacja jest w formancie aplikacji.  Oto przykład metody synchronizacji:
+Synchronizacja jest w ramach kontroli aplikacji.  Oto przykładowa metoda synchronizacji:
 
 ```java
 private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
@@ -850,23 +850,23 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 }
 ```
 
-Jeśli podano nazwę kwerendy do `.pull(query, queryname)` metody, a następnie synchronizacja przyrostowa służy do zwracania, tylko rekordy, które zostały utworzone lub zmienione od ostatniego pomyślnie ukończono ściągania.
+Jeśli nie podano nazwy zapytania do `.pull(query, queryname)` metody, a następnie synchronizacja przyrostowa służy do zwrócić tylko rekordy, które zostały utworzone lub zmienione od ostatniego pomyślnie ukończono ściągnięcia.
 
-### <a name="handle-conflicts-during-offline-synchronization"></a>Obsługa konflikty podczas synchronizacji w trybie Offline
+### <a name="handle-conflicts-during-offline-synchronization"></a>Postępowanie w przypadku konfliktów podczas synchronizacji w trybie Offline
 
-Jeśli wystąpi konflikt podczas `.push()` operacji `MobileServiceConflictException` jest generowany.   Element wystawiony serwera jest osadzony w wyjątek i mogą zostać pobrane przez `.getItem()` na wyjątek.  Dostosuj naciśnięcie przez wywołanie obiektu MobileServiceSyncContext następujące elementy:
+Jeśli konflikt występuje podczas `.push()` operacji `MobileServiceConflictException` zgłaszany.   Element wystawiony przez serwer jest osadzony w wyjątku i mogą być pobierane według `.getItem()` w drodze wyjątku.  Dopasuj wypychania przez wywołanie metody następujących elementów w obiekcie MobileServiceSyncContext:
 
 *  `.cancelAndDiscardItem()`
 *  `.cancelAndUpdateItem()`
 *  `.updateOperationAndItem()`
 
-Gdy wszystkie konflikty zostały oznaczone jako mają, wywołaj `.push()` ponownie, aby rozwiązać wszystkie konflikty.
+Po wszystkich konfliktów są oznaczone jako użytkownik chce, wywołaj `.push()` ponownie, aby rozwiązać wszystkie konflikty.
 
-## <a name="custom-api"></a>Wywołaj niestandardowego interfejsu API
+## <a name="custom-api"></a>Wywoływanie niestandardowego interfejsu API
 
-Niestandardowy interfejs API umożliwia zdefiniowanie niestandardowe punkty końcowe, które udostępniają funkcje serwera które nie mapowania insert, update, usuwania lub operacja odczytu. Przy użyciu niestandardowego interfejsu API, może mieć większą kontrolę nad wiadomości, w tym odczytywanie ustawienie nagłówki komunikatów HTTP i Definiowanie formatu treści wiadomości innych niż JSON.
+Niestandardowy interfejs API umożliwia zdefiniowanie niestandardowe punkty końcowe, które udostępniają funkcje serwera, które nie mapowanie do wstawiania, aktualizowania, usuwania lub operacja odczytu. Korzystając z niestandardowego interfejsu API, może mieć większą kontrolę nad wiadomości, w tym odczytywanie i ustawiania nagłówków wiadomości HTTP oraz definiowania format treści wiadomości, innej niż JSON.
 
-Na kliencie z systemem Android należy wywołać **invokeApi** metodę do wywołania niestandardowych punkt końcowy interfejsu API. Poniższy przykład przedstawia sposób wywołania interfejsu API punktu końcowego o nazwie **completeAll**, który zwraca klasę kolekcji o nazwie **MarkAllResult**.
+Na kliencie dla systemu Android, należy wywołać **invokeApi** metody do wywoływania niestandardowego punktu końcowego interfejsu API. Poniższy przykład pokazuje, jak wywołać punkt końcowy interfejsu API o nazwie **completeAll**, która zwraca klasę kolekcji o nazwie **MarkAllResult**.
 
 ```java
 public void completeItem(View view) {
@@ -886,36 +886,36 @@ public void completeItem(View view) {
 }
 ```
 
-**InvokeApi** metoda jest wywoływana po stronie klienta, który wysyła żądanie POST do nowego niestandardowego interfejsu API. Wynik zwracany przez niestandardowy interfejs API wyświetleniem w oknie dialogowym komunikatu, ponieważ nie ma żadnych błędów. Inne wersje **invokeApi** można opcjonalnie Wysyłanie obiektu w treści żądania, określ metodę HTTP i Wyślij parametry zapytania w żądaniu. Bez typu wersje **invokeApi** znajdują się również.
+**InvokeApi** metoda jest wywoływana na kliencie, który wysyła żądanie POST do nowego, niestandardowego interfejsu API. Wynik zwracany przez niestandardowy interfejs API jest wyświetlany w oknie dialogowym komunikatu, ponieważ są błędy. Inne wersje **invokeApi** pozwalają opcjonalnie wysyłać obiekt w treści żądania, określ metodę HTTP i Wyślij parametry zapytania wraz z żądaniem. Bez typu wersje **invokeApi** znajdują się również.
 
 ## <a name="authentication"></a>Dodawanie uwierzytelniania do aplikacji
 
-Samouczki przedstawiają szczegółowo już sposób dodania tych funkcji.
+Samouczki już szczegółowego opisywania, jak dodać te funkcje.
 
-Usługa aplikacji obsługuje [uwierzytelnianie użytkowników aplikacji](app-service-mobile-android-get-started-users.md) przy użyciu różnych dostawców tożsamości zewnętrznych: Facebook, Google, Microsoft Account, Twitter i Azure Active Directory. Tabele, aby ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników można ustawić uprawnienia. Umożliwia także tożsamość uwierzytelnionych użytkowników do zaimplementowania reguły autoryzacji w sieci wewnętrznej bazy danych.
+Usługa App Service obsługuje [uwierzytelnianie użytkowników aplikacji](app-service-mobile-android-get-started-users.md) za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, Microsoft Account, Twitter i usługi Azure Active Directory. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w zapleczu.
 
-Obsługiwane są dwa przepływy uwierzytelniania: **serwera** przepływu i **klienta** przepływu. Przepływ server zapewnia najprostszą środowisko uwierzytelniania, zależy od interfejsu sieci web dostawcy tożsamości.  Nie dodatkowe zestawy SDK są wymagane do wdrożenia serwera przepływ uwierzytelniania. Uwierzytelnianie serwera przepływu nie głęboką integrację do urządzeń przenośnych i jest zalecane tylko dla dowód scenariuszy koncepcji.
+Obsługiwane są dwa przepływy uwierzytelniania: **serwera** przepływu i **klienta** przepływu. Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejsie sieci web dostawcy tożsamości.  Nie dodatkowe zestawy SDK są wymagane do zaimplementowania uwierzytelniania przepływu serwera. Uwierzytelnianie przepływu serwera nie zapewnia ścisłą integrację w urządzeniach przenośnych i jest zalecane tylko na potrzeby weryfikacji koncepcji scenariuszy.
 
-Przepływ klienta umożliwia lepszą integrację z możliwości specyficznych dla urządzeń, takich jak logowanie jednokrotne opiera się na zestawy SDK udostępniane przez dostawcę tożsamości.  Na przykład można zintegrować z zestawem SDK usługi Facebook aplikacji mobilnej.  Klientów urządzeń przenośnych zamienia do aplikacji usługi Facebook i sprawdza z logowania jednokrotnego przed wymiany aplikacji mobilnej.
+Przepływ klienta pozwala na lepszą integrację z funkcjami specyficznych dla urządzenia, takich jak logowanie jednokrotne, ponieważ opiera się na zestawów SDK dostarczanych przez dostawcę tożsamości.  Na przykład można zintegrować z zestawu SDK usługi Facebook Twojej aplikacji mobilnej.  Klienta mobilnego zamienia do aplikacji usługi Facebook i potwierdza usługi logowania jednokrotnego przed zamianą powrót do aplikacji mobilnej.
 
 Cztery kroki są wymagane do włączenia uwierzytelniania w aplikacji:
 
-* Rejestrowanie aplikacji do uwierzytelniania przy użyciu dostawcy tożsamości.
-* Skonfiguruj z wewnętrzną bazą danych z usługi aplikacji.
-* Uprawnienia tabeli uwierzytelnionych użytkowników tylko do wewnętrznej bazy danych z usługi aplikacji.
-* Dodaj kod uwierzytelniania do aplikacji.
+* Rejestrowanie aplikacji do uwierzytelniania za pomocą dostawcy tożsamości.
+* Konfigurowanie zaplecza usługi App Service.
+* Uprawnienia tabeli dla uwierzytelnionych użytkowników tylko w wewnętrznej bazie danych usługi App Service.
+* Dodawanie kodu uwierzytelniania do aplikacji.
 
-Tabele, aby ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników można ustawić uprawnienia. Identyfikator SID użytkownika uwierzytelnionego umożliwia również modyfikowanie żądania.  Aby uzyskać więcej informacji, przejrzyj [Rozpoczynanie pracy z uwierzytelnianiem] i dokumentacji Porada zestawu SDK serwera.
+Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Identyfikator SID, uwierzytelnionego użytkownika umożliwia również modyfikowanie żądania.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] i dokumentacji Porada zestawu SDK serwera.
 
 ### <a name="caching"></a>Uwierzytelniania: Przepływ serwera
 
-Następujący kod uruchamia proces logowania przepływu serwera przy użyciu dostawcy usługi Google.  Ze względu na wymagania zabezpieczeń dla dostawcy Google jest wymagana dodatkowa konfiguracja:
+Poniższy kod uruchamia proces serwera przepływ logowania przy użyciu dostawcy Google.  Dodatkowa konfiguracja jest wymagana ze względu na wymagania dotyczące zabezpieczeń dla dostawcy Google:
 
 ```java
 MobileServiceUser user = mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
 ```
 
-Ponadto Dodaj następującą metodę do klasy głównym działania:
+Ponadto Dodaj następującą metodę do klasy działania głównego:
 
 ```java
 // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -942,9 +942,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-`GOOGLE_LOGIN_REQUEST_CODE` Zdefiniowane w głównym Twojego to działanie służy do `login()` — metoda i poziomu `onActivityResult()` metody.  Można wybrać dowolny unikatowy numer, tak długo, jak ten sam numer jest używany w ramach `login()` — metoda i `onActivityResult()` metody.  Jeśli kod klienta jest abstrakcyjny karty service (jak pokazano wcześniej), należy wywołać odpowiednie metody na karcie usługi.
+`GOOGLE_LOGIN_REQUEST_CODE` Zdefiniowane w głównego to działanie służy do `login()` metody i w ramach `onActivityResult()` metody.  Możesz wybrać dowolny unikatowy numer, tak długo, jak ten sam numer jest używany w ramach `login()` metody i `onActivityResult()` metody.  Jeśli do karty service (jak pokazano wcześniej) jest abstrakcyjny kod klienta, należy wywołać właściwe metody na karcie usługi.
 
-Należy również skonfigurować projekt dla customtabs.  Najpierw określ URL przekierowania.  Dodaj poniższy fragment do `AndroidManifest.xml`:
+Ponadto należy skonfigurować projekt dla customtabs.  Najpierw określić adresu URL przekierowania.  Dodaj poniższy fragment kodu do `AndroidManifest.xml`:
 
 ```xml
 <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -957,7 +957,7 @@ Należy również skonfigurować projekt dla customtabs.  Najpierw określ URL p
 </activity>
 ```
 
-Dodaj **redirectUriScheme** do `build.gradle` plików dla aplikacji:
+Dodaj **redirectUriScheme** do `build.gradle` pliku dla aplikacji:
 
 ```text
 android {
@@ -988,24 +988,24 @@ dependencies {
 }
 ```
 
-Uzyskaj identyfikator zalogowanego użytkownika z **MobileServiceUser** przy użyciu **metodę getUserId** metody. Na przykład sposobu użycia prognoz do wywołania asynchronicznego logowania interfejsów API, zobacz [Rozpoczynanie pracy z uwierzytelnianiem].
+Uzyskaj identyfikator zalogowanego użytkownika z **MobileServiceUser** przy użyciu **metodę getUserId** metody. Na przykład jak wywołanie asynchroniczne logowania interfejsów API za pomocą prognoz zobacz [Rozpoczynanie pracy z uwierzytelnianiem].
 
 > [!WARNING]
-> Schemat adresu URL wymieniony jest rozróżniana wielkość liter.  Upewnij się, że wszystkie wystąpienia `{url_scheme_of_you_app}` wielkość liter.
+> Schemat adresu URL, do wymienionej jest uwzględniana wielkość liter.  Upewnij się, że wszystkie wystąpienia `{url_scheme_of_you_app}` Uwzględnij wielkość liter.
 
 ### <a name="caching"></a>Tokeny uwierzytelniania pamięci podręcznej
 
-Buforowanie tokeny uwierzytelniania wymaga do przechowywania nazwy użytkownika i token uwierzytelniania lokalnie na urządzeniu. Przy następnym uruchomieniu aplikacji, sprawdź pamięci podręcznej, a jeśli te wartości są obecne, możesz pominąć dziennika w procedurze i rehydrate klienta przy użyciu tych danych. Jednak te dane są poufne i powinny być przechowywane, szyfrowane ze względów bezpieczeństwa w przypadku kradzieży telefonu.  Widać pełny przykład jak do pamięci podręcznej uwierzytelniania tokenów w [pamięci podręcznej sekcji tokeny uwierzytelniania][7].
+Buforowanie tokenów uwierzytelniania należy do przechowywania nazwy użytkownika i token uwierzytelniania lokalnie na urządzeniu. Przy następnym uruchomieniu aplikacji, sprawdź pamięci podręcznej, a jeśli te wartości są obecne, możesz pominąć dziennika w ramach procedury i przywrócenia z magazynu trwałego klienta przy użyciu tych danych. Jednak te dane są poufne i powinny być przechowywane, szyfrowane pod kątem bezpieczeństwa, w przypadku, gdy telefon zostanie skradzione.  Możesz zobaczyć pełny przykład jak do pamięci podręcznej tokenów uwierzytelniania w [pamięci podręcznej w sekcji tokeny uwierzytelniania][7].
 
-Podczas próby użycia wygasły token, pojawi się *401 nieautoryzowane* odpowiedzi. Może obsługiwać błędy uwierzytelniania za pomocą filtrów.  Filtry przechwycenia żądań aplikacji usługi wewnętrznej bazy danych. Kod filtru testów odpowiedzi na 401, proces logowania i zostanie wznowiony żądania, który wygenerował kod 401.
+Podczas próby użycia tokenu wygasłe, pojawia się *401 Brak autoryzacji* odpowiedzi. Może obsługiwać błędy uwierzytelniania przy użyciu filtrów.  Filtry Przechwytywanie żądań z zapleczem usługi App Service. Kod filtru sprawdza odpowiedzi na 401, wyzwala procesu logowania, a następnie wznawia żądania, który wygenerował 401.
 
-### <a name="refresh"></a>Używaj tokenów odświeżania
+### <a name="refresh"></a>Używanie tokenów odświeżania
 
-Token zwracany przez usługi Azure App Service uwierzytelniania i autoryzacji ma zdefiniowany czas jedną godzinę.  Po tym okresie ponownego uwierzytelnienia użytkownika.  Jeśli używasz długotrwałe token, który ma odebranych za pośrednictwem uwierzytelniania przepływu klienta, a następnie ponownie można uwierzytelniać z uwierzytelnianiem usługi aplikacji Azure i autoryzację za pomocą tego samego tokenu.  Inny token usługi Azure App Service jest generowany nowy okres istnienia.
+Czas życia zdefiniowanych jednej godziny jest tokenowi zwróconemu przez uwierzytelnianie usługi Azure App Service i autoryzacji.  Po upływie tego czasu ponownego uwierzytelnienia użytkownika.  Jeśli używasz długotrwałe token, który otrzymałeś za pośrednictwem uwierzytelniania przepływ klienta, a następnie ponownie można uwierzytelniać za pomocą uwierzytelnianie usługi Azure App Service i autoryzację przy użyciu tego samego tokenu.  Inny token w usłudze Azure App Service jest generowany nowy okres istnienia.
 
-Można również zarejestrować dostawcę, który ma być używany tokenów odświeżania.  Token odświeżania nie zawsze jest dostępne.  Wymagana jest dodatkowa konfiguracja:
+Można również zarejestrować dostawcę Aby używać tokenów odświeżania.  Token odświeżania nie jest zawsze dostępna.  Wymagana jest dodatkowa konfiguracja:
 
-* Aby uzyskać **usługi Azure Active Directory**, skonfiguruj klucz tajny klienta aplikacji Azure Active Directory.  Określ klucz tajny klienta w usłudze Azure App Service, podczas konfigurowania uwierzytelniania usługi Azure Active Directory.  Podczas wywoływania metody `.login()`, Przekaż `response_type=code id_token` jako parametr:
+* Aby uzyskać **usługi Azure Active Directory**, skonfigurować klucz tajny klienta dla aplikacji Azure Active Directory.  Określ klucz tajny klienta w usłudze Azure App Service, podczas konfigurowania uwierzytelniania usługi Azure Active Directory.  Podczas wywoływania `.login()`, przekazać `response_type=code id_token` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1017,7 +1017,7 @@ Można również zarejestrować dostawcę, który ma być używany tokenów odś
         parameters);
     ```
 
-* Aby uzyskać **Google**, Przekaż `access_type=offline` jako parametr:
+* Aby uzyskać **Google**, przekazać `access_type=offline` jako parametr:
 
     ```java
     HashMap<String, String> parameters = new HashMap<String, String>();
@@ -1029,9 +1029,9 @@ Można również zarejestrować dostawcę, który ma być używany tokenów odś
         parameters);
     ```
 
-* Aby uzyskać **Account Microsoft**, wybierz pozycję `wl.offline_access` zakresu.
+* Aby uzyskać **Account Microsoft**, wybierz opcję `wl.offline_access` zakresu.
 
-Aby odświeżyć token, należy wywołać `.refreshUser()`:
+Aby odświeżyć tokenu, należy wywołać `.refreshUser()`:
 
 ```java
 MobileServiceUser user = mClient
@@ -1039,15 +1039,15 @@ MobileServiceUser user = mClient
     .get();
 ```
 
-Najlepszym rozwiązaniem należy utworzyć filtr wykrywa 401 odpowiedzi z serwera i podejmuje próbę odświeżenia tokenu użytkownika.
+Najlepszym rozwiązaniem należy utworzyć filtr, który wykrywa 401 odpowiedzi z serwera i podejmuje próbę odświeżenia tokenu użytkownika.
 
 ## <a name="log-in-with-client-flow-authentication"></a>Zaloguj się przy użyciu uwierzytelniania przepływu klienta
 
-Ogólny proces logowania się za pomocą klienta przepływ uwierzytelniania wygląda następująco:
+Ogólny proces zalogować się przy użyciu uwierzytelniania przepływu klienta jest następujący:
 
-* Konfigurowanie usługi Azure App Service uwierzytelniania i autoryzacji, jak w przypadku uwierzytelniania serwera przepływu.
-* Integracja dostawcy uwierzytelniania zestawu SDK dla uwierzytelniania, aby wygenerować token dostępu.
-* Wywołanie `.login()` metody w następujący sposób:
+* Skonfiguruj uwierzytelnianie usługi Azure App Service i autoryzacji, tak jak serwer przepływu uwierzytelniania.
+* Zintegruj dostawcy uwierzytelniania zestawu SDK do uwierzytelniania w celu wygenerowania tokenu dostępu.
+* Wywołaj `.login()` metody w następujący sposób:
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1065,14 +1065,14 @@ Ogólny proces logowania się za pomocą klienta przepływ uwierzytelniania wygl
     });
     ```
 
-Zastąp `onSuccess()` metody z dowolnym kod chcesz użyć na pomyślnego logowania.  `{provider}` Ciąg jest prawidłowym dostawcą: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, lub **twitter**.  Jeśli zaimplementowano niestandardowe uwierzytelnianie, można również zastosować tag dostawcy uwierzytelniania niestandardowego.
+Zastąp `onSuccess()` metody za pomocą dowolnie kod mają być używane podczas logowania się pomyślnie.  `{provider}` Ciągu jest prawidłowy dostawca: **aad** (Azure Active Directory), **facebook**, **google**, **microsoftaccount**, lub **twitter**.  Jeśli zaimplementowano uwierzytelniania niestandardowego, można także zastosować tag dostawcy uwierzytelniania niestandardowego.
 
-### <a name="adal"></a>Uwierzytelnianie użytkowników z Active Directory Authentication Library (ADAL)
+### <a name="adal"></a>Uwierzytelnianie użytkowników za pomocą Active Directory Authentication Library (ADAL)
 
-Active Directory Authentication Library (ADAL) służy do logowania się użytkowników do aplikacji za pomocą usługi Azure Active Directory. Przy użyciu identyfikatora logowania przepływu klienta jest często używane zamiast `loginAsync()` metody, ponieważ zawiera więcej natywnego działania środowiska użytkownika i zezwala na dodatkowe dostosowanie.
+Active Directory Authentication Library (ADAL) służy do logowania się użytkowników do aplikacji za pomocą usługi Azure Active Directory. Za pomocą identyfikatora logowania przepływ klienta jest często używane zamiast `loginAsync()` metody, ponieważ zapewnia bardziej natywnego działania środowiska użytkownika i umożliwia dodatkowych dostosowań.
 
-1. Konfigurowanie zaplecza aplikacji mobilnej dla logowania w usłudze AAD, wykonując [konfigurowania aplikacji usługi logowania usługi Active Directory] [ 22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowania aplikację native client.
-2. Zainstaluj biblioteki ADAL, modyfikując plik build.gradle, aby uwzględnić następujące definicje:
+1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory] [ 22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
+2. Zainstaluj biblioteki ADAL, modyfikując z plikiem build.gradle, aby uwzględnić następujące definicje:
 
 ```
 repositories {
@@ -1099,10 +1099,10 @@ dependencies {
 
 1. Dodaj następujący kod do aplikacji, co następujące elementy zastępcze:
 
-* Zastąp **INSERT urzędu tutaj** o nazwie dzierżawy, w którym są udostępniane aplikacji. Format powinien być https://login.microsoftonline.com/contoso.onmicrosoft.com.
-* Zastąp **Wstaw zasób — identyfikator-tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Możesz uzyskać identyfikator klienta z **zaawansowane** w obszarze **ustawień usługi Azure Active Directory** w portalu.
-* Zastąp **INSERT klienta-ID-tutaj** z Identyfikatorem klienta, którego skopiowano aplikację native client.
-* Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, za pomocą schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
+* Zastąp **INSERT-urzędu-tutaj** nazwą dzierżawy, w której aprowizowano aplikacji. Powinna być w formacie https://login.microsoftonline.com/contoso.onmicrosoft.com.
+* Zastąp **INSERT zasobów — identyfikator — tutaj** z Identyfikatorem klienta dla zaplecza aplikacji mobilnej. Można uzyskać identyfikator klienta z **zaawansowane** karcie **ustawienia usługi Azure Active Directory** w portalu.
+* Zastąp **INSERT klienta-ID — tutaj** z Identyfikatorem klienta został skopiowany z aplikacja kliencka macierzystego.
+* Zastąp **INSERT PRZEKIEROWANIA-URI-tutaj** z witryny */.auth/login/done* punktu końcowego, przy użyciu schematu HTTPS. Ta wartość powinna być podobna do *https://contoso.azurewebsites.net/.auth/login/done*.
 
 ```java
 private AuthenticationContext mContext;
@@ -1169,17 +1169,17 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 ## <a name="filters"></a>Dostosuj komunikacji klient serwer
 
-Połączenie klienta jest zwykle podstawowe połączenie HTTP za pomocą podstawowej biblioteki HTTP dostarczony wraz z zestawu SDK systemu Android.  Istnieje kilka przyczyn, dlaczego warto zmienić:
+Połączenie klienta jest zwykle podstawowe połączenie HTTP przy użyciu podstawowej biblioteki HTTP dostarczony wraz z zestawu SDK systemu Android.  Istnieje kilka powodów dlaczego warto zmienić:
 
-* Chcesz limitów czasu za pomocą alternatywnej biblioteki HTTP.
+* Chcesz dopasować przekroczeń limitu czasu za pomocą alternatywnej biblioteki HTTP.
 * Możesz podać pasek postępu.
-* Chcesz dodać niestandardowego nagłówka do obsługi funkcji zarządzania interfejsu API.
-* Chcesz przechwytywać odpowiedzi nie powiodło się, dzięki czemu można zaimplementować ponowne uwierzytelnianie.
-* Chcesz rejestrować żądań wewnętrznej bazy danych do usługi analytics.
+* Chcesz dodać niestandardowy nagłówek do obsługi funkcji zarządzania interfejsu API.
+* Chcesz przechwycić odpowiedzi o niepowodzeniu, dzięki czemu można zaimplementować ponowne uwierzytelnienie.
+* Chcesz do rejestrowania żądań wewnętrznej bazy danych usługi analytics.
 
 ### <a name="using-an-alternate-http-library"></a>Za pomocą alternatywnej biblioteki HTTP
 
-Wywołanie `.setAndroidHttpClientFactory()` metody natychmiast po utworzeniu odwołanie do klienta.  Na przykład, aby ustawić limit czasu połączenia 60 sekund (zamiast domyślnej 10 sekund):
+Wywołaj `.setAndroidHttpClientFactory()` metoda natychmiast po utworzeniu odwołania do klienta.  Na przykład, aby ustawić limit czasu połączenia do 60 sekund (zamiast domyślnego 10 sekund):
 
 ```java
 mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
@@ -1194,9 +1194,9 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 });
 ```
 
-### <a name="implement-a-progress-filter"></a>Implementuje filtr postępu
+### <a name="implement-a-progress-filter"></a>Zastosuj filtr postępu
 
-ODCIĘTA każde żądanie można zaimplementować zaimplementowanie `ServiceFilter`.  Na przykład następujące aktualizuje pasek postępu wstępnie utworzone:
+Można zaimplementować intercept każde żądanie, implementując `ServiceFilter`.  Na przykład następujące aktualizacje pasek postępu wstępnie utworzone:
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1239,9 +1239,9 @@ Ten filtr można dołączyć do klienta w następujący sposób:
 mClient = new MobileServiceClient(applicationUrl).withFilter(new ProgressFilter());
 ```
 
-### <a name="customize-request-headers"></a>Dostosowywanie nagłówki żądania
+### <a name="customize-request-headers"></a>Dostosowywanie nagłówków żądania
 
-Należy użyć następującego `ServiceFilter` i Dołącz filtr w taki sam sposób jak `ProgressFilter`:
+Należy użyć następującego `ServiceFilter` i dołączyć filtru w taki sam sposób jak `ProgressFilter`:
 
 ```java
 private class CustomHeaderFilter implements ServiceFilter {
@@ -1266,7 +1266,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Skonfiguruj automatyczne serializacji
 
-Można określić strategii konwersji, która ma zastosowanie do wszystkich kolumn za pomocą [gson] [ 3] interfejsu API. Biblioteka systemu Android klienta używa [gson] [ 3] w tle do serializacji obiektów języka Java na dane JSON przed wysłaniem danych do usługi Azure App Service.  Poniższy kod używa **setFieldNamingStrategy()** metody do określania strategii. W tym przykładzie spowoduje usunięcie początkowy znak ("m"), a następnie małe następny znak, dla każdej nazwy pola. Na przykład go spowoduje przekształcenie "mId" w "id".  Wdrożenie strategii konwersji, aby ograniczyć potrzebę `SerializedName()` adnotacje w większości pól.
+Można określić strategię konwersji, która ma zastosowanie do wszystkich kolumn przy użyciu [gson] [ 3] interfejsu API. Biblioteka kliencka systemu Android używa [gson] [ 3] w tle do wykonywania serializacji obiektów Java do formatu JSON, dane przed wysłaniem danych do usługi Azure App Service.  Poniższy kod używa **setFieldNamingStrategy()** metodę, aby ustawić strategii. W tym przykładzie spowoduje usunięcie początkowy znak ("m"), a następnie małą następny znak, dla każdej nazwy pola. Na przykład go czy przekształcając "mId" "id."  Wdrożenie strategii konwersji, aby zmniejszyć zapotrzebowanie na `SerializedName()` adnotacji dla większości pól.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
@@ -1283,7 +1283,7 @@ client.setGsonBuilder(
 );
 ```
 
-Ten kod musi zostać wykonana przed utworzeniem odwołania klientów urządzeń przenośnych przy użyciu **MobileServiceClient**.
+Ten kod musi zostać wykonana przed utworzeniem odwołania klienta mobilnego za pomocą **MobileServiceClient**.
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
@@ -1291,9 +1291,9 @@ Ten kod musi zostać wykonana przed utworzeniem odwołania klientów urządzeń 
 [Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
 [Rozpoczynanie pracy z uwierzytelnianiem]: app-service-mobile-android-get-started-users.md
-[1]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html
+[1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
 [2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
-[3]: http://go.microsoft.com/fwlink/p/?LinkId=290801
+[3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
 [4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps

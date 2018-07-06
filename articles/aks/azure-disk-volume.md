@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8aea56017d38b57d36f5f1d42e2d4e9ed1d809e5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346097"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868249"
 ---
 # <a name="volumes-with-azure-disks"></a>Woluminy z dyskami platformy Azure
 
@@ -52,6 +52,10 @@ Po utworzeniu dysku powinien pojawić się dane wyjściowe podobne do następuj�
 > [!NOTE]
 > Usługi Azure managed disks są rozliczane według jednostki SKU dla określonego rozmiaru. Te jednostki SKU w zakresie od 32GiB S4 lub P4 dysków do 4TiB S50 lub P50 dysków. Ponadto, przepływności i wydajności operacji We/Wy — wersja Premium managed dysku zależy od rozmiaru wystąpienia węzłów w klastrze AKS i jednostki SKU. Zobacz [ceny i wydajności dysków zarządzanych][managed-disk-pricing-performance].
 
+> [!NOTE]
+> Jeśli potrzebujesz utworzyć dysk w oddzielnej grupie zasobów, należy również dodać jednostki usługi Azure Kubernetes Service (AKS) dla klastra, na grupę zasobów zawierającą dysk z `Contributor` roli. 
+>
+
 ## <a name="mount-disk-as-volume"></a>Zainstaluj dysk jako wolumin
 
 Zainstaluj dysk platformy Azure w tym zasobniku, konfigurując woluminu w specyfikacji kontenera.
@@ -86,7 +90,7 @@ kubectl apply -f azure-disk-pod.yaml
 
 Masz teraz uruchomiony zasobnik z dysku platformy Azure zainstalowany w lokalizacji `/mnt/azure`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o woluminach Kubernetes przy użyciu dysków platformy Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Ciągłej integracji i wdrażania w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak na potrzeby ciągłej integracji i wdrażania przenieść potoki fabryka danych z jednego środowiska (Programowanie, testu, produkcyjnego).
+title: Ciągła integracja i wdrażanie w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać ciągłej integracji i ciągłego wdrażania, aby przenieść potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji).
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,118 +12,118 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ee01980229495d9b3f372ec85ee874955c291e5c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268164"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868324"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągłej integracji i wdrażania w fabryce danych Azure
+# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
 
-Ciągła Integracja jest rozwiązaniem testowania każdej zmiany, aby Twoje codebase automatycznie i możliwie jak najszybciej. Ciągłe wdrażanie wynika, testowania, który odbywa się podczas ciągłej integracji i wypychanie zmiany do systemu tymczasowym czy produkcyjnym.
+Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe do testowania Twojej bazy kodu i automatycznie możliwie jak najszybciej. Ciągłe wdrażanie następuje, testy, które będzie się działo podczas ciągłej integracji i wypychanie zmian do systemu przejściowych lub produkcyjnych.
 
-Fabryka danych Azure ciągłej integracji i wdrażania oznacza przenoszenie potoki fabryka danych z jednego środowiska (Programowanie, testów produkcyjnych) do innego. Celu ciągłej integracji i wdrażania można korzystania z szablonów usługi Azure Resource Manager integracji interfejsu użytkownika z fabryki danych. Fabryka danych interfejsu użytkownika można wygenerować szablonu usługi Resource Manager, po wybraniu **szablon ARM** opcje. Po wybraniu **szablon ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla fabryki danych i pliku konfiguracji, który zawiera wszystkie ciągi połączeń oraz innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla każdego środowiska (Programowanie, testu, produkcyjnego). Główny plik szablonu usługi Resource Manager jest taka sama dla wszystkich środowisk.
+Usługi Azure Data Factory ciągłej integracji i ciągłego wdrażania oznacza, że przenoszenie potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego. Celu ciągłej integracji i ciągłego wdrażania umożliwia integrację interfejs użytkownika usługi Data Factory przy użyciu szablonów usługi Azure Resource Manager. Interfejs użytkownika usługi Data Factory można wygenerować szablonu usługi Resource Manager, po wybraniu **szablonu ARM** opcje. Po wybraniu **szablonu ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla usługi data factory i pliku konfiguracji, który zawiera wszystkie ciągi połączeń i innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla poszczególnych środowisk (tworzenia, testowania, produkcji). Główny plik szablonu usługi Resource Manager pozostaje taka sama dla wszystkich środowisk.
 
-Wprowadzenie dziewięć minutę i pokaz tej funkcji Obejrzyj następujące:
+Wprowadzenie dziewięć minutę i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>Utwórz szablon Menedżera zasobów dla każdego środowiska
-Wybierz **szablon ARM wyeksportować** Aby wyeksportować szablon Menedżera zasobów dla fabrykę danych w środowisku programistycznym.
+## <a name="create-a-resource-manager-template-for-each-environment"></a>Utwórz szablon usługi Resource Manager dla każdego środowiska
+Wybierz **szablonu ARM wyeksportować** eksportowania szablonu usługi Resource Manager dla fabryki danych w środowisku programistycznym.
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-Następnie przejdź do testu fabryki danych i produkcji fabryki danych i wybierz polecenie **szablon ARM importu**.
+Następnie przejdź do fabryki danych testowych i produkcyjnych fabryki danych i wybierz **szablonu ARM importu**.
 
 ![](media/continuous-integration-deployment/continuous-integration-image2.png)
 
-Ta akcja umożliwia przejście do portalu Azure, gdzie można zaimportować wyeksportowany szablon. Wybierz **tworzenia szablonu w edytorze** , a następnie **Załaduj plik** i wybierz wygenerowanego szablonu usługi Resource Manager. Podaj ustawienia i fabryki danych i całego potoku jest importowany w środowisku produkcyjnym.
+Ta akcja spowoduje przejście do witryny Azure portal, gdzie można zaimportować wyeksportowanego szablonu. Wybierz **Utwórz własny szablon w edytorze** i następnie **Załaduj plik** i wybierz wygenerowany szablon usługi Resource Manager. Podaj ustawienia i data factory, a cały potok jest importowany w środowisku produkcyjnym.
 
 ![](media/continuous-integration-deployment/continuous-integration-image3.png)
 
 ![](media/continuous-integration-deployment/continuous-integration-image4.png)
 
-Wybierz **Załaduj plik** wybierz wyeksportowanego szablonu usługi Resource Manager i podaj wszystkie wartości konfiguracji (na przykład połączonej usługi).
+Wybierz **Załaduj plik** wybierz wyeksportowany szablon usługi Resource Manager i podaj wszystkie wartości konfiguracji (na przykład, połączonych usług).
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Cykl życia ciągłej integracji
-Oto całym cyklu ich życia ciągłej integracji i wdrażania, którego można używać po włączeniu Integracja z usługą GIT VSTS w fabryce danych interfejsu użytkownika:
+Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, którego można używać po włączeniu integracji VSTS GIT w interfejs użytkownika usługi Data Factory:
 
-1.  Konfigurowanie programowanie fabryki danych z programu VSTS, w którym wszystkie deweloperzy mogą tworzyć fabryki danych zasobów, takich jak potoki, zestawy danych i tak dalej.
+1.  Konfigurowanie tworzenia fabryki danych za pomocą usługi VSTS, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
 
-2.  Deweloperzy mogą zmodyfikować zasoby, takie jak potoki. W ich ich modyfikacji, można wybrać **debugowania** aby zobaczyć, jak proces działa z najnowszych zmian.
+2.  Następnie deweloperzy mogą zmodyfikować zasoby, takie jak potoki. Ponieważ oni wprowadzić swoje zmiany, można wybrać **debugowania** aby zobaczyć, jak potok jest uruchamiany przy użyciu najnowszych zmian.
 
-3.  Po deweloperzy będą zadowalające swoich zmian, ich tworzenia żądania pobierania ich gałęzi do gałęzi głównej (lub gałęzi współpracy), aby uzyskać ich sprawdzenia przez elementy równorzędne zmian.
+3.  Po deweloperów są odpowiednie zmiany, mogą utworzyć żądanie ściągnięcia z gałęzi do gałęzi głównej (lub gałęzi współpracy), można pobrać ich zmiany przeglądane przez elementy równorzędne.
 
-4.  Po zmian w gałęzi głównej, można opublikować z fabryką Programowanie w wybierając **publikowania**.
+4.  Po dokonaniu zmian w gałęzi głównej, można opublikować fabryką rozwoju w wybierając **Publikuj**.
 
-5.  Kiedy zespół jest gotowa do wspierania zmian fabryki testu i fabryki produkcji, ich można wyeksportować szablonu usługi Resource Manager z gałęzi głównej lub z innej gałęzi w przypadku, gdy ich gałęzi głównej utworzyć kopię zapasową na żywo programowanie fabryki danych.
+5.  Gdy zespół jest gotowy do wspierania zmian fabryki testu i fabryki produkcji, ich można wyeksportować szablon usługi Resource Manager z głównej gałęzi lub dowolnej innej gałęzi w przypadku, gdy ich gałęzi głównej kopię na żywo tworzenia fabryki danych.
 
-6.  Wyeksportowanego szablonu usługi Resource Manager można wdrożyć z innym parametrem plików do fabryki testu i fabryki produkcji.
+6.  Wyeksportowany szablon usługi Resource Manager można wdrożyć z różnymi plikami parametrów fabryki testu i fabryki produkcji.
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatyzowanie ciągłej integracji z wersjami programu VSTS
+## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi VSTS
 
-Poniżej przedstawiono kroki, aby skonfigurować zlecenia VSTS co umożliwia automatyzację wdrożenia w wielu środowiskach fabryki danych.
+Poniżej przedstawiono procedurę konfigurowania wersji usługi VSTS, więc można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
 
-![Diagram ciągłej integracji z programu VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram przedstawiający ciągłej integracji z usługą VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Wymagania
 
--   Subskrypcji platformy Azure powiązany za pomocą Team Foundation Server lub programu VSTS [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+-   Subskrypcji platformy Azure, połączone z Team Foundation Server lub VSTS przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
 
--   Fabryka danych z usługą Git VSTS skonfigurowane.
+-   Data Factory przy użyciu narzędzia Git programu VSTS skonfigurowane.
 
--   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierający kluczy tajnych.
+-   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
 
-### <a name="set-up-a-vsts-release"></a>Konfigurowanie programu VSTS zlecenia
+### <a name="set-up-a-vsts-release"></a>Ustawianie wersji usługi VSTS
 
-1.  Przejdź do strony programu VSTS w tym samym projekcie jako skonfigurowane przy użyciu fabryki danych.
+1.  Przejdź do strony usługi VSTS, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
 
-2.  Kliknij menu u góry **kompilacji i wydania** &gt; **wersje** &gt; **Tworzenie wersji definicji**.
+2.  Kliknij menu u góry **kompilowania i wydawania** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  Wybierz **pusta procesu** szablonu.
+3.  Wybierz **pusty procesu** szablonu.
 
-4.  Wprowadź nazwę danego środowiska.
+4.  Wprowadź nazwę środowiska.
 
-5.  Dodaj artefaktu Git i wybierz tym samym repozytorium, które są skonfigurowane przy użyciu fabryki danych. Wybierz `adf_publish` jako gałąź domyślną najnowszej wersji domyślnej.
+5.  Dodaj artefaktów usługi Git i wybierz w tym samym repozytorium, które są skonfigurowane przy użyciu usługi Data Factory. Wybierz `adf_publish` na gałąź domyślną z najnowszą wersją domyślne.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Dodaj zadanie wdrażania usługi Azure Resource Manager:
+7.  Dodaj zadanie wdrożenia usługi Resource Manager platformy Azure:
 
     a.  Utwórz nowe zadanie, wyszukaj **wdrożenie grupy zasobów Azure**i dodaj go.
 
-    b.  W zadania wdrażania wybierz subskrypcję, grupy zasobów i lokalizacji docelowej fabryki danych i podaj poświadczenia, jeśli to konieczne.
+    b.  W ramach zadania wdrażania wybierz subskrypcję, grupy zasobów i lokalizacji docelowej usługi Data Factory i podaj poświadczenia, jeśli to konieczne.
 
-    c.  Wybierz **Tworzenie lub aktualizacja grupy zasobów** akcji.
+    c.  Wybierz **tworzenia lub aktualizacji grupy zasobów** akcji.
 
-    d.  Wybierz **...** w **szablonu** pola. Przeglądaj w poszukiwaniu szablonu usługi Resource Manager (*ARMTemplateForFactory.json*) utworzony przez akcję publikowanie w portalu. Ten plik w folderze `<FactoryName>` z `adf_publish` gałęzi.
+    d.  Wybierz **...** w **szablonu** pola. Przeglądaj w poszukiwaniu szablonu usługi Resource Manager (*ARMTemplateForFactory.json*) który został utworzony przez akcję publikowania w portalu. Ten plik w folderze `<FactoryName>` z `adf_publish` gałęzi.
 
-    e.  Tak samo postąpić w pliku parametrów. Wybierz poprawnego pliku, w zależności od tego, czy utworzono kopię lub korzystasz z domyślnego pliku *ARMTemplateParametersForFactory.json*.
+    e.  Te same czynności wykonasz pliku parametrów. Wybierz właściwy plik, w zależności od tego, czy utworzono kopię lub używasz domyślnego pliku *ARMTemplateParametersForFactory.json*.
 
-    f.  Wybierz **...** obok pozycji **zastąpienia parametrów szablonu** pola i wprowadź informacje dla elementu docelowego fabryki danych. Dla poświadczeń, które pochodzą z magazynu kluczy, użyj takiej samej nazwy klucza tajnego w następującym formacie: Nazwa klucza tajnego zakładając, że jest `cred1`, wprowadź `"$(cred1)"` (ująć w cudzysłów).
+    f.  Wybierz **...** obok pozycji **przesłanianie parametrów szablonu** pola, a następnie wprowadź informacje dla elementu docelowego fabryki danych. Dla poświadczeń, które pochodzą z usługi key vault, użyj takiej samej nazwie klucza tajnego w następującym formacie: Nazwa klucza tajnego zakładając, że jest `cred1`, wprowadź `"$(cred1)"` (w cudzysłowie).
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  Zapisz definicję wersji.
+8.  Zapisz definicję wydania.
 
-9.  Utwórz nową wersją z tej definicji wersji.
+9.  Tworzenie nowej wersji na podstawie tej definicji wydania.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Opcjonalne — Pobierz kluczy tajnych z usługi Azure Key Vault
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Opcjonalnie — Pobierz wpisy tajne z usługi Azure Key Vault
 
-Jeśli masz kluczy tajnych umożliwia przekazywanie szablonu usługi Azure Resource Manager, zaleca się przy użyciu usługi Azure Key Vault wraz z wydaniem programu VSTS.
+W przypadku wpisów tajnych, aby przekazać szablonu usługi Azure Resource Manager zaleca się wraz z wydaniem programu VSTS przy użyciu usługi Azure Key Vault.
 
-Istnieją dwa sposoby obsługi kluczy tajnych:
+Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
-1.  Dodawanie kluczy tajnych do pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault w celu Przekaż wartość parametru bezpieczne podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+1.  Dodawanie kluczy tajnych do pliku parametrów. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Key Vault do przekazywania wartości parametru secure podczas wdrażania](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-    -   Tworzenie kopii pliku parametrów, który jest przekazywany do publikowania gałęzi i ustaw wartości parametrów, który chcesz pobrać z magazynu kluczy o następującym formacie:
+    -   Utwórz kopię pliku parametrów, który jest przekazywany do gałęzi publikowania i ustaw wartości parametrów, które chcesz pobrać z usługi key vault o następującym formacie:
 
     ```json
     {
@@ -140,29 +140,29 @@ Istnieją dwa sposoby obsługi kluczy tajnych:
     }
     ```
 
-    -   Korzystając z tej metody, klucz tajny są automatycznie pobierane z magazynu kluczy.
+    -   Gdy ta metoda klucz tajny są pobierane z usługi key vault automatycznie.
 
-    -   Plik parametrów musi być w w gałęzi publikowania.
+    -   Plik parametrów musi znajdować się w w gałęzi publikowania.
 
-2.  Dodaj [zadań usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed wdrożeniem Menedżera zasobów Azure opisano w poprzedniej sekcji:
+2.  Dodaj [zadania usługi Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) przed przystąpieniem do wdrożenia usługi Resource Manager platformy Azure, które są opisane w poprzedniej sekcji:
 
-    -   Wybierz **zadania** karcie, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
+    -   Wybierz **zadania** kartę, Utwórz nowe zadanie, wyszukaj **usługi Azure Key Vault** i dodaj go.
 
-    -   W zadaniu Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
+    -   W ramach zadania usługi Key Vault, wybierz subskrypcję, w którym został utworzony magazyn kluczy, podaj poświadczenia, jeśli to konieczne, a następnie wybierz magazyn kluczy.
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>Udzielanie uprawnień do agenta programu VSTS
-Zadania usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu odmowy dostępu po raz pierwszy. Pobierz dzienniki wersji, a następnie zlokalizuj `.ps1` pliku przy użyciu polecenia, aby nadać uprawnienia do agenta programu VSTS. Polecenie można uruchomić bezpośrednio lub można skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasady dostępu w portalu Azure. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
+### <a name="grant-permissions-to-the-vsts-agent"></a>Udziel uprawnień do agenta usługi VSTS
+Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta usługi VSTS. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
 
-### <a name="update-active-triggers"></a>Wyzwalacze active aktualizacji
-Wdrażanie może zakończyć się niepowodzeniem, jeśli podczas próby aktualizacji active wyzwalaczy. Aby zaktualizować active wyzwalaczy, musisz ręcznie zatrzymać je i uruchom je po wdrożeniu. W tym celu można dodać zadania programu Azure Powershell, jak pokazano w poniższym przykładzie:
+### <a name="update-active-triggers"></a>Aktualizacja aktywnej wyzwalaczy
+Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta próba aktualizacji active wyzwalaczy. Aby zaktualizować active wyzwalaczy, musisz ręcznie je uruchamiać i zatrzymywać ich po wdrożeniu. W tym celu można dodać zadania programu Azure Powershell, jak pokazano w poniższym przykładzie:
 
-1.  Na karcie zadania w wersji programu VSTS Wyszukaj **programu Azure Powershell** i dodaj go.
+1.  Na karcie zadania w wersji usługi VSTS Wyszukaj **programu Azure Powershell** i dodaj go.
 
-2.  Wybierz **usługi Azure Resource Manager** co połączenie, wpisz i wyboru subskrypcji.
+2.  Wybierz **usługi Azure Resource Manager** jako połączenie typu, a następnie wybierz swoją subskrypcję.
 
-3.  Wybierz **wbudowanego skryptu** jako skrypt typu, a następnie podaj swój kod. Poniższy przykład zatrzymuje wyzwalaczy:
+3.  Wybierz **wbudowany skrypt** jako skrypt typu, a następnie podaj swój kod. Wyzwalacze zatrzymuje się w poniższym przykładzie:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -172,15 +172,15 @@ Wdrażanie może zakończyć się niepowodzeniem, jeśli podczas próby aktualiz
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Można wykonać podobne kroki i używać podobny kod (z `Start-AzureRmDataFactoryV2Trigger` funkcji) do ponownego uruchomienia wyzwalacze po wdrożeniu.
+Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV2Trigger` funkcji) do ponownego uruchomienia wyzwalacze po wdrożeniu.
 
 ## <a name="sample-template-and-script"></a>Przykładowy szablon i skryptu
-Poniżej przedstawiono dwa przykłady, które umożliwiają szybkie wprowadzenie do ciągłej integracji i wdrażania dla fabryki danych:
+Poniżej przedstawiono dwa przykłady, które umożliwiają wprowadzenie do ciągłej integracji i ciągłego wdrażania dla usługi Data Factory:
 
--   Przykładowy szablon wdrożenia, które można importować do programu VSTS.
--   Przykładowy skrypt, aby zatrzymać wyzwalaczy przed wdrożeniem i uruchom ponownie wyzwala później. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte.
+-   Przykładowy szablon wdrożenia, który można zaimportować w usłudze VSTS.
+-   Przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i uruchom ponownie uaktywnia się później. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte.
 
-Poniżej przedstawiono przykładowy szablon wdrożenia, które można importować do programu VSTS.
+Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w usłudze VSTS.
 
 ```json
 {
@@ -718,7 +718,7 @@ Poniżej przedstawiono przykładowy szablon wdrożenia, które można importowa�
 }
 ```
 
-Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed wdrożeniem i później ponowne uruchomienie usługi wyzwalaczy:
+Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i później ponownego uruchomienia wyzwalaczy:
 
 ```powershell
 param
@@ -794,3 +794,94 @@ else {
     $deletedintegrationruntimes | ForEach-Object { Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
 }
 ```
+
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Parametry niestandardowe za pomocą szablonu usługi Resource Manager
+
+Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. Po prostu musisz mieć w pliku o nazwie `arm-template-parameters-definition.json` w folderze głównym repozytorium. (Nazwa pliku musi odpowiadać nazwie, pokazano poniżej, dokładnie.) Data Factory próbuje odczytać plik, niezależnie od gałęzi, w którym aktualnie pracujesz w, ale nie tylko z gałęzi współpracy. Jeśli plik nie zostanie znaleziony, Data Factory używa domyślnych definicji.
+
+Poniższy przykład przedstawia przykładowy plik parametrów. Użyj tego przykładu jako odwołanie, aby utworzyć plik niestandardowych parametrów. Jeśli plik, który podasz nie jest w nieprawidłowym formacie JSON, Data Factory generuje komunikat o błędzie w konsoli przeglądarki i powraca do domyślnych definicji objętego interfejs użytkownika usługi Data Factory.
+
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {},
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "ssisProperties": {
+                    "catalogInfo": {
+                        "catalogServerEndpoint": "=",
+                        "catalogAdminUserName": "=",
+                        "catalogAdminPassword": {
+                            "value": "-::secureString"
+                        }
+                    },
+                    "customSetupScriptProperties": {
+                        "sasToken": {
+                            "value": "-::secureString"
+                        }
+                    }
+                },
+                "linkedInfo": {
+                    "key": {
+                        "value": "-::secureString"
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "userName": "=",
+                    "accessKeyId": "=",
+                    "servicePrincipalId": "=",
+                    "userId": "=",
+                    "clientId": "=",
+                    "clusterUserName": "=",
+                    "clusterSshUserName": "=",
+                    "hostSubscriptionId": "=",
+                    "clusterResourceGroup": "=",
+                    "subscriptionId": "=",
+                    "resourceGroupName": "=",
+                    "tenant": "=",
+                    "dataLakeStoreUri": "=",
+                    "baseUrl": "=",
+                    "connectionString": {
+                        "secretName": "="
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/datasets": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "folderPath": "=",
+                    "fileName": "="
+                }
+            }
+        }
+    }
+}
+```
+

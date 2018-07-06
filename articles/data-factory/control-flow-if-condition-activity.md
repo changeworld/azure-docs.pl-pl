@@ -1,6 +1,6 @@
 ---
-title: Jeśli warunek działania w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Jeśli warunek działania umożliwia sterowanie przepływem przetwarzanie na podstawie warunku.
+title: Jeśli warunek działania w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Działanie If Condition umożliwia sterowanie przepływem przetwarzania na podstawie warunku.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 0141694b87664a83872f7b270631d454f863d5a8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5077982bdef4d0e8fbf1ab485566909b4dc97a8a
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046170"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857382"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w fabryce danych Azure
+# <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w usłudze Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
 
 ## <a name="syntax"></a>Składnia
@@ -67,19 +67,19 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania, jeśli warunek. | Ciąg | Yes
-type | Należy wybrać opcję **IfCondition** | Ciąg | Yes
-Wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Yes
-ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Yes
-ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Yes
+name | Nazwa działania warunku if. | Ciąg | Yes
+type | Musi być równa **IfCondition** | Ciąg | Yes
+wyrażenie | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Yes
+ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Tablica | Yes
+ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Tablica | Yes
 
 ## <a name="example"></a>Przykład
-Potok, w tym przykładzie kopiuje dane z wejściowych folderu do folderu wyjściowego. Folder wyjściowy jest określana przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection ma wartość true, dane są kopiowane do outputPath1. I, jeśli wartość routeSelection ma wartość false, dane są kopiowane do outputPath2. 
+Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określana przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection jest spełniony, dane są kopiowane do outputPath1. Ponadto jeśli wartość routeSelection ma wartość false, dane są kopiowane do outputPath2. 
 
 > [!NOTE]
-> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell do uruchamiania potoku. Przewodnik krok po kroku instrukcje, aby utworzyć potok fabryki danych przy użyciu programu Azure PowerShell i JSON definicji, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell, aby uruchomić potok. Aby uzyskać wskazówki krok po kroku instrukcje tworzenia potoku usługi Data Factory przy użyciu definicji JSON i programu Azure PowerShell, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>W potoku z działaniem warunek IF (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Potok z działaniem w warunku IF (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -180,7 +180,7 @@ Potok, w tym przykładzie kopiuje dane z wejściowych folderu do folderu wyjści
 }
 ```
 
-Innym przykładem wyrażenie jest: 
+Inny przykład, wyrażenie jest: 
 
 ```json
 "expression":  {
@@ -190,7 +190,7 @@ Innym przykładem wyrażenie jest:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure połączoną usługą magazynu (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Połączona usługa Azure Storage (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -207,8 +207,8 @@ Innym przykładem wyrażenie jest:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowane zestawu danych obiektów Blob Azure (BlobDataset.json)
-Ustawia potoku **folderPath** wartość albo **outputPath1** lub **outputPath2** parametru potoku. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów Blob platformy Azure (BlobDataset.json)
+Ustawia potoku **folderPath** wartości albo **outputPath1** lub **outputPath2** parametr w potoku. 
 
 ```json
 {
@@ -246,7 +246,7 @@ Ustawia potoku **folderPath** wartość albo **outputPath1** lub **outputPath2**
 ```
 
 ### <a name="powershell-commands"></a>Polecenia programu PowerShell
-Tych poleceniach założono, zapisane pliki w formacie JSON do folderu: C:\ADF. 
+Tych poleceniach założono, zapisane pliki w formacie JSON w folderze: C:\ADF. 
 
 ```powershell
 Connect-AzureRmAccount
@@ -288,10 +288,10 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
+Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działania w sieci Web](control-flow-web-activity.md)
+- [Działanie internetowe](control-flow-web-activity.md)

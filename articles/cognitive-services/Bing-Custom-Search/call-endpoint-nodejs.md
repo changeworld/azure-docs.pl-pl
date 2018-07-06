@@ -1,6 +1,6 @@
 ---
-title: Punkt końcowy wywołanie za pomocą środowiska Node.js — wyszukiwanie niestandardowe Bing - Microsoft kognitywnych usług
-description: Ta opcja szybkiego startu pokazano, jak żądania wyniki wyszukiwania z wystąpieniem niestandardowe wyszukiwanie przy użyciu środowiska Node.js do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing.
+title: Wywoływanie punktu końcowego za pomocą środowiska Node.js — wyszukiwanie niestandardowe Bing — Microsoft Cognitive Services
+description: Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu środowiska Node.js, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,38 +9,42 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349772"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858463"
 ---
-# <a name="call-bing-custom-search-endpoint-nodejs"></a>Wywołanie wyszukiwania usługi Bing niestandardowe punktu końcowego (Node.js)
+# <a name="call-bing-custom-search-endpoint-nodejs"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Node.js)
 
-Ta opcja szybkiego startu pokazano, jak żądania wyniki wyszukiwania z wystąpieniem niestandardowe wyszukiwanie przy użyciu środowiska Node.js do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu środowiska Node.js, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania usługi Bing niestandardowe](quick-start.md).
+- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
 
 - [Node.js](https://www.nodejs.org/) zainstalowane.
 
--  [Konta usług interfejsu API kognitywnych](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+-  [Konto interfejsu API usług cognitive](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure.
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykonaj następujące kroki:
+Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następujące kroki:
 
 1. Utwórz folder dla kodu.
-2. Z wiersza polecenia lub terminalu przejdź do folderu utworzonego.
+
+2. W wierszu polecenia lub terminalu przejdź do folderu, który został utworzony.
+
 3. Zainstaluj **żądania** modułu węzła:
     <pre>
     npm install request
     </pre>
+    
 4. Utwórz plik BingCustomSearch.js i skopiuj następujący kod do niego.
-5. Zastąp **YOUR SUBSKRYPCJI klucza** i **YOUR-niestandardowe-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
+
+5. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
 
     ``` javascript
     var request = require("request");
@@ -77,6 +81,6 @@ Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykona
    ``` 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie środowiska hostowanej interfejsu użytkownika](./hosted-ui.md)
-- [Umożliwia znaczników decoration wyróżnianie tekstu](./hit-highlighting.md)
+- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
+- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
 - [Strona stron sieci Web](./page-webpages.md)

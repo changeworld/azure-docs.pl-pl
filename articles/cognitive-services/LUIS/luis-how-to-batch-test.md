@@ -1,6 +1,6 @@
 ---
-title: Wsadowe testowanie aplikacji LUIS - Azure | Dokumentacja firmy Microsoft
-description: Opis języka (LUIS) partii testowania należy używać można znaleźć zniesławiających niepoprawne intencje i jednostek.
+title: Batch test aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Użyj opcji testowania partii Language Understanding (LUIS), aby znaleźć wypowiedzi z niepoprawne intencje i podmioty.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,57 +9,57 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 822fb1e2d5b13941527d242e8501b423bd6b81cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 0844ec9c421afd4cd1e9e8b2e6ab5fbe93b23d04
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265517"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868909"
 ---
-# <a name="batch-testing"></a>Testowanie usługi partia zadań
- Testowanie partii jest kompleksowe test na bieżącym uczonego modelu do mierzenia jego wydajność w LUIS. 
+# <a name="batch-testing"></a>Testowanie wsadowe
+ Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. 
 
 <a name="batch-testing"></a>
-## <a name="import-a-dataset-file-for-batch-testing"></a>Importowanie pliku zestawu danych do testowania partii
+## <a name="import-a-dataset-file-for-batch-testing"></a>Importuj plik zestawu danych do testowania usługi batch
 
-1. Wybierz **testu** w górnym pasku, a następnie wybierz opcję **partii testowania panelu**.
+1. Wybierz **testu** w górnym pasku, a następnie wybierz pozycję **Batch testowania panelu**.
 
-    ![Łącze testowania partii](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Link testowanie usługi Batch](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Wybierz **dataset importu**. **Nowy zestaw danych importu** zostanie wyświetlone okno dialogowe. Wybierz **wybierz plik** i Znajdź [JSON](luis-concept-batch-test.md#batch-file-format) pliku, który zawiera *nie więcej niż 1000* zniesławiających do testowania.
+2. Wybierz **Importowanie zestawu danych**. **Nowy zestaw danych importu** pojawi się okno dialogowe. Wybierz **wybierz plik** i zlokalizuj plik JSON z prawidłowymi [formatu JSON](luis-concept-batch-test.md#batch-file-format) zawierający *nie więcej niż 1000* wypowiedzi do testowania.
 
-    ![Zaimportuj plik zestawu danych](./media/luis-how-to-batch-test/batchtest-importset.png)
+    ![Importuj plik zestawu danych](./media/luis-how-to-batch-test/batchtest-importset.png)
 
-    Na pasku powiadomień red u góry przeglądarki zostały zgłoszone błędy importu. Import zawiera błędy, zostanie utworzona żadnego zestawu danych. Aby uzyskać więcej informacji, zobacz [typowe błędy](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Importuj błędy są zgłaszane na pasku powiadomień czerwony u góry strony w przeglądarce. Podczas importowania zawiera błędy, jest tworzony żaden zestaw danych. Aby uzyskać więcej informacji, zobacz [typowych błędów](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. W **nazwę zestawu danych** wprowadź nazwę pliku zestawu danych. Plik zestawu danych zawiera **tablicy zniesławiających** tym *etykietą zamiar* i *jednostek*. Przegląd [przykładowy plik wsadowy](luis-concept-batch-test.md#batch-file-format) składni. 
+3. W **Nazwa zestawu danych** wprowadź nazwę pliku zestawu danych. Plik dataset zawiera **tablicy wypowiedzi** tym *etykietą intencji* i *jednostek*. Przegląd [przykładowy plik wsadowy](luis-concept-batch-test.md#batch-file-format) składni. 
 
-4. Wybierz **gotowe**. Zostanie dodany plik zestawu danych.
+4. Wybierz pozycję **Done** (Gotowe). Plik zestawu danych zostanie dodany.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Uruchom, Zmień nazwę, eksportowanie lub usuwanie zestawu danych
-Do uruchamiania, Zmień nazwę, wyeksportować lub usunąć zestaw danych, użyj wielokropkiem (**...** ) na końcu wiersza zestawu danych.
+## <a name="run-rename-export-or-delete-dataset"></a>Uruchom, zmiana nazwy, eksportowanie lub usuwanie zestawu danych
+Aby uruchomić, Zmień nazwę, wyeksportować lub usunąć zestaw danych, użyj wielokropka (***...*** ) przycisk na końcu wiersza zestawu danych.
 
 ![Akcje zestawu danych](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Uruchom test partii w przeszkolone aplikacji
+## <a name="run-a-batch-test-on-your-trained-app"></a>Uruchom test usługi batch w aplikacji uczonego
 
-Aby uruchomić test, wybierz nazwę zestawu danych. Po zakończeniu testu, ten wiersz przedstawia wynik testu, zestawu danych.
+Aby uruchomić test, wybierz nazwę zestawu danych. Po zakończeniu testu, w tym wierszu wyświetlana wyniku testu, zestawu danych.
 
-![Wynik testu usługi partia zadań](./media/luis-how-to-batch-test/run-test.png)
+![Wynik testu usługi Batch](./media/luis-how-to-batch-test/run-test.png)
 
-Do pobrania zestawu danych jest tego samego pliku, który został przekazany do testowania partii.
+Do pobrania zestaw danych jest tego samego pliku, który został przekazany do testowania usługi batch.
 
 |Stan|Znaczenie|
 |--|--|
-|![Ikona zielone koło pomyślnie testu](./media/luis-how-to-batch-test/batch-test-result-green.png)|Wszystkie zniesławiających zostały wykonane pomyślnie.|
-|![Wystąpił błąd testu czerwony x ikony](./media/luis-how-to-batch-test/batch-test-result-red.png)|Co najmniej jeden utterance celem nie jest zgodny prognozowania.|
+|![Ikona zielonego okręgu pomyślnego testowego](./media/luis-how-to-batch-test/batch-test-result-green.png)|Wszystkie wypowiedzi zostały wykonane pomyślnie.|
+|![Ile niepowodzeniem testu czerwony x ikony](./media/luis-how-to-batch-test/batch-test-result-red.png)|Celem co najmniej jeden wypowiedź nie odpowiada prognozowania.|
 |![Aby rozpocząć testowanie ikony](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test jest gotowy do uruchomienia.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
-## <a name="view-batch-test-results"></a>Wyświetlanie wyników testu partii 
-Aby przejrzeć wyniki testu partii, wybierz **zobaczyć wyniki**.
+## <a name="view-batch-test-results"></a>Wyświetl wyniki testu dla usługi batch 
+Aby przejrzeć wyniki testów usługi batch, wybrać **wyniki**.
 
-![Wyniki testu partii](./media/luis-how-to-batch-test/run-test-results.png)
+![Wyniki testu usługi Batch](./media/luis-how-to-batch-test/run-test-results.png)
 
 <!--
  Select the **See results** link that appears after you run the test. A scatter graph known as an error matrix displays. The data points represent the utterances in the dataset. 
@@ -71,11 +71,11 @@ The filtering panel on the right side of the screen displays a list of all inten
 -->
 
 
-<a name="filter-chart-results-by-intent-or-entity"></a> ## Filtrowanie wyników wykresu
+<a name="filter-chart-results-by-intent-or-entity"></a> ## Filtruj wyniki na wykresie
 
-Aby filtrować wykresu w określonym celem lub jednostki, wybierz opcje lub jednostce panel filtrowania po prawej stronie. Punkty danych i ich dystrybucję aktualizacji na wykresie zgodnie z wyborem. 
+Aby filtrować wykres według określonych przeznaczenie lub jednostki, wybierz przeznaczenie lub jednostki w panelu filtrowania po prawej stronie. Na wykresie, zgodnie z wybraną aktualizację punktów danych oraz ich dystrybucji. 
  
-![Wynik testu wizualizowanego partii](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Wynik testu wizualizowany usługi Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 <!--
 ## Investigate false sections
@@ -84,33 +84,33 @@ Data points on the **[False Positive][false-positive]** and **[False Negative][f
 
 The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
 -->
-## <a name="view-single-point-utterance-data"></a>Wyświetlanie utterance jednego punktu danych
-Na wykresie umieść kursor nad punkt danych, aby zobaczyć wynik pewności jego przewidywania. Wybierz punkt danych, aby pobrać jego odpowiedniego utterance na liście zniesławiających w dolnej części strony. 
+## <a name="view-single-point-utterance-data"></a>Wyświetlanie wypowiedź pojedynczym punktem danych
+Na wykresie umieść kursor nad punktem danych, aby zobaczyć wynik pewności jej prognozy. Wybierz punkt danych, aby pobrać jego odpowiedniego wypowiedź na liście wypowiedzi w dolnej części strony. 
 
-![Wybrane utterance](./media/luis-how-to-batch-test/selected-utterance.png)
+![Wybrane wypowiedź](./media/luis-how-to-batch-test/selected-utterance.png)
 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
-## <a name="view-section-data"></a>Widok danych sekcji
-Na wykresie czterech sekcji, wybierz nazwę sekcji, takich jak **fałszywych** w prawym górnym rogu wykresu. Poniżej wykresu wszystkie zniesławiających w tej sekcji są wyświetlane poniżej wykresu w postaci listy. 
+## <a name="view-section-data"></a>Wyświetlanie części danych
+Na wykresie czterech części wybierz nazwę sekcji, takich jak **fałszywie dodatnie** w prawym górnym rogu wykresu. Pod wykresem wszystkie wypowiedzi w tej sekcji są wyświetlane poniżej wykresu na liście. 
 
-![Wybrane zniesławiających przez sekcję](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Wybrane wypowiedzi przez sekcję](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-W tym obrazie poprzedniego utterance `switch on` jest oznaczony przy użyciu zamiaru TurnAllOn, ale otrzymano Prognozowanie brak konwersji. Jest to wskazanie, że celem TurnAllOn wymaga więcej zniesławiających przykład, aby wprowadzić oczekiwanego prognozowania. 
+Na poprzedniej ilustracji, a wypowiedź `switch on` ma etykietę z zamiarem TurnAllOn, ale Odebrano obiekt prognozowania wartości None intencji. Jest to wskazanie, że celem TurnAllOn wymaga więcej wypowiedzi przykład, aby mogła przewiduje oczekiwanego. 
 
-Dwie sekcje wykresu w red wskazują zniesławiających, które nie pasuje do oczekiwanego prognozowania. Oznaczają one zniesławiających które LUIS potrzebuje więcej szkolenia. 
+Dwie sekcje wykresów na czerwono wskazują wypowiedzi jest niezgodna z oczekiwanym prognozy. Oznaczają one wypowiedzi LUIS, których potrzebuje więcej szkoleń. 
 
-Dwie sekcje wykresu w zielony odpowiadało oczekiwanego prognozowania.
+Dwie sekcje wykresów w kolorze zielonym był zgodny z oczekiwanym prognozy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli testowania wskazuje, że aplikacja LUIS nie rozpoznaje poprawne intencje i jednostek, można pracować poprawić wydajność aplikacji LUIS etykietowania więcej zniesławiających lub dodając funkcje. 
+Jeśli testy wskazuje, że aplikacją usługi LUIS nie rozpoznaje poprawne intencje i podmioty, możesz podjąć poprawianie wydajności aplikacją usługi LUIS poprzez etykietowanie więcej wypowiedzi lub dodawanie funkcji. 
 
-* [Etykieta sugerowane zniesławiających z LUIS](Label-Suggested-Utterances.md) 
-* [Użyj funkcji, aby zwiększyć wydajność aplikacji LUIS](luis-how-to-add-features.md) 
-* [Zrozumienie partii testowanie za pomocą tego samouczka](luis-tutorial-batch-testing.md)
-* [Dowiedz się partii testowania pojęcia](luis-concept-batch-test.md).
+* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](Label-Suggested-Utterances.md) 
+* [Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS](luis-how-to-add-features.md) 
+* [Omówienie usługi batch, testowanie za pomocą tego samouczka](luis-tutorial-batch-testing.md)
+* [Dowiedz się, testowanie pojęcia usługi batch](luis-concept-batch-test.md).
 
 [true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
 [true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative

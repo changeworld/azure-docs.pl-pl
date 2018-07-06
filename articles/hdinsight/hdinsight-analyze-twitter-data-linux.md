@@ -1,6 +1,6 @@
 ---
-title: Analizowanie danych Twitter przy użyciu Apache Hive - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć use Hive i Hadoop w usłudze HDInsight do przekształcenia danych pierwotnych TWitter w tabeli programu Hive można wyszukiwać.
+title: Analizowanie danych serwisu Twitter przy użyciu Apache Hive — Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć programu Hive i usługi Hadoop w HDInsight Przekształcanie nieprzetworzonych danych serwisu TWitter w tabeli programu Hive można wyszukiwać.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,33 +14,33 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f48aa68838ff8cac0119f66f168fce6008d388bc
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 0c6643e167f43c2524a4d00a209c5a5db22076a8
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959026"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865318"
 ---
-# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analizowanie danych Twitter przy użyciu Hive i Hadoop w usłudze HDInsight
+# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analizowanie danych serwisu Twitter przy użyciu technologii Hive i usługi Hadoop w HDInsight
 
-Dowiedz się, jak używać Apache Hive do przetwarzania danych w serwisie Twitter. Wynik jest lista Twitter użytkowników, którzy wysyłane większość tweetów, które zawierają określony wyraz.
+Dowiedz się, jak używać Apache Hive do przetwarzania danych w usłudze Twitter. Wynik jest listę użytkowników usługi Twitter, którzy wysłali większość tweety, które zawierają określony wyraz.
 
 > [!IMPORTANT]
-> Kroki opisane w tym dokumencie zostały przetestowane na 3,6 HDInsight.
+> Kroki opisane w niniejszym dokumencie zostały przetestowane w HDInsight 3.6.
 >
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 ## <a name="get-the-data"></a>Pobieranie danych
 
-Twitter pozwala na pobieranie danych dla każdego tweet jako dokument JavaScript Object Notation (JSON) za pośrednictwem interfejsu API REST. [OAuth](http://oauth.net) jest wymagany do uwierzytelniania interfejsu API.
+Twitter pozwala pobrać danych dla każdego tweetu jako dokument JavaScript Object Notation (JSON) za pośrednictwem interfejsu API REST. [OAuth](http://oauth.net) jest wymagany do uwierzytelniania do interfejsu API.
 
 ### <a name="create-a-twitter-application"></a>Tworzenie aplikacji usługi Twitter
 
-1. W przeglądarce sieci web, zaloguj się do [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kliknij przycisk **rejestracji teraz** łącza, jeśli nie masz konta w usłudze Twitter.
+1. Z poziomu przeglądarki sieci web, zaloguj się do [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kliknij przycisk **Utwórz konto już teraz** łącze, jeśli nie masz konta w serwisie Twitter.
 
 2. Kliknij przycisk **Utwórz nową aplikację**.
 
-3. Wprowadź **nazwa**, **opis**, **witryny sieci Web**. Można uzupełnić adres URL dla **witryny sieci Web** pola. W poniższej tabeli przedstawiono niektóre przykładowe wartości do użycia:
+3. Wprowadź **nazwa**, **opis**, **witryny sieci Web**. Można uzupełnić adres URL **witryny sieci Web** pola. W poniższej tabeli przedstawiono niektóre przykładowe wartości do użycia:
 
    | Pole | Wartość |
    |:--- |:--- |
@@ -48,24 +48,24 @@ Twitter pozwala na pobieranie danych dla każdego tweet jako dokument JavaScript
    | Opis |MyHDInsightApp |
    | Witryna sieci Web |http://www.myhdinsightapp.com |
 
-4. Sprawdź **tak, zgadzam się**, a następnie kliknij przycisk **tworzenie aplikacji Twitter**.
+4. Sprawdź **tak, zgadzam**, a następnie kliknij przycisk **tworzenie aplikacji usługi Twitter**.
 
 5. Kliknij przycisk **uprawnienia** kartę. Domyślne uprawnienia **tylko do odczytu**.
 
-6. Kliknij przycisk **kluczy i tokenów dostępu** kartę.
+6. Kliknij przycisk **klucze i tokeny dostępu** kartę.
 
-7. Kliknij przycisk **Utwórz moje tokenu dostępu**.
+7. Kliknij przycisk **Utwórz Mój token dostępu**.
 
 8. Kliknij przycisk **OAuth testu** w prawym górnym rogu strony.
 
 9. Zapisz **konsumenta**, **klucz tajny klienta**, **token dostępu**, i **klucz tajny tokenu dostępu**.
 
-### <a name="download-tweets"></a>Pobierz tweetów
+### <a name="download-tweets"></a>Pobierz tweety
 
-Poniższy kod języka Python pobiera 10 000 tweetów z serwisem Twitter, a następnie zapisz je w pliku o nazwie **tweets.txt**.
+Poniższy kod Python pobiera 10 000 tweety z serwisu Twitter, a następnie zapisz je w pliku o nazwie **tweets.txt**.
 
 > [!NOTE]
-> W klastrze usługi HDInsight są wykonywane następujące czynności, ponieważ Python jest już zainstalowana.
+> Następujące kroki są wykonywane w klastrze HDInsight, ponieważ Python jest już zainstalowana.
 
 1. Nawiąż połączenie z klastrem usługi HDInsight przy użyciu protokołu SSH:
 
@@ -151,7 +151,7 @@ Poniższy kod języka Python pobiera 10 000 tweetów z serwisem Twitter, a nast�
    ```
 
     > [!IMPORTANT]
-    > Przy użyciu informacji z aplikacji twitter, Zastąp tekst zastępczy dla następujących elementów:
+    > Przy użyciu informacji z aplikacji usługi twitter, należy zastąpić tekst symbolu zastępczego dla następujących elementów:
     >
     > * `consumer_secret`
     > * `consumer_key`
@@ -159,31 +159,31 @@ Poniższy kod języka Python pobiera 10 000 tweetów z serwisem Twitter, a nast�
     > * `access_token_secret`
 
     > [!TIP]
-    > Dostosuj filtru tematów w ostatnim wierszu do śledzenia popularne słowa kluczowe. Przy użyciu popularnych słów kluczowych w momencie uruchamiania skryptu umożliwia szybsze przechwytywania danych.
+    > Dostosowanie filtru tematów w ostatnim wierszu, aby śledzić popularne słowa kluczowe. Przy użyciu popularnych słów kluczowych w momencie uruchomienia skryptu umożliwia szybsze przechwytywania danych.
 
 6. Użyj **Ctrl + X**, następnie **Y** można zapisać pliku.
 
-7. Aby uruchomić plik i pobrać tweetów, użyj następującego polecenia:
+7. Uruchom plik i Pobierz tweety, użyj następującego polecenia:
 
     ```bash
     python gettweets.py
     ```
 
-    Wyświetlany jest wskaźnik postępu. Jak są pobierane tweetów liczy nawet o 100%.
+    Wyświetlany jest wskaźnik postępu. Jak tweety są pobierane, liczniki do 100%.
 
    > [!NOTE]
-   > Jeśli trwa zbyt długo pasek postępu, można poprawić, należy zmienić filtr, aby śledzić tematy trendów. W przypadku wielu tweetów dotyczących tematu w filtrze może szybko uzyskać 10000 tweetów, potrzebne.
+   > Jeśli trwa zbyt długo, aż pasek postępu awansować, należy zmienić filtru w celu śledzenia trendów tematów. W przypadku wielu tweety na temat w filtrze można szybko uzyskać 10000 tweety potrzebne.
 
 ### <a name="upload-the-data"></a>Przekazywanie danych
 
-Aby przekazać dane do magazynu usługi HDInsight, użyj następujących poleceń:
+Aby przekazać dane do magazynu HDInsight, użyj następujących poleceń:
 
 ```bash
 hdfs dfs -mkdir -p /tutorials/twitter/data
 hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
-Te polecenia przechowywania danych w miejscu dostępnym dla wszystkich węzłów w klastrze.
+Te polecenia przechowywanie danych w lokalizacji dostępnej dla wszystkich węzłów w klastrze.
 
 ## <a name="run-the-hiveql-job"></a>Uruchom zadanie HiveQL
 
@@ -193,7 +193,7 @@ Te polecenia przechowywania danych w miejscu dostępnym dla wszystkich węzłów
    nano twitter.hql
    ```
 
-    Użyj następującego tekstu jako zawartość pliku:
+    Skorzystaj z poniższego tekstu jako zawartość pliku:
 
    ```hiveql
    set hive.exec.dynamic.partition = true;
@@ -302,15 +302,15 @@ Te polecenia przechowywania danych w miejscu dostępnym dla wszystkich węzłów
    ```
 
 2. Naciśnij klawisz **Ctrl + X**, naciśnij klawisz **Y** można zapisać pliku.
-3. Użyj następującego polecenia, aby uruchomić HiveQL zawarte w pliku:
+3. Użyj następującego polecenia do uruchomienia HiveQL zawarte w pliku:
 
    ```bash
    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i twitter.hql
    ```
 
-    To polecenie uruchamia **twitter.hql** pliku. Po wykonaniu kwerendy, zostanie wyświetlony `jdbc:hive2//localhost:10001/>` wiersza.
+    To polecenie uruchamia **twitter.hql** pliku. Po wykonaniu zapytania zostanie wyświetlony `jdbc:hive2//localhost:10001/>` wiersza.
 
-4. W wierszu beeline Użyj następującego zapytania, aby sprawdzić, czy dane zostały zaimportowane:
+4. W wierszu polecenia z usługi beeline Użyj następującego zapytania, aby sprawdzić, czy dane zostały zaimportowane:
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
@@ -320,17 +320,17 @@ Te polecenia przechowywania danych w miejscu dostępnym dla wszystkich węzłów
    ORDER BY cc DESC LIMIT 10;
    ```
 
-    Ta kwerenda zwraca maksymalnie 10 tweetów, zawierające słowo **Azure** w treści wiadomości.
+    Ta kwerenda zwraca maksymalnie 10 tweety, które zawierają słowo **Azure** w treści wiadomości.
 
     > [!NOTE]
-    > Zmiana filtru w `gettweets.py` skryptów, Zastąp **Azure** jeden z filtrów używane.
+    > Jeśli zmienisz filtru `gettweets.py` skryptu i Zastąp **Azure** przy użyciu jednego z filtrów jest używany.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaniu przekształcania zestaw danych JSON bez struktury w strukturze tabeli programu Hive. Aby dowiedzieć się więcej na temat programu Hive w usłudze HDInsight, można znaleźć w następujących dokumentach:
+Ma pokazaliśmy ci, jak przekształcić zestaw danych JSON bez struktury w tabeli programu Hive ze strukturą. Aby dowiedzieć się więcej na temat programu Hive na HDInsight, zobacz następujące dokumenty:
 
 * [Rozpoczynanie pracy z usługą HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu HDInsight](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se
 [curl-download]: http://curl.haxx.se/download.html

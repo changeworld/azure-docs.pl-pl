@@ -1,6 +1,6 @@
 ---
-title: Rejestrować dane Analytics | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu analizy dzienników prywatności i zabezpiecza dane.
+title: Bezpieczeństwo danych analizy dziennika | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ochronę prywatności i zabezpiecza dane usługi Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 7596428b4ed067bf53f3b295a1682ed372f8d472
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131448"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859784"
 ---
-# <a name="log-analytics-data-security"></a>Rejestrować analizy danych
-Ten dokument jest przeznaczony do dostarczania informacji Azure Log Analytics załączyć na [Centrum zaufania Azure](../security/security-microsoft-trust-center.md).  
+# <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
+Ten dokument jest przeznaczony do dostarczania informacji usługi Azure Log Analytics do uzupełnienia informacji o [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
 
-W tym artykule opisano, jak dane są zbierane, przetwarzane i zabezpieczane przez usługi Analiza dzienników. Korzystania z agentów, aby połączyć się z usługą sieci web, użyj programu System Center Operations Manager do zbierania danych operacyjnych lub pobrać danych diagnostycznych platformy Azure na potrzeby używania przez analizy dzienników. 
+W tym artykule wyjaśniono, jak dane są zbierane, przetwarzane i zabezpieczane przez usługę Log Analytics. Korzystania z agentów, aby nawiązać połączenie z usługą sieci web, użyć programu System Center Operations Manager do zbierania danych operacyjnych lub pobierać dane z usługi Diagnostyka Azure do użycia przez usługę Log Analytics. 
 
-Usługi analizy dzienników bezpiecznie zarządza danych oparte na chmurze za pomocą następujących metod:
+Usługa Log Analytics bezpiecznie zarządza dane oparte na chmurze przy użyciu następujących metod:
 
 * Podział danych
 * Przechowywanie danych
@@ -36,136 +36,135 @@ Usługi analizy dzienników bezpiecznie zarządza danych oparte na chmurze za po
 * Zgodność
 * Certyfikaty standardów zabezpieczeń
 
-Skontaktuj się z nami w przypadku jakichkolwiek pytań, sugestie lub problemy związane z dowolnej z poniższych informacji, w tym nasze zasady zabezpieczeń w [opcje pomocy technicznej platformy Azure](http://azure.microsoft.com/support/options/).
+Skontaktuj się z nami za pomocą jakiekolwiek pytania, sugestie lub problemy dotyczące dowolnej z następujących informacji zgodnie z zasadami zabezpieczeń w tym [opcje pomocy technicznej platformy Azure](http://azure.microsoft.com/support/options/).
 
 ## <a name="data-segregation"></a>Podział danych
-Po danych jest pozyskanych przez usługę Analiza dzienników, dane są przechowywane logicznie oddzielnie dla każdego składnika w całej usługi. Wszystkie dane, jest oznaczone na obszar roboczy. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi. Dane są przechowywane w bazie danych dedykowanego w klastrze magazynu w regionie, który wybrano.
+Po Twoje dane są pozyskiwane przez usługę Log Analytics, dane są logicznie oddzielone dla każdego składnika w całej usłudze. Wszystkie dane są otagowane obszaru roboczego. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi. Dane są przechowywane w dedykowany bazy danych w klastrze magazynu w regionie, który wybrano.
 
 ## <a name="data-retention"></a>Przechowywanie danych
-Indeksowane dziennik wyszukiwania danych są przechowywane i przechowywane zgodnie z planem cenową. Aby uzyskać więcej informacji, zobacz [cennik analizy dziennika](https://azure.microsoft.com/pricing/details/log-analytics/).
+Indeksowane dane wyszukiwania dziennika są przechowywane i przechowywane zgodnie z planem cennika. Aby uzyskać więcej informacji, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-W ramach Twojej [umowy subskrypcyjnej dotyczącej usług](https://azure.microsoft.com/support/legal/subscription-agreement/), firma Microsoft będzie przechowywać dane zgodnie z postanowieniami Umowy.  Dane zostaną usunięte, będziemy również usunięcie konta magazynu Azure, w którym znajdują się dane.  Dane klienta zostanie usunięty, nie ma dysków fizycznych zostaną zniszczone.  
+Jako część Twojego [umowie subskrypcyjnej dotyczącej usług](https://azure.microsoft.com/support/legal/subscription-agreement/), firma Microsoft zachowuje dane zgodnie z postanowieniami Umowy.  Dane zostaną usunięte, możemy również usunąć konto magazynu platformy Azure, gdzie znajdują się dane.  Po usunięciu danych klienta nie dysków fizycznych są niszczone.  
 
-Poniższa tabela przedstawia niektóre z dostępnych rozwiązań oraz przykłady typu danych, które pobierają.
+W poniższej tabeli przedstawiono niektóre z dostępnych rozwiązań i zawiera przykłady typu danych, które pobierają.
 
 | **Rozwiązanie** | **Typy danych** |
 | --- | --- |
 | Pojemność i wydajność |Dane dotyczące wydajności i metadane |
-| Ocena oprogramowania chroniącego przed złośliwym kodem |Dane konfiguracji i metadane |
-| Zarządzanie aktualizacjami |Metadane i stan danych. |
-| Zarządzanie dziennikami |Zdefiniowane przez użytkownika dzienniki zdarzeń, dzienniki zdarzeń systemu Windows i/lub dzienniki programu IIS |
-| Śledzenie zmian |Spisu oprogramowania, usługa systemu Windows i Linux demon metadanych i metadanych pliku systemu Windows i Linux |
-| SQL i oceny usługi Active Directory |Wyniki danych usługi WMI, dane rejestru dane dotyczące wydajności i dynamicznego zarządzania programu SQL Server |
+| Zarządzanie aktualizacjami |Metadane i dane dotyczące stanu |
+| Zarządzanie dziennikami |Zdefiniowane przez użytkownika dzienniki zdarzeń, dzienniki zdarzeń Windows i/lub dzienniki programu IIS |
+| Śledzenie zmian |Spis oprogramowania, usługi Windows i metadanych demonów systemu Linux i metadanych systemu Windows/Linux |
+| Program SQL oraz oceny usługi Active Directory |Dane usługi WMI, dane rejestru, dane dotyczące wydajności i dynamicznego zarządzania programu SQL Server należy wyświetlić wyniki |
 
 W poniższej tabeli przedstawiono przykłady typów danych:
 
 | **Typ danych** | **Pola** |
 | --- | --- |
-| Alerty |Alert nazwa, opis alertu, identyfikatorze BaseManagedEntityId, identyfikator problemu, IsMonitorAlert, RuleId, ResolutionState, priorytet, ważność, kategoria, właściciel, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
-| Konfigurowanie |CustomerID, identyfikator agenta, identyfikator jednostki, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Wydarzenie |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Uwaga:** podczas zapisywania zdarzenia za pomocą pola niestandardowe w dzienniku zdarzeń systemu Windows OMS zbiera je. |
+| Alerty |Zgłoś alert, nazwa, opis alertu, BaseManagedEntityId, identyfikator problemu, IsMonitorAlert, RuleId, stanu rozpoznania, priorytetu, ważności, kategorii, właściciel, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
+| Konfigurowanie |CustomerID, identyfikator agenta, EntityID, ManagedTypeID ManagedTypePropertyID, CurrentValue, ChangeDate |
+| Wydarzenie |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Uwaga:** podczas zapisywania zdarzenia z polami niestandardowymi w dzienniku zdarzeń Windows, usługi Log Analytics zbiera ich. |
 | Metadane |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Wydajność |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Stan |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Zabezpieczenia fizyczne
-Usługi analizy dzienników jest zarządzana przez personel firmy Microsoft i wszystkich działań są rejestrowane i może być sprawdzona. Analiza dzienników działa jako usługa Azure i spełnia wszystkie wymagania Azure zgodności i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń systemu Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszarów są zmieniane w ciągu jednego dnia roboczego dla każdego, kto nie ma już odpowiedzialność za usługę, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej używamy w [Datacenters Microsoft](https://azure.microsoft.com/en-us/global-infrastructure/).
+Usługa Log Analytics jest zarządzana przez personel firmy Microsoft, a wszystkie działania są rejestrowane i podlega inspekcji. Usługa log Analytics jest świadczona jako usługa platformy Azure i spełnia wszystkie wymagania dotyczące zgodności platformy Azure i zabezpieczeń. Możliwość wyświetlania szczegółów dotyczących zabezpieczeń fizycznych zasobów platformy Azure na stronie 18 [Przegląd zabezpieczeń usługi Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Prawa fizyczny dostęp do bezpiecznego obszary są zmieniane w ciągu jednego dnia, dla każdego, kto nie ma już odpowiedzialność za usługi Log Analytics, w tym transfer i kończenie działania. Informacje o globalnej infrastruktury fizycznej, używamy w [Datacenters Microsoft](https://azure.microsoft.com/en-us/global-infrastructure/).
 
 ## <a name="incident-management"></a>Zarządzanie zdarzeniami
-OMS ma procesu zarządzania zdarzeniami, które wszystkich usług firmy Microsoft jest zgodna. Podsumowując, firma Microsoft:
+Usługa log Analytics ma procesu zarządzania zdarzeniami, które przestrzegać wszystkich usług firmy Microsoft. Aby podsumować, firma Microsoft:
 
-* Korzystają z modelu udostępnionego odpowiedzialność, gdzie część odpowiedzialność zabezpieczeń należy do firmy Microsoft i części należy do klienta
+* Korzystają z modelu odpowiedzialności, gdzie części odpowiedzialność zabezpieczeń należy do firmy Microsoft i fragment należy do klienta
 * Zarządzanie zdarzeniami zabezpieczeń platformy Azure:
-  * Uruchom postępowania w przypadku wykrycia zdarzenia
-  * Oceń wpływ i ważność incydentu przez członków zespołu na wywołanie odpowiedzi na zdarzenia. Oparte na dowód, oceny może lub nie może powodować dalszych eskalacji do zespołu odpowiedź zabezpieczeń.
-  * Diagnozowanie zdarzenia przez ekspertów odpowiedź zabezpieczeń do przeprowadzenia badania techniczne lub śledczej, określania strategii zawierania, ograniczenia i obejście. Jeśli zespół zabezpieczeń uznaje się, że dane klienta może stać się widoczne dla bezprawnego lub nieautoryzowane osoby, równolegle rozpocznie się wykonywanie równoległe procesu powiadomienie o zdarzeniu klienta.  
-  * Ustabilizowania i odzyskać incydentu. Odpowiedzi na zdarzenia zespołu tworzy plan odzyskiwania, aby ograniczyć ten problem. Kryzysami zawierania kroków, takich jak poddawania wpływ na systemy mogą wystąpić natychmiast i równolegle z diagnostyki. Dłuższy okres środki zaradcze mogą być planowane występujące po upływie bezpośrednie ryzyko.  
-  * Zamknięcie incydentu i przeprowadzanie których post. Odpowiedzi na zdarzenia zespołu tworzy zwłok, który zawiera szczegółowe informacje o zdarzeniu, o zamiar Popraw zasady, procedury i procesy w celu zapobiegania ponownemu zdarzenia.
-* Powiadamia klientów o przypadki naruszenia zabezpieczeń:
-  * Określ zakres wpływ na klientów i zapewnienie każdy, kto jest w pełni funkcjonalne tak szczegółowe powiadomienia, jak to możliwe
-  * Utwórz powiadomienie, aby zapewnić klientom szczegółowe informacje o za mało, aby mogli wykonywać dochodzenia ich end i spełniać żadnych zobowiązań, wprowadzone do użytkownikom końcowym podczas nie opóźnienia proces powiadamiania.
-  * Potwierdź i zadeklarować zdarzenia, w razie potrzeby.
-  * Powiadamia klientów o zdarzenia powiadomienia niezwłocznie nieuzasadnione i zgodnie z żadnych zobowiązań prawnych lub umownych. Powiadomienia zdarzenia zabezpieczeń są dostarczane do jednej lub kilku administratorów klienta w jakikolwiek sposób, który wybiera firmy Microsoft, w tym za pośrednictwem poczty e-mail.
-* Należy przeprowadzić gotowości zespołu i szkolenia:
-  * Personel firmy Microsoft są wymagane do ukończenia zabezpieczeń i szkolenia świadomości, co ułatwia ich do identyfikacji i zgłaszać problemy z zabezpieczeniami podejrzane.  
-  * Operatorzy pracy z usługą Microsoft Azure mają zobowiązań szkolenia dodanie otaczającego ich dostęp do ważnych systemów hosting danych klienta.
-  * Specjalne szkolenia dotyczące ich ról odbierania personel odpowiedź zabezpieczeń firmy Microsoft
+  * Rozpocznij badanie po wykryciu zdarzenia
+  * Ocena wpływu i ważność zdarzenia przez członka zespołu reagowania na wywołanie. Na podstawie dowodów, ocena może lub nie może powodować dalsze podwyższenia poziomu zabezpieczeń zespół reagowania.
+  * Diagnozowanie zdarzenie zabezpieczeń odpowiedzi ekspertów, Przeprowadź badanie techniczne lub śledczej, określ zawierania, ograniczania ryzyka oraz możliwych obejść. Jeśli zespół ds. zabezpieczeń uważa, że dane klienta może być narażony na osobę lub, równoległe wykonywanie procesu powiadomienie o zdarzeniu klienta rozpocznie się równolegle.  
+  * Stabilizowaniu i odzyskać incydentu. Zespół reagowania na zdarzenia tworzy plan odzyskiwania, aby rozwiązać ten problem. Czynności zawierania kryzysu, takie jak poddawanie kwarantannie, których to dotyczy systemów może wystąpić, natychmiast i równolegle z diagnostyki. Dłuższy okres środków zaradczych może być planowane występujące po upływie bezpośrednie ryzyko.  
+  * Zamknięcie incydentu i przeprowadzanie późniejszej analizy. Zespół reagowania na zdarzenia tworzy późniejszej, zawierający szczegóły zdarzenia, z zamiarem Popraw zasady, procedury i procesy, aby uniknąć ponownego wystąpienia zdarzenia.
+* Powiadom klientów związane z bezpieczeństwem:
+  * Określanie zakresu klientów, których to dotyczy i w celu zapewnienia każdy, kto ma wpływ na tak szczegółowe powiadomienia, jak to możliwe
+  * Utwórz powiadomienie, aby zapewnić klientom szczegółowych wystarczającą ilość informacji, aby mogły one przeprowadzania szczegółowej analizy, po ich stronie i spełnia wszelkie zobowiązania, wprowadzone do jego usług użytkownicy końcowi podczas nadmiernie nie opóźniania proces powiadamiania.
+  * Potwierdź i zadeklarować zdarzenia, zgodnie z potrzebami.
+  * Powiadom klientów o zdarzenia powiadomień niezwłocznie nieuzasadnione i zgodnie z żadnych zobowiązań prawnych lub umownych. Powiadomienia związane z bezpieczeństwem są dostarczane do co najmniej jeden z administratorów klienta za pomocą jakichkolwiek środków, które wybierze firmy Microsoft, w tym za pośrednictwem poczty e-mail.
+* Należy przeprowadzić gotowości zespołu i szkoleniowe:
+  * Personel firmy Microsoft są wymagane w celu ukończenia zabezpieczeń i szkolenia świadomości, co ułatwia ich identyfikacji i zgłosić problemy z zabezpieczeniami potencjalnie złośliwych programów.  
+  * Operatory pracy w usłudze Microsoft Azure mają obowiązki szkolenia dodanie otaczającego ich dostęp do ważnych systemów, hostowanie danych klienta.
+  * Personel odpowiedzi zabezpieczeń firmy Microsoft otrzymywać specjalistyczne szkolenie dla ich ról
 
-Gdy dojdzie do utraty danych klienta, powiadomimy każdego klienta w ciągu jednego dnia. Jednak klient wystąpiła utrata danych nigdy nie w usłudze. 
+W przypadku utraty żadnych danych klientów powiadomimy każdego klienta w ciągu jednego dnia. Jednak klient nastąpiła utrata danych nigdy nie z usługą. 
 
-Aby uzyskać więcej informacji dotyczących sposobu Microsoft reaguje na przypadki naruszenia zabezpieczeń, zobacz [Response zabezpieczeń firmy Microsoft Azure w chmurze](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
+Aby uzyskać więcej informacji na temat sposobu firmy Microsoft na zdarzenia związane z bezpieczeństwem, zobacz [systemu Microsoft Azure Security Response w chmurze](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Zgodność
-Program zabezpieczeń i nadzór nad informacji analizy dzienników oprogramowania rozwoju i usługi zespołu obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [ Centrum zaufania Microsoft zgodności](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak analizy dzienników ustanawia wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
+Program zabezpieczenia i nadzór informacji usługi Log Analytics oprogramowania rozwoju i usługa zespołu obsługuje jej wymagania biznesowe i działa zgodnie z prawem, zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [ Centrum zaufania Microsoft zgodności](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak usługa Log Analytics ustanawia wymagań dotyczących zabezpieczeń, identyfikuje środki kontroli bezpieczeństwa, zarządza i monitoruje zagrożenia są także opisane istnieje. Co roku, firma Microsoft Przejrzyj zasady, normy, procedury i wytyczne.
 
-Każdego członka zespołu programowanie odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie używamy system kontroli wersji dla rozwoju oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
+Każdy członek zespołu rozwoju odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie system kontroli wersji służy do tworzenia oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
 
-Firma Microsoft ma zabezpieczeń i zgodności zespołu nadzoruje i ocenia wszystkich usług firmy Microsoft. Zabezpieczenia informatyków uzupełnić zespołu i nie są one powiązane z działów engineering, które rozwija analizy dzienników. Biuro zabezpieczeń ma swoje własne łańcuch zarządzania i przeprowadzanie niezależnych ocen produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
+Firma Microsoft ma zespołu zabezpieczeń i zgodności, nadzoruje, która ocenia wszystkich usług firmy Microsoft. Specjaliści ds. bezpieczeństwa informacji tworzą zespół i nie są oni skojarzeni z działów inżynieryjne, które osiąga usługi Log Analytics. Specjaliści ds. bezpieczeństwa mają własne łańcuch zarządzania i jednostkach niezależnych produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
 
-Zarząd firmy Microsoft jest powiadamiany o coroczny raport o wszystkie programy zabezpieczeń informacji w firmie Microsoft.
+Zarząd firmy Microsoft jest powiadamiany przez roczny raport o wszystkich programów bezpieczeństwa informacji w firmie Microsoft.
 
-Zespół rozwoju i usługi oprogramowania analizy dzienników aktywnie współpracuje z zespołami Legal firmy Microsoft i zgodności i innymi partnerami z branży można uzyskać różne certyfikaty.
+Zespoły Legal firmy Microsoft i zgodności i innych partnerów z branży można uzyskać różne certyfikaty aktywnie pracuje zespół rozwoju i usługi oprogramowania usługi Log Analytics.
 
-## <a name="certifications-and-attestations"></a>Certyfikaty i poświadczenia
-Analiza dzienników Azure spełnia następujące wymagania:
+## <a name="certifications-and-attestations"></a>Certyfikatami i aprobatami
+Usługa Azure Log Analytics spełnia następujące wymagania:
 
 * [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
 * [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
-* [Standard zabezpieczeń danych Industry (PCI zgodne) karta płatności (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) przez Radę standardów PCI zabezpieczeń.
-* [Typ usługi organizacji formantów (SOC) 1 1 i SOC 2 typu 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) zgodne
-* [HIPAA i HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) dla firm, które ma umowy skojarzyć HIPAA biznesowe
-* Wspólne kryteria Engineering systemu Windows
+* [Płatności Karta (zgodne ze standardami PCI) Data Security branżowymi (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) przez Radę standardów bezpieczeństwa PCI.
+* [Typ Service Organization Controls (SOC) 1 1 i SOC 1 typu 2](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) zgodne
+* [Ustaw HIPAA i HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) dla firm, które umów HIPAA Business skojarzenia
+* Typowe kryteria Engineering Windows
 * Wiarygodne technologie komputerowe firmy Microsoft (witryna może być w języku angielskim)
-* Jako usługi Azure składniki używane przez usługi Analiza dzienników spełniać wymagania zgodności platformy Azure. Więcej w [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
+* Jako usługa platformy Azure składników, które korzysta z usługi Log Analytics spełnić wymagania dotyczące zgodności platformy Azure. Możesz dowiedzieć się więcej o [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
-> W niektórych certyfikaty/poświadczenia, analizy dzienników jest wyświetlana w obszarze jego poprzednią nazwę *usługi Operational Insights*.
+> W niektórych certyfikatów/poświadczenia usługi Log Analytics znajduje się w obszarze jego poprzednią nazwę *usługi Operational Insights*.
 >
 >
 
-## <a name="cloud-computing-security-data-flow"></a>Chmura obliczeniowa zabezpieczeń przepływu danych
-Na poniższym diagramie przedstawiono architekturę zabezpieczeń chmury jako przepływ informacji w firmie i jak jest zabezpieczony, ponieważ jest przenoszony z usługą analizy dzienników ostatecznie odebrane przez użytkownika w portalu Azure lub klasycznego portalu OMS. Więcej informacji na temat każdego kroku następuje diagramu.
+## <a name="cloud-computing-security-data-flow"></a>Chmura obliczeniowa przepływ danych zabezpieczeń
+Na poniższym diagramie przedstawiono architekturę zabezpieczeń chmury jako przepływ informacji z Twojej firmy i jak jest zabezpieczony, ponieważ jest przenoszony do usługi Log Analytics, ostatecznie widoczne przez użytkownika w witrynie Azure portal. Więcej informacji na temat każdego kroku następuje diagramu.
 
-![Obraz kolekcji danych analizy dzienników i zabezpieczeń](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
+![Obraz kolekcji danych usługi Log Analytics i zabezpieczeń](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zarejestruj się, aby zbieranie danych i analizy dzienników
-Dla Twojej organizacji w celu wysyłania danych do analizy dzienników można skonfigurować agenta systemu Windows lub Linux uruchomionych na maszynach wirtualnych platformy Azure lub na komputerach wirtualnych lub fizycznych w Twoim środowisku lub innych dostawcy chmury.  Jeśli używasz programu Operations Manager z grupy zarządzania można skonfigurować agenta programu Operations Manager. Użytkownicy, (które mogą być, inne poszczególnych użytkowników lub grupy osób) utworzenie co najmniej jeden analizy dzienników obszarów roboczych i zarejestrować agentów przy użyciu jednej z następujących kont:
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zarejestruj się w usłudze Log Analytics i zbierania danych
+Dla Twojej organizacji w celu wysyłania danych do usługi Log Analytics można skonfigurować agenta Windows lub Linux uruchomiony na maszynach wirtualnych platformy Azure lub na komputerach wirtualnych lub fizycznych, w środowisku lub innych dostawców chmury.  Jeśli używasz programu Operations Manager, z grupy zarządzania można skonfigurować agenta programu Operations Manager. Użytkownicy, (które mogą być, inne poszczególnych użytkowników lub grupy osób) utworzyć jeden lub więcej obszarów roboczych usługi Log Analytics, a następnie zarejestrować agentów przy użyciu jednej z następujących kont:
 
 * [Identyfikator organizacji](../active-directory/fundamentals/sign-up-organization.md)
-* [Konto Microsoft - Outlook pakietu Office na żywo, MSN](https://account.microsoft.com/account)
+* [Konto Microsoft — program Outlook, usługi Office Live, MSN](https://account.microsoft.com/account)
 
-Obszar roboczy analizy dzienników jest gdzie dane są zbierane, zagregowane, poddane analizie i przedstawiony. Obszar roboczy służy głównie w celu danych partycji i każdego obszaru roboczego jest unikatowa. Na przykład możesz chcieć zarządzanych za pomocą jednego obszaru roboczego danych produkcyjnych i badanie danych zarządzanych za pomocą innego obszaru roboczego. Obszary robocze również pomóc administratora kontroli dostępu użytkownika do danych. Każdy obszar roboczy może mieć wiele kont użytkowników skojarzonych z nim, a wszystkie konta użytkowników mogą uzyskiwać dostęp do wielu obszarów roboczych analizy dzienników. Możesz utworzyć obszarów roboczych na podstawie regionu centrum danych. Każdego obszaru roboczego są replikowane do innych centrów danych w regionie, przede wszystkim dotyczące dostępności usług analizy dzienników.
+Obszar roboczy usługi Log Analytics to, gdzie dane są zbierane, agregowane, analizowane i przedstawiane. Obszar roboczy jest używany głównie jako środek do partycjonowania danych, a każdy obszar roboczy jest unikatowy. Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać bezpłatna warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać płatnych warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.
 
-Dla programu Operations Manager grupy zarządzania programu Operations Manager, ustanawia połączenie z usługą analizy dzienników. Następnie skonfiguruj, które systemy zarządzane z wykorzystaniem agentów w grupie zarządzania mogą wysyłają i zbierają dane z usługą. W zależności od rozwiązania zostało włączone, dane z tych rozwiązań są albo wysyłane bezpośrednio z serwera zarządzania programu Operations Manager z usługą analizy dzienników lub ze względu na ilość danych zebranych przez system zarządzane z wykorzystaniem agentów są wysyłane bezpośrednio z agent z usługą. W systemach, które nie są monitorowane przez program Operations Manager każda łączy bezpiecznie z usługą analizy dzienników bezpośrednio.
+Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r. Usługa Log Analytics umożliwia dostęp do danych Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS.
 
-Cała komunikacja między połączonych systemów i usługą analizy dzienników jest zaszyfrowany.  Protokół TLS (HTTPS) jest używany do szyfrowania.  Proces SDL firmy Microsoft jest zachowana w celu upewnij się, że analizy dzienników jest aktualny i najnowsze osiągnięcia w protokołów kryptograficznych.
+Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte.  Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane.
 
-Każdy typ agenta zbiera dane analizy dziennika. Typ danych zbieranych jest zależy od typów rozwiązań używane. Wyświetlane podsumowanie zbierania danych w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md). Ponadto bardziej szczegółowe informacje o kolekcji jest dostępna w przypadku większości rozwiązań. Rozwiązanie to pakiet wstępnie zdefiniowanych widoków, zapytania wyszukiwania dziennika zasady zbierania danych i przetwarzania logiki. Tylko administratorzy mogą używać analizy dzienników do importowania rozwiązania. Po zaimportowaniu rozwiązania jest przenoszony do serwerów zarządzania programu Operations Manager (jeśli jest używany), a następnie do wszystkich wybranych agentów. W efekcie agentów zbierania danych.
+Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony. Dowiedz się, jak zbierać dane z usługą Log Analytics na potrzeby Twojego następujące maszyny wirtualne platformy Azure [Szybki Start maszyna wirtualna platformy Azure](log-analytics-add-solutions.md). Jeśli chcesz zbierać dane z fizycznych i wirtualnych komputerów Windows lub Linux w środowisku, zobacz szybkiego startu dla komputerów z systemem Linux lub komputerów Szybki Start dla Windows Rozwiązanie to pakiet wstępnie zdefiniowanych widoków, zapytań funkcji przeszukiwania dzienników, reguł zbierania danych i logiki przetwarzania. Tylko administratorzy mogą używać usługi Log Analytics, aby zaimportować rozwiązania. Po zaimportowaniu rozwiązania jest przenoszony do serwerów zarządzania programu Operations Manager (jeśli jest używany), a następnie do agentów, które zostały wybrane. W efekcie agentów zbierania danych.
 
-## <a name="2-send-data-from-agents"></a>2. Wysyłanie danych z agentów
-Zarejestruj wszystkie typy agenta przy użyciu klucza rejestracji i jest ustanowić bezpiecznego połączenia między agentem i usługą analizy dzienników przy użyciu uwierzytelniania opartego na certyfikatach oraz protokołu SSL z portem 443. Analiza dzienników używa tajnego magazynu do generowania i Obsługa kluczy. Klucze prywatne są obracane co 90 dni i są przechowywane na platformie Azure i są zarządzane przez operacje platformy Azure, którzy postępuj zgodnie z ograniczeniami praktyk przepisami i zgodności.
+## <a name="2-send-data-from-agents"></a>2. Wyślij dane z agentów
+Zarejestruj wszystkie typy agenta przy użyciu klucza rejestracji i ustanowieniu bezpiecznego połączenia między agentem i usługę Log Analytics przy użyciu uwierzytelniania opartego na certyfikatach oraz protokołu SSL przy użyciu portu 443. Usługi log Analytics używa magazynu wpisów tajnych, aby wygenerować i Obsługa kluczy. Klucze prywatne są obracane co 90 dni i są przechowywane na platformie Azure i są zarządzane przy użyciu operacji platformy Azure, którzy postępuj zgodnie z ograniczeniami rozwiązania w zakresie przepisów i zgodności.
 
-Z programem Operations Manager grupy zarządzania w zarejestrowany z obszaru roboczego analizy dzienników ustanawia bezpiecznego połączenia HTTPS z serwerem zarządzania programu Operations Manager.
+Za pomocą programu Operations Manager grupy zarządzania zarejestrowane przy użyciu obszaru roboczego usługi Log Analytics ustanawia bezpiecznego połączenia HTTPS z serwerem zarządzania programu Operations Manager.
 
-Dla systemu Windows lub Linux agentów uruchomionych na maszynach wirtualnych platformy Azure klucz magazynu tylko do odczytu jest używany do odczytu zdarzeń diagnostycznych w tabelach platformy Azure.  
+Dla Windows lub Linux agentów na maszynach wirtualnych platformy Azure klucza magazynu tylko do odczytu jest używany do odczytu zdarzeń diagnostycznych w tabelach platformy Azure.  
 
-Z dowolnej agenta raportowania do grupy zarządzania programu Operations Manager, który jest zintegrowany z analizy dzienników Jeśli serwer zarządzania nie może nawiązać połączenia z usługi z jakiejkolwiek przyczyny, zebranych danych jest przechowywany lokalnie w tymczasowej pamięci podręcznej na zarządzanie serwer.   Próby wysłania danych co osiem minut przez 2 godziny.  W przypadku danych pomija serwera zarządzania, który jest wysyłany bezpośrednio do analizy dzienników zachowanie jest zgodne z agenta systemu Windows.  
+Za pomocą dowolnego agentów raportujących do grupy zarządzania programu Operations Manager, który jest zintegrowany z usługą Log Analytics Jeśli serwer zarządzania nie może komunikować się z usługi z jakiegokolwiek powodu, zebrane dane są przechowywane lokalnie w tymczasowej pamięci podręcznej na zarządzanie serwer.   Użytkownik próbuje ponownie wysłać dane co ośmiu minut przez dwie godziny.  Dla danych, które pomija serwera zarządzania i są wysyłane bezpośrednio do usługi Log Analytics zachowanie jest zgodne z agentem Windows.  
 
-Systemu Windows lub dane w pamięci podręcznej agenta serwer zarządzania jest chroniona przez system operacyjny magazynu poświadczeń. Jeśli usługa nie może przetworzyć danych po dwóch godzinach, agentów może umieścić w kolejce danych. Jeśli zapełnienia kolejki agenta uruchamia porzucenie typy danych, począwszy od danych dotyczących wydajności. Limit kolejki agenta jest klucz rejestru, można je zmodyfikować, w razie potrzeby. Zebrane dane jest skompresowany i wysyłane do usługi, pomijanie bazy danych grupy zarządzania programu Operations Manager, więc nie dodaje żadnych obciążenia do nich. Po wysłaniu zebranych danych, zostanie ono usunięte z pamięci podręcznej.
+Windows lub dane pamięci podręcznej agenta serwer zarządzania są chronione przez Magazyn poświadczeń systemu operacyjnego. Jeśli usługa nie może przetwarzać dane po dwóch godzinach, dane do kolejki agentów. Jeśli kolejka zostanie zapełniona, agent uruchamia porzucenie typów danych, rozpoczynając od danych dotyczących wydajności. Ograniczenie kolejki agenta jest klucz rejestru, dzięki czemu można je zmodyfikować, jeśli to konieczne. Zebranych danych jest skompresowany i wysyłane do usługi, z pominięciem bazy danych grupy zarządzania programu Operations Manager, dzięki czemu obciążenie nie są dodawane do nich. Po wysłaniu zebranych danych, zostanie ono usunięte z pamięci podręcznej.
 
-Zgodnie z powyższym opisem dane z serwera zarządzania lub podłączony bezpośrednio agenci są wysyłane za pośrednictwem protokołu SSL do centrów danych Microsoft Azure. Opcjonalnie można używać usługi ExpressRoute, aby zapewnić dodatkową ochronę danych. ExpressRoute to sposób bezpośredniego połączenia z platformą Azure od istniejącej sieci WAN, takich jak wiele protokołów etykietę przełączania sieci VPN (MPLS), pochodzącymi z dostawcą usługi sieciowej. Aby uzyskać więcej informacji, zobacz [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+Zgodnie z powyższym opisem z serwera zarządzania lub agenci połączone bezpośrednio przesyłane za pośrednictwem protokołu SSL do centrach danych platformy Microsoft Azure. Opcjonalnie można użyć usługi ExpressRoute, można zapewnić większe bezpieczeństwo dla danych. Usługa ExpressRoute jest sposób połączyć się bezpośrednio na platformie Azure z istniejącej sieci WAN, takich jak wiele protokołów etykiety przełączania (Switching) VPN, udostępnianej przez dostawcę usług sieciowych. Aby uzyskać więcej informacji, zobacz [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługi analizy dzienników odbiera i przetwarza dane
-Usługi analizy dzienników zapewnia, że dane przychodzące jest z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania systemu Azure. Nieprzetworzone dane pierwotne następnie znajduje się w Centrum zdarzeń Azure w regionie, który ostatecznie dane będą przechowywane w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane i używane do zbierania danych. Następnie analizy dzienników usługi procesów nieprzetworzone dane i wysyła strumień go do bazy danych.
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługa Log Analytics odbiera i przetwarza dane
+Usługa Log Analytics zapewnia dane przychodzące z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania platformy Azure. Nieprzetworzone dane pierwotne, następnie znajduje się w Centrum zdarzeń platformy Azure w regionie, dane będą przechowywane po pewnym czasie w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane, a następnie używane do zbierania danych. Następnie usługi Log Analytics usługi procesy nieprzetworzone dane i pozyskuje go do bazy danych.
 
-Okres przechowywania zbieranych danych przechowywanych w bazie danych zależy od wybranego planu cenowego. Aby uzyskać *wolne* warstwa, zebranych danych jest dostępna przez 7 dni. Aby uzyskać *zapłacone* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane szyfrowane, gdy w magazynie Azure, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni są także przechowywane w pamięci podręcznej z na dyskach SSD i ta pamięć podręczna jest aktualnie niezaszyfrowane.  Firma Microsoft planuje obsługuje takie szyfrowania w późniejszym połowie 2018.  
+Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.  Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r.  
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. Umożliwia dostęp do danych analizy dzienników
-Aby uzyskać dostęp do obszaru roboczego analizy dzienników, należy zalogować się do portalu Azure za pomocą konta organizacyjnego lub konta Microsoft, które należy wcześniej skonfigurować. Cały ruch między portalem i usługą analizy dzienników są wysyłane za pośrednictwem bezpiecznego kanału HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarki sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Zakończone, pamięci podręcznej są usuwane. Pliki cookie po stronie klienta, które nie zawierają informacji umożliwiających identyfikację użytkownika, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są zabezpieczone. Po upływie wstępnie określoną bezczynności sesji portalu Azure, zostanie zakończony.
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. Usługa Log Analytics umożliwia dostęp do danych
+Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte. Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak zbierać dane z analizy dzienników dla sieci maszyn wirtualnych platformy Azure następujące [Szybki Start Azure VM](log-analytics-quick-collect-azurevm.md).  
+* Dowiedz się, jak zbierać dane z usługą Log Analytics na potrzeby Twojego następujące maszyny wirtualne platformy Azure [Szybki Start maszyna wirtualna platformy Azure](log-analytics-quick-collect-azurevm.md).  
 
-*  Jeśli szukasz zbierania danych z komputerów fizycznych i wirtualnych systemu Windows lub Linux w danym środowisku, zobacz [szybkiego startu dla komputerów z systemem Linux](log-analytics-quick-collect-linux-computer.md) lub [komputerów szybkiego startu dla systemu Windows](log-analytics-quick-collect-windows-computer.md)
+*  Jeśli chcesz zbierać dane z fizycznych i wirtualnych komputerów Windows lub Linux w środowisku, zobacz [szybkiego startu dla komputerów z systemem Linux](log-analytics-quick-collect-linux-computer.md) lub [komputerów Szybki Start dla Windows](log-analytics-quick-collect-windows-computer.md)
 

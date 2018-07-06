@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do/z usługi Azure Data Lake Store przy użyciu fabryki danych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z obsługiwanej źródłowej magazyny danych do usługi Azure Data Lake Store (lub) z usługi Data Lake Store sklepów zbiornika obsługiwane przy użyciu fabryki danych.
+title: Kopiowanie danych z usługi Azure Data Lake Storage Gen1 przy użyciu usługi fabryka danych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z obsługiwanego źródłowego magazynów danych do usługi Azure Data Lake Store (lub) Data Lake Store do ujścia obsługiwanych magazynów przy użyciu usługi fabryka danych.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -12,78 +12,78 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: cf1ac441f695e5427e57f1a85bafd095777eed80
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a3df91adf7c35343dc890dc734ec052f1aa97134
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049302"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860252"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Data Lake Store przy użyciu fabryki danych Azure
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 lub za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](v1/data-factory-azure-datalake-connector.md)
+> * [Wersja 1](v1/data-factory-azure-datalake-connector.md)
 > * [Bieżąca wersja](connector-azure-data-lake-store.md)
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane do i z usługi Azure Data Lake Store. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych do i z usługi Azure Data Lake magazynu Gen1 (wcześniej znane jako usługi Azure Data Lake Store). Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Kopiowanie danych z dowolnego źródła obsługiwanych magazynu danych do usługi Azure Data Lake Store lub skopiować dane z usługi Azure Data Lake Store żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła lub wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Kopiowanie danych z dowolnego obsługiwanego źródłowego magazynu danych do usługi Azure Data Lake Store lub skopiować dane z usługi Azure Data Lake Store do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W szczególności ten łącznik usługi Azure Data Lake Store obsługuje:
 
-- Kopiowanie plików za pomocą **nazwy głównej usługi** lub **tożsamość usługi (MSI) zarządzanej** uwierzytelniania.
-- Kopiowanie plików jako — jest lub analizowania/Generowanie plików z [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
+- Kopiowanie plików przy użyciu **nazwy głównej usługi** lub **managed service identity (MSI)** uwierzytelniania.
+- Kopiowanie plików jako — jest lub analizowania/Generowanie plików za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
 > [!IMPORTANT]
-> Po skopiowaniu danych przy użyciu środowiska uruchomieniowego integracji Self-hosted, należy skonfigurować zapory w firmie, aby zezwolić na ruch wychodzący do `<ADLS account name>.azuredatalakestore.net` i `login.microsoftonline.com/<tenant>/oauth2/token` na porcie 443. Drugie polecenie jest Azure zabezpieczeń tokenu usługi (STS), która IR muszą komunikować się z można pobrać tokenu dostępu.
+> W przypadku kopiowania danych przy użyciu własne środowisko IR Konfigurowanie zapory firmowej, aby zezwolić na ruch wychodzący do `<ADLS account name>.azuredatalakestore.net` i `login.microsoftonline.com/<tenant>/oauth2/token` na porcie 443. Ta ostatnia jest Azure Usługa tokenu zabezpieczającego (STS) który IR muszą komunikować się z można uzyskać tokenu dostępu.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 
 > [!TIP]
-> Aby uzyskać wskazówki dotyczące za pomocą łącznika usługi Azure Data Lake Store, zobacz [ładowanie danych do usługi Azure Data Lake Store](load-azure-data-lake-store.md).
+> Aby zapoznać się z przewodnikiem za pomocą łącznika usługi Azure Data Lake Store, zobacz [ładowanie danych do usługi Azure Data Lake Store](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do usługi Azure Data lake Store.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Azure Data lake Store.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane przez usługi Azure Data Lake Store połączonej usługi:
+Następujące właściwości są obsługiwane dla usługi Azure Data Lake Store połączoną usługę:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną **AzureDataLakeStore**. | Yes |
-| dataLakeStoreUri | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jeden z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
-| subscriptionId | Identyfikator subskrypcji platformy Azure, do której należy konto usługi Data Lake Store. | Wymagany dla odbiorcy |
-| resourceGroupName | Nazwa grupy zasobów platformy Azure, do której należy konto usługi Data Lake Store. | Wymagany dla odbiorcy |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych znajduje się w sieci prywatnej), można użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+| type | Właściwość type musi być równa **AzureDataLakeStore**. | Yes |
+| dataLakeStoreUri | Informacje o koncie usługi Azure Data Lake Store. Informacja ta ma jedną z następujących formatów: `https://[accountname].azuredatalakestore.net/webhdfs/v1` lub `adl://[accountname].azuredatalakestore.net/`. | Yes |
+| subscriptionId | Identyfikator subskrypcji platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
+| resourceGroupName | Nazwa grupy zasobów platformy Azure, do której należy konto Data Lake Store. | Wymagane dla ujścia |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
-Odpowiednio można znaleźć w poniższych sekcjach więcej właściwości i JSON próbek różnymi typami uwierzytelniania:
+Znaleźć w poniższych sekcjach więcej właściwości i przykłady kodu JSON dla różnymi typami uwierzytelniania:
 
-- [Przy użyciu uwierzytelniania głównej usługi](#using-service-principal-authentication)
-- [Uwierzytelnianie tożsamości zarządzanych usług](#using-managed-service-identity-authentication)
+- [Przy użyciu uwierzytelniania jednostki usługi](#using-service-principal-authentication)
+- [Przy użyciu uwierzytelniania tożsamości usługi zarządzanej](#using-managed-service-identity-authentication)
 
-### <a name="using-service-principal-authentication"></a>Przy użyciu uwierzytelniania głównej usługi
+### <a name="using-service-principal-authentication"></a>Przy użyciu uwierzytelniania jednostki usługi
 
-Aby używać uwierzytelniania głównej usługi, Zarejestruj podmiot aplikacji w usłudze Azure Active Directory (Azure AD) i przyznać jej dostęp do usługi Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [do usługi uwierzytelniania](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zwróć uwagę na następujące wartości, które służą do definiowania połączonej usługi:
+Aby użyć uwierzytelniania jednostki usługi, zarejestruj jednostki aplikacji w usłudze Azure Active Directory (Azure AD), a następnie przyznać jej dostęp do programu Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [Service-to-service authentication](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
 
 - Identyfikator aplikacji
 - Klucz aplikacji
 - Identyfikator dzierżawy
 
 >[!IMPORTANT]
-> Upewnij się, że można przydzielić usługi głównej odpowiednie uprawnienia w usłudze Azure Data Lake Store:
->- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej przyznać **Odczyt i wykonywanie** uprawnienia do listy i skopiuj pliki w folderze/podfolderów lub **odczytu** uprawnień do kopiowania pojedynczy plik; i wybierz opcję Dodaj jako **uprawnień dostępu i wpis uprawnienia domyślne**. Nie jest wymagany na kontroli dostępu na poziomie konta (IAM).
->- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej przyznać **zapisu i wykonywania** uprawnienia do tworzenia elementów podrzędnych w folderze i wybierz polecenie do dodania jako **uprawnień dostępu i wpis uprawnienia domyślne**. Jeśli używasz Azure IR do skopiowania (źródłowy i odbiorczy znajdują się w chmurze), w kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli, aby umożliwić wykryć Data Lake Store regionu fabryki danych. Aby uniknąć tej roli IAM jawnie [utworzyć IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją Twojej usługi Data Lake Store i skojarz w usłudze Data Lake Store połączonej usługi, jak w poniższym przykładzie.
+> Upewnij się, że można przyznać usługi głównej odpowiednie uprawnienia w usłudze Azure Data Lake Store:
+>- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderze/podfoldery, lub **odczytu** uprawnień do kopiowania pojedynczego pliku; i wybierz opcję Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Nie wymagań dotyczących kontroli dostępu na poziomie konta (IAM).
+>- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze, a następnie wybierz do dodania jako **uprawnienia dostępu i domyślny wpis uprawnień**. Jeśli używasz środowiska Azure IR można skopiować (zarówno źródła i ujścia znajdują się w chmurze), kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli w celu umożliwiają usłudze Data Factory wykryć regionu Data Lake Store. Jeśli chcesz uniknąć ta rola zarządzania tożsamościami i Dostępem jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacji usługi Data Lake Store i skojarz w Data Lake Store połączone usługi, w poniższym przykładzie.
 
 Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| servicePrincipalId | Określ identyfikator aplikacji klienta. | Yes |
-| servicePrincipalKey | Określ klucz aplikacji. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes |
+| servicePrincipalId | Określ identyfikator klienta aplikacji. | Yes |
+| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| dzierżawa | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Yes |
 
 **Przykład:**
 
@@ -111,21 +111,21 @@ Obsługiwane są następujące właściwości:
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>Uwierzytelnianie tożsamości zarządzanych usług
+### <a name="using-managed-service-identity-authentication"></a>Przy użyciu uwierzytelniania tożsamości usługi zarządzanej
 
-Fabryka danych może być skojarzony z [tożsamość usługi zarządzanej](data-factory-service-identity.md), reprezentuje tej fabryki danych. Ta tożsamość usługi można korzystać bezpośrednio do uwierzytelniania usługi Data Lake Store, podobnie jak przy użyciu własnego nazwy głównej usługi. Umożliwia tej fabryki wyznaczonych do dostępu i skopiować dane z/do usługi Data Lake Store.
+Fabrykę danych mogą być skojarzone z [tożsamości usługi zarządzanej](data-factory-service-identity.md), który reprezentuje tę fabrykę danych z konkretnych. Ta tożsamość usługi można korzystać bezpośrednio uwierzytelniającym podobne do jednostki usługi Data Lake Store. Umożliwia to wyznaczonych fabryki, aby dostęp i kopiowanie danych z i do usługi Data Lake Store.
 
-Aby używać uwierzytelniania tożsamości (MSI) zarządzanych usług:
+Do uwierzytelniania usługa managed service identity (MSI):
 
-1. [Pobieranie tożsamości usługi fabryka danych](data-factory-service-identity.md#retrieve-service-identity) przez skopiowanie wartości "Usługa tożsamości aplikacji Identyfikatora" generowane wraz z fabryką.
-2. Taki sam sposób jak w przypadku usługi następujące główne poniżej uwagi udzielać dostępu tożsamości usługi Data Lake Store.
+1. [Pobierz tożsamość usługi fabryki danych](data-factory-service-identity.md#retrieve-service-identity) przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką.
+2. Taki sam sposób jak w przypadku następujących nazwy głównej usługi poniżej informacje o udzielać dostępu tożsamości usługi Data Lake Store.
 
 >[!IMPORTANT]
-> Upewnij się, że można przydzielić danych fabryki usługi tożsamości odpowiednie uprawnienia w usłudze Azure Data Lake Store:
->- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej przyznać **Odczyt i wykonywanie** uprawnienia do listy i skopiuj pliki w folderze/podfolderów lub **odczytu** uprawnień do kopiowania pojedynczy plik; i wybierz opcję Dodaj jako **uprawnień dostępu i wpis uprawnienia domyślne**. Nie jest wymagany na kontroli dostępu na poziomie konta (IAM).
->- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej przyznać **zapisu i wykonywania** uprawnienia do tworzenia elementów podrzędnych w folderze i wybierz polecenie do dodania jako **uprawnień dostępu i wpis uprawnienia domyślne**. Jeśli używasz Azure IR do skopiowania (źródłowy i odbiorczy znajdują się w chmurze), w kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli, aby umożliwić wykryć Data Lake Store regionu fabryki danych. Aby uniknąć tej roli IAM jawnie [utworzyć IR Azure](create-azure-integration-runtime.md#create-azure-ir) z lokalizacją Twojej usługi Data Lake Store i skojarz w usłudze Data Lake Store połączonej usługi, jak w poniższym przykładzie.
+> Upewnij się, że można przyznać data factory usługi tożsamości odpowiednie uprawnienia w usłudze Azure Data Lake Store:
+>- **Jako źródło**, w Eksploratorze danych -> dostępu, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderze/podfoldery, lub **odczytu** uprawnień do kopiowania pojedynczego pliku; i wybierz opcję Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Nie wymagań dotyczących kontroli dostępu na poziomie konta (IAM).
+>- **Jako obiekt sink**, w Eksploratorze danych -> dostępu, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze, a następnie wybierz do dodania jako **uprawnienia dostępu i domyślny wpis uprawnień**. Jeśli używasz środowiska Azure IR można skopiować (zarówno źródła i ujścia znajdują się w chmurze), kontroli dostępu (IAM), co najmniej udzielić **czytnika** roli w celu umożliwiają usłudze Data Factory wykryć regionu Data Lake Store. Jeśli chcesz uniknąć ta rola zarządzania tożsamościami i Dostępem jawnie [tworzenie środowiska Azure IR](create-azure-integration-runtime.md#create-azure-ir) z lokalizacji usługi Data Lake Store i skojarz w Data Lake Store połączone usługi, w poniższym przykładzie.
 
-W fabryce danych Azure nie trzeba określić wszelkie właściwości poza ogólne informacje o usłudze Data Lake Store w połączonej usłudze.
+W usłudze Azure Data Factory nie trzeba określać żadnych właściwości, oprócz ogólnych informacji Data Lake Store w połączonej usługi.
 
 **Przykład:**
 
@@ -149,20 +149,20 @@ W fabryce danych Azure nie trzeba określić wszelkie właściwości poza ogóln
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure Data Lake Store.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Azure Data Lake Store.
 
-Aby skopiować dane do/z usługi Azure Data Lake Store, ustaw właściwość Typ zestawu danych do **AzureDataLakeStoreFile**. Obsługiwane są następujące właściwości:
+Aby skopiować dane do/z usługi Azure Data Lake Store, należy ustawić właściwość typu zestawu danych na **AzureDataLakeStoreFile**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type zestawu danych: **AzureDataLakeStoreFile** |Yes |
-| folderPath | Ścieżka do folderu w usłudze Data Lake Store. Filtr symbolu wieloznacznego nie jest obsługiwane. Przykład: rootfolder/podfolder / |Yes |
-| fileName | **Nazwa lub symbol wieloznaczny filtr** dla plików w obszarze określonej "folderPath". Jeśli nie określisz wartości dla tej właściwości zestawu danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` ucieczki Jeśli nazwę rzeczywisty plik ma symboli wieloznacznych lub ten znak ucieczki wewnątrz.<br/><br/>Kiedy dla wyjściowego zestawu danych nie jest określona nazwa pliku i **preserveHierarchy** nie jest podany w zbiornika działania działanie kopiowania automatycznie generuje nazwę pliku o następującym formacie: "*danych. [ Identyfikator GUID uruchomienia działania]. [Identyfikator GUID Jeżeli FlattenHierarchy]. [format skonfigurowanie]. [skonfigurowanie kompresji]* ". Przykładem jest "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nie |
-| Format | Jeśli chcesz **skopiuj pliki jako — jest** między opartych na plikach magazynów (kopia binarnego), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować lub wygenerować pliki w określonym formacie, obsługiwane są następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w formacie do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [formacie tekstowym](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Nie (tylko w przypadku scenariusza kopiowania binarny) |
-| Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |
+| type | Właściwość typu elementu dataset musi być równa: **AzureDataLakeStoreFile** |Yes |
+| folderPath | Ścieżka do folderu w Data Lake Store. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Przykład: wartość rootfolder/podfolder / |Yes |
+| fileName | **Filtr nazwy lub symbol wieloznaczny** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` jako znak ucieczki, jeśli Twoje rzeczywiste nazwy plików symboli wieloznacznych lub ten znak ucieczki wewnątrz.<br/><br/>Kiedy dla wyjściowego zestawu danych nie jest określona nazwa pliku i **preserveHierarchy** nie został określony w ujściu działania, działanie kopiowania automatycznie generuje nazwę pliku w następującym formacie: "*danych. [ uruchomienia działania identyfikator GUID]. [Identyfikator GUID Jeśli FlattenHierarchy]. [format skonfigurowanie]. [kompresji, jeśli skonfigurowano]* ". Przykładem jest "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nie |
+| Format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować lub generowanie plików za pomocą określonego formatu są obsługiwane następujące typy plików w formacie: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
+| Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |
 
 >[!TIP]
->Aby skopiować wszystkie pliki w folderze, określ **folderPath** tylko.<br>Aby skopiować pojedynczy plik o podanej nazwie, określ **folderPath** z częścią folderu i **fileName** z nazwą pliku.<br>Aby skopiować podzestaw pliki w folderze, określ **folderPath** z częścią folderu i **fileName** filtru symbolu wieloznacznego. 
+>Aby skopiować wszystkie pliki w folderze, określ **folderPath** tylko.<br>Aby skopiować pojedynczy plik o określonej nazwie, należy określić **folderPath** z część z folderem i **fileName** z nazwą pliku.<br>Aby skopiować podzestaw plików w folderze, podaj **folderPath** z część z folderem i **fileName** z filtr z symbolami wieloznacznymi. 
 
 **Przykład:**
 
@@ -194,16 +194,16 @@ Aby skopiować dane do/z usługi Azure Data Lake Store, ustaw właściwość Typ
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez usługi Azure Data Lake źródłowy i odbiorczy właściwości.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez usługę Azure Data Lake źródła i ujścia.
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store jako źródło
 
-Aby skopiować dane z usługi Azure Data Lake Store, należy ustawić typ źródła w przypadku działania kopiowania do **AzureDataLakeStoreSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi Azure Data Lake Store, należy ustawić typ źródłowego w działaniu kopiowania, aby **AzureDataLakeStoreSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **AzureDataLakeStoreSource** |Yes |
-| cykliczne | Wskazuje, czy dane są odczytywane rekursywnie z folderów sub lub tylko określonego folderu. Uwaga: po cykliczne ma ustawioną wartość PRAWDA, a obiekt sink jest magazynu opartych na plikach, pusty folder/podrzędne-folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **AzureDataLakeStoreSource** |Yes |
+| cykliczne | Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. Należy pamiętać podczas cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink jest magazynu opartego na pliku, pusty folder/podrzędnych — folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
 
 **Przykład:**
 
@@ -237,14 +237,14 @@ Aby skopiować dane z usługi Azure Data Lake Store, należy ustawić typ źród
 ]
 ```
 
-### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store jako odbioru
+### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store jako ujście
 
-Aby skopiować dane do usługi Azure Data Lake Store, należy ustawić typ ujścia w działaniu kopiowania do **AzureDataLakeStoreSink**. Następujące właściwości są obsługiwane w **zbiornika** sekcji:
+Aby skopiować dane do usługi Azure Data Lake Store, należy ustawić typ ujścia w działaniu kopiowania, aby **AzureDataLakeStoreSink**. Następujące właściwości są obsługiwane w **ujścia** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość typu sink działania kopiowania: **AzureDataLakeStoreSink** |Yes |
-| copyBehavior | Określa zachowanie kopiowania, gdy źródłem jest pliki z magazynu danych opartych na plikach.<br/><br/>Dozwolone wartości to:<br/><b>-PreserveHierarchy (ustawienie domyślne)</b>: zachowuje hierarchię plików w folderze docelowym. Względna ścieżka pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna docelowego pliku do folderu docelowego.<br/><b>-FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego znajdują się w pierwszym poziomem folderu docelowego. Pliki docelowe mają automatycznie wygeneruje nazwę. <br/><b>-MergeFiles</b>: scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli zostanie określona nazwa pliku/obiektów Blob, nazwa scalony plik jest określona nazwa; w przeciwnym razie będzie nazwa pliku wygenerowana automatycznie. | Nie |
+| type | Musi być równa wartości właściwości type ujścia działania kopiowania: **AzureDataLakeStoreSink** |Yes |
+| copyBehavior | Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest pliki z magazynu danych oparte na plikach.<br/><br/>Dozwolone wartości to:<br/><b>-PreserveHierarchy (ustawienie domyślne)</b>: zachowuje hierarchii plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna docelowego pliku do folderu docelowego.<br/><b>-FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego znajdują się w pierwszy poziom folderu docelowego. Pliki docelowe mają automatycznie wygeneruje nazwę. <br/><b>-MergeFiles</b>: scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku/obiektu Blob jest określony, nazwa pliku scalonego będzie określoną nazwą; w przeciwnym razie może być nazwą pliku generowanych automatycznie. | Nie |
 
 **Przykład:**
 
@@ -278,18 +278,18 @@ Aby skopiować dane do usługi Azure Data Lake Store, należy ustawić typ ujśc
 ]
 ```
 
-### <a name="recursive-and-copybehavior-examples"></a>Przykłady cyklicznego i copyBehavior
+### <a name="recursive-and-copybehavior-examples"></a>przykładów rekurencyjnych i copyBehavior
 
-W tej sekcji opisano efekty operacji kopiowania dla różnych kombinacji wartości cyklicznej i copyBehavior.
+W tej sekcji opisano wynikowe zachowania operacji kopiowania różne kombinacje wartości cyklicznych i copyBehavior.
 
-| cykliczne | copyBehavior | Struktura folderów źródła | Wynikowa docelowego |
+| cykliczne | copyBehavior | Źródło struktury folderów | Wynikowy docelowej |
 |:--- |:--- |:--- |:--- |
-| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony z tej samej struktury jako źródło:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Element docelowy Folder1, utworzono o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie Plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie File5 |
-| true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Element docelowy Folder1, utworzono o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 + plik3 + File4 + pliku 5 zawartości są scalane w jeden plik o nazwie generowanych automatycznie |
-| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są odczytywane. |
-| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie Plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Nazwa wygenerowana automatycznie plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są odczytywane. |
-| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie. Nazwa wygenerowana automatycznie Plik1<br/><br/>Subfolder1 plik3, File4 i File5 nie są odczytywane. |
+| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony przy użyciu tej samej struktury jako źródła:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
+| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Element docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File5 |
+| true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Element docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 + plik3 + File4 + 5 plików zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik |
+| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
+| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
+| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Folder docelowy Folder1 jest tworzony o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie. wygenerowany automatycznie nazwę plik1<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

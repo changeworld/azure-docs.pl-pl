@@ -1,6 +1,6 @@
 ---
-title: Co to jest niestandardowa głosu? -Usługi azure kognitywnych | Dokumentacja firmy Microsoft
-description: Ten artykuł Omówienie Microsoft tekst na mowę głosu dostosowanie, co pozwala na tworzenie głosu brand rozpoznawalnych, jeden z typu.
+title: Co to jest Custom Voice? — Platforma azure Cognitive Services | Dokumentacja firmy Microsoft
+description: Ten artykuł omówienia zamiany tekstu na mowę firmy Microsoft głosu dostosowywania, co pozwala na tworzenie głosem marki mówiącą, jeden z rodzajem.
 services: cognitive-services
 author: noellelacharite
 manager: nolach
@@ -8,87 +8,77 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: ad5af799fd46dc51b85432999f986de8cdb056ec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9f7fbcc804229de69c3c72fb33ae03c88af70145
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349348"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857501"
 ---
-# <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych głosu czcionek
+# <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
-Dostosowywanie głosu Microsoft tekst na mowę (TTS) umożliwia tworzenie rozpoznawalnych, jeden z rodzajem głosu użytkownika marki: *czcionki głosu.* 
+Dostosowywania głosu Microsoft tekst na mowę (TTS) pozwala na tworzenie mówiącą, jeden z rodzajem głosu dla Twojej marki: *czcionka głosowa.* 
 
-Aby utworzyć czcionki głosowych, tworzenie nagrania studio i przekaż skojarzone skrypty jako dane szkoleniowe. Usługa tworzy następnie model unikatowy głosu dostosowana do nagrania. Następnie można tę czcionkę głosu syntetyzowania mowy. 
+Aby utworzyć czcionki głosowe, tworzenie nagrania studio i przekaż skojarzone skrypty jako dane szkoleniowe. Usługa tworzy następnie model unikatowy głosu dostosowana do Twojego nagrania. Następnie można ten czcionka głosowa syntetyzowania mowy. 
 
-Możesz rozpocząć pracę z niewielką ilość danych do weryfikacji koncepcji. Ale większej ilości danych podasz, tym bardziej naturalnych i professional dźwięki głosu.
+Możesz rozpocząć pracę z małą ilością danych do weryfikacji koncepcji. Jednak im więcej danych podasz, tym bardziej naturalnych i professional brzmi Twojego głosu.
 
-Dostosowywanie głos jest dostępny na US English (en US) i lądu chiński (zh-CN).
+Dostosowywanie głosu jest dostępna dla US English (en US) i kontynent, chiński (zh-CN).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Funkcja dostosowywania głos tekst na mowę jest obecnie w podglądzie prywatnym. [Wypełnij formularz aplikacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
+Funkcja dostosowywania głosu zamiany tekstu na mowę, jest obecnie w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
 
-Wymagane są również:
+Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz jedną] (https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
 
-* Konto platformy Azure ([Załóż bezpłatne konto](https://azure.microsoft.com/free/ai/) Jeśli nie masz jeszcze jeden).
+1. Zaloguj się do [portal Custom Voice](https://customvoice.ai) przy użyciu tego samego konta Microsoft, służy do zastosowania do uzyskiwania dostępu.
 
-* Subskrypcja usługi mowy. [Utworzyć](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) Jeśli jeszcze.
-
-    ![Utwórz panelu](media/custom-voice/create-panel.png)
-
-Po utworzeniu subskrypcji, możesz znaleźć dwa klucze subskrypcji na panelu Szybki Start lub omówienie nowej subskrypcji. Możesz użyć albo klucza.
-
-Na koniec subskrypcji połączyć się z portalu głosu niestandardowe w następujący sposób.
-
-1. Zaloguj się do [niestandardowe głosu portalu](https://customvoice.ai) przy użyciu tego samego konta Microsoft, używana do stosowania dostępu.
-
-2. Przejdź do "Subskrypcje" w ramach nazwę konta w górnym rogu.
+2. Przejdź do "Subskrypcje" pod nazwą Twojego konta w prawym górnym rogu.
 
     ![Subskrypcje](media/custom-voice/subscriptions.png)
 
-3. Na stronie "Subskrypcji" wybierz pozycję "Połącz istniejącą subskrypcję".
+3. Na stronie "Subskrypcje" wybierz pozycję "Połącz istniejącą subskrypcję".
 
-     ![Połącz istniejącą subskrypcję](media/custom-voice/connect-existing-sub.png)
+     ![Łączenie istniejącej subskrypcji](media/custom-voice/connect-existing-sub.png)
 
-4. Wklej klucz subskrypcji do tabeli, jak pokazano poniżej.
+4. Wklej swój klucz subskrypcji do tabeli, jak pokazano poniżej. Każda subskrypcja ma dwa klucze i mogą korzystać z każdej z nich.
 
      ![Dodaj subskrypcję](media/custom-voice/add-subscription.png)
 
-Możesz teraz przejść!
+Jesteś gotowy!
 
-## <a name="prepare-recordings-and-transcripts"></a>Przygotowanie nagrań i zapisy
+## <a name="prepare-recordings-and-transcripts"></a>Przygotowania, nagrania i transkrypcje
 
-Zestaw danych szkoleniowych głosu składa się z zestawu plików audio, wraz z pliku tekstowego zawierającego zapisy wszystkich tych plików audio.
+Zestaw danych szkoleniowych głosu składa się z zestawu plików audio, wraz z pliku tekstowego zawierającego transkrypcji wszystkich tych plików audio.
 
-Należy przygotować tych plików w żadnym kierunku: albo napisać skrypt i odczytywane przez talenty głosu lub użyć publicznie dostępnych audio i wykonać ich transkrypcji na tekst. W drugim przypadku należy edytować disfluencies z plików audio, takich jak "um" i innych dźwięków wypełniacza stutters, słowa mumbled albo mispronunciations.
+Należy przygotować te pliki w dowolnym kierunku: albo napisać skrypt i odczytywane przez głosu talent, lub użyć publicznie dostępnych audio i transkrypcja je na tekst. W tym drugim przypadku należy edytować disfluencies z plików audio, takie jak "um" i inne wypełniacza dźwięki, stutters, mumbled słowa lub mispronunciations.
 
-Do tworzenia czcionki dobrej głosowych, ważne jest, że nagrania są wykonywane w pokoju quiet mikrofon wysokiej jakości. Spójne woluminu mówiąc szybkość mówiąc gęstość i obszerne mannerisms mowy są niezbędne do tworzenia niezwykłych głosu cyfrowego. Aby utworzyć głosu do użytku produkcyjnego, firma Microsoft zaleca się, że używasz talenty professional nagrywanie głosu i studio.
+Aby wygenerować czcionka głosowa dobre, ważne jest, nagrania są wykonywane w pokoju cichy z mikrofonu wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi gęstość i ekspresyjny mannerisms mowy są niezbędne do kompilowania doskonały cyfrowy głosu. Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania.
 
 ### <a name="audio-files"></a>Pliki dźwiękowe
 
-Każdy plik dźwiękowy powinien zawierać pojedynczy utterance (na przykład pojedynczy zdania lub pojedynczy Włącz systemu okna dialogowego). Wszystkie pliki muszą znajdować się w tym samym języku (wielojęzyczne głosy niestandardowe nie są obsługiwane). Pliki dźwiękowe musi również mieć unikatową nazwę liczbowych pliku z rozszerzeniem `.wav`.
+Każdy plik dźwiękowy powinien zawierać pojedynczy wypowiedź, (na przykład jednym zdaniu lub pojedynczego Włącz systemu okna dialogowego). Wszystkie pliki muszą znajdować się w tym samym języku (wielojęzyczny głosów niestandardowych nie są obsługiwane). Pliki audio musi również mieć unikatową nazwę liczbowych pliku z rozszerzeniem nazwy pliku `.wav`.
 
-Pliki dźwiękowe powinna być przygotowana w następujący sposób. Inne formaty są obsługiwane i zostaną odrzucone.
+Pliki audio powinna być przygotowana w następujący sposób. Inne formaty są obsługiwane i zostaną odrzucone.
 
 | **Właściwość** | **Wartość** |
 | ------------ | --------- |
 | Format pliku  | RIFF (WAV)|
-| Częstotliwość próbkowania| 16 000 Hz |
-| Kanały     | 1 (monophonic)  |
-| Przykładowy Format| PCM 16-bitowych |
-| Nazwa pliku    | Numeric ze `.wav` rozszerzenia |
-| Format archiwum| ZIP      |
+| Częstotliwość próbkowania| co najmniej 16 000 Hz |
+| Przykładowy Format| PCM, 16-bitowych |
+| Nazwa pliku    | Numeryczne, za pomocą `.wav` rozszerzenia |
+| Format archiwum| Zip      |
 | Rozmiar maksymalny archiwum|200 MB|
 
-Umieść zestaw plików audio w jednym folderze bez podkatalogi i pakietu całego zestawu jako pojedynczego pliku archiwum ZIP.
+Umieść zbiór plików audio w pojedynczy folder bez podkatalogów i utworzyć pakiet całego zestawu jako pojedynczego pliku archiwum ZIP.
 
 > [!NOTE]
-> Portalu obecnie importuje ZIP archiwa do 200 MB. Jednak wiele archiwów mogą być przekazywane. Maksymalna liczba zestawów danych może to pliki 10 ZIP w bezpłatnej subskrypcji użytkowników i 50 użytkowników standardowych subskrypcji.
+> Pliki Wave przy użyciu mniejszej niż 16 000 Hz częstotliwości próbkowania zostanie odrzucone. W przypadkach, gdy plik zip zawiera poprzedzającym przy użyciu różnych współczynników pobierania próbek zostanie on zaimportowany tylko tych równą lub większą niż 16 000 Hz.
+> Portal aktualnie importuje ZIP archiwa do 200 MB. Jednak można przekazać wiele archiwów. Maksymalna liczba zestawów danych, dozwolone jest pliki 10 ZIP na bezpłatnie subskrypcji użytkowników i 50 dla użytkowników subskrypcji standardowej.
 
 ### <a name="transcripts"></a>Zapisy
 
-Plik przekształcenia jest zwykły plik tekst Unicode (UTF-16 little-endian). Każdy wiersz w pliku przekształcenia musi mieć nazwę pliku audio, następuje znak tabulacji (punkt kodu 9), a na końcu jego zapis. Nie puste wiersze są dozwolone.
+Plik transkrypcji jest zwykły plik tekstowy (ANSI/UTF-8/UTF-8-BOM/UTF-16-LE/UTF-16-BE). Każdy wiersz plik transkrypcji musi mieć nazwę pliku audio, następuje znak tabulacji (punkt kodowy 9), a na końcu jego transkrypcję. Nie puste wiersze są dozwolone.
 
 Na przykład:
 
@@ -98,150 +88,150 @@ Na przykład:
 0000000003  It was Janet Maslin.
 ```
 
-System niestandardowych głosu normalizuje zapisy konwertowanie tekst na małe i usuwając nadmiarowe znaki interpunkcyjne. Jest ważne, czy zapisy z dokładnością do odpowiedniego nagrania audio 100%.
+System niestandardowych voice normalizuje zapisy Konwertowanie tekstu na małe i usuwając nadmiarowe znaki interpunkcyjne. Należy pamiętać, że zapisy są w 100% dokładności do odpowiedniego nagrania audio.
 
 > [!TIP]
-> Podczas tworzenia produkcji tekst na mowę głosy, wybierz zniesławiających (lub napisać skrypty) uwzględnieniu zarówno fonetyczne pokrycia, jak i wydajności.
+> Podczas tworzenia produkcyjnych zamiany tekstu na mowę głosów, wybierz wypowiedzi (lub skryptów), biorąc pod uwagę fonetycznych pokrycia i wydajność.
 
-## <a name="upload-your-datasets"></a>Przekaż zestawów danych
+## <a name="upload-your-datasets"></a>Przekazywanie swoich zestawów danych
 
-Po przygotowaniu Twoje archiwum plików audio i zapisy, przekazać je za pomocą [niestandardowe głosu portalu](https://customvoice.ai).
+Po przygotowaniu usługi archiwum plików audio i zapisy, przekazać je za pośrednictwem [Custom Voice portalu](https://customvoice.ai).
 
 > [!NOTE]
-> Po zostały przekazane, nie można edytować zestaw danych. Jeśli nie pamiętasz obejmują zapisy niektórych plików audio, na przykład lub przypadkowo wybierz niewłaściwy płci, możesz ponownie przekazać cały zestaw danych. Sprawdź ustawienia i zestawu danych, dokładnie przed rozpoczęciem przekazywania.
+> Nie można edytować zestawów danych, po zostały przekazane. Jeśli nie pamiętasz do obejmują zapisy niektórych plików audio, na przykład lub przypadkowo wybierz problem płeć, cały zestaw danych należy przekazać ponownie. Sprawdź ustawienia i zestaw danych, dokładnie przed rozpoczęciem przekazywania.
 
 1. Zaloguj się do portalu.
 
-2. Wybierz **danych** w obszarze głosu niestandardowych na stronie głównej. 
+2. Wybierz **danych** w obszarze Custom Voice na stronie głównej. 
 
     ![Moje projekty](media/custom-voice/my-projects.png)
 
-    Zostanie wyświetlona tabela Moje danych głosowych. Jest pusty, jeśli nie zostały jeszcze przekazane wszystkie zestawy danych głosowych.
+    Zostanie wyświetlona tabela Moje danych głosowych. Jest puste, jeśli jeszcze nie przekazano żadnych zestawów danych głosowych.
 
-3. Kliknij przycisk **importowania danych** aby otworzyć stronę o przekazywaniu nowy zestaw danych.
+3. Kliknij przycisk **importowania danych** aby otworzyć stronę przekazywania nowy zestaw danych.
 
     ![Importowanie danych głosowych](media/custom-voice/import-voice-data.png)
 
 4. Wprowadź nazwę i opis w dostępnych polach. 
 
-5. Wybierz ustawienia regionalne czcionek głosu. Upewnij się, że informacji o ustawieniach regionalnych zgodnego z językiem danych rejestrowania i skrypty. 
+5. Wybierz ustawienia regionalne umieszczać czcionki głosowe. Upewnij się, że informacji o ustawieniach regionalnych jest zgodny z językiem danych rejestrowania i skrypty. 
 
-6. Wybierz rodzaj prelegenta głosowych, którego używasz.
+6. Wybierz rodzaj osoby mówiącej głosowej, którego używasz.
 
-7. Wybierz skrypt i audio plików do przekazania. 
+7. Wybierz skrypt i pliki audio do przekazania. 
 
-8. Kliknij przycisk **importu** przekazać dane. Dla większych zestawów danych importowania może potrwać kilka minut.
+8. Kliknij przycisk **importu** do przekazania danych. Dla większych zestawów danych importowania może potrwać kilka minut.
 
 > [!NOTE]
-> Użytkownicy bezpłatnej subskrypcji można przekazać dwóch zestawów danych w czasie. Użytkowników standardowych subskrypcji można jednocześnie przekazać pięć zestawów danych. Jeśli osiągnie limit, zaczekaj na co najmniej jeden z zestawów danych zakończeniu importowania, a następnie spróbuj ponownie.
+> Użytkownicy bezpłatnej subskrypcji można przekazać dwa zestawy danych w danym momencie. Użytkownicy subskrypcji standardowej jednocześnie przekazać pięć zestawów danych. Jeśli przekroczysz limit, zaczekaj co najmniej jeden z zestawów danych zakończeniu importowania, spróbuj ponownie.
 
-Tabela danych głosowych Moje pojawi się ponownie po zakończeniu przekazywania. Wpis odpowiadający powinny pojawić się do zestawu danych just przekazany. 
+Po zakończeniu przekazywania tabeli Moje danych głosowych pojawi się ponownie. Powinien zostać wyświetlony wpis, który odnosi się do zestawu danych po prostu przekazać. 
 
-Zestawy danych są weryfikowane automatycznie po przekazywania. Sprawdzanie poprawności danych zawiera szereg kontroli plików audio, aby sprawdzić ich format pliku, rozmiar i częstotliwość próbkowania. Kontroli nad plikami przekształcania Sprawdź format pliku i wykonywania niektórych normalizacji tekstu. Zniesławiających są zapisywane rozpoznawanie mowy i tekst wynikowy jest porównywana z wykaz, podane.
+Zestawy danych są automatycznie zweryfikowana, po przekazywania. Sprawdzanie poprawności danych obejmuje szereg kontroli plików audio, aby sprawdzić ich format pliku, rozmiar i częstotliwość próbkowania. Kontroli nad plikami transkrypcji Sprawdź format pliku i wykonywania niektórych normalizacji tekstu. Wypowiedzi są zapisywane przy użyciu funkcji rozpoznawania mowy, a tekst wynikowy jest porównywana z transkrypcji, podane.
 
-![Dane głosu](media/custom-voice/my-voice-data.png)
+![Moje dane głosu](media/custom-voice/my-voice-data.png)
 
-W poniższej tabeli przedstawiono przetwarzania stanów importowane zestawy danych. 
+W poniższej tabeli przedstawiono stany przetwarzania dla zaimportowanych zestawów danych. 
 
 | Stan | Znaczenie
 | ----- | -------
-| `NotStarted` | Zestaw danych zostało odebrane i jest w kolejce do przetworzenia
-| `Running` | Zestaw danych jest sprawdzana
-| `Succeeded` | Zestaw danych została zweryfikowana i może teraz używać do tworzenia czcionki głosu
+| `NotStarted` | Zestaw danych zostało odebrane i znajduje się w kolejce do przetworzenia
+| `Running` | Zestaw danych jest weryfikowany
+| `Succeeded` | Zestaw danych został zweryfikowany, a teraz może służyć do tworzenia czcionka głosowa
 
-Po zakończeniu sprawdzania poprawności widać łączna liczba pasujących zniesławiających dla każdego z zestawów danych w kolumnie Utterance.
+Po zakończeniu sprawdzania poprawności widać łączną liczbę wypowiedzi dopasowane do wszystkich zestawów danych w kolumnie wypowiedź.
 
-Można pobrać raportu, aby sprawdzić wyniki wymowy i poziomu hałasu dla każdego nagrań. Wymowa wynik w zakresie od 0 do 100; wynik poniżej 70 zazwyczaj wskazuje błąd lub skryptu niezgodność mowy. Duże akcent można zmniejszyć wynik wymowy i wpływ wygenerowanego głosu cyfrowego.
+Możesz pobrać raport, aby sprawdzić wyniki Wymowa i poziomu hałasu dla każdego z nagrań. Wymowa wynik z zakresu od 0 do 100; współczynnik poniżej 70 zwykle wskazuje niezgodność mowy błąd lub skryptu. Duże akcentu można zmniejszyć ocenę Wymowa i wpływu na wygenerowany głosu cyfrowych.
 
-Wyższy stosunek sygnału do szumu (SNR) wskazuje niższe hałas w audio. Można zwykle osiągnąć SNR 50 + przez rejestrowanie za pośrednictwem Studio professional. Dźwięk z SNR poniżej 20 może spowodować szumu widocznych w wygenerowanym głosu.
+Większy współczynnik sygnał do szumu (SNR) wskazuje niższe szumu w audio. Zwykle mogą skorzystać z SNR ponad 50 przez rejestrowanie za pośrednictwem professional studios. Pliku dźwiękowego z SNR poniżej 20 może spowodować oczywiste szumu w wygenerowanym głosu.
 
-Należy rozważyć ponowne rejestrowanie wszelkich zniesławiających z niskim wymowy wyniki lub niska stosunek sygnału do szumu. Jeśli nie jest możliwe ponowne nagrywanie, może wyłączyć tych zniesławiających z zestawu danych.
+Należy rozważyć ponowne nagrywanie wypowiedzi Wymowa niskie oceny lub niską współczynniki sygnał do szumu. Jeśli ponowne rejestrowanie nie jest możliwe, może być wykluczyć te wypowiedzi z zestawu danych.
 
-## <a name="build-your-voice-font"></a>Tworzenie czcionki głosu
+## <a name="build-your-voice-font"></a>Twórz swoje czcionka głosowa
 
-Po sprawdzeniu poprawności zestawu danych można użyć go do tworzenia czcionki niestandardowe głosu. 
+Po sprawdzeniu poprawności zestawu danych służy do tworzenia swojej niestandardowej czcionki głosowej. 
 
-1. Wybierz **modeli** w menu rozwijanym "Głosu niestandardowa". 
+1. Wybierz **modeli** w menu rozwijanym "Custom Voice". 
  
-    Zostanie wyświetlone tabeli Moje czcionki głosu wyświetlone czcionek głosu niestandardowych, które zostały już utworzone.
+    Zostanie wyświetlone tabeli Moje czcionki głosowe zawierające czcionek niestandardowych voice już utworzony.
 
-1. Kliknij przycisk **utworzyć głosy** pod tytułem tabeli. 
+1. Kliknij przycisk **tworzenia głosów** pod tytułem tabeli. 
 
-    Zostanie wyświetlona strona tworzenia czcionki głosu. Bieżące ustawienia regionalne jest wyświetlany w pierwszym wierszu tabeli. Zmień ustawienia regionalne, aby utworzyć głosu w innym języku. Ustawienia regionalne musi być taka sama jak zestawy danych używane do utworzenia głosu.
+    Zostanie wyświetlona strona tworzenia czcionka głosowa. Bieżących ustawień regionalnych jest wyświetlany w pierwszym wierszu tabeli. Zmień ustawienia regionalne, aby utworzyć głosu w innym języku. Ustawienia regionalne musi być taka sama jak zestawy danych używane do tworzenia głosu.
 
-1. Tak samo jak po przekazaniu zestawu danych, wprowadź nazwę i opis, aby pomóc w zidentyfikowaniu tego modelu. 
+1. Tak jak w przypadku został przekazany zestaw danych, wprowadź nazwę i opis, aby pomóc w zidentyfikowaniu tego modelu. 
 
-    Nazwa wprowadzona tutaj będzie nazwę używaną do określ głosu w żądaniu dla syntezy mowy jako część dane wejściowe SSML, więc należy wybrać uważnie. Tylko litery, cyfry i kilku znaków interpunkcyjnych, takich jak "-", "_" "(",")" są dozwolone.
+    Wprowadzona nazwa będzie nazwa umożliwia określanie głosu w Twoje żądanie dotyczące synteza mowy w ramach danych wejściowych SSML, więc należy wybrać uważnie. Tylko litery, cyfry i kilka znaków interpunkcyjnych, takich jak "-", "_" "(",")" są dozwolone.
 
-    Zazwyczaj pola Opis jest używane do rejestrowania nazw zestawów danych, które były używane w celu utworzenia modelu.
+    Typowym zastosowaniem pole opisu jest służy do rejestrowania nazw zestawów danych, które zostały użyte do utworzenia modelu.
 
-1. Wybierz płeć czcionki głosu. Musi on być zgodny z płci zestawu danych.
+1. Wybierz płeć czcionki głosowe. Musi on być zgodny płeć zestawu danych.
 
-1. Wybierz zestawów danych, który ma być używany na potrzeby uczenia czcionki głosu. Wszystkich zestawów danych użytych muszą pochodzić z tej samej osoby mówiącej.
+1. Wybierz zestawach danych, którego chcesz użyć do trenowania czcionka głosowa. Wszystkie zestawy danych używane muszą pochodzić z tej samej osoby mówiącej.
 
-1. Kliknij przycisk **Utwórz** aby rozpocząć tworzenie czcionki głosu.
+1. Kliknij przycisk **Utwórz** umożliwiającą utworzenie czcionki głosowe.
 
     ![Tworzenie modelu](media/custom-voice/create-model.png)
 
-Nowy model pojawia się w tabeli Moje czcionki głosu. 
+Nowy model pojawia się w tabeli Moje czcionki głosowe. 
 
-![Czcionki głosu](media/custom-voice/my-voice-fonts.png)
+![Czcionki głosowe](media/custom-voice/my-voice-fonts.png)
 
-Wyświetlany stan odzwierciedla proces konwersji zestawu danych na czcionkę głosu, jak pokazano poniżej.
+Pokazanym stanem odzwierciedla proces konwersji zestawu danych czcionki głosowej, jak pokazano poniżej.
 
 | Stan | Znaczenie
 | ----- | -------
-| `NotStarted` | Żądania tworzenia czcionki głos jest przechowywane w kolejce do przetworzenia
-| `Running` | Trwa tworzenie czcionki głosu
-| `Succeeded` | Czcionki głos został utworzony i mogą zostać wdrożone
+| `NotStarted` | Twoje żądanie dotyczące tworzenia czcionki głosowe znajduje się w kolejce do przetworzenia
+| `Running` | Trwa tworzenie czcionki głosowe
+| `Succeeded` | Czcionki głosowe został utworzony i czy można wdrażać
 
-Uczenie czasu różni się w zależności od ilości przetworzonych danych audio. Typowy czas należeć do zakresu od o setki zniesławiających na 30 minut do 40 godzin zniesławiających 20 000.
+Szkolenie czasu różni się zależnie od ilości przetworzonych danych audio. Typowy czas do zakresu od o setki wypowiedzi na 30 minut do 40 godzin wypowiedzi 20 000.
 
 > [!NOTE]
-> Bezpłatna subskrypcja użytkowników można uczenia dwie czcionki głosu naraz. Użytkownicy standardowe subskrypcji można jednocześnie uczenia trzy głosy. Jeśli osiągnie limit, poczekaj na zakończenie co najmniej jeden z czcionkami głosu szkolenia, a następnie spróbuj ponownie.
+> Użytkownicy bezpłatnej subskrypcji uczyć jeden czcionka głosowa w danym momencie. Standardowa subskrypcja użytkowników jednocześnie uczyć trzy głosów. Jeśli przekroczysz limit, zaczekaj co najmniej jeden umieszczać czcionki głosowe szkoleń, a następnie spróbuj ponownie.
 
-## <a name="test-your-voice-font"></a>Testowanie czcionki głosu
+## <a name="test-your-voice-font"></a>Testowanie czcionki głosowe
 
-Po pomyślnym utworzeniu czcionki głosowych, przetestować go przed jego wdrożeniem. Kliknij przycisk **testu** w kolumnie operacji. Czcionki wybrany głos zostanie wyświetlona strona testu. Tabela jest pusta, jeśli jeszcze nie zostało przesłane żądań testu dla głosu.
+Po pomyślnym utworzeniu czcionki głosowe mogli ją przetestować, przed jego wdrożeniem. Kliknij przycisk **testu** w kolumnie operacji. Strona testowa pojawia się dla czcionka głosowa wybrane. Tabela jest pusta, jeśli jeszcze nie przesłano żadnych żądań testu dla głosu.
 
-![Czcionki głosowych, część 2](media/custom-voice/my-voice-fonts2.png)
+![Czcionki głosowe, część 2](media/custom-voice/my-voice-fonts2.png)
 
-Kliknij przycisk **testu z tekstem** przycisku w obszarze tytuł tabeli, aby wyświetlić menu rozwijane do przesyłania żądań tekstu. Można przesłać żądania testu w postaci zwykłego tekstu lub SSML. Maksymalny rozmiar wejściowe to 1024 znaków, w tym wszystkie tagi dla żądania SSML. Język tekstu musi być taka sama jak język czcionki głosu.
+Kliknij przycisk **testu z tekstem** pod tytuł tabeli, aby wyświetlić menu rozwijane do przesyłania żądań tekstu przycisku. Możesz przesłać żądanie testu w postaci zwykłego tekstu lub SSML. Maksymalny rozmiar danych wejściowych wynosi 1024 znaków, w tym wszystkie tagi SSML żądania. Język tekstu musi być taka sama jak język czcionki głosowe.
 
-![Głosowych testowania czcionki](media/custom-voice/voice-font-testing.png)
+![Głosu testowania czcionki](media/custom-voice/voice-font-testing.png)
 
-Po wypełnieniu w polu tekstowym i potwierdzenie tryb wprowadzania, kliknij przycisk **tak** Aby przesłać żądanie testu i wrócić do strony testowej. Tabela zawiera teraz wpis odpowiadający nowe żądanie, a w kolumnie Stan znane obecnie. Może upłynąć kilka minut, aby z syntetyzowania mowy. Gdy w kolumnie Stan odczytuje zakończyło się pomyślnie, możesz pobrać wprowadzanie tekstu ( `.txt` plików) i wyjścia audio ( `.wav` plików) i audition ostatnie o wysokiej jakości.
+Po wypełniając pole tekstowe i potwierdzając tryb wprowadzania, kliknij przycisk **tak** przesłać żądanie testu, a następnie wróć do strony testowej. Tabela zawiera teraz wpis, który odnosi się do nowego żądania, a w kolumnie Stan znane obecnie. Może potrwać kilka minut, aby syntetyzowania mowy. Gdy w kolumnie Stan odczytuje zakończone powodzeniem, możesz pobrać wprowadzanie tekstu ( `.txt` pliku) i danych wyjściowych audio ( `.wav` pliku) i audition jego jakość.
 
-![Testowanie czcionki głosowych, część 2](media/custom-voice/voice-font-testing2.png)
+![Testowanie czcionki głosowe, część 2](media/custom-voice/voice-font-testing2.png)
 
-## <a name="create-and-use-a-custom-endpoint"></a>Tworzenie i używanie niestandardowej punktu końcowego
+## <a name="create-and-use-a-custom-endpoint"></a>Tworzenie i używanie niestandardowego punktu końcowego
 
-Po pomyślnie utworzone i przetestowane modelu głosowych, wdrożyć ją w punkt końcowy niestandardowy tekst na mowę. Następnie należy użyć tego punktu końcowego zamiast standardowego punktu końcowego w przypadku wysyłania żądań tekst na mowę za pośrednictwem interfejsu API REST. Niestandardowe punktu końcowego może być wywoływany tylko przez subskrypcję, która umożliwia wdrażanie czcionki.
+Po pomyślnie tworzone i testowane modelu głosowego, wdrożyć ją w punkt końcowy niestandardowego tekstu na mowę. Następnie należy użyć tego punktu końcowego zamiast zwykle punktu końcowego w przypadku wysyłania żądań zamiany tekstu na mowę przy użyciu interfejsu API REST. Niestandardowy punkt końcowy można wywołać tylko przez subskrypcję, która umożliwia wdrażanie czcionki.
 
-Aby utworzyć nowy punkt końcowy niestandardowe, wybierz **punkty końcowe** z menu niestandardowych głosowe w górnej części strony. Wdrożenie zostanie wyświetlona strona, z jego tabeli bieżący głos niestandardowe punkty końcowe, jeśli istnieją.
+Aby utworzyć nowy niestandardowy punkt końcowy, wybierz **punktów końcowych** z Custom Voice menu w górnej części strony. Strona wdrożenia pojawi się jego tabeli bieżącego głosu niestandardowych punktów końcowych, jeśli istnieją.
 
-Kliknij przycisk **wdrażanie głosy** przycisk, aby utworzyć nowy punkt końcowy. Strona w punkcie końcowym tworzenie"bieżące ustawienia regionalne jest widoczny w pierwszym wierszu tabeli. Aby utworzyć wdrożenie w innym języku, należy zmienić wyświetlane ustawienia regionalne. (Musi być zgodna głosowych, które wdrażasz.) Wprowadź nazwę i opis niestandardowe punktu końcowego.
+Kliknij przycisk **wdrażanie głosów** przycisk, aby utworzyć nowy punkt końcowy. W punkcie końcowym tworzenie"Strona bieżących ustawień regionalnych znajduje odzwierciedlenie w pierwszym wierszu tabeli. Aby utworzyć wdrożenie w innym języku, należy zmienić wyświetlane ustawienia regionalne. (Musi być zgodna głosowych, które są wdrażane.) Wprowadź nazwę i Opis niestandardowego punktu końcowego.
 
-Z menu subskrypcji Wybierz subskrypcję, która ma być używany. Bezpłatna subskrypcja użytkownicy mogą mieć tylko jeden model wdrożone w czasie. Standardowa subskrypcji użytkownicy mogą tworzyć maksymalnie 20 punktów końcowych, każda z własnego niestandardowego głosu.
+Z menu subskrypcji Wybierz subskrypcję, której chcesz użyć. Użytkownicy bezpłatnej subskrypcji mogą mieć tylko jeden model wdrożone w danym momencie. Użytkownicy subskrypcji standardowej można utworzyć maksymalnie 20 punktów końcowych, każdy z własną niestandardowych voice.
 
 ![Tworzenie punktu końcowego](media/custom-voice/create-endpoint.png)
 
-Po wybraniu modelu, który ma zostać wdrożony, kliknij przycisk **Utwórz**. Strona wdrażania zostanie wyświetlony ponownie, teraz wpis dla nowego punktu końcowego. Może upłynąć kilka minut, można utworzyć nowy punkt końcowy. Gdy stan wdrożenia jest zakończyło się powodzeniem, punkt końcowy jest gotowy do użycia.
+Po wybraniu modelu, który ma zostać wdrożona, kliknij przycisk **Utwórz**. Strona wdrożenia pojawi się ponownie, teraz wpis dla nowego punktu końcowego. Może upłynąć kilka minut utworzyć nowy punkt końcowy. Gdy stan wdrożenia to Powodzenie, punkt końcowy jest gotowy do użycia.
 
-![Moje wdrożonej głosy](media/custom-voice/my-deployed-voices.png)
+![Moje wdrożone głosów](media/custom-voice/my-deployed-voices.png)
 
-Gdy stan wdrożenia jest zakończyło się powodzeniem, punkt końcowy czcionki wdrożonej głosu pojawia się w tabeli głosy wdrożone. Ten identyfikator URI można użyć bezpośrednio w żądaniu HTTP.
+Gdy stan wdrożenia to Powodzenie, punkt końcowy usługi czcionka głosowa wdrożonej pojawia się w tabeli wdrożonej głosów. Można użyć tego identyfikatora URI, bezpośrednio w żądaniu HTTP.
 
-Testowanie online punktu końcowego jest również dostępna za pośrednictwem portalu niestandardowych głosu. Aby przetestować punktu końcowego, wybierz **testowania punktów końcowych** z menu rozwijanego głosu niestandardowe. Punkt końcowy testowania strony zostanie wyświetlone. Wybierz głosu, które zostały wdrożone, a następnie wprowadź tekst, który ma być wymawiane (w postaci zwykłego tekstu lub SSML format) w polu tekstowym.
+Testowanie online punktu końcowego jest również dostępna za pośrednictwem portalu niestandardowych voice. Aby przetestować punktu końcowego usługi, wybierz **testowania punktów końcowych** z menu rozwijanego Custom Voice. Punkt końcowy testowania strony pojawi się. Wybierz głosowych, które zostały wdrożone, a następnie wprowadź tekst, który ma być wymawiane (w postaci zwykłego tekstu lub SSML format) w polu tekstowym.
 
 > [!NOTE] 
-> Korzystając z SSML, `<voice>` tagu należy określić nazwę nadaną niestandardowych głosu podczas jego tworzenia.
+> Korzystając z SSML, `<voice>` tag należy określić nazwę nadaną swój głos niestandardowych podczas jego tworzenia.
 
-Kliknij przycisk **odtwarzanie** usłyszeć tekst używany w czcionki niestandardowe głosu.
+Kliknij przycisk **Odtwórz** poznać tekstu mówionego w swojej niestandardowej czcionki głosowej.
 
 ![Testowanie punktu końcowego](media/custom-voice/endpoint-testing.png)
 
-Niestandardowe punkt końcowy jest funkcjonalnie taki sam jak standardowy punkt końcowy dla żądań tekst na mowę. Zobacz [interfejsu API REST](rest-apis.md) Aby uzyskać więcej informacji.
+Niestandardowy punkt końcowy jest funkcjonalnie identyczny standardowy punkt końcowy, używany do żądania zamiany tekstu na mowę. Zobacz [interfejsu API REST](rest-apis.md) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

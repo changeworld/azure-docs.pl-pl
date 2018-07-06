@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446779"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867124"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -42,7 +42,7 @@ Poniżej przedstawiono kilka wymagań wstępnych dla dowolnego POC za pomocą us
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Dzierżawy usługi Azure AD zdefiniowane za pomocą ważnej subskrypcji platformy Azure | [Jak uzyskać dzierżawę usługi Azure Active Directory](active-directory-howto-tenant.md)<br/>**Uwaga:** Jeśli masz już środowisko z licencji usługi Azure AD Premium, można uzyskać zero limit subskrypcji, przechodząc do węzła https://aka.ms/accessaad <br/>Dowiedz się więcej o: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ i https://technet.microsoft.com/library/dn832618.aspx |
-| Domen definiowane i zweryfikowane | [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Uwaga:** niektórych obciążeń, takich jak usługa Power BI można aprowizowaniu dzierżawy usługi azure AD w sposób niewidoczny. Aby sprawdzić, czy skojarzona z dzierżawą danej domeny, przejdź do https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Jeśli pobieranie pomyślnej odpowiedzi, a następnie domena jest już przypisany do dzierżawy i przejęcia mogą być wymagane. Jeśli tak, aby uzyskać dalsze wskazówki kontakt z firmą Microsoft. Więcej informacji na temat opcji przejęcia u: [co to jest Samoobsługowa na platformie Azure?](active-directory-self-service-signup.md) |
+| Domen definiowane i zweryfikowane | [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Uwaga:** niektórych obciążeń, takich jak usługa Power BI można aprowizowaniu dzierżawy usługi azure AD w sposób niewidoczny. Aby sprawdzić, czy skojarzona z dzierżawą danej domeny, przejdź do https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Jeśli pobieranie pomyślnej odpowiedzi, a następnie domena jest już przypisany do dzierżawy i przejęcia mogą być wymagane. Jeśli tak, aby uzyskać dalsze wskazówki kontakt z firmą Microsoft. Więcej informacji na temat opcji przejęcia u: [co to jest Samoobsługowa na platformie Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Usługa Azure AD Premium lub EMS włączone wersji próbnej | [Usługa Azure Active Directory — wersja Premium bezpłatnie na jeden miesiąc](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Aby zapewnić użytkownikom przypisano licencje pakietu EMS lub Azure AD Premium | [Licencja sobie i użytkownikom w usłudze Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Poświadczenia administratora globalnego usługi AD platformy Azure | [Przypisywanie ról administratorów w usłudze Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
@@ -125,11 +125,11 @@ Przybliżony czas wykonania: 10 minut
 | Krok | Zasoby |
 | --- | --- |
 | Przejdź do bloku licencji w portalu zarządzania usługi Azure AD | [Portal zarządzania usługi Azure AD: Licencjonowanie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| Przypisać licencji do grupy zabezpieczeń, aby Zapewnić użytkownikom. | [Przypisywanie licencji do grupy użytkowników w usłudze Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) |
+| Przypisać licencji do grupy zabezpieczeń, aby Zapewnić użytkownikom. | [Przypisywanie licencji do grupy użytkowników w usłudze Azure Active Directory](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-W przypadku problemów, przejdź do [scenariuszy, ograniczenia i znane problemy związane z korzystania z grup do zarządzania licencjonowaniem w usłudze Azure Active Directory](active-directory-licensing-group-advanced.md)
+W przypadku problemów, przejdź do [scenariuszy, ograniczenia i znane problemy związane z korzystania z grup do zarządzania licencjonowaniem w usłudze Azure Active Directory](users-groups-roles/licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>Konfiguracja federacyjnego logowania jednokrotnego SaaS
 

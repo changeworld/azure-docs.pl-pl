@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2fd53225a455a34d03772487a10f62a94ac86735
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345349"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868977"
 ---
 # <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Samouczek: Dodawanie listy frazę w celu poprawienia prognozy
 W tym samouczku, zwiększyć dokładność wyników intencji i zidentyfikować jednostki dla słowa, które mają takie samo znaczenie (synonimy), dodając wymienne [funkcji listy fraz](./luis-concept-feature.md).
@@ -254,9 +254,9 @@ Aby wyświetlić wynik jednostki [Opublikuj model](luis-how-to-publish-app.md) i
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz przycisk wielokropka (***...*** ) po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Pobierz prognozowania wypowiedź za pomocą kwerendy punktu końcowego](luis-get-started-cs-get-intent.md)

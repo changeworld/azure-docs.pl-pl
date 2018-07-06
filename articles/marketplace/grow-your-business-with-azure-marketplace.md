@@ -1,5 +1,5 @@
 ---
-title: Rozwoju firmy z portalu Azure Marketplace | Azure
+title: Rozwijaj swoją firmę dzięki witrynie Azure Marketplace | Azure
 description: Przewodnik krok po kroku i publikowania listy kontrolne dotyczące nowych wydawców w portalu Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
@@ -14,129 +14,129 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: adf4e05b3d2ae477e2fd520bb8d1c7dbf9b6c008
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: c9c643228157b5ad347d6913d7c4087684591970
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825238"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865352"
 ---
-# <a name="grow-your-business-with-azure-marketplace"></a>Rozwoju firmy z portalu Azure Marketplace  
-Po zdobyciu zasoby techniczne dla użytkownika portalu Azure Marketplace, wyświetlanie, będą mogli zwiększyć liczbę użytkowników wychodzącego Twoją ofertę i wzrost użycia produktu przez następujące najlepsze rozwiązania marketingu. 
+# <a name="grow-your-business-with-azure-marketplace"></a>Rozwijaj swoją firmę dzięki witrynie Azure Marketplace  
+Po zdobyciu zasoby techniczne dla Twojej witryny Azure Marketplace, lista, jesteś w stanie zwiększyć liczbę użytkowników do oferty i wzrost użycia produktu przez następujące najlepsze rozwiązania marketingu. 
 
 >[!NOTE]
->Aby uzyskać informacje dotyczące wymagań technicznych i proces publikowania, przeczytaj [portalu Azure Marketplace i AppSource Podręcznik publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+>Aby dowiedzieć się, proces publikowania i wymagania techniczne, przeczytaj [Podręcznik publikowania w portalu Azure Marketplace i AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
-## <a name="how-marketing-helps"></a>Jak pomaga marketing  
-Następujące najlepsze rozwiązania w marketingu hlps definiowanej poprawnego przejdź na rynek i inicjatyw Sell wspólnej firmy Microsoft. Maksymalizuje z następującymi korzyściami dla firmy za pośrednictwem portalu marketplace. Sieć partnerów firmy Microsoft (MPN) jest bramy dla wszystkich zasobów marketing i programowych związanych z sklepy w witrynie marketplace. 
+## <a name="how-marketing-helps"></a>Jak ułatwia marketingu  
+Następujące najlepsze rozwiązania w marketingu hlps do ukierunkowane na powodzenie go-to-market i inicjatyw Sell firmy Microsoft. Maksymalizuje korzyści biznesowych w portalu Marketplace. Microsoft Partner Network (MPN) jest Centrum dla wszystkich zasobów w zakresie marketingu i programowe związane z sklepów w witrynie marketplace. 
 
-Jakość Twoją ofertę i zaangażowanie skoncentrowane na klienta wzrost popytu na generowanie i partnera zaangażowania pomocy dysku klienta dla firmy. Współpraca w tych działaniach pomaga Microsoft wzmocnić przejdź na rynek pracy i funkcji rozwiązania klucza przez sklepy w witrynie marketplace. 
+Jakość oferty i zaangażowanie skoncentrowanych na wzrost popytu na generowanie i jej partnerów zaangażowania pomocy dysku klientów dla Twojej firmy. Wykonują te działania firmy Microsoft pomaga wzmocnić go-to-market pracy i funkcji rozwiązania klucza dla sklepów w witrynie marketplace. 
 
-Aby przejrzeć marketing rozwiązań dla danej oferty, użyj poniższej listy.  
-*   Zoptymalizowanych pod kątem Twojej listy ruchu dysku i zaangażowania.  
-*   Utworzono na witryny sieci Web do obsługi komunikatów, a utworzona strona docelowa unikatowy, dysku ruch do Twojej oferty w witrynie marketplace.  
-*   Opublikowane w napędzie testów lub innych wersji próbnej, aby klienci mogą wystąpić ofertę działającej na platformie Azure.  
-*   Planowane i wbudowane własne marketing i podwyższenie poziomu kampanii świadomości dysku i zaangażowania.  
-*   Generowanie realizacji na żądanie są włączone, aby za każdym razem, gdy klienta służy do testowania lub wdrażania ofertę, odbierać informacje o nazwie i skontaktuj się z pomocą klienta.  
-*   Poznanie i połączone z zasobami partnera, które są dostępne za pośrednictwem MPN.  
-    *   Aby uzyskać więcej informacji na temat MPN, odwiedź omówienie członkostwa strony znajduje się w [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
+Poniższa lista umożliwia przeglądanie marketingu rozwiązań oferty.  
+*   Zoptymalizowane pod kątem swojej listy do ruchu dysku i zaangażowania.  
+*   Zostanie utworzony wiadomości w Moja witryna sieci Web, a stroną docelową unikatowy ruchu dysku oferty w portalu marketplace.  
+*   Opublikowane wersji testowej lub innych wersji próbnej, aby klienci będą mogli środowisko oferty działającej na platformie Azure.  
+*   Planowane i utworzone własne kampanie marketingu i promocji do zaprezentowania i zaangażowania.  
+*   Generowanie potencjalnych klientów na żądanie jest włączona, tak, że za każdym razem, gdy klient działa należy przetestować, czy wdrożyć oferty, otrzymasz informacje o nazwie i skontaktuj się z klienta.  
+*   Przedstawia informacje na temat i połączone z zasobów partnerów, które są dostępne za pośrednictwem sieci MPN.  
+    *   Aby uzyskać więcej informacji na temat MPN można znaleźć Przegląd członkostwa strony znajduje się w [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
 
-### <a name="create-a-great-listing"></a>Utwórz listę dużą  
-Z listy w witrynie marketplace może być pierwszym interakcję z potencjalnych klientów. Podobnie jak wszelkie pierwsze wrażenia ma być silne i coś odbiorców chce wykonać kolejne czynności. Istnieją pewne podstawowe czynności, które można zrobić, aby sprawić, że to pierwsze wrażenia w witrynie Marketplace dużą:
+### <a name="create-a-great-listing"></a>Utwórz listę doskonałe  
+Z listy w witrynie marketplace może być pierwszym interakcji z potencjalnym klientem. Podobnie jak wszelkie pierwsze wrażenie ma być silne i coś odbiorców chce śledzenie. Istnieją niektóre podstawowe czynności, które można zrobić, aby sprawić, że to pierwsze wrażenie w portalu Marketplace doskonałe:
 
 | wrażenie | Szczegóły |  
 |:--- |:--- |  
-| Można znaleźć | Wpisz opis dla danej oferty przy użyciu słów kluczowych i warunków, z których klienci wyszukiwania.  |  
-| Można visual | Obrazy i klipy wideo pomocy Pokaż funkcje klucza użytkowników i może ułatwić ilustrują środowiska. Myśleć o może być wyświetlany, który ułatwia dostarczania z wartości oferty lub odpowiedzi na najczęściej zadawane pytania od klientów. |  
-| Zapewnia środowisko | Aby wypróbować przed zakupu, takich jak klienci. Prowadzi wygenerowane z pokazów, wersje próbne i wynik testu dyski w więcej transakcji klienta. Im silniejsze próby wystąpić musisz zapewnić, im silniejsze klienta, którego należy wygenerować. Microsoft znalazł testowanie (średnia) prowadzi wynik w transakcji 40 procent zamknięte. |  
-| Pomoc odbiorców Dowiedz się więcej | Chociaż firma Microsoft zachęca do zachowania obszaru omówienie wyczyszczenie i prosty, jest wystarczająco dużo miejsca, aby wskazać dodatkowe zasoby dotyczące produktu. Skorzystaj z tego miejsca na dostarczenie wiadomości zwięzły o funkcje produktu i jak jest rozwiązaniem dla potrzeb klienta. Nie można niejasne skierować danego klienta do materiałów dodatkowych, aby dowiedzieć się więcej. Jeśli śledzenie tych materiałów szkoleniowych lub łącza do zawartości, który prowadzi strategii marketingowej, tak, aby mogli spójnie Wypracuj jest podwyższenia. |  
-| Korzystać z klasyfikacji i przeglądów | Poinformuj klientów, sprzedaży produktu w Twoim imieniu. Propagowanie klienta może być największych sterownika sprzedaży i jest często, gdy kupujący go przed ich więcej informacji na temat produktu. Posiadanie wielu przeglądami silne również pomaga zwiększyć się ofertę w wynikach wyszukiwania i w obszarach polecanych klucza. |  
+| Można znaleźć | Wpisz opis oferty przy użyciu słów kluczowych i warunki, z którymi klienci wyszukiwania.  |  
+| Można visual | Obrazy i klipy wideo Pokaż użytkowników swoje najważniejsze funkcje i pomocy może ilustrują środowiska. Zastanów się może być wyświetlany, która pomaga dostarczać swoje korzyści lub uzyskaniu odpowiedzi na najczęściej zadawane pytania od klientów. |  
+| Zapewnić środowisko | Tacy klienci jak próby przed zakupu. Prowadzi wygenerowany z pokazów, wersje próbne i wynik dyski testu w większej liczby transakcji klienta. Im silniejsze wersji próbnej środowiska, zostaną podane, im silniejsze potencjalny klient, wygenerowane przez Ciebie. Microsoft wykryła wersji testowej (średnio) prowadzi wynik się w 40 procent zamknięte. |  
+| Pomoc krąg swoich odbiorców, Dowiedz się więcej | Chociaż firma Microsoft zachęca umożliwia zachowanie miejsca Przegląd wyczyść i proste, ma odpowiednią ilość miejsca, aby wskazywały do dodatkowych zasobów dotyczących produktu. Skorzystaj z tego miejsca, do dostarczania zwięzłe komunikat dotyczący zastosowania produktu i jak jest dopasowany do potrzeb klienta. Jest niejasne, należy skierować danego klienta do dodatkowe materiały, aby dowiedzieć się więcej. Jest to korzyści, jeśli śledzenie tych materiałów szkoleniowych lub łącza do zawartości, który prowadzi strategii marketingowej, dzięki czemu można ciągle zaspakajanie potrzeb istniejących. |  
+| Skorzystaj z zalet ocen i recenzji | Poinformuj klientów, sprzedaży swojego produktu w Twoim imieniu. Klient może być największa sterownik sprzedaży i jest często, dokąd kupujący przed ich więcej informacji na temat produktu. Posiadanie wielu przeglądy silne także pomaga zwiększyć się oferty w wynikach wyszukiwania oraz w najważniejszych obszarach polecane. |  
 
-### <a name="promote-your-new-offer"></a>Podwyższ poziom nowego ofertę  
+### <a name="promote-your-new-offer"></a>Promuj swoje nowej oferty  
 
-#### <a name="build-an-effective-marketing-campaign"></a>Tworzenie skutecznych kampanię marketingową  
-Kampanię marketingową jest serią działań promocyjna lub marketingu taktyk celem zwiększają odbiorców do żądanej akcji lub wynik. Przed rozpoczęciem projektowania kampanii, należy wykonać następujące.
+#### <a name="build-an-effective-marketing-campaign"></a>Tworzenie skutecznej kampanii marketingowej  
+Kampanii marketingowej to seria działań promocyjne lub marketingowych taktyka, której celem jest prowadzenie odbiorców żądaną akcję lub wynik. Przed rozpoczęciem projektowania wdrożenia kampanii, należy wykonać następujące czynności.
 
-##### <a name="know-your-audience"></a>Poznawanie swoich odbiorców  
-Po pierwsze sprawdzenie, kto jest kupujący i kto jest osoba mająca wpływ. Twoje taktyk i wywołania akcji dla każdej grupy może się różnić. Zadaj pytania te oceny:  
-*   Poziom kontroli kupujący ma za pośrednictwem zakupów decyzji? 
+##### <a name="know-your-audience"></a>Poznawanie odbiorców  
+Po pierwsze sprawdzenie, kto jest kupujący i kto jest osoba mająca wpływ. Wywołań do akcji, dla każdej grupy i taktyka, na których mogą się różnić. Te pytania oceny:  
+*   Jaką kontrolę kupujący ma za pośrednictwem zakupu decyzji? 
 *   Jak duży wpływ ma osoba mająca wpływ? 
-*   Jaki wpływ osoba mająca wpływ? 
-*   Są one mieć wpływ na budżet lub rozwiązania jest wybierany? 
+*   Co to osoba mająca wpływ mają wpływ na? 
+*   Są one mieć wpływ na budżetu lub które rozwiązanie jest pobierany? 
 
-Wiedzy o odpowiedzi na te pytania ułatwi Ci podejmowania decyzji o inwestycji pieniędzy i sposób dystrybucji pieniądze.
+Odpowiedzi na te pytania, wiedząc, ułatwia podejmowanie decyzji dotyczących gdzie inwestować pieniądze oraz jak dystrybuować pieniądze.
 
-##### <a name="define-where-your-audience-learns"></a>Zdefiniuj, gdy uzyskuje informacje o odbiorców  
-Kupujący są 90 procent przez podróży w czasie, gdy odwiedzają marketplace. Kupujący uzyskać to znacznie wraz w proces podejmowania decyzji poznawania rozwiązań i oceny opcje z wyprzedzeniem. Chcesz zaprojektować kampanię, która ma być, gdzie Twoje nabywców i specjaliści dowiedzieć się. 
+##### <a name="define-where-your-audience-learns"></a>Zdefiniuj, którym uczy się odbiorców  
+Kupujący są 90 procent firm z przez podróż do czasu, gdy odwiedzą Portal marketplace. Kupujący uzyskać to znacznie wraz w procesie podejmowania decyzji, informacje o rozwiązaniach i oceny opcje z wyprzedzeniem. Użytkownik chce zaprojektować kampanię, którego celem jest to, gdzie Twoje kupujących i specjaliści dowiedzieć się więcej. 
 
-Każdy odbiorców dla każdej branży, pionowy lub kategorii różni się. Jest odbiorców informacje w trybie online, za pomocą poczty e-mail, na targach, za pośrednictwem mediów społecznościowych, lub z zaufanych doradców konwersacji? W zależności od tego, jak i gdzie uzyskuje informacje o odbiorców należy zaprojektować działań i odpowiednio dystrybucji ds. Kombinacja tych taktyk staje się strategii kampanii.
+Różni się każdej grupy odbiorców dla każdej branży, w pionie lub kategorii. Jest odbiorców nauka w trybie online, za pośrednictwem poczty e-mail na targach, za pośrednictwem mediów społecznościowych, lub rozmów z zaufanych doradców? W zależności od tego, gdzie i jak uczy się krąg swoich odbiorców należy zaprojektować działań i w związku z tym dystrybucji ds. Kombinacja tych taktyka staje się strategii kampanii.
 
 #### <a name="create-clear-campaign-goals"></a>Tworzenie celów wyczyść kampanii  
-Należy zdefiniować Powodzenie kampanii w witrynie marketplace i utworzyć wyczyść kluczowych wskaźników wydajności. Można uruchamiać wielu kampanie z zakończenia różnych celów. Tobą a firmą Microsoft chcą wzrostu sprzedaży. Jej ostatecznym celem jest zwiększenie nabycia przychodu lub klienta. Jednak kampanii marketingowych, może być powiązany celów innych etapami cyklu zakupu.
+Należy zdefiniować Powodzenie kampanii w portalu marketplace i utworzyć wskaźników KPI. Usuń zaznaczenie. Wiele kampanii może działać do zakończenia różnych celów. Klient i firma Microsoft chce rozwijać sprzedaży. Ultimate końcowym celem jest zwiększone nabycia przychodów lub klienta. Jednak swoje kampanie marketingowe, może być powiązany cele w innych etapów w cyklu kupowania.
 
-Na przykład jeśli nowo uruchomieniu produktu w witrynie Marketplace, może się okazać, generowanie education i lead odbiorców najlepiej jest najkrótszego fokus. Powodzenie może być zdefiniowany przez liczbę potencjalnych klientów wygenerowana przez użytkownika lista Marketplace. W takim przypadku Twoje marketingu taktyk (i strona początkowa) czy skupić się na rysunku klientów do Twojej listy Marketplace.
+Na przykład jeśli nowo uruchomieniu produktu na rynku, może się okazać, że możesz skoncentrować się najlepiej odbywa się na odbiorcy generowania instytucji edukacyjnych i potencjalnych klientów. Powodzenie można zdefiniować na podstawie Liczba wygenerowanych z Twojej listy Marketplace potencjalnych klientów. W tym przypadku usługi marketingu taktyka (i strona docelowa) może skoncentrować się na rysunku, Twoja lista Marketplace klienci.
 
-Jeśli wiesz, że produkt wymaga pewnego poziomu zaangażowania i środowisko przed zakupem ma ustawienie wersji próbnej w witrynie Marketplace, może być celem kampanii pobrać liczbę prób. W takim przypadku obszarów dla Twojego taktyk kampanii może znacznie skoncentrowane na wspieranie wersji próbnej w witrynie Marketplace. 
+Jeśli masz wersję próbną, skonfigurowane w portalu Marketplace, a wiadomo, że Twój produkt wymaga pewien stopień zaangażowania i środowisko przed dokonaniem zakupu, może być celem kampanii pobrać liczba prób. W tym przypadku wezwanie do akcji dla taktykę kampanii może skoncentrować gwałtownie zachęcanie do korzystania z wersji próbnej w witrynie Marketplace. 
 
-Jeśli masz możliwości zakupu skonfigurowane w witrynie Marketplace produktu lub kategorii jest dobrze znany, możesz pominąć krok wersji próbnej i bezpośrednie odbiorców do łącza "Kup teraz" w witrynie Marketplace.
+Jeśli Twój produkt lub kategorii jest dobrze znany i masz możliwości zakupu w portalu Marketplace, można zdecydować pominąć krok wersji próbnej i kierują je bezpośrednio odbiorców do link "Kup teraz" w witrynie Marketplace.
 
-W momencie więcej dojrzałe w historii oferty możesz skoncentrować wysiłków kampanii grup akcję base i na dysku klienta kierunku zwiększona zakupu w witrynie Marketplace. Twoje taktyk może skupić się na zachęcając klientów do "Kup teraz" w witrynie Marketplace. Wskaźników KPI może być przychody wygenerowane za pośrednictwem portalu Marketplace.
+W momencie bardziej dojrzałych w historii oferty można zdecydować skoncentrować się na kampanię na grup akcji base i na dysku klienta kierunku zwiększonej zakupu w portalu Marketplace. Taktykę może skupić się na zachęcanie klientom "Kup teraz" w witrynie Marketplace. Wskaźnik KPI może być przychód wygenerowanych za pośrednictwem portalu Marketplace.
 
-Niezależnie od stopień Twoją ofertę i cele organizacji, są następujące klucze do maksymalizowania skuteczności kampanii.
+Niezależnie od dojrzałości oferty i cele organizacji, dostępne są następujące klucze do maksymalizacji skuteczności kampanii.
 
-*   Przebywania ukierunkowanych na ten cel
-*   Mapowanie się zbiór zintegrowanych taktyk marketing wyrównany do tego celu
+*   Dokonywanie aktualizacji na wąsko zdefiniowany w tym celu
+*   Mapowanie się zbiór zintegrowanych taktyka marketingu wyrównane do tego celu
 
-W ramach są nowe wydawcy w portalu Azure Marketplace firma Microsoft oferuje niektóre bezpłatnie z zalet Marketplace GTM. Należy niezwykle traktować o korzystaniu z tych zalet w przypadku strategii kampanii. Let działu marketingu cele kampanii Marketplace i akcję odbiorców. Microsoft może dostosować te elementy dostarczane do pracy do planu.
+W ramach są nowe wydawcy w witrynie Azure Marketplace firma Microsoft oferuje kilka bezpłatnych korzyści GTM portalu Marketplace. Możesz pomyśleć niezwykle o sposobie używania tych korzyści w strategii kampanii. Pozwól naszego zespołu ds. marketingu znać Twoje cele kampanii w portalu Marketplace i akcję odbiorców. Microsoft może dostosowywać te cele do zrealizowania pracować w swoim planie.
 
-Inteligentne Marketing partnera jest program Microsoft Partner Network. 
-*   Dodatkowej zawartości na kampanii, kompilowania i marketingu wskazówki można znaleźć inteligentne partnera Marketing strony znajduje się w [partner.microsoft.com/smart-partner-marketing](https://partner.microsoft.com/smart-partner-marketing).  
+Inteligentne Partner Marketing jest program Microsoft Partner Network. 
+*   Dodatkowa zawartość dotycząca kampanii, przedsiębiorstw i marketing rozwiązania, można znaleźć inteligentne Partner Marketing strony znajduje się w [partner.microsoft.com/smart-partner-marketing](https://partner.microsoft.com/smart-partner-marketing).  
 
-#### <a name="link-to-gtm-benefits"></a>Łącze do korzyści GTM
+#### <a name="link-to-gtm-benefits"></a>Link do korzyści z GTM
 *  Odwiedź stronę [GTM korzyści w witrynie marketplace](./gtm-benefits.md) strony.   
 
 ---  
 
-### <a name="link-to-landing-page"></a>Łącze, aby strona początkowa
+### <a name="link-to-landing-page"></a>Link, aby strona docelowa
 *   Odwiedź stronę [kompilacji strona docelowa](./build-your-landing-page.md) strony.  
 
-#### <a name="link-to-enable-lead-sharing"></a>Łącze, aby włączyć udostępnianie potencjalnych klientów  
+#### <a name="link-to-enable-lead-sharing"></a>Link, aby włączyć udostępnianie potencjalnych klientów  
 *   Odwiedź stronę [Włącz prowadzić udostępnianie](./enable-lead-sharing.md) strony.  
 
-#### <a name="link-to-promote-your-business-with-microsoft"></a>Łącze do promowania firmy Microsoft  
-*   Odwiedź stronę [wspierania firmie Microsoft](promote-your-business-with-microsoft.md) strony.  
+#### <a name="link-to-promote-your-business-with-microsoft"></a>Link do wypromuj swoją firmę z firmą Microsoft  
+*   Odwiedź stronę [podwyższyć poziom Twojej firmy dzięki firmie Microsoft](promote-your-business-with-microsoft.md) strony.  
 
-#### <a name="invest-in-merchandising"></a>Inwestycji w promocji  
-W ramach procesu publikowania należy rozważyć jakiego typu oferty, aby utworzyć i wybierz kategorię dla danej oferty w portalu Azure Marketplace. Upewnij się, że wybierz kategorię, która jest dokładna do rozwiązania, tak aby był wyświetlany dokładnie potencjalnym klientom.  
+#### <a name="invest-in-merchandising"></a>Inwestować w promocji  
+W ramach procesu publikowania należy rozważyć typ oferty, aby utworzyć i wybierz kategorię dla oferty w portalu Azure Marketplace. Upewnij się, że wybierzesz kategorię, która jest prawidłowe dla rozwiązania, tak aby był wyświetlany dokładnie potencjalnym klientom.  
 
-W portalu Azure Marketplace staje się kwalifikujące się do oferty polecanych zaznaczenie wersji próbnej lub transact typ oferty. 
-*   Aby uzyskać więcej informacji na temat jak polecanych oferty mieści się w kontekście swoje korzyści przejdź na rynek korzyści GTM można znaleźć na stronie witryny marketplace, znajdujący się w [korzyści gtm](./gtm-benefits.md).  
+W witrynie Azure Marketplace możesz czerpać polecane oferty podczas zaznaczania wersji próbnej lub transact typ oferty. 
+*   Aby uzyskać więcej informacji na temat ofert jak polecane mieści się w kontekście korzyści go-to-market korzyści GTM można znaleźć na stronie portalu marketplace, znajdujący się w [korzyści gtm](./gtm-benefits.md).  
 
-Promowanie oferty są wybierane w oparciu o który oferty to w najlepszym środowisku klienta dla klientów i korzystać z wysokiej jakości partnera marketingowych, zaangażowania. Następujące kryteria zdefiniuj polecanych oferty.  
-*   Jasności listy.  
+Polecane oferty są wybierane w oparciu o oferty zapewnić komfort klientom i korzystać z zalet wysokiej jakości partner marketing zaangażowania. Następujące kryteria definiują polecane oferty.  
+*   W celu uściślenia listy.  
 *   Niezawodność technologii.  
-*   Wzrost użycia platformy przez klientów.  
-*   Poziom interakcji użytkowników z tworzenia wysokiej jakości materiałów marketingowych.  
+*   Rozwój platformy użycia przez klientów.  
+*   Poziom zaangażowania tworzenie wysokiej jakości materiały marketingowe.  
 
-Aby zmaksymalizować prawdopodobieństwo, że Twoja oferta zostanie udostępniona, powinien inwestycji w powodzenie Twojej oferty Marketplace. Należy wziąć pod uwagę poniższych metod, aby zapewnić doskonałe wrażenia dla danej oferty.  
-*   Sprawdź, czy Twoje marketing artefakty są przekazywać i wyświetlania poprawnie.  
-*   Dołącz do sieci Microsoft Partner Network i kontaktowaniu się z ekosystemem partnerów.  
-    *   Aby uzyskać więcej informacji na temat MPN, odwiedź stronę znajdujący się w sieci Microsoft Partner Network [partner.microsoft.com/membership](https://partner.microsoft.com/membership).
-*   Stacja ruchu wysokiej jakości do Twojej oferty w portalu Azure Marketplace poprzez tworzenie wysokiej jakości żądanie generowania kampanii.  
-*   Upewnij się, że wszystkie oferty są dostępne w portalu Azure Marketplace.  
-*   Wzrostu użycia oferty Azure Marketplace zwiększają żądanie, udostępnienie klienta wysokiej jakości usługi, i podając odpowiednim aktualizacje na ofertę.  
+Aby zmaksymalizować prawdopodobieństwo, że Twoja oferta zostanie udostępniona, kolejności należy zainwestować w sukces swojej ofert portalu Marketplace. Należy wziąć pod uwagę następujących podejść zapewnienie doskonałej obsługi klientów dla swojej oferty.  
+*   Upewnij się, że marketingu artefaktów przekazane i wyświetlania poprawnie.  
+*   Dołącz do programu Microsoft Partner Network i korzystaj z ekosystemu partnerów.  
+    *   Aby uzyskać więcej informacji na temat programu MPN, odwiedź strony znajdujący się w sieci Microsoft Partner Network [partner.microsoft.com/membership](https://partner.microsoft.com/membership).
+*   Zachęć klientów wysokiej jakości oferty w portalu Azure Marketplace, poprzez tworzenie wysokiej jakości żądanie generowania kampanii.  
+*   Upewnij się, że wszystkie swoje oferty są dostępne w witrynie Azure Marketplace.  
+*   Rozszerzaj użycie Twoich ofert w portalu Azure Marketplace, prowadzenie żądanie, zapewniając klientom wysoki komfort usługi oraz materiały terminowe aktualizacje na ofertę.  
 
 ## <a name="analytics-and-reporting"></a>Analiza i raportowanie  
-W sekcji wgląd w portalu dla partnerów chmury można zobaczyć informacje wysokiego poziomu wydajności dla danej oferty. W tej sekcji znajdują się następujące raporty.  
-*   Podsumowanie migawki zleceń  
+W sekcji szczegółowych informacji w portalu Cloud Partner zobaczysz Przegląd wydajności wysokiego poziomu oferty. Następujące raporty znajdują się w tej sekcji.  
+*   Podsumowanie migawki zamówień  
 *   Sposób użycia  
 *   Wdrożenia  
-*   Trendy klienta na stronie głównej Insights  
-*   Szczegółowe zamówień, użycia i dane klienta  
-*   Zleceń i użycie wyświetlany jako miesięczne podsumowanie lub Wyświetl trend sześciu miesięcy  
-*   Użycie i zamówienia podział według kilku kryteriów  
+*   Trendy klienta na stronie głównej usługi Insights  
+*   Szczegółowe zamówień i użycie danych klienta  
+*   Zamówień i użycia, przedstawione jako miesięczne podsumowanie lub Wyświetl trend sześciu miesięcy  
+*   Użycie i zamówienia podzielony na fragmenty według kilku kryteriów  
 
-Szczegółowe raporty zawierają informacje o kliencie, takie jak nazwa firmy i lokalizacji geograficznej w dół, aby kod pocztowy. Porównywanie klientów i kompensacji Twoich sprzedawców należy używać tych informacji. Firma Microsoft udostępnia następujące atrybuty określonych klientów.  
+Szczegółowe raporty zawierają informacje o klientach, takie jak nazwa firmy i lokalizacji geograficznej w dół, aby kod pocztowy. Należy użyć tych informacji do porównywania klientów i kompensacji Twoich sprzedawców. Firma Microsoft udostępnia następujące określone atrybuty o swoich klientów.  
 *   Odsprzedawcy   
 *   Imię  
 *   Nazwisko  
@@ -144,21 +144,21 @@ Szczegółowe raporty zawierają informacje o kliencie, takie jak nazwa firmy i 
 *   Nazwa firmy  
 *   Data transakcji  
 *   Nazwa subskrypcji  
-*   Identyfikator subskrypcji platformy Azure (tylko dla klientów między)  
+*   Identyfikator subskrypcji platformy Azure (tylko dla klientów PAYG)  
 *   Nazwa wystąpienia chmury  
-*   Liczba kolejności  
+*   Liczba zamówień  
 *   Region kraju klienta  
 *   Miasto klienta  
 *   Kultura komunikacji klienta  
-*   Kodu pocztowego klienta  
+*   Kod pocztowy klienta  
 
-Najlepsze praktyki informacje w tych raportach jest uzgodnienie z danych wewnętrznych. Użyj go, aby ustalić ich priorytety akcji kampanii marketingowych.  
+Najlepszym rozwiązaniem dla informacji o tych raportów jest uzgodnienie z wewnętrznych danych. To wykorzystać do priorytety akcje kampanii marketingowych.  
 
-Sekcji Analytics Insights portalu partnerów chmury udostępnia bogate pulpit nawigacyjny usługi Power BI w oparciu. Jesteś mogą używać tego pulpitu nawigacyjnego, aby ruch był widoczny na stronie szczegółów oferty. Nowe funkcje dla tego pulpitu nawigacyjnego wprowadzanie trwającą sposób.  
+Sekcja analizy Cloud Partner Portal wglądu w szczegółowe dane zapewnia rozbudowany pulpit nawigacyjny, oparte na usłudze Power BI. Jesteś w stanie używać tego pulpitu nawigacyjnego widoczny ruch na stronie szczegółów oferty. Nowe funkcje dla tego pulpitu nawigacyjnego są wdrażane w sposób ciągły.  
 
-W portalu dla partnerów chmury jest także dokumentacja Campaigns firmy Microsoft. Dokumentacja Campaigns firmy Microsoft może używać kampanię i śledzenie kampanii w portalu dla partnerów chmury.  
+W portalu Cloud Partner jest również dokumentację dotyczącą Campaigns firmy Microsoft. Dokumentacja Campaigns firmy Microsoft można używać do konfigurowania kampanii i śledzenie kampanii w portalu Cloud Partner.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
+*   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
 
 ---  

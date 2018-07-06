@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
 ms.service: cognitive-services
-ms.openlocfilehash: f004a0a1726ca6c513e2cb4c137f82ae40e31a01
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 479fa450b86d19032e75ef6aa511a7bdca608d75
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344331"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869051"
 ---
 # <a name="manage-intents"></a>Zarządzanie opcjami 
 Dodaj [intencji](luis-concept-intent.md) z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji. 
@@ -75,9 +75,9 @@ Zobacz [Dodaj wzorca od istniejących wypowiedź przeznaczenie lub jednostki str
 
 ## <a name="edit-an-utterance-on-intent-page"></a>Edytuj wypowiedź na stronie intencji
 
-Aby edytować wypowiedź, wybierz ikonę wielokropek (...) na prawym końcu wiersza dla tego wypowiedź, a następnie wybierz **Edytuj**. Modyfikowanie tekstu, a następnie naciśnij klawisz Enter na klawiaturze.
+Aby edytować wypowiedź, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wypowiedź, a następnie wybierz **Edytuj**. Modyfikowanie tekstu, a następnie naciśnij klawisz Enter na klawiaturze.
 
-![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnioną ikoną trzy kropki znajdujące się](./media/luis-how-to-add-intents/edit-utterance.png) 
+![Strona Szczegóły zrzut ekranu z opcjami, z wyróżnionym przyciskiem wielokropka](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>Ponowne przypisywanie wypowiedzi na stronie intencji
 Celem co najmniej jeden wypowiedzi można zmienić, przypisując im inną intencji. 
@@ -92,7 +92,7 @@ Aby zmienić celem kilka wypowiedzi, zaznacz pola wyboru po lewej stronie wypowi
 
 ## <a name="delete-utterances-on-intent-page"></a>Usuń wypowiedzi na stronie intencji
 
-Aby usunąć wypowiedź, wybierz ikonę wielokropek (...) na prawym końcu wiersza dla tego wypowiedź, a następnie wybierz **Usuń**. Wypowiedź jest usuwany z listy i aplikacji usługi LUIS.
+Aby usunąć wypowiedź, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie wiersza dla tego wypowiedź, a następnie wybierz **Usuń**. Wypowiedź jest usuwany z listy i aplikacji usługi LUIS.
 
 ![Strona Szczegóły zrzut ekranu z opcjami, z podświetloną opcją Delete](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 

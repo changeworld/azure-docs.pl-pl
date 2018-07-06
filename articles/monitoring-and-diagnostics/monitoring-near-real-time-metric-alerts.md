@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane zasobów dla nowszej alerty metryki monitora Azure
-description: Odwołanie do pomocy technicznej, metryki i dzienniki dla nowszej platformy Azure w pobliżu metryki alertów w czasie rzeczywistym.
+title: Zasoby obsługiwane dla nowszych alertów metryk usługi Azure Monitor
+description: Dokumentacja na temat pomocy technicznej, metryk i dzienników dla nowszej platformy Azure, niemal w czasie rzeczywistym alertów dotyczących metryk.
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,142 +8,142 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 01c0b5897ab47a2a5091646aed1977779cf0234c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264514"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868033"
 ---
-# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Obsługiwane metody metryki i tworzenia nowych alertów metryki
-Azure obsługuje teraz Monitor [nowy typ alertu metryki](monitoring-overview-unified-alerts.md) mającego istotne korzyści w starszej [klasycznego alerty metryki](insights-alerts-portal.md). Obsługuje alerty starsze [obszerne listy metryki](monitoring-supported-metrics.md). Nowsza alerty obsługuje podzbiór (rosnącym) tego dłuższej listy. W tym artykule wymieniono tego podzbioru. 
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Obsługiwane metody metryki i tworzenia nowych alertów dotyczących metryk
+Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-unified-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](insights-alerts-portal.md). Obsługuje starsze alerty [duże listy metryk](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) tej listy większe. W tym artykule wymieniono tego podzbioru. 
 
-## <a name="portal-powershell-cli-rest-support"></a>Portalu, programu PowerShell, interfejsu wiersza polecenia, REST obsługuje
-Obecnie można tworzyć nowszej metryki alerty tylko w portalu Azure [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) lub [szablonów Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania alertów nowszej przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (Azure CLI 2.0) będzie dostępna wkrótce.
+## <a name="portal-powershell-cli-rest-support"></a>Portal, programu PowerShell, interfejsu wiersza polecenia, REST pomocy technicznej
+Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (interfejs wiersza polecenia platformy Azure w wersji 2.0) będzie dostępna wkrótce.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
-Alerty metryki nowszej obsługuje alerty dla metryki, które są używane wymiary. Wymiary służy do filtrowania Twoje metryki na odpowiedni poziom. Wszystkie metryki obsługiwanych wraz z odpowiednich wymiary mogą być zbadane i wizualizowane z [Monitor Azure — Eksploratora metryk (wersja zapoznawcza)](monitoring-metric-charts.md).
+Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk (wersja zapoznawcza)](monitoring-metric-charts.md).
 
-Poniżej przedstawiono pełną listę źródeł metryki Azure monitor obsługiwany przez nowszą alertów:
+Poniżej przedstawiono pełną listę źródeł metryk usługi Azure monitor, obsługiwanych przez nowszych alertów:
 
-|Typ zasobu  |Wymiary obsługiwane  | Dostępne metryki|
+|Typ zasobu  |Obsługiwane wymiary  | Dostępne metryki|
 |---------|---------|----------------|
 |Microsoft.ApiManagement/service     | Yes        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
-|Microsoft.Automation/automationAccounts     |     Yes   | [Konta automatyzacji](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
-|Microsoft.Batch/batchAccounts | ND| [Konta usługi partia zadań](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
+|Microsoft.Automation/automationAccounts     |     Yes   | [Konta usługi Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | ND| [Konta usługi Batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
 |Microsoft.Cache/Redis     |    ND     |[Pamięć podręczna Redis](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.Compute/virtualMachines     |    ND     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets     |   ND      |[Zestawy skalowania maszyny wirtualnej](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets     |   ND      |[Zestawy skalowania maszyn wirtualnych](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | Yes| [Grupy kontenerów](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
-|Microsoft.DataFactory/datafactories| Yes| [V1 fabryki danych](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
-|Microsoft.DataFactory/factories     |   Yes     |[V2 fabryki danych](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
-|Microsoft.DBforMySQL/servers     |   ND      |[Bazy danych dla programu MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/servers     |    ND     | [Bazy danych dla PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.DataFactory/datafactories| Yes| [Fabryki danych w wersji 1](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
+|Microsoft.DataFactory/factories     |   Yes     |[Fabryki danych w wersji 2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
+|Microsoft.DBforMySQL/servers     |   ND      |[Bazy danych MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    ND     | [DB dla PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  Yes      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
-|Microsoft.KeyVault/vaults| Nie | [magazynów](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
+|Microsoft.KeyVault/vaults| Nie | [Magazyny](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     ND    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
-|Microsoft.Network/applicationGateways     |    ND     | [Bramy aplikacji](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/applicationGateways     |    ND     | [Bramy Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/dnsZones | ND| [Strefy DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
-|Microsoft.Network/loadBalancers (tylko dla jednostki SKU standardowy)| Yes| [Moduły równoważenia obciążenia](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
-|Microsoft.Network/publicipaddresses     |  ND       |[Addreses publicznego adresu IP](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
-|Microsoft.PowerBIDedicated/capacities | ND | [Możliwości](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft.Network/loadBalancers (tylko w przypadku standardowej jednostki SKU)| Yes| [Moduły równoważenia obciążenia](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
+|Microsoft.Network/publicipaddresses     |  ND       |[Adres publiczny adres IP](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.PowerBIDedicated/capacities | ND | [Pojemności](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   ND      |[Usługi wyszukiwania](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Yes       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Yes     | [Konta magazynu](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
-|Microsoft.Storage/storageAccounts/services     |     Yes    | [Obiektu blob usługi](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [usługi plików](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [kolejka usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) i [tabeli usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.Storage/storageAccounts/services     |     Yes    | [Obiekt blob usługi](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [usługi plików](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [kolejki usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) i [tabeli usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  ND       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.CognitiveServices/accounts     |    ND     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.OperationalInsights/workspaces (wersja zapoznawcza) | Yes|[Obszary robocze analizy dzienników](#log-analytics-logs-as-metrics-for-alerting)|
+|Microsoft.OperationalInsights/workspaces (wersja zapoznawcza) | Yes|[Obszary robocze usługi log Analytics](#log-analytics-logs-as-metrics-for-alerting)|
 
 
-## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Dzienniki analizy dziennika jako metryki dla alertów 
+## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Dzienniki usługi log Analytics, jako metryki dotyczące alertów 
 
-Umożliwia także nowszej alerty metryki popularnych dzienników analizy dzienników wyodrębnić jako metryki jako część metryki z Dzienniki podglądu.  
-- [Liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) dla komputerów z systemem Windows i Linux
-- [Rekordy pulsu dla agenta kondycji](../operations-management-suite/oms-solution-agenthealth.md)
+Umożliwia także nowszych alertów metryk popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki jako część metryki z dzienników w wersji zapoznawczej.  
+- [Liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) maszyn Windows i Linux
+- [Rekordy pulsu dla kondycji agenta](../operations-management-suite/oms-solution-agenthealth.md)
 - [Zarządzanie aktualizacjami](../operations-management-suite/oms-solution-update-management.md) rekordów
  
 > [!NOTE]
-> Określonej metryki i/lub wymiaru będą wyświetlane tylko jeśli danych dla niego istnieje w wybranym okresie. Te metryki są dostępne dla klientów z obszarami roboczymi w wschodnie stany USA, zachodnie centralnej nam i Europa Zachodnia, którzy wybranych do podglądu. Jeśli chcesz być częścią tej wersji zapoznawczej, zarejestruj się przy użyciu [ankiety](https://aka.ms/MetricLogPreview).
+> Określone metryki i/lub wymiaru będą wyświetlane tylko jeśli dane dla niego istnieje w wybranym okresie. Te metryki są dostępne dla klientów z obszarami roboczymi w regionie wschodnie stany USA, zachodnio-środkowe stany USA i Europa Zachodnia, którzy opracowali w wersji zapoznawczej. Jeśli chcesz być częścią tej wersji zapoznawczej, zarejestruj się przy użyciu [ankietę](https://aka.ms/MetricLogPreview).
 
-Poniższa lista źródeł analizy dzienników opartych na dzienniku metryki jest obsługiwana:
+Poniższa lista źródeł metryki na podstawie dzienników usługi Log Analytics jest obsługiwane:
 
-Metryki szczegóły  |Wymiary obsługiwane  | Typ dziennika  |
+Nazwa/szczegóły metryki  |Obsługiwane wymiary  | Typ dziennika  |
 |---------|---------|---------|
-|Average_Avg. Czas dysku w s/Odczyt     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Average_Avg. Dysku w s/Zapis     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Długość kolejki dysku Average_Current   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Average_Disk/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Transfery Average_Disk na sekundę    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|   Average_ % wolnego miejsca    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Average_Available (MB)     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Average_ % Zadeklarowane bajty w użyciu    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-| Average_Bytes odebrane/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|  Average_Bytes wysłane/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|  Całkowita liczba Average_Bytes/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|  Average_ czas procesora (%)    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|   Długość kolejki Average_Processor    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Windows      |
-|   Average_ % wolnych węzłów i   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ % wolnego miejsca   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ % używanych węzłów i  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Używany obszar Average_ %   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Disk odczytu bajtów na sekundę    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Disk/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Transfery Average_Disk na sekundę |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Bajty zapisu Average_Disk/s   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Disk/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Free megabajtów |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Logical Bajty dysku/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ % dostępnej pamięci |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ % dostępnego obszaru wymiany |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ procent wykorzystania pamięci  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Używany obszar wymiany (MB) Average_ %  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Pamięć (MB) Average_Available    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Available wymiany (MB)  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Page/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Page/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Pages na sekundę  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Used obszar wymiany (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Used pamięć (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Total bajtów przesłanych    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Odebrane bajty Average_Total   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Total bajtów    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Pakiety Average_Total  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Odebrane pakiety Average_Total |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Błędy odbioru Average_Total    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Błędy wysyłania Average_Total    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Total kolizji   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Avg. Czas dysku w s/Odczyt |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Avg. Dysku w s/Transfer |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Avg. Dysku w s/Zapis    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Physical Bajty dysku/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas uprzywilejowany Average_Pct    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas użytkownika Average_Pct  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    KB pamięci Average_Used |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Virtual współużytkowana pamięć  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ czas DPC (%) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas bezczynności (%) Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ czas przerwań (%)   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas oczekiwania Average_ % we/wy |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas nieuprzywilejowany % Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas uprzywilejowany Average_ %  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_ czas procesora (%)   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Czas użytkownika % Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Pamięć fizyczna Average_Free   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Free miejsce w plikach stronicowania |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Free pamięci wirtualnej    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Processes  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Size przechowywane w plikach stronicowania    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Uptime |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Average_Users  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i SourceSystem    |   Licznik wydajności systemu Linux      |
-|    Pulsu  |     Tak — komputer, OSType, wersji i SourceComputerId    |   Rekordy pulsu |
-|    Aktualizacja |     Tak — komputer, produktów, klasyfikacji, UpdateState, opcjonalne & zatwierdzone    |   Zarządzanie aktualizacjami |
+|Average_Avg. Czas dysku w s/Odczyt     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_Avg. Dysku w s/Zapis     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Długość kolejki dysku Average_Current   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_Disk odczyty/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_Disk dyskowe/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|   Average_ % wolnego miejsca    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_Available pamięć (MB)     |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_ % Zadeklarowane bajty w użyciu    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+| Average_Bytes odebrane/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|  Average_Bytes wysłane/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|  Average_Bytes liczba bajtów/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|  Average_ czas procesora (%)    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|   Długość kolejki Average_Processor    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Dane licznika wydajności Windows      |
+|   Average_ % wolnych węzłów i   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ % wolnego miejsca   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ % użytych węzłów i  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Używany obszar Average_ %   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Disk Odczytane bajty/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Disk odczyty/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Disk dyskowe/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Disk zapisane bajty/s   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Disk zapisy/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Free (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Logical Bajty dysku/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ % dostępnej pamięci |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ % dostępnego obszaru wymiany |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ procent wykorzystania pamięci  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Używany obszar wymiany Average_ %  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Pamięć (MB) Average_Available    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Available obszar wymiany  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Page odczyty/s |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Page zapisy/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Pages na sekundę  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Obszar wymiany (MB) Average_Used |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Used pamięć (MB) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Total Bajty przesłane    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Odebrane bajty Average_Total   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Total bajtów    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Total pakiety przesyłane  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Odebrane pakiety Average_Total |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Błędy Rx Average_Total    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Błędy Tx Average_Total    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Total kolizji   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Avg. Czas dysku w s/Odczyt |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Avg. Dysku w s/Transfer |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Avg. Dysku w s/Zapis    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Physical Bajty dysku/s    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas uprzywilejowany Average_Pct    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas użytkownika Average_Pct  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    KB pamięci Average_Used |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Pamięć współużytkowaną Average_Virtual  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ czas DPC (%) |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas bezczynności (%) Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ czas przerwań (%)   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas oczekiwania operacji We/Wy dla % Average_ |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas nieuprzywilejowany (%) Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas uprzywilejowany Average_ %  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_ czas procesora (%)   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Czas użytkownika % Average_    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Pamięć fizyczna Average_Free   |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Free miejsce w plikach stronicowania |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Free pamięci wirtualnej    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Processes  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Size przechowywane w plikach stronicowania    |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Uptime |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Average_Users  |     Tak — komputera, nazwa obiektu, InstanceName, Ścieżka_licznika i system źródłowy    |   Licznik wydajności systemu Linux      |
+|    Puls  |     Tak — komputer, OSType, wersji i SourceComputerId    |   Rekordy pulsu |
+|    Aktualizacja |     Tak — komputer, produktów, klasyfikacji, UpdateState, opcjonalnie & zatwierdzone    |   Zarządzanie aktualizacjami |
 
 
 
-## <a name="payload-schema"></a>Schemat ładunku
+## <a name="payload-schema"></a>Ładunek schematu
 
-Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich niemal nowszej metryki alerty, gdy jest odpowiednio skonfigurowany [grupy akcji](monitoring-action-groups.md) jest używany:
+Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wszystkich nowszych alertów metryk, jeśli jest odpowiednio skonfigurowany w pobliżu [grupy akcji](monitoring-action-groups.md) jest używany:
 
 ```json
 {"schemaId":"AzureMonitorMetricAlert","data":
@@ -195,6 +195,6 @@ Operację POST zawiera następujące ładunek JSON i schematu dla wszystkich nie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o nowe [alerty środowisko](monitoring-overview-unified-alerts.md).
-* Dowiedz się więcej o [rejestrowania alertów w usłudze Azure](monitor-alerts-unified-log.md).
-* Dowiedz się więcej o [alertów w usłudze Azure](monitoring-overview-alerts.md).
+* Dowiedz się więcej o nowym [alerty środowisko](monitoring-overview-unified-alerts.md).
+* Dowiedz się więcej o [alerty dzienników w usłudze Azure](monitor-alerts-unified-log.md).
+* Dowiedz się więcej o [alertów na platformie Azure](monitoring-overview-alerts.md).

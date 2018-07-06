@@ -1,6 +1,6 @@
 ---
-title: Zasobów usługi Automatyzacja Azure w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
-description: Rozwiązania do zarządzania zwykle zawiera elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu.
+title: Zasoby automatyzacji platformy Azure w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania zwykle będzie zawierać elementy runbook w usłudze Azure Automation do automatyzacji procesów, takich jak zbieranie i przetwarzanie danych monitorowania.  W tym artykule opisano jak dołączać elementy runbook i ich powiązane zasoby w ramach rozwiązania.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7f32cc47c96f6fc8adaedef8f8ea3156ee70115
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d5b2499f9e260e6ed134c4191b053325ca3f42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887895"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868827"
 ---
-# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie zasobów usługi Automatyzacja Azure do rozwiązania do zarządzania (wersja zapoznawcza)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie zasobów usługi Azure Automation do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
+> Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.   
 
 
-[Rozwiązania do zarządzania]( monitoring-solutions.md) zazwyczaj uwzględnia elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  Oprócz elementów runbook kont automatyzacji zawiera zasoby, takie jak zmienne i harmonogramy, obsługujących elementy runbook używane w rozwiązaniu.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu.
+[Rozwiązania do zarządzania]( monitoring-solutions.md) zwykle zawierają elementy runbook w usłudze Azure Automation do automatyzacji procesów, takich jak zbieranie i przetwarzanie danych monitorowania.  Oprócz elementów runbook konta usługi Automation obejmuje zasoby, takie jak zmienne i harmonogramów, obsługujących elementy runbook, używane w rozwiązaniu.  W tym artykule opisano jak dołączać elementy runbook i ich powiązane zasoby w ramach rozwiązania.
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure ]( monitoring-solutions-creating.md) 
+> Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure ]( monitoring-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że znasz już następujące informacje.
+W tym artykule założono, że znasz już następujące informacje.
 
-- Jak [tworzenie rozwiązania do zarządzania]( monitoring-solutions-creating.md).
+- Jak [utworzyć to rozwiązanie do zarządzania]( monitoring-solutions-creating.md).
 - Struktura [plik rozwiązania]( monitoring-solutions-solution-file.md).
 - Jak [Tworzenie szablonów usługi Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Konto usługi Automation
-Wszystkie zasoby w automatyzacji Azure są zawarte w [konto automatyzacji](../automation/automation-security-overview.md#automation-account-overview).  Zgodnie z opisem w [obszaru roboczego analizy dzienników i konto automatyzacji]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) konta automatyzacji nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, nie będą instalacji rozwiązania.
+Wszystkie zasoby w usłudze Azure Automation są zawarte w [konta usługi Automation](../automation/automation-security-overview.md#automation-account-overview).  Zgodnie z opisem w [obszar roboczy usługi Log Analytics i konto usługi Automation]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) konta usługi Automation nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, nie będą instalacji rozwiązania.
 
-Nazwa każdego zasobu automatyzacji zawiera nazwę swojego konta automatyzacji.  Jest to rozwiązanie z **accountName** parametru, jak w poniższym przykładzie zasobu elementu runbook.
+Nazwa każdego zasobu automatyzacji zawiera nazwę jego konta usługi Automation.  Jest to realizowane w rozwiązaniu za pomocą **accountName** parametru, jak w poniższym przykładzie zasobów elementu runbook.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Elementy Runbook
-Należy uwzględnić wszystkie elementy runbook, dzięki czemu są tworzone po zainstalowaniu rozwiązania już używana przez rozwiązania w pliku rozwiązania.  Treść elementu runbook w szablonie nie mogą zawierać jednak, należy opublikować element runbook do lokalizacji publicznej, gdzie jest dostępny przez dowolnego użytkownika instalowanie rozwiązania.
+Należy uwzględnić wszelkie elementy runbook, używane przez rozwiązanie w pliku rozwiązania, aby ich utworzenia po zainstalowaniu rozwiązania.  Treść elementu runbook w szablonie nie może zawierać Chociaż, więc należy opublikować element runbook w ogólnodostępnej lokalizacji, gdzie jest dostępny przez dowolnego użytkownika, instalowanie rozwiązania.
 
-[Element runbook automatyzacji Azure](../automation/automation-runbook-types.md) zasoby mają typ **Microsoft.Automation/automationAccounts/runbooks** i ma następującą strukturę. W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+[Element runbook automatyzacji Azure](../automation/automation-runbook-types.md) zasoby mają typ **Microsoft.Automation/automationAccounts/runbooks** i mają następującą strukturę. W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -74,21 +74,21 @@ Należy uwzględnić wszystkie elementy runbook, dzięki czemu są tworzone po z
     }
 
 
-W poniższej tabeli opisano właściwości dla elementów runbook.
+Właściwości dla elementów runbook są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| runbookType |Określa typy elementu runbook. <br><br> Skrypt — skrypt programu PowerShell <br>PowerShell — przepływ pracy programu PowerShell <br> GraphPowerShell - runbook skryptu PowerShell graficznego <br> GraphPowerShellWorkflow - PowerShell graficzny element runbook przepływu pracy |
-| logProgress |Określa, czy [rekordy postępu](../automation/automation-runbook-output-and-messages.md) ma być generowany dla elementu runbook. |
-| logVerbose |Określa, czy [rekordów pełnych](../automation/automation-runbook-output-and-messages.md) ma być generowany dla elementu runbook. |
+| runbookType |Określa typy elementu runbook. <br><br> Skrypt — skrypt programu PowerShell <br>PowerShell — przepływ pracy programu PowerShell <br> GraphPowerShell - runbook skryptu PowerShell graficznego <br> GraphPowerShellWorkflow - elementu runbook programu PowerShell graficzny przepływ pracy |
+| logProgress |Określa, czy [rekordy postępu](../automation/automation-runbook-output-and-messages.md) powinny być generowane dla elementu runbook. |
+| logVerbose |Określa, czy [rekordów pełnych](../automation/automation-runbook-output-and-messages.md) powinny być generowane dla elementu runbook. |
 | description |Opcjonalny opis dla elementu runbook. |
-| publishContentLink |Określa zawartość elementu runbook. <br><br>Identyfikator URI - identyfikator Uri zawartości elementu runbook.  Są to plik .ps1 dla elementów runbook programu PowerShell i skryptów, a plik wyeksportowany element runbook graficzny element runbook wykresu.  <br> Wersja — wersji elementu runbook do własnych śledzenia. |
+| publishContentLink |Określa zawartość elementu runbook. <br><br>Identyfikator URI — identyfikator Uri zawartości elementu runbook.  Są to plik .ps1 dla elementów runbook programu PowerShell i skryptów oraz pliku eksportowanego graficznego elementu runbook dla elementu runbook programu Graph.  <br> Wersja — wersji elementu runbook dla własnego śledzenia. |
 
 
 ## <a name="automation-jobs"></a>Automatyzacja zadań
-Po uruchomieniu elementu runbook w automatyzacji Azure tworzy zadanie usługi Automatyzacja.  Można dodać zasobu Zadanie usługi Automatyzacja do rozwiązania, aby automatycznie uruchomić element runbook po zainstalowaniu rozwiązania do zarządzania.  Ta metoda jest zwykle używana do uruchamiania elementów runbook, które są używane do początkowej konfiguracji rozwiązania.  Aby uruchomić element runbook w regularnych odstępach czasu, należy utworzyć [harmonogram](#schedules) i [harmonogram zadań](#job-schedules)
+Po uruchomieniu elementu runbook w usłudze Azure Automation, tworzy zadanie usługi automation.  Zasób zadań usługi automation można dodać do rozwiązania, aby automatycznie uruchomić element runbook po zainstalowaniu rozwiązania do zarządzania.  Ta metoda jest zwykle używana do uruchamiania elementów runbook, używane w przypadku konfiguracji początkowej rozwiązania.  Aby uruchomić element runbook w regularnych odstępach czasu, należy utworzyć [harmonogram](#schedules) i [harmonogramu zadań](#job-schedules)
 
-Zasoby zadanie ma typ **Microsoft.Automation/automationAccounts/jobs** i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+Zasoby zadania mają typ **Microsoft.Automation/automationAccounts/jobs** i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -110,20 +110,20 @@ Zasoby zadanie ma typ **Microsoft.Automation/automationAccounts/jobs** i ma nast
       }
     }
 
-Właściwości automatyzacji zadań są opisane w poniższej tabeli.
+W poniższej tabeli opisano właściwości dla zadań usługi automation.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| runbook |Jedna nazwa jednostki o nazwie elementu runbook, aby rozpocząć. |
+| runbook |Jedna nazwa jednostki o nazwie uruchomienie elementu runbook. |
 | parameters |Jednostki dla każdej wartości parametru wymagane przez element runbook. |
 
-Zadanie zawiera nazwę elementu runbook i wartości parametrów do wysłania do elementu runbook.  Zadanie powinno [są zależne od]( monitoring-solutions-solution-file.md#resources) elementu runbook, który jest uruchamiany od elementu runbook musi zostać utworzone przed zadania.  Jeśli masz wiele elementów runbook, który ma być uruchamiany przez zadanie, które są zależne od innych zadań, które powinny być uruchamiane w pierwszy można zdefiniować ich kolejność.
+Zadanie zawiera nazwę elementu runbook i wartości parametrów do wysłania do elementu runbook.  To zadanie powinno [zależą od]( monitoring-solutions-solution-file.md#resources) elementu runbook, który jest uruchamiany od elementu runbook musi zostać utworzone przed nim.  Jeśli masz wiele elementów runbook, który ma być uruchamiany przez zadanie, które są zależne od innych zadań, które powinien być uruchamiany w pierwszy można zdefiniować ich kolejność.
 
-Nazwa zasobu zadania musi zawierać identyfikator GUID, który zazwyczaj jest przypisywany przez parametr.  Więcej o parametrach identyfikatora GUID w [utworzenia pliku rozwiązania zarządzania na platformie Azure]( monitoring-solutions-solution-file.md#parameters).  
+Nazwa zasobu zadania musi zawierać identyfikator GUID, który zazwyczaj jest przypisywany przez parametr.  Możesz dowiedzieć się więcej o parametrach identyfikator GUID w [tworzenia pliku rozwiązania zarządzania na platformie Azure]( monitoring-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certyfikaty
-[Certyfikaty automatyzacji Azure](../automation/automation-certificates.md) typu **Microsoft.Automation/automationAccounts/certificates** i ma następującą strukturę. W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+[Certyfikaty usługi Azure Automation](../automation/automation-certificates.md) mają typ **Microsoft.Automation/automationAccounts/certificates** i mają następującą strukturę. W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -141,7 +141,7 @@ Nazwa zasobu zadania musi zawierać identyfikator GUID, który zazwyczaj jest pr
 
 
 
-W poniższej tabeli opisano właściwości zasobów certyfikatów.
+Właściwości zasobów certyfikaty są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -151,7 +151,7 @@ W poniższej tabeli opisano właściwości zasobów certyfikatów.
 
 
 ## <a name="credentials"></a>Poświadczenia
-[Poświadczenia usługi Automatyzacja Azure](../automation/automation-credentials.md) typu **Microsoft.Automation/automationAccounts/credentials** i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+[Poświadczenia usługi Azure Automation](../automation/automation-credentials.md) mają typ **Microsoft.Automation/automationAccounts/credentials** i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
 
     {
@@ -168,7 +168,7 @@ W poniższej tabeli opisano właściwości zasobów certyfikatów.
       }
     }
 
-W poniższej tabeli opisano właściwości zasobów poświadczeń.
+Właściwości zasobów poświadczeń są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -177,7 +177,7 @@ W poniższej tabeli opisano właściwości zasobów poświadczeń.
 
 
 ## <a name="schedules"></a>Harmonogramy
-[Harmonogramy automatyzacji Azure](../automation/automation-schedules.md) typu **Microsoft.Automation/automationAccounts/schedules** i ma następującą strukturę. W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+[Usługa Azure Automation harmonogramy](../automation/automation-schedules.md) mają typ **Microsoft.Automation/automationAccounts/schedules** i mają następującą strukturę. W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -196,26 +196,26 @@ W poniższej tabeli opisano właściwości zasobów poświadczeń.
       }
     }
 
-W poniższej tabeli opisano właściwości planowania zasobów.
+Właściwości harmonogramu zasoby są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | description |Opcjonalny opis dla harmonogramu. |
-| startTime |Określa czas rozpoczęcia harmonogramu jako obiekt typu DateTime. Jeśli można przekonwertować na prawidłowy element DateTime można podać ciąg. |
-| IsEnabled |Określa, czy jest włączony harmonogram. |
+| startTime |Określa czas rozpoczęcia harmonogramu jako obiekt daty/godziny. Można podać ciąg, jeśli można przekonwertować prawidłową datę/godzinę. |
+| isEnabled |Określa, czy jest włączony harmonogram. |
 | interval |Typ interwału harmonogramu.<br><br>dzień<br>godz. |
-| frequency |Częstotliwość, z jaką harmonogram powinny wyzwalać w liczbie dni lub godzin. |
+| frequency |Częstotliwość, z którą harmonogram powinny wyzwalać w liczbie dni lub godzin. |
 
-Harmonogramy musi mieć godzinę rozpoczęcia o wartości większej niż bieżący czas.  Nie można podać tę wartość za pomocą zmiennych, ponieważ czy nie ma możliwości wiedzy, kiedy przechodzi do zainstalowania.
+Harmonogramy muszą zawierać godzinę rozpoczęcia o wartości większej niż bieżący czas.  Ta wartość nie może dostarczyć za pomocą zmiennych, ponieważ miałoby żadnej możliwość określenia, kiedy przechodzi do zainstalowania.
 
-Za pomocą harmonogramu zasobów w rozwiązaniu, należy użyć jednej z następujących dwóch strategii.
+Korzystanie z zasobów harmonogramu w ramach rozwiązania, należy użyć jednej z następujących dwóch strategii.
 
-- Czas rozpoczęcia harmonogramu, należy użyć parametru.  To pojawi się monit podanie wartości podczas instalacji rozwiązania.  Jeśli masz wiele harmonogramów można używać wartości jeden parametr dla więcej niż jeden z nich.
-- Tworzenie harmonogramów przy użyciu elementu runbook, który rozpoczyna się, gdy rozwiązanie jest zainstalowane.  Spowoduje to usunięcie wymaganie użytkownika, aby określić godzinę, ale nie może zawierać harmonogram w rozwiązaniu, dlatego zostanie usunięta po usunięciu rozwiązania.
+- Czas rozpoczęcia harmonogramu, należy użyć parametru.  To będzie monitować użytkownika o Podaj wartość podczas instalacjo rozwiązania.  Jeśli masz wiele harmonogramów, możesz użyć wartości pojedynczy parametr w więcej niż jeden z nich.
+- Tworzenie harmonogramów przy użyciu elementu runbook, który rozpoczyna się, gdy rozwiązanie jest zainstalowane.  Spowoduje to usunięcie wymagań użytkownika, aby określić godzinę, ale nie może zawierać harmonogramu w rozwiązaniu, dlatego zostanie usunięta po usunięciu rozwiązania.
 
 
 ### <a name="job-schedules"></a>Harmonogramy zadań
-Zadania planowania zasobów powiązania elementu runbook z harmonogramem.  Mają one typu **Microsoft.Automation/automationAccounts/jobSchedules** i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+Zasoby harmonogram zadania połączenie runbook z harmonogramem.  Mają one typu **Microsoft.Automation/automationAccounts/jobSchedules** i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -239,17 +239,17 @@ Zadania planowania zasobów powiązania elementu runbook z harmonogramem.  Mają
     }
 
 
-W poniższej tabeli opisano właściwości harmonogramy zadań.
+Właściwości harmonogramy zadań są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Nazwa harmonogramu |Pojedynczy **nazwa** jednostki o nazwę harmonogramu. |
-| Nazwa elementu Runbook  |Pojedynczy **nazwa** jednostki o nazwie elementu runbook.  |
+| Nazwa harmonogramu |Pojedynczy **nazwa** jednostce o nazwie harmonogramu. |
+| Nazwa elementu runbook  |Pojedynczy **nazwa** jednostce o nazwie elementu runbook.  |
 
 
 
 ## <a name="variables"></a>Zmienne
-[Zmienne automatyzacji Azure](../automation/automation-variables.md) typu **Microsoft.Automation/automationAccounts/variables** i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów.
+[Zmienne automatyzacji Azure](../automation/automation-variables.md) mają typ **Microsoft.Automation/automationAccounts/variables** i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -266,31 +266,31 @@ W poniższej tabeli opisano właściwości harmonogramy zadań.
       }
     }
 
-W poniższej tabeli opisano właściwości dla zmiennej zasobów.
+Właściwości dla zmiennej zasoby są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | description | Opcjonalny opis dla zmiennej. |
 | isEncrypted | Określa, czy ma być szyfrowana zmienna. |
-| type | Ta właściwość obecnie nie ma znaczenia.  Typ danych zmiennej będzie określana przez wartość początkowa. |
-| wartość | Wartość zmiennej. |
+| type | Ta właściwość aktualnie nie ma znaczenia.  Typ danych zmiennej będzie określana przez wartość początkową. |
+| wartość | Wartość do zmiennej. |
 
 > [!NOTE]
-> **Typu** właściwości obecnie nie ma wpływu na zmiennej tworzona.  Typ danych zmiennej będzie określana przez wartość.  
+> **Typu** właściwość aktualnie nie ma wpływu na zmiennej tworzona.  Typ danych zmiennej będzie określana przez wartość.  
 
-Jeśli ustawisz wartość początkowa zmiennej musi być skonfigurowany jako prawidłowy typ danych.  Poniższa tabela zawiera różne typy danych dopuszczalny i ich składni.  Należy pamiętać, że wartości w formacie JSON powinny zawsze być ujęte w cudzysłów z znaków specjalnych w cudzysłowy.  Na przykład wartość ciągu zostałaby określona przez stawiać cudzysłów wokół ciąg (przy użyciu znaku ucieczki (\\)) podczas zostałaby określona wartość liczbową z jednego zestawu znaków cudzysłowu.
+Jeśli ustawisz wartość początkową zmiennej, musi być skonfigurowany jako prawidłowy typ danych.  Poniższa tabela zawiera różne typy danych dopuszczalny rozmiar i ich składnię.  Należy pamiętać, że wartości w formacie JSON powinny zawsze być ujęte w cudzysłów, przy użyciu znaków specjalnych w cudzysłowie.  Na przykład wartość ciągu przekazywanej przez ciąg w cudzysłowie (przy użyciu znaku ucieczki (\\)), podczas gdy wartość liczbową, będzie można określić za pomocą jeden zestaw cudzysłowów.
 
 | Typ danych | Opis | Przykład | Jest rozpoznawana jako |
 |:--|:--|:--|:--|
-| ciąg   | Wartość należy ująć w cudzysłów.  | "\"Hello world\"" | "Hello world" |
-| numeryczne  | Wartość liczbowa z apostrofy.| "64" | 64 |
-| wartość logiczna  | **wartość true,** lub **false** w cudzysłowy.  Należy pamiętać, że ta wartość musi być litera. | wartość "prawda" | true |
-| datetime | Serializacji wartości typu date.<br>Polecenia cmdlet ConvertTo-Json w programie PowerShell służy do generowania wartości dla określonej daty.<br>Przykład: get data "2017-5/24 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| ciąg   | Wartość należy ująć w cudzysłów.  | "\"Witaj, świecie\"" | "Hello world" |
+| liczbowe  | Wartość liczbowa w apostrofy.| "64" | 64 |
+| wartość logiczna  | **wartość true,** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być litera. | wartość "prawda" | true |
+| datetime | Wartość daty serializacji.<br>Polecenia cmdlet ConvertTo Json w programie PowerShell służy do generowania tej wartości dla określonej daty.<br>Przykład: get-date "5/24/2017 13:14:57" \| ConvertTo Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły
-Rozwiązania do zarządzania, nie trzeba definiować [modułów globalnych](../automation/automation-integration-modules.md) używany przez elementy runbook, ponieważ zawsze będzie dostępna na Twoim koncie automatyzacji.  Należy uwzględnić zasobów dla innych modułu używany przez elementy runbook.
+Rozwiązania do zarządzania nie trzeba zdefiniować [moduły globalne](../automation/automation-integration-modules.md) używany przez elementy runbook, ponieważ zawsze będą dostępne na koncie usługi Automation.  Konieczne jest uwzględnienie zasobu na inny moduł, używany przez elementy runbook.
 
-[Moduły integracji](../automation/automation-integration-modules.md) typu **Microsoft.Automation/automationAccounts/modules** i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów.
+[Moduły integracji](../automation/automation-integration-modules.md) mają typ **Microsoft.Automation/automationAccounts/modules** i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -306,35 +306,35 @@ Rozwiązania do zarządzania, nie trzeba definiować [modułów globalnych](../a
     }
 
 
-W poniższej tabeli opisano właściwości zasobów modułu.
+W poniższej tabeli opisano właściwości dla zasobów modułu.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| contentLink |Określa zawartość modułu. <br><br>Identyfikator URI - identyfikator Uri zawartości modułu.  Są to plik .ps1 dla elementów runbook programu PowerShell i skryptów, a plik wyeksportowany element runbook graficzny element runbook wykresu.  <br> Wersja - modułu dla własnego śledzenia. |
+| contentLink |Określa zawartość modułu. <br><br>Identyfikator URI — identyfikator Uri zawartości modułu.  Są to plik .ps1 dla elementów runbook programu PowerShell i skryptów oraz pliku eksportowanego graficznego elementu runbook dla elementu runbook programu Graph.  <br> Wersja — wersja modułu dla własnego śledzenia. |
 
-Element runbook należy są zależne od zasobów modułu, aby upewnić się, że został utworzony przed elementu runbook.
+Element runbook powinna zależeć od zasobu modułu, aby upewnić się, czy został utworzony przed elementu runbook.
 
 ### <a name="updating-modules"></a>Aktualizowanie modułów
-Aktualizacji rozwiązanie do zarządzania, które zawiera element runbook, który używa harmonogram, a nowa wersja rozwiązań ma nowy moduł używany przez ten element runbook, element runbook może używać starej wersji modułu.  Powinny obejmować następujące elementy runbook w rozwiązaniu i utworzyć zadanie, aby uruchomić je przed wszystkie inne elementy runbook.  Daje to pewność, że wszystkie moduły są aktualizowane, kiedy wymagana przed elementy runbook zostały załadowane.
+Jeśli rozwiązanie do zarządzania, które zawiera element runbook, który korzysta z harmonogramem, a następnie nowa wersja rozwiązania ma nowy moduł używane przez ten element runbook, element runbook może używać starej wersji modułu.  Należy obejmują następujące elementy runbook w Twoim rozwiązaniu, a następnie Utwórz zadanie, aby uruchamiać je przed wszystkie inne elementy runbook.  Pozwoli to zagwarantować, że wszystkie moduły są aktualizowane co wymagane przed elementy runbook są ładowane.
 
-* [Aktualizacja ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) sprawdzi wszystkie moduły używane przez elementy runbook w rozwiązaniu do najnowszej wersji.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) zostanie ponownie zarejestrować wszystkie zasoby harmonogram, aby upewnić się, że elementy runbook powiązane z nimi przy użyciu najnowszych modułów.
+* [Aktualizacja ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) będzie upewnij się, że wszystkie moduły używane przez elementy runbook w rozwiązaniu do najnowszej wersji.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) zostanie ponownie zarejestrować wszystkie zasoby harmonogramu, aby upewnić się, że elementy runbook powiązane z nimi przy użyciu najnowszych modułów.
 
 
 
 
 ## <a name="sample"></a>Sample
-Poniżej przedstawiono przykładowe rozwiązanie obejmujące obejmuje następujące zasoby:
+Poniżej przedstawiono przykładowe rozwiązania, które obejmują zawierającą następujące zasoby:
 
-- Element Runbook.  To jest przykładowy element runbook, przechowywane w publicznych repozytorium GitHub.
-- Zadanie usługi Automatyzacja, który uruchomi element runbook, gdy rozwiązanie jest zainstalowane.
-- Harmonogram i harmonogram uruchamiania elementu runbook w regularnych odstępach czasu.
+- Element Runbook.  To jest przykładowy element runbook, przechowywane w publicznym repozytorium GitHub.
+- Zadania automatyzacji, który uruchomi element runbook, gdy rozwiązanie jest zainstalowane.
+- Harmonogram i harmonogramu zadań, aby uruchomić element runbook w regularnych odstępach czasu.
 - Certyfikat.
 - Poświadczenie.
 - Zmienna.
-- Moduł.  Jest to [modułu OMSIngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) do zapisywania danych do analizy dzienników. 
+- Moduł.  Jest to [modułu OMSIngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) za zapisywanie danych w usłudze Log Analytics. 
 
-W przykładzie użyto [parametry standardowego rozwiązania]( monitoring-solutions-solution-file.md#parameters) zmiennych, które służy zwykle do rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
+W przykładzie użyto [parametry standardowe rozwiązanie]( monitoring-solutions-solution-file.md#parameters) zmiennych, które często będzie używana w ramach rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
 
 
     {
@@ -651,4 +651,4 @@ W przykładzie użyto [parametry standardowego rozwiązania]( monitoring-solutio
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dodaj widok do rozwiązania]( monitoring-solutions-resources-views.md) do wizualizacji zebranych danych.
+* [Dodaj widok do rozwiązania]( monitoring-solutions-resources-views.md) w celu wizualizacji zebranych danych.

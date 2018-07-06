@@ -1,7 +1,7 @@
 ---
-title: Za pomocą testowania partii zwiększyć prognoz LUIS | Dokumentacja firmy Microsoft
+title: Umożliwia testowanie partii poprawić prognoz usługi LUIS | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Wsadowe test obciążenia, przejrzeć wyniki i poprawić prognoz LUIS ze zmianami.
+description: Batch test obciążeniowy, przejrzyj wyniki i poprawy usługi LUIS prognozy ze zmianami.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,63 +10,63 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5788f17f2724a0354a1db506971c2343c1800f01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266400"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867345"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Umożliwia testowanie partii znaleźć dokładności przewidywania
+# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Umożliwia testowanie partii znajdowanie problemów, dokładności prognozy
 
-Ten samouczek pokazuje, jak na potrzeby testowania partii znaleźć utterance prognozowania problemy.  
+Ten samouczek pokazuje, jak na potrzeby testowania partii Znajdź wypowiedź prognozowania problemy.  
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 * Utwórz plik wsadowy testu 
-* Uruchom test partii
+* Uruchom test usługi batch
 * Przejrzyj wyniki testu
-* Usuń błędy dla lokalizacji docelowych
-* Sprawdź jeszcze raz partii
+* Napraw błędy do intencji
+* Przetestowanie usługi batch
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * W tym artykule, należy również [LUIS][LUIS] konta, aby można było tworzyć LUIS aplikacji.
+> * W tym artykule, należy również [LUIS][LUIS] konta, aby utworzyć aplikację usługi LUIS.
 
 > [!Tip]
-> Jeśli nie masz już subskrypcję, możesz zarejestrować dla [bezpłatne konto](https://azure.microsoft.com/free/).
+> Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="create-new-app"></a>Utwórz nową aplikację
-W tym artykule używa wbudowane domeny HomeAutomation. Wbudowane domeny ma lokalizacji docelowych, jednostki i zniesławiających kontroli HomeAutomation urządzeń, takich jak świateł. Tworzenie aplikacji, Dodaj domenę, szkolenie i publikowania.
+## <a name="create-new-app"></a>Tworzenie nowej aplikacji
+W tym artykule korzysta ze wstępnie utworzonych domen HomeAutomation. Wstępnie utworzone domeny ma intencji, jednostek i wypowiedzi do kontrolowania urządzeń HomeAutomation, takich jak światła. Tworzenie aplikacji, dodać domenę, uczenie i publikowanie.
 
 1. W [LUIS] witryny sieci Web, Utwórz nową aplikację, wybierając **Utwórz nową aplikację** na **MyApps** strony. 
 
-    ![Utwórz nową aplikację](./media/luis-tutorial-batch-testing/create-app-1.png)
+    ![Tworzenie nowej aplikacji](./media/luis-tutorial-batch-testing/create-app-1.png)
 
 2. Wprowadź nazwę `Batchtest-HomeAutomation` w oknie dialogowym.
 
     ![Wprowadź nazwę aplikacji](./media/luis-tutorial-batch-testing/create-app-2.png)
 
-3. Wybierz **wbudowane domen** w lewym dolnym rogu. 
+3. Wybierz **ze wstępnie utworzonych domen** w lewym dolnym rogu. 
 
-    ![Wybierz domenę wbudowane](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
+    ![Wybierz domenę wbudowanych](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
 
 4. Wybierz **Dodawanie domeny** dla HomeAutomation.
 
     ![Dodawanie domeny HomeAutomation](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
 
-5. Wybierz **pociągu** w górnym prawym pasku nawigacyjnym.
+5. Wybierz **Train** w górnym prawym pasku nawigacyjnym.
 
-    ![Wybierz przycisk pociągu](./media/luis-tutorial-batch-testing/train-button.png)
+    ![Wybierz przycisk szkolenie](./media/luis-tutorial-batch-testing/train-button.png)
 
-## <a name="batch-test-criteria"></a>Kryteria testu partii
-Testowanie partii można testować maksymalnie 1000 zniesławiających naraz. Partia nie powinna mieć duplikatów. [Eksportuj](create-new-app.md#export-app) aplikacji, aby zapoznać się z listą zniesławiających bieżącej.  
+## <a name="batch-test-criteria"></a>Kryterium testowania usługi Batch
+Testowanie usługi Batch można testować maksymalnie 1000 wypowiedzi w danym momencie. Partia nie powinna mieć duplikatów. [Eksportuj](create-new-app.md#export-app) aplikacji, aby zobaczyć listę wypowiedzi bieżącego.  
 
-Strategia testu LUIS używa trzech oddzielnych zestawów danych: model zniesławiających, zniesławiających testu partii i zniesławiających punktu końcowego. W tym samouczku upewnij się, że nie używasz zniesławiających z obu zniesławiających modelu (dodawane do celem) lub zniesławiających punktu końcowego. 
+Strategii testowania, która LUIS używa trzech oddzielnych zestawów danych: model wypowiedzi wypowiedzi testu usługi batch oraz wypowiedzi punktu końcowego. Na potrzeby tego samouczka upewnij się, że nie używasz wypowiedzi z obu wypowiedzi modelu (dodawane do intencji) lub wypowiedzi punktu końcowego. 
 
-Nie używaj żadnego zniesławiających już w aplikacji dla testu partii:
+Nie używaj żadnego z wypowiedzi już w aplikacji do testowania usługi batch:
 
 ```
 'breezeway on please',
@@ -108,12 +108,12 @@ Nie używaj żadnego zniesławiających już w aplikacji dla testu partii:
 'turn thermostat on 70 .' 
 ```
 
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Tworzenie partii, aby przetestować dokładność prognozowania konwersji
-1. Utwórz `homeauto-batch-1.json` w edytorze tekstu, takich jak [VSCode](https://code.visualstudio.com/). 
+## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Tworzenie partii, aby przetestować dokładność prognozowania intencji
+1. Tworzenie `homeauto-batch-1.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). 
 
-2. Dodaj zniesławiających z **zamiar** ma przewidywane w teście. W tym samouczku, aby był prosty, wykonaj zniesławiających w `HomeAutomation.TurnOn` i `HomeAutomation.TurnOff` i przełączanie `on` i `off` w zniesławiających tekstu. Dla `None` przeznaczeniu dodać kilka zniesławiających, które nie są częścią [domeny](luis-glossary.md#domain) obszaru (temat). 
+2. Dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. Na potrzeby tego samouczka, aby stał się proste, wykonać wypowiedzi `HomeAutomation.TurnOn` i `HomeAutomation.TurnOff` i przełączać `on` i `off` tekstu w wypowiedzi. Dla `None` przeznaczenie, dodaj kilka wypowiedzi, które nie są częścią [domeny](luis-glossary.md#domain) obszaru (podmiot). 
 
-    Aby zrozumieć, jak wyniki testu partii skorelowany partii JSON, Dodaj tylko sześć lokalizacji docelowych.
+    Aby dowiedzieć się, jak wyniki testu partii odnoszą się do usługi batch w formacie JSON, Dodaj jedynie sześć intencji.
 
     ```JSON
     [
@@ -155,100 +155,100 @@ Nie używaj żadnego zniesławiających już w aplikacji dla testu partii:
 
     ![Wybierz Test na pasku nawigacyjnym](./media/luis-tutorial-batch-testing/test-1.png)
 
-2. Wybierz **partii testowania panelu** w panelu po prawej stronie. 
+2. Wybierz **Batch testowania panelu** w panelu po prawej stronie. 
 
-    ![Wybierz test partii](./media/luis-tutorial-batch-testing/test-2.png)
+    ![Wybierz test usługi Batch](./media/luis-tutorial-batch-testing/test-2.png)
 
-3. Wybierz **dataset importu**.
+3. Wybierz **Importowanie zestawu danych**.
 
-    ![Wybierz zestaw danych importu](./media/luis-tutorial-batch-testing/test-3.png)
+    ![Wybierz zestaw importu danych](./media/luis-tutorial-batch-testing/test-3.png)
 
 4. Wybierz lokalizację systemu plików `homeauto-batch-1.json` pliku.
 
-5. Nazwa zestawu danych `set 1`.
+5. Nazwij zestaw danych `set 1`.
 
     ![Wybierz plik](./media/luis-tutorial-batch-testing/test-4.png)
 
-6. Wybierz przycisk **Uruchom**. Zaczekaj, aż zakończeniu testu.
+6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
 
-    ![Wybierz polecenie Uruchom](./media/luis-tutorial-batch-testing/test-5.png)
+    ![Wybierz przebieg](./media/luis-tutorial-batch-testing/test-5.png)
 
-7. Wybierz **zobaczyć wyniki**.
+7. Wybierz **wyniki**.
 
-    ![Zobacz wyniki](./media/luis-tutorial-batch-testing/test-6.png)
+    ![Wyświetlanie wyników](./media/luis-tutorial-batch-testing/test-6.png)
 
 8. Przejrzyj wyniki w wykresu i legenda.
 
-    ![Wyniki partii](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    ![Wyniki usługi Batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-## <a name="review-batch-results"></a>Przejrzyj wyniki partii
-Wyniki partii znajdują się w dwóch częściach. Pierwsza sekcja zawiera wykresu i legenda. Na dole Wyświetla zniesławiających, po wybraniu nazwa obszaru wykresu.
+## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
+Wyniki przetwarzania wsadowego są wyświetlane w dwie sekcje. Górna sekcja zawiera wykresu i legenda. Dolną sekcję Wyświetla wypowiedzi po wybraniu nazwy obszaru wykresu.
 
-Błędy są oznaczone kolorem czerwonym. Wykres jest w cztery sekcje przy użyciu dwóch sekcjach czerwony. **Są to sekcje skoncentrować się na**. 
+Błędy są oznaczone kolorem czerwonym. Wykres ma cztery sekcje przy użyciu dwóch sekcjach wyświetlane na czerwono. **Są to sekcje, aby skoncentrować się na**. 
 
-Górnym rogu sekcji niepoprawnie wskazuje testu przewidzieć istnienie zamiar lub jednostki. Na dole po lewej stronie wskazuje, że test niepoprawnie przewidzieć braku zamiar lub jednostki.
+Prawym górnym rogu sekcji niepoprawnie wskazuje testu przewidzieć istnienie przeznaczenie lub jednostki. Na dole po lewej stronie wskazuje, że test niepoprawnie przewidzieć braku przeznaczenie lub jednostki.
 
 ### <a name="homeautomationturnoff-test-results"></a>Wyniki testu HomeAutomation.TurnOff
-W legendzie, wybierz `HomeAutomation.TurnOff` celem. Ma ona ikoną zielony Powodzenie się po lewej stronie nazwy w legendzie. Nie ma żadnych błędów dla tego celem. 
+W legendzie, wybierz `HomeAutomation.TurnOff` intencji. Posiada ikoną zielony sukces na lewo od nazwy w legendzie. Nie ma żadnych błędów, dla tego intencji. 
 
-![Wyniki partii](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![Wyniki usługi Batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn i Brak lokalizacji docelowych zawiera błędy.
-Innej metody pojawiły się błędy, co oznacza, że prognoz testu nie odpowiadają oczekiwaniom pliku wsadowego. Wybierz `None` konwersji w legendzie do przejrzenia pierwszego błędu. 
+### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn i brak intencji z błędami.
+Dwie opcje mają błędy, co oznacza, że prognozy testu nie odpowiadają oczekiwaniom pliku wsadowego. Wybierz `None` intencji w legendzie, aby zapoznać się z pierwszego błędu. 
 
-![Brak konwersji](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+![Brak elementu intent](./media/luis-tutorial-batch-testing/none-intent-failures.png)
 
-Błędy są wyświetlane na wykresie w sekcjach red: **fałszywych** i **False ujemna**. Wybierz **False ujemna** nazwę sekcji na wykresie, aby wyświetlić nie powiodło się zniesławiających pod wykresem. 
+Błędy są wyświetlane na wykresie w sekcjach red: **fałszywie dodatnie** i **fałszywie ujemny**. Wybierz **fałszywie ujemny** nazwa sekcji na wykresie, aby wyświetlić zakończone niepowodzeniem wypowiedzi pod wykresem. 
 
-![Błędy ujemna wartość false](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
+![Fałszywe błędy ujemna](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
 
-Utterance niepowodzenie `help` oczekiwano jako `None` zamiar, ale test przewidzieć `HomeAutomation.TurnOn` celem.  
+Wypowiedź niepowodzenie, `help` Oczekiwano `None` przeznaczenie, ale test przewidzieć `HomeAutomation.TurnOn` intencji.  
 
-Istnieją awarii dwóch węzłów: jeden w HomeAutomation.TurnOn i jeden w None. Zarówno zostały spowodowane utterance `help` ponieważ go nie może spełnić oczekiwania żadna i był nieoczekiwany dopasowania dla zamiar HomeAutomation.TurnOn. 
+Istnieją awarii dwóch węzłów: jeden w HomeAutomation.TurnOn i jeden w None. Oba zostały spowodowane przez wypowiedź `help` , ponieważ nie można spełnić oczekiwania żadna i był nieoczekiwany dopasowanie intencji HomeAutomation.TurnOn. 
 
-Aby określić, dlaczego `None` zniesławiających kończą się niepowodzeniem, zapoznaj się obecnie w zniesławiających `None`. 
+Aby ustalić, dlaczego `None` wypowiedzi kończą się niepowodzeniem, przejrzyj wypowiedzi obecnie `None`. 
 
-## <a name="review-none-intents-utterances"></a>Przejrzyj brak konwersji na zniesławiających
+## <a name="review-none-intents-utterances"></a>Przegląd Brak intencji użytkownika wypowiedzi
 
-1. Zamknij **testu** panelu, wybierając **testu** przycisk na górnym pasku nawigacyjnym. 
+1. Zamknij **testu** panel, wybierając **testu** przycisk na górnym pasku nawigacyjnym. 
 
-2. Wybierz **kompilacji** w górnym menu nawigacyjnym panelu. 
+2. Wybierz **kompilacji** z panelu w górnym menu nawigacyjnym. 
 
-3. Wybierz **Brak** konwersji z listy lokalizacji docelowych.
+3. Wybierz **Brak** intencji z listy opcji.
 
-4. Wybierz kontroli + E, aby wyświetlić widok tokenu zniesławiających 
+4. Wybierz formant + E, aby wyświetlić widok tokenu wypowiedzi 
     
-    |Brak konwersji elementu zniesławiających|Wynik prognozowania|
+    |Brak intencji użytkownika wypowiedzi|Współczynnik przewidywania|
     |--|--|
-    |"zmniejszyć temperatury dla mnie należy"|0.44|
-    |"dim świateł kuchni 25".|0.43|
-    |"niższego woluminu"|0.46|
-    |"Włącz w Internecie w mojej Sprawdź sypialnię"|0.28|
+    |"Zmniejsz temperatury dla mnie."|0.44|
+    |"wymiar kuchenne światła 25".|0.43|
+    |"obniżyć woluminu"|0.46|
+    |"turn w Internecie w mojej Sprawdź sypialni"|0,28|
 
-## <a name="fix-none-intents-utterances"></a>Usuń brak konwersji na zniesławiających
+## <a name="fix-none-intents-utterances"></a>Napraw Brak intencji użytkownika wypowiedzi
     
-Wszelkie zniesławiających w `None` powinna być spoza domeny aplikacji. Te zniesławiających są względem HomeAutomation, dlatego są one nieprawidłowe opcje. 
+Wypowiedzi w `None` powinna być spoza domeny aplikacji. Te wypowiedzi są względem HomeAutomation, dzięki czemu są one nieprawidłowe opcje. 
 
-LUIS daje również zniesławiających, mniej niż 50% (<.50) wynik prognozowania. W zniesławiających w innej metody, można zobaczyć wyniki prognozowania znacznie wyższa. Kiedy LUIS ma niski wyniki dla przykład zniesławiających, które jest wskazuje, zniesławiających są trudne do LUIS między bieżącym celem i innych opcji. 
+Usługa LUIS udostępnia też wypowiedzi, mniej niż 50% (<.50) wynik prognozy. Jeśli przyjrzymy się wypowiedzi w innej metody, zostanie wyświetlony znacznie wyższa wyniki prognozy. Gdy usługa LUIS ma niski wyniki dla przykładu wypowiedzi, jest dobrym wskaźnikiem wypowiedzi są mylące dla usługi LUIS między bieżącym celem i innymi opcjami. 
 
-Ustalenie aplikacji, w obecnie zniesławiających `None` zamiar należy przenieść do poprawne opcje i `None` zamiar potrzebuje nowych, odpowiednie opcje. 
+Ustalenie jej wypowiedzi obecnie w `None` przeznaczenie, należy je przenieść do intencji poprawne i `None` intencji wymaga nowego, odpowiednie intencji. 
 
-Trzy zniesławiających w `None` celem są przeznaczone do obniżyć ustawienia urządzenia automatyzacji. Takie jak używają słowa `dim`, `lower`, lub `decrease`. Czwarty utterance zapyta włączyć w Internecie. Ponieważ wszystkie cztery zniesławiających o włączeniu lub zmianie stopień zasilania do urządzenia, powinna zostać przeniesiona do `HomeAutomation.TurnOn` celem. 
+Trzy wypowiedzi w `None` celem są przeznaczone do obniżenia automatyzacji ustawień urządzenia. Takie jak używają słów `dim`, `lower`, lub `decrease`. Czwarty wypowiedź pyta, czy włączyć w Internecie. Ponieważ wszystkie cztery wypowiedzi o włączeniu lub zmiana stopień zasilania na urządzeniu, powinny zostać przeniesione do `HomeAutomation.TurnOn` intencji. 
 
-To jest tylko jedno rozwiązanie. Można również utworzyć nowy celem `ChangeSetting` i Przenieś zniesławiających przy użyciu instrukcji dim, zmniejszyć oraz zmniejszeniu do tego nowe opcje. 
+Jest to tylko jedno rozwiązanie. Można również utworzyć nowy cel `ChangeSetting` Przenieś wypowiedzi przy użyciu instrukcji dim, obniżyć i zmniejszyć w tym nowe przeznaczeniem. 
 
-## <a name="fix-the-app-based-on-batch-results"></a>Usuń aplikację na podstawie wyników wsadowego
-Przenieś cztery zniesławiających do `HomeAutomation.TurnOn` celem. 
+## <a name="fix-the-app-based-on-batch-results"></a>Usuń aplikację na podstawie wyników usługi batch
+Przenieś cztery wypowiedzi do `HomeAutomation.TurnOn` intencji. 
 
-1. Zaznacz pole wyboru powyżej listy utterance, więc są wybrane wszystkie zniesławiających. 
+1. Zaznacz pole wyboru powyżej listy wypowiedź, więc są zaznaczone wszystkie wypowiedzi. 
 
-2. W **ponownie przypisać zamiar** listy rozwijanej, wybierz pozycję `HomeAutomation.TurnOn`. 
+2. W **ponownie przypisać intencji** listę rozwijaną, wybierz opcję `HomeAutomation.TurnOn`. 
 
-    ![Przenieś zniesławiających](./media/luis-tutorial-batch-testing/move-utterances.png)
+    ![Przenieś wypowiedzi](./media/luis-tutorial-batch-testing/move-utterances.png)
 
-    Po ponownym przypisaniem cztery zniesławiających, utterance lista dla `None` celem jest pusta.
+    Po ponownym przypisaniem cztery wypowiedzi, wypowiedź lista dla `None` celem jest pusty.
 
-3. Dodaj cztery nowe opcje dla żadnego konwersji:
+3. Dodaj cztery nowe opcje dla elementu intent żadna:
 
     ```
     "fish"
@@ -257,24 +257,24 @@ Przenieś cztery zniesławiających do `HomeAutomation.TurnOn` celem.
     "pizza"
     ```
 
-    Te zniesławiających ostatecznie są spoza domeny HomeAutomation. Podczas wpisywania każdego utterance Obejrzyj wynik dla niego. Wynik może być niski lub nawet bardzo niskim (z czerwonym prostokątem wokół niego). Po uczenia aplikacji, w kroku 8, wynik będzie znacznie wyższa. 
+    Te wypowiedzi są zdecydowanie spoza domeny HomeAutomation. Podczas wprowadzania każdego wypowiedź Obejrzyj wynik dla niego. Wynik może być niski lub nawet bardzo małe (z czerwoną otoczkę wokół niej). Po uczenie aplikacji, w kroku 8, wynik będzie znacznie wyższa. 
 
-7. Usuń wszystkich etykiet, wybierając niebieski etykiety w utterance i wybierz **Usuń etykietę**.
+7. Usuń wszelkie etykiety, wybierając niebieska etykieta wypowiedź, a następnie wybierz pozycję **Usuń etykietę**.
 
-8. Wybierz **pociągu** w górnym prawym pasku nawigacyjnym. Wynik każdego utterance jest znacznie wyższa. Wszystkie wyniki dla `None` celem powinno być teraz powyżej.80. 
+8. Wybierz **Train** w górnym prawym pasku nawigacyjnym. Wynik każdej wypowiedź jest znacznie wyższa. Wszystkie wyniki dla `None` celem powinno być nad.80 teraz. 
 
-## <a name="verify-the-fix-worked"></a>Sprawdź poprawkę pracy
-Aby sprawdzić, czy zniesławiających w teście partii są poprawnie przewidzieć dla **Brak** zamiar, ponownie uruchom test partii.
+## <a name="verify-the-fix-worked"></a>Sprawdzić zadziałała poprawki
+Aby sprawdzić, czy wypowiedzi w teście usługi batch są poprawnie przewidywany **Brak** przeznaczenie, ponownie uruchom test usługi batch.
 
 1. Wybierz **testu** w górnym pasku nawigacyjnym. 
 
-2. Wybierz **partii testowania panelu** w panelu po prawej stronie. 
+2. Wybierz **Batch testowania panelu** w panelu po prawej stronie. 
 
-3. Wybierz wielokropek (...) z prawej strony nazwy partii i wybierz **Uruchom zestaw danych**. Zaczekaj, aż zakończeniu testu partii.
+3. Wybierz przycisk wielokropka (***...*** ) znajdujący się na prawo od nazwy usługi batch i wybierz **Uruchom zestaw danych**. Zaczekaj, aż odbywa się badanie usługi batch.
 
     ![Uruchom zestaw danych](./media/luis-tutorial-batch-testing/run-dataset.png)
 
-4. Wybierz **zobaczyć wyniki**. Intencje powinien mieć zielony ikony na lewo od nazwy metody konwersji. Z właściwego filtru ustawioną `HomeAutomation.Turnoff` zamiar, wybierz zielonego dot w górnym prawym panelu najbardziej zbliżony do środka wykresu. Nazwa utterance pojawia się w tabeli poniżej wykresu. Wynik z `breezeway off please` jest bardzo mała. Opcjonalne działanie to można dodać więcej zniesławiających do zamiar, aby zwiększyć ten wynik. 
+4. Wybierz **wyniki**. Intencji powinien mieć zielony ikon po lewej stronie nazwy metody konwersji. Przy użyciu właściwego filtru równa `HomeAutomation.Turnoff` przeznaczenie, wybierz zielony dot w górnym prawym panelu, najbardziej zbliżony do środka wykresu. Nazwa wypowiedź pojawia się w tabeli pod wykresem. Wynik `breezeway off please` jest bardzo niskie. Opcjonalne działanie to można dodać więcej wypowiedzi na intencje, aby zwiększyć ten wynik. 
 
     ![Uruchom zestaw danych](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
 
@@ -374,7 +374,7 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 
 3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
 
-4. If the list of datasets is not visible, select **Back to list**. Select the three dots (...) at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
+4. If the list of datasets is not visible, select **Back to list**. Select the ellipsis (***...***) button at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
 
 5. Select **See results** to review the test results.
 
@@ -383,6 +383,6 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o zniesławiających przykład](luis-how-to-add-example-utterances.md)
+> [Dowiedz się więcej o przykład wypowiedzi](luis-how-to-add-example-utterances.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

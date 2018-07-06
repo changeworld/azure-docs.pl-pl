@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34643502"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858956"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -52,8 +52,9 @@ Można zdefiniować zasady inspekcji dla konkretnej bazy danych lub jako domyśl
 > * Aby użyć innego *konta magazynu* lub *okres przechowywania* dla konkretnej bazy danych.
 > * Chcesz inspekcji zdarzeń typów lub kategorii dla konkretnej bazy danych, które różnią się od pozostałej części bazy danych na serwerze. Na przykład może być wstawia tabeli, które należy przeprowadzić inspekcję tylko dla konkretnej bazy danych.
 > * Chcesz użyć wykrywania zagrożeń, która jest obecnie obsługiwane tylko w przypadku inspekcję na poziomie bazy danych.
->
 
+> [!IMPORTANT]
+>Włączanie inspekcji usługi Azure SQL Data Warehouse, lub na serwerze usługi Azure SQL Data Warehouse, **spowoduje w magazynie danych wznawiane**, nawet w przypadku, gdy wcześniej został wstrzymany. **Upewnij się, na wstrzymanie magazynu danych ponownie, po włączeniu inspekcji**.
 
 ## <a id="subheading-5"></a>Konfigurowanie serwera do poziomu inspekcji dla wszystkich baz danych
 

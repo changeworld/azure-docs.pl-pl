@@ -1,6 +1,6 @@
 ---
-title: Praca z danymi dane geograficzne w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Zrozumienie sposobu tworzenia, indeksu i zapytania przestrzennych obiektów z bazy danych rozwiązania Cosmos Azure i interfejsu API SQL.
+title: Praca z danymi dane geograficzne w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć, indeksu i zapytań przestrzennych obiektów za pomocą usługi Azure Cosmos DB i interfejsu API SQL.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74824af6f17a6c1d2638c8604edd38ffa419d607
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611371"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858123"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Praca z dane geograficzne i danych lokalizacji GeoJSON w usłudze Azure DB rozwiązania Cosmos
-Ten artykuł obejmuje wprowadzenie do funkcji geograficzne w [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/). Po przeczytaniu tego, będzie mógł odpowiedzieć na następujące pytania:
+# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Praca z danymi geograficznymi oraz GeoJSON lokalizacji danych w usłudze Azure Cosmos DB
+Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po przeczytaniu tego, możliwe będzie odpowiadać na następujące pytania:
 
-* Sposób przechowywania danych przestrzennych w usłudze Azure DB rozwiązania Cosmos?
-* Jak wykonać zapytanie dane geograficzne w usłudze Azure DB rozwiązania Cosmos w SQL i LINQ
-* Jak włączyć lub wyłączyć indeksowanie przestrzenne w usłudze Azure DB rozwiązania Cosmos
+* Jak przechowywać dane przestrzenne w usłudze Azure Cosmos DB?
+* Jak tworzyć zapytania dane geograficzne w usłudze Azure Cosmos DB SQL i LINQ
+* Jak włączyć lub wyłączyć indeksowania przestrzennego w usłudze Azure Cosmos DB?
 
-W tym artykule przedstawiono sposób pracy z danymi przestrzennymi przy użyciu interfejsu API SQL. Zobacz to [projektu GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) dla przykładów kodu.
+W tym artykule przedstawiono sposób pracy z danymi przestrzennymi przy użyciu interfejsu API SQL. Zobacz ten [projektu GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) dla przykładów kodu.
 
 ## <a name="introduction-to-spatial-data"></a>Wprowadzenie do danych przestrzennych
-Dane przestrzenne opisano pozycji i kształt obiektów w przestrzeni. W większości aplikacji odpowiadają one obiektów danych ziemi i dane geograficzne. Dane przestrzenne może służyć do reprezentowania lokalizacji osoby, miejsca lub granic miejscowości lub jeziora. Typowe przypadki użycia często obejmują zbliżeniowe kwerendy, na przykład, "Znajdź wszystkie kawiarniach niemal mojej bieżącej lokalizacji." 
+Dane przestrzenne w tym artykule opisano położenie i kształt obiektów w przestrzeni. W większości aplikacji te odnoszą się do obiektów na ziemi i dane geograficzne danych. Dane przestrzenne może służyć do reprezentowania lokalizacji osoby, miejsca lub granic mieście lub usługi Data lake. Typowe przypadki użycia często obejmują zapytań dotyczących odległości, na przykład, "Znajdź wszystkich kawiarnie blisko swojej bieżącej lokalizacji." 
 
 ### <a name="geojson"></a>GeoJSON
-Azure DB rozwiązania Cosmos obsługuje indeksowanie i badania dane geograficzne punktu danych, które ma reprezentowanej przy użyciu [specyfikacji GeoJSON](https://tools.ietf.org/html/rfc7946). Struktury danych GeoJSON są zawsze prawidłowych obiektów JSON, dzięki czemu mogą być przechowywane i wyświetlić przy użyciu bazy danych Azure rozwiązania Cosmos bez żadnych specjalnych narzędzi i bibliotek. Zestawy SDK Azure rozwiązania Cosmos DB Podaj pomocnika klasy i metody, które ułatwiają pracę z danymi przestrzennymi. 
+Usługa Azure Cosmos DB obsługuje indeksowanie i wykonywanie zapytań z danymi geograficznymi punktu danych, które jest reprezentowane za pomocą [specyfikacją GeoJSON](https://tools.ietf.org/html/rfc7946). GeoJSON struktury danych są zawsze prawidłowe obiekty JSON, dzięki czemu mogą być przechowywane i wyświetlić przy użyciu usługi Azure Cosmos DB bez specjalistycznych narzędzi i bibliotek. Zestawów SDK usługi Azure Cosmos DB zapewniają pomocnika klasy i metody, które ułatwiają pracę z danymi przestrzennymi. 
 
 ### <a name="points-linestrings-and-polygons"></a>Punkty, LineStrings i wielokątów
-A **punktu** oznacza pojedynczego pozycję w przestrzeni. W danych geograficznych punkt reprezentuje dokładnej lokalizacji, która może być ulicę sklepów spożywczych, kiosku, samochodu lub miejscowości.  Punkt jest reprezentowana w pary GeoJSON (i bazy danych Azure rozwiązania Cosmos) przy użyciu jego współrzędnych lub długości i szerokości geograficznej. Oto przykład JSON dla punktu.
+A **punktu** oznacza jednej pozycji w miejscu. W danych geoprzestrzennych punkt reprezentuje dokładnej lokalizacji, co może być adres magazynu połówce, kiosku, samochodów i Miasto.  Punkt jest reprezentowana w parę GeoJSON (i usługi Azure Cosmos DB) przy użyciu jego współrzędnych lub długość i szerokość geograficzną. Oto przykładowy plik JSON dla punktu.
 
-**Punkty Azure rozwiązania Cosmos bazy danych**
+**Punkty w usłudze Azure Cosmos DB**
 
 ```json
 {
@@ -45,15 +45,15 @@ A **punktu** oznacza pojedynczego pozycję w przestrzeni. W danych geograficznyc
 ```
 
 > [!NOTE]
-> Specyfikacja GeoJSON określa długość pierwszy i szerokości geograficznej drugiego. Podobnie jak w innych aplikacjach mapowania długości i szerokości geograficznej są kąty i wyświetlany w postaci stopni. Wartości długości geograficznej są mierzone od głównego południka i należą do zakresu od stopni-180 i 180.0 stopni i wartości szerokości geograficznej są mierzone od równika i należą do zakresu od stopni-90.0 i 90.0 stopni. 
+> Specyfikacją GeoJSON określa długość geograficzna pierwszy i szerokości geograficznej drugiego. Podobnie jak w innych aplikacjach mapowania długości i szerokości geograficznej są kąty i reprezentowane w stopniach. Wartości długości geograficznej jest mierzony od południków Prime należą do zakresu od stopni-180 i 180.0 stopni i wartości szerokości geograficznej jest mierzony od równika i należą do zakresu od stopni-90.0 i 90.0 stopni. 
 > 
-> Azure DB rozwiązania Cosmos interpretuje współrzędne reprezentowane na WGS 84 systemu odniesienia. Aby uzyskać więcej informacji o systemach współrzędnych odwołania są wymienione poniżej.
+> Usługa Azure Cosmos DB interpretuje współrzędne reprezentowane na WGS 84 systemu odniesienia. Poniżej zamieszczono więcej informacji na temat systemów współrzędnych odniesienia.
 > 
 > 
 
-Można ją osadzić w dokumencie bazy danych Azure rozwiązania Cosmos opisane w tym przykładzie profilu użytkownika zawierającego dane dotyczące lokalizacji:
+To mogą być osadzone w dokumencie usługi Azure Cosmos DB, jak pokazano w tym przykładzie zawierający dane do lokalizacji profilu użytkownika:
 
-**Użyj profilu z lokalizacją przechowywane w usłudze Azure DB rozwiązania Cosmos**
+**Użyj profilu z lokalizacją przechowywanych w usłudze Azure Cosmos DB**
 
 ```json
 {
@@ -68,7 +68,7 @@ Można ją osadzić w dokumencie bazy danych Azure rozwiązania Cosmos opisane w
 }
 ```
 
-Oprócz punktów GeoJSON obsługuje również LineStrings i wielokątów. **LineStrings** reprezentują dwa lub więcej punktów w miejsce i segmentów, które łączą te elementy. W polu dane geograficzne LineStrings często są używane do reprezentowania drogami lub rzek. A **wielokąta** jest granicę punktów połączonych formularzy LineString zamknięte. Wielokąty często są używane do reprezentowania tworzenie fizycznych, takich jak jeziora lub polityczną jurysdykcjach przykład miast i stanów. Oto przykład wielokąta w usłudze Azure DB rozwiązania Cosmos. 
+Oprócz punktów GeoJSON obsługuje również LineStrings i wielokątów. **LineStrings** reprezentują dwa lub więcej punktów w miejsce i segmentów linii, które łączą te elementy. W danych geoprzestrzennych LineStrings są często używane do reprezentowania drogami lub rzek. A **wielokąta** granicę połączone punkty, który wchodzi w skład LineString zamknięte. Wielokąty są często używane do reprezentowania formacji fizyczne, takie jak lakes lub polityczną jurysdykcjach, takich jak miast i stanów. Oto przykład wielokąta w usłudze Azure Cosmos DB. 
 
 **Wielokąty w GeoJSON**
 
@@ -86,23 +86,23 @@ Oprócz punktów GeoJSON obsługuje również LineStrings i wielokątów. **Line
 ```
 
 > [!NOTE]
-> Specyfikacja GeoJSON wymaga, aby uzyskać prawidłowy wielokątów ostatnią parę współrzędnych podane powinien taka sama jak pierwsza strona, aby utworzyć zamknięty kształt.
+> Specyfikacją GeoJSON wymaga, aby uzyskać prawidłowy wielokątów ostatnią parę współrzędnych podane powinien taka sama jak pierwsza, aby utworzyć kształt zamknięty.
 > 
-> Punktów w wielokąta muszą być określone w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt określony w kolejności zegara reprezentuje odwrotność regionu w niej.
+> Punkty, w ramach Wielokąt musi być określona w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt podane w kolejności do ruchu wskazówek zegara reprezentuje odwrotność region znajdujący się w nim.
 > 
 > 
 
-Oprócz punktu, LineString i wielokąta GeoJSON określa również reprezentację sposób grupowania wielu lokalizacji geograficznych, a także sposobu kojarzenia dowolne właściwości z używanie funkcji geolokalizacji jako **funkcji**. Ponieważ te obiekty są poprawne dane JSON, ich można wszystkie przechowywane i przetwarzane w usłudze Azure DB rozwiązania Cosmos. Niemniej jednak bazy danych Azure rozwiązania Cosmos obsługuje tylko, automatycznego indeksowania punktów.
+Oprócz punktu, LineString i wielokąta GeoJSON również określa reprezentację sposób grupowania wielu lokalizacji geograficznych, a także jak skojarzyć dowolne właściwości z geolokalizacji jako **funkcji**. Ponieważ te obiekty są prawidłowym kodem JSON, ich można wszystkie przechowywane i przetwarzane w usłudze Azure Cosmos DB. Jednak usługa Azure Cosmos DB obsługuje tylko, automatycznego indeksowania punktów.
 
-### <a name="coordinate-reference-systems"></a>Koordynacji systemów odniesienia
-Ponieważ kształtu ziemi jest nieprawidłowa, współrzędne geograficzne dane są reprezentowane w wielu systemach współrzędnych odwołania (znaki CR), każdy z ramek odniesienia i jednostki miary. Na przykład "National siatki z Brytania" jest systemu odniesienia jest dokładna Zjednoczone Królestwo, ale nie poza nią. 
+### <a name="coordinate-reference-systems"></a>Koordynowanie systemów odniesienia
+Ponieważ kształt ziemi jest nieprawidłowa, współrzędne dane geograficzne są reprezentowane w wielu systemach odwołanie współrzędnych (CRS), każda z ich własnymi ramek odniesienia i jednostek miary. Na przykład "National siatki z Brytanii" jest systemu odniesienia dokładne dla Wielkiej Brytanii, ale nie poza nim. 
 
-Najbardziej popularnym używany obecnie jest System geodezyjny World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). Urządzenia GPS, a wiele usług mapowania tym map programu Google i interfejsów API map Bing Użyj WGS 84. Azure DB rozwiązania Cosmos obsługuje indeksowanie i wyszukiwanie przy użyciu CRS WGS 84 w tylko dane geograficzne. 
+Najbardziej popularne używana już dziś jest System geodezyjny World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). Urządzenia GPS i wieloma usługami mapowania, w tym map Google i interfejsów API usługi mapy Bing używają WGS 84. Usługa Azure Cosmos DB obsługuje indeksowanie i wyszukiwanie geoprzestrzenne danych przy użyciu tylko za pomocą CRS WGS 84. 
 
 ## <a name="creating-documents-with-spatial-data"></a>Tworzenie dokumentów z danymi przestrzennymi
-Podczas tworzenia dokumentów, które zawierają wartości GeoJSON one są automatycznie indeksowane z indeksu przestrzennego w zgodnie z zasadami indeksowania w kolekcji. Podczas pracy z zestawem Azure rozwiązania Cosmos DB SDK w typach określanych dynamicznie języka Python lub Node.js, należy utworzyć prawidłowy GeoJSON.
+Podczas tworzenia dokumentów, które zawierają wartości GeoJSON one są zgodnie z zasad indeksowania kontenera automatycznie indeksowane za pomocą indeksu przestrzennego. Jeśli pracujesz za pomocą usługi Azure Cosmos DB zestawu SDK w języku o typach określanych dynamicznie, takich jak Python lub Node.js, należy utworzyć prawidłowy GeoJSON.
 
-**Utwórz dokument z dane geograficzne w środowisku Node.js**
+**Utwórz dokument za pomocą danych geograficznych w środowisku Node.js**
 
 ```json
 var userProfileDocument = {
@@ -118,9 +118,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Podczas pracy z interfejsami API zestawu SQL, można użyć `Point` i `Polygon` klas w ramach `Microsoft.Azure.Documents.Spatial` przestrzeni nazw osadzanie informacji o lokalizacji w obrębie obiektów aplikacji. Te klasy ułatwić serializacji i deserializacji obiektu danych przestrzennych w GeoJSON.
+Jeśli pracujesz z interfejsami API SQL, możesz użyć `Point` i `Polygon` klas w obrębie `Microsoft.Azure.Documents.Spatial` przestrzeni nazw do osadzenia informacji o lokalizacji w ramach obiektów aplikacji. W ramach tych zajęć ułatwiają serializacji i deserializacji danych przestrzennych w GeoJSON.
 
-**Utwórz dokument z dane geograficzne w .NET**
+**Utwórz dokument za pomocą danych geograficznych w .NET**
 
 ```json
 using Microsoft.Azure.Documents.Spatial;
@@ -145,42 +145,42 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Jeśli nie ma informacji współrzędne geograficzne, ale ma adresów fizycznych ani nazwy lokalizacji, takiej jak nazwa miejscowości lub kraj, rzeczywiste współrzędne można wyszukiwać za pomocą usług geokodowanie, takich jak usługi REST mapy Bing. Więcej informacji na temat usługi mapy Bing geokodowanie [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
+Jeśli nie ma informacji o długości i szerokości geograficznej, ale mają adresy fizyczne lub nazwa lokalizacji, takich jak miasta lub kraju, możesz wyszukać rzeczywiste współrzędne, za pomocą usługi geokodowania, takich jak usług REST mapy usługi Bing. Dowiedz się więcej o geokodowanie map Bing [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
 
-## <a name="querying-spatial-types"></a>Wykonywanie zapytania typów przestrzennych
-Teraz, gdy firma Microsoft zajęło przyjrzeć się jak wstawić dane geograficzne, Spójrzmy na sposób tworzenia zapytań te dane przy użyciu bazy danych rozwiązania Cosmos Azure przy użyciu programu SQL i LINQ.
+## <a name="querying-spatial-types"></a>Wykonywanie zapytania dotyczącego typów przestrzennych
+Teraz, że zrobiliśmy przyjrzeć się jak wstawić dane geoprzestrzenne, Spójrzmy na sposób tworzenia zapytań względem tych danych za pomocą usługi Azure Cosmos DB przy użyciu języków SQL i LINQ.
 
-### <a name="spatial-sql-built-in-functions"></a>Przestrzenne wbudowanych funkcji SQL
-Azure DB rozwiązania Cosmos obsługuje następujące funkcje wbudowane Otwórz geograficzne konsorcjum (OGC) na potrzeby zapytań o dane geograficzne. Aby uzyskać więcej szczegółów na pełny zestaw funkcji wbudowanych w języku SQL, zobacz [kwerendy bazy danych z rozwiązania Cosmos Azure](sql-api-sql-query.md).
+### <a name="spatial-sql-built-in-functions"></a>Wbudowane funkcje przestrzenne programu SQL
+Usługa Azure Cosmos DB obsługuje następujące funkcje wbudowane Otwórz dane geograficzne Consortium (OGC) do wykonywania zapytań na danych geoprzestrzennych. Aby uzyskać szczegółowe informacje na temat pełnego zestawu funkcji wbudowanych w języku SQL, zobacz [zapytań usługi Azure Cosmos DB](sql-api-sql-query.md).
 
 <table>
 <tr>
-  <td><strong>Użycie</strong></td>
+  <td><strong>Sposób użycia</strong></td>
   <td><strong>Opis</strong></td>
 </tr>
 <tr>
   <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>Zwraca odległość między dwoma wyrażeniami GeoJSON punktu wielokąta i LineString.</td>
+  <td>Zwraca odległość między dwoma wyrażeniami GeoJSON punkt, wielokąta lub LineString.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Zwraca wyrażenie logiczne, wskazującą, czy pierwszy obiekt GeoJSON (punkt, wielokąta lub LineString) znajduje się w drugim obiektu GeoJSON (punkt, wielokąta lub LineString).</td>
+  <td>Zwraca wartość wskazującą, czy pierwszy obiekt GeoJSON (punkt wielokąta i LineString) znajduje się w drugi obiekt GeoJSON (punkt wielokąta i LineString) wyrażenie logiczne.</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Zwraca wartość wskazującą, czy dwa określonych obiektów GeoJSON (punkt, wielokąta lub LineString) intersect wyrażenie logiczne.</td>
+  <td>Zwraca wartość wskazującą, czy dwa określone obiekty GeoJSON (punkt wielokąta i LineString) intersect wyrażenia logicznego.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON punktu wielokąta i LineString jest nieprawidłowy.</td>
+  <td>Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest nieprawidłowy.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Zwraca wartość wartość JSON, zawierające wartość typu Boolean, jeśli określone wyrażenie GeoJSON punktu wielokąta i LineString jest prawidłowy, a nieprawidłowy, ponadto Przyczyna jako wartość typu ciąg.</td>
+  <td>Zwraca wartość JSON, zawierająca wartość logiczną wartość, jeśli określone wyrażenie GeoJSON punkt, wielokąta lub LineString jest prawidłowy, a nieprawidłowy, dodatkowo Przyczyna jako wartość ciągu.</td>
 </tr>
 </table>
 
-Funkcje przestrzenne może służyć do wykonywania zapytań zbliżeniowe względem danych przestrzennych. Na przykład w tym miejscu jest kwerendę, która zwraca wszystkie dokumenty rodziny, które są w ciągu 30 km do określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. 
+Funkcje przestrzenne może służyć do wykonywania zapytań dotyczących odległości dla danych przestrzennych. Na przykład w tym miejscu jest zapytanie, które zwraca wszystkie rodziny dokumenty, które znajdują się w 30 km określonej lokalizacji za pomocą wbudowanych funkcji ST_DISTANCE. 
 
 **Zapytanie**
 
@@ -194,11 +194,11 @@ Funkcje przestrzenne może służyć do wykonywania zapytań zbliżeniowe wzglę
       "id": "WakefieldFamily"
     }]
 
-Jeśli dołączysz przestrzennych indeksowania w zasady indeksowania, następnie "odległość zapytania" zostanie obsłużona wydajnie przez indeks. Więcej szczegółów na indeksowanie przestrzennych zobacz sekcję poniżej. Jeśli nie masz indeks przestrzenny dla określonej ścieżki, można wykonywać zapytania przestrzennych, określając `x-ms-documentdb-query-enable-scan` nagłówek żądania z ustawioną wartość "true". W środowisku .NET, można to zrobić przez przekazanie opcjonalny **FeedOptions** argument zapytania z [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) ustawioną na true. 
+Jeśli dołączysz indeksowania przestrzennego w zasady indeksowania, następnie "odległość zapytania" będzie ich obsługa jest wydajna za pomocą indeksu. Aby uzyskać szczegółowe informacje na temat indeksowania przestrzennego zobacz sekcję poniżej. Jeśli nie masz indeks przestrzenny dla określonych ścieżek, można wykonywać zapytań przestrzennych, określając `x-ms-documentdb-query-enable-scan` nagłówek żądania z ustawioną wartość "true". Na platformie .NET, można to zrobić, przekazując opcjonalny **FeedOptions** argument zapytań przy użyciu [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) ma wartość true. 
 
-ST_WITHIN może służyć do sprawdzenia, czy punkt znajduje się wewnątrz wielokąta. Często wielokątów są używane do reprezentowania granice, takimi jak kodów pocztowych, stan granice lub tworzenie fizycznych. Ponownie Jeśli przestrzennych indeksowania w zasady indeksowania, następnie "w" zapytania zostanie obsłużona wydajnie przez indeks. 
+ST_WITHIN może służyć do sprawdzania, jeśli punkt znajduje się w obrębie wielokąta. Często wielokątów są używane do reprezentowania granice, takie jak kodów pocztowych, granice stanu lub formacji fizycznych. Ponownie Jeśli dołączysz indeksowania przestrzennego w zasady indeksowania, następnie "w ciągu" zapytania będą ich obsługa jest wydajna za pomocą indeksu. 
 
-Argumenty wielokąta ST_WITHIN może zawierać tylko jeden pierścień, czyli wielokątów nie może zawierać luk w nich. 
+Argumenty wielokąta w ST_WITHIN może zawierać tylko jednego pierścień, czyli wielokątów nie mogą zawierać luki w nich. 
 
 **Zapytanie**
 
@@ -216,11 +216,11 @@ Argumenty wielokąta ST_WITHIN może zawierać tylko jeden pierścień, czyli wi
     }]
 
 > [!NOTE]
-> Podobne jak niedopasowanych pracy typów w zapytaniu bazy danych rozwiązania Cosmos platformy Azure, jeśli określona wartość lokalizacji w albo argument jest źle sformułowany lub nieprawidłowy, a następnie daje w wyniku **Niezdefiniowany** i obliczane dokumentu do pominięcia z wyników zapytania. Jeśli zapytanie nie przynosi efektów, uruchom ST_ISVALIDDETAILED do debugowania Dlaczego typ przestrzenny jest nieprawidłowy.     
+> Podobnie jak niedopasowanych pracy typów w zapytaniu usługi Azure Cosmos DB, gdy wartość lokalizacji określone w albo argument jest źle sformułowany lub nieprawidłowy, a następnie daje w wyniku **niezdefiniowane** i ocenianą dokument do pominięcia z wyników kwerendy. Jeśli zapytanie nie zwraca żadnych wyników, uruchom ST_ISVALIDDETAILED do debugowania Dlaczego przestrzenne typu jest nieprawidłowy.     
 > 
 > 
 
-Azure DB rozwiązania Cosmos obsługuje również wykonywania kwerend odwrotny, oznacza to, możesz indeksu wierszy w usłudze Azure DB rozwiązania Cosmos lub wielokątów, a następnie wyszukać obszarów, które zawierają określony punkt. Ten wzorzec jest najczęściej używany w logistyki do identyfikowania, na przykład podczas ciężarówka wprowadza lub pozostawia wyznaczonego obszaru. 
+Usługa Azure Cosmos DB obsługuje także wykonywanie kwerendy odwrotne, oznacza to, że możesz indeksowanie, wielokąty lub wiersze w usłudze Azure Cosmos DB, a następnie zapytanie dla obszarów, które zawierają określony punkt. Ten wzorzec często służy logistycznych do identyfikowania, na przykład podczas ciężarówki wprowadza lub go opuszcza wyznaczony obszar. 
 
 **Zapytanie**
 
@@ -239,7 +239,7 @@ Azure DB rozwiązania Cosmos obsługuje również wykonywania kwerend odwrotny, 
       }
     }]
 
-ST_ISVALID i ST_ISVALIDDETAILED może służyć do sprawdzenia, czy obiektu przestrzennego jest prawidłowy. Na przykład poniższe zapytanie sprawdza ważność punktu z poza zakresu wartości szerokości geograficznej (-132.8). ST_ISVALID zwraca wartość logiczną, natomiast ST_ISVALIDDETAILED logicznych i ciąg zawierający przyczyny, dlaczego jest uznawane za nieprawidłowe.
+ST_ISVALID i ST_ISVALIDDETAILED może służyć do sprawdzania, czy obiektu przestrzennego jest nieprawidłowy. Na przykład następujące zapytanie sprawdza ważność punkt z poza zakresu wartość szerokości geograficznej (-132.8). ST_ISVALID zwraca wartość logiczną, natomiast ST_ISVALIDDETAILED typu Boolean i ciąg zawierający powód, dlaczego jest uznawane za nieprawidłowe.
 
 ** Zapytania **
 
@@ -251,7 +251,7 @@ ST_ISVALID i ST_ISVALIDDETAILED może służyć do sprawdzenia, czy obiektu prze
       "$1": false
     }]
 
-Funkcje te mogą służyć do sprawdzania poprawności wielokątów. Na przykład w tym miejscu używamy ST_ISVALIDDETAILED do sprawdzania poprawności wielokąta, który nie jest zamknięty. 
+Te funkcje można również sprawdzić wielokątów. Na przykład tutaj używamy ST_ISVALIDDETAILED do sprawdzania poprawności wielokąta, który nie jest zamknięty. 
 
 **Zapytanie**
 
@@ -268,12 +268,12 @@ Funkcje te mogą służyć do sprawdzania poprawności wielokątów. Na przykła
           }
     }]
 
-### <a name="linq-querying-in-the-net-sdk"></a>Wykonywanie zapytania do zestawu .NET SDK LINQ
-Zestaw SDK .NET SQL również dostawców stub metody `Distance()` i `Within()` do użytku w wyrażenia LINQ. Ta metoda wykonuje translację dostawcy LINQ do SQL wywołań odpowiednik wywołania funkcji wbudowanej SQL (ST_DISTANCE i ST_WITHIN odpowiednio). 
+### <a name="linq-querying-in-the-net-sdk"></a>LINQ, wykonywanie zapytań w zestawie SDK platformy .NET
+Zestaw SDK platformy .NET SQL również dostawców namiastki metody `Distance()` i `Within()` do użycia w wyrażeniach zapytań LINQ. Dostawca LINQ do SQL tłumaczy tej metody wywołania równoważne wywołań funkcji wbudowanej SQL (ST_DISTANCE i ST_WITHIN odpowiednio). 
 
-Oto przykład kwerendy LINQ znajduje wszystkie dokumenty w kolekcji bazy danych Azure rozwiązania Cosmos, którego wartość "Lokalizacja" jest w ramach usługi radius 30 km określonego punktu za pomocą LINQ.
+Poniżej przedstawiono przykładowe zapytanie LINQ, które znajdzie wszystkie dokumenty w kolekcji usługi Azure Cosmos DB, w której wartość "Lokalizacja" jest w promieniu 30 km określonego punktu za pomocą LINQ.
 
-**Zapytania LINQ odległość**
+**Zapytania LINQ dla odległości**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
@@ -281,9 +281,9 @@ Oto przykład kwerendy LINQ znajduje wszystkie dokumenty w kolekcji bazy danych 
         Console.WriteLine("\t" + user);
     }
 
-Podobnie w tym miejscu jest zapytaniem wyszukanie wszystkich dokumentów, których "Lokalizacja" znajduje się w określonym polu/wielokąta. 
+Podobnie w tym miejscu jest zapytania służące do znajdowania wszystkich dokumentów, w których "Lokalizacja" znajduje się w określonym polu/wielokąta. 
 
-**W ramach kwerendy LINQ**
+**W ciągu kwerendy LINQ**
 
     Polygon rectangularArea = new Polygon(
         new[]
@@ -304,23 +304,23 @@ Podobnie w tym miejscu jest zapytaniem wyszukanie wszystkich dokumentów, który
     }
 
 
-Teraz, gdy firma Microsoft zajęło przyjrzeć się jak wykonać zapytanie dotyczące dokumentów za pomocą LINQ i SQL, Spójrzmy na sposób konfigurowania bazy danych Azure rozwiązania Cosmos przestrzennych indeksowania.
+Skoro zrobiliśmy poznać sposób wykonywania zapytań dla dokumentów za pomocą LINQ i SQL, Spójrzmy na sposób konfigurowania usługi Azure Cosmos DB dla indeksowania przestrzennego.
 
 ## <a name="indexing"></a>Indeksowanie
-Firma Microsoft opisane w [schematu niezależny od indeksowanie z bazy danych Azure rozwiązania Cosmos](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papieru, możemy zaprojektowane aparatu bazy danych DB rozwiązania Cosmos Azure jako naprawdę niezależny od schematu oraz zapewnić wsparcie pierwszej klasie dla formatu JSON. Aparat bazy danych zoptymalizowanych pod kątem zapisu Azure DB rozwiązania Cosmos rozumie natywnie danych przestrzennych (punkty, wielokątów i linii), reprezentowany w standardzie GeoJSON.
+Zgodnie z opisem firma Microsoft w [schemat niezależny od indeksowania za pomocą usługi Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papieru, został zaprojektowany aparatu bazy danych Azure Cosmos DB to naprawdę niezależnej od schematu i zapewnienia pierwszorzędnej obsługi dla formatu JSON. Aparat bazy danych zoptymalizowany pod kątem zapisu w usłudze Azure Cosmos DB natywną obsługę danych przestrzennych (punkty, wielokąty i wierszy), reprezentowana w standardzie GeoJSON.
 
-Mówiąc, geometrii jest zaprojektowana geodezyjnej współrzędne na płaszczyźnie 2D, a następnie stopniowo podzielone komórki za pomocą **quadtree**. Tych komórek są mapowane na 1D na podstawie lokalizacji komórki znajdującej się w **Hilberta miejsca wypełnianie krzywej**, który zachowuje lokalizację punktów. Ponadto gdy danych lokalizacji jest indeksowany, przechodzi ona przez proces znany jako **tworzenia mozaiki**, oznacza to, że wszystkie komórki przecinających lokalizacji są zidentyfikowane i przechowywane jako klucze w indeksie bazy danych Azure rozwiązania Cosmos. Podczas przeszukiwania argumenty, takie jak punkty i wielokątów są również tesselowaną wyodrębnić zakresy identyfikatorów odpowiednie komórki, a następnie używane do pobierania danych z indeksu.
+Mówiąc, przewidywany geodezyjnej współrzędne na płaszczyznę 2D następnie stopniowo dzielą komórek przy użyciu geometrii **obszaru quadtree**. Tych komórek są mapowane na 1D na podstawie lokalizacji komórkę w **krzywej wypełnianie miejsca Hilberta**, który zachowuje lokalizacja punktów. Ponadto po zindeksowaniu danych lokalizacji, przechodzi on przez proces ten jest znany jako **mozaikowania**, oznacza to, że wszystkie komórki, które przecinają lokalizacji zostały zidentyfikowane i są przechowywane jako klucze do indeksu usługi Azure Cosmos DB. Podczas przeszukiwania argumentów, takich jak punktów i wielokątów są również tesselowaną można wyodrębnić zakresów identyfikator odpowiednich komórek, a następnie używane do pobierania danych z indeksu.
 
-Jeśli można określić zasady indeksowania, który zawiera indeks przestrzenny dla / * (wszystkie ścieżki), a następnie wszystkie punkty znaleziony w kolekcji są indeksowane wydajnych zapytań przestrzennych (ST_WITHIN i ST_DISTANCE). Indeksy przestrzenne nie ma wartość precyzji i zawsze używaj domyślną wartość precyzji.
+Jeśli określisz zasady indeksowania, która zawiera indeks przestrzenny dla / * (wszystkie ścieżki), a następnie wszystkie punkty można znaleźć w kolekcji są indeksowane w celu efektywnego zapytań przestrzennych (ST_WITHIN i ST_DISTANCE). Indeksy przestrzenne nie mają wartość dokładności i zawsze używaj wartości dokładności domyślnej.
 
 > [!NOTE]
-> Obsługuje bazę danych systemu Azure rozwiązania Cosmos automatycznego indeksowania punktów, wielokątów i LineStrings
+> Usługa Azure Cosmos DB obsługuje automatyczne indeksowanie punktów i wielokątów, a LineStrings
 > 
 > 
 
-Poniższy fragment kodu JSON przedstawia zasady indeksowania z przestrzennego indeksowania włączone, to znaczy, indeksu dowolnego punktu GeoJSON znaleziono w dokumentach do wykonywania zapytań przestrzennych. W przypadku modyfikowania zasady indeksowania, przy użyciu portalu Azure, można określić następujące JSON dla zasady indeksowania umożliwiające przestrzennych indeksowania w kolekcji.
+Poniższy fragment kodu JSON zawiera zasady indeksowania za pomocą indeksowania przestrzennego włączone, to znaczy, indeks kiedykolwiek GeoJSON można znaleźć w dokumentach zapytań przestrzennych. W przypadku modyfikowania zasad indeksowania, przy użyciu witryny Azure portal, można określić następujące dane JSON dla zasad indeksowania umożliwiające przestrzennych, indeksowania w kolekcji.
 
-**Kolekcja indeksowania zasad JSON z przestrzennym włączone punktów i wielokątów**
+**Kolekcja indeksowania zasad JSON z przestrzennym włączone dla punktów i wielokątów**
 
     {
        "automatic":true,
@@ -354,17 +354,17 @@ Poniższy fragment kodu JSON przedstawia zasady indeksowania z przestrzennego in
        ]
     }
 
-Oto fragment kodu w programie .NET, który pokazuje, jak utworzyć kolekcję z przestrzennego indeksowania włączona dla wszystkich ścieżek zawierających punkty. 
+Poniżej przedstawiono fragment kodu na platformie .NET, który pokazuje, jak utworzyć kolekcję z indeksowania przestrzennego włączona dla wszystkich ścieżek zawierających punkty. 
 
-**Utwórz kolekcję z przestrzennego indeksowania**
+**Utwórz kolekcję o indeksowania przestrzennego**
 
     DocumentCollection spatialData = new DocumentCollection()
     spatialData.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point)); //override to turn spatial on by default
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), spatialData);
 
-A Oto, jak można zmodyfikować istniejącą kolekcję przeprowadzać przestrzennych indeksowania za pośrednictwem punktów, które są przechowywane w dokumentach.
+A Oto, jak można zmodyfikować istniejącą kolekcję z zalet indeksowania przestrzennego w żadnym z punktów, które są przechowywane w dokumentach.
 
-**Zmodyfikuj istniejącą kolekcję z przestrzennego indeksowania**
+**Modyfikowanie istniejącej kolekcji za pomocą indeksowania przestrzennego**
 
     Console.WriteLine("Updating collection with spatial indexing enabled in indexing policy...");
     collection.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point));
@@ -381,17 +381,17 @@ A Oto, jak można zmodyfikować istniejącą kolekcję przeprowadzać przestrzen
     }
 
 > [!NOTE]
-> Jeśli lokalizacja wartość GeoJSON dokumentu jest źle sformułowany lub nieprawidłowy, następnie go zostanie nie indeksowanie przestrzennych zapytań. Można sprawdzić za pomocą ST_ISVALID i ST_ISVALIDDETAILED wartości lokalizacji.
+> Jeśli lokalizacja GeoJSON wartości w obrębie dokumentu jest źle sformułowany lub nieprawidłowy, następnie go będzie nie indeksowanie zapytań przestrzennych. Można sprawdzić poprawność wartości lokalizacji przy użyciu ST_ISVALID i ST_ISVALIDDETAILED.
 > 
-> Jeśli definicja kolekcja zawiera klucz partycji, indeksowania postępu przekształcenie nie został zgłoszony. 
+> Jeśli definicji kolekcja zawiera klucz partycji, indeksowanie postępu transformacji nie został zgłoszony. 
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure DB rozwiązania Cosmos, obok można:
+Teraz, gdy wiesz jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure Cosmos DB, następnie można wykonywać następujące czynności:
 
-* Rozpoczęcie kodowania z [przykłady kodu .NET dane geograficzne w witrynie GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Uzyskać ręce na z geograficzne zapytań w [Plac zabaw dla Azure rozwiązania Cosmos DB zapytań](http://www.documentdb.com/sql/demo#geospatial)
-* Dowiedz się więcej o [kwerendy bazy danych Azure rozwiązania Cosmos](sql-api-sql-query.md)
-* Dowiedz się więcej o [zasady indeksowania bazy danych Azure rozwiązania Cosmos](indexing-policies.md)
+* Rozpocznij kodowanie dzięki [przykładów kodu .NET dane geograficzne w usłudze GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
+* Zapoznaj się z danymi geograficznymi zapytań w [Plac zabaw dla usługi Azure Cosmos DB zapytań](http://www.documentdb.com/sql/demo#geospatial)
+* Dowiedz się więcej o [usługi Azure Cosmos DB zapytania](sql-api-sql-query.md)
+* Dowiedz się więcej o [zasad indeksowania usługi Azure Cosmos DB](indexing-policies.md)
 

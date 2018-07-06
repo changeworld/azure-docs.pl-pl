@@ -1,6 +1,6 @@
 ---
-title: Ograniczenia powłoki chmury Azure | Dokumentacja firmy Microsoft
-description: Omówienie ograniczenia powłoki chmury Azure
+title: Ograniczenia platformy Azure Cloud Shell | Dokumentacja firmy Microsoft
+description: Omówienie ograniczeń usługi Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: jluk
@@ -14,73 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 135496e17ae884db580922aa31f6824b2e7fd934
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31590525"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855988"
 ---
-# <a name="limitations-of-azure-cloud-shell"></a>Ograniczenia powłoki w chmurze Azure
+# <a name="limitations-of-azure-cloud-shell"></a>Ograniczenia dotyczące usługi Azure Cloud Shell
 
-Powłoka chmury Azure ma następujące znane ograniczenia:
+Usługa Azure Cloud Shell ma następujące znane ograniczenia:
 
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
-### <a name="system-state-and-persistence"></a>Stan systemu i trwałości
+### <a name="system-state-and-persistence"></a>Stan systemu i stan trwały
 
-Komputer udostępniający sesję powłoki chmury jest tymczasowy i zostanie odtworzony po sesja jest nieaktywny przez 20 minut. Chmura powłoki wymaga udziału plików na platformę Azure ma zostać zainstalowany. W związku z tym subskrypcja musi mieć możliwość skonfigurowany dostęp powłoka chmury zasobów magazynu. Inne zagadnienia dotyczące obejmują:
+Komputer który udostępnia sesję usługi Cloud Shell jest tymczasowy i zostanie odtworzony po sesji jest nieaktywny przez 20 minut. Usługa cloud Shell wymaga udziału plików platformy Azure ma zostać zainstalowany. W rezultacie Twoja subskrypcja musi umożliwiać konfigurowania zasobów magazynu w celu dostępu do usługi Cloud Shell. Inne zagadnienia to:
 
-* Z magazynem zainstalowanym, tylko zmiany w `clouddrive` katalogu są zachowywane. W Bash Twoje `$Home` katalogu również jest trwały.
-* Udziały plików platformy Azure może być instalowany tylko z poziomu programu [przypisane region](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * W Bash, uruchom `env` można znaleźć w Twoim regionie Ustaw jako `ACC_LOCATION`.
+* Usługa storage zainstalowany tylko modyfikacji w ramach `$Home` katalogu są zachowywane.
+* Udziały plików platformy Azure można instalować tylko z poziomu usługi [przypisane region](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * W powłoce Bash, uruchom `env` można znaleźć w danym regionie, Ustaw jako `ACC_LOCATION`.
 
 ### <a name="browser-support"></a>Obsługa przeglądarek
 
-Powłoka chmura obsługuje najnowsze wersje Microsoft Edge, programu Microsoft Internet Explorer, Google Chrome, Mozilla Firefox i Apple Safari. Przeglądarka Safari w trybie prywatnym nie jest obsługiwane.
+Usługi cloud Shell obsługuje najnowsze wersje programu Microsoft Edge, program Microsoft Internet Explorer, Google Chrome, Mozilla Firefox i Safari firmy Apple. Safari w trybie prywatnym nie jest obsługiwane.
 
 ### <a name="copy-and-paste"></a>Kopiowanie i wklejanie
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Dla danego użytkownika mogą być aktywne tylko jedno powłoki
+### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Dla danego użytkownika może być aktywne tylko jedno powłoki
 
-Użytkownicy mogą uruchamiać tylko jeden typ powłoki w czasie, albo **Bash** lub **PowerShell**. Jednak może istnieć wiele wystąpień uruchomione w tym samym czasie Bash lub programu PowerShell. Wymiany między Bash lub środowiska PowerShell powoduje, że chmury powłoki, aby ponownie uruchomić, które mają zakończenie istniejącej sesji.
+Użytkownicy mogą uruchamiać tylko jeden rodzaj powłoki w czasie, albo **Bash** lub **PowerShell**. Jednakże może mieć wiele wystąpień powłoki Bash lub programu PowerShell działających w tym samym czasie. Trwa zamienianie między powłoki Bash lub programu PowerShell powoduje, że usługa Cloud Shell, aby ponownie uruchomić, które kończy się istniejącej sesji.
 
 ### <a name="usage-limits"></a>Limity użycia
 
-Powłoka chmury jest przeznaczony dla przypadków użycia interaktywnego. W związku z tym wszystkie długotrwałe nieinterakcyjnym sesje zostaną zakończone bez ostrzeżenia.
+Usługa cloud Shell jest przeznaczony dla przypadków użycia interaktywne. W rezultacie wszystkie sesje nieinterakcyjnych długotrwałych zostaną zakończone bez ostrzeżenia.
 
-## <a name="bash-limitations"></a>Ograniczenia bash
+## <a name="bash-limitations"></a>Ograniczenia funkcji bash
 
 ### <a name="user-permissions"></a>Uprawnienia użytkowników
 
-Uprawnienia zostały ustawione jako normalnych użytkowników bez dostępu do operacji sudo. Każda instalacja poza Twojej `$Home` katalogu nie jest trwały.
+Uprawnienia są ustawiane jako zwykli użytkownicy bez dostępu "sudo". Żadnej instalacji spoza Twojej `$Home` katalogu nie jest trwały.
 
 ### <a name="editing-bashrc"></a>Edytowanie .bashrc
 
-Mają ostrożność w przypadku edycji .bashrc w ten sposób może spowodować nieoczekiwane błędy w chmurze powłoki.
+Uwaga należy podjąć, gdy Edycja .bashrc w ten sposób może spowodować nieoczekiwane błędy w usłudze Cloud Shell.
 
-## <a name="powershell-limitations"></a>Ograniczenia programu PowerShell
+## <a name="powershell-limitations"></a>Ograniczenia dotyczące programu PowerShell
 
-### <a name="slow-startup-time"></a>Czas uruchamiania powolne
+### <a name="azuread-module-name"></a>`AzureAD` Nazwa modułu
 
-PowerShell w powłoce chmury Azure (wersja zapoznawcza) może potrwać do 60 sekund zainicjować wersji zapoznawczej.
+`AzureAD` Nazwa modułu jest obecnie `AzureAD.Standard.Preview`, moduł zapewnia taką samą funkcjonalność.
 
-### <a name="no-home-directory-persistence"></a>Trwałość katalogu No $Home
+### <a name="sqlserver-module-functionality"></a>`SqlServer` Moduł funkcji
 
-Dane zapisywane w `$Home` przez dowolną aplikację (takich jak: git, vim i inne) nie zachowywane między sesjami programu PowerShell. Obejście tego problemu [widoczną w tym miejscu](troubleshooting.md#powershell-troubleshooting).
+`SqlServer` Modułu uwzględnione w usłudze Cloud Shell zapewnia tylko w wersji wstępnej obsługę programu PowerShell Core. W szczególności `Invoke-SqlCmd` nie jest jeszcze dostępna.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku podczas tworzenia dysku platformy Azure:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Domyślna lokalizacja pliku po utworzeniu z dysku platformy Azure:
 
-Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie można utworzyć plików w obszarze dysku platformy Azure. Podczas tworzenia nowych plików przy użyciu innych narzędzi, takich jak vim lub nano, pliki są domyślnie zapisywane do folderu C:\Users. 
+Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie można utworzyć plików w obszarze dysk platformy Azure. Podczas tworzenia nowych plików przy użyciu innych narzędzi, takich jak vim lub nano, pliki są zapisywane w `$HOME` domyślnie. 
 
-### <a name="gui-applications-are-not-supported"></a>Graficzny interfejs użytkownika aplikacji nie są obsługiwane.
+### <a name="gui-applications-are-not-supported"></a>Aplikacje graficznego interfejsu użytkownika nie są obsługiwane.
 
-Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe systemu Windows, takich jak `Connect-AzureAD` lub `Connect-AzureRmAccount`, takich jak jedną zobaczy komunikat o błędzie: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe Windows, takich jak `Connect-AzureAD` lub `Connect-AzureRmAccount`, takich jak jedną zobaczy komunikat o błędzie: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+
+### <a name="tab-completion-crashes-psreadline"></a>Uzupełnianie po naciśnięciu tabulatora ulega awarii PSReadline
+
+Jeśli ustawiono trybu użytkownika edycji w PSReadline Emacs, użytkownik próbuje wyświetlić wszystkie możliwości za pośrednictwem uzupełniania po naciśnięciu tabulatora i wielkość okna jest zbyt mała, aby wyświetlić wszystkie możliwości, PSReadline ulegnie awarii.
+
+### <a name="large-gap-after-displaying-progress-bar"></a>Duży odstęp po wyświetleniu paska postępu
+
+Jeśli użytkownik wykona akcję, która Wyświetla pasek takie karty postępu ukończenia podczas w `Azure:` dysków jest możliwe, że kursor nie jest prawidłowo i przerwa pojawia się, gdzie poprzednio pasek postępu.
+
+### <a name="random-characters-appear-inline"></a>Wyświetlane losowo wybranych znaków w tekście
+
+Kody sekwencji pozycja kursora, na przykład `5;13R`, może być wyświetlany w danych wejściowych użytkownika.  Można ręcznie usunąć znaki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Rozwiązywanie problemów z powłoki chmury](troubleshooting.md) <br>
+[Rozwiązywanie problemów z usługi Cloud Shell](troubleshooting.md) <br>
 [Przewodnik Szybki start po powłoce Bash](quickstart.md) <br>
 [Przewodnik Szybki start po programie PowerShell](quickstart-powershell.md)

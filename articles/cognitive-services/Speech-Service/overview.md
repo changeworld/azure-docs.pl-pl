@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ccdcdeeaf4ac8730be4f9e3ee648dc41c2a02641
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2c1fce35749dee12caec0bcd15a9eccdf81b8d1d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345162"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856777"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Co to jest usługa mowy (wersja zapoznawcza)?
 
@@ -60,7 +60,7 @@ Można dostosować, zamiana mowy na tekst akustyczne i modeli językowych, aby p
 
 [Zamiany tekstu na mowę](text-to-speech.md) (TTS) lub synteza mowy, interfejs API konwertuje tekst zwykły do naturalnym brzmiącą mowę, na dostarczane do aplikacji w pliku audio. Wiele głosów, różnicowanie płci lub akcent, są dostępne dla wielu języków.
 
-Interfejs API obsługuje tagi mowy syntezy Markup Language (SSML), dzięki czemu można określić dokładne wymowa fonetyczna problematycznych wyrazów. Za pomocą języka SSML można również bezpośrednio w tekście oznaczać właściwości mowy (w tym nacisk, szybkość, głośność, płeć i wysokość).
+Interfejs API obsługuje [mowy syntezy Markup Language (SSML)](speech-synthesis-markup.md) tagów, dzięki czemu można określić dokładne wymowa fonetyczna problematycznych wyrazów. Za pomocą języka SSML można również bezpośrednio w tekście oznaczać właściwości mowy (w tym nacisk, szybkość, głośność, płeć i wysokość).
 
 Poniżej przedstawiono typowe przypadki użycia dla zamiany tekstu na mowę interfejsu API.
 
@@ -68,7 +68,7 @@ Poniżej przedstawiono typowe przypadki użycia dla zamiany tekstu na mowę inte
 * Głos monitowania dla aplikacji w samochodzie, takie jak nawigacja
 * Interfejsy użytkownika konwersacji z usługą mowy do interfejsu API tłumaczenia tekstu
 
-Jeśli trzeba nieobsługiwany dialekt lub po prostu ma głos unikatowy dla aplikacji, zamiana tekstu na mowę interfejs API obsługuje modeli usługi custom voice.
+Jeśli trzeba nieobsługiwany dialekt lub po prostu ma głos unikatowy dla aplikacji, zamiana tekstu na mowę interfejs API obsługuje [modeli usługi custom voice](how-to-customize-voice-font.md).
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
@@ -87,7 +87,7 @@ Zestawu Speech Devices SDK umożliwia tworzenie otoczenia urządzeń za pomocą 
 
 Zestaw SDK zależy od gniazda sieci web przy użyciu portu 443.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pobierz klucz subskrypcji wersji próbnej usługi mowy.
 

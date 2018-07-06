@@ -1,5 +1,5 @@
 ---
-title: Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji sieci Web
+title: Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji internetowej
 description: Dowiedz się, jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta na TLS.
 services: app-service
 documentationcenter: ''
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf8731b2a5028f47c2baf6f164d75123f716ebb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836308"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857643"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji sieci Web
-## <a name="overview"></a>Omówienie
-Przez włączenie różnych typów uwierzytelniania dla niego, można ograniczyć dostęp do aplikacji sieci web platformy Azure. Jednym ze sposobów jest uwierzytelnianie przy użyciu certyfikatu klienta, gdy żądanie zostanie protokołu TLS/SSL. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania protokołu TLS lub certyfikatów klienta, uwierzytelniania i ten artykuł zawiera szczegółowe konfigurowanie aplikacji sieci web, aby użyć uwierzytelniania certyfikatu klienta.
+# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak skonfigurować wzajemne uwierzytelnianie protokołu TLS dla aplikacji internetowej
+## <a name="overview"></a>Przegląd
+Aby ograniczyć dostęp do aplikacji sieci web platformy Azure, włączenie różnego rodzaju uwierzytelniania dla niego. Jednym ze sposobów, w tym celu jest uwierzytelnianie przy użyciu certyfikatu klienta, gdy żądanie zostanie za pośrednictwem protokołu TLS/SSL. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania protokołu TLS lub certyfikat klienta, że uwierzytelnianie i w tym artykule zostanie szczegółowo opisują jak skonfigurować aplikację sieci web, aby użyć uwierzytelniania certyfikatu klienta.
 
-> **Uwaga:** Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP i HTTPS nie, nie otrzymasz żadnych certyfikatu klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta nie należy zezwalać żądań do aplikacji za pośrednictwem protokołu HTTP.
+> **Uwaga:** Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP, a nie HTTPS, nie otrzymasz żadnych certyfikatu klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta nie należy zezwalać żądania do aplikacji za pośrednictwem protokołu HTTP.
 > 
 > 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurowanie aplikacji sieci Web uwierzytelniania certyfikatu klienta
-Można skonfigurować aplikację sieci web, aby wymagać certyfikaty klienta należy dodać ustawienie lokacji clientCertEnabled dla aplikacji sieci web i ustawioną wartość true. To ustawienie nie jest obecnie dostępna za pośrednictwem możliwości zarządzania w portalu, a musi być używane w tym celu interfejsu API REST.
+## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurowanie aplikacji sieci Web do uwierzytelniania certyfikatu klienta
+Aby skonfigurować aplikację sieci web, aby wymagać certyfikaty klienta, należy dodać ustawienie elementu clientCertEnabled witryny dla aplikacji sieci web i ustaw ją na wartość true. To ustawienie jest również możliwe do skonfigurowania w witrynie Azure portal w obszarze blok certyfikaty SSL.
 
-Można użyć [narzędzie ARMClient](https://github.com/projectkudu/ARMClient) ułatwia spreparować wywołania interfejsu API REST. Po zalogowaniu się przy użyciu narzędzia należy wydać następujące polecenie:
+Możesz użyć [narzędzie ARMClient](https://github.com/projectkudu/ARMClient) ułatwia sformułować wywołania interfejsu API REST. Po zalogowaniu się przy użyciu narzędzia, należy wydać następujące polecenie:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-zastępowanie wszystko {} informacje dotyczące aplikacji sieci web i utworzeniu pliku o nazwie enableclientcert.json z następujących JSON zawartości:
+zastąpienie wszystkich elementów w {} informacjami dla sieci web app i utworzenie pliku o nazwie enableclientcert.json następującym kodem JSON zawartości:
 
     {
         "location": "My Web App Location",
@@ -47,19 +47,19 @@ zastępowanie wszystko {} informacje dotyczące aplikacji sieci web i utworzeniu
         }
     }
 
-Upewnij się zmienić wartość "Lokalizacja" wszędzie tam, gdzie znajduje się aplikacja sieci web np. dla północno-środkowe stany lub zachodnie stany USA itp.
+Upewnij się zmienić wartość "Lokalizacja" wszędzie tam, gdzie aplikacja sieci web znajduje się na przykład, północno-środkowe stany USA i zachodnie stany USA itp.
 
-Można również użyć https://resources.azure.com do przerzucenia `clientCertEnabled` właściwości `true`.
+Można również użyć https://resources.azure.com przerzucić `clientCertEnabled` właściwość `true`.
 
-> **Uwaga:** po uruchomieniu ARMClient z programu Powershell, należy wprowadzić symbol @ dla pliku JSON z tyłu znaczników ".
+> **Uwaga:** po uruchomieniu ARMClient za pomocą programu Powershell, konieczne będzie ucieczki symbol @ dla pliku JSON z tyłu znaczników ".
 > 
 > 
 
 ## <a name="accessing-the-client-certificate-from-your-web-app"></a>Uzyskiwanie dostępu do certyfikatu klienta z aplikacji sieci Web
-Jeśli używasz programu ASP.NET i skonfiguruj aplikację, aby użyć uwierzytelniania certyfikatu klienta, certyfikat będzie dostępna za pośrednictwem **HttpRequest.ClientCertificate** właściwości. Dla innych stosy aplikacji certyfikatu klienta będą dostępne w Twojej aplikacji za pomocą wartości kodowany w standardzie base64 w nagłówku żądania "X-ARR ClientCert". Aplikacji można utworzyć certyfikat z tej wartości, a następnie użyć go do celów uwierzytelniania i autoryzacji w aplikacji.
+Jeśli używasz programu ASP.NET i skonfiguruj aplikację, aby użyć uwierzytelniania certyfikatu klienta, certyfikat będzie dostępna za pośrednictwem **HttpRequest.ClientCertificate** właściwości. Dla innych stosów aplikacji certyfikat klienta będzie dostępne w Twojej aplikacji za pomocą wartości zakodowane w formacie base64 w nagłówku żądania "X-ARR ClientCert". Aplikację można utworzyć certyfikat z tej wartości, a następnie użyć go do celów uwierzytelniania i autoryzacji w aplikacji.
 
-## <a name="special-considerations-for-certificate-validation"></a>Uwagi dotyczące weryfikacji certyfikatów
-Certyfikat klienta, który jest wysyłany do aplikacji nie przechodzi przez wszystkie weryfikacji przez platformę Azure Web Apps. Sprawdzanie poprawności tego certyfikatu jest odpowiedzialny za aplikacji sieci web. Oto przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
+## <a name="special-considerations-for-certificate-validation"></a>Specjalne uwagi dotyczące weryfikacji certyfikatów
+Certyfikat klienta, które są wysyłane do aplikacji nie przechodzi przez wszystkie weryfikacji przez platformę Azure Web Apps. Sprawdzanie poprawności tego certyfikatu jest odpowiedzialny za aplikacji sieci web. Poniżej przedstawiono przykładowy kod platformy ASP.NET, która weryfikuje właściwości certyfikatu na potrzeby uwierzytelniania.
 
     using System;
     using System.Collections.Specialized;

@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj opublikowana aplikacja — H2O musujących wody - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Zainstalować i używać aplikacji Hadoop H2O musujących wody innych firm.
+title: Instalowanie opublikowanej aplikacji — H2O Sparkling Water — Azure HDInsight | Dokumentacja firmy Microsoft
+description: Instalowanie i używanie aplikacji platformy Hadoop innych firm H2O Sparkling Water.
 services: hdinsight
 documentationcenter: ''
 author: ashishthaps
@@ -14,94 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e3c80fe824d87c15a710b133c8e6cddf4ee0e096
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402111"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856559"
 ---
-# <a name="install-published-application---h2o-sparkling-water"></a>Instalowanie aplikacji opublikowanych - wody musujących H2O
+# <a name="install-published-application---h2o-sparkling-water"></a>Instalowanie opublikowanej aplikacji — H2O Sparkling Water
 
-W tym artykule opisano, jak instalować i uruchamiać [wody musujących H20](http://www.h2o.ai/) opublikowana aplikacja platformy Hadoop w usłudze Azure HDInsight. Przegląd platformy aplikacji usługi HDInsight oraz listę z dostępnych niezależnie od producenta oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalacji aplikacji innych firm Hadoop](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
+W tym artykule opisano sposób instalowania i uruchamiania [H20 Sparkling Water](http://www.h2o.ai/) opublikowanych aplikacji platformy Hadoop w usłudze Azure HDInsight. Omówienie platformy aplikacji HDInsight i listę z dostępnych niezależnym dostawcą oprogramowania (ISV) opublikowanych aplikacji, zobacz [instalowanie aplikacji platformy Hadoop innych firm](hdinsight-apps-install-applications.md). Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
 
-## <a name="about-h2o-sparkling-water"></a>Temat limitu górnego musujących H2O
+## <a name="about-h2o-sparkling-water"></a>Temat H2O Sparkling Water
 
-Wody musujących H2O jest typu open source, platformy learning pełni rozproszonych w pamięci komputera z skalowalność liniowa. Wody musujących H2O umożliwiają łączenie algorytmów H2O z funkcjami programu Spark uczenia maszynowego szybkie i skalowalne. Musujących wody użytkownicy mogą dysków obliczeń od Scala R i Python za pomocą interfejsu użytkownika przepływ H2O.
+H2O Sparkling Water to open source platforma edukacyjna pełni rozproszonych maszyny w pamięci z skalowalność liniowa. H2O Sparkling Water umożliwia łączenie algorytmów H2O z możliwościami platformy Spark uczenia maszynowego szybkich, skalowalnych. Dzięki temu Sparkling użytkowników zwiększać obliczeń w języku Scala, R i Python przy użyciu interfejsu H2O przepływu użytkownika.
 
-Udostępnia H2O musujących wody:
+H2O Sparkling Water umożliwia:
 
-* **WebUI łatwy w użyciu i znanych interfejsów** — ustawione w górę, a następnie rozpocznij szybko przy użyciu albo H2O intuicyjne opartych na sieci web przepływu graficznego interfejsu użytkownika lub środowiskach, takich jak R, Python, Java, Scala, JSON i interfejsów API H2O programowania.
-* **Obsługa danych pochodzącego od dowolnego wszystkie popularne typy bazy danych i pliku** — łatwo eksplorować i dużych danych z poziomu programu Microsoft Excel, R Studio, Tableau i modelu. Połącz się z danymi z systemu plików HDFS, S3, SQL i NoSQL źródeł danych.
-* **Skalowalna na ogromną skalę munging danych Big Data i analiza** — sprzężenia Big H2O można wykonywać 7 x szybsze niż operacje data.table R i liniowo skalować MLD 10 x 10 miliard wierszy sprzężenia.
-* **Dane w czasie rzeczywistym oceniania** — szybkie wdrażanie modeli do środowiska produkcyjnego, przy użyciu starego zwykłego Java obiektów (typu POJO), zoptymalizowane pod kątem modelu obiektów języka Java (MOJO) lub interfejsu API REST H2O.
+* **Łatwe w użyciu interfejsem sieci Web i znanych interfejsów** — ustawienie zapasowej i Rozpocznij pracę, szybko przy użyciu obu H2O intuicyjne opartego na sieci web przepływu graficznego interfejsu użytkownika lub środowisk, takich jak R, Python, Java, Scala, JSON i interfejsów API H2O programowania.
+* **Niezależnie od danych Obsługa wszystkich popularnych typów bazy danych i pliku** — łatwe Eksplorowanie i modelowanie danych Big Data z w ramach programu Microsoft Excel, programu R Studio, Tableau i. Łączenie z danymi ze źródeł danych systemu plików HDFS, S3, SQL i NoSQL.
+* **Wysoce skalowalny (munging) z danych Big Data i analiza** — H2O duże sprzężenia można wykonywać 7 x szybciej niż operacje data.table R i liniowe skalowanie na 10 miliardów x 10 miliardów wierszy sprzężenia.
+* **Ocenianie danych w czasie rzeczywistym** — szybko wdrażać modele do produkcji przy użyciu zwykłego old Java obiektów (obiektu typu POJO), zoptymalizowane pod kątem modelu obiektów języka Java (MOJO), lub interfejsu API REST H2O.
 
-### <a name="resource-links"></a>Linki do zasobów
+### <a name="resource-links"></a>Linki zasobów
 
-* [H2O.ai Engineering Roadmap](https://jira.h2o.ai/)
+* [H2O.ai Engineering Roadmap](http://jira.h2o.ai/)
 * [Strona główna H2O.AI](http://www.h2o.ai/)
 * [Dokumentacja H2O.AI](http://docs.h2o.ai/)
 * [Obsługa H2O.AI](https://support.h2o.ai/)
-* [Codebase typu Open Source H2O.AI](https://github.com/h2oai/)
+* [H2O.AI "Open Source" w bazie kodu](https://github.com/h2oai/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musi mieć następującą konfigurację:
+Aby zainstalować tę aplikację w nowym klastrze HDInsight lub istniejącego klastra, musisz mieć następującą konfigurację:
 
-* Klaster tier(s): Standard lub Premium
+* Warstwy klastrów: Standard lub Premium
 * Typ klastra: Spark
-* Klaster wersje: w wersji 3.5 lub 3,6
+* Wersje klastra: 3.5 i 3.6
 
-## <a name="install-the-h2o-sparkling-water-published-application"></a>Zainstaluj wody musujących H2O opublikowane aplikacji
+## <a name="install-the-h2o-sparkling-water-published-application"></a>Instalowanie H2O Sparkling Water opublikowanej aplikacji
 
-Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych aplikacjach dostępnych niezależnego dostawcy oprogramowania, przeczytaj [instalacji aplikacji innych firm Hadoop](hdinsight-apps-install-applications.md).
+Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych dostępnych aplikacji niezależnych dostawców oprogramowania, przeczytaj [instalowanie aplikacji platformy Hadoop innych firm](hdinsight-apps-install-applications.md).
 
-## <a name="launch-h2o-sparkling-water"></a>Uruchamianie wody musujących H2O
+## <a name="launch-h2o-sparkling-water"></a>Uruchom H2O Sparkling Water
 
-1. Po zakończeniu instalacji, możesz rozpocząć używać H2O musujących wody (h2o sparklingwater) z klastrem w portalu Azure, otwierając notesów Jupyter (`https://<ClusterName>.azurehdinsight.net/jupyter`). Można także uzyskać do Jupyter wybierając **pulpit nawigacyjny klastra** z okienka z klastra, w portalu, wybierając **notesu Jupyter**. Monit o podanie poświadczeń. Wprowadź poświadczenia usługi Hadoop klastra określoną na utworzenie klastra.
+1. Po zakończeniu instalacji, aby zacząć korzystać H2O Sparkling Water (h2o sparklingwater) z klastrem w witrynie Azure portal, otwierając notesów Jupyter (`https://<ClusterName>.azurehdinsight.net/jupyter`). Można także uzyskać się do aplikacji Jupyter, wybierając **pulpit nawigacyjny klastra** usługi klastra w okienku portalu, a następnie wybierając pozycję **notesu programu Jupyter**. Monit o podanie poświadczeń. Wprowadź poświadczenia usługi Hadoop klastra zgodnie z instrukcjami na utworzenie klastra.
 
-2. W oprogramowaniu Jupyter, zobacz trzy foldery: H2O-PySparkling — przykłady, przykłady PySpark i Scala przykłady. Wybierz **H2O-PySparkling — przykłady** folderu.
+2. W programie Jupyter, zobaczysz trzy foldery: H2O-PySparkling — przykłady, przykłady PySpark i Scala przykłady. Wybierz **H2O-PySparkling — przykłady** folderu.
 
-    ![Macierzysty notesów Jupyter](./media/hdinsight-apps-install-h2o/jupyter-home.png)
+    ![Program Jupyter Notebooks macierzystego](./media/hdinsight-apps-install-h2o/jupyter-home.png)
 
-3. Pierwszym krokiem podczas tworzenia nowego notesu jest skonfigurowanie środowiska Spark. Te informacje zostaną zawarte w **Sentiment_analysis_with_Sparkling_Water** przykład. Podczas konfigurowania środowiska Spark, należy użyć poprawne jar i podaj adres IP podał dane wyjściowe pierwszej komórki.
+3. Pierwszym krokiem podczas tworzenia nowego notesu jest skonfigurowanie środowiska platformy Spark. Te informacje znajdują się w **Sentiment_analysis_with_Sparkling_Water** przykład. Podczas konfigurowania środowiska platformy Spark, należy użyć poprawny plik jar i określ adres IP podany w danych wyjściowych pierwszej komórki.
 
-    ![Macierzysty notesów Jupyter](./media/hdinsight-apps-install-h2o/spark-config.png)
+    ![Program Jupyter Notebooks macierzystego](./media/hdinsight-apps-install-h2o/spark-config.png)
 
 4. Uruchomienie klastra H2O.
 
-    ![Uruchom klastra](./media/hdinsight-apps-install-h2o/start-cluster.png)
+    ![Uruchomienie klastra](./media/hdinsight-apps-install-h2o/start-cluster.png)
 
-5. Po skonfigurowaniu i uruchomieniu klastra H2O Otwórz H2O przepływu, przechodząc do **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
+5. Po skonfigurowaniu i uruchomieniu klastra H2O Otwórz przepływ H2O, przechodząc do **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
     > [!NOTE]
-    > Jeśli nie można otworzyć H2O przepływu, spróbuj wyczyścić pamięć podręczną przeglądarki. Jeśli jednak nie można uzyskać do niej dostęp, prawdopodobnie nie masz za mało zasobów w klastrze. Spróbuj zwiększyć liczbę węzłów procesu roboczego w obszarze **klaster w skali** opcji w okienku klastra.
+    > Jeśli nie można otworzyć przepływu H2O, spróbuj wyczyszczenie pamięci podręcznej przeglądarki. Jeśli jednak nie można przejść do niego, prawdopodobnie nie masz wystarczającej liczby zasobów w klastrze. Spróbuj zwiększyć liczbę węzłów procesu roboczego w obszarze **Skaluj klaster** opcji w okienku klastra.
 
     ![Przepływ H2O pulpitu nawigacyjnego](./media/hdinsight-apps-install-h2o/h2o-flow.png)
 
-6. Wybierz **Million_Songs.flow** przykład z menu po prawej stronie. Gdy zostanie wyświetlony monit z ostrzeżeniem, kliknij przycisk **notesu obciążenia**. Ten pokaz jest przeznaczone do uruchamiania w ciągu kilku minut przy użyciu danych rzeczywistych. Celem jest określenie danych, czy utworu został zwolniony przed lub po 2004 przy użyciu klasyfikacji binarnej.
+6. Wybierz **Million_Songs.flow** przykładu z menu po prawej stronie. Gdy zostanie wyświetlony monit z ostrzeżeniem, kliknij przycisk **notesu obciążenia**. Tej wersji demonstracyjnej jest przeznaczony do działania w ciągu kilku minut przy użyciu rzeczywistych danych. Celem jest przewidzieć z danych, czy utwór został wydany przed lub po 2004 przy użyciu klasyfikacji binarnej.
 
     ![Wybierz Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. Znajdź ścieżkę zawierającą **milsongs-cls-train.csv.gz**i Zastąp całą ścieżkę z **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**.
+7. Znajdź zawierający ścieżkę **milsongs-zgodny ze specyfikacją train.csv.gz**i Zastąp całą ścieżkę z **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**.
 
-8. Znajdź ścieżkę zawierającą **milsongs-cls-test.csv.gz** i zastąpić go ciągiem **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**.
+8. Znajdź zawierający ścieżkę **milsongs-zgodny ze specyfikacją test.csv.gz** i zastąp go wartością **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**.
 
-9. Aby wykonać wszystkie instrukcje w komórkach notesu, wybierz **Uruchom wszystkie** przycisk na pasku narzędzi.
+9. Aby wykonać wszystkie instrukcje w komórkach Notes, wybierz **Uruchom wszystkie** przycisk na pasku narzędzi.
 
-    ![Uruchom wszystkie](./media/hdinsight-apps-install-h2o/run-all.png)
+    ![Uruchom wszystko](./media/hdinsight-apps-install-h2o/run-all.png)
 
-10. Po kilku minutach powinny pojawić się dane wyjściowe podobne do następującego.
+10. Po kilku minutach powinny być widoczne dane wyjściowe podobne do następujących.
 
     ![Dane wyjściowe](./media/hdinsight-apps-install-h2o/output.png)
 
-Gotowe. Już wykorzystana analizy sztuczne w łączniku Spark w ciągu kilku minut. Teraz można eksplorować więcej przykładów w H2O przepływ, które wykazują różnego rodzaju algorytmów uczenia maszynowego.
+Gotowe. Zostały zaprzęgnięte sztucznej inteligencji na platformie Spark w ciągu kilku minut. Teraz możesz eksplorować więcej przykładów w H2O przepływu, które pokazują różne typy algorytmów uczenia maszynowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Dokumentacja H2O](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html)
-* [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć aplikację usługi HDInsight nieopublikowane do usługi HDInsight.
+* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
 * [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
 * [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
-* [Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje przy użyciu akcji skryptu.
-* [Użyj węzłami pusty krawędzi w usłudze HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak uzyskać dostęp do klastrów usługi HDInsight i do badania i obsługiwania aplikacji usługi HDInsight za pomocą węzła krawędzi puste.
+* [Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): Dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
+* [Używanie pustych węzłów brzegowych w HDInsight](hdinsight-apps-use-edge-node.md): Dowiedz się, jak użyć pustego węzła krawędzi do uzyskiwania dostępu do klastrów HDInsight, a także do testowania i obsługi aplikacji HDInsight.

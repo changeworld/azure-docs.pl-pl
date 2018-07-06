@@ -12,18 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: feb4332f8f6b5ab26067b5c80a376cdee62c7739
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0886c220dfe926c7dfd9fa378ebb3c13fc900cbf
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984990"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860041"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs za pomocą programu .NET Framework
-
-## <a name="introduction"></a>Wprowadzenie
 
 Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT).
 
@@ -31,7 +29,7 @@ W tym samouczku pokazano, jak utworzyć centrum zdarzeń za pomocą witryny [Azu
 
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* [Program Microsoft Visual Studio w wersji 2015 lub nowszej](http://visualstudio.com). Na zrzutach ekranów przedstawionych w tym samouczku używany jest program Visual Studio 2017.
+* [Microsoft Visual Studio 2017 lub nowszego](http://visualstudio.com).
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
@@ -40,7 +38,7 @@ Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azur
 
 ## <a name="create-a-sender-console-application"></a>Tworzenie aplikacji konsolowej nadawcy
 
-W tej sekcji służy do pisania aplikacji konsoli systemu Windows, która wysyła zdarzenia do Centrum zdarzeń.
+W tej sekcji służy do pisania aplikacji konsoli Windows, która wysyła zdarzenia do Centrum zdarzeń.
 
 1. W programie Visual Studio utwórz nowy projekt aplikacji klasycznej Visual C# za pomocą szablonu projektu **Aplikacja konsoli**. Nazwij projekt **Nadawca**.
    
@@ -60,8 +58,8 @@ W tej sekcji służy do pisania aplikacji konsoli systemu Windows, która wysył
 5. Dodaj następujące pola do klasy **Program**, zastępując symbole zastępcze nazwą centrum zdarzeń utworzonego w poprzedniej sekcji oraz zapisanymi wcześniej parametrami połączenia na poziomie przestrzeni nazw.
    
   ```csharp
-  static string eventHubName = "{Event Hub name}";
-  static string connectionString = "{send connection string}";
+  static string eventHubName = "Your Event Hub name";
+  static string connectionString = "namespace connection string";
   ```
 6. Dodaj następującą metodę do klasy **Program**:
    
@@ -103,6 +101,7 @@ W tej sekcji służy do pisania aplikacji konsoli systemu Windows, która wysył
 Gratulacje! Wysłano komunikaty do centrum zdarzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Teraz, gdy masz utworzoną działającą aplikację, która tworzy centrum zdarzeń i wysyła dane, możesz przejść do następujących scenariuszy:
 
 * [Odbieranie zdarzeń za pomocą hosta procesora zdarzeń](event-hubs-dotnet-framework-getstarted-receive-eph.md)
