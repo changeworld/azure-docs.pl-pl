@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — usługi IIS | Microsoft
 description: Przykładowy skrypt programu Azure PowerShell — usługi IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 95cf4a958548227253ec8d1440c1ec007f55c846
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 657114463ffea0456e26ae133c6dd6882b6a29d0
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653981"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095720"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Tworzenie maszyny wirtualnej usług IIS przy użyciu programu PowerShell
 
@@ -35,7 +35,7 @@ Ten skrypt umożliwia utworzenie maszyny wirtualnej platformy Azure z systemem W
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-iis/create-windows-vm-iis.ps1 "Create VM IIS")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 

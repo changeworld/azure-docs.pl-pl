@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: dc362306e20b4d39aa73a552e47cbcbd3037edbd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 434b73d4625f86fab195dbda1fed9c841791f5b6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063395"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099463"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure
 Informacje zawarte w tym artykule ułatwiają korzystanie z funkcji monitorowania w usłudze Azure Security Center w celu monitorowania zgodności z zasadami.
@@ -84,7 +84,7 @@ Informacje w tej tabeli (dotyczące maszyn wirtualnych i podsieci) zostały poso
 * Kolor pomarańczowy: średni priorytet, konieczne jest możliwie szybkie rozwiązanie problemu
 * Kolor zielony (ostatni): stan prawidłowy
 
-W tym widoku topologii pierwszy poziom obejmuje pozycje [sieci wirtualne](../virtual-network/virtual-networks-overview.md), [bramy sieci wirtualnej](/vpn-gateway/vpn-gateway-site-to-site-create.md) i [sieci wirtualne (klasyczne)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). Drugi poziom obejmuje podsieci, natomiast trzeci poziom przedstawia maszyny wirtualne, które należą do tych podsieci. Prawa kolumna przedstawia bieżący stan sieciowej grupy zabezpieczeń dla tych zasobów, jak pokazano w poniższym przykładzie:
+W tym widoku topologii pierwszy poziom obejmuje pozycje [sieci wirtualne](../virtual-network/virtual-networks-overview.md), [bramy sieci wirtualnej](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) i [sieci wirtualne (klasyczne)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Drugi poziom obejmuje podsieci, natomiast trzeci poziom przedstawia maszyny wirtualne, które należą do tych podsieci. Prawa kolumna przedstawia bieżący stan sieciowej grupy zabezpieczeń dla tych zasobów, jak pokazano w poniższym przykładzie:
 
 ![Stan grupy zabezpieczeń sieci w sekcji Topologia sieci](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 

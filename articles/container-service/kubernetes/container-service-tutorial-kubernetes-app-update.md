@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f54179329b521cc861e90f023ff0b010b7ce1f75
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 81f2302df5740b482f03a4a724d2899734579949
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164966"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096863"
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualizowanie aplikacji w usłudze Kubernetes
 
@@ -100,7 +100,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>Wdrażanie zaktualizowanej aplikacji
 
-Aby zapewnić maksymalny czas działania, należy uruchomić wiele wystąpień zasobnika aplikacji. Sprawdź tę konfigurację przy użyciu polecenia [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+Aby zapewnić maksymalny czas działania, należy uruchomić wiele wystąpień zasobnika aplikacji. Sprawdź tę konfigurację przy użyciu polecenia [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
 ```bash
 kubectl get pod
@@ -123,13 +123,13 @@ Jeśli obraz azure-vote-front nie został uruchomiony w wielu zasobnikach, skalu
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Aby zaktualizować aplikację, użyj polecenia [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set). Zaktualizuj element `<acrLoginServer>` przy użyciu nazwy serwera logowania lub nazwy hosta rejestru kontenerów.
+Aby zaktualizować aplikację, użyj polecenia [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set). Zaktualizuj element `<acrLoginServer>` przy użyciu nazwy serwera logowania lub nazwy hosta rejestru kontenerów.
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Aby monitorować wdrożenie, użyj polecenia [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get). Podczas wdrażania aplikacji działanie zasobników jest przerywane, a następnie są one ponownie tworzone przy użyciu obrazu kontenera.
+Aby monitorować wdrożenie, użyj polecenia [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get). Podczas wdrażania aplikacji działanie zasobników jest przerywane, a następnie są one ponownie tworzone przy użyciu obrazu kontenera.
 
 ```azurecli-interactive
 kubectl get pod

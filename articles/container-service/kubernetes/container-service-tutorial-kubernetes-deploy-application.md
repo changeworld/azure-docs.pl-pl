@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f8f626143e74d65fa9d4e37e1e2bfda37501f102
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fd4a9407bd46963037b0f7078cfe257d841627
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162776"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100266"
 ---
 # <a name="run-applications-in-kubernetes"></a>Uruchamianie aplikacji w usłudze Kubernetes
 
@@ -67,7 +67,7 @@ Zapisz i zamknij plik.
 
 ## <a name="deploy-application"></a>Wdrażanie aplikacji
 
-Użyj polecenia [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create), aby uruchomić aplikację. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
+Użyj polecenia [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create), aby uruchomić aplikację. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
 
 ```azurecli-interactive
 kubectl create -f azure-vote-all-in-one-redis.yml

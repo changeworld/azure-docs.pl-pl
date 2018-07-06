@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 05/22/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, 23113853-34f2-4f
-ms.openlocfilehash: d815bf3fa4b63f12ac9f0d871e353e872a5aca25
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c5d09e03eb79d89604cba6d9533051bb9b50ce90
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699975"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084845"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
@@ -95,5 +95,4 @@ Aby opublikować projekt, musisz mieć aplikację funkcji w swojej subskrypcji p
 W programie Visual Studio utworzono i opublikowano aplikację funkcji C# z prostą funkcją wyzwalaną przez protokół HTTP.
 
 * [Dowiedz się, jak dodać powiązania danych wejściowych i wyjściowych, które integrują się z innymi usługami.](functions-develop-vs.md#add-bindings)
-* [Dowiedz się więcej na temat lokalnego testowania i debugowania przy użyciu podstawowych narzędzi usługi Azure Functions.](functions-run-local.md#vs-debug)
 * [Dowiedz się więcej o programowaniu funkcji jako bibliotek klas .NET](functions-dotnet-class-library.md).

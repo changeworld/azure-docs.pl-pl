@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — platforma Docker | Micr
 description: Przykładowy skrypt programu Azure PowerShell — platforma Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 87b87734ebf2eaa266447cab0083c24399844f55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cfa42180d0cc25b3ee4da3f79b51775e8e62db81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653396"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096666"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Tworzenie hosta platformy Docker przy użyciu programu PowerShell
 
-Ten skrypt tworzy maszynę wirtualną z włączoną platformą Docker i uruchamia kontener z serwerem NGINX. Po uruchomieniu skryptu można uzyskać dostęp do serwera internetowego NGINX za pomocą nazwy FQDN maszyny wirtualnej platformy Azure. 
+Ten skrypt tworzy maszynę wirtualną z włączoną platformą Docker i uruchamia kontener z serwerem NGINX. Po uruchomieniu skryptu można uzyskać dostęp do serwera internetowego NGINX za pomocą nazwy FQDN maszyny wirtualnej platformy Azure.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -35,7 +35,7 @@ Ten skrypt tworzy maszynę wirtualną z włączoną platformą Docker i uruchami
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6b63c10a8c092d6568f8caf9842f007a5dc9c027
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0e0d22b3363b00c81be5091fd12773f9e486c09e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049166"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099189"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Szybki start: wdrażanie pierwszego modułu usługi IoT Edge na urządzeniu z systemem Linux x64
 
@@ -134,8 +134,9 @@ Demon zabezpieczeń jest instalowany jako usługa systemowa, aby środowisko uru
 6. Wyświetl moduły uruchomione na urządzeniu: 
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+Po wylogowaniu i zalogowaniu elementu *sudo* nie trzeba używać w powyższym poleceniu.
 
    ![Wyświetlanie jednego modułu na urządzeniu](./media/quickstart-linux/iotedge-list-1.png)
 
@@ -154,16 +155,19 @@ W tym przewodniku Szybki start utworzono nowe urządzenie usługi IoT Edge i zai
 Otwórz ponownie wiersz polecenia na komputerze z uruchomionym urządzeniem symulowanym. Upewnij się, że moduł wdrożony z chmury jest uruchomiony na urządzeniu usługi IoT Edge:
 
    ```bash
-   iotedge list
+   sudo iotedge list
    ```
+Po wylogowaniu i zalogowaniu elementu *sudo* nie trzeba używać w powyższym poleceniu.
 
    ![Wyświetlanie trzech modułów na urządzeniu](./media/quickstart-linux/iotedge-list-2.png)
 
 Wyświetl komunikaty wysyłane z modułu tempSensor:
 
-   ```bash
-   iotedge logs tempSensor -f 
+  ```bash
+   sudo iotedge logs tempSensor -f 
    ```
+
+Po wylogowaniu i zalogowaniu elementu *sudo* nie trzeba używać w powyższym poleceniu.
 
 ![Wyświetlanie danych z modułu](./media/quickstart-linux/iotedge-logs.png)
 
