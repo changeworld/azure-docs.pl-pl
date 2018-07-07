@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i wdrażanie obrazu klasyfikacji modelu przy użyciu usługi Azure Machine Learning pakietu dla komputera wizji.
-description: Informacje o sposobie tworzenia, uczenia, testowania i wdrażania modelu klasyfikacji obrazu wizji komputera przy użyciu pakietu Learning Azure maszyny do widzenia komputera.
+title: Kompiluj i wdrażaj model klasyfikacji obrazów za pomocą usługi Azure Machine Learning pakietu dla przetwarzania obrazów.
+description: Informacje o sposobie tworzenia, uczenia, testowania i wdrażania modelu przetwarzania obrazów obraz klasyfikacji przy użyciu pakietu Learning maszyny platformy Azure do przetwarzania obrazów.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,68 +9,62 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 2c988f8651d0ae9a8662b502ca2ba2dbabb2defe
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116055"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888436"
 ---
-# <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji obrazu przy użyciu usługi Azure Machine Learning
+# <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
-W tym artykule, Dowiedz się, jak używać **Azure maszyny Learning pakiet dla komputera wizji** (AMLPCV) do uczenia, testowania i wdrażania modelu klasyfikacji obrazu. 
+Ten artykuł zawiera informacje o sposobie użycia **Azure Machine Learning pakiet dla przetwarzania obrazów** (AMLPCV) do uczenia, testowanie i wdrażanie modeli klasyfikacji obrazów. 
 
-Wiele problemów w domenie wizji komputera będzie możliwe za pomocą funkcji klasyfikacji obrazu. Te problemy obejmują budowania modeli, które odpowiedzi na pytania takie jak:
-+ _OBIEKT znajduje się w obrazu? Na przykład "kot", "samochód", "Wyślij" i tak dalej_
-+ _Jakie klasy ważności choroby oczu jest evinced przez ten pacjenta retinal skanowania?_
+Dużą liczbę problemów w domenie przetwarzania komputera można rozwiązać za pomocą funkcji klasyfikacji obrazów. Te problemy obejmują budowania modeli, które odpowiadają pytania, takie jak:
++ _OBIEKT jest obecny w obrazie? Na przykład "dog", "samochód", "Publikuj" i tak dalej_
++ _Jakie klasy oka choroby ważności jest evinced przez skanowanie retinal to pacjenta?_
 
-Podczas tworzenia i wdrażania tego modelu z AMLPCV, można przejść przez następujące kroki:
+Podczas kompilowania i wdrażania tego modelu przy użyciu AMLPCV, możesz przejść przez następujące kroki:
 1. Tworzenie zestawu danych
 2. Obraz wizualizacji i adnotacji
-3. Rozszerzeniu obrazu
-4. Definicja modelu sieci Neuronowej głębokość (DNN)
+3. Rozszerzenie obrazu
+4. Definicja modelu sieci Neuronowej (DNN)
 5. Klasyfikator szkolenia
 6. Ocena i wizualizacji
 7. Wdrażanie usługi sieci Web
-8. Usługa sieci Web testów obciążenia
+8. Usługi testowania obciążenia w sieci Web
 
-[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) służy jako platforma głębokie learning szkolenia jest wykonywana lokalnie na maszynie GPU zasilane takich jak ([głębokie uczenia wirtualna nauki danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i instalacja używa interfejsu wiersza polecenia Azure ML Operationalization.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) służy jako platforma do uczenia głębokiego szkolenia jest wykonywana lokalnie na maszynie GPU oparte takie jak ([głębokiego uczenia maszyna wirtualna do nauki o danych](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), i wdrożenie używa interfejsu wiersza polecenia platformy Azure ML Operacjonalizacji.
 
-Zapoznaj się [pakietu dokumentacji](https://aka.ms/aml-packages/vision) szczegółowe odwołania dla każdego modułu i klasy.
+Zapoznaj się z [pakietu dokumentację referencyjną](https://aka.ms/aml-packages/vision) uzyskać szczegółową dokumentację dla każdego modułu i klasy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Następujące konta i aplikacji musi skonfigurować i zainstalować:
+1. Następujące konta i aplikacji, musisz skonfigurować i zainstalować:
    - Konto Eksperymentowanie w usłudze Azure Machine Learning 
-   - Konto Azure Machine Learning Model zarządzania
+   - Konto Zarządzanie modelami w usłudze Azure Machine Learning
    - Zainstalowana aplikacja Azure Machine Learning Workbench
 
-   Jeśli te trzy nie zostały jeszcze utworzony lub zainstalowany, należy wykonać [Szybki Start Azure Machine Learning i Workbench instalacji](../service/quickstart-installation.md) artykułu. 
+   Jeśli te trzy nie zostały jeszcze utworzone lub zainstalowany, postępuj zgodnie z [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../service/quickstart-installation.md) artykułu. 
 
-1. Musi być zainstalowany pakiet Azure maszyny Learning wizji komputera. Dowiedz się, jak [zainstalować ten pakiet w tym miejscu](https://aka.ms/aml-packages/vision).
+1. Musi być zainstalowany pakiet Learning maszyny platformy Azure do przetwarzania obrazów. Dowiedz się, jak [zainstalować ten pakiet w tym miejscu](https://aka.ms/aml-packages/vision).
 
 ## <a name="sample-data-and-notebook"></a>Przykładowe dane i notesu
 
-### <a name="get-the-jupyter-notebook"></a>Pobierz notesu Jupyter
+### <a name="get-the-jupyter-notebook"></a>Pobieranie notesu programu Jupyter
 
-Pobieranie Notes, aby uruchomić przykładowy opisu samodzielnie.
+Pobieranie notesu do uruchomienia przykładu opisane w tym miejscu samodzielnie.
 
 > [!div class="nextstepaction"]
-> [Pobierz notesu Jupyter](https://aka.ms/aml-packages/vision/notebooks/image_classification)
+> [Pobieranie notesu programu Jupyter](https://aka.ms/aml-packages/vision/notebooks/image_classification)
 
 ### <a name="load-the-sample-data"></a>Ładowanie danych przykładowych
 
-W poniższym przykładzie użyto składające się z 63 obrazy zastawy stołowe zestawu danych. Obraz jest oznaczone jako należące do jednej z czterech różnych klas (kręgle Pucharze, sztućce, płytkę). Liczba obrazów w tym przykładzie jest mały, aby szybko mogą być wykonywane w tym przykładzie. W praktyce należy podać co najmniej 100 obrazów na klasy. Wszystkie obrazy znajdują się w folderze *"... /sample_data/imgs_recycling / "* w podkatalogach o nazwie"bowl","Pucharze","sztućce"i"tablicy".
+W poniższym przykładzie użyto zestawu danych składające się z 63 zastawy stołowe obrazów. Każdy obraz jest oznaczony jako należący do jednej z czterech różnych klas (bowl cup, sztućce, płytkę). Liczba obrazów, w tym przykładzie jest mały, aby w tym przykładzie, które mogą być wykonywane szybko. W praktyce należy podać co najmniej 100 obrazów na klasy. Wszystkie obrazy znajdują się w folderze *"... /sample_data/imgs_recycling / "* w podkatalogach o nazwie"bowl","cup","sztućce"i"tablicy".
 
-![Azure Machine Learning zestawu danych.](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
-
-## <a name="storage-context"></a>Kontekst magazynu
-
-Kontekst magazynu służy do określenia, gdzie będą przechowywane różne pliki wyjściowe, takich jak obrazy zwiększonej lub DNN plików modelu. Aby uzyskać więcej informacji na kontekstów magazynu, zobacz [dokumentacji StorageContext](https://review.docs.microsoft.com/en-us/python/api/cvtk.core.context.storagecontext?view=azure-python&branch=smoke-test). 
-
-Zwykle zawartość magazynu nie trzeba ustawić jawnie. Jednak aby uniknąć jego limit 25 MB rozmiar projektu powodowanego przez Azure Machine Learning Workbench, ustawić dane wyjściowe katalogu Azure pakietu Learning maszyny do widzenia komputera do lokalizacji poza projektu usługi Azure Machine Learning ("... /.. /.. /.. / cvtk_output "). Pamiętaj usunąć katalogu "cvtk_output", gdy nie jest już potrzebne.
+![Zestaw danych usługi Azure Machine Learning](media/how-to-build-deploy-image-classification-models/recycling_examples.jpg)
 
 
 ```python
@@ -84,49 +78,39 @@ from sklearn import svm
 from cvtk import ClassificationDataset, CNTKTLModel, Context, Splitter, StorageContext
 from cvtk.augmentation import augment_dataset
 from cvtk.core.classifier import ScikitClassifier
-from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix, basic_plot
+from cvtk.evaluation import ClassificationEvaluation, graph_roc_curve, graph_pr_curve, graph_confusion_matrix
 import matplotlib.pyplot as plt
+
+from classification.notebook.ui_utils.ui_annotation import AnnotationUI
+from classification.notebook.ui_utils.ui_results_viewer import ResultsUI
+from classification.notebook.ui_utils.ui_precision_recall import PrecisionRecallUI
+
 %matplotlib inline
 
 # Disable printing of logging messages
 from azuremltkbase.logging import ToolkitLogger
 ToolkitLogger.getInstance().setEnabled(False)
-
-# Set storage context.
-out_root_path = "../../../cvtk_output"
-Context.create(outputs_path=out_root_path, persistent_path=out_root_path, temp_path=out_root_path)
 ```
-
-
-
-
-    {
-        "storage": {
-            "outputs_path": "../../../cvtk_output",
-            "persistent_path": "../../../cvtk_output",
-            "temp_path": "../../../cvtk_output"
-        }
-    }
 
 
 
 ## <a name="create-a-dataset"></a>Tworzenie zestawu danych
 
-Po zaimportowane zależności i Ustaw kontekst magazynu można utworzyć obiektu dataset.
+Po zaimportowaniu zależności i ustawić kontekst magazynu można utworzyć obiektu dataset.
 
-Do utworzenia tego obiektu z usługi Azure Machine Learning pakietu dla komputera wizji, podaj katalog główny obrazów na dysku lokalnym. Ten katalog musi wykonaj tej samej struktury ogólne jako zastawy stołowe zestawu danych, czyli, zawierają podkatalogów z rzeczywistych obrazów:
-- główny
+Aby utworzyć ten obiekt za pomocą usługi Azure Machine Learning pakietu dla przetwarzania obrazów, podaj katalog główny obrazów na dysku lokalnym. Ten katalog musi postępuj zgodnie z tej samej struktury ogólne jako zestaw zastawy stołowe, to znaczy, zawierają podkatalogów z rzeczywistych obrazów:
+- Główny
     - Etykieta 1
     - Etykieta 2
     - Przyciski ...
-    - n etykiety
+    - Etykieta n
   
-Uczenie modelu klasyfikacji obrazu dla innego zestawu danych jest tak proste, jak zmienić ścieżkę katalogu głównego `dataset_location` poniższy kod, aby wskazywały na różnych obrazów.
+Szkolenie modeli klasyfikacji obrazów inny zestaw danych jest równie proste jak zmiana ścieżki katalogu głównego `dataset_location` w poniższym kodzie, aby wskazywała na różnych obrazów.
 
 
 ```python
-# Root image directory 
-dataset_location = os.path.abspath(os.path.join(os.getcwd(), "../sample_data/imgs_recycling"))
+# Root image directory
+dataset_location = os.path.abspath("classification/sample_data/imgs_recycling")
 
 dataset_name = 'recycling'
 dataset = ClassificationDataset.create_from_dir(dataset_name, dataset_location)
@@ -140,13 +124,13 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
     Dataset consists of 63 images with 4 labels.
     Select information for image 2: name=msft-plastic-bowl20170725152154282.jpg, label=bowl, unique id=3.
 
-Obiekt dataset udostępnia funkcję pobierania obrazów za pomocą [interfejsu API Bing obraz wyszukiwania](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/). 
+Obiektu dataset oferuje funkcje, aby pobrać obrazy za pomocą [interfejsu API wyszukiwania obrazów Bing](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/). 
 
 Obsługiwane są dwa typy zapytań wyszukiwania: 
 + Zwykły tekst zapytania
 + Zapytania o adres URL obrazu
 
-Należy podać te zapytania oraz etykiety klasy w pliku tekstowym zakodowane w formacie JSON. Na przykład:
+Te zapytania wraz z etykiety klasy musi być podana w pliku tekstowym zakodowane w formacie JSON. Na przykład:
 
 ```json
 {
@@ -171,31 +155,30 @@ Należy podać te zapytania oraz etykiety klasy w pliku tekstowym zakodowane w f
 }
 ```
 
-Ponadto należy jawnie Utwórz obiekt kontekstu zawiera klucz interfejsu API Bing obraz wyszukiwania. Wymaga to subskrypcji interfejsu API Bing obraz wyszukiwania.
+Ponadto należy jawnie utworzyć obiekt kontekstu ma zawierać klucz API wyszukiwania obrazów Bing. Wymaga to subskrypcji interfejsu API wyszukiwania obrazów Bing.
 
-## <a name="visualize-and-annotate-images"></a>Wizualizuj i adnotacje obrazów
+## <a name="visualize-and-annotate-images"></a>Wizualizuj i dodawanie adnotacji do obrazów
 
-Można zwizualizować obrazów i poprawne etykiety w obiekcie dataset za pomocą następującego elementu widget. 
+Można wizualizować obrazów i prawidłowe etykiety w obiektu dataset za pomocą następujących elementu widget. 
 
-Jeśli wystąpi błąd "Nie wykryto Javascript widżet", uruchom to polecenie w celu jego rozwiązania:
+Jeśli napotkasz błąd "Nie wykryto Javascript widżet", uruchom to polecenie, aby rozwiązać problem:
 <br>`jupyter nbextension enable --py --sys-prefix widgetsnbextension`
 
 
 ```python
-from ui_utils.ui_annotation import AnnotationUI
 annotation_ui = AnnotationUI(dataset, Context.get_global_context())
 display(annotation_ui.ui)
 ```
 
-![Azure Machine Learning zestawu danych.](media/how-to-build-deploy-image-classification-models/image_annotation.png)
+![Zestaw danych usługi Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_annotation.png)
 
-## <a name="augment-images"></a>Rozszerzyć obrazów
+## <a name="augment-images"></a>Rozszerzaj obrazów
 
-[ `augmentation` Modułu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) udostępnia funkcje, aby rozszerzyć obiektu dataset za pomocą wszystkie przekształcenia opisanego w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia obrazu można grupować w pojedynczy potok, w tym przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
+[ `augmentation` Modułu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) zapewnia funkcje rozszerzyć obiekt dataset za pomocą wszystkie przekształcenia, które są opisane w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia do obrazu mogą być grupowane w jeden potok, w którym to przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
 
-Jeśli chcesz zastosować różne rozszerzeniu kroki oddzielnie lub w inny sposób, można zdefiniować wiele potoki i przekazać je do *augment_dataset* funkcji. Aby uzyskać dodatkowe informacje i przykłady rozszerzeniu obrazu, zobacz [dokumentacji imgaug](https://github.com/aleju/imgaug).
+Jeśli chcesz zastosować kroki różnych rozszerzeniu oddzielnie lub w jakikolwiek inny sposób, można zdefiniować wiele potoków i przekazywać je do *augment_dataset* funkcji. Aby uzyskać więcej informacji i przykładów rozszerzeniu obrazu, zobacz [dokumentacji imgaug](https://github.com/aleju/imgaug).
 
-Dodawanie obrazów zwiększonej do zestawu szkoleniowego jest szczególnie przydatne w przypadku małych zestawów danych. Ponieważ proces szkolenia DNN jest wolniejszy ze względu na zwiększenie liczby obrazów szkolenia, zaleca się rozpocząć eksperymenty bez rozszerzeniu.
+Dodawanie obrazów rozszerzone na zestaw szkoleniowy jest szczególnie korzystne w przypadku małych zestawów danych. Ponieważ DNN szkolenia proces jest wolniejszy z powodu zwiększonej liczby uczone obrazy, zaleca się że uruchomieniu eksperymentowanie bez rozszerzeniu.
 
 
 ```python
@@ -225,20 +208,20 @@ else:
     train_set = train_set_orig  
 ```
 
-## <a name="define-dnn-models"></a>Zdefiniuj DNN modeli
+## <a name="define-dnn-models"></a>Zdefiniuj modeli DNN
 
-Obsługiwane są następujące modele głębokie sieci neuronowe pretrained z tym pakietem: 
-+ Resnet 18
-+ Resnet 34
-+ Resnet 50
-+ Resnet 101
-+ Resnet 152
+Następujące modele Deep sieci neuronowych pretrained są obsługiwane przez ten pakiet: 
++ Siecią Resnet-18
++ 34 siecią Resnet
++ Siecią Resnet-50
++ Siecią Resnet-101
++ Siecią Resnet-152
 
-Te DNNs może służyć jako klasyfikatora, albo featurizer. 
+Te sieci może służyć jako Klasyfikator lub jako featurized. 
 
-Więcej informacji na temat sieci można znaleźć [tutaj](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md), i jest podstawowe wprowadzenie do uczenia transferu [tutaj](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0).
+Więcej informacji na temat sieci można znaleźć [tutaj](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md), i wstęp do transferu Learning [tutaj](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0).
 
-Parametry klasyfikacji obrazu domyślnego dla tego pakietu są rozdzielczości pikseli 224 x 224 i DNN Resnet 18. Te parametry zostały wybrane do pracy oraz w różnych zadań. Dokładność często można zwiększyć, na przykład przez zwiększenie rozdzielczość obrazu do 500 x 500 pikseli i/lub wybierając bardziej modelu (Resnet 50). Jednak zmiana parametrów są dostępne w znaczący wzrost czasu szkolenia. Zapoznaj się z artykułem na [jak zwiększyć dokładność](https://docs.microsoft.com/azure/machine-learning/service/how-to-improve-accuracy-for-computer-vision-models).
+Domyślne parametry klasyfikacji obrazów dla tego pakietu są 224 x 224 rozdzielczości pikseli i DNN siecią Resnet-18. Te parametry zostały wybrane do pracy na wiele różnych zadań. Dokładność często można zwiększyć, na przykład przez zwiększenie rozdzielczość obrazu do 500 x 500 pikseli i/lub wybierając bardziej modelu (siecią Resnet-50). Jednak zmiana parametrów może pojawić się na znaczny wzrost w czasie szkolenia. Zobacz artykuł [sposób w celu zwiększenia dokładności](https://docs.microsoft.com/azure/machine-learning/service/how-to-improve-accuracy-for-computer-vision-models).
 
 
 ```python
@@ -266,16 +249,16 @@ dnn_model = CNTKTLModel(train_set.labels,
 
 ## <a name="train-the-classifier"></a>Szkolenie klasyfikatora
 
-Możesz wybrać jedną z następujących metod DNN wstępnie przeszkolone.
+Dla wstępnie przeszkolonych DNN, można wybrać jedną z następujących metod.
 
-  - **Uszczegółowienie DNN**, który przygotowuje DNN do przeprowadzania klasyfikacji bezpośrednio. Podczas szkolenia DNN przebiega powoli, zwykle prowadzi do uzyskania najlepszych wyników ponieważ wagi wszystkich sieci można zwiększyć podczas uczenia, aby zapewnić najlepszą dokładności.
+  - **DNN refinement**, który przygotowuje DNN do przeprowadzania klasyfikacji bezpośrednio. Podczas szkolenia DNN przebiega powoli, zwykle prowadzi do najlepsze wyniki, ponieważ wszystkie wagi sieci można zwiększyć podczas szkolenia, aby zapewnić najlepszą dokładnością.
 
-  - **DNN featurization**, które uruchamia DNN jako — jest uzyskanie wymiarów dolna reprezentację obrazu (512, 2048 lub 4096 pojawia się). Czy reprezentacja jest następnie używany jako dane wejściowe w celu przeszkolenia oddzielne klasyfikatora. Ponieważ DNN pozostaje niezmieniony, takie podejście jest znacznie szybciej porównywana Uszczegółowienie DNN jednak dokładność nie jest w dobrej. Niemniej jednak szkolenia zewnętrznych klasyfikatora, takich jak liniowej SVM (jak pokazano w poniższym kodzie) można podać silne linii bazowej i ułatwić zrozumienie możliwości problem.
+  - **Cechowania DNN**, który uruchamia DNN jako — jest uzyskanie małych wymiarowej reprezentacja obrazu (512 i 2048, 4096 liczby zmiennoprzecinkowe). Tę reprezentację jest następnie używany jako dane wejściowe to w opracowywaniu oddzielne klasyfikatora. Ponieważ DNN pozostaje bez zmian, to podejście jest dużo szybciej niż DNN uściślenia, jednak dokładność nie jest dobrze. Niemniej jednak szkolenia zewnętrznych klasyfikatora, takich jak liniowej SVM (jak pokazano w poniższym kodzie) można zapewnia silne linii bazowej i ułatwić zrozumienie możliwości problem.
   
-TensorBoard umożliwia wizualizowanie postępu szkolenia. Aby aktywować TensorBoard:
+Narzędzia TensorBoard można wizualizować postępy szkolenia. Aby aktywować TensorBoard:
 1. Dodaj parametr `tensorboard_logdir=PATH` jak pokazano w poniższym kodzie
-1. Uruchom klienta TensorBoard za pomocą polecenia `tensorboard --logdir=PATH` w nowej konsoli.
-1. Otwórz przeglądarkę sieci web, zgodnie z zaleceniami TensorBoard, która domyślnie wynosi localhost:6006. 
+1. Uruchom klienta TensorBoard, za pomocą polecenia `tensorboard --logdir=PATH` w nowej konsoli.
+1. Otwórz przeglądarkę internetową, zgodnie z zaleceniami TensorBoard, która domyślnie wynosi localhost:6006. 
 
 
 ```python
@@ -356,14 +339,14 @@ if classifier_name == "dnn":
 ![PNG](media/how-to-build-deploy-image-classification-models/output_17_0.png)
 
 
-## <a name="evaluate-and-visualize-model-performance"></a>Oceń i wizualizacji modelu wydajności
+## <a name="evaluate-and-visualize-model-performance"></a>Oceń i wizualizacji wydajności modelu
 
-Można ocenić wydajność uczonego modelu w zestawie danych niezależnych badań, za pomocą modułu oceny. Metryki oceny, który oblicza należą:
+Możesz ocenić wydajność uczonego modelu dla zestawu danych niezależnie od testów przy użyciu modułu oceny. Oto niektóre z jego zadaniem jest obliczanie metryki oceny:
  
-+ Dokładność (domyślnie w średnio klasy)
-+ Oczyść krzywej
-+ Krzywą ROC
-+ Obszar w obszarze krzywej
++ Dokładność (domyślnie średniej klasy)
++ Krzywa żądania Ściągnięcia
++ Krzywa ROC
++ Powierzchni pod krzywą
 + Macierz pomyłek
 
 
@@ -407,12 +390,11 @@ labels = [l.name for l in dataset.labels]
 pred_scores = ce.scores #classification scores for all images and all classes
 pred_labels = [labels[i] for i in np.argmax(pred_scores, axis=1)]
 
-from ui_utils.ui_results_viewer import ResultsUI
 results_ui = ResultsUI(test_set, Context.get_global_context(), pred_scores, pred_labels)
 display(results_ui.ui)
 ```
 
-![Azure Machine Learning zestawu danych.](media/how-to-build-deploy-image-classification-models/Image_Classification_Results.png)
+![Zestaw danych usługi Azure Machine Learning](media/how-to-build-deploy-image-classification-models/Image_Classification_Results.png)
 
 
 ```python
@@ -420,38 +402,37 @@ display(results_ui.ui)
 precisions, recalls, thresholds = ce.compute_precision_recall_curve() 
 thresholds = list(thresholds)
 thresholds.append(thresholds[-1])
-from ui_utils.ui_precision_recall import PrecisionRecallUI
 pr_ui = PrecisionRecallUI(100*precisions[::-1], 100*recalls[::-1], thresholds[::-1])
 display(pr_ui.ui) 
 ```
 
-![Azure Machine Learning zestawu danych.](media/how-to-build-deploy-image-classification-models/image_precision_curve.png)
+![Zestaw danych usługi Azure Machine Learning](media/how-to-build-deploy-image-classification-models/image_precision_curve.png)
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: Wdrażanie i korzystanie
+## <a name="operationalization-deploy-and-consume"></a>Operacjonalizacja: Wdrażanie i korzystanie
 
-Operationalization jest proces publikowania modeli i kodu jako usługi sieci web i korzystania z tych usług w celu uzyskania wyników biznesowych. 
+Operacjonalizacja jest proces publikowania modeli i kodu jako usługi sieci web i użycia tych usług w celu uzyskania wyników biznesowych. 
 
-Po przygotowaniu modelu można wdrożyć ten model jako usługę sieci web do użycia przy użyciu [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Modeli można wdrożyć do komputera lokalnego lub klastra usługi kontenera platformy Azure (ACS). Korzystając z usług ACS, można ręcznie skalować usługi sieci web lub za pomocą funkcji skalowania automatycznego.
+Gdy model jest uczony, można wdrożyć modelu jako usługi sieci web do użycia przy użyciu [interfejsu wiersza polecenia usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning). Można wdrożyć swoje modele do komputera lokalnego lub klastra Azure Container Service (ACS). Korzystających z usługi ACS, można ręcznie skalować usługę sieci web lub użyć funkcji skalowania automatycznego.
 
-**Zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure**
+**Zaloguj się przy użyciu wiersza polecenia platformy Azure**
 
-Przy użyciu [Azure](https://azure.microsoft.com/) konto z prawidłową subskrypcją, zaloguj się za pomocą interfejsu wiersza polecenia następujące polecenie:
+Za pomocą [Azure](https://azure.microsoft.com/) konto z prawidłową subskrypcją, zaloguj się przy użyciu następującego polecenia interfejsu wiersza polecenia:
 <br>`az login`
 
 + Aby przełączyć się do innej subskrypcji platformy Azure, użyj polecenia:
 <br>`az account set --subscription [your subscription name]`
 
-+ Aby wyświetlić bieżące konto zarządzania modelu, użyj polecenia:
++ Aby wyświetlić bieżące konto zarządzania modelami, użyj polecenia:
   <br>`az ml account modelmanagement show`
 
-**Tworzenie i ustawianie środowiska wdrażania klastra**
+**Utwórz i Ustaw środowisko wdrażania klastra**
 
-Należy ustawić środowiska wdrażania na raz. Jeśli nie masz jeszcze, konfigurowanie środowiska wdrażania za pomocą [tych instrukcji](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
+Należy ustawić środowiska wdrażania na raz. Jeśli nie masz jeszcze, służą do konfigurowania środowiska wdrażania za pomocą [w instrukcjach](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
 
-Aby wyświetlić środowiska active wdrażania, użyj następującego polecenia interfejsu wiersza polecenia:
+Aby wyświetlić środowiska aktywne wdrożenie, użyj następującego polecenia interfejsu wiersza polecenia:
 <br>`az ml env show`
    
-Przykład polecenia wiersza polecenia platformy Azure do utworzenia i ustawienia środowiska wdrażania
+Przykładowe polecenie wiersza polecenia platformy Azure, aby utworzyć i ustawić środowisko wdrażania
 
 ```CLI
 az provider register -n Microsoft.MachineLearningCompute
@@ -464,23 +445,23 @@ az ml env cluster
     
 ### <a name="manage-web-services-and-deployments"></a>Zarządzanie usługami sieci web i wdrożenia
 
-Następujące interfejsy API umożliwia wdrażanie modeli jako usługi sieci web, zarządzanie tych usług sieci web i zarządzanie wdrożeniami.
+Następujące funkcje interfejsu API może służyć do wdrażania modeli jako usług sieci web, zarządzać tymi usługami sieci web i zarządzanie wdrożeniami.
 
 |Zadanie|Interfejs API|
 |----|----|
 |Tworzenie obiektu wdrożenia|`deploy_obj = AMLDeployment(deployment_name=deployment_name, associated_DNNModel=dnn_model, aml_env="cluster")`
 |Wdrażanie usługi sieci web|`deploy_obj.deploy()`|
-|Wynik obrazu|`deploy_obj.score_image(local_image_path_or_image_url)`|
+|Obraz oceny|`deploy_obj.score_image(local_image_path_or_image_url)`|
 |Usuń usługę sieci web|`deploy_obj.delete()`|
-|Utwórz obraz docker bez usługi sieci web|`deploy_obj.build_docker_image()`|
+|Zbuduj obraz docker bez usługi sieci web|`deploy_obj.build_docker_image()`|
 |Lista istniejącego wdrożenia|`AMLDeployment.list_deployment()`|
-|Usunięcie usługi istnieje z nazwą wdrożenia|`AMLDeployment.delete_if_service_exist(deployment_name)`|
+|Usuń, jeśli istnieje usługa o nazwie wdrożenia|`AMLDeployment.delete_if_service_exist(deployment_name)`|
 
-**Dokumentacja interfejsu API:** zapoznaj się [pakietu dokumentacji](https://aka.ms/aml-packages/vision) szczegółowe odwołania dla każdego modułu i klasy.
+**Dokumentacja interfejsu API:** zapoznaj się z [pakietu dokumentację referencyjną](https://aka.ms/aml-packages/vision) uzyskać szczegółową dokumentację dla każdego modułu i klasy.
 
-**Odwołanie do interfejsu wiersza polecenia:** bardziej zaawansowane operacje związane z wdrożeniem, można znaleźć w publikacji [model zarządzania odwołanie interfejsu wiersza polecenia](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
+**Dokumentacja interfejsu wiersza polecenia:** bardziej zaawansowane operacje związane z wdrożeniem, można znaleźć [dokumentacja interfejsu wiersza polecenia zarządzania modelami](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/model-management-cli-reference).
 
-**Zarządzanie wdrażaniem w portalu Azure**: można śledzić i zarządzanie wdrożeniami w [portalu Azure](https://ms.portal.azure.com/). W portalu Azure Znajdź stronę konto Machine Learning Model zarządzania za pomocą jego nazwy. Następnie przejdź do strony konta Model zarządzania > Model zarządzania > usługi.
+**Zarządzanie wdrażaniem w witrynie Azure portal**: mogą śledzić i zarządzanie wdrożeniami w [witryny Azure portal](https://ms.portal.azure.com/). W witrynie Azure portal należy znaleźć strony swojego konta Zarządzanie modelami usługi Machine Learning przy użyciu jego nazwy. Następnie przejdź do strony konto zarządzania modelami > Zarządzanie modelami w usłudze > usługi.
 
 
 ```python
@@ -537,15 +518,15 @@ print("Deployment DONE")
 
 ### <a name="consume-the-web-service"></a>Korzystanie z usługi sieci web 
 
-Po wdrożeniu modelu jako usługę sieci web, możesz wynik obrazów z usługą sieci web przy użyciu jednej z następujących metod:
+Po wdrożeniu modelu w postaci usługi sieci web użytkownik otrzymuje obrazów z usługą sieci web, przy użyciu jednej z następujących metod:
 
-- Wynik usługę sieci web bezpośrednio z przy użyciu obiektu wdrożenia `deploy_obj.score_image(image_path_or_url)`
+- Ocena usługi sieci web bezpośrednio z przy użyciu obiektu wdrożenia `deploy_obj.score_image(image_path_or_url)`
 
-- Za pomocą punktu końcowego adresu URL i usługi klucza usługi (Brak w przypadku lokalnego wdrożenia): `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
+- Za pomocą usługi klucza punktu końcowego adresu URL i usługi (Brak w przypadku lokalnego wdrożenia): `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
 
-- Formularz żądania HTTP bezpośrednio do wynik końcowy usługi sieci web. Ta opcja jest dla użytkowników zaawansowanych.
+- Formularz Twoich żądań HTTP bezpośrednio na wynik końcowy usługi sieci web. Ta opcja jest dla użytkowników zaawansowanych.
 
-### <a name="score-with-existing-deployment-object"></a>Wynik z istniejącego obiektu wdrożenia
+### <a name="score-with-existing-deployment-object"></a>Ocena z istniejącego obiektu wdrożenia
 
 ```
 deploy_obj.score_image(image_path_or_url)
@@ -591,7 +572,7 @@ for img_index, img_obj in enumerate(test_set.images[:10]):
     print(return_json)
 ```
 
-### <a name="score-with-service-endpoint-url-and-service-key"></a>Wynik z adresu url punktu końcowego usługi i klucz usługi
+### <a name="score-with-service-endpoint-url-and-service-key"></a>Ocena za pomocą adresu url punktu końcowego usługi i klucz usługi
 
 `AMLDeployment.score_existing_service_with_image(image_path_or_url, service_endpoint_url, service_key=None)`
 
@@ -614,9 +595,9 @@ serialized_result_in_json = AMLDeployment.score_existing_service_with_image(imag
 print("serialized_result_in_json:", serialized_result_in_json)
 ```
 
-### <a name="score-endpoint-with-http-request-directly"></a>Wynik końcowy z bezpośrednio żądania http
+### <a name="score-endpoint-with-http-request-directly"></a>Ocena bezpośrednio punkt końcowy z żądania http
 
-Poniższy przykładowy kod tworzy żądanie HTTP bezpośrednio w języku Python. Jednak możesz zrobić to w innych językach programowania.
+Poniższy przykład kodu tworzy żądanie HTTP, bezpośrednio w języku Python. Jednakże możesz zrobić to w innych językach programowania.
 
 
 ```python
@@ -667,9 +648,9 @@ images = [test_set.images[0].storage_path, test_set.images[1].storage_path] # A 
 score_image_list_with_http(images, service_endpoint_url, service_key)
 ```
 
-### <a name="parse-serialized-result-from-web-service"></a>Wynik analizy serializowany z usługi sieci web
+### <a name="parse-serialized-result-from-web-service"></a>Wynik analizy serializacji z usługi sieci web
 
-Dane wyjściowe z usługą sieci web jest ciągu JSON. Ten ciąg JSON z różnych klas modelu DNN można analizować.
+Dane wyjściowe z usługą sieci web jest ciąg JSON. Ten ciąg JSON z różnymi klasami modelu DNN można przeanalizować.
 
 
 ```python
@@ -695,12 +676,12 @@ print("Class label:", dnn_model.class_map[class_index])
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o Azure Machine Learning pakietu wizji komputerze w następujących artykułach:
+Dowiedz się więcej na temat usługi Azure Machine Learning pakietu dla przetwarzania obrazów w następujących artykułach:
 
-+ Dowiedz się, jak [poprawić ten model](how-to-improve-accuracy-for-computer-vision-models.md).
++ Dowiedz się, jak [poprawić dokładność ten model](how-to-improve-accuracy-for-computer-vision-models.md).
 
-+ Odczyt [pakietu Przegląd i Dowiedz się, jak zainstalować ją](https://aka.ms/aml-packages/vision).
++ Odczyt [pakietów — Przegląd i Dowiedz się, jak je zainstalować](https://aka.ms/aml-packages/vision).
 
-+ Eksploruj [odwołania dokumentacji](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) dla tego pakietu.
++ Zapoznaj się z [dokumentację referencyjną](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision) dla tego pakietu.
 
 + Dowiedz się więcej o [inne pakiety języka Python dla usługi Azure Machine Learning](reference-python-package-overview.md).

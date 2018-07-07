@@ -1,6 +1,6 @@
 ---
-title: Rozmiar maszyny Wirtualnej systemu Windows Azure - poprzedniej generacji | Dokumentacja firmy Microsoft
-description: Wyświetla listę poprzednich generacji dostępne dla maszyn wirtualnych systemu Windows Azure. Wyświetla informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych platformy Azure Windows — poprzednie generacje | Dokumentacja firmy Microsoft
+description: Wyświetla listę poprzednie generacje dostępnych rozmiarów maszyn wirtualnych Windows na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 834f3e5e58f9beb06edf9234ce05ce915e759ad6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f0397acaa39ca91280285d9bd5135b0f0d3cf7c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660965"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902564"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacje rozmiarów maszyn wirtualnych
 
@@ -30,7 +30,7 @@ ms.locfileid: "34660965"
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="other-sizes"></a>Innych rozmiarach
+## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](sizes-memory.md)
@@ -40,5 +40,5 @@ ms.locfileid: "34660965"
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat [jednostki (ACU) rozwiązań usługi obliczenia Azure](acu.md) ułatwia porównanie wydajności obliczeniowej różnych jednostki SKU Azure.
+Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
 

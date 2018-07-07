@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować MSI w VMSS Azure przy użyciu programu PowerShell
-description: Krok po kroku instrukcje dotyczące konfigurowania systemu i użytkownika przypisane tożsamości na VMSS Azure przy użyciu programu PowerShell.
+title: Jak skonfigurować MSI na platformie Azure zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
+description: Krok po kroku instrukcje dotyczące konfigurowania systemu i użytkownika tożsamości przypisanych przez na platformie Azure zestawu skalowania maszyn wirtualnych, przy użyciu programu PowerShell.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,52 +9,52 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 42fabb9a2ad05dbd6a449f3f9e6a729917750165
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 61fa6c94c0d717fe1e71bf8929f2e3b4a0982562
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700012"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903883"
 ---
-# <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Skonfiguruj VMSS zarządzane usługi tożsamości (MSI) przy użyciu programu PowerShell
+# <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurowanie zestawu skalowania maszyn wirtualnych tożsamość usługi zarządzanej (MSI) przy użyciu programu PowerShell
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Tożsamość usługi zarządzanej zapewnia usług platformy Azure przy użyciu tożsamości automatycznie zarządzane w usłudze Azure Active Directory. Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, bez konieczności poświadczeń w kodzie. 
+Tożsamość usługi zarządzanej udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
-W tym artykule Dowiedz się jak wykonywać operacje zarządzania tożsamości usługi na maszynie wirtualnej skali Ustaw (VMSS), za pomocą programu PowerShell:
-- Włączanie i wyłączanie tożsamość na VMSS Azure przypisanego przez system
-- Dodawanie i usuwanie użytkownika przypisanego tożsamość na VMSS Azure
+W tym artykule dowiesz się, jak wykonywać operacje tożsamości usługi zarządzanej na maszynę wirtualną skalowania Ustaw (zestawu skalowania maszyn wirtualnych), przy użyciu programu PowerShell:
+- Włączanie i wyłączanie systemu przypisane tożsamość zestawu skalowania maszyn wirtualnych platformy Azure
+- Dodawanie i usuwanie użytkownik, któremu przypisano tożsamość zestawu skalowania maszyn wirtualnych platformy Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli znasz zarządzane tożsamość usługi, zapoznaj się [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między systemu przypisane i przypisać tożsamość użytkownika](overview.md#how-does-it-work)**.
+- Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
-- Zainstaluj [najnowszą wersję programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) Jeśli jeszcze. 
+- Zainstaluj [najnowszą wersję programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) Jeśli jeszcze go. 
 
-## <a name="system-assigned-managed-identity"></a>Przypisana tożsamości zarządzanych przez system
+## <a name="system-assigned-managed-identity"></a>Zarządzanych tożsamości przypisanej przez system
 
-W tej sekcji dowiesz sposobu włączania i usuwanie tożsamości systemu przypisane, przy użyciu programu Azure PowerShell.
+W tej sekcji dowiesz się, jak włączyć i usuwanie tożsamości przypisanej w systemie, przy użyciu programu Azure PowerShell.
 
-### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-vmss"></a>Włącz system przypisane tożsamości podczas tworzenia VMSS Azure
+### <a name="enable-system-assigned-identity-during-the-creation-of-an-azure-vmss"></a>Włącz system tożsamości przypisanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
 
-Aby utworzyć VMSS o tożsamości systemu przypisane włączone:
+Do utworzenia zestawu skalowania maszyn wirtualnych przy użyciu tożsamości przypisanej w systemie włączony:
 
-1. Zapoznaj się *przykład 1* w [AzureRmVmssConfig nowy](/powershell/module/azurerm.compute/new-azurermvmssconfig) artykule odwołanie do polecenia cmdlet, aby utworzyć VMSS o tożsamości systemu przypisane.  Dodaj parametr `-IdentityType SystemAssigned` do `New-AzureRmVmssConfig` polecenia cmdlet:
+1. Zapoznaj się *przykład 1* w [polecenia New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) artykuł dokumentacji polecenia cmdlet do tworzenia zestawu skalowania maszyn wirtualnych przy użyciu tożsamości przypisanej w systemie.  Dodaj parametr `-IdentityType SystemAssigned` do `New-AzureRmVmssConfig` polecenia cmdlet:
 
     ```powershell
     $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
 
-2. (Opcjonalnie) Dodaj przy użyciu rozszerzenia MSI VMSS `-Name` i `-Type` parametru [AzureRmVmssExtension Dodaj](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny wirtualnej i nadaj mu nazwę o `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth token nabycia:
+2. (Opcjonalnie) Dodaj przy użyciu rozszerzenia MSI zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
 
     > [!NOTE]
-    > Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów.
+    > Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.
 
    ```powershell
    $setting = @{ "port" = 50342 }
@@ -62,24 +62,24 @@ Aby utworzyć VMSS o tożsamości systemu przypisane włączone:
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-## <a name="enable-system-assigned-identity-on-an-existing-azure-vmss"></a>Włącz system przypisane tożsamość na istniejących VMSS Azure
+## <a name="enable-system-assigned-identity-on-an-existing-azure-vmss"></a>Włącz system przypisane tożsamość istniejącego zestawu skalowania maszyn wirtualnych platformy Azure
 
-Jeśli musisz włączyć tożsamość systemu przypisane na istniejących VMSS Azure:
+Jeśli musisz włączyć tożsamości przypisanej w systemie, na istniejącego zestawu skalowania maszyn wirtualnych platformy Azure:
 
-1. Zaloguj się do platformy Azure przy użyciu `Login-AzureRmAccount`. Użyj konta, które jest skojarzone z subskrypcją platformy Azure, który zawiera maszyny Wirtualnej. Upewnij się, Twoje konto należy do roli, która umożliwia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautora maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
 
    ```powershell
    Login-AzureRmAccount
    ```
 
-2. Najpierw pobrać za pomocą właściwości VMSS [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) polecenia cmdlet. Następnie tożsamości systemu przypisane Użyj, aby włączyć `-IdentityType` Włącz [AzureRmVM aktualizacji](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet:
+2. Najpierw pobierz właściwości zestawu skalowania maszyn wirtualnych przy użyciu [ `Get-AzureRmVmss` ](/powershell/module/azurerm.compute/get-azurermvmss) polecenia cmdlet. Następnie można włączyć tożsamości przypisanej w systemie, należy użyć `-IdentityType` Włącz [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet:
 
    ```powershell
    $vm = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVM
    Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name -myVM -IdentityType "SystemAssigned"
    ```
 
-3. Dodaj przy użyciu rozszerzenia MSI VMSS `-Name` i `-Type` parametru [AzureRmVmssExtension Dodaj](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny wirtualnej i nadaj mu nazwę o `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth token nabycia:
+3. Dodaj przy użyciu rozszerzenia MSI zestawu skalowania maszyn wirtualnych `-Name` i `-Type` parametru [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) polecenia cmdlet. Można przekazać elementu "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny Wirtualnej i nadaj mu za pomocą `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth dla tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }
@@ -87,14 +87,14 @@ Jeśli musisz włączyć tożsamość systemu przypisane na istniejących VMSS A
    Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 
-### <a name="disable-the-system-assigned-identity-from-an-azure-vmss"></a>Wyłącz system przypisany tożsamości z VMSS Azure
+### <a name="disable-the-system-assigned-identity-from-an-azure-vmss"></a>Wyłącz system tożsamości przypisanej z zestawu skalowania maszyn wirtualnych platformy Azure
 
 > [!NOTE]
-> Wyłączanie zarządzane tożsamość usługi z zestawu skalowania maszyn wirtualnych nie jest obecnie obsługiwane. Tymczasem można przełączać się między przypisane systemu i przypisane tożsamości użytkowników.
+> Wyłączanie tożsamości usługi zarządzanej z zestawu skalowania maszyn wirtualnych nie jest obecnie obsługiwane. W międzyczasie można przełączać się między przypisana przez System i tożsamości przypisanych użytkowników.
 
-Jeśli masz zestawu skalowania maszyn wirtualnych nie będzie już potrzebował systemu przypisane tożsamości, ale nadal należy przypisać tożsamości użytkownika, należy użyć następującego polecenia cmdlet:
+W przypadku zestawu skalowania maszyn wirtualnych nie potrzebuje już systemu tożsamości przypisanej, ale nadal wymaga tożsamości przypisanych przez użytkownika, należy użyć następującego polecenia cmdlet:
 
-1. Zaloguj się do platformy Azure przy użyciu `Login-AzureRmAccount`. Użyj konta, które jest skojarzone z subskrypcją platformy Azure, który zawiera maszyny Wirtualnej. Upewnij się, Twoje konto należy do roli, która umożliwia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautora maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Login-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
 
 2. Uruchom następujące polecenie cmdlet:
 
@@ -102,25 +102,25 @@ Jeśli masz zestawu skalowania maszyn wirtualnych nie będzie już potrzebował 
     Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"
     ```
 
-## <a name="user-assigned-identity"></a>Użytkownik, któremu przypisano tożsamości
+## <a name="user-assigned-identity"></a>Tożsamości przypisanych przez użytkownika
 
-W tej sekcji możesz dowiedzieć się, jak dodać i usunąć użytkownika przypisanego tożsamości z VMSS, przy użyciu programu Azure PowerShell.
+W tej sekcji dowiesz się, jak dodać i usunąć użytkownika z tożsamości przypisanej z zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell.
 
-### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Przypisać użytkownicy przypisani tożsamości podczas tworzenia VMSS Azure
+### <a name="assign-a-user-assigned-identity-during-creation-of-an-azure-vmss"></a>Przypisywanie użytkownika tożsamości przypisanej podczas tworzenia zestawu skalowania maszyn wirtualnych platformy Azure
 
-Tworzenie nowego VMSS z przypisane tożsamości użytkownika nie jest obecnie obsługiwany za pośrednictwem programu PowerShell. Jak dodać tożsamość użytkownika z przypisanym do istniejących VMSS, zobacz następną sekcję. Sprawdzanie dostępności aktualizacji.
+Tworzenie nowego zestawu skalowania maszyn wirtualnych przy użyciu tożsamości przypisanych przez użytkownika nie jest obecnie obsługiwane za pośrednictwem programu PowerShell. Zobacz następną sekcję na temat dodawania tożsamości przypisanych przez użytkownika do istniejącego zestawu skalowania maszyn wirtualnych. Sprawdź aktualizacje.
 
-### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Przypisz tożsamości użytkownika do istniejącego VMSS Azure
+### <a name="assign-a-user-identity-to-an-existing-azure-vmss"></a>Przypisz tożsamość użytkownika do istniejącego zestawu skalowania maszyn wirtualnych platformy Azure
 
-Aby przypisać użytkownika do istniejącego VMSS Azure przypisuje tożsamości:
+Aby przypisać użytkownika tożsamości przypisanej do istniejącego zestawu skalowania maszyn wirtualnych platformy Azure:
 
-1. Zaloguj się do platformy Azure przy użyciu `Connect-AzureRmAccount`. Użyj konta, które jest skojarzone z subskrypcją platformy Azure, który zawiera maszyny Wirtualnej. Upewnij się, Twoje konto należy do roli, która umożliwia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautora maszyny wirtualnej":
+1. Zaloguj się do platformy Azure za pomocą `Connect-AzureRmAccount`. Użyj konta, który jest skojarzony z subskrypcją platformy Azure, który zawiera maszynę Wirtualną. Upewnij się, Twoje konto należy do roli, który zapewnia również uprawnienia do zapisu na maszynie Wirtualnej, takie jak "Współautor maszyny wirtualnej":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Najpierw pobrać właściwości maszyny Wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać tożsamość użytkownika z przypisanym do Azure VMSS, użyj `-IdentityType` i `-IdentityID` Włącz [AzureRmVM aktualizacji](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet. Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` z własne wartości.
+2. Najpierw pobrać właściwości maszyny Wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet. Następnie można przypisać tożsamości przypisanych przez użytkownika do zestawu skalowania maszyn wirtualnych platformy Azure, należy użyć `-IdentityType` i `-IdentityID` Włącz [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet. Zastąp `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` własnymi wartościami.
 
    [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -130,12 +130,12 @@ Aby przypisać użytkownika do istniejącego VMSS Azure przypisuje tożsamości:
    Update-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -VM $vmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED ID1>","<USER ASSIGNED ID2>"
    ```
 
-### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Usuń użytkownika przypisanego tożsamości z VMSS Azure
+### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Usuń użytkownika z tożsamości przypisanej z zestawu skalowania maszyn wirtualnych platformy Azure
 
 > [!NOTE]
-> Usuwanie wszystkich tożsamości przypisane przez użytkownika z zestawu skalowania maszyn wirtualnych obecnie nie jest obsługiwane, chyba że masz przypisane tożsamości systemu. Sprawdzanie dostępności aktualizacji.
+> Usuwanie wszystkich tożsamości przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych aktualnie nie jest obsługiwana, chyba że używany jest system tożsamości przypisanej. Sprawdź aktualizacje.
 
-Jeśli Twoje VMSS ma wiele tożsamości przypisane przez użytkownika, można usunąć wszystkie oprócz ostatnią za pomocą następujących poleceń. Pamiętaj zastąpić `<RESOURCE GROUP>` i `<VMSS NAME>` wartości parametrów z własne wartości. `<MSI NAME>` Jest tożsamość użytkownika z przypisanym nazwę właściwości, która może pozostawać na VMSS. Te informacje można znaleźć przez w sekcji tożsamości za pomocą VMSS `az vmss show`:
+Jeśli Twojego zestawu skalowania maszyn wirtualnych ma wiele tożsamości przypisanych przez użytkownika, możesz usunąć wszystkie oprócz ostatni z nich przy użyciu następujących poleceń. Koniecznie Zastąp `<RESOURCE GROUP>` i `<VMSS NAME>` wartości parametrów własnymi wartościami. `<MSI NAME>` Jest tożsamości przypisanych przez użytkownika nazwa właściwości, która powinna pozostać na zestawu skalowania maszyn wirtualnych. Te informacje można znaleźć w sekcji tożsamości zestawu skalowania maszyn wirtualnych przy użyciu `az vmss show`:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
@@ -143,7 +143,7 @@ $vmss.Identity.IdentityIds = "<MSI NAME>"
 Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachineScaleSet $vmss
 ```
 
-Twoje VMSS ma przypisany systemu i przypisać tożsamości użytkownika, po usunięciu wszystkich użytkowników przypisanych tożsamości przełączając na system tylko przypisane. Użyj następującego polecenia:
+Jeśli Twojego zestawu skalowania maszyn wirtualnych ma przypisanej w systemie i tożsamości przypisanych przez użytkownika, możesz usunąć wszystkich użytkowników tożsamości przypisanych przez przełączenie na system tylko przypisane. Użyj następującego polecenia:
 
 ```powershell
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss
@@ -151,12 +151,12 @@ $vmss.Identity.IdentityIds = $null
 Update-AzureRmVmss -ResourceGroupName myResourceGroup -Name myVmss -VirtualMachine $vmss -IdentityType "SystemAssigned"
 ```
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
-- [Omówienie tożsamość usługi zarządzanej](overview.md)
-- Pełna tworzenia maszyny Wirtualnej platformy Azure — przewodniki szybkiego startu dla:
+- [Omówienie usługi zarządzanej tożsamości usługi](overview.md)
+- Pełne tworzenie maszyny Wirtualnej platformy Azure przewodników Szybki Start zobacz:
   
-  - [Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md) 
+  - [Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md) 
   - [Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell](../../virtual-machines/linux/quick-create-powershell.md) 
 
 

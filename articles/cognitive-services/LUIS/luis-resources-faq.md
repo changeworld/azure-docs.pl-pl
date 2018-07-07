@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: eb8e55b3763c66dd2c8aabe92376bcb1278a0f45
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 291eb9ef7d8d089b443b55ac181e9fdd65fcb413
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346760"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888861"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -183,7 +183,7 @@ Artykuły, które wcześniej znajdowały się w sekcji samouczka teraz znajdują
 |Tworzenie aplikacji usługi LUIS programowo przy użyciu [środowiska Node.js](luis-tutorial-node-import-utterances-csv.md)|
 |Użyj [złożonego jednostki](luis-tutorial-composite-entity.md) można wyodrębnić zgrupowanych danych|
 |Dodaj [listy jednostek](luis-tutorial-list-entity.md) wykrywania zwiększone jednostki przy użyciu środowiska Node.js|
-|Zwiększenia dokładności prognozy przy użyciu [listy fraz](luis-tutorial-interchangeable-phrase-list.md), [wzorców](luis-tutorial-pattern.md), i [testowanie usługi batch](luis-tutorial-batch-testing.md)|
+|Zwiększenia dokładności prognozy przy użyciu [listy fraz](luis-quickstart-primary-and-secondary-data.md), [wzorców](luis-tutorial-pattern.md), i [testowanie usługi batch](luis-tutorial-batch-testing.md)|
 |[Poprawianie pisowni](luis-tutorial-batch-testing.md) przy użyciu interfejsu API sprawdzania pisowni Bing w wersji 7
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferencji Build 2018 słyszałem o funkcji rozpoznawania języka lub pokaz, ale nie pamiętam, co zostało wywołane? 
@@ -213,5 +213,3 @@ Projekty:
 Aby dowiedzieć się więcej na temat usługi LUIS, zobacz następujące zasoby:
 * [Pytania dotyczące przepełnienia stosu oznakowane za pomocą usługi LUIS](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN Language Understanding Intelligent Services (LUIS) Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

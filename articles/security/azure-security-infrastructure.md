@@ -1,6 +1,6 @@
 ---
-title: Bezpieczeństwo infrastruktury platformy Azure | Dokumentacja firmy Microsoft
-description: W artykule opisano, jak Microsoft zapewnia zabezpieczeń naszych centrach danych platformy Azure.
+title: Zabezpieczenie infrastruktury platformy Azure | Dokumentacja firmy Microsoft
+description: W artykule opisano, jak firma Microsoft zapewnia zabezpieczeń naszych centrów danych platformy Azure.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 313fbc0fea317e8888bf64e7f7817ab0e5c9f049
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 397bd1f904b676a6ba020ec78fb1cad05c460be1
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102533"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903860"
 ---
-# <a name="security-of-azure-infrastructure"></a>Bezpieczeństwo infrastruktury platformy Azure
-Microsoft Azure działa w centrach danych zarządzana i obsługiwana przez firmę Microsoft. Te geograficznie centrów danych są zgodne ze standardami branżowymi klucza, takie jak ISO/IEC 27001: 2013 i NIST SP 800-53 dla bezpieczeństwa i niezawodności. Centrach danych są zarządzane, monitorowane i zarządzane przez pracowników firmy Microsoft. Operatorzy ma latach doświadczeń w dostarczaniu usług online największa na świecie z ciągłości 24 x 7.
+# <a name="azure-infrastructure-security"></a>Zabezpieczenie infrastruktury platformy Azure
+Microsoft Azure działa w centrach danych, zarządzana i obsługiwana przez firmę Microsoft. Te geograficznie rozproszone centra danych zgodne z najważniejszymi standardami branżowymi, takie jak ISO/IEC 27001: 2013 i SP NIST 800-53, bezpieczeństwo i niezawodność. Centrach danych są zarządzane, monitorowane i administrowane przez pracowników operacyjnych firmy Microsoft. Operatorzy mają lat doświadczenia w dostarczaniu największych na świecie usług online z 24 x 7 ciągłość działalności biznesowej.
 
 Ta seria artykułów zawiera informacje dotyczące firmy Microsoft jest zapewnienie infrastruktury platformy Azure. Adres artykuły:
 
@@ -30,40 +30,40 @@ Ta seria artykułów zawiera informacje dotyczące firmy Microsoft jest zapewnie
 - [Dostępność](azure-infrastructure-availability.md)
 - [Składniki i granice](azure-infrastructure-components.md)
 - [Architektura sieci](azure-infrastructure-network.md)
-- [Środowiska produkcyjnego](azure-production-network.md)
+- [Sieci produkcyjnej](azure-production-network.md)
 - [SQL Database](azure-infrastructure-sql.md)
 - [Operacje](azure-infrastructure-operations.md)
 - [Monitorowanie](azure-infrastructure-monitoring.md)
 - [Integralność](azure-infrastructure-integrity.md)
 - [Ochrona danych](azure-protection-of-customer-data.md)
 
-## <a name="shared-responsibility-model"></a>Model wspólnej odpowiedzialności
-Należy zrozumieć podział obowiązków między Tobą a firmą Microsoft. W infrastrukturze lokalnej, właścicielem cały stos, ale przy przenoszeniu do chmury pewne obowiązki transferu do firmy Microsoft. Następujące macierzy odpowiedzialność przedstawiono obszary stosu w oprogramowania jako usługa (SaaS), platformy jako usługa (PaaS), a infrastruktura jako usługa (IaaS) wdrożenia, który jest odpowiedzialny za i firmy Microsoft jest odpowiedzialny za.
+## <a name="shared-responsibility-model"></a>Wspólna odpowiedzialność modelu
+Należy zrozumieć podział odpowiedzialności pomiędzy użytkownikiem a firmą Microsoft. W środowisku lokalnym, jesteś właścicielem całego stosu, ale po przeniesieniu do chmury pewne obowiązki przesyłanie do firmy Microsoft. Następujące macierzy odpowiedzialność przedstawiono obszary stosu w oprogramowaniu jako usługa (SaaS), platforma jako usługa (PaaS) i infrastruktury jako usługi (IaaS) wdrożenia, które odpowiadają za i firmy Microsoft jest odpowiedzialna za.
 
 ![Wspólna odpowiedzialność][1]
 
-Obowiązki, które są zawsze zachowywane przez administratora, niezależnie od tego typu wdrożenia, są następujące:
+Obowiązki, które są zawsze zachowywane przez użytkownika, niezależnie od tego typu wdrożenia, są następujące:
 
 - Dane
 - Punkty końcowe
 - Konto
 - Zarządzanie dostępem
 
-Pamiętaj, że rozumiesz podział obowiązków między Tobą a firmą Microsoft w ramach wdrożenia SaaS, PaaS i IaaS. Zobacz [obowiązki udostępnionych chmury obliczeniowej](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) uzyskać więcej szczegółowych informacji.
+Pamiętaj, że rozumiesz podział odpowiedzialności pomiędzy użytkownikiem a firmą Microsoft w ramach wdrożenia rozwiązania SaaS, PaaS i IaaS. Zobacz [obowiązki udostępnione Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) Aby uzyskać więcej szczegółów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat firmy Microsoft jest zapewnienie infrastruktury platformy Azure, zobacz:
 
-- [Urządzenia platformy Azure, lokalne i zabezpieczenia fizyczne](azure-physical-security.md)
+- [Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne](azure-physical-security.md)
 - [Dostępność infrastruktury platformy Azure](azure-infrastructure-availability.md)
-- [Składniki systemu Azure informacji i granice](azure-infrastructure-components.md)
+- [Usługi Azure information składników systemu i granice](azure-infrastructure-components.md)
 - [Architektura sieci platformy Azure](azure-infrastructure-network.md)
-- [Sieci Azure środowiska produkcyjnego](azure-production-network.md)
-- [Funkcje zabezpieczeń bazy danych SQL Azure firmy Microsoft](azure-infrastructure-sql.md)
-- [Operacje Azure środowiska produkcyjnego i zarządzania](azure-infrastructure-operations.md)
+- [Sieć platformy Azure środowiska produkcyjnego](azure-production-network.md)
+- [Funkcje zabezpieczeń Microsoft Azure SQL Database](azure-infrastructure-sql.md)
+- [Operacje platformy Azure środowiska produkcyjnego i zarządzanie](azure-infrastructure-operations.md)
 - [Monitorowanie infrastruktury platformy Azure](azure-infrastructure-monitoring.md)
 - [Integralność infrastruktury platformy Azure](azure-infrastructure-integrity.md)
-- [Ochrona danych klienta na platformie Azure](azure-protection-of-customer-data.md)
+- [Ochrona danych klientów na platformie Azure](azure-protection-of-customer-data.md)
 
 <!--Image references-->
 [1]: ./media/azure-security-infrastructure/responsibility-zones.png

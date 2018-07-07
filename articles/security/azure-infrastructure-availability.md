@@ -1,6 +1,6 @@
 ---
 title: Dostępność infrastruktury platformy Azure
-description: Artykuł opisuje poziomy nadmiarowość, aby zapewnić maksymalne dostępność danych klientów.
+description: W artykule opisano poziomy nadmiarowości w celu zapewnienia maksymalnej dostępności danych klientów.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,47 +12,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: db13e4835e483b4738074a71861737c4851d8dbc
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 18c6b87c9926b93eec26cca4028a38e472912c46
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102513"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902581"
 ---
-# <a name="availability-of-azure-infrastructure"></a>Dostępność infrastruktury platformy Azure
-Platforma Azure udostępnia niezawodny dostępność w oparciu o szeroką gamę nadmiarowość osiągnięte dzięki technologii wirtualizacji. Platforma Azure oferuje wiele poziomów nadmiarowość, aby zapewnić maksymalne dostępność danych klientów.
+# <a name="azure-infrastructure-availability"></a>Dostępność infrastruktury platformy Azure
+System Azure oferuje niezawodne dostępności oparte na rozbudowane nadmiarowości osiągane przy użyciu technologii wirtualizacji. System Azure oferuje wiele poziomów nadmiarowości w celu zapewnienia maksymalnej dostępności danych klientów.
 
-## <a name="temporary-outages-and-natural-disaster"></a>Tymczasowych przestojów i klęski żywiołowej
-Zespół infrastruktury chmury firmy Microsoft i operacje projektuje, tworzy działa i zabezpiecza infrastruktury chmury. Tego zespołu gwarantuje, że infrastruktura platformy Azure jest zapewnianie wysokiej dostępności i niezawodności, wysokiej wydajności, skalowalności inteligentne i chmury bezpieczną, prywatne i zaufanych.
+## <a name="temporary-outages-and-natural-disaster"></a>Tymczasowe awarii i klęskami żywiołowymi
+Zespół infrastruktury chmury firmy Microsoft i operacje projektuje, tworzy, działa i zabezpiecza infrastruktury chmury. Ten zespół gwarantuje, że infrastruktura platformy Azure jest dostarczanie wysokiej dostępności i niezawodności, wysokiej wydajności, skalowalności inteligentne i bezpieczne, prywatne i zaufanej chmury.
 
-Zasilacze i przeważająca banków baterii zapewnić energii elektrycznej ciągłej w przypadku krótkoterminowej zakłóceń zasilania.
+Zasilacze i szeroki banki baterii zapewnić energii elektrycznej ciągłe sytuacji krótkoterminowej przerw w działaniu usługi power.
 
-Awaryjnych zapewnienia zasilacz dłuższych przestojów i planowanej konserwacji. Centrum danych jest świadczona z rezerw paliwa w siedzibie organizacji, jeśli występuje klęski żywiołowej.
+Awaryjnych Podaj zasilacz dłuższych przestojów i planowanej konserwacji. Centrum danych jest świadczona za pomocą rezerwy we wprowadzaniu na miejscu sytuacji klęskami żywiołowymi.
 
-Szybkie i niezawodne fiber sieci światłowodowe połączenie centrów danych z innych główne centra i użytkowników Internetu. Węzły obliczeniowe bliżej obciążeń hosta dla użytkowników końcowych w celu zmniejszenia opóźnień, zapewniają nadmiarowość geograficzna i zwiększyć ogólne usługi odporności. Zespół inżynierów przez całą dobę działa, aby upewnić się, że usługi są stale dostępne dla klientów.
+Szybkich i niezawodnych fiber światłowodowe sieci łączenia centrów danych z innymi główne centra i użytkowników Internetu. Węzły obliczeniowe bliżej hostować obciążenia przez użytkowników końcowych w celu zmniejszenia opóźnienia zapewnia nadmiarowość geograficzna i zwiększyć ogólną usługi odporności. Zespół inżynierów działa nieustannie upewnij się, że usługi są stale dostępne dla klientów.
 
-Microsoft zapewnia wysoką dostępność za pośrednictwem zaawansowanego monitorowania i odpowiedzi na zdarzenia, obsługi i wykonaj kopię zapasową możliwości trybu failover. Geograficznie rozproszonych centrów operacji firmy Microsoft działają 24/7/365. Sieć platformy Azure jest jednym z największych na świecie. Sieć dystrybucji światłowodowe i zawartości włókien łączy centrów danych i węzłach Edge, aby zapewnić wysoką wydajność i niezawodność.
+Firma Microsoft zapewnia wysoką dostępność, za pomocą zaawansowanego monitorowania i reagowania na zdarzenia, obsługi i Utwórz kopię zapasową możliwości trybu failover. Geograficznie rozproszonych centrów operacji firmy Microsoft działają 24/7/365. Sieć platformy Azure jest jedną z największych na świecie. Sieci dystrybucji światłowodowe i zawartości fiber łączy się z centrami danych i węzłami krawędzi w celu zapewnienia wysokiej wydajności i niezawodności.
 
 ## <a name="disaster-recovery"></a>Odzyskiwanie po awarii
-Azure przechowuje dane klienta trwałe w dwóch lokalizacjach klientowi o możliwości, aby wybrać lokalizację kopii zapasowej lokacji. W obu lokalizacjach Azure obsługuje stale wiele replik dobrej kondycji (3) z danych klienta.
+Azure przechowuje dane klienta trwałe w dwóch lokalizacjach z klientem, mających możliwość wybierz lokalizację kopii zapasowej lokacji. W obu lokalizacjach platformy Azure obsługuje stale wiele replik dobrej kondycji (3) z danych klientów.
 
 ## <a name="database-availability"></a>Dostępność bazy danych
-Azure zapewnia, że baza danych jest dostępna za pośrednictwem bramy internetowej o dostępności bazy danych przez Internet. Monitorowanie ocenia kondycję i stan aktywny baz danych w odstępach czasu 5 minut.
+Platforma Azure zapewnia, że baza danych jest dostępny za pośrednictwem bramy internetowej o dostępności bazy danych przez Internet. Monitorowanie ocenia kondycję i stan aktywnych baz danych w 5-minutowymi interwałami.
 
 ## <a name="storage-availability"></a>Dostępność magazynu
-Azure oferuje magazynu za pośrednictwem usługi wysoce skalowalna i niezawodna magazynu, który zapewnia łączność punktów końcowych, dzięki któremu udostępniane bezpośrednio przez aplikację odbierającą. Za pomocą usługi magazynu przychodzących żądań magazynu będą przetwarzane wydajnie z integralnością transakcyjnych.
+System Azure zapewnia magazynu za pośrednictwem usługi wysoko skalowalnego i trwałego magazynu, która zapewnia łączność punktów końcowych, co pozwala na udostępnienie bezpośrednio przez aplikacja odbierająca komunikaty. Za pomocą usługi storage przychodzących żądań magazynu będą przetwarzane wydajnie z zapewniający integralność transakcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat firmy Microsoft jest zapewnienie infrastruktury platformy Azure, zobacz:
 
-- [Urządzenia platformy Azure, lokalne i zabezpieczenia fizyczne](azure-physical-security.md)
-- [Składniki systemu Azure informacji i granice](azure-infrastructure-components.md)
+- [Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne](azure-physical-security.md)
+- [Usługi Azure information składników systemu i granice](azure-infrastructure-components.md)
 - [Architektura sieci platformy Azure](azure-infrastructure-network.md)
-- [Sieci Azure środowiska produkcyjnego](azure-production-network.md)
-- [Funkcje zabezpieczeń bazy danych SQL Azure firmy Microsoft](azure-infrastructure-sql.md)
-- [Operacje Azure środowiska produkcyjnego i zarządzania](azure-infrastructure-operations.md)
+- [Sieć platformy Azure środowiska produkcyjnego](azure-production-network.md)
+- [Funkcje zabezpieczeń Microsoft Azure SQL Database](azure-infrastructure-sql.md)
+- [Operacje platformy Azure środowiska produkcyjnego i zarządzanie](azure-infrastructure-operations.md)
 - [Monitorowanie infrastruktury platformy Azure](azure-infrastructure-monitoring.md)
 - [Integralność infrastruktury platformy Azure](azure-infrastructure-integrity.md)
-- [Ochrona danych klienta na platformie Azure](azure-protection-of-customer-data.md)
+- [Ochrona danych klientów na platformie Azure](azure-protection-of-customer-data.md)

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3016d1318d031494057f4a8ce61af37576a7c4f2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c7a57ad13bbab66f0c100ed0a5bdb3fb20064806
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346811"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887678"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -92,15 +92,15 @@ Przykładowy punkt końcowy wygląda następująco:
 
 ## <a name="f-measure"></a>Miara F
 
-W [testowania partii][batch-testing], to miara dokładności testu.
+W [testowania partii](interactive-test.md#batch-testing), to miara dokładności testu.
 
 ## <a name="false-negative"></a>Fałszywie ujemnych (TN)
 
-W [testowania partii][batch-testing], punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć braku intencji/jednostkę docelową.
+W [testowania partii](interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć braku intencji/jednostkę docelową.
 
 ## <a name="false-positive"></a>Wynik fałszywie dodatni (TP)
 
-W [testowania partii][batch-testing], punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć istnienie intencji/jednostkę docelową.
+W [testowania partii](interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja niepoprawnie przewidzieć istnienie intencji/jednostkę docelową.
 
 ## <a name="features"></a>Funkcje
 
@@ -138,7 +138,7 @@ A [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) jest apl
 A [wstępnie utworzone jednostki](luis-prebuilt-entities.md) jest jednostką usługi LUIS udostępnia typowe rodzaje informacje, takie jak numer, adres URL i wiadomości e-mail. Istnieje możliwość dodawania wstępnie utworzone jednostki do aplikacji. 
 
 ## <a name="precision"></a>Precyzja
-W [testowania partii][batch-testing], dokładność (nazywane również wartości dodatniej predykcyjnej) jest ułamek odpowiednie wypowiedzi między wypowiedzi pobrane.
+W [testowania partii](interactive-test.md#batch-testing), dokładność (nazywane również wartości dodatniej predykcyjnej) jest ułamek odpowiednie wypowiedzi między wypowiedzi pobrane.
 
 ## <a name="programmatic-key"></a>Klucz programowy
 
@@ -153,7 +153,7 @@ Publikowanie oznacza, dzięki czemu usługa LUIS [aktywnej wersji](#active-versi
 Limit przydziału usługi LUIS jest ograniczenie [warstwy subskrypcji platformy Azure](https://aka.ms/luis-price-tier). Limit przydziału usługi LUIS można ograniczyć, używając zarówno w przypadku żądań na sekundę (429 stanu HTTP) i łączna liczba żądań w ciągu miesiąca (Stan HTTP 403). 
 
 ## <a name="recall"></a>Odwołania
-W [testowania partii][batch-testing], odwołanie (znanego również jako ważność), jest możliwość usługi LUIS w celu uogólnienia. 
+W [testowania partii](interactive-test.md#batch-testing), odwołanie (znanego również jako ważność), jest możliwość usługi LUIS w celu uogólnienia. 
 
 ## <a name="semantic-dictionary"></a>Słownik semantyczne
 Słownik semantycznego znajduje się na stronie listy jednostek, a także na stronie listy fraz. Semantyczne słownik zawiera sugestie słów na podstawie bieżącego zakresu.
@@ -196,11 +196,11 @@ Szkolenie to proces uczenia LUIS o wszelkich zmianach [aktywnej wersji](#active-
 
 ## <a name="true-negative"></a>Ujemna wartość true (TN)
 
-W [testowania partii][batch-testing], punktów danych reprezentują wypowiedzi, w których aplikacja poprawnie przewidzieć braku intencji/jednostkę docelową.
+W [testowania partii](interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja poprawnie przewidzieć braku intencji/jednostkę docelową.
 
 ## <a name="true-positive"></a>Prawdziwie dodatni (TP)
 
-W [testowania partii][batch-testing], punktów danych reprezentują wypowiedzi, w których aplikacja poprawnie przewidzieć istnienie intencji/jednostkę docelową.
+W [testowania partii](interactive-test.md#batch-testing), punktów danych reprezentują wypowiedzi, w których aplikacja poprawnie przewidzieć istnienie intencji/jednostkę docelową.
 
 ## <a name="utterance"></a>Wypowiedź
 
@@ -209,5 +209,3 @@ Wypowiedź to wyrażenie języka naturalnego, takie jak "książki 2 bilety do S
 ## <a name="version"></a>Wersja
 
 Usługa LUIS [wersji](luis-how-to-manage-versions.md) jest modelem określonych danych skojarzonych z identyfikator aplikacji usługi LUIS i opublikowane punktu końcowego. Każda aplikacja usługi LUIS ma co najmniej jedną wersję.
-
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

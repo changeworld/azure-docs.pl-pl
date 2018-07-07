@@ -1,6 +1,6 @@
 ---
-title: Host Ruby w witrynie sieci Web szyny na maszynie Wirtualnej systemu Linux | Dokumentacja firmy Microsoft
-description: Konfigurowanie i udostępniać Ruby na podstawie szyny witryny sieci Web na platformie Azure przy użyciu maszyny wirtualnej systemu Linux.
+title: Hostowanie na architekturze Ruby on Rails witryny sieci Web na maszynie Wirtualnej z systemem Linux | Dokumentacja firmy Microsoft
+description: Konfigurowanie i Hostuj Ruby on Rails witryny sieci Web opartej na platformie Azure za pomocą maszyny wirtualnej systemu Linux.
 services: virtual-machines-linux
 documentationcenter: ruby
 author: rmcmurray
@@ -15,17 +15,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6ea1d249b7f9aec3a45923b162a97ce7f83d0d31
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29397601"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901157"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Aplikacja sieci Web Ruby on Rails na maszynie wirtualnej platformy Azure
-Ten samouczek pokazuje, jak udostępniać Ruby na szyny witryny sieci Web na platformie Azure przy użyciu maszyny wirtualnej systemu Linux.  
+Ten samouczek pokazuje, jak hostować Ruby on Rails witryny sieci Web na platformie Azure za pomocą maszyny wirtualnej systemu Linux.  
 
-W tym samouczku została zweryfikowana przy użyciu Ubuntu Server 14.04 LTS. Jeśli używasz innej dystrybucji systemu Linux, może być konieczne zmodyfikowanie kroki, aby zainstalować szyny.
+W tym samouczku została zweryfikowana za pomocą Ubuntu Server 14.04 LTS. Jeśli używasz różnych dystrybucji systemu Linux, użytkownik może się okazać zmodyfikowanie kroki, aby zainstalować platformy Rails.
 
 > [!IMPORTANT]
 > Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md).  Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
@@ -33,31 +33,31 @@ W tym samouczku została zweryfikowana przy użyciu Ubuntu Server 14.04 LTS. Je�
 >
 
 ## <a name="create-an-azure-vm"></a>Tworzenie maszyny Wirtualnej platformy Azure
-Rozpocznij od utworzenia maszyny Wirtualnej platformy Azure z obrazem systemu Linux.
+Rozpocznij od utworzenia maszyny Wirtualnej platformy Azure przy użyciu obrazu systemu Linux.
 
-Aby utworzyć maszynę Wirtualną, używając portalu Azure lub interfejsu wiersza polecenia platformy Azure (CLI).
+Aby utworzyć maszynę Wirtualną, można użyć witryny Azure portal lub interfejsu wiersza polecenia platformy Azure (CLI).
 
 ### <a name="azure-portal"></a>Azure Portal
-1. Zaloguj się do [portalu Azure](https://portal.azure.com)
-2. Kliknij przycisk **Utwórz zasób**, następnie w polu wyszukiwania wpisz "Ubuntu Server 14.04". Kliknij wpis zwrócony przez wyszukiwanie. Wybierz model wdrażania **klasycznego**, następnie kliknij przycisk "Utwórz".
-3. Podaj wartości dla pól wymaganych w bloku podstawowe służące: Nazwa (VM), nazwę użytkownika, typ uwierzytelniania i odpowiednie poświadczenia subskrypcji platformy Azure, lokalizacji i grupy zasobów.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
+2. Kliknij przycisk **Utwórz zasób**, następnie w polu wyszukiwania wpisz "Ubuntu Server 14.04". Kliknij pozycję zwróconego przez wyszukiwanie. W przypadku modelu wdrażania wybierz **klasycznego**, następnie kliknij przycisk "Utwórz".
+3. W bloku podstawowe należy podać wartości dla wymaganych pól: Nazwa (dla maszyn wirtualnych), nazwę użytkownika, typ uwierzytelniania i odpowiednie poświadczenia subskrypcji platformy Azure, grupę zasobów i lokalizacji.
 
-   ![Utwórz nowy obraz Ubuntu](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
+   ![Utwórz nowy obraz systemu Ubuntu](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
 
-4. Po zainicjowaniu obsługi maszyny Wirtualnej, kliknij nazwę maszyny Wirtualnej i kliknij przycisk **punkty końcowe** w **ustawienia** kategorii. Znaleźć punkt końcowy SSH, kategorii **autonomiczny**.
+4. Po aprowizacji maszyny Wirtualnej kliknij nazwę maszyny Wirtualnej i kliknij przycisk **punktów końcowych** w **ustawienia** kategorii. Punkt końcowy SSH, na liście Znajdź **autonomiczny**.
 
    ![Domyślny punkt końcowy](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-Postępuj zgodnie z instrukcjami [tworzenia maszyny wirtualnej systemem Linux][vm-instructions].
+Postępuj zgodnie z instrukcjami w [tworzenie maszyny wirtualnej Linux uruchomiony][vm-instructions].
 
-Po zainicjowaniu obsługi maszyny Wirtualnej, można uzyskać punkt końcowy SSH, uruchamiając następujące polecenie:
+Po aprowizacji maszyny Wirtualnej można uzyskać punkt końcowy SSH, uruchamiając następujące polecenie:
 
     azure vm endpoint list <vm-name>  
 
-## <a name="install-ruby-on-rails"></a>Zainstaluj na szyny Ruby
-1. Używanie protokołu SSH, aby nawiązać połączenie z maszyną Wirtualną.
-2. W sesji SSH Aby zainstalować Ruby na maszynie Wirtualnej należy użyć następujących poleceń:
+## <a name="install-ruby-on-rails"></a>Zainstaluj oprogramowanie Ruby on Rails
+1. Łączenie z maszyną wirtualną za pomocą protokołu SSH.
+2. W sesji SSH Użyj następujących poleceń do zainstalowania języka Ruby na maszynie Wirtualnej:
 
         sudo apt-get update -y
         sudo apt-get upgrade -y
@@ -69,25 +69,25 @@ Po zainicjowaniu obsługi maszyny Wirtualnej, można uzyskać punkt końcowy SSH
         > [!TIP]
         > The brightbox repository contains the current Ruby distribution.
 
-    Instalacja może zająć kilka minut. Po ukończeniu, użyj następującego polecenia, aby sprawdzić, czy zainstalowano Ruby:
+    Instalacja może zająć kilka minut. Po ukończeniu, użyj następującego polecenia, aby sprawdzić, czy zainstalowano język Ruby:
 
         ruby -v
 
-3. Aby zainstalować szyny, użyj następującego polecenia:
+3. Aby zainstalować platformy Rails, użyj następującego polecenia:
 
         sudo gem install rails --no-rdoc --no-ri -V
 
-    Użyj nie rdoc i--nie ri flagi pomijania instalowanie dokumentacji, co jest szybsze.
-    To polecenie będzie prawdopodobnie zająć dużo czasu do wykonania, więc Dodawanie -V zostaną wyświetlone informacje o postępie instalacji.
+    Użycie flagi rdoc nie i — wystąpienia zarezerwowanego nie, aby pominąć instalację w dokumentacji, które jest szybsze.
+    To polecenie będzie prawdopodobnie długo trwać do wykonania, więc Dodawanie -V spowoduje wyświetlenie informacji o postępie instalacji.
 
 ## <a name="create-and-run-an-app"></a>Tworzenie i uruchamianie aplikacji
-Jest nadal zalogowany za pośrednictwem protokołu SSH, uruchom następujące polecenia:
+Wylogowując za pośrednictwem protokołu SSH, uruchom następujące polecenia:
 
     rails new myapp
     cd myapp
     rails server -b 0.0.0.0 -p 3000
 
-[Nowe](http://guides.rubyonrails.org/command_line.html#rails-new) polecenie tworzy nową aplikację szyny. [Serwera](http://guides.rubyonrails.org/command_line.html#rails-server) polecenie uruchamia serwer sieci web WEBrick dołączony do szyny. (Do użytku produkcyjnego będzie prawdopodobnie chcesz użyć innego serwera, takie jak Unicorn lub pasażerów.)
+[Nowe](http://guides.rubyonrails.org/command_line.html#rails-new) polecenie tworzy nową aplikację platformy Rails. [Serwera](http://guides.rubyonrails.org/command_line.html#rails-server) polecenie uruchamia serwer sieci web WEBrick, które dołączono szyny. (Do użycia w środowisku produkcyjnym prawdopodobnie chcesz użyć innego serwera, takie jak Unicorn lub pasażera.)
 
 Powinny pojawić się dane wyjściowe podobne do następujących:
 
@@ -100,44 +100,44 @@ Powinny pojawić się dane wyjściowe podobne do następujących:
     [2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
 
 ## <a name="add-an-endpoint"></a>Dodawanie punktu końcowego
-1. Przejdź do [Azure portal] [https://portal.azure.com] i wybierz maszyny Wirtualnej.
+1. Przejdź do witryny Azure portal] [https://portal.azure.com] i wybierz maszynę Wirtualną.
 
-2. Wybierz **punkty końcowe** w **ustawienia** wzdłuż lewej krawędzi strony.
+2. Wybierz **punktów końcowych** w **ustawienia** wzdłuż lewej krawędzi strony.
 
-3. Kliknij przycisk **dodać** w górnej części strony.
+3. Kliknij przycisk **Dodaj** w górnej części strony.
 
-4. W **dodać punkt końcowy** okna dialogowego wprowadź następujące informacje:
+4. W **Dodaj punkt końcowy** okna dialogowego strony, wprowadź następujące informacje:
 
    * **Nazwa**: HTTP
    * **Protokół**: TCP
    * **Port publiczny**: 80
    * **Port prywatny**: 3000
-   * **Pływającego adresu PI**: wyłączone
+   * **Zmiennoprzecinkowe adres PI**: wyłączone
    * **Listy kontroli dostępu — kolejność**: 1001 lub inną wartość, która ustawia priorytet tej reguły dostępu.
    * **Listy kontroli dostępu — nazwa**: allowHTTP
-   * **Listy kontroli dostępu — Akcja**: Zezwalaj
-   * **Listy kontroli dostępu - podsieci zdalnej**: 1.0.0.0/16
+   * **Listy kontroli dostępu — Akcja**: zezwolenie na
+   * **Listy kontroli dostępu — podsieci zdalnej**: 1.0.0.0/16
 
-     Ten punkt końcowy ma publiczny port 80, które będzie kierować ruch do port prywatny 3000, gdzie serwer szyny nasłuchuje. Reguły listy kontroli dostępu zezwala na publiczny ruch na porcie 80.
+     Ten punkt końcowy ma publiczny port 80, który będzie kierować ruch do portu prywatnego 3000, której nasłuchuje serwer platformy Rails. Reguły listy kontroli dostępu zezwala na publicznych ruch na porcie 80.
 
      ![new-endpoint](./media/virtual-machines-linux-classic-ruby-rails-web-app/createendpoint.png)
 
 5. Kliknij przycisk OK, aby zapisać punktu końcowego.
 
-6. Komunikat powinien zostać wyświetlony stwierdzający **zapisywanie punktu końcowego maszyny wirtualnej**. Gdy ten komunikat nie zniknie, punkt końcowy jest aktywna. Może teraz przetestować aplikację, przechodząc do nazwę DNS maszyny wirtualnej. Witryna sieci Web powinna wyglądać podobnie do następującego:
+6. Komunikat powinien pojawić się informacją, że **zapisywanie punktu końcowego maszyny wirtualnej**. Gdy ta wiadomość zniknie, punkt końcowy jest aktywny. Teraz może przetestować aplikację, przechodząc na nazwę DNS maszyny wirtualnej. Witryna sieci Web powinny wyglądać podobnie do następującego:
 
-    ![Domyślna strona szyny][default-rails-cloud]
+    ![Domyślna strona platformy rails][default-rails-cloud]
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku jak większość czynności ręcznie. W środowisku produkcyjnym może napisać aplikację na komputerze deweloperskim i wdrożyć go na maszynie Wirtualnej platformy Azure. Ponadto większość środowisk produkcyjnych hostowania aplikacji szyny w połączeniu z innym procesem serwera, takich jak Apache lub NginX, która obsługuje żądania routingu do wielu wystąpień aplikacji szyny i obsługująca zasoby statyczne. Aby uzyskać więcej informacji zobacz http://rubyonrails.org/deploy/.
+W tym samouczku jak większość czynności ręcznie. W środowisku produkcyjnym czy napisać własną aplikację na komputerze deweloperskim i wdrożyć go na maszynie Wirtualnej platformy Azure. Ponadto większość środowisk produkcyjnych hostowanie aplikacji platformy Rails, w połączeniu z innym procesem serwera, takich jak Apache i NginX, która obsługuje żądania, routing do wielu wystąpień aplikacji platformy Rails i obsługuje zasoby statyczne. Aby uzyskać więcej informacji, zobacz http://guides.rubyonrails.org/routing.html.
 
-Aby dowiedzieć się więcej na temat Ruby na szyny, odwiedź stronę [dopisków fonetycznych w przewodnikach szyny][rails-guides].
+Aby dowiedzieć się więcej na temat platformy Ruby on Rails, odwiedź stronę [Ruby on Rails przewodniki][rails-guides].
 
-Aby korzystać z aplikacji dopisków fonetycznych usług Azure, zobacz:
+Aby korzystać z usług platformy Azure z aplikacji języka Ruby, zobacz:
 
-* [Przechowywania danych niestrukturalnych przy użyciu obiektów blob][blobs]
-* [Pary klucz wartość magazynu przy użyciu tabel][tables]
-* [Udostępniać zawartość dużej przepustowości w sieci dostarczania zawartości][cdn-howto]
+* [Store danych niestrukturalnych przy użyciu obiektów blob][blobs]
+* [Pary klucz/wartość Store przy użyciu tabel][tables]
+* [Obsługiwać zawartości wymagającej wysokiej przepustowości za pomocą Content Delivery Network][cdn-howto]
 
 <!-- WA.com links -->
 [blobs]:../../../storage/blobs/storage-ruby-how-to-use-blob-storage.md

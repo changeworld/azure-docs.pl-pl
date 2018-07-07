@@ -1,6 +1,6 @@
 ---
-title: Jak zarządzać użytkownika przypisane zarządzane usługi tożsamości (MSI) przy użyciu wiersza polecenia platformy Azure
-description: Krok po kroku instrukcje dotyczące sposobu tworzenia, listy i Usuń użytkownika przypisanego zarządzane usługi tożsamość przy użyciu wiersza polecenia platformy Azure.
+title: Jak zarządzać użytkownik przypisany tożsamość usługi zarządzanej (MSI) przy użyciu wiersza polecenia platformy Azure
+description: Krok po kroku instrukcje dotyczące sposobu tworzenia, wyświetlania i usuwania użytkownika przypisanego zarządzana usługa tożsamości przy użyciu wiersza polecenia platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,74 +9,74 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 24172ebac8c7f124d0873b9d93d260fa2e1a8a44
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 23567c985f4f9df46ee7d80051c15dc5910a1ea8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594615"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904066"
 ---
-# <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Tworzenie listy lub usunąć użytkownika przypisanego tożsamość przy użyciu wiersza polecenia platformy Azure
+# <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Utwórz listę lub usunąć użytkownika z przypisaną tożsamości przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Tożsamość usługi zarządzanej udostępnia usługi Azure za pomocą tożsamości zarządzanych w usłudze Azure Active Directory. Ta tożsamość służy do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD, bez konieczności poświadczeń w kodzie. 
+Tożsamość usługi zarządzanej udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
-W tym artykule Dowiedz się jak utworzyć listę i usunąć tożsamości przypisane przez użytkownika, przy użyciu wiersza polecenia platformy Azure.
+W tym artykule dowiesz się, jak utworzyć listę i usuwanie tożsamości przypisanych przez użytkownika, przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli znasz zarządzane tożsamość usługi, zapoznaj się [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między systemu przypisane i przypisać tożsamość użytkownika](overview.md#how-does-it-work)**.
+- Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 - Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
 
-    - Użyj [powłoki chmury Azure](../../cloud-shell/overview.md) z portalu Azure (zobacz następną sekcję).
-    - Użyć osadzonego powłoki chmury Azure za pośrednictwem "Spróbuj on" przycisk, znajdujący się w prawym górnym rogu każdej blok kodu.
-    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 lub nowsza), jeśli wolisz korzystać z konsoli lokalnej interfejsu wiersza polecenia. Zaloguj się do platformy Azure przy użyciu `az login`, przy użyciu konta, które jest skojarzone z subskrypcją platformy Azure, w którym chcesz wdrożyć tożsamości przypisane przez użytkownika.
+    - Użyj [usługi Azure Cloud Shell](../../cloud-shell/overview.md) w witrynie Azure portal (patrz następny rozdział).
+    - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu.
+    - [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. Zaloguj się do platformy Azure za pomocą `az login`, przy użyciu konta, który jest skojarzony z subskrypcją platformy Azure w ramach której chcesz wdrożyć tożsamości przypisanych przez użytkownika.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-user-assigned-managed-identity"></a>Utwórz użytkownika przypisane tożsamości zarządzanych 
+## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie zarządzanych tożsamości przypisanych przez użytkownika 
 
-Do utworzenia tożsamości użytkownika przypisane, użyj [utworzenia tożsamości az](/cli/azure/identity#az-identity-create) polecenia. `-g` Parametr określa grupę zasobów, gdzie można utworzyć tożsamości użytkownika z przypisanym i `-n` parametr określa jego nazwę. Zastąp `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` wartości parametrów z własne wartości:
+Aby utworzyć tożsamości przypisanych przez użytkownika, należy użyć [Utwórz tożsamość az](/cli/azure/identity#az-identity-create) polecenia. `-g` Parametr określa grupę zasobów, gdzie można utworzyć tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Zastąp `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` wartości parametrów własnymi wartościami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-identities"></a>Przypisać tożsamości użytkownika z listy
+## <a name="list-user-assigned-identities"></a>Lista użytkownik tożsamości przypisanych przez
 
-Aby wyświetlić listę tożsamości przypisane przez użytkownika, użyj [listy tożsamości az](/cli/azure/identity#az-identity-list) polecenia.  `-g` Parametr określa grupę zasobów, w której utworzono użytkownika z przypisanym tożsamości.  Zastąp `<RESOURCE GROUP>` z własną wartość:
+Aby wyświetlić listę tożsamości przypisanych przez użytkownika, użyj [listę tożsamości az](/cli/azure/identity#az-identity-list) polecenia.  `-g` Parametr określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika.  Zastąp `<RESOURCE GROUP>` swoją własną wartością:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-W odpowiedzi json tożsamości użytkownika ma `"Microsoft.ManagedIdentity/userAssignedIdentities"` wartość zwracana dla klucza `type`.
+W odpowiedzi json ma tożsamości użytkowników `"Microsoft.ManagedIdentity/userAssignedIdentities"` wartość zwracana dla klucza `type`.
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
-## <a name="delete-a-user-assigned-identity"></a>Usuń użytkownika przypisanego tożsamości
+## <a name="delete-a-user-assigned-identity"></a>Usuwanie tożsamości przypisanych przez użytkownika
 
-Aby usunąć tożsamości przypisane przez użytkownika, użyj [usunąć tożsamości az](/cli/azure/identity#az-identity-delete) polecenia.  Parametr - n określa jego nazwę, a parametr -g Określa grupę zasobów, w której utworzono użytkownika z przypisanym tożsamości.  Zastąp `<USER ASSIGNED IDENTITY NAME>` i `<RESOURCE GROUP>` wartości parametrów z własne wartości:
+Aby usunąć tożsamości przypisanych przez użytkownika, użyj [usuwanie tożsamości az](/cli/azure/identity#az-identity-delete) polecenia.  -N parametr określa jej nazwę, a parametr -g Określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika.  Zastąp `<USER ASSIGNED IDENTITY NAME>` i `<RESOURCE GROUP>` wartości parametrów własnymi wartościami:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 ```
 > [!NOTE]
-> Usunięcie użytkownika przypisane tożsamości nie spowoduje usunięcia odwołanie, z dowolnego zasobu, który został przypisany do. Usuń z maszyny Wirtualnej/VMSS przy użyciu `az vm/vmss identity remove` polecenia
+> Usuwanie tożsamości przypisanych przez użytkownika nie spowoduje usunięcia odwołania, z dowolnego zasobu, który został przypisany do. Usuń te z VM/VMSS za pomocą `az vm/vmss identity remove` polecenia
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
-Aby uzyskać pełną listę poleceń tożsamości wiersza polecenia platformy Azure, zobacz [tożsamości az](/cli/azure/identity).
+Aby uzyskać pełną listę poleceń tożsamość wiersza polecenia platformy Azure, zobacz [tożsamości az](/cli/azure/identity).
 
-Aby uzyskać informacje dotyczące sposobu przypisywania tożsamości użytkowników przypisanych do maszyny Wirtualnej platformy Azure, zobacz [skonfigurować zarządzane usługi tożsamości (MSI) przy użyciu wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md#user-assigned-identity)
+Aby uzyskać informacje dotyczące sposobu przypisywania tożsamości przypisanych przez użytkownika do maszyny Wirtualnej platformy Azure, zobacz temat [skonfigurować tożsamość usługi zarządzanej (MSI) przy użyciu wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md#user-assigned-identity)
 
 
  

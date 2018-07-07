@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować MSI w maszynie Wirtualnej platformy Azure przy użyciu szablonu
-description: Instrukcje krok po kroku dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu szablonu usługi Azure Resource Manager.
+title: Jak skonfigurować MSI na Maszynie wirtualnej platformy Azure przy użyciu szablonu
+description: Szczegółowe instrukcje dotyczące konfigurowania tożsamość usługi zarządzanej (MSI) na Maszynie wirtualnej platformy Azure, przy użyciu szablonu usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,59 +9,59 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 05859187a5734d982b750e287c3ecd375ed1da2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 30e186c86d9947c5d0ef609a1c447dc6ed938c35
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723749"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902415"
 ---
-# <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi maszyn wirtualnych zarządzanych za pomocą szablonu
+# <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu szablonu
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Tożsamość usługi zarządzanej zapewnia usług platformy Azure przy użyciu tożsamości automatycznie zarządzane w usłudze Azure Active Directory. Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, bez konieczności poświadczeń w kodzie. 
+Tożsamość usługi zarządzanej udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
-W tym artykule Dowiedz się jak wykonać następujące operacje zarządzane tożsamości usługi na maszynie Wirtualnej platformy Azure, przy użyciu szablonu wdrożenia usługi Azure Resource Manager:
+W tym artykule dowiesz się, jak wykonywać następujące operacje tożsamości usługi zarządzanej na Maszynie wirtualnej platformy Azure, przy użyciu szablonu wdrożenia usługi Azure Resource Manager:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli znasz zarządzane tożsamość usługi, zapoznaj się [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między systemu przypisane i przypisać tożsamość użytkownika](overview.md#how-does-it-work)**.
+- Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
-Podobnie jak w przypadku platformy Azure, portalu i skryptów, [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) Szablony zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Kilka opcje są dostępne do edycji szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
+Podobnie jak w witrynie Azure portal i skryptów, [usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) Szablony zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowany przez grupę zasobów platformy Azure. Jest dostępnych kilka opcji edycję szablonu i wdrażania, zarówno lokalnych, jak i oparte na portalu, w tym:
 
-   - Przy użyciu [niestandardowego szablonu z portalu Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), co pozwala na tworzyć szablon od podstaw albo oparte na istniejących typowe lub [szablon szybkiego startu](https://azure.microsoft.com/documentation/templates/).
-   - Wyprowadzanie z istniejącej grupy zasobów przez wyeksportowanie szablonu z dowolnej [oryginalnego wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), lub z [bieżący stan wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
-   - Przy użyciu lokalnego [edytora JSON (na przykład w kodzie VS)](../../azure-resource-manager/resource-manager-create-first-template.md), a następnie przekazywanie i wdrażanie przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
-   - Za pomocą programu Visual Studio [projektu grupy zasobów platformy Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) do tworzenia i wdrażania szablonu.  
+   - Za pomocą [niestandardowego szablonu w portalu Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), co pozwala na Utwórz szablon od podstaw albo oparte na typowych istniejących lub [szablon szybkiego startu](https://azure.microsoft.com/documentation/templates/).
+   - Wyprowadzanie z istniejącej grupy zasobów przez wyeksportowanie szablonu z poziomu [oryginalnego wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), lub z [bieżący stan wdrożenia](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
+   - Za pomocą lokalnego [edytora JSON (np. programu VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), a następnie przekazywanie i wdrażanie przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
+   - Za pomocą programu Visual Studio [projekt grupy zasobów platformy Azure](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) Aby utworzyć i wdrożyć szablon.  
 
-Niezależnie od wybranej opcji składni szablonu jest taka sama podczas pierwszego wdrożenia i ponownego wdrażania. Włączanie system lub użytkownik, któremu przypisano tożsamości w nowej lub istniejącej maszyny Wirtualnej odbywa się w taki sam sposób. Ponadto domyślnie program Azure Resource Manager jest [aktualizacji przyrostowej](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) do wdrożenia.
+Niezależnie od wybranej opcji składni szablonu jest taka sama podczas początkowego wdrażania i ponownego wdrażania. Włączanie system lub użytkownik, któremu przypisano tożsamość na nowej lub istniejącej maszyny Wirtualnej z systemem odbywa się w taki sam sposób. Ponadto domyślnie usługi Azure Resource Manager jest [aktualizacji przyrostowej](../../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) do wdrożeń.
 
-## <a name="system-assigned-identity"></a>System przypisane tożsamości
+## <a name="system-assigned-identity"></a>Tożsamości przypisanej w systemie
 
-W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za pomocą szablonu usługi Azure Resource Manager.
+W tej sekcji zostanie włączony i Wyłącz system przypisane do tożsamości przy użyciu szablonu usługi Azure Resource Manager.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Włącz system przypisane tożsamości podczas tworzenia maszyny Wirtualnej platformy Azure, lub z istniejącej maszyny Wirtualnej
+### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Włącz system tożsamości przypisanej podczas tworzenia maszyny wirtualnej portalu Azure lub istniejącej maszyny wirtualnej
 
-1. Logowanie do platformy Azure lokalnie lub za pośrednictwem portalu Azure, użyj konta, które jest skojarzone z subskrypcją platformy Azure, który zawiera maszyny Wirtualnej. Upewnij się również, że używane konto należy do roli, która daje uprawnienia do zapisu na maszynie Wirtualnej (na przykład roli "Współautor maszyny wirtualnej").
+1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej. Upewnij się również, że Twoje konto należy do roli, która zapewnia uprawnienia do zapisu na maszynie Wirtualnej (na przykład rola "Współautor maszyny wirtualnej").
 
-2. Po załadowaniu szablonu do edytora, zlokalizuj `Microsoft.Compute/virtualMachines` zasobów odsetek w `resources` sekcji. Należy do Ciebie może wyglądać nieco inaczej niż poniższy zrzut ekranu, w zależności od edytor, którego używasz, i czy edytujesz szablon do wdrożenia nowego lub istniejącego.
+2. Po załadowaniu szablonu do edytora, zlokalizuj `Microsoft.Compute/virtualMachines` zasobów zainteresowania w ramach `resources` sekcji. Należy do Ciebie mogą się nieznacznie różnić od Poniższy zrzut ekranu, w zależności od edytor, którego używasz, i czy edytujesz szablon dla nowego wdrożenia lub istniejącą grupę.
 
    >[!NOTE] 
    > W tym przykładzie założono zmienne `vmName`, `storageAccountName`, i `nicName` zostały zdefiniowane w szablonie.
    >
 
-   ![Zrzut ekranu przedstawiający szablonu — zlokalizować maszyny Wirtualnej](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
+   ![Zrzut ekranu przedstawiający szablon — Znajdź maszynę Wirtualną](../media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
-3. Aby włączyć system przypisane tożsamości, Dodaj `"identity"` właściwości na tym samym poziomie jako `"type": "Microsoft.Compute/virtualMachines"` właściwości. Należy użyć następującej składni:
+3. Aby włączyć system tożsamości przypisanej, Dodaj `"identity"` właściwości w tym samym poziomie co `"type": "Microsoft.Compute/virtualMachines"` właściwości. Należy użyć następującej składni:
 
    ```JSON
    "identity": { 
@@ -69,10 +69,10 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
    },
    ```
 
-4. (Opcjonalnie) Dodaj rozszerzenie pliku MSI maszyny Wirtualnej jako `resources` elementu. Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów.  Należy użyć następującej składni:
+4. (Opcjonalnie) Dodaj rozszerzenie Zarządzanej maszyny Wirtualnej jako `resources` elementu. Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również.  Należy użyć następującej składni:
 
    >[!NOTE] 
-   > W poniższym przykładzie założono rozszerzenia maszyny Wirtualnej systemu Windows (`ManagedIdentityExtensionForWindows`) jest wdrażany. Można również skonfigurować dla systemu Linux przy użyciu `ManagedIdentityExtensionForLinux` zamiast tego dla `"name"` i `"type"` elementy.
+   > W poniższym przykładzie założono rozszerzenie maszyny Wirtualnej Windows (`ManagedIdentityExtensionForWindows`) jest wdrażany. Można również skonfigurować dla systemu Linux przy użyciu `ManagedIdentityExtensionForLinux` katalog wirtualny wskazywał na `"name"` i `"type"` elementów.
    >
 
    ```JSON
@@ -97,31 +97,31 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane tożsamość za po
    }
    ```
 
-5. Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
+5. Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do poniższej:
 
-   ![Zrzut ekranu przedstawiający szablonu po aktualizacji](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ![Zrzut ekranu przedstawiający szablon po aktualizacji](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
-### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Wyłącz system przypisany tożsamości z maszyny Wirtualnej platformy Azure
+### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Wyłącz system tożsamości przypisanej w Maszynie wirtualnej platformy Azure
 
 > [!NOTE]
-> Wyłączanie zarządzane tożsamość usługi z maszyny wirtualnej nie jest obecnie obsługiwane. Tymczasem można przełączać się między przypisane systemu i przypisane tożsamości użytkowników.
+> Wyłączanie tożsamości usługi zarządzanej z maszyny wirtualnej nie jest obecnie obsługiwane. W międzyczasie można przełączać się między przypisana przez System i tożsamości przypisanych użytkowników.
 
-Jeśli masz maszynę Wirtualną, która nie będzie już potrzebował tożsamości zarządzanych usług:
+Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości usługi zarządzanej:
 
-1. Logowanie do platformy Azure lokalnie lub za pośrednictwem portalu Azure, użyj konta, które jest skojarzone z subskrypcją platformy Azure, który zawiera maszyny Wirtualnej. Upewnij się również, że używane konto należy do roli, która daje uprawnienia do zapisu na maszynie Wirtualnej (na przykład roli "Współautor maszyny wirtualnej").
+1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej. Upewnij się również, że Twoje konto należy do roli, która zapewnia uprawnienia do zapisu na maszynie Wirtualnej (na przykład rola "Współautor maszyny wirtualnej").
 
-2. Zmień typ tożsamości do `UserAssigned`.
+2. Zmień typ tożsamości na `UserAssigned`.
 
-## <a name="user-assigned-identity"></a>Użytkownik, któremu przypisano tożsamości
+## <a name="user-assigned-identity"></a>Tożsamości przypisanych przez użytkownika
 
-W tej sekcji należy przypisać tożsamość użytkownika z przypisanym do maszyny Wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager.
+W tej sekcji należy przypisać tożsamości przypisanych przez użytkownika na Maszynie wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager.
 
 > [!Note]
-> Aby tworzyć tożsamość użytkownika z przypisanym przy użyciu szablonu usługi Azure Resource Manager, zobacz [utworzenia tożsamości użytkownika z przypisanym](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
+> Aby utworzyć tożsamości przypisanych przez użytkownika, przy użyciu szablonu usługi Azure Resource Manager, zobacz [tworzenie tożsamości przypisanych przez użytkownika](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
- ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Przypisać użytkownicy przypisani tożsamości do maszyny Wirtualnej platformy Azure
+ ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Przypisywanie użytkownika tożsamości przypisanej do maszyny Wirtualnej platformy Azure
 
-1. W obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać tożsamość użytkownika z przypisanym do maszyny Wirtualnej.  Pamiętaj zastąpić `<USERASSIGNEDIDENTITY>` o nazwie tożsamość użytkownika z przypisanym został utworzony.
+1. W obszarze `resources` elementu, Dodaj następujący wpis do przypisywania tożsamości przypisanych przez użytkownika do maszyny Wirtualnej.  Koniecznie Zastąp `<USERASSIGNEDIDENTITY>` o nazwie tożsamości przypisanych przez użytkownika został utworzony.
     ```json
     {
         "apiVersion": "2017-12-01",
@@ -136,7 +136,7 @@ W tej sekcji należy przypisać tożsamość użytkownika z przypisanym do maszy
         },
     ```
     
-2. (Opcjonalnie) Następnie w obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać rozszerzenie tożsamości zarządzanych do maszyny Wirtualnej. Ten krok jest opcjonalny, jako punkt końcowy tożsamości Azure wystąpienie metadanych usługi (IMDS), umożliwia pobranie również tokenów. Należy użyć następującej składni:
+2. (Opcjonalnie) Następnie w obszarze `resources` elementu, Dodaj następujący wpis, aby przypisać rozszerzenie tożsamości zarządzanej dla maszyny wirtualnej. Ten krok jest opcjonalny, zgodnie z punktu końcowego tożsamości Azure wystąpienie metadanych usługi (IMDS), można użyć do pobierania tokenów, jak również. Należy użyć następującej składni:
     ```json
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -158,12 +158,12 @@ W tej sekcji należy przypisać tożsamość użytkownika z przypisanym do maszy
     }
     ```
     
-3.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do następującego:
+3.  Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do poniższej:
 
-      ![Zrzut ekranu przedstawiający tożsamości przypisane przez użytkownika](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
+      ![Zrzut ekranu przedstawiający tożsamości przypisanych przez użytkownika](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
-- Dla szerszego perspektywy o MSI, przeczytaj [omówienie zarządzane tożsamość usługi](overview.md).
+- Dla szerszej perspektywy temat tożsamości usługi Zarządzanej, przeczytaj [Przegląd tożsamości usługi zarządzanej](overview.md).
 

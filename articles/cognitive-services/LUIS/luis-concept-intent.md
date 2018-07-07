@@ -1,6 +1,6 @@
 ---
-title: Opis opcji w aplikacjach LUIS na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, co intencje znajdują się w aplikacji usługi inteligentnego opis języka (LUIS).
+title: Zrozumieć intencje w aplikacji usługi LUIS na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jakie intencji znajdują się w aplikacji Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,96 +9,94 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5c2feb0240b676d4e106cbda65aaaed7604a35c5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: cbf1ad2da3bbc86f8c6861458ae9e5d5c49c56ce
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265156"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888582"
 ---
-# <a name="intents-in-luis"></a>Opcje w LUIS
+# <a name="intents-in-luis"></a>Intencje w usługi LUIS
 
-Celem reprezentuje zadania lub akcji użytkownik chce wykonać. Cel lub celem wyrażone w użytkownika [utterance](luis-concept-utterance.md).
+Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w użytkownika [wypowiedź](luis-concept-utterance.md).
 
-Zdefiniuj zestaw opcji, który odpowiada na akcje, które użytkownicy chcą w aplikacji. Na przykład aplikacja podróży definiuje kilka opcji:
+Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji. Na przykład aplikacji turystycznej definiuje kilka opcji:
 
-Profile aplikacji w podróży   |   Przykład zniesławiających   | 
+Przeznaczeniu podróży   |   Przykładowe wypowiedzi   | 
 ------|------|
- BookFlight     |   "Book mnie lot Rio następnym tygodniu" <br/> "Udać mnie do Rio na 24th" <br/> "Potrzebuję biletu płaszczyzny niedziela dalej do Rio de Janeiro"    |
- Pozdrowienie     |   "Hi" <br/>Tekst "hello" <br/>"Dobry"  |
- CheckWeather | "Co to jest pogody podobnie jak w Boston?" <br/> "Pokaż prognozy dla tego weekendowe" |
- Brak         | "W get mnie przepisu plik cookie"<br>"Czy Lakers win?" |
+ BookFlight     |   "Zarezerwuj mnie lot Rio w następnym tygodniu" <br/> "Podnoszenia mnie do Rio na 24th" <br/> "Potrzebuję bilet płaszczyzny niedzielę dalej do Rio de Janeiro"    |
+ Pozdrowienie     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
+ CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
+ Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 
-Wszystkie aplikacje dostarczane z wstępnie zdefiniowane opcje "[Brak](#none-intent-is-fallback-for-app)" który jest rezerwowej celem. 
+Wszystkie aplikacje dołączone wstępnie zdefiniowane opcje "[Brak](#none-intent-is-fallback-for-app)" który jest celem rezerwowego. 
 
-## <a name="prebuilt-domains-provide-intents"></a>Wbudowane domeny zapewniają intencje
-Oprócz intencje zdefiniowanych przez użytkownika można użyć opcji wbudowane z jednej z domen wbudowane. Aby uzyskać więcej informacji, zobacz [domeny wbudowane w aplikacjach LUIS](luis-how-to-use-prebuilt-domains.md) Aby dowiedzieć się więcej na temat dostosowywania intencje z wbudowane domeny do użycia w aplikacji.
+## <a name="prebuilt-domains-provide-intents"></a>Ze wstępnie utworzonych domen zapewniają intencji
+Oprócz intencji, które definiujesz można użyć wbudowanych intencji z jednego ze wstępnie utworzonych domen. Aby uzyskać więcej informacji, zobacz [korzystać ze wstępnie utworzonych domen w aplikacjach usługi LUIS](luis-how-to-use-prebuilt-domains.md) Aby dowiedzieć się więcej o dostosowywaniu intencji z wbudowanych domeny do użycia w aplikacji.
 
-## <a name="return-all-intents-scores"></a>Zwraca wyniki wszystkich opcji
-Utterance przypisać zamierzone jednym. LUIS odebrania utterance w punkcie końcowym zwraca jedną zamiar top dla tego utterance. Jeśli chcesz wyniki dla wszystkich lokalizacji docelowych dla utterance, możesz podać `verbose=true` Flaga w ciągu zapytania API [wywołania punktu końcowego](https://aka.ms/v1-endpoint-api-docs). 
+## <a name="return-all-intents-scores"></a>Zwraca wyniki wszystkich intencji
+Wypowiedź należy przypisać do pojedynczego celem. Gdy usługa LUIS otrzymuje wypowiedź w punkcie końcowym, zwraca jeden najważniejsze przeznaczenie tego wypowiedź. Jeśli chcesz wyniki dla wszystkich opcji dla wypowiedź może zapewnić `verbose=true` flagi w ciągu zapytania API [wywołanie punktu końcowego](https://aka.ms/v1-endpoint-api-docs). 
 
-## <a name="intent-compared-to-entity"></a>Opcje w porównaniu do jednostki
-Celem reprezentuje akcję chatbot powinno zająć dla użytkownika i opierają się na cały utterance. Jednostka reprezentuje słów ani fraz znajdująca się wewnątrz utterance. Utterance może mieć tylko jeden top oceniania zamiar, ale może mieć wiele jednostek. 
+## <a name="intent-compared-to-entity"></a>Celem w porównaniu do jednostki
+Celem reprezentuje akcję chatbot powinno zająć dla użytkownika i opiera się na cały wypowiedź. Jednostka reprezentuje słów i fraz zawartych w wypowiedź. Wypowiedź może mieć tylko jeden górnej oceniania intencji, ale może mieć wiele jednostek. 
 
-<a name="how-do-intents-relate-to-entities"></a> Utwórz celem podczas użytkownika _zamiar_ spowoduje wywołanie akcji w aplikacji klienta, takich jak wywołanie funkcji checkweather(). Następnie utwórz jednostkę do przedstawiania parametrów wymaganych do wykonania akcji. 
+<a name="how-do-intents-relate-to-entities"></a> Utwórz opcję podczas użytkownika _zamiar_ będą wyzwalać akcję w aplikacji klienckiej, takich jak wywołania funkcji checkweather(). Następnie należy utworzyć jednostkę reprezentują parametrów wymaganych do wykonania akcji. 
 
-|Przykład celem   | Jednostka | Jednostki w przykładzie zniesławiających   | 
+|Przykład intencji   | Jednostka | Jednostki w przykładzie wypowiedzi   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "Lokalizacja", "entity": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "jutro", "Rozwiązanie": "2018-05-23"} | Pogody jak w `Seattle` `tomorrow`? |
-| CheckWeather | {"type": "date_range", "entity": "to weekendowe"} | Pokaż prognozy dla `this weekend` | 
+| CheckWeather | {"type": "Lokalizacja", "entity": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": "jutro", "Rozwiązanie": "2018-05-23"} | Co pogody, takich jak w `Seattle` `tomorrow`? |
+| CheckWeather | {"type": "date_range", "entity": "ten weekend"} | Pokaż mi prognozy dla `this weekend` | 
 
-## <a name="custom-intents"></a>Profile niestandardowe
+## <a name="custom-intents"></a>Niestandardowe intencji
 
-Podobnie tych [zniesławiających](luis-concept-utterance.md) odpowiadają zamierzone jednym. Zniesławiających w Twoich zamiarów można użyć dowolnego [jednostki](luis-concept-entity-types.md) w aplikacji, ponieważ jednostek nie są specyficzne dla celem. 
+Podobnie tych [wypowiedzi](luis-concept-utterance.md) odpowiadają jednej intencji. Wypowiedzi w zgodne z zamiarami użytkownika, można użyć dowolnego [jednostki](luis-concept-entity-types.md) w aplikacji, ponieważ jednostki nie są specyficzne dla intencji. 
 
-## <a name="prebuilt-domain-intents"></a>Intencje wbudowane domeny
+## <a name="prebuilt-domain-intents"></a>Wstępnie utworzone domeny intencji
 
-[Wbudowane domen](luis-how-to-use-prebuilt-domains.md) ma intencje z zniesławiających.  
+[Ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) mają intencji z wypowiedzi.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Żaden konwersji nie jest bazowy dla aplikacji
-**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS zniesławiających, które nie są ważne w domenie aplikacji (podmiotu obszaru). **Brak** zamiar powinny mieć od 10 do 20% całkowitej zniesławiających w aplikacji. Nie podawaj żadnej. 
+## <a name="none-intent-is-fallback-for-app"></a>Żadna funkcja nie jest rezerwowe dla aplikacji
+**Brak** celem jest celem wychwytywania lub rezerwowej. Służy do nauki LUIS wypowiedzi, które nie są istotne w domenie aplikacji (obszar podmiotu). **Brak** intencji powinny mieć od 10 do 20 procent całkowitej wypowiedzi w aplikacji. Nie zostawiaj jej pustej. 
 
-### <a name="none-intent-helps-conversation-direction"></a>Brak konwersji pomaga kierunek konwersacji
-Gdy utterance jest obliczana jako Brak konwersji i zwrócony do chatbot z tym prognozowania bot można zadawać pytania więcej lub Zapewnij menu przekierować użytkownika do prawidłowych wyborów w chatbot. 
+### <a name="none-intent-helps-conversation-direction"></a>Brak elementu intent pomaga kierunek konwersacji
+Gdy wypowiedź przewiduje się, jak brak intencji i zwrócone do chatbot za pomocą tego prognozowania bot można zadawać pytań lub Zapewnij menu do kierowania użytkownikowi prawidłowe opcje w chatbot. 
 
-### <a name="no-utterances-in-none-intent-skews-predictions"></a>Nie zniesławiających żadna konwersji pochyla prognoz
-Jeśli nie dodasz żadnych zniesławiających dla **Brak** konwersji, LUIS wymusza utterance spoza domeny do jednej z opcji domeny. Spowoduje to pochylanie wyniki prognozowania przez nauczania LUIS nieprawidłowe opcje utterance. 
+### <a name="no-utterances-in-none-intent-skews-predictions"></a>Nie wypowiedzi żadna intencji pochyla prognozy
+Jeśli nie dodasz wypowiedzi dla **Brak** intencji, LUIS wymusza wypowiedź spoza domeny w jednym z opcjami domeny. Będzie to pochylanie wyniki prognozowania, nauczania usługi LUIS niewłaściwego przeznaczenie wypowiedź. 
 
-### <a name="add-utterances-to-the-none-intent"></a>Dodaj zniesławiających brak konwersji
-**Brak** zamiar zostanie utworzony, ale w celu puste. Wypełnić go zniesławiających, które nie należą do domeny. Dobrym utterance dla **Brak** jest służy element całkowicie poza aplikacji, a także branży aplikacji. Na przykład aplikacja podróży nie należy używać żadnych zniesławiających dla **Brak** które można powiązać podróży, takie jak zastrzeżenia rozliczeń żywności, gościnność, ładunku, rozrywka porządkowych. 
+### <a name="add-utterances-to-the-none-intent"></a>Dodawanie wypowiedzi intencji None
+**Brak** celem jest tworzony, ale pozostawić wartość pustą, celowo. Wypełnij ją wypowiedzi, które znajdują się poza domenę. Dobre wypowiedź dla **Brak** jest coś zupełnie poza aplikację, a także branży aplikacji służy. Na przykład aplikacji turystycznej nie należy używać wypowiedzi dla **Brak** , można powiązać z podróży, takie jak zastrzeżenia, rozliczenia, żywności, zakwaterowanie, ładunku, rozrywka porządkowych. 
 
-Jakiego rodzaju zniesławiających pozostało dla brak konwersji? Rozpoczynać się od określonego elementu z bot nie należy odpowiedzieć, takich "jakiego rodzaju kolorowanka ma niebieski zębów?" Jest to bardzo konkretne pytanie daleko poza aplikacji podróży. 
+Jakiego rodzaju wypowiedzi pozostało dla żadnego elementu intent? Uruchom przy użyciu określonego elementu bota nie należy odpowiedzieć, takie "jakiego rodzaju dinozaurów ma niebieski zębów?" Jest to bardzo konkretne pytanie daleko poza aplikacji turystycznej. 
 
-### <a name="none-is-a-required-intent"></a>Nie jest wymagane opcje
-**Brak** celem jest wymagane opcje i nie może być usunięte ani zmienić jego nazwy.
+### <a name="none-is-a-required-intent"></a>Brak wymaganego intencji
+**Brak** intencji jest celem wymagane i nie może być usunięte lub zmieniono ich nazwy.
 
-## <a name="negative-intentions"></a>Cele ujemna 
-Jeśli chcesz określić cele ujemną i dodatnią, takich jak "I **mają** samochodu" i "I **nie** mają samochodu", można utworzyć dwa profile (jeden pozytywnych i jeden ujemna) i dodaj odpowiednie zniesławiających dla Każdy. Lub można utworzyć zamierzone jednym i oznacz dwa różne warunki dodatnie i ujemne jako jednostki.  
+## <a name="negative-intentions"></a>Ujemna intencji 
+Jeśli chcesz określić zamiarach ujemny i dodatni, takie jak "I **ma** samochód" i "I **nie** ma samochód", można utworzyć dwa intencji (jedną pozytywną i jedną negatywną) i dodawanie wypowiedzi odpowiednie dla Każdy. Lub można utworzyć pojedynczy intencji i oznaczyć te dwa różne terminy dodatnie i ujemne jako jednostka.  
 
-## <a name="intent-balance"></a>Saldo konwersji
-Profile domeny aplikacji powinien mieć saldo zniesławiających między każdym zamiar. Nie masz zamierzone jednym z 10 zniesławiających i przeznaczeniu innego z zniesławiających 500. To jest niezrównoważone. Jeśli ta sytuacja, przejrzyj profil konwersji z 500 zniesławiających, aby zobaczyć, jeśli wiele lokalizacji docelowych można zreorganizować do [wzorzec](luis-concept-patterns.md). 
+## <a name="intent-balance"></a>Saldo intencji
+Przeznaczeniu domeny powinien mieć saldo wypowiedzi w każdej intencji. Nie masz zamiar jednego z 10 wypowiedzi i inną intencji z wypowiedzi 500. Nie jest równoważone. Jeśli masz tę sytuację, zapoznaj się z celem z wypowiedzi 500, aby zobaczyć, jeśli wiele intencji można zreorganizować do [wzorzec](luis-concept-patterns.md). 
 
-**Brak** celem jest niedostępna w równowagi. Celem tego powinien zawierać 10% całkowitej zniesławiających w aplikacji.
+**Brak** celem nie jest objęta równowagi. Tym przeznaczeniem powinna zawierać 10% całkowitej wypowiedzi w aplikacji.
 
-## <a name="intent-limits"></a>Limity konwersji
-Przegląd [limity](luis-boundaries.md#model-boundaries) Aby zrozumieć, jak wiele lokalizacji docelowych można dodać do modelu. 
+## <a name="intent-limits"></a>Limity intencji
+Przegląd [limity](luis-boundaries.md#model-boundaries) Aby zrozumieć intencje ile można dodać do modelu. 
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Jeśli potrzebujesz więcej niż maksymalna liczba lokalizacji docelowych 
-Najpierw należy rozważyć, czy system używa zbyt wiele lokalizacji docelowych. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Jeśli potrzebujesz większej niż maksymalna liczba intencji 
+Najpierw należy rozważyć, czy system używa zbyt dużo intencji. 
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Wiele lokalizacji docelowych można łączyć w jednej zamiar z jednostkami 
-Opcje, które są zbyt podobne może utrudnić dla LUIS w celu ich rozróżnienia. Opcje powinny być różne do przechwytywania głównych zadań, które pyta użytkownika, ale nie trzeba przechwytywania ścieżki, co ma swój kod. Na przykład oddzielnych lokalizacji docelowych w podróży aplikacji może być BookFlight i FlightCustomerService, ale BookInternationalFlight i BookDomesticFlight są zbyt podobne. Jeśli system musi odróżnić je, użyj jednostek lub innych logiki zamiast lokalizacji docelowych. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Wiele intencji można łączyć w pojedynczej intencji przy użyciu jednostek 
+Intencji, które są zbyt podobne może utrudnić dla usługi LUIS do rozróżnienia między nimi. Intencji powinien być wystarczająco dużo, aby przechwycić głównych zadań, które pyta użytkownika, ale nie potrzebują do przechwytywania każdej ścieżce kodu przyjmuje zróżnicowane. Na przykład oddzielnych intencje w podróży aplikacji może być BookFlight i FlightCustomerService, ale BookInternationalFlight i BookDomesticFlight są zbyt podobne. Jeśli system musi odróżnić je, należy użyć jednostek lub inne logiki zamiast intencji. 
 
 ### <a name="dispatcher-model"></a>Dyspozytor modelu
-Dowiedz się więcej o łączeniu LUIS i — strona główna aplikacji maker za pomocą [modelu wysyłania](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
+Dowiedz się więcej na temat łączenia aplikacji twórcy LUIS i pytań i odpowiedzi z [modelu wysyłania](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Prosić o pomoc dla aplikacji z duża liczba lokalizacji docelowych
-Zmniejszenie liczby intencje lub podzielenie Twojej lokalizacji docelowych do wielu aplikacji nie działa, należy się z pomocą techniczną. Jeśli subskrypcja platformy Azure zawiera usług pomocy technicznej, skontaktuj się z [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Prosić o pomoc dla aplikacji za pomocą znacznej liczby intencji
+Zmniejszenie liczby intencji lub podzielenie Twoje intencje w wielu aplikacjach nie działa, należy się z pomocą techniczną. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [jednostek](luis-concept-entity-types.md), które są ważne słowa istotne dla lokalizacji docelowych
-* Dowiedz się, jak [Dodawanie i zarządzanie intencje](luis-how-to-add-intents.md) w aplikacji LUIS.
+* Dowiedz się więcej o [jednostek](luis-concept-entity-types.md), które są ważne wyrazy, które dotyczą intencji
+* Dowiedz się, jak [Dodaj i Zarządzaj opcjami](luis-how-to-add-intents.md) w aplikacją usługi LUIS.
 * Przejrzyj opcje [najlepsze rozwiązania](luis-concept-best-practices.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

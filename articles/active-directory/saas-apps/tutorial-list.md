@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 07/06/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 9a7e8157fbf2294dae959247aa2f0013a80e58c1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a5f9ed67bf39db6aa1e4f817957d795883a677f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446123"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901952"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integracja aplikacji SaaS w usłudze Azure Active Directory
 
@@ -44,6 +44,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-8x8virtualoffice-tutorial.png)| [8 x 8 wirtualnych pakietu Office](8x8virtualoffice-tutorial.md)|
 
 ## <a name="a"></a>A
+
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
 | :---: | :--- | :--- |
 | ![logo](./media/tutorial-list/active-directory-saas-abintegro-tutorial.png)| [Abintegro](abintegro-tutorial.md)|
@@ -87,7 +88,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask w miejscu pracy](autotaskworkplace-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-awardspring-tutorial.png)| [AwardSpring](awardspring-tutorial.md)|
 
-
 ## <a name="b"></a>B
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -108,6 +108,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-blackboard-learn-tutorial.png)| [Dowiedz się, tablica](blackboard-learn-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-blackboard-learn-shibboleth-tutorial.png)| [Tablica Dowiedz się więcej — sieci Shibboleth](blackboard-learn-shibboleth-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-bluejeans-tutorial.png)| [BlueJeans](bluejeans-tutorial.md)|[BlueJeans — Inicjowanie obsługi użytkowników](bluejeans-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-bomgarremotesupport-tutorial.png)| [Obsługa zdalnego Bomgar](bomgarremotesupport-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-bonus-tutorial.png)| [Bonusly](bonus-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-boomi-tutorial.png)| [Boomi](boomi-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)| [Pole — Inicjowanie obsługi użytkowników](box-userprovisioning-tutorial.md)|
@@ -128,6 +129,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-central-desktop-tutorial.png)| [Centralnym pulpicie](central-desktop-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-ceridiandayforcehcm-tutorial.png)| [Ceridian Dayforce HCM](ceridiandayforcehcm-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cernercentral-tutorial.png)| [Cerner środkowa](cernercentral-tutorial.md)|[Środkowe Cerner — Inicjowanie obsługi użytkowników](cernercentral-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-certainadminsso-tutorial.png)| [Usługa rejestracji Jednokrotnej w niektórych administratora](certainadminsso-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-certify-tutorial.png)| [Certyfikowanie](certify-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cezannehrsoftware-tutorial.png)| [Oprogramowanie Cezanne HR](cezannehrsoftware-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cherwell-tutorial.png)| [Cherwell](cherwell-tutorial.md)|
@@ -136,8 +138,8 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-cimpl-tutorial.png)| [Cimpl](cimpl-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Chmura firmy Cisco](ciscocloud-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco platformy Spark — Inicjowanie obsługi użytkowników](cisco-spark-provisioning-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex — Inicjowanie obsługi użytkowników](cisco-webex-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Usługa Citrix ShareFile](sharefile-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen — Inicjowanie obsługi użytkowników](clarizen-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Wyczyść przeglądu](clearreview-tutorial.md)|
@@ -160,7 +162,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-cs-stars-tutorial.png)| [CS gwiazdek](cs-stars-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-cylanceprotect-tutorial.png)| [CylancePROTECT](cylanceprotect-tutorial.md)|
 
-
 ## <a name="d---e"></a>D - E
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -177,7 +178,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 łuk](dome9arc-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-domo-tutorial.png)| [Domo](domo-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-dowjones-factiva-tutorial.png)| [Dow Jones Factiva](dowjones-factiva-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Usługa Dropbox dla firm](dropboxforbusiness-tutorial.md)| [Usługa Dropbox dla firm — Inicjowanie obsługi użytkowników](dropboxforbusiness-provisioning-tutorial.md)| 
+| ![logo](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Usługa Dropbox dla firm](dropboxforbusiness-tutorial.md)| [Usługa Dropbox dla firm — Inicjowanie obsługi użytkowników](dropboxforbusiness-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-druva-tutorial.png)| [Druva](druva-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-dynamicsignal-tutorial.png)| [Dynamiczne sygnału](dynamicsignal-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-easyterritory-tutorial.png)| [EasyTerritory](easyterritory-tutorial.md)|
@@ -187,6 +188,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-efidigitalstorefront-tutorial.png)| [Witryna sklepu cyfrowego EFI](efidigitalstorefront-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-egnyte-tutorial.png)| [Egnyte](egnyte-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-ekincare-tutorial.png)| [eKincare](ekincare-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-elionboarding-tutorial.png)| [Dołączanie eli](elionboarding-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-elium-tutorial.png)| [Elium](elium-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-empcenter-tutorial.png)| [EmpCenter](empcenter-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-encompass-tutorial.png)| [Obejmują](encompass-tutorial.md)|
@@ -198,8 +200,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-evernote-tutorial.png)| [Evernote](evernote-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-evidence-tutorial.png)| [Evidence.com](evidence-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-expensify-tutorial.png)| [Expensify](expensify-tutorial.md)|
-
-
 
 ## <a name="f---g"></a>F - K
 
@@ -235,7 +235,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-greenhouse-tutorial.png)| [Cieplarnianych](greenhouse-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-grovo-tutorial.png)| [Grovo](grovo-tutorial.md)|
 
-
 ## <a name="h---i"></a>H - I
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -262,25 +261,28 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-ilms-tutorial.png)| [iLMS](ilms-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-imagerelay-tutorial.png)| [Przekazywania obrazów](imagerelay-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-imageworks-tutorial.png)| [OBRAZ DZIAŁA](imageworks-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-imagineerwebVision-tutorial.png)| [Imagineer WebVision](imagineerwebVision-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-impacriskmanager-tutorial.png)| [Menedżer ryzyka IMPAC](impacriskmanager-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-infogix-tutorial.png)| [Określają Infogix Data3Sixty](infogix-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-inforretailinformationmanagement-tutorial.png)| [WinMgmt handlu detalicznego infor Information Management](inforretailinformationmanagement-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-inkling-tutorial.png)| [Inkling](inkling-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-innotas-tutorial.png)| [Innotas](innotas-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-innovationhub-tutorial.png)| [Centrum innowacji](innovationhub-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-insidertrack-tutorial.png)| [Śledź niejawnego programu testów](insidertrack-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-insideview-tutorial.png)| [InsideView](insideview-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-insight4grc-tutorial.png)| [Insight4GRC](insight4grc-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-insigniasamlsso-tutorial.png)| [Insignia SAML SSO](insigniasamlsso-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-insperityexpensable-tutorial.png)| [Insperity ExpensAble](insperityexpensable-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-intacct-tutorial.png)| [Intacct](intacct-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-intime-tutorial.png)| [InTime](intime-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-intralinks-tutorial.png)| [Intralinks](intralinks-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-ipasssmartconnect-tutorial.png)| [iPass SmartConnect](ipasssmartconnect-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-iqnavigatorvms-tutorial.png)| [IQNavigator maszyn wirtualnych](iqnavigatorvms-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-iqualify-tutorial.png)| [iQualify LMS](iqualify-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-iriusrisk-tutorial.png)| [IriusRisk](iriusrisk-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-itrp-tutorial.png)| [ITRP](itrp-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-itslearning-tutorial.png)| [itslearning](itslearning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-iwellnessnow-tutorial.png)| [iWellnessNow](iwellnessnow-tutorial.md)|
-
 
 ## <a name="j---k"></a>"J" - K
 
@@ -311,13 +313,14 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-kronos-tutorial.png)| [Kronos](kronos-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-kudos-tutorial.png)| [Pochwałę](kudos-tutorial.md)|
 
-
 ## <a name="l---m"></a>L - M
+
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
 | :---: | :--- | :--- |
 | ![logo](./media/tutorial-list/active-directory-saas-landgorilla-tutorial.png)| [Klient Gorilla ziemi](landgorilla-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-launchdarkly-tutorial.png)| [LaunchDarkly](launchdarkly-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-lcvista-tutorial.png)| [LCVista](lcvista-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-leapsome-tutorial.png)| [Leapsome](leapsome-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-learning-at-work-tutorial.png)| [Nauka w miejscu pracy](learning-at-work-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-learningseatlms-tutorial.png)| [Stanowisko Learning LMS](learningseatlms-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-learningpool-tutorial.png)| [Learningpool Act](learningpool-tutorial.md)|
@@ -361,7 +364,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-mozy-enterprise-tutorial.png)| [Mozy Enterprise](mozy-enterprise-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-mypolicies-tutorial.png)| [myPolicies](mypolicies-tutorial.md)|
 
-
 ## <a name="n---o"></a>N - O
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -372,6 +374,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-netsuite-tutorial.png)| [Netsuite](netsuite-tutorial.md)|[Netsuite — Inicjowanie obsługi użytkowników](netsuite-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-new-relic-tutorial.png)| [New Relic](new-relic-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-nexonia-tutorial.png)| [Nexonia](nexonia-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-nimblex-tutorial.png)| [Nimblex](nimblex-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-nomadesk-tutorial.png)| [Nomadesk](nomadesk-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-nomadic-tutorial.png)| [Nomadic](nomadic-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-novatus-tutorial.png)| [Novatus](novatus-tutorial.md)|
@@ -452,7 +455,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-rollbar-tutorial.png)| [Pałąka zabezpieczającego](rollbar-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-runmyprocess-tutorial.png)| [RunMyProcess](runmyprocess-tutorial.md)|
 
-
 ## <a name="s"></a>S
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -476,6 +478,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-sap-netweaver-tutorial.png)| [Oprogramowanie SAP NetWeaver](sap-netweaver-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-scalexenterprise-tutorial.png)| [ScaleX Enterprise](scalexenterprise-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-scclifecycle-tutorial.png)| [SCC LifeCycle](scclifecycle-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-screencast-tutorial.png)| [Zrzut ekranu O-obie](screencast-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-schoox-tutorial.png)| [Schoox](schoox-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-sciforma-tutorial.png)| [Sciforma](sciforma-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-sciquest-spend-director-tutorial.png)| [SciQuest wydatki, Dyrektor ds.](sciquest-spend-director-tutorial.md)|
@@ -523,7 +526,7 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-syncplicity-tutorial.png)| [Syncplicity](syncplicity-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-synergi-tutorial.png)| [Synergi](synergi-tutorial.md)|
 
-## <a name="t"></a>T
+## <a name="t---u---v"></a>T - U - V
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
 | :---: | :--- | :--- |
@@ -571,7 +574,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-voyance-tutorial.png)| [Voyance](voyance-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-vxmaintain-tutorial.png)| [vxMaintain](vxmaintain-tutorial.md)|
 
-
 ## <a name="w---z"></a>W - Z
 
 | Logo | Samouczek dotyczący aplikacji dla logowania jednokrotnego | Samouczek dotyczący aplikacji dla aprowizacji użytkowników |
@@ -610,8 +612,6 @@ Aby uzyskać pełną listę aplikacji SaaS, które zostały wstępnie zintegrowa
 | ![logo](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-zwayam-tutorial.png)| [Zwayam](zwayam-tutorial.md)|
 
-
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
 [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
-

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Azure Active Directory Zarządzanie urządzeniami — często zadawane pytania.
+description: Usługa Azure Active Directory Zarządzanie urządzeniami — często zadawane pytania.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,163 +15,176 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 864f790db48d3d4542ed56a4c7272a198df5bd56
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309862"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901140"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
 
 
-**Pytanie: jak zarejestrować urządzenie macOS?**
+**P: jak mogę zarejestrować urządzenia z systemem macOS**
 
-**Odpowiedź:** zarejestrować urządzenie macOS:
+**Odp.:** do zarejestrowania urządzenia z systemem macOS:
 
 1.  [Tworzenie zasad zgodności](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [Definiowanie zasad dostępu warunkowego dla urządzeń macOS](active-directory-conditional-access-azure-portal.md) 
+2.  [Definiowanie zasad dostępu warunkowego dla urządzeń z systemem macOS](active-directory-conditional-access-azure-portal.md) 
 
 **Uwagi:**
 
-- Użytkownicy, które znajdują się w zasadach dostępu warunkowego muszą [obsługiwana wersja pakietu Office dla macOS](active-directory-conditional-access-technical-reference.md#client-apps-condition) dostęp do zasobów. 
+- Użytkownicy, zawarte w zasadach dostępu warunkowego muszą [obsługiwana wersja pakietu Office dla systemu macOS](active-directory-conditional-access-technical-reference.md#client-apps-condition) uzyskują dostęp do zasobów. 
 
-- Podczas pierwszej próby dostępu użytkownikom monit o zarejestrowanie urządzenia przy użyciu portalu firmy.
+- Podczas pierwszej próby dostępu do usługi Użytkownicy są monitowani o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
 ---
 
-**Pytanie: czy mogę ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje użytkownika w portalu Azure?**
+**P: czy mogę ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal?**
 
-**Odpowiedź:** urządzenia systemu Windows 10, które są hybrydowego przyłączonych do usługi Azure AD nie są wyświetlane w obszarze urządzenia użytkowników.
-Należy użyć widoku wszystkich urządzeń w portalu Azure. Można również użyć środowiska PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
+**Odp.:** urządzenia z systemem Windows 10, które są hybrydowe przyłączone do usługi Azure AD nie są wyświetlane w obszarze urządzeń użytkowników.
+Należy użyć widoku wszystkich urządzeń w witrynie Azure portal. Możesz również użyć programu PowerShell [Get MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
-Urządzenia użytkowników należą następujące urządzenia:
+Następujące urządzenia zostaną wyświetlone w obszarze urządzenia użytkownika:
 
-- Przyłączony do wszystkich urządzeń osobistych, które nie są hybrydowej usługi Azure AD. 
-- Wszystkie z systemem innym niż Windows 10 / urządzeń z systemem Windows Server 2016.
-- Wszystkie urządzenia z systemem innym niż Windows 
+- Przyłączone do wszystkich urządzeń osobistych, które nie są hybrydowej usługi Azure AD. 
+- Wszystkie inne niż - Windows 10 / urządzeń z systemem Windows Server 2016.
+- Wszystkie urządzenia inne niż Windows 
 
 --- 
 
-**Pytanie: jak sprawdzić, co to jest stan rejestracji urządzenia klienta?**
+**P: jak mogę się dowiedzieć, stanu rejestracji urządzenia klienta się?**
 
-**Odpowiedź:** mogą korzystać z portalu Azure, przejdź do wszystkich urządzeń i wyszukaj urządzenia przy użyciu identyfikatora urządzenia. Sprawdź wartość w kolumnie Typ sprzężenia.
+**Odp.:** można użyć witryny Azure portal, przejdź do wszystkich urządzeń i wyszukaj urządzenia przy użyciu identyfikatora urządzenia. Sprawdź wartości w kolumnie Typ sprzężenia.
 
-Jeśli chcesz sprawdzić stan rejestracji urządzenia lokalnego z zarejestrowanym urządzeniem:
+Jeśli chcesz sprawdzić stan rejestracji urządzenia lokalnego z zarejestrowanych urządzeń:
 
-- W przypadku systemu Windows 10 i Windows Server 2016 lub urządzenia z nowszymi wersjami uruchomić dsregcmd.exe/status.
-- Dla wcześniejszych wersji systemu operacyjnego uruchom "%programFiles%\Microsoft Join\autoworkplace.exe obszar roboczy"
+- W przypadku systemu Windows 10 i Windows Server 2016 lub nowszym należy uruchomić dsregcmd.exe parametru/status.
+- Dla wcześniejszych wersji systemu operacyjnego należy uruchomić "%programFiles%\Microsoft Join\autoworkplace.exe obszar roboczy"
 
 ---
 
-**Pytanie: czy mogę został usunięty w portalu Azure lub za pomocą środowiska Windows PowerShell, ale stanu lokalnego na urządzeniu wskazuje, że wskazuje on nadal zarejestrowany?**
+**Usunięto pytanie w witrynie Azure portal lub za pomocą programu Windows PowerShell, ale stan lokalnego na urządzeniu jest wyświetlany komunikat jest nadal zarejestrowany?**
 
-**Odpowiedź:** to jest celowe. Urządzenie nie ma dostępu do zasobów w chmurze. 
+**Odp.:** to jest celowe. Urządzenie nie będzie dostępu do zasobów w chmurze. 
 
-Jeśli chcesz ponownie zarejestrować ponownie akcji ręcznej musi być podejmowane na urządzeniu. 
+Jeśli chcesz ponownie zarejestrować ponownie, akcji ręcznych musi być podejmowane na urządzeniu. 
 
-Wyczyść stan przyłączenia z systemem Windows 10 i Windows Server 2016, które są lokalne przyłączonych do domeny usługi AD:
+Aby wyczyścić stanu dołączania do, z systemem Windows 10 i Windows Server 2016, które są lokalnej usługi AD przyłączonych do domeny:
 
 1.  Otwórz wiersz polecenia jako administrator.
 
 2.  Typ `dsregcmd.exe /debug /leave`
 
-3.  Wyloguj się i zaloguj się do wyzwolenia zaplanowane zadanie, które rejestruje urządzenia z usługą Azure AD ponownie. 
+3.  Wyloguj się i zaloguj się w celu wyzwolenia zaplanowane zadanie, które rejestruje urządzenie z usługą Azure AD ponownie. 
 
-Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD przyłączonych do domeny:
+Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się na obszarze AD przyłączonych do domeny:
 
 1.  Otwórz wiersz polecenia jako administrator.
 2.  Wpisz polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Wpisz polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
 ---
-** Pytanie: Jak I odłączanie urządzenia z systemem Azure AD Joined lokalnie na urządzeniu?
-**ODP.:** 
-- Dla hybrydowe usługi Azure AD urządzeń w miejscu pracy upewnij się, że wyłączyć rejestracji automatycznej tak, aby zaplanowane zadanie nie rejestruje urządzenie ponownie. Następnie otwórz wiersz polecenia jako administrator, a typ `dsregcmd.exe /debug /leave`. Alternatywnie to polecenie może działać jako skrypt na wielu urządzeniach można odłączyć od zbiorczo.
+**P: jak mogę odłączenia urządzenia z systemem Azure AD dołączono lokalnie na urządzeniu?**
 
-- Dla czystego Joined Azure AD urządzeń, upewnij się, że masz w trybie offline administrator lokalny, konto lub utworzyć, ponieważ nie można zalogować się przy użyciu dowolnego poświadczeń użytkownika usługi Azure AD. Następnie należy przejść do **ustawienia** > **kont** > **dostępu służbowego**. Wybierz konto, a następnie wybierz polecenie **rozłączenia**. Postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego, po wyświetleniu monitu. Uruchom ponownie urządzenie, aby ukończyć proces odłączania.
+**ODP.:** 
+- Do hybrydowej usługi Azure AD urządzeń w miejscu pracy upewnij się wyłączyć rejestracji automatycznej, tak aby zaplanowane zadanie nie ponownie zarejestrować urządzenie. Następnie otwórz wiersz polecenia jako administrator i wpisz `dsregcmd.exe /debug /leave`. To polecenie można również uruchomić jako skrypt na wielu urządzeniach odłączyć zbiorczo.
+
+- Dla czystych dołączono usługi Azure AD do urządzeń, upewnij się, w trybie offline administrator lokalny, konto lub utwórz je, ponieważ nie będzie można zalogować się przy użyciu żadnych poświadczeń użytkownika usługi Azure AD. Następnie przejdź do **ustawienia** > **kont** > **dostęp do zasobów służbowych**. Wybierz swoje konto i kliknij **rozłączenia**. Postępuj zgodnie z monitami i podaj poświadczenia administratora lokalnego po wyświetleniu monitu. Uruchom ponownie urządzenie, aby ukończyć proces odłączania.
 
 ---
 
-**Pytanie: Dlaczego Zobacz urządzenia zduplikowanych wpisów w portalu Azure?**
+**Pytanie: Moja użytkownicy nie mogą wyszukiwać drukarki z usługi Azure AD urządzeń w miejscu pracy. Jak włączyć drukowanie z usługi Azure AD urządzeń w miejscu pracy?**
+
+**Odp.:** wdrażania drukarek dla usługi Azure AD urządzeń w miejscu pracy, zobacz [drukowania chmury hybrydowej](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Oparte na chmurze usługi drukowania nie jest obecnie dostępna. 
+
+---
+
+**P: Dlaczego są wyświetlane urządzenia zduplikowanych wpisów w witrynie Azure portal?**
 
 **ODP.:**
 
--   Dla systemu Windows 10 i Windows Server 2016 w przypadku kolejnych nieudanych prób Odłączanie i dołączyć ponownie do tego samego urządzenia mogą istnieć zduplikowane wpisy. 
+-   Dla systemu Windows 10 i Windows Server 2016 w przypadku wielu prób Odłącz i ponownie dołączyć do tego samego urządzenia mogą istnieć zduplikowane wpisy. 
 
--   Jeśli używasz konta Dodaj firmowego lub szkolnego każdego użytkownika systemu windows, który używa konta Dodaj firmowego lub szkolnego utworzy nowy rekord urządzenia z tę samą nazwę urządzenia.
+-   Jeśli używano dodać pracy konta firmowego lub szkolnego każdego użytkownika systemu windows, który używa Dodaj pracy lub nauki utworzy nowy rekord urządzenia o takiej samej nazwie urządzenia.
 
--   Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD przyłączonych do domeny za pomocą automatycznej rejestracji utworzy nowy rekord urządzenia tę samą nazwę urządzenia dla każdego użytkownika domeny, który loguje się do urządzenia. 
+-   Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się na obszarze AD przyłączonych do domeny przy użyciu automatycznej rejestracji utworzy nowy rekord urządzenia z taką samą nazwę urządzenia dla każdego użytkownika domeny, który loguje się do urządzenia. 
 
--   Komputerze dołączonym do usługi Azure AD, zostały wyczyszczone, ponowna instalacja i ponownie połączony z tej samej nazwie, zostaną wyświetlone jako inny rekord z tą samą nazwą urządzenia.
+-   Komputerze dołączonym do usługi Azure AD, które zostały wyczyszczone, ponowna instalacja i ponownie połączyć z taką samą nazwę, pojawi się jako inny rekord o takiej samej nazwie urządzenia.
 
 ---
 
-**Pytanie: Dlaczego użytkownik nadal dostęp do zasobów z urządzenia, które można wyłączyć w portalu Azure?**
+**Pytanie: Dlaczego może użytkownik nadal dostęp do zasobów z urządzenia, wyłączenia w witrynie Azure portal?**
 
-**Odpowiedź:** może potrwać do godziny dla odwołania do zastosowania.
+**Odp.:** może potrwać do godziny odwołania mają być stosowane.
 
 >[!Note] 
->Dla zarejestrowanych urządzeń zaleca się czyszczenie urządzenia, aby upewnić się, że użytkownicy nie mogą uzyskać dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [rejestrowanie urządzeń do zarządzania w usłudze Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Dla zarejestrowanych urządzeń zaleca się wyczyszczenie urządzenia, aby upewnić się, że użytkownicy nie mogą uzyskać dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [rejestrowania urządzeń na potrzeby zarządzania przez usługę Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
-**Pytanie: Dlaczego Moi użytkownicy widzą "Nie można pobrać istnieje w tym miejscu"?**
+**P: Dlaczego Moi użytkownicy widzą "Nie można dostać się tam z tego miejsca"?**
 
-**Odpowiedź:** Jeśli został skonfigurowany, niektóre zasady dostępu warunkowego będą musieli stanu określonego urządzenia, a urządzenie nie spełnia kryteriów, użytkownicy są blokowane, a ten komunikat zostanie wyświetlony. Oszacowanie reguł zasad dostępu warunkowego i upewnij się, że urządzenie jest w stanie spełnia kryteria, aby uniknąć występowania tego komunikatu.
-
----
-
-
-**Pytanie: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w portalu Azure i można zobaczyć stan w zarejestrowany na urządzeniu. Czy prawidłowo skonfigurować do korzystania z dostępu warunkowego?**
-
-**Odpowiedź:** stan przyłączenia urządzenia, sprawdzając deviceID, musi zgodne ze specyfikacją na usługi Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestracji urządzeń usługi Azure Active Directory](active-directory-device-registration.md).
+**Odp.:** Jeśli skonfigurowano niektóre zasady dostępu warunkowego będą musieli stan określonego urządzenia, a urządzenie nie spełnia kryteria, użytkownicy są zablokowane i ten komunikat jest wyświetlany. Oceń reguły dostępu warunkowego i upewnij się, że urządzenie jest w stanie spełnić kryteria, aby uniknąć tego komunikatu.
 
 ---
 
-**Pytanie: Dlaczego uzyskać komunikat "Nazwa użytkownika lub hasło jest niepoprawne" dla urządzenia, które tylko po dołączeniu do usługi Azure AD?**
+**Urządzenia przyłączone do pytanie: Dlaczego niektóre Moi użytkownicy robią get monitów uwierzytelniania Wieloskładnikowego w usłudze Azure AD?**
 
-**Odpowiedź:** są typowe przyczyny tego scenariusza:
+**Odp.:** użytkownik łączy lub rejestruje urządzenie w usłudze Azure AD przy użyciu uwierzytelniania wieloskładnikowego, urządzeniu staną się zaufanych drugi składnik dla tego konkretnego użytkownika. Następnie zawsze wtedy, gdy ten sam użytkownik loguje się do urządzenia i uzyskuje dostęp do aplikacji, usługi Azure AD uwzględnia urządzenia jako drugiego składnika i umożliwia użytkownikowi uzyskiwanie dostępu do swoich aplikacji bez dodatkowych monitów uwierzytelniania Wieloskładnikowego. To zachowanie nie ma zastosowania do żadnego innego użytkownika, logując się do tego urządzenia, dzięki czemu wszystkim innym użytkownikom uzyskiwanie dostępu do tego urządzenia nadal jest proszony o żądania uwierzytelniania MFA przed uzyskaniem dostępu do aplikacji, które wymagają usługi MFA.
+
+---
+
+**P: czy mogę zobaczyć rekordem urządzenia w obszarze informacje o użytkowniku w witrynie Azure portal i można wyświetlić stan, jak zarejestrować się na urządzeniu. Czy poprawnie skonfigurować do korzystania z dostępu warunkowego?**
+
+**Odp.:** stanu dołączania do urządzenia, dostarczanej przez deviceID, musi być zgodne z tym w usłudze Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Active Directory rejestracji urządzenia](active-directory-device-registration.md).
+
+---
+
+**P: Dlaczego uzyskać komunikat "Nazwa użytkownika lub hasło jest niepoprawne" dla urządzenia, które mogę po prostu przyłączył się do usługi Azure AD?**
+
+**Odp.:** typowe przyczyny tego scenariusza:
 
 - Poświadczenia użytkownika nie są już prawidłowe.
 
 - Komputer nie może nawiązać połączenia z usługą Azure Active Directory. Sprawdź, czy wszystkie problemy z połączeniem sieciowym.
 
-- Azure AD Join wymagania wstępne nie zostały spełnione. Upewnij się, że zostały wykonane kroki [rozszerzanie funkcji chmury na urządzeniach z systemem Windows 10 za pomocą usługi Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
+- Azure AD Join wymagania wstępne nie zostały spełnione. Upewnij się, że zostały wykonane kroki [rozszerzanie możliwości chmury do urządzeń z systemem Windows 10 za pomocą usługi Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
 
-- Logowania federacyjnego wymaga serwerze federacyjnym w celu obsługi aktywny punkt końcowy protokołu WS-Trust. 
+- Logowania federacyjnego wymaga serwerze federacyjnym do obsługi aktywny punkt końcowy protokołu WS-Trust. 
 
-- Włączono przekazywania uwierzytelniania i użytkownik ma hasło tymczasowe, które muszą być zmienione podczas logowania.
-
----
-
-**Pytanie: Dlaczego zobacz "Oops... Wystąpił błąd!" okna dialogowego przy próbie, czy usługi Azure AD join komputer?**
-
-**Odpowiedź:** jest to wynik konfigurowania rejestracji usługi Azure Active Directory z usługą Intune. Upewnij się, że użytkownik próby przyłączenia usługi Azure AD ma poprawne przypisanej licencji usługi Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zarządzania urządzeniami z systemem Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+- Włączono przekazywania uwierzytelniania, a użytkownik ma hasło tymczasowe, które musi zostać zmienione podczas logowania.
 
 ---
 
-**Pytanie: Dlaczego moja próby dołączenia komputera nie chociaż uzyskane informacje o błędzie?**
+**P: dlaczego widzę "Niestety... Wystąpił błąd!" okno dialogowe, gdy próbuję, czy usługa Azure AD join komputera?**
 
-**Odpowiedź:** prawdopodobną przyczyną jest, że użytkownik jest zalogowany do urządzenia przy użyciu konta wbudowanego konta administratora lokalnego. Utwórz konto lokalne różnych przed przy użyciu usługi Azure Active Directory Join, aby ukończyć instalację. 
-
----
-
-**Pytanie: gdzie można znaleźć instrukcje do instalacji automatycznej rejestracji urządzeń?**
-
-**Odpowiedź:** szczegółowe instrukcje, zobacz [Konfigurowanie automatycznej rejestracji urządzeń z systemem Windows przyłączonych do domeny w usłudze Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+**Odp.:** jest wynikiem konfigurowania rejestracji w usłudze Azure Active Directory przy użyciu usługi Intune. Upewnij się, że użytkownik próby wykonania sprzężenia Azure AD ma poprawne przypisano licencji usługi Intune. Aby uzyskać więcej informacji, zobacz [skonfigurować zarządzanie urządzeniami Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 
-**Pytanie: gdzie mogę znaleźć, rozwiązywanie problemów z informacji o automatycznej rejestracji urządzeń?**
+**Pytanie: Dlaczego nie się Próba przyłączenia komputera, mimo że nie mogę uzyskać informacje o błędzie?**
 
-**Odpowiedź:** informacje dotyczące rozwiązywania problemów, zobacz:
+**Odp.:** prawdopodobną przyczyną jest to, że użytkownik jest zalogowany do urządzenia przy użyciu konta wbudowanego konta administratora lokalnego. Przed użyciem usługi Azure Active Directory Join, aby ukończyć instalację, Utwórz innego konta lokalnego. 
 
-- [Rozwiązywanie problemów z automatyczną rejestrację domeny komputery przyłączone do usługi Azure AD — Windows 10 i Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
+---
 
-- [Rozwiązywanie problemów z automatyczną rejestrację domeny komputery przyłączone do usługi Azure AD dla klientów niższego poziomu z systemem Windows](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+**P: gdzie można znaleźć instrukcje dotyczące instalacji automatycznej rejestracji urządzeń**
+
+**Odp.:** szczegółowe instrukcje można znaleźć [Konfigurowanie automatycznej rejestracji urządzeń przyłączonych do domeny Windows w usłudze Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+---
+
+**P: gdzie można znaleźć Rozwiązywanie problemów z informacji o rejestracji urządzenia automatycznego?**
+
+**Odp.:** informacje dotyczące rozwiązywania problemów, zobacz:
+
+- [Rozwiązywanie problemów z automatyczną rejestracją domeny komputery przyłączone do usługi Azure AD — system Windows 10 i Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md)
+
+- [Rozwiązywanie problemów z automatyczną rejestracją domeny komputery przyłączone do usługi Azure AD dla klientów niskiego poziomu Windows](device-management-troubleshoot-hybrid-join-windows-legacy.md)
  
+
 ---
 

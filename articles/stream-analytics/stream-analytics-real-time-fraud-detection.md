@@ -1,135 +1,136 @@
 ---
-title: Wykrywanie oszustw w czasie rzeczywistym za pomocą usługi Azure Stream Analytics
-description: Dowiedz się, jak utworzyć rozwiązanie wykrywania oszustw w czasie rzeczywistym z usługi Stream Analytics. Użyj Centrum zdarzeń do przetwarzania zdarzeń w czasie rzeczywistym.
+title: Wykrywanie oszustw w czasie rzeczywistym przy użyciu usługi Azure Stream Analytics
+description: Dowiedz się, jak utworzyć rozwiązanie wykrywania oszustw w czasie rzeczywistym za pomocą usługi Stream Analytics. Użyj Centrum zdarzeń do przetwarzania zdarzeń w czasie rzeczywistym.
 services: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: mamccrea
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824765"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901718"
 ---
-# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczynanie pracy przy użyciu usługi Azure Stream Analytics: wykrywanie oszustw w czasie rzeczywistym
+# <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: wykrywanie oszustw w czasie rzeczywistym
 
-Ten samouczek zawiera ilustrację end-to-end można używać usługi Azure Stream Analytics. Omawiane kwestie: 
+Ten samouczek zawiera end-to-end ilustruje sposób używania usługi Azure Stream Analytics. Omawiane kwestie: 
 
-* Przełącz strumienia zdarzeń do wystąpienia usługi Azure Event hubs. W tym samouczku użyjesz aplikacji, która udostępniamy symulujący strumienia rekordów metadanych telefonu komórkowego.
+* Przenieś do wystąpienia usługi Azure Event Hubs przesyłania strumieniowego wydarzeń. W tym samouczku użyjesz aplikacji, która symuluje strumienia metadanych telefon komórkowy rekordów.
 
-* Pisanie zapytań usługi Stream Analytics przypominającego SQL do przekształcania danych, agregowanie informacji lub będzie zaglądać wzorców. Pojawi się jak używać kwerendy do badania strumienia przychodzącego i wyszukaj wywołania, które mogą być fałszywe.
+* Pisanie zapytań przypominający SQL Stream Analytics do przekształcania danych, agregacji informacji lub będzie zaglądać wzorców. Zobaczysz jak używać zapytania do badania przychodzącego strumienia i wyszukując wywołania, które mogą być fałszywe.
 
-* Wysyłać wyniki do ujścia danych wyjściowych (magazyn), który można analizować, aby uzyskać dodatkowe informacje szczegółowe. W takim przypadku będzie wysłać dane podejrzane wywołania do magazynu obiektów Blob Azure.
+* Wysłać wyniki do ujścia danych wyjściowych (magazyn), które możesz analizować, aby uzyskać dodatkowe informacje szczegółowe. W tym przypadku będzie wysłać dane wywołania podejrzanej w usłudze Azure Blob storage.
 
-W tym samouczku używamy przykład wykrywanie oszustw w czasie rzeczywistym na podstawie danych z połączenia telefonicznego. Jednak techniki, które firma Microsoft ilustrują nadaje się również dla innych typów wykrywania oszustw, takie jak karty kredytowej oszustwa lub kradzieży tożsamości. 
+W tym samouczku użyto przykładu wykrywanie oszustw w czasie rzeczywistym na podstawie danych połączeń telefonicznych. Techniki przedstawione nadaje się również dla innych typów wykrywania oszustw, np. karta kredytowa oszustwa lub kradzieży tożsamości. 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scenariusz: Telekomunikacyjnych i SIM wykrywanie oszustw w czasie rzeczywistym
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Scenariusz: Telekomunikacji i SIM wykrywanie oszustw w czasie rzeczywistym
 
-Firmy telekomunikacyjnych ma duże ilości danych na połączenia przychodzące. Firma chce, aby wykryć fałszywych wywołań w czasie rzeczywistym, aby mogli powiadamiać klientów lub wyłączyć usługi dla określonej liczby. Jeden typ oszustwa SIM obejmuje wiele wywołań z tej samej tożsamości zbliżonym do czasu, ale w geograficznie różnych lokalizacjach. Do wykrywania oszustw tego typu, firma musi zbadać przychodzące rekordów telefonu i szukania wzorców określonych — w takim przypadku dla wywołań zbliżonym do czasu z różnych krajów. Rekordy telefonu, które należą do tej kategorii są zapisywane w pamięci masowej do dalszej analizy.
+Firma ma dużą ilość danych dla połączeń przychodzących. Firma chce wykrywanie fałszywych połączeń w czasie rzeczywistym, aby mogli powiadomienie dla klientów lub wyłączenie usługi dla określonej liczby. Jeden typ o oszustwie SIM obejmuje wiele wywołań z tej samej tożsamości, w tym samym czasie, ale w geograficznie różnych lokalizacjach. Aby wykryć tego rodzaju oszustwa, firma musi sprawdzić rekordach przychodzących telefonu i poszukaj pod kątem określonych wzorców — w tym przypadku do wywołania na tym samym czasie w różnych krajach. Wszystkie rekordy telefonu, które należą do tej kategorii są zapisywane do magazynu w celu dalszej analizy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku będzie symulować rozmowy telefonicznej danych przy użyciu aplikacji klienta, która generuje próbki rozmowy telefonicznej metadanych. Niektóre rekordy, które tworzy aplikację wyglądać fałszywych wywołania. 
+W tym samouczku będziesz symulować danych połączeń telefonicznych za pomocą aplikacji klienckiej, która generuje przykładowe połączenia telefonicznego metadanych. Niektóre rekordy, które aplikacja generuje wyglądać fałszywe wywołania. 
 
 Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Konto platformy Azure.
-* Zdarzenie wywołania generator aplikacji. Możesz uzyskać dostęp do tej pobierając [pliku TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z Microsoft Download Center. Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz wyświetlić źródła kodu i uruchamianie aplikacji w debugerze, można pobrać kodu źródłowego aplikacji z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikację generatora zdarzeń wywołania, [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), który można pobrać z Microsoft Download Center. Rozpakuj pakiet do folderu na komputerze. Jeśli chcesz zobaczyć źródło kodu i uruchomić aplikację w debugerze, możesz pobrać kod źródłowy aplikacji z [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
-    >System Windows może blokować pliku zip pobranego. Jeśli nie można rozpakować go, kliknij prawym przyciskiem myszy plik i wybierz **właściwości**. Jeśli zostanie wyświetlony komunikat "ten plik pochodzi z innego komputera i może zostać zablokowany w celu ochrony tego komputera", wybierz **Odblokuj** opcji, a następnie kliknij przycisk **Zastosuj**.
+    >Windows może spowodować zablokowanie pliku zip pobranego. Jeśli nie można rozpakować go, kliknij prawym przyciskiem myszy plik, a następnie wybierz **właściwości**. Jeśli zostanie wyświetlony komunikat "ten plik pochodzi z innego komputera i może zostać zablokowany, aby pomóc chronić ten komputer", wybierz opcję **odblokowanie** opcji, a następnie kliknij przycisk **Zastosuj**.
 
-Jeśli chcesz przejrzeć wyniki zadanie analizy przesyłania strumieniowego, należy również narzędzia do wyświetlania zawartości kontenera magazynu obiektów Blob Azure. Jeśli używasz programu Visual Studio, możesz użyć [Azure Tools dla programu Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) lub [programu Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer). Alternatywnie można zainstalować narzędzi autonomicznych, takich jak [Eksploratora usługi Storage Azure](http://storageexplorer.com/) lub [Eksploratora Azure](http://www.cerebrata.com/products/azure-explorer/introduction). 
+Jeśli chcesz przejrzeć wyniki zadania usługi Stream Analytics, należy również narzędzie do przeglądania zawartości kontenera usługi Azure Blob Storage. Jeśli używasz programu Visual Studio, możesz użyć [Azure Tools dla programu Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) lub [programu Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer). Alternatywnie, można zainstalować narzędzi autonomicznych, takich jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/) lub [Eksploratora usługi Azure](http://www.cerebrata.com/products/azure-explorer/introduction). 
 
-## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Tworzenie usługi Azure event koncentratory pozyskiwanie zdarzenia
+## <a name="create-an-azure-event-hubs-to-ingest-events"></a>Tworzenie usługi Azure Event Hubs w celu pozyskania zdarzeń
 
-Do analizy strumienia danych, możesz *pozyskiwania* go na platformie Azure. Typowy sposób pozyskiwania danych jest użycie [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), które pozwala obsługiwać miliony zdarzeń na sekundę, a następnie przetwarzania i przechowywania informacji o zdarzeniu. W tym samouczku tworzenia Centrum zdarzeń i mieć aplikacji generator zdarzenie wywołania wysyłać dane wywołania do tego Centrum zdarzeń. Aby uzyskać więcej informacji na temat usługi event hubs, zobacz [dokumentacji usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
+Do analizowania strumienia danych, możesz *pozyskiwania* go na platformę Azure. Typowy sposób w celu pozyskiwania danych jest użycie [usługi Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md), który umożliwia obsługę milionów zdarzeń na sekundę i następnie przetwarzania i przechowywania informacji o zdarzeniach. Na potrzeby tego samouczka utworzysz Centrum zdarzeń i wybrać aplikację generatora zdarzeń wywołania wysłania danych połączeń do tego Centrum zdarzeń. Aby uzyskać więcej informacji o usłudze event hubs, zobacz [dokumentacji usługi Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
 
 >[!NOTE]
->Bardziej szczegółowe wersja tej procedury dla [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą portalu Azure](../event-hubs/event-hubs-create.md). 
+>Bardziej szczegółowe wersja tej procedury, zobacz [tworzenie przestrzeni nazw usługi Event Hubs i Centrum zdarzeń za pomocą witryny Azure portal](../event-hubs/event-hubs-create.md). 
 
-### <a name="create-a-namespace-and-event-hub"></a>Tworzenie Centrum przestrzeń nazw i zdarzeń
-W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a następnie Centrum zdarzeń należy dodać do tej przestrzeni nazw. Przestrzenie nazw Centrum zdarzeń są używane do logicznego grupowania wystąpień magistrali powiązanych zdarzeń. 
+### <a name="create-a-namespace-and-event-hub"></a>Tworzenie przestrzeni nazw i Centrum zdarzeń
+W tej procedurze należy najpierw utworzyć przestrzeń nazw Centrum zdarzeń, a następnie dodaj Centrum zdarzeń do tego obszaru nazw. Przestrzenie nazw Centrum zdarzeń są używane do logicznego pogrupowania wystąpień magistrali powiązanych zdarzeń. 
 
-1. Zaloguj się do portalu Azure, a następnie kliknij przycisk **Utwórz zasób** > **Internetu rzeczy** > **Centrum zdarzeń**. 
+1. Zaloguj się do witryny Azure portal, a następnie kliknij przycisk **Utwórz zasób** > **Internet of Things** > **Centrum zdarzeń**. 
 
-2. W **tworzenie przestrzeni nazw** okienku, wprowadź nazwę przestrzeni nazw, takich jak `<yourname>-eh-ns-demo`. Można użyć dowolnej nazwy przestrzeni nazw, ale nazwa musi być prawidłowa dla danego adresu URL i między Azure musi być unikatowa. 
+2. W **tworzenie przestrzeni nazw** okienku, wprowadź nazwę przestrzeni nazw, takich jak `<yourname>-eh-ns-demo`. Można użyć dowolnej nazwy dla przestrzeni nazw, ale nazwa musi mieć prawidłowy dla danego adresu URL i na platformie Azure musi być unikatowa. 
     
-3. Wybierz subskrypcję i Utwórz lub wybierz grupę zasobów, a następnie kliknij przycisk **Utwórz**. 
+3. Wybierz subskrypcję i Utwórz lub wybierz grupę zasobów, a następnie kliknij przycisk **Utwórz**.
 
-    ![Tworzenie przestrzeni nazw Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="drawing" width="300px"/>
+
+4. Po zakończeniu wdrażania przestrzeni nazw, należy znaleźć przestrzeń nazw Centrum zdarzeń, na liście zasobów platformy Azure. 
+
+5. Kliknij nową przestrzeń nazw, a następnie w okienku przestrzeni nazw kliknij **Centrum zdarzeń**.
+
+   ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-4. Po zakończeniu przestrzeń nazw wdrażania można znaleźć przestrzeni nazw zdarzenia koncentratora na liście zasobów platformy Azure. 
+6. Nazwa nowego Centrum zdarzeń `asa-eh-frauddetection-demo`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj je, ponieważ nazwa będą potrzebne później. Nie musisz teraz Ustaw inne opcje dla Centrum zdarzeń.
 
-5. Kliknij nowy obszar nazw, a w okienku przestrzeni nazw kliknij **Centrum zdarzeń**.
-
-    ![Przycisk Dodaj Centrum zdarzeń do tworzenia nowego Centrum zdarzeń ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
- 
-6. Nazwa nowego Centrum zdarzeń `sa-eh-frauddetection-demo`. Możesz użyć innej nazwy. Jeśli to zrobisz, zanotuj, ponieważ później potrzebne. Nie musisz teraz Ustaw inne opcje dla Centrum zdarzeń.
-
-    ![Blok do tworzenia nowego Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="drawing" width="400px"/>
     
  
 7. Kliknij przycisk **Utwórz**.
+
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udzielanie dostępu do centrum zdarzeń i pobieranie parametrów połączenia
 
-Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mieć zasadę, która umożliwia uzyskanie odpowiedniego dostępu. Zasady dostępu generują parametry połączenia, które zawierają informacje o autoryzacji.
+Zanim proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń musi mieć zasady, które zezwalają na odpowiedni dostęp. Zasady dostępu generują parametry połączenia, które zawierają informacje o autoryzacji.
 
-1.  W okienku przestrzeni nazw zdarzeń kliknij **usługi Event Hubs** , a następnie kliknij nazwę nowego Centrum zdarzeń.
+1.  W okienku przestrzeni nazw zdarzeń kliknij **usługi Event Hubs** a następnie kliknij nazwę nowego Centrum zdarzeń.
 
-2.  W okienku Centrum zdarzeń, kliknij przycisk **zasady dostępu współużytkowanego** , a następnie kliknij przycisk  **+ &nbsp;Dodaj**.
+2.  W okienku Centrum zdarzeń, kliknij przycisk **zasady dostępu współdzielonego** a następnie kliknij przycisk  **+ &nbsp;Dodaj**.
 
     >[!NOTE]
     >Upewnij się, że pracujesz z Centrum zdarzeń, a nie nazw Centrum zdarzeń.
 
-3.  Dodaj zasady o nazwie `sa-policy-manage-demo` i **oświadczeń**, wybierz pozycję **Zarządzaj**.
+3.  Dodawanie zasad o nazwie `sa-policy-manage-demo` i **oświadczenia**, wybierz opcję **Zarządzaj**.
 
-    ![Blok do tworzenia nowych zasad dostępu do Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="drawing" width="300px"/>
  
 4.  Kliknij przycisk **Utwórz**.
 
-5.  Po wdrożeniu zasad, kliknij go na liście zasady dostępu współdzielonego.
+5.  Po wdrożeniu zasad kliknij je na liście zasad dostępu współdzielonego.
 
-6.  Znajdź pole o nazwie **klucz podstawowy ciąg połączenia** i kliknij przycisk Kopiuj obok ciągu połączenia. 
-    
-    ![Kopiowanie klucza podstawowego połączenia ciągu z zasad dostępu](./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png)
+6.  Znajdź pole o nazwie **parametry połączenia — klucz podstawowy** i kliknij przycisk kopiowania obok parametrów połączenia. 
+
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="drawing" width="300px"/>
  
-7.  Wklej parametry połączenia do edytora tekstu. Należy tego ciągu połączenia dla następnej sekcji, po wprowadzeniu niektóre zmiany mała do niego.
+7.  Wklej parametry połączenia do edytora tekstu. Potrzebujesz te parametry połączenia dla następnej sekcji, po wprowadzeniu niektórych drobnych modyfikacji do niego.
 
-    Parametry połączenia wygląda następująco:
+    Parametry połączenia wyglądają następująco:
 
-        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=sa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=sa-eh-frauddetection-demo
+        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
 
-    Powiadomienie, że parametry połączenia zawierają wiele par klucz wartość, oddzielając je średnikami: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`, i `EntityPath`.  
+    Zwróć uwagę, że parametry połączenia zawierają wiele par klucz wartość, oddzielając je średnikami: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`, i `EntityPath`.  
 
-## <a name="configure-and-start-the-event-generator-application"></a>Skonfiguruj i uruchom aplikację generator zdarzeń
+## <a name="configure-and-start-the-event-generator-application"></a>Skonfigurować i uruchomić aplikację generatora zdarzeń
 
-Przed rozpoczęciem TelcoGenerator aplikacji, możesz ją skonfigurować tak, aby wysyła wywołania rekordów do Centrum zdarzeń, który został utworzony.
+Przed uruchomieniem aplikacji TelcoGenerator należy skonfigurować tak, aby rekordy połączeń zostanie wysłane do Centrum zdarzeń, który został utworzony.
 
-### <a name="configure-the-telcogeneratorapp"></a>Skonfiguruj TelcoGeneratorapp
+### <a name="configure-the-telcogenerator-app"></a>Konfigurowanie aplikacji TelcoGenerator
 
-1.  W edytorze, której są kopiowane parametry połączenia, zanotuj `EntityPath` wartość, a następnie usuń `EntityPath` pary (nie zapomnij Usuń średnik przechwyceniem). 
+1.  W edytorze, gdzie został skopiowany ciąg połączenia, zanotuj `EntityPath` wartości, a następnie usuń `EntityPath` pary (nie zapomnij usunąć poprzedzającego ją średnika). 
 
-2.  W folderze, gdzie unzipped pliku TelcoGenerator.zip Otwórz plik telcodatagen.exe.config w edytorze. (Istnieje więcej niż jeden plik .config, dlatego upewnij się, że otworzyć właściwy).
+2.  W folderze, w którym rozpakowano plik TelcoGenerator.zip Otwórz plik telcodatagen.exe.config w edytorze. (Istnieje więcej niż jeden plik Config, dlatego upewnij się, że otworzyć właściwy).
 
 3.  W `<appSettings>` elementu:
 
-    * Ustaw wartość `EventHubName` klucza do nazwy Centrum zdarzeń (oznacza to, że wartość jednostek ścieżki).
-    * Ustaw wartość `Microsoft.ServiceBus.ConnectionString` klucza w parametrach połączenia. 
+    * Ustaw wartość `EventHubName` klucza nazwę Centrum zdarzeń (czyli wartość ścieżka jednostki).
+    * Ustaw wartość `Microsoft.ServiceBus.ConnectionString` klucz do parametrów połączenia. 
 
-    `<appSettings>` Sekcji będzie wyglądać jak w następującym przykładzie. (Dla uzyskania przejrzystości, możemy opakowana wiersze i usunąć niektóre znaki z tokenu autoryzacji.)
+    `<appSettings>` Sekcji będzie wyglądać podobnie jak w poniższym przykładzie. (W celu uściślenia wiersze zostaną opakowane i niektóre znaki zostały usunięte z tokenu autoryzacji).
 
-    ![Plik konfiguracji aplikacji TelcoGenerator przedstawiający ciąg połączenia i nazwę Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
+   ![Plik konfiguracji aplikacji TelcoGenerator przedstawiający parametry połączenia i nazwę Centrum zdarzeń](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
 4.  Zapisz plik. 
 
 ### <a name="start-the-app"></a>Uruchom aplikację
-1.  Otwórz okno polecenia i przejdź do folderu, gdzie jest rozpakowanej aplikacji TelcoGenerator.
+1.  Otwórz okno polecenia i przejdź do folderu, w którym aplikacja TelcoGenerator jest rozpakowany.
 2.  Wprowadź następujące polecenie:
 
         telcodatagen.exe 1000 0.2 2
@@ -137,98 +138,98 @@ Przed rozpoczęciem TelcoGenerator aplikacji, możesz ją skonfigurować tak, ab
     Dostępne są następujące parametry: 
 
     * Liczba CDR na godzinę. 
-    * Prawdopodobieństwo oszustwa karta SIM: Jak często jako procent wszystkich wywołań, że aplikacja powinny symulować fałszywych wywołania. Wartość 0,2 oznacza, że który około 20% rekordów wywołania będzie wyglądać fałszywe.
-    * Czas trwania w godzinach. Liczba godzin, które powinny być uruchamiane w aplikacji. Można również zatrzymać aplikację dowolnej chwili, naciskając klawisze Ctrl + C w wierszu polecenia.
+    * Prawdopodobieństwo oszustwa karty SIM: Jak często w procentach wszystkich wywołań, że aplikacja powinna symulować fałszywe połączenia. Wartość 0.2 oznacza, że że około 20% rekordów połączeń będzie wyglądać na fałszywe.
+    * Czas trwania w godzinach. Liczba godzin, które aplikacja powinna działać. Można je również zatrzymać aplikację dowolnym momencie, naciskając klawisze Ctrl + C w wierszu polecenia.
 
     Po kilku sekundach aplikacja rozpocznie wyświetlanie rekordów połączeń telefonicznych na ekranie w miarę wysyłania ich do centrum zdarzeń.
 
-Niektóre pola klucza, które będą używane w tej aplikacji wykrywanie oszustw w czasie rzeczywistym, są następujące:
+Niektóre pola klucza, które będą używane w tej aplikacji wykrywanie oszustw w czasie rzeczywistym są następujące:
 
 |**Rekord**|**Definicja**|
 |----------|--------------|
 |`CallrecTime`|Znacznik czasu godziny rozpoczęcia połączenia. |
 |`SwitchNum`|Centrala telefoniczna używana do wykonania połączenia. W tym przykładzie centrale są ciągami reprezentującymi kraj pochodzenia (USA, Chiny, Zjednoczone Królestwo, Niemcy lub Australia). |
 |`CallingNum`|Numer telefonu dzwoniącego. |
-|`CallingIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator obiektu wywołującego. |
+|`CallingIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator dzwoniącego. |
 |`CalledNum`|Numer telefonu odbiorcy połączenia. |
-|`CalledIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator odbiorcy wywołania. |
+|`CalledIMSI`|Numer IMSI (International Mobile Subscriber Identity). Jest to unikatowy identyfikator odbiorcy połączenia. |
 
 
-## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>Utwórz zadanie usługi Stream Analytics do zarządzania danymi przesyłania strumieniowego
+## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>Tworzenie zadania usługi Stream Analytics do zarządzania danymi przesyłania strumieniowego
 
-Teraz, gdy masz strumienia zdarzeń wywołania można skonfigurować zadania usługi analiza strumienia. Zadanie będzie odczytywać dane z Centrum zdarzeń, które można skonfigurować. 
+Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie usługi Stream Analytics. Zadanie będzie odczytywać dane z Centrum zdarzeń, który został ustawiony. 
 
 ### <a name="create-the-job"></a>Utwórz zadanie 
 
-1. W portalu Azure kliknij **Utwórz zasób** > **Internetu rzeczy** > **zadanie usługi Stream Analytics**.
+1. W witrynie Azure portal kliknij pozycję **Utwórz zasób** > **Internet of Things** > **zadania usługi Stream Analytics**.
 
-2. Nazwa zadania `sa_frauddetection_job_demo`, określ subskrypcję, lokalizacji i grupy zasobów.
+2. Nadaj nazwę zadaniu `asa_frauddetection_job_demo`, określ subskrypcji, grupy zasobów i lokalizacji.
 
-    Należy dobrze jest umieścić zadania i Centrum zdarzeń, w tym samym regionie, w celu uzyskania najlepszej wydajności i tak, aby nie płaci się na przesyłanie danych między regionami.
+    Jest dobrym pomysłem jest umieszczenie zadania i Centrum zdarzeń w tym samym regionie, w celu uzyskania najlepszej wydajności i tak, aby nie płacić za transfer danych między regionami.
 
-    ![Tworzenie nowego zadania usługi analiza strumienia](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="drawing" width="300px"/>
 
 3. Kliknij przycisk **Utwórz**.
 
-    Zadanie jest tworzony i portalu Wyświetla szczegóły zadania. Nic nie jest jeszcze uruchomiona, ale — należy skonfigurować zadania, aby można było go uruchomić.
+    Zadanie jest tworzone i portalu są wyświetlane szczegóły zadania. Nic nie jest jeszcze uruchomiona, chociaż — należy skonfigurować zadania, zanim można go uruchomić.
 
 ### <a name="configure-job-input"></a>Konfigurowanie danych wejściowych zadania
 
-1. Na pulpicie nawigacyjnym lub **wszystkie zasoby** , Znajdź i wybierz `sa_frauddetection_job_demo` zadania usługi analiza strumienia. 
-2. W **topologii zadania** sekcji okienka zadania Stream Analytics kliknij **dane wejściowe** pole.
+1. Na pulpicie nawigacyjnym lub **wszystkie zasoby** okienko, Znajdź i wybierz `asa_frauddetection_job_demo` zadania usługi Stream Analytics. 
+2. W **Przegląd** sekcji okienka zadania usługi Stream Analytics, kliknij przycisk **dane wejściowe** pole.
 
-    ![Pole wprowadzania w topologii w okienku zadania przesyłania strumieniowego analityka](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
+   ![Pole wejściowe w ramach topologii, w okienku zadania usługi Stream Analytics](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
-3. Kliknij przycisk  **+ &nbsp;Dodaj** , a następnie wypełnij okienko z tymi wartościami:
+3. Kliknij przycisk **Dodaj wejście strumienia** i wybierz **Centrum zdarzeń**. Następnie wprowadź nową stronę danych wejściowych z następującymi informacjami:
 
-    * **Alias wejściowy**: Użyj nazwy `CallStream`. Użyj innej nazwy, aby je zapisać, ponieważ będzie on potrzebny później.
-    * **Typ źródła**: Wybierz **strumienia danych**. (**Danych referencyjnych** odwołuje się do danych statycznych wyszukiwania, które nie będą korzystać z tego samouczka.)
-    * **Źródło**: Wybierz **Centrum zdarzeń**.
-    * **Opcji importowania**: Wybierz **Użyj Centrum zdarzeń z bieżącej subskrypcji**. 
-    * **Przestrzeń nazw magistrali usług**: Wybierz obszar nazw Centrum zdarzeń utworzonego wcześniej (`<yourname>-eh-ns-demo`).
-    * **Centrum zdarzeń**: wybierz utworzony wcześniej Centrum zdarzeń (`sa-eh-frauddetection-demo`).
-    * **Nazwa zasad Centrum zdarzeń**: Wybierz zasady dostępu, który został utworzony wcześniej (`sa-policy-manage-demo`).
+   |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
+   |---------|---------|---------|
+   |Alias danych wejściowych  |  CallStream   |  Wprowadź nazwę identyfikującą dane wejściowe zadania.   |
+   |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma Centrum zdarzeń utworzonego.   |
+   |Przestrzeń nazw centrum zdarzeń  |  asa-eh-ns-demo |  Wprowadź nazwę przestrzeni nazw Centrum zdarzeń.   |
+   |Nazwa centrum zdarzeń  | asa-eh-frauddetection-demo | Wybierz nazwę Centrum zdarzeń.   |
+   |Nazwa zasad centrum zdarzeń  | asa — zasady — Zarządzanie — pokaz | Wybierz zasady dostępu, który został utworzony wcześniej.   |
+    </br>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="drawing" width="300px"/>
 
-    ![Utwórz nowe dane wejściowe zadania przesyłania strumieniowego usługi analiza](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png)
 
 4. Kliknij przycisk **Utwórz**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Tworzenie zapytań do przekształcania danych w czasie rzeczywistym
 
-W tym momencie masz zadanie usługi Stream Analytics, konfigurowanie odczytać przychodzącego strumienia danych. Następnym krokiem jest, aby utworzyć transformację, która analizuje dane w czasie rzeczywistym. Można to zrobić, tworząc kwerendy. Analiza strumienia obsługuje prosty, deklaratywny model zapytań opisujący przekształceń do przetworzenia w czasie rzeczywistym. Zapytania używać języka przypominającego SQL, który ma niektóre rozszerzenia, które są specyficzne dla usługi analiza strumienia. 
+W tym momencie należy skonfigurować do odczytywania przychodzącego strumienia danych zadania usługi Stream Analytics. Następnym krokiem jest, aby utworzyć zapytanie, które analizuje dane w czasie rzeczywistym. Stream Analytics obsługuje prosty, deklaratywny model zapytań opisujący przekształcenia do przetwarzania w czasie rzeczywistym. Zapytania korzystają podobnego do SQL języka, który ma niektórych rozszerzeń, które są specyficzne dla usługi Stream Analytics. 
 
-Proste zapytanie tylko może odczytać wszystkich danych przychodzących. Jednak często tworzyć zapytania, które wyglądają dla określonych danych lub w przypadku relacji w danych. W tej części samouczka możesz utworzyć i przetestować kilka zapytań, aby dowiedzieć się więcej na kilka sposobów, w których można przekształcać strumień wejściowy do analizy. 
+Proste zapytanie może być tylko odczytać wszystkie dane przychodzące. Jednak często tworzenia kwerend wyszukiwania dla określonych danych lub relacji w danych. W tej części samouczka tworzenie i testowanie kilka zapytań, aby dowiedzieć się więcej na kilka sposobów, w których można przekształcać strumień wejściowy do analizy. 
 
-Zapytania tworzone w tym miejscu wyświetli tylko przekształconych danych do ekranu. W dalszej części artykułu należy skonfigurować ujście danych wyjściowych i zapytania, który zapisuje przekształcone dane do tego obiektu sink.
+Zapytania tworzone w tym miejscu po prostu wyświetli przekształconych danych do ekranu. W dalszej części tego tematu należy skonfigurować ujścia danych wyjściowych i zapytania, który zapisuje przekształcone dane do tego obiektu sink.
 
-Aby dowiedzieć się więcej na temat języka, zobacz [Azure Stream Analytics zapytania Language Reference](https://msdn.microsoft.com/library/dn834998.aspx).
+Aby dowiedzieć się więcej na temat języka, zobacz [dokumentacja języka zapytań usługi Azure Stream Analytics](https://msdn.microsoft.com/library/dn834998.aspx).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Pobierz przykładowe dane do testowania zapytań
 
-Aplikacja TelcoGenerator wysyła wywołania rekordów do Centrum zdarzeń i zadania usługi Stream Analytics jest skonfigurowany do odczytu z Centrum zdarzeń. Zapytanie służy do zadania, aby upewnić się, że jest poprawnie odczytywania testowego. Aby przetestować zapytanie w konsoli platformy Azure, należy przykładowych danych. W ramach tego przewodnika będą Wyodrębnij przykładowych danych ze strumienia, który będzie dostępna w Centrum zdarzeń.
+Aplikacja TelcoGenerator wysyła rekordy połączeń do Centrum zdarzeń i zadania usługi Stream Analytics jest skonfigurowana do odczytu z Centrum zdarzeń. Zapytanie służy do testowania zadań, aby upewnić się, że jest prawidłowo odczytu. Aby przetestować zapytanie w konsoli platformy Azure, potrzebujesz przykładowych danych. W tym przewodniku wyodrębnimy przykładowe dane ze strumienia, który przychodzi do Centrum zdarzeń.
 
-1. Upewnij się, że TelcoGenerator aplikacji działa i tworzenie rekordów wywołania.
-2. W portalu wrócić do okienka zadanie analizy przesyłania strumieniowego. (Jeśli został zamknięty okienku, wyszukaj `sa_frauddetection_job_demo` w **wszystkie zasoby** okienko.)
-3. Kliknij przycisk **zapytania** pole. Azure wymieniono wejściach i wyjściach, które są skonfigurowane dla zadania i umożliwia utworzenie zapytania umożliwiające przekształcanie strumień wejściowy podczas przesyłania danych wyjściowych.
-4. W **zapytania** okienku kliknij punktów `CallStream` danych wejściowych, a następnie wybierz **przykładowe dane z danych wejściowych**.
+1. Upewnij się, że aplikacja TelcoGenerator jest uruchomiona i tworzyć rekordy połączeń.
+2. W portalu wróć do okienka zadania usługi Stream Analytics. (Jeśli został zamknięty okienka, wyszukaj `asa_frauddetection_job_demo` w **wszystkie zasoby** okienka.)
+3. Kliknij przycisk **zapytania** pole. Platforma Azure zawiera dane wejściowe i wyjściowe, które są skonfigurowane dla zadania i pozwala utworzyć kwerendę, która umożliwia przekształcenie strumienia wejściowego, ponieważ są wysyłane do wyjścia.
+4. W **zapytania** okienku kliknij kropki obok `CallStream` dane wejściowe, a następnie wybierz pozycję **przykładowe dane z danych wejściowych**.
 
-    ![Opcje menu do użycia dla wpisu zadanie analizy przesyłania strumieniowego, z "Przykładowych danych z danych wejściowych" wybrane przykładowe dane](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
+   ![Opcje menu, aby użyć danych przykładowych dla wpisu zadania usługi Stream Analytics, za pomocą "Przykładowe dane z danych wejściowych" wybrane](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
-    Spowoduje to otwarcie okienka, co pozwala określić, ile przykładowych danych, aby uzyskać zdefiniowanych pod względem czasu odczytu strumienia wejściowego.
 
-5. Ustaw **minut** 3, a następnie kliknij przycisk **OK**. 
+5. Ustaw **minut** na 3 a następnie kliknij przycisk **OK**. 
     
-    ![Próbkowanie strumienia wejściowego z "3 minuty" wybrane opcje.](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
+   ![Próbkowanie strumienia wejściowego z "3 minut" wybrane opcje.](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
 
-    Azure przykłady 3 minut, przez które danych ze strumienia wejściowego i powiadamia użytkownika, gdy będzie gotowy przykładowych danych. (Trwa to krótki czas). 
+    Platforma Azure 3 minut, przez które dane ze strumienia wejściowego z przykładami i powiadamia użytkownika, gdy dane przykładowe są gotowe. (Trwa krótko). 
 
 Przykładowe dane są przechowywane tymczasowo i są dostępne, kiedy okno zapytania jest otwarte. Jeśli zamkniesz okno zapytania, przykładowe dane zostaną usunięte i konieczne będzie utworzenie nowego zestawu przykładowych danych. 
 
-Alternatywnie, można uzyskać pliku JSON, który zawiera przykładowe dane w nim [z usługi GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json), a następnie przekaż ten plik JSON ma być używana jako dane przykładowe dla `CallStream` wejściowego. 
+Jako alternatywę, można uzyskać plik JSON zawierający przykładowe dane w nim [z serwisu GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json), a następnie przekaż ten plik JSON do użycia jako przykładowe dane dla `CallStream` danych wejściowych. 
 
 ### <a name="test-using-a-pass-through-query"></a>Testowanie przy użyciu zapytania przekazującego
 
-Jeśli chcesz zarchiwizować każde zdarzenie, można użyć zapytania przekazującego, do odczytu wszystkich pól w ładunku zdarzenia.
+Jeśli chcesz zarchiwizować każdego zdarzenia, można użyć zapytania przekazującego, można odczytać wszystkich pól w ładunku zdarzenia.
 
 1. W oknie zapytania wprowadź tego zapytania:
 
@@ -238,23 +239,23 @@ Jeśli chcesz zarchiwizować każde zdarzenie, można użyć zapytania przekazuj
             CallStream
 
     >[!NOTE]
-    >Podobnie jak w przypadku SQL, słowa kluczowe nie jest rozróżniana i spacji, nie ma znaczenia.
+    >Podobnie jak w przypadku programu SQL, słowa kluczowe nie jest rozróżniana wielkość liter, a odstęp, nie ma znaczenia.
 
-    W tym zapytaniu `CallStream` jest alias określony podczas tworzenia danych wejściowych. Jeśli używasz inny alias, należy użyć tej nazwy.
+    W tym zapytaniu `CallStream` jest alias określony podczas tworzenia danych wejściowych. Jeśli używany jest inny alias, należy użyć tej nazwy.
 
 2. Kliknij przycisk **testu**.
 
-    Zadanie Stream Analytics jest uruchamiana zapytanie dla przykładowych danych i wyświetla dane wyjściowe w dolnej części okna. Oznacza to, że Centrum zdarzeń i zadanie analizy przesyłania strumieniowego są prawidłowo skonfigurowane. (Jak wspomniano, później utworzysz ujścia danych wyjściowych, który kwerendy można zapisywać danych.)
+    Zadanie usługi Stream Analytics wykonuje zapytanie względem przykładowych danych i wyświetla dane wyjściowe w dolnej części okna. Wyniki wskazują, że Centrum zdarzeń i zadania usługi Stream Analytics są prawidłowo skonfigurowane. (Jak wspomniano, później utworzymy który zapytanie może zapisać danych do ujścia danych wyjściowych.)
 
-    ![Zadania Stream Analytics dane wyjściowe, wyświetlanie rekordów 73 wygenerowany](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output.png)
+   ![Stream Analytics dane wyjściowe zadania, przedstawiający 73 rekordy generowane](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output.png)
 
-    Dokładna liczba rekordów wyświetlanych będzie zależeć od liczbę rekordów zostały przechwycone w Twoim przykładzie 3 minuty.
+    Dokładna liczba rekordów wyświetlanych będzie zależeć od tego, ile rekordy zostały przechwycone w Twoim przykładzie 3-minutowy.
  
-### <a name="reduce-the-number-of-fields-using-a-column-projection"></a>Zmniejsz liczbę pól przy użyciu projekcji kolumny
+### <a name="reduce-the-number-of-fields-using-a-column-projection"></a>Zmniejsz liczbę pól za pomocą projekcji kolumny
 
-W wielu przypadkach analizy nie potrzebuje wszystkich kolumn ze strumienia wejściowego. Zapytanie służy do projektu był mniejszy zestaw zwrócony pól niż zapytania przekazującego.
+W wielu przypadkach analizy nie potrzebuje wszystkich kolumn ze strumienia wejściowego. Zapytanie służy do projektu mniejszy zestaw pól zwrócone, niż zapytania przekazującego.
 
-1. Zmień zapytanie w edytorze kodu do następującego:
+1. Zmień zapytanie w edytorze kodu do następujących:
 
         SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
         FROM 
@@ -262,15 +263,15 @@ W wielu przypadkach analizy nie potrzebuje wszystkich kolumn ze strumienia wejś
 
 2. Kliknij przycisk **testu** ponownie. 
 
-    ![Zadania Stream Analytics wyjściowego dla projekcji, wyświetlanie 25 rekordów wygenerowany](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
+   ![Stream Analytics dane wyjściowe zadania dla projekcji, przedstawiający 25 rekordy generowane](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-projection.png)
  
-### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>Liczba przychodzących wywołuje według regionu: okno wirowania z agregacją
+### <a name="count-incoming-calls-by-region-tumbling-window-with-aggregation"></a>Liczba przychodzących wywołuje uporządkowane według regionów: okno wirowania z agregacją
 
-Załóżmy, że chcesz liczbę połączeń przychodzących na region. W przesyłanie strumieniowe danych, jeśli chcesz wykonywać funkcje agregujące, takie jak zliczanie, należy segmentów strumienia na jednostki danych czasowych (ponieważ sam strumień danych jest skutecznie nieskończone). Można to zrobić przy użyciu usługi analiza strumienia [funkcji okna](stream-analytics-window-functions.md). Możesz następnie pracować z danymi w danym przedziale jako jednostka.
+Załóżmy, że zechcesz policzyć liczbę wywołań przychodzących na region. W danych przesyłanych strumieniowo, gdy chcesz wykonać funkcje agregujące, takie jak inwentaryzacja, musisz segmentu strumienia do jednostek danych czasowych (ponieważ sam strumień danych jest skutecznie nieskończone). Możesz to zrobić za pomocą usługi Stream Analytics [funkcji okna](stream-analytics-window-functions.md). Możesz pracować z danych wewnątrz tego okna, jako jednostka.
 
-Dla tej transformacji sekwencja danych czasowych systemu Windows, które nie nakładają się na — każde okno będzie mieć odrębny zestaw danych, które można grupować i agregacji. Ten typ okna jest określany jako *okno wirowania* . W ramach okno wirowania można uzyskać liczbę przychodzących pogrupowane według `SwitchNum`, który reprezentuje kraju, w którym zainicjowano wywołanie. 
+Dla tej transformacji sekwencja danych czasowych systemu Windows, które się nie nakładały — każde okno będzie mieć odrębny zestaw danych, które można grupować i agregacji. Ten typ okna jest nazywany *okno wirowania*. W ramach okna wirowania, możesz uzyskać liczbę wywołań przychodzących, pogrupowane według `SwitchNum`, która reprezentuje kraju, gdzie zainicjowane było wywołanie. 
 
-1. Zmień zapytanie w edytorze kodu do następującego:
+1. Zmień zapytanie w edytorze kodu do następujących:
 
         SELECT 
             System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
@@ -278,25 +279,25 @@ Dla tej transformacji sekwencja danych czasowych systemu Windows, które nie nak
             CallStream TIMESTAMP BY CallRecTime 
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
 
-    To zapytanie używa `Timestamp By` — słowo kluczowe w `FROM` klauzuli, aby określić w strumieniu wejściowym można użyć, aby zdefiniować okno wirowania pola sygnatury czasowej. W takim przypadku okno dzieli dane na segmenty przez `CallRecTime` w każdego rekordu. (Jeśli żadne pole nie zostanie określony, operacja okien używa podczas każdego zdarzenia dociera do Centrum zdarzeń. Zobacz sekcję "Godzina aplikacji Vs Godzina nadejścia" w [strumienia Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    To zapytanie używa `Timestamp By` — słowo kluczowe w `FROM` klauzulę, aby określić które pole znacznika czasu w strumieniu wejściowym, aby użyć, aby zdefiniować okno wirowania. W tym przypadku okno dzieli dane na segmenty według `CallRecTime` pola w każdym rekordzie. (Jeśli żadne pole nie zostanie określony, operacja obsługi okien używa czasu każdego zdarzenia dociera do Centrum zdarzeń. Zobacz sekcję "Czas aplikacji Vs czas nadejścia" w [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
 
-    Obejmuje projekcji `System.Timestamp`, która zwraca sygnatury czasowej do końca każde okno. 
+    Obejmuje projekcji `System.Timestamp`, która zwraca sygnaturę czasową na koniec każdego okna. 
 
-    Aby określić, że okno wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działać w `GROUP BY `klauzuli. W funkcji należy określić jednostki czasu (dowolnym z mikrosekundy na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z 5 sekund, tak liczba według kraju będzie uzyskać co 5 sekund, przez które wywołania.
+    Aby określić, czy użyć okna wirowania, należy użyć [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) działa w programach `GROUP BY `klauzuli. W funkcji należy określić jednostkę czasu (dowolnym z mikrosekund na dzień) i rozmiaru okna (liczbę jednostek). W tym przykładzie okno wirowania składa się z odstępach 5-sekundowego, dzięki czemu otrzymasz liczba według kraju dla co 5 sekund, przez które wywołania.
 
-2. Kliknij przycisk **testu** ponownie. W wynikach, zwróć uwagę, że sygnatury czasowe w obszarze **WindowEnd** w przyrostach 5 sekund.
+2. Kliknij przycisk **testu** ponownie. W wynikach, zwróć uwagę, że sygnatury czasowe, w obszarze **WindowEnd** znajdują się w przyrostach co 5 sekund.
 
-    ![Zadania Stream Analytics dane wyjściowe do agregacji, wyświetlanie rekordów 13 wygenerowany](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
+   ![Stream Analytics dane wyjściowe zadania agregacji, przedstawiający 13 rekordy generowane](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-aggregation.png)
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>Wykrywanie oszustw SIM przy użyciu samosprzężenie
 
-Na przykład firma Microsoft należy rozważyć użycie fałszywych jako wywołania, które pochodzą z tego samego użytkownika, ale w różnych lokalizacjach w ciągu 5 sekund od siebie. Na przykład ten sam użytkownik nie może rzeczywiście wykonywać w tym samym czasie połączeń ze Stanów Zjednoczonych i Australii. 
+W tym przykładzie należy rozważyć użycie fałszywe się wywołania, które pochodzą z tego samego użytkownika, ale w różnych lokalizacjach w ciągu 5 sekund od siebie. Na przykład ten sam użytkownik nie może rzeczywiście wykonywać w tym samym czasie połączeń ze Stanów Zjednoczonych i Australii. 
 
-Aby sprawdzić, czy te przypadki, umożliwia samosprzężenia potrzebne dane przesyłane strumieniowo przyłączyć się do samego siebie na podstawie strumienia `CallRecTime` wartość. Następnie można wyszukać wywołania rekordy, w których `CallingIMSI` wartość (liczba źródłowego) jest taka sama, ale `SwitchNum` wartość (kraj pochodzenia) nie jest taka sama.
+Aby sprawdzić, czy te przypadki, służy samosprzężenie danych strumieniowych do dołączenia do strumienia do samego siebie na podstawie `CallRecTime` wartości. Następnie można wyszukać wywołanie rekordy, w których `CallingIMSI` wartość (numer źródłowy) jest taka sama, ale `SwitchNum` wartość (kraj źródłowy) nie jest taka sama.
 
-Gdy używasz sprzężenia na danych przesyłanych strumieniowo sprzężenie należy udostępnić niektóre limity, jak daleko pasujących wierszy mogą być oddzielone w czasie. (Jak wspomniano wcześniej, dane przesyłane strumieniowo to skutecznie nieskończone). Granice czasu dla relacji są określone wewnątrz `ON` klauzuli sprzężenia, przy użyciu `DATEDIFF` funkcji. W takim przypadku sprzężenia jest oparta na interwał 5 sekund, połączenie danych.
+Gdy używasz sprzężenia danych przesyłanych strumieniowo sprzężenie musi udostępniać pewne ograniczenia odległość między dwoma pasującymi wierszami, można oddzielić w czasie. (Jak wspomniano wcześniej, strumień danych jest skutecznie nieskończone). Granice czasowe dla relacji są określone w `ON` klauzuli sprzężenia, przy użyciu `DATEDIFF` funkcji. W tym przypadku przyłączenia opiera się na 5-sekundowego interwału połączenia danych.
 
-1. Zmień zapytanie w edytorze kodu do następującego: 
+1. Zmień zapytanie w edytorze kodu do następujących: 
 
         SELECT  System.Timestamp as Time, 
             CS1.CallingIMSI, 
@@ -310,104 +311,95 @@ Gdy używasz sprzężenia na danych przesyłanych strumieniowo sprzężenie nale
             AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
         WHERE CS1.SwitchNum != CS2.SwitchNum
 
-    To zapytanie jest podobna wszelkich sprzężenia SQL, z wyjątkiem `DATEDIFF` funkcja sprzężenia. To jest wersja `DATEDIFF` jest specyficzne dla analizy przesyłania strumieniowego i musi znajdować się w `ON...BETWEEN` klauzuli. Parametry są jednostka czasu (w sekundach w tym przykładzie) i aliasy dwóch źródeł w celu utworzenia sprzężenia. (Ta różni się od standardowego SQL `DATEDIFF` funkcji.) 
+    To zapytanie jest podobnie jak wszelkie sprzężenie SQL, z wyjątkiem `DATEDIFF` funkcja sprzężenia. Ta wersja `DATEDIFF` jest specyficzny dla usługi Stream Analytics i musi znajdować się w `ON...BETWEEN` klauzuli. Parametry są jednostka czasu (w sekundach w tym przykładzie) i aliasy dwóch źródeł, w celu utworzenia sprzężenia. To różni się od standardowego SQL `DATEDIFF` funkcji.
 
-    `WHERE` Klauzula zawiera warunek, który flagi fałszywych wywołania: przełączniki źródłowego nie są takie same. 
+    `WHERE` Klauzula zawiera warunek, który flagi fałszywe połączenia: źródłowy przełączniki nie są takie same. 
 
 2. Kliknij przycisk **testu** ponownie. 
 
-    ![Dane wyjściowe samosprzężenie, wyświetlony 6 rekordy generowane zadania Stream Analytics](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
+   ![Dane wyjściowe generowane samosprzężenie, widoczny 6 rekordów zadania usługi Stream Analytics](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. Kliknij pozycję **Zapisz**. Spowoduje to zapisanie samosprzężenie zapytania jako część zadania przesyłania strumieniowego Analytics. (Nie zostanie on zapisany przykładowe dane).
+3. Kliknij przycisk **Zapisz** można zapisać zapytania samosprzężenie w ramach zadania usługi Stream Analytics. (Nie zostanie on zapisany przykładowych danych).
 
-    ![Zapisz zadanie usługi analiza strumienia](./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png)
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="drawing" width="300px"/>
 
-## <a name="create-an-output-sink-to-store-transformed-data"></a>Utwórz ujście danych wyjściowych do przechowywania przekształcone dane
+## <a name="create-an-output-sink-to-store-transformed-data"></a>Tworzenie ujścia danych wyjściowych do przechowywania przekształconych danych
 
-Zdefiniowany przez użytkownika strumienia zdarzeń Centrum zdarzeń wejście do pozyskiwania zdarzenia i zapytanie w celu wykonania transformację przez strumień. Ostatnim krokiem jest zdefiniowanie ujście danych wyjściowych zadania, czyli miejsce do przekształcony potok do zapisu. 
+Zdefiniowany przez użytkownika strumienia zdarzeń, danych wejściowych w celu pozyskania zdarzeń i zapytania przekształcenie w strumieniu Centrum zdarzeń. Ostatnim krokiem jest określenie ujścia danych wyjściowych dla zadania — czyli miejsce do przekształcony potok do zapisu. 
 
-Wiele zasobów można używać jako dane wyjściowe wychwytywanie — bazy danych programu SQL Server, Magazyn tabel, Data Lake storage, usługi Power BI i nawet innej Centrum zdarzeń. W tym samouczku przedstawiono tworzenie strumienia do magazynu obiektów Blob Azure, co typowe nadaje się do zbierania informacji o zdarzeniach dotyczących późniejszej analizy, ponieważ bierze pod uwagę danych bez struktury.
+Można używać wielu zasobów jako ujścia danych wyjściowych — bazy danych programu SQL Server, usługi table storage, magazyn usługi Data Lake, usługa Power BI i nawet inny Centrum zdarzeń. W tym samouczku przedstawiono tworzenie strumienia do magazynu obiektów Blob platformy Azure, która jest typowym wyborem do zbierania informacji o zdarzeniach do późniejszej analizy, ponieważ obsługuje dane bez określonej struktury.
 
-Jeśli masz istniejące konto magazynu obiektów blob, można użyć, który. W tym samouczku pokażemy ci Tworzenie nowego konta magazynu tylko do celów tego samouczka.
+Jeśli masz istniejące konto magazynu obiektów blob, można użyć, który. W tym samouczku dowiesz się, jak utworzyć nowe konto magazynu.
 
-### <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta usługi Magazyn obiektów Blob Azure
+### <a name="create-an-azure-blob-storage-account"></a>Tworzenie konta usługi Azure Blob Storage
 
-1. W portalu Azure wrócić do okienka zadanie analizy przesyłania strumieniowego. (Jeśli został zamknięty okienku, wyszukaj `sa_frauddetection_job_demo` w **wszystkie zasoby** okienko.)
-2. W **topologii zadania** kliknij **dane wyjściowe** pole. 
-3. W **dane wyjściowe** okienku, kliknij przycisk  **+ &nbsp;Dodaj** , a następnie wypełnij okienko z tymi wartościami:
+1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób** > **Magazyn** > **Konto magazynu**. Wypełnij strony zadania konta magazynu przy użyciu **nazwa** ustawiona na "asaehstorage" **lokalizacji** ustawiona na "Wschodnie stany USA", **grupy zasobów** ustawiona na "asa-eh-ns-rg" (host konto magazynu w tej samej grupie zasobów co zadanie przesyłania strumieniowego, aby zwiększyć wydajność). W przypadku pozostałych ustawień można pozostawić ich wartości domyślne.  
 
-    * **Alias wyjściowy**: Użyj nazwy `CallStream-FraudulentCalls`. 
-    * **Obiekt sink**: Wybierz **magazynu obiektów Blob**.
-    * **Opcje importowania**: Wybierz **Użyj magazynu obiektów blob z bieżącej subskrypcji**.
-    * **Konto magazynu**. Wybierz **Utwórz nowe konto magazynu.**
-    * **Konto magazynu** (drugie pole). Wprowadź `YOURNAMEsademo`, gdzie `YOURNAME` jest nazwa użytkownika lub inny unikatowy ciąg. Nazwę można użyć tylko małe litery i cyfry, i między Azure musi być unikatowa. 
-    * **Kontener**. Wprowadź `sa-fraudulentcalls-demo`.
-    Nazwa konta magazynu i nazwę kontenera są używane razem zapewnienie identyfikator URI magazynu obiektów blob, jak to: 
+   ![Tworzenie konta magazynu](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-    `http://yournamesademo.blob.core.windows.net/sa-fraudulentcalls-demo/...`
+2. W witrynie Azure portal wróć do okienka zadania usługi Stream Analytics. (Jeśli został zamknięty okienka, wyszukaj `asa_frauddetection_job_demo` w **wszystkie zasoby** okienka.)
+
+3. W **topologia zadań** kliknij **dane wyjściowe** pole.
+
+4. W **dane wyjściowe** okienku kliknij **Dodaj** i wybierz **magazynu obiektów Blob**. Następnie wypełnij nowej strony w danych wyjściowych z następującymi informacjami:
+
+   |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
+   |---------|---------|---------|
+   |Alias danych wyjściowych  |  Wejścia CallStream FraudulentCalls   |  Wprowadź nazwę identyfikującą dane wyjściowe zadania.   |
+   |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
+   |Konto magazynu  |  asaehstorage |  Wprowadź nazwę utworzonego konta magazynu. |
+   |Kontener  | asa-fraudulentcalls — pokaz | Wybierz pozycję Utwórz nowy, a następnie wprowadź nazwę kontenera. |
+    <br/>
+    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="drawing" width="300px"/>
     
-    !["Nowe dane wyjściowe" okienka zadania usługi analiza strumienia](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
-    
-4. Kliknij przycisk **Utwórz**. 
+5. Kliknij pozycję **Zapisz**. 
 
-    Azure tworzy konto magazynu i automatycznie generuje klucz. 
 
-5. Zamknij **dane wyjściowe** okienka. 
+## <a name="start-the-streaming-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 
-## <a name="start-the-streaming-analytics-job"></a>Uruchom zadanie analizy przesyłania strumieniowego
-
-Zadanie jest teraz skonfigurowany. Zostały określone dane wejściowe (Centrum zdarzeń), transformacji (zapytanie do wyszukania fałszywych wywołań) i danych wyjściowych (magazynu obiektów blob). Można teraz uruchomić zadania. 
+Zadanie jest teraz skonfigurowane. Został określony, dane wejściowe (Centrum zdarzeń), transformacji (zapytanie wyszukując fałszywe wywołania) i danych wyjściowych (magazyn obiektów blob). Teraz można uruchomić zadania. 
 
 1. Upewnij się, że aplikacja TelcoGenerator jest uruchomiona.
 
-2. W okienku zadania kliknij **Start**.
+2. W okienku zadania kliknij **Start**. W **zadanie rozpoczęcia** okienka danych wyjściowych godziną rozpoczęcia zadania, wybierz opcję **teraz**. 
 
-    ![Uruchom zadanie usługi analiza strumienia](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-output.png)
+   ![Uruchamianie zadania usługi Stream Analytics](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start.png)
 
-3. W **rozpoczęcia zadania** okienka dla danych wyjściowych czas uruchomienia zadania, wybierz opcję **teraz**. 
 
-4. Kliknij przycisk **Start**. 
 
-    !["Uruchomić zadanie" okienka zadania usługi analiza strumienia](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
+## <a name="examine-the-transformed-data"></a>Sprawdzanie przekształconych danych
 
-    Azure umożliwia powiadomienie, gdy zadanie została uruchomiona, a w okienku zadania, stan jest wyświetlany jako **systemem**.
+Masz teraz ukończonego zadania usługi Stream Analytics. Zadanie jest badanie strumienia metadanych połączenia telefonicznego, wyszukiwanie fałszywych połączeń telefonicznych w czasie rzeczywistym i zapisywania informacji o tych fałszywych połączeń w magazynie. 
 
-    ![Stan zadania Stream Analytics, przedstawiający "Uruchomiona"](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-running-status.png)
-    
+Do ukończenia tego samouczka, możesz przyjrzeć się danym są przechwytywane przez zadanie usługi Stream Analytics. Dane są zapisywane do magazynu Azure Blog Storage we fragmentach (pliki). Można użyć dowolnego narzędzia, która odczytuje usługi Azure Blob Storage. Jak wspomniano w sekcji wymagania wstępne, można użyć rozszerzeń platformy Azure w programie Visual Studio lub można użyć narzędzia, takiego jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/) lub [Eksploratora usługi Azure](http://www.cerebrata.com/products/azure-explorer/introduction). 
 
-## <a name="examine-the-transformed-data"></a>Sprawdź przekształcone dane
+Po sprawdzeniu zawartości pliku w usłudze blob storage, zostanie wyświetlony podobny do poniższego:
 
-Masz teraz pełną zadanie analizy przesyłania strumieniowego. Zadanie jest badanie strumienia metadanych rozmowy telefonicznej, wyszukiwanie fałszywych rozmowy telefoniczne w czasie rzeczywistym i zapisywania informacji o fałszywych wywołań do magazynu. 
-
-Do ukończenia tego samouczka można znaleźć w danych są przechwytywane przez zadanie analizy przesyłania strumieniowego. Dane są zapisywane do magazynu Azure w blogu w fragmentów (pliki). Można użyć dowolnego narzędzia, które odczytuje magazynu obiektów Blob Azure. Jak wspomniano w sekcji wymagania wstępne, można użyć rozszerzeń Azure w programie Visual Studio lub skorzystać z narzędzia, takiego jak [Eksploratora usługi Storage Azure](http://storageexplorer.com/) lub [Eksploratora Azure](http://www.cerebrata.com/products/azure-explorer/introduction). 
-
-Po sprawdzeniu zawartości pliku w magazynie obiektów blob, zostanie wyświetlony ekran podobny do następującego:
-
-![Magazyn obiektów blob platformy Azure z analizy strumienia wyjściowego](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
+   ![Usługa Azure blob storage za pomocą usługi Stream Analytics w danych wyjściowych](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Mamy dodatkowe artykuły, które kontynuować ze scenariuszem wykrywania oszustw, które korzystają z zasobów, które zostały utworzone w tym samouczku. Jeśli chcesz kontynuować, zobacz sugestie pod **następne kroki** później.
+Istnieją dodatkowe artykuły, które nadal ze scenariuszem wykrywanie oszustw i korzystać z zasobów utworzonych w ramach tego samouczka. Jeśli chcesz kontynuować, zobacz sugestie w obszarze **następne kroki**.
 
-Jednak jeśli wszystko będzie gotowe, a nie ma potrzeby zasoby, które zostały utworzone, można usunąć je, aby nie wiąże się z opłatami Azure niepotrzebne. W takim przypadku zaleca się wykonanie następujących czynności:
+Jednak jeśli wszystko będzie gotowe, które nie potrzebują zasoby, które zostały utworzone, możesz je usunąć, aby nie powodują naliczania niepotrzebnych opłat platformy Azure. W takim przypadku zaleca się, należy wykonać następujące czynności:
 
-1. Zatrzymaj zadanie analizy przesyłania strumieniowego. W **zadania** okienku, kliknij przycisk **zatrzymać** u góry.
-2. Zatrzymaj Telco Generator aplikacji. W oknie polecenia, w którym uruchomiono aplikację naciśnij klawisze Ctrl + C.
-3. Jeśli utworzono nowe konto magazynu obiektów blob tylko do celów tego samouczka, należy ją usunąć. 
-4. Usuń zadanie analizy przesyłania strumieniowego.
-5. Usuń Centrum zdarzeń.
+1. Zatrzymaj zadanie usługi Stream Analytics. W **zadania** okienku kliknij **zatrzymać** u góry.
+2. Zatrzymaj Telco aplikację generatora. W oknie wiersza polecenia, które wcześniej uruchomiono aplikację naciśnij klawisze Ctrl + C.
+3. Jeśli utworzono nowe konto magazynu obiektów blob tylko do celów tego samouczka, należy go usunąć. 
+4. Usuwanie zadania usługi Stream Analytics.
+5. Usuwanie Centrum zdarzeń.
 6. Usuń przestrzeń nazw Centrum zdarzeń.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można kontynuować tego samouczka z następujących artykułów:
+Możesz kontynuować z tego samouczka z następującym artykułem:
 
-* [Strumienia analizy i usługi Power BI: pulpitu nawigacyjnego analytics w czasie rzeczywistym do strumieniowego przesyłania danych](stream-analytics-power-bi-dashboard.md). W tym artykule przedstawiono sposób wysyłania TelCo dane wyjściowe zadania Stream Analytics z usługą Power BI w czasie rzeczywistym wizualizacji i analizy.
+* [Stream Analytics i usługą Power BI: pulpit nawigacyjny analizy w czasie rzeczywistym dla danych przesyłanych strumieniowo](stream-analytics-power-bi-dashboard.md). W tym artykule dowiesz się, jak wysyłać TelCo dane wyjściowe zadania usługi Stream Analytics do usługi Power BI do wizualizacji w czasie rzeczywistym i analizy.
 
 Aby uzyskać więcej informacji na temat usługi Stream Analytics ogólnie rzecz biorąc, zobacz następujące artykuły:
 

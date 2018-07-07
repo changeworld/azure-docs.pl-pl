@@ -1,6 +1,6 @@
 ---
-title: Podłącz urządzenie zestaw deweloperski do aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
-description: Deweloper urządzenia jak Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej.
+title: Podłącz urządzenie Mxchip z aplikacją usługi Azure IoT Central | Dokumentacja firmy Microsoft
+description: Jako deweloper urządzenia Dowiedz się, jak połączyć urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 237a19b76268e1207c9de438a4f79d3dc8382476
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261580"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903813"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Azure IoT centralnej
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
-W tym artykule opisano sposób Deweloper urządzenia połączenia z urządzeniem zestaw deweloperski IoT MXChip (zestaw deweloperski) do aplikacji Microsoft Azure IoT centralnej.
+W tym artykule opisano jak Deweloper urządzenia podłączenia urządzenia zestawu deweloperskiego IoT Mxchip (Mxchip) do aplikacji Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Do wykonania kroków opisanych w tym artykule potrzebne są:
 
-1. Aplikacja Azure IoT centralnej utworzone na podstawie **Devkits próbki** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [tworzenie aplikacji centralnej Azure IoT](howto-create-application.md).
-1. Urządzenie zestaw deweloperski. Aby zakupić urządzenia zestaw deweloperski, odwiedź stronę [zestaw deweloperski IoT MXChip](http://mxchip.com/az3166).
+1. Aplikacja usługi Azure IoT Central, utworzone na podstawie **Devkits przykładowe** szablon aplikacji. Aby uzyskać więcej informacji, zobacz [utworzyć aplikację usługi Azure IoT centralnej](howto-create-application.md).
+1. Urządzenie Mxchip. Aby zakupić urządzenia Mxchip, odwiedź stronę [zestawu deweloperskiego IoT Mxchip](http://mxchip.com/az3166).
 
-Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje **MXChip** szablonu urządzenia o następującej charakterystyce:
+Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawiera **zestawu deweloperskiego** szablon urządzenia o następującej charakterystyce:
 
 ### <a name="measurements"></a>Miary
 
@@ -36,7 +36,7 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 | -------------- | ------ | ------- | ------- | -------------- |
 | wilgotność       | %      | 0       | 100     | 0              |
 | Temp           | C     | -40     | 120     | 0              |
-| pressure       | hPa    | 260     | 1260    | 0              |
+| pressure       | hPa pakietu    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
@@ -63,46 +63,46 @@ Aplikacji utworzone na podstawie **Devkits próbki** szablon aplikacji obejmuje 
 
 ### <a name="settings"></a>Ustawienia
 
-Ustawienia numeryczne
+Ustawienia liczbowe
 
 | Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Napięcia      | setVoltage | V | 0              | 0       | 240     | 0       |
+| Napięcie      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Bieżący      | setCurrent | Amps  | 0              | 0       | 100     | 0       |
 | Wentylator szybkości    | fanSpeed   | OBR. / MIN   | 0              | 0       | 1000    | 0       |
 
 Ustawienia przełącznika
 
-| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłączanie tekstu | Początkowa |
+| Nazwa wyświetlana | Nazwa pola | W tekście | Wyłącz tekstu | Początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR.           | activateIR | ON      | WYŁ.      | Wyłączone     |
+| ŚRODOWISKO IR           | activateIR | ON      | WYŁ.      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
 | Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
-| Właściwości urządzenia | Die numer   | dieNumber  | numer    |
+| Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
 | Tekst            | Lokalizacja     | location   | ND       |
 
 
 ### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji Azure IoT centralnej, Dodaj rzeczywistego urządzenia z **MXChip** szablon urządzenia i zanotować ciąg połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodawania rzeczywistego urządzenia do aplikacji Azure IoT centralnej](tutorial-add-device.md).
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować parametry połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
 
-## <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie zestaw deweloperski
+## <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie Mxchip
 
-> [!TIP]
-> Dla urządzenia zestaw deweloperski wskazówki rozwiązywania problemów, zobacz [wprowadzenie zestaw deweloperski IoT](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/).
+> [!NOTE]
+> Jeśli poprzednio korzystano z urządzenia lub sieci Wi-Fi poświadczenia przechowywane i chcesz ponownie skonfigurować urządzeniu na korzystanie z innej sieci Wi-Fi, parametry połączenia lub pomiaru danych telemetrycznych, naciśnij jednocześnie **A** i **B** przyciski na tablicy jednocześnie. Jeśli to nie zadziała, naciśnij klawisz **resetowania** przycisk, a następnie spróbuj ponownie.
 
-Aby przygotować urządzenie zestaw deweloperski:
+Aby przygotować urządzenie Mxchip:
 
-1. Pobierz najnowsze wbudowanych Azure IoT centralnej oprogramowania układowego dla MXChip z [zwalnia](https://github.com/Azure/iot-central-firmware/releases) strony w witrynie GitHub. Filename pobierania na stronie wersjach wygląda jak `AZ3166-IoT-Central-X.X.X.bin`.
+1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](https://github.com/Azure/iot-central-firmware/releases) strony w witrynie GitHub. Wygląda filename pobierania na stronie wersji `AZ3166-IoT-Central-X.X.X.bin`.
 
-1. Podłącz urządzenie zestaw deweloperski na komputerze deweloperskim za pomocą kabla USB. W systemie Windows otwarcie okna Eksploratora plików na dysku mapowane na pamięć na urządzeniu zestaw deweloperski. Na przykład dysk może wywołać **AZ3166 (D:)**.
+1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)**.
 
-1. Przeciągnij **iotCentral.bin** pliku na dysku okna. Po zakończeniu kopiowania nowego oprogramowania układowego ponowne uruchomienie urządzenia.
+1. Przeciągnij **iotCentral.bin** pliku na okno dysku. Po zakończeniu kopiowania urządzenie uruchamia się ponownie z nowym oprogramowaniem układowym.
 
-1. Po ponownym uruchomieniu urządzenia zestaw deweloperski, wyświetli się następujący ekran:
+1. Po ponownym uruchomieniu urządzenia Mxchip, wyświetli się następujący ekran:
 
     ```
     Connect HotSpot:
@@ -112,98 +112,97 @@ Aby przygotować urządzenie zestaw deweloperski:
     ```
 
     > [!NOTE]
-    > Na ekranie są wyświetlane inaczej, naciśnij klawisz **zresetować** przycisk na urządzeniu. 
+    > Na ekranie są wyświetlane inaczej, naciśnij klawisz **resetowania** przycisk na urządzeniu. 
 
-1. Urządzenie jest teraz w trybie zasięg punktu dostępu. Ten punkt dostępu sieci Wi-Fi można nawiązać z komputera lub urządzenia przenośnego.
+1. Urządzenie jest teraz w trybie punktu dostępu. Można połączyć z tym punktem dostępu do sieci Wi-Fi, z komputera lub urządzenia przenośnego.
 
-1. Na komputerze telefon lub tablet połączyć się z nazwy sieci Wi-Fi wyświetlone na ekranie urządzenia. Podczas łączenia z tą siecią, nie masz dostępu do Internetu. Ten stan jest oczekiwany, a tylko połączenia z tą siecią przez krótki czas podczas konfigurowania urządzenia.
+1. Na komputerze telefonie lub tablecie połączyć do nazwy sieci Wi-Fi, które są wyświetlane na ekranie urządzenia. Po nawiązaniu połączenia z tą siecią, nie masz dostępu do Internetu. Ten stan jest oczekiwany, a jedynie połączenia z tą siecią, przez krótki czas podczas konfigurowania urządzenia.
 
-1. Otwórz przeglądarkę sieci web i przejdź do [ http://192.168.0.1/start ](http://192.168.0.1/start). Następujące Wyświetla strony sieci web:
+1. Otwórz przeglądarkę internetową i przejdź do [ http://192.168.0.1/start ](http://192.168.0.1/start). Następujące wyświetla stronę sieci web:
 
-    ![Na stronie konfiguracji urządzenia](media/howto-connect-devkit/configpage.png)
+    ![Strona konfiguracji urządzenia](media/howto-connect-devkit/configpage.png)
 
     Na stronie sieci web: 
     - Dodaj nazwę sieci Wi-Fi 
-    - hasła sieci Wi-Fi 
-    - Kod PIN wyświetlany na urządzeniu LCD 
+    - Twoje hasło dostępu do sieci Wi-Fi 
+    - Kod PIN na urządzeniu LCD 
     - Parametry połączenia urządzenia. 
-      Można znaleźć parametrów połączenia @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (w prawym górnym narożniku) 
+      Można znaleźć parametrów połączenia @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (w prawym górnym rogu) 
     - Wybierz wszystkie dostępne dane telemetryczne pomiary! 
 
-1. Po wybraniu **Konfigurowanie urządzenia**, zobaczysz tę stronę:
+1. Po wybraniu **Konfigurowanie urządzenia**, zostanie wyświetlona następująca strona:
 
     ![Urządzenia skonfigurowane](media/howto-connect-devkit/deviceconfigured.png)
 
-1. Naciśnij klawisz **zresetować** przycisk na urządzeniu.
+1. Naciśnij klawisz **resetowania** przycisk na urządzeniu.
 
-> [!NOTE]
-> Aby zmienić konfigurację urządzenia może korzystać z innej sieci Wi-Fi, parametry połączenia lub pomiaru telemetrii, naciśnij jednocześnie **A** i **B** przyciski na tablicy jednocześnie. Jeśli ta funkcja nie działa, naciśnij klawisz **zresetować** przycisk, a następnie spróbuj ponownie. 
 
-## <a name="view-the-telemetry"></a>Widok telemetrii
 
-Po ponownym uruchomieniu urządzenia zestaw deweloperski, pokazuje ekranu na urządzeniu:
+## <a name="view-the-telemetry"></a>Widok danych telemetrycznych
 
-* Liczba wiadomości telemetrii.
+Po ponownym uruchomieniu urządzenia Mxchip pokazuje ekran na urządzeniu:
+
+* Liczba komunikaty telemetryczne wysyłane.
 * Liczba błędów.
-* Liczba żądanej właściwości odebranych i liczba zgłoszonych właściwości wysyłane.
+* Liczba żądanych właściwości odebranych i liczbę zgłaszanych właściwości wysyłanych z.
 
-Potrząśnij urządzenia przyrost liczby właściwości zgłoszone wysyłane. Urządzenie wysyła liczbę losową jako **Die numer** właściwości urządzenia.
+Potrząśnij przyrost liczbę zgłaszanych właściwości wysyłanych z urządzenia. Urządzenie wysyła losową liczbę jako **zdechną numer** właściwości urządzenia.
 
-Możesz wyświetlić dane telemetryczne pomiarów i wartości właściwości zgłoszony i skonfigurować ustawienia w Azure IoT centralnej:
+Wyświetlanie danych telemetrycznych pomiarów i wartości zgłaszanych właściwości i skonfiguruj ustawienia w usłudze Azure IoT Central:
 
-1. Użyj **Explorer urządzenia** można przejść do **pomiary** strony rzeczywistego urządzenia MXChip dodany:
+1. Użyj **Device Explorer** można przejść do **pomiarów** strona rzeczywistego urządzenia zestawu deweloperskiego został dodany:
 
-    ![Przejdź do rzeczywistego urządzenia.](media/howto-connect-devkit/realdevice.png)
+    ![Przejdź do rzeczywistego urządzenia](media/howto-connect-devkit/realdevice.png)
 
-1. Na **pomiary** strony widać telemetrii pochodzące z urządzenia MXChip:
+1. Na **pomiarów** strony, możesz zobaczyć dane telemetryczne pochodzące z urządzeń zestawu deweloperskiego:
 
-    ![Dane telemetryczne wyświetleń z rzeczywistego urządzenia.](media/howto-connect-devkit/realtelemetry.png)
+    ![Wyświetlanie telemetrii z rzeczywistego urządzenia](media/howto-connect-devkit/realtelemetry.png)
 
-1. Na **właściwości** strony, można wyświetlić ostatni numer struktury zgłoszonych przez urządzenia:
+1. Na **właściwości** strony, można wyświetlić ostatni numer struktury zgłoszona przez urządzenie:
 
     ![Wyświetl właściwości urządzenia](media/howto-connect-devkit/deviceproperties.png)
 
-1. Na **ustawienia** strony, należy zaktualizować ustawienia na urządzeniu MXChip:
+1. Na **ustawienia** strony, możesz zaktualizować ustawienia na urządzeniu zestawu deweloperskiego:
 
     ![Wyświetl ustawienia urządzenia](media/howto-connect-devkit/settings.png)
 
-## <a name="download-the-source-code"></a>Pobieranie kodu źródłowego
+## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
-Jeśli chcesz Eksploruj i zmodyfikuj kod urządzenia, można go pobrać z witryny GitHub. Jeśli zamierzasz zmodyfikować kod, należy wykonać te instrukcje, aby [przygotować środowisko projektowe](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) pulpitu systemu operacyjnego.
+Jeśli chcesz eksplorować i modyfikować kod urządzenia, możesz ją pobrać z witryny GitHub. Jeśli zamierzasz zmodyfikować kod, należy wykonać te instrukcje, aby [przygotowywanie środowiska deweloperskiego](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) pulpitu w systemie operacyjnym.
 
-Aby pobrać kodu źródłowego, uruchom następujące polecenie na komputerze pulpitu:
+Aby pobrać kod źródłowy, uruchom następujące polecenie na komputerze stacjonarnym:
 
 ```cmd/sh
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-Poprzednie polecenie pobiera kod źródłowy do folderu o nazwie `iot-central-firmware`. 
+Poprzednie polecenie pobiera kod źródłowy w folderze o nazwie `iot-central-firmware`. 
 
 > [!NOTE]
-> Jeśli **git** nie jest zainstalowany w środowisku projektowania, możesz pobrać go z [ https://git-scm.com/download ](https://git-scm.com/download).
+> Jeśli **git** nie jest zainstalowany w środowisku deweloperskim, możesz ją pobrać z [ https://git-scm.com/download ](https://git-scm.com/download).
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Użyj Visual Studio Code, która została zainstalowana podczas przygotowywania środowiska deweloperskiego, aby otworzyć `AZ3166` folderu w `iot-central-firmware` folderu: 
+Użyj programu Visual Studio Code, który został zainstalowany podczas przygotowywania środowiska deweloperskiego, aby otworzyć `AZ3166` folderze `iot-central-firmware` folderu: 
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-Aby zobaczyć, jak dane telemetryczne są wysyłane do aplikacji Azure IoT centralna, otwórz **main_telemetry.cpp** plików w folderze źródłowym.
+Aby zobaczyć, jak dane telemetryczne są wysyłane do usługi Azure IoT Central aplikacji, otwórz **main_telemetry.cpp** pliku w folderze źródłowym.
 
-Funkcja `buildTelemetryPayload` tworzy ładunek danych telemetrycznych JSON przy użyciu danych z czujników na urządzeniu.
+Funkcja `buildTelemetryPayload` tworzy ładunek danych telemetrycznych w formacie JSON przy użyciu danych z czujników na urządzeniu.
 
-Funkcja `sendTelemetryPayload` wywołania `sendTelemetry` w **iotHubClient.cpp** do wysyłania ładunek JSON do Centrum IoT Azure IoT centralnej aplikacja używa.
+Funkcja `sendTelemetryPayload` wywołania `sendTelemetry` w **iotHubClient.cpp** wysyłać ładunek JSON usługi IoT Hub używane przez aplikację usługi Azure IoT Central.
 
-Aby zobaczyć sposób zgłaszania wartości właściwości do aplikacji Azure IoT centralna, otwórz **main_telemetry.cpp** plików w folderze źródłowym.
+Aby zobaczyć, jak wartości właściwości są zgłaszane do usługi Azure IoT Central aplikacji, otwórz **main_telemetry.cpp** pliku w folderze źródłowym.
 
-Funkcja `telemetryLoop` wysyła **doubleTap** podać właściwość wykrycie przyspieszeniomierza naciśnij dwa razy. Używa `sendReportedProperty` działać w **iotHubClient.cpp** pliku źródłowego.
+Funkcja `telemetryLoop` wysyła **doubleTap** zgłaszane właściwości, gdy przyspieszeniomierza wykryje naciśnij dwukrotnie. Używa ona `sendReportedProperty` działa w programach **iotHubClient.cpp** pliku źródłowego.
 
-Kod w **iotHubClient.cpp** plik źródłowy używa funkcji z [ zestawów SDK programu Microsoft Azure IoT i bibliotek C](https://github.com/Azure/azure-iot-sdk-c) wchodzić w interakcje z Centrum IoT.
+Kod w **iotHubClient.cpp** plik źródłowy używa funkcji z [ Microsoft Azure IoT SDK i bibliotek dla języka C](https://github.com/Azure/azure-iot-sdk-c) do interakcji z usługą IoT Hub.
 
-Aby uzyskać informacje na temat modyfikowania, kompilacji i przekazać przykładowy kod do Twojego urządzenia, zobacz **readme.md** w pliku `AZ3166` folderu.
+Aby uzyskać informacje o tym, jak można zmodyfikować, kompilacji i Przekaż przykładowy kod do Twojego urządzenia, zobacz **readme.md** w pliku `AZ3166` folderu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposób podłączania urządzeń zestaw deweloperski do aplikacji Azure IoT centralnej, Oto Sugerowane następne kroki:
+Teraz, gdy zawarto informacje dotyczące połączenia z urządzeniem Mxchip z aplikacją usługi Azure IoT Central, Oto zalecane kolejne kroki:
 
 * [Przygotowywanie i łączenie urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md)

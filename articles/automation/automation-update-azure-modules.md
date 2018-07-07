@@ -1,6 +1,6 @@
 ---
-title: Zaktualizuj Azure modułów w automatyzacji Azure
-description: W tym artykule opisano, jak można teraz zaktualizować typowymi modułami programu Azure PowerShell domyślne automatyzacji Azure.
+title: Aktualizowanie modułów platformy Azure w usłudze Azure Automation
+description: W tym artykule opisano, jak można teraz zaktualizować wspólnego moduły programu Azure PowerShell zapewniany domyślnie w usłudze Azure Automation.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,26 +9,29 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe263346d8794b3dc85b6420d8b9b02efa5f9684
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f968bd75c7aee4ad390f9206bb1fa210e7fcd8ff
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193509"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903153"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować modułów programu Azure PowerShell w usłudze Automatyzacja Azure
+# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
-Najbardziej typowe moduły programu PowerShell systemu Azure znajdują się domyślnie każdego konta automatyzacji. Zespół Azure aktualizuje Azure modułów regularnie, więc w ramach konta automatyzacji podano sposób aktualizowania modułów w ramach konta, gdy nowe wersje są dostępne w portalu.  
+Najbardziej typowe moduły programu Azure PowerShell znajdują się domyślnie w ramach każdego konta usługi Automation. Zespół platformy Azure regularnie, aktualizuje moduły platformy Azure, więc na koncie usługi Automation są dostarczane sposób aktualizowania modułów w ramach konta, gdy nowe wersje są dostępne z poziomu portalu.
 
-Ponieważ moduły są regularnie aktualizowane przez grupę, zmiany mogą być uwzględnione polecenia cmdlet, które może niekorzystnie wpłynąć na elementach runbook, w zależności od rodzaju zmiany, takie jak zmiana nazwy parametru lub całkowicie wycofano polecenia cmdlet. Aby uniknąć wpływu na elementy runbook i ich automatyzacji procesów, zaleca się testowanie i zweryfikować przed kontynuowaniem. Jeśli nie masz dedykowane konto automatyzacji przeznaczone do tego celu, należy rozważyć utworzenie jednego, dzięki czemu można przetestować wiele różnych scenariuszy i permutacji podczas tworzenia elementów runbook, oprócz do iteracji zmian, takich jak aktualizowanie Moduły programu PowerShell. Po zweryfikowaniu wyniki i wszelkie wymagane zmiany zostały zastosowane, kontynuować koordynowanie migracji wszystkie elementy runbook, który wymagany modyfikacji i wykonać następującą aktualizację, zgodnie z opisem w środowisku produkcyjnym.
+Ponieważ moduły są regularnie aktualizowane przez grupę produktu, zmiany mogą być uwzględnione polecenia cmdlet, które może niekorzystnie wpłynąć na Twoje elementy runbook w zależności od typu zmiany, takiej jak zmiana nazwy parametru lub całkowicie wycofano polecenie cmdlet. Aby uniknąć wpływu na Twoje elementy runbook i procesy, które mogą zautomatyzować, zalecane jest, testowanie i sprawdzić przed kontynuowaniem. Jeśli nie masz dedykowane konto usługi Automation, przeznaczone do tego celu, należy rozważyć utworzenie jednego, więc, że możesz sprawdzić wielu różnych scenariuszy i permutacji podczas tworzenia elementów runbook, oprócz iteracyjne zmiany, takie jak aktualizowanie Moduły programu PowerShell. Po zweryfikowaniu wyniki i zastosowano wszelkie wymagane zmiany, kontynuuj koordynowanie migracji wszelkie elementy runbook wymagające modyfikacji i wykonaj następującą aktualizację, zgodnie z opisem w środowisku produkcyjnym.
 
-## <a name="updating-azure-modules"></a>Aktualizowanie Azure modułów
+> [!NOTE]
+> Nowe konto usługi Automation nie mogą zawierać najnowsze moduły.
 
-1. Na stronie moduły konto automatyzacji jest opcję o nazwie **modułów Azure aktualizacji**. Jest zawsze włączone.<br><br> ![Zaktualizuj opcja modułów Azure na stronie moduły](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+## <a name="updating-azure-modules"></a>Aktualizowanie modułów platformy Azure
 
-2. Kliknij przycisk **modułów Azure aktualizacji**, powiadomienie z potwierdzeniem jest wyświetlany, który zapyta, czy chcesz kontynuować.<br><br> ![Zaktualizuj powiadomień Azure modułów](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+1. Na stronie moduły konta usługi Automation jest dostępna opcja o nazwie **aktualizowania modułów platformy Azure**. Jest zawsze włączona.<br><br> ![Aktualizuj moduły platformy Azure opcja na stronie moduły](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-3. Kliknij przycisk **tak** i rozpocznie się proces aktualizacji modułu. Proces aktualizacji trwa około 15-20 minut, można zaktualizować następujących modułów:
+2. Kliknij przycisk **aktualizowania modułów platformy Azure**, powiadomienie z potwierdzeniem jest wyświetlany, pytaniem, jeśli chcesz kontynuować.<br><br> ![Aktualizuj moduły platformy Azure powiadomień](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+
+3. Kliknij przycisk **tak** i rozpocznie się proces aktualizacji modułu. Proces aktualizacji trwa około 15 – 20 minut, można zaktualizować następujących modułów:
 
   * Azure
   * Azure.Storage
@@ -39,15 +42,15 @@ Ponieważ moduły są regularnie aktualizowane przez grupę, zmiany mogą być u
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Jeśli moduły są już aktualne, proces zostanie zakończony w ciągu kilku sekund. Po zakończeniu procesu aktualizacji, użytkownik jest powiadamiany.<br><br> ![Zaktualizuj stan aktualizacji modułów Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Jeśli moduły są już aktualne, proces zostanie zakończony w ciągu kilku sekund. Po ukończeniu procesu aktualizacji otrzymasz powiadomienie.<br><br> ![Aktualizuje stan aktualizacji modułów platformy Azure](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> Po uruchomieniu nowe zadanie zaplanowane usługi Automatyzacja Azure korzysta z modułów najnowszego na Twoim koncie automatyzacji.    
+> Usługa Azure Automation używa najnowszych modułów na koncie usługi Automation, po uruchomieniu nowego zaplanowanego zadania.    
 
-Jeśli używasz poleceń cmdlet z tych modułów programu Azure PowerShell w elementach runbook chcesz uruchomić ten proces aktualizacji, co miesiąc lub tak upewnij się, że masz najnowszą modułów.
+Jeśli używasz polecenia cmdlet z tych modułów programu Azure PowerShell w elementach runbook, chcesz, aby do uruchamiania tego procesu aktualizacji co miesiąc lub więc upewnij się, że najnowsze moduły.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o moduły integracji oraz sposobu tworzenia niestandardowych modułów do dalszej integracji z innymi systemami, usług lub rozwiązań automatyzacji, zobacz [moduły integracji](automation-integration-modules.md).
+* Aby dowiedzieć się więcej na temat moduły integracji oraz sposób tworzenia niestandardowych modułów do dalszej integracji usługi Automation z innych systemów, usług lub rozwiązania, zobacz [moduły integracji](automation-integration-modules.md).
 
-* Należy rozważyć użycie integracji kontroli źródła [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) lub [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) centralne zarządzanie i sterowanie wersjach portfela automatyzacji elementu runbook i konfiguracji.  
+* Integracja kontroli źródła przy użyciu polecenia [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) lub [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) centralne zarządzanie i kontrolowanie wydań portfolio automatyzacji elementu runbook i konfiguracji.  

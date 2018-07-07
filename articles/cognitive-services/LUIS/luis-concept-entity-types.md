@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3b87f89c8f0cb6a5b22923513d78fff9085f3598
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 83e5a8db9162ef1587664c0a353252c04ade45d8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345332"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887807"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -197,7 +197,7 @@ Composite jednostek reprezentują części całości. Na przykład jednostka zł
 
 Usługa LUIS także listy Typ jednostki obsługiwanej przez nie jest rozpoznana do maszyny, ale pozwala aplikacją usługi LUIS określić stałą listy wartości. Zobacz [granice LUIS](luis-boundaries.md) odwołania, aby zapoznać się ograniczenia typu listy jednostek. 
 
-Jeśli zostały uznane za hierarchiczna, złożony i wyświetlanie list jednostek i nadal potrzebujesz więcej niż limit się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS] [ LUIS] witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
+Jeśli zostały uznane za hierarchiczna, złożony i wyświetlanie list jednostek i nadal potrzebujesz więcej niż limit się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
@@ -211,10 +211,8 @@ W ramach przeglądu należy rozważyć dodanie listy frazę do dodania sygnał d
 
 Zobacz [najlepsze praktyki](luis-concept-best-practices.md) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pojęcia dotyczące dobrze [wypowiedzi](luis-concept-utterance.md). 
 
 Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

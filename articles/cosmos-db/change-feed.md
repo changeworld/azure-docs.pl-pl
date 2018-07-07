@@ -1,7 +1,7 @@
 ---
-title: Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
-description: Obsługa kanału informacyjnego zmiany bazy danych Azure rozwiązania Cosmos umożliwia śledzenie zmian w dokumentach i wykonywać oparty na zdarzeniach przetwarzania, takich jak wyzwalaczy i aktualizowanie systemów pamięci podręcznych i analiza.
-keywords: Zmiana źródła danych
+title: Obsługa kanału informacyjnego pracy zmiany w usłudze Azure Cosmos DB | Dokumentacja firmy Microsoft
+description: Obsługa kanału informacyjnego zmian usługi Azure Cosmos DB umożliwia śledzenie zmian w dokumentach i wykonać przetwarzanie oparte na zdarzeniach, takich jak wyzwalacze i aktualizowanie systemów pamięci podręczne i analizy.
+keywords: zestawienia zmian
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -10,93 +10,93 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 6b0aaa075b8b2881e269d79a67e75528d0d9a86a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129862"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902966"
 ---
-# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos
+# <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca ze zmianą Obsługa kanału informacyjnego w usłudze Azure Cosmos DB
 
-[Azure DB rozwiązania Cosmos](../cosmos-db/introduction.md) jest szybkie i elastyczne globalnie Replikacja bazy danych, nadają się do IoT gry detaliczna i rejestrowanie operacyjnej aplikacjach. Użyj zmiany danych, aby rozpocząć poza dodatkowe akcje jest wspólnego wzorca projektowego w tych aplikacjach. Te dodatkowe akcje może być jedną z następujących czynności: 
+[Usługa Azure Cosmos DB](../cosmos-db/introduction.md) są szybkie i elastyczne globalnie replikowane bazy danych odpowiednie dla IoT, gry detaliczna i operacyjne rejestrowania aplikacji. Typowy wzorzec projektowania w tych aplikacjach jest także uruchamiać dodatkowe akcje za pomocą zmian danych. Te dodatkowe akcje, może być dowolny z następujących czynności: 
 
-* Wyzwolenie powiadomienie lub wywołanie interfejsu API, gdy dokument zostanie wstawiony lub zmodyfikowany.
-* Strumień przetwarzania dla IoT lub wykonywania analizy.
-* Przenoszenie danych dodatkowych synchronizowanie z pamięci podręcznej, aparat wyszukiwania lub magazynu danych lub archiwizowaniem danych na chłodni.
+* Wyzwalanie powiadomienie lub wywołanie interfejsu API, gdy dokument zostanie wstawiony lub zmodyfikowany.
+* Stream przetwarzania dla IoT lub przeprowadzania analizy.
+* Dodatkowego przenoszenia danych przez synchronizację z pamięci podręcznej, aparat wyszukiwania lub magazynu danych lub archiwizowania danych do zimnego magazynu.
 
-**Zmiany źródła pomocy technicznej** w usłudze Azure DB rozwiązania Cosmos umożliwia tworzenie wydajnych i skalowalne rozwiązania dla każdego z tych wzorców, jak pokazano na poniższej ilustracji:
+**Obsługa kanału informacyjnego zmian** w usłudze Azure Cosmos DB umożliwia wydajne i skalowalne rozwiązania dla każdego z tych wzorców, jak pokazano na poniższej ilustracji:
 
-![Przy użyciu bazy danych Azure rozwiązania Cosmos zmiany źródła danych do analizy w czasie rzeczywistym zasilania i scenariuszach obliczeniowych o sterowane zdarzeniami](./media/change-feed/changefeedoverview.png)
+![Za pomocą usługi Azure Cosmos DB zmiany źródła danych do zasilania analizy w czasie rzeczywistym i scenariusze obliczeniowe sterowane zdarzeniami](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Zmiana źródła pomocy technicznej jest dostępna dla wszystkich modeli danych i kontenerów w usłudze Azure DB rozwiązania Cosmos. Jednak zmiany źródła danych jest do odczytu za pomocą klienta programu SQL i serializuje elementów do formatu JSON. Z powodu JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumenty sformatowane formatu BSON i JSON w formacie zmiany źródła danych.
+> Obsługa kanału informacyjnego zmian jest udostępniana dla wszystkich modeli danych i kontenerów w usłudze Azure Cosmos DB. Jednak Kanał informacyjny zmian jest do odczytu za pomocą klienta programu SQL i wykonuje serializację elementów do formatu JSON. Ze względu na JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumentów w formacie BSON i JSON sformatowane zestawienia zmian.
 
-Poniższego klipu wideo Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu pokazuje, jak zmiany bazy danych Azure rozwiązania Cosmos źródła działania.
+W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu pokazuje, jak działa kanału informacyjnego na zmian usługi Azure Cosmos DB.
 
 > [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
 >
 >
 
-## <a name="how-does-change-feed-work"></a>Jak zmiany źródła pracy?
+## <a name="how-does-change-feed-work"></a>Jak kanału informacyjnego zmian pracy?
 
-Zmiana źródła strumieniowego pomocy technicznej w działania bazy danych Azure rozwiązania Cosmos przez nasłuchiwanie w kolekcji usługi Azure DB rozwiązania Cosmos zostały wprowadzone zmiany. Następnie danych wyjściowych posortowaną listę dokumentów, które zostały zmienione w kolejności, w którym zostały zmodyfikowane. Zmiany są trwałe, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozproszone na co najmniej jeden konsumentów w celu równoległego przetwarzania. 
+Obsługa kanału informacyjnego zmian w usłudze Azure Cosmos DB działa przez nasłuchiwanie w kolekcji usługi Azure Cosmos DB zostały wprowadzone zmiany. Następnie wyświetla posortowaną listę dokumentów, które zostały zmienione w kolejności, w której zostały zmodyfikowane. Zmiany są zachowywane, mogą być przetwarzane asynchronicznie i przyrostowo, a dane wyjściowe mogą być rozproszone między jednego lub wielu użytkowników do przetwarzania równoległego. 
 
-Zgodnie z opisem w dalszej części tego artykułu można przeczytać zmiany źródła danych na trzy sposoby:
+Zmiana źródła danych na trzy różne sposoby, można przeczytać, zgodnie z opisem w dalszej części tego artykułu:
 
-*   [Przy użyciu funkcji platformy Azure](#azure-functions)
-*   [Za pomocą usługi Azure rozwiązania Cosmos SDK bazy danych](#sql-sdk)
-*   [Przy użyciu zmian bazy danych Azure rozwiązania Cosmos źródła danych biblioteki procesora](#change-feed-processor)
+*   [Użycie usługi Azure Functions](#azure-functions)
+*   [Za pomocą usługi Azure Cosmos DB zestawu SDK](#sql-sdk)
+*   [Za pomocą zmian usługi Azure Cosmos DB źródła danych z biblioteką procesora](#change-feed-processor)
 
-Zmiany źródła danych jest dostępne dla każdego zakresu klucza partycji w obrębie kolekcji dokumentów i w związku z tym mogą być rozproszone na co najmniej jeden konsumentów w celu równoległego przetwarzania jak pokazano na poniższej ilustracji.
+Kanał informacyjny zmian jest dostępny dla każdy zakres kluczy partycji w kolekcji dokumentów i dlatego mogą być rozproszone między jednego lub wielu użytkowników do przetwarzania równoległego jak pokazano na poniższej ilustracji.
 
-![Przetwarzanie rozproszone zmiany bazy danych Azure rozwiązania Cosmos źródła danych](./media/change-feed/changefeedvisual.png)
+![Rozproszone przetwarzanie zestawienia zmian usługi Azure Cosmos DB](./media/change-feed/changefeedvisual.png)
 
 Dodatkowe szczegóły:
-* Zmiana źródła danych jest włączone domyślnie dla wszystkich kont.
-* Można użyć programu [udostępnionej przepływności](request-units.md) w Twoim regionie zapisu lub w dowolnej [odczytu region](distribute-data-globally.md) odczytywać zmian źródła danych, podobnie jak wszystkie inne działania bazy danych Azure rozwiązania Cosmos.
-* Zmiana źródła strumieniowego obejmuje wstawienia i operacje aktualizacji do dokumentów w kolekcji. Można przechwycić usuwa przez ustawienie w dokumentach zamiast usuwa flagę "soft-delete". Alternatywnie, można ustawić okresu wygaśnięcia skończoną dla dokumentów za pomocą [możliwości TTL](time-to-live.md), na przykład, 24 godzin i użyj wartości tej właściwości, aby przechwycić usuwa. W tym rozwiązaniu ma przetwarzać zmiany w określonym czasie krótszy niż okres ważności TTL.
-* Każdej zmiany do dokumentu zostanie wyświetlone tylko raz w przypadku zmiany źródła danych, a klienci zarządzania ich logiki tworzenie punktów kontrolnych. Biblioteka źródła procesora zmianami zapewnia automatyczne tworzenie punktów kontrolnych i "co najmniej raz" semantyki.
+* Kanał informacyjny zmian jest domyślnie włączone dla wszystkich kont.
+* Możesz użyć swojej [aprowizowanej przepływności](request-units.md) w Twoim regionie zapisu lub w dowolnej [region odczytu](distribute-data-globally.md) odczytywanie zestawienia zmian, podobnie jak wszystkie inne działania usługi Azure Cosmos DB.
+* Kanał informacyjny zmian zawiera INSERT i update operacje wykonywane na dokumentach w obrębie kolekcji. Można przechwycić usuwa przez ustawienie flagi "opcji soft-delete" w dokumentach zamiast usuwania. Alternatywnie, można ustawić okres ważności skończoną dla dokumentów za pomocą [możliwości TTL](time-to-live.md), na przykład, 24 godzin i użyj wartości tej właściwości, aby przechwycić usuwa. Za pomocą tego rozwiązania należy przetworzyć zmiany w przedziale czasu krótszy niż okres ważności czasu wygaśnięcia.
+* Każda zmiana w dokumencie dokładnie jeden raz w zestawienia zmian, a klienci zarządzanie ich logiki procesu tworzenia punktów kontrolnych. Biblioteką procesora zestawienia zmian zapewnia automatyczne tworzenie punktów kontrolnych i "co najmniej raz" semantyki.
 * Tylko najnowsze zmiany w danym dokumencie znajduje się w dzienniku zmian. Pośrednie zmiany mogą nie być dostępne.
-* Zmiana źródła danych jest sortowana numer modyfikacji w każdej wartości klucza partycji. Brak nie gwarantuje kolejności między wartości klucza partycji.
-* Zmiany mogą być synchronizowane z dowolnego punktu w czasie, oznacza to, że istnieje nie okres przechowywania danych, dla której zmiany są dostępne.
-* Zmiany są dostępne w fragmentów zakresami kluczy partycji. Ta funkcja umożliwia zmiany w dużych kolekcjach do przetworzenia równolegle przez wielu użytkowników/serwerów.
-* Aplikacje mogą żądać wiele źródeł zmiany równocześnie w tej samej kolekcji.
-* ChangeFeedOptions.StartTime umożliwia zapewnienie pierwszy punkt początkowy, na przykład, aby znaleźć token kontynuacji odpowiadający danemu czasu zegara. ContinuationToken, jeśli jest określony, wins za pośrednictwem wartości StartTime i StartFromBeginning. Dokładność ChangeFeedOptions.StartTime jest ~ 5 s. 
+* Kanał informacyjny zmian jest posortowana w kolejności ich modyfikacji w każdej wartości klucza partycji. Nie jest zagwarantowana kolejność, w wartości klucza partycji.
+* Zmiany mogą być synchronizowane z dowolnego punktu w czasie, oznacza to, że nie ma żadnych okres przechowywania danych, dla której zmiany są dostępne.
+* Zmiany są dostępne we fragmentach zakresów kluczy partycji. Ta funkcja umożliwia zmiany w dużych kolekcjach ma być przetwarzana równolegle przez wielu odbiorców/serwerów.
+* Aplikacje mogą żądać wielu ze źródeł zmian równocześnie w tej samej kolekcji.
+* ChangeFeedOptions.StartTime może służyć zapewnienie pierwszego punktu początkowego, na przykład, aby znaleźć token kontynuacji odpowiadający danemu godziny zegara. Token kontynuacji, jeśli zostanie określony, wins przez wartości StartTime i StartFromBeginning. Dokładność ChangeFeedOptions.StartTime jest OK. 5 sekund. 
 
-## <a name="use-cases-and-scenarios"></a>Przypadki użycia i scenariusze
+## <a name="use-cases-and-scenarios"></a>Przypadki użycia i scenariuszy
 
-Źródła danych zmian umożliwia wydajne przetwarzanie dużych zestawów danych z dużą liczbę operacji zapisu i oferuje alternatywę do badania cały zestaw danych, aby określić, co się zmieniło. 
+Kanał informacyjny zmian umożliwia wydajne przetwarzanie dużych zestawów danych za pomocą dużej liczby zapisów i oferuje alternatywę do wykonywania zapytań w całym zestawie danych, aby zidentyfikować, co zmieniło się. 
 
-Na przykład w przypadku zmiany, źródła danych, można wykonać następujące zadania wydajnie:
+Na przykład za pomocą zestawienia zmian, można wykonać następujące zadania efektywnie:
 
-* Aktualizacji pamięci podręcznej, indeksu wyszukiwania lub magazynu danych z danych przechowywanych w usłudze Azure DB rozwiązania Cosmos.
-* Implementuje warstw i archiwizowania danych na poziomie aplikacji, czyli przechowywać "gorących danych" w usłudze Azure DB rozwiązania Cosmos i przedawniają "zimnych danych", aby [magazyn obiektów Blob Azure](../storage/common/storage-introduction.md) lub [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
-* Wykonywać zero czas przestoju migracji na inne konto bazy danych Azure rozwiązania Cosmos z różnych schemat partycjonowania.
-* Implementowanie [potoki lambda na platformie Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) z bazy danych Azure rozwiązania Cosmos. Azure DB rozwiązania Cosmos zapewnia rozwiązanie skalowalne bazy danych, które można obsługiwać wprowadzanie i zapytań oraz implementował architektury lambda z niskim całkowitego kosztu posiadania. 
-* Odbieranie i przechowywania danych o zdarzeniach z urządzeń, czujników, infrastruktury i aplikacje i przetworzyć tych zdarzeń w czasie rzeczywistym z [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/storm/apache-storm-overview.md), lub [Apache Platforma Spark](../hdinsight/spark/apache-spark-overview.md). 
+* Zaktualizuj pamięć podręczną, indeks wyszukiwania lub magazynu danych przy użyciu danych przechowywanych w usłudze Azure Cosmos DB.
+* Implementowanie danych na poziomie aplikacji warstw oraz archiwizacji, oznacza to, przechowywania "gorących danych" w usłudze Azure Cosmos DB i przedawniają "zimnych danych", aby [usługi Azure Blob Storage](../storage/common/storage-introduction.md) lub [usługi Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
+* Wykonaj migracje czas przestoju, zero do innego konta usługi Azure Cosmos DB przy użyciu innego schematu partycjonowania.
+* Implementowanie [potoki lambda na platformie Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) za pomocą usługi Azure Cosmos DB. Usługa Azure Cosmos DB zapewnia rozwiązanie skalowalna baza danych, który może obsługiwać pozyskiwania i zapytania i implementowanie architektury lambda przy użyciu niski całkowity koszt posiadania. 
+* Odbieranie i przechowywania danych o zdarzeniach z urządzeń, czujników, infrastruktury i aplikacji oraz przetwarzania tych zdarzeń w czasie rzeczywistym za pomocą [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/storm/apache-storm-overview.md), lub [Apache Platforma Spark](../hdinsight/spark/apache-spark-overview.md). 
 
-Na poniższej ilustracji przedstawiono, jak potoki lambda, zarówno pozyskiwania, które można użyć zapytania przy użyciu bazy danych Azure rozwiązania Cosmos zmienić źródła pomocy technicznej: 
+Na poniższej ilustracji przedstawiono, jak zmienia się potoki lambda, które zarówno odbieranie i zapytania przy użyciu usługi Azure Cosmos DB można użyć kanału informacyjnego pomocy technicznej: 
 
-![Azure na podstawie DB rozwiązania Cosmos lambda potoku dla wprowadzanie i zapytań](./media/change-feed/lambda.png)
+![Potok usługi Azure Cosmos DB na podstawie lambda pozyskiwanie danych i zapytań](./media/change-feed/lambda.png)
 
-Ponadto w ramach Twojej [niekorzystającą](http://azure.com/serverless) sieci web i aplikacji mobilnych można Śledź zdarzenia, takie jak zmiany do klienta profilu, preferencje lub lokalizacji do wyzwalania określonych akcji, takich jak wysyłanie powiadomień wypychanych do urządzeń przy użyciu [Usługę azure Functions](#azure-functions). Jeśli używasz bazy danych Azure rozwiązania Cosmos do tworzenia gier, można wykonywać następujące czynności, na przykład używanie zmiany źródła danych do zaimplementowania w czasie rzeczywistym tablice wyników oparte na wyniki z gry ukończone.
+Ponadto w ramach Twojej [bez użycia serwera](http://azure.com/serverless) aplikacje internetowe i mobilne, możesz śledzić zdarzenia, takie jak zmiany klienta profilu, preferencje lub lokalizacji do wyzwalania określonych akcji, takich jak wysyłanie powiadomień wypychanych do urządzeń za pomocą [Usługi azure Functions](#azure-functions). Jeśli używasz usługi Azure Cosmos DB do tworzenia gier, możesz, na przykład użyj Zmień źródło danych do zaimplementowania rankingi w czasie rzeczywistym, w oparciu o wyniki z gry ukończone.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Przy użyciu funkcji platformy Azure 
+## <a name="using-azure-functions"></a>Użycie usługi Azure Functions 
 
-Jeśli używasz usługi Azure Functions Najprostszym sposobem, aby połączyć się źródłem zmiany bazy danych Azure rozwiązania Cosmos jest dodanie wyzwalacz bazy danych Azure rozwiązania Cosmos do aplikacji usługi Azure Functions. Po utworzeniu wyzwalacz bazy danych Azure rozwiązania Cosmos w aplikacji usługi Azure Functions, wybierz kolekcję bazy danych Azure rozwiązania Cosmos do nawiązania połączenia, a funkcja jest zawsze wyzwalane, gdy zostaną zmienione do kolekcji. 
+Jeśli używasz usługi Azure Functions Dodaj wyzwalacz usługi Azure Cosmos DB do swojej aplikacji usługi Azure Functions jest najprostszym sposobem, aby nawiązać połączenie Kanał informacyjny zmian usługi Azure Cosmos DB. Po utworzeniu wyzwalacza usługi Azure Cosmos DB w aplikacji usługi Azure Functions, należy wybrać kolekcji usługi Azure Cosmos DB, aby nawiązać połączenie, a funkcja jest wyzwalana po każdej zmianie kolekcji. 
 
-Wyzwalacze mogą być tworzone w portalu Azure Functions w portalu Azure DB rozwiązania Cosmos lub programowo. Aby uzyskać więcej informacji, zobacz [bazy danych Azure rozwiązania Cosmos: pliki bazy danych obliczeniowych, przy użyciu usługi Azure Functions](serverless-computing-database.md).
+Wyzwalacze mogą być tworzone w portalu usługi Azure Functions w portalu usługi Azure Cosmos DB lub programowo. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: obliczeniowych bez użycia serwera bazy danych, przy użyciu usługi Azure Functions](serverless-computing-database.md).
 
 <a id="sql-sdk"></a>
 ## <a name="using-the-sdk"></a>Używanie zestawu SDK
 
-[SQL SDK](sql-api-sdk-dotnet.md) dla bazy danych rozwiązania Cosmos Azure udostępnia wszystkie uprawnienia do odczytu i zarządzanie nimi zmiany źródła danych. Jednak z dużą zasilania pochodzi zbyt wiele zadań. Jeśli chcesz zarządzać punktami kontrolnymi, postępowania w przypadku numerów sekwencji dokumentów i mają kontrolę nad kluczy partycji przy użyciu zestawu SDK może być odpowiednie podejście.
+[Zestaw SDK SQL](sql-api-sdk-dotnet.md) dla usługi Azure Cosmos DB zapewnia wszystkie uprawnienia do odczytu i zarządzanie zestawienia zmian. Jednak z mocą zawiera zbyt wiele zadań. Jeśli chcesz zarządzać punktami kontrolnymi przeciwdziałania numerów sekwencji dokumentów i mają precyzyjną kontrolę nad kluczami partycji, a następnie przy użyciu zestawu SDK może być właściwej metody postępowania.
 
-W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źródła danych.
+Ta sekcja zawiera szczegółowe instrukcje dotyczące pracy za pomocą zestawienia zmian przy użyciu zestawu SDK SQL.
 
-1. Początek przeczytaj następujące zasoby z appconfig. Instrukcje dotyczące pobierania klucza punktu końcowego i autoryzacji są dostępne w [zaktualizować parametry połączenia](create-sql-api-dotnet.md#update-your-connection-string).
+1. Rozpocznij od zawierają następujące zasoby z appconfig. Instrukcje dotyczące pobierania klucza punktu końcowego i autoryzacja są dostępne w [aktualizowanie parametrów połączenia](create-sql-api-dotnet.md#update-your-connection-string).
 
     ``` csharp
     DocumentClient client;
@@ -106,7 +106,7 @@ W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źr
     string authorizationKey = ConfigurationManager.AppSettings["authKey"];
     ```
 
-2. Tworzenie klienta w następujący sposób:
+2. Utwórz klienta w następujący sposób:
 
     ```csharp
     using (client = new DocumentClient(new Uri(endpointUrl), authorizationKey,
@@ -115,7 +115,7 @@ W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źr
     }
     ```
 
-3. Pobierz zakresami kluczy partycji:
+3. Pobierz partycję kluczy zakresów:
 
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
@@ -127,7 +127,7 @@ W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źr
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
 
-4. Wywołanie ExecuteNextAsync dla każdego zakresu klucza partycji:
+4. Wywołaj ExecuteNextAsync dla każdy zakres kluczy partycji:
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
@@ -158,73 +158,73 @@ W tej sekcji przedstawiono sposób użycia zestawu SDK SQL do pracy z zmiany źr
     ```
 
 > [!NOTE]
-> Zamiast `ChangeFeedOptions.PartitionKeyRangeId`, można użyć `ChangeFeedOptions.PartitionKey` do określenia klucza jednej partycji, dla którego można pobrać zmiany źródła danych. Na przykład `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
+> Zamiast `ChangeFeedOptions.PartitionKeyRangeId`, możesz użyć `ChangeFeedOptions.PartitionKey` do określenia pojedynczego klucza partycji dla którego należy pobrać zmiany źródła danych. Na przykład `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
 > 
 >
 
-Jeśli masz wiele czytników, możesz użyć **ChangeFeedOptions** rozłożenie obciążenia odczytu w różnych wątkach lub różnych klientów.
+Jeśli masz wielu elementów odczytujących, możesz użyć **ChangeFeedOptions** rozłożenie obciążenia odczytu w różnych wątkach lub różnych klientów.
 
-To wszystko, te kilku wierszy kodu można rozpocząć odczytywanie źródła zmiany. Kompletny kod używany w tym artykule można uzyskać [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
+I to wszystko, te kilku wierszy kodu można rozpocząć odczytywanie zestawienia zmian. Możesz uzyskać kompletny kod używany w tym artykule [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
-W kodzie w kroku 4 powyżej **ResponseContinuation** w ciągu ostatnich wiersz ma ostatni numer sekwencji logiczne (LSN) dokumentu, który będzie używany przy następnym odczytu nowych dokumentów po ten numer sekwencji. Za pomocą **StartTime** z **ChangeFeedOption** poszerzyć Twojej sieci, można pobrać dokumentów. Tak, jeśli Twoje **ResponseContinuation** ma wartość null, ale Twoje **StartTime** Przechodzi wstecz w czasie, a następnie pobierze wszystkie dokumenty, które zmianie od czasu **StartTime**. Jednak jeśli Twoje **ResponseContinuation** ma wartość, a następnie system będzie można wszystkie dokumenty od tego numeru LSN.
+W kodzie w kroku 4 powyżej **ResponseContinuation** w ciągu ostatnich wiersz ma numer ostatniej sekwencji logiczne (LSN) z dokumentu, który będzie używany przy następnym przeczytać nowych dokumentów po ten numer sekwencyjny. Za pomocą **StartTime** z **ChangeFeedOption** poszerzyć swoje net można pobrać dokumentów. Jeśli Twoje **ResponseContinuation** ma wartość null, Twoja **StartTime** Przechodzi wstecz w czasie, a następnie otrzymasz wszystkie dokumenty, które zmieniło **StartTime**. Jednak jeśli Twoja **ResponseContinuation** ma wartość, a następnie system uzyskasz wszystkie dokumenty od tego numeru LSN.
 
-Tak tablica punkt kontrolny tylko przechowywanie numeru LSN dla każdej partycji. Ale jeśli nie chcesz uwzględniać partycji, punkty kontrolne, numer LSN, godzina rozpoczęcia, itp. opcja prostsze jest użycie zmiany źródła danych biblioteki procesora.
+Macierz punktu kontrolnego jest tak, po prostu zachowanie numeru LSN dla każdej partycji. Ale jeśli nie chcesz poradzić sobie z partycjami, punkty kontrolne, numer LSN, czas rozpoczęcia, itp. opcja prostsze jest użycie zestawienia bibliotece procesora zmian.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Przy użyciu zmian źródła danych biblioteki procesora 
+## <a name="using-the-change-feed-processor-library"></a>Za pomocą zmiany źródła danych z biblioteką procesora 
 
-[Zmiany bazy danych Azure rozwiązania Cosmos źródła danych biblioteki procesora](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) pomoże Ci łatwo rozpowszechniają przetwarzania zdarzeń wielu klientów. Ta biblioteka upraszcza odczytu zmiany na partycje i wiele wątków działające równolegle.
+[Zmian usługi Azure Cosmos DB kanału informacyjnego w bibliotece procesora](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) pomoże Ci łatwo Dystrybuuj przetwarzanie zdarzeń w wielu odbiorców. Ta biblioteka upraszcza zmiany odczytywania różnych partycji i wiele wątków działających równolegle.
 
-Największą zaletą zmiany procesora źródła biblioteki jest nie trzeba zarządzać każdej partycji oraz token kontynuacji i nie trzeba ręcznie sondowania każdej kolekcji.
+Główną zaletą biblioteką procesora zestawienia zmian jest nie trzeba zarządzać każdej partycji i token kontynuacji i nie trzeba ręcznie wykonać sondowanie każdej kolekcji.
 
-Biblioteka źródła procesora zmianami upraszcza odczytu zmiany na partycje i wiele wątków działające równolegle.  Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, po uruchomieniu dwóch klientów, którzy korzystają zmiany źródła danych biblioteki procesora, rozdzielenie pracy między sobą. Jak zwiększyć klientów, ich zachować podziału pracy między sobą.
+Biblioteką procesora zestawienia zmian upraszcza zmiany odczytu w partycji i wiele wątków działających równolegle.  Automatycznie zarządza odczytu zmiany na partycje przy użyciu mechanizmu dzierżawy. Jak widać na poniższej ilustracji, jeśli zaczniesz dwóch klientów, którzy korzystają z zestawienia bibliotece procesora zmian, ich podzielić pracę między sobą. W miarę postępu zwiększyć klientów, ich zachowania podzielenie pracy między sobą.
 
-![Przetwarzanie rozproszone zmiany bazy danych Azure rozwiązania Cosmos źródła danych](./media/change-feed/change-feed-output.png)
+![Rozproszone przetwarzanie zestawienia zmian usługi Azure Cosmos DB](./media/change-feed/change-feed-output.png)
 
-Po lewej stronie klient został uruchomiony w pierwszej i jego uruchomienia monitorowania wszystkie partycje, a następnie drugi klienta została uruchomiona, a następnie pierwszy let Przejdź niektórych dzierżaw do drugiego klienta. Jak widać to jest dobry sposób rozdzielania pracy między kilka różnych maszyn i klientami.
+Po lewej stronie klient został uruchomiony w pierwszej i jego uruchomienia, monitorowania, które wszystkie partycje, a następnie drugiego klienta została uruchomiona, a następnie pierwszy porzuciła niektóre dzierżawy do drugiego klienta. Jak widać, to jest dobre rozwiązanie sposób rozdzielania pracy między różnych komputerów i klientów.
 
-Należy pamiętać, że jeśli dwie niekorzystającą funtions Azure monitorowanie tej samej kolekcji i przy użyciu tej samej dzierżawy, a następnie dwie funkcje mogą wystąpić różne dokumenty jak biblioteki procesora postanawia processs partycji w zależności od.
+Należy pamiętać, że jeśli masz dwa bez użycia serwera funtions Azure monitorowania tej samej kolekcji i przy użyciu tej samej dzierżawy, a następnie dwie funkcje mogą wystąpić różne dokumenty, w zależności od sposobu bibliotece procesora postanawia proces przekazywania partycje.
 
 <a id="understand-cf"></a>
-### <a name="understanding-the-change-feed-processor-library"></a>Opis zmiany źródła danych biblioteki procesora
+### <a name="understanding-the-change-feed-processor-library"></a>Opis zmiany źródła danych z biblioteką procesora
 
-Istnieją cztery główne składniki wdrażania biblioteki źródła procesora zmiany: monitorowanych kolekcję, Kolekcja dzierżawy hosta procesora i konsumentów. 
+Istnieją cztery główne składniki wykonawcze biblioteką procesora zestawienia zmian: monitorowanej kolekcji, kolekcję dzierżaw, hosta procesora i konsumentów. 
 
 > [!WARNING]
 > Tworzenie kolekcji ma wpływ na cenę, ponieważ rezerwujesz przepływność aplikacji na potrzeby komunikowania się z usługą Azure Cosmos DB. Aby uzyskać więcej informacji, odwiedź naszą [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/)
 > 
 > 
 
-**Kolekcja monitorowanych:** monitorowanych kolekcja jest danych, z którego jest generowany zmiany źródła danych. Żadnych instrukcji INSERT i zmiany w kolekcji monitorowane są uwzględniane w źródle danych zmiany kolekcji. 
+**Kolekcja monitorowanych:** monitorowanej kolekcji jest danych, z którego jest generowany zestawienia zmian. Wszystkie operacje wstawiania i zmiany w monitorowanej kolekcji są odzwierciedlane w zestawienia zmian kolekcji. 
 
-**Kolekcja dzierżawy:** współrzędne kolekcji dzierżawy przetwarzania zmian źródła danych w wielu pracowników. Oddzielne kolekcji jest używany do przechowywania dzierżaw z jednej dzierżawy dla każdej partycji. Jest korzystne w przypadku przechowywania tej kolekcji dzierżawy na inne konto o regionowi zapisu na którym jest uruchomiona zmiany źródła procesora. Obiekt dzierżawy zawiera następujące atrybuty: 
+**Kolekcję dzierżaw:** współrzędne kolekcji dzierżawy przetwarzania zestawienia zmian na wielu procesów roboczych. Oddzielne kolekcji służy do przechowywania dzierżaw przy użyciu jednej dzierżawy dla każdej partycji. Jest lepiej jest przechowywać tej kolekcji dzierżawy na innym koncie z regionem zapisu bliżej na którym działa zestawienia procesora zmian. Obiekt dzierżawy zawiera następujące atrybuty: 
 * Właściciel: Określa hosta, który jest właścicielem dzierżawy
-* Kontynuacja: Określa położenie (token kontynuacji) w przypadku zmiany dla określonej partycji
-* Znacznik czasu: Czas ostatniego dzierżawy został zaktualizowany; Sygnatura czasowa może służyć do sprawdzenia, czy dzierżawy jest uznawany za wygasły 
+* Kontynuacja: Określa położenie (token kontynuacji) w Zmień źródło danych dla określonej partycji
+* Sygnatura czasowa: Czas ostatniego dzierżawy została zaktualizowana; Sygnatura czasowa może służyć do sprawdzania, czy dzierżawa jest uznawany za wygasły 
 
 **Host procesora:** każdy host Określa, ile partycje do przetworzenia na podstawie liczby wystąpień hostów mają aktywne dzierżawy. 
-1.  Po uruchomieniu hosta, uzyskuje dzierżawy w celu zrównoważenia obciążenia na wszystkich hostach. Hosta okresowo odnowieniu dzierżawy, więc pozostaną aktywne dzierżawy. 
-2.  Punkty kontrolne hosta ostatniego token kontynuacji do dzierżawy dla każdego do odczytu. Do zapewnienia bezpieczeństwa współbieżności, host sprawdza ETag dla każdej aktualizacji dzierżawy. Obsługiwane są także inne strategie punktu kontrolnego.  
-3.  Podczas zamykania systemu host zwalnia wszystkie dzierżawy, ale przechowuje informacje kontynuacji, aby go ponownie później odczytu z przechowywanych punktu kontrolnego. 
+1.  Podczas uruchamiania hosta, uzyskuje dzierżawę, aby zrównoważyć obciążenie na wszystkich hostach. Host okresowo odnowieniu dzierżawy, więc dzierżawy pozostają aktywne. 
+2.  Punkty kontrolne hosta ostatni token kontynuacji do dzierżawy dla każdego do odczytu. Aby zapewnić bezpieczeństwo współbieżności, hosta sprawdza, czy element ETag dla każdej aktualizacji dzierżawy. Obsługiwane są również inne strategie punktu kontrolnego.  
+3.  Podczas zamykania systemu host zwalnia wszystkie dzierżawy, ale zachowuje informacji kontynuacji, dzięki czemu może wznowić działanie czytania od przechowywanej punktu kontrolnego później. 
 
 W tym momencie liczba hostów nie może być większa niż liczba partycji (dzierżawy).
 
-**Konsumenci:** użytkowników lub pracowników, są wątki przetwarzania zmian źródła danych inicjowane przez każdego hosta. Każdy host procesora może mieć wielu klientów. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia jej hosta zmian i ważność dzierżawy.
+**Odbiorcy:** użytkowników lub pracowników, są wątki, które wykonują przetwarzania zestawienia zmian inicjowane przez każdego hosta. Każdy host procesor może mieć wielu odbiorców. Każdy odbiorca odczytuje zmiany źródła danych z partycji, który jest przypisany do powiadamia o jego hosta zmiany i Wygasłe dzierżawy.
 
-Aby jeszcze lepiej zrozumieć, jak te cztery elementy zmiany źródła pracy procesora, Przyjrzyjmy się przykład na poniższym diagramie. Kolekcja monitorowanych przechowuje dokumenty i używa "Miasto" jako klucza partycji. Widzimy niebieski partycji i tak dalej zawiera dokumenty z polem "Miasto" od "A-E". Istnieją dwa hosty, każda z dwóch konsumentów odczytu z cztery partycje równolegle. Strzałki oznaczają konsumentów czytania z określonego punktu w przypadku zmiany źródła danych. W pierwszej partycji niebieski ciemniejszego reprezentuje nieprzeczytana zmiany podczas koloru niebieskiego reprezentuje już odczytu zmiany w przypadku zmiany źródła danych. Hosty używają kolekcji dzierżawy do przechowywania wartości "kontynuacji", aby śledzić bieżącą pozycję odczytu dla każdego konsumenta. 
+Aby jeszcze lepiej zrozumieć sposób tych czterech elementów kanału informacyjnego zmian pracy procesora ze sobą, Spójrzmy na przykład na poniższym diagramie. Monitorowane kolekcja przechowuje dokumenty i używa "city" jako klucza partycji. Widzimy, że niebieski partycja zawiera dokumenty z polem "city" od "A-E" i tak dalej. Istnieją dwa hosty, każdy z dwóch odbiorców podczas odczytywania z cztery partycje równolegle. Strzałki oznaczają odbiorców podczas odczytywania z określonego miejsca w zestawienia zmian. W pierwszej partycji niebieskim ciemniejsze reprezentuje nieprzeczytane zmiany, gdy jasnoniebieski reprezentuje już odczytu zmiany w przypadku zmiany źródła danych. Hosty używają kolekcję dzierżaw, do przechowywania wartości "kontynuacja", aby śledzić bieżącą pozycję odczytu dla każdego użytkownika. 
 
-![Przy użyciu zmian bazy danych Azure rozwiązania Cosmos źródła danych hosta procesora](./media/change-feed/changefeedprocessornew.png)
+![Za pomocą zmian usługi Azure Cosmos DB kanału informacyjnego hosta procesora](./media/change-feed/changefeedprocessornew.png)
 
-### <a name="working-with-the-change-feed-processor-library"></a>Praca z zmiany źródła danych biblioteki procesora
+### <a name="working-with-the-change-feed-processor-library"></a>Praca z zestawienia bibliotece procesora zmian
 
-Przed zainstalowaniem zmiany źródła danych pakietu NuGet procesora, najpierw zainstalować: 
+Przed zainstalowaniem zmiany źródła danych pakietu NuGet procesora, najpierw zainstaluj: 
 
 * Microsoft.Azure.DocumentDB, najnowszej wersji.
 * Newtonsoft.Json, najnowsza wersja
 
 Następnie zainstaluj [pakietu Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) i dołączyć go jako odwołanie.
 
-Aby zaimplementować biblioteki procesora źródła zmiany, musisz wykonać następujące:
+Aby zaimplementować z biblioteką procesora zestawienia zmian, należy wykonać następujące:
 
 1. Implementowanie **DocumentFeedObserver** obiektu, który implementuje **IChangeFeedObserver**.
     ```csharp
@@ -328,7 +328,7 @@ Aby zaimplementować biblioteki procesora źródła zmiany, musisz wykonać nast
     }
     ```
 
-3. Zdefiniuj *CancellationTokenSource* i *ChangeFeedProcessorBuilder*
+3. Zdefiniuj *cancellationtokensource —* i *ChangeFeedProcessorBuilder*
 
     ```csharp
     private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
@@ -383,89 +383,89 @@ Aby zaimplementować biblioteki procesora źródła zmiany, musisz wykonać nast
             await result.StartAsync();
             Console.Read();
             await result.StopAsync();    
-            ```
+    ```
 
-That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+To wszystko. Po wykonaniu tych kroków kilku dokumentów rozpocznie się pojawią się w **DocumentFeedObserver.ProcessChangesAsync** metody.
 
-Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
+Powyżej kod znajduje się w celu ilustracji wyświetlić inny rodzaj obiektów i ich interakcji. Należy zdefiniować odpowiednie zmienne i zainicjować ich przy użyciu prawidłowych wartości. Możesz uzyskać kompletny kod używany w tym artykule [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessorV2).
 
 > [!NOTE]
-> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+> Nigdy nie powinny mieć klucz główny, w kodzie lub w pliku konfiguracji, jak pokazano powyżej kodu. Zobacz [jak używać usługi Key Vault można pobrać kluczy](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
 
 
-## FAQ
+## <a name="faq"></a>Często zadawane pytania
 
-### What are the different ways you can read Change Feed? and when to use each method?
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>Jakie są różne sposoby, można znaleźć kanału informacyjnego zmian? i kiedy należy używać każdej metody?
 
-There are three options for you to read change feed:
+Istnieją trzy opcje do odczytu kanału informacyjnego zmian:
 
-* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
+* **[Za pomocą usługi Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
    
-   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
+   Za pomocą tej metody, możesz uzyskać niski poziom kontroli na kanał informacyjny zmian. Możesz zarządzać punktu kontrolnego, itp do klucza określonej partycji można uzyskać dostęp. Jeśli masz wielu elementów odczytujących, możesz użyć [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) rozłożenie obciążenia odczytu w różnych wątkach lub różnych klientów. .
 
-* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
+* **[Za pomocą zmian usługi Azure Cosmos DB źródła danych z biblioteką procesora](#change-feed-processor)**
 
-   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
+   Jeśli chcesz zlecają obsługę dużej złożoności Kanał informacyjny zmian można użyć biblioteką procesora zestawienia zmian. Ta biblioteka ukrywa wiele złożoności, ale nadal umożliwia Pełna kontrola na zestawienia zmian. Ta biblioteka jest zgodna [wzorzec obserwatora](https://en.wikipedia.org/wiki/Observer_pattern), funkcja przetwarzania jest wywoływana przez zestaw SDK. 
 
-   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
+   Jeśli masz zestawienia zmian wysokiej przepływności, można utworzyć wystąpienie wielu klientów na odczytywanie zestawienia zmian. Ponieważ używasz "Zmień z biblioteką procesora zestawienia" automatycznie dzieli obciążenie między różnych klientów. Nie trzeba podejmować żadnych działań. Wszystkie złożoności jest obsługiwany przez zestaw SDK. Jednak jeśli chcesz mieć własną usługę równoważenia obciążenia, następnie można zaimplementować IParitionLoadBalancingStrategy strategii niestandardowe partycji. Implementowanie IPartitionProcessor — dla niestandardowego przetwarzania zmian na partycji. Jednak przy użyciu zestawu SDK, może przetwarzać zakres partycji, ale jeśli chcesz przetwarzać klucza partycji określonym musisz używać zestawu SDK dla interfejsu API SQL.
 
-* **[Using Azure Functions](#azure-functions)** 
+* **[Użycie usługi Azure Functions](#azure-functions)** 
    
-   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
+   Ostatnia opcja funkcji platformy Azure jest to najprostsza opcja. Firma Microsoft zaleca użycie tej opcji. Po utworzeniu wyzwalacza usługi Azure Cosmos DB w aplikacji usługi Azure Functions wybrania kolekcji usługi Azure Cosmos DB, aby nawiązać połączenie, a funkcja jest wyzwalana po każdej zmianie kolekcji. Obejrzyj [rzutowania ekranu](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) z korzystania z systemu Azure funkcji i zestawienia zmian
 
-   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
+   Wyzwalacze mogą być tworzone w portalu usługi Azure Functions w portalu usługi Azure Cosmos DB lub programowo. Program Visual Studio i programu VS Code ma fantastyczną pomoc techniczną do pisania funkcji platformy Azure. Można napisać i debugować kod na pulpicie i następnie wdrażanie funkcji za pomocą jednego kliknięcia. Aby uzyskać więcej informacji, zobacz [usługi Azure Cosmos DB: obliczeniowych bez użycia serwera bazy danych, przy użyciu usługi Azure Functions](serverless-computing-database.md) artykułu.
 
-### What is the sort order of documents in change feed?
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>Co to jest kolejność sortowania dokumentów w zestawienia zmian?
 
-Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
+Zmiana źródła danych dokumentów jest dostarczany w kolejności ich czas modyfikacji. Ta kolejność sortowania jest gwarantowane tylko jednej partycji.
 
-### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>Multiregionalne konta co się dzieje zmiany źródła danych, gdy region zapisu trybu failover kończy się niepowodzeniem? Kanału informacyjnego zmian również trybu failover? Czy źródło nadal zmian wrażenie ciągłych lub Przyczyna trybu failover zmienić źródło danych, aby zresetować?
 
-Yes, change feed will work across the manual failover operation and it will be contiguous.
+Tak, kanał informacyjny zmian będzie działać w operacji ręcznej pracy awaryjnej i będą ciągłe.
 
-### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>Jak długo Kanał informacyjny zmian utrwala dane zmienione, jeśli właściwość czas wygaśnięcia (czas wygaśnięcia) w dokumencie ustawioną wartość -1?
 
-Change feed will persist forever. If data is not deleted, it will remain in change feed.
+Kanał informacyjny zmian zostanie utrzymany nieskończoność. Jeśli dane nie są usuwane, pozostanie w Kanał informacyjny zmian.
 
-### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>Jak można skonfigurować usługi Azure functions do odczytu w danym regionie, ponieważ Kanał informacyjny zmian jest dostępna we wszystkich regionach odczytu domyślnie?
 
-Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
+Obecnie nie jest możliwe do skonfigurowania usługi Azure Functions do odczytu z określonego regionu. Istnieje problem w usłudze GitHub w repozytorium usługi Azure Functions, aby ustawić preferowane regiony wyzwalacz i powiązania usługi Azure Cosmos DB.
 
-Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
+Usługa Azure Functions używa domyślnych zasad połączenia. Tryb połączenia można skonfigurować w usłudze Azure Functions i domyślnie, odczytuje z regionu zapisu, dlatego zaleca się na jednej taśmie usługi Azure Functions na tym samym regionie.
 
-### What is the default size of batches in Azure Functions?
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Co to jest domyślny rozmiar partii w usłudze Azure Functions?
 
-100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
+100 dokumentów o każdego wywołania usługi Azure Functions. Jednak ta liczba jest konfigurowane w pliku function.json. Oto kompletny [listę opcji konfiguracji](../azure-functions/functions-run-local.md). Jeśli tworzysz lokalnie, należy zaktualizować ustawienia aplikacji w ramach [local.settings.json](../azure-functions/functions-run-local.md) pliku.
 
-### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>Monitoruję kolekcji i odczytywanie ich zmian źródła danych, jednak widzę, że nie są zwracane wstawiono dokumentu, brakuje niektórych dokumentów. Co się dzieje w tym miejscu?
 
-Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
+Upewnij się, że nie ma innych funkcji odczytu tej samej kolekcji za pomocą tej samej kolekcji dzierżawy. Zdarzyło się to do mnie, a później zrealizowany czy brakujących dokumentów są przetwarzane przez Moja usługa Azure functions, która jest również za pomocą tej samej dzierżawy.
 
-Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
+W związku z tym Jeśli tworzysz wiele funkcji platformy Azure do odczytu takie same zestawienia zmian, a następnie należy używać kolekcji bezpiecznych różne dzierżawy lub udostępnianie tej samej kolekcji przy użyciu konfiguracji "leasePrefix". Jednak korzystając z biblioteką procesora zestawienia zmian można uruchomić wiele wystąpień funkcji i zestawu SDK dzieli dokumentów między różne wystąpienia automatycznie dla Ciebie.
 
-### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Dokument jest aktualizowany co sekundę, a nie są zwracane wszystkie zmiany w usłudze Azure Functions nasłuchiwanie zestawienia zmian.
 
-Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
+Więc wszelkie zmiany wprowadzone od 5 sekund zostaną utracone, co 5 sekund kanału informacyjnego zmian sond w usłudze Azure Functions. Usługa Azure Cosmos DB przechowuje tylko jedną wersję co 5 sekund, dzięki czemu otrzymasz 5. zmiany w dokumencie. Jednak jeśli chcesz zejść poniżej 5-sekundowego, i sondować zmiany źródła danych co sekundę, można skonfigurować godziny sondowania "feedPollTime", zobacz [powiązań usługi Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Jest on zdefiniowany w milisekundach z domyślną 5000. Poniżej 1 sekundę jest możliwe, ale nie jest zalecane, ponieważ rozpocznie nagrywania większej mocy Procesora.
 
-### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Wstawiona dokumentu w kolekcji interfejs API Mongo, ale gdy otrzymam dokumentu w Kanał informacyjny zmian pokazuje wartość inny identyfikator. Co to jest nieprawidłowy w tym miejscu?
 
-Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
+Twoja kolekcja to kolekcja Mongo interfejsu API. Należy pamiętać, że kanał informacyjny zmian jest do odczytu za pomocą klienta programu SQL i wykonuje serializację elementów do formatu JSON. Ze względu na JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumentów w formacie BSON i JSON sformatowane zestawienia zmian. Widzisz, to reprezentacja BSON dokumentu w formacie JSON. Jeśli używasz konta Mongo atrybuty binarne są konwertowane na JSON.
 
-### Is there a way to control change feed for updates only and not inserts?
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>Czy istnieje sposób kontroluje Zmień źródło danych dla tylko aktualizacje, a nie wstawia?
 
-Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
+Nie jest już dziś ale ta funkcja znajduje się w planie. Obecnie można dodać znacznika nietrwałego dokumentu aktualizacji.
 
-### Is there a way to get deletes in change feed?
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Czy istnieje sposób, aby uzyskać usuwa w Kanał informacyjny zmian?
 
-Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
+Obecnie Kanał informacyjny zmian nie dziennika usuwania. Kanał informacyjny zmian jest nieustannie ulepsza. Ponadto ta funkcja znajduje się w planie. Obecnie można dodać znacznika nietrwałego dokumentu do usunięcia. Dodawanie atrybutu w dokumencie o nazwie "usunięta" i ustaw ją na wartość "true" i ustaw czasu wygaśnięcia dokumentu, dzięki czemu może zostać automatycznie usunięty.
 
-### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Czy mogę odczytywać zmian źródła danych historycznych dokumentów (na przykład dokumenty, które zostały dodane ponownie 5 lat)
 
-Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
+Tak, jeśli dokument nie zostanie usunięta. możesz przeczytać zmiany źródła danych, o ile jest to punkt początkowy kolekcji.
 
-### Can I read change feed using JavaScript?
+### <a name="can-i-read-change-feed-using-javascript"></a>Czy mogę odczytywać Kanał informacyjny zmian przy użyciu języka JavaScript
 
-Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
+Tak, zestawu SDK środowiska Node.js wstępna Obsługa Kanał informacyjny zmian ostatnio dodane. Mogą być używane, jak pokazano w poniższym przykładzie, aktualizacja modułu documentdb na bieżącą wersję przed uruchomieniem kodu:
 
 ```js
 
@@ -502,54 +502,54 @@ query.executeNext((err, results, headers) =&gt; {
 
 ```
 
-### <a name="can-i-read-change-feed-using-java"></a>Czy mogę odczytywać zmian źródła danych przy użyciu języka Java
+### <a name="can-i-read-change-feed-using-java"></a>Czy mogę odczytywać Kanał informacyjny zmian przy użyciu języka Java
 
-Biblioteka języka Java można odczytać zmiany źródła danych jest dostępna w [repozytorium Github](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Jednak obecnie biblioteka języka Java jest kilka wersji za biblioteki .NET. Wkrótce zarówno biblioteki zostaną zsynchronizowane.
+Biblioteka języka Java można odczytać Kanał informacyjny zmian jest dostępna w [repozytorium Github](https://github.com/Azure/azure-documentdb-changefeedprocessor-java). Obecnie biblioteka języka Java jest jednak kilka wersji za biblioteki .NET. Wkrótce będzie synchronizowany bibliotek programu.
 
-### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Dla wewnętrznej księgowości, która pojawia się w odpowiedzi można użyć _etag, _lsn lub _ts?
+### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Dla wewnętrznej księgowości, który pojawia się w odpowiedzi można użyć _etag, _lsn lub _ts?
 
-wewnętrzny _etag format i powinien nie zależą od niej (nie przeanalizować go) nie można zmienić w każdej chwili.
-_ts jest sygnaturę czasową utworzenia lub modyfikacji. _Ts służy do porównywania chronologicznym.
-_lsn to identyfikator partii, który zostanie dodany tylko w przypadku zmiany źródła danych, reprezentuje identyfikator transakcji z magazynu... Wiele dokumentów mogą mieć tej samej _lsn.
-Jedyną operacją więcej należy pamiętać, ETag na FeedResponse różni się od _etag, można znaleźć w dokumencie. _etag jest wewnętrzny identyfikator i umożliwia współbieżności, informuje o wersji dokumentu i element ETag jest używany do sekwencjonowania kanału informacyjnego.
+_etag format jest wewnętrznym i nie powinien być zależny na nim (nie analizy), ponieważ go można zmienić w dowolnym momencie.
+_ts jest sygnatura czasowa modyfikacji lub utworzenia. _Ts służy do porównywania chronologicznym.
+_lsn jest dodawana tylko w przypadku Kanał informacyjny zmian identyfikator partii, reprezentuje identyfikator transakcji z magazynu... Wiele dokumentów może mieć tej samej _lsn.
+I jeszcze jedno należy pamiętać, element ETag na FeedResponse różni się od _etag, którą widzisz w dokumencie. _etag jest wewnętrznym identyfikatorem i używany do współbieżności, informuje o wersję dokumentu, a element ETag dla źródła danych harmonogramu.
 
-### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Czy odczytywanie źródła danych zmian dodaje żadnych dodatkowych kosztów?
+### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Odczytywanie Kanał informacyjny zmian dodaje żadnego dodatkowego kosztu?
 
-Naliczane są opłaty dla RU używane np. przenoszenie danych do i kolekcje bazy danych Azure rozwiązania Cosmos zawsze używać RU. Użytkownicy będą naliczane opłaty dla RU wykorzystanych w ramach kolekcji dzierżawy.
+Opłaty są naliczane dla jednostek RU używane np przenoszenia danych i kolekcji usługi Azure Cosmos DB zawsze będą mogli skorzystać jednostek RU. Użytkownikom zostanie naliczona dla jednostek RU wykorzystane przez kolekcję dzierżaw.
 
-### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Wiele funkcji Azure może odczytywać źródło zmiany w jednej kolekcji?
+### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Wiele funkcji Azure przeczytasz Kanał informacyjny zmian w jednej kolekcji?
 
-Tak. Wiele funkcji Azure może odczytywać źródło zmiany tej samej kolekcji. Jednak usługi Azure Functions musi być oddzielne leaseCollectionPrefix zdefiniowane.
+Tak. Wiele funkcji platformy Azure mogą odczytywać Kanał informacyjny zmian w tej samej kolekcji. Jednak musisz mieć oddzielne leaseCollectionPrefix, definicja usługi Azure Functions.
 
-### <a name="should-the-lease-collection-be-partitioned"></a>Można wyznaczyć kolekcji dzierżawy?
+### <a name="should-the-lease-collection-be-partitioned"></a>Powinny być dzielone kolekcję dzierżaw
 
-Nie można naprawić kolekcji dzierżawy. Kolekcji partycjonowanych dzierżawy nie jest wymagana i nie jest obecnie jest obsługiwany.
+Nie można naprawić kolekcję dzierżaw. Kolekcji partycjonowanej dzierżawy nie jest konieczna, a aktualnie nie jest obsługiwana.
 
-### <a name="can-i-read-change-feed-from-spark"></a>Zmiana może odczytywać źródła danych z platformy Spark?
+### <a name="can-i-read-change-feed-from-spark"></a>Czy mogę odczytywać zmian źródła danych z platformy Spark?
 
-Tak, możesz. Zobacz [łącznika usługi Azure rozwiązania Cosmos DB Spark](spark-connector.md). Oto [rzutowania ekranu](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) przedstawiający sposób może przetwarzać zmiany źródła danych jako strumień strukturalnych.
+Tak, możesz. Zobacz [łącznika usługi Azure Cosmos DB Spark](spark-connector.md). Oto [rzutowania ekranu](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s) pokazujący, jak może przetwarzać zmiany źródła danych jako strumień ze strukturą.
 
-### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>Jeśli używam I przetwarzania zmian źródła danych za pomocą usługi Azure Functions, powiedz partii dokumentów 10 i pojawia się błąd w dokumencie 7. W takim przypadku ostatnich trzech dokumenty nie są przetwarzane jak można rozpocząć przetwarzanie z dokumentu nie powiodło się (tj. dokument 7) w mojej dalej źródła danych?
+### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>Jeśli am I przetwarzania zmian źródła danych za pomocą usługi Azure Functions, powiedz partii dokumentów 10 i pojawia się błąd atuj dokument 7. W takim przypadku ostatnie trzy dokumenty nie są przetwarzane jak mogę zacząć przetwarzania z dokumentu nie powiodło się (tj.) dokument 7) w mojej następne źródła danych?
 
-Do obsługi błędu, wzorzec zalecane jest zawijany kodu za pomocą bloku try-catch. CATCH błąd i umieścić w kolejce (utraconych) tego dokumentu, a następnie zdefiniuj logiki radzenia sobie z dokumentów, które spowodowało błąd. Ta metoda partii 200 dokumentu i tylko jeden dokument nie powiodło się, nie trzeba wyrzucać całą partię.
+Aby obsłużyć błąd, zalecany wzorzec jest opakowanie kodu za pomocą bloku try-catch. CATCH błąd i umieść tego dokumentu w kolejce (utraconych wiadomości), a następnie zdefiniować logikę radzenia sobie z dokumentów, które spowodowało błąd. Przy użyciu tej metody w przypadku partii 200 dokumentu i tylko jeden dokument nie powiodło się, nie trzeba Pozbywać się całą partię.
 
-W przypadku wystąpienia błędu nie powinien rewind punkt wyboru powrót do początku else będzie można pojawiają się tych dokumentów z zmiany źródła danych. Należy pamiętać, że zmiany źródła zachowuje ostatni zrzut końcowego przystawki dokumentów, ze względu na to Ty może spowodować utratę poprzedniej migawki na dokument. zmiany źródła przechowuje tylko jedno ostatniej wersji dokumentu, a między inne procesy mogą pochodzić i zmieniać dokument.
+W przypadku wystąpienia błędu nie powinien rewind punktu sprawdzania powrót do początku else będzie można nadal jest wyświetlany te dokumenty z kanału informacyjnego zmian. Należy pamiętać, że przechowuje kanału informacyjnego zmian ostatniego zrzut końcowego przystawki dokumentów, w związku z tym możesz utracić poprzednią migawkę do dokumentu. Kanał informacyjny zmian zapewnia tylko jedna wersja ostatniej części dokumentu, a między inne procesy mogą pochodzić i zmian w dokumencie.
 
-Jak zachować naprawienie kodu i wkrótce znajdziesz żadnych dokumentów do kolejki utraconych wiadomości.
-Środowisko Azure Functions automatycznie jest wywoływana przez system źródła zmiany i punkt wyboru itp obsługiwany wewnętrznie przez funkcji platformy Azure. Jeśli chcesz wycofać punkt wyboru i kontrolowanie wszystkich aspektów, należy rozważyć przy użyciu zmian źródła danych procesora zestawu SDK.
+Jak zachować naprawianie kodu, wkrótce znajdziesz żadnych dokumentów na kolejki utraconych wiadomości.
+Usługa Azure Functions jest wywoływana automatycznie przez system kanału informacyjnego zmian i wyboru punktu itp wewnętrznie obsługiwany przez funkcję platformy Azure. Jeśli chcesz wycofać w punkcie wyboru i kontrolowanie wszystkich aspektów, należy rozważyć przy użyciu zmian źródła danych zestawu SDK procesora.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji dotyczących korzystania z bazy danych Azure rozwiązania Cosmos w środowisku Azure Functions zobacz [bazy danych Azure rozwiązania Cosmos: pliki bazy danych obliczeniowych, przy użyciu usługi Azure Functions](serverless-computing-database.md).
+Aby uzyskać więcej informacji na temat usługi Azure Cosmos DB przy użyciu usługi Azure Functions zobacz [usługi Azure Cosmos DB: obliczeniowych bez użycia serwera bazy danych, przy użyciu usługi Azure Functions](serverless-computing-database.md).
 
-Aby uzyskać więcej informacji na temat używania zmiany źródła danych biblioteki procesora korzystać z następujących zasobów:
+Aby uzyskać więcej informacji na temat korzystania z zestawienia bibliotece procesora zmian użyj następujących zasobów:
 
-* [Strona informacji o](sql-api-sdk-dotnet-changefeed.md) 
+* [Strona z informacjami](sql-api-sdk-dotnet-changefeed.md) 
 * [Pakiet Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [Przykładowy kod, przedstawiający kroki od 1 do 6 powyżej](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
-* [Dodatkowe przykłady z witryny GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [Przykładowy kod pokazujący kroki 1 – 6 powyżej](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
+* [Dodatkowe przykłady w witrynie GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
-Aby uzyskać więcej informacji na temat używania zmiany źródła danych za pomocą zestawu SDK Użyj następujących zasobów:
+Aby uzyskać więcej informacji na temat korzystania z zmiany źródła danych za pomocą zestawu SDK Użyj następujących zasobów:
 
 * [Strona informacji o zestawie SDK](sql-api-sdk-dotnet.md)

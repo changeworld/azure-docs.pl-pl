@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2dc59a631107df6a9e77722b98fa77f7936f07aa
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9216d43bd6431bb16c14e0bf2d8fb7d174365417
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437301"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902705"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -228,6 +228,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [F5 Big-IP wirtualnych Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Zaawansowane Równoważenie obciążenia, usługa GSLB, Zapora sieciowa, DNS, zapory aplikacji sieci Web i uzyskania dostępu do aplikacji. | F5 Networks |
 | ![Hortonworks Data Platform (HDP) piaskownicy](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) piaskownicy](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Wyłączyć przez HDP 2,5 100% open source platformy Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Firma KEMP LoadMaster obciążenia równoważenia zawartości ADC przełącznika](media/azure-stack-marketplace-azure-items/kemp.png) | [Firma KEMP LoadMaster obciążenia równoważenia zawartości ADC przełącznika](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Moduł równoważenia obciążenia kontroler dostarczania aplikacji w warstwie 4 – 7, przełącznik zawartości i usługi Traffic Manager. | KEMP Technologies Inc. |
+| ![NRI mPLAT Suite — Conductor wielu chmur](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite — z przewodnika wielu chmur](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Jednym okienku szkła do monitorowania, konfigurowania, obsługi administracyjnej, zautomatyzować i określają dowolnego obciążenia lub chmury. | NRI |
 | ![Zgodne NooBaa hybrydowego AWS S3 — Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [Compatibe NooBaa hybrydowego AWS S3 — Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Usługa magazynu zgodnego z S3, która obejmuje publicznych i pojemność zasobów lokalnych. | NooBaa |
 | ![Zapora PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Zapora PT Application Firewall wykrywa znanych i nieznanych luk w zabezpieczeniach i zapobiega atakom na aplikacje sieci web. **Pobierz oba elementy portalu Marketplace (czas pacyficzny).** | Dodatnia technologii |
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umożliwia automatyzowanie całego cyklu życia infrastruktury Azure Stack. **Pobierz oba elementy Puppet portalu Marketplace.** | Puppet |

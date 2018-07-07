@@ -1,6 +1,6 @@
 ---
-title: Rozmiar maszyny Wirtualnej systemu Linux platformy Azure — Magazyn | Dokumentacja firmy Microsoft
-description: Wyświetla listę rozmiarów innego magazynu zoptymalizowanych pod kątem dostępnej dla maszyn wirtualnych systemu Linux na platformie Azure. Wyświetla informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych systemu Linux platformy Azure — Storage | Dokumentacja firmy Microsoft
+description: Wyświetla listę rozmiarów różnych zoptymalizowane pod kątem magazynu dostępnymi dla maszyn wirtualnych systemu Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/11/2018
+ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70c478923b2311eb22e7bf66e62d5e8b5b9fe2de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e96a5fa15c531819f58c4d54b2dc933c686122b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653131"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903363"
 ---
-# <a name="storage-optimized-virtual-machine-sizes"></a>Storage zoptymalizowana rozmiarów maszyn wirtualnych
+# <a name="storage-optimized-virtual-machine-sizes"></a>Rozmiary maszyny wirtualnej zoptymalizowane pod kątem magazynu
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
 
 
 
-## <a name="other-sizes"></a>Innych rozmiarach
+## <a name="other-sizes"></a>O innych rozmiarach
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](sizes-memory.md)
 - [Procesor GPU](sizes-gpu.md)
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
-- [Poprzedniej generacji](sizes-previous-gen.md)
+- [Poprzednie generacje](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat [jednostki (ACU) rozwiązań usługi obliczenia Azure](acu.md) ułatwia porównanie wydajności obliczeniowej różnych jednostki SKU Azure.
+Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.

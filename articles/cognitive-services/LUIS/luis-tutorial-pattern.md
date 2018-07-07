@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9793b98c384346dc0de68061d42b4bcb3c513ed4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 12105829f62b988760d3bbf18000466fd27b9aff
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866206"
+ms.locfileid: "37888335"
 ---
 # <a name="tutorial-use-patterns-to-improve-predictions"></a>Samouczek: Używanie wzorców w celu przewidywania
 
@@ -29,7 +29,7 @@ W tym samouczku Użyj wzorce, aby zwiększyć prognozowania intencji i jednostek
 * Jak dodać roli do jednostki w celu znalezienia kontekstowe na podstawie jednostki
 * Jak dodać Pattern.any można znaleźć jednostki w dowolnej postaci
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md) w celu tworzenia aplikacji LUIS.
 
 ## <a name="import-humanresources-app"></a>Importuj kadry aplikacji
 W tym samouczku importuje aplikacja kadry. Aplikacja ma trzy opcje: Brak, GetEmployeeOrgChart, GetEmployeeBenefits. Aplikacja ma dwie jednostki: liczba wbudowanych i pracowników. Jednostka pracowników jest proste jednostki można wyodrębnić nazwy pracownika. 
@@ -250,6 +250,4 @@ Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybier
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Użyj listy frazę w celu prognozowania](luis-tutorial-interchangeable-phrase-list.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [Poznaj najlepsze rozwiązania dotyczące aplikacji usługi LUIS](luis-concept-best-practices.md)

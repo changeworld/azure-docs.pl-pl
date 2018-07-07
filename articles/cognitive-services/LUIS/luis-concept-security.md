@@ -9,18 +9,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: c581c26f867ca78a5ed12922c9e8760f5f903881
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f55574f7a9ffbcc2a1c8bd160bb66336b59c348c
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345862"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888605"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
 
 ## <a name="access-to-authoring"></a>Dostęp do tworzenia
-Dostęp do aplikacji z [LUIS] [ LUIS] witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-apis) jest kontrolowana przez właściciela aplikacji. 
+Dostęp do aplikacji z [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-apis) jest kontrolowana przez właściciela aplikacji. 
 
 Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikacji. 
 
@@ -77,8 +77,6 @@ Można kontrolować, kto może wyświetlać klucza punktu końcowego usługi LUI
 ## <a name="security-compliance"></a>Zgodności zabezpieczeń
 Usługa LUIS zakończona pomyślnie, ISO 27001: 2013 i inspekcji 27018:2014 ISO z ZEROWĄ niezgodności (wyniki) w raporcie inspekcji. Ponadto usługa LUIS również uzyskać certyfikacji STAR CSA z najwyższą możliwe Award Gold dojrzałości możliwości oceny. Azure jest chmura publiczna jedyny duży dostawca usług w zdobyć ten certyfikat. Aby uzyskać więcej informacji można znaleźć usługi LUIS zawarte w instrukcji scope zaktualizowane w głównym platformy Azure [zgodność](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokument, który odwołuje się do [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) stron ISO.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz [najlepszych rozwiązań](luis-concept-best-practices.md) dowiesz się, jak na potrzeby prognoz najlepszych intencje i podmioty.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

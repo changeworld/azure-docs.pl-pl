@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: sngun
-ms.openlocfilehash: eddfce08711043f81cee0b1c8d7ee8c6c02f6a45
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c51d399b646e7914ba85048c0928837caac7c15b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858742"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901123"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych usługi Azure Cosmos DB
 Ten artykuł zawiera omówienie zabezpieczania dostępu do danych przechowywanych w [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -174,6 +174,11 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="delete-or-export-user-data"></a>Usuń lub eksportowanie danych użytkownika
+Usługa Azure Cosmos DB umożliwia wyszukiwanie, wybierz, modyfikować i usuwać wszystkie dane osobowe znajdujące się w bazie danych lub kolekcji. Usługa Azure Cosmos DB udostępnia interfejsy API, aby znaleźć i usunąć dane osobowe, jednak, jest odpowiedzialny za przy użyciu interfejsów API i zdefiniuj logikę wymaganą do usunięcia danych osobowych. Każdy wielomodelowa interfejs API (interfejs API SQL, interfejsu API usługi MongoDB, interfejs API Gremlin, interfejsu API rozwiązania Cassandra, interfejs API tabel) zapewnia inny pakiet zestawów SDK, które zawierają metody, aby wyszukać i usunąć dane osobowe. Można również włączyć [czas wygaśnięcia (TTL)](time-to-live.md) funkcję, aby usunąć dane automatycznie po upływie określonego czasu, bez ponoszenia żadnych dodatkowych kosztów.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos DB, zobacz [Cosmos DB: bazy danych zabezpieczeń](database-security.md).

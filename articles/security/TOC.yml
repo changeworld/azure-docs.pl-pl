@@ -164,8 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Zarządzanie i zgodność
   items:
-    - name: Usługi finansowe dla obciążeń podlegających regulacjom
-      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: FFIEC
+      items:
+        - name: Analiza danych
+          href: ./blueprints/ffiec-analytics-overview.md
+        - name: Magazyn danych
+          href: ./blueprints/ffiec-dw-overview.md
+        - name: Aplikacja internetowa IaaS
+          href: ./blueprints/ffiec-iaaswa-overview.md
+        - name: Aplikacja internetowa PaaS
+          href: ./blueprints/ffiec-paaswa-overview.md
     - name: RODO
       items:
         - name: Analiza danych
@@ -187,34 +195,15 @@
         - name: Aplikacja internetowa PaaS
           href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
-      href: ./blueprints/payment-processing-blueprint.md
       items:
-        - name: Omówienie wymagań
-          href: ./blueprints/pci-dss-requirements-overview.md
-        - name: Wymaganie 1 — zapory
-          href: ./blueprints/pci-dss-requirement-1-firewall.md
-        - name: Wymaganie 2 — hasła
-          href: ./blueprints/pci-dss-requirement-2-password.md
-        - name: Wymaganie 3 — CHD
-          href: ./blueprints/pci-dss-requirement-3-chd.md
-        - name: Wymaganie 4 — szyfrowanie
-          href: ./blueprints/pci-dss-requirement-4-encryption.md
-        - name: Wymaganie 5 — złośliwe oprogramowanie
-          href: ./blueprints/pci-dss-requirement-5-malware.md
-        - name: Wymaganie 6 — bezpieczne systemy
-          href: ./blueprints/pci-dss-requirement-6-secure-system.md
-        - name: Wymaganie 7 — dostęp
-          href: ./blueprints/pci-dss-requirement-7-access.md
-        - name: Wymaganie 8 — tożsamość
-          href: ./blueprints/pci-dss-requirement-8-identity.md
-        - name: Wymaganie 9 — dostęp fizyczny
-          href: ./blueprints/pci-dss-requirement-9-physical-access.md
-        - name: Wymaganie 10 — monitorowanie
-          href: ./blueprints/pci-dss-requirement-10-monitoring.md
-        - name: Wymaganie 11 — testowanie
-          href: ./blueprints/pci-dss-requirement-11-testing.md
-        - name: Wymaganie 12 — zasady
-          href: ./blueprints/pci-dss-requirement-12-policy.md
+        - name: Analiza danych
+          href: ./blueprints/pcidss-analytics-overview.md
+        - name: Magazyn danych
+          href: ./blueprints/pcidss-dw-overview.md
+        - name: Aplikacja internetowa IaaS
+          href: ./blueprints/pcidss-iaaswa-overview.md
+        - name: Aplikacja internetowa PaaS
+          href: ./blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       items:
         - name: Analiza danych

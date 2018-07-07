@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie usługi Azure AD hasło ochrony w wersji zapoznawczej
-description: Wdrażanie Podgląd ochrony hasła usługi Azure AD, aby zakaz lokalne błędnego hasła
+title: Wdrażanie ochrony haseł usługi Azure AD w wersji zapoznawczej
+description: Wdrażanie Podgląd ochrony haseł usługi Azure AD, tak aby zablokować błędnego hasła lokalnie
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,72 +10,72 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6fda373f832d6e24d1252587a19c88b0f464dda6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5065399f161bcaee2f9518236a28f0f5faa0ea5b
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232417"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902031"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Podgląd: Wdrażanie usługi Azure AD ochrony hasłem
+# <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrona za pomocą hasła usługi Azure AD
 
 |     |
 | --- |
-| Ochrony hasłem w usłudze Azure AD i listy zabronionych hasła niestandardowego są funkcje publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [uzupełniające warunki użytkowania dotyczącym wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Teraz, gdy mamy zrozumienia [sposobu wymuszania ochrony hasłem usługi Azure AD dla usługi Active Directory systemu Windows Server](concept-password-ban-bad-on-premises.md), następnym krokiem jest planowania i wykonywania wdrożenia.
+Skoro mamy już zrozumienia [jak wymusić ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server](concept-password-ban-bad-on-premises.md), następnym krokiem jest planowania i wykonywania wdrożenia.
 
 ## <a name="deployment-strategy"></a>Strategia wdrażania
 
-Firma Microsoft sugeruje, że wszystkie wdrożenia rozruchu w trybie inspekcji. Tryb inspekcji jest ustawienie początkowej domyślne, których hasła mogą w dalszym ciągu można ustawić i wszelkie, które zostałby zablokowany utworzyć wpisy w dzienniku zdarzeń. Gdy serwery proxy i agentów kontroler domeny pełni są wdrożone w trybie inspekcji, regular monitorowanie ma się odbywać w celu ustalenia, jaki wpływ zasad haseł wymuszania może mieć na użytkowników i środowisko, jakby zasada była wymuszana.
+Firma Microsoft sugeruje, że wszystkie wdrożenia rozruchu w trybie inspekcji. Tryb inspekcji jest ustawienie początkowej domyślne, których hasła mogą w dalszym ciągu można ustawić i dowolny, które zostałby zablokowany utworzyć wpisy w dzienniku zdarzeń. Gdy serwery proxy i agentów DC zostały w pełni wdrożone w trybie inspekcji, regularne monitorowanie ma się odbywać w celu ustalenia, jakie zasady haseł wpływu wymuszania miałby on użytkowników i środowiska, jeśli zasada była wymuszana.
 
 Na etapie inspekcji znaleźć wiele organizacji:
 
-* Należy poprawić istniejących procesów operacyjnych do używania z bardziej bezpiecznych haseł.
-* Użytkownicy są zapoznanie się regularnie Wybieranie niezabezpieczone hasła
-* Należy powiadomić użytkowników o nadchodzących zmianie Wymuszanie zabezpieczeń, wpływ, może być na nich i pomóc im lepiej zrozumieć, jak można wybrać więcej, bezpiecznych haseł.
+* Należy poprawić istniejące procesy operacyjne z bardziej bezpiecznych haseł.
+* Użytkownicy są przyzwyczajeni do regularnie wybierając niezabezpieczonych hasła
+* Muszą oni o tym poinformować użytkowników o nadchodzących zmianę wymuszania zabezpieczeń, wpływ może mieć na nich i pomagają lepiej zrozumieć, jak można wybrać bardziej bezpiecznych haseł.
 
-Gdy funkcja działa w trybie inspekcji od rozsądnym czasie, konfigurację wymuszania można odwrócić z **inspekcji** do **Wymuś** dzięki czemu wymagają bardziej bezpiecznych haseł. Dobrym pomysłem jest ukierunkowanych monitorowania w tym czasie.
+Gdy ta funkcja działa w trybie inspekcji rozsądnym czasie, konfigurację wymuszania można odwrócić z **inspekcji** do **Wymuś** dzięki czemu wymagają bardziej bezpiecznych haseł. Dobrym pomysłem jest monitorowanie wąsko zdefiniowany w tym czasie.
 
 ## <a name="known-limitation"></a>Znane ograniczenia
 
-Jest to znane ograniczenie w wersji zapoznawczej proxy ochrony hasła usługi Azure AD. Korzystanie z konta administratora dzierżawy, które wymagają usługi MFA jest nieobsługiwany. Przyszłej aktualizacji proxy ochrony hasła usługi Azure AD będzie obsługiwać serwer proxy rejestracji z konta administratora, które wymagają usługi MFA.
+Jest to znane ograniczenie w wersji zapoznawczej serwera proxy ochrony haseł usługi Azure AD. Użyj konta administratora dzierżawy, które wymagają usługi MFA nie jest obsługiwane. Przyszła aktualizacja proxy ochrony haseł usługi Azure AD będzie obsługiwać serwer proxy rejestracji przy użyciu konta administratora, które wymagają usługi MFA.
 
-## <a name="single-forest-deployment"></a>Pojedynczy las wdrożenia
+## <a name="single-forest-deployment"></a>Wdrożenie pojedynczego lasu
 
-W wersji zapoznawczej usługi Azure AD ochrony hasłem jest wdrażany przy użyciu usługi serwera proxy na maksymalnie dwa serwery, a usługa agenta kontrolera domeny można przyrostowo wdrożyć do wszystkich kontrolerów domeny w lesie usługi Active Directory.
+Ochrona za pomocą hasła usługi Azure AD w wersji zapoznawczej jest wdrażana przy użyciu usługi Serwer proxy na maksymalnie dwa serwery, a usługa agenta kontrolera domeny można stopniowo wdrożyć do wszystkich kontrolerów domeny w lesie usługi Active Directory.
 
 ![W jaki sposób składniki ochrony hasła usługi Azure AD współpracują ze sobą](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
 ### <a name="download-the-software"></a>Pobierz oprogramowanie
 
-Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, który można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=57071)
+Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, który można pobrać z [Centrum pobierania firmy Microsoft](https://www.microsoft.com/download/details.aspx?id=57071)
 
-### <a name="install-and-configure-the-azure-ad-password-protection-proxy-service"></a>Instalowanie i konfigurowanie usługi Serwer proxy ochrony hasła usługi Azure AD
+### <a name="install-and-configure-the-azure-ad-password-protection-proxy-service"></a>Instalowanie i konfigurowanie usługi Serwer proxy ochrony haseł usługi Azure AD
 
-1. Wybierz jeden lub więcej serwerów do obsługi usługi serwera proxy ochrony hasła usługi Azure AD.
-   * Każdej z takich usług zapewniają tylko zasady haseł dla pojedynczego lasu, a komputer hosta musi być przyłączony do domeny w domenie (główna i podrzędna są równie obsługiwane) w tym lesie. Dla usługi Azure AD hasło ochrony serwera proxy do wykonania jej misji musi istnieć łączność sieciową między co najmniej jeden kontroler domeny w każdej domenie w lesie, a komputer hosta serwera Proxy ochrony hasła usługi Azure AD.
-   * Jest obsługiwana, aby zainstalować i uruchomić usługę serwera proxy usługi Azure AD hasło ochrony na kontrolerze domeny do celów testowych, ale następnie wymaga łączności z Internetem.
+1. Wybierz co najmniej jeden serwer do obsługi usługi serwera proxy ochrony haseł usługi Azure AD.
+   * Każdej z tych usług można tylko zasady dotyczące haseł dla pojedynczego lasu, i maszynie hosta muszą być przyłączone do domeny (główna i podrzędna są zarówno równie obsługiwane) w tym lesie. Usługi Azure AD hasło ochrony serwera proxy do spełnienia swoją misję musi istnieć łączność sieciową między co najmniej jeden kontroler domeny w każdej domenie w lesie i komputer hosta serwera Proxy ochrony haseł usługi Azure AD.
+   * Można zainstalować i uruchomić usługę serwera proxy usługi Azure AD hasło ochrony na kontrolerze domeny, do celów testowych, ale następnie wymaga łączności z Internetem.
 
    > [!NOTE]
-   > Publicznej wersji zapoznawczej obsługuje maksymalnie dwóch (2) serwerów proxy dla każdego lasu.
+   > Publiczna wersja zapoznawcza obsługuje maksymalnie dwóch (2) serwerów proxy jednego lasu.
 
-2. Zainstaluj oprogramowanie usługi Proxy zasad hasła przy użyciu pakietu AzureADPasswordProtectionProxy.msi MSI.
+2. Zainstaluj oprogramowanie usługa serwera Proxy zasady haseł za pomocą pakietu AzureADPasswordProtectionProxy.msi MSI.
    * Instalacja oprogramowania nie jest wymagane ponowne uruchomienie komputera. Instalacja oprogramowania mogą zostać zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `msiexec.exe /i AzureADPasswordProtectionProxy.msi /quiet /qn`
 
 3. Otwórz okno programu PowerShell jako Administrator.
-   * Ochrona hasła usługi Azure AD Proxy oprogramowania ma nowy moduł PowerShell o nazwie AzureADPasswordProtection. Poniższe kroki są oparte na uruchomienie poleceń cmdlet różne od ten moduł programu PowerShell i założono, że otwarto nowe okno programu PowerShell i zaimportowano nowy moduł w następujący sposób:
+   * Ochrona haseł usługi Azure AD oprogramowanie serwera Proxy obejmuje nowy moduł programu PowerShell o nazwie AzureADPasswordProtection. Poniższe kroki opierają się na uruchamianie różnych poleceń cmdlet z tego modułu programu PowerShell i założono, że otwarto nowe okno programu PowerShell i zaimportowano nowy moduł w następujący sposób:
       * `Import-Module AzureADPasswordProtection`
 
       > [!NOTE]
-      > Oprogramowanie instalacyjne modyfikuje zmiennej środowiskowej PSModulePath komputerze hosta. Aby ta zmiana została uwzględniona, tak aby zaimportowane i użyć modułu programu powershell AzureADPasswordProtection może być konieczne otwarcie nowego okna konsoli programu PowerShell.
+      > Oprogramowanie instalacyjne modyfikuje zmienną środowiskową PSModulePath maszynie hosta. Aby ta zmiana zaczęła obowiązywać, dzięki czemu AzureADPasswordProtection moduł programu powershell mogą importowane i używane może być konieczne otwarcie nowego okna konsoli programu PowerShell.
 
-   * Sprawdź, czy usługa jest uruchomiona za pomocą następującego polecenia programu PowerShell: `Get-Service AzureADPasswordProtectionProxy | fl`.
-      * Wynik powinna dawać wynik z **stan** zwracanie wyniku "Uruchomiona".
+   * Upewnij się, że usługa jest uruchomiona przy użyciu następującego polecenia programu PowerShell: `Get-Service AzureADPasswordProtectionProxy | fl`.
+      * Wynik powinno to dawać wynik z parametrem **stan** zwróceniem wyników "Uruchomiona".
 
 4. Zarejestruj serwer proxy.
-   * Po wykonaniu kroku 3 usługi serwera proxy ochrony hasła usługi Azure AD jest uruchomiona na komputerze, ale nie ma jeszcze niezbędne poświadczenia, aby komunikować się z usługą Azure AD. Aby włączyć za pomocą tej możliwości wymagana jest rejestracja usługi Azure AD `Register-AzureADPasswordProtectionProxy` polecenia cmdlet programu PowerShell. Polecenie cmdlet wymaga administratora globalnego poświadczeń dla dzierżawy usługi Azure, jak również lokalne uprawnienia administratora domeny usługi Active Directory w domenie głównej lasu. Gdy zakończyła się pomyślnie danego serwera proxy usługi dodatkowe wywołań `Register-AzureADPasswordProtectionProxy` nadal się powieść, ale nie są konieczne.
+   * Po ukończeniu kroku 3 usługi serwera proxy ochrony haseł usługi Azure AD jest uruchomiona na komputerze, ale nie ma jeszcze poświadczenia niezbędne do komunikacji z usługą Azure AD. Rejestracja w usłudze Azure AD jest wymagany do włączenia, że używanie możliwości `Register-AzureADPasswordProtectionProxy` polecenia cmdlet programu PowerShell. Polecenie cmdlet wymaga administratora globalnego poświadczeń dla Twojej dzierżawy platformy Azure, a także uprawnienia administratora domeny usługi Active Directory w domenie głównej lasu lokalnego. Gdy zakończyła się pomyślnie dla danego serwera proxy usługi dodatkowe wywołań `Register-AzureADPasswordProtectionProxy` nadal pomyślnie tworzone, ale nie są konieczne.
       * Polecenia cmdlet mogą być uruchamiane w następujący sposób:
 
          ```
@@ -83,16 +83,16 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
          Register-AzureADPasswordProtectionProxy -AzureCredential $tenantAdminCreds
          ```
 
-         Przykład działa tylko, jeśli aktualnie zalogowanego użytkownika jest również administratorem domeny usługi Active Directory dla domeny głównej. Alternatywą jest podanie poświadczeń domeny konieczne za pośrednictwem `-ForestCredential` parametru.
+         Przykład tylko wtedy, gdy aktualnie zalogowanego użytkownika jest również administratorem domeny usługi Active Directory dla domeny katalogu głównego. Alternatywą jest podać poświadczenia domeny konieczne za pośrednictwem `-ForestCredential` parametru.
 
    > [!TIP]
-   > Może istnieć znaczne opóźnienie (w sekundach wiele) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure ukończenia wykonywania polecenia cmdlet. O ile został zgłoszony błąd to opóźnienie nie należy traktować gorsze.
+   > Może istnieć znaczne opóźnienie (w sekundach wielu) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure, przed polecenie cmdlet kończy wykonywanie. Chyba że błąd jest zgłaszany to opóźnienie nie powinny być uznawane za monitów.
 
    > [!NOTE]
-   > Rejestracja usługi serwera proxy ochrony hasła usługi Azure AD ma być jednorazowe krok w okresie istnienia usługi. Usługa serwera proxy automatycznie zostanie przeprowadzone wszystkie niezbędne maintainenance z tego punktu i jego nowszych wersjach. Po pomyślnym dla podanego lasu dodatkowe wywołania "Register-AzureADPasswordProtectionProxy" nadal się powieść, ale są niepotrzebne.
+   > Rejestracja usługi serwera proxy ochrony haseł usługi Azure AD jest oczekiwaną jednorazowy krok w okresie istnienia usługi. Usługa serwera proxy automatycznie wykona wszelkie niezbędne maintainenance od tej pory i nowszych wersjach. Po pomyślnym dla podanego lasu dodatkowe wywołań "Register-AzureADPasswordProtectionProxy" nadal pomyślnie tworzone, ale nie są konieczne.
 
 5. Zarejestruj lasu.
-   * W lokalnym lesie usługi Active Directory musi być zainicjowany niezbędne poświadczenia, aby komunikować się z platformy Azure przy użyciu `Register-AzureADPasswordProtectionForest` polecenia cmdlet programu Powershell. Polecenie cmdlet wymaga administratora globalnego poświadczeń dla dzierżawy usługi Azure, jak również lokalne uprawnienia administratora domeny usługi Active Directory w domenie głównej lasu. W tym kroku jest uruchamiane jeden raz dla każdego lasu.
+   * W środowisku lokalnym lesie usługi Active Directory musi zostać zainicjowany z poświadczenia niezbędne do komunikacji z platformy Azure za pomocą `Register-AzureADPasswordProtectionForest` polecenia cmdlet programu Powershell. Polecenie cmdlet wymaga administratora globalnego poświadczeń dla Twojej dzierżawy platformy Azure, a także uprawnienia administratora domeny usługi Active Directory w domenie głównej lasu lokalnego. Ten krok zostanie uruchomiony jeden raz w każdym lesie.
       * Polecenia cmdlet mogą być uruchamiane w następujący sposób:
 
          ```
@@ -100,39 +100,39 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
          Register-AzureADPasswordProtectionForest -AzureCredential $tenantAdminCreds
          ```
 
-         Przykład działa tylko, jeśli aktualnie zalogowanego użytkownika jest również administratorem domeny usługi Active Directory dla domeny głównej. Alternatywą jest podać poświadczenia domeny konieczne za pomocą parametru - ForestCredential.
+         Przykład tylko wtedy, gdy aktualnie zalogowanego użytkownika jest również administratorem domeny usługi Active Directory dla domeny katalogu głównego. Alternatywą jest podać poświadczenia domeny konieczne za pomocą parametru - ForestCredential.
 
          > [!NOTE]
-         > Jeśli wielu serwerów proxy są zainstalowane w danym środowisku, które konkretnego serwera proxy powyżej powyższa procedura jest wykonywana po nie ma znaczenia.
+         > Jeśli wielu serwerów proxy są zainstalowane w danym środowisku, nie ma znaczenia, serwer proxy, który określono w poprzedniej procedurze.
 
          > [!TIP]
-         > Może istnieć znaczne opóźnienie (w sekundach wiele) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure ukończenia wykonywania polecenia cmdlet. O ile został zgłoszony błąd to opóźnienie nie należy traktować gorsze.
+         > Może istnieć znaczne opóźnienie (w sekundach wielu) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure, przed polecenie cmdlet kończy wykonywanie. Chyba że błąd jest zgłaszany to opóźnienie nie powinny być uznawane za monitów.
 
    > [!NOTE]
-   > Rejestracja w lesie usługi Active Directory oczekuje jednorazowe krok w okresie istnienia w lesie. Agenci kontrolera domeny w lesie automatycznie zostanie przeprowadzone wszystkie niezbędne maintainenance z tego punktu i jego nowszych wersjach. Po powiodła się dla podanego lasu, dodatkowe wywołania `Register-AzureADPasswordProtectionForest` nadal się powieść, ale nie są konieczne.
+   > Rejestracja lasu usługi Active Directory oczekuje jednorazowy krok w okresie istnienia w lesie. Agentów kontrolera domeny w lesie automatycznie będzie wykonywać wszystkie niezbędne maintainenance od tej pory i nowszych wersjach. Gdy powiodła się dla podanego lasu, dodatkowe wywołań `Register-AzureADPasswordProtectionForest` nadal pomyślnie tworzone, ale nie są konieczne.
 
-6. Opcjonalnie: Konfigurowanie usługi Azure AD hasło ochrony serwera proxy do nasłuchiwania na konkretnym porcie.
-   * RPC przez protokół TCP jest używany przez usługi Azure AD ochrony hasłem oprogramowanie agenta kontrolera domeny na kontrolerach domeny do komunikowania się z usługą Azure AD hasło ochrony serwera proxy. Domyślnie ochrony hasłem usługi Azure AD usługi Proxy zasad haseł nasłuchuje na wszystkie dostępne dynamiczne punktem końcowym. Jeśli to konieczne, ze względu na wymagania dotyczące zapory lub topologię sieci, usługa zamiast tego można skonfigurować do nasłuchiwania na konkretnym porcie TCP.
-      * Aby skonfigurować usługę, aby była uruchamiana z portu statycznego, użyj `Set-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet.
+6. Opcjonalnie: Konfigurowanie usługi Serwer proxy usługi Azure AD hasło ochrony do nasłuchiwania na konkretnym porcie.
+   * RPC za pośrednictwem protokołu TCP jest używany przez funkcję ochrony hasło usługi Azure AD oprogramowanie agenta kontrolera domeny na kontrolerach domeny, do komunikowania się z usługą serwera proxy ochrony haseł usługi Azure AD. Domyślnie ochrony hasłem usługi Azure AD, usługa serwera Proxy zasad haseł nasłuchuje na wszystkie dostępne dynamiczne końcowych wywołań RPC. Jeśli to konieczne ze względu na topologii sieci i wymagania dotyczące zapory, usługi zamiast tego można skonfigurować do nasłuchiwania na konkretnym porcie TCP.
+      * Aby skonfigurować usługę, aby działała z portu statycznego, należy użyć `Set-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet.
          ```
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
          > [!WARNING]
-         > Należy zatrzymać i ponownie uruchomić usługę, aby te zmiany zaczęły obowiązywać.
+         > Należy zatrzymać i ponownie uruchomić usługę, aby zmiany zaczęły obowiązywać.
 
-      * Aby skonfigurować usługę do uruchamiania w port dynamiczny, użyj tej samej procedury ale StaticPort ponownie ustawiony na wartość zero, w następujący sposób:
+      * Aby skonfigurować usługę, aby była uruchamiana z portów dynamicznych, użyj tej samej procedury ale StaticPort ponownie ustawiony na wartość zero, w następujący sposób:
          ```
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
          > [!WARNING]
-         > Należy zatrzymać i ponownie uruchomić usługę, aby te zmiany zaczęły obowiązywać.
+         > Należy zatrzymać i ponownie uruchomić usługę, aby zmiany zaczęły obowiązywać.
 
    > [!NOTE]
-   > Usługi serwera proxy ochrony hasła usługi Azure AD wymaga ręcznego ponownego uruchomienia po każdej zmianie konfiguracji portu. Nie jest konieczne ponowne uruchomienie uruchomionych na kontrolerach domeny po wprowadzeniu zmian w konfiguracji tego rodzaju oprogramowanie usługi agenta kontrolera domeny.
+   > Usługa serwera proxy ochrony haseł usługi Azure AD wymaga ręcznego ponownego uruchomienia po każdej zmianie konfiguracji portu. Nie jest konieczne ponowne uruchomienie kontrolera domeny oprogramowani usługi uruchomione na kontrolerach domeny, po wprowadzeniu zmian w konfiguracji tego rodzaju.
 
-   * Bieżąca konfiguracja usługi można wyświetlić, przy użyciu `Get-AzureADPasswordProtectionProxyConfiguration` jak w poniższym przykładzie przedstawiono polecenie cmdlet:
+   * Bieżąca konfiguracja usługi może być odpytywany za pomocą `Get-AzureADPasswordProtectionProxyConfiguration` jak w poniższym przykładzie przedstawiono polecenie cmdlet:
 
       ```
       Get-AzureADPasswordProtectionProxyConfiguration | fl
@@ -142,34 +142,34 @@ Istnieją dwa wymagane pliki instalacyjne ochrony hasłem usługi Azure AD, któ
       StaticPort  : 0 
       ```
 
-### <a name="install-the-azure-ad-password-protection-dc-agent-service"></a>Instalacja usługi agenta ochrony DC hasła usługi Azure AD
+### <a name="install-the-azure-ad-password-protection-dc-agent-service"></a>Instalacja usługi agenta ochrony kontrolera domeny hasła usługi Azure AD
 
-* Instalowanie programu Azure AD hasło ochrony DC agenta usługi oprogramowania przy użyciu `AzureADPasswordProtectionDCAgent.msi` pakiet MSI:
-   * Instalacja oprogramowania wymaga ponownego uruchomienia w instalacji i Odinstaluj ze względu na wymagania systemu operacyjnego tylko załadowany lub zwolnione po ponownym rozruchu biblioteki DLL filtru haseł.
-   * Możliwe jest, aby zainstalować usługę agenta kontrolera domeny na komputerze, który nie jest jeszcze kontrolera domeny. W takim przypadku usługa zostanie uruchomiona, i uruchom, ale w przeciwnym razie zostanie być nieaktywne do momentu po maszynie jest podwyższany do kontrolera domeny.
+* Instalowanie programu Azure AD hasło ochrony kontrolera domeny agenta usługi oprogramowania przy użyciu `AzureADPasswordProtectionDCAgent.msi` pakietu MSI:
+   * Instalacja oprogramowania wymaga ponownego uruchomienia po instalacji i odinstalować ze względu na wymagania systemu operacyjnego tylko załadowane lub zwolnione po ponownym rozruchu biblioteki DLL filtru haseł.
+   * Możliwe jest, aby zainstalować usługę agenta kontrolera domeny na komputerze, który nie jest jeszcze kontrolera domeny. W tym przypadku usługa zostanie uruchomiona i wykonywania, ale będą, w przeciwnym razie być nieaktywne do momentu po komputer zostanie podwyższony do kontrolera domeny.
 
    Instalacja oprogramowania mogą zostać zautomatyzowane przy użyciu standardowych procedur MSI, na przykład:  `msiexec.exe /i AzureADPasswordProtectionDCAgent.msi /quiet /qn`
 
    > [!WARNING]
-   > Przykładowe polecenie msiexec spowoduje natychmiastowego ponownego uruchomienia; można tego uniknąć, określając `/norestart` flagi.
+   > Przykładowe polecenie msiexec spowoduje natychmiastowe ponowne uruchomienie; można tego uniknąć, określając `/norestart` flagi.
 
-Po zainstalowaniu na kontrolerze domeny i ponownego uruchomienia, zakończeniu ochrony hasłem usługi Azure AD instalacji oprogramowania agenta z kontrolera domeny. Inne konfiguracja nie jest wymagane lub niemożliwe.
+Po zainstalowaniu na kontrolerze domeny i ponownie uruchomiony, zakończeniu ochrony hasłem usługi Azure AD instalacji oprogramowania agenta kontrolera domeny. Konfiguracja nie jest wymagane, czy możliwa.
 
-## <a name="multiple-forest-deployments"></a>Wielu wdrożeń lasu
+## <a name="multiple-forest-deployments"></a>Wielu wdrożeń będących częścią lasu
 
-Nie ma żadnych dodatkowych wymagań do wdrożenia w wielu lasach ochrony hasłem usługi Azure AD. Każdy las niezależnie jest skonfigurowany zgodnie z opisem w sekcji Wdrażanie jednego lasu. Każdy ochrony hasłem usługi Azure AD Proxy może obsługiwać tylko kontrolery domeny z lasu, który jest dołączony do. Oprogramowanie ochrony hasła usługi Azure AD w danym lesie nie rozpoznaje oprogramowania ochrony hasła usługi Azure AD wdrożony w innym lesie, niezależnie od ustawień zaufania usługi Active Directory.
+Nie ma żadnych dodatkowych wymagań, aby wdrożyć ochrona za pomocą hasła usługi Azure AD w wielu lasach. Zgodnie z opisem w sekcji Wdrażanie pojedynczego lasu, każdy las jest skonfigurowany niezależnie. Każda usługa Azure AD ochrona za pomocą hasła serwera Proxy może obsługiwać tylko kontrolery domeny z lasu, który jest dołączony do. Oprogramowanie ochrony haseł usługi Azure AD w danym lesie nie rozpoznaje oprogramowanie do ochrony przed hasła usługi Azure AD wdrożony w innym lesie, niezależnie od konfiguracji relacji zaufania usługi Active Directory.
 
 ## <a name="read-only-domain-controllers"></a>Kontrolery domeny tylko do odczytu
 
-Changes\sets hasło nigdy nie są przetwarzane i utrwalane na kontrolerach domeny tylko do odczytu (RODC); Zamiast tego są one przekazywane do zapisywalne kontrolery domeny. W związku z tym nie istnieje potrzeba instalacji oprogramowania agenta kontrolera domeny na kontrolera RODC.
+Changes\sets hasło nigdy nie są przetwarzane i utrwalane na kontrolerach domeny tylko do odczytu (RODC); Zamiast tego są one przekazywane do zapisywalne kontrolery domeny. W związku z tym nie ma potrzeby zainstalować oprogramowanie agenta kontrolera domeny na kontrolery RODC.
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-Głównym problemem z zapewniające wysoką dostępność ochrony hasłem usługi Azure AD jest dostępności serwerów proxy, podczas próby pobrania nowych zasad lub innych danych z platformy Azure kontrolerów domeny w lesie. Publicznej wersji zapoznawczej obsługuje maksymalnie dwa serwery proxy w każdym lesie. Każdy agent, kontroler domeny używa algorytmu prostego stylu okrężnego podczas wybierania który serwer proxy do wywołania, a pomija za pośrednictwem serwerów proxy, które nie odpowiadają.
-Zwykle problemów związanych z wysokiej dostępności, zostały skorygowane przez projekt oprogramowanie agenta kontrolera domeny. Agent kontroler domeny przechowuje lokalnej pamięci podręcznej najbardziej ostatnio pobranego zasady haseł. Nawet jeśli wszystkie zarejestrowane serwery proxy stać się niedostępne z jakiegokolwiek powodu, agentach DC nadal wymuszać swoje zasady haseł w pamięci podręcznej. Częstotliwość aktualizacji uzasadnione zasad haseł w dużych wdrożeniach jest zwykle na kolejności dni nie godzin lub mniej.   W związku z tym krótki awarie serwerów proxy, nie powodują znacznie wpłynąć na działanie funkcji ochrony hasła usługi Azure AD lub jego korzyści w zakresie zabezpieczeń.
+Głównym problemem przy zapewnieniu wysokiej dostępności ochrona za pomocą hasła usługi Azure AD jest dostępność serwerów proxy, podczas próby pobrania nowych zasad lub innych danych z platformy Azure kontrolerów domeny w lesie. Publiczna wersja zapoznawcza obsługuje maksymalnie dwa serwery proxy w każdym lesie. Każdy agent kontrolera domeny używa algorytmu prostym stylem działanie okrężne, podejmując decyzję o który serwer proxy do wywołania i pomija za pośrednictwem serwerów proxy, które nie odpowiadają.
+Zwykle problemy związane z wysoką dostępność zostaną skorygowane przez projekt oprogramowania agenta kontrolera domeny. Agent kontroler domeny przechowuje lokalnej pamięci podręcznej najbardziej ostatnio pobrane zasady haseł. Nawet wtedy, gdy wszystkie zarejestrowane serwery proxy stać się niedostępne z jakiegokolwiek powodu, agentach DC w dalszym ciągu wymuszać swoje zasady haseł w pamięci podręcznej. Częstotliwość aktualizacji uzasadnione dla zasad haseł w dużych wdrożeniach jest zwykle od kolejności, dni, a nie godzin lub mniej.   W związku z tym krótki awarii serwery proxy nie powodują znaczącego wpływu na działanie funkcji ochrony haseł usługi Azure AD lub jego korzyści w zakresie zabezpieczeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, które zostały zainstalowane usługi wymagany dla ochrony hasłem usługi Azure AD na serwerach lokalnych wykonać [po instalacji konfiguracji i zbieranie informacji raportów](howto-password-ban-bad-on-premises-operations.md) do ukończenia wdrożenia.
+Po zainstalowaniu usług wymaganych do ochrony haseł usługi Azure AD na serwerach lokalnych wykonać czynności opisane [po instalacji, konfiguracji i zbieranie raportowanie informacji o](howto-password-ban-bad-on-premises-operations.md) do ukończenia danego wdrożenia.
 
-[Omówienie pojęć dotyczących ochrony hasłem usługi Azure AD](concept-password-ban-bad-on-premises.md)
+[Omówienie pojęć dotyczących ochrona za pomocą hasła usługi Azure AD](concept-password-ban-bad-on-premises.md)

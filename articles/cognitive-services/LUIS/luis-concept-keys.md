@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe6bd0803098854c7ced1a7d816ebbc8cce23b09
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: eb3487a304ec2e4045ff76253c456dc4b6ee19b5
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340617"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888626"
 ---
 # <a name="keys-in-luis"></a>Klucze usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ją przypisać](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
@@ -31,7 +31,7 @@ Ważne jest, aby tworzyć aplikacje usługi LUIS w [regionów](luis-reference-re
 
 Tworzenia klucza, znany także jako klucz starter, jest tworzona automatycznie podczas tworzenia konta usługi LUIS i jest ona bezpłatna. Masz jeden klucz tworzenia pakietów administracyjnych dla wszystkich aplikacji usługi LUIS do każdego tworzenia [region](luis-reference-regions.md). Tworzenia klucz jest dostarczany do tworzenia aplikacji usługi LUIS lub do testowania zapytania punktu końcowego. 
 
-Aby znaleźć klucz tworzenia pakietów administracyjnych, zaloguj się do [LUIS] [ LUIS] i kliknij nazwę konta, na pasku nawigacyjnym prawym górnym rogu, aby otworzyć **ustawienia konta**.
+Aby znaleźć klucz tworzenia pakietów administracyjnych, zaloguj się do [LUIS](luis-reference-regions.md#luis-website) i kliknij nazwę konta, na pasku nawigacyjnym prawym górnym rogu, aby otworzyć **ustawienia konta**.
 
 ![Tworzenie klucza](./media/luis-concept-keys/programatic-key.png)
 
@@ -70,10 +70,8 @@ Zobacz [klucza limity](luis-boundaries.md#key-limits) i [regionów świadczenia 
 Regiony publikowania różnią się od tworzenia regionów. Upewnij się, że tworzenie aplikacji w regionie tworzenia odpowiednich do regionu publikowania, który ma.
 
 ## <a name="key-limit-errors"></a>Błędy limitu klucza
-W przypadku przekroczenia usługi na drugim limit przydziału, wystąpi błąd HTTP 429. W przypadku przekroczenia usługi na miesiąc limit przydziału, komunikat o błędzie HTTP 403. Usuń te błędy, uzyskując LUIS [punktu końcowego](#endpoint-key) klucza, [przypisywanie](luis-how-to-manage-keys.md#assign-endpoint-key) klucza do aplikacji w **publikowania** strony [LUIS] [ LUIS] witryny sieci Web.
+W przypadku przekroczenia usługi na drugim limit przydziału, wystąpi błąd HTTP 429. W przypadku przekroczenia usługi na miesiąc limit przydziału, komunikat o błędzie HTTP 403. Usuń te błędy, uzyskując LUIS [punktu końcowego](#endpoint-key) klucza, [przypisywanie](luis-how-to-manage-keys.md#assign-endpoint-key) klucza do aplikacji w **publikowania** strony [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, [pojęcia](luis-how-to-manage-keys.md#assign-endpoint-key) o kluczach do tworzenia i punktu końcowego.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

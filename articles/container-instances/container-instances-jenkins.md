@@ -1,146 +1,146 @@
 ---
-title: Użyj wystąpień kontenera Azure jako Wpięć agenta kompilacji
-description: Dowiedz się, jak używać wystąpień kontenera platformy Azure, zgodnie z Wpięć agenta kompilacji.
+title: Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
+description: Dowiedz się, jak używać usługi Azure Container Instances, jak agent kompilacji usługi Jenkins.
 services: container-instances
-author: iainfoulds
+author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: iainfou
-ms.openlocfilehash: 7d1fa80b6d9b76a37ff29db42c5119389b3aad2a
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: marsma
+ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096438"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887695"
 ---
-# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj wystąpień kontenera Azure jako Wpięć agenta kompilacji
+# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
-Wystąpień kontenera platformy Azure (ACI) zapewnia na żądanie, burstable i izolowane środowisko uruchamiania konteneryzowanych obciążeń. Z powodu tych atrybutów ACI sprawia, że bardzo platformą dla zadania kompilacji Wpięć na dużą skalę. W tym artykule przedstawiono wdrażania i przy użyciu serwera Wpięć, wstępnie skonfigurowanego z ACI jako element docelowy kompilacji.
+Usługa Azure Container Instances (ACI) zapewnia na żądanie, z możliwością zwiększania wydajności i izolowane środowisko do uruchamiania obciążeń konteneryzowanych. Z powodu te atrybuty ACI sprawia, że doskonała platforma do uruchamiania zadań kompilacji usługi Jenkins na dużą skalę. Ten artykuł przeprowadzi wdrażania i korzystania z serwera Jenkins, który jest wstępnie skonfigurowana za pomocą usługi ACI jako obiekt docelowy kompilacji.
 
-Aby uzyskać więcej informacji na wystąpień kontenera platformy Azure, zobacz [o wystąpień kontenera Azure][about-aci].
+Aby uzyskać więcej informacji na temat usługi Azure Container Instances, zobacz [usługi Azure Container Instances][about-aci].
 
-## <a name="deploy-a-jenkins-server"></a>Wdrażanie serwera Wpięć
+## <a name="deploy-a-jenkins-server"></a>Wdrażanie serwera Jenkins
 
-1. W portalu Azure wybierz **Utwórz zasób** i wyszukaj **Wpięć**. Wybierz oferty Wpięć z wydawcą z **Microsoft**, a następnie wybierz **Utwórz**.
+1. W witrynie Azure portal wybierz **Utwórz zasób** i wyszukaj **Jenkins**. Wybierz ofertę usługi Jenkins, za pomocą Wydawca **Microsoft**, a następnie wybierz pozycję **Utwórz**.
 
 2. Wprowadź następujące informacje **podstawy** formularza, a następnie wybierz **OK**.
 
-   - **Nazwa**: Wprowadź nazwę dla wdrożenia Wpięć.
-   - **Nazwa użytkownika**: Wprowadź nazwę użytkownika dla administratora Wpięć maszyny wirtualnej.
-   - **Typ uwierzytelniania**: Firma Microsoft zaleca klucz publiczny SSH do uwierzytelniania. Jeśli wybierzesz tę opcję, Wklej klucz publiczny SSH używanego do logowania do maszyny wirtualnej Wpięć.
+   - **Nazwa**: Wprowadź nazwę dla wdrożenia serwera Jenkins.
+   - **Nazwa użytkownika**: Wprowadź nazwę użytkownika administratora maszyny wirtualnej usługi Jenkins.
+   - **Typ uwierzytelniania**: Firma Microsoft zaleca klucza publicznego SSH do uwierzytelniania. Jeśli wybierzesz tę opcję, Wklej klucz publiczny SSH ma być używany do zalogowania się do maszyny wirtualnej usługi Jenkins.
    - **Subskrypcja**: wybierz subskrypcję platformy Azure.
    - **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
-   - **Lokalizacja**: Wybierz lokalizację na serwerze Wpięć.
+   - **Lokalizacja**: Wybierz lokalizację dla serwera Jenkins.
 
-   ![Podstawowe ustawienia wdrożenia portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-01.png)
+   ![Podstawowe ustawienia dla wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-01.png)
 
-3. Na **dodatkowe ustawienia** tworzą, wykonaj następujące elementy:
+3. Na **dodatkowe ustawienia** formularza, wykonaj następujące elementy:
 
-   - **Rozmiar**: wybierz opcję odpowiednią rozmiaru Wpięć maszyny wirtualnej.
-   - **Typ dysku maszyny Wirtualnej**: Określ **HDD** (dysk twardy) lub **SSD** (SSD) dla serwera Wpięć.
-   - **Sieć wirtualna**: Wybierz strzałkę, aby zmodyfikować ustawienia domyślne.
+   - **Rozmiar**: wybierz opcję odpowiedniego rozmiaru maszyny wirtualnej usługi Jenkins.
+   - **Typ dysku maszyny Wirtualnej**: Określ **HDD** (dysk twardy) lub **SSD** (SSD) dla serwera Jenkins.
+   - **Sieć wirtualna**: Wybierz strzałkę zmodyfikować domyślne ustawienia.
    - **Podsieci**: Wybierz strzałkę, sprawdź informacje, a następnie wybierz **OK**.
-   - **Publiczny adres IP**: Wybierz strzałkę, aby zapewnić niestandardową nazwę publicznego adresu IP, skonfigurowania jednostki SKU i metoda przydziału.
-   - **Etykieta nazwy domeny**: Określ wartość do utworzenia w pełni kwalifikowany adres URL do Wpięć maszyny wirtualnej.
-   - **Typ zlecenia Wpięć**: Wybierz typ żądanej wersji z opcji: **LTS**, **co tydzień kompilacji**, lub **zweryfikować Azure**.
+   - **Publiczny adres IP**: Wybierz strzałkę, aby podać niestandardową nazwę publicznego adresu IP, konfigurowanie jednostki SKU i set, Metoda przypisania.
+   - **Etykieta nazwy domeny**: Określ wartość do utworzenia w pełni kwalifikowany adres URL z maszyną wirtualną serwera Jenkins.
+   - **Typ wersji usługi Jenkins**: Wybierz typ żądanej wersji spośród opcji: **LTS**, **co tydzień kompilacji**, lub **zweryfikować Azure**.
 
-   ![Dodatkowe ustawienia wdrożenia portalu Wpięć](./media/container-instances-jenkins/jenkins-portal-02.png)
+   ![Dodatkowe ustawienia wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Usługi integracji podmiotu zabezpieczeń, wybierz **Auto(MSI)** mają [tożsamości zarządzanych usługi Azure] [ managed-service-identity] automatycznie Utwórz tożsamość uwierzytelniania dla Wpięć wystąpienie. Wybierz **ręcznego** zapewnienie własne poświadczenia główne usługi.
+4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mieć [tożsamości usługi zarządzanej w usłudze Azure] [ managed-service-identity] automatycznie utworzyć tożsamością uwierzytelniania dla serwera Jenkins wystąpienie. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
 
-5. Agenci chmurze skonfiguruj oparte na chmurze platforma dla zadania kompilacji Wpięć. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każde zadanie kompilacji Wpięć jest uruchamiane w wystąpieniu kontenera.
+5. Agentów w chmurze skonfiguruj platformy z opartych na chmurze dla zadań kompilacji usługi Jenkins. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każdego zadania kompilacji usługi Jenkins jest uruchamiane w wystąpienia kontenera.
 
-   ![Ustawienia integracji chmury Wpięć wdrożenia portalu](./media/container-instances-jenkins/jenkins-portal-03.png)
+   ![Ustawienia integracji chmury dla wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-03.png)
 
-6. Po wykonaniu tych ustawień integracji, wybierz **OK**, a następnie wybierz **OK** ponownie na podsumowania weryfikacji. Wybierz **Utwórz** na **warunki użytkowania** podsumowania. Serwer Wpięć zajmuje kilka minut, aby wdrożyć.
+6. Po zakończeniu korzystania z ustawienia integracji, wybierz **OK**, a następnie wybierz pozycję **OK** ponownie dla podsumowania weryfikacji. Wybierz **Utwórz** na **warunki użytkowania** podsumowania. Serwer Jenkins zajmuje kilka minut, aby wdrożyć.
 
 ## <a name="configure-jenkins"></a>Konfigurowanie usługi Jenkins
 
-1. W portalu Azure przejdź do grupy zasobów Wpięć, wybierz maszynę wirtualną, Wpięć i zanotuj nazwę DNS.
+1. W witrynie Azure portal przejdź do grupy zasobów usługi Jenkins wybierz maszynę wirtualną usługi Jenkins i zwróć uwagę na nazwy DNS.
 
-   ![Nazwa DNS w szczegóły Wpięć maszyny wirtualnej](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
+   ![Nazwa DNS w szczegółach dotyczących maszyny wirtualnej usługi Jenkins](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
 
-2. Wybierz nazwę DNS maszyny wirtualnej Wpięć i skopiuj zwracany ciąg SSH.
+2. Wskaż nazwę DNS maszyny Wirtualnej usługi Jenkins i skopiuj zwracanego ciągu SSH.
 
-   ![Instrukcje logowania Wpięć z ciągiem SSH](./media/container-instances-jenkins/jenkins-portal-04.png)
+   ![Instrukcje logowania narzędzia Jenkins przy użyciu parametrów SSH](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Otwórz sesję terminala w systemie deweloperskim i Wklej w ciągu SSH w ostatnim kroku. Aktualizacja `username` określony podczas wdrażania serwera Wpięć nazwy użytkownika.
+3. Otwórz sesję terminala w systemie deweloperskim, a następnie wklej parametry SSH w ostatnim kroku. Aktualizacja `username` na nazwę użytkownika, które zostały określone podczas wdrażania serwera Jenkins.
 
-4. Po sesji jest połączony, uruchom następujące polecenie, aby pobrać hasło początkowej administratora:
+4. Po zakończeniu jest połączony, uruchom następujące polecenie, aby pobrać początkowego hasła administratora:
 
    ```
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Pozostaw sesji SSH i tunelu uruchomiona, a następnie przejdź do http://localhost:8080 w przeglądarce. Wklej hasło administratora początkowa w polu, a następnie wybierz **Kontynuuj**.
+5. Pozostaw sesji SSH i tunel uruchomiona, a następnie przejdź do http://localhost:8080 w przeglądarce. Wklej początkowego hasła administratora w polu, a następnie wybierz **Kontynuuj**.
 
-   ![Ekran "Odblokować Wpięć" z polem dla hasła administratora](./media/container-instances-jenkins/jenkins-portal-05.png)
+   ![Ekran "Odblokowywanie usługi Jenkins" z polem o hasło administratora](./media/container-instances-jenkins/jenkins-portal-05.png)
 
-6. Wybierz **Instalowanie wtyczki sugerowane** można zainstalować wszystkie zalecane Wpięć wtyczek.
+6. Wybierz **instalowanie sugerowanych wtyczek** można zainstalować wszystkie zalecane wtyczek serwera Jenkins.
 
-   ![Ekran "Dostosować Wpięć" z "Instalowanie wtyczki sugerowane" wybrane](./media/container-instances-jenkins/jenkins-portal-06.png)
+   ![Ekran "Dostosowywanie Jenkins" wybrane "Instalowanie sugerowanych wtyczek"](./media/container-instances-jenkins/jenkins-portal-06.png)
 
-7. Tworzenie konta administratora. To konto jest używane do logowania do i pracy z wystąpieniem Wpięć.
+7. Tworzenie konta użytkownika administracyjnego. To konto jest używane do logowania się do i Praca z wystąpienia usługi Jenkins.
 
-   ![Ekran "Utwórz pierwszy Administrator", przy użyciu poświadczeń wypełnione](./media/container-instances-jenkins/jenkins-portal-07.png)
+   ![Ekran "Utwórz pierwszego użytkownika administratora", przy użyciu poświadczeń wypełnione](./media/container-instances-jenkins/jenkins-portal-07.png)
 
-8. Wybierz **zapisać i zakończenia**, a następnie wybierz **Rozpoczynanie korzystania z Wpięć** w celu ukończenia konfiguracji.
+8. Wybierz **Zapisz i Zakończ**, a następnie wybierz pozycję **rozpocząć korzystanie z narzędzia Jenkins** aby zakończyć konfigurację.
 
-Wpięć jest teraz skonfigurowane i gotowe do tworzenia i wdrażania kodu. Na przykład prostą aplikację Java służy do pokazują kompilacji Wpięć na wystąpień kontenera platformy Azure.
+Jenkins jest teraz skonfigurowane i gotowe do kompilowania i wdrażania kodu. W tym przykładzie prostą aplikację Java jest używana do zademonstrowania kompilację narzędzia Jenkins w usłudze Azure Container Instances.
 
 ## <a name="create-a-build-job"></a>Tworzenie zadania kompilacji
 
-Podczas korzystania z obrazem kontenera jako Wpięć kompilacji docelowej, należy określić obraz, który zawiera wszystkie narzędzia niezbędne do pomyślnego utworzenia kompilacji. Aby określić obrazu:
+Podczas korzystania z obrazu kontenera, jak Jenkins kompilacji docelowej, należy określić obraz, który obejmuje wszystkie narzędzia niezbędne do pomyślnej kompilacji. Do określenia obrazu:
 
-1. Wybierz **Zarządzanie Wpięć** > **skonfigurować System** i przewiń w dół do **chmury** sekcji. Na przykład zaktualizować wartość obrazu Docker **microsoft/java na azure wpięć podrzędna**.
+1. Wybierz **Zarządzaj serwerem Jenkins** > **Konfiguruj System** i przewiń w dół do **chmury** sekcji. W tym przykładzie Zaktualizuj wartość obrazu platformy Docker do **microsoft/java na azure podrzędna rozwiązania jenkins**.
 
-   Gdy wszystko będzie gotowe, wybierz **zapisać** aby wrócić do pulpitu nawigacyjnego Wpięć.
+   Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz** aby powrócić do pulpitu nawigacyjnego usługi Jenkins.
 
-   ![Konfiguracja chmury Wpięć](./media/container-instances-jenkins/jenkins-aci-image.png)
+   ![Konfiguracja chmury narzędzia Jenkins](./media/container-instances-jenkins/jenkins-aci-image.png)
 
-2. Teraz utworzyć Wpięć zadania kompilacji. Wybierz **nowy element**, nadaj nazwę projektu kompilacji takich jak **aci-java pokaz**, wybierz pozycję **stylu projektu**i wybierz **OK**.
+2. Teraz można tworzyć zadania kompilacji usługi Jenkins. Wybierz **nowy element**, nazwij projekt kompilacji takich jak **aci-java-demo**, wybierz opcję **projekt Freestyle**i wybierz **OK**.
 
-   ![Pole nazwy zadania kompilacji, oraz listę typów projektów](./media/container-instances-jenkins/jenkins-new-job.png)
+   ![Pole nazwy zadania kompilacji i listy typów projektów](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. W obszarze **ogólne**, upewnij się, że **Ogranicz, w którym można uruchomić tego projektu** jest zaznaczone. Wprowadź **linux** dla wyrażenia etykiety. Taka konfiguracja powoduje, że to zadanie kompilacji zostanie uruchomiona w chmurze ACI.
+3. W obszarze **ogólne**, upewnij się, że **ograniczanie, gdzie można uruchomić tego projektu** jest zaznaczone. Wprowadź **linux** wyrażenia etykiety. Ta konfiguracja gwarantuje, że to zadanie kompilacji jest uruchamiany w chmurze ACI.
 
-   ![Kartę "Ogólne" szczegóły konfiguracji](./media/container-instances-jenkins/jenkins-job-01.png)
+   ![Kartę "Ogólne" ze szczegółami konfiguracji](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. W obszarze **zarządzania kodem źródłowym**, wybierz pozycję **Git** , a następnie wprowadź **https://github.com/spring-projects/spring-petclinic.git** dla adresu URL repozytorium. To repozytorium GitHub zawiera przykładowy kod aplikacji.
+4. W obszarze **zarządzania kodem źródłowym**, wybierz opcję **Git** i wprowadź **https://github.com/spring-projects/spring-petclinic.git** dla adresu URL repozytorium. Tego repozytorium GitHub zawiera przykładowy kod aplikacji.
 
-   ![Karta "Zarządzania kod źródłowy" z informacji dotyczących kodu źródłowego](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![Karty "Zarządzanie kodem źródłowym" przy użyciu informacji dotyczących kodu źródłowego](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. W obszarze **kompilacji**, wybierz pozycję **kroku kompilacji Dodaj** i wybierz **wywołania najwyższego poziomu celów Maven**. Wprowadź **pakietu** jako cel kroku kompilacji.
+5. W obszarze **kompilacji**, wybierz opcję **Dodaj krok kompilacji** i wybierz **wywołania najwyższego poziomu elementów docelowych narzędzia Maven**. Wprowadź **pakietu** jako cel kroku kompilacji.
 
-   ![Karta "Kompilacji", z opcjami kroku kompilacji](./media/container-instances-jenkins/jenkins-job-03.png)
+   !["Kompilacja" kartę z opcjami dla kroku kompilacji](./media/container-instances-jenkins/jenkins-job-03.png)
 
 6. Wybierz pozycję **Zapisz**.
 
-## <a name="run-the-build-job"></a>Uruchom zadanie kompilacji
+## <a name="run-the-build-job"></a>Uruchamianie zadania kompilacji
 
-Aby przetestować zadania kompilacji i obserwować wystąpień kontenera Azure jako platforma kompilacji, należy ręcznie uruchomić kompilację.
+Aby przetestować zadanie kompilacji i sprawdź usługi Azure Container Instances jako platformę kompilacji, należy ręcznie uruchomić kompilację.
 
-1. Wybierz **kompilacji teraz** można rozpocząć zadania kompilacji. Trwa kilka minut, aż zadanie można uruchomić. Powinien zostać wyświetlony stan, która jest podobna do poniższej ilustracji:
+1. Wybierz **Kompiluj teraz** można uruchomić zadania kompilacji. Trwa kilka minut, zanim zadanie do uruchomienia. Powinny zostać wyświetlone stanu, która jest podobna do poniższej ilustracji:
 
    !["Historia kompilacji" informacje o stanie zadania](./media/container-instances-jenkins/jenkins-job-status.png)
 
-2. Gdy zadanie jest uruchomione, otwórz Azure portal i przyjrzyj się Wpięć grupy zasobów. Powinna zostać wyświetlona utworzono wystąpienie kontenera. Zadanie Wpięć jest uruchomione w tym wystąpieniu.
+2. Gdy zadanie jest uruchomione, otwórz witrynę Azure portal i przyjrzyj się grupa zasobów usługi Jenkins. Powinieneś zobaczyć, że utworzono wystąpienie kontenera. Zadania narzędzia Jenkins działa wewnątrz tego wystąpienia.
 
-   ![Kontener wystąpienie w grupie zasobów](./media/container-instances-jenkins/jenkins-aci.png)
+   ![Wystąpienia kontenera w grupie zasobów](./media/container-instances-jenkins/jenkins-aci.png)
 
-3. Zgodnie z Wpięć uruchamia zadania więcej niż skonfigurowana liczba modułów Wpięć (domyślnie: 2), są tworzone wielu wystąpień kontenera.
+3. Po uruchomieniu narzędzia Jenkins większą liczbę zadań niż skonfigurowana liczba executors narzędzia Jenkins (wartość domyślna 2) są tworzone wiele wystąpień kontenera.
 
-   ![Nowo utworzona wystąpień kontenera](./media/container-instances-jenkins/jenkins-aci-multi.png)
+   ![Nowo utworzony kontener wystąpień](./media/container-instances-jenkins/jenkins-aci-multi.png)
 
-4. Po zakończeniu wszystkich zadań kompilacji, są usuwane wystąpień kontenera.
+4. Po ukończeniu wszystkich zadań kompilacji, wystąpienia kontenera są usuwane.
 
-   ![Grupy zasobów z wystąpień kontenera usunięte](./media/container-instances-jenkins/jenkins-aci-none.png)
+   ![Grupa zasobów, usługa container instances usunięte](./media/container-instances-jenkins/jenkins-aci-none.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat Wpięć na platformie Azure, zobacz [Azure i Wpięć][jenkins-azure].
+Aby dowiedzieć się więcej na temat usługi Jenkins na platformie Azure, zobacz [platformy Azure i usługi Jenkins][jenkins-azure].
 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md

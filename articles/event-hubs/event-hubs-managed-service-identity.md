@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7c8f7fff5e3cf7334ce30a3fa90ae950f841662c
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: abff3f715a1fccba172147f02b83f7209f87cf9e
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865301"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902520"
 ---
 # <a name="managed-service-identity-preview"></a>Tożsamość usługi zarządzanej (wersja zapoznawcza)
 
@@ -60,6 +60,9 @@ Tożsamość usługi zarządzanej dla aplikacji sieci web teraz ma dostęp do pr
 ### <a name="run-the-app"></a>Uruchamianie aplikacji
 
 Teraz można zmodyfikować domyślnej strony utworzonej aplikacji ASP.NET. Można również użyć kodu aplikacji sieci web z [to repozytorium serwisu GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp). 
+
+>[!NOTE] 
+> Gdy ta funkcja MSI jest w wersji zapoznawczej, upewnij się, że [wersję zapoznawczą biblioteki usługi Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/4.2.2-preview) celu uzyskania dostępu do nowych interfejsów API. 
 
 Po uruchomieniu aplikacji, wskazać EventHubsMSIDemo.aspx w przeglądarce. Alternatywnie ustawić go jako swoją stronę początkową. Kod można znaleźć w pliku EventHubsMSIDemo.aspx.cs. Wynik to aplikacja minimalne sieci web z kilku pól wejścia i **wysyłania** i **otrzymywać** przycisków, które usługi Event hubs do wysyłania lub odbierania zdarzeń. 
 

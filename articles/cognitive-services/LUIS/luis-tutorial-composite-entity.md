@@ -1,6 +1,6 @@
 ---
-title: Utwórz jednostkę złożonego wyodrębnić dane złożone - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć złożone jednostki LUIS aplikacji w celu wyodrębnienia różnych typów danych jednostki.
+title: Tworzenie złożonego jednostki można wyodrębnić złożonych danych — Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia złożonych jednostki w aplikacją usługi LUIS do wyodrębniania różnych typów danych jednostki.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,35 +9,35 @@ ms.component: luis
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: cb581ee60dea2b0810332933455a03a8b68e16ea
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 375b52f9206f55e620d5e664844b8fa1d7249a07
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264389"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888749"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>Użyj jednostki złożone, aby wyodrębnić dane złożone
-Ta prosta aplikacja ma dwa [intencje](luis-concept-intent.md) i kilka jednostek. Jego celem jest zarezerwować lotach, takich jak "1 bilet z Seattle Kair w piątek" i zwracać wszystkie szczegółowe informacje na temat rezerwacji jako pojedynczy element danych. 
+# <a name="use-composite-entity-to-extract-complex-data"></a>Wyodrębnianie danych złożonych przy użyciu złożonego jednostki
+Ta prosta aplikacja ma dwa [intencji](luis-concept-intent.md) i jednostki. Jej celem jest Zarezerwuj lotów, takie jak "1 ticket z Seattle do Cairo w piątek" i zwracać wszystkie szczegółowe informacje na temat rezerwacji jako pojedynczy element danych. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-* Dodaj datetimeV2 wbudowane jednostek i numer
-* Utwórz jednostkę złożone
-* Zapytanie LUIS i odbierać dane jednostki złożone
+* Dodaj numer i datetimeV2 ze wstępnie utworzonych jednostek
+* Tworzenie złożonego jednostki
+* Zapytanie usługi LUIS i odbierać dane jednostki złożone
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-* LUIS aplikacji z  **[hierarchiczna szybkiego startu](luis-tutorial-composite-entity.md)**. 
+* Aplikacją usługi LUIS z  **[hierarchiczne szybkiego startu](luis-tutorial-composite-entity.md)**. 
 
 > [!Tip]
-> Jeśli nie masz już subskrypcję, możesz zarejestrować dla [bezpłatne konto](https://azure.microsoft.com/free/).
+> Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="composite-entity-is-a-logical-grouping"></a>Złożone jednostki to logiczne grupowanie 
-Jednostka ma na celu Znajdź i kategoryzowanie fragmenty tekstu w utterance. A [złożonego](luis-concept-entity-types.md) jednostki składa się z innych typów jednostek, które zostały uzyskane na podstawie kontekstu. Dla tej aplikacji podróży pobierającej zastrzeżenia transmitowane istnieją kilku informacji takich jak daty, lokalizacji i liczbę miejsc. 
+## <a name="composite-entity-is-a-logical-grouping"></a>Złożone jednostki to logiczna grupa 
+Celem jednostki jest znalezienie fragmentów tekstu w wypowiedzi i przypisanie im kategorii. A [złożonego](luis-concept-entity-types.md) jednostki składa się z innych typów jednostek z kontekstu. Dla tej aplikacji podróży, która przyjmuje Rezerwacje lotów istnieje kilka rodzajów informacji, takich jak daty, lokalizacji i liczbę stanowisk. 
 
-Informacje istnieje jako osobne jednostki, przed utworzeniem złożonym. Utwórz jednostkę złożone, gdy osobne jednostki można grupować logicznie i to logiczne grupowanie jest przydatne do chatbot lub innych aplikacji korzystających z LUIS. 
+Taka informacja istnieje jako osobne jednostki, przed utworzeniem złożonego. Tworzenie złożonego jednostki, gdy osobne jednostki mogą być grupowane logicznie to logiczne grupowanie jest przydatne do chatbot lub inne aplikacje korzystające z usługi LUIS. 
 
-Prosty przykład zniesławiających od użytkowników obejmują:
+Proste przykładowe wypowiedzi użytkowników mogą być następujące:
 
 ```
 Book a flight to London for next Monday
@@ -45,98 +45,98 @@ Book a flight to London for next Monday
 Reserve a seat from New York to Paris on the first of April
 ```
  
-Obiekt złożony jest zgodny stanowisk, lokalizacja źródła lokalizacji docelowej i daty. 
+Złożone jednostki dopasowuje liczba stanowisk, lokalizację pochodzenia, miejsce docelowe i daty. 
 
-## <a name="what-luis-does"></a>Jaki jest LUIS
-Gdy są identyfikowane zamiar i jednostek utterance [wyodrębnione](luis-concept-data-extraction.md#list-entity-data)i zwracane w formacie JSON z [punktu końcowego](https://aka.ms/luis-endpoint-apis), LUIS jest wykonywane. Wywołanie aplikacji lub chatbot przyjmuje tę odpowiedź JSON i spełnia żądania — w dowolnie wybrany sposób aplikacji lub chatbot zaprojektowano w celu. 
+## <a name="what-luis-does"></a>Jak działa usługa LUIS
+Gdy intencje i jednostki wypowiedzi zostaną zidentyfikowane, [wyodrębnione](luis-concept-data-extraction.md#list-entity-data) i zwrócone w formacie JSON z [punktu końcowego](https://aka.ms/luis-endpoint-apis), działanie usługi LUIS kończy się. Aplikacja wywołująca lub czatbot pobiera tę odpowiedź JSON i spełnia żądanie — w taki sposób, jaki został zaprojektowany. 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Dodaj liczbę jednostek wbudowane i datetimeV2
-1. Wybierz `MyTravelApp` aplikacji z listy aplikacji na [LUIS] [ LUIS] witryny sieci Web.
+## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Dodaj numer ze wstępnie utworzonych jednostek i datetimeV2
+1. Wybierz `MyTravelApp` aplikacji z listy aplikacji na [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web.
 
-2. Po otwarciu aplikacji wybierz **jednostek** łącza nawigacji po lewej stronie.
+2. Po otwarciu aplikacji wybierz **jednostek** łącze nawigacji po lewej stronie.
 
-    ![Wybierz przycisk jednostek](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
 
-3. Wybierz **Zarządzanie wbudowane jednostek**.
+3. Wybierz pozycję **Manage prebuilt entities** (Zarządzaj wstępnie utworzonymi jednostkami).
 
-    ![Wybierz przycisk jednostek](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
 
-4. W polu podręcznym wybierz **numer** i **datetimeV2**.
+4. W oknie podręcznym wybierz **numer** i **datetimeV2**.
 
-    ![Wybierz przycisk jednostek](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
 
-5. Aby nowe jednostki do wyodrębnienia, wybierz **pociągu** w górnym pasku nawigacyjnym.
+5. Aby nowe jednostki do wyodrębnienia, wybierz **Train** w górnym pasku nawigacyjnym.
 
-    ![Przycisk Wybierz pociągu](./media/luis-tutorial-composite-entity/train.png)
+    ![Wybieranie przycisku Train (Ucz)](./media/luis-tutorial-composite-entity/train.png)
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>Istniejące opcje umożliwia tworzenie złożonego jednostki
-1. Wybierz **intencje** z lewym pasku nawigacyjnym. 
+## <a name="use-existing-intent-to-create-composite-entity"></a>Użyj istniejących przeznaczenie, aby utworzyć złożone jednostki
+1. Wybierz **intencji** w lewym obszarze nawigacji. 
 
-    ![Wybierz stronę opcji](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    ![Wybierz stronę intencji](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
 
-2. Wybierz `BookFlight` z **intencje** listy.  
+2. Wybierz `BookFlight` z **intencji** listy.  
 
-    ![Wybierz opcje BookFlight z listy](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+    ![Z listy wybierz BookFlight intencji](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
 
-    Liczba i datetimeV2 wbudowane jednostki są oznaczane etykietami na zniesławiających.
+    Liczba i datetimeV2 ze wstępnie utworzonych jednostek są oznaczone etykietami na wypowiedzi.
 
-3. Dla utterance `book 2 flights from seattle to cairo next monday`, wybierz niebieski `number` jednostki, następnie wybierz **zawijanie w złożonych jednostki** z listy. Zielony wiersza, w obszarze wyrazy, następuje kursor przesyłane do prawej, wskazującą złożonego jednostki. Następnie można przejść do prawej, aby wybrać ostatniego jednostki wbudowane `datetimeV2`, wprowadź `FlightReservation` w polu tekstowym w oknie podręcznym wybierz **Utwórz nowy złożone**. 
+3. Dla wypowiedź `book 2 flights from seattle to cairo next monday`, wybierz niebieski `number` jednostki, następnie wybierz pozycję **opakować w jednostce złożone** z listy. Zieloną linię w obszarze wyrazów, następuje kursor, kiedy przesuwa się on do prawej, wskazujący złożonego jednostki. Następnie przesuń w prawo, aby wybrać ostatnich wstępnie utworzone jednostki `datetimeV2`, wprowadź `FlightReservation` w polu tekstowym w oknie podręcznym, a następnie zaznacz **Utwórz nowe złożone**. 
 
-    ![Utwórz jednostkę złożonego na stronie opcji](./media/luis-tutorial-composite-entity/create-new-composite.png)
+    ![Tworzenie złożonego jednostki na stronie intencji](./media/luis-tutorial-composite-entity/create-new-composite.png)
 
-4. Okno podręczne pojawi się sprawdź elementy podrzędne jednostki złożonego. Wybierz **gotowe**.
+4. Wyskakującego okna dialogowego pojawia się, co pozwoli zweryfikować dzieci złożonego jednostki. Wybierz pozycję **Done** (Gotowe).
 
-    ![Utwórz jednostkę złożonego na stronie opcji](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+    ![Tworzenie złożonego jednostki na stronie intencji](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>Zawijanie jednostek w złożonych jednostki
-Po utworzeniu obiektu złożonego etykiety pozostałych zniesławiających w jednostce złożonego. Aby zawijać frazy jako obiekt złożony, trzeba zaznacz słowo lewej, a następnie wybierz **zawijanie w złożonych jednostki** na liście zaznacz słowo prawej, następnie wybrać nazwanym jednostkę złożonego `FlightReservation`. Jest to krok szybkie i sprawne wyborów, podzielić na następujące czynności:
+## <a name="wrap-the-entities-in-the-composite-entity"></a>OPAKOWYWANIE jednostek w jednostce złożone
+Po utworzeniu obiektu złożonego etykiety pozostałe wypowiedzi w jednostce złożone. Aby zawijać frazy jako obiekt złożony, konieczne będzie dokonanie zaznacz wyraz najdalej po lewej stronie, a następnie wybierz **opakować w jednostce złożone** z wyświetlonej listy następnie zaznacz wyraz najdalej z prawej strony, a następnie wybierz nazwanych jednostek złożonego `FlightReservation`. Jest to szybkie i bezproblemowe kroku wybory, podzielone na następujące czynności:
 
-1. W utterance `schedule 4 seats from paris to london for april 1`, wybierz opcję 4 jako liczba jednostek wbudowane.
+1. W polu wypowiedź `schedule 4 seats from paris to london for april 1`, wybierz opcję 4 jako liczba wstępnie utworzone jednostki.
 
-    ![Zaznacz słowo z lewej](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    ![Zaznacz wyraz skrajnie po lewej](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
 
-2. Wybierz **zawijanie w złożonych jednostki** z wyświetlonej listy.
+2. Wybierz **opakować w jednostce złożone** z wyświetlonej listy.
 
     ![Wybierz opcję zawijania z listy](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
 
-3. Zaznacz słowo prawej krawędzi. Zielony pozycji zostanie wyrażenie wskazujące złożonego jednostki.
+3. Zaznacz wyraz najdalej z prawej strony. Zielona linia jest wyświetlany w obszarze frazy, wskazujący złożonego jednostki.
 
-    ![Zaznacz słowo z prawej](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
+    ![Zaznacz wyraz najdalej z prawej strony](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
 
 4. Wybierz nazwę złożonego `FlightReservation` z wyświetlonej listy.
 
-    ![Wybierz nazwanej jednostki złożone](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
+    ![Wybierz nazwanych jednostek złożone](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
 
-    Ostatni utterance, można zawijać `London` i `tomorrow` w jednostce złożonego przy użyciu tej samej instrukcji. 
+    Ostatnie wypowiedź, można opakować `London` i `tomorrow` w jednostce złożone przy użyciu tych samych instrukcji. 
 
-## <a name="train-the-luis-app"></a>Szkolenie LUIS aplikacji
-LUIS nie ma informacji dotyczących zmiany lokalizacji docelowych i jednostek (model) do momentu jego przygotowaniu. 
+## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
 
-1. W górnym rogu LUIS witryny sieci Web, wybierz **pociągu** przycisku.
+1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
 
-    ![Szkolenie aplikacji](./media/luis-tutorial-composite-entity/train-button.png)
+    ![Uczenie aplikacji](./media/luis-tutorial-composite-entity/train-button.png)
 
-2. Szkolenie zostało ukończone, gdy zostanie wyświetlony pasek stanu zielonego w górnej części witryny sieci Web potwierdzeniem powodzenia.
+2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
-    ![Szkolenie powiodło się.](./media/luis-tutorial-composite-entity/trained.png)
+    ![Uczenie powiodło się](./media/luis-tutorial-composite-entity/trained.png)
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji, aby uzyskać adres URL punktu końcowego
-Aby uzyskać Prognozowanie LUIS chatbot lub innej aplikacji, należy opublikować aplikację. 
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
 
-1. W górnym rogu LUIS witryny sieci Web, wybierz **publikowania** przycisku. 
+1. W górnej części witryny usługi LUIS po prawej stronie wybierz przycisk **Publish** (Publikuj). 
 
-2. Wybierz miejsca produkcyjnego i **publikowania** przycisku.
+2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
 
     ![Publikowanie aplikacji](./media/luis-tutorial-composite-entity/publish-to-production.png)
 
-3. Publikowanie została ukończona, gdy zostanie wyświetlony pasek stanu zielonego w górnej części witryny sieci Web potwierdzeniem powodzenia.
+3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Punkt końcowy o różnych utterance zapytania
-1. Na **publikowania** wybierz pozycję **punktu końcowego** łącze umieszczone u dołu strony. Akcja ta Otwiera inne okno przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
     ![Wybierz adres URL punktu końcowego](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
 
-2. Przejdź do końca w adresie URL, a następnie wprowadź `reserve 3 seats from London to Cairo on Sunday`. Ostatni parametr querystring jest `q`, utterance zapytania. Ta utterance nie jest taka sama jak żadnego z etykietą zniesławiających, więc jest dobrym testu i powinna zostać zwrócona `BookFlight` konwersji z jednostką hierarchiczna wyodrębnione.
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `reserve 3 seats from London to Cairo on Sunday`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `BookFlight` z wyodrębnioną jednostką hierarchiczną.
 
 ```
 {
@@ -234,20 +234,16 @@ Aby uzyskać Prognozowanie LUIS chatbot lub innej aplikacji, należy opublikowa�
 }
 ```
 
-Zwraca ten utterance tym tablicy złożonego jednostek **flightreservation** obiektu z danych wyodrębnionych.  
+Ten wypowiedź zwraca tym tablicy złożonego jednostek **flightreservation** obiektu z danymi wyodrębnione.  
 
-## <a name="what-has-this-luis-app-accomplished"></a>Co ma osiągnąć tej aplikacji LUIS?
-Tę aplikację z dwóch lokalizacji docelowych i złożone jednostki, identyfikowane zamiar zapytania języka naturalnego i zwrócił wyodrębnione dane. 
+## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
+Tej aplikacji, za pomocą zaledwie dwóch intencje i jednostką złożonego zidentyfikowane zamiar zapytań języka naturalnego i zwrócony wyodrębnione dane. 
 
-Twoje chatbot ma teraz zebranie informacji umożliwiających ustalenie akcji głównej `BookFlight`oraz informacje o rezerwacji w utterance. 
+Twoje chatbot ma teraz informacje wystarczające do wyznaczenia Akcja podstawowa `BookFlight`i informacje o rezerwacji w wypowiedź. 
 
-## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane LUIS? 
-LUIS odbywa się z tym żądaniem. Aplikacja wywołująca, takich jak chatbot, możliwe jest wynik topScoringIntent i danych z obiektu do wykonania kolejnego kroku. LUIS nie programowe pracy bot lub aplikacja wywołująca. LUIS określa tylko jest zamiar użytkownika. 
+## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
+Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Dowiedz się więcej na temat jednostek](luis-concept-entity-types.md). 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

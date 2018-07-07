@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: b7e8bf9046d432bd830f65e1934704ec5036fd1c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: af5079e8c448a0df6b1109f5f23e3e3a2871a167
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346634"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887270"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Web Apps przy użyciu szablonu usługi LUIS dla języka C#
 
@@ -47,7 +47,7 @@ Zbuduj czatbota z usługą interpretacji języka zintegrowanego.
     * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
     * Wybierz **interpretacji języka (C#)** szablon **szablonu Bota** pola.
-    * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region] [ LUIS] aplikacja zostanie utworzona w.
+    * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region](luis-reference-regions.md) aplikacja zostanie utworzona w.
     * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 
     ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
@@ -170,7 +170,6 @@ Dodawanie intencji LUIS i Bot okien obsługi **pomocy**, **anulować**, i **pozd
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+
 <!-- tested on Win10 -->

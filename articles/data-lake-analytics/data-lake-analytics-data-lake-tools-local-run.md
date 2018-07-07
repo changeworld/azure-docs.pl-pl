@@ -1,112 +1,119 @@
 ---
-title: Uruchom skrypty U-SQL lokalnie przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
-description: W tym artykule opisano sposób użycia narzędzia Azure Data Lake Tools dla programu Visual Studio do testowania i debugowania zadań U-SQL w sieci lokalnej stacji roboczej.
+title: Skrypt uruchomienia usługi Azure Data Lake U-SQL na maszynie lokalnej | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uruchamiać zadania U-SQL na komputerze lokalnym za pomocą usługi Azure Data Lake Tools for Visual Studio.
 services: data-lake-analytics
-ms.service: data-lake-analytics
-author: mumian
-ms.author: yanacai
-manager: kfile
-editor: jasonwhowell
+documentationcenter: ''
+author: yanancai
+manager: ''
+editor: ''
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
-ms.topic: conceptual
-ms.date: 11/15/2016
-ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.service: data-lake-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 07/03/2018
+ms.author: yanacai
+ms.openlocfilehash: a7f43c7e17f36d9b4e0767744eee9604c2628ea8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736007"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888970"
 ---
-# <a name="runing-u-sql-scripts-locally"></a>Uruchamianych skryptów U-SQL lokalnie
+# <a name="run-u-sql-script-on-your-local-machine"></a>Uruchom skrypt U-SQL na komputerze lokalnym
 
-Zamiast uruchamiania skryptu U-SQL na platformie Azure, możesz uruchomić U-SQL na własne pole. Jest to "uruchamiania lokalnego" lub "lokalne wykonanie". 
+Podczas tworzenia skryptu U-SQL, są często do uruchomienia skryptu U-SQL lokalnie, jak zapisuje kosztów i czasu. Usługa Azure Data Lake Tools for Visual Studio obsługuje uruchamianie skryptów U-SQL na maszynie lokalnej. 
 
-Lokalnego uruchamiania skryptu U-SQL jest tym dostępną w tych narzędzi:
-* Usługi Azure Data Lake Tools dla programu Visual Studio
-* Zestaw SDK usługi Azure Data Lake U-SQL
+## <a name="basic-concepts-for-local-run"></a>Podstawowe zagadnienia dotyczące uruchamiania lokalnego
 
-## <a name="understand-the-data-root-folder-and-the-file-path"></a>Folder główny danych i ścieżka pliku
+Poniżej wykresu przedstawiono składniki lokalne uruchomienie i sposób mapowania tych składników w chmurze, uruchom.
 
-Zarówno przebiegu lokalnego, jak i zestawu SDK języka U-SQL wymagają folderu głównego danych. Folder główny danych jest "Magazyn lokalny" dla konta lokalnego obliczeń. Odpowiada to konto usługi Azure Data Lake Store z kontem usługi Data Lake Analytics. Przełączanie do folderu różnych głównych danych jest podobnie jak przełączanie do konta magazynu innego. Jeśli chcesz uzyskać dostęp do danych często udostępnione z innego katalogu głównym danych folderów, należy użyć ścieżek bezwzględnych w skryptach. Lub Utwórz łącza symbolicznego systemu plików (na przykład **mklink** na NTFS) w folderze głównym danych wskaż udostępnionych danych.
+|Składnik|Lokalne uruchomienie|Uruchom w chmurze|
+|---------|---------|---------|
+|Magazyn|Lokalny folder główny danych|Konto domyślne usługi Azure Data Lake Store|
+|Wystąpienia obliczeniowe|Lokalne aparatu wykonywania języka U-SQL|Usługa Azure Data Lake Analytics|
+|Środowisko wykonawcze|Katalog roboczy na komputerze lokalnym|Usługa Azure Data Lake Analytics klastra|
+
+Objaśnienie więcej lokalny przebieg składników:
+
+### <a name="local-data-root-folder"></a>Lokalny folder główny danych
+
+Lokalny folder główny danych jest "Magazyn lokalny" dla konta lokalnego obliczeń. Dowolny folder w lokalnym systemie plików na komputerze lokalnym, może być lokalny folder główny danych. Jest równa domyślnego konta usługi Azure Data Lake Store w ramach konta usługi Data Lake Analytics. Przełączanie na inny folder główny danych jest podobnie jak przełączanie na inną domyślne konto magazynu. 
 
 Folder główny danych służy do:
+- Store metadane, takie jak bazy danych, tabel, zwracających tabelę i zestawów.
+- Wyszukaj ścieżki wejściowe i wyjściowe, które są zdefiniowane jako ścieżki względne w skrypcie U-SQL. Używanie ścieżek względnych ułatwia wdrażanie skryptów U-SQL na platformie Azure.
 
-- Przechowywania metadanych, w tym baz danych, tabel, przechowywanymi w tabeli funkcji (funkcji Tvf) i zestawów.
-- Wyszukiwanie wejściowymi i wyjściowymi ścieżek, które są zdefiniowane jako ścieżek względnych w języku U-SQL. Używanie ścieżek względnych ułatwia wdrażanie projektów języka U-SQL na platformie Azure.
+### <a name="u-sql-local-run-engine"></a>Lokalne aparatu wykonywania języka U-SQL
 
-W skryptów U-SQL, można użyć zarówno ścieżki względnej, jak i lokalną ścieżkę bezwzględną. Ścieżka względna jest względem ścieżki katalogu głównym danych określonego folderu. Firma Microsoft zaleca użycie "/" jako separatora ścieżki do sprawia, że skrypty zgodne z po stronie serwera. Oto kilka przykładów ścieżek względnych i ich równoważne ścieżki bezwzględnej. W tych przykładach C:\LocalRunDataRoot jest folder główny danych.
+Lokalne aparatu wykonywania języka U-SQL jest "konto obliczeniowe lokalnego" dla zadania U-SQL. Użytkownicy mogą uruchamiać zadania U-SQL lokalnie za pomocą usługi Azure Data Lake Tools for Visual Studio. Wykonanie lokalne jest również obsługiwany za pośrednictwem interfejsów wiersza polecenia i programowania zestawu SDK usługi Azure Data Lake U-SQL. [Dowiedz się więcej na temat zestawu SDK usługi Azure Data Lake U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/).
 
-|Ścieżka względna|Ścieżki bezwzględne|
-|-------------|-------------|
-|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/abc/def/input.csv |D:\abc\def\input.csv|
+### <a name="working-directory"></a>Katalog roboczy
 
-## <a name="use-local-run-from-visual-studio"></a>Użyj lokalnego uruchomienia z programu Visual Studio
+W przypadku uruchomienia skryptu U-SQL, folder katalogu roboczego jest wymagany przez buforowanie wyników kompilacji, dzienniki wykonywania i tak dalej. W usłudze Azure Data Lake Tools for Visual Studio, katalog roboczy jest katalog roboczy projekt U-SQL (zwykle znajdujący się w `<U-SQL project root path>/bin/debug>`). Katalog roboczy zostaną wyczyszczone, za każdym razem, gdy nowy uruchamianie wyzwalane.
 
-Narzędzia Data Lake Tools dla programu Visual Studio zapewnia obsługę lokalnej — Uruchom U-SQL w programie Visual Studio. Za pomocą tej funkcji, można:
+## <a name="local-run-in-visual-studio"></a>Lokalne uruchamianie w programie Visual Studio
 
-- Uruchom skrypt U-SQL lokalnie, wraz z zestawami języka C#.
-- Debugowanie zestawu języka C# lokalnie.
-- Tworzenie, wyświetlanie i usuwanie katalogów U-SQL (lokalnych baz danych, zestawy, schematy i tabele) z poziomu Eksploratora serwera. Lokalny katalog można również znaleźć również z Eksploratora serwera.
+Usługa Azure Data Lake Tools for Visual Studio ma wbudowane lokalnego uruchomienia aparatu i wydobywa informacje dotyczące jej jako lokalne konto obliczeniowe. Aby uruchomić skrypt U-SQL lokalnie, wybierz opcję (Local-machine) lub konta (lokalny projekt) w marginesu edytora skryptu listy rozwijanej, a następnie kliknij przycisk **przesyłania**.
 
-    ![Narzędzia Data Lake Tools dla katalogu lokalnego lokalnego uruchomienia programu Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-local-catalog.png)
+![Narzędzia Data Lake Tools for Visual Studio Prześlij skrypt do konta lokalnego](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+ 
+## <a name="local-run-with-local-machine-account"></a>Lokalne uruchamianie przy użyciu konta (Local-machine)
 
-Data Lake Tools Instalator tworzy folder C:\LocalRunRoot ma być używany jako domyślny folder główny danych. Równoległość lokalnego uruchomienia domyślny to 1.
+Konta (local-machine) jest kontem udostępnionego obliczeń lokalnego z pojedynczy folder lokalny katalog głównych danych jako konto magazynu lokalnego. Folder główny danych jest domyślnie znajdujący się w "C:\Users\<username > \AppData\Local\USQLDataRoot", jest również można konfigurować za pośrednictwem **Narzędzia > Data Lake > Opcje i ustawienia**.
 
-### <a name="to-configure-local-run-in-visual-studio"></a>Aby skonfigurować przebiegu lokalnego w programie Visual Studio
+![Narzędzia Data Lake Tools for Visual Studio skonfigurować katalog główny danych lokalnych](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+  
+Projekt U-SQL jest wymagany dla przebiegu lokalnego. Katalog roboczy projekt U-SQL jest używany dla katalogu roboczego lokalnych wykonań U-SQL. Wyniki kompilacji, dzienniki wykonywania i inne pliki powiązane z wykonywaniem zadań są generowane i przechowywane w folderze katalog roboczy podczas uruchamiania lokalnego. Należy pamiętać, że za każdym razem, gdy uruchomisz skrypt, wszystkie te pliki w katalogu roboczym zostanie wyczyszczone i ponownie wygenerowany.
 
-1. Otwórz program Visual Studio.
-2. Otwórz **Eksploratora serwera**.
-3. Rozwiń węzeł **Azure** > **usługi Data Lake Analytics**.
-4. Kliknij przycisk **usługi Data Lake** menu, a następnie kliknij przycisk **opcje i ustawienia**.
-5. W drzewie po lewej stronie rozwiń **usługi Azure Data Lake**, a następnie rozwiń węzeł **ogólne**.
+## <a name="local-run-with-local-project-account"></a>Lokalne uruchamianie przy użyciu konta (lokalny projekt)
 
-    ![Narzędzia Data Lake Tools dla programu Visual Studio Uruchom lokalny Konfigurowanie ustawień](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-configure.png)
+Konto (lokalny projekt) jest konto obliczeniowe lokalnym odizolowanym od projektu dla każdego projektu przy użyciu izolowanego lokalny folder główny danych. Każdego aktywnego projektu U-SQL, otwierając w oknie Eksploratora rozwiązań ma odpowiadające mu `(Local-project: <project name>)` konto jest wyświetlane w Eksploratorze serwera i języka U-SQL marginesu edytora skryptów. 
 
-Projektu programu Visual Studio U-SQL jest wymagana do wykonania lokalnego uruchamiania. Ta część różni się od uruchamiania skryptów U-SQL na platformie Azure.
+Konto (lokalny projekt) zapewnia czyste i izolowane środowisko projektowe dla deweloperów. W odróżnieniu od konta (Local-machine), który ma udostępnionego folderu głównego dane lokalne przechowywanie danych wejściowych/wyjściowych dla wszystkich zadań lokalnych i metadanych (lokalny projekt) konto służy do tworzenia lokalnego katalogu głównego danych folderu tymczasowego w katalogu roboczym projektu U-SQL każdym razem, gdy skrypt U-SQL pobiera Uruchom. Ten tymczasowy folder główny danych pobiera czyszczone po ponownej kompilacji lub uruchom ponownie. 
 
-### <a name="to-run-a-u-sql-script-locally"></a>Aby uruchomić skrypt U-SQL lokalnie
-1. W programie Visual Studio Otwórz projekt U-SQL.   
-2. Kliknij prawym przyciskiem myszy skrypt U-SQL w Eksploratorze rozwiązań, a następnie kliknij przycisk **Prześlij skrypt**.
-3. Wybierz **(Local)** jako konta usługi Analytics, aby uruchomić skrypt lokalnie.
-Możesz również kliknąć **(Local)** konta w górnej części okna Skrypt, a następnie kliknij przycisk **przesyłania** (lub użyj klawiszy Ctrl + F5 skrót klawiaturowy).
+Projekt U-SQL zapewnia dobre środowisko do zarządzania tym izolowane lokalnego Uruchom środowisko poprzez odwołanie do projektu i właściwości. Można jednocześnie skonfigurować źródła danych wejściowych dla skryptów U-SQL w projekcie, a także środowiska, w której istnieje odwołanie.
 
-    ![Narzędzia Data Lake Tools dla Visual Studio lokalnego uruchomienia przesyłania zadań](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-submit-job.png)
+### <a name="manage-input-data-source-for-local-project-account"></a>Zarządzanie źródłem danych wejściowych dla konta (lokalny projekt)
 
-### <a name="debug-scripts-and-c-assemblies-locally"></a>Debugowanie skryptów i zestawów języka C# lokalnie
+Projekt U-SQL zajmuje się tworzenie folderu głównego dane lokalne i dane ustawienie Konto (lokalny projekt). Tymczasowy folder główny danych jest oczyszczony i ponownie utworzyć w obszarze Katalog roboczy projektu U-SQL, za każdym razem, gdy się stanie, ponownej kompilacji i uruchamiania lokalnego. Wszystkie źródła danych skonfigurowane przez projekt U-SQL są kopiowane do ten tymczasowy lokalny folder główny danych przed wykonaniem zadań lokalnych. 
 
-Można debugować zestawy języka C# bez przesyłania i rejestrowania ich do Azure Data Lake Analytics usługi. Można ustawić punkty przerwania w kodzie pliku oraz w projekcie języka C#, do którego się odwołujesz.
+Można skonfigurować źródła danych za pomocą polecenia w folderze głównym **kliknij prawym przyciskiem myszy projekt U-SQL > Właściwości > testowe źródło danych**. Podczas uruchamiania skryptu U-SQL na konto (lokalny projekt), wszystkie pliki i podfoldery (w tym pliki w podfolderach) **testowego źródła danych** folderu są kopiowane do folderu tymczasowego katalogu głównego danych lokalnych. Po ukończeniu wykonywania zadania lokalnego wyjściowe można także znaleźć w obszarze folderu tymczasowego katalogu głównego danych lokalnych w katalogu roboczym projektu. Należy pamiętać, czy wszystkie te dane wyjściowe zostanie usunięty i oczyszczone, podczas projektu pobiera odbudować i oczyszczone. 
 
-#### <a name="to-debug-local-code-in-code-behind-file"></a>Aby debugować kod lokalny w kodzie pliku
+![Narzędzia Data Lake Tools for Visual Studio skonfiguruj projektu testowego źródła danych](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-1. Ustaw punkty przerwania w kodzie pliku.
-2. Naciśnij klawisz F5, aby debugować skrypt lokalnie.
+### <a name="manage-referenced-database-environment-for-local-project-account"></a>Zarządzanie środowiskiem bazy danych dla konta (lokalny projekt) 
 
-> [!NOTE]
-   > Poniższa procedura dotyczy tylko programu Visual Studio 2015. W starszych wersjach programu Visual Studio może być konieczne ręczne dodanie plików pdb.  
-   >
-   >
+Jeśli U-SQL zapytanie używa lub zapytań przy użyciu obiektów bazy danych U-SQL, należy w środowiskach bazy danych gotowe lokalnie przed uruchomienie tego skryptu U-SQL lokalnie. Dla konta (lokalny projekt) odwołania do projektu U-SQL może zarządzać zależności bazy danych U-SQL. Można dodać odwołania do projektu bazy danych U-SQL projektu U-SQL. Przed uruchomieniem skryptów U-SQL na koncie (lokalny projekt), wszystkie przywoływane bazy danych są wdrażane do folderu tymczasowego katalogu głównego danych lokalnych. I dla każdego uruchomienia tymczasowy folder główny danych jest czyszczona jako świeżego środowiska izolowanego.
 
-#### <a name="to-debug-local-code-in-a-referenced-c-project"></a>Aby debugować kod lokalny w występującym w odwołaniu projekcie C#
+Powiązane artykuły:
+* [Dowiedz się, jak zarządzać definicją bazy danych U-SQL za pomocą projektu bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)
+* [Dowiedz się, jak zarządzać odwołanie do bazy danych U-SQL projektu U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md)
 
-1. Utwórz projekt zestawu języka C# i skompiluj go, aby wygenerować wyjściowy plik dll.
-2. Zarejestruj plik dll za pomocą instrukcji U-SQL:
+## <a name="difference-between-local-machine-and-local-project-account"></a>Różnica między (Local-machine) i konto (lokalny projekt)
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-        
-3. Ustaw punkty przerwania w kodzie C#.
-4. Naciśnij klawisz F5, aby debugować skrypt z wywoływanym C# biblioteki dll lokalnie.
+Konta (local-machine) ma na celu symulowania konta usługi Azure Data Lake Analytics na maszynie lokalnej użytkowników. Współdzieli takie samo środowisko przy użyciu konta usługi Azure Data Lake Analytics. (Lokalny projekt) mają na celu dostarczenie przyjazny dla użytkownika lokalne Środowisko deweloperskie, które ułatwiają wdrażanie odwołania do bazy danych i dane wejściowe przed uruchomieniem skryptu lokalnie. Konta (local-machine) zapewnia stałe środowisku współdzielonym, który jest możliwy za pośrednictwem wszystkich projektów. Konta (lokalny projekt) udostępnia środowisko programowania izolowane dla każdego projektu i jest on odświeżany dla każdego uruchomienia. Na podstawie powyżej, konto (lokalny projekt) oferuje szybsze środowisko programistyczne, stosując szybko nowe zmiany.
 
-## <a name="use-local-run-from-the-data-lake-u-sql-sdk"></a>Użyj lokalnego uruchomienia z pakietu SDK Data Lake U-SQL
+Można znaleźć więcej różnica między (Local-machine) i konto (lokalny projekt) na wykresie w następujący sposób:
 
-Poza uruchamianiem skryptów U-SQL lokalnie, używając programu Visual Studio, zestawu SDK usługi Azure Data Lake U-SQL służy do uruchamiania skryptów U-SQL lokalnie z wiersza polecenia i programowania interfejsów. Za pomocą tych opcji można skalować test lokalnego skryptu U-SQL.
+|Kąt różnicy|(Local-machine)|(Lokalny projekt)|
+|----------------|---------------|---------------|
+|Dostęp lokalny|Są dostępne dla wszystkich projektów|Dostęp do tego konta odpowiedniego projektu|
+|Folder główny danych lokalnych|Stałe folderu lokalnego. Skonfigurowane za pomocą **Narzędzia > Data Lake > Opcje i ustawienia**|Folder tymczasowy utworzony dla każdego przebiegu lokalnego w ramach projektu U-SQL, katalog roboczy. Folder pobiera czyszczone po ponownej kompilacji lub uruchom ponownie|
+|Dane wejściowe dla skryptu U-SQL|Ścieżkę względną w folderze stałe lokalnego katalogu głównego danych|Ustaw za pomocą **właściwość projektu U-SQL > testowe źródło danych**. Wszystkie pliki i podfoldery są kopiowane do tymczasowego folderu głównego danych przed wykonanie lokalne|
+|Dane wyjściowe skryptu U-SQL|Ścieżkę względną w folderze stałe lokalnego katalogu głównego danych|Zwrócone do tymczasowego folderu głównego danych. Wyniki są czyszczone po ponownej kompilacji lub uruchom ponownie.|
+|Wdrażanie bazy danych|Przywoływane bazy danych nie są wdrażane automatycznie, gdy działających w odniesieniu do konta (Local-machine). Wartość taka sama przesyłania do konta usługi Azure Data Lake Analytics.|Przywoływane bazy danych są wdrażane na koncie (lokalny projekt), automatycznie przed wykonaniem lokalnego. Wszystkie bazy danych środowiska są czyszczone i ponownego wdrożenia po ponownej kompilacji lub uruchom ponownie.|
 
-Dowiedz się więcej o [zestawu SDK usługi Azure Data Lake U-SQL](data-lake-analytics-u-sql-sdk.md).
+## <a name="local-run-with-u-sql-sdk"></a>Lokalne uruchamianie za pomocą zestawu SDK U-SQL
 
+Oprócz uruchamiania skryptów U-SQL lokalnie w programie Visual Studio, umożliwia także zestawu SDK usługi Azure Data Lake U-SQL do uruchamiania skryptów U-SQL lokalnie z interfejsem wiersza polecenia i programowania. Za pomocą tych interfejsów można zautomatyzować lokalne uruchomienie języka U-SQL i testowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+[Dowiedz się więcej na temat zestawu SDK usługi Azure Data Lake U-SQL](data-lake-analytics-u-sql-sdk.md).
 
-* Aby wyświetlić bardziej złożonego zapytania, zobacz [analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Aby wyświetlić szczegóły zadania, zobacz [użyj przeglądarki zadania i widok zadań dla zadania usługi Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
-* Aby użyć widoku wykonania wierzchołka, zobacz [użyć widoku wykonania wierzchołka w narzędzi Data Lake Tools dla programu Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+## <a name="next-steps"></a>Następne kroki
+
+- [Zestaw SDK usługi Azure Data Lake w języku U-SQL](data-lake-analytics-u-sql-sdk.md)
+- [Jak skonfigurować potok ciągłej integracji/ciągłego wdrażania usługi Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [Użyj projektu bazy danych U-SQL do tworzenia bazy danych U-SQL](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+- [Jak przetestować kod usługi Azure Data Lake Analytics](data-lake-analytics-cicd-test.md)

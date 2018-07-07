@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i wdrażanie modelu prognozowania można używać dla Prognozowanie przy użyciu usługi Azure Machine Learning pakietu.
-description: Informacje o sposobie tworzenia, uczenia, testowania i wdrażania modelu prognozowania można używać przy użyciu pakietu Learning maszyny Azure dla Prognozowanie.
+title: Tworzenie i wdrażanie za pomocą usługi Azure Machine Learning pakietu dla Prognozowanie modelu prognozowania.
+description: Informacje o sposobie tworzenia, uczenia, testowania i wdrażania przy użyciu pakietu Learning maszyny platformy Azure dla Prognozowanie modelu prognozowania.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,64 +9,64 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 44093dfde926b92d1617b85d27e362a8e40e5c56
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036642"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888674"
 ---
-# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli prognozowania z usługi Azure Machine Learning
+# <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli prognozowania z usługą Azure Machine Learning
 
-W tym artykule, Dowiedz się, jak używać **Azure Machine Learning pakiet dla Prognozowanie** (AMLPF) do szybkiego tworzenia i wdrażania modelu prognozowania można używać. Przepływ pracy jest następujący:
+Ten artykuł zawiera informacje o sposobie użycia **Azure Machine Learning pakiet dla Prognozowanie** (AMLPF), aby szybko utworzyć i wdrożyć model prognozowania. Przepływ pracy jest w następujący sposób:
 
-1. Załadowanie i eksplorować dane
+1. Ładowanie i Eksplorowanie danych
 2. Tworzenie cech
-3. Szkolenie i wybrać najlepsze modelu
-4. Wdróż model i korzystanie z usługi sieci web
+3. Nauczanie i wybrać najlepszy model
+4. Wdrażanie modelu i korzystanie z usługi sieci web
 
-Zapoznaj się [pakietu dokumentacji](https://aka.ms/aml-packages/forecasting) pełną listę transformatory i modeli, a także szczegółowe odwołania dla każdego modułu i klasy.
+Zapoznaj się z [pakietu dokumentację referencyjną](https://aka.ms/aml-packages/forecasting) pełną listę transformatory i modeli, a także szczegółową dokumentację dla każdego modułu i klasy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Następujące konta i aplikacji musi skonfigurować i zainstalować:
+1. Następujące konta i aplikacji, musisz skonfigurować i zainstalować:
    - Konto Eksperymentowanie w usłudze Azure Machine Learning 
-   - Konto Azure Machine Learning Model zarządzania
+   - Konto Zarządzanie modelami w usłudze Azure Machine Learning
    - Zainstalowana aplikacja Azure Machine Learning Workbench 
 
-    Jeśli te trzy nie zostały jeszcze utworzony lub zainstalowany, należy wykonać [Szybki Start Azure Machine Learning i Workbench instalacji](../service/quickstart-installation.md) artykułu.
+    Jeśli te trzy nie zostały jeszcze utworzone lub zainstalowany, postępuj zgodnie z [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../service/quickstart-installation.md) artykułu.
 
 1. Musi być zainstalowany pakiet Azure Machine Learning Prognozowanie. Dowiedz się, jak [zainstalować ten pakiet w tym miejscu](https://aka.ms/aml-packages/forecasting).
 
-## <a name="sample-data-and-jupyter-notebook"></a>Przykładowe dane i notesu Jupyter
+## <a name="sample-data-and-jupyter-notebook"></a>Przykładowe dane i notesu programu Jupyter
 
 ### <a name="sample-workflow"></a>Przykładowy przepływ pracy 
-Przykład obejmuje przepływu pracy:
+Przykład następuje przepływu pracy:
  
-1. **Pozyskiwania danych**: ładowanie zestawu danych oraz przekształcać je do TimeSeriesDataFrame. Ta dataframe jest danych serii czasu struktury przewidzianych przez usługi Azure Machine Learning pakiet Prognozowanie tu określone jako **AMLPF**.
+1. **Pozyskiwanie danych**: załadowania zestawu danych oraz przekształcać je do TimeSeriesDataFrame. Ta ramka danych jest dane szeregów czasowych struktury udostępnianej przez usługi Azure Machine Learning pakietu Prognozowanie w niniejszym dokumencie nazywane **AMLPF**.
 
-2. **Tworzenie funkcji**: umożliwia tworzenie funkcji różnych transformatory featurization dostarczonych przez AMLPF.
+2. **Tworzenie funkcji**: umożliwia utworzenie funkcji w różnych transformatory cechowania dostarczone przez AMLPF.
 
-3. **Pociągu i wybrać najlepsze modelu**: porównanie wydajności różnych modeli szeregów czasowych oparty na standardowych parametrach i machine learning modeli. 
+3. **Szkolenie i wybrać najlepszy Model**: porównać wydajność różnych modeli szeregów czasowych oparty na standardowych parametrach i modeli uczenia maszynowego. 
 
-4. **Wdróż Model**: Wdróż potok nauczony model jako usługę sieci web za pomocą usługi Azure Machine Learning Workbench, mogą być używane przez innych użytkowników.
+4. **Wdrażanie modelu**: Wdróż potok uczony model jako usługę sieci web za pomocą usługi Azure Machine Learning Workbench, dzięki czemu mogą być używane przez inne osoby.
 
-### <a name="get-the-jupyter-notebook"></a>Pobierz notesu Jupyter
+### <a name="get-the-jupyter-notebook"></a>Pobieranie notesu programu Jupyter
 
-Pobieranie notesu do uruchamiania przykładów kodu opisanych tutaj samodzielnie.
+Pobieranie notesu uruchamiania przykładów kodu opisanych tutaj materiałach samodzielnie.
 
 > [!div class="nextstepaction"]
-> [Pobierz notesu Jupyter](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
+> [Pobieranie notesu programu Jupyter](https://aka.ms/aml-packages/forecasting/notebooks/sales_forecasting)
 
-### <a name="explore-the-sample-data"></a>Eksploruj przykładowe dane
+### <a name="explore-the-sample-data"></a>Zapoznaj się z przykładowych danych
 
-Uczenie maszynowe prognozowania przykłady w kodzie następujące przykłady polegać na [Dominick University z Chicago w bardziej precyzyjną żywności dataset](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) Prognozowanie sok pomarańczowy sprzedaży. W Dominick został łańcuch spożywczych w Chicago obszaru metropolitalnego.
+Prognozowanie przykłady kodu postępuj zgodnie z przykładów zależą od usługi machine learning [Dominick University z Chicago w bardziej precyzyjną żywności dataset](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks) prognozować sprzedaż soku pomarańczowego. Firmy Dominick była łańcucha połówce, w obszarze metropolitarnym w Chicago.
 
 ### <a name="import-any-dependencies-for-this-sample"></a>Importuj wszystkie zależności dla tego przykładu
 
-Muszą zostać zaimportowane te zależności dla następujących przykładach kodu:
+Te zależności muszą zostać zaimportowane dla poniższego przykładu kodu:
 
 
 ```python
@@ -105,7 +105,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>Ładowanie danych i eksplorowanie
 
-Następujący fragment kodu przedstawia typowy proces uruchamiania z zestawem danych pierwotnych w takim przypadku [danych z jego Dominick bardziej precyzyjną żywności](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Możesz również użyć funkcji wygody [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Następujący fragment kodu przedstawia typowy proces począwszy od pierwotnych zestawu danych, w tym przypadku [dane z bardziej precyzyjną Foods firmy Dominick](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Możesz również użyć funkcji wygody [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -130,7 +130,7 @@ whole_df.head()
       <th>price</th>
       <th>AGE60</th>
       <th>EDUC</th>
-      <th>ETNICZNE</th>
+      <th>POCHODZENIE ETNICZNE</th>
       <th>PRZYCHÓD</th>
       <th>HHLARGE</th>
       <th>WORKWOM</th>
@@ -154,7 +154,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -174,7 +174,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -194,7 +194,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -214,7 +214,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -234,7 +234,7 @@ whole_df.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>0.46</td>
       <td>2.11</td>
@@ -247,11 +247,11 @@ whole_df.head()
 
 
 
-Dane składają się co tydzień sprzedaży marki i magazynu. Trwa logarytmu ilość sprzedanej kawy _logmove_ kolumny. Dane obejmują także niektóre funkcje demograficznych klientów. 
+Dane składają się co tydzień sprzedaż według markę i magazynu. Trwa logarytmu ilość sprzedanej kawy _logmove_ kolumny. Dane obejmują także niektóre funkcje demograficznych klientów. 
 
-Dla modelu szeregów czasowych, należy wyodrębnić z tym dataframe następujące elementy: 
-+ Oś daty/godziny 
-+ Ilość sprzedaży, która ma być prognozy
+Dla modelu szeregów czasowych, należy wyodrębnić następujących elementów z tej ramki danych: 
++ Osi daty/godziny 
++ Ilość sprzedaży można prognozować
 
 
 ```python
@@ -289,35 +289,35 @@ whole_df[['store','brand','WeekLastDay','Quantity']].head()
       <th>0</th>
       <td>2</td>
       <td>tropicana</td>
-      <td>1990-06-20 23:59:59</td>
+      <td>1990 r.-06-20 23:59:59</td>
       <td>8256</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
       <td>tropicana</td>
-      <td>1990-08-01 23:59:59</td>
+      <td>1990 r.-08-01-23:59:59</td>
       <td>6144</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
       <td>tropicana</td>
-      <td>1990-08-08 23:59:59</td>
+      <td>1990 r.-08-08 23:59:59</td>
       <td>3840</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2</td>
       <td>tropicana</td>
-      <td>1990-08-15 23:59:59</td>
+      <td>1990 r.-08-15 23:59:59</td>
       <td>8000</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2</td>
       <td>tropicana</td>
-      <td>1990-08-29 23:59:59</td>
+      <td>1990 r.-08-29 23:59:59</td>
       <td>8896</td>
     </tr>
   </tbody>
@@ -334,11 +334,11 @@ print('{} time series in the data frame.'.format(nseries))
     249 time series in the data frame.
     
 
-Dane zawierają około 250 różnych kombinacji magazynu i marki w ramce danych. Każda kombinacja definiuje własną szeregów czasowych sprzedaży. 
+Dane zawierają około 250 różne kombinacje magazynu i marki w ramce danych. Każda kombinacja definiuje swój własny szeregów czasowych w sprzedaży. 
 
-Można użyć [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) klasy wygodnie modelu wielu serii za pomocą struktury danych jednego _ziarna_. Ziarna jest określona przez `store` i `brand` kolumn.
+Możesz użyć [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) wygodnie modelu wielu serii w strukturze danych jednego przy użyciu klasy _ziarna_. Ziarna jest określona przez `store` i `brand` kolumn.
 
-Różnica między _ziarna_ i _grupy_ ziarna są zawsze fizycznie znaczenie w świecie rzeczywistym, gdy grupy nie musi być. Funkcje wewnętrzne pakietu używają grupy można utworzyć model jednego z wielu szeregach czasowych, jeśli użytkownik uznaje się, że ta metoda grupowania pomaga w zwiększeniu wydajności modelu. Domyślnie grupa ma ustawioną wartość równa ziarna i pojedynczego modelu jest skompilowany dla każdego ziarna. 
+Różnica między _ziarna_ i _grupy_ jest ziarna zawsze fizycznie powinny być opisowe w świecie rzeczywistym, gdy grupa nie ma być. Funkcje wewnętrzne pakietu używają grupy można utworzyć modelu jednej z wielu szeregach czasowych, jeśli użytkownik uważa, że ta metoda grupowania pomaga w zwiększeniu wydajności modelu. Domyślnie grupa jest ustawiona będzie równa ziarna i jednym modelu zaprojektowano pod kątem poszczególnych ziarna. 
 
 
 ```python
@@ -375,31 +375,31 @@ whole_tsdf[['Quantity']].head()
   </thead>
   <tbody>
     <tr>
-      <th>1990-06-20 23:59:59</th>
+      <th>1990 r.-06-20 23:59:59</th>
       <th>2</th>
       <th>tropicana</th>
       <td>8256</td>
     </tr>
     <tr>
-      <th>1990-08-01 23:59:59</th>
+      <th>1990 r.-08-01-23:59:59</th>
       <th>2</th>
       <th>tropicana</th>
       <td>6144</td>
     </tr>
     <tr>
-      <th>1990-08-08 23:59:59</th>
+      <th>1990 r.-08-08 23:59:59</th>
       <th>2</th>
       <th>tropicana</th>
       <td>3840</td>
     </tr>
     <tr>
-      <th>1990-08-15 23:59:59</th>
+      <th>1990 r.-08-15 23:59:59</th>
       <th>2</th>
       <th>tropicana</th>
       <td>8000</td>
     </tr>
     <tr>
-      <th>1990-08-29 23:59:59</th>
+      <th>1990 r.-08-29 23:59:59</th>
       <th>2</th>
       <th>tropicana</th>
       <td>8896</td>
@@ -409,7 +409,7 @@ whole_tsdf[['Quantity']].head()
 
 
 
-W reprezentacji TimeSeriesDataFrame oś czasu i ziarna są teraz częścią indeksu ramki danych i umożliwia łatwy dostęp do tworzenia wycinków funkcji daty i godziny pandas.
+W reprezentacji TimeSeriesDataFrame oś czasu i ziarna są teraz częścią indeksu ramki danych i umożliwić łatwy dostęp do daty/godziny pandas dzielenie funkcji.
 
 
 ```python
@@ -440,31 +440,31 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
   </thead>
   <tbody>
     <tr>
-      <th>1990-06-20 23:59:59</th>
+      <th>1990 r.-06-20 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>10560</td>
     </tr>
     <tr>
-      <th>1990-08-01 23:59:59</th>
+      <th>1990 r.-08-01-23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>8000</td>
     </tr>
     <tr>
-      <th>1990-08-08 23:59:59</th>
+      <th>1990 r.-08-08 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>6848</td>
     </tr>
     <tr>
-      <th>1990-08-15 23:59:59</th>
+      <th>1990 r.-08-15 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>2880</td>
     </tr>
     <tr>
-      <th>1990-08-29 23:59:59</th>
+      <th>1990 r.-08-29 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>1600</td>
@@ -476,19 +476,19 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
       <td>25344</td>
     </tr>
     <tr>
-      <th>1990-09-12 23:59:59</th>
+      <th>1990 r.-09-12 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>10752</td>
     </tr>
     <tr>
-      <th>1990-09-19 23:59:59</th>
+      <th>1990 r.-09-19 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>6656</td>
     </tr>
     <tr>
-      <th>1990-09-26 23:59:59</th>
+      <th>1990 r.-09-26 23:59:59</th>
       <th>2</th>
       <th>dominicks</th>
       <td>6592</td>
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkcja generuje raport kompleksowe dane szeregów czasowych. Raport zawiera zarówno opis ogólnych danych jak i statystyki specyficzne dla czasu serii danych. 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkcja generuje jest kompleksowy raport danych szeregów czasowych. Raport zawiera zarówno dane ogólny opis jak i statystyki specyficzne dla danych szeregów czasowych. 
 
 
 ```python
@@ -663,11 +663,16 @@ whole_tsdf.ts_report()
 
 ![PNG](./media/how-to-build-deploy-forecast-models/output_15_6.png)
 
+![PNG](./media/how-to-build-deploy-forecast-models/output_59_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_61_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_0.png)
+![png](./media/how-to-build-deploy-forecast-models/output_63_1.png)
+ 
 
 
 ## <a name="integrate-with-external-data"></a>Integracja z danych zewnętrznych
 
-Czasami jest przydatne do integracji danych zewnętrznych jako dodatkowe funkcje prognozowania. W tym przykładowym kodzie można dołączyć TimeSeriesDataFrame za pomocą zewnętrznego danych związanych z pogodą.
+Czasami przydatne jest integrować dane zewnętrzne jako dodatkowe funkcje do prognozowania. W tym przykładowym kodzie musisz dołączyć TimeSeriesDataFrame z zewnętrznych danych dotyczących pogody.
 
 
 ```python
@@ -714,7 +719,7 @@ whole_tsdf.head()
       <th>price</th>
       <th>AGE60</th>
       <th>EDUC</th>
-      <th>ETNICZNE</th>
+      <th>POCHODZENIE ETNICZNE</th>
       <th>PRZYCHÓD</th>
       <th>HHLARGE</th>
       <th>WORKWOM</th>
@@ -759,7 +764,7 @@ whole_tsdf.head()
   </thead>
   <tbody>
     <tr>
-      <th rowspan="5" valign="top">1990-06-20 23:59:59</th>
+      <th rowspan="5" valign="top">1990 r.-06-20 23:59:59</th>
       <th rowspan="3" valign="top">2</th>
       <th>dominicks</th>
       <td>40</td>
@@ -770,7 +775,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>Przyciski ...</td>
       <td>2.11</td>
@@ -778,11 +783,11 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>10560</td>
-      <td>1990-06-14</td>
+      <td>1990 r.-06-14</td>
       <td>72.00</td>
       <td>61.87</td>
       <td>9.74</td>
-      <td>0.19</td>
+      <td>0,19</td>
     </tr>
     <tr>
       <th>MINUTE.Maid</th>
@@ -794,7 +799,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>Przyciski ...</td>
       <td>2.11</td>
@@ -802,11 +807,11 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>4480</td>
-      <td>1990-06-14</td>
+      <td>1990 r.-06-14</td>
       <td>72.00</td>
       <td>61.87</td>
       <td>9.74</td>
-      <td>0.19</td>
+      <td>0,19</td>
     </tr>
     <tr>
       <th>tropicana</th>
@@ -818,7 +823,7 @@ whole_tsdf.head()
       <td>0.25</td>
       <td>0,11</td>
       <td>10.55</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.30</td>
       <td>Przyciski ...</td>
       <td>2.11</td>
@@ -826,11 +831,11 @@ whole_tsdf.head()
       <td>1.93</td>
       <td>0.38</td>
       <td>8256</td>
-      <td>1990-06-14</td>
+      <td>1990 r.-06-14</td>
       <td>72.00</td>
       <td>61.87</td>
       <td>9.74</td>
-      <td>0.19</td>
+      <td>0,19</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">5</th>
@@ -839,11 +844,11 @@ whole_tsdf.head()
       <td>7.49</td>
       <td>1</td>
       <td>1,59</td>
-      <td>0.12</td>
-      <td>0.32</td>
+      <td>0,12</td>
+      <td>0,32</td>
       <td>0,05</td>
       <td>zapis 10.92</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.41</td>
       <td>Przyciski ...</td>
       <td>3,80</td>
@@ -851,11 +856,11 @@ whole_tsdf.head()
       <td>1,60</td>
       <td>0.74</td>
       <td>1792</td>
-      <td>1990-06-14</td>
+      <td>1990 r.-06-14</td>
       <td>72.00</td>
       <td>61.87</td>
       <td>9.74</td>
-      <td>0.19</td>
+      <td>0,19</td>
     </tr>
     <tr>
       <th>MINUTE.Maid</th>
@@ -863,11 +868,11 @@ whole_tsdf.head()
       <td>8.35</td>
       <td>0</td>
       <td>2.99</td>
-      <td>0.12</td>
-      <td>0.32</td>
+      <td>0,12</td>
+      <td>0,32</td>
       <td>0,05</td>
       <td>zapis 10.92</td>
-      <td>0.10</td>
+      <td>0,10</td>
       <td>0.41</td>
       <td>Przyciski ...</td>
       <td>3,80</td>
@@ -875,26 +880,26 @@ whole_tsdf.head()
       <td>1,60</td>
       <td>0.74</td>
       <td>4224</td>
-      <td>1990-06-14</td>
+      <td>1990 r.-06-14</td>
       <td>72.00</td>
       <td>61.87</td>
       <td>9.74</td>
-      <td>0.19</td>
+      <td>0,19</td>
     </tr>
   </tbody>
 </table>
 
 
-## <a name="preprocess-data-and-impute-missing-values"></a>Przetwarzanie wstępne danych i przypisują brakujące wartości
+## <a name="preprocess-data-and-impute-missing-values"></a>Wstępne przetwarzanie danych i przypisują brakujące wartości
 
-Rozpocznij od dzielenia danych na zestaw szkoleniowy i testowania ustawiony za pomocą [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) funkcja narzędzia. Powstałe w ten sposób testowania zestaw zawiera ostatnio 40 obserwacji każdego szeregów czasowych. 
+Rozpocznij, dzieląc dane na zestaw szkoleniowy i testowanie zestawu przy użyciu [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) funkcję. Wynikowy testowanie zestawu zawiera ostatnio 40 obserwacje każdy szereg czasowy. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Modeli szeregów czasowych podstawowe wymagają szeregów czasowych ciągły. Sprawdź, czy serii są regularnie, co oznacza, że mają one indeks czas próbkowania w regularnych odstępach czasu, przy użyciu [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkcji.
+Modeli szeregów czasowych podstawowe wymaga szeregów czasowych ciągłych. Sprawdź, czy regularnie, co oznacza, do których mają indeks czasu próbkowania w regularnych odstępach czasu przy użyciu serii [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkcji.
 
 
 ```python
@@ -969,7 +974,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Widać, że większość serii (213 poza 249) są nieprawidłowe. [Przekształcenia przypisywania](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) jest wymagany w celu wypełnienia brakujących wartości ilości sprzedaży. Istnieje wiele opcji przypisywania, następujący przykładowy kod zużywa interpolacji liniowej.
+Aby zobaczyć, czy większość serii (213 poza 249) są nieprawidłowe. [Przekształcenie przypisywania](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) jest wymagany do wypełnienia brakujących wartości ilości sprzedaży. Dostępnych jest wiele opcji przypisywania, następujący przykładowy kod używa interpolacji liniowej.
 
 
 ```python
@@ -997,16 +1002,16 @@ print(ts_regularity_imputed[ts_regularity_imputed['regular'] == False])
 
 ## <a name="univariate-time-series-models"></a>Modeli szeregów czasowych oparty na standardowych parametrach
 
-Teraz, oczyszczeniu danych można rozpocząć modelowania.  Rozpocznij od utworzenia trzy modele oparty na standardowych parametrach: modelu "prosty", "okresach prosty" modelu i model "ARIMA".
-* Prosty algorytm prognozowania, który używa zmiennej wartość docelowa rzeczywistego ostatniego okresu jako wartości prognozowanych dla bieżącego okresu.
+Teraz, gdy wyczyściliśmy dane, możesz przystąpić do modelowania.  Rozpocznij od utworzenia trzech oparty na standardowych parametrach modeli: modelu "naiwni", model "sezonowych naiwni" i modelu "ARIMA".
+* Algorytm prognozowania sprawdza używa docelowej rzeczywiste wartości zmiennej ostatniego okresu jako wartości prognozowanych bieżącego okresu.
 
-* Okresach prosty algorytm rzeczywiste docelowa wartość zmiennej tego samego punktu czasu poprzedniej sezonu jako wartości prognozowanych bieżącego punktu czasu. Oto kilka przykładów prognozy miesięcy bieżącego roku; za pomocą rzeczywistej wartości w tym samym miesiącu ostatniego roku tę samą godzinę wczoraj umożliwia prognozy dzisiaj godzin. 
+* Algorytm sezonowych firmy używa rzeczywiste docelowa wartość zmiennej tego samego punktu czasu poprzedniego sezonu jako wartości prognozowanych bieżącym punkcie czasu. Przykłady: prognozowanie miesiące roku bieżącym; przy użyciu rzeczywistej wartości w tym samym miesiącu ostatniego roku tę samą godzinę, wczoraj umożliwia przewidywania godzinach już dziś. 
 
-* Algorytm wykładnicze wygładzania (ETS) tworzy prognoz obliczeniowych średnie ważone ostatnich uwagi o wagach Zanikająca wykładniczo jako obserwacji uzyskać starszej. 
+* Wykładniczy wygładzania algorytm (ETS) generuje prognozy, obliczeń średnie ważone obserwacji w przeszłości, za pomocą wag zanikające wykładniczo jako obserwacje pobieranie starszych. 
 
-* Algorytm AutoRegressive zintegrowane przeniesienie średniej (ARIMA) przechwytuje autocorrelation w czasie serii danych. Aby uzyskać więcej informacji o ARIMA, zobacz [tego łącza](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
+* Algorytm proces Autoregresji zintegrowane przeniesienie średniej (ARIMA) przechwytuje autocorrelation w danych szeregów czasowych. Aby uzyskać więcej informacji na temat ARIMA, zobacz [ten link](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
 
-Rozpocznij od ustawienie niektórych parametrów modelu oparte na sieci Eksploracja danych. 
+Rozpocznij od niektórych parametrów model oparty na eksplorowania danych. 
 
 
 ```python
@@ -1035,7 +1040,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Łączenie wielu modeli
 
-[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) narzędzia do szacowania umożliwia łączenie wielu estymatorów i/prognozowania Dopasuj je przy użyciu jednego wiersza kodu.
+[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) narzędzie do szacowania umożliwia połączenie wielu aplikacjom i dopasuj/przewidywania na nich za pomocą jednego wiersza kodu.
 
 
 ```python
@@ -1046,18 +1051,18 @@ forecaster_union = ForecasterUnion(
 
 ### <a name="fit-and-predict"></a>Dopasuj i przewidywanie
 
-Estymatorów w AMLPF postępuj zgodnie z tego samego interfejsu API jako scikit — Dowiedz się estymatorów: Dopasuj metodę uczenie modelu i metody prognozowania generowania prognoz. 
+Aplikacjom w AMLPF postępuj zgodnie z tego samego interfejsu API jako scikit-informacje aplikacjom: Dopasuj metodę szkolenie modelu oraz generowanie prognoz metodę predict. 
 
-**Modele uczenia**  
-Ponieważ te modele są wszystkie modele oparty na standardowych parametrach, jeden model nadaje się do każdego ziarna danych. Przy użyciu AMLPF, wszystkie modele 249 można zmieścić z wywołania funkcji pojedynczej.
+**Szkolenie modeli**  
+Ponieważ te modele są wszystkie modele oparty na standardowych parametrach, jeden model nadaje się do każdego ziarna danych. Za pomocą AMLPF, wszystkie modele 249 można dopasować za pomocą wywołania funkcji tylko jeden.
 
 
 ```python
 forecaster_union_fitted = forecaster_union.fit(train_imputed_tsdf)
 ```
 
-**Prognoza sprzedaży na danych testowych**  
-Podobnie jak metoda dopasowania, można utworzyć prognoz dla wszystkich serii 249 testowego zestawu danych z jednego wywołania `predict` funkcji. 
+**Prognozować sprzedaż na danych testowych**  
+Podobnie jak metoda dopasowania, można utworzyć prognozy dla wszystkich serii 249 w zestawie danych testowych za pomocą jednego wywołania do `predict` funkcji. 
 
 
 ```python
@@ -1066,7 +1071,7 @@ forecaster_union_prediction = forecaster_union_fitted.predict(test_tsdf, retain_
 
 **Ocena wydajności modelu**   
 
-Teraz można obliczyć prognozy błędy w zestawie testów. Można tutaj użyć średniej błędów bezwzględną (MAPE). MAPE jest średni bezwzględny błąd procent względem rzeczywiste wartości sprzedaży. ```calc_error``` Funkcja zawiera kilka wbudowanych funkcji dla błędu często używane metryki. Można również zdefiniować naszych funkcja błędów niestandardowych można obliczyć MedianAPE i przekaż go do argumentu err_fun.
+Teraz można obliczyć prognozy błędy w zestawie testów. Średni procent bezwzględny błąd (MAPE) można użyć w tym miejscu. MAPE to średni bezwzględny błąd procent względem rzeczywiste wartości sprzedaży. ```calc_error``` Funkcji zawiera kilka wbudowanych funkcji dla błędu często używane metryki. Można również zdefiniować funkcję naszych błędów niestandardowych w taki sposób, aby obliczyć MedianAPE i przekaż go do argumentu err_fun.
 
 
 ```python
@@ -1128,7 +1133,7 @@ univariate_model_errors
     </tr>
     <tr>
       <th>2</th>
-      <td>prosty</td>
+      <td>naiwni</td>
       <td>103.57</td>
       <td>59.14</td>
     </tr>
@@ -1143,16 +1148,16 @@ univariate_model_errors
 
 
 
-## <a name="build-machine-learning-models"></a>Tworzenie modeli uczenia maszyny
+## <a name="build-machine-learning-models"></a>Tworzenie modeli uczenia maszynowego
 
-Oprócz tradycyjnego oparty na standardowych parametrach modeli Azure Machine Learning pakiet dla Prognozowanie umożliwia także tworzenie modeli uczenia maszyny.
+Oprócz tradycyjnych oparty na standardowych parametrach modeli Azure Machine Learning pakietu Prognozowanie również pozwala na tworzenie modeli uczenia maszynowego.
 
 Dla tych modeli Rozpocznij od utworzenia funkcji.
 
-### <a name="feature-engineering"></a>Funkcja zespołu inżynieryjnego
+### <a name="feature-engineering"></a>Inżynieria funkcji
 
 **Transformatory**   
-Pakiet zawiera wiele transformatory danych serii czasu przetwarzania wstępnego i featurization. Przykłady, które należy wykonać pokazują niektórych funkcji przetwarzania wstępnego i featurization.
+Pakiet zawiera wiele transformatory wstępne przetwarzanie danych szeregów czasowych i cechowania. Przykłady, które należy wykonać pokazują niektóre funkcje przetwarzania wstępnego i cechowania.
 
 
 ```python
@@ -1182,7 +1187,7 @@ grain_featurizer = GrainIndexFeaturizer(overwrite_columns=True, ts_frequency=oj_
 ```
 
 **Potoki**   
-Obiekty potoku ułatwiają zapisać zestaw kroków, aby zastosować wielokrotnie do różnych obiektów. Ponadto obiekty potoku można pickled aby były łatwo przenośny dla innych maszyn do wdrożenia. Można łańcucha wszystkie transformatory utworzono dotychczas za pomocą potoku. 
+Potok obiektów ułatwiają można zapisać zestawu kroków, dzięki czemu mogą być stosowane wielokrotnie do różnych obiektów. Ponadto obiekty potoku może pickled aby były łatwo przenośny dla innych maszyn do wdrożenia. Można połączyć w łańcuch wszystkich transformatory został utworzony do tej pory przy użyciu potoku. 
 
 
 ```python
@@ -1249,7 +1254,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) — funkcja opakowuje estymatorów regresji sklearn, dzięki czemu może być uczony na TimeSeriesDataFrame. Warunkowy opakowanej typu również umieszcza każdej grupy, w tym przypadku magazynie samego modelu. Warunkowy typu informacji można znaleźć jednego modelu dla grupy serii, która została uznana za podobne i mogą być połączone. Jeden model grupy serii często korzysta z danych z serii dłużej zwiększające prognoz dla krótkich serii. Można zastąpić te modele w przypadku innych modeli w bibliotece, które obsługują regresji. 
+[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) — funkcja opakowuje skryptu sklearn regresji aplikacjom, dzięki czemu może być uczony na TimeSeriesDataFrame. Warunkowy opakowanej typu również umieszcza każdej grupy, w tym przypadku magazynie z tego samego modelu. Warunkowy typu informacji można znaleźć jednego modelu dla grupy serii, które zostały uznane za podobne i mogą być połączone. Jeden model dla grupy serii często używa danych z urządzeń serii dłużej usprawniających prognoz dla serii krótkich. Można zastąpić tych modeli innych modeli w bibliotece, które obsługują regresji. 
 
 
 ```python
@@ -1318,7 +1323,7 @@ all_errors.sort_values('MedianAPE')
     </tr>
     <tr>
       <th>2</th>
-      <td>prosty</td>
+      <td>naiwni</td>
       <td>103.57</td>
       <td>59.14</td>
     </tr>
@@ -1363,13 +1368,13 @@ all_errors.sort_values('MedianAPE')
 
 
 
-Niektórych modeli uczenia maszyny byli w stanie przeprowadzać dodatkowe funkcje i podobieństwa między seriami w celu uzyskania większej dokładności prognozy.
+Niektóre modele uczenia maszynowego były w stanie korzystać z zalet funkcje dodane i podobieństwa serii, aby uzyskać większą dokładność prognozowania.
 
-**Krzyżowe sprawdzanie poprawności i kominów parametru**    
+**Krzyżowa Weryfikacja i zaczynają parametru**    
 
-Pakiet dostosowuje niektóre maszyny tradycyjnego uczenia funkcji prognozowania aplikacji.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) jest krzyżowego sprawdzania poprawności tymczasowo, przestrzeganie, co spowoduje i nie może być znane w ramach prognozowania. 
+Pakiet dostosowuje się niektóre tradycyjne maszyny uczenie funkcji w celu prognozowania aplikacji.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator) jest krzyżowego sprawdzania poprawności czasowo, uwzględniając, co spowoduje i nie może być znane w ramach prognozowania. 
 
-Na poniższej ilustracji każdy kwadrat reprezentuje dane z jednego punktu w czasie. Niebieski kwadratów reprezentują szkolenia i pomarańczowy kwadratów reprezentują testowania w każdym złożenia. Danych testowych musi pochodzić z punktów czasu po punkt największej czasu szkolenia. W przeciwnym razie przeciek przyszłych danych na dane szkoleniowe powoduje oceny modelu staną się nieprawidłowe. 
+Na poniższej ilustracji każdy kwadrat reprezentuje dane z jednego punktu w czasie. Niebieski kwadratów reprezentują szkolenia i pomarańczowy kwadratów reprezentują testowania w poszczególnych etapów. Danych testowych muszą pochodzić z punktami czasu po największej punkcie czasu szkolenia. W przeciwnym razie przyszłych danych następuje przeciek do dane szkoleniowe, powodując oceny modelu staną się nieprawidłowe. 
 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
@@ -1391,8 +1396,8 @@ print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
     Best paramter: {'estimator__n_estimators': 100}
     
 
-**Tworzenie końcowego potoku**   
-Teraz, gdy zidentyfikowano najlepsze modelu, możesz skompilować i dopasować użytkownika końcowego potok wraz z wszystkich transformatory i najlepsze modelu. 
+**Utworzyć potok końcowy**   
+Teraz, gdy zidentyfikowano najlepszy model, można tworzyć i dopasuj końcowego potok przy użyciu wszystkich transformatory i najlepszy model. 
 
 
 ```python
@@ -1411,13 +1416,13 @@ print('Median of APE of final pipeline: {0}'.format(final_median_ape))
     Median of APE of final pipeline: 42.54336821266968
     
 
-## <a name="operationalization-deploy-and-consume"></a>Operationalization: Wdrażanie i korzystanie
+## <a name="operationalization-deploy-and-consume"></a>Operacjonalizacja: Wdrażanie i korzystanie
 
-W tej sekcji należy wdrożyć potok, jako usługi sieci web uczenie maszynowe Azure i używać go do szkolenia i oceniania. Ocenianie wdrożonej usługi sieci web retrains modelu i generuje prognozy na nowych danych.
+W tej sekcji należy wdrożyć potok, jako usługi sieci web Azure Machine Learning i używać go do szkolenia i oceniania. Ocenianie wdrożonej usługi sieci web retrains modelu i generuje prognozy na nowych danych.
 
-### <a name="set-model-deployment-parameters"></a>Ustaw parametry wdrażania modelu
+### <a name="set-model-deployment-parameters"></a>Ustaw parametry wdrożenia modelu
 
-Zmień poniższe parametry własne wartości. Upewnij się, że środowisko usługi Azure Machine Learning, model administracyjny konta i grupy zasobów, które znajdują się w tym samym regionie.
+Zmień następujące parametry na własne wartości. Upewnij się, że Twoje środowisko usługi Azure Machine Learning, konta zarządzania modelami i grupy zasobów, które znajdują się w tym samym regionie.
 
 
 ```python
@@ -1483,7 +1488,7 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
                                            ftk_wheel_loc='https://azuremlpackages.blob.core.windows.net/forecasting/azuremlftk-0.1.18055.3a1-py3-none-any.whl')
 ```
 
-### <a name="create-the-web-service"></a>Tworzenie usługi sieci web
+### <a name="create-the-web-service"></a>Tworzenie usługi internetowej
 
 
 ```python
@@ -1491,9 +1496,9 @@ aml_deployment = ForecastWebserviceFactory(deployment_name=deployment_name,
 aml_deployment.deploy()
 ```
 
-### <a name="score-the-web-service"></a>Wynik usługi sieci web
+### <a name="score-the-web-service"></a>Ocena usługi sieci web
 
-Aby wynik w małym zestawie danych, należy użyć [wynik](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) wywołanie metody, aby przesłać jedną usługę sieci web dla wszystkich danych.
+Aby wynik małego zestawu danych, należy użyć [wynik](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) metodę, aby przesłać usługami internetowymi wywołania dla wszystkich danych.
 
 
 ```python
@@ -1514,7 +1519,7 @@ aml_web_service = aml_deployment.get_deployment()
 results = aml_web_service.score(score_context=score_context)
 ```
 
-Aby wynik dużego zestawu danych, użyj [równoległych oceniania](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) wywołuje tryb, aby przesłać wiele usług sieci web, jeden dla każdej grupy danych.
+Aby wynik duży zestaw danych, należy użyć [równoległe oceniania](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) wywołuje tryb można przesłać wielu usług sieci web, jeden dla każdej grupy danych.
 
 
 ```python
@@ -1523,10 +1528,10 @@ results = aml_web_service.score(score_context=score_context, method='parallel')
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o pakiecie Azure Learning maszyny dla Prognozowanie w tych artykułach:
+Dowiedz się więcej dotyczące pakietu Azure Machine Learning dla Prognozowanie w następujących artykułach:
 
-+ Odczyt [pakietu Przegląd i Dowiedz się, jak zainstalować ją](https://aka.ms/aml-packages/forecasting).
++ Odczyt [pakietów — Przegląd i Dowiedz się, jak je zainstalować](https://aka.ms/aml-packages/forecasting).
 
-+ Eksploruj [odwoływać dokumenty](https://aka.ms/aml-packages/forecasting) dla tego pakietu.
++ Zapoznaj się z [odwołania docs](https://aka.ms/aml-packages/forecasting) dla tego pakietu.
 
 + Dowiedz się więcej o [inne pakiety języka Python dla usługi Azure Machine Learning](reference-python-package-overview.md).

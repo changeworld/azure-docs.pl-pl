@@ -1,7 +1,7 @@
 ---
-title: Tworzenie aplikacji LUIS programowo przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
+title: Tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Dowiedz się, jak utworzyć aplikację LUIS programowo z istniejących danych w formacie CSV przy użyciu interfejsu API tworzenia LUIS.
+description: Dowiedz się, jak utworzyć aplikację usługi LUIS programowo z istniejących danych w formacie CSV przy użyciu interfejsu API tworzenia usługi LUIS.
 services: cognitive-services
 author: DeniseMak
 manager: rstand
@@ -10,45 +10,45 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 54c7565dd00305d3ce1faba5d7cc5616c53dd026
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113057"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888165"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji LUIS programowo przy użyciu środowiska Node.js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js
 
-Programowe interfejsu API, który wykonuje wszystkie elementy, które zapewnia LUIS [LUIS] [ LUIS] jest witryny sieci Web. To zaoszczędzić czas, gdy masz już istniejących danych i będzie szybsze tworzenie aplikacji LUIS programowo niż ręcznie wprowadzić informacje. 
+Usługa LUIS zapewnia programowego interfejsu API, które ma wszystko, [LUIS](luis-reference-regions.md) jest witryny sieci Web. To zaoszczędzić czas, gdy masz już istniejące dane i będzie szybsze tworzenie aplikacji usługi LUIS programowo niż, wprowadzając informacje ręcznie. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zaloguj się do [LUIS] [ LUIS] witryny sieci Web i Znajdź Twojej [tworzenia klucza](luis-concept-keys.md#authoring-key) w ustawieniach konta. Ten klucz służy do wywoływania interfejsów API tworzenia.
+* Zaloguj się do [LUIS](luis-reference-regions.md) witryny sieci Web i Znajdź swoje [tworzenia klucza](luis-concept-keys.md#authoring-key) w ustawieniach konta. Ten klucz służy do wywoływania interfejsów API do tworzenia.
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* W tym samouczku rozpoczyna się od CSV dla plików dziennika hipotetyczny firmy żądań użytkownika. Pobierz go [tutaj](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Zainstaluj najnowsze Node.js z programu NPM. Pobierz go z [tutaj](https://nodejs.org/en/download/).
-* **[Zalecane]**  Visual Studio Code IntelliSense i debugowanie, pobierz go z [tutaj](https://code.visualstudio.com/) bezpłatnie.
+* Ten samouczek rozpoczyna się od CSV dla plików dziennika hipotetyczny firmy żądań użytkownika. Pobierz go [tutaj](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Za pomocą pakietu NPM, należy zainstalować najnowsze środowisko Node.js. Pobierz go z [tutaj](https://nodejs.org/en/download/).
+* **[Zalecane]**  Programu visual Studio Code dla funkcji IntelliSense i debugowania, pobierz go z [tutaj](https://code.visualstudio.com/) za darmo.
 
-## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapowanie istniejących danych do lokalizacji docelowych i jednostek
-Nawet jeśli masz system, który nie został utworzony z LUIS pamiętać, jeśli zawiera on danych tekstowych, mapy użytkownikom różne chcesz zrobić, może być opracowywane mapowania z istniejących kategorii danych wejściowych użytkownika do lokalizacji docelowych w LUIS. Po zidentyfikowaniu ważne słów ani fraz w użytkowników powiedział, te słowa, które mogą być mapowane do jednostek.
+## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapowanie istniejących danych na intencje i podmioty
+Nawet jeśli masz system, który nie został utworzony z użyciem usługi LUIS, pamiętając, jeśli zawiera on danych tekstowych, które mapuje do użytkowników różnych rzeczy, o którym chcesz przeprowadzić, może być opracowywane mapowanie z istniejącej kategorii danych wejściowych użytkownika na intencje w usługi LUIS. Jeśli możesz zidentyfikować ważne wyrazy lub frazy w powiedzieć użytkownikom, te wyrazy mogą być mapowane do jednostek.
 
-Otwórz plik `IoT.csv`. Zawiera dziennik kwerend użytkowników do usługi hipotetyczny automatyzacji macierzystego, w tym jak zostały skategoryzowane, użytkownik powiedział i niektóre kolumny z przydatnych informacji na temat pobierane z nich. 
+Otwórz plik `IoT.csv`. Zawiera dziennik kwerend użytkowników do usługi hipotetyczny głównego usługi automation, w tym jak zostały przydzielone, nazywany użytkownika i niektóre kolumny przydatnymi informacjami, usunąć z nich. 
 
 ![Plik CSV](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
-Zostanie wyświetlony **RequestType** kolumna może być lokalizacji docelowych i **żądania** kolumna zawiera utterance przykład. Pozostałe pola można jednostek, jeśli występują one w utterance. Ponieważ istnieje lokalizacji docelowych, jednostki i przykład zniesławiających, masz wymagań dotyczących prostego, przykładowej aplikacji.
+Zobaczysz, że **RequestType** kolumna może być intencji i **żądania** kolumna pokazuje przykład wypowiedź. Inne pola może być jednostki, jeśli występują one w wypowiedź. Ponieważ istnieje intencji, jednostek i wypowiedzi przykład, masz wymagania dotyczące prosty, przykładową aplikację.
 
-## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroki, aby wygenerować aplikacji LUIS na podstawie danych z systemem innym niż LUIS
-Aby wygenerować nową aplikację LUIS z pliku źródłowego, najpierw należy przeanalizować dane z pliku CSV i Konwertuj do formatu, który można przekazać do LUIS przy użyciu interfejsu API tworzenia tych danych. Z przeanalizowanych danych można zbierać informacje o jakie intencje i jednostek są dostępne. Następnie wywołań interfejsu API do utworzenia aplikacji i Dodaj intencje i jednostek, które zostały zebrane z przeanalizowanych danych. Po utworzeniu aplikacji LUIS zniesławiających przykład można dodać z przeanalizowanych danych. Ten przepływ w ostatniej części następujący kod jest widoczny. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) ten kod i zapisz go w `index.js`.
+## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroki, aby wygenerować aplikacją usługi LUIS z danych niż usługi LUIS
+Aby wygenerować nową aplikację usługi LUIS z pliku źródłowego, najpierw należy przeanalizować dane z pliku CSV i konwersji tych danych do formatu, który możesz przekazać do usługi LUIS przy użyciu interfejsu API tworzenia. Przeanalizowane dane możesz zbierać informacje o jakie intencje i podmioty są. Następnie możesz wykonywać wywołania interfejsów API, aby utworzyć aplikację i dodać intencje i podmioty, które zostały zebrane dane przeanalizowane. Po utworzeniu aplikacji usługi LUIS wypowiedzi przykład można dodać z przeanalizowanych danych. Możesz zobaczyć ten przepływ w ostatniej części następujący kod. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) ten kod i zapisz go w `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
-## <a name="parse-the-csv"></a>Przeanalizować CSV
+## <a name="parse-the-csv"></a>Analizowanie plików CSV
 
-Wpisów kolumn, które zawierają zniesławiających w woluminie CSV mają do przeanalizowania do formatu JSON, który można poznać LUIS. Ten format JSON musi zawierać `intentName` pole, które identyfikuje celem utterance. Musi zawierać `entityLabels` pola, które może być pusta, jeśli nie ma żadnych podmiotów w utterance. 
+Wpisy kolumny, które zawierają wypowiedzi w woluminie CSV musi przeanalizować w formacie JSON, który może zrozumieć usługi LUIS. Ten format JSON musi zawierać `intentName` pola, który identyfikuje celem wypowiedź. Musi również zawierać `entityLabels` pola, które może być pusta, jeśli nie ma żadnych podmiotów w wypowiedź. 
 
-Na przykład pozycję "Włącz kontrolki" mapowana na dane JSON:
+Na przykład pozycję "Włącz światła" mapuje dane JSON:
 
 ```json
         {
@@ -69,33 +69,33 @@ Na przykład pozycję "Włącz kontrolki" mapowana na dane JSON:
         }
 ```
 
-W tym przykładzie `intentName` pochodzi z żądania użytkownika w obszarze **żądania** nagłówek kolumny w pliku CSV i `entityName` pochodzi z innych kolumn z informacjami klucza. Na przykład, jeśli istnieje wpis dotyczący **operacji** lub **urządzenia**, a ciąg występuje również w rzeczywistego żądania, a następnie mogą zostać oznaczone etykietami jako jednostki. Poniższy kod ilustruje, to podczas analizowania procesu. Możesz skopiować lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) go i zapisać go do `_parse.js`.
+W tym przykładzie `intentName` pochodzi z żądania użytkownika w obszarze **żądania** nagłówek kolumny w pliku CSV i `entityName` pochodzi z innych kolumn z informacjami klucza. Na przykład, jeśli istnieje wpis dla **operacji** lub **urządzenia**, a ciąg występuje także w rzeczywistego żądania, a następnie może być opisane jako jednostka. Poniższy przykład demonstruje ten proces analizy. Możesz skopiować lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) go i zapisać go w celu `_parse.js`.
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
-## <a name="create-the-luis-app"></a>Tworzenie aplikacji LUIS
-Po przeanalizowaniu danych do postaci JSON, należy go dodać do aplikacji LUIS. Poniższy kod tworzy LUIS aplikacji. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) i zapisz go w `_create.js`.
+## <a name="create-the-luis-app"></a>Tworzenie aplikacji usługi LUIS
+Po przeanalizowaniu danych do postaci JSON, należy go dodać do aplikacji usługi LUIS. Poniższy kod tworzy aplikację usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) i zapisz go w `_create.js`.
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Dodawanie intencji
-Po utworzeniu aplikacji, musisz intencje do niego. Poniższy kod tworzy LUIS aplikacji. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) i zapisz go w `_intents.js`.
+Po utworzeniu aplikacji, musisz intencji do niego. Poniższy kod tworzy aplikację usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) i zapisz go w `_intents.js`.
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Dodawanie jednostek
-Poniższy kod dodaje jednostek aplikacji LUIS. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) i zapisz go w `_entities.js`.
+Poniższy kod dodaje jednostki do aplikacji usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) i zapisz go w `_entities.js`.
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Dodawanie wypowiedzi
-Po zdefiniowaniu jednostki i intencje w aplikacji LUIS można dodać zniesławiających. Poniższy kod używa [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) interfejsu API, który umożliwia dodanie maksymalnie 100 zniesławiających naraz.  Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) i zapisz go w `_upload.js`.
+Po zdefiniowaniu jednostek i opcjami w aplikacji usługi LUIS można dodać wypowiedzi. Poniższy kod używa [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) interfejsu API, który umożliwia dodanie maksymalnie 100 wypowiedzi w danym momencie.  Kopiowanie lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) i zapisz go w `_upload.js`.
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -103,17 +103,17 @@ Po zdefiniowaniu jednostki i intencje w aplikacji LUIS można dodać zniesławia
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
 
-### <a name="install-nodejs-dependencies"></a>Zainstaluj zależności środowiska Node.js
-Zainstaluj zależności Node.js z pakietu NPM w wierszu polecenia/terminalu.
+### <a name="install-nodejs-dependencies"></a>Zainstaluj środowisko Node.js zależności
+Zainstaluj zależności środowiska Node.js z poziomu narzędzia NPM, w wierszu polecenia/na terminalu.
 
 ````
 > npm install
 ````
 
-### <a name="change-configuration-settings"></a>Zmień ustawienia konfiguracji
-Aby można było używać tej aplikacji, musisz Zmień wartości w pliku index.js klucz punktu końcowego, a następnie podaj nazwę aplikacji na. Można również ustawić kultury aplikacji lub zmienić numer wersji.
+### <a name="change-configuration-settings"></a>Zmienianie ustawień konfiguracji
+Aby można było używać tej aplikacji, musisz zmienić wartości w pliku index.js do klucza punktu końcowego, a następnie podaj nazwę, chcesz, aby aplikacja miała. Możesz również ustawić kulturę aplikacji lub zmienić numer wersji.
 
-Otwórz plik index.js i zmień wartości tych w górnej części pliku.
+Otwórz plik index.js i zmień te wartości w górnej części pliku.
 
 
 ````JavaScript
@@ -124,7 +124,7 @@ const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ````
 ### <a name="run-the-script"></a>Uruchom skrypt
-Uruchom skrypt z wiersza polecenia/na terminalu za pomocą języka Node.js.
+Uruchom skrypt z wiersza polecenia/na terminalu przy użyciu środowiska Node.js.
 
 ````
 > node index.js
@@ -135,7 +135,7 @@ lub
 ````
 
 ### <a name="application-progress"></a>Postęp aplikacji
-Gdy aplikacja jest uruchomiona, w wierszu polecenia pokazywania postępu. Dane wyjściowe wiersza polecenia zawiera format odpowiedzi z LUIS.
+Gdy aplikacja jest uruchomiona, w wierszu polecenia pokazuje postęp. Dane wyjściowe wiersza polecenia obejmuje format odpowiedzi z usługi LUIS.
 
 ````
 > node index.js
@@ -162,8 +162,8 @@ upload done
 
 
 
-## <a name="open-the-luis-app"></a>Otwórz aplikację LUIS
-Po ukończeniu działania skryptu, należy zalogować się do [LUIS] [ LUIS] i aplikacja LUIS utworzono w obszarze **Moje aplikacje**. Można wyświetlić zniesławiających dodany w obszarze **wlaczac**, **wyłączanie**, i **Brak** lokalizacji docelowych.
+## <a name="open-the-luis-app"></a>Otwórz aplikację usługi LUIS
+Po ukończeniu działania skryptu, możesz zalogować się do [LUIS](luis-reference-regions.md) i zobaczyć aplikację usługi LUIS utworzone w ramach **Moje aplikacje**. Powinno być możliwe zobaczyć wypowiedzi dodana w obszarze **wlaczac**, **wyłączanie**, i **Brak** intencji.
 
 ![Celem wlaczac](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -171,15 +171,12 @@ Po ukończeniu działania skryptu, należy zalogować się do [LUIS] [ LUIS] i a
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Testowanie i uczenie aplikacji w witrynie sieci Web LUIS](interactive-test.md)
+> [Testowanie i uczenie aplikacji w witrynie sieci Web usługi LUIS](interactive-test.md)
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-Ta przykładowa aplikacja korzysta z poniższych interfejsów API LUIS:
+Ta przykładowa aplikacja korzysta z następujących interfejsów API usługi LUIS:
 - [Tworzenie aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
-- [Dodaj intencje](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
+- [Dodawanie intencji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
 - [Dodaj jednostki](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [Dodaj zniesławiających](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-
+- [Dodawanie wypowiedzi](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

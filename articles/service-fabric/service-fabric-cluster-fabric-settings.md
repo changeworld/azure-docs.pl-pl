@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: c1bff75ebdba656127f7860bdb72d368a94ef20b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 499c7182fba9d8efeebfb22e22a692d431dcb7ac
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866546"
+ms.locfileid: "37888657"
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra usługi Service Fabric i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje, jak dostosować różnych ustawień sieci szkieletowej i zasady klastra usługi Service Fabric uaktualnienia sieci szkieletowej. Można również dostosowywać je za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -752,6 +752,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |FabricLogRoot |Ciąg | Niedozwolone |Katalog główny aplikacji usługi Service fabric dziennika. Jest to, gdzie umieścić SF dzienniki i dane śledzenia. |
 |NodesToBeRemoved|ciąg, domyślna to ""| Dynamiczny |Węzły, które powinny zostać usunięte w ramach konfiguracji uaktualnienia. (Tylko w przypadku autonomicznych wdrożeniach)|
 |ServiceRunAsAccountName |Ciąg | Niedozwolone |Nazwa konta, pod którym chcesz uruchamiać usługę hosta sieci szkieletowej. |
+|SkipContainerNetworkResetOnReboot|wartość logiczna, domyślna to FALSE|NotAllowed|Określa, czy pominąć Resetowanie kontenera sieci przy ponownym uruchamianiu.|
 |SkipFirewallConfiguration |Wartość logiczna, wartość domyślna to false | Niedozwolone |Określa ustawienia zapory muszą być ustawiony przez system, czy nie. Dotyczy to tylko wtedy, gdy używasz zapory systemu windows. Jeśli używasz innej zapory, następnie należy otworzyć porty dla systemu i aplikacji do używania |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService

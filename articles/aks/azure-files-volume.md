@@ -1,6 +1,6 @@
 ---
-title: Użyj plików na platformę Azure z AKS
-description: Używać dysków Azure AKS
+title: Użyj plików platformy Azure za pomocą usługi AKS
+description: Dyski platformy Azure za pomocą usługi AKS
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 25ae0e508223b50219e40245cc9dfbc407b96bba
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0479e4d80b7490db170255d47ef3190bb744d2d8
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096700"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901497"
 ---
-# <a name="volumes-with-azure-files"></a>Woluminy zawierające pliki Azure
+# <a name="volumes-with-azure-files"></a>Woluminy z usługi Azure files
 
-Aplikacje kontenera często muszą uzyskać dostęp do utrwalenia danych w woluminie danych zewnętrznych. Usługa pliki Azure może służyć jako ten magazyn danych zewnętrznych. Przy użyciu plików Azure jako wolumin Kubernetes w usłudze Azure Kubernetes szczegółów tego artykułu.
+Oparte na kontenerach aplikacje często muszą uzyskać dostęp do utrwalania danych w woluminie danych zewnętrznych. Usługa pliki Azure może służyć jako ten magazyn danych zewnętrznych. Ten artykuł zawiera, jako wolumin Kubernetes w usłudze Azure Kubernetes Service przy użyciu usługi Azure files.
 
 Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kubernetes][kubernetes-volumes].
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
 
-Przed użyciem udział plików Azure jako wolumin Kubernetes, należy utworzyć konto usługi Azure Storage i udziału plików. Poniższy skrypt może służyć do wykonania tych zadań. Zwróć uwagę, lub zaktualizuj wartości parametrów, niektóre z nich są potrzebne podczas tworzenia woluminu Kubernetes.
+Przed rozpoczęciem korzystania z udziału plików platformy Azure jako wolumin Kubernetes, należy utworzyć konto usługi Azure Storage i udziału plików. Poniższy skrypt może służyć do wykonywania tych zadań. Zwróć uwagę, lub zaktualizuj wartości parametrów, niektóre z nich są potrzebne podczas tworzenia woluminu Kubernetes.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -52,14 +52,14 @@ STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_G
 
 # Echo storage account name and key
 echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
-echo Storgae account key: $STORAGE_KEY
+echo Storage account key: $STORAGE_KEY
 ```
 
-## <a name="create-kubernetes-secret"></a>Utwórz klucz tajny Kubernetes
+## <a name="create-kubernetes-secret"></a>Utwórz wpisie tajnym rozwiązania Kubernetes
 
-Kubernetes wymaga poświadczeń dostępu do udziału plików. Te poświadczenia są przechowywane w [klucz tajny Kubernetes][kubernetes-secret], który odwołuje się podczas tworzenia Kubernetes pod.
+Kubernetes wymaga poświadczeń dostępu do udziału plików. Te poświadczenia są przechowywane w [wpisie tajnym rozwiązania Kubernetes][kubernetes-secret], który odwołuje się podczas tworzenia zasobnika Kubernetes.
 
-Użyj następującego polecenia, aby utworzyć klucz tajny. Zastąp `STORAGE_ACCOUNT_NAME` z nazwę konta magazynu i `STORAGE_ACCOUNT_KEY` kluczem magazynu.
+Użyj następującego polecenia, aby utworzyć wpis tajny. Zastąp `STORAGE_ACCOUNT_NAME` nazwą konta magazynu, a `STORAGE_ACCOUNT_KEY` przy użyciu klucza magazynu.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
@@ -67,7 +67,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Instalowanie udziału plików jako wolumin
 
-Zainstaluj na udział plików Azure w sieci pod przez skonfigurowanie woluminu w jego specyfikację. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartość. Aktualizacja `aksshare` nazwa nadana plików Azure udostępnianie.
+Instalowanie udziału plików platformy Azure w tym zasobniku konfigurując woluminu w jego specyfikacji. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Aktualizacja `aksshare` o nazwie, biorąc pod uwagę do usługi Azure Files udostępniania.
 
 ```yaml
 apiVersion: v1
@@ -89,20 +89,20 @@ spec:
       readOnly: false
 ```
 
-Umożliwia utworzenie pod kubectl.
+Użyj narzędzia kubectl, aby utworzyć zasobnik.
 
 ```azurecli-interactive
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Masz teraz kontenera uruchomiony z udziału plików Azure zainstalowany w `/mnt/azure` katalogu.  Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod azure-files-pod`.
+Powstał działający kontener z udziałem plików platformy Azure zainstalowany w `/mnt/azure` katalogu.  Możesz zobaczyć wolumin instalacji podczas sprawdzania tym zasobniku za pośrednictwem `kubectl describe pod azure-files-pod`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Więcej informacji o woluminach Kubernetes za pomocą usługi pliki Azure.
+Więcej informacji o woluminach Kubernetes za pomocą usługi Azure Files.
 
 > [!div class="nextstepaction"]
-> [Dodatek Kubernetes plików Azure][kubernetes-files]
+> [Wtyczka usługi Kubernetes dla usługi Azure Files][kubernetes-files]
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

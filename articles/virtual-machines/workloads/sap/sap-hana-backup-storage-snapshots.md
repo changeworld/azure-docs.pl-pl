@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: c7c90a2e24d8dbe7764825abe18c5a1e73b67499
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868742"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902303"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Kopie zapasowe oprogramowania SAP HANA na podstawie migawek magazynu
 
@@ -90,7 +90,8 @@ Szczegółowe informacje o tym, gdzie można skopiować te skrypty i szczegóło
 
 - [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
 - [Aplikacja spójne spójnych kopii zapasowych maszyn wirtualnych systemu Linux platformy Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
-- 
+
+
 
 W tym momencie nie opublikował Microsoft przygotowanie i skryptów po utworzeniu migawki dla oprogramowania SAP HANA. Jako integrator systemu lub klienta należy utworzyć te skrypty i skonfigurować procedury oparte na temat dokumentacji wyżej.
 
@@ -99,7 +100,7 @@ W tym momencie nie opublikował Microsoft przygotowanie i skryptów po utworzeni
 Proces przywracania kopii zapasowej spójnej aplikacji podjęte przez usługę Azure backup jest opisane w artykule [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm). 
 
 > [!IMPORTANT]
-> W artykule [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)znajduje się lista wyjątków, które kroki liście, gdy za pomocą zestawów stripe dysków. Rozłożone dyski są prawdopodobnie regularne konfiguracji maszyny Wirtualnej w przypadku oprogramowania SAP HANA. Dlatego jest niezbędne, aby przeczytać artykuł i przetestować proces przywracania w takich przypadkach, zgodnie z opisem w artykule. 
+> W artykule [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) znajduje się lista wyjątków i kroki, korzystając z zestawów stripe dysków na liście. Rozłożone dyski są prawdopodobnie regularne konfiguracji maszyny Wirtualnej w przypadku oprogramowania SAP HANA. Dlatego jest niezbędne, aby przeczytać artykuł i przetestować proces przywracania w takich przypadkach, zgodnie z opisem w artykule. 
 
 
 

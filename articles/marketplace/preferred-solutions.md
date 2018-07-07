@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: cee313f2f648de987fde8c769435264048a12eff
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 49da9f58ff99c5d844c41a575deaf2f4cc84d426
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344033"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888470"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Preferowane rozwiązania w portalu Azure Marketplace i AppSource
 
-Preferowane rozwiązanie firmy Microsoft jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z branży i sprzedaży firmy Microsoft wybierana jest opcja rozwiązania Microsoft Partner Network [członkostwa Gold](https://partner.microsoft.com/en-us/membership/core-benefits) partnerów. Rozwiązania te stanowią kwalifikuje się w naszej chmurze witryny sklepów. Klienci będą znaleźć wiele tych rozwiązań branżowych preferowane polecane na stronach branży usługi AppSource, gdy obciążenie preferowanych rozwiązań może zostać umieszczony w portalu Azure Marketplace. 
+Microsoft preferowane, że rozwiązanie jest wybrany do jego jakości, wydajności i możliwości w celu zaspokojenia potrzeb klientów niektórych branży w pionie rozwiązania obszaru lub aplikacji w chmurze. Zespół ekspertów z branży i sprzedaży firmy Microsoft wybierana jest opcja rozwiązania Microsoft Partner Network [członkostwa Gold](https://partner.microsoft.com/en-us/membership/core-benefits) partnerów. Te rozwiązania są umieszczane w naszej chmurze witryny sklepów: Azure Marketplace i AppSource. Preferowane rozwiązania w usłudze AppSource może być rozpoznana przez branżowych branży, podczas gdy w portalu Azure Marketplace można kliknąć w kategoriach obszar rozwiązania 
 
-Microsoft może współpracować z tych dostawców na wspólne engagements sprzedaży i marketingu. Firma Microsoft skontaktuje się dostawców rozwiązań, jeśli jeden lub więcej rozwiązań został wybrany dla oznaczeń preferowane. 
+Firma Microsoft skontaktuje się dostawców rozwiązań, jeśli jeden lub więcej rozwiązań został wybrany jako preferowane rozwiązanie.

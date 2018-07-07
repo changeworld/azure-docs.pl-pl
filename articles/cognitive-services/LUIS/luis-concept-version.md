@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 694b195440936a6eb42520c3343b6ff13194cc79
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f897a3c85bebff3c4534679d45e8af49aacba44a
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346335"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888120"
 ---
 # <a name="versions"></a>Wersje
 Utwórz różne modele taką samą aplikację na [wersji](luis-how-to-manage-versions.md). 
@@ -26,7 +26,7 @@ Identyfikator wersji zawiera znaki, cyfry lub "." i nie może być dłuższa ni�
 Wersja początkowa (0,1) to domyślna wersja active. 
 
 ## <a name="active-version"></a>Wersja aktywna
-Aby [Ustaw wersję](luis-how-to-manage-versions.md#set-active-version) jako aktywny oznacza jest obecnie edytować i testowane na platformie [LUIS] [ LUIS] witryny sieci Web. Ustaw wersję jako aktywny, aby uzyskać dostęp do swoich danych, wprowadzenia aktualizacji, jak również testowanie i opublikować go.
+Aby [Ustaw wersję](luis-how-to-manage-versions.md#set-active-version) jako aktywny oznacza jest obecnie edytować i testowane na platformie [LUIS](luis-reference-regions.md) witryny sieci Web. Ustaw wersję jako aktywny, aby uzyskać dostęp do swoich danych, wprowadzenia aktualizacji, jak również testowanie i opublikować go.
 
 Nazwa aktualnie aktywnego wersji jest wyświetlane w panelu po lewej stronie, górna po nazwie aplikacji. 
 
@@ -57,10 +57,8 @@ Uczony wersje nie są automatycznie dostępne w Twojej aplikacji [punktu końcow
 ## <a name="collaborators"></a>Współpracownicy
 Właściciela i wszystkie [współpracowników](luis-how-to-collaborate.md) mają pełny dostęp do wszystkich wersji aplikacji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Zobacz, jak dodać [versioning](luis-how-to-manage-versions.md) na stronie Ustawienia aplikacji. 
 
 Dowiedz się, jak projektować [intencji](luis-concept-intent.md) do modelu.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

@@ -1,6 +1,6 @@
 ---
-title: Pojęcia przedsiębiorstwa aplikacji LUIS - Azure | Dokumentacja firmy Microsoft
-description: Zrozumieć zagadnienia dotyczące projektowania dla dużych aplikacji LUIS.
+title: Enterprise pojęcia związane z aplikacją usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Omówienie pojęć dotyczących projektowania w przypadku dużych aplikacji usługi LUIS.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,62 +9,61 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: f5d1cf61ca7b8d8eeaed52fc3f45f8d4847ddda9
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: aca67db88255585355bc59a29e53639bc5eca717
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108692"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886760"
 ---
-# <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise LUIS aplikacji
-Przejrzyj te strategii projektowania aplikacji przedsiębiorstwa.
+# <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
+Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.
 
-## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Jeśli oczekujesz żądań LUIS po przekroczeniu przydziału
-Jeśli szybkość LUIS aplikacji żądania przekracza dozwoloną [szybkość przydziału](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), rozkładu obciążenia na więcej LUIS aplikacje za pomocą [tej samej definicji aplikacji](#use-multiple-apps-with-same-app-definition) lub Utwórz i [przypisać wiele kluczy](#assign-multiple-luis-keys-to-same-app) do aplikacja. 
+## <a name="when-you-expect-luis-requests-beyond-the-quota"></a>Jeśli oczekujesz, że usługi LUIS żądania po przekroczeniu limitu przydziału
+Jeśli tempo wysyłania żądań aplikacji LUIS przekracza dozwoloną [współczynnik przydziału](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/), rozłożenie obciążenia na więcej aplikacji usługi LUIS z [tej samej definicji aplikacji](#use-multiple-apps-with-same-app-definition) lub utworzyć i [przypisać wiele kluczy](#assign-multiple-luis-keys-to-same-app) do aplikacja. 
 
-### <a name="use-multiple-apps-with-same-app-definition"></a>Korzystanie z wielu aplikacji o tej samej definicji aplikacji
-Eksportuj oryginalnej aplikacji LUIS, a następnie importowania aplikacji do osobnych aplikacji. Każda aplikacja ma własny identyfikator aplikacji. Podczas publikowania, zamiast używać tego samego klucza we wszystkich aplikacjach, Utwórz oddzielne klucz dla każdej aplikacji. Równoważenie obciążenia na wszystkie aplikacje tak, aby nie jednej aplikacji jest przeciążony. Dodaj [usługi Application Insights](luis-tutorial-bot-csharp-appinsights.md) do monitorowania użycia. 
+### <a name="use-multiple-apps-with-same-app-definition"></a>Wiele aplikacji za pomocą tej samej definicji aplikacji
+Eksportuj oryginalnej aplikacji LUIS, a następnie importowania aplikacji do osobnych aplikacji. Każda aplikacja ma swój własny identyfikator aplikacji. Podczas publikowania, zamiast korzystać z tego samego klucza dla wszystkich aplikacji, należy utworzyć oddzielny klucz dla każdej aplikacji. Równoważenie obciążenia wśród wszystkich aplikacji, tak aby nie pojedynczej aplikacji jest przeciążony. Dodaj [usługi Application Insights](luis-tutorial-bot-csharp-appinsights.md) monitorowania użycia. 
 
-Aby uzyskać tego samego zamiar top od wszystkich aplikacji, upewnij się, że jest dostatecznie szerokie, że LUIS nie jest mylić, podając różne wyniki aplikacji dla niewielkich zmian w zniesławiających Prognozowanie konwersji między celem pierwszego i drugiego. 
+Aby uzyskać ten sam intencji najważniejsze między wszystkie aplikacje, upewnij się, że funkcja prognozowania między pierwszym i drugim celem jest dostatecznie szeroka, że usługa LUIS nie jest mylące, co daje różne wyniki aplikacji dla niewielkich zmian w wypowiedzi. 
 
-Wyznaczanie tylko jednej aplikacji jako wzorzec. Wszelkie zniesławiających, które są zalecane do przeglądu powinien dodana do aplikacji głównej następnie przeniesiona z powrotem do innych aplikacji. To jest pełna eksportu aplikacji, lub ładowania etykietą zniesławiających z wzorca do podrzędnych. Ładowanie może odbywać się przy użyciu dowolnego [LUIS] [ LUIS] witryny sieci Web lub tworzenia interfejsu API dla [pojedynczy utterance](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) lub [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
+Należy określić pojedynczej aplikacji jako wzorzec. Wypowiedzi, które są zalecane dla przeglądu powinien dodane do aplikacji głównej, następnie przeniesiony z powrotem do innych aplikacji. To jest pełny eksportowania aplikacji, lub ładowania etykietami wypowiedzi ze wzorca do elementów podrzędnych. Ładowanie może odbywać się za pomocą albo [LUIS](luis-reference-regions.md) witryny sieci Web lub tworzenia interfejsu API dla [pojedynczy wypowiedź](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08) lub [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09). 
 
-Zaplanuj okresowo [przeglądu zniesławiających punktu końcowego](label-suggested-utterances.md) active szkoleniowe, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikować. 
+Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](label-suggested-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
 
-### <a name="assign-multiple-luis-keys-to-same-app"></a>Przypisywanie klawiszy wielu LUIS do tej samej aplikacji
-Jeśli aplikacja LUIS otrzyma jeden punkt końcowy trafień niż pozwala przydziału jednego klucza, Utwórz i przypisz więcej klucze do aplikacji LUIS. Tworzenie Menedżera ruchu lub zarządzanie zapytań punktu końcowego za pośrednictwem kluczy punktu końcowego usługi równoważenia obciążenia. 
+### <a name="assign-multiple-luis-keys-to-same-app"></a>Przypisywanie klawiszy wielu usługi LUIS do tej samej aplikacji
+Jeśli aplikacją usługi LUIS odbiera więcej punktu końcowego trafień, niż zezwala limit przydziału jednego klucza, utworzyć i przypisać więcej kluczy do aplikacji usługi LUIS. Tworzenie Menedżera ruchu lub zarządzać zapytaniami punktu końcowego różnych kluczy punktu końcowego usługi równoważenia obciążenia. 
 
-## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Gdy wbudowanymi aplikacji zwraca niewłaściwy zamiar
-Jeśli aplikacja jest przeznaczona do prognozowania szerokiej gamy zniesławiających użytkownika, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie wbudowanymi aplikacji umożliwia LUIS wykrywania fokus między intencje pomyślnie zamiast pobierania pomylić między intencje w aplikacji nadrzędnej i podrzędnej aplikacji. 
+## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Gdy aplikacji monolitycznych zwraca niewłaściwy intencji
+Jeśli aplikacja jest przeznaczona do przewidywania szerokiej gamy wypowiedzi użytkownika, rozważ zaimplementowanie [modelu wysyłania](#dispatch-tool-and-model). Podzielenie monolityczną aplikację umożliwia LUIS wykrywania fokus między opcjami pomyślnie zamiast pobieranie mylić między opcjami w aplikacji nadrzędnej i podrzędnej aplikacji. 
 
-Zaplanuj okresowo [przeglądu zniesławiających punktu końcowego](label-suggested-utterances.md) active szkoleniowe, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikować. 
+Zaplanować okresowe [przeglądu wypowiedzi punktu końcowego](label-suggested-utterances.md) dla aktywne uczenie się, co dwa tygodnie, np. następnie ponownie ucz i ponownie opublikuj. 
 
-## <a name="when-you-need-to-have-more-than-500-intents"></a>Jeśli musisz mieć więcej niż 500 intencje
-Na przykład załóżmy, że opracowywanym Asystentem pakietu office, który ma ponad 500 lokalizacji docelowych. Jeśli 200 intencje odnoszą się do planowania spotkań, 200 nastąpi przypomnienia, 200 są uzyskiwanie informacji na temat współpracowników i są 200 do wysyłania wiadomości e-mail, intencje grupy tak, aby każda grupa jest w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdego celem. Użyj [wysyłania narzędzia i architektura](#dispatch-tool-and-model) kompilowania aplikacji najwyższego poziomu. Następnie zmienić Twoje bot do użycia jako Pokaż w kaskadowych wywołania [samouczek wysyłania][dispatcher-application-tutorial]. 
+## <a name="when-you-need-to-have-more-than-500-intents"></a>Jeśli musisz mieć więcej niż 500 intencji
+Załóżmy na przykład, że opracowujemy Asystent pakietu office, który ma ponad 500 intencji. Jeśli 200 intencji odnoszą się do planowania spotkań, 200 nastąpi przypomnienia 200 nastąpi uzyskiwanie informacji dotyczących współpracowników i 200 służą do wysyłania wiadomości e-mail, intencji grupy tak, aby każda grupa znajduje się w jednej aplikacji, następnie utwórz aplikację najwyższego poziomu zawierającą każdy intencji. Użyj [wysyłania narzędzia i architektury](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień botowi użyć kaskadowych wywołania jako Pokaż w [samouczek dotyczący wysyłania][dispatcher-application-tutorial]. 
 
-## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Aby połączyć aplikacje maker kilka LUIS i — strona główna
-Jeśli masz kilka LUIS i — strona główna aplikacji maker, które należy odpowiedzieć na robotów, użyj [narzędzia wysyłki](#dispatch-tool-and-model) kompilowania aplikacji najwyższego poziomu. Następnie zmienić Twoje bot do użycia jako Pokaż w kaskadowych wywołania [samouczek wysyłania][dispatcher-application-tutorial]. 
+## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Kiedy trzeba połączyć aplikacje maker kilka LUIS i pytań i odpowiedzi
+Jeśli masz kilka LUIS i pytań i odpowiedzi aplikacji producenta, które musisz odpowiedzieć na bot, użyj [narzędzia wysyłki](#dispatch-tool-and-model) do tworzenia aplikacji najwyższego poziomu. Następnie zmień botowi użyć kaskadowych wywołania jako Pokaż w [samouczek dotyczący wysyłania][dispatcher-application-tutorial]. 
 
-## <a name="dispatch-tool-and-model"></a>Narzędzia wysyłki i modelu
-Użyj [wysyłania] [ dispatch-tool] narzędzie wiersza polecenia, w [BotBuilder narzędzia](https://github.com/Microsoft/botbuilder-tools) połączyć wiele LUIS i/lub Maker — strona główna aplikacji do nadrzędnego LUIS aplikacji. Takie podejście umożliwia ma domeny nadrzędnej, w tym wszystkie tematy i różnych domen podmiotu w osobnych aplikacji. 
+## <a name="dispatch-tool-and-model"></a>Narzędzia wysyłki i model
+Użyj [wysyłania] [ dispatch-tool] narzędzie wiersza polecenia w [BotBuilder narzędzia](https://github.com/Microsoft/botbuilder-tools) połączyć wiele LUIS i/lub usługi QnA Maker aplikacje do nadrzędnego aplikacją usługi LUIS. Takie podejście umożliwia domeny nadrzędnej, w tym wszystkich tematów i różnych domen podmiotu w osobnych aplikacji. 
 
 ![Obrazu koncepcyjnego architektury wysyłania](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Domena nadrzędna jest odnotowany w LUIS jako **wysyłania V** aplikacji. 
+Domena nadrzędna została przedstawiona w LUIS jako **wysyłania V** aplikacji. 
 
-![Zrzut ekranu LUIS lista aplikacji z aplikacją LUIS utworzony przez narzędzie wysyłania](./media/luis-concept-enterprise/dispatch.png)
+![Zrzut ekranu usługi LUIS listę aplikacji z aplikacją usługi LUIS utworzony przez narzędzie do wysyłki](./media/luis-concept-enterprise/dispatch.png)
 
-Chatbot odbiera utterance, a następnie wysyła do nadrzędnego LUIS aplikacji na potrzeby prognozowania. Górny zamiar przewidywane z aplikacji nadrzędnej określa podrzędnych, których aplikacji LUIS nazywa się obok. Chatbot wysyła utterance aplikacji podrzędnych do bardziej szczegółowych przewidywania.
+Czatbot zwiększający odbiera wypowiedź, a następnie wysyła do nadrzędnego aplikacją usługi LUIS w celu prognozowania. Najważniejsze intencji przewidywane z aplikacji nadrzędnej określa podrzędne, które aplikacją usługi LUIS nazywa się obok. Czatbot zwiększający wysyła wypowiedź do aplikacji podrzędnej, aby dokładniejszych prognoz.
 
-Zrozumieć, w jaki sposób ma zostać tej hierarchii wywołań z v4 konstruktora Bot [samouczek w przypadku aplikacji dyspozytora][dispatcher-application-tutorial].  
+Zrozumienie, jak ta hierarchia wywołań składa się z 4 Bot Builder [dyspozytora samouczek dotyczący aplikacji][dispatcher-application-tutorial].  
 
-### <a name="intent-limits-in-dispatch-model"></a>Limity konwersji w modelu wysyłania
-Aplikacji wysyłania ma 500 źródeł wysyłania odpowiednikiem 500 intencje jako wartość maksymalna. 
+### <a name="intent-limits-in-dispatch-model"></a>Limity intencji w modelu wysyłania
+Aplikacja wysyłania ma 500 źródeł wysyłania równoważne do 500 intencji jako wartość maksymalna. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, jak [test partii](luis-how-to-batch-test.md)
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
 [dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch

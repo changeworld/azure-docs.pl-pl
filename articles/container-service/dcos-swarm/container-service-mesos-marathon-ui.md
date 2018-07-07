@@ -1,20 +1,20 @@
 ---
-title: Zarządzanie klastrem Azure DC/OS przy użyciu interfejsu użytkownika platformy Marathon
+title: Zarządzanie klastrem Azure DC/OS za pomocą interfejsu użytkownika platformy Marathon
 description: Wdrażanie kontenerów do klastra usługi kontenera platformy Azure przy użyciu interfejsu użytkownika sieci Web Marathon.
 services: container-service
-author: dlepow
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: danlep
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166987"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903085"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Zarządzanie klastrem DC/OS usługi Azure Container Service przy użyciu interfejsu użytkownika sieci Web platformy Marathon
 
@@ -30,11 +30,11 @@ Przed przystąpieniem do pracy nad tymi przykładami będziesz potrzebować klas
 * [Łączenie z klastrem usługi Azure Container Service](../container-service-connect.md)
 
 > [!NOTE]
-> W tym artykule przyjęto założenie, że tunelowanie korzysta z klastrem DC/OS za pośrednictwem lokalnego portu 80.
+> W tym artykule przyjęto założenie, że tunelowanie korzysta się z klastrem DC/OS za pośrednictwem lokalnego portu 80.
 >
 
 ## <a name="explore-the-dcos-ui"></a>Przegląd interfejsu użytkownika platformy DC/OS
-Z tunel Secure Shell (SSH) [ustanowić](../container-service-connect.md), przejdź do http://localhost/. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
+Za pomocą tunelu Secure Shell (SSH) [ustanowione](../container-service-connect.md), przejdź do http://localhost/. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
 
 ![Interfejs użytkownika platformy DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
@@ -83,7 +83,7 @@ Po powrocie do strony głównej platformy Marathon widoczny jest stan wdrożenia
 
 ![Strona główna interfejsu użytkownika platformy Marathon — stan wdrożenia kontenera](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Interfejs użytkownika sieci web po przełączeniu do DC/OS (http://localhost/), zobaczysz, że zadanie (w tym przypadku kontenera w formacie Docker) jest uruchomiona w klastrze DC/OS.
+Interfejs użytkownika sieci web po przełączeniu się do platformy DC/OS (http://localhost/), zobaczysz, że zadanie (w tym przypadku kontener w formacie Docker) jest uruchomiony w klastrze DC/OS.
 
 ![Interfejs użytkownika sieci Web platformy DC/OS — zadanie uruchomione w klastrze](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,14 +91,14 @@ Aby zobaczyć węzeł klastra, w którym zadanie jest uruchomione, kliknij kart�
 
 ![Interfejs użytkownika sieci Web platformy DC/OS — węzeł klastra zadania](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Osiągnąć kontenera
+## <a name="reach-the-container"></a>Dotrzeć do kontenera
 
-W tym przykładzie aplikacja jest uruchomiona w węźle agenta publicznego. Przejściu aplikacji z Internetu, przechodząc do agenta nazwy FQDN klastra: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, gdzie:
+W tym przykładzie aplikacja jest uruchomiona w węźle agenta publicznego. Możesz uzyskać dostępu do aplikacji, z Internetu, przechodząc do agenta, nazwy FQDN klastra: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, gdzie:
 
 * **DNSPREFIX** (prefiks_DNS) to prefiks DNS podany podczas wdrażania klastra.
 * **REGION** to region, w którym znajduje się grupa zasobów.
 
-    ![Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
+    ![Serwer Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

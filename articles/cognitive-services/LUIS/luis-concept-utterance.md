@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9b8556a30169561488a7b46f93af87b31e049e7a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345512"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37886845"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -23,7 +23,7 @@ ms.locfileid: "37345512"
 Zbieraj fraz, które uważasz, że użytkownicy będą mogli wprowadzać. Dołącz wypowiedzi, które oznaczają to samo, ale są konstruowane inaczej długość słowa i rozmieszczenie programu word. 
 
 ## <a name="how-to-choose-varied-utterances"></a>Jak wybrać zróżnicowane wypowiedzi
-Gdy użytkownik najpierw początek [Dodawanie wypowiedzi przykład] [ add-example-utterances] do modelu usługi LUIS, poniżej przedstawiono niektóre zasady, które należy uwzględnić.
+Gdy użytkownik najpierw początek [Dodawanie wypowiedzi przykład](luis-how-to-add-example-utterances.md) do modelu usługi LUIS, poniżej przedstawiono niektóre zasady, które należy uwzględnić.
 
 ### <a name="utterances-arent-always-well-formed"></a>Wypowiedzi nie są zawsze poprawnie sformułowany.
 Może być dowolne zdanie, takich jak "W Zarezerwuj mnie biletu do Paryża" lub fragment zdania, takich jak "Rezerwacji" lub "Paryż lot."  Użytkownicy często wykonują błędy pisowni. Podczas planowania aplikacji należy wziąć pod uwagę informację określającą, czy możesz sprawdzanie pisowni dla danych wejściowych użytkownika przed przekazaniem go do usługi LUIS. [Interfejsu API sprawdzania pisowni Bing] [ BingSpellCheck] integruje się z użyciem usługi LUIS. Aplikacją usługi LUIS można skojarzyć z klucza zewnętrznego do API sprawdzania pisowni Bing podczas publikowania go. Jeśli wypowiedzi użytkownika wyboru nie jest pisowni, możesz później LUIS, na wypowiedzi obejmujących literówki i błędy pisowni.
@@ -69,8 +69,7 @@ Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary
 ## <a name="best-practices"></a>Najlepsze praktyki
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) Aby dowiedzieć się więcej.
 
-## <a name="next-steps"></a>Następne kroki
-Zobacz [Dodawanie wypowiedzi przykład] [ add-example-utterances] uzyskać informacji na temat szkoleń aplikacją usługi LUIS, aby zrozumieć wypowiedzi użytkowników.
+## <a name="next-steps"></a>Kolejne kroki
+Zobacz [Dodawanie wypowiedzi przykład](luis-how-to-add-example-utterances.md) uzyskać informacji na temat szkoleń aplikacją usługi LUIS, aby zrozumieć wypowiedzi użytkowników.
 
-[add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
 [BingSpellCheck]: https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/proof-text

@@ -2,68 +2,68 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: cynthn
+author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: cynthn
+ms.date: 07/05/2018
+ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: e484dac645ff2e5867d2e652c389a9950e8bac12
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "30196444"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37909933"
 ---
-Azure wykonuje okresowo aktualizacje do poprawy niezawodności, wydajności i zabezpieczeń infrastruktury hosta dla maszyny wirtualnej. Zakres te aktualizacje z poprawki składników oprogramowania w środowisku macierzystym (na przykład systemu operacyjnego, funkcji hypervisor i różnych agentów wdrożonych na hoście), uaktualnienie składników sieciowych do likwidacji sprzętu. Większość tych aktualizacji są wykonywane bez wpływu na maszyny wirtualne. Istnieją jednak przypadki, w których aktualizacje mają wpływ:
+Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności, wydajności i zabezpieczeń infrastruktury hostowania maszyn wirtualnych. Te aktualizacje obejmują poprawki składników oprogramowania w środowisku hostingu (na przykład systemu operacyjnego, funkcji hypervisor i różnych agentów wdrożonych na hoście), uaktualnienia składników sieciowych i likwidację sprzętu. Większość tych aktualizacji jest przeprowadzana bez żadnego wpływu na obsługiwanych maszynach wirtualnych. Jednakże istnieją przypadki, w których aktualizacje mają wpływ:
 
-- Jeśli aktualizacja bez ponownego rozruchu jest możliwe, Azure używa pamięci, zachowując konserwacji wstrzymanie maszyny Wirtualnej podczas aktualizacji hosta lub maszyny Wirtualnej jest całkowicie przenieść na host już zaktualizowany.
+- Jeśli aktualizacja bez ponownego rozruchu jest możliwe, platforma Azure używa zachowywanie konserwacji pamięci można wstrzymać maszyny Wirtualnej, podczas gdy host jest aktualizowany lub maszyna wirtualna zostanie przeniesiona do już zaktualizowanego hosta całkowicie.
 
-- Jeśli konserwacji wymaga ponownego uruchomienia, możesz uzyskać zawiadomienia o podczas jest planowanych konserwacji. W takich przypadkach będziesz też mieć przedział czasu, w którym można uruchomić obsługi samodzielnie, w czasie, który należy.
+- Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. W takich przypadkach będziesz również mieć przedział czasu, w którym można uruchomić konserwację samodzielnie, w czasie, który Ci odpowiada.
 
-Na tej stronie opisano, jak Microsoft Azure wykonuje obu typów konserwacji. Aby uzyskać więcej informacji o zdarzeniach nieplanowane (awarii), zobacz Zarządzanie dostępnością maszyn wirtualnych [systemu Windows] (../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Na tej stronie opisano, jak Microsoft Azure wykonuje oba rodzaje konserwacji. Aby uzyskać więcej informacji o zdarzeniach nieplanowane (awarii), zobacz Zarządzanie dostępnością maszyn wirtualnych [systemu Windows] (../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
 Aplikacje działające na maszynie wirtualnej umożliwia zebranie informacji o nadchodzących aktualizacji za pomocą usługi Azure metadanych dla [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) lub [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
 
-"Porad" informacje o zarządzaniu zaplanowanej konserwacji, zobacz "Obsługa planowanych konserwacji powiadomienia" do [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+Aby uzyskać "porad" informacji o zarządzaniu planowanej konserwacji, zobacz "Obsługa Planned maintenance notifications zaplanowanej" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
 ## <a name="memory-preserving-maintenance"></a>Zachowywanie konserwacji pamięci
 
-Aktualizacje nie potrzebują pełnego ponownego uruchomienia systemu, zachowania mechanizmy obsługi pamięci są używane do zmniejszenia wpływu na maszynie wirtualnej. Maszyna wirtualna jest wstrzymana przez maksymalnie 30 sekund, utrzymania pamięci w pamięci RAM, w czasie środowisko macierzyste stosuje niezbędne aktualizacje i poprawki lub przenosi maszyny Wirtualnej na hoście już zaktualizowany. Maszyna wirtualna jest następnie wznowiona i zegara maszyny wirtualnej jest synchronizowana automatycznie. 
+Gdy aktualizacje nie wymagają pełnego ponownego uruchomienia systemu, przy zachowaniu mechanizmy obsługi pamięci są używane do ograniczenia wpływu na maszynę wirtualną. Maszyna wirtualna jest wstrzymana na maksymalnie 30 sekund, zachowując pamięci RAM, podczas gdy środowisko hostingu stosuje niezbędne aktualizacje i poprawki lub przenosi maszyny Wirtualnej na hoście już zaktualizowanym. Następnie wznawiać jej działanie maszyny wirtualnej i zegar maszyny wirtualnej jest automatycznie synchronizowany. 
 
-Dla maszyn wirtualnych w zestawach dostępności aktualizacji domeny są zaktualizowane pojedynczo. Wszystkie maszyny wirtualne w jednej domenie aktualizacji (UD) są wstrzymany, aktualizacji i następnie ponownie uruchomiony przed zaplanowanej konserwacji przechodzi do następnego UD.
+Te operacje konserwacji bez rebootful są domena błędów zastosowane przez domenę błędów, a postęp zostanie zatrzymany, jeśli wszystkie sygnały kondycji ostrzeżenia są odbierane.
 
-Niektóre aplikacje może mieć wpływ na tego rodzaju aktualizacji. Aplikacje wykonujące przetwarzania, takich jak przesyłania strumieniowego multimediów lub transkodowanie lub uzyskać wysoką przepustowość sieci scenariuszy, w czasie rzeczywistym zdarzeń nie mogą być przeznaczone do tolerować 30 jednosekundową przerwę. <!-- sooooo, what should they do? --> W przypadku, gdy maszyna wirtualna jest przenieść do innego hosta, niektórych obciążeń poufnych zauważyć spadek wydajności nieznaczne w kilka minut, które doprowadziły do wstrzymywania maszyny wirtualnej. 
+Niektóre aplikacje może mieć wpływ na tego rodzaju aktualizacji. Nie można zaprojektować aplikacje, które wykonują w czasie rzeczywistym przetwarzanie zdarzeń, takich jak przesyłania strumieniowego multimediów lub transkodowania ani wysokiej przepływności sieci scenariuszy tolerować 30 wprowadzić jednosekundową przerwę. <!-- sooooo, what should they do? --> W przypadku, gdy maszyna wirtualna jest przenoszona do innego hosta, niektórych poufnych obciążeń zauważyć spadek wydajności nieznaczne w ciągu kilku minut prowadzących do wstrzymanie maszyny wirtualnej. 
 
 
 ## <a name="maintenance-requiring-a-reboot"></a>Konserwacja konieczności ponownego uruchamiania
 
-W przypadku maszyn wirtualnych wymagać ponownego dla zaplanowanych konserwacji, użytkownik jest powiadamiany wcześniej. Planowana konserwacja ma dwie fazy: okno samoobsługi i okno zaplanowanej konserwacji.
+Jeśli maszyny wirtualne muszą zostać przeprowadzony ponowny rozruch o zaplanowanej konserwacji, otrzymasz powiadomienie z wyprzedzeniem. Planowana konserwacja obejmuje dwa etapy: samoobsługi okna i okna zaplanowanej konserwacji.
 
-**Samoobsługi okna** umożliwia inicjowanie obsługi na maszyny wirtualne. W tym czasie można badać każdej maszyny Wirtualnej, aby wyświetlić ich stan i sprawdź wynik ostatniego żądania obsługi.
+**Samoobsługi okna** pozwala na zainicjowanie konserwacji na maszynach wirtualnych. W tym czasie można badać każdej maszyny Wirtualnej, aby wyświetlić ich stan i sprawdzić wynik ostatniego żądania obsługi.
 
-Podczas uruchamiania obsługi samoobsługi maszyny Wirtualnej jest przenoszony do węzła, który został już zaktualizowany i uprawnień go ponownie. Ponieważ ponownego uruchamiania maszyny Wirtualnej, tymczasowego dysku zostaną utracone i dynamicznych adresów IP skojarzonych z interfejsu sieci wirtualnej zostały zaktualizowane.
+Po uruchomieniu konserwacji samoobsługowej, Twoja maszyna wirtualna zostanie przeniesiona do węzła, który został już zaktualizowany i obsługuje go ponownie. Ponieważ maszyna wirtualna jest ponownie uruchamiana, dysk tymczasowy to dysk utracone i dynamiczne adresy IP skojarzoną z interfejsem sieci wirtualnej zostały zaktualizowane.
 
-Występuje błąd podczas uruchamiania samoobsługi konserwacji, operacja nie zostanie zatrzymana, maszyna wirtualna nie zostanie zaktualizowana i powoduje również usunięcie z iteracji zaplanowanej konserwacji. Będzie można z Tobą kontaktu w późniejszym czasie z nowego harmonogramu i oferowane nową możliwość przeprowadzenia konserwacji samoobsługi. 
+Jeśli rozpoczęciem konserwacji samoobsługowej, występuje błąd podczas procesu operacja nie zostanie zatrzymana, maszyna wirtualna nie jest aktualizowany i uzyskasz opcję, aby ponowić próbę konserwacji samoobsługowej. 
 
-Po upływie okna samoobsługi **zaplanowanego okna obsługi** rozpoczyna się. W tym oknie można nadal zapytania dla okna obsługi, ale nie będzie można uruchomić obsługi samodzielnie.
+Po upływie okna samoobsługi **zaplanowanego okna obsługi** rozpoczyna się. Tym przedziale czasu możesz nadal badać dla okna obsługi, ale nie będzie można uruchomić konserwację samodzielnie.
 
-Informacje na temat zarządzania konserwacji konieczności ponownego uruchamiania, zobacz "Obsługa planowanych konserwacji powiadomienia" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
+Uzyskać informacji o zarządzaniu konserwacji wymagające ponownego uruchomienia systemu, zobacz "Obsługa Planned maintenance notifications zaplanowanej" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
 
-## <a name="availability-considerations-during-planned-maintenance"></a>Zagadnienia dotyczące dostępności podczas zaplanowanej konserwacji 
+### <a name="availability-considerations-during-scheduled-maintenance"></a>Zagadnienia dotyczące dostępności podczas zaplanowanej konserwacji 
 
-Jeśli zdecydujesz się po upływie okno zaplanowanej konserwacji, jest kilka rzeczy, wziąć pod uwagę obsługę najwyższą dostępność maszyn wirtualnych. 
+Jeśli zdecydujesz się zaczekać okna zaplanowanej konserwacji, istnieje kilka kwestii, które należy wziąć pod uwagę utrzymywania najwyższą dostępność maszyn wirtualnych. 
 
-### <a name="paired-regions"></a>Sparowanego regionów
+#### <a name="paired-regions"></a>Sparowane regiony
 
-Każdy region platformy Azure jest łączyć się z innego regionu w tej samej lokalizacji geograficznej, składają do regionalnych pary. Podczas zaplanowanej konserwacji Azure zaktualizuje tylko maszyn wirtualnych w pojedynczym regionie pary regionu. Na przykład podczas aktualizowania maszyn wirtualnych w regionie Północno-środkowe stany USA platforma Azure nie będzie jednocześnie przeprowadzać aktualizacji żadnych maszyn wirtualnych w regionie Południowo-środkowe stany USA. Inne regiony, takie jak Europa Północna, mogą być jednak w trakcie konserwacji w tym samym czasie, co region Wschodnie stany USA. Zrozumienie, jak działają pary region może ułatwić lepsze dystrybucji maszyn wirtualnych w regionach. Aby uzyskać więcej informacji, zobacz [pary regionu Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego, ze sobą ich wprowadzić parę regionalną. Podczas zaplanowanej konserwacji platformy Azure będzie aktualizować jedynie te maszyny wirtualne w jednym regionie parze regionów. Na przykład podczas aktualizowania maszyn wirtualnych w regionie Północno-środkowe stany USA platforma Azure nie będzie jednocześnie przeprowadzać aktualizacji żadnych maszyn wirtualnych w regionie Południowo-środkowe stany USA. Inne regiony, takie jak Europa Północna, mogą być jednak w trakcie konserwacji w tym samym czasie, co region Wschodnie stany USA. Zrozumienie, jak działają pary regionów mogą ułatwić lepiej dystrybuować maszyn wirtualnych między regionami. Aby uzyskać więcej informacji, zobacz [par regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-### <a name="availability-sets-and-scale-sets"></a>Zestawy skali i zestawów dostępności
+#### <a name="availability-sets-and-scale-sets"></a>Zestawy dostępności i zestawów skalowania
 
-W przypadku wdrażania obciążenia na maszynach wirtualnych Azure, można tworzyć maszyn wirtualnych w ramach dostępności skonfigurowany w celu zapewnienia wysokiej dostępności do aplikacji. Dzięki temu, że podczas awarii albo obsługi zdarzeń, jest dostępny co najmniej jednej maszyny wirtualnej.
+W przypadku wdrażania obciążeń na maszynach wirtualnych platformy Azure, można utworzyć maszyny wirtualne w zestaw dostępności, aby zapewnić wysoką dostępność aplikacji. Dzięki temu podczas awarii lub zdarzenia konserwacji rebootful co najmniej jednej maszyny wirtualnej są dostępne.
 
-W zestawie dostępności poszczególnych maszyn wirtualnych są rozkładane między domenami aktualizacji do 20 (UDs). Podczas zaplanowanej konserwacji pogarsza tylko jedną aktualizację domeny w danym momencie. Należy pamiętać, że kolejność domen aktualizacji jest w pełni funkcjonalne nie zawsze odbywa się po kolei. 
+W zestawie dostępności poszczególne maszyny wirtualne są rozproszone między maksymalnie 20 domen aktualizacji (domenami aktualizacji). Podczas zaplanowanej konserwacji w dowolnym momencie czy dotyczy to tylko z domeny jedną aktualizację. Należy pamiętać, że kolejność domen aktualizacji wpływem nie zawsze odbywa się po kolei. 
 
-Zestawy skalowania maszyny wirtualnej są zasobów obliczeń platformy Azure, która umożliwia wdrażanie i zarządzanie nimi zestaw identycznych maszyn wirtualnych jako pojedynczy zasób. Zestaw skalowania jest automatycznie wdrażane między domenami aktualizacji, takich jak maszyn wirtualnych w zestawie dostępności. Podobnie jak z zestawami dostępności zestawów skalowania tylko jedną aktualizację domeny pogarsza w danym momencie.
+Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, która umożliwia wdrożenie zestawu identycznych maszyn wirtualnych, jako pojedynczy zasób oraz zarządzanie. Zestaw skalowania automatycznie jest wdrażana w domenach aktualizacji, takich jak maszyny wirtualne w zestawie dostępności. Podobnie jak z zestawami dostępności za pomocą zestawów skalowania tylko jedną aktualizację domeny jest wpływ w dowolnym momencie podczas zaplanowanej konserwacji.
 
-Aby uzyskać więcej informacji na temat konfigurowania maszyn wirtualnych wysokiej dostępności, zobacz Zarządzanie dostępność maszyn wirtualnych dla [Windows](../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Aby uzyskać więcej informacji na temat konfigurowania maszyn wirtualnych w celu zapewnienia wysokiej dostępności, zobacz Zarządzanie dostępnością maszyn wirtualnych dla [Windows](../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).

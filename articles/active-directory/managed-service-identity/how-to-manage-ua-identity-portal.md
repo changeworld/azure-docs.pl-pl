@@ -1,6 +1,6 @@
 ---
-title: Jak zarządzać użytkownika przypisane zarządzane usługi tożsamości (MSI) przy użyciu portalu Azure
-description: Krok po kroku instrukcje dotyczące sposobu tworzenia, listy i Usuń użytkownika przypisanego zarządzana usługa tożsamości.
+title: Jak zarządzać użytkownik przypisany tożsamość usługi zarządzanej (MSI) przy użyciu witryny Azure portal
+description: Krok po kroku instrukcje dotyczące sposobu tworzenia, wyświetlania i usuwania użytkownika przypisanego zarządzana usługa tożsamości.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,22 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 206f508ca8df13cdc8194cc9a95d828397ea0b85
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 02073742264e4f65d3c582174348495d86f47d43
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "33929356"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903939"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Tworzenie listy lub usunąć użytkownika przypisanego zarządzane usługi tożsamości (MSI) przy użyciu portalu Azure
+# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Utwórz listę lub usunąć użytkownik, któremu przypisano tożsamość usługi zarządzanej (MSI) przy użyciu witryny Azure portal
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Tożsamość usługi zarządzanej udostępnia usługi Azure za pomocą tożsamości zarządzanych w usłudze Azure Active Directory. Ta tożsamość służy do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD, bez konieczności poświadczeń w kodzie. 
+Tożsamość usługi zarządzanej udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
-W tej chwili nie jest możliwe tworzenie, listy lub usuwanie użytkownika przypisanego tożsamości zarządzanych przy użyciu portalu Azure.  Sprawdzanie dostępności aktualizacji.
+W tej chwili nie jest możliwe tworzenie, listy lub usuwanie użytkownika przypisanego tożsamość zarządzaną w witrynie Azure portal.  Sprawdź aktualizacje.

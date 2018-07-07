@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 15f21fd03b0373c189f3b6c4972280d128024217
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 83dbe4b7bad8935e7d047a06d6d01ca74329027d
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "36943525"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37906647"
 ---
 Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokiego współczynnika pamięci do Procesora, który jest najlepszy w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -31,6 +31,10 @@ Zoptymalizowane pod kątem pamięci oferty rozmiarów maszyny Wirtualnej wysokie
 ## <a name="esv3-series"></a>Serii Esv3 
 
 ACU: 160-190 <sup>1</sup>
+
+Usługa Premium Storage: obsługiwane
+
+Buforowanie magazynu Premium: obsługiwane
 
 Wystąpienia serii ESv3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) z zegarem 2,3 GHz, które dzięki technologii Intel Turbo Boost 2.0 mogą osiągnąć częstotliwość 3,5 GHz i korzystają z magazynu Premium Storage. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
@@ -57,6 +61,10 @@ Wystąpienia serii ESv3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broad
 
 ACU: 160-190 <sup>1</sup>
 
+Usługa Premium Storage: Nieobsługiwane
+
+Buforowanie Premium Storage: Nieobsługiwane
+
 Wystąpienia serii Ev3 są oparte na procesorach Intel XEON® E5-2673 v4 (Broadwell) 2,3 GHz i technologią Intel Turbo Boost 2.0, dzięki której mogą osiągnąć częstotliwość 3,5 GHz. Wystąpienia serii Ev3 są idealne dla aplikacji korporacyjnych intensywnie korzystających z pamięci.
 
 Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysków magazynu Premium Storage, użyj rozmiarów ESv3. Liczniki cen i rozliczeń dla rozmiarów ESv3 są takie same jak dla serii Ev3. 
@@ -80,6 +88,12 @@ Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny 
 ## <a name="m-series"></a>Seria M 
 
 ACU: 160-180 <sup>1</sup>
+
+Usługa Premium Storage: obsługiwane
+
+Buforowanie magazynu Premium: obsługiwane
+
+Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -113,6 +127,10 @@ ACU: 160-180 <sup>1</sup>
 
 ACU: 180 – 240 <sup>1</sup>
 
+Usługa Premium Storage: obsługiwane
+
+Buforowanie magazynu Premium: obsługiwane
+
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standardowa_GS1 |2 |28 |56 |8 |10 000 / 100 (264) |5000 / 125 |2 / 2000 |
@@ -133,6 +151,10 @@ ACU: 180 – 240 <sup>1</sup>
 
 ACU: 180–240
 
+Usługa Premium Storage: Nieobsługiwane
+
+Buforowanie Premium Storage: Nieobsługiwane
+
 | Rozmiar         | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standardowa_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 x 500                       | 2 / 2000                     |
@@ -148,6 +170,10 @@ ACU: 180–240
 ## <a name="dsv2-series-11-15"></a>Seria DSv2 11-15
 
 ACU: 210-250 <sup>1</sup>
+
+Usługa Premium Storage: obsługiwane
+
+Buforowanie Premium Storage: Nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -171,6 +197,10 @@ ACU: 210-250 <sup>1</sup>
 ## <a name="dv2-series-11-15"></a>Zalecamy używanie serii Dv2 11-15
 
 ACU: 210–250
+
+Usługa Premium Storage: Nieobsługiwane
+
+Buforowanie Premium Storage: Nieobsługiwane
 
 | Rozmiar              | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

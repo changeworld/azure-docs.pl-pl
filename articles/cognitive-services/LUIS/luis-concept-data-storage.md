@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie przechowywania danych w LUIS - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dane są przechowywane w opis języka (LUIS)
+title: Omówienie przechowywania danych w usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dane są przechowywane w Language Understanding (LUIS)
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,41 +9,39 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: f235c787e7d2064696e5421219a297d914b5882d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 24e179e24423412a5ff25a64157e273b1a025a6f
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266009"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888698"
 ---
 # <a name="data-storage-and-removal"></a>Magazyn danych i usuwania
-LUIS przechowuje dane zaszyfrowane w magazynie danych Azure odpowiadający określonego za pomocą klucza regionu. Te dane są przechowywane przez 30 dni. 
+Usługa LUIS przechowuje dane są szyfrowane w magazynie danych platformy Azure odpowiadające regionowi, określony przez klucz. Te dane są przechowywane przez 30 dni. 
 
-## <a name="export-and-delete-app"></a>Eksportowanie i Usuń aplikację
+## <a name="export-and-delete-app"></a>Eksportowanie i usuwanie aplikacji
 Użytkownicy mają pełną kontrolę nad [eksportowanie](create-new-app.md#export-app) i [usuwanie](create-new-app.md#delete-app) aplikacji. 
 
-## <a name="utterances-in-an-intent"></a>Zniesławiających w celem
-Usuń zniesławiających przykład używany do trenowania [LUIS][LUIS]. Usunięcie z aplikacji LUIS utterance przykład, zostanie usunięta z usługi sieci web LUIS i jest niedostępny dla operacji eksportowania.
+## <a name="utterances-in-an-intent"></a>Wypowiedzi w intencji
+Usuń wypowiedzi przykład używane na potrzeby szkolenia [LUIS](luis-reference-regions.md). Jeśli usuniesz wypowiedź przykład z aplikacją usługi LUIS, zostanie usunięty z usługi sieci web usługi LUIS i jest niedostępna w przypadku eksportu.
 
-## <a name="utterances-in-review"></a>Zniesławiających w przeglądzie
-Zniesławiających można usunąć z listy zniesławiających użytkownika, które sugeruje LUIS w  **[stronę zniesławiających punktu końcowego przeglądu](label-suggested-utterances.md)**. Usunięcie zniesławiających z tej listy uniemożliwia sugerowane, ale nie powoduje usunięcia ich z dzienników.
+## <a name="utterances-in-review"></a>Wypowiedzi w przeglądzie
+Wypowiedzi można usunąć z listy wypowiedzi użytkowników usługi LUIS sugeruje w  **[stronie wypowiedzi punkt końcowy Przegląd](label-suggested-utterances.md)**. Usuwanie wypowiedzi z tej listy zapobiega sugerowane, ale nie powoduje usunięcia ich z dzienników.
 
 ## <a name="accounts"></a>Konta
-Jeśli usuniesz konto, wszystkie aplikacje są usuwane, wraz z ich zniesławiających przykład i dzienniki. Dane są przechowywane przez 60 dni przed konta, a dane są trwale usuwane.
+Jeśli usuniesz konto, wszystkie aplikacje zostaną usunięte wraz z ich wypowiedzi przykład i dzienniki. Dane są przechowywane przez 60 dni, konto i dane zostaną trwale usunięte.
 
-Usunięcie konta jest dostępne z **ustawienia** strony. Wybierz nazwę konta w górnym prawym pasku nawigacyjnym na uzyskanie dostępu do **ustawienia** strony.
+Trwa usuwanie konta jest dostępne z **ustawienia** strony. Wybierz nazwę swojego konta w górnym prawym pasku nawigacyjnym, aby uzyskać dostęp do **ustawienia** strony.
 
-## <a name="data-inactivity-as-an-expired-subscription"></a>Aktywności danych jako wygasłych subskrypcji
-Na potrzeby przechowywania danych i usuwanie nieaktywne aplikacji LUIS może na _uznania firmy Microsoft_ traktowane jako wygasłych subskrypcji. Aplikacja jest uznawany za nieaktywny, jeśli w ciągu ostatnich 90 dni spełnia następujące kryteria: 
+## <a name="data-inactivity-as-an-expired-subscription"></a>Braku danych, co w przypadku wygasłych subskrypcji
+Na potrzeby przechowywania danych i usuwania nieaktywnych aplikacją usługi LUIS może na _według uznania firmy Microsoft_ być traktowane jako wygasłej subskrypcji. Aplikacja jest uznawany za nieaktywny, jeśli dana jednostka spełnia następujące kryteria w ciągu ostatnich 90 dni: 
 
-* Wystąpiła **nie** wywołania go.
+* Nastąpiła **nie** wywołania do niego.
 * Nie został zmodyfikowany.
-* Nie bieżącego klucza przypisano do niej.
-* Nie ma użytkownika, zaloguj się do niego.
+* Nie ma bieżącego klucza przypisany do niego.
+* Nie zostało poddane użytkownika, zaloguj się do niego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat eksportowania i usuwanie aplikacji](create-new-app.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+> [Więcej informacji na temat eksportowania i usuwania aplikacji](create-new-app.md)

@@ -1,6 +1,6 @@
 ---
-title: Pojęciami wyodrębniania danych w LUIS - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jakiego rodzaju dane można wyodrębnić z opis języka (LUIS)
+title: Zrozumienie pojęcia związane z wyodrębniania danych z usługi LUIS — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jakiego rodzaju dane można wyodrębnić z Language Understanding (LUIS)
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,29 +9,29 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 8d8620a1c53037be6f1a33083f41964655a04921
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4d18419a6ad8be6ee46944c34205e450212b23a8
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112120"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37888517"
 ---
 # <a name="data-extraction"></a>Wyodrębnianie danych
-LUIS daje możliwość pobrania informacji z zniesławiających języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podejmowania żadnych działań.
+Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podjąć działania.
 
-W poniższych sekcjach Dowiedz się, jakie dane są zwracane z lokalizacji docelowych i jednostek wraz z przykładami JSON. Najtrudniejsze danych, aby wyodrębnić jest rozpoznawane maszyny danych nie jest odpowiednikiem dokładny tekst. Wyodrębniania danych z rozpoznane maszyny [jednostek](luis-concept-entity-types.md) musi być częścią [tworzenia cyklu](luis-concept-app-iteration.md) dopóki upewnieniu odbierania danych spodziewasz się. 
+W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON. Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie jest zgodny z tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz. 
 
-## <a name="data-location-and-key-usage"></a>Wykorzystanie danych lokalizacji i klucz
-LUIS zawiera dane publikowane [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera utterance, a także niektóre konfiguracje opcjonalne, takie jak środowisk przemieszczania i produkcji. 
+## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
+Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera wypowiedź, a także niektóre konfiguracje opcjonalne, takie jak środowisk przejściowych lub produkcyjnych. 
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` Jest dostępna w **ustawienia** strony z LUIS aplikacji, a także część adresu URL (po `/apps/`) podczas edytowania, aplikacja LUIS. `subscription-key` Jest punktu końcowego używany do wykonywania zapytań w aplikacji. Za pomocą klucza tworzenia/starter wolnego podczas nauki obsługi LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje Twojej [oczekiwano użycia LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
+`appID` Jest dostępny na **ustawienia** strony z aplikacją usługi LUIS, jak również w adresie URL (po `/apps/`) podczas edytowania aplikacji usługi LUIS. `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Za pomocą klucza usługi bezpłatne Tworzenie/modułu uruchamiającego podczas nauki korzystania z usługi LUIS, jest ważne, aby zmienić wartość klucza punktu końcowego z kluczem, który obsługuje Twoja [oczekiwane użycie usługi LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
 
-**Odpowiedzi HTTPS** zawiera wszystkie informacje zamiar i jednostek, LUIS można określić oparte na bieżący model publikowanych albo tymczasowym czy produkcyjnym punktu końcowego. Punkt końcowy adres URL znajduje się na [LUIS] [ LUIS] witryny sieci Web **publikowania** strony. 
+**Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web **Publikuj** strony. 
 
-## <a name="data-from-intents"></a>Dane z lokalizacji docelowych
-Danych podstawowych jest najwyższym oceniania **konwersji nazwy**. Przy użyciu `MyStore` [szybkiego startu](luis-quickstart-intents-only.md), odpowiedź punktu końcowego jest:
+## <a name="data-from-intents"></a>Dane z opcjami
+Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Za pomocą `MyStore` [Szybki Start](luis-quickstart-intents-only.md), odpowiedź na punkt końcowy jest:
 
 ```JSON
 {
@@ -46,9 +46,9 @@ Danych podstawowych jest najwyższym oceniania **konwersji nazwy**. Przy użyciu
 
 |Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|
-|Celem|Ciąg|topScoringIntent.intent|"GetStoreInfo"|
+|Przeznaczenie|Ciąg|topScoringIntent.intent|"GetStoreInfo"|
 
-Jeśli z chatbot lub aplikacji telefonicznej LUIS sprawia, że decyzje, w oparciu o więcej niż jeden wynik konwersji, zwróć wyniki wszystkich opcji przez ustawienie dla parametru querystring `verbose=true`. Odpowiedź punktu końcowego jest:
+Jeśli swoją aplikacją usługi LUIS wywołania lub chatbot podejmuje decyzję oparciu o więcej niż jeden wynik konwersji, zwracają wyniki wszystkich intencji, ustawiając parametr querystring `verbose=true`. Odpowiedź na punkt końcowy jest:
 
 ```JSON
 {
@@ -71,14 +71,14 @@ Jeśli z chatbot lub aplikacji telefonicznej LUIS sprawia, że decyzje, w oparci
 }
 ```
 
-Profile są uporządkowane z najwyższym do najmniejszej liczby punktów.
+Intencji są uporządkowane od najwyższego do najniższego wyniku.
 
 |Obiekt danych|Typ danych|Lokalizacja danych|Wartość|Wynik|
 |--|--|--|--|:--|
-|Celem|Ciąg|.intent intencje [0]|"GetStoreInfo"|0.984749258|
-|Celem|Ciąg|.intent intencje [1]|"None"|0.0168218873|
+|Przeznaczenie|Ciąg|.intent intencji [0]|"GetStoreInfo"|0.984749258|
+|Przeznaczenie|Ciąg|.intent intencji [1]|"None"|0.0168218873|
 
-Po dodaniu domen wbudowane konwersji wskazuje nazwa domeny, takie jak `Utilties` lub `Communication` oraz zamiar:
+Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, takich jak `Utilties` lub `Communication` oraz zamiar:
 
 ```JSON
 {
@@ -106,17 +106,17 @@ Po dodaniu domen wbudowane konwersji wskazuje nazwa domeny, takie jak `Utilties`
     
 |Domena|Obiekt danych|Typ danych|Lokalizacja danych|Wartość|
 |--|--|--|--|--|
-|Usługi użyteczności publicznej|Celem|Ciąg|.intent intencje [0]|"<b>Narzędzia</b>. ShowNext"|
-|Komunikacja|Celem|Ciąg|.intent intencje [1]|<b>Komunikacja</b>. StartOver"|
-||Celem|Ciąg|.intent intencje [2]|"None"|
+|Usługi użyteczności publicznej|Przeznaczenie|Ciąg|.intent intencji [0]|"<b>Narzędzia</b>. ShowNext"|
+|Komunikacja|Przeznaczenie|Ciąg|.intent intencji [1]|<b>Komunikacja</b>. StartOver"|
+||Przeznaczenie|Ciąg|.intent intencji [2]|"None"|
 
 
 ## <a name="data-from-entities"></a>Dane z jednostki
-Większość chatbots i aplikacje wymagają więcej niż nazwa konwersji. To dodatkowe, opcjonalne dane pochodzą z odnalezionych w utterance jednostek. Każdy typ jednostki zwraca różne informacje o zgodności. 
+Większość czatbotów i aplikacje muszą mieć więcej niż nazwa metody konwersji. To dodatkowe, opcjonalne dane pochodzą z odnalezionych w wypowiedź jednostek. Każdy typ jednostki, zwraca różne informacje o zgodności. 
 
-Pojedynczy wyraz lub frazę w utterance może dopasować więcej niż jednej jednostki. W takim przypadku każdy obiekt pasującego zostało zwrócone z jego wynik. 
+Więcej niż jednej jednostki może odnosić się pojedynczego wyrazu lub frazy w wypowiedź. W takim przypadku każdego pasującego obiektu jest zwracany za pomocą jego wynik. 
 
-Wszystkie obiekty są zwracane w **jednostek** tablicy odpowiedzi z punktu końcowego:
+Wszystkie jednostki są zwracane w **jednostek** tablicy odpowiedzi z punktu końcowego:
 
 ```JSON
 "entities": [
@@ -140,19 +140,19 @@ Wszystkie obiekty są zwracane w **jednostek** tablicy odpowiedzi z punktu końc
 ```
 
 ## <a name="tokenized-entity-returned"></a>Jednostka tokenami zwracana
-Kilka [kultur](luis-supported-languages.md#tokenization) zwracać obiekt jednostki z `entity` wartość [stokenizowanego](luis-glossary.md#token). StartIndex i endIndex zwrócony przez LUIS w obiekcie jednostki nie zostaną zamapowani na wartość nowego, tokenami tylko oryginalne zapytanie w kolejności, można programowo wyodrębnić raw jednostki. 
+Kilka [kultur](luis-supported-languages.md#tokenization) zwracają obiekt jednostki za pomocą `entity` wartość [stokenizowana](luis-glossary.md#token). StartIndex i endIndex zwrócony przez usługi LUIS w obiekcie jednostki nie są mapowane na nowe, tokenami wartość tylko do oryginalnego zapytania w celu uzyskania programowo Wyodrębnij nieprzetworzona jednostki. 
 
-Na przykład w języku niemieckim, wyraz `das Bauernbrot` jest stokenizowana do `das bauern brot`. Wartość tokenami `das bauern brot`, jest zwracany i oryginalne wartości można programowo ustalić na podstawie startIndex i endIndex oryginalne zapytanie, umożliwiając `das Bauernbrot`.
+Na przykład w języku niemieckim, wyraz `das Bauernbrot` jest stokenizowana do `das bauern brot`. Wartość tokenami `das bauern brot`, jest zwracana i oryginalne wartości można programowo ustalić na podstawie startIndex i endIndex oryginalne zapytanie, zapewniając `das Bauernbrot`.
 
-## <a name="simple-entity-data"></a>Proste jednostek danych
+## <a name="simple-entity-data"></a>Proste jednostki danych
 
-A [jednostki prostej](luis-concept-entity-types.md) jest wartością rozpoznane maszyny. Może być słowo lub frazę. 
+A [jednostki prostej](luis-concept-entity-types.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy. 
 
 `Bob Jones wants 3 meatball pho`
 
-W poprzednich utterance `Bob Jones` jest oznaczona jako prosty `Customer` jednostki.
+W poprzednim wypowiedź `Bob Jones` jest oznaczona jako prosty `Customer` jednostki.
 
-Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezionych tekst ze utterance, lokalizację odnalezionych tekst i wynik:
+Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezione tekst z wypowiedź, lokalizacja odnalezionych tekstu i oceny:
 
 ```JSON
 "entities": [
@@ -168,17 +168,17 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki, odnalezionych tekst
 
 |Obiekt danych|Nazwa jednostki|Wartość|
 |--|--|--|
-|Proste jednostki|"Klient"|"bob Nowak"|
+|Proste jednostki|"Klient"|"bob jones"|
 
-## <a name="hierarchical-entity-data"></a>Hierarchiczna jednostek danych
+## <a name="hierarchical-entity-data"></a>Dane hierarchiczne jednostki
 
-[Hierarchiczna](luis-concept-entity-types.md) jednostki są rozpoznawane maszyny i mogą zawierać słowo lub frazę. Elementy podrzędne są identyfikowane przez kontekst. Jeśli szukasz relacji nadrzędny podrzędny z tekstu dokładnego dopasowania, użyj [listy](#list-entity-data) jednostki. 
+[Hierarchiczna](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Elementy podrzędne są identyfikowane przez kontekst. Jeśli szukasz relacji nadrzędny podrzędny z dopasowaniem tekstu do dokładnego dopasowania użyj [listy](#list-entity-data) jednostki. 
 
 `book 2 tickets to paris`
 
-W poprzednich utterance `paris` etykietą `Location::ToLocation` podrzędnym `Location` hierarchiczna jednostki. 
+W poprzednim wypowiedź `paris` jest oznaczona etykietą `Location::ToLocation` podrzędnym `Location` hierarchiczne jednostki. 
 
-Dane zwrócone z punktu końcowego obejmuje nazwa jednostki i nazwa elementu podrzędnego, odnalezionych tekst ze utterance, lokalizację odnalezionych tekst i wynik: 
+Dane zwrócone z punktu końcowego obejmuje nazwa jednostki i nazwa elementu podrzędnego, odnalezionych tekst z wypowiedź, lokalizacja odnalezionych tekstu i oceny: 
 
 ```JSON
 "entities": [
@@ -194,18 +194,18 @@ Dane zwrócone z punktu końcowego obejmuje nazwa jednostki i nazwa elementu pod
 
 |Obiekt danych|Nadrzędny|Podrzędne|Wartość|
 |--|--|--|--|--|
-|Hierarchiczna jednostki|Lokalizacja|ToLocation|"Paryża"|
+|Hierarchiczna jednostki|Lokalizacja|ToLocation|"Paryż"|
 
 ## <a name="composite-entity-data"></a>Dane złożone jednostki
-[Złożone](luis-concept-entity-types.md) jednostki są rozpoznawane maszyny i mogą zawierać słowo lub frazę. Rozważmy na przykład złożonego jednostki wbudowane `number` i `Location::ToLocation` z następujących utterance:
+[Złożone](luis-concept-entity-types.md) jednostki są rozpoznane przez maszynę i może zawierać słowo lub frazę. Na przykład, należy wziąć pod uwagę złożonego jednostki wstępnie `number` i `Location::ToLocation` za pomocą następujących wypowiedź:
 
 `book 2 tickets to paris`
 
-Zwróć uwagę, że `2`, liczba, i `paris`, ToLocation ma słowa między nimi, które nie są częścią dowolne jednostki. Zielony podkreślenia, używany w etykietą utterance w [LUIS] [ LUIS] witryny sieci Web, wskazuje złożonego jednostki.
+Należy zauważyć, że `2`, liczba i `paris`, ToLocation mają słowa między nimi, które nie należą do żadnej z jednostki. Zielonym podkreśleniem, używane w etykietami wypowiedź w [LUIS](luis-reference-regions.md) witryny sieci Web, wskazuje obiekt złożony.
 
 ![Złożone jednostki](./media/luis-concept-data-extraction/composite-entity.png)
 
-Złożone jednostki są zwracane w `compositeEntities` tablicy a wszystkimi jednostkami w złożone są także zwracany w `entities` tablicy:
+Złożone jednostki są zwracane w `compositeEntities` tablicy i wszystkich jednostek w ramach złożonego jest także zwracany w `entities` tablicy:
 
 ```JSON
   "entities": [
@@ -253,23 +253,23 @@ Złożone jednostki są zwracane w `compositeEntities` tablicy a wszystkimi jedn
 
 |Obiekt danych|Nazwa jednostki|Wartość|
 |--|--|--|
-|Wbudowane jednostki — numer|"builtin.number"|"2"|
-|Hierarchiczna jednostki - lokalizacji|"Location::ToLocation"|"Paryża"|
+|Wstępnie utworzone jednostki — liczba|"builtin.number"|"2"|
+|Hierarchiczna jednostce — lokalizacji|"Location::ToLocation"|"Paryż"|
 
-## <a name="list-entity-data"></a>Listy danych jednostki
+## <a name="list-entity-data"></a>Lista danych jednostki
 
-A [listy](luis-concept-entity-types.md) jednostki jest nie maszyny rozpoznana. Konieczne jest dopasowanie dokładne tekstu. Lista reprezentuje elementy na liście oraz synonimy dla tych elementów. LUIS oznacza wszystkie dopasowania do elementu w żadnej listy jako jednostki w odpowiedzi. Synonim może znajdować się na liście więcej niż jeden. 
+A [listy](luis-concept-entity-types.md) jednostki jest nie maszyny do opanowania. Konieczne jest dopasowanie tekstu do dokładnego dopasowania. Lista reprezentuje elementy na liście wraz z synonimami tych elementów. Usługa LUIS oznacza jakiegokolwiek dopasowania do elementu w dowolnej listy jako jednostki w odpowiedzi. Jest to synonim mogą mieć więcej niż jednej listy. 
 
-Załóżmy, że aplikacja ma listę o nazwie `Cities`, dzięki czemu dla zmian nazwy Miasto, w tym miejscowość lotnisku (Sea ODP), kod lotnisku (SEA), kod pocztowy (98101) i telefonu numer kierunkowy (206). 
+Załóżmy, że aplikacja ma listę o nazwie `Cities`, dzięki czemu dla zmian nazwy miast, w tym mieście Kuwejcie (Sea tac), kod lotniska (SEA), kod pocztowy zip (98101) i numer kierunkowy telefonu (206). 
 
-|Element listy|Element synonimy|
+|Element listy|Synonimy — element|
 |---|---|
-|Seattle|Odp SEA, sea, 98101, 206, + 1 |
+|Seattle|Odp morza, Morza, 98101, 206 + 1 |
 |Paryż|cdg, roissy historii, 75001, 1, +33|
 
 `book 2 tickets to paris`
 
-W poprzednich utterance, słowa `paris` jest zamapowany do elementu Paryża jako część `Cities` listy jednostki. Jednostka listy jest zgodny zarówno znormalizowaną nazwę elementu, a także synonimy elementu. 
+W poprzednim wypowiedź, wyraz `paris` jest mapowany na element Paryż jako część `Cities` listy jednostek. Jednostka listy dopasowuje zarówno znormalizowaną nazwę elementu, jak i synonimy elementu. 
 
 ```JSON
 "entities": [
@@ -287,7 +287,7 @@ W poprzednich utterance, słowa `paris` jest zamapowany do elementu Paryża jako
 ]
 ```
 
-Inny utterance przykład, przy użyciu synonim Paryża:
+Inny wypowiedź przykładzie, za pomocą synonim dla Paryż:
 
 `book 2 tickets to roissy`
 
@@ -307,8 +307,8 @@ Inny utterance przykład, przy użyciu synonim Paryża:
 ]
 ```
 
-## <a name="prebuilt-entity-data"></a>Wbudowane jednostek danych
-[Wbudowane](luis-concept-entity-types.md) jednostek są odnajdywane w oparciu o dopasowanie wyrażenia regularnego przy użyciu open source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Wbudowane jednostki są zwracane w tablicy jednostek i użyj nazwy typu i jest poprzedzony prefiksem `builtin::`. Następujący tekst jest utterance przykład z zwrócone jednostki wbudowane:
+## <a name="prebuilt-entity-data"></a>Wstępnie utworzone jednostki danych
+[Wstępnie utworzone](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Wstępnie utworzone jednostki są zwracane w tablicy jednostek i użyj nazwy typu prefiksem `builtin::`. Poniższy tekst to wypowiedź przykład za pomocą zwrócone ze wstępnie utworzonych jednostek:
 
 `Dec 5th send to +1 360-555-1212`
 
@@ -392,7 +392,7 @@ Inny utterance przykład, przy użyciu synonim Paryża:
 ``` 
 
 ## <a name="regular-expression-entity-data"></a>Wyrażenie regularne danych dotyczących jednostki
-[Wyrażenie regularne](luis-concept-entity-types.md) jednostek są odnajdywane w oparciu o dopasowanie wyrażenia regularnego przy użyciu wyrażenia podawane podczas tworzenia jednostki. Korzystając z `kb[0-9]{6}` jako wyrażenie regularne definicji jednostki, następującą odpowiedź JSON jest utterance przykład z jednostek zwracanych wyrażeń regularnych dla zapytania `When was kb123456 published?`:
+[Wyrażenie regularne](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu wyrażenia podane podczas tworzenia jednostki. Korzystając z `kb[0-9]{6}` jako jej definicję wyrażenia regularnego, następującą odpowiedź JSON jest wypowiedź przykład z jednostkami zwrócone wyrażenie regularne dla zapytania `When was kb123456 published?`:
 
 ```JSON
 {
@@ -422,20 +422,20 @@ Inny utterance przykład, przy użyciu synonim Paryża:
 }
 ```
 
-## <a name="extracting-names"></a>Wyodrębnianie nazw
-Pobieranie nazwy z utterance jest trudne, ponieważ nazwa może być praktycznie dowolnej kombinacji literami i wyrazami. W zależności od tego, jakiego typu o nazwie zostaną wyodrębnione masz kilka opcji. Nie są reguły, ale dodatkowe wskazówki. 
+## <a name="extracting-names"></a>Trwa wyodrębnianie nazw
+Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niemal dowolną kombinację literami i wyrazami. W zależności od tego, jakiego rodzaju nazwy zostaną wyodrębnione masz kilka opcji. Nie są reguły, ale dodatkowe wskazówki. 
 
-### <a name="names-of-people"></a>Nazwy użytkowników
-Nazwy użytkowników może mieć niektóre nieznaczne format, w zależności od języka i kultury. Użyj hierarchiczna jednostki z imiona i nazwiska jako elementy podrzędne lub jednostki prostej z rolami imię i nazwisko. Upewnij się, że znajdują się przykłady używających imię i nazwisko w różnych części utterance, zniesławiających różne długości i zniesławiających we wszystkich opcji tym brak konwersji. [Przegląd](label-suggested-utterances.md) zniesławiających punktu końcowego na bieżąco etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+### <a name="names-of-people"></a>Nazwiska osób
+Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Za pomocą hierarchicznych jednostki imiona i nazwiska jako elementy podrzędne, lub Użyj prostego jednostki przy użyciu ról imię i nazwisko. Pamiętaj nadać przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
-### <a name="names-of-places"></a>Nazwy miejsca
-Ustaw nazwy lokalizacji i znany, takich jak miast, powiatów stanów, prowincje i krajów. Jeśli aplikacja korzysta z zestawu znanych lokalizacji, należy wziąć pod uwagę jednostki listy. Aby dowiedzieć się, że wszystkie umieścić nazwy należy utworzyć jednostki prostej i udostępniać różne przykłady. Dodaj listę frazy nazwy miejsce do wymuszania sytuacji, w jakie miejsce nazwy przypominają w aplikacji. [Przegląd](label-suggested-utterances.md) zniesławiających punktu końcowego na bieżąco etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+### <a name="names-of-places"></a>Nazwy miejsc
+Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Jeśli aplikacja korzysta z zestawu wie, lokalizacji, należy wziąć pod uwagę obiektami listy. Jeśli trzeba znaleźć umieścić wszystkie nazwy, tworzenie prostego jednostki i obejmują różnorodne przykłady. Dodaj frazy listę nazw miejsce do potwierdzenia, jakie miejsce nazwy jak wyglądają w swojej aplikacji. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
-### <a name="new-and-emerging-names"></a>Nazwy nowych i pojawiających się
-Niektóre aplikacje wymagają można było znaleźć nowych i pojawiających się nazwy, takie jak produkty lub firmy. Jest to typ najtrudniejsze wyodrębniania danych. Rozpoczyna się od podmiotu prostego i dodać listę frazę. [Przegląd](label-suggested-utterances.md) zniesławiających punktu końcowego na bieżąco etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
+Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. To jest najtrudniejsze typu wyodrębnianie danych. Zaczynają się od prostego jednostki i Dodawanie listy fraz. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
-## <a name="pattern-roles-data"></a>Dane ról wzorca
-Role są kontekstowe różnice jednostek. 
+## <a name="pattern-roles-data"></a>Wzorzec role danych
+Role różnią się kontekstowych jednostek. 
 
 ```JSON
 {
@@ -496,7 +496,7 @@ Role są kontekstowe różnice jednostek.
 ```
 
 ## <a name="patternany-entity-data"></a>Pattern.any danych dotyczących jednostki
-Pattern.any jednostki to jednostki o zmiennej długości, używany w szablonie zniesławiających z [wzorzec](luis-concept-patterns.md). 
+Jednostki pattern.any to jednostki o zmiennej długości, używane w wypowiedzi szablonu z [wzorzec](luis-concept-patterns.md). 
 
 ```JSON
 {
@@ -541,12 +541,12 @@ Pattern.any jednostki to jednostki o zmiennej długości, używany w szablonie z
 
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
-Jeśli skonfigurowano analizy wskaźniki nastrojów klientów, odpowiedź w formacie json LUIS obejmuje analizy wskaźniki nastrojów klientów. Dowiedz się więcej na temat analizy wskaźniki nastrojów klientów w [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
+Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej na temat analizy tonacji w [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
 
-### <a name="sentiment-data"></a>Wskaźniki nastrojów klientów danych
-Wskaźniki nastrojów klientów danych jest wynikiem między 1 i wskazujący dodatnich 0 (bliżej 1) lub ujemną (bliżej 0) wskaźniki nastrojów klientów danych.
+### <a name="sentiment-data"></a>Dane opinii
+Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych.
 
-Gdy jest kultury `en-us`, odpowiedź jest:
+Gdy jest kultura `en-us`, odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
@@ -555,7 +555,7 @@ Gdy jest kultury `en-us`, odpowiedź jest:
 }
 ```
 
-Dla wszystkich innych kultur odpowiedź jest:
+Dla wszystkich innych języków odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
@@ -564,8 +564,8 @@ Dla wszystkich innych kultur odpowiedź jest:
 ```
 
 
-### <a name="key-phrase-extraction-entity-data"></a>Hasło klucza wyodrębniania danych dotyczących jednostki
-Hasło klucza jednostki wyodrębniania zwraca fraz klucza w utterance, dostarczone przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+### <a name="key-phrase-extraction-entity-data"></a>Dane jednostki wyodrębnianie kluczowych fraz
+Jednostki wyodrębnianie kluczowych fraz zwraca kluczowych fraz w wypowiedź, dostarczone przez [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 <!-- TBD: verify JSON-->
 ```JSON
@@ -577,11 +577,11 @@ Hasło klucza jednostki wyodrębniania zwraca fraz klucza w utterance, dostarczo
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Dopasowywanie wiele jednostek danych
-LUIS zwraca wszystkich jednostek w utterance. W związku z tym chatbot Twojego może być konieczne podjęcie decyzji na podstawie wyników. Utterance może mieć wiele jednostek w utterance:
+Usługa LUIS zwraca wszystkie jednostki w wypowiedź. Co w efekcie Twoja chatbot może być konieczne podejmowanie decyzji na podstawie wyników. Wypowiedź może mieć wiele jednostek w wypowiedź:
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-Punkt końcowy LUIS umożliwia odnalezienie tych samych danych w różnych obiektów: 
+Punkt końcowy usługi LUIS można odnajdywanie tych samych danych w różnych jednostkach: 
 
 ```JSON
 {
@@ -709,6 +709,4 @@ Punkt końcowy LUIS umożliwia odnalezienie tych samych danych w różnych obiek
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania do aplikacji LUIS jednostek.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.

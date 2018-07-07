@@ -115,6 +115,8 @@
   items:
     - name: Często zadawane pytania
       href: FAQs.md
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
     - name: Eksportowanie i usuwanie danych konta

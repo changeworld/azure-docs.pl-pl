@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856209"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37887780"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -245,9 +245,13 @@ Centrum usługi edge, która jest częścią środowiska uruchomieniowego usług
 ### <a name="resolution"></a>Rozwiązanie
 Dla przeglądarki edge hub ustawić zmienną środowiskową **OptimizeForPerformance** do **false**. Istnieją dwa sposoby, w tym celu:
 
-W interfejsie użytkownika: W portalu pochodzące ze *szczegóły urządzenia*->*Ustaw moduły*->*skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge*, Utwórz środowisko zmiennej o nazwie *OptimizeForPerformance* który jest skonfigurowany do *false* dla *Centrum usługi Edge*.
+W Interfejsie użytkownika: 
+
+W portalu pochodzące ze *szczegóły urządzenia*->*Ustaw moduły*->*skonfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge*, Utwórz zmienną środowiskową wywołuje się *OptimizeForPerformance* który jest skonfigurowany do *false* dla *Centrum usługi Edge*.
 
 ![optimizeforperformance][img-optimize-for-perf]
+
+**OR**
 
 W manifeście wdrożenia:
 

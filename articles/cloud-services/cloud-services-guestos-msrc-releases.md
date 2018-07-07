@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/3/2018
+ms.date: 7/6/2018
 ms.author: raiye
-ms.openlocfilehash: 5fe3bd3bd63c08d779abffdac6b214989fd3970f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860065"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902167"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
 
-## <a name="may-guest-os"></a>Może być systemy operacyjne gościa
+## <a name="june-guest-os"></a>System operacyjny gościa czerwca
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
 | --- | --- | --- | --- | --- |
 | ReL 18-06 | [4284880] |Zabezpieczenia systemu Windows 10 |5.20 |12 czerwca 2018 r. |

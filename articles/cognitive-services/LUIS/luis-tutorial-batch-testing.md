@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 27d6bbc628ac3183032a90d8f3ad98998c76a957
+ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867345"
+ms.locfileid: "37888834"
 ---
 # <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Umożliwia testowanie partii znajdowanie problemów, dokładności prognozy
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * W tym artykule, należy również [LUIS][LUIS] konta, aby utworzyć aplikację usługi LUIS.
+> * W tym artykule, należy również [LUIS](luis-reference-regions.md) konta, aby utworzyć aplikację usługi LUIS.
 
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
@@ -41,7 +41,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="create-new-app"></a>Tworzenie nowej aplikacji
 W tym artykule korzysta ze wstępnie utworzonych domen HomeAutomation. Wstępnie utworzone domeny ma intencji, jednostek i wypowiedzi do kontrolowania urządzeń HomeAutomation, takich jak światła. Tworzenie aplikacji, dodać domenę, uczenie i publikowanie.
 
-1. W [LUIS] witryny sieci Web, Utwórz nową aplikację, wybierając **Utwórz nową aplikację** na **MyApps** strony. 
+1. W [LUIS](luis-reference-regions.md) witryny sieci Web, Utwórz nową aplikację, wybierając **Utwórz nową aplikację** na **MyApps** strony. 
 
     ![Tworzenie nowej aplikacji](./media/luis-tutorial-batch-testing/create-app-1.png)
 
