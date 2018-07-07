@@ -1,6 +1,6 @@
 ---
-title: Połącz Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć Azure stosu
+title: Nawiązywanie połączenia usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć usługę Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: mabrigg
-ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 21015d31a738d3ad57048fe4a703bf78dda7e40c
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26636181"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865774"
 ---
 # <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
-Aby zarządzać zasobami, należy połączyć Azure stosu Development Kit. Szczegóły tego artykułu kroki wymagane do nawiązania połączenia z zestawem deweloperskim. Możesz użyć dowolnej z następujących opcji połączenia:
+Aby zarządzać zasobami, możesz nawiązać Azure Stack Development Kit. Ten artykuł zawiera kroki wymagane do połączenia z deweloperski. Można użyć jednej z następujących opcji połączenia:
 
-* [Pulpit zdalny](#connect-with-remote-desktop): umożliwia pojedynczego użytkownika równoczesnych szybko nawiązywanie połączenia z zestaw deweloperski.
-* [Wirtualnej sieci prywatnej (VPN)](#connect-with-vpn): umożliwia łączenie wielu równoczesnych użytkowników z klientów poza infrastruktury Azure stosu (wymaga konfiguracji).
+* [Pulpit zdalny](#connect-with-remote-desktop): umożliwia pojedynczego użytkownika współbieżnych szybko Nawiąż kontakt z zestawu SDK.
+* [Wirtualnej sieci prywatnej (VPN)](#connect-with-vpn): umożliwia jednoczesną pracę wielu użytkowników połączenia od klientów poza infrastruktury Azure Stack (wymaga konfiguracji).
 
-## <a name="connect-to-azure-stack-with-remote-desktop"></a>Połącz stos Azure przy użyciu pulpitu zdalnego
-Za pomocą połączenia pulpitu zdalnego pojedynczego użytkownika równoczesnych może współpracować z portalu do zarządzania zasobami.
+## <a name="connect-to-azure-stack-with-remote-desktop"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu pulpitu zdalnego
+Za pomocą połączenia pulpitu zdalnego pojedynczy równoczesny użytkownik może współpracować z portalu do zarządzania zasobami.
 
-1. Otwórz Podłączanie pulpitu zdalnego i połącz się z zestawem deweloperskim. Wprowadź **AzureStack\AzureStackAdmin** jako nazwa użytkownika i hasło administracyjne podane podczas instalacji stosu Azure.  
+1. Otwórz Podłączanie pulpitu zdalnego i połącz development Kit. Wprowadź **AzureStack\AzureStackAdmin** jako nazwy użytkownika i hasło administracyjne, podane podczas instalacji usługi Azure Stack.  
 
-2. Na komputerze dewelopera zestawu, otwórz Menedżera serwera kliknij **lokalnego serwera**, wyłącz zwiększonych zabezpieczeń programu Internet Explorer, a następnie Zamknij Menedżera serwera.
+2. Na komputerze deweloperskim zestaw, otwórz Menedżera serwera kliknij **lokalnego serwera**, wyłącz zwiększonych zabezpieczeń programu Internet Explorer, a następnie Zamknij Menedżera serwera.
 
 3. Aby otworzyć portal, przejdź do (https://portal.local.azurestack.external/) i zaloguj się przy użyciu poświadczeń użytkownika.
 
 
-## <a name="connect-to-azure-stack-with-vpn"></a>Połącz Azure stos z siecią VPN
+## <a name="connect-to-azure-stack-with-vpn"></a>Nawiązywanie połączenia usługi Azure Stack za pomocą połączenia VPN
 
-Można utworzyć tunel podziału połączenia wirtualnej sieci prywatnej (VPN) Azure stosu Development Kit. Za pośrednictwem połączenia sieci VPN mogą korzystać z portalu administratora portalu użytkownika i narzędzi, takich jak Visual Studio i programu PowerShell do zarządzania zasobami Azure stosu zainstalowane lokalnie. Połączenie z siecią VPN jest obsługiwana w obu Directory(AAD) Active Azure i Active Directory Federation Services(AD FS) na podstawie wdrożeń. Połączenia sieci VPN Włącz wielu klientom na łączenie się do stosu Azure w tym samym czasie. 
+Aby ustanowić podzielony tunel połączenia wirtualnej sieci prywatnej (VPN, Virtual Private Network) do usługi Azure Stack Development Kit. Za pomocą połączenia sieci VPN mogą uzyskiwać dostęp do portalu administratora portalu użytkowników i zainstalowane lokalnie narzędzi, takich jak Visual Studio i PowerShell do zarządzania zasobami usługi Azure Stack. Połączenie z siecią VPN jest obsługiwane w obu o Active Azure i Active Directory Federation Services(AD FS) na podstawie wdrożeń. Połączenia sieci VPN umożliwiają wielu klientów do łączenia z usługą Azure Stack w tym samym czasie. 
 
 > [!NOTE] 
-> To połączenie VPN nie zapewnia łączności z infrastruktury Azure stosu maszyn wirtualnych. 
+> To połączenie VPN nie zapewnia łączności na maszynach wirtualnych infrastruktury Azure Stack. 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [stosu Azure zgodne Azure PowerShell](azure-stack-powershell-install.md) na komputerze lokalnym.  
-* Pobierz [narzędzia niezbędne do pracy z stosu Azure](azure-stack-powershell-download.md). 
+* Zainstaluj [zgodne Azure PowerShell usługi Azure Stack](azure-stack-powershell-install.md) na komputerze lokalnym.  
+* Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md). 
 
 ### <a name="configure-vpn-connectivity"></a>Konfigurowanie połączeń sieci VPN
 
-Aby utworzyć połączenie sieci VPN w taki sposób, aby zestaw deweloperski, otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień z komputera lokalnego z systemem Windows i uruchom następujący skrypt (Pamiętaj zaktualizować wartości adresów i haseł IP dla danego środowiska):
+Aby utworzyć połączenie sieci VPN w taki sposób, aby zestaw development kit, otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień z komputera lokalnego z systemem Windows, a następnie uruchom następujący skrypt (Pamiętaj zaktualizować wartości IP adres i hasło dla danego środowiska):
 
 ```PowerShell 
 # Configure winrm if it's not already configured
@@ -63,7 +63,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module
 Import-Module .\Connect\AzureStack.Connect.psm1 
 
-# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the the IP address and password values for your environment. 
+# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the IP address and password values for your environment. 
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -89,7 +89,7 @@ Jeśli konfiguracja zakończy się pomyślnie, powinien zostać wyświetlony **a
 
 ### <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
-Połącz się z wystąpieniem stosu Azure przy użyciu jednej z następujących dwóch metod:  
+Połącz się z wystąpieniem usługi Azure Stack przy użyciu jednej z następujących dwóch metod:  
 
 * Za pomocą `Connect-AzsVpn ` polecenia: 
     
@@ -98,15 +98,15 @@ Połącz się z wystąpieniem stosu Azure przy użyciu jednej z następujących 
     -Password $Password
   ```
 
-  Po wyświetleniu monitu zaufania hosta stosu Azure i instalowania certyfikatu z **AzureStackCertificateAuthority** na magazynie certyfikatów komputera lokalnego. (monit może wyglądać za oknem sesji programu PowerShell). 
+  Po wyświetleniu monitu zaufania hosta usługi Azure Stack i zainstalować certyfikat z **AzureStackCertificateAuthority** na magazynie certyfikatów komputera lokalnego. (monit może pojawić się za zaporą w oknie sesji programu PowerShell.) 
 
 * Otwórz na komputerze lokalnym **ustawienia sieciowe** > **VPN** > kliknij **azurestack** > **połączyć**. W wierszu logowania wprowadź nazwę użytkownika (AzureStack\AzureStackAdmin) i hasło.
 
-### <a name="test-the-vpn-connectivity"></a>Przetestowanie łączności z siecią VPN
+### <a name="test-the-vpn-connectivity"></a>Testowanie łączności sieci VPN
 
-Aby przetestować połączenie portalu, otwórz przeglądarkę internetową i przejdź do portalu użytkowników (https://portal.local.azurestack.external/), zaloguj się i utworzyć zasobów.  
+Aby przetestować połączenie z portalu, otwórz przeglądarkę internetową i przejdź do portalu użytkowników (https://portal.local.azurestack.external/), zaloguj się, jak i tworzenia zasobów.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 
 
