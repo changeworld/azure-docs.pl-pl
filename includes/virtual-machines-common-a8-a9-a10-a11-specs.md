@@ -5,35 +5,36 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.date: 05/29/2018
+ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: ee32886ddb74bdbbe0f240310629c8ef26230a68
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "34669350"
 ---
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
-* **Subskrypcja platformy Azure** — Aby wdrożyć więcej niż kilka wystąpień obliczeniowych, należy wziąć pod uwagę z subskrypcji lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
+* **Subskrypcja platformy Azure** — Aby wdrożyć więcej niż kilka wystąpień obliczeniowych, należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 
-* **Cennik i dostępności** -rozmiarów tych maszyn wirtualnych są oferowane tylko w standardowej warstwie cenowej. Sprawdź [produkty dostępne według regionu] (https://azure.microsoft.com/regions/services/) dostępności w regionach platformy Azure. 
-* **Limit przydziału rdzeni** — może być konieczne zwiększyć limit przydziału rdzeni w subskrypcji platformy Azure z wartości domyślnej. Subskrypcją również może ograniczyć liczbę rdzeni, którą można wdrożyć w niektórych rodzin rozmiar maszyny Wirtualnej, w tym serię H. Aby zażądać zwiększenia limitu przydziału [otwarcia żądania pomocy technicznej online klienta](../articles/azure-supportability/how-to-create-azure-support-request.md) bez dodatkowych opłat. (Domyślne limity może się różnić w zależności od kategorii subskrypcji).
+* **Ceny i dostępności** -rozmiarów maszyn wirtualnych te są oferowane tylko w standardowej warstwy cenowej. Sprawdź [dostępne produkty według regionu] (https://azure.microsoft.com/regions/services/) dostępność w regionach platformy Azure. 
+* **Limit przydziału rdzeni** — może być konieczne zwiększyć limit przydziału rdzeni w ramach subskrypcji platformy Azure z wartości domyślnej. Twoja subskrypcja może także ograniczać liczbę rdzeni, które można wdrożyć w maszynie Wirtualnej rodzinach o określonym rozmiarze, łącznie z serii h. Aby zażądać zwiększenia limitu przydziału [Otwórz żądanie obsługi klienta online](../articles/azure-supportability/how-to-create-azure-support-request.md) bez dodatkowych opłat. (Domyślne limity mogą się różnić w zależności od kategorii subskrypcji).
   
   > [!NOTE]
-  > Jeśli masz wymagana pojemność na dużą skalę, skontaktuj się z pomocą techniczną platformy Azure. Przydziały Azure są środki ogranicza nie gwarantuje pojemności. Niezależnie od limitu przydziału naliczane są tylko opłaty dla rdzeni użycie.
+  > Jeśli masz zapotrzebowanie na pojemność, skontaktuj się z działem pomocy technicznej systemu Azure. Przydziały dla platformy Azure dotyczą środków limitów, nie w zakresie pojemności. Niezależnie od limitu przydziału opłaty są naliczane tylko za rdzenie użycie.
   > 
   > 
-* **Sieć wirtualna** — moduł Azure [sieci wirtualnej](https://azure.microsoft.com/documentation/services/virtual-network/) nie trzeba używać wystąpień obliczeniowych. Jednak w przypadku wielu wdrożeń należy co najmniej oparte na chmurze sieci wirtualnej platformy Azure lub połączenie lokacja lokacja Jeśli musisz uzyskiwać dostęp do zasobów lokalnych. W razie potrzeby utwórz nową sieć wirtualną, aby wdrożyć wystąpienia. Dodawanie obliczeniowych maszyn wirtualnych do sieci wirtualnej w grupie koligacji nie jest obsługiwane.
-* **Zmiana rozmiaru** — ze względu na ich specjalne sprzętu można rozmiaru wystąpień obliczeniowych w ramach tej samej rodziny rozmiaru (serii H lub obliczeniowych A-series). Na przykład można zmienić tylko wirtualna H-series, z jedną rozmiar z serii H do innego. Ponadto zmiana rozmiaru od rozmiaru nie obliczeniowych do rozmiaru obliczeniowych nie jest obsługiwane.  
+* **Sieć wirtualna** — Azure [sieci wirtualnej](https://azure.microsoft.com/documentation/services/virtual-network/) nie muszą korzystać z wystąpień obliczeniowych. Jednak dla wielu wdrożeń należy co najmniej oparte na chmurze sieć wirtualną platformy Azure lub połączenia lokacja lokacja — Jeśli potrzebujesz dostępu do zasobów w środowisku lokalnym. W razie potrzeby, Utwórz nową sieć wirtualną do wdrożenia wystąpienia. Dodawanie maszyn wirtualnych intensywnie do sieci wirtualnej w grupie koligacji nie jest obsługiwane.
+* **Zmiana rozmiaru** — ze względu na ich specjalistycznego sprzętu, można tylko zmienić rozmiar mocy obliczeniowej wystąpień w ramach tej samej rodziny rozmiaru (seria H lub mocy obliczeniowej serii A). Na przykład można tylko zmienić rozmiar Maszynie wirtualnej serii H z jednego wystąpienia serii H rozmiaru do innego. Ponadto zmiana rozmiaru z innych niż intensywnych obliczeń rozmiaru rozmiarowi intensywnych obliczeń nie jest obsługiwane.  
 
-## <a name="rdma-capable-instances"></a>Z funkcją RDMA wystąpień
-Podzbiór wystąpień obliczeniowych (H16r, H16mr A8 i A9) funkcji interfejsu sieciowego dla zdalnego pamięci bezpośredniego dostępu (do pamięci RDMA) łączności. (Oznaczone ciągiem "r", takie jak NC24r rozmiary wybranej serii N są także z funkcją RDMA). Ten interfejs jest oprócz interfejsu standardowe sieć platformy Azure, dostępne dla innych rozmiarów maszyn wirtualnych. 
+## <a name="rdma-capable-instances"></a>Wystąpienia z obsługą dostępu RDMA
+Podzbiór wystąpień mocy obliczeniowej (H16r, H16mr, A8 i A9) są wyposażone w interfejs sieciowy, łączność dostępu (RDMA) zdalnego pamięci. (Rozmiary wybranych serii N oznaczone ciągiem "r", takich jak NC24r również są funkcją RDMA). Ten interfejs jest oprócz interfejsu standardowa sieci platformy Azure dostępne dla innych rozmiarów maszyn wirtualnych. 
   
-Ten interfejs umożliwia wystąpienia z funkcją RDMA do komunikacji za pośrednictwem sieci InfiniBand (IB), działających z rozdzielczością stawki FDR H16r, H16mr i z funkcją RDMA N-serii maszyn wirtualnych i szybkości QDR A8 i A9 maszyn wirtualnych. Tych funkcji RDMA może zwiększyć skalowalność i wydajność niektórych aplikacji komunikat interfejsu (Passing Interface).
+Ten interfejs umożliwia obsługą dostępu RDMA wystąpień do komunikowania się za pośrednictwem sieci InfiniBand (IB), działające na stawki FDR H16r, H16mr i obsługą dostępu RDMA seria maszyn wirtualnych i QDR stawki za maszyny wirtualne A8 i A9. Te możliwości RDMA może zwiększyć skalowalność i wydajność niektórych aplikacji interfejsu przekazywania komunikatów (MPI).
 
 > [!NOTE]
-> IP przez IB nie jest obsługiwana na platformie Azure. Tylko RDMA over IB jest obsługiwana.
+> IP over IB nie jest obsługiwana na platformie Azure. Tylko RDMA over IB jest obsługiwane.
 >
 
-Wdrażanie maszyn wirtualnych z funkcją RDMA HPC w tym samym zestawie dostępności lub zestaw skali maszyny Wirtualnej (przy użyciu modelu wdrażania usługi Azure Resource Manager) lub samej usługi w chmurze (przy użyciu klasycznego modelu wdrażania). Postępuj zgodnie z dodatkowymi wymaganiami dotyczącymi z funkcją RDMA HPC maszyn wirtualnych do uzyskania dostępu do sieci Azure RDMA.
+Wdróż obsługą dostępu RDMA maszyn wirtualnych HPC, w tym samym zestawie dostępności lub zestawie skalowania maszyn wirtualnych (Jeśli używasz modelu wdrażania usługi Azure Resource Manager) lub samej usługi w chmurze (Jeśli używasz klasycznego modelu wdrażania). Jeśli używasz zestawu skalowania maszyn wirtualnych, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania; na przykład w szablonie usługi Resource Manager, należy ustawić *singlePlacementGroup* właściwości *true*. Wykonaj dodatkowe wymagania z funkcją RDMA HPC maszyn wirtualnych dostęp do sieci RDMA na platformie Azure.
