@@ -74,7 +74,7 @@ Najpierw musisz skonfigurować dwie wtyczki usługi Jenkins: **NodeJS** i **VS T
 3. Odfiltruj listę, aby zlokalizować wtyczkę **NodeJS**, a następnie wybierz opcję **Install without restart** (Instaluj bez ponownego uruchamiania).
     ![Dodawanie wtyczki NodeJS do usługi Jenkins](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
 4. Odfiltruj listę, aby odnaleźć wtyczkę **VS Team Services Continuous Deployment**, a następnie wybierz opcję **Install without restart** (Instaluj bez ponownego uruchamiania).
-5. Wróć do pulpitu nawigacyjnego usługi Jenkins i wybierz pozycję **Manage Jenkins **Manage Jenkins** (Zarządzaj usługą Jenkins).
+5. Wróć do pulpitu nawigacyjnego usługi Jenkins i wybierz pozycję **Manage Jenkins** (Zarządzaj usługą Jenkins).
 6. Wybierz pozycję **Global Tool Configuration** (Globalna konfiguracja narzędzi). Znajdź wtyczkę **NodeJS** i wybierz pozycję **NodeJS installations** (Instalacje wtyczki NodeJS).
 7. Wybierz opcję **Install automatically** (Instaluj automatycznie), a następnie wprowadź wartość **Name** (Nazwa).
 8. Wybierz pozycję **Zapisz**.
