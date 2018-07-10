@@ -76,7 +76,7 @@
               href: data-factory-azure-blob-connector.md
             - name: Azure Cosmos DB
               href: data-factory-azure-documentdb-connector.md
-            - name: Azure Data Lake Store
+            - name: Usługa Azure Data Lake Storage 1. generacji
               href: data-factory-azure-datalake-connector.md
             - name: Azure Search
               href: data-factory-azure-search-connector.md

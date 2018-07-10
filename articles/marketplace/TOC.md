@@ -4,22 +4,11 @@
 ### Omówienie i korzyści  
 ### Sklepy  
 #### [Porównanie usługi AppSource i witryny Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
-#### [Rozwijanie firmy dzięki usłudze AppSource](./grow-your-business-with-appsource.md) 
-##### [Tworzenie strony docelowej](./build-your-landing-page.md)  
-##### [Włączanie udostępniania informacji o potencjalnych klientach](./enable-lead-sharing.md)  
-##### [Korzyści usług Go-To-Market na platformie handlowej](./gtm-benefits.md)  
-##### [Promowanie swojej firmy we współpracy z firmą Microsoft](./promote-your-business-with-microsoft.md)  
-#### [Grow your business with Azure Marketplace (Rozwijanie firmy za pomocą witryny Azure Marketplace)](./grow-your-business-with-azure-marketplace.md)  
-##### [Tworzenie strony docelowej](./build-your-landing-page.md)  
-##### [Włączanie udostępniania informacji o potencjalnych klientach](./enable-lead-sharing.md)  
-##### [Korzyści usług Go-To-Market na platformie handlowej](./gtm-benefits.md)  
-##### [Promowanie swojej firmy we współpracy z firmą Microsoft](./promote-your-business-with-microsoft.md)  
 
 ### Instrukcje publikowania w sklepach na platformie handlowej  
 #### [Określanie typu oferty dla rozwiązania](./determine-your-listing-type.md)  
 #### [Jak zostać wydawcą w sklepach na platformie handlowej](./become-publisher.md)  
 #### [Wymagania dotyczące poszczególnych typów ofert](./listing-type-requirements.md) 
-#### [Preferowane rozwiązania](./preferred-solutions.md) 
 
 ### Listy kontrolne dotyczące publikowania  
 #### [Lista kontrolna dotycząca publikowania w usłudze AppSource](./publishing-checklist-appsource.md)  
@@ -38,6 +27,9 @@
 #### [Dodawanie informacji bankowych i podatkowych](./add-bank-tax-info.md)  
 #### [Włączanie wersji próbnej za pomocą usługi Azure AD](./enable-trial-using-azure-ad.md)  
 #### [Opcje rozliczeń w witrynie Azure Marketplace](./billing-options-azure-marketplace.md)  
+
+### [Rozwijanie firmy dzięki witrynie Marketplace](./grow-your-business-with-azure-marketplace.md)  
+#### [Preferowane rozwiązania](./preferred-solutions.md) 
 
 ## [Portal Cloud Partner](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 

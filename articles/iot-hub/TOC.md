@@ -98,7 +98,7 @@
 
 ### Rozszerzone scenariusze IoT
 #### [Zarządzanie przesyłaniem komunikatów między chmurą a urządzeniem za pomocą narzędzia iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
-#### [Zapisywanie komunikatów usługi IoT Hub w magazynie danych platformy Azure](iot-hub-store-data-in-azure-table-storage.md)
+#### [Zapisywanie komunikatów usługi IoT Hub w magazynie obiektów blob Azure](iot-hub-store-data-in-azure-table-storage.md)
 #### [Wizualizacja danych w usłudze Power BI](iot-hub-live-data-visualization-in-power-bi.md)
 #### [Wizualizacja danych w usłudze Web Apps](iot-hub-live-data-visualization-in-web-apps.md)
 #### [Prognozowanie pogody przy użyciu usługi Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md)

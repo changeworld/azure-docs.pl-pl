@@ -47,6 +47,8 @@
       items:
         - name: Omówienie rozwiązania Change Tracking
           href: automation-change-tracking.md
+        - name: Wyświetlanie zawartości śledzonych plików
+          href: change-tracking-file-contents.md
     - name: Spis
       items:
         - name: Zarządzanie maszyną wirtualną za pomocą kolekcji spisu

@@ -20,7 +20,9 @@
       href: storage-quickstart-blobs-cli.md
     - name: Praca z obiektami blob — .NET
       href: storage-quickstart-blobs-dotnet.md
-    - name: Praca z obiektami blob — Java
+    - name: Praca z obiektami blob — Java (zestaw SDK usługi Storage w wersji 10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: Praca z obiektami blob — Java (zestaw SDK usługi Storage w wersji 7)
       href: storage-quickstart-blobs-java.md
     - name: Praca z obiektami blob — Python
       href: storage-quickstart-blobs-python.md
@@ -192,6 +194,8 @@
           href: storage-blob-immutable-storage.md
         - name: Włączanie bezpiecznego protokołu TLS dla klienta usługi Azure Storage
           href: ../common/storage-security-tls.md
+        - name: Oferty rozwiązań do zapewniania zgodności
+          href: ../common/storage-compliance-offerings.md
     - name: Monitorowanie i rozwiązywanie problemów
       items:
         - name: Samouczek dotyczący rozwiązywania problemów

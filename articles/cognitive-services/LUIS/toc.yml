@@ -65,8 +65,10 @@
           href: luis-quickstart-intent-and-key-phrase.md
         - name: 8. Dodawanie analizy tonacji
           href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Ulepszanie przewidywania
+    - name: Usprawnianie aplikacji
       items:
+        - name: Przeglądanie wypowiedzi punktu końcowego
+          href: luis-tutorial-review-endpoint-utterances.md
         - name: Za pomocą wzorców
           href: luis-tutorial-pattern.md
         - name: Za pomocą listy fraz
@@ -313,6 +315,8 @@
       href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: Zasoby
   items:
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://aka.ms/luis-roadmap'
     - name: Słownik
@@ -326,7 +330,7 @@
     - name: UserVoice
       href: 'https://aka.ms/luis-uservoice-forum'
     - name: Wyszukiwanie
-      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+      href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog
       href: 'https://blog.botframework.com/category/luis/'
     - name: Baza wiedzy

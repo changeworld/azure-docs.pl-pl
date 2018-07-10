@@ -73,7 +73,7 @@ items:
     items:
       - name: Dystrybucja globalna
         href: distribute-data-globally.md
-      - name: Konfiguracja wielu wzorców
+      - name: Wiele wzorców
         href: multi-region-writers.md
       - name: Partycjonowanie
         href: partition-data.md
@@ -172,8 +172,6 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor — platforma Java
                 href: bulk-executor-java.md
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
               - name: Zapytanie
                 items:
                   - name: Wykonywanie zapytań w języku SQL
@@ -184,8 +182,6 @@ items:
                 href: indexing-policies.md
               - name: Partycjonowanie danych SQL
                 href: sql-api-partition-data.md
-              - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
-                href: programming.md
               - name: Źródło zmian
                 href: change-feed.md
               - name: Typy danych
@@ -262,8 +258,6 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: Zasoby
             items:
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
               - name: Rozszerzenie programu Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL — informacje i testowanie
@@ -328,12 +322,8 @@ items:
                 href: mongodb-ttl.md
               - name: Wizualizacja danych przy użyciu usługi Power BI
                 href: powerbi-visualize.md
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
           - name: Zasoby
             items:
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
               - name: Rozszerzenie programu Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Dokumentacja interfejsu API programu Graph
@@ -352,12 +342,8 @@ items:
             items:
               - name: Partycjonowanie grafu
                 href: graph-partitioning.md
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
           - name: Zasoby
             items:
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
               - name: Rozszerzenie programu Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Interfejs API tabel
@@ -410,8 +396,6 @@ items:
                 href: table-sdk-python.md
           - name: Zasoby
             items:
-              - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-                href: storage-explorer.md
               - name: Omówienie usługi Table Storage
                 href: table-storage-overview.md
               - name: Przewodnik projektowania usługi Table Storage
@@ -450,6 +434,8 @@ items:
         href: regional-failover.md
       - name: Rejestrowanie diagnostyczne
         href: logging.md
+      - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
+        href: programming.md
       - name: Omówienie biblioteki BulkExecutor
         href: bulk-executor-overview.md
       - name: Ekonomiczne odczyty i zapisy
@@ -460,12 +446,10 @@ items:
         href: manage-account-with-powershell.md
       - name: Zarządzanie przy użyciu Eksploratora usługi Storage
         href: storage-explorer.md
-      - name: Moduły zapisujące obsługujące wiele regionów
+      - name: Konfiguracja wielu wzorców
         href: multi-master-workaround.md
   - name: Zasoby
     items:
-      - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-        href: storage-explorer.md
       - name: Ściągawka dotycząca zapytań
         href: query-cheat-sheet.md
       - name: 20 dni porad
