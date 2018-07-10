@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować z obsługą MSI maszyny Wirtualnej platformy Azure przy użyciu zestawu Azure SDK
-description: Krok instrukcje dotyczące konfigurowania i używania zarządzanych tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu zestawu SDK platformy Azure.
+title: Jak skonfigurować włączyć tożsamości usługi Zarządzanej maszyny Wirtualnej platformy Azure przy użyciu zestawu Azure SDK
+description: Krok po kroku instrukcje dotyczące konfigurowania i używania tożsamość usługi zarządzanej (MSI) na Maszynie wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,43 +9,44 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: dee4a3e27623150ce3fa648d73542db0cbb23e93
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37901446"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurowanie maszyny Wirtualnej zarządzane usługi tożsamości (MSI) przy użyciu zestawu Azure SDK
+# <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurowanie tożsamości usługi VM-Managed (MSI) przy użyciu zestawu Azure SDK
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Tożsamość usługi zarządzanej zapewnia usług platformy Azure przy użyciu tożsamości automatycznie zarządzane w usłudze Azure Active Directory (AD). Ta tożsamość służy do uwierzytelniania do dowolnej usługi obsługującej uwierzytelniania usługi Azure AD, bez konieczności poświadczeń w kodzie. 
+Tożsamość usługi zarządzanej udostępnia usługi platformy Azure przy użyciu automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (AD). Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez poświadczeń w kodzie. 
 
-W tym artykule dowiesz sposobu włączania i usunąć MSI dla maszyny Wirtualnej platformy Azure, przy użyciu zestawu SDK platformy Azure.
+W tym artykule dowiesz się, jak włączyć i usunąć tożsamości usługi Zarządzanej dla maszyny Wirtualnej platformy Azure, przy użyciu zestawu Azure SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-## <a name="azure-sdks-with-msi-support"></a>Zestawy Azure SDK z obsługą MSI 
+## <a name="azure-sdks-with-msi-support"></a>Zestawy SDK platformy Azure z obsługą MSI 
 
-Azure obsługuje wiele platform programowania przez szereg [zestawów SDK usługi Azure](https://azure.microsoft.com/downloads). Niektóre z nich zostały zaktualizowane do obsługi MSI i podaj odpowiednie próbek, aby zademonstrować sposób użycia. Ta lista jest aktualizowana w miarę dodawania dodatkowego pomocy technicznej:
+Platforma Azure obsługuje wiele platform programistycznych w kolejnych seriach [zestawami SDK Azure](https://azure.microsoft.com/downloads). Niektóre z nich zostały zaktualizowane do obsługi tożsamości usługi Zarządzanej i podaj odpowiednie przykłady, aby zademonstrować użycie. Ta lista jest aktualizowana po dodaniu dodatkowej pomocy technicznej:
 
 | SDK | Sample |
 | --- | ------ | 
-| .NET   | [Zarządzanie zasobów z maszyny Wirtualnej z włączoną MSI](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [Zarządzanie magazynem za pomocą maszyny Wirtualnej z włączoną MSI](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
-| Node.js| [Tworzenie maszyny Wirtualnej z włączoną MSI](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
-| Python | [Tworzenie maszyny Wirtualnej z włączoną MSI](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
-| Ruby   | [Tworzenie maszyny Wirtualnej platformy Azure z Instalatora MSI](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
+| .NET   | [Zarządzanie zasobami z włączoną tożsamości usługi Zarządzanej maszyny Wirtualnej](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
+| Java   | [Zarządzanie magazynem z włączoną tożsamości usługi Zarządzanej maszyny Wirtualnej](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| Node.js| [Utwórz Maszynę wirtualną z włączoną tożsamością usługi Zarządzanej](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
+| Python | [Utwórz Maszynę wirtualną z włączoną tożsamością usługi Zarządzanej](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
+| Ruby   | [Tworzenie maszyny Wirtualnej platformy Azure przy użyciu pliku MSI](https://azure.microsoft.com/resources/samples/compute-ruby-msi-vm/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz pokrewne artykuły w obszarze "Konfigurowanie MSI dla maszyny Wirtualnej platformy Azure", aby dowiedzieć się, jak również użyć szablonów portalu, programu PowerShell, interfejsu wiersza polecenia i zasobów platformy Azure.
+- Zobacz powiązane artykuły w obszarze "Konfigurowanie pliku MSI dla maszyny Wirtualnej platformy Azure", aby dowiedzieć się, jak również używać szablonów platformy Azure portal, programu PowerShell, interfejsu wiersza polecenia i zasobów.
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
