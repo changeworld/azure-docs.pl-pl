@@ -1,25 +1,26 @@
 ---
-title: "Macierz obsługi replikacji maszyn wirtualnych funkcji Hyper-V w programie VMM chmury do lokacji dodatkowej z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Zawiera podsumowanie obsługę replikacji maszyny Wirtualnej funkcji Hyper-V w chmurach VMM do lokacji dodatkowej z usługą Azure Site Recovery."
+title: Macierz obsługi replikacji maszyn wirtualnych funkcji Hyper-V, w programie VMM z chmury do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Zawiera podsumowanie obsługi replikacji maszyny Wirtualnej funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 767b0e76b73c082ddb75374f51700b85272f713e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 13b4dc6e49c67ae9fd880ab64880966835242dec
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921500"
 ---
-# <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi replikacji maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
+# <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi dla replikacji maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej
 
-Ten artykuł zawiera podsumowanie, co jest obsługiwana w przypadku użycia [usługi Azure Site Recovery](site-recovery-overview.md) usługi do replikowania maszyn wirtualnych funkcji Hyper-V zarządzane w chmurach programu System Center Virtual Machine Manager (VMM) do lokacji dodatkowej. Jeśli chcesz replikować maszyny wirtualne funkcji Hyper-V do platformy Azure, przejrzyj [tej macierzy obsługi](hyper-v-azure-support-matrix.md).
+Ten artykuł zawiera podsumowanie, co jest obsługiwane w przypadku używania [usługi Azure Site Recovery](site-recovery-overview.md) usługi w celu replikowania maszyn wirtualnych funkcji Hyper-V zarządzane w chmurach programu System Center Virtual Machine Manager (VMM) do lokacji dodatkowej. Jeśli chcesz replikować maszyny wirtualne funkcji Hyper-V do platformy Azure, zapoznaj się z [tej macierzy obsługi](hyper-v-azure-support-matrix.md).
 
 > [!NOTE]
-> Tylko można replikować do lokacji dodatkowej, gdy hosty funkcji Hyper-V są zarządzane w chmurach programu VMM.
+> Tylko można replikować do lokacji dodatkowej w przypadku hostów funkcji Hyper-V są zarządzane w chmurach programu VMM.
 
   
 
@@ -27,87 +28,87 @@ Ten artykuł zawiera podsumowanie, co jest obsługiwana w przypadku użycia [us�
 
 **System operacyjny** | **Szczegóły**
 --- | ---
-Windows Server 2012 R2 | Serwery muszą mieć uruchomioną najnowsze aktualizacje.
-Windows Server 2016 |  Chmury VMM 2016 z systemu Windows Server 2016 i 2012 R2 hosty nie są obecnie obsługiwane.<br/><br/> Wdrożenia, które uaktualnione z programu System Center 2012 R2 VMM 2012 R2 do programu System Center 2016 nie są obecnie obsługiwane.
+Windows Server 2012 R2 | Serwery muszą być uruchomione najnowsze aktualizacje.
+Windows Server 2016 |  Chmury programu VMM 2016 z systemu Windows Server 2016 i 2012 R2 hostów nie są obecnie obsługiwane.<br/><br/> Wdrożenia uaktualnionych z programu System Center 2012 R2 VMM 2012 R2 do programu System Center 2016 nie są obecnie obsługiwane.
 
 
-## <a name="replicated-vm-support"></a>Replikacja maszyny Wirtualnej pomocy technicznej
+## <a name="replicated-vm-support"></a>Replikowane maszyn wirtualnych z osłoną
 
-W poniższej tabeli przedstawiono obsługę systemu operacyjnego maszyny replikowane z usługą Site Recovery. Każde obciążenie może być uruchomiony na obsługiwany system operacyjny.
+Poniższa tabela zawiera podsumowanie obsługi systemów operacyjnych w przypadku maszyn replikowanych z usługą Site Recovery. Każde obciążenie może być uruchomiony w obsługiwanym systemie operacyjnym.
 
-**Wersja systemu Windows** | **Funkcja Hyper-V (w programie VMM)**
+**Wersja Windows** | **Funkcji Hyper-V (z programem VMM)**
 --- | ---
-Windows Server 2016 | Gość żadnego systemu operacyjnego [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) w systemie Windows Server 2016 
-Windows Server 2012 R2 | Gość żadnego systemu operacyjnego [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) w systemie Windows Server 2012 R2
+Windows Server 2016 | Dowolny system operacyjny gościa z [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) w systemie Windows Server 2016 
+Windows Server 2012 R2 | Dowolny system operacyjny gościa z [obsługiwane przez funkcję Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) w systemie Windows Server 2012 R2
 
 ## <a name="linux-machine-storage"></a>Magazyn maszyny systemu Linux
 
-Mogą być replikowane tylko maszyn z systemem Linux z magazynem następujące:
+Można replikować tylko maszyny z systemem Linux przy użyciu następujących magazynu:
 
-- Plik systemu (EXT3, ETX4, ReiserFS, XFS).
+- System (EXT3, ETX4, ReiserFS, XFS) plików.
 - Mapowanie urządzeń wielościeżkowych oprogramowania.
 - Menedżer woluminów (LVM2).
-- Serwery fizyczne z HP CCISS kontrolera magazynu nie są obsługiwane.
-- System plików ReiserFS jest obsługiwany tylko w systemie SUSE Linux Enterprise Server 11 z dodatkiem SP3.
+- Serwery fizyczne z HP CCISS kontroler magazynu nie są obsługiwane.
+- System plików ReiserFS jest obsługiwany tylko w systemie SUSE Linux Enterprise Server 11 SP3.
 
-## <a name="network-configuration---hostguest-vm"></a>Konfiguracja sieci - Host/gościa maszyny Wirtualnej
+## <a name="network-configuration---hostguest-vm"></a>Konfiguracja sieci — Host/gościa maszyny Wirtualnej
 
 **Konfiguracja** | **Obsługiwane**  
 --- | --- 
-Host - zespołu kart interfejsu sieciowego | Yes 
+Host - zespołu kart interfejsu Sieciowego | Yes 
 Host - sieci VLAN | Yes 
-Host - IPv4 | Yes 
+Host — protokołu IPv4 | Yes 
 Host - IPv6 | Nie 
-Maszyna wirtualna - gościa zespołu kart interfejsu sieciowego | Nie
-Gość maszyny Wirtualnej — IPv4 | Yes
-Gość maszyny Wirtualnej — protokół IPv6 | Nie
+Maszyna wirtualna - gościa zespołu kart interfejsu Sieciowego | Nie
+Gość maszyny Wirtualnej — protokołu IPv4 | Yes
+Gość maszyny Wirtualnej — IPv6 | Nie
 Maszyna wirtualna Gues — Windows/Linux — statyczny adres IP | Yes
-Gość maszyny Wirtualnej — wieloma kartami Sieciowymi | Yes
+Gość maszyny Wirtualnej — Multi-NIC | Yes
 
 
 ## <a name="storage"></a>Magazyn
 
 ### <a name="host-storage"></a>Magazyn hosta
 
-**Magazyn (hosta)** | **Obsługiwane**
+**Magazyn (host)** | **Obsługiwane**
 --- | --- 
 NFS | ND
 SMB 3.0 |  Yes
 SAN (ISCSI) | Yes
 Wiele ścieżek (MPIO) | Yes
 
-### <a name="guest-or-physical-server-storage"></a>Gość lub magazynu serwera fizycznego
+### <a name="guest-or-physical-server-storage"></a>Maszyna gościa lub serwer fizyczny magazynu
 
 **Konfiguracja** | **Obsługiwane**
 --- | --- | 
 VMDK |  ND
 VHD/VHDX | Tak (maksymalnie 16 dysków)
-Gł 2 maszyny Wirtualnej | Yes
+Zbieranie generacji 2 maszyn wirtualnych | Yes
 Udostępniony dysk klastra | Nie
 Zaszyfrowanego dysku | Nie
 UEFI| ND
 NFS | Nie
 SMB 3.0 | Nie
 RDM | ND
-Na dysku > 1 TB | Yes
-Wolumin dysku rozłożone > 1 TB<br/><br/> LVM | Yes
-Funkcja miejsca do magazynowania | Yes
-Dodaj lub usuń gorących dysku | Nie
+> 1 TB danych na dysku | Yes
+Wolumin dysku rozłożonego > 1 TB<br/><br/> LVM | Yes
+Miejsca do magazynowania | Yes
+Dodaj lub usuń gorąco dysku | Nie
 Wykluczanie dysku | Yes
 Wiele ścieżek (MPIO) | Yes
 
-## <a name="vaults"></a>magazynów
+## <a name="vaults"></a>Magazyny
 
 **Akcja** | **Obsługiwane**
 --- | --- 
-Przenieś magazynów między grupami zasobów (lub wielu subskrypcji) |  Nie
-Przenieść magazyn, sieć, maszyn wirtualnych platformy Azure w grupach zasobów (lub wielu subskrypcji) | Nie
+Przeniesienie magazynów między grupami zasobów (w ramach lub subskrypcji) |  Nie
+Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów (w ramach lub subskrypcji) | Nie
 
-## <a name="azure-site-recovery-provider"></a>Azure Site Recovery Provider
+## <a name="azure-site-recovery-provider"></a>Dostawca usługi Azure Site Recovery
 
-Dostawca koordynuje komunikacji między serwerami VMM. 
+Dostawca służy do koordynowania komunikacji między serwerami programu VMM. 
 
-**Latest** | **Aktualizacje**
+**Najnowsze** | **Aktualizacje**
 --- | --- | --- | --- | ---
 5.1.19 ([dostępna z portalu](http://aka.ms/downloaddra) | [Najnowsze funkcje i poprawki](https://support.microsoft.com/kb/3155002)
 
@@ -115,5 +116,5 @@ Dostawca koordynuje komunikacji między serwerami VMM.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Replikowanie maszyn wirtualnych funkcji Hyper-V w chmurach VMM do lokacji dodatkowej](tutorial-vmm-to-vmm.md)
+[Replikacja maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM do lokacji dodatkowej](tutorial-vmm-to-vmm.md)
 

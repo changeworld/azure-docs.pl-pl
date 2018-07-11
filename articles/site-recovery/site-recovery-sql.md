@@ -1,6 +1,6 @@
 ---
 title: Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób replikowania SQL Server przy użyciu usługi Azure Site Recovery dla funkcji po awarii programu SQL Server.
+description: W tym artykule opisano sposób replikowania programu SQL Server przy użyciu usługi Azure Site Recovery dla funkcji po awarii programu SQL Server.
 services: site-recovery
 documentationcenter: ''
 author: prateek9us
@@ -12,41 +12,41 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: pratshar
-ms.openlocfilehash: 7afa05b53186ceac13bef3294c7a139f77193110
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c877f4bbc0ed14e859ff39f1d719a9cd0b787118
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896235"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920835"
 ---
-# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrona programu SQL Server przy użyciu odzyskiwanie po awarii programu SQL Server i usługi Azure Site Recovery
+# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrona programu SQL Server za pomocą odzyskiwania po awarii programu SQL Server i usługi Azure Site Recovery
 
-W tym artykule opisano, jak chronić wewnętrznej programu SQL Server przy użyciu kombinacji ciągłość prowadzenia działalności biznesowej programu SQL Server i technologii (BCDR) odzyskiwania po awarii, aplikacji i [usługi Azure Site Recovery](site-recovery-overview.md).
+W tym artykule opisano, jak chronić programu SQL Server zaplecza aplikacji przy użyciu kombinacji ciągłości programu SQL Server i technologii recovery (BCDR) po awarii, i [usługi Azure Site Recovery](site-recovery-overview.md).
 
-Przed rozpoczęciem upewnij się, że rozumiesz możliwości odzyskiwania po awarii programu SQL Server, łącznie z klastra trybu failover, zawsze włączonych grup dostępności funkcji dublowania baz danych i wysyłania dziennika.
+Przed rozpoczęciem upewnij się, że rozumiesz możliwości odzyskiwania po awarii programu SQL Server, takich jak klaster pracy awaryjnej, zawsze włączonych grup dostępności, dublowania bazy danych i wysyłania dziennika.
 
 
-## <a name="sql-server-deployments"></a>Wdrożenie programu SQL Server
+## <a name="sql-server-deployments"></a>Wdrożenia programu SQL Server
 
-Wiele obciążeń Użyj programu SQL Server jako podstawę i może być zintegrowana z aplikacji, takich jak SharePoint, Dynamics i SAP, wdrożenie usługi danych.  SQL Server może być wdrożony na kilka sposobów:
+Wiele obciążeń używania programu SQL Server jako podstawa i można zintegrować z aplikacji, takich jak SharePoint, Dynamics i SAP, wdrożenie usług danych.  Program SQL Server można wdrożyć na wiele sposobów:
 
-* **Autonomicznego serwera SQL**: SQL Server i wszystkie bazy danych znajdują się na pojedynczym komputerze (fizycznej lub wirtualnej). Podczas wirtualizacji, klaster hosta jest używana do lokalnego wysokiej dostępności. Wysoka dostępność poziomie gościa nie jest zaimplementowana.
-* **Tryb Failover Clustering wystąpienia programu SQL Server (zawsze na FCI)**: co najmniej dwa węzły z uruchomionym programem SQL Server instancji z udostępnionych dysków są skonfigurowane w klastrze pracy awaryjnej systemu Windows. Jeśli węzeł jest wyłączony, klaster może przełączyć programu SQL Server do innego wystąpienia. Ta konfiguracja jest zwykle używane do implementacji wysokiej dostępności w lokacji głównej. To wdrożenie nie chroni przed uszkodzenie lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być zaimplementowany przy użyciu udostępnionego dysku vhdx, fiber channel lub iSCSI.
-* **SQL zawsze włączonych grup dostępności**: co najmniej dwa węzły są konfigurowane w udostępnionym klastra nic z baz danych serwera SQL skonfigurowany w grupie dostępności, Replikacja synchroniczna i automatycznej pracy awaryjnej.
+* **Autonomicznego serwera SQL**: SQL Server i wszystkich baz danych, które są hostowane na jednym komputerze (fizyczny lub wirtualny). Podczas wirtualizacji, hostów klastra jest używany dla lokalnej wysokiej dostępności. Poziomie gościa o wysokiej dostępności nie jest zaimplementowana.
+* **Tryb Failover Clustering wystąpienia programu SQL Server (zawsze na FCI)**: dwa lub więcej węzłów z uruchomionym programem SQL Server wystąpienia z dyskami udostępnionymi są skonfigurowane w klastrze pracy awaryjnej Windows. Jeśli węzeł jest wyłączony, klaster może pracy awaryjnej programu SQL Server do innego wystąpienia. Aby zaimplementować wysoką dostępność w lokacjach głównych, zazwyczaj służy tej konfiguracji. To wdrożenie nie chroni przed awarią lub awaria w warstwie magazynu udostępnionego. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel lub udostępnionego dysku vhdx.
+* **SQL zawsze włączonych grup dostępności**: co najmniej dwa węzły do ustawiania udostępnionego klastra nic za pomocą programu SQL Server baz danych skonfigurowanych w grupie dostępności, przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej.
 
- W tym artykule wykorzystuje następujące natywnego SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do zdalnej witryny:
+ W tym artykule wykorzystuje następujące natywnych SQL awaryjnego odzyskiwania technologie do odzyskiwania baz danych do lokacji zdalnej:
 
-* SQL zawsze włączonych grup dostępności, zapewnia odzyskiwania po awarii dla programu SQL Server 2012 lub 2014 Enterprise Edition.
+* SQL zawsze włączone grupy dostępności, zapewnienie odzyskiwania po awarii dla programu SQL Server 2012 lub 2014 w wersji Enterprise.
 * Funkcja dublowania bazy danych SQL w trybie wysokiego bezpieczeństwa, SQL Server Standard edition (dowolna wersja) lub SQL Server 2008 R2.
 
 ## <a name="site-recovery-support"></a>Obsługa odzyskiwania lokacji
 
 ### <a name="supported-scenarios"></a>Obsługiwane scenariusze
-Usługa Site Recovery może chronić programu SQL Server, zgodnie z opisem w tabeli.
+Usługa Site Recovery chroni program SQL Server zgodnie z opisem w tabeli.
 
-**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
+**Scenariusz** | **Lokacja dodatkowa** | **Platforma Azure**
 --- | --- | ---
 **Funkcja Hyper-V** | Yes | Yes
 **VMware** | Yes | Yes
@@ -54,113 +54,113 @@ Usługa Site Recovery może chronić programu SQL Server, zgodnie z opisem w tab
 **Azure**|Nie dotyczy| Yes
 
 ### <a name="supported-sql-server-versions"></a>Obsługiwane wersje programu SQL Server
-Te wersje programu SQL Server są obsługiwane dla obsługiwanych scenariuszach:
+Te wersje programu SQL Server są obsługiwane w przypadku obsługiwanych scenariuszy:
 
 * SQL Server 2016 Enterprise i Standard
 * SQL Server 2014 Enterprise i Standard
 * SQL Server 2012 Enterprise i Standard
 * SQL Server 2008 R2 Enterprise i Standard
 
-### <a name="supported-sql-server-integration"></a>Obsługiwaną integracji programu SQL Server
+### <a name="supported-sql-server-integration"></a>Integracja programu SQL Server obsługiwane
 
-Usługa Site Recovery można zintegrować z natywnego technologiami BCDR serwera SQL podsumowane w tabeli, aby zapewnić rozwiązanie odzyskiwania po awarii.
+Usługa Site Recovery może zostać zintegrowany z natywnych technologiami BCDR serwera SQL, podsumowane w tabeli, aby zapewnić rozwiązanie odzyskiwania po awarii.
 
 **Funkcja** | **Szczegóły** | **SQL Server** |
 --- | --- | ---
-**Konfigurowanie zawsze włączonej grupy dostępności** | Uruchamianie wielu wystąpień autonomicznych programu SQL Server w klastrze trybu failover, który ma wiele węzłów.<br/><br/>Bazy danych można grupować w grupy trybu failover, które mogą zostać skopiowane (dublowany) w wystąpieniach programu SQL Server, aby niezbędne jest brak udostępnionego magazynu.<br/><br/>Zapewnia odzyskiwanie po awarii między lokacją główną i co najmniej jednej lokacji dodatkowej. Dwa węzły można skonfigurować w udostępnionej nic skonfigurowany klaster z baz danych programu SQL Server w grupie dostępności Replikacja synchroniczna i automatycznej pracy awaryjnej. | SQL Server 2016, programu SQL Server 2014 i SQL Server 2012 Enterprise edition
-**(Zawsze na FCI dla) klastra trybu failover** | SQL Server korzysta z systemu Windows klastra trybu failover dla wysokiej dostępności lokalnego obciążeń programu SQL Server.<br/><br/>Węzły uruchomione wystąpienia programu SQL Server z udostępnionych dysków są skonfigurowane w klastrze pracy awaryjnej. Jeśli wystąpienie jest wyłączony klastra nie powiedzie się na inny.<br/><br/>Klaster nie chroni przed awarią lub awarie w magazynie udostępnionym. Udostępniony dysk może być zaimplementowany z interfejsu iSCSI, fiber channel, lub udostępnionego Vhdx. | SQL Server Enterprise Edition<br/><br/>SQL Server Standard edition (maksymalnie dwa węzły tylko)
-**(Tryb wysokiego bezpieczeństwa) dublowania bazy danych** | Chroni pojedynczej bazy danych do pojedynczej kopii dodatkowej. Dostępne w obu wysokiego bezpieczeństwa (synchroniczne) i wysokiej wydajności replikacji (asynchronicznej) trybów. Nie wymaga klastra pracy awaryjnej. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise wszystkie wersje
-**Autonomiczny program SQL Server** | SQL Server i bazy danych znajdują się na jednym serwerze (fizycznych lub wirtualnych). Klaster hostów jest używana wysokiej dostępności, gdy serwer jest wirtualnego. Nie wysokiej dostępności poziomie gościa. | Enterprise lub Standard edition
+**Konfigurowanie zawsze włączonej grupy dostępności** | Autonomiczny uruchomić wiele wystąpień programu SQL Server w klastrze trybu failover, który ma wiele węzłów.<br/><br/>Bazy danych, można podzielić na grupy trybu failover, które można skopiować (dublowanych) w wystąpieniach programu SQL Server tak, aby Brak udostępnionego magazynu jest wymagana.<br/><br/>Zapewnia odzyskiwanie po awarii między lokacją główną a przynajmniej jednej lokacji dodatkowej. Dwa węzły można skonfigurować pod kątem w udostępnionej nic klastra przy użyciu bazy danych programu SQL Server jest skonfigurowany w grupie dostępności przy użyciu replikacji synchronicznej i automatycznej pracy awaryjnej. | SQL Server 2016, SQL Server 2014 i SQL Server 2012 Enterprise edition
+**(Zawsze na FCI) do klastra trybu failover** | Program SQL Server korzysta z Windows klastra trybu failover wysokiej dostępności obciążeń programu SQL Server w środowisku lokalnym.<br/><br/>Węzły uruchomione wystąpienia programu SQL Server z dyskami udostępnionymi są skonfigurowane w klastrze trybu failover. Jeśli wystąpienie jest wyłączony klastra kończy się niepowodzeniem przez inny.<br/><br/>Klaster nie chroni przed awarią lub przerw w magazynie udostępnionym. Udostępniony dysk może być implementowany przy użyciu iSCSI, fiber channel, lub udostępnione Vhdx. | Wersje programu SQL Server Enterprise<br/><br/>SQL Server Standard edition (ograniczoną do tylko dwa węzły)
+**(Wysokie bezpieczeństwo tryb) dublowania bazy danych** | Chroni pojedynczej bazy danych do pojedynczej kopii dodatkowej. Dostępne w obu wysokie bezpieczeństwo (synchroniczne) i trybach replikacji (asynchroniczny) o wysokiej wydajności. Nie wymaga klastra trybu failover. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise wszystkie wersje
+**Autonomiczny program SQL Server** | SQL Server i bazy danych są hostowane na jednym serwerze (fizyczny lub wirtualny). Klaster hosta jest używana do wysokiej dostępności, jeśli serwer znajduje się wirtualny. Nie wysokiej dostępności poziomie gościa. | Enterprise lub Standard
 
 ## <a name="deployment-recommendations"></a>Zalecenia dotyczące wdrożenia
 
-Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji z usługą Site Recovery technologiami BCDR serwera SQL.
+Ta tabela zawiera podsumowanie Nasze zalecenia dotyczące integracji technologiami BCDR serwera SQL z usługą Site Recovery.
 
-| **Wersja** | **Wersja** | **Wdrożenie** | **Wersja Premium do lokalnego** | **Wersja Premium na platformie Azure** |
+| **Wersja** | **Wersja** | **Wdrożenie** | **Środowiska lokalnego do środowiska lokalnego** | **Środowiska lokalnego do platformy Azure** |
 | --- | --- | --- | --- | --- |
-| SQL Server 2014 lub 2012 |Enterprise |Wystąpienie klastra pracy awaryjnej |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
-|| Enterprise |Zawsze włączone grupy dostępności wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |
-|| Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja z lokacji odzyskiwania dublowaniem lokalnego |Replikacja z lokacji odzyskiwania dublowaniem lokalnego | |
-|| Enterprise lub Standard |Autonomiczna |Replikacja odzyskiwania lokacji |Replikacja odzyskiwania lokacji | |
-| SQL Server 2008 R2 lub 2008 |Enterprise lub Standard |Wystąpienia klastra trybu failover (FCI) |Replikacja z lokacji odzyskiwania dublowaniem lokalnego |Replikacja z lokacji odzyskiwania dublowaniem lokalnego |
-|| Enterprise lub Standard |Autonomiczna |Replikacja odzyskiwania lokacji |Replikacja odzyskiwania lokacji | |
-| SQL Server (dowolna wersja) |Enterprise lub Standard |Wystąpienie klastra pracy awaryjnej — aplikacji usługi DTC |Replikacja odzyskiwania lokacji |Nieobsługiwane |
+| SQL Server 2014 lub 2012 |Enterprise |Wystąpienia klastra trybu failover |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności |
+|| Enterprise |Zawsze włączone grupy dostępności w celu zapewnienia wysokiej dostępności |Zawsze włączone grupy dostępności |Zawsze włączone grupy dostępności | |
+|| Standardowa (Standard) |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne | |
+|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
+| SQL Server 2008 R2 lub 2008 |Enterprise lub Standard |Wystąpienia klastra trybu failover (FCI) |Replikacja usługi Site Recovery dublowaniem lokalne |Replikacja usługi Site Recovery dublowaniem lokalne |
+|| Enterprise lub Standard |Autonomiczna |Replikacja usługi Site Recovery |Replikacja usługi Site Recovery | |
+| Program SQL Server (dowolna wersja) |Enterprise lub Standard |Wystąpienia klastra trybu failover — aplikacja usługi DTC |Replikacja usługi Site Recovery |Nieobsługiwane |
 
 ## <a name="deployment-prerequisites"></a>Wymagania wstępne dotyczące wdrożenia
 
-* Lokalnego wdrożenia serwera SQL, zainstalowana obsługiwana wersja programu SQL Server. Zazwyczaj należy również usługi Active Directory dla programu SQL server.
-* Wymagania dotyczące tego scenariusza, którą chcesz wdrożyć. Dowiedz się więcej o wymaganiach dotyczących pomocy technicznej dla [replikacji do platformy Azure](site-recovery-support-matrix-to-azure.md) i [lokalnymi](site-recovery-support-matrix.md), i [wymagania wstępne dotyczące wdrażania](site-recovery-prereq.md).
-* Aby skonfigurować odzyskiwania na platformie Azure, uruchom [oceny gotowości maszyny wirtualnej Azure](http://www.microsoft.com/download/details.aspx?id=40898) narzędzia na maszynach wirtualnych programu SQL Server, aby się upewnić, że są one zgodne z platformy Azure i usługi Site Recovery.
+* Lokalne wdrożenie programu SQL Server, z obsługiwaną wersją programu SQL Server. Zazwyczaj należy również usługi Active Directory dla programu SQL server.
+* Wymagania dotyczące tego scenariusza, którą chcesz wdrożyć. Dowiedz się więcej na temat pomocy technicznej dotyczące [replikacji do platformy Azure](site-recovery-support-matrix-to-azure.md) i [lokalnych](site-recovery-support-matrix.md), i [wymagania wstępne dotyczące wdrażania](site-recovery-prereq.md).
+* Aby skonfigurować odzyskiwanie na platformie Azure, uruchom [oceny gotowości maszyn wirtualnych platformy Azure](http://www.microsoft.com/download/details.aspx?id=40898) narzędzia na maszynach wirtualnych programu SQL Server, aby upewnić się, że są one zgodne z platformą Azure i Usługa Site Recovery.
 
 ## <a name="set-up-active-directory"></a>Konfigurowanie usługi Active Directory
 
 Konfigurowanie usługi Active Directory, w lokacji dodatkowej odzyskiwania dla programu SQL Server do prawidłowego działania.
 
-* **Małe przedsiębiorstwa**— z mniejszą liczbą aplikacji i jednego kontrolera domeny do lokalnej lokacji, aby przełączyć w całej lokacji, zalecane jest użycie usługi Site Recovery replikacji replikacji kontrolera domeny na serwerze pomocniczym Centrum danych, lub na platformie Azure.
-* **Średnich i dużych przedsiębiorstw**— Jeśli masz wiele aplikacji w lesie usługi Active Directory i chcesz zakończyć się niepowodzeniem przez aplikację lub obciążenia, zaleca się Konfigurowanie dodatkowego kontrolera domeny w dodatkowego centrum danych lub na platformie Azure. Jeśli używasz zawsze włączonych grup dostępności do odzyskania z lokacją zdalną, zaleca się Konfigurowanie innego dodatkowego kontrolera domeny w lokacji dodatkowej lub na platformie Azure do użycia na potrzeby odzyskanego wystąpienia programu SQL Server.
+* **Małych przedsiębiorstw**— z małą liczbą aplikacji i jednego kontrolera domeny dla witryny lokalnej, aby w trybie Failover całej lokacji, zalecamy użycie replikacji usługi Site Recovery do replikacji kontrolera domeny do regionu pomocniczego Centrum danych, lub na platformie Azure.
+* **Średnich i dużych przedsiębiorstw**— Jeśli masz dużą liczbę aplikacji, w lesie usługi Active Directory i chcesz przejść w tryb failover aplikacją lub obciążeniem, zaleca się Konfigurowanie dodatkowego kontrolera domeny w dodatkowym centrum danych lub na platformie Azure. Jeśli używasz zawsze włączonych grup dostępności do odzyskania z lokacją zdalną, zalecamy innego dodatkowego kontrolera domeny w lokacji dodatkowej lub na platformie Azure jest skonfigurowany do używania odzyskane wystąpienia programu SQL Server.
 
 Instrukcje w tym artykule zakładają, że kontroler domeny jest dostępny w lokalizacji dodatkowej. [Dowiedz się więcej](site-recovery-active-directory.md) o ochronie usługi Active Directory z usługą Site Recovery.
 
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>Integrowanie z programu SQL Server AlwaysOn dla replikacji do platformy Azure
+## <a name="integrate-with-sql-server-always-on-for-replication-to-azure"></a>Integracja z programu SQL Server Always On replikacji do platformy Azure
 
 Oto, co należy zrobić:
 
-1. Importuj skryptów do konta usługi Automatyzacja Azure. Zawiera skrypty do trybu failover grupy dostępności SQL w [maszyny wirtualnej usługi Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) i [maszynę wirtualną w klasycznym](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
+1. Importuj skrypty na koncie usługi Azure Automation. Zawiera skrypty do trybu failover grupy dostępności SQL w [maszyny wirtualnej usługi Resource Manager](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) i [klasycznej maszyny wirtualnej](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
     [![Wdrażanie na platformie Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
-1. Dodaj ASR-SQL-FailoverAG jako akcją przed pierwszą grupą planu odzyskiwania.
+1. Dodaj usługi ASR-SQL-FailoverAG jako akcję wstępnie pierwszej grupy planu odzyskiwania.
 
-1. Wykonaj instrukcje dostępne w skrypcie tworzenia zmiennej automatyzacji, aby podać nazwę grupy dostępności.
+1. Wykonaj instrukcje dostępne w skrypcie tworzenia zmienna usługi automation, aby podać nazwę grupy dostępności.
 
-### <a name="steps-to-do-a-test-failover"></a>Kroki, aby wykonać test trybu failover
+### <a name="steps-to-do-a-test-failover"></a>Kroki testu trybu failover
 
-Program SQL AlwaysOn nie obsługuje natywnie testowy tryb failover. Dlatego zaleca się następujące czynności:
+SQL Always On nie obsługuje natywnie testowy tryb failover. Dlatego zalecamy wykonanie poniższych czynności:
 
 1. Konfigurowanie [kopia zapasowa Azure](../backup/backup-azure-arm-vms.md) na maszynie wirtualnej, który jest hostem repliki grupy dostępności na platformie Azure.
 
-1. Aby mogło nastąpić wyzwolenie testowy tryb failover planu odzyskiwania, należy odzyskać maszynę wirtualną z kopii zapasowej w poprzednim kroku.
+1. Przed wyzwoleniem testowy tryb failover planu odzyskiwania, należy odzyskać maszynę wirtualną z kopii zapasowej wykonywanej w poprzednim kroku.
 
-    ![Przywracanie z kopii zapasowej systemu Azure ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Przywracanie z kopii zapasowej platformy Azure ](./media/site-recovery-sql/restore-from-backup.png)
 
 1. [Wymuszenie kworum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) na maszynie wirtualnej przywróconej z kopii zapasowej.
 
 1. Zaktualizuj IP odbiornika do adresu IP, które są dostępne w testowej sieci trybu failover.
 
-    ![Zaktualizuj odbiornik IP](./media/site-recovery-sql/update-listener-ip.png)
+    ![Aktualizuj odbiornik IP](./media/site-recovery-sql/update-listener-ip.png)
 
-1. Przełącz odbiornika w trybie online.
+1. Przenieś odbiornika w trybie online.
 
     ![Przełącz do trybu Online odbiornika](./media/site-recovery-sql/bring-listener-online.png)
 
-1. Tworzenie modułu równoważenia obciążenia z jednego adresu IP utworzone w puli adresów IP frontonu odpowiadającej każdego odbiornika grupy dostępności i maszyny wirtualnej SQL dodane w puli zaplecza.
+1. Utwórz moduł równoważenia obciążenia z jeden z adresów IP utworzonych w ramach puli adresów IP frontonu, odpowiadający każdej odbiornika grupy dostępności i z maszyny wirtualnej SQL, które są dodawane do puli zaplecza.
 
-     ![Tworzenie usługi równoważenia obciążenia - puli adresów IP frontonu ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![Tworzenie modułu równoważenia obciążenia — pula adresów IP frontonu ](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![Tworzenie usługi równoważenia obciążenia - puli wewnętrznej bazy danych ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![Tworzenie modułu równoważenia obciążenia — puli zaplecza ](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. Wykonaj test trybu failover planu odzyskiwania.
 
-### <a name="steps-to-do-a-failover"></a>Kroki, aby tryb failover
+### <a name="steps-to-do-a-failover"></a>Kroki, aby przejść w tryb failover
 
-Po dodaniu skrypt w planie odzyskiwania i zweryfikowany, wykonując test trybu failover planu odzyskiwania, można wykonywać trybu failover planu odzyskiwania.
+Po dodaniu skryptu w ramach planu odzyskiwania i sprawdzana podczas testowania trybu failover planu odzyskiwania, możesz przejść w tryb failover planu odzyskiwania.
 
 
-## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integrowanie z programu SQL Server AlwaysOn dla replikacji do lokacji dodatkowej lokalnymi
+## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integracja z programu SQL Server Always On replikacji do lokacji dodatkowej w środowisku lokalnym
 
-Jeśli program SQL Server używa grup dostępności dla wysokiej dostępności (lub FCI), zaleca się przy użyciu grup dostępności w lokacji odzyskiwania również. Należy zwrócić uwagę, to ma zastosowanie do aplikacji, które nie używają transakcji rozproszonych.
+Program SQL Server jest używane grupy dostępności, wysokiej dostępności (lub infrastruktury klasyfikacji plików), zaleca się używanie grup dostępności do lokalizacji odzyskiwania. Należy pamiętać, że dotyczy to aplikacji, które nie używają transakcje rozproszone.
 
-1. [Skonfuguruj](https://msdn.microsoft.com/library/hh213078.aspx) do grupy dostępności.
+1. [Konfigurowanie bazy danych](https://msdn.microsoft.com/library/hh213078.aspx) do grupy dostępności.
 1. Tworzenie sieci wirtualnej w lokacji dodatkowej.
-1. Konfigurowanie połączenia sieci VPN lokacja lokacja między sieci wirtualnej i lokacji głównej.
-1. Utwórz maszynę wirtualną w lokacji odzyskiwania, a SQL Server należy zainstalować na nim.
-1. Rozszerzyć istniejącą zawsze włączonych grup dostępności nową maszynę Wirtualną programu SQL Server. Konfigurowania tego wystąpienia programu SQL Server jako kopia repliki asynchronicznego.
-1. Utwórz odbiornik grupy dostępności, lub zaktualizować istniejący odbiornik, aby dołączyć maszynę wirtualną repliki asynchronicznego.
-1. Upewnij się, że farmy aplikacji jest skonfigurowany przy użyciu odbiornika. Jeśli ustawianie przy użyciu nazwy serwera bazy danych, zaktualizuj go do użycia odbiornika, więc nie trzeba go ponownie skonfigurować po przejściu w tryb failover.
+1. Skonfiguruj połączenie sieci VPN lokacja lokacja między siecią wirtualną i lokacji głównej.
+1. Utwórz maszynę wirtualną do lokalizacji odzyskiwania, a na nim zainstalować program SQL Server.
+1. Rozszerzanie istniejących zawsze włączonej grupy dostępności na nową maszynę Wirtualną programu SQL Server. To wystąpienie programu SQL Server należy skonfigurować jako kopia repliki asynchronicznego.
+1. Utwórz odbiornik grupy dostępności, lub zaktualizuj istniejący odbiornik, aby uwzględnić asynchronicznego replika maszyny wirtualnej.
+1. Upewnij się, że farma aplikacji jest skonfigurowany przy użyciu odbiornika. Jeśli jest instalacji przy użyciu nazwy serwera bazy danych, należy zaktualizować je, aby użyć odbiornika, więc nie trzeba go ponownie skonfigurować po przełączeniu w tryb failover.
 
-W przypadku aplikacji korzystających z transakcji rozproszonych, zaleca się wdrażania usługi Site Recovery z [replikacji do lokacji serwera VMware/fizyczne](site-recovery-vmware-to-vmware.md).
+W przypadku aplikacji korzystających z transakcji rozproszonych, zaleca się wdrożenia usługi Site Recovery przy użyciu [replikacji site-to-site server serwer fizyczny/VMware](site-recovery-vmware-to-vmware.md).
 
 ### <a name="recovery-plan-considerations"></a>Zagadnienia dotyczące planu odzyskiwania
 1. Dodaj ten przykładowy skrypt do biblioteki programu VMM w lokacjach głównych i dodatkowych.
@@ -171,36 +171,36 @@ W przypadku aplikacji korzystających z transakcji rozproszonych, zaleca się wd
         import-module sqlps
         Switch-SqlAvailabilityGroup -Path $SQLAvailabilityGroupPath -AllowDataLoss -force
 
-1. Po utworzeniu planu odzyskiwania dla aplikacji, należy dodać akcję sprzed do kroku inicjowanych przez skrypty grupy-1, który wywołuje skrypt do trybu failover grupy dostępności.
+1. Po utworzeniu planu odzyskiwania w przypadku aplikacji, należy dodać akcję wstępnie do kroku grupy-1 inicjowanych przez skrypty, które wywołuje skrypt do trybu failover grupy dostępności.
 
-## <a name="protect-a-standalone-sql-server"></a>Ochrona autonomicznego serwera SQL
+## <a name="protect-a-standalone-sql-server"></a>Ochrona autonomiczne wystąpienie programu SQL Server
 
-W tym scenariuszu zalecane jest użycie replikacji usługi Site Recovery do ochrony komputera programu SQL Server. Dokładne kroki zależy, czy serwer SQL jest maszyny Wirtualnej lub serwerze fizycznym i określa, czy chcesz replikować do platformy Azure lub dodatkowej lokacji lokalnymi. Dowiedz się więcej o [scenariuszy odzyskiwania lokacji](site-recovery-overview.md).
+W tym scenariuszu firma Microsoft zaleca użycie replikacji usługi Site Recovery do ochrony komputera programu SQL Server. Konkretne kroki zależy, czy jest SQL Server na maszynie Wirtualnej lub serwer fizyczny i czy ma zostać zreplikowana na platformę Azure lub dodatkowej lokacji lokalnej. Dowiedz się więcej o [scenariuszy odzyskiwania lokacji](site-recovery-overview.md).
 
 ## <a name="protect-a-sql-server-cluster-standard-editionwindows-server-2008-r2"></a>Ochrona klastra programu SQL Server (standard edition/Windows Server 2008 R2)
 
-W przypadku klastra z programem SQL Server Standard edition lub SQL Server 2008 R2, firma Microsoft zaleca się, że używasz replikacji usługi Site Recovery do ochrony programu SQL Server.
+W przypadku klastra z programem SQL Server Standard edition lub SQL Server 2008 R2 zalecane jest użycie replikacji usługi Site Recovery do ochrony programu SQL Server.
 
 ### <a name="on-premises-to-on-premises"></a>Ze środowiska lokalnego do środowiska lokalnego
 
-* Jeśli aplikacja korzysta z transakcji rozproszonych zalecamy wdrożeniem [odzyskiwania lokacji za pomocą replikacji SAN](site-recovery-vmm-san.md) w środowisku funkcji Hyper-V lub [serwera VMware/fizyczne do programu VMware](site-recovery-vmware-to-vmware.md) w środowisku VMware.
-* Dla aplikacji z systemem innym niż DTC należy użyć metody powyżej, aby odzyskać klaster jako serwer autonomiczny, wykorzystując lokalnego wysokiego bezpieczeństwa dublowania bazy danych.
+* Jeśli aplikacja korzysta z transakcji rozproszonych firma Microsoft zaleca wdrożeniem [Site Recovery dzięki replikacji sieci SAN](site-recovery-vmm-san.md) środowisku funkcji Hyper-V lub [serwer fizyczny/VMware do programu VMware](site-recovery-vmware-to-vmware.md) w środowisku VMware.
+* W przypadku aplikacji niewymagające usługi DTC powyżej metody należy użyć do odzyskania klastra jako autonomiczny serwer przy użyciu lokalnego wysokie bezpieczeństwo dublowania bazy danych.
 
-### <a name="on-premises-to-azure"></a>Dane lokalne na platformie Azure
+### <a name="on-premises-to-azure"></a>W środowisku lokalnym na platformie Azure
 
-Usługa Site Recovery nie zapewnia gościa Obsługa klastrów, podczas replikacji do platformy Azure. Dla wersji Standard programu SQL Server również nie zapewnia rozwiązanie odzyskiwania po awarii niskich kosztach. W tym scenariuszu Zalecamy ochronę lokalnego klastra programu SQL Server do autonomicznego serwera SQL i odzyskać ją na platformie Azure.
+Usługa Site Recovery nie zapewnia gościa Obsługa klastrów, podczas replikacji do platformy Azure. Dla wersji Standard programu SQL Server także nie zapewnia rozwiązanie odzyskiwania po awarii niskie koszty. W tym scenariuszu firma Microsoft zaleca ochrony klastra programu SQL Server w środowisku lokalnym, do autonomicznego programu SQL Server i odzyskać ją na platformie Azure.
 
 1. Skonfiguruj dodatkowe autonomiczne wystąpienie programu SQL Server w lokacji lokalnej.
-1. Skonfiguruj wystąpienie jako dublowania baz danych, które chcesz chronić. Konfigurowanie funkcji dublowania w trybie wysokiego bezpieczeństwa.
-1. Konfigurowanie usługi Site Recovery w lokacji lokalnej dla ([funkcji Hyper-V](site-recovery-hyper-v-site-to-azure.md) lub [VMware maszyny wirtualne/serwery fizyczne)](site-recovery-vmware-to-azure-classic.md).
-1. Replikacja usługi Site Recovery umożliwia replikowanie nowe wystąpienie programu SQL Server na platformę Azure. Ponieważ jest kopii duplikatu wysokiego bezpieczeństwa, zostanie on zsynchronizowany z klastra głównego, ale będą replikowane do platformy Azure przy użyciu replikacji usługi Site Recovery.
+1. Skonfiguruj wystąpienie ma pełnić rolę dublowania baz danych, które chcesz chronić. Konfigurowanie funkcji dublowania w trybie wysokiego bezpieczeństwa.
+1. Konfigurowanie odzyskiwania lokacji w lokacji lokalnej dla ([funkcji Hyper-V](site-recovery-hyper-v-site-to-azure.md) lub [serwerów fizycznych i maszyn wirtualnych programu VMware)](site-recovery-vmware-to-azure-classic.md).
+1. Replikacja usługi Site Recovery umożliwia replikowanie nowego wystąpienia programu SQL Server na platformę Azure. Ponieważ jest kopii duplikatu wysokiego bezpieczeństwa, zostaną zsynchronizowane przy użyciu klastra podstawowego, ale będą replikowane do platformy Azure przy użyciu replikacji usługi Site Recovery.
 
 
 ![Klaster w warstwie Standardowa](./media/site-recovery-sql/standalone-cluster-local.png)
 
 ### <a name="failback-considerations"></a>Zagadnienia dotyczące powrotu po awarii
 
-W przypadku klastrów programu SQL Server Standard powrotu po awarii po nieplanowany tryb failover wymaga kopii zapasowej serwera SQL i przywracania z wystąpienia duplikatu do oryginalnego klastra reestablishment duplikatu.
+W przypadku klastrów programu SQL Server Standard powrotu po awarii po nieplanowany tryb failover wymaga kopii zapasowej programu SQL server i przywracania z wystąpienia duplikatu do oryginalnego klastra, za pomocą reestablishment dublowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej](site-recovery-components.md) o architekturze usługi Site Recovery.

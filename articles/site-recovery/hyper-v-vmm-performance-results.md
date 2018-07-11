@@ -1,151 +1,151 @@
 ---
-title: Wyniki testu dla replikacji maszyn wirtualnych funkcji Hyper-V w chmurach VMM do lokacji dodatkowej z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje o testowanie wydajnościowe na potrzeby replikacji maszyn wirtualnych funkcji Hyper-V w chmurach VMM do lokacji dodatkowej przy użyciu usługi Azure Site Recovery.
+title: Wyniki testu dla replikacji maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje dotyczące testowania wydajnościowego na potrzeby replikacji maszyn wirtualnych z funkcją Hyper-V w chmurach programu VMM do lokacji dodatkowej przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: e15f435a3f32b8908b5b93bccc6c57710ab589bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4e6884bdcbc0d9921186ec9ff11a701b707faeef
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29378897"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921301"
 ---
-# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla funkcji Hyper-V replikacji do lokacji dodatkowej
+# <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
-W tym artykule przedstawiono wyniki testu podczas replikowania maszyn wirtualnych funkcji Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM), do dodatkowego centrum danych wydajności.
+Ten artykuł zawiera wyniki testu podczas replikowania maszyn wirtualnych z funkcją Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do dodatkowego centrum danych wydajności.
 
 ## <a name="test-goals"></a>Cele testu
 
-Celem badania było zbadać sposób wykonywania odzyskiwania lokacji podczas replikacji stanie stabilności.
+Celem testowanie było sprawdzić, jak Usługa Site Recovery podczas replikacji w stanie stabilności.
 
-- Stanie stabilności replikacji występuje, gdy maszyny wirtualne zakończyły replikację początkową i synchronizacji zmiany różnicowe.
-- Ważne jest do pomiaru wydajności przy użyciu stałej stanu, ponieważ jest w stanie, w których większość maszyn wirtualnych pozostają, chyba że wystąpienia nieoczekiwanych awarii.
-- Testowe wdrożenie składa się z dwoma lokacjami lokalnymi, z serwerem programu VMM w każdej lokacji. Tego wdrożenia testowego jest typowy head/oddział wdrożenia pakietu office, z centrali działający jako lokacji głównej i w biurze oddziału jako lokacji dodatkowej lub odzyskiwania.
+- Replikacji w stanie stabilnym występuje, gdy została ukończona replikacji początkowej maszyn wirtualnych i planowana jest synchronizacja zmian różnicowych.
+- Ważne jest mierzenie wydajności przy użyciu stanie stabilności, ponieważ jest on stan, w której większość maszyn wirtualnych pozostają, chyba że wystąpienia nieoczekiwanych awarii.
+- Testowe wdrożenie składa się z dwóch lokacji lokalnych z serwera programu VMM w taki sposób, w każdej lokacji. Tego wdrożenia testowego jest typowym przykładem w przypadku wdrożenia w biurach/oddziałach głównego z siedziby, działając jako lokację główną i oddziału jako witryny pomocniczej lub odzyskiwania.
 
-## <a name="what-we-did"></a>Firma Microsoft może
+## <a name="what-we-did"></a>Co zrobiliśmy
 
-Oto, co możemy w teście przeszedł:
+Oto, co mamy w teście przeszedł:
 
-1. Maszyny wirtualne utworzone za pomocą szablonów programu VMM.
-2. Uruchomione maszyny wirtualne, a następnie przechwycić metryki wydajności bazowej niż 12 godzin.
-3. Utworzony chmur na serwerze podstawowym i odzyskiwania serwerów programu VMM.
-4. Replikacji w lokacji odzyskiwania, w tym mapowania między źródłem i odzyskiwania chmury.
-5. Włączyć ochronę maszyn wirtualnych i możliwość ukończenia replikacji początkowej.
-6. Oczekiwano kilku godzinach stabilizacji systemu.
-7. Przechwytywane metryki wydajności niż 12 godzin, gdzie wszystkich maszyn wirtualnych pozostają nieoczekiwany stan replikacji dla tych 12 godzin.
-8. Mierzone różnica między metryki wydajności bazowej i metryk wydajności replikacji.
+1. Maszyny wirtualne utworzone przy użyciu szablonów w programie VMM.
+2. Uruchomione maszyny wirtualne, a przechwycone bazowych metryk wydajności ponad 12 godzin.
+3. Chmury utworzone na serwerze podstawowym i odzyskiwania serwerów programu VMM.
+4. Replikacji w usłudze Site Recovery, w tym mapowania między źródłem i odzyskiwania chmur.
+5. Włączono ochronę dla maszyn wirtualnych i mogą je do ukończenia replikacji początkowej.
+6. Oczekiwano kilka godzin stabilizacji systemu.
+7. Przechwytywane metryki wydajności ponad 12 godzin, gdzie wszystkie maszyny wirtualne pozostaje nieoczekiwany stan replikacji dla tych 12 godzin.
+8. Mierzone różnica między bazowych metryk wydajności i metryki wydajności replikacji.
 
 
 ## <a name="primary-server-performance"></a>Wydajność serwera podstawowego
 
-* Funkcji Hyper-V Replica (używane przez usługę Site Recovery) asynchronicznie śledzi zmiany w pliku dziennika z magazynem minimalna narzut na serwerze podstawowym.
-* Repliki funkcji Hyper-V korzysta z własnym zapewnienia pamięci podręcznej, aby zminimalizować liczbę IOPS nakładów pracy dla śledzenia. Przechowuje zapisuje VHDX w pamięci i opróżnia je w pliku dziennika, przed upływem terminu, dziennik jest wysyłane do witryny odzyskiwania. Dysk opróżniania odbywa się, jeśli zapisami osiągnęła limit wcześniej.
-* Wykres poniżej przedstawia stanie stabilności obciążenie IOPS dla replikacji. Widać, że IOPS nakłady pracy związane z powodu replikacji jest około 5%, która jest mało.
+* Funkcji Hyper-V Replica (używane przez usługę Site Recovery) asynchronicznie śledzi zmiany w pliku dziennika z magazynem minimalne obciążenie na serwerze podstawowym.
+* Repliki Hyper-V korzysta z własnym utrzymywane w dobrym stanie pamięci podręcznej, aby zminimalizować operacje We/Wy obciążenia do śledzenia. Przechowuje zapisuje VHDX w pamięci i opróżnia je do pliku dziennika, przed upływem terminu, który dziennika są wysyłane do lokacji odzyskiwania. Dysk opróżniania występuje także w zapisy osiągnięciu limitu wcześniej.
+* Wykres poniżej przedstawia obciążenie stanie stabilności operacji We/Wy do replikacji. Widać, że operacje We/Wy obciążenie z powodu replikacji jest około 5%, która jest mało prawdopodobne.
 
-  ![Podstawowy wyników](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Wyniki podstawowego](./media/hyper-v-vmm-performance-results/IC744913.png)
 
-Repliki funkcji Hyper-V używa pamięci na serwerze podstawowym, aby zoptymalizować wydajność dysku. Jak pokazano na wykresie, pamięć, narzut na wszystkich serwerach w klastrze podstawowego jest brzegowych. Pamięć narzut to wartości procentowej pamięci używana przez funkcję replikacji, w porównaniu do całkowitej ilości pamięci zainstalowanych na serwerze funkcji Hyper-V.
+Repliki Hyper-V korzysta z pamięci na serwerze podstawowym, aby zoptymalizować wydajność dysków. Jak pokazano na poniższym wykresie, pamięć, obciążenie na wszystkich serwerach w klastrze podstawowy jest brzegowych. Pamięć, obciążenie wyświetlany jest procent pamięci używana przez funkcję replikacji, w porównaniu do całkowitej pamięci zainstalowanych na serwerze funkcji Hyper-V.
 
-![Podstawowy wyników](./media/hyper-v-vmm-performance-results/IC744914.png)
+![Wyniki podstawowego](./media/hyper-v-vmm-performance-results/IC744914.png)
 
-Funkcja Hyper-V Replica ma minimalną obciążenia Procesora. Jak pokazano na wykresie, obciążenia związanego z replikacją jest z zakresu od 2 do 3%.
+Funkcja Hyper-V Replica ma minimalne obciążenie procesora CPU. Jak pokazano na wykresie, obciążenia związanego z replikacją jest z zakresu od % 2 – 3.
 
-![Podstawowy wyników](./media/hyper-v-vmm-performance-results/IC744915.png)
+![Wyniki podstawowego](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Wydajność serwera pomocniczego
 
-Repliki funkcji Hyper-V używa mała ilość pamięci na serwerze odzyskiwania w celu optymalizowania liczby operacji magazynu. Wykres zawiera podsumowanie użycia pamięci na serwerze odzyskiwania. Pamięć narzut to wartości procentowej pamięci używana przez funkcję replikacji, w porównaniu do całkowitej ilości pamięci zainstalowanych na serwerze funkcji Hyper-V.
+Repliki Hyper-V korzysta z małej ilości pamięci na serwerze odzyskiwania zoptymalizować liczbę operacji magazynu. Wykres zawiera podsumowanie wykorzystania pamięci na serwerze odzyskiwania. Pamięć, obciążenie wyświetlany jest procent pamięci używana przez funkcję replikacji, w porównaniu do całkowitej pamięci zainstalowanych na serwerze funkcji Hyper-V.
 
 ![Wyniki dodatkowej](./media/hyper-v-vmm-performance-results/IC744916.png)
 
-Liczba operacji We/Wy w lokacji odzyskiwania jest funkcją liczbę operacji zapisu w lokacji głównej. Załóżmy przyjrzeć się całkowita liczba operacji We/Wy w lokacji odzyskiwania w porównaniu z całkowita liczba operacji We/Wy i zapisu w lokacji głównej. Wykresy pokazują, że łączną liczbę IOPS w lokacji odzyskiwania jest
+Liczba operacji We/Wy do lokalizacji odzyskiwania jest funkcją, liczby operacji zapisu w lokacji głównej. Możemy przyjrzeć się łączna liczba operacji We/Wy do lokalizacji odzyskiwania w porównaniu z łączna liczba operacji We/Wy operacji zapisu i lokacji głównej. Wykresy pokazują, że łączna liczba operacji We/Wy do lokalizacji odzyskiwania jest
 
-* Około 1,5 raza zapisu IOPS na serwerze podstawowym.
-* Około 37% całkowitej IOPS w lokacji głównej.
+* Około 1,5 raza więcej niż zapisu operacji We/Wy na serwerze podstawowym.
+* Około 37% łączna liczba operacji We/Wy w lokacji głównej.
 
 ![Wyniki dodatkowej](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Wyniki dodatkowej](./media/hyper-v-vmm-performance-results/IC744918.png)
 
-## <a name="effect-on-network-utilization"></a>Wpływ na wykorzystanie sieci
+## <a name="effect-on-network-utilization"></a>Wpływ na użycie sieci
 
-Średnia 275 Mb na sekundę przepustowość sieci użyto między węzłami podstawowymi i odzyskiwania (z włączoną kompresją), przed istniejących przepustowości 5 Gb na sekundę.
+Średnio 275 Mb na sekundę przepustowość sieci zostało użyte między węzłami podstawowymi i odzyskiwania (z włączoną kompresją), przed istniejących przepustowości 5 Gb na sekundę.
 
-![Wykorzystanie sieci wyników](./media/hyper-v-vmm-performance-results/IC744919.png)
+![Wykorzystanie sieci wyniki](./media/hyper-v-vmm-performance-results/IC744919.png)
 
 ## <a name="effect-on-vm-performance"></a>Wpływ na wydajność maszyny Wirtualnej
 
-Ważną kwestią jest jego wpływ na replikację w przypadku obciążeń produkcyjnych uruchomionych na maszynach wirtualnych. Jeśli w lokacji głównej można ją było właściwie jest przeznaczona do replikacji, brak nie powinny być ich wpływ na obciążenie. Lightweight funkcji Hyper-V Replica śledzenia mechanizm zapewnia nie dotyczy obciążeń uruchomionych na maszynach wirtualnych podczas replikacji stanie stabilności. Jest to zilustrowane na poniższych wykresach.
+Ważną kwestią jest wpływ replikacji dla obciążeń produkcyjnych uruchamianych na maszynach wirtualnych. Jeśli lokacja główna jest odpowiednio do replikacji, istnieje nie powinna mieć żadnego wpływu na obciążenia. Uproszczone funkcji Hyper-V Replica mechanizm śledzenia zapewnia obciążeń działających na maszynach wirtualnych nie są zagrożone podczas replikacji w stanie stabilnym. Jest to zilustrowane w poniższym wykresów.
 
-Ten wykres pokazuje liczbę IOPS wykonywane przez maszyny wirtualne z różnych obciążeń przed i po włączeniu replikacji. Można obserwować, czy nie ma żadnej różnicy między nimi.
+Ten wykres pokazuje, że operacje we/wy wykonywane przez maszyny wirtualne uruchomione na różnych obciążeń, przed i po włączeniu replikacji. Można zaobserwować, że nie ma żadnej różnicy między nimi.
 
 ![Wyniki efekt repliki](./media/hyper-v-vmm-performance-results/IC744920.png)
 
-Wykres ukazuje przepływności maszyn wirtualnych uruchomionych różnych obciążeń przed i po włączeniu replikacji. Można obserwować, czy replikacja nie ma znaczący wpływu.
+Poniższy wykres pokazuje przepływność maszyn wirtualnych działających na różnych obciążeń, przed i po włączeniu replikacji. Można zaobserwować, że replikacja została znaczącego wpływu.
 
 ![Efekty repliki wyników](./media/hyper-v-vmm-performance-results/IC744921.png)
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Wyraźnie wyniki wskazują, czy usługi Site Recovery, w połączeniu z funkcji Hyper-V Replica skaluje się z co najmniej w czasie dużych klastra. Usługa Site Recovery zapewnia proste wdrożenie, replikacji, zarządzania i monitorowania. Repliki funkcji Hyper-V udostępnia infrastrukturę niezbędne zakończona pomyślnie replikacja skalowania. 
+Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w połączeniu z funkcją Hyper-V Replica, skaluje się z co najmniej w czasie dużego klastra. Usługa Site Recovery oferuje proste wdrożenie, replikacja, zarządzanie i monitorowanie. Repliki Hyper-V udostępnia infrastrukturę niezbędne do pomyślnego zakończenia replikacji skalowania. 
 
 ## <a name="test-environment-details"></a>Szczegóły środowiska testowego
 
 ### <a name="primary-site"></a>Lokacja główna
 
-* Lokacja główna ma klastrze zawierającym pięć serwerów funkcji Hyper-V, uruchomionych 470 maszyn wirtualnych.
-* Maszyny wirtualne uruchomione różnych obciążeń i wszystkie ma włączoną ochronę usługi Site Recovery.
-* Magazyn dla węzła klastra jest zapewniana przez sieć SAN iSCSI. Model – Hitachi HUS130.
-* Każdy serwer klastra ma cztery karty sieciowe (NIC) z jedną GB.
-* Dwie karty sieciowe są podłączone do sieci prywatnej iSCSI, a dwie są podłączone do sieci zewnętrznej przedsiębiorstwa. Jedną z sieci zewnętrznej jest zarezerwowana dla tylko na komunikację klastra.
+* Lokacja główna ma klastrze zawierającym pięć serwerów funkcji Hyper-V, działających 470 maszyn wirtualnych.
+* Maszyny wirtualne nie działały różnych obciążeń, a wszystkie mają włączoną ochronę Site Recovery.
+* Magazyn dla węzła klastra jest zapewniana przez sieci SAN iSCSI. Model – Hitachi HUS130.
+* Każdy serwer z klastra ma cztery karty sieciowe (NIC) w jedną GB/s każdego.
+* Dwie karty sieciowe są podłączone do sieci prywatnej iSCSI, a dwa są podłączone do sieci zewnętrznej przedsiębiorstwa. Jedną z sieci zewnętrznej jest zarezerwowana dla tylko komunikacji klastra.
 
 ![Podstawowe wymagania sprzętowe](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Serwer | Pamięć RAM | Model | Procesor | Liczba procesorów | NIC | Oprogramowanie |
+| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |R820 firmy Dell PowerEdge™ |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + roli funkcji Hyper-V |
-| Serwer programu VMM |2 | | |2 |1 Gb/s |Windows Server bazy danych 2012 R2 (x 64) + VMM 2012 R2 |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |4 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Lokacja dodatkowa
 
 * Lokacja dodatkowa ma klastra pracy awaryjnej sześciu węzłów.
-* Magazyn dla węzła klastra jest zapewniana przez sieć SAN iSCSI. Model – Hitachi HUS130.
+* Magazyn dla węzła klastra jest zapewniana przez sieci SAN iSCSI. Model – Hitachi HUS130.
 
-![Specyfikacja podstawowy sprzęt](./media/hyper-v-vmm-performance-results/IC744923.png)
+![Specyfikacja podstawowego sprzętu](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Serwer | Pamięć RAM | Model | Procesor | Liczba procesorów | NIC | Oprogramowanie |
+| Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |R720 firmy Dell PowerEdge™ |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 @ 2.30GHz |2 |I GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + roli funkcji Hyper-V |
-| ESTLAB-HOST17 |128 |R820 firmy Dell PowerEdge™ |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + roli funkcji Hyper-V |
-| ESTLAB-HOST24 |256 |R820 firmy Dell PowerEdge™ |Intel(R) Xeon(R) CPU E5-4620 0 @ 2.20GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + roli funkcji Hyper-V |
-| Serwer programu VMM |2 | | |2 |1 Gb/s |Windows Server bazy danych 2012 R2 (x 64) + VMM 2012 R2 |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Firmy Dell™ PowerEdge R720 |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 @ 2.30GHz |2 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB HOST17 |128 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB-HOST24 |256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Obciążenie serwera
 
-* Do celów testowych możemy pobrać obciążeń często używane w scenariuszach dla przedsiębiorstw klienta.
-* Używamy [IOMeter](http://www.iometer.org) z cech obciążenia podsumowane w tabeli na symulacyjnych.
-* Wszystkie profile IOMeter są ustawione na zapis losowych bajtów do symulowania najgorszych zapisu wzorce dla obciążeń.
+* Do celów testowych możemy pobrać obciążeń często używane w scenariuszach klientów w przedsiębiorstwie.
+* Używamy [IOMeter](http://www.iometer.org) z cechy obciążenia podsumowane w tabeli symulacji.
+* Można ustawić wszystkie profile IOMeter zapisu wzorców obciążeń operacji zapisu w losowych bajtów do symulowania najgorszego przypadku.
 
-| Obciążenie | We/Wy rozmiar (KB) | % Dostępu | % Odczytu | Oczekujące operacje We/Wy | Wzorzec operacji We/Wy |
+| Obciążenie | Rozmiar operacji We/Wy (KB) | % Dostępu | % Odczytu | Liczba oczekujących operacji We/Wy | Wzorzec operacji We/Wy |
 | --- | --- | --- | --- | --- | --- |
-| Serwer plików |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Wszystkie 100% losowych |
-| SQL Server (woluminu 1) programu SQL Server (woluminu 2) |864 |100%100% |70%0% |88 |100% random100% sekwencyjne |
-| Exchange |32 |100% |67% |8 |losowe 100% |
+| Serwer plików |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Wszystkie 100% losowe |
+| Program SQL Server (woluminu 1) programu SQL Server (woluminu 2) |864 |100%100% |70%0% |88 |100% random100% sekwencyjne |
+| Exchange |32 |100% |67% |8 |100% losowe |
 | Stacja robocza/VDI |464 |66%34% |70%95% |11 |Losowe zarówno 100% |
-| Serwer plików w sieci Web |4864 |33%34%33% |95%95%95% |888 |Wszystkie 75% losowych |
+| Serwer plików w sieci Web |4864 |33%34%33% |95%95%95% |888 |Wszystkie 75% losowe |
 
 ### <a name="vm-configuration"></a>Konfiguracja maszyny Wirtualnej
 
 * 470 maszyny wirtualne w klastrze podstawowego.
-* Wszystkie maszyny wirtualne z dysku VHDX.
-* Maszyny wirtualne z obciążeniami podsumowane w tabeli. Wszystkie zostały utworzone szablony programu VMM.
+* Wszystkie maszyny wirtualne z dyskiem VHDX.
+* Maszyny wirtualne w uruchamianiu obciążeń liczonych podsumowane w tabeli. Wszystkie zostały utworzone przy użyciu szablonów w programie VMM.
 
-| Obciążenie | # Maszyny wirtualne | Minimalna ilość pamięci RAM (GB) | Maksymalna ilość pamięci RAM (GB) | Rozmiar dysku logicznego (GB) dla maszyny Wirtualnej | Maksymalna liczba IOPS |
+| Obciążenie | # Maszyn wirtualnych | Minimalna ilość pamięci RAM (GB) | Maksymalna ilość pamięci RAM (GB) | Rozmiar dysku logicznego (GB) na maszynę Wirtualną | Maksymalna liczba IOPS |
 | --- | --- | --- | --- | --- | --- |
 | Oprogramowanie SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
@@ -154,31 +154,31 @@ Wyraźnie wyniki wskazują, czy usługi Site Recovery, w połączeniu z funkcji 
 | Serwer sieci Web |149 |.5 |1 |80 |6 |
 | ŁĄCZNIE |470 | | |96.83 TB |4108 |
 
-### <a name="site-recovery-settings"></a>Ustawienia odzyskiwania lokacji
+### <a name="site-recovery-settings"></a>Ustawień usługi Site Recovery
 
-* Usługa Site Recovery został skonfigurowany do środowiska lokalnego do ochrony lokalnej
-* Serwer VMM ma cztery skonfigurowaną chmurę, zawierającą serwery w klastrze funkcji Hyper-V i ich maszyny wirtualne.
+* Usługa Site Recovery została skonfigurowana dla środowiska lokalnego do ochrony w środowisku lokalnym
+* Serwer VMM ma cztery skonfigurowano chmury, zawierającą serwery w klastrze funkcji Hyper-V i maszyn wirtualnych.
 
-| Podstawowy chmury VMM | Chronione maszyny wirtualne | Częstotliwość replikacji | Dodatkowe punkty odzyskiwania |
+| Chmura podstawowa programu VMM | Chronione maszyny wirtualne | Częstotliwość replikacji | Dodatkowe punkty odzyskiwania |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 minut. |None |
-| PrimaryCloudRpo30s |47 |30 sekund |None |
+| PrimaryCloudRpo15m |142 |15 min. |Brak |
+| PrimaryCloudRpo30s |47 |30 sekund |Brak |
 | PrimaryCloudRpo30sArp1 |47 |30 sekund |1 |
-| PrimaryCloudRpo5m |235 |5 minut. |None |
+| PrimaryCloudRpo5m |235 |5 minut. |Brak |
 
 ### <a name="performance-metrics"></a>Metryki wydajności
 
-W tabeli przedstawiono metryki wydajności i liczniki, które zostały zmierzone w ramach wdrożenia.
+W tabeli przedstawiono metryki wydajności i liczniki, które zostały mierzone we wdrożeniu.
 
 | Metryka | Licznik |
 | --- | --- |
 | Procesor CPU |\Processor(_Total)\% Processor Time |
-| Dostępna pamięć |\Memory\Available (MB) |
-| Operacje wejścia/wyjścia |Transfery \Disk \PhysicalDisk (_Total) na sekundę |
-| Maszyna wirtualna (IOPS) operacje odczytu/s |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read operacji na sekundę |
-| Operacje zapisu (IOPS) maszyny Wirtualnej na sekundę |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write operacji/S |
-| Przepływność odczytu dla maszyny Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read bajty/s |
-| Przepływność zapisu maszyny Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write bajty/s |
+| Dostępna pamięć |\Memory\Available pamięć (MB) |
+| Operacje wejścia/wyjścia |Transfery \Disk \PhysicalDisk (%) (_łącznie) na sekundę |
+| Maszyna wirtualna (IOPS) operacje odczytu/s |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read OP./s |
+| Operacje zapisu (IOPS) maszyny Wirtualnej/s |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write operacji/S |
+| Przepływność zapisu maszyny Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Read bajty/s |
+| Przepływność zapisu na maszynie Wirtualnej |\Hyper-V wirtualne urządzenie magazynujące (<VHD>) \Write bajty/s |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

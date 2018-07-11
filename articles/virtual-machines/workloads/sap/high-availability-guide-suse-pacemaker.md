@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure | Dokumentacja firmy Microsoft
-description: Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure
+title: Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure | Dokumentacja firmy Microsoft
+description: Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -15,39 +15,41 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: ba44a8988c4af68abf4d155a2b9cb490b6122d39
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656418"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921507"
 ---
-# <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure
+# <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
 [planning-guide]:planning-guide.md
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
 
-Dostępne są dwie opcje do skonfigurowania klastra rozrusznik na platformie Azure. Możesz użyć agenta ogrodzenia, która zajmuje się ponownym uruchomieniu węzła nie powiodło się za pośrednictwem interfejsów API usługi Azure lub urządzenia interwencja można użyć.
+Dostępne są dwie opcje do skonfigurowania klastra program Pacemaker w systemie Azure. Możesz użyć agenta preferowane dba o ponowne uruchomienie węzła nie powiodło się za pośrednictwem interfejsów API platformy Azure, lub można użyć urządzenia interwencja.
 
-Urządzenie interwencja wymaga jednego dodatkowe maszyny wirtualnej, która pełni funkcję serwera obiektów docelowych iSCSI i udostępnia interwencja urządzenia. Ten serwer obiektów docelowych iSCSI może jednak być współużytkowane z innymi klastrami rozrusznik. Zaletą korzystania z urządzenia interwencja jest krótszy czas pracy awaryjnej i, jeśli używasz interwencja urządzeniami lokalnymi, nie wymaga żadnych zmian w sposób działania klastra rozrusznik. Ogrodzenia interwencja można nadal używać agent odgradzający Azure jako kopia zapasowa ogrodzeń mechanizmu w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
+Urządzenie interwencja wymaga dodatkowych maszyn wirtualnych działa jako serwer obiektów docelowych iSCSI, która zawiera urządzenia z systemem interwencja. Ten serwer obiektów docelowych iSCSI może jednak być współużytkowane z innymi klastrami program Pacemaker. Zaletą używania urządzenia z systemem interwencja jest krótszy czas pracy awaryjnej i, jeśli używasz interwencja urządzeniami lokalnymi, nie wymaga żadnych zmian na sposób działania klastra program pacemaker. Preferowane interwencja można nadal używać agenta odgradzania platformy Azure do przechowywania kopii zapasowych odgradzania mechanizmu, w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
 
-Jeśli nie chcesz zainwestować w dodatkowe maszyny wirtualne, również służy agent Odgradzający Azure. Wadą podwyższonego jest, że trybu failover może zająć od 10 do 15 minut, jeśli stop zasobu nie powiedzie się lub węzłów klastra nie może komunikować się który wzajemnie już.
+Jeśli nie chcesz inwestować w dodatkowych maszyn wirtualnych, można również użyć agent Odgradzający Azure. Minusem jest to, że przejścia w tryb failover może potrwać od 10 do 15 minut, jeśli stop zasobów ulegnie awarii lub węzłów klastra nie może komunikować się które sobie nawzajem już.
 
-![Rozrusznik na SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+![Program pacemaker w systemie SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
-## <a name="sbd-fencing"></a>Interwencja ogrodzenia
+## <a name="sbd-fencing"></a>Preferowane interwencja
 
-Jeśli chcesz użyć urządzenia interwencja dla ogrodzenia, wykonaj następujące kroki.
+Wykonaj następujące kroki, aby urządzenia z systemem interwencja na użytek preferowane.
 
 ### <a name="set-up-an-iscsi-target-server"></a>Konfigurowanie serwera obiektów docelowych iSCSI
 
-Najpierw należy utworzyć iSCSI docelowej maszyny wirtualnej, jeśli nie masz już. serwery obiektów docelowych iSCSI można udostępniać wielu klastrów rozrusznik.
+Najpierw należy utworzyć iSCSI docelowej maszyny wirtualnej, jeśli nie masz jeszcze takiego. serwery obiektów docelowych iSCSI może być udostępniane wielu klastrów program Pacemaker.
 
-1. Wdróż nowe SLES 12 z dodatkiem SP1 lub nowszej maszyny wirtualnej i połączyć się z komputerem za pośrednictwem ssh. Maszyny nie musi być duży. Rozmiar maszyny wirtualnej, takie jak Standard_E2s_v3 lub Standard_D2s_v3 jest wystarczająca.
+1. Wdrażanie nowego systemu SLES 12 z dodatkiem SP1 lub nowszej maszynę wirtualną i nawiązać połączenie z maszyną za pośrednictwem protokołu ssh. Maszyny nie musi być duże. Rozmiar maszyny wirtualnej, takie jak Standard_E2s_v3 lub Standard_D2s_v3 jest wystarczająca.
 
-1. SLES aktualizacji
+1. Aktualizacja w systemie SLES
 
    <pre><code>
    sudo zypper update
@@ -61,7 +63,7 @@ Najpierw należy utworzyć iSCSI docelowej maszyny wirtualnej, jeśli nie masz j
    sudo zypper remove lio-utils python-rtslib python-configshell targetcli
    </code></pre>
    
-1. Zainstaluj pakiety docelowego iSCSI
+1. Instalowanie pakietów docelowych iSCSI
 
    <pre><code>
    sudo zypper install targetcli-fb dbus-1-python
@@ -76,9 +78,9 @@ Najpierw należy utworzyć iSCSI docelowej maszyny wirtualnej, jeśli nie masz j
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Utwórz urządzenie iSCSI na serwerze docelowym iSCSI
 
-Dołączanie nowego dysku danych do docelowej maszyny wirtualnej iSCSI może służyć do tego klastra. Dysk z danymi mogą być jak 1 GB i muszą znajdować się na konto magazynu w warstwie Premium lub dysku zarządzane Premium, aby korzystać z [umowy SLA dla maszyny Wirtualnej z jednym](https://azure.microsoft.com/support/legal/sla/virtual-machines).
+Dołącz nowy dysk danych do docelowej maszyny wirtualnej iSCSI może służyć do tego klastra. Dysk danych może być tak małej, jak 1 GB i muszą znajdować się na konto magazynu Premium Storage lub dysku zarządzanego w warstwie Premium, aby korzystać z [pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines).
 
-Uruchom następujące polecenie **obiektów docelowych iSCSI maszyny Wirtualnej** można utworzyć dysku iSCSI dla nowego klastra. W poniższym przykładzie **cl1** służy do identyfikowania nowego klastra i **produkcyjną cl1 0** i **produkcyjną cl1 1** są nazwy hostów z węzłów klastra. Zamień je nazwy hostów węzły klastra.
+Uruchom następujące polecenie **obiektu docelowego iSCSI maszyny Wirtualnej** do utworzenia dysku iSCSI dla nowego klastra. W poniższym przykładzie **cl1** służy do identyfikowania nowego klastra i **0-prod-cl1** i **prod cl1 1** są nazwy hostów węzłów klastra. Zastąp je nazwy hostów węzły klastra.
 
 <pre><code>
 # List all data disks with the following command
@@ -110,13 +112,13 @@ sudo targetcli saveconfig
 
 ### <a name="set-up-sbd-device"></a>Konfigurowanie urządzenia interwencja
 
-Nawiąż połączenie z urządzeniem iSCSI, który został utworzony w ostatnim kroku z klastra.
-Uruchom następujące polecenia w węzłach nowego klastra, który chcesz utworzyć.
-Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzła 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Łączenie z urządzeniem iSCSI, który został utworzony w poprzednim kroku z klastra.
+Uruchom następujące polecenia na węzłach nowego klastra, który chcesz utworzyć.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]**  Połącz z urządzenia iSCSI
+1. **[A]**  Nawiązywanie połączenia z urządzeniami iSCSI
 
-   Najpierw włączyć usługi interwencja i iSCSI.
+   Najpierw należy włączyć iSCSI i interwencja usług.
 
    <pre><code>
    sudo systemctl enable iscsid
@@ -130,19 +132,19 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   Zmienić zawartość pliku do dopasowania listy ACL zostały użyte podczas tworzenia urządzenia iSCSI na serwerze docelowym iSCSI
+   Zmień zawartość pliku na zgodną z listy kontroli dostępu, którego użyto podczas tworzenia urządzenia iSCSI na serwerze docelowym iSCSI
 
    <pre><code>   
    InitiatorName=<b>iqn.2006-04.prod-cl1-0.local:prod-cl1-0</b>
    </code></pre>
 
-1. **[2]**  Zmień nazwę inicjatora na drugi węzeł
+1. **[2]**  Zmienić nazwę inicjatora drugiego węzła
 
    <pre><code>
    sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
 
-   Zmienić zawartość pliku do dopasowania listy ACL zostały użyte podczas tworzenia urządzenia iSCSI na serwerze docelowym iSCSI
+   Zmień zawartość pliku na zgodną z listy kontroli dostępu, którego użyto podczas tworzenia urządzenia iSCSI na serwerze docelowym iSCSI
 
    <pre><code>
    InitiatorName=<b>iqn.2006-04.prod-cl1-1.local:prod-cl1-1</b>
@@ -157,7 +159,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo systemctl restart iscsi
    </code></pre>
 
-   Podłącz urządzenia iSCSI. W poniższym przykładzie 10.0.0.17 to adres IP serwera docelowego iSCSI i 3260 jest domyślnym portem. <b>IQN.2006 04.cl1.local:cl1</b> jest nazwa docelowej, która znajduje się po uruchomieniu polecenia pierwszy.
+   Podłącz urządzenia iSCSI. W poniższym przykładzie 10.0.0.17 jest adres IP serwera docelowego iSCSI i 3260 jest domyślnym portem. <b>IQN.2006 04.cl1.local:cl1</b> jest nazwa docelowego, który znajduje się po uruchomieniu pierwszego polecenia.
 
    <pre><code>
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>
@@ -166,7 +168,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
-   Upewnij się, że urządzenia iSCSI jest dostępny i zanotuj gotowe nazwa urządzenia (w następujący przykład/dev/które integrują usługi)
+   Upewnij się, że urządzenie iSCSI jest dostępny i zwróć uwagę, gotowe nazwy urządzenia (w poniższym przykładzie/dev/sde)
 
    <pre><code>
    lsscsi
@@ -188,13 +190,13 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    # lrwxrwxrwx 1 root root  9 Feb  7 12:39 /dev/disk/by-id/scsi-SLIO-ORG_cl1_3fe4da37-1a5a-4bb6-9a41-9a4df57770e4 -> ../../sde
    </code></pre>
 
-   Polecenie listy trzy identyfikatory urządzeń. Firma Microsoft zaleca się, że za pomocą Identyfikatora, który rozpoczyna się od scsi-3, w tym przykładzie powyżej tego jest
+   Polecenie listę trzy identyfikatory urządzeń. Zalecane jest używanie Identyfikatora, który rozpoczyna się od scsi-3 w przykładzie powyżej to jest
    
    **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
 
-1. **[1]**  Utworzenia urządzenia interwencja
+1. **[1]**  Utwórz urządzenie interwencja
 
-   Identyfikator urządzenia urządzenia iSCSI umożliwia utworzenie nowego urządzenia interwencja na pierwszym węźle klastra.
+   Użyj Identyfikatora urządzenia urządzenie iSCSI, aby utworzyć nowe urządzenie interwencja na pierwszym węźle klastra.
 
    <pre><code>
    sudo sbd -d <b>/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df</b> -1 10 -4 20 create
@@ -208,7 +210,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo vi /etc/sysconfig/sbd
    </code></pre>
 
-   Zmień wartość właściwości urządzenia interwencja, Włącz integrację rozrusznik i zmienić trybu uruchamiania interwencja.
+   Zmiana własności urządzenia interwencja, Włącz integrację program pacemaker i zmienić tryb startowy danej interwencja.
 
    <pre><code>
    [...]
@@ -225,17 +227,17 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
 
-   Teraz załadować modułu
+   Teraz załadować moduł
 
    <pre><code>
    sudo modprobe -v softdog
    </code></pre>
 
-## <a name="cluster-installation"></a>Instalacji klastra
+## <a name="cluster-installation"></a>Instalacja klastra
 
-Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzła 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
 
-1. **[A]**  Zaktualizować SLES
+1. **[A]**  Aktualizacji w systemie SLES
 
    <pre><code>
    sudo zypper update
@@ -277,16 +279,16 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]**  Zainstalować HA rozszerzenia
+1. **[A]**  Horyzont instalacji agentów
    
    <pre><code>
-   sudo zypper install sle-ha-release fence-agents
+   sudo zypper install fence-agents
    </code></pre>
 
-1. **[A]**  Instalatora rozpoznawania nazwy hosta   
+1. **[A]**  Konfigurowanie rozpoznawania nazw hostów   
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład przedstawia sposób użycia pliku/etc/hosts.
-   Zastąp adres IP i nazwy hosta w następujących poleceń. Zaletą używania/etc/hosts jest niezależna od DNS, który może być zbyt pojedynczego punktu awarii klastra.
+   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts to, że klaster stają się niezależnie od systemu DNS, który może być pojedynczym punktem awarii za.
 
    <pre><code>
    sudo vi /etc/hosts
@@ -301,7 +303,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[1]**  Instalacji klastra
+1. **[1]**  Zainstaluj klaster
    
    <pre><code>
    sudo ha-cluster-init
@@ -329,17 +331,17 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Skonfigurować corosync Użyj innego transportu, a następnie dodaj wstawienia. Klaster nie działa, w przeciwnym razie wartość.
+1. **[A]**  Skonfigurować corosync Użyj innego transportu i dodać wstawienia. Klaster nie działa, w przeciwnym razie.
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są występują lub innych.
+   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są tam lub innej. Upewnij się zmienić token 30000 umożliwia zachowywanie konserwacji pamięci. Zobacz [ten artykuł dla systemu Linux] [ virtual-machines-linux-maintenance] lub [Windows] [ virtual-machines-windows-maintenance] Aby uzyskać więcej informacji.
    
    <pre><code> 
    [...]
-     <b>token:          5000
+     <b>token:          30000
      token_retransmits_before_loss_const: 10
      join:           60
      consensus:      6000
@@ -378,33 +380,33 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo service corosync restart
    </code></pre>
 
-1. **[1]**  Zmiany ustawień domyślnych rozrusznik
+1. **[1]**  Zmiany ustawień domyślnych program pacemaker
 
    <pre><code>
    sudo crm configure rsc_defaults resource-stickiness="1"   
    </code></pre>
 
-## <a name="create-stonith-device"></a>Utwórz urządzenie STONITH
+## <a name="create-stonith-device"></a>Utwórz urządzenie pomocą metody STONITH
 
-Urządzenie STONITH używa nazwy głównej usługi do autoryzacji przed Microsoft Azure. Wykonaj następujące kroki, aby utworzyć nazwy głównej usługi.
+Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
 1. Przejdź do strony <https://portal.azure.com>
-1. Otwarcie bloku usługi Azure Active Directory  
-   Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **Identyfikatorem dzierżawy**.
-1. Kliknij przycisk rejestracji aplikacji
+1. Otwórz blok usługi Azure Active Directory  
+   Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
+1. Kliknij przycisk rejestracje aplikacji
 1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejs API sieci Web", wprowadź adres URL logowania (na przykład http://localhost) i kliknij przycisk Utwórz
+1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejsu API sieci Web", wprowadź adres URL logowania (na przykład http://localhost) i kliknij przycisk Utwórz
 1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
-1. Wybierz nową aplikację i kliknij na karcie Ustawienia
+1. Wybierz nową aplikację, a następnie kliknij przycisk kluczy na karcie Ustawienia
 1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz
-1. Zanotuj wartość. Jest on używany jako **hasło** główną usługi
-1. Zanotuj identyfikator aplikacji. Jest on używany jako nazwa użytkownika (**Identyfikatora** w poniższych krokach) główną usługi
+1. Zanotuj wartość. Jest ona używana jako **hasło** jednostki usługi
+1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć niestandardową rolę agenta odgradzania
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
 
-Nazwy głównej usługi nie ma uprawnień do domyślnie dostęp do zasobów platformy Azure. Należy podać nazwę główną usługi uprawnień do uruchamiania i zatrzymywania (deallocate) wszystkich maszyn wirtualnych klastra. Jeśli rola niestandardowa nie został jeszcze utworzony, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
+Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure, domyślnie. Musisz nadać uprawnień jednostki usługi, uruchamianie i zatrzymywanie (Cofnij ich przydział) wszystkich maszyn wirtualnych klastra. Jeśli nie utworzono jeszcze niestandardowej roli, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
 
-Użyj zawartości pliku wejściowego. Należy dostosować zawartość do subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatorów subskrypcji. Jeśli masz tylko jedną subskrypcję, usuń drugi wpis w AssignableScopes.
+Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Twojej subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatory subskrypcji. Jeśli masz tylko jedną subskrypcję, należy usunąć drugi wpis w AssignableScopes.
 
 ```json
 {
@@ -426,24 +428,24 @@ Użyj zawartości pliku wejściowego. Należy dostosować zawartość do subskry
 }
 ```
 
-### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]**  Przypisanie roli niestandardowych do nazwy głównej usługi
+### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]**  Przypisać rolę niestandardową nazwę główną usługi
 
-Przypisz rolę niestandardowe "Linux ogranicznika agenta roli" utworzonego w rozdziale ostatniego główną usługi. Nie używaj rolę właściciela już!
+Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdziale ostatniego jednostki usługi. Nie używaj roli właściciel już!
 
 1. Przejdź do strony https://portal.azure.com
-1. Otwórz wszystkie bloku zasobów
-1. Wybierz maszynę wirtualną w pierwszym węźle klastra
+1. Otwieranie bloku wszystkie zasoby
+1. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 1. Kliknij przycisk kontroli dostępu (IAM)
 1. Kliknij pozycję Dodaj.
-1. Wybierz rolę "Rola agenta Odgradzania Linux"
-1. Wprowadź nazwę aplikacji, utworzoną wcześniej
+1. Wybierz rolę "Rolę agenta Odgradzania Linux"
+1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
 1. Kliknij przycisk OK
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  Utworzyć urządzenia STONITH
+### <a name="1-create-the-stonith-devices"></a>**[1]**  Tworzenie urządzeń pomocą metody STONITH
 
-Po można edytowane uprawnienia dla maszyn wirtualnych, możesz skonfigurować urządzenia STONITH w klastrze.
+Po edycji uprawnień dla maszyn wirtualnych można skonfigurować urządzenia pomocą metody STONITH w klastrze.
 
 <pre><code>
 # replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
@@ -454,16 +456,16 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 
 </code></pre>
 
-### <a name="1-create-fence-topology-for-sbd-fencing"></a>**[1]**  Tworzenie topologii ogranicznika interwencja ogrodzenia
+### <a name="1-create-fence-topology-for-sbd-fencing"></a>**[1]**  Tworzyć ogrodzenia topologii preferowane interwencja
 
-Jeśli chcesz użyć urządzenia interwencja nadal zaleca się używanie agenta odgradzania Azure jako zapasowy, w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
+Jeśli chcesz użyć urządzenia interwencja nadal zaleca się przy użyciu agenta odgradzania platformy Azure do przechowywania kopii zapasowych w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
 
 <pre><code>
 sudo crm configure fencing_topology \
   stonith-sbd rsc_st_azure
 
 </code></pre>
-### **[1] ** Korzystanie z urządzenia STONITH
+### **[1] ** Korzystanie z urządzenia pomocą metody STONITH
 
 <pre><code>
 sudo crm configure property stonith-enabled=true 
@@ -471,7 +473,7 @@ sudo crm configure property stonith-enabled=true
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP][planning-guide]
-* [Maszyny wirtualne Azure wdrożenia SAP][deployment-guide]
-* [Wdrożenia usługi Azure DBMS maszyny wirtualnej dla programu SAP][dbms-guide]
-* Aby dowiedzieć się, jak nawiązać wysokiej dostępności i planu odzyskiwania po awarii programu SAP HANA na maszynach wirtualnych Azure, zobacz [dostępności wysokiej programu SAP HANA na maszynach wirtualnych Azure (VM)][sap-hana-ha]
+* [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP][planning-guide]
+* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP][deployment-guide]
+* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP][dbms-guide]
+* Aby dowiedzieć się, jak zadbać o wysokiej dostępności i plan odzyskiwania po awarii oprogramowania SAP Hana na maszynach wirtualnych platformy Azure, zobacz [wysokiej dostępności dla oprogramowania SAP HANA w usłudze Azure Virtual Machines (VMs)][sap-hana-ha]

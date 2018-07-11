@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: d4f00e2470bac08c333411646dca90b3e2105073
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 0e484a6cae1b56983c4854664088ada8aa504568
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900484"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918819"
 ---
 # <a name="batch-testing-in-luis"></a>Testowanie w LUIS usługi Batch
 
@@ -33,6 +33,10 @@ Prześlij plik wsadowy w wypowiedzi, znane jako *dataset*, do testowania usługi
 |wyrażenia o 1000 lub mniej|
 
 * Duplikaty są traktowane jako zgodne dokładnie taki ciąg znaków, nie dopasowania, które są najpierw stokenizowanego. 
+
+## <a name="entities-allowed-in-batch-tests"></a>Dozwolone w partii testów jednostek
+Jednostki zawierają proste, hierarchiczne rodziców i złożone. Wszystkie jednostki z tych typów są wyświetlane w filtrze partii jednostek testów, nawet, jeśli brak odpowiednich jednostek w pliku wsadowym.
+
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>

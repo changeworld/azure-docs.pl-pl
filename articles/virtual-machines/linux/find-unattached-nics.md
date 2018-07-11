@@ -1,9 +1,9 @@
 ---
-title: Znajdowanie i usuwanie niedołączonej Azure kart sieciowych | Dokumentacja firmy Microsoft
-description: Jak znaleźć i usunąć Azure kart sieciowych, które nie są dołączone do maszyn wirtualnych Azure CLI 2.0
+title: Znajdowanie i usuwanie niedołączonych kart sieciowych platformy Azure | Dokumentacja firmy Microsoft
+description: Znajdowanie i usuwanie kart sieciowych platformy Azure, które nie są dołączone do maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
-ms.author: iainfou
-ms.openlocfilehash: c730866fe73305a37b37038699a7f729085a16aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: cynthn
+ms.openlocfilehash: 54315b2b66b9fb11ae904593c285eb7623cccdbb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31427143"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930515"
 ---
-# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Jak znaleźć i usunąć interfejsu sieciowego niedołączonej karty (NIC) dla maszyn wirtualnych platformy Azure
-Po usunięciu maszyny wirtualnej (VM) na platformie Azure kart interfejsu sieciowego (NIC) nie są usuwane domyślnie. Po utworzeniu i usunąć wielu maszyn wirtualnych, nieużywane karty sieciowe w dalszym ciągu używać wewnętrznego dzierżaw adresów IP. Jak utworzyć inne karty sieciowe maszyny Wirtualnej, może być nie można uzyskać dzierżawę adresu IP w przestrzeni adresowej podsieci. W tym artykule przedstawiono sposób Znajdowanie i usuwanie niedołączonej kart sieciowych.
+# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Jak wykryć i usunąć interfejsu sieciowego niedołączonych kart (NIC) maszyn wirtualnych platformy Azure
+Jeśli usuniesz maszynę wirtualną (VM) na platformie Azure, kart interfejsu sieciowego (NIC) nie są usuwane domyślnie. Jeśli utworzysz i usuniesz wielu maszyn wirtualnych, nieużywanych kart sieciowych w dalszym ciągu używać wewnętrznego dzierżawy adresów IP. Jak utworzyć inne karty sieciowe maszyny Wirtualnej, może być nie można uzyskać dzierżawy adresów IP w przestrzeni adresowej podsieci. Ten artykuł pokazuje, jak Znajdowanie i usuwanie niedołączonych kart sieciowych.
 
-## <a name="find-and-delete-unattached-nics"></a>Znajdowanie i usuwanie niedołączonej kart sieciowych
+## <a name="find-and-delete-unattached-nics"></a>Znajdowanie i usuwanie niedołączonych kart sieciowych
 
-*VirtualMachine* właściwości do karty Sieciowej przechowuje identyfikator i zasobów grupy karty Sieciowej jest dołączony do maszyny wirtualnej. Poniższy skrypt wszystkie karty sieciowe w ramach subskrypcji w pętli i sprawdza, czy *virtualMachine* właściwość ma wartość null. Jeśli ta właściwość ma wartość null, karta sieciowa nie jest dołączony do maszyny Wirtualnej.
+*VirtualMachine* właściwość dla karty Sieciowej zawiera identyfikator i grupę zasobów maszyny wirtualnej karty Sieciowej jest dołączony do. Poniższy skrypt w pętli wszystkich kart sieciowych w ramach subskrypcji i sprawdza, czy *virtualMachine* właściwość ma wartość null. Jeśli ta właściwość ma wartość null, karta sieciowa nie jest dołączony do maszyny Wirtualnej.
 
-Aby wyświetlić wszystkie karty sieciowe odłączyć, jego ma zdecydowanie zaleca się do pierwszego uruchomienia skryptu *deleteUnattachedNics* zmienną *0*. Aby usunąć wszystkie karty sieciowe niedołączonej po przejrzeniu wyjście listy, uruchom skrypt z *deleteUnattachedNics* do *1*.
+Aby wyświetlić wszystkie niedołączonych kart sieciowych, jego ma zdecydowanie zaleca się do pierwszego uruchomienia skryptu *deleteUnattachedNics* zmienną *0*. Aby usunąć wszystkie niedołączonych kart sieciowych, po przejrzeniu danych wyjściowych listy, uruchom skrypt przy użyciu *deleteUnattachedNics* do *1*.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs
@@ -53,4 +53,4 @@ done
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat sposobu tworzenia i zarządzania nimi sieci wirtualnych na platformie Azure, zobacz [tworzenie i zarządzanie nimi sieci maszyn wirtualnych](tutorial-virtual-network.md).
+Aby uzyskać więcej informacji na temat sposobu tworzenia i zarządzanie sieciami wirtualnymi na platformie Azure, zobacz [tworzenie i zarządzanie sieciami maszyn wirtualnych](tutorial-virtual-network.md).

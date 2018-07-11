@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie kluczami w LUIS | Dokumentacja firmy Microsoft
+title: Zarządzanie kluczy przy użyciu punktu końcowego usługi LUIS | Dokumentacja firmy Microsoft
 description: Language Understanding (LUIS) umożliwia zarządzanie programowego interfejsu API, punktu końcowego i klucze zewnętrzne.
 titleSuffix: Azure
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 99ba867b10c82d226948b13fda448cd24a33c553
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 288c1456979ff9214b2f333768da65bd3da1a734
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888732"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917799"
 ---
-# <a name="manage-your-luis-keys"></a>Zarządzanie kluczami usługi LUIS
+# <a name="manage-your-luis-endpoint-keys"></a>Zarządzanie kluczami punktu końcowego usługi LUIS
 Klucz umożliwia tworzenie i publikowanie aplikacji usługi LUIS lub kwerendy punktu końcowego usługi. 
 
 <a name="programmatic-key" ></a>

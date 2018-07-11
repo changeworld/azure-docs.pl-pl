@@ -1,40 +1,40 @@
 ---
 title: Macierz obsługi replikacji funkcji Hyper-V do platformy Azure | Dokumentacja firmy Microsoft
-description: Podsumowanie obsługiwanych składników oraz wymagania dotyczące replikacji funkcji Hyper-V do platformy Azure z usługą Azure Site Recovery
+description: Zawiera podsumowanie obsługiwanych składników i wymagania dotyczące replikacji funkcji Hyper-V na platformę Azure za pomocą usługi Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3204329dc7c9efe2b0ba0ae05d17bc93d51620b4
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266965"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921528"
 ---
-# <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V w systemie Azure
+# <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 
 
-Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V lokalnej na platformie Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
+Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia dla odzyskiwania po awarii lokalnych maszyn wirtualnych z funkcją Hyper-V na platformie Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
 **Scenariusz** | **Szczegóły**
 --- | ---
-Funkcja Hyper-V z programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych na hostach funkcji Hyper-V, które są zarządzane w sieci szkieletowej programu System Center Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.<br/><br/> Gdy hosty funkcji Hyper-V są zarządzane przez program Virtual Machine Manager, również można wykonać odzyskiwania po awarii do lokacji dodatkowej lokalnymi. Aby dowiedzieć się więcej na temat tego scenariusza, przeczytaj [w tym samouczku](tutorial-vmm-to-vmm.md).
-Funkcja Hyper-V bez programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych na hostach funkcji Hyper-V, które nie są zarządzane przez program Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.
+Funkcji Hyper-V za pomocą programu Virtual Machine Manager | Można wykonać odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V, które są zarządzane w sieci szkieletowej programu System Center Virtual Machine Manager.<br/><br/> Można wdrożyć ten scenariusz, w witrynie Azure portal lub przy użyciu programu PowerShell.<br/><br/> Jeśli hosty funkcji Hyper-V są zarządzane przez Menedżera maszyny wirtualnej, można również wykonać odzyskiwanie po awarii do lokacji dodatkowej w środowisku lokalnym. Aby dowiedzieć się więcej na temat tego scenariusza, przeczytaj [w tym samouczku](tutorial-vmm-to-vmm.md).
+Funkcji Hyper-V bez programu Virtual Machine Manager | Dla maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V, które nie są zarządzane przez Menedżera maszyny wirtualnej można wykonać odzyskiwania po awarii na platformie Azure.<br/><br/> Można wdrożyć ten scenariusz, w witrynie Azure portal lub przy użyciu programu PowerShell.
 
 
 ## <a name="on-premises-servers"></a>Serwery lokalne
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-Funkcji Hyper-V (uruchomiony bez programu Virtual Machine Manager) | Windows Server 2016, Windows Server 2012 R2 z najnowszymi aktualizacjami | Łączenie hostów z uruchomionym systemem Windows Server 2016 i 2012 R2 nie jest obsługiwana po skonfigurowaniu lokacji funkcji Hyper-V w usłudze Site Recovery.<br/><br/> Dla maszyn wirtualnych znajdujących się na hoście z systemem Windows Server 2016 odzyskiwania do alternatywnej lokalizacji nie jest obsługiwana.
-Funkcji Hyper-V (uruchomiony z programu Virtual Machine Manager) | Program Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli używany jest program Virtual Machine Manager, hosty z systemem Windows Server 2016 powinny być zarządzane w 2016 programu Virtual Machine Manager.<br/><br/> Chmurze programu Virtual Machine Manager, która łączy hostów Hyper-V z systemem Windows Server 2016 lub 2012 R2 nie jest obecnie obsługiwany.<br/><br/> Środowiska, które obejmują uaktualnienie istniejącego serwera programu Virtual Machine Manager 2012 R2, aby 2016 nie są obsługiwane.
+Funkcji Hyper-V (z systemem bez programu Virtual Machine Manager) | System Windows Server 2016 (takie jak instalacja server core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Po skonfigurowaniu lokacji funkcji Hyper-V w usłudze Site Recovery mieszanie hostach z systemem Windows Server 2016 i 2012 R2 nie jest obsługiwane.<br/><br/> W przypadku maszyn wirtualnych znajdujących się na hoście z systemem Windows Server 2016 odzyskiwania do alternatywnej lokalizacji nie jest obsługiwane.
+Funkcji Hyper-V (uruchomionego za pomocą programu Virtual Machine Manager) | Virtual Machine Manager 2016 Virtual Machine Manager 2012 R2 | Jeśli jest używany program Virtual Machine Manager, hosty systemu Windows Server 2016 powinny być zarządzane w programie Virtual Machine Manager 2016.<br/><br/> Chmury programu Virtual Machine Manager, które napisana hostów Hyper-V w systemie Windows Server 2016 i 2012 R2 nie jest obecnie obsługiwane.<br/><br/> Nie są obsługiwane w środowiskach, takich jak uaktualnienie istniejącego serwera programu Virtual Machine Manager 2012 R2 do wersji 2016.
 
 
 ## <a name="replicated-vms"></a>Replikowane maszyny wirtualne
@@ -44,32 +44,32 @@ Poniższa tabela zawiera podsumowanie obsługi maszyny Wirtualnej. Usługa Site 
 
  **Składnik** | **Szczegóły**
 --- | ---
-Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do platformy Azure musi spełniać [wymagania dotyczące usługi Azure](#failed-over-azure-vm-requirements).
-System operacyjny gościa | System operacyjny obsługiwany przez platformę Azure żadnych gościa.<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwana.
+Konfiguracja maszyny Wirtualnej | Maszyny wirtualne, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#failed-over-azure-vm-requirements).
+System operacyjny gościa | Dowolny Gość system operacyjny obsługiwany przez platformę Azure.<br/><br/> Windows Server 2016 Nano Server nie jest obsługiwane.
 
 
 
 
 ## <a name="hyper-v-network-configuration"></a>Konfiguracja sieci funkcji Hyper-V
 
-**Składnik** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Sieci hosta: tworzenie zespołu kart interfejsu Sieciowego | Yes
-Host sieci: sieć VLAN | Yes
-Sieci hosta: IPv4 | Yes
-Sieci hosta: IPv6 | Nie
-Sieć maszyny Wirtualnej gościa: tworzenie zespołu kart interfejsu Sieciowego | Nie
+Sieci hostów: tworzenia zespołu kart interfejsu Sieciowego | Yes
+Sieci hostów: sieci VLAN | Yes
+Sieci hostów: IPv4 | Yes
+Sieci hostów: IPv6 | Nie
+Sieć maszyny Wirtualnej gościa: tworzenia zespołu kart interfejsu Sieciowego | Nie
 Sieć maszyny Wirtualnej gościa: IPv4 | Yes
 Sieć maszyny Wirtualnej gościa: IPv6 | Nie
-Sieć maszyny Wirtualnej gościa: statyczny adres IP (z systemem Windows) | Yes
+Sieć maszyny Wirtualnej gościa: statyczny adres IP (Windows) | Yes
 Sieć maszyny Wirtualnej gościa: statyczny adres IP (Linux) | Nie
-Sieć maszyny Wirtualnej gościa: wieloma kartami Sieciowymi | Yes
+Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes
 
 
 
-## <a name="azure-vm-network-configuration-after-failover"></a>Konfiguracji sieci maszyny Wirtualnej platformy Azure (po trybu failover)
+## <a name="azure-vm-network-configuration-after-failover"></a>Konfiguracji sieci maszyny Wirtualnej platformy Azure (po włączeniu trybu failover)
 
-**Składnik** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 Usługa ExpressRoute systemu Azure | Yes | Yes
 Wewnętrzny moduł równoważenia obciążenia | Yes | Yes
@@ -79,101 +79,101 @@ Multi-NIC | Yes | Yes
 Zastrzeżony adres IP | Yes | Yes
 Protokół IPv4 | Yes | Yes
 Zachowaj źródłowy adres IP | Yes | Yes
-Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapory usługi Azure Storage) | Yes | Yes
+Punkty końcowe usługi sieci wirtualnej platformy Azure<br/> (bez zapór usługi Azure Storage) | Yes | Yes
 Accelerated Networking | Nie | Nie
 
 
 ## <a name="hyper-v-host-storage"></a>Magazyn hosta funkcji Hyper-V
 
-**Storage** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | --- | ---
 NFS | Nie dotyczy | Nie dotyczy
 SMB 3.0 | Yes | Yes
 SAN (ISCSI) | Yes | Yes
-Wiele ścieżek (MPIO). Przetestowane z:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Yes | Yes
+Wiele ścieżek (MPIO). Przetestowane za pomocą:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> Program EMC PowerPath DSM dla CLARiiON | Yes | Yes
 
-## <a name="hyper-v-vm-guest-storage"></a>Magazynu gościa maszyny Wirtualnej funkcji Hyper-V
+## <a name="hyper-v-vm-guest-storage"></a>Magazyn gościa maszyny Wirtualnej funkcji Hyper-V
 
-**Storage** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Storage** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nie dotyczy | Nie dotyczy
 VHD/VHDX | Yes | Yes
-Generacji 2 maszyn wirtualnych | Yes | Yes
+2. generacji maszyn wirtualnych | Yes | Yes
 EFI/UEFI| Yes | Yes
 Udostępniony dysk klastra | Nie | Nie
 Zaszyfrowanego dysku | Nie | Nie
 NFS | Nie dotyczy | Nie dotyczy
 SMB 3.0 | Nie | Nie
 RDM | Nie dotyczy | Nie dotyczy
-Dysk > 1 TB | Tak, maksymalnie 4,095 GB | Tak, maksymalnie 4,095 GB
-Dysku: sektor logiczny i fizyczny 4K | Nieobsługiwana: gł 1/Gen 2 | Nieobsługiwana: gł 1/Gen 2
-Dysku: logicznych 4K i 512 bajtów sektora fizycznego | Yes |  Yes
-Wolumin dysku rozłożone > 1 TB<br/><br/> Zarządzanie woluminami logiczne (LVM) | Yes | Yes
-Funkcja miejsca do magazynowania | Yes | Yes
-Dodaj lub usuń gorących dysku | Nie | Nie
+Dysk > 1 TB | Tak, maksymalnie 4095 GB. | Tak, maksymalnie 4095 GB.
+Dysk: logiczne i fizyczne z sektorami 4K | Nieobsługiwane: Gen 1/Gen 2 | Nieobsługiwane: Gen 1/Gen 2
+Dysk: 4K logiczne i fizyczne sektora 512 bajtów | Yes |  Yes
+Wolumin o użycie dysku rozłożonego > 1 TB<br/><br/> Zarządzanie woluminami logicznych (LVM) | Yes | Yes
+Miejsca do magazynowania | Yes | Yes
+Dodaj lub usuń gorąco dysku | Nie | Nie
 Wykluczanie dysku | Yes | Yes
 Wiele ścieżek (MPIO) | Yes | Yes
 
 ## <a name="azure-storage"></a>Azure Storage
 
-**Składnik** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 Magazyn lokalnie nadmiarowy | Yes | Yes
 Magazyn geograficznie nadmiarowy | Yes | Yes
-Dostęp do odczytu magazynu geograficznie nadmiarowego | Yes | Yes
-Magazynu chłodnego | Nie | Nie
+Magazyn geograficznie nadmiarowy z dostępem do odczytu | Yes | Yes
+Chłodny Magazyn | Nie | Nie
 Magazynu gorącego| Nie | Nie
 Obiekty BLOB typu Block | Nie | Nie
-Szyfrowanie magazynowanych (SSE)| Yes | Yes
+Szyfrowanie danych magazynowanych (SSE)| Yes | Yes
 Premium Storage | Yes | Yes
-Import/Eksport usługi | Nie | Nie
-Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu pamięci podręcznej/magazynów (używane do przechowywania danych replikacji) | Nie | Nie
+Usługa import/export | Nie | Nie
+Usługa Azure Storage zapory dla sieci wirtualnych skonfigurowanych na docelowe konto magazynu dla magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Nie | Nie
 
 
-## <a name="azure-compute-features"></a>Funkcje obliczeń platformy Azure
+## <a name="azure-compute-features"></a>Funkcje obliczeniowe platformy Azure
 
-**Funkcja** | **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Funkcja** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
 Zestawy dostępności | Yes | Yes
 HUB | Yes | Yes  
-Dyski zarządzane | Tak, w tryb pracy awaryjnej.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwana. | Tak, w tryb pracy awaryjnej.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwana.
+Dyski zarządzane | Tak, pracy w trybie Failover.<br/><br/> Powrót po awarii z dyskami zarządzanymi nie jest obsługiwane. | Tak, pracy w trybie Failover.<br/><br/> Powrót po awarii z dyskami zarządzanymi nie jest obsługiwane.
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny Wirtualnej platformy Azure
 
-Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure musi spełniać wymagania maszyny Wirtualnej Azure podsumowaniem w poniższej tabeli.
+Lokalnych maszyn wirtualnych, które są replikowane do platformy Azure muszą spełniać wymagania maszyny Wirtualnej platformy Azure podsumowane w poniższej tabeli.
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-System operacyjny gościa | Usługa Site Recovery obsługuje wszystkich systemów operacyjnych, które są [obsługiwany przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
+System operacyjny gościa | Usługa Site Recovery obsługuje wszystkie systemy operacyjne, które są [obsługiwanym przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Architektura systemu operacyjnego gościa | 64-bitowa | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-Rozmiar dysku systemu operacyjnego | Do 2048 GB dla maszyny wirtualne generacji 1.<br/><br/> Dla maszyn wirtualnych generacji 2 do 300 GB.  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
+Rozmiar dysku systemu operacyjnego | Do 2048 GB dla maszyn wirtualnych generacji 1.<br/><br/> Maksymalnie 300 GB dla maszyn wirtualnych generacji 2.  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Liczba dysków danych | 16 lub mniej  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-Rozmiar wirtualnego dysku twardego dysku danych | Do 4,095 GB | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
+Rozmiar wirtualnego dysku twardego dysku danych | Do 4095 GB. | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
 Karty sieciowe | Obsługiwana jest konfiguracja z wieloma kartami sieciowymi |
 Udostępniony wirtualny dysk twardy | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-FC dysku | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
-Format dysku twardego | WIRTUALNEGO DYSKU TWARDEGO <br/><br/> VHDX | Usługa Site Recovery automatycznie konwertuje VHDX do wirtualnego dysku twardego, gdy awaryjnie na platformie Azure. Przechodzenia wstecz do lokalnych maszyn wirtualnych w dalszym ciągu korzystać z formatu VHDX.
+Dysk FC | Nieobsługiwane | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli jest nieobsługiwany.
+Format dysku twardego | WIRTUALNY DYSK TWARDY <br/><br/> VHDX | Usługa Site Recovery automatycznie konwertuje pliki VHDX na dysku VHD podczas przejścia w tryb failover na platformie Azure. Po powrocie po awarii do środowiska lokalnego, maszyny wirtualne nadal używają formatu VHDX.
 BitLocker | Nieobsługiwane | Przed włączeniem replikacji dla maszyny Wirtualnej, należy wyłączyć funkcję BitLocker.
-Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj tę wartość właściwości maszyny Wirtualnej w usłudze Site Recovery.
-Typu maszyny Wirtualnej | Generacja 1<br/><br/> Generacja 2 — systemu Windows | Maszyny wirtualne generacji 2 z typem dysku systemu operacyjnego, Basic (zawierającej co najmniej dwa woluminy danych w formacie VHDX) i mniejsza niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyn wirtualnych systemu Linux generacji 2 nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj wartość we właściwościach maszyny Wirtualnej w usłudze Site Recovery.
+Typ maszyny Wirtualnej | 1. generacji<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2, korzystając z typu dysku systemu operacyjnego basic (który zawiera jeden lub dwa woluminy danych w formacie VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne systemu Linux generacji 2 nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Akcje magazyn usług odzyskiwania
 
-**Akcja** |  **Funkcja Hyper-V z programu Virtual Machine Manager** | **Funkcja Hyper-V bez programu Virtual Machine Manager**
+**Akcja** |  **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Przenieś magazyn między grupami zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie
-Przenieść magazyn, sieć, maszyn wirtualnych platformy Azure w grupach zasobów<br/><br/> W obrębie subskrypcji oraz | Nie | Nie
+Przenoszenie magazynu między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
+Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
 
 
 ## <a name="provider-and-agent"></a>Dostawca i agent
 
-Aby upewnić się, że wdrożenie jest zgodny z ustawieniami w tym artykule, upewnij się, że jest uruchomiona najnowsza wersja dostawcy i wersje agentów.
+Aby upewnić się, że wdrożenie jest zgodny z ustawieniami w tym artykule, upewnij się, że używasz najnowszego dostawcę i wersje agentów.
 
 **Nazwa** | **Opis** | **Szczegóły**
 --- | --- | --- | --- | ---
-Dostawca usługi Azure Site Recovery | Współrzędne komunikacji między serwerami lokalnymi i Azure <br/><br/> Funkcja Hyper-V z programu Virtual Machine Manager: zainstalowanych na serwerach programu Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez programu Virtual Machine Manager: zainstalowanych na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w portalu Azure)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
-Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i platformą Azure<br/><br/> Zainstalowane na serwerach funkcji Hyper-V lokalnej (z lub bez programu Virtual Machine Manager) | Najnowsza wersja agenta dostępna z portalu
+Dostawca usługi Azure Site Recovery | Służy do koordynowania komunikacji między serwerami lokalnymi a platformą Azure <br/><br/> Funkcja Hyper-V za pomocą programu Virtual Machine Manager: zainstalowanych na serwerach programu Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez programu Virtual Machine Manager: zainstalowany na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępne w witrynie Azure portal)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i platformą Azure<br/><br/> Zainstalowane na serwerach funkcji Hyper-V w środowisku lokalnym (z lub bez programu Virtual Machine Manager) | Najnowszą wersję agenta, dostępne w portalu
 
 
 
@@ -181,4 +181,4 @@ Agent usług odzyskiwania Microsoft Azure | Koordynuje replikację między maszy
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [przygotowanie Azure](tutorial-prepare-azure.md) odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V lokalnymi.
+Dowiedz się, jak [przygotowywanie platformy Azure](tutorial-prepare-azure.md) do odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w środowisku lokalnym.

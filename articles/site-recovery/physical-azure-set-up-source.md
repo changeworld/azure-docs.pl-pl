@@ -1,33 +1,33 @@
 ---
-title: Konfigurowanie środowiska źródłowego (serwerów fizycznych do platformy Azure) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do rozpoczęcia replikacji serwery fizyczne z systemem Windows lub Linux na platformie Azure.
+title: Konfigurowanie środowiska źródłowego (serwerów fizycznych na platformę Azure) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
 services: site-recovery
 documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 07/06/2018
 ms.author: anoopkv
-ms.openlocfilehash: 96004a70547c4bfb3a1a3bfadecb1304e4910b52
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 00b09db97e597521de5c73eeefab77b0dfa1304d
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812691"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916102"
 ---
-# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Konfigurowanie środowiska źródłowego (serwera fizycznego na platformie Azure)
+# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Konfigurowanie środowiska źródłowego (serwera fizycznego na platformę Azure)
 
-W tym artykule opisano sposób konfigurowania środowiska lokalnego do rozpoczęcia replikacji serwery fizyczne z systemem Windows lub Linux na platformie Azure.
+W tym artykule opisano sposób konfigurowania środowiska lokalnego do uruchamiania replikacji serwerów fizycznych z systemem Windows lub Linux na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Artykuł założono, że masz:
-1. Magazyn usług odzyskiwania i w [portalu Azure](http://portal.azure.com "portalu Azure").
-3. Komputer fizyczny, na którym jest instalowany serwer konfiguracji.
+Tego artykułu przyjęto założenie, że masz już:
+1. Magazyn usługi Recovery Services w [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
+3. Komputer fizyczny, na którym jest instalowany na serwerze konfiguracji.
 
-### <a name="configuration-server-minimum-requirements"></a>Minimalne wymagania dotyczące konfiguracji serwera
-W poniższej tabeli wymieniono minimalne wymagania dotyczące sprzętu, oprogramowania i wymagania sieciowe dotyczące serwera konfiguracji.
+### <a name="configuration-server-minimum-requirements"></a>Minimalne wymagania dotyczące serwera konfiguracji
+W poniższej tabeli wymieniono minimalnych wymagań sprzętowych, oprogramowania i wymagania dotyczące sieci dla serwera konfiguracji.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
@@ -35,35 +35,35 @@ W poniższej tabeli wymieniono minimalne wymagania dotyczące sprzętu, oprogram
 
 ## <a name="choose-your-protection-goals"></a>Wybranie celów ochrony
 
-1. W portalu Azure, przejdź do **usług odzyskiwania** magazyny bloku, a następnie wybierz magazyn.
-2. W **zasobów** menu magazynu, kliknij przycisk **wprowadzenie** > **usługi Site Recovery** > **krok 1: Przygotowanie infrastruktury** > **cel ochrony**.
+1. W witrynie Azure portal przejdź do **usługi Recovery Services** magazyny bloku i wybierz swój magazyn.
+2. W **zasobów** menu magazynu kliknij **wprowadzenie** > **Site Recovery** > **krok 1: Przygotowanie infrastruktury**   >  **Cel ochrony**.
 
     ![Wybieranie celów](./media/physical-azure-set-up-source/choose-goals.png)
-3. W **cel ochrony**, wybierz pozycję **do platformy Azure** i **nie zwirtualizowanych/inne**, a następnie kliknij przycisk **OK**.
+3. W **cel ochrony**, wybierz opcję **na platformę Azure** i **bez wirtualizacji/inne**, a następnie kliknij przycisk **OK**.
 
     ![Wybieranie celów](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-1. W **Przygotuj źródło**, jeśli nie masz serwera konfiguracji, kliknij przycisk **+ serwer konfiguracji** dodanie.
+1. W **przygotowywanie źródła**, jeśli nie masz serwera konfiguracji, kliknij przycisk **+ serwer konfiguracji** dodanie.
 
   ![Konfiguracja źródła](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. W **Dodaj serwer** bloku, sprawdź, czy **serwera konfiguracji** pojawia się w **typ serwera**.
-4. Pobierz plik instalacyjny instalacja Unified usługi Site Recovery.
-5. Pobierz klucz rejestracji magazynu. Po uruchomieniu Instalatora Unified muszą się klucz rejestracji. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
+4. Pobierz plik instalacyjny Site Recovery Unified Setup.
+5. Pobierz klucz rejestracji magazynu. Po uruchomieniu ujednoliconego Instalatora, potrzebujesz klucza rejestracji. Klucz jest ważny przez pięć dni po jego wygenerowaniu.
 
     ![Konfiguracja źródła](./media/physical-azure-set-up-source/set-source2.png)
-6. Na komputerze, używając jako serwer konfiguracji, uruchom **Unified instalacja usługi Azure Site Recovery** do zainstalowania serwera konfiguracji, serwer przetwarzania i główny serwer docelowy.
+6. Na komputerze używasz jako serwera konfiguracji, uruchom **usługi Azure Site Recovery Unified Setup** zainstalował serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy.
 
-#### <a name="run-azure-site-recovery-unified-setup"></a>Uruchom usługi Azure Site Recovery Unified Instalatora
+#### <a name="run-azure-site-recovery-unified-setup"></a>Uruchom usługę Azure Site Recovery ujednoliconej konfiguracji
 
 > [!TIP]
-> Rejestracja serwera konfiguracji kończy się niepowodzeniem, jeśli czas na zegara systemowego jest więcej niż pięć minut wylogowuje na czas lokalny. Synchronizowanie zegara systemowego z [serwer czasu](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) przed rozpoczęciem instalacji.
+> Rejestracja serwera konfiguracji nie powiedzie się, jeśli więcej niż pięć minut zniżki w stosunku do czasu lokalnego czasu zegara systemowego. Synchronizuj zegara systemowego z [serwer czasu](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) przed rozpoczęciem instalacji.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Serwer konfiguracji można zainstalować za pomocą wiersza polecenia. Aby uzyskać więcej informacji, zobacz [Instalowanie serwera konfiguracji za pomocą narzędzia wiersza polecenia](http://aka.ms/installconfigsrv).
+> Za pomocą wiersza polecenia można zainstalować na serwerze konfiguracji. Aby uzyskać więcej informacji, zobacz [Instalowanie serwera konfiguracji za pomocą narzędzia wiersza polecenia](http://aka.ms/installconfigsrv).
 
 
 ## <a name="common-issues"></a>Typowe problemy

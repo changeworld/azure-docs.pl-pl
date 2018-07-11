@@ -1,104 +1,104 @@
 ---
-title: Nie powiodło się platformy Azure z VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Po pracy w trybie failover maszyny wirtualne na platformie Azure możesz uruchomić powrotu po awarii, aby przywrócić maszyn wirtualnych do lokalnego. Dowiedz się więcej czynności w celu wykonaj powrót po awarii.
+title: Niepowodzenie powrót po awarii z platformy Azure do programu VMware przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Po przejściu w tryb failover maszyn wirtualnych na platformie Azure można uruchomić podczas powrotu po awarii, aby przywrócić maszyny wirtualne do środowiska lokalnego. Dowiedz się, procedurę powrotu po awarii.
 author: nsoneji
 ms.service: site-recovery
+ms.date: 07/06/2018
 ms.topic: conceptual
-ms.date: 05/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1e8e2384d6d5672e29e6d7bc28f0772cd5b78519
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 9d8398582766a27f1457e3a59bdde0c59298ed50
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287521"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919839"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Nie powiodło się platformy Azure z lokacją lokalną
+# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Niepowodzenie powrót po awarii z platformy Azure do lokacji lokalnej
 
-W tym artykule opisano, jak niepowodzenie wstecz maszyn wirtualnych z maszyn wirtualnych platformy Azure do środowiska lokalnego VMware. Postępuj zgodnie z instrukcjami w tym artykule, aby zakończyć się niepowodzeniem z powrotem z maszyn wirtualnych VMware lub systemem Windows lub Linux, serwerów fizycznych, po zostały one przejścia w tryb failover z lokalnej lokacji do Azure za pomocą [pracy awaryjnej w usłudze Azure Site Recovery](site-recovery-failover.md) samouczka.
+W tym artykule opisano, jak niepowodzenie wstecz maszyn wirtualnych w usłudze Azure Virtual Machines w lokalnym środowisku VMware. Postępuj zgodnie z instrukcjami w tym artykule nie powiedzie się kopii maszyn wirtualnych VMware ani systemu Windows/Linux lokacji serwerów fizycznych, po ich przełączeniu w tryb failover ze środowiska lokalnego na platformę Azure za pomocą [trybu Failover w usłudze Azure Site Recovery](site-recovery-failover.md) samouczka.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że znasz szczegółowe informacje o [różnego rodzaju powrotu po awarii](concepts-types-of-failback.md) i odpowiedniego ostrzeżenia.
 
 > [!WARNING]
-> Nie można przerwać po albo mieć [ukończone migracji](migrate-overview.md#what-do-we-mean-by-migration), przenieść maszynę wirtualną do innej grupy zasobów lub usunąć maszyny wirtualnej platformy Azure. Jeśli wyłączysz ochrony maszyny wirtualnej nie można przerwać ponownie.
+> Nie można powracać po użytkownik ma [ukończyć migracji](migrate-overview.md#what-do-we-mean-by-migration)maszynę wirtualną do innej grupy zasobów lub przeniesiony, usunięty z maszyny wirtualnej platformy Azure. Wyłączenie ochrony maszyny wirtualnej, użytkownik nie może wykonać powrotu po awarii.
 
 > [!WARNING]
-> Serwera fizycznego systemu Windows Server 2008 R2 z dodatkiem SP1, jeśli chroniony Failover na platformie Azure, nie można przełączyć ponownie.
+> Serwera fizycznego systemu Windows Server 2008 R2 z dodatkiem SP1, jeśli chroniony, a następnie przełączone w tryb failover Azure, nie może być powrót po awarii.
 
 > [!NOTE]
-> Jeśli nie powiodło przez maszyny wirtualne VMware, nie można przerwać do hosta funkcji Hyper-V.
+> Jeśli Failover maszyn wirtualnych programu VMware nie powrotu po awarii do hosta funkcji Hyper-V.
 
 
-- Przed kontynuowaniem wykonaj kroki ponownej ochrony, tak aby maszyny wirtualne są w stanie replikowanych i można uruchomić trybu failover do lokacji lokalnej. Aby uzyskać więcej informacji, zobacz [jak włączyć ją ponownie z platformy Azure do środowiska lokalnego](vmware-azure-reprotect.md).
+- Przed kontynuowaniem wykonaj kroki ponowne objęcie ochroną, tak aby maszyny wirtualne są w stanie replikowanych i można uruchomić tryb failover do lokacji lokalnej. Aby uzyskać więcej informacji, zobacz [jak ponownie włączyć ochronę z platformy Azure do środowiska lokalnego](vmware-azure-reprotect.md).
 
-- Upewnij się, że vCenter jest w stanie połączenia przed wykonaniem powrotu po awarii. W przeciwnym razie nie działa rozłączanie dysków i dołączać do maszyny wirtualnej.
+- Upewnij się, że serwer vCenter jest niepodłączony przed wykonaniem powrotu po awarii. W przeciwnym razie nie działa odłączanie dysków i dołączania ich do maszyny wirtualnej.
 
-- Podczas pracy w trybie failover na platformie Azure lokalnej lokacji może nie być dostępny i serwer konfiguracji mogą być niedostępne lub zamknięta w dół. Podczas ponownej ochrony i powrotu po awarii lokalnego serwera konfiguracji powinna być uruchomiona i jest niepodłączony OK. 
+- Podczas pracy w trybie failover na platformie Azure lokalnej lokacji może nie być dostępny, a serwer konfiguracji mogą być niedostępne lub wyłączone w dół. Podczas ponownego włączania ochrony i powrotu po awarii na lokalnym serwerze konfiguracji powinna być uruchomiona i niepodłączony OK. 
 
-- Podczas powrotu po awarii maszyna wirtualna musi istnieć w bazie danych konfiguracji serwera lub powrotu po awarii nie powiodło się. Upewnij się, wykonanie zaplanowanego tworzenia kopii zapasowych serwera. W przypadku awarii należy przywrócić działanie serwera przy użyciu oryginalnego adresu IP do powrotu po awarii do pracy.
+- Podczas powrotu po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji lub powrotu po awarii nie powiodła się. Upewnij się, korzystać z regularnie zaplanowanej kopii zapasowych serwera. W przypadku poważnej awarii, należy przywrócić na serwerze przy użyciu oryginalnego adresu IP w przypadku powrotu po awarii do pracy.
 
-- Główny serwer docelowy nie powinna mieć żadnych migawek przed wyzwalania ponownej ochrony/powrotu po awarii.
+- Główny serwer docelowy nie powinna mieć wszystkie migawki przed włączeniem ponownej ochrony/powrotu po awarii.
 
 ## <a name="overview-of-failback"></a>Omówienie powrotu po awarii
-Po za pośrednictwem powiodły się do platformy Azure, użytkownik może nie powieść do lokacji sieci lokalnej, wykonując następujące czynności:
+Po za pośrednictwem powiodły się na platformie Azure, można powrotu po awarii do lokacji lokalnej, wykonując następujące czynności:
 
-1. [Włącz ponownie ochronę](vmware-azure-reprotect.md) maszyn wirtualnych na platformie Azure, aby uruchamiają są replikowane do maszyn wirtualnych VMware w lokacji lokalnej. W ramach tego procesu również należy:
+1. [Ponowne włączanie ochrony](vmware-azure-reprotect.md) maszyn wirtualnych na platformie Azure, aby zaczynają replikowane do maszyn wirtualnych programu VMware w lokacji lokalnej. W ramach tego procesu trzeba będzie również:
 
-    * Skonfiguruj lokalny główny serwer docelowy. Użyj główny cel systemu Windows dla maszyn wirtualnych systemu Windows i [główny cel Linux](vmware-azure-install-linux-master-target.md) dla maszyn wirtualnych systemu Linux.
+    * Konfigurowanie głównego elementu docelowego w środowisku lokalnym. Użyj Windows główny element docelowy dla maszyn wirtualnych Windows i [Linux główny serwer docelowy](vmware-azure-install-linux-master-target.md) dla maszyn wirtualnych systemu Linux.
     * Konfigurowanie [serwera przetwarzania](vmware-azure-set-up-process-server-azure.md).
-    * Uruchom [Wznów](vmware-azure-reprotect.md) wyłączyć na lokalnej maszynie wirtualnej i synchronizowanie danych Azure maszyny wirtualnej z dyskami lokalnymi.
+    * Rozpocznij [ponownie włączyć ochronę](vmware-azure-reprotect.md) Wyłącz maszynę wirtualną w środowisku lokalnym i synchronizowanie danych maszyny wirtualnej platformy Azure z dyskami w środowisku lokalnym.
 
-2. Po replikacji maszyn wirtualnych na platformie Azure do lokacji lokalnej, uruchamiania trybu failover z platformy Azure do lokacji lokalnej.
+2. Po replikacji maszyn wirtualnych na platformie Azure do lokacji lokalnej, możesz rozpocząć pracy w trybie failover z platformy Azure, do lokacji lokalnej.
 
-3. Po danych z powrotem nie powiedzie się, możesz ponownie Obejmij ochroną maszyn wirtualnych lokalnie aby rozpoczynały się replikację do platformy Azure.
+3. Po danych ponownie nie powiedzie się, możesz ponownie włączyć ochronę maszyn wirtualnych w środowisku lokalnym ponownie, aby rozpoczęcia replikacji do platformy Azure.
 
-Aby szybko zapoznać Obejrzyj film następujący temat powrót po awarii do lokacji lokalnej:
+Aby uzyskać szybki przegląd Obejrzyj poniższy film o powrót po awarii do lokacji lokalnej:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="steps-to-fail-back"></a>Kroki, aby wykonaj powrót po awarii
+## <a name="steps-to-fail-back"></a>Instrukcje powrotu po awarii
 
 > [!IMPORTANT]
-> Przed rozpoczęciem powrotu po awarii, upewnij się, zostało zakończone ponowne włączenie ochrony maszyn wirtualnych. Maszyny wirtualne powinny znajdować się w stanie chronionym i ich kondycję powinna być **OK**. Aby Włącz ponownie ochronę maszyny wirtualnej, przeczytaj [jak włączyć ją ponownie](vmware-azure-reprotect.md).
+> Przed rozpoczęciem powrotu po awarii, upewnij się, zostało zakończone ponownego włączania ochrony maszyn wirtualnych. Maszyny wirtualne powinny znajdować się w stanie chronionym i należy ich kondycję **OK**. Aby ponownie włączyć ochronę maszyn wirtualnych, przeczytaj [jak do ponownego włączenia ochrony](vmware-azure-reprotect.md).
 
 1. Na stronie zreplikowanych elementów wybierz maszynę wirtualną. Kliknij prawym przyciskiem myszy, aby zaznaczyć **nieplanowany tryb Failover**.
-2. W **potwierdzić trybu Failover**, sprawdź kierunek pracy awaryjnej (na platformie Azure). Następnie wybierz punkt odzyskiwania (Najnowsza lub najnowszą wersję aplikacji spójne), który ma być używany do pracy awaryjnej. Punkt spójne aplikacji znajduje się za ostatniego punktu w czasie i powoduje utratę danych.
-3. Podczas pracy w trybie failover Usługa Site Recovery zamyka maszyny wirtualne na platformie Azure. Po sprawdzeniu powrót po awarii zakończone zgodnie z oczekiwaniami, można sprawdzić, czy wyłączona maszyn wirtualnych na platformie Azure.
-4. **Zatwierdź** wymaganego do usunięcia przełączona w tryb failover maszyny wirtualnej z platformy Azure. Kliknij prawym przyciskiem myszy chronionego elementu, a następnie wybierz **zatwierdzić**. Zadanie usuwa przełączona w tryb failover maszyny wirtualnej na platformie Azure.
+2. W **Potwierdź tryb Failover**, sprawdź wybrano kierunek trybu failover (z platformy Azure). Następnie wybierz punkt odzyskiwania (najnowsze lub najnowszą spójna na poziomie aplikacji), którego chcesz użyć dla trybu failover. Spójnego punktu aplikacji znajduje się za najnowszego punktu w czasie i powoduje utratę danych.
+3. Podczas pracy w trybie failover Usługa Site Recovery wyłącza maszyny wirtualne na platformie Azure. Po sprawdzeniu, że powrót po awarii zakończone zgodnie z oczekiwaniami, możesz sprawdzić, czy wyłączona maszyn wirtualnych na platformie Azure.
+4. **Zatwierdź** jest wymagane do usunięcia maszyny wirtualnej w trybie Failover na platformie Azure. Kliknij prawym przyciskiem myszy chronionego elementu, a następnie wybierz **zatwierdzić**. Zadanie powoduje usunięcie maszyn wirtualnych w trybie Failover na platformie Azure.
 
 
-## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>Do jakich punktu odzyskiwania można I wykonaj powrót po awarii maszyn wirtualnych?
+## <a name="to-what-recovery-point-can-i-fail-back-the-virtual-machines"></a>Do jakich punktu odzyskiwania można można wykonać powrotu po awarii maszyn wirtualnych?
 
-Podczas powrotu po awarii dostępne są dwie opcje, aby powrócić planu maszyny wirtualnej do odzyskiwania danych.
+Podczas powrotu po awarii masz dwie opcje do planu odzyskiwania/na maszynie wirtualnej powrotu po awarii.
 
-- W przypadku wybrania najnowsze przetworzone punktu w czasie wszystkie maszyny wirtualne przełączone awaryjnie do ich najnowszego dostępnego punktu w czasie. W przypadku grupy replikacji w ramach planu odzyskiwania, każdej maszyny wirtualnej w grupie replikacji nie powiedzie się za pośrednictwem jego niezależnie od ostatniego punktu w czasie.
+- Jeśli wybierzesz najnowszy przetworzony punkt w czasie, wszystkie maszyny wirtualne tryb failover do ostatniego dostępnego punktu w czasie. W przypadku grupy replikacji w ramach planu odzyskiwania, poszczególnych maszyn wirtualnych w grupie replikacji nie za pośrednictwem jego niezależnie od ostatniego punktu w czasie.
 
-  Nie można przerwać powrót maszyny wirtualnej do momentu składa się z co najmniej jeden punkt odzyskiwania. Nie można przerwać wstecz planu odzyskiwania, dopóki wszystkie maszyny wirtualne mają co najmniej jednego punktu odzyskiwania.
+  Nie można przerwać ponownie maszynę wirtualną, dopóki nie ma ona co najmniej jeden punkt odzyskiwania. Nie można przerwać ponownie plan odzyskiwania do momentu jej maszyny wirtualne mają co najmniej jednego punktu odzyskiwania.
 
   > [!NOTE]
-  > Najnowszy punkt odzyskiwania jest punkt odzyskiwania spójna w razie awarii.
+  > Najnowszy punkt odzyskiwania jest punktu odzyskiwania spójnego na poziomie awarii.
 
-- W przypadku wybrania punktu odzyskiwania zapewniających spójność aplikacji awarii jednej maszyny wirtualnej odzyskuje do jego najnowszego punktu odzyskiwania zapewniających spójność aplikacji. W przypadku planu odzyskiwania z grupą replikacji każdej grupy replikacji odzyskuje do wspólnego punktu odzyskiwania.
-Punktów odzyskiwania zapewniających spójność aplikacji może być za w czasie i może być utrata danych.
+- Jeśli wybierzesz punktu odzyskiwania spójnego z aplikacją, pojedynczej maszyny wirtualnej powrotu po awarii są przywracane do jego najnowszego dostępnego spójna na poziomie aplikacji punktu odzyskiwania. W przypadku planu odzyskiwania z grupą replikacji każdej grupy replikacji są przywracane do jego wspólnego punktu odzyskiwania.
+Punktów odzyskiwania zapewniających spójność aplikacji może być starsza w czasie, a mogą powodować utraty danych.
 
-## <a name="what-happens-to-vmware-tools-post-failback"></a>Co się dzieje VMware narzędzia post powrotu po awarii?
+## <a name="what-happens-to-vmware-tools-post-failback"></a>Co się dzieje podczas powrotu po awarii programu VMware narzędzia wpis?
 
-W przypadku maszyny wirtualnej systemu Windows usługi Site Recovery wyłącza narzędzia VMware w trybie failover. Podczas powrotu po awarii maszyny wirtualnej systemu Windows są reenabled narzędzi VMware. 
+W przypadku maszyny wirtualnej Windows usługa Site Recovery wyłącza narzędzi VMware podczas pracy awaryjnej. Podczas powrotu po awarii maszyny wirtualnej Windows są reenabled narzędzi VMware. 
 
 
-## <a name="reprotect-from-on-premises-to-azure"></a>Włącz ponownie ochronę z lokalnej na platformie Azure
-Po zakończeniu powrotu po awarii i uruchomieniu zatwierdzania, odzyskane maszynach wirtualnych platformy Azure są usuwane. Teraz maszyna wirtualna znajduje się do lokacji lokalnej, ale nie będzie można go chronić. Aby uruchomić ponownie replikację do platformy Azure, wykonaj następujące czynności:
+## <a name="reprotect-from-on-premises-to-azure"></a>Ponowne włączanie ochrony ze środowiska lokalnego do platformy Azure
+Po zakończeniu powrotu po awarii i uruchomieniu zatwierdzenia, są usuwane odzyskanej maszyny wirtualne na platformie Azure. Teraz maszyna wirtualna jest ponownie w lokacji lokalnej, ale nie będą one chronione. Aby uruchomić ponownie zreplikowana na platformę Azure, wykonaj następujące czynności:
 
-1. Wybierz **magazynu** > **ustawienie** > **elementy replikowane**, wybrać maszyny wirtualne, których nie powiodła się ponownie, a następnie wybierz  **Włącz ochronę ponownie**.
-2. Wprowadź wartość z serwera przetwarzania, który ma służyć do wysyłania danych do usługi Azure.
-3. Wybierz **OK** do rozpoczęcia zadań ponownej ochrony.
+1. Wybierz **magazynu** > **ustawienie** > **zreplikowane elementy**wybierz maszyny wirtualne, które powrót po awarii, a następnie wybierz pozycję  **Włącz ponownie ochronę**.
+2. Wprowadź wartość serwera przetwarzania, który musi być używane do wysyłania danych do platformy Azure.
+3. Wybierz **OK** aby rozpocząć zadanie włączania ponownej ochrony.
 
 > [!NOTE]
-> Po rozruchu maszyny wirtualnej lokalnymi, dopiero po pewnym czasie dla agenta zarejestrować serwer konfiguracji (maksymalnie 15 minut). W tym czasie ponownej ochrony kończy się niepowodzeniem i zwraca komunikat o błędzie informujący, że agent nie jest zainstalowany. Poczekaj kilka minut, a następnie spróbuj ponownie ponownej ochrony.
+> Po rozruchu maszyny wirtualnej w środowisku lokalnym, dopiero po pewnym czasie dla agenta zarejestrować serwer konfiguracji (maksymalnie 15 minut). W tym czasie ponowne objęcie ochroną zakończy się niepowodzeniem i zwraca komunikat o błędzie informujący, że agent nie jest zainstalowany. Poczekaj kilka minut, a następnie spróbuj ponownie ponowne objęcie ochroną.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zakończeniu działania zadań ponownej ochrony, możliwość replikacja maszyny wirtualnej Azure, i [pracy awaryjnej](site-recovery-failover.md) ponownie przenoszenia maszyn wirtualnych na platformie Azure.
+Po zakończeniu zadania ponownego włączania ochrony są replikowane maszyny wirtualnej do platformy Azure, a można wykonać [trybu failover](site-recovery-failover.md) ponownie przenoszenia maszyn wirtualnych na platformie Azure.
 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Synchronizacja programu Azure AD Connect: zagadnienia techniczne | Dokumentacja firmy Microsoft'
-description: Zawiera wyjaśnienie założeń techniczne synchronizacja programu Azure AD Connect.
+description: Zawiera wyjaśnienie założeń techniczne synchronizacji programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
-ms.author: markvi;andkjell
-ms.openlocfilehash: 591f67747316b950f32c5a113edda1080ed814a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: billmath
+ms.openlocfilehash: 4c7f1a0f1199daf9409f9ef3b4230e774321fe59
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592844"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918717"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizacja programu Azure AD Connect: zagadnienia techniczne
-W tym artykule przedstawiono podsumowanie tematu [opis architektury](active-directory-aadconnectsync-technical-concepts.md).
+W tym artykule przedstawiono podsumowanie tego tematu [opis architektury](active-directory-aadconnectsync-technical-concepts.md).
 
-Synchronizacja programu Azure AD Connect, bazując na platformie stałe metakatalogowego synchronizacji.
+Synchronizacja programu Azure AD Connect opiera się na platformie solid metakatalogowego synchronizacji.
 Poniższe sekcje wprowadzenie pojęcia metakatalogowego synchronizacji.
-Kompilowanie od serwera MIIS, ILM i FIM, usług Azure do synchronizacji usługi Active Directory zapewnia platformę dalej do połączenia ze źródłami danych, synchronizowania danych między źródłami danych, jak również udostępnianie i anulowania obsługi tożsamości.
+Rozwijając MIIS ILM i FIM, usługi Azure Active Directory Sync Services zapewnia dalej platformy łączenie ze źródłami danych, synchronizowanie danych między źródłami danych, a także aprowizacji i anulowania obsługi tożsamości.
 
 ![Zagadnienia techniczne](./media/active-directory-aadconnectsync-technical-concepts/scenario.png)
 
-Poniższe sekcje zawierają szczegółowe informacje o następujących aspektów usługę synchronizacji programu FIM:
+Poniższe sekcje zawierają więcej szczegółów na temat następujące aspekty FIM Synchronization Service:
 
 * Łącznik
-* Przepływ atrybutów
-* Obszar łączników
+* Przepływ atrybutu
+* Obszaru łącznika
 * Metaverse
 * Inicjowanie obsługi
 
 ## <a name="connector"></a>Łącznik
 Moduły kodu, które są używane do komunikacji z połączonego katalogu są nazywane łączników (wcześniej znane jako agenci zarządzania (MAs)).
 
-Te pliki zostaną zainstalowane na komputerze z uruchomionym synchronizacja programu Azure AD Connect. Łączniki umożliwiają bez wykorzystania agentów konwersacji przy użyciu protokołów systemu zdalnego, zdejmując to zadanie wdrażania agentów specjalne. Oznacza to zmniejszyć ryzyko i czas wdrażania, szczególnie w przypadku zajmujących się kluczowych aplikacji i systemów.
+Są one instalowane na komputerze z programem Azure AD Connect sync. Łączniki umożliwiają bez wykorzystania agentów do konwersacji za pomocą protokołów systemu zdalnego zamiast polegania na wdrożenia specjalistycznych agentów. Oznacza to, zmniejszenia ryzyka i czas wdrożenia, szczególnie gdy chodzi o krytycznych aplikacji i systemów.
 
-W powyższym rysunku łącznika jest synonimem przestrzeni łącznika, ale obejmuje całą komunikację z systemu zewnętrznego.
+Na powyższym rysunku łącznika jest równoznaczny z obszaru łącznika, ale obejmuje cała komunikacja z systemem zewnętrznym.
 
-Łącznik jest odpowiedzialny za wszystkie importowania i eksportowania funkcji do systemu i zwalnia deweloperzy z konieczności zrozumieć, jak połączyć się z każdego systemu natywnie korzystając z aprowizacją deklaratywną dostosować przekształcenia danych.
+Łącznika jest odpowiedzialny za wszystkie importowania i eksportowania funkcji do systemu i ułatwia deweloperom z listy zrozumieć, jak połączyć się z każdego systemu natywnie korzystając aprowizacja deklaratywna Dostosowywanie przekształcenia danych.
 
-Importu i eksportu tylko wówczas, gdy zaplanowane, co pozwala na dalsze izolacji od zmian w ramach systemu, ponieważ zmiany nie są automatycznie propagowane do połączonego źródła danych. Ponadto deweloperzy mogą również utworzyć własne łączniki do nawiązywania połączenia z niemal dowolnego źródła danych.
+Przywozu i wywozu tylko wówczas, gdy zaplanowane, co umożliwia dalsze izolację od zmian w ramach systemu, ponieważ zmiany nie są automatycznie propagowane do połączonego źródła danych. Ponadto deweloperzy mogą również utworzyć własne łączniki do łączenia się z praktycznie dowolnego źródła danych.
 
-## <a name="attribute-flow"></a>Przepływ atrybutów
-Metaverse jest skonsolidowanego widoku wszystkich tożsamości dołączonego do sąsiadujących — obszary łączników. Na powyższej ilustracji przedstawiono przepływ atrybutów liniami z strzałek dla przepływu ruchu przychodzącego i wychodzącego. Przepływ atrybutu to proces kopiowania lub Przekształcanie danych z jednego systemu i wszystkich atrybutów przepływów (przychodzący lub wychodzący).
+## <a name="attribute-flow"></a>Przepływ atrybutu
+Metaverse jest skonsolidowanego widoku wszystkich dołączonym do tożsamości sąsiadujące łącznika miejsca do magazynowania. Na powyższej ilustracji przepływu atrybutu jest przedstawiony za wiersze ze strzałkami dla przepływu ruchu przychodzącego i wychodzącego. Przepływ atrybutu to proces kopiowania lub przekształcania danych z jednego systemu i wszystkich atrybutów przepływów (przychodzący lub wychodzący).
 
-Przepływ atrybutu odbywa się między obszar łączników i metaverse dwukierunkowo podczas operacji synchronizacji (pełna lub różnicowa) są zaplanowane do uruchomienia.
+Przepływ atrybutu odbywa się między obszar łączników i metaverse dwukierunkowo podczas operacji synchronizacji (pełny lub różnicowe) są planowane do uruchomienia.
 
-Przepływ atrybutów jest używane tylko w przypadku tych synchronizacje są uruchamiane. Przepływy atrybutów są definiowane w reguły synchronizacji. Mogą to być przychodzącego (ISR na powyższym rysunku) lub wychodzący (OSR na powyższym rysunku).
+Przepływ atrybutu występuje tylko w przypadku, gdy te synchronizacje są uruchamiane. Przepływy atrybutów są definiowane w reguły synchronizacji. Mogą to być dla ruchu przychodzącego (ISR na powyższym rysunku) lub ruchu wychodzącego (OSR na powyższym rysunku).
 
-## <a name="connected-system"></a>System połączony
-System połączony (alias połączonego katalogu) odwołujące się do systemu zdalnego synchronizacji ma podłączony do usługi Azure AD Connect i odczytuje i zapisuje dane tożsamości do i z.
+## <a name="connected-system"></a>Połączonego systemu
+Połączonego systemu (zwane również połączonego katalogu) odnoszące się do usługi Azure AD Connect sync połączył się z systemu zdalnego i odczytuje i zapisuje dane tożsamości do i z.
 
-## <a name="connector-space"></a>Obszar łączników
-Każdego połączonego źródła danych jest reprezentowany jako podzbiór filtrowanych obiektów i atrybutów w przestrzeni łącznika.
-Umożliwia do działania lokalnie, bez konieczności skontaktuj się z systemu zdalnego, podczas synchronizowania obiektów usługi synchronizacji i ogranicza interakcję w celu importowania i eksportuje tylko.
+## <a name="connector-space"></a>Obszaru łącznika
+Każdego połączonego źródła danych jest przedstawiana jako podzbiór filtrowanych obiektów i atrybutów w przestrzeni łącznika.
+Umożliwia usłudze synchronizacji działa lokalnie, bez potrzeby skontaktuj się z systemu zdalnego, podczas synchronizowania obiektów i ogranicza interakcji do importuje i eksportuje tylko.
 
-Jeśli źródło danych i łącznika ma możliwość wyświetlania listy zmian (import zmian), następnie wydajność operacyjną gwałtowny wzrost jako tylko zmiany od ostatniego cyklu sondowania są wymieniane. Obszar łączników powoduje połączonego źródła danych z propagowanie automatycznie przez wymaganie, że harmonogram łącznik importuje i eksportuje zmiany. Dodano ubezpieczenia przyznaje spokój umysłu podczas testowania, przeglądania i potwierdzenie następnej aktualizacji.
+Gdy źródła danych i łącznika ma możliwość wyświetlania listy zmian (import zmian), następnie wydajność operacyjną gwałtowny wzrost jako tylko zmiany od ostatniego cyklu sondowania są wymieniane. Połączonego źródła danych przed zmianami propagowanie automatycznie wymaga podania, harmonogram łącznik importuje i eksportuje i powoduje, że przestrzeni łącznika. Dodano ubezpieczenia daje poczucie spokoju podczas testowania, przeglądania i Potwierdzanie następnej aktualizacji.
 
 ## <a name="metaverse"></a>Metaverse
-Metaverse jest skonsolidowanego widoku wszystkich tożsamości dołączonego do sąsiadujących — obszary łączników.
+Metaverse jest skonsolidowanego widoku wszystkich dołączonym do tożsamości sąsiadujące łącznika miejsca do magazynowania.
 
-Tożsamości są połączone ze sobą i uprawnienia przypisano dla różnych atrybutów w mapowaniach przepływu importu, obiektu metaverse centralnej zaczyna agregują informacje z wielu systemów. Z tego przepływu atrybutu obiektu mapowania przenoszenia informacje do systemów ruchu wychodzącego.
+Tożsamości są ze sobą powiązane i urząd przypisano do różnych atrybutów za pomocą mapowania przepływu importu, obiektu metaverse centralnej rozpoczyna agregują informacje z wielu systemów. Z tego przepływu atrybutu obiektu mapowania zawierają informacje do systemu wychodzącego.
 
-Obiekty są tworzone podczas autorytatywne systemu projektów je do środowiska metaverse. Po usunięciu wszystkich połączeń obiektu metaverse jest usuwać.
+Obiekty są tworzone, gdy autorytatywne system projektów je do obiektu metaverse. Zaraz po usunięciu wszystkich połączeń obiekt magazynu metaverse zostanie usunięty.
 
-Nie można bezpośrednio edytować obiektów w magazynie metaverse. Wszystkie dane w obiekcie musi się odbywać za pośrednictwem przepływ atrybutów. Metaverse obsługuje trwałe łączniki z każdego miejsca łącznika. Te łączniki nie wymagają ponownej oceny dla każdej synchronizacji, uruchom. Oznacza to, że synchronizacja programu Azure AD Connect nie ma można odnaleźć zgodnego obiektu zdalnego zawsze. Dzięki temu można uniknąć konieczności kosztowne agentów uniemożliwić zmiany atrybutów, które zazwyczaj będzie odpowiedzialny za korelowanie obiektów.
+Nie można bezpośrednio edytować obiekty w magazynie metaverse. Wszystkie dane w obiekcie musi zamieszczanie za pośrednictwem przepływu atrybutu. Metaverse obsługuje trwałe łączniki z każdego miejsca łącznika. Te łączniki nie wymagają ponownej oceny dla każdego przebiegu synchronizacji. Oznacza to, synchronizacja programu Azure AD Connect nie musi zlokalizować każdorazowo pasującego obiektu zdalnego. Umożliwia to uniknięcie konieczności kosztownych agentów uniemożliwić zmiany atrybutów, które normalnie będzie odpowiedzialne za korelacji obiektów.
 
-Podczas rozpoznawania nowych źródeł danych, które mogą mieć istniejących obiektów, które muszą być zarządzane, synchronizacja programu Azure AD Connect korzysta w procesie nazywanym reguły sprzężenia oceniania potencjalnych kandydatów umożliwiające nawiązanie połączenia.
-Po utworzeniu połączenia tej oceny powtarzał i przepływu normalnego atrybutów może wystąpić między zdalnego połączonego źródła danych i metaverse.
+Podczas odnajdywania nowych źródeł danych, które mogą mieć istniejących obiektów, które muszą być zarządzane, synchronizacja programu Azure AD Connect używa w procesie zwanym regułę dołączania do oceny potencjalnych kandydatów, z którą chcesz ustanowić łącze.
+Po utworzeniu połączenia tej oceny powtarzał i przepływu normalnego atrybutów może wystąpić między zdalnym połączonego źródła danych i obiektu metaverse.
 
 ## <a name="provisioning"></a>Inicjowanie obsługi
-Gdy projekty wiarygodne źródło w innym łącznikiem reprezentującą podrzędne połączonego źródła danych można tworzyć nowy obiekt do środowiska metaverse nowy obiekt przestrzeni łącznika.
+Gdy projektów jako autorytatywne źródło w innym łącznikiem reprezentującą podrzędne połączonego źródła danych można utworzyć nowy obiekt w obiekcie metaverse nowego obiektu przestrzeni łącznika.
 
-To z założenia stanowi połączenie, a przepływ atrybutów można kontynuować dwukierunkowo.
+To z natury ustanawia łącze, a przepływ atrybutów można kontynuować dwukierunkowo.
 
-Zawsze, gdy reguła określa nowy obiekt miejsca łącznik musi zostać utworzona, jest on nazywany inicjowania obsługi administracyjnej. Jednak ponieważ tej operacji tylko odbywa się w obrębie przestrzeni łącznika, go nie jest przenoszone do połączonego źródła danych do czasu eksportu jest wykonywane.
+Zawsze, gdy zasada ustala, że nowego obiektu przestrzeni łącznika musi zostać utworzona, jest on nazywany inicjowania obsługi administracyjnej. Jednak ponieważ ta operacja tylko odbywa się w przestrzeni łącznika, go nie jest przenoszone do połączonego źródła danych do momentu eksportu jest wykonywane.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Azure AD Connect Sync: Dostosowywanie opcji synchronizacji](active-directory-aadconnectsync-whatis.md)

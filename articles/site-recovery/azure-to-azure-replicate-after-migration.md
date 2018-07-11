@@ -1,61 +1,61 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób przygotowania maszyny, aby skonfigurować odzyskiwania po awarii między regiony platformy Azure po zakończeniu migracji na platformie Azure przy użyciu usługi Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure po migracji na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak przygotować maszyny, aby skonfigurować odzyskiwanie po awarii między regionami platformy Azure po migracji na platformę Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: c42a997560ee40eb0a587b81a6f191f372e0dd26
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 85ebb141390e0fa6b4dfbd77d7b7d3f6844950d7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716010"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916466"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych Azure po zakończeniu migracji na platformie Azure 
+# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure po migracji na platformę Azure 
 
 
-Użyj w tym artykule, po wprowadzeniu [zmigrowane maszyny lokalnymi maszynami wirtualnymi Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [usługi Site Recovery](site-recovery-overview.md) usługi. Ten artykuł pomaga przygotować maszyn wirtualnych platformy Azure do konfigurowania odzyskiwania po awarii do dodatkowej regionu Azure, przy użyciu usługi Site Recovery.
+Skorzystaj z tego artykułu po [migrację maszyn lokalnych do maszyn wirtualnych platformy Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [Site Recovery](site-recovery-overview.md) usługi. Ten artykuł pomaga przygotować maszyny wirtualne platformy Azure do konfigurowania odzyskiwania po awarii do regionu pomocniczego platformy Azure, za pomocą Site Recovery.
 
 
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Przed skonfigurowaniem odzyskiwania po awarii, upewnij się, że migracja została zakończona, zgodnie z oczekiwaniami. Pomyślnie migracji, po przejściu w tryb failover, należy wybrać **przeprowadzenia migracji** opcji dla każdego komputera, które chcesz migrować. 
+Przed rozpoczęciem konfigurowania odzyskiwania po awarii, upewnij się, że migracja została zakończona, zgodnie z oczekiwaniami. Pomyślnie migracji, po włączeniu trybu failover, należy wybrać **kończenia migracji** opcji dla każdej maszyny, które mają zostać zmigrowane. 
 
 
 
-## <a name="install-the-azure-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej Azure
+## <a name="install-the-azure-vm-agent"></a>Zainstaluj agenta maszyny Wirtualnej platformy Azure
 
-Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na Maszynie wirtualnej, dzięki czemu usługa Site Recovery może replikować go.
-
-
-1. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Windows, Pobierz i uruchom [Instalatora agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Potrzebne są uprawnienia administratora na maszynie Wirtualnej, aby zakończyć instalację.
-2. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Linux, zainstaluj najnowszą [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Potrzebne są uprawnienia administratora, aby zakończyć instalację. Zaleca się instalowania z repozytorium dystrybucji. Nie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z usługi GitHub. 
+Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na maszynie Wirtualnej, dzięki czemu usługa Site Recovery może replikować go.
 
 
-## <a name="validate-the-installation-on-windows-vms"></a>Sprawdź poprawność instalacji na maszynach wirtualnych systemu Windows
-
-1. Na maszynie Wirtualnej Azure, w folderze C:\WindowsAzure\Packages należy znaleźć w pliku WaAppAgent.exe.
-2. Kliknij prawym przyciskiem myszy plik, a następnie w **właściwości**, wybierz pozycję **szczegóły** kartę.
-3. Sprawdź, czy **wersji produktu** pola pokazuje 2.6.1198.718 lub nowszej.
+1. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Windows, Pobierz i uruchom [Instalatora agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Niezbędne są uprawnienia administratora na maszynie Wirtualnej, aby ukończyć instalację.
+2. Aby zainstalować agenta maszyny Wirtualnej na maszynach wirtualnych z systemem Linux, zainstaluj najnowszą wersję [agenta systemu Linux](../virtual-machines/extensions/agent-linux.md). Niezbędne są uprawnienia administratora, aby ukończyć instalację. Zaleca się, że zainstalować ze swojego repozytorium dystrybucji. Nie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu GitHub. 
 
 
+## <a name="validate-the-installation-on-windows-vms"></a>Zweryfikuj instalację na maszynach wirtualnych Windows
 
-## <a name="migration-from-vmware-vms-or-physical-servers"></a>Migracja z maszyn wirtualnych VMware lub serwerów fizycznych
+1. Na maszynie Wirtualnej platformy Azure, w folderze C:\WindowsAzure\Packages powinny być widoczne w nim plik WaAppAgent.exe.
+2. Kliknij prawym przyciskiem myszy plik, a następnie w **właściwości**, wybierz opcję **szczegóły** kartę.
+3. Upewnij się, że **wersji produktu** pola pokazuje się wartość 2.6.1198.718 lub wyższa.
 
-W przypadku migrowania maszyn wirtualnych VMware lokalnie (lub serwerów fizycznych) na platformie Azure, należy pamiętać, że:
+
+
+## <a name="migration-from-vmware-vms-or-physical-servers"></a>Migracja z maszyn wirtualnych VMware lub serwery fizyczne
+
+W przypadku migrowania lokalnych maszyn wirtualnych z programu VMware (lub serwery fizyczne) do platformy Azure należy pamiętać, że:
 
 - Musisz zainstalować agenta maszyny Wirtualnej platformy Azure, jeśli zainstalowana na zmigrowanej maszynie usługa mobilności jest v9.6 lub wcześniej.
-- Na maszynach wirtualnych systemu Windows jest uruchomiona wersja 9.7.0.0 usługi mobilności i jego nowszych wersjach Instalatora usługi instaluje najnowsze dostępne Azure agenta maszyny Wirtualnej. Podczas migracji, te maszyny wirtualne spełnia już wymagań wstępnych dla dowolnego rozszerzenia maszyny Wirtualnej, w tym rozszerzenia usługi Site Recovery instalacji agenta.
-- Należy ręcznie odinstalować usługi mobilności z maszyny Wirtualnej Azure, przy użyciu jednej z poniższych metod. Przed skonfigurowaniem replikacji, należy ponownie uruchomić maszyny Wirtualnej.
-    - Dla systemu Windows w Panelu sterowania > **Dodaj lub usuń programy**, odinstaluj **Microsoft Azure Site odzyskiwania mobilności usługi/główny serwer docelowy**. W wierszu polecenia z podwyższonym poziomem uprawnień uruchom polecenie:
+- Na maszynach wirtualnych Windows lub nowszym systemem 9.7.0.0 wersję usługi mobilności Instalatora usługi instaluje najnowsze dostępne maszyny Wirtualnej platformy Azure agenta. Podczas migracji, te maszyny wirtualne spełnia już wymagania wstępne dla wszelkich rozszerzeń maszyny Wirtualnej, w tym rozszerzenie usługi Site Recovery instalacji agenta.
+- Należy ręcznie odinstalować usługę mobilności z maszyny Wirtualnej platformy Azure, przy użyciu jednej z następujących metod. Uruchom ponownie maszynę Wirtualną, przed skonfigurowaniem replikacji.
+    - Dla Windows, w Panelu sterowania > **Dodaj/Usuń programy**, odinstaluj **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy**. W wierszu polecenia z podwyższonym poziomem uprawnień uruchom polecenie:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux, po zalogowaniu użytkownika głównego. W terminalu, przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
+    - Dla systemu Linux, Zaloguj użytkownika głównego. W terminalu przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
         ```
         uninstall.sh -Y
         ```
@@ -63,4 +63,4 @@ W przypadku migrowania maszyn wirtualnych VMware lokalnie (lub serwerów fizyczn
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Szybko replikować](azure-to-azure-quickstart.md) maszyny Wirtualnej platformy Azure w regionie pomocniczym.
+[Szybkie replikowanie](azure-to-azure-quickstart.md) Maszynie wirtualnej platformy Azure do regionu pomocniczego.

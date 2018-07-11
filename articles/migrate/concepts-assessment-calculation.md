@@ -1,109 +1,109 @@
 ---
-title: Ocena obliczeń w migracji Azure | Dokumentacja firmy Microsoft
-description: Zawiera omówienie obliczeń oceny w usłudze Azure migracji.
+title: Obliczenia dotyczące oceny w usłudze Azure Migrate | Dokumentacja firmy Microsoft
+description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6d5a0b959b25c0ee294b22b3f4066d006806b524
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287892"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920929"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
-[Azure migracji](migrate-overview.md) ocenia obciążeń lokalnych do migracji do usługi Azure. Ten artykuł zawiera informacje o sposobie obliczania oceny.
+[Usługa Azure Migrate](migrate-overview.md) ocenia obciążenia lokalne pod kątem migracji na platformę Azure. Ten artykuł zawiera informacje dotyczące sposobu obliczania ocen.
 
 
 ## <a name="overview"></a>Przegląd
 
-Ocena migracji Azure ma trzy etapy. Ocena rozpoczyna się od analizy przydatności, po której następuje zmiana rozmiaru, i w końcu co miesiąc kosztów szacowania. Maszyna tylko przenosi na późniejszym etapie Jeśli przekazaniem poprzedni. Na przykład w przypadku niepowodzenia sprawdzania Azure przydatności maszyna jest oznaczony jako nieodpowiednie dla platformy Azure oraz zmiany rozmiaru i kosztów nie będzie odbywać się.
+Ocena usługi Azure Migrate ma trzy etapy. Ocena zaczyna się od analizy przydatności, po której następuje zmiana rozmiaru, i na koniec comiesięczny szacowania kosztów. Maszyna tylko przenosi na późniejszym etapie Jeśli przekazuje poprzedniego. Na przykład w przypadku niepowodzenia sprawdzania gotowości usługi Azure machine on jest oznaczony jako nieodpowiedni dla platformy Azure, a zmiany rozmiaru i wyceny nie będzie odbywać się.
 
 
-## <a name="azure-suitability-analysis"></a>Analiza przydatności Azure
+## <a name="azure-suitability-analysis"></a>Analiza zgodności platformy Azure
 
-Nie wszystkie komputery są odpowiednie do uruchamiania w chmurze, jak chmura ma własną ograniczeń i wymagań. Azure migracji ocenia każdy na lokalnej maszynie przydatności migracji na platformie Azure i kategoryzuje maszyny do jednej z następujących kategorii:
-- **Gotowy na platformie Azure** — można migrować maszynę jako — jest na platformie Azure, bez wprowadzania żadnych zmian. Zostanie uruchomiony na platformie Azure z obsługą pełnej Azure.
-- **Warunkowo gotowe do Azure** -komputera może uruchomić na platformie Azure, ale może nie mieć pełnych Azure pomocy technicznej. Na przykład komputera przy użyciu starszej wersji systemu operacyjnego Windows Server nie jest obsługiwane na platformie Azure. Należy zachować ostrożność przed przeprowadzeniem migracji tych urządzeń do platformy Azure i postępuj zgodnie ze wskazówkami korygowania sugerowane w ocenie, aby rozwiązać problemy z gotowością przed przeprowadzeniem migracji.
-- **Nie jest gotowy do Azure** -komputer nie uruchomi się na platformie Azure. Na przykład jeśli komputera lokalnego ma dysk o rozmiarze ponad 4 TB dołączone do niego, nie może być umieszczona na platformie Azure. Należy postępować zgodnie ze wskazówkami korygowania sugerowane w ocenie, aby rozwiązać problem gotowości przed migracją do systemu Azure. Szacowanie kosztów i doboru wielkości nie została wykonana dla maszyn, które są oznaczone jako nie jest gotowy dla platformy Azure.
-- **Nieznana gotowość** -Azure migracji nie można odnaleźć gotowości maszyny z powodu niewystarczających danych dostępnych w programie vCenter Server.
+Nie wszystkie maszyny są odpowiednie do uruchamiania w chmurze, jak chmura ma własne ograniczenia i wymagania. Usługa Azure Migrate ocenia każdy na komputerze lokalnym kątem możliwości migracji na platformę Azure i klasyfikuje maszyn do jednej z następujących kategorii:
+- **Gotowa na platformę Azure** — mogą być migrowane maszyny jako — jest na platformie Azure bez wprowadzania żadnych zmian. Zostanie uruchomiony na platformie Azure z obsługą pełnej platformy Azure.
+- **Warunkowo gotowa na platformę Azure** -maszynę można uruchomić na platformie Azure, ale nie może mieć pomocy technicznej pełnej platformy Azure. Na przykład maszyny za pomocą starszej wersji systemu operacyjnego Windows Server nie jest obsługiwane na platformie Azure. Musisz należy zachować ostrożność, przed przeprowadzeniem migracji tych maszyn na platformę Azure i postępuj zgodnie z wskazówki dotyczące rozwiązywania problemów, sugerowane w ocenie, aby rozwiązać problemy z gotowością przed przeprowadzeniem migracji.
+- **Niegotowa na platformę Azure** -maszyny nie uruchomi się na platformie Azure. Na przykład jeśli na komputerze lokalnym ma dysk o rozmiarze ponad 4 TB podłączone do niego, nie mogą być hostowane na platformie Azure. Należy wykonać wskazówki dotyczące rozwiązywania problemów, sugerowane w ocenie, aby rozwiązać ten problem gotowości przed migracją na platformę Azure. Szacowanie odpowiedni rozmiar i koszt nie jest wykonywane dla maszyn, które są oznaczone jako niegotowa na platformę Azure.
+- **Nieznana gotowość** — usługa Azure Migrate nie może odnaleźć gotowości maszyny z powodu niewystarczających danych dostępnych w programie vCenter Server.
 
-Migrowanie Azure sprawdza właściwości maszyny i systemu operacyjnego gościa, aby zidentyfikować Azure gotowości komputera lokalnego.
+Usługa Azure Migrate przegląda właściwości maszyny i system operacyjny gościa do identyfikowania gotowości maszyn lokalnych na platformę Azure.
 
-### <a name="machine-properties"></a>Właściwości komputera
-Azure migracji monitoruje następujące właściwości lokalnej maszyny Wirtualnej, aby ustalić, czy uruchomić Maszynę wirtualną na platformie Azure.
+### <a name="machine-properties"></a>Właściwości maszyny
+Usługa Azure Migrate monitoruje następujące właściwości lokalnej maszyny Wirtualnej, aby ustalić, czy uruchomić Maszynę wirtualną na platformie Azure.
 
-**Właściwość** | **Szczegóły** | **Stan gotowości systemu Azure**
+**Właściwość** | **Szczegóły** | **Stan gotowości na platformę Azure**
 --- | --- | ---
-**Typ rozruchu** | Azure typu rozruchu systemu BIOS i UEFI nie obsługuje maszyn wirtualnych. | Jeśli typ rozruchu UEFI warunkowo gotowe do platformy Azure.
-**Liczba rdzeni** | Liczba rdzeni na maszynach musi być równa lub mniejsza niż maksymalna liczba rdzeni (32) obsługiwanych na maszynie Wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, Azure migracji uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfort określono w ustawieniach oceny, liczba rdzeni wykorzystywanych jest mnożona przez współczynnik komfort.<br/><br/> Jeśli nie ma żadnych Historia wydajności, Azure migracji używa przydzielonych rdzeni, bez stosowania współczynnik komfort. | Brak gotowości, jeśli liczba rdzeni jest większa niż 32.
-**Pamięci** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (448 GB) dozwolony dla maszyny Wirtualnej platformy Azure. <br/><br/> Jeśli Historia wydajności jest dostępny, Azure migracji uwzględnia pamięci wykorzystywanych do porównania. Jeśli określono współczynnik komfort, wykorzystywanych pamięci jest mnożona przez współczynnik komfort.<br/><br/> Jeśli nie ma Brak historii alokacji pamięci jest używana bez stosowania współczynnik komfort.<br/><br/> | Brak gotowości, jeśli rozmiar pamięci jest większa niż 448 GB.
-**Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, w tym dysku systemu operacyjnego. | Brak gotowości, jeśli dowolny dysk ma rozmiar większy niż 4 TB lub jeśli istnieje więcej niż 65 dysków dołączonych do maszyny.
-**Sieć** | Komputer musi mieć 32 lub mniej karty sieciowe podłączone do niego. | Brak gotowości, jeśli komputer ma więcej niż 32 kart sieciowych
+**Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa na platformę Azure, jeśli typ rozruchu to UEFI.
+**Liczba rdzeni** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (32) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Brak gotowości, jeśli liczba rdzeni jest większa niż 32.
+**Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (448 GB) dozwolone na Maszynie wirtualnej platformy Azure. <br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Brak gotowości, jeśli rozmiar pamięci jest większa od 448 GB.
+**Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, łącznie z dysku systemu operacyjnego. | Nie jest gotowy, jeśli dysk ma rozmiar większy niż 4 TB lub jeśli istnieje więcej niż 65 dysków dołączonych do maszyny.
+**Sieć** | Maszyna musi być 32 lub najwyżej dwie karty sieciowe podłączone do niego. | Nie jest gotowy, jeśli komputer ma więcej niż 32 kart sieciowych
 
 ### <a name="guest-operating-system"></a>System operacyjny gościa
-Wraz z właściwości maszyny Wirtualnej migracja Azure również analizuje system operacyjny gościa z lokalnej maszyny Wirtualnej, aby ustalić, czy uruchomić maszyny Wirtualnej na platformie Azure.
+Wraz z właściwości maszyny Wirtualnej usługi Azure Migrate również analizuje systemu operacyjnego gościa maszyny wirtualnej w środowisku lokalnym, aby ustalić, czy maszyny Wirtualnej można uruchamiać na platformie Azure.
 
 > [!NOTE]
-> Azure migracji uwzględnia systemu operacyjnego określone w programie vCenter Server w celu następujące analizy. Ponieważ odnajdywania realizowane przez migrację Azure jest oparte na urządzeniu, nie ma sposób sprawdzić, czy system operacyjny uruchomiony w ramach maszyny Wirtualnej ma taki sam jak jeden określony w programie vCenter Server.
+> Usługa Azure Migrate uwzględnia systemu operacyjnego określone w programie vCenter Server, aby wykonywać następujące analizę. Ponieważ odnajdywanie przeprowadzone przez usługę Azure Migrate jest oparte na urządzeniu, nie ma sposób sprawdzić, czy system operacyjny działający na maszynie Wirtualnej jest taki sam jak jeden określony w programie vCenter Server.
 
-Następującą logiką jest używane przez migrację Azure do identyfikowania Azure gotowości opartą na systemie operacyjnym maszyny wirtualnej.
+Poniższa logika jest używany przez usługę Azure Migrate do identyfikowania gotowości na platformę Azure maszyny Wirtualnej na podstawie systemu operacyjnego.
 
-**System operacyjny** | **Szczegóły** | **Stan gotowości systemu Azure**
+**System operacyjny** | **Szczegóły** | **Stan gotowości na platformę Azure**
 --- | --- | ---
-Windows Server 2016 & wszystkie SPs | Azure zapewnia pełną obsługę. | Gotowa na platformę Azure
-Windows Server 2012 R2 & wszystkie SPs | Azure zapewnia pełną obsługę. | Gotowa na platformę Azure
-Windows Server 2012 & wszystkie SPs | Azure zapewnia pełną obsługę. | Gotowa na platformę Azure
-Windows Server 2008 R2 z wszystkich SPs | Azure zapewnia pełną obsługę.| Gotowa na platformę Azure
-Windows Server 2003 – 2008 R2 | Te systemy operacyjne przekazanego koniec okresu pomocy technicznej i potrzeb [umowy obsługuje niestandardowe (CSA)](https://aka.ms/WSosstatement) pomocy technicznej platformy Azure. | Warunkowo gotowe do platformy Azure, Rozważ uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformie Azure.
-Windows 2000, 98, 95, NT, 3.1, MS-DOS | Te systemy operacyjne przekazanego ich obsługa Data zakończenia, komputera może uruchomić na platformie Azure, ale nie obsługuje systemu operacyjnego są dostarczane przez platformę Azure. | Warunkowo gotowy na platformie Azure, zaleca się uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformie Azure.
-Klient systemu Windows 7, 8 i 10 | Azure zapewnia obsługę subskrypcji programu Visual Studio tylko. | Warunkowo gotowa na platformę Azure
-Windows Vista, XP Professional | Te systemy operacyjne przekazanego ich obsługa Data zakończenia, komputera może uruchomić na platformie Azure, ale nie obsługuje systemu operacyjnego są dostarczane przez platformę Azure. | Warunkowo gotowy na platformie Azure, zaleca się uaktualnienie systemu operacyjnego przed przeprowadzeniem migracji na platformie Azure.
-Linux | Azure wspiera działania te [systemów operacyjnych Linux](../virtual-machines/linux/endorsed-distros.md). Inne systemy operacyjne Linux mogą rozruchu w systemie Azure, ale zaleca się uaktualnienie systemu operacyjnego do wersji potwierdzony przed migracją do systemu Azure. | Gotowy na platformie Azure, jeśli wersja jest zatwierdzone.<br/><br/>Warunkowo gotowe, jeśli wersja nie jest potwierdzone.
-Inne systemy operacyjne<br/><br/> np. Oracle Solaris, itp. system operacyjny Mac firmy Apple, FreeBSD itp. | Azure nie potwierdza autentyczności tych systemów operacyjnych. Komputer może rozruchu w systemie Azure, ale nie obsługuje systemu operacyjnego są dostarczane przez platformę Azure. | Warunkowo gotowy na platformie Azure, zaleca się instalowanie obsługiwany system operacyjny przed migracją do usługi Azure.  
-System operacyjny określony jako *innych* w programie vCenter Server | Azure migracji nie można zidentyfikować w takim przypadku system operacyjny. | Nieznany gotowości. Upewnij się, że system operacyjny uruchomiony w ramach maszyny Wirtualnej jest obsługiwany na platformie Azure.
-32-bitowe systemy operacyjne | Komputer może rozruchu w systemie Azure, ale Azure może nie zapewniają pełną obsługę. | Warunkowo gotowe do platformy Azure, Rozważ uaktualnienie systemu operacyjnego komputera z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego przed przeprowadzeniem migracji na platformie Azure.
+System Windows Server 2016 i wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
+Windows Server 2012 R2 i wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
+Windows Server 2012 i wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną. | Gotowa na platformę Azure
+Windows Server 2008 R2 z wszystkie dodatki Service Pack | System Azure oferuje pełną pomoc techniczną.| Gotowa na platformę Azure
+Windows Server 2003-2008 | Te systemy operacyjne przeszły koniec okresu pomocy technicznej i trzeba [umowy pomocy technicznej niestandardowe (CSA)](https://aka.ms/WSosstatement) obsługi na platformie Azure. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
+Windows 2000, 98, 95, NT, 3.1, MS-DOS | Te systemy operacyjne przeszły ich zakończenia okresu pomocy technicznej, maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zaleca się uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
+Klient Windows 7, 8 i 10 | Platforma Azure oferuje obsługi subskrypcji programu Visual Studio tylko. | Warunkowo gotowa na platformę Azure
+Windows Vista, XP Professional | Te systemy operacyjne przeszły ich zakończenia okresu pomocy technicznej, maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zaleca się uaktualnienie systemu operacyjnego przed migracją na platformę Azure.
+Linux | Platforma Azure wspiera te [systemów operacyjnych Linux](../virtual-machines/linux/endorsed-distros.md). Innych systemów operacyjnych Linux można uruchomić na platformie Azure, ale zaleca się uaktualnienie systemu operacyjnego do zalecanych wersji przed migracją na platformę Azure. | Gotowa na platformę Azure, jeśli wersja jest zalecane.<br/><br/>Warunkowo gotowa, jeśli wersja nie jest zalecane.
+Inne systemy operacyjne<br/><br/> np. Oracle Solaris, itp. system operacyjny Mac firmy Apple, FreeBSD itp. | Azure nie popiera tych systemów operacyjnych. Maszynę można uruchomić na platformie Azure, ale nie zapewnia obsługi systemu operacyjnego znajduje się na platformie Azure. | Warunkowo gotowa na platformę Azure, zalecane jest instalacji obsługiwanego systemu operacyjnego przed migracją na platformę Azure.  
+System operacyjny określony jako *innych* w programie vCenter Server | Usługa Azure Migrate nie może zidentyfikować w takim przypadku system operacyjny. | Nieznana gotowość. Upewnij się, że system operacyjny działający na maszynie Wirtualnej jest obsługiwana na platformie Azure.
+32-bitowych systemach operacyjnych | Maszynę można uruchomić na platformie Azure, ale Azure mogą nie zapewnić pełną pomoc techniczną. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego maszyny z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego przed migracją na platformę Azure.
 
 ## <a name="sizing"></a>Zmiana rozmiaru
 
-Po maszyna jest oznaczona jako gotowe do platformy Azure, Azure migracji rozmiary maszyny Wirtualnej i jej dysków dla platformy Azure. Jeśli określona we właściwościach oceny kryterium zmiany rozmiaru czy wydajności na podstawie zmiany rozmiaru, Azure migracji uwzględnia Historia wydajności maszyny, aby zidentyfikować typu rozmiarze i dysków maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, w którym nadmiernie przydzielił lokalnej maszyny Wirtualnej, ale wykorzystania jest niski i chcesz odpowiedniego rozmiaru maszyn wirtualnych na platformie Azure, aby zapisać kosztów.
+Po maszyny jest oznaczony jako gotowa na platformę Azure, usługa Azure Migrate rozmiarów maszyny Wirtualnej i jej dysków na platformie Azure. Jeśli kryterium ustalania rozmiaru określone we właściwościach oceny do ustalenia rozmiaru na podstawie wydajności Usługa Azure Migrate uwzględnia historii wydajności maszyn do identyfikowania typu dysk i rozmiar maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, gdzie ma nadmierną alokację maszyny Wirtualnej w środowisku lokalnym, ale wykorzystanie jest niskie, i chcesz odpowiedni rozmiar maszyn wirtualnych na platformie Azure koszty.
 
 > [!NOTE]
-> Azure migracji zbiera Historia wydajności lokalnych maszyn wirtualnych z programu vCenter Server. Aby zapewnić dokładne doboru wielkości, upewnij się, że ustawienie statystyk w programie vCenter Server jest ustawiony poziom 3 i poczekaj co najmniej jeden dzień przed zasób wyłączanie funkcji odnajdywania lokalnych maszyn wirtualnych. Jeśli ustawienie statystyk w programie vCenter Server znajduje się poniżej poziomu 3, nie są zbierane dane dotyczące wydajności dysku i sieci.
+> Usługa Azure Migrate umożliwia zbieranie informacji o historii wydajności lokalnych maszyn wirtualnych z programu vCenter Server. Aby zapewnić dokładne doboru, upewnij się, że ustawienie statystyk w programie vCenter Server jest ustawione na poziom 3 i poczekaj na co najmniej jeden dzień przed rozpoczęciem odnajdowania lokalnych maszyn wirtualnych. Jeśli ustawienie statystyk w programie vCenter Server jest poniżej poziomu 3, nie są zbierane dane dotyczące wydajności dla dysku i sieci.
 
-Jeśli nie chcesz wziąć pod uwagę historię wydajności dla rozmiaru maszyny Wirtualnej i chcesz przełączyć maszyny Wirtualnej jako — jest na platformie Azure, można określić jako kryterium zmiany rozmiaru *jako lokalną* i migracji Azure następnie rozmiaru maszyny wirtualne oparte na lokalnej Konfiguracja bez uwzględniania danych użycia. Ustawianie rozmiaru dysku, w tym przypadku zostanie to zrobione zależności od typu magazynu, które określisz we właściwościach oceny (standardowy lub Premium dysku)
+Jeśli nie chcesz należy wziąć pod uwagę historię wydajności w przypadku ustalania rozmiaru maszyny Wirtualnej i chcesz przełączyć maszynę Wirtualną jako — jest na platformie Azure, możesz określić kryterium ustalania rozmiaru jako *jako lokalne* i usługa Azure Migrate następnie rozmiar maszyn wirtualnych, opartych na lokalne Konfiguracja bez uwzględniania danych wykorzystania. Zmienianie rozmiaru dysku, w tym przypadku będzie odbywać się zależnie od typu magazynu, które określisz we właściwościach oceny (dysk w warstwie standardowa lub Premium disk)
 
-### <a name="performance-based-sizing"></a>Na podstawie rozmiaru
+### <a name="performance-based-sizing"></a>Ustalanie rozmiaru na podstawie wydajności
 
-Na podstawie wydajności zmiany rozmiaru dysków dołączonych do maszyny Wirtualnej, migracja Azure rozpoczyna się znak kart sieciowych i następnie mapy maszyny Wirtualnej platformy Azure na podstawie wymagań obliczeń lokalnej maszyny wirtualnej.
+W przypadku ustalania rozmiaru na podstawie wydajności, usługi Azure Migrate rozpoczyna się od ciągu dyski dołączone do maszyny Wirtualnej, a następnie kart sieciowych, a następnie mapy Maszynie wirtualnej platformy Azure na podstawie wymagań obliczeniowych maszyn wirtualnych w środowisku lokalnym.
 
-- **Magazyn**: Migrowanie Azure próbuje zamapować co dysk dołączony do maszyny na dysku na platformie Azure.
+- **Magazyn**: Usługa Azure Migrate próbuje zamapować każdego dysku podłączonego do maszyny, na dysku na platformie Azure.
 
     > [!NOTE]
-    > Azure migracji obsługuje tylko zarządzanego dysków w celu oceny.
+    > Usługa Azure Migrate obsługuje tylko zarządzane dyski dla oceny.
 
-    - Uzyskanie dysku skuteczne operacji We/Wy na sekundę (IOPS) i przepływności (MB/s), Azure migracji mnoży dysku IOPS i przepływność współczynnik komfort. Na podstawie IOPS skuteczne i wartości przepustowości, migracja Azure Określa, czy należy mapować dysku na dysk standardowy lub premium na platformie Azure.
-    - Jeśli migracja Azure nie może znaleźć dysku o wymagane IOPS & przepływności, oznacza maszynę jako nieodpowiednie dla platformy Azure. [Dowiedz się więcej](../azure-subscription-service-limits.md#storage-limits) o Azure ogranicza na dysku i maszyny Wirtualnej.
-    - W przypadku odnalezienia zestaw odpowiednich dysków, Azure migracji wybiera te, które obsługują metody nadmiarowość magazynu i lokalizacji określonej w ustawieniach oceny.
-    - W przypadku wielu dysków kwalifikujących się wybiera jeden z najniższy koszt.
-    - Jeśli dane wydajności dotyczące dysków w niedostępny, wszystkie dyski są mapowane na standardowych dysków na platformie Azure.
+    - Aby pobrać efektywne dysku operacji We/Wy na sekundę (IOPS) i przepływność (MB/s), usługa Azure Migrate mnoży dysku na SEKUNDĘ i przepływności, zapewniając współczynnik komfortu. Na podstawie skuteczne operacje We/Wy i wartości przepustowości, usługa Azure Migrate zidentyfikuje, jeśli dysk powinien być mapowany na dysku w warstwie standardowa lub premium na platformie Azure.
+    - Jeśli usługa Azure Migrate nie może odnaleźć dysku za pomocą wymaganych operacji We/Wy i przepływność, oznacza maszyny jako nienadające się do platformy Azure. [Dowiedz się więcej](../azure-subscription-service-limits.md#storage-limits) dotyczących platformy Azure ogranicza na dysku i maszyny Wirtualnej.
+    - Jeśli znajdzie zbiór odpowiednich dysków, usługa Azure Migrate wybiera te, które obsługują metoda nadmiarowości magazynu, a w lokalizacji określonej w ustawieniach oceny.
+    - W przypadku wielu dysków kwalifikują wybiera ten, który generuje najniższy koszt.
+    - Jeśli dane wydajności dla dysków w niedostępny, wszystkie dyski są mapowane na dyski w warstwie standardowa na platformie Azure.
 
-- **Sieci**: Migrowanie Azure próbuje znaleźć maszyny Wirtualnej platformy Azure, który może obsługiwać liczbę kartach sieciowych podłączonych do komputera lokalnego i wydajności wymaganych przez te karty sieciowe.
-    - Aby uzyskać wydajność sieci skuteczne lokalnej maszyny wirtualnej, migracja Azure agreguje dane przesyłane na sekundę (MB/s) poza maszyny (sieć out) we wszystkich kartach sieciowych i zastosowanie współczynnik komfort. Liczba ta służy do znajdowania obsługujące wydajności wymagana sieć maszyny Wirtualnej Azure.
-    - Wraz z wydajność sieci, również uzna, jeśli maszyna wirtualna Azure może obsługiwać wymaganego liczba kart sieciowych.
-    - Jeśli dane wydajności sieci są niedostępne, liczba kart sieciowych jest uznawany za dla rozmiaru maszyny Wirtualnej.
+- **Sieć**: Usługa Azure Migrate podejmie próbę odnalezienia maszyn wirtualnych platformy Azure, który może obsługiwać liczbę kart sieciowych dołączonych do maszyny lokalnej i wydajności wymaganych przez te karty sieciowe.
+    - Aby uzyskać wydajność sieci od lokalnej maszyny Wirtualnej, usługa Azure Migrate agreguje dane przesyłane na sekundę (MB/s) poza maszyny (sieć się) dla wszystkich kart sieciowych i stosuje współczynnik komfortu. Ten numer jest używany, można znaleźć maszyny Wirtualnej platformy Azure, który może obsługiwać żądanej wartości wydajności sieci.
+    - Wraz z wydajność sieci, uwzględniane są również obowiązujące Jeśli maszyna wirtualna platformy Azure może obsługiwać wymagane liczba kart sieciowych.
+    - Jeśli sieci wydajności są dostępne żadne dane, liczba kart sieciowych jest traktowany jako w przypadku ustalania rozmiaru maszyny Wirtualnej.
 
-- **Obliczenia bazy danych**: po obliczeniu są wymagania dotyczące magazynu i sieci Azure migracji uwzględnia wymagania dotyczące Procesora i pamięci można znaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
-    - Azure migracji analizuje wykorzystywanych rdzeni i ilości pamięci i stosuje współczynnik komfort uzyskanie skuteczne rdzeni i ilości pamięci. Na podstawie tego numeru, próbuje odnaleźć odpowiedni rozmiar maszyny Wirtualnej na platformie Azure.
-    - Jeśli zostanie znaleziony żaden odpowiedni rozmiar, maszynie jest oznaczony jako nieodpowiednie dla platformy Azure.
-    - Jeśli zostanie znaleziony odpowiedni rozmiar, Azure migracji ma zastosowanie obliczenia magazynu i sieci. Następnie stosuje lokalizacji i cenach ustawień warstwę, do końcowego zalecenie rozmiar maszyny Wirtualnej.
+- **Obliczenia**: po obliczane są wymagania dotyczące magazynu i sieci, usługa Azure Migrate uwzględnia wymagania procesora CPU i pamięci można znaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
+    - Usługa Azure Migrate analizuje wykorzystywanych rdzeni i pamięci, a także obowiązują współczynnik komfortu, aby pobrać efektywne rdzeni i pamięci. Na podstawie tego numeru, próbuje odnaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
+    - Jeśli zostanie znaleziony żaden odpowiedni rozmiar, maszyny jest oznaczony jako nieodpowiedni dla platformy Azure.
+    - Jeśli zostanie znaleziony odpowiedni rozmiar, usługa Azure Migrate dotyczy obliczeń magazynu i sieci. Następnie stosuje lokalizacji i ustawień warstwy cenowej, dla końcowego zalecenie dotyczące rozmiaru maszyny Wirtualnej.
     - Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt.
 
-### <a name="as-on-premises-sizing"></a>Jako lokalną zmiany rozmiaru
-W przypadku zmiany rozmiaru kryterium *jako lokalne zmiany rozmiaru*, Azure migracji nie należy wziąć pod uwagę historię wydajności dysków i maszyn wirtualnych i przydziela SKU maszyny Wirtualnej na platformie Azure, zależnie od rozmiaru przydzielone lokalnymi. Podobnie w przypadku zmiany rozmiaru dysku, sprawdza magazyn typu określonego we właściwości oceny (Standard/Premium) i w związku z tym zaleca typu dysku. Domyślny typ magazynu jest dysków Premium.
+### <a name="as-on-premises-sizing"></a>Jako lokalne zmiany rozmiaru
+Jeśli kryterium ustalania rozmiaru to *jako lokalnego rozmiaru*, usługa Azure Migrate nie należy wziąć pod uwagę historię wydajności maszyn wirtualnych i dysków i przydziela SKU maszyny Wirtualnej na platformie Azure, w zależności od rozmiaru przydzielone lokalnie. Podobnie w przypadku dla rozmiaru dysku, sprawdza typ magazynu określona we właściwościach oceny (standardowa/Premium) i w związku z tym zaleca typ dysku. Domyślny typ magazynu jest dysków w warstwie Premium.
 
 ### <a name="confidence-rating"></a>Ocena zaufania
 
@@ -128,16 +128,16 @@ Ocena może nie mieć dostępnych wszystkich punktów danych z jednego z następ
 > [!NOTE]
 > Jeśli ocena zaufania dowolnej oceny jest poniżej 4 gwiazdek, zalecamy zmianę ustawienia poziomu statystyk programu vCenter Server na 3, odczekanie przez czas, który chcesz wziąć pod uwagę podczas oceny (1 dzień/1 tydzień/1 miesiąc), a następnie przeprowadzenie odnajdywania i oceny. Jeśli nie można wykonać powyższego, ustalanie rozmiaru na podstawie wydajności może nie być wiarygodne i zaleca się, aby przełączyć się na *ustalanie rozmiaru jako lokalnego*, zmieniając właściwości oceny.
 
-## <a name="monthly-cost-estimation"></a>Miesięczne szacowania kosztów
+## <a name="monthly-cost-estimation"></a>Szacowanie miesięcznych kosztów
 
-Po zakończeniu zmiany rozmiaru zalecenia dotyczące migracji Azure oblicza koszty obliczeniowej i pamięci masowej po migracji.
+Po zakończeniu zalecenia wymiarowania efektywnego usługi Azure Migrate oblicza koszty zasobów obliczeniowych i magazynu po migracji.
 
-- **Obliczanie kosztu**: przy użyciu zalecany rozmiar maszyny Wirtualnej platformy Azure, Azure migracji używa interfejsu API rozliczeń do obliczenia miesięczny koszt dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, software assurance zastrzeżone wystąpień, maszyna wirtualna przestojów, lokalizacji i ustawienia waluty pod uwagę. Agreguje koszt na wszystkich komputerach, aby obliczyć całkowity miesięczny koszt obliczeń.
-- **Koszt magazynowania**: Magazyn miesięczny koszt maszyna jest obliczana przez agregowanie miesięczny koszt wszystkich dysków dołączonych do maszyny. Azure migracji oblicza całkowity miesięczny kosztów magazynowania przez agregowanie kosztów magazynowania wszystkich maszyn. Obecnie obliczenia nie przyjmuje oferty określonego w ustawieniach ocenę pod uwagę.
+- **Koszt zasobów obliczeniowych**: przy użyciu zalecanego rozmiaru maszyny Wirtualnej platformy Azure, usługę Azure migrate interfejs API rozliczeń można obliczyć koszt miesięczny dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty pod uwagę. Koszty są agregowane dla wszystkich maszyn, aby obliczyć całkowity miesięczny koszt obliczeń.
+- **Koszt usługi Storage**: Magazyn miesięczny koszt maszyny jest obliczana przez zsumowanie miesięczny koszt wszystkich dysków dołączonych do maszyny. Usługa Azure Migrate oblicza całkowity koszt miesięczny magazynu przez agregowanie koszty magazynowania wszystkich maszyn. Obecnie obliczenie nie przyjmuje oferty określone w ustawieniach ocenę pod uwagę.
 
-Koszty są wyświetlane w walucie określonego w ustawieniach oceny.
+Koszty są wyświetlane w walucie określonej w ustawieniach oceny.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie oceny dla lokalnych maszyn wirtualnych VMware](tutorial-assessment-vmware.md)
+[Utwórz ocenę dla maszyn wirtualnych VMware w środowisku lokalnym](tutorial-assessment-vmware.md)

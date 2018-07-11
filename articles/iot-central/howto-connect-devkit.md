@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 237a19b76268e1207c9de438a4f79d3dc8382476
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c2a7278f4ee6861a1e47610c06fdc6ffcec52247
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903813"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931086"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -82,7 +82,8 @@ Ustawienia przełącznika
 | Typ            | Nazwa wyświetlana | Nazwa pola | Typ danych |
 | --------------- | ------------ | ---------- | --------- |
 | Właściwości urządzenia | Zdechną liczb   | dieNumber  | numer    |
-| Tekst            | Lokalizacja     | location   | ND       |
+| Właściwości urządzenia | Lokalizacji urządzenia   | location  | location    |
+| Tekst            | Produkowane w     | manufacturedIn   | ND       |
 
 
 ### <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
@@ -152,19 +153,24 @@ Wyświetlanie danych telemetrycznych pomiarów i wartości zgłaszanych właści
 
 1. Użyj **Device Explorer** można przejść do **pomiarów** strona rzeczywistego urządzenia zestawu deweloperskiego został dodany:
 
-    ![Przejdź do rzeczywistego urządzenia](media/howto-connect-devkit/realdevice.png)
+    ![Przejdź do rzeczywistego urządzenia](media/howto-connect-devkit/realdevicenew.png)
 
 1. Na **pomiarów** strony, możesz zobaczyć dane telemetryczne pochodzące z urządzeń zestawu deweloperskiego:
 
-    ![Wyświetlanie telemetrii z rzeczywistego urządzenia](media/howto-connect-devkit/realtelemetry.png)
+    ![Wyświetlanie telemetrii z rzeczywistego urządzenia](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Na **właściwości** strony, można wyświetlić ostatni numer struktury zgłoszona przez urządzenie:
+1. Na **właściwości** strony, można wyświetlić ostatni numer struktury i lokalizacji urządzenia zgłoszona przez urządzenie:
 
-    ![Wyświetl właściwości urządzenia](media/howto-connect-devkit/deviceproperties.png)
+    ![Wyświetl właściwości urządzenia](media/howto-connect-devkit/devicepropertynew.png)
 
 1. Na **ustawienia** strony, możesz zaktualizować ustawienia na urządzeniu zestawu deweloperskiego:
 
-    ![Wyświetl ustawienia urządzenia](media/howto-connect-devkit/settings.png)
+    ![Wyświetl ustawienia urządzenia](media/howto-connect-devkit/devicesettingsnew.png)
+
+1. Na **pulpit nawigacyjny** stronie widać, lokalizacja, mapy
+
+    ![Wyświetl pulpit nawigacyjny z urządzenia](media/howto-connect-devkit/devicedashboardnew.png)
+
 
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 

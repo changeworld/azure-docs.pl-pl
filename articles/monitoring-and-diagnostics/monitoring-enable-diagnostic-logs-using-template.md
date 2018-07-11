@@ -8,15 +8,20 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a69cefc3c9363c0e8378a90c44d6a466780402b1
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a2aa289c89f98e6d20ddcdbd1217785fc163d1
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434491"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918418"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatyczne włączanie ustawień diagnostycznych podczas tworzenia zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych dla zasobu, podczas jego tworzenia. Umożliwia to automatyczne uruchamianie usługi Dzienniki diagnostyczne i metryki usługi Event hubs, ich archiwizowanie na koncie magazynu lub wysyłając je do usługi Log Analytics, po utworzeniu zasobu przesyłania strumieniowego.
+
+> [!WARNING]
+> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 Metody włączania dzienników diagnostycznych przy użyciu szablonu usługi Resource Manager, zależy od typu zasobu.
 

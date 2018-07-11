@@ -1,88 +1,88 @@
 ---
-title: Skonfigurować adresy IP, aby połączyć po przejściu w tryb failover Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Zawiera opis sposobu konfigurowania adresu IP, adresy połączyć się z maszynami wirtualnymi Azure po pracy awaryjnej z lokalnych z usługą Azure Site Recovery
+title: Konfigurowanie adresów IP, aby połączyć po włączeniu trybu failover na platformie Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania adresu IP adresowania połączyć się z maszynami wirtualnymi platformy Azure po włączeniu trybu failover ze środowiska lokalnego z usługą Azure Site Recovery
 services: site-recovery
 documentationcenter: ''
 author: mayanknayar
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 9d4bf43ea727bbf7df79532499007dbd23eea925
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 99b8287b79a7cf9802ab3b71ce4c90032706bc63
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071641"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919247"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Skonfiguruj adresowanie nawiązania połączenia po przejściu w tryb failover Azure IP
+# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Konfigurowanie adresów IP adresowania połączyć po włączeniu trybu failover na platformie Azure
 
-W tym artykule opisano wymagania sieciowe dotyczące połączenia z maszyn wirtualnych platformy Azure, po użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi dla replikacji i trybu failover na platformie Azure.
+W tym artykule opisano wymagania sieciowe dotyczące nawiązywania połączenia w przypadku maszyn wirtualnych platformy Azure po zakończeniu korzystania z [usługi Azure Site Recovery](site-recovery-overview.md) usługi podczas replikacji i trybu failover na platformie Azure.
 
-W tym artykule dowiesz się o:
+W tym artykule poznasz:
 
 > [!div class="checklist"]
-> * Metody połączenia, których można używać
+> * Metody połączenia, których można użyć
 > * Jak używać innego adresu IP dla replikowanych maszyn wirtualnych platformy Azure
-> * Jak zachować adresów IP dla maszyn wirtualnych Azure po trybu failover
+> * Jak zachować adresy IP maszyn wirtualnych platformy Azure po włączeniu trybu failover
 
-## <a name="connecting-to-replica-vms"></a>Łączenie z repliki maszyny wirtualne
+## <a name="connecting-to-replica-vms"></a>Nawiązywanie połączenia z maszyn wirtualnych repliki
 
-Podczas planowania strategii trybu failover i replikacji, na których, jedno z pytań klucza jest sposób nawiązywania połączenia z maszyną wirtualną Azure po pracy awaryjnej. Istnieje kilka opcji do wyboru podczas projektowania strategii sieci dla repliki maszyny wirtualne platformy Azure:
+Podczas planowania strategii trybu failover i replikacji, na których, jedną z kluczowych pytań jest sposób nawiązywania połączenia z maszyną wirtualną Azure po włączeniu trybu failover. Istnieje kilka opcji podczas projektowania strategii sieci, repliki maszyn wirtualnych platformy Azure:
 
-- **Użyj innego adresu IP**: można określić, aby użyć różnych zakresów adresów IP dla sieci maszyny Wirtualnej Azure zreplikowane. W tym scenariuszu maszyny Wirtualnej pobiera nowego adresu IP po w tryb failover i aktualizowania DNS jest wymagany.
-- **Zachowaj tego samego adresu IP**: może chcesz użyć tego samego zakresu adresów IP jak w witrynie głównej lokalnymi dla sieci platformy Azure po pracy awaryjnej. Utrzymywanie tego samego adresu IP adresów upraszcza odzyskiwanie dzięki zmniejszeniu problemów dotyczących sieci po pracy awaryjnej. Jednak jeśli przeprowadzasz replikację do platformy Azure, należy zaktualizować tras z nowej lokalizacji adresy IP po pracy awaryjnej.
+- **Użyj innego adresu IP**: można określić, aby używać różnych zakresów adresów IP dla replikowanego sieci maszyny Wirtualnej platformy Azure. W tym scenariuszu maszyna wirtualna pobiera nowego adresu IP po włączeniu trybu failover i aktualizacja DNS jest wymagana.
+- **Zachować ten sam adres IP**: możesz chcieć użyć tego samego zakresu adresów IP co w lokacji głównej w środowisku lokalnym, dla sieci platformy Azure po włączeniu trybu failover. Utrzymywanie w tym samym adresem IP adresów upraszcza odzyskiwanie przez zmniejszenie problemów dotyczących sieci po włączeniu trybu failover. Jednak jeśli przeprowadzasz replikację do platformy Azure, musisz zaktualizować tras do nowej lokalizacji, adresy IP, po włączeniu trybu failover.
 
-## <a name="retaining-ip-addresses"></a>Zachowanie adresów IP
+## <a name="retaining-ip-addresses"></a>Zachowywanie adresów IP
 
-Usługa Site Recovery zapewnia adresy możliwości, aby zachować stałego adresu IP podczas przechodzenie w tryb failover na platformie Azure, z trybu failover podsieci.
+Usługa Site Recovery zapewnia możliwość zachować stały IP adresów podczas przechodzenia w tryb failover na platformę Azure za pomocą podsieci przejścia w tryb failover.
 
-- Tryb failover podsieci określonej podsieci jest obecny w lokacji 1 lub 2 lokacji, ale nigdy nie w obu lokacjach jednocześnie.
-- Aby zachować przestrzeń adresów IP w przypadku trybu failover, można programowo Rozmieść infrastruktury router przenieść podsieci z jednej lokacji.
-- Podczas pracy w trybie failover podsieci są przenoszone wraz z skojarzone chronionych maszyn wirtualnych. Główną wadą jest, że w przypadku awarii, należy przenieść całej podsieci.
+- Z trybem failover podsieć określonej podsieci jest obecny w lokacji 1 lub 2 lokacji, ale nigdy nie w obu lokacjach jednocześnie.
+- W celu utrzymania przestrzeń adresów IP w przypadku pracy awaryjnej, można programowo zorganizować infrastruktury routera przenieść podsieci z jednej lokacji.
+- Podczas pracy w trybie failover podsieci przejściem skojarzone chronionych maszyn wirtualnych. Główną wadą jest to, że w przypadku awarii, należy przenieść całej podsieci.
 
 
 ### <a name="failover-example"></a>Przykład trybu failover
 
-Oto przykład dla trybu failover do platformy Azure przy użyciu fikcyjnej firmie Woodgrove Bank.
+Spójrzmy na przykład dla trybu failover na platformie Azure przy użyciu fikcyjnej firmie Woodgrove Bank.
 
-- Banku Woodgrove obsługuje aplikacje biznesowe w lokacji lokalnej. One hostowanie swoich aplikacji mobilnych na platformie Azure.
-- Brak połączenia lokacja lokacja sieci VPN między lokalnymi krawędzi sieci i sieci wirtualnej platformy Azure. Z powodu połączenie sieci VPN sieci wirtualnej platformy Azure jest wyświetlany jako rozszerzenie sieci lokalnej.
-- Woodgrove chce, aby replikować obciążenia lokalnego do platformy Azure z usługą Site Recovery.
- - Woodgrove ma aplikacje, które są zależne od stałe adresy IP, dlatego należy zachować adresów IP dla aplikacji, po przejściu w tryb failover Azure.
- - Zasoby, które działają na platformie Azure używają 172.16.1.0/24 zakres adresów IP, 172.16.2.0/24.
+- Banku Woodgrove Bank hostuje swoje aplikacje biznesowe w lokacji lokalnej. Mogą hostować swoje aplikacje mobilne na platformie Azure.
+- Istnieje łączność lokacja lokacja sieci VPN między siecią krawędzi ich w środowisku lokalnym i sieci wirtualnej platformy Azure. Ze względu na połączenie sieci VPN sieci wirtualnej na platformie Azure zostanie wyświetlony jako rozszerzenia sieci lokalnej.
+- Woodgrove chce, aby replikowania obciążeń lokalnych do platformy Azure z usługą Site Recovery.
+ - Woodgrove ma aplikacje, które zależą od ustalonych adresy IP, w związku z czym muszą zachować adresy IP dla aplikacji, po włączeniu trybu failover na platformie Azure.
+ - Zasoby działające na platformie Azure Użyj 172.16.1.0/24 zakres adresów IP, 172.16.2.0/24.
 
-![Przed podsieci trybu failover](./media/site-recovery-network-design/network-design7.png)
+![Przed włączeniem trybu failover podsieć](./media/site-recovery-network-design/network-design7.png)
 
-**Infrastruktura przed trybu failover**
-
-
-Dla Woodgrove można było do replikowania jego maszyn wirtualnych na platformie Azure przy zachowaniu adresy IP, tutaj firmy, co firma musi wykonać:
+**Infrastruktura przed włączeniem trybu failover**
 
 
-1. Tworzenie sieci wirtualnej platformy Azure, w którym zostanie utworzona maszynach wirtualnych platformy Azure, po pracy w trybie failover maszyny lokalnymi. Rozszerzenie sieci lokalnej, należy tak, aby aplikacje działają w trybie Failover bezproblemowo.
-2. Przed trybu failover w usłudze Site Recovery ich przypisać ten sam adres IP we właściwościach maszyny. Po pracy w trybie failover Usługa Site Recovery przypisuje ten adres maszyny Wirtualnej platformy Azure.
-3. Po uruchomieniu trybu failover i maszyn wirtualnych platformy Azure są tworzone przy użyciu tego samego adresu IP, łączą się z sieci za pomocą funkcji [sieci wirtualnej do sieci wirtualnej połączenia](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ta akcja umożliwia pisanie skryptów.
-4. Należy zmodyfikować trasy, aby odzwierciedlał tego 192.168.1.0/24 teraz zostały przeniesione do platformy Azure.
+Dla Woodgrove można było do jej maszyny wirtualne można replikować na platformę Azure, zachowując adresy IP, tutaj tego, co firma musi zrobić:
 
 
-**Infrastruktura po trybu failover**
+1. Tworzenie sieci wirtualnej platformy Azure, w której maszyny wirtualne platformy Azure zostanie utworzony po przełączeniu w tryb failover maszyn lokalnych. Rozszerzenie sieci lokalnej, należy tak, aby aplikacje w trybie Failover bezproblemowo.
+2. Przed włączeniem trybu failover w usłudze Site Recovery mogą przypisać ten sam adres IP we właściwościach maszyny. Po przejściu w tryb failover Usługa Site Recovery przypisuje ten adres do maszyny Wirtualnej platformy Azure.
+3. Po uruchomieniu trybu failover i maszyn wirtualnych platformy Azure są tworzone przy użyciu tego samego adresu IP, łączą się z sieci za pomocą funkcji [połączenie między sieciami wirtualnymi](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ta akcja umożliwia pisanie skryptów.
+4. Muszą oni tras, tak że 192.168.1.0/24 przeniósł się teraz na platformie Azure, aby zmodyfikować.
 
-![Po podsieci w tryb failover](./media/site-recovery-network-design/network-design9.png)
 
-#### <a name="site-to-site-connection"></a>Połączenie lokacja lokacja
+**Infrastruktury po włączeniu trybu failover**
 
-Oprócz połączenia do wirtualnymi, po przejściu w tryb failover Woodgrove można skonfigurować połączenie sieci VPN typu lokacja lokacja:
-- Podczas konfigurowania połączenia lokacja lokacja w sieci platformy Azure, który może tylko kierować ruch do lokalizacji lokalnego (lokalnego ntwork) Jeśli zakres adresów IP różni się od zakresu adresów IP z lokalnymi. Jest to spowodowane Azure nie obsługuje rozciągnięty podsieci. Tak Jeśli masz podsieci 192.168.1.0/24 lokalnymi, nie można dodać 192.168.1.0/24 sieci lokalnej w sieci platformy Azure. Oczekiwany jest Azure nie może ustalić, czy brak aktywnych maszyn wirtualnych w podsieci i że podsieć jest tworzony tylko odzyskiwania po awarii.
-- Aby można było poprawnie kierować ruchem sieciowym spoza sieci platformy Azure, nie może powodować konflikt podsieci w sieci i sieci lokalnej.
+![Po włączeniu trybu failover podsieć](./media/site-recovery-network-design/network-design9.png)
+
+#### <a name="site-to-site-connection"></a>Połączenia lokacja lokacja
+
+Oprócz połączenia sieć wirtualna-sieć wirtualna, po przejściu w tryb failover Woodgrove można skonfigurować połączenie sieci VPN typu lokacja lokacja:
+- Podczas konfigurowania połączenia lokacja lokacja w sieci platformy Azure, który może tylko kierować ruch do lokalizacji lokalnej (lokalnego sieć) Jeśli zakres adresów IP różni się od zakresu adresów IP w środowisku lokalnym. Jest to spowodowane platforma Azure nie obsługuje rozciągnięta podsieci. Dlatego jeśli masz podsieci 192.168.1.0/24 w środowisku lokalnym, nie można dodać 192.168.1.0/24 sieci lokalnej sieci platformy Azure. Jest to oczekiwane, ponieważ platformy Azure nie wie, że nie istnieją żadne aktywne maszyny wirtualne w podsieci i że podsieć jest tworzona dla wyłącznie podczas odzyskiwania po awarii.
+- Aby można było poprawnie kierować ruchem sieciowym poza siecią platformy Azure, nie może powodować konflikt podsieci w sieci i sieci lokalnej.
 
 
 
 
 ## <a name="assigning-new-ip-addresses"></a>Przypisanie nowych adresów IP
 
-To [wpis w blogu](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) wyjaśniono, jak skonfigurować infrastrukturę sieci Azure, gdy nie trzeba zachować adresy IP po pracy awaryjnej. Go rozpoczyna się od opisu aplikacji wygląda jak skonfigurować sieci lokalnej na platformie Azure i zawiera informacje o uruchamianiu przechodzenia w tryb failover.
+To [wpis w blogu](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) opisano sposób konfigurowania infrastruktury sieci platformy Azure, jeśli nie potrzebujesz zachować adresy IP po włączeniu trybu failover. Jego rozpoczyna się od opisu aplikacji wygląda jak skonfigurować sieć lokalną na platformie Azure i zawiera informacje na temat uruchamiania trybu failover.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Tryb failover](site-recovery-failover.md)
+[Uruchamianie trybu failover](site-recovery-failover.md)

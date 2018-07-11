@@ -1,10 +1,10 @@
 ---
-title: Zasady zachowania poufności użytkownika a usługą Azure AD bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft
-description: Ten artykuł dotyczy bezproblemowe logowania jednokrotnego usługi Azure Active Directory (Azure AD) i GDPR zgodności.
+title: Prywatność użytkownika i usługa Azure AD bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft
+description: Ten artykuł dotyczy bezproblemowego logowania jednokrotnego usługi Azure Active Directory (Azure AD) i RODO zgodności.
 services: active-directory
-keywords: Co to jest usługa Azure AD Connect, GDPR, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+keywords: Co to jest program Azure AD Connect, RODO, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
-author: swkrish
+author: billmath
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 50c97ce7a492c934e15634622d86bf587ffb3fb7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34592412"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915728"
 ---
-# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Zachowaniem poufności użytkownika a usługą Azure AD bezproblemowe logowanie jednokrotne
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Prywatność użytkownika i usługi Azure AD bezproblemowego logowania jednokrotnego
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Przegląd
 
 
-Azure AD SSO bezproblemowe tworzy następującego typu dziennika, który może zawierać dane osobowe: 
+Usługa Azure bezproblemowe logowanie Jednokrotne AD tworzy następujący typ dziennika może zawierać dane osobowe: 
 
 - Pliki dziennika śledzenia usługi Azure AD Connect.
 
-Poprawa ochrony prywatności użytkowników do łatwego logowania jednokrotnego na dwa sposoby:
+Poprawa ochrony prywatności użytkowników bezproblemowego logowania jednokrotnego na dwa sposoby:
 
-1.  Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z instalacji.
-2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.
+1.  Na żądanie wyodrębnianie danych dla osoby i Usuń dane z tej osoby z instalacji.
+2.  Upewnij się, że żadne dane nie są przechowywane dłużej niż 48 godzin.
 
-Druga opcja zdecydowanie zaleca się, ponieważ możliwe jest łatwiejsze do wdrożenia i konserwacji. Zobacz, postępując zgodnie z instrukcjami dla każdego typu dziennika:
+Druga opcja zdecydowanie zaleca się jak jest łatwiejsze do wdrożenia i konserwacji. Zobacz, postępując zgodnie z instrukcjami dla każdego typu dziennika:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Usuń pliki dziennika śledzenia Azure AD Connect
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Usuń pliki dziennika śledzenia program Azure AD Connect
 
-Sprawdź zawartość **%ProgramData%\AADConnect** folder i Usuń śledzenia dziennik zawartość (**śledzenia -\*log** pliki) tego folderu w ciągu 48 godzin Instalowanie lub uaktualnianie Azure AD Connect lub modyfikowanie konfiguracji bezproblemowe logowanie Jednokrotne, jak ta akcja może utworzyć danych objętych GDPR.
+Sprawdź zawartość **%ProgramData%\AADConnect** folder i Usuń śledzenia dziennika zawartość (**śledzenia -\*.log** plików) z tego folderu, w ciągu 48 godzin od instalowanie lub uaktualnianie usługi Azure AD Connect lub modyfikując konfigurację bezproblemowe logowanie Jednokrotne, ta akcja może utworzyć danych objętych RODO.
 
 >[!IMPORTANT]
->Nie należy usuwać **PersistedState.xml** pliku w tym folderze, ponieważ ten plik jest używany do zarządzania stanem poprzedniej instalacji programu Azure AD Connect i jest używany po zakończeniu instalacji uaktualnienia. Ten plik nigdy nie będzie zawierać wszystkie dane dotyczące osoby i nigdy nie powinien zostać usunięty.
+>Nie usuwaj **PersistedState.xml** pliku w tym folderze, ponieważ ten plik jest używany do zarządzania stanem poprzedniej instalacji programu Azure AD Connect i jest używany po zakończeniu instalacji uaktualnienia. Ten plik nigdy nie będzie zawierać żadnych danych dotyczących osoby i nigdy nie należy go usunąć.
 
-Możesz przejrzeć i usunąć te pliki dziennika śledzenia przy użyciu Eksploratora Windows, lub można wykonać niezbędne czynności następujący skrypt programu PowerShell:
+Możesz przejrzeć i usuń te pliki dziennika śledzenia przy użyciu Eksploratora Windows lub poniższy skrypt programu PowerShell można użyć do wykonania niezbędnych akcji:
 
 ```
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -59,13 +59,13 @@ Foreach ($file in $Files) {
 
 Zapisz skrypt w pliku z ". PS1 "rozszerzenia. Uruchom ten skrypt, zgodnie z potrzebami.
 
-Aby dowiedzieć się więcej o związane z usługi Azure AD Connect GDPR wymagania, zobacz [w tym artykule](active-directory-aadconnect-gdpr.md).
+Aby dowiedzieć się więcej o powiązanych wymagania dotyczące usługi Azure AD Connect RODO, zobacz [w tym artykule](active-directory-aadconnect-gdpr.md).
 
 ### <a name="note-about-domain-controller-logs"></a>Należy pamiętać o dziennikach kontrolera domeny
 
-Jeśli włączono rejestrowanie inspekcji, ten produkt może generować dzienniki zabezpieczeń dla kontrolerów domeny. Aby dowiedzieć się więcej o konfigurowaniu zasad inspekcji, przeczytaj to [artykułu](https://technet.microsoft.com/library/dd277403.aspx).
+Jeśli rejestrowanie inspekcji jest włączona, ten produkt może generować dzienniki zabezpieczeń dla kontrolerów domeny. Aby dowiedzieć się więcej na temat konfigurowania zasad inspekcji, przeczytaj ten [artykułu](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przejrzyj zasady Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
+* [Przegląd zasad Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
 - [**Rozwiązywanie problemów z** ](active-directory-aadconnect-troubleshoot-sso.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłoszenia żądania nowych funkcji.
+- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) — w przypadku zgłaszania sugestie dotyczące nowych funkcji.

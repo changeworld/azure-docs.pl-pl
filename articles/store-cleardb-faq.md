@@ -11,12 +11,12 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 5e6acf59410099ba36bfa6fa89a576d83b61cf00
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ff36a67cd09dd1e5cb5635be17d1dd76fc824d1a
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341508"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917078"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Często zadawane pytania dotyczące baz danych ClearDB MySQL w usłudze Azure App Service
 Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące używania i kupowanie baz danych ClearDB MySQL dla aplikacji sieci Web platformy Azure.
@@ -44,7 +44,6 @@ To zależy od typu Twojej subskrypcji, którego używasz. Poniżej przedstawiono
 * [Bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/): obejmuje środki na korzystanie z usług użycia z usługą Microsoft Azure, ale nie zezwala na zakup zasoby innych firm. Aby kupić usługi innych firm lub płatną bazy danych MySQL musisz używać karty kredytowej, włączone subskrypcji. W przypadku aplikacji sieci Web można utworzyć bazę danych ClearDB MySQL bezpłatne.
 * [Subskrypcja MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) i **MSDN: testowanie płatność zgodnie z rzeczywistym użyciem**: Podobnie jak w bezpłatnej wersji próbnej, subskrypcję MSDN wymaga posiadania karty kredytowej, aby kupić płatną rozwiązania MySQL firmy ClearDB.
 * [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): Klienci z umową EA, są rozliczane względem ich umowy EA każdego kwartału dla wszystkich zakupów (innej firmy) portalu Azure Marketplace w oddzielnych, skonsolidowanego faktury. Opłaty są naliczane poza zobowiązań pieniężnych dla zakupów w portalu marketplace. Należy pamiętać, że w tej chwili Azure Store nie jest dostępna dla klientów zarejestrowanych w Azerbejdżan, Chorwacja, Norwegia i Portoryko. 
-* [Program DreamSpark](https://www.dreamspark.com/Product/Product.aspx?productid=99): można utworzyć tylko ClearDB bezpłatnej bazy danych dla aplikacji sieci Web. Nie ma żadnego limitu liczby baz danych bezpłatna baza danych ClearDB MySQL, które można utworzyć. Należy zauważyć, że bezpłatnych baz danych nie może być używane dla aplikacji sieci web w środowisku produkcyjnym, ponieważ ta usługa jest przeznaczona tylko dla wersji próbnej.
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Dlaczego naliczono opłaty 3.50 $ dla aplikacji sieci Web i baza danych MySQL w witrynie Azure Marketplace?
 Domyślna opcja bazy danych jest Titan, czyli $3.50. Firma Microsoft nie pokazuj kosztów, podczas tworzenia bazy danych, a przez pomyłkę zakupie bazy danych, które nie było zamierzone. Próbujemy znaleźć sposób, aby ulepszyć środowisko pracy, ale w międzyczasie możesz sprawdzić wszystkie swoje wybranej warstwy cenowe dla aplikacji sieci web i bazy danych przed kliknięciem przycisku **Utwórz** i uruchamianie wdrożenia zasobów.

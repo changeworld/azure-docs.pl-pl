@@ -1,7 +1,7 @@
 ---
-title: Usługa aplikacji Azure w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Usługa aplikacji Azure w systemie Linux — często zadawane pytania.
-keywords: usługi aplikacji Azure, aplikacji sieci web, — często zadawane pytania, linux, systemów operacyjnych, aplikacji sieci web dla kontenerów, wielu kontenera, multicontainer
+title: Usługa Azure App Service w systemie Linux — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Usługa Azure App Service w systemie Linux — często zadawane pytania.
+keywords: Usługa Azure app service, aplikacji sieci web, — często zadawane pytania, linux, oss, usługi web app for containers, obsługującej wiele kontenerów, multicontainer
 services: app-service
 documentationCenter: ''
 author: yili
@@ -15,80 +15,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: a35f3d428674c3398497cd43465e0bd501f5c3fc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131496"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916860"
 ---
-# <a name="azure-app-service-on-linux-faq"></a>Usługa aplikacji Azure w systemie Linux — często zadawane pytania
+# <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
-Wraz z wydaniem usługi App Service w systemie Linux pracujemy nad Dodawanie funkcji i wprowadzać ulepszenia platformy. Ten artykuł zawiera odpowiedzi na pytania, że naszym klientom ma zostały prośbą ostatnio.
+Wraz z wydaniem usługi App Service w systemie Linux pracujemy nad Dodawanie funkcji i wprowadzamy ulepszenia do naszej platformy. Ten artykuł zawiera odpowiedzi na pytania, że nasze prosili klienci nam ostatnio.
 
-Jeśli masz pytania, dodać komentarz dotyczący tego artykułu.
+Jeśli masz pytania, komentarze, w tym artykule.
 
-## <a name="built-in-images"></a>Wbudowane obrazów
+## <a name="built-in-images"></a>Wbudowane obrazy
 
-**Chcę rozwidlania wbudowanych kontenerów Docker, które zapewnia platformę. Gdzie można znaleźć te pliki?**
+**Chcę przeprowadzić rozwidlenie wbudowanych kontenerów platformy Docker, udostępnianych przez platformę. Gdzie można znaleźć te pliki?**
 
-Wszystkie pliki Docker można znaleźć w [GitHub](https://github.com/azure-app-service). Możesz znaleźć wszystkie kontenery Docker na [Centrum Docker](https://hub.docker.com/u/appsvc/).
+Możesz znaleźć wszystkie pliki Docker na [GitHub](https://github.com/azure-app-service). Możesz znaleźć wszystkie kontenery platformy Docker na [usługi Docker Hub](https://hub.docker.com/u/appsvc/).
 
-**Co to są oczekiwanych wartości dla sekcji pliku startowego podczas konfigurowania środowiska uruchomieniowego stosu?**
+**Jakie są oczekiwane wartości dla sekcji plik startowy podczas konfigurowania stosu środowiska uruchomieniowego?**
 
-Dla środowiska Node.js Określ plik konfiguracyjny PM2 lub plik skryptu. Dla platformy .NET Core, określ nazwę biblioteki DLL skompilowany jako `dotnet <myapp>.dll`. Dla środowiska Ruby można określić skrypt dopisków fonetycznych, który chcesz zainicjować aplikacji za pomocą.
+Dla środowiska Node.js należy określić pliku konfiguracji PM2 lub pliku skryptu. Dla platformy .NET Core, określ nazwę skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`. Dla języka Ruby można określić skrypt języka Ruby, który chcesz zainicjować swoją aplikację przy użyciu.
 
 ## <a name="management"></a>Zarządzanie
 
-**Co się stanie po naciśnięciu przycisku ponownego uruchomienia w portalu Azure?**
+**Co się stanie po naciśnięciu przycisku ponownego uruchomienia w witrynie Azure portal?**
 
-Ta akcja jest taka sama jak Docker ponownego uruchomienia komputera.
+Ta akcja jest taka sama jak ponowne uruchomienie platformy Docker.
 
-**Do nawiązania połączenia aplikacji kontenera maszyny wirtualnej (VM) można używać protokołu Secure Shell (SSH)?**
+**Czy można używać Secure Shell (SSH), aby nawiązać połączenie maszyny wirtualnej kontenera aplikacji (VM)?**
 
-Tak, możesz to zrobić za pośrednictwem witryny zarządzania (SCM) kontroli źródła.
+Tak, możesz to zrobić za pośrednictwem witryny management (SCM) kontroli źródła.
 
 > [!NOTE]
 > Możesz również nawiązać połączenie z kontenerem aplikacji bezpośrednio z lokalnego komputera deweloperskiego przy użyciu protokołu SSH, SFTP lub programu Visual Studio Code (na potrzeby debugowania na żywo aplikacji Node.js). Aby uzyskać więcej informacji, zobacz [Zdalne debugowanie i protokół SSH w usłudze App Service w systemie Linux](https://aka.ms/linux-debug).
 >
 
-**Jak utworzyć planu usługi aplikacji Linux za pomocą zestawu SDK lub szablonu usługi Azure Resource Manager?**
+**Jak utworzyć plan usługi App Service w systemie Linux przy użyciu zestawu SDK lub szablonu usługi Azure Resource Manager?**
 
-Należy ustawić **zastrzeżone** pole app service w celu *true*.
+Należy ustawić **zarezerwowanych** pole app service w celu *true*.
 
 ## <a name="continuous-integration-and-deployment"></a>Ciągła integracja i ciągłe wdrażanie
 
-**Moja aplikacja sieci web nadal używa stary obraz kontenera Docker po po aktualizacji obraz Centrum Docker. Są obsługiwane ciągłej integracji i wdrażanie niestandardowych kontenery?**
+**Moja aplikacja sieci web nadal używa stary obraz kontenera Docker po po aktualizacji obraz w usłudze Docker Hub. Obsługują ciągłą integrację i wdrażanie kontenerów niestandardowych?**
 
-Tak, aby skonfigurować ciągłej integracji/wdrożenia rejestru kontenera platformy Azure lub DockerHub, następujące [ciągłego wdrażania aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md). Dla prywatnych rejestrów można odświeżyć kontenera przez zatrzymanie i uruchomienie następnie aplikacji sieci web. Lub możesz zmienić lub Dodaj ustawienie aplikacji fikcyjny, aby wymusić odświeżenie z kontenera.
+Tak, aby skonfigurować ciągłej integracji/ciągłego wdrażania dla usługi Azure Container Registry lub DockerHub, następujące [ciągłe wdrażanie za pomocą usługi Web App for Containers](./app-service-linux-ci-cd.md). Dla prywatnych rejestrów możesz odświeżyć kontenera przez zatrzymanie i uruchomienie następnie aplikację sieci web. Lub można zmienić lub dodać ustawienie aplikacji z fikcyjnymi, aby wymusić odświeżenie kontenera.
 
-**Czy obsługują środowisk przemieszczania?**
+**Tymczasowym są obsługiwane?**
 
 Tak.
 
-**Można użyć *narzędzia web deploy* wdrażania Moja aplikacja sieci web?**
+**Można użyć *WebDeploy/MSDeploy* Aby wdrożyć aplikację sieci web?**
 
-Tak, należy określić aplikację nosi nazwę `WEBSITE_WEBDEPLOY_USE_SCM` do *false*.
+Tak, musisz ustawić aplikacji nosi nazwę `WEBSITE_WEBDEPLOY_USE_SCM` do *false*.
 
-**Wdrażanie Git Moja aplikacja zakończy się niepowodzeniem podczas korzystania z aplikacji sieci web systemu Linux. Jak można obejść problem?**
+**Wdrożenie usługi Git w mojej aplikacji zakończy się niepowodzeniem, podczas korzystania z aplikacji sieci web systemu Linux. Jak można obejść ten problem?**
 
-W przypadku niepowodzenia wdrożenia usługi Git do aplikacji sieci web systemu Linux można wybrać jedną z poniższych opcji, aby wdrożyć kod aplikacji:
+W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w systemie Linux, należy wybrać jedną z następujących opcji wdrażania kodu aplikacji:
 
-- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): w repozytorium Git programu Team Services lub repozytorium GitHub, aby użyć ciągłego dostarczania Azure można przechowywać kodu źródłowego aplikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ciągłego dostarczania dla aplikacji sieci web Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): można przechowywać kodu źródłowego aplikacji w repozytorium Git usługi Team Services lub repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH do aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć kod. Uruchom poniższy kod:
+- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH w aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć swój kod. Uruchom następujący kod:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Jeśli występuje błąd `curl` polecenie nie zostało znalezione, upewnij się, zainstaluj narzędzie curl przy użyciu `apt-get install curl` przed uruchomieniem poprzedniej `curl` polecenia.
+   Jeśli wystąpi błąd, który `curl` polecenia nie zostanie znaleziony, upewnij się, zainstaluj narzędzie curl, używając `apt-get install curl` przed uruchomieniem poprzedniego `curl` polecenia.
 
 ## <a name="language-support"></a>Obsługa języków
 
-**Chcę użyć gniazda sieci web w mojej aplikacji Node.js, wszystkie ustawienia specjalne lub konfiguracje można ustawić?**
+**Chcę użyć gniazda sieci web w mojej aplikacji Node.js, wszystkie ustawienia specjalne lub konfiguracje, aby ustawić?**
 
-Tak, wyłącz `perMessageDeflate` w kodzie Node.js po stronie serwera. Na przykład jeśli używasz użyciu biblioteki socket.io, należy użyć poniższego kodu:
+Tak, wyłącz `perMessageDeflate` w kodzie po stronie serwera Node.js. Na przykład jeśli używasz biblioteki socket.io należy użyć następującego kodu:
 
 ```nodejs
 var io = require('socket.io')(server,{
@@ -96,102 +96,102 @@ var io = require('socket.io')(server,{
 });
 ```
 
-**Czy nie skompilowanego aplikacji .NET Core są obsługiwane?**
+**Nie skompilowanego aplikacje platformy .NET Core są obsługiwane?**
 
 Tak.
 
-**Są obsługiwane Composer Menedżer zależności dla aplikacji PHP?**
+**Composer (kompozytor) są obsługiwane jako Menedżer zależności dla aplikacji PHP?**
 
-Tak, podczas wdrażania narzędzia Git, Kudu powinna wykryć wdrażana aplikacja PHP (dzięki użyciu obecność pliku composer.lock), czy aparat Kudu następnie wyzwoli instalacji composer.
+Tak, podczas wdrażania usługi Git, Kudu powinna wykryć czy wdrażasz aplikację PHP (dzięki obecności pliku composer.lock) i Kudu następnie spowoduje wyzwolenie instalacji Composer (kompozytor).
 
-## <a name="custom-containers"></a>Kontenery niestandardowych
+## <a name="custom-containers"></a>Kontenerów niestandardowych
 
-**Korzystam z własnych niestandardowych kontenera. Chcę platformy w celu zainstalowania udziału SMB do `/home/` katalogu.**
+**Korzystam z własnego kontenera niestandardowego. Chcę, aby platformy w celu instalowania udziału SMB do `/home/` katalogu.**
 
-Możesz to zrobić przez ustawienie `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienia aplikacji na *true*. Należy pamiętać, że spowoduje to kontener zostanie ponownie uruchomiony po magazynu platformy przechodzi przez zmianę.
+Możesz to zrobić, ustawiając `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienia aplikacji *true*. Należy pamiętać, że to spowoduje ponowne uruchomienia kontenera podczas magazynu platformy przechodzi przez zmianę.
 
 >[!NOTE]
->Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienie jest nieokreślona lub wartość *false*, `/home/` katalogu nie będą udostępniane między wystąpieniami skali i pliki, które są zapisywane nie zostaną utrwalone uruchomieniach.
+>Jeśli `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ustawienie jest nieokreślona lub *false*, `/home/` katalogu nie będą udostępniane w wystąpieniach skalowania i pliki, które są zapisywane istnieje nie zostaną utrwalone przez ponowne uruchomienie.
 
-**Moje niestandardowe kontenera zajmuje dużo czasu do uruchomienia, i platformy ponownego uruchomienia kontenera, przed zakończeniem uruchamiania.**
+**Kontener niestandardowy zajmuje dużo czasu do uruchomienia, a platforma powoduje ponowne uruchomienie kontenera przed zakończeniem uruchamiania.**
 
-Możesz skonfigurować czas oczekiwania platformę przed jej ponownym uruchomieniu programu kontenera. Aby to zrobić, ustaw `WEBSITES_CONTAINER_START_TIME_LIMIT` ma wartość ustawienia aplikacji. Wartość domyślna to 230 sekund, a wartość maksymalna to 1800 sekund.
+Możesz skonfigurować ilość czasu oczekiwania platformę przed ponownym uruchomieniu kontenera. Aby to zrobić, należy ustawić `WEBSITES_CONTAINER_START_TIME_LIMIT` wartość, która ma ustawienie aplikacji. Wartość domyślna to 230 sekund, a wartość maksymalna to 1800 sekund.
 
-**Co to jest format adresu URL serwera prywatnej rejestru?**
+**Co to jest format adresu URL prywatnego rejestru serwera?**
 
-Podaj adres URL rejestru pełnego tym `http://` lub `https://`.
+Podaj adres URL rejestru pełną, w tym `http://` lub `https://`.
 
-**Co to jest format nazwy obrazu w opcji prywatnych rejestru?**
+**Co to jest format nazwy obrazu w opcji rejestru prywatnego?**
 
-Dodaj nazwę pełnego obrazu, łącznie z rejestru prywatny adres URL (na przykład myacr.azurecr.io/dotnet:latest). Nazwy, które użyć portu niestandardowego obrazu [nie można wprowadzić za pośrednictwem portalu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Aby ustawić `docker-custom-image-name`, użyj [ `az` narzędzia wiersza polecenia](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+Dodaj nazwę pełnego obrazu, łącznie z adresem URL prywatnego rejestru (na przykład myacr.azurecr.io/dotnet:latest). Nazwy, które użyć portu niestandardowego obrazu [nie może zostać wprowadzone za pośrednictwem portalu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Aby ustawić `docker-custom-image-name`, użyj [ `az` narzędzia wiersza polecenia](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
 
-**Moje obrazu niestandardowego kontenera mogą uwidaczniać więcej niż jeden port?**
+**Czy mogę udostępnić więcej niż jeden port w mojej niestandardowego obrazu kontenera?**
 
-Firma Microsoft nie obsługują aktualnie udostępnianie więcej niż jeden port.
+Obecnie obsługujemy udostępnianie więcej niż jeden port.
 
-**Czy można przełączyć własny magazyn?**
+**Czy mogę przenieść mój własny magazyn**
 
-Firma Microsoft nie obsługują aktualnie dostarczają własne magazynu.
+Obecnie obsługujemy przeniesienie własny magazyn.
 
-**Dlaczego nie można przeglądać Moje niestandardowe kontenera procesy systemu lub z systemem plików z witryny SCM?**
+**Dlaczego nie można przeglądać Moje niestandardowego kontenera pliku systemu lub uruchamianie procesów z witryny SCM?**
 
-Witryna SCM jest uruchamiana w oddzielnych kontenera. Nie można sprawdzić procesy systemu lub z systemem plików kontenera aplikacji.
+Witryny SCM działa w oddzielnym kontenera. Nie można sprawdzić plik systemu lub uruchamianie procesów kontenera aplikacji.
 
-**Moje niestandardowe kontenera nasłuchuje portu innego niż port 80. Jak można skonfigurować mojej aplikacji można przekierować żądania do tego portu**
+**Niestandardowe kontener nasłuchuje port inny niż 80. Jak skonfigurować aplikację, aby kierować żądania do tego portu**
 
-Mamy automatyczne wykrywanie portu. Można również określić, że aplikacja nosi nazwę *WEBSITES_PORT* i nadaj mu wartość numeru portu oczekiwanego. Wcześniej, platforma używane *portu* ustawienia aplikacji. Firma Microsoft planuje można zastąpić to ustawienie aplikacji i używania *WEBSITES_PORT* wyłącznie.
+Mamy automatyczne wykrywanie portu. Można również określić, że aplikacja nosi nazwę *WEBSITES_PORT* i nadaj mu wartość numeru portu oczekiwane. Wcześniej platformie, z której *portu* ustawienia aplikacji. Planujemy zastąpić to ustawienie aplikacji oraz używanie *WEBSITES_PORT* wyłącznie.
 
-**Należy do implementacji protokołu HTTPS w mojej niestandardowych kontenera?**
+**Należy zaimplementować protokół HTTPS w mojej niestandardowego kontenera?**
 
-Nie, platforma obsługuje zakończenia połączenia HTTPS na końcach front udostępnionego.
+Nie, platforma obsługuje zakończenia połączenia HTTPS w udostępnionym frontonów.
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Kontener wielu z Docker Compose i Kubernetes
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Tworzenia wielu kontenerów przy użyciu rozwiązania Docker i Kubernetes
 
-**Jak skonfigurować rejestr kontenera Azure (ACR) do użycia z kontenera usługi?**
+**Jak skonfigurować usługi Azure Container Registry (ACR) do użycia z wieloma kontenerami?**
 
-Aby można było używać ACR z wieloma kontenera **wszystkie obrazy kontenera** muszą być hostowane na tym samym serwerze rejestru ACR. Gdy znajdują się na tym samym serwerze rejestru, należy utworzyć ustawienia aplikacji, a następnie zaktualizuj plik konfiguracji rozwiązania Docker Compose lub Kubernetes, aby uwzględnić nazwę obrazu ACR.
+Aby można było używać usługi ACR z wieloma kontenerami **wszystkie obrazy kontenerów** musi być hostowane na tym samym serwerze rejestru ACR. Gdy są one na tym samym serwerze rejestru, należy utworzyć ustawienia aplikacji, a następnie zaktualizuj plik konfiguracji narzędzia Docker Compose lub Kubernetes, aby zawierał on nazwę obrazu usługi ACR.
 
 Utwórz następujące ustawienia aplikacji:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
 - DOCKER_REGISTRY_SERVER_URL (pełny adres URL, np: https://<server-name>.azurecr.io)
-- DOCKER_REGISTRY_SERVER_PASSWORD (Włącz dostęp administratora w ustawieniach ACR)
+- DOCKER_REGISTRY_SERVER_PASSWORD (Włączanie dostępu administratora w ustawieniach rejestru Azure container Registry)
 
-W pliku konfiguracji odwołania obrazu ACR jak w następującym przykładzie:
+W pliku konfiguracji należy odwoływać się jak w poniższym przykładzie obraz ACR:
 
 ```yaml
 image: <server-name>.azurecr.io/<image-name>:<tag>
 ```
 
-**Jak dowiedzieć, które kontenera jest dostępny w Internecie?**
+**Jak wiadomo, które kontener jest dostępny przez internet?**
 
-- Tylko jeden kontener może być otwarty w celu udzielenia dostępu
-- Tylko porty 80 i 8080 jest niedostępny (narażonych portów)
+- Tylko jeden kontener może być otwarte na potrzeby dostępu
+- Tylko port 80 i 8080 jest dostępny (ujawnionych portów)
 
-Poniżej przedstawiono zasady określające kontenera jest dostępny — w kolejności priorytetu:
+Poniżej przedstawiono zasady określające, kontener, który jest dostępny — w kolejności priorytetu:
 
 - Ustawienie aplikacji `WEBSITES_WEB_CONTAINER_NAME` należy ustawić nazwę kontenera
 - Pierwszy kontener, aby zdefiniować port 80 lub 8080
-- Jeśli żaden z powyższych ma wartość true, pierwszy kontenera zdefiniowane w pliku będzie dostępna (widoczne)
+- Jeśli żadna z powyższych nie jest spełniony, pierwszego kontenera, które są zdefiniowane w pliku będzie dostępny (udostępniane)
 
 ## <a name="pricing-and-sla"></a>Cennik i umowy SLA
 
-**Co to jest cennika, skoro usługa jest ogólnie dostępna?**
+**Co to jest cennik, skoro usługa stanie się ogólnie dostępna?**
 
-Naliczane są opłaty normalne cennik usługi aplikacji Azure przez liczbę godzin, w których aplikacja będzie działać.
+Opłaty są naliczane normalne ceny usługi Azure App Service przez liczbę godzin, w których Twoja aplikacja jest uruchamiana.
 
 ## <a name="other-questions"></a>Inne pytania
 
-**Co to są obsługiwane znaki w nazwach ustawienia aplikacji?**
+**Co to są obsługiwane znaki nazwy ustawień aplikacji?**
 
-Dla ustawienia aplikacji, można użyć tylko litery (A-Z, a – z), cyfry (0-9) i znak podkreślenia (_).
+Dla ustawienia aplikacji, można użyć tylko litery (A – Z, a – z), cyfry (0 – 9) i znak podkreślenia (_).
 
-**Gdzie mogą żądać nowych funkcji**
+**Gdzie mogę uzyskać nowe funkcje**
 
-Możesz podać Twój pomysł na [forum opinii aplikacje sieci Web](https://aka.ms/webapps-uservoice). Do tytułu Twój pomysł, należy dodać "[Linux]".
+Możesz przesłać swój pomysł na [forum opinii w aplikacji sieci Web](https://aka.ms/webapps-uservoice). Dodaj "[Linux]" jako tytuł Twojego pomysłu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
 - [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Ciągłe wdrażanie w aplikacji sieci Web dla kontenerów](./app-service-linux-ci-cd.md)
+- [Ciągłe wdrażanie za pomocą aplikacji Web App for Containers](./app-service-linux-ci-cd.md)

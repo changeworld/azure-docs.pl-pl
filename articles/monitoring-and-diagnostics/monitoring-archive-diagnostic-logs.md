@@ -8,16 +8,21 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 99f150b2c62331a63e5bd4377f51fd11359628ab
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a0146c0bf2b5a10f27cb59e32978aa6dff8f5982
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436032"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916330"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST do archiwizacji swoje [dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dzienników diagnostycznych z zasadami przechowywania opcjonalne inspekcji, analizę statyczną lub kopii zapasowej. Konto magazynu nie musi znajdować się w tej samej subskrypcji co zasób emitowane dzienniki, jak długo użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji.
+
+> [!WARNING]
+> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

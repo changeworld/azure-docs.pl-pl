@@ -1,116 +1,116 @@
 ---
-title: 'Rozwiązywanie problemów z niepowodzenia agenta usług Azure Site Recovery: niedostępny stan agenta gościa | Dokumentacja firmy Microsoft'
-description: Objawy, przyczyny i rozwiązania błędów usługi Azure Site Recovery związanych z agent i rozszerzenia
+title: 'Rozwiązywanie problemów z błąd agenta usługi Azure Site Recovery: niedostępny stan agenta gościa | Dokumentacja firmy Microsoft'
+description: Objawy, przyczyny i rozwiązania błędów usługi Azure Site Recovery powiązany agent i rozszerzenia
 services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777603"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919808"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędami rozszerzenia usługi Azure Site Recovery: problemy z agentem lub rozszerzenia
+# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędami rozszerzeń usługi Azure Site Recovery: problemy z agentem lub rozszerzenia
 
-Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc wyeliminować błędy usługi Azure Site Recovery związanych z agenta maszyny Wirtualnej i rozszerzenia.
+Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc Ci rozwiązać błędy usługi Azure Site Recovery, związane z agenta maszyny Wirtualnej i rozszerzenia.
 
 
-## <a name="azure-site-recovery-extension-time-out"></a>Limit czasu rozszerzenia usługi Azure Site Recovery  
+## <a name="azure-site-recovery-extension-time-out"></a>Limit czasu rozszerzenia w usłudze Azure Site Recovery  
 
-Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia dla operacji rozszerzenia ma być uruchamiana"<br>
+Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia operacji rozszerzenia do uruchomienia"<br>
 Kod błędu: "151076"
 
- Usługa Azure Site Recovery Zainstaluj rozszerzenie na maszynie wirtualnej w ramach Zadanie włączania ochrony. Jeden z następujących warunków mogą uniemożliwić ochronę z inicjowane i niepowodzenie zadania. Wykonaj poniższe kroki rozwiązywania problemów, a następnie ponów próbę wykonania operacji:
+ Usługa Azure Site Recovery Zainstaluj rozszerzenie na maszynie wirtualnej w ramach Zadanie włączania ochrony. Następujące warunki mogą uniemożliwić ochrony przed wyzwoleniem i niepowodzenie zadania. Wykonaj następujące kroki rozwiązywania problemów, a następnie ponów próbę wykonania operacji:
 
-**Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [rozszerzenia usługi Site Recovery nie może zaktualizować lub załadować](#the-site-recovery-extension-fails-to-update-or-load)**  
+**Przyczyny 1: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [rozszerzenie usługi Site Recovery nie może zaktualizować lub obciążenia](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Komunikat o błędzie: "poprzednie lokacji odzyskiwania rozszerzenia operacja trwa dłużej niż oczekiwano."<br>
+Komunikat o błędzie: "Poprzednia operacja rozszerzenia usługi site recovery trwa dłużej niż oczekiwano."<br>
 Kod błędu: "150066"<br>
 
-**Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyny 3: [stanu rozszerzenia usługi Site Recovery jest nieprawidłowa](#the-site-recovery-extension-fails-to-update-or-load)**  
+**Przyczyny 1: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 3: [stan rozszerzenia usługi Site Recovery jest nieprawidłowa](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Ochrona nie powiedzie się, ponieważ nie odpowiada, agent maszyny Wirtualnej
+## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Ochrona kończy się niepowodzeniem, ponieważ agent maszyny Wirtualnej nie odpowiada
 
-Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia dla operacji rozszerzenia ma zostać uruchomiony."<br>
+Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia operacji rozszerzenia ma zostać uruchomiony."<br>
 Kod błędu: "151099"<br>
 
-Ten błąd może wystąpić, jeśli agent Azure gościa na maszynie wirtualnej nie jest w stanie gotowe.
-Można sprawdzić stan agenta gościa Azure w [portalu Azure](https://portal.azure.com/). Przejdź do maszyny wirtualnej, które chcesz chronić i sprawdź stan "maszyny Wirtualnej > Ustawienia > Właściwości > Stan agenta". W większości przypadków stan agenta gotowość po jego ponownym uruchomieniu maszyny wirtualnej. Jednak jeśli ponowne uruchomienie komputera nie jest możliwe opcją lub nadal są ukierunkowane problem, wykonaj następujące kroki rozwiązywania problemów.
+Ten błąd może wystąpić, jeśli agent gościa platformy Azure na maszynie wirtualnej nie jest w stanie gotowe.
+Możesz sprawdzić stan agenta gościa platformy Azure w [witryny Azure portal](https://portal.azure.com/). Przejdź do maszyny wirtualnej, które chcesz chronić i sprawdź stan "maszyna wirtualna > Ustawienia > Właściwości > Stan agenta". W większości przypadków stan agenta gotowość po jego ponownym uruchomieniu maszyny wirtualnej. Jednak jeśli ponowny rozruch nie jest możliwe opcji lub nadal pojawia się problem, wykonaj następujące kroki rozwiązywania problemów.
 
-**Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Przyczyny 1: [agent jest zainstalowany w maszynie Wirtualnej, ale nie odpowiada (dla maszyn wirtualnych Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Przyczyny 2: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia dla operacji rozszerzenia ma zostać uruchomiony."<br>
+Komunikat o błędzie: "wykonywania zadania został przekroczony podczas śledzenia operacji rozszerzenia ma zostać uruchomiony."<br>
 Kod błędu: "151095"<br>
 
-Dzieje się tak, gdy jest stara wersja agenta na komputerze z systemem Linux. Wykonaj następujący krok rozwiązywania problemów.<br>
-  **Przyczyna 1: [agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+Dzieje się tak, po starej wersji agenta na komputerze z systemem Linux. Wykonaj poniższe czynności dotyczące rozwiązywania problemów.<br>
+  **Przyczyny 1: [agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych systemu Windows)
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)
 
 #### <a name="solution"></a>Rozwiązanie
-Agent maszyny Wirtualnej może być uszkodzony lub może być zatrzymana usługa. Ponowne zainstalowanie agenta maszyny Wirtualnej pomaga uzyskać najnowszą wersję. Pomaga również ponowne uruchomienie komunikacji z usługą.
+Agent maszyny Wirtualnej może ulec uszkodzeniu lub usługa została zatrzymana. Ponowne zainstalowanie agenta maszyny Wirtualnej pomaga uzyskać najnowszą wersję. Pomaga również ponownie uruchomić komunikuje się z usługą.
 
-1. Określić, czy "systemu Windows Azure agenta gościa" działa w usługach maszyny Wirtualnej (services.msc). Spróbuj ponownie uruchomić usługę "systemu Windows Azure Agent gościa usługi".    
-2. Jeśli usługa agenta gościa usługi Windows Azure nie jest widoczny w usługach, w Panelu sterowania, przejdź do **programy i funkcje** ustalenie, czy Usługa agenta gościa z systemem Windows jest zainstalowana.
-4. Jeśli agenta gościa usługi Windows Azure znajduje się w **programy i funkcje**, odinstaluj agenta gościa z systemem Windows.
+1. Określić, czy "Windows usługę agenta gościa platformy Azure" jest uruchomiona w usługach maszyny Wirtualnej (services.msc). Spróbuj uruchomić ponownie "Windows usługę agenta gościa platformy Azure".    
+2. Jeśli usługa agenta gościa platformy Azure Windows nie jest widoczny w usługach, w Panelu sterowania, przejdź do strony **programy i funkcje** do określenia, czy Usługa agenta gościa Windows jest zainstalowana.
+4. Jeśli agenta gościa platformy Azure Windows znajduje się w **programy i funkcje**, odinstaluj agenta gościa Windows.
 5. Pobierz i zainstaluj [najnowszej wersji pliku MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musi mieć prawa administratora w celu ukończenia instalacji.
-6. Sprawdź, czy usługi Windows Azure gościa Agent jest wyświetlany w usługach.
+6. Sprawdź, czy usługi agenta gościa systemu Windows Azure znajduje się w usługach.
 7. Uruchom ponownie zadanie ochrony.
 
-Ponadto upewnij się, że [jest zainstalowany program Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) w maszynie Wirtualnej. .NET 4.5 jest wymagany dla agenta maszyny Wirtualnej do komunikowania się z usługą.
+Ponadto upewnij się, że [zainstalowano program Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) na maszynie wirtualnej. .NET 4.5 jest wymagany dla agenta maszyny wirtualnej do komunikacji z usługą.
 
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent zainstalowany na maszynie wirtualnej są nieaktualne (dla maszyn wirtualnych systemu Linux)
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent zainstalowany na maszynie wirtualnej jest nieaktualna (dla maszyn wirtualnych systemu Linux)
 
 #### <a name="solution"></a>Rozwiązanie
-Najbardziej związane z agenta lub rozszerzenie błędów dla maszyn wirtualnych systemu Linux są spowodowane przez problemy, które mają wpływ na nieaktualne agenta maszyny Wirtualnej. Aby rozwiązać ten problem, wykonaj następujące ogólne wytyczne:
+Najbardziej związane z agentem lub rozszerzenie awarii dla maszyn wirtualnych systemu Linux są spowodowane przez problemy, które mają wpływ na nieaktualne agenta maszyny Wirtualnej. Aby rozwiązać ten problem, wykonaj te ogólne wytyczne:
 
-1. Postępuj zgodnie z instrukcjami dotyczącymi [aktualizacja agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md).
+1. Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md).
 
  > [!NOTE]
- > Firma Microsoft *zdecydowanie zaleca się* zaktualizowanie agenta tylko za pośrednictwem repozytorium dystrybucji. Nie zaleca się pobierania kodu agenta bezpośrednio z witryny GitHub i zaktualizowaniem go. Jeśli najnowsza wersja agenta dla dystrybucji nie jest dostępny, skontaktuj się z dystrybucji obsługę instrukcje dotyczące sposobu jego instalacji. Aby sprawdzić najnowsze agenta, przejdź do [agenta Windows Azure w systemie Linux](https://github.com/Azure/WALinuxAgent/releases) strony w repozytorium GitHub.
+ > Firma Microsoft *zdecydowanie zaleca się* aktualizacji agenta wyłącznie za pośrednictwem repozytorium dystrybucji. Firma Microsoft nie zaleca się pobranie kodu agenta bezpośrednio z serwisu GitHub i aktualizowania. Jeśli najnowszą wersję agenta dla Twojej dystrybucji nie jest obsługiwana dystrybucja dostępnej, skontaktuj się z pomocą instrukcje dotyczące sposobu jego instalacji. Aby sprawdzić, czy najnowsze agenta, przejdź do [agenta systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) strony w repozytorium GitHub.
 
-2. Upewnij się, że agent programu Azure działa na maszynie Wirtualnej, uruchamiając następujące polecenie: `ps -e`
+2. Upewnij się, że agent platformy Azure działa na maszynie Wirtualnej, uruchamiając następujące polecenie: `ps -e`
 
- Jeśli nie jest uruchomiony proces, uruchom go ponownie za pomocą następujących poleceń:
+ Jeśli proces nie jest uruchomiona, uruchom go ponownie przy użyciu następujących poleceń:
 
- * Dla Ubuntu: `service walinuxagent start`
- * Inne dystrybucji: `service waagent start`
+ * Aby uzyskać Ubuntu: `service walinuxagent start`
+ * Dla innych dystrybucji: `service waagent start`
 
 3. [Konfigurowanie automatycznego ponownego uruchomienia agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Włącz ochronę maszyny wirtualnej.
 
 
 
-### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>Rozszerzenie usługi Site Recovery nie może zaktualizować lub załadować
-Jeśli stan rozszerzeń jest "pusty", "NotReady" lub przechodzenie obsługującej.
+### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>Rozszerzenie usługi Site Recovery nie może zaktualizować lub obciążenia
+Jeśli stan rozszerzeń jest "puste", "Niegotowe" lub Transitioning.
 
 #### <a name="solution"></a>Rozwiązanie
 
 Odinstaluj rozszerzenie, a następnie uruchom ponownie wykonać operację ponownie.
 
-Aby odinstalować rozszerzenia:
+Aby odinstalować rozszerzenie:
 
-1. W [portalu Azure](https://portal.azure.com/), przejdź do maszyny Wirtualnej, w którym występuje niepowodzenia wykonywania kopii zapasowej.
+1. W [witryny Azure portal](https://portal.azure.com/), przejdź do maszyny Wirtualnej, której dotyczy niepowodzenia wykonywania kopii zapasowej.
 2. Wybierz **ustawienia**.
 3. Wybierz **rozszerzenia**.
-4. Wybierz **lokacji odzyskiwania rozszerzenia**.
+4. Wybierz **odzyskiwania rozszerzenie witryny**.
 5. Wybierz **odinstalować**.
 
-Dla maszyny Wirtualnej systemu Linux, jeśli rozszerzenie VMSnapshot nie są wyświetlane w portalu Azure [zaktualizować agenta systemu Linux Azure](../virtual-machines/linux/update-agent.md), a następnie uruchom ochronę. 
+Dla maszyny Wirtualnej systemu Linux, jeśli rozszerzenie VMSnapshot nie są wyświetlane w witrynie Azure portal [aktualizacja agenta systemu Linux platformy Azure](../virtual-machines/linux/update-agent.md), a następnie uruchom ochronę. 
 
-Wykonanie tych kroków powoduje, że rozszerzenie ponownego zainstalowania podczas ochrony.
+Wykonanie tych kroków powoduje, że rozszerzenie, należy ponownie zainstalować podczas ochrony.
 
 

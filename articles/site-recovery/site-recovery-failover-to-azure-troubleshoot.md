@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z trybu failover na awarie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku awarii na platformie Azure
+title: Rozwiązywanie problemów z trybu failover do błędów platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku przechodzenia w tryb failover na platformie Azure
 services: site-recovery
 documentationcenter: ''
 author: ponatara
@@ -12,69 +12,69 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/09/2018
+ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 838eac510fc17d56f808f541f4e205a279f63c56
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ad8b69bfe6f3261f00cd33846efc86ce3b198954
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318895"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919696"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Rozwiązywanie problemów z błędami przechodzenie w tryb failover maszyny wirtualnej na platformie Azure
+# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny wirtualnej na platformie Azure
 
-Może pojawić się jeden z następujących błędów podczas wykonywania pracy w trybie failover maszyny wirtualnej na platformie Azure. Aby rozwiązać problemy, użyj opisane kroki dla każdego warunku błędu.
+Może pojawić się jeden z następujących błędów podczas wykonywania pracy w trybie failover maszyny wirtualnej na platformie Azure. Aby rozwiązać problemy, należy użyć opisane kroki poszczególnych warunków wystąpienia błędu.
 
 ## <a name="failover-failed-with-error-id-28031"></a>Tryb failover nie powiodło się z Identyfikator błędu 28031
 
-Usługa Site Recovery nie mógł utworzyć nieudanej przez maszynę wirtualną na platformie Azure. Może się zdarzyć z jednego z następujących powodów:
+Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć z jednego z następujących powodów:
 
-* Nie ma wystarczającego przydziału do utworzenia maszyny wirtualnej: Sprawdź dostępny limit przydziału, przechodząc do subskrypcji -> użycia + przydziałów. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć przydział.
+* Nie ma wystarczającego limitu przydziału, które są dostępne do utworzenia maszyny wirtualnej: dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału.
 
-* Próbujesz trybu failover maszyny wirtualne rodzin inny rozmiar w tym samym zestawie dostępności. Upewnij się, wybrać tej samej rodziny rozmiar dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmień rozmiar, przechodząc do ustawień obliczania i sieci maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
+* Próbujesz trybu failover maszyny wirtualne rozmiar różnych rodzin w tym samym zestawie dostępności. Upewnij się, wybierz ten sam rodzina rozmiarów dla wszystkich maszyn wirtualnych w tym samym zestawie dostępności. Zmiana rozmiaru, przechodząc do ustawień obliczenia i sieć maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
 
-* Brak zasad na subskrypcję, która uniemożliwia tworzenie maszyny wirtualnej. Zmień zasady Zezwalaj na tworzenie maszyny wirtualnej, a następnie spróbuj ponownie trybu failover.
+* Brak zasad w ramach subskrypcji, która uniemożliwia tworzenie maszyny wirtualnej. Zmień zasady aby umożliwić tworzenie maszyny wirtualnej, a następnie ponów próbę pracy awaryjnej.
 
 ## <a name="failover-failed-with-error-id-28092"></a>Tryb failover nie powiodło się z Identyfikator błędu 28092
 
-Usługa Site Recovery nie mógł utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego przydziału do utworzenia interfejsów sieciowych w subskrypcji. Sprawdź dostępny limit przydziału, przechodząc do subskrypcji -> użycia + przydziałów. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć przydział. Jeśli masz wystarczającego limitu przydziału, może to być tymczasowy wystawiania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występował mimo ponownych prób, następnie zostaw komentarz na końcu tego dokumentu.  
+Usługa Site Recovery nie mogła utworzyć interfejsu sieciowego dla nieudane przez maszynę wirtualną. Upewnij się, że masz wystarczającego limitu przydziału, które są dostępne w celu utworzenia interfejsów sieciowych w ramach subskrypcji. Dostępny limit przydziału można sprawdzić, przechodząc do subskrypcji -> użycie i przydziały. Możesz otworzyć [nowe żądanie pomocy technicznej](http://aka.ms/getazuresupport) Aby zwiększyć limit przydziału. Jeśli masz wystarczającego limitu przydziału, a następnie może to być tymczasowy wysyłania, spróbuj ponownie wykonać operację. Jeśli problem będzie nadal występować po ponawianiu prób, pozostaw komentarz na końcu tego dokumentu.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Tryb failover nie powiodło się z Identyfikator błędu 70038
 
-Usługa Site Recovery nie mógł utworzyć nieudanej za pośrednictwem klasycznego maszyny wirtualnej platformy Azure. Może się zdarzyć, ponieważ:
+Usługa Site Recovery nie mógł utworzyć nie powiodło się za pośrednictwem klasycznej maszyny wirtualnej na platformie Azure. Może się zdarzyć, ponieważ:
 
-* Jeden z zasobów, takich jak sieć wirtualna, która jest wymagana do utworzenia maszyny wirtualnej nie istnieje. Tworzenie sieci wirtualnej, zgodnie z ustawień obliczania i sieci maszyny wirtualnej lub zmodyfikować to ustawienie, aby sieć wirtualna, która już istnieje, a następnie ponów próbę pracy awaryjnej.
+* Jeden z zasobów, takich jak sieć wirtualną, która jest wymagana dla maszyny wirtualnej, która ma zostać utworzony nie istnieje. Tworzenie sieci wirtualnej, zgodnie z postanowieniami w obszarze ustawień obliczenia i sieć maszyny wirtualnej lub zmodyfikuj ustawienia sieci wirtualnej, która już istnieje, a następnie ponów próbę pracy awaryjnej.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nie można połączyć/protokołu RDP/SSH do nieudane za pośrednictwem maszyny wirtualnej ze względu na wygaszone, przycisk Połącz na maszynie wirtualnej
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH nieudane przez maszynę wirtualną ze względu na szary przycisk Połącz na maszynie wirtualnej
 
-Jeśli jest szary przycisk Połącz i nie połączono z platformy Azure za pośrednictwem Express Route lub sieci VPN typu lokacja-lokacja, następnie połączenie,
+Jeśli przycisk Połącz jest wyszarzony i nie masz połączenia Expressroute lub sieci VPN typu lokacja-lokacja połączenie, następnie na platformie Azure
 
-1. Przejdź do **maszyny wirtualnej** > **sieci**, kliknij nazwę interfejsu sieciowego wymagane.  ![Interfejs sieciowy](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Przejdź do **konfiguracje adresów Ip**, następnie kliknij polecenie w polu nazwy konfiguracji adresu IP. ![Elementy Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Aby włączyć publicznego adresu IP, kliknij na **włączyć**. ![Włączyć adresu IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Polecenie **Skonfiguruj wymagane ustawienia** > **Utwórz nowy**. ![Utwórz nową](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Wprowadź nazwę publicznego adresu, wybierz polecenie Opcje domyślne **SKU** i **przypisania**, następnie kliknij przycisk **OK**.
-6. Teraz, aby zapisać zmiany, kliknij przycisk **zapisać**.
-7. Zamknięcie paneli i przejdź do **omówienie** sekcji maszyny wirtualnej w celu połączenia RDP.
+1. Przejdź do **maszyny wirtualnej** > **sieć**, kliknij nazwę interfejsu sieciowego wymagane.  ![Interfejs sieciowy](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Przejdź do **konfiguracje adresów Ip**, następnie kliknij pole nazwy wymaganych konfiguracji adresu IP. ![Elementy Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Aby włączyć publiczny adres IP, kliknij **Włącz**. ![Włączyć adresu IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Kliknij pozycję **Skonfiguruj wymagane ustawienia** > **Utwórz nową**. ![Utwórz nową](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Wprowadź nazwę publicznego adresu, wybierz domyślne opcje dotyczące **jednostki SKU** i **przypisania**, następnie kliknij przycisk **OK**.
+6. Teraz, aby zapisać zmiany, kliknij **Zapisz**.
+7. Zamknięcie paneli i przejdź do **Przegląd** części maszyny wirtualnej do połączenia RDP.
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nie można połączyć/protokołu RDP/SSH do nieudane za pośrednictwem wirtualnej maszynie mimo że Connect przycisk jest dostępny (nie wyszarzona) na maszynie wirtualnej
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nie można nawiązać połączenia ani protokołu RDP/SSH nie powiodło się za pośrednictwem wirtualnej maszyny mimo Połącz przycisk jest dostępny (nie szary) na maszynie wirtualnej
 
-Sprawdź **diagnostyki rozruchu** na maszynie wirtualnej i sprawdź, czy błędy wymienione w tym artykule.
+Sprawdź **diagnostykę rozruchu** na maszynie wirtualnej i sprawdź błędy wymienione w tym artykule.
 
-1. Jeśli maszyna wirtualna nie została uruchomiona, spróbuj przechodzenie w tryb failover do starszych punktu odzyskiwania.
-2. Jeśli aplikacja na maszynie wirtualnej nie jest zapasowej, spróbuj awarii do punktów odzyskiwania zapewniających spójność aplikacji.
-3. Jeśli maszyna wirtualna jest przyłączony do domeny, upewnij się, że ten kontroler domeny działa prawidłowo. Można to zrobić, postępując poniżej podane kroki.
-    a. Tworzenie nowej maszyny wirtualnej w tej samej sieci
+1. Jeśli maszyna wirtualna nie została uruchomiona, spróbuj przejść w tryb failover do starszego punktu odzyskiwania.
+2. Jeśli aplikacja wewnątrz maszyny wirtualnej nie jest się, spróbuj przejść w tryb failover do punktu odzyskiwania spójnego na poziomie aplikacji.
+3. Jeśli maszyna wirtualna jest przyłączona do domeny, a następnie upewnij się, że kontroler domeny działa dokładnie. Można to zrobić, postępując poniżej podane kroki.
+    a. Utwórz nową maszynę wirtualną w tej samej sieci
 
-    b.  Upewnij się, że jest w stanie dołączyć do tej samej domeny, na którym nie powiodło się na maszynie wirtualnej oczekuje znaleziona.
+    b.  Upewnij się, że jest mógł dołączyć do tej samej domeny, na którym nieudane przez maszynę wirtualną oczekuje się, co pozwoli uzyskać.
 
-    c. Jeśli kontroler domeny jest **nie** działa prawidłowo, spróbuj podczas logowania się na nieudane przez maszynę wirtualną przy użyciu konta administratora lokalnego
-4. Jeśli używasz niestandardowego serwera DNS, a następnie upewnij się, że jest dostępny. Można to zrobić, postępując poniżej podane kroki.
-    a. Utwórz nową maszynę wirtualną w tej samej sieci i b. Sprawdź, czy maszyna wirtualna jest możliwość nazwa rozpoznawanie przy użyciu niestandardowego serwera DNS
+    c. Jeśli kontroler domeny jest **nie** działa prawidłowo, spróbuj zalogowanie się na nieudane przez maszynę wirtualną przy użyciu konta administratora lokalnego
+4. Jeśli używasz niestandardowego serwera DNS, upewnij się, że jest dostępny. Można to zrobić, postępując poniżej podane kroki.
+    a. Utwórz nową maszynę wirtualną w tej samej sieci oraz b. Sprawdź, czy maszyna wirtualna jest możliwość nazwa rozpoznawanie przy użyciu niestandardowego serwera DNS
 
 >[!Note]
->Włączenie ustawienia dowolnej innej niż diagnostyki rozruchu wymagają Agent maszyny Wirtualnej Azure musi zostać zainstalowany na maszynie wirtualnej przed przejście w tryb failover
+>Włączenie dowolnego ustawienia innego niż Diagnostyka rozruchu wymaga agenta maszyny Wirtualnej platformy Azure do zainstalowania na maszynie wirtualnej przed włączeniem trybu failover
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli potrzebujesz więcej pomocy, na następnie przesłanie kwerendy [forum usługi Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) lub zostaw komentarz na końcu tego dokumentu. Mamy aktywnej społeczności, który powinien być w stanie ułatwi.
+Jeśli potrzebujesz więcej pomocy, na następnie publikują zapytania [forum Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) lub pozostaw komentarz na końcu tego dokumentu. Mamy aktywnej społeczności użytkowników, które powinno być możliwe pomóc.

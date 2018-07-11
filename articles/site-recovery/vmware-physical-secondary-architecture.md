@@ -1,20 +1,21 @@
 ---
-title: "Architektura replikacji serwera VMware/fizyczne w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie składników i architektury używany podczas replikowania lokalnych maszyn wirtualnych VMware lub serwerach fizycznych systemu Windows i Linux do dodatkowej lokacji oprogramowania VMware z usługą Azure Site Recovery"
+title: Architektura replikacji serwera fizycznego/VMware w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania lokalnych maszyn wirtualnych VMware lub serwerach fizycznych systemu Windows/Linux do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 97a990aa3ed9043280888900d8fc7b604b6c22b5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37921402"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>Serwer VMware maszyny Wirtualnej/fizycznej do architektury replikacji VMware
+# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>VMware maszyny Wirtualnej lub serwera fizycznego do architektury replikacji oprogramowania VMware
 
-W tym artykule opisano architektura i procesy stosowane podczas replikacji, pracy awaryjnej i odzyskać maszynach wirtualnych VMware lokalnymi (VM) lub serwerach fizycznych systemu Windows i Linux do dodatkowej lokacji VMware, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
+W tym artykule opisano architekturę i procesów związanych z replikacja, tryb failover i odzyskiwanie maszyn wirtualnych VMware w środowisku lokalnym (VM) lub serwerach fizycznych systemu Windows/Linux do dodatkowej lokacji programu VMware, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Składniki architektury

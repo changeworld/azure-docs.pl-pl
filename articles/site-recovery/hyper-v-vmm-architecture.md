@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie architektury używanej podczas repl
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 11c80a1e1fa0d5afbb70eddd5adcd272d12f1c74
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0319e4d1cdbd20c39772c659a3e5a1580d8b925b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437862"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919652"
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Replikacja funkcji Hyper-V do lokacji dodatkowej
 

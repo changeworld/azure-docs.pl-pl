@@ -1,47 +1,51 @@
 ---
-title: Konfiguracja Amazon w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Zapewnienie rejestracji i logowania użytkowników za pomocą konta Amazon w swoich aplikacjach, które są zabezpieczone przez usługę Azure Active Directory B2C.
+title: Konfigurowanie rejestracji i logowania za pomocą konta Amazon przy użyciu usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+description: Klientom rejestracji i logowania za pomocą konta Amazon w aplikacjach przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3b3d66b913b595e68c03b68990d1a4806952579
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5fb6289f75f0c98cc218233d8adb900484ee4a17
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443706"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916500"
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Usługa Azure Active Directory B2C: Zapewnienie rejestracji i logowania użytkowników za pomocą konta Amazon
+# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Amazon przy użyciu usługi Azure Active Directory B2C
+
 ## <a name="create-an-amazon-application"></a>Tworzenie aplikacji Amazon
-Aby użyć Amazon jako dostawcy tożsamości w usłudze Azure Active Directory (Azure AD) B2C, należy utworzyć aplikację Amazon i dostarczyć odpowiednie parametry. Wymagane jest konto Amazon, aby to zrobić. Jeśli nie masz, możesz pobrać na stronie [ http://www.amazon.com/ ](http://www.amazon.com/).
 
-1. Przejdź do [Centrum deweloperów Amazon](https://login.amazon.com/) i zaloguj się przy użyciu poświadczeń konta Amazon.
+Aby użyć konta Amazon jako dostawcy tożsamości w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w dzierżawie, który go reprezentuje. Jeśli nie masz jeszcze konta Amazon możesz pobrać na stronie [ http://www.amazon.com/ ](http://www.amazon.com/).
+
+1. Zaloguj się do [Centrum deweloperów Amazon](https://login.amazon.com/) przy użyciu poświadczeń konta Amazon.
 2. Jeśli jeszcze tego nie zrobiono, kliknij przycisk **Zarejestruj**, postępuj zgodnie z instrukcjami rejestracji dla deweloperów i zaakceptować zasady.
-3. Kliknij przycisk **zarejestrować nową aplikację**.
-   
-    ![Rejestrowanie nowej aplikacji w witrynie sieci Web Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-new-app.png)
-4. Podaj informacje o aplikacji (**nazwa**, **opis**, i **adres URL zasad zachowania powiadomienie**) i kliknij przycisk **Zapisz**.
-   
-    ![Zapewnianie informacji o aplikacji do zarejestrowania nowej aplikacji na Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-register-app.png)
-5. W **ustawień sieci Web** sekcji, skopiuj wartości z **identyfikator klienta** i **klucz tajny klienta**. (Należy kliknąć przycisk **wyświetlić wpis tajny** przycisk, aby wyświetlić to.) Należy dysponować go o skonfigurowanie Amazon jako dostawcy tożsamości w dzierżawie. Kliknij przycisk **Edytuj** w dolnej części sekcji. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
-   
-    ![Podanie Identyfikatora klienta oraz klucz tajny klienta dla nowej aplikacji na Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
-6. Wprowadź `https://login.microsoftonline.com` w **dozwolone źródła JavaScript** pola i `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **dozwolone adresy URL zwracają** pola. Zastąp **{dzierżawa}** nazwą dzierżawy (np. contoso.onmicrosoft.com). Kliknij pozycję **Zapisz**. **{Dzierżawa}** wartości jest uwzględniana wielkość liter.
-   
-    ![Zapewnianie źródła JavaScript i zwraca adres URL nowej aplikacji na Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
+3. Wybierz **zarejestrować nową aplikację**.
+4. Wprowadź **nazwa**, **opis**, i **adres URL zasad zachowania powiadomienie**, a następnie kliknij przycisk **Zapisz**.
+5. W **ustawień sieci Web** sekcji, skopiuj wartości z **identyfikator klienta**. Wybierz **wyświetlić wpis tajny** można pobrać klucza tajnego klienta, a następnie skopiuj go. Należy dysponować je, aby skonfigurować konto usługi Amazon jako dostawcy tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
+6. W **ustawień sieci Web** zaznacz **Edytuj**, a następnie wprowadź `https://login.microsoftonline.com` w **dozwolone źródła JavaScript** i `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` w **dozwolone Zwraca adresy URL**. Zastąp **{dzierżawa}** nazwą dzierżawy (np. contoso.onmicrosoft.com). 
+7. Kliknij pozycję **Zapisz**.
 
-## <a name="configure-amazon-as-an-identity-provider-in-your-tenant"></a>Konfigurowanie Amazon jako dostawcy tożsamości w dzierżawie
-1. Wykonaj następujące kroki, aby [przejdź do bloku funkcji B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) w witrynie Azure portal.
-2. W bloku funkcji B2C, kliknij polecenie **dostawców tożsamości**.
-3. Kliknij pozycję **+Dodaj** w górnej części bloku.
-4. Podaj przyjazną **nazwa** konfiguracji dostawcy tożsamości. Na przykład wprowadź "Amzn".
-5. Kliknij przycisk **typ dostawcy tożsamości**, wybierz opcję **Amazon**i kliknij przycisk **OK**.
-6. Kliknij przycisk **skonfiguruj tego dostawcę tożsamości** i wprowadź identyfikator klienta oraz klucz tajny klienta aplikacji Amazon, która została utworzona wcześniej.
-7. Kliknij przycisk **OK** a następnie kliknij przycisk **Utwórz** Aby zapisać konfigurację Amazon.
+## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurowanie konta Amazon jako dostawcy tożsamości
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+2. Upewnij się, że używasz katalogu, który zawiera Twoją dzierżawę usługi Azure AD B2C, przełączając się na niego w prawym górnym rogu witryny Azure Portal. Wybierz informacje o subskrypcji, a następnie wybierz pozycję **Przełącz katalog**. 
+
+    ![Przełączanie się do swojej dzierżawy usługi Azure AD B2C](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
+
+    Wybierz katalog zawierający Twoją dzierżawę.
+
+    ![Wybieranie katalogu](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
+4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.
+5. Wprowadź **nazwa**. Na przykład, wprowadź *Amazon*.
+6. Wybierz **typ dostawcy tożsamości**, wybierz opcję **Amazon**i kliknij przycisk **OK**.
+7. Wybierz **skonfiguruj tego dostawcę tożsamości** i wprowadź identyfikator klienta, który wcześniej zarejestrowane jako **identyfikator klienta** i wprowadź klucz tajny klienta, które są rejestrowane jako **klucz tajny klienta**aplikacji Amazon, która została utworzona wcześniej.
+8. Kliknij przycisk **OK** a następnie kliknij przycisk **Utwórz** Aby zapisać konfigurację Amazon.
 

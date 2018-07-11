@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 9f7fbcc804229de69c3c72fb33ae03c88af70145
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857501"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917639"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -51,9 +51,9 @@ Jesteś gotowy!
 
 Zestaw danych szkoleniowych głosu składa się z zestawu plików audio, wraz z pliku tekstowego zawierającego transkrypcji wszystkich tych plików audio.
 
-Należy przygotować te pliki w dowolnym kierunku: albo napisać skrypt i odczytywane przez głosu talent, lub użyć publicznie dostępnych audio i transkrypcja je na tekst. W tym drugim przypadku należy edytować disfluencies z plików audio, takie jak "um" i inne wypełniacza dźwięki, stutters, mumbled słowa lub mispronunciations.
+Należy przygotować te pliki w dowolnym kierunku: albo napisać skrypt i odczytywane przez głosu talent, lub użyć publicznie dostępnych audio i transkrypcja ją na tekst. W tym drugim przypadku należy edytować disfluencies z plików audio, takie jak "um" i inne wypełniacza dźwięki, stutters, mumbled słowa lub mispronunciations.
 
-Aby wygenerować czcionka głosowa dobre, ważne jest, nagrania są wykonywane w pokoju cichy z mikrofonu wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi gęstość i ekspresyjny mannerisms mowy są niezbędne do kompilowania doskonały cyfrowy głosu. Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania.
+Aby wygenerować czcionka głosowa dobre, ważne jest, nagrania są wykonywane w pokoju cichy z mikrofonu wysokiej jakości. Spójne woluminu wypowiedzi szybkości, wypowiedzi gęstość i ekspresyjny mannerisms mowy są niezbędne do kompilowania doskonały cyfrowy głosu. Aby utworzyć głosu w środowisku produkcyjnym, zalecamy możesz talent studio i głosu profesjonalnych rejestrowania. Aby uzyskać więcej informacji, zobacz [jak głos przykłady dla niestandardowych voice](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Pliki dźwiękowe
 

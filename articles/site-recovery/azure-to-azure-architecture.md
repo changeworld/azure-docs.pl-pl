@@ -1,71 +1,71 @@
 ---
-title: Architektura replikacji Azure do platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania maszyn wirtualnych platformy Azure między regiony platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Architektura replikacji Azure – Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania maszyn wirtualnych platformy Azure między regionami platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 67552b05d70e3ae44d75cbe1005743b6d17b2c2c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 33ab90f958e5033c0c563e4fd8921ee1f7d57c47
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716231"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915677"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Architektura replikacji Azure do platformy Azure
+# <a name="azure-to-azure-replication-architecture"></a>Architektura replikacji Azure – Azure
 
 
-W tym artykule opisano architekturę używane podczas replikacji, pracy awaryjnej i odzyskiwania maszyn wirtualnych platformy Azure (maszyny wirtualne) między regiony platformy Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+W tym artykule opisano architekturę używany, gdy replikacja, tryb failover i odzyskiwanie maszyn wirtualnych (VM) między regionami platformy Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
 
 
 
 
 ## <a name="architectural-components"></a>Składniki architektury
 
-Poniższa ilustracja przedstawia ogólny widok środowiska maszyny Wirtualnej platformy Azure w określonym regionie (w tym przykładzie lokalizacji wschodnie stany USA). W środowisku maszyny Wirtualnej platformy Azure:
-- Aplikacje mogą działać na maszynach wirtualnych z dyskami zarządzanych lub niezarządzanych dysków rozmieszczenie do kont magazynu.
-- Maszyny wirtualne mogą zostać włączone w co najmniej jednej podsieci sieci wirtualnej.
+Na rysunku poniżej przedstawiono ogólny widok środowisku maszyny Wirtualnej platformy Azure, w określonym regionie (w tym przykładzie lokalizacji wschodnie stany USA). W środowisku maszyny Wirtualnej platformy Azure:
+- Aplikacje mogą działać na maszynach wirtualnych z dyskami zarządzanymi lub dysków niezarządzanych rozkładają się na kontach magazynu.
+- Maszyny wirtualne mogły zostać uwzględnione w co najmniej jednej podsieci w sieci wirtualnej.
 
 
-**Replikacja usługi Azure do platformy Azure**
+**Replikacji Azure – Azure**
 
-![środowisko klienta](./media/concepts-azure-to-azure-architecture/source-environment.png)
+![środowisku klienta](./media/concepts-azure-to-azure-architecture/source-environment.png)
 
 ## <a name="replication-process"></a>Proces replikacji
 
 ### <a name="step-1"></a>Krok 1
 
-Po włączeniu replikacji maszyny Wirtualnej Azure następujące zasoby są tworzone automatycznie w obszarze docelowym na podstawie ustawień regionu źródła. Można dostosować ustawienia zasobów obiektu docelowego zgodnie z potrzebami.
+Po włączeniu replikacji maszyny Wirtualnej platformy Azure, następujące zasoby są tworzone automatycznie w regionie docelowym, na podstawie ustawień regionu źródłowego. Można dostosować ustawienia zasobów obiektu docelowego zgodnie z potrzebami.
 
-![Włącz proces replikacji, krok 1](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Włączanie replikacji procesu, krok 1](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
 **Zasób** | **Szczegóły**
 --- | ---
-**Docelowa grupa zasobów** | Grupa zasobów replikowane maszyny wirtualne należą po pracy awaryjnej. Lokalizacja tej grupy zasobów można w dowolnym regionie Azure, z wyjątkiem region platformy Azure, w którym znajdują się maszyny wirtualne źródła.
-**Docelowy sieci wirtualnej** | Sieć wirtualna, w którym replikowanych maszyn wirtualnych znajdują się po pracy awaryjnej. Mapowanie sieci jest tworzony między sieciami wirtualnymi źródłowym i docelowym i na odwrót.
-**Konta magazynu pamięci podręcznej** | Replikacja zmian maszyny Wirtualnej źródłowego na docelowe konto magazynu, są śledzone i wysyłane do konta magazynu pamięci podręcznej w lokalizacji źródłowej. Ten krok zapewnia minimalny wpływ na aplikacje produkcyjne uruchomione na maszynie Wirtualnej.
-**Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**  | Konta magazynu w lokalizacji docelowej, do którego dane są replikowane.
-** Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej znajduje się na dyskach zarządzanych) **  | Zarządzane dysków w lokalizacji docelowej, do którego dane są replikowane.
-**Docelowy zestawów dostępności**  | Zestawy dostępności, której replikowanych maszyn wirtualnych znajdują się po pracy awaryjnej.
+**Docelowa grupa zasobów** | Grupa zasobów, do której należą replikowane maszyny wirtualne, po włączeniu trybu failover. Lokalizacja ta grupa zasobów może być w dowolnym regionie systemu Azure, z wyjątkiem regionu platformy Azure, w którym znajdują się źródłowych maszyn wirtualnych.
+**Docelowa sieć wirtualna** | Sieć wirtualna, w którym replikowane maszyny wirtualne znajdują się po włączeniu trybu failover. Mapowanie sieci jest tworzona między sieciami wirtualnymi na źródłowym i docelowym i na odwrót.
+**Konta magazynu pamięci podręcznej** | Zanim zmiany maszyny Wirtualnej źródłowego są replikowane do docelowego konta magazynu, są śledzone i wysyłane do konta magazynu pamięci podręcznej w lokalizacji źródłowej. Ten krok zapewnia minimalny wpływ na aplikacji produkcyjnych uruchamianych na maszynie Wirtualnej.
+**Docelowe konta magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z dysków zarządzanych)**  | Konta magazynu w lokalizacji docelowej, do którego dane są replikowane.
+** Dyski zarządzane repliki (w przypadku dysków zarządzanych źródłowej maszyny wirtualnej) **  | Usługa Managed disks w lokalizacji docelowej, do którego dane są replikowane.
+**Docelowe zestawy dostępności**  | Zestawy dostępności, której są replikowane maszyny wirtualne znajdują się po włączeniu trybu failover.
 
 ### <a name="step-2"></a>Krok 2
 
-Ponieważ replikacja jest włączona, rozszerzenia usługi Site Recovery usługi mobilności jest automatycznie instalowany na Maszynie wirtualnej:
+Ponieważ replikacja jest włączona, rozszerzenie usługę mobilności usługi Site Recovery jest automatycznie instalowany na maszynie Wirtualnej:
 
-1. Maszyna wirtualna jest zarejestrowany z usługą Site Recovery.
+1. Maszyna wirtualna jest zarejestrowana przy użyciu usługi Site Recovery.
 
-2. Ciągła replikacja jest skonfigurowana dla maszyny Wirtualnej. Zapisuje dane na dyskach maszyny Wirtualnej stale są przenoszone do konta magazynu pamięci podręcznej, w lokalizacji źródłowej.
+2. Ciągła replikacja jest skonfigurowana dla maszyny Wirtualnej. Opłata za zapisywanie danych na dyskach maszyn wirtualnych ciągle są przenoszone do konta magazynu pamięci podręcznej w lokalizacji źródłowej.
 
-   ![Włącz proces replikacji, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+   ![Włączanie replikacji procesu, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 
- Usługi Site Recovery, nigdy nie musi mieć łączność przychodzący do maszyny Wirtualnej. Tylko łączność wychodząca jest potrzebne do wykonania poniższych czynności.
+ Usługa Site Recovery nigdy nie wymaga łączności dla ruchu przychodzącego do maszyny Wirtualnej. Tylko łączność wychodząca jest potrzebny do wykonania poniższych czynności.
 
- - Adresy IP/adresy URL usługi odzyskiwania lokacji
+ - Adresy IP/adresami URL usługi odzyskiwania lokacji
  - Adresy URL/IP uwierzytelnianie usługi Office 365
  - Adresy IP konta magazynu pamięci podręcznej
 
@@ -76,14 +76,14 @@ Jeśli do grupy replikacji chcesz dodać maszyny wirtualne z systemem Linux, mus
 
 ### <a name="step-3"></a>Krok 3
 
-Po ciągłej replikacji jest w toku, dysku operacje zapisu są natychmiast przenoszone do konta magazynu pamięci podręcznej. Usługa Site Recovery przetwarza dane i wysyła je do obiektu docelowego konta magazynu lub repliki dyskach zarządzanych. Po przetworzeniu danych punkty odzyskiwania są generowane w docelowe konto magazynu, co kilka minut.
+Gdy ciągłej replikacji jest w toku, zapisy na dysku natychmiast są przenoszone do konta magazynu pamięci podręcznej. Usługa Site Recovery przetwarza dane i wysyła je do obiektu docelowego konta magazynu lub replika usługi managed disks. Po przetworzeniu danych punkty odzyskiwania są generowane w docelowym koncie magazynu, co kilka minut.
 
-## <a name="failover-process"></a>Proces trybu failover
+## <a name="failover-process"></a>Procesu pracy awaryjnej
 
-Po zainicjowaniu tryb failover maszyn wirtualnych są tworzone w docelowej sieci wirtualnej, docelowa grupa zasobów, docelowej podsieci i w zestawie dostępności docelowego. Podczas pracy awaryjnej można użyć dowolnego punktu odzyskiwania.
+Po zainicjowaniu przejścia w tryb failover maszyny wirtualne są utworzone w docelowej grupie zasobów, docelowa sieć wirtualna, podsieć docelowa, a następnie w zestawie dostępności docelowego. Podczas pracy w trybie failover można używać dowolnego punktu odzyskiwania.
 
-![Proces trybu failover](./media/concepts-azure-to-azure-architecture/failover.png)
+![Procesu pracy awaryjnej](./media/concepts-azure-to-azure-architecture/failover.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Szybko replikować](azure-to-azure-quickstart.md) maszyny Wirtualnej platformy Azure w regionie pomocniczym.
+[Szybkie replikowanie](azure-to-azure-quickstart.md) Maszynie wirtualnej platformy Azure do regionu pomocniczego.

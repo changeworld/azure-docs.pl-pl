@@ -8,15 +8,20 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 0f3f2347dd277cb155bf5edf3f8c30da34788b65
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a519cd242b88916d1a11df47c0b7450594848ef5
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437763"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920553"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
+
+> [!WARNING]
+> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem należy [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) do której można Archiwizuj dziennik aktywności. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie dzienniki diagnostyczne i metryki na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla także dziennik aktywności. Konto magazynu nie musi znajdować się w tej samej subskrypcji co emitowane dzienniki, tak długo, jak użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji subskrypcji.

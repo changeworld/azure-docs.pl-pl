@@ -1,62 +1,62 @@
 ---
-title: Oceny obciążeń lokalnych do migracji firmy Contoso na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Contoso ocenia ich maszyn lokalnych do migracji do usługi Azure z migracji bazy danych i migracji Azure
+title: Ocena obciążeń lokalnych pod kątem migracji firmy Contoso na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Contoso ocenia ich maszyn lokalnych do migracji na platformę Azure za pomocą usługi Azure Migration i migrację bazy danych
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f0bbfd7c63ba187ef535168cbac05c3e09420d43
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232497"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37917833"
 ---
-# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: oceny obciążeń lokalnych do migracji do usługi Azure
+# <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: ocena obciążeń lokalnych pod kątem migracji na platformę Azure
 
-W tym artykule opisano, jak Contoso ocenia jego lokalnymi SmartHotel aplikacji w ramach przygotowania do migracji jej na platformie Azure.
+W tym artykule pokazano, jak Contoso ocenia swojej aplikacji SmartHotel w środowisku lokalnym, w ramach przygotowania do jego migracji na platformę Azure.
 
-Ten dokument jest innej serii artykuły, które dokumentów, jak fikcyjnej firmy Contoso migruje jej zasobów lokalnych do chmury Microsoft Azure. Seria zawiera również ogólne informacje, oraz szereg scenariuszy wdrażania, które przedstawiają sposób konfigurowania infrastruktury migracji, oceny przydatności zasobów lokalnych do migracji, a następnie uruchom różnych rodzajów migracji. Scenariusze zwiększa się złożoność i które będą dodawane dodatkowe artykuły wraz z upływem czasu.
+Ten dokument jest trzeci odcinek serii artykułów, które dokumentują sposób fikcyjnej firmy Contoso migruje swoje zasoby lokalne do chmury Microsoft Azure. Seria zawiera ogólne informacje, a szereg scenariuszy wdrażania, które ilustrują sposób konfigurowania infrastruktury migracji, ocenić przydatność, korzystając z zasobów lokalnych do migracji, a następnie uruchom różnego rodzaju migracji. Scenariusze zwiększanie się stopnia skomplikowania i będziemy dodawać dodatkowe artykuły wraz z upływem czasu.
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serii artykułu i przykładowe aplikacje, których będziemy używać. | Dostępne
-[Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | W tym artykule opisano, jak Contoso przygotowuje jego lokalnymi i infrastruktury platformy Azure do migracji. Infrastruktura jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
-Artykuł 3: Oceny zasobów lokalnych (w tym artykule)  | Pokazuje, jak Contoso uruchamia ocenę ich lokalnych dwuwarstwowa SmartHotel aplikacji uruchomionej na VMware. Ich oceny maszyn wirtualnych aplikacji o [migracji Azure](migrate-overview.md) usługi i bazy danych programu SQL Server aplikacji z [Asystenta migracji bazy danych Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
-[Artykuł 4: Rehost maszyny wirtualne platformy Azure i zarządzanych wystąpienie serwera SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikacji frontonu maszyny Wirtualnej w programie [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [migracja bazy danych Azure](https://docs.microsoft.com/azure/dms/dms-overview) usługi migrację do zarządzanego wystąpienie serwera SQL. | Dostępne
-[Artykuł 5: Rehost na maszynach wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migracji aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu usługi Site Recovery.
-[Artykuł 6: Rehost maszyny wirtualne platformy Azure i grup dostępności programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Site Recovery ich użyć do migracji aplikacji maszyny wirtualne i usługi migracja bazy danych do migracji aplikacji bazy danych do grupy dostępności programu SQL Server. | Dostępne
-[Artykuł 7: Rehost aplikacji systemu Linux, aby maszyny wirtualne platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso migruje osService aplikacji systemu Linux przy użyciu usługi Azure Site Recovery.
-[Artykuł 8: Rehost aplikację systemu Linux, aby maszyny wirtualne platformy Azure i serwerem MySQL Azure](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso przeprowadzanie migracji aplikacji Linux osService, przy użyciu usługi Site Recovery dla maszyny Wirtualnej migracji i MySQL Workbench do migracji (na wystąpienie serwera Azure MySQL. | Dostępne
+[Artykuł 1: omówienie](contoso-migration-overview.md) | Zawiera omówienie strategii migracji firmy Contoso, serię artykułów i przykładowe aplikacje, używanych przez firmę Microsoft. | Dostępne
+[Artykuł 2: Wdrażanie infrastruktury platformy Azure](contoso-migration-infrastructure.md) | W tym artykule opisano, jak Contoso przygotowuje jej w środowisku lokalnym i infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używana w przypadku wszystkich scenariuszy migracji Contoso. | Dostępne
+Artykuł 3: Ocena zasobów lokalnych (w tym artykule)  | Pokazuje, jak firmy Contoso jest wykonywany oceny lokalnej SmartHotel dwuwarstwowej aplikacji działających z oprogramowaniem VMware. Ich oceny maszyn wirtualnych aplikacji, za pomocą [usługi Azure Migrate](migrate-overview.md) usługi bazy danych oraz aplikacji programu SQL Server za pomocą [Asystenta migracji bazy danych usługi Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Dostępne
+[Artykuł 4: Rehost maszyn wirtualnych platformy Azure i wystąpienie zarządzane SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji na platformie Azure. Migrowania aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)i przy użyciu bazy danych aplikacji [usługi Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) usługi, aby przeprowadzić migrację do wystąpienia zarządzanego SQL. | Dostępne
+[Artykuł 5: Ponowne hostowanie dla maszyn wirtualnych platformy Azure](contoso-migration-rehost-vm.md) | Pokazuje, jak Contoso migrację swoich aplikacji SmartHotel maszyn wirtualnych tylko przy użyciu Site Recovery.
+[Artykuł 6: Ponowne hostowanie dla maszyn wirtualnych platformy Azure i grup dostępności programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Pokazuje, jak Contoso migruje SmartHotel aplikacji. Ich Usługa Site Recovery do migrowania aplikacji, maszyny wirtualne i usługi migracji bazy danych do migracji bazy danych aplikacji do grupy dostępności programu SQL Server. | Dostępne
+[Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Pokazuje, jak Contoso przeprowadza migrację swoich aplikacji systemu Linux osService przy użyciu usługi Azure Site Recovery.
+[Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i serwer Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Pokazuje, jak Contoso przeprowadza migrację osService aplikacji systemu Linux, za pomocą Site Recovery na potrzeby migracji maszyny Wirtualnej i połączenia aplikacji MySQL Workbench do migracji (na wystąpienie serwera usługi Azure MySQL. | Dostępne
 
 
 ## <a name="overview"></a>Przegląd
 
-Jak uznają migracji na platformie Azure, firma Contoso chce uruchamiać technicznych i finansowych oceny Aby dowiedzieć się, czy jego obciążeń lokalnych nadają się do migracji do chmury. W szczególności zespołu Contoso chcesz ocenić zgodność maszyny i bazy danych do migracji, a Szacowanie zdolności produkcyjnych i koszty związane z zasobami na platformie Azure.
+Firma Contoso rozważa migrację na platformę Azure, chce uzyskać ocenę techniczną i finansową zorientować się, czy swoich lokalnych obciążeń są odpowiednie na potrzeby migracji do chmury. W szczególności zespół Contoso chce ocenić zgodność maszyn i baz danych do migracji oraz oszacować wydajność i koszty związane z hostowaniem zasobów na platformie Azure.
 
-Aby uzyskać ich mokro stopy i Poznaj lepiej technologii, masz zamiar oceny dwa swoje aplikacje lokalne, podsumowane w poniższej tabeli. Należy pamiętać, że ich jest oceny scenariusze migracji tego rehost i zrefaktoryzuj aplikacje do migracji. Dowiedz się więcej o rehosting i refaktoryzacji w [Omówienie migracji Contoso](contoso-migration-overview.md).
+Turystyczną i lepiej zrozumieć technologii, więc chcesz ocenić dwa swoje aplikacje w środowisku lokalnym podsumowane w poniższej tabeli. Należy pamiętać, że ich ocenianych scenariusze migracji tej aplikacji rehost i Refaktoryzacja dla migracji. Dowiedz się więcej o rehosting i refaktoryzacji w [Omówienie migracji Contoso](contoso-migration-overview.md).
 
-**Nazwa aplikacji** | **Platformy** | **Warstwy aplikacji** | **Szczegóły**
+**Nazwa aplikacji** | **Platforma** | **Warstwy aplikacji** | **Szczegóły**
 --- | --- | --- | ---
-SmartHotel<br/><br/> Służy do zarządzania wymaganiami podróży firmy Contoso | Uruchamianie w systemie Windows z bazy danych programu SQL Server | Dwuwarstwowej aplikacji z witryną internetową serwera sieci Web platformy ASP.NET działających na jednej maszyny Wirtualnej (WEBVM) i SQL Server uruchomiony na innym maszyny Wirtualnej (SQLVM) | Maszyny wirtualne są VMware uruchomiona na hoście ESXi zarządzany przez serwer vCenter.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360).
-OSTicket<br/><br/> Usługi contoso technicznej aplikacji | Uruchomiony na systemie Linux/Apache za pomocą języka PHP MySQL (światła). | Dwuwarstwowej aplikacji z frontonu witryny PHP w jednej maszyny Wirtualnej (OSTICKETWEB) i bazy danych MySQL przeprowadzana na innej maszyny Wirtualnej (OSTICKETMYSQL) | Aplikacja jest używany przez klienta aplikacji usługi do śledzenia problemów dla pracowników wewnętrznych i zewnętrznych klientów.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/osTicket/osTicket).
+SmartHotel<br/><br/> Służy do zarządzania wymaganiami podróż firmy Contoso | Systemem Windows przy użyciu bazy danych programu SQL Server | Dwuwarstwowej aplikacji za pomocą frontonu platformy ASP.NET witryny sieci Web na jednej maszyny Wirtualnej (WEBVM) i program SQL Server uruchomiony na innej maszynie Wirtualnej (SQLVM) | Maszyny wirtualne są VMware, uruchomiona na hoście ESXi zarządzanym przez serwer vCenter.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/Microsoft/SmartHotel360).
+OSTicket<br/><br/> Contoso usługi app Service Desk | W systemie Linux/Apache, za pomocą języka PHP MySQL (światła). | Dwuwarstwowej aplikacji za pomocą frontonu witryny sieci Web PHP na jednej maszynie Wirtualnej (OSTICKETWEB) i uruchomiona w innej maszyny Wirtualnej (OSTICKETMYSQL) z bazy danych MySQL | Aplikacja jest używana przez klienta usługi aplikacji do śledzenia problemów dla pracowników wewnętrznych i zewnętrznych klientów.<br/><br/> Przykładowa aplikacja można pobrać z [GitHub](https://github.com/osTicket/osTicket).
 
-## <a name="current-architecture"></a>Architektura bieżącego
+## <a name="current-architecture"></a>Bieżącej architektury
 
 
 Poniżej przedstawiono diagram przedstawiający bieżącej infrastruktury lokalnej firmy Contoso.
 
 ![Architektura firmy Contoso](./media/contoso-migration-assessment/contoso-architecture.png)  
 
-- Firma Contoso ma jeden głównego centrum danych znajduje się w mieście z nowego Jorku w Wschodniej Stanów Zjednoczonych.
-- Mają one trzy dodatkowe gałęzi lokalnej w Stanach Zjednoczonych.
-- Głównego centrum danych jest połączony z Internetem za pomocą połączenia ethernet metro fiber (500 MB/s).
-- Każda gałąź jest lokalnie połączony z Internetem przy użyciu połączenia klasy biznesowych, z tuneli protokołu IPSec sieci VPN do głównego centrum danych. Dzięki temu ich całej sieci trwale zostać nawiązane połączenie oraz optymalizuje łączności z Internetem.
-- Głównego centrum danych jest w pełni zwirtualizowanych z programu VMware. Mają one dwa hosty wirtualizacji ESXi 6.5, które są zarządzane przez vCenter Server 6.5.
+- Firma Contoso ma jednego głównego centrum danych znajdujące się w mieście z nowego Jorku w wschodnich Stanach Zjednoczonych.
+- Mają trzy dodatkowe gałęzie lokalne na terenie Stanów Zjednoczonych.
+- Główne centrum danych jest połączony z Internetem za pomocą połączenia ethernet metro fiber (500 MB/s).
+- Każda gałąź jest lokalnie połączony z Internetem, przy użyciu połączeń klasy biznesowej, przy użyciu tuneli IPSec sieci VPN, wróć do głównego centrum danych. Dzięki temu ich całej sieci, aby trwale połączony oraz optymalizuje łączności z Internetem.
+- Główne centrum danych jest w pełni zwirtualizowany z oprogramowaniem VMware. Mają one dwa hosty wirtualizacji ESXi 6.5, które są zarządzane przez program vCenter Server 6.5.
 - Firma Contoso używa usługi Active Directory do zarządzania tożsamościami i serwery DNS w sieci wewnętrznej.
-- Kontrolery domeny w centrum danych, uruchom na maszynach wirtualnych VMware. Na kontrolerach domeny w lokalnej gałęzi działa na serwerach fizycznych.
+- Kontrolery domeny w centrum danych, uruchom na maszynach wirtualnych VMware. Kontrolery domeny w lokalnej gałęzi, uruchom na serwerach fizycznych.
 
 
 
@@ -64,53 +64,53 @@ Poniżej przedstawiono diagram przedstawiający bieżącej infrastruktury lokaln
 
 ## <a name="business-drivers"></a>Czynniki biznesowe
 
-Kadry kierowniczej IT ściśle działał z ich partnerów biznesowych, aby zrozumieć firmy chce osiągnięcie przy tej migracji:
+Zespół kierowniczy IT ma ściśle współpracowała z ich partnerów biznesowych, aby zrozumieć, co firma chce osiągnąć za pomocą tej migracji:
 
-- **Adres rozwoju firmy**: rośnie Contoso i w związku z tym istnieje nacisk na swoich systemów lokalnych i infrastruktury.
-- **Zwiększenie wydajności**: Contoso musi usunąć niepotrzebne procedur i usprawnić procesy ich deweloperzy i użytkownicy.  Potrzeb biznesowych IT szybkie i czas nie odpadkami lub pieniędzy, w związku z tym dostarczania szybciej na wymagania dotyczące klienta.
-- **Zwiększyć elastyczność**: Contoso IT musi być bardziej odpowiednie do potrzeb firmy. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby włączyć Powodzenie w globalnej gospodarka reakcji.  Nie może pobrać w taki sposób, lub stają się okienek biznesowych.
-- **Skala**: jak pomyślnie rozwojem działalności IT firmy Contoso musi dostarczyć systemów, które są w stanie rośnie w tempie tego samego.
+- **Adres rozwój**: Contoso rośnie i w rezultacie istnieje nacisk na swoich systemów lokalnych i infrastruktury.
+- **Zwiększenie wydajności**: Contoso musi usunąć niepotrzebne procedur i usprawniać procesy dla ich deweloperów i użytkowników.  Potrzeby biznesowe IT szybkie i nie odpadów czasu lub pieniądze, w związku z tym dostarczania szybciej na wymagania klientów.
+- **Zwiększenie elastyczności**: Contoso IT musi być w reakcji na potrzeby biznesowe. Musi być w stanie szybciej niż zmiany w witrynie marketplace, aby umożliwić sukces w globalnej gospodarki reagować.  Nie może pobrać w taki sposób, lub stają się blocker biznesowych.
+- **Skala**: w miarę rozwoju firmy pomyślnie, IT firmy Contoso, musisz podać systemów, które można rozwijać w tym samym tempie.
 
 ## <a name="assessment-goals"></a>Cele oceny
 
-Zespół chmury Contoso ma przypięty dół cele dotyczące ich oceny migracji:
+Zespół chmury firmy Contoso ma przypięte dół cele dotyczące ich oceny migracji:
 
-- Po migracji aplikacji na platformie Azure powinien mają te same możliwości wydajności, jak obecnie w środowisku VMWare lokalnymi.  Przenoszeniu do chmury nie oznacza, że wydajność aplikacji jest mniej istotny.
-- Contoso należy zrozumieć zgodność aplikacji i baz danych z wymaganiami platformy Azure, a także ich opcje hostingu na platformie Azure.
-- Firmy Contoso administracyjnej bazy danych należy zminimalizować po aplikacje zostały przeniesione do chmury.  
-- Firma Contoso chce zrozumienia nie tylko opcje migracji, ale także koszty związane z infrastrukturą, gdy zostanie przeniesiona do chmury.
+- Po migracji aplikacji na platformie Azure mają te same możliwości wydajności, jak obecnie w środowisku programu VMWare w środowisku lokalnym.  Przejście do chmury nie oznacza, że wydajność aplikacji jest mniej istotny.
+- Firma Contoso potrzebuje do zrozumienia zgodność swojej aplikacji i baz danych z wymaganiami platformy Azure, a także ich opcje hostingu platformy Azure.
+- Należy zminimalizować administracji bazą danych firmy Contoso, po aplikacje zostały przeniesione do chmury.  
+- Firma Contoso chce zrozumienia nie tylko opcje migracji, ale także koszty związane z infrastrukturą, po przeniesieniu do chmury.
 
 ## <a name="assessment-tools"></a>Narzędzia do oceny
-Firma Contoso używa narzędzia Microsoft do oceny. Te narzędzia są wyrównane z ich cele i należy zapewnić użytkownikom informacje, które są im potrzebne.
+Contoso korzysta z narzędzi firmy Microsoft do oceny. Te narzędzia dostosowanie ich celów oraz dostarczają informacje, które są im potrzebne.
 
 **Technologia** | **Opis** | **Koszty**
 --- | --- | ---
-[Asystent migracji bazy danych (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Będzie przez nich używana DMA do oceny i wykrywania problemów ze zgodnością, które mogą mieć wpływ na ich funkcji bazy danych na platformie Azure. DMA ocenia parzystość funkcji platformy SQL źródeł i obiektów docelowych i zaleca ulepszenia wydajności i niezawodności. | Narzędzie to można pobrać bezpłatnie.
-[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso będą używać tej usługi do oceny ich maszyny wirtualne VMware. Ocenia ona kwalifikowanie się maszyn do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn uruchamianych na platformie Azure.  | Brak aktualnie 2018 może bezpłatnie korzystać z tej usługi.
+[Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Użyjemy ich DMA do oceny i wykrycia problemów ze zgodnością, które mogą mieć wpływ na ich funkcje bazy danych na platformie Azure. Program DMA ocenia równoważność funkcji między źródłami SQL i elementy docelowe i zaleca wydajności i niezawodności. | Narzędzie to można pobrać bezpłatnie.
+[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso będą używać tej usługi do oceny maszyn wirtualnych VMware. Ocenia ona kwalifikowanie się maszyn do migracji na platformę Azure. Oprócz tego przedstawia szacunki dotyczące rozmiarów i kosztów maszyn uruchamianych na platformie Azure.  | Brak aktualnie może być 2018 Brak opłat za korzystanie z tej usługi.
 [Mapa usługi](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Usługa Azure Migrate przedstawia zależności między maszynami, które chcesz migrować, za pomocą rozwiązania Service Map, |  które jest częścią usługi Azure Log Analytics. Obecnie można go używać bezpłatnie przez 180 dni.
 
-W tym scenariuszu Contoso pobiera i uruchamia DMA do oceny lokalną bazą danych programu SQL Server dla aplikacji podróży. Używają Azure migracji z mapowaniem zależności do oceny aplikacji maszyn wirtualnych, przed migracją do systemu Azure.
+W tym scenariuszu firma Contoso pobiera i uruchamia program DMA do oceny lokalnej bazy danych programu SQL Server dla swoich aplikacji turystycznej. Używają usługi Azure migrate z mapowaniem zależności, aby ocenić maszyny wirtualne aplikacji przed migracją na platformę Azure.
 
 
 
-## <a name="assessment-architecture"></a>Architektura oceny
+## <a name="assessment-architecture"></a>Architekturę do oceny
 
 
 ![architekturę do oceny migracji](./media/contoso-migration-assessment/migration-assessment-architecture.png)
 
-- Firma Contoso używa nazwy fikcyjne, reprezentujący organizacji typowego przedsiębiorstwa. 
-- Firma Contoso ma lokalnego centrum danych (**centrum danych firmy contoso**), z kontrolerami domeny lokalnej (CONTOSODC1, CONTOSODC2).
+- Firma Contoso ma nazwę fikcyjne reprezentujących typowe przedsiębiorstwo.
+- Firma Contoso ma lokalne centrum danych (**contoso-datacenter**), z kontrolerami domeny w środowisku lokalnym (CONTOSODC1, CONTOSODC2).
 - Maszyny wirtualne VMware znajdują się na VMware ESXI hostach z systemem w wersji 6.5. Hosty: **contosohost1**, **contosohost2**
-- Zarządza w środowisku programu VMware vCenter server 6.5 (**venter**uruchomionego na maszynie Wirtualnej.
-- Aplikacja podróży SmartHotel:
-    - Aplikacja jest warstwowa w dwóch maszyn wirtualnych VMware **WEBVM** i **SQLVM**.
+- Środowisko VMware jest zarządzane przez serwer vCenter 6.5 (**venter**uruchomiony na maszynie Wirtualnej.
+- SmartHotel aplikacji turystycznej:
+    - Aplikacja jest warstwowego na dwie maszyny wirtualne VMware, **WEBVM** i **SQLVM**.
     - Maszyny wirtualne znajdują się na hoście VMware ESXi **contosohost1.contoso.com**.
-    - Maszyny wirtualne są uruchomione systemu Windows Server 2008 R2 Datacenter z dodatkiem SP1.
+    - Maszyny wirtualne działają w systemie Windows Server 2008 R2 Datacenter z dodatkiem SP1.
 - Środowisko VMware jest zarządzane przez program vCenter Server (**vcenter.contoso.com**) uruchomiony na maszynie wirtualnej.
-- OSTicket obsługi technicznej aplikacji:
-    - Aplikacja jest warstwowa w dwóch maszyn wirtualnych, **OSTICKETWEB** i **OSTICKETMYSQL**.
-    - Maszyny wirtualne są uruchomione na Ubuntu Linux Server 16.04-LTS.
-    - Maszyna wirtualna OSTICKETWEB działa Apache 2 i PHP w wersji 7.0.
+- OSTicket usługi aplikacji działu:
+    - Aplikacja jest warstwowa między dwiema maszynami wirtualnymi, **OSTICKETWEB** i **OSTICKETMYSQL**.
+    - Maszyny wirtualne są uruchomione na serwerze Linux Ubuntu 16.04-LTS.
+    - Maszyna wirtualna OSTICKETWEB jest uruchomiona, Apache 2 oraz środowisko PHP 7.0.
     - Maszyna wirtualna OSTICKETMYSQL działa MySQL 5.7.22.
 
 ![Architektura](./media/contoso-migration-assessment/architecture.png)
@@ -118,80 +118,80 @@ W tym scenariuszu Contoso pobiera i uruchamia DMA do oceny lokalną bazą danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Oto Contoso (a) wymaga oceny:
+Poniżej przedstawiono Contoso (i) wymaga oceny:
 
-- Dostęp właścicielem lub współautorem subskrypcji platformy Azure lub dla grupy zasobów w subskrypcji Azure.
+- Dostęp współautora lub właściciela subskrypcji platformy Azure lub grupy zasobów w subskrypcji platformy Azure.
 - Lokalny program vCenter Server w wersji 5.5, 6.0 lub 6.5.
 - Konto tylko do odczytu w programie vCenter Server lub uprawnienia do utworzenia takiego konta.
 - Uprawnienia do utworzenia maszyny wirtualnej w programie vCenter Server przy użyciu szablonu .OVA.
 - Co najmniej jeden host ESXi w wersji 5.0 lub nowszy.
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
-- Uprawnienia do instalowania agentów Azure migracji na każdej maszynie Wirtualnej.
+- Uprawnienia do instalowania agentów usługi Azure Migrate na każdej maszynie Wirtualnej.
 - Maszyny wirtualne powinny mieć bezpośrednie połączenie z Internetem.
         – Możesz ograniczyć dostęp do Internetu do [wymaganych adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).
-        -Jeśli maszyn bez łączności z Internetem, [bramy OMS](../log-analytics/log-analytics-oms-gateway.md) należy zainstalować na nich.
+        -Jeśli maszyn bez łączności internetowej [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) konieczne jest zainstalowanie na nich.
 - Nazwa FQDN maszyny wirtualnej z uruchomionym wystąpieniem programu SQL Server, używana do oceny bazy danych.
 - Zapora systemu Windows uruchomiona na maszynie wirtualnej programu SQL Server powinna zezwalać na połączenia zewnętrzne na porcie TCP 1433 (domyślnym), aby umożliwić nawiązanie połączenia przez program DMA.
 
 
-## <a name="assessment-overview"></a>Omówienie oceny
+## <a name="assessment-overview"></a>Przegląd oceny
 
-Oto jak Contoso będzie przeprowadzenie oceny:
+Oto jak Contoso zamierza czy oceny:
 
 
 > [!div class="checklist"]
-> * **Krok 1: Pobierz i zainstaluj DMA**: przygotowanie DMA oceny lokalną bazą danych programu SQL Server.
-> * **Krok 2: Ocena bazy danych o DMA**: uruchamiać i analizować oceny bazy danych.
-> * **Krok 3: Przygotowanie do oceny maszyny Wirtualnej z migracji Azure**: Konfigurowanie lokalnych kont i dostrajał VMware ustawienia.
-> * **Krok 4: Odnajdywanie maszyn wirtualnych lokalnie z migracji Azure**: Utwórz moduł zbierający Azure migracji maszyny Wirtualnej. Następnie uruchom moduł zbierający do odnajdywanie maszyn wirtualnych w celu oceny.
-> * **Krok 5: Przygotowanie do analizy zależności z migracji Azure**: migracji Azure zainstalować agentów na maszynach wirtualnych, dzięki czemu będą mogli wyświetlać mapowania zależności między maszynami wirtualnymi.
-> * **Krok 6: Oceny maszyn wirtualnych o migracji Azure**: Sprawdź zależności, grupowanie maszyn wirtualnych i uruchamianie oceny. Po oceny jest gotowy, ich analizować w ramach przygotowania do migracji.
+> * **Krok 1: Pobierz i zainstaluj program DMA**: Przygotujemy program DMA do oceny lokalnej bazy danych programu SQL Server.
+> * **Krok 2: Ocena bazy danych za pomocą programu DMA**: uruchamianie i analizowanie oceny bazy danych.
+> * **Krok 3: Przygotowywanie oceny maszyn wirtualnych za pomocą usługi Azure Migrate**: ustawienia lokalne konta i dopasujemy VMware.
+> * **Krok 4. odnajdywanie lokalnych maszyn wirtualnych za pomocą usługi Azure Migrate**: Tworzenie usługi Azure Migrate maszyna wirtualna modułu zbierającego. Następnie uruchom moduł zbierający w celu odnalezienia maszyn wirtualnych do oceny.
+> * **Krok 5: Przygotowywanie analizy zależności za pomocą usługi Azure Migrate**: Zainstaluj usługę Azure Migrate agentów na maszynach wirtualnych, dzięki czemu użytkownicy widzą mapowanie zależności między maszynami wirtualnymi.
+> * **Krok 6: Oceny maszyn wirtualnych za pomocą usługi Azure Migrate**: Sprawdź zależności, grupy maszyn wirtualnych i uruchomimy ocenę. Gdy ocena będzie gotowa, ich analizować w ramach przygotowania do migracji.
 
 
-## <a name="step-1-download-and-install-the-dma"></a>Krok 1: Pobierz i zainstaluj DMA
+## <a name="step-1-download-and-install-the-dma"></a>Krok 1: Pobieranie i instalowanie programu DMA
 
-1. Contoso pobiera DMA z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
-    - Asystent można zainstalować na dowolnym komputerze, który może połączyć się z wystąpieniem programu SQL. Nie musisz go uruchamiać na maszynie programu SQL Server.
-    - Nie można uruchomić na komputerze hosta programu SQL Server.
-2. Uruchomieniu pliku pobranego Instalatora (DownloadMigrationAssistant.msi), aby rozpocząć instalację.
-3. Na **Zakończ** strony, wybierają **uruchomić Asystenta firmy Microsoft danych migracji** przed zakończeniem pracy kreatora.
+1. Contoso — pliki do pobrania program DMA z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595).
+    - Asystent można zainstalować na dowolnym komputerze mającym połączenie z wystąpieniem serwera SQL. Nie musisz go uruchamiać na maszynie programu SQL Server.
+    - Nie można uruchomić na maszynie hosta programu SQL Server.
+2. Działają one pobrany plik Instalatora (DownloadMigrationAssistant.msi), aby rozpocząć instalację.
+3. Na **Zakończ** strony, wybierają **Uruchom program Microsoft Data Migration Assistant** przed zakończeniem pracy kreatora.
 
-## <a name="step-2-run-and-analyze-the-database-assessment-for-smarthotel"></a>Krok 2: Uruchom i analizować oceny bazy danych dla SmartHotel
+## <a name="step-2-run-and-analyze-the-database-assessment-for-smarthotel"></a>Krok 2: Uruchamianie i analizowanie oceny bazy danych dla SmartHotel
 
-Contoso można teraz uruchomić ocenę do analizowania ich lokalnego serwera SQL dla aplikacji SmartHotel.
+Contoso można teraz uruchomić ocenę, aby przeanalizować ich na lokalnym serwerze SQL Server dla aplikacji SmartHotel.
 
-1. W bazie danych migracji Asystencie, kliknij przycisk **nowy**, wybierz pozycję **oceny**i nadaj nazwę projektu - oceny **SmartHotel**.
-2. Wybierają **typ serwera źródła** jako **programu SQL Server na maszynach wirtualnych Azure**. 
+1. W Asystencie migracji bazy danych kliknij przycisk **New**, wybierz opcję **oceny**i podaj nazwę projektu — oceny **SmartHotel**.
+2. Wybierają **typ serwera źródła** jako **programu SQL Server na maszynach wirtualnych Azure**.
 
     ![Wybierz źródło](./media/contoso-migration-assessment/dma-assessment-1.png)
 
     > [!NOTE]
-      Aktualnie program DMA nie obsługuje oceny migracji na wystąpienie zarządzane SQL. Jako obejście Contoso używa programu SQL Server na maszynie Wirtualnej Azure jako element docelowy domniemana oceny.
+      Aktualnie program DMA nie obsługuje oceny migracji na wystąpienie zarządzane SQL. Obejść ten problem firma Contoso używa programu SQL Server na maszynie Wirtualnej platformy Azure jako tymczasowego obiektu docelowego dla oceny.
 
-3. W **Wybierz docelową wersję**, wybierają 2017 serwera SQL w wersji docelowej. Należy wybrać tę opcję, ponieważ jest to wersja używanego przez zarządzane wystąpienia serwera SQL.
-4. Wybierają informacji dotyczących zgodności i nowe funkcje:
-    - **Problemy ze zgodnością** należy zwrócić uwagę zmiany, która może spowodować uszkodzenie migracji lub które wymagają mniejsze zmiany przed migracją. Zapewnia informuje o funkcjach obecnie w użyciu, które zostały wycofane. Problemy są uporządkowane według poziomu zgodności.
-    - **Nowe funkcje zalecenie** zawiera informacje dotyczące nowych funkcji w docelowej platformy programu SQL Server, który może służyć do bazy danych po zakończeniu migracji. Są one uporządkowane według wydajności, zabezpieczeń i magazynu.
+3. W **Wybierz docelową wersję**, wybierają program SQL Server 2017 w wersji docelowej. Należy wybrać tę opcję, ponieważ jest to wersja używane przez wystąpienie zarządzane usługi SQL.
+4. Należy wybrać, aby znaleźć informacje o zgodności oraz nowe funkcje:
+    - **Problemy ze zgodnością** należy pamiętać, zmiany, które mogą uniemożliwić migrację lub które wymagają drobnych korekt przed migracją. Przechowuje informuje o funkcjach aktualnie w użyciu, które zostały wycofane. Problemy są uporządkowane według poziomu zgodności.
+    - **Rekomendowane nowe funkcje** informacje o nowych funkcjach w docelowej platformy SQL Server, który może służyć do bazy danych po zakończeniu migracji. Są one uporządkowane według wydajności, zabezpieczeń i magazynu.
 
     ![Wybieranie obiektu docelowego](./media/contoso-migration-assessment/dma-assessment-2.png)
 
-2. W **Połącz z serwerem**, nazwę maszyny Wirtualnej uruchomionej bazy danych i poświadczeń dostępu do niego. Należy włączyć **zaufania certyfikatów serwera** się upewnić, że ich może uzyskać dostęp do programu SQL Server. Następnie użytkownik klika polecenie **Connect**.
+2. W **nawiązywanie połączenia z serwerem**, użytkownik podał nazwę maszyny Wirtualnej uruchomionej bazy danych i poświadczenia dostępu do niego. Należy włączyć **certyfikat serwera zaufania** się upewnić, że będą oni mogli uzyskać do programu SQL Server. A następnie kliknięciu **Connect**.
 
     ![Wybieranie obiektu docelowego](./media/contoso-migration-assessment/dma-assessment-3.png)
 
-3. W **źródła Dodaj**, co zwiększa bazy danych, którego chce ocenić, a następnie kliknij przycisk **dalej** uruchomić oceny.
-4. Utworzono oceny.
-    
+3. W **Dodaj źródło**, co zwiększa bazy danych chcą oceny, a następnie kliknij przycisk **dalej** Aby uruchomić ocenę.
+4. Ocena jest tworzony.
+
     ![Tworzenie oceny](./media/contoso-migration-assessment/dma-assessment-4.png)
 
-5. W **wyników przeglądu**, będą mogli wyświetlać wyniki oceny.
+5. W **wyników przeglądu**, ich można zobaczyć wyniki oceny.
 
 
 ### <a name="analyze-the-database-assessment"></a>Analizowanie oceny bazy danych
 
-Wyniki są wyświetlane, gdy są one dostępne. Jeżeli ich rozwiązywanie problemów muszą kliknij **ponowne uruchomienie oceny** ponowne uruchomienie oceny.
+Wyniki są wyświetlane, gdy są one dostępne. Jeśli ich rozwiązywanie problemów dotyczących muszą oni kliknij **Uruchom ponownie ocenę** ponownie uruchomić ocenę.
 
-1. W **problemy ze zgodnością** raport, sprawdź wszystkie problemy na każdym poziomie zgodności. Poziomy zgodności są mapowane na wersje programu SQL Server w następujący sposób:
+1. W **problemy ze zgodnością** raportu, sprawdź wszystkie problemy na każdym poziomie zgodności. Poziomy zgodności są mapowane na wersje programu SQL Server w następujący sposób:
 
     - 100: SQL Server 2008/Azure SQL Database
     - 110: SQL Server 2012/Azure SQL Database
@@ -201,29 +201,29 @@ Wyniki są wyświetlane, gdy są one dostępne. Jeżeli ich rozwiązywanie probl
 
     ![Problemy ze zgodnością](./media/contoso-migration-assessment/dma-assessment-5.png)
 
-2. W **funkcji zalecenia** raport Contoso można wyświetlić funkcje wydajności, zabezpieczeń i magazynowania, które oceny zaleca się po migracji. Zaleca się różne funkcje, w tym OLTP w pamięci i magazynu kolumn, bazy danych Stretch, zawsze zaszyfrowane, dynamicznego maskowania danych i funkcji przezroczystego szyfrowania danych (TDE).
+2. W **Rekomendowaną** zgłosić, Contoso, można wyświetlić funkcje wydajności, zabezpieczeń i magazynu, jakie po migracji. Różne funkcje, zaleca się w tym przetwarzanie OLTP danych w pamięci i magazynu kolumn, Stretch Database, Always Encrypted, dynamiczne maskowanie danych i przezroczystego szyfrowania danych (TDE).
 
     ![Zalecenia dotyczące funkcji](./media/contoso-migration-assessment/dma-assessment-6.png)
 
     > [!NOTE]
-    > Zalecamy Contoso [umożliwia funkcji TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) dla wszystkich programu SQL Server baz danych jest to jeszcze bardziej krytyczne w przypadku baz danych w chmurze. Funkcji TDE powinna być włączona tylko po migracji. Jeśli już włączono funkcji TDE, należy przenieść certyfikatu lub klucza asymetrycznego do głównej bazy danych serwera docelowego. [Dowiedz się więcej](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+    > Zaleca się Contoso [włącza funkcję TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) dla wszystkich programu SQL Server baz danych, jest to jeszcze ważniejsze w przypadku baz danych w chmurze. Funkcja TDE powinna być włączona dopiero po zakończeniu migracji. Jeśli funkcja TDE jest już włączony, należy przenieść certyfikatu lub klucza asymetrycznego z główną bazą danych serwera docelowego. [Dowiedz się więcej](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 
-2. Ich można wyeksportować oceny w formacie JSON lub CSV.
+2. Mogą one eksportować oceny w formacie JSON lub CSV.
 
-Należy pamiętać, że jeśli korzystasz z większą oceny skali można:
+Należy zwrócić uwagę na to, że jeśli uruchamiasz ocenę w większej skali można:
 
-- Równoczesne uruchamianie wielu ocen i wyświetlić stan oceny przez otwarcie **wszystkie oceny** strony.
-- [Konsolidacja oceny do bazy danych programu SQL Server](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database).
-- [Konsolidacja oceny do raportu usługi Power BI](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017).
+- Uruchamiać wiele ocen jednocześnie i wyświetlić stan ocen, otwierając **wszystkich ocen** strony.
+- [Konsolidować oceny w bazie danych programu SQL Server](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database).
+- [Konsolidować oceny w raporcie usługi Power BI](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017).
 
 
-## <a name="step-3-prepare-for-vm-assessment-with-azure-migrate"></a>Krok 3: Przygotowanie do oceny maszyny Wirtualnej z platformy Azure migracji
+## <a name="step-3-prepare-for-vm-assessment-with-azure-migrate"></a>Krok 3: Przygotowywanie oceny maszyn wirtualnych za pomocą usługi Azure Migrate
 
-Contoso musi utworzyć konto VMware, który migracji Azure będzie używany do automatyczne odnajdywanie maszyn wirtualnych w celu oceny, sprawdź uprawnienia do tworzenia maszyn wirtualnych, należy pamiętać, porty, które muszą być otwarte i Ustaw statystyki ustawienia poziom.
+Contoso potrzebuje Utwórz konto VMware, używanego przez usługę Azure Migrate spowoduje automatyczne odnajdywanie maszyn wirtualnych do oceny, weryfikowanie uprawnień do utworzenia maszyny Wirtualnej, zwróć uwagę na porty, które muszą być otwarte i ustaw ustawienia poziomu statystyk.
 
 ### <a name="set-up-a-vmware-account"></a>Konfigurowanie konta VMware
 
- Odnajdywanie maszyn wirtualnych wymaga konta tylko do odczytu w programie vCenter o następujących właściwościach: 
+ Odnajdywanie maszyny Wirtualnej wymaga konta tylko do odczytu w programie vCenter z następującymi właściwościami:
 
 - Typ użytkownika: co najmniej użytkownik tylko do odczytu.
 - Uprawnienia: obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu.
@@ -232,18 +232,18 @@ Contoso musi utworzyć konto VMware, który migracji Azure będzie używany do a
 
 ### <a name="verify-permissions-to-create-a-vm"></a>Weryfikowanie uprawnień do utworzenia maszyny wirtualnej
 
-Contoso Sprawdź, czy ma uprawnienia do tworzenia maszyny Wirtualnej przez zaimportowanie pliku w. Format komórek jajowych. [Dowiedz się więcej](https://kb.vmware.com/s/article/1023189?other.KM_Utility.getArticleLanguage=1&r=2&other.KM_Utility.getArticleData=1&other.KM_Utility.getArticle=1&ui-comm-runtime-components-aura-components-siteforce-qb.Quarterback.validateRoute=1&other.KM_Utility.getGUser=1).
+Contoso — Sprawdź, czy ma uprawnienia do tworzenia maszyny Wirtualnej, importując plik w. OVA format. [Dowiedz się więcej](https://kb.vmware.com/s/article/1023189?other.KM_Utility.getArticleLanguage=1&r=2&other.KM_Utility.getArticleData=1&other.KM_Utility.getArticle=1&ui-comm-runtime-components-aura-components-siteforce-qb.Quarterback.validateRoute=1&other.KM_Utility.getGUser=1).
 
 ### <a name="verify-ports"></a>Weryfikowanie portów
 
-Ocena Contoso używa mapowania zależności. Ta funkcja wymaga zainstalowanego na maszynach wirtualnych chcesz ocenić agenta. Agent musi mieć możliwość połączenia z platformą Azure z portu TCP 443 na każdej maszynie Wirtualnej. [Dowiedz się więcej](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid) o wymaganiach dotyczących połączenia.
+Ocena Contoso używa mapowanie zależności. Ta funkcja wymaga zainstalowania na maszynach wirtualnych, którą chcesz ocenić agenta. Agent musi być w stanie połączyć się z platformy Azure przez port TCP 443 na każdej maszynie Wirtualnej. [Dowiedz się więcej](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid) o wymaganiach dotyczących połączenia.
 
 
 ### <a name="set-statistics-settings"></a>Ustawianie statystyk
 
-Przed rozpoczęciem wdrożenia Contoso ustawiony poziom 3 ustawienia statystyki dla serwera vCenter. Należy pamiętać, że:
+Przed rozpoczęciem wdrażania, Contoso należy ustawić ustawienia statystyk programu vCenter Server na poziom 3. Należy pamiętać, że:
 
-- Po ustawieniu poziomu, trzeba poczekać co najmniej dzień przed uruchomieniem oceny. W przeciwnym razie może ona nie działać zgodnie z oczekiwaniami.
+- Po ustawieniu poziomu, musisz poczekać co najmniej dzień, zanim uruchomisz ocenę. W przeciwnym razie może ona nie działać zgodnie z oczekiwaniami.
 - Jeśli zostanie ustawiony poziom wyższy niż 3, ocena będzie działać w następujący sposób:
     - Nie będą zbierane dane wydajności dysków ani sieci.
     - W przypadku magazynu usługa Azure Migrate zaleca standardowy dysk na platformie Azure, o takim samym rozmiarze co dysk lokalny.
@@ -251,11 +251,11 @@ Przed rozpoczęciem wdrożenia Contoso ustawiony poziom 3 ustawienia statystyki 
     - W przypadku obliczeń usługa Azure Migrate uwzględnia liczbę rdzeni oraz rozmiar pamięci i zaleca utworzenie maszyny wirtualnej platformy Azure o takiej samej konfiguracji. Jeśli występuje wiele kwalifikujących się rozmiarów maszyn wirtualnych platformy Azure, zalecany jest rozmiar, który generuje najniższy koszt.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) o rozmiarach na poziomie 3.
 
-Poziom ich ustawić w następujący sposób:
+One Ustaw poziom w następujący sposób:
 
-1. VSphere klienta sieci Web ich Otwórz wystąpienie programu vCenter server.
-2. W **Zarządzaj** > **ustawienia** > **ogólne**, użytkownik klika polecenie **Edytuj**.
-3. W **statystyki**, ich ustawienie statystyki poziomu **poziom 3**.
+1. W kliencie internetowym vSphere one Otwórz wystąpienie programu vCenter server.
+2. W **Zarządzaj** > **ustawienia** > **ogólne**, klikając **Edytuj**.
+3. W **statystyki**, ustawiają statystyki ustawienia poziomu **Level 3**.
 
     ![Poziom statystyki programu vCenter](./media/contoso-migration-assessment/vcenter-statistics-level.png)
 
@@ -263,12 +263,12 @@ Poziom ich ustawić w następujący sposób:
 
 ## <a name="step-4-discover-vms"></a>Krok 4: Odnajdywanie maszyn wirtualnych
 
-Odnajdywanie maszyn wirtualnych, Contoso tworzy projekt platformy Azure migracji. Ich pobrać i skonfigurować moduł zbierający maszyny Wirtualnej i uruchomić moduł zbierający do odnajdywanie swoich lokalnych maszyn wirtualnych.
+Do odnalezienia maszyn wirtualnych, Contoso utworzy projekt usługi Azure Migrate. Ich pobieranie i konfigurowanie maszyny Wirtualnej modułu zbierającego oraz uruchom moduł zbierający, aby odnaleźć swoich lokalnych maszyn wirtualnych.
 
 ### <a name="create-a-project"></a>Tworzenie projektu
 
-1. W [portalu Azure](https://portal.azure.com), wyszukiwania **migracji Azure**i Utwórz projekt (ContosoMigration).
-2. Określ nazwę projektu subskrypcji platformy Azure i utworzyć nową grupę zasobów platformy Azure, **ContosoFailoverRG**. Należy pamiętać, że:
+1. W [witryny Azure portal](https://portal.azure.com), wyszukiwania **usługi Azure Migrate**i Utwórz projekt (ContosoMigration).
+2. Określ nazwę projektu, a subskrypcja platformy Azure i Utwórz nową grupę zasobów platformy Azure, **ContosoFailoverRG**. Należy pamiętać, że:
 
     - Projekt usługi Azure Migrate można utworzyć tylko w regionie Zachodnio-środkowe stany USA lub Wschodnie stany USA.
     - Migrację możesz zaplanować dla dowolnej lokalizacji docelowej.
@@ -279,55 +279,54 @@ Odnajdywanie maszyn wirtualnych, Contoso tworzy projekt platformy Azure migracji
 
 ### <a name="download-the-collector-appliance"></a>Pobieranie urządzenia modułu zbierającego
 
-Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zbierającym. Ta maszyna wirtualna służy do odnajdowania lokalnych maszyn wirtualnych VMware i wysyłania dotyczących ich metadanych do usługi Azure Migrate. Aby skonfigurować urządzenia modułu zbierającego, pliki do pobrania firmy Contoso. Szablon komórek jajowych i importuje go do lokalnego serwera vCenter do utworzenia maszyny Wirtualnej.
+Usługa Azure Migrate tworzy lokalną maszynę wirtualną, nazywaną modułem zbierającym. Ta maszyna wirtualna służy do odnajdowania lokalnych maszyn wirtualnych VMware i wysyłania dotyczących ich metadanych do usługi Azure Migrate. Aby skonfigurować urządzenie modułu zbierającego, pliki do pobrania firmy Contoso. OVA szablonu, a następnie importuje go do lokalnego serwera vCenter do utworzenia maszyny Wirtualnej.
 
-1. W projekcie migracji Azure > **wprowadzenie** > **odnajdź & oceny** > **odnajdywanie maszyn**, będą oni mogli pobrać. Plik szablonu komórki jajowe.
-2. Kopiowania projektu identyfikator i klucz. Są one potrzebne do skonfigurowania modułu zbierającego.
+1. W projekcie usługi Azure Migrate > **wprowadzenie** > **Odnajdź i oceń** > **odnajdź maszyny**, będą oni mogli pobrać. Plik szablonu OVA.
+2. Skopiuj ich identyfikator i klucz projektu. Są one wymagane do skonfigurowania modułu zbierającego.
 
     ![Pobieranie pliku OVA](./media/contoso-migration-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>Weryfikowanie urządzenia modułu zbierającego
 
-Przed wdrożeniem maszyny Wirtualnej, Contoso sprawdza, czy. Komórki jajowe plik jest bezpieczny.
+Przed wdrożeniem maszyny Wirtualnej, Contoso sprawdza, czy. Plik OVA jest bezpieczne.
 
-1. Na komputerze, na którym plik pobrany ich Otwórz okno polecenia administratora.
-2. One uruchom następujące polecenie, aby wygenerować skrótu dla komórek jajowych:
+1. Na komputerze, do którego pobrano plik ich Otwórz okno wiersza polecenia administratora.
+2. One uruchom następujące polecenie, aby wygenerować skrót pliku ova:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom (wersja 1.0.9.7)
+3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom (wersja 1.0.9.12)
 
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | d0363e5d1b377a8eb08843cf034ac28a
+SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
 ### <a name="create-the-collector-appliance"></a>Tworzenie urządzenia modułu zbierającego
 
-Teraz Contoso można zaimportować pobrany plik do programu vCenter Server i aprowizuj serwer konfiguracji maszyny Wirtualnej.
+Teraz Contoso można zaimportować pobrany plik na serwer vcenter i aprowizuj serwer konfiguracji maszyny Wirtualnej.
 
-1. W konsoli klienta vSphere, kliknij przycisk **pliku** > **wdrażanie szablonu OVF**.
+1. W konsoli klienta vSphere kliknij pozycję **pliku** > **wdrażania szablonu OVF**.
 
     ![Wdrażanie pliku OVF](./media/contoso-migration-assessment/vcenter-wizard.png)
 
-2. W Kreatorze wdrażania szablonu OVF > **źródła**, określają lokalizację. Plik komórek jajowych.
-3. W **nazwy i lokalizacji**, określa przyjazną nazwę dla modułu zbierającego maszyny Wirtualnej, a lokalizacja magazynu, w którym będzie hostowana maszyna wirtualna. Określają również hosta lub klastra, na którym uruchomiona jest moduł zbierający urządzenia.
-5. W **magazynu**, określają lokalizację magazynu i **Format dysku**, w jaki sposób chcą, aby udostępnić magazyn.
-7. W **mapowanie sieci**, określają sieci, z którą połączy się modułu zbierającego maszyny Wirtualnej. Sieć musi mieć połączenie z Internetem w celu wysyłania metadanych do platformy Azure.
-8. Przejrzyj ustawienia i wybierz **włączają po wdrożeniu**> **Zakończ**. Po utworzeniu urządzenia pojawi się komunikat potwierdzający pomyślne zakończenie operacji.
+2. W Kreatorze wdrażania szablonu OVF > **źródła**, określają lokalizację. Plik OVA.
+3. W **nazwę i lokalizację**, określają przyjazną nazwę maszyny Wirtualnej modułu zbierającego i lokalizacji magazynu, w którym będzie hostowana maszyna wirtualna. Określają one również host lub klaster, na którym będzie działać urządzenie modułu zbierającego.
+5. W **magazynu**, określają lokalizację magazynu, a następnie w **Format dysku**, jak mają być aprowizacji magazynu.
+7. W **mapowanie sieci**, określają sieci, z którą połączy się maszyna wirtualna modułu zbierającego. Sieć musi mieć połączenie z Internetem w celu wysyłania metadanych do platformy Azure.
+8. Przejrzyj ustawienia i wybierz **Włącz po wdrożeniu**> **Zakończ**. Po utworzeniu urządzenia pojawi się komunikat potwierdzający pomyślne zakończenie operacji.
 
 ### <a name="run-the-collector-to-discover-vms"></a>Uruchamianie modułu zbierającego w celu odnalezienia maszyn wirtualnych
 
-Teraz uruchom moduł zbierający do odnajdywanie maszyn wirtualnych. Należy pamiętać, że moduł zbierający aktualnie obsługuje tylko "Angielski (Stany Zjednoczone)" jako język systemu operacyjnego i język interfejsu modułu zbierającego.
+Teraz uruchom moduł zbierający w celu odnalezienia maszyn wirtualnych. Należy pamiętać, że moduł zbierający aktualnie obsługuje tylko "Angielski (Stany Zjednoczone)" jako język systemu operacyjnego i język interfejsu modułu zbierającego.
 
-1. W vSphere Client konsoli > **Otwórz konsolę**, określa język, strefa czasowa i preferencje hasła dla modułu zbierającego maszyny Wirtualnej.
+1. W przypadku klienta vSphere konsoli > **Otwórz konsolę**, określają, języka, strefy czasowej i preferencje hasła dla maszyny Wirtualnej modułu zbierającego.
 2. Na pulpicie kliknij przycisk **uruchom moduł zbierający** skrótów.
 
     ![Skrót do modułu zbierającego](./media/contoso-migration-assessment/collector-shortcut.png)
 
-4. W module zbierającym migracji Azure > **konfigurowanie wymagań wstępnych**, zaakceptuj postanowienia licencyjne i odczytać informacji o innych firm.
-5. Moduł zbierający sprawdza, czy maszyna wirtualna ma dostęp do Internetu, czy godzina jest zsynchronizowana, i czy działa usługa modułu zbierającego (jest instalowany domyślnie na maszynie Wirtualnej). Instaluje VMWare PowerCLI.
+4. W usłudze Azure Migrate Collector > **Skonfiguruj wymagania wstępne**, zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
+5. Moduł zbierający sprawdzi, czy maszyna wirtualna ma dostęp do Internetu, czy czas jest zsynchronizowany, i czy działa usługa modułu zbierającego (instalowana domyślnie na maszynie Wirtualnej). Ponadto moduł zbierający instaluje interfejs PowerCLI programu VMWare.
 
     > [!NOTE]
     > Zakłada się, że maszyna wirtualna ma bezpośredni dostęp do Internetu, bez serwera proxy.
@@ -335,123 +334,123 @@ Teraz uruchom moduł zbierający do odnajdywanie maszyn wirtualnych. Należy pam
     ![Weryfikowanie wymagań wstępnych](./media/contoso-migration-assessment/collector-verify-prereqs.png)
 
 
-5. W **Określ szczegóły serwera vCenter**, określa nazwę (FQDN) lub adres IP serwera vCenter, i tylko do odczytu poświadczenia używane do odnajdywania.
-7. Wybierają zakres odnajdywania maszyny Wirtualnej. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych.
+5. W **Określ szczegóły serwera vCenter**określają nazwę (FQDN) lub adres IP serwera vCenter i poświadczenia tylko do odczytu używane do odnajdywania.
+7. Wybierają zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych.
 
     ![Nawiązywanie połączenia z serwerem vCenter](./media/contoso-migration-assessment/collector-connect-vcenter.png)
 
-6. W **Określ migrację**, określa identyfikator projektu migracji Azure i klucz, który został skopiowany z portalu. Możesz uzyskać je ponownie w projekcie **omówienie** strony > **odnajdywanie maszyn**.  
+6. W **określ projekt migracji**, określają, usługa Azure Migrate identyfikator projektu i klucz, który został skopiowany z portalu. Można uzyskać je ponownie w projekcie **Przegląd** strony > **odnajdź maszyny**.  
 
     ![Nawiązywanie połączenia z usługą Azure](./media/contoso-migration-assessment/collector-connect-azure.png)
 
-7. W **wyświetlić postęp kolekcji** Contoso można monitorować odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
+7. W **Wyświetl postęp zbierania** Contoso może monitorować proces odnajdowania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 
-    ![Zbieranie w toku](./media/contoso-migration-assessment/collector-collection-process.png) 
+    ![Zbieranie w toku](./media/contoso-migration-assessment/collector-collection-process.png)
 
 
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-Po zakończeniu zbierania Contoso sprawdza, czy maszyny wirtualne są wyświetlane w portalu.
+Po zakończeniu zbierania, Contoso sprawdza, czy maszyny wirtualne są wyświetlane w portalu.
 
-1. W projekcie migracji Azure > **Zarządzaj** > **maszyny**, sprawdź, czy ma zostać przeprowadzone odnajdywanie maszyn wirtualnych są widoczne.
+1. W projekcie usługi Azure Migrate > **Zarządzaj** > **maszyn**, sprawdź, czy są wyświetlane maszyn wirtualnych, które miały zostać odnalezione.
 
     ![Odnalezione maszyny](./media/contoso-migration-assessment/discovery-complete.png)
 
-3. Zwróć uwagę na to, że maszyny nie mają zainstalowanych agentów usługi Azure Migrate. Firmy Contoso, należy zainstalować je w zależności do wyświetlenia.
+3. Zwróć uwagę na to, że maszyny nie mają zainstalowanych agentów usługi Azure Migrate. Firma Contoso potrzebuje na zainstalowanie ich w zależności do wyświetlenia.
 
     ![Odnalezione maszyny](./media/contoso-migration-assessment/machines-no-agent.png)
 
 
 
-## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5: Przygotowanie do analizy zależności
+## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5: Przygotowywanie analizy zależności
 
-Aby wyświetlić zależności między maszynami wirtualnymi, które Contoso chcesz uzyskać dostęp, Pobierz i zainstaluj agentów w aplikacji maszyn wirtualnych. Contoso dzieje się tak na wszystkie maszyny wirtualne na swoje aplikacje w systemach Windows i Linux.
+Aby wyświetlić zależności między maszynami wirtualnymi, które Contoso chce uzyskać dostęp, Pobierz i zainstaluj agentów na maszynach wirtualnych aplikacji. Contoso dzieje na wszystkich maszynach wirtualnych dla swoich aplikacji, systemów Windows i Linux.
 
 ### <a name="take-a-snapshot"></a>Tworzenie migawki
 
-Przed zmodyfikowaniem je, wykonując migawek, zanim agenci są zainstalowani one przechowywać kopię maszyny Wirtualnej.
+Przed zmodyfikowaniem je, wykonując migawkę przed zainstalowaniem agentów są one przechowywać kopię maszyny Wirtualnej.
 
 ![Migawka maszyny](./media/contoso-migration-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
 
-1. Na **maszyny** strony, wybierają maszyny, a następnie **wymaga instalacji** w **zależności** kolumny.
-2. Na **odnajdywanie maszyn** strony one wykonaj następujące czynności:
-    - Pobierz agenta MMA i zależności dla każdej maszyny Wirtualnej systemu Windows
+1. Na **maszyn** stronie one wybierz maszynę, a następnie **wymaga instalacji** w **zależności** kolumny.
+2. Na **odnajdź maszyny** strony są wykonaj następujące czynności:
+    - Pobierz agenta MMA i zależności dla każdej maszyny Wirtualnej Windows
     - Pobierz agenta MMA i zależności dla każdej maszyny Wirtualnej systemu Linux
-3. Teraz one skopiować identyfikator i klucz. Muszą one podczas instalowania MMA.
+3. Skopiuj one teraz identyfikator obszaru roboczego i klucz. Są one potrzebne podczas instalowania programu MMA.
 
     ![Pobieranie agenta](./media/contoso-migration-assessment/download-agents.png)
 
-### <a name="install-the-agents-on-windows-vms"></a>Instalowanie agentów na maszynach wirtualnych systemu Windows
+### <a name="install-the-agents-on-windows-vms"></a>Zainstaluj agentów na maszynach wirtualnych Windows
 
-Instalacji są uruchamiane w każdej maszyny Wirtualnej.
+Działają one instalacji na każdej maszynie Wirtualnej.
 
-#### <a name="install-the-mma-on-windows-vms"></a>Zainstaluj MMA na maszynach wirtualnych systemu Windows
+#### <a name="install-the-mma-on-windows-vms"></a>Zainstaluj program MMA na maszynach wirtualnych Windows
 
-1. One kliknij dwukrotnie pobrany agenta.
-2. W **Folder docelowy**, prowadzą domyślny folder instalacji > **dalej**.
-2. W **opcje instalacji agenta**, wybierają **Połącz agenta z usługą Analiza dzienników Azure** > **dalej**.
+1. One kliknij dwukrotnie pobranego agenta.
+2. W **Folder docelowy**, ich pozostaw domyślny folder instalacji > **dalej**.
+2. W **opcje instalacji agenta**, wybierają **Połącz agenta z usługą Azure Log Analytics** > **dalej**.
 
     ![Instalacja programu MMA](./media/contoso-migration-assessment/mma-install.png)
-    
-5. W **Azure Log Analytics**, ich Wklej identyfikator i klucz, który został skopiowany z portalu. 
+
+5. W **usługi Azure Log Analytics**, ich Wklej identyfikator obszaru roboczego i klucz, który został skopiowany z portalu.
 
     ![Instalacja programu MMA](./media/contoso-migration-assessment/mma-install2.png)
 
-6. W **gotowy do instalacji**, mogą teraz instalować MMA.
+6. W **gotowy do instalacji**, teraz można zainstalować programu MMA.
 
-#### <a name="install-the-dependency-agent-on-windows-vms"></a>Zainstaluj agenta zależności na maszynach wirtualnych systemu Windows
+#### <a name="install-the-dependency-agent-on-windows-vms"></a>Zainstaluj agenta zależności na maszynach wirtualnych Windows
 
-1. One kliknij dwukrotnie pobrany agenta zależności.
-2. Zaakceptuj postanowienia licencyjne, a poczekaj na zakończenie instalacji.
+1. One kliknij dwukrotnie pobranego agenta zależności.
+2. One zaakceptuj postanowienia licencyjne i poczekaj na zakończenie instalacji.
 
     ![Agent zależności](./media/contoso-migration-assessment/dependency-agent.png)
 
 
-### <a name="install-the-agents-on-linux-vms"></a>Instalowanie agentów na maszynach wirtualnych systemu Linux
+### <a name="install-the-agents-on-linux-vms"></a>Instalowanie agentów na maszynach wirtualnych z systemem Linux
 
-Instalacji są uruchamiane w każdej maszyny Wirtualnej.
+Działają one instalacji na każdej maszynie Wirtualnej.
 
-#### <a name="install-the-mma-on-linux-vms"></a>Zainstaluj MMA na maszynach wirtualnych systemu Linux
+#### <a name="install-the-mma-on-linux-vms"></a>Zainstaluj program MMA na maszynach wirtualnych z systemem Linux
 
-1. Biblioteka języka python ctypes instalacji na poszczególnych maszynę Wirtualną przy użyciu: **sudo stanie get instalacji języka python ctypeslib**.
-2. Powinno być ono uruchomione polecenie, aby zainstalować agenta MMA jako katalogu głównego.  Wybrany jako główny uruchom następujące polecenia i wprowadź hasła głównego: **sudo -i**.
-3. Teraz instalacji MMA agent.
-    - Włóż poprawny identyfikator i klucz do polecenia.
-    - Polecenia są dla 64-bitowej.
-    - **Identyfikator obszaru roboczego** i **klucza podstawowego** można znaleźć w portalu OMS > **ustawienia**w **połączonych źródeł** kartę.
-    - Uruchom następujące polecenia, aby pobrać agent pakietu OMS, sprawdź poprawność sumy kontrolnej i zainstaluj/dołączyć agenta.
+1. Instalacji w każdej maszyny Wirtualnej przy użyciu biblioteki ctypes python: **"sudo" polecenia apt-get zainstalowania języka python ctypeslib**.
+2. Powinno być ono uruchomione polecenie, aby zainstalować agenta MMA jako użytkownik główny.  Przestanie głównego uruchom następujące polecenie i wprowadź hasło główne: **"sudo" -i**.
+3. Po instalacji agenta MMA.
+    - Wstaw swoje poprawny identyfikator i klucz obszaru do polecenia.
+    - Polecenia są dla 64-bitowych.
+    - **Identyfikator obszaru roboczego** i **klucza podstawowego** można znaleźć w portalu pakietu OMS > **ustawienia**w **połączone źródła** kartę.
+    - Uruchom następujące polecenia, aby pobrać agenta pakietu OMS, należy zweryfikować sumy kontrolnej i instalacja/dołączanie agenta.
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
     ```
- 
 
 
-#### <a name="install-the-dependency-agent-on-linux-vms"></a>Zainstaluj agenta zależności na maszynach wirtualnych systemu Linux
 
-Po zainstalowaniu MMA agenta zależności Contoso można zainstalować na maszynach wirtualnych systemu Linux.
+#### <a name="install-the-dependency-agent-on-linux-vms"></a>Instalowanie agenta zależności na maszynach wirtualnych z systemem Linux
 
-1. Dependency Agent jest zainstalowany na komputery z systemem Linux przy użyciu Linux64.bin InstallDependencyAgent, skrypt powłoki z samowyodrębniający plikiem binarnym. Można uruchomić go za pomocą sh lub Dodaj uprawnienia w samym pliku do wykonywania.
+Po zainstalowaniu programu MMA Contoso można zainstalować agenta zależności na maszynach wirtualnych z systemem Linux.
 
-2. Jako katalog główny instalacji agenta systemu Linux zależności:
+1. Agent zależności jest instalowany na komputerach z systemem Linux przy użyciu Linux64.bin InstallDependencyAgent, skrypt powłoki, za pomocą samorozpakowujący się plik binarny. Można uruchomić plik przy użyciu sh lub dodać uprawnienia do wykonywania do pliku sam.
+
+2. Jako katalog główny instalacji agenta zależności systemu Linux:
 
     ```
     wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin && sudo sh InstallDependencyAgent-Linux64.bin -s
     ```
 
 
-## <a name="step-6-run-and-analyze-the-vm-assessment"></a>Krok 6: Uruchamiać i analizować oceny maszyny Wirtualnej
+## <a name="step-6-run-and-analyze-the-vm-assessment"></a>Krok 6: Uruchamianie i analizowanie oceny maszyny Wirtualnej
 
-Contoso można teraz zweryfikować zależności maszyny i Utwórz grupę. Następnie uruchom oceny grupy.
+Firma Contoso może teraz Sprawdź zależności maszyny i Utwórz grupę. Następnie uruchom ocenę grupy.
 
-### <a name="verify-dependencies-and-create-a-group"></a>Sprawdź zależności, a następnie utwórz grupę
+### <a name="verify-dependencies-and-create-a-group"></a>Sprawdzanie zależności i tworzenie grupy
 
 
-1. Dla maszyn do analizy, kliknij przycisk **zależności widoku**.
+1. Dla maszyn do analizowania, kliknij przycisk **wyświetlanie zależności**.
 
     ![Wyświetlanie zależności maszyn](./media/contoso-migration-assessment/view-machine-dependencies.png)
 
@@ -462,12 +461,12 @@ Contoso można teraz zweryfikować zależności maszyny i Utwórz grupę. Nastę
     - Maszyny zależne z zainstalowanymi agentami usługi Azure Migrate są wyświetlane jako osobne pola
     - W przypadku maszyn bez zainstalowanych agentów są wyświetlane informacje o porcie i adresie IP.
 
-3. W przypadku komputerów z zainstalowanym agentem (WEBVM) ich kliknij pole maszyny, aby wyświetlić więcej informacji, w tym nazwę FQDN, systemu operacyjnego i adres MAC.
+3. W przypadku maszyn z zainstalowanym agentem (WEBVM) ich kliknij pole maszyny, aby wyświetlić więcej informacji, w tym nazwę FQDN, system operacyjny i adres MAC.
 
     ![Wyświetlanie zależności grupowych](./media/contoso-migration-assessment/sqlvm-dependencies.png)
 
-4. Teraz wybrać maszyny wirtualne można dodać do grupy (SQLVM i WEBVM).  One użyj kombinacji klawisza CTRL + kliknij, aby wybrać wiele maszyn wirtualnych.
-5. Użytkownik klika polecenie **Utwórz grupę**i określ nazwę (smarthotelapp).
+4. Teraz wybierz maszyny wirtualne można dodać do grupy (SQLVM i WEBVM).  Mogą one użyj kombinacji klawisza CTRL i kliknij, aby wybrać wiele maszyn wirtualnych.
+5. Polecenie **Utwórz grupę**, a następnie określ nazwę (smarthotelapp).
 
 > [!NOTE]
     > Aby wyświetlić bardziej szczegółowe zależności, możesz rozszerzyć zakres czasu. Możesz wybrać przedział lub datę początkową i datę końcową.
@@ -476,19 +475,19 @@ Contoso można teraz zweryfikować zależności maszyny i Utwórz grupę. Nastę
 ### <a name="run-an-assessment"></a>Uruchamianie oceny
 
 
-1. Na **grup** strony, otwórz grupę (smarthotelapp) i kliknij przycisk **utworzyć oceny**.
+1. Na **grup** strony, otwórz grupę (smarthotelapp) i kliknij przycisk **Utwórz ocenę**.
 
     ![Tworzenie oceny](./media/contoso-migration-assessment/run-vm-assessment.png)
 
 2. Ocena pojawi się na stronie **Zarządzaj** > **Oceny**.
 
-Contoso używane domyślne ustawienia oceny, ale można dostosować ustawienia. [Dowiedz się więcej](how-to-modify-assessment.md).
+Contoso używane z domyślnych ustawień oceny, ale można dostosować ustawienia. [Dowiedz się więcej](how-to-modify-assessment.md).
 
 
 
 ### <a name="analyze-the-vm-assessment"></a>Analizowanie oceny maszyny wirtualnej
 
-Ocena Azure migracji zawiera informacje o zgodności maszyn wirtualnych lokalnie na platformie Azure, sugerowane doboru wielkości dla maszyny Wirtualnej platformy Azure i miesięczne Azure koszty.
+Ocena usługi Azure Migrate zawiera informacje dotyczące zgodności z lokalnych maszyn wirtualnych na platformie Azure, sugerowanych rozmiarów maszyny wirtualnej platformy Azure oraz szacowanych miesięcznych kosztów platformy Azure.
 
 ![Raport z oceny](./media/contoso-migration-assessment/assessment-overview.png)
 
@@ -496,10 +495,10 @@ Ocena Azure migracji zawiera informacje o zgodności maszyn wirtualnych lokalnie
 
 ![Wyświetlanie oceny](./media/contoso-migration-assessment/assessment-display.png)
 
-Ocenę pobiera przedziałem zaufania z gwiazdką 1 do 5 gwiazdkę (1 gwiazdka być najniższy i 5 Gwiazda jest najwyższa).
+Ocena pobiera ocena zaufania od 1 gwiazdki do 5 gwiazdek (1 gwiazdka to najniższa i 5 gwiazdek — najwyższa).
 - Ocena zaufania jest przypisana do oceny na podstawie dostępności punktów danych potrzebnych do obliczenia oceny.
 - Pomaga to oszacować niezawodność zaleceń dotyczących rozmiarów, udostępnianych przez usługę Azure Migrate.
-- Zaufanie jest przydatne podczas wykonywania *wydajności na podstawie rozmiaru* jako migracji Azure może nie mieć za mało punktów danych w celu wykorzystania na podstawie zmiany rozmiaru. W przypadku *ustalania rozmiaru jako lokalnego* ocena zaufania to zawsze 5 gwiazdek, ponieważ usługa Azure Migrate ma wszystkie punkty danych, których potrzebuje do ustalenia rozmiaru maszyny wirtualnej.
+- Ocena zaufania jest przydatna podczas ustalania *ustalania rozmiaru na podstawie wydajności* zgodnie z usługi Azure Migrate może nie mieć wystarczającej liczby punktów danych, do ustalenia rozmiaru na podstawie użycia. W przypadku *ustalania rozmiaru jako lokalnego* ocena zaufania to zawsze 5 gwiazdek, ponieważ usługa Azure Migrate ma wszystkie punkty danych, których potrzebuje do ustalenia rozmiaru maszyny wirtualnej.
 - W zależności od wartości procentowej dostępnych punktów danych ocenę zaufania dla oceny określa:
 
    **Dostępność punktów danych** | **Ocenę zaufania**
@@ -539,18 +538,18 @@ Ten widok przedstawia łączne koszty zasobów obliczeniowych i magazynowych w p
 - Szacowany miesięczny koszt zasobów obliczeniowych i magazynowych jest agregowany dla wszystkich maszyn wirtualnych w grupie.
 
 
-## <a name="clean-up-after-assessment"></a>Czyszczenie po ocenie
+## <a name="clean-up-after-assessment"></a>Wyczyść zasoby po ukończeniu oceny
 
-- Po zakończeniu oceny Contoso zachowuje urządzenia Azure migracji dla przyszłych oceny.
-- Wyłącz one maszyny Wirtualnej VMware. One będzie uruchomić ją ponownie po ich oceny kolejnych maszyn wirtualnych.
-- Będzie prowadzą Contoso migrację na platformie Azure.  Obecnie jest wdrożona w grupie zasobów ContosoFailoverRG Wschodnia nam Azure obszaru.
--  Maszyna wirtualna modułu zbierającego ma licencji 180-dniowa wersja ewaluacyjna. Po przekroczeniu tego limitu program muszą pobrać i skonfigurować moduł zbierający ponownie.
+- Po zakończeniu oceny Contoso zachowuje urządzenia usługi Azure Migration dla przyszłych ocen.
+- Wyłącz ich maszyn wirtualnych VMware. One będzie ponownego uruchomienia po ich oceny dodatkowych maszyn wirtualnych.
+- Oni będzie na bieżąco projektu migracji firmy Contoso na platformie Azure.  Trwa wdrażanie w grupie zasobów ContosoFailoverRG w regionie wschodnie stany USA Azure.
+-  Maszyna wirtualna modułu zbierającego ma licencji 180-dniowej wersji ewaluacyjnej. Jeśli upłynie limit, ich musisz Pobierz i skonfiguruj moduł zbierający ponownie.
 
 
 ## <a name="conclusion"></a>Podsumowanie
 
-W tym scenariuszu Contoso ocenie swojej bazy danych aplikacji SmartHotel, korzystając z narzędzia DMA i lokalnych maszyn wirtualnych przy użyciu usługi Azure migracji. Następnie przeglądane ich oceny w celu upewnienia się, że zasoby lokalne są gotowe do migracji do usługi Azure.
+W tym scenariuszu firma Contoso ocenie swojej bazy danych aplikacji SmartHotel, przy użyciu narzędzia DMA i lokalnych maszyn wirtualnych przy użyciu usługi Azure Migrate. Następnie sprawdzono ich ocen w celu upewnienia się, że lokalne zasoby są gotowe do migracji na platformę Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W artykule w tej serii Contoso rehostowaniu jego SmartHotel aplikacji na platformie Azure z migracją przyrostu shift. Contoso migruje frontonu WEBVM aplikacji przy użyciu usługi Azure Site Recovery i bazy danych aplikacji do usługi Azure SQL zarządzane wystąpienia, korzystanie z usługi migracji bazy danych. [Rozpoczynanie pracy](contoso-migration-rehost-vm-sql-managed-instance.md) z tego wdrożenia.
+W następnym artykule w tej serii Contoso rehostowaniu jego SmartHotel aplikacji na platformie Azure przy użyciu migracji lift-and-shift. Contoso migruje frontonu WEBVM dla aplikacji przy użyciu usługi Azure Site Recovery i aplikacji bazy danych do wystąpienia zarządzanego Azure SQL, przy użyciu usługi migracji bazy danych. [Rozpoczynanie pracy](contoso-migration-rehost-vm-sql-managed-instance.md) z tym wdrożeniem.

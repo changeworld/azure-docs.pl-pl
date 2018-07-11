@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: dbd2ef6270d0f270dabb6a1f5461e09fc37102db
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d7814b976529bf7032edd54e4afd574ce766e5dd
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859595"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919866"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -39,9 +39,9 @@ Jeśli jest wdrażane w środowisku dzierżawy, w tym miejscu jest jednym ze spo
 1.  Tworzenie użytkownika na dzierżawę i i przy użyciu [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), przypisać uprawnienia tylko do odczytu do wszystkich maszyn wirtualnych należących do określonej dzierżawy. Następnie należy użyć tych poświadczeń do odnajdywania. RBAC gwarantuje, że odpowiednie użytkownik vCenter będzie miał dostęp do dzierżawy tylko określonej maszyny Wirtualnej.
 2. Konfigurowania funkcji RBAC dla użytkowników innej dzierżawy zgodnie z opisem w poniższym przykładzie dla użytkownika nr 1 i 2 użytkownika:
 
-    - W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający ma użyć do odnalezienia maszyn wirtualnych w 
+    - W **nazwa_użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający ma użyć do odnalezienia maszyn wirtualnych w
     - Datacenter1 - przyznać uprawnienia tylko do odczytu do 1 użytkownika i użytkownika nr 2. Nie propagować te uprawnienia do wszystkich obiektów podrzędnych, ponieważ uprawnienia zostanie ustawiona na poszczególnych maszyn wirtualnych.
-    
+
       - Maszyna VM1 (dzierżawy #1) (tylko uprawnienia do odczytu użytkownika nr 1)
       - VM2 (dzierżawy #1) (tylko uprawnienia do odczytu użytkownika nr 1)
       - Maszyna VM3 (dzierżawy nr 2) (tylko uprawnienia do odczytu użytkownika nr 2)
@@ -125,6 +125,14 @@ Sprawdź, czy plik OVA jest bezpieczne, przed przystąpieniem do wdrażania:
    Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. Upewnij się, że wygenerowanego skrótu odpowiada następujące ustawienia.
+
+    Ova w wersji 1.0.9.12
+
+    **Algorytm** | **Wartość skrótu**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
     OVA w wersji 1.0.9.8
 

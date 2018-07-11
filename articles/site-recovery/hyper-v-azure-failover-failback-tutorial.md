@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: b87ec5144154714dfc8f9f2d5a06c158bc956a2d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f758939964045ed373703a211d4cbef00f0e42e7
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858541"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37919550"
 ---
 # <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Tryb failover i powrotu po awarii maszyn wirtualnych funkcji Hyper-V replikowanych na platformie Azure
 

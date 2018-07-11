@@ -1,5 +1,5 @@
 ---
-title: W usłudze Azure Site Recovery przy użyciu planów odzyskiwania | Dokumentacja firmy Microsoft
+title: Korzystając z planów odzyskiwania usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat planów odzyskiwania w usłudze Azure Site Recovery.
 services: site-recovery
 documentationcenter: ''
@@ -8,20 +8,20 @@ manager: carmonm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 871c9e8404438f966cab2fc5ab782e254295569e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181983"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920121"
 ---
-# <a name="about-recovery-plans"></a>Plany odzyskiwania — informacje
+# <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
 W tym artykule opisano planów odzyskiwania w [usługi Azure Site Recovery](site-recovery-overview.md).
 
-Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Plan można dostosować, dodając do niego kolejności, instrukcje i zadania. Po zdefiniowaniu planu można uruchomić na nim trybu failover.
+Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Plan można dostosować, dodając do niej zamówienia, instrukcje i zadania. Po zdefiniowaniu planu przejścia w tryb failover można uruchomić na nim.
 
 
 
@@ -29,66 +29,66 @@ Plan odzyskiwania zbiera maszyn w grupach odzyskiwania. Plan można dostosować,
 
 ## <a name="why-use-a-recovery-plan"></a>Dlaczego warto używać planu odzyskiwania?
 
-Plan odzyskiwania pomaga zdefiniować proces systematyczne odzyskiwania, tworząc małych jednostek niezależne, które możesz w trybie Failover. Jednostka zazwyczaj reprezentuje aplikacji w danym środowisku. Plan odzyskiwania definiuje sposób maszyn w tryb failover i sekwencji uruchamiają po w tryb failover. Użyj planów odzyskiwania:
+Plan odzyskiwania pomaga zdefiniować proces odzyskiwania systematyczne, tworząc małe niezależnych zespołów, które możesz przełączać awaryjnie. Jednostka reprezentuje zwykle aplikacji w danym środowisku. Plan odzyskiwania definiuje, jak komputerów w trybie Failover i sekwencji mogą uruchomić po włączeniu trybu failover. Użyj plany odzyskiwania, aby:
 
-* Model aplikacji wokół jego zależności.
-* Automatyzowanie zadań odzyskiwania, aby zmniejszyć RTO.
-- Sprawdź, czy jest przygotowane do migracji oraz odzyskiwanie awaryjne, zapewniając, że aplikacje są częścią planu odzyskiwania.
-* Uruchom test trybu failover w planie odzyskiwania, aby upewnić się, że odzyskiwania po awarii lub migracji działa zgodnie z oczekiwaniami.
+* Modelowanie aplikacji wokół jego zależności.
+* Automatyzuj zadania odzyskiwania, aby zmniejszyć cel czasu odzyskiwania.
+- Upewnij się, że masz wszystko gotowe do odzyskiwania po awarii ani migracji poprzez zapewnienie, że Twoje aplikacje są częścią planu odzyskiwania.
+* Uruchom testowanie trybu failover na plany odzyskiwania, aby upewnić się, że odzyskiwanie po awarii ani migracji działa zgodnie z oczekiwaniami.
 
 
 ## <a name="model-apps"></a>Model aplikacji
 
-Można zaplanować i utworzyć grupę odzyskiwania do przechwytywania właściwości specyficzne dla aplikacji. Na przykład zastanówmy Typowa trójwarstwowa aplikacja z programem SQL server wewnętrznej bazy danych, oprogramowanie pośredniczące i frontonu sieci web. Zazwyczaj planu odzyskiwania można dostosować tak, aby w każdej warstwie uruchomić we właściwej kolejności po pracy awaryjnej.
+Można zaplanować i Utwórz grupę odzyskiwania, aby przechwycić właściwości specyficzne dla aplikacji. Na przykład rozważmy Typowa trójwarstwowa aplikacja za pomocą programu SQL server, wewnętrznej bazy danych, oprogramowanie pośredniczące i frontonu sieci web. Zazwyczaj planu odzyskiwania można dostosować tak, aby komputery w każdej warstwie start we właściwej kolejności po włączeniu trybu failover.
 
     - Wewnętrznej bazy danych SQL powinna zaczynać się najpierw, oprogramowanie pośredniczące następnej, a na końcu frontonu sieci web.
-    - To zamówienie start gwarantuje, że aplikacja działa w czasie uruchamiania Ostatnia maszyna.
-    - To zamówienie gwarantuje, że gdy oprogramowanie pośredniczące, które próbuje nawiązać połączenia z warstwy programu SQL Server, warstwy programu SQL Server jest już uruchomiony. 
-    - Upewnij się, że serwer frontonu rozpoczyna ostatnich, dzięki czemu użytkownicy końcowi nie łączyć się adres URL aplikacji, zanim wszystkie składniki są uruchomione i uruchomiona, a aplikacja jest gotowa do akceptowania żądań pomaga również w tej kolejności.
+    - Ta kolejność start gwarantuje, że aplikacja działa przy uruchamianiu ostatnia maszyna.
+    - Ta kolejność gwarantuje, że jeśli oprogramowanie pośredniczące, które próbuje nawiązać połączenie z warstwy programu SQL Server, warstwy programu SQL Server jest już uruchomiony. 
+    - To zamówienie pomaga również zapewnić, że serwer frontonu uruchamia ostatniego, tak, aby użytkownicy końcowi nie Podłączaj się do adresu URL aplikacji, zanim wszystkie składniki są włączone i uruchomione oraz aplikacji jest gotowy do akceptowania żądań.
 
-Aby utworzyć to zamówienie, dodać grupy do grupy odzyskiwania i Dodaj maszyny do grup. 
-    - W przypadku, gdy określono kolejności, sekwencjonowania jest używany. Akcje uruchamiane równolegle odpowiednio zwiększyć odzyskiwania aplikacji RTO.
-    - Maszyny w jednej grupie w trybie Failover równolegle.
-    - Maszyny w różnych grupach przełączyć według grupy, grupa 2 maszyn rozpocząć ich pracy awaryjnej tylko wtedy, gdy wszystkie komputery z grupy 1 zostały przełączone do trybu failover i uruchomiona.
+Aby utworzyć to zamówienie, Dodaj grupy do grupy odzyskiwania i Dodaj maszyny do grup. 
+    - W przypadku, gdy zamówienie zostanie określony, używany jest sekwencjonowania. Akcje wykonywane równolegle, gdzie jest to odpowiednie poprawić odzyskiwania aplikacji cel czasu odzyskiwania.
+    - Maszyny w pojedynczej grupy pracy awaryjnej w sposób równoległy.
+    - Maszyny w różnych grupach przełączyć w tryb failover w kolejności grupy tak, aby grupa 2 maszyny zaczynają ich pracy awaryjnej, tylko wtedy, gdy wszystkie maszyny w grupy 1 zostały przełączone w tryb failover i uruchomiona.
 
-    ![Przykład planu odzyskiwania](./media/recovery-plan-overview/rp.png)
+    ![Przykładowy plan odzyskiwania](./media/recovery-plan-overview/rp.png)
 
-Z tym dostosowanie w miejscu Oto, co się stanie po uruchomieniu trybu failover planu odzyskiwania: 
+Za pomocą to dostosowanie w miejscu Oto, co się stanie po uruchomieniu trybu failover w planie odzyskiwania: 
 
-1. Krok zamknięcia próbuje Wyłącz maszyny lokalnej. Wyjątek stanowi, jeżeli możesz uruchomić test trybu failover, w którym to przypadku lokacji głównej kontynuuje działanie. 
-2. Zamknięcie wyzwala równoległych trybu failover wszystkich maszyn w planie odzyskiwania.
-3. Tryb failover przygotowuje dysków maszyny wirtualnej przy użyciu zreplikowanych danych.
-4. Grupy uruchamiania są uruchamiane w kolejności i uruchom maszyny w każdej grupie. Po pierwsze Grupa 1 wykonywany, następnie grupa 2, a na końcu grupy 3. Jeśli istnieje więcej niż jedna maszyna w dowolnej grupie, a następnie ją uruchom wszystkie maszyny równolegle.
+1. Krok zamykania polegające na wyłączanie maszyn lokalnych. Wyjątkiem jest, jeśli możesz uruchomić test trybu failover, w którym to przypadku lokacja główna będzie nadal działać. 
+2. Zamknięcie wyzwala równoległe trybu failover wszystkich maszyn w planie odzyskiwania.
+3. Przełączenie w tryb failover przygotowuje dyski maszyny wirtualnej przy użyciu replikowanych danych.
+4. Grupy startowe są uruchamiane w kolejności, a następnie uruchomić maszyny w każdej grupie. Po pierwsze Grupa 1 działa, następnie grupa 2, a na końcu grupy 3. Jeśli istnieje więcej niż jednym komputerze w dowolnej grupie, wszystkie maszyny Uruchom równolegle.
 
 
-## <a name="automate-tasks"></a>Automatyzowania zadań
+## <a name="automate-tasks"></a>Automatyzacja zadań
 
-Odzyskiwanie dużych aplikacji może być złożonym zadaniem. Ręczne uproszczenia procesu podatne na błędy i uruchamiających przejście w tryb failover może nie być świadomy wszystkich aplikacji mogli dokładnie zapoznać. Umożliwia nałożyć kolejności planu odzyskiwania i zautomatyzować wymagane w każdym kroku czynności przy użyciu elementu runbook usługi Automatyzacja Azure w trybie failover do platformy Azure lub skryptów. Zadania, które nie mogły zostać zautomatyzowane można wstawić wstrzymuje działanie do działania ręczne do planów odzyskiwania. Istnieje kilka typów zadań, które można skonfigurować:
+Odzyskiwanie dużych aplikacji może być złożonym zadaniem. Wymagane ręczne wykonanie czynności dzięki czemu proces wprowadzania podatne na błędy i uruchamiających przełączenie w tryb failover może nie być świadome wszystkich niewymagającego aplikacji. Umożliwia nakłada zamówienie planu odzyskiwania i zautomatyzować wymagane przeprowadzenie kolejnych czynności na każdym etapie, za pomocą elementów runbook usługi Azure Automation do trybu failover na platformie Azure lub skryptów. Zadania, które nie mogą być zautomatyzowane można wstawić przerw na ręczne akcje wykonywane do planów odzyskiwania. Istnieje kilka typów zadań, które można skonfigurować:
 
-* **Zadania na maszynie Wirtualnej Azure po pracy awaryjnej**: podczas powrotu po awarii za pośrednictwem na platformie Azure, zazwyczaj należy wykonać akcje, dzięki czemu można łączyć się do maszyny Wirtualnej po pracy awaryjnej. Na przykład: 
-    * Utwórz publiczny adres IP na maszynie Wirtualnej Azure.
-    * Przypisywanie sieciowej grupy zabezpieczeń do karty sieciowej maszyny wirtualnej Azure.
-    * Dodaj usługi równoważenia obciążenia do zestawu dostępności.
-* **Zadania wewnątrz maszyn wirtualnych po pracy awaryjnej**: te zadania zazwyczaj ponownie skonfigurować aplikacji uruchomionych na komputerze, dzięki czemu nadal działają prawidłowo w nowym środowisku. Na przykład:
+* **Zadania na maszynie Wirtualnej platformy Azure po włączeniu trybu failover**: po użytkownik przechodzenia w tryb failover na platformie Azure, zazwyczaj należy wykonywać akcje, dzięki czemu można połączyć się z maszyną wirtualną po włączeniu trybu failover. Na przykład: 
+    * Utwórz publiczny adres IP maszyny wirtualnej platformy Azure.
+    * Przypisywanie sieciowej grupy zabezpieczeń z kartą sieciową z maszyny Wirtualnej platformy Azure.
+    * Dodaj moduł równoważenia obciążenia do zestawu dostępności.
+* **Zadania wewnątrz maszyny Wirtualnej po włączeniu trybu failover**: te zadania zazwyczaj ponownie skonfigurować aplikację uruchomioną na maszynie, dzięki czemu będzie on nadal działać prawidłowo w nowym środowisku. Na przykład:
     * Zmodyfikuj parametry połączenia bazy danych na maszynie.
-    * Zmień konfigurację serwera sieci web lub reguły.
+    * Zmiana konfiguracji serwera sieci web lub reguły.
 
 
 ## <a name="test-failover"></a>Testowanie trybu failover
 
-Plan odzyskiwania służy do wyzwalania test trybu failover. Należy stosować następujące najlepsze rozwiązania:
+Plan odzyskiwania służy do wyzwalania testowy tryb failover. Należy stosować następujące najlepsze rozwiązania:
 
-- Przed uruchomieniem pełne trybu failover zawsze wykonać test trybu failover w aplikacji. Testowy tryb failover ułatwiają Sprawdź, czy aplikacja pojawia się w lokacji odzyskiwania.
-- Jeśli okaże się, że element nie został pominięty, wyzwolenia czystej w górę, a następnie uruchom ponownie testowania trybu failover. 
-- Uruchom test trybu failover wielokrotnie, dopóki nie masz pewności, sprawnie odzyskuje aplikację.
-- Ponieważ każda aplikacja jest unikatowa, należy utworzyć plany odzyskiwania, które są dostosowane dla każdej aplikacji i uruchom test trybu failover na każdym.
-- Aplikacje i ich zależności często zmieniana. Aby upewnić się, że planów odzyskiwania są aktualne, uruchom test trybu failover dla każdej aplikacji, co kwartał.
+- Przed uruchomieniem pełnego trybu failover zawsze wykonać test trybu failover w aplikacji. Testowych trybów Failover ułatwia sprawdzanie, czy aplikacja przejdzie do lokalizacji odzyskiwania.
+- Jeśli okaże się, że zostały pominięte, coś, Wyzwól czystego zapasowej, a następnie ponownie uruchomić test trybu failover. 
+- Uruchom testowanie trybu failover wielokrotnie, dopóki nie masz pewności, sprawnie odzyskuje aplikacji.
+- Ponieważ każda aplikacja jest unikatowy, należy tworzyć plany odzyskiwania, które są dostosowane do poszczególnych aplikacji, a następnie uruchomić testowy tryb failover na każdym.
+- Aplikacje i ich zależności zmieniają się często. Aby upewnić się, że plany odzyskiwania są aktualne, należy uruchomić test trybu failover dla każdej aplikacji co kwartał.
 
-    ![Zrzut ekranu przedstawiający przykładowy plan odzyskiwania testowy w usłudze Site Recovery](./media/recovery-plan-overview/rptest.png)
+    ![Zrzut ekranu przykładu testowanie planu odzyskiwania w usłudze Site Recovery](./media/recovery-plan-overview/rptest.png)
 
 ## <a name="watch-the-video"></a>Obejrzyj film
 
-Obejrzyj film prosty przykład przedstawiający awarię i kliknij dwuwarstwowej aplikacji WordPress.
+Obejrzyj film prosty przykład przedstawiający przejściu w tryb failover na kliknięcia dwuwarstwowej aplikacji WordPress.
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
