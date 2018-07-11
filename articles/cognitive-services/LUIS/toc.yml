@@ -59,16 +59,20 @@
           href: luis-quickstart-intent-and-list-entity.md
         - name: 5. Dodawanie jednostki hierarchicznej
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: 6. Dodawanie jednostki prostej i listy fraz
+        - name: 6. Dodawanie jednostki złożonej
+          href: luis-tutorial-composite-entity.md
+        - name: 7. Dodawanie jednostki prostej i listy fraz
           href: luis-quickstart-primary-and-secondary-data.md
-        - name: 7. Dodawanie jednostki keyPhrase
+        - name: 8. Dodawanie jednostki keyPhrase
           href: luis-quickstart-intent-and-key-phrase.md
-        - name: 8. Dodawanie analizy tonacji
+        - name: 9. Dodawanie analizy tonacji
           href: luis-quickstart-intent-and-sentiment-analysis.md
     - name: Usprawnianie aplikacji
       items:
         - name: Przeglądanie wypowiedzi punktu końcowego
           href: luis-tutorial-review-endpoint-utterances.md
+        - name: Za pomocą testu wsadowego
+          href: luis-tutorial-batch-testing.md
         - name: Za pomocą wzorców
           href: luis-tutorial-pattern.md
 - name: Przykłady
@@ -138,7 +142,7 @@
     - name: Planowanie aplikacji
       href: luis-how-plan-your-app.md
     - name: Uruchamianie nowej aplikacji
-      href: Create-new-app.md
+      href: luis-how-to-start-new-app.md
     - name: Budowanie modelu
       items:
         - name: Dodawanie intencji
@@ -147,15 +151,15 @@
           href: luis-how-to-add-example-utterances.md
         - name: Dodawanie jednostek
           href: luis-how-to-add-entities.md
-        - name: Korzystanie z jednostki złożonej w celu wyodrębnienia zgrupowanych danych
-          href: luis-tutorial-composite-entity.md
-        - name: Korzystanie z jednostki listy w celu dokładnego dopasowania tekstu przy użyciu środowiska Node.js
-          href: luis-tutorial-list-entity.md
-        - name: Programowe tworzenie aplikacji przy użyciu środowiska Node.js
-          href: luis-tutorial-node-import-utterances-csv.md
+        - name: Za pomocą interfejsów API
+          items:
+            - name: Programowe tworzenie aplikacji przy użyciu środowiska Node.js
+              href: luis-tutorial-node-import-utterances-csv.md
+            - name: Korzystanie z jednostki listy w celu dokładnego dopasowania tekstu przy użyciu środowiska Node.js
+              href: luis-tutorial-list-entity.md
     - name: Integracja
       items:
-        - name: Poprawianie pisowni przy użyciu interfejsu API sprawdzania pisowni Bing v7
+        - name: Za pomocą interfejsu API sprawdzania pisowni Bing w wersji 7
           href: luis-tutorial-bing-spellcheck.md
         - name: Za pomocą usługi rozpoznawania mowy
           href: luis-tutorial-speech-to-intent.md
@@ -176,7 +180,7 @@
     - name: Zwiększanie dokładności przewidywania
       items:
         - name: Przeglądanie wypowiedzi punktu końcowego
-          href: Label-Suggested-Utterances.md
+          href: luis-how-to-review-endoint-utt.md
         - name: Dodawanie listy fraz
           href: luis-how-to-add-features.md
         - name: Dodawanie wzorców
@@ -189,36 +193,36 @@
           href: interactive-test.md
         - name: Testowanie wsadowe
           href: luis-how-to-batch-test.md
-        - name: Zwiększanie dokładności za pomocą testowania wsadowego
-          href: luis-tutorial-batch-testing.md
     - name: Publikowanie aplikacji
       href: luis-how-to-publish-app.md
     - name: Korzystanie ze wstępnie utworzonych modeli
       items:
-        - name: Korzystanie ze wstępnie utworzonych jednostek
+        - name: Korzystanie z jednostek
           href: luis-prebuilt-entities.md
-        - name: Korzystanie ze wstępnie utworzonych domen
+        - name: Korzystanie z domen
           href: luis-how-to-use-prebuilt-domains.md
-        - name: Korzystanie ze wstępnie utworzonej aplikacji Cortana
+        - name: Korzystanie z Cortany
           href: luis-how-to-cortana-prebuilt-app.md
-    - name: Zarządzanie aplikacją usługi LUIS
+    - name: Zarządzanie aplikacją
       items:
         - name: Korzystanie z pulpitu nawigacyjnego
           href: luis-how-to-use-dashboard.md
-        - name: Tworzenie kluczy
+        - name: Tworzenie kluczy punktów końcowych
           href: luis-how-to-azure-subscription.md
-        - name: Dodawanie kluczy w usłudze LUIS
+        - name: Dodawanie kluczy punktów końcowych do aplikacji
           href: luis-how-to-manage-keys.md
-        - name: Wyświetlanie informacji o użyciu punktu końcowego przy użyciu programu PowerShell
-          href: luis-how-to-manage-from-cloud-shell.md
         - name: Zarządzanie wersjami
           href: luis-how-to-manage-versions.md
         - name: Współpracowanie z innymi autorami
           href: luis-how-to-collaborate.md
-        - name: Rozszerzanie limitu przydziału punktu końcowego między kluczami za pomocą usługi Traffic Manager
-          href: traffic-manager.md
-    - name: Zarządzanie kontem usługi LUIS
-      href: luis-how-to-account-settings.md
+        - name: Zarządzanie kluczem tworzenia
+          href: luis-how-to-account-settings.md
+        - name: Zarządzanie użyciem punktu końcowego
+          items:
+            - name: Wyświetlanie informacji o użyciu punktu końcowego przy użyciu programu PowerShell
+              href: luis-how-to-manage-from-cloud-shell.md
+            - name: Rozszerzanie limitu przydziału punktu końcowego między kluczami za pomocą usługi Traffic Manager
+              href: traffic-manager.md
     - name: Migrowanie do interfejsu API V2
       href: migration-v1-to-v2.md
     - name: Programowe znajdywanie regionu
@@ -251,6 +255,8 @@
           href: luis-reference-prebuilt-deprecated.md
         - name: 'Email, jednostka'
           href: luis-reference-prebuilt-email.md
+        - name: 'keyPhrase, jednostka'
+          href: luis-reference-prebuilt-keyphrase.md
         - name: 'Number, jednostka'
           href: luis-reference-prebuilt-number.md
         - name: 'Ordinal, jednostka'

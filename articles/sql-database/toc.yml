@@ -84,8 +84,6 @@
           href: sql-database-service-tiers-dtu.md
         - name: Limity zasobów
           href: sql-database-resource-limits.md
-    - name: Wysoka dostępność
-      href: sql-database-high-availability.md
     - name: Serwery logiczne i pojedyncze bazy danych
       items:
         - name: Serwery logiczne i pojedyncze bazy danych
@@ -128,8 +126,46 @@
           href: sql-database-managed-instance-connect-app.md
         - name: Różnice w języku T-SQL
           href: sql-database-managed-instance-transact-sql-information.md
-    - name: Popularne funkcje programu SQL Server
-      href: sql-database-features.md
+    - name: Ciągłość działalności biznesowej
+      items:
+        - name: Ciągłość działalności biznesowej
+          href: sql-database-business-continuity.md
+        - name: Wysoka dostępność
+          href: sql-database-high-availability.md
+        - name: Kopie zapasowe bazy danych
+          href: sql-database-automated-backups.md
+        - name: Długoterminowe przechowywanie kopii zapasowych
+          itmes:
+            - name: Długoterminowe przechowywanie kopii zapasowych
+              href: sql-database-long-term-retention.md
+            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn SQL
+              href: sql-database-long-term-backup-retention-configure.md
+            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn platformy Azure (przestarzały)
+              href: sql-database-long-term-backup-retention-configure-vault.md
+        - name: Grupy trybu failover i replikacja geograficzna
+          items:
+            - name: Grupy trybu failover i replikacja geograficzna
+              href: sql-database-geo-replication-overview.md
+            - name: Konfigurowanie replikacji geograficznej — portal
+              href: sql-database-geo-replication-portal.md
+            - name: Konfigurowanie zabezpieczeń dla replik
+              href: sql-database-geo-replication-security-config.md
+        - name: Odzyskiwanie bazy danych
+          items:
+            - name: Odzyskiwanie bazy danych
+              href: sql-database-recovery-using-backups.md
+            - name: Odzyskiwanie sprawności po awarii
+              href: sql-database-disaster-recovery.md
+            - name: Wykonywanie próbnego odzyskiwania
+              href: sql-database-disaster-recovery-drills.md
+        - name: Projekt aplikacji
+          items:
+            - name: Projektowanie po kątem odzyskiwania po awarii
+              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+            - name: Projektowanie pod kątem elastycznych pul
+              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Projektowanie pod kątem uaktualnień aplikacji
+              href: sql-database-manage-application-rolling-upgrade.md
     - name: Bezpieczeństwo
       items:
         - name: Bezpieczeństwo
@@ -192,76 +228,56 @@
               href: sql-database-always-encrypted.md
             - name: Korzystanie z usługi Azure Key Vault
               href: sql-database-always-encrypted-azure-key-vault.md
-    - name: Ciągłość działalności biznesowej
+    - name: Elastyczna skalowalność
       items:
-        - name: Ciągłość działalności biznesowej
-          href: sql-database-business-continuity.md
-        - name: Kopie zapasowe bazy danych
-          href: sql-database-automated-backups.md
-        - name: Długoterminowe przechowywanie kopii zapasowych
-          itmes:
-            - name: Długoterminowe przechowywanie kopii zapasowych
-              href: sql-database-long-term-retention.md
-            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn SQL
-              href: sql-database-long-term-backup-retention-configure.md
-            - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn platformy Azure (przestarzały)
-              href: sql-database-long-term-backup-retention-configure-vault.md
-        - name: Grupy trybu failover i replikacja geograficzna
+        - name: Skalowalność zasobów
+          href: sql-database-scale-resources.md
+        - name: Skalowanie odczytu w poziomie
+          href: sql-database-read-scale-out.md
+        - name: Dzielenie bazy danych na fragmenty
           items:
-            - name: Grupy trybu failover i replikacja geograficzna
-              href: sql-database-geo-replication-overview.md
-            - name: Konfigurowanie replikacji geograficznej — portal
-              href: sql-database-geo-replication-portal.md
-            - name: Konfigurowanie zabezpieczeń dla replik
-              href: sql-database-geo-replication-security-config.md
-        - name: Odzyskiwanie bazy danych
-          items:
-            - name: Odzyskiwanie bazy danych
-              href: sql-database-recovery-using-backups.md
-            - name: Odzyskiwanie sprawności po awarii
-              href: sql-database-disaster-recovery.md
-            - name: Wykonywanie próbnego odzyskiwania
-              href: sql-database-disaster-recovery-drills.md
-        - name: Projekt aplikacji
-          items:
-            - name: Projektowanie po kątem odzyskiwania po awarii
-              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-            - name: Projektowanie pod kątem elastycznych pul
-              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-            - name: Projektowanie pod kątem uaktualnień aplikacji
-              href: sql-database-manage-application-rolling-upgrade.md
-    - name: Migracja do bazy danych SQL
-      items:
-        - name: Migracja do bazy danych SQL
-          href: sql-database-cloud-migrate.md
-        - name: Migrowanie do wystąpienia zarządzanego
-          href: sql-database-managed-instance-migrate.md
-        - name: Zarządzanie usługą SQL Database po migracji
-          href: sql-database-manage-after-migration.md
-    - name: Ładowanie i przenoszenie danych
-      items:
-        - name: Kopiowanie bazy danych na platformie Azure
-          href: sql-database-copy.md
-        - name: Importowanie bazy danych z pliku BACPAC
-          href: sql-database-import.md
-        - name: Eksportowanie bazy danych do pliku BACPAC
-          href: sql-database-export.md
-        - name: Synchronizacja danych
-          items:
-            - name: SQL Data Sync
-              href: sql-database-sync-data.md
-            - name: Replikowanie zmian schematu
-              href: sql-database-update-sync-schema.md
-            - name: Monitorowanie za pomocą usługi OMS
-              href: sql-database-sync-monitor-oms.md
-            - name: Najlepsze rozwiązania dotyczące funkcji Data Sync
-              href: sql-database-best-practices-data-sync.md
-            - name: Rozwiązywanie problemów z usługą Data Sync
-              href: sql-database-troubleshoot-data-sync.md
-        - name: Ładowanie danych za pomocą narzędzia BCP
-          href: sql-database-load-from-csv-with-bcp.md
-        - name: Ładowanie danych za pomocą usługi ADF
-          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
+            - name: Dzielenie bazy danych na fragmenty
+              href: sql-database-elastic-scale-introduction.md
+            - name: Elastyczna biblioteka kliencka — konsolidowanie
+              href: sql-database-elastic-database-client-library.md
+            - name: Uaktualnianie biblioteki klienckiej Elastic Database
+              href: sql-database-elastic-scale-upgrade-client-library.md
+            - name: Dzielenie map na fragmenty
+              href: sql-database-elastic-scale-shard-map-management.md
+            - name: Routing zapytań
+              href: sql-database-elastic-scale-data-dependent-routing.md
+            - name: Zarządzanie poświadczeniami
+              href: sql-database-elastic-scale-manage-credentials.md
+            - name: Zapytania dotyczące fragmentów
+              href: sql-database-elastic-scale-multishard-querying.md
+            - name: Narzędzia elastyczne
+              href: sql-database-elastic-scale-glossary.md
+            - name: Przenoszenie danych podzielonych na fragmenty
+              href: sql-database-elastic-scale-overview-split-and-merge.md
+            - name: Elastyczna biblioteka kliencka — Dapper
+              href: sql-database-elastic-scale-working-with-dapper.md
+            - name: Narzędzia elastyczne — często zadawane pytania
+              href: sql-database-elastic-scale-faq.md
+            - name: Tworzenie aplikacji podzielonej na fragmenty
+              href: sql-database-elastic-scale-get-started.md
+            - name: Wykonywanie zapytań względem danych podzielonych na fragmenty w poziomie
+              href: sql-database-elastic-query-getting-started.md
+            - name: Przenoszenie danych podzielonych na fragmenty
+              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
+            - name: Konfiguracja zabezpieczeń
+              href: sql-database-elastic-scale-split-merge-security-configuration.md
+            - name: Dodawanie fragmentu
+              href: sql-database-elastic-scale-add-a-shard.md
+            - name: Rozwiązywanie problemów z mapami fragmentów
+              href: sql-database-elastic-database-recovery-manager.md
+            - name: Migrowanie bazy danych podzielonej na fragmenty
+              href: sql-database-elastic-convert-to-use-elastic-tools.md
+            - name: Tworzenie liczników
+              href: sql-database-elastic-database-perf-counters.md
+            - name: Korzystanie z programu Entity Framework
+              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+    - name: Porównanie funkcji SQL
+      href: sql-database-features.md
     - name: Monitorowanie i dostrajanie
       items:
         - name: Monitorowanie i dostrajanie
@@ -318,52 +334,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-    - name: Skalowanie w poziomie
-      items:
-        - name: Skalowanie odczytu w poziomie
-          href: sql-database-read-scale-out.md
-        - name: Dzielenie bazy danych na fragmenty
-          items:
-            - name: Dzielenie bazy danych na fragmenty
-              href: sql-database-elastic-scale-introduction.md
-            - name: Elastyczna biblioteka kliencka — konsolidowanie
-              href: sql-database-elastic-database-client-library.md
-            - name: Uaktualnianie biblioteki klienckiej Elastic Database
-              href: sql-database-elastic-scale-upgrade-client-library.md
-            - name: Dzielenie map na fragmenty
-              href: sql-database-elastic-scale-shard-map-management.md
-            - name: Routing zapytań
-              href: sql-database-elastic-scale-data-dependent-routing.md
-            - name: Zarządzanie poświadczeniami
-              href: sql-database-elastic-scale-manage-credentials.md
-            - name: Zapytania dotyczące fragmentów
-              href: sql-database-elastic-scale-multishard-querying.md
-            - name: Narzędzia elastyczne
-              href: sql-database-elastic-scale-glossary.md
-            - name: Przenoszenie danych podzielonych na fragmenty
-              href: sql-database-elastic-scale-overview-split-and-merge.md
-            - name: Elastyczna biblioteka kliencka — Dapper
-              href: sql-database-elastic-scale-working-with-dapper.md
-            - name: Narzędzia elastyczne — często zadawane pytania
-              href: sql-database-elastic-scale-faq.md
-            - name: Tworzenie aplikacji podzielonej na fragmenty
-              href: sql-database-elastic-scale-get-started.md
-            - name: Wykonywanie zapytań względem danych podzielonych na fragmenty w poziomie
-              href: sql-database-elastic-query-getting-started.md
-            - name: Przenoszenie danych podzielonych na fragmenty
-              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
-            - name: Konfiguracja zabezpieczeń
-              href: sql-database-elastic-scale-split-merge-security-configuration.md
-            - name: Dodawanie fragmentu
-              href: sql-database-elastic-scale-add-a-shard.md
-            - name: Rozwiązywanie problemów z mapami fragmentów
-              href: sql-database-elastic-database-recovery-manager.md
-            - name: Migrowanie bazy danych podzielonej na fragmenty
-              href: sql-database-elastic-convert-to-use-elastic-tools.md
-            - name: Tworzenie liczników
-              href: sql-database-elastic-database-perf-counters.md
-            - name: Korzystanie z programu Entity Framework
-              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: Operacje między bazami danych
       items:
         - name: Zadania Elastic Database
@@ -424,6 +394,40 @@
           href: sql-database-temporal-tables-retention-policy.md
         - name: Konfigurowanie przetwarzania w pamięci
           href: sql-database-in-memory-oltp-migration.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Migracja do bazy danych SQL
+      items:
+        - name: Migracja do bazy danych SQL
+          href: sql-database-cloud-migrate.md
+        - name: Migrowanie do wystąpienia zarządzanego
+          href: sql-database-managed-instance-migrate.md
+        - name: Zarządzanie usługą SQL Database po migracji
+          href: sql-database-manage-after-migration.md
+    - name: Ładowanie i przenoszenie danych
+      items:
+        - name: Kopiowanie bazy danych na platformie Azure
+          href: sql-database-copy.md
+        - name: Importowanie bazy danych z pliku BACPAC
+          href: sql-database-import.md
+        - name: Eksportowanie bazy danych do pliku BACPAC
+          href: sql-database-export.md
+        - name: Synchronizacja danych
+          items:
+            - name: SQL Data Sync
+              href: sql-database-sync-data.md
+            - name: Replikowanie zmian schematu
+              href: sql-database-update-sync-schema.md
+            - name: Monitorowanie za pomocą usługi OMS
+              href: sql-database-sync-monitor-oms.md
+            - name: Najlepsze rozwiązania dotyczące funkcji Data Sync
+              href: sql-database-best-practices-data-sync.md
+            - name: Rozwiązywanie problemów z usługą Data Sync
+              href: sql-database-troubleshoot-data-sync.md
+        - name: Ładowanie danych za pomocą narzędzia BCP
+          href: sql-database-load-from-csv-with-bcp.md
+        - name: Ładowanie danych za pomocą usługi ADF
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
     - name: Tworzenie aplikacji
       items:
         - name: Łączność
@@ -448,8 +452,6 @@
           href: sql-database-develop-cplusplus-simple.md
         - name: Excel
           href: sql-database-connect-excel.md
-- name: Przewodniki z instrukcjami
-  items:
     - name: Architektura referencyjna wielodostępnego oprogramowania SaaS
       items:
         - name: Przykład aplikacji Wingtip Tickets

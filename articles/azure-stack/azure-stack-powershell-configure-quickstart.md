@@ -1,6 +1,6 @@
 ---
-title: Instalowanie i konfigurowanie programu PowerShell dla Szybki Start Azure stosu | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat instalowania i konfigurowania programu PowerShell dla usługi Azure stosu.
+title: Instalowanie i konfigurowanie programu PowerShell dla usługi Azure Stack przewodnika Szybki Start | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat instalowania i konfigurowania programu PowerShell dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66598bda7ca1fcf5c6e05ab47232236b740177a6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075242"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465747"
 ---
-# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Rozpocząć pracę z programu PowerShell w programie Azure stosu
+# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Szybkie rozpoczynanie pracy przy użyciu programu PowerShell w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Ta opcja szybkiego startu pomaga zainstalować i skonfigurować środowisko stosu Azure przy użyciu programu PowerShell. Skrypt, który firma Microsoft udostępnia w tym artykule jest zakresem **operator stosu Azure** tylko.
+Ten przewodnik Szybki Start pomaga zainstalować i skonfigurować środowisko usługi Azure Stack przy użyciu programu PowerShell. Skrypt, który firma Microsoft zapewnia, że w tym artykule jest ograniczone do **operatora infrastruktury Azure Stack** tylko.
 
-W tym artykule jest zmniejszoną wersję kroki, które zostały opisane w [Zainstaluj program PowerShell]( azure-stack-powershell-install.md), [Pobierz narzędzia]( azure-stack-powershell-download.md), i [konfigurowania środowiska PowerShell operator stosu Azure]( azure-stack-powershell-configure-admin.md) artykułów. Za pomocą skryptów w tym temacie, można skonfigurować programu PowerShell dla środowisk Azure stosu, które zostały wdrożone za pomocą usługi Azure Active Directory lub usługi Active Directory Federation Services (AD FS).  
+Ten artykuł jest skrócona wersja kroków, które są opisane w [Instalowanie programu PowerShell]( azure-stack-powershell-install.md), [Pobierz narzędzia]( azure-stack-powershell-download.md), i [konfigurowania środowiska PowerShell operatora infrastruktury Azure Stack]( azure-stack-powershell-configure-admin.md) artykułów. Za pomocą skryptów, w tym temacie, można skonfigurować programu PowerShell dla usługi Azure Stack środowisk, w których są wdrażane przy użyciu usługi Azure Active Directory lub usługi Active Directory Federation Services (AD FS).  
 
 
-## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Konfigurowanie środowiska PowerShell dla wdrożenia oparte na usłudze Azure Active Directory
+## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Konfigurowanie programu PowerShell dla wdrożenia oparte na usłudze Azure Active Directory
 
-Zaloguj się do zestawu Azure stosu Development Kit lub klient zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. Upewnij się, że aktualizacja **TenantName**, **ArmEndpoint**, i **GraphAudience** zmienne zgodnie z potrzebami dla konfiguracji środowiska:
+Zaloguj się do usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. Upewnij się zaktualizować **TenantName**, **ArmEndpoint**, i **GraphAudience** zmienne jako niezbędne do konfiguracji środowiska:
 
 ```powershell
 # Specify Azure Active Directory tenant name.
@@ -98,9 +98,9 @@ Import-Module .\Connect\AzureStack.Connect.psm1
     -TenantId $TenantID 
 ```
 
-## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>Konfigurowanie środowiska PowerShell dla usługi AD FS na podstawie wdrożeń
+## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>Konfigurowanie programu PowerShell dla usługi AD FS, na podstawie wdrożenia
 
-Poniższy skrypt można użyć w przypadku stosu Azure w przypadku połączenia z Internetem. Jednak jeśli stosu Azure działają bez łączności z Internetem, użyj [odłączony sposób instalowania programu PowerShell](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) i poleceń cmdlet programu PowerShell skonfiguruj pozostanie taka sama, jak pokazano w tym skrypcie. Zaloguj się do zestawu Azure stosu Development Kit lub klient zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. Upewnij się, że aktualizacja **ArmEndpoint** i **GraphAudience** zmienne zgodnie z potrzebami dla konfiguracji środowiska:
+W przypadku usługi Azure Stack po podłączeniu do Internetu, można użyć poniższego skryptu. Jednak w przypadku usługi Azure Stack bez łączności z Internetem, użyj [odłączony sposób instalowania programu PowerShell](azure-stack-powershell-install.md) i poleceń cmdlet do konfigurowania programu PowerShell pozostanie taka sama, jak pokazano w tym skrypcie. Zaloguj się do usługi Azure Stack Development Kit lub klienckich zewnętrznych z systemem Windows po nawiązaniu połączenia za pośrednictwem sieci VPN. Otwórz sesję programu PowerShell ISE z podwyższonym poziomem uprawnień, a następnie uruchom następujący skrypt. Upewnij się zaktualizować **ArmEndpoint** i **GraphAudience** zmienne jako niezbędne do konfiguracji środowiska:
 
 ```powershell
 
@@ -166,7 +166,7 @@ Add-AzureRmAccount `
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 
-Teraz, gdy skonfigurowano programu PowerShell, można przetestować konfigurację przez utworzenie grupy zasobów:
+Po skonfigurowaniu programu PowerShell można przetestować konfigurację, tworząc grupę zasobów:
 
 ```powershell
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
@@ -175,7 +175,7 @@ New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 > [!note]  
 > Aby określić grupę zasobów, należy mieć grupę zasobów w ramach subskrypcji. Aby uzyskać więcej informacji o subskrypcjach, zobacz [omówienie planu, oferty, przydziału i subskrypcji](azure-stack-plan-offer-quota-overview.md)
 
-Po utworzeniu grupy zasobów, **stan inicjowania obsługi** właściwość jest ustawiona na **zakończyło się pomyślnie**.
+Po utworzeniu grupy zasobów, **stan aprowizacji** właściwość jest ustawiona na **Powodzenie**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

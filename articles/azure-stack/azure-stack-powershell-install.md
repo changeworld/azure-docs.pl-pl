@@ -1,6 +1,6 @@
 ---
-title: Instalowanie programu PowerShell dla usługi Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować program PowerShell Azure stosu.
+title: Instalowanie programu PowerShell dla usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować program PowerShell dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/18/2018
+ms.date: 07/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: b3c09582f5135655640768bcbcbef91750827bfa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e2785b0beeab042d4b1ad9a9eb5f545dbb58b8b9
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358894"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38487505"
 ---
-# <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu
+# <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Azure stosu zgodne Azure moduły programu PowerShell są wymagane do pracy z stosu Azure. W tym przewodniku możemy opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu.
+Usługa Azure Stack, które zgodna modułów programu Azure PowerShell są wymagane do pracy z usługą Azure Stack. W tym przewodniku przedstawiono czynności wymagane do zainstalowania programu PowerShell dla usługi Azure Stack.
 
-W tym artykule przedstawiono szczegółowe instrukcje dotyczące instalacji programu PowerShell dla usługi Azure stosu.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące instalowania programu PowerShell dla usługi Azure Stack.
 
-> [!Note]
-> Poniższe kroki wymagają programu PowerShell 5.0. Aby sprawdzić swoją wersję, uruchom $PSVersionTable.PSVersion i porównać **głównych** wersji.
+> [!Note]  
+> Poniższe kroki wymagają programu PowerShell w wersji 5.0. Aby sprawdzić swoją wersję, uruchom $PSVersionTable.PSVersion i porównaj **głównych** wersji.
 
-Polecenia programu PowerShell dla usługi Azure stosu są instalowane za pośrednictwem galerii programu PowerShell. Poniższa procedura służy do sprawdzania poprawności, gdy PSGallery jest zarejestrowany jako repozytorium, otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
+Polecenia programu PowerShell dla usługi Azure Stack są instalowane za pośrednictwem galerii programu PowerShell. Poniższa procedura służy do sprawdzania, czy w galerii programu PowerShell jest zarejestrowany jako repozytorium, otwórz sesję programu PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
 
 ```PowerShell  
 Get-PSRepository -Name "PSGallery"
@@ -46,11 +46,11 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 > [!Note]  
 > Ten krok wymaga dostępu do Internetu. 
 
-## <a name="uninstall-existing-versions-of-powershell"></a>Odinstaluj istniejące wersje programu PowerShell
+## <a name="uninstall-existing-versions-of-the-azure-stack-powershell-modules"></a>Odinstaluj istniejące wersje modułów platformy Azure Stack PowerShell
 
-Przed zainstalowaniem wersji wymagane, upewnij się, odinstalowanie żadnych wcześniej zainstalowanych modułów Azure PowerShell stosu. Można je odinstalować, wykonując jedną z następujących dwóch metod:
+Przed rozpoczęciem instalacji wymaganej wersji, upewnij się, odinstalowanie wszelkich uprzednio zainstalowanych modułów AzureRM PowerShell w usłudze Azure Stack. Można je odinstalować, wykonując jedną z następujących dwóch metod:
 
- - Aby odinstalować istniejące moduły programu PowerShell, zamknij wszystkie aktywne sesje programu PowerShell i uruchom następujące polecenie:
+ - Aby odinstalować istniejące moduły programu PowerShell usługi AzureRM, należy zamknąć wszystkich aktywnych sesji programu PowerShell i uruchom następujące polecenie:
 
   ```PowerShell
     Uninstall-Module AzureRM.AzureStackAdmin -Force
@@ -58,13 +58,13 @@ Przed zainstalowaniem wersji wymagane, upewnij się, odinstalowanie żadnych wcz
     Uninstall-Module -Name AzureStack -Force
   ```
 
- - Usuń wszystkie foldery, które zaczynają się "Azure" z `C:\Program Files\WindowsPowerShell\Modules` i `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` folderów. Usunięcie tych folderów spowoduje usunięcie istniejących moduły programu PowerShell.
+ - Usuń wszystkie foldery, rozpoczynające się od "Azure" z `C:\Program Files\WindowsPowerShell\Modules` i `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` folderów. Usunięcie tych folderów usuwa wszystkie istniejące moduły programu PowerShell.
 
-W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure stosu. Na stosie Azure, która jest świadczona w połączone, częściowo połączone lub w scenariuszu bez połączenia można zainstalować programu PowerShell.
+W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerShell dla usługi Azure Stack. Można zainstalować programu PowerShell w usłudze Azure Stack jest świadczona w połączony, częściowo połączone lub w przypadku odłączonych.
 
-## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu połączonych (z połączeniem internetowym)
+## <a name="install-the-azure-stack-powershell-modules-in-a-connected-scenario-with-internet-connectivity"></a>Instalowanie modułów programu Azure PowerShell stosu w przypadku połączonych (przy użyciu łączności z Internetem)
 
-Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga **2017-03-09-profilu** profilu wersji interfejsu API, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. Aby dowiedzieć się więcej o profilach wersji interfejsu API i udostępniane przez nich polecenia cmdlet, zapoznaj się [zarządzania profilami wersji interfejsu API](user/azure-stack-version-profiles.md). Oprócz modułów AzureRM należy również zainstalować moduł Azure PowerShell dotyczące stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
+Moduły platformy Azure Stack zgodne AzureRM są instalowane za pośrednictwem profilami wersji interfejsu API. Usługa Azure Stack wymaga **2017-03-09-profile** profilu wersji interfejsu API, która jest dostępna po zainstalowaniu modułu AzureRM.Bootstrapper. Aby dowiedzieć się o profilami wersji interfejsu API i polecenia cmdlet, dostarczone przez nich, zapoznaj się [Zarządzanie profilami wersji interfejsu API](user/azure-stack-version-profiles.md). Oprócz moduły AzureRM należy również zainstalować moduły programu Azure PowerShell specyficzne dla stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
 
   ```PowerShell  
 # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -86,16 +86,16 @@ Aby sprawdzić instalację, uruchom następujące polecenie:
 Get-Module -ListAvailable | where-Object {$_.Name -like "Azs*"}
 ```
 
-Jeśli instalacja się powiodła, AzureRM i AzureStack moduły są wyświetlane w danych wyjściowych.
+Jeśli instalacja się powiodła, moduł AzureRM i AzureStack są wyświetlane w danych wyjściowych.
 
-## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu częściowo połączonych lub rozłączona (ograniczone z łącznością z Internetem)
+## <a name="install-the-azure-stack-powershell-modules-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Instalowanie modułów Azure Stack PowerShell w odłączone lub częściowo połączone scenariusza (ograniczony z łącznością z Internetem)
 
-W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell na komputerze, na którym ma połączenie z Internetem i przesyła je Azure stosu Development Kit dla instalacji.
+W przypadku odłączonych należy najpierw pobrać modułów programu PowerShell na komputerze, który ma łączność z Internetem, a następnie przenieść je do usługi Azure Stack Development Kit dla instalacji.
 
 > [!IMPORTANT]  
-> Wersja modułu Azure PowerShell stosu 1.3.0 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.11 wersji, zobacz [Przewodnik po migracji](https://aka.ms/azspowershellmigration).
+> Wersja modułu Azure PowerShell stosu 1.3.0 zawiera listę istotnych zmian. Aby uaktualnić 1.2.11 wersji, zobacz [Przewodnik po migracji](https://aka.ms/azspowershellmigration).
 
-1. Zaloguj się do komputera, na którym jest połączony z Internetem i użyj następującego skryptu do pobierania AzureRM i pakiety AzureStack na komputerze lokalnym:
+1. Zaloguj się do komputera, na którym mieć połączenie z Internetem i użyj następującego skryptu do pobrania AzureRM i pakietów AzureStack na komputer lokalny:
 
    ```PowerShell  
    $Path = "<Path that is used to save the packages>"
@@ -118,13 +118,13 @@ W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell n
    ```
 
   > [!Important]  
-  > Jeśli nie zostały uruchomione stosu Azure z aktualizacją 1804 lub większą, zmień **requiredversion** wartości parametru `1.2.11`. 
+  > Jeśli nie są uruchomione usługi Azure Stack z aktualizacją update 1804 lub nowszego, zmień **requiredversion** wartości parametru `1.2.11`. 
 
-2. Skopiować pobranych pakietów przez urządzenie USB.
+2. Skopiuj pakietów do pobrania z urządzeniem USB.
 
-3. Zaloguj się do stacji roboczej i skopiuj pakiety z urządzenia USB do lokalizacji na stacji roboczej.
+3. Zaloguj się do stacji roboczej, a następnie skopiuj pakiety z urządzenia USB do lokalizacji na stacji roboczej.
 
-4. Teraz musisz zarejestrować tej lokalizacji jako repozytorium domyślne i zainstalować moduły AzureRM i AzureStack z tego repozytorium:
+4. Teraz musisz zarejestrować tę lokalizację jako repozytorium domyślne i zainstaluj moduł AzureRM i AzureStack z tego repozytorium:
 
    ```PowerShell
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -142,11 +142,11 @@ W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell n
      -Repository $RepoName 
    ```
 
-## <a name="configure-powershell-to-use-a-proxy-server"></a>Konfigurowanie programu PowerShell, aby użyć serwera proxy
+## <a name="configure-powershell-to-use-a-proxy-server"></a>Konfigurowanie programu PowerShell do korzystania z serwera proxy
 
-W scenariuszach, które wymagają serwera proxy do uzyskania dostępu do Internetu należy najpierw skonfigurować programu PowerShell, aby korzystał z istniejącego serwera proxy.
+W scenariuszach, które wymagają serwera proxy, aby uzyskać dostęp do Internetu należy najpierw skonfigurować programu PowerShell, aby użyć istniejącego serwera proxy.
 
-1. Otwórz wiersz programu PowerShell z podwyższonym poziomem uprawnień.
+1. Otwórz wiersz PowerShell z podwyższonym poziomem uprawnień.
 2. Uruchom następujące polecenia:
 
 ````PowerShell  
@@ -160,7 +160,7 @@ W scenariuszach, które wymagają serwera proxy do uzyskania dostępu do Interne
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - [Pobieranie narzędzia Azure stosu z usługi GitHub](azure-stack-powershell-download.md)
- - [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](user/azure-stack-powershell-configure-user.md)  
- - [Konfigurowanie środowiska PowerShell Azure stosu — operator](azure-stack-powershell-configure-admin.md) 
- - [Zarządzanie profilami wersji interfejsu API Azure stosu](user/azure-stack-version-profiles.md)  
+ - [Pobierz narzędzia usługi Azure Stack z usługi GitHub](azure-stack-powershell-download.md)
+ - [Konfigurowanie środowiska PowerShell użytkownika usługi Azure Stack](user/azure-stack-powershell-configure-user.md)  
+ - [Konfigurowanie środowiska PowerShell usługi Azure Stack — operator](azure-stack-powershell-configure-admin.md) 
+ - [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](user/azure-stack-version-profiles.md)  

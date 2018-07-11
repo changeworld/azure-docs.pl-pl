@@ -103,6 +103,8 @@
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Włączanie ustawień diagnostycznych przy użyciu szablonów usługi Resource Manager
           href: monitoring-enable-diagnostic-logs-using-template.md
+        - name: Przygotowywanie do zastosowania formatu dzienników diagnostycznych JSON Lines
+          href: monitor-diagnostic-logs-append-blobs.md
     - name: Korzystanie z dziennika aktywności
       items:
         - name: Wyświetlanie zdarzeń w dzienniku aktywności

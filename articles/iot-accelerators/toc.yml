@@ -10,6 +10,8 @@
   items:
     - name: Wdrażanie rozwiązania do zdalnego monitorowania
       href: quickstart-remote-monitoring-deploy.md
+    - name: Wdrażanie rozwiązania do symulacji urządzeń
+      href: quickstart-device-simulation-deploy.md
 - name: Samouczki
   items:
     - name: Monitorowanie urządzeń IoT
@@ -149,10 +151,10 @@
           href: iot-accelerators-connected-factory-customize.md
     - name: Symulacja urządzenia
       items:
-        - name: Wdrażanie akceleratora rozwiązań
-          href: iot-accelerators-device-simulation-deploy.md
-        - name: Uruchamianie symulacji
-          href: iot-accelerators-device-simulation-explore.md
+        - name: Używanie istniejącego centrum IoT Hub
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: Używanie niestandardowego modelu urządzenia
+          href: iot-accelerators-device-simulation-custom-model.md
 - name: Dokumentacja
   items:
     - name: Przewodnik informacyjny dla deweloperów

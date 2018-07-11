@@ -41,6 +41,8 @@
       href: how-to-customize-pronunciation.md
     - name: Dostosowywanie czcionek głosowych (głos bota powiązany z marką)
       href: how-to-customize-voice-font.md
+    - name: Nagrywanie próbek głosu
+      href: record-custom-voice-samples.md
     - name: Przygotowanie transkrypcji
       href: prepare-transcription.md
     - name: Korzystanie z niestandardowych strumieni audio

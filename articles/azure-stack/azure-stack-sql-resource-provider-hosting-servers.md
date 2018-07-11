@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e8dd425bbb5839b1c2f5ad4e217c61dc50b38ce1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346828"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38465841"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -100,9 +100,6 @@ Aby dodać autonomicznego serwera hostingu, który został już skonfigurowany, 
    * Aby korzystać z istniejących jednostek SKU, wybierz dostępną jednostką SKU, a następnie wybierz **Utwórz**.
    * Aby utworzyć jednostkę SKU, wybierz **+ Tworzenie nowej jednostki SKU**. W **Tworzenie jednostki SKU**, wprowadź wymagane informacje, a następnie wybierz **OK**.
 
-     > [!IMPORTANT]
-     > Znaki specjalne, łącznie ze spacjami i okresów, nie są obsługiwane w **nazwa** pola. Używając przykładów na poniższym zrzucie ekranu, możesz wprowadź wartości w polach **rodziny**, **warstwy**, i **wersji** pola.
-
      ![Tworzenie jednostki SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>Zapewnianie wysokiej dostępności przy użyciu programu SQL zawsze włączone grupy dostępności
@@ -119,16 +116,18 @@ Konfigurowanie wystąpienia SQL Always On wymaga dodatkowych kroków, a trzy mas
 
 Należy włączyć [automatyczne wstępne wypełnianie](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) dla każdej grupy dostępności dla każdego wystąpienia programu SQL Server.
 
-Aby włączyć automatyczne wstępne wypełnianie we wszystkich wystąpieniach, edytować, a następnie uruchom poniższe polecenie SQL dla poszczególnych wystąpień:
+Aby włączyć automatyczne wstępne wypełnianie we wszystkich wystąpieniach, edycji, a następnie uruchom poniższe polecenie SQL, w replice podstawowej dla każdego wystąpienia dodatkowej:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
+      MODIFY REPLICA ON '<secondary_node>'
       WITH (SEEDING_MODE = AUTOMATIC)
   GO
   ```
 
-Na wystąpieniach dodatkowej edycji, a następnie uruchom poniższe polecenie SQL dla poszczególnych wystąpień:
+Należy pamiętać, że grupa dostępności muszą być ujęte w nawiasy kwadratowe.
+
+Dodatkowych węzłów uruchom następujące polecenie SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,7 +155,7 @@ Aby ustawić opcję zawartej bazy danych uwierzytelniania serwera dla każdego w
 
    W obszarze **serwerów do hostingu SQL**, łączysz dostawcy zasobów programu SQL Server do rzeczywistych wystąpień programu SQL Server, które służą jako dostawca zasobów wewnętrznej bazy danych.
 
-3. Wypełnij formularz z szczegóły połączenia dla wystąpienia programu SQL Server. Należy upewnić się, że adres FQDN zawsze odbiornik (i opcjonalnie port numer.) Podaj informacje dla konta, które zostały skonfigurowane z uprawnieniami administratora systemu.
+3. Wypełnij formularz z szczegóły połączenia dla wystąpienia programu SQL Server. Należy upewnić się, że adres FQDN zawsze odbiornik (i opcjonalnie port numer i nazwę wystąpienia). Podaj informacje dla konta, które zostały skonfigurowane z uprawnieniami administratora systemu.
 
 4. Zaznacz pole zawsze włączonej grupy dostępności, aby włączyć obsługę wystąpień zawsze włączonej grupy dostępności SQL.
 
