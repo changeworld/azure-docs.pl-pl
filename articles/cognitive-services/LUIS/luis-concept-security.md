@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: f55574f7a9ffbcc2a1c8bd160bb66336b59c348c
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 90b53bf1334a68fcea813653a7f6d28f362fbd2e
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888605"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950652"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -33,7 +33,7 @@ Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikac
 |Upublicznić aplikacji|Gdy aplikacja jest publiczny, każda osoba z kluczem tworzenia lub punkt końcowy kwerendy aplikacji.|
 |Modyfikowanie modelu|
 |Publikowanie|
-|Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](label-suggested-utterances.md)|
+|Przejrzyj wypowiedzi punktu końcowego dla [aktywne uczenie](luis-how-to-review-endoint-utt.md)|
 |Szkolenie|
 
 ## <a name="access-to-endpoint"></a>Dostęp do punktu końcowego

@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji klastra HBase w sieciach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie skonfigurowania replikacji bazy danych HBase z jednej wersji usługi HDInsight do innego równoważenia obciążenia, wysokiej dostępności, zero przestoju migracji i aktualizacji i odzyskiwania po awarii.
+title: Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie konfigurowania replikacji bazy danych HBase z jednej wersji HDInsight do innego dla równoważenia obciążenia, wysoką dostępność, bez jakichkolwiek przestojów migracji i aktualizacji i odzyskiwania po awarii.
 services: hdinsight,virtual-network
 documentationcenter: ''
 author: mumian
@@ -12,61 +12,61 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077330"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951125"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klastra HBase w sieciach wirtualnych platformy Azure
+# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
 
-Informacje o sposobie skonfigurowania replikacji bazy danych HBase w ramach sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
+Dowiedz się, jak skonfigurować replikacji bazy danych HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi na platformie Azure.
 
-Replikacja klastra używa metodologii wypychania źródła. Klaster HBase można źródła lub miejsca docelowego, lub jego jednocześnie spełnić obie role. Replikacja jest asynchroniczne. Celem replikacji jest spójność ostateczna. Gdy źródło odbiera Edytuj, aby rodziny kolumn po włączeniu replikacji, Edycja jest propagowana do wszystkich klastrów docelowych. Podczas replikacji danych z jednego klastra do innego klastra źródłowego i wszystkich klastrów, które mają już używane dane są śledzone, aby zapobiec pętli replikacji.
+Replikacja klastra używa metodologii wypychania źródła. Klaster bazy danych HBase może być źródła lub miejsca docelowego lub go wykonać obie te role jednocześnie. Replikacja jest asynchroniczne. Celem replikacji jest spójność ostateczną. Źródło odbiera zmianę do rodziny kolumn, po włączeniu replikacji, Edycja jest propagowany do wszystkich klastrów docelowych. Podczas replikacji danych z jednego klastra do innego klastra źródłowego i wszystkich klastrów, które już zostały wykorzystane danych są śledzone, aby zapobiec pętli replikacji.
 
-W tym samouczku skonfigurowaniu replikacji źródłowego i docelowego. Dla innych topologiach klastra [Podręcznik bazy danych Apache HBase](http://hbase.apache.org/book.html#_cluster_replication).
+W tym samouczku konfigurowania replikacji źródłowego i docelowego. Dla innych topologiach klastra [podręczniku bazy danych Apache HBase](http://hbase.apache.org/book.html#_cluster_replication).
 
-Przypadki użycia replikacji bazy danych HBase pojedynczej sieci wirtualnych są następujące:
+Przypadki użycia replikacji bazy danych HBase w jednej sieci wirtualnej są następujące:
 
-* Równoważenie obciążenia. Na przykład można uruchomić zadania MapReduce lub skanowania w docelowym klastrze i pozyskiwania danych w klastrze źródłowym.
+* Równoważenie obciążenia. Na przykład można uruchomić skanowania lub zadań MapReduce w docelowym klastrze i pozyskiwania danych w klastrze źródłowym.
 * Dodawanie wysokiej dostępności.
-* Migrowanie danych z jednego klastra HBase na inny.
+* Migrowanie danych z jednego klastra HBase do innego.
 * Uaktualnianie klastra usługi Azure HDInsight z jednej wersji do innego.
 
-Przypadków użycia replikacji bazy danych HBase dla dwie sieci wirtualne są następujące:
+Przypadki użycia replikacji bazy danych HBase, dwie sieci wirtualne są następujące:
 
 * Konfigurowanie odzyskiwania po awarii.
 * Równoważenie obciążenia i partycjonowanie aplikacji.
 * Dodawanie wysokiej dostępności.
 
-Można replikować klastrów za pomocą [akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md) skrypty z [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
+Klastry można replikować przy użyciu [skryptu akcji](../hdinsight-hadoop-customize-cluster-linux.md) skryptów z [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azure. Zobacz [uzyskać Azure bezpłatnej wersji próbnej](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Przed rozpoczęciem tego samouczka musisz dysponować subskrypcją platformy Azure. Zobacz [uzyskać bezpłatna wersja próbna platformy](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## <a name="set-up-the-environments"></a>Konfigurowanie środowisk
+## <a name="set-up-the-environments"></a>Konfigurowanie środowiska
 
-Dostępne są trzy opcje konfiguracji:
+Masz trzy opcje konfiguracji:
 
-- Dwoma klastrami HBase w jednej sieci wirtualnej platformy Azure.
-- Dwoma klastrami HBase w dwóch różnych sieciach wirtualnych w tym samym regionie.
-- Dwoma klastrami HBase w dwóch różnych sieciach wirtualnych w dwóch różnych regionach (replikacja geograficzna).
+- Dwa klastry HBase w jednej sieci wirtualnej platformy Azure.
+- Dwa klastry HBase w dwóch różnych sieciach wirtualnych w tym samym regionie.
+- Dwa klastry HBase w dwóch różnych sieciach wirtualnych w dwóch różnych regionach (replikacja geograficzna).
 
-W tym artykule opisano scenariusz replikację geograficzną.
+W tym artykule opisano scenariusz replikacji geograficznej.
 
-Ułatwiają konfigurowanie środowisk, utworzyliśmy niektóre [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Jeśli wolisz skonfigurować tych środowisk przy użyciu innych metod, zobacz:
+Ułatwiające konfigurowanie środowisk, utworzyliśmy niektóre [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Jeśli wolisz skonfigurować tych środowisk przy użyciu innych metod, zobacz:
 
-- [Tworzenie klastrów Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Tworzenie klastrów HBase w sieci wirtualnej platformy Azure](apache-hbase-provision-vnet.md)
+- [Tworzenie klastrów Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Tworzenie klastrów HBase w usłudze Azure Virtual Network](apache-hbase-provision-vnet.md)
 
-### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Skonfigurować dwie sieci wirtualne w dwóch różnych regionach.
+### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Konfigurowanie dwiema sieciami wirtualnymi w dwóch różnych regionach
 
-Aby utworzyć dwie sieci wirtualne w dwóch różnych regionach i połączenia sieci VPN między sieciami wirtualnymi, wybierz poniższy obraz, aby utworzyć. Szablon jest przechowywany w [magazynu obiektów blob publicznego]] (https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
+Aby użyć szablonu, który tworzy dwie sieci wirtualne w dwóch różnych regionach i połączenia sieci VPN między sieciami wirtualnymi, należy wybrać następujące opcje **Wdróż na platformie Azure** przycisku. Definicja szablonu jest przechowywana w [magazynu obiektów blob publicznych](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-Niektóre wartości ustalony w szablonie:
+Część zakodowanych wartości w szablonie:
 
 **Sieć wirtualna 1**
 
@@ -74,60 +74,60 @@ Niektóre wartości ustalony w szablonie:
 |----------|-------|
 | Lokalizacja | Zachodnie stany USA |
 | Nazwa sieci wirtualnej | &lt;ClusterNamePrevix >-vnet1 |
-| Prefiks przestrzeni adresów | 10.1.0.0/16 |
+| Prefiks przestrzeni adresowej | 10.1.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
 | Prefiks podsieci | 10.1.0.0/24 |
 | Nazwa podsieci (bramy) | GatewaySubnet (nie można zmienić) |
 | Prefiks podsieci (bramy) | 10.1.255.0/27 |
 | Nazwa bramy | vnet1gw |
 | Typ bramy | Vpn |
-| Typ sieci VPN dla bramy | RouteBased |
+| Typ sieci VPN bramy | RouteBased |
 | Jednostka SKU bramy | Podstawowa |
-| brama IP | vnet1gwip |
+| Brama IP | vnet1gwip |
 
-**Sieci wirtualnej 2**
+**2 w sieci wirtualnej**
 
 | Właściwość | Wartość |
 |----------|-------|
 | Lokalizacja | Wschodnie stany USA |
 | Nazwa sieci wirtualnej | &lt;ClusterNamePrevix >-vnet2 |
-| Prefiks przestrzeni adresów | 10.2.0.0/16 |
+| Prefiks przestrzeni adresowej | 10.2.0.0/16 |
 | Nazwa podsieci | Podsieć 1 |
 | Prefiks podsieci | 10.2.0.0/24 |
 | Nazwa podsieci (bramy) | GatewaySubnet (nie można zmienić) |
 | Prefiks podsieci (bramy) | 10.2.255.0/27 |
 | Nazwa bramy | vnet2gw |
 | Typ bramy | Vpn |
-| Typ sieci VPN dla bramy | RouteBased |
+| Typ sieci VPN bramy | RouteBased |
 | Jednostka SKU bramy | Podstawowa |
-| brama IP | vnet1gwip |
+| Brama IP | vnet1gwip |
 
-## <a name="setup-dns"></a>Konfiguracja DNS
+## <a name="setup-dns"></a>Ustawienia DNS
 
-W ostatniej sekcji szablon tworzy maszyny wirtualnej systemu Ubuntu w każdym z dwóch sieci wirtualnych.  W tej sekcji Zainstaluj Bind w przypadku dwóch maszyn wirtualnych DNS, a następnie skonfiguruj przesyłania dalej DNS w przypadku dwóch maszyn wirtualnych.
+W ostatniej sekcji ten szablon tworzy maszynę wirtualną Ubuntu w każdej z dwiema sieciami wirtualnymi.  W tej sekcji Zainstaluj powiązania na dwie maszyny wirtualne DNS, a następnie skonfiguruj przesyłania dalej DNS na dwie maszyny wirtualne.
 
-Aby zainstalować Bind, yon musi znaleźć publiczny adres IP dwóch maszyn wirtualnych DNS.
+Aby zainstalować powiązania, yon, należy znaleźć publiczny adres IP z dwóch maszyn wirtualnych DNS.
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-2. Otwórz DNS maszynę wirtualną, wybierając **grup zasobów > [Nazwa grupy zasobów] > [vnet1DNS]**.  Nazwa grupy zasobów jest tworzonym w poprzedniej procedurze. Domyślne nazwy maszyny wirtualnej DNS są *vnet1DNS* i *vnet2NDS*.
+2. Otwórz DNS maszyny wirtualnej, wybierając **grupy zasobów > [Nazwa grupy zasobów] > [vnet1DNS]**.  Nazwa grupy zasobów jest ten, który zostanie utworzony w poprzedniej procedurze. Domyślne nazwy maszyny wirtualnej DNS są *vnet1DNS* i *vnet2NDS*.
 3. Wybierz **właściwości** aby otworzyć stronę właściwości sieci wirtualnej.
-4. Zapisz **publicznego adresu IP**, a także sprawdź **prywatny adres IP**.  Jest prywatny adres IP **10.1.0.4** dla vnet1DNS i **10.2.0.4** dla vnet2DNS.  
+4. Zapisz **publiczny adres IP**, a także sprawdzić **prywatny adres IP**.  Prywatny adres IP jest **10.1.0.4** dla vnet1DNS i **10.2.0.4** dla vnet2DNS.  
 
 Aby zainstalować Bind, użyj następującej procedury:
 
-1. Używanie protokołu SSH do nawiązania połączenia __publicznego adresu IP__ DNS maszyny wirtualnej. Poniższy przykład nawiązuje połączenie z maszyną wirtualną na 40.68.254.142:
+1. Używanie protokołu SSH, aby nawiązać połączenie __publiczny adres IP__ DNS maszyny wirtualnej. Poniższy przykład łączy się z maszyną wirtualną w 40.68.254.142:
 
     ```bash
     ssh sshuser@40.68.254.142
     ```
 
-    Zastąp `sshuser` przy użyciu konta użytkownika SSH określone podczas tworzenia maszyny wirtualnej DNS.
+    Zastąp `sshuser` przy użyciu konta użytkownika SSH można określić podczas tworzenia maszyny wirtualnej DNS.
 
     > [!NOTE]
-    > Istnieje wiele sposobów, aby uzyskać `ssh` narzędzia. W systemie Linux, Unix i macOS jest podana jako część systemu operacyjnego. Jeśli korzystasz z systemu Windows, weź pod uwagę jedną z następujących opcji:
+    > Istnieją różne sposoby uzyskania `ssh` narzędzia. W systemie Linux, Unix i z systemem macOS jest ona udostępniana jako część systemu operacyjnego. Jeśli używasz Windows należy rozważyć użycie jednej z następujących opcji:
     >
-    > * [Powłoka w chmurze Azure](../../cloud-shell/quickstart.md)
-    > * [Bash na Ubuntu w systemie Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
+    > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
@@ -138,7 +138,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     sudo apt-get install bind9 -y
     ```
 
-3. Aby skonfigurować powiązania do przekazywania żądań rozpoznawania nazw do lokalnego serwera DNS, użyj następującego tekstu zawartość, `/etc/bind/named.conf.options` pliku:
+3. Aby skonfigurować powiązania do przekazywania żądań rozpoznawania nazw na serwerze DNS w sieci lokalnej, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
 
     ```
     acl goodclients {
@@ -165,7 +165,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     ```
     
     > [!IMPORTANT]
-    > Zastąp wartości w `goodclients` części dwie sieci wirtualnej z zakresem adresów IP. Ta sekcja definiuje adresów, które ten serwer DNS odbiera z.
+    > Zastąp wartości w `goodclients` części dwiema sieciami wirtualnymi przy użyciu zakresu adresów IP. Ta sekcja definiuje adresy, które ten serwer DNS odbiera z.
 
     Aby edytować ten plik, użyj następującego polecenia:
 
@@ -187,9 +187,9 @@ Aby zainstalować Bind, użyj następującej procedury:
 
     `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Tekst jest __sufiks DNS__ dla tej sieci wirtualnej. Zapisz tę wartość, ponieważ jest używana później.
 
-    Należy także sprawdzić sufiks DNS z innego serwera DNS. Należy go w następnym kroku.
+    Muszą również znaleźć się sufiks DNS z innego serwera DNS. Należy go w następnym kroku.
 
-5. Aby skonfigurować powiązania do rozpoznawania nazw DNS dla zasobów w sieci wirtualnej, użyj następującego tekstu jako zawartość `/etc/bind/named.conf.local` pliku:
+5. Aby skonfigurować powiązania do rozpoznawania nazw DNS dla zasobów w sieci wirtualnej, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.local` pliku:
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -200,7 +200,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     ```
 
     > [!IMPORTANT]
-    > Należy zastąpić `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` sufiksu DNS, innych sieci wirtualnej. I adres IP usługi przesyłania dalej jest prywatny adres IP serwera DNS w sieci wirtualnej.
+    > Należy zastąpić `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` z sufiksem DNS innej sieci wirtualnej. I adres IP usługi przesyłania dalej prywatny adres IP serwera DNS w sieci wirtualnej.
 
     Aby edytować ten plik, użyj następującego polecenia:
 
@@ -210,13 +210,13 @@ Aby zainstalować Bind, użyj następującej procedury:
 
     Aby zapisać plik, użyj __Ctrl + X__, __Y__, a następnie __Enter__.
 
-6. Aby uruchomić Bind, użyj następującego polecenia:
+6. Aby rozpocząć Bind, użyj następującego polecenia:
 
     ```bash
     sudo service bind9 restart
     ```
 
-7. Aby zweryfikować tego powiązania mogły rozpoznawać nazwy zasobów w sieci wirtualnej, użyj następujących poleceń:
+7. Aby zweryfikować, że powiązania stanie rozpoznawać nazwy zasobów w innej sieci wirtualnej, użyj następujących poleceń:
 
     ```bash
     sudo apt install dnsutils
@@ -224,11 +224,11 @@ Aby zainstalować Bind, użyj następującej procedury:
     ```
 
     > [!IMPORTANT]
-    > Zastąp `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` z w pełni kwalifikowaną nazwę (FQDN) DNS maszyny wirtualnej w innej sieci.
+    > Zastąp `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` z w pełni kwalifikowana nazwa domeny (FQDN) DNS maszyny wirtualnej w innej sieci.
     >
     > Zastąp `10.2.0.4` z __wewnętrzny adres IP__ niestandardowego serwera DNS w sieci wirtualnej.
 
-    Odpowiedź jest podobny do następującego tekstu:
+    Odpowiedź jest wyświetlana podobny do następującego tekstu:
 
     ```
     Server:         10.2.0.4
@@ -239,20 +239,20 @@ Aby zainstalować Bind, użyj następującej procedury:
     Address: 10.2.0.4
     ```
 
-    Do tej pory nie można odszukać adresu IP z sieci bez określony adres IP serwera DNS.
+    Do tej pory nie może wyszukać adres IP z sieci bez określonego adresu IP serwera DNS.
 
-### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Skonfiguruj sieć wirtualną do używania niestandardowych serwera DNS
+### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Konfigurowanie sieci wirtualnej do użycia niestandardowego serwera DNS
 
-Aby skonfigurować sieci wirtualnej, aby użyć niestandardowego serwera DNS zamiast Azure cyklicznego programu rozpoznawania nazw, należy użyć następujących czynności:
+Aby skonfigurować sieci wirtualnej, aby użyć niestandardowego serwera DNS zamiast mechanizmu rozpoznawania cyklicznego platformy Azure, użyj następujących czynności:
 
-1. W [portalu Azure](https://portal.azure.com), wybierz sieć wirtualną, a następnie wybierz __serwerów DNS__.
+1. W [witryny Azure portal](https://portal.azure.com), wybierz sieć wirtualną, a następnie wybierz __serwerów DNS__.
 
-2. Wybierz __niestandardowych__, a następnie wprowadź __wewnętrzny adres IP__ niestandardowego serwera DNS. Na koniec wybierz __zapisać__.
+2. Wybierz __niestandardowe__, a następnie wprowadź __wewnętrzny adres IP__ niestandardowego serwera DNS. Na koniec wybierz pozycję __Zapisz__.
 
-6. Otwórz w vnet1 maszyny wirtualnej serwera DNS, a następnie kliknij przycisk **ponownego uruchomienia**.  W sieci wirtualnej, aby konfiguracja DNS zaczęły obowiązywać, należy ponownie uruchomić wszystkich maszyn wirtualnych.
-7. Powtórz kroki konfiguracji niestandardowej serwera DNS vnet2.
+6. Otwieranie maszyny wirtualnej serwera DNS w sieci vnet1, a następnie kliknij przycisk **ponowne uruchomienie**.  W sieci wirtualnej umożliwiają konfigurację DNS zaczęły obowiązywać, należy ponownie uruchomić wszystkich maszyn wirtualnych.
+7. Powtórz kroki konfigurowania niestandardowego serwera DNS dla sieci vnet2.
 
-Aby przetestować konfigurację systemu DNS, nawiązać dwie maszyny wirtualne DNS przy użyciu protokołu SSH i zbadaj serwer DNS w sieci wirtualnej za pomocą jego nazwy hosta. Jeśli ta funkcja nie działa, użyj następującego polecenia, aby sprawdzić stan usługi DNS:
+Aby przetestować konfigurację systemu DNS, nawiązać połączenie z dwóch maszyn wirtualnych DNS przy użyciu protokołu SSH i wykonać polecenie ping serwer DNS innej sieci wirtualnej przy użyciu nazwy hosta. Jeśli to nie zadziała, użyj następującego polecenia, aby sprawdzić stan usługi DNS:
 
 ```bash
 sudo service bind9 status
@@ -260,91 +260,91 @@ sudo service bind9 status
 
 ## <a name="create-hbase-clusters"></a>Tworzenie klastrów HBase
 
-Utworzyć klaster HBase w każdym z dwóch sieci wirtualnej przy użyciu następującej konfiguracji:
+Utwórz klaster bazy danych HBase w każdym z dwiema sieciami wirtualnymi przy użyciu następującej konfiguracji:
 
-- **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, tworzenia sieci wirtualnych.
-- **Typ klastra**: HBase
-- **Wersja**: HBase 1.1.2 (HDI 3,6)
-- **Lokalizacja**: Użyj tej samej lokalizacji co sieć wirtualna.  Domyślnie jest vnet1 *zachodnie stany USA*, i jest vnet2 *wschodnie stany USA*.
+- **Nazwa grupy zasobów**: Użyj tej samej nazwy grupy zasobów, podczas tworzenia sieci wirtualnych.
+- **Typ klastra**: baza danych HBase
+- **Wersja**: baza danych HBase 1.1.2 (HDI 3.6)
+- **Lokalizacja**: Użyj tej samej lokalizacji co sieć wirtualna.  Domyślnie jest vnet1 *zachodnie stany USA*, a sieć vnet2 *wschodnie stany USA*.
 - **Magazyn**: Utwórz nowe konto magazynu dla klastra.
-- **Sieć wirtualna** (za pomocą zaawansowanych ustawień portalu): Wybierz vnet1 utworzony w poprzedniej procedurze.
-- **Podsieci**: domyślna nazwa używana w szablonie jest **podsieć1**.
+- **Sieć wirtualna** (z ustawień zaawansowanych w portalu): Wybierz sieć vnet1 utworzonego w poprzedniej procedurze.
+- **Podsieci**: domyślna nazwa używana w szablonie jest **subnet1**.
 
-Aby zapewnić, że środowisko jest skonfigurowane poprawnie, musi mieć możliwość ping FQDN headnode między dwoma klastrami.
+Aby upewnić się, że środowisko jest skonfigurowane prawidłowo, musi być odpytywać FQDN węzła głównego między dwoma klastrami.
 
-## <a name="load-test-data"></a>Danych testu obciążenia
+## <a name="load-test-data"></a>Ładowanie danych testowych
 
-Podczas replikowania klastra, należy określić tabel, które mają być replikowane. W tej sekcji w źródłowym klastrze ładowania niektórych danych. W następnej sekcji spowoduje włączenie replikacji między dwoma klastrami.
+W przypadku replikacji klastra należy określić tabel, które mają być replikowane. W tej sekcji możesz załadować dane do klastra źródłowego. W następnej sekcji spowoduje włączenie replikacji między dwoma klastrami.
 
-Aby utworzyć **kontaktów** tabeli i wstaw dowolne dane w tabeli, postępuj zgodnie z instrukcjami w [samouczek HBase: rozpoczęcie pracy z bazy danych Apache HBase w usłudze HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z instrukcjami w artykule [samouczek HBase: rozpoczęcie korzystania z bazy danych Apache HBase w HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-W poniższych krokach opisano sposób wywoływania skryptu akcji skryptu z portalu Azure. Aby uzyskać informacje o uruchamianiu akcji skryptu za pomocą programu Azure PowerShell i narzędzie wiersza polecenia platformy Azure (Azure CLI), zobacz [Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
+Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure portal. Aby uzyskać informacje o uruchamianiu akcji skryptu za pomocą programu Azure PowerShell i narzędzia wiersza polecenia platformy Azure (Azure CLI), zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
-**Aby włączyć replikację bazy danych HBase z portalu Azure**
+**Aby włączyć replikację bazy danych HBase w witrynie Azure portal**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz klaster HBase źródła.
+2. Otwórz źródło klastra HBase.
 3. Wybierz z menu klastra **akcji skryptu**.
-4. W górnej części strony, wybierz **przesłać nowe**.
+4. W górnej części strony wybierz **Prześlij nową**.
 5. Wybierz lub wprowadź następujące informacje:
 
   1. **Nazwa**: wprowadź **włączyć replikację**.
-  2. **Adres URL skryptu bash**: wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **HEAD**: Upewnij się, ta opcja jest zaznaczona. Usuń zaznaczenie innych typów węzłów.
-  4. **Parametry**: następujące parametry przykładowe włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
+  2. **Adres URL skryptu programu bash**: wprowadź **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+  3.  **HEAD**: Upewnij się, ta opcja jest zaznaczona. Wyczyść typy węzłów.
+  4. **Parametry**: następujące przykładowe parametry włączyć replikację dla wszystkich istniejących tabel, a następnie skopiuj wszystkie dane z klastra źródłowego do klastra docelowego:
 
           -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
-    > Używa nazwy hosta zamiast nazwy FQDN dla źródłowego i docelowego nazwę klastra DNS.
+    > Użyj nazwy hosta zamiast nazwy FQDN dla nazwy DNS klastra źródłowego i docelowego.
 
-6. Wybierz pozycję **Utwórz**. Skrypt może potrwać dłuższy czas, szczególnie w przypadku, gdy używasz **COPYDATA: -** argumentu.
+6. Wybierz pozycję **Utwórz**. Skrypt może wymagać trochę czasu, aby uruchomić, szczególnie w przypadku, gdy używasz **- copydata** argumentu.
 
 Wymagane argumenty:
 
 |Name (Nazwa)|Opis|
 |----|-----------|
-|-s, - src-klaster | Określa nazwę DNS klastra HBase źródła. Na przykład: hbsrccluster -s, klaster — src = hbsrccluster |
+|-s, — src-klaster | Określa nazwę DNS klastra HBase źródła. Na przykład: hbsrccluster -s, klaster — src = hbsrccluster |
 |-d, klaster — czasu letniego | Określa nazwę DNS klastra HBase docelowego (repliki). Na przykład: dsthbcluster -s, klaster — src = dsthbcluster |
-|-sp, w--src hasła narzędzia ambari | Określa hasło administratora dla Ambari w klastrze źródłowym HBase. |
-|— punkt dystrybucji, w czasu letniego — hasła narzędzia ambari | Określa hasło administratora dla Ambari w docelowym klastrze HBase.|
+|-sp, w src — hasło ambari | Określa hasło administratora dla Ambari w klaster HBase źródła. |
+|— punkt dystrybucji, w czasu letniego — hasło ambari | Określa hasło administratora dla Ambari w docelowym klastrze bazy danych HBase.|
 
 Argumenty opcjonalne:
 
 |Name (Nazwa)|Opis|
 |----|-----------|
-|-su,--src-ambari-user | Określa nazwę użytkownika administratora dla Ambari w klastrze źródłowym HBase. Wartość domyślna to **admin**. |
-|-du, czasu letniego — ambari użytkownika | Określa nazwę użytkownika administratora dla Ambari w docelowym klastrze HBase. Wartość domyślna to **admin**. |
-|-t,--lista tabeli | Określa tabele, które mają być replikowane. Na przykład:--lista tabeli = "Tabela1; table2 Tabela3". Jeśli nie określisz tabel, replikacja wszystkich istniejących tabel HBase.|
-|-m,--maszyny | Określa węzła głównego, w którym jest uruchomiona akcja skryptu. Wartość to **hn1** lub **hn0**. Ponieważ **hn0** węzła głównego zazwyczaj jest coraz bardziej zajęty, zaleca się używanie **hn1**. Użyj tej opcji, po uruchomieniu skryptu $0 jako akcja skryptu HDInsight portalu lub Azure PowerShell.|
-|-cp, - COPYDATA: | Umożliwia migrację istniejących danych w tabelach, w którym replikacja jest włączona. |
-|-obr. / min, - replikacja-phoenix-meta | Włącza replikację na Phoenix tabel systemowych. <br><br>*Użyj tej opcji z rozwagą.* Firma Microsoft zaleca, ponownie utwórz tabele Phoenix w klastrach repliki przed skorzystaniem z tego skryptu. |
+|-polecenia su, w--src użytkownika systemu ambari | Określa nazwę użytkownika administratora Ambari w klaster HBase źródła. Wartość domyślna to **administratora**. |
+|— jednostka bazy danych, czasu letniego — ambari użytkownika | Określa nazwę użytkownika administratora Ambari w docelowym klastrze bazy danych HBase. Wartość domyślna to **administratora**. |
+|-t,--listy tabel | Określa tabele, które mają być replikowane. Na przykład:--listy tabel = "Tabela1; table2; Tabela3". Jeśli nie określisz tabele są replikowane wszystkich istniejących tabel HBase.|
+|-m,--maszyny | Określa węzeł główny, w którym jest uruchamiany akcji skryptu. Wartość to **hn1** lub **hn0**. Ponieważ **hn0** węzłem zwykle jest zajęty, firma Microsoft zaleca używanie **hn1**. Użyj tej opcji, po uruchomieniu skryptu $0 jako akcja skryptu HDInsight portal lub programu Azure PowerShell.|
+|-cp, - copydata | Umożliwia migrację istniejących danych w tabelach, w którym replikacja jest włączona. |
+|-obr. / min, - replikacja-phoenix-meta | Umożliwia replikację dla rozwiązania Phoenix tabel systemowych. <br><br>*Użyj tej opcji z rozwagą.* Firma Microsoft zaleca, możesz ponownie utworzyć tabele Phoenix w klastrach repliki przed użyciem tego skryptu. |
 |-h, — pomoc | Wyświetla informacje o użyciu. |
 
-`print_usage()` Sekcji [skryptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) zawiera szczegółowy opis parametrów.
+`print_usage()` Części [skryptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) zawiera szczegółowy opis parametrów.
 
-Po pomyślnym wdrożeniu akcji skryptu służy SSH do nawiązania połączenia klastra HBase docelowego, a następnie sprawdź, czy replikowane dane.
+Po pomyślnym wdrożeniu akcji skryptu umożliwia protokołu SSH Połącz się z klastrem HBase docelowego, a następnie sprawdź, czy replikowane dane.
 
 ### <a name="replication-scenarios"></a>Scenariusze replikacji
 
 Na poniższej liście przedstawiono niektóre przypadki użycia ogólne i ich ustawienia parametru:
 
-- **Włącz replikację dla wszystkich tabel między dwoma klastrami**. Ten scenariusz nie wymaga się kopiowania lub Migrowanie istniejących danych w tabelach, a nie używa Phoenix tabel. Użyj następujących parametrów:
+- **Włącz replikację dla wszystkich tabel między dwoma klastrami**. Ten scenariusz nie wymaga kopiowania lub Migrowanie istniejących danych w tabelach, a nie używa Phoenix tabel. Należy użyć następujących parametrów:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
-- **Włącz replikację na określonych tabel**. Aby włączyć replikację na table1 i table2, Tabela3, należy użyć poniższych parametrów:
+- **Włącz replikację na określonych tabel**. Aby włączyć replikację na table1, table2 i Tabela3, należy użyć następujących parametrów:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **Włącz replikację na określonych tabel i skopiuj istniejące dane**. Aby włączyć replikację na table1 i table2, Tabela3, należy użyć poniższych parametrów:
+- **Włącz replikację na określonych tabel, a następnie skopiuj istniejących danych**. Aby włączyć replikację na table1, table2 i Tabela3, należy użyć następujących parametrów:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
-- **Włącz replikację dla wszystkich tabel i replikacji metadanych Phoenix ze źródła do miejsca docelowego**. Phoenix metadanych replikacji nie jest idealne. Użyj go z rozwagą. Użyj następujących parametrów:
+- **Włącz replikację dla wszystkich tabel i replikacji metadanych Phoenix ze źródła do miejsca docelowego**. Phoenix metadanych replikacji nie jest doskonały. Jej używać z rozwagą. Należy użyć następujących parametrów:
 
         -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
@@ -352,19 +352,19 @@ Na poniższej liście przedstawiono niektóre przypadki użycia ogólne i ich us
 
 Dostępne są dwa skrypty akcji skryptu oddzielne kopiowania lub migracji danych, po włączeniu replikacji:
 
-- [Skrypt dla małych tabel](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (tabel, które są kilku gigabajtów w rozmiarze i ogólnej kopii oczekuje na zakończenie w mniej niż godzinę)
+- [Skrypt małe tabele](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (tabel, które są kilku gigabajtów, rozmiar i ogólny kopii oczekuje się, aby zakończyć w mniej niż godzinę)
 
-- [Skrypt dla dużych tabel](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (tabel, które powinny trwać dłużej niż godzinę, aby skopiować)
+- [Skrypt dla dużych tabel](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (tabele, które powinny trwać dłużej niż godzinę, aby skopiować)
 
-Można wykonać tę samą procedurę opisaną w [włączyć replikację](#enable-replication) do wywoływania akcji skryptu. Użyj następujących parametrów:
+Możesz wykonać tę samą procedurę opisaną w [włączyć replikację](#enable-replication) do wywoływania akcji skryptu. Należy użyć następujących parametrów:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-`print_usage()` Sekcji [skryptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) zawiera szczegółowy opis parametrów.
+`print_usage()` Części [skryptu](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) zawiera szczegółowy opis parametrów.
 
 ### <a name="scenarios"></a>Scenariusze
 
-- **Skopiuj określonych tabel (test1 test2 i test3) dla wszystkich wierszy edytować do tej pory (bieżąca sygnatura czasowa)**:
+- **Skopiuj określonych tabel (test1 test2 i test3) we wszystkich wierszach edytować do tej pory (bieżąca sygnatura czasowa)**:
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
   Lub:
@@ -372,37 +372,37 @@ Można wykonać tę samą procedurę opisaną w [włączyć replikację](#enable
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 
 
-- **Skopiuj określonych tabel z określonego przedziału czasu**:
+- **Skopiuj określonych tabel z określonego zakresu czasu**:
 
         -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
 
 
 ## <a name="disable-replication"></a>Wyłączanie replikacji
 
-Aby wyłączyć replikacji, użyj innego skryptu akcji skryptu z [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Można wykonać tę samą procedurę opisaną w [włączyć replikację](#enable-replication) do wywoływania akcji skryptu. Użyj następujących parametrów:
+Aby wyłączyć replikację, użyj innego skryptu akcji skryptu [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Możesz wykonać tę samą procedurę opisaną w [włączyć replikację](#enable-replication) do wywoływania akcji skryptu. Należy użyć następujących parametrów:
 
     -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-`print_usage()` Sekcji [skryptu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) zawiera szczegółowy opis parametrów.
+`print_usage()` Części [skryptu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) zawiera szczegółowy opis parametrów.
 
 ### <a name="scenarios"></a>Scenariusze
 
-- **Wyłącz replikację dla wszystkich tabel**:
+- **Wyłącz replikację na wszystkich tabelach**:
 
         -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
   lub
 
         --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **Wyłącz replikację w określonych tabel (Tabela1 table2 i Tabela3)**:
+- **Wyłącz replikację na określonych tabel (table1, table2 i Tabela3)**:
 
         -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono sposób skonfigurowania replikacji bazy danych HBase w ramach sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat usługi HDInsight i HBase, zobacz następujące artykuły:
+W tym samouczku przedstawiono sposób konfigurowania replikacji bazy danych HBase w sieci wirtualnej lub między dwiema sieciami wirtualnymi. Aby dowiedzieć się więcej na temat HDInsight i bazy danych HBase, zobacz następujące artykuły:
 
-* [Rozpoczynanie pracy z bazy danych Apache HBase w usłudze HDInsight](./apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight HBase — omówienie](./apache-hbase-overview.md)
-* [Tworzenie klastrów HBase w sieci wirtualnej platformy Azure](./apache-hbase-provision-vnet.md)
+* [Rozpoczynanie pracy z usługą Apache HBase w HDInsight](./apache-hbase-tutorial-get-started-linux.md)
+* [Omówienie bazy danych HDInsight HBase](./apache-hbase-overview.md)
+* [Tworzenie klastrów HBase w usłudze Azure Virtual Network](./apache-hbase-provision-vnet.md)
 

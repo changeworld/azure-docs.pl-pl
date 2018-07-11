@@ -1,5 +1,5 @@
 ---
-title: Tworzenie złożonego jednostki można wyodrębnić złożonych danych — Azure | Dokumentacja firmy Microsoft
+title: Samouczek dotyczący tworzenia złożonych jednostki można wyodrębnić złożonych danych — Azure | Dokumentacja firmy Microsoft
 description: Informacje o sposobie tworzenia złożonych jednostki w aplikacją usługi LUIS do wyodrębniania różnych typów danych jednostki.
 services: cognitive-services
 author: v-geberr
@@ -7,118 +7,109 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 07/09/2018
 ms.author: v-geberr
-ms.openlocfilehash: 375b52f9206f55e620d5e664844b8fa1d7249a07
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d73dc9b9f204e334a75c9de5e19c6b11e3a95b12
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888749"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929189"
 ---
-# <a name="use-composite-entity-to-extract-complex-data"></a>Wyodrębnianie danych złożonych przy użyciu złożonego jednostki
-Ta prosta aplikacja ma dwa [intencji](luis-concept-intent.md) i jednostki. Jej celem jest Zarezerwuj lotów, takie jak "1 ticket z Seattle do Cairo w piątek" i zwracać wszystkie szczegółowe informacje na temat rezerwacji jako pojedynczy element danych. 
+# <a name="tutorial-6-add-composite-entity"></a>Samouczek: 6. Dodaj jednostkę złożone 
+W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane do jednostki zawierającej.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
+<!-- green checkmark -->
 > [!div class="checklist"]
-* Dodaj numer i datetimeV2 ze wstępnie utworzonych jednostek
-* Tworzenie złożonego jednostki
-* Zapytanie usługi LUIS i odbierać dane jednostki złożone
+> * Informacje o jednostkach złożone 
+> * Dodaj jednostkę złożone, aby wyodrębnić dane
+> * Uczenie i publikowanie aplikacji
+> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-* Aplikacją usługi LUIS z  **[hierarchiczne szybkiego startu](luis-tutorial-composite-entity.md)**. 
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki hierarchicznej](luis-quickstart-intent-and-hier-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) usługi Github.
 
-> [!Tip]
-> Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji.  
 
 ## <a name="composite-entity-is-a-logical-grouping"></a>Złożone jednostki to logiczna grupa 
-Celem jednostki jest znalezienie fragmentów tekstu w wypowiedzi i przypisanie im kategorii. A [złożonego](luis-concept-entity-types.md) jednostki składa się z innych typów jednostek z kontekstu. Dla tej aplikacji podróży, która przyjmuje Rezerwacje lotów istnieje kilka rodzajów informacji, takich jak daty, lokalizacji i liczbę stanowisk. 
+Złożone jednostki ma na celu grupowanie powiązanych jednostek w encji kategorii nadrzędnej. Taka informacja istnieje jako osobne jednostki, przed utworzeniem złożonego. Jest podobny do hierarchicznych jednostki, ale może zawierać większą liczbę typów jednostek. 
 
-Taka informacja istnieje jako osobne jednostki, przed utworzeniem złożonego. Tworzenie złożonego jednostki, gdy osobne jednostki mogą być grupowane logicznie to logiczne grupowanie jest przydatne do chatbot lub inne aplikacje korzystające z usługi LUIS. 
+ Tworzenie złożonego jednostki, gdy osobne jednostki mogą być grupowane logicznie to logiczne grupowanie przydaje się do aplikacji klienckiej. 
 
-Proste przykładowe wypowiedzi użytkowników mogą być następujące:
+W tej aplikacji, nazwa pracowników jest zdefiniowana w **pracowników** listy jednostek i obejmuje synonimy, nazwa, adres e-mail, firmy numer wewnętrzny, numer telefonu komórkowego i Stanach Zjednoczonych Identyfikator podatkowej. 
 
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Reserve a seat from New York to Paris on the first of April
-```
+**MoveEmployee** celem ma wypowiedzi przykładowe żądanie, pracownik można przenieść z jednego budynku i pakietu office do innego. Tworzenie nazwy są alfabetyczne: "", "B", itp. natomiast urzędy są liczbowe: "1234", "13245". 
+
+Przykład wypowiedzi w **MoveEmployee** intencji obejmują:
+
+|Przykładowe wypowiedzi|
+|--|
+|Przesuń W Jan. Nowak mógł a-2345|
+|shift x12345 to h-1234 tomorrow|
  
-Złożone jednostki dopasowuje liczba stanowisk, lokalizację pochodzenia, miejsce docelowe i daty. 
+Żądanie przeniesienia powinien zawierać co najmniej pracowników (przy użyciu dowolnej synonim) i lokalizacji końcowej budynku i pakietu office. Żądanie może również obejmować źródłowy pakietu office, a także określonej dacie przeniesienie powinno mieć miejsce. 
 
-## <a name="what-luis-does"></a>Jak działa usługa LUIS
-Gdy intencje i jednostki wypowiedzi zostaną zidentyfikowane, [wyodrębnione](luis-concept-data-extraction.md#list-entity-data) i zwrócone w formacie JSON z [punktu końcowego](https://aka.ms/luis-endpoint-apis), działanie usługi LUIS kończy się. Aplikacja wywołująca lub czatbot pobiera tę odpowiedź JSON i spełnia żądanie — w taki sposób, jaki został zaprojektowany. 
+Wyodrębnione dane z punktu końcowego powinna zawierać te informacje i zwróć w w `RequestEmployeeMove` złożonego jednostki. 
 
-## <a name="add-prebuilt-entities-number-and-datetimev2"></a>Dodaj numer ze wstępnie utworzonych jednostek i datetimeV2
-1. Wybierz `MyTravelApp` aplikacji z listy aplikacji na [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web.
+## <a name="create-composite-entity"></a>Tworzenie złożonego jednostki
+1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
 
-2. Po otwarciu aplikacji wybierz **jednostek** łącze nawigacji po lewej stronie.
+    [ ![Zrzut ekranu aplikacji LUIS z wyróżnioną pozycją Build (Kompilacja) na górnym prawym pasku nawigacyjnym](./media/luis-tutorial-composite-entity/hr-first-image.png)](./media/luis-tutorial-composite-entity/hr-first-image.png#lightbox)
 
-    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/intents-page-select-entities.png)    
+2. Na **intencji** wybierz opcję **MoveEmployee** intencji. 
 
-3. Wybierz pozycję **Manage prebuilt entities** (Zarządzaj wstępnie utworzonymi jednostkami).
+    [![](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png "Zrzut ekranu usługi LUIS z zamiarem \"MoveEmployee\" wyróżniony")](media/luis-tutorial-composite-entity/hr-intents-moveemployee.png#lightbox)
 
-    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/manage-prebuilt-entities-button.png)
+3. Wybierz ikonę lupy, na pasku narzędzi, aby filtrować listę wypowiedzi. 
 
-4. W oknie podręcznym wybierz **numer** i **datetimeV2**.
+    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" z wyróżnionym przyciskiem szkło powiększające i")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
-    ![Wybierz jednostki przycisku](./media/luis-tutorial-composite-entity/prebuilt-entity-ddl.png)
+4. Wprowadź `tomorrow` w polu tekstowym filtru, aby znaleźć wypowiedź `shift x12345 to h-1234 tomorrow`.
 
-5. Aby nowe jednostki do wyodrębnienia, wybierz **Train** w górnym pasku nawigacyjnym.
+    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\" za pomocą filtru \"jutro\" wyróżniony")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
-    ![Wybieranie przycisku Train (Ucz)](./media/luis-tutorial-composite-entity/train.png)
+    Inną metodą jest filtrowanie jednostki według datetimeV2, wybierając **filtry jednostki** polecenie **datetimeV2** z listy. 
 
-## <a name="use-existing-intent-to-create-composite-entity"></a>Użyj istniejących przeznaczenie, aby utworzyć złożone jednostki
-1. Wybierz **intencji** w lewym obszarze nawigacji. 
+5. Wybierz pierwszy obiekt `Employee`, a następnie wybierz **opakować w jednostce złożone** na liście menu podręcznego. 
 
-    ![Wybierz stronę intencji](./media/luis-tutorial-composite-entity/intents-from-entities-page.png)
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
-2. Wybierz `BookFlight` z **intencji** listy.  
 
-    ![Z listy wybierz BookFlight intencji](./media/luis-tutorial-composite-entity/intent-page-with-prebuilt-entities-labeled.png)
+6. Następnie od razu wybierz ostatni obiekt `datetimeV2` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `RequestEmployeeMove` polecenie **Utwórz nowe złożone** na w menu podręcznym. 
 
-    Liczba i datetimeV2 ze wstępnie utworzonych jednostek są oznaczone etykietami na wypowiedzi.
+    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt w jednostce złożone i tworzenia wyróżniony")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
-3. Dla wypowiedź `book 2 flights from seattle to cairo next monday`, wybierz niebieski `number` jednostki, następnie wybierz pozycję **opakować w jednostce złożone** z listy. Zieloną linię w obszarze wyrazów, następuje kursor, kiedy przesuwa się on do prawej, wskazujący złożonego jednostki. Następnie przesuń w prawo, aby wybrać ostatnich wstępnie utworzone jednostki `datetimeV2`, wprowadź `FlightReservation` w polu tekstowym w oknie podręcznym, a następnie zaznacz **Utwórz nowe złożone**. 
+7. W **jakiego typu jednostki, czy chcesz utworzyć?**, prawie wszystkie pola wymagane znajdują się na liście. Brak tylko lokalizacji źródłowej. Wybierz **Dodawanie jednostki podrzędne**, wybierz opcję **Locations::Origin** z listy istniejących jednostek, następnie wybierz pozycję **gotowe**. 
 
-    ![Tworzenie złożonego jednostki na stronie intencji](./media/luis-tutorial-composite-entity/create-new-composite.png)
+  ![Zrzut ekranu usługi LUIS na intencje "MoveEmployee" dodanie innej jednostki, w oknie podręcznym](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
-4. Wyskakującego okna dialogowego pojawia się, co pozwoli zweryfikować dzieci złożonego jednostki. Wybierz pozycję **Done** (Gotowe).
+8. Wybierz ikonę lupy na pasku narzędzi, aby usunąć filtr. 
 
-    ![Tworzenie złożonego jednostki na stronie intencji](./media/luis-tutorial-composite-entity/validate-composite-entity.png)
+## <a name="label-example-utterances-with-composite-entity"></a>Wypowiedzi przykład etykiety ze złożonego jednostki
+1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
 
-## <a name="wrap-the-entities-in-the-composite-entity"></a>OPAKOWYWANIE jednostek w jednostce złożone
-Po utworzeniu obiektu złożonego etykiety pozostałe wypowiedzi w jednostce złożone. Aby zawijać frazy jako obiekt złożony, konieczne będzie dokonanie zaznacz wyraz najdalej po lewej stronie, a następnie wybierz **opakować w jednostce złożone** z wyświetlonej listy następnie zaznacz wyraz najdalej z prawej strony, a następnie wybierz nazwanych jednostek złożonego `FlightReservation`. Jest to szybkie i bezproblemowe kroku wybory, podzielone na następujące czynności:
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając pierwszy obiekt złożony wyróżnione")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
-1. W polu wypowiedź `schedule 4 seats from paris to london for april 1`, wybierz opcję 4 jako liczba wstępnie utworzone jednostki.
+2. Wybierz ostatni wyraz w jednostce złożone, a następnie wybierz **RequestEmployeeMove** z menu podręcznego. 
 
-    ![Zaznacz wyraz skrajnie po lewej](./media/luis-tutorial-composite-entity/wrap-composite-step-1.png)
+    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Zrzut ekranu usługi LUIS na intencje \"MoveEmployee\", wybierając ostatni obiekt złożony wyróżniony")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
-2. Wybierz **opakować w jednostce złożone** z wyświetlonej listy.
+3. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
 
-    ![Wybierz opcję zawijania z listy](./media/luis-tutorial-composite-entity/wrap-composite-step-2.png)
-
-3. Zaznacz wyraz najdalej z prawej strony. Zielona linia jest wyświetlany w obszarze frazy, wskazujący złożonego jednostki.
-
-    ![Zaznacz wyraz najdalej z prawej strony](./media/luis-tutorial-composite-entity/wrap-composite-step-3.png)
-
-4. Wybierz nazwę złożonego `FlightReservation` z wyświetlonej listy.
-
-    ![Wybierz nazwanych jednostek złożone](./media/luis-tutorial-composite-entity/wrap-composite-step-4.png)
-
-    Ostatnie wypowiedź, można opakować `London` i `tomorrow` w jednostce złożone przy użyciu tych samych instrukcji. 
+    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Zrzut ekranu usługi LUIS na \"MoveEmployee\" przy użyciu wszystkich wypowiedzi etykietą")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
-Usługa LUIS nie wie o zmianach intencji i jednostek (modelu), dopóki nie zostanie ich nauczona. 
+Usługa LUIS nie wiedzieć o nowy obiekt złożony, dopóki skonfigurowanych pod kątem aplikacji. 
 
 1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
 
-    ![Uczenie aplikacji](./media/luis-tutorial-composite-entity/train-button.png)
+    ![Uczenie aplikacji](./media/luis-tutorial-composite-entity/hr-train-button.png)
 
 2. Uczenie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
-    ![Uczenie powiodło się](./media/luis-tutorial-composite-entity/trained.png)
+    ![Uczenie powiodło się](./media/luis-tutorial-composite-entity/hr-trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
 Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy opublikować aplikację. 
@@ -127,123 +118,202 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy
 
 2. Wybierz miejsce produkcyjne i przycisk **Publish** (Publikuj).
 
-    ![Publikowanie aplikacji](./media/luis-tutorial-composite-entity/publish-to-production.png)
+    ![Publikowanie aplikacji](./media/luis-tutorial-composite-entity/hr-publish-to-production.png)
 
 3. Publikowanie jest ukończone, gdy w górnej części witryny internetowej jest widoczny zielony pasek stanu potwierdzający powodzenie.
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="query-the-endpoint"></a>Kwerendy punktu końcowego 
 1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 
-    ![Wybierz adres URL punktu końcowego](./media/luis-tutorial-composite-entity/publish-select-endpoint.png)
+    ![Wybierz adres URL punktu końcowego](./media/luis-tutorial-composite-entity/hr-publish-select-endpoint.png)
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `reserve 3 seats from London to Cairo on Sunday`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić intencję `BookFlight` z wyodrębnioną jednostką hierarchiczną.
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. 
 
-```
+    Ponieważ ten test jest upewnij się, że złożonego jest wyodrębniany poprawnie, test można dołączyć istniejącego wypowiedź próbki lub nowe wypowiedź. Dobry test umożliwiający jest uwzględnienie wszystkich obiektów podrzędnych w jednostce złożone.
+
+```JSON
 {
-  "query": "reserve 3 seats from London to Cairo on Sunday",
+  "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.999999046
+    "intent": "MoveEmployee",
+    "score": 0.9959525
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.999999046
+      "intent": "MoveEmployee",
+      "score": 0.9959525
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.009858314
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00728598563
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.0058053555
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.005371796
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00266987388
     },
     {
       "intent": "None",
-      "score": 0.227036044
+      "score": 0.00123299169
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00116407464
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00102653319
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0006628214
     }
   ],
   "entities": [
     {
-      "entity": "sunday",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 40,
-      "endIndex": 45,
+      "entity": "march 3 2 p.m",
+      "type": "builtin.datetimeV2.datetime",
+      "startIndex": 41,
+      "endIndex": 54,
       "resolution": {
         "values": [
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-03-25"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2018-03-03 14:00:00"
           },
           {
-            "timex": "XXXX-WXX-7",
-            "type": "date",
-            "value": "2018-04-01"
+            "timex": "XXXX-03-03T14",
+            "type": "datetime",
+            "value": "2019-03-03 14:00:00"
           }
         ]
       }
     },
     {
-      "entity": "3 seats from london to cairo on sunday",
-      "type": "flightreservation",
-      "startIndex": 8,
-      "endIndex": 45,
-      "score": 0.6892485
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 5,
+      "endIndex": 14,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
     },
     {
-      "entity": "cairo",
-      "type": "Location::Destination",
+      "entity": "z - 2345",
+      "type": "Locations::Destination",
       "startIndex": 31,
-      "endIndex": 35,
-      "score": 0.557570755
+      "endIndex": 36,
+      "score": 0.9690751
     },
     {
-      "entity": "london",
-      "type": "Location::Origin",
+      "entity": "a - 1234",
+      "type": "Locations::Origin",
       "startIndex": 21,
       "endIndex": 26,
-      "score": 0.8933808
+      "score": 0.9713137
+    },
+    {
+      "entity": "-1234",
+      "type": "builtin.number",
+      "startIndex": 22,
+      "endIndex": 26,
+      "resolution": {
+        "value": "-1234"
+      }
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 32,
+      "endIndex": 36,
+      "resolution": {
+        "value": "-2345"
+      }
     },
     {
       "entity": "3",
       "type": "builtin.number",
-      "startIndex": 8,
-      "endIndex": 8,
+      "startIndex": 47,
+      "endIndex": 47,
       "resolution": {
         "value": "3"
       }
+    },
+    {
+      "entity": "2",
+      "type": "builtin.number",
+      "startIndex": 50,
+      "endIndex": 50,
+      "resolution": {
+        "value": "2"
+      }
+    },
+    {
+      "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+      "type": "requestemployeemove",
+      "startIndex": 5,
+      "endIndex": 54,
+      "score": 0.4027723
     }
   ],
   "compositeEntities": [
     {
-      "parentType": "flightreservation",
-      "value": "3 seats from london to cairo on sunday",
+      "parentType": "requestemployeemove",
+      "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
       "children": [
         {
-          "type": "builtin.datetimeV2.date",
-          "value": "sunday"
+          "type": "builtin.datetimeV2.datetime",
+          "value": "march 3 2 p.m"
         },
         {
-          "type": "Location::Destination",
-          "value": "cairo"
+          "type": "Locations::Destination",
+          "value": "z - 2345"
         },
         {
-          "type": "builtin.number",
-          "value": "3"
+          "type": "Employee",
+          "value": "jill jones"
         },
         {
-          "type": "Location::Origin",
-          "value": "london"
+          "type": "Locations::Origin",
+          "value": "a - 1234"
         }
       ]
     }
-  ]
+  ],
+  "sentimentAnalysis": {
+    "label": "neutral",
+    "score": 0.5
+  }
 }
 ```
 
-Ten wypowiedź zwraca tym tablicy złożonego jednostek **flightreservation** obiektu z danymi wyodrębnione.  
+Ta wypowiedź zwraca tablicę złożonego jednostek. Każda jednostka jest danego typu i wartości. Aby uzyskać większą dokładność dla każdej jednostki podrzędne, należy użyć kombinacji typu i wartości z elementu tablicy złożone Aby znaleźć odpowiedni element w tablicy jednostek.  
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Tej aplikacji, za pomocą zaledwie dwóch intencje i jednostką złożonego zidentyfikowane zamiar zapytań języka naturalnego i zwrócony wyodrębnione dane. 
+Ta aplikacja zidentyfikowane zamiar zapytań języka naturalnego i zwrócony wyodrębnione dane jako nazwanej grupy. 
 
-Twoje chatbot ma teraz informacje wystarczające do wyznaczenia Akcja podstawowa `BookFlight`i informacje o rezerwacji w wypowiedź. 
+Twoje chatbot ma teraz wystarczających informacji do określenia akcji głównej i powiązanych szczegółów w wypowiedź. 
 
 ## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz **Moje aplikacje** w górnym menu po lewej stronie. Wybierz przycisk wielokropka (***...*** ) przycisk z prawej strony nazwy aplikacji, na liście aplikacji, wybierz opcję **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
-[Dowiedz się więcej na temat jednostek](luis-concept-entity-types.md). 
+## <a name="next-steps"></a>Kolejne kroki
+> [!div class="nextstepaction"] 
+> [Dowiedz się, jak dodać jednostki prostej listy fraz](luis-quickstart-primary-and-secondary-data.md)  

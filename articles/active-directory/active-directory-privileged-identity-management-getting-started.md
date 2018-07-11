@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/17/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6a9e4a93df02e55deb29ba372dc874ae1fac308c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 433bae28495e712cf79ad9e07e024e794e328a53
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446030"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950536"
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Rozpoczynanie używania aplikacji Azure AD Privileged Identity Management
 
@@ -54,7 +54,3 @@ Po skonfigurowaniu usługi Azure AD Privileged Identity Management zobaczysz blo
 Temat [Azure AD Privileged Identity Management overview](active-directory-privileged-identity-management-configure.md) (Omówienie aplikacji Azure AD Privileged Identity Management) zawiera więcej informacji dotyczących zarządzania dostępem administracyjnym w organizacji.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png

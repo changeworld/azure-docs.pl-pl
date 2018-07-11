@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 4d18419a6ad8be6ee46944c34205e450212b23a8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 4341233e56ef62486b935457f606e54e54af84f4
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888517"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952593"
 ---
 # <a name="data-extraction"></a>Wyodrębnianie danych
 Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podjąć działania.
@@ -426,13 +426,13 @@ Inny wypowiedź przykładzie, za pomocą synonim dla Paryż:
 Pobieranie nazwy z wypowiedź jest trudne, ponieważ nazwa może zawierać niemal dowolną kombinację literami i wyrazami. W zależności od tego, jakiego rodzaju nazwy zostaną wyodrębnione masz kilka opcji. Nie są reguły, ale dodatkowe wskazówki. 
 
 ### <a name="names-of-people"></a>Nazwiska osób
-Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Za pomocą hierarchicznych jednostki imiona i nazwiska jako elementy podrzędne, lub Użyj prostego jednostki przy użyciu ról imię i nazwisko. Pamiętaj nadać przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Za pomocą hierarchicznych jednostki imiona i nazwiska jako elementy podrzędne, lub Użyj prostego jednostki przy użyciu ról imię i nazwisko. Pamiętaj nadać przykłady z zastosowaniem imię i nazwisko w różnych częściach wypowiedź, wypowiedzi o różnej długości i wypowiedzi we wszystkich intencji, łącznie z Brak intencji. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
 ### <a name="names-of-places"></a>Nazwy miejsc
-Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Jeśli aplikacja korzysta z zestawu wie, lokalizacji, należy wziąć pod uwagę obiektami listy. Jeśli trzeba znaleźć umieścić wszystkie nazwy, tworzenie prostego jednostki i obejmują różnorodne przykłady. Dodaj frazy listę nazw miejsce do potwierdzenia, jakie miejsce nazwy jak wyglądają w swojej aplikacji. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+Nazwy lokalizacji są ustawiane i znany, takich jak miast, powiaty, Stany, prowincje i krajów. Jeśli aplikacja korzysta z zestawu wie, lokalizacji, należy wziąć pod uwagę obiektami listy. Jeśli trzeba znaleźć umieścić wszystkie nazwy, tworzenie prostego jednostki i obejmują różnorodne przykłady. Dodaj frazy listę nazw miejsce do potwierdzenia, jakie miejsce nazwy jak wyglądają w swojej aplikacji. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
 ### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
-Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. To jest najtrudniejsze typu wyodrębnianie danych. Zaczynają się od prostego jednostki i Dodawanie listy fraz. [Przegląd](label-suggested-utterances.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
+Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. To jest najtrudniejsze typu wyodrębnianie danych. Zaczynają się od prostego jednostki i Dodawanie listy fraz. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć. 
 
 ## <a name="pattern-roles-data"></a>Wzorzec role danych
 Role różnią się kontekstowych jednostek. 

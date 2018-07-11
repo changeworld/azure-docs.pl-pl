@@ -1,9 +1,9 @@
 ---
-title: Instalowanie i konfigurowanie Ansible do użytku z maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i skonfigurować Ansible dla zarządzania zasobami platformy Azure na SLES, Ubuntu i CentOS
+title: Instalowanie i konfigurowanie rozwiązania Ansible do użytku z maszynami wirtualnymi platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i skonfigurować rozwiązanie Ansible do zarządzania zasobami platformy Azure w systemie Ubuntu, CentOS i w systemie SLES
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
@@ -14,43 +14,43 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
-ms.author: iainfou
-ms.openlocfilehash: 262c72968ddb5985e0217bced1b83af6fdb7c03c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.author: cynthn
+ms.openlocfilehash: e7d57ead2caff87db07380582b9085b831844f1e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052610"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930073"
 ---
-# <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Instalowanie i konfigurowanie Ansible do zarządzania maszynami wirtualnymi na platformie Azure
+# <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Instalowanie i konfigurowanie rozwiązania Ansible do zarządzania maszynami wirtualnymi na platformie Azure
 
-Ansible umożliwia automatyzację wdrożenia i konfiguracji zasobów w danym środowisku. Ansible służy do zarządzania maszyn wirtualnych (VM) na platformie Azure, takie same jak w przypadku innych zasobów. Ten artykuł zawiera szczegóły dotyczące sposobu instalowania Ansible i wymagane moduły Azure Python SDK dla niektórych typowych dystrybucjach systemu Linux. Ansible można zainstalować na innych dystrybucjach, dopasowując zainstalowanych pakietów do określonej platformy. Tworzenie zasobów Azure, w sposób bezpieczny, możesz również Dowiedz się, jak utworzyć i zdefiniować poświadczenia dla Ansible do użycia.
+Rozwiązanie Ansible pozwala zautomatyzować procesy wdrażania i konfiguracji zasobów w danym środowisku. Aby zarządzać maszyn wirtualnych (VM) na platformie Azure, takie same jak w przypadku innych zasobów, można za pomocą rozwiązania Ansible. Ten artykuł szczegółowo opisuje sposób instalowania rozwiązania Ansible i wymaganych modułów z zestawu Azure Python SDK dla niektórych typowych dystrybucje systemu Linux. Rozwiązanie Ansible można zainstalować na inne dystrybucje, dostosowując zainstalowane pakiety w celu dopasowania określonej platformy. Tworzenie zasobów platformy Azure w sposób bezpieczny, możesz także Dowiedz się, jak utworzenie i zdefiniowanie poświadczenia na potrzeby rozwiązania Ansible do użycia.
 
-Więcej opcji instalacji i kroki dla dodatkowych platform, zobacz [Przewodnik instalacji Ansible](https://docs.ansible.com/ansible/intro_installation.html).
+Aby uzyskać więcej opcji instalacji i kroki dla dodatkowych platform, zobacz [Przewodnik instalacji rozwiązania Ansible](https://docs.ansible.com/ansible/intro_installation.html).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym artykule, wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
-## <a name="install-ansible"></a>Zainstaluj Ansible
+## <a name="install-ansible"></a>Instalowanie rozwiązania Ansible
 
-Jednym z najprostszych sposobów Ansible za pomocą usługi Azure jest przy użyciu powłoki chmury Azure obsługi opartej na przeglądarce powłoki, zarządzania i opracowanie zasobów platformy Azure. Ansible jest wstępnie zainstalowane w powłoce chmury można pominąć instrukcje na temat instalowania Ansible i przejdź do [poświadczenia Azure utworzyć](#create-azure-credentials). Listę dodatkowych narzędzi są dostępne również w chmurze powłoki, zobacz [funkcji i narzędzi dla Bash w powłoce chmury Azure](../../cloud-shell/features.md#tools).
+Jednym z najprostszych sposobów z platformą Azure za pomocą rozwiązania Ansible jest za pomocą usługi Azure Cloud Shell, oparte na przeglądarce powłoki do zarządzania i programowania zasobów platformy Azure. Ansible jest wstępnie instalowane w usłudze Cloud Shell, można pominąć instrukcje dotyczące sposobu instalowania rozwiązania Ansible i przejdź do [Azure Utwórz poświadczenia](#create-azure-credentials). Aby uzyskać listę dodatkowych narzędzi również dostępne w usłudze Cloud Shell, zobacz [funkcjach i narzędziach w programie Bash w usłudze Azure Cloud Shell](../../cloud-shell/features.md#tools).
 
-Poniższe instrukcje pokazują, jak utworzyć Maszynę wirtualną dla różnych dystrybucjach systemu Linux, a następnie zainstaluj Ansible. Jeśli nie potrzebujesz utworzyć Maszynę wirtualną systemu Linux, Pomiń ten krok pierwszy do utworzenia grupy zasobów platformy Azure. Jeśli trzeba utworzyć Maszynę wirtualną, najpierw utworzyć nową grupę zasobów o [Tworzenie grupy az](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Następujące instrukcje pokazują, jak utworzyć Maszynę wirtualną na różne dystrybucje systemu Linux, a następnie zainstaluj rozwiązania Ansible. Jeśli nie potrzebujesz utworzyć Maszynę wirtualną systemu Linux, Pomiń ten pierwszy krok, aby utworzyć grupę zasobów platformy Azure. Jeśli musisz utworzyć Maszynę wirtualną, najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz wybierz jedną z następujących dystrybucjach instrukcje dotyczące sposobu tworzenia maszyny Wirtualnej, jeśli to konieczne, a następnie zainstaluj Ansible:
+Teraz wybierz jedną z poniższe dystrybucje, aby uzyskać instrukcje dotyczące sposobu tworzenia maszyny Wirtualnej, jeśli to konieczne, a następnie zainstaluj rozwiązania Ansible:
 
-- [7.4 centOS](#centos-74)
+- [CentOS 7.4](#centos-74)
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
 - [SLES 12 Z DODATKIEM SP2](#sles-12-sp2)
 
-### <a name="centos-74"></a>7.4 centOS
+### <a name="centos-74"></a>CentOS 7.4
 
-W razie potrzeby utwórz maszynę Wirtualną za pomocą [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
+Jeśli to konieczne, Utwórz Maszynę wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -61,13 +61,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH przy użyciu maszyny Wirtualnej `publicIpAddress` zauważyć w danych wyjściowych z maszyny Wirtualnej operacji tworzenia:
+SSH z maszyną Wirtualną za pomocą `publicIpAddress` wymienionych w danych wyjściowych z maszyną Wirtualną Operacja tworzenia:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów Azure Python SDK i Ansible w następujący sposób:
+Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów zestawu Azure Python SDK i rozwiązania Ansible w następujący sposób:
 
 ```bash
 ## Install pre-requisite packages
@@ -78,11 +78,11 @@ sudo yum install -y python-pip python-wheel
 sudo pip install ansible[azure]
 ```
 
-Teraz przejść do [poświadczenia Azure utworzyć](#create-azure-credentials).
+Teraz przejdź do [Azure Utwórz poświadczenia](#create-azure-credentials).
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-W razie potrzeby utwórz maszynę Wirtualną za pomocą [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
+Jeśli to konieczne, Utwórz Maszynę wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -93,13 +93,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH przy użyciu maszyny Wirtualnej `publicIpAddress` zauważyć w danych wyjściowych z maszyny Wirtualnej operacji tworzenia:
+SSH z maszyną Wirtualną za pomocą `publicIpAddress` wymienionych w danych wyjściowych z maszyną Wirtualną Operacja tworzenia:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów Azure Python SDK i Ansible w następujący sposób:
+Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów zestawu Azure Python SDK i rozwiązania Ansible w następujący sposób:
 
 ```bash
 ## Install pre-requisite packages
@@ -109,11 +109,11 @@ sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev 
 sudo pip install ansible[azure]
 ```
 
-Teraz przejść do [poświadczenia Azure utworzyć](#create-azure-credentials).
+Teraz przejdź do [Azure Utwórz poświadczenia](#create-azure-credentials).
 
 ### <a name="sles-12-sp2"></a>SLES 12 Z DODATKIEM SP2
 
-W razie potrzeby utwórz maszynę Wirtualną za pomocą [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
+Jeśli to konieczne, Utwórz Maszynę wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMAnsible*:
 
 ```azurecli
 az vm create \
@@ -124,13 +124,13 @@ az vm create \
     --generate-ssh-keys
 ```
 
-SSH przy użyciu maszyny Wirtualnej `publicIpAddress` zauważyć w danych wyjściowych z maszyny Wirtualnej operacji tworzenia:
+SSH z maszyną Wirtualną za pomocą `publicIpAddress` wymienionych w danych wyjściowych z maszyną Wirtualną Operacja tworzenia:
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów Azure Python SDK i Ansible w następujący sposób:
+Na maszynie Wirtualnej Zainstaluj wymagane pakiety dla modułów zestawu Azure Python SDK i rozwiązania Ansible w następujący sposób:
 
 ```bash
 ## Install pre-requisite packages
@@ -144,19 +144,19 @@ sudo pip install ansible[azure]
 sudo pip uninstall -y cryptography
 ```
 
-Teraz przejść do [poświadczenia Azure utworzyć](#create-azure-credentials).
+Teraz przejdź do [Azure Utwórz poświadczenia](#create-azure-credentials).
 
-## <a name="create-azure-credentials"></a>Utwórz poświadczenia platformy Azure
+## <a name="create-azure-credentials"></a>Tworzenie poświadczeń platformy Azure
 
-Ansible komunikuje się z platformy Azure przy użyciu nazwy użytkownika i hasła lub nazwy głównej usługi. Podmiot zabezpieczeń usługi Azure jest tożsamość zabezpieczeń korzystających z aplikacji, usługami i automatyzacja takich narzędzi jak Ansible. Kontrolowanie i definiowanie uprawnień określające, jakie operacje nazwy głównej usługi można wykonać na platformie Azure. Zwiększające bezpieczeństwo za pośrednictwem tylko podanie nazwy użytkownika i hasła, w tym przykładzie tworzy podstawowe usługę podmiotu zabezpieczeń.
+Rozwiązanie Ansible komunikuje się z platformy Azure przy użyciu nazwy użytkownika i hasło lub jednostki usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń używanej z aplikacjami, usługami i narzędzia automatyzacji, takie jak rozwiązania Ansible. Ty określasz i zdefiniować uprawnienia dotyczące jakie operacje nazwy głównej usługi można wykonać na platformie Azure. Aby poprawić bezpieczeństwo za pośrednictwem tylko podanie nazwy użytkownika i hasła, ten przykład tworzy podstawowa usługa podmiotu zabezpieczeń.
 
-Na komputerze hosta lub w powłoce chmury Azure, utworzyć główną usługi za pomocą [az ad sp utworzyć do rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Poświadczenia, które wymaga Ansible są dane wyjściowe do ekranu:
+Na komputerze hosta lub usługi Azure Cloud Shell Utwórz główną usługi za pomocą [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Poświadczenia, których potrzebuje rozwiązania Ansible są dane wyjściowe na ekranie:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
 ```
 
-Przykład danych wyjściowych z poprzedniego polecenia jest następujący:
+Przykład danych wyjściowych z poprzedniego polecenia jest następująca:
 
 ```json
 {
@@ -166,26 +166,26 @@ Przykład danych wyjściowych z poprzedniego polecenia jest następujący:
 }
 ```
 
-Aby uwierzytelniać na platformie Azure, również należy uzyskać identyfikator subskrypcją platformy Azure za pomocą [Pokaż konto az](/cli/azure/account#az-account-show):
+Aby uwierzytelniać się na platformie Azure, trzeba będzie również uzyskać, używając Identyfikatora subskrypcji platformy Azure [Pokaż konta az](/cli/azure/account#az-account-show):
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"
 ```
 
-Dane wyjściowe z tych dwóch poleceń należy użyć w następnym kroku.
+Dane wyjściowe z tych dwóch poleceń można użyć w następnym kroku.
 
-## <a name="create-ansible-credentials-file"></a>Utwórz plik poświadczeń Ansible
+## <a name="create-ansible-credentials-file"></a>Utwórz plik poświadczeń rozwiązania Ansible
 
-Aby podać poświadczenia, aby Ansible, zdefiniuj zmienne środowiskowe, lub utworzyć plik lokalne poświadczenia. Aby uzyskać więcej informacji na temat definiowania Ansible poświadczeń, zobacz [dostarczanie poświadczeń do modułów Azure](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
+O podanie poświadczeń w celu rozwiązania Ansible, definiowania zmiennych środowiskowych, lub utworzyć plik poświadczeń lokalnych. Aby uzyskać więcej informacji na temat definiowania Ansible poświadczeń, zobacz [dostarczanie poświadczeń do modułów Azure](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
 
-Środowisko deweloperskie, można utworzyć *poświadczenia* pliku Ansible na hoście maszyny Wirtualnej. Utwórz plik poświadczeń na maszynie Wirtualnej, w którym zainstalowano Ansible w poprzednim kroku:
+Środowisko projektowe, można utworzyć *poświadczenia* pliku rozwiązania Ansible na hoście maszyny Wirtualnej. Utwórz plik poświadczeń na maszynie Wirtualnej, w którym zainstalowano rozwiązania Ansible w poprzednim kroku:
 
 ```bash
 mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-*Poświadczenia* sam plik łączy identyfikator subskrypcji z danych wyjściowych Tworzenie nazwy głównej usługi. Dane wyjściowe z poprzedniej [az ad sp utworzyć do rbac](/cli/azure/ad/sp#create-for-rbac) polecenie jest taka sama jak wartość wymagane dla *client_id*, *klucz tajny*, i *dzierżawy*. Poniższy przykład *poświadczenia* plik zawiera wartości te dane wyjściowe poprzedniego dopasowania. Wprowadź własne wartości w następujący sposób:
+*Poświadczenia* sam plik łączy identyfikator subskrypcji z danymi wyjściowymi tworzenia nazwy głównej usługi. Dane wyjściowe z poprzednich [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) polecenie jest taka sama, odpowiednio do potrzeb *client_id*, *klucz tajny*, i *dzierżawy*. Poniższy przykład *poświadczenia* pliku znajdują się te wartości, dane wyjściowe poprzedniego dopasowania. Wprowadź własne wartości w następujący sposób:
 
 ```bash
 [default]
@@ -197,9 +197,9 @@ tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 
 Zapisz i zamknij plik.
 
-## <a name="use-ansible-environment-variables"></a>Używać zmiennych środowiskowych Ansible
+## <a name="use-ansible-environment-variables"></a>Użyj zmiennych środowiskowych rozwiązania Ansible
 
-Jeśli zamierzasz używać narzędzi, takich jak wieża Ansible lub Wpięć, musisz zdefiniować zmienne środowiskowe. Ten krok można pominąć, jeśli zamierzasz tylko za pomocą klienta Ansible i plik poświadczeń Azure utworzony w poprzednim kroku. Zmienne środowiskowe definiują tych samych informacji jako plik poświadczeń platformy Azure:
+Jeśli zamierzasz użyć narzędzi, takich jak Ansible Tower lub systemu Jenkins, musisz zdefiniować zmienne środowiskowe. Ten krok można pominąć, jeśli tylko będą korzystać z klienta rozwiązania Ansible, a plik poświadczeń platformy Azure utworzone w poprzednim kroku. Zmienne środowiskowe definiują te same informacje co plik poświadczeń platformy Azure:
 
 ```bash
 export AZURE_SUBSCRIPTION_ID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -210,4 +210,4 @@ export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Masz teraz Ansible oraz wymagane moduły Azure Python SDK zainstalowany i poświadczeń określonych dla Ansible do użycia. Dowiedz się, jak [utworzyć Maszynę wirtualną z Ansible](ansible-create-vm.md). Możesz też dowiedzieć się, jak [utworzyć pełną maszyny Wirtualnej platformy Azure i pomocnicze zasoby z Ansible](ansible-create-complete-vm.md).
+Masz teraz Ansible oraz wymagane moduły zestawu Azure Python SDK zainstalowany i poświadczeń określonych dla rozwiązania Ansible do użycia. Dowiedz się, jak [Utwórz Maszynę wirtualną za pomocą rozwiązania Ansible](ansible-create-vm.md). Możesz też dowiedzieć się, jak [tworzenie pełnej maszyny Wirtualnej platformy Azure i obsługi zasobów za pomocą rozwiązania Ansible](ansible-create-complete-vm.md).

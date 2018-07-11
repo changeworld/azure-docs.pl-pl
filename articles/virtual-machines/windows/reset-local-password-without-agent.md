@@ -3,7 +3,7 @@ title: Resetowanie hasła lokalnego Windows bez agenta platformy Azure | Dokumen
 description: Jak zresetować hasło konta użytkownika lokalnego Windows, gdy agent gościa platformy Azure nie jest zainstalowana lub działający na maszynie Wirtualnej
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: iainfou
-ms.openlocfilehash: 6745d5f7c31ca00c7915874b038488f4487959a9
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: cynthn
+ms.openlocfilehash: 791ac9ca7795b5317c7b6e12a67327e7710a71ff
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342979"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932521"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetowanie hasła lokalnego Windows maszyny wirtualnej platformy Azure w trybie offline
 Możesz zresetować lokalne hasło maszyny Wirtualnej na platformie Azure przy użyciu Windows [witryny Azure portal lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pod warunkiem jest zainstalowany agent gościa platformy Azure. Ta metoda jest podstawowym sposobem, aby zresetować hasło dla maszyny Wirtualnej platformy Azure. Jeśli wystąpią problemy z powodu braku odpowiedzi agenta gościa platformy Azure lub niepowodzenia instalacji po przekazaniu obrazu niestandardowego, można ręcznie zresetować hasło Windows. W tym artykule opisano, jak zresetować hasło do konta lokalnego, dołączając dysk wirtualny źródłowego systemu operacyjnego do innej maszyny Wirtualnej. Kroki opisane w tym artykule nie dotyczą Windows kontrolerów domeny. 

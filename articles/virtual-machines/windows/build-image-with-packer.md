@@ -1,9 +1,9 @@
 ---
-title: Tworzenie obrazów maszyn wirtualnych Windows Azure z pakujący | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać pakujący do tworzenia obrazów maszyn wirtualnych systemu Windows na platformie Azure
+title: Tworzenie obrazów maszyn wirtualnych systemu Windows Azure za pomocą usługi Packer | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
-ms.author: iainfou
-ms.openlocfilehash: b7f07ec8736086483f91746512f10118ee90762d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: cynthn
+ms.openlocfilehash: 5f19a6cb356332e95f96484953f1be3df006dd09
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333168"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931926"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak używać pakujący do tworzenia obrazów systemu Windows maszyny wirtualnej na platformie Azure
-Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje dystrybucji systemu Windows i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. Portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla najbardziej typowych systemu operacyjnego i środowisk aplikacji albo można utworzyć własne niestandardowe obrazy dostosowane do potrzeb użytkownika. W tym artykule szczegółowo przedstawiają, jak korzystać z narzędzia open source [pakujący](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
+# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
+Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
 
 
-## <a name="create-azure-resource-group"></a>Tworzenie grupy zasobów platformy Azure
-Podczas procesu tworzenia pakujący tworzy tymczasowy zasobów Azure zbudował źródłowej maszyny Wirtualnej. Aby przechwycić tego źródła do użycia jako obraz maszyny Wirtualnej, należy zdefiniować grupę zasobów. Dane wyjściowe z procesu tworzenia pakujący znajduje się w tej grupie zasobów.
+## <a name="create-azure-resource-group"></a>Utwórz grupę zasobów platformy Azure
+Podczas procesu kompilacji narzędzia Packer tworzy tymczasowy zasobów platformy Azure opiera się źródłowa maszyna wirtualna. Aby przechwycić tego źródła do użycia jako obraz maszyny Wirtualnej, należy zdefiniować grupy zasobów. Dane wyjściowe z procesu kompilacji narzędzia Packer znajduje się w tej grupie zasobów.
 
 Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
@@ -36,10 +36,10 @@ $location = "East US"
 New-AzureRmResourceGroup -Name $rgName -Location $location
 ```
 
-## <a name="create-azure-credentials"></a>Utwórz poświadczenia platformy Azure
-Pakujący jest uwierzytelniany w usłudze Azure przy użyciu nazwy głównej usługi. Podmiot zabezpieczeń usługi Azure jest tożsamość zabezpieczeń korzystających z aplikacji, usługami i automatyzacja takich narzędzi jak pakujący. Kontrolowanie i definiowanie uprawnień określające, jakie operacje nazwy głównej usługi można wykonać na platformie Azure.
+## <a name="create-azure-credentials"></a>Tworzenie poświadczeń platformy Azure
+Narzędzia packer uwierzytelnia się za pomocą platformy Azure przy użyciu nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń używanej z aplikacjami, usługami i narzędzia automatyzacji, takie jak usługi Packer. Ty określasz i zdefiniować uprawnienia dotyczące jakie operacje nazwy głównej usługi można wykonać na platformie Azure.
 
-Utwórz usługę podmiotu zabezpieczeń z [AzureRmADServicePrincipal nowy](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) i przypisz uprawnienia do nazwy głównej usługi utworzyć i zarządzanie zasobami za pomocą [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Tworzenie usługi podmiotu zabezpieczeń za pomocą [New AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) i przypisać uprawnienia dla jednostki usługi do tworzenia i zarządzania zasobami przy użyciu [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
 ```powershell
 $sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
@@ -48,7 +48,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Aby uwierzytelniać na platformie Azure, również należy uzyskać Azure identyfikatorów dzierżawcy i subskrypcji z [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
+Aby uwierzytelniać się na platformie Azure, trzeba będzie również uzyskać Azure identyfikatorów dzierżawę i subskrypcję z [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
 
 ```powershell
 $sub = Get-AzureRmSubscription
@@ -56,23 +56,23 @@ $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
 
-Korzystając z tych dwóch identyfikatorów w następnym kroku.
+Te dwa identyfikatory są używane w następnym kroku.
 
 
-## <a name="define-packer-template"></a>Zdefiniuj szablon pakujący
-Aby tworzyć obrazy, należy utworzyć szablon w formacie JSON. W szablonie należy zdefiniować producentów i provisioners wykonujące procesu tworzenia rzeczywistych. Ma pakujący [konstruktora dla platformy Azure](https://www.packer.io/docs/builders/azure.html) który można zdefiniować zasobów platformy Azure, takich jak poświadczenia główne usługi utworzony w poprzednim kroku.
+## <a name="define-packer-template"></a>Definiowanie szablonu usługi Packer
+Aby skompilować obrazy, Utwórz szablon w formacie JSON. W szablonie i są definiowane Konstruktorzy provisioners wykonujących procesu rzeczywistej kompilacji. Zawiera narzędzia packer [konstruktora dla platformy Azure](https://www.packer.io/docs/builders/azure.html) , pozwala na zdefiniowanie zasobów platformy Azure, takich jak poświadczenia nazwy głównej usługi, utworzony w poprzednim kroku.
 
-Utwórz plik o nazwie *windows.json* i wklej następującą zawartość. Wprowadź własne wartości dla następujących elementów:
+Utwórz plik o nazwie *windows.json* i wklej następującą zawartością. Wprowadź własne wartości dla następujących elementów:
 
 | Parametr                           | Gdzie można uzyskać |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Identyfikator podmiotu zabezpieczeń usługi widoku z `$sp.applicationId` |
+| *client_id*                         | Wyświetl identyfikator jednostki usługi przy użyciu `$sp.applicationId` |
 | *client_secret*                     | Hasło określone w `$securePassword` |
 | *tenant_id*                         | Dane wyjściowe z `$sub.TenantId` polecenia |
-| *IDENTYFIKATOR_SUBSKRYPCJI*                   | Dane wyjściowe z `$sub.SubscriptionId` polecenia |
-| *object_id*                         | Identyfikator obiekt główny usługi widoku z `$sp.Id` |
+| *subscription_id*                   | Dane wyjściowe z `$sub.SubscriptionId` polecenia |
+| *object_id*                         | Identyfikator obiektu nazwy głównej usługi widoku przy użyciu `$sp.Id` |
 | *managed_image_resource_group_name* | Nazwa grupy zasobów, utworzonego w pierwszym kroku |
-| *managed_image_name*                | Nazwa obrazu dysków zarządzanych w tworzonym |
+| *managed_image_name*                | Nazwa obrazu dysku zarządzanego, który jest tworzony |
 
 ```json
 {
@@ -118,19 +118,19 @@ Utwórz plik o nazwie *windows.json* i wklej następującą zawartość. Wprowad
 }
 ```
 
-Ten szablon tworzy Maszynę wirtualną systemu Windows Server 2016, instaluje usługi IIS, a następnie stanowi uogólnienie maszyny Wirtualnej przy użyciu narzędzia Sysprep. Instalacja usług IIS pokazuje, jak można użyć administracyjnej programu PowerShell do uruchamiania dodatkowych poleceń. Obraz końcowy pakujący następnie obejmuje instalację wymaganego oprogramowania i konfiguracji.
+Ten szablon tworzy maszynę Wirtualną z systemem Windows Server 2016, instaluje usługi IIS, a następnie stanowi uogólnienie maszyny Wirtualnej za pomocą programu Sysprep. Instalację usług IIS pokazuje, jak można użyć administracyjnej programu PowerShell do uruchamiania dodatkowych poleceń. Finalnego obrazu usługi Packer będzie obejmować instalowanie wymaganego oprogramowania i konfiguracji.
 
 
-## <a name="build-packer-image"></a>Utwórz obraz pakujący
-Jeśli nie masz jeszcze pakujący zainstalowany na komputerze lokalnym [postępuj zgodnie z instrukcjami instalacji pakujący](https://www.packer.io/docs/install/index.html).
+## <a name="build-packer-image"></a>Tworzenie obrazu usługi Packer
+Jeśli nie masz jeszcze usługi Packer zainstalowane na komputerze lokalnym [postępuj zgodnie z instrukcjami instalacji narzędzia Packer](https://www.packer.io/docs/install/index.html).
 
-Utworzyć obraz, określając pakujący Twojego pliku szablonu w następujący sposób:
+Tworzenie obrazu, określając usługi Packer pliku szablonu w następujący sposób:
 
 ```bash
 ./packer build windows.json
 ```
 
-Przykład danych wyjściowych z poprzedniego polecenia jest następujący:
+Przykład danych wyjściowych z poprzedniego polecenia jest następująca:
 
 ```bash
 azure-arm output will be in this color.
@@ -204,11 +204,11 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Trwa kilka minut, aż pakujący do tworzenia maszyny Wirtualnej, uruchom provisioners i wyczyścić wdrożenia.
+Trwa kilka minut, zanim Packer tworzenie maszyny Wirtualnej, uruchom provisioners i wyczyścić wdrożenia.
 
 
-## <a name="create-a-vm-from-the-packer-image"></a>Utwórz maszynę Wirtualną z obrazu pakujący
-Można teraz utworzyć Maszynę wirtualną z obrazu z [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm). Uzupełniające zasoby sieciowe są tworzone, jeśli jeszcze nie istnieje. Po wyświetleniu monitu wprowadź administracyjne nazwę użytkownika i hasło, które ma zostać utworzony na maszynie Wirtualnej. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage*:
+## <a name="create-a-vm-from-the-packer-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazu usługi Packer
+Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieje. Po wyświetleniu monitu wprowadź administracyjne nazwę użytkownika i hasło, które ma zostać utworzony na maszynie Wirtualnej. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage*:
 
 ```powershell
 New-AzureRmVm `
@@ -223,12 +223,12 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-Jeśli chcesz utworzyć maszyn wirtualnych w innej grupie zasobów lub regionie niż obraz pakujący, określ identyfikator obrazu, a nie nazwę obrazu. Możesz uzyskać identyfikator obrazu z [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
+Jeśli chcesz utworzyć maszyny wirtualne w regionie niż obrazu usługi Packer lub innej grupy zasobów, należy określić identyfikator obrazu, a nie nazwę obrazu. Można uzyskać identyfikator obrazu z [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
 
-Trwa kilka minut, aby utworzyć maszynę Wirtualną z obrazu pakujący.
+Trwa kilka minut, aby utworzyć maszynę Wirtualną z obrazu usługi Packer.
 
 
-## <a name="test-vm-and-webserver"></a>Test maszyny Wirtualnej i serwer sieci Web
+## <a name="test-vm-and-webserver"></a>Test maszyny Wirtualnej, a serwer sieci Web
 Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
 
 ```powershell
@@ -237,12 +237,12 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```
 
-Do maszyny Wirtualnej, zawierający instalacji usług IIS z administracyjnej pakujący w akcji, zobacz wprowadź publicznego adresu IP w przeglądarce sieci web.
+Do maszyny Wirtualnej, która obejmuje instalację usług IIS z administracyjnej Packer, w akcji, zobacz Wprowadź publiczny adres IP w przeglądarce internetowej.
 
 ![Domyślna witryna usług IIS](./media/build-image-with-packer/iis.png) 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przykładzie użyto pakujący do utworzenia obrazu maszyny Wirtualnej z już zainstalowanymi usługami IIS. Można tego obrazu maszyny Wirtualnej będą widoczne obok istniejących przepływów pracy wdrażania, takie jak wdrożyć aplikację na maszyny wirtualne utworzone na podstawie obrazu z usługi Team Services, Ansible, Chef lub Puppet.
+W tym przykładzie użyto narzędzia Packer do tworzenia obrazu maszyny Wirtualnej już po zainstalowaniu usług IIS. Ten obraz maszyny Wirtualnej wraz z istniejących przepływów pracy wdrażania, takie jak umożliwia wdrażanie aplikacji w usłudze maszyny wirtualne utworzone na podstawie obrazu z usługi Team Services, rozwiązania Ansible, Chef lub Puppet.
 
-Dla szablonów pakujący dodatkowe przykładowe dla innych dystrybucjach systemu Windows, temacie [tego repozytorium GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).
+Aby uzyskać dodatkowe przykładowe szablony usługi Packer dla innych dystrybucje Windows, zobacz [tego repozytorium GitHub](https://github.com/hashicorp/packer/tree/master/examples/azure).

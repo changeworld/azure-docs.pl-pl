@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 283dcdc718231e5f0f82fb98fe71b77aa54d741b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3b225a012abe4796172327d8a723338e8de67749
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867688"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930022"
 ---
 # <a name="integrate-speech-service"></a>Integracja usługi mowy
 [Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON.
@@ -28,7 +28,7 @@ W tym artykule potrzebne bezpłatne [LUIS] [ LUIS] konta witryny sieci Web, aby 
 W witrynie Azure portal [tworzenie](luis-how-to-azure-subscription.md#create-luis-endpoint-key) **Language Understanding** klucza (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Importuj zasoby ludzkie LUIS aplikacji
-Opcje, a wypowiedzi w tym artykule pochodzą z aplikacji usługi LUIS zarządzania zasobami ludzkimi, dostępnej w sklepie [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples) repozytorium Github. Pobierz [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) pliku, zapisz go z rozszerzeniem *.json i [zaimportować](create-new-app.md#import-new-app) go do usługi LUIS. 
+Opcje, a wypowiedzi w tym artykule pochodzą z aplikacji usługi LUIS zarządzania zasobami ludzkimi, dostępnej w sklepie [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples) repozytorium Github. Pobierz [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) pliku, zapisz go z rozszerzeniem *.json i [zaimportować](luis-how-to-start-new-app.md#import-new-app) go do usługi LUIS. 
 
 Ta aplikacja ma intencji, jednostek i wypowiedzi związane z domeny zarządzania zasobami ludzkimi. Przykład wypowiedzi obejmują:
 

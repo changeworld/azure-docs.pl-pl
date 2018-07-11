@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: 83e5a8db9162ef1587664c0a353252c04ade45d8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 7dc3d0ce70ca0df2c5cf951ae53ee0566451801f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887807"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952811"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -77,7 +77,7 @@ Usługa LUIS oferuje wiele typów jednostek; wstępnie utworzonych jednostek nie
 **Wstępnie utworzone** jednostki to jednostki niestandardowe, udostępniane przez usługi LUIS. Niektóre z tych jednostek są zdefiniowane w typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Istnieje wiele [przykłady](https://github.com/Microsoft/Recognizers-Text/tree/master/Specs) w bieżącym katalogu /Specs dla obsługiwanych kultur. Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu. 
 
 <a name="machine-learned"></a>
-**Maszyny do opanowania** jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](label-suggested-utterances.md). 
+**Maszyny do opanowania** jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endoint-utt.md). 
 
 <a name="regex"></a>
 **Wyrażenie regularne jednostek** są definiowane przez wyrażenie regularne, użytkownik udostępnia jako część definicji jednostki. 

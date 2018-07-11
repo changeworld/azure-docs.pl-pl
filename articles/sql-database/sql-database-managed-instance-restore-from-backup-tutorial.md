@@ -8,15 +8,15 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: c6f397c2cfcfd9fbd4a5cc8f70a99f4abc86ba21
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34850682"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949888"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Przywracanie kopii zapasowej bazy danych do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -140,7 +140,7 @@ W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wi
 
     ![lista plików](./media/sql-database-managed-instance-tutorial/file-list.png)
 
-4. Użyj następującego skryptu, aby przywrócić bazę danych Adventure Works 2012 z pliku kopii zapasowej — podając adres URL kontenera z plikiem kopii zapasowej:
+4. Użyj następującego skryptu, aby przywrócić bazę danych Wide World Importers z pliku kopii zapasowej — podając adres URL kontenera z plikiem kopii zapasowej:
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =

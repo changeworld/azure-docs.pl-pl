@@ -13,12 +13,12 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d52469e11ac508ee8b353311f6040ac9d6f2e4e
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 85bea1b042eb9b882022118d36e5a55a802a1bdc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447153"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950567"
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Przyznawanie dostępu do zarządzania usługi Azure AD Privileged Identity Management
 Administrator globalny, który umożliwia automatyczne usługi Azure AD Privileged Identity Management (PIM) dla organizacji, skorzystaj z przypisań ról i dostępu do usługi PIM. Nikt inny nie pobiera zapisu domyślnie, jednak tym innych administratorów globalnych. Inne Administratorzy globalni, Administratorzy zabezpieczeń i czytelnicy zabezpieczeń mają dostęp tylko do odczytu do usługi Azure AD PIM. Aby udzielić dostępu do usługi PIM, pierwszego użytkownika można przypisać inne osoby **administratorem ról uprzywilejowanych** roli.
@@ -34,10 +34,10 @@ Upewnij się, zawsze co najmniej dwóch użytkowników rolę administrator ról 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz **usługi Azure AD Privileged Identity Management** aplikacji na pulpicie nawigacyjnym.
 2. Wybierz **Zarządzanie rolami uprzywilejowanymi** > **administratorem ról uprzywilejowanych** > **Dodaj**.
    
-    ![Dodaj administratorów ról uprzywilejowanych — zrzut ekranu][1]
+    ![Dodaj administratorów ról uprzywilejowanych — zrzut ekranu](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png)
 3. W bloku Dodawanie zarządzanych użytkowników krok 1 została już wykonana. Wybierz krok 2, **wybranym użytkownikom** i Wyszukaj użytkownika, które chcesz dodać.
    
-    ![Wybierz użytkowników — zrzut ekranu][2]
+    ![Wybierz użytkowników — zrzut ekranu](./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png)
 4. Wybierz użytkownika z poziomu wyników wyszukiwania, a następnie kliknij przycisk **gotowe**.
 5. Kliknij przycisk **OK** Aby zapisać wybrane opcje. Użytkownik, który wybrano pojawi się na liście Administratorzy ról uprzywilejowanych.
    
@@ -55,8 +55,3 @@ Zanim usuniesz ktoś z administratorem ról uprzywilejowanych, zawsze upewnij si
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png

@@ -1,9 +1,9 @@
 ---
-title: Szyfrowanie dysków na maszynie Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak zaszyfrować dyski wirtualne na maszynie Wirtualnej systemu Windows, aby zwiększyć bezpieczeństwo, przy użyciu programu Azure PowerShell
+title: Szyfrowanie dysków na maszynie Wirtualnej Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak zaszyfrować dyski wirtualne na maszynie Wirtualnej Windows w celu uzyskania zwiększonych zabezpieczeń przy użyciu programu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,62 +14,62 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/07/2018
-ms.author: iainfou
-ms.openlocfilehash: 442ff942150af8a8dec89164fbc017a9e6f360e8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: cynthn
+ms.openlocfilehash: 9d8e868eb11e45a01b3992022b729369da6b42e4
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603746"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931494"
 ---
-# <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Jak zaszyfrować dyski wirtualne na maszynie Wirtualnej systemu Windows
-Ulepszone maszyny wirtualnej (VM) zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne na platformie Azure. Dyski są szyfrowane za pomocą kluczy kryptograficznych, które są już zabezpieczone w usłudze Azure Key Vault. Kontrolowanie tych kluczy kryptograficznych i przeprowadzić inspekcję ich używania. Ten artykuł zawiera szczegóły dotyczące sposobu szyfrowania dysków wirtualnych w maszynie Wirtualnej z systemem Windows przy użyciu programu Azure PowerShell. Możesz również [szyfrowania maszyny Wirtualnej systemu Linux przy użyciu programu Azure CLI 2.0](../linux/encrypt-disks.md).
+# <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Jak zaszyfrować dyski wirtualne na maszyny Wirtualnej z systemem Windows
+Rozszerzone maszynę wirtualną (VM), zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne na platformie Azure. Dyski są szyfrowane przy użyciu kluczy kryptograficznych, które są zabezpieczone w usłudze Azure Key Vault. Możesz kontrolować klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie. W tym artykule szczegółowo przedstawiono sposób Szyfruj dyski wirtualne na maszynie Wirtualnej Windows przy użyciu programu Azure PowerShell. Możesz również [szyfrowanie maszyny Wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](../linux/encrypt-disks.md).
 
-## <a name="overview-of-disk-encryption"></a>Omówienie szyfrowania dysków
-Dyski wirtualne na maszynach wirtualnych systemu Windows są szyfrowane, gdy za pomocą funkcji Bitlocker. Jest bezpłatna dla szyfrowania dysków wirtualnych na platformie Azure. Klucze szyfrowania są przechowywane w usługi Azure Key Vault przy użyciu ochrony oprogramowania, lub możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM) certyfikowane do FIPS 140-2 poziom 2 standardów. Te klucze szyfrowania są używane do szyfrowania i odszyfrowywania wirtualnych dysków dołączonych do maszyny Wirtualnej. Zachowanie kontroli nad tych kluczy kryptograficznych i przeprowadzić inspekcję ich używania. Nazwy głównej usługi Azure Active Directory zapewnia mechanizm bezpiecznego do wystawiania tych kluczy kryptograficznych, ponieważ maszyny wirtualne są zasilane i wyłączanie.
+## <a name="overview-of-disk-encryption"></a>Omówienie szyfrowania dysku
+Dyski wirtualne na maszynach wirtualnych Windows są szyfrowane za pomocą funkcji Bitlocker. Nie ma opłat do szyfrowania dysków wirtualnych na platformie Azure. Klucze szyfrowania są przechowywane w usłudze Azure Key Vault przy użyciu ochrony oprogramowania lub można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM) certyfikowane zgodnych ze standardami FIPS 140-2 poziom 2 standardy. Te klucze szyfrowania są używane do szyfrowania i odszyfrowywania dyski wirtualne dołączone do maszyny Wirtualnej. Zachowanie kontroli nad te klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie. Jednostki usługi Azure Active Directory zapewnia mechanizm bezpiecznego wydawania te klucze szyfrowania, jak maszyny wirtualne są włączone, włączać i wyłączać.
 
-Proces szyfrowania maszyny Wirtualnej jest następujący:
+Proces szyfrowania maszyny Wirtualnej jest w następujący sposób:
 
-1. Tworzenie klucza kryptograficznego w usłudze Azure Key Vault.
-2. Skonfiguruj klucza kryptograficznego, który może być używany do szyfrowania dysków.
-3. Aby odczytać klucza kryptograficznego z usługi Azure Key Vault, utworzyć usługę Azure Active Directory podmiot z odpowiednimi uprawnieniami.
-4. Wydaj polecenie wirtualnych dysków, określając usługi Azure Active Directory usługa podmiotu zabezpieczeń i odpowiednie klucza kryptograficznego używanego do szyfrowania.
-5. Nazwy głównej usługi Azure Active Directory żądań wymaganego klucza kryptograficznego z usługi Azure Key Vault.
-6. Dyski wirtualne są szyfrowane za pomocą podanego klucza kryptograficznego.
+1. Utwórz klucz kryptograficzny w usłudze Azure Key Vault.
+2. Konfigurowanie klucza kryptograficznego, może być używany do szyfrowania dysków.
+3. Aby odczytać klucz kryptograficzny z usługi Azure Key Vault, tworzenie usługi Azure Active Directory jednostki z odpowiednimi uprawnieniami.
+4. Wydaj polecenie Szyfrowanie dysków wirtualnych, określanie usługi Azure Active Directory service główną i odpowiedni klucz kryptograficzny ma być używany.
+5. Jednostki usługi Azure Active Directory żąda wymaganego klucza kryptograficznego z usługi Azure Key Vault.
+6. Wirtualne dyski są szyfrowane przy użyciu podanego klucza kryptograficznego.
 
 ## <a name="encryption-process"></a>Proces szyfrowania
-Szyfrowanie dysków opiera się na następujące dodatkowe składniki:
+Szyfrowanie dysków opiera się na następujących dodatkowych składników:
 
-* **Usługa Azure Key Vault** — używane do ochrony kluczy kryptograficznych i kluczy tajnych używanych przez proces szyfrowania i odszyfrowywania dysku. 
-  * Jeśli istnieje, można użyć istniejącego magazynu kluczy Azure. Nie trzeba przeznaczyć magazyn kluczy szyfrowania dysków.
-  * Aby rozdzielić granice administracyjne i widoczności klucza, możesz utworzyć dedykowany magazyn kluczy.
+* **Usługa Azure Key Vault** — używane do ochrony kluczy kryptograficznych i wpisów tajnych używanych dla procesu szyfrowania i odszyfrowywania dysku. 
+  * Jeśli istnieje, można użyć istniejącej usługi Azure Key Vault. Nie masz możliwości szyfrowania dysków za przeznaczyć usługi Key Vault.
+  * Do oddzielania granice administracyjne i widoczność kluczy, można utworzyć dedykowane usługi Key Vault.
 * **Usługa Azure Active Directory** — obsługuje bezpiecznej wymiany wymagane klucze szyfrowania i uwierzytelniania dla żądanej akcji. 
   * Zazwyczaj można użyć istniejącego wystąpienia usługi Azure Active Directory, do przechowywania aplikacji.
-  * Nazwy głównej usługi zapewnia mechanizm bezpiecznego do żądania i wydawane odpowiednich kluczy kryptograficznych. Nie opracowujesz aplikację rzeczywista, która integruje się z usługą Azure Active Directory.
+  * Nazwa główna usługi zapewnia mechanizm bezpiecznego do żądania i wydawane odpowiednich kluczy kryptograficznych. Nie tworzysz aplikację rzeczywista, która integruje się z usługą Azure Active Directory.
 
 ## <a name="requirements-and-limitations"></a>Wymagania i ograniczenia
-Obsługiwane scenariusze i wymagania dotyczące szyfrowania dysków:
+Obsługiwane scenariusze i wymagania dotyczące szyfrowania dysku:
 
-* Włączenie szyfrowania na nowych maszyn wirtualnych systemu Windows z portalu Azure Marketplace obrazy lub niestandardowego obrazu wirtualnego dysku twardego.
-* Włączenie szyfrowania na istniejących maszyn wirtualnych systemu Windows na platformie Azure.
-* Włączenie szyfrowania na maszynach wirtualnych systemu Windows, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania.
-* Wyłączenie szyfrowania systemu operacyjnego i danych dyski dla maszyn wirtualnych systemu Windows.
-* Wszystkie zasoby (na przykład usługi Key Vault, konta magazynu i maszyny Wirtualnej) muszą być w tym samym regionie Azure i subskrypcji.
-* Warstwy standardowa maszyn wirtualnych, takie jak, D, DS, G i GS serii maszyn wirtualnych.
+* Włączanie szyfrowania na nowe Windows maszyn wirtualnych na podstawie obrazów portalu Azure Marketplace lub niestandardowego obrazu wirtualnego dysku twardego.
+* Włączanie szyfrowania na istniejących Windows maszyn wirtualnych na platformie Azure.
+* Włączanie szyfrowania na maszynach wirtualnych Windows, które są skonfigurowane przy użyciu funkcji miejsca do magazynowania.
+* Wyłączenie szyfrowania systemu operacyjnego i danych dysków dla maszyn wirtualnych Windows.
+* Wszystkie zasoby (na przykład usługi Key Vault, konto magazynu oraz maszyny Wirtualnej) muszą być w tym samym regionie platformy Azure i subskrypcji.
+* W warstwie standardowa maszyny wirtualne, takie jak, D, DS, G i GS maszyny wirtualne z serii.
 
 Szyfrowanie dysku nie jest obecnie obsługiwane w następujących scenariuszach:
 
-* Maszyny wirtualne warstwy podstawowa.
-* Maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrożenia.
-* Aktualizowanie kluczy kryptograficznych w przypadku już zaszyfrowany maszyny Wirtualnej.
-* Integracja z usługą zarządzania kluczami lokalnego.
+* Warstwa podstawowa maszyn wirtualnych.
+* Maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania.
+* Aktualizowanie kluczy kryptograficznych na już zaszyfrowanej maszyny Wirtualnej.
+* Integracja z lokalnej usługi zarządzania kluczami.
 
-## <a name="create-azure-key-vault-and-keys"></a>Tworzenie usługi Azure Key Vault i kluczy
+## <a name="create-azure-key-vault-and-keys"></a>Tworzenie usługi Azure Key Vault i klucze
 Przed rozpoczęciem upewnij się, że masz zainstalowaną najnowszą wersję modułu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). W przykładach poleceń Zastąp wszystkie parametry przykład własne nazwy, lokalizacji i wartości klucza. W poniższych przykładach użyto Konwencji *myResourceGroup*, *myKeyVault*, *myVM*itp.
 
-Pierwszym krokiem jest do utworzenia magazynu kluczy Azure do przechowywania kluczy kryptograficznych. Usługa Azure Key Vault można przechowywać kluczy, kluczy tajnych lub haseł, które umożliwiają bezpieczne wdrożenie ich w aplikacji i usług. Szyfrowanie dysków wirtualnych można utworzyć magazyn kluczy do przechowywania klucza kryptograficznego, który jest używany do szyfrowania lub odszyfrowywania wirtualnych dysków. 
+Pierwszym krokiem jest do utworzenia usługi Azure Key Vault do przechowywania kluczy kryptograficznych. Usługa Azure Key Vault można przechowywać klucze, wpisy tajne lub haseł, które umożliwiają bezpieczne wdrożenie ich w aplikacji i usług. Do szyfrowania dysku wirtualnego utworzysz usługę Key Vault do przechowywania klucza kryptograficznego, który służy do szyfrowania i odszyfrowywania Twoje wirtualne dyski. 
 
-Włącz dostawcy usługi Azure Key Vault w ramach Twojej subskrypcji platformy Azure z [AzureRmResourceProvider rejestru](/powershell/module/azurerm.resources/register-azurermresourceprovider), następnie utwórz nową grupę zasobów o [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy nazwę grupy zasobów *myResourceGroup* w *wschodnie stany USA* lokalizacji:
+Włącz dostawcę usługi Azure Key Vault w ramach subskrypcji platformy Azure za pomocą [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider), należy utworzyć grupę zasobów za pomocą [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy nazwę grupy zasobów *myResourceGroup* w *wschodnie stany USA* lokalizacji:
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -79,7 +79,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 New-AzureRmResourceGroup -Location $location -Name $rgName
 ```
 
-Usługa Azure Key Vault zawierający klucze kryptograficzne i zasoby obliczeniowe skojarzone, takie jak magazyn i samej maszyny Wirtualnej musi znajdować się w tym samym regionie. Tworzenie usługi Azure Key Vault z [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) i włączyć usługi Key Vault służących do szyfrowania dysku. Określ unikatową nazwę usługi Key Vault *keyVaultName* w następujący sposób:
+Usługi Azure Key Vault, zawierający klucze kryptograficzne i zasoby obliczeniowe skojarzone, takie jak storage i samej maszyny Wirtualnej muszą znajdować się w tym samym regionie. Tworzenie usługi Azure Key Vault przy użyciu [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) i włączyć usługi Key Vault do użytku z szyfrowania dysków. Określ unikatową nazwę usługi Key Vault *keyVaultName* w następujący sposób:
 
 ```powershell
 $keyVaultName = "myUniqueKeyVaultName"
@@ -89,9 +89,9 @@ New-AzureRmKeyVault -Location $location `
     -EnabledForDiskEncryption
 ```
 
-Mogą być przechowywane przy użyciu oprogramowania lub sprzętu modelu zabezpieczeń (HSM) ochronę kluczy kryptograficznych. Użycie modułów HSM wymaga premium magazynu kluczy. Brak dodatkowych kosztów tworzenia premium magazynu kluczy, a nie standardowy magazyn kluczy, którego przechowuje klucze chronione przez oprogramowanie. Aby utworzyć premium magazynu kluczy, w poprzednim kroku Dodaj *- Sku "Premium"* parametrów. W poniższym przykładzie użyto klucze chronione przez oprogramowanie, ponieważ utworzono standardowe magazynu kluczy. 
+Dodawanie dodatkowego dysku z danymi Gdy zaszyfrowanych dysków z danymi, można później dodać dodatkowe dyski wirtualne z maszyną wirtualną i również zaszyfrować. Na przykład pozwala dodać drugi dysk wirtualny z maszyną wirtualną w następujący sposób: Aby utworzyć premium usługi Key Vault, w poprzednim kroku należy dodać *- jednostki Sku "Premium"* parametrów. W poniższym przykładzie użyto kluczy chronionych programowo, ponieważ utworzyliśmy standardowe usługi Key Vault. 
 
-W przypadku obu modeli ochrony platformy Azure musi otrzymać dostęp do żądania kluczy kryptograficznych, podczas rozruchu maszyny Wirtualnej do odszyfrowania dysków wirtualnych. Tworzenie klucza kryptograficznego w magazyn kluczy o [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey). W poniższym przykładzie jest tworzony klucz o nazwie *klucze*:
+Aby uzyskać więcej informacji o szyfrowaniu dysku, takich jak przygotowywanie zaszyfrowanych niestandardową maszynę Wirtualną do przekazania na platformę Azure, zobacz usługi Azure Disk Encryption. Utwórz klucz kryptograficzny w usłudze Key Vault przy użyciu [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey). Poniższy przykład tworzy klucz o nazwie *klucze*:
 
 ```powershell
 Add-AzureKeyVaultKey -VaultName $keyVaultName `
@@ -100,10 +100,10 @@ Add-AzureKeyVaultKey -VaultName $keyVaultName `
 ```
 
 
-## <a name="create-the-azure-active-directory-service-principal"></a>Tworzenie nazwy głównej usługi Azure Active Directory
-Podczas dyski wirtualne są zaszyfrowanie lub odszyfrowanie, należy określić konto w celu obsługi uwierzytelniania i wymiany kluczy kryptograficznych z magazynu kluczy. To konto, nazwy głównej usługi Azure Active Directory umożliwia platformy Azure zażądać odpowiednich kluczy kryptograficznych w imieniu maszyny Wirtualnej. Domyślne wystąpienie usługi Azure Active Directory jest dostępne w Twojej subskrypcji, chociaż w wielu organizacjach są wyposażone w dedykowane katalogów usługi Azure Active Directory.
+## <a name="create-the-azure-active-directory-service-principal"></a>Tworzenie jednostki usługi Azure Active Directory
+Jeśli wirtualne dyski są szyfrowane lub odszyfrować, określasz konto, aby obsługiwać uwierzytelnianie i wymiany kluczy kryptograficznych z usługi Key Vault. To konto jednostki usługi Azure Active Directory umożliwia platformy Azure, aby zażądać odpowiednie kluczy kryptograficznych w imieniu maszyny Wirtualnej. Domyślne wystąpienie usługi Azure Active Directory jest dostępna w ramach subskrypcji, chociaż w wielu organizacjach są wyposażone w dedykowane katalogami usługi Azure Active Directory.
 
-Tworzenie nazwy głównej usługi w usłudze Azure Active Directory z [AzureRmADServicePrincipal nowy](/powershell/module/azurerm.resources/new-azurermadserviceprincipal). Aby określić bezpieczne hasło, wykonaj [ograniczenia w usłudze Azure Active Directory i zasadami haseł](../../active-directory/authentication/concept-sspr-policy.md):
+Tworzenie jednostki usługi Azure Active Directory za pomocą [New AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal). Aby określić bezpiecznego hasła, postępuj zgodnie z [zasady i ograniczenia w usłudze Azure Active Directory haseł](../../active-directory/authentication/concept-sspr-policy.md):
 
 ```powershell
 $appName = "My App"
@@ -115,7 +115,7 @@ $app = New-AzureRmADApplication -DisplayName $appName `
 New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
 ```
 
-Pomyślnie szyfrowania lub odszyfrowywania dysków wirtualnych, uprawnienia do klucza kryptograficznego, przechowywane w magazynie klucz musi mieć ustawioną zezwolenie na nazwę główną usługi Azure Active Directory do odczytu kluczy. Ustaw uprawnienia na magazyn kluczy o [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy):
+Aby pomyślnie szyfrowania lub odszyfrowywania dysków wirtualnych, uprawnienia klucza kryptograficznego, przechowywane w usłudze Key Vault musi być równa zezwala na nazwy głównej usługi Azure Active Directory do odczytu klucze. Ustaw uprawnienia usługi Key Vault przy użyciu [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy):
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
@@ -126,7 +126,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
 
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
-Aby przetestować proces szyfrowania, utwórz maszynę Wirtualną za pomocą [AzureRmVm nowy](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* przy użyciu *systemu Windows Server 2016 Datacenter* obrazu. Po wyświetleniu monitu o poświadczenia, wprowadź nazwę użytkownika i hasło do użycia dla maszyny Wirtualnej:
+Aby przetestować proces szyfrowania, Utwórz Maszynę wirtualną za pomocą [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* przy użyciu *systemu Windows Server 2016 Datacenter* obrazu. Po wyświetleniu monitu o poświadczenia, wprowadź nazwę użytkownika i hasło do użycia dla maszyny Wirtualnej:
 
 ```powershell
 $cred = Get-Credential
@@ -144,14 +144,14 @@ New-AzureRmVm `
 
 
 ## <a name="encrypt-virtual-machine"></a>Szyfrowanie maszyny wirtualnej
-Do szyfrowania dysków wirtualnych, można przenosić ze sobą wszystkie poprzednie składniki:
+Aby zaszyfrować dyski wirtualne, możesz Połącz poprzednie składniki:
 
-1. Podaj nazwę główną usługi Azure Active Directory i hasło.
-2. Określ Key Vault w celu przechowywania metadanych dla zaszyfrowanych dysków.
+1. Określ nazwy głównej usługi Azure Active Directory i hasło.
+2. Określ usługi Key Vault do przechowywania metadanych dla zaszyfrowanych dysków.
 3. Określ klucze kryptograficzne służące do rzeczywistego szyfrowania i odszyfrowywania.
-4. Określ, czy chcesz zaszyfrować dysk systemu operacyjnego, dyski danych lub all.
+4. Określ, czy chcesz zaszyfrować dysk systemu operacyjnego, dyski z danymi lub wszystkie.
 
-Szyfrowanie maszyny Wirtualnej z [AzureRmVMDiskEncryptionExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) przy użyciu klucza usługi Azure Key Vault i poświadczenia główne usługi Azure Active Directory. Poniższy przykład pobiera wszystkie informacje o kluczu, a następnie szyfruje maszyny Wirtualnej o nazwie *myVM*:
+Szyfrowanie maszyny Wirtualnej za pomocą [polecenia Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) przy użyciu klucza usługi Azure Key Vault i poświadczenia nazwy głównej usługi Azure Active Directory. Poniższy przykład pobiera wszystkie informacje o kluczu, a następnie szyfruje maszyny Wirtualnej o nazwie *myVM*:
 
 ```powershell
 $keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
@@ -169,7 +169,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -KeyEncryptionKeyVaultId $keyVaultResourceId
 ```
 
-Zaakceptować monit o kontynuowanie szyfrowania maszyny Wirtualnej. Podczas procesu ponownego uruchomienia maszyny Wirtualnej. Po zakończeniu procesu szyfrowania i uruchomieniu maszyny Wirtualnej, przejrzyj stanu szyfrowania z [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus):
+Zaakceptować monit o kontynuowanie przy użyciu szyfrowania maszyny Wirtualnej. Maszyna wirtualna zostanie uruchomiony ponownie podczas procesu. Po zakończeniu procesu szyfrowania i maszyny Wirtualnej został ponownie uruchomiony, sprawdź stan szyfrowania z [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus):
 
 ```powershell
 Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName "myVM"
@@ -185,5 +185,5 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać więcej informacji na temat zarządzania usługą Azure Key Vault, zobacz [Konfigurowanie magazynu kluczy dla maszyn wirtualnych](key-vault-setup.md).
-* Aby uzyskać więcej informacji o szyfrowaniu dysków, takich jak przygotowywanie zaszyfrowanego niestandardowego maszyny Wirtualnej do przekazania do platformy Azure, zobacz [szyfrowania dysków Azure](../../security/azure-security-disk-encryption.md).
+* Aby uzyskać więcej informacji na temat zarządzania usługi Azure Key Vault, zobacz [Konfigurowanie usługi Key Vault dla maszyn wirtualnych](key-vault-setup.md).
+* Aby uzyskać więcej informacji o szyfrowaniu dysku, takich jak przygotowywanie zaszyfrowanych niestandardową maszynę Wirtualną do przekazania na platformę Azure, zobacz [usługi Azure Disk Encryption](../../security/azure-security-disk-encryption.md).

@@ -1,6 +1,6 @@
 ---
-title: Obsługa wyjątków i błędów rejestrowania scenariusz — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje przypadek użycia rzeczywistych o zaawansowanych wyjątków i rejestrowania błędów dla usługi Azure Logic Apps
+title: Obsługa wyjątków & Błąd rejestrowania scenariusz — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: W tym artykule opisano przypadek użycia rzeczywistych o zaawansowanych wyjątków i rejestrowania błędów w usłudze Azure Logic Apps
 keywords: ''
 services: logic-apps
 author: hedidin
@@ -16,52 +16,52 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: cb80423266d3e9c0b3cac31821965ad92c0420d9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4114e32053410689c0482816a46376947023972
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299362"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930277"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: Obsługa wyjątków i rejestrowania błędów dla usługi logic apps
 
-W tym scenariuszu opisano, jak można rozszerzyć aplikację logiki, aby lepiej obsługi wyjątków. Odpowiedzi na pytanie użyliśmy przypadek użycia rzeczywistych: "Aplikacje logiki platformy Azure obsługuje wyjątek i obsługa błędów?"
+W tym scenariuszu opisano, jak rozszerzyć aplikację logiki w celu lepszej obsługi wyjątków. Aby odpowiedzieć na pytanie użyliśmy przypadek użycia rzeczywistych: "Azure Logic Apps obsługuje wyjątek i obsługa błędów?"
 
 > [!NOTE]
-> Bieżący schemat Azure Logic Apps udostępnia standardowy szablon dla akcji odpowiedzi. Ten szablon zawiera wewnętrznego sprawdzania poprawności i odpowiedzi na błędy zwrócone przez aplikację interfejsu API.
+> Bieżący schemat usługi Azure Logic Apps udostępnia standardowego szablonu dla akcji odpowiedzi. Ten szablon obejmuje zarówno w weryfikacji wewnętrznych, jak i w odpowiedzi na błędy zwrócone przez aplikację interfejsu API.
 
-## <a name="scenario-and-use-case-overview"></a>Omówienie scenariusza i użyj case
+## <a name="scenario-and-use-case-overview"></a>Scenariusz i użyj przypadków — omówienie
 
-Oto wątku jako przypadek użycia dla tego scenariusza: 
+Poniżej przedstawiono historię jako przypadek użycia, w tym scenariuszu: 
 
-Dobrze znane organizacji opieki zdrowotnej zaangażowane w tworzenie Azure rozwiązania, które mogą utworzyć pacjenta portalu przy użyciu programu Microsoft Dynamics CRM Online. One potrzebne do wysyłania rekordów termin Dynamics CRM Online pacjenta portalu i usługi Salesforce. Firma Microsoft zostały poproszony [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standardowe dla wszystkich pacjenta rekordów.
+Dobrze znane organizacji opieki zdrowotnej zaangażowanych w tworzeniu rozwiązania platformy Azure, które mogą utworzyć portal dla pacjentów przy użyciu programu Microsoft Dynamics CRM Online. One potrzebne do wysyłania terminu rekordów usługi Dynamics CRM Online stanowi portal dla pacjentów i Salesforce. Firma Microsoft była wyświetlony monit o użycie [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standardowe dla wszystkich kartoteki.
 
-Projekt ma dwa główne wymagania:  
+Projekt miał dwóch najważniejszych wymagań:  
 
-* Metoda pod kątem rejestrowania rekordów wysyłane z portalu usługi Dynamics CRM Online
-* Można wyświetlić wszelkie błędy, które wystąpiły w przepływie pracy
+* Metody do rejestrowania rekordów wysyłane z portalu usługi Dynamics CRM Online
+* Sposób, aby wyświetlić wszystkie błędy, które wystąpiły w ramach przepływu pracy
 
 > [!TIP]
-> Film wysokiego poziomu dotyczących tego projektu, zobacz [grupy użytkowników integracji](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "grupy użytkowników integracji").
+> Wysokiego poziomu wideo dotyczące tego projektu, zobacz [Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
 
-## <a name="how-we-solved-the-problem"></a>Jak możemy rozwiązuje problem
+## <a name="how-we-solved-the-problem"></a>Jak możemy rozwiązać problem
 
-Wybraliśmy [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/ "bazy danych Azure rozwiązania Cosmos") jako repozytorium dla rekordów dziennika i błąd (DB rozwiązania Cosmos odwołuje się do rekordów jako dokumentów). Ponieważ aplikacje logiki platformy Azure ma standardowy szablon wszystkie odpowiedzi, nie mamy utworzyć schematu niestandardowego. Można utworzyć aplikację interfejsu API do **Wstaw** i **zapytania** rekordów zarówno błędu, jak i dziennika. Również definiowania schematu dla każdego z nich w aplikacji interfejsu API.  
+Wybraliśmy [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "usługi Azure Cosmos DB") jako repozytorium dla rekordów dziennika i błędów (Cosmos DB odnosi się do rekordów jako dokumenty). Ponieważ usługi Azure Logic Apps zawiera standardowy szablon wszystkie odpowiedzi, nie mamy utworzyć niestandardowy schemat. Utworzymy aplikację interfejsu API do **Wstaw** i **zapytania** rekordów dziennikami i błędami. Także definiują schematu dla każdej aplikacji interfejsu API.  
 
-Innym wymogiem było przeczyścić rekordów po określonej dacie. Rozwiązania cosmos bazy danych ma właściwość o nazwie [czas wygaśnięcia](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "czas wygaśnięcia") (TTL), które mogą nam można ustawić **czas wygaśnięcia** wartość dla każdego rekordu lub kolekcji. Ta funkcja została wyeliminowana trzeba ręcznie usunąć rekordy w bazie danych rozwiązania Cosmos.
+Innym elementem było przeczyszczania rekordów po określonej dacie. Usługa cosmos DB ma właściwość o nazwie [czas wygaśnięcia](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "czas wygaśnięcia") czasu wygaśnięcia (TTL), które umożliwiło nam ustaw **czas wygaśnięcia** wartość dla każdego rekordu lub kolekcji. Ta funkcja wyeliminować konieczność ręcznego usuwania rekordów w usłudze Cosmos DB.
 
 > [!IMPORTANT]
-> Do ukończenia tego samouczka, należy utworzyć bazę danych DB rozwiązania Cosmos i dwie kolekcje (rejestrowania i błędów).
+> Aby ukończyć ten samouczek, musisz utworzyć bazę danych Cosmos DB i dwie kolekcje (rejestrowanie i błędów).
 
 ## <a name="create-the-logic-app"></a>Tworzenie aplikacji logiki
 
-Pierwszym krokiem jest utworzenie aplikacji logiki i Otwórz w Projektancie aplikacji logiki aplikacji. W tym przykładzie użyto aplikacje logiki nadrzędny podrzędny. Załóżmy, że firma Microsoft utworzono już element nadrzędny, a aby utworzyć jedną aplikację logiki podrzędnych.
+Pierwszym krokiem jest do tworzenia aplikacji logiki i otworzyć aplikację w Projektancie aplikacji logiki. W tym przykładzie używamy aplikacji logiki nadrzędny podrzędny. Załóżmy, że utworzono już element nadrzędny i przed jego utworzeniem aplikacji logiki podrzędnych.
 
-Ponieważ zamierzamy rekord wystawała Dynamics CRM Online dziennika, Zacznijmy u góry. Możemy użyć **żądania** wyzwolenia ponieważ aplikacji logiki nadrzędnego wyzwala tego dziecka.
+Ponieważ w tym do logowania się w rekordzie pochodzące z usługi Dynamics CRM Online, Zacznijmy u góry. Trzeba użyć **żądania** wyzwalacza, ponieważ aplikacja logiki nadrzędna wyzwala tego dziecka.
 
 ### <a name="logic-app-trigger"></a>Wyzwalacz aplikacji logiki
 
-Używamy **żądania** wyzwalania, jak pokazano w poniższym przykładzie:
+Używamy **żądania** wyzwalacza, jak pokazano w poniższym przykładzie:
 
 ```` json
 "triggers": {
@@ -101,14 +101,14 @@ Używamy **żądania** wyzwalania, jak pokazano w poniższym przykładzie:
 
 ## <a name="steps"></a>Kroki
 
-Firma Microsoft muszą się logować źródła (żądanie) pacjenta rekordu z portalu usługi Dynamics CRM Online.
+Firma Microsoft należy zalogować się źródła (żądanie) pacjentów rekordu z poziomu portalu Dynamics CRM Online.
 
-1. Firma Microsoft musi uzyskać nowy rekord terminu z programu Dynamics CRM Online.
+1. Firma Microsoft należy uzyskać nowy rekord terminu z usługi Dynamics CRM Online.
 
-   Wyzwalacz pochodzące z CRM zapewnia nam z **CRM PatentId**, **typu rekordu**, **nowe lub zaktualizowane rekordu** (nowej lub zaktualizuj wartość logiczna), i **SalesforceId**. **SalesforceId** może mieć wartości null, ponieważ jest ona używana tylko dla aktualizacji.
-   Uzyskujemy rekordu CRM przy użyciu programu CRM **PatientID** i **typu rekordu**.
+   Wyzwalacz pochodzących z systemów CRM zapewnia nam za pomocą **CRM PatentId**, **typu rekordu**, **nowe lub zaktualizowane rekordu** (nowej lub zaktualizuj wartość logiczna), i  **SalesforceId**. **SalesforceId** może mieć wartości null, ponieważ jest ona używana tylko dla aktualizacji.
+   Uzyskujemy rekord CRM przy użyciu programu CRM **PatientID** i **typu rekordu**.
 
-2. Następnie należy dodać aplikacji interfejsu API Azure rozwiązania Cosmos bazy danych SQL **InsertLogEntry** operacji, jak pokazano w Projektancie aplikacji logiki.
+2. Następnie należy dodać naszą aplikację interfejsu API SQL usługi Azure Cosmos DB **InsertLogEntry** operacji, jak pokazano poniżej w Projektancie aplikacji logiki.
 
    **Wstaw wpis dziennika**
 
@@ -118,22 +118,22 @@ Firma Microsoft muszą się logować źródła (żądanie) pacjenta rekordu z po
 
    ![Wstaw wpis dziennika](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
-   **Sprawdź, czy utworzyć rekord błędu**
+   **Wyszukaj tworzenie rekordu błędu**
 
    ![Warunek](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Kod źródłowy aplikacji logiki
 
 > [!NOTE]
-> Poniższe przykłady są tylko próbek. Ponieważ w tym samouczku jest oparty na implementacji w środowisku produkcyjnym, wartość **węzeł źródłowy** może nie wyświetlać właściwości, które są związane z planowaniem terminu. > 
+> Poniższe przykłady są wyłącznie przykładów. Ponieważ ten samouczek opiera się na implementacji, obecnie dostępna w środowisku produkcyjnym, wartość **węzeł źródłowy** mogą wyświetlać właściwości, które są związane z planowaniem terminu. > 
 
 ### <a name="logging"></a>Rejestrowanie
 
-Poniższy przykład kodu aplikacji logiki pokazuje, jak do obsługi rejestrowania.
+Poniższy przykład kodu aplikacji logiki pokazuje, jak obsługiwać rejestrowanie.
 
 #### <a name="log-entry"></a>Wpis dziennika
 
-Oto kod źródłowy aplikacji logiki Wstawianie wpis dziennika.
+Poniżej przedstawiono kod źródłowy aplikacji logiki do wstawiania wpisu dziennika.
 
 ``` json
 "InsertLogEntry": {
@@ -159,9 +159,9 @@ Oto kod źródłowy aplikacji logiki Wstawianie wpis dziennika.
 }
 ```
 
-#### <a name="log-request"></a>Żądanie dziennika
+#### <a name="log-request"></a>Dziennik żądań
 
-Oto komunikat żądania dziennika opublikowane w aplikacji interfejsu API.
+Oto komunikat żądania dzienników, opublikowany w aplikacji interfejsu API.
 
 ``` json
     {
@@ -179,9 +179,9 @@ Oto komunikat żądania dziennika opublikowane w aplikacji interfejsu API.
 ```
 
 
-#### <a name="log-response"></a>Odpowiedź dziennika
+#### <a name="log-response"></a>Zarejestruj odpowiedź
 
-Oto dziennika komunikat odpowiedzi z aplikacji interfejsu API.
+Oto komunikat odpowiedzi dzienników z aplikacji interfejsu API.
 
 ``` json
 {
@@ -219,11 +219,11 @@ Teraz Przyjrzyjmy się kroków obsługi błędów.
 
 ### <a name="error-handling"></a>Obsługa błędów
 
-Poniższy przykład kodu aplikacji logiki pokazuje, jak można zaimplementować obsługi błędów.
+Poniższy przykład kodu aplikacji logiki pokazuje, jak można implementować obsługi błędów.
 
 #### <a name="create-error-record"></a>Utwórz rekord błędu
 
-Oto kod źródłowy aplikacji logiki do tworzenia rekord błędu.
+Poniżej przedstawiono kod źródłowy aplikacji logiki do tworzenia rekord błędu.
 
 ``` json
 "actions": {
@@ -258,7 +258,7 @@ Oto kod źródłowy aplikacji logiki do tworzenia rekord błędu.
 }             
 ```
 
-#### <a name="insert-error-into-cosmos-db--request"></a>Wstaw błędu w bazie danych rozwiązania Cosmos--żądania
+#### <a name="insert-error-into-cosmos-db--request"></a>Błąd wstawiania do usługi Cosmos DB — żądanie
 
 ``` json
 
@@ -281,7 +281,7 @@ Oto kod źródłowy aplikacji logiki do tworzenia rekord błędu.
 }
 ```
 
-#### <a name="insert-error-into-cosmos-db--response"></a>Wstaw błędu w bazie danych rozwiązania Cosmos--odpowiedzi
+#### <a name="insert-error-into-cosmos-db--response"></a>Błąd wstawiania do usługi Cosmos DB — odpowiedzi
 
 ``` json
 {
@@ -320,7 +320,7 @@ Oto kod źródłowy aplikacji logiki do tworzenia rekord błędu.
 }
 ```
 
-#### <a name="salesforce-error-response"></a>Odpowiedzi na błąd SalesForce
+#### <a name="salesforce-error-response"></a>Odpowiedzi na błąd usługi SalesForce
 
 ``` json
 {
@@ -349,11 +349,11 @@ Oto kod źródłowy aplikacji logiki do tworzenia rekord błędu.
 
 ```
 
-### <a name="return-the-response-back-to-parent-logic-app"></a>Zwraca odpowiedź z powrotem do aplikacji logiki nadrzędnego
+### <a name="return-the-response-back-to-parent-logic-app"></a>Zwróć odpowiedź z powrotem do aplikacji logiki nadrzędnego
 
-Po uzyskaniu odpowiedzi, należy przekazać odpowiedź z powrotem do aplikacji logiki nadrzędnej.
+Po otrzymaniu odpowiedzi można przekazać odpowiedź z powrotem do aplikacji logiki nadrzędnej.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Powodzenie odpowiedź zwrócona do aplikacji logiki nadrzędnego
+#### <a name="return-success-response-to-parent-logic-app"></a>Powodzenie odpowiedź zwrócona do nadrzędnej aplikacji logiki
 
 ``` json
 "SuccessResponse": {
@@ -375,7 +375,7 @@ Po uzyskaniu odpowiedzi, należy przekazać odpowiedź z powrotem do aplikacji l
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Błąd odpowiedź zwrócona do aplikacji logiki nadrzędnego
+#### <a name="return-error-response-to-parent-logic-app"></a>Błąd odpowiedź zwrócona do nadrzędnej aplikacji logiki
 
 ``` json
 "ErrorResponse": {
@@ -399,50 +399,50 @@ Po uzyskaniu odpowiedzi, należy przekazać odpowiedź z powrotem do aplikacji l
 ```
 
 
-## <a name="cosmos-db-repository-and-portal"></a>Repozytorium rozwiązania cosmos bazy danych i portal
+## <a name="cosmos-db-repository-and-portal"></a>Repozytorium usługi cosmos DB i portal
 
-Nasze rozwiązanie dodane możliwości za pomocą [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db).
+Nasze rozwiązanie dodaje możliwości [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db).
 
 ### <a name="error-management-portal"></a>Błąd portalu zarządzania
 
-Aby wyświetlić błędy, można utworzyć aplikacji sieci web MVC, aby wyświetlić błąd rekordy z bazy danych rozwiązania Cosmos. **Listy**, **szczegóły**, **Edytuj**, i **usunąć** operacji znajdują się w bieżącej wersji.
+Aby wyświetlić błędy, można utworzyć aplikację sieci web MVC, która wyświetla rekordy błędów z usługi Cosmos DB. **Listy**, **szczegóły**, **Edytuj**, i **Usuń** operacje znajdują się w bieżącej wersji.
 
 > [!NOTE]
-> Operacji edycji: rozwiązania Cosmos DB zamienia cały dokument. Rejestruje pokazano **listy** i **szczegółów** widoki są tylko próbek. Nie są one rzeczywiste termin pacjenta rekordów.
+> Próba operacji edycji: Usługa Cosmos DB zamienia cały dokument. Rekordy objętego **listy** i **szczegółów** widoki są tylko przykłady. Nie są one rzeczywisty termin pacjentów rekordów.
 
-Poniżej przedstawiono przykłady naszych szczegóły aplikacji MVC utworzone za pomocą metody opisany wcześniej.
+Poniżej przedstawiono przykłady naszych szczegóły aplikacji MVC utworzone przy użyciu podejścia opisany wcześniej.
 
 #### <a name="error-management-list"></a>Błąd listy zarządzania.
 ![Lista błędów](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
 
-#### <a name="error-management-detail-view"></a>Błąd: widok szczegółów zarządzania
+#### <a name="error-management-detail-view"></a>Widok szczegółów zarządzania błędów
 ![Szczegóły błędu](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
 ### <a name="log-management-portal"></a>Portal zarządzania dziennika
 
-Aby wyświetlić dzienniki, również utworzono aplikację sieci web MVC. Poniżej przedstawiono przykłady naszych szczegóły aplikacji MVC utworzone za pomocą metody opisany wcześniej.
+Aby wyświetlić dzienniki, możemy również utworzona aplikacja internetowa MVC. Poniżej przedstawiono przykłady naszych szczegóły aplikacji MVC utworzone przy użyciu podejścia opisany wcześniej.
 
-#### <a name="sample-log-detail-view"></a>Przykładowy widok szczegółów dziennika
-![Dziennik: widok szczegółów](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
+#### <a name="sample-log-detail-view"></a>Widok szczegółowy dziennik przykładowy
+![Widok szczegółowy dziennik](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
 
 ### <a name="api-app-details"></a>Szczegóły aplikacji interfejsu API
 
-#### <a name="logic-apps-exception-management-api"></a>Zarządzanie wyjątkami logiki aplikacji interfejsu API
+#### <a name="logic-apps-exception-management-api"></a>Interfejs API zarządzania wyjątków aplikacji logiki
 
-Open source aplikacji interfejsu API zarządzania wyjątek usługi Azure Logic Apps udostępnia funkcje, zgodnie z opisem w tym miejscu — istnieją dwa kontrolery:
+Nasza aplikacja typu open source usługi Azure Logic Apps wyjątek interfejsu API zarządzania zapewnia funkcje, zgodnie z opisem w tym miejscu — istnieją dwa kontrolery:
 
-* **ErrorController** wstawia rekord błędu (dokument) w kolekcji usługi Azure DB rozwiązania Cosmos.
-* **LogController** wstawia rekordu dziennika (dokument) w kolekcji usługi Azure DB rozwiązania Cosmos.
+* **ErrorController** wstawia rekord błędu (dokumenty) w kolekcji usługi Azure Cosmos DB.
+* **LogController** wstawia rekord dziennika (dokumenty) w kolekcji usługi Azure Cosmos DB.
 
 > [!TIP]
-> Zarówno kontrolery `async Task<dynamic>` czynności operacji rozwiązywać w czasie wykonywania, dlatego utworzymy schematu bazy danych Azure rozwiązania Cosmos w treści operacji. 
+> Użyj obu kontrolerów `async Task<dynamic>` działalnością operacyjną, umożliwiając operacji w czasie wykonywania, dzięki czemu możemy utworzyć schemat usługi Azure Cosmos DB w treści operacji. 
 > 
 
-Każdy dokument w usłudze Azure DB rozwiązania Cosmos musi mieć unikatowy identyfikator. Używamy `PatientId` i Dodawanie znaczników czasu, który jest konwertowany na wartość sygnatury czasowej systemu Unix (o podwójnej precyzji). Firma Microsoft obciąć wartość na usuwanie ułamkowa wartość.
+Każdy dokument w usłudze Azure Cosmos DB musi mieć unikatowy identyfikator. Używamy `PatientId` i dodanie sygnatury czasowej, która jest konwertowana na wartość sygnatura czasowa systemu Unix (podwójny). Firma Microsoft obciąć wartości do usunięcia wartości ułamkowe.
 
-Można wyświetlić kodu źródłowego kontrolera błąd interfejsu API [z usługi GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+Można wyświetlić kodu źródłowego kontrolera błąd interfejsu API z [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs).
 
-Nazywamy interfejsu API z aplikacji logiki przy użyciu następującej składni:
+Możemy wywołać interfejs API z aplikacji logiki przy użyciu następującej składni:
 
 ``` json
  "actions": {
@@ -479,16 +479,16 @@ Sprawdza, czy wyrażenie w poprzednim przykładzie kodu *Create_NewPatientRecord
 
 ## <a name="summary"></a>Podsumowanie
 
-* Można łatwo zaimplementować rejestrowania i obsługi błędów w aplikacji logiki.
-* Bazy danych rozwiązania Cosmos Azure można użyć jako repozytorium rekordów dziennika i błąd (dokumentów).
-* MVC umożliwia tworzenie portalu do wyświetlania rekordów dziennika i błędów.
+* Można łatwo zaimplementować, rejestrowanie i obsługa błędów w aplikacji logiki.
+* Rekordy dziennika i błędów (dokumenty), można użyć usługi Azure Cosmos DB jako repozytorium.
+* MVC umożliwia tworzenie portalu, aby wyświetlić rekordy dziennika i błędów.
 
 ### <a name="source-code"></a>Kod źródłowy
 
-Kod źródłowy Zarządzanie wyjątkami aplikacje logiki aplikacji interfejsu API jest dostępna w tym [repozytorium GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API zarządzania wyjątków aplikacji logiki").
+Kod źródłowy, Logic Apps Management wyjątków aplikacji interfejsu API jest dostępny w tym [repozytorium GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API Management wyjątków aplikacji logiki").
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wyświetl więcej logiki aplikacji przykłady i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Więcej informacji na temat monitorowania aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Wyświetl więcej przykłady aplikacji logiki i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Dowiedz się więcej o monitorowaniu aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Tworzenie szablonów automatycznego wdrażania dla usługi logic apps](../logic-apps/logic-apps-create-deploy-template.md)

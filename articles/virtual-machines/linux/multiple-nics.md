@@ -1,9 +1,9 @@
 ---
-title: Utwórz Maszynę wirtualną systemu Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączone do niego przy użyciu szablonów usługi Azure CLI w wersji 2.0 lub Menedżera zasobów.
+title: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączono do niego przy użyciu szablonów interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub usługi Resource Manager.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -13,24 +13,24 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
-ms.author: iainfou
-ms.openlocfilehash: 2ad04b17fc4c5bafb7fa0b7eea946832430a4f17
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936755"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932276"
 ---
-# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Tworzenie maszyny wirtualnej systemu Linux na platformie Azure z sieci wielu kart interfejsu
-Można utworzyć maszynę wirtualną (VM) na platformie Azure, który ma wiele interfejsów sieci wirtualnej (NIC) do niego dołączony. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. Ten artykuł zawiera szczegóły dotyczące sposobu tworzenia maszyn wirtualnych z wieloma kartami sieciowymi, do niego dołączony oraz dodawanie i usuwanie kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
+# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
+Można utworzyć maszynę wirtualną (VM) na platformie Azure, która ma wiele interfejsów sieci wirtualnej (NIC) podłączone do niego. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności lub sieci z rozwiązaniem monitorowania lub tworzenia kopii zapasowych w wersji dedykowanej. Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi, dołączono do niego oraz jak dodawanie i usuwanie kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
 
-Ten artykuł zawiera szczegóły dotyczące sposobu tworzenia maszyn wirtualnych z wieloma kartami sieciowymi 2.0 interfejsu wiersza polecenia platformy Azure. 
+Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
 
 
-## <a name="create-supporting-resources"></a>Utwórz dodatkowe zasoby
-Zainstaluj najnowszą [Azure CLI 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [logowania az](/cli/azure/reference-index#az_login).
+## <a name="create-supporting-resources"></a>Utwórz zasoby pomocnicze
+Zainstaluj najnowszą wersję [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów własne wartości. Przykład nazwy parametrów uwzględnione *myResourceGroup*, *mojekontomagazynu*, i *myVM*.
+W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *mystorageaccount*, i *myVM*.
 
 Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
@@ -38,7 +38,7 @@ Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azu
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz sieć wirtualną z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVnet* i podsieć o nazwie *mySubnetFrontEnd*:
+Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVnet* i podsieć o nazwie *mySubnetFrontEnd*:
 
 ```azurecli
 az network vnet create \
@@ -49,7 +49,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-Utwórz podsieć dla ruchu zaplecza z [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Poniższy przykład tworzy podsieć o nazwie *mySubnetBackEnd*:
+Utwórz podsieć dla ruchu zaplecza przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Poniższy przykład tworzy podsieć o nazwie *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -59,7 +59,7 @@ az network vnet subnet create \
     --address-prefix 192.168.2.0/24
 ```
 
-Utwórz grupę zabezpieczeń sieci z [utworzyć nsg sieci az](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -67,8 +67,8 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-## <a name="create-and-configure-multiple-nics"></a>Tworzenie i konfigurowanie wielu kart sieciowych
-Utwórz dwie karty sieciowe z [tworzenie kart interfejsu sieciowego az](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy dwie karty sieciowe, o nazwie *myNic1* i *myNic2*, podłączone grupy zabezpieczeń sieci, z jedną kartą Sieciową nawiązywania połączenia z każdej podsieci:
+## <a name="create-and-configure-multiple-nics"></a>Utworzenie i skonfigurowanie wielu kart sieciowych
+Utwórz dwie karty sieciowe z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy dwie karty sieciowe o nazwie *myNic1* i *myNic2*, podłączone grupy zabezpieczeń sieci z jedną kartą Sieciową, nawiązywania połączenia z każdej podsieci:
 
 ```azurecli
 az network nic create \
@@ -85,8 +85,8 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nics"></a>Utwórz Maszynę wirtualną i Dołącz karty interfejsu sieciowego
-Podczas tworzenia maszyny Wirtualnej, określ karty interfejsu sieciowego zostały utworzone z `--nics`. Należy również zwrócić uwagę, gdy wybierz rozmiar maszyny Wirtualnej. Brak ograniczeń dla łącznej liczby kart sieciowych, które można dodać do maszyny Wirtualnej. Przeczytaj więcej na temat [rozmiarów maszyn wirtualnych systemu Linux](sizes.md). 
+## <a name="create-a-vm-and-attach-the-nics"></a>Tworzenie maszyny Wirtualnej i Dołącz kart sieciowych
+Podczas tworzenia maszyny Wirtualnej, określ karty interfejsu sieciowego utworzonego za pomocą `--nics`. Należy również zadbać o to jeśli wybrano rozmiar maszyny Wirtualnej. Istnieją limity całkowitą liczbę kart sieciowych, które można dodać do maszyny Wirtualnej. Przeczytaj więcej na temat [rozmiarów maszyn wirtualnych systemu Linux](sizes.md). 
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
 
@@ -101,12 +101,12 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-Dodawanie tabel routingu z systemem operacyjnym gościa, wykonując kroki opisane w [skonfigurować system operacyjny gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
-## <a name="add-a-nic-to-a-vm"></a>Dodać kartę Sieciową do maszyny Wirtualnej
-Poprzednie kroki utworzyć Maszynę wirtualną z wieloma kartami sieciowymi. Karty sieciowe mogą również dodać do istniejącej maszyny Wirtualnej z 2.0 interfejsu wiersza polecenia platformy Azure. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej. W razie potrzeby można [Zmień rozmiar maszyny Wirtualnej](change-vm-size.md).
+## <a name="add-a-nic-to-a-vm"></a>Dodaj kartę Sieciową do maszyny Wirtualnej
+W poprzednich krokach utworzono maszynę Wirtualną z wieloma kartami sieciowymi. Karty sieciowe można również dodać do istniejącej maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej. Jeśli to konieczne, możesz [zmienić rozmiar maszyny Wirtualnej](change-vm-size.md).
 
-Utwórz inną kartą Sieciową o [tworzenie kart interfejsu sieciowego az](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy karty Sieciowej o nazwie *myNic3* podłączone do zaplecza podsieci i sieci grupą zabezpieczeń utworzoną w poprzednich krokach:
+Utwórz inną kartą Sieciową z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy kartę Sieciową o nazwie *myNic3* podłączony do wewnętrznej podsieci i sieciowej grupy zabezpieczeń utworzone w poprzednich krokach:
 
 ```azurecli
 az network nic create \
@@ -117,14 +117,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Aby dodać kartę Sieciową do istniejącej maszyny Wirtualnej, najpierw cofnąć maszyny Wirtualnej z [deallocate wirtualna az](/cli/azure/vm#az_vm_deallocate). Poniższy przykład cofa alokację maszyny Wirtualnej o nazwie *myVM*:
+Aby dodać kartę Sieciową do istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Dodaj kartę Sieciową z [Dodaj kartę sieciową maszyny wirtualnej az](/cli/azure/vm/nic#az_vm_nic_add). W poniższym przykładzie dodano *myNic3* do *myVM*:
+Dodawanie karty Sieciowej z [az vm nic dodawać](/cli/azure/vm/nic#az_vm_nic_add). W poniższym przykładzie dodano *myNic3* do *myVM*:
 
 ```azurecli
 az vm nic add \
@@ -133,22 +133,22 @@ az vm nic add \
     --nics myNic3
 ```
 
-Uruchom maszynę Wirtualną z [uruchomienia maszyny wirtualnej az](/cli/azure/vm#az_vm_start):
+Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az_vm_start):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
-Dodawanie tabel routingu z systemem operacyjnym gościa, wykonując kroki opisane w [skonfigurować system operacyjny gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Usuń kartę Sieciową z maszyny Wirtualnej
-Aby usunąć karty Sieciowej z istniejącej maszyny Wirtualnej, najpierw cofnąć maszyny Wirtualnej z [deallocate wirtualna az](/cli/azure/vm#az_vm_deallocate). Poniższy przykład cofa alokację maszyny Wirtualnej o nazwie *myVM*:
+Aby usunąć kartę Sieciową z istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Usuń z kartą Sieciową o [Usuń kartę sieciową maszyny wirtualnej az](/cli/azure/vm/nic#az_vm_nic_remove). Poniższy przykład umożliwia usunięcie *myNic3* z *myVM*:
+Usuń z kartą Sieciową o [Usuń az vm nic](/cli/azure/vm/nic#az_vm_nic_remove). Poniższy przykład usuwa *myNic3* z *myVM*:
 
 ```azurecli
 az vm nic remove \
@@ -157,15 +157,15 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Uruchom maszynę Wirtualną z [uruchomienia maszyny wirtualnej az](/cli/azure/vm#az_vm_start):
+Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az_vm_start):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
 
-## <a name="create-multiple-nics-using-resource-manager-templates"></a>Tworzenie wielu kart sieciowych przy użyciu szablonów usługi Resource Manager
-Szablony usługi Azure Resource Manager umożliwia definiowanie środowiska deklaratywne pliki w formacie JSON. Możesz przeczytać [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Szablony Menedżera zasobów umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Możesz użyć *kopiowania* umożliwia określenie liczby wystąpień, aby utworzyć:
+## <a name="create-multiple-nics-using-resource-manager-templates"></a>Utwórz wiele kart sieciowych przy użyciu szablonów usługi Resource Manager
+Szablony usługi Azure Resource Manager umożliwiają deklaratywne pliki JSON zdefiniować środowiska. Może odczytywać [przegląd możliwości usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Szablony usługi Resource Manager umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takie jak tworzenie wiele kart sieciowych. Możesz użyć *kopiowania* Aby określić liczbę wystąpień, aby utworzyć:
 
 ```json
 "copy": {
@@ -174,9 +174,9 @@ Szablony usługi Azure Resource Manager umożliwia definiowanie środowiska dekl
 }
 ```
 
-Przeczytaj więcej na temat [tworzenia wielu wystąpień przy użyciu *kopiowania*](../../resource-group-create-multiple.md). 
+Przeczytaj więcej na temat [tworzenie wielu wystąpień przy użyciu *kopiowania*](../../resource-group-create-multiple.md). 
 
-Można również użyć `copyIndex()` następnie dołączyć numer na nazwę zasobu, co pozwala na tworzenie `myNic1`, `myNic2`itp. Poniżej przedstawiono przykład dołączanie wartość indeksu:
+Można również użyć `copyIndex()` celu następnie dołączenia liczby do nazwy zasobu, który pozwala na tworzenie `myNic1`, `myNic2`itp. Poniżej przedstawiono przykład dodając wartość indeksu:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -184,21 +184,21 @@ Można również użyć `copyIndex()` następnie dołączyć numer na nazwę zas
 
 Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/template-samples.md).
 
-Dodawanie tabel routingu z systemem operacyjnym gościa, wykonując kroki opisane w [skonfigurować system operacyjny gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
+Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
-## <a name="configure-guest-os-for-multiple-nics"></a>Skonfiguruj system operacyjny gościa dla wielu kart sieciowych
-Podczas dodawania wielu kart sieciowych do maszyny Wirtualnej systemu Linux, należy utworzyć reguły routingu. Te reguły zezwalają na maszynie Wirtualnej na wysyłanie i odbieranie ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruchu, który należy do *eth1*, na przykład nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej.
+## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych
+Po dodaniu wielu kart sieciowych do maszyny Wirtualnej z systemem Linux, musisz utworzyć reguły routingu. Te reguły zezwalają na maszynę Wirtualną do wysyłania i odbierania ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruch, który należy do *eth1*, na przykład, nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej.
 
-Aby rozwiązać ten problem routingu, należy najpierw dodać dwie tabele routingu, aby */etc/iproute2/rt_tables* w następujący sposób:
+Aby rozwiązać ten problem z routingiem, należy najpierw dodać dwie tabele routingu, aby */etc/iproute2/rt_tables* w następujący sposób:
 
 ```bash
 echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-Aby wprowadzić zmiany, stałe i stosowane podczas aktywacji stosu sieciowego, należy edytować */etc/sysconfig/network-scripts/ifcfg-eth0* i */etc/sysconfig/network-scripts/ifcfg-eth1*. ALTER wiersza *"NM_CONTROLLED = yes"* do *"NM_CONTROLLED = nie"*. Bez tego kroku dodatkowe reguły/routingu nie są automatycznie stosowane.
+Aby wprowadzić zmianę, trwałe i stosowane podczas aktywacji stos sieci, należy edytować */etc/sysconfig/network-scripts/ifcfg-eth0* i */etc/sysconfig/network-scripts/ifcfg-eth1*. Instrukcja ALTER wiersz *"NM_CONTROLLED = yes"* do *"NM_CONTROLLED = nie"*. Bez tego kroku dodatkowe reguły/routingu nie są automatycznie stosowane.
  
-Następnie należy rozszerzyć tabele routingu. Załóżmy, że mamy następujące ustawienia w miejscu:
+Następnie rozszerzenie tabele routingu. Załóżmy, że istnieje w miejscu następujące ustawienia:
 
 *Routing*
 
@@ -218,7 +218,7 @@ eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0
 eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
 ```
 
-Czy następnie utwórz następujące pliki i dodaj odpowiednie zasady i trasy do każdego:
+Następnie będzie Utwórz następujące pliki i dodaj odpowiednie zasady i tras do poszczególnych:
 
 - */etc/sysconfig/network-scripts/rule-eth0*
 
@@ -254,8 +254,8 @@ Aby zastosować zmiany, uruchom ponownie *sieci* usługi w następujący sposób
 systemctl restart network
 ```
 
-Reguły routingu są teraz prawidłowo w miejscu i można się połączyć z interfejsem albo zgodnie z potrzebami.
+Reguły routingu są teraz prawidłowo w miejscu, i możesz połączyć się z dowolnym interfejsem, zgodnie z potrzebami.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [rozmiarów maszyn wirtualnych systemu Linux](sizes.md) podczas tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi. Należy zwrócić uwagę na maksymalną liczbę kart sieciowych obsługuje każdego rozmiaru maszyny Wirtualnej. 
+Przegląd [rozmiarów maszyn wirtualnych systemu Linux](sizes.md) podczas próby tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi. Należy zwrócić uwagę maksymalna liczba kart sieciowych obsługuje każdego rozmiaru maszyny Wirtualnej. 

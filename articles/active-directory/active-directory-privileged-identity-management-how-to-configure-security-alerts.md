@@ -13,18 +13,18 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d054ca015fd97b3ec45f18b2d3a795eccf606993
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fee4344be2875140a2e9c35bd83eb668bd1efa3f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447561"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952464"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak skonfigurować alerty zabezpieczeń w usłudze Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Alerty zabezpieczeń
 Azure Privileged Identity Management (PIM) generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na pulpicie nawigacyjnym usługi PIM. Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub ról, które wyzwoliła alert.
 
-![Alerty zabezpieczeń pulpitu nawigacyjnego usługi PIM — zrzut ekranu][1]
+![Alerty zabezpieczeń pulpitu nawigacyjnego usługi PIM — zrzut ekranu](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png)
 
 | Alerty | Ważność | Wyzwalacz | Zalecenie |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ Można dostosować niektóre alerty zabezpieczeń w usłudze PIM chcesz pracowa�
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i wybierz **usługi Azure AD Privileged Identity Management** kafelka na pulpicie nawigacyjnym.
 2. Wybierz **zarządzane ról uprzywilejowanych** > **ustawienia** > **ustawienia alertów**.
    
-    ![Przejdź do ustawień alertów zabezpieczeń][2]
+    ![Przejdź do ustawień alertów zabezpieczeń](./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png)
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>Alert "Role są aktywowane zbyt często"
 Ten alert jest wyzwalana, gdy użytkownik aktywuje tej samej roli uprzywilejowanej wiele razy w danym okresie. Można skonfigurować zarówno okres czasu, jak i liczbę aktywacji.
@@ -66,8 +66,3 @@ Ten alert wyzwalacze, jeśli użytkownik przejdzie określoną ilość czasu, be
 
 ## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
-
-<!--Image references-->
-
-[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
-[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png

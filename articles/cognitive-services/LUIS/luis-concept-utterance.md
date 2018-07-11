@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4a3571acade7b7bd304c91eadc90b1a9f6e53860
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5babe089575d03db1f6bc0dd3f01bd3b6a5475fe
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886845"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951903"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -51,7 +51,7 @@ W każdej iteracji modelu nie należy dodawać dużej ilości wypowiedzi. Dodawa
 
 Usługa LUIS opiera się skuteczne modeli z wypowiedzi wybranych dokładnie. Dodawanie wypowiedzi zbyt wiele nie jest przydatne ponieważ wprowadza ona pomyłek.  
 
-Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](label-suggested-utterances.md) poprawne intencji ekstrakcji prognoz i jednostek.
+Zaleca się rozpoczynać kilka wypowiedzi następnie [Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) poprawne intencji ekstrakcji prognoz i jednostek.
 
 ## <a name="ignoring-words-and-punctuation"></a>Ignorowanie słów i znaki interpunkcyjne
 Ignorowanie konkretnych słów lub znaki interpunkcyjne w wypowiedź przykładu, należy użyć [wzorzec](luis-concept-patterns.md#pattern-syntax) z _Ignoruj_ składni. 
@@ -61,10 +61,10 @@ Szkolenie jest niejednoznaczne: prognozowanie wypowiedź może się nieco różn
 
 ## <a name="testing-utterances"></a>Wypowiedzi testowania 
 
-Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzeczywistego ruchu, wysyłając wypowiedzi do punktu końcowego. Wypowiedzi te są wykorzystywane do ulepszania wydajności intencje i podmioty, za pomocą [Przejrzyj wypowiedzi](label-suggested-utterances.md). Przesłane za pomocą usługi LUIS witryny sieci Web, w okienku testowania testy nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywne uczenie. 
+Deweloperzy powinni uruchomić testowanie ich aplikacji LUIS, przy użyciu rzeczywistego ruchu, wysyłając wypowiedzi do punktu końcowego. Wypowiedzi te są wykorzystywane do ulepszania wydajności intencje i podmioty, za pomocą [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md). Przesłane za pomocą usługi LUIS witryny sieci Web, w okienku testowania testy nie są wysyłane za pośrednictwem punktu końcowego, a więc nie przyczyniają się do aktywne uczenie. 
 
 ## <a name="review-utterances"></a>Przejrzyj wypowiedzi
-Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](label-suggested-utterances.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
+Po model jest uczony opublikowane i odbieranie [punktu końcowego](luis-glossary.md#endpoint) zapytań, [Przejrzyj wypowiedzi](luis-how-to-review-endoint-utt.md) zaproponowana przez usługi LUIS. Usługa LUIS wybiera wypowiedzi punkt końcowy ma niskie oceny przeznaczenie lub jednostki. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) Aby dowiedzieć się więcej.

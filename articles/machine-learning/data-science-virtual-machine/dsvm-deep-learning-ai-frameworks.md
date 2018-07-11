@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: af2a6b19d74e02b9368722cadf4d57aef377d43a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865441"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952828"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej do nauki o danych](http://aka.ms/dsvm) (DSVM) i [VM uczenia głębokiego](http://aka.ms/dsvm/deeplearning) obsługuje wiele platform uczenia głębokiego, aby ułatwić tworzenie aplikacji sztucznej inteligencji (AI) przy użyciu analizy predykcyjnej i możliwości poznawcze, takich jak obraz i language understanding. 
@@ -66,7 +66,7 @@ Poniżej przedstawiono szczegółowe informacje na wszystkie niedostępne w masz
 
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   | Platforma do uczenia głębokiego      |
+| Co to jest?   | Interfejs API wysokiego poziomu uczenia głębokiego      |
 | Wersje maszyny DSVM obsługiwane      | Windows, Linux     |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | TensorFlow jest zainstalowany w języku Python 3.5 na [systemów Linux i Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) i 3.6 języka Python na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). |
 | Zawiera linki do przykładów      | https://github.com/fchollet/keras/tree/master/examples      |

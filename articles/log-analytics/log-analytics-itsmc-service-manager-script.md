@@ -1,6 +1,6 @@
 ---
-title: Automatyczne skrypt służący do tworzenia aplikacji sieci Web programu Service Manager połączenie z łącznikiem zarządzania usługi IT na platformie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu, aby połączyć się z łącznika zarządzania usługi IT na platformie Azure i centralnie monitorować i zarządzać nimi elementy robocze Zarządzanie usługami IT —.
+title: Automatyczne skrypt, aby utworzyć aplikację sieci Web programu Service Manager do łączenia za pomocą łącznika zarządzania usługami IT na platformie Azure | Dokumentacja firmy Microsoft
+description: Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu, aby połączyć się z łącznika zarządzania usługami IT na platformie Azure i centralne monitorowanie i zarządzanie elementy robocze ITSM.
 services: log-analytics
 documentationcenter: ''
 author: jyothirmaisuri
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.component: na
-ms.openlocfilehash: 15626a9dd2e889470477e34d6f1ebd47cce1411b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 0fe987b00da669daf3830e903d53793d9d1edab6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128660"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950128"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager za pomocą zautomatyzowanego skryptu
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu
 
-Użyj następującego skryptu, aby utworzyć aplikację sieci Web dla swojego wystąpienia programu Service Manager. Więcej informacji na temat połączenia programu Service Manager jest w tym miejscu: [aplikacji sieci Web programu Service Manager](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Użyj następującego skryptu, aby utworzyć aplikację sieci Web dla swojego wystąpienia programu Service Manager. Więcej informacji na temat połączeń programu Service Manager jest już dostępny: [aplikacji sieci Web programu Service Manager](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Uruchom skrypt, podając następujące wymagane szczegóły:
 
@@ -35,14 +35,14 @@ Uruchom skrypt, podając następujące wymagane szczegóły:
 - Prefiks nazwy witryny dla aplikacji sieci Web
 - Namespace magistrali usług.
 
-Skrypt zostanie utworzona aplikacja sieci Web przy użyciu nazwy określonej (wraz z kilku dodatkowe ciągi go). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta**, i **klucz tajny klienta**.
+Skrypt spowoduje utworzenie aplikacji sieci Web przy użyciu nazwy, który określiłeś (wraz z kilku dodatkowe ciągi, aby była unikatowa). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta**, i **klucz tajny klienta**.
 
-Zapisz te wartości należy te wartości podczas tworzenia połączenia z łącznikiem zarządzania usługi IT.
+Zapisz te wartości. wartości te będą potrzebne podczas tworzenia połączenia za pomocą łącznika zarządzania usługami IT.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
- Oprogramowanie Windows Management Framework 5.0 lub nowszej.
-Windows 10 jest 5.1 domyślnie. Można pobrać platformę z [tutaj](https://www.microsoft.com/download/details.aspx?id=53347):
+ Windows Management Framework 5.0 lub nowszy.
+Domyślnie system Windows 10 ma 5.1. Możesz pobrać struktury z [tutaj](https://www.microsoft.com/download/details.aspx?id=50395):
 
 Użyj następującego skryptu:
 
@@ -323,4 +323,4 @@ if(!$err)
 
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-[Skonfiguruj połączenie hybrydowe](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+[Konfigurowanie połączenia hybrydowego](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

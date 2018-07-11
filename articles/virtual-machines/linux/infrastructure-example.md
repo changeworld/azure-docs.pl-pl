@@ -1,9 +1,9 @@
 ---
-title: Przykład infrastruktury platformy Azure wskazówki | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat klucza projekt i implementację wskazówki dotyczące wdrażania infrastruktury przykład na platformie Azure.
+title: Przewodnik po przykładzie infrastruktury platformy Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat klucza wytycznych w zakresie projektowania i implementowania wdrażania infrastruktury przykład na platformie Azure.
 documentationcenter: ''
 services: virtual-machines-linux
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,104 +14,104 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae7df08e7502fbfd500944f89a3fa6ee4806522a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
-ms.locfileid: "26745779"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932151"
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład wskazówki infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
-W tym artykule przedstawiono zbudowaniu przykład infrastruktury aplikacji. Firma Microsoft szczegółowo projektowania infrastruktury dla prostego sklepu online, która gromadzi wszystkie wskazówki i decyzji dotyczących konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i usług równoważenia obciążenia i faktycznie wdrażania maszyn wirtualnych (VM).
+# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przegląd infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
+W tym artykule przedstawiono tworzenie infrastruktury aplikacji na przykładzie. Firma Microsoft szczegółowo projektowania infrastruktury dla prostych sklepie internetowym łączącym w sobie wszystkie wskazówki i decyzji związanych z konwencji nazewnictwa, zestawy dostępności, sieci wirtualne i usługi równoważenia obciążenia i faktycznego wdrażania maszyn wirtualnych (VM).
 
 ## <a name="example-workload"></a>Przykładowe obciążenie
-Firma Adventure Works Cycles chce utworzyć aplikację sklep online na platformie Azure, która składa się z:
+Adventure Works Cycles chce, aby skompilować aplikację magazynu online na platformie Azure, która składa się z:
 
-* Dwa serwery nginx z frontonu w warstwa sieci web klienta
-* Dwa serwery nginx, przetwarzanie danych i zamówień w warstwie aplikacji
-* Dwie bazy danych MongoDB serwerów częścią podzielonej klastra do przechowywania danych produktu i zamówień w warstwy bazy danych
-* Dwa kontrolery domeny usługi Active Directory dla konta klienta i dostawców w warstwie uwierzytelniania
+* Dwa serwery nginx uruchomienie frontonu w warstwie sieci web klienta
+* Dwa serwery nginx, takich jak przetwarzanie danych i zamówienia w warstwie aplikacji
+* Dwie bazy danych MongoDB serwerów część podzielonej na fragmenty klastra do przechowywania danych produktu i zamówienia w warstwie bazy danych
+* Dwa kontrolery domeny usługi Active Directory dla kont klientów i dostawców w warstwie uwierzytelniania
 * Wszystkie serwery znajdują się w dwóch podsieci:
-  * frontonu podsieci dla serwerów sieci web 
-  * podsieć wewnętrznych serwerów aplikacji, bazy danych MongoDB klastra i kontrolerów domeny
+  * podsieci frontonu dla serwerów sieci web 
+  * podsieć zaplecza dla serwerów aplikacji, klaster bazy danych MongoDB i kontrolery domeny
 
-![Diagram różnych warstw dla infrastruktury aplikacji](./media/infrastructure-example/example-tiers.png)
+![Diagram przedstawiający różne warstwy dla infrastruktury aplikacji](./media/infrastructure-example/example-tiers.png)
 
-Bezpieczne przychodzącego ruchu w sieci web musi być równoważeniem obciążenia między serwerami sieci web jako klienci Przeglądaj sklepu online. Kolejność przetwarzania ruchu sieciowego w postaci HTTP żąda od serwerów musi być równoważeniem obciążenia między serwerami aplikacji sieci web. Ponadto należy zaprojektować infrastruktury wysokiej dostępności.
+Przychodzące bezpieczny ruch w sieci web musi być równoważenia obciążenia między serwerami sieci web jako klienci Przeglądaj sklepie internetowym. Kolejność przetwarzania ruchu sieciowego w postaci HTTP żąda od serwerów musi być równoważenia obciążenia między serwerami aplikacji sieci web. Ponadto infrastruktury muszą być zaprojektowane w celu zapewnienia wysokiej dostępności.
 
 Projekt wynikowy musi uwzględniać:
 
-* Subskrypcja platformy Azure i konta
+* Subskrypcja platformy Azure i konto
 * Pojedyncza grupa zasobów
 * Azure Managed Disks
 * Sieć wirtualną z dwiema podsieciami
-* Zestawy dostępności dla maszyn wirtualnych o podobną rolę
+* Zestawy dostępności dla maszyn wirtualnych z podobną rolę
 * Maszyny wirtualne
 
-Wszystkie powyższe wykonaj te konwencji nazewnictwa:
+Wszystkie powyższe postępuj zgodnie z tymi konwencji nazewnictwa:
 
-* Adventure Works Cycles używa **[obciążenia IT]-[lokalizacja]-[zasobów platformy Azure]** jako prefiksu
-  * Na przykład "**azos**" (magazyn Azure On-line) jest nazwą obciążenia IT i "**użyj**" (wschodnie stany USA 2) to lokalizacja
-* W sieciach wirtualnych za pomocą AZOS-użycie-VN **[numer]**
-* Zestawy dostępności używać azos-Użyj — jako-**[rola]**
-* Nazwy maszyn wirtualnych użyć azos-Użyj-vm -**[vmname]**
+* Adventure Works Cycles używa **[IT obciążenia]-[lokalizacja]-[zasobów platformy Azure]** jako prefiksu
+  * Na przykład "**azos**" (Azure Store On-line) jest nazwą obciążenia IT i "**użyj**" (wschodnie stany USA 2) to lokalizacja
+* Sieci wirtualne używać AZOS — UŻYJ-VN **[liczba]**
+* Zestawy dostępności Użyj azos — Użyj-jako-**[rola]**
+* Nazwy maszyn wirtualnych Użyj azos — Użyj-vm -**[vmname]**
 
-## <a name="azure-subscriptions-and-accounts"></a>Subskrypcje platformy Azure i konta
-Firma Adventure Works Cycles używa ich subskrypcji Enterprise, o nazwie Adventure Works Enterprise subskrypcji, zapewnienie rozliczeń dla tej obciążenia IT.
+## <a name="azure-subscriptions-and-accounts"></a>Konta i subskrypcji platformy Azure
+Adventure Works Cycles korzysta z ich subskrypcji Enterprise, o nazwie Adventure Works subskrypcji Enterprise, zapewnienie rozliczenia dla tego obciążenia IT.
 
 ## <a name="storage"></a>Magazyn
-Firma Adventure Works Cycles ustalić, czy powinny używać dysków zarządzanych Azure. Podczas tworzenia maszyn wirtualnych, są używane zarówno warstw magazynowania dostępne magazynu:
+Adventure Works Cycles ustalić, czy powinny używać usługi Azure Managed Disks. Podczas tworzenia maszyn wirtualnych, używane są obu warstwach magazynowania w dostępnym magazynie:
 
-* **Magazynu w warstwie standardowa** dla serwerów sieci web, serwerów aplikacji i kontrolerów domeny i dysków z danymi.
-* **Magazyn w warstwie Premium** dla serwerów klastra podzielonej bazy danych MongoDB i dysków z danymi.
+* **Magazynu w warstwie standardowa** dla serwerów sieci web, serwery aplikacji i kontrolery domeny i dysków z danymi.
+* **Usługa Premium storage** dla serwerów klastra podzielonej na fragmenty bazy danych MongoDB i dysków z danymi.
 
 ## <a name="virtual-network-and-subnets"></a>Sieć wirtualna i podsieci
-Ponieważ sieci wirtualnej nie wymaga trwających łączności z siecią lokalną cykle pracy Adventure, zdecydowano, że w sieci wirtualnej tylko w chmurze.
+Ponieważ sieć wirtualna nie musi trwającą łączności z siecią lokalną cyklów pracy Adventure, zespół postanowił w sieci wirtualnej tylko w chmurze.
 
-Sieć wirtualna tylko w chmurze one utworzone przy użyciu następujących ustawień przy użyciu portalu Azure:
+Sieci wirtualnej tylko w chmurze są tworzone przy użyciu następujących ustawień, korzystając z portalu Azure:
 
-* Nazwa: AZOS-użycie VN01
-* Lokalizacji: Wschodnie stany USA 2
-* Przestrzeń adresową sieci wirtualnej: 10.0.0.0/8
+* Nazwa: AZOS — UŻYJ VN01
+* Lokalizacja: Wschodnie stany USA 2
+* Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/8
 * Pierwszej podsieci:
-  * Nazwa: frontonu
+  * Nazwa: FrontEnd
   * Przestrzeń adresowa: 10.0.1.0/24
-* Drugi podsieci:
+* Drugą podsieć:
   * Nazwa: wewnętrznej bazy danych
   * Przestrzeń adresowa: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Zestawy dostępności
-Aby zachować wysoką dostępność wszystkie cztery warstwy ich magazynu online, firma Adventure Works Cycles stanowi na cztery zestawy dostępności:
+Aby zapewnić wysoką dostępność wszystkich czterech warstwach swojego Sklepu online, firma Adventure Works Cycles decyzję cztery zestawy dostępności:
 
-* **azos używany jako web** dla serwerów sieci web
-* **azos używany jako aplikacji** dla serwerów aplikacji
-* **azos używany jako db** dla serwerów w klastrze podzielonej bazy danych MongoDB
-* **azos używany jako dc** dla kontrolerów domeny
+* **azos użycia jako web** dla serwerów sieci web
+* **azos użycia jako aplikacja** dla serwerów aplikacji
+* **azos użycia jako db** dla serwerów w klastrze podzielonej na fragmenty bazy danych MongoDB
+* **azos użycia jako dc** dla kontrolerów domeny
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
-Firma Adventure Works Cycles decyzję o następujących nazwach na swoich maszynach wirtualnych platformy Azure:
+Adventure Works Cycles zdecydowała się na następujących nazw dla maszyn wirtualnych platformy Azure:
 
-* **azos użycie vm-web01** na pierwszym serwerze sieci web
-* **azos użycie vm-web02** drugiego serwera sieci web
-* **azos użycie vm-app01** dla pierwszego serwera aplikacji
-* **azos użycie vm-app02** dla drugiego serwera aplikacji
-* **azos użycie vm-db01** dla pierwszego serwera bazy danych MongoDB w klastrze
-* **azos użycie vm-db02** drugiego serwera bazy danych MongoDB w klastrze
-* **azos użycie vm-dc01** dla pierwszego kontrolera domeny
-* **azos użycie vm-dc02** dla kontrolera domeny
+* **azos — Użyj vm-web01** dla pierwszego serwera sieci web
+* **azos — Użyj vm-web02** drugiego serwera sieci web
+* **azos — Użyj vm-app01** dla pierwszego serwera aplikacji
+* **azos — Użyj vm-app02** dla drugiego serwera aplikacji
+* **azos — Użyj vm-db01** dla pierwszego serwera bazy danych MongoDB w klastrze
+* **azos — Użyj vm-db02** na drugim serwerze bazy danych MongoDB w klastrze
+* **azos — Użyj vm-dc01** dla pierwszego kontrolera domeny
+* **azos — Użyj vm-dc02** dla drugiego kontrolera domeny
 
-Oto wynikowej konfiguracji.
+Oto Wynikowa konfiguracja.
 
-![Infrastruktura aplikacji końcowego wdrożona na platformie Azure](./media/infrastructure-example/example-config.png)
+![Infrastruktura gotowych aplikacji wdrożonych na platformie Azure](./media/infrastructure-example/example-config.png)
 
 Ta konfiguracja obejmuje:
 
-* Tylko w chmurze sieci wirtualnej z dwoma podsieciami (frontonu i wewnętrznej bazy danych)
-* Dyskach platformy Azure zarządzanych za pomocą dysków w wersjach Standard i Premium
-* Cztery zestawy dostępności, jeden dla każdej warstwy magazynu online
+* Tylko w chmurze sieci wirtualnej z dwiema podsieciami (frontonu i wewnętrznej bazy danych)
+* Usługa Azure Managed Disks przy użyciu dysków w warstwach standardowa i Premium
+* Cztery zestawy dostępności: jeden dla każdej warstwy magazynu online
 * Maszyny wirtualne w czterech warstwach
-* Zestaw o zrównoważonym obciążeniu zewnętrznych dla ruchu w sieci web z protokołem HTTPS z Internetu na serwerach sieci web
-* Zestaw dla ruchu w sieci web niezaszyfrowane z serwerów sieci web na serwery aplikacji o zrównoważonym obciążeniu wewnętrzny
+* Zestawu z równoważeniem obciążenia zewnętrznych dla sieci web opartych na HTTPS ruch z Internetu do serwerów sieci web
+* Wewnętrzny zestaw o zrównoważonym dla ruchu w sieci web niezaszyfrowane z serwerów sieci web na serwerach aplikacji
 * Pojedyncza grupa zasobów

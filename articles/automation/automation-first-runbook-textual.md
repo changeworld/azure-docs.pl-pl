@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f91cfcce3643d96f241cb5408efc2455367c336
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 32ad5ef4f297a64f0925febb247ccb117dffedf0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435708"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928594"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mój pierwszy element Runbook przepływu pracy programu PowerShell
 
@@ -113,7 +113,10 @@ Został przetestowany i opublikowany element runbook, ale do tej pory nie robi n
    ```
 
    > [!IMPORTANT]
-   > **Add-AzureRmAccount** i **Login-AzureRmAccount** są teraz aliasów **Connect-AzureRMAccount**. Jeśli **Connect-AzureRMAccount** polecenie cmdlet nie istnieje, możesz użyć **Add-AzureRmAccount** lub **Login-AzureRmAccount**, lub można zaktualizować moduły w automatyzacji Konta do najnowszej wersji.
+   > **Add-AzureRmAccount** i **Login-AzureRmAccount** są teraz aliasów **Connect-AzureRMAccount**. Jeśli **Connect-AzureRMAccount** polecenie cmdlet nie istnieje, możesz użyć **Add-AzureRmAccount** lub **Login-AzureRmAccount**, możesz też [Aktualizuj moduły ](automation-update-azure-modules.md) na koncie usługi Automation do najnowszej wersji. 
+
+> [!NOTE]
+> Konieczne może być [Aktualizuj moduły](automation-update-azure-modules.md) mimo, że nowe konto usługi automation zostało właśnie utworzone.
 
 5. Kliknij przycisk **okienko testowania** tak, aby przetestować element runbook.
 6. Kliknij opcję **Uruchom**, aby rozpocząć test. Po zakończeniu powinny pojawić się dane wyjściowe podobne do poniższych, zawierające podstawowe informacje powiązane z kontem. Będzie to potwierdzenie, że poświadczenie jest prawidłowe.<br><br> ![Uwierzytelnianie](media/automation-first-runbook-textual/runbook-auth-output.png)

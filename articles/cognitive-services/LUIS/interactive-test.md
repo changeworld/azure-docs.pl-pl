@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: f47068df9da4187ee8720cf526b2d6c3b89e68e2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 927d95f6b6fac922d2c3701b8a5124efb18825f6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345529"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951241"
 ---
 # <a name="test-your-luis-app"></a>Przetestuj aplikację usługi LUIS
 <a name="train-your-app"></a>
@@ -125,9 +125,9 @@ Użyj poniższej procedury, aby uwzględnić [sprawdzania pisowni Bing w wersji 
 ## <a name="batch-testing"></a>Testowanie wsadowe
 Zobacz testowania partii [pojęcia](luis-concept-batch-test.md) i Dowiedz się, [jak](luis-how-to-batch-test.md) partii wypowiedzi testowania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli testowanie wskazuje, że aplikacją usługi LUIS nie rozpoznaje poprawne intencje i podmioty, możesz podjąć zwiększyć dokładność aplikacją usługi LUIS etykietowania więcej wypowiedzi lub dodając funkcje. 
 
-* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](Label-Suggested-Utterances.md) 
+* [Etykieta sugerowane wypowiedzi z użyciem usługi LUIS](luis-how-to-review-endoint-utt.md) 
 * [Używanie funkcji w celu zwiększenia wydajności aplikacją usługi LUIS](luis-how-to-add-features.md) 

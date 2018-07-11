@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58ff2b5bbf338f3af78b693aef57cf6293dc08b7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436512"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930311"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -158,7 +158,7 @@ Zapisz *RunAsCertificateToHybridWorker eksportu* elementu runbook do komputera z
 
 ## <a name="job-behavior"></a>Zachowanie zadania
 
-Zadania są obsługiwane nieco inaczej na hybrydowych procesów roboczych Runbook, ponad po uruchomieniu na piaskownic platformy Azure. Jedną kluczową różnicą jest to, że nie ma żadnego limitu na czas trwania zadania na hybrydowych procesów roboczych Runbook. Jeśli element runbook długotrwałych chcesz upewnić się, że jest odporna na możliwe ponowne uruchomienie, na przykład jeśli ponownym rozruchu komputera, który jest hostem hybrydowy proces roboczy. Jeśli ponowne uruchomienie maszyny hosta hybrydowego procesu roboczego, wszystkie uruchomione zadania elementu runbook uruchamia ponownie od samego początku, lub z ostatniego punktu kontrolnego dla elementów runbook przepływu pracy programu PowerShell. Jeśli zadania elementu runbook jest uruchomiony ponownie więcej niż 3 razy, następnie jest zawieszony.
+Zadania są obsługiwane nieco inaczej na hybrydowych procesów roboczych Runbook, ponad po uruchomieniu na piaskownic platformy Azure. Jedną kluczową różnicą jest to, że nie ma żadnego limitu na czas trwania zadania na hybrydowych procesów roboczych Runbook. Elementy Runbook uruchomione w systemie Azure piaskownice mogą zawierać maksymalnie 3 godziny, ze względu na [udział](automation-runbook-execution.md#fair-share). Jeśli element runbook długotrwałych chcesz upewnić się, że jest odporna na możliwe ponowne uruchomienie, na przykład jeśli ponownym rozruchu komputera, który jest hostem hybrydowy proces roboczy. Jeśli ponowne uruchomienie maszyny hosta hybrydowego procesu roboczego, wszystkie uruchomione zadania elementu runbook uruchamia ponownie od samego początku, lub z ostatniego punktu kontrolnego dla elementów runbook przepływu pracy programu PowerShell. Jeśli zadania elementu runbook jest uruchomiony ponownie więcej niż 3 razy, następnie jest zawieszony.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

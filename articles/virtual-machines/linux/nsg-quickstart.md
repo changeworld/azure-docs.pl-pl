@@ -1,9 +1,9 @@
 ---
-title: Otwórz porty do maszyny Wirtualnej systemu Linux z 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak otworzyć port / utworzyć punktu końcowego maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania Menedżera zasobów platformy Azure i 2.0 interfejsu wiersza polecenia platformy Azure
+title: Otwieranie portów dla maszyny Wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Azure resource manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
@@ -13,34 +13,34 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: iainfou
-ms.openlocfilehash: 77e4744d43aa4e71e6cdbbe2364149465a5aeae1
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 7125523b051441a2547560ff3af650ccd91f07a0
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936619"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928893"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwórz porty i punktów końcowych do maszyny Wirtualnej systemu Linux z wiersza polecenia platformy Azure
-Otwarcie portu lub utworzyć punkt końcowy z maszyną wirtualną (VM) na platformie Azure, tworząc filtr sieci w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontrolują ruchu przychodzącego i wychodzącego, można umieścić na grupę zabezpieczeń sieci dołączony do tego zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule przedstawiono sposób Otwórz port do maszyny Wirtualnej z 2.0 interfejsu wiersza polecenia platformy Azure. 
+# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwórz porty i punkty końcowe do maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure
+Otwieranie portu lub utworzenie punktu końcowego, na maszynę wirtualną (VM) na platformie Azure przez utworzenie filtru sieciowego w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontroli ruchu przychodzącego i wychodzącego, możesz umieścić na sieciowej grupy zabezpieczeń, który jest dołączony do zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule pokazano, jak otworzyć port do maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
 
-Można utworzyć grupy zabezpieczeń sieci i zasad należy najnowszej [Azure CLI 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogowany do konta platformy Azure przy użyciu [logowania az](/cli/azure/reference-index#az_login).
+Aby utworzyć sieciową grupę zabezpieczeń i reguł, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
-W poniższych przykładach Zastąp przykładowe nazwy parametrów własne wartości. Przykład nazwy parametru zawierają *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
+W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Szybko otwarcie portu dla maszyny Wirtualnej
-Jeśli chcesz szybko otwarcie portu dla maszyny Wirtualnej w scenariuszu: tworzenie i testowanie, można użyć [port Otwórz az maszyny wirtualnej](/cli/azure/vm#az_vm_open_port) polecenia. To polecenie tworzy sieciową grupę zabezpieczeń, dodaje regułę i stosuje je do maszyny Wirtualnej lub podsieci. Poniższy przykład powoduje otwarcie portu *80* na Maszynie wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
+Jeśli potrzebujesz szybkiego otwierania portu dla maszyny Wirtualnej w przypadku tworzenia i testowania, możesz użyć [az vm open-port](/cli/azure/vm#az_vm_open_port) polecenia. To polecenie tworzy sieciową grupę zabezpieczeń, dodaje regułę i stosuje je do maszyny Wirtualnej lub podsieci. W poniższym przykładzie otwierany portu *80* na maszynie Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
 
 ```azure-cli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 
-Kontynuuj dodatkowe kroki opisane w tym artykule uzyskać większą kontrolę nad reguły, takie jak definiowanie źródłowego zakresu adresów IP.
+Aby uzyskać większą kontrolę nad reguł, takich jak definiowanie źródłowy zakres adresów IP Kontynuuj dodatkowe kroki w tym artykule.
 
 
-## <a name="create-a-network-security-group-and-rules"></a>Utwórz grupę zabezpieczeń sieci i reguł
-Utwórz grupę zabezpieczeń sieci z [utworzyć nsg sieci az](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup* w *eastus* lokalizacji:
+## <a name="create-a-network-security-group-and-rules"></a>Utwórz sieciową grupę zabezpieczeń i reguł
+Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup* w *eastus* lokalizacji:
 
 ```azurecli
 az network nsg create \
@@ -49,7 +49,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Dodaj regułę z [Tworzenie reguły nsg sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) umożliwić ruchu HTTP na serwerze sieci Web (lub dostosować własne scenariusz, takich jak SSH łączności dostępu lub bazy danych). Poniższy przykład tworzy reguły o nazwie *myNetworkSecurityGroupRule* zezwalająca na ruch TCP na porcie 80:
+Dodaj regułę o [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) zezwalają na ruch HTTP, aby na serwerze sieci Web (lub dostosować do własnego scenariusza, takiego jak łącznością SSH dostępu lub bazy danych). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRule* zezwalająca na ruch TCP na porcie 80:
 
 ```azurecli
 az network nsg rule create \
@@ -62,8 +62,8 @@ az network nsg rule create \
 ```
 
 
-## <a name="apply-network-security-group-to-vm"></a>Zastosowanie grupy zabezpieczeń sieci do maszyny Wirtualnej
-Skojarzenia sieciowej grupy zabezpieczeń z maszyny Wirtualnej interfejsu sieciowego (NIC) z [aktualizacji kart sieciowych az](/cli/azure/network/nic#az_network_nic_update). Poniższy przykład powoduje skojarzenie istniejącej karty NIC o nazwie *myNic* z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+## <a name="apply-network-security-group-to-vm"></a>Zastosować sieciową grupę zabezpieczeń z maszyną Wirtualną
+Kojarzenie sieciowej grupy zabezpieczeń z interfejsem sieciowym maszyny Wirtualnej (NIC) przy użyciu [aktualizacji karty sieciowej sieci az](/cli/azure/network/nic#az_network_nic_update). Poniższy przykład kojarzy istniejącej karty NIC o nazwie *myNic* z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \
@@ -72,7 +72,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Alternatywnie można skojarzyć swojej grupy zabezpieczeń sieci z podsiecią sieci wirtualnej z [zaktualizować podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) , a nie tylko do interfejsu sieciowego na jednej maszynie Wirtualnej. Poniższy przykład powoduje skojarzenie istniejącą podsieć o nazwie *mySubnet* w *myVnet* sieci wirtualnej z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Alternatywnie można skojarzyć sieciową grupę zabezpieczeń z podsiecią sieci wirtualnej za pomocą [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) , a nie tylko do interfejsu sieciowego na jednej maszynie Wirtualnej. Poniższy przykład kojarzy istniejącą podsieć o nazwie *mySubnet* w *myVnet* sieci wirtualnej z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 az network vnet subnet update \
@@ -82,13 +82,13 @@ az network vnet subnet update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="more-information-on-network-security-groups"></a>Więcej informacji na temat grup zabezpieczeń sieci
-Szybkie polecenia tutaj pozwala rozpocząć pracę z ruchem przepływać do maszyny Wirtualnej. Grupy zabezpieczeń sieci zapewniają wiele funkcje i poziom szczegółowości kontrolowania dostępu do zasobów. Możesz przeczytać dodatkowe informacje [Tworzenie grupy zabezpieczeń sieci i listy ACL zasady tutaj](tutorial-virtual-network.md#secure-network-traffic).
+## <a name="more-information-on-network-security-groups"></a>Więcej informacji na temat sieciowych grup zabezpieczeń
+Szybkie polecenia w tym miejscu umożliwiają rozpoczęcie pracy z ruchem przepływać do maszyny Wirtualnej. Sieciowe grupy zabezpieczeń zapewniają wiele świetnych funkcji i stopień szczegółowości do kontrolowania dostępu do zasobów. Przeczytaj więcej o [tworzenie sieciowej grupy zabezpieczeń i listy kontroli dostępu reguły tutaj](tutorial-virtual-network.md#secure-network-traffic).
 
-Dla aplikacji sieci web wysokiej dostępności należy umieszczać maszyny wirtualne za usługą równoważenia obciążenia Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, który umożliwia filtrowanie ruchu. Aby uzyskać więcej informacji, zobacz [jak załadować saldo maszyn wirtualnych systemu Linux na platformie Azure, aby utworzyć aplikację wysokiej dostępności](tutorial-load-balancer.md).
+W przypadku aplikacji sieci web o wysokiej dostępności należy umieszczać maszyny wirtualne za modułem równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która pozwala na filtrowanie ruchu sieciowego. Aby uzyskać więcej informacji, zobacz [sposób ładowania równoważenia maszyn wirtualnych systemu Linux na platformie Azure do utworzenia aplikacji o wysokiej dostępności](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym przykładzie utworzono prosta Reguła zezwalająca na ruch HTTP. Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe zawierają następujące artykuły:
+W tym przykładzie utworzono prosta Reguła zezwalająca na ruch HTTP. Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe w następujących artykułach:
 
 * [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 * [Co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md)

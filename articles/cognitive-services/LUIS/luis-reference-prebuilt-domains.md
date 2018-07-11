@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: fe035c744e7cbc291fa392205239f331410412dc
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45289b712a127e70636e225778d7a36578b34fa5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866335"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931632"
 ---
 # <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
 
-[Domeny niestandardowe](create-new-app.md), z drugiej strony, rozpoczynać się nie intencje i modeli. Można dodać żadnych wbudowanych domeny intencje i podmioty do modelu niestandardowego.
+[Domeny niestandardowe](luis-how-to-start-new-app.md), z drugiej strony, rozpoczynać się nie intencje i modeli. Można dodać żadnych wbudowanych domeny intencje i podmioty do modelu niestandardowego.
 
 ## <a name="list-of-prebuilt-domains"></a>Lista ze wstępnie utworzonych domen
 Usługa LUIS oferuje 20 ze wstępnie utworzonych domen. 
@@ -154,7 +154,7 @@ Pokazuje rozrywki, które domeny zapewnia intencje i podmioty, powiązane wyszuk
 | ContentRating | Multimediów zawartości ocenę G lub R filmów.|Film wideo dzieci.<br/>PG sklasyfikowane.|
 | Gatunku | Gatunek filmu, gier, aplikacji lub utworu.|Comedies<br/>Dramatów<br/>Zabawnych|
 | Słowo kluczowe| Słowa kluczowe do wyszukania ogólnego atrybut określający, nie istnieje w bardziej szczegółowe miejsc nośnika.|Ścieżek dźwiękowych<br/>Rzeka księżyca<br/>Amelia Earhart|
-| Język | Multimediów zawartości ocenę G lub R filmów.|Francuski<br/>Polski<br/>Koreański|
+| Język | Język używany w nośników, takich jak prowadzone języka filmu lub utworu.|Francuski<br/>Polski<br/>Koreański|
 | MediaFormat | Dodatkowe specjalny techniczne typ, w którym jest sformatowany nośnika.|HD filmy<br/>Filmy 3D<br/>Do pobrania|
 | MediaSource | Sklepie lub w portalu marketplace nabycia nośnika.|Netflix<br/>Pierwsze|
 | MediaSubTypes| Typów nośnika jest mniejszy niż filmy i gry.|Pokazy<br/>DLC<br/>Przyczepy|

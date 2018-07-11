@@ -1,6 +1,6 @@
 ---
 title: Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
-description: Dowiedz się, jak szablon Menedżera zasobów do tworzenia metryki alertu.
+description: Dowiedz się, jak tworzenie alertu metryki za pomocą szablonu usługi Resource Manager.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,31 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4dba3d182c7c2927aa4feb88e70fe5711fcc6818
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263450"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932215"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
-W tym artykule opisano, jak skorzystać z [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) skonfigurować [nowszej alerty metryki](monitoring-near-real-time-metric-alerts.md) w monitorze Azure. Szablony Menedżera zasobów umożliwiają programowe Konfigurowanie alertów w sposób spójny i odtworzenia w swoich środowiskach. Nowsze metryki alerty są aktualnie dostępne w [tego zestawu typów zasobów](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) skonfigurować [nowszych alertów metryk](monitoring-near-real-time-metric-alerts.md) w usłudze Azure Monitor. Szablony usługi Resource Manager umożliwiają programowe Konfigurowanie alertów w sposób spójny i odtworzenia w środowiskach. Nowszych alertów metryk są obecnie dostępne na [tego zestawu typów zasobów](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+
+> [!IMPORTANT]
+> Szablon usługi Resource Manager, określony dla alertu metryki nie będzie działać dla typu zasobu: Microsoft.OperationalInsights/workspaces; Obsługa metryki z usługi Log Analytics jest dostępna w wersji zapoznawczej. Użytkownicy zainteresowani korzystając z funkcji wersji zapoznawczej za pomocą szablonu zasobów mogą kontaktować się z [opinii alertów platformy Azure](mailto:azurealertsfeedback@microsoft.com)
+
 
 Podstawowe kroki są następujące:
 
-1. Użyj jednego z szablonów poniżej w formacie JSON, który opisuje sposób tworzenia alertu.
-2. Edytuj i użyć odpowiedniego pliku parametrów jako JSON, aby dostosować alertu
+1. Użyj jednego z szablonów poniżej jako plik JSON, który opisuje sposób tworzenia alertu.
+2. Edytuj i użyć odpowiedniego pliku parametrów jako dane JSON, aby dostosować ten alert
 3. Wdrażanie przy użyciu szablonu [dowolnej metody wdrażania](../azure-resource-manager/resource-group-template-deploy.md).
 
 
 ## <a name="resource-manager-template-for-a-simple-metric-alert"></a>Szablon usługi Resource Manager proste alertu metryki
-Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utworzyć zasobu typu `Microsoft.Insights/metricAlerts` i wypełnij wszystkie powiązane właściwości. Oto przykładowy szablon, który tworzy regułę alertu metryki.
+Aby utworzyć alert przy użyciu szablonu usługi Resource Manager, należy utworzyć zasób typu `Microsoft.Insights/metricAlerts` i wypełnij wszystkie powiązane właściwości. Poniżej przedstawiono przykładowy szablon, który tworzy regułę alertu metryki.
 
-Zapisz json poniżej jako simplemetricalert.json na potrzeby tego krokach związanych z.
+Zapisz poniższe dane json jako simplemetricalert.json na potrzeby ten przewodnik.
 
 ```json
 {
@@ -180,11 +184,11 @@ Zapisz json poniżej jako simplemetricalert.json na potrzeby tego krokach związ
 }
 ```
 
-Objaśnienia dotyczące schematu i właściwości dla reguły alertu [jest dostępnych tutaj](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+Opis schematu i właściwości dla reguły alertu [znajduje się tutaj](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
 
-Można ustawić wartości dla parametrów w wierszu polecenia lub za pośrednictwem pliku parametrów. Poniżej znajduje się przykładowy plik parametrów. 
+Można ustawić wartości dla parametrów, w wierszu polecenia lub przy użyciu pliku parametrów. Przykładowy plik parametrów znajduje się poniżej. 
 
-Zapisz jako simplemetricalert.parameters.json json poniżej, a następnie zmodyfikować go zgodnie z potrzebami.
+Zapisz poniższe dane json jako simplemetricalert.parameters.json i zmodyfikuj go zgodnie z potrzebami.
 
 ```json
 {
@@ -226,7 +230,7 @@ Zapisz jako simplemetricalert.parameters.json json poniżej, a następnie zmodyf
 ```
 
 
-Można utworzyć alertu metryki przy użyciu pliku szablonu i parametrów, przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Można utworzyć alertu metryki za pomocą pliku szablon i parametry przy użyciu programu PowerShell lub wiersza polecenia platformy Azure.
 
 Korzystanie z programu Azure PowerShell
 
@@ -253,12 +257,12 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Gdy metryki alert może zostać utworzony w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupie zasobów co zasób docelowy.
+> Chociaż może zostać utworzony alert dotyczący metryki w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupie zasobów jako zasobu docelowego.
 
-## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>Menedżer zasobów szablonu dla bardziej zaawansowanych alertu metryki
-Alerty metryki nowszej obsługuje alerty na metryki wielowymiarowej, jak również obsługujących wiele kryteriów. Następujący szablon umożliwia tworzenie bardziej zaawansowanych alert metryki metryki wymiarów i określić wiele kryteriów.
+## <a name="resource-manager-template-for-a-more-advanced-metric-alert"></a>Szablon usługi Resource Manager dla bardziej zaawansowanych alertu metryki
+Nowszych alertów metryk obsługuje alertów dotyczących metryk wielowymiarowych, a także obsługuje wiele kryteriów. Następujący szablon służy do tworzenia bardziej zaawansowanych alert dotyczący metryki na metryki jednowymiarowe i określić wiele kryteriów.
 
-Zapisz json poniżej jako advancedmetricalert.json na potrzeby tego krokach związanych z.
+Zapisz poniższe dane json jako advancedmetricalert.json na potrzeby ten przewodnik.
 
 ```json
 {
@@ -374,9 +378,9 @@ Zapisz json poniżej jako advancedmetricalert.json na potrzeby tego krokach zwi�
 }
 ```
 
-Używając powyższego szablonu wraz z pliku parametrów poniżej. 
+Używając powyższego szablonu wraz z plikiem parametrów podanych poniżej. 
 
-Zapisz i zmodyfikować json poniżej advancedmetricalert.parameters.json na potrzeby tego krokach związanych z.
+Zapisz i zmodyfikować poniższe dane json jako advancedmetricalert.parameters.json na potrzeby ten przewodnik.
 
 ```json
 {
@@ -443,7 +447,7 @@ Zapisz i zmodyfikować json poniżej advancedmetricalert.parameters.json na potr
 ```
 
 
-Można utworzyć alertu metryki przy użyciu pliku szablonu i parametrów, przy użyciu programu PowerShell lub interfejsu wiersza polecenia Azure z bieżącego katalogu roboczego
+Można utworzyć alertu metryki za pomocą pliku szablon i parametry przy użyciu programu PowerShell lub wiersza polecenia platformy Azure z Twojego bieżącego katalogu roboczego
 
 Korzystanie z programu Azure PowerShell
 ```powershell
@@ -470,8 +474,8 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Gdy metryki alert może zostać utworzony w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupie zasobów co zasób docelowy.
+> Chociaż może zostać utworzony alert dotyczący metryki w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupie zasobów jako zasobu docelowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Przeczytaj więcej na temat [alerty na platformie Azure](monitoring-overview-unified-alerts.md)
-* Dowiedz się, jak [Utwórz grupę z szablonami usługi Resource Manager](monitoring-create-action-group-with-resource-manager-template.md)
+* Przeczytaj więcej na temat [alertów na platformie Azure](monitoring-overview-unified-alerts.md)
+* Dowiedz się, jak [Tworzenie grupy akcji za pomocą szablonów usługi Resource Manager](monitoring-create-action-group-with-resource-manager-template.md)

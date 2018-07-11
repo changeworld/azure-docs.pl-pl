@@ -1,6 +1,6 @@
 ---
-title: Projekty - Azure zespołowe platform i narzędzia do analizy danych | Dokumentacja firmy Microsoft
-description: Itemizes i omówiono dostępnych dla przedsiębiorstw standaryzacji na proces nauki danych zespołu zasobów danych i ich analiza.
+title: Platformy i narzędzia do analizy danych zespołu projekty — Azure | Dokumentacja firmy Microsoft
+description: Wyszczególniono i omówiono zasoby danych i analiz, które muszą być dostępne dla przedsiębiorstw standaryzacji na procesie nauki o danych zespołu.
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
@@ -14,121 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: f447378816f137517a3d542a27841d0cab351473
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112684"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951145"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Projekty zespołowe platform i narzędzia do analizy danych
+# <a name="platforms-and-tools-for-data-science-team-projects"></a>Projekty zespołowe platformami i narzędziami do analizy danych
 
-Firma Microsoft udostępnia pełną gamę danych i ich analiza usług i zasobów dla platform zarówno chmurze lub lokalnie. Wdrożeniem dokonanie wykonywania projektów analizy danych, wydajność i skalowalność. Pod kontrolą wersji wskazówki dotyczące wykonania projektów analizy danych w trackable zespołów, i sposób współpracy są dostarczane przez [proces nauki danych zespołu](overview.md) (TDSP).  Aby schematem ról pracowników i ich skojarzonych zadań, które są obsługiwane przez zespół nauki danych standaryzacji w tym procesie, zobacz [proces nauki danych zespołu ról i zadań](roles-tasks.md).
+Firma Microsoft udostępnia pełnego zakresu danych i analiz usług i zasobów dla platform zarówno w chmurze, jak i lokalnie. Mogą one wdrażane, umożliwiają wykonywanie swoje projekty do nauki o danych, wydajność i skalowalność. Wskazówki dla zespołów, implementowanie projekty do nauki o danych na słupkowych, wersja kontrolowane i sposób współpracy są dostarczane przez [zespołu danych dla celów naukowych](overview.md) (TDSP).  Konspekt ról pracowników i ich skojarzonych zadań, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu można zobaczyć [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
-Usługi danych i ich analiza, które muszą być dostępne dla zespołów nauki danych przy użyciu TDSP obejmują:
+Usługi danych i analiz dostępnych dla zespołów do nauki o danych przy użyciu przetwarzania TDSP obejmują:
 
-- Maszyny wirtualne nauki danych (z systemem Windows i Linux CentOS)
-- Klastry Spark w usłudze HDInsight
+- Maszyny wirtualne do nauki o danych (Windows i Linux CentOS)
+- Klastry HDInsight Spark
 - SQL Data Warehouse
 - Azure Data Lake
 - Klastry HDInsight Hive
 - Azure File Storage
 - SQL Server 2016 R Services
 
-W tym dokumencie możemy krótko opisano zasobów i udostępniają linki do samouczki i wskazówki dotyczące zespołów TDSP zostały opublikowane. Ułatwiają one informacje o sposobie korzystania z nich krok po kroku i Rozpocznij korzystanie z nich do tworzenia aplikacji inteligentnego. Więcej informacji na temat tych zasobów jest dostępna na swoich stronach produktu. 
+W tym dokumencie firma Microsoft Zwięźle opisz zasoby i udostępniają linki do samouczki i przewodniki zespoły przetwarzania TDSP zostały opublikowane. Mogą one pomóc w Dowiedz się, jak używać ich krok po kroku i Rozpocznij korzystanie z nich do kompilowania inteligentnych aplikacji. Więcej informacji na temat tych zasobów jest dostępna na stronach produktów. 
 
-## <a name="data-science-virtual-machine-dsvm"></a>Maszyna wirtualna nauki danych (DSVM)
+## <a name="data-science-virtual-machine-dsvm"></a>Maszyna wirtualna do nauki o danych (DSVM)
 
-Maszyna wirtualna nauki danych są oferowane w systemach Windows i Linux przez firmę Microsoft, zawiera popularne narzędzia dla działań modelowania i rozwoju nauki danych. Zawiera on narzędzia takie jak:
+Maszyna wirtualna do nauki o danych oferowana zarówno Windows, jak i Linux przez firmę Microsoft i zawiera popularne narzędzia do analizy danych modelowania i opracowywania działań. Zawiera ona narzędzia takie jak:
 
 - Microsoft R Server Developer Edition 
-- Dystrybucję oprogramowania Python anaconda
-- Notesów Jupyter dla języka Python i R 
-- Visual Studio Community Edition z języka Python oraz narzędzia R w systemie Windows / Zaćmienie-w systemie Linux
-- Power BI desktop dla systemu Windows
+- Anaconda Python dystrybucji
+- Notesy Jupyter notebook dla języka Python i R 
+- Visual Studio Community Edition, za pomocą języka Python i narzędzia języka R na Windows / Eclipse w systemie Linux
+- Power BI desktop dla Windows
 - SQL Server 2016 Developer Edition w systemie Windows / Postgres w systemie Linux
 
-Zawiera także **ML i AI narzędzia** , takich jak CNTK (Otwórz Learning głębokie źródło zestawu narzędzi firmy Microsoft), xgboost, mxnet i Vowpal Wabbit.
+Obejmuje również **narzędzia do uczenia Maszynowego i sztucznej Inteligencji** , takich jak CNTK (Otwórz uczenia głębokiego źródło zestawu narzędzi firmy Microsoft), xgboost, mxnet i Vowpal Wabbit.
 
-Aktualnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar Twojej DSVM (liczba rdzeni procesora CPU) i ilość pamięci na podstawie potrzeb projektów analizy danych, które zamierzasz wykonać na nim. 
+Obecnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar maszyny wirtualnej DSVM (liczba rdzeni procesora CPU) i ilość pamięci odpowiednio do potrzeb projektów do nauki o danych, które planujesz wykonać na nim. 
 
-Aby uzyskać więcej informacji na DSVM wersji systemu Windows, zobacz [maszyny wirtualnej nauki danych Microsoft](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) w witrynie Azure marketplace. Dla wersji systemu Linux DSVM, zobacz [maszyny wirtualnej systemu Linux danych nauki](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Aby uzyskać więcej informacji na temat wersji Windows wersje maszyny wirtualnej, zobacz [maszyny wirtualnej do nauki o danych Microsoft](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) w witrynie Azure marketplace. Dla wersji systemu Linux maszyny DSVM, zobacz [maszyny wirtualnej do nauki o danych dla systemu Linux](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Aby dowiedzieć się, jak wykonać niektóre typowe zadania nauki danych na DSVM wydajnie, zobacz [10 sposobów na nauki danych maszyny wirtualnej](../data-science-virtual-machine/vm-do-ten-things.md)
+Aby dowiedzieć się, jak wykonywać niektóre typowe zadania wydobywania danych na maszyny DSVM wydajnie, zobacz [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
-## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark klastrów
+## <a name="azure-hdinsight-spark-clusters"></a>Klastry usługi Azure HDInsight Spark
 
-Platforma Apache Spark jest równoległe open source przetwarzania framework, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeniowych w pamięci platforma Spark stanowić dobrym rozwiązaniem dla algorytmów iteracyjnych używanych w uczeniu maszynowym i obliczeniach wykresu. Platforma Spark jest również zgodna z magazynu obiektów Blob platformy Azure (WASB), więc łatwo można przetwarzać istniejących danych przechowywanych na platformie Azure przy użyciu platformy Spark.
+Apache Spark to równoległego typu open source platforma, która obsługuje przetwarzanie w pamięci w celu zwiększania wydajności aplikacji do analizy danych big data przetwarzania. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości w pamięci platforma Spark, że to dobry wybór w przypadku algorytmów iteracyjnych używanych w usłudze machine learning i obliczeń wykresu. Platforma Spark jest również zgodna z usługą Azure Blob storage (WASB) istniejących danych przechowywanych na platformie Azure pozwala na łatwe przetwarzanie przy użyciu platformy Spark.
 
-Tworząc klaster Spark w usłudze HDInsight, tworzysz zasoby obliczeniowe systemu Azure z zainstalowaną i skonfigurowaną platformą Spark. Tworzenie klastra Spark w usłudze HDInsight trwa około 10 minut. Przechowywanie danych mają być przetwarzane w magazynie obiektów Blob Azure. Informacje o używaniu magazynu obiektów Blob Azure z klastra, zobacz [magazynu obiektów Blob platformy Azure zgodnego systemem plików HDFS Użyj z platformą Hadoop w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
+Tworząc klaster Spark w usłudze HDInsight, tworzysz zasoby obliczeniowe systemu Azure z zainstalowaną i skonfigurowaną platformą Spark. Tworzenie klastra Spark w HDInsight trwa około 10 minut. Store dane, które mają być przetwarzane w usłudze Azure Blob storage. Aby uzyskać informacje na temat korzystania z usługi Azure Blob Storage z klastrem, zobacz [używanie zgodnego systemem plików HDFS usługi Azure Blob storage z usługą Hadoop w HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end wskazówki dotyczące sposobu używania platformy Spark w usłudze Azure Hdinsight do tworzenia rozwiązań analizy danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji w usłudze Azure HDInsight **klastry Spark**, zobacz [Przegląd: platforma Apache Spark w usłudze HDInsight w systemie Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć danych nauki rozwiązania przy użyciu **Python** w klastrze Spark Azure HDInsight, zobacz [przegląd danych nauki używania platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć danych nauki rozwiązania przy użyciu **Scala** w klastrze Spark Azure HDInsight, zobacz [nauki danych przy użyciu języka Scala i Spark na platformie Azure](scala-walkthrough.md). 
+Przetwarzanie TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end — wskazówki dotyczące sposobu używania klastrów usługi Azure HDInsight Spark do tworzenia rozwiązań do nauki o danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji na temat usługi Azure HDInsight **klastry Spark**, zobacz [Przegląd: platforma Apache Spark w systemie HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Python** klastrze Azure HDInsight Spark, zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Scala** klastrze Azure HDInsight Spark, zobacz [do nauki o danych przy użyciu języka Scala i aparatu Spark na platformie Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-Azure SQL Data Warehouse umożliwia łatwe i w sekundach, skalowanie zasoby obliczeniowe bez przerostu lub nadmiernie płatności. Zapewnia także unikatowy opcję, aby wstrzymać użycia zasobów obliczeniowych dzięki funkcjom, aby lepiej zarządzać koszty chmury. Możliwość wdrażania zasobów obliczeniowych skalowalne umożliwia można wyświetlić wszystkich danych do usługi Azure SQL Data Warehouse. Są minimalne kosztów magazynowania i obliczeń można uruchomić tylko na części zestawów danych, które mają być analizowane. 
+Usługa Azure SQL Data Warehouse umożliwia skalowanie zasobów obliczeniowych, łatwe i w ciągu kilku sekund, bez konieczności nadmiernej aprowizacji lub uiszczania nadmiernych opłat. Zapewnia także wyjątkową możliwość wstrzymania wykorzystanie zasobów obliczeniowych, dzięki czemu masz swobodę w lepszym zarządzaniu kosztami chmury. Możliwość wdrażania zasobów obliczeniowych skalowalne umożliwia wprowadzanie wszystkich danych do usługi Azure SQL Data Warehouse. Koszty magazynowania są minimalne, i mogą wykonywać obliczenia tylko na części zestawów danych, które mają być analizowane. 
 
-Aby uzyskać więcej informacji dotyczących usługi Azure SQL Data Warehouse, zobacz [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) witryny sieci Web. Aby dowiedzieć się, jak tworzyć end-to-end zaawansowane metody analizy rozwiązania z usługą Magazyn danych SQL, zobacz [zespołu danych nauki procesu w działaniu: przy użyciu usługi SQL Data Warehouse](sqldw-walkthrough.md).
+Aby uzyskać więcej informacji na temat usługi Azure SQL Data Warehouse, zobacz [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) witryny sieci Web. Aby dowiedzieć się, jak tworzyć end-to-end zaawansowanych rozwiązań analizy usługa SQL Data Warehouse, zobacz [zespołu danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse](sqldw-walkthrough.md).
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Usługi Azure data lake jest jako repozytorium dla przedsiębiorstw każdego typu danych zebranych w jednym miejscu, przed posiadanie zapotrzebowania i schematu są narzucone. Tego rodzaju elastyczności umożliwia każdego typu danych przechowywanych w usłudze data lake, niezależnie od jego rozmiaru i struktury lub tempa jest pozyskanych. Organizacje mogą następnie używać Hadoop lub zaawansowana analityka w celu znalezienia wzorce w danych tych jeziora. Jeziora danych może również służyć jako repozytorium w celu przygotowania tanie danych przed mogą danych i przeniesienie go do magazynu danych.
+Usługi Azure data lake jest jako repozytorium całego przedsiębiorstwa każdego typu danych zebranych w jednej lokalizacji, przed wszelkie wymagania formalne lub schematu, które są narzucone. Ta elastyczność umożliwia wszystkich typów danych, które mają być przechowywane w usłudze data lake, niezależnie od jego rozmiaru i struktury lub szybkość ich przetwarzania. Organizacje mogą następnie korzystanie z usługi Hadoop lub zaawansowanych analiz, aby znaleźć wzorce w tych danych, jeziora. Data Lake może również służyć jako repozytorium w celu przygotowania danych tańszych przed curating dane i przenosić je do magazynu danych.
 
-Aby uzyskać więcej informacji dotyczących usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak zbudować rozwiązanie do nauki skalowalne end-to-end danych z usługi Azure Data Lake, zobacz [skalowalne nauki danych w usłudze Azure Data Lake: wskazówki end-to-end](data-lake-walkthrough.md)
+Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end](data-lake-walkthrough.md)
 
 
-## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Klastry Azure HDInsight Hive (Hadoop)
+## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Klastry usługi Azure HDInsight Hive (Hadoop)
 
-Apache Hive jest Hadoop, dzięki czemu dane podsumowania, zapytania i analizy danych za pomocą HiveQL, podobnie jak SQL język kwerendy w systemie magazynu danych. Gałąź może służyć do interaktywnego eksplorowania danych lub utworzyć zadania przetwarzania wsadowego wielokrotnego użytku.
+Apache Hive jest platformy Hadoop, która umożliwia podsumowanie danych, zapytań i analizy danych przy użyciu HiveQL, język zapytań, podobnych do bazy danych SQL w systemie magazynu danych. Gałąź można interaktywną eksplorację danych, lub do tworzenia zadań przetwarzania wsadowego wielokrotnego użytku.
 
-Gałąź umożliwia struktury projektu na danych niestrukturalnych w dużej mierze. Po zdefiniowaniu struktury umożliwia Hive zapytań bez konieczności użycia, lub nawet nie wie, Java lub MapReduce dane w klastra usługi Hadoop. HiveQL (język zapytań Hive) umożliwia pisanie zapytań dotyczących instrukcji, które są podobne do T-SQL.
+Gałąź pozwala na strukturę projektu w dużej mierze pozbawionych struktury danych. Po zdefiniowaniu struktury, można użyć gałęzi kwerendy te dane w klastrze platformy Hadoop bez konieczności użycia lub nawet wiedzieć, Java lub MapReduce. HiveQL (język zapytań programu Hive) umożliwia pisanie zapytań przy użyciu instrukcji, które są podobne do T-SQL.
 
-Dla analityków danych Hive można uruchomić Python User-Defined funkcjom definiowanym gałęzi w zapytaniach w celu przetwarzania rekordów. Ta możliwość znacznie rozszerza możliwości zapytań programu Hive analizę danych. W szczególności umożliwia analityków danych przeprowadzenie engineering funkcji skalowalne w językach, które najczęściej są zaznajomieni z programem: HiveQL przypominającego SQL i Python. 
+Dla analityków danych Hive można uruchomić Python User-Defined funkcjom definiowanym w zapytań programu Hive do przetwarzania rekordów. Tę możliwość, które znacznie rozszerza możliwości zapytań programu Hive w analizie danych. W szczególności umożliwia analitykom danych związanych z technicznego opracowywania funkcji skalowalne w językach, które są prawie zapoznać się z: HiveQL podobnego do SQL i Python. 
 
-Aby uzyskać więcej informacji dotyczących klastrów Hive HDInsight Azure, zobacz [używanie Hive i HiveQL z usługą Hadoop w usłudze HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Aby dowiedzieć się, jak zbudować rozwiązanie nauki skalowalne danych na trasie o Azure Hive w usłudze Hdinsight, zobacz [zespołu danych nauki procesu w działaniu: z użyciem klastrów usługi HDInsight Hadoop](hive-walkthrough.md).
+Aby uzyskać więcej informacji na temat usługi Azure HDInsight Hive klastrów, zobacz [używanie Hive i HiveQL z usługą Hadoop w HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Aby dowiedzieć się, jak tworzyć skalowalne danych end-to-end rozwiązania analizy przy użyciu usługi Azure HDInsight Hive klastrów, zobacz [zespołu danych dla celów naukowych w działaniu: przy użyciu klastrów usługi HDInsight Hadoop](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 
 
-Magazyn plików Azure to usługa, która oferuje udziały plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB). Obsługiwane są wersje 2.1 i 3.0 protokołu SMB. W usłudze Magazyn plików Azure można migrować starsze aplikacje korzystające z udziałów plików na platformę Azure szybko i bez kosztownych modyfikacji oprogramowania. Aplikacje uruchomione na maszynach wirtualnych lub w ramach usług w chmurze platformy Azure, a także na klientach lokalnych mogą instalować udziały plików w chmurze tak samo jak aplikacja na komputerze instalująca typowy udział SMB. Dowolna liczba składników aplikacji może następnie równocześnie zainstalować udział Magazynu plików i uzyskiwać do niego dostęp.
+Usługa Azure File Storage to usługa, która oferuje udziały plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB). Obsługiwane są wersje 2.1 i 3.0 protokołu SMB. W usłudze Magazyn plików Azure można migrować starsze aplikacje korzystające z udziałów plików na platformę Azure szybko i bez kosztownych modyfikacji oprogramowania. Aplikacje uruchomione na maszynach wirtualnych lub w ramach usług w chmurze platformy Azure, a także na klientach lokalnych mogą instalować udziały plików w chmurze tak samo jak aplikacja na komputerze instalująca typowy udział SMB. Dowolna liczba składników aplikacji może następnie równocześnie zainstalować udział Magazynu plików i uzyskiwać do niego dostęp.
 
-Szczególnie przydatna w przypadku projektów analizy danych jest możliwość tworzenia magazyn plików Azure na potrzeby udostępniania danych projektu członkowie zespołu projektu. Następnie każdego z nich ma dostęp do tej samej kopii danych w usłudze magazyn plików Azure. Ten magazyn plików mogą również wykorzystać do udostępniania funkcji zestawów wygenerowanych podczas realizacji projektu. Jeśli projekt jest zaangażowania klientów, klientów można utworzyć magazyn plików Azure w ramach własnej subskrypcji Azure o udostępnienie danych projektu i funkcje. W ten sposób klient ma pełną kontrolę nad zasobów danych projektu. Aby uzyskać więcej informacji na magazyn plików Azure, zobacz [Rozpoczynanie pracy z magazynem plików Azure w systemie Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) i [jak używać magazynu plików Azure z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
+Szczególnie przydatne w przypadku projektów do nauki o danych jest możliwość tworzenia magazynu plików platformy Azure jako miejsce, aby udostępnić dane projektu z członkami swojego zespołu projektu. Następnie każdy z nich ma dostęp do tej samej kopii danych w usłudze Azure file storage. Aby udostępnić zestawy funkcji wygenerowanych podczas realizacji projektu mogą również wykorzystać ten magazyn plików. Jeśli projekt jest zaangażowanie klientów, klientów można utworzyć usługi Azure file storage w ramach własnej subskrypcji platformy Azure, aby udostępnić dane projektu i funkcji z Tobą. W ten sposób klient ma pełną kontrolę nad zasobami danych projektu. Aby uzyskać więcej informacji na temat usługi Azure File Storage, zobacz [Rozpoczynanie pracy z usługą Azure File storage w Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) i [jak używać usługi Azure File Storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
 ## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
-R usługi (w database) udostępniają platformę do projektowania i wdrażania aplikacji inteligentnego, które można ujawnić nowych danych. Języka R bogaty i zaawansowane, w tym wiele pakietów udostępniane przez społeczność R służy do tworzenia modeli i generować prognoz na podstawie danych programu SQL Server. R usług (w database) języka R są zintegrowane z programem SQL Server, analytics są przechowywane w pobliżu danych, co eliminuje koszty i zagrożenia bezpieczeństwa związane z przenoszenia danych.
+Usługi R Services (In-database) zapewnia platformę do tworzenia i wdrażania inteligentne aplikacje, które można Odkrywaj nowe informacje. Rozbudowane i zaawansowane języka R, łącznie z wielu pakietów, dostarczone przez społeczność pasjonatów języka R, można użyć do tworzenia modeli i generować prognozy na podstawie danych programu SQL Server. Usługi R Services (In-database) języka R są zintegrowane z programem SQL Server, analizy są przechowywane w pobliżu danych, co pozwala wyeliminować koszty i zagrożenia bezpieczeństwa związane z przenoszeniem danych.
 
-R usługi (w database) obsługują język R typu open source z użyciem kompleksowego zestawu narzędzi programu SQL Server i technologii. Oferują one wyższego poziomu wydajności, zabezpieczeń, niezawodności i możliwości zarządzania. Można wdrożyć rozwiązania R przy użyciu wygodne i znanych narzędzi. Aplikacji produkcyjnych można wywołać środowiska uruchomieniowego języka R i pobrać prognoz i elementy wizualne przy użyciu języka Transact-SQL. Możesz również użyć bibliotek ScaleR poprawiające skalowalność i wydajność rozwiązań R. Aby uzyskać więcej informacji, zobacz [usług SQL Server R](https://msdn.microsoft.com/library/mt604845.aspx)
+Usługi R Services (In-database) obsługuje języka R typu open source dzięki kompleksowemu zestawowi narzędzi programu SQL Server i technologii. Oferują doskonałą wydajność, bezpieczeństwa, niezawodności i możliwości zarządzania. Można wdrożyć rozwiązania R przy użyciu narzędzia wygodne i znane. Twoje aplikacje produkcyjne można wywołać środowiskiem uruchomieniowym języka r. i pobrać prognozy i wizualizacji przy użyciu języka Transact-SQL. Aby zwiększyć skalę i wydajność swoich rozwiązań języka R możesz także użyć biblioteki programu ScaleR. Aby uzyskać więcej informacji, zobacz [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
-Zespół TDSP firmy Microsoft został opublikowany dwóch wskazówki end-to-end, których przedstawiono sposób tworzenia rozwiązań analizy danych w programie SQL Server 2016 R Services: jeden dla programistów języka R i jeden dla deweloperów SQL. Dla **programistów R**, zobacz [wskazówki End-to-End nauki danych](https://msdn.microsoft.com/library/mt612857.aspx). Dla **deweloperzy SQL**, zobacz [w bazie danych zaawansowane analizy dla deweloperów SQL (samouczek)](https://msdn.microsoft.com/library/mt683480.aspx).
+Przetwarzanie TDSP zespół firmy Microsoft został opublikowany dwa przewodniki end-to-end, które pokazują, jak tworzyć rozwiązania do analizy danych w SQL Server 2016 R Services: jeden dla programistów języka R i jeden dla deweloperów programu SQL. Aby uzyskać **programistom języka R**, zobacz [wskazówki End-to-End do nauki o danych](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Aby uzyskać **deweloperów SQL**, zobacz [Advanced Analytics w bazie danych dla deweloperów programu SQL (samouczek)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Dodatek: Narzędzia do ustawiania projektów analizy danych
+## <a name="appendix"></a>Dodatek: Narzędzia do skonfigurowania projekty do nauki o danych
 
-### <a name="install-git-credential-manager-on-windows"></a>Zainstaluj Menedżera poświadczeń Git w systemie Windows
+### <a name="install-git-credential-manager-on-windows"></a>Zainstaluj program Git Credential Manager na Windows
 
-Jeśli wykonujesz TDSP **Windows**, musisz zainstalować **Git Menedżera poświadczeń (GCM)** do komunikowania się z repozytoriów narzędzia Git. Aby zainstalować usługi GCM, należy najpierw zainstalować **Chocolaty**. Aby zainstalować Chocolaty i GCM, uruchom następujące polecenia w programie Windows PowerShell jako **administratora**:  
+Jeśli korzystasz z przetwarzania TDSP **Windows**, musisz zainstalować **Git Credential Manager (GCM)** do komunikowania się z repozytoriami Git. Aby zainstalować usługi GCM, należy najpierw zainstalować **Chocolaty**. Aby zainstalować Chocolaty i GCM, uruchom następujące polecenia w programie Windows PowerShell jako **administratora**:  
 
     iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     choco install git-credential-manager-for-windows -y
     
 
-### <a name="install-git-on-linux-centos-machines"></a>Zainstaluj usługę Git na komputerach z systemem Linux (CentOS)
+### <a name="install-git-on-linux-centos-machines"></a>Zainstaluj program Git na maszynach z systemem Linux (CentOS)
 
-Uruchom następujące polecenie bash, aby zainstalować Git na maszynach z systemem Linux (CentOS):
+Uruchom poniższe polecenie powłoki bash, aby zainstalować program Git na maszynach z systemem Linux (CentOS):
 
     sudo yum install git
 
 
-### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generowanie klucza publicznego SSH na komputerach z systemem Linux (CentOS)
+### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generuj klucz publiczny SSH na maszynach z systemem Linux (CentOS)
 
-Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania polecenia git, należy dodać klucz publiczny SSH na komputerze z serwerem programu VSTS tak, aby ten komputer jest rozpoznawany przez serwer programu VSTS. Najpierw należy wygenerować klucz publiczny SSH, a następnie dodaj klucz do kluczy publicznych SSH na stronie Ustawienia zabezpieczeń usługi VSTS. 
+Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usługi git, należy dodać publiczny klucz SSH maszyny z serwerem usługi VSTS, więc, że ten komputer jest rozpoznawany przez serwer usługi VSTS. Po pierwsze należy wygenerować publiczny klucz SSH i Dodaj klucz do kluczy publicznych SSH na stronie Ustawienia zabezpieczeń usługi VSTS. 
 
-- Aby wygenerować klucz SSH, uruchom następujące dwa polecenia: 
+- Aby wygenerować klucz SSH, uruchom dwa poniższe polecenia: 
 
         ssh-keygen
         cat .ssh/id_rsa.pub
@@ -136,20 +136,20 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania polecenia git,
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Skopiuj cały ssh w tym klucza *ssh-rsa*. 
-- Zaloguj się do serwera programu VSTS. 
+- Zaloguj się do serwera usługi VSTS. 
 - Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Kliknij przycisk **klucze publiczne SSH**i kliknij przycisk **+ Dodaj**. 
+- Kliknij przycisk **kluczy publicznych SSH**i kliknij przycisk **+ Dodaj**. 
 
     ![](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Wklej ssh klucza skopiowany w polu tekstowym, a następnie zapisz.
+- Wklej ssh key właśnie został skopiowany do pola tekstowego, a następnie zapisz.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pełne end-to-end wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) tematu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
+Pełne przewodniki end-to-end, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) tematu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady wykonywania czynności w procesie nauki zespołu danych korzystających z usługi Azure Machine Learning Studio można znaleźć [z ML Azure](http://aka.ms/datascienceprocess) ścieżkę szkoleniową.
+Przykłady wykonywania czynności w procesie nauki o danych zespołu, korzystających z usługi Azure Machine Learning Studio, zobacz [za pomocą usługi Azure ML](http://aka.ms/datascienceprocess) ścieżka szkoleniowa dla usługi.

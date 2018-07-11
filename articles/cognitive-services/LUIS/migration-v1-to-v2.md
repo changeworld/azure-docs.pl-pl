@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7174a78aeb339c864b2eea384b794646c215bc25
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: b60aa551d55907fcac7953efa61473c845e3c2ae
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344006"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951060"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -133,7 +133,7 @@ Kilka interfejsów API, które zwracają metadanych usługi LUIS mają nowe nazw
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Przykładowy" zmieniona na "Zaproponuj"
-Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](label-suggested-utterances.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/LUIS/label-suggested-utterances)** w witrynie internetowej usługi LUIS.
+Usługa LUIS sugeruje wypowiedzi z istniejących [wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) , może pomóc w lepszym modelu. W poprzedniej wersji, ta nosiła nazwę **przykładowe**. W nowej wersji nazwa została zmieniona z przykładu, aby **zasugerować**. Jest to nazywane **[Przejrzyj wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md)** w witrynie internetowej usługi LUIS.
 
 | wersja | trasa |
 |--|--|

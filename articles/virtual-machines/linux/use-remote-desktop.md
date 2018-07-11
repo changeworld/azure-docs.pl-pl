@@ -1,9 +1,9 @@
 ---
-title: Za pomocą pulpitu zdalnego do maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak instalowanie i konfigurowanie pulpitu zdalnego (xrdp), aby nawiązać połączenie Maszynę wirtualną systemu Linux na platformie Azure za pomocą narzędzi graficznych
+title: Pulpit zdalny do maszyny Wirtualnej z systemem Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak instalowanie i konfigurowanie pulpitu zdalnego (xrdp), aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure za pomocą narzędzi graficznych
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: iainfou
-ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: cynthn
+ms.openlocfilehash: 5e79cfa2c428323d8531bec7eab875a2dace4ff2
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716622"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37934752"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie Maszynę wirtualną systemu Linux na platformie Azure
-Maszyny wirtualne systemu Linux (VM) na platformie Azure zwykle są zarządzane z poziomu wiersza polecenia przy użyciu połączenia bezpiecznej powłoki (SSH). Gdy nowy, Linux lub szybkiego scenariuszach rozwiązywania problemów, użyj pulpitu zdalnego może być łatwiejsze. W tym artykule szczegółowo przedstawiają, jak zainstalować i skonfigurować środowisko pulpitu ([xfce](https://www.xfce.org)) i pulpitu zdalnego ([xrdp](http://www.xrdp.org)) dla maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania Menedżera zasobów.
+# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure
+Maszyny wirtualne systemu Linux (VM) na platformie Azure odbywa się zwykle z wiersza polecenia przy użyciu połączenia protokołu secure shell (SSH). Jeśli nowe z systemem Linux lub scenariuszach szybkiego rozwiązywania problemów, korzystanie z pulpitu zdalnego może być łatwiejsze. W tym artykule opisano, jak zainstalować i skonfigurować środowisko pulpitu ([xfce](https://www.xfce.org)) i usług pulpitu zdalnego ([xrdp](http://www.xrdp.org)) dla maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Resource Manager.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule wymaga istniejącego 16.04 LTS maszyny Wirtualnej systemu Ubuntu na platformie Azure. Jeśli musisz utworzyć maszyny Wirtualnej, użyj jednej z następujących metod:
+Ten artykuł wymaga istniejącej Ubuntu 16.04 LTS maszyny Wirtualnej na platformie Azure. Jeśli musisz utworzyć Maszynę wirtualną, użyj jednej z następujących metod:
 
-- [Azure CLI 2.0](quick-create-cli.md)
-- [Portalu Azure](quick-create-portal.md)
+- [Wiersza polecenia platformy Azure 2.0](quick-create-cli.md)
+- [Azure Portal](quick-create-portal.md)
 
 
-## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Zainstaluj środowisko pulpitu na maszynie Wirtualnej systemu Linux
-Większość maszyn wirtualnych systemu Linux na platformie Azure nie masz środowisko pulpitu instalowane domyślnie. Maszyn wirtualnych systemu Linux są często zarządzane za pomocą połączeń SSH, a nie środowiska pulpitu. Istnieją różne środowiska pulpitu w systemie Linux, możesz wybrać następujące opcje. W zależności od wybranych środowiska pulpitu może korzystać z jednego do 2 GB miejsca na dysku i podjąć 5-10 minut, aby zainstalować i skonfigurować wymagane pakiety.
+## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Zainstalować środowisko pulpitu na maszynie Wirtualnej systemu Linux
+Większość maszyn wirtualnych systemu Linux na platformie Azure nie mają środowisko pulpitu instalowane domyślnie. Maszyny wirtualne systemu Linux często są zarządzane przy użyciu połączenia SSH, a nie w środowisku komputerowym. Istnieją różne środowiska pulpitu w systemie Linux, które można wybrać. W zależności od wybranego środowiska pulpitu może korzystać z jednego do 2 GB miejsca na dysku i zająć 5 – 10 minut, aby zainstalować i skonfigurować wymagane pakiety.
 
-W poniższym przykładzie instalowana niewielka [xfce4](https://www.xfce.org/) środowiska pulpitu na maszynie Wirtualnej systemu Ubuntu 16.04 LTS. Polecenia dla innych dystrybucje się nieco różnić (Użyj `yum` zainstalować w systemie Red Hat Enterprise Linux i skonfigurować odpowiednie `selinux` reguły lub użyj `zypper` do zainstalowania w systemie SUSE, na przykład).
+W poniższym przykładzie instalowana lekkiego [xfce4](https://www.xfce.org/) środowiska pulpitu w Maszynie wirtualnej systemu Ubuntu 16.04 LTS. Polecenia dla innych dystrybucji różnią się nieco (Użyj `yum` instalowanie w systemie Red Hat Enterprise Linux i Konfigurowanie odpowiedniej `selinux` reguł lub użycie `zypper` do zainstalowania w systemie SUSE, na przykład).
 
-Pierwszy, SSH do maszyny Wirtualnej. Poniższy przykład nawiązuje połączenie z maszyną wirtualną o nazwie *myvm.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*. Użyj własne wartości:
+Pierwszy, SSH z maszyną Wirtualną. Poniższy przykład nawiązuje połączenie z maszyną wirtualną o nazwie *myvm.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*. Użyj własnych wartości:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Jeśli używasz systemu Windows i uzyskać więcej informacji o korzystaniu z protokołu SSH, zobacz [kluczy sposobu korzystania z protokołu SSH z systemem Windows](ssh-from-windows.md).
+Jeśli używasz Windows i potrzebujesz więcej informacji na temat korzystania z protokołu SSH, zobacz [jak używać protokołu SSH kluczy przy użyciu Windows](ssh-from-windows.md).
 
 Następnie zainstaluj przy użyciu xfce `apt` w następujący sposób:
 
@@ -53,19 +53,19 @@ sudo apt-get install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>Instalowanie i konfigurowanie serwera usług pulpitu zdalnego
-Teraz, gdy masz środowisko pulpitu, zainstalowane, należy skonfigurować usługi usług pulpitu zdalnego do nasłuchiwania przychodzących połączeń. [xrdp](http://xrdp.org) jest serwer protokołu RDP (Remote Desktop) typu open source, który jest dostępny na większości dystrybucje systemu Linux i dobrze działa z xfce. Zainstaluj xrdp na maszynie Wirtualnej systemu Ubuntu w następujący sposób:
+Teraz, gdy masz zainstalowane środowisko pulpitu, należy skonfigurować usługi usług pulpitu zdalnego do nasłuchiwania przychodzących połączeń. [xrdp](http://xrdp.org) to serwer protokołu RDP (Remote Desktop) typu open source, który jest dostępny na większość dystrybucje systemu Linux i dobrze działa z xfce. Zainstaluj xrdp na maszynie Wirtualnej z systemem Ubuntu w następujący sposób:
 
 ```bash
 sudo apt-get install xrdp
 ```
 
-Poinformuj xrdp środowiska pulpitu do użycia podczas uruchamiania sesji. Skonfiguruj xrdp do użycia xfce jako środowisko pulpitu w następujący sposób:
+Poinformuj xrdp jakiego środowiska pulpitu do użycia podczas uruchamiania sesji. Skonfiguruj xrdp służące xfce jako środowisko pulpitu w następujący sposób:
 
 ```bash
 echo xfce4-session >~/.xsession
 ```
 
-Uruchom ponownie usługę xrdp, aby zmiany zostały wprowadzone w następujący sposób:
+Uruchom ponownie usługę xrdp, aby zmiany zostały wprowadzone następujące zmiany:
 
 ```bash
 sudo service xrdp restart
@@ -73,69 +73,71 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>Ustaw hasło konta użytkownika lokalnego
-Jeśli hasło zostało utworzone dla tego konta użytkownika, po utworzeniu maszyny Wirtualnej, Pomiń ten krok. Jeśli tylko uwierzytelniania klucza SSH i nie masz hasła lokalnego konta ustawić, określ hasło, aby używać xrdp logować się do maszyny Wirtualnej. xrdp nie może zaakceptować kluczy SSH do uwierzytelniania. W poniższym przykładzie określa hasło dla konta użytkownika *azureuser*:
+Jeśli utworzono hasło dla konta użytkownika, po utworzeniu maszyny Wirtualnej, Pomiń ten krok. Jeśli tylko używają uwierzytelniania kluczem SSH i masz hasło do konta lokalnego zestawu, określ hasło, zanim użyjesz xrdp Zaloguj się do maszyny Wirtualnej. xrdp nie może akceptować kluczy SSH do uwierzytelniania. W poniższym przykładzie określono hasło dla konta użytkownika *azureuser*:
 
 ```bash
 sudo passwd azureuser
 ```
 
 > [!NOTE]
-> Określenie hasła nie powoduje aktualizacji konfiguracji SSHD, aby umożliwić hasło logowania, jeśli obecnie nie. Z punktu widzenia zabezpieczeń może chcesz nawiązać połączenie z maszyną Wirtualną z tunelu SSH przy użyciu uwierzytelniania opartego na kluczach, a następnie połącz się xrdp. Jeśli tak, pomiń następny krok na tworzenie reguły grupy zabezpieczeń sieci, aby zezwolić na ruch pulpitu zdalnego.
+> Określenie hasła nie aktualizuje konfigurację SSHD tak, aby zezwolić na hasło logowania, jeśli obecnie nie. Z punktu widzenia zabezpieczeń może chcesz nawiązać połączenie z maszyną Wirtualną przy użyciu tunelu SSH przy użyciu uwierzytelniania opartego na kluczu, a następnie połączyć xrdp. Jeśli tak, Pomiń kolejne kroki dotyczące tworzenia reguły sieciowej grupy zabezpieczeń zezwalającą na ruch pulpitu zdalnego.
 
 
-## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Tworzenie reguły grupy zabezpieczeń sieci dla ruchu pulpitu zdalnego
-Aby zezwolić na ruch pulpitu zdalnego do maszyny Wirtualnej systemu Linux, zabezpieczenia sieci grupy reguł musi być utworzony umożliwia ruch TCP na porcie 3389 nawiązać połączenie z maszyną Wirtualną. Aby uzyskać więcej informacji dotyczących zasad grupy zabezpieczeń sieci, zobacz [co to jest grupa zabezpieczeń sieci?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Możesz również [Użyj portalu Azure, aby utworzyć regułę grupy zabezpieczeń sieci](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Utwórz regułę sieciowej grupy zabezpieczeń dla ruchu pulpitu zdalnego
+Aby zezwolić na ruch pulpitu zdalnego do maszyny Wirtualnej systemu Linux, zabezpieczenia sieci grupy reguł musi utworzyć, która umożliwia TCP na porcie 3389 nawiązać połączenie z maszyną Wirtualną. Aby uzyskać więcej informacji na temat reguł sieciowych grup zabezpieczeń, zobacz [co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Możesz również [umożliwia utworzenie reguły sieciowej grupy zabezpieczeń w witrynie Azure portal](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-W poniższym przykładzie jest tworzona reguła grupy zabezpieczeń sieci o [port Otwórz az maszyny wirtualnej](/cli/azure/vm#az-vm-open-port) na porcie *3389*. Z 2.0 interfejsu wiersza polecenia Azure nie w sesji SSH do maszyny Wirtualnej, otwórz następujące reguły grupy zabezpieczeń sieci:
+Poniższy przykład tworzy reguły sieciowej grupy zabezpieczeń z [az vm open-port](/cli/azure/vm#az-vm-open-port) na porcie *3389*. Korzystając z interfejsu wiersza polecenia platformy Azure 2.0 nie sesję SSH z maszyną wirtualną, otwórz następujące reguły sieciowej grupy zabezpieczeń:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
-## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Połączenie z maszyną Wirtualną systemu Linux za pomocą klienta usług pulpitu zdalnego
-Otwórz klienta pulpitu zdalnego lokalnego i połącz się z adresu IP lub nazwę DNS maszyny Wirtualnej systemu Linux. Wprowadź nazwę użytkownika i hasło dla konta użytkownika na maszynie Wirtualnej w następujący sposób:
+## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Łączenie z maszyną Wirtualną z systemem Linux przy użyciu klienta pulpitu zdalnego
+Otwórz klienta pulpitu zdalnego lokalnego i połącz się z adresu IP lub nazwę DNS maszyny wirtualnej systemu Linux. Wprowadź nazwę użytkownika i hasło dla konta użytkownika na maszynie Wirtualnej w następujący sposób:
 
-![Nawiązać xrdp przy użyciu klienta pulpitu zdalnego](./media/use-remote-desktop/remote-desktop-client.png)
+![Nawiązać połączenie z xrdp przy użyciu klienta pulpitu zdalnego](./media/use-remote-desktop/remote-desktop-client.png)
 
-Po uwierzytelnieniu środowiska pulpitu xfce obciążenia i wyglądać podobnie do poniższego przykładu:
+Po uwierzytelnieniu w środowisku komputerowym xfce zostaną załadowane i wyglądać podobnie do poniższego przykładu:
 
-![xfce środowisko pulpitu za pośrednictwem xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
+![xfce środowiska pulpitu za pośrednictwem xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
+
+Jeśli klient lokalny RDP korzysta z uwierzytelniania na poziomie sieci (NLA), może być konieczne wyłączenie tego ustawienia połączenia. XRDP aktualnie nie obsługuje uwierzytelniania na poziomie sieci. Można również przeglądać alternatywne rozwiązania protokołu RDP, które obsługują uwierzytelniania na poziomie sieci, takich jak [FreeRDP](http://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
-Jeśli nie można nawiązać połączenia z maszyny Wirtualnej systemu Linux przy użyciu klienta pulpitu zdalnego, należy użyć `netstat` na Twojej maszyny Wirtualnej systemu Linux, aby sprawdzić, czy maszyna wirtualna nasłuchuje połączeń protokołu RDP w następujący sposób:
+Jeśli nie możesz połączyć z maszyną wirtualną z systemem Linux przy użyciu klienta pulpitu zdalnego, należy użyć `netstat` na maszynie Wirtualnej systemu Linux, aby sprawdzić, czy maszyna wirtualna nasłuchuje połączeń protokołu RDP w następujący sposób:
 
 ```bash
 sudo netstat -plnt | grep rdp
 ```
 
-W poniższym przykładzie przedstawiono wirtualna nasłuchiwanie na porcie TCP 3389 zgodnie z oczekiwaniami:
+Nasłuchiwanie na porcie TCP 3389 zgodnie z oczekiwaniami maszyny Wirtualnej można znaleźć w poniższym przykładzie:
 
 ```bash
 tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesman
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-Jeśli *xrdp sesman* nie nasłuchuje usługa, w przypadku maszyny Wirtualnej systemu Ubuntu ponownie uruchomić usługę w następujący sposób:
+Jeśli *xrdp sesman* nie nasłuchuje usługa, na maszynie Wirtualnej systemu Ubuntu Uruchom ponownie usługę w następujący sposób:
 
 ```bash
 sudo service xrdp restart
 ```
 
-Przejrzyj dzienniki w */var/log* na maszynie Wirtualnej systemu Ubuntu objętych danych łączem, dlaczego usługa może nie odpowiadać. Można również monitorować syslog, podczas próby połączeń usług pulpitu zdalnego, aby wyświetlić wszystkie błędy:
+Przejrzyj dzienniki w */var/log* na maszynie Wirtualnej systemu Ubuntu, aby uzyskać wskazówki, dlaczego usługa może nie odpowiadać. Można również monitorować syslog, podczas próby połączenia pulpitu zdalnego, aby wyświetlić błędy:
 
 ```bash
 tail -f /var/log/syslog
 ```
 
-Inne dystrybucje systemu Linux, takie jak Red Hat Enterprise Linux i SUSE mogą mieć różne sposoby, aby ponownie uruchomić usługi i lokalizacje plików dziennika alternatywne, aby przejrzeć.
+Inne dystrybucje systemu Linux, takie jak Red Hat Enterprise Linux i SUSE mogą mieć różne sposoby, aby ponownie uruchomić usługi i lokalizacje plików dziennika alternatywne, aby zapoznać się z.
 
-Jeśli nie mają żadnych odpowiedzi na kliencie usług pulpitu zdalnego i nie ma żadnych zdarzeń w dzienniku systemowym, to zachowanie wskazuje, czy ruch pulpitu zdalnego nie może połączyć maszyny Wirtualnej. Przejrzyj reguły grupy zabezpieczeń sieci, tak aby upewnić się, że masz regułę zezwalającą na ruch TCP na porcie 3389. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z łącznością aplikacji](../windows/troubleshoot-app-connection.md).
+Jeśli nie otrzymasz żadnych odpowiedzi w kliencie usług pulpitu zdalnego i nie ma żadnych zdarzeń w dzienniku systemu to zachowanie wskazuje, że maszyna wirtualna nie może połączyć się ruchu pulpitu zdalnego. Przejrzyj reguły grupy zabezpieczeń sieci, tak aby upewnić się, że masz regułę zezwalającą na ruch TCP na porcie 3389. Aby uzyskać więcej informacji, zobacz [aplikacji Rozwiązywanie problemów z łącznością](../windows/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat tworzenia i używania kluczy SSH z maszyn wirtualnych systemu Linux, zobacz [utworzyć SSH kluczy dla maszyn wirtualnych systemu Linux na platformie Azure](mac-create-ssh-keys.md).
+Aby uzyskać więcej informacji na temat tworzenia i używania kluczy SSH z maszynami wirtualnymi systemu Linux, zobacz [tworzenie kluczy SSH dla maszyn wirtualnych systemu Linux na platformie Azure](mac-create-ssh-keys.md).
 
-Aby uzyskać informacji o korzystaniu z protokołu SSH z systemu Windows, zobacz [kluczy sposobu korzystania z protokołu SSH z systemem Windows](ssh-from-windows.md).
+Aby uzyskać informacje na temat korzystania z protokołu SSH z Windows, zobacz [jak używać protokołu SSH kluczy przy użyciu Windows](ssh-from-windows.md).
 

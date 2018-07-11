@@ -3,7 +3,7 @@ title: Log Analytics dla dostawców usług | Dokumentacja firmy Microsoft
 description: Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dużych przedsiębiorstwach, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych, zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury.
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
+author: MeirMen
 manager: jochan
 editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/05/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 13f36f67e76b75176940a0f36121be30ba27d519
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: ad0a3b8e0ee5f1114ea1db95cfe2f4176b8e2ddb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340869"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931994"
 ---
-# <a name="log-analytics-features-for-service-providers"></a>Funkcje analizy dzienników dla dostawców usług
+# <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
 
 Duże przedsiębiorstwa mają wiele wspólnego z dostawcami usług, zwłaszcza w przypadku scentralizowane zespół IT, który jest odpowiedzialny za zarządzanie IT dla wielu różnych jednostek biznesowych. Dla uproszczenia w tym dokumencie użyto termin *usługodawcy* , ale te same funkcje jest również dostępna dla przedsiębiorstw i innych klientów.
@@ -61,7 +61,8 @@ Zalety tej architekturze są następujące:
 * Usługodawcy mogą wykonywać analizy dla wszystkich klientów.
 
 Dostępne są następujące wady tej architektury:
-* Trudno będzie rozdziela się dane od klientów. Jedynym dobrym metody, w tym celu jest używana nazwa domeny komputera.
+* Ta architektura ma zastosowanie tylko do danych opartej o agentów maszyny Wirtualnej, nie zapewnią źródeł danych sieci szkieletowej PaaS i SaaS oraz platformy Azure.
+* Może być trudny do oddzielania danych od klientów, gdy są one scalane w jeden obszar roboczy. Jedynym dobrym metody, w tym celu jest użycie komputera w pełni kwalifikowaną nazwę domeny (FQDN) lub za pośrednictwem subskrypcji platformy Azure identyfikatora. 
 * Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie, z jednym rachunku i te same ustawienia przechowywania i konfiguracji.
 * Sieci szkieletowej platformy Azure i usług PaaS usług, takich jak usługi Azure Diagnostics i inspekcji platformy Azure wymaga obszar, aby być w tej samej dzierżawie, co zasób związku z tym nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
 * Wszyscy agenci maszyn wirtualnych z wszystkich klientów będzie odbywać się przy użyciu tego samego Identyfikatora obszaru roboczego i klucz obszaru roboczego cental. Nie istnieje metoda blokowania dzienników z określonego klienta bez przerywania pracy innych klientów.

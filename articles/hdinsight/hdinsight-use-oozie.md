@@ -1,6 +1,6 @@
 ---
-title: Użyj Hadoop Oozie w usłudze HDInsight | Dokumentacja firmy Microsoft
-description: Użyj Hadoop Oozie w usłudze HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować Oozie przepływu pracy i przesłać zadanie Oozie.
+title: Używanie technologii Oozie usługi Hadoop w HDInsight | Dokumentacja firmy Microsoft
+description: Użyj programu Oozie usługi Hadoop w HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -16,31 +16,31 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: c0558432c0d74e2c9fcec108182a4dbafa332904
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176579"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952862"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Za pomocą Oozie Hadoop do definiowania i uruchomić przepływ pracy w usłudze HDInsight
+# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Używanie technologii Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy w HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Dowiedz się, jak używać Apache Oozie do definiowania przepływu pracy i Uruchom przepływ pracy w usłudze HDInsight. Aby zapoznać się z koordynatorem Oozie, zobacz [korzystanie z usługą HDInsight oparte na czasie Hadoop Oozie Coordinator][hdinsight-oozie-coordinator-time]. Aby uzyskać fabryki danych Azure, zobacz [Use Pig i Hive z fabryką danych][azure-data-factory-pig-hive].
+Dowiedz się, jak zdefiniować przepływ pracy i uruchomić przepływ pracy na HDInsight za pomocą programu Apache Oozie. Aby uzyskać informacje dotyczące koordynatora programu Oozie, zobacz [oparte na czasie koordynatora programu Oozie usługi Hadoop za pomocą HDInsight][hdinsight-oozie-coordinator-time]. Aby poznać usługi Azure Data Factory, zobacz [korzystanie z języka Pig i Hive z usługą Data Factory][azure-data-factory-pig-hive].
 
-Apache Oozie to system koordynacji/przepływu pracy, który zarządza zadaniami na platformie Hadoop. Jest zintegrowany ze stosem platformy Hadoop i obsługuje zadania platformy Hadoop dla Apache MapReduce, Apache Pig Apache Hive i Apache Sqoop. Można go również używane do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
+Apache Oozie to system koordynacji/przepływ pracy, który zarządza zadaniami na platformie Hadoop. Jest zintegrowany ze stosem platformy Hadoop i obsługuje zadania platformy Hadoop dla Apache MapReduce, Apache Pig, Apache Hive i Apache Sqoop. Może również służyć do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
-Przepływ pracy, który implementuje zgodnie z instrukcjami w tym samouczku zawiera dwa działania:
+Przepływ pracy, który implementuje zgodnie z instrukcjami w tym samouczku zawiera dwie akcje:
 
 ![Diagram przepływu pracy][img-workflow-diagram]
 
-1. Akcja Hive uruchamia skrypt HiveQL zliczania wystąpień poszczególnych typów poziom dziennika, w pliku log4j. Każdy plik log4j składa się z linii pola zawiera pole [poziom dziennika], który pokazuje typ i ważność, na przykład:
+1. Działanie programu Hive jest uruchamiany skrypt HiveQL, zliczania wystąpień każdego typu poziomu dziennika w pliku log4j. Każdy plik log4j składa się z wiersz pola, który zawiera pola [poziom dziennika], które zawiera typ i ważność, na przykład:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
    
-    Dane wyjściowe skryptu Hive jest podobny do:
+    Dane wyjściowe skryptu programu Hive jest podobny do:
    
         [DEBUG] 434
         [ERROR] 3
@@ -50,15 +50,15 @@ Przepływ pracy, który implementuje zgodnie z instrukcjami w tym samouczku zawi
         [WARN]  4
    
     Aby uzyskać więcej informacji na temat programu Hive, zobacz temat [Use Hive with HDInsight][hdinsight-use-hive] (Korzystanie z programu Hive z usługą HDInsight).
-2. Akcja Sqoop eksportuje dane wyjściowe HiveQL do tabeli w bazie danych Azure SQL. Aby uzyskać więcej informacji o Sqoop, zobacz [Hadoop Sqoop użycia z usługą HDInsight][hdinsight-use-sqoop].
+2. Akcja Sqoop eksportuje dane wyjściowe HiveQL do tabeli w bazie danych Azure SQL. Aby uzyskać więcej informacji na temat narzędzia Sqoop zobacz [Hadoop Sqoop korzystanie z HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Obsługiwane wersje Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra Hadoop dostarczanych z usługą HDInsight?] [hdinsight-versions].
+> Obsługiwane wersje programu Oozie w klastrach HDInsight, zobacz [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight?] [hdinsight-versions].
 > 
 > 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego samouczka, musi mieć następującego elementu:
+Przed rozpoczęciem tego samouczka, konieczne jest posiadanie następujących elementów:
 
 * **Stacja robocza z programem Azure PowerShell**. 
   
@@ -66,8 +66,8 @@ Przed rozpoczęciem tego samouczka, musi mieć następującego elementu:
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
   
 
-## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Zdefiniuj Oozie przepływu pracy i powiązanych skrypt HiveQL
-Oozie definicje przepływów pracy są zapisywane w hPDL (XML procesu Definition Language). Domyślna nazwa pliku przepływu pracy jest *workflow.xml*. Poniżej znajduje się plik przepływu pracy, w tym samouczku.
+## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definiowanie przepływu pracy programu Oozie i powiązane skrypt HiveQL
+Definicje przepływów pracy programu Oozie są zapisywane w hPDL (język definicji procesu XML). Domyślna nazwa pliku przepływu pracy jest *workflow.xml*. Poniżej znajduje się plik przepływu pracy, którego używasz w tym samouczku.
 
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
@@ -124,42 +124,42 @@ Oozie definicje przepływów pracy są zapisywane w hPDL (XML procesu Definition
         <end name="end"/>
     </workflow-app>
 
-Istnieją dwie akcje zdefiniowane w przepływie pracy. Akcja do rozpoczęcia jest *RunHiveScript*. Jeśli akcja zostanie wykonane pomyślnie, jest następnej akcji *RunSqoopExport*.
+Istnieją dwie akcje zdefiniowane w przepływie pracy. Akcja do rozpoczęcia jest *RunHiveScript*. Jeśli akcja zostanie pomyślnie uruchomione, jest następnej akcji *RunSqoopExport*.
 
-RunHiveScript ma kilka zmiennych. Po przesłaniu zadania Oozie ze stacji roboczej za pomocą programu Azure PowerShell można przekazać wartości.
+RunHiveScript ma kilka zmiennych. Możesz przekazać wartości, gdy prześlesz zadanie Oozie ze swojej stacji roboczej przy użyciu programu Azure PowerShell.
 
 <table border = "1">
 <tr><th>Zmienne przepływu pracy</th><th>Opis</th></tr>
-<tr><td>${jobTracker}</td><td>Określa adres URL śledzenia zadania usługi Hadoop. Użyj <strong>jobtrackerhost:9010</strong> w usłudze HDInsight w wersji 3.0 i 2.1.</td></tr>
-<tr><td>${nameNode}</td><td>Określa adres URL węzła nazwa usługi Hadoop. Używać domyślnego adresu systemu plików, na przykład <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>Określa nazwę kolejki przesłania zadania. Użyj <strong>domyślne</strong>.</td></tr>
+<tr><td>${jobTracker}</td><td>Określa adres URL śledzenia zadań usługi Hadoop. Użyj <strong>jobtrackerhost:9010</strong> w HDInsight w wersji 3.0 i 2.1.</td></tr>
+<tr><td>${nameNode}</td><td>Określa adres URL węzła nazwa usługi Hadoop. Użyj domyślnego adresu systemu plików, na przykład <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
+<tr><td>${queueName}</td><td>Określa nazwę kolejki, który zadanie jest przesyłany do usługi. Użyj <strong>domyślne</strong>.</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Gałąź zmiennej akcji</th><th>Opis</th></tr>
+<tr><th>Hive zmiennej akcji</th><th>Opis</th></tr>
 <tr><td>${hiveDataFolder}</td><td>Określa katalog źródłowy dla polecenia Hive Create Table.</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>Określa folder wyjściowy dla instrukcji INSERT zastąpić.</td></tr>
-<tr><td>${hiveTableName}</td><td>Określa nazwę tabeli Hive, która odwołuje się do plików danych log4j.</td></tr>
+<tr><td>${hiveTableName}</td><td>Określa nazwę tabeli programu Hive, która odwołuje się do plików danych log4j.</td></tr>
 </table>
 
 <table border = "1">
 <tr><th>Sqoop zmiennej akcji</th><th>Opis</th></tr>
 <tr><td>${sqlDatabaseConnectionString}</td><td>Określa parametry połączenia bazy danych Azure SQL.</td></tr>
 <tr><td>${sqlDatabaseTableName}</td><td>Określa, gdzie dane są eksportowane do tabeli bazy danych Azure SQL.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Określa folder wyjściowy dla instrukcji Hive Wstaw zastąpić. To jest tym samym folderze eksportu Sqoop (export-dir).</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Określa folder wyjściowy dla instrukcji Hive Wstaw zastąpić. To ten sam folder eksportu Sqoop (export-dir).</td></tr>
 </table>
 
-Aby uzyskać więcej informacji o przepływie pracy Oozie i przy użyciu działań przepływu pracy, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (dla usługi HDInsight w wersji 3.0 lub nowszej) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (dla usługi HDInsight w wersji 2.1).
+Aby uzyskać więcej informacji o przepływie pracy programu Oozie i przy użyciu akcji przepływu pracy, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (w przypadku HDInsight w wersji 3.0 lub nowszej) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (w przypadku HDInsight w wersji 2.1).
 
-Akcja gałęzi w przepływie pracy wywołuje skrypt HiveQL. Ten plik skryptu zawiera trzy instrukcje HiveQL:
+Działanie programu Hive w przepływie pracy wywołuje plik skryptu HiveQL. Ten plik skryptu zawiera trzy instrukcje HiveQL:
 
     DROP TABLE ${hiveTableName};
     CREATE EXTERNAL TABLE ${hiveTableName}(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE DIRECTORY '${hiveOutputFolder}' SELECT t4 AS sev, COUNT(*) AS cnt FROM ${hiveTableName} WHERE t4 LIKE '[%' GROUP BY t4;
 
-1. **Wykonywanie instrukcji DROP TABLE** usuwa tabeli Hive log4j, jeśli istnieje.
-2. **Wykonywanie instrukcji CREATE TABLE** tworzy log4j tabeli programu Hive zewnętrznych wskazującą lokalizację pliku dziennika log4j. Ogranicznik pola jest ",". Ogranicznik wiersza domyślną jest "\n". Gałąź tabeli zewnętrznej służy do uniknięcia pliku danych usuwana z oryginalnej lokalizacji, jeśli chcesz uruchomić przepływ pracy Oozie wiele razy.
-3. **Instrukcja INSERT zastąpić** liczby wystąpień poszczególnych typów poziomu dziennika z tabeli Hive log4j i zapisuje dane wyjściowe do obiektu blob w usłudze Azure Storage.
+1. **Instrukcja DROP TABLE** usuwa tabelę programu Hive log4j, jeśli taki istnieje.
+2. **Wykonywanie instrukcji CREATE TABLE** tworzy tabelę zewnętrznych log4j Hive, który wskazuje na lokalizację pliku dziennika log4j. Ogranicznik pola jest ",". Ogranicznik wiersza domyślną jest "\n". Zewnętrzne tabeli programu Hive jest używana w celu uniknięcia pliku danych usuwany z oryginalnej lokalizacji, jeśli chcesz uruchomić przepływ pracy Oozie wiele razy.
+3. **Instrukcja INSERT zastąpić** liczby wystąpień każdego typu poziomu dziennika z tabeli programu Hive log4j i zapisuje dane wyjściowe do obiektu blob w usłudze Azure Storage.
 
 Istnieją trzy zmienne używane w skrypcie:
 
@@ -167,24 +167,24 @@ Istnieją trzy zmienne używane w skrypcie:
 * ${hiveDataFolder}
 * ${hiveOutputFolder}
 
-Plik definicji przepływu pracy (workflow.xml w tym samouczku) przekazuje te wartości na ten skrypt HiveQL w czasie wykonywania.
+Plik definicji przepływu pracy (workflow.xml w ramach tego samouczka) przekazuje te wartości do tego skryptu HiveQL w czasie wykonywania.
 
-Zarówno plik przepływu pracy, jak i plik HiveQL są przechowywane w kontenerze obiektów blob.  Skrypt programu PowerShell używanego w dalszej części tego samouczka oba pliki są kopiowane do domyślnego konta magazynu. 
+Zarówno plik przepływu pracy, jak i plik HiveQL są przechowywane w kontenerze obiektów blob.  Skrypt programu PowerShell, których użyjesz w dalszej części tego samouczka kopiuje oba pliki, do domyślnego konta magazynu. 
 
 ## <a name="submit-oozie-jobs-using-powershell"></a>Przesyłanie zadań Oozie przy użyciu programu PowerShell
-Program Azure PowerShell obecnie nie udostępnia żadnych poleceń cmdlet do definiowania Oozie zadań. Można użyć **Invoke RestMethod** polecenia cmdlet do wywołania usługi sieci web Oozie. Interfejs API usług sieci web Oozie jest JSON interfejsu API REST protokołu HTTP. Aby uzyskać więcej informacji o usługach sieci web Oozie interfejsu API, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (dla usługi HDInsight w wersji 3.0 lub nowszej) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (dla usługi HDInsight w wersji 2.1).
+Program Azure PowerShell aktualnie nie zapewnia żadnych poleceń cmdlet do definiowania zadań Oozie. Możesz użyć **Invoke RestMethod** polecenia cmdlet do wywołania usługi sieci web programu Oozie. API usług sieci web programu Oozie jest JSON interfejsu API REST protokołu HTTP. Aby uzyskać więcej informacji o usługach sieci web programu Oozie interfejsu API, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (w przypadku HDInsight w wersji 3.0 lub nowszej) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (w przypadku HDInsight w wersji 2.1).
 
 Skrypt programu PowerShell w tej sekcji wykonuje następujące czynności:
 
-1. Połączenia z platformą Azure.
-2. Utwórz grupę zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [użycia programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
-3. Utwórz serwer bazy danych SQL Azure, bazy danych Azure SQL i dwie tabele. Są one używane przez akcję Sqoop w przepływie pracy.
+1. Łączenie z platformą Azure.
+2. Utwórz grupę zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
+3. Tworzenie serwera usługi Azure SQL Database, Azure SQL database i dwie tabele. Są one używane przez akcję Sqoop w przepływie pracy.
    
     Nazwa tabeli jest *log4jLogCount*.
-4. Tworzenie klastra usługi HDInsight używane do uruchamiania zadań Oozie.
+4. Utworzenie klastra usługi HDInsight używane do uruchamiania zadań programu Oozie.
    
-    Aby zbadać klastra, można użyć portalu Azure lub programu Azure PowerShell.
-5. Skopiuj plik oozie przepływu pracy i plik skryptu HiveQL do domyślnego systemu plików.
+    Aby zbadać klastra, można użyć witryny Azure portal lub programu Azure PowerShell.
+5. Skopiuj plik przepływu pracy programu oozie oraz pliku skryptu HiveQL do domyślnego systemu plików.
    
     Oba pliki są przechowywane w publicznego kontenera obiektów Blob.
    
@@ -193,9 +193,9 @@ Skrypt programu PowerShell w tej sekcji wykonuje następujące czynności:
    * Skopiuj plik danych (/ example/data/sample.log) do wasb:///tutorials/useoozie/data/sample.log.
 6. Prześlij zadanie Oozie.
    
-    Aby przejrzeć wyniki zadania OOzie, należy użyć programu Visual Studio lub innych narzędzi do nawiązania połączenia z bazą danych SQL Azure.
+    Badanie wyników zadania programu OOzie, należy użyć programu Visual Studio lub innych narzędzi do łączenia z usługą Azure SQL Database.
 
-Poniżej przedstawiono skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Należy skonfigurować zmienne pierwszych 7.
+Oto skrypt.  Skrypt można uruchomić z programu Windows PowerShell ISE. Musisz skonfigurować zmienne pierwsze 7.
 
     #region - provide the following values
 
@@ -577,11 +577,11 @@ Poniżej przedstawiono skrypt.  Skrypt można uruchomić z programu Windows Powe
     #endregion
 
 
-**Aby ponownie uruchomić samouczka**
+**Aby ponownie uruchomić tego samouczka**
 
 Aby ponownie uruchomić przepływ pracy, należy usunąć następujące elementy:
 
-* Plik danych wyjściowych skryptu Hive
+* Plik danych wyjściowych skryptu programu Hive
 * Dane w tabeli log4jLogsCount
 
 Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można używać:
@@ -617,17 +617,17 @@ Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można 
     $conn.close()
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób definiowania Oozie przepływu pracy i sposób uruchamiania zadania Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym samouczku pokazano, jak zdefiniować przepływ pracy programu Oozie i sposób uruchamiania zadania programu Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Korzystanie z usługą HDInsight oparte na czasie Oozie Coordinator][hdinsight-oozie-coordinator-time]
-* [Rozpocząć korzystanie z usługi Hadoop przy użyciu Hive w usłudze HDInsight do analizy użycia przenośnych słuchawki][hdinsight-get-started]
-* [Użyj magazynu obiektów Blob platformy Azure z usługą HDInsight][hdinsight-storage]
+* [Za pomocą usług opartych na czasie koordynatora programu Oozie HDInsight][hdinsight-oozie-coordinator-time]
+* [Rozpoczynanie pracy za pomocą usługi Hadoop przy użyciu technologii Hive w HDInsight do analizy użycia przenośnych słuchawki][hdinsight-get-started]
+* [Usługi Azure Blob storage za pomocą HDInsight][hdinsight-storage]
 * [Administrowanie HDInsight przy użyciu programu PowerShell][hdinsight-admin-powershell]
-* [Przekazywanie danych dotyczących zadań Hadoop w usłudze HDInsight][hdinsight-upload-data]
-* [Używanie Sqoop z platformą Hadoop w usłudze HDInsight][hdinsight-use-sqoop]
-* [Korzystanie z programu Hive z usługą Hadoop w usłudze HDInsight][hdinsight-use-hive]
-* [Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight][hdinsight-use-pig]
-* [Tworzenie programów Java MapReduce dla usługi HDInsight][hdinsight-develop-mapreduce]
+* [Przekazywanie danych na potrzeby zadań usługi Hadoop w HDInsight][hdinsight-upload-data]
+* [Z usługą Hadoop w HDInsight przy użyciu narzędzia Sqoop][hdinsight-use-sqoop]
+* [Korzystanie z programu Hive z usługą Hadoop w HDInsight][hdinsight-use-hive]
+* [Korzystanie z języka Pig z platformą Hadoop w HDInsight][hdinsight-use-pig]
+* [Opracowywanie programów MapReduce w języku Java dla HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
 

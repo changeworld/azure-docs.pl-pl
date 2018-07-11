@@ -1,57 +1,57 @@
 ---
-title: Powiązanie usługi Twilio funkcji platformy Azure
-description: Zrozumienie sposobu korzystania z usługi Azure Functions powiązania usługi Twilio.
+title: Usługa Azure powiązania funkcji usługi Twilio
+description: Dowiedz się, jak powiązania usługi Twilio za pomocą usługi Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
-keywords: funkcje usługi Azure, funkcje, przetwarzania zdarzeń, dynamiczne obliczeń niekorzystającą architektury
+keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 07/09/2018
 ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6c5a2e11e8b2faa62b04a792f5040ea928d94a3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a391c411d0d3608d30309927875a62b366899367
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318711"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929505"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Powiązanie usługi Twilio dla usługi Azure Functions
+# <a name="twilio-binding-for-azure-functions"></a>Powiązania usługi Twilio dla usługi Azure Functions
 
-W tym artykule wyjaśniono, jak wysyłać wiadomości tekstowych przy użyciu [usługi Twilio](https://www.twilio.com/) powiązania usługi Azure Functions. Azure funkcji obsługuje dane wyjściowe powiązania usługi Twilio.
+W tym artykule wyjaśniono, jak wysyłać wiadomości SMS za pomocą [Twilio](https://www.twilio.com/) powiązań w usłudze Azure Functions. Usługa Azure Functions obsługuje powiązania danych wyjściowych dla usługi Twilio.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania usługi Twilio znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet, wersja 1.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
+Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 1.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
 
-Powiązania usługi Twilio znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu jest w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
+Powiązania usługi Twilio, znajdują się w [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) repozytorium GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example---functions-1x"></a>Przykład — funkcje 1.x
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
-### <a name="c-example"></a>Przykład C#
+### <a name="c-example"></a>Przykład w języku C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) który wysyła komunikat tekstowy wyzwolenia komunikatu w kolejce.
+W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) wysyłającą wiadomość SMS po wyzwoleniu przez komunikatu w kolejce.
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -76,9 +76,9 @@ W tym przykładzie użyto `TwilioSms` atrybutu z wartością zwracaną metody. A
 
 ### <a name="c-script-example"></a>Przykładowy skrypt w języku C#
 
-W poniższym przykładzie przedstawiono dane wyjściowe z usługi Twilio powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja używa `out` parametr, aby wysłać wiadomość SMS.
+W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Twilio *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja używa `out` parametru, aby wysłać wiadomości SMS.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 Przykład function.json:
 
@@ -95,7 +95,7 @@ Przykład function.json:
 }
 ```
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -126,7 +126,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-Nie można używać parametrów w kodzie asynchroniczne out. Oto asynchroniczne C# kod przykładowy skrypt:
+Nie można używać parametrów w kodzie asynchronicznym out. Oto asynchronicznego języka C# kod przykładowy skrypt:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -161,9 +161,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> mes
 
 ### <a name="javascript-example"></a>Przykład JavaScript
 
-W poniższym przykładzie przedstawiono dane wyjściowe z usługi Twilio powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania.
+W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Twilio *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 Przykład function.json:
 
@@ -180,7 +180,7 @@ Przykład function.json:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -208,20 +208,20 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="example---functions-2x"></a>Przykład — funkcje 2.x
 
-Zapoznaj się z przykładem specyficzny dla języka:
+Zobacz przykład specyficzny dla języka:
 
-* [2.x C#](#2x-c-example)
-* [skrypt 2.x C# (csx)](#2x-c-script-example)
+* [2.x języka C#](#2x-c-example)
+* [skrypt 2.x języka C# (csx)](#2x-c-script-example)
 * [2.x JavaScript](#2x-javascript-example)
 
-### <a name="2x-c-example"></a>przykład 2.x C#
+### <a name="2x-c-example"></a>przykład 2.x języka C#
 
-W poniższym przykładzie przedstawiono [C# funkcja](functions-dotnet-class-library.md) który wysyła komunikat tekstowy wyzwolenia komunikatu w kolejce.
+W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) wysyłającą wiadomość SMS po wyzwoleniu przez komunikatu w kolejce.
 
 ```cs
 [FunctionName("QueueTwilio")]
 [return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
+public static CreateMessageOptions Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
     TraceWriter log)
 {
@@ -239,11 +239,11 @@ public static SMSMessage Run(
 
 W tym przykładzie użyto `TwilioSms` atrybutu z wartością zwracaną metody. Alternatywą jest użycie atrybutu o `out CreateMessageOptions` parametru lub `ICollector<CreateMessageOptions>` lub `IAsyncCollector<CreateMessageOptions>` parametru.
 
-### <a name="2x-c-script-example"></a>Przykładowy skrypt 2.x C#
+### <a name="2x-c-script-example"></a>Przykładowy skrypt 2.x języka C#
 
-W poniższym przykładzie przedstawiono dane wyjściowe z usługi Twilio powiązanie w *function.json* pliku i [funkcji skryptu C#](functions-reference-csharp.md) używającą powiązania. Funkcja używa `out` parametr, aby wysłać wiadomość SMS.
+W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Twilio *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja używa `out` parametru, aby wysłać wiadomości SMS.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 Przykład function.json:
 
@@ -260,7 +260,7 @@ Przykład function.json:
 }
 ```
 
-Oto kod skryptu C#:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -292,7 +292,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  Tr
 }
 ```
 
-Nie można używać parametrów w kodzie asynchroniczne out. Oto asynchroniczne C# kod przykładowy skrypt:
+Nie można używać parametrów w kodzie asynchronicznym out. Oto asynchronicznego języka C# kod przykładowy skrypt:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -328,9 +328,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 
 ### <a name="2x-javascript-example"></a>przykład JavaScript 2.x
 
-W poniższym przykładzie przedstawiono dane wyjściowe z usługi Twilio powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) używającą powiązania.
+W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Twilio *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa.
 
-W tym miejscu jest powiązanie danych *function.json* pliku:
+Oto powiązanie danych w *function.json* pliku:
 
 Przykład function.json:
 
@@ -347,7 +347,7 @@ Przykład function.json:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -375,9 +375,9 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Atrybuty
 
-W [bibliotek klas C#](functions-dotnet-class-library.md), użyj [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) atrybutu.
+W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) atrybutu.
 
-Informacje o właściwości atrybutów, które można skonfigurować, zobacz [konfiguracji](#configuration). Oto `TwilioSms` przykład atrybutu w podpisie metody:
+Aby uzyskać informacji na temat właściwości atrybutów, które można skonfigurować, zobacz [konfiguracji](#configuration). Oto `TwilioSms` przykład atrybutu w podpisie metody:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -393,26 +393,26 @@ public static SMSMessage Run(
 }
  ```
 
-Pełny przykład, zobacz [przykład C#](#c-example).
+Aby uzyskać kompletny przykład, zobacz [przykład w języku C#](#c-example).
 
 ## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które można ustawić w *function.json* pliku i `TwilioSms` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `TwilioSms` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type**|| należy wybrać opcję `twilioSms`.|
-|**direction**|| należy wybrać opcję `out`.|
-|**Nazwa**|| Nazwa zmiennej używane w kodzie funkcja wiadomości SMS usługi Twilio. |
-|**accountSid**|**AccountSid**| Ta wartość musi mieć ustawioną nazwę ustawienia aplikacji obsługującej Twojego identyfikatora Sid konta usługi Twilio.|
-|**authToken**|**Parametr AuthToken**| Ta wartość musi mieć ustawioną Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio.|
-|**Aby**|**Do**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane do.|
+|**type**|| Musi być równa `twilioSms`.|
+|**direction**|| Musi być równa `out`.|
+|**Nazwa**|| Nazwa zmiennej, używane w kodzie funkcji wiadomości SMS usługi Twilio. |
+|**accountSid**|**AccountSid**| Ta wartość musi być równa Nazwa ustawienia aplikacji, zawierający Sid konta usługi Twilio.|
+|**authToken**|**AuthToken**| Ta wartość musi być równa Nazwa ustawienia aplikacji, który zawiera token uwierzytelniania usługi Twilio.|
+|**Aby**|**Do**| Ta wartość jest równa numer telefonu, tekst wiadomości SMS wysyłane do.|
 |**z**|**From**| Ta wartość jest równa numer telefonu, który tekst wiadomości SMS są wysyłane z.|
-|**body**|**Treść**| Ta wartość może być używana twardego kodu wiadomość SMS, jeśli nie trzeba ustawić ją dynamicznie w kodzie dla funkcji. |
+|**body**|**Treść**| Ta wartość może służyć do ciężko kodu wiadomość SMS, jeśli nie potrzebujesz dynamicznie ustawić go w kodzie funkcji. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o usługę Azure functions wyzwalaczy i powiązań](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

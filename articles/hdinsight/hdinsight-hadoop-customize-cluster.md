@@ -1,8 +1,7 @@
 ---
-title: Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu - Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosować klastry usługi HDInsight przy użyciu akcji skryptu.
+title: Dostosowywanie klastrów HDInsight za pomocą akcji skryptu — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosowywanie klastrów HDInsight za pomocą akcji skryptu.
 services: hdinsight
-documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,76 +13,76 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808863"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950618"
 ---
-# <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Windows za pomocą akcji skryptu
-**Akcja skryptu** może służyć do wywołania [niestandardowych skryptów](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
+# <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów HDInsight z systemem Windows za pomocą akcji skryptu
+**Akcja skryptu** może służyć do wywołania [niestandardowe skrypty](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
 
-Informacje przedstawione w tym artykule jest specyficzne dla klastrów usługi HDInsight opartych na systemie Windows. W klastrach opartych na systemie Linux, zobacz [klastrów usługi HDInsight opartej na dostosowanie systemu Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
+Informacje przedstawione w tym artykule dotyczy klastrów HDInsight z systemem Windows. W przypadku klastrów opartych na systemie Linux, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-Klastry usługi HDInsight można dostosować w różnych innych metod, a także takie jak tym dodatkowych kont usługi Azure Storage, zmiana Hadoop plików konfiguracji (core-site.xml, hive-site.xml, itp.) lub biblioteki (np. Hive, Oozie) dodawanie udostępnione do wspólnej lokalizacji w klastrze. Te modyfikacje może odbywać się za pomocą programu Azure PowerShell, zestawu .NET SDK usługi Azure HDInsight lub w portalu Azure. Aby uzyskać więcej informacji, zobacz [klastrów utworzyć Hadoop w usłudze HDInsight][hdinsight-provision-cluster].
+Klastry HDInsight można dostosować w różnych także inne sposoby, np. w tym dodatkowe konta usługi Azure Storage, zmiana Hadoop z plików konfiguracji (core-site.xml, gałąź site.xml itp.) lub dodawania udostępnionych bibliotek (np. programu Hive, Oozie) w typowe lokalizacje w klastrze. Te dostosowania można wykonać za pomocą programu Azure PowerShell, zestawu .NET SDK usługi Azure HDInsight lub witryny Azure portal. Aby uzyskać więcej informacji, zobacz [Tworzenie klastrów usługi Hadoop w HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
-## <a name="script-action-in-the-cluster-creation-process"></a>Akcja skryptu w ramach procesu tworzenia klastra
-Akcja skryptu jest używana tylko w przypadku, gdy klaster jest właśnie tworzona. Na poniższym diagramie przedstawiono podczas wykonywania akcji skryptu w trakcie procesu tworzenia:
+## <a name="script-action-in-the-cluster-creation-process"></a>Akcja skryptu w procesie tworzenia klastra
+Akcja skryptu jest używany tylko w sytuacji, gdy klaster jest właśnie tworzona. Na poniższym diagramie przedstawiono podczas wykonywania w trakcie procesu tworzenia akcji skryptu:
 
-![Dostosowywanie klastrów usługi HDInsight i etapy podczas tworzenia klastra][img-hdi-cluster-states]
+![Dostosowywanie klastra HDInsight i etapy podczas tworzenia klastra][img-hdi-cluster-states]
 
-Podczas wykonywania skryptu klastra wprowadza **ClusterCustomization** etapu. Na tym etapie skrypt jest uruchamiany na koncie administratora systemu, równolegle dla określonych węzłów w klastrze i zawiera uprawnienia administrator o pełnych uprawnieniach w węzłach.
+Podczas wykonywania skryptu klaster przechodzi **ClusterCustomization** etapu. Na tym etapie skrypt jest uruchamiany na koncie administratora systemu, równolegle na określonych węzłów w klastrze i zapewnia uprawnienia Pełna Administracja w węzłach.
 
 > [!NOTE]
-> Ponieważ użytkownik ma uprawnienia administratora w węzłach klastra podczas **ClusterCustomization** etapie umożliwia skrypt wykonywać operacje, takie jak zatrzymanie i uruchomienie usług, w tym usług związanych z usługi Hadoop. Tak, jako część skryptu należy się upewnić czy usług Ambari i innych usług związanych z Hadoop i uruchomić przed zakończeniu skryptu. Te usługi są wymagane do pomyślnie ustalić kondycję i stan klastra podczas jego tworzenia. Jeśli zmienisz żadnej konfiguracji w klastrze, który ma wpływ na tych usług, należy użyć funkcji pomocniczych, które są udostępniane. Aby uzyskać więcej informacji o funkcji pomocnika, zobacz [skryptów tworzenie akcji skryptu dla usługi HDInsight][hdinsight-write-script].
+> Ponieważ masz uprawnienia administratora na węzłach klastra podczas **ClusterCustomization** etapu, można użyć skryptu do wykonania operacji, takich jak zatrzymywanie i uruchamianie usług, w tym usług związanych z usługi Hadoop. Tak, jako część skryptu upewnij się, że usługi Ambari i innych usług związanych z usługi Hadoop zostały włączone i uruchomione przed skrypt zakończy się uruchamianie. Te usługi są wymagane do pomyślnie stwierdzenia kondycję i stan klastra podczas jego tworzenia. Jeśli zmienisz żadnej konfiguracji w klastrze, który ma wpływ na te usługi, należy użyć funkcji pomocnika, które są dostarczane. Aby uzyskać więcej informacji na temat funkcji pomocnika, zobacz [skrypty opracowywanie akcji skryptu do HDInsight][hdinsight-write-script].
 >
 >
 
-Dane wyjściowe i dzienników błędów dla skryptu są przechowywane w domyślne konto magazynu, określone dla klastra. Dzienniki są przechowywane w tabeli o nazwie **u < \cluster-name-fragment >< \time-stamp > setuplog**. Są to dzienniki agregacji w skrypcie uruchamiania we wszystkich węzłach (węzła głównego i węzły procesów roboczych) w klastrze.
+Dane wyjściowe i dzienników błędów dla skryptu są przechowywane w domyślne konto magazynu, która została określona jako klaster. Dzienniki są przechowywane w tabeli o nazwie **u < \cluster-name-fragment >< \time-stamp > setuplog**. Są to agregować dzienniki z skrypt uruchamiany na wszystkie węzły (węzeł główny i węzły procesu roboczego) w klastrze.
 
-Każdy klaster może akceptować wiele akcji skryptu, które jest wywoływane w kolejności, w którym są określone. Skrypt może uruchomionego na węzła głównego i węzłów procesu roboczego.
+Każdy klaster może akceptować wiele akcji skryptu, które są wywoływane w kolejności, w którym są określone. Skrypt można uruchomiono na węzeł główny i węzły procesu roboczego.
 
-Usługa HDInsight zapewnia kilka skryptów do zainstalowania następujących składników w klastrach HDInsight:
+HDInsight udostępnia szereg skryptów do zainstalowania następujących składników w klastrach HDInsight:
 
 | Name (Nazwa) | Skrypt |
 | --- | --- |
-| **Zainstaluj Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Zobacz [instalacji i używania platformy Spark w usłudze HDInsight clusters][hdinsight-install-spark]. |
-| **Zainstalować język R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Zobacz [instalacji i użyj R w klastrach HDInsight] [hdinsight-install-r]. |
-| **Zainstaluj Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Zobacz [instalacji i używania Solr w usłudze HDInsight clusters](hdinsight-hadoop-solr-install.md). |
-| - **Zainstaluj Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Zobacz [instalacji i używania Giraph w usłudze HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
-| **Wstępne ładowanie bibliotek technologii Hive** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Zobacz [dodać Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
+| **Instalowanie platformy Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobacz [instalacji i używania klastrów Spark on HDInsight][hdinsight-install-spark]. |
+| **Instalowanie języka R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobacz [instalacji i używania języka R w klastrach HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
+| **Zainstalować platformę Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobacz [instalacji i używania platformy Solr w HDInsight clusters](hdinsight-hadoop-solr-install.md). |
+| **Zainstalować system Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobacz [instalacji i używania system Giraph w HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
+| **Wstępne ładowanie bibliotek technologii Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobacz [Dodaj Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Skrypty wywołania przy użyciu portalu Azure
-**W portalu Azure**
+## <a name="call-scripts-using-the-azure-portal"></a>Wywoływanie skryptów przy użyciu witryny Azure portal
+**W witrynie Azure portal**
 
-1. Rozpocznij tworzenie klastra, zgodnie z opisem w [klastrów utworzyć Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-2. W obszarze Konfiguracja opcjonalne dla **akcji skryptu** bloku, kliknij przycisk **dodać akcję skryptu** do udostępnienia szczegółów dotyczących akcji skryptu, jak pokazano poniżej:
+1. Rozpocznij tworzenie klastra zgodnie z opisem w [Tworzenie klastrów usługi Hadoop w HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+2. W obszarze Konfiguracja opcjonalna dla **akcji skryptu** bloku kliknij **Dodaj akcję skryptu** dostarczanie szczegółowych informacji o akcji skryptu, jak pokazano poniżej:
 
-    ![Aby dostosować klastra, użyj akcji skryptu](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "użyj akcji skryptu, aby dostosować klastra")
+    ![Użyć akcji skryptu, aby dostosować klaster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "użyj akcji skryptu, aby dostosować klastra")
 
     <table border='1'>
         <tr><th>Właściwość</th><th>Wartość</th></tr>
         <tr><td>Name (Nazwa)</td>
-            <td>Określ nazwę akcji skryptu.</td></tr>
+            <td>Określ nazwę dla akcji skryptu.</td></tr>
         <tr><td>Identyfikator URI skryptu</td>
-            <td>Określ identyfikator URI do skryptu, które jest wywoływane, aby dostosować klastra. s</td></tr>
-        <tr><td>HEAD/proces roboczy.</td>
+            <td>Określ identyfikator URI do skryptu, który jest wywoływana w celu dostosowania do klastra. s</td></tr>
+        <tr><td>Główny/procesu roboczego</td>
             <td>Określ węzły (**Head** lub **procesu roboczego**) uruchamiania skryptu dostosowania.</b>.
         <tr><td>Parametry</td>
             <td>Określ parametry, jeśli jest to wymagane przez skrypt.</td></tr>
     </table>
 
-    Naciśnij klawisz ENTER, aby dodać więcej niż jedna akcja skryptu, aby zainstalować wiele składników w klastrze.
-3. Kliknij przycisk **wybierz** Aby zapisać konfigurację akcji skryptu i kontynuować tworzenia klastra.
+    Naciśnij klawisz ENTER, aby dodać więcej niż jedna akcja skryptu do zainstalowania wiele składników w klastrze.
+3. Kliknij przycisk **wybierz** Aby zapisać konfigurację akcji skryptu, a następnie kontynuuj tworzenia klastra.
 
-## <a name="call-scripts-using-azure-powershell"></a>Skrypty wywołania przy użyciu programu Azure PowerShell
-Tego poniższy skrypt programu PowerShell pokazano, jak zainstalować Spark w klastrze usługi HDInsight opartych na systemie Windows.  
+## <a name="call-scripts-using-azure-powershell"></a>Wywoływanie skryptów przy użyciu programu Azure PowerShell
+Ten poniższy skrypt programu PowerShell pokazuje, jak zainstalować program w Windows oparte na klastrze HDInsight Spark.  
 
     # Provide values for these variables
     $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
@@ -167,15 +166,15 @@ Tego poniższy skrypt programu PowerShell pokazano, jak zainstalować Spark w kl
 
 Aby zainstalować inne oprogramowanie, należy zastąpić plik skryptu w skrypcie:
 
-Po wyświetleniu monitu wprowadź poświadczenia dla klastra. Może upłynąć kilka minut przed utworzeniem klastra.
+Po wyświetleniu monitu wprowadź poświadczenia dla klastra. Może upłynąć kilka minut, zanim został utworzony klaster.
 
-## <a name="call-scripts-using-net-sdk"></a>Skrypty wywołania przy użyciu zestawu .NET SDK
-W poniższym przykładzie pokazano, jak zainstalować Spark w klastrze usługi HDInsight opartych na systemie Windows. Aby zainstalować inne oprogramowanie, należy zastąpić plik skryptu w kodzie.
+## <a name="call-scripts-using-net-sdk"></a>Wywoływanie skryptów przy użyciu zestawu SDK platformy .NET
+Poniższy przykład pokazuje, jak zainstalować program w Windows oparte na klastrze HDInsight Spark. Aby zainstalować inne oprogramowanie, należy zastąpić plik skryptu w kodzie.
 
-**Aby utworzyć klaster usługi HDInsight za pomocą Spark**
+**Aby utworzyć klaster usługi HDInsight za pomocą platformy Spark**
 
 1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
-2. Za pomocą konsoli Menedżera pakietów Nuget uruchom następujące polecenie.
+2. Z poziomu konsoli Menedżera pakietów Nuget uruchom następujące polecenie.
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
@@ -191,7 +190,7 @@ W poniższym przykładzie pokazano, jak zainstalować Spark w klastrze usługi H
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
-4. Umieść kod w klasie, z następujących czynności:
+4. Umieść kod w klasie następującym kodem:
 
         private static HDInsightManagementClient _hdiManagementClient;
 
@@ -283,38 +282,38 @@ W poniższym przykładzie pokazano, jak zainstalować Spark w klastrze usługi H
         }
 5. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Obsługa oprogramowania typu open source używane w klastrach HDInsight
-Usługa Microsoft Azure HDInsight jest elastyczna platforma, która umożliwia tworzenie aplikacji danych big data w chmurze przy użyciu ekosystem technologii open source utworzona wokół Hadoop. Microsoft Azure udostępnia ogólnego poziomu wsparcia dla technologii open source, zgodnie z opisem w **obsługuje zakresu** sekcji <a href="http://azure.microsoft.com/support/faq/" target="_blank">witryny sieci Web często zadawane pytania dotyczące obsługi Azure</a>. Usługa HDInsight zapewnia dodatkowy poziom obsługi dla niektórych składników, zgodnie z poniższym opisem.
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Pomoc techniczna dotycząca oprogramowania typu open-source używane w klastrach HDInsight
+Usługa Microsoft Azure HDInsight jest elastyczna platforma, która umożliwia tworzenie aplikacji danych big data w chmurze przy użyciu ekosystem technologii open source utworzonych na platformie Hadoop. System Microsoft Azure oferuje ogólnego poziomu pomocy technicznej dla technologii open source, zgodnie z opisem w **zakres pomocy technicznej** części <a href="http://azure.microsoft.com/support/faq/" target="_blank">witryny sieci Web często zadawane pytania dotyczące pomocy technicznej Azure</a>. Usługa HDInsight zapewnia dodatkowy poziom pomocy technicznej dla niektórych składników, zgodnie z poniższym opisem.
 
-Istnieją dwa typy składników open source, które są dostępne w usłudze HDInsight:
+Istnieją dwa typy składników typu open source, które są dostępne w usłudze HDInsight:
 
-* **Wbudowanych składników** — te składniki są wstępnie zainstalowane w klastrach HDInsight i podaj podstawowe funkcje klastra. Na przykład YARN ResourceManager, język zapytań Hive (HiveQL) i biblioteki Mahout należą do tej kategorii. Pełna lista składniki klastra jest dostępna w [nowości w wersjach klastra Hadoop dostarczanych z usługą HDInsight?](hdinsight-component-versioning.md) </a>.
-* **Niestandardowe składniki** -, jako użytkownik klastra, można zainstalować lub użyć w obciążenie żadnych składników dostępnych w społeczności lub utworzonych przez użytkownika.
+* **Wbudowane składniki** — te składniki są wstępnie zainstalowane w klastrach HDInsight i zapewnia podstawowe funkcje klastra. Na przykład Menedżer zasobów usługi YARN, język zapytań programu Hive (HiveQL) i biblioteki mahout dostępnych należą do tej kategorii. Pełną listę składniki klastra jest dostępna w [nowości w wersjach klastra Hadoop dostarczanych przez HDInsight?](hdinsight-component-versioning.md) </a>.
+* **Składniki niestandardowe** —, jako użytkownik klastra, można zainstalować lub użyj w obciążenia dowolny składnik, dostępne w społeczności lub utworzonej przez użytkownika.
 
-Wbudowane składniki są w pełni obsługiwane, a Support firmy Microsoft pomoże w celu odizolowania i rozwiązać problemy związane z tych składników.
+Wbudowane składniki są w pełni obsługiwane, a Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 
 > [!WARNING]
-> Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane, a Microsoft Support pomoże w celu odizolowania i rozwiązać problemy związane z tych składników.
+> Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane i Microsoft Support pomoże wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Niestandardowe składniki otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Może to spowodować w rozwiązaniu problemu lub monitem o Uwzględnij dostępnych kanałów dla technologiach typu open source wykryto głębokie doświadczenia z tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Składniki niestandardowe otrzymują uzasadnioną komercyjnie pomoc techniczną, aby pomóc rozwiązać ten problem. Może to spowodować rozwiązuje problem lub pytaniem, dzięki którym można zaangażować dostępne kanały dla technologii "open source", gdzie znajduje się specjalistyczna dla tej technologii. Na przykład, istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dotyczące HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projektów Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
-Usługa HDInsight zapewnia kilka sposobów użycia niestandardowych składników. Niezależnie od tego, jak składnik jest używany lub zainstalowany w klastrze dotyczą tego samego poziomu wsparcia. Poniżej znajduje się lista typowych sposobów, że niestandardowe składniki mogą być używane w klastrach HDInsight:
+Usługa HDInsight oferuje kilka sposobów używania niestandardowych składników. Niezależnie od tego, jak składnik jest używana lub zainstalowane w klastrze stosuje się ten sam poziom pomocy technicznej. Poniżej przedstawiono listę najbardziej typowych sposobów, że niestandardowe składniki mogą być używane w klastrach HDInsight:
 
-1. Przesyłanie zadań — usługi Hadoop i innych typów zadań, które wykonać albo użyć niestandardowych składników może zostać przesłane do klastra.
-2. Dostosowywanie klastra — podczas tworzenia klastra, można określić dodatkowe ustawienia i niestandardowych składników, które zostaną zainstalowane na węzłach klastra.
-3. Próbek - dla popularnych niestandardowych składników, firma Microsoft i inne osoby mogą powodować przykłady sposobu użycia tych składników na klastry usługi HDInsight. Te przykłady są udostępniane bez obsługi.
+1. Przesyłanie zadań — do Hadoop lub innych typów zadań, które wykonania lub użyć niestandardowych składników można przesyłać do klastra.
+2. Dostosowywanie klastra — podczas tworzenia klastra, można określić dodatkowe ustawienia i składników niestandardowych, które będą instalowane w węzłach klastra.
+3. Przykłady — dla popularnych składnikami niestandardowymi, firma Microsoft i inne osoby mogą zawierać przykładów, jak te składniki mogą być używane w klastrach HDInsight. Te przykłady są udostępniane bez pomocy technicznej.
 
 ## <a name="develop-script-action-scripts"></a>Tworzenie skryptów akcji skryptu
-Zobacz [skryptów tworzenie akcji skryptu dla usługi HDInsight][hdinsight-write-script].
+Zobacz [skrypty opracowywanie akcji skryptu do HDInsight][hdinsight-write-script].
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie klastrów Hadoop w usłudze HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
-* [Tworzenie skryptów akcji skryptu dla usługi HDInsight][hdinsight-write-script]
-* [Zainstalować i używać platformy Spark w usłudze hdinsight][hdinsight-install-spark]
-* [Zainstalować i używać Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
-* [Zainstalować i używać Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Tworzenie klastrów Hadoop w HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
+* [Tworzenie akcji skryptu skryptów dla HDInsight][hdinsight-write-script]
+* [Instalowanie i używanie języka Spark w klastrach HDInsight][hdinsight-install-spark]
+* [Instalowanie i korzystanie z platformy Solr w klastrach HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalowanie i używanie systemu Giraph w klastrach HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

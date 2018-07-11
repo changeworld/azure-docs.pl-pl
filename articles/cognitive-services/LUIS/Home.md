@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: da8ea6dead6b22d97e7338b2aa57a892be475417
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1c68c586fb799a540f70804d181aa66b2bda9e97
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344835"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952542"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co to jest Language Understanding (LUIS)?
 Language Understanding (LUIS) to usługa oparta na chmurze, stosowaną niestandardowego uczenia maszynowego do użytkownika konwersacji, tekstu języka naturalnego do przewidywania ogólnego znaczenia i pobierania ich istotne, szczegółowe informacje. 
@@ -99,7 +99,7 @@ Przykład [wypowiedź](luis-how-to-add-example-utterances.md) jest wprowadzanie 
 Po opublikowaniu aplikacją usługi LUIS odbiera wypowiedzi rzeczywistego użytkownika, LUIS udostępnia kilka metod w celu zwiększenia dokładności prognozy: [aktywne uczenie](#active-learning) z wypowiedzi punktu końcowego [frazę list](#phrase-lists) dla domeny Word operacji dołączania i [wzorców](#patterns) do zmniejszenia liczby wypowiedzi potrzebne.
 
 ### <a name="active-learning"></a>Aktywne uczenie
-W [aktywne uczenie](label-suggested-utterances.md) procesu usługi LUIS pozwala na dostosowanie aplikacją usługi LUIS do rzeczywistych wypowiedzi wybierając wypowiedzi otrzymał w punkcie końcowym do przejrzenia. Można zaakceptować lub Popraw endpoint prognoz, ponownego próbkowania i ponownie opublikować. Usługa LUIS uczy się szybko z tym procesem iteracyjnym, biorąc minimalna ilość czasu i wysiłku. 
+W [aktywne uczenie](luis-how-to-review-endoint-utt.md) procesu usługi LUIS pozwala na dostosowanie aplikacją usługi LUIS do rzeczywistych wypowiedzi wybierając wypowiedzi otrzymał w punkcie końcowym do przejrzenia. Można zaakceptować lub Popraw endpoint prognoz, ponownego próbkowania i ponownie opublikować. Usługa LUIS uczy się szybko z tym procesem iteracyjnym, biorąc minimalna ilość czasu i wysiłku. 
 
 ### <a name="phrase-lists"></a>Listy fraz 
 Udostępnia usługi LUIS [określającego list](luis-concept-feature.md) , dzięki czemu można wskazać ważne słów i fraz, które znajdują się do modelu domeny. Usługa LUIS używa tych list można dodać dodatkowe znaczenie tych słów i fraz, które mogłyby w przeciwnym razie nie można znaleźć w modelu.

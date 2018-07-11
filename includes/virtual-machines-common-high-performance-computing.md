@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 496c32e70ad58f64b31c1f6fcf913884fcd4abc1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 5a6c5498b4607719199363b5f6d93d3b42ccec0d
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348239"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967861"
 ---
 Organizacje mają potrzebami obliczeniowymi na dużą skalę. Tych obciążeń funkcji dużych obliczeń obejmują projektowaniem inżynierskim i analizy, obliczeniami w zakresie ryzyka finansowego, renderowaniem obrazu, złożonym modelowaniem, Symulacje Monte Carlo i inne. 
 
@@ -56,9 +56,9 @@ Odwiedź stronę [portalu Azure Marketplace](https://azuremarketplace.microsoft.
 * [SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 *  [Aparat serwera siatki TIBCO](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tibco-software.gridserverlinuxengine?tab=Overview)
 * [Maszyny Wirtualnej dla Windows i Linux do analizy danych platformy Azure](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
-* [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
+* [d3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
-* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
+* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.intel-cloud-edition-gs)
 
 
  
@@ -201,7 +201,7 @@ Przykłady klientów, które zostały rozwiązane problemy biznesowe przy użyci
 * [Firma towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o rozwiązaniach dużych obliczeń dla [inżynierii symulacji](https://simulation.azure.com/), [renderowania](https://azure.microsoft.com/solutions/big-compute/rendering/), [bankowości i rynków kapitałowych](https://finance.azure.com/), i [genomics](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
 * Najnowsze informacje można znaleźć na [blogu zespołu Microsoft HPC i usługi Batch](http://blogs.technet.com/b/windowshpc/) oraz [blogu platformy Azure](https://azure.microsoft.com/blog/tag/hpc/).
 

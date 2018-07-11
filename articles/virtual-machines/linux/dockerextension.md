@@ -1,9 +1,9 @@
 ---
-title: Użyj rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja firmy Microsoft
-description: Informacje o sposobie rozszerzenia maszyny Wirtualnej platformy Docker umożliwia szybkie i bezpieczne wdrażanie środowisku Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i 2.0 interfejsu wiersza polecenia platformy Azure
+title: Za pomocą rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak szybko i bezpiecznie wdrożyć w środowisku platformy Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0 za pomocą rozszerzenia maszyny Wirtualnej Docker
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,32 +13,32 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: iainfou
-ms.openlocfilehash: 6cf77a6fa5e2cb7f9ce349e72444e76d4c687f49
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.author: cynthn
+ms.openlocfilehash: 44c307a5f21937cd2a3ef345fd4573c67efdaf59
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937656"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928622"
 ---
-# <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Tworzenie środowiska Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker
-Docker jest popularnych kontenera zarządzania i tworzenia obrazu platformy, która pozwala na szybkie pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby Docker można wdrożyć zgodnie z potrzebami. Ten artykuł dotyczy przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker i szablony usługi Azure Resource Manager 2.0 interfejsu wiersza polecenia platformy Azure. 
+# <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej Docker
+Docker to Zarządzanie kontenerami popularnych i tworzenia obrazu platformy, która pozwala szybko pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby, które można wdrożyć platformy Docker zgodnie z potrzebami. Ten artykuł koncentruje się na temat korzystania z rozszerzenia maszyny Wirtualnej Docker i szablonów usługi Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
 
 > [!WARNING]
-> Rozszerzenie maszyny Wirtualnej platformy Docker Azure dla systemu Linux jest przestarzałe i zostaną wycofane 2018 listopad.
-> Rozszerzenie jedynie instaluje Docker, dlatego lepszym sposobem zainstalowania wersji Docker wybór są rozwiązań alternatywnych, takich jak chmury init lub niestandardowe rozszerzenie skryptu. Aby uzyskać więcej informacji na temat korzystania z chmury init, zobacz [dostosować Maszynę wirtualną systemu Linux z chmury init](tutorial-automate-vm-deployment.md).
+> Rozszerzenie maszyny Wirtualnej Azure Docker dla systemu Linux jest przestarzały i zostanie wycofana z użycia listopada 2018 r.
+> Rozszerzenia instaluje tylko Docker, co rozwiązań alternatywnych, takich jak pakiet cloud-init lub rozszerzenia niestandardowego skryptu są lepszy sposób, aby zainstalować wersję platformy Docker wybór. Aby uzyskać więcej informacji na temat korzystania z pakietu cloud-init, zobacz [dostosowywania maszyny Wirtualnej systemu Linux przy użyciu pakietu cloud-init](tutorial-automate-vm-deployment.md).
 
-## <a name="azure-docker-vm-extension-overview"></a>Omówienie rozszerzenia Docker maszyny Wirtualnej platformy Azure
-Rozszerzenie maszyny Wirtualnej Azure Docker instaluje i konfiguruje demon Docker, klient Docker i rozwiązania Docker Compose na maszynie wirtualnej systemu Linux (VM). Przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker Azure, masz więcej funkcje kontroli i niż po prostu przy użyciu rozwiązania Docker maszyny lub tworzenie hostów Docker samodzielnie. Te dodatkowe funkcje, takie jak [rozwiązania Docker Compose](https://docs.docker.com/compose/overview/), marka rozszerzenia maszyny Wirtualnej Azure Docker nadaje się do bardziej niezawodne środowiska dewelopera lub produkcji.
+## <a name="azure-docker-vm-extension-overview"></a>Rozszerzenie maszyny Wirtualnej Docker platformy Azure — omówienie
+Rozszerzenie maszyny Wirtualnej Azure Docker instaluje i konfiguruje demona platformy Docker, klient platformy Docker i narzędzie Docker Compose na maszynie wirtualnej systemu Linux (VM). Za pomocą rozszerzenia maszyny Wirtualnej Azure Docker, należy mieć więcej kontroli i funkcje niż po prostu przy użyciu maszyny platformy Docker lub tworzenie hosta platformy Docker, samodzielnie. Te dodatkowe funkcje, takie jak [narzędzia Docker Compose](https://docs.docker.com/compose/overview/), markę rozszerzenia maszyny Wirtualnej Azure Docker odpowiednie dla bardziej niezawodnego środowiska dla deweloperów lub produkcji.
 
-Aby uzyskać więcej informacji o różnych metodach wdrażania, tym przy użyciu rozwiązania Docker maszyny i usługi kontenera platformy Azure zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat różnych metod wdrażania, w tym przy użyciu maszyny platformy Docker i usług Azure Container Service zobacz następujące artykuły:
 
-* Aby szybko prototypu usługi aplikacji można utworzyć przy użyciu jednego hosta Docker [maszyny Docker](docker-machine.md).
-* Aby utworzyć środowiska gotowe do produkcji, skalowalnej, które zapewniają dodatkowe planowanie i narzędzia do zarządzania, można wdrożyć [Kubernetes](../../container-service/kubernetes/index.yml) lub [Docker Swarm](../../container-service/dcos-swarm/index.yml) klastra na usługi kontenera platformy Azure.
+* Szybko prototypować wiadomość aplikacji, można utworzyć jeden host platformy Docker przy użyciu [maszyny platformy Docker](docker-machine.md).
+* Tworzenie środowisk gotowe do produkcji, skalowalne, które obejmują dodatkowe narzędzia planowania i zarządzania, możesz je wdrożyć [Kubernetes](../../container-service/kubernetes/index.yml) lub [Docker Swarm](../../container-service/dcos-swarm/index.yml) klastra w usłudze Azure Container Service.
 
 
-## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Wdrażanie szablonu z rozszerzeniem maszyny Wirtualnej Azure Docker
-Użyjmy istniejący szablon szybkiego startu można utworzyć maszyny Wirtualnej systemu Ubuntu używa rozszerzenia maszyny Wirtualnej Azure Docker do instalowania i konfigurowania hosta Docker. Możesz wyświetlić szablon, w tym miejscu: [proste wdrożenie maszyny Wirtualnej systemu Ubuntu z rozwiązaniem Docker z](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Należy najnowszej [Azure CLI 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogowany do konta platformy Azure przy użyciu [logowania az](/cli/azure/reference-index#az_login).
+## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Wdrażanie szablonu przy użyciu rozszerzenia maszyny Wirtualnej Azure Docker
+Użyjmy istniejący szablon szybkiego startu, aby utworzyć maszynę Wirtualną Ubuntu, który używa rozszerzenia maszyny Wirtualnej Azure Docker do zainstalowania i skonfigurowania hosta platformy Docker. Można wyświetlić szablon w tym miejscu: [proste wdrożenie maszyny wirtualnej systemu Ubuntu przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
@@ -46,18 +46,18 @@ Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azu
 az group create --name myResourceGroup --location eastus
 ```
 
-Następnie należy wdrożyć maszynę Wirtualną z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create) zawierającej rozszerzenie Azure Docker VM z [tego szablonu usługi Azure Resource Manager w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Po wyświetleniu monitu podaj unikatowe wartości dla *newStorageAccountName*, *adminUsername*, *adminPassword*, i *dnsNameForPublicIP*:
+Następnie należy wdrożyć Maszynę wirtualną za pomocą [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create) zawierającej rozszerzenie maszyny Wirtualnej Azure Docker z [tego szablonu usługi Azure Resource Manager w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Po wyświetleniu monitu podaj własne unikatowe wartości *newStorageAccountName*, *adminUsername*, *adminPassword*, i *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-Trwa kilka minut dla wdrożenia, aby zakończyć.
+Trwa kilka minut na zakończenie wdrożenia.
 
 
-## <a name="deploy-your-first-nginx-container"></a>Wdrażanie Twojego pierwszego kontener NGINX
-Aby wyświetlić szczegóły maszyny Wirtualnej, łącznie z nazwą DNS, należy użyć [az maszyny wirtualnej pokazu](/cli/azure/vm#az_vm_show):
+## <a name="deploy-your-first-nginx-container"></a>Wdrożysz swój pierwszy kontener NGINX
+Aby wyświetlić szczegóły maszyny wirtualnej, łącznie z nazwą DNS, należy użyć [az vm show](/cli/azure/vm#az_vm_show):
 
 ```azurecli
 az vm show \
@@ -68,19 +68,19 @@ az vm show \
     --output tsv
 ```
 
-SSH do nowego hosta platformy Docker. Podaj własną nazwę użytkownika i nazwę DNS z powyższych kroków:
+SSH do nowego hosta platformy Docker. Podaj swoją nazwę użytkownika i nazwę DNS z poprzednich kroków:
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-Po zalogowaniu się na hoście Docker, uruchom teraz kontener NGINX:
+Po zalogowaniu się do hosta platformy Docker, umożliwia uruchamianie kontenera NGINX:
 
 ```bash
 sudo docker run -d -p 80:80 nginx
 ```
 
-Wynik jest podobny do poniższego przykładu jako obraz NGINX jest pobierany i uruchomić kontener:
+Rezultat jest podobny do poniższego przykładu, jako obraz NGINX jest pobierany i uruchomić kontener:
 
 ```bash
 Unable to find image 'nginx:latest' locally
@@ -94,25 +94,25 @@ Status: Downloaded newer image for nginx:latest
 b6ed109fb743a762ff21a4606dd38d3e5d35aff43fa7f12e8d4ed1d920b0cd74
 ```
 
-Sprawdź stan kontenery uruchomionych na hoście Docker w następujący sposób:
+Sprawdź stan kontenery działające na hoście platformy Docker w następujący sposób:
 
 ```bash
 sudo docker ps
 ```
 
-Dane wyjściowe podobne do poniższego przykładu, przedstawiający kontener NGINX jest uruchomiona i porty TCP 80 i 443 i przesyłane dalej:
+Dane wyjściowe są podobne do poniższego przykładu, którym widać, że kontener NGINX jest uruchomiona i porty TCP 80 i 443 i przesyłane:
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
 b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
 ```
 
-Aby zapoznać się z kontenera w akcji, otwórz przeglądarkę sieci web i wprowadź nazwę DNS hosta Docker:
+Aby wyświetlić kontenera w akcji, otwórz przeglądarkę sieci web, a następnie wprowadź nazwę DNS hosta platformy Docker:
 
-![Kontener ngnix uruchomione](./media/dockerextension/nginxrunning.png)
+![Działający kontener ngnix](./media/dockerextension/nginxrunning.png)
 
-## <a name="azure-docker-vm-extension-template-reference"></a>Odwołanie do szablonu Azure rozszerzenia maszyny Wirtualnej platformy Docker
-W poprzednim przykładzie użyto istniejący szablon szybkiego startu. Można także wdrożyć rozszerzenie maszyny Wirtualnej Azure Docker z szablonami usługi Resource Manager. Aby to zrobić, dodaj następującą wartość do szablonów usługi Resource Manager, definiowanie `vmName` maszyny wirtualnej odpowiednio:
+## <a name="azure-docker-vm-extension-template-reference"></a>Odwołanie do szablonu usługi Azure rozszerzenia maszyny Wirtualnej Docker
+W poprzednim przykładzie użyto istniejący szablon Szybki Start. Rozszerzenie maszyny Wirtualnej Azure Docker można także wdrożyć za pomocą szablonów usługi Resource Manager. Aby to zrobić, Dodaj następujący element do szablonów usługi Resource Manager, definiując `vmName` maszyny wirtualnej odpowiednio:
 
 ```json
 {
@@ -134,14 +134,14 @@ W poprzednim przykładzie użyto istniejący szablon szybkiego startu. Można ta
 }
 ```
 
-Można znaleźć bardziej szczegółowe wskazówki na korzystanie z szablonów usługi Resource Manager odczytując [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Można znaleźć bardziej szczegółowe wskazówki na temat korzystania z szablonów usługi Resource Manager, zapoznając się [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Warto [skonfiguruj demona Docker TCP port](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), zrozumieć [zabezpieczeń Docker](https://docs.docker.com/engine/security/security/), lub wdrażanie kontenerów przy użyciu [rozwiązania Docker Compose](https://docs.docker.com/compose/overview/). Aby uzyskać więcej informacji na rozszerzenia maszyny Wirtualnej Azure Docker, się, zobacz [projektu GitHub](https://github.com/Azure/azure-docker-extension/).
+Możesz też chcieć [skonfigurować demona platformy Docker, TCP port](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), zrozumieć [zabezpieczeń platformy Docker](https://docs.docker.com/engine/security/security/), lub Wdrażaj kontenery przy użyciu [narzędzia Docker Compose](https://docs.docker.com/compose/overview/). Aby uzyskać więcej informacji na temat rozszerzenia maszyny Wirtualnej Azure Docker, samego, zobacz [projektu GitHub](https://github.com/Azure/azure-docker-extension/).
 
-Przeczytaj więcej o dodatkowe opcje wdrażania Docker na platformie Azure:
+Przeczytaj więcej informacji o dodatkowych opcjach wdrażania platformy Docker na platformie Azure:
 
-* [Użyj maszyny Docker ze sterownikiem Azure](docker-machine.md)  
-* [Rozpoczynanie pracy z Docker i wysyłanych do definiowania i uruchomić aplikację usługi kontenera na maszynie wirtualnej platformy Azure](docker-compose-quickstart.md).
+* [Używanie maszyny platformy Docker ze sterownikiem platformy Azure](docker-machine.md)  
+* [Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na maszynę wirtualną platformy Azure](docker-compose-quickstart.md).
 * [Wdrażanie klastra usługi Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md)
 

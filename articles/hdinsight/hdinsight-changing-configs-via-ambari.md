@@ -1,182 +1,179 @@
 ---
-title: Optymalizacja konfiguracje klastrów z Ambari - Azure HDInsight | Dokumentacja firmy Microsoft
-description: Konfigurowanie i zoptymalizować klastrów usługi HDInsight za pomocą interfejsu użytkownika sieci web Ambari.
-documentationcenter: ''
+title: Optymalizacja konfiguracji klastra za pomocą systemu Ambari — Azure HDInsight | Dokumentacja firmy Microsoft
+description: Do konfigurowania i Optymalizowanie klastrów HDInsight, należy użyć interfejsu użytkownika sieci web Ambari.
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406188"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951220"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optymalizowanie konfiguracje klastrów usługi HDInsight przy użyciu Ambari
+# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Używać narzędzia Ambari, aby zoptymalizować konfiguracje klastrów HDInsight
 
-Usługa HDInsight zapewnia klastrów platformy Apache Hadoop dla aplikacji na dużą skalę przetwarzania danych. Monitorowanie i zarządzanie optymalizacji tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](http://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight Linux.  W przypadku klastrów systemu Windows należy używać narzędzia Ambari [interfejsu API REST](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight udostępnia klastry platformy Apache Hadoop dla aplikacji przetwarzających dane na dużą skalę. Zarządzanie, monitorowanie i optymalizowanie tych złożonych klastrami z wieloma węzłami może być trudne. [Apache Ambari](http://ambari.apache.org/) jest interfejsem sieci web do zarządzania i monitorowania klastrów HDInsight w systemie Linux.  W przypadku klastrów Windows należy używać narzędzia Ambari [interfejsu API REST](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Aby obejrzeć wprowadzenie do za pomocą interfejsu użytkownika sieci Web Ambari, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Ambari](hdinsight-hadoop-manage-ambari.md)
+Wprowadzenie do korzystania z interfejsu użytkownika sieci Web Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika sieci Web systemu Ambari](hdinsight-hadoop-manage-ambari.md)
 
-Zaloguj się do narzędzia Ambari w `https://CLUSTERNAME.azurehdidnsight.net` przy użyciu poświadczeń klastra. Ekran początkowy Wyświetla pulpitu nawigacyjnego przeglądu.
+Zaloguj się do systemu Ambari pod `https://CLUSTERNAME.azurehdidnsight.net` przy użyciu poświadczeń usługi klastra. Na ekranie początkowej zostanie wyświetlony pulpit nawigacyjny przeglądu.
 
-![Pulpit nawigacyjny Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
+![Pulpit nawigacyjny systemu Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
 
-Interfejs użytkownika sieci web Ambari może służyć do zarządzania hostami, usług, alerty, konfiguracji i widoków. Ambari nie może służyć do tworzenia klastra usługi HDInsight, usługi uaktualniania, zarządzanie stosy i wersje, zlikwidować lub recommission hostów lub usługi jest dodawany do klastra.
+Interfejs użytkownika sieci web Ambari, może służyć do zarządzania hostami, usług, alerty, konfiguracje i widoków. Ambari nie może służyć do tworzenia klastra usługi HDInsight, usługi uaktualniania, zarządzanie stosy i wersje, zlikwidować recommission hostów lub dodawanie usług do klastra.
 
 ## <a name="manage-your-clusters-configuration"></a>Zarządzanie konfiguracją klastra
 
-Ustawienia konfiguracji pomóc dostosować określonej usługi. Aby zmodyfikować ustawienia konfiguracji usługi, wybierz usługę z **usług** paska bocznego (po lewej), a następnie przejdź do **Configs** kartę na stronie szczegółów usługi.
+Ustawienia konfiguracji pomagają dostosować określonej usługi. Aby zmodyfikować ustawienia konfiguracji usługi, wybierz usługę z **usług** paska bocznego (po lewej stronie), a następnie przejdź do **Configs** karty na stronie szczegółów usługi.
 
 ![Pasek boczny usług](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
 
-### <a name="modify-namenode-java-heap-size"></a>Zmodyfikuj rozmiar sterty NameNode Java
+### <a name="modify-namenode-java-heap-size"></a>Zmodyfikuj rozmiar sterty środowiska NameNode Java
 
-Rozmiar sterty NameNode Java zależy od wielu czynników, takich jak obciążenie klastra, liczby plików i liczby bloków. Domyślny rozmiar 1 GB dobrze działa z Większość klastrów, mimo że niektórych zadań może wymagać więcej lub mniej pamięci. 
+Rozmiar sterty środowiska NameNode Java zależy od wielu czynników, takich jak obciążenia w klastrze, liczby plików i liczby bloków. Domyślny rozmiar 1 GB dobrze działa z Większość klastrów, mimo że niektóre obciążenia mogą wymagać więcej lub mniej pamięci. 
 
-Aby zmienić rozmiar sterty NameNode Java:
+Aby zmodyfikować rozmiar sterty środowiska NameNode Java:
 
-1. Wybierz **HDFS** z paska bocznego usługi i przejdź do **Configs** kartę.
+1. Wybierz **HDFS** z paska bocznego usług i przejdź do **Configs** kartę.
 
     ![Konfiguracja systemu plików HDFS](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-2. Znajdź ustawienie **rozmiar stosu NameNode Java**. Można również użyć **filtru** polu tekstowym wpisz i znalezienie danego ustawienia. Wybierz **pióra** ikona obok nazwy ustawienia.
+2. Znajdź ustawienie **Rozmiar sterty środowiska NameNode Java**. Można również użyć **filtru** pola tekstowego wpisz i znaleźć określonego ustawienia. Wybierz **pióra** ikony obok nazwy ustawienia.
 
-    ![Rozmiar sterty NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
+    ![Rozmiar sterty środowiska NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
 3. Wpisz nową wartość w polu tekstowym, a następnie naciśnij klawisz **Enter** można zapisać zmiany.
 
-    ![Edytowanie NameNode Java rozmiaru sterty](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
+    ![Edytuj rozmiar sterty środowiska NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-4. Rozmiar sterty NameNode Java jest zmieniany na 2 GB od 1 GB.
+4. Rozmiar sterty środowiska NameNode Java jest zmieniany do 2 GB od 1 GB.
 
-    ![Rozmiar sterty NameNode Java edytować](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![Rozmiar sterty środowiska NameNode Java edytowany](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-5. Zapisz zmiany przez kliknięcie na zielonym **zapisać** przycisk w górnej części ekranu konfiguracji.
+5. Zapisz zmiany, klikając na zielony wskaźnik **Zapisz** przycisku w górnej części ekranu konfiguracji.
 
     ![Zapisz zmiany](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Optymalizacja gałęzi
+## <a name="hive-optimization"></a>Optymalizacja programu hive
 
-W poniższych sekcjach opisano opcje konfiguracji dla optymalizacji wydajności ogólnej Hive.
+W poniższych sekcjach opisano opcje konfiguracji dla optymalizacji ogólnej wydajności technologii Hive.
 
-1. Aby zmodyfikować parametry konfiguracji Hive, wybierz opcję **Hive** z paska bocznego usługi.
+1. Aby zmodyfikować parametrów konfiguracyjnych programu Hive, wybierz **Hive** z paska bocznego usług.
 2. Przejdź do **Configs** kartę.
 
-### <a name="set-the-hive-execution-engine"></a>Ustaw aparat wykonywania gałęzi
+### <a name="set-the-hive-execution-engine"></a>Ustaw aparat Hive wykonywania
 
-Gałąź zawiera dwa aparatów wykonywania: MapReduce i Tez. Tez jest szybsza niż MapReduce. Klastry HDInsight Linux ma Tez jako domyślny aparat wykonywania. Aby zmienić aparat wykonywania:
+Gałąź zawiera dwa aparatów wykonywania: MapReduce i Tez. Tez jest szybsze niż MapReduce. Klastry HDInsight Linux ma Tez jako aparatu wykonywania domyślne. Aby zmienić aparatu wykonywania:
 
-1. W gałęzi **Configs** , wpisz **aparat wykonywania** w polu filtru.
+1. W gałęzi **Configs** karty, wpisz **aparatu wykonywania** w polu filtru.
 
     ![Aparat wykonywania wyszukiwania](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-2. **Optymalizacji** jest wartością domyślną właściwości **Tez**.
+2. **Optymalizacji** właściwości wartość domyślna to **Tez**.
 
-    ![Optymalizacja — Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
+    ![Optymalizacja - Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
-### <a name="tune-mappers"></a>Dostosuj mapowań
+### <a name="tune-mappers"></a>Dostosowywanie liczby maperów
 
-Hadoop próbuje podzielić (*mapy*) pliki do wielu plików i procesu powstałe w ten sposób pojedynczy plik równolegle. Liczba podziałów zależy od liczby mapowań. Następujące parametry konfiguracji dwóch dysków liczba podziałów dla aparat wykonywania platformy Tez:
+Hadoop próbuje podziału (*mapy*) pojedynczy plik do wielu plików i proces wynikowe pliki równolegle. Liczba liczby maperów jest zależna od liczby dzieli dane. Następujące parametry dwóch konfiguracji dysku liczba dzieli dane na aparat wykonywania platformy Tez:
 
-* `tez.grouping.min-size`: Dolny limit na rozmiar grupowanych podziału, wartość domyślna 16 MB (16,777,216 w bajtach).
-* `tez.grouping.max-size`: Górny limit na rozmiar grupowanych podziału, wartości domyślnej 1 GB (w bajtach 1,073,741,824).
+* `tez.grouping.min-size`: Dolny limit na rozmiar grupowanych podziału, z wartością domyślną 16 MB (16,777,216 w bajtach).
+* `tez.grouping.max-size`: Górny limit na rozmiar grupowanych podziału, przy użyciu wartości domyślnej 1 GB (1 073 741 824 w bajtach).
 
-Jako wydajności zasadą Zmniejsz obu tych parametrów, aby zwiększyć czas oczekiwania, zwiększyć więcej przepustowości.
+Wydajność zasada mówi Zmniejsz obu tych parametrów, aby poprawić czas oczekiwania, zwiększyć większą przepustowość.
 
-Na przykład aby ustawić cztery zadania mapowania danych o rozmiarze 128 MB, należy ustawiał oba parametry 32 MB każdy (33,554,432 w bajtach).
+Na przykład aby ustawić cztery zadania mapowania w przypadku danych o rozmiarze 128 MB, należy ustawić oba parametry do 32 MB każdy (33,554,432 w bajtach).
 
-1. Aby zmodyfikować parametry limitu, przejdź do **Configs** kartę usługi Tez. Rozwiń węzeł **ogólne** panelu, a następnie zlokalizuj `tez.grouping.max-size` i `tez.grouping.min-size` parametrów.
+1. Aby zmodyfikować parametry limitu, przejdź do **Configs** kartę usługi Tez. Rozwiń **ogólne** panelu, a następnie zlokalizuj `tez.grouping.max-size` i `tez.grouping.min-size` parametrów.
 
 2. Ustawiono oba parametry **33,554,432** bajtów (32 MB).
 
     ![Rozmiary grupowania tez](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
-Te zmiany wpływają na wszystkie Tez zadania na serwerze. Aby uzyskać optymalne wyniki, wybierz odpowiedni parametr wartości.
+Te zmiany mają wpływ na wszystkie zadania w aplikacji Tez na serwerze. Aby uzyskać optymalne wyniki, wybierz odpowiedni parametr wartości.
 
-### <a name="tune-reducers"></a>Dostosuj reduktory
+### <a name="tune-reducers"></a>Dostosowywanie reduktorów
 
-ORC i Snappy oferują wysoką wydajność. Jednak gałęzi może mieć za mało reduktory domyślnie powoduje wąskich gardeł.
+ORC i Snappy oferują wysoką wydajność. Jednak gałęzi może być zbyt mało reduktorów domyślnie przyczyną wąskich gardeł.
 
-Na przykład załóżmy, że rozmiar danych wejściowych 50 GB. Czy dane w ORC formacie kompresji szałowe jest 1 GB. Gałąź Szacuje liczbę potrzebnych jako reduktory: (liczba bajtów odebranych na mapowań / `hive.exec.reducers.bytes.per.reducer`).
+Na przykład załóżmy, że rozmiar danych wejściowych, 50 GB. Czy dane w ORC formacie Snappy kompresji jest 1 GB. Hive Szacuje liczbę potrzebne reduktorów: (liczba bajtów odebranych na liczby maperów / `hive.exec.reducers.bytes.per.reducer`).
 
-Przy użyciu ustawień domyślnych w tym przykładzie jest reduktory 4.
+Z ustawieniami domyślnymi w tym przykładzie jest 4 reduktorów.
 
-`hive.exec.reducers.bytes.per.reducer` Parametr określa liczbę bajtów przetwarzanych na reduktor. Wartość domyślna to 64 MB. Dostrajanie tę wartość w dół zwiększa równoległości i może zwiększyć wydajność. Ulepszanie funkcji zbyt niska może utworzyć reduktory zbyt wiele, potencjalnie negatywnego wpływu na wydajność. Ten parametr zależy od wymagań dotyczących danych, ustawienia kompresji i inne czynniki środowiska.
+`hive.exec.reducers.bytes.per.reducer` Parametr określa liczbę bajtów przetworzonych w ramach reduktor. Wartość domyślna to 64 MB. Dostrajanie tę wartość w dół zwiększa równoległości i może zwiększyć wydajność. Dostrajanie na zbyt niską może utworzyć reduktorów zbyt wiele, potencjalnie negatywnego wpływu na wydajność. Ten parametr zależy od wymagań dotyczących danych, ustawienia kompresji i innych czynników środowiskowych.
 
-1. Aby zmodyfikować parametr, przejdź do gałęzi **Configs** i Znajdź **danych na reduktor** parametru na stronie Ustawienia.
+1. Zmodyfikuj parametr, przejdź do gałęzi **Configs** kartę i Znajdź **danych na reduktor** parametru na stronie Ustawienia.
 
     ![Dane na reduktor](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-2. Wybierz **Edytuj** zmodyfikować wartości do 128 MB (w bajtach 134,217,728), a następnie naciśnij klawisz **Enter** do zapisania.
+2. Wybierz **Edytuj** zmodyfikuj wartość do 128 MB (w bajtach 134,217,728), a następnie naciśnij klawisz **Enter** do zapisania.
 
-    ![Dane na reduktor - edytować](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
+    ![Dane na reduktor - edytowany](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
-    Podany rozmiar wejściowy 1024 MB, 128 MB danych na reduktor, istnieją reduktory 8 (1024/128).
+    Biorąc pod uwagę rozmiar wejściowy 1024 MB, 128 MB danych na reduktor, istnieją reduktorów 8 (1024/128).
 
-3. Nieprawidłowa wartość parametru **danych na reduktor** parametru może skutkować dużą liczbę reduktory negatywnego wpływu na wydajność kwerend. Aby ograniczyć liczbę reduktory, ustaw `hive.exec.reducers.max` odpowiednią wartość. Wartość domyślna to 1009.
+3. Nieprawidłowa wartość parametru **danych na reduktor** parametru może skutkować dużą liczbę reduktorów, negatywnego wpływu na wydajność zapytań. Aby ograniczyć liczbę maksymalną liczbę reduktorów, ustaw `hive.exec.reducers.max` odpowiednią wartość. Wartość domyślna to 1009.
 
 ### <a name="enable-parallel-execution"></a>Włącz wykonywanie równoległe
 
-Zapytanie Hive jest wykonywane etapami jeden lub więcej. Jeśli niezależnych etapów mogą być uruchamiane równolegle, która spowoduje zwiększenie wydajności zapytania.
+Zapytanie Hive jest wykonywane w jeden czy więcej etapów. Jeśli etapy niezależnych można uruchomić równolegle, który zwiększa wydajność zapytań.
 
-1.  Aby włączyć równoległego wykonywania zapytań, przejdź do gałęzi **Config** karcie i wyszukaj `hive.exec.parallel` właściwości. Wartość domyślna to false. Zmień wartość na true, a następnie naciśnij klawisz **Enter** można zapisać wartości.
+1.  Aby włączyć równoległego wykonywania zapytań, przejdź do gałęzi **Config** kartę i wyszukaj `hive.exec.parallel` właściwości. Wartość domyślna to false. Zmień wartość na wartość PRAWDA, a następnie naciśnij klawisz **Enter** można zapisać wartości.
  
-2.  Aby ograniczyć liczbę zadania mają być uruchamiane równolegle, zmodyfikuj `hive.exec.parallel.thread.number` właściwości. Wartość domyślna to 8.
+2.  Aby ograniczyć liczbę zadań do uruchomienia w sposób równoległy, zmodyfikuj `hive.exec.parallel.thread.number` właściwości. Wartość domyślna to 8.
 
-    ![Hive exec równoległe](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
+    ![Hive exec równoległych](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
 
-### <a name="enable-vectorization"></a>Włącz vectorization
+### <a name="enable-vectorization"></a>Włącz wektoryzacji
 
-Gałąź przetwarza dane wiersz po wierszu. Vectorization kieruje gałęzi do przetwarzania danych w blokach wierszy 1024, a nie na jeden wiersz jednocześnie. Vectorization ma zastosowanie tylko do formatu plików ORC.
+Gałąź przetwarza dane wiersz po wierszu. Wektoryzacji kieruje Hive do przetwarzania danych w blokach 1024 wierszy, a nie na jeden wiersz w danym momencie. Wektoryzacji ma zastosowanie tylko do formatu plików ORC.
 
-1. Aby umożliwić wykonanie zapytania zwektoryzowane, przejdź do gałęzi **Configs** karcie i wyszukaj `hive.vectorized.execution.enabled` parametru. Wartość domyślna to true dla gałęzi 0.13.0 lub nowszej.
+1. Aby włączyć wykonywanie zapytań zwektoryzowane, przejdź do gałęzi **Configs** kartę i wyszukaj `hive.vectorized.execution.enabled` parametru. Wartością domyślną jest wartość true dla gałęzi 0.13.0 lub nowszej.
  
-2. Aby włączyć zwektoryzowane wykonywania dla strony zmniejsz zapytania, ustaw `hive.vectorized.execution.reduce.enabled` parametru na wartość true. Wartość domyślna to false.
+2. Aby włączyć zwektoryzowane wykonywanie po stronie redukcji zapytania, ustaw `hive.vectorized.execution.reduce.enabled` parametru na wartość true. Wartość domyślna to false.
 
-    ![Wykonywania zadań hive Przekształcono](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
+    ![Wykonywania zadań hive wektoryzowana](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
-### <a name="enable-cost-based-optimization-cbo"></a>Włącz optymalizacji opartej na koszt (CBO)
+### <a name="enable-cost-based-optimization-cbo"></a>Włącz Optymalizacja oparta na koszt (CBO)
 
-Domyślnie Hive następuje zestaw reguł, aby znaleźć jeden plan wykonania zapytania optymalne. Optymalizacja oparta na koszt (CBO) ocenia wieloma planami mógł wykonać zapytania przypisuje koszt każdego planu, a następnie określa najtańszej planu wykonania zapytania.
+Domyślnie gałąź poniżej zestaw reguł można znaleźć jeden plan wykonania zapytania optymalne. Optymalizacja oparta na koszt (CBO) ocenia wiele planów, aby wykonać zapytanie i przypisuje koszt każdego planu, a następnie określa najtańszej planu, aby wykonać zapytanie.
 
-Aby włączyć CBO, przejdź do gałęzi **Configs** karcie i wyszukaj `parameter hive.cbo.enable`, następnie Przełącz przycisk przełączania **na**.
+Aby włączyć CBO, przejdź do gałęzi **Configs** kartę i wyszukaj `parameter hive.cbo.enable`, następnie Przełącz przycisk przełączania **na**.
 
-![CBO konfiguracji](./media/hdinsight-changing-configs-via-ambari/cbo.png)
+![CBO config](./media/hdinsight-changing-configs-via-ambari/cbo.png)
 
-Następujące dodatkowe parametry konfiguracji zwiększyć wydajność zapytań Hive po włączeniu CBO:
+Następujące dodatkowe parametry konfiguracji zwiększyć wydajność zapytań technologii Hive, po włączeniu CBO:
 
 * `hive.compute.query.using.stats`
 
-    Po wartość true, gałęzi używa statystyki przechowywane w jego potrzeby magazynu metadanych do odpowiadania na kwerendy proste, takie jak `count(*)`.
+    Gdy wartość true, Hive są używane statystyki przechowywane w jego magazynu metadanych do prostych zapytań, takich jak `count(*)`.
 
-    ![Statystyka CBO](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
+    ![Statystyki CBO](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
 
 * `hive.stats.fetch.column.stats`
 
-    Statystyk kolumny są tworzone po włączeniu CBO. Gałąź używa statystyk kolumny, które są przechowywane w potrzeby magazynu metadanych, aby zoptymalizować zapytania. Pobieranie statystyk kolumny dla każdej kolumny trwa dłużej, gdy liczba kolumn jest wysoka. Gdy ma wartość false, to ustawienie wyłącza pobrano statystyk kolumny z potrzeby magazynu metadanych.
+    Statystyki kolumny są tworzone, gdy CBO jest włączona. Gałąź używa statystyki kolumny, które są przechowywane w Magazyn metadanych, w celu optymalizacji zapytań. Pobieranie statystyk kolumny, dla każdej kolumny trwa dłużej, gdy liczba kolumn jest wysoka. Po ustawieniu na wartość false, to ustawienie wyłącza pobierania statystyk kolumny z magazynu metadanych.
 
-    ![Statystyka kolumny zestawu Statystyka hive](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
+    ![Hive statystyki kolumn w zestawie statystyki](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
 
 * `hive.stats.fetch.partition.stats`
 
-    Partycja podstawowa statystyk, takich jak liczba wierszy, rozmiar danych i rozmiar pliku są przechowywane w potrzeby magazynu metadanych. Jeśli wartość true, partycji, które statystyki są pobierane z potrzeby magazynu metadanych. Gdy ma wartość false, rozmiar pliku jest pobierana z systemu plików, a liczba wierszy jest pobierana ze schematu wiersza.
+    Podstawowa partycja statystyki, takie jak liczba wierszy, rozmiar danych i rozmiar pliku są przechowywane w magazynu metadanych. Po ustawieniu na wartość true, partycji, który statystyki są pobierane z magazynu metadanych. W przypadku wartości FAŁSZ, rozmiar pliku jest pobierana z systemu plików, a liczbę wierszy pobieranych ze schematu wiersza.
 
-    ![Statystyka zestawu partycji Statystyka hive](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
+    ![Hive statystyki zestaw partycji statystyki](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
 
-### <a name="enable-intermediate-compression"></a>Włącz kompresję pośredni
+### <a name="enable-intermediate-compression"></a>Włącz kompresję pośrednich
 
-Mapa zadania tworzenia plików pośrednich, które są używane przez zadania reduktor. Pośredni Kompresja zmniejsza rozmiar pliku pośredniego.
+Mapa zadania Utwórz pośrednie pliki, które są używane przez zadania reduktor. Pośredni Kompresja zmniejsza rozmiar pliku pośredniego.
 
-Zadania usługi Hadoop są zwykle wydajność ruchu We/Wy. Kompresowanie danych można przyspieszyć We/Wy i ogólną transferu sieciowego.
+Zadania Hadoop są zazwyczaj bottlenecked we/wy. Skompresowanie danych można przyspieszyć We/Wy i ogólną transferu sieciowego.
 
 Kompresja dostępne typy to:
 
@@ -185,277 +182,277 @@ Kompresja dostępne typy to:
 | Gzip | Gzip | KORYGOWANIA | .gz | Nie |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Yes |
 | LZO | Lzop | LZO | .lzo | Tak, jeśli indeksowane |
-| szałowe | ND | szałowe | szałowe | Nie |
+| Snappy | ND | Snappy | Snappy | Nie |
 
-Zasadniczo ważne jest posiadanie podzielne metody kompresji, w przeciwnym razie zostanie utworzony bardzo mało mapowań. Jeśli dane wejściowe jest tekst, `bzip2` jest najlepszym rozwiązaniem. ORC format Snappy jest najszybszą opcję kompresji.
+Zgodnie z ogólną zasadą ważne jest posiadanie podzielne metoda kompresji, w przeciwnym razie zostanie utworzony liczby maperów bardzo mało. Jeśli dane wejściowe to tekst, `bzip2` jest najlepszym rozwiązaniem. Dla formatu ORC Snappy jest najszybszą opcję kompresji.
 
-1. Aby włączyć kompresję pośredniego, przejdź do gałęzi **Configs** karcie, a następnie ustaw `hive.exec.compress.intermediate` parametru na wartość true. Wartość domyślna to false.
+1. Aby włączyć kompresję pośredniego, przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.compress.intermediate` parametru na wartość true. Wartość domyślna to false.
 
-    ![Kompresuj exec hive pośredni](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
+    ![Kompresuj exec hive pośrednich](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]
-    > Aby skompresować plików pośrednich, wybierz koder-dekoder kompresji z Procesora niższy koszt, nawet jeśli koder-dekoder nie ma wyjścia wysoki stopień kompresji.
+    > Aby skompresować pośrednie pliki, należy wybrać kodera-dekodera kompresji z Procesora niższym kosztom, kodera-dekodera nie zainstalowano wysoką kompresję danych wyjściowych.
 
-2. Aby ustawić koder-dekoder kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
+2. Aby ustawić kodera-dekodera kompresji pośredniego, dodawanie właściwości niestandardowych `mapred.map.output.compression.codec` do `hive-site.xml` lub `mapred-site.xml` pliku.
 
 3. Aby dodać niestandardową wartość ustawienia:
 
-    a. Przejdź do gałęzi **Configs** i wybierz **zaawansowane** kartę.
+    a. Przejdź do gałęzi **Configs** kartę, a następnie wybierz pozycję **zaawansowane** kartę.
 
-    b. W obszarze **zaawansowane** karcie, Znajdź i rozwiń **lokacji hive niestandardowe** okienka.
+    b. W obszarze **zaawansowane** kartę, Znajdź i rozwiń **lokacjami hive niestandardowe** okienka.
 
-    c. Kliknij łącze **Dodaj właściwość** w dolnej części okienka gałąź witryny niestandardowe.
+    c. Kliknij łącze **Dodaj właściwość** w dolnej części okienka niestandardowe witryny programu hive.
 
-    d. W oknie właściwości Dodaj wprowadź `mapred.map.output.compression.codec` jako klucz i `org.apache.hadoop.io.compress.SnappyCodec` jako wartość.
+    d. W oknie Dodaj właściwość wprowadzić `mapred.map.output.compression.codec` jako klucz i `org.apache.hadoop.io.compress.SnappyCodec` jako wartość.
 
     e. Kliknij pozycję **Add** (Dodaj).
 
     ![Właściwość niestandardowa gałęzi](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
-    Umożliwia kompresję pliku pośredniego przy użyciu szałowe kompresji. Po dodaniu właściwość zostanie wyświetlony w okienku gałąź witryny niestandardowe.
+    Umożliwia kompresję pliku pośredniego, przy użyciu kompresji Snappy. Po dodaniu właściwość pojawia się w okienku niestandardowe witryny programu hive.
 
     > [!NOTE]
     > Ta procedura modyfikuje `$HADOOP_HOME/conf/hive-site.xml` pliku.
 
-### <a name="compress-final-output"></a>Kompresuj ostateczne dane wyjściowe
+### <a name="compress-final-output"></a>Kompresowanie pliku wyjściowego
 
-Ostateczne dane wyjściowe Hive można również skompresować.
+Również można skompresować do pliku wyjściowego Hive.
 
-1. Aby skompresować do pliku wyjściowego Hive, przejdź do gałęzi **Configs** karcie, a następnie ustaw `hive.exec.compress.output` parametru na wartość true. Wartość domyślna to false.
+1. Aby skompresować do pliku wyjściowego gałęzi, przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.compress.output` parametru na wartość true. Wartość domyślna to false.
 
-2. Aby wybrać koder-dekoder kompresji danych wyjściowych, Dodaj `mapred.output.compression.codec` właściwości niestandardowych do okienka gałąź witryny niestandardowej, zgodnie z opisem w poprzedniej sekcji Krok 3.
+2. Aby wybrać kodera-dekodera kompresji danych wyjściowych, należy dodać `mapred.output.compression.codec` właściwości niestandardowych do okienka lokacji hive niestandardowe, zgodnie z opisem w poprzedniej sekcji Krok 3.
 
     ![Właściwość niestandardowa gałęzi](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
-### <a name="enable-speculative-execution"></a>Włącz rozważana wykonywania
+### <a name="enable-speculative-execution"></a>Włącz związanego z wykonywaniem spekulatywnym
 
-Wykonanie rozważana uruchamia pewne zduplikowane zadań, aby wykryć i wyeliminować śledzenia zadań działa wolno, poprawienie ogólnej wykonywania zadania optymalizując wyniki poszczególnych zadań.
+Związanego z wykonywaniem spekulatywnym spowoduje uruchomienie określonej liczby duplikatów zadań w celu wykrycia i niedozwolonych śledzenia zadań wolno działające, jednocześnie poprawiając ogólną wykonywania zadania, optymalizując wyniki poszczególnych zadań.
 
-Rozważana wykonywania nie powinna być włączona dla długotrwałych zadań MapReduce z dużą ilością danych wejściowych.
+Związanego z wykonywaniem spekulatywnym nie powinna być włączona dla długotrwałych zadań MapReduce z dużą ilością danych wejściowych.
 
-* Aby umożliwić wykonanie rozważana, przejdź do gałęzi **Configs** karcie, a następnie ustaw `hive.mapred.reduce.tasks.speculative.execution` parametru na wartość true. Wartość domyślna to false.
+* Aby włączyć związanego z wykonywaniem spekulatywnym, przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.mapred.reduce.tasks.speculative.execution` parametru na wartość true. Wartość domyślna to false.
 
-    ![Gałąź mapred zmniejszyć rozważana wykonania zadania](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    ![Gałąź mapred zmniejszyć zadania związanego z wykonywaniem spekulatywnym](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
-### <a name="tune-dynamic-partitions"></a>Dostosuj partycji dynamicznych
+### <a name="tune-dynamic-partitions"></a>Dostosowywanie partycji dynamicznych
 
-Gałąź umożliwia tworzenie dynamicznych partycji podczas wstawiania rekordów do tabeli, bez predefiniowanie każdej partycji. Jest to zaawansowanych funkcji, ale może spowodować utworzenie dużej liczby partycji i dużą liczbę plików dla każdej partycji.
+Gałąź umożliwia tworzenie partycji dynamicznych podczas wstawiania rekordów do tabeli, bez wstępnego definiowania każdej partycji. Jest zaawansowaną funkcją, chociaż może to spowodować utworzenie dużej liczby partycji i dużą liczbę plików, dla każdej partycji.
 
-1. Dla gałęzi do partycji dynamicznych `hive.exec.dynamic.partition` wartość parametru powinna mieć wartość true (ustawienie domyślne).
+1. Dla usługi Hive w celu partycji dynamicznych `hive.exec.dynamic.partition` wartość parametru powinna być prawdziwe (ustawienie domyślne).
 
-2. Zmień tryb partycji dynamicznych do *strict*. W trybie z ograniczeniami co najmniej jedna partycja musi być statyczny. Zapobiega to zapytań bez filtru partycji w klauzuli WHERE, czyli *strict* uniemożliwia zapytania skanujące wszystkie partycje. Przejdź do gałęzi **Configs** karcie, a następnie ustaw `hive.exec.dynamic.partition.mode` do **strict**. Wartość domyślna to **nonstrict**.
+2. Zmień tryb partycji dynamicznych, aby *strict*. W trybie ścisłym co najmniej jedna partycja musi być statyczne. Zapobiega to zapytania bez filtru partycji w klauzuli WHERE, czyli *strict* zapobiega zapytań, które skanowania wszystkich partycji. Przejdź do gałęzi **Configs** kartę, a następnie ustaw `hive.exec.dynamic.partition.mode` do **strict**. Wartość domyślna to **nonstrict**.
  
-3. Aby ograniczyć liczbę partycji dynamicznych należy utworzyć, zmodyfikować '' hive.exec.max.dynamic.partitions' parametru. Wartość domyślna to 5000.
+3. Aby ograniczyć liczbę partycji dynamicznych, które ma zostać utworzony, zmodyfikuj `hive.exec.max.dynamic.partitions` parametru. Wartość domyślna to 5000.
  
-4. Aby ograniczyć całkowita liczba partycji dynamicznych w każdym węźle, zmodyfikuj `hive.exec.max.dynamic.partitions.pernode`. Wartość domyślna to 2000.
+4. Ogranicz całkowitą liczbę partycji dynamicznych w każdym węźle, należy zmodyfikować `hive.exec.max.dynamic.partitions.pernode`. Wartość domyślna to 2000.
 
-### <a name="enable-local-mode"></a>Włącz tryb lokalny
+### <a name="enable-local-mode"></a>Włączanie trybu lokalnego
 
-Tryb lokalnego umożliwia gałęzi do wykonywania wszystkich zadań zadania, na jednym komputerze, a czasami w ramach jednego procesu. Poprawia to wydajność zapytań, jeśli dane wejściowe jest mały i koszty uruchamiania zadań dla zapytań zużywa znacznego procentu zgłoszeń w ogólnej wykonywania zapytania.
+Tryb lokalny umożliwia gałęzi umożliwia wykonywanie wszystkich zadań, zadania, na jednym komputerze lub czasami w pojedynczym procesie. Zwiększa to wydajność zapytań, jeśli dane wejściowe są małe, a koszty uruchamiania zadania dotyczące zapytań zużywa znacznego procentu całkowitej wykonywania zapytania.
 
-Aby włączyć tryb lokalny, Dodaj `hive.exec.mode.local.auto` parametru do panelu gałąź witryny niestandardowej, zgodnie z objaśnieniem w kroku 3 [Włącz kompresję pośredniego](#enable-intermediate-compression) sekcji.
+Aby włączyć tryb lokalny, Dodaj `hive.exec.mode.local.auto` parametru do panelu lokacji hive niestandardowe, zgodnie z opisem w kroku 3 procedury [Włącz kompresję pośrednich](#enable-intermediate-compression) sekcji.
 
 ![Gałąź exec trybu lokalnego automatycznie](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
 ### <a name="set-single-mapreduce-multigroup-by"></a>Zestaw pojedynczego MapReduce MultiGROUP przez
 
-Gdy ta właściwość jest równa true, zapytania MultiGROUP przez klucze wspólne Grupuj według generuje jednego zadania MapReduce.  
+Gdy ta właściwość jest ustawiona na wartość true, zapytania MultiGROUP przez klucze wspólne Grupuj według generuje pojedynczego zadania MapReduce.  
 
-Aby włączyć ten problem, Dodaj `hive.multigroupby.singlereducer` parametrów do okienka gałąź witryny niestandardowej, zgodnie z objaśnieniem w kroku 3 [Włącz kompresję pośredniego](#enable-intermediate-compression) sekcji.
+Aby włączyć to zachowanie, należy dodać `hive.multigroupby.singlereducer` parametrów do okienka lokacji hive niestandardowe, zgodnie z opisem w kroku 3 procedury [Włącz kompresję pośrednich](#enable-intermediate-compression) sekcji.
 
-![Gałąź ustawieniem pojedynczego MapReduce MultiGROUP](./media/hdinsight-changing-configs-via-ambari/hive-multigroupby-singlereducer.png)
+![Gałąź ustawić MultiGROUP pojedynczego MapReduce](./media/hdinsight-changing-configs-via-ambari/hive-multigroupby-singlereducer.png)
 
 ### <a name="additional-hive-optimizations"></a>Dodatkowe optymalizacje gałęzi
 
-W poniższych sekcjach opisano dodatkowe optymalizacje związane z gałęzi, które można ustawić.
+W poniższych sekcjach opisano dodatkowe optymalizacje związane z programu Hive, które można ustawić.
 
 #### <a name="join-optimizations"></a>Dołącz do optymalizacji
 
-Domyślny typ sprzężenia w gałęzi *sprzężenia losowa*. W gałęzi specjalne mapowań odczytać dane wejściowe i Emituj parę klucz wartość sprzężenia do pliku pośredniego. Hadoop sortuje i scala te pary w fazie losowa. Ten etap losowa jest kosztowna. Zaznaczenie prawym sprzężenia, na podstawie danych może znacznie poprawić wydajność.
+Domyślny typ sprzężenia w gałęzi jest *sprzężenia shuffle*. W gałęzi liczby maperów specjalnych odczytać dane wejściowe i emisji, sprzężenia para klucza i wartości, do pliku pośredniego. Hadoop sortuje i scala te pary na etapie losowa. Ten etap losowa jest kosztowne. Wybieranie prawego sprzężenia, na podstawie danych może znacznie poprawić wydajność.
 
-| Typ przyłączenia | Kiedy | Jak | Gałąź, ustawienia | Komentarze |
+| Typ przyłączenia | Kiedy | Jak | Ustawienia programu hive | Komentarze |
 | -- | -- | -- | -- | -- |
-| Sprzężenia losowa | <ul><li>Wybór domyślny</li><li>Zawsze działa</li></ul> | <ul><li>Odczytuje z częścią jednej z tabel</li><li>Pakiety i sortowanie w kluczu sprzężenia</li><li>Wysyła jeden zasobnik do każdego Zmniejsz</li><li>Sprzężenia jest wykonywana na tej stronie Zmniejsz</li></ul> | Nie znaczących ustawienie wymagane gałęzi | Zawsze działa |
-| Dołącz do mapy | <ul><li>Jedna tabela można zmieścić w pamięci</li></ul> | <ul><li>Odczytuje małą tabelę w tablicy skrótów pamięci</li><li>Strumienie przez część dużych plików</li><li>Dołącza każdy rekord z tablicy skrótów</li><li>Sprzężenia są przez samego mapowania</li></ul> | `hive.auto.confvert.join=true` | Bardzo szybko, ale ograniczone |
-| Zasobnik scalania sortowania | Jeśli obie tabele są: <ul><li>Sortowane takie same</li><li>Bucketed takie same</li><li>Sprzęganie sortowane zasobnikach kolumny</li></ul> | Każdy proces: <ul><li>Odczytuje zasobnika z każdej tabeli</li><li>Przetwarza wiersz mający najmniejszą wartość</li></ul> | `hive.auto.convert.sortmerge.join=true` | Bardzo wydajny |
+| Shuffle sprzężenia | <ul><li>Wybór domyślny</li><li>Zawsze działa.</li></ul> | <ul><li>Odczytuje z częścią jednej z tabel</li><li>Przedziały i sortowanie na kluczu sprzężenia</li><li>Wysyła jeden przedział do każdego Zmniejsz</li><li>Sprzężenia odbywa się po stronie Zmniejsz</li></ul> | Nie znaczących ustawienie potrzebne gałęzi | Działa z każdym |
+| Przyłączanie do mapy | <ul><li>Jedna tabela mieści się w pamięci</li></ul> | <ul><li>Odczytuje małej tabeli do tabeli mieszania pamięci</li><li>Strumienie przez część dużych plików</li><li>Dołącza każdy rekord w tabeli wyznaczania wartości skrótu</li><li>Sprzężenia są przez samego mapowania</li></ul> | `hive.auto.confvert.join=true` | Bardzo szybko, ale jest ograniczony |
+| Zasobnik scalania sortowania | Jeśli obie tabele: <ul><li>Sortowane takie same</li><li>Bucketed takie same</li><li>Łączenie sortowane zasobnikach kolumny</li></ul> | Każdy proces: <ul><li>Odczytuje Wiadro z każdej tabeli</li><li>Przetwarza wiersz mający najmniejszą wartość</li></ul> | `hive.auto.convert.sortmerge.join=true` | Bardzo wydajny |
 
-#### <a name="execution-engine-optimizations"></a>Wykonywanie aparatu optymalizacji
+#### <a name="execution-engine-optimizations"></a>Optymalizacje aparatu wykonywania
 
-Dodatkowe zalecenia dotyczące optymalizacji aparatu wykonywania gałęzi:
+Dodatkowe zalecenia dotyczące optymalizowania aparat Hive wykonywania:
 
-| Ustawienie | Zalecane | Domyślne usługi HDInsight |
+| Ustawienie | Zalecane | HDInsight domyślne |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | TRUE = bezpieczniejsze i wolniejsze; FALSE = szybciej | false |
-| `tez.am.resource.memory.mb` | Górna granica większość 4 GB | Automatycznie dopasowane |
+| `hive.mapjoin.hybridgrace.hashtable` | TRUE = bezpieczniejsze, wolniejsze; FALSE = szybciej | false |
+| `tez.am.resource.memory.mb` | 4 GB górną granicę dla większości | Automatycznie dopasowane |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10 000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
 ## <a name="pig-optimization"></a>Optymalizacja pig
 
-Z sieci web Ambari interfejsu użytkownika, aby dostroić Pig zapytania można zmodyfikować właściwości pig. Bezpośrednie modyfikowanie właściwości Pig z Ambari modyfikuje właściwości Pig w `/etc/pig/2.4.2.0-258.0/pig.properties` pliku.
+Interfejs webowy Ambari do dostrojenia zapytań Pig można zmodyfikować właściwości pig. Modyfikowanie właściwości języka Pig z systemu Ambari bezpośrednio modyfikuje właściwości Pig w `/etc/pig/2.4.2.0-258.0/pig.properties` pliku.
 
-1. Aby zmodyfikować właściwości Pig, przejdź do Pig **Configs** karcie, a następnie rozwiń **zaawansowane właściwości pig** okienka.
+1. Aby zmodyfikować właściwości Pig, przejdź do Pig **Configs** kartę, a następnie rozwiń **zaawansowane właściwości pig** okienka.
 
-2. Znajdź, usuń znaczniki komentarza i zmień wartość właściwości, którą chcesz zmodyfikować.
+2. Znajdź, usuń znaczniki komentarza i zmień wartość właściwości, które chcesz zmodyfikować.
 
-3. Wybierz **zapisać** na górnym rogu okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia usługi.
+3. Wybierz **Zapisz** w prawej górnej części okna, aby zapisać nową wartość. Niektóre właściwości mogą wymagać ponownego uruchomienia tej usługi.
 
     ![Zaawansowane właściwości pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
 > [!NOTE]
-> Wszystkie ustawienia poziomu sesji zastąpić wartości właściwości w `pig.properties` pliku.
+> Wszystkie ustawienia na poziomie sesji przesłonią wartości właściwości w `pig.properties` pliku.
 
-### <a name="tune-execution-engine"></a>Aparat wykonywania dostroić
+### <a name="tune-execution-engine"></a>Dostosowywanie aparatu wykonywania
 
-Dwa aparatów wykonywania są dostępne do wykonywania skryptów usługi Pig: MapReduce i Tez. Tez jest zoptymalizowany aparatu i jest znacznie szybsza niż MapReduce.
+Dwoma silnikami wykonywania są dostępne do wykonywania skryptów usługi Pig: MapReduce i Tez. Tez to aparat zoptymalizowane i jest znacznie wyższa niż MapReduce.
 
-1. Aby zmodyfikować aparat wykonywania w **zaawansowane właściwości pig** okienku znaleźć właściwości `exectype`.
+1. Aby zmodyfikować aparatu wykonywania w **zaawansowane właściwości pig** okienku znaleźć właściwości `exectype`.
 
-2. Wartość domyślna to **MapReduce**. Zmień, aby **Tez**.
+2. Wartość domyślna to **MapReduce**. Zmień ją na **Tez**.
 
 
-### <a name="enable-local-mode"></a>Włącz tryb lokalny
+### <a name="enable-local-mode"></a>Włączanie trybu lokalnego
 
-Podobny do gałęzi, tryb lokalny jest używana do szybkości zadań z stosunkowo mniejszych ilości danych.
+Podobnie jak Hive, tryb lokalny jest używany do szybkości zadań z stosunkowo mniejszych ilości danych.
 
 1. Aby włączyć tryb lokalny, ustaw `pig.auto.local.enabled` do **true**. Wartość domyślna to false.
 
-2. Zadania, dla których rozmiar danych wejściowych mniejszej niż `pig.auto.local.input.maxbytes` wartości właściwości są uważane za małych zadań. Wartość domyślna to 1 GB.
+2. Zadania z rozmiarem dane wejściowe mniejsza niż `pig.auto.local.input.maxbytes` wartości właściwości są uznawane za małe zadania. Wartość domyślna to 1 GB.
 
 
-### <a name="copy-user-jar-cache"></a>Skopiuj użytkownika jar w pamięci podręcznej
+### <a name="copy-user-jar-cache"></a>Skopiuj plik jar użytkownika w pamięci podręcznej
 
-Pig kopiuje pliki JAR wymagana przez funkcje UDF do rozproszonej pamięci podręcznej do udostępnienia ich do węzłów zadań. Te słoików nie zmieniają się często. U możliwia `pig.user.cache.enabled` ustawienie umożliwia słoików do umieszczenia w pamięci podręcznej w celu użycia dla zadania wykonywane przez tego samego użytkownika. Powoduje to niewielkie wzrost wydajności zadania.
+Pig kopiuje pliki JAR, wymagane przez funkcje zdefiniowane przez użytkownika do rozproszonej pamięci podręcznej, aby były one dostępne dla zadań węzłów. Tych plikach JAR nie zmieniają się często. Jeśli włączona, `pig.user.cache.enabled` ustawienie umożliwia plikach JAR do umieszczenia w pamięci podręcznej w celu użycia dla zadania wykonywane przez tego samego użytkownika. Skutkuje to niewielki wzrost wydajności zadania.
 
 1. Aby włączyć, ustaw `pig.user.cache.enabled` na wartość true. Wartość domyślna to false.
 
-2. Podstawowa ścieżka buforowane słoików ustawia `pig.user.cache.location` do ścieżki podstawowej. Wartość domyślna to `/tmp`.
+2. Podstawowa ścieżka pamięci podręcznej plikach JAR ustawia `pig.user.cache.location` do ścieżki podstawowej. Wartość domyślna to `/tmp`.
 
 
-### <a name="optimize-performance-with-memory-settings"></a>Optymalizacja wydajności za pomocą ustawienia pamięci
+### <a name="optimize-performance-with-memory-settings"></a>Optymalizuj wydajność przy użyciu ustawień pamięci
 
-Następujące ustawienia pamięci może pomóc optymalizacji wydajności skryptu Pig.
+Następujące ustawienia pamięci może pomóc w optymalizacji wydajności skryptu Pig.
 
-* `pig.cachedbag.memusage`: Ilość pamięci przydzielona do zbioru. Zbiór jest kolekcją spójnych kolekcji. Krotka jest uporządkowany zestaw pól, a pole jest element danych. W przypadku danych, w torebce poza alokacji pamięci, są rozrzucone na dysku. Wartość domyślna to 0,2, który reprezentuje 20 procent dostępnej pamięci. Ta pamięć jest współużytkowana przez wszystkie torebki w aplikacji.
+* `pig.cachedbag.memusage`: Ilość pamięci przydzielona do zbioru. Zbiór to kolekcja krotek. Spójna kolekcja jest uporządkowany zestaw pól, a pole to fragment danych. W przypadku danych, w torebce poza ilość przydzielonej pamięci, są rozrzucone na dysku. Wartość domyślna to 0,2, który reprezentuje 20 procent dostępnej pamięci. Ta pamięć jest współużytkowana przez wszystkie zbiory w aplikacji.
 
-* `pig.spill.size.threshold`: Są rozrzucone torebki większa od wartości progu usuwania wycieków rozmiar (w bajtach) na dysku. Wartość domyślna to 5 MB.
+* `pig.spill.size.threshold`: Są rozrzucone zbiory większy niż ten próg rozmiaru rozlania (w bajtach) na dysku. Wartość domyślna to 5 MB.
 
 
 ### <a name="compress-temporary-files"></a>Kompresuj pliki tymczasowe
 
-Pig generuje pliki tymczasowe podczas wykonywania zadania. Kompresowanie plików tymczasowych powoduje wzrost wydajności podczas odczytywania lub zapisywania plików na dysku. Następujące ustawienia może służyć do skompresowania plików tymczasowych.
+Pig generuje pliki tymczasowe podczas wykonywania zadania. Kompresowanie plików tymczasowych powoduje wzrost wydajności podczas odczytywania lub zapisywania plików na dysku. Następujące ustawienia może służyć do kompresji plików tymczasowych.
 
-* `pig.tmpfilecompression`: W przypadku wartości true, włącza kompresję pliku tymczasowego. Wartość domyślna to false.
+* `pig.tmpfilecompression`: W przypadku wartości true umożliwia kompresję pliku tymczasowego. Wartość domyślna to false.
 
-* `pig.tmpfilecompression.codec`Koder-dekoder kompresji do użycia na potrzeby kompresowanie plików tymczasowych. Kodeki kompresji zalecane są LZO i Snappy niższe użycia procesora CPU.
+* `pig.tmpfilecompression.codec`Kodera-dekodera kompresji na potrzeby kompresowanie plików tymczasowych. Kompresja zalecane kodery-dekodery są LZO i Snappy niższe wykorzystania procesora CPU.
 
 ### <a name="enable-split-combining"></a>Włącz łączenie podziału
 
-Po włączeniu małych plików są łączone na mniejszą liczbę zadań mapy. Poprawia to wydajność zadań wiele małych plików. Aby włączyć, ustaw `pig.noSplitCombination` na wartość true. Wartość domyślna to false.
+Po włączeniu małe pliki są łączone na mniejszą liczbę zadań mapy. Zwiększa to wydajność zadań z wielu małych plików. Aby włączyć, ustaw `pig.noSplitCombination` na wartość true. Wartość domyślna to false.
 
 
-### <a name="tune-mappers"></a>Dostosuj mapowań
+### <a name="tune-mappers"></a>Dostosowywanie liczby maperów
 
-Liczba mapowań jest kontrolowany przez modyfikowanie właściwości `pig.maxCombinedSplitSize`. Określa rozmiar danych do przetworzenia przez zadanie jedną mapę. Wartość domyślna to domyślny rozmiar bloku systemu plików. Zwiększenie tej wartości powoduje zmniejszenie liczby zadań mapowania.
-
-
-### <a name="tune-reducers"></a>Dostosuj reduktory
-
-Liczba reduktory jest obliczana na podstawie parametru `pig.exec.reducers.bytes.per.reducer`. Parametr określa liczbę bajtów przetwarzanych na reduktor, domyślnie 1 GB. Aby ograniczyć liczbę reduktory, ustaw `pig.exec.reducers.max` właściwość domyślnie 999.
+Liczba liczby maperów jest kontrolowana przez modyfikowanie właściwości `pig.maxCombinedSplitSize`. To ustawienie określa rozmiar danych do przetworzenia przez zadania jedną mapę. Wartość domyślna to system plików domyślny rozmiar bloku. Zwiększenie tej wartości powoduje zmniejszenie liczby zadań mapowania.
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>Optymalizacja HBase przy interfejsu użytkownika sieci web Ambari
+### <a name="tune-reducers"></a>Dostosowywanie reduktorów
 
-Konfiguracja bazy danych HBase jest modyfikowany od **HBase Configs** kartę. W poniższych sekcjach opisano niektóre ustawienia konfiguracji ważne, które mają wpływ na wydajność bazy danych HBase.
+Liczba reduktorów jest obliczana na podstawie parametru `pig.exec.reducers.bytes.per.reducer`. Parametr określa liczbę bajtów przetworzonych w ramach reduktor, domyślnie 1 GB. Aby ograniczyć liczbę maksymalną liczbę reduktorów, ustaw `pig.exec.reducers.max` właściwości domyślnie 999.
+
+
+## <a name="hbase-optimization-with-the-ambari-web-ui"></a>Optymalizacja bazy danych HBase przy użyciu interfejsu użytkownika sieci web systemu Ambari
+
+Konfiguracja bazy danych HBase jest zmodyfikowana z **konfiguracje bazy danych HBase** kartę. W poniższych sekcjach opisano niektóre ważnych ustawień konfiguracyjnych, które mają wpływ na wydajność bazy danych HBase.
 
 ### <a name="set-hbaseheapsize"></a>Ustaw HBASE_HEAPSIZE
 
-Rozmiar sterty HBase określa maksymalną ilość sterty do użycia w megabajtach przez *region* i *wzorca* serwerów. Wartość domyślna to 1000 MB. Powinna to być dostosowana na potrzeby obciążenie klastra.
+Rozmiar sterty HBase określa maksymalną ilość sterty do użycia w megabajtach, *region* i *wzorca* serwerów. Wartość domyślna to 1000 MB. Powinny to być dostosowane dla obciążenia klastra.
 
-1. Aby zmodyfikować, przejdź do **zaawansowane env HBase** okienko w bazie danych HBase **Configs** karcie, a następnie znajdź `HBASE_HEAPSIZE` ustawienie.
+1. Aby zmodyfikować, przejdź do **zaawansowane środowisko bazy danych HBase** okienko w bazie danych HBase **Configs** kartę, a następnie znajdź `HBASE_HEAPSIZE` ustawienie.
 
-2. Zmień wartość domyślną do 5000 MB.
+2. Do 5000 MB, należy zmienić wartość domyślną.
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
 
-### <a name="optimize-read-heavy-workloads"></a>Optymalizacja obciążeń intensywnie odczytu
+### <a name="optimize-read-heavy-workloads"></a>Optymalizowanie odczycie obciążeń
 
-Następujące konfiguracje są ważne zwiększyć wydajność obciążeń intensywnie odczytu.
+Następujące konfiguracje są ważne, aby zwiększyć wydajność obciążeń odczycie.
 
 #### <a name="block-cache-size"></a>Rozmiar pamięci podręcznej bloku
 
-Pamięć podręczna bloku jest pamięci podręcznej odczytu. Jego rozmiar jest kontrolowany przez `hfile.block.cache.size` parametru. Wartość domyślna to 0,4, czyli 40 procent całkowitej regionu pamięci serwera. Im większa bloku rozmiar pamięci podręcznej, będzie szybsze losowych operacji odczytu.
+Pamięć podręczna bloku jest pamięci podręcznej odczytu. Jego rozmiar jest kontrolowana przez `hfile.block.cache.size` parametru. Wartość domyślna to Update 0.4, czyli 40 procent całkowitej region pamięci serwera. Im większy blok rozmiar pamięci podręcznej, będzie szybsze losowych operacji odczytu.
 
-1. Aby zmodyfikować tego parametru, przejdź do **ustawienia** kartę w bazie danych HBase **Configs** karcie, a następnie zlokalizuj **% RegionServer przydzielonych do buforów odczytu**.
+1. Aby modyfikować tego parametru, przejdź do **ustawienia** kartę w bazie danych HBase **Configs** kartę, a następnie zlokalizuj **% RegionServer przydzielone do buforów odczytu**.
 
-    ![Rozmiar pamięci podręcznej bloku HBase](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
+    ![Rozmiar pamięci podręcznej bloku bazy danych HBase](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
 2. Aby zmienić wartość, zaznacz **Edytuj** ikony.
 
 
-#### <a name="memstore-size"></a>Rozmiar magazynu
+#### <a name="memstore-size"></a>Rozmiar magazynu pamięci
 
-Wszystkie edycje są przechowywane w buforze pamięci o nazwie *parametru*. Zwiększa to łączną ilość danych, które mogą być zapisywane na dysku w ramach jednej operacji i zwiększa kolejnych dostęp do najnowszych zmian. Rozmiar parametru jest zdefiniowane przez następujące dwa parametry:
+Wszystkie modyfikacje są przechowywane w buforze pamięci o nazwie *magazynu pamięci*. Zwiększa to łączna ilość danych, które mogą być zapisywane na dysku w ramach jednej operacji i zwiększa kolejny dostęp do najnowszych zmian. Rozmiar magazynu pamięci jest definiowany przez następujące dwa parametry:
 
-* `hbase.regionserver.global.memstore.UpperLimit`: Określa maksymalny udział procentowy serwera region, który można użyć parametru w połączeniu.
+* `hbase.regionserver.global.memstore.UpperLimit`: Definiuje maksymalną wartość procentową, można użyć w połączeniu magazynu pamięci serwera regionu.
 
-* `hbase.regionserver.global.memstore.LowerLimit`: Określa minimalną wartość procentową serwera region, który można użyć parametru połączone.
+* `hbase.regionserver.global.memstore.LowerLimit`: Definiuje minimalny procent, można użyć w połączeniu magazynu pamięci serwera regionu.
 
-Aby zoptymalizować dla losowych odczytów, można zmniejszyć górny i dolny limit magazynu.
+Zoptymalizowane pod kątem losowych operacji odczytu, można zmniejszyć górny i dolny limit magazynu pamięci.
 
 
-#### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Liczba wierszy pobranych podczas skanowania z dysku
+#### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Liczba pobranych podczas skanowania dysku wierszy
 
-`hbase.client.scanner.caching` Ustawienie określa liczbę wierszy do odczytu z dysku po `next` metoda jest wywoływana na skanerze.  Wartość domyślna to 100. Im większa liczba, tym mniej wywołań zdalnych wprowadzone od klienta do serwera regionie, co powoduje szybsze skanowania. Jednak to spowoduje zwiększenie wykorzystania pamięci na komputerze klienckim.
+`hbase.client.scanner.caching` Ustawienie określa liczbę wierszy odczytu z dysku po `next` metoda jest wywoływana w skaner.  Wartość domyślna to 100. Im większa liczba, tym mniej wywołań zdalnych wprowadzone od klienta do regionu serwera, skutkuje szybszy skanowania. Jednak to spowoduje zwiększenie wykorzystania pamięci na komputerze klienckim.
 
-![HBase liczba pobranych wierszy](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
+![Baza danych HBase liczba pobranych wierszy](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]
-> Nie należy ustawiać wartość w taki sposób, że czas od wywołania metody dalej na skanerze jest większy niż limit czasu skanera. Wartość limitu czasu skanera jest definiowana za pomocą `hbase.regionserver.lease.period` właściwości.
+> Nie należy ustawiać wartości w taki sposób, że czas od wywołania metody dalej na skanerze jest większy niż limit czasu skanera. Skaner limitu czasu jest definiowany przez `hbase.regionserver.lease.period` właściwości.
 
 
-### <a name="optimize-write-heavy-workloads"></a>Optymalizacja obciążeń intensywnie zapisu
+### <a name="optimize-write-heavy-workloads"></a>Optymalizowanie obciążeń procesów
 
-Następujące konfiguracje są ważne zwiększyć wydajność obciążeń intensywnie zapisu.
+Następujące konfiguracje są ważne, aby zwiększyć wydajność obciążeń procesów.
 
 
 #### <a name="maximum-region-file-size"></a>Region maksymalny rozmiar pliku
 
-HBase przechowuje dane w formacie pliku wewnętrznego, nazywany *HFile*. Właściwość `hbase.hregion.max.filesize` Określa rozmiar pojedynczego hFile — dla regionu.  Region jest podzielony na dwóch regionach, jeśli suma wszystkich HFiles w regionie, który jest większa niż to ustawienie.
+Baza danych HBase przechowuje dane w formacie pliku wewnętrznego, o nazwie *HFile*. Właściwość `hbase.hregion.max.filesize` definiuje rozmiar pojedynczego hFile — dla regionu.  Region jest podzielony na dwa regiony, jeśli suma wszystkich HFiles w regionie jest większa niż to ustawienie.
  
-![Maksymalny rozmiar pliku HBase HRegion](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+![Maksymalny rozmiar pliku HRegion bazy danych HBase](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
-Im większy rozmiar pliku regionu, im mniejsza liczba podziałów. Można zwiększyć rozmiar pliku, aby określić wartość powoduje maksymalną wydajność zapisu.
+Im większy rozmiar pliku regionu, im mniejsza liczba dzieli dane. Możesz zwiększyć rozmiar pliku, aby określić wartość z wynikiem maksymalną wydajność zapisu.
 
 
 #### <a name="avoid-update-blocking"></a>Należy unikać blokowania aktualizacji
 
-* Właściwość `hbase.hregion.memstore.flush.size` Określa rozmiar, w którym jest opróżniany magazynu na dysku. Rozmiar domyślny to 128 MB.
+* Właściwość `hbase.hregion.memstore.flush.size` definiuje rozmiar, w którym magazynu pamięci jest opróżniany do dysku. Domyślny rozmiar to 128 MB.
 
-* Mnożnik bloku region Hbase jest definiowana za pomocą `hbase.hregion.memstore.block.multiplier`. Wartość domyślna to 4. Maksymalna dozwolona wartość to 8.
+* Mnożnik bloku regionu Hbase jest definiowany przez `hbase.hregion.memstore.block.multiplier`. Wartość domyślna to 4. Maksymalna dozwolona wartość to 8.
 
-* HBase blokuje aktualizacji, jeśli jest magazynu (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) bajtów.
+* Baza danych HBase blokuje aktualizacji, jeśli jest magazynu w pamięci (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) bajtów.
 
-    Z wartościami domyślnymi opróżniania rozmiar i współczynnik bloku aktualizacje będą blokowane podczas magazynu to 128 * 4 = 512 MB rozmiar. Aby zmniejszyć blokuje liczba aktualizacji, należy zwiększyć wartość `hbase.hregion.memstore.block.multiplier`.
+    Z wartościami domyślnymi opróżniania rozmiaru i mnożnik bloku aktualizacje są blokowane po 128 * 4 = 512 MB rozmiar magazynu pamięci. Aby zmniejszyć aktualizacji blokuje liczba, zwiększ wartość `hbase.hregion.memstore.block.multiplier`.
 
-![Mnożnik bloku HBase Region](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
-
-
-### <a name="define-memstore-size"></a>Określ wielkość magazynu
-
-Rozmiar parametru jest zdefiniowane przez `hbase.regionserver.global.memstore.UpperLimit` i `hbase.regionserver.global.memstore.LowerLimit` parametrów. Ustawienia te wartości równości, który zmniejsza do każdej inne przerwy podczas zapisuje (powoduje również częstsze opróżnianie) i powoduje zapisu zwiększenia wydajności.
+![Mnożnik bloku regionu HBase](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 
-### <a name="set-memstore-local-allocation-buffer"></a>Wartość parametru lokalnej Alokacja buforu
+### <a name="define-memstore-size"></a>Określ wielkość magazynu pamięci
 
-Użycie bufora lokalnej Alokacja magazynu jest określany przez właściwość `hbase.hregion.memstore.mslab.enabled`. Po włączeniu (true) zapobiega to fragmentację stosu podczas operacji zapisu duże. Wartość domyślna to true.
+Rozmiar magazynu pamięci jest definiowany przez `hbase.regionserver.global.memstore.UpperLimit` i `hbase.regionserver.global.memstore.LowerLimit` parametrów. Ustawienia te wartości równe, który ogranicza do każdego z innych wstrzymuje działanie podczas zapisu (również co powoduje częstsze opróżniania) i powoduje zapisu zwiększoną wydajność.
+
+
+### <a name="set-memstore-local-allocation-buffer"></a>Zestaw magazynu pamięci lokalnej alokacji buforu
+
+Użycie bufora alokacji lokalnego magazynu pamięci jest określany przez właściwość `hbase.hregion.memstore.mslab.enabled`. Po włączeniu (PRAWDA) zapobiega to fragmentację sterty podczas operacji wysokie obciążenia podczas zapisu. Wartość domyślna to true.
  
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanie klastrami HDInsight z interfejsu użytkownika sieci web Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Interfejs API REST Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Zarządzanie klastrami HDInsight przy użyciu interfejsu użytkownika sieci web systemu Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Interfejs API REST systemu Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3ac82d6f0b54846485ed7369d5c9c1bd352f9daa
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f529459562ec10a7b9bbcca578d8998e545f3f4c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437746"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952617"
 ---
 # <a name="support-for-azure-marketplace"></a>Obsługa portalu Azure Marketplace  
 Opcje pomocy technicznej dla witryny Azure Marketplace.  
@@ -45,7 +45,7 @@ Opcje pomocy technicznej dla witryny Azure Marketplace.
 
 | Kanał obsługi | Opis |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://join.marketplace.azure.com) | Slack środowisko do obsługi partnerom kwestiach technicznych. Tam o 350 + partnerów pracujących w tym środowisku. |  
+| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack środowisko do obsługi partnerom kwestiach technicznych. Tam o 350 + partnerów pracujących w tym środowisku. |  
 | Fora MSDN: Marketplace znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum sieci Microsoft Developer Network. |  
 | Witrynie Stack Overflow: Azure znajdujący się [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z portalu Azure Marketplace.<ul> <li>Witrynie Stack Overflow: Portal Azure Marketplace znajdującym się [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Witrynie Stack Overflow: Usługa Azure Resource Manager znajdującym się [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Witrynie Stack Overflow: maszyny wirtualne na platformie Azure znajdujący się [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Witrynie Stack Overflow: Kontenery na platformie Azure znajdujący się [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 

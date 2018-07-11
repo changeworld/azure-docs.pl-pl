@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 66964e4ed0877cc47dd7d2b5f3c6a62f4fa006b1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348188"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37935771"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -125,6 +125,10 @@ Nie. Nie można zaktualizować właściwości Nazwa komputera. Nowa maszyna wirt
 **Gdzie można znaleźć przykładowe szablony usługi Azure Resource Manager do tworzenia maszyn wirtualnych z dyskami zarządzanymi**
 * [Lista szablonów przy użyciu dysków Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+**Wspólnie znaleźć dysków niezarządzanych i zarządzanych w tej samej maszyny Wirtualnej?**
+
+Nie.
 
 ## <a name="standard-ssd-disks-preview"></a>Dyski SSD w warstwie standardowa (wersja zapoznawcza)
 
@@ -286,7 +290,7 @@ Typ partycji, które platforma Azure obsługuje dla dysku systemu operacyjnego j
 
 **Co to jest największy rozmiar stronicowego obiektu blob, który jest obsługiwany?**
 
-Największy rozmiar stronicowego obiektu blob platformy Azure obsługuje to 8 TB (8191 GB). Maxmium blogu rozmiar strony, gdy dołączony do maszyny Wirtualnej jako dane lub dyski systemu operacyjnego jest 4 TB (4095 GB).
+Największy rozmiar stronicowego obiektu blob platformy Azure obsługuje to 8 TB (8191 GB). Maksymalny rozmiar strony, do blogu, gdy dołączony do maszyny Wirtualnej jako dane lub dyski systemu operacyjnego jest 4 TB (4095 GB).
 
 **Należy używać nowej wersji narzędzi platformy Azure do tworzenia, dołączania, zmienianie rozmiaru i przekaż dysków większych niż 1 TB?**
 

@@ -1,5 +1,5 @@
 ---
-title: Jak udostępnić spacje deweloperów platformy Azure | Dokumentacja firmy Microsoft
+title: Jak udostępniać usługi Azure Dev miejsca do magazynowania | Dokumentacja firmy Microsoft
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,22 +11,27 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: ca644cc412ad0c8f0e2a0781d9419fba58ed8d12
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9345015a8732da02ea68711cd807556a543d8d01
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247708"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930148"
 ---
-# <a name="share-azure-dev-spaces"></a>Funkcja miejsca do udziału deweloperów platformy Azure
+# <a name="share-azure-dev-spaces"></a>Miejsca do magazynowania udziału usługi Azure Dev
 
-Spacjami deweloperów platformy Azure można udostępniać obszaru deweloperów z innymi osobami w zespole. Każdy deweloper może współpracować własnej przestrzeni bez obawy złamanie innych użytkowników. Ponadto pracujących razem w jednym miejscu można włączyć do testowania kodu end-to-end bez konieczności tworzenia mocks lub symulować zależności. Zobacz [więcej informacji na temat tworzenia zespołu](../get-started-nodejs.md#learn-about-team-development) przewodnika, aby uzyskać więcej informacji.
+Za pomocą usługi Azure Dev miejsca do magazynowania można udostępnić obszaru dev z innymi osobami w zespole. Każdy deweloper może pracować w ich własnych miejsce do magazynowania bez obawiać się, że inne istotne. Praca ze sobą w jednym miejscu może również włączyć do testowania kodu end-to-end, bez konieczności tworzenia mocks lub symulacji zależności. Zobacz [więcej informacji na temat Projektowanie zespołowe](../team-development-nodejs.md) przewodnika, aby uzyskać więcej informacji.
 
-Aby skonfigurować odstęp deweloperów dla wielu deweloperów:
-1. Tworzenie miejsca deweloperów na platformie Azure. Wybierz [oprogramowanie .NET Core i kodzie VS](../get-started-netcore.md), [.NET Core i Visual Studio](../get-started-netcore-visualstudio.md), lub [Node.js i kodzie VS](../get-started-nodejs.md). Musisz być właścicielem lub współautorem dostępu do wybranej subskrypcji Azure.
-1. Skonfiguruj miejsce deweloperów Azure **grupy zasobów** do [udzielić dostępu współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając poniższe polecenie: `azds list`
-1. Poproś członkom zespołu **wybierz miejsce deweloperów** aby tworzyć w nim.
-     * **Wiersz polecenia lub kodzie VS**: Aby wyświetlić istniejące pomieszczenia deweloperów platformy Azure masz dostęp do: `azds space list`. Aby wybrać miejsce dev: `azds space select`.
-     * **Visual Studio IDE**: Otwórz projekt w programie Visual Studio, wybierz **spacje deweloperów Azure** z rozwijanej ustawień uruchamiania. W otwartym oknie dialogowym Wybierz istniejącego klastra.
+## <a name="set-up-a-dev-space-for-multiple-developers"></a>Konfigurowanie miejsca dev dla wielu deweloperów
 
-![Visual Studio Uruchom ustawienia listy rozwijanej](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+1. Tworzenie przestrzeni deweloperów na platformie Azure. Wybierz [platformy .NET Core i programu VS Code](../get-started-netcore.md), [platformy .NET Core i Visual Studio](../get-started-netcore-visualstudio.md), lub [środowiska Node.js i program VS Code](../get-started-nodejs.md). Musisz mieć dostęp właściciela lub współautora do wybranej subskrypcji platformy Azure.
+1. Skonfiguruj miejsce Azure Dev na **grupy zasobów** do [przyznać prawa współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając następujące polecenie: `azds list`
+1. Poproś członków zespołu, aby **wybierz miejsce dev** aby tworzyć w nim.
+     * **Wiersz polecenia lub programu VS Code**: Aby wyświetlić istniejące usługi Azure Dev miejsca do magazynowania ma dostęp do: `azds space list`. Aby wybrać miejsce dev: `azds space select`.
+     * **Środowiska IDE programu Visual Studio**: Otwórz projekt w programie Visual Studio, wybierz **miejsca do magazynowania Azure Dev** z uruchamiania ustawienia listy rozwijanej. W wyświetlonym oknie dialogowym Wybierz istniejący klaster.
+
+    ![Visual Studio Uruchom ustawień listy rozwijanej](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Zobacz [więcej informacji na temat Projektowanie zespołowe](../team-development-nodejs.md) Aby uzyskać więcej informacji.

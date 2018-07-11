@@ -54,6 +54,7 @@
 #### [Przywracanie brakujących jednostek usługi](active-directory-ds-troubleshoot-service-principals.md)
 #### [Błędy protokołu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
 ### [Resolve mismatched tenant errors (Rozwiązywanie błędów dotyczących niezgodnych dzierżaw)](active-directory-ds-mismatched-tenant-error.md)
+### [Wstrzymane domeny](active-directory-ds-suspension.md)
 
 
 # Dokumentacja

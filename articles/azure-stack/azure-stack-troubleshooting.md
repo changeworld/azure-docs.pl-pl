@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z Microsoft Azure stosu | Dokumentacja firmy Microsoft
-description: Azure stosu dotyczących rozwiązywania problemów.
+title: Rozwiązywanie problemów z usługi Microsoft Azure Stack | Dokumentacja firmy Microsoft
+description: Usługa Azure Stack rozwiązywania.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,68 +12,57 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 07/09/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b63fdd630647cc970a2d935619b4d3f16b8c0375
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bb89daee47d5f380786246070cf5cddb69b731
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229894"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929563"
 ---
-# <a name="microsoft-azure-stack-troubleshooting"></a>Rozwiązywanie problemów z Microsoft Azure stosu
+# <a name="microsoft-azure-stack-troubleshooting"></a>Rozwiązywanie problemów z usługi Microsoft Azure Stack
 
-*Dotyczy: Azure stosu Development Kit*
+Ten dokument zawiera wspólne informacje dotyczące rozwiązywania problemów dla usługi Azure Stack. 
 
-Ten dokument zawiera typowe informacje dotyczące rozwiązywania problemów dla stosu Azure. 
+> [!NOTE]
+> Ponieważ usługi Azure Stack Technical Preview Development Kit (ASDK) jest oferowany jako środowisko oceny, nie istnieje żadne oficjalne pomocy technicznej z usług obsługi klienta firmy Microsoft. Jeśli występuje problem, upewnij się sprawdzić [Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
 
-Ponieważ Azure stosu techniczne Development Kit jest oferowany jako środowisko oceny, nie jest oficjalną obsługiwane z usług obsługi klienta firmy Microsoft. Jeśli występuje problem nie opisano, upewnij się sprawdzić [Forum MSDN stosu Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
-
-Zalecenia dotyczące rozwiązywania problemów, które zostały opisane w tej sekcji są uzyskiwane z wielu źródeł i może lub nie może rozpoznać określonego problemu. Przykłady kodu są dostarczane, ponieważ jest i nie można zagwarantować oczekiwanych rezultatów. W tej sekcji podlega częste zmiany i aktualizacje zaimplementowanego ulepszenia produktu.
+Zalecenia dotyczące rozwiązywania problemów, które są opisane w tej sekcji są uzyskiwane z wielu źródeł i może lub nie może rozpoznać określonego problemu. Przykłady kodu są dostarczane w postaci jest i nie można zagwarantować oczekiwanych wyników. W tej sekcji podlega częste zmiany i aktualizacje zaimplementowanego ulepszenia produktu.
 
 ## <a name="deployment"></a>Wdrożenie
-### <a name="deployment-failure"></a>Niepowodzenie wdrożenia
-Jeśli wystąpi błąd podczas instalacji, możesz ponownie uruchomić wdrażania z kroku nie powiodło się przy użyciu opcji Uruchom ponownie skrypt wdrożenia.  
+### <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
+Jeśli nastąpi awaria podczas instalacji należy ponownie uruchomić wdrożenie z krok zakończony niepowodzeniem przy użyciu opcję ponownego uruchamiania skryptu wdrożenia.  
 
-
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Po zakończeniu wdrożenia sesji programu PowerShell jest wciąż otwarty i nie wyświetla żadnych danych wyjściowych
-To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń programu PowerShell, gdy została wybrana. Rozwój wdrożenie zestawu faktycznie ma zakończyło się pomyślnie, ale skrypt został wstrzymany, wybierając okna. Możesz sprawdzić, czy instalacja została ukończona, wyszukując słowa "Wybierz" pasek tytułu okna wiersza polecenia.  Naciśnij klawisz ESC, aby usunąć jej zaznaczenie, a powinien być wyświetlany komunikat o zakończeniu po nim.
+### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Po zakończeniu wdrożenia ASDK sesji programu PowerShell jest wciąż otwarty, a nie wyświetla żadnych danych wyjściowych.
+To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń programu PowerShell, jeśli został wybrany. Deployment kit rozwoju zakończyła się pomyślnie, ale skrypt został wstrzymany, wybierając okno. Możesz sprawdzić, czy instalacja została ukończona, wyszukując słowo "Wybierz" pasek tytułu okna wiersza polecenia.  Naciśnij klawisz ESC, aby usunąć jej zaznaczenie, a powinien być wyświetlany komunikat o zakończeniu po nim.
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 ### <a name="default-image-and-gallery-item"></a>Element domyślny obraz i galerii
-Przed wdrożeniem maszyn wirtualnych w stosie Azure należy dodać element obrazu i galerii systemu Windows Server.
+Element obrazu i galerii systemu Windows Server, należy dodać przed wdrożeniem maszyn wirtualnych w usłudze Azure Stack.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu hosta Moje stosu Azure, niektóre maszyny wirtualne nie może automatycznie uruchomić.
-Po jego ponownym uruchomieniu hosta, można zauważyć, że usługi Azure stosu nie są natychmiast dostępne.  Jest to spowodowane stosu Azure [infrastruktury maszyn wirtualnych](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) i RPs małego nieco potrwać do sprawdzania spójności, ale ostatecznie rozpocznie się automatycznie.
+### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu mojej hosta usługi Azure Stack, niektóre maszyny wirtualne nie może automatycznie uruchomić.
+Po ponownym uruchomieniu hosta, może być Zauważ, że nie są natychmiast dostępne usługi Azure Stack.  Jest to spowodowane Azure Stack [maszynach wirtualnych infrastruktury](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) i dostawców zasobów zająć trochę czasu, aby sprawdzić spójność, ale ostatecznie rozpocznie się automatycznie.
 
-Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomić po ponownym uruchomieniu hosta zestawu programowanie stosu Azure. Jest to znany problem i wymaga kilku ręczne czynności w celu ich Przełącz do trybu online:
+Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomiony po ponownym uruchomieniu hosta usługi Azure Stack development zestawu. Jest to znany problem i wymaga tylko kilku ręcznych kroków, aby przełączyć w tryb online:
 
-1.  Na hoście zestawu programowanie stosu Azure, należy uruchomić **Menedżera klastra trybu Failover** z Start Menu.
+1.  Na hoście usługi Azure Stack development kit start **Menedżera klastra trybu Failover** w Start Menu.
 2.  Wybierz klaster **S Cluster.azurestack.local**.
-3.  Wybierz **ról**.
-4.  Maszyny wirtualne dzierżawy są wyświetlane w *zapisane* stanu. Po wszystkich maszyn wirtualnych infrastruktury są uruchomione, kliknij prawym przyciskiem myszy dzierżawione maszyny wirtualne i wybierz **Start** wznowienie maszyny Wirtualnej.
+3.  Wybierz **role**.
+4.  Maszyny wirtualne dzierżawy są wyświetlane w *zapisane* stanu. Gdy są uruchomione wszystkie maszyny wirtualne infrastruktury, kliknij prawym przyciskiem myszy maszyny wirtualne dzierżawcy i wybierz **Start** Aby wznowić działanie maszyny Wirtualnej.
 
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Usunięto niektóre maszyny wirtualne, ale również widzieć plików VHD na dysk. Jest to zachowanie oczekiwane?
-Tak, to zachowanie oczekiwane. Ponieważ została zaprojektowana w ten sposób:
+### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Usunięto niektóre maszyny wirtualne, ale nadal Zobacz pliki wirtualnego dysku twardego na dysku. To zachowanie jest oczekiwane?
+Tak, jest to oczekiwane zachowanie. Ponieważ została zaprojektowana w ten sposób:
 
-* Po usunięciu maszyny Wirtualnej, wirtualne dyski twarde nie są usuwane. Dyski są oddzielne zasoby w grupie zasobów.
-* Usunięcie konta magazynu pobiera usunięcia jest widoczna od razu za pośrednictwem usługi Azure Resource Manager, ale dyski, które może on zawierać nadal są przechowywane w magazynie do momentu uruchamia wyrzucanie elementów bezużytecznych.
+* Jeśli usuniesz Maszynę wirtualną, wirtualne dyski twarde nie są usuwane. Dyski są oddzielne zasoby w grupie zasobów.
+* Gdy konto magazynu zostaje usunięte, usunięcie jest widoczna od razu za pośrednictwem usługi Azure Resource Manager, ale dyski które może ona zawierać nadal są przechowywane w magazynie, dopóki działa wyrzucanie elementów bezużytecznych.
 
-Jeśli widzisz "oddzielony" wirtualne dyski twarde, należy znać, jeśli są one częścią folderu dla konta magazynu, który został usunięty. Jeśli konto magazynu nie została usunięta, jest normalne, że są one nadal istnieje.
+Jeśli widzisz "oddzielony" wirtualne dyski twarde, należy znać, jeśli są one częścią folderu dla konta magazynu, który został usunięty. Jeśli nie można usunąć konta magazynu, jest normalnym, że są one nadal istnieje.
 
-Więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](azure-stack-manage-storage-accounts.md).
+Możesz dowiedzieć się więcej o konfigurowaniu przechowywania odzyskiwanie próg i na żądanie w [Zarządzanie kontami magazynu](azure-stack-manage-storage-accounts.md).
 
 ## <a name="storage"></a>Magazyn
 ### <a name="storage-reclamation"></a>Odzyskiwanie pamięci masowej
-Może upłynąć do 14 godzin regeneracji pojemność były wyświetlane w portalu. Odzyskiwanie miejsca zależy od różnych czynników, takich jak procent użycia plików wewnętrzny kontenera w magazynie obiektów blob bloku. W związku z tym w zależności od tego, jak dużo danych zostanie usunięty, nie ma żadnej gwarancji na ilość miejsca, które można odzyskać po uruchomieniu przez moduł Garbage Collector.
-
-## <a name="windows-azure-pack-connector"></a>Łącznik usługi Windows Azure Pack
-* Jeśli zmienisz hasło konta azurestackadmin po wdrożeniu zestaw deweloperski stosu Azure, nie można skonfigurować tryb usługi chmury. W związku z tym nie będzie można połączyć się środowiska docelowego pakietu Windows Azure Pack.
-* Po ustawieniu trybu wielu chmury:
-    * Użytkownik może pulpit nawigacyjny był widoczny tylko wtedy, gdy resetowania ustawień portalu. (W aplikacji portal użytkowników, kliknij ikonę ustawień portalu (koło zębate ikonę w prawym górnym rogu). W obszarze **przywrócić ustawienia domyślne**, kliknij przycisk **Zastosuj**.)
-    * Tytuły pulpitu nawigacyjnego nie może występować. Jeśli ten problem występuje, należy ręcznie dodać je ponownie.
-    * Niektóre Kafelki może być niepoprawnie wyświetlana po dodaniu ich do pulpitu nawigacyjnego. Aby rozwiązać ten problem, należy odświeżyć przeglądarkę.
-
-
+Może upłynąć do 14 godzin odzyskiwanego pojemności wyświetlani w portalu. Odzyskiwanie miejsca zależy od różnych czynników, w tym procent użycia plików pojemnika wewnętrznego w magazyn blokowych obiektów blob. W związku z tym w zależności od ilości danych zostanie usunięty, nie ma żadnej gwarancji ilości miejsca, które można odzyskać po uruchomieniu modułu zbierającego elementy bezużyteczne.
 
