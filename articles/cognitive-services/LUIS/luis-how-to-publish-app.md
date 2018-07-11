@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 1bd24af0498755b7cdcb170624fd8f9f3b39c85a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347426"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927778"
 ---
 # <a name="publish-your-trained-app"></a>Opublikuj aplikację uczonego
 Po zakończeniu tworzenia i testowania aplikacji usługi LUIS, należy go opublikować. Po opublikowaniu aplikacji, na stronie publikowania znajdują się wszystkie skojarzone HTTP [punktów końcowych](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i [klucz](luis-how-to-manage-keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 
@@ -67,7 +67,7 @@ Wybór miejsca jest wybór strefy czasowej. To ustawienie strefy czasowej umożl
 
 To ustawienie pozwala używać chatbot lub wywoływania usługi LUIS aplikacji, aby wprowadzić programowe decyzję oparciu o wyniki zwrócone intencji. Ogólnie rzecz biorąc najważniejsze intencji dwa są najbardziej interesujące. W przypadku oceny najważniejszych intencji Twojego chatbot możliwość Zadaj pytanie monitowania, dzięki której ostatecznego wyboru między Brak intencji i oceniania wysokiej intencji None. 
 
-Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcowego. Możesz [wyeksportować](create-new-app.md#export-app) tych dzienników i przeanalizować wyniki. 
+Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcowego. Możesz [wyeksportować](luis-how-to-start-new-app.md#export-app) tych dzienników i przeanalizować wyniki. 
 
 ```
 {
@@ -151,7 +151,7 @@ Testowanie opublikowanej punktu końcowego, wybierając adresu URL w **punktu ko
 
 ![Odpowiedź JSON z opublikowanych punkt końcowy HTTP](./media/luis-how-to-publish-app/luis-publish-app-json-response.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz [zarządzanie kluczami](./luis-how-to-manage-keys.md) do dodawania kluczy z aplikacją usługi LUIS i Dowiedz się, jak klucze mapowania regionów.
 * Zobacz [szkolenie i testowanie aplikacji](interactive-test.md) instrukcje na temat testowania Twojej opublikowanej aplikacji w konsoli testów.

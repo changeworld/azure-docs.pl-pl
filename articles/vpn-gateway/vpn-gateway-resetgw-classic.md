@@ -1,6 +1,6 @@
 ---
 title: Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono Resetowanie bramy sieci VPN platformy Azure, aby ponownie ustanowić tuneli IPsec. Artykuł dotyczy bram sieci VPN w klasycznym i modeli wdrażania Menedżera zasobów.
+description: W tym artykule opisano procedurę resetowania bramy sieci VPN Azure, aby ponownie ustanowić tuneli IPsec. Artykuł ma zastosowanie do bram sieci VPN w klasycznym i modelem wdrażania usługi Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: 693996595f1a1b963c96e5f59e72fe4c9ca80ff0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e61e41c41888d8d2ca65961dd5bea73fd9b6bd21
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753044"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927693"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -28,17 +28,17 @@ Resetowanie bramy Azure VPN Gateway przydaje się w przypadku utraty połączeni
 
 ### <a name="what-happens-during-a-reset"></a>Co się dzieje podczas resetowania?
 
-Brama sieci VPN składa się z dwóch wystąpień maszyn wirtualnych działających w konfiguracji aktywnego gotowości. Zresetowanie bramy uruchamia bramy, a następnie ponownie stosuje konfiguracje między różnymi lokalizacjami, aby go. Brama zachowa publiczny adres IP, który został z nią wcześniej powiązany. Oznacza to, że nie będzie konieczne aktualizowanie konfiguracji routera sieci VPN pod kątem nowego publicznego adresu IP bramy sieci VPN Azure.
+Bramy VPN gateway składa się z dwóch wystąpień maszyn wirtualnych działających w konfiguracji aktywne-w gotowości. Zresetowanie bramy, ponowne uruchomienie bramy i ponowne zastosowanie do niej konfiguracji obejmujących wiele lokalizacji. Brama zachowa publiczny adres IP, który został z nią wcześniej powiązany. Oznacza to, że nie będzie konieczne aktualizowanie konfiguracji routera sieci VPN pod kątem nowego publicznego adresu IP bramy sieci VPN Azure.
 
-Po wydaniu polecenia można zresetować bramy, natychmiast ponownego active bieżące wystąpienie bramy sieci VPN platformy Azure. Podczas pracy awaryjnej z aktywnym wystąpieniu (Trwa ponowne uruchamianie), do wstrzymania wystąpienia nastąpi krótką przerwę. Przerwa powinna trwać niż dłużej niż minutę.
+Po wykonaniu polecenia, można zresetować bramy, bieżące aktywne wystąpienie bramy Azure VPN gateway jest natychmiast uruchomione ponownie. Nastąpi krótkie przerwy podczas trybu failover z aktywnego wystąpienia (ponownie uruchamiane), aby rezerwowe wystąpienie. Przerwa powinna trwać niż dłużej niż minutę.
 
 Jeśli połączenie nie zostanie przywrócone po pierwszym ponownym rozruchu komputera, należy wydać to polecenie ponownie, aby uruchomić ponownie drugie wystąpienie maszyny wirtualnej (nową aktywną bramę). Jeśli wymagane jest przeprowadzenie dwóch rozruchów jednocześnie, to ponowne uruchomienie obu wystąpień maszyn wirtualnych (aktywnego i w gotowości) będzie trwać nieco dłużej. Spowoduje to dłuższą przerwę w łączności przez sieć VPN, trwającą maksymalnie od 2 do 4 minut, podczas której nastąpi ponowny rozruch maszyn wirtualnych.
 
-Po dwóch uruchamiany ponownie Jeśli nadal występują problemy z łącznością między różnymi lokalizacjami, otwórz żądanie obsługi z portalu Azure.
+Po dwóch ponownych uruchomieniach Jeśli nadal występują problemy z łącznością między środowiskami lokalnymi, otwórz żądanie pomocy technicznej w witrynie Azure portal.
 
 ## <a name="before"></a>Przed rozpoczęciem
 
-Przed zresetowaniem bramy dla każdego tunelu połączenia sieci VPN typu lokacja-lokacja (site-to site, S2S) korzystającego z protokołu IPsec należy sprawdzić kluczowe elementy wymienione poniżej. Brak zgodności którychkolwiek elementów spowoduje przerwanie połączenia tuneli sieci VPN S2S. Sprawdzanie poprawności i usuwanie konfiguracji dla usługi lokalnej i bram sieci VPN platformy Azure pozwala uniknąć niepotrzebnych ponownych rozruchów i zakłóceń dla innych połączeń pracy w bramach.
+Przed zresetowaniem bramy dla każdego tunelu połączenia sieci VPN typu lokacja-lokacja (site-to site, S2S) korzystającego z protokołu IPsec należy sprawdzić kluczowe elementy wymienione poniżej. Brak zgodności którychkolwiek elementów spowoduje przerwanie połączenia tuneli sieci VPN S2S. Zweryfikowanie i poprawienie konfiguracji dla usługi w środowisku lokalnym i bram sieci VPN platformy Azure pozwala uniknąć niepotrzebnego ponownego uruchamiania i zakłóceń dla innych połączeń działających w bramach.
 
 Przed zresetowaniem bramy, sprawdź następujące elementy:
 
@@ -46,36 +46,36 @@ Przed zresetowaniem bramy, sprawdź następujące elementy:
 * Klucz wstępny musi być taki sam w przypadku bramy sieci VPN Azure oraz bramy lokalnej sieci VPN.
 * W przypadku zastosowania konkretnej konfiguracji uwzględniającej protokół IPsec/IKE, takiej jak szyfrowanie, algorytmy wyznaczania wartości skrótu i doskonałe utajnienie przekazywania (Perfect Forward Secrecy, PFS), należy się upewnić, że zarówno brama sieci VPN Azure, jak i brama lokalnej sieci VPN mają takie same konfiguracje.
 
-## <a name="portal"></a>Azure portal
+## <a name="portal"></a>Witryna Azure portal
 
-Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu portalu Azure. Jeśli chcesz zresetować klasycznego bramy, zobacz [PowerShell](#resetclassic) czynności.
+Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu witryny Azure portal. Jeśli chcesz zresetować bram klasyczny, zobacz [PowerShell](#resetclassic) kroki.
 
 ### <a name="resource-manager-deployment-model"></a>Model wdrażania usługi Resource Manager
 
-1. Otwórz [portalu Azure](https://portal.azure.com) i przejdź do Menedżera zasobów bramy sieci wirtualnej, który chcesz zresetować.
-2. W bloku dla bramy sieci wirtualnej kliknij pozycję "Resetuj".
+1. Otwórz [witryny Azure portal](https://portal.azure.com) i przejdź do bramy sieci wirtualnej usługi Resource Manager, który chcesz zresetować.
+2. W bloku bramy sieci wirtualnej kliknij przycisk "Resetuj".
 
-  ![Resetuj bloku bramy sieci VPN](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
-3. W bloku resetowania kliknij **zresetować** przycisku.
+  ![Zresetować blok bramy sieci VPN](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+3. W bloku resetowania kliknij **resetowania** przycisku.
 
 ## <a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Model wdrażania usługi Resource Manager
 
-Polecenie cmdlet resetowania bramy jest **AzureRmVirtualNetworkGateway resetowania**. Przed wykonaniem resetowanie, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell Menedżera zasobów](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
+Polecenie cmdlet służące do resetowania bramy to **polecenie Reset-AzureRmVirtualNetworkGateway**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell usługi Resource Manager](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroup TestRG1
+$gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
 Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw
 ```
 
 Wynik:
 
-Po wyświetleniu zwracanych wyników można założyć, resetowanie bramy zakończyło się pomyślnie. Jednak nie ma w wyniku zwracany, która jawnie wskazuje, że zresetowanie zakończyła się pomyślnie. Jeśli chcesz należy dokładnie przejrzeć historię, aby zobaczyć dokładnie Resetowanie bramy wystąpienia, możesz wyświetlić te informacje w [portalu Azure](https://portal.azure.com). W portalu, przejdź do **"GatewayName" -> kondycja zasobów**.
+Gdy zostanie wyświetlony wynik zwracany, można założyć, resetowania bramy zakończyło się pomyślnie. Jednak nie ma nic do zwracanego wyniku, która wyraźnie wskazuje, czy resetowania zakończyła się pomyślnie. Jeśli chcesz Przyjrzyj się bliżej historii, aby zobaczyć dokładnie, kiedy resetowania bramy wystąpił, możesz wyświetlić te informacje w [witryny Azure portal](https://portal.azure.com). W portalu, przejdź do **"GatewayName" -> kondycja zasobu**.
 
-### <a name="resetclassic"></a>Klasycznego modelu wdrażania
+### <a name="resetclassic"></a>Klasyczny model wdrażania
 
-Polecenie cmdlet resetowania bramy jest **AzureVNetGateway resetowania**. Przed wykonaniem resetowanie, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell usługi zarządzania (SM)](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie "ContosoVNet":
+Polecenie cmdlet służące do resetowania bramy to **Reset-AzureVNetGateway**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell Service Management (SM)](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets). Poniższy przykład powoduje zresetowanie bramy dla sieci wirtualnej o nazwie "ContosoVNet":
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”
@@ -92,9 +92,9 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="cli"></a>Interfejs wiersza polecenia platformy Azure
+## <a name="cli"></a>Wiersza polecenia platformy Azure
 
-Aby zresetować bramy, należy użyć [zresetować bramy sieci wirtualnej sieci az](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) polecenia. Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet5GW w grupie zasobów TestRG5:
+Aby zresetować bramę, użyj [resetowania bramy sieci wirtualnej az sieci](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) polecenia. Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet5GW w grupie zasobów TestRG5:
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5
@@ -102,4 +102,4 @@ az network vnet-gateway reset -n VNet5GW -g TestRG5
 
 Wynik:
 
-Po wyświetleniu zwracanych wyników można założyć, resetowanie bramy zakończyło się pomyślnie. Jednak nie ma w wyniku zwracany, która jawnie wskazuje, że zresetowanie zakończyła się pomyślnie. Jeśli chcesz należy dokładnie przejrzeć historię, aby zobaczyć dokładnie Resetowanie bramy wystąpienia, możesz wyświetlić te informacje w [portalu Azure](https://portal.azure.com). W portalu, przejdź do **"GatewayName" -> kondycja zasobów**.
+Gdy zostanie wyświetlony wynik zwracany, można założyć, resetowania bramy zakończyło się pomyślnie. Jednak nie ma nic do zwracanego wyniku, która wyraźnie wskazuje, czy resetowania zakończyła się pomyślnie. Jeśli chcesz Przyjrzyj się bliżej historii, aby zobaczyć dokładnie, kiedy resetowania bramy wystąpił, możesz wyświetlić te informacje w [witryny Azure portal](https://portal.azure.com). W portalu, przejdź do **"GatewayName" -> kondycja zasobu**.

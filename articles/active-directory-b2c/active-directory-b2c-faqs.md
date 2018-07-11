@@ -10,15 +10,18 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: eb9e4c58343e1f628ff862009b1d12dad07a1c91
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e56b6f9360bdbfe2c5dcb2e81862cb80310bf54c
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442444"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928736"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
+
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Dlaczego nie mogę uzyskać dostępu do rozszerzenia usługi Azure AD B2C w witrynie Azure portal?
+Istnieją dwie typowe przyczyny Dlaczego rozszerzenia usługi Azure AD nie działa dla Ciebie.  Usługa Azure AD B2C wymaga usługi roli użytkownika w katalogu, aby być administratorem globalnym.  Jeśli uważasz, że powinni mieć dostęp, skontaktuj się z administratorem.  Jeśli masz uprawnienia administratora globalnego, upewnij się, że znajdują się w katalogu usługi Azure AD B2C, a nie katalog usługi Azure Active Directory.  Możesz zobaczyć instrukcje dotyczące [Tworzenie katalogu usługi Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Czy można używać funkcji usługi Azure AD B2C, w ramach mojej dzierżawy usługi Azure AD istniejących, na podstawie pracownik?
 Usługa Azure AD i usługi Azure AD B2C są osobne oferty nie mogą współistnieć w tej samej dzierżawy.  Organizacja dzierżawę usługi Azure AD.  Dzierżawy usługi Azure AD B2C reprezentuje kolekcję tożsamości, które mają być używane z aplikacjami danej firmy.  Za pomocą niestandardowych zasad (w publicznej wersji zapoznawczej) usługi Azure AD B2C może tworzyć federacje z usługą Azure AD, dzięki czemu uwierzytelnienia pracowników w organizacji.
