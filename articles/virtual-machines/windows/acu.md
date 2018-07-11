@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure obliczeniowe jednostki | Dokumentacja firmy Microsoft
-description: Omówienie koncepcji Azure obliczeniowe jednostki dla systemu Windows. ACU umożliwia porównanie wydajności procesora CPU przez jednostki SKU Azure.
+title: Jednostka obliczeniowa omówienie platformy Azure | Dokumentacja firmy Microsoft
+description: Omówienie koncepcji usługi Azure compute jednostki dla Windows. Wartość ACU umożliwia porównanie wydajności procesorów CPU w jednostkach SKU platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2017
 ms.author: jonbeck
 ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "30918085"
 ---
-# <a name="azure-compute-unit-acu"></a>Jednostka obliczeniowa Azure (ACU)
+# <a name="azure-compute-unit-acu"></a>Jednostka obliczeniowa platformy Azure (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
-Oto łącza do dodatkowych informacji o różnych rozmiarach:
+Oto linki do szczegółowych informacji o różnych rozmiarach:
 - [Ogólnego przeznaczenia](sizes-general.md)
 - [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)

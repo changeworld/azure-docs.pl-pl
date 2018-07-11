@@ -1,4 +1,4 @@
-1. Skopiuj Instalatora na folder lokalny (na przykład C:\Temp) na serwerze, który chcesz chronić. Uruchom następujące polecenia z uprawnieniami administracyjnymi w wierszu polecenia:
+1. Skopiuj Instalator do folderu lokalnego (np. C:\Temp) na serwerze, który chcesz chronić. Uruchom następujące polecenia jako administrator, w wierszu polecenia:
 
   ```
   cd C:\Temp
@@ -6,7 +6,7 @@
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted.
   ```
-2. Aby zainstalować usługi mobilności, uruchom następujące polecenie:
+2. Aby zainstalować usługę mobilności, uruchom następujące polecenie:
 
   ```
   UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
@@ -27,13 +27,13 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 
 | Parametr|Typ|Opis|Możliwe wartości|
 |-|-|-|-|
-|/ Roli|Obowiązkowy|Określa, czy należy zainstalować usługi mobilności (MS) lub MasterTarget (MT) powinien być zainstalowany.|MS </br> MT|
+|/ Roli|Obowiązkowy|Określa, czy należy zainstalować usługi mobilności (MS), czy główny serwer docelowy ma Oznaczała powinien być zainstalowany.|MS </br> MT|
 |/InstallLocation|Optional (Opcjonalność)|Lokalizacja, w którym jest zainstalowana usługa mobilności.|Dowolny folder na komputerze|
-|/ Platform|Obowiązkowy|Określa platformę, na którym zainstalowano usługę mobilności. </br> </br>- **VMware**: Użyj tej wartości, po zainstalowaniu usługi mobilności na maszynie Wirtualnej systemem *hosty programu VMware vSphere ESXi*, *hosty funkcji Hyper-V*, i *serwerów fizycznych*. </br> - **Azure**: Użyj tej wartości, po zainstalowaniu agenta na maszynie Wirtualnej platformy Azure IaaS. | VMware </br> Azure|
-|/ Dyskretnej|Optional (Opcjonalność)|Określa, aby uruchomić Instalatora w trybie dyskretnym.| ND|
+|/ Platform|Obowiązkowy|Określa platformę, na którym zainstalowano usługę mobilności. </br> </br>- **VMware**: Użyj tej wartości, po zainstalowaniu usługi mobilności na maszynie Wirtualnej z systemem *hostami programu VMware vSphere ESXi*, *hosty funkcji Hyper-V*, i *serwerów fizycznych*. </br> - **Azure**: Użyj tej wartości, po zainstalowaniu agenta na maszynie Wirtualnej IaaS platformy Azure. | VMware </br> Azure|
+|/ Silent|Optional (Opcjonalność)|Określa, aby uruchomić Instalatora w trybie dyskretnym.| ND|
 
 >[!TIP]
-> Dzienniki instalacji można znaleźć w % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+> Dzienniki instalacji znajdują się w ścieżce % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>Argumenty wiersza polecenia rejestracji usługi mobilności
 
@@ -45,8 +45,8 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <Passphrase
   | Parametr|Typ|Opis|Możliwe wartości|
   |-|-|-|-|
   |/CSEndPoint |Obowiązkowy|Adres IP serwera konfiguracji| Dowolny prawidłowy adres IP|
-  |/PassphraseFilePath|Obowiązkowy|Lokalizacja hasło |Wszelkie prawidłową ścieżką UNC lub ścieżkę do pliku lokalnego|
+  |/PassphraseFilePath|Obowiązkowy|Lokalizacja hasło |Wszelkie Nieprawidłowa ścieżka UNC lub ścieżka do pliku lokalnego|
 
 
 >[!TIP]
-> Dzienniki konfiguracji agenta można znaleźć w % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+> Dzienniki konfiguracji agenta można znaleźć w obszarze % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.

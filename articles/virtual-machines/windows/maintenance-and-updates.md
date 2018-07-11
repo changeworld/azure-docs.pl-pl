@@ -1,6 +1,6 @@
 ---
-title: Konserwacji i aktualizacji dla maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Przegląd konserwacji i aktualizacji dla maszyn wirtualnych systemu Windows działających na platformie Azure.
+title: Konserwacja i aktualizacje dla maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Przegląd obsługi i aktualizacjami dla maszyn wirtualnych Windows działających na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: cynthn
 ms.openlocfilehash: a2222b77f049f0aa4d311abf85340c5efd5258e5
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "30190280"
 ---
 # <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Planowana Konserwacja maszyn wirtualnych na platformie Azure
@@ -28,4 +28,4 @@ ms.locfileid: "30190280"
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-Informacje na temat zarządzania konserwacji konieczności ponownego uruchamiania, zobacz [Obsługa planowanych konserwacji powiadomienia](maintenance-notifications.md).
+Aby uzyskać informacji o zarządzaniu konserwacji wymagające ponownego uruchomienia systemu, zobacz [obsługi Planned maintenance notifications zaplanowanej](maintenance-notifications.md).

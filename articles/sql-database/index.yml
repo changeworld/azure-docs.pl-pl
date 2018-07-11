@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: c159eec7a8674e57e6f7a815040527ed60966f46
-  ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+  ms.openlocfilehash: 5fcfe7b12acc943224d3c3158f2b39b4c35de1ee
+  ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 07/06/2018
-  ms.locfileid: "37887287"
+  ms.lasthandoff: 07/09/2018
+  ms.locfileid: "37916153"
 abstract:
   description: Azure SQL Database to relacyjna baza danych jako usługa (DBaaS) oparta na najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. Usługa SQL Database to wysokiej wydajności niezawodna i bezpieczna baza danych, za pomocą której można tworzyć oparte na danych aplikacje i witryny internetowe w wybranym języku programowania bez zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
   aside:
@@ -48,12 +48,12 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: Cena do wydajności — warstwy
-    - href: /azure/sql-database/sql-database-single-database-scale
+    - href: /azure/sql-database/sql-database-scale-resources
       html: <p>Łatwo <a href="/azure/sql-database/sql-database-single-database-scale">skaluj w górę</a>, <a href="/azure/sql-database/sql-database-read-scale-out">skaluj w poziomie</a> lub dziel swoje bazy danych na fragmenty w zależności od potrzeb, aby zwiększyć wydajność aplikacji.</p>
       image:
         src: media/index/i_scale.svg
       title: Skalowalność i elastyczność
-    - href: /azure/sql-database/sql-database-automatic-tuning
+    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
       html: <p>Pozwól, aby analiza wbudowana w usługę <a href="/azure/sql-database/sql-database-automatic-tuning">automatycznie dostosowywała wydajność baz danych</a> oraz <a href="/azure/sql-database/sql-advanced-threat-protection">identyfikowała zagrożenia</a> i <a href="/azure/sql-database/sql-vulnerability-assessment">luki w zabezpieczeniach</a> Twoich baz danych.</p>
       image:
         src: media/index/i_intelligence.svg

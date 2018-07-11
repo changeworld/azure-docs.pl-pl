@@ -1,5 +1,5 @@
 ---
-title: 'Jak skonfigurować obwód (równorzędna) dla usługi routingu: Azure: klasyczny | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie routingu (komunikacji równorzędnej) dla usługi ExpressRoute circuit: Azure: klasyczny | Dokumentacja firmy Microsoft'
 description: Ten artykuł zawiera instrukcje tworzenia i inicjowania obsługi komunikacji równorzędnej prywatnej, publicznej i firmy Microsoft obwodu usługi ExpressRoute. W tym artykule opisano również, jak aktualizować i usuwać komunikację równoległą dla obwodu oraz sprawdzać jej stan.
 documentationcenter: na
 services: expressroute
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: 9cebb196bd91da704798fb001763a76e6d090472
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31594141"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Tworzenie i modyfikowanie komunikacji równorzędnej dla obwodu usługi ExpressRoute (klasyczne)
+# <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Utworzyć i zmodyfikować komunikację równorzędną dla obwodu usługi ExpressRoute (wersja klasyczna)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [Program PowerShell](expressroute-howto-routing-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-routing-cli.md)
-> * [Video - prywatnej komunikacji równorzędnej](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - publicznej komunikacji równorzędnej](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Video - komunikacji równorzędnej firmy Microsoft](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Wideo — prywatna komunikacja równorzędna](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Wideo — publicznej komunikacji równorzędnej](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Wideo — komunikacja równorzędna firmy Microsoft](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-routing-classic.md)
 > 
 
-W tym artykule przedstawiono kroki, aby utworzyć i zarządzać konfiguracją routingu dla obwodu usługi ExpressRoute, przy użyciu programu PowerShell i klasycznym modelu wdrażania. W poniższych krokach opisano również, jak sprawdzać stan komunikacji równorzędnej, aktualizować ją, usuwać i wstrzymywać jej obsługę administracyjną dla obwodu usługi ExpressRoute.
+W tym artykule przedstawiono kroki, aby tworzyć i zarządzać nimi konfiguracji routingu dla obwodu usługi ExpressRoute za pomocą programu PowerShell i klasycznego modelu wdrażania. W poniższych krokach opisano również, jak sprawdzać stan komunikacji równorzędnej, aktualizować ją, usuwać i wstrzymywać jej obsługę administracyjną dla obwodu usługi ExpressRoute.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,9 +43,9 @@ W tym artykule przedstawiono kroki, aby utworzyć i zarządzać konfiguracją ro
 
 
 ## <a name="configuration-prerequisites"></a>Wymagania wstępne dotyczące konfiguracji
-* Konieczne będzie najnowszą wersję poleceń cmdlet programu PowerShell Azure usługi zarządzania (ko). Aby uzyskać więcej informacji, zobacz [wprowadzenie do poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview).  
+* Konieczne będzie najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [wprowadzenie do poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview).  
 * Pamiętaj, aby przed rozpoczęciem konfiguracji przejrzeć strony z [wymaganiami wstępnymi](expressroute-prerequisites.md), [wymaganiami routingu](expressroute-routing.md) oraz [przepływami pracy](expressroute-workflows.md).
-* Musisz mieć aktywny obwód usługi ExpressRoute. Postępuj zgodnie z instrukcjami, aby [utworzyć obwodu usługi ExpressRoute](expressroute-howto-circuit-classic.md) i mieć obwodu włączane przez dostawcą połączenia, aby kontynuować. Obwód usługi ExpressRoute musi być zainicjowany i włączony, aby można było uruchamiać polecenia cmdlet opisane poniżej.
+* Musisz mieć aktywny obwód usługi ExpressRoute. Postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md) i który powinien zostać włączony przez dostawcę połączenia przed kontynuowaniem. Obwód usługi ExpressRoute musi być zainicjowany i włączony, aby można było uruchamiać polecenia cmdlet opisane poniżej.
 
 > [!IMPORTANT]
 > Te instrukcje dotyczą tylko obwodów utworzonych przy pomocy dostawców oferujących usługi łączności warstwy 2. Jeśli korzystasz z usług dostawcy oferującego zarządzane usługi warstwy 3 (zwykle IPVPN, np. MPLS), dostawca połączenia skonfiguruje routing i będzie nim zarządzać.
@@ -68,7 +68,7 @@ Można skonfigurować jedną komunikację równorzędną, dwie lub trzy (prywatn
 
         Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-4. Następnie użyj następującego polecenia cmdlet można dodać subskrypcji platformy Azure do środowiska PowerShell dla klasycznym modelu wdrażania.
+4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
 
         Add-AzureAccount
 
@@ -79,14 +79,14 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 ### <a name="to-create-azure-private-peering"></a>Aby utworzyć prywatną komunikację równorzędną
 1. **Zaimportuj moduł programu PowerShell dla usługi ExpressRoute.**
    
-    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły Azure i usługi ExpressRoute w sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja może się różnić.    
+    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja mogą się różnić.    
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-2. **Utworzyć obwodu usługi ExpressRoute.**
+2. **Utwórz obwód usługi ExpressRoute.**
    
     Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami. 
-3. **Sprawdź obwodu ExpressRoute, aby upewnić się, że jego obsługa została zainicjowana.**
+3. **Sprawdź obwód usługi ExpressRoute, aby upewnić się, że jest zainicjowany.**
    
     Musisz najpierw sprawdzić, czy obwód usługi ExpressRoute jest zainicjowany i włączony. Zobacz przykład poniżej.
    
@@ -101,11 +101,11 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
         Sku                              : Standard
         Status                           : Enabled
    
-    Upewnij się, że obwód jest pokazywana jako obsługiwane administracyjnie i włączone. W przeciwnym razie należy współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+    Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Skonfiguruj prywatnej komunikacji równorzędnej platformy Azure dla obwodu.**
+4. **Skonfiguruj prywatną komunikację równorzędną dla obwodu.**
    
     Zanim przejdziesz do następnych kroków, upewnij się, czy masz następujące elementy:
    
@@ -169,14 +169,14 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 ### <a name="to-create-azure-public-peering"></a>Aby utworzyć publiczną komunikację równorzędną Azure
 1. **Zaimportuj moduł programu PowerShell dla usługi ExpressRoute.**
    
-    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły Azure i usługi ExpressRoute w sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja może się różnić.   
+    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja mogą się różnić.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 2. **Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)**
    
     Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie publicznej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
-3. **Sprawdź obwodu ExpressRoute, aby upewnić się, że jego obsługa została zainicjowana**
+3. **Sprawdź obwód usługi ExpressRoute, aby upewnić się, że jest zainicjowany**
    
     Musisz najpierw sprawdzić, czy obwód usługi ExpressRoute jest zainicjowany i włączony. Zobacz przykład poniżej.
    
@@ -191,11 +191,11 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
         Sku                              : Standard
         Status                           : Enabled
    
-    Upewnij się, że obwód jest pokazywana jako obsługiwane administracyjnie i włączone. W przeciwnym razie należy współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+    Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Skonfiguruj publicznej komunikacji równorzędnej platformy Azure dla obwodu**
+4. **Konfigurowanie publicznej komunikacji równorzędnej Azure dla obwodu**
    
     Zanim przejdziesz dalej, upewnij się, że masz poniższe informacje.
    
@@ -255,16 +255,16 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
 ### <a name="to-create-microsoft-peering"></a>Aby utworzyć komunikację równorzędną Microsoft
 1. **Zaimportuj moduł programu PowerShell dla usługi ExpressRoute.**
    
-    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły Azure i usługi ExpressRoute w sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja może się różnić.   
+    Aby rozpocząć korzystanie z poleceń cmdlet usługi ExpressRoute, należy zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Uruchom następujące polecenia, aby zaimportować moduły platformy Azure i usługi ExpressRoute do sesji programu PowerShell. Wersja mogą się różnić.   
    
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
         Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 2. **Create an ExpressRoute circuit (Tworzenie obwodu usługi ExpressRoute)**
    
     Wypełnij instrukcje, aby utworzyć [obwód usługi ExpressRoute](expressroute-howto-circuit-classic.md), który zostanie zainicjowany przez dostawcę połączenia. Jeśli dostawca połączenia oferuje zarządzane usługi warstwy 3, możesz poprosić go o włączenie prywatnej komunikacji równorzędnej Azure. W takiej sytuacji nie trzeba będzie wykonywać instrukcji wymienionych w następnych sekcjach. Jednak jeśli dostawca połączenia nie zarządza routingiem, po utworzeniu obwodu postępuj zgodnie z poniższymi instrukcjami.
-3. **Sprawdź obwodu ExpressRoute, aby upewnić się, że jego obsługa została zainicjowana**
+3. **Sprawdź obwód usługi ExpressRoute, aby upewnić się, że jest zainicjowany**
    
-    Musisz najpierw sprawdzić, czy obwodu ExpressRoute jest w stanie obsługiwane administracyjnie i włączone.
+    Należy najpierw sprawdzić, czy obwód usługi ExpressRoute jest w stanie Aprowizowana i włączony.
    
         PS C:\> Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    
@@ -277,11 +277,11 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
         Sku                              : Standard
         Status                           : Enabled
    
-    Upewnij się, że obwód jest pokazywana jako obsługiwane administracyjnie i włączone. W przeciwnym razie należy współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
+    Upewnij się, że obwód jest wyświetlany jako Aprowizowana i włączony. Jeśli nie, współpracować z dostawcą połączenia, aby uzyskać wymagany stan i Stan obwodu.
    
         ServiceProviderProvisioningState : Provisioned
         Status                           : Enabled
-4. **Konfigurowanie komunikacji równorzędnej dla obwodu firmy Microsoft**
+4. **Skonfiguruj komunikację równorzędną Microsoft dla obwodu**
    
     Zanim przejdziesz dalej, upewnij się, że masz poniższe informacje.
    
@@ -330,6 +330,6 @@ Możesz usunąć konfigurację komunikacji równorzędnej, uruchamiając następ
 ## <a name="next-steps"></a>Kolejne kroki
 Następnie [połączyć sieć wirtualną z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-classic.md).
 
-* Aby uzyskać więcej informacji o przepływach pracy, zobacz [przepływy pracy usługi ExpressRoute](expressroute-workflows.md).
+* Aby uzyskać więcej informacji na temat przepływów pracy, zobacz [przepływy pracy ExpressRoute](expressroute-workflows.md).
 * Aby uzyskać więcej informacji o komunikacji równorzędnej obwodu, zobacz artykuł [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (Obwody i domeny routingu usługi ExpressRoute).
 

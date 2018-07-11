@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z błędami alokacji maszyny Wirtualnej systemu Windows Azure w klasycznym modelu wdrażania | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z przydziałem podczas tworzenia, uruchom ponownie lub zmień rozmiar klasyczne maszyny Wirtualnej systemu Windows na platformie Azure
+title: Rozwiązywanie problemów z błędami alokacji maszyny Wirtualnej Windows Azure w klasycznym modelu wdrażania | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienić rozmiar klasyczna maszyna wirtualna Windows w systemie Azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: genli
 ms.openlocfilehash: 659781a16663d815e54454746d017eef29414b95
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31529499"
 ---
-# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Kroki rozwiązywania problemów określonych scenariuszy awarii alokacji w klasycznym modelu wdrażania
+# <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Rozwiązywanie problemów w określonych scenariuszy awarii alokacji w klasycznym modelu wdrażania
 
 [!INCLUDE [virtual-machines-common-allocation-failure-classic](../../../includes/virtual-machines-common-allocation-failure-classic.md)]
 

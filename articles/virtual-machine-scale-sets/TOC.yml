@@ -55,10 +55,6 @@
           href: tutorial-autoscale-powershell.md
         - name: Szablon
           href: tutorial-autoscale-template.md
-    - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure za pomocą niestandardowego obrazu narzędzia Packer
-      items:
-        - name: Interfejs wiersza polecenia platformy Azure 2.0
-          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure 2.0

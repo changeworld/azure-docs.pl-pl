@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
 ms.openlocfilehash: 1a0e196f4d96494aca1c19a7527ac7d81837fb5c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "34606481"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Przepływ pracy w trybie offline z kopii zapasowej programu DPM i serwer usługi Azure Backup
@@ -112,37 +112,37 @@ Informacje przedstawione w tej sekcji ułatwiają ukończenia przepływu pracy w
     > Jeśli komputer źródłowy jest maszyną wirtualną, następnie jest wymagane, aby użyć różnych serwer fizyczny lub na komputerze klienckim jako komputer kopiowania.
     
     
-2. Na temat aktualizowania informacjami o dostawie pomyślnie, narzędzie zapewnia lokalizacji lokalnej, gdzie są przechowywane szczegóły dotyczące wysyłki wprowadzone przez użytkownika, jak pokazano poniżej
+2. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na tym komputerze kopiowania *AzureOfflineBackupDiskPrep* narzędzie katalogu jako bieżący katalog, a następnie uruchom następujące polecenie:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
     | Parametr | Opis |
     | --- | --- |
-    | Przechowywanie informacje dotyczące wysyłki*&gt; |Upewnij się, że dyski osiągną centrum danych platformy Azure w ciągu dwóch tygodni związanych z udostępnianiem przy użyciu informacji o wysyłce **AzureOfflineBackupDiskPrep** narzędzia. |
-    | Niewykonanie tej czynności może spowodować dyski nie są przetwarzane.*&gt; |Po ukończeniu powyższych kroków centrum danych platformy Azure jest gotowa do odbierania dysków i dalej przetwarzać je do transferu danych kopii zapasowych z stacje do utworzonego konta magazynu platformy Azure classic-type. |
+    | s:&lt;*ścieżka lokalizacji przemieszczania*&gt; |Wymagane dane wejściowe, które służy do zapewnienia ścieżkę do lokalizacji tymczasowej, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
+    | p:&lt;*ścieżkę do PublishSettingsFile*&gt; |Opcjonalne dane wejściowe, które służy do zapewnienia ścieżkę do **ustawień publikowania platformy Azure** plików, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
 
     > [!NOTE]
-    > Czas przetwarzania dysków
+    > &lt;Ścieżkę do AzurePublishSettingFile&gt; wartość jest obowiązkowy w przypadku, gdy kopia komputera i komputera źródłowego są różne.
     >
     >
 
-    Czas potrzebny do procesu zadania importowania platformy Azure w zależności od różnych czynników, takich jak czas dostawy zadania typu, typu i rozmiaru danych, w której są kopiowane i rozmiaru dysków udostępnionych. Usługa Azure Import/Export nie ma umowy SLA, ale po otrzymaniu dyski usługi dokłada starań, aby zakończenie kopiowania danych kopii zapasowej na koncie magazynu platformy Azure w dniach 7 – 10.
+    Po uruchomieniu polecenia, narzędzie żądań wybór zadania importu platformy Azure, do którego odnosi się do dysków, które muszą być przygotowane. Jeśli tylko zadania importu pojedynczego jest skojarzony z podanej lokalizacji tymczasowej, pojawia się ekran podobne do pokazanego poniżej.
 
-    ![Następnej sekcji przedstawiono, jak można monitorować stan zadania importowania platformy Azure.](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
+    ![Usługa Azure przygotowanie dysku narzędzia w danych wejściowych](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
     
-3. Monitorowanie stanu zadaniem importowania platformy Azure Mimo że stacje dysków w trakcie przesyłania lub centrum danych platformy Azure do skopiowania do konta magazynu, agenta usługi Azure Backup lub programu DPM SC lub konsolę serwera usługi Azure Backup na komputerze źródłowym zawiera następujący stan zadania zaplanowane kopie zapasowe.
+3. Wprowadź literę dysku bez dwukropka końcowe dla zainstalowanego dysku, który ma zostać przygotowana do przeniesienia na platformę Azure. Potwierdź formatowania dysku, po wyświetleniu monitu.
 
-    Wykonaj następujące czynności, aby sprawdzić stan zadania importu. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na komputerze źródłowym, a następnie uruchom następujące polecenie: <br/>
+    Narzędzie następnie rozpoczyna się przygotować dysku i skopiowanie danych kopii zapasowej. Może być konieczne dołączanie dodatkowych dysków, po wyświetleniu monitu przez narzędzie, w przypadku, gdy podana dysku nie ma wystarczającej ilości miejsca dla danych kopii zapasowej. <br/>
 
-    Dane wyjściowe pokazują bieżący stan zadania importowania, jak pokazano poniżej: Sprawdzanie stanu zadania importu Aby uzyskać więcej informacji na temat różnych stanów zadania importowania platformy Azure, zobacz w tym artykule
+    Na koniec pomyślne wykonanie tego narzędzia jeden lub więcej dysków, które podane są przygotowywane do wysłania do platformy Azure. Ponadto zadania importu o nazwie podany podczas **inicjowanie kopii zapasowej offline** przepływu pracy jest tworzony na platformie Azure. Na koniec narzędzie wyświetli adres wysyłkowy centrach danych platformy Azure, których dyski muszą być wysyłane.
 
-    ![Kończenie przepływu pracy](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
+    ![Zakończenie przygotowywania dysku platformy Azure](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
     
-4. Po ukończeniu zadania importu danych początkowej kopii zapasowej jest dostępna w ramach konta magazynu.
+4. Po zakończeniu wykonywania polecenia zostanie również wyświetlony opcję, aby zaktualizować informacje o wysyłce, jak pokazano poniżej:
 
-    ![W momencie następnej zaplanowanej kopii zapasowej usługa Azure backup kopiuje zawartość danych z konta magazynu do magazynu usługi Recovery Services jak pokazano poniżej:](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
+    ![Informacje o opcję wysyłania aktualizacji](./media/backup-azure-backup-import-export/updateshippingutility.png)<br/>
 
-5. Kopiowanie danych do magazynu usługi Recovery Services W momencie następnej zaplanowanej kopii zapasowej usługi Azure Backup wykonuje przyrostowe kopie zapasowe początkowa kopia zapasowa. Masz pytania dotyczące usługi Azure Import/Export przepływu pracy, można znaleźć przesyłanie danych do magazynu obiektów Blob za pomocą usługi Microsoft Azure Import/Export. Zapoznaj się z sekcją kopie zapasowe offline z usługi Azure Backup — często zadawane pytania w razie jakichkolwiek pytań o przepływie pracy. 
+5. Można wprowadzić szczegóły natychmiast. Narzędzie przeprowadzi Cię przez proces obejmujące serię danych wejściowych. Jednak jeśli nie masz informacje, takie jak śledzenie liczby lub inne szczegóły dotyczące wysyłki, możesz zakończyć sesję. W tym artykule znajdują się kroki, aby zaktualizować szczegóły dotyczące wysyłki później. 
 
 6. Odeślij dyski z podanym przez narzędzie adres i Zachowaj numer śledzenia do użytku w przyszłości.
 
@@ -160,8 +160,8 @@ Informacje przedstawione w tej sekcji ułatwiają ukończenia przepływu pracy w
     | Parametr | Opis |
     | --- | --- |
     | u: | Wymagane dane wejściowe, używane do aktualizowania wysyłanie szczegółów zadania importowania platformy Azure |
-    | Przechowywanie informacje dotyczące wysyłki*&gt; | Wymagane dane wejściowe, jeśli polecenie nie jest wykonywane na komputerze źródłowym. Umożliwia podanie ścieżki do lokalizacji tymczasowej, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
-    | Niewykonanie tej czynności może spowodować dyski nie są przetwarzane.*&gt; | Wymagane dane wejściowe, jeśli polecenie nie jest wykonywane na komputerze źródłowym. Umożliwia podanie ścieżki do **ustawień publikowania platformy Azure** plików, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
+    | s:&lt;*ścieżka lokalizacji przemieszczania*&gt; | Wymagane dane wejściowe, jeśli polecenie nie jest wykonywane na komputerze źródłowym. Umożliwia podanie ścieżki do lokalizacji tymczasowej, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
+    | p:&lt;*ścieżkę do PublishSettingsFile*&gt; | Wymagane dane wejściowe, jeśli polecenie nie jest wykonywane na komputerze źródłowym. Umożliwia podanie ścieżki do **ustawień publikowania platformy Azure** plików, które wprowadziłeś w **inicjowanie kopii zapasowej offline** przepływu pracy. |
     
     Narzędzie automatycznie wykrywa zadania importu, który czeka na komputerze źródłowym lub zadań importu skojarzone z lokalizacji tymczasowej, gdy polecenie jest wykonywane na innym komputerze. Zapewnia opcję, aby zaktualizować informacje dotyczące wysyłki za pośrednictwem serii danych wejściowych, jak pokazano poniżej: 
     

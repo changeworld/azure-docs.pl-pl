@@ -1,5 +1,5 @@
 ---
-title: Za pomocą programu Visual Studio Azure Kreator publikowania aplikacji | Dokumentacja firmy Microsoft
+title: Kreator aplikacji platformy Azure przy użyciu programu Visual Studio jest publikacji | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować różne ustawienia w programie Visual Studio Azure Kreator publikowania aplikacji
 services: visual-studio-online
 author: ghogen
@@ -12,36 +12,36 @@ ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
 ms.openlocfilehash: 02d38f49a1bfe490acbcfee95a8a703cf0d7594f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "31795983"
 ---
-# <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Za pomocą programu Visual Studio Azure Kreator publikowania aplikacji
+# <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Za pomocą programu Visual Studio Azure Kreatorze publikacji aplikacji
 
-Po opracowywanie aplikacji sieci web w programie Visual Studio, można opublikować tę aplikację do usługi w chmurze platformy Azure przy użyciu **publikowanie aplikacji platformy Azure** kreatora.
+Po opracowywania aplikacji sieci web w programie Visual Studio, można opublikować tę aplikację w usłudze w chmurze platformy Azure za pomocą **publikowanie aplikacji platformy Azure** kreatora.
 
 > [!Note]
-> Ten artykuł dotyczy wdrażania usługi w chmurze, nie do witryn sieci web. Aby uzyskać informacje o wdrażaniu do witryn sieci web, zobacz [jak wdrożyć witrynę sieci Web Azure](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false).
+> Ten artykuł dotyczy wdrażania do usług w chmurze, nie do witryn sieci web. Aby uzyskać informacji na temat wdrażania witryn sieci web, zobacz [sposób wdrażania witryny sieci Web systemu Azure](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false).
 
-## <a name="accessing-the-publish-azure-application-wizard"></a>Uzyskiwanie dostępu do Kreatora publikowania aplikacji Azure
+## <a name="accessing-the-publish-azure-application-wizard"></a>Uzyskiwanie dostępu do Kreatora publikowania aplikacji na platformie Azure
 
-Można uzyskać dostępu do kreatora Publikowanie aplikacji platformy Azure na dwa sposoby w zależności od typu projektu Visual Studio, do których masz.
+Możesz uzyskać dostęp do Kreatora publikowania aplikacji na platformie Azure na dwa sposoby w zależności od typu projektu programu Visual Studio, do których masz.
 
 **Jeśli masz projekt usługi w chmurze platformy Azure:**
 
 1. Utwórz lub Otwórz projekt usługi w chmurze platformy Azure w programie Visual Studio.
 
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz z menu kontekstowego **publikowania**.
+1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz z menu kontekstowego **Publikuj**.
 
-**Jeśli masz projektu aplikacji sieci web, która nie jest włączona dla platformy Azure:**
+**Jeśli masz projekt aplikacji sieci web, która nie jest włączona dla platformy Azure:**
 
 1. Utwórz lub Otwórz projekt usługi w chmurze platformy Azure w programie Visual Studio.
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i wybierz z menu kontekstowego **przekonwertować** > **Konwertuj na projekt usługi w chmurze Azure**. 
 
-1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy nowo utworzonego projektu platformy Azure i z menu kontekstowego wybierz **publikowania**.
+1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy nowo utworzony projekt platformy Azure i z menu kontekstowego wybierz **Publikuj**.
 
 ## <a name="sign-in-page"></a>Strona logowania
 
@@ -49,13 +49,13 @@ Można uzyskać dostępu do kreatora Publikowanie aplikacji platformy Azure na d
 
 **Konto** — wybierz konto lub **Dodaj konto** na liście rozwijanej konta.
 
-**Wybierz subskrypcję** — Wybierz subskrypcję do użycia na potrzeby wdrożenia.
+**Wybierz subskrypcję** — Wybierz subskrypcję do użycia dla danego wdrożenia.
 
-## <a name="settings-page---common-settings-tab"></a>Ustawienia strony — karta typowe ustawienia
+## <a name="settings-page---common-settings-tab"></a>Strona ustawień — karta typowe ustawienia
 
 ![Ustawienia wspólne](./media/vs-azure-tools-publish-azure-application-wizard/settings-common-settings.png)
 
-**Usługi w chmurze** — za pomocą listy rozwijanej, albo wybierz istniejący chmurę usługi lub wybierz  **&lt;Utwórz nowy >** i Utwórz usługę w chmurze. Centrum danych są wyświetlane w nawiasach dla każdej usługi w chmurze. Zaleca się, że centrum danych lokalizacji usługi w chmurze taka sama jak lokalizacja centrum danych dla konta magazynu (Zaawansowane ustawienia).
+**Usługa w chmurze** — korzystając z listy rozwijanej, wybierz istniejącej chmury usługi lub wybierz  **&lt;Utwórz nową >** i Utwórz usługę w chmurze. Centrum danych są wyświetlane w nawiasach dla każdej usługi w chmurze. Zaleca się, że centrum danych lokalizacji usługi w chmurze być taka sama jak lokalizacja centrum danych dla konta magazynu (Zaawansowane ustawienia).
 
 **Środowisko** — wybierz opcję **produkcji** lub **przemieszczania**. Wybierz środowisko przejściowe, jeśli chcesz wdrożyć aplikację w środowisku testowym. 
 
@@ -63,63 +63,63 @@ Można uzyskać dostępu do kreatora Publikowanie aplikacji platformy Azure na d
 
 **Konfiguracja usługi** — wybierz opcję **chmury** lub **lokalnego**.
 
-**Włącz pulpit zdalny dla wszystkich ról** — wybierz tę opcję, jeśli chcesz umożliwić zdalne połączenia z usługą. Ta opcja jest używana głównie do rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [włączyć Podłączanie pulpitu zdalnego dla roli w usług Azure Cloud Services przy użyciu programu Visual Studio](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
+**Włącz pulpit zdalny dla wszystkich ról** — wybierz tę opcję, jeśli chcesz można było zdalnie połączyć się z usługą. Ta opcja jest używany głównie do rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Włącz Podłączanie pulpitu zdalnego dla roli w usługach Azure Cloud Services przy użyciu programu Visual Studio](cloud-services/cloud-services-role-enable-remote-desktop-visual-studio.md).
 
-**Włącz dla wszystkich ról w sieci web narzędzia Web Deploy** — wybierz tę opcję, aby włączyć wdrożenie w sieci web dla usługi. Należy również wybrać **Włącz pulpit zdalny dla wszystkich ról** opcję, aby użyć tej funkcji. Aby uzyskać więcej informacji, zobacz [publikowania usługi w chmurze przy użyciu programu Visual Studio](vs-azure-tools-publishing-a-cloud-service.md).
+**Włącz narzędzie Web Deploy dla wszystkich ról w sieci web** — wybierz tę opcję, aby umożliwić wdrażanie w Internecie usługi. Należy również zaznaczyć **Włącz pulpit zdalny dla wszystkich ról** opcję, aby korzystać z tej funkcji. Aby uzyskać więcej informacji, zobacz [publikowania usługi w chmurze przy użyciu programu Visual Studio](vs-azure-tools-publishing-a-cloud-service.md).
 
-## <a name="settings-page---advanced-settings-tab"></a>Ustawienia strony — karta Zaawansowane ustawienia
+## <a name="settings-page---advanced-settings-tab"></a>Strona ustawień — karta Ustawienia zaawansowane
 
 ![Ustawienia zaawansowane](./media/vs-azure-tools-publish-azure-application-wizard/settings-advanced-settings.png)
 
-**Etykieta wdrożenia** -albo zaakceptuj nazwę domyślną lub wprowadź nazwę. Aby dołączyć daty do etykiety wdrożenia, pozostaw zaznaczone pole wyboru. 
+**Etykieta wdrożenia** — zaakceptuj nazwę domyślną lub wprowadź nazwę. Aby dołączyć datę do etykiety wdrożenia, pozostaw zaznaczone pole wyboru. 
 
-**Konto magazynu** — wybierz konto magazynu do użycia dla tego wdrożenia, **&lt;Utwórz nowy > Aby utworzyć konto magazynu. Centrum danych są wyświetlane w nawiasach dla każdego konta magazynu. Zaleca się, że lokalizacja centrum danych dla konta magazynu jest taka sama jak lokalizacja centrum danych dla usługi w chmurze (typowe ustawienia).
+**Konto magazynu** — wybierz konto magazynu do użycia dla tego wdrożenia **&lt;Utwórz nową > Utwórz konto magazynu. Centrum danych są wyświetlane w nawiasach dla każdego konta magazynu. Zaleca się, że na lokalizację centrum danych dla konta magazynu jest taka sama jak lokalizacja centrum danych dla usługi w chmurze (typowe ustawienia).
 
-Konto magazynu Azure przechowuje pakietu dla wdrożenia aplikacji. Po wdrożeniu aplikacji, pakiet zostanie usunięty z konta magazynu.
+Konto usługi Azure storage przechowuje pakietu dla wdrożenia aplikacji. Po wdrożeniu aplikacji, pakiet zostanie usunięty z konta magazynu.
 
-**Usuń wdrożenie w przypadku niepowodzenia** — wybierz tę opcję, aby wdrożenie usunięte, jeśli nie zostaną napotkane błędy podczas publikowania. To powinno być niezaznaczone, jeśli chcesz zachować stałego wirtualnego adresu IP dla usługi w chmurze.
+**Usuń wdrożenie w przypadku niepowodzenia** — wybierz tę opcję, aby wdrożenie usunięte, jeśli nie zostaną napotkane błędy podczas publikowania. To powinno być zaznaczone, jeśli chcesz utrzymać stałej wirtualny adres IP dla usługi w chmurze.
 
-**Wdrożenia aktualizacji** — wybierz tę opcję, jeśli chcesz wdrożyć tylko zaktualizowane składniki. Ten typ wdrożenia może być szybsza niż pełne wdrożenie. To sprawdzić, czy chcesz zachować stałego wirtualnego adresu IP dla usługi w chmurze. 
+**Wdrożenia aktualizacji** — wybierz tę opcję, jeśli chcesz wdrożyć tylko zaktualizowane składniki. Ten typ wdrożenia może być szybsza niż pełne wdrożenie. Jeśli chcesz utrzymać stałej wirtualny adres IP dla usługi w chmurze, to powinno być zaznaczone. 
 
-**Wdrożenia aktualizacji - ustawienia** — to okno dialogowe służy do dalszego określ w jaki sposób ról do zaktualizowania. Jeśli wybierzesz **aktualizacji przyrostowej**, każde wystąpienie aplikacji jest aktualizowany po kolei, tak, aby aplikacja jest zawsze dostępna. Jeśli wybierzesz **jednoczesne aktualizowanie**, wszystkich wystąpień aplikacji są aktualizowane w tym samym czasie. Jednoczesne aktualizowanie jest szybsze, ale z usługą mogą być niedostępne podczas procesu aktualizacji.
+**Wdrożenia aktualizacji - ustawienia** — to okno dialogowe służy do dalszego określenia sposobu ról do zaktualizowania. Jeśli wybierzesz **aktualizacji przyrostowej**, każde wystąpienie aplikacji zostanie zaktualizowany po kolei, więc, że aplikacja jest zawsze dostępna. Jeśli wybierzesz **jednoczesne aktualizowanie**, wszystkie wystąpienia aplikacji są aktualizowane w tym samym czasie. Jednoczesne aktualizowanie jest szybsze, ale usługa może nie być dostępna podczas procesu aktualizacji.
 
 ![Ustawienia wdrożenia](./media/vs-azure-tools-publish-azure-application-wizard/deployment-settings.png)
 
-**Włącz IntelliTrace** — Określ, czy chcesz włączyć funkcji IntelliTrace. Przy użyciu funkcji IntelliTrace można rejestrować szeroką gamę informacji o debugowaniu dla wystąpienia roli, po uruchomieniu na platformie Azure. Jeśli potrzebujesz ustalić przyczynę problemu, można użyć dzienniki IntelliTrace do wykonania kroków opisanych kodu w programie Visual Studio, tak jakby były uruchomione w systemie Azure. Aby uzyskać więcej informacji o korzystaniu z funkcji IntelliTrace, zobacz [debugowania usługi opublikowana chmura Azure za pomocą programu Visual Studio i IntelliTrace](./vs-azure-tools-intellitrace-debug-published-cloud-services.md).
+**Włączenie funkcji IntelliTrace** — Określ, czy chcesz włączyć funkcji IntelliTrace. Po uruchomieniu na platformie Azure przy użyciu funkcji IntelliTrace, możesz rejestrować wyczerpujące informacje debugowania dla wystąpienia roli. Jeśli potrzebujesz znaleźć przyczynę problemu, można użyć dzienników IntelliTrace do kroku przez kod z programu Visual Studio, tak jakby były uruchamiane na platformie Azure. Aby uzyskać więcej informacji na temat za pomocą funkcji IntelliTrace, zobacz [debugowanie usługi opublikowana chmura platformy Azure za pomocą programu Visual Studio i IntelliTrace](./vs-azure-tools-intellitrace-debug-published-cloud-services.md).
 
-**Włącz profilowanie** — Określ, czy włączyć profilowanie wydajności. Profilera Visual Studio pozwala uzyskać dokładnych analiz obliczeniową aspektów sposób uruchamiania usługi w chmurze. Aby uzyskać więcej informacji na temat używania profilera Visual Studio, zobacz [przetestować wydajność usługi w chmurze Azure](./vs-azure-tools-performance-profiling-cloud-services.md).
+**Włącz profilowanie** — Określ, czy włączyć profilowanie ich wydajności. Profilera Visual Studio pozwala uzyskać dokładnych analiz obliczeniową aspektami działania usługi w chmurze. Aby uzyskać więcej informacji na temat korzystania z programu Visual Studio profiler, zobacz [testowanie wydajności usługi w chmurze Azure](./vs-azure-tools-performance-profiling-cloud-services.md).
 
-**Włącz zdalny debuger dla wszystkich ról** — Określ, czy włączyć debugowanie zdalne. Aby uzyskać więcej informacji dotyczących debugowania usługi w chmurze przy użyciu programu Visual Studio, zobacz [debugowania usługi w chmurze Azure lub maszyny wirtualnej w programie Visual Studio](./vs-azure-tools-debug-cloud-services-virtual-machines.md).
+**Włącz zdalny debuger dla wszystkich ról** — Określ, czy włączyć zdalne debugowanie. Aby uzyskać więcej informacji na temat debugowania usług w chmurze przy użyciu programu Visual Studio, zobacz [debugowanie usługi w chmurze platformy Azure lub maszynie wirtualnej w programie Visual Studio](./vs-azure-tools-debug-cloud-services-virtual-machines.md).
 
 ## <a name="diagnostics-settings-page"></a>Strona Ustawienia diagnostyki
 
 ![Ustawienia diagnostyki](./media/vs-azure-tools-publish-azure-application-wizard/diagnostic-settings.png)
 
-Diagnostyka umożliwia rozwiązywanie problemów z usługą w chmurze Azure (lub maszyny wirtualnej platformy Azure). Aby uzyskać informacje diagnostyczne, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i maszyn wirtualnych](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md). Uzyskać informacji na temat usługi Application Insights, zobacz [co to jest usługa Application Insights?](./application-insights/app-insights-overview.md).
+Diagnostyka umożliwia rozwiązywanie problemów z usługą w chmurze platformy Azure (lub maszyn wirtualnych platformy Azure). Aby uzyskać informacje o diagnostyce, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i Virtual Machines](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md). Aby uzyskać informacje na temat usługi Application Insights, zobacz [co to jest usługa Application Insights?](./application-insights/app-insights-overview.md).
 
 ## <a name="summary-page"></a>Strona podsumowania
 
 ![Podsumowanie](./media/vs-azure-tools-publish-azure-application-wizard/summary.png)
 
-**Docelowa profilu** — użytkownik może utworzyć profil publikowania z wybranych ustawień. Na przykład utworzyć jeden profil dla środowiska testowego i drugą w środowisku produkcyjnym. Aby zapisać ten profil, wybierz **zapisać** ikony. Kreator tworzy profil i zapisuje go w projekcie programu Visual Studio. Aby zmodyfikować nazwę profilu, otwórz **docelowego profilu** listy, a następnie wybierz pozycję  **&lt;Zarządzaj... &gt;**.
+**Docelowy profil** — możesz utworzyć profil publikowania z ustawień, które zostały wybrane. Na przykład utworzyć jeden profil dla środowiska testowego, a drugi dla środowiska produkcyjnego. Aby zapisać ten profil, wybierz **Zapisz** ikony. Kreator utworzy profil i zapisze go w projekcie programu Visual Studio. Aby zmodyfikować nazwę profilu, otwórz **docelowy profil** , a następnie wybierz  **&lt;Zarządzaj... &gt;**.
 
    > [!Note]
-   > Profil publikowania zostanie wyświetlony w Eksploratorze rozwiązań w programie Visual Studio, a ustawienia profilu są zapisywane w pliku z rozszerzeniem .azurePubxml. Ustawienia są zapisywane jako atrybutami tagów XML.
+   > Profil publikowania zostanie wyświetlony w Eksploratorze rozwiązań w programie Visual Studio, a ustawienia profilu są zapisywane w pliku z rozszerzeniem .azurePubxml. Ustawienia są zapisywane jako atrybuty tagów XML.
 
 ## <a name="publishing-your-application"></a>Publikowanie aplikacji
 
-Po skonfigurowaniu wszystkich ustawień dla projektu wdrażania wybierz **publikowania** w dolnej części okna dialogowego. Można monitorować stan procesu w **dane wyjściowe** okna w programie Visual Studio.
+Po skonfigurowaniu wszystkich ustawień dla wdrażania projektu, wybierz **Publikuj** w dolnej części okna dialogowego. Możesz monitorować stan procesu w **dane wyjściowe** okna w programie Visual Studio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Migrowanie i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio](./vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)
+- [Migracja i publikowanie aplikacji sieci Web w usłudze w chmurze platformy Azure z programu Visual Studio](./vs-azure-tools-migrate-publish-web-app-to-cloud-service.md)
 
-- [Dowiedz się, jak opublikować usługa w chmurze Azure za pomocą programu Visual Studio](./vs-azure-tools-publishing-a-cloud-service.md)
+- [Dowiedz się, jak publikować usługi w chmurze platformy Azure za pomocą programu Visual Studio](./vs-azure-tools-publishing-a-cloud-service.md)
 
-- [Debugowanie usługi opublikowana chmura Azure za pomocą programu Visual Studio i IntelliTrace](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)
+- [Debugowanie usługi opublikowana chmura platformy Azure za pomocą programu Visual Studio i funkcji IntelliTrace](./vs-azure-tools-intellitrace-debug-published-cloud-services.md)
 
-- [Testowanie wydajności usługi w chmurze Azure](./vs-azure-tools-performance-profiling-cloud-services.md)
+- [Testowanie wydajności usługi w chmurze platformy Azure](./vs-azure-tools-performance-profiling-cloud-services.md)
 
-- [Konfigurowanie diagnostyki dla usług w chmurze Azure i maszyn wirtualnych](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+- [Konfigurowanie diagnostyki dla usług Azure Cloud Services i Virtual Machines](./vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
 - [Co to jest Application Insights?](./application-insights/app-insights-overview.md)

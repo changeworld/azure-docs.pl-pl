@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "33777539"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Samouczek: Wypychanie powiadomień do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecza ASP.NET WebAPI jest używany do uwierzytelniania klientów i generowania powiadomień, jak pokazano w temacie wskazówki [rejestrowanie z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+W tym samouczku pokazano, jak wysyłać powiadomienia push do użytkownika konkretnej aplikacji na konkretnym urządzeniu za pomocą usługi Azure Notification Hubs. Zaplecza ASP.NET WebAPI jest używany do uwierzytelniania klientów i generowania powiadomień, jak pokazano w temacie wskazówki [rejestrowania z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -38,33 +38,33 @@ W tym samouczku wykonasz następujące kroki:
 > * Testowanie aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że utworzony i skonfigurowany Centrum powiadomień, zgodnie z opisem w [wprowadzenie do korzystania z usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). W tym samouczku jest również wymagana do [Secure Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) samouczka.
-Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy danych, zobacz [Mobile Apps wprowadzenie wypychania](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+W tym samouczku przyjęto założenie, że utworzone i skonfigurowane Centrum powiadomień, zgodnie z opisem w [wprowadzenie do usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). W tym samouczku jest również wstępnie wymagana do [Secure Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) samouczka.
+Jeśli chcesz używać jako usługi zaplecza usługi Mobile Apps, zobacz [Mobile Apps wprowadzenie do wypychania](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Modyfikowanie aplikacji systemu iOS
-1. Otwórz aplikację widoku pojedynczej strony utworzone w [wprowadzenie do korzystania z usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) samouczka.
+1. Otwórz aplikację widoku jednostronicowej utworzonej w [wprowadzenie do usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) samouczka.
    
    > [!NOTE]
-   > W tej sekcji założono projektu skonfigurowano nazwę organizacji puste. Jeśli nie, konieczne jest dołączana nazwa organizacji do wszystkich nazw klas.
+   > W tej sekcji założono, projektu skonfigurowano nazwę organizacji puste. Jeśli nie, należy poprzedzić nazwa organizacji do wszystkich nazw klas.
    > 
    > 
-2. W `Main.storyboard`, dodać składniki pokazane na zrzucie ekranu z biblioteki obiektów.
+2. W `Main.storyboard`, dodać składniki pokazano na zrzucie ekranu z biblioteki obiektów.
    
     ![][1]
    
-   * **Nazwa użytkownika**: UITextField A tekstem zastępczym *wprowadź nazwę użytkownika*, znajdujący się bezpośrednio pod wysyłania wyników etykiety i ograniczony do lewego i prawego marginesu i poniżej etykiety wyniki wysyłania.
-   * **Hasło**: UITextField A tekstem zastępczym *wprowadź hasło*, natychmiast poniżej nazwę użytkownika tekst pola i ograniczone do lewego i prawego marginesu oraz poniżej pola tekstowego nazwy użytkownika. Sprawdź **Secure wpisywanie tekstu** w obszarze opcji Inspektora atrybutu *zwraca klucz*.
-   * **Zaloguj się za**: A UIButton etykietą bezpośrednio poniżej pola tekstowego hasła i usuń zaznaczenie pola wyboru **włączone** w obszarze opcji Inspektora atrybuty *zawartości kontrolki*
-   * **WNS**: etykiety i przełącznik, aby umożliwić wysyłanie powiadomień usługi powiadomień systemu Windows, jeśli go nie został skonfigurowany w Centrum. Zobacz [systemu Windows wprowadzenie](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) samouczka.
-   * **GCM**: etykiety i przełącznik, aby włączyć wysyłanie powiadomienia do usługi Google Cloud Messaging, jeśli go nie został skonfigurowany w Centrum. Zobacz [Android wprowadzenie](notification-hubs-android-push-notification-google-gcm-get-started.md) samouczka.
-   * **APNS**: etykiety i przełącznik, aby włączyć wysyłanie powiadomienia do usługi powiadomień platformy firmy Apple.
-   * **Odbiorcy Username:A** UITextField z tekstem zastępczym *tag username odbiorcy*, natychmiast poniżej GCM etykiety i ograniczony do lewego i prawego marginesu oraz poniżej etykiety usługi GCM.
+   * **Nazwa użytkownika**: UITextField z tekstem zastępczym *wprowadź nazwę użytkownika*tuż poniżej Wyślij wyniki etykiety i ograniczone do lewego i prawego marginesu oraz pod etykieta wyników wysyłania.
+   * **Hasło**: UITextField z tekstem zastępczym *wprowadź hasło*, tuż poniżej nazwę użytkownika tekst pola i ograniczone do lewego i prawego marginesu oraz poniżej pola tekstowego nazwy użytkownika. Sprawdź **Secure wprowadzania tekstu** w obszarze opcji w Inspektorze atrybut *klucz zwracają*.
+   * **Zaloguj się**: obiektu klasy UIButton etykietą bezpośrednio pod polem tekstowym hasła i usuń zaznaczenie pola wyboru **włączone** opcji Inspector atrybutów, w obszarze *zawartość kontrolki*
+   * **Usługi WNS**: Etykieta i przełącznik, aby włączyć wysyłanie powiadomień Windows Notification Service, jeśli jest została skonfigurowana w Centrum. Zobacz [wprowadzenie Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) samouczka.
+   * **Usługa GCM**: Etykieta i przełącznik, aby włączyć wysyłanie powiadomienia do Google Cloud Messaging, jeśli jest została skonfigurowana w Centrum. Zobacz [wprowadzenie dla systemu Android](notification-hubs-android-push-notification-google-gcm-get-started.md) samouczka.
+   * **APNS**: Etykieta i przełącznik, aby włączyć wysyłanie powiadomienia do usług powiadomień platformy firmy Apple.
+   * **Odbiorcy Username:A** UITextField z tekstem zastępczym *tagiem username odbiorcy*bezpośrednio pod GCM etykiety i ograniczone do lewego i prawego marginesu i umieszczone pod wpisami etykieta usługi GCM.
 
-    Niektóre składniki zostały dodane w [wprowadzenie do korzystania z usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) samouczka.
+    Niektóre składniki zostały dodane w [wprowadzenie do usługi Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) samouczka.
 
-1. **CTRL** przeciągnij z składniki w widoku ViewController.h i dodać tych nowych punktów.
+1. **CTRL** przeciągnij ze składników w widoku ViewController.h i dodać tych nowych punktów.
    
     ```obj-c
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -83,12 +83,12 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
    
         - (IBAction)LogInAction:(id)sender;
     ```
-2. W ViewController.h, Dodaj następujący `#define` po Twoje instrukcje importu. SUBSTITUTE *< wprowadź swój Endpoint zaplecza\>*  symbol zastępczy docelowy adres URL używany do wdrażania aplikacji zaplecza w poprzedniej sekcji. Na przykład *http://you_backend.azurewebsites.net*.
+2. W ViewController.h, Dodaj następujący kod `#define` po Twoich instrukcjach importu. Zastąp *< wprowadź punkt końcowy usługi zaplecza\>*  zastępczego docelowy adres URL umożliwia wdrażanie zaplecza aplikacji w poprzedniej sekcji. Na przykład *http://you_backend.azurewebsites.net*.
    
     ```obj-c
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
-3. W projekcie, Utwórz nową **Cocoa Touch klasy** o nazwie **RegisterClient** do interfejsu z zaplecza ASP.NET został utworzony. Tworzenie dziedziczenia z klasy `NSObject`. Następnie dodaj następujący kod w RegisterClient.h.
+3. W projekcie, Utwórz nową **Cocoa Touch klasy** o nazwie **RegisterClient** do interfejsu z zaplecza programu ASP.NET został utworzony. Tworzenie klasy dziedziczącej z `NSObject`. Następnie dodaj następujący kod w RegisterClient.h.
 
     ```obj-c   
         @interface RegisterClient : NSObject
@@ -119,7 +119,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
    
         @end
     ```
-5. Zastąp `@implementation` części RegisterClient.m następującym kodem:
+5. Zastąp `@implementation` sekcji RegisterClient.m następującym kodem:
 
     ```obj-c
         @implementation RegisterClient
@@ -280,11 +280,11 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
         @end
     ```
 
-    Ten kod zawiera implementację logiki wyjaśniono w artykule wskazówki [rejestrowanie z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) wykonać REST przy użyciu polecenia NSURLSession wywołań zapleczu swojej aplikacji i NSUserDefaults do przechowywania lokalnie registrationId zwrócony przez Centrum powiadomień.
+    Ten kod implementuje logikę szczegółowo opisane w artykule wskazówki [rejestrowania z zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) przy użyciu sesji NSURLSession do wykonania POZOSTAŁEJ wywołania do zaplecza aplikacji i NSUserDefaults lokalnie przechowywać identyfikator, zwrócone przez Centrum powiadomień.
 
-    Ta klasa wymaga jego właściwość **authorizationHeader** ustawiono prawidłowego funkcjonowania. Ta właściwość jest ustawiana przez **ViewController** klasy po logowaniu.
+    Ta klasa wymaga jego właściwość **authorizationHeader** należy ustawić, aby zapewnić prawidłowe działanie. Ta właściwość jest ustawiana przez **ViewController** klasy po logowaniu.
 
-1. W ViewController.h, Dodaj `#import` instrukcji dla RegisterClient.h. Następnie dodaj deklarację dla tokenu urządzenia i odwołać się do `RegisterClient` wystąpienia w `@interface` sekcji:
+1. W ViewController.h, Dodaj `#import` poufności informacji dotyczące RegisterClient.h. Następnie dodaj deklarację dla tokenu urządzenia i odwołanie do `RegisterClient` wystąpienia w `@interface` sekcji:
 
     ```obj-c   
         #import "RegisterClient.h"
@@ -292,7 +292,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
     ```
-2. W ViewController.m, Dodaj deklarację Metoda prywatna w `@interface` sekcji:
+2. W ViewController.m, Dodaj deklarację metody prywatnej w `@interface` sekcji:
    
     ```obj-c
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
@@ -305,8 +305,8 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
     ```
 
     > [!NOTE]
-    > Poniższy fragment kodu nie jest schemat bezpiecznego uwierzytelniania, należy zastąpić wykonania **createAndSetAuthenticationHeaderWithUsername:AndPassword:** z mechanizmu uwierzytelniania określonych generujący token uwierzytelniania do użycia przez klienta rejestru klasę, np. OAuth, usługi Active Directory.
-1. Następnie w `@implementation` sekcji `ViewController.m`, Dodaj następujący kod, który dodaje implementacji do ustawiania nagłówka tokenu i uwierzytelnienia urządzenia.
+    > Poniższy fragment kodu nie jest bezpieczne uwierzytelnianie, należy zastąpić implementację **createAndSetAuthenticationHeaderWithUsername:AndPassword:** przy użyciu mechanizmu uwierzytelniania określonych, generuje token uwierzytelniania do użycia przez klasę klienta rejestru, np. protokołu OAuth, usługi Active Directory.
+1. Następnie w `@implementation` części `ViewController.m`, Dodaj następujący kod, który dodaje implementacji do ustawiania nagłówka tokenu i uwierzytelniania urządzenia.
    
     ```obj-c
         -(void) setDeviceToken: (NSData*) deviceToken
@@ -333,8 +333,8 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
         }
     ```
    
-    Zwróć uwagę, jak ustawienie token urządzenia włącza przycisk Zaloguj. To, że w ramach akcji logowania, kontroler widoku rejestruje dla powiadomień wypychanych przy użyciu zaplecza aplikacji. W związku z tym nie chcesz dziennika w akcji była dostępna, dopóki token urządzenia został poprawnie skonfigurowany. Logowanie z rejestracji wypychanych jest oddzielana, tak długo, jak wcześniejsze nastąpi przed jego.
-2. W ViewController.m, należy użyć poniższej wstawki Aby zaimplementować metodę akcji dla Twojego **dziennika w** przycisk, a także metodę można wysłać komunikatu powiadomienia przy użyciu zaplecza ASP.NET.
+    Zwróć uwagę, jak przycisk Zaloguj umożliwia ustawienie tokenu urządzenia. Jest on, ponieważ w ramach działania logowania, kontroler widoku rejestruje dla powiadomień wypychanych przy użyciu zaplecza aplikacji. Z tego powodu nie chcesz, dziennika akcji była dostępna, aż token urządzenia został prawidłowo skonfigurowany. Logowanie z rejestracji wypychanych można oddzielić tak długo, jak pierwsza ma miejsce, przed jego.
+2. W ViewController.m, użyj poniższe fragmenty kodu, aby zaimplementować metodę akcji dla Twojego **logowanie** przycisk i metodę, aby wysłać komunikatu powiadomienia przy użyciu zaplecza ASP.NET.
    
     ```obj-c
        - (IBAction)LogInAction:(id)sender {
@@ -409,7 +409,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
         }
     ```
 
-1. Akcja dla aktualizacji **Wyślij powiadomienie E-mail** przycisk, aby użyć zaplecza ASP.NET i wysłać do dowolnego systemu powiadomień platformy włączane przez przełącznik.
+1. Aktualizowanie akcji dla **Wyślij powiadomienie E-mail** przycisk, aby korzystać z zaplecza programu ASP.NET i wysyłać do dowolnego systemu powiadomień platformy obsługiwane przez przełącznik.
 
     ```obj-c
         - (IBAction)SendNotificationMessage:(id)sender
@@ -435,7 +435,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
         }
     ```
 
-1. W funkcji **ViewDidLoad**, Dodaj następujące można utworzyć wystąpienia RegisterClient wystąpienia i ustawić delegata dla pól tekstowych.
+1. W funkcji **ViewDidLoad**, Dodaj następujące czynności, aby utworzyć wystąpienie RegisterClient wystąpienia i ustawić delegatów dla pól tekstu.
    
     ```obj-c
        self.UsernameField.delegate = self;
@@ -443,7 +443,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
-2. Teraz w **AppDelegate.m**, Usuń całą zawartość metody `application:didRegisterForPushNotificationWithDeviceToken:` i zastąp go z następujących czynności, aby upewnić się, że kontroler widoku zawiera najnowsze token urządzenia pobierane z usługi APNs:
+2. Teraz w **AppDelegate.m**, Usuń całą zawartość metody `application:didRegisterForPushNotificationWithDeviceToken:` i zastąp go następującym ciągiem aby upewnić się, że kontroler widoku zawiera najnowszy token urządzenia pobierane z usługi APNs:
    
     ```obj-c
        // Add import to the top of the file
@@ -456,7 +456,7 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
            rvc.deviceToken = deviceToken;
        }
     ```
-3. Na koniec w **AppDelegate.m**, upewnij się, że masz następujące metody:
+3. Na koniec w **AppDelegate.m**, upewnij się, że zainstalowano następującą metodę:
 
     ```obj-c   
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -466,15 +466,15 @@ Jeśli chcesz korzystać z aplikacji mobilnej jako usługi wewnętrznej bazy dan
     ```
 
 ## <a name="test-the-application"></a>Testowanie aplikacji
-1. W programie XCode Uruchom aplikację na urządzenie fizyczne z systemem iOS (wypychanie powiadomień nie działać w symulatorze).
-2. W aplikacji systemu iOS interfejsu użytkownika należy wprowadzić tę samą wartość dla nazwy użytkownika i hasła. Następnie kliknij przycisk **dziennika w**.
+1. W programie XCode Uruchom aplikację na urządzenie fizyczne z systemem iOS (wypychane, powiadomienia nie działają w symulatorze).
+2. W aplikacji dla systemu iOS interfejsu użytkownika wprowadź tę samą wartość dla nazwy użytkownika i hasło. Następnie kliknij przycisk **logowanie**.
    
     ![][2]
-3. Powinny zostać wyświetlone okno podręczne informujące o Powodzenie rejestracji. Kliknij przycisk **OK**.
+3. Powinieneś zobaczyć okno podręczne informujące o powodzeniu rejestracji. Kliknij przycisk **OK**.
    
     ![][3]
-4. W **tag username odbiorcy* tekst Wprowadź tag nazwę użytkownika używane z rejestracją z innego urządzenia.
-5. Wprowadź komunikat powiadomienia, a następnie kliknij przycisk **Wyślij powiadomienie E-mail**. Tylko urządzenia, które ma rejestracji z tagiem nazwy użytkownika odbiorcy komunikat powiadomienia. Jest wysyłane tylko do tych użytkowników.
+4. W **tagiem username odbiorcy* tekstu wprowadź tag nazwy użytkownika, które są używane z rejestracji za pomocą innego urządzenia.
+5. Wprowadź komunikat powiadomienia, a następnie kliknij przycisk **Wyślij powiadomienie E-mail**. Tylko urządzenia, które ma rejestracji o tag nazwy użytkownika odbiorcy komunikat powiadomienia. Jest wysyłane tylko do tych użytkowników.
    
     ![][4]
 

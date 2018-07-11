@@ -8,7 +8,7 @@
 
     ![Włączanie protokołu TCP](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. W okienku konsoli kliknij pozycję **Usługi programu SQL Server**. W okienku szczegółów kliknij prawym przyciskiem myszy **programu SQL Server (*nazwa wystąpienia*)** (domyślne wystąpienie jest **programu SQL Server (MSSQLSERVER)**), a następnie kliknij przycisk **Uruchom ponownie**, aby zatrzymać i ponownie uruchom wystąpienie programu SQL Server.
+1. W okienku konsoli kliknij pozycję **Usługi programu SQL Server**. W okienku szczegółów kliknij prawym przyciskiem myszy **programu SQL Server (*nazwa wystąpienia*)** (wystąpienie domyślne to **programu SQL Server (MSSQLSERVER)**), a następnie kliknij przycisk **ponowne uruchomienie**, aby zatrzymać i ponownie uruchom wystąpienie programu SQL Server.
 
     ![Ponowne uruchamianie aparatu bazy danych](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

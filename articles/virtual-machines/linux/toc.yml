@@ -51,8 +51,6 @@
       href: tutorial-mean-stack.md
     - name: 16 — Zabezpieczanie serwera internetowego przy użyciu protokołu SSL
       href: tutorial-secure-web-server.md
-    - name: Wdrażanie aplikacji i obrazu narzędzia Packer w zestawie skalowania
-      href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure

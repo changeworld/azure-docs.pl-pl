@@ -5,15 +5,15 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 36d59638984c31a98067b95fded9626f31a7f278
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: ac8686d0ea5704492bfc2e08972a2f70c9b34c43
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "34669357"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37906823"
 ---
 Maszyn wirtualnych serii H są najnowsze obliczenia o wysokiej wydajności, że w przypadku najwyższych potrzeb obliczeniowych, takich jak modelowanie molekularne i analizy obliczeniowe dynamiki płynów, której jest maszyn wirtualnych. Te 8 i 16 procesorów wirtualnych maszyny wirtualne są zbudowane na Intel Haswell E5-2667 V3 procesora technologii są w pamięć DDR4 i oparte na dyskach SSD magazynu tymczasowego. 
 
@@ -24,6 +24,10 @@ Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci 
 ## <a name="h-series"></a>Seria H
 
 ACU: 290–300
+
+Usługa Premium Storage: Nieobsługiwane
+
+Buforowanie Premium Storage: Nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność dysków: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- |

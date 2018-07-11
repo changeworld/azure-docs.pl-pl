@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/02/2018
+ms.date: 07/08/2018
 ms.author: magoedte
-ms.openlocfilehash: e7d3fdf9e6f027ab1c23a057ad6e039d50cab9ad
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436426"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37917345"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
@@ -54,7 +54,7 @@ Ta funkcja opiera się na konteneryzowanych agenta pakietu OMS dla systemu Linux
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Włącz monitorowanie kondycji kontenera dla nowego klastra
-Można włączyć tylko monitorowanie klastra usługi AKS podczas wdrażania w witrynie Azure portal.  Postępuj zgodnie z instrukcjami w artykule przewodnika Szybki Start [wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Jeśli korzystasz z **monitorowanie** wybierz opcję **tak** opcji **Włącz monitorowanie** można włączyć, a następnie wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  
+Aby umożliwić monitorowanie nowy klaster AKS podczas wdrażania w witrynie Azure portal.  Postępuj zgodnie z instrukcjami w artykule przewodnika Szybki Start [wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md).  Jeśli korzystasz z **monitorowanie** wybierz opcję **tak** opcji **Włącz monitorowanie** można włączyć, a następnie wybierz istniejącą lub Utwórz nowy obszar roboczy usługi Log Analytics.  
 
 Po włączeniu monitorowania wszystkich zadań konfiguracji zostaną ukończone pomyślnie, można monitorować wydajność klastra z jednego z dwóch sposobów:
 
@@ -66,7 +66,7 @@ Po włączeniu monitorowania wszystkich zadań konfiguracji zostaną ukończone 
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra.  
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Włącz monitorowanie kondycji kontenera dla istniejących zarządzane klastry
-Włączanie monitorowania kontenera AKS już wdrożenie może się odbywać w witrynie Azure portal lub za pomocą podanego szablonu Azure Resource Manager przy użyciu polecenia cmdlet programu PowerShell **New-AzureRmResourceGroupDeployment** lub Interfejs wiersza polecenia platformy Azure.  
+Aby umożliwić monitorowanie klastra usługi AKS już wdrożone z witryny Azure portal lub za pomocą podanego szablonu Azure Resource Manager przy użyciu polecenia cmdlet programu PowerShell **New-AzureRmResourceGroupDeployment** lub wiersza polecenia platformy Azure.  
 
 
 ### <a name="enable-from-azure-portal"></a>Korzystanie z witryny Azure portal
@@ -75,13 +75,11 @@ Wykonaj poniższe kroki, aby włączyć monitorowanie kontenera usługi AKS w wi
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **kontenery**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usługi Kubernetes**.<br><br> ![Azure Portal](./media/monitoring-container-health/azure-portal-01.png)<br><br>  
 2. Na liście kontenerów Wybierz kontener.
 3. Na stronie Przegląd kontenera wybierz **monitorowania kondycji kontenera** i **dołączenie do kondycji kontenera i dzienniki** zostanie wyświetlona strona.
-4. Na **dołączenie do kondycji kontenera i dzienniki** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślnego obszaru roboczego i lokalizację kontenera w usłudze AKS jest wdrożona w ramach subskrypcji. Możesz też wybrać opcję **Utwórz nowy** i określić nowy obszar roboczy w tej samej subskrypcji.<br><br> ![Włącz monitorowanie kondycji kontenera w usłudze AKS](./media/monitoring-container-health/container-health-enable-brownfield.png) 
+4. Na **dołączenie do kondycji kontenera i dzienniki** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślnego obszaru roboczego i lokalizację kontenera w usłudze AKS jest wdrożona w ramach subskrypcji.<br><br> ![Włącz monitorowanie kondycji kontenera w usłudze AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
-    Jeśli wybierzesz **Utwórz nowy**, **Utwórz nowy obszar roboczy** zostanie wyświetlone okienko. **Region** wartość domyślna to region zasobu kontenera jest tworzony w i możesz zaakceptować wartości domyślne lub wybrać inny region, a następnie określ nazwę obszaru roboczego.  Kliknij przycisk **Utwórz** aby zaakceptować wybór.<br><br> ![Zdefiniuj obszar roboczy dla monintoring kontenera](./media/monitoring-container-health/create-new-workspace-01.png)  
-
-    >[!NOTE]
-    >W tej chwili nie można utworzyć nowy obszar roboczy w regionie zachodnio-środkowe stany USA istniejącego obszaru roboczego można wybrać tylko w tym regionie.  Mimo że można wybrać tego regionu z listy, rozpocznie się wdrożenie, ale nie jest on wkrótce potem.  
-    >
+>[!NOTE]
+>Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, wykonaj kroki opisane w [Cretae obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) i należy utworzyć obszar roboczy w tą samą subskrypcją, w której kontenerów AKS wdrażane.  
+>
  
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra. 
 
@@ -243,10 +241,11 @@ Jeśli została wybrana opcja używania wiersza polecenia platformy Azure, nale�
         ```
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra.  
 
-## <a name="verify-agent-deployed-successfully"></a>Sprawdź pomyślnego wdrożenia agenta
+## <a name="verify-agent-and-solution-deployment"></a>Sprawdź wdrożenie agenta i rozwiązania
+Za pomocą wersji agenta *06072018* i wyższej, jesteś w stanie sprawdzić, czy agent i rozwiązania zostały pomyślnie wdrożone.  W starszych wersjach programu agent tylko można zweryfikować wdrożenie agenta.
 
 ### <a name="agent-version-06072018-and-higher"></a>Wersja agenta 06072018 lub nowszy
-Aby sprawdzić wersję agenta pakietu OMS *06072018* lub nowszego jest wdrażany prawidłowo, uruchom następujące polecenia: 
+Uruchom następujące polecenie, aby sprawdzić, czy agent zostanie wdrożony pomyślnie.   
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -260,7 +259,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-Aby zweryfikować nowe wdrożenie, uruchom następujące polecenie:
+Aby zweryfikować wdrożenie rozwiązania, uruchom następujące polecenie:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
@@ -524,7 +523,7 @@ Jeśli kondycji kontenera, została pomyślnie włączona i skonfigurowana, ale 
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```  
-2. Sprawdź stan wdrożenia agenta w wersji *06072018* lub nowszej, uruchamiając następujące polecenie:
+2. Sprawdź stan wdrożenia rozwiązania z wersją agenta *06072018* lub nowszej, uruchamiając następujące polecenie:
 
     `kubectl get deployment omsagent-rs -n=kube-system`
 

@@ -25,12 +25,14 @@
       href: QuickStarts/Python.md
     - name: Ruby
       href: QuickStarts/Ruby.md
+- name: Samouczki
+  items:
+    - name: 'C#'
+      href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Pierwsze aplikacje interfejsu API rozpoznawania twarzy
       items:
-        - name: 'C#'
-          href: Tutorials/FaceAPIinCSharpTutorial.md
         - name: Środowisko Java dla systemu Android
           href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
         - name: Python

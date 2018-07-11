@@ -1,6 +1,6 @@
 ---
-title: Obsługa dostawcy zasobów SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można obsługiwać usługę dostawcy zasobów SQL na stosie Azure.
+title: Obsługa dostawcy zasobu języka SQL w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak możesz zachować usługa dostawcy zasobów programu SQL w usłudze Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -15,55 +15,55 @@ ms.date: 06/20/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
 ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
+ms.lasthandoff: 07/10/2018
 ms.locfileid: "36300914"
 ---
-# <a name="sql-resource-provider-maintenance-operations"></a>Operacje konserwacji dostawcy zasobów SQL
+# <a name="sql-resource-provider-maintenance-operations"></a>Operacje obsługi dostawcy zasobów SQL
 
-Dostawca zasobów SQL działa na zablokowanym maszyny wirtualnej. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczeń maszyny wirtualnej. Aby to zrobić przy użyciu zasadą najniższych uprawnień, można użyć [PowerShell tylko tyle administracyjnej (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview) punktu końcowego *DBAdapterMaintenance*. Pakiet instalacyjny dostawcy zasobów zawiera skrypt do wykonania tej operacji.
+Dostawcy zasobów bazy danych SQL działa na maszynie wirtualnej zablokowane. Aby włączyć operacji konserwacji, musisz zaktualizować zabezpieczenia maszyn wirtualnych. Aby to zrobić za pomocą zasadę najmniejszych uprawnień, można użyć [PowerShell tylko tyle administracji (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview) punktu końcowego *DBAdapterMaintenance*. Pakiet instalacyjny dostawcy zasobu zawiera skrypt do wykonania tej operacji.
 
 ## <a name="patching-and-updating"></a>Stosowanie poprawek i aktualizacji
 
-Dostawcy zasobów programu SQL nie jest obsługiwane jako część stosu Azure, ponieważ jest dodatkowy składnik. Firma Microsoft udostępnia aktualizacje dostawcy zasobów SQL, w razie potrzeby. Po wydaniu zaktualizowanej karty SQL skrypt jest dostarczany w celu zastosowania aktualizacji. Ten skrypt tworzy nowego dostawcę zasobów maszyny Wirtualnej, migracja stanu starego dostawcy maszyny Wirtualnej do nowej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [aktualizacji dostawcy zasobów SQL](azure-stack-sql-resource-provider-update.md).
+Dostawcy zasobów bazy danych SQL nie jest obsługiwane w ramach usługi Azure Stack, ponieważ jest dodatkowy składnik. Firma Microsoft udostępnia aktualizacje do dostawcy zasobów bazy danych SQL, zgodnie z potrzebami. Po zwolnieniu zaktualizowano karty SQL skrypt jest dostarczany do stosowania aktualizacji. Ten skrypt umożliwia utworzenie nowego dostawcę zasobów maszyny Wirtualnej, migracja stanu starego dostawcy usług maszynę Wirtualną do nowej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [aktualizacji dostawcy zasobów bazy danych SQL](azure-stack-sql-resource-provider-update.md).
 
-### <a name="provider-virtual-machine"></a>Dostawca maszyny wirtualnej
+### <a name="provider-virtual-machine"></a>Maszyna wirtualna dostawcy
 
-Ponieważ dostawca zasobów jest uruchamiana na *użytkownika* maszyny wirtualnej, należy zastosować wymagane poprawki i aktualizacje, gdy są one wydane. Pakiety aktualizacji systemu Windows, które znajdują się w ramach cyklu poprawek i aktualizacji służy do stosowania aktualizacji do maszyny Wirtualnej.
+Ponieważ dostawca zasobów jest uruchamiana na *użytkownika* maszyny wirtualnej, należy zastosować wymaganych poprawek i aktualizacji, po ich wydaniu. Pakiety aktualizacji Windows, które są dostarczane jako część cyklu poprawek i aktualizacji służy do stosowania aktualizacji do maszyny Wirtualnej.
 
-## <a name="backuprestoredisaster-recovery"></a>Odzyskiwanie kopii zapasowej/przywracania/po awarii
+## <a name="backuprestoredisaster-recovery"></a>Kopia zapasowa/Przywracanie/odzyskiwanie po awarii
 
- Ponieważ to składnik dodatkowy dostawcy zasobów SQL nie ma kopii zapasowej jako część procesu Azure stosu firm ciągłości awaryjnego odzyskiwania (BCDR). Skrypty przewiduje się następujące operacje:
+ Ponieważ istnieje dodatkowy składnik, dostawcy zasobów bazy danych SQL nie ma kopii zapasowej jako część procesu usługi Azure Stack firm ciągłości działania po awarii odzyskiwania (BCDR). Skrypty będzie świadczona w przypadku następujących operacji:
 
-- Tworzenie kopii zapasowej informacji o stanie (przechowywane na koncie magazynu Azure stosu).
+- Tworzenie kopii zapasowej informacji o stanie (przechowywane na koncie magazynu usługi Azure Stack).
 - Przywracanie dostawcy zasobów, jeśli wymagane jest jej odzyskanie pełnego stosu.
 
 >[!NOTE]
->Jeśli musisz wykonać odzyskiwanie, serwery bazy danych musi zostać odzyskana przed przywróceniem dostawcy zasobów.
+>W przypadku odzyskiwania można odzyskać serwerów baz danych, przed przywróceniem dostawcy zasobów.
 
-## <a name="updating-sql-credentials"></a>Aktualizowanie poświadczeń programu SQL
+## <a name="updating-sql-credentials"></a>Aktualizowanie poświadczeń SQL
 
-Wszystko jest odpowiedzialny za tworzenie i obsługę kont administratora systemu na serwerach SQL. Dostawca zasobów wymaga konta z tych uprawnień do zarządzania bazy danych dla użytkowników, ale nie wymaga dostępu do danych użytkowników. Jeśli musisz zaktualizować hasła administratora systemu na serwerach SQL, umożliwia dostawcy zasobów Administratorze zmienić hasła. Te hasła są przechowywane w Key Vault w wystąpieniu usługi Azure stosu.
+Jesteś odpowiedzialny za tworzenie i obsługę kont administratora systemu na serwerach SQL. Dostawca zasobów wymaga konta z tych uprawnień do zarządzania bazami danych dla użytkowników, ale nie potrzebuje dostępu do danych użytkowników. Jeśli musisz zaktualizować hasła administratora systemu na serwerach SQL, można użyć dostawcy zasobów administratora interfejs do zmiany hasła. Te hasła są przechowywane w usłudze Key Vault w ramach wystąpienia usługi Azure Stack.
 
-Aby zmodyfikować ustawienia, wybierz **Przeglądaj** &gt; **zasobów administracyjnych** &gt; **Hosting serwerów SQL** &gt; **Kont logowania SQL** i wybierz nazwę użytkownika. Zmiana musi zostać wykonana w wystąpieniu programu SQL najpierw (i wszystkie repliki, jeśli to konieczne.) W obszarze **ustawienia**, wybierz pozycję **hasło**.
+Aby zmodyfikować ustawienia, wybierz pozycję **Przeglądaj** &gt; **zasoby administracyjne** &gt; **serwerów do hostingu SQL** &gt; **Nazw logowania SQL** i wybierz nazwę użytkownika. Należy wprowadzić zmianę w wystąpieniu programu SQL pierwszy (i wszystkie repliki, jeśli to konieczne) W obszarze **ustawienia**, wybierz opcję **hasło**.
 
 ![Zaktualizuj hasło administratora](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
-## <a name="secrets-rotation"></a>Rotacją kluczy tajnych
+## <a name="secrets-rotation"></a>Obrót kluczy tajnych
 
-*Te instrukcje dotyczą tylko 1804 wersji systemów zintegrowanego stosu Azure i później. Nie należy próbować Obróć kluczy tajnych w wersji pre-1804 Azure stosu wersjach.*
+*Te instrukcje dotyczą tylko usługi Azure Stack zintegrowanych systemów wersji 1804 i nowsze. Nie należy próbować Obróć klucze tajne pre 1804 Azure Stack wersji.*
 
-Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych systemów, można obracać następujące klucze tajne infrastruktury (wdrożenia):
+Gdy za pomocą dostawcy zasobów SQL i bazy danych MySQL z usługą Azure Stack zintegrowane systemy, można też obrócić następujące wpisy tajne infrastruktury (wdrażanie):
 
 - Certyfikat SSL zewnętrzny [podana podczas wdrażania](azure-stack-pki-certs.md).
-- Zasób dostawcy wirtualna hasło administratora lokalnego konta podana podczas wdrażania.
+- Zasób dostawcy maszyny Wirtualnej hasło administratora lokalnego konta podana podczas wdrażania.
 - Hasło użytkownika diagnostyczne (dbadapterdiag) dostawcy zasobów.
 
-### <a name="powershell-examples-for-rotating-secrets"></a>Przykłady programu PowerShell związany z rotacją kluczy tajnych
+### <a name="powershell-examples-for-rotating-secrets"></a>Przykłady programu PowerShell do rotacji kluczy tajnych
 
-**Zmień wszystkich kluczy tajnych w tym samym czasie.**
+**W tym samym czasie, należy zmienić wszystkich wpisów tajnych.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -76,7 +76,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
     -VMLocalCredential $localCreds
 ```
 
-**Zmień hasło użytkownika diagnostycznych.**
+**Zmień hasło użytkownika do diagnozowania.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -86,7 +86,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
     –DiagnosticsUserPassword  $passwd
 ```
 
-**Zmień hasło konta administratora lokalnego maszyny Wirtualnej.**
+**Zmień hasło konta administratora lokalnego maszyn wirtualnych.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -96,7 +96,7 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
     -VMLocalCredential $localCreds
 ```
 
-**Zmień hasło certyfikatu SSL.**
+**Zmień hasło certyfikatu protokołu SSL.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -111,51 +111,51 @@ Gdy przy użyciu dostawców zasobów SQL i MySQL stosu Azure zintegrowanych syst
 
 |Parametr|Opis|
 |-----|-----|
-|AzCredential|Azure poświadczeń dla konta administratora usługi stosu.|
-|CloudAdminCredential|Azure stosu chmury administratora domeny poświadczeń dla konta.|
-|PrivilegedEndpoint|Uprzywilejowany punktu końcowego dostępu Get-AzureStackStampInformation.|
+|AzCredential|Poświadczeń konta w usłudze Azure Stack administratora usługi.|
+|CloudAdminCredential|Usługa Azure Stack chmury administratora poświadczenie konta domeny.|
+|PrivilegedEndpoint|Uprzywilejowane punkt końcowy dostępu do Get AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostyka hasło do konta użytkownika.|
-|VMLocalCredential|Konto administratora lokalnego na Maszynie wirtualnej MySQLAdapter.|
+|VMLocalCredential|Konto administratora lokalnego na maszynie Wirtualnej MySQLAdapter.|
 |DefaultSSLCertificatePassword|Domyślny certyfikat SSL (* pfx) hasła.|
 |DependencyFilesLocalPath|Ścieżka lokalna plików zależności.|
 |     |     |
 
 ### <a name="known-issues"></a>Znane problemy
 
-**Problem**: kluczy tajnych rotacji dzienników.<br>
-Automatycznie nie są zbierane w dziennikach rotacją kluczy tajnych, jeśli tajny obrotu niestandardowego skryptu zakończy się niepowodzeniem, po jego uruchomieniu.
+**Problem**: dzienniki rotacji kluczy tajnych.<br>
+Dzienniki Aby uzyskać rotacji kluczy tajnych nie są automatycznie zbierane, jeśli niestandardowego skryptu rotacji wpisu tajnego zakończy się niepowodzeniem, po jej uruchomieniu.
 
 **Obejście**:<br>
-Aby zbierać wszystkie dzienniki dostawcy zasobów, w tym AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log zapisane w C:\Logs, należy użyć polecenia cmdlet Get-AzsDBAdapterLogs.
+Aby zbierać wszystkie dzienniki dostawcy zasobów, w tym AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, zapisane w C:\Logs, należy użyć polecenia cmdlet Get-AzsDBAdapterLogs.
 
-## <a name="update-the-virtual-machine-operating-system"></a>Zaktualizuj system operacyjny maszyny wirtualnej
+## <a name="update-the-virtual-machine-operating-system"></a>Aktualizowanie systemu operacyjnego maszyny wirtualnej
 
-Użyj jednej z następujących metod można zaktualizować system operacyjny maszyny wirtualnej.
+Użyj jednej z następujących metod do aktualizowania systemu operacyjnego maszyny wirtualnej.
 
-- Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu obecnie poprawioną obrazu systemu Windows Server 2016 Core.
-- Instalowanie pakietów usługi Windows Update podczas instalacji lub aktualizacji do dostawcy zasobów.
+- Zainstaluj najnowszy pakiet dostawcy zasobów przy użyciu aktualnie poprawionego obrazu systemu Windows Server 2016 Core.
+- Zainstaluj pakiet aktualizacji Windows podczas instalacji lub aktualizacji na potrzeby dostawcy zasobów.
 
-## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizacji definicji programu Windows Defender maszyny wirtualnej
+## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Aktualizacja definicji usługi Windows Defender maszyny wirtualnej
 
 Aby zaktualizować definicji usługi Windows Defender:
 
-1. Pobieranie aktualizacji definicji programu Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions).
+1. Pobieranie aktualizacji definicji usługi Windows Defender [Windows Defender definicji](https://www.microsoft.com/en-us/wdsi/definitions).
 
-   W definicji aktualizacji strony, przewiń w dół do "Ręcznie pobrać i zainstalować definicje". Pobierz plik 64-bitowe "Windows Defender oprogramowanie antywirusowe dla systemu Windows 10 i Windows 8.1".
+   W definicji aktualizacji strony, przewiń w dół do "Ręcznie Pobierz i zainstaluj definicje". Pobierz plik 64-bitowy "Programu antywirusowego Windows Defender dla systemu Windows 10 i Windows 8.1".
 
-   Można również użyć [tego łącza bezpośrednie](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) do pobierania/Uruchom plik fpam fe.exe.
+   Można również użyć [to bezpośredni link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) pobierania/Uruchom plik fpam fe.exe.
 
-2. Tworzenie sesji programu PowerShell do punktu końcowego obsługi SQL zasobów dostawcy karty maszyny wirtualnej.
+2. Utwórz sesję programu PowerShell do punktu końcowego obsługi SQL zasobów dostawcy karty maszyny wirtualnej.
 
-3. Skopiuj plik aktualizacji definicji do maszyny wirtualnej przy użyciu sesji punktu końcowego konserwacji.
+3. Skopiuj plik aktualizacji definicji do maszyny wirtualnej przy użyciu sesji punktu końcowego obsługi.
 
-4. W tej sesji programu PowerShell konserwacji Uruchom *DBAdapterWindowsDefenderDefinitions aktualizacji* polecenia.
+4. W sesji programu PowerShell konserwacji Uruchom *DBAdapterWindowsDefenderDefinitions aktualizacji* polecenia.
 
-5. Po zainstalowaniu definicje, zaleca się usunięcie pliku aktualizacji definicji przy użyciu *ItemOnUserDrive Usuń* polecenia.
+5. Po zainstalowaniu definicje, zaleca się usuwanie plików aktualizacji definicji przy użyciu *ItemOnUserDrive Usuń* polecenia.
 
-**Przykładowy skrypt programu PowerShell dla aktualizacji definicji.**
+**Przykładowy skrypt programu PowerShell do aktualizacji definicji.**
 
-Można edytować i uruchomić następujący skrypt w celu aktualizacji definicji programu Defender. Zastąp wartości w skrypcie wartości ze środowiska.
+Można edytować i uruchomić następujący skrypt w celu aktualizacji definicji programu Defender. Zastąp wartości w skrypcie wartościami z używanego środowiska.
 
 ```powershell
 # Set credentials for local admin on the resource provider VM.
@@ -189,23 +189,23 @@ $session | Remove-PSSession
 
 ## <a name="collect-diagnostic-logs"></a>Zbieranie dzienników diagnostycznych
 
-Aby zebrać dzienniki z zablokowanym maszyny wirtualnej, można użyć punktu końcowego programu PowerShell tylko tyle administracyjnej (JEA) *DBAdapterDiagnostics*. Ten punkt końcowy zawiera następujące polecenia:
+Aby zebrać dzienników zablokowanym maszyny wirtualnej, należy użyć punktu końcowego programu PowerShell tylko tyle administracji (JEA) *DBAdapterDiagnostics*. Ten punkt końcowy zawiera następujące polecenia:
 
-- **Get-AzsDBAdapterLog**. To polecenie tworzy pakiet zip dzienników diagnostycznych dostawcy zasobów i zapisuje go na dysku użytkownika tej sesji. Można uruchomić tego polecenia, bez żadnych parametrów i ostatnich czterech godzin dzienniki są zbierane.
-- **Usuń AzsDBAdapterLog**. To polecenie usuwa istniejące pakiety dziennika na dostawcy zasobów maszyny Wirtualnej.
+- **Get-AzsDBAdapterLog**. To polecenie tworzy pakiet zip dzienniki diagnostyczne dostawcy zasobów i zapisuje plik na dysku użytkownika tej sesji. Możesz uruchomić to polecenie bez parametrów, a ostatnie cztery godziny dzienniki są zbierane.
+- **Usuń AzsDBAdapterLog**. To polecenie usuwa istniejące pakiety dziennika dla dostawcy zasobów maszyny Wirtualnej.
 
-### <a name="endpoint-requirements-and-process"></a>Punkt końcowy wymagań i procesu
+### <a name="endpoint-requirements-and-process"></a>Punkt końcowy wymagania i proces
 
-Gdy dostawca zasobów jest zainstalowane lub zaktualizowane, **dbadapterdiag** utworzone konto użytkownika. To konto będzie używać do zbierania dzienników diagnostycznych.
+Po zainstalowaniu lub zaktualizowaniu dostawcy zasobów **dbadapterdiag** utworzone konto użytkownika. To konto będzie używane do zbierania dzienników diagnostycznych.
 
 >[!NOTE]
->Hasło konta dbadapterdiag jest taka sama jak hasło używane na potrzeby lokalnego administratora na maszynę wirtualną, która jest tworzona podczas wdrażania dostawcy lub aktualizacji.
+>Hasło do konta dbadapterdiag jest taka sama jak hasło używane do administratora lokalnego na maszynie wirtualnej, utworzonego podczas wdrażania dostawcy lub aktualizacji.
 
-Aby użyć *DBAdapterDiagnostics* poleceń, utwórz sesję zdalną programu PowerShell do maszyny wirtualnej dostawcy zasobów i uruchom **Get-AzsDBAdapterLog** polecenia.
+Aby użyć *DBAdapterDiagnostics* poleceń, Utwórz zdalną sesję programu PowerShell do maszyny wirtualnej dostawcy zasobów i uruchom **Get AzsDBAdapterLog** polecenia.
 
-Należy określić przedział czasu zbierania dzienników przy użyciu **FromDate** i **ToDate** parametrów. Jeśli nie określisz jedno lub oba te parametry są używane następujące wartości domyślne:
+Należy określić przedział czasu dla zbieranie dzienników przy użyciu **FromDate** i **ToDate** parametrów. Jeśli nie określisz jedno lub oba te parametry są używane następujące wartości domyślne:
 
-- Data rozpoczęcia odpowiada czterem godzinom przed bieżącym czasem.
+- FromDate odpowiada czterem godzinom przed aktualną godziną.
 - ToDate jest bieżący czas.
 
 **Przykładowy skrypt programu PowerShell do zbierania dzienników.**
@@ -242,4 +242,4 @@ $session | Remove-PSSession
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dodawanie serwerów hosta serwera SQL](azure-stack-sql-resource-provider-hosting-servers.md)
+[Dodawanie serwera SQL, serwerów hosta](azure-stack-sql-resource-provider-hosting-servers.md)

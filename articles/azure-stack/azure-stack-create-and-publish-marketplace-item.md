@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i publikowanie elementów Marketplace w stosie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie i publikowanie elementów Marketplace w stosie Azure.
+title: Tworzenie i publikowanie elementu portalu Marketplace w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Tworzenie i publikowanie elementu portalu Marketplace w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -11,22 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5e0349d6bae9295e7a0ba9f366f84753ebd838c2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "35645001"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 ## <a name="create-a-marketplace-item"></a>Tworzenie elementu portalu Marketplace
-1. [Pobierz](http://www.aka.ms/azurestackmarketplaceitem) element Azure Marketplace stosu próbki i narzędzie Pakowarka galerii Azure.
-2. Otwórz element Marketplace przykładowych i Zmień nazwę **SimpleVMTemplate** folderu. (Na przykład użyć takiej samej nazwie jako przedmiot Marketplace — **Contoso.TodoList**.) Ten folder zawiera:
+1. [Pobierz](http://www.aka.ms/azurestackmarketplaceitem) narzędzie Packager galerii Azure i próbka Azure Stack w portalu Marketplace.
+2. Otwórz przykładowy elementu portalu Marketplace i Zmień nazwę **SimpleVMTemplate** folderu. (Na przykład użyj nazwy jako swojej elementu portalu Marketplace — **Contoso.TodoList**.) Ten folder zawiera:
    
        /Contoso.TodoList/
        /Contoso.TodoList/Manifest.json
@@ -34,18 +35,22 @@ ms.lasthandoff: 05/12/2018
        /Contoso.TodoList/Icons/
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
-3. [Tworzenie szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) lub wybierz szablon z usługi GitHub. Element Marketplace używa tego szablonu do utworzenia zasobu.
-4. Aby pomyślnie wdrożyć zasobu, należy przetestować szablonu z interfejsów API usługi Microsoft Azure stosu.
-5. Jeśli szablon opiera się na obrazie maszyny wirtualnej, postępuj zgodnie z instrukcjami, aby [Dodaj obraz maszyny wirtualnej Azure stos](azure-stack-add-vm-image.md).
+3. [Tworzenie szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) lub wybierz szablon z serwisu GitHub. Elementu portalu Marketplace używa tego szablonu, aby utworzyć zasób.
+
+    > [!Note]  
+    > Nigdy nie ciężko kodu wszystkie wpisy tajne, takie jak klucze produktów, hasła lub żadnych informacji do zidentyfikowania klientów w szablonie usługi Azure Resource Manager. Szablon json pliki są dostępne bez konieczności uwierzytelniania po opublikowaniu w galerii.  Store wszystkich wpisów tajnych w [usługi Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-keyvault-parameter) i wywoływać je z w ramach szablonu.
+
+4. Aby pomyślnie wdrożony zasób, należy przetestować szablon przy użyciu interfejsów API usługi Microsoft Azure Stack.
+5. Jeśli Twój szablon opiera się na obrazie maszyny wirtualnej, postępuj zgodnie z instrukcjami, aby [Dodaj obraz maszyny wirtualnej do usługi Azure Stack](azure-stack-add-vm-image.md).
 6. Zapisz szablon usługi Azure Resource Manager w **/Contoso.TodoList/DeploymentTemplates/** folderu.
-7. Wybierz ikon i tekst dla elementu portalu Marketplace. Dodawanie ikon do **ikony** folderu i Dodaj tekst do **zasobów** w pliku **ciągów** folderu. Użyj małych, średnich, duża i całej konwencji nazewnictwa dla ikon. Zobacz [elementów Marketplace informacje o interfejsie użytkownika](#reference-marketplace-item-ui) szczegółowy opis.
+7. Wybierz, ikon i tekstu dla elementu portalu Marketplace. Dodawanie ikon do **ikony** folderze i Dodaj tekst do **zasobów** w pliku **ciągi** folderu. Na użytek ikon małe, średnie, duże i całej Konwencja nazewnictwa. Zobacz [elementu portalu Marketplace informacje o interfejsie użytkownika](#reference-marketplace-item-ui) szczegółowy opis.
    
    > [!NOTE]
-   > Wszystkie cztery ikona rozmiary (mały, Średni, duża, WWW) są wymagane dla poprawnie budowanie elementu portalu Marketplace.
+   > Wszystkie rozmiary cztery ikony (szeroki mały, Średni, duży) są wymagane dla poprawnie kompilowane elementu portalu Marketplace.
    > 
    > 
-8. W **manifest.json** Zmień **nazwa** nazwę tego elementu portalu Marketplace. Również zmienić **wydawcy** pod nazwą lub w firmie.
-9. W obszarze **artefakty**, zmień **nazwa** i **ścieżki** do szablonu usługi Azure Resource Manager, która zostanie uwzględniona poprawne informacje.
+8. W **manifest.json** pliku, zmień **nazwa** na nazwę elementu portalu Marketplace. Również zmienić **wydawcy** do nazwy lub firmy.
+9. W obszarze **artefaktów**, zmień **nazwa** i **ścieżki** na poprawne informacje dla szablonu usługi Azure Resource Manager, które zostało uwzględnione.
    
          "artifacts": [
             {
@@ -54,13 +59,13 @@ ms.lasthandoff: 05/12/2018
                 "path": "DeploymentTemplates\\Type your path",
                 "isDefault": true
             }
-10. Zastąp **Moje elementy Marketplace** z listy Kategorie miejsce tego elementu portalu Marketplace.
+10. Zastąp **Moje elementy portalu Marketplace** listę kategorii, w którym powinna zostać wyświetlona Twoja elementu portalu Marketplace.
     
              "categories":[
                  "My Marketplace Items"
               ],
-11. Wszelkie dodatkowe zmiany do manifest.json, można znaleźć w temacie [odwołania: manifest.json elementów Marketplace](#reference-marketplace-item-manifestjson).
-12. Aby pakiet foldery do pliku .azpkg, otwórz wiersz polecenia i uruchom następujące polecenie:
+11. Wszelkie dalsze zmiany do pliku manifest.json się [odwołania: manifest.json elementu portalu Marketplace](#reference-marketplace-item-manifestjson).
+12. Aby spakować foldery do pliku .azpkg, otwórz wiersz polecenia i uruchom następujące polecenie:
     
         AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
     
@@ -70,89 +75,95 @@ ms.lasthandoff: 05/12/2018
     > 
 
 ## <a name="publish-a-marketplace-item"></a>Publikowanie elementu portalu Marketplace
-1. Użyj programu PowerShell lub Eksploratora usługi Storage platformy Azure, aby przekazać przedmiot witryny Marketplace (.azpkg) do magazynu obiektów Blob Azure. Można przekazać do lokalnego magazynu Azure stosu lub Przekaż do magazynu Azure. (Jest tymczasowej lokalizacji pakietu). Upewnij się, że obiekt blob jest dostępny publicznie.
-2. Na maszynie wirtualnej klienta w środowisku Microsoft Azure stosu upewnij się, że sesja programu PowerShell jest skonfigurowany przy użyciu poświadczeń administratora usługi. Można znaleźć instrukcje dotyczące sposobu uwierzytelniania programu PowerShell w programie Azure stosu w [wdrożyć szablon przy użyciu programu PowerShell](user/azure-stack-deploy-template-powershell.md).
-3. Użyj **AzureRMGalleryItem Dodaj** polecenia cmdlet programu PowerShell do publikowania stosu Azure w portalu Marketplace. Na przykład:
+1. Użyj programu PowerShell lub Eksploratora usługi Azure Storage przekazywać swoje elementu portalu Marketplace (.azpkg) do usługi Azure Blob storage. Można przekazać do lokalnego magazynu usługi Azure Stack, lub Przekaż do usługi Azure Storage. (Jest tymczasowej lokalizacji pakietu). Upewnij się, że obiekt blob jest dostępny publicznie.
+2. Na maszynie wirtualnej klienta w środowisku Microsoft Azure Stack upewnij się, że sesja programu PowerShell jest skonfigurowany przy użyciu poświadczeń administratora usługi. Można znaleźć instrukcje dotyczące sposobu uwierzytelniania programu PowerShell w usłudze Azure Stack w [wdrażanie szablonu przy użyciu programu PowerShell](user/azure-stack-deploy-template-powershell.md).
+3. Kiedy używasz [PowerShell 1.3.0]( azure-stack-powershell-install.md) lub nowszej, możesz użyć **AzsGalleryItem Dodaj** polecenia cmdlet programu PowerShell publikowanie elementu portalu Marketplace do usługi Azure Stack. Przed użyciem środowiska PowerShell 1.3.0, należy użyć polecenia cmdlet **AzureRMGalleryitem Dodaj** zamiast **AzsGalleryItem Dodaj**.  Na przykład, kiedy używać programu PowerShell 1.3.0 lub nowszej:
    
-       Add-AzureRMGalleryItem -GalleryItemUri `
+       Add-AzsGalleryItem -GalleryItemUri `
        https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
    | Parametr | Opis |
    | --- | --- |
-   | Identyfikator subskrypcji |Identyfikator administratora subskrypcji. Można go pobrać przy użyciu programu PowerShell. Jeśli chcesz pobrać go w portalu, przejdź do dostawcy subskrypcji i skopiuj identyfikator subskrypcji. |
+   | Identyfikator subskrypcji |Identyfikator administratora subskrypcji. Możesz pobrać go przy użyciu programu PowerShell. Jeśli chcesz użyć je pobrać w portalu, przejdź do subskrypcji dostawcy i skopiuj identyfikator subskrypcji. |
    | GalleryItemUri |Identyfikator URI obiektu blob dla pakietu galerii, który został już przekazany do magazynu. |
-   | Apiversion |Ustaw jako **2015-04-01**. |
-4. Przejdź do portalu. Element Marketplace w portalu — będą teraz widoczne jako operator lub użytkownika.
+   | Wersja interfejsu API |Ustaw jako **2015-04-01**. |
+4. Przejdź do portalu. Teraz widać elementu portalu Marketplace w portalu — jako operator lub użytkownika.
    
    > [!NOTE]
    > Pakiet może potrwać kilka minut.
    > 
    > 
-5. Przedmiot Marketplace teraz został zapisany w portalu Azure Marketplace stosu. Można go usunąć z lokalizacji magazynu obiektów Blob.
-6. Należy usunąć element Marketplace przy użyciu **AzureRMGalleryItem Usuń** polecenia cmdlet. Przykład:
+5. Teraz został zapisany z elementu portalu Marketplace w portalu Azure Marketplace stosu. Można go usunąć z lokalizacji magazynu obiektów Blob.
+    > [!Caution]  
+    > Wszystkie artefakty galerii domyślne i artefaktów Galeria niestandardowa są teraz dostępne bez uwierzytelniania w ramach następujących adresów URL:  
+`https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`  
+`https://systemgallery.blob.[Region].[external FQDN]/dev20161101-microsoft-windowsazure-gallery/[Template Name]/UiDefinition.json`
+
+6. Można usunąć elementu portalu Marketplace przy użyciu **AzureRMGalleryItem Usuń** polecenia cmdlet. Przykład:
    
         Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
-   > Po usunięciu elementu interfejsu użytkownika portalu Marketplace mogą być widoczne wystąpił błąd. Aby naprawić błąd, kliknij przycisk **ustawienia** w portalu. Następnie wybierz opcję **odrzucić modyfikacje** w obszarze **dostosowywania portalu**.
+   > Interfejs użytkownika portalu Marketplace, mogą być wyświetlane błąd, po usunięciu elementu. Aby naprawić błąd, kliknij przycisk **ustawienia** w portalu. Następnie wybierz **Odrzuć modyfikacje** w obszarze **dostosowywania portalu**.
    > 
    > 
 
-## <a name="reference-marketplace-item-manifestjson"></a>Odwołanie: Manifest.json elementów Marketplace
+## <a name="reference-marketplace-item-manifestjson"></a>Odwołanie: Manifest.json elementu portalu Marketplace
 ### <a name="identity-information"></a>Informacje o tożsamości
 | Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
 | Name (Nazwa) |X |Ciąg |[A-Za-z0-9]+ | |
 | Wydawca |X |Ciąg |[A-Za-z0-9]+ | |
-| Wersja |X |Ciąg |[Programu SemVer v2](http://semver.org/) | |
+| Wersja |X |Ciąg |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metadane
 | Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Zalecenie 80 znaków |Portalu może nie wyświetlać nazwę elementu bezpiecznie, jeśli jest więcej niż 80 znaków. |
-| PublisherDisplayName |X |Ciąg |Zalecenie 30 znaków |Portalu może nie wyświetlać nazwę wydawcy bezpiecznie, jeśli jest więcej niż 30 znaków. |
+| Nazwa wyświetlana |X |Ciąg |Zalecenie wynoszącą 80 znaków |Portalu mogą być wyświetlane nazwy elementu bez problemu zmieniała, jeśli jest więcej niż 80 znaków. |
+| PublisherDisplayName |X |Ciąg |Zalecenie 30 znaków |Portalu mogą być wyświetlane swoją nazwę wydawcy zostanie wyłączone poprawnie, jeśli jest więcej niż 30 znaków. |
 | PublisherLegalName |X |Ciąg |Maksymalnie 256 znaków | |
 | Podsumowanie |X |Ciąg |60 do 100 znaków | |
-| LongSummary |X |Ciąg |140 do 256 znaków |Nie jeszcze dotyczy w stosie Azure. |
-| Opis |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |znaki 500 do 5000 | |
+| LongSummary |X |Ciąg |140 do 256 znaków |Jeszcze nieobsługiwane w usłudze Azure Stack. |
+| Opis |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 do 5000 znaków | |
 
 ### <a name="images"></a>Obrazy
-Witryny Marketplace korzysta z następujących ikon:
+Portal Marketplace korzysta z następujących ikon:
 
 | Name (Nazwa) | Szerokość | Wysokość | Uwagi |
 | --- | --- | --- | --- |
-| Międzynarodowe |255 pikseli |115 pikseli |Zawsze wymagany |
-| Large |115 pikseli |115 pikseli |Zawsze wymagany |
-| Medium |90 pikseli |90 pikseli |Zawsze wymagany |
-| Small |40 pikseli |40 pikseli |Zawsze wymagany |
-| Zrzut ekranu |533 pikseli |32 pikseli |Optional (Opcjonalność) |
+| Szerokie |255 piks. |115 piks. |Zawsze wymagane |
+| Large |115 piks. |115 piks. |Zawsze wymagane |
+| Medium |90 piks. |90 piks. |Zawsze wymagane |
+| Small |40 piks. |40 piks. |Zawsze wymagane |
+| Zrzut ekranu |533 piks. |32 piks. |Optional (Opcjonalność) |
 
 ### <a name="categories"></a>Kategorie
-Każdy element Marketplace powinny być oznaczane kategorię, która identyfikuje, gdy element jest wyświetlany w portalu interfejsu użytkownika. Można wybrać jedną z istniejących kategorii w stosie Azure (obliczeniowych, dane i Magazyn, itp.) lub wybrać nowe hasło.
+Każdy element portalu Marketplace powinny być oznakowane za pomocą kategorii, która określa, gdzie pojawia się on w portalu, interfejsu użytkownika. Można wybrać jedną z istniejących kategorii w usłudze Azure Stack (obliczeniowe, dane i Magazyn, itp.) lub wybrać nowe hasło.
 
 ### <a name="links"></a>Linki
-Każdy element Marketplace mogą zawierać różne linki do dodatkowej zawartości. Łącza są określone jako lista nazw i identyfikatorów URI.
+Każdy element portalu Marketplace, mogą obejmować różne linki do dodatkowej zawartości. Linki są określane jako listę wartości nazwy i identyfikatory URI.
 
 | Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Maksymalnie 64 znaków. | |
+| Nazwa wyświetlana |X |Ciąg |Co najwyżej 64 znaków. | |
 | Identyfikator URI |X |Identyfikator URI | | |
 
 ### <a name="additional-properties"></a>Dodatkowe właściwości
-Oprócz powyższych metadanych autorzy Marketplace można podać danych pary klucza i wartości niestandardowe w następującym formacie:
+Oprócz poprzedniego metadane autorzy Marketplace można podać niestandardowy klucz/wartość pary danych w następującej postaci:
 
 | Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Maksymalnie 25 znaków | |
+| Nazwa wyświetlana |X |Ciąg |Maksymalnie 25 znaków. | |
 | Wartość |X |Ciąg |Maksymalnie 30 znaków | |
 
-### <a name="html-sanitization"></a>Ich oczyszczania HTML
-Dla dowolnego pola, który umożliwia HTML dopuszczalne są następujące elementy i atrybuty:
+### <a name="html-sanitization"></a>Narzędzie oczyszczania HTML
+Dla dowolnego pola, która umożliwia HTML dozwolone są następujące elementy i atrybuty:
 
-H1, h2, h3, h4, h5, p, ol, ul, li, [docelowy | href], br silne, em, b i
+H1, h2, h3 h4, h5, p, ol, ul, li [target | href], br siły, em, b, i
 
-## <a name="reference-marketplace-item-ui"></a>Odwołanie: Marketplace elementu interfejsu użytkownika
-Ikony i tekst dla elementów portalu Marketplace, jak pokazano w portalu Azure stosu są.
+## <a name="reference-marketplace-item-ui"></a>Odwołanie: Elementu portalu Marketplace interfejsu użytkownika
+Ikon i tekstu dla elementów portalu Marketplace w portalu usługi Azure Stack to.
 
 ### <a name="create-blade"></a>Blok tworzenia
 ![Blok tworzenia](media/azure-stack-marketplace-item-ui-reference/image1.png)
