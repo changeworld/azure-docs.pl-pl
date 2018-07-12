@@ -1,9 +1,9 @@
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Jeśli nie muszą tych zasobów w przyszłości, należy usunąć grupę zasobów, uruchamiając następujące polecenie w powłoce chmury:
+W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Jeśli te zasoby nie będą raczej potrzebne w przyszłości, usuń grupę zasobów, uruchamiając następujące polecenie w usłudze Cloud Shell:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-Polecenie to może potrwać kilka minut, aby uruchomić.
+Wykonanie tego polecenia może potrwać około minutę.
