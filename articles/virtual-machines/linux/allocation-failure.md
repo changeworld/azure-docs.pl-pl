@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z przydziałem Azure maszyny Wirtualnej systemu Linux | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z przydziałem podczas tworzenia, uruchom ponownie lub zmień rozmiar maszyny Wirtualnej systemu Linux na platformie Azure
+title: Rozwiązywanie problemów z błędami alokacji maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienić rozmiar maszyny Wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: 44732739e87db153a3ab6f79f8f0b147ccb31654
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525373"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38308110"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-linux-vms-in-azure"></a>Rozwiązywanie problemów z przydziałem podczas tworzenia, uruchom ponownie lub zmień rozmiar maszyn wirtualnych systemu Linux na platformie Azure
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-linux-vms-in-azure"></a>Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienić rozmiar maszyn wirtualnych systemu Linux na platformie Azure
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

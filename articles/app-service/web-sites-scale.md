@@ -1,6 +1,6 @@
 ---
-title: Skalowanie w górę aplikacji na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skalować aplikację w usłudze Azure App Service, aby dodać pojemności i funkcje.
+title: Skalowanie aplikacji na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skalować aplikację w usłudze Azure App Service do dodawania pojemności i funkcji.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f8478a0aef52f8e573fa300a0b1328ea9ce5129f
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 01c20e7f43c11a077d3870ee32c1d8be98a95696
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031002"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306437"
 ---
-# <a name="scale-up-an-app-in-azure"></a>Skalowanie w górę aplikacji na platformie Azure
+# <a name="scale-up-an-app-in-azure"></a>Skalowanie aplikacji na platformie Azure
 
 > [!NOTE]
-> Nowy **PremiumV2** warstwy umożliwia szybszych procesorów CPU, pamięci masowej SSD, a podwaja współczynnik pamięci core warstwy cenowej istniejącej. Z zalet wydajności można zapisać pieniędzy po uruchomieniu aplikacji na mniejszej liczbie wystąpień. Aby skalować do **PremiumV2** warstwy, zobacz [warstwy PremiumV2 Konfigurowanie aplikacji usługi](app-service-configure-premium-tier.md).
+> Nowy **PremiumV2** warstwy umożliwia szybsze procesory, magazynem dysków SSD i rozwiązanie quorum zwiększa dwukrotnie stosunek pamięć rdzeń istniejących warstw cenowych. Za pomocą korzyści wydajności można zapisać pieniądze, po uruchomieniu aplikacji na mniejszej liczby wystąpień. Skalowanie do **PremiumV2** warstwy, zobacz [warstwy PremiumV2 konfigurowanie dla usługi App Service](app-service-configure-premium-tier.md).
 >
 
-W tym artykule przedstawiono sposób skalowania aplikacji w usłudze Azure App Service. Istnieją dwa przepływy pracy do skalowania, skalowania w górę i skalowania w poziomie i w tym artykule opisano skalowania w górę przepływu pracy.
+W tym artykule pokazano, jak skalować aplikację w usłudze Azure App Service. Istnieją dwa przepływy pracy na potrzeby skalowania, skalowanie górę i skalowania w poziomie i w tym artykule opisano na skalowaniu w górę przepływu pracy.
 
-* [Skalowanie w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Pobierz więcej Procesora, pamięci, miejsca na dysku i dodatkowych funkcji, takich jak dedykowanych maszynach wirtualnych (VM), niestandardowe domeny i certyfikaty, przemieszczania miejsc, skalowanie automatyczne i inne. Skalowanie w górę, zmieniając warstwę cenową planu usługi aplikacji — należącego do aplikacji.
+* [Skalowanie w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Uzyskaj więcej procesora CPU, pamięci, miejsca na dysku i dodatkowych funkcji, takich jak dedykowanych maszyn wirtualnych (VM), niestandardowe domeny i certyfikaty, przemieszczania miejsc, skalowanie automatyczne i nie tylko. Skalowanie, zmieniając warstwę cenową planu usługi App Service, do którego należy aplikacja.
 * [Skalowanie w poziomie](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zwiększ liczbę wystąpień maszyn wirtualnych, które Uruchom aplikację.
-  Możesz skalować w poziomie do maksymalnie 20 wystąpień, w zależności od warstwy cenowej. [Środowiska usługi App Service](environment/intro.md) w **izolowany** dodatkowe warstwy zwiększa się liczba skalowalnego w poziomie do 100 wystąpień. Aby uzyskać więcej informacji na temat skalowania, zobacz [skalowanie liczby wystąpień ręcznie lub automatycznie](../monitoring-and-diagnostics/insights-how-to-scale.md). Dowiedz się, jak używać Skalowanie automatyczne, który jest skalowanie liczby wystąpień automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramy.
+  Można skalować w poziomie do maksymalnie 20 wystąpień, w zależności od warstwy cenowej. [Środowiska usługi App Service](environment/intro.md) w **izolowany** warstwy dodatkowo zwiększa się liczba Twoich skalowalnego w poziomie do 100 wystąpień. Aby uzyskać więcej informacji na temat skalowania w poziomie, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md). Istnieje Dowiedz się, jak używać automatycznego skalowania, czyli skalować liczbę wystąpień automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramy.
 
-Ustawienia skalowania trwać tylko sekund, stosowanie i wpływają na wszystkie aplikacje w sieci [planu usługi aplikacji](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-Nie wymagają zmiany kodu lub ponownego wdrażania aplikacji.
+Ustawienia skalowania zająć tylko kilka sekund do zastosowania i wpływają na wszystkie aplikacje w Twojej [planu usługi App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+Nie wymagają one zmian w kodzie lub ponownego wdrażania aplikacji.
 
-Aby uzyskać informacje o cenach i funkcje poszczególnych planów usługi aplikacji, zobacz [szczegóły cennika usługi App](https://azure.microsoft.com/pricing/details/web-sites/).  
+Aby uzyskać informacji na temat cen i funkcji poszczególnych planów usługi App Service, zobacz [szczegóły cennika usługi App Service](https://azure.microsoft.com/pricing/details/web-sites/).  
 
 > [!NOTE]
-> Przed przejściem plan usługi aplikacji z **wolne** warstwy, należy najpierw usunąć [limitów wydatków](https://azure.microsoft.com/pricing/spending-limits/) w miejscu dla subskrypcji platformy Azure. Aby wyświetlić lub zmienić opcje dla Twojej subskrypcji Microsoft Azure App Service, zobacz [subskrypcji platformy Microsoft Azure][azuresubscriptions].
+> Przed przełączeniem plan usługi App Service z **bezpłatna** warstwy, należy najpierw usunąć [limitów wydatków](https://azure.microsoft.com/pricing/spending-limits/) w miejscu, aby Twoja subskrypcja platformy Azure. Aby wyświetlić lub zmienić opcje dla Twojej subskrypcji Microsoft Azure App Service, zobacz [subskrypcji platformy Microsoft Azure][azuresubscriptions].
 > 
 > 
 
 <a name="scalingsharedorbasic"></a>
 <a name="scalingstandard"></a>
 
-## <a name="scale-up-your-pricing-tier"></a>Skalowanie w górę warstwę cenową
-1. W przeglądarce otwórz [portalu Azure][portal].
-2. Na stronie aplikacji z usługi aplikacji, kliknij przycisk **wszystkie ustawienia**, a następnie kliknij przycisk **Skaluj w górę**.
+## <a name="scale-up-your-pricing-tier"></a>Skalowanie w górę do warstwy cenowej
+1. Otwórz w przeglądarce, [witryny Azure portal][portal].
+2. Na stronie aplikacji usługi App Service, kliknij przycisk **wszystkie ustawienia**, a następnie kliknij przycisk **Skaluj w górę**.
    
-    ![Przejdź do skalować aplikację platformy Azure.][ChooseWHP]
-3. Wybierz warstwę, a następnie kliknij przycisk **Zastosuj**.
+    ![Przejdź do skalowania w górę aplikacji platformy Azure.][ChooseWHP]
+3. Wybieranie warstwy, a następnie kliknij przycisk **Zastosuj**.
    
-    **Powiadomienia** kartę będzie flash zielona **Powodzenie** po zakończeniu operacji.
+    **Powiadomienia** karta będzie flash zielona **Powodzenie** po zakończeniu operacji.
 
 <a name="ScalingSQLServer"></a>
 
-## <a name="scale-related-resources"></a>Powiązane zasoby są skalowane
-Jeśli aplikacja jest zależny od innych usług, takich jak bazy danych SQL Azure lub usługi Azure Storage, można oddzielnie skalować możliwości tych zasobów. Te zasoby nie są zarządzane przez plan usługi aplikacji.
+## <a name="scale-related-resources"></a>Skalowanie powiązane zasoby
+Jeśli aplikacja jest zależna od innych usług, takich jak Azure SQL Database lub usługi Azure Storage, możesz skalować w górę te zasoby osobno. Te zasoby nie są zarządzane przez plan usługi App Service.
 
 1. W **Essentials**, kliknij przycisk **grupy zasobów** łącza.
    
-    ![Skalowanie w górę powiązane zasoby aplikacji Azure](./media/web-sites-scale/RGEssentialsLink.png)
-2. W **Podsumowanie** częścią **grupy zasobów** kliknij zasób, który ma być skalowana. Poniższy zrzut ekranu przedstawia zasobów bazy danych SQL i zasobów magazynu Azure.
+    ![Skalowanie aplikacji platformy Azure powiązane zasoby](./media/web-sites-scale/RGEssentialsLink.png)
+2. W **Podsumowanie** wchodzi w skład **grupy zasobów** kliknij zasób, który ma być skalowana. Poniższy zrzut ekranu przedstawia zasobów bazy danych SQL i zasobów usługi Azure Storage.
    
-    ![Przejdź do strony grupy zasobów, aby skalować aplikację Azure](./media/web-sites-scale/ResourceGroup.png)
-3. Dla zasobów bazy danych SQL, kliknij przycisk **ustawienia** > **warstwa cenowa** skalowania warstwy cenowej.
+    ![Przejdź do strony grupy zasobów, aby skalować w górę aplikacji platformy Azure](./media/web-sites-scale/ResourceGroup.png)
+3. Zasoby bazy danych SQL, kliknij przycisk **ustawienia** > **warstwa cenowa** skalowanie warstwy cenowej.
    
-    ![Skalowanie w górę zaplecza bazy danych SQL dla aplikacji Azure](./media/web-sites-scale/ScaleDatabase.png)
+    ![Skalowanie w górę do wewnętrznej bazy danych SQL Database dla aplikacji platformy Azure](./media/web-sites-scale/ScaleDatabase.png)
    
-    Można też włączyć [— replikacja geograficzna](../sql-database/sql-database-geo-replication-overview.md) dla swojego wystąpienia bazy danych SQL.
+    Można też włączyć [geografickou replikaci](../sql-database/sql-database-geo-replication-overview.md) wystąpienia bazy danych SQL.
    
-    Dla zasobu usługi Magazyn Azure, kliknij przycisk **ustawienia** > **konfiguracji** na skalowanie w górę opcje magazynu.
+    W przypadku zasobów usługi Azure Storage, kliknij przycisk **ustawienia** > **konfiguracji** skalowanie w górę opcji magazyn.
    
-    ![Skalowanie w górę konta usługi Magazyn Azure używany przez aplikację Azure](./media/web-sites-scale/ScaleStorage.png)
+    ![Skalowanie konta usługi Azure Storage używanymi przez aplikację platformy Azure](./media/web-sites-scale/ScaleStorage.png)
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>
 
 ## <a name="compare-pricing-tiers"></a>Porównanie warstw cenowych
-Aby uzyskać szczegółowe informacje, takie jak rozmiarów maszyn wirtualnych dla każdej warstwy cenowej, zobacz [szczegóły cennika usługi App](https://azure.microsoft.com/pricing/details/web-sites/).
-Dla tabeli ograniczenia usługi, przydziały i ograniczenia i funkcji obsługiwanych w każdej warstwie, zobacz [ogranicza usługi aplikacji](../azure-subscription-service-limits.md#app-service-limits).
+Aby uzyskać szczegółowe informacje, takie jak rozmiarów maszyn wirtualnych dla każdej warstwy cenowej, zobacz [szczegóły cennika usługi App Service](https://azure.microsoft.com/pricing/details/web-sites/).
+Dla tabeli limity, przydziały i ograniczenia i funkcji obsługiwanych w poszczególnych warstwach, zobacz [limity usługi App Service](../azure-subscription-service-limits.md#app-service-limits).
 
 <a name="Next Steps"></a>
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Informacje o cenach, pomocy technicznej i umowy dotyczącej poziomu usług można znaleźć w następujących łączy:
+* Aby uzyskać informacje o cenach, pomocy technicznej i umowy SLA skorzystaj z następujących linków:
   
-    [Informacje o cenach transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/)
+    [Szczegóły cennika transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/)
   
-    [Plany pomocy technicznej platformy Azure firmy Microsoft](https://azure.microsoft.com/support/plans/)
+    [Plany pomocy technicznej systemu Azure firmy Microsoft](https://azure.microsoft.com/support/plans/)
   
     [Umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/)
   
-    [Szczegóły cennika bazy danych SQL](https://azure.microsoft.com/pricing/details/sql-database/)
+    [SQL Database — szczegóły cennika](https://azure.microsoft.com/pricing/details/sql-database/)
   
-    [Maszyny wirtualnej i rozmiary usługi chmury Microsoft Azure][vmsizes]
+    [Maszyna wirtualna i rozmiary usług w chmurze dla platformy Microsoft Azure][vmsizes]
   
-* Informacje o usłudze Azure App Service najlepszych rozwiązań, w tym tworzenie skalowalnych i elastyczne architektury, zobacz [najlepsze rozwiązania: aplikacje sieci Web usługi aplikacji Azure](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
-* Dla plików wideo na temat skalowania aplikacji usługi App Service zobacz następujące zasoby:
+* Aby uzyskać informacje o usłudze Azure App Service najlepszych rozwiązań, w tym tworzenia architektury skalowalne i odporne na błędy, zobacz [najlepsze rozwiązania: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
+* Dla filmów wideo na temat skalowania aplikacji usługi App Service zobacz następujące zasoby:
   
-  * [Kiedy skalować witryn sieci Web Azure - o Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
-  * [Automatyczne skalowanie witryn sieci Web Azure, procesora CPU lub zaplanowane — z Stefan Schackow](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
-  * [Jak Azure skalowalność witryn sieci Web - Stefan Schackow](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
+  * [Kiedy skalować witryny sieci Web platformy Azure — za pomocą Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
+  * [Automatyczne skalowanie usługi Azure Websites, procesora CPU lub według harmonogramu — za pomocą Stefan Schackow](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
+  * [Jak usługa Azure skalowanie witryny sieci Web — za pomocą Stefan Schackow](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
 
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/
 [SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
-[azuresubscriptions]:http://go.microsoft.com/fwlink/?LinkID=235288
+[azuresubscriptions]:https://account.windowsazure.com/subscriptions
 [portal]: https://portal.azure.com/
 
 <!-- IMAGES -->

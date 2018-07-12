@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2e0f1ecea84398f9e4d43af07b9871f36e8dd48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446058"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295014"
 ---
 # <a name="azure-ad-access-reviews"></a>Przeglądy dostępu w usłudze Azure AD
 
@@ -43,4 +43,4 @@ Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają orga
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 - [Zarządzanie programami i kontrolami obejmującymi przeglądy dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](active-directory-azure-ad-controls-create-access-review.md)
-- [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](privileged-identity-management/pim-how-to-start-security-review.md)

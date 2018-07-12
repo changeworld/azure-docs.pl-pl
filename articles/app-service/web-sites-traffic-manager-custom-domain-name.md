@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service, który używa Menedżera ruchu do równoważenia obciążenia.
-description: Użyj nazwy domeny niestandardowej dla aplikacji sieci web w usłudze Azure App Service, która obejmuje usługi Traffic Manager w programie Równoważenie obciążenia.
+title: Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service używa usługi Traffic Manager do równoważenia obciążenia.
+description: Użyj niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service, która obejmuje usługi Traffic Manager na potrzeby równoważenia obciążenia.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.openlocfilehash: c78fb7883559e46ebaa1d8dab59a15c55fb76fdf
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
-ms.locfileid: "27713855"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317394"
 ---
-# <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service przy użyciu Menedżera ruchu
+# <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurowanie niestandardowej nazwy domeny dla aplikacji sieci web w usłudze Azure App Service przy użyciu usługi Traffic Manager
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-W tym artykule przedstawiono ogólne instrukcje dotyczące korzystania z niestandardowej nazwy domeny z [usługi aplikacji](app-service-web-overview.md) aplikacji, który jest zintegrowany z [Traffic Manager](../traffic-manager/traffic-manager-overview.md) Równoważenie obciążenia sieciowego.
+Ten artykuł zawiera ogólne instrukcje dotyczące korzystania z niestandardowej nazwy domeny za pomocą [usługi App Service](app-service-web-overview.md) aplikację, która jest zintegrowana z usługą [usługi Traffic Manager](../traffic-manager/traffic-manager-overview.md) Równoważenie obciążenia sieciowego.
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -34,38 +34,38 @@ W tym artykule przedstawiono ogólne instrukcje dotyczące korzystania z niestan
 
 <a name="understanding-records"></a>
 
-## <a name="understanding-dns-records"></a>Opis rekordów DNS
+## <a name="understanding-dns-records"></a>Informacje o rekordach DNS
 [!INCLUDE [understandingdns](../../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 <a name="bkmk_configsharedmode"></a>
 
-## <a name="configure-your-web-apps-for-standard-mode"></a>Konfigurowanie aplikacji sieci web dla Tryb standardowy
+## <a name="configure-your-web-apps-for-standard-mode"></a>Konfigurowanie aplikacji sieci web dla trybu standardowego
 [!INCLUDE [modes](../../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>Dodaj rekord DNS dla domeny niestandardowej
 > [!NOTE]
-> Jeśli zostały nabyte domeny przy użyciu aplikacji sieci Web usługi aplikacji Azure Pomiń następujące kroki i odwoływać się do ostatniego kroku [kupić domenę dla aplikacji sieci Web](custom-dns-web-site-buydomains-web-app.md) artykułu.
+> Jeśli zostały nabyte domeny przy użyciu usługi Azure App Service Web Apps, a następnie pominąć, wykonując kroki i odwoływać się do ostatniego kroku [kupić domenę dla aplikacji sieci Web](custom-dns-web-site-buydomains-web-app.md) artykułu.
 > 
 > 
 
-Aby skojarzyć domenę niestandardową z aplikacji sieci web w usłudze Azure App Service, należy dodać nowy wpis w tabeli DNS dla domeny niestandardowej. Można to zrobić za pomocą narzędzia do zarządzania przez dostawcę domeny.
+Aby skojarzyć domenę niestandardową z aplikacji sieci web w usłudze Azure App Service, należy dodać nowy wpis w tabeli DNS dla domeny niestandardowej. Możesz to zrobić za pomocą narzędzia do zarządzania od dostawcy domeny.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Gdy różnią się szczegółowe informacje na temat każdego z dostawców domeny mapy *z* niestandardową nazwę domeny (takich jak **contoso.com**) *do* nazwę domeny usługi Traffic Manager ( **contoso.trafficmanager.NET**) może być zintegrowana z aplikacji sieci web.
+Gdy różnią się szczegółowe informacje na temat każdego dostawcy domeny, możesz zamapować *z* niestandardowej nazwy domeny (takie jak **contoso.com**) *do* nazwę domeny usługi Traffic Manager ( **contoso.trafficmanager.NET**) który jest zintegrowany z aplikacją sieci web.
    
 > [!NOTE]
-> Jeśli rekord jest już w użyciu, i chcesz preemptively powiązać go z aplikacji, można utworzyć dodatkowy rekord CNAME. Na przykład, aby powiązać preemptively **www.contoso.com** do aplikacji sieci web, należy utworzyć rekord CNAME z **awverify.www** do **contoso.trafficmanager.net**. Następnie można dodać "www.contoso.com" do aplikacji sieci Web bez konieczności zmieniania rekord CNAME "www". Aby uzyskać więcej informacji, zobacz [rekordy DNS Utwórz dla aplikacji sieci web w domenie niestandardowych][CREATEDNS].
+> Jeśli rekord jest już używany, i chcesz prewencyjnego powiązać rozwiązanie aplikacji, możesz utworzyć dodatkowe rekordu CNAME. Na przykład, aby powiązać prewencyjnego **www.contoso.com** do aplikacji sieci web należy utworzyć rekord CNAME z **awverify.www** do **contoso.trafficmanager.net**. Następnie można dodać "www.contoso.com" do aplikacji sieci Web bez konieczności zmieniania rekord CNAME "www". Aby uzyskać więcej informacji, zobacz [DNS utworzyć rekordy dla aplikacji sieci web w domenie niestandardowej][CREATEDNS].
 > 
 > 
 
-Po zakończeniu dodawania lub modyfikowania rekordów DNS u dostawcy usługi domeny, należy zapisać zmiany.
+Po zakończeniu dodawania lub modyfikowania rekordów DNS dostawcy domeny, Zapisz zmiany.
 
 <a name="enabledomain"></a>
 
-## <a name="enable-traffic-manager"></a>Menedżer ruchu
+## <a name="enable-traffic-manager"></a>Włączanie usługi Traffic Manager
 [!INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki

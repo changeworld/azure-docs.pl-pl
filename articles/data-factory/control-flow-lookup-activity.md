@@ -1,6 +1,6 @@
 ---
-title: Działania wyszukiwania w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak działanie wyszukiwania służy do odszukania wartości ze źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania.
+title: Działanie LOOKUP w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Użyj działania lookup do wyszukiwania wartości ze źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059064"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237836"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Działania wyszukiwania w fabryce danych Azure
+# <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
 
-Działanie wyszukiwania może być używane do pobierania zestawu danych z dowolnego źródła danych obsługiwane ADF.  Mogą być używane w następującym scenariuszu:
-- Dynamiczne określanie obiekty, które (plików, tabel, itp.) do działania na kolejne działania, zamiast kodować nazwa obiektu
+Działanie LOOKUP może służyć do pobierania zestawu danych z dowolnego źródła danych obsługiwane przez usługi ADF.  Może służyć w następującym scenariuszu:
+- Dynamiczne określanie obiekty, które (pliki, tabele itp.) do wykonywania operacji w kolejne działania, zamiast kodować nazwa obiektu
 
-Działania wyszukiwania może odczytywać i zwrócić zawartość zgodnie z pliku konfiguracji, Tabela konfiguracji lub wynik wykonywania zapytań lub procedurze składowanej.  Dane wyjściowe działania wyszukiwania można używane w kolejnych kopii lub transformacji działania, jeśli jest to wartość singleton lub używany w działaniu ForEach przypadku tablicę z atrybutami.
+Działanie LOOKUP może odczytywać i zwróć treść pliku konfiguracji, Tabela konfiguracji lub wynik wykonania zapytań lub procedurze składowanej.  Dane wyjściowe działania Lookup mogą być używane w kolejnych kopiowania lub działania przekształcania, jeśli jest to pojedyncza wartość lub używane w działaniu ForEach, jeśli jest to tablica atrybutów.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Następujące źródła danych są obsługiwane dla wyszukiwania. Maksymalna liczba wierszy może być zwracany przez działanie wyszukiwania **5000**, aż do **2MB** rozmiar. I obecnie maksymalny czas trwania działania wyszukiwania przed upływem limitu czasu to jedna godzina.
+Następujące źródła danych są obsługiwane dla wyszukiwania. Maksymalna liczba wierszy mogą być zwrócone przez wyszukiwanie jest działanie **5000**, aż do **2MB** rozmiar. I obecnie maksymalny czas trwania działania Lookup przed upływem limitu czasu wynosi godzinę.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -56,21 +56,21 @@ Następujące źródła danych są obsługiwane dla wyszukiwania. Maksymalna lic
 ## <a name="type-properties"></a>Właściwości typu
 Name (Nazwa) | Opis | Typ | Wymagana?
 ---- | ----------- | ---- | --------
-Zestaw danych | Zawiera odwołania do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji w sekcji "Właściwości zestawu danych" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
-source | Zawiera właściwości specyficzne dla zestawu danych źródła, taki sam jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji w sekcji "Kopiuj właściwości działania" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
-firstRowOnly | Wskazuje, czy mają być zwracane tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
+zestaw danych | Zawiera odwołanie do zestawu danych do wyszukiwania. Uzyskaj szczegółowe informacje z sekcji "Właściwości zestawu danych" w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
+source | Zawiera właściwości specyficzne dla zestawu danych źródła, taka sama jak źródło działania kopiowania. Uzyskaj szczegółowe informacje w sekcji "Właściwości działania kopiowania" w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Yes
+firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
 
 **Pamiętaj o następujących kwestiach:**
 
-1. Kolumna źródłowa ByteArray typu nie jest obsługiwane.
-2. Struktura nie jest obsługiwana w definicji zestawu danych. W przypadku plików tekstowych format w szczególności służy wiersz nagłówka do określenia nazwy kolumny.
-3. Jeśli źródłem wyszukiwania jest pliki JSON, `jsonPathDefinition` ustawienie ponownie kształtowania obiekt JSON nie jest obsługiwane, całą obiekty zostaną pobrane.
+1. Źródłowa kolumna o typie ByteArray nie jest obsługiwane.
+2. Struktura nie jest obsługiwana w definicji zestawu danych. Dla plików w formacie tekstowym w szczególności służy wiersz nagłówka o podanie nazwy kolumny.
+3. Jeśli źródłem wyszukiwania jest pliki JSON, `jsonPathDefinition` ustawienie ponownie kształtowania obiekt JSON nie jest obsługiwane, całą obiektów, zostanie pobrana.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj wyniku działania wyszukiwania w następnych działań
+## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj działania lookup doprowadzić kolejne działania
 
-Wynik wyszukiwania jest zwracany w `output` sekcji wynik uruchomienia działania.
+Wynik wyszukiwania jest zwracany w `output` sekcji uruchomienia działania.
 
-* **Gdy `firstRowOnly` ustawiono `true` (ustawienie domyślne)**, jest format danych wyjściowych, jak pokazano w poniższym kodzie. Wynik wyszukiwania podlega ustalonego `firstRow` klucza. Aby użyć wyniku w następnych działań, użyj wzorzec `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Gdy `firstRowOnly` ustawiono `true` (ustawienie domyślne)**, jest format danych wyjściowych, jak pokazano w poniższym kodzie. Wynik wyszukiwania znajduje się w stałym `firstRow` klucza. Aby użyć wyniku kolejne działania, użyj wzorca `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {
@@ -82,7 +82,7 @@ Wynik wyszukiwania jest zwracany w `output` sekcji wynik uruchomienia działania
     }
     ```
 
-* **Gdy `firstRowOnly` ustawiono `false`** , jest format danych wyjściowych, jak pokazano w poniższym kodzie. A `count` pole wskazuje liczbę rekordów są zwracane i szczegółowe wartości są wyświetlane w obszarze ustalonego `value` tablicy. W takim przypadku działanie wyszukiwania jest zazwyczaj następuje [działania Foreach](control-flow-for-each-activity.md). Można przekazać `value` tablicy do działania ForEach `items` pole przy użyciu struktury `@activity('MyLookupActivity').output.value`. Do dostępu do elementów w `value` tablicy, należy użyć następującej składni: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Oto przykład: `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Gdy `firstRowOnly` ustawiono `false`** , jest format danych wyjściowych, jak pokazano w poniższym kodzie. A `count` pole wskazuje, ile rekordy są zwracane, a szczegółowe wartości są wyświetlane w obszarze stałym `value` tablicy. W takim przypadku działanie wyszukiwania zwykle następuje [działanie Foreach](control-flow-for-each-activity.md). Możesz przekazać `value` macierz działanie ForEach `items` pola przy użyciu wzorca `@activity('MyLookupActivity').output.value`. Do dostępu do elementów w `value` tablicy, należy użyć następującej składni: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Oto przykład: `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -101,15 +101,15 @@ Wynik wyszukiwania jest zwracany w `output` sekcji wynik uruchomienia działania
     ```
 
 ## <a name="example"></a>Przykład
-W tym przykładzie działanie kopiowania kopiuje dane z tabeli SQL w wystąpieniu bazy danych SQL Azure do magazynu obiektów Blob Azure. Nazwa tabeli SQL jest przechowywana w pliku JSON w magazynie obiektów Blob. Działania wyszukiwania wyszukuje nazwy tabeli w czasie wykonywania. Takie podejście umożliwia JSON można zmodyfikować dynamicznie bez konieczności ponownego wdrażania potoków ani zestawów danych. 
+W tym przykładzie działanie kopiowania kopiuje dane z tabeli SQL w wystąpieniu usługi Azure SQL Database do magazynu obiektów Blob platformy Azure. Nazwa tabeli SQL jest przechowywana w pliku JSON w usłudze Blob storage. Działanie lookup wyszukuje nazwy tabeli w czasie wykonywania. Takie podejście umożliwia JSON do zmodyfikowania dynamicznie bez konieczności ponownego wdrażania potoków ani zestawów danych. 
 
-W tym przykładzie przedstawiono wyszukiwania dla pierwszego wiersza. Wyszukiwanie wszystkich wierszy i tworzyć łańcuchy wyniki z działania ForEach, zobacz próbek w [skopiować wielu tabel zbiorczo za pomocą fabryki danych Azure](tutorial-bulk-copy.md).
+W tym przykładzie pokazano wyszukiwania dla pierwszego wiersza. Wyszukiwanie we wszystkich wierszach, a aby połączyć w łańcuch wyniki za pomocą działania ForEach, zobacz przykłady w [zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Potok
 Ten potok zawiera dwa działania: *wyszukiwania* i *kopiowania*. 
 
-- Działania wyszukiwania jest skonfigurowany do używania LookupDataset, która odwołuje się do lokalizacji w magazynie obiektów Blob Azure. Działania wyszukiwania odczytuje nazwę tabeli SQL z pliku JSON w tej lokalizacji. 
-- Działanie kopiowania korzysta z danych wyjściowych działania wyszukiwania (nazwa tabeli SQL). Właściwość tableName w źródłowym zestawie danych (SourceDataset) jest skonfigurowany do używania dane wyjściowe działania wyszukiwania. Działanie kopiowania kopiuje dane z tabeli SQL do lokalizacji w magazynie obiektów Blob platformy Azure, który jest określony przez właściwość SinkDataset. 
+- Działanie lookup jest skonfigurowany do używania LookupDataset, który odnosi się do lokalizacji w usłudze Azure Blob storage. Działanie lookup odczytuje Nazwa tabeli SQL z pliku JSON w tej lokalizacji. 
+- Działanie kopiowania używa danych wyjściowych działania lookup (nazwa tabeli SQL). Właściwość tableName źródłowy zestaw danych (SourceDataset) jest skonfigurowany do używania danych wyjściowych działania lookup. Działanie kopiowania kopiuje dane z tabeli SQL w lokalizacji w usłudze Azure Blob storage, który jest określony przez właściwość SinkDataset. 
 
 
 ```json
@@ -167,7 +167,7 @@ Ten potok zawiera dwa działania: *wyszukiwania* i *kopiowania*.
 ```
 
 ### <a name="lookup-dataset"></a>Zestaw danych wyszukiwania
-Zestaw danych wyszukiwania odwołuje się do *sourcetable.json* plików w folderze wyszukiwania usługi Azure Storage, który jest określony przez typ AzureStorageLinkedService. 
+Zestaw danych wyszukiwania, który odwołuje się do *sourcetable.json* pliku w folderze wyszukiwanie usługi Azure Storage, który jest określony przez typ AzureStorageLinkedService. 
 
 ```json
 {
@@ -190,8 +190,8 @@ Zestaw danych wyszukiwania odwołuje się do *sourcetable.json* plików w folder
 }
 ```
 
-### <a name="source-dataset-for-the-copy-activity"></a>Źródło danych dla działania kopiowania
-Dane wyjściowe działania wyszukiwania, czyli nazwa tabeli SQL korzysta z zestawu źródła danych. Działanie kopiowania kopiuje dane z tej tabeli SQL do lokalizacji w magazynie obiektów Blob platformy Azure, określonym przez obiekt sink zestawu danych. 
+### <a name="source-dataset-for-the-copy-activity"></a>Zestaw danych źródłowych dla działania kopiowania
+Źródłowy zestaw danych korzysta z danych wyjściowych działania lookup, jest to nazwa tabeli SQL. Działanie kopiowania kopiuje dane z tej tabeli SQL w lokalizacji w usłudze Azure Blob storage, który jest określony przez zestaw danych ujścia. 
 
 ```json
 {
@@ -209,8 +209,8 @@ Dane wyjściowe działania wyszukiwania, czyli nazwa tabeli SQL korzysta z zesta
 }
 ```
 
-### <a name="sink-dataset-for-the-copy-activity"></a>Obiekt sink zestawu danych dla aktywności kopiowania
-Działanie kopiowania kopiuje dane z tabeli SQL *filebylookup.csv* w pliku *csv* folderu w magazynie Azure, który jest określony przez właściwość AzureStorageLinkedService. 
+### <a name="sink-dataset-for-the-copy-activity"></a>Ujścia zestawu danych działanie kopiowania
+Działanie kopiowania kopiuje dane z tabeli SQL w celu *filebylookup.csv* w pliku *csv* folderu w usłudze Azure storage, który jest określony przez właściwość AzureStorageLinkedService. 
 
 ```json
 {
@@ -233,7 +233,7 @@ Działanie kopiowania kopiuje dane z tabeli SQL *filebylookup.csv* w pliku *csv*
 ```
 
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
-To konto magazynu zawiera plik JSON nazw tabel SQL. 
+To konto magazynu zawiera plik JSON o nazwach tabel SQL. 
 
 ```json
 {
@@ -251,7 +251,7 @@ To konto magazynu zawiera plik JSON nazw tabel SQL.
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Połączona usługa Azure SQL Database
-To wystąpienie bazy danych SQL Azure zawiera dane, które ma zostać skopiowany do magazynu obiektów Blob. 
+To wystąpienie usługi Azure SQL Database zawiera dane, które mają być kopiowane do magazynu obiektów Blob. 
 
 ```json
 {
@@ -300,9 +300,9 @@ To wystąpienie bazy danych SQL Azure zawiera dane, które ma zostać skopiowany
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania, które są obsługiwane przez fabrykę danych: 
+Zobacz inne działania przepływu sterowania, które są obsługiwane przez usługę Data Factory: 
 
-- [Wykonanie działania potoku](control-flow-execute-pipeline-activity.md)
+- [Działanie EXECUTE Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Uzyskiwanie metadanych działania](control-flow-get-metadata-activity.md)
+- [Działanie GetMetaData](control-flow-get-metadata-activity.md)
 - [Działanie Web](control-flow-web-activity.md)

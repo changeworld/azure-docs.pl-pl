@@ -1,6 +1,6 @@
 ---
-title: Dodawanie uwierzytelniania do aplikacji systemu Windows platformy Uniwersalnej | Dokumentacja firmy Microsoft
-description: 'Dowiedz się, jak używać usługi Azure App Service Mobile Apps uwierzytelniać użytkowników aplikacji systemu Windows platformy Uniwersalnej przy użyciu różnych dostawców tożsamości, obejmującej: usługi AAD, Google, Facebook, Twitter i firmy Microsoft.'
+title: Dodawanie uwierzytelniania do aplikacji platformy uniwersalnej Windows (UWP) | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak uwierzytelniać użytkowników aplikacji platformy uniwersalnej Windows (UWP) przy użyciu wielu dostawców tożsamości, w tym za pomocą usługi Azure App Service Mobile Apps: usługi AAD, Google, Facebook, Twitter i Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
 ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592148"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306578"
 ---
-# <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Windows
+# <a name="add-authentication-to-your-windows-app"></a>Dodawanie uwierzytelniania do aplikacji Windows
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-W tym temacie przedstawiono sposób dodawania uwierzytelniania opartego na chmurze do aplikacji mobilnej. W tym samouczku dodanie authentication projektu Szybki Start systemu Windows platformy Uniwersalnej aplikacji mobilnej przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę Azure App Service. Po pomyślnym są uwierzytelnieni i upoważnieni przez zaplecza aplikacji mobilnej, wyświetlana jest wartość Identyfikatora użytkownika.
+W tym temacie dowiesz się, jak dodać uwierzytelnianie oparte na chmurze do aplikacji mobilnej. W tym samouczku dodasz uwierzytelnianie do projektu quickstart uniwersalnej platformy Windows (UWP) dla aplikacji mobilnych za pomocą dostawcy tożsamości, która jest obsługiwana przez usługę Azure App Service. Po pomyślnym jest uwierzytelniony i autoryzowany przez zaplecze aplikacji mobilnej, jest wyświetlana wartość Identyfikatora użytkownika.
 
-W tym samouczku opiera się na szybki start Mobile Apps. Najpierw musisz zakończyć samouczka [Rozpoczynanie pracy z usługą Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).
+Ten samouczek opiera się na szybki start Mobile Apps. Najpierw musisz zakończyć samouczka [Rozpoczynanie pracy z usługą Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).
 
-## <a name="register"></a>Zarejestrować aplikację do uwierzytelniania i konfigurowanie usługi aplikacji
+## <a name="register"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usługi App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Dodaj aplikację do dozwolonych przekierowania zewnętrzne adresy URL
+## <a name="redirecturl"></a>Dodawanie aplikacji do adresów URL dozwolonych zewnętrznego przekierowania
 
-Bezpieczne uwierzytelnianie wymaga Zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w ciągu. Można jednak użyć dowolnego wybranego schematu URL. Powinien być unikatowy w aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
+Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w całym. Można jednak użyć dowolnego wybranego schematu URL. Powinien on być unikatowy dla twojej aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
 
-1. W [portalu Azure] wybierz usługę aplikacji.
+1. W [witrynie Azure portal] wybierz usługi App Service.
 
 2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
 
-3. W **dozwolone zewnętrznych adresów URL przekierowań**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL dla aplikacji mobilnej.  Musi on być zgodny normalne Specyfikacja adresu URL dla protokołu (Użyj litery i tylko cyfry i rozpoczyna się od litery).  Należy zanotuj ciąg, który wybrany jako trzeba będzie dostosować kodu aplikacji mobilnej przy użyciu schemat adresu URL w kilku miejscach.
+3. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
 5. Kliknij pozycję **Zapisz**.
 
-## <a name="permissions"></a>Ogranicz uprawnienia dla uwierzytelnionych użytkowników
+## <a name="permissions"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Teraz można sprawdzić dostępu anonimowego z wewnętrzną bazą danych zostało wyłączone. W projekcie aplikacji platformy uniwersalnej systemu Windows Ustaw jako projekt rozruchu, wdrażanie i uruchamianie aplikacji; Upewnij się, że wystąpił nieobsługiwany wyjątek przy użyciu kodu stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Dzieje się tak, ponieważ aplikacja próbuje uzyskać dostęp kodu aplikacji mobilnej jako nieuwierzytelniony użytkownik, ale *TodoItem* tabeli teraz wymaga uwierzytelniania.
+Można teraz, upewnij się, że anonimowy dostęp do swojej wewnętrznej bazy danych zostały wyłączone. Za pomocą projektu aplikacji platformy uniwersalnej systemu Windows Ustaw jako projekt startowy, wdrażanie i uruchamianie aplikacji; Upewnij się, że wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Dzieje się tak, ponieważ aplikacja podejmie próbę dostępu do kodu aplikacji mobilnej jako nieuwierzytelniony użytkownik zgłasza, ale *TodoItem* tabeli teraz wymaga uwierzytelnienia.
 
-Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkowników przed wysłaniem żądania zasobów z usługi aplikacji.
+Następnie należy zaktualizować aplikację do uwierzytelniania kont użytkowników przed zażądaniem zasobów z usługi App Service.
 
 ## <a name="add-authentication"></a>Dodawanie uwierzytelniania do aplikacji
-1. W przypadku platformy uniwersalnej systemu Windows aplikacji w pliku MainPage.xaml.cs projektu i Dodaj poniższy fragment kodu:
+1. Na platformie UWP aplikacji w pliku MainPage.xaml.cs projektu i Dodaj poniższy fragment kodu:
    
         // Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -86,8 +86,8 @@ Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkownikó
             return success;
         }
    
-    Ten kod uwierzytelnia użytkownika za pomocą nazwy logowania usługi Facebook. Jeśli używasz dostawcy tożsamości innego niż usługi Facebook, zmień wartość **MobileServiceAuthenticationProvider** powyżej wartości dla dostawcy.
-2. Zastąp **OnNavigatedTo()** metody w MainPage.xaml.cs. Następnie należy dodać **Zaloguj** przycisku aplikacja, która wyzwala uwierzytelniania.
+    Ten kod uwierzytelnia użytkownika przy użyciu logowania do usługi Facebook. Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość **MobileServiceAuthenticationProvider** powyżej wartości dla dostawcy.
+2. Zastąp **OnNavigatedTo()** metody w MainPage.xaml.cs. Następnie dodasz **Zaloguj** przycisku do aplikacji, która wyzwala uwierzytelnianie.
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -97,7 +97,7 @@ Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkownikó
             }
         }
 
-3. Dodaj poniższy fragment kodu w pliku MainPage.xaml.cs:
+3. Dodaj poniższy fragment kodu do pliku MainPage.xaml.cs:
    
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -111,7 +111,7 @@ Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkownikó
                 await RefreshTodoItems();
             }
         }
-4. Otwórz plik projektu MainPage.xaml, zlokalizuj element, który definiuje **zapisać** przycisk i zastąp go następującym kodem:
+4. Otwórz plik projektu w pliku MainPage.xaml, zlokalizuj element, który definiuje **Zapisz** przycisk i zastąp go następującym kodem:
    
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
                 Click="ButtonSave_Click">
@@ -127,7 +127,7 @@ Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkownikó
                 <TextBlock Margin="5">Sign in</TextBlock> 
             </StackPanel>
         </Button>
-5. Dodaj poniższy fragment kodu w pliku App.xaml.cs:
+5. Dodaj poniższy fragment kodu do pliku App.xaml.cs:
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
@@ -143,21 +143,21 @@ Następnie spowoduje zaktualizowanie aplikacji do uwierzytelniania użytkownikó
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Otwórz plik Package.appxmanifest, przejdź do **deklaracje**w **dostępne deklaracje** listy rozwijanej wybierz **protokołu** i kliknij przycisk **Dodaj** przycisku. Teraz skonfigurować **właściwości** z **protokołu** deklaracji. W **Nazwa wyświetlana**, Dodaj nazwę, które mają zostać wyświetlone dla użytkowników aplikacji. W **nazwa**, Dodaj użytkownika {url_scheme_of_your_app}.
-7. Naciśnij klawisz F5, aby uruchomić aplikację, kliknij przycisk **Zaloguj** przycisk i logowania do aplikacji za pomocą dostawcy tożsamości wybrany. Po logowanie zakończy się pomyślnie, aplikacja jest uruchamiana bez błędów, i są w stanie zapytania z wewnętrzną bazą danych i aktualizowanie danych.
+6. Otwórz plik manifestu Package.appx, przejdź do **deklaracje**w **dostępne deklaracje** listy rozwijanej wybierz **protokołu** i kliknij przycisk **Dodaj** przycisku. Teraz skonfigurować **właściwości** z **protokołu** deklaracji. W **nazwę wyświetlaną**, Dodaj nazwę, które mają zostać wyświetlone dla użytkowników aplikacji. W **nazwa**, Dodaj swoje {url_scheme_of_your_app}.
+7. Naciśnij klawisz F5, aby uruchomić aplikację, kliknij przycisk **Zaloguj** przycisk, a następnie zaloguj się do aplikacji przy użyciu dostawcy tożsamości wybrany. Po logowanie zakończy się pomyślnie, aplikacja działa bez błędów i masz możliwość wykonywania zapytań wewnętrzną bazą danych i aktualizowanie danych.
 
-## <a name="tokens"></a>Magazyn token uwierzytelniania na kliencie
-W poprzednim przykładzie pokazano standardowego logowania, która wymaga od klienta do kontaktowania się z zarówno dostawcy tożsamości i usługi App Service każdym uruchomieniu aplikacji. Nie tylko jest nieefektywne, można uruchomić tej metody do użycia — odnosi się problemów należy wielu klientów próbuje uruchomić aplikację w tym samym czasie. Lepszym rozwiązaniem jest buforowanie token autoryzacji zwrócony przez usługę aplikacji, spróbuj użyć pierwsze przed użyciem opartej na dostawcy logowania.
+## <a name="tokens"></a>Store token uwierzytelniania na komputerze klienckim
+W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klienta do kontaktowania się z dostawcy tożsamości i usługi App Service każdorazowym uruchomieniu aplikacji. Nie tylko jest nieefektywne, można uruchomić tej metody do użycia — odnosi się problemów należy spróbować wielu klientów uruchomić aplikację w tym samym czasie. Lepszym rozwiązaniem jest token autoryzacji, zwrócony przez usługi App Service w pamięci podręcznej, a następnie spróbuj użyć to najpierw przed rozpoczęciem korzystania z opartą na dostawcy logowania.
 
 > [!NOTE]
-> Może buforować token wystawiony przez usługi aplikacji niezależnie od tego, czy używasz zarządzanych przez klienta lub zarządzane przez usługę uwierzytelniania. W tym samouczku korzysta z zarządzanymi przez usługę uwierzytelniania.
+> Może buforować token wystawiony przez usługi aplikacji, niezależnie od tego, czy używasz zarządzanych przez klienta lub zarządzane przez usługę uwierzytelniania. W tym samouczku korzysta z zarządzanego przez usługę uwierzytelniania.
 > 
 > 
 
 [!INCLUDE [mobile-windows-universal-dotnet-authenticate-app-with-token](../../includes/mobile-windows-universal-dotnet-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, aby ukończyć w tym samouczku uwierzytelnianie podstawowe, należy wziąć pod uwagę kontynuowanie na jedno z następujących samouczków:
+Teraz, gdy została zakończona w tym samouczku uwierzytelnianie podstawowe, należy wziąć pod uwagę przejściem do jednej z następujących samouczków:
 
 * [Dodawanie powiadomień wypychanych do aplikacji](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   Dowiedz się, jak dodać obsługę powiadomień wypychanych do aplikacji i skonfigurować zaplecze Aplikacji mobilnej na potrzeby wysyłania powiadomień wypychanych przy użyciu usługi Azure Notification Hubs.

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie grupy przestrzeni nazw i konsumentów Azure Event Hubs przy użyciu szablonu | Dokumentacja firmy Microsoft
-description: Tworzenie przestrzeni nazw usługi Event Hubs przy użyciu Centrum zdarzeń i grupy odbiorców za pomocą szablonów usługi Azure Resource Manager
+title: Tworzenie grupy przestrzeni nazw i konsumentów usługi Azure Event Hubs za pomocą szablonu | Dokumentacja firmy Microsoft
+description: Tworzenie przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i grupy odbiorców za pomocą szablonów usługi Azure Resource Manager
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 04/30/2018
 ms.author: sethm
 ms.openlocfilehash: 4b4dc5be9697bb96aec658fccbdf13b299e79e9e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311264"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309855"
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Event Hubs z grupy koncentratora i odbiorców zdarzeń przy użyciu szablonu usługi Azure Resource Manager
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Event Hubs za pomocą grupy Centrum i odbiorcę zdarzeń przy użyciu szablonu usługi Azure Resource Manager
 
-W tym artykule pokazano, jak szablon Menedżera zasobów Azure umożliwia tworzenie przestrzeni nazw typu [usługi Event Hubs](event-hubs-what-is-event-hubs.md)— ze sprzętem i Centrum zdarzeń jednej grupie użytkowników. Artykuł przedstawia sposób do definiowania zasobów, do których są wdrażane i sposób definiowania parametrów, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
+W tym artykule pokazano, jak używać szablonu usługi Azure Resource Manager do tworzenia przestrzeni nazw typu [usługi Event Hubs](event-hubs-what-is-event-hubs.md)z jednym Centrum zdarzeń i grupie użytkowników. W tym artykule opisano, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać informacje dotyczące tworzenia szablonów, zobacz [szablonów Authoring Azure Resource Manager][Authoring Azure Resource Manager templates].
+Aby uzyskać informacje dotyczące tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Zakończenie szablonu, zobacz [szablonu zdarzenia koncentratora i konsumentów grupy] [ Event Hub and consumer group template] w witrynie GitHub.
+Aby uzyskać kompletny szablon, zobacz [szablon grupy Centrum i odbiorcę zdarzeń] [ Event Hub and consumer group template] w witrynie GitHub.
 
 > [!NOTE]
 > Aby sprawdzić najnowsze szablony, odwiedź galerię [Szablony szybkiego startu platformy Azure][Azure Quickstart Templates] i wyszukaj hasło Event Hubs.
@@ -36,7 +36,7 @@ Zakończenie szablonu, zobacz [szablonu zdarzenia koncentratora i konsumentów g
 
 ## <a name="what-will-you-deploy"></a>Co chcesz wdrożyć?
 
-W przypadku tego szablonu można wdrożyć do przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i grupy odbiorców.
+Korzystając z tego szablonu możesz wdrożyć przestrzeni nazw usługi Event Hubs z Centrum zdarzeń i grupy odbiorców.
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
@@ -44,7 +44,7 @@ Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
 ## <a name="parameters"></a>Parametry
 
-Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` obejmującą wszystkie wartości parametrów. Należy zdefiniować parametr dla wartości, które będą się różnić na podstawie projektu, który jest wdrażany lub opartych na środowisku, w której wdrażasz. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru szablonu określa zasoby, które zostały wdrożone.
+Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` obejmującą wszystkie wartości parametrów. Należy zdefiniować parametr dla wartości, które będą się różnić na podstawie projektu, który jest wdrażany lub opartych na środowisku, do którego jest wdrażana. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru w szablonie definiuje zasoby, które są wdrażane.
 
 Szablon definiuje następujące parametry:
 
@@ -70,7 +70,7 @@ Nazwa centrum zdarzeń utworzonego w przestrzeni nazw usługi Event Hubs.
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
-Nazwa grupy odbiorców utworzone dla Centrum zdarzeń.
+Nazwa grupy konsumentów utworzone dla Centrum zdarzeń.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -90,7 +90,7 @@ Wersja interfejsu API szablonu.
 
 ## <a name="resources-to-deploy"></a>Zasoby wymagające wdrożenia
 
-Tworzy nazw typu **EventHubs**, z Centrum zdarzeń i grupy odbiorców:
+Tworzy przestrzeń nazw typu **EventHubs**z Centrum zdarzeń i grupy odbiorców:
 
 ```json
 "resources":[  

@@ -1,6 +1,6 @@
 ---
-title: Dowiedz się, jak używać łącznika usług Salesforce w aplikacjach logiki | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji logiki z usługi aplikacji Azure. Łącznik Salesforce udostępnia interfejs API do pracy z obiektami usługi Salesforce.
+title: Dowiedz się, jak użyć łącznika usług Salesforce w aplikacji logiki | Dokumentacja firmy Microsoft
+description: Tworzenie aplikacji logiki z usługą Azure App service. Łącznik Salesforce udostępnia interfejs API do pracy z obiektami usługi Salesforce.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
@@ -16,27 +16,27 @@ ms.workload: integration
 ms.date: 10/05/2016
 ms.author: estfan; ladocs
 ms.openlocfilehash: 4278837bb5653b66223374aa728bdc81b279fff7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295799"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237305"
 ---
-# <a name="get-started-with-the-salesforce-connector"></a>Rozpoczynanie pracy z łącznika usług Salesforce
+# <a name="get-started-with-the-salesforce-connector"></a>Rozpoczynanie pracy z usługą łącznika usług Salesforce
 Łącznik Salesforce udostępnia interfejs API do pracy z obiektami usługi Salesforce.
 
-Aby użyć [każdy łącznik](apis-list.md), należy najpierw utworzyć aplikację logiki. Możesz rozpocząć pracę przez [teraz tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Aby użyć [każdy łącznik](apis-list.md), najpierw musisz utworzyć aplikację logiki. Możesz rozpocząć od [teraz tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="connect-to-salesforce-connector"></a>Nawiązać łącznika usług Salesforce
-Zanim aplikację logiki można uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenia* do usługi. A [połączenia](connectors-overview.md) udostępnia łączność między aplikacji logiki i innej usługi.  
+## <a name="connect-to-salesforce-connector"></a>Nawiązać połączenie z łącznika usług Salesforce
+Zanim aplikacja logiki może uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenia* do usługi. A [połączenia](connectors-overview.md) zapewnia łączność między aplikacją logiki i inną usługę.  
 
 ### <a name="create-a-connection-to-salesforce-connector"></a>Utwórz połączenie łącznika usług Salesforce
 > [!INCLUDE [Steps to create a connection to Salesforce Connector](../../includes/connectors-create-api-salesforce.md)]
 > 
 > 
 
-## <a name="use-a-salesforce-connector-trigger"></a>Użyj wyzwalacz łącznika usług Salesforce
-Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy zdefiniowanych w aplikacji logiki. [Dowiedz się więcej o wyzwalaczy](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-a-salesforce-connector-trigger"></a>Użyj wyzwalacza łącznika usług Salesforce
+Wyzwalacz to zdarzenie, który może służyć do uruchamiania tego przepływu, zdefiniowane w aplikacji logiki. [Dowiedz się więcej na temat wyzwalaczy](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 > [!INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
 > 
@@ -47,16 +47,16 @@ Wyzwalacz to zdarzenie służy do uruchomienia przepływu pracy zdefiniowanych w
 > 
 > 
 
-## <a name="use-a-salesforce-connector-action"></a>Za pomocą akcji łącznika usług Salesforce
-Akcja jest przeprowadzane przez przepływ pracy zdefiniowanych w aplikacji logiki operacji. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="use-a-salesforce-connector-action"></a>Użyj działania łącznika usług Salesforce
+Akcja jest operacją przeprowadzanych przez przepływ pracy zdefiniowane w aplikacji logiki. [Dowiedz się więcej o akcjach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
 > [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
 > 
 > 
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Wyświetl wszystkie wyzwalacze i akcje zdefiniowane w swagger i zobacz też żadnych limitów w [szczegóły łącznika](/connectors/salesforce/). 
+Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/salesforce/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)

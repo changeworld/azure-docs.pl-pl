@@ -1,6 +1,6 @@
 ---
-title: Pi malina nawiązać połączenie przy użyciu środowiska Node.js do obsługi aktualizacji oprogramowania układowego pakiet IoT Azure | Dokumentacja firmy Microsoft
-description: Za pomocą usługi Microsoft Azure IoT Starter Kit malinowe pi 3 i pakiet Azure IoT. Node.js używany do nawiązania połączenia zdalnego rozwiązanie monitorowania sieci Pi malina wysyłania danych telemetrycznych z czujników do chmury, a w przypadku aktualizowania zdalnego oprogramowania układowego.
+title: Łączenie urządzenia Raspberry Pi przy użyciu środowiska Node.js do obsługi aktualizacji oprogramowania układowego pakietu Azure IoT Suite | Dokumentacja firmy Microsoft
+description: Użyj startowy IoT platformy Microsoft Azure dla urządzenia Raspberry Pi 3 i pakietu Azure IoT Suite. Za pomocą środowiska Node.js do łączenia z urządzenia Raspberry Pi z rozwiązaniem do zdalnego monitorowania, wysyłanie danych telemetrycznych z czujników do chmury i wykonać aktualizację oprogramowania układowego zdalnego.
 services: ''
 suite: iot-suite
 documentationcenter: ''
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 31bbeff8049c6005671b991f965fae7316e3adf6
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24012113"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309595"
 ---
-# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Twoje malina Pi 3 nawiązać połączenie zdalne rozwiązanie monitorowania i Włącz aktualizacje oprogramowania układowego zdalnego przy użyciu środowiska Node.js
+# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Łączenie z urządzeniem Raspberry Pi 3 z rozwiązaniem do zdalnego monitorowania i Włącz aktualizacje oprogramowania układowego zdalnego przy użyciu środowiska Node.js
 
 [!INCLUDE [iot-suite-v1-raspberry-pi-kit-selector](../../includes/iot-suite-v1-raspberry-pi-kit-selector.md)]
 
-W tym samouczku przedstawiono sposób użycia programu Microsoft Azure IoT Starter Kit dla 3 Pi malina do:
+W tym samouczku dowiesz się, jak używać programu Microsoft Azure IoT Starter Kit dla Raspberry Pi 3, aby:
 
-* Opracowywanie czytnik temperatury i wilgotności, który może komunikować się z chmurą.
-* Włącz i wykonywanie zdalnego oprogramowania układowego aktualizacja lub aktualizacja aplikacji klienckiej na malina Pi.
+* Tworzenie czytnika temperatury i wilgotności, który może komunikować się z chmurą.
+* Włącz i wykonywać zdalnego oprogramowania układowego aktualizacji do zaktualizowania aplikacji klienckiej w Raspberry Pi.
 
-W samouczku:
+W tym samouczku obejmuje:
 
-- Raspbian systemu operacyjnego, język programowania Node.js i Microsoft Azure IoT SDK dla środowiska Node.js do zaimplementowania urządzenia próbki.
-- Pakiet IoT zdalne monitorowanie wstępnie skonfigurowane rozwiązanie jako zaplecza opartej na chmurze.
+- Raspbian systemu operacyjnego, języka programowania Node.js i dla systemu Microsoft Azure IoT SDK for Node.js do zaimplementowania urządzenia próbki.
+- Zdalnego monitorowania pakietu IoT wstępnie skonfigurowanego rozwiązania jako zaplecze oparte na chmurze.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym samouczku zostaną wykonane następujące kroki:
+W tym samouczku wykonasz następujące czynności:
 
-- Wdrożenie wystąpienia programu zdalnego wstępnie skonfigurowane rozwiązanie monitorowania do subskrypcji platformy Azure. Ten krok automatycznie wdraża i konfiguruje wiele usług platformy Azure.
-- Konfigurowanie czujniki i urządzenia do komunikowania się z komputerem i zdalnego rozwiązanie monitorowania.
-- Zaktualizuj przykładowy kod urządzenia do nawiązania połączenia zdalnego rozwiązanie monitorowania i wysłać dane telemetryczne, które można wyświetlić na pulpicie nawigacyjnym rozwiązania.
+- Wdrożenie wystąpienia zdalnej wstępnie skonfigurowanego rozwiązania monitorowania do subskrypcji platformy Azure. W tym kroku wdraża i automatycznie konfiguruje wiele usług platformy Azure.
+- Skonfiguruj czujniki i urządzenia do komunikowania się z komputerem i rozwiązania do monitorowania zdalnego.
+- Aktualizowanie przykładowego kodu urządzenia do łączenia z rozwiązaniem do zdalnego monitorowania i wysyłania telemetrii, który można wyświetlić na pulpicie nawigacyjnym rozwiązania.
 - Aby zaktualizować aplikację klienta, należy użyć przykładowego kodu urządzenia.
 
 [!INCLUDE [iot-suite-v1-raspberry-pi-kit-prerequisites](../../includes/iot-suite-v1-raspberry-pi-kit-prerequisites.md)]
@@ -49,27 +49,27 @@ W tym samouczku zostaną wykonane następujące kroki:
 [!INCLUDE [iot-suite-v1-provision-remote-monitoring](../../includes/iot-suite-v1-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Zdalne rozwiązanie monitorowania udostępnia zestaw usług platformy Azure w ramach subskrypcji platformy Azure. Wdrożenie odzwierciedla architektury przedsiębiorstwa prawdziwe. Aby uniknąć niepotrzebnych wykorzystania platformy Azure, opłat, należy usunąć wystąpienia wstępnie skonfigurowanego rozwiązania na azureiotsuite.com po zakończeniu z nim. Jeśli potrzebujesz ponownie wstępnie skonfigurowanego rozwiązania, można go łatwo odtworzyć. Aby uzyskać więcej informacji na temat zmniejszenie zużycia podczas wykonywania zdalnego rozwiązanie monitorowania, zobacz [Konfigurowanie pakiet IoT Azure wstępnie rozwiązań dla celów demonstracyjnych][lnk-demo-config].
+> Rozwiązania do monitorowania zdalnego udostępnia zestaw usług platformy Azure w ramach subskrypcji platformy Azure. Wdrożenie odzwierciedla architektury przedsiębiorstwa rzeczywistych. Aby uniknąć opłat niepotrzebne użycia platformy Azure, usuń wystąpienia wstępnie skonfigurowanego rozwiązania w witrynie azureiotsuite.com po zakończeniu z nim. Jeśli potrzebujesz ponownie wstępnie skonfigurowanego rozwiązania, można go łatwo odtworzyć. Aby uzyskać więcej informacji na temat zmniejszenie zużycia, podczas uruchamiania rozwiązania do monitorowania zdalnego, zobacz [konfigurowania usługi Azure IoT Suite wstępnie skonfigurowanych rozwiązań dla celów demonstracyjnych][lnk-demo-config].
 
 [!INCLUDE [iot-suite-v1-raspberry-pi-kit-view-solution](../../includes/iot-suite-v1-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-v1-raspberry-pi-kit-prepare-pi](../../includes/iot-suite-v1-raspberry-pi-kit-prepare-pi.md)]
 
-## <a name="download-and-configure-the-sample"></a>Pobierz i skonfiguruj próbki
+## <a name="download-and-configure-the-sample"></a>Pobieranie i konfigurowanie przykładowych
 
-Można teraz pobrać i konfigurowania zdalnego monitorowania aplikacji klienckiej na Twoje malina Pi.
+Można teraz pobrać i skonfigurować zdalnego monitorowania aplikacji klienckiej na urządzenia Raspberry Pi.
 
 ### <a name="install-nodejs"></a>Instalowanie środowiska Node.js
 
-Jeśli jeszcze tego nie zrobiono tego wcześniej, należy zainstalować Node.js na Twoje malina Pi. Zestaw SDK IoT dla środowiska Node.js wymaga wersji 0.11.5 Node.js lub nowszej. Poniższe kroki pokazują, jak zainstalować Node.js v6.10.2 na Twoje Pi malina:
+Jeśli użytkownik jeszcze tego nie zrobiono, zainstaluj środowisko Node.js na urządzenia Raspberry Pi. Zestawu SDK usługi IoT dla środowiska Node.js wymaga wersji 0.11.5 Node.js lub nowszej. Poniższe kroki pokazują, jak zainstalować środowisko Node.js v6.10.2 na urządzenia Raspberry Pi:
 
-1. Można zaktualizować Twojego Pi malina, użyj następującego polecenia:
+1. Aby zaktualizować urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Podczas pobierania plików binarnych Node.js z Pi malina, użyj następującego polecenia:
+1. Aby pobrać pliki binarne środowiska Node.js do urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
@@ -87,9 +87,9 @@ Jeśli jeszcze tego nie zrobiono tego wcześniej, należy zainstalować Node.js 
     node --version
     ```
 
-### <a name="clone-the-repositories"></a>Klonowanie repozytoria
+### <a name="clone-the-repositories"></a>Klonowanie repozytoriów
 
-Jeśli jeszcze tego nie zrobiono tego wcześniej, klonowanie wymagane repozytoriów, uruchamiając następujące polecenia na Twoje Pi:
+Jeśli użytkownik jeszcze tego nie zrobiono, klonowanie repozytoriów wymagane, uruchamiając następujące polecenia na swojej Pi:
 
 ```sh
 cd ~
@@ -98,81 +98,81 @@ git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-nod
 
 ### <a name="update-the-device-connection-string"></a>Zaktualizuj parametry połączenia urządzenia
 
-Otwórz przykładowy plik konfiguracji w **nano** edytora za pomocą następującego polecenia:
+Otwórz przykładowy plik konfiguracji w **nano** edytora, korzystając z następującego polecenia:
 
 ```sh
 nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/config/deviceinfo
 ```
 
-Zastąp symbole zastępcze identyfikator urządzenia i Centrum IoT informacji utworzony i zapisany na początku tego samouczka.
+Zastąp wartości symboli zastępczych z identyfikatorem urządzenia i informacji o usłudze IoT Hub została utworzona i zapisana na początku tego samouczka.
 
-Gdy wszystko będzie gotowe, zawartość pliku deviceinfo powinna wyglądać następująco:
+Gdy wszystko będzie gotowe, zawartość pliku deviceinfo powinien wyglądać następująco:
 
 ```conf
 yourdeviceid
 HostName=youriothubname.azure-devices.net;DeviceId=yourdeviceid;SharedAccessKey=yourdevicekey
 ```
 
-Zapisz zmiany (**Ctrl-O**, **Enter**) i zamknij Edytor (**Ctrl-X**).
+Zapisz zmiany (**Ctrl-O**, **Enter**) i zamknąć Edytor (**Ctrl-X**).
 
-## <a name="run-the-sample"></a>Uruchom próbki
+## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Uruchom następujące polecenia, aby zainstalować wstępnie wymagane pakiety przykładowej:
+Uruchom następujące polecenia, aby zainstalować wstępnie wymagane pakiety dla przykładu:
 
 ```sh
 cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advance/1.0
 npm install
 ```
 
-Teraz możesz uruchomić program przykładowy na malina Pi. Wprowadź polecenie:
+Możesz teraz uruchomić przykładowy program w Raspberry Pi. Wpisz polecenie:
 
 ```sh
 sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/advanced/1.0/remote_monitoring.js
 ```
 
-Następujące przykładowe dane wyjściowe jest przykład danych wyjściowych, widocznej na Pi malina w wierszu polecenia:
+Następujące przykładowe dane wyjściowe znajduje się przykład danych wyjściowych, który widzisz na urządzenia Raspberry Pi w wierszu polecenia:
 
-![Dane wyjściowe z aplikacji malinowe Pi][img-raspberry-output]
+![Dane wyjściowe z aplikacji urządzenia Raspberry Pi][img-raspberry-output]
 
-Naciśnij klawisz **Ctrl-C** aby zamknąć program w dowolnym momencie.
+Naciśnij klawisz **Ctrl-C** aby zakończyć program w dowolnym momencie.
 
 [!INCLUDE [iot-suite-v1-raspberry-pi-kit-view-telemetry-advanced](../../includes/iot-suite-v1-raspberry-pi-kit-view-telemetry-advanced.md)]
 
-1. Na pulpicie nawigacyjnym rozwiązania kliknij **urządzeń** do odwiedzenia **urządzeń** strony. Wybierz użytkownika malinowe Pi w **listę urządzeń**. Następnie wybierz pozycję **metody**:
+1. Na pulpicie nawigacyjnym rozwiązania, kliknij przycisk **urządzeń** do odwiedzenia **urządzeń** strony. Wybierz urządzenia Raspberry Pi w **listy urządzeń**. Następnie wybierz **metody**:
 
     ![Lista urządzeń na pulpicie nawigacyjnym][img-list-devices]
 
-1. Na **wywołania metody** wybierz pozycję **InitiateFirmwareUpdate** w **metody** listy rozwijanej.
+1. Na **Wywołaj metodę** wybierz **InitiateFirmwareUpdate** w **metoda** listy rozwijanej.
 
 1. W **FWPackageURI** wprowadź **https://raw.githubusercontent.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit/master/advanced/2.0/raspberry.js**. Ten plik zawiera implementacji oprogramowania układowego w wersji 2.0.
 
-1. Wybierz **InvokeMethod**. Aplikacja na Pi malina wysyła potwierdzenie z powrotem do pulpitu nawigacyjnego rozwiązania. Następnie uruchamia proces aktualizacji oprogramowania układowego pobierając nowej wersji oprogramowania układowego:
+1. Wybierz **InvokeMethod**. Aplikacji na urządzenia Raspberry Pi wysyła potwierdzenie z powrotem do pulpitu nawigacyjnego rozwiązania. Następnie uruchamia proces aktualizacji oprogramowania układowego, pobierając nowej wersji oprogramowania układowego:
 
     ![Pokaż historię — metoda][img-method-history]
 
-## <a name="observe-the-firmware-update-process"></a>Obserwowanie procesu aktualizacji oprogramowania układowego
+## <a name="observe-the-firmware-update-process"></a>Obserwuj proces aktualizacji oprogramowania układowego
 
-Można obserwować oprogramowanie układowe zaktualizować procesu, ponieważ była uruchamiana na urządzeniu i wyświetlając właściwości zgłoszony na pulpicie nawigacyjnym rozwiązania:
+Możesz obserwować oprogramowania układowego, zaktualizować procesu, ponieważ działa na urządzeniu i wyświetlając zgłaszanych właściwości na pulpicie nawigacyjnym rozwiązania:
 
-1. Postęp w proces aktualizacji można wyświetlić na Pi malina:
+1. Możesz wyświetlić postęp procesu aktualizacji na urządzenia Raspberry Pi:
 
     ![Pokaż postęp aktualizacji][img-update-progress]
 
     > [!NOTE]
-    > Zdalnej aplikacji monitorowania uruchamia ponownie dyskretnie po ukończeniu aktualizacji. Użyj polecenia `ps -ef` można zweryfikować jest uruchomiona. Jeśli chcesz zakończyć ten proces, użyj `kill` polecenie z identyfikatorem procesu.
+    > Zdalnego monitorowania liczby ponownych uruchomień aplikacji dyskretnie po zakończeniu aktualizacji. Użyj polecenia `ps -ef` Aby sprawdzić, jest on uruchomiony. Aby zakończyć ten proces, należy użyć `kill` polecenia z identyfikatorem procesu.
 
-1. Można wyświetlić stan aktualizacji oprogramowania układowego, zgłoszonych przez urządzenia, w portalu rozwiązania. Poniższy zrzut ekranu przedstawia stan i czas trwania każdego etapu procesu aktualizacji i nowa wersja oprogramowania układowego:
+1. Możesz wyświetlić stan aktualizacji oprogramowania układowego, zgłaszaną przez urządzenie, w portalu rozwiązania. Poniższy zrzut ekranu przedstawia stan i czas trwania każdego etapu procesu aktualizacji i nowa wersja oprogramowania układowego:
 
     ![Pokaż stan zadania][img-job-status]
 
-    Jeśli przejdziesz do pulpitu nawigacyjnego, możesz sprawdzić, czy urządzenie jest nadal wysyła dane telemetryczne po aktualizacji oprogramowania układowego.
+    Jeśli przejdziesz do pulpitu nawigacyjnego, możesz sprawdzić, czy urządzenie nadal wysyła dane telemetryczne po aktualizacji oprogramowania układowego.
 
 > [!WARNING]
-> Pozostawienie zdalnego monitorowania działającej na koncie Azure są rozliczane dla przy uruchomieniu. Aby uzyskać więcej informacji na temat zmniejszenie zużycia podczas wykonywania zdalnego rozwiązanie monitorowania, zobacz [Konfigurowanie pakiet IoT Azure wstępnie rozwiązań dla celów demonstracyjnych][lnk-demo-config]. Usuwanie wstępnie skonfigurowane rozwiązanie z konta platformy Azure po zakończeniu korzystania z niego.
+> Jeśli pole jest uruchomiony na Twoim koncie platformy Azure rozwiązania do monitorowania zdalnego, są rozliczane za czas, w których ono działa. Aby uzyskać więcej informacji na temat zmniejszenie zużycia, podczas uruchamiania rozwiązania do monitorowania zdalnego, zobacz [konfigurowania usługi Azure IoT Suite wstępnie skonfigurowanych rozwiązań dla celów demonstracyjnych][lnk-demo-config]. Usunąć wstępnie skonfigurowane rozwiązanie z Twojego konta platformy Azure, po zakończeniu korzystania z niego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź stronę [Centrum deweloperów systemu Azure IoT](https://azure.microsoft.com/develop/iot/) więcej przykłady i dokumentacja Azure IoT.
+Odwiedź stronę [Centrum deweloperów Azure IoT](https://azure.microsoft.com/develop/iot/) Aby uzyskać więcej przykładów i dokumentację dotyczącą usługi Azure IoT.
 
 
 [img-raspberry-output]: ./media/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced/app-output.png

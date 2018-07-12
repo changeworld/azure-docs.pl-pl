@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 2c2b6e25cd86cadf070fdb8bf73ec4fa4acb28a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 9c6d819234111c461bf4793376324dbe77e85ae2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872498"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Samouczek: Integracja usługi Azure Active Directory z Imagineer WebVision
 
@@ -107,9 +107,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Imagineer WebVision domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOUR SERVER URL>/SSO/?azure`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOUR SERVER URL>/default.aspx`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
     > [!NOTE] 
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta WebVision Imagineer](mailto:support@itgny.com) do uzyskania tych wartości.

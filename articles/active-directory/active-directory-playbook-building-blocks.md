@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867124"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38451703"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -468,24 +468,24 @@ Przybliżony czas wykonania: 15 minut
 
 | Wymagania wstępne | Zasoby |
 | --- | --- |
-| Identyfikowanie Administrator globalny, który będzie częścią POC przez usługę PIM | [Rozpoczynanie korzystania z usługi Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
-| Identyfikowanie Administrator globalny, który ma zostać Administrator zabezpieczeń | [Rozpoczynanie korzystania z usługi Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Różne role administracyjne w usłudze PIM usługi Azure Active Directory](active-directory-privileged-identity-management-roles.md) |
-| Opcjonalnie: Upewnij się, jeśli Administratorzy globalni mają dostęp do poczty e-mail do wykonywania powiadomienia e-mail w usłudze PIM | [Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| Identyfikowanie Administrator globalny, który będzie częścią POC przez usługę PIM | [Rozpoczynanie korzystania z usługi Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md) |
+| Identyfikowanie Administrator globalny, który ma zostać Administrator zabezpieczeń | [Rozpoczynanie korzystania z usługi Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md)<br/> [Różne role administracyjne w usłudze PIM usługi Azure Active Directory](privileged-identity-management/pim-roles.md) |
+| Opcjonalnie: Upewnij się, jeśli Administratorzy globalni mają dostęp do poczty e-mail do wykonywania powiadomienia e-mail w usłudze PIM | [Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>Kroki
 
 | Krok | Zasoby |
 | --- | --- |
-| Zaloguj się do https://portal.azure.com jako administrator globalny (GA), a następnie ładowania początkowego bloku usługi PIM. Administrator globalny, który wykonuje krok ten jest obsługiwany jako administrator zabezpieczeń.  Nadajmy tej GA1 aktora | [Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
-| Zidentyfikuj administratora globalnego i przenieść je z stałe na kwalifikujących. Powinna to być jako osobne administrator komentarzowi użytemu w kroku 1 w celu uściślenia. Nadajmy tej GA2 aktora | [Usługa Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| Zaloguj się do https://portal.azure.com jako administrator globalny (GA), a następnie ładowania początkowego bloku usługi PIM. Administrator globalny, który wykonuje krok ten jest obsługiwany jako administrator zabezpieczeń.  Nadajmy tej GA1 aktora | [Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
+| Zidentyfikuj administratora globalnego i przenieść je z stałe na kwalifikujących. Powinna to być jako osobne administrator komentarzowi użytemu w kroku 1 w celu uściślenia. Nadajmy tej GA2 aktora | [Usługa Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień aktywacji roli](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Teraz, zaloguj się jako GA2 do https://portal.azure.com i spróbuj zmienić "Ustawienia użytkownika". Należy zauważyć, że niektóre opcje są wygaszone. | |
-| W nowej karcie i w tej samej sesji w kroku 3, przejdź teraz do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: Dodawanie aplikacji Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| Żądanie aktywacji do roli administratora globalnego | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: aktywować rolę](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| W nowej karcie i w tej samej sesji w kroku 3, przejdź teraz do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: Dodawanie aplikacji Privileged Identity Management](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Żądanie aktywacji do roli administratora globalnego | [Jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management: aktywować rolę](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Należy pamiętać, że GA2 nigdy nie zarejestrowali się do uwierzytelniania Wieloskładnikowego, rejestracji dla usługi Azure MFA będzie to konieczne |  |
 | Wróć do oryginalnego karty w kroku 3, a następnie kliknij przycisk Odśwież w przeglądarce. Należy zauważyć, że możesz teraz dostęp do ustawień "użytkownika" | |
 | Opcjonalnie Jeśli Twoja Administratorzy globalni mają włączoną pocztą e-mail, można sprawdzić GA1 i GA2 w skrzynce odbiorczej oraz wyświetlone powiadomienie roli aktywowany |  |
-| 8 można znaleźć w historii inspekcji i sprawdź, czy raport, aby potwierdzić podniesienie GA2 jest wyświetlany. | [Co to jest usługa Azure AD Privileged Identity Management?: Przejrzyj działania roli](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| 8 można znaleźć w historii inspekcji i sprawdź, czy raport, aby potwierdzić podniesienie GA2 jest wyświetlany. | [Co to jest usługa Azure AD Privileged Identity Management?: Przejrzyj działania roli](privileged-identity-management/pim-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 

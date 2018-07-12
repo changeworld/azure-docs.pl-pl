@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 50cf905a53ebb9c9eb7bb1ea1660999b11b15bef
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872481"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38239955"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -113,7 +113,7 @@ Usuń wszelkie konta, które nie są już potrzebne w ramach tych ról, a skateg
 
 #### <a name="define-at-least-two-emergency-access-accounts"></a>Zdefiniuj co najmniej dwóch kont dostępu awaryjnego 
 
-Upewnij się, że nie masz w sytuacji, gdzie one można zostanie przypadkowo zablokowana administrowanie dzierżawą usługi Azure AD z powodu braku możliwości, zaloguj się lub aktywować istniejące poszczególne konta z uprawnieniami administratora. Microsoft Dynamics 365 zabezpieczeń — Dynamics 365 to rozwiązanie oparte na chmurze firmy Microsoft, które łączy zarządzanie relacjami z klientami (CRM) i możliwości (ERP) do planowania zasobów przedsiębiorstwa. Za łagodzenia skutków przypadkowego braku dostępu administracyjnego przez zapisanie co najmniej dwóch kont dostępu awaryjnego w dzierżawie.
+Upewnij się, że nie masz w sytuacji, gdzie one można zostanie przypadkowo zablokowana administrowanie dzierżawą usługi Azure AD z powodu braku możliwości, zaloguj się lub aktywować istniejące poszczególne konta z uprawnieniami administratora. Na przykład jeśli organizacja jest sfederowana do środowiska lokalnego dostawcy tożsamości, to tego dostawcy tożsamości może być niedostępny, dzięki czemu użytkownicy nie zalogować się w środowisku lokalnym. Za łagodzenia skutków przypadkowego braku dostępu administracyjnego przez zapisanie co najmniej dwóch kont dostępu awaryjnego w dzierżawie.
 
 Kont dostępu awaryjnego pomagają organizacjom ograniczenie dostępu uprzywilejowanego w istniejącym środowisku usługi Azure Active Directory. Te konta są wysoce uprzywilejowane i nie są przypisane do konkretnych osób. Kont dostępu awaryjnego są ograniczone do awaryjnego w scenariuszach "break szkła", gdy nie można użyć normalnego konta z uprawnieniami administracyjnymi. Organizacje muszą zapewnić w celu kontrolowania i ograniczania użycia konta dostępu awaryjnego tylko tego czasu, dla których konieczne jest. 
 
@@ -251,7 +251,7 @@ NIST, National Institute of Standards i technologii (NIST) zawiera wytyczne do o
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Implementowanie Privileged Identity Management (PIM) dla JIT na dodatkowe role administracyjne
 
-W przypadku usługi Azure Active Directory, użyj [usługi Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) możliwości. Czas aktywacji ról uprzywilejowanych działa, ponieważ umożliwia:
+W przypadku usługi Azure Active Directory, użyj [usługi Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) możliwości. Czas aktywacji ról uprzywilejowanych działa, ponieważ umożliwia:
 
 * Aktywuj uprawnieniami administratora w celu wykonania określonego zadania
 * Wymuszanie uwierzytelniania Wieloskładnikowego w procesie aktywacji

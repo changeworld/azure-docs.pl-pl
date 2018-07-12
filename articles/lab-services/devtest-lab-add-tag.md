@@ -1,6 +1,6 @@
 ---
-title: Dodawanie tagów do laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać tag do laboratorium w usłudze Azure DevTest Labs
+title: Dodawanie tagów do laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać tag do laboratorium Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 3d9a5b3c0ae0b6058d3e8ccf8cdb340bd1200edc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787416"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299115"
 ---
-# <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Dodawanie tagów do laboratorium w usłudze Azure DevTest Labs
+# <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Dodawanie tagów do laboratorium Azure DevTest Labs
 
-Można tworzyć niestandardowe znaczniki i zastosować je do zasobów DevTest Labs do klasyfikowania logicznie zasobów. Później można szybko i łatwo zobaczyć wszystkie zasoby w ramach subskrypcji, które mają ten tag. Tagi są przydatne, gdy trzeba organizowania zasobów do zarządzania lub rozliczeń.
+Można tworzyć niestandardowe tagi i stosować je do zasobów usługi DevTest Labs logicznie kategoryzowanie zasobów. Później można szybko i łatwo zobaczyć wszystkich zasobów w ramach subskrypcji, które mają ten tag. Tagi są przydatne, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
 
-Zasoby, które są obsługiwane przez tagów uwzględnić
+Zasoby, które są obsługiwane przez tagi zawierają
 
-* Obliczenia bazy danych maszyn wirtualnych
+* Obliczeniowe maszyny wirtualne
 * Karty interfejsów sieciowych
 * Adresy IP
 * Moduły równoważenia obciążenia
 * Konta magazynu
 * Dyski zarządzane
 
-Możesz zastosować tagi, gdy użytkownik [tworzenie laboratorium](devtest-lab-create-lab.md) i później zarządzać nimi za pomocą bloku tagów w sekcji Konfiguracja i ustawienia.
+Można zastosować tagi, gdy użytkownik [tworzenie laboratorium](devtest-lab-create-lab.md) i później zarządzać nimi za pomocą bloku tagów w sekcji Konfiguracja i ustawienia.
 
-Każdy znacznik składa się z **nazwa**/**wartość** pary. Na przykład można utworzyć tag o nazwie *costcenter* , który ma wartość *34543*. Tag takie, jak to może pomóc później zidentyfikuj zasoby laboratorium, które są rozliczeniowy w do tej określonej części organizacji. Pobierz wybrać nazwy i wartości odpowiednich dla sposobu organizowania subskrypcji.
+Każdy tag składa się z **nazwa**/**wartość** pary. Na przykład, może utworzyć tag o nazwie *costcenter* wartością *34543*. Tag, np. to może pomóc później zidentyfikować zasoby laboratorium, które są płatne z tym obszarem określonych w Twojej organizacji. Uzyskaj wybranie nazwy i wartości, które mają sens dla sposobu organizowania subskrypcji.
 
-## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Kroki, aby zarządzać znaczników w istniejących laboratorium
+## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Kroki, które umożliwią Zarządzanie tagami w istniejącego laboratorium
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. W razie potrzeby wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy. Laboratorium może być jest wyświetlana na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**.
-1. Z listy labs wybierz laboratorium, w której chcesz dodać lub zarządzać tagów.  
-1. W laboratorium **omówienie** wybierz opcję **konfiguracji i zasadach**.  
+1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**.
+1. Zaznacz na liście laboratoriów laboratorium, w której chcesz dodać lub zarządzania nimi.  
+1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.  
 
-    ![Przycisk zasad i konfiguracji](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
+    ![Przycisk konfiguracji i zasad](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. Po lewej stronie w obszarze **ZARZĄDZAJ**, wybierz pozycję **tagi**.
-1. Do utworzenia nowego tagu dla tego laboratorium, wprowadź **nazwa**/**wartość** Sparuj, a następnie wybierz **zapisać**. Można również wybrać istniejący znacznik z listy, aby wyświetlić lub zarządzać zasoby skojarzone z tym znacznikiem.
+1. Po lewej stronie w obszarze **ZARZĄDZAJ**, wybierz opcję **tagi**.
+1. Aby utworzyć nowy tag, w tym środowisku laboratoryjnym, wprowadź **nazwa**/**wartość** pair, a następnie wybierz pozycję **Zapisz**. Możesz również wybrać istniejący znacznik z listy, aby wyświetlić lub zarządzać zasobów skojarzonych z tym tagiem.
 
     ![Zarządzaj tagami](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 
@@ -60,10 +60,10 @@ Tagi mają następujące ograniczenia:
 * Nazwa tagu może zawierać maksymalnie 512 znaków, a wartość tagu jest ograniczona do 256 znaków. W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
 * Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.
 
-[Używaj tagów do organizowania zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) zapewnia większą szczegółowe informacje o platformie Azure, łącznie ze sposobem zarządzania tagów za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure przy użyciu tagów.
+[Organizowanie zasobów platformy Azure za pomocą tagów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) zapewnia większą szczegółowe informacje o platformie Azure, w tym sposobu zarządzania nimi przy użyciu programu PowerShell lub wiersza polecenia platformy Azure przy użyciu tagów.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Za pomocą niestandardowych zasad można stosować ograniczenia i konwencje w Twojej subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartość określony tag. Aby uzyskać więcej informacji, zobacz [ustawić zasady i harmonogramy](devtest-lab-set-lab-policy.md).
-* Eksploruj [galerię szablonów DevTest Labs Azure Resource Manager — Szybki Start](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Za pomocą zasad niestandardowych, można zastosować ograniczenia i konwencje w ramach subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartości dla określonego tagu. Aby uzyskać więcej informacji, zobacz [konfigurować zasady i harmonogramy](devtest-lab-set-lab-policy.md).
+* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

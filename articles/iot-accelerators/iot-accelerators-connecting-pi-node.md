@@ -1,6 +1,6 @@
 ---
-title: Zapewnij malinowe Pi do monitorowania zdalnego w środowisku Node.js - Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób Pi malina urządzenie podłączone do akcelerator rozwiązań monitorowania zdalnego przy użyciu aplikacji napisanych w Node.js.
+title: Aprowizowanie urządzenia Raspberry Pi do zdalnego monitorowania w języku Node.js — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób łączenia urządzeń Raspberry Pi do akceleratora rozwiązania monitorowania zdalnego przy użyciu aplikacji napisanych w języku Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,49 +9,49 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 78647612fc747ec328279536d82fb31bb4858688
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626874"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38309780"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłącz urządzenie Pi malina do monitorowania zdalnego akcelerator rozwiązań (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Łączenie urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku przedstawiono sposób nawiązywania akcelerator rozwiązań monitorowania zdalnego urządzenia fizycznego. W tym samouczku używamy Node.js, czyli dobra opcja w przypadku środowiska z ograniczeniami minimalnego zasobów.
+W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego. W tym samouczku użyjesz środowiska Node.js, czyli dobra opcja w środowiskach z ograniczeniami minimalny zasobów.
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
-Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia na malina Pi.
+Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia na urządzenia Raspberry Pi.
 
-[Microsoft IoT Starter Kit malina Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważne składników. W tym samouczku wykorzystuje następujące składniki z zestawu:
+[Pakiet startowy IoT firmy Microsoft do Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważne składników. W tym samouczku korzysta z następujących elementów z zestawu SDK:
 
-- Pi malinowe 3
+- Urządzenie raspberry Pi 3
 - Karta MicroSD (z NOOBS)
-- Kabla USB Mini
-- Kabla Ethernet
+- Kabel USB Mini
+- Kabel Ethernet
 
-### <a name="required-desktop-software"></a>Wymagane oprogramowanie komputerowe
+### <a name="required-desktop-software"></a>Wymagane oprogramowania dla komputerów stacjonarnych
 
-Należy klient SSH na komputerze pulpitu umożliwia zdalny dostęp do wiersza polecenia na malina Pi.
+Klient SSH jest niezbędne w komputera stacjonarnego, aby umożliwić dostęp zdalny do wiersza polecenia na urządzenia Raspberry Pi.
 
-- System Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](http://www.putty.org/).
-- Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH za pomocą systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](http://www.putty.org/).
+- Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH przy użyciu systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie Pi malina
+### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie urządzenia Raspberry Pi
 
-Jeśli jeszcze tego nie zrobiono tego wcześniej, zainstaluj środowiska Node.js w wersji 4.0.0 lub nowszego z malina Pi. Poniższe kroki pokazują, jak zainstalować IPv6 Node.js na Twoje Pi malina:
+Jeśli użytkownik jeszcze tego nie zrobiono, zainstaluj środowisko Node.js w wersji 4.0.0 lub później na urządzenia Raspberry Pi. Poniższe kroki pokazują, jak zainstalować środowisko Node.js w wersji 6 na urządzenia Raspberry Pi:
 
-1. Nawiązać połączenie przy użyciu Pi malina `ssh`. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web Pi malina](https://www.raspberrypi.org/).
+1. Łączenie z urządzeniem Raspberry Pi z wykorzystaniem `ssh`. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web urządzenia Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Można zaktualizować Twojego Pi malina, użyj następującego polecenia:
+1. Aby zaktualizować urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Aby usunąć ewentualne istniejące instalacje Node.js z Twojej Pi malina, użyj następujących poleceń:
+1. Aby usunąć wszelkie istniejącej instalacji środowiska Node.js z urządzenia Raspberry Pi, użyj następujących poleceń:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -59,7 +59,7 @@ Jeśli jeszcze tego nie zrobiono tego wcześniej, zainstaluj środowiska Node.js
     sudo apt-get remove npm  -y
     ```
 
-1. Aby pobrać i zainstalować IPv6 Node.js na Twoje Pi malina, użyj następującego polecenia:
+1. Aby pobrać i zainstalować środowisko Node.js w wersji 6 na urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
@@ -72,11 +72,11 @@ Jeśli jeszcze tego nie zrobiono tego wcześniej, zainstaluj środowiska Node.js
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania Node.js
+## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania środowiska Node.js
 
-Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
+Wykonaj następujące czynności za pomocą `ssh` połączenie urządzenia Raspberry Pi:
 
-1. Utwórz folder o nazwie `remotemonitoring` w folderze macierzysty na malina Pi. Przejdź do tego folderu, w wierszu polecenia:
+1. Utwórz folder o nazwie `remotemonitoring` w folderze głównym na urządzenia Raspberry Pi. Przejdź do tego folderu, w wierszu polecenia:
 
     ```sh
     cd ~
@@ -84,16 +84,16 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     cd remotemonitoring
     ```
 
-1. Aby pobrać i zainstalować te pakiety, które należy wykonać przykładową aplikację, uruchom następujące polecenia:
+1. Aby pobrać i zainstalować te pakiety, należy wykonać przykładową aplikację, uruchom następujące polecenia:
 
     ```sh
     npm init
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. W `remotemonitoring` folderu, Utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu. Można użyć na Pi malina `nano` lub `vi` edytory tekstów.
+1. W `remotemonitoring` folderze utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu. Urządzenia Raspberry Pi, mogą używać `nano` lub `vi` edytorów tekstu.
 
-1. W **remote_monitoring.js** plików, należy dodać następujące `require` instrukcji:
+1. W **remote_monitoring.js** plików, Dodaj następujący kod `require` instrukcji:
 
     ```nodejs
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -103,14 +103,14 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     var async = require('async');
     ```
 
-1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp wartość symbolu zastępczego `{device connection string}` z wartością zanotowaną urządzenia udostępnione w rozwiązaniu monitorowania zdalnego:
+1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp wartość symbolu zastępczego `{device connection string}` wartością zanotowaną urządzenia aprowizowanej w rozwiązaniu monitorowania zdalnego:
 
     ```nodejs
     var connectionString = '{device connection string}';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Aby zdefiniować niektóre dane telemetryczne podstawowej, Dodaj następujące zmienne:
+1. Aby zdefiniować niektórych danych telemetrycznych podstawowej, Dodaj następujące zmienne:
 
     ```nodejs
     var temperature = 50;
@@ -121,7 +121,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     var pressureUnit = 'psig';
     ```
 
-1. Aby zdefiniować niektórych wartości właściwości, należy dodać następujące zmienne:
+1. Aby zdefiniować niektóre wartości właściwości, Dodaj następujące zmienne:
 
     ```nodejs
     var temperatureSchema = 'chiller-temperature;v1';
@@ -137,7 +137,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     var deviceOnline = true;
     ```
 
-1. Dodaj następującą zmienną do definiowania właściwości zgłoszony do wysłania do rozwiązania. Te właściwości obejmują metadanych opisujących metod i używa telemetrii urządzenia:
+1. Dodaj następującą zmienną do definiowania zgłaszanych właściwości do wysłania do rozwiązania. Te właściwości obejmują metadane opisują te metody i funkcje, dane telemetryczne urządzenia:
 
     ```nodejs
     var reportedProperties = {
@@ -191,7 +191,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Aby wydrukować wyniki operacji, należy dodać funkcję pomocnika następujące:
+1. Aby wydrukować wyniki operacji, dodaj następującą funkcję pomocnika:
 
     ```nodejs
     function printErrorFor(op) {
@@ -201,7 +201,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Dodaj następującą funkcję pomocnika służące do wartości danych telemetrycznych losowe:
+1. Dodaj następującą funkcję pomocnika na potrzeby losowe wartości telemetryczne:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -209,7 +209,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Dodaj następujące ogólna funkcja obsługi wywołania metody bezpośrednio z rozwiązania. Funkcja wyświetla informacje o bezpośrednie metodę, która została wywołana, ale w tym przykładzie nie modyfikuje urządzenia w dowolny sposób. W tym rozwiązaniu zastosowano bezpośredniego metod do działania na urządzeniach:
+1. Dodaj następującą funkcję ogólnego, aby obsłużyć wywołania metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o bezpośrednie metody, która została wywołana, ale w tym przykładzie nie powoduje modyfikacji urządzenia w dowolny sposób. Rozwiązanie używa metod bezpośrednich do działania na urządzeniach:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -224,7 +224,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Dodaj następującą funkcję obsługi **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza, czy parametry przekazywane w ładunku metoda bezpośrednia, a następnie uruchamia asynchronicznie symulacji aktualizacji oprogramowania układowego:
+1. Dodaj następującą funkcję, aby obsłużyć **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza parametrów przekazanych w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulacji aktualizacji oprogramowania układowego:
 
     ```node.js
     function onFirmwareUpdate(request, response) {
@@ -253,7 +253,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Dodaj następującą funkcję do symulowania długotrwałe przepływu aktualizacji oprogramowania układowego, która raportuje postęp wróć do rozwiązania:
+1. Dodaj następującą funkcję, aby symulować przepływ aktualizacji oprogramowania układowego długotrwałych, który zgłasza postępy pracy powrót do rozwiązania:
 
     ```node.js
     // Simulated firmwareUpdate flow
@@ -331,7 +331,7 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     }
     ```
 
-1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodanie właściwości do komunikat, aby zidentyfikować schematu komunikat:
+1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodaje właściwości w oknie komunikatu identyfikowanie schematów komunikatów:
 
     ```node.js
     function sendTelemetry(data, schema) {
@@ -360,10 +360,10 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
 1. Dodaj następujący kod, aby:
 
     * Otwórz połączenie.
-    * Konfigurowanie obsługi dla żądanej właściwości.
-    * Wysłać zgłoszonego właściwości.
-    * Rejestrowanie procedur obsługi dla metod bezpośredniego. Przykład używa oddzielnych obsługi metoda bezpośrednia aktualizacja oprogramowania układowego.
-    * Rozpocznij wysyłanie danych telemetrycznych.
+    * Skonfiguruj program obsługi żądane właściwości.
+    * Wysyłać zgłaszane właściwości.
+    * Zarejestruj procedury obsługi dla metod bezpośrednich. W przykładzie użyto oddzielny program obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
+    * Rozpoczęcie wysyłania danych telemetrycznych.
 
     ```nodejs
     client.open(function (err) {
@@ -437,9 +437,9 @@ Wykonaj następujące czynności, za pomocą `ssh` połączenie z Pi malina:
     });
     ```
 
-1. Zapisać zmiany w **remote_monitoring.js** pliku.
+1. Czy zapisać zmiany **remote_monitoring.js** pliku.
 
-1. Aby uruchomić przykładową aplikację, uruchom następujące polecenie z wiersza polecenia na Pi malina:
+1. Aby uruchomić przykładową aplikację, uruchom następujące polecenie w wierszu polecenia na urządzenia Raspberry Pi:
 
     ```sh
     node remote_monitoring.js

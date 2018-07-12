@@ -1,6 +1,6 @@
 ---
 title: Jak używać magazynu kolejek w języku PHP | Dokumentacja firmy Microsoft
-description: Informacje o sposobie korzystania z usługi magazyn kolejek platformy Azure do tworzenia i usuwania kolejki, wstawianie, Pobierz i usunąć wiadomości. Przykłady są zapisywane w kodzie PHP.
+description: Dowiedz się, jak używać usługi Azure Queue storage do tworzenia i usuwania kolejki oraz wstawiania, pobieranie i usuwanie wiadomości. Przykłady są napisane w języku PHP.
 documentationcenter: php
 services: storage
 author: roygara
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
 ms.openlocfilehash: 737054aefa684b3fc486c860253c69afbb6eaf0c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30924804"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295810"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Jak używać Magazynu kolejek w języku PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -27,20 +27,20 @@ ms.locfileid: "30924804"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Przegląd
-W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi magazynu kolejek Azure. Przykłady są napisane przy użyciu klasy z [biblioteki klienta magazynu Azure dla programu PHP][download]. Objęte usługą scenariusze obejmują, wstawianie, wgląd, pobieranie i usuwanie komunikatów kolejek, a także tworzenie i usuwanie kolejek.
+Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane przy użyciu klas z [biblioteki klienta usługi Azure Storage dla języka PHP][download]. Pokryte scenariusze obejmują wstawiania, wgląd, pobierania i usuwaniem komunikatów kolejek, a także tworzenia i usuwania kolejek.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-php-application"></a>Tworzenie aplikacji PHP
-Jedynym wymaganiem w przypadku tworzenia aplikacji PHP, który uzyskuje dostęp do magazynu kolejek Azure jest odwoływanie się do klasy w [biblioteki klienta magazynu Azure dla programu PHP] [ download] od w kodzie. Narzędzia do programowania służy do tworzenia aplikacji, łącznie z Notatnika.
+## <a name="create-a-php-application"></a>Tworzenie aplikacji języka PHP
+Jedynym wymaganiem do tworzenia aplikacji w języku PHP, który uzyskuje dostęp do usługi Azure Queue storage jest odwołanie do klasy w [biblioteki klienta usługi Azure Storage dla języka PHP] [ download] z w obrębie kodu. Do utworzenia aplikacji możesz użyć dowolnych narzędzi programistycznych, w tym programu Notatnik.
 
-W tym przewodniku korzystanie z funkcji usługi kolejki magazynu, które można wywołać w ramach aplikacji PHP lokalnie lub w kodzie działających w roli sieci web platformy Azure, roli procesu roboczego lub witryny sieci Web.
+W tym przewodniku możesz użyć funkcji usługi kolejki magazynu, które mogą być wywoływane w ramach aplikacji PHP lokalnie lub w kodzie, w ramach roli sieci web platformy Azure, rola procesu roboczego lub witryny sieci Web.
 
-## <a name="get-the-azure-client-libraries"></a>Pobierz bibliotek klienta platformy Azure
-### <a name="install-via-composer"></a>Zainstaluj za pośrednictwem Composer
-1. Utwórz plik o nazwie **composer.json** w folderze głównym projektu i Dodaj do niej następujący kod:
+## <a name="get-the-azure-client-libraries"></a>Pobierz biblioteki klienckie systemu Azure
+### <a name="install-via-composer"></a>Instalowanie za pomocą Composer (kompozytor)
+1. Utwórz plik o nazwie **composer.json** w katalogu głównym projektu i dodać do niego następujący kod:
    
     ```json
     {
@@ -56,25 +56,25 @@ W tym przewodniku korzystanie z funkcji usługi kolejki magazynu, które można 
     php composer.phar install
     ```
 
-Można również przejdź do [biblioteki klienta usługi Azure Storage PHP] [ download] w serwisie GitHub klonowanie kodu źródłowego.
+Ewentualnie przejdź do [biblioteki klienta usługi Azure Storage PHP] [ download] w serwisie GitHub, klonowanie kodu źródłowego.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurowanie aplikacji dostęp do kolejki magazynu
-Aby korzystanie z interfejsów API magazynu kolejek Azure, musisz:
+## <a name="configure-your-application-to-access-queue-storage"></a>Umożliwia skonfigurowanie aplikacji dostęp do usługi Queue storage
+Aby użyć interfejsów API dla usługi Azure Queue storage, należy:
 
 1. Odwołanie do pliku automatycznej ładowarki przy użyciu [require_once] instrukcji.
-2. Odwoływać się do wszystkich klas, których można użyć.
+2. Odwoływać się do wszystkich klas, których można korzystać.
 
-Poniższy przykład pokazuje, jak dołączyć plik automatycznej ładowarki i odwołanie **QueueRestProxy** klasy.
+Poniższy przykład pokazuje, jak to plik automatycznej ładowarki i odwołania **QueueRestProxy** klasy.
 
 ```php
 require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-W poniższych przykładach `require_once` instrukcji jest zawsze wyświetlany, ale odwołuje się tylko klasy, które są niezbędne, na przykład do wykonania.
+W poniższych przykładach `require_once` instrukcji jest wyświetlane zawsze, ale są wywoływane tylko klasy, które są niezbędne, na przykład do wykonania.
 
-## <a name="set-up-an-azure-storage-connection"></a>Konfigurowanie połączenia z magazynem Azure
-Można utworzyć wystąpienia klienta magazynu kolejek Azure, najpierw musi mieć prawidłowe parametry połączenia. Format dla parametrów połączenia usługi kolejki ma następującą składnię.
+## <a name="set-up-an-azure-storage-connection"></a>Skonfigurować połączenie usługi Azure storage
+Aby utworzyć wystąpienia klienta usługi Azure Queue storage, najpierw musisz mieć prawidłowe parametry połączenia. Format parametrów połączenia usługi kolejki jest w następujący sposób.
 
 Aby uzyskać dostęp do usługi na żywo:
 
@@ -82,17 +82,17 @@ Aby uzyskać dostęp do usługi na żywo:
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Aby uzyskać dostęp do emulatora magazynu:
+Aby uzyskać dostęp do magazynu emulatora:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-Aby utworzyć klienta usługi kolejek platformy Azure, musisz użyć **QueueRestProxy** klasy. Można użyć jednej z następujących metod:
+Aby utworzyć klienta usługi Azure Queue, należy użyć **QueueRestProxy** klasy. Można użyć jednej z następujących technik:
 
-* Parametry połączenia należy przekazać bezpośrednio do niego.
-* W aplikacji sieci Web można używać zmiennych środowiskowych, aby zapisać parametry połączenia. Zobacz [ustawienia konfiguracji aplikacji sieci web platformy Azure](../../app-service/web-sites-configure.md) dokumentu do konfigurowania parametrów połączenia.
-Przykłady przedstawione w tym miejscu ciąg połączenia jest przekazywany bezpośrednio.
+* Przekaż parametry połączenia do niego bezpośrednio.
+* Używać zmiennych środowiskowych w aplikacji sieci Web, aby przechowywać parametry połączenia. Zobacz [ustawień konfiguracji aplikacji sieci web platformy Azure](../../app-service/web-sites-configure.md) dokumentu do konfigurowania parametrów połączenia.
+W przedstawionych tutaj przykładach parametry połączenia są przekazywane bezpośrednio.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -104,7 +104,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
-A **QueueRestProxy** obiekt umożliwia tworzenie kolejki przy użyciu **createQueue** metody. Podczas tworzenia kolejki, można ustawić opcje w kolejce, ale spowoduje to nie jest wymagane. (W poniższym przykładzie pokazano, jak ustawić metadanych w kolejce).
+A **QueueRestProxy** obiekt umożliwia tworzenie kolejki za pomocą **createQueue** metody. Podczas tworzenia kolejki, można ustawić opcje w kolejce, ale spowoduje tak nie jest wymagana. (Poniższy przykład pokazuje, jak ustawić metadanych w kolejce).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -138,12 +138,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Nie należy polegać na uwzględnianie wielkości liter w metadanych kluczy. Wszystkie klucze są odczytywane z usługi pisane małymi literami.
+> Nie należy polegać na rozróżnianie wielkości liter dla kluczy metadanych. Wszystkie klucze są odczytywane z usługi małymi literami.
 > 
 > 
 
-## <a name="add-a-message-to-a-queue"></a>Dodaj komunikat do kolejki
-Aby dodać wiadomości do kolejki, użyj **QueueRestProxy -> polecenie createMessage**. Metoda ma nazwę kolejki, tekst komunikatu i opcje wiadomości, (które są opcjonalne).
+## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
+Aby dodać komunikat do kolejki, użyj **QueueRestProxy -> createMessage**. Ta metoda przyjmuje nazwę kolejki, tekst komunikatu i opcje wiadomości, (które są opcjonalne).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -172,7 +172,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>Podgląd kolejnego komunikatu
-Możesz uzyskać wgląd w komunikat (lub wiadomości) z przodu kolejki bez jego usuwania z kolejki, wywołując **QueueRestProxy -> peekMessages**. Domyślnie **peekMessage** metoda zwraca pojedynczą wiadomość, ale można zmienić tę wartość przy użyciu **PeekMessagesOptions -> setNumberOfMessages** metody.
+Możesz wgląd w komunikat (lub wiadomości) z przodu kolejki bez jego usuwania z kolejki, wywołując **QueueRestProxy -> peekMessages**. Domyślnie **peekMessage** metoda zwraca pojedynczą wiadomość, ale można zmienić tę wartość za pomocą **PeekMessagesOptions -> setNumberOfMessages** metody.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -220,7 +220,7 @@ else{
 ```
 
 ## <a name="de-queue-the-next-message"></a>Usunięcie następnego komunikatu z kolejki
-Twój kod usuwa komunikat z kolejki w dwóch etapach. Najpierw należy wywołać **QueueRestProxy -> listMessages**, która sprawia, że komunikat niewidoczne dla innego kodu, który jest czytania z kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. (Jeśli wiadomość nie jest usuwany w tym okresie, staje się widoczny w kolejce ponownie.) Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać **QueueRestProxy -> deleteMessage**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że gdy kodu nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie. Twój kod wywołuje **deleteMessage** natychmiast po przetworzeniu komunikatu.
+Twój kod usuwa komunikat z kolejki w dwóch etapach. Po pierwsze wywołanie **QueueRestProxy -> listMessages**, co sprawia, że komunikat niewidoczny dla innego kodu, która odczytuje z kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. (Jeśli komunikat nie zostanie usunięty w tym okresie, staje się widoczny w kolejce ponownie.) Aby zakończyć usuwanie komunikatu z kolejki, należy wywołać **QueueRestProxy -> deleteMessage**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że gdy kodu nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie. Twój kod wywołuje **deleteMessage** natychmiast po przetworzeniu komunikatu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -261,7 +261,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Zmiana zawartości komunikatu w kolejce
-Można zmienić zawartość komunikatu w miejscu w kolejce przez wywołanie metody **QueueRestProxy -> updateMessage**. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Poniższy kod aktualizuje komunikat kolejki o nową zawartość i Ustawia rozszerzenie limitu czasu widoczności kolejne 60 sekund. Zapisuje stan pracy, który został skojarzony z komunikatem i daje klientowi kolejną minutę na kontynuowanie pracy nad wiadomości. Możesz użyć tej metody do śledzenia wieloetapowych przepływów pracy związanych z komunikatami kolejek, bez konieczności rozpoczynania od nowa, gdy dany etap nie powiedzie się ze względu na awarię sprzętu lub oprogramowania. Zazwyczaj stosuje się również liczbę ponownych prób. Jeśli komunikat zostanie ponowiony więcej niż *n* razy, zostanie usunięty. Jest to zabezpieczenie przed komunikatami, które wyzwalają błąd aplikacji zawsze, gdy są przetwarzane.
+Możesz zmienić zawartość komunikatu w miejscu w kolejce przez wywołanie metody **QueueRestProxy -> updateMessage**. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Poniższy kod aktualizuje komunikat kolejki o nową zawartość i Ustawia rozszerzenie limitu czasu widoczności o kolejne 60 sekund. Zapisuje stan pracy, który jest skojarzony z komunikatem i daje klientowi kolejną minutę na kontynuowanie pracy w komunikacie. Możesz użyć tej metody do śledzenia wieloetapowych przepływów pracy związanych z komunikatami kolejek, bez konieczności rozpoczynania od nowa, gdy dany etap nie powiedzie się ze względu na awarię sprzętu lub oprogramowania. Zazwyczaj stosuje się również liczbę ponownych prób. Jeśli komunikat zostanie ponowiony więcej niż *n* razy, zostanie usunięty. Jest to zabezpieczenie przed komunikatami, które wyzwalają błąd aplikacji zawsze, gdy są przetwarzane.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -306,7 +306,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="additional-options-for-de-queuing-messages"></a>Dodatkowe opcje usuwania komunikatów z kolejek
-Istnieją dwa sposoby, który można dostosować pobieranie wiadomości z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić widoczności dłuższy lub krótszy limit czasu, dzięki czemu kod będzie bardziej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu wykorzystuje **getMessages** metodę, aby pobrać 16 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu **dla** pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
+Istnieją dwa sposoby, które można dostosować odebrania komunikatu z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić widoczności dłuższy lub krótszy limit czasu, dzięki czemu kod więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu wykorzystuje **getMessages** metodę, aby uzyskać 16 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu **dla** pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -356,7 +356,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="get-queue-length"></a>Pobieranie długości kolejki
-Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **QueueRestProxy -> getQueueMetadata** metody prosi usługę kolejki do zwracania metadanych dotyczących kolejki. Wywoływanie **getApproximateMessageCount** metody na zwracanym obiekcie zawiera liczbę liczbę wiadomości w kolejce. Wartość licznika jest tylko przybliżoną, ponieważ komunikaty mogą dodane lub usunięte po usługa kolejki odpowiada na żądania.
+Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **QueueRestProxy -> getQueueMetadata** metoda prosi usługę kolejki do zwracania metadanych dotyczących kolejki. Wywoływanie **getApproximateMessageCount** metody zwrócony obiekt zawiera liczbę liczbę komunikatów w kolejce. Wartość licznika jest przybliżona tylko w przypadku, ponieważ komunikaty mogą dodany lub usunięty, gdy usługa kolejki odpowiada na żądania.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -387,7 +387,7 @@ echo $approx_msg_count;
 ```
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
-Aby usunąć kolejkę i wszystkie znajdujące się w niej wiadomości, wywołaj **QueueRestProxy -> deleteQueue** metody.
+Aby usunąć kolejkę i wszystkie komunikaty w nim, wywołaj **QueueRestProxy -> deleteQueue** metody.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -415,9 +415,9 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już podstawy magazynu kolejek Azure, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu:
+Teraz, kiedy znasz już podstawy usługi Azure Queue storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu:
 
-* Odwiedź stronę [dokumentacja interfejsu API dla biblioteki klienta magazynu Azure PHP](http://azure.github.io/azure-storage-php/)
+* Odwiedź stronę [wykaz interfejsów API dla biblioteki klienta PHP w usłudze Azure Storage](http://azure.github.io/azure-storage-php/)
 * Zobacz [przykład zaawansowane kolejki](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
 
 Aby uzyskać więcej informacji, zobacz też [Centrum deweloperów języka PHP](/develop/php/).

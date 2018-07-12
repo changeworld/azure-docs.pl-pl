@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej w portalu Azure | Dokumentacja firmy Microsoft
-description: Utwórz maszynę wirtualną systemu Windows w portalu Azure.
+title: Tworzenie maszyny Wirtualnej w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Utwórz maszynę wirtualną Windows w witrynie Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,35 +17,35 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
 ms.openlocfilehash: 5fd2128ff436d3211f41c7dfdcc4c2b8aabd0eb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917833"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38232330"
 ---
-# <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Utwórz maszynę wirtualną z systemem Windows w portalu Azure
+# <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](tutorial.md)
-> * [Środowiska PowerShell: Wdrożenia klasycznego](create-powershell.md)
+> * [Programu PowerShell: Wdrożenia klasycznego](create-powershell.md)
 >
 >
 
 <br>
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule omówiono przy użyciu klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonaj te czynności przy użyciu modelu wdrażania usługi Resource Manager](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przy użyciu **portalu Azure**.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonania tych kroków przy użyciu modelu wdrażania usługi Resource Manager](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) przy użyciu **witryny Azure portal**.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Ten samouczek przedstawia sposób tworzenia maszyny wirtualnej platformy Azure (VM) systemu Windows w portalu Azure. Na przykład użyjemy obrazu systemu Windows Server, ale jest to tylko jeden z wielu obrazów oferowanych na platformie Azure. Należy pamiętać, że obrazy dostępne do wyboru zależą subskrypcji. Przykładowo obrazy komputerowe systemu Windows mogą być dostępne dla subskrybentów MSDN.
+W tym samouczku przedstawiono sposób tworzenia maszyn wirtualnych (VM) systemem Windows w witrynie Azure portal. Jako przykład użyto obrazu systemu Windows Server, ale jest to tylko jeden z wielu obrazów oferowanych na platformie Azure. Należy pamiętać, że obrazy dostępne do wyboru zależą od subskrypcji. Przykładowo obrazy komputerowe Windows może być dostępna dla subskrybentów MSDN.
 
-W tej sekcji przedstawia sposób użycia **pulpitu nawigacyjnego** w portalu Azure wybierz, a następnie utworzyć maszyny wirtualnej.
+W tej sekcji dowiesz się, jak używać **pulpit nawigacyjny** w witrynie Azure portal, aby wybrać, a następnie utwórz maszynę wirtualną.
 
-Można również tworzyć maszyny wirtualne przy użyciu [własnych obrazów](createupload-vhd.md). Aby dowiedzieć się więcej na temat tego i innych metod, zobacz [różne sposoby tworzenia maszyny wirtualnej systemu Windows](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Można również utworzyć maszyn wirtualnych przy użyciu [własnych obrazów](createupload-vhd.md). Aby dowiedzieć się więcej na temat tego i innych metod, zobacz [różne sposoby tworzenia maszyny wirtualnej Windows](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a id="createvirtualmachine"> </a>Utwórz maszynę wirtualną
+## <a id="createvirtualmachine"> </a>Tworzenie maszyny wirtualnej
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [utworzyć Maszynę wirtualną przy użyciu modelu wdrażania usługi Resource Manager](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) w portalu Azure.
+* Dowiedz się, jak [Utwórz Maszynę wirtualną przy użyciu modelu wdrażania usługi Resource Manager](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) w witrynie Azure portal.
 * Zaloguj się do maszyny wirtualnej. Aby uzyskać instrukcje, zobacz [Zaloguj się do maszyny wirtualnej z systemem Windows Server](connect-logon.md).
-* Dołączanie dysku do przechowywania danych. Możesz dołączyć zarówno puste dyski i dyski, które zawierają dane. Aby uzyskać instrukcje, zobacz [dołączenie dysku danych do maszyny wirtualnej systemu Windows utworzone z klasycznym modelu wdrażania](attach-disk.md).
+* Dołączanie dysku do przechowywania danych. Możesz dołączyć pustych dysków i dyski, które zawierają dane. Aby uzyskać instrukcje, zobacz [dołączanie dysku danych do maszyny wirtualnej Windows utworzonych za pomocą klasycznego modelu wdrażania](attach-disk.md).

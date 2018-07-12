@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj odbiornik ILB dla zawsze włączonych grup dostępności na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek używa zasobów utworzone za pomocą klasycznym modelu wdrożenia, i tworzy zawsze na odbiornik grupy dostępności na platformie Azure, która używa wewnętrznego modułu równoważenia obciążenia.
+title: Konfigurowanie odbiornika ILB dla zawsze włączonych grup dostępności na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek używa zasobów utworzonych za pomocą klasycznego modelu wdrażania, i tworzy Always On odbiornik grupy dostępności na platformie Azure, która używa wewnętrznego modułu równoważenia obciążenia.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,78 +16,78 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240752"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38452536"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Skonfiguruj odbiornik ILB dla zawsze włączonych grup dostępności w systemie Azure
+# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurowanie odbiornika ILB dla zawsze włączonych grup dostępności na platformie Azure
 > [!div class="op_single_selector"]
-> * [Odbiornik wewnętrzny](../classic/ps-sql-int-listener.md)
-> * [Odbiornik zewnętrzny](../classic/ps-sql-ext-listener.md)
+> * [Wewnętrznego odbiornika](../classic/ps-sql-int-listener.md)
+> * [Zewnętrznego odbiornika](../classic/ps-sql-ext-listener.md)
 >
 >
 
 ## <a name="overview"></a>Przegląd
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule omówiono korzystanie z klasycznym modelu wdrażania. Zaleca się, że większości nowych wdrożeń Użyj modelu Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Zaleca się, że większości nowych wdrożeń korzystać z modelu usługi Resource Manager.
 
-Aby skonfigurować odbiornik grupy dostępności AlwaysOn w modelu usługi Resource Manager, zobacz [skonfigurowania funkcji równoważenia obciążenia dla grupy dostępności AlwaysOn w Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+Aby skonfigurować odbiornik grupy dostępności Always On w modelu usługi Resource Manager, zobacz [Konfigurowanie modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-Grupy dostępności może zawierać replik z lokalnymi tylko lub tylko Azure lub który obejmować zarówno lokalnych, jak i Azure dla hybrydowych konfiguracje. Azure replik może się znajdować w tym samym regionie lub w wielu regionach, które używają wielu sieci wirtualnych. Procedury przedstawione w tym artykule założono, że istnieje już [skonfigurowane grupy dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie ma jeszcze skonfigurowany odbiornik.
+Grupy dostępności może zawierać replik, które są tylko lokalnie lub na platformie Azure tylko lub który obejmować zarówno lokalnych, jak i platformy Azure dla konfiguracji hybrydowych. Repliki systemu Azure mogą znajdować się w tym samym regionie lub w wielu regionach, które używają wielu sieci wirtualnych. Procedury przedstawione w tym artykule przyjęto założenie, że masz już [skonfigurowane grupy dostępności](../classic/portal-sql-alwayson-availability-groups.md) , ale nie skonfigurowano jeszcze odbiornik.
 
-## <a name="guidelines-and-limitations-for-internal-listeners"></a>Zasady i ograniczenia dotyczące odbiorników wewnętrzny
-Użycie wewnętrznego modułu równoważenia obciążenia (ILB) z odbiornika grupy dostępności na platformie Azure podlega następujących wytycznych:
+## <a name="guidelines-and-limitations-for-internal-listeners"></a>Wytyczne i ograniczenia dotyczące odbiorników wewnętrznych
+Użycie wewnętrznego modułu równoważenia obciążenia (ILB) przy użyciu odbiornika grupy dostępności na platformie Azure podlega następujące wytyczne:
 
 * Odbiornik grupy dostępności jest obsługiwana w systemie Windows Server 2008 R2, Windows Server 2012 i Windows Server 2012 R2.
-* Tylko jeden odbiornik grupy dostępności wewnętrznego jest obsługiwana dla każdej usługi w chmurze, ponieważ odbiornika jest skonfigurowany do ILB, a istnieje tylko jeden ILB dla każdej usługi w chmurze. Istnieje możliwość utworzenia wielu odbiorników zewnętrznych. Aby uzyskać więcej informacji, zobacz [skonfigurować odbiornik zewnętrzny dla zawsze włączonych grup dostępności na platformie Azure](../classic/ps-sql-ext-listener.md).
+* Tylko jeden odbiornik grupy dostępności wewnętrznego jest obsługiwana dla każdej usługi w chmurze, ponieważ odbiornika jest skonfigurowany do wewnętrznego modułu równoważenia obciążenia, a istnieje tylko jeden wewnętrznego modułu równoważenia obciążenia dla każdej usługi w chmurze. Jednak jest możliwość tworzenia wielu odbiorników zewnętrznych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie odbiornika zewnętrznego dla zawsze włączonych grup dostępności na platformie Azure](../classic/ps-sql-ext-listener.md).
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>Ustalić dostępność odbiornika
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Ten artykuł skupia się na utworzenie odbiornika, który używa ILB. Odbiornik publiczny lub zewnętrzne, należy wyświetlić wersję tego artykułu, w którym omówiono ustawienia zapasowej [zewnętrznych odbiornika](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Ten artykuł koncentruje się na tworzeniu odbiornik, który korzysta z wewnętrznym modułem równoważenia obciążenia. Odbiornik publicznego lub zewnętrzne, należy wyświetlić wersję tego artykułu, który w tym artykule omówiono ustawienia zapasowej [zewnętrznego odbiornika](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Tworzyć równoważeniem obciążenia punkty końcowe maszyny Wirtualnej z serwerem bezpośredniego zwrotu
-Należy najpierw utworzyć ILB, uruchamiając skrypt później w tej sekcji.
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Tworzenie ze zrównoważonym obciążeniem punktów końcowych maszyny Wirtualnej przy użyciu bezpośrednie serwera return
+Najpierw utwórz wewnętrznym modułem równoważenia obciążenia, uruchamiając skrypt później w tej sekcji.
 
-Tworzenie punktu końcowego z równoważeniem obciążenia dla każdej maszyny Wirtualnej, który obsługuje replikę Azure. Jeśli masz repliki w wielu regionach, każdej repliki dla tego regionu musi być w tej samej usługi w chmurze w tej samej sieci wirtualnej platformy Azure. Tworzenie dostępności replik grupy, obejmujące wiele regionów platformy Azure wymaga konfigurowania wielu sieci wirtualnych. Aby uzyskać więcej informacji na temat konfigurowania granic łączność sieci wirtualnej, zobacz [Konfigurowanie sieci wirtualnej do sieci wirtualnej łączności](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
+Utwórz punkt końcowy z równoważeniem obciążenia dla każdej maszyny Wirtualnej, który jest hostem repliki platformy Azure. Jeśli masz replik w wielu regionach w każdej repliki dla tego regionu musi być w tej samej usługi w chmurze w tej samej sieci wirtualnej platformy Azure. Tworzenie dostępności replik grupy, obejmujących wiele regionów platformy Azure wymagane jest skonfigurowanie wielu sieci wirtualnych. Aby uzyskać więcej informacji na temat konfigurowania między sieciami wirtualnymi, zobacz [Konfigurowanie sieci wirtualnej do łączności z siecią wirtualną](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-1. W portalu Azure przejdź do każdej maszyny Wirtualnej, który obsługuje replikę, aby wyświetlić szczegóły.
+1. W witrynie Azure portal przejdź do każdej maszyny Wirtualnej, który obsługuje replikę, aby wyświetlić szczegóły.
 
-2. Kliknij przycisk **punkty końcowe** kartę dla każdej maszyny Wirtualnej.
+2. Kliknij przycisk **punktów końcowych** kartę dla każdej maszyny Wirtualnej.
 
-3. Sprawdź, czy **nazwa** i **Port publiczny** nasłuchującego punktu końcowego, który chcesz użyć nie są już używane. W tym przykładzie w tej sekcji jest nazwa *MyEndpoint*, a numer portu to *1433*.
+3. Upewnij się, że **nazwa** i **Port publiczny** odbiornika punktu końcowego, którego chcesz używać nie są już używane. W tym przykładzie w tej sekcji nazwa to *MyEndpoint*, oraz numer portu to *1433*.
 
-4. Na kliencie lokalnym, Pobierz i zainstaluj najnowszą [modułu PowerShell](https://azure.microsoft.com/downloads/).
+4. Na lokalnym kliencie, Pobierz i zainstaluj najnowszą wersję [modułu programu PowerShell](https://azure.microsoft.com/downloads/).
 
 5. Uruchom program Azure PowerShell.  
-    Umożliwia otwarcie nowej sesji programu PowerShell z Azure załadowanych modułów administracyjnych.
+    Nowej sesji programu PowerShell zostanie otwarta z administracyjne moduły platformy Azure, załadowane.
 
-6. Uruchom polecenie `Get-AzurePublishSettingsFile`. To polecenie cmdlet kieruje do przeglądarki, aby pobrać plik ustawień publikowania do katalogu lokalnego. Użytkownik może zostać poproszony o podanie poświadczeń logowania dla subskrypcji platformy Azure.
+6. Uruchom polecenie `Get-AzurePublishSettingsFile`. To polecenie cmdlet kieruje do przeglądarki, aby pobrać plik ustawień publikowania do katalogu lokalnego. Może być monit o poświadczenia logowania dla subskrypcji platformy Azure.
 
-7. Uruchom następujące polecenie `Import-AzurePublishSettingsFile` polecenia ze ścieżką pobrany plik ustawień publikowania:
+7. Uruchom następujące polecenie `Import-AzurePublishSettingsFile` polecenia przy użyciu ścieżki pliku ustawień publikowania, który został pobrany:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
-    Po zaimportowaniu ustawień publikowania, można zarządzać subskrypcją platformy Azure w sesji programu PowerShell.
+    Po zaimportowaniu ustawień publikowania można zarządzać subskrypcją platformy Azure, w sesji programu PowerShell.
 
-8. Aby uzyskać *ILB*, Przypisz statyczny adres IP. Sprawdź bieżącą konfigurację sieci wirtualnej, uruchamiając następujące polecenie:
+8. Aby uzyskać *wewnętrznego modułu równoważenia obciążenia*, Przypisz statyczny adres IP. Sprawdź bieżącą konfigurację sieci wirtualnej, uruchamiając następujące polecenie:
 
         (Get-AzureVNetConfig).XMLConfiguration
-9. Uwaga *podsieci* nazwy podsieci, która zawiera maszyny wirtualnej tego hosta repliki. Ta nazwa jest używana w parametrze $SubnetName w skrypcie.
+9. Uwaga *podsieci* nazwy podsieci zawierającej maszyny wirtualne hostujące replik. Ta nazwa jest używana w parametrze $SubnetName w skrypcie.
 
-10. Uwaga *VirtualNetworkSite* nazwy i początkowe *prefiks adresu* dla podsieci, która zawiera maszyny wirtualne, które hosta repliki. Wyszukaj dostępnego adresu IP przez przekazanie obie wartości `Test-AzureStaticVNetIP` polecenia i po sprawdzeniu *AvailableAddresses*. Na przykład, jeśli sieć wirtualną o nazwie *MyVNet* i ma zakres adresów podsieci, która rozpoczyna się od *172.16.0.128*, polecenie pojawi się lista dostępnych adresów:
+10. Uwaga *VirtualNetworkSite* nazwy i początkowy *AddressPrefix* dla podsieci zawierającej maszyny wirtualne, które hostują replik. Wyszukaj dostępny adres IP, przekazując obie wartości do `Test-AzureStaticVNetIP` poleceń i przez badanie *AvailableAddresses*. Na przykład, jeśli sieć wirtualna ma nazwę *MyVNet* i ma zakres adresów podsieci, która rozpoczyna się od *172.16.0.128*, następującego polecenia pojawi się lista dostępnych adresów:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
-11. Wybierz jedną z dostępnych adresów, a następnie użyć jej w parametrze $ILBStaticIP skryptu w następnym kroku.
+11. Wybierz jedną z dostępnych adresów i używać go w parametrze $ILBStaticIP skryptu w następnym kroku.
 
-12. Skopiuj poniższy skrypt programu PowerShell do edytora tekstu, a następnie ustaw wartości zmiennych do potrzeb środowiska. Wartości domyślne zostały dołączone niektórych parametrów.  
+12. Skopiuj poniższy skrypt programu PowerShell do edytora tekstów i ustaw wartości zmiennych w zależności od środowiska. Wartości domyślne zostały przewidziane w niektórych parametrów.  
 
-    Istniejące wdrożenia, które korzysta z grup koligacji nie można dodać ILB. Aby uzyskać więcej informacji na temat wymagań dotyczących ILB, zobacz [Omówienie usługi równoważenia obciążenia wewnętrznego](../../../load-balancer/load-balancer-internal-overview.md).
+    Istniejące wdrożenia, które korzysta z grup koligacji nie można dodać wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji na temat wymagań dotyczących wewnętrznego modułu równoważenia obciążenia, zobacz [omówienie modułu równoważenia obciążenia wewnętrznego](../../../load-balancer/load-balancer-internal-overview.md).
 
-    Ponadto jeśli grupy dostępności obejmuje regiony platformy Azure, musi uruchamiania skryptu raz w każdym centrum danych do usługi w chmurze i węzły, które znajdują się w tym centrum danych.
+    Ponadto jeśli grupy dostępności obejmuje regiony platformy Azure, skrypt należy uruchomić jeden raz w każdym centrum danych do usługi w chmurze i węzły, które znajdują się w tym centrum danych.
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -105,29 +105,29 @@ Tworzenie punktu końcowego z równoważeniem obciążenia dla każdej maszyny W
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Po ustawieniu zmienne, skopiuj skrypt w edytorze tekstu do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter ponownie, aby upewnić się, uruchomienie skryptu.
+13. Po ustawieniu zmiennych, skopiuj skrypt w edytorze tekstowym do sesji środowiska PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że uruchomieniu skryptu.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Sprawdź, czy KB2854082 jest zainstalowana w razie potrzeby
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
-## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Otworzyć porty zapory w węzłach grupy dostępności
+## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Otwórz porty zapory w węzły grupy dostępności
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-open-firewall.md)]
 
-## <a name="create-the-availability-group-listener"></a>Tworzenie odbiornika grupy dostępności
+## <a name="create-the-availability-group-listener"></a>Utwórz odbiornik grupy dostępności
 
-Tworzenie odbiornika grupy dostępności w dwóch krokach. Najpierw należy utworzyć zasobu klastra punkt dostępu klienta i skonfigurować zależności. Po drugie Skonfiguruj zasoby klastra w programie PowerShell.
+Utwórz odbiornik grupy dostępności w dwóch krokach. Najpierw utwórz zasób klastra punktu dostępu klienta i skonfigurować zależności. Po drugie Skonfiguruj zasoby klastra w programie PowerShell.
 
 ### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>Utwórz punkt dostępu klienta i skonfiguruj zależności klastra
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>Konfigurowanie zasobów klastra w programie PowerShell
-1. ILB należy użyć adresu IP ILB, który został utworzony wcześniej. Aby uzyskać ten adres IP w programie PowerShell, użyj następującego skryptu:
+1. Dla wewnętrznego modułu równoważenia obciążenia należy użyć adres IP wewnętrznego modułu równoważenia obciążenia, który został utworzony wcześniej. Aby uzyskać ten adres IP w programie PowerShell, użyj następującego skryptu:
 
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
-2. Na jednym z maszyn wirtualnych Skopiuj skrypt programu PowerShell dla systemu operacyjnego do edytora tekstu, a następnie ustaw zmienne do wartości, które wcześniej zapisany.
+2. Na jednym z maszyn wirtualnych Skopiuj skrypt programu PowerShell dla systemu operacyjnego do edytora tekstów, a następnie ustaw zmienne do wartości, które możesz zauważyć, wcześniej.
 
     Dla systemu Windows Server 2012 lub nowszym Użyj następującego skryptu:
 
@@ -151,12 +151,12 @@ Tworzenie odbiornika grupy dostępności w dwóch krokach. Najpierw należy utwo
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po ustawieniu zmienne, Otwórz okno programu Windows PowerShell z podwyższonym poziomem uprawnień, wklej skrypt w edytorze tekstowym w sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt zacznie działać.
+3. Po ustawieniu zmiennych, Otwórz okno programu Windows PowerShell z podwyższonym, wklej skrypt w edytorze tekstowym do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt uruchamiania.
 
 4. Powtórz te czynności dla każdej maszyny Wirtualnej.  
-    Ten skrypt konfiguruje zasobu adresów IP przy użyciu adresu IP usługi w chmurze i ustawia innych parametrów, takich jak port sondy. Gdy zasób adresu IP w tryb online, mogą odpowiadać na sondowanie na port sondy z równoważeniem obciążenia punktu końcowego, który został utworzony wcześniej.
+    Ten skrypt konfiguruje się zasobu adresu IP przy użyciu adresu IP usługi w chmurze i ustawia inne parametry, takie jak port sondy. Jeśli zasób adresu IP w tryb online, mogą odpowiadać na sondowanie na porcie sondowania z równoważeniem obciążenia punktu końcowego utworzonego wcześniej.
 
-## <a name="bring-the-listener-online"></a>Przełącz odbiornika w trybie online
+## <a name="bring-the-listener-online"></a>Przenieś odbiornika w trybie online
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
 
 ## <a name="follow-up-items"></a>Elementy monitowania

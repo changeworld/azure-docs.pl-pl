@@ -1,6 +1,6 @@
 ---
 title: Funkcje danych klienta w usłudze Azure Key Vault | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o danych klienta w magazynie kluczy
+description: Dowiedz się więcej o danych klientów w usłudze Key Vault
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,17 +14,17 @@ ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
 ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637365"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38235537"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkcje danych klienta w usłudze Azure Key Vault
 
-Usługa Azure Key Vault otrzymuje dane klienta podczas tworzenia lub aktualizacji magazynów, kluczy, kluczy tajnych, certyfikatów i kont magazynu zarządzanego. Te dane klienta są bezpośrednio widoczne w portalu Azure i za pośrednictwem interfejsu API REST. Dane klienta można edytowane lub usunięte przez aktualizowanie lub usuwanie obiektu, który zawiera dane.
+Usługa Azure Key Vault otrzymuje dane klienta, podczas tworzenia lub aktualizowania magazynów kluczy, wpisów tajnych, certyfikatów i kont magazynu zarządzanego. Te dane klienta są bezpośrednio widoczne w witrynie Azure portal i za pośrednictwem interfejsu API REST. Dane klienta można edytować lub usunąć, aktualizowania lub usuwania obiektu, który zawiera dane.
 
-Dzienniki systemu dostępu są generowane, gdy użytkownik lub aplikacja uzyskuje dostęp do magazynu kluczy. Dostęp szczegółowe dzienniki są dostępne dla klientów korzystających z usługi Azure Insights.
+Dzienniki dostępu systemu są generowane, gdy użytkownik lub aplikacja uzyskuje dostęp do usługi Key Vault. Dostęp do szczegółowych dzienników są dostępne dla klientów korzystających z usługi Azure Insights.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,42 +32,42 @@ Dzienniki systemu dostępu są generowane, gdy użytkownik lub aplikacja uzyskuj
 
 Poniższe informacje identyfikuje dane klienta w ramach usługi Azure Key Vault:
 
-- Zasady dostępu dla usługi Azure Key Vault zawiera identyfikatory obiektów reprezentujących użytkowników, grup lub aplikacji
-- Podmiotom certyfikatów może zawierać adresów e-mail lub innego użytkownika lub organizacyjne identyfikatorów
-- Kontakty certyfikat może zawierać adresu e-mail użytkownika, nazwy i numery telefonów
-- Wystawców certyfikatów może zawierać adresów e-mail, nazwy, numery telefonów, poświadczenia konta i szczegóły organizacji
-- Dowolne tagi może odnosić się do obiektów w usłudze Azure Key Vault. Te obiekty obejmują magazynów kluczy, kluczy tajnych, certyfikatów i kont magazynu. Tagów używanych mogą zawierać dane osobowe
-- Identyfikatory obiektów zawierają dzienniki dostępu w usłudze Azure Key Vault [UPN](../active-directory/connect/active-directory-aadconnect-userprincipalname.md)i adresów IP dla każdego wywołania interfejsu API REST
-- Usługa Azure Key Vault dzienników diagnostycznych może zawierać identyfikatory obiektów i adresów IP dla interfejsu API REST
+- Zasady dostępu do usługi Azure Key Vault zawierają identyfikatory obiektów reprezentująca użytkownikom, grupom i aplikacjom
+- Podmiotom certyfikatów może zawierać adresy e-mail lub innego użytkownika lub identyfikatorów organizacyjnych
+- Kontakty certyfikatu może zawierać adresy e-mail użytkowników, nazw lub numerów telefonów
+- Wystawcy certyfikatu może zawierać adresy e-mail, nazwy, numerów telefonów, poświadczenia konta i szczegóły organizacyjne
+- Dowolne tagi można zastosować do obiektów w usłudze Azure Key Vault. Te obiekty obejmują magazynów kluczy, wpisów tajnych, certyfikatów i kont magazynu. Tagi używane mogą zawierać dane osobowe
+- Dzienniki dostępu w usłudze Azure Key Vault zawierają identyfikatory obiektów [UPN](../active-directory/connect/active-directory-aadconnect-userprincipalname.md)i adresy IP dla każdego wywołania interfejsu API REST
+- Dzienniki diagnostyczne platformy Azure Key Vault może zawierać identyfikatory obiektów i adresy IP dla wywołań interfejsu API REST
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
 
-Interfejsów API REST, portalu i zestawy SDK używany do tworzenia magazynów, kluczy, kluczy tajnych, certyfikatów i kont magazynu zarządzanego, mogą również aktualizowanie i usuwanie tych obiektów.
+Interfejsy API REST, środowisko portalu i zestawy SDK umożliwia tworzenie magazynów kluczy, wpisów tajnych, certyfikatów i kont magazynu zarządzanego mogą również aktualizowanie i usuwanie tych obiektów.
 
-Usuwania nietrwałego umożliwia odzyskanie danych usuniętych przez 90 dni, po usunięciu. Używając usuwania nietrwałego, danych może zostać trwale usunięty przed 90 dni, za pomocą operacji przeczyszczania wygasa po okresu przechowywania. Jeśli subskrypcja lub magazynie został skonfigurowany do bloku przeczyścić operacji, nie jest możliwe trwale usunąć danych, aż do okresu przechowywania zaplanowane.
+Usuwanie nietrwałe umożliwia odzyskanie danych usuniętych przez 90 dni po usunięciu. Korzystając z usuwania nietrwałego, dane mogą trwale usunięte przed 90 dni, okres przechowywania wygasa po za pomocą operacji przeczyszczania. Jeśli magazyn lub subskrypcja została skonfigurowana do bloku przeczyścić operacji, nie jest możliwe trwale usunąć danych, dopóki nie upłynął okres przechowywania zaplanowane.
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Tych samych interfejsów API REST, obsługi portalu i zestawy SDK, które są używane do tworzenia magazynów, kluczy, kluczy tajnych, certyfikaty i magazynu zarządzanego konta są również umożliwiają wyświetlanie i eksportowanie tych obiektów.
+Tych samych interfejsów API REST, środowisko portalu i zestawy SDK, które są używane do tworzenia magazynów, kluczy, wpisów tajnych i certyfikatów oraz magazynu zarządzanego, które konta są również umożliwiają wyświetlanie i eksportowanie tych obiektów.
 
-Usługa Azure Key Vault rejestrowanie dostępu jest funkcją opcjonalną, którą można włączyć na generowanie dzienników dla każdego wywołania interfejsu API REST. Te dzienniki będą przekazywane do konta magazynu w ramach subskrypcji, których zastosować zasady przechowywania, który spełnia wymagania organizacji.
+Usługa Azure Key Vault, rejestrowanie dostępu jest opcjonalna funkcja, która można włączyć w celu generowania dzienników dla każdego wywołania interfejsu API REST. Te dzienniki będą przekazywane do konta magazynu w ramach subskrypcji, którym zastosować zasady przechowywania, który spełnia wymagania organizacji.
 
-Azure dzienników diagnostycznych usługi Key Vault zawierających dane osobowe mogą zostać pobrane przez wysłał żądanie eksportu w portalu zasady zachowania poufności użytkownika. Żądanie musi zostać wykonane przez administratora dzierżawy.
+Usługa Key Vault dzienniki diagnostyczne platformy Azure zawierające dane osobowe mogą być pobierane przez wysłał żądanie eksportu w portalu rozwiązania prywatność użytkownika. Żądanie musi zostać wykonane przez administratora dzierżawy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Funkcja rejestrowania usługi Azure Key Vault](key-vault-logging.md)
 
-- [Omówienie usługi Azure Key Vault soft-delete](key-vault-soft-delete-cli.md)
+- [Omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-soft-delete-cli.md)
 
-- [magazynów](https://docs.microsoft.com/rest/api/keyvault/vaults)
+- [Magazyny](https://docs.microsoft.com/rest/api/keyvault/vaults)
 
-- [Operacje klucza platformy Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Usługa Azure Key Vault kluczowych operacji](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
-- [Usługa Azure Key Vault operacje kluczy tajnych](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Usługa Azure operacji dla wpisu tajnego usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault certyfikaty i zasady](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Usługa Azure Key Vault certyfikaty i zasady](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
 
 - [Wystawców certyfikatów](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)
 
-- [Operacje konta magazynu w usłudze Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Operacje konta magazynu w usłudze Azure usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

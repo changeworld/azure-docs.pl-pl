@@ -14,62 +14,62 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 3d9a4454a1b3f65b42a46a26e8d483fad83f65f6
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111273"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307402"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Jak zarządzać kontami użytkowników w usłudze Azure API Management
-W usłudze API Management Deweloperzy są użytkownicy interfejsów API, które można udostępnić przy użyciu interfejsu API zarządzania. Ten przewodnik przedstawia sposobu tworzenia i zapraszanie deweloperów do korzystania z interfejsów API i produktów czy należy udostępnić je z wystąpieniem usługi API Management. Informacje na programowe zarządzanie kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) dokumentacji w [interfejsu API REST zarządzania](https://msdn.microsoft.com/library/azure/dn776326.aspx) odwołania.
+W usłudze API Management deweloperzy mają użytkownicy interfejsów API, które należy udostępnić za pomocą usługi API Management. W tym przewodniku przedstawiono sposób utworzyć i zaprosić deweloperów do użycia interfejsów API i produktów, możesz udostępnić je za pomocą wystąpienia usługi API Management. Aby uzyskać informacji na temat programowego zarządzania kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) w dokumentacji [interfejsu API REST zarządzania](https://msdn.microsoft.com/library/azure/dn776326.aspx) odwołania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonywanie zadań w tym artykule: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+Wykonywanie zadań w tym artykule: [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-developer"> </a>Utwórz nowy developer
+## <a name="create-developer"> </a>Tworzenie nowego dla deweloperów
 
 Aby dodać nowego użytkownika, wykonaj kroki opisane w tej sekcji:
 
-1. Wybierz **użytkowników** kartę do lewego rogu ekranu.
+1. Wybierz **użytkowników** karty po lewej stronie ekranu.
 2. Naciśnij klawisz **+ Dodaj**.
 3. Wprowadź odpowiednie informacje dla użytkownika.
 4. Kliknij przycisk **Dodaj**.
 
-    ![Dodaj nowego użytkownika](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
+    ![Dodawanie nowego użytkownika](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Domyślnie developer nowo utworzonego konta są **Active**wraz ze skojarzonymi z **deweloperzy** grupy. Konta dewelopera, które znajdują się w **active** stanu można uzyskać dostęp do wszystkich interfejsów API, do którego mają zostać subskrypcji. Aby skojarzyć developer nowo utworzony z dodatkowych grup, zobacz [sposobu kojarzenia grupy z deweloperami][How to associate groups with developers].
+Domyślnie są kontami deweloperów nowo utworzony **Active**i skojarzonych z tą **deweloperów** grupy. Konta dewelopera, które znajdują się w **active** stanu można uzyskać dostęp do wszystkich interfejsów API, do którego mają zostać subskrypcji. Aby skojarzyć nowo utworzoną dla deweloperów z dodatkowych grup, zobacz [jak skojarzyć grupy z deweloperami][How to associate groups with developers].
 
 ## <a name="invite-developer"> </a>Zaproś dewelopera
-Aby zaprosić dewelopera, wykonaj kroki opisane w tej sekcji:
+Aby zaprosić deweloperów, wykonaj kroki opisane w tej sekcji:
 
-1. Wybierz **użytkowników** kartę do lewego rogu ekranu.
+1. Wybierz **użytkowników** karty po lewej stronie ekranu.
 2. Naciśnij klawisz **+ zaprosić**.
 
-Zostanie wyświetlony komunikat potwierdzenia, ale Deweloper nowo zaproszonych nie znajdują się na liście dopiero po ich zaakceptowaniu zaproszenia. 
+Zostanie wyświetlony komunikat potwierdzenia, ale nowo zaproszonego dla deweloperów nie są wyświetlane na liście do momentu po zaakceptowaniu zaproszenia. 
 
-Gdy Projektant jest zaproszenie, zostanie wysłana wiadomość e-mail do deweloperów. Ten adres e-mail jest generowana z użyciem szablonu i można dostosowywać. Aby uzyskać więcej informacji, zobacz [Konfigurowanie szablonów wiadomości e-mail][Configure email templates].
+Gdy deweloper otrzymał zaproszenie, zostanie wysłana wiadomość e-mail do deweloperów. Ta wiadomość e-mail jest generowana z użyciem szablonu i można dostosowywać. Aby uzyskać więcej informacji, zobacz [szablony wiadomości e-mail Konfiguruj][Configure email templates].
 
-Po zaakceptowaniu zaproszenia konto staje się aktywny.
+Po zaakceptowaniu zaproszenia konto stanie się aktywny.
 
-## <a name="block-developer"> </a> Zdezaktywować ani ponownie aktywować konto dewelopera
+## <a name="block-developer"> </a> Zdezaktywować ani ponownie aktywować konta dewelopera
 
-Domyślnie są konta dewelopera nowo utworzone lub zaproszonych **Active**. Aby zdezaktywować konta dewelopera, kliknij przycisk **bloku**. Aby ponownie uaktywnić konto dewelopera zablokowanych, kliknij przycisk **Aktywuj**. Konto dewelopera zablokowanych nie można uzyskać dostępu do portalu dla deweloperów lub wywołaj wszystkie interfejsy API. Aby usunąć konto użytkownika, kliknij przycisk **usunąć**.
+Domyślnie są kontami deweloperów nowo utworzone lub zaproszonego **Active**. Aby zdezaktywować konta dewelopera, kliknij przycisk **bloku**. Aby ponownie uaktywnić konto dewelopera zablokowanych, kliknij przycisk **Aktywuj**. Konto dewelopera zablokowanych nie można uzyskać dostęp do portalu dla deweloperów lub wywoływania żadnych interfejsów API. Aby usunąć konto użytkownika, kliknij przycisk **Usuń**.
 
-Aby zablokować użytkownika, wykonaj następujące kroki.
+Aby uniemożliwić użytkownikowi, wykonaj poniższe kroki.
 
-1. Wybierz **użytkowników** kartę do lewego rogu ekranu.
-2. Kliknij użytkownika, dla którego chcesz zablokować.
+1. Wybierz **użytkowników** karty po lewej stronie ekranu.
+2. Kliknij użytkownika, który chcesz zablokować.
 3. Naciśnij klawisz **bloku**.
 
 ## <a name="reset-a-user-password"></a>Resetowanie hasła użytkownika
 
-Aby programowo pracować z kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) dokumentacji w [interfejsu API REST zarządzania](https://msdn.microsoft.com/library/azure/dn776326.aspx) odwołania. Aby zresetować hasło do konta użytkownika na określoną wartość, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
+Aby programowo pracować z kontami użytkowników, zobacz [jednostki użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) w dokumentacji [interfejsu API REST zarządzania](https://msdn.microsoft.com/library/azure/dn776326.aspx) odwołania. Aby zresetować hasło do konta użytkownika do określonej wartości, można użyć [zaktualizowania użytkownika](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operację i określ odpowiednie hasło.
 
 ## <a name="next-steps"> </a>Następne kroki
-Po utworzeniu konta dewelopera, można ją skojarzyć z rolami i subskrybowania produktów i interfejsów API. Aby uzyskać więcej informacji, zobacz [sposobu tworzenia i używania grup][How to create and use groups].
+Po utworzeniu konta dewelopera możesz skojarzyć go z rolami i subskrybowania produktów i interfejsów API. Aby uzyskać więcej informacji, zobacz [sposób tworzenia i używania grup][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

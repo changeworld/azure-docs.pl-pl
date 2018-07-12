@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 71569da662c5d5e5ef5ad6c7d9783a69e307f2fa
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 452501d5da58d06093f22009c6ecc30e02f581a5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441186"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38295643"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gości za pomocą usługi Azure AD przeglądów dostępu
 
@@ -30,7 +30,7 @@ Za pomocą usługi Azure Active Directory (Azure AD), możesz łatwo włączyć 
 Możesz również można łatwo upewnij się, że użytkownicy-goście mają odpowiedni dostęp. Możesz poprosić gości, samodzielnie lub osobę podejmującą do wzięcia udziału w przeglądzie dostępu i ponowne certyfikowanie (lub potwierdzające) do dostępu gości. Na podstawie sugestii pochodzących z usługi Azure AD recenzenci mogą wyrazić opinię dotyczącą przedłużenia dostępu poszczególnych użytkowników. Po zakończeniu przeglądu dostępu można wprowadzić zmiany i usunięcie dostępu dla gości, którzy już go nie potrzebują.
 
 > [!NOTE]
-> Ten dokument koncentruje się na przeglądu dostępu użytkowników-gości. Jeśli chcesz przeprowadzić przegląd dostępu wszystkich użytkowników, nie tylko gości, zobacz [zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak administrator globalny, zobacz [Rozpoczynanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management](active-directory-privileged-identity-management-how-to-start-security-review.md). 
+> Ten dokument koncentruje się na przeglądu dostępu użytkowników-gości. Jeśli chcesz przeprowadzić przegląd dostępu wszystkich użytkowników, nie tylko gości, zobacz [zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md). Jeśli chcesz przejrzeć członkostwo użytkowników w rolach administracyjnych, takich jak administrator globalny, zobacz [Rozpoczynanie przeglądu dostępu w usłudze Azure AD Privileged Identity Management](privileged-identity-management/pim-how-to-start-security-review.md). 
 >
 >
 

@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7ae3818795cddf5dfbb93ca6cc8dfff9d1c44c03
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: e75577ae917cbe14a123ff5e2d44da2edc8062ef
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341246"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307317"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrowanie usługi Azure Active Directory za pomocą usługi AKS — wersja zapoznawcza
 
 Usługa Azure Kubernetes Service (AKS) można skonfigurować do użycia usługi Azure Active Directory do uwierzytelniania użytkowników. W tej konfiguracji możesz zalogować się do klastra usługi Azure Kubernetes Service przy użyciu tokenu uwierzytelniania usługi Azure Active Directory. Ponadto administratorzy klastra mogą Konfigurowanie kontroli dostępu opartej na rolach platformy Kubernetes, oparte na tożsamości lub katalog członkostwem w grupach użytkowników.
 
-W tym dokumencie przedstawiono tworzenie wszystkie niezbędne wymagania wstępne dotyczące usługi AKS i Azure AD, wdrażanie klastra z obsługą usługi AD systemu Azure i tworzenie prostego rolę RBAC w klastrze AKS.
+W tym dokumencie przedstawiono tworzenie wszystkie niezbędne wymagania wstępne dotyczące usługi AKS i Azure AD, wdrażanie klastra z obsługą usługi AD systemu Azure i tworzenie prostego rolę RBAC w klastrze AKS. Należy pamiętać, że istniejących klastrów usługi AKS bez RBAC włączone obecnie nie można zaktualizować RBAC do używania.
 
 > [!IMPORTANT]
 > Integracja z platformą Azure Kubernetes Service (AKS) RBAC a usługą Azure AD jest obecnie w **Podgląd**. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
