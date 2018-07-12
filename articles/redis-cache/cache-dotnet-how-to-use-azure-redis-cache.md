@@ -16,21 +16,21 @@ ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 31d93fc8b2034152e61d24a789bba62bfd3b7892
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639813"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635442"
 ---
 # <a name="quickstart-use-azure-redis-cache-with-a-net-application"></a>Szybki start: korzystanie z usługi Azure Redis Cache w połączeniu z aplikacją platformy .NET
 
 
 
-W tym przewodniku Szybki start przedstawiono sposób rozpoczynania pracy z usługą Microsoft Azure Redis Cache na platformie .NET. Usługa Microsoft Azure Redis Cache jest oparta na popularnej pamięci podręcznej Redis Cache typu open source. Umożliwia dostęp do bezpiecznej, dedykowanej pamięci podręcznej Redis, zarządzanej przez firmę Microsoft. Pamięć podręczna utworzona przy użyciu usługi Azure Redis Cache jest dostępna z poziomu dowolnej aplikacji w ramach platformy Microsoft Azure.
+W tym przewodniku Szybki start przedstawiono sposób rozpoczynania pracy z usługą Microsoft Azure Redis Cache na platformie .NET. Usługa Microsoft Azure Redis Cache jest oparta na popularnej pamięci podręcznej Redis typu open source. Umożliwia dostęp do bezpiecznej, dedykowanej pamięci podręcznej Redis, zarządzanej przez firmę Microsoft. Pamięć podręczna utworzona przy użyciu usługi Azure Redis Cache jest dostępna z poziomu dowolnej aplikacji w ramach platformy Microsoft Azure.
 
 W tym przewodniku Szybki start będziesz używać klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) z kodem C\# w aplikacji konsolowej. Utworzysz pamięć podręczną i skonfigurujesz aplikację kliencką platformy .NET. Następnie dodasz i zaktualizujesz obiekty w pamięci podręcznej. 
 
-![Ukończona aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
+![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -106,7 +106,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-Połączenie z usługą Azure Redis Cache jest zarządzane przez klasę `ConnectionMultiplexer`. Ta klasa powinien być udostępniana i używana ponownie w aplikacji klienta. Nie należy tworzyć nowego połączenia dla każdej operacji. 
+Połączenie z usługą Azure Redis Cache jest zarządzane przez klasę `ConnectionMultiplexer`. Ta klasa powinna być udostępniana i wielokrotnie używana w aplikacji klienta. Nie należy tworzyć nowego połączenia dla każdej operacji. 
 
 Nigdy nie należy przechowywać poświadczeń w kodzie źródłowym. Aby przykład był prosty, używam tylko pliku konfiguracji zewnętrznych wpisów tajnych. Lepszym rozwiązaniem byłoby użycie [usługi Azure Key Vault z certyfikatami](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios).
 
@@ -129,7 +129,7 @@ W pliku *Program.cs* dodaj następujące elementy członkowskie do klasy `Progra
 ```
 
 
-To podejście do udostępniania wystąpienia klasy `ConnectionMultiplexer` w aplikacji używa właściwości statycznej, która zwraca połączone wystąpienie. Ten kod zapewnia bezpieczny wątkowo sposób inicjowania tylko jednego połączonego wystąpienia klasy `ConnectionMultiplexer`. Parametr `abortConnect` ma wartość false, co oznacza, że wystąpienie zostanie wykonane pomyślnie, nawet jeśli połączenie z usługą Azure Redis Cache nie zostanie nawiązane. Kluczowa funkcja klasy `ConnectionMultiplexer` polega na automatycznym przywracaniu łączności z pamięcią podręczną po rozwiązaniu problemu z siecią lub usunięciu innych przyczyn.
+W tym podejściu do udostępniania wystąpienia klasy `ConnectionMultiplexer` w aplikacji użyto właściwości statycznej, która zwraca połączone wystąpienie. Ten kod zapewnia bezpieczny wątkowo sposób inicjowania tylko jednego połączonego wystąpienia klasy `ConnectionMultiplexer`. Parametr `abortConnect` ma wartość false, co oznacza, że wywołanie zostanie wykonane pomyślnie, nawet jeśli połączenie z usługą Azure Redis Cache nie zostanie nawiązane. Kluczowa funkcja klasy `ConnectionMultiplexer` polega na automatycznym przywracaniu łączności z pamięcią podręczną po rozwiązaniu problemu z siecią lub usunięciu innych przyczyn.
 
 Wartość ustawienia appSetting *CacheConnection* jest używana do odwoływania się do parametrów połączenia pamięci podręcznej z witryny Azure Portal jako parametru hasła.
 
@@ -182,7 +182,7 @@ Usługa Redis przechowuje większość danych w formie ciągów Redis, ale ciąg
 
 Naciśnij klawisze **Ctrl+F5**, aby skompilować i uruchomić aplikację konsolową.
 
-W poniższym przykładzie widać, że klucz `Message` miał wcześniej w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli pamięci podręcznej Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
+W poniższym przykładzie widać, że klucz `Message` miał już w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
 
 ![Częściowa aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-partial.png)
 
@@ -191,7 +191,7 @@ W poniższym przykładzie widać, że klucz `Message` miał wcześniej w pamięc
 
 Usługa Azure Redis Cache może buforować obiekty platformy .NET oraz pierwotne typy danych, ale zanim będzie możliwe buforowanie obiektu platformy .NET, trzeba go serializować. Odpowiedzialność za serializację obiektu .NET spoczywa na deweloperze aplikacji, który ma możliwość wybrania serializatora.
 
-Prostym sposobem na wykonywanie serializacji obiektów jest użycie metod serializacji `JsonConvert` w środowisku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) oraz serializacja do i z formatu JSON. W tej sekcji dodasz obiekt platformy .NET do pamięci podręcznej.
+Prostym sposobem na wykonanie serializacji obiektów jest użycie metod serializacji `JsonConvert` w środowisku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) oraz serializacja do i z formatu JSON. W tej sekcji dodasz obiekt platformy .NET do pamięci podręcznej.
 
 W programie Visual Studio kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów** i uruchom poniższe polecenie w oknie Konsola menedżera pakietów.
 
@@ -241,7 +241,7 @@ W dolnej części procedury `Main()` w pliku *Program.cs* i przed wywołaniem do
 
 Naciśnij klawisze **Ctrl+F5**, aby skompilować i uruchomić aplikację konsolową na potrzeby testowania serializacji obiektów platformy .NET. 
 
-![Ukończona aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
+![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -273,6 +273,6 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 W tym przewodniku Szybki start przedstawiono sposób użycia pamięci podręcznej Azure Redis Cache z poziomu aplikacji platformy .NET. Przejdź do kolejnego przewodnika Szybki start, aby używać pamięci podręcznej Redis Cache z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji internetowej platformy ASP.NET, która korzysta z pamięci podręcznej Azure Redis Cache.](./cache-web-app-howto.md)
+> [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Redis Cache.](./cache-web-app-howto.md)
 
 
