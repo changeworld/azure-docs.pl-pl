@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.date: 04/30/2018
 ms.author: dobett
 ms.openlocfilehash: 7d4d29b7502f081de8385c7d88687ece4905b02b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334517"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688390"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Szybki start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT oraz odczytywanie danych telemetrycznych z centrum przy użyciu aplikacji zaplecza (Python)
 

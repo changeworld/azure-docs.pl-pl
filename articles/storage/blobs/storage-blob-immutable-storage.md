@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: sangsinh
-ms.openlocfilehash: 4a83ebbcf045ac2b74957effceadfe80609e960c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 195537b271c442b954d6d6e6fa8d1491c07822e8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237493"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970248"
 ---
 # <a name="immutable-storage-feature-of-azure-blob-storage-preview"></a>Funkcja magazynu niezmiennego usługi Azure Blob Storage (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Funkcja magazynu niezmiennego zapewnia:
 
 - **Konfigurację na poziomie kontenera:** funkcja magazynu niezmiennego umożliwia użytkownikom konfigurowanie zasad przechowywania na podstawie czasu i tagów archiwizacji ze względów prawnych na poziomie kontenera.  Użytkownicy mogą tworzyć i blokować zasady przechowywania na podstawie czasu, wydłużać okresy przechowywania, ustawiać i usuwać stan archiwizacji ze względów prawnych itp. przy użyciu prostych ustawień na poziomie kontenera.  Te zasady będą stosowane do wszystkich obiektów blob w kontenerze — zarówno istniejących, jak i nowych.
 
-- **Obsługę rejestrowania inspekcji:** każdy kontener zawiera dziennik inspekcji zawierający maksymalnie pięć poleceń dotyczących przechowywania na podstawie czasu w przypadku zablokowanych zasad przechowywania na podstawie czasu oraz maksymalnie trzy wpisy dotyczące wydłużeń okresu przechowywania.  W przypadku przechowywania na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz okres przechowywania. W przypadku archiwizacji ze względów prawnych dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz tagi archiwizacji ze względów prawnych. Dziennik jest przechowywany przez cały okres istnienia kontenera, zgodnie z wymogami SEC 17a-4(f). Bardziej szczegółowy rejestr wszystkich działań warstwy kontroli zawiera [Dziennik aktywności platformy Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Przechowywanie tych dzienników w sposób trwały, zgodnie z obowiązującymi wymogami prawnymi lub innymi, należy do obowiązków użytkownika.
+- **Obsługę rejestrowania inspekcji:** każdy kontener zawiera dziennik inspekcji zawierający maksymalnie pięć poleceń dotyczących przechowywania na podstawie czasu w przypadku zablokowanych zasad przechowywania na podstawie czasu oraz maksymalnie trzy wpisy dotyczące wydłużeń okresu przechowywania.  W przypadku przechowywania na podstawie czasu dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz okres przechowywania. W przypadku archiwizacji ze względów prawnych dziennik zawiera identyfikator użytkownika, typ polecenia, znaczniki czasu oraz tagi archiwizacji ze względów prawnych. Dziennik jest przechowywany przez cały okres istnienia kontenera, zgodnie z wymogami SEC 17a-4(f). Bardziej szczegółowy rejestr wszystkich działań warstwy kontroli zawiera [Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Przechowywanie tych dzienników w sposób trwały, zgodnie z obowiązującymi wymogami prawnymi lub innymi, należy do obowiązków użytkownika.
 
  Ta funkcja jest dostępna we wszystkich publicznych regionach świadczenia usługi Azure.
 
@@ -68,7 +68,7 @@ Więcej informacji dotyczących ustawiania i usuwania stanu archiwizacji ze wzgl
 
 W kontenerze mogą być jednocześnie stosowane zasady przechowywania na podstawie czasu i archiwizacja ze względów prawnych. Wszystkie obiekty blob w tym kontenerze pozostaną w stanie niezmiennym do momentu usunięcia stanu archiwizacji ze względów prawnych nawet po upływie obowiązującego okresu przechowywania. I odwrotnie — obiekty blob pozostaną w stanie niezmiennym przez cały obowiązujący okres przechowywania nawet po usunięciu stanu archiwizacji ze względów prawnych.
 W poniższej tabeli przedstawiono typy operacji na obiektach blob, których nie można wykonywać w poszczególnych przypadkach stosowania stanu niezmiennego.
-Aby uzyskać szczegółowe informacje na temat interfejsu API REST dla obiektów blob, zapoznaj się z dokumentacją [interfejsów API usługi Azure Blob Storage](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api).
+Aby uzyskać szczegółowe informacje na temat interfejsu API REST dla obiektów blob, zapoznaj się z dokumentacją [interfejsów API usługi Azure Blob Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
 |Scenariusz  |Stan obiektu blob  |Niedozwolone operacje na obiektach blob  |
 |---------|---------|---------|
@@ -79,7 +79,7 @@ Aby uzyskać szczegółowe informacje na temat interfejsu API REST dla obiektów
 
 > [!NOTE]
 > W pierwszych dwóch scenariuszach wymienionych w powyższej tabeli dozwolone jest pierwsze użycie operacji Put Blob, Put Block List i Put Block w celu utworzenia obiektu blob, ale wszystkie kolejne operacje tego typu są niedozwolone.
-> Funkcja magazynu niezmiennego jest dostępna tylko w przypadku kont ogólnego przeznaczenia w wersji 2 (GPv2) oraz kont usługi Blob Storage i wymaga utworzenia za pośrednictwem usługi [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview).
+> Funkcja magazynu niezmiennego jest dostępna tylko w przypadku kont ogólnego przeznaczenia w wersji 2 (GPv2) oraz kont usługi Blob Storage i wymaga utworzenia za pośrednictwem usługi [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="pricing"></a>Cennik
 
@@ -94,7 +94,7 @@ W publicznej wersji zapoznawczej obowiązują następujące ograniczenia:
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w najnowszych wersjach [witryny Azure Portal](http://portal.azure.com), [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) oraz programu [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
+Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w najnowszych wersjach [witryny Azure Portal](http://portal.azure.com), [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oraz programu [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -130,7 +130,7 @@ Funkcja magazynu niezmiennego usługi Azure Blob Storage jest obsługiwana w naj
 
 ### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
 
-Zainstaluj [rozszerzenie interfejsu wiersza polecenia](http://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), używając polecenia `az extension add -n storage-preview`.
+Zainstaluj [rozszerzenie interfejsu wiersza polecenia](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), używając polecenia `az extension add -n storage-preview`.
 
 Jeśli rozszerzenie jest już zainstalowane, użyj następującego polecenia, aby włączyć funkcję magazynu niezmiennego: `az extension update -n storage-preview`
 

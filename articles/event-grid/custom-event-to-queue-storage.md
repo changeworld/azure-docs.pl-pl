@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/09/2018
+ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 49349967abb59967b8c7d33bf9537d1e2df30925
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 18ca639dae006e310a7f03f7300f2203b9de4f1d
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34300836"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867746"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do usługi Azure Queue Storage za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -34,6 +34,8 @@ Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *gridResourceGrou
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
 ```
+
+[!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
 ## <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 

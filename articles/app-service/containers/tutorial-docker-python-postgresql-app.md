@@ -13,11 +13,11 @@ ms.date: 01/28/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
 ms.openlocfilehash: 2728c354a84c4b13b0ad8509d038837733251975
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31788436"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306898"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Tworzenie aplikacji internetowej platformy Docker przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 
@@ -369,7 +369,7 @@ W tym kroku wdrożysz swoją aplikację platformy Python Flask opartą na konten
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 W planie *myAppServicePlan* usługi App Service utwórz aplikację internetową przy użyciu polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
 
@@ -495,9 +495,9 @@ http://<app_name>.azurewebsites.net
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację internetową.
 
-W lewym menu kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji sieci Web platformy Azure.
+W lewym menu kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/tutorial-docker-python-postgresql-app/app-resource.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/tutorial-docker-python-postgresql-app/app-resource.png)
 
 Domyślnie portal zawiera stronę **Omówienie** aplikacji internetowej. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Na kartach po lewej stronie strony są pokazane poszczególne strony konfiguracji, które można otworzyć.
 

@@ -16,11 +16,11 @@ ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: 1cbd29b480c80c93f750b97d47ccb3c09c984942
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30230650"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38306790"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Tworzenie aplikacji internetowej w języku PHP w usłudze App Service w systemie Linux
 
@@ -76,7 +76,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
@@ -150,13 +150,13 @@ Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w
 
 ![Zaktualizowana przykładowa aplikacja działająca na platformie Azure](media/quickstart-php/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Zarządzanie nową aplikacją sieci Web platformy Azure
+## <a name="manage-your-new-azure-web-app"></a>Zarządzanie nową aplikacją internetową platformy Azure
 
 Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
 
 W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
 Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 

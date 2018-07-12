@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723225"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
 Usługa Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków. Pozwala ono analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele na skalę chmury.
@@ -274,7 +276,7 @@ Najpierw należy zarejestrować model. Następnie należy wygenerować manifest,
    Aby utworzyć manifest, użyj następującego polecenia i podaj wyjściowy identyfikator modelu z poprzedniego kroku:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
    ```
    To polecenie spowoduje wygenerowanie identyfikatora manifestu.
 
@@ -283,7 +285,7 @@ Najpierw należy zarejestrować model. Następnie należy wygenerować manifest,
    Aby utworzyć obraz platformy Docker, użyj następującego polecenia i podaj wyjściowy identyfikator manifestu z poprzedniego kroku. Możesz również opcjonalnie dołączyć zależności conda przy użyciu przełącznika `-c`.
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID> -c aml_config\conda_dependencies.yml
+   az ml image create -n irisimage --manifest-id <manifest ID> 
    ```
    To polecenie spowoduje wygenerowanie identyfikatora obrazu platformy Docker.
    

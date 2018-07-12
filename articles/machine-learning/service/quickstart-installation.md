@@ -7,15 +7,17 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 12a34bc98db396482d9fde8da778db0f0ef7de4b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 30795f542bca52159f2ff0fe052a94de3743f0e8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767157"
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Szybki start: Instalowanie usług Azure Machine Learning i rozpoczynanie z nimi pracy
 Usługi Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i przeprowadzania zaawansowanych analiz. Pomaga ono profesjonalnym analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele w skali chmury.
@@ -145,7 +147,7 @@ Tutaj tworzymy nowy projekt aplikacji Workbench, korzystając z szablonu obejmuj
    Project name (Nazwa projektu) | myIris |Wprowadź unikatową nazwę, która identyfikuje Twoje konto. Możesz użyć własnej nazwy albo nazwy działu lub projektu, która najlepiej identyfikuje eksperyment. Nazwa powinna mieć od 2 do 32 znaków. Powinna ona zawierać tylko znaki alfanumeryczne i znak łącznika (-). 
    Katalog projektu | c:\Temp\ | Określ katalog, w którym zostanie utworzony projekt.
    Opis projektu | _Pozostaw puste_ | Pole opcjonalne przydatne do opisywania projektów.
-   Adres URL repozytorium usługi GIT VisualStudio.com |_Pozostaw puste_ | Pole opcjonalne. Projekt może być opcjonalnie skojarzony z repozytorium Git w usłudze Visual Studio Team Services na potrzeby kontroli źródła i współpracy. [Dowiedz się, jak to skonfigurować](/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Adres URL repozytorium usługi GIT VisualStudio.com |_Pozostaw puste_ | Pole opcjonalne. Projekt może być opcjonalnie skojarzony z repozytorium Git w usłudze Visual Studio Team Services na potrzeby kontroli źródła i współpracy. [Dowiedz się, jak to skonfigurować](../desktop-workbench/using-git-ml-project.md#step-3-set-up-a-machine-learning-project-and-git-repo). 
    Wybrany obszar roboczy | IrisGarden (jeśli istnieje) | Wybierz obszar roboczy utworzony dla konta Eksperymentowania w witrynie Azure Portal. <br/>Jeśli samouczek Szybki start był wykonywany, powinien już istnieć obszar roboczy o nazwie IrisGarden. W przeciwnym razie wybierz obszar roboczy utworzony podczas tworzenia konta Eksperymentowania lub dowolny inny, którego chcesz użyć.
    Szablon projektu | Classifying Iris | Szablony zawierają skrypty i dane, których można użyć, aby zapoznać się z produktem. Ten szablon zawiera skrypty i dane potrzebne w tym samouczku Szybki start oraz innych samouczkach w tej witrynie dokumentacji. 
 

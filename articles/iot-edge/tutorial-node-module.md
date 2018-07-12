@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: cdcd30ea29c5c7066a6ae05f64b5bf0720572599
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061268"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299210"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w środowisku Node.js i wdrażanie go na urządzeniu symulowanym
 
@@ -185,7 +185,7 @@ Do wdrożenia modułu Node.js na urządzeniu usługi IoT Edge możesz użyć wit
 
 1. Otwórz paletę poleceń programu VS Code, wybierając kolejno opcje **Widok** > **Paleta poleceń**.
 
-2. Wyszukaj i uruchom polecenie **Azure: zaloguj**. Postępuj zgodnie z instrukcjami, aby zalogować się na koncie platformy Azure. 
+2. Wyszukaj i uruchom polecenie **Azure: zaloguj**. Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. 
 
 3. W palecie poleceń wyszukaj i uruchom polecenie **Azure IoT Hub: wybierz centrum IoT Hub**. 
 

@@ -9,6 +9,8 @@
   items:
     - name: 'C#'
       href: quickstarts/csharp.md
+    - name: Przejdź
+      href: quickstarts/go.md
     - name: Java
       href: quickstarts/java.md
     - name: Node.js

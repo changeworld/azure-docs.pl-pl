@@ -16,11 +16,11 @@ ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 4bb6f12781666792aad31789a59d752dd5a822de
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205717"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38307191"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure
 
@@ -339,7 +339,7 @@ W tym kroku wdrożysz aplikację PHP połączoną z bazą danych MySQL w usłudz
 [!INCLUDE [Create app service plan no h](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
 <a name="create"></a>
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
@@ -604,7 +604,7 @@ Przejdź do witryny [Azure Portal](https://portal.azure.com), aby zarządzać ut
 
 W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-tutorial-php-mysql/access-portal.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
 Zostanie wyświetlona strona Omówienie aplikacji internetowej. W tym miejscu możesz wykonywać podstawowe zadania zarządzania, takie jak zatrzymywanie, uruchamianie, ponowne uruchamianie, przeglądanie i usuwanie.
 

@@ -439,7 +439,7 @@
     - name: Architektura REST — usługa Compute
       href: /rest/api/compute
     - name: Architektura REST — usługa Managed Disks
-      href: /rest/api/disks
+      href: /rest/api/compute/disks
 - name: Zasoby
   items:
     - name: Tworzenie szablonów

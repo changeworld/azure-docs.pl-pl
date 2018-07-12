@@ -10,11 +10,11 @@ ms.custom: develop databases, mvc, devcenter
 ms.topic: tutorial
 ms.date: 06/07/2018
 ms.openlocfilehash: 4e2238968d29bc0081a472c9c05662cb7813d866
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850665"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697717"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
 

@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 9002d0636a5abaf24cc2bcd1e531f38ec5c8d2eb
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: e48c2aceb2a8f45d01b922a186900780c1c5ef51
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294016"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968760"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Tworzenie statycznej aplikacji internetowej w języku HTML na platformie Azure
 
-Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure Web Apps. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure Web Apps. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ![Strona główna przykładowej aplikacji](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -34,7 +34,7 @@ Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>Instalowanie rozszerzenia aplikacji sieci Web dla usługi Cloud Shell
 
-Aby wykonać ten przewodnik Szybki start, musisz dodać [rozszerzenie aplikacji internetowej az](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add). Jeśli rozszerzenie jest już zainstalowane, należy je zaktualizować do najnowszej wersji. Aby zaktualizować rozszerzenie aplikacji sieci Web, wpisz `az extension update -n webapp`.
+Aby wykonać ten przewodnik Szybki start, musisz dodać [rozszerzenie aplikacji internetowej az](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add). Jeśli rozszerzenie jest już zainstalowane, należy je zaktualizować do najnowszej wersji. Aby zaktualizować rozszerzenie aplikacji sieci Web, wpisz `az extension update -n webapp`.
 
 Aby zainstalować rozszerzenie aplikacji sieci Web, uruchom następujące polecenie:
 
@@ -84,7 +84,7 @@ Polecenie `az webapp up` wykonuje następujące akcje:
 
 - Utwórz aplikację z określoną nazwą.
 
-- [Spakuj pliki](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji sieci Web.
+- [Spakuj pliki](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji sieci Web.
 
 Wykonanie tego polecenia może potrwać kilka minut. Podczas wykonywania polecenie wyświetli informacje podobne do następującego przykładu:
 

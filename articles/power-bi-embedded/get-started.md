@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 33d948ee283ff3ee873e2f17ee07a7a889889925
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716027"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969497"
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Wprowadzenie do usługi Microsoft Power BI Embedded
 
@@ -49,7 +49,7 @@ Mamy przykłady, które pomogą Ci rozpocząć pracę. Aby zapoznać się z prze
 Utwórz pojemność usługi Power BI Embedded na platformie Microsoft Azure, aby przenieść swoją aplikację do środowiska produkcyjnego. Aby uzyskać informacje na temat sposobu tworzenia pojemności, zobacz [Create Power BI Embedded capacity in the Azure portal (Tworzenie pojemności usługi Power BI Embedded w witrynie Azure Portal)](create-capacity.md).
 
 > [!IMPORTANT]
-> Tokeny osadzania są przeznaczone tylko do testowania przez deweloperów, dlatego liczba tokenów osadzania, jakie może wygenerować główne konto usługi Power BI, jest ograniczona. Dla scenariuszy osadzania w środowisku produkcyjnym [należy kupić pojemność](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Po zakupie dedykowanej pojemności nie ma ograniczenia liczby generowanych tokenów osadzania. Zobacz [Get Available Features (Uzyskiwanie dostępnych funkcji)](https://msdn.microsoft.com/en-us/library/mt846473.aspx), aby sprawdzić aktualne użycie osadzania w procentach.
+> Tokeny osadzania są przeznaczone tylko do testowania przez deweloperów, dlatego liczba tokenów osadzania, jakie może wygenerować główne konto usługi Power BI, jest ograniczona. Dla scenariuszy osadzania w środowisku produkcyjnym [należy kupić pojemność](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Po zakupie dedykowanej pojemności nie ma ograniczenia liczby generowanych tokenów osadzania. Zobacz [Get Available Features (Uzyskiwanie dostępnych funkcji)](https://msdn.microsoft.com/library/mt846473.aspx), aby sprawdzić aktualne użycie osadzania w procentach.
 
 Zarządzanie pojemnością w portalu administracyjnym usługi Power BI. Przypisz użytkownika administratora obszaru roboczego, aby uzyskać pomoc dotyczącą obszarów roboczych aplikacji. Aby uzyskać więcej informacji, zobacz [Manage capacities within Power BI Premium and Power BI Embedded (Zarządzanie pojemnościami w usługach Power BI Premium i Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 

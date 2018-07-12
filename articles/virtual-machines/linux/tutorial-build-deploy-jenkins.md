@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189935"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903455"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Visual Studio Team Services
 
@@ -49,7 +49,7 @@ W tym samouczku użyjesz usługi Jenkins do skompilowania aplikacji internetowej
 
 *  Maszyna wirtualna systemu Linux jest potrzebna jako cel wdrożenia.  Aby uzyskać więcej informacji, zobacz [Create and manage Linux VMs with the Azure CLI (Tworzenie maszyn wirtualnych systemu Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure)](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
-*  Otwórz port wejściowy 80 dla maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Create network security groups using the Azure portal (Tworzenie sieciowych grup zabezpieczeń przy użyciu witryny Azure Portal)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+*  Otwórz port wejściowy 80 dla maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Create network security groups using the Azure portal (Tworzenie sieciowych grup zabezpieczeń przy użyciu witryny Azure Portal)](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic).
 
 ## <a name="get-the-sample-app"></a>Pobieranie przykładowej aplikacji
 
@@ -172,7 +172,7 @@ Aby utworzyć definicję wydania w usłudze Team Services:
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zautomatyzowano wdrażanie aplikacji na platformie Azure przy użyciu usługi Jenkins na potrzeby kompilacji i usługi Team Services na potrzeby wydania. W tym samouczku omówiono następujące czynności:
+W tym samouczku zautomatyzowano wdrażanie aplikacji na platformie Azure przy użyciu usługi Jenkins na potrzeby kompilacji i usługi Team Services na potrzeby wydania. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Kompilowanie aplikacji w usłudze Jenkins.

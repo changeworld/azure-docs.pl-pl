@@ -3,7 +3,7 @@ title: Przykłady interfejsu wiersza polecenia platformy Azure w wersji 2.0 — 
 description: Przykłady interfejsu wiersza polecenia platformy Azure w wersji 2.0
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 056a1ff59ca5bcaf460d98db7d50fd3566f11427
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c13b8275b69579e6645a5a0fa0c9d446c0246a48
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246342"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697504"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli-20"></a>Tworzenie zestawu skalowania maszyn wirtualnych na podstawie niestandardowego obrazu maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych, który używa niestandardowego obrazu maszyny wirtualnej jako źródła dla wystąpień maszyn wirtualnych.

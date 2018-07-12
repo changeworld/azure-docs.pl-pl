@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: eb1c769e034f37d05de63896f65290db79103637
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293908"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969548"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji internetowej platformy Node.js w usłudze Azure App Service w systemie Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "35293908"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji internetowej Node.js na platformie Azure](../app-service-web-get-started-nodejs.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym przewodniku Szybki start przedstawiono, jak wdrożyć aplikację platformy Node.js w usłudze App Service w systemie Linux przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym przewodniku Szybki start przedstawiono, jak wdrożyć aplikację platformy Node.js w usłudze App Service w systemie Linux przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 Ten przewodnik Szybki start można wykonać w usłudze Cloud Shell, ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
@@ -40,7 +40,7 @@ Ten przewodnik Szybki start można wykonać w usłudze Cloud Shell, ale można t
 
 ## <a name="install-web-app-extension-for-cloud-shell"></a>Instalowanie rozszerzenia aplikacji sieci Web dla usługi Cloud Shell
 
-Aby wykonać ten przewodnik Szybki Start, musisz dodać [rozszerzenie aplikacji sieci Web az](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add). Jeśli rozszerzenie jest już zainstalowane, należy je zaktualizować do najnowszej wersji. Aby zaktualizować rozszerzenie aplikacji sieci Web, wpisz `az extension update -n webapp`.
+Aby wykonać ten przewodnik Szybki Start, musisz dodać [rozszerzenie aplikacji sieci Web az](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add). Jeśli rozszerzenie jest już zainstalowane, należy je zaktualizować do najnowszej wersji. Aby zaktualizować rozszerzenie aplikacji sieci Web, wpisz `az extension update -n webapp`.
 
 Aby zainstalować rozszerzenie aplikacji sieci Web, uruchom następujące polecenie:
 
@@ -136,7 +136,7 @@ Polecenie `az webapp up` wykonuje następujące akcje:
 
 - Utwórz aplikację z określoną nazwą.
 
-- [Spakuj pliki](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji sieci Web.
+- [Spakuj pliki](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji sieci Web.
 
 ## <a name="browse-to-the-app"></a>Przechodzenie do aplikacji
 

@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 57442cdb28dfce07ec653e2f0a69d19f5bb6c919
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158614"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674788"
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Tworzenie aplikacji Ruby w usłudze App Service w systemie Linux
 
@@ -65,7 +65,7 @@ Przy użyciu przeglądarki internetowej przejdź pod adres `http://localhost:300
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
@@ -129,4 +129,4 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Środowisko Ruby on Rails z bazą danych MySQL](tutorial-ruby-mysql-app.md)
+> [Środowisko Ruby on Rails z bazą danych MySQL](tutorial-ruby-postgres-app.md)
