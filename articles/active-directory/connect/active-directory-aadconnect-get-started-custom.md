@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849995"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473990"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -67,7 +67,7 @@ To konto służy tylko do tworzenia konta usługi w usłudze Azure AD i nie jest
 Jeśli na koncie administratora globalnego jest włączone uwierzytelnianie MFA, musisz ponownie podać hasło w menu podręcznym logowania i wykonać żądanie uwierzytelniania MFA. Żądanie może obejmować podanie kodu weryfikacyjnego lub rozmowę telefoniczną.  
 ![Logowanie użytkownika w usłudze MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-Na koncie administratora globalnego może być również włączona opcja [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Na koncie administratora globalnego może być również włączona opcja [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
 Jeśli wystąpi błąd lub problemy z łącznością, zobacz [Rozwiązywanie problemów z łącznością](active-directory-aadconnect-troubleshoot-connectivity.md).
 

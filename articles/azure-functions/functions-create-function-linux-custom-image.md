@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
 ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261325"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38488703"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Tworzenie funkcji w systemie Linux przy użyciu niestandardowego obrazu (wersja zapoznawcza)
 
@@ -230,5 +230,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Dowiedz się, jak włączyć funkcję ciągłej integracji wbudowaną na podstawowej platformie App Service. Aplikację funkcji możesz skonfigurować tak, aby po zaktualizowaniu obrazu w usłudze Docker Hub kontener był wdrażany ponownie.
 
 > [!div class="nextstepaction"] 
-> 
-  [Ciągłe wdrażanie za pomocą usługi Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)
+> [Ciągłe wdrażanie za pomocą usługi Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)

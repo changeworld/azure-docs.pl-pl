@@ -224,6 +224,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Konwertowanie szablonu na dyski zarządzane
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Planowana konserwacja
+          href: virtual-machine-scale-sets-maintenance-notifications.md
     - name: Rozwiązywanie problemów
       items:
         - name: Automatyczne skalowanie
