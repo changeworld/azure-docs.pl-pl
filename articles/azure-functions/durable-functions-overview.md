@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f09fa7b3f2aff38a016626af2d538f1eab3f5e8
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0bc88a510c05e88351b4ac7d69839a37c0e4fdd8
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856627"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970493"
 ---
 # <a name="durable-functions-overview"></a>Trwałe Functions — omówienie
 
 *Trwałe funkcje* jest rozszerzeniem [usługi Azure Functions](functions-overview.md) i [zadań Azure WebJobs](../app-service/web-sites-create-web-jobs.md) umożliwiający zapis stanowych funkcji w środowisku bezserwerowym. Rozszerzenie zarządza stan, punkty kontrolne i ponowne uruchomienie dla Ciebie.
 
-Rozszerzenie pozwala zdefiniować stanowa przepływy pracy nowego typu funkcji o nazwie *funkcję orkiestratora*. Poniżej przedstawiono niektóre zalety funkcji programu orchestrator:
+Rozszerzenie pozwala zdefiniować stanowa przepływy pracy nowego typu funkcji o nazwie [ *funkcję orkiestratora*](durable-functions-types-features-overview.md#orchestrator-functions). Poniżej przedstawiono niektóre zalety funkcji programu orchestrator:
 
 * Przepływy pracy mogą określać w kodzie. Projektantów lub schematów JSON nie są wymagane.
 * Wywołują innych funkcji synchronicznie i asynchronicznie. Zmienne lokalne można zapisywać dane wyjściowe z wywoływane funkcje.
@@ -340,7 +340,7 @@ Funkcje programu orchestrator w sposób niezawodny utrzymać ich stan wykonywani
 
 Użycie określania źródła zdarzeń przez to rozszerzenie jest przezroczysty. Dzieje się w tle `await` operatora w funkcji orkiestratora daje kontrolę nad wątek programu orchestrator do dyspozytora trwałe Framework zadania. Dyspozytor następnie zatwierdza nowe akcje, które funkcja orkiestratora zaplanowane (takich jak wywoływanie jedną lub więcej funkcji podrzędnych lub planowania trwałe czasomierza) do magazynu. Ta akcja zatwierdzenia przezroczyste dołącza do *historię wykonywania* wystąpienia aranżacji. Historia jest przechowywana w tabeli magazynu. Następnie za pomocą akcji zatwierdzenia komunikaty są dodawane do kolejki, aby zaplanować faktyczną pracę. W tym momencie funkcja orkiestratora, może być zwolniony z pamięci. Karta dla niego zatrzymuje, jeśli jest używany Plan zużycie funkcji platformy Azure.  Po więcej pracy do wykonania funkcji jest uruchomiona ponownie oraz zostać odtworzone jest jego stan.
 
-Gdy funkcja aranżacji podano więcej pracy do wykonania (na przykład odebraniu komunikatu odpowiedzi lub okresu działania czasomierza trwałość), orchestrator wznowi się ponownie i ponownie wykonuje całą funkcję od samego początku, aby można było odbudować stan lokalnego. Jeśli podczas tej powtarzania kod próbuje wywołać funkcję (lub inne async pracy), trwałe Framework zadań konsultować się z *historię wykonywania* bieżącego aranżacji. Jeśli stwierdzi, że funkcja działania została już wykonana zwróciło wynik niektóre, odtwarza wynik tej funkcji i kod programu orchestrator będzie kontynuował działanie. Ten proces jest kontynuowany wykonywane, dopóki kod funkcji pobiera do punktu, w której zostanie zakończone lub ma on zaplanowanych nowych zadań asynchronicznych.
+Gdy funkcja aranżacji podano więcej pracy do wykonania (na przykład odebraniu komunikatu odpowiedzi lub okresu działania czasomierza trwałość), orchestrator wznowi się ponownie i ponownie wykonuje całą funkcję od samego początku, aby można było odbudować stan lokalnego. Jeśli podczas tej powtarzania kod próbuje wywołać funkcję (lub inne async pracy), trwałe Framework zadań konsultować się z *historię wykonywania* bieżącego aranżacji. Jeśli stwierdzi, że [działania funkcji](durable-functions-types-features-overview.md#activity-functions) ma już wykonane i niektóre yielded wyniki, powoduje ponowne uruchomienie wynik tej funkcji i kod programu orchestrator będzie kontynuował działanie. Ten proces jest kontynuowany wykonywane, dopóki kod funkcji pobiera do punktu, w której zostanie zakończone lub ma on zaplanowanych nowych zadań asynchronicznych.
 
 ### <a name="orchestrator-code-constraints"></a>Ograniczenia kodu programu orchestrator
 
@@ -384,7 +384,7 @@ Powinny być śledzone wszystkie znane problemy występujące w [problemy usług
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Kontynuuj czytanie dokumentacji trwałe funkcje](durable-functions-bindings.md)
+> [Kontynuuj czytanie dokumentacji trwałe funkcje](durable-functions-types-features-overview.md)
 
 > [!div class="nextstepaction"]
 > [Instalowanie rozszerzenia funkcji trwałych i przykłady](durable-functions-install.md)

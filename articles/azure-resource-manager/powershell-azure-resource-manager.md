@@ -1,5 +1,5 @@
 ---
-title: Zarządzaj rozwiązaniami Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+title: Zarządzanie rozwiązaniami platformy Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Użyj programu Azure PowerShell i Menedżera zasobów do zarządzania zasobami.
 services: azure-resource-manager
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 02616ef566dd576c3f406d4b9f3059dab27bf3e0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f7c569eabcf6e4b743f1b6616161787764e8f84
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603417"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723861"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Zarządzanie zasobami za pomocą programu Azure PowerShell
 
@@ -33,9 +33,9 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, zoba
 
 [!INCLUDE [Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-W tym artykule zastosowanie wszystkich ustawień zarządzania do grupy zasobów, można łatwo usunąć te ustawienia po zakończeniu.
+W tym artykule zastosowanie wszystkich ustawień zarządzania w grupie zasobów, dzięki czemu można łatwo usunąć te ustawienia po zakończeniu.
 
-Teraz Utwórz grupę zasobów.
+Utwórz grupę zasobów.
 
 ```azurepowershell-interactive
 Set-AzureRmContext -Subscription <subscription-name>
@@ -50,15 +50,15 @@ Grupa zasobów jest obecnie pusta.
 
 ### <a name="assign-a-role"></a>Przypisywanie roli
 
-W tym artykule możesz wdrożyć maszyny wirtualnej i jej powiązane sieci wirtualnej. W przypadku zarządzania rozwiązaniami maszyn wirtualnych dostępne są 3 role specyficzne dla zasobów, które zapewniają najczęściej potrzebny dostęp:
+W tym artykule wdrożysz maszynę wirtualną i jej powiązane sieci wirtualnej. W przypadku zarządzania rozwiązaniami maszyn wirtualnych dostępne są 3 role specyficzne dla zasobów, które zapewniają najczęściej potrzebny dostęp:
 
 * [Współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
+Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
 
-Poniższy przykład tworzy grupę i przypisuje go do roli współautora maszyny wirtualnej dla grupy zasobów. Aby uruchomić `New-AzureAdGroup` polecenia należy używać [powłoki chmury Azure](/azure/cloud-shell/overview) lub [Pobierz moduł Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
+Poniższy przykład obejmuje tworzenie grupy i przypisuje go do roli Współautor maszyny wirtualnej dla grupy zasobów. Aby uruchomić `New-AzureAdGroup` polecenia należy używać [usługi Azure Cloud Shell](/azure/cloud-shell/overview) lub [pobieranie modułu programu PowerShell usługi Azure AD](https://www.powershellgallery.com/packages/AzureAD/).
 
 ```azurepowershell-interactive
 $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
@@ -78,7 +78,7 @@ Zazwyczaj należy powtórzyć ten proces dla roli **Współautor sieci** i **Wsp
 
 ### <a name="apply-policies"></a>Stosowanie zasad
 
-Subskrypcja ma już kilka definicji zasad. Aby wyświetlić definicje dostępnych zasad, należy użyć:
+Subskrypcja ma już kilka definicji zasad. Aby wyświetlić dostępne definicje zasad, użyj:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -87,8 +87,8 @@ Subskrypcja ma już kilka definicji zasad. Aby wyświetlić definicje dostępnyc
 Zostaną wyświetlone istniejące definicje zasad. Typ zasad to **Wbudowane** albo **Niestandardowe**. Przejrzyj definicje i znajdź te opisujące warunek, który chcesz przypisać. W tym artykule przypiszesz zasady określające następujące działania:
 
 * ograniczenie lokalizacji dla wszystkich zasobów
-* Ogranicz jednostki SKU dla maszyn wirtualnych
-* maszyny wirtualne, które nie korzystają z dysków zarządzanych inspekcji
+* limit jednostek SKU maszyn wirtualnych
+* Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych
 
 ```azurepowershell-interactive
 $locations ="eastus", "eastus2"
@@ -134,9 +134,9 @@ Po zakończeniu wdrażania możesz zastosować do rozwiązania więcej ustawień
 
 [!INCLUDE [Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
 
-### <a name="lock-a-resource"></a>Zablokowanie zasobu
+### <a name="lock-a-resource"></a>Blokowanie zasobów
 
-Aby zablokować maszyny wirtualnej i grupy zabezpieczeń sieci, należy użyć:
+Aby zablokować maszyny wirtualnej i sieciowej grupy zabezpieczeń, należy użyć:
 
 ```azurepowershell-interactive
 New-AzureRmResourceLock -LockLevel CanNotDelete `
@@ -151,7 +151,7 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
   -ResourceGroupName myResourceGroup
 ```
 
-Tylko można usunąć maszyny wirtualnej, w szczególności usunięcia blokady. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
+Tylko można usunąć maszyny wirtualnej, w szczególności w przypadku usunięcia blokady. Ten krok przedstawiono w sekcji [Oczyszczanie zasobów](#clean-up-resources).
 
 ## <a name="tag-resources"></a>Tagowanie zasobów
 
@@ -161,7 +161,7 @@ Tylko można usunąć maszyny wirtualnej, w szczególności usunięcia blokady. 
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
 
-Aby zastosować tagi do maszyny wirtualnej, należy użyć:
+Aby zastosować znaczniki do maszyny wirtualnej, należy użyć:
 
 ```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName myVM `
@@ -172,7 +172,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Znajdowanie zasobów według tagów
 
-Aby znaleźć zasoby z tagu nazwy i wartości, należy użyć:
+Aby znaleźć zasoby z nazwę i wartość tagu, użyj:
 
 ```azurepowershell-interactive
 (Find-AzureRmResource -TagName Environment -TagValue Test).Name
@@ -186,17 +186,17 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>Wyświetlanie kosztów według wartości tagów
 
-Po zastosowaniu tagów do zasobów, można wyświetlić kosztów zasobów z tych tagów. Trwa podczas analizy kosztów wyświetlić najnowsze użycie, więc może nie być wyświetlana koszty jeszcze. Gdy koszty są dostępne, można wyświetlić kosztów zasobów między grupami zasobów w ramach subskrypcji. Użytkownicy muszą mieć [subskrypcji poziom dostępu do informacji dotyczących rozliczeń](../billing/billing-manage-access.md) koszty.
+Po zastosowaniu tagów do zasobów, możesz wyświetlić koszty zasobów za pomocą tych znaczników. Zajmuje trochę czasu analiza kosztów do wyświetlenia najnowszych użycia, więc jeszcze nie może zostać wyświetlony kosztów. Gdy koszty są dostępne, możesz wyświetlić koszty zasobów między grupami zasobów w ramach subskrypcji. Użytkownicy muszą mieć [subskrypcji poziom dostępu do informacji o rozliczeniach](../billing/billing-manage-access.md) koszty.
 
-Aby wyświetlić koszty według znaczników w portalu, wybierz subskrypcję, a następnie wybierz **analizy kosztów**.
+Aby wyświetlić kosztów według tagów w portalu, wybierz subskrypcję, a następnie wybierz **analiza kosztów**.
 
 ![Analiza kosztów](./media/powershell-azure-resource-manager/select-cost-analysis.png)
 
-Następnie filtrować według wartości tagu i wybierz **Zastosuj**.
+Następnie filtrowanie według wartości tagu i wybierz **Zastosuj**.
 
-![Koszt widok znaczników](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+![Wyświetlanie kosztów według tagów](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
 
-Można również użyć [interfejsów API usługi Azure rozliczeń](../billing/billing-usage-rate-card-overview.md) można programowo wyświetlać kosztów.
+Można również użyć [interfejsów API rozliczeń w usłudze Azure](../billing/billing-usage-rate-card-overview.md) można programowo wyświetlać kosztów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -220,7 +220,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby uzyskać informacje dotyczące monitorowania maszyn wirtualnych, zobacz [monitorowania i aktualizowania maszyny wirtualnej systemu Windows przy użyciu programu Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
-* Aby dowiedzieć się więcej o korzystaniu z Centrum zabezpieczeń Azure do wdrożenia rozwiązania w zakresie zabezpieczeń, [monitorowanie zabezpieczeń maszyny wirtualnej przy użyciu Centrum zabezpieczeń Azure](../virtual-machines/windows/tutorial-azure-security.md).
-* Można przenieść istniejące zasoby do nowej grupy zasobów. Aby uzyskać przykłady, zobacz [przeniesienia zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
+* Aby dowiedzieć się więcej o monitorowaniu maszyn wirtualnych, zobacz [monitorowania i aktualizowania maszyny wirtualnej Windows przy użyciu programu Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
+* Aby dowiedzieć się więcej o korzystaniu z usługi Azure Security Center do zaimplementowania zalecanych zasad zabezpieczania, [monitorowanie zabezpieczeń maszyny wirtualnej przy użyciu usługi Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
+* Można przenieść istniejące zasoby, do nowej grupy zasobów. Aby uzyskać przykłady, zobacz [przeniesienia zasobów do nowej grupy zasobów lub subskrypcji](resource-group-move-resources.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

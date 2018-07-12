@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8892f9a2699d18fbaf9161ffb01906a071ab2243
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856760"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971078"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50012| Jest ogólny komunikat, który wskazuje, że uwierzytelnianie nie powiodło się. Może to nastąpić powodów, takich jak brakujące lub nieprawidłowe poświadczenia lub oświadczenia w żądaniu. Upewnij się, że żądanie jest wysyłane z prawidłowymi poświadczeniami i oświadczeń. |
 |50013|Potwierdzenie jest nieprawidłowe z różnych przyczyn: — wystawca tokenu nie odpowiada wersji interfejsu API w jej prawidłowym zakresie czasu, — wygasło, — jest źle sformułowane, — token odświeżania w potwierdzeniu nie jest głównym tokenem odświeżania.|
 |50017|Weryfikacja certyfikacji nie powiodła się z następujących powodów:<ul><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Nie można odnaleźć oczekiwanego elementu CrlSegment</li><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Punkt dystrybucji różnicowej listy CRL jest skonfigurowany bez odpowiedniego punktu dystrybucji listy CRL</li><li>Nie można pobrać prawidłowych segmentów listy CRL z powodu przekroczenia limitu czasu</li><li>Nie można pobrać listy CRL</li></ul>Skontaktuj się z administratorem dzierżawy.|
-|50020|Użytkownik nie jest autoryzowany — nie można wystawić tokenów z powodu problemu z wersją — nie podano nazwy wystawcy — problemy z nazwą wystawcy (wartość null — maksymalna długość). Skontaktuj się z właścicielem aplikacji|
+|50020|Użytkownik nie ma autoryzacji dla jednego z następujących przyczyn.<ul><li>Użytkownik próbuje zalogować się za pomocą konta MSA z punktem końcowym v1</li><li>Użytkownik nie istnieje w dzierżawie.</li></ul> Skontaktuj się z właścicielem aplikacji.|
 |50027|Token JWT jest nieprawidłowy z następujących przyczyn:<ul><li>nie zawiera oświadczenia nonce, oświadczenia sub</li><li>niezgodność identyfikatora podmiotu</li><li>zduplikowane oświadczenie w oświadczeniach idToken</li><li>nieoczekiwany wystawca</li><li>nieoczekiwani odbiorcy</li><li>nie mieści się w prawidłowym zakresie czasu </li><li>format tokenu nie jest prawidłowy</li><li>weryfikacja tokenu zewnętrznego identyfikatora od wystawcy nie powiodła się.</li></ul>Skontaktuj się z właścicielem aplikacji|
 |50029|Nieprawidłowy identyfikator URI — nazwa domeny zawiera nieprawidłowe znaki. Skontaktuj się z administratorem dzierżawy.|
 |50034|Użytkownik nie istnieje w katalogu. Skontaktuj się z administratorem dzierżawy.|
@@ -100,7 +100,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |50089|Token uwierzytelniania wygasł — uwierzytelnianie nie powiodło się. Użytkownik musi zalogować się ponownie przy użyciu nazwy użytkownika i hasła|
 |50097|Wymagane uwierzytelnienie urządzenia — oświadczenia DeviceId i DeviceAltSecId mają wartość null LUB nie istnieje żadne urządzenie odpowiadające identyfikatorowi urządzenia|
 |50099|Podpis tokenu JWT jest nieprawidłowy. Skontaktuj się z właścicielem aplikacji.|
-|50105|Zalogowany użytkownik nie jest przypisany do roli dla zalogowanej aplikacji. Przypisz użytkownika do aplikacji. Więcej informacji: [https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
+|50105|Zalogowany użytkownik nie jest przypisany do roli dla zalogowanej aplikacji. Przypisz użytkownika do aplikacji. Więcej informacji: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role)|
 |50107|Żądany obiekt obszaru federacji nie istnieje. Skontaktuj się z administratorem dzierżawy.|
 |50120|Problem z nagłówkiem JWT. Skontaktuj się z administratorem dzierżawy.|
 |50124|Przekształcenie oświadczeń zawiera nieprawidłowy parametr wejściowy. Skontaktuj się z administratorem dzierżawy, aby zaktualizować zasady.|
@@ -174,9 +174,10 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |81001|Bilet Kerberos użytkownika jest zbyt duży. Może to się zdarzyć, jeśli użytkownik jest w zbyt wielu grupach i w związku z tym bilet Kerberos zawiera zbyt wiele członkostw w grupach. Zmniejsz liczbę członkostw użytkownika w grupach i spróbuj ponownie.|
 |81005|Pakiet uwierzytelniania nie jest obsługiwany|
 |81007|Dzierżawa nie jest włączona dla bezproblemowego logowania jednokrotnego|
-|90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. 
+|90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wysyłane za pomocą metody nieobsługiwane żądanie (obsługiwane tylko metody POST) lub algorytm podpisywania tokenu, którego zażądano nie jest obsługiwana. Skontaktuj się z deweloperem aplikacji.|
+|90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. |
 |90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|
-|90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.
+|90094| Przydziel musi mieć uprawnienia administratora. Skontaktuj się z administratorem dzierżawy, zapewnienie wyrażania zgody dla tej aplikacji.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

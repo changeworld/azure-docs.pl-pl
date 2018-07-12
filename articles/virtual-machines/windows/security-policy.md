@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia i na maszyny wirtualne systemu Windows na platformie Azure przy użyciu zasad | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o zabezpieczeniach i zasady dla systemu Windows oraz maszyny wirtualne na platformie Azure.
+title: Zabezpieczanie i korzystać z zasad na maszynach wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o zasady zabezpieczeń i dla Windows i maszyn wirtualnych na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 9e291d68cded02296583aba2ef7cef1d1d17b567
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524333"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721138"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpieczenia i na maszynach wirtualnych platformy Azure przy użyciu zasad
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpieczanie i korzystać z zasad na maszynach wirtualnych platformy Azure
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

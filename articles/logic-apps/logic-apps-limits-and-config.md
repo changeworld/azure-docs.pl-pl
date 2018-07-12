@@ -1,6 +1,6 @@
 ---
-title: Limity i konfiguracji — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Limity usług i wartości konfiguracji dla usługi Azure Logic Apps
+title: Limity i konfiguracja — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Wartości konfiguracji dla usługi Azure Logic Apps i limity usługi
 services: logic-apps
 author: ecfan
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2534210c903e77462ece91c577d731d9c8e3726f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299719"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970231"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
-W tym artykule opisano limity i szczegóły konfiguracji tworzenie i uruchamianie automatycznych przepływów pracy z usługą Azure Logic Apps. Aby Flow firmy Microsoft, zobacz [limity i konfiguracji w programie Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
+W tym artykule opisano limitach oraz szczegółach konfiguracji, tworzenia i uruchamiając automatyczne przepływy pracy z usługą Azure Logic Apps. Aby uzyskać Microsoft Flow, zobacz [limitów i konfiguracji w programie Microsoft Flow](https://docs.microsoft.com/flow/limits-and-config).
 
 <a name="definition-limits"></a>
 
@@ -29,58 +29,58 @@ Poniżej przedstawiono limity dla definicji aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Akcje dla przepływu pracy | 500 | Aby rozszerzyć ten limit, można dodać zagnieżdżone przepływy pracy, zgodnie z potrzebami. |
-| Dozwolona liczba poziomów zagnieżdżenia dla akcji | 8 | Aby rozszerzyć ten limit, można dodać zagnieżdżone przepływy pracy, zgodnie z potrzebami. | 
+| Akcje na przepływ pracy | 500 | Aby rozszerzyć ten limit, możesz dodać zagnieżdżone przepływy pracy zgodnie z potrzebami. |
+| Dozwolona głębokość zagnieżdżenia akcji | 8 | Aby rozszerzyć ten limit, możesz dodać zagnieżdżone przepływy pracy zgodnie z potrzebami. | 
 | Przepływy pracy na region na subskrypcję | 1000 | | 
-| Wyzwalaczy na przepływu pracy | 10 | Podczas pracy w widoku kodu, nie projektanta | 
+| Wyzwalacze w ramach przepływu pracy | 10 | Podczas pracy w widoku kodu, nie projektanta | 
 | Limit przypadków zakresu przełącznika | 25 | | 
-| Zmienne dla przepływu pracy | 250 | | 
-| Liczba znaków na wyrażenia | 8192 | | 
-| Maksymalny rozmiar `trackedProperties` | 16 000 znaków. | 
+| Zmienne w ramach przepływu pracy | 250 | | 
+| Liczba znaków w wyrażeniu | 8192 | | 
+| Maksymalny rozmiar `trackedProperties` | 16 000 znaków | 
 | Nazwy `action` lub `trigger` | 80 znaków | | 
-| długość `description` | 256 znaków | | 
+| Długość `description` | 256 znaków | | 
 | Maksymalna `parameters` | 50 | | 
 | Maksymalna `outputs` | 10 | | 
 ||||  
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>Uruchom limity czasu trwania i przechowywania
+## <a name="run-duration-and-retention-limits"></a>Uruchom limity czasu trwania i przechowywanie
 
-Poniżej przedstawiono limity aplikacji logiki pojedynczego uruchomienia:
+Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
 |------|-------|-------| 
-| Czas trwania testu | 90 dni | Aby zmienić ten limit, zobacz [Zmień czas trwania](#change-duration). | 
-| Magazyn przechowywania | Godzina rozpoczęcia 90 dni od uruchomienia | Aby zmienić ten limit, zobacz [zmienić przechowywania magazynu](#change-retention). | 
-| Interwał cyklu minimalna | 1 sekunda | | 
+| Czas trwania przebiegu | 90 dni | Aby zmienić ten limit, zobacz [Zmień czas uruchomienia](#change-duration). | 
+| Przechowywanie w magazynie | Godzina rozpoczęcia w ciągu 90 dni od uruchomienia | Aby zmienić ten limit, zobacz [zmiana okresu przechowywania magazynu](#change-retention). | 
+| Interwał cyklu minimalne | 1 sekunda | | 
 | Maksymalna wartość cyklu interwału | 500 dni | | 
 |||| 
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Zmień Uruchom przechowywania czas trwania i magazynu
+### <a name="change-run-duration-and-storage-retention"></a>Zmiana okresu przechowywania wykonywania, czas trwania i przechowywanie
 
-Można zmienić ten limit, wartość od 7 do 90 dni. Aby przejść przekracza maksymalny limit, [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
+Możesz zmienić ten limit, wartość od 7 do 90 dni. Aby przejść przekracza maksymalny limit [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
 
-1. W portalu Azure, w menu aplikacji logiki, wybierz **ustawienia przepływu pracy**. 
+1. W witrynie Azure portal w menu aplikacji logiki wybierz pozycję **ustawienia przepływu pracy**. 
 
-2. W obszarze **opcje środowiska uruchomieniowego**, z **Uruchom dni przechowywania historii** wybierz **niestandardowy**. 
+2. W obszarze **opcje środowiska uruchomieniowego**, z **czas przechowywania historii uruchamiania w dniach** wybierz **niestandardowe**. 
 
-3. Wprowadź lub przeciągnij suwak liczbę dni, które mają.
+3. Wprowadź lub przeciągnij suwak, liczbę dni, które chcesz.
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="looping-and-debatching-limits"></a>Powtarzanie i debatching limity
+## <a name="looping-and-debatching-limits"></a>Tworzenie pętli i usuwanie partii limity
 
-Poniżej przedstawiono limity aplikacji logiki pojedynczego uruchomienia:
+Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Do iteracji | 5000 | | 
-| Elementy ForEach | 100,000 | Można użyć [zapytania akcji](../connectors/connectors-native-query.md) do filtrowania większych tablice zgodnie z potrzebami. | 
-| Równoległość ForEach | 50 | Wartość domyślna to 20. <p>Aby zmienić to domyślny poziom w pętli ForEach, ustaw `runtimeConfiguration` właściwości w `foreach` akcji. <p>Aby uruchomić sekwencyjnie pętli ForEach, ustaw `operationOptions` właściwości na wartość "Sequential" w `foreach` akcji. | 
+| Iteracje UNTIL | 5000 | | 
+| Elementy ForEach | 100,000 | Możesz użyć [Akcja zapytania](../connectors/connectors-native-query.md) do filtrowania większych tablic zgodnie z potrzebami. | 
+| Równoległość ForEach | 50 | Wartość domyślna to 20. <p>Aby zmienić to domyślny poziom w pętli ForEach, należy ustawić `runtimeConfiguration` właściwość `foreach` akcji. <p>Do uruchomienia po kolei pętli ForEach, ustaw `operationOptions` właściwość "Sekwencyjnego" w `foreach` akcji. | 
 | Elementy SplitOn | 100,000 | | 
 |||| 
 
@@ -88,63 +88,63 @@ Poniżej przedstawiono limity aplikacji logiki pojedynczego uruchomienia:
 
 ## <a name="throughput-limits"></a>Limity przepustowości
 
-Poniżej przedstawiono limity aplikacji logiki pojedynczego uruchomienia:
+Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego:
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ----- | ----- | ----- | 
-| Wykonania akcji na 5 minut | 100,000 | Aby zwiększyć limit 300 000, możesz uruchomić aplikację logiki w `High Throughput` tryb. Aby skonfigurować tryb wysokiej przepływności, w obszarze `runtimeConfiguration` zasobu przepływu pracy, należy ustawić `operationOptions` właściwości `OptimizedForHighThroughput`. <p>**Uwaga**: Tryb wysokiej przepływności jest w wersji zapoznawczej. Ponadto można rozłożenie obciążenia w więcej niż jedną aplikację, zgodnie z potrzebami. | 
-| Akcje równoczesnych połączeń wychodzących | ~2,500 | Zmniejsz liczbę jednoczesnych żądań lub skrócić czas trwania, zgodnie z potrzebami. | 
-| Punkt końcowy środowiska wykonawczego: równoczesnych połączeń przychodzących | ~1,000 | Zmniejsz liczbę jednoczesnych żądań lub skrócić czas trwania, zgodnie z potrzebami. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut do odczytu  | 60,000 | Można rozłożenie obciążenia w więcej niż jedną aplikację, zgodnie z potrzebami. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania wywołań na 5 minut| 45,000 | Można rozłożenie obciążenia w więcej niż jedną aplikację, zgodnie z potrzebami. | 
+| Wykonania akcji na 5 minut | 100,000 | Aby zwiększyć limit, aby 300 000, można uruchomić aplikację logiki w `High Throughput` trybu. Aby skonfigurować tryb wysokiej przepływności, w obszarze `runtimeConfiguration` zasobów przepływu pracy zestawu `operationOptions` właściwość `OptimizedForHighThroughput`. <p>**Uwaga**: Tryb wysokiej przepływności jest dostępna w wersji zapoznawczej. Ponadto można rozpowszechniać obciążenie na więcej niż jednej aplikacji, zgodnie z potrzebami. | 
+| Akcje równoczesne połączenia wychodzące | ~2,500 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
+| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut| 45,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
 |||| 
 
-Powyżej tych wartości maksymalnych w normalnego przetwarzania, lub Uruchamianie testów obciążenia, które mogły zostać zapisane powyżej te limity [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
+Przejdź powyżej tych limitów w normalnego przetwarzania lub uruchamiania testów obciążenia, które mogły zostać zapisane powyżej te limity [się z zespołem usługi Logic Apps](mailto://logicappsemail@microsoft.com) Aby uzyskać pomoc dotyczącą wymagań.
 
 <a name="request-limits"></a>
 
 ## <a name="http-request-limits"></a>Limity żądań HTTP
 
-Poniżej przedstawiono limity dla pojedynczego żądania HTTP lub łącznika synchroniczne wywołanie:
+Poniżej przedstawiono limity dotyczące pojedynczego żądania HTTP lub łącznika synchroniczne wywołanie:
 
 #### <a name="timeout"></a>Limit czasu
 
-Niektóre operacje łącznika wykonywać wywołania asynchronicznego lub nasłuchiwanie żądań elementu webhook, więc limitu czasu dla tych operacji może być dłuższa niż te limity. Aby uzyskać więcej informacji, zobacz szczegóły techniczne dla określonego łącznika, a także [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
+Niektóre operacje łącznika wykonywać wywołania asynchronicznego lub wysyłane żądania elementu webhook, więc limitu czasu dla tych operacji może być dłuższa niż te limity. Aby uzyskać więcej informacji, zobacz szczegółowe informacje techniczne dla określonego łącznika, a także [wyzwalaczy przepływu pracy i działań](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Żądania wychodzącego | 120 sekund | Dla operacji dłużej, użyj [wzorca asynchronicznego sondowania](../logic-apps/logic-apps-create-api-app.md#async-pattern) lub [do pętli](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). | 
-| Synchroniczne odpowiedzi | 120 sekund | Oryginalnego żądania pobrać odpowiedzi wszystkie kroki w odpowiedzi musi zakończyć się przed upływem limitu chyba, że wywołanie innego logiki aplikacji jako zagnieżdżony przepływ pracy. Aby uzyskać więcej informacji, zobacz [połączeń telefonicznych, wyzwalacza lub zagnieździć aplikacje logiki](../logic-apps/logic-apps-http-endpoint.md). | 
+| Żądania wychodzące | 120 sekund | W przypadku dłużej uruchomionej operacji, użyj [wzorca asynchronicznego sondowania](../logic-apps/logic-apps-create-api-app.md#async-pattern) lub [pętlą until](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). | 
+| Synchronicznej odpowiedzi | 120 sekund | Oryginalnego żądania sposobem uzyskania odpowiedzi wszystkich kroków opisanych w odpowiedzi musi zakończyć w ramach limitu, chyba że wywołanie innego zagnieżdżonego przepływu pracy aplikacji logiki. Aby uzyskać więcej informacji, zobacz [wywołania wyzwalacza lub zagnieżdżanie aplikacji logiki](../logic-apps/logic-apps-http-endpoint.md). | 
 |||| 
 
 #### <a name="message-size"></a>Rozmiar komunikatu
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Rozmiar komunikatu | 100 MB | Aby obejść to ograniczenie, zobacz [obsługi dużych wiadomości z podziału](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsów API nie obsługuje podziału lub nawet domyślny limit. | 
-| Rozmiar komunikatu z podziału | 1 GB | Ten limit dotyczy akcje, które natywnie obsługują podziału lub pozwalają włączyć podziału w konfiguracji środowiska wykonawczego. Aby uzyskać więcej informacji, zobacz [obsługi dużych wiadomości z podziału](../logic-apps/logic-apps-handle-large-messages.md). | 
-| Limit obliczania wyrażeń | 131 072 znaków | `@concat()`, `@base64()`, `@string()` Wyrażenia nie może być dłuższa niż to ograniczenie. | 
+| Rozmiar komunikatu | 100 MB | Aby obejść to ograniczenie, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API nie obsługuje segmentu lub nawet domyślny limit. | 
+| Rozmiar komunikatu z segmentu | 1 GB | Ten limit dotyczy akcje, które natywnie obsługują segmentu i pozwalają włączyć segmentu w swojej konfiguracji środowiska uruchomieniowego. Aby uzyskać więcej informacji, zobacz [Obsługa dużych komunikatów z segmentu](../logic-apps/logic-apps-handle-large-messages.md). | 
+| Limit oceniania wyrażeń | 131 072 znaków | `@concat()`, `@base64()`, `@string()` Wyrażenia nie może być dłuższa niż to ograniczenie. | 
 |||| 
 
 #### <a name="retry-policy"></a>Zasady ponawiania
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Liczba ponownych prób | 90 | Wartość domyślna to 4. Aby zmienić ustawienie domyślne, należy użyć [ponów parametr zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
-| Spróbuj ponownie Maksymalne opóźnienie | 1 dzień | Aby zmienić ustawienie domyślne, należy użyć [ponów parametr zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
-| Min. opóźnienie ponowienia próby | 5 sekund | Aby zmienić ustawienie domyślne, należy użyć [ponów parametr zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Liczba ponownych prób | 90 | Wartość domyślna to 4. Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
+| Maksymalna opóźnienie ponowienia próby | 1 dzień | Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
+| Min. opóźnienie ponowienia próby | 5 sekund | Aby zmienić domyślny, należy użyć [ponów parametru zasad](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 |||| 
 
 <a name="custom-connector-limits"></a>
 
-## <a name="custom-connector-limits"></a>Limity łącznik niestandardowy
+## <a name="custom-connector-limits"></a>Limity łączników niestandardowych
 
-Poniżej przedstawiono limity dla łączników niestandardowych, które można utworzyć na podstawie interfejsów API sieci web.
+Poniżej przedstawiono limity łączników niestandardowych, które można utworzyć na podstawie interfejsów API sieci web.
 
 | Name (Nazwa) | Limit | 
 | ---- | ----- | 
-| Wiele łączników niestandardowych | 1000 na subskrypcję platformy Azure | 
-| Liczba żądań na minutę dla każdego połączenia utworzonego przez łącznik niestandardowy | 500 żądań połączenia dla |
+| Liczba łączników niestandardowych | 1000 na subskrypcję platformy Azure | 
+| Liczba żądań na minutę dla każdego połączenia utworzonego przez łącznik niestandardowy | 500 żądań na połączenie |
 |||| 
 
 <a name="integration-account-limits"></a>
@@ -153,18 +153,18 @@ Poniżej przedstawiono limity dla łączników niestandardowych, które można u
 
 <a name="artifact-number-limits"></a>
 
-### <a name="artifact-limits-per-integration-account"></a>Limity artefaktu dla danego konta integracji
+### <a name="artifact-limits-per-integration-account"></a>Limity artefaktu dla konta integracji
 
-Poniżej przedstawiono limity liczby artefaktów dla każdego konta integracji. Aby uzyskać więcej informacji, zobacz [Logic Apps cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
+W tym miejscu są ograniczenia na liczbę artefaktów dla każdego konta integracji. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 *Warstwa bezpłatna*
 
-Użyj warstwę bezpłatna tylko w przypadku scenariuszy poznawcze nie scenariusze produkcji. Ta warstwa ogranicza przepływność i użycia i ma nie Umowa dotycząca poziomu usług (SLA).
+Korzystać z bezpłatnej warstwy tylko na potrzeby scenariuszy eksploracyjnego, a nie scenariuszy produkcyjnych. Ta warstwa ogranicza przepustowość i użycia i ma nie umową dotyczącą poziomu usług (SLA).
 
-| Artefaktów | Limit | Uwagi | 
+| Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
 | Partnerzy handlowi EDI | 25 | | 
-| Umowy handlowym EDI | 10 | | 
+| Handlowym umów integracji EDI | 10 | | 
 | Maps | 25 | | 
 | Schematy | 25 | 
 | Zestawy | 10 | | 
@@ -174,10 +174,10 @@ Użyj warstwę bezpłatna tylko w przypadku scenariuszy poznawcze nie scenariusz
 
 *Warstwa podstawowa*
 
-| Artefaktów | Limit | Uwagi | 
+| Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
 | Partnerzy handlowi EDI | 2 | | 
-| Umowy handlowym EDI | 1 | | 
+| Handlowym umów integracji EDI | 1 | | 
 | Maps | 500 | | 
 | Schematy | 500 | 
 | Zestawy | 25 | | 
@@ -187,10 +187,10 @@ Użyj warstwę bezpłatna tylko w przypadku scenariuszy poznawcze nie scenariusz
 
 *Warstwa standardowa*
 
-| Artefaktów | Limit | Uwagi | 
+| Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
 | Partnerzy handlowi EDI | 500 | | 
-| Umowy handlowym EDI | 500 | | 
+| Handlowym umów integracji EDI | 500 | | 
 | Maps | 500 | | 
 | Schematy | 500 | 
 | Zestawy | 50 | | 
@@ -200,29 +200,29 @@ Użyj warstwę bezpłatna tylko w przypadku scenariuszy poznawcze nie scenariusz
 
 <a name="artifact-capacity-limits"></a>
 
-### <a name="artifact-capacity-limits"></a>Limity pojemności artefaktów
+### <a name="artifact-capacity-limits"></a>Limity pojemności artefaktu
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Schemat | 8 MB | Aby przekazać pliki większe niż 2 MB, należy użyć [identyfikator URI obiektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+| Schemat | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [identyfikator URI obiektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Mapy (plik XSLT) | 2 MB | | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut do odczytu | 60,000 | Więcej niż jedno konto w razie potrzeby można rozpowszechniają obciążenia. | 
-| Środowisko uruchomieniowe punkt końcowy: wywołania wywołań na 5 minut | 45,000 | Więcej niż jedno konto w razie potrzeby można rozpowszechniają obciążenia. | 
-| Punkt końcowy środowiska wykonawczego: śledzenie wywołań na 5 minut | 45,000 | Więcej niż jedno konto w razie potrzeby można rozpowszechniają obciążenia. | 
-| Punkt końcowy środowiska wykonawczego: blokowanie równoczesnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub skrócić czas trwania w razie potrzeby. | 
+| Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut | 60,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Środowisko uruchomieniowe punkt końcowy: wywołania na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: śledzenie wywołań na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Punkt końcowy środowiska uruchomieniowego: blokowanie współbieżnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>
 
-### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Rozmiar wiadomości B2B protokołu (AS2, X12, EDIFACT)
+### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>Rozmiar komunikatu protokołu B2B (X12, EDIFACT AS2)
 
-Poniżej przedstawiono ograniczeń, które dotyczą protokoły B2B:
+Limity, które są stosowane do protokoły B2B są następujące:
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| AS2 | 50 MB | Ma zastosowanie do zdekodowania i kodowania | 
-| X12 | 50 MB | Ma zastosowanie do zdekodowania i kodowania | 
-| EDIFACT | 50 MB | Ma zastosowanie do zdekodowania i kodowania | 
+| AS2 | 50 MB | Dotyczy dekodowanie i kodowanie | 
+| X12 | 50 MB | Dotyczy dekodowanie i kodowanie | 
+| EDIFACT | 50 MB | Dotyczy dekodowanie i kodowanie | 
 |||| 
 
 <a name="configuration"></a>
@@ -231,12 +231,12 @@ Poniżej przedstawiono ograniczeń, które dotyczą protokoły B2B:
 
 ### <a name="azure-logic-apps-service"></a>Usługa Azure Logic Apps
 
-Wszystkie aplikacje logiki w regionie używać tego samego zakresów adresów IP. Do obsługi wywołania, które aplikacje logiki bezpośrednio za pomocą [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)i inne żądania HTTP, tak skonfigurowany, konfiguracje zapory zawierają te wychodzące i przychodzące adresy IP, na podstawie w których aplikacje logiki istnieją:
+Wszystkie aplikacje logiki w regionie, użyj tych samych zakresów adresów IP. Do obsługi wywołań, które aplikacje logiki bezpośrednio wprowadzać za pomocą [HTTP](../connectors/connectors-native-http.md), [protokołu HTTP + Swagger](../connectors/connectors-native-http-swagger.md), a inne żądania HTTP, skonfiguruj konfiguracje zapory, aby zawierały te wychodzące i przychodzące adresy IP, na podstawie w którym istnieje aplikacji logiki:
 
-| Region aplikacji logiki | Wychodzącego |
+| Region aplikacji logiki | IP ruchu wychodzącego |
 |-------------------|-------------|
-| Australia | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | Australia Wschodnia | 13.75.149.4, 104.210.91.55, 104.210.90.241 |
+| Australia Południowo-Wschodnia | 13.73.114.207, 13.77.3.139, 13.70.159.205 |
 | Brazylia Południowa | 191.235.82.221, 191.235.91.7, 191.234.182.26 |
 | Kanada Środkowa | 52.233.29.92, 52.228.39.241, 52.228.39.244 |
 | Kanada Wschodnia | 52.232.128.155, 52.229.120.45, 52.229.126.25 |
@@ -261,7 +261,7 @@ Wszystkie aplikacje logiki w regionie używać tego samego zakresów adresów IP
 | Zachodnie Zjednoczone Królestwo | 51.141.54.185, 51.141.45.238, 51.141.47.136 |
 | | |
 
-| Region aplikacji logiki | IP dla ruchu przychodzącego |
+| Region aplikacji logiki | Liczba przychodzących adresów IP |
 |-------------------|------------|
 | Australia Wschodnia | 3.75.153.66, 104.210.89.222, 104.210.89.244 |
 | Australia Południowo-Wschodnia | 13.73.115.153, 40.115.78.70, 40.115.78.237 |
@@ -291,19 +291,19 @@ Wszystkie aplikacje logiki w regionie używać tego samego zakresów adresów IP
 
 ### <a name="connectors"></a>Łączniki
 
-Do obsługi tych wywołań który [łączniki](../connectors/apis-list.md) upewnij, tak zawierają te wychodzącego adresy IP określone konfiguracje zapory oparte na regionów, jeśli istnieją aplikacje logiki.
+Do obsługi wywołania, [łączników](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one te wychodzące adresy IP na podstawie regionów wówczas, gdy istnieją aplikacje Logic Apps.
 
 > [!IMPORTANT]
 >
-> Jeśli masz istniejące konfiguracje, zaktualizuj je **jak najszybciej przed 1 września 2018** obejmują i pasują do adresów IP na tej liście, dla których istnieją aplikacje logiki regionów. 
+> Jeśli masz istniejące konfiguracje, zaktualizuj je **możliwie jak przed 1 września 2018** tak aby dołączyć i pasują do adresów IP na tej liście dla regionów, gdy istnieją aplikacje Logic Apps. 
 
-| Region aplikacji logiki | Wychodzącego | 
+| Region aplikacji logiki | IP ruchu wychodzącego | 
 |-------------------|-------------|  
 | Australia Wschodnia | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
 | Australia Południowo-Wschodnia | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
 | Brazylia Południowa | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Kanada Środkowa | 13.71.170.208 — 13.71.170.223, 13.71.170.224 — 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
-| Kanada Wschodnia | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Kanada Środkowa | 13.71.170.208 — 13.71.170.223, 13.71.170.224 — 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
+| Kanada Wschodnia | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
 | Indie Środkowe | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
 | Środkowe stany USA | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
 | Azja Wschodnia | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
@@ -316,16 +316,16 @@ Do obsługi tych wywołań który [łączniki](../connectors/apis-list.md) upewn
 | Środkowo-południowe stany USA | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
 | Indie Południowe | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
 | Azja Południowo-Wschodnia | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| Środkowo-zachodnie stany USA | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Środkowo-zachodnie stany USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
 | Europa Zachodnia | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
 | Indie Zachodnie | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
 | Zachodnie stany USA | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| Zachodnie stany USA 2 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
+| Zachodnie stany USA 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
 | Południowe Zjednoczone Królestwo | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
 | Zachodnie Zjednoczone Królestwo | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-* Dowiedz się, jak [tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
+* Dowiedz się, jak [utworzyć swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Dowiedz się więcej o [typowe przykłady i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)

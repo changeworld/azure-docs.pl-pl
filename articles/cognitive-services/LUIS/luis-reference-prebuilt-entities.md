@@ -1,52 +1,56 @@
 ---
-title: Wbudowane LUIS jednostek odwołanie - Azure | Dokumentacja firmy Microsoft
+title: Usługa LUIS wstępnie utworzone odwołanie jednostek — Azure | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Ten artykuł zawiera listę wbudowane jednostek, które znajdują się w opis języka (LUIS).
+description: Ten artykuł zawiera listę wstępnie utworzonych jednostek, które są zawarte w Language Understanding (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 07/11/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7ce50e4c0be605e1700a2c18533cb087384f524c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 680acb5ed808750312da46b6bf4ebf3afca1bea5
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316888"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969980"
 ---
-# <a name="entities-per-culture"></a>Jednostki dla kultury
+# <a name="entities-per-culture"></a>Jednostki na kulturę
 
-Opis języka (LUIS) zawiera wbudowane jednostek. Wbudowane jednostki jest dołączony do aplikacji, LUIS zawiera odpowiednie prognozowania jednostki w odpowiedzi punktu końcowego. Wszystkie zniesławiających przykładzie są również etykietami z jednostką. Zachowanie jednostek wbudowane **nie** można modyfikować. Jeśli nie podano inaczej, wbudowane jednostki są dostępne we wszystkich regionach aplikacji LUIS (kultur). W poniższej tabeli przedstawiono wbudowane jednostek, które są obsługiwane w przypadku każdego kultury.
+Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypadku wstępnie utworzone jednostki znajduje się w aplikacji, usługi LUIS zawiera odpowiednie prognozowania jednostki w odpowiedzi punktu końcowego. Wszystkie wypowiedzi przykład również są oznaczone etykietami z jednostką. Zachowanie ze wstępnie utworzonych jednostek **nie** można modyfikować. Jeśli nie określono inaczej, ze wstępnie utworzonych jednostek są dostępne we wszystkich regionach aplikacji LUIS (kultury). W poniższej tabeli przedstawiono wstępnie utworzone jednostki, które są obsługiwane w przypadku poszczególnych kultur.
 
-Wbudowane jednostki   |   Angielski (Stany Zjednoczone)<br>```En-us```   |   Francuski (Francja)<br>```fr-FR```   |   Włoski (Włochy)<br>```it-IT```   |   Hiszpański (Hiszpania)<br>```es-ES```   |   Chiński<br>```zh-CN```   |   Niemiecki<br>```de-DE```   |   Portugalski (Brazylia)<br>```pt-BR```   |   Japoński (Japonia)<br>```ja-JP```   |   Koreański (Korea)<br>```ko-kr```   | Francuski (Kanada)<br>```fr-CA```   |   Hiszpański (Meksyk)<br>```es-MX```   |   Holenderski (Holandia)<br>```nl-NL```   |
+Wstępnie utworzone jednostki   |   Angielski (Stany Zjednoczone)<br>```En-us```   |   Francuski (Francja)<br>```fr-FR```   |   Włoski (Włochy)<br>```it-IT```   |   Hiszpański (Hiszpania)<br>```es-ES```   |   Chiński<br>```zh-CN```   |   Niemiecki<br>```de-DE```   |   Portugalski (Brazylia)<br>```pt-BR```   |   Japoński (Japonia)<br>```ja-JP```   |   Koreański (Korea)<br>```ko-kr```   | Francuski (Kanada)<br>```fr-CA```   |   Hiszpański (Meksyk)<br>```es-MX```   |   Holenderski (Holandia)<br>```nl-NL```   |
 ------|:------:|------|------|------|------|------|------|------|------|------|------|------|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
-[Currency](luis-reference-prebuilt-currency.md):<br>dolara ($)<br>Jednostka ułamkowych (przykład: wartość)  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
+[Waluta](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>data<br>DateRange<br>time<br>timerange   |    ✔   |   ✔   |   -   |   ✔   |    ✔   |   -   |   ✔   |   -   |   -   |   -   |   -   |   -   |
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>obszar<br>Waga<br>informacje (przykład: bit/bajtów)<br>długość (przykład: miernika)<br>szybkość (przykład: mil na godzinę)  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   |   ✔   |   ✔   |   ✔   |   -   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |
 [Numer](luis-reference-prebuilt-number.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Numer telefonu](luis-reference-prebuilt-phonenumber.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
-[Temperatury](luis-reference-prebuilt-temperature.md):<br>f<br>kelvin —<br>Rankina<br>delisle<br>c   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>f<br>kelvin<br>Rankina<br>delisle<br>c   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   -   |
 [Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
 
-Zobacz uwagi na [przestarzałe wbudowane jednostek](luis-reference-prebuilt-deprecated.md)
+Zobacz uwagi na [przestarzałe ze wstępnie utworzonych jednostek](luis-reference-prebuilt-deprecated.md)
 
-## <a name="examples-of-prebuilt-entities-in-en-us-culture"></a>Przykładami jednostek wbudowane w en-us kultury
-W poniższej tabeli wymieniono wbudowane jednostki z przykładowych danych i wartości zwracanych.
+KeyPhrase nie jest dostępny w wszystkich podrzędnych kultur portugalski (Brazylia) — ```pt-BR```.
 
-Wbudowane jednostki   |   Przykład utterance   |   JSON
+<!--
+## Examples of prebuilt entities in en-us culture
+The following table lists prebuilt entities with example data and the return values.
+
+Prebuilt entity   |   Example utterance   |   JSON
 ------|------|------|
  ```builtin.age```   |   ```100 year old```   |```{ "type": "builtin.age", "entity": "100 year old" }```|  
  ```builtin.age```   |   ```19 years old```   |```{ "type": "builtin.age", "entity": "19 years old" }```|
  ```builtin.currency```     |   ```1000.00 US dollars```   |```{ "type": "builtin.currency", "entity": "1000.00 us dollars" }```
  ```builtin.currency```     |   ```$ 67.5 B```   |```{ "type": "builtin.currency", "entity": "$ 67.5" }```|
- ```builtin.datetimeV2``` | Zobacz [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) | Zobacz [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) |
+ ```builtin.datetimeV2``` | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) |
  ```builtin.dimension```     |   ```2 miles```   |```{ "type": "builtin.dimension", "entity": "2 miles" }```|
  ```builtin.dimension```     |  ```650 square kilometers```   |```{ "type": "builtin.dimension", "entity": "650 square kilometers" }```|
  ```builtin.email```     |  ```patti.owens@microsoft.com```   |```{ "type": "builtin.email", "entity": "patti.owens@microsoft.com" }```|
@@ -59,10 +63,10 @@ Wbudowane jednostki   |   Przykład utterance   |   JSON
  ```builtin.temperature```     |   ```10 degrees celsius```   | ```{ "type": "builtin.temperature", "entity": "10 degrees celcius" }```|   
  ```builtin.temperature```     |   ```78 F```   |```{ "type": "builtin.temperature", "entity": "78 f" }```|
  ```builtin.url```     |   ```http://www.luis.ai is a great cognitive service```   |```{ "type": "builtin.url", "entity": "http://www.luis.ai" }```|
+-->
 
-
-## <a name="contribute-to-prebuilt-entity-cultures"></a>Przyczyniają się do kultury wbudowane jednostki
-Wbudowane jednostki są tworzone w projekcie open source aparatów rozpoznawania tekstu. Sprawdź [współtworzenia](https://github.com/Microsoft/Recognizers-Text) do projektu. Ten projekt zawiera przykłady waluty na kulturę. 
+## <a name="contribute-to-prebuilt-entity-cultures"></a>Współtworzenie kultur wstępnie utworzone jednostki
+Wstępnie utworzone jednostki są opracowywane w projekcie typu open-source aparatów rozpoznawania tekstu. Proszę [współtworzyć](https://github.com/Microsoft/Recognizers-Text) do projektu. Ten projekt zawiera przykłady waluty dla kultury. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

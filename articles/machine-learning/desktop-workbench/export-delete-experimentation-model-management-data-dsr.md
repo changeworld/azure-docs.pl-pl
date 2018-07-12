@@ -1,119 +1,119 @@
 ---
-title: Eksportowanie lub usunąć eksperymenty lub model danych zarządzania — usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: W usłudze Azure Machine Learning można wyeksportować lub usuwać dane konta związane z zarządzaniem eksperymenty lub modelu z portalu Azure, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST. W tym artykule opisano sposób.
+title: Eksportowanie lub usuwania eksperymentowanie w usłudze oraz modelu zarządzania danych — usługa Azure Machine Learning | Dokumentacja firmy Microsoft
+description: W usłudze Azure Machine Learning można wyeksportować lub usunąć swoje dane konto związane z zarządzaniem eksperymentowania lub modelu przy użyciu witryny Azure portal, interfejsu wiersza polecenia, zestawu SDK i interfejsów API REST usługi uwierzytelnionego. W tym artykule przedstawiono, jak.
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
 manager: haining
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 7db37865c99908e0fd44be3ec04a8493d190e941
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5475ce3be24321b15ab78a078b758c25843f0ed3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833516"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724022"
 ---
-# <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>Eksportowanie lub usunąć własnego eksperymenty lub modelu danych zarządzania w uczeniu maszynowym
+# <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>Eksportowanie lub usuwanie usługi eksperymentowanie w usłudze lub model danych zarządzania w usłudze Machine Learning
 
-W usłudze Azure Machine Learning możesz wyeksportować lub usuwać dane konta związane z zarządzaniem eksperymenty lub modelu z uwierzytelnionego interfejsu API REST. W tym artykule wyjaśniono sposób.
+W usłudze Azure Machine Learning można wyeksportować lub usunąć swoje dane konto związane z zarządzaniem eksperymentowania lub modelu uwierzytelniony interfejs API REST. W tym artykule wyjaśniono sposób.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-account-data"></a>Kontrolowanie danych konta
-W produkcie dane przechowywane przez usługi Azure Machine Learning eksperymentowania oraz modelu zarządzania jest dostępna dla eksportu i usunięcia za pośrednictwem portalu Azure, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure prywatności. 
+W ramach produktu — dane przechowywane przez zarządzanie eksperymentowania i modelu usługi Azure Machine Learning jest dostępna dla eksportowania i usuwania za pośrednictwem witryny Azure portal, interfejsu wiersza polecenia, zestaw SDK i uwierzytelnionego interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure prywatności. 
 
-W usłudze Azure Machine Learning danych osobowych składa się z informacji o użytkowniku w historię wykonywania dokumentów i rejestruje dane telemetryczne niektórych interakcji użytkowników z usługą.
+W usłudze Azure Machine Learning dane osobowe składa się z informacjami o użytkownikach w dokumentach historii uruchamiania i rejestruje dane telemetryczne niektórych interakcji użytkowników z usługą.
 
-## <a name="delete-account-data-with-the-rest-api"></a>Usuń dane konta przy użyciu interfejsu API REST 
+## <a name="delete-account-data-with-the-rest-api"></a>Usuwanie danych konta za pomocą interfejsu API REST 
 
-Aby można było usunąć danych, można wprowadzić następujące wywołania interfejsu API z zlecenie HTTP DELETE. Są one autoryzowane przez `Authorization: Bearer <arm-token>` nagłówka w żądaniu, gdzie `<arm-token>` jest token dostępu usługi AAD dla punktu końcowego `https://management.core.windows.net/` punktu końcowego.  
+Aby usunąć dane, następujące wywołania interfejsu API może się od zlecenie HTTP DELETE. Są one autoryzowane przez `Authorization: Bearer <arm-token>` nagłówka w żądaniu, gdzie `<arm-token>` jest token dostępu usługi AAD dla punktu końcowego `https://management.core.windows.net/` punktu końcowego.  
 
-Aby dowiedzieć się, jak uzyskać ten token i wywołać punkty końcowe systemu Azure, zobacz [dokumentacji interfejsu API REST Azure](https://docs.microsoft.com/rest/api/azure/).  
+Aby dowiedzieć się, jak uzyskać ten token i wywołać punkty końcowe platformy Azure, zobacz [dokumentację interfejsu API REST usługi Azure](https://docs.microsoft.com/rest/api/azure/).  
 
-W przykładach po, Zastąp tekst w {} z nazwami wystąpień określające skojarzonych zasobów.
+W przykładach następujące, Zastąp tekst umieszczony w {} przy użyciu nazwy wystąpień, które określają skojarzonego zasobu.
 
-## <a name="delete-from-a-hosting-account"></a>Usuń konto hostingu
+## <a name="delete-from-a-hosting-account"></a>Usuwanie konta hostingu
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.MachineLearningModelManagement/accounts/{account-name}?api-version=2017-09-01-preview      
 
-## <a name="delete-from-the-model-management-service"></a>Usuń z modelu usługi zarządzania
+## <a name="delete-from-the-model-management-service"></a>Usuń z Usługa zarządzania modelami
 
-### <a name="model-document"></a>Wzór dokumentu
-Użyj tego wywołania spowoduje wyświetlenie listy modeli i ich identyfikatorów:
+### <a name="model-document"></a>Dokument modelu
+Użyj tego wywołania można pobrać listy modeli i ich identyfikatorów:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models?api-version=2017-09-01-preview"
 
-Poszczególne modele można usunąć z:  
+Poszczególne modele można usunąć za pomocą:  
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{modelId}?api-version=2017-09-01-preview
 
-### <a name="manifest-document"></a>Dokument manifestu
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich manifestów i ich identyfikatorów:
+### <a name="manifest-document"></a>Manifest dokumentu
+Aby uzyskać listę wszystkich manifestów i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests?api-version=2017-09-01-preview
 
-Manifesty poszczególnych można usunąć z:
+Manifesty poszczególnych można usunąć za pomocą:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{manifestId}?api-version=2017-09-01-preview
 
-### <a name="service-documents"></a>Usługa dokumentów
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich usług i ich identyfikatorów:
+### <a name="service-documents"></a>Dokumenty usługi
+Aby uzyskać listę wszystkich usług i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services?api-version=2017-09-01-preview
 
-Usługi można usunąć z:    
+Poszczególne usługi można usunąć za pomocą:    
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{serviceName}?api-version=2017-09-01-preview
 
 ### <a name="image-document"></a>Dokument obrazu
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich obrazów i ich identyfikatorów:
+Aby uzyskać listę wszystkich obrazów i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images?api-version=2017-09-01-preview
 
-Poszczególne obrazy można usunąć z:  
+Pojedyncze obrazy można usunąć za pomocą:  
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{imageId}?api-version=2017-09-01-preview
 
-## <a name="delete-run-history-artifact-and-notification-data"></a>Usuń wykonywania dane historii artefaktów i powiadomienia
-Uruchom magazyny historii, artefaktów i powiadomień dla projektu są usuwane po usunięciu odpowiednich dokumentu projektu:
+## <a name="delete-run-history-artifact-and-notification-data"></a>Usuwanie danych historii, artefaktów i powiadomień uruchomienia
+Uruchom magazynów historii, artefaktów i powiadomień dla projektu są usuwane po usunięciu odpowiednich dokument projektu:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.MachineLearningExperimentation/accounts/{account-name}/workspaces/{workspace-name}/projects/{project-name}?api-version=2017-05-01-preview
     
-## <a name="delete-from-experimentation-account-resource-provider"></a>Usuń od dostawcy zasobów konta eksperymenty
-Dokumenty projektu są usuwane z:
+## <a name="delete-from-experimentation-account-resource-provider"></a>Usuwanie dostawcy zasobów konta eksperymentowania
+Dokumenty projektu zostaną usunięte za pomocą:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.MachineLearningExperimentation/accounts/{account-name}/workspaces/{workspace-name}/projects/{project-name}?api-version=2017-05-01-preview
 
-Obszar roboczy dokumenty są usuwane z:
+Obszar roboczy zostaną one usunięte za pomocą:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.MachineLearningExperimentation/accounts/{account-name}/workspaces/{workspace-name}?api-version=2017-05-01-preview
 
-Konto całego eksperymenty zostało usunięte z:
+Konto eksperymentowania całego zostało usunięte za pomocą:
     
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.MachineLearningExperimentation/accounts/{account-name}?api-version=2017-05-01-preview
 
 
-## <a name="export-service-data-with-the-rest-api"></a>Eksportuj dane usługi z interfejsu API REST
-Aby wyeksportować dane, można wprowadzić następujące wywołania interfejsu API z zlecenie HTTP GET. Są one autoryzowane przez `Authorization: Bearer <arm-token>` nagłówka w żądaniu, gdzie `<arm-token>` jest token dostępu usługi AAD dla punktu końcowego `https://management.core.windows.net/`  
+## <a name="export-service-data-with-the-rest-api"></a>Eksportowanie danych usługi za pomocą interfejsu API REST
+Aby wyeksportować dane, następujące wywołania interfejsu API może się od zlecenie HTTP GET. Są one autoryzowane przez `Authorization: Bearer <arm-token>` nagłówka w żądaniu, gdzie `<arm-token>` jest token dostępu usługi AAD dla punktu końcowego `https://management.core.windows.net/`  
 
-Aby dowiedzieć się, jak uzyskać ten token i wywołać punkty końcowe systemu Azure, zobacz [dokumentacji interfejsu API REST Azure](https://docs.microsoft.com/rest/api/azure/).   
+Aby dowiedzieć się, jak uzyskać ten token i wywołać punkty końcowe platformy Azure, zobacz [dokumentację interfejsu API REST usługi Azure](https://docs.microsoft.com/rest/api/azure/).   
 
-W przykładach po, Zastąp tekst w {} z nazwami wystąpień określające skojarzonych zasobów.
+W przykładach następujące, Zastąp tekst umieszczony w {} przy użyciu nazwy wystąpień, które określają skojarzonego zasobu.
 
 ## <a name="export-hosting-account-data"></a>Eksportuj dane konta hostingu
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningModelManagement/accounts/{accountName}?api-version=2017-09-01-preview     
 
-## <a name="export-model-management-service-data"></a>Eksportuj dane usługi zarządzania modelu
-### <a name="model-document"></a>Wzór dokumentu
+## <a name="export-model-management-service-data"></a>Eksportowanie modelu zarządzania usługi danych
+### <a name="model-document"></a>Dokument modelu
 
-Użyj tego wywołania spowoduje wyświetlenie listy modeli i ich identyfikatorów:
+Użyj tego wywołania można pobrać listy modeli i ich identyfikatorów:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models?api-version=2017-09-01-preview"
 
@@ -122,7 +122,7 @@ Poszczególne modele można uzyskać przez:
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{modelId}?api-version=2017-09-01-preview 
 
 ### <a name="manifests"></a>Manifesty
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich manifestów i ich identyfikatorów:
+Aby uzyskać listę wszystkich manifestów i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests?api-version=2017-09-01-preview
 
@@ -131,26 +131,26 @@ Manifesty poszczególnych można uzyskać przez:
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{manifestId}?api-version=2017-09-01-preview
 
 ### <a name="services"></a>Usługi
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich usług i ich identyfikatorów:
+Aby uzyskać listę wszystkich usług i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services?api-version=2017-09-01-preview
 
-Poszczególnych usług można uzyskać przez: 
+Poszczególne usługi można uzyskać przez: 
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{serviceName}?api-version=2017-09-01-preview
 
 ### <a name="images"></a>Obrazy
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich obrazów i ich identyfikatorów:
+Aby uzyskać listę wszystkich obrazów i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images?api-version=2017-09-01-preview
 
-Poszczególnych usług można uzyskać przez: 
+Poszczególne usługi można uzyskać przez: 
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{imageId}?api-version=2017-09-01-preview     
 
-## <a name="export-compute-data"></a>Eksportuj dane obliczeń
+## <a name="export-compute-data"></a>Eksportowanie danych obliczeń
 ### <a name="compute-clusters"></a>Klastrów obliczeniowych
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich klastrów obliczeniowych i nazw:
+Użyj tego wywołania, aby uzyskać listę wszystkich klastrów obliczeniowych i ich nazwy:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2018-03-01-preview
 
@@ -158,8 +158,8 @@ Poszczególnych klastrów można uzyskać przez:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{compute-name}?api-version=2018-03-01-preview
 
-### <a name="operationalization-clusters"></a>Klastry operationalization
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich klastrów i nazw:
+### <a name="operationalization-clusters"></a>Operacjonalizacja klastrów
+Użyj tego wywołania, aby uzyskać listę wszystkich klastrów i ich nazwy:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.MachineLearningCompute/operationalizationClusters?api-version=2017-06-01-preview
 
@@ -167,16 +167,16 @@ Poszczególnych klastrów można uzyskać przez:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.MachineLearningCompute/operationalizationClusters/{clusterName}?api-version=2017-06-01-preview
 
-## <a name="export-run-history-data"></a>Dane historii uruchamiania eksportu
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich uruchamia i ich identyfikatorów:
+## <a name="export-run-history-data"></a>Eksportowanie danych historii uruchamiania
+Aby uzyskać listę wszystkich przebiegów i ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runs
 
-Użyj tego wywołania spowoduje wyświetlenie listy wszystkich eksperymentów i ich identyfikatorów:
+Aby uzyskać listę wszystkich eksperymentów oraz ich identyfikatorów, należy użyć tego wywołania:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/experiments
 
-Uruchom elementy można znaleźć w historii:
+Uruchom historii, które elementy można uzyskać przez:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runs/{runId}
 
@@ -184,33 +184,33 @@ Uruchom metryk, które elementy można uzyskać przez:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runmetrics
 
-Uruchom eksperymenty można uzyskać przez:
+Wykonywania eksperymentów, można uzyskać przez:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/experiments/{experimentId}    
 
-Uruchom artefakty historii:
+Uruchom artefaktów historii:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runs/{runId}/artifacts
 
-Uruchom artefakty historii identyfikatorów URI:
+Uruchom artefaktów Historia identyfikatorów URI:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runs/{runId}/artifacturi?name={artifactName}
 
-## <a name="export-artifacts"></a>Artefakty eksportu
-Użyj tego wywołania spowoduje wyświetlenie listy zasobów i ich nazwy:
+## <a name="export-artifacts"></a>Eksportuj artefaktów
+Użyj tego wywołania można pobrać listy zasobów i ich nazwy:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/assets
 
-Użyj tego wywołania spowoduje wyświetlenie listy artefakty i ich ścieżek:
+Użyj tego wywołania, aby uzyskać listę artefaktów i ich ścieżek:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/artifacts/origins/{origin}/containers/{runId}
         
         
-### <a name="artifact-contents"></a>Zawartość artefaktów
+### <a name="artifact-contents"></a>Zawartość artefaktu
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/artifacts/contentinfo/ExperimentRun/{runId}/{artifactPath}
 
-### <a name="artifact-documents"></a>Dokumenty artefaktów
+### <a name="artifact-documents"></a>Dokumenty artefaktu
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/runs/{runId}/artifacts
         
@@ -218,15 +218,15 @@ Użyj tego wywołania spowoduje wyświetlenie listy artefakty i ich ścieżek:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/assets/name/{name}
 
-## <a name="export-notifications"></a>Eksportuj powiadomienia
+## <a name="export-notifications"></a>Eksportowanie powiadomień
 
-1. Przejdź do [sekcji użytkownicy portalu Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/), a następnie wybierz użytkownika z **nazwa** kolumny. 
+1. Przejdź do [sekcji użytkownicy w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/), a następnie wybierz użytkownika z **nazwa** kolumny. 
 2. Uwaga **obiektu o identyfikatorze**i używać go w następujące wywołanie:     
 
         https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}/workspaces/{workspaceName}/projects/{projectName}/users/{objectId}/jobs
 
-## <a name="export-experimentation-account-information"></a>Eksportowanie danych konta eksperymenty
-### <a name="experimentation-account-information"></a>Informacje o koncie eksperymenty
+## <a name="export-experimentation-account-information"></a>Eksportowanie danych konta eksperymentowania
+### <a name="experimentation-account-information"></a>Informacje o koncie eksperymentowania
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningExperimentation/accounts/{accountName}?api-version=2017-05-01-preview
         

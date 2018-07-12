@@ -1,5 +1,5 @@
-Powłoka chmury Azure jest środowisko przeglądarki powłoki, zarządzanie i opracowanie zasobów platformy Azure.
+Usługa Azure Cloud Shell to oparte na przeglądarce powłoki do zarządzania i programowania zasobów platformy Azure.
 
-Chmura powłoki oferuje obsługę dostępny przeglądarki, wstępnie skonfigurowane powłoki zarządzania zasobami platformy Azure, bez potrzeby instalowania wersji i utrzymywanie maszynę, samodzielnie.
+Usługa cloud Shell oferuje środowisko powłoki dostępny w przeglądarce, wstępnie skonfigurowane dla zarządzania zasobami platformy Azure bez konieczności instalowania, obsługi wersji i utrzymywania maszynę samodzielnie.
 
-Powłoka chmury udostępnia maszyn, na podstawie żądań i w związku z tym maszyny stanu nie będzie zachowywane między sesjami. Ponieważ powłoki chmury jest skompilowany dla sesji interaktywne, powłok automatycznie usunięte po upływie 20 minut braku aktywności powłoki.
+Usługa cloud Shell aprowizuje maszyny, na podstawie danego żądania i w efekcie stan maszyny nie będzie zachowywane między sesjami. Ponieważ usługa Cloud Shell zaprojektowano pod kątem interaktywnych sesji, powłoki automatycznie usunięte po upływie 20 minut nieaktywności powłoki.

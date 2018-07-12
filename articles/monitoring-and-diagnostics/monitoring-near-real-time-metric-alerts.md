@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 63659b5606e4bab8365f4f7a94c42a0fa5eafee6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4d51b099532d3052acc190231ec4be17765a427e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928376"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971027"
 ---
 # <a name="introduction"></a>Wprowadzenie
 Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-unified-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](insights-alerts-portal.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru. 
@@ -28,7 +28,7 @@ Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników 
 > Określone metryki i/lub wymiaru będą wyświetlane tylko jeśli dane dla niego istnieje w wybranym okresie. Te metryki są dostępne dla klientów korzystających z obszarów roboczych usługi Azure Log Analytics, w regionie wschodnie stany USA, zachodnio-środkowe stany USA i Europa Zachodnia. Metryki z usługi Log Analytics jest obecnie w publicznej wersji zapoznawczej i może ulec zmianie.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, programu PowerShell, interfejsu wiersza polecenia, REST pomocy technicznej
-Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (interfejs wiersza polecenia platformy Azure w wersji 2.0) będzie dostępna wkrótce.
+Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (interfejs wiersza polecenia platformy Azure w wersji 2.0) będzie dostępna wkrótce.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
 Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk (wersja zapoznawcza)](monitoring-metric-charts.md).

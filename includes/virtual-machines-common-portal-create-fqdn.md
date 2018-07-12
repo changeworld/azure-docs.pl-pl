@@ -1,14 +1,14 @@
 
-1. Wybierz maszyny Wirtualnej w portalu. *Nazwy DNS* jest obecnie pusta. Wybierz **publicznego adresu IP**:
+1. Wybierz maszynę Wirtualną w portalu. *Nazwy DNS* jest obecnie pusta. Wybierz **publiczny adres IP**:
    
    ![Kliknij zasób publicznego adresu IP w portalu](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2. Wprowadź odpowiednią nazwę DNS, a następnie wybierz **zapisać**.
+2. Wprowadź żądaną nazwę DNS, a następnie wybierz pozycję **Zapisz**.
    
-   ![Wprowadź etykieta nazwy DNS dla publicznego adresu IP zasobu](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
+   ![Wprowadź etykietę nazwy DNS dla publicznego zasobu adresu IP](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
 
 
-3. Aby powrócić do bloku omówienie maszyny Wirtualnej, należy zamknąć *publicznego adresu IP* bloku. Sprawdź, czy *nazwy DNS* jest teraz wyświetlany.
+3. Aby powrócić do bloku przeglądu maszyny Wirtualnej, należy zamknąć *publiczny adres IP* bloku. Upewnij się, że *nazwy DNS* są teraz wyświetlane.
    
-   ![Upewnij się, że ustawiono nowej etykiety DNS](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
+   ![Upewnij się, że ustawiono nowe etykiety DNS](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 

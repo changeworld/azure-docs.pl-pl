@@ -1,6 +1,6 @@
 ---
-title: Pulpit nawigacyjny omówienie szczegółowych informacji aplikacji Azure | Dokumentacja firmy Microsoft
-description: Monitorowanie aplikacji z funkcjami usługi Azure Application Insights i pulpitu nawigacyjnego przeglądu.
+title: Pulpit nawigacyjny usługi Azure Application Insights przeglądu | Dokumentacja firmy Microsoft
+description: Monitorowanie aplikacji za pomocą funkcji usługi Azure Application Insights i pulpit nawigacyjny przeglądu.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,61 +11,55 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a639b51fd930c5c74ee78b37fbe8e97e39dbc32
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337562"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970976"
 ---
-# <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny szczegółowych informacji Omówienie aplikacji
+# <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
 
-Usługa Application Insights zawsze udostępnił okienko Podsumowanie, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowego pulpitu nawigacyjnego przeglądu zapewnia szybsze, bardziej elastyczne środowisko.
+Usługa Application Insights zawsze oferowała okienko Przegląd podsumowania, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowy pulpit nawigacyjny przeglądu zapewnia szybsze, bardziej elastyczne środowisko.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestować nowe środowisko
+## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestowania nowego środowiska
 
-Nowego pulpitu nawigacyjnego przeglądu teraz uruchamia się domyślnie:
+Nowy pulpit nawigacyjny przeglądu teraz uruchamia się domyślnie:
 
-![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\overview-0001.png)
+![Okienko podglądu — omówienie](.\media\app-insights-overview-dashboard\overview.png)
 
-## <a name="better-performance"></a>Lepszą wydajność
+## <a name="better-performance"></a>Lepsza wydajność
 
-Prosty interfejs jednym kliknięciem uproszczonej wybranego zakresu czasu.
+Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jednym kliknięciem.
 
 ![Przedział czasu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
-Ogólna wydajność znacząco zwiększono. Masz dostęp jednym kliknięciem do popularnych funkcji, takich jak **wyszukiwania** i **Analytics**. Każdy domyślne dynamiczne aktualizowanie kafelka kluczowego wskaźnika wydajności zapewnia wgląd w odpowiednie funkcje usługi Application Insights. Aby dowiedzieć się więcej o nie powiodło się wybierz żądań **błędów** w obszarze **zbadaj** nagłówka:
+Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
 
 ![Awarie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Pulpit nawigacyjny aplikacji korzysta z istniejących technologii pulpit nawigacyjny w systemie Azure w celu zapewnienia przeglądu można swobodnie dostosowywać jednego okienka aplikacji kondycji i wydajności.
+Pulpit nawigacyjny aplikacji korzysta z istniejących technologii pulpitu nawigacyjnego w obrębie platformy Azure, aby przedstawić widok można swobodnie dostosowywać jedną taflę wydajności i kondycji aplikacji.
 
 Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji_ w lewym górnym rogu.
 
 ![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
-Jeśli jest to pierwszy raz podczas uzyskiwania dostępu do pulpitu nawigacyjnego, uruchomi domyślny widok:
+Jeśli jest to dostęp do pulpitu nawigacyjnego po raz pierwszy, program uruchamia domyślny widok:
 
 ![Widok pulpitu nawigacyjnego](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
-Należy dysponować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego do optymalnego dopasowania na potrzeby Twojego zespołu.
+Możesz zachować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego w sposób najlepiej odpowiadający potrzeb danego zespołu.
 
 > [!NOTE]
 > Wszyscy użytkownicy z dostępem do zasobu usługi Application Insights udostępnianie tego samego środowiska pulpitu nawigacyjnego aplikacji. Zmiany wprowadzone przez jeden użytkownik zmodyfikuje widoku dla wszystkich użytkowników.
 
-Aby wrócić do obsługi omówienie po prostu wybierz:
+Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję:
 
 ![Przycisk — omówienie](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
-
-## <a name="access-the-classic-overview-dashboard"></a>Dostęp do pulpitu nawigacyjnego przeglądu klasycznego
-
-Jeśli pominiesz starego omówienie wybierz **klasycznego omówienie**.
-
-![Omówienie klasycznego](.\media\app-insights-overview-dashboard\overview-classic.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

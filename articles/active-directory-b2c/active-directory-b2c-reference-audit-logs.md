@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0024f8ab914eba83effe8f5787cfb252775b5f0f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443389"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969663"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji usługi Azure AD B2C
 
@@ -63,7 +63,7 @@ Zostanie wyświetlona lista działań zarejestrowane w ciągu ostatnich siedmiu 
 - Kliknij pozycję **Pobierz** do pobrania działania jako plik csv
 
 ##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Uzyskiwanie dostępu do dzienników inspekcji za pomocą interfejsu API raportowania usługi Azure AD
-Dzienniki inspekcji są publikowane w tej samej potoku jako inne działania usługi Azure Active Directory, dzięki czemu są one dostępne za pośrednictwem [interfejsu API raportowania usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-audit-reference). 
+Dzienniki inspekcji są publikowane w tej samej potoku jako inne działania usługi Azure Active Directory, dzięki czemu są one dostępne za pośrednictwem [interfejsu API raportowania usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference). 
 
 ###<a name="prerequisites"></a>Wymagania wstępne
 Do uwierzytelniania w usłudze Azure AD, interfejsu API raportowania, należy najpierw zarejestrować aplikację. Upewnij się, że postępuj zgodnie z instrukcjami w [wymagania wstępne dotyczące raportowania interfejsów API usługi Azure AD dostęp](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).

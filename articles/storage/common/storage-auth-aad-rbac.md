@@ -1,6 +1,6 @@
 ---
-title: Użycie funkcji RBAC do zarządzania prawami dostępu do usługi Azure Storage kontenery i kolejek (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Użyj kontroli dostępu opartej na rolach (RBA) do przypisywania ról w celu udzielenia dostępu do danych usługi Azure Storage do użytkowników, grup, nazwy główne usług aplikacji lub tożsamości usługi zarządzane. Usługa Azure Storage obsługuje role wbudowane i niestandardowe prawa dostępu do kontenerów i kolejek.
+title: Użycie funkcji RBAC do zarządzania prawami dostępu do kontenerów usługi Azure Storage i kolejki (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Użyj kontroli dostępu opartej na rolach (RBA) do przypisywania ról, aby uzyskać dostęp do danych usługi Azure Storage do użytkowników, grup, jednostek usług aplikacji lub tożsamości usługi zarządzanej. Usługa Azure Storage obsługuje role wbudowane i niestandardowe prawa dostępu do kontenerów i kolejek.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,92 +8,92 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: cee319c4fb158e95b4a6d996f846038f0654dd32
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082234"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969157"
 ---
-# <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą RBAC (wersja zapoznawcza)
+# <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)
 
-Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zasobów zabezpieczonych za pomocą [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Usługa Azure Storage definiuje zestaw wbudowane role RBAC, które obejmują wspólne zestawy uprawnienia umożliwiające dostęp do kontenerów lub kolejek. Gdy RBAC rola jest przypisywana do tożsamości usługi Azure AD, czy tożsamości udzielono dostępu do tych zasobów, zgodnie z określonego zakresu. Dostęp może zakresu na poziomie subskrypcji, grupy zasobów, konta magazynu lub poszczególnych kontenera lub kolejki. Można przypisać prawa dostępu do zasobów usługi Azure Storage przy użyciu portalu Azure, narzędzi wiersza polecenia platformy Azure i interfejsów API usługi Azure Management. 
+Azure Active Directory (Azure AD) autoryzuje praw dostępu do zabezpieczonych zasobów przy użyciu [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Usługa Azure Storage definiuje zestaw wbudowane role kontroli RBAC, które obejmują typowe zestawy uprawnień, które umożliwiają dostęp do kontenerów i kolejki. Gdy rola RBAC jest przypisany do tożsamości usługi Azure AD, tożsamość ma uprawnienia do tych zasobów, zgodnie z określonego zakresu. Może należeć do poziomu subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki zakresu dostępu. Można przypisać prawa dostępu do zasobów usługi Azure Storage przy użyciu witryny Azure portal, narzędzi wiersza polecenia platformy Azure i interfejsów API zarządzania platformy Azure. 
 
-Tożsamość usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji lub może być *tożsamość usługi zarządzanej*. Podmiot zabezpieczeń może być użytkownika, grupy lub nazwy głównej usługi aplikacji. A [tożsamość usługi zarządzanej](../../active-directory/managed-service-identity/overview.md) jest automatycznie zarządzane tożsamości używany do uwierzytelniania z aplikacji uruchomionych w maszynach wirtualnych platformy Azure, funkcja aplikacji zestawy skalowania maszyny wirtualnej i innych użytkowników. Omówienie tożsamości w usłudze Azure AD, zobacz [tożsamościach na platformie Azure z zrozumieć](https://docs.microsoft.com/en-us/azure/active-directory/understand-azure-identity-solutions).
+Tożsamości usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być *tożsamości usługi zarządzanej*. Podmiot zabezpieczeń może być użytkownika, grupy lub aplikacji jednostki usługi. A [tożsamości usługi zarządzanej](../../active-directory/managed-service-identity/overview.md) jest automatycznie zarządzanych tożsamości używany do uwierzytelniania z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Aby uzyskać omówienie tożsamości w usłudze Azure AD, zobacz [Understand Azure tożsamością](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
 ## <a name="rbac-roles-for-azure-storage"></a>Role RBAC dla usługi Azure Storage
 
-Usługa Azure Storage obsługuje zarówno wbudowane i niestandardowe role RBAC. Magazyn Azure oferuje następujące wbudowane role RBAC do użycia z usługą Azure AD:
+Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Usługa Azure Storage oferuje następujące wbudowane role kontroli RBAC do użycia z usługą Azure AD:
 
-- [Magazyn obiektów Blob danych Współautor (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Czytnik danych magazynu obiektów Blob (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Magazyn kolejek współautorem (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Czytnik danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
+- [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+- [Współautor danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+- [Czytnik danych kolejki magazynu (wersja zapoznawcza)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
 
-Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [poznać definicje ról](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
+Aby uzyskać więcej informacji o tym, jak wbudowane role są definiowane dla usługi Azure Storage, zobacz [zrozumienie definicji ról](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
-Istnieje również możliwość definiowania ról niestandardowych do użytku z kontenerów i kolejek. Aby uzyskać więcej informacji, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md). 
+Można również definiować role niestandardowe do użycia z kontenerami i kolejek. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md). 
 
 > [!IMPORTANT]
-> Ta wersja zapoznawcza jest przeznaczony tylko do użytku z systemem innym niż produkcji. Produkcyjnej umowy poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jako ogólnie dostępna. Jeśli dla danego scenariusza integracji z usługą Azure AD nie jest jeszcze obsługiwana, nadal używać klucza wspólnego autoryzacji lub tokeny sygnatury dostępu Współdzielonego w aplikacji. Aby uzyskać dodatkowe informacje o wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
+> Tej wersji zapoznawczej jest przeznaczony tylko do użytku nieprodukcyjnych. Produkcyjne usługi poziomu usług (SLA) nie będą dostępne, dopóki integracji z usługą Azure AD dla usługi Azure Storage jest zadeklarowany jest ogólnie dostępna. Jeśli integracji z usługą Azure AD nie jest jeszcze obsługiwana dla danego scenariusza, należy nadal używać klucza wspólnego autoryzacji lub tokenów SAS w swoich aplikacjach. Aby uzyskać dodatkowe informacje na temat korzystania z wersji zapoznawczej, zobacz [uwierzytelniania dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)](storage-auth-aad.md).
 >
-> W wersji zapoznawczej przypisań ról RBAC może potrwać maksymalnie pięć minut propagacji.
+> W trakcie okresu zapoznawczego przypisania ról RBAC może potrwać do pięciu minut na propagację.
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Przypisywanie roli do podmiotu zabezpieczeń
 
-Przypisz rolę RBAC do tożsamość platformy Azure, aby udzielić uprawnień do kontenerów lub kolejek na koncie magazynu. Można określić zakres przypisania roli do konta magazynu lub do określonego kontenera lub kolejki. W poniższej tabeli przedstawiono prawa dostępu przyznane przez wbudowane role, w zależności od zakresu: 
+Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić uprawnień do kontenerów lub kolejek na koncie magazynu. Można określić zakres przypisania roli do konta magazynu lub do określonego kontenera lub kolejki. W poniższej tabeli przedstawiono prawa dostępu do wbudowanych ról w zależności od zakresu: 
 
-|                                 |     Obiekt blob danych współautora                                                 |     Czytnik danych obiektów blob                                                |     Kolejka danych współautora                                  |     Czytnik danych kolejki                                 |
+|                                 |     Współautor danych obiektu blob                                                 |     Czytnik danych obiektu blob                                                |     Współautor danych kolejki                                  |     Czytnik danych kolejki                                 |
 |---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    Ograniczone do subskrypcji       |    Dostęp do odczytu/zapisu do wszystkich kontenerów i obiektów blob w subskrypcji       |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w subskrypcji       |    Dostęp do odczytu/zapisu do wszystkich kolejek w ramach subskrypcji       |    Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji         |
-|    Zakres do grupy zasobów     |    Dostęp do odczytu/zapisu do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Dostęp do odczytu/zapisu do wszystkich kolejek w grupie zasobów     |    Dostęp do odczytu do wszystkich kolejek w grupie zasobów     |
-|    Zakres do konta magazynu    |    Dostęp do odczytu i zapisu do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Dostęp do odczytu/zapisu do wszystkich kolejek w ramach konta magazynu    |    Dostęp do odczytu do wszystkich kolejek w ramach konta magazynu    |
-|    Zakres do kontenera/kolejki    |    Dostęp do odczytu i zapisu do określonego kontenera i jego obiektów blob              |    Dostęp do odczytu określonego kontenera i jego obiektów blob              |    Dostęp do odczytu i zapisu do określonej kolejki                  |    Dostęp do odczytu do określonej kolejki                    |
+|    Ograniczone do subskrypcji       |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji       |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji       |    Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji       |    Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji         |
+|    Zakres do grupy zasobów     |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów     |    Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów     |    Dostęp do odczytu do wszystkich kolejek w grupie zasobów     |
+|    Ograniczone do konta magazynu    |    Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Dostęp do odczytu do wszystkich kontenerów i obiektów blob na koncie magazynu    |    Odczyt/zapis dostęp do wszystkich kolejek na koncie magazynu    |    Dostęp do odczytu do wszystkich kolejek na koncie magazynu    |
+|    Ograniczone do kolejki/kontenera    |    Odczyt/zapis dostęp do określonego kontenera i jego obiektów blob              |    Dostęp do odczytu do określonego kontenera i jego obiektów blob              |    Odczyt/zapis dostęp do określonej kolejki                  |    Dostęp do odczytu do określonej kolejki                    |
 
 > [!NOTE]
-> Jako właściciel konta magazynu Azure użytkownik nie jest automatycznie przypisywana uprawnienia dostępu do danych. Należy jawnie przypisać samodzielnie roli RBAC dla usługi Azure Storage. Należy przypisać mu na poziomie subskrypcji, grupy zasobów, konta magazynu, kontenera lub kolejki.
+> Jako właściciel konta usługi Azure Storage możesz nie są automatycznie przypisywane uprawnienia dostępu do danych. Należy jawnie przypisać sobie rolę RBAC dla usługi Azure Storage. Można ją przypisać na poziomie subskrypcji, grupy zasobów, konto magazynu, kontenera lub kolejki.
 
-Aby uzyskać więcej informacji dotyczących uprawnień wymaganych do wywołania operacji usługi Azure Storage, zobacz [uprawnienia do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).
+Aby uzyskać więcej informacji na temat uprawnień wymaganych do wywoływania operacji usługi Azure Storage, zobacz [uprawnień do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).
 
-Poniższe sekcje pokazują, jak przypisać rolę ograniczone do konta magazynu lub do poszczególnych kontenera.
+Poniższe sekcje pokazują, jak przypisać rolę ograniczone do konta magazynu lub do pojedynczy kontener.
 
-### <a name="assign-a-role-scoped-to-the-storage-account-in-the-azure-portal"></a>Przypisywanie roli ograniczone do konta magazynu w portalu Azure
+### <a name="assign-a-role-scoped-to-the-storage-account-in-the-azure-portal"></a>Przypisywanie roli ograniczone do konta magazynu w witrynie Azure portal
 
-Aby przypisać rolę wbudowanych udzielanie dostępu do wszystkich kontenerów lub kolejek w ramach konta magazynu w portalu Azure:
+Aby przypisać rolę wbudowaną, aby umożliwić dostęp do wszystkich kontenerów lub kolejek na koncie magazynu w witrynie Azure portal:
 
-1. W [portalu Azure](https://portal.azure.com), przejdź do swojego konta magazynu.
-2. Wybierz konto magazynu, a następnie wybierz **kontroli dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Kliknij przycisk **Dodaj** przycisk, aby dodać nową rolę.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu.
+2. Wybierz konto magazynu, a następnie wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla konta. Kliknij przycisk **Dodaj** przycisk, aby dodać nową rolę.
 
     ![Zrzut ekranu przedstawiający ustawienia kontroli dostępu do magazynu](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. W **dodać uprawnienia** okna, wybierz rolę do przypisania do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tej roli. Na przykład poniższy obraz przedstawia **czytnik danych magazynu obiektów Blob (wersja zapoznawcza)** roli przypisanej do użytkownika.
+3. W **Dodaj uprawnienia** okna, wybierz rolę do przypisania do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę. Na przykład na poniższej ilustracji przedstawiono **czytnik danych obiektu Blob Storage (wersja zapoznawcza)** roli przypisanej do użytkownika.
 
-    ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](media/storage-auth-aad-rbac/add-rbac-role.png)
+    ![Zrzut ekranu przedstawiający sposób Przypisz rolę RBAC](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. Kliknij pozycję **Zapisz**. Tożsamość, któremu przypisano rolę wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, czy dodano użytkowników teraz ma uprawnienia do odczytu wszystkich danych obiektu blob na koncie magazynu.
+4. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodano użytkowników teraz mają uprawnienia do odczytu do wszystkich danych obiektu blob na koncie magazynu.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac/account-scoped-role.png)
 
-### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Przypisywanie roli zakres do kontenera lub kolejki w portalu Azure
+### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Przypisywanie roli ograniczone do kontenera lub kolejki w witrynie Azure portal
 
-Kroki do przypisywania roli wbudowany zakres kontener lub kolejki są podobne. Procedury pokazane przypisuje rolę zakres do kontenera, ale można wykonać te same kroki, aby przypisać rolę zakres do kolejki: 
+Czynności podczas przypisywania wbudowana Rola o określonym zakresie do kontenera lub kolejki są podobne. Przedstawionych tu procedurach przypisuje rolę ograniczone do kontenera, ale możesz wykonać te same kroki, aby przypisać rolę ograniczone do kolejki: 
 
-1. W [portalu Azure](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **omówienie** dla konta.
-2. W obszarze usługi obiektów Blob, wybierz **Przeglądaj obiekty BLOB**. 
-3. Zlokalizuj kontener, dla którego chcesz przypisać rolę, ustawienia i wyświetlania kontenera. 
-4. Wybierz **kontroli dostępu (IAM)** do wyświetlania ustawień kontroli dostępu do kontenera.
-5. W **dodać uprawnienia** okna, wybierz rolę, którą chcesz przypisać do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tej roli.
-6. Kliknij pozycję **Zapisz**. Tożsamość, któremu przypisano rolę wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że użytkownik dodany teraz ma uprawnienia do odczytu danych w kontenerze o nazwie *przykładowy kontener*.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego konta magazynu i wyświetlić **Przegląd** dla konta.
+2. W obszarze usługi Blob Service, wybierz **Przeglądaj obiekty BLOB**. 
+3. Odszukaj kontener, dla którego chcesz przypisać rolę i wyświetlanie ustawień kontenera. 
+4. Wybierz **kontrola dostępu (IAM)** Aby wyświetlić ustawienia kontroli dostępu dla kontenera.
+5. W **Dodaj uprawnienia** okna, wybierz rolę, którą chcesz przypisać do tożsamości usługi Azure AD. Następnie wyszukaj, aby zlokalizować tożsamości, do którego chcesz przypisać tę rolę.
+6. Kliknij pozycję **Zapisz**. Tożsamość, do którego jest przypisany do roli na liście wyświetlanej w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że użytkownik dodany teraz ma uprawnienia do odczytu do danych w kontenerze o nazwie *przykładowy kontener*.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat RBAC, zobacz [Rozpoczynanie pracy z kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
-- Aby dowiedzieć się, jak przypisać i zarządzanie nimi RBAC przypisań ról za pomocą programu Azure PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API REST, zobacz następujące artykuły:
+- Aby dowiedzieć się więcej o ROLACH, zobacz [Rozpoczynanie pracy przy użyciu kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md).
+- Aby dowiedzieć się, jak przypisać i zarządzać przypisaniami ról RBAC przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST, zobacz następujące artykuły:
     - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-    - [Zarządzanie kontrolą dostępu na podstawie ról (RBAC) przy użyciu wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md)
-    - [Zarządzanie kontrolą dostępu na podstawie ról (RBAC) przy użyciu interfejsu API REST](../../role-based-access-control/role-assignments-rest.md)
-- Aby uzyskać informacje o autoryzacji dostępu do kontenerów i kolejki ze w aplikacjach magazynu, zobacz [użycia usługi Azure AD z aplikacjami usługi Azure Storage](storage-auth-aad-app.md).
-- Aby uzyskać dodatkowe informacje na temat integracji usługi Azure AD dla kontenerów Azure i kolejek, zobacz w usłudze Azure Storage team na blogu, [Announcing uwierzytelniania Podgląd Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
+    - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md)
+    - [Zarządzanie kontrolą dostępu opartej na rolach (RBAC) przy użyciu interfejsu API REST](../../role-based-access-control/role-assignments-rest.md)
+- Aby dowiedzieć się, jak autoryzować dostęp do kontenerów i kolejki ze w aplikacjach pamięci masowej, zobacz [Użyj usługi Azure AD z aplikacjami usługi Azure Storage](storage-auth-aad-app.md).
+- Aby uzyskać dodatkowe informacje na temat integracji z usługą Azure AD dla kontenerów platformy Azure i kolejek, zobacz blog zespołu usługi Azure Storage, publikowania, [ogłoszenie uwierzytelniania w wersji zapoznawczej programu Azure AD dla usługi Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
 - 

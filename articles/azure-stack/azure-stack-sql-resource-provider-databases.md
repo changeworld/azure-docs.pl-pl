@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu baz danych dostarczonych przez dostawcę zasobów karty SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Jak utworzyć i zarządzać udostępnione przy użyciu dostawcy zasobów karty SQL bazy danych SQL
+title: Używanie baz danych udostępnionych przez dostawcę zasobu karty bazy danych SQL w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Jak utworzyć i zarządzać nimi aprowizowane za pomocą dostawcy zasobów karta SQL bazy danych SQL
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -14,67 +14,67 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300826"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968830"
 ---
 # <a name="create-sql-databases"></a>Tworzenie bazy danych SQL
 
-Można utworzyć i zarządzać nimi Samoobsługowe baz danych w aplikacji portal użytkowników. Użytkownik Azure stos musi subskrypcji z ofertę, która obejmuje usługę bazy danych SQL.
+Można tworzyć i zarządzać samoobsługowego baz danych w aplikacji portal użytkowników. Użytkownik usługi Azure Stack wymaga subskrypcji przy użyciu oferta, która obejmuje usługę bazy danych SQL.
 
-1. Zaloguj się do [stosu Azure](azure-stack-poc.md) portal użytkowników.
+1. Zaloguj się do [usługi Azure Stack](azure-stack-poc.md) portalu użytkowników.
 
-2. Wybierz **+ nowy** &gt; **dane i magazyn** &gt; **bazy danych programu SQL Server** &gt; **dodać**.
+2. Wybierz **+ nowe** &gt; **dane + magazyn** &gt; **bazy danych SQL Server** &gt; **Dodaj**.
 
-3. W obszarze **Create Database**, wprowadź wymagane informacje, takie jak **Nazwa bazy danych** i **maksymalny rozmiar w MB**.
+3. W obszarze **Create Database**, wprowadź wymagane informacje, takie jak **Nazwa bazy danych** i **maksymalny rozmiar w Megabajtach**.
 
    >[!NOTE]
    >Rozmiar bazy danych musi być co najmniej 64 MB, co może zwiększyć po wdrożeniu bazy danych.
 
    Skonfiguruj inne ustawienia zgodnie z wymaganiami dla danego środowiska.
 
-4. W obszarze **Create Database**, wybierz pozycję **SKU**. W obszarze **wybierz jednostki SKU**, wybierz jednostki SKU dla Twojej bazy danych.
+4. W obszarze **Create Database**, wybierz opcję **jednostki SKU**. W obszarze **wybierz jednostkę SKU**, wybierz jednostkę SKU dla bazy danych.
 
    ![Utwórz bazę danych](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >Zgodnie z serwerami hostingu są dodawane do stosu Azure, są przydzielone jednostki SKU. Bazy danych są tworzone w puli serwerów w jednostce SKU hosta.
+   >Ponieważ serwery hostingu są dodawane do usługi Azure Stack, są przydzielone jednostki SKU. Bazy danych są tworzone w puli serwerów w jednostce SKU hosta.
 
 5. Wybierz **logowania**.
-6. W obszarze **wybierz nazwę logowania**, wybierz istniejące dane logowania, lub wybierz **+ Utwórz nowe dane logowania**.
-7. W obszarze **nowe dane logowania**, wprowadź nazwę **nazwy logowania bazy danych** i **hasło**.
+6. W obszarze **wybierz identyfikator logowania**, wybierz istniejącą nazwę logowania, lub wybierz **+ Utwórz nowe dane logowania**.
+7. W obszarze **nowy identyfikator logowania**, wprowadź nazwę dla **logowania do bazy danych** i **hasło**.
 
    >[!NOTE]
-   >Te ustawienia są utworzonego dla dostępu do tej bazy danych tylko poświadczenia uwierzytelniania SQL. Nazwa użytkownika logowania musi być globalnie unikatowe. Można ponownie użyć ustawień logowania dla innych baz danych, które używają tej samej jednostki SKU.
+   >Te ustawienia są poświadczenia uwierzytelniania programu SQL, które są tworzone dla dostępu do tej bazy danych tylko. Nazwa użytkownika logowania musi być globalnie unikatowa. Można ponownie użyć ustawienia logowania dla innych baz danych, które używają tej samej jednostki SKU.
 
    ![Utwórz nowe nazwy logowania bazy danych](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
-8. Wybierz **OK** do zakończenia wdrażania bazy danych.
+8. Wybierz **OK** w celu zakończenia wdrażania bazy danych.
 
-W obszarze **Essentials**, który jest wyświetlany po wdrożeniu bazy danych, zwróć uwagę na **ciąg połączenia**. Te parametry można użyć w dowolnej aplikacji, który ma dostęp do bazy danych programu SQL Server.
+W obszarze **Essentials**, która została przedstawiona po wdrożeniu bazy danych, zwróć uwagę na **parametry połączenia**. Można użyć tego ciągu w każdej aplikacji, która wymaga dostępu do bazy danych programu SQL Server.
 
-![Parametry połączenia](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![Pobieranie parametrów połączenia](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
-## <a name="sql-always-on-databases"></a>Bazy danych SQL AlwaysOn
+## <a name="sql-always-on-databases"></a>Bazy danych SQL Always On
 
-Zgodnie z projektem zawsze włączone bazy danych są obsługiwane inaczej niż w środowisku serwerów autonomicznych. Aby uzyskać więcej informacji, zobacz [wprowadzenie do programu SQL Server zawsze włączone grupy dostępności na maszynach wirtualnych Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+Zgodnie z projektem zawsze włączone bazy danych są obsługiwane inaczej niż w środowisku serwerów autonomicznych. Aby uzyskać więcej informacji, zobacz [wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
 
-### <a name="verify-sql-always-on-databases"></a>Sprawdź SQL zawsze włączone bazy danych
+### <a name="verify-sql-always-on-databases"></a>Sprawdź baz danych SQL Always On
 
-Następujące przechwytywania ekranu pokazuje, jak za pomocą programu SQL Server Management Studio aby przyjrzeć się stan bazy danych SQL zawsze na.
+Poniższy zrzut ekranu pokazuje, jak można użyć programu SQL Server Management Studio do wzięcia pod stan bazy danych w SQL Always On.
 
 ![Stan bazy danych (AlwaysOn)](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Zawsze włączone bazy danych należy Pokaż jako Synchronized i dostępny we wszystkich wystąpieniach programu SQL i są wyświetlane w grupy dostępności. W poprzednim zrzucie ekranu, przykładowe bazy danych jest newdb1 i jego stan jest **newdb1 (synchronizowany)**.
+Zawsze włączone bazy danych należy Pokaż jako Synchronized i jest dostępny w wszystkich wystąpień programu SQL i są wyświetlane w grupy dostępności. Na poprzednim zrzucie ekranu przykładu bazy danych jest newdb1 i jego stan to **newdb1 (synchronizowany)**.
 
 ### <a name="delete-an-alwayson-database"></a>Usuń bazę danych (AlwaysOn)
 
-Po usunięciu bazy danych funkcji SQL AlwaysOn od dostawcy zasobów SQL usuwa bazy danych z repliki podstawowej i z grupy dostępności.
+Jeśli usuniesz bazę danych SQL AlwaysOn od dostawcy zasobów SQL usuwa bazę danych z repliki podstawowej i z grupy dostępności.
 
-Następnie SQL umieszcza na innych replik w stanie przywracania bazy danych i nie porzucenia bazy danych, chyba że wyzwolone. Jeśli bazy danych nie została usunięta, replikach pomocniczych przejdź do stanu Not Synchronizing.
+SQL następnie przełącza bazy danych w stanie przywracania na innych replik i nie porzucenia bazy danych, chyba że wyzwolone. Jeśli baza danych nie została usunięta, repliki pomocnicze przechodzi w stan nie można zsynchronizować.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

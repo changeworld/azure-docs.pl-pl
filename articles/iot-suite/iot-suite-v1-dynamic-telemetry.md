@@ -1,12 +1,12 @@
 ---
-title: "Użyj dynamicznych telemetrii | Dokumentacja firmy Microsoft"
-description: "Postępuj zgodnie z tym samouczkiem, aby dowiedzieć się, jak dynamiczna telemetrii za pomocą zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT Azure."
-services: 
+title: Korzystanie z telemetrii dynamicznej | Dokumentacja firmy Microsoft
+description: Postępuj zgodnie z tym samouczkiem, aby dowiedzieć się, jak korzystanie z telemetrii dynamicznej z pakietu Azure IoT Suite we wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 562799dc-06ea-4cdd-b822-80d1f70d2f09
 ms.service: iot-suite
 ms.devlang: na
@@ -16,23 +16,24 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 60e9ee00fabf15a62e782c70bca251b1a8e617c3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724001"
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Dynamiczne telemetrii za pomocą zdalnego wstępnie skonfigurowane rozwiązanie monitorowania
+# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Korzystanie z telemetrii dynamicznej z wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego
 
-Dynamiczne telemetrii umożliwia wizualizować wszystkie dane telemetryczne wysyłane do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania. Symulowanego urządzenia, które wdrożyć przy użyciu wstępnie skonfigurowane rozwiązanie wysłać telemetrii temperatury i wilgotności, które można zwizualizować na pulpicie nawigacyjnym. Dostosowywanie istniejących urządzeń symulowane, Utwórz nowe symulowanego urządzenia, czy nawiązać urządzeń fizycznych wstępnie skonfigurowane rozwiązanie możesz wysłać innych wartości telemetrii, takie jak zewnętrzny temperatury obr. / min i prędkość wiatru. Następnie można zwizualizować to dodatkowe dane telemetryczne na pulpicie nawigacyjnym.
+Telemetrii dynamicznej umożliwia wizualizację żadnych danych telemetrycznych wysyłanych do wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego. Symulowane urządzenia, które wdrażanie przy użyciu wstępnie skonfigurowanego rozwiązania wysyłania telemetrii temperatury i wilgotności, który możesz wizualizować na pulpicie nawigacyjnym. Dostosowywanie istniejących symulowane urządzenia, tworzenia nowych symulowanych urządzeń, czy Podłączanie urządzeń fizycznych do wstępnie skonfigurowanego rozwiązania można wysyłać inne wartości danych telemetrycznych, takich jak temperatury zewnętrznej, obr. / min lub prędkość wiatru. Następnie można wizualizować tych dodatkowych danych telemetrycznych na pulpicie nawigacyjnym.
 
-W tym samouczku korzysta z prostego symulowane urządzenie Node.js, który można łatwo zmodyfikować eksperymentować dynamiczne telemetrii.
+Ten samouczek używa prostego symulowanego urządzenia środowiska Node.js, które można łatwo modyfikować, aby eksperymentować z telemetrii dynamicznej.
 
 Do ukończenia tego samouczka będą potrzebne:
 
 * Aktywna subskrypcja platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure][lnk_free_trial].
 * [Node.js] [ lnk-node] wersji 0.12.x lub nowszej.
 
-Można wykonać w tym samouczku we wszystkich systemach operacyjnych, takich jak Windows lub Linux, w którym można zainstalować środowiska Node.js.
+Możesz ukończyć ten samouczek, w dowolnym systemie operacyjnym, takich jak Windows lub Linux, w którym można zainstalować środowisko Node.js.
 
 [!INCLUDE [iot-suite-v1-provision-remote-monitoring](../../includes/iot-suite-v1-provision-remote-monitoring.md)]
 
@@ -40,10 +41,10 @@ Można wykonać w tym samouczku we wszystkich systemach operacyjnych, takich jak
 
 ## <a name="add-a-telemetry-type"></a>Dodaj typ telemetrii
 
-Następnym krokiem jest zastąpienie telemetrii generowany przez urządzenie symulowane Node.js nowy zestaw wartości:
+Następnym krokiem jest zastąpienie danych telemetrycznych generowanych przez urządzenia symulowanego środowiska Node.js za pomocą nowego zestawu wartości:
 
-1. Zatrzymaj Node.js symulowane urządzenie, wpisując **klawisze Ctrl + C** w wierszu polecenia lub powłoki.
-2. W pliku remote_monitoring.js można zobaczyć wartości danych podstawowych istniejących temperatury, wilgotności i telemetrii temperatury zewnętrznych. Dodaj wartość danych podstawowych **obr. / min** w następujący sposób:
+1. Zatrzymywanie urządzenia symulowanego środowiska Node.js, wpisując **klawisze Ctrl + C** w wierszu polecenia lub powłokę.
+2. W pliku remote_monitoring.js widać danych podstawowych wartości temperatury istniejących, wilgotności i temperatury zewnętrznej telemetrii. Dodaj wartość danych podstawowych dla **obr. / min** w następujący sposób:
 
     ```nodejs
     // Sensors data
@@ -53,7 +54,7 @@ Następnym krokiem jest zastąpienie telemetrii generowany przez urządzenie sym
     var rpm = 200;
     ```
 
-3. Node.js symulowane urządzenie używa **generateRandomIncrement** funkcji w pliku remote_monitoring.js, aby dodać przyrostu losowych wartości danych podstawowych. Ustaw losowy **obr. / min** wartości przez dodanie wiersza kodu po randomizations istniejących w następujący sposób:
+3. Node.js symulowane urządzenie używa **generateRandomIncrement** funkcji w pliku remote_monitoring.js do dodawania losowego przyrostu do wartości danych podstawowych. Losowe generowanie **obr. / min** wartość, dodając wiersz kodu po randomizations istniejących w następujący sposób:
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +63,7 @@ Następnym krokiem jest zastąpienie telemetrii generowany przez urządzenie sym
     rpm += generateRandomIncrement();
     ```
 
-4. Dodaj nową wartość obr. / min do ładunek JSON, które urządzenie wysyła do Centrum IoT:
+4. Dodaj nową wartość obr. / min do ładunek w formacie JSON, które urządzenie wysyła do usługi IoT Hub:
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +75,20 @@ Następnym krokiem jest zastąpienie telemetrii generowany przez urządzenie sym
     });
     ```
 
-5. Uruchom Node.js symulowane urządzenie za pomocą następującego polecenia:
+5. Uruchamianie urządzenia symulowanego środowiska Node.js przy użyciu następującego polecenia:
 
     `node remote_monitoring.js`
 
-6. Zwróć nowy typ telemetrii obr. / min wyświetlane na wykresie na pulpicie nawigacyjnym:
+6. Sprawdź nowy typ danych telemetrycznych obr. / min, którym są wyświetlane na wykresie na pulpicie nawigacyjnym:
 
-![Dodaj do pulpitu nawigacyjnego obr. / min][image3]
+![Dodaj obr. / min do pulpitu nawigacyjnego][image3]
 
 > [!NOTE]
-> Należy wyłączyć, a następnie włączyć w urządzeniu Node.js na **urządzeń** strony na pulpicie nawigacyjnym, aby zobaczyć zmianę natychmiast.
+> Konieczne może być wyłączone, a następnie włączyć urządzenia środowiska Node.js na **urządzeń** strony w pulpicie nawigacyjnym, aby natychmiast zobaczyć zmiany.
 
-## <a name="customize-the-dashboard-display"></a>Dostosowywanie wyświetlania pulpitu nawigacyjnego
+## <a name="customize-the-dashboard-display"></a>Dostosuj wyświetlanie pulpitu nawigacyjnego
 
-**Informacje o urządzeniu** komunikatu może zawierać metadane dotyczące telemetrii urządzenia można wysyłać do Centrum IoT. Te metadane można określić typy telemetrii wysyłanych przez urządzenia. Modyfikowanie **deviceMetaData** wartości w pliku remote_monitoring.js, aby uwzględnić **Telemetrii** definicji następujących **polecenia** definicji. Poniższy kod fragment kodu przedstawia **polecenia** definicji (należy pamiętać o dodaniu `,` po **polecenia** definicji):
+**Informacje o urządzeniu** wiadomości mogą obejmować metadane dotyczące telemetrii, urządzenie może wysyłać do Centrum IoT Hub. Te metadane, można określić typy telemetrii, które urządzenie wysyła. Modyfikowanie **deviceMetaData** wartości w pliku remote_monitoring.js, aby uwzględnić **Telemetrii** następujących definicji **polecenia** definicji. Poniższy kod przedstawia fragment **polecenia** definicji (Pamiętaj dodać `,` po **polecenia** definicji):
 
 ```nodejs
 'Commands': [{
@@ -119,10 +120,10 @@ Następnym krokiem jest zastąpienie telemetrii generowany przez urządzenie sym
 ```
 
 > [!NOTE]
-> Rozwiązanie monitorowania zdalnego używa bez uwzględniania wielkości liter dopasowanie do porównania definicji metadanych z danymi w strumieniu danych telemetrycznych.
+> Rozwiązania do monitorowania zdalnego używa dopasowanie bez uwzględniania wielkości liter do porównania definicji metadanych z danymi w usłudze stream dane telemetryczne.
 
 
-Dodawanie **Telemetrii** definicji, jak pokazano w poprzednim fragment kodu nie zmienia zachowanie pulpitu nawigacyjnego. Jednak metadane mogą również obejmować **DisplayName** atrybutu, aby dostosować wyświetlanie na pulpicie nawigacyjnym. Aktualizacja **Telemetrii** definicji metadanych, jak pokazano w poniższy fragment kodu:
+Dodawanie **Telemetrii** definicji, jak pokazano w poprzednim fragmencie kodu nie zmienia zachowanie pulpitu nawigacyjnego. Jednak może również obejmować metadane **DisplayName** atrybutu w celu dostosowania wyświetlania na pulpicie nawigacyjnym. Aktualizacja **Telemetrii** definicji metadanych, jak pokazano w poniższym fragmencie kodu:
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +145,18 @@ Dodawanie **Telemetrii** definicji, jak pokazano w poprzednim fragment kodu nie 
 ]
 ```
 
-Poniższy zrzut ekranu pokazuje, jak ta zmiana modyfikuje legendy wykresu w pulpicie nawigacyjnym:
+Poniższy zrzut ekranu pokazuje, jak ta zmiana modyfikuje legendy wykresu na pulpicie nawigacyjnym:
 
-![Dostosowywanie legendy wykresu][image4]
+![Dostosowania legendy wykresu][image4]
 
 > [!NOTE]
-> Należy wyłączyć, a następnie włączyć w urządzeniu Node.js na **urządzeń** strony na pulpicie nawigacyjnym, aby zobaczyć zmianę natychmiast.
+> Konieczne może być wyłączone, a następnie włączyć urządzenia środowiska Node.js na **urządzeń** strony w pulpicie nawigacyjnym, aby natychmiast zobaczyć zmiany.
 
 ## <a name="filter-the-telemetry-types"></a>Filtruj typy telemetrii
 
-Domyślnie wykresu w pulpicie nawigacyjnym przedstawia co serii danych w strumieniu danych telemetrycznych. Można użyć **informacje o urządzeniu** metadanych do Pomija wyświetlanie typów określonych danych telemetrycznych na wykresie. 
+Domyślnie wykresów na pulpicie nawigacyjnym zawiera każdej serii danych w strumieniu danych telemetrycznych. Możesz użyć **informacje o urządzeniu** metadane, aby zapobiec wyświetlaniu typy telemetrii określonych na wykresie. 
 
-Aby wykres Pokaż tylko dane telemetryczne temperatury i wilgotności, Pomiń **ExternalTemperature** z **informacje o urządzeniu** **Telemetrii** metadanych w następujący sposób:
+Aby utworzyć wykres, pokazują tylko telemetrię temperatury i wilgotności, Pomiń **ExternalTemperature** z **informacje o urządzeniu** **Telemetrii** metadanych w następujący sposób:
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +178,22 @@ Aby wykres Pokaż tylko dane telemetryczne temperatury i wilgotności, Pomiń **
 ]
 ```
 
-**Na zewnątrz temperatury** nie jest już wyświetlany na wykresie:
+**Aktywność na świeżym powietrzu temperatury** przestanie być wyświetlana na wykresie:
 
 ![Filtrowanie danych telemetrycznych na pulpicie nawigacyjnym][image5]
 
-Ta zmiana wpływa tylko na wykres. **ExternalTemperature** wartości danych nadal są przechowywane i dostępne do jakiegokolwiek przetwarzania wewnętrznej bazy danych.
+Ta zmiana dotyczy tylko wyświetlania wykresu. **ExternalTemperature** wartości danych nadal są przechowywane i udostępniane dla jakiegokolwiek przetwarzania w wewnętrznej bazie danych.
 
 > [!NOTE]
-> Należy wyłączyć, a następnie włączyć w urządzeniu Node.js na **urządzeń** strony na pulpicie nawigacyjnym, aby zobaczyć zmianę natychmiast.
+> Konieczne może być wyłączone, a następnie włączyć urządzenia środowiska Node.js na **urządzeń** strony w pulpicie nawigacyjnym, aby natychmiast zobaczyć zmiany.
 
 ## <a name="handle-errors"></a>Obsługa błędów
 
-Dla strumienia danych do wyświetlenia na wykresie jego **typu** w **informacje o urządzeniu** metadanych musi odpowiadać typowi danych telemetrycznych wartości. Na przykład, jeśli metadane Określa, że **typu** wilgotność dane są **int** i **podwójne** znajduje się w strumieniu danych telemetrycznych telemetrii wilgotności nie są wyświetlane, a następnie na wykresie. Jednak **wilgotności** wartości nadal są przechowywane i dostępne do przetwarzania dowolnego zaplecza.
+Dla strumienia danych do wyświetlenia na wykresie jego **typu** w **informacje o urządzeniu** metadanych musi odpowiadać typowi danych wartości danych telemetrycznych. Na przykład, jeśli metadane Określa, że **typu** wilgotność dane są **int** i **double** znajduje się w strumień danych telemetrycznych, a następnie dane telemetryczne dotyczące wilgotności nie są wyświetlane na wykresie. Jednak **wilgotności** wartości są nadal przechowywane i udostępniane dla jakiegokolwiek przetwarzania zaplecza.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Skoro już znasz, jak używać dynamicznej telemetrii, możesz dowiedzieć się więcej o jak wstępnie skonfigurowanego rozwiązania używają informacji o urządzeniu: [urządzenia informacji metadanych do monitorowania zdalnego wstępnie skonfigurowane rozwiązanie] [ lnk-devinfo].
+Teraz, gdy wiesz jak korzystanie z telemetrii dynamicznej, możesz dowiedzieć się więcej o jak wstępnie skonfigurowane rozwiązania używają informacji o urządzeniu: [urządzenia informacji metadanych do zdalnego monitorowania wstępnie skonfigurowanego rozwiązania] [ lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-v1-remote-monitoring-device-info.md
 

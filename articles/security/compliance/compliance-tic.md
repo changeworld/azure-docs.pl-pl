@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 7b813500eecba3aa1902c28b9b7c56da6c4516b7
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-ms.translationtype: MT
+ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967539"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969949"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Wskazówki dotyczące połączenia zaufany internetowy
 
@@ -199,7 +199,7 @@ Poniższy przykład zasad mogą być przydatne w przypadku scenariuszy zgodnośc
 |Dozwolone lokalizacje | Upewnij się, że wszystkie zasoby są wdrażane w regionach z zgodne z konfiguracją sieci wirtualne i usługi Network Watcher  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
 |Niedozwolone typy zasobów, takich jak publicznymi  | Stanów Zjednoczonych zabraniają wdrożenia typy zasobów, które nie posiadają plan zgodności. Na przykład te zasady mogą służyć do Stanów Zjednoczonych zabraniają wdrożenie publicznego adresu IP adresowania zasobów. Reguły sieciowej grupy zabezpieczeń można zastosować, aby skutecznie zablokować ruch przychodzący z Internetu, co uniemożliwia dalsze korzystanie z publicznych adresów IP zmniejsza obszar narażony na ataki.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
 
-### <a name="azure-traffic-analytics"></a>Analiza ruchu platformy Azure
+### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [analizy ruchu](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
 
 Analiza ruchu platformy Azure usługi Network Watcher korzysta z danych dzienników przepływu i innych dzienników, aby zapewnić ogólny przegląd ruchu sieciowego. Może to być przydatne do inspekcji tablica zgodności i identyfikacji aktywnych problemów. Ogólny pulpit nawigacyjny może służyć do szybkiego ekranu, które komunikują się z maszyn wirtualnych z Internetem, które będzie dostarczać ukierunkowane listy dla routingu tablica.
 

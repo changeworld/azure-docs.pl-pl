@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 30e186c86d9947c5d0ef609a1c447dc6ed938c35
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: d8490dcba35cfeabb3da589f3d079571d5e98d3b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902415"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969208"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu szablonu
 
@@ -49,7 +49,7 @@ Niezależnie od wybranej opcji składni szablonu jest taka sama podczas początk
 
 W tej sekcji zostanie włączony i Wyłącz system przypisane do tożsamości przy użyciu szablonu usługi Azure Resource Manager.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Włącz system tożsamości przypisanej podczas tworzenia maszyny wirtualnej portalu Azure lub istniejącej maszyny wirtualnej
+### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Włącz system tożsamości przypisanej podczas tworzenia maszyny Wirtualnej platformy Azure lub z istniejącej maszyny Wirtualnej
 
 1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej. Upewnij się również, że Twoje konto należy do roli, która zapewnia uprawnienia do zapisu na maszynie Wirtualnej (na przykład rola "Współautor maszyny wirtualnej").
 
@@ -101,16 +101,68 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane do tożsamości pr
 
    ![Zrzut ekranu przedstawiający szablon po aktualizacji](../media/msi-qs-configure-template-windows-vm/template-file-after.png)
 
-### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Wyłącz system tożsamości przypisanej w Maszynie wirtualnej platformy Azure
+### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Przypisywanie roli maszyny Wirtualnej tożsamości przypisanej w systemie
 
-> [!NOTE]
-> Wyłączanie tożsamości usługi zarządzanej z maszyny wirtualnej nie jest obecnie obsługiwane. W międzyczasie można przełączać się między przypisana przez System i tożsamości przypisanych użytkowników.
+Po włączeniu tożsamości przypisanej w systemie na maszynie Wirtualnej, można przyznać jej rolę takich jak **czytnika** dostęp do grupy zasobów, w której został utworzony.
+
+1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej. Upewnij się również, że Twoje konto należy do roli, która zapewnia uprawnienia do zapisu na maszynie Wirtualnej (na przykład rola "Współautor maszyny wirtualnej").
+ 
+2. Załaduj szablon do [edytora](#azure-resource-manager-templates) i dodaj następujące informacje, aby nadać maszyny Wirtualnej **czytnika** dostęp do grupy zasobów, w której został utworzony.  Strukturę szablon będzie zależeć od edytora i modelu wdrażania, które wybierzesz.
+   
+   W obszarze `parameters` sekcji Dodaj następujący kod:
+
+    ```JSON
+    "builtInRoleType": {
+          "type": "string",
+          "defaultValue": "Reader"
+        },
+        "rbacGuid": {
+          "type": "string"
+        }
+    ```
+
+    W obszarze `variables` sekcji Dodaj następujący kod:
+
+    ```JSON
+    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    ```
+
+    W obszarze `resources` sekcji Dodaj następujący kod:
+
+    ```JSON
+    {
+        "apiVersion": "2017-09-01",
+         "type": "Microsoft.Authorization/roleAssignments",
+         "name": "[parameters('rbacGuid')]",
+         "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
+                "scope": "[resourceGroup().id]"
+          },
+          "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ]
+    }
+    ```
+
+### <a name="disable-a-system-assigned-identity-from-an-azure-vm"></a>Wyłącz system tożsamości przypisanej w Maszynie wirtualnej platformy Azure
 
 Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości usługi zarządzanej:
 
 1. Czy logowanie do platformy Azure, lokalnie lub w witrynie Azure portal, należy użyć konta skojarzonego z subskrypcją platformy Azure, która zawiera maszyny Wirtualnej. Upewnij się również, że Twoje konto należy do roli, która zapewnia uprawnienia do zapisu na maszynie Wirtualnej (na przykład rola "Współautor maszyny wirtualnej").
 
-2. Zmień typ tożsamości na `UserAssigned`.
+2. Ładowanie szablonu do [edytora](#azure-resource-manager-templates) i Znajdź `Microsoft.Compute/virtualMachines` zasobów zainteresowania w ramach `resources` sekcji. Jeśli masz maszynę Wirtualną, która zawiera tylko tożsamości przypisanej w systemie, można ją wyłączyć, zmieniając typ tożsamości do `None`.  Jeśli maszyna wirtualna ma systemowych i tożsamości przypisanych przez użytkownika, Usuń `SystemAssigned` z typu tożsamości i zachować `UserAssigned` wraz z `identityIds` Tablica tożsamości przypisanych przez użytkownika.  Poniższy przykład pokazuje, jak usunąć tożsamości przypisanej z maszyny Wirtualnej bez użytkownika tożsamości przypisanych przez system:
+   
+   ```JSON
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('vmName')]",
+      "location": "[resourceGroup().location]",
+      "identity": { 
+          "type": "None"
+    }
+   ```
 
 ## <a name="user-assigned-identity"></a>Tożsamości przypisanych przez użytkownika
 

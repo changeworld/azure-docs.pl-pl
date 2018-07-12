@@ -11,11 +11,11 @@ ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: 2534e3e39d4a6dd1659dced5a1b0342798c0049e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951548"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969133"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Weibo przy użyciu usługi Azure Active Directory B2C
 

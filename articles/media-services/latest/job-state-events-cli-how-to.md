@@ -1,6 +1,6 @@
 ---
-title: Trasy do punktu końcowego sieci web niestandardowych zdarzeń usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Użyj siatki zdarzeń platformy Azure, aby subskrybować zdarzenia zmiany stanu zadania usługi Media Services.
+title: Kierowanie zdarzeń usługi Azure Media Services do niestandardowego internetowego punktu końcowego | Dokumentacja firmy Microsoft
+description: Usługa Azure Event Grid, aby subskrybować zdarzenia zmiany stanu zadania usługi Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638504"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724064"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Zdarzenia usługi Azure Media Services trasy do punktu końcowego niestandardowe sieci web przy użyciu interfejsu wiersza polecenia
+# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Kierowanie zdarzeń usługi Azure Media Services do niestandardowego internetowego punktu końcowego przy użyciu interfejsu wiersza polecenia
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule Użyj interfejsu wiersza polecenia Azure, aby subskrybować zdarzenia zmiany stanu zadania usługi Azure Media Services, a wyzwalacz zdarzenia w celu wyświetlenia wyników. 
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule możesz użyć wiersza polecenia platformy Azure do subskrybowania zdarzenia zmiany stanu zadania usługi Azure Media Services i wyzwalanie zdarzenia w celu wyświetlenia wyniku. 
 
 Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, takiego jak element webhook lub funkcja platformy Azure. Ten samouczek pokazuje, jak utworzyć i ustawić dla elementu webhook.
 
@@ -32,43 +32,43 @@ Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie ur
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-Upewnij się, że Pamiętaj wartości, które są używane nazwy konta usługi Media Services, nazwa magazynu i nazwy zasobu.
+Upewnij się, że należy pamiętać, wartości, które były używane dla nazwy konta usługi Media Services, nazwę magazynu i nazwę zasobu.
 
-## <a name="enable-event-grid-resource-provider"></a>Włącz siatki zdarzenia dostawcy zasobów
+## <a name="enable-event-grid-resource-provider"></a>Włączanie dostawcy zasobów usługi Event Grid
 
-Pierwszą czynnością, którą należy wykonać jest, upewnij się, że dostawca zasobów siatki zdarzeń włączone w ramach subskrypcji. 
+Pierwszą rzeczą, jaką należy zrobić to, upewnij się, że dostawca zasobów usługi Event Grid włączone w ramach Twojej subskrypcji. 
 
-W **Azure** portalu, wykonaj następujące czynności:
+W **Azure** portal, wykonaj następujące czynności:
 
 1. Przejdź do subskrypcji.
 2. Wybierz subskrypcję.
 3. W obszarze Ustawienia zaznacz dostawców zasobów.
 4. Wyszukaj "EventGrid".
-5. Upewnij się, że zdarzenie siatki jest zarejestrowany. Jeśli nie, naciśnij klawisz **zarejestrować** przycisku.  
+5. Upewnij się, że usługi Event Grid jest zarejestrowany. Jeśli nie, naciśnij klawisz **zarejestrować** przycisku.  
 
-## <a name="create-a-generic-azure-function-webhook"></a>Tworzenie ogólnych webhook funkcji platformy Azure 
+## <a name="create-a-generic-azure-function-webhook"></a>Utwórz ogólny element webhook funkcji platformy Azure 
 
 ### <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed subskrybowanie artykułu siatki zdarzenia, utworzyć punktu końcowego, który zbiera komunikaty, aby je wyświetlić.
+Przed zasubskrybowaniem usługi Event Grid artykułu, należy utworzyć punkt końcowy, który będzie zbierać komunikaty, aby można było je wyświetlić.
 
-Utwórz funkcję wyzwalane przez ogólny element webhook zgodnie z opisem w [ogólny element webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) artykułu. W tym samouczku **C#** kod jest używany.
+Tworzenie funkcji wyzwalanej przez ogólny element webhook, zgodnie z opisem w [ogólny element webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) artykułu. W tym samouczku **C#** kod jest używany.
 
-Po utworzeniu elementu webhook, skopiuj adres URL, klikając *uzyskać adres URL funkcji* łącze u góry **Azure** okna portalu. Nie trzeba ostatnia część adresu URL (*& clientID = domyślnie*).
+Po utworzeniu elementu webhook, skopiuj adres URL, klikając *Pobierz adres URL funkcji* link u góry **Azure** okna portalu. Nie trzeba ostatnią część adresu URL (*& clientID = default*).
 
 ![Tworzenie elementu webhook](./media/job-state-events-cli-how-to/generic_webhook_files.png)
 
 ### <a name="validate-the-webhook"></a>Sprawdzanie poprawności elementu webhook
 
-Po zarejestrowaniu własny punkt końcowy elementu webhook siatki zdarzeń wysyła możesz żądania POST z kodem poprawności potwierdzenie posiadania punktu końcowego. Twoja aplikacja powinna odpowiadać za wstecz wyświetlania kodu walidacji. Zdarzenie siatki nie dostarczyć zdarzeń do elementu webHook punktów końcowych, które nie zostały przekazane sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [siatki zdarzeń zabezpieczeń i uwierzytelniania](https://docs.microsoft.com/azure/event-grid/security-authentication). Ta sekcja definiuje dwie części, które muszą być zdefiniowane dla weryfikacji do przekazania.
+Po zarejestrowaniu własny punkt końcowy elementu webhook z usługą Event Grid go wysyła żądanie POST kodem prostej weryfikacji udowodnić własność punktu końcowego. Twoja aplikacja powinna odpowiadać za wyświetlania ponownie kod sprawdzania poprawności. Usługi Event Grid nie dostarczają zdarzenia do punktów końcowych elementu webHook, które nie przeszły sprawdzanie poprawności. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](https://docs.microsoft.com/azure/event-grid/security-authentication). Ta sekcja definiuje dwie części, które muszą być zdefiniowane dla sprawdzania poprawności do przekazania.
 
-#### <a name="update-the-source-code"></a>Zaktualizuj źródłowy kod
+#### <a name="update-the-source-code"></a>Aktualizowanie kodu źródłowego
 
-Po utworzeniu sieci webhook **run.csx** pliku zostanie wyświetlona w przeglądarce. Zastąp następujący kod w kodzie domyślnym. 
+Utworzony element webhook, **run.csx** plik pojawia się w przeglądarce. Zamień domyślny kod następującym kodem. 
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -106,9 +106,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
-#### <a name="update-test-request-body"></a>Zaktualizuj treści żądania testu
+#### <a name="update-test-request-body"></a>Aktualizuj treści żądania testu
 
-Po prawej stronie **Azure** okna portalu, zobacz dwie karty: **wyświetlać pliki** i **testu**. Wybierz kartę **Test**. W **treść żądania**, wklej następujący kod json. Można go wkleić jako, nie jest wymagane w celu zmiany żadnych wartości.
+Po prawej stronie **Azure** okna portalu zostaną wyświetlone dwie karty: **wyświetlać pliki** i **testu**. Wybierz kartę **Test**. W **treść żądania**, wklej następujący kod json. Możesz wkleić go tak jak, nie trzeba zmienić żadnych wartości.
 
 ```json
 [{
@@ -128,11 +128,11 @@ Naciśnij klawisz **Zapisz i uruchom** w górnej części okna.
 
 ![Treść żądania](./media/job-state-events-cli-how-to/generic_webhook_test.png)
 
-## <a name="register-for-the-event-grid-subscription"></a>Zarejestruj subskrypcji zdarzeń siatki 
+## <a name="register-for-the-event-grid-subscription"></a>Zarejestruj subskrypcję usługi Event Grid 
 
-Zasubskrybować artykułu mówić zdarzenia, które chcesz śledzić zdarzenia siatki. Poniższy przykład subskrybuje konta usługi Media Services utworzone i przekazuje adres URL z elementu webhook funkcji platformy Azure, utworzony jako punkt końcowy powiadomienia o zdarzeniach. 
+Możesz zasubskrybować artykuł, aby poinformować usługę Event Grid zdarzenia, które mają być śledzone. Poniższy przykład ilustruje subskrybowanie konta usługi Media Services został utworzony i przekazanie adresu URL od elementu webhook funkcji platformy Azure, utworzony jako punktu końcowego dla powiadomień o zdarzeniach. 
 
-Zastąp `<event_subscription_name>` o unikatowej nazwie dla Twojej subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<ams_account_name>` użyj utworzonych wcześniej wartości.  Aby uzyskać `<endpoint_URL>` Wklej adres URL punktu końcowego. Usuń *& clientID = domyślnie* z adresu URL. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. 
+Zastąp `<event_subscription_name>` unikatową nazwę subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<ams_account_name>` użyj utworzonych wcześniej wartości.  Aby uzyskać `<endpoint_URL>` Wklej adres URL punktu końcowego. Usuń *& clientID = default* z adresu URL. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -143,15 +143,15 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-Wartość identyfikatora zasobów konta usługi Media Services wygląda podobnie do następującej:
+Wartość identyfikatora zasobu konta usługi Media Services wygląda podobnie do poniższego:
 
 /Subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/Providers/Microsoft.Media/mediaservices/amstestaccount
 
 ## <a name="test-the-events"></a>Testowanie zdarzenia
 
-Uruchom zadania kodowania. Na przykład, zgodnie z opisem w [strumieniowo pliki wideo](stream-files-dotnet-quickstart.md) Szybki Start.
+Uruchom zadania kodowania. Na przykład, zgodnie z opisem w [Stream pliki wideo](stream-files-dotnet-quickstart.md) Szybki Start.
 
-Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do utworzonego wcześniej elementu webhook. Kliknij przycisk **Monitor** i **Odśwież**. Zostanie wyświetlony stan zadania zmieni się zdarzenia: "W kolejce", "Zaplanowane", "Procesu", "Gotowe", "Błąd", "Anulowane", "Anulowanie".  Aby uzyskać więcej informacji, zobacz [schematów zdarzeń usługi Media Services](media-services-event-schemas.md).
+Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do elementu webhook, która została utworzona wcześniej. Kliknij przycisk **Monitor** i **Odśwież**. Zostanie wyświetlony stan zadania zmieni się zdarzenia: "W kolejce", "Zaplanowane", "Przetwarzania", "Zakończono", "Error", "Anulowane", "Anulowanie".  Aby uzyskać więcej informacji, zobacz [schematów zdarzeń usługi Media Services](media-services-event-schemas.md).
 
 Na przykład:
 
@@ -171,7 +171,7 @@ Na przykład:
 }]
 ```
 
-![Testów](./media/job-state-events-cli-how-to/test_events.png)
+![Badanie zdarzeń](./media/job-state-events-cli-how-to/test_events.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -185,8 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Reaguje na zdarzenia](reacting-to-media-services-events.md)## Zobacz też
+[Reagowanie na zdarzenia](reacting-to-media-services-events.md)
 
 ## <a name="see-also"></a>Zobacz także
 
-[Interfejs wiersza polecenia 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

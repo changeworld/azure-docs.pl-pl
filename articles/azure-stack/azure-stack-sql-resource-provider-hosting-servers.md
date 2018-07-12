@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9249de56979d47a29fc9d7c12b99e41b3ada0fd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465841"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970555"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -66,7 +66,7 @@ Poniżej znajdują się wskazówki dotyczące zabezpieczeń:
 
 * Cały magazyn usługi Azure Stack, są szyfrowane za pomocą funkcji BitLocker, więc dowolnego wystąpienia SQL w usłudze Azure Stack będą używać magazynu obiektów blob zaszyfrowany.
 * Dostawcy zasobów bazy danych SQL w pełni obsługuje protokół TLS 1.2. Upewnij się, że wszelkie SQL Server, które odbywa się za pośrednictwem SQL RP jest skonfigurowany dla protokołu TLS 1.2 _tylko_ i domyślnie do tej jednostki Uzależnionej. Zobacz wszystkich obsługiwanych wersjach programu SQL Server Obsługa protokołu TLS 1.2 [Obsługa protokołu TLS 1.2 dla programu Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Użyj SQL Server Configuration Manager, aby ustawić **ForceEncryption** opcję, aby cała komunikacja z programem SQL server są zawsze szyfrowane. Zobacz [do skonfigurowania serwera, aby wymusić połączeń szyfrowanych](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Użyj SQL Server Configuration Manager, aby ustawić **ForceEncryption** opcję, aby cała komunikacja z programem SQL server są zawsze szyfrowane. Zobacz [do skonfigurowania serwera, aby wymusić połączeń szyfrowanych](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
 * Upewnij się, że każda aplikacja kliencka komunikuje się również za pośrednictwem szyfrowanego połączenia.
 * Jednostki Uzależnionej jest skonfigurowana do ufania certyfikatów używanych przez wystąpienia programu SQL Server.
 
@@ -106,8 +106,8 @@ Aby dodać autonomicznego serwera hostingu, który został już skonfigurowany, 
 
 Konfigurowanie wystąpienia SQL Always On wymaga dodatkowych kroków, a trzy maszyny wirtualne (lub maszyn fizycznych). W tym artykule przyjęto założenie, iż już pełny opis zawsze włączonych grup dostępności. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
-* [Zawsze włączone grupy dostępności (SQL Server)](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
+* [Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Zawsze włączone grupy dostępności (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017)
 
 > [!NOTE]
 > Dostawcy zasobów bazy danych SQL karty _tylko_ obsługuje SQL 2016 SP1 Enterprise lub później wystąpień dla zawsze włączonych grup dostępności. Ta konfiguracja karty wymaga nowych funkcji programu SQL, takich jak automatyczne wstępne wypełnianie.

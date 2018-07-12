@@ -1,6 +1,6 @@
 ---
-title: Tag zasobów Azure dla organizacji logicznego | Dokumentacja firmy Microsoft
-description: Przedstawiono sposób dodawania tagów do organizowania zasobów platformy Azure do rozliczeń i zarządzania nimi.
+title: Tagów zasobów platformy Azure dla organizacji logicznego | Dokumentacja firmy Microsoft
+description: Pokazuje, jak zastosować znaczniki do organizowania zasobów platformy Azure do rozliczeń i zarządzania nimi.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: tomfitz
 ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602928"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38466264"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -29,7 +29,7 @@ ms.locfileid: "34602928"
 
 ## <a name="powershell"></a>PowerShell
 
-Przykłady w tym artykule wymagają w wersji 6.0 lub nowszej programu Azure PowerShell. Jeśli nie masz w wersji 6.0 lub nowszej, [zaktualizuj swoją wersję](/powershell/azure/install-azurerm-ps).
+Przykłady w tym artykule wymagają programu Azure PowerShell w wersji 6.0 lub nowszej. Jeśli nie masz wersji 6.0 lub nowszej, [zaktualizuj swoją wersję](/powershell/azure/install-azurerm-ps).
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 
@@ -70,7 +70,7 @@ Aby uzyskać *zasoby, które mają konkretny tag*, użyj:
 (Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
 ```
 
-Aby uzyskać *zasoby, które mają nazwę określonego tagu*, użyj:
+Aby uzyskać *zasoby, które mają konkretny tag nazwę*, użyj:
 
 ```powershell
 (Get-AzureRmResource -TagName Dept).Name
@@ -168,25 +168,25 @@ Ten skrypt zwraca następujący format:
 }
 ```
 
-Lub, aby wyświetlić istniejące znaczniki dla *zasób, który ma nazwę, typ i zasobów do określonej grupy*, użyj:
+Aby wyświetlić istniejące tagi dla *zasób, który ma określoną grupę nazwa, typ i zasobów*, użyj:
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-Gdy w pętli kolekcji zasobów, może chcesz pokazać identyfikator zasobu przez zasób. Pełny przykład przedstawiono w dalszej części tego artykułu. Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
+Po pętli kolekcją zasobów, możesz chcieć pokazać identyfikator zasobu, zasób Pełny przykład przedstawiono w dalszej części tego artykułu. Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
 
 ```azurecli
 az resource show --id <resource-id> --query tags
 ```
 
-Aby uzyskać grupy zasobów, które mają konkretnego znacznika, należy użyć `az group list`:
+Aby uzyskać grupy zasobów, które mają konkretny tag, użyj `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Aby uzyskać wszystkie zasoby, które mają określony tag i wartości, należy użyć `az resource list`:
+Aby uzyskać wszystkie zasoby, które mają konkretny tag i konkretną wartość, użyj `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -206,7 +206,7 @@ Aby dodać tagi do *zasobu bez istniejących tagów*, użyj:
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Aby dodać tagi do zasobu, który ma już tagi, pobierania istniejące znaczniki, sformatuj ponownie tę wartość i ponownie zastosuj znaczniki istniejących i nowych: 
+Aby dodać tagi do zasobu, który ma już tagi, Pobierz istniejące tagi, ponownie sformatować tę wartość i ponownie zastosuj tagi istniejące i nowe: 
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
@@ -230,7 +230,7 @@ do
 done
 ```
 
-Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów i *zachować istniejące znaczniki zasobów*, użyj następującego skryptu:
+Aby zastosować wszystkie tagi z grupy zasobów do swoich zasobów i *zachowania tagów istniejących w zasobach*, użyj następującego skryptu:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -258,22 +258,22 @@ done
 
 ## <a name="rest-api"></a>Interfejs API REST
 
-Portalu Azure i programu PowerShell, oba rozwiązania używają [interfejsu REST API usługi Resource Manager](https://docs.microsoft.com/rest/api/resources/) w tle. Jeśli chcesz zintegrować znakowanie do innego środowiska tagów można uzyskać za pomocą **UZYSKAĆ** na identyfikator zasobu i aktualizacja zestawu tagów za pomocą **poprawka** wywołania.
+Witryna Azure portal i programu PowerShell, użyj obu [interfejsu REST API usługi Resource Manager](https://docs.microsoft.com/rest/api/resources/) w tle. Jeśli zachodzi potrzeba integracja znakowanie do innego środowiska, można uzyskać tagów za pomocą **UZYSKAĆ** na identyfikator zasobu i zaktualizuj zestaw znaczników, które przy użyciu **PATCH** wywołania.
 
-## <a name="tags-and-billing"></a>Znaczniki i rozliczeń
+## <a name="tags-and-billing"></a>Znaczniki i rozliczenia
 
-Tagi służą do grupowania danych rozliczeń. Na przykład jeśli korzystasz z wieloma maszynami wirtualnymi w różnych organizacjach, za pomocą tagów do użycia grup Centrum kosztów. Umożliwia także tagi kategoryzowania koszty przez środowisko uruchomieniowe, takich jak rozliczeń użycia dla maszyn wirtualnych w środowisku produkcyjnym.
+Tagi służą do grupowania danych dotyczących rozliczeń. Na przykład jeśli używasz wielu maszyn wirtualnych w różnych organizacjach za pomocą tagów do użycia grup Centrum kosztów. Tagów umożliwia również kategoryzowanie kosztów przez środowisko uruchomieniowe, takie jak rozliczanego użycia dla maszyn wirtualnych uruchomionych w środowisku produkcyjnym.
 
-Można pobrać informacji na temat tagów za pomocą [użycia zasobów platformy Azure i interfejsów API RateCard](../billing/billing-usage-rate-card-overview.md) lub użycia pliku wartości rozdzielanych przecinkami (CSV). Pobierz plik użycia z [portalu konta usługi Azure](https://account.windowsazure.com/) lub [EA portal](https://ea.azure.com). Aby uzyskać więcej informacji na temat programowy dostęp do informacji dotyczących rozliczeń, zobacz [uzyskać wgląd w Microsoft Azure użycia zasobów](../billing/billing-usage-rate-card-overview.md). Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczenia Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Można pobrać informacji na temat tagów za pośrednictwem [użycia zasobów platformy Azure i interfejsów API usługi RateCard](../billing/billing-usage-rate-card-overview.md) lub użycie pliku wartości rozdzielanych przecinkami (CSV). Pobieranie pliku użycia z [portal konta Azure](https://account.windowsazure.com/) lub [portalu EA portal](https://ea.azure.com). Aby uzyskać więcej informacji na temat programowy dostęp do informacji dotyczących rozliczeń, zobacz [wgląd w użycie zasobów usługi Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczeń platformy Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
 
-Po pobraniu użycia woluminów CSV dla usług, które obsługują tagów z rozliczeniami znaczniki są wyświetlane w **tagi** kolumny. Aby uzyskać więcej informacji, zobacz [zrozumieć rachunku platformy Microsoft Azure](../billing/billing-understand-your-bill.md).
+Po pobraniu użycia woluminów CSV dla usług, które obsługują tagi z rozliczeniami, znaczniki są wyświetlane w **tagi** kolumny. Aby uzyskać więcej informacji, zobacz [opis zawartości rachunku dla systemu Microsoft Azure](../billing/billing-understand-your-bill.md).
 
-![Zobacz tagów w rozliczeń](./media/resource-group-using-tags/billing_csv.png)
+![Zobacz tagi rozliczeń](./media/resource-group-using-tags/billing_csv.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Za pomocą niestandardowych zasad można stosować ograniczenia i konwencje w Twojej subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartość określony tag. Aby uzyskać więcej informacji, zobacz [co to jest Azure zasady?](../azure-policy/azure-policy-introduction.md)
-* Aby obejrzeć wprowadzenie do korzystania ze środowiska Azure PowerShell podczas wdrażania zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](powershell-azure-resource-manager.md).
-* Aby obejrzeć wprowadzenie do przy użyciu wiersza polecenia platformy Azure, podczas wdrażania zasobów, zobacz [przy użyciu wiersza polecenia platformy Azure dla komputerów Mac, Linux i Windows za pomocą Menedżera zasobów Azure](xplat-cli-azure-resource-manager.md).
-* Aby obejrzeć wprowadzenie do korzystania z portalu, zobacz [przy użyciu portalu Azure do zarządzania zasobami Azure](resource-group-portal.md).  
+* Za pomocą zasad niestandardowych, można zastosować ograniczenia i konwencje w ramach subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartości dla określonego tagu. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md)
+* Wprowadzenie do korzystania z programu Azure PowerShell, podczas wdrażania zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](powershell-azure-resource-manager.md).
+* Wprowadzenie do korzystania z wiersza polecenia platformy Azure, podczas wdrażania zasobów, zobacz [przy użyciu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Manager](xplat-cli-azure-resource-manager.md).
+* Wprowadzenie do korzystania z portalu, zobacz [przy użyciu witryny Azure portal do zarządzania zasobami platformy Azure](resource-group-portal.md).  
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

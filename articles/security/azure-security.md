@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: bda8f72de16d1d8d95823de98aab8ec209908e63
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437794"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971010"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -113,7 +113,7 @@ W sekcji przedstawiono dodatkowe informacje na temat kluczowe funkcje zabezpiecz
 Jednym z najprostszych sposobów, aby rozpocząć testowanie pod kątem luk w zabezpieczeniach na Twoje [aplikację usługi app Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) jest użycie [integracji przy użyciu usługi Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) przeprowadzić jednym kliknięciem wyszukiwaniu luk w zabezpieczeniach w aplikacji. Możesz wyświetlić wyniki testów w raporcie o łatwych do zrozumienia i Dowiedz się, jak naprawić każdą usterkę z instrukcjami krok po kroku.
 
 ### <a name="penetration-testing"></a>Testy penetracyjne
-Jeśli wolisz do przeprowadzenia testów penetracyjnych lub chcesz użyć innego dostawcy lub skaner pakietu, należy wykonać [platformy Azure proces zatwierdzania testów penetracyjnych](https://docs.microsoft.com/en-us/azure/security/azure-security-pen-testing ) i uzyskać wcześniejsze zatwierdzenia do przeprowadzenia testów penetracyjnych żądaną.
+Jeśli wolisz do przeprowadzenia testów penetracyjnych lub chcesz użyć innego dostawcy lub skaner pakietu, należy wykonać [platformy Azure proces zatwierdzania testów penetracyjnych](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) i uzyskać wcześniejsze zatwierdzenia do przeprowadzenia testów penetracyjnych żądaną.
 
 ### <a name="web-application-firewall"></a>Zapora aplikacji sieci Web
 Zapora aplikacji sieci web (WAF) w [usługi Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomaga chronić aplikacje sieci web przed typowymi atakami opartego na sieci web, takimi jak iniekcja SQL, ataki z użyciem skryptów między witrynami i przejęcie kontroli sesji. Ma wstępnie skonfigurowany ochrony przed zagrożeniami zidentyfikowanymi przez [Otwórz sieci Web aplikacji Security Project (OWASP) jako pierwszych 10 najpopularniejszych luk w zabezpieczeniach](https://msdn.microsoft.com/library/).

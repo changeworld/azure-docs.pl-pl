@@ -1,12 +1,12 @@
 ---
-title: "Połączenia z urządzeniem przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób podłącz urządzenie do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu aplikacji napisanych w Node.js."
-services: 
+title: Podłącz urządzenie przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak połączyć urządzenie z usługi Azure IoT Suite we wstępnie skonfigurowanym rozwiązaniu monitorowania zdalnego przy użyciu aplikacji napisanych w języku Node.js.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,30 +16,31 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 87a2e97638508eef1d90a219cfb38d1fcac81d55
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723882"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Podłączanie urządzenia do wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego (Node.js)
 [!INCLUDE [iot-suite-v1-selector-connecting](../../includes/iot-suite-v1-selector-connecting.md)]
 
-## <a name="create-a-nodejs-sample-solution"></a>Tworzenie rozwiązania próbki node.js
+## <a name="create-a-nodejs-sample-solution"></a>Tworzenie rozwiązania przykładowe środowiska node.js
 
-Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowany na komputerze deweloperskim. Można uruchomić `node --version` w wierszu polecenia, aby sprawdzić wersję.
+Upewnij się, że środowisko Node.js w wersji 0.11.5 lub nowszy jest zainstalowany na komputerze deweloperskim. Możesz uruchomić `node --version` w wierszu polecenia, aby sprawdzić wersję.
 
 1. Utwórz folder o nazwie **RemoteMonitoring** na komputerze deweloperskim. Przejdź do tego folderu w środowisku wiersza polecenia.
 
-1. Uruchom następujące polecenia, aby pobrać i zainstalować te pakiety, potrzebne do ukończenia przykładową aplikację:
+1. Uruchom następujące polecenia, aby pobrać i zainstalować te pakiety, że potrzebne do wykonania dla przykładowej aplikacji:
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. W **RemoteMonitoring** folderu, Utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu.
+1. W **RemoteMonitoring** folderze utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu.
 
-1. W **remote_monitoring.js** plików, należy dodać następujące `require` instrukcji:
+1. W **remote_monitoring.js** plików, Dodaj następujący kod `require` instrukcji:
 
     ```nodejs
     'use strict';
@@ -57,7 +58,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Dodaj następujące zmienne do definiowania niektóre dane telemetryczne podstawowej:
+1. Dodaj następujące zmienne do definiowania niektórych danych telemetrycznych podstawowy:
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +66,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     var externalTemperature = 55;
     ```
 
-1. Dodaj następującą funkcję pomocnika drukowanie wyników operacji:
+1. Dodaj następującą funkcję pomocnika, aby wydrukować wyniki operacji:
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +76,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     }
     ```
 
-1. Dodaj następującą funkcję pomocnika służące do wartości danych telemetrycznych losowe:
+1. Dodaj następującą funkcję pomocnika na potrzeby losowe wartości telemetryczne:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +84,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     }
     ```
 
-1. Dodaj następującą definicję dla **DeviceInfo** obiekt urządzenie wysyła podczas uruchamiania:
+1. Dodaj następującą definicję dla **DeviceInfo** obiektu urządzenie wysyła przy uruchamianiu:
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +98,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     };
     ```
 
-1. Dodaj następującą definicję dwie urządzenia zgłoszone wartości. Ta definicja zawiera opisy bezpośredniego metody, które obsługuje urządzenia:
+1. Dodaj następującą definicję bliźniaczej reprezentacji urządzenia zgłoszone wartości. Ta definicja zawiera opisy metod bezpośrednich, obsługiwanych przez urządzenie:
 
     ```nodejs
     var reportedProperties = {
@@ -132,7 +133,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     }
     ```
 
-1. Dodaj następującą funkcję obsługi **ponowny rozruch** bezpośrednie wywołanie metody:
+1. Dodaj następującą funkcję, aby obsłużyć **ponowny rozruch** bezpośrednie wywołanie metody:
 
     ```nodejs
     function onReboot(request, response) {
@@ -150,7 +151,7 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     }
     ```
 
-1. Dodaj następującą funkcję obsługi **InitiateFirmwareUpdate** bezpośrednie wywołania metody. Ta metoda bezpośrednia używa parametru do określenia lokalizacji pobierania obrazu oprogramowania układowego i inicjuje oprogramowanie układowe aktualizacji na urządzeniu asynchronicznie:
+1. Dodaj następującą funkcję, aby obsłużyć **InitiateFirmwareUpdate** bezpośrednie wywołania metody. Ta metoda bezpośrednia używa parametru do określenia lokalizacji pobierania obrazu oprogramowania układowego i inicjuje aktualizacji oprogramowania układowego na urządzeniu asynchroniczne:
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
@@ -179,10 +180,10 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
 
     * Otwórz połączenie.
     * Wyślij **DeviceInfo** obiektu.
-    * Konfigurowanie obsługi dla żądanej właściwości.
-    * Wysłać zgłoszonego właściwości.
-    * Rejestrowanie procedur obsługi dla metod bezpośredniego.
-    * Rozpocznij wysyłanie danych telemetrycznych.
+    * Skonfiguruj program obsługi żądane właściwości.
+    * Wysyłać zgłaszane właściwości.
+    * Zarejestruj procedury obsługi dla metod bezpośrednich.
+    * Rozpoczęcie wysyłania danych telemetrycznych.
 
     ```nodejs
     client.open(function (err) {
@@ -242,9 +243,9 @@ Upewnij się, tej wersji środowiska Node.js 0.11.5 lub nowszy jest zainstalowan
     });
     ```
 
-1. Zapisać zmiany w **remote_monitoring.js** pliku.
+1. Czy zapisać zmiany **remote_monitoring.js** pliku.
 
-1. Uruchom następujące polecenie w wierszu polecenia, aby uruchomić przykładową aplikację:
+1. Uruchom następujące polecenie w wierszu polecenia można uruchomić aplikacji przykładowej:
    
     ```
     node remote_monitoring.js

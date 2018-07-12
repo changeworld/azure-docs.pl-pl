@@ -1,6 +1,6 @@
 ---
-title: Typowe kody błędów systemu Windows maszyny wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: Zrozumienie niektóre często występujące kody błędów napotkanych podczas udostępniania i zarządzania maszynami wirtualnymi systemu Windows na platformie Azure
+title: Typowe kody błędów maszynę wirtualną Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Zrozumieć niektóre typowe kody błędów napotkanych podczas obsługi administracyjnej i zarządzanie maszynami wirtualnymi Windows na platformie Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing-ms
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: xujing;genli
-ms.openlocfilehash: 365fdcc8c7bf4ae8ec68b98734971d324032797f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4addf714ca18a7b5428025473111d96537ff4c99
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913219"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723791"
 ---
-# <a name="understand-common-error-messages-when-you-manage-windows-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, jeśli zarządzasz maszyn wirtualnych systemu Windows na platformie Azure
+# <a name="understand-common-error-messages-when-you-manage-windows-virtual-machines-in-azure"></a>Zrozumienie typowe komunikaty o błędach, jeśli zarządzasz Windows maszyn wirtualnych na platformie Azure
 
-W tym artykule opisano niektóre z najczęściej występujących kodów błędów i komunikatów, które można napotkać podczas tworzenia i zarządzania maszynami wirtualnymi systemu Windows (VM) na platformie Azure.
+W tym artykule opisano niektóre najbardziej typowe kody błędów i komunikaty, które można napotkać podczas tworzenia lub Zarządzaj Windows maszyn wirtualnych (VM) na platformie Azure.
 
 [!INCLUDE [virtual-machines-common-error-messages](../../../includes/virtual-machines-common-error-messages.md)]

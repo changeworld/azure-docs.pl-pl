@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej systemu Windows z szablonu na platformie Azure | Dokumentacja firmy Microsoft
-description: Łatwe tworzenie nowej maszyny Wirtualnej systemu Windows przy użyciu szablonu usługi Resource Manager i programu PowerShell.
+title: Tworzenie maszyny Wirtualnej z systemem Windows na podstawie szablonu na platformie Azure | Dokumentacja firmy Microsoft
+description: Z łatwością tworzyć nową maszynę Wirtualną Windows, należy użyć szablonu usługi Resource Manager i programu PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,19 +17,19 @@ ms.date: 07/18/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1c911d7500b61218323dd736aa51f50980d702cc
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "31601842"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38720082"
 ---
-# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Utwórz maszynę wirtualną systemu Windows z szablonem usługi Resource Manager
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Utwórz maszynę wirtualną Windows za pomocą szablonu usługi Resource Manager
 
-W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu programu PowerShell. Tworzony szablon wdraża jednej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z pojedynczą podsiecią.
+W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu programu PowerShell. Tworzony szablon wdraża pojedynczej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z jedną podsiecią.
 
 Aby uzyskać szczegółowy opis zasobu maszyny wirtualnej, zobacz [maszyn wirtualnych w szablonie usługi Azure Resource Manager](template-description.md). Aby uzyskać więcej informacji na temat wszystkich zasobów w szablonie, zobacz [Przewodnik po szablonie usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Wykonaj kroki opisane w tym artykule powinno zająć około pięciu minut.
+Wykonaj kroki w tym artykule powinno zająć około pięciu minut.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -37,7 +37,7 @@ Jeśli chcesz zainstalować program PowerShell i używać go lokalnie, ten samou
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Wszystkie zasoby musi być wdrażana w [grupy zasobów](../../azure-resource-manager/resource-group-overview.md).
+Wszystkie zasoby, musi zostać wdrożony w [grupy zasobów](../../azure-resource-manager/resource-group-overview.md).
 
 1. Pobierz listę dostępnych lokalizacji, w których można utworzyć zasoby.
    
@@ -45,7 +45,7 @@ Wszystkie zasoby musi być wdrażana w [grupy zasobów](../../azure-resource-man
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Utwórz grupę zasobów w wybranej lokalizacji. Ten przykład przedstawia tworzenie grupy zasobów o nazwie **myResourceGroup** w **zachodnie stany USA** lokalizacji:
+2. Utwórz grupę zasobów w wybranej lokalizacji. W tym przykładzie pokazano tworzenie grupy zasobów o nazwie **myResourceGroup** w **zachodnie stany USA** lokalizacji:
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
@@ -53,9 +53,9 @@ Wszystkie zasoby musi być wdrażana w [grupy zasobów](../../azure-resource-man
 
 ## <a name="create-the-files"></a>Tworzenie plików
 
-W tym kroku utworzysz pliku szablonu, który wdraża zasobów i pliku parametrów, które dostarcza wartości parametru do szablonu. Możesz również utworzyć pliku autoryzacji, który służy do wykonywania operacji usługi Azure Resource Manager.
+W tym kroku utworzysz plik szablonu, który służy do wdrażania zasobów i plik parametrów, który dostarcza wartości parametrów do szablonu. Możesz również utworzyć plik autoryzacji, który służy do wykonywania operacji usługi Azure Resource Manager.
 
-1. Utwórz plik o nazwie *CreateVMTemplate.json* i Dodaj ten kod JSON do niej:
+1. Utwórz plik o nazwie *CreateVMTemplate.json* i dodać do niego ten kod JSON:
 
     ```json
     {
@@ -160,7 +160,7 @@ W tym kroku utworzysz pliku szablonu, który wdraża zasobów i pliku parametró
     }
     ```
 
-2. Utwórz plik o nazwie *parameters.JSON następującym kodem* i Dodaj ten kod JSON do niej:
+2. Utwórz plik o nazwie *Parameters.json* i dodać do niego ten kod JSON:
 
     ```json
     {
@@ -183,16 +183,16 @@ W tym kroku utworzysz pliku szablonu, który wdraża zasobów i pliku parametró
     New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
     ```
 
-4. Przekazywanie plików do konta magazynu:
+4. Przekaż pliki do konta magazynu:
 
     ```powershell
     Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Zmiana - ścieżki do plików do lokalizacji, w którym są przechowywane pliki.
+    Zmiana - ścieżki do plików do lokalizacji, w którym przechowywane są pliki.
 
-## <a name="create-the-resources"></a>Utworzenie zasobów
+## <a name="create-the-resources"></a>Tworzenie zasobów
 
 Wdrażanie szablonu przy użyciu parametrów:
 
@@ -203,10 +203,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> Można także wdrożyć parametry z lokalnych plików i szablonów. Aby dowiedzieć się więcej, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+> Można także wdrożyć szablony i parametrów z plików lokalnych. Aby dowiedzieć się więcej, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli wystąpiły problemy dotyczące wdrożenia, może potrwać przyjrzeć się [Rozwiąż typowe błędy wdrożenia usługi Azure z usługą Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-- Informacje o sposobie tworzenia i zarządzania nimi maszynę wirtualną w [tworzenia i zarządzania maszynami wirtualnymi systemu Windows za pomocą modułu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Jeśli wystąpiły problemy dotyczące wdrożenia, może zająć się [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Dowiedz się, jak tworzyć i zarządzać nimi maszynę wirtualną w [Utwórz Windows maszyn wirtualnych i zarządzanie przy użyciu modułu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

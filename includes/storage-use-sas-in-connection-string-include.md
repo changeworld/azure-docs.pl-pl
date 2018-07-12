@@ -1,6 +1,6 @@
-Jeśli użytkownik ma adres URL sygnatury dostępu Współdzielonego dostępu współdzielonego, która udziela dostępu do zasobów na koncie magazynu, można użyć sygnatury dostępu Współdzielonego w parametrach połączenia. Ponieważ sygnatury dostępu Współdzielonego zawiera informacje wymagane do uwierzytelnienia żądania, ciąg połączenia z sygnatury dostępu Współdzielonego zapewnia protokołu, punkt końcowy usługi i niezbędne poświadczenia, aby uzyskać dostęp do zasobu.
+Jeśli użytkownik ma adres URL sygnatury (SAS) dostępu współdzielonego, który udziela dostępu do zasobów na koncie magazynu, można użyć sygnatury dostępu Współdzielonego w parametrach połączenia. Ponieważ sygnatury dostępu Współdzielonego zawiera informacje wymagane do uwierzytelnienia żądania, parametry połączenia przy użyciu sygnatury dostępu Współdzielonego zapewnia protokół, punkt końcowy usługi i niezbędne poświadczenia, aby uzyskać dostęp do zasobu.
 
-Aby utworzyć parametry połączenia, który zawiera sygnaturę dostępu współdzielonego, określ ciąg w następującym formacie:
+Aby utworzyć parametry połączenia, który zawiera sygnatury dostępu współdzielonego, należy określić ciąg w następującym formacie:
 
 ```
 BlobEndpoint=myBlobEndpoint;
@@ -10,17 +10,17 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Każdy punkt końcowy usługi jest opcjonalny, mimo że parametry połączenia muszą zawierać co najmniej jeden.
+Każdy punkt końcowy usługi jest opcjonalne, chociaż parametry połączenia muszą zawierać co najmniej jeden.
 
 > [!NOTE]
-> Jako najlepsze rozwiązanie zaleca się przy użyciu protokołu HTTPS z sygnatury dostępu Współdzielonego.
+> Przy użyciu protokołu HTTPS przy użyciu sygnatury dostępu Współdzielonego jest zalecane zgodnie z zaleceniami.
 >
-> Jeśli określisz sygnatury dostępu Współdzielonego w ciągu połączenia w pliku konfiguracji, konieczne może być kodowanie znaków specjalnych w adresie URL.
+> Jeśli określisz sygnatury dostępu Współdzielonego w ciągu połączenia w pliku konfiguracji, może być konieczne kodowanie znaków specjalnych w adresie URL.
 >
 >
 
 ### <a name="service-sas-example"></a>Przykład sygnatury dostępu Współdzielonego usługi
-Oto przykład parametrów połączenia, który obejmuje sygnatury dostępu Współdzielonego usługi magazynu obiektów Blob:
+Oto przykład parametrów połączenia, który zawiera sygnatury dostępu Współdzielonego usługi Blob storage:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -34,8 +34,8 @@ BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-### <a name="account-sas-example"></a>Przykład sygnatury dostępu Współdzielonego konta
-Oto przykład parametrów połączenia, które obejmuje sygnatura dostępu Współdzielonego konta magazynu obiektów Blob i plików. Należy zwrócić uwagę, określenia punktów końcowych dla obu usług:
+### <a name="account-sas-example"></a>Przykład użycia sygnatury dostępu Współdzielonego konta
+Oto przykład parametrów połączenia, który zawiera sygnatury dostępu Współdzielonego konta magazynu obiektów Blob i plików. Należy zwrócić uwagę na to, że podano punktów końcowych dla obu usług:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -43,7 +43,7 @@ FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&spr=https&st=2016-04-12T03%3A24%3A31Z&se=2016-04-13T03%3A29%3A31Z&srt=s&ss=bf&sp=rwl
 ```
 
-A Oto przykład te same parametry połączenia z kodowaniem adresu URL:
+A Oto przykład tych samych parametrach połączenia przy użyciu kodowania adresu URL:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

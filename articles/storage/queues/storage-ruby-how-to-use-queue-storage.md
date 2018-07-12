@@ -1,6 +1,6 @@
 ---
 title: Jak używać magazynu kolejek w języku Ruby | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi kolejek platformy Azure do tworzenia i usuwania kolejki, Wstaw, Pobierz i usunąć wiadomości. Przykłady napisany w języku Ruby.
+description: Dowiedz się, jak używać usługi kolejek platformy Azure do tworzenia i usuwania kolejki oraz wstawiania, pobieranie i usuwanie wiadomości. Przykłady napisane w języku Ruby.
 services: storage
 documentationcenter: ruby
 author: tamram
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27993640"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38719077"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Jak używać Magazynu kolejek w języku Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -27,48 +27,48 @@ ms.locfileid: "27993640"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Przegląd
-W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi Microsoft Azure Queue Storage. Przykłady są napisane przy użyciu interfejsu API Azure Ruby.
-Omówione scenariusze obejmują **wstawianie**, **wybierania**, **pobierania**, i **usuwanie** kolejki komunikatów, a także **tworzenie i usuwanie kolejek**.
+Ten przewodnik pokazuje, jak realizować typowe scenariusze za pomocą usługi Microsoft Azure Queue Storage. Przykłady są napisane przy użyciu interfejsu API Azure Ruby.
+Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie i usuwanie kolejek**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-ruby-application"></a>Tworzenie aplikacji Ruby
-Utwórz aplikację dopisków fonetycznych. Aby uzyskać instrukcje, zobacz [tworzenie Ruby aplikacji w usłudze App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
+## <a name="create-a-ruby-application"></a>Tworzenie aplikacji w języku Ruby
+Jak utworzyć aplikację języka Ruby. Aby uzyskać instrukcje, zobacz [tworzenie aplikacji Ruby w usłudze App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
 
-## <a name="configure-your-application-to-access-storage"></a>Konfigurowanie aplikacji na dostęp do magazynu
-Aby korzystać z usługi Azure storage, konieczne pobranie i użycie dopisków fonetycznych pakiet azure zawiera zestaw wygody bibliotek, które komunikują się z magazynu usługi REST.
+## <a name="configure-your-application-to-access-storage"></a>Umożliwia skonfigurowanie aplikacji dostęp do magazynu
+Aby użyć usługi Azure storage, należy do pobrania i użycia języka Ruby pakiet platformy azure, który zawiera zbiór bibliotek wygody, które komunikują się z usług REST magazynu.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>Umożliwia uzyskanie pakietu RubyGems
-1. Użyj interfejsu wiersza polecenia, takich jak **PowerShell** (system Windows), **terminali** (Mac), lub **Bash** (Unix).
-2. Wpisz "azure gem instalacji" w oknie wiersza polecenia, aby zainstalować gem i zależności.
+### <a name="use-rubygems-to-obtain-the-package"></a>Używanie narzędzia RubyGems do pobierania pakietu
+1. Użyj interfejsu wiersza polecenia, takiego jak **PowerShell** (system Windows), **Terminal** (system Mac) lub **Bash** (system Unix).
+2. Wpisz "azure gem instalacji" w oknie wiersza polecenia, aby zainstalować rozwiązanie gem i zależności.
 
 ### <a name="import-the-package"></a>Importowanie pakietu
-Użyj edytora tekstu, Dodaj następujący element do góry pliku dopisków fonetycznych, których zamierzasz używać magazynu:
+Użyj ulubionego edytora tekstu, Dodaj następujący kod do górnej części pliku języka Ruby, których zamierzasz używać magazynu:
 
 ```ruby
 require "azure"
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Ustawienia połączenia z magazynem Azure
-Moduł azure odczyta zmiennych środowiskowych **AZURE\_MAGAZYNU\_konta** i **AZURE\_MAGAZYNU\_ACCESS_KEY** informacji wymagane do łączenia się z kontem magazynu platformy Azure. Jeśli te zmienne środowiskowe nie są skonfigurowane, należy określić informacje o koncie przed użyciem **Azure::QueueService** następującym kodem:
+## <a name="setup-an-azure-storage-connection"></a>Skonfigurować połączenie usługi Azure Storage
+Moduł azure odczyta zmienne środowiskowe **AZURE\_MAGAZYNU\_konta** i **AZURE\_MAGAZYNU\_ACCESS_KEY** informacji wymagane do połączenia z kontem usługi Azure storage. Jeśli te zmienne środowiskowe nie są ustawione, należy określić informacje o koncie, przed rozpoczęciem korzystania z **Azure::QueueService** następującym kodem:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your Azure storage access key>"
 ```
 
-Aby uzyskać te wartości z klasyczny lub Menedżera zasobów konta magazynu w portalu Azure:
+Aby uzyskać te wartości z klasycznego konta magazynu lub konta magazynu menedżera zasobów w witrynie Azure Portal:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Przejdź do konta magazynu, którego chcesz użyć.
-3. W bloku ustawienia po prawej stronie, kliknij przycisk **klucze dostępu**.
-4. W bloku klucze dostępu pojawia się zostanie wyświetlony klucz dostępu 1 i klucz dostępu 2. Można użyć jednego z tych. 
-5. Kliknij ikonę kopiowania, aby skopiować klucz do Schowka. 
+3. W bloku Ustawienia po prawej stronie kliknij pozycję **Klucze dostępu**.
+4. W wyświetlonym bloku Klucze dostępu widoczny będzie klucz dostępu 1 i klucz dostępu 2. Możesz użyć jednego z nich. 
+5. Kliknij ikonę kopiowania, aby skopiować klucz do schowka. 
 
-## <a name="how-to-create-a-queue"></a>Porady: Tworzenie kolejki
-Poniższy kod tworzy **Azure::QueueService** obiektu, który umożliwia pracę z kolejki.
+## <a name="how-to-create-a-queue"></a>Instrukcje: Tworzenie kolejki
+Poniższy kod tworzy **Azure::QueueService** obiektu, który umożliwia pracę z kolejkami.
 
 ```ruby
 azure_queue_service = Azure::QueueService.new
@@ -85,27 +85,27 @@ end
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Porady: Wstawianie komunikatu do kolejki
-Aby wstawić komunikat do kolejki, użyj **create_message()** metodę, aby utworzyć nową wiadomość i dodaj go do kolejki.
+Aby wstawić komunikat do kolejki, należy użyć **create_message()** metodę, aby utworzyć nową wiadomość i dodać go do kolejki.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
-Możesz uzyskać wgląd w komunikat z przodu kolejki bez jego usuwania z kolejki, wywołując **peek\_messages()** metody. Domyślnie **peek\_messages()** wglądu w pojedynczym komunikacie. Można również określić, ile komunikatów, aby Podgląd.
+Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **podglądu\_messages()** metody. Domyślnie **podglądu\_messages()** wglądu w pojedynczym komunikacie. Można również określić, ile komunikatów, które chcesz wglądu.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Porady: Następny komunikat usuwania z kolejki
-Można usunąć wiadomości z kolejki w dwóch etapach.
+## <a name="how-to-dequeue-the-next-message"></a>Instrukcje: Usuń następny komunikat z kolejki
+Możesz usunąć komunikatu z kolejki w dwóch etapach.
 
-1. Podczas wywoływania **listy\_messages()**, Pobierz następnej wiadomości w kolejce domyślnie. Można również określić, ile komunikatów, które chcesz pobrać. Komunikaty zwracane z **listy\_messages()** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Przekaż widoczność limit czasu w sekundach jako parametr.
+1. Gdy wywołujesz **listy\_messages()**, uzyskasz następny komunikat w kolejce domyślnie. Można również określić, ile komunikatów, które chcesz pobrać. Komunikaty zwracane z **listy\_messages()** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Limit czasu widoczności przekazanej w ciągu kilku sekund, jako parametr.
 2. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **delete_message()**.
 
-Ten dwuetapowy proces usuwania komunikatów gwarantuje, że gdy kodu nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie. Twój kod wywołuje **usunąć\_message()** natychmiast po przetworzeniu komunikatu.
+Ten dwuetapowy proces usuwania komunikatów gwarantuje, że gdy kodu nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie. Twój kod wywołuje **Usuń\_message()** natychmiast po przetworzeniu komunikatu.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -114,7 +114,7 @@ azure_queue_service.delete_message("test-queue",
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Porady: Zmiana zawartości komunikatu w kolejce
-Możesz zmienić zawartość komunikatu w kolejce. Kod poniżej używa **update_message()** metodę aktualizowania wiadomości. Metoda zwraca spójną kolekcję zawierającą pop odbieranie komunikatu w kolejce i UTC wartość daty i godziny reprezentujące komunikat będzie widoczny w kolejce.
+Możesz zmienić zawartość komunikatu w kolejce. Kod poniżej został użyty **update_message()** metodę, aby zaktualizować wiadomości. Metoda zwraca spójną kolekcję zawierającą pop otrzymywania komunikatu w kolejce i czasem UTC wartość daty i godziny reprezentujące komunikat będzie widoczny w kolejce.
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -123,13 +123,13 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Porady: Dodatkowych opcji usuwania komunikatów
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowych opcji usuwania z kolejki komunikatów
 Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki.
 
-1. Możesz uzyskać partii komunikatu.
-2. Można ustawić limitu czasu niewidoczności dłuższy lub krótszy, dzięki czemu kod będzie bardziej lub mniej czasu na pełne przetworzenie każdego komunikatu.
+1. Możesz uzyskać partię komunikatów.
+2. Możesz ustawić limit czasu niewidoczności dłuższy lub krótszy, dzięki czemu kod więcej lub mniej czasu na pełne przetworzenie każdego komunikatu.
 
-Poniższy przykład kodu wykorzystuje **listy\_messages()** metodę, aby pobrać 15 komunikatów w jednym wywołaniu. Następnie wyświetla i usuwa każdego komunikatu. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
+Poniższy przykład kodu wykorzystuje **listy\_messages()** metodę, aby uzyskać 15 komunikatów w jednym wywołaniu. Następnie wyświetla i usuwa każdego komunikatu. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -139,8 +139,8 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Porady: Pobieranie długości kolejki
-Możesz uzyskać oszacowanie liczbę wiadomości w kolejce. **Uzyskać\_kolejki\_metadata()** metody prosi usługę kolejki, aby przekazać przybliżone wiadomości i metadane dotyczące kolejki.
+## <a name="how-to-get-the-queue-length"></a>Instrukcje: Pobieranie długości kolejki
+Możesz uzyskać oszacowanie liczby wiadomości w kolejce. **Uzyskać\_kolejki\_metadata()** metoda prosi usługę kolejki do zwrócenia liczba komunikatów przybliżony oraz metadane dotyczące kolejki.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -148,16 +148,16 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
-Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **usunąć\_queue()** metody dla obiekt kolejki.
+Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **Usuń\_queue()** metody na obiekcie kolejki.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już podstawy magazynu kolejek, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
+Teraz, kiedy znasz już podstawy usługi queue storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu.
 
-* Odwiedź stronę [Blog zespołu usługi Magazyn Azure](http://blogs.msdn.com/b/windowsazurestorage/)
-* Odwiedź stronę [zestawu Azure SDK dla środowiska Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repozytorium w witrynie GitHub
+* Odwiedź stronę [Blog zespołu usługi Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* Odwiedź stronę [zestawu Azure SDK dla języka Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repozytorium w witrynie GitHub
 
-Porównanie między omówione w tym artykule usługi kolejek platformy Azure i Azure kolejek usługi Service Bus omówione w [jak używać kolejek usługi Service Bus](/develop/ruby/how-to-guides/service-bus-queues/) artykułu, zobacz [kolejek Azure i kolejek usługi Service Bus - porównaniu i Odróżniające](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+W celu porównania omówionych w tym artykule usługi kolejek platformy Azure i kolejek usługi Azure Service Bus omówione w [jak używać kolejek usługi Service Bus](/develop/ruby/how-to-guides/service-bus-queues/) artykuł, zobacz [kolejek platformy Azure i kolejek usługi Service Bus — porównanie i Porównanie](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

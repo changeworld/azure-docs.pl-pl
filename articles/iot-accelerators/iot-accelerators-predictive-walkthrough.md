@@ -1,19 +1,19 @@
 ---
 title: Omówienie akceleratora rozwiązania do konserwacji predykcyjnej — Azure | Microsoft Docs
-description: Omówienie usługi Azure IoT — konserwacja predykcyjna akcelerator rozwiązań.
+description: Omówienie akceleratora rozwiązań Azure IoT do konserwacji predykcyjnej.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 07/12/2018
 ms.author: dobett
-ms.openlocfilehash: 6bd61f301fa4468ef1d308d4da275c760ee09dc0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: ed87b3c935fe4032460f8e524f963355fb3157d9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088639"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970305"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązania do konserwacji predykcyjnej
 
@@ -29,7 +29,17 @@ Niebieskie elementy oznaczają usługi platformy Azure zaprowizowane w regionie,
 
 Zielony element oznacza symulowane urządzenie, które odpowiada silnikowi samolotu. Więcej informacji na temat tych symulowanych urządzeń można znaleźć w sekcji [Symulowane urządzenia](#simulated-devices).
 
-Szare elementy oznaczają składniki z zaimplementowanymi funkcjami *zarządzania urządzeniami*. Bieżąca wersja akceleratora rozwiązania do konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej na temat zarządzania urządzeniami, zobacz [monitorowania zdalnego akcelerator rozwiązań][lnk-remote-monitoring].
+Szare elementy oznaczają składniki z zaimplementowanymi funkcjami *zarządzania urządzeniami*. Bieżąca wersja akceleratora rozwiązania do konserwacji predykcyjnej nie umożliwia aprowizowania tych zasobów. Aby dowiedzieć się więcej o zarządzaniu urządzeniami, zapoznaj się [zdalne monitorowanie akcelerator rozwiązań][lnk-remote-monitoring].
+
+## <a name="azure-resources"></a>Zasoby platformy Azure
+
+W portalu Azure przejdź do grupy zasobów z nazwą wybranego rozwiązania, aby wyświetlić aprowizowane zasoby.
+
+![][img-resource-group]
+
+Po przeprowadzeniu aprowizacji akceleratora rozwiązania otrzymasz wiadomość e-mail z linkiem do obszaru roboczego usługi Machine Learning. Możesz także przejść do obszaru roboczego usługi Machine Learning z [azureiotsolutions.com] [ lnk-azureiotsuite] stronę swojego aprowizowanego rozwiązania. Kafelek jest dostępny na tej stronie, gdy rozwiązanie jest w stanie **Gotowe**.
+
+![][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Symulowane urządzenia
 
@@ -61,6 +71,11 @@ Usługa IoT Hub udostępnia potwierdzenia poleceń wysyłanych do urządzeń.
 ## <a name="machine-learning"></a>Usługa Machine Learning
 Składnik Machine Learning wykorzystuje model opracowany na podstawie danych zebranych z rzeczywistych silników samolotów. Do obszaru roboczego usługi Machine Learning możesz przejść z poziomu kafelka rozwiązania na stronie [azureiotsuite.com][lnk-azureiotsuite]. Kafelek jest dostępny, gdy rozwiązanie jest w stanie **Gotowe**.
 
+Model usługi Azure Machine Learning jest dostępny jako szablon na demonstrację działania funkcji z urządzeń danych telemetrycznych zebranych za pośrednictwem usług akceleratorów rozwiązań IoT. Firma Microsoft opracowała [modelu regresji] [ lnk_regression_model] silnika samolotu na podstawie publicznie dostępnych danych<sup>\[1\]</sup>oraz szczegółowe wskazówki na temat używania tego modelu.
+
+Akcelerator rozwiązania Azure IoT do konserwacji predykcyjnej używa modelu regresji utworzonego na podstawie tego szablonu. Model jest wdrożony w ramach subskrypcji platformy Azure i dostępny za pośrednictwem automatycznie generowanego interfejsu API. Rozwiązanie to zawiera podzbiór danych testowych odpowiadających 4 ze 100 silników oraz strumieniom danych z 4 z 21 czujników. Te dane wystarczają do uzyskania dokładnego wyniku za pomocą nauczonego modelu.
+
+*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set” (Zestaw danych dotyczących symulacji degradacji silnika turbowentylatorowego), repozytorium danych prognostycznych NASA w Ames (https://c3.nasa.gov/dashlink/resources/139/), ośrodek badawczy NASA w Ames, Moffett Field, Kalifornia*
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po zapoznaniu się z kluczowymi składnikami akceleratora rozwiązania do konserwacji predykcyjnej możesz je dostosować.
@@ -71,10 +86,13 @@ Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów
 * [Zabezpieczenia IoT od podstaw][lnk-security-groundup]
 
 [img-architecture]: media/iot-accelerators-predictive-walkthrough/architecture.png
+[img-resource-group]: media/iot-accelerators-predictive-walkthrough/resource-group.png
+[img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
-[lnk-remote-monitoring]: iot-accelerators-remote-monitoring-explore.md
+[lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

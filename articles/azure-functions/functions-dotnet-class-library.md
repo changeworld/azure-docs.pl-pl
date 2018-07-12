@@ -1,6 +1,6 @@
 ---
-title: Azure dokumentacja dla deweloperów funkcje C#
-description: Zrozumienie sposobu tworzenia usługi Azure Functions przy użyciu języka C#.
+title: Usługa Azure Functions dla deweloperów odwołanie w C#
+description: Dowiedz się, jak tworzenie usługi Azure Functions przy użyciu języka C#.
 services: functions
 documentationcenter: na
 author: tdykstra
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: e521ef29a338d0c7d80493f92acff4758a091359
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: bde7a7788fd01bcbcc63296c0513af8eb4196021
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261291"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970183"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure dokumentacja dla deweloperów funkcje C#
+# <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-Ten artykuł zawiera wprowadzenie do tworzenia usługi Azure Functions przy użyciu języka C# w bibliotekach klas .NET.
+Ten artykuł stanowi wprowadzenie do projektowania usługi Azure Functions przy użyciu języka C# w bibliotekach klas .NET.
 
-Środowisko Azure Functions obsługuje C# i C# skrypt języków programowania. Jeśli szukasz wskazówki [przy użyciu języka C# w portalu Azure](functions-create-function-app-portal.md), zobacz [dokumentacja dla deweloperów (csx) skryptu C#](functions-reference-csharp.md).
+Usługa Azure Functions obsługuje C# i C# script języków programowania. Jeśli szukasz wskazówek [przy użyciu języka C# w witrynie Azure portal](functions-create-function-app-portal.md), zobacz [odwołanie dla deweloperów w C# (csx) skrypt](functions-reference-csharp.md).
 
-W tym artykule przyjęto, że został już przeczytany następujące artykuły:
+W tym artykule założono, że użytkownik przeczytał już następujące artykuły:
 
-* [Przewodnik dla deweloperów funkcji platformy Azure](functions-reference.md)
-* [Azure Functions narzędzia programu Visual Studio 2017](functions-develop-vs.md)
+* [Przewodnik dla deweloperów usługi Azure Functions](functions-reference.md)
+* [Narzędzia programu Visual Studio 2017 usługi Azure Functions](functions-develop-vs.md)
 
-## <a name="functions-class-library-project"></a>Projektu biblioteki klas funkcji
+## <a name="functions-class-library-project"></a>Projekt biblioteki klas funkcji
 
-W programie Visual Studio **usługi Azure Functions** szablonu projektu tworzy C# klasy biblioteki projekt, który zawiera następujące pliki:
+W programie Visual Studio **usługi Azure Functions** szablon projektu umożliwia utworzenie C# projekt biblioteki klas zawierający następujące pliki:
 
-* [Host.JSON](functions-host-json.md) -przechowuje ustawienia konfiguracji, które mają wpływ na wszystkie funkcje w projekcie uruchomionej lokalnie lub na platformie Azure.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) -przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego.
+* [Host.JSON](functions-host-json.md) — przechowuje ustawienia konfiguracji, które mają wpływ na wszystkich funkcji w projekcie, gdy uruchomiona lokalnie lub na platformie Azure.
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) — przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego.
 
 > [!IMPORTANT]
-> Proces kompilacji tworzy *function.json* plik dla każdej funkcji. To *function.json* plik nie jest przeznaczony do edycji bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączenie tej funkcji, edytując ten plik. Aby wyłączyć funkcję, użyj [wyłączyć](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) atrybutu. Na przykład dodać aplikację logiczną ustawienie MY_TIMER_DISABLED i zastosować `[Disable("MY_TIMER_DISABLED")]` do funkcji. Następnie można włączyć i wyłączyć, zmieniając ustawienia aplikacji.
+> Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby wyłączyć funkcję, należy użyć [wyłączyć](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) atrybutu. Na przykład dodać aplikację logiczną ustawienie MY_TIMER_DISABLED i zastosować `[Disable("MY_TIMER_DISABLED")]` do funkcji. Następnie można włączyć i wyłączyć, zmieniając ustawienia aplikacji.
 
-## <a name="methods-recognized-as-functions"></a>Metody rozpoznany jako funkcji
+## <a name="methods-recognized-as-functions"></a>Metody został rozpoznany jako funkcje
 
-W bibliotece klas, funkcja jest metodą statyczną z `FunctionName` i atrybut wyzwalacza, jak pokazano w poniższym przykładzie:
+W bibliotece klas, funkcja jest metody statycznej z `FunctionName` i atrybutu wyzwalacza, jak pokazano w poniższym przykładzie:
 
 ```csharp
 public static class SimpleExample
@@ -62,24 +62,24 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa w ramach projektu, zaczynać się literą i zawierać tylko litery, cyfry, `_` i `-`, maksymalnie 127 znaków. Szablony projektów często Utwórz metodę o nazwie `Run`, ale nazwa metody może być dowolną prawidłową nazwą metody C#.
+`FunctionName` Atrybut oznacza metodę jako punktu wejścia funkcji. Nazwa musi być unikatowa w obrębie projektu, zaczynać się literą i zawierać tylko litery, cyfry oraz `_` i `-`, maksymalnie 127 znaków. Szablony projektów często utworzyć metodę o nazwie `Run`, ale nazwa metody może być Dowolna prawidłowa nazwa metody języka C#.
 
-Atrybut wyzwalacza Określa typ wyzwalacza i wiąże parametr metody danych wejściowych. Funkcja przykład jest wyzwalany przez komunikatu w kolejce, a komunikat z kolejki jest przekazywany do metody w `myQueueItem` parametru.
+Atrybut wyzwalacza Określa typ wyzwalacz i powiązania danych wejściowych do parametru metody. Przykład funkcja jest wyzwalana przez komunikatu w kolejce i komunikatu w kolejce jest przekazywany do metody w `myQueueItem` parametru.
 
-## <a name="method-signature-parameters"></a>Parametry podpisu — metoda
+## <a name="method-signature-parameters"></a>Parametry podpis metody
 
-Podpis metody może zawierać parametrów innego niż ten używany z atrybutem wyzwalacza. Poniżej przedstawiono dodatkowe parametry, które mogą obejmować:
+Podpis metody może zawierać parametrów innych niż używana przez atrybut wyzwalacza. Poniżej przedstawiono dodatkowe parametry, które mogą obejmować:
 
-* [Wejście i wyjście powiązania](functions-triggers-bindings.md) oznaczona przez dekoracji ich atrybutów.  
-* `ILogger` Lub `TraceWriter` parametr [rejestrowanie](#logging).
+* [Dane wejściowe i wyjściowe powiązania](functions-triggers-bindings.md) odpowiednio oznaczone przez urządzanie je za pomocą atrybutów.  
+* `ILogger` Lub `TraceWriter` parametr [rejestrowania](#logging).
 * A `CancellationToken` parametr [łagodne zamykanie](#cancellation-tokens).
-* [Wyrażenia powiązania](functions-triggers-bindings.md#binding-expressions-and-patterns) parametry, aby przygotować wyzwolenia metadanych.
+* [Powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) parametry, aby przygotować wyzwolić metadanych.
 
-Kolejność parametrów w sygnaturze funkcji nie ma znaczenia. Na przykład parametry wyzwalacza można umieścić przed lub po innych powiązań i można umieścić parametru rejestratora przed lub po wyzwalacza lub powiązania parametrów.
+Kolejność parametrów w sygnaturze funkcji nie ma znaczenia. Na przykład można umieścić parametry wyzwalacza, przed lub po innych powiązań i można umieścić parametr rejestratora przed lub po wyzwalaczem lub powiązaniem parametrów.
 
 ### <a name="output-binding-example"></a>Przykład powiązania danych wyjściowych
 
-Poniższy przykład modyfikuje mieszanego przez dodanie wiązania kolejki danych wyjściowych. Funkcja zapisuje komunikat z kolejki wyzwala funkcji do nowego komunikatu w kolejce w innej kolejki.
+Poniższy przykład modyfikuje poprzedni, dodając powiązanie danych wyjściowych kolejki. Funkcja zapisuje komunikat w kolejce, która wyzwala funkcję, aby w innej kolejki nowego komunikatu w kolejce.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -96,11 +96,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-Artykuły odwołanie powiązania ([magazynu kolejek](functions-bindings-storage-queue.md), na przykład) opisano typy parametrów można używać z wyzwalacza, danych wejściowych lub wyjściowych powiązania atrybutów.
+Powiązanie gama artykułów ([kolejek magazynu](functions-bindings-storage-queue.md), na przykład) wyjaśniono, jakie typy parametrów, za pomocą wyzwalacza, dane wejściowe lub atrybutów powiązania danych wyjściowych.
 
-### <a name="binding-expressions-example"></a>Przykład wyrażenia powiązania
+### <a name="binding-expressions-example"></a>Przykład wyrażenia wiązania
 
-Poniższy kod pobiera nazwę kolejki, aby monitorować z ustawień aplikacji i pobiera czas utworzenia kolejki komunikatów `insertionTime` parametru.
+Poniższy kod pobiera nazwę kolejki można monitorować z poziomu ustawień aplikacji i pobiera czasu utworzenia kolejki komunikatów `insertionTime` parametru.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -117,13 +117,13 @@ public static class BindingExpressionsExample
 }
 ```
 
-## <a name="autogenerated-functionjson"></a>Automatycznie wygenerowany function.json
+## <a name="autogenerated-functionjson"></a>Wygenerowany automatycznie function.json
 
-Proces kompilacji tworzy *function.json* pliku w folderze funkcji w folderze kompilacji. Jak wspomniano wcześniej, ten plik nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączenie tej funkcji, edytując ten plik. 
+Proces kompilacji tworzy *function.json* pliku w folderze funkcji w folderze kompilacji. Jak wspomniano wcześniej, ten plik nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. 
 
-Ten plik ma na celu zawierają informacje, które kontroler skalowania dla [skalowanie decyzji w planie zużycie](functions-scale.md#how-the-consumption-plan-works). Z tego powodu plik zawiera tylko informacje wyzwalacza, nie wejściowych lub wyjściowych powiązania.
+Ten plik ma na celu Podaj informacje, aby kontroler skalowania dla [skalowanie decyzje w planie zużycie](functions-scale.md#how-the-consumption-plan-works). Z tego powodu plik ma tylko informacje o wyzwalacz, nie wejścia lub wyjścia powiązania.
 
-Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, która powoduje środowiska uruchomieniowego .NET atrybutów na potrzeby wiązania, a nie *function.json* konfiguracji. Oto przykład:
+Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, która informuje środowisko uruchomieniowe używane są atrybuty .NET dla powiązania, zamiast *function.json* konfiguracji. Oto przykład:
 
 ```json
 {
@@ -144,9 +144,9 @@ Wygenerowany *function.json* plik zawiera `configurationSource` właściwość, 
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-*Function.json* generowania plików jest wykonywane przez pakiet NuGet [Microsoft\.NET\.Sdk\.funkcji](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*Function.json* Generowanie pliku jest wykonywane przez pakiet NuGet [Microsoft\.NET\.Sdk\.funkcji](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Tego samego pakietu jest używany w obu wersji 1.x i 2.x funkcji aparatu plików wykonywalnych. Platforma docelowa jest, co odróżnia 1.x projektu z projektu 2.x. Poniżej przedstawiono odpowiednich części *.csproj* docelowych pliki pokazywanie różnych platform i tym samym `Sdk` pakietu:
+Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniowe usługi Functions. Platforma docelowa to, co odróżnia 1.x projektu z projektu 2.x. Oto odpowiednie części *.csproj* pliki, przedstawiający różne docelowych struktur i tym samym `Sdk` pakietu:
 
 **Funkcje 1.x**
 
@@ -171,17 +171,17 @@ Tego samego pakietu jest używany w obu wersji 1.x i 2.x funkcji aparatu plików
 </ItemGroup>
 ```
 
-Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x odwołuje się do 1.x wyzwalaczy i powiązań, ponieważ te dla środowiska .NET Framework, podczas gdy 2.x wyzwalaczy i powiązań docelowego .NET Core.
+Wśród `Sdk` zależności pakietów są wyzwalaczy i powiązań. Projekt 1.x odnosi się do 1.x wyzwalaczy i powiązań, ponieważ te dla środowiska .NET Framework, podczas gdy 2.x wyzwalaczy i powiązań docelowej platformy .NET Core.
 
-`Sdk` Pakietu zależy również od [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), a pośrednio na [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). Te zależności, upewnij się, że projekt używa wersji tych pakietów, które korzystać z funkcji wersji środowiska uruchomieniowego który elementy docelowe projektu. Na przykład `Newtonsoft.Json` ma w wersji 11 dla programu .NET Framework 4.6.1, ale środowisko uruchomieniowe Functions, przeznaczonego dla platformy .NET Framework 4.6.1 jest zgodna tylko z `Newtonsoft.Json` 9.0.1. Dzięki funkcji kodu w tym projekcie ma również użyć `Newtonsoft.Json` 9.0.1.
+`Sdk` Pakietu zależy również od [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), a następnie pośrednio na [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). Te zależności, upewnij się, że projekt korzysta z wersji tych pakietów, które działają z wersją środowiska uruchomieniowego funkcji, cele projektu. Na przykład `Newtonsoft.Json` ma wersji 11 dla programu .NET Framework 4.6.1, ale środowisko uruchomieniowe funkcji, który jest przeznaczony dla platformy .NET Framework 4.6.1 jest zgodna tylko z `Newtonsoft.Json` 9.0.1. Dlatego ma również kod funkcji w tym projekcie do użycia `Newtonsoft.Json` 9.0.1.
 
 Kod źródłowy `Microsoft.NET.Sdk.Functions` jest dostępny w repozytorium GitHub [azure\-funkcje\-vs\-kompilacji\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
 ## <a name="runtime-version"></a>Wersja środowiska uruchomieniowego
 
-Visual Studio będzie korzystać [Azure funkcje podstawowe narzędzia](functions-run-local.md#install-the-azure-functions-core-tools) do uruchomienia projektów funkcji. Podstawowe narzędzia jest interfejs wiersza polecenia do obsługi funkcji.
+Program Visual Studio używa [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#install-the-azure-functions-core-tools) do uruchamiania projektów związanych z funkcji. Podstawowe narzędzia jest interfejs wiersza polecenia, aby uzyskać środowisko uruchomieniowe usługi Functions.
 
-W przypadku instalowania narzędzi Core za pomocą programu npm, który nie ma wpływu na wersji podstawowe narzędzia używane przez program Visual Studio. Funkcje wersji środowiska uruchomieniowego 1.x, Visual Studio przechowuje podstawowe narzędzia wersji w *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* i używa najnowszej wersji przechowywane. Dla funkcji 2.x, podstawowe narzędzia znajdują się w **narzędzia zadania sieci Web i usługi Azure Functions** rozszerzenia. 1.x i 2.x możesz zobaczyć, jakie jest używana wersja w danych wyjściowych konsoli po uruchomieniu projektu funkcje:
+Po zainstalowaniu narzędzia Core za pomocą Menedżera npm, który nie ma wpływu na wersji podstawowe narzędzia używane przez program Visual Studio. Funkcje wersji środowiska uruchomieniowego 1.x, Visual Studio przechowuje wersje podstawowych narzędzi w *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* i używa najnowszej wersji, które są przechowywane. Dla funkcji 2.x, podstawowe narzędzia są wyświetlane w **usługi Azure Functions i narzędzia Web Job** rozszerzenia. Dla wersji 1.x i 2.x możesz zobaczyć, jakie jest używana wersja w danych wyjściowych konsoli po uruchomieniu projektu usługi Functions:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -189,19 +189,19 @@ W przypadku instalowania narzędzi Core za pomocą programu npm, który nie ma w
 
 ## <a name="supported-types-for-bindings"></a>Obsługiwane typy dla powiązania
 
-Każdego powiązania ma własną obsługiwanych typów; na przykład atrybut wyzwalacza obiektu blob można stosować na parametr typu string, a parametr POCO `CloudBlockBlob` parametr lub dowolną inne obsługiwane typy. [Artykule powiązanie dla obiekt blob powiązania](functions-bindings-storage-blob.md#trigger---usage) Wyświetla wszystkie obsługiwane typy parametrów. Aby uzyskać więcej informacji, zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md) i [docs odwołania wiązania dla każdego typu powiązania](functions-triggers-bindings.md#next-steps).
+Każde powiązanie ma swój własny obsługiwanych typów; na przykład można zastosować atrybutu wyzwalacza obiektu blob do jako parametr ciągu parametrem POCO `CloudBlockBlob` parametr lub dowolnego z kilku innych typów obsługiwanych. [Artykule informacyjnym na temat wiązania dla powiązania obiektu blob](functions-bindings-storage-blob.md#trigger---usage) Wyświetla wszystkie obsługiwane typy parametrów. Aby uzyskać więcej informacji, zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md) i [powiązania dokumenty referencyjne dotyczące każdego typu powiązania](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="binding-to-method-return-value"></a>Powiązanie z wartości zwracanej — metoda
+## <a name="binding-to-method-return-value"></a>Powiązanie z wartość zwracaną metody
 
-Wartość zwracaną metody można użyć dla powiązania danych wyjściowych przez zastosowanie atrybutu na wartość zwracaną metody. Aby uzyskać przykłady, zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md#using-the-function-return-value).
+Wartość zwracaną metody można użyć dla powiązania danych wyjściowych, stosując atrybut na wartość zwracaną metody. Aby uzyskać przykłady, zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md#using-the-function-return-value).
 
-## <a name="writing-multiple-output-values"></a>Trwa zapisywanie wielu wartości danych wyjściowych
+## <a name="writing-multiple-output-values"></a>Zapisywanie wielu wartości w danych wyjściowych
 
-Aby napisać wiele wartości do powiązania danych wyjściowych, użyj [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typów. Te typy są kolekcji tylko do zapisu, które są zapisywane w powiązaniu danych wyjściowych, po zakończeniu metody.
+Aby zapisać wiele wartości, do powiązania danych wyjściowych, należy użyć [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typów. Te typy są kolekcji tylko do zapisu, które są zapisywane do powiązania danych wyjściowych, po zakończeniu działania metody.
 
-W tym przykładzie zapisuje wiele wiadomości w kolejce do tej samej kolejki przy użyciu `ICollector`:
+Ten przykład Przepisuje wielu komunikatów w kolejce do tej samej kolejki przy użyciu `ICollector`:
 
 ```csharp
 public static class ICollectorExample
@@ -221,9 +221,9 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Rejestrowanie
 
-Aby rejestrować dane wyjściowe do dzienników przesyłania strumieniowego w języku C#, obejmują argumentu typu `TraceWriter`. Zaleca się jej nazwa `log`. Unikaj używania `Console.Write` w funkcji platformy Azure. 
+Aby rejestrować dane wyjściowe do dzienników przesyłania strumieniowego w języku C#, należy dołączyć argument typu `TraceWriter`. Firma Microsoft zaleca, nadaj mu `log`. Unikaj używania `Console.Write` w usłudze Azure Functions. 
 
-`TraceWriter` jest zdefiniowany w [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Poziom dziennika `TraceWriter` można skonfigurować w [host.json](functions-host-json.md).
+`TraceWriter` jest zdefiniowany w [zestawu Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Poziom rejestrowania dla `TraceWriter` można skonfigurować w [host.json](functions-host-json.md).
 
 ```csharp
 public static class SimpleExample
@@ -239,11 +239,11 @@ public static class SimpleExample
 ```
 
 > [!NOTE]
-> Informacji o nowszej struktury rejestrowania, który można użyć zamiast `TraceWriter`, zobacz [zapisu dzienniki w języku C# funkcje](functions-monitoring.md#write-logs-in-c-functions) w **Monitor usługi Azure Functions** artykułu.
+> Aby o nowszych struktury rejestrowania, który można użyć zamiast `TraceWriter`, zobacz [zapisu rejestruje się w funkcji języka C#](functions-monitoring.md#write-logs-in-c-functions) w **monitora usługi Azure Functions** artykułu.
 
-## <a name="async"></a>Asynchroniczne
+## <a name="async"></a>asynchroniczne
 
-Aby funkcja [asynchroniczne](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), użyj `async` — słowo kluczowe i przywracać `Task` obiektu.
+Aby funkcja [asynchronicznego](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), użyj `async` — słowo kluczowe i zwrócenie `Task` obiektu.
 
 ```csharp
 public static class AsyncExample
@@ -263,9 +263,9 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>Anulowanie tokenów
 
-Funkcja może akceptować [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) parametr, który umożliwia systemowi operacyjnemu Powiadamiaj kodu, gdy funkcja ma zostać zakończone. Skorzystaj z tego powiadomienia, aby upewnić się, że funkcja nie nieoczekiwane zakończenie w sposób powodujący, że dane w niespójnym stanie.
+Funkcja może akceptować [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) parametr, który umożliwia systemowi operacyjnemu Powiadamiaj swój kod, gdy funkcja ma zostać zakończone. Skorzystaj z tego powiadomienia, aby upewnić się, że funkcja nie nieoczekiwanego zakończenia działania w sposób powodujący, że dane w stanie niespójnym.
 
-Poniższy przykład pokazuje, jak do sprawdzenia zbliżającym się zakończeniu funkcji.
+Jak sprawdzić, czy zbliżającym się zakończeniu funkcji można znaleźć w poniższym przykładzie.
 
 ```csharp
 public static class CancellationTokenExample
@@ -291,7 +291,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-Aby uzyskać wartość zmiennej środowiskowej lub wartość ustawienia aplikacji, należy użyć `System.Environment.GetEnvironmentVariable`, jak pokazano w poniższym przykładzie:
+Aby uzyskać zmiennej środowiskowej lub wartość ustawienia aplikacji, użyj `System.Environment.GetEnvironmentVariable`, jak pokazano w poniższym przykładzie kodu:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -312,19 +312,19 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-Ustawienia aplikacji mogą być odczytywane z zmiennych środowiskowych, zarówno podczas opracowywania lokalnie, jak i podczas uruchamiania na platformie Azure. Podczas tworzenia lokalnie, ustawienia aplikacji pochodzą z `Values` kolekcji w *local.settings.json* pliku. W obu środowiskach lokalnych i platformy Azure, `GetEnvironmentVariable("<app setting name>")` pobiera wartość ustawienia aplikacji o nazwie. Na przykład, gdy uruchomiono lokalnie, "Moje nazwa witryny" będzie zwracany Jeśli Twoje *local.settings.json* plik zawiera `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
+Ustawienia aplikacji mogą być odczytywane ze zmiennych środowiskowych, zarówno podczas tworzenia lokalnie, jak i podczas uruchamiania na platformie Azure. Podczas tworzenia lokalnie, ustawienia aplikacji pochodzą `Values` kolekcji w *local.settings.json* pliku. W obu środowiskach lokalnych i platformy Azure, `GetEnvironmentVariable("<app setting name>")` pobiera wartość ustawienia aplikacji o nazwie. Na przykład, gdy uruchomiono lokalnie, "Moja nazwa witryny" zostaną zwrócone, jeśli Twoja *local.settings.json* plik zawiera `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) właściwości to interfejs API alternatywnych do pobierania wartości ustawienia aplikacji, ale zaleca się, że używasz `GetEnvironmentVariable` w sposób pokazany poniżej.
+[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) właściwość jest alternatywnych interfejsu API w celu uzyskania wartości ustawień aplikacji, ale zaleca się, że używasz `GetEnvironmentVariable` jak pokazano poniżej.
 
-## <a name="binding-at-runtime"></a>Powiązanie w czasie wykonywania
+## <a name="binding-at-runtime"></a>Powiązania w czasie wykonywania
 
-W języku C# i innych języków .NET, można użyć [imperatywnych](https://en.wikipedia.org/wiki/Imperative_programming) powiązanie wzorzec, w przeciwieństwie do [ *deklaratywne* ](https://en.wikipedia.org/wiki/Declarative_programming) powiązania w atrybutach. Powiązanie konieczne jest przydatne, gdy Parametry wiążące muszą ma zostać obliczony w czasie środowiska uruchomieniowego zamiast projektu. Z tego wzorca można powiązać z obsługiwanych danych wejściowych i wyjściowych powiązania na bieżąco w kodzie funkcji.
+W języku C# i innych językach .NET, można użyć [imperatywne](https://en.wikipedia.org/wiki/Imperative_programming) powiązanie wzorca, w przeciwieństwie do [ *deklaratywne* ](https://en.wikipedia.org/wiki/Declarative_programming) powiązania w atrybutach. Imperatywne powiązania jest przydatne, gdy Parametry wiążące muszą być obliczane w czasie wykonywania, a nie projekt. W ramach tego wzorca można powiązać obsługiwanych danych wejściowych i danych wyjściowych powiązania na bieżąco w kodzie funkcji.
 
-Zdefiniuj staje się niezbędna powiązania w następujący sposób:
+Zdefiniuj imperatywne powiązania w następujący sposób:
 
-- **Nie** dołączyć atrybut podpisu funkcji dla żądanego imperatywnych powiązania.
+- **Nie** dołączyć atrybut w sygnaturze funkcji dla żądanego imperatywne wiązania.
 - Przekaż parametr wejściowy [ `Binder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) lub [ `IBinder binder` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- Aby wykonać wiązania danych, użyj następującego wzorca C#.
+- Użyj następującego wzorca C# do przeprowadzenia powiązania danych.
 
   ```cs
   using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -333,11 +333,11 @@ Zdefiniuj staje się niezbędna powiązania w następujący sposób:
   }
   ```
 
-  `BindingTypeAttribute` atrybut .NET, który definiuje Twoje powiązanie jest i `T` jest typem danych wejściowych lub wyjściowych, który jest obsługiwany przez ten typ powiązania. `T` nie może być `out` typ parametru (takie jak `out JObject`). Na przykład, w tabeli Mobile Apps output powiązanie obsługuje [sześć output typy](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można używać tylko [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)z powiązaniem nadrzędnych.
+  `BindingTypeAttribute` jest atrybut .NET, który definiuje Twoje powiązanie i `T` jest typem danych wejściowych lub wyjściowych, który jest obsługiwany przez ten typ powiązania. `T` nie może być `out` typ parametru (takie jak `out JObject`). Na przykład obsługuje powiązanie danych wyjściowych na tabeli funkcji Mobile Apps [sześć typów w danych wyjściowych](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale można używać tylko [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) lub [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)z powiązaniem imperatywnego.
 
-### <a name="single-attribute-example"></a>Przykład pojedynczy atrybut
+### <a name="single-attribute-example"></a>Przykład jeden atrybut
 
-Poniższy przykładowy kod tworzy [powiązania wyjściowego obiektu blob magazynu](functions-bindings-storage-blob.md#output) z obiektu blob ścieżki, która jest zdefiniowana w czasie wykonywania, następnie zapisuje ciąg obiektu blob.
+Poniższy przykład kodu tworzy [powiązania danych wyjściowych obiektu blob magazynu](functions-bindings-storage-blob.md#output) przy użyciu obiektu blob ścieżki, która jest zdefiniowana w czasie wykonywania, następnie zapisuje dane w ciągu obiektu blob.
 
 ```cs
 public static class IBinderExample
@@ -358,11 +358,11 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiuje [obiektu blob magazynu](functions-bindings-storage-blob.md) wejściowych lub wyjściowych powiązanie, i [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) jest typ powiązania obsługiwanych danych wyjściowych.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiuje [obiektu blob magazynu](functions-bindings-storage-blob.md) wejścia lub wyjścia, powiązania i [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) jest typ powiązania obsługiwanych danych wyjściowych.
 
 ### <a name="multiple-attribute-example"></a>Wiele przykład atrybutu
 
-Powyższy przykład pobiera ustawienia aplikacji dla aplikacji funkcja parametrów połączenia w głównym konta magazynu (czyli `AzureWebJobsStorage`). Można określić ustawienie niestandardowych aplikacji, aby użyć konta magazynu przez dodanie [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazanie tablicy atrybut do `BindAsync<T>()`. Użyj `Binder` parametru nie `IBinder`.  Na przykład:
+Poprzedni przykład pobiera ustawienia aplikacji dla aplikacji funkcji parametry połączenia dla głównego konta magazynu (czyli `AzureWebJobsStorage`). Można określić ustawienia aplikacji niestandardowej do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru nie `IBinder`.  Na przykład:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -394,7 +394,7 @@ public static class IBinderExampleMultipleAttributes
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczy i powiązań](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat wyzwalaczy i powiązań](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Więcej informacji na temat najlepszych rozwiązań dla usługi Azure Functions](functions-best-practices.md)

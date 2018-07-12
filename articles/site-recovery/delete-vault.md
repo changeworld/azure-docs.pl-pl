@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 0ee162e368350ebf140b172ae528e3b76504141c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c4a88d8a3d63555a57bd5553b721cfbcd77df2c
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918224"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38971192"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Usuwanie magazynu usługi Site Recovery
 
@@ -74,4 +74,4 @@ Aby usunąć magazyn usługi Site Recovery, nawet jeśli są chronione elementy,
 
     Remove-AzureRmRecoveryServicesVault -Vault $vault
 
-Dowiedz się więcej o [Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault?view=azurermps-6.0.0), i [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault?view=azurermps-6.0.0).
+Dowiedz się więcej o [Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault?view=azurermps-6.0.0), i [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault?view=azurermps-6.0.0).

@@ -1,6 +1,6 @@
 ---
-title: Filtrowanie ruchu sieciowego - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule Dowiedz się jak filtrować ruch sieciowy do podsieci, z sieciową grupą zabezpieczeń, za pomocą wiersza polecenia platformy Azure.
+title: Filtrowanie ruchu sieciowego — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule dowiesz się, jak filtrować ruch sieciowy do podsieci z sieciową grupą zabezpieczeń, za pomocą wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -18,35 +18,35 @@ ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423181"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38721071"
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrowanie ruchu sieciowego za pomocą grupy zabezpieczeń sieci przy użyciu wiersza polecenia platformy Azure
+# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń przy użyciu wiersza polecenia platformy Azure
 
-Można filtrować ruchu sieciowego przychodzącego i wychodzącego z podsieci sieci wirtualnej z sieciową grupą zabezpieczeń. Grupy zabezpieczeń sieci zawiera zasady zabezpieczeń, które filtrowania ruchu sieciowego według adresu IP, portu i protokołu. Reguły zabezpieczeń są stosowane do zasobów wdrożone w podsieci. W tym artykule omówiono sposób wykonywania następujących zadań:
+Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. W tym artykule omówiono sposób wykonywania następujących zadań:
 
-* Tworzenie zasad grupy i zabezpieczeń zabezpieczenia sieci
-* Tworzenie sieci wirtualnej i skojarzenia sieciowej grupy zabezpieczeń do podsieci
-* Wdrażanie maszyn wirtualnych (VM) do podsieci
-* Filtry ruchu testu
+* Tworzenie sieciowej grupy zabezpieczeń i reguł zabezpieczeń
+* Tworzenie sieci wirtualnej i kojarzenie sieciowej grupy zabezpieczeń z podsiecią
+* Wdrażanie maszyn wirtualnych w podsieci
+* Testowanie filtrów ruchu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym artykule, wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Grupa zabezpieczeń sieci zawiera zasady zabezpieczeń. Reguły zabezpieczeń Określ źródłowym i docelowym. Grupy zabezpieczeń aplikacji mogą być źródeł i miejsc docelowych.
+Sieciowa grupa zabezpieczeń zawiera reguły zabezpieczeń. Reguły zabezpieczeń określają źródło i lokalizację docelową. Źródła i lokalizacje docelowe mogą być grupami zabezpieczeń aplikacji.
 
-### <a name="create-application-security-groups"></a>Utwórz grupy zabezpieczeń aplikacji
+### <a name="create-application-security-groups"></a>Tworzenie grup zabezpieczeń aplikacji
 
-Najpierw utwórz grupę zasobów dla wszystkich zasobów, które są tworzone w tym artykule i [Tworzenie grupy az](/cli/azure/group#az_group_create). Poniższy przykład tworzy grupy zasobów w *eastus* lokalizacji: 
+Najpierw utwórz grupę zasobów dla wszystkich zasobów utworzonych w tym artykule [Tworzenie grupy az](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów w lokalizacji *eastus*: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Tworzenie grupy zabezpieczeń aplikacji z [tworzenie asg sieci az](/cli/azure/network/asg#az_network_asg_create). Grupa zabezpieczeń aplikacji umożliwia utworzenie grupy serwerów z portem podobne wymagania filtrowania. Poniższy przykład tworzy dwie grupy zabezpieczeń aplikacji.
+Tworzenie grupy zabezpieczeń aplikacji przy użyciu [tworzenie az sieci w grupie asg](/cli/azure/network/asg#az_network_asg_create). Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych wymaganiach w zakresie filtrowania portów. Poniższy przykład tworzy dwie grupy zabezpieczeń aplikacji.
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Utwórz grupę zabezpieczeń sieci z [utworzyć nsg sieci az](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsg*: 
+Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsg*: 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -79,9 +79,9 @@ az network nsg create \
   --name myNsg
 ```
 
-### <a name="create-security-rules"></a>Tworzenie reguły zabezpieczeń
+### <a name="create-security-rules"></a>Tworzenie reguł zabezpieczeń
 
-Utwórz regułę zabezpieczeń z [Tworzenie reguły nsg sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu, aby *myWebServers* grupy zabezpieczeń aplikacji przez porty 80 i 443:
+Utwórz regułę zabezpieczeń przy użyciu [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu do grupy zabezpieczeń aplikacji *myWebServers* przez porty 80 i 443:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -98,7 +98,7 @@ az network nsg rule create \
   --destination-port-range 80 443
 ```
 
-Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu, aby *myMgmtServers* grupy zabezpieczeń aplikacji za pośrednictwem portu 22:
+Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu do *myMgmtServers* grupy zabezpieczeń aplikacji za pośrednictwem portu 22:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -115,11 +115,11 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-W tym artykule SSH (port 22) jest uwidoczniony w Internecie dla *myAsgMgmtServers* maszyny Wirtualnej. W środowiskach produkcyjnych, zamiast udostępnianie port 22 z Internetem, zaleca się nawiązać zasobów platformy Azure, które mają być zarządzane przy użyciu [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [prywatnej](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) połączenie sieciowe.
+W tym artykule SSH (port 22) jest uwidaczniany w Internecie *myAsgMgmtServers* maszyny Wirtualnej. W środowiskach produkcyjnych zamiast uwidaczniania portu 22 z Internetem, zalecane jest, że łączysz się z zasobami platformy Azure, które mają być zarządzane przy użyciu [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [prywatnej](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) połączenia sieciowego.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy wirtualny o nazwie *myVirtualNetwork*:
+Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Dodaj podsieć do sieci wirtualnej z [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). W poniższym przykładzie dodano podsieć o nazwie *mySubnet* sieć wirtualną i skojarzy *myNsg* sieciowej grupy zabezpieczeń do niej:
+Dodaj podsieć do sieci wirtualnej z [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Poniższy przykład dodaje podsieć o nazwie *mySubnet* do sieci wirtualnej i kojarzy z nią sieciową grupę zabezpieczeń *myNsg*:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -141,11 +141,11 @@ az network vnet subnet create \
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-Utwórz dwie maszyny wirtualne w sieci wirtualnej, aby móc weryfikować ruchu filtrowanie w kolejnym kroku. 
+Utwórz dwie maszyny wirtualne w sieci wirtualnej, aby umożliwić weryfikację filtrowania ruchu w kolejnym kroku. 
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy maszynę Wirtualną, która będzie służyć jako serwer sieci web. `--asgs myAsgWebServers` Opcja powoduje, że Azure interfejsu sieciowego, tworzy dla maszyny Wirtualnej jest członkiem *myAsgWebServers* grupy zabezpieczeń aplikacji.
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy maszynę wirtualną, która będzie służyć jako serwer internetowy. `--asgs myAsgWebServers` Opcja powoduje, że Azure, aby interfejs sieciowy, tworzy dla maszyny Wirtualnej jest członkiem *myAsgWebServers* grupy zabezpieczeń aplikacji.
 
-`--nsg ""` Określono opcję, aby uniemożliwić tworzenie domyślnej grupy zabezpieczeń sieci dla interfejsu sieciowego, system Azure utworzy podczas tworzenia maszyny Wirtualnej Azure. Aby usprawnić w tym artykule, użyto hasła. Klucze są zazwyczaj używane w przypadku wdrożeń produkcyjnych. Użycie kluczy, należy również skonfigurować agenta przekazywania SSH dla pozostałych kroków. Aby uzyskać więcej informacji zobacz dokumentację klienta SSH. Zastąp `<replace-with-your-password>` w poniższym poleceniu hasłem wybrane.
+`--nsg ""` Określono opcję, aby uniemożliwić tworzenie domyślną sieciową grupę zabezpieczeń dla interfejsu sieciowego, platforma Azure utworzy podczas tworzenia maszyny Wirtualnej platformy Azure. Aby uprościć ten artykuł, używane jest hasło. Klucze są zazwyczaj używane we wdrożeniach produkcyjnych. Jeśli używasz kluczy, należy również skonfigurować agenta przekazywania SSH dla pozostałych kroków. Aby uzyskać więcej informacji zobacz dokumentację używanego klienta SSH. Zastąp `<replace-with-your-password>` w następującym poleceniu za pomocą wybrane hasło.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -162,7 +162,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Maszyna wirtualna ma kilka minut na utworzenie. Po utworzeniu maszyny Wirtualnej, jest zwracany dane wyjściowe podobne do poniższego przykładu: 
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Po utworzeniu maszyny Wirtualnej, zwracana jest dane wyjściowe podobne do poniższego przykładu: 
 
 ```azurecli 
 {
@@ -177,7 +177,7 @@ Maszyna wirtualna ma kilka minut na utworzenie. Po utworzeniu maszyny Wirtualnej
 }
 ```
 
-Zwróć uwagę na **publicznego adresu IP**. Ten adres jest używany na dostęp do maszyny Wirtualnej z Internetu w kolejnym kroku.  Utwórz maszynę Wirtualną jako serwera zarządzania:
+Zanotuj wartość adresu **publicIpAddress**. Ten adres umożliwia dostęp do maszyny Wirtualnej z Internetu w późniejszym kroku.  Utwórz maszynę wirtualną, która będzie służyć jako serwer zarządzania:
 
 ```azurecli-interactive
 az vm create \
@@ -192,29 +192,29 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Maszyna wirtualna ma kilka minut na utworzenie. Po utworzeniu maszyny Wirtualnej, należy zwrócić uwagę **publicznego adresu IP** zwróconych danych wyjściowych. Ten adres jest używany do maszyny Wirtualnej w następnym kroku. Nie Kontynuuj do następnego kroku, dopóki platforma Azure zakończy tworzenie maszyny Wirtualnej.
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Po utworzeniu maszyny Wirtualnej Zanotuj **publicznego adresu IP** zwróconych danych wyjściowych. Ten adres umożliwia dostęp do maszyny Wirtualnej w następnym kroku. Nie przechodź do następnego kroku, dopóki platforma Azure nie ukończy tworzenia maszyny wirtualnej.
 
-## <a name="test-traffic-filters"></a>Filtry ruchu testu
+## <a name="test-traffic-filters"></a>Testowanie filtrów ruchu
 
-Użyj polecenia stosowanej do utworzenia sesji SSH z *myVmMgmt* maszyny Wirtualnej. Zastąp *<publicIpAddress>* z publicznym adresem IP w sieci maszyny wirtualnej. W powyższym przykładzie adres IP jest *13.90.242.231*.
+Użyj polecenia poniżej, aby utworzyć sesję SSH z *myVmMgmt* maszyny Wirtualnej. Zastąp *<publicIpAddress>* z publicznym adresem IP swojej maszyny wirtualnej. W powyższym przykładzie adres IP jest *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
 ```
 
-Po wyświetleniu monitu o podanie hasła, wprowadź hasło w [Tworzenie maszyn wirtualnych](#create-virtual-machines).
+Po wyświetleniu monitu o hasło, wprowadź hasło wprowadzone w [tworzyć maszyny wirtualne](#create-virtual-machines).
 
-Połączenie powiedzie się, ponieważ port 22 jest dozwolone przychodzące z Internetu, aby *myAsgMgmtServers* aplikacji grupy zabezpieczeń, który interfejs sieciowy jest dołączony do *myVmMgmt* maszyna wirtualna jest w.
+Połączenie powiedzie się, ponieważ port 22 zezwala na ruch przychodzący z Internetu do *myAsgMgmtServers* grupy zabezpieczeń aplikacji, które interfejs sieciowy dołączony do *myVmMgmt* maszyna wirtualna jest w.
 
-Użyj następującego polecenia do SSH *myVmWeb* maszyny Wirtualnej z *myVmMgmt* maszyny Wirtualnej:
+Użyj następującego polecenia SSH *myVmWeb* maszynę Wirtualną z *myVmMgmt* maszyny Wirtualnej:
 
 ```bash 
 ssh azureuser@myVmWeb
 ```
 
-Połączenie powiedzie się, ponieważ domyślną regułę zabezpieczeń w każdej grupie zabezpieczeń sieci zezwala na ruch przez wszystkie porty między wszystkich adresów IP w sieci wirtualnej. Nie można wykonać SSH *myVmWeb* maszyny Wirtualnej z Internetu ponieważ reguły zabezpieczeń dla *myAsgWebServers* nie zezwala na port 22 przychodzące z Internetu.
+Połączenie powiedzie się, ponieważ domyślne reguły zabezpieczeń w każdej sieciowej grupie zabezpieczeń zezwalają na ruch na wszystkich portach pomiędzy wszystkimi adresami IP w sieci wirtualnej. Nie SSH *myVmWeb* maszynę Wirtualną z Internetu, ponieważ reguły zabezpieczeń *myAsgWebServers* nie zezwalaj na port 22 dla ruchu przychodzącego z Internetu.
 
-Użyj następujących poleceń do zainstalowania na serwerze sieci web nginx *myVmWeb* maszyny Wirtualnej:
+Użyj następujących poleceń, aby zainstalować serwer internetowy nginx na *myVmWeb* maszyny Wirtualnej:
 
 ```bash 
 # Update package source
@@ -224,17 +224,17 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-*MyVmWeb* maszyna wirtualna może wychodzące z Internetem, aby pobrać nginx, ponieważ domyślną regułę zabezpieczeń zezwala na ruch wychodzący do Internetu. Zakończ *myVmWeb* sesji SSH, co spowoduje pozostawienie w `username@myVmMgmt:~$` Monituj o *myVmMgmt* maszyny Wirtualnej. Można pobrać ekran powitalny nginx z *myVmWeb* maszyny Wirtualnej, wprowadź następujące polecenie:
+*MyVmWeb* maszyny Wirtualnej jest dozwolony ruch wychodzący do Internetu, można pobrać serwera nginx, ponieważ domyślna reguła zabezpieczeń zezwala na ruch wychodzący do Internetu. Zakończ *myVmWeb* sesji SSH, co spowoduje pozostawienie w `username@myVmMgmt:~$` monitu o *myVmMgmt* maszyny Wirtualnej. Można pobrać ekran powitalny nginx z *myVmWeb* maszynę Wirtualną, wprowadź następujące polecenie:
 
 ```bash
 curl myVmWeb
 ```
 
-Wyloguj się z *myVmMgmt* maszyny Wirtualnej. Aby upewnić się, że masz dostęp *myVmWeb* sieci web serwera z poza platformą Azure, wprowadź `curl <publicIpAddress>` ze swojego komputera. Połączenie powiedzie się, ponieważ port 80 jest dozwolone przychodzące z Internetu, aby *myAsgWebServers* aplikacji grupy zabezpieczeń, który interfejs sieciowy jest dołączony do *myVmWeb* maszyna wirtualna jest w.
+Wyloguj się z *myVmMgmt* maszyny Wirtualnej. Aby upewnić się, że masz dostęp *myVmWeb* sieci web serwera z spoza platformy Azure, wprowadź `curl <publicIpAddress>` ze swojego komputera. Połączenie powiedzie się, ponieważ port 80 zezwala na ruch przychodzący z Internetu do *myAsgWebServers* grupy zabezpieczeń aplikacji, które interfejs sieciowy dołączony do *myVmWeb* maszyna wirtualna jest w.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, użyj [usunięcie grupy az](/cli/azure/group#az_group_delete) można usunąć grupy zasobów i wszystkie zasoby zawiera.
+Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -242,6 +242,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzyć grupę zabezpieczeń sieci i jego skojarzone z podsiecią sieci wirtualnej. Aby dowiedzieć się więcej na temat grup zabezpieczeń sieci, zobacz [omówienie grupy zabezpieczeń sieci](security-overview.md) i [Zarządzanie sieciowej grupy zabezpieczeń](manage-network-security-group.md).
+W tym artykule utworzono sieciową grupę zabezpieczeń i skojarzono ją z podsiecią sieci wirtualnej. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [Network security groups overview (Omówienie sieciowych grup zabezpieczeń)](security-overview.md) oraz [Manage a network security group (Zarządzanie sieciową grupą zabezpieczeń)](manage-network-security-group.md).
 
-Azure tras ruchu między podsieciami domyślnie. Zamiast tego można kierować ruchem między podsieciami przez maszynę Wirtualną, uznawany za zaporą, np. Aby dowiedzieć się więcej, zobacz temat [utworzyć tabelę tras](tutorial-create-route-table-cli.md).
+Platforma Azure domyślnie kieruje ruch pomiędzy podsieciami. Zamiast tego możesz przykładowo skierować ruch pomiędzy podsieciami przez maszynę wirtualną, która będzie służyć jako zapora. Aby dowiedzieć się więcej, zobacz temat [Utwórz tabelę tras](tutorial-create-route-table-cli.md).

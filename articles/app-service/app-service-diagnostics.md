@@ -1,7 +1,7 @@
 ---
-title: Omówienie diagnostyki usługi Azure App Service | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak sposoby rozwiązywania problemów z aplikacją sieci web w diagnostyce aplikacji usługi.
-keywords: usługi aplikacji, usługi azure app service, diagnostyki, obsługi, aplikacji sieci web, rozwiązywania problemów, samodzielnej pomocy
+title: Omówienie diagnostyki w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak sposoby rozwiązywania problemów z aplikacją sieci web za pomocą diagnostyki usługi App Service.
+keywords: Usługa App service, usłudze azure app service, Diagnostyka, pomocy technicznej, aplikacji sieci web, rozwiązywania problemów, samodzielne uzyskiwanie pomocy
 services: app-service
 documentationcenter: ''
 author: jen7714
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33761891"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969242"
 ---
-# <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki usługi aplikacji Azure 
+# <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki w usłudze Azure App Service 
 
-Jeśli korzystasz z aplikacji sieci web, ma należy przygotować wszystkie problemy, które mogą powstać z 500 błędów informujący użytkowników z lokacji jest wyłączony. Diagnostyka usługi aplikacji to inteligentnego i interaktywne środowisko ułatwiające rozwiązywanie problemów aplikacji sieci web za pomocą wymagana żadna konfiguracja. Jeśli wystąpiły problemy z aplikacją sieci web, Diagnostyka aplikacji usługi wskaże co to jest niewłaściwy prowadzące do właściwe informacje, aby łatwo i szybko rozwiązać problem. 
+Po uruchomieniu aplikacji sieci web, należy się przygotować wszelkich problemów, które mogą powstać w wyniku błędów 500 informujący użytkowników, które witryna nie działa. Diagnostyki usługi App Service to środowisko im zwiększenie inteligencji i interaktywnych, aby ułatwić rozwiązywanie problemów z aplikacją sieci web bez konieczności konfiguracji. Jeśli napotkasz problemy z aplikacją sieci web, diagnostyki usługi App Service będzie wspomnieć, na czym polega problem poświęcany na właściwe informacje, aby łatwiej i szybciej rozwiązać problem. 
  
-Mimo że to środowisko jest najbardziej przydatne, gdy występują problemy z aplikacją sieci web w ciągu ostatnich 24 godzin, diagnostycznych wykresy będzie dostępny do analizowania przez cały czas. Dodatkowe narzędzia do rozwiązywania problemów oraz linki do dokumentacji przydatne i fora znajdują się w kolumnie po prawej stronie.
+Mimo że to środowisko jest najbardziej przydatne, gdy występują problemy z aplikacją sieci web w ciągu ostatnich 24 godzin, diagnostycznych wykresy będzie dostępne do analizowania przez cały czas. Dodatkowe narzędzia do rozwiązywania problemów oraz linki do pomocną dokumentacją i fora znajdują się w prawej kolumnie.
 
-Działa Diagnostyka usługi aplikacji — nie tylko Twojej aplikacji w systemie Windows, ale również aplikacji na [Linux/kontenery](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro), [środowiska usługi aplikacji](https://docs.microsoft.com/en-us/azure/app-service/environment/intro), i [usługi Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview). 
+Diagnostyki usługi App Service działa w przypadku nie tylko Twojej aplikacji na Windows, ale również aplikacji na [kontenerów systemu Linux/](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro), [środowiska App Service Environment](https://docs.microsoft.com/azure/app-service/environment/intro), i [usługi Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview). 
 
-## <a name="open-app-service-diagnostics"></a>Otwórz diagnostykę usługi aplikacji
+## <a name="open-app-service-diagnostics"></a>Otwórz diagnostyki usługi App Service
 
-Aby uzyskać dostęp do diagnostyki aplikacji usługi, przejdź do aplikacji usługi app Service lub środowiska usługi aplikacji w [portalu Azure](https://portal.azure.com). Na lewym pasku nawigacyjnym kliknij **diagnozowanie i rozwiązywanie problemów**. 
+Aby uzyskać dostęp do diagnostyki usługi App Service, przejdź do swojej aplikacji usługi App Service lub App Service Environment w [witryny Azure portal](https://portal.azure.com). Na lewym pasku nawigacyjnym kliknij **diagnozowanie i rozwiązywanie problemów**. 
 
-Funkcje platformy Azure, przejdź do aplikacji funkcji, a w górnym menu nawigacyjnym kliknij pozycję **funkcji platformy** i wybierz **diagnozowanie i rozwiązywanie problemów** z **monitorowanie**sekcji. 
+Dla usługi Azure Functions, przejdź do aplikacji funkcji, a w górnym menu nawigacyjnym kliknij pozycję **funkcje platformy** i wybierz **diagnozowanie i rozwiązywanie problemów** z **monitorowanie**sekcji. 
 
 ![Strona główna](./media/app-service-diagnostics/Homepage1.png)
 
-## <a name="health-checkup"></a>Checkup kondycji
+## <a name="health-checkup"></a>Kontrolę kondycji
 
-Jeśli nie wiadomo, co to jest problem z aplikacji sieci web lub nie wiadomo, jak zacząć Rozwiązywanie problemów związanych z checkup kondycji jest dobrym miejscem do rozpoczęcia. Checkup kondycji będzie analizować aplikacji sieci web, które pozwalają na szybkie i interaktywne Przegląd, wskazujący co to jest w dobrej kondycji i co to jest błąd informujący, gdzie należy zbadać problem. Interfejs inteligentnego i interaktywne zawiera wskazówki dotyczące rozwiązywania problemów proces.  
+Jeśli nie wiesz, czym jest problem z aplikacją sieci web lub nie wiadomo, gdzie zacząć Rozwiązywanie problemów związanych z kontrolę kondycji jest dobrym miejscem do rozpoczęcia. Kontrolę kondycji będzie analizować aplikacji sieci web, które pozwalają na krótkiego, interaktywnego omówienia, który wskazuje, co jest w dobrej kondycji i na czym polega problem, informujący, gdzie należy zbadać problem. Jego im zwiększenie inteligencji i interaktywny interfejs zapewnia wskazówki proces rozwiązywania problemów.  
 
-![Checkup kondycji](./media/app-service-diagnostics/HealthCheckup2.png)
+![Kontrolę kondycji](./media/app-service-diagnostics/HealthCheckup2.png)
 
-Jeśli zostanie wykryty problem z kategorią problem występuje w ciągu ostatnich 24 godzin, można wyświetlić raport diagnostyczny pełnej i diagnostyka usługi aplikacji może monitować o wyświetlić porady więcej rozwiązywania problemów i kolejne kroki w celu obsługi bardziej z przewodnikiem.
+W przypadku wykrycia problemu z kategorią konkretnego problemu w ciągu ostatnich 24 godzinach, można wyświetlić raport diagnostyczny pełnej i diagnostyki usługi App Service może zostać wyświetlony komunikat do wyświetlenia porady dotyczące bardziej rozwiązywania problemów oraz kolejne kroki dotyczące bardziej przewodnikiem.
 
 ![Kroki rozwiązywania problemów i dalej](./media/app-service-diagnostics/Troubleshooting3.png)
 
 ## <a name="tile-shortcuts"></a>Skróty kafelka
 
-Jeśli znasz dokładnie jakiego rodzaju informacje, których szukasz dotyczące rozwiązywania problemów, skróty kafelka spowoduje przejście bezpośrednio do pełnej diagnostyki raport kategorię problemu, która Cię. W porównaniu do checkup kondycji skrótów fragmentu są więcej bezpośrednio, ale mniejsze z przewodnikiem sposób uzyskiwania dostępu do sieci diagnostycznych metryki. W ramach kafelka skrótów, to także gdzie znajduje się **narzędzia diagnostyczne** które są bardziej zaawansowane narzędzia, które zawierają informacje pomocne podczas badania problemów związanych z problemów kodu aplikacji, powolność, parametry połączenia i. 
+Jeśli znasz dokładnie jakiego rodzaju informacje, których szukasz dotyczące rozwiązywania problemów, skróty kafelka spowoduje przejście bezpośrednio do pełnej diagnostycznych raportu kategorię problemu, która interesuje Cię. W porównaniu do kontrolę kondycji, skróty kafelka są więcej bezpośrednio, ale mniej krok po kroku sposób uzyskiwania dostępu do swojej metryki diagnostyki. W ramach kafelka skróty, jest to również miejsce **narzędzia diagnostyczne** są bardziej zaawansowane narzędzia, które pomogą Ci zbadać problemy związane z problemów z kodem aplikacji, powolność, parametry połączenia i nie tylko. 
 
 ![Skróty kafelka](./media/app-service-diagnostics/TileShortcuts4.png)
 
 ## <a name="diagnostic-report"></a>Raport diagnostyczny
 
-Określa, czy potrzebujesz dodatkowych informacji po uruchomieniu [checkup kondycji](#health-checkup) lub kliknięcia na jednym z [Kafelek skróty](#tile-shortcuts), pełnej diagnostyki raport będzie zawierał odpowiednie wykresie metryki z ostatnich 24 godzin. Jeśli aplikacja napotyka żadnych przestojów, jest on reprezentowany przez pomarańczowy pasek poniżej osi czasu. Możesz wybrać jeden z pomarańczowy pasków wybierz przestojów zobacz Uwagi o tym czasem przestoju oraz sugerowane kroki rozwiązywania problemów. 
+Czy chcesz więcej informacji, po uruchomieniu [kontrolę kondycji](#health-checkup) lub kliknięcie jednego z [Kafelek skróty](#tile-shortcuts), raport diagnostyczny pełnej pokaże odpowiedniego wykresie metryk z ostatnich 24 godzin. Jeśli aplikacja żadnych przestojów, jest reprezentowana przez pomarańczowy pasek poniżej osi czasu. Możesz wybrać jedną z pomarańczowym paski w celu wybrania przestojów zobacz Uwagi dotyczące tego przestojów i sugerowane kroki rozwiązywania problemów. 
 
 ![Raport diagnostyczny](./media/app-service-diagnostics/DiagnosticReport5.png)
 
 
-## <a name="investigating-application-code-issues"></a>Badanie problemów kodu aplikacji
+## <a name="investigating-application-code-issues"></a>Badanie problemów z kodem aplikacji
 
-Ponieważ wiele problemów z aplikacjami dotyczą problemów w kodzie aplikacji, Diagnostyka aplikacji usługi integruje się z [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) aby wyróżnić wyjątki i problemy zależności do skorelowania wybranego przestojów. Usługa Application Insights musi być włączone oddzielnie. 
+Ponieważ wiele problemów z aplikacjami są powiązane z nim problemów w kodzie aplikacji, diagnostyki usługi App Service integruje się z [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) do wyróżnienia wyjątków i problemów z zależnością skorelować wybranego przestojów. Usługa Application Insights muszą być włączone w oddzielnie. 
 
-Aby wyświetlić wyjątków usługi Application Insights i zależności, wybierz **aplikacji sieci Web w dół** lub **powolne aplikacji sieci Web** skrótów fragmentu. 
+Zaznacz, aby wyświetlić wyjątków usługi Application Insights i zależności **niedziałającej aplikacji internetowej** lub **powolne aplikacji sieci Web** Kafelek skróty. 
 
 ![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
 

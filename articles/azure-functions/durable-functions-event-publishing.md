@@ -14,20 +14,20 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 0179a48b74ef0e37d3ac2e7fd18d43e488a89823
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 020a775c45ef3c46f9dfc5da7d4a7e470def4705
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341386"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969915"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowanie do usługi Azure Event Grid (wersja zapoznawcza)
 
-W tym artykule przedstawiono sposób konfigurowania usługi Azure Functions trwałe do publikowania zdarzeń cyklu życia aranżacji (takie jak utworzone, ukończone i zakończone niepowodzeniem) niestandardowego [tematu usługi Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+W tym artykule przedstawiono sposób konfigurowania usługi Azure Functions trwałe do publikowania zdarzeń cyklu życia aranżacji (takie jak utworzone, ukończone i zakończone niepowodzeniem) niestandardowego [tematu usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
 
 Poniżej przedstawiono kilka scenariuszy, w których ta funkcja jest przydatna:
 
-* **Scenariuszy DevOps, takich jak wdrażanie niebieskie/zielone**: warto wiedzieć, czy wszystkie zadania podrzędne są uruchomione przed wdrożeniem [strategii wdrażania side-by-side](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **Scenariuszy DevOps, takich jak wdrażanie niebieskie/zielone**: warto wiedzieć, czy wszystkie zadania podrzędne są uruchomione przed wdrożeniem [strategii wdrażania side-by-side](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
 
 * **Zaawansowana obsługa monitorowania i diagnostyki**: można śledzenie bieżącego informacje o stanie aranżacji w magazynie zewnętrznych zoptymalizowanej pod kątem zapytań, takich jak bazy danych SQL lub bazy danych cosmos DB.
 
@@ -36,19 +36,19 @@ Poniżej przedstawiono kilka scenariuszy, w których ta funkcja jest przydatna:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zainstaluj [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 1.3.0-rc lub nowszym w projekcie funkcje trwałe.
-* Zainstaluj [emulatora usługi Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator).
-* Zainstaluj [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) lub użyj [usługi Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)
+* Zainstaluj [emulatora usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-use-emulator).
+* Zainstaluj [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) lub użyj [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
 
 ## <a name="create-a-custom-event-grid-topic"></a>Tworzenie tematu niestandardowego usługi Event Grid
 
 Utwórz temat usługi Event Grid związane z przesyłaniem zdarzeń przez funkcje trwałe. Poniższe instrukcje przedstawiają sposób tworzenia tematu przy użyciu wiersza polecenia platformy Azure. Informacje o tym, jak to zrobić przy użyciu programu PowerShell lub witryny Azure portal można znaleźć w następujących artykułach:
 
-* [EventGrid przewodników Szybki Start: Tworzenie zdarzenia niestandardowego — program PowerShell](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid przewodników Szybki Start: Tworzenie zdarzenia niestandardowego — witryna Azure portal](https://docs.microsoft.com/en-us/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid przewodników Szybki Start: Tworzenie zdarzenia niestandardowego — program PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid przewodników Szybki Start: Tworzenie zdarzenia niestandardowego — witryna Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą `az group create` polecenia. Obecnie usługa Event Grid nie obsługuje we wszystkich regionach. Aby uzyskać informacje o tym, jakie regiony są obsługiwane, zobacz [Przegląd usługi Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). 
+Utwórz grupę zasobów za pomocą `az group create` polecenia. Obecnie usługa Event Grid nie obsługuje we wszystkich regionach. Aby uzyskać informacje o tym, jakie regiony są obsługiwane, zobacz [Przegląd usługi Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -115,7 +115,7 @@ Określ odpowiednie ustawienie aplikacji o klucz tematu w aplikacji funkcji i `l
 }
 ```
 
-Upewnij się, że [emulatora magazynu](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) działa. To dobry pomysł, aby uruchomić `AzureStorageEmulator.exe clear all` polecenia przed wykonaniem.
+Upewnij się, że [emulatora magazynu](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) działa. To dobry pomysł, aby uruchomić `AzureStorageEmulator.exe clear all` polecenia przed wykonaniem.
 
 ## <a name="create-functions-that-listen-for-events"></a>Tworzenie funkcji, które nasłuchują zdarzeń
 
@@ -147,7 +147,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-Wybierz pozycję `Add Event Grid Subscription`. Ta operacja spowoduje dodanie subskrypcję usługi Event Grid dla tematu usługi Event Grid, który został utworzony. Aby uzyskać więcej informacji, zobacz [pojęcia w usłudze Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/concepts)
+Wybierz pozycję `Add Event Grid Subscription`. Ta operacja spowoduje dodanie subskrypcję usługi Event Grid dla tematu usługi Event Grid, który został utworzony. Aby uzyskać więcej informacji, zobacz [pojęcia w usłudze Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
 
 ![Wybierz łącze wyzwalacza usługi Event Grid.](media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -262,10 +262,10 @@ Poniżej opisano schemat zdarzenia cyklu życia:
 * **Identyfikator**: Unikatowy identyfikator dla zdarzeń usługi Event Grid.
 * **temat**: ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`, i `Terminated`.  
 * **dane**: niezawodne funkcje określonymi parametrami.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-task-hubs) nazwy.
+    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) nazwy.
     * **functionName**: Nazwa funkcji programu Orchestrator.
     * **Identyfikator instanceId**: instanceId funkcje trwałe.
-    * **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
+    * **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka funkcje trwałe (usługi Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
     * **runtimeStatus**: stan czasu wykonywania aranżacji. Uruchomione, zakończone, nie powiodło się, zostało anulowane. 
 * **Typ zdarzenia**: "orchestratorEvent"
 * **eventTime**: czas trwania zdarzenia (UTC).

@@ -1,31 +1,31 @@
 ---
-title: Zasobów szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sekcji Zasoby szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
+title: Zasoby szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Opis sekcji zasobów szablonów usługi Azure Resource Manager przy użyciu składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723833"
 ---
-# <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja zasobów szablonów usługi Azure Resource Manager
+# <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja Zasoby szablonów usługi Azure Resource Manager
 
-W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizowane. W tej sekcji można uzyskać skomplikowane, ponieważ należy zrozumieć typy, które jest wdrażany w celu zapewnienia właściwych wartości.
+W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizowane. W tej sekcji można uzyskać skomplikowane, ponieważ należy zapoznać się z typami, które wdrażasz podaj odpowiednie wartości.
 
 ## <a name="available-properties"></a>Dostępne właściwości
 
-Można zdefiniować zasoby o następującej strukturze:
+Możesz zdefiniować zasoby o następującej strukturze:
 
 ```json
 "resources": [
@@ -83,34 +83,57 @@ Można zdefiniować zasoby o następującej strukturze:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| warunek | Nie | Wartość logiczna wskazująca, czy zasób jest wdrażany. |
-| apiVersion |Yes |Wersja interfejsu API REST do użycia podczas tworzenia zasobu. |
-| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takich jak **magazyn.Microsoft/kontamagazynu**). |
-| name |Yes |Nazwa zasobu. Nazwa musi występować po zdefiniowane w RFC3986 ograniczenia składnika identyfikatora URI. Ponadto usług platformy Azure, które udostępniają poza strony zweryfikować nazwę, aby zapewnić, że nazwa zasobu nie jest próba podszywają się pod innego tożsamości. |
-| location |Zmienia się |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać dowolny z dostępnych lokalizacji, ale zazwyczaj warto wybrać, który znajduje się w pobliżu użytkowników. Zazwyczaj również dobrym rozwiązaniem jest umieszczenie zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale nie wymagają lokalizację niektórych typów (takich jak przypisanie roli). |
-| tags |Nie |Tagi, które są skojarzone z zasobem. Zastosuj znaczniki, aby organizację zasobów w Twojej subskrypcji. |
-| Komentarze |Nie |Notatki za dokumentację zasobów w szablonie |
-| kopiuj |Nie |Jeśli wymagane jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial gdy nie ma wszystkich lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md). |
-| dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i wdraża je w odpowiedniej kolejności. Zasoby nie są zależne od siebie, są wdrożone równolegle. Wartość może być rozdzielaną przecinkami listą zasobu nazwy lub unikatowych identyfikatorów zasobów. Tylko listy zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Unikaj Dodawanie zależności niepotrzebne, jak mogą spowalniać wdrożenia i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące zależności ustawienia, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
-| properties |Nie |Ustawienia konfiguracji określonych zasobów. Wartości właściwości są takie same jak wartości podane w treści żądania dla operacji interfejsu API REST (metody PUT) do utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć wiele wystąpień właściwości. |
-| sku | Nie | Niektóre zasoby Zezwalaj wartości, które definiują SKU do wdrożenia. Na przykład można określić typ nadmiarowości dla konta magazynu. |
-| rodzaj | Nie | Niektóre zasoby Zezwalaj wartość definiującą typ zasobu, które można wdrożyć. Na przykład można określić typ DB rozwiązania Cosmos do utworzenia. |
-| plan | Nie | Zezwalaj na wartości, które definiują planujesz jej wdrożenie niektórych zasobów. Na przykład można określić obrazu witryny marketplace dla maszyny wirtualnej. | 
-| zasoby |Nie |Zasoby podrzędne, które zależą od zasobu został określony. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Pełny typ zasobu podrzędnych obejmuje nadrzędny typ zasobu, takich jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest oznaczany. Jawnie zdefiniuj tej zależności. |
+| warunek | Nie | Wartość logiczna wskazująca, czy zasób został wdrożony. |
+| apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. |
+| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). |
+| name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. |
+| location |Różni się |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
+| tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
+| Komentarze |Nie |Notatki do dokumentowania zasobów w szablonie |
+| kopiuj |Nie |Jeśli potrzebna jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial, gdy nie mają wszystkie lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md). |
+| dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i ich wdrażania w odpowiedniej kolejności. Gdy zasoby nie są zależne od siebie, są one wdrożone równolegle. Wartość może być zasobem listę rozdzielonych przecinkami nazw lub unikatowych identyfikatorów zasobów. Tylko Wyświetla listę zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Należy unikać Dodawanie zależności niepotrzebne, jak długo będą powolne wdrożenie i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące Ustawianie zależności, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
+| properties |Nie |Ustawienia konfiguracji specyficznych dla zasobów. Wartości właściwości są takie same jak wartość podana w treści żądania dla operacji interfejsu API REST (metodę PUT) w celu utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć kilka wystąpień z właściwością. |
+| sku | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
+| rodzaj | Nie | Niektóre zasoby zezwala na wartość, która definiuje typ zasobu, które można wdrożyć. Na przykład można określić typ usługi Cosmos DB do tworzenia. |
+| plan | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują plan do wdrożenia. Na przykład można określić obrazu portalu marketplace dla maszyny wirtualnej. | 
+| zasoby |Nie |Zasoby podrzędne, które są zależne od zasobów, w trakcie definiowania. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. W pełni kwalifikowany typ zasobu podrzędnego obejmuje typ zasobu nadrzędnego, takie jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest implikowane. Musisz jawnie zdefiniować tej zależności. |
 
-## <a name="resource-specific-values"></a>Wartości zasobów
+## <a name="condition"></a>Warunek
 
-**ApiVersion**, **typu**, i **właściwości** elementy są różne dla każdego typu zasobu. **Sku**, **rodzaj**, i **planu** elementy są dostępne dla niektórych typów zasobów, ale nie wszystkich. Aby określić wartości tych właściwości, zobacz [odwołania do szablonu](/azure/templates/).
+Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Gdy ma wartość true, zasób został wdrożony. Gdy wartość jest równa false, zasób nie jest wdrożona. Na przykład aby określić, czy nowe konto magazynu jest wdrożony lub istniejące konto magazynu jest używane, należy użyć:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
+
+Dla szablonu kompletny przykład, który używa `condition` elementu, zobacz [maszyny Wirtualnej przy użyciu nowej lub istniejącej sieci wirtualnej, magazynu i publiczny adres IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+
+## <a name="resource-specific-values"></a>Wartości specyficznych dla zasobów
+
+**ApiVersion**, **typu**, i **właściwości** elementy są różne dla każdego typu zasobu. **Jednostki sku**, **rodzaj**, i **plan** elementy są dostępne w przypadku niektórych typów zasobów, ale nie wszystkich. Aby określić wartości tych właściwości, zobacz [odwołanie do szablonu](/azure/templates/).
 
 ## <a name="resource-names"></a>Nazwy zasobów
-Ogólnie rzecz biorąc pracować z trzech rodzajów nazw zasobów w Menedżerze zasobów:
+
+Ogólnie rzecz biorąc pracować z trzy typy nazw zasobów w usłudze Resource Manager:
 
 * Nazwy zasobów, które muszą być unikatowe.
-* Nazwy zasobów, które nie muszą być unikatowe, ale zdecydować się na Podaj nazwę, która może pomóc w identyfikacji zasobu.
+* Nazwy zasobów, które nie muszą być unikatowe, ale możesz zdecydować się na Podaj nazwę, która może pomóc w zidentyfikowaniu zasobu.
 * Nazwy zasobów, które mogą być ogólne.
 
-### <a name="unique-resource-names"></a>Nazwy zasobów unikatowy
-Musisz podać nazwę zasobu unikatowy dla dowolnego typu zasobu, która zawiera punkt końcowy dostępu do danych. Niektóre typowe typy zasobów, które wymagają unikatową nazwę obejmują:
+### <a name="unique-resource-names"></a>Unikatowy zasób nazwy
+
+Podaj nazwę zasobu unikatowe dla wszystkich typów zasobów, która ma punkt końcowy dostępu do danych. Niektóre typowe typy zasobów, które wymagają unikatowej nazwy obejmują:
 
 * Azure Storage<sup>1</sup> 
 * Funkcje aplikacji internetowych w usłudze Azure App Service
@@ -122,9 +145,9 @@ Musisz podać nazwę zasobu unikatowy dla dowolnego typu zasobu, która zawiera 
 * Azure Search
 * Azure HDInsight
 
-<sup>1</sup> nazwy konta magazynu musi być także małe litery, 24 znaków lub mniej, a nie ma żadnych łączników.
+<sup>1</sup> nazwy kont magazynu muszą być również małymi literami, 24 znaków lub mniej, a nie ma żadnych łączników.
 
-Podczas ustawiania nazwy, można ręcznie utworzyć unikatowej nazwy lub użyj [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkcji, aby wygenerować nazwy. Można również dodać prefiksu lub sufiksu domeny do **uniqueString** wynik. Modyfikowanie unikatową nazwę może pomóc więcej łatwo zidentyfikować z nazwy typu zasobu. Na przykład można wygenerować unikatowej nazwy dla konta magazynu przy użyciu następującą zmienną:
+Podczas ustawiania nazwy, można ręcznie utworzyć unikatową nazwę lub użyć [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkcję, aby wygenerować nazwę. Możesz również chcieć dodać prefiks lub sufiks **uniqueString** wynik. Modyfikowanie unikatową nazwę może pomóc Ci łatwo zidentyfikować typ zasobu na podstawie nazwy. Na przykład można wygenerować unikatową nazwę konta magazynu przy użyciu następującą zmienną:
 
 ```json
 "variables": {
@@ -132,8 +155,8 @@ Podczas ustawiania nazwy, można ręcznie utworzyć unikatowej nazwy lub użyj [
 }
 ```
 
-### <a name="resource-names-for-identification"></a>Nazwy zasobów do identyfikacji
-Niektóre typy zasobów, które mają nazwy, ale ich nazwy nie muszą być unikatowe. W przypadku tych typów zasobów można Podaj nazwę, która identyfikuje kontekst zasobów, jak i typ zasobu.
+### <a name="resource-names-for-identification"></a>Nazwy zasobów w celu identyfikacji
+Niektóre typy zasobów, które mają nazwy, ale ich nazwy nie muszą być unikatowe. Dla tych typów zasobów możesz podać nazwę, która identyfikuje kontekst zasobu i typu zasobu.
 
 ```json
 "parameters": {
@@ -148,7 +171,7 @@ Niektóre typy zasobów, które mają nazwy, ale ich nazwy nie muszą być unika
 ```
 
 ### <a name="generic-resource-names"></a>Nazwy zasobów ogólnych
-Dla typów zasobów, które przede wszystkim uzyskują dostęp za pomocą innego zasobu można użyć nazwy ogólnej, który jest ustalony w szablonie. Na przykład można ustawić nazwę standardowego, ogólne reguły zapory na serwerze SQL server:
+Dla typów zasobów, przede wszystkim dostępu za pomocą innego zasobu można użyć nazwy ogólnej, który jest ustalony w szablonie. Na przykład można ustawić standardowy ogólnych nazwy dla reguł zapory na serwerze SQL server:
 
 ```json
 {
@@ -159,23 +182,23 @@ Dla typów zasobów, które przede wszystkim uzyskują dostęp za pomocą innego
 ```
 
 ## <a name="location"></a>Lokalizacja
-W przypadku wdrażania szablonu, należy podać lokalizację każdego zasobu. Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby wyświetlić listę lokalizacje, które są dostępne dla subskrypcji dla określonego typu zasobu, użyj programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. 
+Podczas wdrażania szablonu, należy podać lokalizację każdego zasobu. Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby wyświetlić listę lokalizacji, które są dostępne dla subskrypcji dla określonego typu zasobów, użyj programu Azure PowerShell lub wiersza polecenia platformy Azure. 
 
-W poniższym przykładzie użyto programu PowerShell, aby pobrać lokalizacji dla `Microsoft.Web\sites` typu zasobu:
+W poniższym przykładzie użyto programu PowerShell można pobrać lokalizacji dla `Microsoft.Web\sites` typ zasobu:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-W poniższym przykładzie użyto 2.0 interfejsu wiersza polecenia platformy Azure można pobrać lokalizacji dla `Microsoft.Web\sites` typu zasobu:
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure można pobrać lokalizacji dla `Microsoft.Web\sites` typ zasobu:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-Po ustaleniu obsługiwane lokalizacje dla zasobów, należy ustawić tę lokalizację w szablonie. Najprostszym sposobem ta wartość jest utworzenie grupy zasobów w lokalizacji, która obsługuje typy zasobów i ustawioną każdej lokalizacji `[resourceGroup().location]`. Można ponownie wdrożyć szablon do grup zasobów w różnych lokalizacjach i nie zmieniać wartości w szablonie lub parametrów. 
+Po ustaleniu obsługiwane lokalizacje dla zasobów, ustawienia tej lokalizacji, w tym szablonie. Ustaw tę wartość najprościej jest utworzyć grupę zasobów w lokalizacji, która obsługuje typy zasobów i wartość w każdej lokalizacji `[resourceGroup().location]`. Ponowne wdrażanie szablonu do grup zasobów w różnych lokalizacjach i nie zmienić żadnych wartości w szablonie lub parametrów. 
 
-W poniższym przykładzie przedstawiono konta magazynu, który jest wdrożony w tej samej lokalizacji co grupa zasobów:
+Poniższy przykład przedstawia konta magazynu, który jest wdrożony w tej samej lokalizacji co grupa zasobów:
 
 ```json
 {
@@ -204,7 +227,7 @@ W poniższym przykładzie przedstawiono konta magazynu, który jest wdrożony w 
 }
 ```
 
-Jeśli potrzebujesz kodowania lokalizację w szablonie, podaj nazwę jednego z obsługiwanych regionów. W poniższym przykładzie przedstawiono konta magazynu, który jest zawsze wdrożony w północno-środkowe stany:
+Jeśli zachodzi potrzeba umieszczaj lokalizację w szablonie, należy podać nazwę jednego z obsługiwanych regionów. Poniższy przykład przedstawia konta magazynu, który zawsze jest wdrożony w północno-środkowe stany USA:
 
 ```json
 {
@@ -239,7 +262,7 @@ Jeśli potrzebujesz kodowania lokalizację w szablonie, podaj nazwę jednego z o
 
 ## <a name="child-resources"></a>Zasoby podrzędne
 
-W niektórych typów zasobów można również zdefiniować tablicę zasoby podrzędne. Zasoby podrzędne są zasoby, które istnieją tylko w kontekście innego zasobu. Na przykład bazy danych SQL nie może istnieć bez programu SQL server, bazy danych jest elementem podrzędnym serwera. Można zdefiniować w ramach definicji dla serwera bazy danych.
+W niektórych typów zasobów można także zdefiniować tablicę zasoby podrzędne. Zasoby podrzędne są zasoby, które istnieją tylko w kontekście innego zasobu. Na przykład bazę danych SQL nie może istnieć bez programu SQL server, więc baza danych jest elementem podrzędnym serwerze. Można zdefiniować bazy danych w ramach definicji dla serwera.
 
 ```json
 {
@@ -258,13 +281,13 @@ W niektórych typów zasobów można również zdefiniować tablicę zasoby podr
 }
 ```
 
-Gdy zagnieżdżony, ma ustawioną wartość typu `databases` , ale jego typ zasobu pełne jest `Microsoft.Sql/servers/databases`. Nie podawaj `Microsoft.Sql/servers/` ponieważ zakłada się z nadrzędnego typu zasobu. Ustawiono nazwę zasobu podrzędnego `exampledatabase` , ale imię i nazwisko zawiera nazwę nadrzędnej. Nie podawaj `exampleserver` ponieważ zakłada się od zasobu nadrzędnego.
+Gdy zagnieżdżony, typ jest ustawiona na `databases` , ale jego typ zasobu pełną `Microsoft.Sql/servers/databases`. Nie podano `Microsoft.Sql/servers/` ponieważ zakłada się od typu zasobu nadrzędnego. Nazwa zasobu podrzędnego jest równa `exampledatabase` , ale Pełna nazwa zawiera nazwę nadrzędnej. Nie podano `exampleserver` ponieważ zakłada się, od zasobu nadrzędnego.
 
-Format podrzędny typ zasobu jest: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+Format typu zasobu podrzędnego jest następujący: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Format podrzędny Nazwa zasobu jest: `{parent-resource-name}/{child-resource-name}`
+Format nazwy zasobów podrzędnych jest następujący: `{parent-resource-name}/{child-resource-name}`
 
-Jednak nie trzeba definiować bazy danych na serwerze. Można zdefiniować zasobu podrzędnego na najwyższym poziomie. Tej metody może użyć, jeśli zasobu nadrzędnego nie została wdrożona w tym samym szablonie, lub jeśli chcesz użyć `copy` utworzyć wiele podrzędnych zasobów. Z tej metody należy udostępniają typ zasobu pełne i nazwy zasobu podrzędne zawierają nazwę zasobu nadrzędnego.
+Ale nie trzeba zdefiniować bazy danych na serwerze. Można zdefiniować zasób podrzędny na najwyższym poziomie. Może być użycie tej metody, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie, lub jeśli chcesz użyć `copy` do tworzenia zasobów wiele podrzędnych. W przypadku tej metody musisz podać typ zasobu pełnego i nazwy zasobów podrzędnych zawierają nazwę zasobu nadrzędnego.
 
 ```json
 {
@@ -283,7 +306,7 @@ Jednak nie trzeba definiować bazy danych na serwerze. Można zdefiniować zasob
 }
 ```
 
-Podczas konstruowania pełni kwalifikowane odwołanie do zasobu, aby połączyć segmenty z typem i nazwą nie jest po prostu składa się z dwóch.  Po obszarze nazw, użyj sekwencji *typ/nazwa* pary z najmniej specyficznych, które specyficzny:
+Podczas tworzenia w pełni kwalifikowane odwołanie do zasobu, w kolejności łączenie segmentów z typu, a nazwa nie jest po prostu składa się z dwóch. Zamiast tego po przestrzeni nazw, należy użyć sekwencji *Nazwatypu/* pary z co najmniej określonych do bardziej konkretny od pozostałych:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -294,9 +317,9 @@ Na przykład:
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest poprawna `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest nieprawidłowy
 
 ## <a name="recommendations"></a>Zalecenia
-Poniższe informacje mogą być przydatne podczas pracy z zasobami:
+Następujące informacje mogą być przydatne podczas pracy z zasobami:
 
-* Aby ułatwić innych uczestników zrozumienie przeznaczenia zasobu, należy określić **komentarze** dla każdego zasobu w szablonie:
+* Aby ułatwić innymi współautorami zrozumienie przeznaczenia zasobu, określić **komentarze** dla każdego zasobu w szablonie:
    
    ```json
    "resources": [
@@ -311,7 +334,7 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    ]
    ```
 
-* Jeśli używasz *publiczny punkt końcowy* w szablonie (np. Azure Blob magazynu publiczny punkt końcowy), *czy nie kodowane* przestrzeni nazw. Użyj **odwołania** funkcji można dynamicznie pobrać przestrzeni nazw. Tej metody można użyć do wdrożenia szablonu w środowiskach różnych publicznej przestrzeni nazw ręcznie zmieniając punktu końcowego w szablonie. Ustaw wersję interfejsu API do tej samej wersji, którego używasz konta magazynu w szablonie:
+* Jeśli używasz *publicznym punktem końcowym* w szablonie (np. usługi Azure Blob storage publicznego punktu końcowego), *czy nie kodować sprzętowo* przestrzeni nazw. Użyj **odwołania** funkcję, aby dynamicznie pobrać przestrzeni nazw. Tej metody można użyć do wdrożenia szablonu w innej przestrzeni nazw publicznych środowiskach bez ręcznej zmiany punktu końcowego w szablonie. Ustaw wersję interfejsu API do tej samej wersji, którego używasz dla konta magazynu w szablonie:
    
    ```json
    "osDisk": {
@@ -322,7 +345,7 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    }
    ```
    
-   Jeśli konto magazynu jest wdrażana w tym samym szablonie, który tworzysz, nie należy określić przestrzeń nazw dostawcy podczas odwoływać się do zasobu. W poniższym przykładzie pokazano uproszczony składni:
+   Jeśli konto magazynu jest wdrażana w tym samym szablonie, który tworzysz, nie trzeba określić przestrzeń nazw dostawcy w przypadku, gdy odwoływać się do zasobu. Poniższy przykład przedstawia uproszczoną składnię:
    
    ```json
    "osDisk": {
@@ -333,7 +356,7 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    }
    ```
    
-   Jeśli masz inne wartości w szablonie, które są skonfigurowane do korzystania z publicznej przestrzeni nazw, zmiany tych wartości, aby odzwierciedlić takie same **odwołania** funkcji. Na przykład można ustawić **storageUri** właściwości profilu diagnostyki maszyny wirtualnej:
+   Jeśli masz inne wartości w szablonie, które są skonfigurowane do korzystania z publicznej przestrzeni nazw, Zmień te wartości, aby odzwierciedlić takie same **odwołania** funkcji. Na przykład można ustawić **storageUri** właściwości profilu diagnostyki maszyny wirtualnej:
    
    ```json
    "diagnosticsProfile": {
@@ -344,7 +367,7 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    }
    ```
    
-   Możesz także odwoływać się do istniejącego konta magazynu, który znajduje się w innej grupie zasobów:
+   Możesz też przywołać istniejące konto magazynu, który znajduje się w innej grupie zasobów:
 
    ```json
    "osDisk": {
@@ -355,16 +378,16 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    }
    ```
 
-* Przypisz publiczne adresy IP do maszyny wirtualnej, tylko wtedy, gdy aplikacja wymaga on. Aby połączyć się z maszyną wirtualną (VM) do debugowania lub zarządzania lub celów administracyjnych, użyj reguły NAT ruchu przychodzącego, bramy sieci wirtualnej lub jumpbox.
+* Publiczne adresy IP można przypisywać do maszyny wirtualnej, tylko wtedy, gdy aplikacja wymaga go. Aby połączyć się z maszyną wirtualną (VM) podczas debugowania lub zarządzania lub do celów administracyjnych, użyj reguły NAT dla ruchu przychodzącego, bramy sieci wirtualnej lub serwera przesiadkowego.
    
-     Aby uzyskać więcej informacji na temat podłączania do maszyn wirtualnych zobacz:
+     Aby uzyskać więcej informacji na temat nawiązywania połączenia z maszynami wirtualnymi zobacz:
    
-   * [Uruchamianie maszyn wirtualnych dla architektury N-warstwowa na platformie Azure](../guidance/guidance-compute-n-tier-vm.md)
-   * [Konfigurowanie dostępu do usługi WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager](../virtual-machines/windows/winrm.md)
-   * [Dostęp do zewnętrznych do maszyny Wirtualnej za pomocą portalu Azure](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Dostęp do zewnętrznych do maszyny Wirtualnej za pomocą programu PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Dostęp do zewnętrznych sieci maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
-* **DomainNameLabel** właściwości dla publicznych adresów IP muszą być unikatowe. **DomainNameLabel** wartość musi mieć długość od 3 do 63 znaków i postępuj zgodnie z regułami określonymi przez tego wyrażenia regularnego: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Ponieważ **uniqueString** funkcja generuje ciąg, który jest 13 znaków **dnsPrefixString** parametr jest ograniczone do 50 znaków:
+   * [Uruchamianie maszyn wirtualnych dla architektury wielowarstwowej na platformie Azure](../guidance/guidance-compute-n-tier-vm.md)
+   * [Konfigurowanie dostępu WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager](../virtual-machines/windows/winrm.md)
+   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu witryny Azure portal](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej przy użyciu programu PowerShell](../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Zezwalaj na dostęp zewnętrzny do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+* **DomainNameLabel** właściwości publiczne adresy IP muszą być unikatowe. **DomainNameLabel** wartość musi mieć długość od 3 do 63 znaków i postępuj zgodnie z regułami określonymi przez tego wyrażenia regularnego: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Ponieważ **uniqueString** funkcja generuje ciąg, który jest 13 znaków **dnsPrefixString** parametru jest ograniczona do 50 znaków:
 
    ```json
    "parameters": {
@@ -381,7 +404,7 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    }
    ```
 
-* Gdy hasło jest dodawanie do rozszerzenia niestandardowego skryptu, użyj **commandToExecute** właściwości w **protectedSettings** właściwości:
+* Po dodaniu hasła do rozszerzenia niestandardowego skryptu, użyj **commandToExecute** właściwość **protectedSettings** właściwości:
    
    ```json
    "properties": {
@@ -401,14 +424,14 @@ Poniższe informacje mogą być przydatne podczas pracy z zasobami:
    ```
    
    > [!NOTE]
-   > Aby upewnić się, że hasła są szyfrowane, gdy są one przekazywane jako parametry do maszyn wirtualnych i rozszerzenia, należy użyć **protectedSettings** właściwości odpowiednich rozszerzeń.
+   > Aby upewnić się, że klucze tajne są szyfrowane, gdy są przekazywane jako parametry do maszyn wirtualnych i rozszerzeń, należy użyć **protectedSettings** właściwość odpowiednich rozszerzeń.
    > 
    > 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
-* Aby uzyskać więcej informacji o funkcje, których można użyć z w ramach szablonu, zobacz [funkcje szablonów usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć wiele szablonów podczas wdrażania, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współdzielone przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
-* Aby uzyskać informacje o ograniczeniach nazw zasobów, zobacz [konwencje nazewnictwa dla zasobów platformy Azure zalecane](../guidance/guidance-naming-conventions.md).
+* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby użyć więcej niż jednego szablonu podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współużytkowane przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
+* Aby uzyskać informacji na temat ograniczeń nazw zasobów, zobacz [zalecane konwencje nazewnictwa dla zasobów platformy Azure](../guidance/guidance-naming-conventions.md).

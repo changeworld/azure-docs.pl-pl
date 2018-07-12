@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights dla platformy ASP.NET Core | Dokumentacja firmy Microsoft
+title: Usługi Azure Application Insights dla platformy ASP.NET Core | Dokumentacja firmy Microsoft
 description: Monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia.
 services: application-insights
 documentationcenter: .net
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 261bc78bfe427173ba81eef731e33eddd2ec379b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294279"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970938"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
-Azure Application Insights udostępnia szczegółowe monitorowanie aplikacji sieci web do poziomu kodu. Ułatwia monitorowanie aplikacji sieci web, dostępności, wydajności i użycia. Pozwala też szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika.
+Usługa Azure Application Insights zapewnia szczegółowe monitorowanie aplikacji sieci web do poziomu kodu. Możesz łatwo monitorować dostępność, wydajność i użycie aplikacji internetowej. Pozwala też szybko identyfikować i diagnozować błędy w aplikacji bez oczekiwania na zgłoszenie ich przez użytkownika.
 
-W tym artykule przedstawiono tworzenie przykładowej platformy ASP.NET Core [stron Razor](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) aplikacji w Visual Studio i jak rozpocząć monitorowanie za pomocą usługi Azure Application Insights.
+W tym artykule opisano proces tworzenia przykładu platformy ASP.NET Core [stron Razor](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) aplikacji w programie Visual Studio i Rozpocznij monitorowanie za pomocą usługi Azure Application Insights.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- NET Core 2.0.0 SDK lub nowszym.
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) wersji 15.7.3 lub nowszym z obciążeniem programowanie ASP.NET i sieć web. 
+- Zestaw .NET Core 2.0.0 SDK lub nowszej.
+- [Program Visual Studio 2017](https://www.visualstudio.com/downloads/) wersji 15.7.3 lub nowszej z obciążeniami rozwoju platformy ASP.NET i sieci web. 
 
 ## <a name="create-an-aspnet-core-project-in-visual-studio"></a>Tworzenie projektu platformy ASP.NET Core w programie Visual Studio
 
 1. Kliknij prawym przyciskiem myszy, a następnie uruchom **programu Visual Studio 2017** jako administrator.
 2. Wybierz **pliku** > **nowe** > **projektu** (Ctrl-Shift-N).
 
-   ![Zrzut ekranu przedstawiający Menu programu Visual Studio pliku nowego projektu](./media/app-insights-asp-net-core/001-new-project.png)
+   ![Zrzut ekranu przedstawiający Menu nowy projekt plików programu Visual Studio](./media/app-insights-asp-net-core/001-new-project.png)
 
-3. Rozwiń węzeł **Visual C#** > Wybierz **.NET Core** > **aplikacji sieci Web platformy ASP.NET Core**. Wprowadź **nazwa** > **Nazwa rozwiązania** > Sprawdź **Tworzenie nowego repozytorium Git**.
+3. Rozwiń **Visual C#** > Wybierz **platformy .NET Core** > **aplikacji sieci Web platformy ASP.NET Core**. Wprowadź **nazwa** > **Nazwa rozwiązania** > Sprawdź **Utwórz nowe repozytorium Git**.
 
-   ![Zrzut ekranu przedstawiający Kreator nowego projektu plików programu Visual Studio](./media/app-insights-asp-net-core/002-asp-net-core-web-application.png)
+   ![Zrzut ekranu przedstawiający Kreatora nowego projektu plik programu Visual Studio](./media/app-insights-asp-net-core/002-asp-net-core-web-application.png)
 
 4. Wybierz **.Net Core** > **platformy ASP.NET Core 2.0** **aplikacji sieci Web** > **OK**.
 
@@ -48,46 +48,46 @@ W tym artykule przedstawiono tworzenie przykładowej platformy ASP.NET Core [str
 
 ## <a name="application-insights-search"></a>Wyszukiwanie usługi Application Insights
 
-Domyślnie w programie Visual Studio w wersji 2015 Update 2 albo nowszy z platformy ASP.NET Core 2 + na podstawie projektu, należy skorzystać z [wyszukiwania usługi Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-visual-studio) nawet zanim należy jawnie dodać usługi Application Insights do projektu.
+Domyślnie w programie Visual Studio w wersji 2015 Update 2 lub nowszym za pomocą platformy ASP.NET Core 2 + na podstawie projektu, możesz korzystać z zalet [wyszukiwania usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio) nawet zanim dodasz usługę Application Insights do projektu.
 
-Aby przetestować tę funkcję:
+W celu przetestowania tej funkcji:
 
 1. Uruchom aplikację, klikając pozycję IIS Express ![Ikona zrzut ekranu programu Visual Studio usług IIS Express](./media/app-insights-asp-net-core/004-iis-express.png)
 
-2. Wybierz **widoku** > **inne okna** > **wyszukiwania usługi Application Insights**.
+2. Wybierz **widoku** > **Windows inne** > **wyszukiwania usługi Application Insights**.
 
-   ![Zrzut ekranu przedstawiający narzędzi diagnostycznych programu Visual Studio](./media/app-insights-asp-net-core/005-view-other-windows-search.png)
+   ![Zrzut ekranu przedstawiający narzędzia diagnostyczne Visual Studio](./media/app-insights-asp-net-core/005-view-other-windows-search.png)
 
-3. Dane telemetryczne sesji debugowania jest obecnie dostępny tylko lokalne analizy. Aby w pełni włączyć usługi Application Insights, wybierz **gotowości Telemetrii** w prawym górnym prawym przyciskiem myszy, lub wykonaj kroki opisane w następnej sekcji.
+3. Dane telemetryczne sesji debugowania dla jest obecnie dostępna tylko lokalne analizy. Aby w pełni włączyć usługi Application Insights, wybierz **gotowości Telemetrii** w prawym górnym prawym przyciskiem myszy lub postępuj zgodnie z instrukcjami w następnej sekcji.
 
-   ![Zrzut ekranu przedstawiający Visual Studio Application Insights wyszukiwania](./media/app-insights-asp-net-core/006-search.png)
+   ![Zrzut ekranu programu Visual Studio Application Insights, wyszukiwanie](./media/app-insights-asp-net-core/006-search.png)
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat sposobu świateł Visual Studio funkcji, takich jak [wyszukiwania usługi Application Insights](app-insights-visual-studio.md) i [CodeLens](app-insights-visual-studio-codelens.md) lokalnie przed dodano usługę Application Insights do projektu platformy ASP.NET Core wyewidencjonować wyjaśnienie w [koniec tego artykułu.](#Application-Insights-search-continued)
+> Aby dowiedzieć się więcej na temat sposobu programu Visual Studio udostępnia funkcje, takie jak [wyszukiwania usługi Application Insights](app-insights-visual-studio.md) i [CodeLens](app-insights-visual-studio-codelens.md) lokalnie przed dodaniu usługi Application Insights do projektu programu ASP.NET Core Wyewidencjonuj wyjaśnienie w [końcowej części tego artykułu.](#Application-Insights-search-continued)
 
 ## <a name="add-application-insights-telemetry"></a>Dodawanie telemetrii usługi Application Insights
 
-1. Wybierz **projektu** > **Dodaj Telemetrię usługi Application Insights...** . (Lub kliknąć prawym przyciskiem myszy **usług połączonych** i wybierz polecenie Dodaj połączonych usług.)
+1. Wybierz **projektu** > **Dodaj Telemetrię usługi Application Insights...** . (Lub kliknąć prawym przyciskiem myszy **podłączonych usług** i wybierz polecenie Dodaj podłączoną usługę.)
 
     ![Zrzut ekranu przedstawiający Menu wyboru projektu nowy plik programu Visual Studio](./media/app-insights-asp-net-core/007-project-add-telemetry.png)
 
-2. Wybierz **wprowadzenie**. (W zależności od używanej wersji programu Visual Studio tekst mogą się nieco różnić. Zamiast tego należy mieć niektóre starsze wersje **Start wolnego** przycisku.)
+2. Wybierz **wprowadzenie**. (W zależności od używanej wersji programu Visual Studio tekst może się nieco różnić. Niektóre starsze wersje należy mieć **Rozpocznij za darmo** przycisku.)
 
     ![Zrzut ekranu przedstawiający Menu wyboru projektu nowy plik programu Visual Studio](./media/app-insights-asp-net-core/008-get-started.png)
 
-3. Wybierz odpowiednie **subskrypcji** > **zasobów** > **zarejestrować**.
+3. Wybierz odpowiednią **subskrypcji** > **zasobów** > **zarejestrować**.
 
 ## <a name="changes-made-to-your-project"></a>Zmienia Made do projektu
 
-Usługa Application Insights jest niskiego obciążenia. Aby przejrzeć zmiany do projektu, dodając telemetrii usługi Application Insights:
+Usługa Application Insights jest niskie obciążenie. Aby przejrzeć modyfikacje do projektu, dodając telemetria usługi Application Insights:
 
 Wybierz **widoku** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > **zmiany**
 
-- Całkowita liczba czterech zmiany:
+- Cztery łączna liczba zmian:
 
   ![Zrzut ekranu przedstawiający pliki zmodyfikowane przez dodanie usługi Application Insights](./media/app-insights-asp-net-core/009-changes.png)
 
-- Tworzony jest jeden nowy plik:
+- Jeden nowy plik zostanie utworzony:
 
    _ConnectedService.json_
 
@@ -101,7 +101,7 @@ Wybierz **widoku** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projektu** > **zm
 }
 ```
 
-- Trzy pliki zostały zmodyfikowane: (dodatkowe komentarze dodane wyróżnienia zmian)
+- Trzy pliki są modyfikowane: (dodatkowe komentarze dodane wyróżniania zmian)
 
   _appsettings.json_
 
@@ -184,15 +184,15 @@ namespace DotNetCore
 
 ## <a name="synthetic-transactions-with-powershell"></a>Transakcje syntetyczne przy użyciu programu PowerShell
 
-Aby zautomatyzować żądania kierowane do aplikacji za pomocą transakcji syntetycznych.
+Aby zautomatyzować żądania do aplikacji za pomocą transakcji syntetycznych.
 
 1. Uruchom aplikację, klikając pozycję IIS Express ![Ikona zrzut ekranu programu Visual Studio usług IIS Express](./media/app-insights-asp-net-core/004-iis-express.png)
 
-2. Skopiuj adres url z pola adresu przeglądarki. Jest w formacie http://localhost:{random numer portu}
+2. Skopiuj adres url z paska adresu przeglądarki. Jest w formacie http://localhost:{random numer portu}
 
-   ![Zrzut ekranu przedstawiający adres url na pasku adresu przeglądarki](./media/app-insights-asp-net-core/0013-copy-url.png)
+   ![Zrzut ekranu przedstawiający paska adresu url w przeglądarce](./media/app-insights-asp-net-core/0013-copy-url.png)
 
-3. Uruchom następującą pętlę programu PowerShell do utworzenia 100 transakcji syntetycznych względem aplikacji testu. Zmodyfikuj numer portu po **localhost:** odpowiadające adresu url skopiowanego w poprzednim kroku.
+3. Uruchom następującą pętlę programu PowerShell do utworzenia 100 transakcji syntetycznych względem aplikacji testowych. Zmodyfikuj numer portu po **localhost:** dopasować adres url skopiowany w poprzednim kroku.
 
    ```PowerShell
    for ($i = 0 ; $i -lt 100; $i++)
@@ -201,22 +201,22 @@ Aby zautomatyzować żądania kierowane do aplikacji za pomocą transakcji synte
    }
    ```
 
-## <a name="open-application-insights-portal"></a>Portal usługi Otwórz Application Insights
+## <a name="open-application-insights-portal"></a>Portal usługi Open Application Insights
 
-Po uruchomieniu programu PowerShell z poprzedniej sekcji, uruchom program Application Insights, aby wyświetlić transakcje i upewnij się, że dane są zbierane. 
+Po uruchomieniu programu PowerShell z poprzedniej sekcji, uruchom usługę Application Insights do wyświetlania transakcji i upewnij się, że dane są zbierane. 
 
 Wybierz z menu programu Visual Studio **projektu** > **usługi Application Insights** > **Otwórz Portal usługi Application Insights**
 
-   ![Zrzut ekranu przedstawiający aplikacji Insights — omówienie](./media/app-insights-asp-net-core/010-portal.png)
+   ![Zrzut ekranu przedstawiający omówienie usługi Application Insights](./media/app-insights-asp-net-core/010-portal.png)
 
 > [!NOTE]
-> Na przykład zrzucie ekranu powyżej **strumień na żywo**, **czas ładowania strony widoku**, i **nieudanych żądań** nie są obecnie zbierane. Następna sekcja przeprowadzi każdego dodawania. Jeśli są zbierane **strumień na żywo**, i **czas ładowania strony widoku**, tylko wykonaj kroki **nieudanych żądań**.
+> W powyższym zrzucie ekranu przykładu **Live Stream**, **czas ładowania wyświetlenia strony**, i **nieudanych żądań** nie są obecnie zbierane. Następna sekcja przeprowadzi każdego dodawania. Jeśli zbierasz już **Live Stream**, i **czas ładowania wyświetlenia strony**, tylko wykonaj kroki **nieudanych żądań**.
 
-## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>Zbieranie żądań zakończonych niepowodzeniem, strumień na żywo i czas ładowania strony widoku
+## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>Zbieraj żądań zakończonych niepowodzeniem, Stream na żywo i wyświetlenie strony — czas ładowania
 
 ### <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
 
-Technicznie **nieudanych żądań** są zbierane, ale brak jeszcze wystąpił. Aby przyspieszyć proces wzdłuż wyjątek niestandardowych można dodać do istniejącego projektu, aby symulować wyjątek rzeczywistych. Jeśli aplikacja nadal działa w programie Visual Studio przed kontynuowaniem **Zatrzymaj debugowanie** (Shift + F5)
+Z technicznego punktu widzenia **nieudanych żądań** są zbierane, ale żaden jeszcze wystąpił. Aby przyspieszyć proces wzdłuż niestandardowego wyjątku można dodać do istniejącego projektu, aby symulować rzeczywiste wyjątek. Jeśli Twoja aplikacja nadal działa w programie Visual Studio przed kontynuacją **Zatrzymaj debugowanie** (Shift + F5)
 
 1. W **Eksploratora rozwiązań** > Rozwiń **stron** > **About.cshtml** > Otwórz **About.cshtml.cs**.
 
@@ -248,78 +248,78 @@ Technicznie **nieudanych żądań** są zbierane, ale brak jeszcze wystąpił. A
 
 ### <a name="live-stream"></a>Transmisja strumieniowa na żywo
 
-Dostęp do funkcji strumień na żywo z usługi Application Insights o aktualizacji platformy ASP.NET Core **Microsoft.ApplicationInsights.AspNetCore 2.2.0** pakietów NuGet.
+Dostęp do funkcji Live Stream usługi Application Insights za pomocą platformy ASP.NET Core aktualizacji **Microsoft.ApplicationInsights.AspNetCore 2.2.0** pakietów NuGet.
 
-W programie Visual Studio, wybierz **projektu** > **Zarządzaj pakietami NuGet** > **Microsoft.ApplicationInsights.AspNetCore** > wersji **2.2.0** > **aktualizacji**.
+W programie Visual Studio, wybierz **projektu** > **Zarządzaj pakietami NuGet** > **Microsoft.ApplicationInsights.AspNetCore** > wersja **2.2.0** > **aktualizacji**.
 
   ![Zrzut ekranu Menedżera pakietów NuGet](./media/app-insights-asp-net-core/012-nuget-update.png)
 
-Nastąpi wielu o potwierdzenie. Przeczytaj i zaakceptuj, jeśli zgadzasz się z zmiany.
+Występuje wiele monity o potwierdzenie. Przeczytaj i zaakceptuj, jeśli zgadzasz się ze zmianami.
 
-### <a name="page-view-load-time"></a>Czas ładowania strony widoku
+### <a name="page-view-load-time"></a>Wyświetlenie strony — czas ładowania
 
-1. W programie Visual Studio przejdź do **Eksploratora rozwiązań** > **stron** > będzie konieczna modyfikacja dwa pliki: _Layout.cshtml_, i  _ViewImports.cshtml_
+1. W programie Visual Studio przejdź do **Eksploratora rozwiązań** > **stron** > będzie trzeba zmodyfikować dwa pliki: _Layout.cshtml_, i  _ViewImports.cshtml_
 
-2. W __ViewImports.cshtml_, dodać:
+2. W __ViewImports.cshtml_, Dodaj:
 
    ```csharp
    @using Microsoft.ApplicationInsights.AspNetCore
    @inject JavaScriptSnippet snippet
    ```
 
-3. W **_Layout.cshtml** Dodaj wiersz poniżej przed ``</head>`` tag, ale także przed innymi skryptami.
+3. W **_Layout.cshtml** Dodaj wiersz poniżej przed ``</head>`` tagu, ale także przed innymi skryptami.
 
     ```csharp
     @Html.Raw(snippet.FullScript)
     ```
 
-### <a name="test-failed-requests-page-view-load-time-live-stream"></a>Test nie powiódł się żądania, czas ładowania strony widoku, strumień na żywo
+### <a name="test-failed-requests-page-view-load-time-live-stream"></a>Test zakończył się niepowodzeniem, żądania, wyświetlenie strony — czas ładowania, Live Stream.
 
-Aby przetestować i upewnij się, że wszystko działa:
+Do przetestowania i upewnij się, że wszystko działa:
 
 1. Uruchom aplikację, klikając pozycję IIS Express ![Ikona zrzut ekranu programu Visual Studio usług IIS Express](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. Przejdź do **o** stronę, aby wyzwolić wyjątek testu. (Jeśli system jest uruchomiony w trybie debugowania, należy kliknąć **Kontynuuj** w programie Visual Studio dla wyjątku wyświetlani w usłudze Application Insights.)
+2. Przejdź do **o** strony, aby wyzwolić wyjątek testu. (Jeśli używasz w trybie debugowania, należy kliknąć przycisk **Kontynuuj** w programie Visual Studio dla wyjątkiem pojawienie się w usłudze Application Insights.)
 
-3. Uruchom ponownie symulowane skryptu transakcji programu PowerShell z wcześniej (może być konieczne dostosowanie numer portu w skrypcie).
+3. Ponowne uruchomienie symulowanego skryptu transakcji programu PowerShell z wcześniejszego (może być konieczne dostosowanie numer portu w skrypcie).
 
-4. Jeśli Przegląd Insights aplikacji nie jest nadal otwarty, z menu programu Visual Studio, wybierz **projektu** > **usługi Application Insights** > **Otwórz aplikacji Insights Portal**. 
+4. Jeśli aplikacje — Przegląd Insights nie jest wciąż otwarty, z menu programu Visual Studio, wybierz **projektu** > **usługi Application Insights** > **otwierania aplikacji Portal usługi insights**. 
 
    > [!TIP]
    > Jeśli nie widzisz jeszcze nowego ruchu, sprawdź **zakres czasu** i kliknij przycisk **Odśwież**.
 
-   ![Okno zrzut ekranu — omówienie](./media/app-insights-asp-net-core/0019-overview-updated.png)
+   ![Zrzut ekranu Przegląd okna](./media/app-insights-asp-net-core/0019-overview-updated.png)
 
-5. Wybierz strumień na żywo
+5. Wybierz pozycję Live Stream.
 
-   ![Zrzut ekranu przedstawiający strumień na żywo metryk](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
+   ![Zrzut ekranu przedstawiający Stream metryki na żywo](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Jeśli programu PowerShell skryptu można nadal działa powinna zostać wyświetlona metryki na żywo, jeśli została zatrzymana, uruchom skrypt ponownie z strumień na żywo Otwórz.)
+   (Jeśli PowerShell skryptu możesz nadal działa powinien zostać wyświetlony metryki na żywo, jeżeli została zatrzymana, uruchom skrypt ponownie przy użyciu Live Stream otwarty).
 
-## <a name="app-insights-sdk-comparison"></a>Porównanie SDK Insights aplikacji
+## <a name="app-insights-sdk-comparison"></a>App Insights SDK porównania
 
-Twarde Praca grupy produktów usługi Application Insights do osiągnięcia parzystość funkcji między [pełnego zestawu .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) i .net Core SDK. 2.2.0 wydanie [platformy ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) dla usługi Application Insights przede wszystkim zamknął luki funkcji.
+Grupy produktów usługi Application Insights ma zostały wszelkich starań, aby osiągnąć równoważność funkcji między [pełny program .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) i.Net Core SDK. 2.2.0 wersji [zestawu SDK dla platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore) dla usługi Application Insights stopniu zamknął różnica między funkcjami.
 
-Aby dowiedzieć się więcej na temat różnic oraz wady i zalety między [.NET i .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+Aby dowiedzieć się więcej na temat różnic i kompromis między [.NET i .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
    | Porównanie zestawu SDK | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
    | **Metryki na żywo**      | **+** |**-** | **+** |
    | **Kanał danych Telemetrycznych serwera** | **+** |**-** | **+**|
-   |**Adaptacyjną pobierania próbek**| **+** | **-** | **+**|
+   |**Próbkowanie adaptacyjne**| **+** | **-** | **+**|
    | **Wywołania zależności SQL**     | **+** |**-** | **+**|
    | **Liczniki wydajności*** | **+** | **-**| **-**|
 
-_Liczniki wydajności_ w tym kontekście odnosi się do [liczniki wydajności po stronie serwera](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , takich jak procesor, pamięć i użycie dysku.
+_Liczniki wydajności_ w tym kontekście oznacza [liczniki wydajności po stronie serwera](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , takich jak procesor, pamięć i użycie dysku.
 
-## <a name="open-source-sdk"></a>Zestaw SDK open source
-[Przeczytaj i brać udział w kodzie](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+## <a name="open-source-sdk"></a>Zestaw SDK typu open-source
+[Odczytywać opinie i dodawać do kodu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-## <a name="application-insights-search-continued"></a>Nadal wyszukiwania usługi Application Insights
+## <a name="application-insights-search-continued"></a>Kontynuowanie wyszukiwania usługi Application Insights
 
-Aby lepiej zrozumieć, jak wyszukiwania usługi Application Insights działa w programie Visual Studio dla projektu platformy ASP.NET Core 2, nawet w przypadku jawnego instalowanie pakietów NuGet usługi Application Insights nie zostało jeszcze przeprowadzone. Może być przydatne do sprawdzenia danych wyjściowych debugowania.
+Aby lepiej zrozumieć, jak wyszukiwania usługi Application Insights działa w programie Visual Studio dla projektów ASP.NET Core 2, nawet wtedy, gdy jest to jawne instalację pakietów NuGet usługi Application Insights nie zostało jeszcze przeprowadzone. Przydatne może być do sprawdzenia danych wyjściowych debugowania.
 
-W przypadku wyszukiwania w danych wyjściowych wyraz _szczegółowe informacje o_ będzie Podświetl wyniki podobne do następujących:
+W przypadku wyszukiwania danych wyjściowych dla wyrazu _insight_ zostanie wyróżniona, wyniki podobne do następującego:
 
 ```DebugOuput
 'dotnet.exe' (CoreCLR: clrhost): Loaded 'C:\Program Files\dotnet\store\x64\netcoreapp2.0\microsoft.aspnetcore.applicationinsights.hostingstartup\2.0.3\lib\netcoreapp2.0\Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll'.
@@ -328,28 +328,28 @@ W przypadku wyszukiwania w danych wyjściowych wyraz _szczegółowe informacje o
 Application Insights Telemetry (unconfigured): {"name":"Microsoft.ApplicationInsights.Dev.Message","time":"2018-06-03T17:32:38.2796801Z","tags":{"ai.location.ip":"127.0.0.1","ai.operation.name":"DEBUG /","ai.internal.sdkVersion":"aspnet5c:2.1.1","ai.application.ver":"1.0.0.0","ai.cloud.roleInstance":"CONTOSO-SERVER","ai.operation.id":"de85878e-4618b05bad11b5a6","ai.internal.nodeName":"CONTOSO-SERVER","ai.operation.parentId":"|de85878e-4618b05bad11b5a6."},"data":{"baseType":"MessageData","baseData":{"ver":2,"message":"Request starting HTTP/1.1 DEBUG http://localhost:53022/  0","severityLevel":"Information","properties":{"AspNetCoreEnvironment":"Development","Protocol":"HTTP/1.1","CategoryName":"Microsoft.AspNetCore.Hosting.Internal.WebHost","Host":"localhost:53022","Path":"/","Scheme":"http","ContentLength":"0","DeveloperMode":"true","Method":"DEBUG"}}}}
 ```
 
-Środowisko CoreCLR jest ładowania dwóch zestawów: 
+CoreCLR to dwa zestawy ładowania: 
 
 - _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_
 - _Microsoft.ApplicationInsights.AspNetCore.dll_.
 
-I _stanie nieskonfigurowanym_ w każdym wystąpieniu usługi Application Insights telemetrii wskazuje, że ta aplikacja nie jest skojarzona z ikey, dzięki czemu danych, który jest generowany, gdy aplikacja jest uruchomiona, nie są wysyłane do usługi Azure i jest tylko dostępne dla lokalnego wyszukiwania i analizy.
+I _nieskonfigurowana_ każde wystąpienie usługi Application Insights w danych telemetrycznych wskazuje, czy ta aplikacja nie jest skojarzony z klucza ikey, więc danych, który jest generowany, gdy aplikacja jest uruchomiona, nie są wysyłane do platformy Azure i jest tylko dostępna w przypadku lokalnego wyszukiwania i analizy.
 
-Część jak jest to możliwe jest to, że pakiet NuGet _Microsoft.AspNetCore.All_ przyjmuje jako zależność [ _Microsoft.ASPNetCoreApplicationInsights.HostingStartup_](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1)
+Część jak jest to możliwe, jest to, że pakiet NuGet _pakiet_ przyjmuje jako zależność [ _Microsoft.ASPNetCoreApplicationInsights.HostingStartup_](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1)
 
-![Zrzut ekranu NuGet zależności wykresu dla Microsoft.AspNETCore.all](./media/app-insights-asp-net-core/013-dependency.png)
+![Zrzut ekranu programu NuGet zależności wykresu dla pakiet](./media/app-insights-asp-net-core/013-dependency.png)
 
-Poza Visual Studio Jeśli edytowania projektu platformy ASP.NET Core w VSCode lub w innym edytorze te zestawy nie ładuje automatycznie podczas debugowania, jeśli nie zostało to jeszcze jawnie dodać usługi Application Insights do projektu.
+Poza programem Visual Studio Jeśli edytowania projektem platformy ASP.NET Core w VSCode lub innym edytorze te zestawy w takich sytuacjach przydałaby automatycznie załadować podczas debugowania, jeśli nie zostały jawnie dodane usługi Application Insights do projektu.
 
-Jednak w programie Visual Studio to oświetlenia zapasowej lokalnej usługi Application Insights funkcje z zewnętrznych zestawów odbywa się za pośrednictwem użycie [interfejsu IHostingStartup](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) dynamicznie dodaje usługi Application Insights podczas debugowania.
+Jednak w programie Visual Studio to oświetlenia zapasowej lokalnych funkcji usługi Application Insights z zewnętrznych zestawów odbywa się za pośrednictwem użytkowania [interfejsu interfejsu IHostingStartup](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) której są dodawane dynamicznie usługi Application Insights podczas debugowania.
 
-Aby dowiedzieć się więcej na temat zwiększenia aplikacji z [zewnętrznych zestawu w ASP.NET Core z IHostingStartup](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1). 
+Aby dowiedzieć się więcej na temat zwiększenia aplikację na podstawie [zestawu zewnętrznego w programie ASP.NET Core za pomocą interfejsu IHostingStartup](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1). 
 
-### <a name="how-to-disable-application-insights-in-visual-studio-net-core-projects"></a>Wyłączanie usługi Application Insights w projektach Visual Studio .NET Core
+### <a name="how-to-disable-application-insights-in-visual-studio-net-core-projects"></a>Jak wyłączyć usługę Application Insights w projektach programu Visual Studio .NET Core
 
-Automatyczne światła się funkcji wyszukiwania usługi Application Insights mogą być użyteczne do pewnych, oglądanie danych telemetrycznych debugowania generowane, gdy go nie oczekujesz może być trudne.
+Automatyczne światła się funkcji wyszukiwania usługi Application Insights mogą być przydatne do niektórych, martwiły debugowania dane telemetryczne generowane, gdy nie otwieraj go może być mylące.
 
-Jeśli właśnie wyłączanie generowania telemetrii wystarczy do metody konfiguracji można dodać tego bloku kodu z _Startup.cs_ pliku:
+Jeżeli wystarczy tylko wyłączenie generowania danych telemetrycznych można dodać ten blok kodu do metody konfiguracji usługi _Startup.cs_ pliku:
 
 ```csharp
   var configuration = app.ApplicationServices.GetService<Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration>();
@@ -357,13 +357,13 @@ Jeśli właśnie wyłączanie generowania telemetrii wystarczy do metody konfigu
             if (env.IsDevelopment())
 ```
 
-Środowisko CoreCLR nadal ładuje _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ i _Microsoft.ApplicationInsights.AspNetCore.dll_, ale nie będzie wykonywać żadnych czynności.
+Nadal można załadować oprogramowania CoreCLR _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ i _Microsoft.ApplicationInsights.AspNetCore.dll_, ale ich nie spowoduje żadnego efektu.
 
-Jeśli chcesz całkowicie wyłączyć usługę Application Insights do projektu programu Visual Studio .NET Core preferowaną metodą jest wybranie **narzędzia** > **opcje**  >   **Projekty i rozwiązania** > **projekty sieci Web** > i pole wyboru, aby wyłączyć lokalne usługi Application Insights dla projektów sieci web platformy ASP.NET Core. Ta funkcja została dodana w Visual Studio 15,6.
+Jeśli chcesz całkowicie wyłączyć usługi Application Insights w projekcie programu Visual Studio .NET Core preferowaną metodą jest wybranie **narzędzia** > **opcje**  >   **Projekty i rozwiązania** > **projektów sieci Web** > i pole wyboru, aby wyłączyć lokalną usługę Application Insights dla projektów sieci web platformy ASP.NET Core. Ta funkcja została dodana w Visual Studio 15.6.
 
-![Zrzut ekranu programu Visual Studio opcje okna Projekty sieci Web ekranu](./media/app-insights-asp-net-core/014-disable.png)
+![Zrzut ekranu z opcjami okna Web projektów programu Visual Studio ekranu](./media/app-insights-asp-net-core/014-disable.png)
 
-Jeśli używasz starszej wersji programu Visual Studio, i chcesz całkowicie usunąć wszystkie zestawy ładowane za pośrednictwem IHostingStartup można dodać:
+Jeśli używasz starszej wersji programu Visual Studio, a chcesz całkowicie usunąć wszystkich zestawów załadowanych za pomocą interfejsu IHostingStartup można dodać:
 
 `.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")`
 
@@ -398,16 +398,16 @@ namespace DotNetCore
 }
 ```
 
-Lub też może dodać ``"ASPNETCORE_preventHostingStartup": "True"`` do _launchSettings.json_ zmiennych środowiskowych.
+Alternatywnie możesz też dodać ``"ASPNETCORE_preventHostingStartup": "True"`` do _launchSettings.json_ zmiennych środowiskowych.
 
-Problem przy użyciu jednej z tych metod jest on nie powoduje, że wyłączy wszystko w programie Visual Studio, który został wykorzystaniu światła IHostingStartup się funkcji usługi Application Insights.
+Ten problem przy użyciu jednej z tych metod jest nie nie tylko wyłączenie go spowoduje wyłączenie niczego w programie Visual Studio, który został wykorzystaniu światła interfejsu IHostingStartup funkcje w usłudze Application Insights.
 
 ## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Eksploruj przepływa użytkowników](app-insights-usage-flows.md) zrozumieć, jak użytkownicy nawigują między aplikacji.
-* [Konfigurowanie zbierania migawek](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) aby zobaczyć stan kodu źródłowego i zmiennych w tej chwili jest zgłaszany wyjątek.
-* [Za pomocą interfejsu API](app-insights-api-custom-events-metrics.md) wysyłanie własnych zdarzenia i metryki dla bardziej szczegółowy widok wydajności i użycia aplikacji.
-* [Badania dostępności](app-insights-monitor-web-app-availability.md) Sprawdź aplikację stale z całego świata.
+* [Zapoznaj się z użytkownikami przepływy](app-insights-usage-flows.md) Aby zrozumieć, jak użytkownicy nawigują w aplikacjach.
+* [Konfigurowanie zbierania migawek](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) Aby wyświetlić stan zmiennych i kod źródłowy w tej chwili, zgłaszany jest wyjątek.
+* [Za pomocą interfejsu API](app-insights-api-custom-events-metrics.md) do wysłania własnych zdarzeń i metryk, aby uzyskać bardziej szczegółowy widok wydajności i użycia Twojej aplikacji.
+* [Testy dostępności](app-insights-monitor-web-app-availability.md) Sprawdź aplikację stale z całego świata.

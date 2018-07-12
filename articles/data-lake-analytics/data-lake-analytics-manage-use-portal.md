@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie usługą Azure Data Lake Analytics przy użyciu portalu Azure
-description: W tym artykule opisano, jak zarządzać kont usługi Data Lake Analytics, źródła danych, użytkowników i zadań za pomocą portalu Azure.
+title: Zarządzanie usługą Azure Data Lake Analytics przy użyciu witryny Azure portal
+description: W tym artykule opisano sposób użycia witryny Azure portal do zarządzania kont usługi Data Lake Analytics, źródła danych, użytkowników i zadań.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,17 +10,17 @@ editor: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1ccd4dd6b8d4ee15b7d9f14e7436ccd87392121e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dcf1a853f00f047a6d8beb8599a5b74c7f8f084d
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623710"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969514"
 ---
-# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie Azure Data Lake Analytics przy użyciu portalu Azure
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie przy użyciu witryny Azure portal usługi Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-W tym artykule opisano, jak zarządzanie kontami, źródłami danych, użytkowników i zadania usługi Azure Data Lake Analytics przy użyciu portalu Azure.
+W tym artykule opisano sposób zarządzania kont, źródła danych, użytkowników i zadania usługi Azure Data Lake Analytics przy użyciu witryny Azure portal.
 
 
 <!-- ################################ -->
@@ -31,20 +31,20 @@ W tym artykule opisano, jak zarządzanie kontami, źródłami danych, użytkowni
 ### <a name="create-an-account"></a>Tworzenie konta
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij przycisk **Utwórz zasób** > **analizy i analiza** > **usługi Data Lake Analytics**.
+2. Kliknij przycisk **Utwórz zasób** > **rozwiązania inteligentne + analiza** > **usługi Data Lake Analytics**.
 3. Wybierz wartości dla następujących elementów: 
    1. **Nazwa**: Nazwa konta usługi Data Lake Analytics.
-   2. **Subskrypcja**: używane jako konto subskrypcji Azure.
-   3. **Grupa zasobów**: Grupa zasobów Azure, w której chcesz utworzyć konto. 
-   4. **Lokalizacja**: centrum danych Azure dla konta usługi Data Lake Analytics. 
-   5. **Data Lake Store**: domyślny magazyn do użycia dla konta usługi Data Lake Analytics. Konto usługi Azure Data Lake Store i konta usługi Data Lake Analytics musi być w tej samej lokalizacji.
+   2. **Subskrypcja**: subskrypcja platformy Azure używana dla konta.
+   3. **Grupa zasobów**: Grupa zasobów platformy Azure, w której chcesz utworzyć konto. 
+   4. **Lokalizacja**: centrum danych platformy Azure dla konta usługi Data Lake Analytics. 
+   5. **Data Lake Store**: domyślny magazyn ma być używany dla konta usługi Data Lake Analytics. Konto usługi Azure Data Lake Store i konto usługi Data Lake Analytics musi być w tej samej lokalizacji.
 4. Kliknij przycisk **Utwórz**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Usuwanie konta usługi Data Lake Analytics
 
-Aby usunąć konto usługi Data Lake Analytics, usuń jego domyślne konto usługi Data Lake Store.
+Zanim usuniesz konto usługi Data Lake Analytics, należy usunąć jego domyślnego konta Data Lake Store.
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. Kliknij polecenie **Usuń**.
 3. Wpisz nazwę konta.
 4. Kliknij polecenie **Usuń**.
@@ -52,73 +52,73 @@ Aby usunąć konto usługi Data Lake Analytics, usuń jego domyślne konto usłu
 <!-- ################################ -->
 <!-- ################################ -->
 
-## <a name="manage-data-sources"></a>Zarządzaj źródłami danych
+## <a name="manage-data-sources"></a>Zarządzanie źródłami danych
 
-Data Lake Analytics obsługuje następujące źródła danych:
+Usługa Data Lake Analytics obsługuje następujące źródła danych:
 
 * Data Lake Store
 * Azure Storage
 
-Eksplorator danych umożliwia przeglądanie źródeł danych i wykonywać operacje zarządzania pliku podstawowego. 
+Eksplorator danych umożliwia przeglądanie źródeł danych i wykonywania operacji zarządzania podstawowy plik. 
 
 ### <a name="add-a-data-source"></a>Dodawanie źródła danych
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. Kliknij przycisk **źródeł danych**.
 3. Kliknij przycisk **Dodaj źródło danych**.
     
-   * Aby dodać konto usługi Data Lake Store, należy nazwę konta i dostęp do konta, aby można było go zapytania.
-   * Aby dodać magazyn obiektów Blob platformy Azure, należy konto magazynu i klucza konta. Aby je znaleźć, przejdź do konta magazynu w portalu.
+   * Aby dodać konta Data Lake Store, należy nazwę konta i uzyskiwania dostępu do konta, aby można było wykonuje zapytania.
+   * Aby dodać usługi Azure Blob storage, konieczne jest konto magazynu i klucz konta. Aby je znaleźć, przejdź do konta magazynu w portalu.
 
 ## <a name="set-up-firewall-rules"></a>Konfigurowanie reguł zapory
 
-Data Lake Analytics do dalszego blokowania dostępu służy do swojego konta usługi Data Lake Analytics na poziomie sieci. Można włączyć zapory, podaj adres IP lub zdefiniuj zakres adresów IP dla zaufanych klientów. Po włączeniu tych środków tylko w przypadku klientów, którzy mają adresy IP ze zdefiniowanego zakresu można połączyć z magazynem.
+Usługi Data Lake Analytics można użyć do dalszego blokowanie dostępu do swojego konta usługi Data Lake Analytics na poziomie sieci. Możesz Włącz zaporę, określ adres IP lub zdefiniować zakres adresów IP z zaufanych klientów. Po włączeniu tych środków, tylko w przypadku klientów, którzy mają adresy IP ze zdefiniowanego zakresu można połączyć z magazynem.
 
-Jeśli połączenie innymi usługami Azure, takich jak fabryki danych Azure lub maszyn wirtualnych, do konta usługi Data Lake Analytics, upewnij się, że **Zezwalaj usług Azure** włączono **na**. 
+W przypadku innych usług platformy Azure, takich jak usługi Azure Data Factory lub maszyn wirtualnych, połączenie z kontem usługi Data Lake Analytics, upewnij się, że **Zezwalaj na usługi platformy Azure** włączeniu **na**. 
 
 ### <a name="set-up-a-firewall-rule"></a>Konfigurowanie reguły zapory
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. W menu po lewej stronie kliknij **zapory**.
 
-## <a name="add-a-new-user"></a>Dodaj nowego użytkownika
+## <a name="add-a-new-user"></a>Dodawanie nowego użytkownika
 
-Można użyć **Kreatora dodawania użytkownika** można łatwo udostępnić nowych użytkowników do usługi Data Lake.
+Możesz użyć **Kreatora dodawania użytkownika** można zainicjować obsługę nowych użytkowników usługi Data Lake.
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 2. Po lewej stronie w obszarze **wprowadzenie**, kliknij przycisk **Kreatora dodawania użytkownika**.
 3. Wybierz użytkownika, a następnie kliknij przycisk **wybierz**.
-4. Wybierz rolę, a następnie kliknij przycisk **wybierz**. Aby skonfigurować nowy developer do użycia usługi Azure Data Lake, wybierz **Data Lake Analytics Developer** roli.
-5. Wybierz z listy kontroli dostępu (ACL) dla baz danych U-SQL. Po zakończeniu wybrane opcje, kliknij przycisk **wybierz**.
-6. Wybierz z listy kontroli dostępu dla plików. Domyślny magazyn, nie zmieniaj list ACL dla folderu głównego "/" i folderu/System. Kliknij pozycję **Wybierz**.
-7. Przejrzyj wybrane ustawienia, a następnie kliknij przycisk **Uruchom**.
+4. Wybierz rolę, a następnie kliknij przycisk **wybierz**. Aby skonfigurować nowego dla deweloperów, aby użyć usługi Azure Data Lake, wybierz **Data Lake Analytics Developer** roli.
+5. Wybierz listy kontroli dostępu (ACL) dla bazy danych U-SQL. Po zakończeniu opcji kliknij przycisk **wybierz**.
+6. Wybierz z listy ACL dla plików. W domyślnym magazynie nie zmieniaj listy ACL dla folderu głównego "/" i folderu/System. Kliknij pozycję **Wybierz**.
+7. Przejrzyj wszystkie wybrane zmiany, a następnie kliknij przycisk **Uruchom**.
 8. Po zakończeniu działania kreatora, kliknij przycisk **gotowe**.
 
-## <a name="manage-role-based-access-control"></a>Zarządzanie kontrolą dostępu opartą na rolach
+## <a name="manage-role-based-access-control"></a>Zarządzanie kontrolą dostępu opartej na rolach
 
-Jak innymi usługami Azure kontroli dostępu opartej na rolach (RBAC) służy do kontrolowania sposobu interakcji użytkowników z usługą.
+Podobnie jak inne usługi platformy Azure można użyć kontroli dostępu opartej na rolach (RBAC) do kontrolowania sposobu interakcji użytkowników z usługą.
 
-Standardowe role RBAC mają następujące możliwości:
-* **Właściciel**: można przesłać zadania, monitorowania zadań anulować zadania z dowolnego użytkownika i skonfiguruj konto.
-* **Współautor**: można przesłać zadania, monitorowania zadań anulować zadania z dowolnego użytkownika i skonfiguruj konto.
+Standardowa role RBAC mają następujące możliwości:
+* **Właściciel**: można przesyłać zadania, monitorować zadania, Anuluj zadania z dowolnego użytkownika i skonfigurować konto.
+* **Współautor**: można przesyłać zadania, monitorować zadania, Anuluj zadania z dowolnego użytkownika i skonfigurować konto.
 * **Czytnik**: można monitorować zadania.
 
-Użyj roli Data Lake Analytics Developer producentów U-SQL do korzystania z usługi Data Lake Analytics. Można użyć roli Data Lake Analytics Developer, aby:
+Aby umożliwić programistom języka U-SQL do korzystania z usługi Data Lake Analytics za pomocą roli Data Lake Analytics dewelopera. Można użyć roli Data Lake Analytics dewelopera:
 * Przesyłanie zadań.
-* Monitorowanie stanu zadania i postęp zadań wysłanego przez każdego użytkownika.
-* Zobacz skryptów U-SQL z zadań wysłanego przez każdego użytkownika.
-* Anulowanie tylko własnych zadań.
+* Monitoruj stan zadania i postępu zadania przesłane przez żadnego użytkownika.
+* Zobacz skryptów U-SQL z zadania przesłane przez żadnego użytkownika.
+* Anuluj tylko własne zadania.
 
-### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Dodawanie użytkowników lub grup zabezpieczeń do konta usługi Data Lake Analytics
+### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Dodaj użytkowników lub grup zabezpieczeń do konta usługi Data Lake Analytics
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
-2. Kliknij przycisk **(IAM) kontroli dostępu** > **Dodaj**.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
+2. Kliknij przycisk **kontrola dostępu (IAM)** > **Dodaj**.
 3. Wybierz rolę.
 4. Dodawanie użytkownika.
 5. Kliknij przycisk **OK**.
 
 >[!NOTE]
->Jeśli użytkownik lub grupa zabezpieczeń wymaga przesyłania zadań, muszą uprawnienie dla konta magazynu. Aby uzyskać więcej informacji, zobacz [zabezpieczyć dane przechowywane w usłudze Data Lake Store](../data-lake-store/data-lake-store-secure-data.md).
+>Jeśli użytkownik lub grupa zabezpieczeń wymaga przesyłania zadań, muszą uprawnienie dla konta magazynu. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie danych przechowywanych w Data Lake Store](../data-lake-store/data-lake-store-secure-data.md).
 >
 
 <!-- ################################ -->
@@ -126,44 +126,44 @@ Użyj roli Data Lake Analytics Developer producentów U-SQL do korzystania z us�
 
 ## <a name="manage-jobs"></a>Zarządzanie zadaniami
 
-### <a name="submit-a-job"></a>Prześlij zadanie
+### <a name="submit-a-job"></a>Przesyłanie zadania
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
 
 2. Kliknij przycisk **nowe zadanie**. Dla każdego zadania należy skonfigurować:
 
     1. **Nazwa zadania**: Nazwa zadania.
-    2. **Priorytet**: niższych numerach mają wyższy priorytet. Dwa zadania są umieszczane w kolejce, pierwszy uruchamia z niższą wartość priorytetu.
-    3. **Równoległość**: Maksymalna liczba procesów obliczeń do zarezerwowania dla tego zadania.
+    2. **Priorytet**: niższych numerach mają wyższy priorytet. Jeśli dwa zadania są umieszczane w kolejce, tą o niższym priorytecie działać pierwszego.
+    3. **Równoległość**: Maksymalna liczba procesów obliczeniowych do zarezerwowania dla tego zadania.
 
 3. Kliknij przycisk **Prześlij zadanie**.
 
 ### <a name="monitor-jobs"></a>Monitorowanie zadań
 
-1. W portalu Azure przejdź do swojego konta usługi Data Lake Analytics.
-2. Kliknij przycisk **wyświetlić wszystkie zadania**. Jest wyświetlana lista wszystkich zadań ostatnio zakończone i active w ramach konta.
-3. Opcjonalnie kliknij **filtru** ułatwia znajdowanie zadania według **zakres czasu**, **Nazwa zadania**, i **autora** wartości. 
+1. W witrynie Azure portal przejdź na swoje konto usługi Data Lake Analytics.
+2. Kliknij przycisk **Wyświetl wszystkie zadania**. Wyświetlana jest lista wszystkich aktywnych i ostatnio zakończonych zadań w ramach konta.
+3. Opcjonalnie kliknij **filtru** ułatwią znalezienie zadania według **zakres czasu**, **Nazwa zadania**, i **Autor** wartości. 
 
 ### <a name="monitoring-pipeline-jobs"></a>Monitorowanie zadań w potoku
-Zadania, które są częścią potoku działają razem, zwykle po kolei, do wykonania danego scenariusza. Na przykład można mieć potok, który czyści, wyodrębnianie, przekształca, agreguje użycia klienta szczegółowe informacje o. Potok zadania są identyfikowane za pomocą właściwości "Potoku", gdy zadanie zostało przesłane. Zadania zaplanowane przy użyciu fabryki danych AZURE w wersji 2 ma automatycznie tej właściwości wypełnione. 
+Zadania, które są częścią potoku współdziałają ze sobą, zwykle po kolei, w celu wykonania konkretnego scenariusza. Można na przykład istnienie potoku, który czyści, wyodrębnia, przekształca, agreguje użycia dla usługi customer insights. Zadania potoku są identyfikowane za pomocą właściwości "Pipeline", jeśli zadanie zostało przesłane. Zaplanowane za pomocą usługi ADF w wersji 2 mają automatycznie tej właściwości wypełnione. 
 
 Aby wyświetlić listę zadań U-SQL, które są częścią potoków: 
 
-1. W portalu Azure przejdź do konta usługi Data Lake Analytics.
-2. Kliknij przycisk **zadania Insights**. Karta "Wszystkie zadania" jest ustawiana domyślnie, przedstawiający listę uruchomiona, w kolejce i zakończenia zadania.
-3. Kliknij przycisk **zadania potoku** kartę. Lista zadań potoku pojawi się wraz z zagregowanych danych statystycznych dla każdego potoku.
+1. W witrynie Azure portal przejdź do konta usługi Data Lake Analytics.
+2. Kliknij przycisk **Insights zadania**. Karta "Wszystkie zadania" jest ustawiana domyślnie, pokazanie listy działanie w kolejce i zakończenia zadania.
+3. Kliknij przycisk **zadania potoku** kartę. Lista zadań potoku będą wyświetlane wraz z zagregowanych danych statystycznych dla każdego potoku.
 
 ### <a name="monitoring-recurring-jobs"></a>Monitorowanie zadań cyklicznych
-Cyklicznych zadań to taki, który ma tej samej logiki biznesowej, ale używa różnych danych wejściowych w każdym uruchomieniu. W idealnym przypadku cyklicznych zadań należy zawsze powiodło się i mają względnie stały czas wykonania; monitorowanie zachowania te pomogą upewnij się, że zadanie jest w dobrej kondycji. Cykliczne zadania są identyfikowane za pomocą właściwości "Cyklu". Zadania zaplanowane przy użyciu fabryki danych AZURE w wersji 2 ma automatycznie tej właściwości wypełnione.
+To zadanie cykliczne to taki, który ma ten sam logikę biznesową, ale używa różnych danych wejściowych w każdym uruchomieniu. W idealnym przypadku zadań cyklicznych powinien zawsze powiedzie się i mają względnie stały czas wykonywania; monitorowanie zachowań może pomóc upewnić się, że zadanie jest w dobrej kondycji. Zadania cykliczne są identyfikowane za pomocą właściwości "Cykl". Zaplanowane za pomocą usługi ADF w wersji 2 mają automatycznie tej właściwości wypełnione.
 
 Aby wyświetlić listę zadań U-SQL, które są cykliczne: 
 
-1. W portalu Azure przejdź do konta usługi Data Lake Analytics.
-2. Kliknij przycisk **zadania Insights**. Karta "Wszystkie zadania" jest ustawiana domyślnie, przedstawiający listę uruchomiona, w kolejce i zakończenia zadania.
-3. Kliknij przycisk **cyklicznych zadań** kartę. Lista zadań cyklicznych pojawi się wraz z zagregowanych danych statystycznych dla każdego zadania cyklicznego.
+1. W witrynie Azure portal przejdź do konta usługi Data Lake Analytics.
+2. Kliknij przycisk **Insights zadania**. Karta "Wszystkie zadania" jest ustawiana domyślnie, pokazanie listy działanie w kolejce i zakończenia zadania.
+3. Kliknij przycisk **zadania cykliczne** kartę. Lista zadań cyklicznych będą wyświetlane wraz z zagregowanych danych statystycznych dla każdego zadania cykliczne.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Omówienie usługi Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Zarządzanie usługą Azure Data Lake Analytics przy użyciu programu Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-* [Azure Data Lake Analytics przy użyciu zasad zarządzania](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-policies)
+* [Zarządzanie przy użyciu zasad usługi Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-policies)

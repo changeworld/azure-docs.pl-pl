@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z Centrum IoT Azure urządzenia twins (.NET/.NET) | Dokumentacja firmy Microsoft
-description: Jak używać twins urządzenia Azure IoT Hub Dodawanie tagów, a następnie użyć kwerendy Centrum IoT. Przy użyciu urządzenia Azure IoT SDK dla platformy .NET usługi Azure IoT SDK dla platformy .NET do implementacji usługi aplikacji, która dodaje znaczniki i uruchamia kwerendy Centrum IoT i aplikacji symulowane urządzenie.
+title: Rozpoczynanie pracy z usługą Azure IoT Hub bliźniaczych reprezentacji urządzeń (.NET/.NET) | Dokumentacja firmy Microsoft
+description: Jak używać usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń Dodawanie tagów, a następnie użyć zapytania usługi IoT Hub. Urządzenia usługi Azure IoT SDK dla platformy .NET umożliwia wdrożenie aplikacji symulowanego urządzenia i usługi Azure IoT SDK dla platformy .NET do zaimplementowania app service, który dodaje znaczniki i uruchamia zapytanie usługi IoT Hub.
 author: dsk-2015
 manager: timlt
 ms.service: iot-hub
@@ -9,28 +9,28 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 9419f15f2876a36769bdea84cc28537435148cac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0ce1a3983ad34882236b175d6b8eec5e538c736b
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634859"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723903"
 ---
-# <a name="get-started-with-device-twins-netnet"></a>Rozpoczynanie pracy z urządzenia twins (.NET/.NET)
+# <a name="get-started-with-device-twins-netnet"></a>Rozpoczynanie pracy z bliźniaczych reprezentacji urządzeń (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Na końcu tego samouczka konieczne będzie tych aplikacji konsoli .NET:
+Na końcu tego samouczka będziesz mieć te aplikacje konsolowe .NET:
 
-* **CreateDeviceIdentity**, który tworzy tożsamości urządzenia i klucz zabezpieczeń skojarzony także łączenie aplikacji symulowane urządzenie aplikacji .NET.
-* **AddTagsAndQuery**, aplikacji zaplecza .NET, która dodaje znaczniki i zapytanie twins urządzenia.
-* **ReportConnectivity**, aplikacji urządzenia .NET, która symuluje urządzenie, które łączy do Centrum IoT z tożsamości urządzenia utworzony wcześniej, a następnie raportuje stanu łączności.
+* **CreateDeviceIdentity**, aplikację .NET, która tworzy tożsamość urządzenia i skojarzony klucz zabezpieczeń w celu podłączenia aplikacji urządzenia symulowanego.
+* **AddTagsAndQuery**, aplikacji zaplecza platformy .NET, która dodaje znaczniki i zapytań bliźniaczych reprezentacji urządzeń.
+* **ReportConnectivity**, aplikację urządzenia platformy .NET, która symuluje urządzenie, który nawiązuje połączenie z Centrum IoT hub przy użyciu utworzonej wcześniej tożsamości urządzenia, a następnie raportuje stanu łączności.
 
 > [!NOTE]
-> Artykuł [Azure IoT SDK] [ lnk-hub-sdks] informacje na temat zestawów SDK IoT Azure można tworzyć aplikacje zarówno urządzenia, jak i zaplecza.
+> Artykuł [Azure IoT SDKs] [ lnk-hub-sdks] informacje dotyczące zestawów SDK usługi Azure IoT, w której można tworzyć aplikacje zarówno w przypadku urządzeń, jak i zaplecza.
 > 
 > 
 
-Do ukończenia tego samouczka należy spełnić następujące warunki:
+Do ukończenia tego samouczka potrzebne są następujące elementy:
 
 * Program Visual Studio 2015 lub Visual Studio 2017.
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
@@ -40,13 +40,13 @@ Do ukończenia tego samouczka należy spełnić następujące warunki:
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
 ## <a name="create-the-service-app"></a>Tworzenie aplikacji usługi
-W tej sekcji Tworzenie aplikacji konsoli .NET (przy użyciu języka C#) umożliwiający dodawanie metadanych lokalizacji do dwie urządzeń skojarzonych z **myDeviceId**. Tworzy następnie kwerendę twins urządzenia przechowywane w Centrum IoT Wybieranie urządzeń znajdujących się w Stanach Zjednoczonych i te, które połączenie transmisji.
+W tej sekcji, tworzenie aplikacji konsolowej .NET (przy użyciu języka C#) dodającego metadanymi lokalizacji do bliźniaczej reprezentacji urządzenia skojarzone z **myDeviceId**. Następnie wykonuje zapytanie bliźniacze reprezentacje urządzeń, przechowywane w usłudze IoT hub, wybieranie urządzeń znajduje się w Stanach Zjednoczonych i tych, którzy zgłosili połączenie komórkowe.
 
-1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nazwij projekt **AddTagsAndQuery**.
+1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **AddTagsAndQuery**.
    
     ![Nowy projekt Visual C# Windows Classic Desktop][img-createapp]
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **AddTagsAndQuery** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** .
-1. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices**. Wybierz **zainstalować** do zainstalowania **Microsoft.Azure.Devices** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK usługi Azure IoT][lnk-nuget-service-sdk] oraz jego zależności.
+1. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices**. Wybierz **zainstalować** zainstalował **Microsoft.Azure.Devices** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK usługi Azure IoT][lnk-nuget-service-sdk] oraz jego zależności.
    
     ![Okno Menedżera pakietów NuGet][img-servicenuget]
 1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
@@ -81,11 +81,11 @@ W tej sekcji Tworzenie aplikacji konsoli .NET (przy użyciu języka C#) umożliw
             Console.WriteLine("Devices in Redmond43 using cellular network: {0}", string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
         }
    
-    **RegistryManager** klasy udostępnia wszystkie metody, które są wymagane do interakcji z twins urządzenia z usługi. Poprzedni kod najpierw inicjuje **registryManager** obiekt, a następnie pobiera dwie urządzenia dla **myDeviceId**i na koniec aktualizuje jego tagi informacji żądaną lokalizację.
+    **RegistryManager** klasa udostępnia wszystkie metody, które są wymagane do interakcji z bliźniaczych reprezentacji urządzeń z usługi. Poprzedni kod najpierw inicjuje **registryManager** obiektu, a następnie pobiera bliźniaczą reprezentację urządzenia dla **myDeviceId**i aktualizuje jej tagi z informacjami o wybraną lokalizację.
    
-    Po zaktualizowaniu, wykonuje on dwa zapytania: pierwszy wybiera tylko twins urządzenia urządzeń znajdujących się w **Redmond43** zakładu, a drugi udoskonalanie zapytanie, aby wybrać tylko te urządzenia, które także są połączone za pośrednictwem sieci komórkowej.
+    Po zaktualizowaniu, wykonuje dwa zapytania: pierwszy wybiera tylko bliźniaków urządzeń urządzeń znajdujących się w **Redmond43** zakładu produkcyjnego, a drugi usprawniają zapytanie, aby wybrać tylko urządzenia, które są także połączone za pośrednictwem sieci komórkowej.
    
-    Należy pamiętać, że poprzedni kod, w którym tworzy **zapytania** obiektów, określa maksymalną liczbę zwracanych dokumentów. **Zapytania** zawiera obiekt **HasMoreResults** właściwości typu boolean, którego można użyć do wywołania **GetNextAsTwinAsync** metody kilka razy, aby pobrać wszystkie wyniki. Wywołana metoda **GetNextAsJson** jest dostępna dla wyników, które są nie twins urządzenia, na przykład wyniki zapytań agregacji.
+    Należy pamiętać, że poprzedniego kodu, podczas tworzenia **zapytania** obiektów, określa maksymalną liczbę zwróconych dokumentów. **Zapytania** obiekt zawiera **HasMoreResults** właściwość typu boolean, którego można użyć do wywołania **GetNextAsTwinAsync** metody kilka razy, aby pobrać wszystkie wyniki. Metoda wywoływana **GetNextAsJson** jest dostępna dla wyników, które są nie bliźniacze reprezentacje urządzeń, na przykład wyniki zapytań agregacji.
 1. Na koniec dodaj następujące wiersze do metody **Główne**:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -93,31 +93,31 @@ W tej sekcji Tworzenie aplikacji konsoli .NET (przy użyciu języka C#) umożliw
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. W Eksploratorze rozwiązań Otwórz **projektów startowych ustawić...**  i upewnij się, że **akcji** dla **AddTagsAndQuery** projekt jest **Start**. Skompiluj rozwiązanie.
-1. Uruchomić tę aplikację, klikając prawym przyciskiem myszy **AddTagsAndQuery** projekt i wybierając **debugowania**, a następnie **Start nowe wystąpienie**. Jedno urządzenie w wynikach zadać kwerendy powinna być widoczna dla wszystkich urządzeń znajdujących się w **Redmond43** i Brak dla zapytania, który ogranicza wyniki do urządzenia, które korzystają z sieci komórkowej.
+1. W Eksploratorze rozwiązań Otwórz **Ustaw projekty startowe...**  i upewnij się, że **akcji** dla **AddTagsAndQuery** projekt jest **Start**. Skompiluj rozwiązanie.
+1. Uruchom tę aplikację, klikając prawym przyciskiem myszy **AddTagsAndQuery** projektu i wybierając polecenie **debugowania**, a następnie **Uruchom nowe wystąpienie**. Powinien zostać wyświetlony jedno urządzenie w wynikach dotyczące zadawania zapytań dla wszystkich urządzeń znajdujących się w **Redmond43** a dla zapytania, które ogranicza wyniki do urządzenia korzystające z sieci komórkowej.
    
     ![Wyniki zapytania w oknie][img-addtagapp]
 
-W następnej sekcji utworzysz aplikację urządzenia, która raportuje informacje dotyczące łączności i zmienia się wynik kwerendy w poprzedniej sekcji.
+W następnej sekcji utworzysz aplikację urządzenie, raportuje informacje o łączności, która zmienia się wynik kwerendy w poprzedniej sekcji.
 
-## <a name="create-the-device-app"></a>Tworzenie aplikacji urządzeń
-W tej sekcji Tworzenie aplikacji konsoli .NET, który łączy do Centrum jako **myDeviceId**, a następnie aktualizuje jego zgłoszone właściwości zawierają informacje, że jest połączony za pomocą sieci komórkowej.
+## <a name="create-the-device-app"></a>Tworzenie aplikacji urządzenia
+W tej sekcji utworzysz aplikacji konsolowej .NET, który nawiązuje połączenie z Centrum jako **myDeviceId**, a następnie aktualizuje jego zgłoszonych właściwości zawierają informacje, że jest ona połączona korzystania z sieci komórkowej.
 
-1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nazwij projekt **ReportConnectivity**.
+1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **ReportConnectivity**.
    
-    ![Nowa aplikacja Visual C# Windows Classic urządzenia][img-createdeviceapp]
+    ![Nowa aplikacja urządzenia Visual C# Windows Classic][img-createdeviceapp]
     
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **ReportConnectivity** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** .
-1. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.client**. Wybierz **zainstalować** do zainstalowania **Microsoft.Azure.Devices.Client** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura pliki do pobrania, instaluje i dodaje odwołanie do [urządzenia Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet pakiet i jego zależności.
+1. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.client**. Wybierz **zainstalować** zainstalował **Microsoft.Azure.Devices.Client** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, instaluje i dodanie odwołania do [zestaw SDK urządzeń Azure IoT] [ lnk-nuget-client-sdk] NuGet pakietu oraz jego zależności.
    
-    ![Aplikacja kliencka okna Menedżera pakietów NuGet][img-clientnuget]
+    ![Aplikacja kliencka okno Menedżera pakietów NuGet][img-clientnuget]
 1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
    
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using Newtonsoft.Json;
 
-1. Dodaj następujące pola do klasy **Program**: Zamień wartość symbolu zastępczego ciąg połączenia urządzenia zanotowanym w poprzedniej sekcji.
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia urządzenia zanotowanym w poprzedniej sekcji.
    
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
@@ -140,7 +140,7 @@ W tej sekcji Tworzenie aplikacji konsoli .NET, który łączy do Centrum jako **
             }
         }
 
-    **Klienta** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z twins urządzenia z urządzenia. Inicjuje kodzie pokazanym powyżej, **klienta** obiekt, a następnie pobiera dwie urządzenia dla **myDeviceId**.
+    **Klienta** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z bliźniaczych reprezentacji urządzeń z urządzenia. Inicjuje kodzie pokazanym powyżej, **klienta** obiektu, a następnie pobiera bliźniaczą reprezentację urządzenia dla **myDeviceId**.
 
 1. Dodaj następującą metodę do klasy **Program**:
    
@@ -164,7 +164,7 @@ W tej sekcji Tworzenie aplikacji konsoli .NET, który łączy do Centrum jako **
             }
         }
 
-   Kod nad aktualizacje **myDeviceId**obiektu podać właściwość o informacje dotyczące łączności.
+   Kod powyżej aktualizacje **myDeviceId**przez zgłoszone właściwości o informacje o łączności.
 
 1. Na koniec dodaj następujące wiersze do metody **Główne**:
    
@@ -181,24 +181,24 @@ W tej sekcji Tworzenie aplikacji konsoli .NET, który łączy do Centrum jako **
        Console.WriteLine("Press Enter to exit.");
        Console.ReadLine();
 
-1. W Eksploratorze rozwiązań Otwórz **projektów startowych ustawić...**  i upewnij się, że **akcji** dla **ReportConnectivity** projekt jest **Start**. Skompiluj rozwiązanie.
-1. Uruchomić tę aplikację, klikając prawym przyciskiem myszy **ReportConnectivity** projekt i wybierając **debugowania**, a następnie **Start nowe wystąpienie**. Powinny pojawić się on pobierania informacji o dwie, a następnie wysyła łączność *podać właściwość*.
+1. W Eksploratorze rozwiązań Otwórz **Ustaw projekty startowe...**  i upewnij się, że **akcji** dla **ReportConnectivity** projekt jest **Start**. Skompiluj rozwiązanie.
+1. Uruchom tę aplikację, klikając prawym przyciskiem myszy **ReportConnectivity** projektu i wybierając polecenie **debugowania**, a następnie **Uruchom nowe wystąpienie**. Powinna zostać wyświetlona na pobieranie informacji o bliźniaczych reprezentacji, a następnie wysyłając połączeń *zgłaszane właściwości*.
    
-    ![Uruchamianie aplikacji urządzeń z łącznością raportu][img-rundeviceapp]
+    ![Uruchom aplikację urządzenia do łączności z raportu][img-rundeviceapp]
     
     
-1. Teraz, gdy urządzenie zgłosiło jego informacje dotyczące łączności, powinna pojawić się w obu zapytania. Uruchamianie programu .NET **AddTagsAndQuery** aplikacji, aby ponownie uruchomić zapytania. Teraz **myDeviceId** powinny być wyświetlane w obu wyników zapytania.
+1. Teraz, gdy urządzenie jest zgłaszane jego informacje o łączności, powinien pojawić się w obu zapytań. Uruchom z .NET **AddTagsAndQuery** aplikację, aby ponownie uruchomić zapytania. Tym razem **myDeviceId** powinno pojawić się w obu wyników zapytania.
    
     ![Łączność urządzeń zgłoszonych pomyślnie][img-tagappsuccess]
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Dodaje metadane urządzenia jako tagi z aplikacji zaplecza i zapisano aplikacji symulowane urządzenie informacji w raporcie urządzenia łączności w dwie urządzenia. Przedstawiono również sposób kwerendy te informacje przy użyciu języka przypominającego SQL Centrum IoT zapytania.
+W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Dodane metadane urządzenia jako tagi z aplikacji zaplecza, a aplikacja powstała z jednego urządzenia symulowanego do raportu informacje o łączności urządzenia w bliźniaku urządzenia. Przedstawiono również sposób wykonywania zapytań te informacje przy użyciu języka zapytań usługi IoT Hub podobnego do SQL.
 
 Użyj następujących zasobów, aby dowiedzieć się, jak:
 
-* wysyłanie danych telemetrycznych z urządzenia z [Rozpoczynanie pracy z Centrum IoT] [ lnk-iothub-getstarted] samouczka
-* Konfigurowanie urządzeń przy użyciu właściwości żądaną dwie urządzenia z [Użyj żądanego właściwości, aby skonfigurować urządzenia] [ lnk-twin-how-to-configure] samouczka
-* kontrolowanie urządzenia interakcyjne (takich jak włączanie wentylator z aplikacji kontrolowane przez użytkownika) z [metody bezpośredniego] [ lnk-methods-tutorial] samouczka.
+* wysyłanie danych telemetrycznych z urządzeń przy użyciu [Rozpoczynanie pracy z usługą IoT Hub] [ lnk-iothub-getstarted] samouczka
+* Konfigurowanie urządzeń przy użyciu żądane właściwości bliźniaczej reprezentacji urządzenia za pomocą [Użyj żądane właściwości, aby skonfigurować urządzenia] [ lnk-twin-how-to-configure] samouczka
+* Formant urządzenia interakcyjne (takich jak włączenie wentylator z aplikacji kontrolowanej przez użytkownika) [używanie metod bezpośrednich] [ lnk-methods-tutorial] samouczka.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png
@@ -224,7 +224,7 @@ Użyj następujących zasobów, aby dowiedzieć się, jak:
 
 [lnk-iothub-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
-[lnk-twin-how-to-configure]: iot-hub-csharp-node-twin-how-to-configure.md
+[lnk-twin-how-to-configure]: iot-hub-csharp-csharp-twin-how-to-configure.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 

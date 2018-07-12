@@ -1,6 +1,6 @@
 ---
-title: Organizowanie zasobów z grupami zarządzania platformy Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat grupy zarządzania i sposobu ich używania.
+title: Organizowanie zasobów przy użyciu grup zarządzania platformy Azure | Dokumentacja firmy Microsoft
+description: Informacje dotyczące grupy zarządzania i sposobu ich używania.
 author: rthorn17
 manager: rithorn
 editor: ''
@@ -10,88 +10,88 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/28/2018
+ms.date: 7/09/2018
 ms.author: rithorn
-ms.openlocfilehash: 611faef7e4b94b1734896fb64ca29540b12bc057
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c8152a6c12c776806d9a17c5e434d825d6c91165
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102549"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38466647"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów z grupami zarządzania platformy Azure
+# <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
-Jeśli Twoja organizacja ma wiele subskrypcji, może być konieczne sposobem wydajnie zarządzać dostępem, zasad i zgodności dla tych subskrypcji. Grupy zarządzania platformy Azure umożliwiają na poziomie zakresu powyżej subskrypcji. Zorganizować subskrypcje w kontenerach o nazwie "grupy zarządzania", a Twoje warunki ładu do grup zarządzania. Wszystkie subskrypcje w grupie zarządzania automatycznie odziedziczą warunki stosowane do grupy zarządzania. Grupy zarządzania zapewniają na dużą skalę, niezależnie od tego, jakiego rodzaju subskrypcji może być zarządzania korporacyjnej.
+Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do kontenerów o nazwie "management groups" i zastosować warunkach nadzoru do grup zarządzania. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy zarządzania. Grupy zarządzania umożliwiają zarządzanie korporacyjnej na dużą skalę, niezależnie od tego, jakiego rodzaju subskrypcji może być.
 
-Funkcja grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z grup zarządzania, zaloguj się w [portalu Azure](https://portal.azure.com) i wyszukaj **grup zarządzania** w **wszystkie usługi** sekcji.
+Z funkcji grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z grup zarządzania, zaloguj się do [witryny Azure portal](https://portal.azure.com) i wyszukaj **grup zarządzania** w **wszystkich usług** sekcji.
 
-Na przykład możesz zastosować zasady do grupy zarządzania, która ogranicza regiony dostępne na potrzeby tworzenia maszyny wirtualnej (VM). Te zasady będą stosowane do wszystkich grup zarządzania, subskrypcje i zasobów w ramach tej grupy zarządzania zezwalając tylko maszyny wirtualne mogą być tworzone w tym regionie.
+Na przykład można zastosować zasady do grupy zarządzania, który ogranicza regionów, które są dostępne na potrzeby tworzenia maszyny wirtualnej (VM). Te zasady będą stosowane do wszystkich grup zarządzania, subskrypcji i zasobów w ramach tej grupy zarządzania, poprzez zezwolenie wyłącznie na maszyny wirtualne zostały utworzone w tym regionie.
 
-## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchia grup zarządzania i subskrypcji
+## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchia grup zarządzania i subskrypcje
 
-Można tworzyć elastyczne struktury grupy zarządzania i subskrypcji do organizowania zasobów w hierarchii do ujednoliconego zasad i zarządzania dostępem.
-Na poniższym diagramie przedstawiono przykład hierarchii, które składa się z grupy zarządzania i subskrypcje są zorganizowane według działów.
+Można tworzyć elastyczne struktury grupy zarządzania i subskrypcji do organizowania zasobów w hierarchii dla ujednoliconego zasad i zarządzania dostępem.
+Na poniższym diagramie przedstawiono przykładowa hierarchia, który składa się z grupy zarządzania i subskrypcje, uporządkowane według działów.
 
-![Drzewa](media/management-groups/MG_overview.png)
+![drzewo](media/management-groups/MG_overview.png)
 
-Tworząc hierarchii, które są grupowane według działów, można przypisać [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) ról który *dziedziczą* do działów w ramach tej grupy zarządzania. Za pomocą grup zarządzania, można zmniejszyć obciążenie sieci i zmniejsza ryzyko błędu o konieczności tylko raz przypisanie roli.
+Tworząc hierarchii, które są grupowane według działów, można przypisać [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) ról, *dziedziczą* działom w ramach tej grupy zarządzania. Za pomocą grup zarządzania, można zmniejszyć obciążenie i zmniejsza ryzyko błędu o konieczności tylko raz przypisanie roli.
 
 ### <a name="important-facts-about-management-groups"></a>Ważne informacje o grupy zarządzania
 
-- 10 000 grup zarządzania może być obsługiwany w jednym katalogu.
-- Drzewo grupy zarządzania może obsługiwać do sześciu poziomach głębokości.
+- 10 000 grupy zarządzania mogą być obsługiwane w jednym katalogu.
+- Drzewo grupy zarządzania może obsługiwać maksymalnie sześciu poziomach głębokości.
   - Ten limit nie zawiera poziomu głównego lub na poziomie subskrypcji.
-- Każda grupa zarządzania i subskrypcji może obsługiwać tylko jeden obiekt nadrzędny.
-- Każdej grupie zarządzania może mieć wielu elementów podrzędnych.
-- Wszystkie subskrypcje i grup zarządzania znajdują się w jednej hierarchii w każdym katalogu. Zobacz [ważnych informacji o grupie zarządzania głównego](#important-facts-about-the-root-management-group) wyjątków w wersji zapoznawczej.
+- Każda grupa zarządzania i subskrypcja może obsługiwać tylko jedną jednostkę nadrzędną.
+- Jedna grupa zarządzania może mieć wiele obiektów podrzędnych.
+- Wszystkie subskrypcje i grup zarządzania znajdują się w jednej hierarchii w każdym katalogu. Zobacz [ważnych informacji o grupie zarządzania głównym](#important-facts-about-the-root-management-group) do obsługi wyjątków w wersji zapoznawczej.
 
-### <a name="preview-subscription-visibility-limitation"></a>Ograniczenie widoczności subskrypcji w wersji zapoznawczej
+### <a name="preview-subscription-visibility-limitation"></a>Ograniczenie widoczność subskrypcji (wersja zapoznawcza)
 
-Obecnie jest to ograniczenie w wersji zapoznawczej, której nie można wyświetlić subskrypcje, które zostały odziedziczone dostęp do. Dostęp jest dziedziczona do subskrypcji, ale usługi Azure Resource Manager nie jest w stanie przyjąć jeszcze dostępu dziedziczenia.  
+Obecnie jest to ograniczenie, w ramach wersji zapoznawczej, gdzie jesteś w stanie wyświetlić subskrypcje, które mają dziedziczone dostęp do. Dostęp jest dziedziczony z subskrypcją, ale usługi Azure Resource Manager nie jest w stanie respektować jeszcze dostępu dziedziczenia.  
 
-Przy użyciu interfejsu API REST, aby uzyskać informacje o subskrypcji zwraca szczegółowe informacje, masz dostęp, ale w portalu Azure i programu Azure Powershell nie pokazuj subskrypcji.
+Za pomocą interfejsu API REST, aby uzyskać informacje dotyczące subskrypcji Zwraca szczegóły, masz dostęp, ale w witrynie Azure portal i programu Azure Powershell nie pokazuj więcej subskrypcji.
 
-Ten element jest wykorzystywanej na i zostanie rozwiązany przed zarządzania, które grupy są ogłaszane jako "Ogólnej dostępności."  
+Ten element jest opracowywane i zostanie rozwiązany przed zarządzania grupami są anonsowane jako "Wersja ogólnie dostępna."  
 
 ### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) ograniczenia wersji zapoznawczej
 
-Jest to aktualne ograniczenie dla partnerów Cloud Solution Provider (CSP), której nie można tworzyć ani Zarządzanie grupami zarządzania ich odbiorców w katalogu ich klienta.  
-Ten element jest wykorzystywanej na i zostanie rozwiązany przed zarządzania, które grupy są ogłaszane jako "Ogólnej dostępności."
+Jest to aktualne ograniczenie dla partnerów Cloud Solution Provider (CSP), których nie można utworzyć lub Zarządzanie grupami zarządzania przez klientów w swoich klientów katalogu.  
+Ten element jest opracowywane i zostanie rozwiązany przed zarządzania grupami są anonsowane jako "Wersja ogólnie dostępna."
 
 ## <a name="root-management-group-for-each-directory"></a>Grupa zarządzania głównego dla każdego katalogu
 
-Każdy katalog znajduje się grupę pojedynczego zarządzania najwyższego poziomu o nazwie grupy zarządzania "Root". Tej grupy zarządzania głównego jest wbudowana w hierarchii, aby wszystkie grupy zarządzania i subskrypcje fold do niego. Tej grupy zarządzania głównego umożliwia globalnych zasad i przypisań RBAC można zastosować na poziomie katalogu. [Katalogu Administrator musi się podnieść](../role-based-access-control/elevate-access-global-admin.md) początkowo jako właściciela tej grupy głównego. Gdy administrator jest właścicielem grupy, może on przypisać dowolnej roli RBAC do innego katalogu użytkowników lub grup, do zarządzania w hierarchii.  
+Każdy katalog jest podana przez pojedynczą najwyższego poziomu grupę zarządzania o nazwie grupy zarządzania "Root". Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Tej grupy zarządzania głównego umożliwia globalnych zasad i przypisania RBAC można stosować na poziomie katalogu. [Directory Administrator musi się podnieść](../role-based-access-control/elevate-access-global-admin.md) początkowo jako właściciela tej grupy katalogu głównego. Gdy administrator jest właścicielem grupy, można przypisać każdej roli RBAC, do innych użytkowników katalogu lub grup, do zarządzania w hierarchii.  
 
-### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje o grupie zarządzania głównego
+### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje o głównej grupy zarządzania
 
-- Domyślnie nadawane są nazwy i Identyfikatora grupy zarządzania głównego. Nazwa wyświetlana może zostać zaktualizowana w dowolnym momencie, aby wyświetlić różne w portalu Azure.
-  - Nazwa będzie "Dzierżawy głównej grupy".
+- Domyślnie są nadawane nazwy i Identyfikatora grupy zarządzania głównym. Nazwa wyświetlana może zostać zaktualizowana w dowolnym momencie, aby wyświetlić różne w witrynie Azure portal.
+  - Nazwą będzie "Dzierżawy głównej grupy".
   - Identyfikator będzie identyfikator usługi Azure Active Directory.
-- Głównej grupy zarządzania nie może zostać przeniesiony lub usunięty, w przeciwieństwie do innych grup zarządzania.  
-- Wszystkie subskrypcje i grup zarządzania składania w grupie zarządzania jednego katalogu głównego w katalogu.
-  - Wszystkie zasoby w katalogu składania do głównej grupy zarządzania do zarządzania globalnego.
+- Głównej grupy zarządzania nie przeniesiony lub usunięty, w przeciwieństwie do innych grup zarządzania.  
+- Wszystkie subskrypcje i grup zarządzania składa z grupą zarządzania jeden katalog główny, w katalogu.
+  - Wszystkie zasoby w katalogu składa do głównej grupy zarządzania do globalnego zarządzania.
   - Nowe subskrypcje są automatycznie ustawiana domyślnie do głównej grupy zarządzania podczas tworzenia.
-- Wszyscy klienci Azure widzą głównej grupy zarządzania, ale nie wszyscy klienci mają dostęp do zarządzania tej grupy zarządzania głównego.
-  - Każdego, kto ma dostęp do subskrypcji można znajdują się w kontekście, z którym subskrypcji znajduje się w hierarchii.  
-  - Nie podano domyślnego dostępu do głównej grupy zarządzania. Administratorzy globalni katalogu są tylko użytkownicy, którzy mogą podniesienia uprawnień użytkownika do uzyskania dostępu.  Gdy użytkownicy mają dostęp, Administratorzy katalogu można przypisać dowolnej roli RBAC do innych użytkowników do zarządzania.  
+- Wszystkich klientów platformy Azure może zobaczyć głównej grupy zarządzania, ale nie wszyscy klienci mają dostęp do zarządzania tej grupy zarządzania głównym.
+  - Każdy, kto ma dostęp do subskrypcji można zobaczyć kontekst, w której subskrypcji znajduje się w hierarchii.  
+  - Nikt nie otrzymuje dostęp do domyślnej głównej grupy zarządzania. Administratorzy globalni katalogu są tylko użytkownicy, którzy podnieść poziom konta użytkownika do uzyskania dostępu.  Gdy użytkownicy mają dostęp, Administratorzy katalogu mogą przypisywać żadnych ról RBAC, do innych użytkowników do zarządzania.  
 
 >[!NOTE]
->Jeśli katalogu uruchomiony przy użyciu usługi grupy zarządzania przed 6/25/2018, katalogu może nie być skonfigurowany z wszystkie subskrypcje w hierarchii. Zespół grupy zarządzania jest wstecznie aktualizowania każdego katalogu, w którym uruchomiony przy użyciu grup zarządzania w publicznej wersji zapoznawczej przed tą datą w lipcu 2018. Wszystkie subskrypcje w katalogach będą dzieci w ramach grupy zarządzania głównego wcześniejszych.  
+>Jeśli Twój katalog pracę, przy użyciu usługi grupy zarządzania przed 6 25 2018, katalogiem może nie można skonfigurować w przypadku wszystkich subskrypcji w hierarchii. Zespół zarządzający grupy wstecznie aktualizuje każdy katalog, który uruchamiany przy użyciu grup zarządzania w publicznej wersji zapoznawczej przed tą datą w ramach lipca 2018 r. Wszystkie subskrypcje w katalogach zostaną wprowadzone elementy podrzędne w ramach grupy zarządzania głównym poprzedniego.  
 >
->Jeśli masz pytania dotyczące tego procesu wsteczny, skontaktuj się z: managementgroups@microsoft.com  
+>Jeśli masz pytania na temat tego procesu wsteczną kontaktu: managementgroups@microsoft.com  
   
 ## <a name="initial-setup-of-management-groups"></a>Początkowej konfiguracji grupy zarządzania
 
-Po uruchomieniu dowolnego użytkownika przy użyciu grup zarządzania jest procesem początkowej konfiguracji, wykonywanej. Pierwszym krokiem jest głównej grupy zarządzania jest tworzony w katalogu. Po utworzeniu tej grupy, wszystkie istniejące subskrypcje, które istnieją w katalogu są wprowadzane elementy podrzędne głównej grupy zarządzania.  Przyczyna tego procesu jest upewnij się, że istnieje tylko jedna hierarchia grupy zarządzania w katalogu.  Pojedynczą hierarchię w katalogu umożliwia administracyjne stosowanie globalnego dostępu i zasad, które innych klientów w katalogu nie można pominąć. Cokolwiek przypisane w katalogu głównym zostaną zastosowane do wszystkich grup zarządzania, subskrypcji, grupy zasobów i zasobów w ramach katalogu przez jedną hierarchię w katalogu.  
+Po uruchomieniu dowolnego użytkownika przy użyciu grup zarządzania jest procesem konfiguracji początkowej zachodzącej. Pierwszym krokiem jest, że głównej grupy zarządzania jest tworzony w katalogu. Po utworzeniu tej grupy, wszystkie istniejące subskrypcje, które istnieją w katalogu są wykonywane elementy podrzędne głównej grupy zarządzania.  Przyczyna tego procesu jest upewnij się, że istnieje tylko jedna hierarchia grup zarządzania w katalogu.  Pojedynczą hierarchię w katalogu pozwala administracyjne klientom na stosowanie globalnego dostępu i zasad, które inni klienci w katalogu nie można pominąć. Cokolwiek przypisane w katalogu głównym będą stosowane we wszystkich grup zarządzania, subskrypcji, grupy zasobów i zasobów w ramach katalogu dzięki jednej hierarchii w katalogu.  
 
 > [!IMPORTANT]
-> Wszystkie przypisania przypisywanie dostępu lub zasad użytkownika w głównej grupie zarządzania **ma zastosowanie do wszystkich zasobów w katalogu**. W związku z tym wszystkich klientów należy ocenić, trzeba mieć elementów zdefiniowanych w tym zakresie.  Przypisania dostępu i zasad użytkowników powinny być "Musi mieć" tylko w tym zakresie.  
+> Wszystkie przypisania dostępu lub zasad przypisania użytkownika w głównej grupie zarządzania **ma zastosowanie do wszystkich zasobów w katalogu**. W związku z tym wszyscy klienci powinni rozważyć zapewnienie elementy zdefiniowane w tym zakresie.  Przypisania dostępu i zasad użytkownika powinien być "Muszą mieć" tylko w tym zakresie.  
   
 ## <a name="management-group-access"></a>Dostęp do grupy zarządzania
 
-Obsługa grup zarządzania Azure [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) dla wszystkich uzyskuje dostęp do zasobów i definicje ról. Te uprawnienia są dziedziczone przez zasoby podrzędne, które istnieją w hierarchii. Wszelkie wbudowane role RBAC można przypisać do grupy zarządzania, który będzie dziedziczyć w dół hierarchii do zasobów.  Na przykład Współautor RBAC roli maszyny Wirtualnej można przypisać do grupy zarządzania. Ta rola nie ma działań w grupie zarządzania, ale będzie dziedziczyć na wszystkich maszynach wirtualnych w ramach tej grupy zarządzania.  
+Obsługa grup zarządzania platformy Azure [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) dla wszystkich uzyskuje dostęp do zasobów i definicje ról. Te uprawnienia są dziedziczone z zasobami podrzędne, które istnieją w hierarchii. Wszelkie wbudowana rola RBAC można przypisać do grupy zarządzania, który będzie dziedziczyć w dół hierarchii do zasobów.  Na przykład Współautor maszyny Wirtualnej rolę RBAC można przypisać do grupy zarządzania. Ta rola ma żadnych działań w grupie zarządzania, ale będzie dziedziczyć do wszystkich maszyn wirtualnych w ramach tej grupy zarządzania.  
 
-W poniższej tabeli przedstawiono listę ról i obsługiwane akcje w grupach zarządzania.
+Poniższej tabeli przedstawiono listę ról i obsługiwane operacje na grupach zarządzania.
 
 | Nazwa roli RBAC             | Przycisk Utwórz | Zmiana nazwy | Move | Usuwanie | Przypisywanie dostępu | Przypisz zasady | Odczyt  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
@@ -101,9 +101,9 @@ W poniższej tabeli przedstawiono listę ról i obsługiwane akcje w grupach zar
 |Współautor zasad zasobów |        |        |      |        |               | X             |       |
 |Administrator dostępu użytkowników   |        |        |      |        | X             |               |       |
 
-### <a name="custom-rbac-role-definition-and-assignment"></a>Definicja roli RBAC niestandardowych i przypisania
+### <a name="custom-rbac-role-definition-and-assignment"></a>Definicja roli RBAC niestandardowych i przypisanie
 
-Role RBAC niestandardowe nie są obsługiwane na grup zarządzania w tej chwili.  Zobacz [forum opinii grupy zarządzania](https://aka.ms/mgfeedback) do wyświetlenia stanu tego elementu.
+Niestandardowe role RBAC nie są obsługiwane dla grup zarządzania w tej chwili.  Zobacz [forum z opiniami grupy zarządzania](https://aka.ms/mgfeedback) Aby wyświetlić stan tego elementu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -111,6 +111,6 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](management-groups-create.md)
 - [Jak zmienić, usunąć lub zarządzać grupami zarządzania](management-groups-manage.md)
-- [Zainstaluj moduł Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
-- [Przejrzyj specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview)
-- [Zainstaluj rozszerzenie interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Instalowanie modułu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
+- [Przegląd specyfikacji interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
+- [Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)

@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia najlepszych rozwiązań IaaS obciążeń na platformie Azure | Dokumentacja firmy Microsoft
-description: " Migracji obciążeń do IaaS platformy Azure oferuje możliwości, aby obliczyć ponownie nasze projekty "
+title: Najlepsze rozwiązania dotyczące zabezpieczeń dla IaaS obciążeń na platformie Azure | Dokumentacja firmy Microsoft
+description: " Migrację obciążeń do usługi Azure IaaS zapewnia możliwości to ponowne ocenienie nasze projekty "
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,221 +12,244 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366277"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724099"
 ---
-# <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
+# <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
-Rozpocznie się zastanawiać przenoszenie obciążeń do infrastruktury platformy Azure jako usługa (IaaS), możesz prawdopodobnie zrealizowane zapoznali pewne zagadnienia. Środowisko zabezpieczanie środowisk wirtualnych mogą już istnieć. Po przeniesieniu do IaaS platformy Azure, możesz się swoją wiedzą w zabezpieczanie środowisk wirtualnych i użyj nowy zestaw opcji, aby ułatwić zabezpieczanie zasobów.
+W większości infrastruktury jako scenariuszy usługi (IaaS) [maszyn wirtualnych (VM)](https://docs.microsoft.com/azure/virtual-machines/) są głównym obciążenia dla organizacji, które korzystają z chmury obliczeniowej. Ten fakt jest szczególnie widoczne w [scenariuszy hybrydowych](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) gdzie organizacji chce powoli migrację obciążeń do chmury. W takich sytuacjach należy wykonać [zabezpieczenia Ogólne zagadnienia dotyczące modelu IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)i Zastosuj najlepsze rozwiązania dotyczące zabezpieczeń na wszystkich maszynach wirtualnych.
 
-Zacznijmy od informujący o tym, że powinien nie oczekujemy, można wyświetlić lokalnych zasobów jako jeden do jednego na platformie Azure. Nowe opcje i wyzwania Przełącz możliwość obliczyć ponownie istniejących deigns, narzędzi i procesów.
-
-Twoje odpowiedzialność za bezpieczeństwo jest oparty na typie usługi w chmurze. Poniżej przedstawiono saldo odpowiedzialność firmy Microsoft i można:
-
+Twoja odpowiedzialność za zabezpieczeń zależy od rodzaju usłudze w chmurze. Poniższej tabeli podsumowano saldo odpowiedzialność firmy Microsoft i możesz:
 
 ![Zakres odpowiedzialności](./media/azure-security-iaas/sec-cloudstack-new.png)
 
+Wymagania dotyczące zabezpieczeń różnią się w zależności od szeregu czynników, takich jak różne typy obciążeń. Nie w jednym z tych najlepszych rozwiązań przez siebie zabezpieczyć swoje systemy. Podobnie jak niczego więcej w zabezpieczeń musisz wybierz odpowiednie opcje, a następnie zobacz, jak te rozwiązania mogą uzupełniają się wzajemnie, wypełniając luki.
 
-Omówiono niektóre opcje dostępnej na platformie Azure, które pomaga spełnić wymagania dotyczące zabezpieczeń w organizacji. Należy pamiętać, że wymagania dotyczące zabezpieczeń mogą być różne w różnych rodzajów obciążeń. Nie jest elementem następujące najlepsze rozwiązania samodzielnie zabezpieczyć systemy. Jak żadnych innych elementów zabezpieczeń należy wybrać odpowiednie opcje i zobacz, jak te rozwiązania mogą uzupełniają przez wypełniania luk.
+W tym artykule omówiono różne maszyny Wirtualnej najlepszych rozwiązań dotyczących zabezpieczeń, każdy pochodzi od klientów i bezpośredniego środowiska firmy Microsoft, za pomocą maszyn wirtualnych.
 
-## <a name="use-privileged-access-workstations"></a>Użyj stacje robocze uprzywilejowanego dostępu
+Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi możliwościami platformy Azure, a zestawy funkcji. Ponieważ opinie i technologie mogą się zmieniać wraz z upływem czasu, w tym artykule zostanie zaktualizowany odzwierciedlać wprowadzone zmiany.
 
-Organizacje często wchodzą żerują do cyberattacks ponieważ administratorom wykonywać akcji przy użyciu konta z podwyższonym poziomem uprawnień. Zazwyczaj nie jest to złośliwy, ale ponieważ zezwala na to istniejącej konfiguracji i procesów. Większość tych użytkowników świadomość ryzyka tych działań z punktu widzenia koncepcyjnej, ale nadal wybierz ich wykonywania.
+## <a name="use-privileged-access-workstations"></a>Użyj stacji roboczych z dostępem uprzywilejowanym
 
-Wykonywanie czynności, takie jak sprawdzanie poczty e-mail i przeglądania Internetu wydaje się wystarczająco nieszkodliwie. Ale one może narazić kont z podwyższonym poziomem uprawnień na naruszenia przez złośliwych osób. Przeglądanie działań, specjalnie przygotowany wiadomości e-mail lub innych technik może służyć do uzyskiwania dostępu do Twojej organizacji. Zdecydowanie zaleca się użycie bezpiecznego zarządzania stacje robocze (piły) przeprowadzania wszystkich zadań administracyjnych usługi Azure. Piły służą ograniczyć ryzyko przypadkowego naruszenia zabezpieczeń.
+Organizacje często można podzielić żerują na ataki cybernetyczne ponieważ administratorzy wykonywać akcje podczas korzystania z kont z podwyższonym poziomem uprawnień. Chociaż nie może to być wynikiem złośliwych działań, odbywa się, ponieważ zezwala istniejącej konfiguracji i procesów. Większość tych użytkowników świadomość ryzyka tych działań z punktu widzenia koncepcyjnej, ale nadal zdecydować się na ich realizacji.
 
-Uprzywilejowany dostęp do stacji roboczych (łapy) zawierają dedykowanego systemu operacyjnego poufnych zadań —, który jest chroniony z Internetu ataków i zagrożeń wektory. Oddzielanie tych ważnych zadań i konta z urządzeń i stacji roboczych używanych codziennie udostępnia silną ochronę. Ta separacja ogranicza wpływ wyłudzania, aplikacji i luk w zabezpieczeniach systemu operacyjnego, ataków na różnych personifikacji i ataków kradzieży poświadczeń. (rejestrowanie, Pass--Hash i Pass--Ticket klawiszy)
+Wykonywanie czynności takich jak sprawdzanie poczty e-mail i przeglądania Internetu wydają się wystarczająco nieszkodliwie. Jednak może być eksponowanie z podwyższonym poziomem uprawnień konta, aby naruszyć bezpieczeństwo, uczestników złośliwych działań. Przeglądanie działań, specjalnie przygotowane wiadomości e-mail lub innych technik może służyć do uzyskania dostępu do Twojej organizacji. Zdecydowanie zalecamy korzystanie z stacje robocze bezpiecznego zarządzania (z stacje SAW) przeprowadzania wszystkich zadań administracyjnych usługi Azure. Stacje SAW są sposobem zmniejszenia narażenia na zagrożenia przypadkowe.
 
-Podejście ŁAPY jest rozszerzeniem ustalonym i zalecane praktyki indywidualnie przypisane konta administracyjnego. Konto administracyjne jest oddzielony od standardowego konta użytkownika. ŁAPY udostępnia zaufanego stacji roboczej dla tych kont poufnych.
+Stacji roboczych z dostępem (Paw) zapewniają dedykowany system operacyjny do realizacji zadań poufnych — taki, który jest chroniony przed atakami internetowymi i wektorami zagrożenia. Oddzielenie poufnych zadań i kont z urządzeń i codzienne użycia stacji roboczych zapewnia silną ochronę. Ta separacja ogranicza wpływ wyłudzanie informacji, aplikacji i luk w zabezpieczeniach systemu operacyjnego, różnych ataków personifikacji i ataków z kradzieżą poświadczeń. (klawiszy, rejestrowanie, Pass--Hash i Pass--Ticket)
 
-Aby uzyskać więcej informacji i implementacji pomocy, zobacz [uprzywilejowanego dostępu stacje robocze](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations).
+Podejście PAW stanowi rozszerzenie sprawdzone i zalecane praktyki indywidualnie przypisane konto administracyjne. Konto administracyjne jest niezależna od standardowego konta użytkownika. Rozwiązania PAW zapewnia wiarygodną stację roboczą dla kont poufnych.
+
+Aby uzyskać więcej informacji i wykonania wskazówek, zobacz [stacji roboczych z dostępem uprzywilejowanym](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations).
 
 ## <a name="use-multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-W przeszłości w Twojej sieci obwodowej był używany do kontrolowania dostępu do danych firmowych. W środowisku chmury — pierwszy, najpierw mobile tożsamość jest płaszczyzny sterowania: służy do kontrolowania dostępu do usługi IaaS z dowolnego urządzenia. Możesz również Użyj, aby uzyskać wgląd i wgląd w jak i gdzie danych jest używany. Ochrona tożsamości cyfrowych użytkowników platformy Azure jest podstawą ochrony subskrypcji przed kradzieżą tożsamości i innych cybercrimes.
+W przeszłości sieci obwodowej był używany do kontrolowania dostępu do danych firmowych. W świecie chmury i mobilność tożsamość jest na płaszczyźnie kontroli: możesz użyć do kontrolowania dostępu do usługi IaaS z dowolnego urządzenia. Można go także użyć widoczności i wgląd w gdzie i jak Twoje dane są używane. Ochrona tożsamości cyfrowej użytkowników platformy Azure stanowi podstawę ochrony subskrypcji przed kradzieżą tożsamości i innych cybercrimes.
 
-Jedną z najbardziej przydatne czynności, które należy wykonać, aby zabezpieczyć konto jest włączenie uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest sposób uwierzytelniania przy użyciu elementu oprócz hasła. Pomaga ograniczyć ryzyko dostępu przez osobę, która zarządza uzyskanie hasła do kogoś innego.
+Jedną z najbardziej korzystne czynności, które można wykonać, aby zabezpieczyć konto jest włączenie uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuetapowe jest sposób uwierzytelniania przy użyciu coś, co oprócz hasła. Pomaga ograniczyć ryzyko dostępu przez osobę, która zarządza, aby uzyskać hasło innej osoby.
 
-[Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) pomaga w zabezpieczaniu dostępu do danych i aplikacji spełniając zapotrzebowanie na prosty proces logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji łatwe — połączenie telefoniczne, wiadomość tekstowa lub powiadomienie aplikacji mobilnej. Użytkownicy wybierają metodę preferowany.
+[Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Zapewnia ona silne uwierzytelnianie z szerokim zakresem prostych opcji weryfikacji — połączenie telefoniczne, wiadomość tekstowa lub powiadomienie aplikacji mobilnej. Użytkownicy wybrać odpowiadającej im metody.
 
-Najprostszym sposobem użycia usługi Multi-Factor Authentication jest aplikacji mobilnej Authenticator firmy Microsoft można używać na urządzeniach przenośnych z systemem Windows, iOS i Android. Najnowsza wersja systemu Windows 10 i integracji lokalnej usługi Active Directory z usługą Azure Active Directory (Azure AD) [Windows Hello dla firm](../active-directory/active-directory-azureadjoin-passport-deployment.md) może służyć do łatwego logowanie jednokrotne do zasobów platformy Azure. W takim przypadku urządzenia z systemem Windows 10 jest używany jako drugi składnik uwierzytelniania.
+Najprostszym sposobem na uwierzytelnianie wieloskładnikowe jest aplikacją mobilną Microsoft Authenticator, która może być używany na urządzeniach przenośnych z systemem Windows, iOS i Android. Za pomocą najnowszej wersji zestawu Windows 10 i integracji lokalnej usługi Active Directory z usługą Azure Active Directory (Azure AD) [Windows Hello dla firm](../active-directory/active-directory-azureadjoin-passport-deployment.md) umożliwia bezproblemowe logowanie jednokrotne do zasobów platformy Azure. W takim przypadku urządzenie systemu Windows 10 jest używane jako drugi składnik uwierzytelniania.
 
-Dla konta, które zarządzają subskrypcją platformy Azure i kont, które można zalogować się do maszyn wirtualnych przy użyciu usługi Multi-Factor Authentication zapewnia znacznie wyższy poziom zabezpieczeń niż używanie tylko hasła. Inne formy uwierzytelniania dwuskładnikowego może działać równie dobrze, ale ich wdrożeniem może być skomplikowane, jeśli tak nie jest już w środowisku produkcyjnym.
+Konta, które zarządzają subskrypcją platformy Azure i kont, którzy mogą zalogować się do maszyn wirtualnych za pomocą uwierzytelniania wieloskładnikowego zapewnia znacznie większy poziom zabezpieczeń niż korzystanie tylko z hasła. Inne formy uwierzytelniania dwuskładnikowego może działać równie dobrze, ale wdrożenie ich może być skomplikowane, jeśli nie są już w środowisku produkcyjnym.
 
-Poniższy zrzut ekranu przedstawia niektóre z dostępnych opcji uwierzytelnianie wieloskładnikowe Azure:
+Poniższy zrzut ekranu przedstawia niektóre opcje dostępne dla usługi Azure Multi-Factor Authentication:
 
 ![Opcje uwierzytelniania wieloskładnikowego](./media/azure-security-iaas/mfa-options.png)
 
 ## <a name="limit-and-constrain-administrative-access"></a>Ograniczenia i ograniczenie dostępu administracyjnego
 
-Bardzo ważne jest zabezpieczenie kont, które mogą zarządzać subskrypcją platformy Azure. Naruszenie któregokolwiek z tych kont Negacja wartości wszystkich kroków, które może wykonać, aby zapewnić poufność i integralność danych. Ostatnio ilustrowane przez [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden) atakami wewnętrznymi stanowiących zagrożenie ogromnych na ogólne bezpieczeństwo każdej organizacji.
+Ważne jest Zabezpieczanie kont, które pozwala na Zarządzanie subskrypcją platformy Azure. Naruszenia zabezpieczeń w dowolnej z tych kont neguje wartości wszystkich kroków, które może podjąć w celu zapewnienia poufności i integralności danych. Ostatnio przedstawiono przez [Edward Snowden](https://en.wikipedia.org/wiki/Edward_Snowden) atakami wewnętrznymi stanowią zagrożenie duży na ogólne bezpieczeństwo każdej organizacji.
 
-W celu oceny osoby do prawa administracyjne podobne do następujących następujące kryteria:
+W celu oceny osoby do prawa administracyjne następujące kryteria podobne do następujących:
 
-- Są one wykonywanie zadań, które wymagają uprawnień administratora?
-- Jak często wykonywane zadania
-- Czy istnieje powód, dlaczego nie można wykonać zadania przez innego administratora w ich imieniu?
+- Są one wykonywane zadania, które wymagają uprawnień administratora
+- Jak często są wykonywane te zadania
+- Czy istnieje konkretny powód, dlaczego nie można wykonać zadania przez innego administratora w ich imieniu?
 
-Dokument wszystkich innych znanych alternatywnych metod do przyznawania uprawnień i każdego Dlaczego dopuszczalne.
+Dokumentowanie wszystkich innych znanych alternatywnych metod przyznawania uprawnień i każdy Dlaczego dopuszczalne.
 
-Użycie administracji just in time zapobiega niepotrzebnych istnieją konta z podwyższonym poziomem uprawnień w okresach, gdy nie są wymagane te prawa. Konta podniesionymi uprawnieniami przez ograniczony czas, aby administratorzy można wykonać swoje zadania. Następnie te prawa są usuwane po zakończeniu zmiany lub po zakończeniu zadania.
+Just enough administration zapobiega niepotrzebne istnieją konta z podwyższonym poziomem uprawnień w okresach, gdy te prawa nie są wymagane. Konta kontem z podniesionymi uprawnieniami przez ograniczony czas, aby administratorzy mogą wykonywania ich zadań. Następnie te prawa są usuwane po zakończeniu zmiany lub po zakończeniu zadania.
 
-Można użyć [Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md) do zarządzania, monitorowania i kontroli dostępu w organizacji. Pomaga pamiętać o akcje wykonywane przez osoby w Twojej organizacji. Stwarza również just in time administracji do usługi Azure AD dzięki zastosowaniu pojęcie kwalifikujących się Administratorzy. Są to osób, które mają konta, z których można udzielić uprawnień administratora. Te typy użytkowników, należy udzielić uprawnień administratora przez ograniczony czas i można przejść za pośrednictwem procesu aktywacji.
+Możesz użyć [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) do zarządzania, monitorowanie i kontrolowanie dostępu w Twojej organizacji. Ułatwia on pamiętać o akcję wykonywaną przez osoby w Twojej organizacji. Stwarza również administracji just in time do usługi Azure AD przez wprowadzenie pojęcia uprawnionymi administratorami. Są to osoby, którzy mają konta, z których należy przyznać uprawnienia administratora. Te typy użytkowników, należy udzielić uprawnień administratora przez ograniczony czas i można przejść przez proces aktywacji.
 
+## <a name="use-devtest-labs"></a>Użyj usługi DevTest Labs
 
-## <a name="use-devtest-labs"></a>Użyj DevTest Labs
+Oferta Azure for labs i środowisk programistycznych przejmowałaby opóźnień, które wprowadza zakupów sprzętu. Dzięki temu organizacje mogą zyskać elastyczność w środowisk testowych i programistycznych. Z drugiej strony Brak znajomość platformy Azure lub wymaganą w celu przyspieszenia jej przyjęcia może prowadzić z administratorem, aby być nadmiernie ograniczająca przy użyciu przypisywania uprawnień. To zagrożenie może przypadkowo uwidocznić organizacji atakami wewnętrznymi. Niektórzy użytkownicy mogą otrzymać dostęp o wiele więcej niż powinny mieć.
 
-Laboratoria i środowisk deweloperskich przy użyciu usługi Azure umożliwia organizacjom uzyskać elastyczność w badania i rozwój wykonując optymalizacji opóźnień, które wprowadza nabywania sprzętu. Niestety Brak znajomość Azure lub chęć pomocy przyspieszenia przyjęciu może prowadzić administratorowi być nadmiernie ograniczająca z Przypisywanie praw. To zagrożenie przypadkowo może narazić organizacji atakami wewnętrznymi. Niektórzy użytkownicy mogą otrzymać znacznie szerszy dostęp niż powinny mieć.
+[Usługi Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) usługi używa [kontroli dostępu](../role-based-access-control/overview.md) (RBAC). Za pomocą funkcji RBAC, można segregowanie zadań w ramach zespołu do ról, które mają przyznaną tylko poziom dostępu, które są niezbędne dla użytkowników do wykonywania ich zadań. RBAC jest powiązana z wstępnie zdefiniowanych ról (właściciel, użytkownik laboratorium i współautor). Te role umożliwia nawet przypisania praw partnerom zewnętrznym i znacznie ułatwiają współpracę.
 
-[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) usługi używa [kontroli dostępu](../role-based-access-control/overview.md) (RBAC). Za pomocą RBAC, można rozdzielenie obowiązków w obrębie organizacji do ról, które udzielić tylko poziom dostępu, które są niezbędne dla użytkowników do wykonywania zadań. RBAC zawiera wstępnie zdefiniowane role (właściciel, użytkownik laboratorium i współautor). Te role umożliwia nawet przypisać prawa do partnerami zewnętrznymi i znacznie upraszcza współpracy.
+Ponieważ usługa DevTest Labs korzysta z funkcji RBAC, jest możliwe do utworzenia dodatkowych, [ról niestandardowych](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nie tylko upraszcza zarządzanie uprawnieniami, upraszcza proces konfigurowania środowisk aprowizowane. Ułatwia on również dotyczyć innych typowych wyzwań związanych z zespołów, które działają w środowiskach deweloperskich i testowych. Wymaga to pewnych przygotowań, ale w długim okresie, jego ułatwi czynności dla Twojego zespołu.
 
-Ponieważ DevTest Labs używa RBAC, istnieje możliwość utworzenia dodatkowych, [role niestandardowe](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nie tylko ułatwia zarządzanie uprawnienia, takie rozwiązanie upraszcza proces konfigurowania środowiska obsługi administracyjnej. Pomaga również postępowania w przypadku innych typowych wyzwań związanych z zespołów, które pracują na środowisk projektowania i testowania. Wymaga on pewne przygotowania, ale w długim okresie, jego będzie ułatwienia dla zespołu.
+Usługa Azure DevTest Labs funkcje obejmują:
 
-Azure DevTest Labs funkcje:
-
-- Kontrolę administracyjną nad opcje dostępne dla użytkowników. Dozwolone rozmiary maszyn wirtualnych, maksymalna liczba maszyn wirtualnych i rozpoczęcie maszyn wirtualnych i zamykania centralnie może zarządzać administrator.
-- Automatyzacja tworzenia środowiska laboratorium.
+- Kontrolę administracyjną nad opcje dostępne dla użytkowników. Administrator centralnie zarządzać elementów, takich jak dozwolone rozmiary maszyn wirtualnych, maksymalna liczba maszyn wirtualnych, a następnie po uruchomieniu maszyn wirtualnych i zamykania.
+- Automatyzacja tworzenia środowiska laboratoryjnego.
 - Śledzenie kosztów.
-- Uproszczony dystrybucji maszyn wirtualnych do tymczasowej pracy współpracy.
-- Samoobsługi, która umożliwia użytkownikom udostępnianie ich labs przy użyciu szablonów.
-- Ograniczanie zużycia i zarządzanie.
+- Uproszczone rozkład maszyn wirtualnych dla tymczasowych pracy zespołowej.
+- Samoobsługa, która umożliwia użytkownikom aprowizację ich labs przy użyciu szablonów.
+- Zarządzanie i ograniczenie zużycia.
 
-![Tworzenie laboratorium przy użyciu DevTest Labs](./media/azure-security-iaas/devtestlabs.png)
+![DevTest Labs](./media/azure-security-iaas/devtestlabs.png)
 
-Bez dodatkowych kosztów jest skojarzona z użycia DevTest Labs. Tworzenie labs, zasady, szablonów i artefakty jest bezpłatna. Płaci się tylko zasobów Azure używane w laboratorium, na przykład maszyny wirtualne, konta magazynu i sieci wirtualnych.
+Bez dodatkowych kosztów jest skojarzony z użyciem usługi DevTest Labs. Tworzenie laboratoriów, zasady, szablonów i artefaktów jest bezpłatne. Płacisz tylko zasobów platformy Azure używane w laboratorium, takie jak maszyny wirtualne, konta magazynu i sieci wirtualnych.
 
+## <a name="control-and-limit-endpoint-access"></a>Kontrolki i limit dostępu do punktu końcowego
 
+Hostingu labs ani systemów produkcyjnych na platformie Azure oznacza, że na komputerach muszą być dostępne z Internetu. Domyślnie nowa maszyna wirtualna Windows ma portu RDP dostępny z Internetu, a maszynę wirtualną z systemem Linux ma otworzyć port SSH. Wykonując kroki limit udostępniane punkty końcowe jest niezbędne zminimalizować ryzyko przed nieautoryzowanym dostępem.
 
-## <a name="control-and-limit-endpoint-access"></a>Limit i kontroli dostępu do punktu końcowego
+Technologii w systemie Azure może pomóc ograniczyć dostęp do tych administracyjne punktów końcowych. Na platformie Azure, można użyć [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) (NSG). Gdy używasz usługi Azure Resource Manager dla wdrożenia, sieciowe grupy zabezpieczeń Ogranicz dostęp ze wszystkich sieci, można po prostu punktów końcowych zarządzania (protokołu RDP lub SSH). Myśląc sieciowych grup zabezpieczeń, należy traktować routera listy kontroli dostępu. Można ich użyć ściśle kontrolować komunikacji sieciowej między różnych segmentów sieci platformy Azure. Jest to podobne do tworzenia sieci w sieci obwodowej lub w innych sieciach izolowanych. Nie kontroluj ruchu, ale pomagają segmentacji sieci.
 
-Hosting labs lub systemów produkcyjnych na platformie Azure oznacza, że systemy muszą być dostępne z Internetu. Domyślnie nowej maszyny wirtualnej systemu Windows ma numer portu protokołu RDP z Internetu, a maszyny wirtualnej systemu Linux ma otworzyć port SSH. Pobieranie kroki do punktów końcowych limit widoczne jest niezbędne ograniczyć ryzyko nieautoryzowanego dostępu.
+Bardziej dynamiczny sposób ograniczania dostępu do maszyn wirtualnych jest użycie usługi Azure Security center [tylko w czasie administracji](../security-center/security-center-just-in-time.md). Usługa Security center można zablokować maszynach wirtualnych platformy Azure i zapewnia dostęp w razie. Proces działa, zezwalając na dostęp do użytkownika, który go zażąda po zweryfikowaniu, że na podstawie ich [kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) (RBAC), które mają odpowiednie uprawnienia. Azure Security center będzie następnie wprowadzić niezbędne sieciowych grup zabezpieczeń (NSG), aby zezwolić na ruch przychodzący.
 
-Technologie na platformie Azure mogą pomóc ograniczyć dostęp do tych administracyjne punktów końcowych. Na platformie Azure, można użyć [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md) (NSG). Gdy używasz usługi Azure Resource Manager do wdrożenia grup NSG ograniczyć dostęp ze wszystkich sieci do właśnie zarządzania punktów końcowych (RDP lub SSH). Jeśli uważasz, że grupy NSG, wziąć pod uwagę router listy kontroli dostępu. Ścisła kontrola komunikację sieciową między różnymi segmentami sieci platformy Azure można używać ich. Jest to podobne do tworzenia sieci w sieci obwodowej lub innych sieci izolowanej. Nie kontrolują ruch, ale pomagają segmentacji sieci.
+### <a name="site-to-site-vpnvpn-gatewayvpn-gateway-howto-site-to-site-resource-manager-portalmd"></a>[Sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
+Sieć VPN lokacja lokacja rozszerza sieć lokalną do chmury. Daje to możliwość użycia grup NSG, ponieważ można również zmodyfikować sieciowe grupy zabezpieczeń zezwalają na dostęp z dowolnego miejsca inny niż sieci lokalnej. Następnie można wymagać, że administrowanie odbywa się przez nawiązanie sieci platformy Azure za pośrednictwem sieci VPN.
 
-Na platformie Azure, można skonfigurować [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) z sieci lokalnej. Sieć VPN lokacja lokacja rozszerza sieci lokalnych do chmury. Umożliwia innym możliwość użycia grup NSG, ponieważ można również zmodyfikować grupy NSG można nie zezwolić na dostęp z dowolnego miejsca innych niż sieci lokalnej. Następnie można wymagać, aby zarządzanie odbywa się przez nawiązanie sieć platformy Azure za pośrednictwem sieci VPN.
+Opcja sieci VPN typu lokacja lokacja może być najbardziej atrakcyjnym w przypadkach, w którym są hostowane systemów produkcyjnych, które są ściśle zintegrowane z zasobów lokalnych na platformie Azure.
 
-Opcja VPN lokacja lokacja może być najbardziej atrakcyjne w przypadku których prowadzą hosting systemów produkcyjnych, które są ściśle zintegrowane z lokalnymi zasobami na platformie Azure.
+### <a name="point-to-sitevpn-gatewayvpn-gateway-howto-point-to-site-rm-psmd"></a>[Punkt lokacja](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Alternatywnie można użyć [punkt lokacja](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) opcji w sytuacji, gdy do zarządzania komputerami, które nie wymagają dostępu do zasobów lokalnych. Te systemy można samodzielnie w ich własnych sieci wirtualnych platformy Azure. Administratorzy mogą sieci VPN do platformy Azure hostowanej środowisko z ich administracyjnej stacji roboczej.
+W sytuacjach, w którym chcesz zarządzać systemów, które nie wymagają dostępu do zasobów lokalnych. Tych systemów można wyizolować w ich własnych sieci wirtualnych platformy Azure. Administratorzy mogą sieci VPN na platformie Azure hostowane środowisko z administracyjnej stacji roboczej.
 
 >[!NOTE]
->Jedną z opcji VPN umożliwia ponownie skonfigurować listy ACL na grup NSG do nie zezwalają na dostęp do punktów końcowych zarządzania z Internetu.
+>Jedną z opcji sieci VPN można użyć do zmiany konfiguracji listy ACL na sieciowe grupy zabezpieczeń zezwalają na dostęp do punktów końcowych zarządzania z Internetu.
 
-Inną opcją warto rozważane jest [bramy usług pulpitu zdalnego](../active-directory/authentication/howto-mfaserver-nps-rdg.md) wdrożenia. To wdrożenie służy do bezpiecznego łączenia się z serwerami usług pulpitu zdalnego za pośrednictwem protokołu HTTPS, podczas stosowania bardziej szczegółowe kontrolek do tych połączeń.
+### <a name="remote-desktop-gatewayactive-directoryauthenticationhowto-mfaserver-nps-rdgmd"></a>[Brama pulpitu zdalnego](../active-directory/authentication/howto-mfaserver-nps-rdg.md)
 
-Funkcje, które będzie mieć dostęp do uwzględnienia:
+Bezpiecznie łączyć się z serwerami usług pulpitu zdalnego przy użyciu protokołu HTTPS podczas stosowania bardziej szczegółowe kontrolek do tych połączeń, można użyć bramy usług pulpitu zdalnego.
 
-- Opcje administratora, aby ograniczyć liczbę połączeń na żądania z konkretnych systemów.
-- Uwierzytelnianie karty inteligentnej lub uwierzytelnianie wieloskładnikowe Azure.
-- Kontrola nad systemach, w których ktoś może nawiązać połączenie za pośrednictwem bramy.
-- Kontrolę nad urządzeniami i dysk przekierowania.
+Funkcje, które będą mieć dostęp do uwzględnienia:
 
-## <a name="use-a-key-management-solution"></a>Za pomocą rozwiązania zarządzania kluczami
+- Opcje administratora Ograniczanie połączeń do żądania z konkretnych systemów.
+- Uwierzytelnianie karty inteligentnej lub usługi Azure Multi-Factor Authentication.
+- Kontrolowanie za pośrednictwem systemów, które osoba może połączyć się za pośrednictwem bramy.
+- Kontrolę nad przekierowanie urządzenia i dysku.
 
-Bezpieczne zarządzanie kluczami jest podstawą ochrony danych w chmurze. Z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md), można bezpiecznie przechowywać kluczy szyfrowania i kluczy tajnych w małych, takich jak hasła w sprzętowych modułach zabezpieczeń (HSM). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM.
+### <a name="vm-availability"></a>Dostępność maszyny wirtualnej
 
-Procesy Microsoft klucze w trybie FIPS 140-2 poziom 2 HSM zweryfikowanych (sprzęt i oprogramowanie układowe). Monitor i inspekcji użycie kluczy z rejestrowaniem Azure: potoku dzienniki systemu Azure lub Security Information and Event Management (SIEM) dla dodatkowych analizy i wykrywania zagrożeń.
+Jeśli maszyna wirtualna działa najważniejsze aplikacje, które muszą mieć wysokiej dostępności, stanowczo zaleca się stosowanie wielu maszyn wirtualnych. Dla lepszej dostępności Utwórz co najmniej dwóch maszyn wirtualnych w [zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md).
 
-Każdy użytkownik z subskrypcją platformy Azure można tworzyć i używać magazynów kluczy. Mimo że Key Vault przynosi korzyści deweloperom i administratorom zabezpieczeń, można wdrożone i zarządzane przez administratora, który jest odpowiedzialny za zarządzanie usługami Azure w organizacji.
+[Usługa Azure Load Balancer](../load-balancer/load-balancer-overview.md) wymaga również, że maszyn wirtualnych z równoważeniem obciążenia należą do tego samego zestawu dostępności. Jeśli te maszyny wirtualne muszą być dostępne z Internetu, należy skonfigurować [modułu równoważenia obciążenia dostępnego z Internetu](../load-balancer/load-balancer-internet-overview.md).
 
+## <a name="use-a-key-management-solution"></a>Korzystanie z rozwiązania zarządzania kluczami
+
+Bezpieczne zarządzanie kluczami jest podstawą ochrony danych w chmurze. Za pomocą [usługi Azure Key Vault](../key-vault/key-vault-whatis.md), możesz bezpiecznie przechowywać klucze szyfrowania i małych wpisów tajnych, takich jak hasła w sprzętowych modułach zabezpieczeń (HSM). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM.
+
+Firma Microsoft będzie przetwarzać klucze w trybie FIPS 140-2 poziom 2 zweryfikowanych sprzętowych modułach zabezpieczeń (sprzęt i oprogramowanie układowe). Użycie klucza monitorować i sprawdzać za pomocą funkcji rejestrowania platformy Azure: potok jest rejestrowany w systemie Azure lub Security Information and Event Management (SIEM) na potrzeby dodatkowej analizy i wykrywania zagrożeń.
+
+Każda osoba z subskrypcją platformy Azure można tworzyć i używać magazynów kluczy. Mimo że usługa Key Vault przynosi korzyści deweloperom i administratorom zabezpieczeń, można zaimplementować i zarządza administrator, który jest odpowiedzialny za zarządzanie usługami systemu Azure w organizacji.
 
 ## <a name="encrypt-virtual-disks-and-disk-storage"></a>Szyfrowanie dysków wirtualnych i magazynu danych na dysku
 
-[Szyfrowanie dysków Azure](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0) adresy zagrożeń kradzieżą lub ujawnieniem przed nieautoryzowanym dostępem, że jest to osiągane przez przeniesienie dysku danych. Dysk może zostać dołączona do innego systemu sposób pomijanie inne kontrole dotyczące zabezpieczenia. Dysk używa szyfrowania [funkcji BitLocker](https://technet.microsoft.com/library/hh831713) w systemach Windows i DM-Crypt w systemie Linux, aby zaszyfrować systemu operacyjnego i dysków z danymi. Szyfrowanie dysków Azure integruje się z Key Vault w celu kontrolowania i zarządzać kluczami szyfrowania. Jest ona dostępna dla standardowych maszyn wirtualnych i maszyn wirtualnych z magazyn w warstwie premium.
+[Usługa Azure Disk Encryption](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0) adresy zagrożeniem kradzieżą lub ujawnieniem przed nieautoryzowanym dostępem, które odbywa się przez przeniesienie dysku danych. Można dołączyć dysku do innego systemu jako sposób pomijanie innych formantów zabezpieczeń. Dysk używa szyfrowania [funkcji BitLocker](https://technet.microsoft.com/library/hh831713) Windows i DM-Crypt w systemie Linux, aby szyfrować systemu operacyjnego i dysków z danymi. Usługa Azure Disk Encryption integruje się z usługą Key Vault w celu kontrolowania i zarządzać kluczami szyfrowania. Jest ona dostępna dla standardowych maszyn wirtualnych i maszyn wirtualnych dzięki usłudze premium storage.
 
-Aby uzyskać więcej informacji, zobacz [szyfrowania dysków Azure w systemie Windows i maszyn wirtualnych systemu Linux IaaS](azure-security-disk-encryption.md).
+Aby uzyskać więcej informacji, zobacz [usługi Azure Disk Encryption w Windows i maszyn wirtualnych IaaS z systemem Linux](azure-security-disk-encryption.md).
 
-[Szyfrowanie usługi Magazyn Azure](../storage/common/storage-service-encryption.md) pomaga chronić dane przechowywane. Jest ona włączona na poziomie konta magazynu. Ponieważ jest ona zapisywana w naszych centrach danych, które są automatycznie odszyfrowywane, tylko uzyskujesz dostęp do, szyfruje dane. Obsługuje następujące scenariusze:
+[Szyfrowanie usługi Azure Storage](../storage/common/storage-service-encryption.md) pomaga chronić dane magazynowane. Jest ona włączona na poziomie konta magazynu. Szyfruje dane, są zapisywane w naszych centrach danych i są automatycznie odszyfrowywane, jak można uzyskać do niego dostęp. Obsługuje następujące scenariusze:
 
-- Dołącz szyfrowania blokowych obiektów blob, obiekty BLOB i stronicowe obiekty BLOB
-- Szyfrowanie zarchiwizowane szablony przeniesiony do platformy Azure z lokalnymi i wirtualne dyski twarde
-- Szyfrowanie podstawowego systemu operacyjnego i dysków z danymi dla maszyn wirtualnych IaaS, utworzony za pomocą sieci wirtualne dyski twarde
+- Szyfrowanie blokowych obiektów blob, uzupełnialne i stronicowe obiekty BLOB
+- Szyfrowanie zarchiwizowane wirtualne dyski twarde i szablony przeniesione do platformy Azure ze środowiska lokalnego
+- Szyfrowanie dysków systemu operacyjnego i danych dla maszyn wirtualnych IaaS, który został utworzony przy użyciu sieci wirtualnych dysków twardych
 
-Przed przystąpieniem do szyfrowania magazynu Azure, należy pamiętać o dwa ograniczenia:
+Przed kontynuowaniem pracy przy użyciu szyfrowania magazynu platformy Azure należy pamiętać o dwa ograniczenia:
 
-- Nie jest dostępny na klasycznych kont magazynu.
-- Koduje tylko danych zapisane po włączeniu szyfrowania.
+- Nie jest dostępne w klasycznych kont magazynu.
+- Koduje tylko dane zapisane po włączeniu szyfrowania.
 
-## <a name="use-a-centralized-security-management-system"></a>Używany system zarządzania scentralizowanych zabezpieczeń
+## <a name="use-a-centralized-security-management-system"></a>System zarządzania scentralizowanych zabezpieczeń
 
-Serwery muszą być monitorowane przez stosowanie poprawek, konfiguracji, zdarzeń i działania, które może zostać uznane za bezpieczeństwo. Aby rozwiązać te problemy, można użyć [Centrum zabezpieczeń](https://azure.microsoft.com/services/security-center/) i [Operations Management Suite zabezpieczeń i zgodności](https://azure.microsoft.com/services/security-center/). Obie te opcje wykracza poza konfiguracji w systemie operacyjnym. Zapewniają także monitorowanie konfiguracji podstawowej infrastruktury, takich jak konfiguracji sieci i używania urządzenia wirtualnego.
+Serwery muszą być monitorowane do stosowania poprawek, konfiguracji, zdarzeń i działań, które może zostać uznane za obawy związane z bezpieczeństwem. Aby rozwiązać te problemy, możesz użyć [usługi Security Center](https://azure.microsoft.com/services/security-center/) i [Operations Management Suite Security and Compliance](https://azure.microsoft.com/services/security-center/). Obie te opcje wykracza poza Konfiguracja w systemie operacyjnym. Zapewniają także monitorowanie konfiguracji podstawowej infrastruktury, takich jak konfiguracja sieci i używania urządzenia wirtualnego.
 
 ## <a name="manage-operating-systems"></a>Zarządzanie systemami operacyjnymi
 
-W przypadku wdrożenia IaaS jesteś nadal odpowiedzialni za zarządzanie systemów, które można wdrożyć, podobnie jak inne serwery lub stacji roboczej w środowisku. Stosowanie poprawek, ograniczenia funkcjonalności przypisywania praw i innych działań związanych z konserwacji systemu nadal są z odpowiedzialności. Dla systemów, które są ściśle powiązane z zasobami lokalnymi można użyć tego samego narzędzia i procedury, że używasz lokalnych elementów, jak oprogramowanie antywirusowe, ochrony przed złośliwym kodem, poprawki i kopii zapasowej.
+We wdrożeniu IaaS jesteś odpowiedzialny za zarządzanie systemów, które można wdrożyć, tak jak dowolnego serwera lub na stacji roboczej w danym środowisku. Stosowanie poprawek, zaostrzanie poziomu zabezpieczeń, przypisywania praw i dowolne inne działanie związane z konserwacji systemu nadal jest odpowiedzialny za. Dla systemów, które są ściśle zintegrowane z Twoich zasobów w środowisku lokalnym można użyć tych samych narzędzi i procedur, że używasz lokalnych, takich jak oprogramowanie antywirusowe, ochrony przed złośliwym kodem, poprawki i kopii zapasowej.
 
-### <a name="harden-systems"></a>Ograniczenia funkcjonalności systemów
-Wszystkie maszyny wirtualne Azure IaaS powinien wzmocnione zabezpieczenia, dzięki czemu udostępniają tylko usługi punktów końcowych, które są wymagane dla aplikacji, które są zainstalowane. Dla maszyn wirtualnych systemu Windows, należy postępować zgodnie z zaleceniami, przez firmę Microsoft jako planów bazowych dla [Security Compliance Manager](https://technet.microsoft.com/solutionaccelerators/cc835245.aspx) rozwiązania.
+### <a name="harden-systems"></a>Utrwalanie systemów
 
-Menedżer zgodności zabezpieczeń to bezpłatne narzędzie. Można ją szybko skonfigurować i Zarządzanie pulpitami, tradycyjnych centrów danych i chmury prywatnej i publicznej za pomocą zasad grupy i System Center Configuration Manager.
+Powinny być wzmocnione wszystkich maszyn wirtualnych w modelu IaaS platformy Azure, umożliwiające eksponowanie tylko punkty końcowe usługi, które są wymagane dla aplikacji, które są zainstalowane. W przypadku maszyn wirtualnych Windows postępuj zgodnie z zaleceniami przez firmę Microsoft jako podstawy dla [Security Compliance Manager](https://technet.microsoft.com/solutionaccelerators/cc835245.aspx) rozwiązania.
 
-Menedżer zgodności zabezpieczeń zawiera gotowe do wdrożenia zasad i zarządzania żądaną konfiguracją pakiety konfiguracyjne, które są sprawdzane pod. Te plany bazowe są oparte na [wskazówki dotyczące zabezpieczeń Microsoft](https://technet.microsoft.com/library/cc184906.aspx) zaleceń oraz z branży najlepsze rozwiązania. Pomagają odejście konfiguracji, adres wymagania dotyczące zgodności i zmniejsza zagrożenia bezpieczeństwa.
+Menedżer zgodności zabezpieczeń to bezpłatne narzędzie firmy. Można użyć go, aby szybko skonfigurować i zarządzać komputerów stacjonarnych, tradycyjnych centrów danych i chmury prywatnej i publicznej za pomocą zasad grupy i System Center Configuration Manager.
 
-Menedżer zgodności zabezpieczeń służy do importowania bieżącej konfiguracji komputerów za pomocą dwóch różnych metod. Po pierwsze można zaimportować zasad grupy opartych na usłudze Active Directory. Po drugie, można zaimportować konfigurację "wzorcowe" komputera odniesienia przy użyciu [LocalGPO narzędzia](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) do tworzenia kopii zapasowych lokalnych zasadach grupy. Następnie można zaimportować zasad grupy lokalnej do Menedżera zgodności zabezpieczeń.
+Menedżer zgodności zabezpieczeń zapewnia gotowe do wdrożenia zasad i pakiety konfiguracyjne Desired Configuration Management, które są badane. Te plany bazowe są oparte na [wskazówki dotyczące zabezpieczeń firmy Microsoft](https://technet.microsoft.com/library/cc184906.aspx) zalecenia i w przemyśle najlepszych rozwiązań. Ułatwiają one zarządzanie nieaktualną konfigurację, adres wymagań dotyczących zgodności i ograniczyć zagrożenia bezpieczeństwa.
 
-Porównanie standardy do najlepsze rozwiązania w branży, dostosuj je i Utwórz nowe zasady i pakiety konfiguracji zarządzania żądaną konfiguracją. Linie bazowe zostały opublikowane dla wszystkich obsługiwanych systemów operacyjnych, w tym Windows 10 Anniversary Update i Windows Server 2016.
+Menedżer zgodności zabezpieczeń służy do importowania bieżącą konfigurację komputerów za pomocą dwóch różnych metod. Po pierwsze można zaimportować zasad grupy opartych na usłudze Active Directory. Po drugie, można zaimportować konfigurację "złotą" komputer wzorcowy przy użyciu [narzędzie LocalGPO](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) do tworzenia kopii zapasowych lokalnych zasadach grupy. Następnie można zaimportować zasad grupy lokalnej do Menedżera zgodności zabezpieczeń.
 
-
-### <a name="install-and-manage-antimalware"></a>Zainstaluj i Zarządzaj ochrony przed złośliwym oprogramowaniem
-
-W środowiskach hostowanych oddzielnie od środowiska produkcyjnego można użyć rozszerzenia ochrony przed złośliwym kodem można chronić maszyny wirtualne i usługi w chmurze. Integruje się z [Centrum zabezpieczeń Azure](../security-center/security-center-intro.md).
+Porównaj standardy branżowe najlepszych rozwiązań, dostosuj je i Utwórz nowe zasady i pakiety konfiguracyjne Desired Configuration Management. Linie bazowe zostały opublikowane dla wszystkich obsługiwanych systemach operacyjnych, w tym Rocznicowej aktualizacji systemu Windows 10 i Windows Server 2016.
 
 
-[Microsoft Antimalware](azure-security-antimalware.md) obejmuje funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacji podpisu, aktualizacji aparatu i przykłady raportowania zbierania zdarzeń wykluczeń, i [ObsługaprogramuPowerShell](https://msdn.microsoft.com/library/dn771715.aspx).
+### <a name="install-and-manage-antimalware"></a>Instalowanie i zarządzanie nią ochrony przed złośliwym kodem
 
-![Azure ochrony przed złośliwym oprogramowaniem](./media/azure-security-iaas/azantimalware.png)
+W środowiskach, które znajdują się oddzielnie od środowiska produkcyjnego można użyć rozszerzenia ochrony przed złośliwym oprogramowaniem pomagające chronić maszyny wirtualne i usługi w chmurze. Integruje się z [usługi Azure Security Center](../security-center/security-center-intro.md).
 
-### <a name="install-the-latest-security-updates"></a>Zainstaluj najnowsze aktualizacje zabezpieczeń
-Pierwszy obciążeń, które klienci przenieść Azure należą labs i systemy dołączonej do Internetu. W przypadku maszyn wirtualnych hostowanych w usłudze Azure obsługuje aplikacje lub usługi, które muszą być dostępne z Internetem, można czujność o stosowanie poprawek. Poprawka poza działanie systemu operacyjnego. Które luk w zabezpieczeniach w aplikacjach innych firm również może prowadzić do problemów, które można uniknąć, jeśli zarządzanie poprawkami dobrej znajduje się w miejscu.
+[Microsoft Antimalware](azure-security-antimalware.md) zawiera funkcje, takie jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowaniem złośliwego oprogramowania, aktualizacje podpisu, aktualizacje aparatu, raportowania zbierania zdarzeń wykluczeń, przykłady i [ObsługaprogramuPowerShell](https://msdn.microsoft.com/library/dn771715.aspx).
 
-### <a name="deploy-and-test-a-backup-solution"></a>Wdrażanie i testowanie kopii zapasowej rozwiązania
+![Usługa Azure ochrony przed złośliwym kodem](./media/azure-security-iaas/azantimalware.png)
 
-Podobnie jak aktualizacje zabezpieczeń kopii zapasowej musi zostać obsłużone taki sam sposób obsługi przez inną operację. Dotyczy to systemów, które są częścią środowiska produkcyjnego, rozszerzanie do chmury. Systemy testu i deweloperów wykonaj strategii tworzenia kopii zapasowych, które zapewniają możliwości przywracania, które są podobne do użytkownicy przekroczył przyzwyczajony do, na podstawie ich doświadczeń w środowiskach lokalnych.
+### <a name="install-the-latest-security-updates"></a>Zainstaluj najnowsze aktualizacje zabezpieczeń 
 
-Obciążeń produkcyjnych przeniesione do platformy Azure należy zintegrować z istniejącymi rozwiązaniami tworzenia kopii zapasowej, jeśli to możliwe. Możesz też użyć [kopia zapasowa Azure](../backup/backup-azure-arm-vms.md) mogą pomóc w pokonywaniu wymagania dotyczące tworzenia kopii zapasowej.
+Niektóre z pierwszych obciążeń, które klientom przenoszenie na platformę Azure są laboratoria i systemy dołączonej do Internetu. W przypadku maszyn wirtualnych hostowanych na platformie Azure, hostować aplikacje lub usługi, które mają być dostępne w Internecie, być czujność dotyczących poprawiania. Poprawki poza działanie systemu operacyjnego. Bez luk w zabezpieczeniach w aplikacjach innych firm również może prowadzić do problemów, które można uniknąć, jeśli zarządzanie poprawkami dobre znajduje się w miejscu.
 
+### <a name="deploy-and-test-a-backup-solution"></a>Wdrażanie i testowanie rozwiązania tworzenia kopii zapasowych
+
+Podobnie jak aktualizacje zabezpieczeń kopii zapasowej musi być obsługiwane w taki sam sposób obsługi innych operacji. Dotyczy to systemów, które są częścią środowiska produkcyjnego, rozszerzając w chmurze. Systemy testowych i deweloperskich, należy wykonać strategii tworzenia kopii zapasowych, które zapewniają możliwości przywracania, które są podobne do użytkownicy wzrosła przyzwyczajeni, na podstawie ich użycia w środowiskach lokalnych.
+
+Obciążenia produkcyjne przeniesione do platformy Azure należy zintegrować z istniejącymi rozwiązaniami kopii zapasowej, jeśli jest to możliwe. Lub możesz użyć [kopia zapasowa Azure](../backup/backup-azure-arm-vms.md) do rozwiązywania wymogami dotyczącymi kopii zapasowej.
 
 ## <a name="monitor"></a>Monitorowanie
 
-[Centrum zabezpieczeń](../security-center/security-center-intro.md) zapewnia ciągłej oceny stanu zabezpieczeń zasobów platformy Azure do identyfikowania potencjalnych luk w zabezpieczeniach. Lista zaleceń prowadzi użytkownika przez proces konfigurowania wymaganych elementów sterujących.
+### <a name="security-centersecurity-centersecurity-center-intromd"></a>[Security Center](../security-center/security-center-intro.md)
+
+Usługa Security center zapewnia ciągłej oceny stanu zabezpieczeń zasobów platformy Azure do identyfikowania potencjalnych luk w zabezpieczeniach. Lista zaleceń prowadzi użytkownika przez proces konfigurowania wymaganych elementów sterujących.
 
 Przykłady:
 
-- Inicjowanie obsługi ochrony przed złośliwym kodem do identyfikacji i usuwania złośliwego oprogramowania.
+- Inicjowanie obsługi ochrony przed złośliwym kodem w celu łatwiejszego identyfikowania i usuwania złośliwego oprogramowania.
 - Konfigurowanie grup zabezpieczeń sieci i reguł sterujących ruchem do maszyn wirtualnych.
-- Inicjowanie zapór aplikacji sieci web pomagających chronić przed atakami kierowanych obsługi aplikacji sieci web.
+- Inicjowanie obsługi administracyjnej zapory aplikacji sieci web, aby pomóc Ci chronić przed atakami, których platformą docelową aplikacji sieci web.
 - Wdrażanie brakujących aktualizacji systemu.
-- Modyfikowanie konfiguracji systemu operacyjnego, które nie są zgodne z zalecanymi planami bazowymi.
+- Modyfikowanie konfiguracji systemu operacyjnego, które nie są zgodne z zalecanych linii bazowych.
 
-Na poniższej ilustracji przedstawiono niektóre opcje, które można włączyć w Centrum zabezpieczeń.
+Na poniższej ilustracji przedstawiono niektóre opcje, które można włączyć w usłudze Security Center.
 
-![Zasadami Centrum zabezpieczeń Azure](./media/azure-security-iaas/security-center-policies.png)
+![Zasady usługi Azure Security Center](./media/azure-security-iaas/security-center-policies.png)
 
-[Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) Microsoft oparte na chmurze IT rozwiązanie do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze. Ponieważ Operations Management Suite jest zaimplementowany jako usługa w chmurze, można wdrożyć, szybko i z minimalnym inwestycji w zasoby infrastruktury.
+### <a name="operations-management-suiteoperations-management-suiteoperations-management-suite-overviewmd"></a>[Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) 
 
-Nowe funkcje są przeprowadzane automatycznie, eliminuje konieczność rutynowej konserwacji i uaktualnić kosztów. Operations Management Suite integruje się również z programu System Center Operations Manager. Składa się z różnych składników w celu lepszego zarządzania Azure obciążeń, w tym [zabezpieczeń i zgodności](../operations-management-suite/oms-security-getting-started.md) modułu.
+Pakietu Operation Management Suite to oparta na chmurze rozwiązanie zarządzania IT ułatwiające zarządzanie chronić lokalne i infrastruktury chmury firmy Microsoft. Ponieważ pakietu Operations Management Suite jest zaimplementowany jako usługa w chmurze, można wdrożyć, szybko i przy minimalnym poziomie inwestycji w zasoby infrastruktury.
 
-Funkcje zabezpieczeń i zgodności w Operations Management Suite służy do wyświetlania informacji o zasobach. Informacje są zorganizowane na cztery główne kategorie:
+Nowe funkcje są dostarczane automatycznie, eliminuje konieczność konserwacji i uaktualniania kosztów. Pakiet Operations Management Suite integruje się również z programu System Center Operations Manager. Ma różne składniki, aby pomóc Ci lepiej zarządzać obciążeń platformy Azure, w tym [Security and Compliance](../operations-management-suite/oms-security-getting-started.md) modułu.
 
-- **Domen zabezpieczeń**: dalszą analizę rekordy zabezpieczeń w czasie. Dostęp do oceny złośliwego oprogramowania, aktualizacji oceny, informacje o zabezpieczeniach sieci, tożsamości i dostępu do informacji i komputery ze zdarzeniami zabezpieczeń. Skorzystaj z szybki dostęp do pulpitu nawigacyjnego Centrum zabezpieczeń Azure.
-- **Godne uwagi problemy**: szybką identyfikację liczba aktywnych problemów i ważność tych problemów.
-- **Wykryć (wersja zapoznawcza)**: wykrycie ataku wzorce przez wizualizacja alerty zabezpieczeń po ich wprowadzeniu względem zasobów.
-- **Analizy zagrożeń**: wykrycie ataku wzorce przez wizualizacja łącznej liczby serwerów z wychodzącym ruchem złośliwego oprogramowania IP, typ złośliwe oprogramowanie i mapy, pokazujący, gdzie pochodzą z tych adresów IP.
-- **Typowe zapytania zabezpieczeń**: Zobacz listę typowych zapytań zabezpieczeń, które służy do monitorowania środowiska. Po kliknięciu jednego z tych kwerend **wyszukiwania** bloku otwiera i wyświetla wyniki dla tego zapytania.
+Aby wyświetlić informacje dotyczące zasobów, można użyć funkcji zabezpieczeń i zgodności w usłudze Operations Management Suite. Informacje są zorganizowane w cztery główne kategorie:
 
-Poniższy zrzut ekranu przedstawia przykład informacje, które można wyświetlić Operations Management Suite.
+- **Domeny zabezpieczeń**: dalszą analizę rekordów zabezpieczeń wraz z upływem czasu. Dostęp do oceny złośliwego oprogramowania, aktualizacji oceny, informacje o zabezpieczeniach sieci, tożsamości i dostępu do informacji i komputerów ze zdarzeniami zabezpieczeń. Wykorzystaj szybki dostęp do pulpitu nawigacyjnego Azure Security Center.
+- **Problemy godne uwagi**: szybkie identyfikowanie liczby aktywnych problemów i ważności tych problemów.
+- **Wykrycia (Podgląd)**: Identyfikowanie ataku wzorców przez wizualizację alertów zabezpieczeń, po ich wprowadzeniu dotyczących poszczególnych zasobów.
+- **Analiza zagrożeń**: Identyfikowanie ataku wzorców dzięki wizualizowaniu całkowita liczba serwerów z wychodzącym złośliwym ruchem IP, typu złośliwych zagrożeń oraz mapy pochodzenia, skąd pochodzą te adresy IP.
+- **Typowe zapytania dotyczące zabezpieczeń**: Zobacz listę najbardziej typowych zapytań zabezpieczeń, które służą do monitorowania środowiska. Po kliknięciu jednego z tych zapytań **wyszukiwania** bloku otwiera i wyświetla wyniki tego zapytania.
 
-![Plany bazowe zabezpieczeń programu Operations Management Suite](./media/azure-security-iaas/oms-security-baseline.png)
+Poniższy zrzut ekranu przedstawia przykład informacji wyświetlanych w pakiecie Operations Management Suite.
+
+![Podstawy zabezpieczeń pakietu Operations Management Suite](./media/azure-security-iaas/oms-security-baseline.png)
+
+### <a name="monitor-vm-performance"></a>Monitorowanie wydajności maszyny Wirtualnej
+
+W przypadku maszyny Wirtualnej procesy zużywać więcej zasobów niż powinni nadużycie zasobu może to stanowić problem. Problemy z wydajnością za pomocą maszyny Wirtualnej może prowadzić do przerwy w działaniu usługi, która narusza zasady zabezpieczeń dostępności. Z tego powodu należy bezwzględnie monitorować dostęp do maszyny Wirtualnej nie tylko sposób reaktywny, gdy problem, ale również proaktywnie względem punktu odniesienia wydajności mierzonych podczas normalnego działania.
+
+Analizując [pliki dzienników diagnostycznych platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), można monitorować swoje zasoby maszyny Wirtualnej i identyfikowania potencjalnych problemów, które mogą negatywnie wpłynąć na wydajność i dostępność. Rozszerzenie diagnostyki platformy Azure zawiera funkcje monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Możesz włączyć te możliwości, łącznie z rozszerzeniem jako część [szablonu usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md).
+
+Można również użyć [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) uzyskać wgląd w kondycję Twoich zasobów.
+
+Organizacje, które nie monitorować wydajność maszyny Wirtualnej są nie można określić, czy pewne zmiany we wzorcach wydajności są prawidłowe lub nieprawidłowe. Jeśli maszyna wirtualna zużywa więcej zasobów niż zwykle, takie anomalii może wskazywać potencjalny atak z zewnętrznego zasobu lub ze złamanymi zabezpieczeniami procesu uruchomionego na maszynie wirtualnej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Blog zespołu ds. zabezpieczeń platformy Azure](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Centrum zabezpieczeń firmy Microsoft](https://technet.microsoft.com/library/dn440717.aspx)
-* [Wskazówki dotyczące zabezpieczeń platformy Azure i wzorce](security-best-practices-and-patterns.md)
+* [Najlepsze rozwiązania dotyczące zabezpieczeń platformy Azure i wzorców](security-best-practices-and-patterns.md)

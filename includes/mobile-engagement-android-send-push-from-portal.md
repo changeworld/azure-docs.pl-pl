@@ -35,7 +35,7 @@ Teraz utworzymy prostą kampanię z użyciem powiadomień wypychanych, która wy
 
     b. Wybierz typ dostarczania w obszarze **Delivery type** (Typ dostarczania), wybierając opcje *System notification (Powiadomienie systemowe) -> Simple (Proste)*. Jest to typ prostego powiadomienia wypychanego w systemie Android, które zawiera tytuł i krótki wiersz tekstu.
 
-    d. W obszarze **Delivery time** (Godzina dostarczania) wybierz opcję *Any time* (W dowolnym momencie), co umożliwi aplikacji odebranie powiadomienia bez względu na to, czy jest ona uruchomiona.
+    c. W obszarze **Delivery time** (Godzina dostarczania) wybierz opcję *Any time* (W dowolnym momencie), co umożliwi aplikacji odebranie powiadomienia bez względu na to, czy jest ona uruchomiona.
 
     d. W tekście powiadomienia w polu **Title** (Tytuł) wpisz tytuł, który w powiadomieniu wypychanym będzie wyróżniony pogrubioną czcionką.
 

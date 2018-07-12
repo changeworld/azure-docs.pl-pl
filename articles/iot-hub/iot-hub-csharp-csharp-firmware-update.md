@@ -1,6 +1,6 @@
 ---
-title: Aktualizacja oprogramowania układowego urządzenia z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft
-description: Jak używać zarządzania urządzeniami w usłudze Azure IoT Hub zainicjować aktualizację oprogramowania układowego urządzenia. Urządzenia Azure IoT SDK dla platformy .NET użyta do wdrożenia aplikacji symulowane urządzenie i usługa Azure IoT SDK dla platformy .NET do implementacji usługi aplikacji, które wyzwala aktualizacji oprogramowania układowego.
+title: Aktualizacja oprogramowania układowego urządzenia za pomocą usługi Azure IoT Hub (.NET/.NET) | Dokumentacja firmy Microsoft
+description: Jak zainicjować aktualizację oprogramowania układowego urządzenia, za pomocą zarządzania urządzeniami w usłudze Azure IoT Hub. Urządzenia usługi Azure IoT SDK dla platformy .NET umożliwia wdrożenie aplikacji symulowanego urządzenia i usługi Azure IoT SDK dla platformy .NET do zaimplementowania app service, która powoduje aktualizację oprogramowania układowego.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -9,47 +9,47 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1bf7a647ab2fdc175231133b0cfd8abdd51b6d43
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736759"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723931"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Umożliwia zarządzanie urządzeniami zainicjować aktualizację oprogramowania układowego urządzenia (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Wprowadzenie
-W [wprowadzenie do zarządzania urządzeniami] [ lnk-dm-getstarted] samouczka przedstawiono sposób użycia [dwie urządzenia] [ lnk-devtwin] i [bezpośrednie metody ] [ lnk-c2dmethod] podstawowych zdalnie ponownego uruchomienia urządzenia. Ten samouczek używa tego samego podstawowych Centrum IoT i pokazuje, jak wykonać aktualizację oprogramowania układowego symulowane end-to-end.  Ten wzorzec jest używany w implementacji aktualizacji oprogramowania układowego dla [Pi malina urządzenia implementacji próbki][lnk-rpi-implementation].
+W [wprowadzenie do zarządzania urządzeniami] [ lnk-dm-getstarted] samouczków pokazano, jak używać [bliźniaczej reprezentacji urządzenia] [ lnk-devtwin] i [metody bezpośrednie ] [ lnk-c2dmethod] podstawowych, aby zdalnie ponownie uruchomić urządzenie. Ten samouczek używa tych samych podstawowych usługi IoT Hub oraz dowiesz się, jak przeprowadzić aktualizację oprogramowania układowego symulowane end-to-end.  Ten wzorzec jest używany we wdrażaniu aktualizacji oprogramowania układowego dla [przykładu implementacji urządzenia Raspberry Pi][lnk-rpi-implementation].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Tworzenie aplikacji konsoli .NET, który wywołuje **firmwareUpdate** metoda bezpośrednia w aplikacji symulowane urządzenie za pomocą Centrum IoT.
-* Tworzenie aplikacji symulowane urządzenie, który implementuje **firmwareUpdate** metoda bezpośrednia. Ta metoda inicjuje procesem wieloetapowym czeka na pobranie obrazu oprogramowania układowego, pobierze obraz oprogramowania układowego i na koniec dotyczy oprogramowania układowego obrazu. Podczas każdego etapu aktualizacji urządzenie korzysta z właściwości zgłoszony do raport dotyczący postępu.
+* Tworzenie aplikacji konsolowej .NET, która wywołuje **firmwareUpdate** bezpośrednie metody w aplikacji symulowanego urządzenia za pośrednictwem usługi IoT hub.
+* Tworzenie aplikacji symulowanego urządzenia, który implementuje **firmwareUpdate** bezpośrednie metody. Ta metoda inicjuje proces wieloetapowych czeka do pobierania obrazu oprogramowania układowego, który pobierze obraz oprogramowania układowego i na koniec ma zastosowanie obrazu oprogramowania układowego. Na etapie każdej aktualizacji urządzenie używa zgłaszanych właściwości do raportowania postępu.
 
-Na końcu tego samouczka masz urządzenie aplikacji konsoli .NET (C#) i zaplecza aplikacji konsoli .NET (C#):
+Na końcu tego samouczka masz urządzenie aplikacji konsoli .NET (C#) i serwer zaplecza w aplikacji konsolowej .NET (C#):
 
-* **SimulatedDeviceFwUpdate**, która łączy się z Centrum IoT z tożsamości urządzenia utworzony wcześniej, otrzymuje **firmwareUpdate** metoda, uruchamia proces wielu stanu do symulowania aktualizacji oprogramowania układowego bezpośrednia w tym: oczekuje do pobrania obrazu, pobierania nowego obrazu, a na koniec stosowania obrazu.
+* **SimulatedDeviceFwUpdate**, która łączy się z Centrum IoT hub przy użyciu utworzonej wcześniej tożsamości urządzenia otrzymuje **firmwareUpdate** bezpośrednie metody, uruchamia proces wielostanowy Symulowanie aktualizacji oprogramowania układowego w tym: Oczekiwanie na pobranie obrazu, pobierania nowego obrazu i na koniec stosowanie obrazu.
 
-* **TriggerFWUpdate**, który korzysta z usługi SDK można zdalnie wywołać **firmwareUpdate** bezpośredniego metoda symulowane urządzenie Wyświetla odpowiedzi i okresowo (co 500 MS.) Wyświetla zaktualizowanego zgłoszone właściwości.
+* **TriggerFWUpdate**, który używa zestawu SDK usługi do zdalnego wywołania **firmwareUpdate** bezpośrednie metody na symulowanym urządzeniu Wyświetla odpowiedzi i okresowo (co 500 ms) Wyświetla zaktualizowany zgłoszone właściwości.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Program Visual Studio 2015 lub Visual Studio 2017.
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
-Postępuj zgodnie z [wprowadzenie do zarządzania urządzeniami](iot-hub-csharp-csharp-device-management-get-started.md) artykuł, aby utworzyć Centrum IoT i pobrać parametry połączenia Centrum IoT.
+Postępuj zgodnie z [wprowadzenie do zarządzania urządzeniami](iot-hub-csharp-csharp-device-management-get-started.md) artykuł, aby utworzyć Centrum IoT i pobieranie parametrów połączenia usługi IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Wyzwalanie aktualizacji oprogramowania układowego zdalnego na urządzeniu, za pomocą bezpośrednich — metoda
-W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C#) inicjującym aktualizacji oprogramowania układowego zdalnego na urządzeniu. Aplikacja korzysta metoda bezpośrednia zainicjować aktualizację, a zapytania dwie urządzenia okresowo pobrać stanu aktualizacji oprogramowania układowego active.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Wyzwalanie aktualizacji oprogramowania układowego zdalnego na urządzeniu, korzystając z metody bezpośredniej
+W tej sekcji służy do tworzenia aplikacji konsolowej .NET (przy użyciu języka C#) który inicjuje aktualizacji oprogramowania układowego zdalnego na urządzeniu. Aplikacja używa metody bezpośredniej do inicjowania aktualizacji i używa zapytań bliźniaczych reprezentacji urządzeń, aby okresowo pobieranie stanu aktualizacji oprogramowania układowego active.
 
-1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nazwij projekt **TriggerFWUpdate**.
+1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **TriggerFWUpdate**.
 
     ![Nowy projekt Visual C# Windows Classic Desktop][img-createserviceapp]
 
@@ -64,7 +64,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Dodaj następujące pola do klasy **Program**: Zastąp symbole zastępcze wielu Centrum IoT ciąg połączenia dla koncentratora, który został utworzony w poprzedniej sekcji oraz identyfikator urządzenia.
+5. Dodaj następujące pola do klasy **Program**: Zastąp wiele wartości symboli zastępczych parametrami połączenia Centrum IoT Hub dla Centrum utworzonego w poprzedniej sekcji i Identyfikatora urządzenia.
    
     ```csharp   
     static RegistryManager registryManager;
@@ -73,7 +73,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Dodaj następującą metodę do klasy **Program**. Ta metoda sprawdza dwie urządzenia zaktualizowany stan co 500 milisekund. Zapisuje do konsoli tylko wtedy, gdy stan faktycznie został zmieniony. Dla tego przykładu, aby uniemożliwić korzystanie z dodatkowych komunikatów Centrum IoT w ramach subskrypcji, sondowanie zatrzymuje, gdy urządzenie zgłasza stan **applyComplete** lub wystąpił błąd.  
+6. Dodaj następującą metodę do klasy **Program**. Ta metoda sonduje bliźniaczą reprezentację urządzenia dla figurować ze statusem co 500 milisekund. Zapisuje ona konsoli tylko wtedy, gdy stan rzeczywiście został zmieniony. Dla tego przykładu, aby uniemożliwić korzystanie z dodatkowych komunikatów usługi IoT Hub w ramach subskrypcji, sondowanie zatrzymuje, gdy urządzenie zgłosi stan **applyComplete** lub komunikat o błędzie.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -120,7 +120,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
     }
     ```
 
-8. Na koniec należy dodać następujące wiersze do **Main** metody. Tworzy rejestru Menedżera odczytać dwie urządzenia z uruchamia zadanie sondowania w wątku roboczego, a następnie wyzwala aktualizacji oprogramowania układowego.
+8. Na koniec należy dodać następujące wiersze do **Main** metody. Tworzy rejestr Menedżera odczytać bliźniaczej reprezentacji urządzenia za pomocą rozpoczyna się zadanie sondowania w wątku roboczego, a następnie wyzwala aktualizację oprogramowania układowego.
    
     ```csharp   
     registryManager = RegistryManager.CreateFromConnectionString(connString);
@@ -137,18 +137,18 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
 W tej sekcji omówiono następujące zagadnienia:
 
-* Tworzenie aplikacji konsoli .NET, które odpowiada metoda bezpośrednia wywoływane przez chmury
-* Symulowanie aktualizacji oprogramowania układowego wyzwalane przez usługi wewnętrznej bazy danych za pomocą bezpośrednich — metoda
+* Tworzenie aplikacji konsolowej .NET, która reaguje na metodę bezpośrednią wywołaną przez chmurę
+* Symulowanie wyzwolone przez usługę zaplecza za pośrednictwem metody bezpośredniej aktualizacji oprogramowania układowego
 * Włączanie zapytań bliźniaczych reprezentacji urządzeń przy użyciu zgłoszonych właściwości w celu zidentyfikowania urządzeń i ustalenia, kiedy ostatnio przeprowadzono na nich aktualizację oprogramowania układowego
 
-1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nazwij projekt **SimulateDeviceFWUpdate**.
+1. W programie Visual Studio dodaj projekt Visual C# Windows Classic Desktop do bieżącego rozwiązania przy użyciu szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **SimulateDeviceFWUpdate**.
    
-    ![Nowa aplikacja Visual C# Windows Classic urządzenia][img-createdeviceapp]
+    ![Nowa aplikacja urządzenia Visual C# Windows Classic][img-createdeviceapp]
     
 2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **SimulateDeviceFWUpdate** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**.
-3. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.client**. Wybierz **zainstalować** do zainstalowania **Microsoft.Azure.Devices.Client** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura pliki do pobrania, instaluje i dodaje odwołanie do [urządzenia Azure IoT SDK] [ lnk-nuget-client-sdk] NuGet pakiet i jego zależności.
+3. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.client**. Wybierz **zainstalować** zainstalował **Microsoft.Azure.Devices.Client** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, instaluje i dodanie odwołania do [zestaw SDK urządzeń Azure IoT] [ lnk-nuget-client-sdk] NuGet pakietu oraz jego zależności.
    
-    ![Aplikacja kliencka okna Menedżera pakietów NuGet][img-clientnuget]
+    ![Aplikacja kliencka okno Menedżera pakietów NuGet][img-clientnuget]
 4. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
    
     ```csharp   
@@ -157,14 +157,14 @@ W tej sekcji omówiono następujące zagadnienia:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Dodaj następujące pola do klasy **Program**: Zamień wartość symbolu zastępczego zanotowaną w ciągu połączenia urządzenia **tworzenie tożsamości urządzenia** sekcji.
+5. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia urządzenia zanotowaną w **tworzenie tożsamości urządzenia** sekcji.
    
     ```csharp   
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. Dodaj następującą metodę w celu zgłoszenia stanu do chmury przez dwie urządzenia: 
+6. Dodaj następującą metodę do raportów o stanie do chmury za pomocą bliźniaczej reprezentacji urządzenia: 
 
     ```csharp   
     static async Task reportFwUpdateThroughTwin(Twin twin, TwinCollection fwUpdateValue)
@@ -188,7 +188,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-7. Dodaj następującą metodę do symulowania pobierania oprogramowania układowego obrazu:
+7. Dodaj następującą metodę do symulacji pobierania obrazu oprogramowania układowego:
         
     ```csharp   
     static async Task<byte[]> simulateDownloadImage(string imageUrl)
@@ -204,7 +204,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-8. Dodaj następującą metodę do symulowania stosowania obrazu oprogramowania układowego na urządzeniu:
+8. Dodaj następującą metodę do symulowania stosowania obrazu oprogramowania układowego urządzenia:
         
     ```csharp   
     static async Task simulateApplyImage(byte[] imageData)
@@ -219,7 +219,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
  
-9.  Dodaj następującą metodę do symulowania oczekujących na pobranie obrazu oprogramowania układowego. Zmiana stanu na **oczekiwania** i usuń zaznaczenie innych właściwości aktualizacji oprogramowania układowego na dwie. Te właściwości zostaną wyczyszczone, aby usunąć wszystkie istniejące wartości z aktualizacji oprogramowania układowego wcześniejszych. Jest to konieczne, ponieważ właściwości zgłoszone są wysyłane jako operacją poprawki (delta), a nie operacji PUT (kompletny zestaw właściwości zastępuje wszystkie poprzednie wartości). Zazwyczaj urządzenia otrzymują informacje o dostępnej aktualizacji, a zasady określone przez administratora powodują, że urządzenie zaczyna pobierać i stosować aktualizację. To w tej funkcji powinna zostać uruchomiona logika włączająca te zasady. 
+9.  Dodaj następującą metodę do symulacji oczekujących na pobranie obrazu oprogramowania układowego. Zmiana stanu na **oczekiwania** i usuń zaznaczenie innych właściwości aktualizacji oprogramowania układowego w bliźniaczej reprezentacji. Te właściwości zostaną wyczyszczone, aby usunąć wszelkie istniejące wartości z aktualizacji oprogramowania układowego poprzedniego. Jest to konieczne, ponieważ zgłaszane właściwości są wysyłane jako operacji PATCH (delta), a nie operacji PUT (kompletny zestaw właściwości zastępuje wszystkie poprzednie wartości). Zazwyczaj urządzenia otrzymują informacje o dostępnej aktualizacji, a zasady określone przez administratora powodują, że urządzenie zaczyna pobierać i stosować aktualizację. To w tej funkcji powinna zostać uruchomiona logika włączająca te zasady. 
         
     ```csharp   
     static async Task waitToDownload(Twin twin, string fwUpdateUri)
@@ -240,7 +240,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-10. Dodaj następującą metodę w celu wykonania pobierania. Aktualizuje stan **pobieranie** przez dwie urządzenia wywołuje metodę pobierania Symulacja i raporty o stanie **downloadComplete** lub **downloadFailed** za pomocą dwie w zależności od wyników operacji pobierania. 
+10. Dodaj następującą metodę w celu wykonania pobierania. Aktualizuje stan do **pobieranie** wywołuje metodę pobierania Symulacja, za pomocą bliźniaczej reprezentacji urządzenia, a następnie raportuje stan **downloadComplete** lub **downloadFailed** za pomocą bliźniaczej reprezentacji w zależności od wyników operacji pobierania. 
         
     ```csharp   
     static async Task<byte[]> downloadImage(Twin twin, string fwUpdateUri)
@@ -272,7 +272,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-11. Dodaj następującą metodę w celu zastosowania obrazu. Aktualizuje stan **stosowania** przez dwie urządzenia wywołania Symulacja zastosowanie obrazu metoda i stan aktualizacji do **applyComplete** lub **applyFailed** za pośrednictwem dwie w zależności od wyników operacji zastosowania. 
+11. Dodaj następującą metodę w celu zastosowania obrazu. Aktualizuje stan do **stosowanie** za pomocą bliźniaczej reprezentacji urządzenia wywołania Symulacja Zastosuj obraz metoda i aktualizuje stan do **applyComplete** lub **applyFailed** za pośrednictwem bliźniacza reprezentacja w zależności od wyników operacji zastosowania. 
         
     ```csharp   
     static async Task applyImage(Twin twin, byte[] imageData)
@@ -304,7 +304,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-12. Dodaj następującą metodę do sekwencji operacji aktualizacji oprogramowania układowego oczekujących na pobranie obrazu do stosowania obrazu na urządzeniu:
+12. Dodaj następującą metodę do sekwencji operacji aktualizacji oprogramowania układowego z oczekiwanie na pobranie obrazu poprzez zastosowanie obrazu na urządzeniu:
         
     ```csharp   
     static async Task doUpdate(string fwUpdateUrl)
@@ -324,7 +324,7 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 
-13. Dodaj następującą metodę do obsługi **updateFirmware** bezpośrednie metody z chmury. Wyodrębnia adres URL do aktualizacji oprogramowania układowego z ładunek komunikatu i przekazuje go do **doUpdate** zadania, która rozpoczyna się on w innym wątku puli wątków. Następnie natychmiast zwraca odpowiedź metody do chmury.
+13. Dodaj następującą metodę do obsługi **updateFirmware** bezpośrednie metody z chmury. Wybiera adres URL do aktualizacji oprogramowania układowego z ładunku komunikatu i przekazuje go do **doUpdate** zadania, które uruchamia się na inny wątek puli wątków. Następnie natychmiast zwraca odpowiedź metody do chmury.
         
     ```csharp   
     static Task<MethodResponse> onFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -339,11 +339,11 @@ W tej sekcji omówiono następujące zagadnienia:
     }
     ```
 > [!NOTE]
-> Ta metoda jest wyzwalane symulowane aktualizacji do uruchamiania jako **zadań** i natychmiast odpowiada do wywołania metody informowania usługę uruchomienia aktualizacji oprogramowania układowego. Stan aktualizacji i zakończeniu zostanie wysłane do usługi za pośrednictwem właściwości zgłoszone dwie urządzenia. Odpowiemy do wywołania metody podczas uruchamiania aktualizacji, a nie po ich zakończeniu, ponieważ:
-> * Proces aktualizacji rzeczywistych jest bardzo może trwać dłużej niż limit czasu wywołania metody.
-> * Proces aktualizacji rzeczywistych jest bardzo prawdopodobne wymagać ponownego uruchomienia komputera, który będzie ponownie uruchom to tworzenie aplikacji **MethodRequest** obiektu jest niedostępny. (Aktualizowanie właściwości zgłoszone, jednak jest możliwe nawet po ponownym uruchomieniu). 
+> Ta metoda wyzwala symulowane aktualizacji, aby był uruchamiany jako **zadań** i następnie natychmiast reaguje na wywołanie metody informowania usługę uruchomienia aktualizacji oprogramowania układowego. Stan aktualizacji oraz moment zakończenia będą wysyłane do usługi za pomocą zgłoszonych właściwości bliźniaka urządzenia. Pod uwagę brane są wywołania metody podczas uruchamiania aktualizacji, a nie po jej zakończeniu, ponieważ:
+> * Proces aktualizacji rzeczywistych jest najprawdopodobniej będzie trwać dłużej niż limit czasu wywołania metody.
+> * Proces aktualizacji rzeczywistych jest bardzo prawdopodobne, konieczne jest ponowne uruchomienie będzie ponownie uruchomić to tworzenie aplikacji **MethodRequest** obiekt niedostępny. (Aktualizowania zgłaszanych właściwości, jednak jest możliwe nawet po ponownym uruchomieniu). 
 
-14. Na koniec należy dodać następujący kod, aby **Main** metodę, aby otworzyć połączenia z Centrum IoT i zainicjować odbiornika metody:
+14. Na koniec Dodaj następujący kod do **Main** metodę, aby otworzyć połączenie do usługi IoT hub i zainicjować odbiornika metody:
    
     ```csharp   
     try
@@ -377,17 +377,17 @@ W tej sekcji omówiono następujące zagadnienia:
 
 ## <a name="run-the-apps"></a>Uruchamianie aplikacji
 Teraz można przystąpić do uruchomienia aplikacji.
-1. Uruchamianie aplikacji .NET urządzenia **SimulatedDeviceFWUpdate**.  Kliknij prawym przyciskiem myszy **SimulatedDeviceFWUpdate** projektu, zaznacz **debugowania**, a następnie wybierz **Start nowe wystąpienie**. Należy uruchomić, nasłuchiwania dla wywołań metod z Centrum IoT: 
+1. Uruchom aplikację urządzenia platformy .NET **SimulatedDeviceFWUpdate**.  Kliknij prawym przyciskiem myszy **SimulatedDeviceFWUpdate** projektu, wybierz opcję **debugowania**, a następnie wybierz pozycję **Uruchom nowe wystąpienie**. Należy uruchomić, nasłuchiwanie wywołania metody z usługi IoT Hub: 
 
-2. Gdy urządzenie jest podłączone i Oczekiwanie na wywołania metody uruchamiania programu .NET **TriggerFWUpdate** aplikacji można wywołać metody aktualizacji oprogramowania układowego w aplikacji symulowane urządzenie. Kliknij prawym przyciskiem myszy **TriggerFWUpdate** projektu, zaznacz **debugowania**, a następnie wybierz **Start nowe wystąpienie**. Powinny pojawić się zaktualizować sekwencję napisana **SimulatedDeviceFWUpdate** konsoli, a także sekwencja zgłoszone za pośrednictwem właściwości zgłoszonego urządzenia w **TriggerFWUpdate** konsoli. Należy pamiętać, że ten proces trwa kilka sekund. 
+2. Gdy urządzenie jest podłączone i Oczekiwanie na wywołania metody uruchamiania .NET **TriggerFWUpdate** aplikację, aby wywołać metodę aktualizacji oprogramowania układowego w symulowanej aplikacji urządzenia. Kliknij prawym przyciskiem myszy **TriggerFWUpdate** projektu, wybierz opcję **debugowania**, a następnie wybierz pozycję **Uruchom nowe wystąpienie**. Powinien zostać wyświetlony zaktualizować sekwencję napisane w **SimulatedDeviceFWUpdate** konsoli, a także sekwencji zgłoszone przez zgłoszone właściwości urządzenia w **TriggerFWUpdate** konsoli. Należy zauważyć, że proces trwa kilka sekund. 
    
-    ![Aplikacja usługi i urządzenia, uruchom][img-combinedrun]
+    ![Uruchamiania aplikacji usługi i urządzenia][img-combinedrun]
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku używana metoda bezpośrednia do wyzwolenia aktualizacji oprogramowania układowego zdalnego na urządzeniu i można śledzić postępy aktualizacji oprogramowania układowego zgłoszone właściwości.
+W tym samouczku używane metody bezpośredniej do wyzwalania aktualizacji oprogramowania układowego zdalnego na urządzeniu i można śledzić postęp aktualizacji oprogramowania układowego w zgłaszanych właściwości.
 
-Aby dowiedzieć się, jak rozszerzyć IoT, Twoje rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach, zobacz [emisji zadania i harmonogramu] [ lnk-tutorial-jobs] samouczka.
+Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji] [ lnk-tutorial-jobs] samouczka.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-csharp-firmware-update/servicesdknuget.png
@@ -399,7 +399,7 @@ Aby dowiedzieć się, jak rozszerzyć IoT, Twoje rozwiązanie i harmonogram meto
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-dm-getstarted]: iot-hub-csharp-csharp-device-management-get-started.md
-[lnk-tutorial-jobs]: iot-hub-csharp-node-schedule-jobs.md
+[lnk-tutorial-jobs]: iot-hub-csharp-csharp-schedule-jobs.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

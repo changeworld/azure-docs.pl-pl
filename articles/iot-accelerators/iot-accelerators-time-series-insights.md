@@ -1,6 +1,6 @@
 ---
-title: Wizualizuj dane z informacjami dotyczącymi serii Azure czasu monitorowania zdalnego | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania środowiska czasu serii wgląd do Eksplorowanie i analizowanie danych w serii. czas rozwiązania monitorowania zdalnego.
+title: Wizualizuj dane przy użyciu usługi Azure Time Series Insights monitorowania zdalnego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować środowisko usługi Time Series Insights Eksplorowanie i analizowanie danych szeregów czasowych rozwiązania do zdalnego monitorowania.
 author: philmea
 manager: timlt
 ms.author: philmea
@@ -8,31 +8,31 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f16fdfca704b8f8cb175de637ad7f3ef143d3ed7
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111480"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968959"
 ---
-# <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Wizualizuj zdalnych danych monitorowania z informacjami dotyczącymi serii czasu
+# <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Wizualizuj dane monitorowania zdalnego, za pomocą usługi Time Series Insights
 
-Operator może być konieczne dalsze rozszerzanie poza danych pole wizualizacji podał monitorowania zdalnego wstępnie skonfigurowane rozwiązanie. Nasze akcelerator rozwiązań udostępnia poza integracji pole z TSI. W tym instrukcje dowiesz się, jak skonfigurować czas serii wgląd do analizowania telemetrii urządzenia i wykrywania anomalii.
+Operator może chcieć dalsze rozszerzanie poza pola danych wizualizacji dostarczonych przez zdalne monitorowanie wstępnie skonfigurowane rozwiązanie. Nasze akcelerator rozwiązań udostępnia poza integracji z usługą TSI. W tym instruktażu dowiesz się, jak skonfigurować usługi Time Series Insights do analizowania danych telemetrycznych z urządzenia i wykrywania anomalii.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten jak to zrobić, potrzebne następujące elementy:
+Aby ukończyć Instruktaż, potrzebne następujące elementy:
 
-* [Wdrażanie zdalne monitorowanie wstępnie skonfigurowane rozwiązanie](iot-accelerators-remote-monitoring-deploy.md)
+* [Wdrażanie rozwiązania do zdalnego monitorowania, wstępnie skonfigurowane](iot-accelerators-remote-monitoring-deploy.md)
 
-## <a name="create-a-consumer-group"></a>Tworzenie grupy odbiorców
+## <a name="create-a-consumer-group"></a>Utwórz grupę odbiorców
 
-Należy utworzyć dedykowanej grupy klientów w Centrum IoT służący do strumieniowego przesyłania danych do szczegółowych danych serii czasu.
+Należy utworzyć dedykowanej grupy klientów w usłudze IoT hub ma być używany do przesyłania strumieniowego danych do usługi Time Series Insights.
 
 > [!NOTE]
-> Grupy konsumentów są używane przez aplikacje w celu pobierania danych z Centrum IoT Azure. Każdej grupy odbiorców umożliwia do pięciu konsumenci danych wyjściowych. Należy utworzyć nową grupę odbiorców co pięć output wychwytywanie i możesz tworzyć grupy konsumentów do 32.
+> Grupy konsumentów są używane przez aplikacje do pobierania danych z usługi Azure IoT Hub. Każdej grupy odbiorców zezwala na maksymalnie pięciu odbiorców danych wyjściowych. Należy utworzyć nową grupę odbiorców, co pięć ujścia w danych wyjściowych i można utworzyć maksymalnie 32 grup odbiorców.
 
-1. W portalu Azure kliknij przycisk powłoki chmury.
+1. W witrynie Azure portal kliknij przycisk Cloud Shell.
 
 1. Wykonaj następujące polecenie, aby utworzyć nową grupę odbiorców:
 
@@ -40,35 +40,35 @@ Należy utworzyć dedykowanej grupy klientów w Centrum IoT służący do strumi
 az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsights --resource-group ContosoRM
 ```
 
-## <a name="create-a-new-time-series-insights-environment"></a>Tworzenie nowego środowiska Insights serii czasu
+## <a name="create-a-new-time-series-insights-environment"></a>Utwórz nowe środowisko usługi Time Series Insights
 
-Azure Time Series Insights to w pełni zarządzana usługa związana z analizą, przechowywaniem i wizualizacją do zarządzania danymi szeregów czasowych w skali IoT w chmurze. Zapewnia wysoce skalowalny magazyn danych szeregów czasowych i umożliwia badanie oraz analizowanie miliardów zdarzeń przesyłanych strumieniowo z całego świata w ciągu sekund. Użyj Insights serii czas przechowywania i zarządzać terabajtów danych szeregu czasowego, Eksploruj i jednocześnie wizualizacji miliardów zdarzeń, przeprowadzenia analizy głównej przyczyny problemu i porównać wiele lokacji i zasobów.
+Azure Time Series Insights to w pełni zarządzana usługa związana z analizą, przechowywaniem i wizualizacją do zarządzania danymi szeregów czasowych w skali IoT w chmurze. Zapewnia wysoce skalowalny magazyn danych szeregów czasowych i umożliwia badanie oraz analizowanie miliardów zdarzeń przesyłanych strumieniowo z całego świata w ciągu sekund. Użyj usługi Time Series Insights, przechowywać i zarządzać terabajty danych szeregów czasowych, eksplorować i wizualizować miliardy zdarzeń jednocześnie, przeprowadzać analizy głównej przyczyny oraz porównywać wiele lokacji i zasobów.
 
 1. Zaloguj się w [Portalu Azure](http://portal.azure.com/).
 
-1. Wybierz **Utwórz zasób** > **Internetu rzeczy** > **Insights serii czas**.
+1. Wybierz **Utwórz zasób** > **Internet of Things** > **usługi Time Series Insights**.
 
-    ![Nowych danych serii czasu](./media/iot-accelerators-time-series-insights/new-time-series-insights.png)
+    ![Nowe usługi Time Series Insights](./media/iot-accelerators-time-series-insights/new-time-series-insights.png)
 
-1. Aby utworzyć środowisko Insights serii czasu, użyj wartości w poniższej tabeli:
+1. Aby utworzyć środowisko usługi Time Series Insights, należy użyć wartości z poniższej tabeli:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa środowiska | Poniższy zrzut ekranu używa nazwy **contorosrmtsi**. Po wykonaniu tego kroku, należy wybrać własną unikatową nazwę. |
+    | Nazwa środowiska | Poniższy zrzut ekranu używa nazwy **contorosrmtsi**. Wybierz swoją własną unikatową nazwę, po wykonaniu tego kroku. |
     | Subskrypcja | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | Grupa zasobów | **Utwórz nowe**. Używamy nazwy **ContosoRM**. |
-    | Lokalizacja | Używamy **wschodnie stany USA**. Utworzyć środowisko, w tym samym regionie co rozwiązanie monitorowania zdalnego. |
+    | Grupa zasobów | **Utwórz nową**. Używamy nazwy **ContosoRM**. |
+    | Lokalizacja | Używamy **wschodnie stany USA**. Utwórz swoje środowisko, w tym samym regionie jako rozwiązania do zdalnego monitorowania. |
     | SKU |**S1** |
     | Pojemność | **1** |
     | Przypnij do pulpitu nawigacyjnego | **Tak** |
 
-    ![Tworzenia analiz serii czasu](./media/iot-accelerators-time-series-insights/new-time-series-insights-create.png)
+    ![Tworzenie usługi Time Series Insights](./media/iot-accelerators-time-series-insights/new-time-series-insights-create.png)
 
-1. Kliknij przycisk **Utwórz**. Może zająć chwilę dla środowiska, które ma zostać utworzony.
+1. Kliknij przycisk **Utwórz**. Może potrwać chwilę dla środowiska, które ma zostać utworzony.
 
 ## <a name="create-event-source"></a>Tworzenie źródła zdarzeń
 
-Utwórz nowe źródło zdarzeń nawiązać połączenia z Centrum IoT. Upewnij się, że używasz grupy odbiorców utworzone w poprzednich krokach. Czas serii Insights wymaga poszczególnych usług w celu zapewnienia dedykowanej grupy klientów nie używany przez inną usługę.
+Utwórz nowe źródło zdarzeń, aby nawiązać połączenie z Centrum IoT hub. Należy upewnić się, że grupa odbiorców, utworzony w poprzednich krokach. Usługa Time Series Insights wymaga każdej usługi, aby mieć dedykowanej grupy klientów nieużywany przez inną usługę.
 
 1. Przejdź do nowego środowiska serii czasu.
 
@@ -80,18 +80,18 @@ Utwórz nowe źródło zdarzeń nawiązać połączenia z Centrum IoT. Upewnij s
 
     ![Dodawanie źródła zdarzeń](./media/iot-accelerators-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Aby skonfigurować Centrum IoT jako nowe źródło zdarzeń, użyj wartości w poniższej tabeli:
+1. Aby skonfigurować usługi IoT hub jako nowe źródło zdarzeń, należy użyć wartości z poniższej tabeli:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Źródło zdarzenia nazwy | Poniższy zrzut ekranu używa nazwy **contosorm iot koncentrator**. Po wykonaniu tego kroku, należy korzystać z własnej unikatowe nazwy. |
+    | Źródło zdarzenia nazwy | Poniższy zrzut ekranu używa nazwy **contosorm-iot-hub**. Po wykonaniu tego kroku, należy użyć swoją własną unikatową nazwę. |
     | Element źródłowy | **IoT Hub** |
-    | Opcja importu | **Użyj Centrum IoT z dostępnych subskrypcji** |
+    | Opcja importu | **Użyj usługi IoT Hub z dostępnych subskrypcji** |
     | Identyfikator subskrypcji | Z listy rozwijanej wybierz subskrypcję platformy Azure. |
-    | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT z rozwiązania do monitorowania zdalnego. |
-    | Nazwa zasad Centrum iot | **iothubowner** upewnij się, używane są zasady właściciela. |
+    | Nazwa centrum iot | **contosorma57a6**. Użyj nazwy Centrum IoT hub z rozwiązania do monitorowania zdalnego. |
+    | Nazwa zasad Centrum iot | **iothubowner** upewnij się, zasady, stosowane są zasady właściciela. |
     | Klucz zasad Centrum iot | To pole jest wypełniane automatycznie. |
-    | Grupy odbiorców Centrum iot | **timeseriesinsights** |
+    | Grupa konsumentów Centrum iot | **timeseriesinsights** |
     | Format serializacji zdarzeń | **JSON**     | Nazwa właściwości sygnatury czasowej | Pozostaw puste |
 
     ![Tworzenie źródła zdarzeń](./media/iot-accelerators-time-series-insights/time-series-insights-event-source-create.png)
@@ -99,50 +99,50 @@ Utwórz nowe źródło zdarzeń nawiązać połączenia z Centrum IoT. Upewnij s
 1. Kliknij przycisk **Utwórz**.
 
 > [!NOTE]
-> Jeśli potrzebujesz przyznawania dostępu użytkownikom do Eksploratora Insights serii czasu, można użyć te kroki, aby [udzielić dostępu do danych](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access#grant-data-access).
+> Jeśli zachodzi potrzeba przyznawania dostępu użytkownikom do Eksploratora usługi Time Series Insights, można następujące kroki, aby [przyznawanie dostępu do danych](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access#grant-data-access).
 
 ## <a name="time-series-insights-explorer"></a>Eksplorator usługi Time Series Insights
 
-Eksplorator Insights serii czasu jest aplikacja sieci web, która pomaga tworzyć wizualizacje danych.
+Eksplorator usługi Time Series Insights jest aplikacją sieci web, która pomoże Ci w utworzeniu wizualizacji danych.
 
-1. Wybierz **omówienie** kartę.
+1. Wybierz **Przegląd** kartę.
 
-1. Kliknij przycisk **przejdź do środowiska**, która spowoduje otwarcie aplikacji sieci web explorer Insights serii czasu.
+1. Kliknij przycisk **przejdź do środowiska**, który spowoduje otwarcie aplikacji sieci web w Eksploratorze usługi Time Series Insights.
 
     ![Eksplorator usługi Time Series Insights](./media/iot-accelerators-time-series-insights/time-series-insights-environment.png)
 
-1. W panelu wyboru czasu, wybierz **ostatnie 12 godzin** z szybkie razy i kliknąć menu **wyszukiwania**.
+1. W panelu wyboru czasu, wybierz **ostatnie 12 godzin** z szybkiego razy menu i kliknij przycisk **wyszukiwania**.
 
-    ![Serie czasu Insights Eksplorator wyszukiwania](./media/iot-accelerators-time-series-insights/time-series-insights-search-time.png)
+    ![Wyszukiwanie Explorer Insights szeregów czasowych](./media/iot-accelerators-time-series-insights/time-series-insights-search-time.png)
 
-1. W panelu warunki po lewej stronie, wybierz wartość miary **temperatury** i podzielone przez wartości **Centrum iothub połączenia urządzenie id**.
+1. W panelu warunki po lewej stronie, wybierz wartość miary **temperatury** i podział według wartości **iothub-— urządzenia — identyfikator połączenia**.
 
-    ![Serie czasu Insights Eksploratora zapytań](./media/iot-accelerators-time-series-insights/time-series-insights-query1.png)
+    ![Zapytanie Explorer Insights szeregów czasowych](./media/iot-accelerators-time-series-insights/time-series-insights-query1.png)
 
-1. Kliknij prawym przyciskiem myszy na wykresie i wybierz **Eksploruj zdarzenia**.
+1. Kliknij prawym przyciskiem myszy wykres i wybierz pozycję **Eksploruj zdarzenia**.
 
-    ![Zdarzenia Explorer wgląd w czasie serii](./media/iot-accelerators-time-series-insights/time-series-insights-explore-events.png)
+    ![Zdarzenia Explorer Insights serii czasu](./media/iot-accelerators-time-series-insights/time-series-insights-explore-events.png)
 
 1. Zdarzenia są renderowane w siatce w formacie tabelarycznym.
 
-    ![Czas serii Insights Explorer tabeli](./media/iot-accelerators-time-series-insights/time-series-insights-table.png)
+    ![Tabela Explorer Insights serii czasu](./media/iot-accelerators-time-series-insights/time-series-insights-table.png)
 
-1. Kliknij przycisk Widok perspektywy.
+1. Kliknij przycisk Wyświetl perspektywy.
 
     ![Czas serii Insights Explorer perspektywy](./media/iot-accelerators-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Kliknij przycisk **Dodaj** można utworzyć nowego zapytania w perspektywie.
+1. Kliknij przycisk **Dodaj** Aby utworzyć nowe zapytanie w perspektywie.
 
-    ![Eksplorator Insights serii czasu dodać zapytania](./media/iot-accelerators-time-series-insights/time-series-insights-new-query.png)
+    ![Eksplorator usługi Time Series Insights Dodaj zapytanie](./media/iot-accelerators-time-series-insights/time-series-insights-new-query.png)
 
-1. Wybierz czas szybkie **ostatnie 12 godzin**, miary **wilgotności** i podział według z **Centrum iothub połączenia urządzenie id**.
+1. Wybierz skrócić czas z **ostatnie 12 godzin**, miara **wilgotności** i podziału z **iothub-— urządzenia — identyfikator połączenia**.
 
-    ![Serie czasu Insights Eksploratora zapytań](./media/iot-accelerators-time-series-insights/time-series-insights-query2.png)
+    ![Zapytanie Explorer Insights szeregów czasowych](./media/iot-accelerators-time-series-insights/time-series-insights-query2.png)
 
-1. Kliknij przycisk Wyświetl perspektywy, aby wyświetlić pulpit nawigacyjny metryki urządzenia.
+1. Kliknij przycisk Wyświetl perspektywy, aby wyświetlić pulpit nawigacyjny metryk urządzenia.
 
-    ![Czas pulpit nawigacyjny Explorer szczegółowych informacji dla serii](./media/iot-accelerators-time-series-insights/time-series-insights-dashboard.png)
+    ![Pulpit nawigacyjny o Eksploratorze czas serii szczegółowych informacji](./media/iot-accelerators-time-series-insights/time-series-insights-dashboard.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat Eksploruj i zapytania na danych w Eksploratorze czasu serii Insights, zobacz [Eksplorator Azure czas serii Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+Aby dowiedzieć się więcej o tym, jak i wysyłania zapytań dotyczących danych w Eksploratorze usługi Time Series Insights, zobacz [Eksploratora usługi Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

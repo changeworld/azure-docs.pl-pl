@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: v-geberr
-ms.openlocfilehash: 27900068d4420b3e70dacc6d1bdfdf0c52053ceb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f5cc97e49d3c127ffe7f53a315c42ab872782a49
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767310"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968728"
 ---
 # <a name="cortana-prebuilt-app"></a>Wstępnie utworzona aplikacja Cortana
 
@@ -69,6 +69,8 @@ W przeglądarce widać, że wstępnie utworzona aplikacja Cortana identyfikuje `
   ]
 }
 ```
+
+Ponieważ używane jest wstępnie utworzona aplikacja Cortana, usługi LUIS nie zwraca wyniki. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

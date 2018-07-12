@@ -1,6 +1,6 @@
 ---
-title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.iOS za pomocą usługi Azure App Service
-description: Dowiedz się, jak używać usługi Azure App Service do wysyłania powiadomień wypychanych do aplikacji platformy Xamarin.iOS
+title: Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.iOS przy użyciu usługi Azure App Service
+description: Dowiedz się, jak wysyłać powiadomienia wypychane do aplikacji platformy Xamarin.iOS przy użyciu usługi Azure App Service
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: b8d5a8d8725e2e9412cef7c377b17a77f34be27d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27592511"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473652"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Dodawanie powiadomień wypychanych do aplikacji platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Przegląd
-W tym samouczku, dodawanie powiadomień wypychanych do [Xamarin.iOS szybki start](app-service-mobile-xamarin-ios-get-started.md) projektu, aby powiadomienia wypychane są wysyłane do urządzenia, za każdym razem, gdy wstawieniu rekordu.
+W ramach tego samouczka, możesz dodać powiadomienia wypychane do [szybki start platformy Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md) projektu, dzięki czemu jest wysyłane powiadomienie push do urządzenia, za każdym razem, gdy rekord zostanie wstawiona.
 
-Jeśli nie używasz Projekt serwera pobrany szybki start, konieczne będzie pakiet rozszerzenia powiadomień wypychanych. Zobacz [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) Aby uzyskać więcej informacji.
+Jeśli nie używasz projektu serwera pobranego — szybki start, konieczne będzie pakiet rozszerzenia powiadomień wypychanych. Zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) Aby uzyskać więcej informacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Zakończenie [szybkiego startu Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md) samouczka.
-* Urządzenie fizyczne z systemem iOS. Powiadomienia wypychane nie są obsługiwane za pomocą symulatora systemu iOS.
+* Wykonaj [Szybki Start platformy Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md) samouczka.
+* Urządzenie fizyczne z systemem iOS. Powiadomienia wypychane nie są obsługiwane przez symulator systemu iOS.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Rejestrowanie aplikacji dla powiadomień wypychanych w portalu dla deweloperów firmy Apple
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Zarejestrować aplikację na potrzeby powiadomień wypychanych w portalu dla deweloperów firmy Apple
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Konfigurowanie aplikacji mobilnej do wysyłania powiadomień wypychanych
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizowanie projektów serwera do wysyłania powiadomień wypychanych
+## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizuj projekt serwera do wysyłania powiadomień wypychanych
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>Konfigurowanie projektu platformy Xamarin.iOS
+## <a name="configure-your-xamarinios-project"></a>Konfigurowanie projektu Xamarin.iOS
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Dodawanie powiadomień wypychanych do aplikacji
-1. W **QSTodoService**, dodaj następującą właściwość, aby **AppDelegate** można uzyskać klientów urządzeń przenośnych:
+1. W **QSTodoService**, dodaj następującą właściwość, aby **elemencie AppDelegate** mogą nabyć klientów urządzeń przenośnych:
    
             public MobileServiceClient GetClient {
             get
@@ -58,11 +58,11 @@ Jeśli nie używasz Projekt serwera pobrany szybki start, konieczne będzie paki
                 client = value;
             }
         }
-2. Dodaj następujące `using` instrukcji na początku **AppDelegate.cs** pliku.
+2. Dodaj następujący kod `using` instrukcji na górze **AppDelegate.cs** pliku.
    
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. W **AppDelegate**, Zastąp **FinishedLaunching** zdarzeń:
+3. W **elemencie AppDelegate**, Zastąp **FinishedLaunching** zdarzeń:
    
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -78,9 +78,9 @@ Jeśli nie używasz Projekt serwera pobrany szybki start, konieczne będzie paki
    
             return true;
         }
-4. W tym samym pliku, Zastąp **RegisteredForRemoteNotifications** zdarzeń. W tym kodzie rejestrowania dla powiadomień prostego szablonu, który zostanie wysłany na wszystkich platformach obsługiwanych przez serwer.
+4. W tym samym pliku, należy zastąpić **RegisteredForRemoteNotifications** zdarzeń. W tym kodzie w przypadku rejestracji powiadomienia prostego szablonu, który zostanie wysłany na wszystkich platformach obsługiwanych przez serwer.
    
-    Aby uzyskać więcej informacji dotyczących szablonów z usługą Notification Hubs, zobacz [szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    Aby uzyskać więcej informacji na temat szablonów przy użyciu usługi Notification Hubs, zobacz [szablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -118,20 +118,20 @@ Jeśli nie używasz Projekt serwera pobrany szybki start, konieczne będzie paki
             }
         }
 
-Aplikacja jest teraz zaktualizowana do obsługi powiadomień wypychanych.
+Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.
 
-## <a name="test"></a>Testowych powiadomień wypychanych w aplikacji
+## <a name="test"></a>Testowych powiadomień push w aplikacji
 1. Naciśnij klawisz **Uruchom** przycisk, aby skompilować projekt i uruchomić aplikację w stanie urządzenia z systemem iOS, a następnie kliknij przycisk **OK** do akceptowania powiadomień wypychanych.
    
    > [!NOTE]
-   > Należy jawnie zaakceptować powiadomień wypychanych z aplikacji. To żądanie występuje tylko aplikacja jest uruchamiana po raz pierwszy.
+   > Należy jawnie zaakceptować powiadomień wypychanych z poziomu aplikacji. To żądanie występuje tylko przy pierwszym uruchomieniu aplikacji.
    > 
    > 
-2. W aplikacji wpisz zadania, a następnie kliknij przycisk plus (**+**) ikona.
-3. Sprawdź, czy powiadomienie o odebraniu, a następnie kliknij przycisk **OK** na odrzucenie powiadomienia.
-4. Powtórz krok 2 natychmiast zamknij aplikację, a następnie sprawdź, czy powiadomienie jest widoczne.
+2. W aplikacji wpisz zadania, a następnie kliknij znak plus (**+**) ikona.
+3. Sprawdź, czy powiadomienie zostanie odebrana, a następnie kliknij przycisk **OK** aby odrzucić powiadomienie.
+4. Powtórz krok 2 natychmiast zamknąć aplikację, a następnie sprawdź, czy zostaje wyświetlone powiadomienie.
 
-W tym samouczku została pomyślnie ukończona.
+W tym samouczku została ukończona pomyślnie.
 
 <!-- Images. -->
 

@@ -1,8 +1,8 @@
 ---
-title: Wywołania funkcji platformy Azure z Microsoft Flow | Dokumentacja firmy Microsoft
-description: Tworzenie niestandardowego łącznika, a następnie wywołaj funkcję za pomocą tego łącznika.
+title: Wywoływanie funkcji platformy Azure z Microsoft Flow | Dokumentacja firmy Microsoft
+description: Tworzenie łącznika niestandardowego, a następnie wywołać funkcję za pomocą tego łącznika.
 services: functions
-keywords: aplikacje w chmurze, cloud services, Microsoft Flow, procesów biznesowych, aplikacja biznesowa
+keywords: aplikacje w chmurze, cloud services, Microsoft Flow procesów biznesowych, aplikacji biznesowych
 documentationcenter: ''
 author: ggailey777
 manager: cfowler
@@ -18,37 +18,37 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234805"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467748"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Wywoływanie funkcji z usługi Microsoft Flow
 
-[Microsoft Flow](https://flow.microsoft.com/) można łatwo automatyzować przepływy pracy i procesy biznesowe między ulubionych aplikacji i usług. Professional deweloperzy mogą używać usługi Azure Functions rozszerzyć możliwości Microsoft Flow podczas osłaniania konstruktorów przepływ z szczegółowe informacje techniczne.
+[Microsoft Flow](https://flow.microsoft.com/) ułatwia Automatyzowanie przepływów pracy i procesów biznesowych między ulubionymi aplikacjami i usługami. Profesjonalni deweloperzy umożliwia rozszerzają możliwości programu Microsoft Flow podczas osłaniania twórcy przepływu z szczegóły techniczne usługi Azure Functions.
 
-Należy utworzyć przepływ w tym temacie oparta na scenariuszu konserwacji dla turbin knie. W tym temacie przedstawiono sposób wywołania funkcji, który został zdefiniowany w [utworzyć definicję OpenAPI dla funkcji](functions-openapi-definition.md). Funkcja określa, czy awaryjnego naprawiania na turbiny knie jest ekonomiczne. Jeśli jest ekonomiczne, przepływ wysyła wiadomość e-mail do zaleca naprawy.
+Możesz utworzyć przepływ w tym temacie, oparte na scenariuszu konserwacji dla turbiny wiatru. W tym temacie przedstawiono sposób wywołania funkcji, które zostały zdefiniowane w [Tworzenie definicji interfejsu OpenAPI dla funkcji](functions-openapi-definition.md). Funkcja określa, czy naprawa na turbiny wiatru ekonomiczne. Jeśli jest to ekonomiczne, przepływ wysyła wiadomość e-mail, aby zalecić naprawy.
 
-Aby uzyskać informacje na wywoływanie tej samej funkcji z rozwiązania PowerApps, zobacz [wywołać funkcję w rozwiązaniu PowerApps](functions-powerapps-scenario.md).
+Aby uzyskać informacje na wywoływanie tej samej funkcji z usługi PowerApps, zobacz [wywoływanie funkcji z usługi PowerApps](functions-powerapps-scenario.md).
 
 W tym temacie dowiesz się, jak:
 
 > [!div class="checklist"]
 > * Utwórz listę w programie SharePoint.
 > * Eksportowanie definicji interfejsu API.
-> * Dodaj połączenie do interfejsu API.
-> * Utwórz strumień do wysyłania wiadomości e-mail, jeśli naprawa jest ekonomiczne.
+> * Dodaj połączenie z interfejsem API.
+> * Utwórz przepływ do wysyłania wiadomości e-mail, jeśli naprawy jest ekonomiczne.
 > * Uruchamianie przepływu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Aktywny [konta Microsoft Flow](https://flow.microsoft.com/documentation/sign-up-sign-in/) przy użyciu tego samego konta w poświadczeniach jako konto platformy Azure. 
-+ Program SharePoint, które zostaną użyte jako źródło danych dla tego przepływu. Zaloguj się do [wersji próbnej usługi Office 365](https://signup.microsoft.com/Signup?OfferId=467eab54-127b-42d3-b046-3844b860bebf&dl=O365_BUSINESS_PREMIUM&ali=1) Jeśli nie masz jeszcze programu SharePoint.
-+ Ukończ samouczek [utworzyć definicję OpenAPI dla funkcji](functions-openapi-definition.md).
++ Aktywne [konta Microsoft Flow](https://flow.microsoft.com/documentation/sign-up-sign-in/) przy użyciu tego samego konta w poświadczeniach jako konta platformy Azure. 
++ Program SharePoint, można użyć jako źródła danych dla tego przepływu. Zaloguj się w celu [wersji próbnej usługi Office 365](https://signup.microsoft.com/Signup?OfferId=467eab54-127b-42d3-b046-3844b860bebf&dl=O365_BUSINESS_PREMIUM&ali=1) Jeśli nie masz jeszcze programu SharePoint.
++ Ukończ samouczek [Tworzenie definicji interfejsu OpenAPI dla funkcji](functions-openapi-definition.md).
 
 ## <a name="create-a-sharepoint-list"></a>Utwórz listę programu SharePoint
-Możesz rozpocząć od tworzenia listy używanej jako źródło danych dla przepływu. Lista zawiera następujące kolumny.
+Należy rozpocząć od utworzenia listy używanej jako źródło danych dla przepływu. Lista zawiera następujące kolumny.
 
 | Kolumna listy     | Typ danych           | Uwagi                                    |
 |-----------------|---------------------|------------------------------------------|
@@ -56,48 +56,48 @@ Możesz rozpocząć od tworzenia listy używanej jako źródło danych dla przep
 | **LastServiceDate** | Date                |                                          |
 | **MaxOutput**       | Liczba              | Dane wyjściowe turbiny, w KwH            |
 | **ServiceRequired** | Tak/Nie              |                                          |
-| **EstimatedEffort** | Liczba              | Szacowany czas do naprawy, w godzinach |
+| **EstimatedEffort** | Liczba              | Szacowany czas naprawy, w godzinach |
 
-1. W witrynie programu SharePoint, kliknij lub naciśnij polecenie **nowy**, następnie **listy**.
+1. W witrynie programu SharePoint kliknij lub naciśnij **New**, następnie **listy**.
 
     ![Tworzenie nowej listy programu SharePoint](./media/functions-flow-scenario/new-list.png)
 
-2. Wprowadź nazwę `Turbines`, kliknij lub naciśnij polecenie **Utwórz**.
+2. Wprowadź nazwę `Turbines`, a następnie kliknij lub naciśnij pozycję **Utwórz**.
 
     ![Określanie nazwy nowej listy](./media/functions-flow-scenario/create-list.png)
 
-    **Turbin** listy jest tworzony przy użyciu domyślnego **tytuł** pola.
+    **Turbiny** lista jest tworzona przy użyciu domyślnego **tytuł** pola.
 
-    ![Lista turbin](./media/functions-flow-scenario/initial-list.png)
+    ![Lista turbiny](./media/functions-flow-scenario/initial-list.png)
 
-3. Kliknij lub naciśnij polecenie ![ikonę nowego elementu](./media/functions-flow-scenario/icon-new.png) następnie **data**.
+3. Kliknij lub naciśnij pozycję ![ikonę nowego elementu](./media/functions-flow-scenario/icon-new.png) następnie **data**.
 
     ![Dodawanie pola pojedynczego wiersza tekstu](./media/functions-flow-scenario/add-column.png)
 
-4. Wprowadź nazwę `LastServiceDate`, kliknij lub naciśnij polecenie **Utwórz**.
+4. Wprowadź nazwę `LastServiceDate`, a następnie kliknij lub naciśnij pozycję **Utwórz**.
 
-    ![Utwórz kolumnę LastServiceDate](./media/functions-flow-scenario/date-column.png)
+    ![Tworzenie kolumny LastServiceDate](./media/functions-flow-scenario/date-column.png)
 
 5. Powtórz ostatnie dwa kroki dla trzech kolumn na liście:
 
-    1. **Numer** > "MaxOutput"
+    1. **Liczba** > "MaxOutput"
 
     2. **Tak/nie** > "ServiceRequired"
 
-    3. **Numer** > "EstimatedEffort"
+    3. **Liczba** > "EstimatedEffort"
 
 To teraz — powinien mieć pustą listę, która wygląda podobnie do poniższej ilustracji. Możesz dodać dane do listy, po utworzeniu przepływu.
 
-![Lista jest pusta](media/functions-flow-scenario/empty-list.png)
+![Jeśli lista jest pusta](media/functions-flow-scenario/empty-list.png)
 
 [!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
-## <a name="add-a-connection-to-the-api"></a>Dodaj połączenie do interfejsu API
-Niestandardowy interfejs API (znanej także jako łącznik niestandardowy) jest dostępna w Flow firmy Microsoft, ale należy utworzyć połączenie z interfejsem API przed użyciem w strumieniu.
+## <a name="add-a-connection-to-the-api"></a>Dodaj połączenie z interfejsem API
+Niestandardowy interfejs API (znany także jako łącznik niestandardowy) jest dostępna w Microsoft Flow, ale przed jego użyciem w przepływie, należy ustanowić połączenie z interfejsem API.
 
-1. W [flow.microsoft.com](https://flow.microsoft.com), kliknij koło zębate ikonę (w prawym górnym rogu), a następnie kliknij przycisk **połączenia**.
+1. W [flow.microsoft.com](https://flow.microsoft.com), kliknij ikonę koła zębatego (w prawym górnym rogu), a następnie kliknij przycisk **połączeń**.
 
-    ![Połączenia o szybkości przepływu](media/functions-flow-scenario/flow-connections.png)
+    ![Połączeń przepływu](media/functions-flow-scenario/flow-connections.png)
 
 1. Kliknij przycisk **Utwórz połączenie**, przewiń w dół do **naprawy turbiny** łącznika i kliknij ją.
 
@@ -105,31 +105,31 @@ Niestandardowy interfejs API (znanej także jako łącznik niestandardowy) jest 
 
 1. Wprowadź klucz interfejsu API, a następnie kliknij przycisk **utworzyć połączenie**.
 
-    ![Wprowadź klucz interfejsu API i utworzyć](media/functions-flow-scenario/api-key.png)
+    ![Wprowadź klucz interfejsu API i Utwórz](media/functions-flow-scenario/api-key.png)
 
 > [!NOTE]
-> Udostępniane z przepływu, każda osoba, która działa na lub korzysta przepływ należy także podać klucz interfejsu API, aby nawiązać połączenie z interfejsu API. To zachowanie może ulec zmianie w przyszłości, a aby odzwierciedlał, które będą aktualizowane.
+> Jeśli udostępnisz przepływ z innymi osobami, każdy, kto pracuje lub korzysta z przepływu należy także podać klucz interfejsu API, aby nawiązać połączenie z interfejsu API. To zachowanie może ulec zmianie w przyszłości i będą aktualizowane w tym temacie w celu odzwierciedlenia zmiany.
 
 
-## <a name="create-a-flow"></a>Utwórz strumień
+## <a name="create-a-flow"></a>Tworzenie przepływu
 
-Teraz możesz przystąpić do tworzenia przepływu, który używa niestandardowego łącznika i listy programu SharePoint, który został utworzony.
+Teraz możesz przystąpić do tworzenia przepływu, który używa łącznika niestandardowego i listy programu SharePoint, który został utworzony.
 
-### <a name="add-a-trigger-and-specify-a-condition"></a>Dodaj wyzwalacza i określ warunek
+### <a name="add-a-trigger-and-specify-a-condition"></a>Dodawanie wyzwalacza i określony warunek
 
-Najpierw utwórz przepływem na podstawie pustego (bez szablonu) i Dodaj *wyzwalacza* generowane, gdy zostanie utworzony element na liście programu SharePoint. Następnie dodaj *warunku* ustalenie co dalej.
+Najpierw Utwórz przepływ od podstaw (bez szablonu) i Dodaj *wyzwalacza* generowane, gdy element zostanie utworzony na liście programu SharePoint. Następnie dodaj *warunek* Aby ustalić, co dzieje się potem.
 
-1. W [flow.microsoft.com](https://flow.microsoft.com), kliknij przycisk **Moje przepływa**, następnie **Utwórz z puste**.
+1. W [flow.microsoft.com](https://flow.microsoft.com), kliknij przycisk **moje przepływy**, następnie **Utwórz z pustego**.
 
-    ![Utwórz na podstawie puste](media/functions-flow-scenario/create-from-blank.png)
+    ![Utwórz z pustego](media/functions-flow-scenario/create-from-blank.png)
 
-2. Kliknij przycisk wyzwalacza SharePoint **po utworzeniu elementu**.
+2. Kliknij pozycję Wyzwól SharePoint **po utworzeniu elementu**.
 
     ![Wybierz wyzwalacz](media/functions-flow-scenario/choose-trigger.png)
 
-    Jeśli użytkownik nie jest jeszcze zarejestrowany do programu SharePoint, pojawi się monit Aby to zrobić.
+    Jeszcze nie zostało to zrobione w programie SharePoint, zostanie wyświetlony monit zrobić.
 
-3. Dla **adres witryny**, wprowadź nazwę witryny programu SharePoint i **Nazwa listy**, wprowadź listy, która zawiera dane turbiny.
+3. Aby uzyskać **adres witryny**, wprowadź nazwę witryny programu SharePoint oraz **Nazwa listy**, wprowadź listę, która zawiera dane turbiny.
 
     ![Wybierz wyzwalacz](media/functions-flow-scenario/site-list.png)
 
@@ -137,43 +137,43 @@ Najpierw utwórz przepływem na podstawie pustego (bez szablonu) i Dodaj *wyzwal
 
     ![Dodaj warunek](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow dodaje dwie gałęzie z przepływem: **tak** i **Jeśli żadne**. Kroki należy dodać do jednej lub obu gałęzi, po zdefiniowaniu warunek, który ma zostać znaleziona.
+    Microsoft Flow dodaje dwie gałęzie z przepływem: **tak** i **Jeśli**. Dodaj kroki do jednego lub obu gałęzi po zdefiniowaniu warunek, który chcesz dopasować.
 
     ![Warunek gałęzi](media/functions-flow-scenario/condition-branches.png)
 
-5. Na **warunku** kart, kliknij pierwsze pole, a następnie wybierz **ServiceRequired** z **zawartości dynamicznej** okno dialogowe.
+5. Na **warunek** karty kliknij pierwsze pole, a następnie wybierz **ServiceRequired** z **zawartości dynamicznej** okno dialogowe.
 
-    ![Wybierz pola dla warunku](media/functions-flow-scenario/condition1-field.png)
+    ![Wybierz pole dla warunku](media/functions-flow-scenario/condition1-field.png)
 
 6. Wprowadź wartość `True` dla warunku.
 
     ![Wprowadź wartość PRAWDA dla warunku](media/functions-flow-scenario/condition1-yes.png)
 
-    Wartość jest wyświetlana jako `Yes` lub `No` w programie SharePoint lista, lecz jest przechowywana jako *logiczna*, albo `True` lub `False`. 
+    Wartość jest wyświetlana jako `Yes` lub `No` w programie SharePoint listy, ale są przechowywane jako *logiczna*, albo `True` lub `False`. 
 
-7. Kliknij przycisk **utworzyć przepływ** w górnej części strony. Należy kliknąć przycisk **przebiegu aktualizacji** okresowo.
+7. Kliknij przycisk **Utwórz przepływ** w górnej części strony. Należy kliknąć przycisk **przebiegu aktualizacji** okresowo.
 
-Elementy utworzone na liście, aby uzyskać przepływ sprawdza, czy **ServiceRequired** pole jest ustawione na `Yes`, przejdzie do **tak** gałęzi lub **Jeśli żadne** gałęzi jako odpowiednie. Aby zaoszczędzić czas, w tym temacie, można określić tylko akcje **tak** gałęzi.
+Dla wszelkich elementów utworzonych w liście, przepływ sprawdza, czy **ServiceRequired** pole jest ustawione na `Yes`, następnie przechodzi do **tak** gałęzi lub **Jeśli** gałęzi jako jest to właściwe. Aby zaoszczędzić czas, w tym temacie, można określić tylko akcje w przypadku **tak** gałęzi.
 
 ### <a name="add-the-custom-connector"></a>Dodawanie łącznika niestandardowego
 
-Teraz Dodaj niestandardowy łącznik, który wywołuje funkcję na platformie Azure. Dodanie łącznika niestandardowego przepływu, podobnie jak standardowy łącznika. 
+Teraz Dodaj łącznik niestandardowy, który wywołuje funkcję platformy Azure. Dodaj łącznik niestandardowy do przepływu, podobnie jak łącznika standardowego. 
 
 1. W **tak** gałęzi, kliknij przycisk **Dodaj akcję**.
 
     ![Dodawanie akcji](media/functions-flow-scenario/condition1-yes-add-action.png)
 
-2. W **wybierz akcję** okno dialogowe, wyszukaj `Turbine Repair`, wybierz akcję **naprawy turbiny — oblicza koszty**.
+2. W **wybierz akcję** okno dialogowe, wyszukaj `Turbine Repair`, następnie wybierz akcję **naprawy turbiny — oblicza koszty**.
 
     ![Wybierz akcję](media/functions-flow-scenario/choose-turbine-repair.png)
 
-    Na poniższej ilustracji przedstawiono karty, który zostanie dodany do przepływu. Opisy i pola pochodzą z definicji OpenAPI dla łącznika.
+    Na poniższej ilustracji przedstawiono karty, który jest dodawany do przepływu. Opisy i pola pochodzą z definicji interfejsu OpenAPI dla łącznika.
 
-    ![Oblicza domyślne kosztów](media/functions-flow-scenario/calculates-costs-default.png)
+    ![Oblicza wartości domyślne kosztów](media/functions-flow-scenario/calculates-costs-default.png)
 
-3. Na **oblicza koszty** kart, użyj **zawartości dynamicznej** okno dialogowe, aby wybrać dane wejściowe dla funkcji. Microsoft Flow pokazuje pól liczbowych, ale nie pole daty, ponieważ definicja OpenAPI Określa, że **godziny** i **pojemności** są liczbowych.
+3. Na **oblicza koszty** karty, należy użyć **zawartości dynamicznej** okno dialogowe, aby wybrać dane wejściowe dla funkcji. Microsoft Flow pokazuje pola numeryczne, ale nie pole daty, ponieważ definicja interfejsu OpenAPI Określa, że **godzin** i **pojemności** liczbowe.
 
-    Dla **godziny**, wybierz pozycję **EstimatedEffort**oraz **pojemności**, wybierz pozycję **MaxOutput**.
+    Dla **godzin**, wybierz opcję **EstimatedEffort**oraz **pojemności**, wybierz opcję **MaxOutput**.
 
     ![Wybierz akcję](media/functions-flow-scenario/calculates-costs-fields.png)
 
@@ -183,37 +183,37 @@ Teraz Dodaj niestandardowy łącznik, który wywołuje funkcję na platformie Az
 
     ![Dodaj warunek](media/functions-flow-scenario/condition2-add.png)
 
-5. Na **2 warunku** kart, kliknij pierwsze pole, a następnie wybierz **komunikat** z **zawartości dynamicznej** okno dialogowe.
+5. Na **warunek 2** karty kliknij pierwsze pole, a następnie wybierz **komunikat** z **zawartości dynamicznej** okno dialogowe.
 
-    ![Wybierz pola dla warunku](media/functions-flow-scenario/condition2-field.png)
+    ![Wybierz pole dla warunku](media/functions-flow-scenario/condition2-field.png)
 
-6. Wprowadź wartość `Yes`. Przepływ przechodzi do następnego **tak** gałęzi lub **Jeśli żadne** gałęzi zależnie od tego, czy komunikat zwrócony przez funkcję ma tak (utworzyć naprawy) lub nie (nie należy naprawy). 
+6. Wprowadź wartość `Yes`. Przepływ przechodzi do następnego **tak** gałęzi lub **Jeśli** gałęzi na podstawie informacji o tego, czy komunikat zwrócony przez funkcję tak (utworzyć naprawy) lub nie (nie należy naprawy). 
 
-    ![Wprowadź tak dla warunku](media/functions-flow-scenario/condition2-yes.png)
+    ![Wprowadzić wartość Tak dla warunku](media/functions-flow-scenario/condition2-yes.png)
 
-Przepływ powinna wyglądać podobnie jak na poniższej ilustracji.
+Przepływ powinien teraz wyglądać podobnie do następującego.
 
-![Wprowadź tak dla warunku](media/functions-flow-scenario/flow-checkpoint1.png)
+![Wprowadzić wartość Tak dla warunku](media/functions-flow-scenario/flow-checkpoint1.png)
 
 ### <a name="send-email-based-on-function-results"></a>Wyślij wiadomość e-mail na podstawie wyników — funkcja
 
-W tym momencie przepływu, wartość zwrócona przez funkcję ma **komunikat** wartość `Yes` lub `No` z funkcji, jak również inne informacje dotyczące przychodów kosztów i możliwości. W **tak** gałęzi drugi warunek spowoduje wysłanie wiadomości e-mail, ale może wykonać dowolną liczbę czynności, takie jak zapisywanie powrót do listy programu SharePoint i uruchamiania [procesu zatwierdzania](https://flow.microsoft.com/documentation/modern-approvals/).
+W tym momencie w usłudze flow, wartość zwrócona przez funkcję ma **komunikat** wartość `Yes` lub `No` z funkcji, a także inne informacje dotyczące kosztów i potencjalne przychody. W **tak** gałęzi z drugi warunek, wyśle wiadomość e-mail, ale można wykonać dowolną liczbę elementów, takich jak zapisania zwrotnego do listy programu SharePoint lub uruchamianie [proces zatwierdzania](https://flow.microsoft.com/documentation/modern-approvals/).
 
 1. W **tak** gałęzi drugi warunek, kliknij przycisk **Dodaj akcję**.
 
     ![Dodawanie akcji](media/functions-flow-scenario/condition2-yes-add-action.png)
 
-2. W **wybierz akcję** okno dialogowe, wyszukaj `email`, następnie wybierz akcją wysyłania wiadomości e-mail z systemem poczty e-mail użycia (w tym przypadku Outlook).
+2. W **wybierz akcję** okno dialogowe, wyszukaj `email`, następnie Wybieranie akcji Wyślij wiadomość e-mail, oparty na systemie poczty e-mail, użyj (w tym przypadku Outlook).
 
-    ![Outlook, Wyślij wiadomość e-mail](media/functions-flow-scenario/outlook-send-email.png)
+    ![Program Outlook, Wyślij wiadomość e-mail](media/functions-flow-scenario/outlook-send-email.png)
 
-3. Na **wysłać wiadomość e-mail** kart, napisz wiadomość e-mail. Wprowadź prawidłową nazwę w swojej organizacji w celu **do** pola. Na poniższym obrazie przedstawiono pozostałe pola są kombinacją tekstu i tokenów z **zawartości dynamicznej** okno dialogowe. 
+3. Na **Wyślij wiadomość e-mail** kart, redagowania wiadomości e-mail. Wprowadź prawidłową nazwę w swojej organizacji w celu **do** pola. Na poniższej ilustracji widać, inne pola są kombinację tekstu i tokenów z **zawartości dynamicznej** okno dialogowe. 
 
     ![Pola wiadomości e-mail](media/functions-flow-scenario/email-fields.png)
 
-    **Tytuł** token jest dostarczany z listy programu SharePoint i **CostToFix** i **RevenueOpportunity** są zwracane przez funkcję.
+    **Tytuł** token pochodzi z listy programu SharePoint i **CostToFix** i **RevenueOpportunity** są zwracane przez funkcję.
 
-    Ukończone przepływu powinno wyglądać podobnie do poniższej ilustracji (możemy pozostać poza pierwszy **Jeśli żadne** gałąź, aby zaoszczędzić miejsce).
+    Ukończony przepływ powinien wyglądać podobnie do następującego (pozostawiliśmy pierwszy **Jeśli** gałęzi, aby zaoszczędzić miejsce na).
 
     ![Pełnego przepływu](media/functions-flow-scenario/complete-flow.png)
 
@@ -221,11 +221,11 @@ W tym momencie przepływu, wartość zwrócona przez funkcję ma **komunikat** w
 
 ## <a name="run-the-flow"></a>Uruchamianie przepływu
 
-Teraz, gdy strumień jest zakończone, Dodaj wiersz na liście programu SharePoint i zobacz, jak reaguje przepływu.
+Teraz, gdy przepływ zostanie zakończona, możesz dodać wiersz do listy programu SharePoint i reakcji przepływu.
 
-1. Wróć do listy programu SharePoint, a następnie kliknij przycisk **Edytuj szybkie**.
+1. Wróć do listy programu SharePoint, a następnie kliknij przycisk **szybka edycja**.
 
-    ![Szybkie edycji](media/functions-flow-scenario/quick-edit.png)
+    ![Szybka edycja](media/functions-flow-scenario/quick-edit.png)
 
 2. Wprowadź następujące wartości w siatce edycji.
 
@@ -241,27 +241,27 @@ Teraz, gdy strumień jest zakończone, Dodaj wiersz na liście programu SharePoi
 
     ![Szybka edycja — gotowe](media/functions-flow-scenario/quick-edit-done.png)
 
-    Po dodaniu elementu wyzwala przepływ, który można spojrzeć na dalej.
+    Podczas dodawania elementu wyzwala przepływ, który możesz Przyjrzyj się dalej.
 
-4. W [flow.microsoft.com](https://flow.microsoft.com), kliknij przycisk **Moje przepływa**, następnie kliknij przycisk przepływ został utworzony.
+4. W [flow.microsoft.com](https://flow.microsoft.com), kliknij przycisk **moje przepływy**, następnie kliknij utworzony przepływ.
 
-    ![Moje przepływów](media/functions-flow-scenario/my-flows.png)
+    ![Moje przepływy](media/functions-flow-scenario/my-flows.png)
 
-5. W obszarze **Uruchom HISTORII**, kliknij przycisk Uruchom przepływ.
+5. W obszarze **HISTORII URUCHAMIANIA**, kliknij przycisk przebiegu przepływu.
 
     ![Historia uruchamiania](media/functions-flow-scenario/run-history.png)
 
-    Jeśli uruchomienie zakończyło się pomyślnie, można przejrzeć operacji przepływu na następnej stronie. Jeśli uruchomienie nie powiodło się dla jakiejkolwiek przyczyny, Następna strona zawiera informacje dotyczące rozwiązywania problemów.
+    Jeśli uruchomienie zakończyło się pomyślnie, można przejrzeć przepływ operacji na następnej stronie. Jeśli działanie nie powiodło się dla jakiegokolwiek powodu, następnej strony zawiera informacje dotyczące rozwiązywania problemów.
 
-6. Rozwiń kart, aby zobaczyć, jakie wystąpiły podczas przepływu. Na przykład rozwiń folder **oblicza koszty** karty, aby zobaczyć dane wejściowe, aby i dane wyjściowe z funkcji. 
+6. Rozwiń kart, aby zobaczyć, co wydarzyło się podczas przepływu. Na przykład rozwiń folder **oblicza koszty** karty, aby wyświetlić dane wejściowe i dane wyjściowe z tej funkcji. 
 
-    ![Oblicza koszty wejścia i wyjścia](media/functions-flow-scenario/calculates-costs-outputs.png)
+    ![Oblicza koszty wejściami i wyjściami](media/functions-flow-scenario/calculates-costs-outputs.png)
 
-7. Sprawdź konto e-mail osoby określone w **do** pole **wysłać wiadomość e-mail** karty. Wiadomości e-mail wysyłanych z przepływem powinien wyglądać poniższej ilustracji.
+7. Sprawdź konto e-mail osoby, określone w **do** pole **Wyślij wiadomość e-mail** karty. Wiadomości e-mail wysyłanej z przepływ powinien wyglądać podobnie do następującego.
 
-    ![Przepływu poczty e-mail](media/functions-flow-scenario/flow-email.png)
+    ![Przepływ poczty e-mail](media/functions-flow-scenario/flow-email.png)
 
-    Widać, jak zostały zastąpione tokeny przy użyciu prawidłowych wartości z listy programu SharePoint i funkcji.
+    Aby zobaczyć, jak tokeny zostały zamienione na poprawne wartości z listy programu SharePoint i funkcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym temacie przedstawiono sposób:
@@ -269,10 +269,10 @@ W tym temacie przedstawiono sposób:
 > [!div class="checklist"]
 > * Utwórz listę w programie SharePoint.
 > * Eksportowanie definicji interfejsu API.
-> * Dodaj połączenie do interfejsu API.
-> * Utwórz strumień do wysyłania wiadomości e-mail, jeśli naprawa jest ekonomiczne.
+> * Dodaj połączenie z interfejsem API.
+> * Utwórz przepływ do wysyłania wiadomości e-mail, jeśli naprawy jest ekonomiczne.
 > * Uruchamianie przepływu.
 
-Aby dowiedzieć się więcej na temat Flow firmy Microsoft, zobacz [wprowadzenie Microsoft Flow](https://flow.microsoft.com/documentation/getting-started/).
+Aby dowiedzieć się więcej na temat Microsoft Flow, zobacz [Rozpoczynanie pracy z usługą Microsoft Flow](https://flow.microsoft.com/documentation/getting-started/).
 
-Aby dowiedzieć się więcej o innych interesujące scenariuszy korzystających z usługi Azure Functions, zobacz [wywołać funkcję w rozwiązaniu PowerApps](functions-powerapps-scenario.md) i [tworzy funkcję, która integruje się z usługą Azure Logic Apps](functions-twitter-email.md).
+Aby dowiedzieć się o innych ciekawych scenariuszy, które używają usługi Azure Functions, zobacz [wywoływanie funkcji z usługi PowerApps](functions-powerapps-scenario.md) i [Tworzenie funkcji integrującej się z usługą Azure Logic Apps](functions-twitter-email.md).

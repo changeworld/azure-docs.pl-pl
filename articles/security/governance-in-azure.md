@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie na platformie Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat przetwarzania danych usług w chmurze, które można skalować w górę i w dół do wymagań aplikacji lub przedsiębiorstwa.
+title: Ład na platformie Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat oparte na chmurze usługi obliczeniowe, które można skalować w górę i w dół do potrzeb swojej aplikacji lub enterprise.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 9c6509f25be7fe520a427e17ca1206e10f296fea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 579e900ee6616af8fd197e501364acd8e18d3e37
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110766"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970527"
 ---
 # <a name="governance-in-azure"></a>Ład na platformie Azure
 
-Azure udostępnia wiele opcji dotyczących zabezpieczeń oraz możliwość ich kontroli, dzięki czemu można spełnić unikatowe wymagania danej organizacji wdrożeń.
+Platforma Azure oferuje wiele opcji zabezpieczeń oraz możliwość sterowania nimi, dzięki czemu można spełnić unikatowe wymagania wdrożenia w organizacji.
 
-Chmury Azure ładu odwołuje się do procesów decyzyjnych kryteria i zasady objętego planowania, architektura, przejęcia, wdrażania, operacji i zarządzanie chmury obliczeniowej. Zarządzanie chmury Azure oferuje zintegrowane inspekcji i konsultingowe podejście do sprawdzenia i udzielanie porad organizacji na ich użycie platformy Azure. 
+Chmury platformy Azure rządów odwołuje się do procesów decyzyjnych, kryteria i zasad objętych planowania, architektury, przejęcia, wdrażania, operacji i zarządzanie przetwarzanie w chmurze. Nadzoru chmury platformy Azure oferuje zintegrowane inspekcji i doradcze podejście do przeglądania i wniosku organizacje od ich użycia platformy Azure. 
 
-Aby utworzyć plan zarządzania w chmurze Azure, należy wykonać omówiono osób, procesów i technologii teraz w miejscu. Następnie można tworzyć platform, które ułatwiają IT do obsługi spójnie potrzeb biznesowych, jednocześnie zapewniając użytkownikom elastyczność możliwości korzystania z funkcji platformy Azure.
+Aby utworzyć plan dotyczących zarządzania w chmurze platformy Azure, musisz teraz wykonać przyjrzeć się ludzi, procesów i technologii w miejscu. Następnie utworzysz struktur, które ułatwiają IT, aby stale obsługi potrzeb biznesowych, jednocześnie zapewniając użytkownikom elastyczność korzystanie z funkcji platformy Azure.
 
 ## <a name="implementation-of-policies-processes-and-standards"></a>Stosowania zasad, procesów i standardów 
 
-Zarządzanie ustanowił role i obowiązki nadzorują implementacja zasad zabezpieczeń informacji i ciągłości obrębie platformy Azure. Zarządzania platformy Azure jest odpowiedzialny za nadzór nad zabezpieczeń i ciągłości rozwiązań w jego odpowiednich zespołów (w tym firmom). Ułatwia także zgodności z zasadami zabezpieczeń, procesów i standardów.
+Zarządzanie ustanowiła role i obowiązki do nadzorowania wdrażania zasad zabezpieczeń informacji i ciągłość operacyjną na platformie Azure. Zarządzania systemu Azure jest odpowiedzialny za nadzorowanie zabezpieczeń i praktyki ciągłości działania w ramach jego odpowiednich zespołów (w tym innych firm). Ułatwia ona zgodność z zasadami zabezpieczeń, procesy i standardów.
 
 ### <a name="account-provisioning"></a>Aprowizacja kont
 
-Definiowanie hierarchii konta jest ważny krok i struktury usług platformy Azure w obrębie firmy. Jest strukturę zarządu core. Klienci, którzy mają Enterprise Agreement (EA) można podzielić środowiska do działów, konta i subskrypcji.
+Definiowanie hierarchii konta jest ważny krok do użycia i struktury usług platformy Azure w obrębie firmy. To strukturę zarządu core. Klienci mający umowy Enterprise Agreement (EA), można podzielić środowiska do działów, kont i subskrypcji.
 
 ![Aprowizacja kont](./media/governance-in-azure/security-governance-in-azure-fig1.png)
 
-Jeśli nie masz umowy Enterprise Agreement, rozważ użycie [Azure tagi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) do definiowania hierarchii na poziomie subskrypcji. Subskrypcji platformy Azure to podstawowa jednostka, która zawiera wszystkie zasoby. Definiuje również kilka ograniczeń w obrębie platformy Azure, takich jak liczby rdzeni i zasobów. Subskrypcje mogą zawierać [grup zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), które zawierają zasoby. [Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) zasady stosowane na te trzy poziomy.
+Jeśli nie masz umowy Enterprise Agreement, należy rozważyć użycie [Azure tagi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) na poziomie subskrypcji, aby zdefiniować w hierarchii. Subskrypcji platformy Azure to podstawowa jednostka, która zawiera wszystkie zasoby. Definiuje również kilka ograniczeń w obrębie platformy Azure, takie jak liczba rdzeni i zasobów. Subskrypcje mogą zawierać [grup zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), który może zawierać zasoby. [Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) zasady mają zastosowanie w tych trzech poziomów.
 
-Różni się każdego przedsiębiorstwa. Dla firm innych niż przedsiębiorstwa hierarchii przy użyciu tagów Azure umożliwia elastyczność w sposób organizowania Azure. Przed wdrożeniem zasobami na platformie Azure, możesz hierarchii i zrozumienie wpływu na rozliczenia, dostęp do zasobów i złożoności.
+Każdy przedsiębiorstwa jest inny. Dla firm innych niż przedsiębiorstwa hierarchii przy użyciu tagów usługi Azure umożliwia większą elastyczność w sposób organizowania platformy Azure. Przed przystąpieniem do wdrażania zasobów na platformie Azure, możesz hierarchii i zrozumienie wpływu na rozliczenia, dostęp do zasobów i złożoności.
 
 ### <a name="subscription-controls"></a>Formanty subskrypcji
 
-Subskrypcje określają sposób zgłoszone i rozliczane użycia zasobów. Można skonfigurować subskrypcje oddzielnych rozliczeń i płatności. Jedno konto platformy Azure może mieć wiele subskrypcji. Subskrypcje można ustalić skalę użycia zasobów platformy Azure przez wielu działów w firmie.
+Subskrypcje określają, jak zgłaszane i rozliczane użycie zasobów. Można skonfigurować subskrypcje dla oddzielnych Pomoc dotycząca rozliczeń i płatności. Jednego konta platformy Azure może mieć wiele subskrypcji. Subskrypcje można określić wykorzystania zasobów platformy Azure z wielu działów w firmie.
 
-Na przykład firma ma IT, HR, i działu marketingu i działów te działają różnych projektów. Firma może bazowy jego rozliczeń każdy dział wykorzystanie zasobów platformy Azure, takich jak maszyny wirtualne. Firma może wybrać, finansów każdego działu.
+Na przykład firma ma IT, HR, i działów marketingu i te działów uruchomionych różnych projektach. Firma można oprzeć jego rozliczeń na każdy dział użycia zasobów platformy Azure, takie jak maszyny wirtualne. Firma może następnie sterować Finanse każdego działu.
 
-Subskrypcje platformy Azure nawiązać trzy parametry:
+Subskrypcje platformy Azure, nawiązać trzy parametry:
 
 - Identyfikator unikatowy subskrybenta
 
@@ -57,20 +57,20 @@ Subskrypcje platformy Azure nawiązać trzy parametry:
 
 - Zbiór dostępnych zasobów
 
-Dla poszczególnych te parametry obejmują jeden identyfikator konta Microsoft, numer karty kredytowej i pełny zestaw usług platformy Azure. Microsoft wymusza ograniczenia użycia, w zależności od typu subskrypcji.
+Dla poszczególnych te parametry obejmują jeden identyfikator konta Microsoft, numer karty kredytowej i pełnego zestawu usług platformy Azure. Firma Microsoft narzuca ograniczenia użycia, w zależności od typu subskrypcji.
 
-Hierarchie Azure rejestracji zdefiniuj struktury usług w ramach umowy Enterprise Agreement. Umowa Enterprise portal umożliwia klientom dzielenia dostęp do zasobów platformy Azure skojarzone z umowy Enterprise Agreement, w oparciu o elastyczną hierarchii, które można dostosować do potrzeb organizacji. Wzorzec hierarchii powinna odpowiadać, zarządzania i geograficzne struktury konta skojarzone dostępu rozliczeń i zasobów organizacji.
+Hierarchie rejestracji na platformie Azure zdefiniowanie struktury usług w ramach umowy Enterprise Agreement. Portal umowy Enterprise Agreement umożliwia klientom do podziału dostępu do zasobów platformy Azure skojarzone z umową Enterprise Agreement, w oparciu o elastyczną hierarchii, które można dostosować do potrzeb organizacji. Wzorzec hierarchii powinny odpowiadać, zarządzania i geograficzne strukturę, aby uwzględnić skojarzone rozliczenia i dostęp do zasobów organizacji.
 
-Jednostka funkcjonalności, business, są trzy wzorce wysokiego poziomu hierarchii i geograficzne. Działów są konstrukcję administracyjne dla grupy kont. W ramach każdego działu kont można przypisać subskrypcji, których tworzenie silosów rozliczeń i kilka ograniczeń klucza na platformie Azure (na przykład liczba kont magazynu i maszyn wirtualnych).
+Trzy wzorce wysokiego poziomu hierarchii to jednostki funkcjonalności, biznesowych i geograficzne. Działy to konstrukcja administracyjne dla grupowań konta. W ramach każdego działu kont można przypisać subskrypcje, które tworzą silos służące do rozliczeń i kilka ograniczeń klucza na platformie Azure (na przykład liczbę maszyn wirtualnych i kont magazynu).
 
 ![Formanty subskrypcji](./media/governance-in-azure/security-governance-in-azure-fig2.png)
 
 
-W przypadku organizacji z umową Enterprise subskrypcji platformy Azure, wykonaj czterech poziomu hierarchii:
+Dla organizacji z umową Enterprise Agreement subskrypcji platformy Azure, należy wykonać cztery poziomową:
 
-1. administrator przedsiębiorstwa rejestracji
+1. Administrator rejestracji Enterprise
 
-2. administratorem działu
+2. Administrator działu
 
 3. Właściciel konta
 
@@ -80,95 +80,95 @@ Ta hierarchia reguluje następujące czynności:
 
 - Relacja rozliczeń.
 
-- Administracja konta.
+- Administrowanie kontem.
 
-- Dostęp do zasobów za pomocą RBAC.
+- Dostęp do zasobów przy użyciu RBAC.
 
-- Granice:
+- Granic:
 
-  - Użycie i rozliczenia (oparte na numery oferta karta szybkość)
+  - Użycie i rozliczenia (oparte na liczbach oferty karta szybkość)
 
   - Limity
 
   - Sieć wirtualna
 
-- Dołączanie do usługi Azure Active Directory (Azure AD). Jedno wystąpienie usługi Azure AD może być skojarzony z wielu subskrypcji.
+- Dołączanie do usługi Azure Active Directory (Azure AD). Jedno wystąpienie usługi Azure AD może być skojarzony z wieloma subskrypcjami.
 
-- Skojarzenie z konta organizacji rejestracji.
+- Skojarzenie z konta rejestracji organizacji.
 
 ### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-[RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) umożliwia zarządzanie dostępem szczegółowe zasobów na platformie Azure. Za pomocą RBAC, można udzielić tylko takiego dostępu użytkownicy muszą wykonać swoje zadania. Firmy powinny skupić się na zapewniając pracownikom dokładne uprawnienia, które są im niezbędne. Za dużo uprawnienia ujawnia konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. 
+[RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) umożliwia zarządzanie dostępem szczegółowe zasobów na platformie Azure. Za pomocą funkcji RBAC, można udzielić tylko takiego dostępu potrzebnym użytkownikom do wykonywania swoich zadań. Firmy powinny skoncentrować się na zapewniając pracownikom uprawnienia, których potrzebują. Zbyt wiele uprawnień uwidocznić konta dla osób atakujących. Zbyt mało uprawnienia oznacza, że pracownicy nie może wykonać swoją pracę wydajnie. 
 
-Zamiast nadanie każdy nieograniczonych uprawnień w Twojej subskrypcji platformy Azure lub zasobów, można zezwolić tylko pewne akcje. Na przykład umożliwia RBAC let jednego pracownika zarządzania maszynami wirtualnymi w ramach subskrypcji, gdy pracownik zarządza baz danych w tej samej subskrypcji.
+Zamiast wszystkich nieograniczone uprawnienia w Twojej subskrypcji platformy Azure lub zasobów, można zezwolić tylko określone akcje. Na przykład można użyć RBAC, aby umożliwić jednego pracownika zarządzać maszyn wirtualnych w ramach subskrypcji, gdy innemu pracownikowi zarządza bazy danych SQL w tej samej subskrypcji.
 
-Aby udzielić dostępu, należy przypisać role do użytkowników, grup lub aplikacje w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji. Rola przypisana w zakresie nadrzędnej również udziela dostępu do podrzędnych w nim zawarte. Na przykład użytkownik z dostępem do grupy zasobów można zarządzać wszystkie zasoby, które zawiera, takie jak witryny sieci Web, maszyn wirtualnych i podsieci. W ramach każdej subskrypcji możesz utworzyć maksymalnie 2000 przypisań ról.
+Aby udzielić dostępu, należy przypisać role do użytkowników, grup lub aplikacji w określonym zakresie. Zakres przypisania roli może być subskrypcją, grupą zasobów lub pojedynczy zasób. Rola przypisana na zakresie nadrzędnym udziela również dostępu do elementów podrzędnych w nim zawarte. Na przykład użytkownik mający dostęp do grupy zasobów można zarządzać wszystkie zasoby, które zawiera, takich jak witryny sieci Web, maszyn wirtualnych i podsieci. W ramach każdej subskrypcji można utworzyć maksymalnie 2000 przypisań ról.
 
-Rola to kolekcja uprawnień i RBAC ma kilka wbudowanych ról. Następujące role wbudowane dotyczą wszystkich typów zasobów:
+Rola to kolekcja uprawnień, a RBAC zawiera kilka wbudowanych ról. Następujące role wbudowane, Zastosuj do wszystkich typów zasobów:
 
-- **Właściciel** ma pełny dostęp do wszystkich zasobów łącznie z prawem delegować dostęp do innych użytkowników.
+- **Właściciel** ma pełny dostęp do wszystkich zasobów, łącznie z prawej strony można delegować dostępu do innych osób.
 
-- **Współautor** można tworzyć i zarządzania wszystkimi typami zasobów platformy Azure, ale nie może udzielić dostępu do innych użytkowników.
+- **Współautor** można tworzyć i zarządzać nimi wszystkie typy zasobów platformy Azure, ale nie może przyznawać dostępu innym osobom.
 
-- **Czytnik** można wyświetlić wszystkich zasobów systemu Azure.
+- **Czytnik** mogą wyświetlać wszystkie zasoby platformy Azure.
 
-Pozostałe role wbudowane na platformie Azure Zezwalaj na zarządzanie określonych zasobów platformy Azure. Na przykład Rola współautora maszyny wirtualnej zezwala użytkownikowi na tworzenie i zarządzanie maszynami wirtualnymi. Listę wbudowanych ról i ich działania, zobacz [wbudowane role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pozostała część wbudowanych ról na platformie Azure umożliwiają zarządzanie określonych zasobów platformy Azure. Na przykład rola Współautor maszyny wirtualnej umożliwia użytkownikowi tworzenie i zarządzanie maszynami wirtualnymi. Aby uzyskać listę wbudowanych ról i ich operacje, zobacz [wbudowane role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-RBAC obsługuje operacje zarządzania zasobami Azure w portalu Azure i interfejsów API usługi Azure Resource Manager. W większości przypadków RBAC nie można autoryzować poziom danych operacji dla zasobów platformy Azure. Informacje, jak RBAC zostanie rozszerzone na operacje na danych, zobacz [poznać definicje ról](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions).
+RBAC obsługuje operacje zarządzania zasobami platformy Azure w witrynie Azure portal i interfejsów API usługi Azure Resource Manager. W większości przypadków RBAC nie można autoryzować operacji na poziomie danych dla zasobów platformy Azure. Aby uzyskać informacji na temat sposobu RBAC jest rozszerzany do operacji na danych, zobacz [zrozumienie definicji ról](https://docs.microsoft.com/azure/role-based-access-control/role-definitions).
 
-Jeśli wbudowane role nie spełniają potrzeb określonym dostępu, możesz [utworzyć niestandardową rolę](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). Podobnie jak role wbudowane role niestandardowe można przypisać do użytkowników, grup i aplikacji w subskrypcji, grupy zasobów i zakres zasobów. Można tworzyć role niestandardowe przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)i [interfejsu API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
+Jeśli wbudowane role nie odpowiadają Twoim potrzebom określonym dostępu, możesz to zrobić [utworzyć rolę niestandardową](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). Podobnie jak role wbudowane role niestandardowe można przypisać do użytkowników, grup i aplikacji w subskrypcji, grupy zasobów i zakres zasobów. Role niestandardowe można utworzyć przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)i [interfejsu API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
 
 ### <a name="resource-management"></a>Zarządzanie zasobami
 
-Platforma Azure oferuje dwa modele wdrażania: [klasycznego](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) i Menedżera zasobów Azure.
+System Azure oferuje dwa modele wdrażania: [klasycznego](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) i usługi Azure Resource Manager.
 
-W klasycznym modelu każdy zasób istnieje niezależnie. Nie istnieje sposób do grupowania powiązanych zasobów. Należy ręcznie śledzić zasobów, do których się rozwiązania lub aplikacji i pamiętaj, aby zarządzać nimi w skoordynowany sposób podejście. Podstawową jednostką zarządzania jest subskrypcji. Trudno jest podział zasobów w ramach subskrypcji, co prowadzi do powstania dużej liczby subskrypcji.
+W modelu klasycznym każdy zasób istnieje niezależnie. Nie ma możliwości do grupowania powiązanych zasobów. Należy ręcznie śledzić zasoby, które tworzą rozwiązania lub aplikacji i pamiętaj, aby zarządzać nimi w skoordynowanego podejścia. Podstawową jednostką zarządzania jest subskrypcji. Trudno jest podzielenie zasobów w ramach subskrypcji, co prowadzi do powstania dużej liczby subskrypcji.
 
-Model wdrażania usługi Resource Manager zawiera pojęcie [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Grupa zasobów to kontener dla zasobów mających wspólny cykl życia. Może obejmować wszystkich zasobów dla rozwiązania lub tylko tych zasobów, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
+Model wdrażania usługi Resource Manager obejmuje koncepcję [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Grupa zasobów to kontener dla zasobów mających wspólny cykl życia. Może obejmować wszystkie zasoby dla rozwiązania lub tylko tych zasobów, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
 
 Model wdrażania przy użyciu usługi Resource Manager zapewnia kilka korzyści:
 
 - Możliwość grupowego wdrożenia i monitorowania wszystkich usług w ramach rozwiązania oraz zarządzania nimi (zamiast obsługiwania usług pojedynczo).
 
-- Można wielokrotnie wdrażać rozwiązania przez cały cykl życia i mieć pewność, że zasoby są wdrażane w spójnym stanie.
+- Można wielokrotnie wdrażać rozwiązania przez cały cykl życia i mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie.
 
-- Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów. Te zasady są stosowane automatycznie po dodaniu nowych zasobów do grupy zasobów.
+- Możliwość stosowania kontroli dostępu do wszystkich zasobów w grupie zasobów. Te zasady są stosowane automatycznie, gdy nowe zasoby są dodawane do grupy zasobów.
 
 - Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
 
 - Możliwość definiowania infrastruktury rozwiązania za pomocą formatu JavaScript Object Notation (JSON). Plik JSON jest nazywany szablonem usługi Resource Manager.
 
-- Możliwość definiowania zależności między zasobami, dlatego są one wdrożone w odpowiedniej kolejności.
+- Możliwość definiowania zależności między zasobami, aby zostały wdrożone w odpowiedniej kolejności.
 
 ![Resource Manager](./media/governance-in-azure/security-governance-in-azure-fig4.png)
 
 Aby uzyskać zalecenia dotyczące szablonów, zobacz [Best practices for creating Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) (Najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager).
 
-Usługa Azure Resource Manager analizuje zależności, aby pomóc w zapewnieniu, że zasoby są tworzone w odpowiedniej kolejności. Jeśli jeden zasób opiera się na wartości z innym zasobem (na przykład maszynę wirtualną wymagające konta magazynu dla dysków), możesz [ustawić zależność](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies) w szablonie.
+Usługa Azure Resource Manager analizuje zależności, aby mieć pewność, że zasoby są tworzone w odpowiedniej kolejności. Jeśli jeden zasób opiera się na podstawie wartości z innego zasobu (np. maszyna wirtualna wymagająca konta magazynu dla dysków), możesz [ustawiana jest zależność](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies) w szablonie.
 
-Szablonu można także używać w celu aktualizacji infrastruktury. Można na przykład dodać zasób do rozwiązania lub dodać reguły konfiguracji dla już wdrożonych zasobów. Jeśli szablon służy do tworzenia zasobu, ale ten zasób już istnieje, Resource Manager przeprowadzi aktualizację, zamiast tworzyć nowy zasób. Resource Manager zaktualizuje istniejący zasób stanu, tak jak nowego.
+Szablonu można także używać w celu aktualizacji infrastruktury. Można na przykład dodać zasób do rozwiązania lub dodać reguły konfiguracji dla już wdrożonych zasobów. Jeśli szablon służy do tworzenia zasobu, ale ten zasób już istnieje, Resource Manager przeprowadzi aktualizację, zamiast tworzyć nowy zasób. Usługi Resource Manager aktualizuje istniejący zasób do takiego samego stanu, tak jak jako nowe.
 
-Resource Manager zapewnia rozszerzenia dla scenariuszy, jeśli potrzebujesz więcej operacji, takich jak Instalacja oprogramowania, które nie są uwzględnione w konfiguracji.
+Resource Manager zapewnia rozszerzenia dla scenariuszy, gdy będziesz potrzebować więcej operacji, takich jak instalowanie oprogramowania, który nie znajduje się w konfiguracji.
 
 ### <a name="resource-tracking"></a>Śledzenie zasobów
 
-Jak użytkownicy w Twojej organizacji dodać zasoby do subskrypcji, staje się on ważniejsze do skojarzenia z odpowiedniego działu, klientów i środowisko zasobów. Możesz dołączyć metadanych do zasobów za pomocą [tagi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags). Tagi są używane do udostępniania informacji na temat zasobu lub właściciela. Znaczniki umożliwiają nie tylko agregacji i grupy zasobów na kilka sposobów, ale również użyć tych danych na potrzeby obciążeń zwrotnych.
+Jak użytkownicy w organizacji Dodawanie zasobów do subskrypcji, staje się niezwykle ważne skojarzyć zasobów przy użyciu odpowiedniego działu, klientów i środowiska. Możesz dołączyć metadanych do zasobów za pośrednictwem [tagi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags). Tagi umożliwiają zawierają informacje dotyczące zasobu lub właściciela. Tagi umożliwiają nie tylko agregacji grupują zasoby na wiele sposobów, a także używać tych danych na potrzeby obciążeń zwrotnych.
 
-Użyj tagów w przypadku złożonych kolekcji grup zasobów i zasobów, a trzeba uporządkować w taki sposób jak najwygodniejszy do Ciebie. Na przykład można oznaczyć zasoby, które pełnią podobną rolę w organizacji lub należących do tego samego działu.
+Użyj tagów w przypadku złożonych kolekcji grup zasobów i zasobów, a konieczne w celu wizualizacji tych zasobów w taki sposób, który najodpowiedniejszy dla Ciebie. Na przykład można oznaczyć zasoby, które pełnią podobną rolę w organizacji lub które należą do tego samego działu.
 
-Bez użycia tagów użytkownicy w organizacji można utworzyć wiele zasobów, które mogą być trudne do później identyfikację i zarządzanie nimi. Na przykład możesz usunąć wszystkie zasoby w projekcie. Jeśli te zasoby nie są oznaczone tagami tego projektu, użytkownik musi je znaleźć ręcznie. Tagowanie może być istotnym sposobem na zredukowanie niepotrzebnych kosztów w ramach subskrypcji.
+Bez użycia tagów użytkownicy w Twojej organizacji mogą tworzyć wiele zasobów, które może być trudny do później znalezienia i zarządzania. Na przykład możesz chcieć usunąć wszystkie zasoby dla projektu. Jeśli te zasoby nie są opatrzone tagiem dla projektu, użytkownik musi je znaleźć ręcznie. Tagowanie może być istotnym sposobem na zredukowanie niepotrzebnych kosztów w ramach subskrypcji.
 
-Zasoby nie muszą znajdować się w tej samej grupie zasobów, aby udostępnić tag. Możesz utworzyć własne taksonomii tag, aby upewnić się, że wszyscy użytkownicy w organizacji używać typowych tagów zamiast przypadkowo stosowanie nieco inne tagów (na przykład "Wydział" zamiast "dział").
+Zasoby nie muszą znajdować się w tej samej grupie zasobów tagiem. Możesz utworzyć własną taksonomię tagów, aby upewnić się, że wszyscy użytkownicy w Twojej organizacji używać typowych tagów, a nie przypadkowo stosowanie nieco tagów (na przykład "Wydział" zamiast "dział").
 
-Zasady zasobów umożliwiają tworzenie standardowych zasad dla Twojej organizacji. Można utworzyć zasady, aby upewnić się, że zasoby są oznaczane odpowiednie wartości.
+Zasady zasobów umożliwiają tworzenie standardowe reguły dla Twojej organizacji. Można utworzyć zasady, aby upewnić się, że zasoby są oznaczane za pomocą odpowiednie wartości.
 
-Oznakowane zasoby można również wyświetlić za pośrednictwem witryny Azure Portal. [Raport użycia](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) dla Twoja subskrypcja obejmuje tag nazwy i wartości, więc można przerwać limit koszty według znaczników.
+Oznakowane zasoby można również wyświetlić za pośrednictwem witryny Azure Portal. [Raport użycia](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) dla subskrypcji obejmuje nazwy i wartości tagów, więc użytkownik może rozbicie kosztów według tagów.
 
-Aby uzyskać więcej informacji na temat tagów, zobacz [rozliczeń znaczniki inicjatywy zasad](../azure-policy/scripts/billing-tags-policy-init.md).
+Aby uzyskać więcej informacji na temat tagów, zobacz [inicjatywa zasad tagów rozliczeń](../azure-policy/scripts/billing-tags-policy-init.md).
 
 Tagi mają następujące ograniczenia:
 
-- Każdy zasób lub grupa zasobów może mieć co najwyżej 15 pary klucz wartość tagu. To ograniczenie dotyczy tylko tagów stosowanych bezpośrednio do grupy zasobów lub zasobu. Grupa zasobów może zawierać wiele zasobów, że mieć 15 pary klucz wartość tagu.
+- Każdy zasób lub grupa zasobów może mieć maksymalnie 15 par klucz/wartość tagu. To ograniczenie dotyczy tylko tagów stosowanych bezpośrednio do grupy zasobów lub zasobu. Grupa zasobów może zawierać wiele zasobów, w których każdy może mieć 15 par klucz/wartość tagu.
 
 - Nazwa tagu jest ograniczona do 512 znaków.
 
@@ -176,229 +176,229 @@ Tagi mają następujące ograniczenia:
 
 - Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.
 
-Jeśli masz więcej niż 15 wartości, które należy skojarzyć z zasobem, użyj ciągu JSON jako wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do klucza jeden tag.
+Jeśli masz więcej niż 15 wartości, które należy skojarzyć z zasobem, użyj ciągu JSON jako wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do klawisza pojedynczego tagu.
 
-#### <a name="tags-for-billing"></a>Tagi dla rozliczeń
+#### <a name="tags-for-billing"></a>Tagi rozliczeń
 
-Znaczniki umożliwiają grupowania danych rozliczeń. Na przykład jeśli korzystasz z wieloma maszynami wirtualnymi w różnych organizacjach, za pomocą tagów do użycia grup Centrum kosztów. Umożliwia także tagi kategoryzowania koszty przez środowisko uruchomieniowe, takich jak rozliczeń użycia dla maszyn wirtualnych w środowisku produkcyjnym.
+Tagi umożliwiają grupowanie danych dotyczących rozliczeń. Na przykład jeśli korzystasz z wielu maszyn wirtualnych dla różnych organizacji, należy użyć tagów, aby używanie grupy przez Centrum kosztów. Tagów umożliwia również kategoryzowanie kosztów przez środowisko uruchomieniowe, takie jak rozliczanego użycia dla maszyn wirtualnych uruchomionych w środowisku produkcyjnym.
 
-Można pobrać informacji na temat tagów za pomocą [użycia zasobów platformy Azure i interfejsów API RateCard](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) lub użycia pliku wartości rozdzielanych przecinkami (CSV). Pobierz plik użycia z [portalu konta usługi Azure](https://account.windowsazure.com/) lub [EA portal](https://ea.azure.com/).
+Można pobrać informacji na temat tagów za pośrednictwem [użycia zasobów platformy Azure i interfejsów API usługi RateCard](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) lub użycie pliku wartości rozdzielanych przecinkami (CSV). Pobieranie pliku użycia z [portalu konta usługi Azure](https://account.windowsazure.com/) lub [portalu EA portal](https://ea.azure.com/).
 
-Aby uzyskać więcej informacji na temat programowy dostęp do informacji dotyczących rozliczeń, zobacz [uzyskać wgląd w Microsoft Azure użycia zasobów](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview). Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczenia Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Aby uzyskać więcej informacji na temat programowy dostęp do informacji dotyczących rozliczeń, zobacz [wgląd w użycie zasobów usługi Microsoft Azure](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview). Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozliczeń platformy Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
 
-Po pobraniu użycia woluminów CSV dla usług, które obsługują tagów z rozliczeniami znaczniki są wyświetlane w kolumnie tagów.
+Po pobraniu użycia woluminów CSV dla usług, które obsługują tagi z rozliczeniami, znaczniki są wyświetlane w kolumnie tagów.
 
-### <a name="critical-resource-controls"></a>Formanty krytycznego zasobu
+### <a name="critical-resource-controls"></a>Formanty krytycznym zasobem
 
-Jak organizacji dodaje podstawowe usługi do subskrypcji, staje się bardziej należy się upewnić, że te usługi są dostępne w celu uniknięcia przerw w działaniu biznesowych. [Blokowania zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) pozwalają ograniczyć operacje na zasobach wysokiej wartości, gdzie modyfikowania lub usuwania ich miałoby znaczący wpływ na aplikacje lub infrastruktury chmury. Blokady można stosować do subskrypcji, grupy zasobów lub zasobów. Zazwyczaj należy zastosować blokady do podstawowych zasobów, takich jak sieci wirtualnych, bramy i kont magazynu.
+Jak Twoja organizacja dodaje podstawowych usług do subskrypcji, staje się bardziej ważne upewnić się, że te usługi są dostępne uniknąć zakłócenia działania firmy. [Blokad zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) pozwalają ograniczyć operacji na zasobach o wysokiej wartości, których modyfikowania i usuwania ich będzie mają znaczący wpływ na aplikacje lub infrastruktury w chmurze. Do subskrypcji, grupy zasobów lub zasobu, można zastosować blokady. Zazwyczaj można zastosować blokady do obsługiwaniu zasobów, takich jak sieci wirtualne, bramy i kont magazynu.
 
-Blokowania zasobów obsługuje obecnie dwie wartości: **CanNotDelete** i **tylko do odczytu**. **CanNotDelete** oznacza, że użytkownikom (odpowiednie prawa) można nadal odczytywać lub zmodyfikuj zasobu, ale nie można go usunąć. **Tylko do odczytu** oznacza, że autoryzowani użytkownicy nie można usunąć ani zmodyfikować zasobu.
+Blokad zasobów obecnie obsługuje dwie wartości: **CanNotDelete** i **tylko do odczytu**. **CanNotDelete** oznacza, że nadal możesz użytkowników (przy użyciu odpowiednich praw) odczytać lub zmodyfikować zasób, ale nie można go usunąć. **Tylko do odczytu** oznacza, że autoryzowani użytkownicy nie można usunąć ani zmodyfikować zasób.
 
-Blokowania zasobów mają zastosowanie tylko do operacji, które pojawiają się w płaszczyźnie zarządzania, która składa się z operacji wysyłane do <https://management.azure.com>. Blokad nie Ograniczaj, jak zasoby wykonywanie własnych funkcji. Zmiany zasobu jest ograniczony, ale operacje zasobów nie są ograniczone. Na przykład **tylko do odczytu** blokady w bazie danych SQL pozwala usuwanie i modyfikowanie bazy danych, ale nie ogranicza możliwość tworzenia, aktualizowania lub usuwania danych w bazie danych.
+Blokad zasobów mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do <https://management.azure.com>. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład **tylko do odczytu** blokady na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych, ale nie uniemożliwia z tworzenia, aktualizowania lub usuwania danych w bazie danych.
 
-Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które się wydawać odczytu operacje wymagają dodatkowych czynności. Na przykład wprowadzenie **tylko do odczytu** blokady na koncie magazynu uniemożliwia wyświetlanie kluczy wszystkich użytkowników. Operacja wyświetlanie kluczy jest obsługiwana za pomocą żądania POST klucze zwracane nie są dostępne dla operacji zapisu.
+Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które promieniowe wydają się być odczytana operacje wymagają dodatkowych akcji. Na przykład umieszczenie **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Operacja wyświetlanie klawiszy odbywa się za pomocą żądania POST zwrócone klucze nie są dostępne dla operacji zapisu.
 
-![Formanty krytycznego zasobu](./media/governance-in-azure/security-governance-in-azure-fig5.png)
+![Formanty krytycznym zasobem](./media/governance-in-azure/security-governance-in-azure-fig5.png)
 
-Innym przykładem umieszczenie **tylko do odczytu** blokada na zasób usługi Azure App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ dostęp do zapisu wymaga interakcji Eksploratora serwera w usłudze Visual Studio.
+Inny przykład umieszczając **tylko do odczytu** blokady zasobu usługi Azure App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
 
-W przeciwieństwie do kontroli dostępu opartej na rolach blokady zarządzania służy do stosowania ograniczenia we wszystkich użytkowników i ról. Aby dowiedzieć się więcej na temat ustawiania uprawnień, zobacz [zarządzanie dostępem przy użyciu RBAC i portalu Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+W przeciwieństwie do kontroli dostępu opartej na rolach umożliwia zarządcze stosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-Po zastosowaniu blokady w zakresie nadrzędnym, wszystkie zasoby w ramach tego zakresu dziedziczą tego samego blokady. Nawet zasoby, które później zostaną dodane dziedziczą blokady z obiektu nadrzędnego. Najbardziej restrykcyjne blokady w dziedziczenia ma pierwszeństwo.
+Po zastosowaniu blokady w zakresie nadrzędnej wszystkie zasoby w tym zakresie dziedziczenia tego samego blokady. Nawet zasoby, które później dodać dziedziczą blokadę z obiektu nadrzędnego. Najbardziej restrykcyjne blokady w dziedziczenia ma pierwszeństwo.
 
-Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do Microsoft.Authorization/ lub Microsoft.Authorization/locks/ akcji. Wbudowanych ról tylko właściciel i Administrator dostępu użytkowników są przyznawane te akcje.
+Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do Microsoft.Authorization/ lub Microsoft.Authorization/locks/ akcji. Wbudowanych ról tylko właściciel i Administrator dostępu użytkowników są przyznawane tych akcji.
 
-### <a name="api-access-to-billing-information"></a>Interfejs API dostęp do informacji dotyczących rozliczeń
+### <a name="api-access-to-billing-information"></a>Interfejs API dostępu do informacji dotyczących rozliczeń
 
-Za pomocą interfejsów API usługi Azure rozliczeń pobierania danych użycia i zasobów do narzędziami analizy danych preferowany. API RateCard i użycia zasobów Azure może pomóc dokładnie przewidzieć i zarządzanie nimi kosztów. Interfejsy API są zaimplementowane jako dostawca zasobów i częścią rodziny interfejsach API udostępnianych przez usługi Azure Resource Manager.
+Użyj interfejsów API rozliczeń platformy Azure do pobierania danych użycia i zasobów do narzędzia do analizy danych preferowany. Interfejsy API usługi RateCard i użycia zasobów platformy Azure może pomóc dokładnie przewidzieć i kontrola kosztów. Interfejsy API są zaimplementowane jako dostawcy zasobów i częścią rodziny interfejsach API udostępnianych przez usługę Azure Resource Manager.
 
 #### <a name="resource-usage-api-preview"></a>Użycie zasobów interfejsu API (wersja zapoznawcza)
 
-Użyj platformy Azure [API użycia zasobów](https://msdn.microsoft.com/library/azure/mt219003) Twoje dane szacowany wykorzystania platformy Azure. Interfejs API zawiera:
+Skorzystaj z Kalkulatora [interfejs API użycia zasobów](https://msdn.microsoft.com/library/azure/mt219003) można pobrać danych Szacowane użycie platformy Azure. Ten interfejs API obejmuje:
 
-- **RBAC**: Skonfiguruj zasady dostępu na [portalu Azure](https://portal.azure.com/) lub za pomocą [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) Aby określić użytkowników lub aplikacji, które można uzyskać dostępu do danych użycia subskrypcji. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do albo czytnika rozliczeń, czytnika, właściciela lub współautora roli do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure.
+- **RBAC**: Konfigurowanie zasad dostępu na [witryny Azure portal](https://portal.azure.com/) lub za pomocą [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) określić użytkowników lub aplikacji, które mogą uzyskać dostęp do danych użycia dla subskrypcji. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik rozliczenia, Czytelnik, właściciel albo współautora do uzyskania dostępu do danych użycia dla określonej subskrypcji platformy Azure.
 
-- **Godzinową lub dzienną agregację**: wywołań można określić, czy chcą, aby ich danych użycia usługi Azure w przyrostach godzinowo lub dziennie. Wartość domyślna to codziennie.
+- **Agregacje co godzinę lub codziennie**: obiekty wywołujące można określić, czy chcą, aby ich dane użycia platformy Azure, w przyrostach co godzinę lub codziennie. Wartość domyślna to dzienny.
 
-- **Wystąpienie metadanych (w tym tagi zasobów)**: Pobierz szczegóły na poziomie wystąpienia takich jak pełny identyfikator URI zasobu (/subscriptions/ {identyfikator subskrypcji} /..), informacje o grupie zasobów i tagi zasobów. Te metadane pomaga w sposób niejednoznaczny i programowo przydzielenie użycia tagów przypadków użycia, takich jak między ładowania.
+- **Wystąpienie metadanych (w tym tagi zasobów)**: Pobieranie szczegółów na poziomie wystąpienia na przykład w pełni kwalifikowany identyfikator URI zasobu (/subscriptions/ {identyfikator subskrypcji} /...), informacje o grupie zasobów i tagi zasobów. Te metadane pomaga także jednoznacznie i programowo przydzielić użycia według tagów, dla przypadków użycia takich jak ładowania wielu.
 
-- **Metadane zasobu**: szczegóły zasobu, takie jak nazwa licznika, kategorii licznika, podkategorii miernika, jednostki i region zapewniają wywołującego lepiej zrozumieć co został wykorzystany. Również pracujemy, aby były wyrównane terminologii metadanych zasobów w portalu Azure, Azure użycia woluminów CSV, EA rozliczeń CSV i inne środowiska publicznych, aby pomóc korelowania danych środowiska.
+- **Metadane zasobu**: szczegóły zasobu, takie jak nazwa miernika, kategoria licznika, podkategoria miernika, jednostki i regionu zapewniają obiekt wywołujący lepiej co został wykorzystany. Pracujemy także wyrównać terminologii metadanych zasobów w witrynie Azure portal, Azure użycia woluminów CSV, EA rozliczeń CSV i inne środowiska publicznych, które ułatwią Ci korelowania danych środowiska.
 
-- **Użycia dla wszystkich oferują typy**: danych użycia jest dostępna dla wszystkich oferują typów, w tym płatność za rzeczywiste użycie, MSDN, zobowiązania pieniężnego, środki pieniężne i atrybutów Rozszerzonych.
+- **Użycie dla wszystkich oferuje typy**: oferuje wszystkie typy, w tym płatność za rzeczywiste użycie, MSDN, w ramach zobowiązań pieniężnych, środki pieniężne i umowy EA jest dostępna danych użycia.
 
-#### <a name="resource-ratecard-api"></a>RateCard zasobu interfejsu API
+#### <a name="resource-ratecard-api"></a>Zasób usługi RateCard interfejsu API
 
-Użyj interfejsu API RateCard zasobów Azure, aby uzyskać listę dostępnych zasobów platformy Azure i szacowany informacje o cenach dla każdego. Interfejs API zawiera:
+Użyj interfejsu API RateCard zasobów Azure, aby uzyskać listę dostępnych zasobów platformy Azure i informacje o cenach Szacowana dla każdego. Ten interfejs API obejmuje:
 
-- **RBAC**: Konfigurowanie zasad dostępu w portalu Azure lub za pomocą poleceń cmdlet programu Azure PowerShell, aby określić użytkowników lub aplikacji, które można uzyskać dostępu do danych RateCard. Obiekty wywołujące należy użyć standardowego tokeny usługi Azure Active Directory do uwierzytelniania. Dodaj element wywołujący do roli czytnika, właścicielem lub współautorem uzyskać dostęp do danych użycia dla określonej subskrypcji platformy Azure.
+- **RBAC**: Konfigurowanie zasad dostępu w witrynie Azure portal lub za pośrednictwem poleceń cmdlet programu Azure PowerShell, aby określić użytkowników lub aplikacji, które mogą uzyskać dostęp do danych usługi RateCard. Obiekty wywołujące musi używać standardowych tokenów usługi Azure Active Directory do uwierzytelniania. Dodaj obiekt wywołujący do roli Czytelnik, współautora lub właściciela, aby uzyskać dostęp do danych użycia dla określonej subskrypcji systemu Azure.
 
-- **Obsługa płatność za rzeczywiste użycie, MSDN, zobowiązań i środki pieniężne oferty (ale nie EA)**: ten interfejs API zawiera informacje o szybkości poziomu oferty Azure. Wywołujący ten interfejs API należy przekazać informacje oferty, aby uzyskać szczegóły dotyczące zasobów i szybkości. Administrator przedsiębiorstwa nie jest obecnie obsługiwane ponieważ EA oferty zostały dostosowane stawki dla rejestracji. 
+- **Obsługa płatność za rzeczywiste użycie, MSDN, w ramach zobowiązań pieniężnych i środków pieniężnych oferty (ale nie atrybutów Rozszerzonych)**: ten interfejs API zawiera informacje za platformę Azure poziomu oferty. Obiekt wywołujący ten interfejs API musi przekazać informacje oferty, aby uzyskać szczegółowe informacje o zasobie i kursów. EA nie jest obecnie obsługiwane, ponieważ EA ofert dostosowanych stawki dla rejestracji. 
 
 #### <a name="scenarios"></a>Scenariusze
 
-Kombinacja użycia i interfejsów API RateCard umożliwia tych scenariuszy:
+Kombinacja API RateCard i użycie sprawia, że tych scenariuszy jest to możliwe:
 
-- **Zrozumienie Azure spędzają w miesiącu**: użyj kombinacji użycia oraz RateCard interfejsów API, aby uzyskać lepszą wgląd w chmurze wydatków w miesiącu. Można analizować co godzinę i codzienne oszacowania użycia i opłat.
+- **Omówienie usługi Azure wydatki w ciągu miesiąca**: użyj kombinacji użycia i RateCard interfejsów API, aby uzyskać lepszy wgląd w chmurze wydatków w miesiącu. Możesz analizować co godzinę i codziennie szacuje użycie i opłat.
 
-- **Konfigurowanie alertów**: umożliwia użycie i interfejsów API RateCard zużycie szacowany chmury i opłat i skonfigurować alerty oparte na zasobach lub pieniężne na podstawie.
+- **Konfigurowanie alertów**: umożliwia API RateCard i użycie chmury Szacowane użycie i opłat i skonfigurować alerty oparte na zasobach lub pieniężnych na podstawie.
 
-- **Przewidywanie rachunku**: Get szacowane zużycie i w chmurze wydatków i zastosować algorytmów uczenia maszynowego na potrzeby prognozowania BOM będzie końca cyklu rozliczeniowego.
+- **Przewidywanie rachunku**: pobieranie Szacowane użycie i w chmurze wydatków i zastosować algorytmów uczenia maszynowego w celu przewidywania, rachunek będzie na końcu okresu rozliczeniowego.
 
-- **Wykonaj wstępne zużycia koszt analizy**: przewidywanie, ile rachunku byłby przez użycie oczekiwanego przenoszenia obciążeń na platformie Azure za pomocą interfejsu API RateCard. Jeśli masz istniejące obciążenia w innych chmur lub chmur prywatnych, użycie z platformy Azure można również mapować spędzają szybkości, aby uzyskać lepszą oszacowanie Azure. Ta Szacowana daje możliwość przestawnego na ofertę i porównania pomiędzy typami inną ofertę poza płatność za rzeczywiste użycie, takich jak zobowiązań i środki pieniężne.
+- **Wykonaj wstępne analiza kosztów zużycia**: przewidywanie, ile na rachunku będzie oczekiwanego użycia podczas przenoszenia obciążeń do platformy Azure za pomocą interfejsu API RateCard. Jeśli masz istniejące obciążenia w innych chmurach lub chmur prywatnych, można również mapować użycia z platformą Azure poświęcić kursów, które można pobrać lepiej oszacować platformy Azure. Te dane szacunkowe daje możliwość przestawianie w ramach oferty i porównanie między typami inną ofertę poza płatności, np. w ramach zobowiązań pieniężnych i środków pieniężnych.
 
-- **Wykonywanie analizy warunkowej**: można określić, czy jest bardziej ekonomiczne rozwiązanie do uruchamiania obciążeń w innym regionie lub w innej konfiguracji zasobów platformy Azure. Koszty zasobów platformy Azure mogą się różnić w zależności na region platformy Azure, którego używasz. Można również określić, czy innego typu oferty Azure zapewnia większą szybkość na zasobów platformy Azure.
+- **Wykonywanie analizy warunkowej**: można określić, czy jest to bardziej ekonomiczne do uruchamiania obciążeń w innym regionie lub w innej konfiguracji zasobów platformy Azure. Koszty zasobów platformy Azure może się różnić w zależności na region platformy Azure, z którego korzystasz. Można również określić, jeśli inny typ oferty platformy Azure zapewnia lepszą szybkość w obrębie zasobu platformy Azure.
 
-### <a name="networking-controls"></a>Formanty sieci
+### <a name="networking-controls"></a>Formanty sieciowe
 
-Dostęp do zasobów można wewnętrznych (w ramach sieci) lub zewnętrznych (za pośrednictwem Internetu). To proste dla użytkowników w organizacji na przypadkowo umieść zasobów w miejscu niewłaściwy i potencjalnie otwórz je, aby nieautoryzowanym dostępem. Podobnie jak w przypadku urządzeń lokalnych, przedsiębiorstw, należy dodać kontrole w celu zapewnienia, że Azure użytkowników podejmować decyzje prawo.
+Dostęp do zasobów może być wewnętrzne (w sieci) lub zewnętrznego (za pośrednictwem Internetu). To proste użytkownikom w organizacji przypadkowo zasoby należy umieścić w miejscu problem i potencjalnie otwórz je, aby nieautoryzowanym dostępem. Podobnie jak w przypadku urządzeń lokalnych przedsiębiorstwa, musisz dodać kontrole w celu zapewnienia podejmij właściwe decyzje w użytkownicy usługi Azure.
 
-![Formanty sieci](./media/governance-in-azure/security-governance-in-azure-fig6.png)
+![Formanty sieciowe](./media/governance-in-azure/security-governance-in-azure-fig6.png)
 
-Do zarządzania subskrypcją w następujących zasobach core udostępniono podstawowe kontroli dostępu.
+Dla nadzór subskrypcji następujące zasoby podstawowe zapewniają podstawowe kontroli dostępu.
 
 #### <a name="network-connectivity"></a>Połączenie sieciowe
 
-[Sieci wirtualne](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) obiektów kontenera podsieci. Chociaż nie niezbędne, sieci wirtualnej jest często używane do łączenia aplikacji do wewnętrznych zasobów firmy. Usługa Azure Virtual Network umożliwia bezpieczne łączenie zasobów platformy Azure z sobą z sieciami wirtualnymi.
+[Sieci wirtualne](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) to obiekty kontenera dla podsieci. Chociaż nie niezbędne, sieć wirtualna jest często używane do łączenia aplikacji z wewnętrznych zasobów firmy. Usługa Azure Virtual Network umożliwia bezpiecznie połączyć zasoby Azure ze sobą przy użyciu sieci wirtualnych.
 
-Sieć wirtualna jest odzwierciedla w chmurze Twoją sieć. Sieć wirtualna jest logiczną izolacją chmury Azure w wersji dedykowanej do subskrypcji. Sieci wirtualne można również łączyć się z siecią lokalną.
+Sieć wirtualna jest reprezentacją Twojej własnej sieci w chmurze. Sieć wirtualna jest to logiczna izolacja chmury platformy Azure w wersji dedykowanej do Twojej subskrypcji. Można też połączyć sieci wirtualne z siecią lokalną.
 
-Poniżej przedstawiono funkcje dla sieci wirtualnych platformy Azure:
+Poniżej przedstawiono możliwości dla sieci wirtualnych platformy Azure:
 
-- **Izolacja**: sieci wirtualne są odizolowane od siebie. Można utworzyć oddzielne sieci wirtualnych umożliwiające tworzenie, testowanie i produkcji, które używają tego samego bloków adresów CIDR. Z drugiej strony można utworzyć wiele sieci wirtualnych, które używają różnych bloków adresów CIDR i połączyć ze sobą sieci. Sieć wirtualną można podzielić na wiele podsieci. Platforma Azure udostępnia rozpoznawania nazw wewnętrznych dla maszyn wirtualnych i usług Azure Cloud Services wystąpienia roli, które są podłączone do sieci wirtualnej. Opcjonalnie można skonfigurować sieć wirtualną do użycia zamiast rozpoznawania nazw wewnętrznych Azure własne serwery DNS.
+- **Izolacja**: sieci wirtualne są odizolowane od siebie nawzajem. Można utworzyć oddzielne sieci wirtualnych dla rozwoju, testowania i produkcji, które używają tych samych bloków adresów CIDR. Z drugiej strony można utworzyć wiele sieci wirtualnych, które używają różnych bloków adresów CIDR i połączyć ze sobą sieci. Sieć wirtualną można podzielić na wiele podsieci. System Azure oferuje rozpoznawania nazw wewnętrznych dla maszyn wirtualnych i usług Azure Cloud Services wystąpień roli, które są podłączone do sieci wirtualnej. Opcjonalnie można skonfigurować sieć wirtualną, aby użyć własnych serwerów DNS, zamiast korzystać z rozpoznawania nazw wewnętrznych platformy Azure.
 
-- **Połączenie z Internetem**: Azure wszystkich maszyn wirtualnych i wystąpień roli usługi w chmurze, które są podłączone do sieci wirtualnej mają dostęp do Internetu, domyślnie. Można również włączyć dostęp przychodzący do określonych zasobów, zgodnie z potrzebami.
+- **Łączność z Internetem**: wszystkie usługi Azure virtual machines i wystąpień roli usług Cloud Services, które są podłączone do sieci wirtualnej domyślnie mają dostęp do Internetu. Można również włączyć dostępu przychodzącego do określonych zasobów, zgodnie z potrzebami.
 
-- **Łączność zasobów platformy Azure**: zasobów platformy Azure, takich jak usługi w chmurze i maszyn wirtualnych, można połączyć do tej samej sieci wirtualnej. Zasoby można połączyć ze sobą za pośrednictwem prywatnych adresów IP, nawet jeśli znajdują się w różnych podsieciach. Platforma Azure udostępnia domyślny routing między podsieciami, sieci wirtualnych i sieci lokalnej, więc nie trzeba konfigurować i zarządzać nimi trasy.
+- **Połączenie usługi Azure resource**: zasobów platformy Azure, takich jak usługi w chmurze i maszyn wirtualnych można połączyć do tej samej sieci wirtualnej. Zasoby mogą łączyć się ze sobą przy użyciu prywatnych adresów IP, nawet jeśli są one w różnych podsieciach. Platforma Azure udostępnia domyślny routing między podsieciami, sieciami wirtualnymi i sieciami lokalnymi, dzięki czemu nie trzeba konfigurować i zarządzać nimi trasy.
 
-- **Połączenie wirtualnej sieci**: sieci wirtualne można połączyć ze sobą. Zasoby, które są podłączone do żadnej sieci wirtualnej może następnie komunikować się z dowolnego zasobu w innych sieci wirtualnej.
+- **Połączenie sieci wirtualnej**: sieci wirtualnych można połączyć ze sobą. Zasoby, które są podłączone do żadnej sieci wirtualnej, następnie może komunikować się z dowolnym zasobem w innej sieci wirtualnej.
 
-- **Połączenie lokalne**: możesz nawiązać połączenie sieci wirtualnych sieci lokalnej za pośrednictwem sieci prywatnej połączeń między siecią a Azure lub za pośrednictwem połączenia lokacja lokacja wirtualnej sieci prywatnej (VPN) przez internet.
+- **Połączeniami lokalnymi**: do sieci lokalnej za pośrednictwem sieci prywatnych połączeń między siecią a Azure lub za pośrednictwem połączenia wirtualnej sieci prywatnej (VPN) lokacja lokacja można połączyć sieci wirtualne, za pośrednictwem Internetu.
 
-- **Filtrowanie ruchu**: można filtrować ruchu sieciowego (przychodzący i wychodzący) dla maszyn wirtualnych i usług w chmurze przez źródłowy adres IP i port docelowy adres IP i portu i protokołu.
+- **Filtrowanie ruchu**: można filtrować ruch sieciowy (przychodzące i wychodzące) dla maszyn wirtualnych i usług w chmurze przez źródłowy adres IP i port, docelowy adres IP i portu i protokołu.
 
-- **Routing**: Opcjonalnie można zastąpić domyślne Azure routingu, konfigurując własnego trasy lub za pomocą trasy protokołu BGP za pośrednictwem bramy sieci.
+- **Routing**: Opcjonalnie możesz przesłonić domyślny routing platformy Azure, konfigurując własne trasy lub przy użyciu trasy protokołu BGP za pośrednictwem bramy sieci.
 
 #### <a name="network-access-controls"></a>Kontrolę dostępu do sieci
 
-[Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) są takie jak zapory i podaj reguły jak zasobu można "rozmawiać" za pośrednictwem sieci. Zapewniają kontrolę nad jak podsieć (lub maszyny wirtualnej) można łączyć z Internetem lub innych podsieci w tej samej sieci wirtualnej.
+[Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) są takie jak zapory i ustalaj reguły dla jak zasobu mogą "rozmawiać" za pośrednictwem sieci. Zapewniają kontrolę nad jak podsieci (lub maszyn wirtualnych) można łączyć się z Internetu lub innych podsieci w tej samej sieci wirtualnej.
 
-Grupa zabezpieczeń sieci zawiera listę reguł zabezpieczeń, które akceptować lub odrzucać ruch sieciowy do zasoby podłączone do sieci wirtualnych platformy Azure. Grupy NSG można kojarzyć z podsieci, do poszczególnych maszyn wirtualnych (klasyczne) lub do interfejsów sieciowych poszczególnych (NIC) dołączonych do maszyn wirtualnych (Resource Manager).
+Grupy zabezpieczeń sieci zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy do zasobów połączonych z sieciami wirtualnymi platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonych do maszyn wirtualnych (Resource Manager).
 
-Grupa NSG jest skojarzona z podsiecią, reguły dotyczą wszystkie zasoby podłączone do podsieci. Można bardziej ograniczyć ruch przez skojarzenie grupy NSG do maszyny Wirtualnej lub karty sieciowej.
+Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły mają zastosowanie do wszystkich zasobów połączonych z podsiecią. Ruch jest bardziej ograniczyć przez skojarzenie sieciowej grupy zabezpieczeń z maszyną Wirtualną lub kartą sieciową.
 
-## <a name="security-and-compliance-with-organizational-standards"></a>Bezpieczeństwo i zgodność ze standardami w organizacji
+## <a name="security-and-compliance-with-organizational-standards"></a>Zabezpieczenia i zgodność ze standardami organizacji
 
-Każda firma ma inne potrzeby i będzie czerpanie różne korzyści z rozwiązań w chmurze. Klienci wszelkiego rodzaju wątpliwości tego samego podstawowego przenoszeniu do chmury. Klienci szukają od dostawców w chmurze jest:
+Każda firma ma inne potrzeby i będzie skorzystać różne korzyści z rozwiązań w chmurze. Mimo klienci wszelkiego rodzaju mają te same środki podstawowe informacje o przenoszeniu do chmury. Czego mogą chcieć klienci od dostawców rozwiązań w chmurze jest:
 
-- **Zabezpieczanie danych**: liderów IT potwierdzić, że chmura może zapewniać bezpieczeństwo danych i kontrola administracyjna. Ale są one nadal danych, czy migracja do chmury pozostawi je bardziej narażony na hakerów niż ich bieżącego rozwiązania wewnętrznych.
+- **Zabezpieczanie danych**: liderów IT potwierdza, że chmura może zapewnić bezpieczeństwo danych i kontrola administracyjna. Ale są one nadal danych, czy migracja do chmury pozostawi je bardziej narażony na hakerów niż ich obecnymi rozwiązaniami wewnętrznymi.
 
-- **Zachowania prywatności danych**: usługi w chmurze podnieść wyzwania unikatowy prywatności. Jak firm wyglądać chmury w celu zapisania na koszty infrastruktury i zwiększyć ich elastyczność, one również martwić się o utracie kontroli nad którym są przechowywane ich dane, kto uzyskuje dostęp do jego i jak jest używany.
+- **Zachowywanie prywatności naszych danych**: usługi w chmurze rodzą wyzwania w zakresie ochrony prywatności. Jak wygląda przedsiębiorstwa do chmury, aby zaoszczędzić na kosztach infrastruktury i zwiększyć ich elastyczność, one również martwić o utratę kontroli, gdzie są przechowywane ich dane, kto ma dostęp do jej i jak zostanie wykorzystany.
 
-- **Przekaż nam kontroli**: również w firmach skorzystać z chmury, aby wdrożyć więcej innowacyjne rozwiązania, są one danych o utracie kontroli nad ich danych. Najnowsze informacje agencji rządowych Stanów Zjednoczonych, dostęp do danych klienta za pośrednictwem czynniki prawne i pozaprawnych oznacza, należy niektórych dyrektorzy działu informatyki ostrożność przechowywanie danych w chmurze.
+- **Przekaż nam kontroli**: nawet przy wzroście firm z zalet chmury, aby wdrożyć więcej innowacyjnych rozwiązań, ich dotyczą utraty kontroli nad ich danymi. Najnowsze informacje agencji rządowych, uzyskiwanie dostępu do danych klienta, za pomocą środków prawnych i pozaprawnych, należy niektóre dyrektorów działów IT ostrożnym przechowywania ich danych w chmurze.
 
-- **Podwyższ poziom przezroczystości**: decydentów firm zrozumieć znaczenie bezpieczeństwa, ochrony prywatności i kontroli. Ale chcą także możliwość niezależnie Sprawdź, jak ich przechowywanych danych, uzyskuje się dostęp i zabezpieczonych.
+- **Podwyższanie poziomu przezroczystości**: osoby podejmujące decyzje biznesowe zrozumieć znaczenie bezpieczeństwa, prywatności i kontroli. Jednak mają również możliwość sprawdzenia niezależnie, jak ich danych jest magazynowana, uzyskuje się dostęp i zabezpieczone.
 
-- **Obsługa zgodności**: jak firm rozwinąć ich korzystanie z technologii chmury, złożoność i zakres norm i przepisów nadal podlegać ewolucji. Firmy muszą znać spełnienia standardów ich zgodności.
+- **Zachować zgodność z**: jak firmy jest rozwiniesz korzystanie z technologii chmury, złożoności i zakresu standardów i przepisów będą dalej rozwijać. Firmy muszą wiedzieć, czy ich standardy zgodności zostaną spełnione.
 
-## <a name="security-configuration-for-monitoring-logging-and-auditing"></a>Konfiguracja zabezpieczeń monitorowanie, rejestrowanie i inspekcja
+## <a name="security-configuration-for-monitoring-logging-and-auditing"></a>Konfiguracja zabezpieczeń monitorowania, rejestrowania i inspekcji
 
-Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń. Urządzenia te mogą obejmować stacjami roboczymi do zarządzania, komputerami deweloperów i urządzeń nawet uprzywilejowanych użytkowników końcowych, które mają uprawnienia specyficzne dla zadania. 
+Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń. Te urządzenia mogą obejmować stacje robocze zarządzania, komputerami deweloperów i urządzeń nawet uprzywilejowanych użytkowników końcowych, które mają uprawnienia specyficzne dla zadania. 
 
-W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsoli opartych na sieci web, takich jak portalu Azure. W innych przypadkach mogą istnieć bezpośrednie połączenia do platformy Azure z systemów lokalnych za pośrednictwem sieci VPN, usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługi Azure (SMAPI). Ponadto punkty końcowe klienta może być albo domeny przyłączone lub odizolowane i niezarządzane, takich jak tablety lub smartfony.
+W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsole sieci web, takie jak witryny Azure portal. W innych przypadkach mogą istnieć bezpośrednie połączenia na platformie Azure z systemami lokalnymi za pośrednictwem sieci VPN, usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługi Azure (SMAPI). Ponadto punkty końcowe klienta może być domeny przyłączony lub odizolowane i niezarządzane, takich jak tablety lub smartfony.
 
-To zróżnicowanie może dodać znaczące zagrożenie do wdrożenia w chmurze. Może być trudne do zarządzania, śledzenie i inspekcję czynności administracyjnych. To zróżnicowanie może również wprowadzać zagrożenia bezpieczeństwa związane z nieuregulowanym dostępem do punktów końcowych klienta, które są używane do zarządzania usługami w chmurze. Użycie ogólnych lub osobistych stacji roboczych do opracowywania infrastruktury i zarządzania nią powoduje, że zagrożenia mogą nadchodzić z nieprzewidywalnych kierunków, na przykład podczas przeglądania sieci Web (na przykład ataki za pośrednictwem używanych witryn) lub korzystania z poczty e-mail (na przykład techniki socjotechniczne i wyłudzanie informacji).
+To zróżnicowanie może spowodować podwyższenie ryzyka związanego z wdrożeniem w chmurze. Może być trudny do zarządzania, śledzenie i inspekcję czynności administracyjnych. To zróżnicowanie może również wprowadzać zagrożenia bezpieczeństwa związane z nieuregulowanym dostępem do punktów końcowych klienta, które są używane do zarządzania usługami w chmurze. Użycie ogólnych lub osobistych stacji roboczych do opracowywania infrastruktury i zarządzania nią powoduje, że zagrożenia mogą nadchodzić z nieprzewidywalnych kierunków, na przykład podczas przeglądania sieci Web (na przykład ataki za pośrednictwem używanych witryn) lub korzystania z poczty e-mail (na przykład techniki socjotechniczne i wyłudzanie informacji).
 
-Monitorowanie, rejestrowanie i inspekcja stanowią podstawę dla śledzenia i zrozumienia czynności administracyjnych. Inspekcję wszystkich akcji szczegółowy może nie być możliwe ze względu na ilość generowanych danych. Jednak najlepszym rozwiązaniem jest inspekcja skuteczności zasad zarządzania.
+Monitorowanie, rejestrowanie i inspekcja stanowią podstawę dla śledzenia i zrozumienia czynności administracyjnych. Inspekcję wszystkich akcji szczegółowy nie zawsze jest możliwe ze względu na ilość generowanych danych. Ale inspekcja skuteczności zasad zarządzania jest najlepszym rozwiązaniem.
 
-Zarządzanie zabezpieczeń platformy Azure z obiektów zasad grupy usługi Azure Active Directory Domain Services (AD DS), mogą pomóc Ci kontrolować wszystkich administratorów interfejsów systemu Windows, takich jak udostępnianie plików. Dołącz stacjami roboczymi do zarządzania monitorowanie, rejestrowanie i inspekcji. Śledź dostęp i używanie przez wszystkich administratorów i deweloperów.
+Zarządzanie zabezpieczeń platformy Azure z obiektów zasad grupy usługi Azure Active Directory Domain Services (AD DS), mogą pomóc Ci kontrolować interfejsów Windows wszystkich administratorów, takich jak udostępnianie plików. Zarządzanie stacjami roboczymi objęte monitorowanie, rejestrowanie i przeprowadzanie inspekcji procesów. Śledź dostęp i używanie przez wszystkich administratorów i deweloperów.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-[Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro) centralnej Wyświetla stan zabezpieczeń zasobów w subskrypcji. Zawiera zalecenia, które ułatwiają ochronę zasobów ze złamanymi zabezpieczeniami. Można go włączyć bardziej szczegółowe zasady — na przykład stosowania zasad do określonych grup zasobów, które umożliwiają firmie dostosować ich postawie ryzyko, które są one adresowania.
+[Usługa Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) oferuje centralny widok stanu zabezpieczeń zasobów w subskrypcji. Zapewnia zaleceń, które pomagają zapobiegać zaatakowanych zasobów. Można go włączyć bardziej szczegółowe zasady — na przykład, stosowanie zasad do określonych grup zasobów, które umożliwiają firmie dostosować ich poziom do ryzyka, w których są one adresowania.
 
 ![Azure Security Center](./media/governance-in-azure/security-governance-in-azure-fig7.png)
 
-Centrum zabezpieczeń zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających. Po włączeniu [zasady zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-policies) dla zasobów subskrypcji Centrum zabezpieczeń analizuje zabezpieczenia zasobów, aby zidentyfikować potencjalne luki. Informacje o konfiguracji sieci są dostępne natychmiast.
+Usługa Security Center zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających. Po włączeniu [zasad zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-policies) dla zasobów subskrypcji usługa Security Center analizuje zabezpieczenia zasobów, aby zidentyfikować potencjalne luki w zabezpieczeniach. Informacje o konfiguracji sieci są dostępne natychmiast.
 
-Centrum zabezpieczeń Azure reprezentuje kombinację najlepszych rozwiązań analizy i zabezpieczeń Zarządzanie zasadami dla wszystkich zasobów w ramach subskrypcji platformy Azure. Umożliwia on zespoły zabezpieczeń i oficerowie ryzyka do zapobiegania, wykrywania i reagowania na zagrożenia bezpieczeństwa, ponieważ automatycznie zbiera i analizuje dane dotyczące zabezpieczeń z zasobów platformy Azure, sieci i rozwiązań partnerskich, takich jak programy ochrony przed złośliwym oprogramowaniem i zapory.
+Usługa Azure Security Center reprezentuje kombinację najlepsze praktyki analizy i zabezpieczeń Zarządzanie zasadami dla wszystkich zasobów w ramach subskrypcji platformy Azure. Dzięki niej zespoły zabezpieczeń oraz specjaliści ds. ryzyka do zapobiegania, wykrywania i reagowania na zagrożenia bezpieczeństwa, ponieważ automatycznie zbiera i analizuje dane zabezpieczeń z zasobami platformy Azure, sieci i rozwiązań partnerskich, takich jak programy ochrony przed złośliwym oprogramowaniem i zapory.
 
-Ponadto Centrum zabezpieczeń Azure stosuje zaawansowane metody analizy, w tym uczenie maszynowe i analizę behawioralną. Używa globalnej analizy zagrożeń ze swoich produktów i usług firmy Microsoft cyfrowego ds. przestępstw jednostki (DCU) MSRC Microsoft Security Response Center (), a źródła zewnętrznego. Możesz zastosować [ładu zabezpieczeń](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) szeroko na poziomie subskrypcji. Alternatywnie można jej ograniczyć do określonych wymagań i zastosować je do pojedynczych zasobów za pośrednictwem definicji zasad.
+Ponadto usługa Azure Security Center stosuje zaawansowane funkcje analityczne, w tym uczenie maszynowe i analizę behawioralną. Używa globalnych zagrożeń z produktów i usług firmy Microsoft cyfrowego Crimes Unit (DCU) firmy Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych. Można zastosować [nadzoru zabezpieczeń](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) szeroko na poziomie subskrypcji. Alternatywnie można zawęzić je do określonych wymagań i zastosować je do poszczególnych zasobów za pośrednictwem definicji zasad.
 
-Na koniec Centrum zabezpieczeń Azure analizuje kondycja zabezpieczeń zasobów na podstawie tych zasad i używa tych informacji w celu zapewnienia interesującego pulpitów nawigacyjnych i alerty dla zdarzenia, takie jak wykrywania złośliwego oprogramowania lub złośliwe połączenia IP prób. Aby uzyskać więcej informacji dotyczących sposobu stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+Ponadto usługa Azure Security Center analizuje kondycja zabezpieczeń zasobów na podstawie tych zasad i używa tych informacji do zapewnienia zapewniającym i alerty dla zdarzenia, takie jak wykrycie złośliwego oprogramowania lub złośliwe połączenie pakietu Integracyjnego prób. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
-Centrum zabezpieczeń Azure monitorowanie następujących zasobów platformy Azure:
+Usługa Azure Security Center monitoruje następujących zasobów platformy Azure:
 
-- Maszynach wirtualnych (VM) (w tym usługi w chmurze)
+- Maszyny wirtualne (VM) (w tym usług cloud services)
 
 - Sieci wirtualne
 
 - Bazy danych SQL
 
-- Partnerskich rozwiązań zintegrowanych z subskrypcją platformy Azure, takich jak Zapora aplikacji sieci web na maszynach wirtualnych i na [środowiska usługi aplikacji](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme)
+- Zintegrowanych z subskrypcją platformy Azure, takich jak zapory aplikacji sieci web na maszynach wirtualnych i na rozwiązania partnerskie [środowiska App Service Environment](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme)
 
-Jeśli najpierw przejść do Centrum zabezpieczeń zbieranie danych jest włączone na wszystkich maszynach wirtualnych w ramach subskrypcji. Firma Microsoft zaleca, aby zachować włączone zbieranie danych, ale możesz [ją wyłączyć](https://docs.microsoft.com/azure/security-center/security-center-faq) w zasadach Centrum zabezpieczeń.
+Po raz pierwszy uzyskujesz dostęp do usługi Security Center, zbieranie danych jest włączone na wszystkich maszynach wirtualnych w ramach subskrypcji. Firma Microsoft zaleca, że należy włączyć zbieranie danych, ale możesz [ją wyłączyć](https://docs.microsoft.com/azure/security-center/security-center-faq) w zasadach usługi Security Center.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Analiza dzienników Azure oprogramowania rozwoju i usługi zespołu ochrony informacji i [program ładu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe. Zgodne przepisom eksportowym obowiązującym zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak analizy dzienników ustanawia wymagania dotyczące zabezpieczeń, identyfikuje opcji zabezpieczeń i zarządza i monitory ryzyka opisana istnieje. Co rok zespół przegląda zasady, normy, procedur i wytycznych.
+Ochrona informacji Azure Log Analytics oprogramowania rozwoju i usługa zespołu i [program nadzoru](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe. Także działa zgodnie z prawem, zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak usługa Log Analytics ustanawia wymagań dotyczących zabezpieczeń, identyfikuje kontroli zabezpieczeń i zarządza i monitoruje zagrożenia opisana istnieje. Co roku zespół przegląda zasad, standardów, procedury i wytycznych.
 
-Każdego członka zespołu programowanie analizy dzienników odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. System kontroli wersji pomaga w ochronie poszczególnych projektów rozwoju oprogramowania.
+Każdy członek zespołu rozwoju usługi Log Analytics otrzymuje szkolenia formalnego aplikacji w zakresie zabezpieczeń. System kontroli wersji pomaga w ochronie każdy projekt oprogramowania w trakcie opracowywania.
 
-Firma Microsoft ma zabezpieczeń i zgodności zespołu nadzoruje i ocenia wszystkich usług firmy Microsoft. Zabezpieczenia informatyków tworzą zespołu, a nie są one powiązane z działów engineering, które opracowanie analizy dzienników. Biuro zabezpieczeń ma swoje własne łańcuch zarządzania. Prowadzą niezależnych ocen produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
+Firma Microsoft ma zespołu zabezpieczeń i zgodności, nadzoruje, która ocenia wszystkich usług firmy Microsoft. Specjaliści ds. bezpieczeństwa informacji tworzą zespół i nie są powiązane z działów inżynieryjne, które opracowywanie usługi Log Analytics. Specjaliści ds. bezpieczeństwa ma swoje własne łańcuch zarządzania. Prowadzą niezależne oceny produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
 
-Do podstawowych funkcji analizy dzienników są udostępniane przez zestaw usług, które działają na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
+Podstawowe funkcje usługi Log Analytics jest dostarczana przez zbiór usług działających na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
 
 ![Usługi platformy Azure do zarządzania](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Te usługi zarządzania zostały zaprojektowane w chmurze. Są one całkowicie hostowane na platformie Azure, nie wymagają one wdrażania i zarządzania zasobami lokalnymi. Konfiguracja jest minimalny, i może być uruchomiona w ciągu kilku minut.
+Tych usług zarządzania zaprojektowanych w chmurze. Są one w pełni hostowane na platformie Azure, więc one nie obejmować wdrażania i zarządzania zasobami lokalnymi. Konfiguracja jest minimalny, i może być uruchomiony w ciągu kilku minut.
 
-Umieść agenta na każdym komputerze z systemem Windows lub Linux, w centrum danych, a następnie wysyła dane do analizy dzienników. Istnieje można analizować oraz inne dane zbierane z usługi w chmurze lub lokalnie. Użyj usługi Kopia zapasowa Azure i usługi Azure Site Recovery mógł korzystać z chmury na potrzeby tworzenia kopii zapasowej i wysoka dostępność dla zasobów lokalnych.
+Jeśli umieścisz agenta na dowolnym komputerze Windows lub Linux w centrum danych i wysyła dane do usługi Log Analytics. Istnieje mogą być analizowane razem z wszystkimi pozostałymi danymi zebranymi z usług w chmurze lub lokalnie. Aby móc korzystać z chmury na potrzeby tworzenia kopii zapasowych i wysokiej dostępności zasobów lokalnych, należy użyć usługi Azure Backup i Azure Site Recovery.
 
 ![Usługi zarządzania na pulpicie nawigacyjnym platformy Azure](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-Elementy Runbook w chmurze nie można zwykle uzyskują dostęp do zasobów lokalnych, ale można zainstalować agenta na co najmniej jeden komputer, które będą obsługiwać elementów runbook w centrum danych. Po uruchomieniu elementu runbook, należy określić, czy go uruchomić w chmurze lub lokalne procesu roboczego.
+Elementy Runbook w chmurze zwykle nie dostępu do zasobów w środowisku lokalnym, ale można zainstalować agenta na co najmniej jeden komputer, na które będzie hostować elementy runbook w centrum danych. Po uruchomieniu elementu runbook, należy określić, czy chcesz uruchomić w chmurze lub w lokalnym procesie roboczym.
 
-Różnych rozwiązaniach dostępnych firmy Microsoft i partnerów, można dodać do subskrypcji platformy Azure, aby zwiększyć wartość inwestycji w usługę Analiza dzienników. Na przykład system Azure oferuje [rozwiązań do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)--opakowane zestawów logiki implementujących scenariusz zarządzania przy użyciu co najmniej jednej usługi zarządzania.
+Różne są dostępne rozwiązania firmy Microsoft i partnerów, które można dodać do subskrypcji platformy Azure w celu zwiększenia wartości inwestycji w usłudze Log Analytics. Na przykład system Azure oferuje [rozwiązań do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)— opakowane zestawy logiki implementujące scenariusz zarządzania przy użyciu co najmniej jednej usługi zarządzania.
 
 ![Galeria rozwiązań do zarządzania na platformie Azure](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Przez partnera możesz utworzyć rozwiązań do obsługi aplikacji i usług i udostępniania ich użytkownikom za pośrednictwem portalu Azure Marketplace lub szybkiego startu szablonów.
+Jako partner można utworzyć własne rozwiązania do obsługi danych aplikacji i usług oraz udostępniać je użytkownikom dzięki szablonom witryny Azure Marketplace lub przewodnika Szybki Start.
 
 ## <a name="performance-alerting-and-monitoring"></a>Monitorowanie i alerty wydajności
 
 ### <a name="alerting"></a>Generowanie alertów
 
-Alerty są metody monitorowania metryki zasobów platformy Azure, zdarzeń i dzienniki. Powiadom ich, należy po spełnieniu warunku, który został określony.
+Alerty są metody zdarzeń, dzienniki lub metryki monitorowania zasobów platformy Azure. Mogą Cię po spełnieniu warunku, który został określony.
 
 Alerty są dostępne w usługach, w tym:
 
-- **Azure Application Insights**: alerty testu i metryki sieci web umożliwia. Aby uzyskać więcej informacji, zobacz [ustawić alertów w usłudze Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) i [monitorowanie dostępności i czas odpowiedzi dla wszystkich witryn sieci Web](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
+- **Usługa Azure Application Insights**: włącza web alerty testu i metryki. Aby uzyskać więcej informacji, zobacz [Ustawianie alertów w usłudze Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) i [monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- **Zaloguj się Analytics**: włącza routing aktywności i dzienników diagnostycznych do analizy dzienników. Umożliwia on metryki, dziennika i inne typy alertów. Aby uzyskać więcej informacji, zobacz [alertów w analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
+- **Log Analytics**: włącza routing aktywności i dzienników diagnostycznych do usługi Log Analytics. Umożliwia metryk, dzienników i inne typy alertów. Aby uzyskać więcej informacji, zobacz [alertów w usłudze Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
 
-- **Azure Monitor**: włącza alerty oparte na wartości metryki i zdarzenia dziennika aktywności. Można użyć [interfejsu API REST Monitor Azure](https://msdn.microsoft.com/library/dn931943.aspx) do zarządzania alertami. Aby uzyskać więcej informacji, zobacz [przy użyciu portalu Azure, programu PowerShell lub interfejsu wiersza polecenia, aby tworzyć alerty](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).
+- **Usługa Azure Monitor**: włącza alerty na podstawie wartości metryki i zdarzenia dziennika aktywności. Możesz użyć [interfejsu API REST usługi Azure Monitor](https://msdn.microsoft.com/library/dn931943.aspx) zarządzania alertami. Aby uzyskać więcej informacji, zobacz [przy użyciu witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia, aby utworzyć alerty](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).
 
 ### <a name="monitoring"></a>Monitorowanie
 
-Problemy z wydajnością w Twojej aplikacji w chmurze mogą wpłynąć na prowadzoną działalność. Z wielu powiązanych elementów i częste wersjach degradations może nastąpić w dowolnej chwili. I w przypadku tworzenia aplikacji, użytkowników, zazwyczaj odnajdywanie problemów, które nie udało się znaleźć podczas testowania. Należy od razu wiedzieć o tych problemów i narzędzia do diagnozowania i ich rozwiązywania.
+Problemy z wydajnością w aplikacji w chmurze mogą mieć wpływ na działalność. Za pomocą wielu powiązanych elementów i wersji częste spadku wydajności może nastąpić w dowolnym momencie. I Jeżeli projektujesz aplikację użytkownicy zazwyczaj Odkryj problemy, które nie udało się znaleźć w zakresie testowania. Należy wiedzieć o tych problemów, natychmiast i narzędzia do diagnozowania i rozwiązywania ich.
 
-Istnieje szereg narzędzia do monitorowania usługi i aplikacje platformy Azure. Niektóre z ich funkcji nakładają się. Jest to spowodowane częściowo rozmycia między rozwoju i działania aplikacji.
+Istnieje szereg narzędzi do monitorowania aplikacji i usług platformy. Niektóre z ich funkcji nakładają się na siebie. Jest to częściowo z powodu Rozmycie między środowiskami deweloperskim i działania aplikacji.
 
-Poniżej przedstawiono główne narzędzia:
+Poniżej przedstawiono główne narzędzi:
 
-- **Azure Monitor** jest podstawowym narzędziem do monitorowania usługi działające na platformie Azure. Udostępnia poziomie infrastruktury danych o przepływności usługi i otaczającego środowiska. Jeśli zarządzasz wszystkich aplikacji w usłudze Azure i podjęcie decyzji o skalować w górę lub w dół zasobów Azure Monitor może pomóc start.
+- **Usługa Azure Monitor** to podstawowe narzędzie do monitorowania usługi działające na platformie Azure. Oferuje on danych na poziomie infrastruktury dotyczące przepływności usługi i otaczającego środowiska. W przypadku zarządzania wszystkich aplikacji na platformie Azure i podejmowania decyzji, czy wykonać skalowanie w górę lub w dół zasobów usługi Azure Monitor może pomóc Ci rozpocząć.
 
-- **Usługa Application Insights** mogą być używane do tworzenia aplikacji oraz jako rozwiązanie monitorujące produkcji. Działa on instalując pakiet w aplikacji, więc zapewnia bardziej wewnętrzny widok co się dzieje. Jego danych obejmuje czas reakcji zależności i śladów wyjątek, migawki i wykonywania profilów debugowania. Zawiera narzędzia do analizowania tego telemetrii zarówno do debugowania aplikacji i pomagające zrozumieć, co robią użytkownicy z nim. Można określić, czy kolekcji czas odpowiedzi jest z powodu coś w aplikacji lub niektóre zewnętrznego problemem resourcing. Jeśli używasz programu Visual Studio i aplikacji jest uszkodzone, możesz przejść bezpośrednio do wiersza problem kodu, można go naprawić.
+- **Usługa Application Insights** mogą być używane dla rozwoju i produkcji, rozwiązanie do monitorowania. To działa, instalując pakiet w swojej aplikacji, dzięki czemu zapewnia bardziej wewnętrzny widok co się dzieje. Jej dane obejmują czas odpowiedzi, zależności i śladów wyjątków, debugowanie migawki i profilów wykonania. Zapewnia narzędzia analizowanie wszystkich tych danych telemetrycznych do ułatwienia debugowania aplikacji i aby lepiej zrozumieć, jak użytkownicy korzystają z nim. Można stwierdzić, czy wzrost czasy reakcji wynika z coś, co w aplikacji lub zewnętrzny problem zasobami. Jeśli używasz programu Visual Studio i aplikacji jest na pozycji błędu, możesz przejść bezpośrednio do problemu wiersza kodu, dzięki czemu możesz ją naprawić.
 
-- **Zaloguj się Analytics** jest przeznaczony dla osób konieczne dostrojenie wydajności i planowanie konserwacji na aplikacje uruchomione w środowisku produkcyjnym. On zbiera i agregują dane z wielu źródeł z opóźnieniem 10 – 15 minut. Przewiduje całościowe rozwiązanie zarządzania Azure, lokalne i innych firm oparte na chmurze infrastruktury (na przykład usług Amazon Web Services). Udostępnia narzędzia do analizowania danych między źródłami, umożliwia złożonych zapytań przez wszystkie dzienniki i może aktywnie alert po wystąpieniu określonego warunku. Można nawet zbieranie danych niestandardowych w centralnym repozytorium, a następnie wykonasz zapytania i wizualizacji danych.
+- **Log Analytics** dla tych, którzy potrzebują do dostrajania wydajności i planować konserwację w aplikacjach wykonywanych w środowisku produkcyjnym. Jego zbiera i agregują dane z wielu źródeł, z opóźnieniem 10 do 15 minut. Zapewnia kompleksowe rozwiązanie zarządzania IT dla platformy Azure, lokalnych i innych firm infrastruktury chmurowej (np. usług Amazon Web Services). Zapewnia narzędzia do analizy danych w źródłach, umożliwia złożonych zapytań między wszystkie dzienniki i może aktywnie alert po wystąpieniu określonych warunków. Można nawet zbierania niestandardowych danych w centralnym repozytorium, a następnie utworzyć zapytanie względem i wizualizować dane.
 
-- **System Center Operations Manager** jest do zarządzania i monitorowania instalacji dużych chmury. Być może już znasz go jako narzędzia do zarządzania lokalnymi w systemie Windows Server i funkcji Hyper-V na podstawie chmury, ale można również zintegrować z i zarządzanie aplikacjami platformy Azure. Między innymi może instalować usługi Application Insights na istniejące aplikacje na żywo. Jeśli aplikacja przestanie działać, Operations Manager określa w sekundach.
+- **System Center Operations Manager** jest do zarządzania i monitorowania instalacji dużych chmury. Być może już znasz go jako narzędzia do zarządzania w środowisku lokalnym w systemie Windows Server i funkcji Hyper-V na podstawie chmury, ale można również zintegrować z i zarządzać aplikacjami platformy Azure. Między innymi Instalowanie usługi Application Insights w istniejących aplikacji na żywo. Jeśli aplikacja ulegnie awarii, Operations Manager informuje w ciągu kilku sekund.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Best practices for creating Azure Resource Manager templates (Najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager)](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)
 
-- [Przykłady stosowania ładu subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-examples)
+- [Przykłady stosowania nadzór subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-examples)
 
 - [Microsoft Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/)

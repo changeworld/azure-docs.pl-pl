@@ -1,6 +1,6 @@
 ---
-title: Rozszerzanie mają GeoJSON geometrię w społeczności Maps Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozszerzyć mają GeoJSON geometrię w społeczności Maps Azure
+title: Rozszerzanie geometrii GeoJSON w usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzyć geometrii GeoJSON w usługi Azure Maps
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 2cc0e29615ad4fc19040055d847435a9dffa9c95
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655087"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968565"
 ---
-# <a name="extending-geojson-geometries"></a>Rozszerzanie mają GeoJSON geometrię
+# <a name="extending-geojson-geometries"></a>Rozszerzanie GeoJSON geometrii
 
-Mapy Azure zawiera listę zaawansowanych interfejsów API do wyszukiwania wewnątrz/wzdłuż funkcje geograficznych.
-Ustandaryzować te interfejsy API na [GeoJSON spec] [ 1] reprezentujący funkcje geograficzne (na przykład: stan granice, trasy).  
+Usługi Azure Maps zawiera listę zaawansowanych interfejsów API do wyszukiwania wewnątrz/wzdłuż funkcji geograficznego.
+Standaryzuj te interfejsy API [Specyfikacja GeoJSON] [ 1] reprezentująca funkcji geograficznego (na przykład: stan granice, trasy).  
 
-[GeoJSON spec] [ 1] obsługuje tylko następujące mają geometrię:
+[Specyfikacja GeoJSON] [ 1] obsługuje tylko następujące geometrii:
 
 * GeometryCollection
 * LineString
 * MultiLineString
 * MultiPoint
 * MultiPolygon
-* punkt
-* wielokąta
+* Punkt
+* Wielokąt
 
-Niektórych interfejsów API map Azure (na przykład: [wyszukiwania wewnątrz geometrii](https://docs.microsoft.com/en-us/rest/api/maps/search/postsearchinsidegeometry)) Zaakceptuj mają geometrię, takich jak "Okrąg", które nie są częścią [GeoJSON spec][1].
+Niektórych interfejsów API usługi Azure Maps (na przykład: [wyszukiwania wewnątrz geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) Zaakceptuj geometrii, np. "Okrąg", które nie są częścią [Specyfikacja GeoJSON][1].
 
-Ten artykuł zawiera szczegółowy opis na sposób mapowania Azure rozszerza [GeoJSON spec] [ 1] do reprezentowania niektórych mają geometrię.
+Ten artykuł zawiera szczegółowy opis sposobu rozszerza usługi Azure Maps [Specyfikacja GeoJSON] [ 1] do reprezentowania niektórych geometrii.
 
-### <a name="circle"></a>koło
+### <a name="circle"></a>Okrąg
 
-`Circle` Geometrii nie jest obsługiwana przez [GeoJSON spec][1]. Używamy `GeoJSON Feature` obiektu do reprezentowania okręgu.
+`Circle` Geometrii nie jest obsługiwana przez [Specyfikacja GeoJSON][1]. Używamy `GeoJSON Feature` obiektu do reprezentowania okrąg.
 
-A `Circle` geometrii reprezentowanej przy użyciu `GeoJSON Feature` obiektu __musi__ zawierają następujące:
+A `Circle` geometrii reprezentowane za pomocą `GeoJSON Feature` obiektu __musi__ zawiera następujące czynności:
 
 1. Do środka
-   >Środka okręgu odpowiada za pomocą `GeoJSON Point` typu.
+   >Centrum koła jest reprezentowane za pomocą `GeoJSON Point` typu.
 
 2. RADIUS
-   >Koło `radius` odpowiada za pomocą `GeoJSON Feature`jego właściwości. Wartość promienia jest _liczników_ i musi być typu `double`.
+   >Koła `radius` jest reprezentowane za pomocą `GeoJSON Feature`jego właściwości. Wartość radius ma _liczniki_ i musi być typu `double`.
 
 3. Podtyp
-   >Geometria koła musi zawierać `subType` właściwości. Ta właściwość musi być częścią `GeoJSON Feature`jego właściwości i jej wartość powinna być _okręgu_
+   >Geometria koła musi również zawierać `subType` właściwości. Ta właściwość musi być częścią `GeoJSON Feature`firmy właściwości i jej wartość powinna być _okręgu_
 
 
 #### <a name="example"></a>Przykład
 
-Oto jak będzie reprezentować koło skupia się na (szerokości geograficznej: 47.639754, długość:-122.126986) z protokołem radius równy 100 liczników, przy użyciu `GeoJSON Feature` obiektu:
+Oto jak będzie reprezentować koła, a ich tematyka w (szerokość geograficzna: 47.639754, długość geograficzna:-122.126986) z protokołem radius równa 100 liczniki, za pomocą `GeoJSON Feature` obiektu:
 
 ```json            
 {

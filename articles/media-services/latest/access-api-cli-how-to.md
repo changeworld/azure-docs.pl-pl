@@ -1,6 +1,6 @@
 ---
-title: Dostęp do interfejsu API usługi Azure Media - CLI 2.0 | Dokumentacja firmy Microsoft
-description: Wykonaj kroki tego Porada można uzyskać dostępu do interfejsu API Azure Media Services.
+title: Dostęp do interfejsu API usługi Azure Media Services — interfejs wiersza polecenia Azure | Dokumentacja firmy Microsoft
+description: Wykonaj kroki Instruktaż, aby uzyskać dostęp do interfejsu API usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,27 +12,27 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e20cac5f1063589bdbfee0f384ac6af5a39811ed
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639779"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724029"
 ---
-# <a name="access-azure-media-services-api-with-cli-20"></a>Dostęp do usługi Azure Media Services interfejsu API z interfejsu wiersza polecenia 2.0
+# <a name="access-azure-media-services-api-with-the-azure-cli"></a>Interfejs API usług Azure Media dostępu przy użyciu wiersza polecenia platformy Azure
  
-Należy użyć uwierzytelniania podmiotu zabezpieczeń usługi Azure AD do nawiązania połączenia interfejsu API Azure Media Services. Aplikacja musi żądać tokenu usługi Azure AD, który ma następujące parametry:
+Uwierzytelnianie jednostki usługi Azure AD należy używać, aby nawiązać połączenie z interfejsem API usługi Azure Media Services. Twoja aplikacja potrzebuje do wysłania żądania tokenu usługi Azure AD, która ma następujące parametry:
 
-* Punktu końcowego dzierżawcy usługi Azure AD
+* Punkt końcowy dzierżawy usługi Azure AD
 * Identyfikator URI zasobu usługi Media Services
-* Identyfikator URI dla usługi REST Media Services
-* Wartości aplikacji w usłudze Azure AD: identyfikator klienta i klucz tajny klienta
+* Identyfikator URI dla usługi Media Services REST zasobu
+* Wartości aplikacji w usłudze Azure AD: identyfikator klienta oraz klucz tajny klienta
 
-W tym artykule przedstawiono sposób użycia interfejsu wiersza polecenia 2.0 do tworzenia aplikacji usługi Azure AD i usługi głównej i wartości, które są niezbędne do dostępu do zasobów usługi Azure Media Services.
+W tym artykule pokazano, jak utworzyć jednostkę usługi aplikacji Azure AD i usługi i pobierają wartości, które są wymagane do dostępu do zasobów usługi Azure Media Services za pomocą wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Utwórz nowe konto usługi Azure Media Services, zgodnie z opisem w [tego przewodnika Szybki Start](create-account-cli-quickstart.md).
+Utwórz nowe konto usługi Azure Media Services, zgodnie z opisem w [ten przewodnik Szybki Start](create-account-cli-quickstart.md).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -40,7 +40,7 @@ Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie ur
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -51,4 +51,4 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="see-also"></a>Zobacz także
 
-[Interfejs wiersza polecenia 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

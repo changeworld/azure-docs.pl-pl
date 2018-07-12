@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure ExpressRoute obwody i domeny routingu | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie obwody usługi ExpressRoute i domeny routingu.
+title: Obwody usługi ExpressRoute platformy Azure i domeny routingu | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie obwodów usługi ExpressRoute i domeny routingu.
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -14,87 +14,87 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 563ee61b56af22ada662fcfff9f47ae58f3f32ba
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849934"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969099"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Obwody usługi ExpressRoute i domeny routingu
- Należy zamówić *obwodu ExpressRoute* do podłączenia infrastruktury lokalnej do firmy Microsoft za pośrednictwem dostawcy łączności. Na poniższej ilustracji przedstawiono logiczną reprezentację połączenia między sieci WAN i firmy Microsoft.
+ Należy zamówić *obwód usługi ExpressRoute* do podłączenia infrastruktury lokalnej do firmy Microsoft za pośrednictwem dostawcy łączności. Na poniższej ilustracji przedstawiono logiczną reprezentację łączność sieci WAN, a firmy Microsoft.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 ## <a name="expressroute-circuits"></a>Obwody usługi ExpressRoute
-*Obwodu ExpressRoute* reprezentuje połączenie logiczne między lokalną infrastrukturą i usługi w chmurze firmy Microsoft za pośrednictwem dostawcy łączności. Można zamówić wielu obwody usługi ExpressRoute. Każdy obwód mogą znajdować się w tej samej lub różnych regionów, a można podłączyć do lokalnej za pośrednictwem połączenia różnych dostawców. 
+*Obwód usługi ExpressRoute* reprezentuje połączenie logiczne między lokalną infrastrukturą i usługami chmurowymi firmy Microsoft za pośrednictwem dostawcy łączności. Może zamówić łączność obejmującą wiele obwodów usługi ExpressRoute. Każdy obwód może znajdować się w tej samej lub różnych regionach i mogą być połączone z lokalnym za pośrednictwem połączenia różnych dostawców. 
 
-Obwody usługi ExpressRoute nie są mapowane na żadnych jednostek fizycznych. Obwód jest unikatowo identyfikowana przez standardowej GUID o nazwie jako klucz usługi (s-key). Klucz usługi to jedyna wymieniane między firmą Microsoft, dostawca połączenia, a informacje. Klucz s nie jest klucz tajny ze względów bezpieczeństwa. Brak mapowania 1:1 między obwodu usługi ExpressRoute i klucz s.
+Obwody usługi ExpressRoute nie są mapowane do żadnych jednostek fizycznych. Obwód jest unikatowo identyfikowana przez standardowy identyfikator GUID wywołać jako klucz usługi (s-key). Klucz usługi jest tylko część informacji wymienianych między firmą Microsoft, dostawca połączenia, a. Klawisz s nie jest wpis tajny ze względów bezpieczeństwa. Istnieje mapowanie 1:1 między obwodu usługi ExpressRoute i klawisz s.
 
-Obwodu usługi ExpressRoute może mieć maksymalnie trzech niezależnych komunikacji równorzędnych: Azure prywatnego publiczne, Azure i firmy Microsoft. Każdy równorzędna to dwa niezależne BGP sesji ich nadmiarowo skonfigurowany pod kątem wysokiej dostępności. Brak 1: n (1 < = N < = 3) mapowanie między obwodu usługi ExpressRoute i domeny routingu. Obwodu usługi ExpressRoute może mieć jeden, dwa lub wszystkich trzech komunikacji równorzędnych włączone dla obwodu usługi expressroute.
+Obwód usługi ExpressRoute może mieć maksymalnie trzech niezależnych komunikacji równorzędnej: Azure prywatnej publicznych, platformy Azure i firmy Microsoft. Każdego wystąpienia komunikacji równorzędnej to para BGP niezależnie od sesji z nich nadmiarowo skonfigurowany w celu zapewnienia wysokiej dostępności. Brak 1: n (1 < = N < = 3) mapowanie między obwodu usługi ExpressRoute i domeny routingu. Obwód usługi ExpressRoute może mieć jeden, dwa lub wszystkie trzy komunikacje równorzędne włączone na obwód usługi ExpressRoute.
 
-Każdy obwód ma stały przepustowości (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s) i jest mapowany na dostawca połączenia i lokalizacja komunikacji równorzędnej. Przepustowości, którą wybierzesz jest współużytkowana przez wszystkie komunikacji równorzędnych dla obwodu. 
+Każdy obwód o stałej szerokości pasma (50 MB/s, 100 MB/s, 200 MB/s, 500 MB/s, 1 GB/s, 10 GB/s) i jest mapowany do dostawcy łączności i lokalizacji komunikacji równorzędnej. Przepustowość, którą wybierzesz jest współużytkowany przez wszystkie komunikacje równorzędne dla obwodu. 
 
-### <a name="quotas-limits-and-limitations"></a>Przydziały, ograniczenia i ograniczenia
-Domyślne przydziały i limity mają zastosowanie dla każdego obwodu usługi expressroute. Zapoznaj się [subskrypcji platformy Azure i ograniczenia usługi, przydziały i ograniczenia](../azure-subscription-service-limits.md) stronę aktualne informacje dotyczące przydziałów.
+### <a name="quotas-limits-and-limitations"></a>Przydziały, limity i ograniczenia
+Domyślne limity przydziału i limity dotyczą każdego obwód usługi ExpressRoute. Zapoznaj się [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md) aktualne informacje dotyczące limitów przydziału.
 
 ## <a name="expressroute-routing-domains"></a>Domeny routingu usługi ExpressRoute
-Obwodu usługi ExpressRoute ma wiele domen routingu skojarzonych z nim: Azure prywatnego publiczne, Azure i firmy Microsoft. Wszystkich domen routingu jest skonfigurowane tak samo w parze składającej się z routerów (aktywny aktywny lub udostępniania obciążenia konfiguracji) wysokiej dostępności. Usług platformy Azure są sklasyfikowane jako *Azure publicznego* i *Azure prywatnego* do reprezentowania schematów adresowania IP.
+Obwód usługi ExpressRoute ma wiele domen routingu skojarzone z nią: Azure prywatnej publicznych, platformy Azure i firmy Microsoft. Każda z domen routingu jest skonfigurowane tak samo w pary routerów (aktywny / aktywny lub udostępnianie obciążenia konfiguracji) wysokiej dostępności. Usługi platformy Azure są klasyfikowane jako *publicznej platformy Azure* i *Azure prywatne* do reprezentowania schematów adresowania IP.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="azure-private-peering"></a>Azure prywatnej komunikacji równorzędnej
-Usługi, a mianowicie maszyn wirtualnych (IaaS) rozwiązań usługi obliczenia Azure i usługi w chmurze (PaaS), które są wdrażane w ramach sieci wirtualnej mogą zostać połączone za pośrednictwem prywatnej komunikacji równorzędnej domeny. Prywatnej komunikacji równorzędnej domeny jest uważany za zaufany rozszerzenia sieci podstawowej w Microsoft Azure. Można skonfigurować dwukierunkowej łączności między sieci podstawowej i sieci wirtualnych platformy Azure (sieci wirtualne). Komunikacji równorzędnej umożliwia nawiązać połączenia z maszynami wirtualnymi i usługami bezpośrednio na swoich prywatnych adresów IP w chmurze.  
+### <a name="azure-private-peering"></a>Prywatna komunikacja równorzędna Azure
+Usługi Azure compute usług, a mianowicie maszyn wirtualnych (IaaS) i usług w chmurze (PaaS), które są wdrażane w ramach sieci wirtualnej mogą być połączone za pośrednictwem prywatnej komunikacji równorzędnej domeny. Prywatnej komunikacji równorzędnej domeny jest uważana za zaufane rozszerzenie sieci podstawowej w Microsoft Azure. Można skonfigurować dwukierunkowej łączności między sieciami wirtualnymi platformy Azure (Vnet) i sieci podstawowej. Tę komunikację równorzędną pozwala nawiązać połączenie z maszynami wirtualnymi i usługami bezpośrednio na ich prywatnych adresów IP w chmurze.  
 
-Możesz połączyć więcej niż jedną sieć wirtualną do domeny prywatnej komunikacji równorzędnej. Przegląd [z często Zadawanymi pytaniami](expressroute-faqs.md) informacji na temat limity i ograniczenia. Użytkownik może odwiedzić [subskrypcji platformy Azure i ograniczenia usługi, przydziały i ograniczenia](../azure-subscription-service-limits.md) stronę aktualnych informacji o granicach.  Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje o konfiguracji routingu.
+Możesz połączyć więcej niż jednej sieci wirtualnej do prywatnej komunikacji równorzędnej domeny. Przegląd [z często Zadawanymi pytaniami](expressroute-faqs.md) informacji na temat limity i ograniczenia. Możesz odwiedzić stronę [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md) aktualne informacje dotyczące limitów.  Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje na temat konfiguracji routingu.
 
-### <a name="azure-public-peering"></a>Azure publicznej komunikacji równorzędnej
+### <a name="azure-public-peering"></a>Publicznej komunikacji równorzędnej Azure
 
 > [!IMPORTANT]
 > Wszystkie usługi PaaS platformy Azure są również dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft. Zalecamy utworzenie komunikacji równorzędnej firmy Microsoft i nawiązanie połączenia z usługami PaaS platformy Azure za pośrednictwem komunikacji równorzędnej firmy Microsoft.  
 >   
 
 
-Usługi, takie jak usługi Azure Storage, baz danych i witryn sieci Web są oferowane na publiczne adresy IP. Umożliwia nawiązywanie prywatnie usług hostowanych na publiczne adresy IP, w tym adresy VIP usług chmury, za pośrednictwem publicznej komunikacji równorzędnej domeny routingu. Możesz łączyć publicznej komunikacji równorzędnej domeny do sieci Obwodowej i połączyć do wszystkich usług platformy Azure na publiczne adresy IP z sieci WAN, bez konieczności używania połączenia internetowego. 
+Usług, takich jak Azure Storage, bazy danych SQL i witryn sieci Web są oferowane na publicznych adresów IP. Prywatnie można połączyć do usług hostowanych na publicznych adresów IP, w tym VIP usługi w chmurze za pośrednictwem publicznej komunikacji równorzędnej domeny routingu. Można publicznej komunikacji równorzędnej domeny nawiązać połączenie z sieci Obwodowej i połączyć się z wszystkich usług platformy Azure dla swoich publicznych adresów IP z poziomu sieci WAN bez konieczności nawiązywania połączenia przez internet. 
 
-Połączenie jest zawsze inicjowane z sieci WAN do usług Microsoft Azure. Usługi Microsoft Azure nie będą mogły inicjować połączeń do sieci za pomocą tej domeny routingu. Po włączeniu publicznej komunikacji równorzędnej, można połączyć się do wszystkich usług platformy Azure. Firma Microsoft nie umożliwiają selektywne wybierz usługi, dla których firma Microsoft anonsować tras.
+Połączenie jest zawsze inicjowane z sieci WAN z usługami Microsoft Azure. Usługi Microsoft Azure nie będą mogły inicjować połączeń do sieci za pomocą tej domeny routingu. Po włączeniu publicznej komunikacji równorzędnej, możesz połączyć się do wszystkich usług platformy Azure. Firma Microsoft nie umożliwiają selektywne wybierz usługi, dla których firma Microsoft anonsować trasy do.
 
-W sieci, użycie trasy, które są potrzebne, można zdefiniować filtry tras niestandardowych. Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje o konfiguracji routingu. 
+W ramach sieci, aby używać tylko trasy, czego potrzebujesz, możesz zdefiniować filtry tras niestandardowych. Zapoznaj się [Routing](expressroute-routing.md) strony, aby uzyskać szczegółowe informacje na temat konfiguracji routingu. 
 
-Aby uzyskać więcej informacji o usługach obsługiwane za pośrednictwem publicznej komunikacji równorzędnej domeny routingu, zobacz [— często zadawane pytania](expressroute-faqs.md).
+Aby uzyskać więcej informacji na temat usług obsługiwanych za pośrednictwem publicznej komunikacji równorzędnej domeny routingu, zobacz [— często zadawane pytania](expressroute-faqs.md).
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Łączności z usługami online firmy Microsoft (usługi Office 365, Dynamics 365 i Azure PaaS) jest za pomocą komunikacji równorzędnej firmy Microsoft. Firma Microsoft Włącz dwukierunkowej łączności między usług w chmurze firmy Microsoft i WAN za pośrednictwem domeny routingu komunikacji równorzędnej firmy Microsoft. Wymagane jest połączenie z usługi w chmurze firmy Microsoft tylko w przypadku publicznych adresów IP, które należą do firmy przez użytkownika lub dostawcą połączenia i musi być zgodne zdefiniowanych reguł. Aby uzyskać więcej informacji, zobacz [wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) strony.
+Łączność z usługami online firmy Microsoft (usługi Office 365, Dynamics 365 i PaaS platformy Azure) jest za pośrednictwem komunikacji równorzędnej firmy Microsoft. Włączyliśmy dwukierunkowej łączności między sieci WAN, a Microsoft usługi w chmurze za pośrednictwem domeny routingu komunikacji równorzędnej firmy Microsoft. Musisz połączyć się z usługami chmurowymi firmy Microsoft tylko za pośrednictwem publiczne adresy IP, które są własnością użytkownik lub jego dostawca łączności i muszą być zgodne ze wszystkimi zdefiniowanymi regułami. Aby uzyskać więcej informacji, zobacz [wymagania wstępne usługi ExpressRoute](expressroute-prerequisites.md) strony.
 
-Zobacz [z często Zadawanymi pytaniami](expressroute-faqs.md) Aby uzyskać więcej informacji na temat usługi obsługiwane, kosztów i szczegóły konfiguracji. Zobacz [lokalizacje ExpressRoute](expressroute-locations.md) strony, aby uzyskać informacje na liście dostawców łączności oferty komunikacji równorzędnej pomocy technicznej firmy Microsoft.
+Zobacz [z często Zadawanymi pytaniami](expressroute-faqs.md) Aby uzyskać więcej informacji na temat obsługiwanych usług, koszty i szczegółów konfiguracji. Zobacz [lokalizacji usługi ExpressRoute](expressroute-locations.md) informacje dotyczące listy dostawców łączności oferty pomocy technicznej komunikacji równorzędnej firmy Microsoft.
 
-## <a name="routing-domain-comparison"></a>Porównanie domeny routingu
+## <a name="routing-domain-comparison"></a>Routing porównania domeny
 W poniższej tabeli porównano trzy domeny routingu:
 
-|  | **Prywatnej komunikacji równorzędnej** | **Publicznej komunikacji równorzędnej** (uznane za przestarzałe w tworzenie nowych) | **Komunikacji równorzędnej firmy Microsoft** |
+|  | **Prywatna komunikacja równorzędna** | **Publicznej komunikacji równorzędnej** (uznane za przestarzałe w utworzenie nowych kont) | **Komunikacja równorzędna firmy Microsoft** |
 | --- | --- | --- | --- |
-| **Maks. prefiksy # obsługiwane na komunikacji równorzędnej** |4000 domyślnie 10 000 z ExpressRoute — wersja Premium |200 |200 |
-| **Obsługiwane zakresów adresów IP** |Dowolny prawidłowy adres IP w sieci WAN. |Publiczne adresy IP należące do przez użytkownika lub dostawcą połączenia. |Publiczne adresy IP należące do przez użytkownika lub dostawcą połączenia. |
-| **JAKO liczba wymagań** |Prywatne i publiczne jako liczby. Musi być właścicielem publicznego jako numer, jeśli chcesz używać jednego. |Prywatne i publiczne jako liczby. Jednak musisz udowodnić własność publicznych adresów IP. |Prywatne i publiczne jako liczby. Jednak musisz udowodnić własność publicznych adresów IP. |
+| **Maksymalna liczba. prefiksy # obsługiwane na połączenie komunikacji równorzędnej** |4000 domyślnie 10 000 operacji przy użyciu usługi ExpressRoute Premium |200 |200 |
+| **Obsługiwane zakresów adresów IP** |Dowolny prawidłowy adres IP w sieci WAN. |Publiczne adresy IP posiadane przez Ciebie lub dostawcą łączności. |Publiczne adresy IP posiadane przez Ciebie lub dostawcą łączności. |
+| **JAKO liczba wymagań** |Prywatne i publiczne numery AS. Musi być właścicielem publicznie jako liczbę, jeśli zdecydujesz się go użyć. |Prywatne i publiczne numery AS. Jednak musisz udowodnić, że własność publicznych adresów IP. |Prywatne i publiczne numery AS. Jednak musisz udowodnić, że własność publicznych adresów IP. |
 | **Obsługiwane protokoły IP**| Protokół IPv4 | Protokół IPv4 | IPv4, IPv6 |
-| **Routingu adresów IP interfejsu** |RFC1918 i publiczne adresy IP |Publiczne adresy IP, w zarejestrowany w rejestrach routingu. |Publiczne adresy IP, w zarejestrowany w rejestrach routingu. |
-| **Obsługa wyznaczania wartości skrótu MD5** |Yes |Yes |Yes |
+| **Routing adresów IP interfejsu** |RFC1918 i publiczne adresy IP |Publiczne adresy IP zarejestrowane na Ciebie w rejestrów routingu. |Publiczne adresy IP zarejestrowane na Ciebie w rejestrów routingu. |
+| **Skrót MD5 pomocy technicznej** |Yes |Yes |Yes |
 
 
 
-Można włączyć jedną lub więcej domen routingu w ramach obwodu usługi ExpressRoute. Można mieć wszystkich domen routingu umieszczanie na tej samej sieci VPN, jeśli chcesz połączyć je w jednej domeny routingu. Można również wprowadzić je w różnych domenach routingu, podobne do diagramu. Zalecana konfiguracja jest prywatnej komunikacji równorzędnej jest podłączony bezpośrednio do sieci podstawowej, czy publicznego i łączy komunikacji równorzędnej firmy Microsoft są podłączone do sieci Obwodowej.
+Można włączyć co najmniej jedną z domen routingu w ramach obwodu usługi ExpressRoute. Można mieć wszystkich domen routingu umieszczanie na tej samej sieci VPN, aby połączyć je w pojedynczej domeny routingu. Można również wprowadzić je w różnych domen routingu, podobne do diagramu. Zalecana konfiguracja to, że prywatnej komunikacji równorzędnej jest podłączony bezpośrednio do sieci podstawowej, oraz publicznej komunikacji równorzędnej oraz komunikacji równorzędnej firmy Microsoft, które są podłączone do sieci Obwodowej.
 
-Jeśli wybierzesz opcję wszystkie trzy sesje komunikacji równorzędnej, muszą mieć trzy pary sesje BGP (jedna para dla każdego typu komunikacji równorzędnej). Pary sesji BGP podaj łącze wysokiej dostępności. Jeśli łączysz się za pośrednictwem warstwy 2 łączności dostawców, jest odpowiedzialny za konfigurowanie i zarządzanie nimi routingu. Dowiedz się więcej, przeglądając [przepływy pracy](expressroute-workflows.md) dotyczące konfigurowania usługi ExpressRoute.
+Jeśli chcesz mieć wszystkie trzy sesje komunikacji równorzędnej, musisz mieć trzy pary sesji protokołu BGP (jedną parę dla każdego typu komunikacji równorzędnej). Pary sesji protokołu BGP, podaj link o wysokiej dostępności. Jeśli łączysz się za pośrednictwem dostawców łączności 2 warstwy, ponosisz odpowiedzialność za Konfigurowanie routingu oraz zarządzanie nim. Dowiedz się więcej, przeglądając [przepływy pracy](expressroute-workflows.md) dotyczące konfigurowania usługi ExpressRoute.
 
 ## <a name="expressroute-health"></a>Kondycja usługi ExpressRoute
-Obwody usługi ExpressRoute może być monitorowany, dostępność, łączność sieci wirtualnych i użyciu wykorzystania przepustowości [monitora wydajności sieci](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM).
+Obwody usługi ExpressRoute mogą być monitorowane, aby zapewnić dostępność, łączność z sieciami wirtualnymi i przy użyciu wykorzystanie przepustowości [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
-NPM monitoruje kondycję Azure prywatnej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft.  Zapoznaj się z naszym [post](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) Aby uzyskać więcej informacji.
+NPM monitoruje kondycję Azure prywatnej komunikacji równorzędnej i komunikacji równorzędnej firmy Microsoft.  Zapoznaj się z naszym [wpis](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Znajdź dostawcę usługi. Zobacz [usługi ExpressRoute dostawców i lokalizacje](expressroute-locations.md).
+* Znajdź dostawcę usługi. Zobacz [dostawcy i lokalizacje usługi ExpressRoute](expressroute-locations.md).
 * Upewnij się, że zostały spełnione wszystkie wymagania wstępne. Zobacz artykuł [ExpressRoute prerequisites](expressroute-prerequisites.md) (Wymagania wstępne usługi ExpressRoute).
 * Skonfiguruj połączenie usługi ExpressRoute.
   * [Tworzenie obwodów usługi ExpressRoute i zarządzanie nimi](expressroute-howto-circuit-portal-resource-manager.md)
