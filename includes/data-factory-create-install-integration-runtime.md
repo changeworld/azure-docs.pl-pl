@@ -115,7 +115,7 @@ W tej sekcji utworzysz własne środowisko Integration Runtime i skojarzysz je z
 
     b. Wybierz typ źródła danych **SqlServer**.
 
-    c. Wprowadź nazwę serwera.
+    d. Wprowadź nazwę serwera.
 
     d. Wprowadź nazwę bazy danych.
 
