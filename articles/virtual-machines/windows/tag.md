@@ -1,6 +1,6 @@
 ---
-title: Jak tag zasobu maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o znakowanie utworzona na platformie Azure przy użyciu modelu wdrażania Menedżera zasobów systemu Windows maszyny wirtualnej
+title: Jak oznaczyć zasób maszynę Wirtualną Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o znakowaniu Windows maszyny wirtualnej utworzonej na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: mmccrory
@@ -16,25 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 5044bda855b6ac88eb5784f257686bf8a1838222
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917503"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531324"
 ---
-# <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak tagu maszyny wirtualnej systemu Windows na platformie Azure
-W tym artykule opisano różne sposoby tagu maszyny wirtualnej systemu Windows na platformie Azure za pośrednictwem modelu wdrażania usługi Resource Manager. Tagi to pary klucz wartość zdefiniowana przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Azure obecnie obsługuje maksymalnie 15 znaczników dla zasobu i grupy zasobów. Tagi mogą dotyczącymi zasobów w czasie tworzenia lub dodać do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane dla zasobów utworzone za pośrednictwem tylko modelu wdrażania Menedżera zasobów. Jeśli chcesz oznaczyć maszyny wirtualnej systemu Linux, zobacz [jak tagu maszyny wirtualnej systemu Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+# <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną Windows na platformie Azure
+W tym artykule opisano różne sposoby, aby oznaczyć maszynę wirtualną Windows na platformie Azure za pomocą modelu wdrażania usługi Resource Manager. Tagi to pary klucz/wartość zdefiniowanych przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Platforma Azure obsługuje obecnie maksymalnie 15 tagów na zasób i grupy zasobów. Znaczniki może być umieszczone na zasób w czasie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane w przypadku zasobów utworzonych za pomocą modelu wdrażania usługi Resource Manager tylko. Jeśli chcesz oznaczyć maszynę wirtualną systemu Linux, zobacz [jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-powershell"></a>Znakowanie przy użyciu programu PowerShell
-Aby utworzyć, dodawanie i usuwanie tagów za pomocą programu PowerShell, należy najpierw skonfigurować Twoje [środowiska PowerShell z usługą Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Po zakończeniu instalacji można umieścić znaczniki zasobów obliczeniowych, sieci i magazynu podczas tworzenia lub zasób jest tworzony za pomocą programu PowerShell. W tym artykule będzie skoncentrować się na wyświetlanie/edytowanie tagów umieszczone na maszynach wirtualnych.
+Aby utworzyć, dodawanie i usuwanie tagów za pomocą programu PowerShell, najpierw trzeba skonfigurować swoje [środowiska PowerShell z usługą Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Po zakończeniu instalacji można umieścić znaczniki dla zasobów obliczeniowych, sieci i magazynu podczas tworzenia lub po utworzeniu zasobu za pomocą programu PowerShell. Ten artykuł koncentruje się na wyświetlanie oraz edytowanie tagów umieszczone na maszynach wirtualnych.
 
-Po pierwsze, przejdź do maszyny wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet.
+Przejdź do maszyny wirtualnej za pośrednictwem `Get-AzureRmVM` polecenia cmdlet.
 
         PS C:\> Get-AzureRmVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
-Maszyna wirtualna zawiera już znaczników, zostanie wtedy wyświetlone wszystkie tagi na zasobu:
+Jeśli maszyna wirtualna zawiera już znaczników, następnie zobaczysz wszystkie tagi zasobu:
 
         Tags : {
                 "Application": "MyApp1",
@@ -43,13 +43,13 @@ Maszyna wirtualna zawiera już znaczników, zostanie wtedy wyświetlone wszystki
                 "Environment": "Production"
                }
 
-Jeśli chcesz dodać tagów za pomocą programu PowerShell, możesz użyć `Set-AzureRmResource` polecenia. Należy zwrócić uwagę podczas aktualizowania tagów za pomocą programu PowerShell, tagi są aktualizowane jako całość. Więc jeden tag jest dodawane do zasobu, który ma już tagi, należy uwzględnić wszystkie tagi, które mają zostać umieszczone w zasobie. Poniżej przedstawiono przykładowy sposób dodawania dodatkowych tagów do zasobów za pomocą poleceń cmdlet programu PowerShell.
+Jeśli chcesz dodać tagi za pomocą programu PowerShell, możesz użyć `Set-AzureRmResource` polecenia. Należy pamiętać podczas aktualizowania tagów za pomocą programu PowerShell, tagi zostaną zaktualizowane jako całości. Więc jeden tag w przypadku dodawania do zasobu, który ma już tagi, konieczne będzie obejmować wszystkie tagi, które mają zostać umieszczone w zasobie. Poniżej przedstawiono przykładowy sposób dodać dodatkowe tagi do zasobu za pomocą poleceń cmdlet programu PowerShell.
 
-To pierwsze polecenie cmdlet Ustawia wszystkie tagi dotyczącymi *MyTestVM* do *$tags* przy użyciu zmiennej `Get-AzureRmResource` i `Tags` właściwości.
+To pierwsze polecenie cmdlet Ustawia wszystkie tagi umieszczone na *MyTestVM* do *$tags* zmiennej za pomocą `Get-AzureRmResource` i `Tags` właściwości.
 
         PS C:\> $tags = (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-Drugie polecenie wyświetla tagi dla danego zmiennej.
+Drugie polecenie wyświetla znaczniki dla danego zmiennej.
 
         PS C:\> $tags
 
@@ -64,15 +64,15 @@ Drugie polecenie wyświetla tagi dla danego zmiennej.
         Value        Production
         Name        Environment
 
-Trzecie polecenie dodaje tag dodatkowe do *$tags* zmiennej. Zwróć uwagę na użycie **+=** do dołączenia nową parę klucz wartość do *$tags* listy.
+Trzecie polecenie dodaje tag dodatkowe *$tags* zmiennej. Zwróć uwagę na użycie **+=** można dołączyć nową parę kluczy/wartości do *$tags* listy.
 
         PS C:\> $tags += @{Name="Location";Value="MyLocation"}
 
-Czwarte polecenie ustawia wszystkie tagi zdefiniowane w *$tags* zmienną do określonych zasobów. W takim przypadku jest MyTestVM.
+Czwarty polecenie ustawia parametry logowania wszystkich znaczników zdefiniowane w *$tags* zmiennej do danego zasobu. W tym przypadku jest to MyTestVM.
 
         PS C:\> Set-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
-Polecenie piątego Wyświetla wszystkie tagi zasobu. Jak widać, *lokalizacji* jest teraz zdefiniowany jako tag *MyLocation* jako wartość.
+Piąty polecenie wyświetla listę wszystkich tagów w zasobie. Jak widać, *lokalizacji* teraz jest zdefiniowany jako tag *MyLocation* jako wartość.
 
         PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -89,13 +89,13 @@ Polecenie piątego Wyświetla wszystkie tagi zasobu. Jak widać, *lokalizacji* j
         Value        MyLocation
         Name        Location
 
-Aby dowiedzieć się więcej na temat znakowanie za pomocą programu PowerShell, zapoznaj się [polecenia cmdlet usługi Azure Resource][Azure Resource Cmdlets].
+Aby dowiedzieć się więcej o znakowaniu za pomocą programu PowerShell, zapoznaj się z [polecenia cmdlet usługi Azure Resource][Azure Resource Cmdlets].
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat znakowanie zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager] [ Azure Resource Manager Overview] i [przy użyciu tagów do organizowania zasobów platformy Azure][Using Tags to organize your Azure Resources].
-* Aby dowiedzieć się, jak tagów można zarządzać korzystanie z zasobów platformy Azure, zobacz [Opis rachunku Azure] [ Understanding your Azure Bill] i [uzyskać wgląd w Microsoft Azure użycia zasobów][Gain insights into your Microsoft Azure resource consumption].
+* Aby dowiedzieć się więcej na temat tagowania zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager] [ Azure Resource Manager Overview] i [za pomocą tagów do organizowania zasobów platformy Azure] [ Using Tags to organize your Azure Resources].
+* Aby dowiedzieć się, jak tagi zarządzanie może ułatwić korzystanie z zasobów platformy Azure, zobacz [informacje o rachunku Azure] [ Understanding your Azure Bill] i [wgląd w użycie zasobów usługi Microsoft Azure] [Gain insights into your Microsoft Azure resource consumption].
 
 [PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/powershell-azure-resource-manager.md
 [Azure Resource Cmdlets]: https://msdn.microsoft.com/library/azure/dn757692.aspx

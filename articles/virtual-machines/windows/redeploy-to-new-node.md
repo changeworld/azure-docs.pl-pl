@@ -1,6 +1,6 @@
 ---
-title: Należy ponownie wdrożyć maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak można wdrożyć ponownie maszyny wirtualne systemu Windows na platformie Azure w celu ograniczenia problemów z połączeniem RDP.
+title: Ponowne wdrażanie maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak ponownie wdrożyć maszyny wirtualne Windows na platformie Azure, aby rozwiązać problemy z połączeniem RDP.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
@@ -15,23 +15,23 @@ ms.workload: infrastructure
 ms.date: 05/11/2018
 ms.author: genli
 ms.openlocfilehash: f0bda14634e6c8bea5800b9798086fc38279030a
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160329"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38531506"
 ---
-# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Wdróż ponownie maszynę wirtualną systemu Windows do nowego węzła Azure
-Jeśli został skierowany trudności Rozwiązywanie problemów z pulpitu zdalnego (RDP) połączenia lub aplikacji dostęp do systemu Windows Azure maszyny wirtualnej (VM), ponownego wdrażania maszyny Wirtualnej może pomóc. Podczas ponownego wdrażania maszyny Wirtualnej maszyny Wirtualnej są przenoszone do nowego węzła w ramach infrastruktury platformy Azure i uprawnień go ponownie na zachowaniu opcji konfiguracji i skojarzonych zasobów. W tym artykule przedstawiono sposób ponownego wdrażania maszyny Wirtualnej przy użyciu programu Azure PowerShell lub w portalu Azure.
+# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Wdróż ponownie maszynę wirtualną Windows nowym węźle platformy Azure
+Jeśli został skierowany trudności Rozwiązywanie problemów z pulpitu zdalnego (RDP) połączenia lub aplikacji dostęp do opartych na Windows Azure maszynę wirtualną (VM), ponowne wdrożenie maszyny Wirtualnej może pomóc. Podczas ponownego wdrażania maszyny Wirtualnej powoduje przeniesienie maszyny Wirtualnej w nowym węźle w ramach infrastruktury platformy Azure i obsługuje go ponownie na zachowaniu wszystkich opcji konfiguracji i skojarzonych zasobów. W tym artykule pokazano, jak przeprowadzić ponowne wdrożenie maszyny Wirtualnej przy użyciu programu Azure PowerShell lub witryny Azure portal.
 
 > [!NOTE]
-> Po ponownego wdrażania maszyny Wirtualnej, tymczasowego dysku zostaną utracone i dynamicznych adresów IP skojarzonych z interfejsu sieci wirtualnej zostały zaktualizowane. 
+> Po przeprowadzić ponowne wdrożenie maszyny Wirtualnej, dysk tymczasowy to dysk utracone i dynamiczne adresy IP skojarzoną z interfejsem sieci wirtualnej zostały zaktualizowane. 
 
 
 ## <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-Upewnij się, że masz najnowszą programu Azure PowerShell 1.x zainstalowana na tym komputerze. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+Upewnij się, że masz najnowszą wersję programu Azure PowerShell 1.x zainstalowana na tym komputerze. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
-Poniższy przykład wdraża maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
+Poniższy przykład służy do wdrażania maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
 
 ```powershell
 Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -41,5 +41,5 @@ Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli występują problemy dotyczące nawiązywania połączenia z maszyną Wirtualną, możesz znaleźć pomoc w [Rozwiązywanie problemów z połączeniami RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) lub [szczegółowe kroki rozwiązywania problemów RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Jeśli nie można uzyskać dostęp do aplikacji działających na maszynie Wirtualnej, możesz przeczytać [aplikacji Rozwiązywanie problemów z](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Jeśli występują problemy z nawiązywaniem połączenia z maszyną wirtualną, możesz znaleźć pomoc na [Rozwiązywanie problemów z połączeniami RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) lub [szczegółowe kroki rozwiązywania problemów RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Jeśli nie masz dostępu aplikacji uruchomionej na maszynie Wirtualnej, można również przeczytać [aplikacji Rozwiązywanie problemów z](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

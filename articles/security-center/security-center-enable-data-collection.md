@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
-description: " Informacje o włączaniu zbierania danych w Centrum zabezpieczeń Azure. "
+title: Zbieranie danych w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: " Dowiedz się, jak włączyć funkcję zbierania danych w usłudze Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,102 +15,102 @@ ms.workload: na
 ms.date: 05/14/2018
 ms.author: terrylan
 ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203975"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619113"
 ---
-# <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w Centrum zabezpieczeń Azure
-Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Microsoft Monitoring Agent kopiuje pliki zrzutu awaryjnego do swojego obszaru roboczego.
+# <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
+Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
 
-## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczne Inicjowanie obsługi programu Microsoft Monitoring Agent     
-Automatyczne inicjowanie obsługi administracyjnej jest domyślnie wyłączone. Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczną aprowizację programu Microsoft Monitoring Agent     
+Automatyczna aprowizacja jest domyślnie wyłączona. Po włączeniu automatycznej aprowizacji Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
-> Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [Wyłącz automatyczne udostępnianie](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Migawki dysków maszyny Wirtualnej i kolekcji artefaktu są włączone, nawet jeśli jest wyłączona, automatyczne udostępnianie.
+> Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [wyłączyć automatyczną aprowizację](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Kolekcja artefaktów i migawki dysków maszyny Wirtualnej są włączone, nawet jeśli automatycznej aprowizacji jest wyłączone.
 >
 >
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
-1. W menu głównym Centrum zabezpieczeń, wybierz **zasady zabezpieczeń**.
+1. W menu głównym usługi Security Center wybierz **zasady zabezpieczeń**.
 2. Wybierz subskrypcję.
 
   ![Wybieranie subskrypcji][7]
 
 3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
-4. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **na** Aby włączyć automatyczne udostępnianie.
+4. W obszarze **automatycznej aprowizacji**, wybierz opcję **na** Aby włączyć automatyczną aprowizację.
 5. Wybierz pozycję **Zapisz**.
 
   ![Włączanie automatycznej aprowizacji][1]
 
 ## <a name="default-workspace-configuration"></a>Domyślna konfiguracja obszaru roboczego
-Dane zebrane przez Centrum zabezpieczeń jest przechowywany w analizy dzienników obszarów roboczych.  Możesz zdecydować się na dane zbierane z maszyn wirtualnych platformy Azure, przechowywane w obszary robocze tworzone przez Centrum zabezpieczeń lub istniejący obszar roboczy utworzony.
+Dane zbierane przez usługę Security Center są przechowywane w obszarach roboczych usługi Log Analytics.  Możesz zdecydować się na dane zbierane z maszyn wirtualnych platformy Azure, przechowywane w obszary robocze utworzone przez usługę Security Center lub istniejący obszar roboczy, który został utworzony.
 
-Aby użyć istniejącego obszaru roboczego analizy dzienników:
-- Obszar roboczy musi być skojarzony z wybranej subskrypcji Azure.
-- Co najmniej użytkownik musi mieć uprawnienia odczytu dostępu do obszaru roboczego.
+Aby użyć istniejącego obszaru roboczego usługi Log Analytics:
+- Obszar roboczy musi być skojarzony z wybranej subskrypcji platformy Azure.
+- Jako minimum użytkownik musi mieć uprawnienia odczytu do dostępu do obszaru roboczego.
 
-Aby wybrać istniejący obszar roboczy analizy dzienników:
+Aby wybrać istniejący obszar roboczy usługi Log Analytics:
 
-1. W obszarze **domyślnej konfiguracji obszaru roboczego**, wybierz pozycję **Użyj innego obszaru roboczego**.
+1. W obszarze **domyślną konfigurację obszaru zabezpieczeń**, wybierz opcję **Użyj innego obszaru roboczego**.
 
    ![Wybierz istniejący obszar roboczy][2]
 
 2. Z menu rozwijanego wybierz obszar roboczy do zapisywania zebranych danych.
 
   > [!NOTE]
-  > W ściągania menu rozwijane dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Zobacz [cross wybór obszaru roboczego subskrypcji](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Aby uzyskać więcej informacji.
+  > W ściągnąć menu dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Zobacz [cross wybór obszaru roboczego subskrypcji](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Aby uzyskać więcej informacji.
   >
   >
 
 3. Wybierz pozycję **Zapisz**.
-4. Po wybraniu **zapisać**, użytkownik zostanie poproszony, jeśli chcesz monitorować ponownej konfiguracji maszyn wirtualnych.
+4. Po wybraniu **Zapisz**, konieczne będzie podanie, jeśli chcesz ponownie skonfigurować monitorowane maszyny wirtualne.
 
-   - Wybierz **nr** Jeśli chcesz, aby nowe ustawienia obszaru roboczego do zastosowania na tylko nowych maszyn wirtualnych. Nowe ustawienia obszaru roboczego dotyczą tylko nowe instalacje agentów; nowo wykryte maszyny wirtualne, które nie mają zainstalowany program Microsoft Monitoring Agent.
-   - Wybierz **tak** Jeśli chcesz, aby nowe ustawienia obszaru roboczego do zastosowania na wszystkich maszynach wirtualnych. Ponadto każdej maszyny Wirtualnej podłączone do Centrum zabezpieczeń, obszar roboczy utworzony ponownie nawiązał połączenie nowy docelowy obszar roboczy.
+   - Wybierz **nie** Jeśli chcesz, aby nowe ustawienia obszaru roboczego, można zastosować tylko nowych maszyn wirtualnych. Nowe ustawienia obszaru roboczego dotyczą tylko nowe instalacje agentów; odnalezione maszyny wirtualne, które nie mają zainstalowany program Microsoft Monitoring Agent.
+   - Wybierz **tak** Jeśli chcesz, aby nowe ustawienia obszaru roboczego, aby zastosować na wszystkich maszynach wirtualnych. Ponadto każda maszyna wirtualna podłączone do usługi Security Center, obszar roboczy utworzony ponownie nawiązał połączenie nowy docelowy obszar roboczy.
 
    > [!NOTE]
-   > Jeśli wybierzesz tak, nie można usuwać obszarów roboczych, utworzonych przez Centrum zabezpieczeń, dopóki wszystkie maszyny wirtualne mają został ponownie podłączony do nowego docelowego obszaru roboczego. Ta operacja nie powiedzie się, zbyt wcześnie usuniętego obszaru roboczego.
+   > Jeśli wybierzesz tak, nie można usuwać obszary robocze utworzone przez usługę Security Center, aż wszystkie maszyny wirtualne mają został ponownie podłączony do nowego docelowego obszaru roboczego. Ta operacja nie powiedzie się, za wczesne usunięcie obszaru roboczego.
    >
    >
 
-   - Wybierz **anulować** Aby anulować operację.
+   - Wybierz **anulować** anulować operację.
 
      ![Wybierz istniejący obszar roboczy][3]
 
-## <a name="cross-subscription-workspace-selection"></a>Krzyżowe wybór obszaru roboczego subskrypcji
-Wybierz obszar roboczy do przechowywania danych, dostępne są wszystkie obszary robocze dla wszystkich subskrypcji. Między subskrypcjami wybór obszaru roboczego umożliwia zbieranie danych z maszyn wirtualnych działających w ramach różnych subskrypcji i zapisz go w obszarze roboczym wybranych przez użytkownika. Ta funkcja działa w przypadku obu maszyn wirtualnych z systemem Linux i Windows.
+## <a name="cross-subscription-workspace-selection"></a>Obejmujące wiele subskrypcji, wybór obszaru roboczego
+Po wybraniu obszaru roboczego do przechowywania danych, wszystkie obszary robocze dla wszystkich subskrypcji są dostępne. Między subskrypcjami wybór obszaru roboczego umożliwia zbieranie danych z maszyn wirtualnych działających w różnych subskrypcjach i zapisz go w obszarze roboczym wybór. Ta funkcja działa w przypadku obu maszyn wirtualnych z systemem Linux lub Windows.
 
 > [!NOTE]
-> Między subskrypcjami wybór obszaru roboczego jest częścią warstwę bezpłatna Centrum zabezpieczeń Azure. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+> Między subskrypcjami wybór obszaru roboczego jest częścią usługi Azure Security Center w warstwie bezpłatna. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
 >
 >
 
-## <a name="data-collection-tier"></a>Warstwa danych kolekcji
-Centrum zabezpieczeń może zmniejszyć ilość danych zdarzeń przy zachowaniu za mało zdarzeń do badania, inspekcji i wykrywanie zagrożeń. Można wybrać prawa filtrowania zasady dla subskrypcji i obszarów roboczych z czterech zestawów zdarzeń mają zostać zebrane przez agenta.
+## <a name="data-collection-tier"></a>Warstwa kolekcji danych
+Usługa Security Center można zmniejszyć liczby zdarzeń przy zachowaniu wystarczającej liczby zdarzeń do badania, inspekcji i wykrywania zagrożeń. Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają zostać zebrane przez agenta.
 
-- **Wszystkie zdarzenia** — dla klientów, którzy chcą, aby upewnić się, że wszystkie zdarzenia są zbierane. Jest to wartość domyślna.
-- **Typowe** — jest to zestaw zdarzeń spełniający większość klientów i umożliwia im dziennik inspekcji pełna.
-- **Minimalny** — mniejszy zestaw zdarzeń dla klientów, którzy minimalizowania woluminu zdarzeń.
-- **Brak** — Wyłącz zbieranie zdarzeń zabezpieczeń z dzienniki funkcji AppLocker i zabezpieczeń. Dla klientów, którzy wybierz tę opcję pulpity nawigacyjne ich zabezpieczeń ma tylko dzienniki zapory systemu Windows i oceny aktywnego, takich jak ochrony przed złośliwym kodem, linii bazowej i aktualizacji.
+- **Wszystkie zdarzenia** — dla klientów, którzy chcą, aby upewnić się, że wszystkie zdarzenia są zbierane. Jest to opcja domyślna.
+- **Typowe** — jest to zestaw zdarzeń, który spełnia większość klientów i umożliwia im pełnego dziennika inspekcji.
+- **Minimalny** — mniejszy zestaw zdarzeń, które klienci, którzy chcą, aby zminimalizować wolumin zdarzeń.
+- **Brak** — Wyłącz zbieranie zdarzeń zabezpieczeń z zabezpieczeniami i dzienniki AppLocker. W przypadku klientów, którzy wybierz tę opcję ich pulpitami nawigacyjnymi zabezpieczeń ma tylko dzienniki zapory Windows i ocen proaktywnych np. ochrony przed złośliwym oprogramowaniem, linii bazowej i aktualizacji.
 
 > [!NOTE]
-> Te zestawy zdarzenia zabezpieczeń są dostępne tylko w warstwie standardowa, Centrum zabezpieczeń. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
-Te zestawy zaprojektowano w celu rozwiązania typowych scenariuszy. Upewnij się ocenić, która z nich potrzebom użytkownika przed jego wdrożeniem.
+> Te zestawy zdarzenia zabezpieczeń są dostępne tylko dla warstwy standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
+Te zestawy są przeznaczone dla typowych scenariuszy. Upewnij się ocenić, która opcja spełnia Twoje potrzeby, przed rozpoczęciem implementacji.
 >
 >
 
-Aby określić zdarzenia, które będą należeć do **typowe** i **minimalnego** zestawów zdarzeń, możemy doświadczenie z klientów i standardy branżowe, aby dowiedzieć się więcej o częstotliwości niefiltrowane każdego zdarzenia i ich użycia. Poniższe wskazówki zostały użyte podczas tego procesu:
+Aby określić zdarzenia, które będą należeć do **typowe** i **minimalny** ustawia zdarzenie współpracowaliśmy z klientami i standardów branżowych, aby dowiedzieć się więcej na temat niefiltrowane częstotliwość każdego zdarzenia i ich użycia. Użyliśmy następujące wytyczne w ramach tego procesu:
 
-- **Minimalny** — upewnij się, że ten zestaw obejmuje tylko zdarzenia, które mogą wskazywać pomyślne naruszenia i ważnych wydarzeń, które mają bardzo niskim poziomie. Na przykład ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatorów 4625), ale nie zawiera on wylogowania, co jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia do wykrywania i ma stosunkowo dużej liczby. Większość ilość danych tego zestawu jest zdarzenia logowania i procesu tworzenia zdarzeń (event ID 4688).
-- **Typowe** — Podaj dziennik inspekcji logowania, w tym zestawie. Na przykład ten zestaw zawiera identyfikatory logowania użytkownika i wylogowywania użytkowników (zdarzenie ID 4634). Firma Microsoft obejmują akcje, takie jak zmiany grupy zabezpieczeń, operacje Kerberos kontrolera domeny klucza i inne zdarzenia, które są zalecane przez organizacje z branży inspekcji.
+- **Minimalny** — upewnij się, że ten zestaw obejmuje tylko te zdarzenia, które mogą wskazywać na naruszenie pomyślne i ważne wydarzenia, które mają bardzo niskim poziomie. Na przykład ten zestaw zawiera udane i nieudane logowania użytkownika (zdarzenie 4624 identyfikatory 4625), ale nie zawiera on wylogowania, co jest ważne w przypadku inspekcji, ale nie ma istotnego znaczenia dla wykrywania i ma stosunkowo dużych ilościach. W większości ilość danych, ten zestaw jest zdarzenia logowania i procesu tworzenia zdarzeń (zdarzenie 4688 identyfikator).
+- **Typowe** — Podaj użytkownika pełnego dziennika inspekcji, w tym zestawie. Na przykład ten zestaw zawiera identyfikatory logowania użytkownika i wylogowywania użytkowników (zdarzenie ID 4634). Dołączamy inspekcji akcji, takich jak zmiany w grupie zabezpieczeń, operacji protokołu Kerberos kontrolera domeny kluczy i innych zdarzeń, które są zalecane przez organizacje z branży.
 
-Zdarzenia, które mają bardzo niskim poziomie zostały uwzględnione we wspólnym Ustaw jako głównym celem wybranie wszystkich zdarzeń jest zmniejszyć wolumin, a nie odfiltrowywania określonych zdarzeń.
+Zdarzenia, które mają bardzo małą liczbą zostały uwzględnione w typowych Ustaw jako główny motywacja wybrać za pośrednictwem wszystkich zdarzeń jest redukować ilość danych, a nie odfiltrować określonych zdarzeń.
 
-Poniżej przedstawiono pełną podział zabezpieczeń i funkcji AppLocker identyfikatory zdarzeń dla każdego zestawu:
+Tutaj znajduje się pełna lista zabezpieczeń i AppLocker identyfikatory zdarzeń dla każdego zestawu:
 
-| Warstwa danych | Wskaźniki o zdarzeniach |
+| Warstwa danych | Wskaźniki zebranych zdarzeń |
 | --- | --- |
 | Minimalny | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
@@ -123,42 +123,42 @@ Poniżej przedstawiono pełną podział zabezpieczeń i funkcji AppLocker identy
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> Jeśli używasz obiektu zasad grupy (GPO), zaleca się włączenie zasady inspekcji procesu tworzenia zdarzeń 4688 i *CommandLine* pole wewnątrz zdarzenia 4688. Aby uzyskać więcej informacji na temat procesu tworzenia zdarzeń 4688 zobacz Centrum zabezpieczeń [— często zadawane pytania](security-center-faq.md#what-happens-when-data-collection-is-enabled). Aby uzyskać więcej informacji o tych zasady inspekcji, zobacz [zaleceń dotyczących zasad inspekcji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
+> Jeśli używasz obiektów zasad grupy (GPO), zalecane jest, aby włączyć zasady inspekcji procesu tworzenia zdarzeń 4688 i *CommandLine* pola wewnątrz zdarzeń 4688. Aby uzyskać więcej informacji na temat procesu tworzenia zdarzeń 4688 korzystać z usługi Security Center [— często zadawane pytania](security-center-faq.md#what-happens-when-data-collection-is-enabled). Aby uzyskać więcej informacji na temat tych zasady inspekcji, zobacz [zalecenia dotyczące zasad inspekcji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations).
 >
 >
 
 Aby wybrać zasady filtrowania:
-1. Na **zasady zabezpieczeń zbierania danych** bloku, wybierz filtrowania zasad w obszarze **zdarzenia zabezpieczeń**.
+1. Na **zasady zabezpieczeń zbierania danych** bloku wybierz zasady filtrowania w obszarze **zdarzeń związanych z zabezpieczeniami**.
 2. Wybierz pozycję **Zapisz**.
 
    ![Wybierz zasady filtrowania][5]
 
 ## <a name="disable-automatic-provisioning"></a>Wyłącz automatyczne udostępnianie
-Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczne udostępnianie zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zaleceń dotyczących aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
+Można wyłączyć automatyczną aprowizację zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczna aprowizacja zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zalecenia dotyczące aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
 
 > [!NOTE]
 > Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta.
 >
 >
 
-1. Powróć do menu głównego Centrum zabezpieczeń i wybierz zasady zabezpieczeń.
+1. Wróć do menu głównego usługi Security Center i wybierz zasady zabezpieczeń.
 2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
-3. Na **zasady zabezpieczeń — zbieranie danych** bloku, w obszarze **automatycznego inicjowania obsługi administracyjnej** wybierz **poza**.
+3. Na **zasady zabezpieczeń — zbierania danych** bloku, w obszarze **automatycznej aprowizacji** wybierz **poza**.
 4. Wybierz pozycję **Zapisz**.
 
   ![Wyłącz automatyczne udostępnianie][6]
 
-Wyłączenie automatycznego inicjowania obsługi administracyjnej (wyłączone), nie są wyświetlane sekcji konfiguracji domyślnej obszaru roboczego.
+Wyłączenie automatycznej aprowizacji (wyłączone), sekcja konfiguracji domyślnego obszaru roboczego nie są wyświetlane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule pokazano możesz sposób zbierania danych i automatyczne udostępnianie w Centrum zabezpieczeń działa. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
+Ten artykuł pokazuje, jak zbieranie danych i automatycznej aprowizacji w usłudze Security Center działa. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Centrum zabezpieczeń Azure](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
+* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
 * [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-- [Bezpieczeństwo danych w Centrum zabezpieczeń Azure](security-center-data-security.md) — Dowiedz się, jak dane są zarządzane i w Centrum zabezpieczeń.
+- [Bezpieczeństwo danych w usłudze Azure Security Center](security-center-data-security.md) — Dowiedz się, jak jest zarządzane i chronione są dane w usłudze Security Center.
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) — najnowsze informacje na temat zabezpieczeń platformy Azure.
 

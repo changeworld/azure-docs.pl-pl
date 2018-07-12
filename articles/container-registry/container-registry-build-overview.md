@@ -1,6 +1,6 @@
 ---
-title: Automatyzacja systemu operacyjnego i framework poprawki z Azure kontenera rejestru kompilacji (kompilacja ACR)
-description: Wprowadzenie do ACR kompilacji zestaw funkcji w rejestrze kontenera platformy Azure, która zapewnia bezpieczny, automatyczne tworzenie obrazu kontenera i stosowanie poprawek w chmurze.
+title: Automatyzowanie systemu operacyjnego i framework poprawek za pomocą usługi Azure Container rejestru Build (kompilacja ACR)
+description: Wprowadzenie do pakietu ACR Build zestaw funkcji w usłudze Azure Container Registry, która zapewnia bezpieczny, automatyczne tworzenie obrazu kontenera i instalowanie poprawek w chmurze.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -9,63 +9,63 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
 ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057778"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38582634"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatyzacja systemu operacyjnego i framework poprawki z ACR kompilacji
+# <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatyzowanie systemu operacyjnego i framework poprawek za pomocą pakietu ACR Build
 
-Kontenery Podaj nowe poziomy wirtualizacji Izolowanie aplikacji i deweloperów zależności od infrastruktury i wymagań operacyjnych. Jednak pozostałą, jest potrzeba adresów, jak jest poprawiono wirtualizacji tej aplikacji.
+Kontenery zapewniają na nowym poziomie wirtualizacji, izolowanie zależności aplikacji i dla deweloperów z infrastrukturą i wymagań operacyjnych. Co jeszcze pozostało, jest jednak trzeba rozwiązać, jak ta Wirtualizacja aplikacji jest zastosowana poprawka.
 
-**Tworzenie ACR**, zestaw funkcji w rejestrze kontenera platformy Azure, zapewnia nie tylko natywny kontenera możliwości kompilacji obrazu, ale również automatyzuje [systemu operacyjnego i stosowanie poprawek framework](#automate-os-and-framework-patching) dla kontenerów Docker.
+**Tworzenie rejestru Azure container Registry**, zestaw funkcji w usłudze Azure Container Registry, zapewnia nie tylko kontenera natywne możliwości obrazu kompilacji są dostępne, ale jest również Automatyzowanie [systemu operacyjnego i stosowanie poprawek w ramach](#automate-os-and-framework-patching) dla kontenerów Docker.
 
 [!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
-## <a name="what-is-acr-build"></a>Co to jest ACR kompilacji?
+## <a name="what-is-acr-build"></a>Co to jest pakietu ACR Build?
 
-Kontener Azure rejestru kompilacji jest usługi kompilacji obrazu macierzystego Azure kontenera. Kompilacje kompilacji ACR umożliwia pętli wewnętrzny Programowanie w chmurze za pomocą obrazu kontenera na żądanie, i zaktualizuj kompilacjach zautomatyzowanych na obraz, jak i zatwierdzania kodu źródłowego.
+Azure tworzenia rejestru kontenera jest usługi kompilacji obrazu kontenera platformy Azure — natywne. Tworzenie rejestru Azure container Registry umożliwia wewnętrznej pętli tworzenia kodu w chmurze przy użyciu obrazu kontenera na żądanie kompilacji i zaktualizuj zautomatyzowane kompilacje na obraz zatwierdzenia i bazy kodu źródłowego.
 
-Wyzwalacz kontener obrazu automatycznie tworzy podczas kodu został przekazany do repozytorium Git lub po zaktualizowaniu obrazu podstawowego kontenera. Z wyzwalaczy aktualizacji obrazu podstawowego, można zautomatyzować, system operacyjny i platforma aplikacji poprawki przepływu pracy, zachowanie bezpiecznego środowiskach przestrzegając podmiotów niezmienne kontenerów.
+Obraz kontenera wyzwalacza opiera się automatycznie, gdy kod jest zaangażowana w repozytorium Git lub po zaktualizowaniu kontenera obraz podstawowy. Przy użyciu wyzwalaczy aktualizacji obraz podstawowy, można zautomatyzować, system operacyjny i platforma aplikacji poprawek przepływu pracy, utrzymywanie bezpiecznych środowiskach przestrzegając podmiotów niezmienne kontenerów.
 
-## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Szybka kompilacja: wewnętrzny pętli rozszerzony do chmury
+## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Szybka kompilacja: wewnętrzny zdefiniowana pętla rozszerzony do chmury
 
-Początek — Zarządzanie cyklem życia uruchamiany przed deweloperzy zatwierdzić ich pierwszych wierszy kodu. Tworzenie ACR [szybkie tworzenie](container-registry-tutorial-quick-build.md) funkcji umożliwia obsługę zintegrowanego rozwoju lokalnych wewnętrzny pętli, Odciążanie kompilacji na platformie Azure. Z kompilacje szybkie możesz sprawdzić, do definicji kompilacji automatycznych przed wykonaniem kodu.
+Początek zarządzania cyklem życia rozpoczyna się przed deweloperów zatwierdzić swoje pierwsze wiersze kodu. Tworzenie rejestru Azure container Registry [szybkie tworzenie](container-registry-tutorial-quick-build.md) funkcji zapewnia środowisko zintegrowane lokalnego wewnętrznej pętli tworzenia kodu, Odciążanie kompilacji na platformie Azure. Za pomocą szybkiego kompilacji można sprawdzić, definicje kompilacji automatycznych przed zatwierdzeniem kodu.
 
-Przy użyciu znanych `docker build` format [kompilacji acr az] [ az-acr-build] polecenia interfejsu wiersza polecenia Azure pobierającej kontekst lokalnego, wysyła go do usługi kompilacji ACR i domyślnie wypychanie wbudowanych obrazu do jego rejestru na ukończenia. Kompilacji ACR następuje rejestrów z replikacją geograficzną włączenie zespoły deweloperów rozproszone wykorzystać najbliższego replikowanych rejestru. Podczas udostępniania wersji zapoznawczej kompilacja ACR jest dostępna w regionach wschodnie stany USA i Europa Zachodnia.
+Przy użyciu znanej `docker build` formacie [az acr build] [ az-acr-build] polecenie w interfejsie wiersza polecenia platformy Azure pobierającej kontekst lokalnych, wysyła je do usługi kompilacji usługi ACR i domyślnie wypycha utworzony obraz do jego rejestru po ukończenie. Kompilacji usługi ACR jest zgodna z rejestrów z replikacją geograficzną, umożliwiając zespołom programistycznym rozproszonych korzystać z najbliższego rejestru replikowanego. W trakcie okresu zapoznawczego kompilacji z rejestru Azure container Registry jest dostępna w regionach wschodnie stany USA i Europa Zachodnia.
 
-Tworzenie ACR został zaprojektowany jako pierwotnych cykl kontenera. Na przykład zintegrować ACR kompilacji rozwiązania CI/CD. Wykonując [logowania az] [ az-login] z [nazwy głównej usługi][az-login-service-principal], rozwiązania CI/CD może następnie wystawić [az acr kompilacji] [ az-acr-build] poleceń, aby rozpocząć obrazu kompilacji.
+Tworzenie rejestru Azure container Registry została zaprojektowana jako cyklu życia kontenera pierwotnych. Na przykład zintegrować pakietu ACR Build rozwiązanie ciągłej integracji/ciągłego wdrażania. Wykonując [az login] [ az-login] z [nazwy głównej usługi][az-login-service-principal], następnie wydać rozwiązanie ciągłej integracji/ciągłego Dostarczania [az acr kompilacji] [ az-acr-build] polecenia, aby uruchamiał obrazu kompilacji.
 
-Dowiedz się, jak użyć szybkiego kompilacje w pierwszym samouczku kompilacji ACR [tworzenia obrazów kontenera w chmurze za pomocą kompilacji rejestru kontenera Azure](container-registry-tutorial-quick-build.md).
+Dowiedz się, jak użyć szybkiego kompilacji w pierwszym samouczku pakietu ACR Build [kompilowanie obrazów kontenerów w chmurze za pomocą usługi Azure Container Registry Build](container-registry-tutorial-quick-build.md).
 
-## <a name="automatic-build-on-source-code-commit"></a>Automatyczne kompilacji w zatwierdzeniu kodu źródłowego
+## <a name="automatic-build-on-source-code-commit"></a>Automatyczna kompilacja przy zatwierdzeniu kodu źródłowego
 
-Użyj ACR kompilacji automatycznie wyzwalać obrazu kontenera kompilacji, jeśli kod jest zaangażowana w repozytorium Git. Kompilowanie zadań, można skonfigurować przy użyciu polecenia interfejsu wiersza polecenia Azure [zadania kompilacji az acr][az-acr-build-task], pozwala na określenie repozytorium Git i opcjonalnie gałęzi i plik Dockerfile. Gdy zespół zatwierdza kod do repozytorium, element webhook kompilacji ACR utworzonych wyzwala kompilacji obrazu kontenera zdefiniowane w repozytorium.
+Użyj pakietu ACR Build automatycznie wyzwalać obraz kontenera kompilacji, gdy kod jest zaangażowana w repozytorium Git. Tworzenie zadań, można skonfigurować przy użyciu polecenia interfejsu wiersza polecenia Azure [zadanie kompilacji az acr][az-acr-build-task], pozwalają na określenie repozytorium Git i opcjonalnie gałęzi i pliku Dockerfile. Jeśli Twój zespół zatwierdzenia kodu do repozytorium, pakietu ACR Build utworzony element webhook wyzwala kompilację obrazu kontenera, zdefiniowane w repozytorium.
 
-Dowiedz się, jak można wyzwolić kompilacji w zatwierdzeniu kodu źródłowego w drugim samouczku ACR kompilacji [kompilacje Automatyzacja kontener obrazu z kompilacji rejestru kontenera Azure](container-registry-tutorial-build-task.md).
+Dowiedz się, jak wyzwolić kompilacje przy zatwierdzeniu kodu źródłowego w drugim samouczku pakietu ACR Build [obraz kontenera Automatyzacja kompilacji za pomocą usługi Azure Container Registry Build](container-registry-tutorial-build-task.md).
 
-## <a name="automate-os-and-framework-patching"></a>Automatyzacja systemu operacyjnego i stosowanie poprawek framework
+## <a name="automate-os-and-framework-patching"></a>Automatyzowanie systemu operacyjnego i stosowanie poprawek framework
 
-Możliwości kompilacji ACR naprawdę ulepszyć planowaną kompilacji kontenera pochodzi z jego zdolność do wykrywania aktualizacji do obrazu podstawowego. Gdy zaktualizowano podstawowy obraz zostanie przypisany do rejestru, kompilacji ACR automatycznie można tworzyć żadnych obrazów aplikacji na ich podstawie.
+Możliwości pakietu ACR Build naprawdę rozszerzanie potoku kompilacji kontenerów pochodzi z jego możliwości, aby wykrywać aktualizację obrazu podstawowego. Wypchnięcie zaktualizowanego obrazu do rejestru kompilacji usługi ACR automatycznie tworzyć żadnych obrazów aplikacji na jego podstawie.
 
-Kontener obrazów można szeroko podzielić na *podstawowej* obrazów i *aplikacji* obrazów. Podstawowy obrazów zwykle zawierają systemu operacyjnego i platformy aplikacji, na których jest oparta aplikacji, oraz inne dostosowania. Te obrazy podstawowe są zazwyczaj na podstawie publicznego nadrzędnego obrazów, na przykład [Alpine Linux] [ base-alpine] lub [Node.js][base-node]. Kilka obrazów aplikacji mogą współdzielić wspólnej obrazu podstawowego.
+Obrazy kontenerów można ogólnie podzielić na *podstawowy* obrazów i *aplikacji* obrazów. Twoje obrazy podstawowe zwykle obejmują systemu operacyjnego i struktur aplikacji, od których aplikacja jest wbudowana, wraz z innych dostosowań. Te obrazy podstawowe są zazwyczaj na podstawie publicznego obrazów nadrzędnego, na przykład [Alpine Linux] [ base-alpine] lub [Node.js][base-node]. Kilka obrazów aplikacji może udostępniać typowe obrazu podstawowego.
 
-Po zaktualizowaniu framework obrazu systemu operacyjnego lub aplikacji przez element utrzymujący nadrzędnego na przykład za pomocą krytyczne poprawki zabezpieczeń systemu operacyjnego, należy należy również zaktualizować podstawowej obrazów do poprawkę krytyczne. Każdego obrazu aplikacji musi następnie również zostać również przebudowany w celu zawierają te poprawki nadrzędnego teraz zawarta w obrazu podstawowego.
+Po zaktualizowaniu framework obrazu systemu operacyjnego lub aplikacji przez nadrzędne Element utrzymujący na przykład za pomocą krytyczne poprawki zabezpieczeń systemu operacyjnego, należy również zaktualizować swoje obrazy podstawowe obejmujący poprawki krytyczne. Każdy obraz aplikacji należy następnie również zostać zrekompilowany, aby uwzględnić te poprawki nadrzędnego teraz dołączane do obrazu podstawowego.
 
-Ponieważ dynamicznie kompilacji ACR odnajdzie zależności obrazu podstawowego, podczas tworzenia obrazu kontenera, może wykryć po zaktualizowaniu obraz podstawowy obraz aplikacji. Jeden wstępnie [zadania kompilacji](container-registry-tutorial-base-image-update.md#create-build-task), ACR kompilacji następnie **automatycznie odtwarza każdego obrazu aplikacji** dla Ciebie. Z tego automatycznego wykrywania i ponownie skompilować, zapisuje ACR kompilacji obrazu możesz ilość czasu, zwykle wymagane do ręcznego śledzenia i zaktualizować każdej aplikacji odwołuje się do obrazu podstawowego zaktualizowane.
+Ponieważ dynamicznie pakietu ACR Build umożliwia odnalezienie zależności obraz podstawowy, podczas tworzenia obrazu kontenera, może to wykryć po zaktualizowaniu obrazu podstawowego obrazu aplikacji. Za pomocą jednego we wstępnie skonfigurowanym [zadania kompilacji](container-registry-tutorial-base-image-update.md#create-build-task), następnie kompilacji usługi ACR **automatycznie ponownie kompiluje każdego obrazu aplikacji** dla Ciebie. Z tym automatyczne wykrywanie i ponownie skompilować, pakietu ACR Build pozwala zaoszczędzić czas i nakład pracy zwykle jest to wymagane do ręcznego śledzenia i aktualizowanie aplikacji w każdym obrazu, odwołuje się do zaktualizowanego obrazu podstawowego.
 
-Więcej informacji na temat systemu operacyjnego i framework poprawki w trzeci samouczek tworzenia ACR [obrazu Automatyzacja opiera się na podstawowy obraz aktualizacji z kompilacji rejestru kontenera Azure](container-registry-tutorial-base-image-update.md).
+Więcej informacji na temat systemu operacyjnego i framework poprawki w trzeci samouczek pakietu ACR Build [Automatyzacja obrazu jest oparta na aktualizacji obrazów podstawowych za pomocą usługi Azure Container Registry Build](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Początkowej wersji zapoznawczej wyzwalacz aktualizacji obrazu podstawowego tworzy tylko wtedy, gdy obrazy podstawową i aplikacji znajdują się w rejestrze tego samego kontenera platformy Azure.
+> Wyzwalacz aktualizacji obrazu podstawowego dla początkowego okresu zapoznawczego opiera się tylko wtedy, gdy obrazy podstawowych i aplikacji znajdują się w tej samej usłudze Azure container registry.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Gdy wszystko jest gotowe do automatyzowania systemu operacyjnego i framework poprawki przez tworzenia obrazów kontenera w chmurze, zapoznaj się z serii samouczek tworzenia ACR trzech części.
+Gdy wszystko będzie gotowe zautomatyzować systemu operacyjnego i framework poprawek, tworzenie obrazów kontenerów w chmurze, zapoznaj się z serii samouczków pakietu ACR Build trzyczęściowej serii.
 
 > [!div class="nextstepaction"]
-> [Tworzenie kontenera obrazów w chmurze z kompilacji rejestru kontenera platformy Azure](container-registry-tutorial-quick-build.md)
+> [Tworzenie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Build](container-registry-tutorial-quick-build.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

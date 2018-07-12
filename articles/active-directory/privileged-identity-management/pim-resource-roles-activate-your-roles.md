@@ -14,15 +14,15 @@ ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d2f61f1ebdd473a24115c7774801f5b7694f224f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 483f30a6546cf21d93b96b08eede6afae828d9e4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443209"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548308"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Uaktywnij role zasobów platformy Azure przy użyciu Privileged Identity Management
-Privileged Identity Management (PIM) wprowadzono nowe środowisko w aktywowania role zasobów platformy Azure. Elementy członkowskie kwalifikowania się do roli można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Aby uzyskać więcej informacji, zobacz [jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Privileged Identity Management (PIM) wprowadzono nowe środowisko w aktywowania role zasobów platformy Azure. Elementy członkowskie kwalifikowania się do roli można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Aby uzyskać więcej informacji, zobacz [jak aktywować lub dezaktywować ról w usłudze Azure AD Privileged Identity Management](pim-how-to-activate-role.md).
 
 ## <a name="activate-roles"></a>Uaktywnij role
 Przejdź do **Moje role** sekcji w okienku po lewej stronie. Wybierz **Aktywuj** dla roli, która ma zostać uaktywniona.

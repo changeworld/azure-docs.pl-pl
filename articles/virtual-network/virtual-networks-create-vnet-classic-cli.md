@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 9d254fa17ae2b45a5771777bc7cedf9fa90d9815
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790767"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38477645"
 ---
-# <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Tworzenie sieci wirtualnej (wdrożenia klasyczne) przy użyciu wiersza polecenia platformy Azure
+# <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Tworzenie sieci wirtualnej (model klasyczny) przy użyciu wiersza polecenia platformy Azure
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym dokumencie opisano tworzenie sieci wirtualnej przy użyciu klasycznego modelu wdrażania. Możesz również [utworzyć sieć wirtualną w modelu wdrażania usługi Resource Manager przy użyciu interfejsu wiersza polecenia Azure](quick-create-cli.md).
+W tym dokumencie opisano tworzenie sieci wirtualnej przy użyciu klasycznego modelu wdrażania. Możesz również [tworzenie sieci wirtualnej w modelu wdrażania usługi Resource Manager przy użyciu wiersza polecenia platformy Azure](quick-create-cli.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Integracja magazynu kluczy z programem SQL Server na maszynach wirtualnych systemu Windows na platformie Azure (Resource Manager) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zautomatyzować konfigurację programu SQL Server szyfrowania do użycia z usługą Azure Key Vault. W tym temacie opisano sposób integracji magazynu kluczy Azure za pomocą programu SQL Server maszyn wirtualnych utworzonych za pomocą Menedżera zasobów.
+title: Integracja usługi Key Vault z programem SQL Server na maszynach wirtualnych z Windows na platformie Azure (Resource Manager) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zautomatyzować proces konfiguracji szyfrowania programu SQL Server do użycia z usługą Azure Key Vault. W tym temacie opisano sposób integracji magazynu kluczy Azure za pomocą programu SQL Server maszyny wirtualne utworzone przy użyciu usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: rothja
@@ -16,55 +16,55 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774730"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597410"
 ---
-# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji magazynu kluczy Azure dla programu SQL Server na maszynach wirtualnych Azure (Resource Manager)
+# <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji usługi Azure Key Vault dla programu SQL Server na maszynach wirtualnych platformy Azure (Resource Manager)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Wdrożenie klasyczne](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
 ## <a name="overview"></a>Przegląd
-Istnieje wiele funkcji szyfrowania programu SQL Server, takich jak [przezroczystego szyfrowania danych (funkcji TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [szyfrowania na poziomie kolumny (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), i [szyfrowania kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx). Te formy szyfrowania wymagają przechowywania kluczy kryptograficznych używanego do szyfrowania i zarządzania nimi. Usługa Azure Key Vault (AKV) zaprojektowano w celu poprawy zabezpieczeń i zarządzania tych kluczy w lokalizacji bezpieczne i wysokiej dostępności. [Łącznik usług SQL Server](http://www.microsoft.com/download/details.aspx?id=45344) umożliwia SQL Server do użycia tych kluczy z usługi Azure Key Vault.
+Istnieje wiele funkcji szyfrowania programu SQL Server, takich jak [technologii transparent data encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [szyfrowania na poziomie kolumny (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), i [szyfrowania kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx). Te rodzaje szyfrowania wymagają przechowywania kluczy kryptograficznych używanego do szyfrowania i zarządzania nimi. Usługa Azure Key Vault (AKV) zaprojektowano w celu poprawy zabezpieczeń i zarządzania tych kluczy w bezpiecznych i wysoko dostępnych lokalizacji. [Łącznik usług SQL Server](http://www.microsoft.com/download/details.aspx?id=45344) umożliwia SQL Server, aby użyć tych kluczy z usługi Azure Key Vault.
 
-Jeśli korzystasz z programu SQL Server z lokalnymi maszynami, istnieją [kroki można wykonać, aby uzyskać dostęp do usługi Azure Key Vault z komputera lokalnego programu SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Jednak dla programu SQL Server na maszynach wirtualnych Azure, można oszczędzić czas za pomocą *integracji magazynu kluczy Azure* funkcji.
+Jeśli używasz programu SQL Server na maszynach w środowisku lokalnym, istnieją [kroki można wykonać, aby uzyskać dostęp do usługi Azure Key Vault z komputera programu SQL Server w środowisku lokalnym](https://msdn.microsoft.com/library/dn198405.aspx). Ale programu SQL Server na maszynach wirtualnych platformy Azure, możesz zaoszczędzić czas przy użyciu *integracji magazynu kluczy Azure* funkcji.
 
-Gdy ta funkcja jest włączona, automatycznie jest instalowana łącznika programu SQL Server, konfiguruje dostawcy EKM. Aby uzyskać dostępu do usługi Azure Key Vault i tworzy poświadczenia, aby umożliwić użytkownikowi dostęp do magazynu. Jeśli przeglądał kroki opisane w dokumentacji lokalnego opisane powyżej, zobaczysz, że ta funkcja pozwala zautomatyzować kroki 2 i 3. Jedyną operacją, której nadal trzeba wykonać ręcznie polega na utworzeniu magazynu kluczy i kluczy. Z tego miejsca wszystkie ustawienia maszyny Wirtualnej SQL jest zautomatyzowany. Po ukończeniu tej konfiguracji tej funkcji można wykonywać instrukcje T-SQL, aby rozpocząć szyfrowania z bazy danych lub kopii zapasowych w zwykły sposób.
+Po włączeniu tej funkcji, automatycznie jest instalowana łącznik programu SQL Server, konfiguruje dostawcę EKM dostępu do usługi Azure Key Vault i tworzy poświadczeń, aby zezwolić na dostęp do magazynu. Jeśli cookie kroki opisane w dokumentacji wymienione wcześniej w środowisku lokalnym, zostanie wyświetlony, że ta funkcja automatyzuje kroki 2 i 3. Jedyną czynnością, którą należy nadal wykonać ręcznie, jest tworzenie magazynu kluczy i kluczy. W efekcie wszystkie ustawienia maszyny Wirtualnej SQL jest zautomatyzowane. Po ukończeniu tej konfiguracji tej funkcji możesz wykonać instrukcje języka T-SQL, aby rozpocząć szyfrowanie z bazy danych lub tworzenie kopii zapasowych, tak jak zwykle.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
-## <a name="enabling-and-configuring-akv-integration"></a>Włączanie i konfigurowanie Integracja
-Można włączyć integracja podczas inicjowania obsługi lub skonfiguruj ją dla istniejących maszyn wirtualnych.
+## <a name="enabling-and-configuring-akv-integration"></a>Umożliwia włączenie i skonfigurowanie Integracja
+Można włączyć integracja podczas inicjowania obsługi lub skonfigurować go do istniejących maszyn wirtualnych.
 
 ### <a name="new-vms"></a>Nowe maszyny wirtualne
-W przypadku udostępniania nowej maszyny wirtualnej programu SQL Server za pomocą Menedżera zasobów Azure portal udostępnia sposób, aby włączyć integrację z usługą Azure Key Vault. Funkcja usługi Azure Key Vault jest dostępna tylko w przypadku Enterprise, Developer i wersji ewaluacyjnej programu SQL Server.
+W przypadku udostępniania nowej maszyny wirtualnej programu SQL Server przy użyciu usługi Resource Manager, witryny Azure portal umożliwia włączanie integracji usługi Azure Key Vault. Funkcja usługi Azure Key Vault jest dostępna tylko w przypadku Enterprise, Developer i wersji ewaluacyjnej programu SQL Server.
 
 ![Integracja magazynu kluczy Usług SQL Azure](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-Aby uzyskać szczegółowe wskazówki dotyczące inicjowania obsługi administracyjnej, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server w portalu Azure](virtual-machines-windows-portal-sql-server-provision.md).
+Aby uzyskać szczegółowy przewodnik dotyczący inicjowania obsługi administracyjnej, zobacz [Aprowizowanie maszyny wirtualnej programu SQL Server w witrynie Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Istniejące maszyny wirtualne
-W przypadku istniejących maszyn wirtualnych programu SQL Server należy wybrać maszyny wirtualnej programu SQL Server. Następnie wybierz **konfigurację programu SQL Server** sekcji **ustawienia** bloku.
+W przypadku istniejących maszyn wirtualnych programu SQL Server należy wybrać maszyny wirtualnej programu SQL Server. Następnie wybierz pozycję **konfiguracji programu SQL Server** części **ustawienia** bloku.
 
 ![Integracja programu SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-W **konfigurację programu SQL Server** bloku, kliknij przycisk **Edytuj** przycisk w sekcji Integracja magazynu kluczy automatycznego.
+W **konfiguracji programu SQL Server** bloku kliknij **Edytuj** przycisk w sekcji integracja automatycznego usługi Key Vault.
 
 ![Konfigurowanie integracja SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
-Gdy skończysz, kliknij przycisk **OK** przycisk w dolnej części **konfigurację programu SQL Server** bloku, aby zapisać zmiany.
+Po zakończeniu kliknij przycisk **OK** przycisk w dolnej części **konfiguracji programu SQL Server** bloku, aby zapisać zmiany.
 
 > [!NOTE]
-> Nazwa poświadczenia, tworzone w tym miejscu zostaną zmapowane do logowania SQL później. Dzięki temu logowania SQL można uzyskać dostępu do magazynu kluczy. 
+> Nazwa poświadczenia, którą utworzyliśmy, w tym miejscu zostaną zmapowane do identyfikatora logowania SQL później. Dzięki temu identyfikator logowania SQL do dostępu do magazynu kluczy. 
 >
 >
 
 > [!NOTE]
-> Można również skonfigurować integracja przy użyciu szablonu. Aby uzyskać więcej informacji, zobacz [szablonu Azure Szybki Start dla usługi Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
+> Można również skonfigurować integracja przy użyciu szablonu. Aby uzyskać więcej informacji, zobacz [szablon szybkiego startu platformy Azure dla usługi Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
 > 
 > 
 

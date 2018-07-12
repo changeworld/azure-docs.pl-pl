@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: genli
 ms.openlocfilehash: 659781a16663d815e54454746d017eef29414b95
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "31529499"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38597484"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Rozwiązywanie problemów w określonych scenariuszy awarii alokacji w klasycznym modelu wdrażania
 

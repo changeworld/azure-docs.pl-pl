@@ -16,12 +16,12 @@ ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 681169fc3db69c2dfb8aa36d6e2896e0ddba8b56
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442376"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38548132"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Wymagania dotyczące subskrypcji usługi Azure Active Directory Privileged Identity Management
 
@@ -38,7 +38,7 @@ Jeśli nie masz pewności, czy Twoja organizacja ma korzystać z wersji próbnej
 2. Wprowadź `Connect-MsolService` do uwierzytelnienia się jako użytkownik w dzierżawie.
 3. Wprowadź `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
 
-To polecenie pobiera listę subskrypcji w ramach dzierżawy. Jeśli nie ma żadnych wierszy, zwrócone, konieczne będzie uzyskania wersji próbnej i komercyjnej usługi Azure AD Premium P2 subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji do użycia usługi Azure AD Privileged Identity Management.  Aby uzyskać wersję próbną i Rozpocznij korzystanie z usługi Azure AD Privileged Identity Management, przeczytaj [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+To polecenie pobiera listę subskrypcji w ramach dzierżawy. Jeśli nie ma żadnych wierszy, zwrócone, konieczne będzie uzyskania wersji próbnej i komercyjnej usługi Azure AD Premium P2 subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji do użycia usługi Azure AD Privileged Identity Management.  Aby uzyskać wersję próbną i Rozpocznij korzystanie z usługi Azure AD Privileged Identity Management, przeczytaj [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](pim-getting-started.md).
 
 Jeśli to polecenie zwróci wiersz, w które SkuPartNumber jest "AAD_PREMIUM_P2" lub "EMSPREMIUM" i IsTrial jest "True", oznacza to, że wersji próbnej usługi Azure AD Premium P2 znajduje się w dzierżawie.  Jeśli stan subskrypcji nie jest włączona, a nie masz subskrypcji P2 usługi Azure AD Premium lub EMS E5 zakupu, następnie należy zakupić subskrypcję usługi Azure AD Premium P2 lub EMS E5 aby kontynuować korzystanie z usługi Azure AD Privileged Identity Management.
 
@@ -61,5 +61,5 @@ Po wygaśnięciu subskrypcji P2 usługi Azure AD Premium lub EMS E5 subskrypcji 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
-- [Role w usłudze Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
+- [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](pim-getting-started.md)
+- [Role w usłudze Azure AD Privileged Identity Management](pim-roles.md)

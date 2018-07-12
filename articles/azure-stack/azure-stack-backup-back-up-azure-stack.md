@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kopii zapasowej Azure stosu | Dokumentacja firmy Microsoft
-description: Wykonaj kopię zapasową na żądanie w stosie Azure przy użyciu kopii zapasowej w miejscu.
+title: Tworzenie kopii zapasowej usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Wykonaj kopię zapasową na żądanie w usłudze Azure Stack, przy użyciu kopii zapasowej na miejscu.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,43 +15,60 @@ ms.topic: article
 ms.date: 5/08/2017
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: c2a6727692a7a74b3e5fe32de8800722a9ed91b5
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2570423a3cae2a15f0cfd294f1d91e6730748f68
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075191"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972607"
 ---
-# <a name="back-up-azure-stack"></a>Tworzenie kopii zapasowej Azure stosu
+# <a name="back-up-azure-stack"></a>Tworzenie kopii zapasowych usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Wykonaj kopię zapasową na żądanie w stosie Azure przy użyciu kopii zapasowej w miejscu. Jeśli musisz włączyć usługę kopia zapasowa infrastruktury, zobacz [włączenia kopii zapasowej Azure stosu z portalu administracyjnego](azure-stack-backup-enable-backup-console.md).
+Wykonaj kopię zapasową na żądanie w usłudze Azure Stack, przy użyciu kopii zapasowej na miejscu. Aby uzyskać instrukcje dotyczące konfigurowania środowiska PowerShell, zobacz [Instalowanie programu PowerShell dla usługi Azure Stack ](azure-stack-powershell-install.md). Aby zalogować się do usługi Azure Stack, zobacz [skonfigurować środowisko operatora i zaloguj się do usługi Azure Stack](azure-stack-powershell-configure-admin.md).
 
-> [!Note]  
->  Aby uzyskać instrukcje na temat konfigurowania środowiska PowerShell, zobacz [Zainstaluj program PowerShell Azure stosu ](azure-stack-powershell-install.md).
+## <a name="start-azure-stack-backup"></a>Rozpocznij wykonywanie kopii zapasowej usługi Azure Stack
 
-## <a name="start-azure-stack-backup"></a>Kopia zapasowa Azure stosu
-
-Otwórz program Windows PowerShell z podwyższonym poziomem uprawnień monitem w środowisku zarządzania operatora i uruchom następujące polecenia:
+Użyj Start AzSBackup, aby uruchomić nową kopię zapasową za pomocą zmiennej - AsJob do śledzenia postępu. 
 
 ```powershell
-    Start-AzSBackup -Location $location.Name
+    $backupjob = Start-AzsBackup -Force -AsJob
+    "Start time: " + $backupjob.PSBeginTime;While($backupjob.State -eq "Running"){("Job is currently: " + $backupjob.State+" ;Duration: " + (New-TimeSpan -Start ($backupjob.PSBeginTime) -End (Get-Date)).Minutes);Start-Sleep -Seconds 30};$backupjob.Output
 ```
 
-## <a name="confirm-backup-completed-in-the-administration-portal"></a>Potwierdź kopii zapasowej zostało ukończone w portalu administracyjnym
+## <a name="confirm-backup-completed-via-powershell"></a>Upewnij się, kopia zapasowa została wykonana za pomocą programu PowerShell
 
-1. Otwieranie portalu administracyjnego platformy Azure stosu w [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
-2. Wybierz **więcej usług** > **infrastruktura kopii zapasowej**. Wybierz **konfiguracji** w **infrastruktura kopii zapasowej** bloku.
+```powershell
+    if($backupjob.State -eq "Completed"){Get-AzsBackup | where {$_.BackupId -eq $backupjob.Output.BackupId}}
+```
+
+- Wynik powinien wyglądać następujące dane wyjściowe:
+
+  ```powershell
+      BackupDataVersion : 1.0.1
+      BackupId          : <backup ID>
+      RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
+      Status            : Succeeded
+      CreatedDateTime   : 7/6/2018 6:46:24 AM
+      TimeTakenToCreate : PT20M32.364138S
+      DeploymentID      : <deployment ID>
+      StampVersion      : 1.1807.0.41
+      OemVersion        : 
+      Id                : /subscriptions/<subscription ID>/resourceGroups/System.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/<backup ID>
+      Name              : local/<local name>
+      Type              : Microsoft.Backup.Admin/backupLocations/backups
+      Location          : local
+      Tags              : {}
+  ```
+
+## <a name="confirm-backup-completed-in-the-administration-portal"></a>Upewnij się, kopia zapasowa została wykonana w portalu administracyjnym
+
+1. Otwórz w portalu administratora usługi Azure Stack w [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+2. Wybierz **więcej usług** > **tworzenie kopii zapasowych**. Wybierz **konfiguracji** w **tworzenie kopii zapasowych** bloku.
 3. Znajdź **nazwa** i **Data ukończenia** kopii zapasowej w **dostępnych kopii zapasowych** listy.
-4. Sprawdź **stanu** jest **zakończyło się pomyślnie**.
-
-<!-- You can also confirm the backup completed from the administration portal. Navigate to `\MASBackup\<datetime>\<backupid>\BackupInfo.xml`
-
-In ‘Confirm backup completed’ section, the path at the end doesn’t make sense (ie relative to what, datetime format, etc?)
-\MASBackup\<datetime>\<backupid>\BackupInfo.xml -->
-
+4. Sprawdź **stanu** jest **Powodzenie**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej na temat przepływu pracy do odzyskiwania od zdarzenia utraty danych. Zobacz [odzyskać przed utratą danych w wyniku katastrofy](azure-stack-backup-recover-data.md).
+- Dowiedz się więcej na temat przepływu pracy do odzyskiwania od zdarzenia utraty danych. Zobacz [sprawności po utracie danych w wyniku katastrofy](azure-stack-backup-recover-data.md).

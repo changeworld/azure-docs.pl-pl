@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Jeśli już masz usługi Azure AD | Dokumentacja firmy Microsoft'
+title: 'Azure AD Connect: Jeśli masz już usługę Azure AD | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano sposób użycia Connect, jeśli masz istniejącą dzierżawę usługi Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -15,50 +15,53 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44d9aa988e8344f76ddb5430e2aacbd4c818c033
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725211"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969405"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Jeśli masz dzierżawę istniejących
-Większość tematy dotyczące sposobu korzystania z usługi Azure AD Connect zakłada rozpoczynać nowe usługi Azure AD dzierżawy i czy ma żadnych użytkowników lub istnieją inne obiekty. Ale jeśli została uruchomiona z dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć połączenia, a następnie w tym temacie jest dla Ciebie.
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Jeśli masz dzierżawę celowe
+Większość tematów w zakresie używania usługi Azure AD Connect przyjęto założenie, rozpoczynać się nowej usługi Azure AD dzierżawy i się, że żadni użytkownicy ani innych obiektów. Ale jeśli rozpoczęto za pomocą dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć Connect, a następnie w tym temacie jest dla Ciebie.
 
 ## <a name="the-basics"></a>Podstawy
-Obiekt w usłudze Azure AD albo jest zarządzany w chmurze (Azure AD) lub lokalnie. Dla jednego pojedynczego obiektu nie może zarządzać niektóre atrybuty lokalnymi i niektórych innych atrybutów w usłudze Azure AD. Każdy obiekt ma flagę wskazującą, gdy obiekt jest obsługiwany.
+Obiekt w usłudze Azure AD jest albo zarządzanych lub w chmurze (Azure AD) w środowisku lokalnym. Jeden pojedynczy obiekt nie możesz zarządzać niektóre atrybuty w środowisku lokalnym i niektóre inne atrybuty w usłudze Azure AD. Każdy obiekt ma flagę wskazującą, w którym odbywa się obiekt.
 
-W chmurze, można zarządzać niektórych użytkowników lokalnych i inne. Typowy scenariusz dla tej konfiguracji jest organizacji z różnych kont pracowników i pracowników sprzedaży. Kont pracowników ma lokalne konto usługi AD, ale sprzedaży pracowników, czy nie, użytkownicy mają konta w usłudze Azure AD. Czy zarządzanie niektórych użytkowników lokalnych, a niektóre w usłudze Azure AD.
+W chmurze, możesz zarządzać niektórych użytkowników lokalnych i innych. Typowy scenariusz w przypadku tej konfiguracji to organizacji z różnych kont pracowników i pracowników sprzedaży. Kont pracowników ma lokalne konto usługi AD, ale pracownicy sprzedaży nie, użytkownicy mają konta w usłudze Azure AD. Może zarządzać niektórych użytkowników w środowisku lokalnym, a niektóre w usłudze Azure AD.
 
-Jeśli do zarządzania użytkowników w usłudze Azure AD, które są również w lokalnej usłudze AD i później chcesz użyć Connect, a następnie istnieją pewne dodatkowe problemy, które należy wziąć pod uwagę.
+Jeśli rozpoczęto do zarządzania użytkownikami w usłudze Azure AD, które są również w lokalnej usługi AD i później chcesz użyć Connect, istnieją pewne dodatkowe kwestie, które należy wziąć pod uwagę.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizacja istniejących użytkowników w usłudze Azure AD
-Po zainstalowaniu usługi Azure AD Connect i rozpoczęciem tej synchronizacji, usługi Azure AD sync (w usłudze Azure AD) sprawdza co nowego obiektu i próbuje znaleźć obiektu do dopasowania. Istnieją trzy atrybuty stosowane do tego procesu: **userPrincipalName**, **proxyAddresses**, i **sourceAnchor**/**nazwę immutableID** . Dopasowanie w **userPrincipalName** i **proxyAddresses** nosi nazwę **nietrwałego dopasowania**. Dopasowanie w **sourceAnchor** nosi nazwę **twardych dopasowania**. Aby uzyskać **proxyAddresses** tylko wartość z atrybutu **SMTP:**, która jest podstawowego adresu e-mail, jest używany do oceny.
+Podczas instalowania programu Azure AD Connect i rozpoczęciem tej synchronizacji, usługa synchronizacji Azure AD (w usłudze Azure AD) sprawdza każdy nowy obiekt i spróbuj znaleźć istniejącego obiektu do dopasowania. Istnieją trzy atrybuty używane dla tego procesu: **userPrincipalName**, **proxyAddresses**, i **sourceAnchor**/**immutableID** . Dopasowanie w **userPrincipalName** i **proxyAddresses** jest znany jako **dopasowanie słabe**. Dopasowanie w **sourceAnchor** jest znany jako **twardych dopasowanie**. Dla **proxyAddresses** tylko wartość za pomocą atrybutu **SMTP:**, która jest podstawowym adresem e-mail, jest używana do oceny.
 
-Dopasowanie tylko jest sprawdzany pod kątem nowych obiektów pochodzących z Connect. Jeśli zmienisz istniejącego obiektu, jest on zgodne z żadnym z tych atrybutów, następnie zostanie wyświetlony błąd zamiast tego.
+Dopasowanie jest oceniane tylko dla nowych obiektów pochodzące z witryny Connect. Jeśli zmienisz istniejącego obiektu, dzięki czemu jest on zgodny te atrybuty, następnie zostanie wyświetlony błąd zamiast tego.
 
-Jeśli usługi Azure AD odnajdzie obiekt, w którym wartości atrybutów są takie same dla obiekt pochodzące z Connect i który znajduje się już w usłudze Azure AD, obiektu w usłudze Azure AD są wykonywane przez połączenie. Obiekt wcześniej zarządzanymi w chmurze z flagą zarządzać lokalnymi. Wszystkie atrybuty w usłudze Azure AD z wartością w lokalnym programie AD zostaną zastąpione wartości lokalnej. Wyjątek stanowi po atrybucie **NULL** wartości lokalnej. W takim przypadku wartość pozostaje usługi Azure AD, ale można nadal zmienić tylko lokalne na inny.
+Jeśli usługa Azure AD wykryje obiekt, w którym wartości atrybutów są takie same dla obiektu pochodzące z witryny Connect i który znajduje się już w usłudze Azure AD, następnie obiektu w usłudze Azure AD zostanie przejęty przez połączenie. Obiekt wcześniej zarządzane w chmurze jest oznaczone jako zarządzane lokalnie. Wszystkie atrybuty w usłudze Azure AD z wartością w lokalnym programie AD zostaną zastąpione wartością w środowisku lokalnym. Wyjątek występuje podczas ma atrybut **NULL** wartość w środowisku lokalnym. W tym przypadku wartość pozostaje w usłudze Azure AD, ale można nadal zmienić tylko w środowisku lokalnym na inny.
 
 > [!WARNING]
-> Ponieważ wszystkie atrybuty w usłudze Azure AD mają zostać zastąpione przez wartości lokalnej, upewnij się, że masz dobrej danych w sieci lokalnej. Na przykład jeśli tylko udało adres e-mail w usłudze Office 365, a nie przechowywane zaktualizowane w lokalnych usług AD DS, utracisz wszystkie wartości w usłudze Azure AD/usługi Office 365 nie znajduje się w usługach AD DS, a następnie.
+> Ponieważ wszystkie atrybuty w usłudze Azure AD mają zostać zastąpione przez wartość w środowisku lokalnym, upewnij się, że dysponujesz aktualnymi danymi w środowisku lokalnym. Na przykład jeśli można tylko zarządzane adres e-mail w usłudze Office 365, a nie przechowywane zaktualizowane w lokalnych usług AD DS, a następnie utracisz wszystkie wartości w usłudze Azure AD/usługi Office 365 nie znajduje się w usługach AD DS.
 
 > [!IMPORTANT]
-> Jeśli użyciu synchronizacji haseł, które jest używane przez ustawień ekspresowych, a następnie hasła w usłudze Azure AD jest zastępowany przy użyciu hasła w lokalnej usługi AD. Jeśli użytkownicy są używane do zarządzania różne hasła, należy poinformować, że powinny używać lokalnego hasła po zainstalowaniu Connect.
+> Jeśli używasz synchronizacji haseł, które jest używane przez ustawienia ekspresowe, a następnie hasła w usłudze Azure AD jest zastępowany przy użyciu hasła w lokalnym programie AD. Jeśli użytkownicy są używane do zarządzania różne hasła, należy z informacją o tym, że powinny używać lokalnego hasła po zainstalowaniu Connect.
 
-W procesie planowania należy rozważyć poprzedniej sekcji i ostrzeżenia. Jeśli wprowadzono wiele zmian w usłudze Azure AD nie zostaną uwzględnione w lokalnych usług AD DS, a następnie należy zaplanować jak wypełnić usług AD DS przez zaktualizowane wartości przed synchronizacją obiektów z programem Azure AD Connect.
+W procesie planowania należy rozważyć poprzedniej sekcji i ostrzeżenia. Jeśli wprowadzono wiele zmian w usłudze Azure AD, nie zostaną uwzględnione w lokalnych usługach AD DS, należy planowanie sposobu wypełniania usług AD DS z zaktualizowanymi wartościami przed zsynchronizowaniem obiektów za pomocą usługi Azure AD Connect.
 
-Jeśli dopasowane obiektów z soft dopasowania, a następnie **sourceAnchor** są dodawane do obiektu w usłudze Azure AD, dzięki czemu można następnie używać twardych dopasowania.
+Jeśli spełnione obiektów przy użyciu opcji soft-match, a następnie **sourceAnchor** są dodawane do obiektu w usłudze Azure AD, dzięki czemu można następnie używać twardych dopasowania.
 
-### <a name="hard-match-vs-soft-match"></a>Twarde dopasowania vs Soft-match
-Nowa instalacja programu Connect należy nie ma różnic praktyczne między soft - i twardych dopasowania. Jest to różnica w sytuacji odzyskiwania po awarii. Jeśli zgubisz serwera z usługą Azure AD Connect, można ponownie zainstalować nowego wystąpienia bez utraty danych. Obiekt o sourceAnchor są wysyłane do połączenia podczas początkowej instalacji. Następnie można ocenić dopasowania przez klienta (Azure AD Connect), które jest znacznie szybsze niż robiąc tego samego w usłudze Azure AD. Twarde dopasowanie jest oceniany zarówno połączenia, jak i przez usługę Azure AD. Elastyczne dopasowanie jest tylko obliczane przez usługę Azure AD.
+>[!IMPORTANT]
+> Firma Microsoft zaleca się przed synchronizowanie lokalnych kont za pomocą istniejących kont administracyjnych w usłudze Azure Active Directory.
 
-### <a name="other-objects-than-users"></a>Innych obiektów niż użytkowników
-Grupy obsługujące pocztę i kontakty możesz można soft-match proxyAddresses na podstawie. Dopasowanie twardych nie ma zastosowania, ponieważ można aktualizować tylko sourceAnchor/nazwę immutableID (przy użyciu programu PowerShell) na użytkowników tylko. Dla grup, które nie są z włączoną obsługą poczty obecnie nie jest obsługiwane dla soft-match lub twardych dopasowania.
+### <a name="hard-match-vs-soft-match"></a>Twarde dopasowanie miękkiego programu vs
+Do nowej instalacji programu Connect nie ma praktyczne różnic między soft - i twardych dopasowania. Różnica polega na w sytuacji odzyskiwania po awarii. W przypadku utraty serwera z usługą Azure AD Connect, można ponownie zainstalować nowe wystąpienie bez utraty danych. Obiekt o sourceAnchor są wysyłane do programu Connect podczas początkowej instalacji. Dopasowanie można następnie oceniany przez klienta (Azure AD Connect), który jest znacznie szybsze niż ten sam w usłudze Azure AD. Twarde dopasowanie jest oceniany zarówno przy użyciu Connect, jak i przez usługę Azure AD. Dopasowanie słabe jest oceniane tylko przez usługę Azure AD.
 
-## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Tworzenie nowej lokalnej usługi Active Directory na podstawie danych w usłudze Azure AD
-Niektórzy klienci rozpoczynać się tylko na chmurze rozwiązanie z usługą Azure AD i nie mają lokalnego AD. Później, do którego chce używać zasobów lokalnych i chcesz utworzyć lokalną AD opartych na danych usługi Azure AD. Azure AD Connect nie może pomóc w tym scenariuszu. Nie tworzy użytkowników lokalnych i nie ma możliwość ustawiono hasło lokalne takie same jak Azure AD.
+### <a name="other-objects-than-users"></a>Innych obiektów niż użytkownicy
+Grupy obsługujące pocztę i kontakty możesz można soft-match na podstawie proxyAddresses. Twarde dopasowanie nie ma zastosowania, ponieważ można aktualizować tylko sourceAnchor/wartość immutableID (przy użyciu programu PowerShell) dotyczące użytkowników tylko. Dla grup, które nie są z włączoną obsługą poczty obecnie nie jest obsługiwane dla miękkiego lub twardych dopasowania.
 
-Jeśli tylko przyczyny, dlaczego zamierzasz dodać lokalnej usłudze AD służy do obsługi obiektów LOB (aplikacji biznesowych z), a następnie może warto użyć [usługi domenowe Azure AD](../../active-directory-domain-services/index.yml) zamiast tego.
+## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Tworzenie nowej lokalnej usługi Active Directory z danych w usłudze Azure AD
+Niektórzy klienci rozpoczynać się tylko na chmurze rozwiązania z usługą Azure AD i nie mają lokalnej usługi AD. Później chcą używać zasobów lokalnych i chcesz utworzyć lokalną AD oparte na danych usługi Azure AD. Program Azure AD Connect nie może pomóc w przypadku tego scenariusza. Nie powoduje utworzenia użytkowników w środowisku lokalnym i nie ma żadnych możliwość ustawiania hasła lokalnego do tej samej, tak jak w usłudze Azure AD.
+
+Jeśli Jedyny przypadek, dlaczego, do którego planujesz dodać lokalnej usługi AD służy do obsługi obiektów LOB (aplikacje Line-of-Business), a następnie może warto użyć [usługi domenowe Azure AD](../../active-directory-domain-services/index.yml) zamiast tego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).

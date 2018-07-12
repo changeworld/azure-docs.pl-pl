@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z Centrum IoT Azure urządzenia twins (węzeł) | Dokumentacja firmy Microsoft
-description: Jak używać twins urządzenia Azure IoT Hub Dodawanie tagów, a następnie użyć kwerendy Centrum IoT. Przy użyciu zestawów SDK IoT Azure dla środowiska Node.js i usługi aplikacji, która dodaje znaczniki i uruchamia kwerendy Centrum IoT aplikacji symulowane urządzenie.
+title: Rozpoczynanie pracy z usługą Azure IoT Hub bliźniaczych reprezentacji urządzeń (Node) | Dokumentacja firmy Microsoft
+description: Jak używać usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń Dodawanie tagów, a następnie użyć zapytania usługi IoT Hub. Przy użyciu zestawów SDK usługi Azure IoT dla środowiska Node.js w aplikacji symulowanego urządzenia i aplikacji usługi, która dodaje znaczniki, która uruchamia kwerendę usługi IoT Hub.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
 ms.openlocfilehash: dbb28d7df104887a4056489e9f693ce28ec406df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635104"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38619390"
 ---
-# <a name="get-started-with-device-twins-node"></a>Rozpoczynanie pracy z urządzenia twins (węzeł)
+# <a name="get-started-with-device-twins-node"></a>Rozpoczynanie pracy z bliźniaczych reprezentacji urządzeń (Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Na końcu tego samouczka masz dwie aplikacje konsoli Node.js:
+Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe środowiska Node.js:
 
-* **AddTagsAndQuery.js**, aplikacji zaplecza Node.js, która dodaje znaczniki i zapytanie twins urządzenia.
-* **TwinSimulatedDevice.js**, aplikacja Node.js, która symuluje urządzenie, które łączy do Centrum IoT z tożsamości urządzenia utworzony wcześniej, a następnie raportuje stanu łączności.
+* **AddTagsAndQuery.js**, aplikacji zaplecza Node.js, która dodaje znaczniki i zapytań bliźniaczych reprezentacji urządzeń.
+* **TwinSimulatedDevice.js**, aplikacja Node.js, która symuluje urządzenie, który nawiązuje połączenie z Centrum IoT hub przy użyciu utworzonej wcześniej tożsamości urządzenia, a następnie raportuje stanu łączności.
 
 > [!NOTE]
-> Artykuł [Azure IoT SDK] [ lnk-hub-sdks] informacje na temat zestawów SDK IoT Azure można tworzyć aplikacje zarówno urządzenia, jak i zaplecza.
+> Artykuł [Azure IoT SDKs] [ lnk-hub-sdks] informacje dotyczące zestawów SDK usługi Azure IoT, w której można tworzyć aplikacje zarówno w przypadku urządzeń, jak i zaplecza.
 > 
 > 
 
-Do ukończenia tego samouczka należy spełnić następujące warunki:
+Do ukończenia tego samouczka potrzebne są następujące elementy:
 
 * Środowisko Node.js w wersji 4.0.x lub nowszej.
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
@@ -39,20 +39,20 @@ Do ukończenia tego samouczka należy spełnić następujące warunki:
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-the-service-app"></a>Tworzenie aplikacji usługi
-W tej sekcji, Utwórz aplikację konsoli Node.js, która dodaje dwie urządzeń skojarzonych z lokalizacji metadanych **myDeviceId**. Tworzy następnie kwerendę twins urządzenia przechowywane w Centrum IoT Wybieranie urządzeń znajdujących się w Stanach Zjednoczonych i te, które są raportowania komórkowej połączenia.
+W tej sekcji utworzysz aplikacji konsolowej Node.js, która dodaje metadanymi lokalizacji do bliźniaczej reprezentacji urządzenia skojarzone z **myDeviceId**. Następnie wykonuje zapytanie bliźniacze reprezentacje urządzeń, przechowywane w usłudze IoT hub, wybieranie urządzeń znajduje się w Stanach Zjednoczonych i te, które zgłaszanej połączenie komórkowe.
 
-1. Utwórz nowy, pusty folder o nazwie **addtagsandqueryapp**. W **addtagsandqueryapp** folderu, Utwórz nowy plik package.json za pomocą następującego polecenia z wiersza polecenia. Zaakceptuj wszystkie ustawienia domyślne:
+1. Utwórz nowy pusty folder o nazwie **addtagsandqueryapp**. W **addtagsandqueryapp** folderu, Utwórz nowy plik package.json przy użyciu następującego polecenia w wierszu polecenia. Zaakceptuj wszystkie ustawienia domyślne:
    
     ```
     npm init
     ```
-2. Z wiersza polecenia w **addtagsandqueryapp** folderu, uruchom następujące polecenie, aby zainstalować **Centrum iothub azure** pakietu:
+2. W wierszu polecenia w **addtagsandqueryapp** folder, uruchom następujące polecenie, aby zainstalować **azure-iothub** pakietu:
    
     ```
     npm install azure-iothub --save
     ```
-3. Za pomocą edytora tekstu, Utwórz nową **AddTagsAndQuery.js** w pliku **addtagsandqueryapp** folderu.
-4. Dodaj następujący kod do **AddTagsAndQuery.js** plików i Zastąp **{parametry połączenia Centrum iot}** symbol zastępczy parametrów połączenia Centrum IoT skopiowane podczas tworzenia Centrum:
+3. Za pomocą edytora tekstu Utwórz nowy **AddTagsAndQuery.js** w pliku **addtagsandqueryapp** folderu.
+4. Dodaj następujący kod do **AddTagsAndQuery.js** plik i zastąpić **{parametry połączenia Centrum iot hub}** symbolu zastępczego parametrami połączenia Centrum IoT Hub, kopiowane podczas tworzenia Centrum:
    
         'use strict';
         var iothub = require('azure-iothub');
@@ -83,9 +83,9 @@ W tej sekcji, Utwórz aplikację konsoli Node.js, która dodaje dwie urządzeń 
             }
         });
    
-    **Rejestru** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z twins urządzenia z usługi. Poprzedni kod najpierw inicjuje **rejestru** obiekt, a następnie pobiera dwie urządzenia dla **myDeviceId**i na koniec aktualizuje jego tagi informacji żądaną lokalizację.
+    **Rejestru** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z bliźniaczych reprezentacji urządzeń z usługi. Poprzedni kod najpierw inicjuje **rejestru** obiektu, a następnie pobiera bliźniaczą reprezentację urządzenia dla **myDeviceId**i aktualizuje jej tagi z informacjami o wybraną lokalizację.
    
-    Po zaktualizowaniu tagi wywołuje **queryTwins** funkcji.
+    Po zaktualizowaniu tagi wywoływanych przez nią **queryTwins** funkcji.
 5. Dodaj następujący kod na końcu **AddTagsAndQuery.js** do zaimplementowania **queryTwins** funkcji:
    
         var queryTwins = function() {
@@ -108,35 +108,35 @@ W tej sekcji, Utwórz aplikację konsoli Node.js, która dodaje dwie urządzeń 
             });
         };
    
-    Poprzedni kod wykonuje dwa zapytania: pierwszy wybiera tylko twins urządzenia urządzeń znajdujących się w **Redmond43** zakładu, a drugi udoskonalanie zapytanie, aby wybrać tylko te urządzenia, które także są połączone za pośrednictwem sieci komórkowej.
+    Powyższy kod wykonuje dwa zapytania: pierwszy wybiera tylko bliźniaków urządzeń urządzeń znajdujących się w **Redmond43** zakładu produkcyjnego, a drugi usprawniają zapytanie, aby wybrać tylko urządzenia, które są także połączone za pośrednictwem sieci komórkowej.
    
-    Poprzedni kod, w którym tworzy **zapytania** obiektów, określa maksymalną liczbę zwracanych dokumentów. **Zapytania** zawiera obiekt **hasMoreResults** właściwości typu boolean, którego można użyć do wywołania **nextAsTwin** metody kilka razy, aby pobrać wszystkie wyniki. Wywołana metoda **dalej** jest dostępna dla wyników, które są nie twins urządzenia, na przykład wyniki zapytań agregacji.
-6. Uruchom aplikację klawiszem:
+    Powyższy kod podczas tworzenia **zapytania** obiektów, określa maksymalną liczbę zwróconych dokumentów. **Zapytania** obiekt zawiera **hasMoreResults** właściwość typu boolean, którego można użyć do wywołania **nextAsTwin** metody kilka razy, aby pobrać wszystkie wyniki. Metoda wywoływana **dalej** jest dostępna dla wyników, które są nie bliźniacze reprezentacje urządzeń, na przykład wyniki zapytań agregacji.
+6. Uruchom aplikację za pomocą:
    
         node AddTagsAndQuery.js
    
-    Jedno urządzenie w wynikach zadać kwerendy powinna być widoczna dla wszystkich urządzeń znajdujących się w **Redmond43** i Brak dla zapytania, który ogranicza wyniki do urządzenia, które korzystają z sieci komórkowej.
+    Powinien zostać wyświetlony jedno urządzenie w wynikach dotyczące zadawania zapytań dla wszystkich urządzeń znajdujących się w **Redmond43** a dla zapytania, które ogranicza wyniki do urządzenia korzystające z sieci komórkowej.
    
     ![][1]
 
-W następnej sekcji utworzysz aplikację urządzenia, która raportuje informacje dotyczące łączności i zmienia się wynik kwerendy w poprzedniej sekcji.
+W następnej sekcji utworzysz aplikację urządzenie, raportuje informacje o łączności, która zmienia się wynik kwerendy w poprzedniej sekcji.
 
-## <a name="create-the-device-app"></a>Tworzenie aplikacji urządzeń
-W tej sekcji zostanie utworzona aplikacja konsoli Node.js łączący się do Centrum jako **myDeviceId**, a następnie aktualizacje jego dwie urządzenia użytkownika zgłosiła właściwości zawierają informacje, że jest połączony za pomocą sieci komórkowej.
+## <a name="create-the-device-app"></a>Tworzenie aplikacji urządzenia
+W tej sekcji utworzysz Aplikacja konsoli Node.js, który nawiązuje połączenie z Centrum jako **myDeviceId**i następnie aktualizacje jego bliźniaczej reprezentacji urządzenia użytkownika zgłoszonych właściwości zawierają informacje, że jest ona połączona korzystania z sieci komórkowej.
 
 
-1. Utwórz nowy, pusty folder o nazwie **reportconnectivity**. W **reportconnectivity** folderu, Utwórz nowy plik package.json za pomocą następującego polecenia z wiersza polecenia. Zaakceptuj wszystkie ustawienia domyślne:
+1. Utwórz nowy pusty folder o nazwie **reportconnectivity**. W **reportconnectivity** folderu, Utwórz nowy plik package.json przy użyciu następującego polecenia w wierszu polecenia. Zaakceptuj wszystkie ustawienia domyślne:
    
     ```
     npm init
     ```
-2. Z wiersza polecenia w **reportconnectivity** folderu, uruchom następujące polecenie, aby zainstalować **azure iot urządzenia**, i **azure-iot urządzenie mqtt** pakietu:
+2. W wierszu polecenia w **reportconnectivity** folder, uruchom następujące polecenie, aby zainstalować **azure-iot-device**, i **azure-iot-device-mqtt** pakietu:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Za pomocą edytora tekstu, Utwórz nową **ReportConnectivity.js** w pliku **reportconnectivity** folderu.
-4. Dodaj następujący kod do **ReportConnectivity.js** plików i Zastąp **{ciąg połączenia urządzenia}** symbol zastępczy w ciągu połączenia urządzenia został skopiowany podczas tworzenia **myDeviceId** tożsamości urządzenia:
+3. Za pomocą edytora tekstu Utwórz nowy **ReportConnectivity.js** w pliku **reportconnectivity** folderu.
+4. Dodaj następujący kod do **ReportConnectivity.js** plik i zastąpić **{parametry połączenia urządzenia}** symbol zastępczy parametrów połączenia urządzenia, które są kopiowane po utworzeniu **myDeviceId** tożsamości urządzenia:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -174,28 +174,28 @@ W tej sekcji zostanie utworzona aplikacja konsoli Node.js łączący się do Cen
         }
         });
    
-    **Klienta** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z twins urządzenia z urządzenia. Poprzedni kod po jego inicjuje **klienta** obiektów, pobiera dwie urządzenia dla **myDeviceId** i aktualizuje jego właściwość zgłoszone informacje o łączności.
-5. Uruchamianie aplikacji urządzeń
+    **Klienta** obiekt udostępnia wszystkie metody, które są wymagane do interakcji z bliźniaczych reprezentacji urządzeń z urządzenia. Powyższy kod po inicjuje **klienta** obiektów, pobiera bliźniaczą reprezentację urządzenia dla **myDeviceId** i aktualizuje informacje o łączności jego zgłaszanej właściwości.
+5. Uruchamianie aplikacji urządzenia
    
         node ReportConnectivity.js
    
     Powinien zostać wyświetlony komunikat `twin state reported`.
-6. Teraz, gdy urządzenie zgłosiło jego informacje dotyczące łączności, powinna pojawić się w obu zapytania. Przejdź wstecz w **addtagsandqueryapp** folderu i ponownie uruchom zapytania:
+6. Teraz, gdy urządzenie jest zgłaszane jego informacje o łączności, powinien pojawić się w obu zapytań. Przejdź wstecz w **addtagsandqueryapp** folderu i ponownie uruchom zapytania:
    
         node AddTagsAndQuery.js
    
-    Teraz **myDeviceId** powinny być wyświetlane w obu wyników zapytania.
+    Tym razem **myDeviceId** powinno pojawić się w obu wyników zapytania.
    
     ![][3]
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Dodaje metadane urządzenia jako tagi z aplikacji zaplecza i zapisano aplikacji symulowane urządzenie informacji w raporcie urządzenia łączności w dwie urządzenia. Przedstawiono również sposób kwerendy te informacje przy użyciu języka przypominającego SQL Centrum IoT zapytania.
+W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Dodane metadane urządzenia jako tagi z aplikacji zaplecza, a aplikacja powstała z jednego urządzenia symulowanego do raportu informacje o łączności urządzenia w bliźniaku urządzenia. Przedstawiono również sposób wykonywania zapytań te informacje przy użyciu języka zapytań usługi IoT Hub podobnego do SQL.
 
 Użyj następujących zasobów, aby dowiedzieć się, jak:
 
-* wysyłanie danych telemetrycznych z urządzenia z [Rozpoczynanie pracy z Centrum IoT] [ lnk-iothub-getstarted] samouczka
-* Konfigurowanie urządzeń przy użyciu właściwości żądaną dwie urządzenia z [Użyj żądanego właściwości, aby skonfigurować urządzenia] [ lnk-twin-how-to-configure] samouczka
-* urządzenia interakcyjne (takich jak włączanie wentylator z aplikacji kontrolowane przez użytkownika) i sterować za pomocą [metody bezpośredniego] [ lnk-methods-tutorial] samouczka.
+* wysyłanie danych telemetrycznych z urządzeń przy użyciu [Rozpoczynanie pracy z usługą IoT Hub] [ lnk-iothub-getstarted] samouczka
+* Konfigurowanie urządzeń przy użyciu żądane właściwości bliźniaczej reprezentacji urządzenia za pomocą [Użyj żądane właściwości, aby skonfigurować urządzenia] [ lnk-twin-how-to-configure] samouczka
+* Sterowanie urządzeniami interaktywnie (na przykład włączając wentylator z aplikacji kontrolowanej przez użytkownika), za pomocą [używanie metod bezpośrednich] [ lnk-methods-tutorial] samouczka.
 
 <!-- images -->
 [1]: media/iot-hub-node-node-twin-getstarted/service1.png

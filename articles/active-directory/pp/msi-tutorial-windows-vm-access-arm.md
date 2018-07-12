@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do usługi Azure Resource Manager MSI maszyny Wirtualnej systemu Windows
-description: Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Resource Manager.
+title: Umożliwia dostęp do usługi Azure Resource Manager Windows Zarządzanej maszyny Wirtualnej
+description: Samouczek, który przeprowadzi Cię przez proces dostępu do usługi Azure Resource Manager przy użyciu Windows VM tożsamość usługi zarządzanej (MSI).
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2816a19833f45a7e3a344e31f4131d23d9a8417a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a7960ab4aee80c7d15ea0f031790dd089424565d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29382563"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610261"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Umożliwia dostęp do Menedżera zasobów systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Umożliwia dostęp do usługi Resource Manager Windows VM tożsamość usługi zarządzanej (MSI)
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ten samouczek pokazuje, jak włączyć zarządzane tożsamości usługi (MSI) dla systemu Windows maszyny wirtualnej (VM). Tej tożsamości można następnie umożliwia dostęp do interfejsu API Azure Resource Manager. Zarządzane tożsamości usługi automatycznie są zarządzane przez usługę Azure i umożliwiają uwierzytelnianie usług, które obsługują usługi Azure AD authentication bez konieczności wstawić poświadczeń do kodu. Omawiane kwestie:
+W tym samouczku dowiesz się, jak włączyć tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej (VM) Windows. Można następnie użyć tej tożsamości dostępu do interfejsu API usługi Resource Manager platformy Azure. Tożsamości usługi zarządzanej są zarządzane automatycznie przez platformę Azure i umożliwiają uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności Wstaw poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Włącz MSI na Windows maszyny Wirtualnej 
-> * Przyznać uprawnienia maszyny Wirtualnej do grupy zasobów w usłudze Azure Resource Manager 
-> * Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager
+> * Włączanie tożsamości usługi Zarządzanej w Windows maszyny Wirtualnej 
+> * Udzielanie dostępu do sieci maszyny Wirtualnej do grupy zasobów w usłudze Azure Resource Manager 
+> * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,63 +41,63 @@ Ten samouczek pokazuje, jak włączyć zarządzane tożsamości usługi (MSI) dl
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę Wirtualną systemu Windows.  Można również włączyć MSI na istniejącej maszyny Wirtualnej.
+W tym samouczku utworzymy nową maszynę Wirtualną Windows.  Można również włączyć tożsamości usługi Zarządzanej istniejącej maszyny wirtualnej.
 
-1.  Kliknij przycisk **Utwórz zasób** w lewym górnym rogu portalu Azure.
+1.  Kliknij przycisk **Utwórz zasób** w lewym górnym rogu witryny Azure portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3.  Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczeń umożliwia logowanie do maszyny wirtualnej.
+3.  Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczenia, których używasz do logowania do maszyny wirtualnej.
 4.  Wybierz odpowiednią **subskrypcji** dla maszyny wirtualnej na liście rozwijanej.
 5.  Aby wybrać nowy **grupy zasobów** w której chcesz utworzyć maszynę wirtualną, wybrać **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
-6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na stronie ustawienia Zachowaj wartości domyślne, a następnie kliknij przycisk **OK**.
+6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na stronie ustawień pozostaw wartości domyślne, a następnie kliknij przycisk **OK**.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej 
+## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi Zarządzanej na maszynie Wirtualnej 
 
-MSI maszyny Wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny Wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: instalacji rozszerzenia maszyny Wirtualnej MSI w maszynie Wirtualnej, i umożliwia korzystanie z pliku MSI usługi Azure Resource Manager.
+Zarządzanej maszyny Wirtualnej umożliwia uzyskiwanie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie tożsamości usługi Zarządzanej informuje Azure w celu utworzenia tożsamości zarządzanej dla maszyny Wirtualnej. Włączanie tożsamości usługi Zarządzanej w sposób niewidoczny wykonuje dwie czynności: instaluje rozszerzenia tożsamości usługi Zarządzanej maszyny Wirtualnej na maszynie Wirtualnej oraz umożliwia tożsamości usługi Zarządzanej w usłudze Azure Resource Manager.
 
-1.  Wybierz **maszyny wirtualnej** chcesz włączyć MSI.  
+1.  Wybierz **maszyny wirtualnej** chcesz włączyć tożsamości usługi Zarządzanej.  
 2.  Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**. 
-3.  Zostanie wyświetlony **zarządzane tożsamość usługi**. Aby zarejestrować i włączyć MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz opcję nie. 
-4.  Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.  
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+3.  Zostanie wyświetlony **tożsamości usługi zarządzanej**. Aby zarejestrować i włączyć plik MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz pozycję nie. 
+4.  Upewnij się, możesz kliknąć pozycję **Zapisz** Aby zapisać konfigurację.  
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Jeśli chcesz sprawdzić i sprawdź, które rozszerzenia są na tej maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Jeśli MSI jest włączona, następnie **ManagedIdentityExtensionforWindows** pojawi się na liście.
+5. Jeśli użytkownik chce Sprawdź i upewnij się, jakie rozszerzenia są na tej maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Jeśli plik MSI jest włączona, następnie **ManagedIdentityExtensionforWindows** pojawi się na liście.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
-## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Przyznać uprawnienia maszyny Wirtualnej do grupy zasobów w Menedżerze zasobów
-Za pomocą Instalatora MSI kodu mogą uzyskiwać tokeny dostępu do uwierzytelniania do zasobów, które obsługują uwierzytelnianie usługi Azure AD.  Usługi Azure Resource Manager obsługuje uwierzytelnianie w usłudze Azure AD.  Najpierw należy udzielić tej maszyny Wirtualnej tożsamości dostępu do zasobów w Menedżerze zasobów w tym przypadku grupę zasobów, w którym znajduje się maszyna wirtualna.  
+## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Udzielanie dostępu do sieci maszyny Wirtualnej do grupy zasobów w usłudze Resource Manager
+Za pomocą pliku MSI kodu można uzyskać tokenów dostępu w celu uwierzytelniania w zasobach, które obsługują uwierzytelnianie usługi Azure AD.  Usługi Azure Resource Manager obsługuje uwierzytelnianie w usłudze Azure AD.  Najpierw należy udzielić tej maszyny Wirtualnej tożsamości dostępu do zasobów w usłudze Resource Manager, w tym przypadku grupy zasobów, w którym znajduje się maszyna wirtualna.  
 
 1.  Przejdź do karty dla **grup zasobów**. 
-2.  Wybierz konkretnych **grupy zasobów** utworzony dla Twojej **maszyny Wirtualnej systemu Windows**. 
-3.  Przejdź do **(IAM) kontroli dostępu** w lewym panelu. 
-4.  Następnie **Dodaj** nowe przypisanie roli dla Twojego **maszyny Wirtualnej systemu Windows**.  Wybierz **roli** jako **czytnika**. 
-5.  W następnej listy rozwijanej **przypisany dostęp** zasobu **maszyny wirtualnej**. 
-6.  Następnie sprawdź odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej. I **grupy zasobów**, wybierz pozycję **wszystkich grup zasobów**. 
-7.  Ponadto w **wybierz** wybierz maszyny Wirtualnej systemu Windows w pliku listy rozwijanej i kliknij przycisk **zapisać**.
+2.  Wybierz konkretne **grupy zasobów** utworzone dla Twojego **Windows VM**. 
+3.  Przejdź do **kontrola dostępu (IAM)** w panelu po lewej stronie. 
+4.  Następnie **Dodaj** nowe przypisanie roli dla usługi **Windows VM**.  Wybierz **roli** jako **czytnika**. 
+5.  W następnej listy rozwijanej **Przypisz dostęp do** zasobu **maszyny wirtualnej**. 
+6.  Następnie upewnij się, odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej. I **grupy zasobów**, wybierz opcję **wszystkich grup zasobów**. 
+7.  Na koniec w **wybierz** wybierz maszynę Wirtualną Windows listy rozwijanej, a następnie kliknij przycisk **Zapisz**.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
 
-Będą musieli używać **PowerShell** w tej części.  Jeśli nie został zainstalowany, pobierz go [tutaj](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
+Należy użyć **PowerShell** w tej części.  Jeśli nie został zainstalowany, pobierz ją [tutaj](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). 
 
-1.  W portalu, przejdź do **maszyn wirtualnych** i przejdź do maszyny wirtualnej systemu Windows i w **omówienie**, kliknij przycisk **Connect**. 
-2.  Wprowadź w Twojej **Username** i **hasło** dla którego zostanie dodane po utworzeniu maszyny Wirtualnej systemu Windows. 
-3.  Teraz, po utworzeniu **Podłączanie pulpitu zdalnego** z maszyną wirtualną, otwórz **PowerShell** w sesji zdalnej. 
-4.  Przy użyciu programu Powershell w Invoke-WebRequest, Wyślij żądanie do lokalnego punktu końcowego MSI do Uzyskaj token dostępu usługi Azure Resource Manager.
+1.  W portalu, przejdź do **maszyn wirtualnych** i przejdź do maszyny wirtualnej Windows w **Przegląd**, kliknij przycisk **Connect**. 
+2.  Wprowadź w swojej **Username** i **hasło** dla którego można dodać podczas tworzenia maszyny Wirtualnej Windows. 
+3.  Teraz, po utworzeniu **Podłączanie pulpitu zdalnego** z maszyną wirtualną Otwórz **PowerShell** w sesji zdalnej. 
+4.  Przy użyciu programu Powershell Invoke-WebRequest, wysłać żądanie do lokalnego punktu końcowego pliku MSI do uzyskania tokenu dostępu usługi Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
-    > Wartość parametru "zasobu" musi być dokładnego dopasowania dla oczekiwano przez usługę Azure AD. Podczas korzystania z usługi Azure Resource Manager identyfikator zasobu, należy dołączyć końcowy ukośnik w identyfikatorze URI.
+    > Wartość parametru "resource" musi być dokładnie dopasowany do oczekiwań przez usługę Azure AD. Korzystając z Identyfikatora zasobu usługi Azure Resource Manager, należy dołączyć końcowy ukośnik w identyfikatorze URI.
     
-    Następnie Wyodrębnij całą odpowiedź, który jest przechowywany jako ciąg w formacie JavaScript Object Notation (JSON) w obiekcie $response. 
+    Następnie Wyodrębnij pełnej odpowiedzi, który jest przechowywany jako ciąg w formacie JavaScript Object Notation (JSON) w obiekcie $response. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
@@ -108,23 +108,23 @@ Będą musieli używać **PowerShell** w tej części.  Jeśli nie został zains
     $ArmToken = $content.access_token
     ```
     
-    Ponadto wywołanie usługi Azure Resource Manager przy użyciu tokenu dostępu. W tym przykładzie również używamy w programie PowerShell Invoke-WebRequest wykonać wywołanie do usługi Azure Resource Manager i zawierać token dostępu w nagłówku autoryzacji.
+    Na koniec Wywołaj usługi Azure Resource Manager przy użyciu tokenu dostępu. W tym przykładzie również używamy programu PowerShell Invoke-WebRequest w celu podejmowania wywołań do usługi Azure Resource Manager i zawierać token dostępu w nagłówku autoryzacji.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content
     ```
     > [!NOTE] 
-    > Adres URL jest rozróżniana wielkość liter, dlatego upewnij się, jeśli używasz tego samego dokładnej zgodnie z wcześniej używane podczas nosi nazwę grupy zasobów i wielkie litery "G" w "resourceGroups."
+    > Adres URL jest uwzględniana wielkość liter, dlatego upewnij się, jeśli używasz tego samego dokładnej, jak została użyta wcześniej podczas nosi nazwę grupy zasobów i wielkie litery "G" w "resourceGroups."
         
-    Poniższe polecenie zwraca szczegółów grupy zasobów:
+    Poniższe polecenie zwraca szczegóły grupy zasobów:
 
     ```powershell
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}}
     ```
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](msi-overview.md).
+- Aby uzyskać omówienie MSI, zobacz [Przegląd tożsamości usługi zarządzanej](msi-overview.md).
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
 

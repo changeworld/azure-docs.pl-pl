@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 9decab5c35cda03e8532c48654203be7d95a5801
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858847"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą łuk publikowania — Usługa rejestracji Jednokrotnej
 
@@ -149,7 +149,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     1. Kliknij przycisk **Ok**
 
     > [!NOTE]
-    > W tym miejscu **grup** atrybutu jest zamapowana z **user.assignedroles**. Są to role niestandardowe utworzone w usłudze Azure AD do mapowania nazwy grup w aplikacji. Można znaleźć więcej wskazówek [tutaj](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) na temat tworzenia niestandardowych ról w usłudze Azure AD. 
+    > W tym miejscu **grup** atrybutu jest zamapowana z **user.assignedroles**. Są to role niestandardowe utworzone w usłudze Azure AD do mapowania nazwy grup w aplikacji. Można znaleźć więcej wskazówek [tutaj](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) na temat tworzenia niestandardowych ról w usłudze Azure AD. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 

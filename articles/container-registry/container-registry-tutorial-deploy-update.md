@@ -6,14 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 04/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e9a46f2a99bc9b530ac5859068bde58bf5b5098
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8edb35b91327bde1fa824ec456b8a98962adb7ce
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634091"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Samouczek: wypychanie zaktualizowanego obrazu do wdrożeń regionalnych
 
@@ -29,9 +30,9 @@ Ten samouczek, będący ostatnią częścią serii, obejmuje:
 
 Jeśli jeszcze nie skonfigurowano dwóch regionalnych wdrożeń usługi *Web App for Containers*, wróć do poprzedniego samouczka z tej serii — [Wdrażanie aplikacji internetowej z usługi Azure Container Registry](container-registry-tutorial-deploy-app.md).
 
-## <a name="modify-the-web-application"></a>Modyfikowanie aplikacji sieci Web
+## <a name="modify-the-web-application"></a>Modyfikowanie aplikacji internetowej
 
-W tym kroku należy wprowadzić w aplikacji zmianę, która będzie dobrze widoczna po wypchnięciu zaktualizowanego obrazu kontenera do usługi Azure Container Registry.
+W tym kroku należy wprowadzić w aplikacji internetowej zmianę, która będzie dobrze widoczna po wypchnięciu zaktualizowanego obrazu kontenera do usługi Azure Container Registry.
 
 Znajdź plik `AcrHelloworld/Views/Home/Index.cshtml` w źródle aplikacji [sklonowanym z usługi GitHub](container-registry-tutorial-prepare-registry.md#get-application-code) w poprzednim samouczku i otwórz go w edytorze tekstu. Dodaj następujący wiersz poniżej istniejącego wiersza `<h1>`:
 
@@ -70,7 +71,7 @@ Zmodyfikowany plik `Index.cshtml` powinien wyglądać podobnie do poniższego:
 
 ## <a name="rebuild-the-image"></a>Ponowne tworzenie obrazu
 
-Teraz, po zaktualizowaniu aplikacji internetowej, należy ponownie utworzyć obraz jej kontenera. Tak jak wcześniej, użyj w pełni kwalifikowanej nazwy obrazu zawierającej adres URL serwera logowania dla tagu:
+Teraz, po zaktualizowaniu aplikacji internetowej, należy ponownie utworzyć obraz jej kontenera. Tak jak wcześniej, użyj w pełni kwalifikowanej nazwy obrazu zawierającej w pełni kwalifikowaną nazwę domeny (FQDN) serwera logowania dla tagu:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -78,15 +79,16 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Teraz wypchnij zaktualizowany kontener obrazu *acr-helloworld* do rejestru replikowanego geograficznie. W tym miejscu wykonujesz jedno polecenie `docker push`, aby wdrożyć zaktualizowany obraz w replikach rejestru w regionach *Zachodnie stany USA* i *Wschodnie stany USA*.
+Następnie wypchnij zaktualizowany kontener obrazu *acr-helloworld* do rejestru replikowanego geograficznie. W tym miejscu wykonujesz jedno polecenie `docker push`, aby wdrożyć zaktualizowany obraz w replikach rejestru w regionach *Zachodnie stany USA* i *Wschodnie stany USA*.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Dane wyjściowe powinny wyglądać podobnie do następujących:
+Dane wyjściowe `docker push` będą podobne do następujących:
 
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 5b9454e91555: Pushed
 d6803756744a: Layer already exists
@@ -126,19 +128,17 @@ Sprawdź, czy zaktualizowany obraz kontenera został również wdrożony we wdro
 
 ![Wyświetlany w przeglądarce widok zmodyfikowanej aplikacji internetowej uruchomionej w regionie Wschodnie stany USA][deployed-app-eastus-modified]
 
-Za pomocą jednego polecenia `docker push` zaktualizowane zostały oba regionalne wdrożenia aplikacji internetowej, a usługa Azure Container Registry obsłużyła obrazy kontenera z repozytorium w pobliżu sieci.
+Za pomocą jednej aplikacji `docker push` została automatycznie zaktualizowana aplikacja internetowa działająca w obu regionalnych wdrożeniach aplikacji internetowej. Usługa Azure Container Registry przesłała do kontenera obrazy z repozytoriów znajdujących się najbliżej poszczególnych wdrożeń.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Podczas pracy z samouczkiem utworzono i wypchnięto nową wersję kontenera aplikacji internetowej do rejestru replikowanego geograficznie. Elementy webhook w usłudze Azure Container Registry powiadomiły o aktualizacji usługę Web Apps for Containers, która wyzwoliła lokalne ściągnięcie z replik rejestru.
+Podczas pracy z samouczkiem utworzono i wypchnięto nową wersję kontenera aplikacji internetowej do rejestru replikowanego geograficznie. Elementy webhook w usłudze Azure Container Registry powiadomiły o aktualizacji usługę Web Apps for Containers, która wyzwoliła lokalne ściągnięcie z najbliższej repliki rejestru.
 
-W tym samouczku, ostatnim z serii, wykonano następujące czynności:
+### <a name="acr-build-automated-image-build-and-patch"></a>Kompilacja ACR: zautomatyzowana kompilacja obrazu i poprawka
 
-> [!div class="checklist"]
-> * Zaktualizowano kod HTML aplikacji internetowej
-> * Zbudowano i otagowano obraz platformy Docker
-> * Wypchnięto zmiany do usługi Azure Container Registry
-> * Wyświetlono zaktualizowaną aplikację w dwóch różnych regionach
+Oprócz replikacji geograficznej kompilacja ACR jest kolejną funkcją usługi Azure Container Registry, która może ułatwić optymalizację potoku wdrożenia kontenera. Rozpocznij od przeglądu kompilacji ACR, aby poznać jej możliwości:
+
+[Automatyzacja systemu operacyjnego i poprawianie struktury przy użyciu kompilacji ACR](container-registry-build-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

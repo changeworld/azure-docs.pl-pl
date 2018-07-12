@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego MSI maszyny Wirtualnej systemu Windows
-description: Samouczek przedstawiający sposób użycia systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) dostęp do magazynu Azure, a klucz dostępu do konta magazynu przy użyciu poświadczeń sygnatury dostępu Współdzielonego.
+title: Umożliwia dostęp do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego Windows Zarządzanej maszyny Wirtualnej
+description: Samouczek, w którym pokazano, jak używać Windows VM tożsamość usługi zarządzanej (MSI) do dostępu do usługi Azure Storage przy użyciu poświadczeń sygnatury dostępu Współdzielonego zamiast klucza dostępu do konta magazynu.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,25 +15,25 @@ ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9102ea255e533e4233b2cba77a6f7f38b992e2a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28979990"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38610406"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego wirtualna zarządzane tożsamości usługi systemu Windows
+# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Umożliwia dostęp do usługi Azure Storage za pomocą poświadczeń sygnatury dostępu Współdzielonego Windows VM tożsamości usługi zarządzanej
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Ten samouczek pokazuje, jak włączyć zarządzane tożsamości usługi (MSI) dla maszyny wirtualnej systemu Windows, a następnie umożliwia uzyskanie poświadczeń dostępu sygnatury dostępu Współdzielonego magazynu MSI. W szczególności [poświadczeń sygnatury dostępu Współdzielonego usługi](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+Ten samouczek pokazuje, jak włączyć tożsamości usługi zarządzanej (MSI) na maszynę wirtualną Windows, a następnie Uzyskiwanie poświadczeń sygnatury dostępu współdzielonego (SAS) magazynu przy użyciu pliku MSI. W szczególności [poświadczeń sygnatury dostępu Współdzielonego usługi](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
-Sygnatury dostępu Współdzielonego usługi pozwala, aby przyznać ograniczony dostęp do obiektów na koncie magazynu przez ograniczony czas i określonej usługi (w tym przypadku usługa blob), bez narażania klucz dostępu do konta. Można użyć w zwykły sposób podczas wykonywania operacji magazynu, na przykład w przypadku korzystania z zestawu SDK usługi Magazyn poświadczeń sygnatury dostępu Współdzielonego. W tym samouczku przedstawiony przekazywanie i pobieranie obiektu blob przy użyciu programu PowerShell magazynu Azure. Dowiesz się jak:
+Sygnatury dostępu Współdzielonego usługi umożliwia przyznawanie ograniczonego dostępu do obiektów na koncie magazynu przez ograniczony czas i określonej usługi (w naszym przypadku na usługę blob service), bez narażania klucz dostępu konta. Możesz użyć poświadczeń sygnatury dostępu Współdzielonego w zwykły sposób podczas wykonywania operacji magazynu, na przykład w przypadku korzystania z zestawu SDK usługi Storage. W tym samouczku pokażemy, przekazywanie i pobieranie obiektu blob przy użyciu programu PowerShell magazynu platformy Azure. Pokażemy ci, jak:
 
 
 > [!div class="checklist"]
-> * Włącz MSI w maszynie wirtualnej systemu Windows 
-> * Przyznać uprawnienia do konta magazynu SAS w Menedżerze zasobów maszyny Wirtualnej 
-> * Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i przy jego użyciu pobrać sygnatury dostępu Współdzielonego z Menedżera zasobów 
+> * Włączanie tożsamości usługi Zarządzanej na maszynie wirtualnej Windows 
+> * Udzielanie maszynie Wirtualnej dostęp do konta magazynu sygnatur dostępu Współdzielonego w usłudze Resource Manager 
+> * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny Wirtualnej i przy jego użyciu pobrania sygnatury dostępu Współdzielonego usługi Resource Manager 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,91 +45,91 @@ Sygnatury dostępu Współdzielonego usługi pozwala, aby przyznać ograniczony 
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę Wirtualną systemu Windows. Można również włączyć MSI na istniejącej maszyny Wirtualnej.
+W tym samouczku utworzymy nową maszynę Wirtualną Windows. Można również włączyć tożsamości usługi Zarządzanej istniejącej maszyny wirtualnej.
 
-1.  Kliknij przycisk **+/ Utwórz nową usługę** znaleziono przycisku w lewym górnym rogu portalu Azure.
+1.  Kliknij przycisk **+/ Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3.  Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczeń umożliwia logowanie do maszyny wirtualnej.
+3.  Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczenia, których używasz do logowania do maszyny wirtualnej.
 4.  Wybierz odpowiednią **subskrypcji** dla maszyny wirtualnej na liście rozwijanej.
-5.  Aby wybrać nowy **grupy zasobów** chcesz maszynę wirtualną można utworzyć w, wybierz **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
+5.  Aby wybrać nowy **grupy zasobów** chcesz maszyny wirtualnej pod kątem można tworzyć w **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
 6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej
+## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi Zarządzanej na maszynie Wirtualnej
 
-MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: instalacji rozszerzenia maszyny Wirtualnej MSI w maszynie Wirtualnej i umożliwia korzystanie z pliku MSI dla maszyny wirtualnej.  
+Z tożsamości usługi Zarządzanej maszyny wirtualnej umożliwia uzyskiwanie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie tożsamości usługi Zarządzanej w sposób niewidoczny wykonuje dwie czynności: instaluje rozszerzenia tożsamości usługi Zarządzanej maszyny Wirtualnej na maszynie Wirtualnej oraz umożliwia tożsamości usługi Zarządzanej dla maszyny wirtualnej.  
 
-1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną, utworzony w poprzednim kroku.
-2. W obszarze VM "Ustawienia" w lewym panelu kliknij **konfiguracji**.
-3. Aby zarejestrować i włączyć MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz opcję nie.
-4. Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.
+1. Przejdź do grupy zasobów z nową maszyną wirtualną, a następnie wybierz maszynę wirtualną, utworzonej w poprzednim kroku.
+2. W obszarze maszyny Wirtualnej "Ustawienia" w lewym panelu kliknij **konfiguracji**.
+3. Aby zarejestrować i włączyć plik MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz pozycję nie.
+4. Upewnij się, możesz kliknąć pozycję **Zapisz** Aby zapisać konfigurację.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Jeśli chcesz sprawdzić, które rozszerzenia na maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Po włączeniu MSI **ManagedIdentityExtensionforWindows** pojawią się na liście.
+5. Jeśli chcesz sprawdzić, jakie rozszerzenia na maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Po włączeniu tożsamości usługi Zarządzanej **ManagedIdentityExtensionforWindows** pojawia się na liście.
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
-Jeśli nie masz jeszcze jeden, teraz utworzysz konto magazynu. Można również pominąć ten krok i przyznać uprawnienia MSI maszyny Wirtualnej do istniejącego konta magazynu poświadczeń sygnatury dostępu Współdzielonego. 
+Jeśli nie masz jeszcze jeden, teraz utworzysz konto magazynu. Można również pominąć ten krok i Udziel dostępu tożsamości usługi Zarządzanej maszyny Wirtualnej do poświadczeń sygnatury dostępu Współdzielonego istniejącego konta magazynu. 
 
-1. Kliknij przycisk **+/ Utwórz nową usługę** znaleziono przycisku w lewym górnym rogu portalu Azure.
-2. Kliknij przycisk **magazynu**, następnie **konta magazynu**, i wyświetli nowy panel "Tworzenie konta magazynu".
-3. Wprowadź nazwę konta magazynu, który będzie używany w później.  
-4. **Model wdrażania** i **konta rodzaju** powinien być ustawiony odpowiednio na "Resource manager" i "Ogólnego przeznaczenia". 
-5. Upewnij się, **subskrypcji** i **grupy zasobów** odpowiadały określony podczas tworzenia maszyny Wirtualnej w poprzednim kroku.
+1. Kliknij przycisk **+/ Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure portal.
+2. Kliknij przycisk **magazynu**, następnie **konta magazynu**, i wyświetla nowy panel "Tworzenie konta magazynu".
+3. Wprowadź nazwę konta magazynu, w którym będzie on potrzebny później.  
+4. **Model wdrażania** i **rodzaj konta** powinna być równa "Resource manager" i "Zastosowania ogólne", odpowiednio. 
+5. Upewnij się, **subskrypcji** i **grupy zasobów** są zgodne z typami, które zostały określone podczas tworzenia maszyny Wirtualnej w poprzednim kroku.
 6. Kliknij przycisk **Utwórz**.
 
     ![Utwórz nowe konto magazynu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-in-the-storage-account"></a>Tworzenie kontenera obiektów blob na koncie magazynu
+## <a name="create-a-blob-container-in-the-storage-account"></a>Utwórz kontener obiektów blob na koncie magazynu
 
-Firma Microsoft będzie później przekazywanie i pobranie pliku do nowego konta magazynu. Ponieważ pliki wymagają magazynu obiektów blob, należy utworzyć kontener obiektów blob do przechowywania pliku.
+Firma Microsoft będzie później Przekaż i pobierze plik do nowego konta magazynu. Ponieważ pliki wymagają magazynu obiektów blob, należy utworzyć kontener obiektów blob, w której chcesz zapisać plik.
 
-1. Przejdź z powrotem do użytkownika nowo utworzone konto magazynu.
-2. Kliknij przycisk **kontenery** łącze w lewym panelu w obszarze "Usługa Blob".
-3. Kliknij przycisk **+ kontener** górnej części strony, a "nowy kontener" panelu slajdów wychodzących.
-4. Nadaj nazwę kontenera, wybierz poziom dostępu, a następnie kliknij przycisk **OK**. Podana nazwa będzie używana później w samouczku. 
+1. Przejdź z powrotem do Twojej nowo utworzone konto magazynu.
+2. Kliknij przycisk **kontenery** łącze w panelu po lewej stronie w obszarze "Usługi obiektów Blob".
+3. Kliknij przycisk **+ kontener** u góry strony i "nowy kontener" panelu wysuwa się.
+4. Nadaj nazwę kontenera, wybierz poziom dostępu, a następnie kliknij przycisk **OK**. Podana nazwa będzie używana w dalszej części tego samouczka. 
 
     ! [Utwórz container]~/articles/active-directory/(media/msi-tutorial-linux-vm-access-storage/create-blob-container.png) magazynu
 
-## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Przyznanie dostępu MSI z maszyną Wirtualną do używania magazynu SAS 
+## <a name="grant-your-vms-msi-access-to-use-a-storage-sas"></a>Udzielanie dostępu tożsamości usługi Zarządzanej maszyny Wirtualnej do używania magazynu SAS 
 
-Magazyn Azure nie obsługuje natywnie uwierzytelniania usługi Azure AD.  Jednak można użyć Instalatora MSI można pobrać z magazynem SAS z Menedżera zasobów, a następnie użyj sygnatury dostępu Współdzielonego dostępu do magazynu.  W tym kroku należy przyznać uprawnienia MSI maszyny Wirtualnej na koncie magazynu SAS.   
+Usługa Azure Storage nie obsługuje natywnie uwierzytelniania usługi Azure AD.  Jednak można pobrać sygnatury dostępu Współdzielonego magazynu usługi Resource Manager przy użyciu pliku MSI. następnie dostępu do magazynu przy użyciu sygnatury dostępu Współdzielonego.  W tym kroku udzielasz dostępu do usługi Zarządzanej maszyny Wirtualnej do swojego konta magazynu, sygnatury dostępu Współdzielonego.   
 
-1. Przejdź z powrotem do użytkownika nowo utworzone konto magazynu.   
-2. Kliknij przycisk **(IAM) kontroli dostępu** łącze w lewym panelu.  
-3. Kliknij przycisk **+ Dodaj** u góry strony, aby dodać nowe przypisanie roli dla maszyny Wirtualnej
-4. Ustaw **roli** "Magazynu konta Współautor", w prawej części strony.  
-5. Na liście rozwijanej dalej, ustaw **przypisany dostęp** zasobu "Maszyny wirtualnej".  
-6. Następnie sprawdź odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej, a następnie ustaw **grupy zasobów** do "Wszystkie grupy zasobów".  
-7. Ponadto w obszarze **wybierz** wybierz maszynę wirtualną systemu Windows na liście rozwijanej, a następnie kliknij przycisk **zapisać**. 
+1. Przejdź z powrotem do Twojej nowo utworzone konto magazynu.   
+2. Kliknij przycisk **kontrola dostępu (IAM)** łącze w panelu po lewej stronie.  
+3. Kliknij przycisk **+ Dodaj** na górze strony Aby dodać nowe przypisanie roli maszyny wirtualnej
+4. Ustaw **roli** do "Współautor konta magazynu", w prawej części strony.  
+5. Na następnej liście rozwijanej, ustaw **Przypisz dostęp do** zasobu "Maszyny wirtualnej".  
+6. Następnie upewnij się, odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej, a następnie ustaw **grupy zasobów** na "Wszystkie grupy zasobów".  
+7. Na koniec w obszarze **wybierz** wybierz maszynę wirtualną Windows na liście rozwijanej, a następnie kliknij przycisk **Zapisz**. 
 
-    ![Tekst alternatywny obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
 
-W pozostałej części tego samouczka firma Microsoft będzie działać z maszyny Wirtualnej, utworzony wcześniej.
+W pozostałej części tego samouczka firma Microsoft będzie działać z maszyny Wirtualnej utworzony wcześniej.
 
-Należy użyć poleceń cmdlet programu PowerShell usługi Azure Resource Manager w tej części.  Jeśli nie jest zainstalowany, [Pobierz najnowszą wersję](https://docs.microsoft.com/powershell/azure/overview) przed kontynuowaniem.
+Należy użyć poleceń cmdlet programu Azure PowerShell Resource Manager w tej części.  Jeśli nie jest ona zainstalowana, [Pobierz najnowszą wersję](https://docs.microsoft.com/powershell/azure/overview) przed kontynuowaniem.
 
-1. W portalu Azure, przejdź do **maszyn wirtualnych**, przejdź do maszyny wirtualnej systemu Windows, następnie z **omówienie** kliknij **Connect** u góry.
-2. Wprowadź w Twojej **Username** i **hasło** dla którego zostanie dodane po utworzeniu maszyny Wirtualnej systemu Windows. 
+1. W witrynie Azure portal przejdź do **maszyn wirtualnych**, przejdź do Windows maszynę wirtualną, następnie z **Przegląd** kliknij **Connect** u góry.
+2. Wprowadź w swojej **Username** i **hasło** dla którego można dodać podczas tworzenia maszyny Wirtualnej Windows. 
 3. Teraz, po utworzeniu **Podłączanie pulpitu zdalnego** z maszyną wirtualną, Otwórz program PowerShell w sesji zdalnej. 
-4. Przy użyciu programu Powershell w Invoke-WebRequest, Wyślij żądanie do lokalnego punktu końcowego MSI do Uzyskaj token dostępu usługi Azure Resource Manager.
+4. Przy użyciu programu Powershell Invoke-WebRequest, wysłać żądanie do lokalnego punktu końcowego pliku MSI do uzyskania tokenu dostępu usługi Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
-    > Wartość parametru "zasobu" musi być dokładnego dopasowania dla oczekiwano przez usługę Azure AD. Podczas korzystania z usługi Azure Resource Manager identyfikator zasobu, należy dołączyć końcowy ukośnik w identyfikatorze URI.
+    > Wartość parametru "resource" musi być dokładnie dopasowany do oczekiwań przez usługę Azure AD. Korzystając z Identyfikatora zasobu usługi Azure Resource Manager, należy dołączyć końcowy ukośnik w identyfikatorze URI.
     
-    Następnie wyodrębnić elementu "Zawartość", który jest przechowywany jako ciąg w formacie JavaScript Object Notation (JSON) w obiekcie $response. 
+    Następnie można wyodrębnić elementu "Zawartość", który jest przechowywany jako ciąg w formacie JavaScript Object Notation (JSON) w obiekcie $response. 
     
     ```powershell
     $content = $response.Content | ConvertFrom-Json
@@ -140,11 +140,11 @@ Należy użyć poleceń cmdlet programu PowerShell usługi Azure Resource Manage
     $ArmToken = $content.access_token
     ```
 
-## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>Uzyskiwanie poświadczeń sygnatury dostępu Współdzielonego z usługi Azure Resource Manager w celu wykonywania wywołań magazynu 
+## <a name="get-a-sas-credential-from-azure-resource-manager-to-make-storage-calls"></a>Pobierz poświadczenia sygnatury dostępu Współdzielonego z usługi Azure Resource Manager do nawiązywania połączeń z magazynu 
 
-Do wywołania usługi Resource Manager przy użyciu tokenu dostępu, którego możemy pobrać w poprzedniej sekcji do tworzenia poświadczeń sygnatury dostępu Współdzielonego magazynu za pomocą programu PowerShell. Operacje magazynu mogą nazywa się po mamy poświadczeń sygnatury dostępu Współdzielonego.
+Teraz można użyć programu PowerShell do wywołania usługi Resource Manager przy użyciu tokenu dostępu, możemy pobrać w poprzedniej sekcji, aby utworzyć poświadczenia sygnatury dostępu Współdzielonego magazynu. Gdy będziemy już mieć poświadczenia sygnatury dostępu Współdzielonego, firma Microsoft może wywoływać operacje magazynu.
 
-Dla tego żądania użyjemy wykonaj parametry żądania HTTP do tworzenia poświadczeń sygnatury dostępu Współdzielonego:
+Dla tego żądania użyjemy postępuj zgodnie z parametrów żądania HTTP do tworzenia poświadczeń sygnatury dostępu Współdzielonego:
 
 ```JSON
 {
@@ -156,9 +156,9 @@ Dla tego żądania użyjemy wykonaj parametry żądania HTTP do tworzenia poświ
 }
 ```
 
-Te parametry są zawarte w treści POST żądania dostępu do poświadczeń sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji na parametry w celu utworzenia poświadczeń sygnatury dostępu Współdzielonego, zobacz [REST sygnatury dostępu Współdzielonego usługi listy odwołania](/rest/api/storagerp/storageaccounts/listservicesas).
+Te parametry są objęte treść wpisu wniosku o poświadczenia sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji na temat parametrów do tworzenia poświadczeń sygnatury dostępu Współdzielonego, zobacz [dokumentacja interfejsu REST sygnatury dostępu Współdzielonego usługi listy](/rest/api/storagerp/storageaccounts/listservicesas).
 
-Najpierw należy przekonwertować na format JSON parametry, a następnie wywołaj magazynu `listServiceSas` punktu końcowego można utworzyć sygnatury dostępu Współdzielonego poświadczeń:
+Najpierw należy przekonwertować parametrów do formatu JSON, a następnie wywołaj magazynu `listServiceSas` poświadczeń punktu końcowego, aby utworzyć sygnaturę dostępu Współdzielonego:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}
@@ -169,29 +169,29 @@ $jsonParams = $params | ConvertTo-Json
 $sasResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE-ACCOUNT-NAME>/listServiceSas/?api-version=2017-06-01 -Method POST -Body $jsonParams -Headers @{Authorization="Bearer $ArmToken"}
 ```
 > [!NOTE] 
-> Adres URL jest rozróżniana wielkość liter, dlatego upewnij się, użyj tego samego dokładnej używane wcześniej, gdy nazwa grupy zasobów, w tym wielkie litery "G" w "resourceGroups." 
+> Adres URL jest uwzględniana wielkość liter, dlatego upewnij się, użyj tego samego dokładnej użyta wcześniej, podczas nosi nazwę grupy zasobów, w tym wielkie litery "G" w "resourceGroups." 
 
-Teraz możemy Wyodrębnij poświadczeń sygnatury dostępu Współdzielonego z odpowiedzi:
+Teraz możemy wyodrębnić poświadczenia sygnatury dostępu Współdzielonego z odpowiedzi:
 
 ```powershell
 $sasContent = $sasResponse.Content | ConvertFrom-Json
 $sasCred = $sasContent.serviceSasToken
 ```
 
-Jeśli sprawdzenie faktury korygu SAS, zobaczysz ekran podobny do tego:
+Zbadaj poświadczenie sygnatury dostępu Współdzielonego zostanie wyświetlony podobny do poniższego:
 
 ```powershell
 PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Następnie tworzymy plik o nazwie "test.txt". Następnie użyć do uwierzytelniania za pomocą poświadczeń sygnatury dostępu Współdzielonego `New-AzureStorageContent` polecenia cmdlet, przekazać go do naszego kontenera obiektów blob, a następnie Pobierz plik.
+Następnie tworzymy plik o nazwie "jako". Następnie użyj poświadczeń sygnatury dostępu Współdzielonego do uwierzytelniania za pomocą `New-AzureStorageContent` polecenia cmdlet, przekaż go do naszego kontenera obiektów blob, a następnie pobrać plik.
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-Upewnij się, najpierw zainstaluj polecenia cmdlet usługi Azure Storage za pomocą `Install-Module Azure.Storage`. Następnie przekazania obiektu blob nowo utworzone przy użyciu `Set-AzureStorageBlobContent` polecenia cmdlet programu PowerShell:
+Pamiętaj zainstalować polecenia cmdlet usługi Azure Storage, za pomocą `Install-Module Azure.Storage`. Następnie przekaż obiekt blob został utworzony, za pomocą `Set-AzureStorageBlobContent` polecenia cmdlet programu PowerShell:
 
 ```powershell
 $ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT-NAME> -SasToken $sasCred
@@ -212,7 +212,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-Możesz również pobrać przekazanym właśnie, za pomocą obiektu blob `Get-AzureStorageBlobContent` polecenia cmdlet programu PowerShell:
+Możesz również pobrać obiekt blob, właśnie został przekazany, za pomocą `Get-AzureStorageBlobContent` polecenia cmdlet programu PowerShell:
 
 ```powershell
 Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
@@ -233,14 +233,14 @@ Name              : testblob
 ```
 
 
-## <a name="related-content"></a>Zawartość pokrewna
+## <a name="related-content"></a>Powiązana zawartość
 
-- Omówienie MSI, zobacz [omówienie zarządzane tożsamość usługi](msi-overview.md).
-- Aby dowiedzieć się, jak to zrobić na tej samej instrukcji za pomocą klucza konta magazynu, zobacz [użyć maszyny Wirtualnej z systemem Windows zarządzanych tożsamości usługi dostępu do magazynu Azure](msi-tutorial-windows-vm-access-storage.md)
-- Aby uzyskać więcej informacji o funkcji sygnatury dostępu Współdzielonego konta usługi Azure Storage zobacz:
-  - [Przy użyciu sygnatury dostępu współdzielonego (SAS)](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+- Aby uzyskać omówienie MSI, zobacz [Przegląd tożsamości usługi zarządzanej](msi-overview.md).
+- Aby dowiedzieć się, jak to zrobić w tym samouczku ten sam za pomocą klucza konta magazynu, zobacz [umożliwia dostęp do magazynu Azure Windows VM tożsamości usługi zarządzanej](msi-tutorial-windows-vm-access-storage.md)
+- Aby uzyskać więcej informacji na temat funkcji sygnatury dostępu Współdzielonego konta usługi Azure Storage zobacz:
+  - [Używanie sygnatur dostępu współdzielonego (SAS)](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
   - [Utworzenie sygnatury dostępu Współdzielonego usługi](/rest/api/storageservices/Constructing-a-Service-SAS.md)
 
-W poniższej sekcji komentarzy umożliwia wyrazić swoją opinię i pomóc nam dostosować i kształtu zawartość.
+W poniższej sekcji komentarzy umożliwia opinią i Pomóż nam analizy i połącz kształt naszej zawartości.
 
 

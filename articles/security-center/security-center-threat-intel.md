@@ -3,23 +3,23 @@ title: Analiza zagrożeń w usłudze Azure Security Center | Microsoft Docs
 description: Dowiedz się, jak wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerach przy użyciu funkcji analizy zagrożeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
-ms.author: yurid
-ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 07/10/2018
+ms.author: terrylan
+ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774577"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561368"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analiza zagrożeń w usłudze Azure Security Center
 Ten artykuł ułatwia korzystanie z analizy zagrożeń usługi Azure Security Center w celu rozwiązywania problemów związanych z zabezpieczeniami.
@@ -43,20 +43,24 @@ Jeden z etapów [procesu reagowania na incydenty związane z zabezpieczeniami](h
 - Zidentyfikowanie systemów, których zabezpieczenia zostały naruszone.
 - Zidentyfikowanie plików, do których nastąpił dostęp, aby ustalić istotność tych plików.
 
-Informacji dotyczących analizy zagrożeń możesz użyć w usłudze Security Center, aby ułatwić te zadania. 
+Informacji dotyczących analizy zagrożeń możesz użyć w usłudze Security Center, aby ułatwić te zadania.
 
 ## <a name="access-the-threat-intelligence"></a>Uzyskiwanie dostępu do analizy zagrożeń
 Aby wyświetlić bieżącą analizę zagrożeń dla środowiska, musisz najpierw wybrać obszar roboczy, gdzie są przechowywane informacje. Jeśli masz tylko jeden obszar roboczy, pomiń selektor obszarów roboczych i od razu przejdź do pulpitu nawigacyjnego **Analiza zagrożeń**. Aby uzyskać dostęp do pulpitu nawigacyjnego:
 
 1. Otwórz pulpit nawigacyjny usługi **Security Center**.
 
-2. W lewym okienku, w obszarze **Wykrywanie**, wybierz pozycję **Analiza zagrożeń**. Zostanie wyświetlony pulpit nawigacyjny **Analiza zagrożeń**.
+2. W okienku po lewej stronie w obszarze **ochrony przed zagrożeniami** wybierz **analiza zagrożeń**. Zostanie otwarty mapy.
+
+    ![Mapa analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel.png)
+
+3. W górnej części mapy wybierz **wyświetlić analizy zagrożeń klasycznego**. **Analiza zagrożeń** zostanie otwarty pulpit nawigacyjny.
 
     ![Pulpit nawigacyjny analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
-    > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center. 
-    > 
+    > Jeśli skrajna prawa kolumna zawiera napis **PLAN UAKTUALNIENIA**, ten obszar roboczy używa bezpłatnej subskrypcji. Uaktualnij go do wersji Standard, aby użyć tej funkcji. Jeśli skrajna prawa kolumna zawiera napis **WYMAGA AKTUALIZACJI**, zaktualizuj usługę [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), aby użyć tej funkcji. Więcej informacji na temat planu cenowego zawiera cennik usługi Azure Security Center.
+    >
 3. Jeśli masz więcej niż jeden obszar roboczy do sprawdzenia, określ priorytet dochodzenia zgodnie z kolumną **Złośliwy adres IP**. Pokazuje ona bieżącą liczbę złośliwych adresów IP w tym obszarze roboczym. Po wybraniu odpowiedniego obszaru roboczego pojawi się pulpit nawigacyjny **Analiza zagrożeń**.
 
     ![Informacje dotyczące analizy zagrożeń](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
@@ -67,7 +71,7 @@ Aby wyświetlić bieżącą analizę zagrożeń dla środowiska, musisz najpierw
 
     b.  **Kraj pochodzenia**. Zawiera zagregowane informacje o ruchu sieciowym zgrupowane według lokalizacji źródłowej.
 
-    d.  **Lokalizacja zagrożeń**. Ułatwia ustalenie, z których miejsc na świecie są wysyłane komunikaty do Twojego środowiska. Na pokazanej mapie strzałki pomarańczowa (ruch przychodzący) i czerwona (ruch wychodzący) wskazują kierunki ruchu. Po wybraniu jednej z tych strzałek zostanie wyświetlony typ zagrożeń i kierunek ruchu.
+    c.  **Lokalizacja zagrożeń**. Ułatwia ustalenie, z których miejsc na świecie są wysyłane komunikaty do Twojego środowiska. Na pokazanej mapie strzałki pomarańczowa (ruch przychodzący) i czerwona (ruch wychodzący) wskazują kierunki ruchu. Po wybraniu jednej z tych strzałek zostanie wyświetlony typ zagrożeń i kierunek ruchu.
 
     d.  **Szczegóły zagrożenia**. Zawiera więcej informacji na temat zagrożenia zaznaczonego na mapie.
 
@@ -91,13 +95,12 @@ W przypadku maszyn wirtualnych platformy Azure pulpit nawigacyjny **Analiza zagr
 - Zdarzenia DNS (typ = DnsEvents)
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 W tym artykule przedstawiono sposób korzystania z analizy zagrożeń w usłudze Security Center, która ułatwia wykrywanie podejrzanej aktywności. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
 
 * [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
-* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center. 
+* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center.
 * [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.
-

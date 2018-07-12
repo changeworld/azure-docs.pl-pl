@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z wewnętrznego przekierowania - programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do puli zaplecza odpowiednich serwerów za pomocą programu Azure Powershell.
+title: Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania - programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji, który przekierowuje ruch w wewnętrznej sieci web do odpowiedniej puli zaplecza serwerów przy użyciu programu Azure Powershell.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -13,34 +13,34 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
 ms.openlocfilehash: 666af23ffb080ac6966e64128cf199cc930246ac
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355444"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38591424"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Utwórz bramę aplikacji z wewnętrznego przekierowania przy użyciu programu Azure PowerShell
+# <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu programu Azure PowerShell
 
-Służy do konfigurowania programu Azure Powershell [przekierowania ruchu w sieci web](application-gateway-multi-site-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku można zdefiniować puli wewnętrznej bazy danych przy użyciu zestawu skalowania maszyn wirtualnych. Następnie skonfiguruj odbiorników i reguły na podstawie domen, do których należą do upewnij się, że ruch w sieci web dociera do odpowiedniej puli. Ten samouczek zakłada, że masz wiele domen i używa przykłady *www.contoso.com* i *www.contoso.org*.
+Można użyć programu Azure Powershell, aby skonfigurować [przekierowywanie ruchu w sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku zdefiniujesz puli zaplecza przy użyciu zestawu skalowania maszyn wirtualnych. Następnie należy skonfigurować detektory i reguły na podstawie domen, których jesteś właścicielem, aby upewnić się, że ruch w sieci web dociera do odpowiedniej puli. W tym samouczku założono, że posiadasz wiele domen i używa przykłady *www.contoso.com* i *www.contoso.org*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Dodaj odbiorników i reguły przekierowania
-> * Utwórz zestaw z puli zaplecza skali maszyny wirtualnej
-> * Utwórz rekord CNAME w domenie
+> * Dodaj regułę przekierowywania i odbiorników
+> * Tworzenie maszyny wirtualnej zestawu skalowania z puli zaplecza
+> * Tworzenie rekordu CNAME w domenie
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Aby znaleźć wersję, uruchom ` Get-Module -ListAvailable AzureRM` . Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie ` Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Tworzenie grupy zasobów platformy Azure przy użyciu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -48,7 +48,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Tworzenie konfiguracji podsieci dla *myBackendSubnet* i *myAGSubnet* przy użyciu [AzureRmVirtualNetworkSubnetConfig nowy](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet* przy użyciu [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) z konfiguracjami podsieci. I na koniec Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [AzureRmPublicIpAddress nowy](/powershell/module/azurerm.network/new-azurermpublicipaddress). Te zasoby są używane do zapewnienia możliwości połączenia sieci z bramy aplikacji i jej skojarzonych zasobów.
+Utwórz konfiguracje podsieci *myBackendSubnet* i *myAGSubnet*, korzystając z polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Utwórz sieć wirtualną o nazwie *myVNet*, używając polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) z konfiguracjami podsieci. Na koniec utwórz publiczny adres IP o nazwie *myAGPublicIPAddress*, korzystając z polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -72,9 +72,9 @@ $pip = New-AzureRmPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i port serwera sieci Web
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i portu frontonu
 
-Skojarz *myAGSubnet* wcześniej utworzony przy użyciu bramy aplikacji [AzureRmApplicationGatewayIPConfiguration nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Przypisz *myAGPublicIPAddress* do bramy aplikacji przy użyciu [AzureRmApplicationGatewayFrontendIPConfig nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig). A następnie można utworzyć przy użyciu portu HTTP [AzureRmApplicationGatewayFrontendPort nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport).
+Skojarz wcześniej utworzoną podsieć *myAGSubnet* z bramą aplikacji za pomocą polecenia [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Przypisz adres *myAGPublicIPAddress* do bramy aplikacji przy użyciu polecenia [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig). Następnie utwórz port HTTP za pomocą polecenia [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport).
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -95,9 +95,9 @@ $frontendPort = New-AzureRmApplicationGatewayFrontendPort `
   -Port 80
 ```
 
-### <a name="create-the-backend-pool-and-settings"></a>Tworzenie puli wewnętrznej bazy danych i ustawień
+### <a name="create-the-backend-pool-and-settings"></a>Tworzenie puli zaplecza i ustawień
 
-Tworzenie puli wewnętrznej bazy danych o nazwie *contosoPool* dla bramy aplikacji przy użyciu [AzureRmApplicationGatewayBackendAddressPool nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli wewnętrznej bazy danych za pomocą [AzureRmApplicationGatewayBackendHttpSettings nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+Utwórz pulę zaplecza o nazwie *contosoPool* dla bramy aplikacji przy użyciu [New AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool). Skonfiguruj ustawienia dla puli zaplecza przy użyciu polecenia [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
 
 ```azurepowershell-interactive
 $contosoPool = New-AzureRmApplicationGatewayBackendAddressPool `
@@ -110,11 +110,11 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-the-first-listener-and-rule"></a>Tworzenie pierwszego odbiornika i reguły
+### <a name="create-the-first-listener-and-rule"></a>Utwórz pierwszy odbiornik i regułę
 
-Odbiornik wymaganego do włączenia usługi Brama aplikacji w celu kierowania ruchu odpowiednio do puli wewnętrznej bazy danych. W tym samouczku utworzysz dwa odbiorniki dla dwóch domen. W tym przykładzie odbiorników są tworzone dla domen z *www.contoso.com* i *www.contoso.org*.
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www.contoso.com* i *www.contoso.org*.
 
-Utworzenie obiektu nasłuchującego pierwszy o nazwie *contosoComListener* przy użyciu [AzureRmApplicationGatewayHttpListener nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) z konfiguracji serwera sieci Web i portu frontonu, która została wcześniej utworzona. Reguła jest wymagana dla odbiornika wiedzieć, który puli wewnętrznej bazy danych mają być używane dla ruchu przychodzącego. Utwórz podstawowe reguły o nazwie *contosoComRule* przy użyciu [AzureRmApplicationGatewayRequestRoutingRule nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
+Utwórz pierwszy odbiornik o nazwie *contosoComListener* przy użyciu [New AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) z konfiguracji frontonu i port frontonu, która została wcześniej utworzona. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Utwórz podstawową regułę o nazwie *contosoComRule* przy użyciu [New AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $contosoComlistener = New-AzureRmApplicationGatewayHttpListener `
@@ -133,7 +133,7 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Teraz, gdy utworzono niezbędne dodatkowe zasoby, należy określić parametry dla bramy aplikacji o nazwie *myAppGateway* przy użyciu [AzureRmApplicationGatewaySku nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), a następnie utwórz ją za pomocą [ Nowy AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
+Teraz, po utworzeniu niezbędnych zasobów pomocniczych, określ parametry bramy aplikacji o nazwie *myAppGateway* przy użyciu polecenia [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku), a następnie utwórz tę bramę aplikacji za pomocą polecenia [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzureRmApplicationGatewaySku `
@@ -154,9 +154,9 @@ $appgw = New-AzureRmApplicationGateway `
   -Sku $sku
 ```
 
-### <a name="add-the-second-listener"></a>Dodaj drugi odbiornika
+### <a name="add-the-second-listener"></a>Dodawanie drugiego odbiornika
 
-Dodaj odbiornik o nazwie *contosoOrgListener* które ma potrzebne do przekierowywania ruchu sieciowego przy użyciu [AzureRmApplicationGatewayHttpListener Dodaj](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener).
+Dodawanie odbiornika o nazwie *contosoOrgListener* , zajdzie potrzeba przekierowania ruchu przy użyciu [AzureRmApplicationGatewayHttpListener Dodaj](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener).
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -178,9 +178,9 @@ Add-AzureRmApplicationGatewayHttpListener `
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
+### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Można skonfigurować przekierowanie dla odbiornika za pomocą [AzureRmApplicationGatewayRedirectConfiguration Dodaj](/powershell/module/azurerm.network/add-azurermapplicationgatewayredirectconfiguration). 
+Aby skonfigurować przekierowanie dla odbiornika, użyj polecenia [Add-AzureRmApplicationGatewayRedirectConfiguration](/powershell/module/azurerm.network/add-azurermapplicationgatewayredirectconfiguration). 
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -227,7 +227,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz zestaw skali maszyny wirtualnej, obsługujący puli wewnętrznej bazy danych, który został utworzony. Zestaw skalowania, utworzonej nazwie *myvmss* i zawiera dwa wystąpienia maszyny wirtualnej, na których można zainstalować usługi IIS. Można przypisać zestaw do puli wewnętrznej bazy danych podczas konfigurowania ustawień IP skalowania.
+W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych, który obsługuje puli zaplecza, który został utworzony. Nosi nazwę zestawu skalowania, którą tworzysz *myvmss* i zawiera dwa wystąpienia maszyn wirtualnych, na których można zainstalować usługi IIS. Zestaw skalowania przypisuje się do puli zaplecza podczas konfigurowania ustawień adresu IP.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -286,9 +286,9 @@ Update-AzureRmVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>Utwórz rekord CNAME w domenie
+## <a name="create-cname-record-in-your-domain"></a>Tworzenie rekordu CNAME w domenie
 
-Po utworzeniu bramy aplikacji z publicznego adresu IP można pobrać adresu DNS i użyj go, aby utworzyć rekord CNAME w domenie. Można użyć [Get AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) można pobrać adresu DNS bramy aplikacji. Kopiuj *fqdn* wartość DNSSettings i używać go jako wartość rekord CNAME, który utworzono. Użycie rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
+Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i użyć go w celu utworzenia rekordu CNAME w domenie. Aby uzyskać adres DNS bramy aplikacji, możesz użyć polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Skopiuj wartość *fqdn* ustawienia DNSSettings i użyj jej jako wartości tworzonego rekordu CNAME. Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -296,11 +296,11 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę domeny na pasku adresu przeglądarki. Takie jak http://www.contoso.com.
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://www.contoso.com.
 
-![Lokacja contoso testu bramy aplikacji](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
+![Testowanie witryny contoso w bramie aplikacji](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 
-Zmień adres do Twojej domeny, na przykład http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika dla www.contoso.com.
+Na przykład zmienić adres do Twojej domeny http://www.contoso.org i należy sprawdzić, czy ruch został przekierowany do odbiornika www.contoso.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -309,9 +309,9 @@ W tym artykule przedstawiono sposób:
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Dodaj odbiorników i reguły przekierowania
-> * Utwórz zestaw z pul zaplecza skali maszyny wirtualnej
-> * Utwórz rekord CNAME w domenie
+> * Dodaj regułę przekierowywania i odbiorników
+> * Tworzenie maszyny wirtualnej zestawu skalowania z pul zaplecza
+> * Tworzenie rekordu CNAME w domenie
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o co można zrobić z bramy aplikacji](./application-gateway-introduction.md)
+> [Więcej informacji na temat funkcji bramy aplikacji](./application-gateway-introduction.md)

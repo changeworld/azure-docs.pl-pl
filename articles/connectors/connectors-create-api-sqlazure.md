@@ -1,6 +1,6 @@
 ---
-title: Łączenie z serwerem SQL lub bazą danych Azure SQL — aplikacje logiki platformy Azure | Dokumentacja firmy Microsoft
-description: Dostęp i zarządzaniu baz danych lokalnie lub w chmurze automatyzując przepływy pracy z usługą Azure Logic Apps
+title: Łączenie się z programu SQL Server lub usługi Azure SQL Database — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Uzyskiwanie dostępu i zarządzania bazami danych SQL, lokalnie lub w chmurze dzięki automatyzacji przepływów pracy z usługą Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -12,101 +12,101 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296292"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38544027"
 ---
-# <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Łączenie z serwerem SQL lub bazy danych Azure SQL z usługi Azure Logic Apps
+# <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Nawiązywanie połączenia programu SQL Server lub usługi Azure SQL Database z usługi Azure Logic Apps
 
-W tym artykule przedstawiono, jak można pobrać danych w bazie danych SQL z wewnątrz aplikacji logiki z łącznikiem programu SQL Server. W ten sposób można zautomatyzować zadania, procesów i przepływy pracy, które zarządzanie przez tworzenie aplikacji logiki danych SQL i zasobów. Łącznik działa zarówno [programu SQL Server na lokalnych](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) i [bazy danych SQL Azure w chmurze](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+Ten artykuł pokazuje, jak można pobrać danych w usłudze SQL database z wewnątrz aplikacji logiki za pomocą łącznika programu SQL Server. W ten sposób można zautomatyzować zadania, procesów i przepływów pracy, które Zarządzanie danych SQL i zasobów przez tworzenie aplikacji logiki. Łącznik działa zarówno [programu SQL Server w środowisku lokalnym](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) i [usługi Azure SQL Database w chmurze](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
 
-Można utworzyć aplikacji logiki, które można uruchamiać, gdy wyzwalane przez zdarzenia w bazie danych SQL lub w innych systemach, takich jak usługi Dynamics CRM Online. Aplikacje logiki można również pobrać, wstawianie i usuwanie danych oraz wykonywanie zapytań SQL i zapisanych procedur. Na przykład można utworzyć aplikację logiki, który automatycznie sprawdza, czy dla nowych rekordów w Dynamics CRM Online, dodaje elementy do bazy danych SQL dla nowych rekordów, a następnie wysyła wiadomości e-mail dla alertów.
+Można tworzyć aplikacje logiki, które są uruchamiane po wyzwoleniu przez zdarzenia w usłudze SQL database lub w innych systemach, takich jak Dynamics CRM Online. Aplikacje logiki można również uzyskać, wstawianie i usuwanie danych oraz wykonywanie zapytań SQL i procedur składowanych. Można na przykład, utworzyć aplikację logiki, która automatycznie sprawdza, czy dla nowych rekordów w usłudze Dynamics CRM Online, dodaje elementy do bazy danych SQL dla żadnych nowych rekordów, a następnie wysyła wiadomości e-mail dla alertów.
 
-Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli jesteś nowym użytkownikiem aplikacji logiki, przejrzyj [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/sql/" target="blank">odwołanie łącznika programu SQL Server</a>.
+Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/sql/" target="blank">dokumentacja łączników programu SQL Server</a>.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aplikację logiki, gdy potrzebny jest dostęp do bazy danych SQL. Aby uruchomić aplikację logiki z wyzwalaczem SQL, należy [aplikacji logiki puste](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikacja logiki gdzie należy uzyskać dostęp do usługi SQL database. Aby uruchomić aplikację logiki z wyzwalaczem SQL, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 * [Bazy danych Azure SQL](../sql-database/sql-database-get-started-portal.md) lub [bazy danych programu SQL Server](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) 
 
-  Tabele musi mieć dane, tak aby aplikację logiki może zwrócić wyniki podczas wywoływania operacji. W przypadku utworzenia bazy danych SQL Azure, można użyć przykładowej bazy danych, które są dołączone. 
+  Tabele musi mieć danych tak, aby Twoja aplikacja logiki może zwrócić wyniki podczas wywoływania operacji. Jeśli tworzysz usługi Azure SQL Database, można użyć przykładowych baz danych, które są zawarte. 
 
-* Nazwa serwera SQL, nazwa bazy danych, nazwę użytkownika i hasło. Potrzebujesz poświadczeń, dzięki czemu można autoryzować logiki, aby uzyskać dostęp do serwera SQL. 
+* Nazwę serwera SQL, nazwę bazy danych, nazwę użytkownika i hasło. Należy korzystać z tych poświadczeń, aby autoryzować logika dostępu do usługi serwera SQL. 
 
-  * Bazy danych SQL Azure te szczegółowe informacje można znaleźć w parametrach połączenia lub w portalu Azure w obszarze właściwości bazy danych SQL:
+  * Usługi Azure SQL Database możesz znaleźć te informacje w parametrach połączenia lub w witrynie Azure portal w obszarze właściwości bazy danych SQL:
 
-    "Serwer = tcp: <*yourServerName*>. database.windows.net,1433;Initial katalogu = <*yourDatabaseName*>; Utrzymuj informacje o zabezpieczeniach = False; Nazwa użytkownika = <*nazwa_użytkownika*>; Hasło = <*yourPassword*>; MultipleActiveResultSets = False; Szyfrowanie = True; TrustServerCertificate = False; Limit czasu połączenia = 30; "
+    "Server = tcp: <*yourServerName*>. database.windows.net,1433;Initial Catalog = <*yourDatabaseName*>; Utrwal informacje zabezpieczające = False;. Nazwa użytkownika = <*nazwa_użytkownika*>; Hasło = <*yourPassword*>; MultipleActiveResultSets = False;. Szyfruj = True; TrustServerCertificate = False;. Connection Timeout = 30; "
 
-  * Dla programu SQL Server te informacje można znaleźć w ciągu połączenia: 
+  * Dla programu SQL Server można znaleźć te informacje w parametrach połączenia: 
 
-    "Serwer = <*yourServerAddress*>; Baza danych = <*yourDatabaseName*>; Nazwa użytkownika = <*nazwa_użytkownika*>; Hasło = <*yourPassword*>; "
+    "Server = <*yourServerAddress*>; Database = <*yourDatabaseName*>; Nazwa użytkownika = <*nazwa_użytkownika*>; Hasło = <*yourPassword*>; "
 
-* Zanim będzie można połączyć aplikacji logiki do systemów lokalnych, takich jak SQL Server, należy najpierw [Skonfiguruj bramę danych lokalnych](../logic-apps/logic-apps-gateway-install.md). W ten sposób można wybrać bramy podczas tworzenia aplikacji logiki połączenia SQL.
+* Zanim będzie można połączyć aplikacji logiki do systemów lokalnych, takich jak SQL Server, należy najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). W ten sposób można wybrać bramy podczas tworzenia połączenia SQL dla aplikacji logiki.
 
 <a name="add-sql-trigger"></a>
 
-## <a name="add-sql-trigger"></a>Dodaj wyzwalacza SQL
+## <a name="add-sql-trigger"></a>Dodaj wyzwalacz SQL
 
-W aplikacjach logiki platformy Azure, każda aplikacja logiki musi rozpoczynać się od [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), które odbywa się uruchamiany, gdy określonego zdarzenia lub gdy zostanie spełniony określony warunek. Zawsze uruchamiany wyzwalacza aparat Logic Apps tworzy wystąpienie aplikacji logiki i uruchamiania aplikacji przepływu pracy.
+W usłudze Azure Logic Apps, każda aplikacja logiki musi rozpoczynać się [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), który jest aktywowany wystąpienia, gdy zajdzie określone zdarzenie lub po spełnieniu określonego warunku. Każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki i uruchamiania przepływu pracy Twojej aplikacji.
 
-1. W portalu Azure lub programu Visual Studio tworzenie aplikacji logiki puste, który otwiera projektanta aplikacji logiki. W przykładzie użyto portalu Azure.
+1. W witrynie Azure portal lub programu Visual Studio należy utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. W tym przykładzie użyto portalu Azure.
 
-2. W polu wyszukiwania wprowadź "sql server" jako filtr. Na liście wyzwalaczy zaznacz wyzwalaczy SQL, które chcesz. 
+2. W polu wyszukiwania wprowadź "sql server" jako filtr. Z listy wyzwalaczy wybierz wyzwalacz SQL, który chcesz. 
 
-   Na przykład wybierz wyzwalacz: **SQL Server — po utworzeniu elementu**
+   W tym przykładzie wybierz następujący wyzwalacz: **SQL Server — po utworzeniu elementu**
 
-   ![Wybierz opcję "SQL Server — po utworzeniu elementu" wyzwalacza](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
+   ![Wybierz pozycję "SQL Server — po utworzeniu elementu" wyzwalacza](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
 
-3. Jeśli zostanie wyświetlony monit o szczegóły połączenia [utworzyć połączenia SQL. teraz](#create-connection). 
-   Lub, jeśli połączenie już istnieje, wybierz **nazwy tabeli** interesujące z listy.
+3. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenia SQL. teraz](#create-connection). 
+   Lub, jeśli istnieje już połączenie, wybierz opcję **nazwy tabeli** , ma na liście.
 
    ![Wybierz tabelę](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
 
-4. Ustaw **interwał** i **częstotliwość** właściwości, które określają, jak często sprawdza aplikację logiki w tabeli.
+4. Ustaw **interwał** i **częstotliwość** właściwości, które określają, jak często aplikacja logiki sprawdza tabelę.
 
-   W tym przykładzie sprawdza tylko wybranej tabeli nic. 
-   Aby wykonać ciekawsze, dodać czynności służących do wykonywania zadań, które mają. 
+   W tym przykładzie sprawdza tylko wybranej tabeli, nic innego. 
+   Aby wykonać ciekawsze, Dodaj akcje, które wykonują zadania, które chcesz. 
    
-   Na przykład aby wyświetlić nowy element w tabeli, możesz może dodać inne akcje, takie jak utworzyć plik, który ma pola z tabeli i następnie wysyłania alertów e-mail. 
-   Aby dowiedzieć się o innych akcji dla tego łącznika lub innych łączników, zobacz [łączniki Logic Apps](../connectors/apis-list.md).
+   Na przykład aby wyświetlić nowy element w tabeli, możesz może dodać inne akcje, takie jak utworzyć plik, który zawiera pola z tabeli i następnie wysyłania alertów e-mail. 
+   Aby dowiedzieć się o innych akcji dla tego łącznika lub innych łączników, zobacz [łączników Logic Apps](../connectors/apis-list.md).
 
-5. Gdy wszystko będzie gotowe, na pasku narzędzi projektanta, wybierz pozycję **zapisać**. 
+5. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
 
    Ten krok umożliwia i automatycznie publikuje aplikację logiki na platformie Azure. 
 
 <a name="add-sql-action"></a>
 
-## <a name="add-sql-action"></a>Dodaj akcję SQL
+## <a name="add-sql-action"></a>Dodawanie akcji SQL
 
-W aplikacjach logiki platformy Azure [akcji](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest krokiem w przepływie pracy następujący wyzwalacz inną akcję. W tym przykładzie aplikacji logiki rozpoczyna się od [wyzwalacza cyklu](../connectors/connectors-native-recurrence.md)i wywołuje akcję, która pobiera wiersz z bazy danych SQL.
+W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest to krok w przepływie pracy, występującego wyzwalacza lub innej akcji. W tym przykładzie aplikacja logiki rozpoczyna się od [wyzwalacz cykliczny](../connectors/connectors-native-recurrence.md)i wywołuje akcję, która pobiera wiersz z bazy danych SQL.
 
-1. W portalu Azure lub programu Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki. W przykładzie użyto portalu Azure.
+1. W witrynie Azure portal lub programu Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki. W tym przykładzie użyto portalu Azure.
 
-2. W Projektancie aplikacji logiki w ramach wyzwalacza lub akcji, wybierz **nowy krok** > **Dodaj akcję**.
+2. W Projektancie aplikacji logiki w obszarze wyzwalacza lub akcji, wybierz **nowy krok** > **Dodaj akcję**.
 
    ![Wybierz pozycję "Nowy krok", "Dodaj akcję"](./media/connectors-create-api-sqlazure/add-action.png)
    
    Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus (**+**) zostanie wyświetlony, a następnie wybierz **Dodaj akcję**.
+   Wybierz znak plus (**+**) pojawia się, a następnie wybierz **Dodaj akcję**.
 
-2. W polu wyszukiwania wprowadź "sql server" jako filtr. Wybierz dowolną akcję SQL, która ma z listy akcji. 
+2. W polu wyszukiwania wprowadź "sql server" jako filtr. Z listy akcji wybierz dowolną akcję SQL, która ma. 
 
-   Na przykład wybierz tę akcję, która pobiera jeden rekord: **SQL Server — wiersz Get**
+   W tym przykładzie wybierz tej akcji, które pobiera pojedynczy rekord: **SQL Server — Pobierz wiersz**
 
-   ![Wpisz "sql server", wybierz "SQL Server — wiersz Get"](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
+   ![Wprowadź "sql server", wybierz pozycję "SQL Server — Pobierz wiersz"](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
 
-3. Jeśli zostanie wyświetlony monit o szczegóły połączenia [utworzyć połączenia SQL. teraz](#create-connection). 
+3. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenia SQL. teraz](#create-connection). 
    Lub, jeśli istnieje połączenie, wybierz **nazwy tabeli**, a następnie wprowadź **identyfikator wiersza** dla rekordu, który ma.
 
-   ![Wprowadź nazwę tabeli i identyfikator wiersza:](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Wprowadź nazwę tabeli, a identyfikator wiersza](./media/connectors-create-api-sqlazure/table-row-id.png)
    
-   W tym przykładzie zwraca tylko jeden wiersz z tabeli, nic. 
-   Aby wyświetlić dane w tym wierszu, możesz dodać inne akcje, które Utwórz plik zawierający pola z wiersza do przeglądu nowsze i przechowywać plik w konta magazynu w chmurze. Aby poznać inne akcje w ten łącznik lub inne łączniki, zobacz temat [łączniki Logic Apps](../connectors/apis-list.md).
+   W tym przykładzie zwraca tylko jeden wiersz z tabeli, nic innego. 
+   Aby wyświetlić dane w tym wierszu, możesz dodać inne akcje, które Utwórz plik z polami z wierszy do późniejszego przejrzenia i ten plik jest przechowywany na koncie magazynu w chmurze. Aby poznać inne akcje, które ten łącznik lub innych łączników, zobacz temat [łączników Logic Apps](../connectors/apis-list.md).
 
-4. Gdy wszystko będzie gotowe, na pasku narzędzi projektanta, wybierz pozycję **zapisać**. 
+4. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**. 
 
 <a name="create-connection"></a>
 
@@ -116,29 +116,29 @@ W aplikacjach logiki platformy Azure [akcji](../logic-apps/logic-apps-overview.m
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>Dane procesu zbiorcze
+## <a name="process-data-in-bulk"></a>Przetwarzanie danych w trybie zbiorczym
 
-Podczas pracy z zestawów wyników tak duża, że łącznik nie zwraca wszystkie wyniki w tym samym czasie, lub lepszą kontrolę nad rozmiaru i struktury dla Twojego zestawów wyników, można użyć *podział na strony*, który pomaga zarządzać tymi wyniki w postaci mniejszych zestawów. 
+Podczas pracy z zestawów wyników tak duża, że łącznik nie zwraca wszystkie wyniki, w tym samym czasie lub mają lepszą kontrolę nad rozmiarem i struktury dla zestawów wyników, możesz użyć *dzielenia na strony*, który pomaga zarządzać takimi zasobami wyniki w postaci mniejszych zestawów. 
 
 [!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
 
 ### <a name="create-a-stored-procedure"></a>Utwórz procedurę składowaną
 
-Podczas pobierania lub wstawianie wiele wierszy, aplikację logiki można wykonać iterację tych elementów przy użyciu [ *do pętli* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) w ramach tych [limity](../logic-apps/logic-apps-limits-and-config.md). Jednak czasami ma aplikacji logiki do pracy z zestawów rekordów tak duży, takich jak tysiące lub miliony wierszy, które mają być zminimalizować koszty dla połączeń z bazą danych. 
+Podczas pobierania lub wstawianie wiele wierszy, aplikacja logiki może wykonać iterację te elementy przy użyciu [ *pętlą until* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) w ramach tych [limity](../logic-apps/logic-apps-limits-and-config.md). Jednak czasami aplikacja logiki ma do pracy z zestawami rekordów tak dużych, takich jak tysięcy lub milionów wierszy, które chcesz zminimalizować koszty dla połączeń z bazą danych. 
 
-Zamiast tego można utworzyć <a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank"> *procedury składowanej* </a> że wystąpienia SQL, korzysta z **wybierz - ORDER BY** instrukcji, aby zorganizować wyniki w sposób. To rozwiązanie zapewnia większą kontrolę nad rozmiaru i struktury wyników. Aplikację logiki wywołuje procedurę składowaną przy użyciu łącznika programu SQL Server **wykonać procedurę składowaną** akcji. 
+Zamiast tego można utworzyć <a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank"> *procedury składowanej* </a> , w ramach wystąpienia SQL, korzysta z **wybierz - ORDER BY** instrukcję, aby zorganizować wyniki w sposób. To rozwiązanie zapewnia większą kontrolę nad rozmiarem i struktury wyników. Twoja aplikacja logiki wywołuje procedury składowanej przy użyciu łącznika programu SQL Server **wykonaj procedurę składowaną** akcji. 
 
-Szczegółowe rozwiązania zobacz następujące artykuły:
+Aby uzyskać szczegółowe informacje z rozwiązania zobacz następujące artykuły:
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">SQL podział na strony do transferu danych zbiorczego z usługą Logic Apps</a>
+* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">Stronicowanie SQL do zbiorczego transferu danych za pomocą aplikacji logiki</a>
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">Wybierz — klauzula ORDER BY</a>
+* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">Należy wybrać - ORDER BY — klauzula</a>
 
-## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
+## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
 
-Aby uzyskać informacje techniczne dotyczące wyzwalaczy, akcje i limity tego łącznika, zobacz [szczegóły odwołanie łącznika](/connectors/sql/). 
+Aby uzyskać informacje techniczne o wyzwalaczach, akcje i limity tego łącznika, zobacz [szczegóły łącznika](/connectors/sql/). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o innych [łączniki Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
 

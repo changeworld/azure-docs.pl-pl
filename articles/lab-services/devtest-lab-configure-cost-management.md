@@ -1,6 +1,6 @@
 ---
-title: Wyświetl trend miesięczny koszt szacowany laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Więcej informacji o usłudze Azure DevTest Labs miesięczne szacowany koszt wykresu trendu.
+title: Wyświetl miesięczne szacowane trendu kosztów laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wykres trendu szacowany koszt miesięczny Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,93 +15,93 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787633"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38573815"
 ---
-# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Wyświetl trend miesięczny koszt szacowany laboratorium w usłudze Azure DevTest Labs
-Funkcja zarządzania koszt DevTest Labs pomaga śledzić koszt laboratorium. W tym artykule przedstawiono sposób użycia **miesięczny Trend szacowany koszt** wykresu, aby wyświetlić bieżącego miesiąca kalendarzowego szacowany koszt do daty i szacowany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. W tym artykule przedstawiono również sposób lepiej zarządzać kosztami laboratorium, ustawiając wydatków progi i obiekty docelowe, po osiągnięciu wyzwalacza DevTest Labs zgłosić wyników.
+# <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Wyświetl miesięczne szacowane trendu kosztów laboratorium Azure DevTest Labs
+Funkcja zarządzania kosztami DevTest Labs pomaga śledzić koszty środowiska laboratoryjnego. W tym artykule przedstawiono sposób użycia **miesięczne szacowane trendu kosztów** wykres, aby wyświetlić bieżący miesiąc kalendarza szacowany koszt od początku i przewidywany koszt koniec miesiąca dla bieżącego miesiąca kalendarzowego. W tym artykule również pokazano, jak w lepszym zarządzaniu kosztami laboratorium, ustawiając wydatków celów i progów, gdy osiągnięty wyzwalacza usługi DevTest Labs zgłosić wyników.
 
-## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Wyświetlanie wykresu miesięczny Trend szacowany koszt
-Aby wyświetlić na wykresie miesięczny Trend szacowany koszt, wykonaj następujące kroki: 
+## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Wyświetlanie wykresu trendu kosztów szacowany miesięczny
+Aby wyświetlić wykres trendu kosztów szacowane miesięczne, wykonaj następujące kroki: 
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. W razie potrzeby wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy. (Laboratorium może być jest wyświetlana na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
-1. Z listy labs wybierz żądany laboratorium.  
-1. W laboratorium **omówienie** wybierz opcję **konfiguracji i zasadach**.   
-1. Po lewej stronie w obszarze **ŚLEDZENIE kosztów**, wybierz pozycję **koszty**.
+1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
+1. Z listy labs wybierz żądane laboratorium.  
+1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.   
+1. Po lewej stronie w obszarze **ŚLEDZENIE kosztów**, wybierz opcję **trendu kosztów**.
 
    Poniższy zrzut ekranu przedstawia przykład wykresu kosztów. 
    
-    ![Wykres kosztu](./media/devtest-lab-configure-cost-management/graph.png)
+    ![Wykres kosztów](./media/devtest-lab-configure-cost-management/graph.png)
 
-**Szacowany koszt** wartość jest bieżącego miesiąca kalendarzowego szacowany koszt do daty. **Koszt planowany** jest szacowany koszt dla całego bieżącego miesiąca kalendarzowego obliczane przy użyciu koszt laboratorium dla poprzedniego pięć dni.
+**Szacowany koszt** wartość bieżącego miesiąca kalendarzowego szacowany koszt od początku. **Przewidywany koszt** jest szacowany koszt dla całego bieżącego miesiąca kalendarzowego obliczane przy użyciu kosztów laboratorium dla poprzednich 5 dni.
 
-Kwoty kosztów są zaokrąglona w górę do najbliższej liczby całkowitej. Na przykład: 
+Kwoty kosztów jest zaokrąglana do najbliższej liczby całkowitej. Na przykład: 
 
 * 5.01 Zaokrągla do 6 
 * 5.50 Zaokrągla do 6
 * 5.99 Zaokrągla do 6
 
-Stany go powyżej wykresu, kosztów, zobacz domyślnie na wykresie są *szacowany* koszty przy użyciu [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) stawek oferty. Można również ustawić własne wydatków obiektów docelowych, które są wyświetlane na wykresach przez [Zarządzanie docelowe koszt laboratorium.](#managing-cost-targets-for-your-lab)
+Stwierdza, powyżej wykresu, kosztów, zobacz domyślnie na wykresie są *szacowany* koszty przy użyciu [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) stawki oferty. Można także zdefiniować własne wydatków obiektów docelowych, które są wyświetlane na wykresach przez [zarządzania celami kosztów dla swojego laboratorium.](#managing-cost-targets-for-your-lab)
 
-Ponadto są następujące *nie* uwzględnionych podczas obliczania kosztów:
+Ponadto poniżej przedstawiono *nie* uwzględnionych podczas obliczania kosztów:
 
-* Dostawca usług Kryptograficznych i Dreamspark subskrypcje obecnie nie są obsługiwane jako używa Azure DevTest Labs [Azure API rozliczeń](../billing/billing-usage-rate-card-overview.md) do obliczania kosztów, który nie obsługuje dostawcy usług Kryptograficznych lub Dreamspark subskrypcji laboratorium.
-* Twoje stawek oferty. Nie można obecnie używać stawek oferty (wyświetlany w obszarze subskrypcji) czy musisz mieć negocjowane z Microsoft lub partnerów. Używane są tylko płatność za rzeczywiste użycie stawki.
-* Twoje podatki
-* Twoje zniżki
-* Waluta. Obecnie koszt laboratorium jest wyświetlany tylko w walucie USD.
+* Subskrypcje dostawcy usług Kryptograficznych i Dreamspark nie są obecnie obsługiwane, ponieważ korzysta z usługi Azure DevTest Labs [interfejsy API rozliczeń Azure](../billing/billing-usage-rate-card-overview.md) do obliczania laboratorium koszt, który nie obsługuje dostawcy usług Kryptograficznych lub Dreamspark subskrypcji.
+* Twoje stawki oferty. Obecnie nie można używać (podane w ramach Twojej subskrypcji), możesz mieć negocjowane z firmą Microsoft lub Microsoft partnerów stawki oferty. Używane są tylko stawek.
+* Z podatków.
+* Slevy
+* Twoja waluta rozliczeniowa. Obecnie kosztów laboratorium jest wyświetlany tylko w walucie USD.
 
-## <a name="managing-cost-targets-for-your-lab"></a>Zarządzanie docelowe koszt laboratorium
-DevTest Labs umożliwia lepiej zarządzać kosztami w laboratorium, ustawiając wydatków docelowego, który można wyświetlić na wykresie miesięczny Trend szacowany koszt. DevTest Labs można również wysyłanie powiadomień po osiągnięciu określonego obiektu docelowego wydatków lub wartość progową. 
+## <a name="managing-cost-targets-for-your-lab"></a>Zarządzanie kosztów związanych z laboratorium
+DevTest Labs pozwala lepiej zarządzać kosztami w środowisku laboratoryjnym, ustawiając wydatków docelowy, który można wyświetlić na wykresie miesięczne szacowane trendu kosztów. DevTest Labs można również wysłane powiadomienie po osiągnięciu określonego obiektu docelowego wydatków lub wartość progową. 
 
-1. Na środowiska laboratoryjnego **omówienie** okienku wybierz **konfiguracji i zasadach**.
-1. Po lewej stronie w obszarze **ŚLEDZENIE kosztów**, wybierz pozycję **koszty**.
+1. W środowisku laboratoryjnym **Przegląd** okienku wybierz **konfiguracji i zasad**.
+1. Po lewej stronie w obszarze **ŚLEDZENIE kosztów**, wybierz opcję **trendu kosztów**.
 
-    ![Zarządzanie przycisk docelowego](./media/devtest-lab-configure-cost-management/cost-trend.png)
+    ![Zarządzanie przycisk docelowej](./media/devtest-lab-configure-cost-management/cost-trend.png)
 
-1. W **koszty** okienku wybierz **docelowej Zarządzaj**.
+1. W **trendu kosztów** okienku wybierz **docelowej Zarządzaj**.
 
-    ![Zarządzanie przycisk docelowego](./media/devtest-lab-configure-cost-management/cost-trend-manage-target.png)
+    ![Zarządzanie przycisk docelowej](./media/devtest-lab-configure-cost-management/cost-trend-manage-target.png)
 
-1. W okienku Zarządzanie docelowej Określ progi i wydatków docelowy. Można również ustawić, czy każdy wybrany próg zostaje zgłoszone wykresu trendu koszt lub za pośrednictwem powiadomień elementu webhook.
+1. W okienku Zarządzanie docelowej Określ wybraną docelową wydatków i progów. Można również ustawić, czy każdy wybrany próg, jest zgłaszany na wykres trendu kosztów lub za pośrednictwem powiadomień elementu webhook.
 
-    ![Zarządzanie okienka docelowego](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
+    ![Zarządzanie okienka docelowej](./media/devtest-lab-configure-cost-management/cost-trend-manage-target-pane.png)
 
-   - Wybierz przedział czasu, w którym mają być śledzone cele kosztów.
-      - **Miesięczne**: elementy docelowe koszt są śledzone na miesiąc.
-      - **Stałe**: elementy docelowe koszt są śledzone zakresu można określić daty rozpoczęcia i zakończenia. Zwykle to może odpowiadać jak długo projektu jest zaplanowane do uruchomienia.
-   - Określ **Target koszt**. Na przykład może to być ile planujesz poświęcić w przedziale czasu, który został zdefiniowany w tym laboratorium.
-   - Zaznacz, aby włączyć lub wyłączyć wszelkie próg ma zgłoszone — w przyrostach 25% — do 125% z określonym **Target koszt**.
-      - **Powiadom**: po spełnieniu tego progu, otrzymasz powiadomienie, należy określić adres URL elementu webhook.
-      - **Kreślenia na wykresie**: po spełnieniu tego progu, wyniki są kreślone na wykresu trendu kosztów, który można wyświetlać, zgodnie z opisem w [wyświetlania wykresu miesięczny Trend szacowany koszt](#viewing-the-monthly-estimated-cost-trend-chart).
-   - Jeśli użytkownik chce **powiadamiania** ze osiągnięty jest próg, należy określić adres URL elementu webhook. W obszarze integracji koszt wybierz **kliknij tutaj, aby dodać integracji**.
+   - Wybierz przedział czasu, w którym mają być koszt celów śledzenia.
+      - **Miesięczne**: elementy docelowe kosztów są śledzone na miesiąc.
+      - **Naprawiono**: elementy docelowe kosztów są śledzone dla zakresu dat, określ daty rozpoczęcia i zakończenia. Zwykle to może odpowiadać, o ile projekt jest zaplanowane do uruchomienia.
+   - Określ **docelowe koszt**. Na przykład może to być ile plan do wydania na tym środowisku laboratoryjnym w przedziale czasu, który został zdefiniowany.
+   - Zaznacz, aby włączyć lub wyłączyć wszelkie próg ma zgłoszone — w przyrostach co 25% — do 125% z określonym **docelowe koszt**.
+      - **Powiadom**: po spełnieniu tego progu, zostanie wyświetlone powiadomienie, należy określić adres URL elementu webhook.
+      - **Vykreslit v**: po spełnieniu tego progu, wyniki są oznaczane na wykresach na wykres trendu kosztów, który można wyświetlić, zgodnie z opisem w [wyświetlania wykresu trendu kosztów szacowany miesięczny](#viewing-the-monthly-estimated-cost-trend-chart).
+   - Jeśli zdecydujesz się **powiadamiania** po osiągnięciu wartości progowej, należy określić adres URL elementu webhook. W obszarze integracji kosztów, wybierz **kliknij tutaj, aby dodać integracji**.
 
-      Wprowadź adres URL elementu Webhook w okienku Konfigurowanie powiadomień, a następnie wybierz **OK**.
+      Wprowadź adres URL elementu Webhook w okienku Konfiguracja powiadomień, a następnie wybierz pozycję **OK**.
 
-       ![Skonfiguruj okienko powiadomień](./media/devtest-lab-configure-cost-management/configure-notification.png)
+       ![Konfigurowanie okienkiem powiadomienia](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
       - Jeśli określisz **powiadamiania**, należy określić adres URL elementu webhook.
-      - Podobnie, jeśli adres URL elementu webhook, należy ustawić **powiadomień** do **na** w okienku próg kosztów.
-      - Należy utworzyć elementu webhook przed wprowadzić go tutaj.  
+      - Podobnie, jeśli zdefiniujesz adres URL elementu webhook, musisz ustawić **powiadomień** do **na** w okienku próg kosztów.
+      - Należy utworzyć element webhook przed wprowadź go tutaj.  
 
-      Aby uzyskać więcej informacji na temat elementów webhook, zobacz [tworzenia elementu webhook lub funkcja interfejsu API Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+      Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub interfejsu API usługi Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
  
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Wpisy na blogu pokrewne
+## <a name="related-blog-posts"></a>Wpisy w blogu pokrewne
 * [Więcej opcji Zachowaj koszt zgodnie z planem w usłudze DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
-* [Dlaczego koszt progi?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
+* [Dlaczego progach kosztów?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Poniżej przedstawiono niektóre czynności, aby spróbować obok:
+Oto kilka rzeczy, aby wypróbować następne:
 
-* [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) — Dowiedz się, jak skonfigurowanie różnych zasad używane do sterowania korzystania laboratorium i jego maszyn wirtualnych. 
-* [Tworzenie niestandardowego obrazu](devtest-lab-create-template.md) — podczas tworzenia maszyny Wirtualnej, należy określić podstawowy, który może być niestandardowy obraz lub obrazu z witryny Marketplace. W tym artykule przedstawiono sposób tworzenia niestandardowego obrazu z pliku VHD.
-* [Konfigurowanie portalu Marketplace obrazów](devtest-lab-configure-marketplace-images.md) — DevTest Labs obsługuje tworzenie maszyn wirtualnych, oparte na obrazach portalu Azure Marketplace. W tym artykule przedstawiono sposób określić, które, portalu Azure Marketplace obrazy mogą być używane podczas tworzenia maszyn wirtualnych w laboratorium.
-* [Utwórz maszynę Wirtualną w laboratorium](devtest-lab-add-vm.md) -ilustruje sposób tworzenia maszyny Wirtualnej z obrazu podstawowego (albo niestandardowe lub Marketplace) oraz sposób pracy z artefaktami w maszynie Wirtualnej.
+* [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) — Dowiedz się, jak ustawić różne zasady stosowane do zarządzania, do czego służą środowiska laboratoryjnego i jego maszyn wirtualnych. 
+* [Tworzenie obrazu niestandardowego](devtest-lab-create-template.md) — podczas tworzenia maszyny Wirtualnej, należy określić podstawowy, który może być niestandardowego obrazu lub obrazu z witryny Marketplace. W tym artykule pokazano, jak utworzyć niestandardowy obraz z pliku wirtualnego dysku twardego.
+* [Konfigurowanie obrazów z witryny Marketplace](devtest-lab-configure-marketplace-images.md) — usługa DevTest Labs obsługuje tworzenia maszyn wirtualnych opartych na obrazach portalu Azure Marketplace. W tym artykule pokazano, jak określić, które ewentualnie obrazów portalu Azure Marketplace, mogą być używane podczas tworzenia maszyn wirtualnych w laboratorium.
+* [Tworzenie maszyny Wirtualnej w laboratorium](devtest-lab-add-vm.md) -pokazano, jak utworzyć maszynę Wirtualną z obrazu podstawowego (albo niestandardowe lub portalu Marketplace) oraz sposób pracy z artefaktami w maszynie Wirtualnej.
 

@@ -12,12 +12,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 9e5b7303830f2064f764d2de023b4a3ff9b0ea9f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 928f6adbb348683a110f7da9b20efaae998290ca
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450226"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972217"
 ---
 #<a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Uruchamianie programu Apache Oozie w klastrach HDInsight przyłączone do domeny w usłudze Hadoop
 Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Oozie jest zintegrowany ze stosem platformy Hadoop i obsługuje następujące zadania:
@@ -206,7 +206,7 @@ Przepływ pracy jest podzielony na dwie części:
         examplesRoot=examples
         oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
         hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-        hiveScript2=${nameNode}/user/${user.name}/countrowshive1.hql
+        hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
         oozie.use.system.libpath=true
         user.name=[domainuser]
         jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
@@ -229,7 +229,7 @@ Skrypty 2 hive, hive server 1 i hive server 2 mogą być tworzone jako pokazano 
 -   Hive Server 1 plik:
 1.  Poniższa instrukcja umożliwia tworzenie i edytowanie pliku dla akcji serwer 1 programu hive:
     ```bash
-    nano countrowshive1.xml
+    nano countrowshive1.hql
     ```
 
 2.  Tworzenie skryptu
@@ -247,7 +247,7 @@ Skrypty 2 hive, hive server 1 i hive server 2 mogą być tworzone jako pokazano 
 -   Hive Server 2 pliku:
 1.  Poniższa instrukcja umożliwia tworzenie i edytowanie pola hive server 2 akcji:
     ```bash
-    nano countrowshive2.xml
+    nano countrowshive2.hql
     ```
 
 2.  Tworzenie skryptu

@@ -1,5 +1,5 @@
 ---
-title: Szybki Start - klastra Azure Kubernetes dla systemu Windows
+title: Przewodnik Szybki Start — klaster Azure Kubernetes dla Windows
 description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Windows w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: dlepow
@@ -10,11 +10,11 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165003"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38485448"
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Wdrażanie klastra Kubernetes dla kontenerów systemu Windows
 
@@ -162,7 +162,7 @@ Aby udostępnić zasobnik światu z publicznym adresem IP, wpisz następujące p
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-To polecenie Kubernetes tworzy usługi i reguły modułu równoważenia obciążenia Azure z publicznym adresem IP dla usługi. 
+Za pomocą tego polecenia usługi Kubernetes tworzy usługi i reguły usługi Azure load balancer z publicznym adresem IP dla usługi. 
 
 Uruchom poniższe polecenie, aby wyświetlić stan usługi.
 

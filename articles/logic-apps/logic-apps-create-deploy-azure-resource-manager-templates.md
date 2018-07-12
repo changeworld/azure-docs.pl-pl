@@ -1,6 +1,6 @@
 ---
 title: Tworzenie aplikacji logiki z szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Tworzenie i wdrażanie przepływów pracy aplikacji logiki z szablonów usługi Azure Resource Manager
+description: Tworzenie i wdrażanie przepływów pracy aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
 services: logic-apps
 documentationcenter: ''
 author: ecfan
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 0772ed0e6cca98c4e59b563a23549909636d55d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298226"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38572624"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Tworzenie i wdrażanie aplikacji logiki z szablonów usługi Azure Resource Manager
+# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Tworzenie i wdrażanie aplikacji logiki przy użyciu szablonów usługi Azure Resource Manager
 
-Aplikacje logiki platformy Azure udostępnia szablony usługi Azure Resource Manager, które są dostępne, nie tylko do tworzenia aplikacji logiki do automatyzacji przepływy pracy, ale także do definiowania zasobów i parametrów, które są używane do wdrożenia. Można użyć tego szablonu dla scenariuszy biznesowych lub dostosować szablon zgodnie z wymaganiami. Dowiedz się więcej o [szablonu usługi Resource Manager dla usługi logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) i [struktury szablonu usługi Azure Resource Manager i składni](../azure-resource-manager/resource-group-authoring-templates.md).
+Usługa Azure Logic Apps udostępnia szablony usługi Azure Resource Manager, które są dostępne, nie tylko do tworzenia aplikacji logiki umożliwiająca automatyzację przepływów pracy, ale także do definiowania zasoby i parametry, które są używane do wdrażania. Można użyć tego szablonu w scenariuszach biznesowych lub dostosować szablon do własnych wymagań. Dowiedz się więcej o [szablonu usługi Resource Manager dla usługi logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) i [strukturę szablonu usługi Azure Resource Manager i składnię](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ## <a name="define-the-logic-app"></a>Definiowanie aplikacji logiki
 
-Definicję aplikacji logiki ten przykład jest uruchamiana raz na godzinę, a następnie wysyła pakiet usługi ping do lokalizacji określonej w `testUri` parametru.
-Szablon używa wartości parametrów dla nazwy aplikacji logiki (```logicAppName```) oraz lokalizację na polecenie ping do testowania (```testUri```). Dowiedz się więcej o [definiowania tych parametrów w szablonie](#define-parameters). Szablon ustawia również lokalizacji dla aplikacji logiki w tej samej lokalizacji co grupa zasobów platformy Azure. 
+Definicji aplikacji logiki ten przykład jest uruchamiany co godzinę i wysyła pakiet usługi ping w lokalizacji określonej w `testUri` parametru.
+Szablon używa wartości parametru Nazwa aplikacji logiki (```logicAppName```) oraz lokalizacji, na polecenie ping do testowania (```testUri```). Dowiedz się więcej o [definiowania tych parametrów w szablonie](#define-parameters). Szablon spowoduje także ustawienie lokalizacji dla aplikacji logiki w tej samej lokalizacji co grupa zasobów platformy Azure. 
 
 ``` json
 {
@@ -83,30 +83,30 @@ Szablon używa wartości parametrów dla nazwy aplikacji logiki (```logicAppName
 
 Poniżej przedstawiono opisy parametrów w szablonie:
 
-| Parametr | Opis | Przykład definicji JSON | 
+| Parametr | Opis | Przykład kodu JSON z definicji | 
 | --------- | ----------- | ----------------------- | 
-| `logicAppName` | Określa nazwę aplikacji logiki tworzy tego szablonu. | "logicAppName": {"type": "string", "metadanych": {"opis": "myExampleLogicAppName"}} |
-| `testUri` | Określa lokalizację na polecenie ping do testowania. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
+| `logicAppName` | Definiuje nazwę aplikacji logiki ten szablon umożliwia utworzenie. | "logicAppName": {"type": "string", "metadane": {"description": "myExampleLogicAppName"}} |
+| `testUri` | Określa lokalizację, aby wykonać polecenie ping do testowania. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
 ||||
 
-Dowiedz się więcej o [interfejsu API REST dla definicji przepływu pracy aplikacji logiki i właściwości](https://docs.microsoft.com/rest/api/logic/workflows) i [korzystając z definicjami aplikacji logiki z JSON](logic-apps-author-definitions.md).
+Dowiedz się więcej o [interfejsu API REST dla definicji przepływu pracy aplikacji logiki i właściwości](https://docs.microsoft.com/rest/api/logic/workflows) i [Tworzenie definicji aplikacji logiki za pomocą kodu JSON](logic-apps-author-definitions.md).
 
 ## <a name="deploy-logic-apps-automatically"></a>Automatyczne wdrażanie aplikacji logiki
 
-Aby utworzyć i automatyczne wdrażanie aplikacji logiki do platformy Azure, wybierz **wdrażanie na platformie Azure** tutaj:
+Aby utworzyć i automatyczne wdrażanie aplikacji logiki na platformie Azure, wybierz **Wdróż na platformie Azure** tutaj:
 
 [![Wdrażanie na platformie Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Ta akcja loguje się użytkownik do portalu Azure, którym można podać szczegóły aplikacji logiki i wprowadzić zmiany w szablonie lub parametrów. Na przykład portalu Azure wyświetla monit o podanie tych szczegółów:
+Ta akcja loguje Cię witrynie Azure Portal, w którym można podać szczegóły aplikacji logiki i wprowadź zmiany do szablonu lub parametrów. Na przykład witryny Azure portal wyświetli monit o podanie tych szczegółów:
 
 * Nazwa subskrypcji platformy Azure
-* Grupy zasobów, która ma być używany
+* Grupy zasobów, której chcesz użyć
 * Lokalizacja aplikacji logiki
 * Nazwa aplikacji logiki
-* Identyfikator URI testu
-* Akceptacji określonych warunków i postanowień
+* Test identyfikatora URI
+* Akceptacja określonego warunków i postanowień
 
-## <a name="deploy-logic-apps-with-commands"></a>Wdrażanie aplikacji logiki przy użyciu poleceń
+## <a name="deploy-logic-apps-with-commands"></a>Wdrażanie aplikacji logiki za pomocą poleceń
 
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 

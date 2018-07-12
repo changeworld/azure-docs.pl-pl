@@ -1,6 +1,6 @@
 ---
 title: Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure.
+description: Przy użyciu programu Visual Studio na maszynie wirtualnej platformy Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -15,42 +15,42 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 7809e0b9265ec62bded67d0b0ed851ee0ba98315
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: ce587fcbc3bcbea129db1d3d9d0fb60cebdf8e0e
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301703"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972370"
 ---
-# <a name="visual-studio-images-on-azure"></a>Visual Studio obrazów na platformie Azure
-Za pomocą programu Visual Studio w wstępnie skonfigurowane Azure maszyny wirtualnej (VM) jest szybki i łatwy sposób przejść z nic do środowiska projektowego w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
+# <a name="visual-studio-images-on-azure"></a>Obrazów programu Visual Studio w systemie Azure
+Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
 
 Dopiero zaczynasz korzystać z platformy Azure? [Tworzenie bezpłatnego konta platformy Azure](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Jakie konfiguracje i wersje są dostępne?
-Obrazy do najnowszej wersji głównych, Visual Studio 2017 i programu Visual Studio 2015, można znaleźć w portalu Azure Marketplace. Dla każdej wersji głównych Zobacz pierwotnie wydanej wersji (RTW) oraz najnowsze zaktualizowane wersje. Każda z tych wersji oferuje wersje programu Visual Studio Community i Visual Studio Enterprise. Te obrazy są aktualizowane co najmniej co miesiąc uwzględnienie najnowsze aktualizacje programu Visual Studio i systemu Windows. Podczas nazwy obrazów pozostają takie same, opis każdego obrazu zawiera wersję zainstalowanego produktu i "daty" obrazu.
+Obrazy do najnowszej wersji głównych, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace. Dla wszystkich wersji głównych Zobacz oryginalnie wydana wersja (RTW) i najnowsze zaktualizowane wersje. Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise. Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows. Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
 
 | Wersja                                              | Wersje                     |     Wersja produktu     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: R (wersja 15.7)                    |    Enterprise, Community     |      Wersja 15.7.3     |
-| Programu Visual Studio 2017: Najnowszej wersji zapoznawczej (wersja 15.8, wersja zapoznawcza 2) |    Enterprise, Community     |      Wersja 15.8.2     |
-|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Wersja 15.0.13    |
-|   Visual Studio 2015: R (Update 3)                      |    Enterprise, Community     |  Wersja 14.0.25431.01  |
-|         Visual Studio 2015: RTW                              |             Brak             | (Wygasł obsługi) |
+| Visual Studio 2017: R (w wersji 15.7)                    |    Enterprise, Community     |      Wersja 15.7.5     |
+| Programu Visual Studio 2017: Najnowszą wersję zapoznawczą (wersja 15.8, wersja zapoznawcza 4) |    Enterprise, Community     |      Wersja 15.8.4     |
+|         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Wersja 15.0.15    |
+|   Visual Studio 2015: R (Aktualizacja 3)                      |    Enterprise, Community     |  Wersja 14.0.25431.01  |
+|         Visual Studio 2015: RTW                              |             Brak             | (Wygasłe obsługi) |
 
 > [!NOTE]
-> Zgodnie z zasadami obsługi firmy Microsoft wygasł pierwotnie pełnej wersji programu Visual Studio 2015 (RTW) obsługi. Visual Studio 2015 Update 3 jest tylko wersja pozostałych oferowane dla linii produktów Visual Studio 2015.
+> Zgodnie z zasady obsługi firmy Microsoft pierwotnie (RTW) wersji programu Visual Studio 2015 zakończył się okres obsługi. Visual Studio 2015 Update 3 jest jedynie wersja pozostałe oferowana w przypadku linii produktów Visual Studio 2015.
 
-Aby uzyskać więcej informacji, zobacz [programu Visual Studio obsługi zasad](https://www.visualstudio.com/productinfo/vs-servicing-vs).
+Aby uzyskać więcej informacji, zobacz [Visual Studio obsługi zasad](https://www.visualstudio.com/productinfo/vs-servicing-vs).
 
 ## <a name="what-features-are-installed"></a>Jakie funkcje są zainstalowane?
-Obraz zawiera skonfigurowaną zalecane w przypadku tej wersji programu Visual Studio. Ogólnie rzecz biorąc instalacja obejmuje:
+Każdy obraz zawiera zalecane funkcji, ustaw dla tej wersji programu Visual Studio. Ogólnie rzecz biorąc instalacja obejmuje:
 
-* Wszystkie dostępne obciążenia, w tym poszczególnych obciążeń zalecane składniki opcjonalne
-* Program .NET 4.6.2 i .NET 4.7 zestawów SDK, określania wartości docelowej pakiety i narzędzia dla deweloperów
+* Wszystkie dostępne obciążeń, w tym każde obciążenie zalecane składniki opcjonalne
+* .NET 4.6.2 i .NET 4.7 zestawów SDK i Targeting Pack, narzędzia dla deweloperów
 * Visual F #
 * Rozszerzenie GitHub dla programu Visual Studio
-* LINQ do SQL narzędzia
+* LINQ to SQL Tools
 
 Wiersz polecenia użyty do zainstalowania programu Visual Studio, podczas tworzenia obrazów jest następująca:
 
@@ -66,10 +66,10 @@ Wiersz polecenia użyty do zainstalowania programu Visual Studio, podczas tworze
        add Microsoft.VisualStudio.Component.LinqToSql
 ```
 
-Jeśli obrazy nie zawiera funkcji programu Visual Studio, która jest wymagana, wyrazić swoją opinię przy użyciu narzędzia opinii w prawym górnym rogu strony.
+Jeśli obrazy nie obejmują funkcji programu Visual Studio, która jest wymagana, przekazują opinie za pośrednictwem narzędzia opinii, w prawym górnym rogu strony.
 
-## <a name="what-size-vm-should-i-choose"></a>Jaki rozmiar maszyny Wirtualnej należy wybrać?
-System Azure oferuje szeroką gamę rozmiarów maszyn wirtualnych. Ponieważ program Visual Studio jest aplikacji zaawansowane, wielowątkowych, ma rozmiar maszyny Wirtualnej, która zawiera co najmniej dwa procesory i 7 GB pamięci. Firma Microsoft zaleca następujących rozmiarów maszyn wirtualnych dla obrazów programu Visual Studio:
+## <a name="what-size-vm-should-i-choose"></a>Rozmiar maszyny Wirtualnej należy wybrać?
+Platforma Azure oferuje szeroką gamę rozmiarów maszyn wirtualnych. Ponieważ program Visual Studio jest zaawansowanym wielowątkowa aplikacja, ma rozmiar maszyny Wirtualnej, która zawiera co najmniej dwóch procesorów i 7 GB pamięci. Firma Microsoft zaleca następujących rozmiarów maszyn wirtualnych dla obrazów programu Visual Studio:
 
    * Standardowa_D2_v3
    * Standardowa_D2s_v3
@@ -79,37 +79,37 @@ System Azure oferuje szeroką gamę rozmiarów maszyn wirtualnych. Ponieważ pro
    * Standard_D2S_v2
    * Standardowa_D3_v2
     
-Aby uzyskać więcej informacji na najnowszej rozmiary zobacz [rozmiary dla systemu Windows maszyny wirtualne na platformie Azure](/azure/virtual-machines/windows/sizes).
+Aby uzyskać więcej informacji na temat najnowszych rozmiarów maszyny, zobacz [rozmiary dla Windows maszyn wirtualnych na platformie Azure](/azure/virtual-machines/windows/sizes).
 
-Przy użyciu platformy Azure możesz przeprowadzić ponowne równoważenie początkowy wybór zmiana rozmiaru maszyny Wirtualnej. Można udostępnić nowej maszyny Wirtualnej o rozmiarze bardziej odpowiednie lub zmień rozmiar istniejącej maszyny Wirtualnej na inny komputer źródłowy. Aby uzyskać więcej informacji, zobacz [Zmień rozmiar maszyny Wirtualnej systemu Windows](/azure/virtual-machines/windows/resize-vm).
+Za pomocą platformy Azure można ponownie zrównoważyć początkowy wybór, zmieniając rozmiar maszyny Wirtualnej. Możesz aprowizować nową maszynę Wirtualną o rozmiarze bardziej odpowiednie lub zmienić rozmiar istniejącej maszyny Wirtualnej na inny sprzęt w podstawowej. Aby uzyskać więcej informacji, zobacz [zmienić rozmiar maszyny Wirtualnej z systemem Windows](/azure/virtual-machines/windows/resize-vm).
 
-## <a name="after-the-vm-is-running-whats-next"></a>Po uruchomieniu maszyny Wirtualnej, co to jest dalej?
-Visual Studio następuje modelu "bring your own license" na platformie Azure. Podobnie jak w przypadku instalacji na sprzęcie jest jednym z pierwszych kroków licencjonowania instalację programu Visual Studio. Aby odblokować programu Visual Studio, albo:
-- Zaloguj się przy użyciu konta Microsoft, który został skojarzony z subskrypcją programu Visual Studio 
-- Klucz produktu dołączony do początkowej zakupu odblokować program Visual Studio
+## <a name="after-the-vm-is-running-whats-next"></a>Po uruchomieniu maszyny Wirtualnej, co przyniesie przyszłość?
+Program Visual Studio następuje modelu "bring your own license" na platformie Azure. Podobnie jak w przypadku instalacji na sprzęcie, na jednym z pierwszych kroków jest licencjonowanie instalację programu Visual Studio. Aby odblokować programu Visual Studio, albo:
+- Zaloguj się przy użyciu konta Microsoft, która jest skojarzona z subskrypcji programu Visual Studio 
+- Odblokuj programu Visual Studio za pomocą klucza produktu, dostarczone z Twojej początkowej kwoty zakupu
 
 Aby uzyskać więcej informacji, zobacz [Zaloguj się do programu Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) i [jak odblokować program Visual Studio](/visualstudio/ide/how-to-unlock-visual-studio).
 
-## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Jak mogę zapisać programowanie maszyny Wirtualnej w przyszłości lub zespołu używają?
+## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Jak mogę zapisać deweloperskiej maszynie Wirtualnej w przyszłości lub zespołu używać?
 
-Spektrum środowisk deweloperskich jest ogromny, a istnieje rzeczywistych kosztów związanych z zbudowaniu bardziej złożonych środowiskach. Niezależnie od konfiguracji w danym środowisku można zapisać lub przechwycenia maszyny Wirtualnej skonfigurowanych jako "podstawowy obraz" do użytku w przyszłości lub innych członków zespołu. Następnie podczas rozruchu nowej maszyny Wirtualnej, należy ustanowić je z obrazu podstawowego zamiast obrazu portalu Azure Marketplace.
+Spektrum środowisk deweloperskich jest bardzo duży i jest prawdziwy koszt związany z kompilowania bardziej złożonych środowiskach. Niezależnie od konfiguracji w danym środowisku można zapisać lub przechwycenia maszyny Wirtualnej skonfigurowanej jako "obrazu podstawowego" do użycia w przyszłości lub dla innych członków zespołu. Następnie podczas rozruchu nową maszynę Wirtualną, możesz aprowizować je z obrazu podstawowego zamiast obrazu z witryny Azure Marketplace.
 
-Krótkie podsumowanie: Użyj narzędzia przygotowywania systemu (Sysprep) i zamykania uruchomionej maszyny Wirtualnej, a następnie przechwycić *(rysunek 1)* maszyny Wirtualnej jako obraz za pomocą interfejsu użytkownika w portalu Azure. Zapisuje Azure `.vhd` pliku zawierającego obraz na koncie magazynu wybrane. Nowy obraz następnie jest wyświetlany jako zasób obrazu w Twojej subskrypcji listy zasobów.
+Krótkie podsumowanie: za pomocą narzędzia przygotowywania systemu (Sysprep) i Zamknij uruchomioną maszynę Wirtualną, a następnie przechwycić *(rysunek 1)* maszynę Wirtualną jako obraz przy użyciu interfejsu użytkownika w witrynie Azure portal. Zapisuje Azure `.vhd` pliku zawierającego obraz wybrane na koncie magazynu. Nowy obraz następnie wyświetlany jako zasób obrazu w Twojej subskrypcji listy zasobów.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(Rysunek 1) Przechwycenie obrazu przy użyciu interfejsu użytkownika portalu Azure.*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(Rysunek 1) Przechwycenie obrazu przy użyciu interfejsu użytkownika witryny Azure portal.*</center>
 
-Aby uzyskać więcej informacji, zobacz [tworzenie zarządzanego obrazu uogólniony maszyny wirtualnej na platformie Azure](/azure/virtual-machines/windows/capture-image-resource).
+Aby uzyskać więcej informacji, zobacz [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](/azure/virtual-machines/windows/capture-image-resource).
 
 > [!IMPORTANT]
-> Należy pamiętać użyć narzędzia Sysprep, aby przygotować maszyny Wirtualnej. Jeśli pominiesz ten krok Azure nie może obsłużyć maszyny Wirtualnej z obrazu.
+> Należy pamiętać przygotować maszynę Wirtualną przy użyciu narzędzia Sysprep. Jeśli pominiesz ten krok, Azure, nie można aprowizować Maszynę wirtualną z obrazu.
 
 > [!NOTE]
-> Nadal naliczane pewien koszt związany z magazynu obrazów, ale czy przyrostowe koszt może być niewielka w porównaniu kosztów odbudować dla każdego członka zespołu, który wymaga jednej maszyny Wirtualnej od początku. Na przykład kosztuje kilka dolarów do tworzenia i przechowywania dla miesiąca, w którym jest wielokrotnego użytku przez Twój zespół całego obrazu 127 GB. Koszty te są jednak niewielka w porównaniu do godziny, w których każdy pracownik inwestuje do tworzenia, a następnie sprawdź okno deweloperów poprawnie skonfigurowane do własnego użytku.
+> Nadal naliczane pewien koszt związany z magazynu obrazów, ale rosnących kosztów można nieznaczące w porównaniu do kosztów ogólnych odbudować maszyny Wirtualnej od zera dla każdego członka zespołu, który musi mieć jeden. Na przykład koszty kilka dolarów, można utworzyć i zapisać obraz 127 GB na miesiąc, będącego wielokrotnego użytku przez całego zespołu. Jednak te koszty są nieistotne względem godzin, w których każdemu pracownikowi inwestuje do skompilowania i sprawdzanie poprawności pola dev prawidłowo skonfigurowane, do ich użytku osobistego.
 
-Ponadto zadań rozwoju lub technologii mogą wymagać więcej skalowania, takich jak odmian konfiguracje programowanie i wielu konfiguracji maszyny. Azure DevTest Labs umożliwia utworzenie _przepisami_ który zautomatyzować konstrukcji "złotego obrazu". DevTest Labs umożliwia także zarządzanie zasadami dla Twojego zespołu uruchomionych maszyn wirtualnych. [Za pomocą usługi Azure DevTest Labs dla deweloperów](/azure/devtest-lab/devtest-lab-developer-lab) jest najlepsze źródła, aby uzyskać więcej informacji na temat DevTest Labs.
+Ponadto zadania rozwoju lub technologii potrzebować więcej skali, takie jak różne typy konfiguracji rozwoju i wielu konfiguracji maszyny. Azure DevTest Labs umożliwia tworzenie _przepisy_ , automatyzacja konstrukcji swoje "złotego obrazu." DevTest Labs umożliwia także zarządzanie zasadami dla Twojego zespołu działających maszyn wirtualnych. [Dla deweloperów przy użyciu usługi Azure DevTest Labs](/azure/devtest-lab/devtest-lab-developer-lab) jest najlepsze źródło, aby uzyskać więcej informacji na temat usługi DevTest Labs.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy wiadomo na temat wstępnie skonfigurowane obrazów programu Visual Studio, następnym krokiem jest tworzenie nowej maszyny Wirtualnej:
+Teraz, gdy wiesz o wstępnie skonfigurowanych obrazów programu Visual Studio, następnym krokiem jest do utworzenia nowej maszyny Wirtualnej:
 
-* [Utwórz maszynę Wirtualną za pośrednictwem portalu Azure](quick-create-portal.md)
-* [Maszyn wirtualnych systemu Windows — omówienie](overview.md)
+* [Utwórz Maszynę wirtualną za pośrednictwem witryny Azure portal](quick-create-portal.md)
+* [Omówienie maszyn wirtualnych Windows](overview.md)

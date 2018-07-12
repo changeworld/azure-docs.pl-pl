@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
 ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809458"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611236"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Aplikacja wielowarstwowa platformy .NET używająca kolejek usługi Azure Service Bus
 
@@ -57,7 +57,7 @@ W poniższych sekcjach omówiono kod, który implementuje tę architekturę.
 
 ## <a name="create-a-namespace"></a>Tworzenie przestrzeni nazw
 
-Pierwszym krokiem jest utworzenie *przestrzeni nazw*i uzyskać [dostępu sygnatury dostępu Współdzielonego](service-bus-sas.md) klucza dla tego obszaru nazw. Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
+Pierwszym krokiem jest utworzenie *przestrzeni nazw*i uzyskać [sygnatury dostępu współdzielonego (SAS)](service-bus-sas.md) klucza dla tego obszaru nazw. Przestrzeń nazw wyznacza granice każdej aplikacji uwidacznianej za pośrednictwem usługi Service Bus. Klucz sygnatury dostępu współdzielonego jest generowany przez system po utworzeniu przestrzeni nazw. Kombinacja nazwy przestrzeni nazw i klucza sygnatury dostępu współdzielonego dostarcza poświadczenia dla usługi Service Bus w celu uwierzytelnienia dostępu do aplikacji.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 

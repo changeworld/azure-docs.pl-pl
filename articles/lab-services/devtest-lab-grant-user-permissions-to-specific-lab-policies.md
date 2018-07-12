@@ -1,6 +1,6 @@
 ---
-title: Przyznawanie uprawnień użytkownikom laboratorium określonych zasad | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można udzielić użytkownikowi uprawnień do zasad określonych laboratorium w usłudze DevTest Labs na podstawie potrzeb każdego użytkownika
+title: Udzielanie uprawnień użytkownika do określonych laboratorium zasad | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak udzielić użytkownikowi uprawnień do zasad określonych laboratorium w usłudze DevTest Labs, odpowiednio do potrzeb każdego użytkownika
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 2b81c23b5cf9ea5d4bfc47d36ae251f762ffad11
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787458"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38539694"
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Przyznawanie uprawnień użytkownikom zasad określonych laboratorium
+# <a name="grant-user-permissions-to-specific-lab-policies"></a>Udzielanie uprawnień użytkownika do zasad określonych laboratorium
 ## <a name="overview"></a>Przegląd
-W tym artykule przedstawiono sposób udzielić uprawnień użytkowników do zasad laboratorium określonego za pomocą programu PowerShell. W ten sposób uprawnienia mogą być stosowane zgodnie z potrzebami każdego użytkownika. Na przykład można przyznać określonemu użytkownikowi możliwość zmiany ustawień zasad maszyny Wirtualnej, ale nie zasady kosztów.
+W tym artykule pokazano, jak udzielić uprawnień użytkowników do zasad wymagających używania określonego laboratorium przy użyciu programu PowerShell. Dzięki temu uprawnienia można zastosować zależnie od potrzeb każdego użytkownika. Na przykład można przyznać określonego użytkownika, możliwość zmiany ustawień zasad maszyny Wirtualnej, ale nie zasady kosztów.
 
 ## <a name="policies-as-resources"></a>Zasady jako zasoby
-Zgodnie z opisem w [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md) artykułu, RBAC umożliwia precyzyjne zarządzanie dostępem zasobów platformy Azure. Przy użyciu funkcji RBAC, można rozdzielenie obowiązków w obrębie organizacji DevOps i udzielić tylko takiego dostępu dla użytkowników, które są niezbędne do wykonywania swoich zadań.
+Zgodnie z opisem w [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md) artykułu, RBAC umożliwia precyzyjne zarządzanie dostępem zasobów na platformie Azure. Przy użyciu funkcji RBAC, można segregować obowiązki w obrębie zespołu DevOps i udzielać uprawnień dostępu do użytkowników, które są im niezbędne do wykonywania swoich zadań.
 
-W usłudze DevTest Labs zasady jest typ zasobu, który umożliwia działanie RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Każda zasada laboratorium jest zasobem w typie zasobów zasad i można przypisać zasięgu roli RBAC.
+W usłudze DevTest Labs zasady jest typ zasobu, który umożliwia działanie RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Wszystkie zasady laboratorium jest zasobem w typie zasób zasad i mogą być przypisane jako zakres do roli RBAC.
 
-Na przykład, aby przyznać użytkownikom uprawnienia odczytu/zapisu do **dozwolone rozmiary maszyn wirtualnych** zasad, należy utworzyć niestandardową rolę, która współdziała z **Microsoft.DevTestLab/labs/policySets/policies/*** akcji i Przypisz tę rolę niestandardową, w zakresie odpowiednich użytkowników **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Na przykład, aby przyznać użytkownikom uprawnienia odczytu/zapisu do **dozwolone rozmiary maszyn wirtualnych** zasady, należy utworzyć rolę niestandardową, która współdziała z **Microsoft.DevTestLab/labs/policySets/policies/*** Akcja, a następnie przypisz odpowiednich użytkowników do tej roli niestandardowej w zakresie **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Aby dowiedzieć się więcej na temat ról niestandardowych w RBAC, zobacz [niestandardowych ról dla kontroli dostępu](../role-based-access-control/custom-roles.md).
+Aby dowiedzieć się więcej na temat ról niestandardowych w ROLACH, zobacz [kontroli dostępu niestandardowych ról](../role-based-access-control/custom-roles.md).
 
-## <a name="creating-a-lab-custom-role-using-powershell"></a>Tworzenie laboratorium niestandardowej roli zabezpieczeń przy użyciu programu PowerShell
-Aby rozpocząć pracę, należy przeczytać artykuł następujące, które wyjaśniają, jak zainstalować i skonfigurować poleceń cmdlet programu PowerShell usługi Azure: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).
+## <a name="creating-a-lab-custom-role-using-powershell"></a>Tworzenie roli niestandardowej laboratorium przy użyciu programu PowerShell
+Aby rozpocząć pracę, musisz przeczytaj następujący artykuł, w którym wyjaśniono, jak zainstalować i skonfigurować poleceń cmdlet programu Azure PowerShell: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).
 
-Po skonfigurowaniu poleceń cmdlet programu Azure PowerShell, można wykonywać następujące zadania:
+Po skonfigurowaniu poleceń cmdlet programu Azure PowerShell, należy wykonać następujące zadania:
 
-* Lista wszystkich operacji/akcje dla dostawcy zasobów
+* Lista wszystkich operacji/akcji dla dostawcy zasobów
 * Akcje listy z określoną rolą:
-* Tworzenie niestandardowej roli zabezpieczeń
+* Tworzenie roli niestandardowej
 
-Poniższy skrypt programu PowerShell przedstawiono przykłady sposobu wykonywania następujących zadań:
+Poniższy skrypt programu PowerShell przedstawia przykładowe sposoby wykonywania następujących zadań:
 
     ‘List all the operations/actions for a resource provider.
     Get-AzureRmProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
@@ -61,8 +61,8 @@ Poniższy skrypt programu PowerShell przedstawiono przykłady sposobu wykonywani
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Przypisywanie uprawnień do użytkownika dla określonych zasad przy użyciu ról niestandardowych
-Po zdefiniowaniu poszczególnych ról niestandardowych, można przypisać je do użytkowników. Aby można było przypisać niestandardową rolę dla użytkownika, należy najpierw uzyskać **ObjectId** reprezentujący użytkownika. Aby to zrobić, użyj **Get-AzureRmADUser** polecenia cmdlet.
+## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Przypisywanie uprawnień użytkownika dla określonych zasad za pomocą ról niestandardowych
+Po zdefiniowaniu roli niestandardowej można przypisać je do użytkowników. Aby można było przypisać niestandardową rolę do użytkownika, należy najpierw uzyskać **ObjectId** reprezentujący tego użytkownika. Aby to zrobić, należy użyć **Get AzureRmADUser** polecenia cmdlet.
 
 W poniższym przykładzie **ObjectId** z *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 jest użytkownik.
 
@@ -72,11 +72,11 @@ W poniższym przykładzie **ObjectId** z *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Po utworzeniu **ObjectId** dla użytkownika i nazwy niestandardowej roli zabezpieczeń, można przypisać tej roli użytkownika z **AzureRmRoleAssignment nowy** polecenia cmdlet:
+Po utworzeniu **ObjectId** dla użytkownika oraz nazwa roli niestandardowej można przypisać tę rolę do użytkownika o **New-AzureRmRoleAssignment** polecenia cmdlet:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
-W poprzednim przykładzie **AllowedVmSizesInLab** zasady są używane. Można użyć dowolnego z następujących zasad:
+W poprzednim przykładzie **AllowedVmSizesInLab** zasady są używane. Możesz użyć dowolnej z następujących zasad:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -86,7 +86,7 @@ W poprzednim przykładzie **AllowedVmSizesInLab** zasady są używane. Można u�
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-Raz użytkownikowi nie zostały przyznane użytkownikowi uprawnień do laboratorium określone zasady, poniżej przedstawiono niektóre warto rozważyć poniższe kroki:
+Po użytkownik zostały przyznane użytkownikowi uprawnień do laboratorium określonych zasad, poniżej przedstawiono kilka następnych kroków, aby wziąć pod uwagę:
 
 * [Zabezpieczanie dostępu do laboratoriów](devtest-lab-add-devtest-user.md)
 * [Ustawianie zasad laboratorium](devtest-lab-set-lab-policy.md)

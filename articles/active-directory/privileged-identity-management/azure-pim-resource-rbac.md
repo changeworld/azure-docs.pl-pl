@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 7cf628495a79fe775528080ae6ec31df8e9a0f37
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447588"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38528624"
 ---
 # <a name="pim-for-azure-resources"></a>Usługa PIM dla zasobów platformy Azure
 
@@ -59,7 +59,7 @@ Moje role zawierają listę swoje przypisania roli aktywnych i kwalifikujących 
 
 ## <a name="activate-roles"></a>Uaktywnij role
 
-Uaktywnianie ról dla zasobów platformy Azure wprowadza nową funkcjonalność, która umożliwia członkom kwalifikowania się do roli planowanie aktywacji dla przyszłej daty/godziny i wybierz czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Uaktywnianie ról dla zasobów platformy Azure wprowadza nową funkcjonalność, która umożliwia członkom kwalifikowania się do roli planowanie aktywacji dla przyszłej daty/godziny i wybierz czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów). Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](pim-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -156,7 +156,7 @@ Wybierz pozycję Przegląd, na pasku akcji, aby wyświetlić istniejące przegl�
 
 ![](media/azure-pim-resource-rbac/owner.png)
 
-[Dowiedz się więcej o przeglądach dostępu](../active-directory-privileged-identity-management-how-to-perform-security-review.md)
+[Dowiedz się więcej o przeglądach dostępu](pim-how-to-perform-security-review.md)
 
 >[!NOTE]
 Recenzje są obsługiwane tylko dla typów zasobów subskrypcji w tej chwili.
@@ -196,5 +196,5 @@ Wybierz Moje role z menu nawigacji po lewej stronie i wybierz odpowiednią rolę
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md)
-- Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](../active-directory-privileged-identity-management-how-to-activate-role.md)
+- Dowiedz się więcej o [uaktywnianie ról usługi Azure AD, w tym miejscu](pim-how-to-activate-role.md)
 - [Przepływy pracy zatwierdzania usługi PIM](azure-ad-pim-approval-workflow.md)

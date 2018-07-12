@@ -1,6 +1,6 @@
 ---
-title: Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń | Dokumentacja firmy Microsoft
-description: " Dowiedz się, jak do dołączenia do usługi Azure Security Center Standard dla zwiększonych zabezpieczeń. "
+title: Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń | Dokumentacja firmy Microsoft
+description: " Dowiedz się, jak można dołączyć do usługi Azure Security Center w warstwie standardowa dla zwiększonych zabezpieczeń. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,124 +12,124 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416493"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479465"
 ---
-# <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń
-Uaktualnij do Security Center Standard, aby skorzystać z rozszerzonymi funkcjami zabezpieczeń, zarządzania i ochrony przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować Standard bezpłatnie do 60 dni. Zobacz temat w Centrum zabezpieczeń [cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
+# <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do usługi Azure Security Center w warstwie standardowa celu uzyskania zwiększonych zabezpieczeń
+Uaktualnij do standardowej usługi Security Center z zalet zarządzania zwiększone zabezpieczenia i ochrona przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz wypróbować bezpłatnie przez 60 dni Standard. Odwiedź Centrum zabezpieczeń [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
 
-Standard Centrum zabezpieczeń obejmują:
+Security Center w warstwie standardowa obejmuje:
 
-- **Hybrydowe zabezpieczeń** — Pobierz ujednoliconego podglądu zabezpieczeń we wszystkich lokalną i obciążeń w chmurze. Zastosuj zasady zabezpieczeń i stale oceny zabezpieczeń obciążeń chmury hybrydowej w celu zapewnienia zgodności ze standardami zabezpieczeń. Zbieranie, wyszukiwanie i analizowanie danych zabezpieczeń z różnych źródeł, w tym zapór i innych rozwiązań partnerskich.
-- **Zaawansowane wykrywanie zagrożeń** — zaawansowane analizy i Microsoft inteligentnego zabezpieczeń wykres tak, aby uzyskać przewagę nad zmieniających się przez atakami.  Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
-- **Kontroli dostępu i aplikacji** — blok przed złośliwym oprogramowaniem i innych niechciane aplikacje, stosując zalecenia listę dozwolonych podobnej dostosowane do określonych obciążeń i obsługiwane przez usługę uczenie maszynowe. Zmniejsz sieci ataku just in time, kontrolowany dostęp do zarządzania porty na maszynach wirtualnych Azure, co znacznie zmniejsza podatność na ataki siłowe i inne ataki sieciowe.
+- **Zabezpieczenia hybrydowe** — Uzyskaj ujednolicony widok zabezpieczeń dla wszystkich lokalnych obciążeń i w chmurze. Stosowanie zasad zabezpieczeń i nieustannie oceniaj zabezpieczenia obciążeń chmury hybrydowej w celu zapewnienia zgodności ze standardami zabezpieczeń. Zbieranie, wyszukiwanie i analizowanie danych zabezpieczeń z różnych źródeł, w tym zapór i innych rozwiązań partnerskich.
+- **Zaawansowane wykrywanie zagrożeń** — zaawansowane analizy i usługi Microsoft Intelligent Security Graph, aby uzyskać przewagę nad ewoluującymi cyberatakami.  Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
+- **Kontroli dostępu i aplikacji** — blokuj złośliwe oprogramowanie i inne niechciane aplikacje, stosując zalecenia dotyczące listy dozwolonych dostosowane do konkretnych obciążeń i obsługiwane przez usługi machine learning. Zmniejsz narażony na ataki sieciowe dzięki just-in-time kontrolowany dostęp do portów zarządzania na maszynach wirtualnych platformy Azure, znacząco ograniczyć narażenie na ataki siłowe i inne ataki sieciowe.
 
-## <a name="detecting-unprotected-resources"></a>Wykrywanie niechronione zasobów     
+## <a name="detecting-unprotected-resources"></a>Wykrywanie niechronionych zasobach     
 Usługa Security Center automatycznie wykrywa wszelkie subskrypcje i obszary robocze platformy Azure nie włączone do standardu usługi Security Center. Obejmuje to subskrypcje platformy Azure korzystające z usługi Security Center w warstwie bezpłatnej oraz obszary robocze, które nie mają włączonego rozwiązania w zakresie zabezpieczeń.
 
-Można uaktualnić całą subskrypcji platformy Azure do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby w ramach subskrypcji, lub można określić unikatowe zasady, aby uaktualnić tylko grupy zasobów dla określonych. Jeśli ustawienia zasad grupy zasobów są unikatowe, Centrum zabezpieczeń nie spowoduje zastąpienia zasady cenowej po uaktualnieniu subskrypcji do warstwy standardowa. Stosowanie standardowego warstwy do subskrypcji ma zastosowanie tylko do maszyn wirtualnych w ramach subskrypcji, które są raportowania do obszarów roboczych utworzonych przez Centrum zabezpieczeń. Stosowanie standardowego warstwy do obszaru roboczego dotyczą wszystkich zasobów raportowania do obszaru roboczego.
+Całej subskrypcji platformy Azure można uaktualnić do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby w ramach subskrypcji, lub można zdefiniować unikatowe zasady do konkretnej grupy zasobów tylko uaktualnienia. Jeśli ustawienia zasad grupy zasobów są unikatowe, usługa Security Center nie spowoduje zastąpienia polityką cenową podczas uaktualniania subskrypcji do warstwy standardowa. Stosowanie standardowej warstwy do subskrypcji ma zastosowanie tylko do maszyn wirtualnych w ramach subskrypcji, które przesyłają raporty do obszarów roboczych utworzonych przez usługę Security Center. Stosowanie standardowej warstwy do obszaru roboczego, który ma zastosowanie do wszystkich zasobów raportowania do obszaru roboczego.
 
 > [!NOTE]
-> Możesz zarządzać kosztów i ograniczyć ilość danych zebranych przez rozwiązanie ograniczając go z określonym zestawem agentów. [Celem rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) pozwala zastosować zakres do rozwiązania i docelowymi podzbiorowi komputerów w obszarze roboczym.  Jeśli korzystasz z rozwiązania elementów docelowych, Centrum zabezpieczeń zawiera obszar roboczy jako nie ma rozwiązania.
+> Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów. [Określanie celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) pozwala zastosować zakres z rozwiązaniem i wybierać docelowo podzbiorowi komputerów w obszarze roboczym.  Jeśli używasz rozwiązania przeznaczone dla usługi Security Center wyświetla listę obszaru roboczego jako niemający rozwiązania.
 >
 >
 
-## <a name="upgrade-an-azure-subscription"></a>Uaktualnij subskrypcję platformy Azure
-Aby uaktualnić wszystkie subskrypcje ze standardem:
-1. W menu głównym Centrum zabezpieczeń, wybierz **dołączania**.
-2. W obszarze **dołączania z zabezpieczeniami zaawansowanymi**, Centrum zabezpieczeń wyświetla kwalifikujących się do dołączenia do subskrypcji. Można uaktualnić wszystkie z wymienionych subskrypcji, wybierając **planu Standard zastosować**.
+## <a name="upgrade-an-azure-subscription"></a>Uaktualnienie subskrypcji platformy Azure
+Aby uaktualnić wszystkie subskrypcje do warstwy standardowa:
+1. W menu głównym usługi Security Center wybierz pozycję **Dołączanie do zabezpieczeń zaawansowanych**.
+2. W obszarze **dołączanie do zabezpieczeń zaawansowanych**, usługa Security Center wyświetla listę subskrypcji, które kwalifikują się do dołączenia. Można uaktualnić wszystkie z wymienionych subskrypcji, wybierając **zastosować standardowy plan**.
 
   ![Uaktualnij wszystkie subskrypcje][1]
 
-Aby uaktualnić subskrypcję poszczególnych ze standardem: można uaktualnić subskrypcję z **dołączania** wybierając **zastosować warstwy standardowa**. Aby uaktualnić grupę zasobów w ramach subskrypcji na Standard, wybierz subskrypcję:
-1. Wybierz subskrypcję.  **Zasady zabezpieczeń** zawiera informacje o grupie zasobów zawartych w subskrypcji.
-2. Wybierz subskrypcji lub grupy zasobów.
+Aby przejść z indywidualnej subskrypcji na warstwę standardowa: można uaktualnić subskrypcję z **dołączania** , wybierając **zastosować warstwy standardowa**. Aby uaktualnić grupę zasobów w ramach subskrypcji na warstwę standardowa, wybierz subskrypcję:
+1. Wybierz subskrypcję.  **Zasady zabezpieczeń** zawiera informacje dotyczące grupy zasobów zawartych w subskrypcji.
+2. Wybierz subskrypcję lub grupę zasobów.
 
   ![Uaktualnij wszystkie subskrypcje][2]
 
-3. Wybierz **standardowe** uaktualnienia z wolnym do standardowego.
+3. Wybierz **standardowa** Aby zmienić warstwę bezpłatna do warstwy standardowa.
 4. Wybierz pozycję **Zapisz**.
 
 > [!NOTE]
-> Uaktualnianie subskrypcji ze standardem spowoduje włączenie [automatyczne udostępnianie](security-center-enable-data-collection.md) Jeśli wcześniej była wyłączona. Firma Microsoft zaleca automatyczne udostępnianie monitorowania agentów.
+> Uaktualnienie subskrypcji do warstwy standardowa, aby włączyć [automatycznej aprowizacji](security-center-enable-data-collection.md) Jeśli wcześniej była wyłączona. Firma Microsoft zaleca automatyczną aprowizację agentów monitorowania.
 >
 >
 
 ## <a name="upgrade-a-workspace"></a>Uaktualnianie obszaru roboczego
-Stosowanie normy do obszaru roboczego ma zastosowanie do wszystkich zasobów, raportowanie do obszaru roboczego.
+Stosowanie normy, do obszaru roboczego ma zastosowanie do wszystkich zasobów raportowania do obszaru roboczego.
 
 1. Wróć do **dołączania** bloku.
 2. Wybierz obszar roboczy.
 
   ![Uaktualnianie obszaru roboczego][8]
 
-3. Wybierz **standardowe** do uaktualnienia.  
+3. Wybierz **standardowa** do uaktualnienia.  
 4. Wybierz pozycję **Zapisz**.
 
    > [!NOTE]
-   > Scenariusz, w którym użytkownik może nie mieć wolne lub Standard stosowany do swojego obszaru roboczego nie istnieje. W przypadku wybrania wolne funkcji bezpłatne Centrum zabezpieczeń są stosowane na maszynach wirtualnych platformy Azure tylko. Bezpłatne możliwości nie są stosowane do komputerów z systemem innym niż Azure. W przypadku wybrania Standard standardowych funkcji są stosowane do wszystkich maszyn wirtualnych platformy Azure i komputerów z systemem innym niż Azure raportowania do obszaru roboczego. Firma Microsoft zaleca stosowanie Standard do zapewnienia zaawansowanych zabezpieczeń platformy Azure i zasobów innych niż Azure.
+   > Jest to scenariusz, gdzie możesz nie mieć bezpłatnej lub Standard stosowany do swojego obszaru roboczego. Jeśli wybierzesz bezpłatna, bezpłatnych funkcji dostępnych w Centrum zabezpieczeń są stosowane na maszynach wirtualnych platformy Azure tylko. Bezpłatne funkcje nie są stosowane do komputerów spoza platformy Azure. Jeśli wybierzesz Standard, funkcje wersji standardowej są stosowane do wszystkich maszyn wirtualnych platformy Azure i komputerów spoza platformy Azure wysyłających zgłoszenia do obszaru roboczego. Firma Microsoft zaleca się zastosowanie Standard w celu zapewnienia zaawansowanych zabezpieczeń platformy Azure i zasobów nienależących do platformy Azure.
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Dołączyć komputery z systemem innym niż Azure
-Usługa Security Center może monitorować stan bezpieczeństwa komputerów nienależących do platformy Azure, ale musisz najpierw dołączyć te zasoby. Można dodać komputery z systemem innym niż Azure z **dołączania** bloku lub **obliczeniowe** bloku. Zostanie omówiony obu metod.
+## <a name="onboard-non-azure-computers"></a>Dodawanie komputerów nienależących do platformy Azure
+Usługa Security Center może monitorować stan bezpieczeństwa komputerów nienależących do platformy Azure, ale musisz najpierw dołączyć te zasoby. Można dodać komputery spoza platformy Azure z **dołączania** bloku lub **obliczenia** bloku. Omówimy obu tych metod.
 
-### <a name="add-new-non-azure-computers-from-onboarding"></a>Dodaj nowe komputery z systemem innym niż Azure z dołączania
+### <a name="add-new-non-azure-computers-from-onboarding"></a>Dodać nowe komputery spoza platformy Azure z dołączania
 
 1. Wróć do **dołączania**.   
-2. Wybierz **czy chcesz dodać nowe komputery z systemem innym niż Azure**.
+2. Wybierz **czy chcesz dodać nowe komputery spoza platformy Azure**.
 
   ![Dodawanie komputera spoza platformy Azure][3]
 
-Jeśli masz istniejące obszarów roboczych, są one wyświetlane w obszarze **dodać nowe komputery Non-Azure**. Można dodać komputery do istniejący obszar roboczy lub utworzyć nowy obszar roboczy. Aby utworzyć nowy obszar roboczy, wybierz łącze **Dodaj nowy obszar roboczy**.
+W przypadku istniejących obszarów roboczych są wymienione w obszarze **dodać nowe komputery spoza platformy Azure**. Możesz dodać komputery do istniejącego obszaru roboczego, lub Utwórz nowy obszar roboczy. Aby utworzyć nowy obszar roboczy, wybierz link **Dodaj nowy obszar roboczy**.
 
-Zostanie omówiony obu metod:
+Omówimy obu tych metod:
 
-- Utwórz nowy obszar roboczy, a następnie dodaj komputer
-- Wybierz istniejący obszar roboczy, a następnie dodaj komputer
+- Utwórz nowy obszar roboczy i Dodaj komputer
+- Wybierz istniejący obszar roboczy i Dodaj komputer
 
-**Utwórz nowy obszar roboczy, a następnie dodaj komputer**
+**Utwórz nowy obszar roboczy i Dodaj komputer**
 
-1. W obszarze **dodać nowe komputery z systemem innym niż Azure**, wybierz pozycję **Dodaj nowy obszar roboczy**.
+1. W obszarze **dodać nowe komputery spoza platformy Azure**, wybierz opcję **Dodaj nowy obszar roboczy**.
 
    ![Dodaj nowy obszar roboczy][4]
 
-2. W obszarze **zabezpieczeń i inspekcji**, wybierz pozycję **obszarem roboczym pakietu OMS** do utworzenia nowego obszaru roboczego.
-3. W obszarze **obszarem roboczym pakietu OMS**, wprowadź informacje o obszarze roboczym.
-4. W obszarze **obszarem roboczym pakietu OMS**, wybierz pozycję **OK**.  Po wybraniu OK zostanie wyświetlony link pobierania agenta systemu Windows lub Linux, a klucze dla Identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
-5. W obszarze **zabezpieczeń i inspekcji**, wybierz pozycję **OK**.
+2. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **obszaru roboczego pakietu OMS** Aby utworzyć nowy obszar roboczy.
+3. W obszarze **obszaru roboczego pakietu OMS**, wprowadź informacje o obszarze roboczym.
+4. W obszarze **obszaru roboczego pakietu OMS**, wybierz opcję **OK**.  Po wybraniu przycisku OK otrzymasz link pobierania agenta Windows lub Linux i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.
+5. W obszarze **zabezpieczenia i inspekcja**, wybierz opcję **OK**.
 
-**Wybierz istniejący obszar roboczy, a następnie dodaj komputer**
+**Wybierz istniejący obszar roboczy i Dodaj komputer**
 
-Można dodać komputer, wykonując działania przepływu pracy od **dołączania**, jak pokazano powyżej. Można również dodać komputer, wykonując działania przepływu pracy od **obliczeniowe**. W tym przykładzie używamy **obliczeniowe**.
+Możesz dodać komputer, postępując zgodnie z przepływu pracy od **dołączania**, jak pokazano powyżej. Możesz również dodać komputer, postępując zgodnie z przepływu pracy od **obliczenia**. W tym przykładzie używamy **obliczenia**.
 
-1. Wróć do Centrum zabezpieczeń w menu głównym i **omówienie** pulpitu nawigacyjnego.
+1. Wróć do menu głównego usługi Security Center i **Przegląd** pulpitu nawigacyjnego.
 
    ![Przegląd][5]
 
-2. Wybierz **obliczeniowe** kafelka.
-3. W obszarze **obliczeniowe**, wybierz pozycję **dodać komputery**.
+2. Wybierz **obliczenia i aplikacje**.
+3. W obszarze **obliczenia i aplikacje**, wybierz opcję **dodawania komputerów**.
 
    ![Blok Obliczanie][6]
 
-4. W obszarze **dodać nowe komputery z systemem innym niż Azure**, wybierz obszar roboczy, aby połączyć komputer, a następnie kliknij przycisk **Dodaj komputery**.
+4. W obszarze **dodać nowe komputery spoza platformy Azure**, wybierz obszar roboczy, aby połączyć komputer, a następnie kliknij przycisk **Dodaj komputery**.
 
    ![Dodawanie komputerów][7]
 
- **Bezpośredniego agenta** bloku zawiera również link do pobierania agenta systemu Windows lub Linux, a klucze dla Identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.   
+ **Agent bezpośredni** blok zawiera również link do pobierania agenta Windows lub Linux i kluczami identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.   
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób dołączyć Azure i zasobów innych niż Azure, aby można było korzystać z zaawansowanych zabezpieczeń w Centrum zabezpieczeń.  Aby zrobić więcej z zasobów został załadowany, zobacz
+W tym artykule pokazano, jak dołączyć platformy Azure i zasobów nienależących do platformy Azure, aby można było korzystać z zaawansowanych zabezpieczeń w Centrum zabezpieczeń.  Aby robić więcej przy użyciu zasobów dołączone, zobacz
 
 - [Włączanie zbierania danych](security-center-enable-data-collection.md)
 - [Raport analizy zagrożeń](security-center-threat-report.md)
-- [Na wszelki dostęp maszyny Wirtualnej](security-center-just-in-time.md)
+- [Dostęp dokładnie na czas maszyny Wirtualnej](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png

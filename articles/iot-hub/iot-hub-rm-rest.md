@@ -1,6 +1,6 @@
 ---
-title: Tworzenie Centrum Azure IoT przy użyciu dostawcy zasobów interfejsu API REST | Dokumentacja firmy Microsoft
-description: Jak użyć interfejsu API REST dostawcy zasobów w celu tworzenia Centrum IoT.
+title: Tworzenie usługi Azure IoT hub przy użyciu interfejsu API REST dostawcy zasobów | Dokumentacja firmy Microsoft
+description: Jak używać interfejsu API REST dostawcy zasobów w celu utworzenia Centrum IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
 ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635223"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38539775"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Tworzenie Centrum IoT przy użyciu dostawcy zasobów interfejsu API REST (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Można użyć [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] tworzenie i zarządzanie nimi centra Azure IoT programowo. Ten samouczek pokazuje, jak używać dostawcy zasobów Centrum IoT interfejsu API REST do tworzenia Centrum IoT z programu C#.
+Możesz użyć [interfejs API REST dostawcy zasobów usługi IoT Hub] [ lnk-rest-api] do tworzenia i zarządzania usługi Azure IoT hubs programowo. W tym samouczku dowiesz się, jak tworzenie Centrum IoT z poziomu programu C# za pomocą interfejsu API REST dostawcy zasobów usługi IoT Hub.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule omówiono przy użyciu modelu wdrażania usługi Azure Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Program Visual Studio 2015 lub Visual Studio 2017.
 * Aktywne konto platformy Azure. <br/>Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
-* [Azure PowerShell 1.0] [ lnk-powershell-install] lub nowszym.
+* [Azure PowerShell 1.0] [ lnk-powershell-install] lub nowszej.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>Przygotowanie projektu programu Visual Studio
 
-1. W programie Visual Studio, utworzyć projekt Visual C# pulpitu systemu Windows klasycznego za pomocą **aplikacji konsoli (.NET Framework)** szablonu projektu. Nazwij projekt **CreateIoTHubREST**.
+1. W programie Visual Studio Utwórz projekt Visual C# Windows Classic Desktop za pomocą **Aplikacja konsoli (.NET Framework)** szablonu projektu. Nadaj projektowi nazwę **CreateIoTHubREST**.
 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**.
+2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nad projektem, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**.
 
-3. Sprawdź w Menedżerze pakietów NuGet **Uwzględnij wersję wstępną**i na **Przeglądaj** wyszukiwanie strony **Microsoft.Azure.Management.ResourceManager**. Wybierz pakiet, kliknij przycisk **zainstalować**w **Przejrzyj zmiany** kliknij **OK**, następnie kliknij przycisk **akceptuję** do akceptowania licencji.
+3. Sprawdź w Menedżerze pakietów NuGet **Uwzględnij wersję wstępną**, a następnie na **Przeglądaj** strony wyszukiwanie **Microsoft.Azure.Management.ResourceManager**. Wybierz pakiet, kliknij przycisk **zainstalować**w **przeglądanie zmian** kliknij **OK**, następnie kliknij przycisk **akceptuję** zaakceptowania licencji.
 
-4. Wyszukaj w Menedżerze pakietów NuGet **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kliknij przycisk **zainstalować**w **Przejrzyj zmiany** kliknij **OK**, następnie kliknij przycisk **akceptuję** do akceptowania licencji.
+4. W Menedżerze pakietów NuGet, wyszukaj **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kliknij przycisk **zainstalować**w **przeglądanie zmian** kliknij **OK**, następnie kliknij przycisk **akceptuję** Aby zaakceptować licencję.
 
-5. W pliku Program.cs Zastąp istniejące **przy użyciu** instrukcje następującym kodem:
+5. W pliku Program.cs Zastąp istniejące **przy użyciu** instrukcji z następującym kodem:
 
     ```csharp
     using System;
@@ -59,7 +59,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
     using System.Threading;
     ```
 
-6. W pliku Program.cs Dodaj następujące zmienne statyczne, zastępując symbole zastępcze. Należy zanotować **ApplicationId**, **SubscriptionId**, **TenantId**, i **hasło** we wcześniejszej części tego samouczka. **Nazwa grupy zasobów** to nazwa grupy zasobów, używane podczas tworzenia Centrum IoT. Możesz użyć wstępnie istniejącą lub nową grupę zasobów. **Nazwa centrum IoT** jest nazwą Centrum IoT można utworzyć, takich jak **MyIoTHub**. Nazwa centrum IoT musi być globalnie unikatowa. **Nazwa wdrożenia** jest nazwę wdrożenia, takich jak **Deployment_01**.
+6. W pliku Program.cs Dodaj następujące zmienne statyczne, zastępując wartość symbolu zastępczego. Należy zanotować **ApplicationId**, **SubscriptionId**, **TenantId**, i **hasło** wcześniej w tym samouczku. **Nazwa grupy zasobów** to nazwa grupy zasobów, możesz użyć podczas tworzenia Centrum IoT. Można użyć istniejącej lub nowej grupy zasobów. **Nazwa centrum IoT Hub** jest nazwą Centrum IoT, które tworzysz, takich jak **MyIoTHub**. Nazwa centrum IoT Hub musi być globalnie unikatowa. **Nazwa wdrożenia** jest nazwa wdrożenia, takich jak **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -74,9 +74,9 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Użyj dostawcy zasobów interfejsu API REST do tworzenia Centrum IoT
+## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Interfejs API REST dostawcy zasobów umożliwia tworzenie Centrum IoT
 
-Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do tworzenia Centrum IoT w grupie zasobów. Aby wprowadzić zmiany w istniejących Centrum IoT umożliwia także interfejsu API REST dostawcy zasobów.
+Użyj [interfejs API REST dostawcy zasobów usługi IoT Hub] [ lnk-rest-api] do utworzenia Centrum IoT w grupie zasobów. Interfejs API REST dostawcy zasobów można również użyć do wprowadzania zmian w istniejącym Centrum IoT.
 
 1. Dodaj następującą metodę do pliku Program.cs:
 
@@ -87,14 +87,14 @@ Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do two
     }
     ```
 
-2. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod tworzy **HttpClient** obiektu o token uwierzytelniania w nagłówkach:
+2. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod tworzy **HttpClient** obiektu przy użyciu tokenu uwierzytelniania w nagłówkach:
 
     ```csharp
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod zawiera opis Centrum IoT, aby utworzyć i generuje reprezentacja JSON. Dla bieżącej listy lokalizacje, które obsługują Centrum IoT [stan Azure][lnk-status]:
+3. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod w tym artykule opisano tworzenie Centrum IoT i generuje reprezentacji JSON. Dla bieżącej listy lokalizacje, które obsługują usługi IoT Hub, zobacz [stanu platformy Azure][lnk-status]:
 
     ```csharp
     var description = new
@@ -112,7 +112,7 @@ Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do two
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
 
-4. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod przesyła żądanie REST na platformie Azure. Następnie kod sprawdza odpowiedź i pobiera adres URL służy do monitorowania stanu zadania wdrażania:
+4. Dodaj następujący kod do **CreateIoTHub** metody. Ten kod przesyła żądania REST na platformie Azure. Kod następnie sprawdza odpowiedź i pobiera adres URL, można użyć, aby monitorować stan zadania wdrażania:
 
     ```csharp
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -128,7 +128,7 @@ Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do two
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
 
-5. Dodaj następujący kod na końcu **CreateIoTHub** metody. Ten kod zawiera **asyncStatusUri** pobrać adresu w poprzednim kroku oczekiwania na ukończenie wdrożenia:
+5. Dodaj następujący kod na końcu **CreateIoTHub** metody. Ten kod używa **asyncStatusUri** pobrać adresu w poprzednim kroku, aby czekać na zakończenie wdrożenia:
 
     ```csharp
     string body;
@@ -140,7 +140,7 @@ Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do two
     } while (body == "{\"status\":\"Running\"}");
     ```
 
-6. Dodaj następujący kod na końcu **CreateIoTHub** metody. Ten kod pobiera klucze Centrum IoT utworzony i wyświetla je do konsoli:
+6. Dodaj następujący kod na końcu **CreateIoTHub** metody. Ten kod pobiera klucze został utworzony i wyświetla je w konsoli Centrum IoT:
 
     ```csharp
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -149,9 +149,9 @@ Użyj [interfejsu API REST dostawcy zasobów Centrum IoT] [ lnk-rest-api] do two
     Console.WriteLine("Keys: {0}", keysresults.Content.ReadAsStringAsync().Result);
     ```
 
-## <a name="complete-and-run-the-application"></a>Zakończenie i uruchomić aplikację
+## <a name="complete-and-run-the-application"></a>Ukończenie, a następnie uruchom aplikację
 
-Możesz teraz ukończyć aplikacji przez wywołanie metody **CreateIoTHub** metody, aby skompilować i uruchomić go.
+Możesz teraz ukończyć aplikacji, wywołując **CreateIoTHub** metoda przed Kompiluj i uruchom go.
 
 1. Dodaj następujący kod na końcu **Main** metody:
 
@@ -160,27 +160,27 @@ Możesz teraz ukończyć aplikacji przez wywołanie metody **CreateIoTHub** meto
     Console.ReadLine();
     ```
 
-2. Kliknij przycisk **kompilacji** , a następnie **zbudować rozwiązanie**. Popraw błędy.
+2. Kliknij przycisk **kompilacji** i następnie **Kompiluj rozwiązanie**. Usuń wszelkie błędy.
 
-3. Kliknij przycisk **debugowania** , a następnie **Rozpocznij debugowanie** do uruchomienia aplikacji. Może upłynąć kilka minut dla uruchamiania wdrożenia.
+3. Kliknij przycisk **debugowania** i następnie **Rozpocznij debugowanie** do uruchomienia aplikacji. Może upłynąć kilka minut, zanim uruchamiania wdrożenia.
 
-4. Aby sprawdzić, czy aplikacja dodany nowego centrum IoT, odwiedź stronę [portalu Azure] [ lnk-azure-portal] i wyświetlanie listy zasobów. Można również użyć **Get-AzureRmResource** polecenia cmdlet programu PowerShell.
+4. Aby sprawdzić, czy aplikacja dodane nowe Centrum IoT hub, odwiedź stronę [witryny Azure portal] [ lnk-azure-portal] i wyświetlanie listy zasobów. Można również użyć **Get-AzureRmResource** polecenia cmdlet programu PowerShell.
 
 > [!NOTE]
-> Ta przykładowa aplikacja dodaje Centrum IoT standardowe S1 dla której są rozliczane. Gdy skończysz, można usunąć Centrum IoT za pośrednictwem [portalu Azure] [ lnk-azure-portal] lub za pomocą **AzureRmResource Usuń** polecenia cmdlet programu PowerShell po zakończeniu.
+> Ta przykładowa aplikacja dodaje S1 standardowa usługi IoT Hub dla którego stosowana jest stawka. Gdy skończysz, możesz usunąć Centrum IoT hub za pomocą [witryny Azure portal] [ lnk-azure-portal] lub za pomocą **Remove-AzureRmResource** polecenia cmdlet programu PowerShell po zakończeniu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po wdrożeniu przy użyciu interfejsu API REST dostawcy zasobów Centrum IoT, może zajść potrzeba dalszego zbadania:
+Po wdrożeniu usługi IoT hub przy użyciu interfejsu API REST dostawcy zasobów, warto dokładniej:
 
-* Przeczytaj informacje o możliwości [interfejsu API REST dostawcy zasobów Centrum IoT][lnk-rest-api].
+* Przeczytaj o możliwości [interfejs API REST dostawcy zasobów usługi IoT Hub][lnk-rest-api].
 * Odczyt [Omówienie usługi Azure Resource Manager] [ lnk-azure-rm-overview] Aby dowiedzieć się więcej o możliwościach usługi Azure Resource Manager.
 
-Aby dowiedzieć się więcej o tworzeniu aplikacji Centrum IoT, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat tworzenia usługi IoT Hub, zobacz następujące artykuły:
 
-* [Wprowadzenie do zestawu SDK C][lnk-c-sdk]
+* [Wprowadzenie do zestawu SDK języka C][lnk-c-sdk]
 * [Zestawy SDK Azure IoT][lnk-sdks]
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
 * [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 

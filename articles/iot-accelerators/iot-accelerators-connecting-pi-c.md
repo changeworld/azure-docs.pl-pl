@@ -1,6 +1,6 @@
 ---
-title: Zapewnij Pi malina do monitorowania zdalnego za pomocą C - Azure | Dokumentacja firmy Microsoft
-description: Opisano sposób podłączania urządzeń Pi malina do akcelerator rozwiązań monitorowania zdalnego przy użyciu aplikacji napisanych w C.
+title: Aprowizowanie urządzeń Raspberry Pi, zdalne monitorowanie za pomocą języka C — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób łączenia urządzeń Raspberry Pi do akceleratora rozwiązania monitorowania zdalnego przy użyciu aplikacji napisanych w C.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
 ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735498"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611445"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Podłącz urządzenie Pi malina do monitorowania zdalnego akcelerator rozwiązań (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Łączenie urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku przedstawiono sposób nawiązywania akcelerator rozwiązań monitorowania zdalnego urządzenia fizycznego. Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzeń malina Pi jest napisany w C. W tym samouczku tworzenia aplikacji na Pi malina systemem Raspbian systemu operacyjnego.
+W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego. Podobnie jak w przypadku najbardziej osadzone aplikacje działają na urządzeniach ograniczone, kod klienta dla aplikacji urządzenia Raspberry Pi są zapisywane w C. W tym samouczku utworzysz aplikację na urządzeniach Raspberry Pi z systemem operacyjnym Raspbian.
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
-Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia na malina Pi.
+Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia na urządzenia Raspberry Pi.
 
-[Microsoft IoT Starter Kit malina Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważne składników. W tym samouczku wykorzystuje następujące składniki z zestawu:
+[Pakiet startowy IoT firmy Microsoft do Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważne składników. W tym samouczku korzysta z następujących elementów z zestawu SDK:
 
-- Pi malinowe 3
+- Urządzenie raspberry Pi 3
 - Karta MicroSD (z NOOBS)
-- Kabla USB Mini
-- Kabla Ethernet
+- Kabel USB Mini
+- Kabel Ethernet
 
-### <a name="required-desktop-software"></a>Wymagane oprogramowanie komputerowe
+### <a name="required-desktop-software"></a>Wymagane oprogramowania dla komputerów stacjonarnych
 
-Należy klient SSH na komputerze pulpitu umożliwia zdalny dostęp do wiersza polecenia na malina Pi.
+Klient SSH jest niezbędne w komputera stacjonarnego, aby umożliwić dostęp zdalny do wiersza polecenia na urządzenia Raspberry Pi.
 
-- System Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](http://www.putty.org/).
-- Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH za pomocą systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](http://www.putty.org/).
+- Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH przy użyciu systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie Pi malina
+### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie urządzenia Raspberry Pi
 
-W tym artykule przyjęto założenie, zainstalowano najnowszą wersję [OS Raspbian na Twoje Pi malina](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+W tym artykule założono, zainstalowano najnowszą wersję [OS Raspbian na urządzenia Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplikacji C, która łączy się akcelerator rozwiązań:
+Poniższe kroki pokazują, jak przygotować urządzenia Raspberry Pi do tworzenia aplikacji języka C, który nawiązuje połączenie z akceleratora rozwiązań:
 
-1. Nawiązać połączenie przy użyciu Pi malina **ssh**. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web Pi malina](https://www.raspberrypi.org/).
+1. Łączenie z urządzeniem Raspberry Pi z wykorzystaniem **ssh**. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web urządzenia Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Można zaktualizować Twojego Pi malina, użyj następującego polecenia:
+1. Aby zaktualizować urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Aby dodać biblioteki i narzędzia deweloperskie wymagane do Twojej Pi malina, użyj następującego polecenia:
+1. Aby dodać narzędzia programistyczne wymagane i biblioteki do urządzenia Raspberry Pi, użyj następującego polecenia:
 
     ```sh
     sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
-1. Aby pobrać, kompilacji i zainstalować bibliotek klienckich Centrum IoT na Twoje Pi malina, użyj następujących poleceń:
+1. Aby pobrać, tworzenie i instalowanie bibliotek klienckich usługi IoT Hub na urządzenia Raspberry Pi, użyj następujących poleceń:
 
     ```sh
     cd ~
@@ -73,9 +73,9 @@ Poniższe kroki pokazują, jak przygotować Twojej Pi malina do tworzenia aplika
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Wykonaj następujące czynności, za pomocą **ssh** połączenie z Pi malina:
+Wykonaj następujące czynności za pomocą **ssh** połączenie urządzenia Raspberry Pi:
 
-1. Utwórz folder o nazwie `remote_monitoring` w folderze macierzysty na malina Pi. Przejdź do tego folderu w powłoki:
+1. Utwórz folder o nazwie `remote_monitoring` w folderze głównym na urządzenia Raspberry Pi. Przejdź do tego folderu, w powłoce:
 
     ```sh
     cd ~
@@ -83,9 +83,9 @@ Wykonaj następujące czynności, za pomocą **ssh** połączenie z Pi malina:
     cd remote_monitoring
     ```
 
-1. Utwórz cztery pliki **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, i **CMakeLists.txt** w `remote_monitoring` folder.
+1. Utworzyć cztery pliki **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, i **CMakeLists.txt** w `remote_monitoring` folder.
 
-1. W edytorze tekstu Otwórz **remote_monitoring.c** pliku. Na Pi malina, możesz użyć dowolnej **nano** lub **vi** edytora tekstu. Dodaj następujące instrukcje `#include`:
+1. W edytorze tekstu Otwórz **remote_monitoring.c** pliku. Na urządzenia Raspberry Pi, można użyć dowolnego **nano** lub **vi** edytora tekstu. Dodaj następujące instrukcje `#include`:
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -133,7 +133,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
 
 1. W edytorze tekstu Otwórz **CMakeLists.txt** w pliku `remote_monitoring` folderu.
 
-1. Dodaj następujące instrukcje, aby zdefiniować sposób kompilowania aplikacji klienta:
+1. Dodaj następujące instrukcje, aby zdefiniować sposób kompilowania aplikacji klienckiej:
 
     ```cmake
     macro(compileAsC99)
@@ -183,7 +183,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
 
 1. Zapisz **CMakeLists.txt** plik i zamknij Edytor.
 
-1. W `remote_monitoring` folderu, Utwórz folder do przechowywania *upewnij* pliki, które generuje CMake. Następnie uruchom **cmake** i **upewnij** polecenia w następujący sposób:
+1. W `remote_monitoring` folderze utwórz folder do przechowywania *wprowadzić* pliki, które narzędzie CMake generuje. Następnie uruchom **cmake** i **wprowadzić** poleceń w następujący sposób:
 
     ```sh
     mkdir cmake
@@ -192,7 +192,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
     make
     ```
 
-1. Uruchom aplikację klienta oraz wysyłania danych telemetrycznych do Centrum IoT:
+1. Uruchom aplikację klienta i wysyłanie danych telemetrycznych do Centrum IoT Hub:
 
     ```sh
     ./sample_app

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
 ms.openlocfilehash: 251e2b1f8785408bf441bcbcf3d0fcbdd767a358
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917782"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38479486"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 

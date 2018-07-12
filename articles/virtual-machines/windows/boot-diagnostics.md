@@ -1,6 +1,6 @@
 ---
-title: Rozruch diagnostyki dla maszyn wirtualnych systemu Windows na platformie Azure | Doc firmy Microsoft
-description: Przegląd debugowania funkcji dwóch maszyn wirtualnych systemu Windows na platformie Azure
+title: Uruchom diagnostykę dla maszyn wirtualnych Windows na platformie Azure | Microsoft docs
+description: Omówienie dwie funkcje debugowania dla Windows maszyn wirtualnych na platformie Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines-windows
 author: Deland-Han
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: df1538f98c97af2be522697efc519786f3c3dc9e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 61d5ce4db6941ea4b768761fe0f1e8d9d8e449be
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917330"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38590436"
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-windows-virtual-machines-in-azure"></a>Rozwiązywanie problemów z maszyn wirtualnych systemu Windows na platformie Azure przy użyciu diagnostyki rozruchu
+# <a name="how-to-use-boot-diagnostics-to-troubleshoot-windows-virtual-machines-in-azure"></a>Jak rozwiązywać problemy z maszyn wirtualnych Windows na platformie Azure przy użyciu diagnostyki rozruchu
 
 [!INCLUDE [virtual-machines-common-boot-diagnostics](../../../includes/virtual-machines-common-boot-diagnostics.md)]

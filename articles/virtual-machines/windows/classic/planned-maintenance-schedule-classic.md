@@ -1,6 +1,6 @@
 ---
-title: Sposób tworzenia harmonogramu konserwacji dla maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaplanować zaplanowanej konserwacji na maszynach wirtualnych Azure.
+title: Sposób tworzenia harmonogramu konserwacji dla maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaplanować planowanej konserwacji na maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: igalf
@@ -17,14 +17,14 @@ ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
 ms.openlocfilehash: 583661e74260a86eab6a3632535d6e5e33d21a03
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913107"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38561201"
 ---
-# <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Sposób tworzenia harmonogramu zaplanowanej konserwacji na maszynach wirtualnych Azure
+# <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Jak zaplanować planowana Konserwacja maszyn wirtualnych platformy Azure
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule omówiono przy użyciu klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Informacje o zaplanowanej konserwacji w modelu usługi Resource Manager, zobacz [tutaj](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Aby uzyskać informacje o planowanej konserwacji w modelu usługi Resource Manager, zobacz [tutaj](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-planned-maintenance-schedule](../../../../includes/virtual-machines-common-planned-maintenance-schedule.md)]

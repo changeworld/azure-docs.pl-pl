@@ -6,27 +6,23 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49361aef774e9eb5a0995bc106e73b236a71b0bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 16620678c38dcdc1564d8cb18f3393352170cefe
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441135"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598428"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
- * Kopia zapasowa i przywracanie zaszyfrowanych maszyn wirtualnych jest obsługiwana tylko dla maszyn wirtualnych, które używają modelu wdrażania usługi Azure Resource Manager. Nie jest obsługiwana dla maszyn wirtualnych, które używają klasycznego modelu wdrażania. <br>
- * Kopia zapasowa i przywracanie zaszyfrowanych maszyn wirtualnych jest obsługiwana zarówno Windows, jak i maszyny wirtualne systemu Linux, używanego przez usługi Azure Disk Encryption. Disk Encryption korzysta z branży standardowych funkcji BitLocker Windows oraz funkcji dm-crypt systemu Linux, aby zapewnić szyfrowanie dysków. <br>
- 
- W poniższej tabeli przedstawiono obsługiwane scenariusze dla klucza szyfrowania funkcją BitLocker (klucz szyfrowania bloków) — tylko i klucza szyfrowania klucza (KEK) — zaszyfrowane maszyny wirtualne:
- 
- 
+ Kopia zapasowa i przywracanie zaszyfrowanych maszyn wirtualnych jest obsługiwana tylko dla maszyn wirtualnych, które używają modelu wdrażania usługi Azure Resource Manager. Nie jest obsługiwana dla maszyn wirtualnych, które używają klasycznego modelu wdrażania. Kopia zapasowa i przywracanie zaszyfrowanych maszyn wirtualnych jest obsługiwana dla Windows i maszyn wirtualnych systemu Linux, używanego przez usługi Azure Disk Encryption. Disk Encryption korzysta z branży standardowych funkcji BitLocker Windows oraz funkcji dm-crypt systemu Linux, aby zapewnić szyfrowanie dysków. W poniższej tabeli przedstawiono typ szyfrowania i pomocy technicznej dla maszyn wirtualnych.
+
    |  | BEK i KEK maszyn wirtualnych | Klucz szyfrowania bloków — tylko do maszyn wirtualnych |
    | --- | --- | --- |
    | **Niezarządzanych maszyn wirtualnych**  | Yes | Yes  |

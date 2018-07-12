@@ -1,6 +1,6 @@
 ---
-title: Aktualizacja oprogramowania układowego urządzenia z Centrum IoT Azure (Python) | Dokumentacja firmy Microsoft
-description: Jak używać zarządzania urządzeniami w usłudze Azure IoT Hub zainicjować aktualizację oprogramowania układowego urządzenia. Przy użyciu zestawów SDK IoT Azure dla języka Python aplikacji symulowane urządzenie i usługi aplikacji, które wyzwala aktualizacji oprogramowania układowego.
+title: Aktualizacja oprogramowania układowego urządzenia za pomocą usługi Azure IoT Hub (Python) | Dokumentacja firmy Microsoft
+description: Jak zainicjować aktualizację oprogramowania układowego urządzenia, za pomocą zarządzania urządzeniami w usłudze Azure IoT Hub. Przy użyciu zestawów SDK usługi Azure IoT dla języka Python aplikacji symulowanego urządzenia i app service, która powoduje aktualizację oprogramowania układowego.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: kgremban
 ms.openlocfilehash: d2ebdf54e595c2f02464c0c2446a6e5f5feefb9c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634645"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38482024"
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Zarządzanie urządzeniami używany do inicjowania oprogramowanie układowe urządzenia aktualizacji (Python/Python)
+# <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Użyj urządzenia zarządzania do inicjowania oprogramowania układowego urządzenia aktualizacji (Python/Python)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
-W [wprowadzenie do zarządzania urządzeniami] [ lnk-dm-getstarted] samouczka przedstawiono sposób użycia [dwie urządzenia] [ lnk-devtwin] i [bezpośrednie metody ] [ lnk-c2dmethod] podstawowych zdalnie ponownego uruchomienia urządzenia. W tym samouczku korzysta z tej samej podstawowych Centrum IoT i zawiera wskazówki i pokazuje, jak wykonać aktualizację oprogramowania układowego symulowane end-to-end.  Ten wzorzec jest używany podczas wdrażania aktualizacji oprogramowania układowego przykładowej urządzenia Intel Edison.
+W [wprowadzenie do zarządzania urządzeniami] [ lnk-dm-getstarted] samouczków pokazano, jak używać [bliźniaczej reprezentacji urządzenia] [ lnk-devtwin] i [metody bezpośrednie ] [ lnk-c2dmethod] podstawowych, aby zdalnie ponownie uruchomić urządzenie. Ten samouczek używa tych samych podstawowych usługi IoT Hub i zawiera wskazówki i dowiesz się, jak przeprowadzić aktualizację oprogramowania układowego symulowane end-to-end.  Ten wzorzec jest używany we wdrażaniu aktualizacji oprogramowania układowego dla przykładu urządzenia Intel Edison.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Utwórz aplikację konsoli języka Python, który wywołuje metodę bezpośredniego firmwareUpdate w aplikacji symulowane urządzenie za pomocą Centrum IoT.
-* Tworzenie aplikacji symulowane urządzenie, który implementuje **firmwareUpdate** metoda bezpośrednia. Ta metoda inicjuje procesem wieloetapowym czeka na pobranie obrazu oprogramowania układowego, pobierze obraz oprogramowania układowego i na koniec dotyczy oprogramowania układowego obrazu. Podczas każdego etapu aktualizacji urządzenie korzysta z właściwości zgłoszony do raport dotyczący postępu.
+* Tworzenie aplikacji konsoli języka Python, który wywołuje metody bezpośredniej firmwareUpdate w aplikacji symulowanego urządzenia za pośrednictwem usługi IoT hub.
+* Tworzenie aplikacji symulowanego urządzenia, który implementuje **firmwareUpdate** bezpośrednie metody. Ta metoda inicjuje proces wieloetapowych czeka do pobierania obrazu oprogramowania układowego, który pobierze obraz oprogramowania układowego i na koniec ma zastosowanie obrazu oprogramowania układowego. Na etapie każdej aktualizacji urządzenie używa zgłaszanych właściwości do raportowania postępu.
 
-Na końcu tego samouczka znajdują się dwie aplikacje konsoli Python:
+Na końcu tego samouczka masz dwie aplikacje konsolowe środowiska Python:
 
-**dmpatterns_fwupdate_service.PY**, która wywołuje metodę bezpośrednio w aplikacji symulowane urządzenie Wyświetla odpowiedzi i okresowo (co 500 MS.) Wyświetla zaktualizowanego zgłoszone właściwości.
+**dmpatterns_fwupdate_service.PY**, który wywołuje metody bezpośredniej w symulowanej aplikacji urządzenia, wyświetla odpowiedzi i okresowo (co 500 ms) Wyświetla zaktualizowany zgłoszonych właściwości.
 
-**dmpatterns_fwupdate_device.PY**, która łączy się z Centrum IoT z tożsamości urządzenia utworzony wcześniej, otrzymuje firmwareUpdate metoda bezpośrednia, uruchamia proces wielu stanu do symulowania, w tym aktualizacji oprogramowania układowego: Oczekiwanie na obraz Pobierz pobieranie nowy obraz, a ostatecznie stosowania obrazu.
+**dmpatterns_fwupdate_device.PY**, która łączy się z Centrum IoT hub przy użyciu utworzonej wcześniej tożsamości urządzenia otrzymuje metody bezpośredniej o firmwareUpdate, uruchamia proces wielostanowy zasymulować, w tym aktualizacji oprogramowania układowego: Oczekiwanie na obraz Pobierz pobierania nowego obrazu i na koniec stosowania obrazu.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -44,18 +44,18 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Wyzwalanie aktualizacji oprogramowania układowego zdalnego na urządzeniu, za pomocą bezpośrednich — metoda
-W tej sekcji utworzysz aplikację konsoli języka Python, która inicjuje aktualizacji oprogramowania układowego zdalnego na urządzeniu. Aplikacja korzysta metoda bezpośrednia zainicjować aktualizację, a zapytania dwie urządzenia okresowo pobrać stanu aktualizacji oprogramowania układowego active.
+## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Wyzwalanie aktualizacji oprogramowania układowego zdalnego na urządzeniu, korzystając z metody bezpośredniej
+W tej sekcji utworzysz aplikację konsoli języka Python, która inicjuje aktualizacji oprogramowania układowego zdalnego na urządzeniu. Aplikacja używa metody bezpośredniej do inicjowania aktualizacji i używa zapytań bliźniaczych reprezentacji urządzeń, aby okresowo pobieranie stanu aktualizacji oprogramowania układowego active.
 
-1. Z wiersza polecenia, uruchom następujące polecenie, aby zainstalować **usługi klienta, azure Centrum iothub w-** pakietu:
+1. W wierszu polecenia, uruchom następujące polecenie, aby zainstalować **azure-iothub-service-client** pakietu:
    
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-1. Tworzenie za pomocą edytora tekstu, w katalogu roboczym **dmpatterns_getstarted_service.py** pliku.
+1. Za pomocą edytora tekstu w katalogu roboczym, Utwórz **dmpatterns_getstarted_service.py** pliku.
 
-1. Dodaj następujące "import" instrukcje i zmienne na początku **dmpatterns_getstarted_service.py** pliku. Zastąp `IoTHubConnectionString` i `deviceId` własnymi wartościami podano wcześniej:
+1. Dodaj następujący import instrukcji i zmienne na początku **dmpatterns_getstarted_service.py** pliku. Zastąp `IoTHubConnectionString` i `deviceId` z własnymi wartościami zanotowanymi wcześniej:
    
     ```python
     import sys
@@ -73,7 +73,7 @@ W tej sekcji utworzysz aplikację konsoli języka Python, która inicjuje aktual
     MESSAGE_COUNT = 5
     ```
 
-1. Dodaj następującą funkcję można wywołać metodę bezpośredniego i wyświetlać wartość firmwareUpdate zgłosił właściwości. Dodaj również `main` procedury:
+1. Dodaj następującą funkcję, aby wywołać metody bezpośredniej i wyświetlić wartość firmwareUpdate zgłoszonych właściwości. Również dodać `main` procedury:
    
     ```python
     def iothub_firmware_sample_run():
@@ -134,19 +134,19 @@ W tej sekcji utworzysz aplikację konsoli języka Python, która inicjuje aktual
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
 W tej sekcji omówiono następujące zagadnienia:
 
-* Utwórz aplikację konsoli języka Python, które odpowiada metoda bezpośrednia wywoływane przez chmury
+* Tworzenie aplikacji konsoli języka Python, która reaguje na metodę bezpośrednią wywołaną przez chmurę
 * Wyzwalanie symulowanej aktualizacji oprogramowania układowego
 * Włączanie zapytań bliźniaczych reprezentacji urządzeń przy użyciu zgłoszonych właściwości w celu zidentyfikowania urządzeń i ustalenia, kiedy ostatnio przeprowadzono na nich aktualizację oprogramowania układowego
 
-1. Z wiersza polecenia, uruchom następujące polecenie, aby zainstalować **urządzenia klienta, azure Centrum iothub w-** pakietu:
+1. W wierszu polecenia, uruchom następujące polecenie, aby zainstalować **azure-iothub-device-client** pakietu:
    
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-1. Za pomocą edytora tekstu, Utwórz **dmpatterns_fwupdate_device.py** pliku.
+1. Za pomocą edytora tekstów Utwórz **dmpatterns_fwupdate_device.py** pliku.
 
-1. Dodaj następujące "import" instrukcje i zmienne na początku **dmpatterns_fwupdate_device.py** pliku. Zastąp `deviceConnectionString` parametrami połączenia urządzenia z Centrum IoT:
+1. Dodaj następujący import instrukcji i zmienne na początku **dmpatterns_fwupdate_device.py** pliku. Zastąp `deviceConnectionString` przy użyciu parametrów połączenia urządzenia z usługi IoT hub:
    
     ```python
     import time, datetime
@@ -167,7 +167,7 @@ W tej sekcji omówiono następujące zagadnienia:
     CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
     ```
 
-1. Dodaj następujące funkcje, które są używane do Podaj zgłosił aktualizacji właściwości i zaimplementuj metodę bezpośrednie:
+1. Dodaj następujące funkcje, które są używane do zapewnienia zgłaszane właściwości aktualizacji i implementować metody bezpośredniej:
    
     ```python
     def send_reported_state_callback(status_code, user_context):
@@ -215,7 +215,7 @@ W tej sekcji omówiono następujące zagadnienia:
         CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
     ```
 
-8. Dodaj następującą funkcję, która inicjuje dwie urządzenia zgłoszone właściwości, a następnie zaczekaj bezpośredniego metody do wywołania. Dodaj również `main` procedury:
+8. Dodaj następującą funkcję, która inicjuje bliźniaczej reprezentacji urządzenia zgłoszone właściwości i poczekaj na metody bezpośredniej do wywołania. Również dodać `main` procedury:
    
     ```python
     def iothub_firmware_sample_run():
@@ -248,34 +248,34 @@ W tej sekcji omówiono następujące zagadnienia:
     ```
 
 > [!NOTE]
-> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh675232.aspx).
+> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh675232.aspx).
 > 
 
 
 ## <a name="run-the-apps"></a>Uruchamianie aplikacji
 Teraz można przystąpić do uruchomienia aplikacji.
 
-1. W wierszu polecenia Uruchom następujące polecenie Rozpoczęcie nasłuchiwania metoda bezpośrednia ponowne uruchomienie komputera.
+1. W wierszu polecenia Uruchom następujące polecenie, aby rozpocząć nasłuchiwanie metody bezpośredniej ponowny rozruch.
    
     ```cmd/sh
     python dmpatterns_fwupdate_device.py
     ```
 
-1. Innego wiersza polecenia Uruchom następujące polecenie, aby zdalne ponowne uruchamianie systemu i kwerendę dla dwie urządzenia znaleźć ostatniego ponownego rozruchu czasu.
+1. W wierszu innego polecenia Uruchom następujące polecenie, można wyzwolić ponowne uruchomienie zdalnego i wykonywania zapytań o bliźniaczej reprezentacji urządzenia można znaleźć w ciągu ostatnich ponowny rozruch czasu.
    
     ```cmd/sh
     python dmpatterns_fwupdate_service.py
     ```
 
-1. Zobaczysz odpowiedź urządzenia do metody bezpośrednio w konsoli. Następnie zanotuj zmianę właściwości zgłoszonego przez aktualizację oprogramowania układowego.
+1. Zostanie wyświetlona odpowiedź urządzenia, do metody bezpośredniej w konsoli. Następnie należy pamiętać, zmiana zgłoszonych właściwości w całym aktualizacji oprogramowania układowego.
 
-    ![Dane wyjściowe programu][1]
+    ![dane wyjściowe programu][1]
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku używana metoda bezpośrednia do wyzwolenia aktualizacji oprogramowania układowego zdalnego na urządzeniu i można śledzić postępy aktualizacji oprogramowania układowego zgłoszone właściwości.
+W tym samouczku używane metody bezpośredniej do wyzwalania aktualizacji oprogramowania układowego zdalnego na urządzeniu i można śledzić postęp aktualizacji oprogramowania układowego w zgłaszanych właściwości.
 
-Aby dowiedzieć się, jak rozszerzyć IoT, Twoje rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach, zobacz [emisji zadania i harmonogramu] [ lnk-tutorial-jobs] samouczka.
+Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji] [ lnk-tutorial-jobs] samouczka.
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

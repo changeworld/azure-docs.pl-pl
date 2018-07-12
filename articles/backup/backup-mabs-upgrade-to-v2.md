@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj serwer kopii zapasowej systemu Azure w wersji 2
-description: Azure v2 Utwórz kopię zapasową serwera udostępnia udoskonalone funkcje tworzenia kopii zapasowej ochrony maszyn wirtualnych, plików i folderów oraz obciążeń. Informacje o sposobie instalacji lub uaktualnienia do serwera usługi Kopia zapasowa Azure w wersji 2.
+title: Instalowanie usługi Azure Backup Server w wersji 2
+description: Usługa Azure Backup Server v2 udostępnia udoskonalone funkcje tworzenia kopii zapasowej na potrzeby ochrony maszyn wirtualnych, pliki i foldery oraz obciążeń. Informacje o sposobie instalowania lub uaktualniania do serwera Azure Backup Server w wersji 2.
 services: backup
 author: markgalioto
 manager: carmonm
@@ -8,111 +8,111 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: 27da52a46b52e06a8ea4f80fa06487aca34c1c3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fdf69003566f704354a17335b1f46fc3077aedbc
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606957"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38598394"
 ---
-# <a name="install-azure-backup-server-v2"></a>Zainstaluj serwer kopii zapasowej systemu Azure w wersji 2
+# <a name="install-azure-backup-server-v2"></a>Instalowanie usługi Azure Backup Server w wersji 2
 
-Serwer kopii zapasowej systemu Azure pomaga w ochronie maszyn wirtualnych (VM), obciążenia, pliki i foldery i więcej. Azure v2 Utwórz kopię zapasową serwera oparty na serwer kopii zapasowej Azure w wersji 1 i udostępnia nowe funkcje, które nie są dostępne w wersji 1. Porównanie funkcji między v1 i v2, zobacz [macierzy ochrona serwer kopii zapasowej Azure](backup-mabs-protection-matrix.md). 
+Usługa Azure Backup Server pomaga chronić maszyny wirtualne (VM), obciążenia, pliki i foldery i więcej. Usługa Azure Backup Server v2 jest oparta na usłudze Azure Backup Server w wersji 1 i udostępnia nowe funkcje, które nie są dostępne w wersji 1. Porównanie funkcji między v1 i v2, zobacz [macierz ochrony usługi Azure Backup Server](backup-mabs-protection-matrix.md). 
 
-Dodatkowe funkcje serwera kopii zapasowej w wersji 2 są uaktualnienie v1 Utwórz kopię zapasową serwera. Jednak v1 Utwórz kopię zapasową serwera nie jest wymagane w przypadku instalowania serwera kopii zapasowej w wersji 2. Jeśli chcesz uaktualnić serwer zapasowy v1 do v2 Utwórz kopię zapasową serwera, należy zainstalować v2 Utwórz kopię zapasową serwera na serwerze ochrony Utwórz kopię zapasową serwera. Istniejących ustawień serwera kopii zapasowej pozostaną nienaruszone.
+Dodatkowe funkcje w wersji 2 Utwórz kopię zapasową serwera zostały uaktualnione z kopii zapasowej serwera w wersji 1. Utwórz kopię zapasową serwera w wersji 1 nie jest jednak wymagania wstępne dotyczące instalacji Backup Server w wersji 2. Jeśli chcesz uaktualnić z kopii zapasowej serwera w wersji 1 do kopii zapasowej serwera w wersji 2, należy zainstalować Backup Server w wersji 2 na serwer ochrony Utwórz kopię zapasową serwera. Istniejące ustawienia kopii zapasowej serwera pozostają bez zmian.
 
-Utwórz kopię zapasową serwera v2 można zainstalować w systemie Windows Server 2012 R2 lub Windows Server 2016. Aby móc korzystać z nowych funkcji, takich jak System Center 2016 ochrony Menedżera Modern kopii zapasowej pamięci masowej, należy zainstalować v2 Utwórz kopię zapasową serwera w systemie Windows Server 2016. Przed uaktualnić do wersji lub zainstalować serwer zapasowy v2, przeczytaj o [wymagania wstępne instalacji](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites).
+Utwórz kopię zapasową serwera w wersji 2 można zainstalować w systemie Windows Server 2012 R2 lub Windows Server 2016. Aby móc korzystać z nowych funkcji, takich jak System Center 2016 danych ochrony Menedżera Modern Backup Storage, Utwórz kopię zapasową serwera w wersji 2 należy zainstalować w systemie Windows Server 2016. Zanim uaktualnisz do lub zainstaluj serwer kopii zapasowych w wersji 2, przeczytaj o [wymagania wstępne instalacji](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites).
 
 > [!NOTE]
-> Serwer kopii zapasowej systemu Azure ma taki sam kod podstawowej jako System Center Data Protection Manager. V1 serwera kopii zapasowej jest odpowiednikiem programu Data Protection Manager 2012 R2, a serwer zapasowy v2 jest odpowiednikiem programu Data Protection Manager 2016. W tym artykule od czasu do czasu odwołuje się w dokumentacji programu Data Protection Manager.
+> Usługa Azure Backup Server ma ten sam kod podstawowy, jak System Center Data Protection Manager. Kopii zapasowej serwera v1 jest odpowiednikiem programu Data Protection Manager 2012 R2 i Backup Server w wersji 2 jest odpowiednikiem 2016 Data Protection Manager. W tym artykule od czasu do czasu odwołuje się w dokumentacji programu Data Protection Manager.
 >
 >
 
-## <a name="upgrade-backup-server-to-v2"></a>Utwórz kopię zapasową serwera uaktualnienia do wersji 2
-Aby uaktualnić v1 Utwórz kopię zapasową serwera do serwera kopii zapasowej w wersji 2, upewnij się, że instalacji jest wymagane aktualizacje:
+## <a name="upgrade-backup-server-to-v2"></a>Uaktualnianie Backup Server do wersji 2
+Aby przeprowadzić uaktualnienie z kopii zapasowej serwera w wersji 1 Backup Server w wersji 2, upewnij się, że Twoja instalacja zawiera wymagane aktualizacje:
 
-- [Aktualizowanie agentów ochrony](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent) na chronionych serwerach.
-- Uaktualnienie systemu Windows Server 2012 R2 do systemu Windows Server 2016.
-- Uaktualnij administratora zdalnego serwera kopii zapasowej platformy Azure na wszystkich serwerach produkcyjnych.
-- Upewnij się, że kopie zapasowe są ustawione, aby kontynuować bez ponownego uruchomienia serwera produkcyjnego.
+- [Aktualizowanie agentów ochrony](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent) na serwerach chronionych.
+- Uaktualnij system Windows Server 2012 R2 do systemu Windows Server 2016.
+- Uaktualnij administracji zdalnej serwera kopii zapasowej Azure na wszystkich serwerach produkcyjnych.
+- Upewnij się, że kopie zapasowe są ustawione, aby kontynuować bez ponownego uruchamiania serwera produkcyjnego.
 
 
-### <a name="upgrade-steps-for-backup-server-v2"></a>Kroki uaktualniania dla kopii zapasowej serwera w wersji 2
+### <a name="upgrade-steps-for-backup-server-v2"></a>Procedura uaktualniania dla kopii zapasowej serwera w wersji 2
 
-1. W Centrum pobierania [Pobierz instalatora uaktualnienia](https://go.microsoft.com/fwlink/?LinkId=626082).
+1. W Centrum pobierania [Pobierz Instalator uaktualnienia](https://go.microsoft.com/fwlink/?LinkId=626082).
 
 2. Po wyodrębnieniu Kreatora instalacji upewnij się, że **wykonania setup.exe** jest wybrany, a następnie wybierz **Zakończ**.
 
-  ![Instalator Instalatora — należy uruchomić Instalator](./media/backup-mabs-upgrade-to-v2/run-setup.png)
+  ![Instalator instalacji — uruchom Instalatora](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
-3. W Kreatorze serwer kopii zapasowej Microsoft Azure w obszarze **zainstalować**, wybierz pozycję **serwer kopii zapasowej Microsoft Azure**.
+3. W Kreatorze serwera usługi Microsoft Azure Backup w ramach **zainstalować**, wybierz opcję **serwera usługi Microsoft Azure Backup**.
 
-  ![Instalator Instalatora — wybierz opcję instalacji](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
+   ![Instalator instalacji — wybierz opcję Zainstaluj](./media/backup-mabs-upgrade-to-v2/mabs-installer-s1.png)
 
-4. Na **powitalnej** , przejrzyj ostrzeżenia, a następnie wybierz **dalej**.
+4. Na **powitalnej** strony, przejrzyj ostrzeżenia, a następnie wybierz pozycję **dalej**.
 
-  ![Instalator Instalatora - strony powitalnej](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
+   ![Instalator instalacji — strona powitalna](./media/backup-mabs-upgrade-to-v2/mabs-installer-s2.png)
 
-5. Kreator instalacji wykonuje sprawdzanie wymagań wstępnych do upewnij się, że w środowisku można uaktualnić. Na **wymagań wstępnych sprawdza** wybierz pozycję **Sprawdź**.
+5. Kreator instalacji przeprowadza kontrole warunków wstępnych, aby upewnij się, że w danym środowisku można uaktualnić. Na **funkcji sprawdzania wymagań wstępnych** wybierz opcję **Sprawdź**.
 
-  ![Instalator — strona kontroli wymagań wstępnych Instalatora](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
+   ![Instalator — strona sprawdzania wymagań wstępnych Instalatora](./media/backup-mabs-upgrade-to-v2/mabs-installer-s3-perform-checks.png)
 
-6. Środowisko musi przejść testy wymagań wstępnych. Jeśli w środowisku nie zakończy się pomyślnie, należy pamiętać o zasadach i popraw je. Następnie wybierz opcję **Sprawdź ponownie**. Po przekazujesz Sprawdzanie wymagań wstępnych, wybierz **dalej**.
+6. Środowisko musi pomyślnie przejść testy wymagań wstępnych. Jeśli środowisko nie zakończy się pomyślnie, należy pamiętać, problemy i je rozwiązać. Następnie wybierz **Sprawdź ponownie**. Po przejściu Sprawdzanie wymagań wstępnych wybierz **dalej**.
 
-  ![Instalator Instalatora — przycisk Sprawdź ponownie](./media/backup-mabs-upgrade-to-v2/mabs-installer-s4-pass-checks.png)
+  ![Instalator instalacji — przycisk Sprawdź ponownie](./media/backup-mabs-upgrade-to-v2/mabs-installer-s4-pass-checks.png)
 
-7. Na **ustawienia SQL** , wybierz odpowiednią opcję instalacji SQL, a następnie wybierz **Sprawdź i zainstaluj**.
+7. Na **ustawień serwera SQL** strony, wybierz odpowiednią opcję instalacji programu SQL, a następnie wybierz pozycję **Sprawdź i zainstaluj**.
 
-  ![Instalator Instalatora — strona ustawień SQL](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
+   ![Instalator instalacji — strona ustawień serwera SQL](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5-sql-settings.png)
 
-  Kontrole może potrwać kilka minut. Po zakończeniu kontroli, wybierz **dalej**.
+  Sprawdzanie może potrwać kilka minut. Gdy testy są gotowe, wybierz **dalej**.
 
-  ![Instalator Instalatora — Sprawdź ustawienia SQL i przycisk Zainstaluj](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
+   ![Instalator instalacji — SQL Sprawdź ustawienia i przycisk Zainstaluj](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and-fix-settings.png)
 
-8. Na **ustawienia instalacji** strony, wprowadź zmiany do lokalizacji, w którym zainstalowano Utwórz kopię zapasową serwera lub do lokalizacji przechowywania plików tymczasowych. Wybierz opcję **Dalej**.
+8. Na **ustawienia instalacji** strony, wprowadź zmiany do lokalizacji, w którym zainstalowano serwer kopii zapasowej lub do lokalizacji pliki tymczasowe. Wybierz opcję **Dalej**.
 
-  ![Instalator Instalatora — strona Ustawienia instalacji](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
+  ![Instalator instalacji — strona Ustawienia instalacji](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
-9. Aby zakończyć pracę Kreatora instalacji, wybierz **Zakończ**.
+9. Aby zakończyć pracę Kreatora instalacji, wybierz pozycję **Zakończ**.
 
-  ![Instalator Instalatora — zakończenie](./media/backup-mabs-upgrade-to-v2/run-setup.png)
+  ![Instalator instalacji — zakończenie](./media/backup-mabs-upgrade-to-v2/run-setup.png)
 
 
 
-## <a name="add-storage-for-modern-backup-storage"></a>Dodawanie magazynu dla nowoczesnych magazynu kopii zapasowej
+## <a name="add-storage-for-modern-backup-storage"></a>Dodawanie magazynu dla funkcji Modern Backup Storage
 
-Aby zwiększyć wydajność magazynu kopii zapasowych, Utwórz kopię zapasową serwera v2 dodaje obsługę woluminów. Jak serwer zapasowy v1 v2 Utwórz kopię zapasową serwera obsługuje dyski.
+Aby poprawić wydajność magazynu kopii zapasowych, Utwórz kopię zapasową serwera w wersji 2 dodaje obsługę woluminów. Np. v1 Utwórz kopię zapasową serwera Utwórz kopię zapasową serwera w wersji 2 obsługuje dyski.
 
-### <a name="add-volumes-and-disks"></a>Dodaj do woluminów i dysków
-Po uruchomieniu v2 Utwórz kopię zapasową serwera w systemie Windows Server 2016 może użyć woluminów do przechowywania danych kopii zapasowej. Woluminy oferują oszczędności pojemności magazynu i szybsze tworzenie kopii zapasowych. Ponieważ woluminów dopiero zaczynasz korzystać z kopii zapasowej serwera, należy je dodać. 
+### <a name="add-volumes-and-disks"></a>Dodawanie woluminów i dysków
+Jeśli uruchamiasz v2 kopii zapasowej serwera w systemie Windows Server 2016, można użyć woluminów do przechowywania danych kopii zapasowej. Woluminy oferują oszczędności pojemności magazynu oraz szybsze tworzenie kopii zapasowych. Ponieważ woluminy są nowe Utwórz kopię zapasową serwera, należy je dodać. 
 
-Podczas dodawania woluminu do serwera kopii zapasowej, można nadać wolumin przyjazną nazwę. Kliknij przycisk **przyjazną nazwę** kolumny woluminu chcesz nazwać. Nazwę można zmienić później, jeśli to konieczne. Również służy PowerShell dodać lub zmienić przyjazne nazwy dla woluminów.
+Po dodaniu woluminu do serwera kopii zapasowych, możesz nadać woluminowi przyjazną nazwę. Kliknij przycisk **przyjazną nazwę** kolumny wolumin ma nazwę. Nazwę można zmienić później, jeśli to konieczne. Możesz również użyć programu PowerShell można dodawać lub zmieniać przyjazne nazwy dla woluminów.
 
 Aby dodać wolumin w konsoli administratora:
 
-1. W konsoli administratora serwera kopii zapasowej Azure wybierz **zarządzania** > **Magazyn dyskowy** > **Dodaj**.
+1. W konsoli administratora serwera kopii zapasowych platformy Azure wybierz **zarządzania** > **Magazyn dyskowy** > **Dodaj**.
 
     ![Otwórz kreatora Dodawanie magazynu dyskowego](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
-    Spowoduje to otwarcie kreatora Dodawanie magazynu dysku.
+    Spowoduje to otwarcie kreatora Dodawanie magazynu dyskowego.
 
-2. Na **dodać magazyn dyskowy** strony w **dostępnych woluminów** , wybierz wolumin, a następnie wybierz **Dodaj**.
-3. W **wybrane woluminy** Wprowadź przyjazną nazwę dla woluminu, a następnie wybierz **OK**.
+2. Na **Dodawanie magazynu dyskowego** stronie **dostępne woluminy** , wybierz wolumin, a następnie wybierz **Dodaj**.
+3. W **wybrane woluminy** Wprowadź przyjazną nazwę dla woluminu, a następnie wybierz pozycję **OK**.
 
       ![Magazyn dyskowy Kreator dodawania — Dodawanie woluminu](./media/backup-mabs-upgrade-to-v2/add-volume.png)
 
-  Jeśli chcesz dodać dysk, dysk musi należeć do grupy ochrony, która ma starszej wersji magazynu. Te dyski mogą być używane tylko dla tych grup ochrony. Jeśli serwer zapasowy nie ma źródeł, które mają ochronę za pomocą starszej wersji, dysku nie ma na liście.
+  Jeśli chcesz dodać dysk, dysk musi należeć do grupy ochrony, która ma magazynu w starszej wersji. Te dyski mogą być używane tylko dla tych grup ochrony. Jeśli serwer usługi Backup nie ma źródeł, które mają starszą ochroną, dysk nie ma na liście.
 
-  Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [dodawania dysków, aby zwiększyć ilość miejsca starszych](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nie można nadać przyjazną nazwę dysku.
+  Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [dodawanie dysków w celu zwiększenia magazynu w starszej wersji](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nie można nadać przyjaznej nazwy dysku.
 
 
-### <a name="assign-workloads-to-volumes"></a>Przypisz obciążeń do woluminów
+### <a name="assign-workloads-to-volumes"></a>Przypisywanie obciążeń do woluminów
 
-Utwórz kopię zapasową serwera, należy określić w obciążeń, które są przypisane do woluminów. Na przykład można ustawić kosztowne woluminów, które obsługują dużej liczby operacji wejścia/wyjścia na sekundę (IOPS) do przechowywania tylko w przypadku obciążeń, które wymagają częstego, dużej liczby kopii zapasowych. Przykładem jest program SQL Server z dzienników transakcji.
+Utwórz kopię zapasową serwera, należy określić w obciążeniach, które są przypisane do poszczególnych woluminów. Na przykład można ustawić kosztowne woluminy, które obsługuje dużą liczbę operacji wejścia/wyjścia na sekundę (IOPS) do przechowywania tylko w przypadku obciążeń, które wymagają częste, duże kopie zapasowe. Przykładem jest program SQL Server przy użyciu dzienników transakcji.
 
 #### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Aby zaktualizować właściwości woluminu w puli magazynu w serwerze kopii zapasowej, użyj polecenia cmdlet programu PowerShell DPMDiskStorage aktualizacji.
+Aby zaktualizować właściwości woluminu w puli magazynów na serwerze kopii zapasowej, użyj polecenia cmdlet programu PowerShell Update-DPMDiskStorage.
 
 Składnia:
 
@@ -126,13 +126,13 @@ Wszystkie zmiany wprowadzone przy użyciu programu PowerShell są odzwierciedlan
 
 
 ## <a name="protect-data-sources"></a>Ochrona źródeł danych
-Aby rozpocząć, ochrona źródeł danych, należy utworzyć grupę ochrony. Poniższe kroki zaznacz zmiany lub dodatki w Kreatorze nowej grupy ochrony.
+Aby rozpocząć ochronę źródeł danych, należy utworzyć grupy ochrony. Poniższe kroki, Wyróżnij zmiany i dodatki w Kreatorze nowej grupy ochrony.
 
-Aby utworzyć grupy ochrony:
+Aby utworzyć grupę ochrony:
 
-1. W konsoli administratora serwera kopii zapasowej wybierz **ochrony**.
+1. W konsoli administratora serwera kopii zapasowych wybierz **ochrony**.
 
-2. Na wstążce narzędzi wybierz **nowy**.
+2. Na wstążce narzędzi wybierz **New**.
 
     Spowoduje to otwarcie Kreatora tworzenia nowej grupy ochrony.
 
@@ -141,78 +141,78 @@ Aby utworzyć grupy ochrony:
 3. Na **stronie powitalnej** wybierz pozycję **Dalej**.
 4. Na **wybierz typ grupy ochrony** wybierz typ grupy ochrony, które chcesz utworzyć, a następnie wybierz **dalej**.
 
-  ![Strona Typ wybierz grupę ochrony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
+  ![Strona typu wybierz grupę ochrony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. Na **Wybierz członków grupy** strony w **dostępni członkowie** okienka, członków z ochrony agenci są wyświetlane. Na przykład wybierz wolumin D:\ i E:\ i dodaj je do **wybranych składników** okienka. Wybierz opcję **Dalej**.
+5. Na **Wybierz członków grupy** stronie **dostępni członkowie** okienko, członków z ochrony agentów są wyświetlane. W tym przykładzie wybierz woluminy D:\ i E:\ i dodaj je do **wybrane elementy członkowskie** okienka. Wybierz opcję **Dalej**.
 
-  ![Wybierz grupy elementów członkowskich strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
+  ![Wybierz grupę elementów członkowskich strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
-6. Na **wybierz metodę ochrony danych** wprowadź **Nazwa grupy ochrony**, wybierz metodę ochrony, a następnie wybierz **dalej**. Jeśli chcesz uzyskać krótkoterminową ochronę, musisz wybrać **dysku** kopii zapasowej metody.
+6. Na **wybierz metodę ochrony danych** wpisz **Nazwa grupy ochrony**, wybierz metodę ochrony, a następnie wybierz **dalej**. Jeśli chcesz, aby uzyskać krótkoterminową ochronę, musisz wybrać **dysku** utworzyć kopię zapasową metodę.
 
-  ![Wybierz metodę ochrony danych strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-4.png)
+  ![Wybierz metodę ochrony danych stronę](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-4.png)
 
-7. Na **Określ cele krótkoterminowe** Wybierz szczegóły **zakres przechowywania** i **częstotliwość synchronizacji**. Następnie wybierz opcję **dalej**. Opcjonalnie, aby zmienić harmonogram przy woluminów punktów odzyskiwania, wybierz **Modyfikuj**.
+7. Na **Określ cele krótkoterminowe** Wybierz szczegóły **zakres przechowywania** i **częstotliwość synchronizacji**. Następnie wybierz opcję **Dalej**. Opcjonalnie, aby zmienić harmonogram przy woluminów punktów odzyskiwania, wybierz **Modyfikuj**.
 
   ![Określ cele krótkoterminowe strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-5.png)
 
-8. Na **Przejrzyj przydział magazynu dyskowego** strony, przejrzyj szczegółowych informacji o źródeł danych wybranego, rozmiar i wartości miejsce do przygotowania i wolumin magazynu docelowego.
+8. Na **Przejrzyj przydział magazynu dyskowego** strony, przejrzyj szczegółowe informacje dotyczące źródeł danych wybrano, ich rozmiar i wartości miejsce do przygotowania i docelowy wolumin magazynu.
 
   ![Przejrzyj przydział magazynu dyskowego strony](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  Woluminy magazynu są oparte na alokacji woluminu obciążenia (Ustaw przy użyciu programu PowerShell) i dostępnej pojemności magazynu. Woluminy magazynu można zmienić, wybierając w menu rozwijanym inne woluminy. W przypadku zmiany wartości **docelowy magazyn**, wartość **magazynu dostępnego dysku** dynamicznie zmiany do wartości w obszarze **wolnego miejsca** i **Underprovisioned miejsca**.
+  Woluminy magazynu na podstawie alokacji woluminu obciążenia (ustawiona przy użyciu programu PowerShell) i dostępnego magazynu. Woluminy magazynu można zmienić, wybierając inne woluminy z menu rozwijanego. Jeśli zmienisz wartość **Magazyn docelowy**, wartość **dostępny Magazyn dyskowy** zmieniają się dynamicznie, aby odzwierciedlić wartości w obszarze **wolnego miejsca** i  **Underprovisioned miejsca**.
 
-  Jeśli źródeł danych wzrostu zgodnie z harmonogramem, wartość **Underprovisioned miejsca** kolumny w **magazynu dostępnego dysku** odzwierciedla ilość dodatkowego magazynu, które ma potrzebne. Użyj tej wartości, aby ułatwić planowanie zapotrzebowanie na pamięć smooth kopii zapasowych. Jeśli wartość wynosi zero, nie ma żadnych potencjalnych problemów z magazynem, w najbliższej przyszłości. Jeśli wartość jest liczbą różne od zera, nie ma wystarczającej ilości miejsca przydzielone (na podstawie zasad ochrony i rozmiar danych z chronionych elementów członkowskich).
+  Jeśli źródła danych zwiększą się zgodnie z planem wartość **miejsce** kolumny w **dostępny Magazyn dyskowy** odzwierciedla ilość dodatkowego magazynu, która jest potrzebna. Użyj tej wartości, aby ułatwić zaplanowanie potrzeb dotyczących magazynu dla bezproblemowego tworzenia kopii zapasowych. Jeśli ta wartość wynosi zero, istnieją nie potencjalnych problemów z magazynem w najbliższej przyszłości. Jeśli wartość jest różna od zera, nie masz wystarczającej ilości miejsca przydzielone (na podstawie zasad ochrony i rozmiaru danych chronionych elementów członkowskich).
 
-  ![Magazyn dyskowy niedostatecznej alokacji](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-7.png)
+  ![Przydział magazynu dyskowego](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-7.png)
 
    Aby zakończyć tworzenie grupy ochrony, Zakończ pracę kreatora.
 
-## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrowanie starszych magazynu do nowoczesnych magazynu kopii zapasowej
-Po przeprowadzeniu uaktualnienia lub instalacji v2 Utwórz kopię zapasową serwera i uaktualniania systemu operacyjnego do systemu Windows Server 2016, należy zaktualizować używać nowoczesnych magazynu kopii zapasowej grup ochrony. Domyślnie nie są zmieniane grup ochrony. One nadal działały tak początkowo zostały ustawione. 
+## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>Migrowanie starszej wersji magazynu do funkcji Modern Backup Storage
+Po uaktualnieniu lub zainstalować Backup Server w wersji 2 i Uaktualnij system operacyjny do systemu Windows Server 2016 można zaktualizować grup ochrony do użycia Modern Backup Storage. Domyślnie grupy ochrony nie są zmieniane. One nadal działać zgodnie z początkowo zostały ustawione. 
 
-Aktualizowanie grupy ochrony w celu użycia nowoczesnych magazynu kopii zapasowej jest opcjonalna. Aby zaktualizować grupy ochrony, Zatrzymaj ochronę wszystkich źródeł danych przy użyciu opcji Zachowaj dane. Następnie dodaj źródła danych do nowej grupy ochrony.
+Aktualizowanie grup ochrony w celu użycia Modern Backup Storage jest opcjonalne. Aby zaktualizować grupę ochrony, Zatrzymaj ochronę wszystkich źródeł danych przy użyciu opcji Zachowaj dane. Następnie dodaj źródła danych do nowej grupy ochrony.
 
-1. W konsoli administratora, wybierz **ochrony** funkcji. W **członka grupy ochrony** listy, kliknij prawym przyciskiem myszy element członkowski, a następnie wybierz **Zatrzymaj ochronę członka**.
+1. W konsoli administratora wybierz **ochrony** funkcji. W **elementu członkowskiego grupy ochrony** listy, kliknij prawym przyciskiem myszy element członkowski, a następnie wybierz **Zatrzymaj ochronę członka**.
 
   ![Zatrzymaj ochronę członka](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. W **Usuń z grupy** okna dialogowego przejrzyj zajęte miejsce na dysku i wolnego miejsca w puli magazynów. Wartość domyślna to Pozostaw punktów odzyskiwania na dysku i zezwolić im na wygaśnie za skojarzonych zasad przechowywania. Kliknij przycisk **OK**.
+2. W **Usuń z grupy** okna dialogowego przejrzyj używane miejsce na dysku i dostępne wolne miejsce w puli magazynów. Wartość domyślna to pozostawienie punktów odzyskiwania na dysku i umożliwić im wygaśnie za skojarzonych zasad przechowywania. Kliknij przycisk **OK**.
 
-  Jeśli chcesz od razu Zwróć zajęte miejsce na dysku do puli wolnego miejsca, wybierz **Usuń replikę z dysku** pole wyboru, aby usunąć dane kopii zapasowej (i punktów odzyskiwania) skojarzonego z tym członkiem.
+  Aby natychmiast przywrócić zajęte miejsce na dysku do wolnej puli magazynów, należy zaznaczyć **Usuń replikę z dysku** pole wyboru, aby usunąć dane kopii zapasowej (i punktów odzyskiwania) skojarzonych z tym elementem członkowskim.
 
   ![Usuń z grupy, okno dialogowe](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
-3. Utwórz grupę ochrony, która używa nowoczesnej magazynu kopii zapasowej. Dołącz źródła dane niechronione.
+3. Utwórz grupę ochrony, która używa funkcji Modern Backup Storage. Dołącz źródła danych niechronione.
 
 
-## <a name="add-disks-to-increase-legacy-storage"></a>Dodawanie dysków, aby zwiększyć ilość miejsca w starszej wersji
+## <a name="add-disks-to-increase-legacy-storage"></a>Dodawanie dysków w celu zwiększenia magazynu w starszej wersji
 
-Jeśli chcesz użyć starszego magazynu kopii zapasowej serwera, może być konieczne dodawanie dysków, aby zwiększyć ilość miejsca w starszej wersji. 
+Jeśli chcesz używać starszej wersji magazynu z kopii zapasowej serwera, może być konieczne dodanie dysków w celu zwiększenia magazynu w starszej wersji. 
 
-Aby dodać magazyn danych na dysku:
+Aby dodać magazyn dyskowy:
 
-1. W konsoli administratora, wybierz **zarządzania** > **Magazyn dyskowy** > **Dodaj**.
+1. W konsoli administratora wybierz **zarządzania** > **Magazyn dyskowy** > **Dodaj**.
 
-    ![Magazyn dyskowy okno dialogowe Dodawanie](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Dodaj okno dialogowe Magazyn dyskowy](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-4. W **dodać magazyn dyskowy** okno dialogowe, wybierz opcję **Dodaj dyski**.
+4. W **Dodawanie magazynu dyskowego** okno dialogowe, wybierz opcję **dodawać dyski**.
 
-5. Na liście dostępnych dysków, wybierz dyski, które chcesz dodać, wybierz **Dodaj**, a następnie wybierz **OK**.
+5. Na liście dostępnych dysków, wybierz dyski, o których chcesz dodać, wybierz **Dodaj**, a następnie wybierz pozycję **OK**.
 
 ## <a name="update-the-data-protection-manager-protection-agent"></a>Zaktualizuj agenta ochrony programu Data Protection Manager
 
-Utwórz kopię zapasową serwera używa agenta ochrony programu System Center Data Protection Manager do aktualizacji. Jeśli przeprowadzasz uaktualnienie agenta ochrony, która nie jest połączona z siecią, nie można użyć konsoli administratora usługi Menedżer ochrony danych przeprowadzenie uaktualnienia podłączonego agenta. Należy uaktualnić agenta ochrony w środowisku domeny nieaktywny. Dopóki komputer kliencki jest połączony z siecią, danych ochrony konsoli administratora programu Manager zawiera oczekuje aktualizacji agenta ochrony.
+Utwórz kopię zapasową serwera, używa agenta ochrony programu System Center Data Protection Manager aktualizacji. Jeśli przeprowadzasz uaktualnienie agenta ochrony, który nie jest podłączony do sieci, nie można użyć konsoli administratora programu Data Protection Manager do ukończenia uaktualnienia podłączonego agenta. Należy uaktualnić agenta ochrony w środowisku domeny nieaktywny. Konsoli administratora programu Data Protection Manager, dopóki komputer kliencki jest połączony z siecią, pokazuje, oczekuje aktualizacji agenta ochrony.
 
-W poniższych sekcjach opisano sposób aktualizacji agentów ochrony na komputerach klienckich, które są połączone i komputery klienckie, które nie są połączone.
+Poniżej opisano sposób aktualizacji agentów ochrony na komputerach klienckich, które są połączone i komputerów klienckich, które nie są połączone.
 
 ### <a name="update-a-protection-agent-for-a-connected-client-computer"></a>Zaktualizuj agenta ochrony na podłączonym komputerze klienckim
 
-1. W konsoli administratora serwera kopii zapasowej wybierz **zarządzania** > **agentów**.
+1. W konsoli administratora serwera kopii zapasowych wybierz **zarządzania** > **agentów**.
 
 2. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 
   > [!NOTE]
-  > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępne dla każdego komputera chronionego. W **akcje** okienku **aktualizacji** akcja jest dostępna tylko wtedy, gdy komputer chroniony jest zaznaczony i są dostępne aktualizacje.
+  > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępna dla każdego chronionego komputera. W **akcje** okienku **aktualizacji** akcja jest dostępna tylko wtedy, gdy komputer chroniony jest zaznaczony i są dostępne aktualizacje.
   >
   >
 
@@ -220,65 +220,65 @@ W poniższych sekcjach opisano sposób aktualizacji agentów ochrony na komputer
 
 ### <a name="update-a-protection-agent-on-a-client-computer-that-is-not-connected"></a>Zaktualizuj agenta ochrony na komputerze klienckim, który nie jest połączony
 
-1. W konsoli administratora serwera kopii zapasowej wybierz **zarządzania** > **agentów**.
+1. W konsoli administratora serwera kopii zapasowych wybierz **zarządzania** > **agentów**.
 
 2. W okienku wyświetlania wybierz komputery klienckie, dla których chcesz zaktualizować agenta ochrony.
 
   > [!NOTE]
-   > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępne dla każdego komputera chronionego. W **akcje** okienku **aktualizacji** akcja jest niedostępna, gdy komputer chroniony jest zaznaczony, chyba że są dostępne aktualizacje.
+   > **Aktualizacji agenta** kolumna wskazuje, kiedy aktualizacji agenta ochrony jest dostępna dla każdego chronionego komputera. W **akcje** okienku **aktualizacji** akcja jest niedostępna, gdy komputer chroniony jest zaznaczony, o ile nie są dostępne aktualizacje.
   >
   >
 
-3. Aby zainstalować zaktualizowanych agentów ochrony na wybranych komputerach, wybierz opcję **aktualizacji**.
+3. Aby zainstalować zaktualizowanych agentów ochrony na wybranych komputerach, należy wybrać **aktualizacji**.
 
-4. Na komputerze klienckim, który nie jest połączony z siecią, dopóki komputer jest połączony z siecią **stan agenta** kolumna zawiera stan **oczekująca aktualizacja**.
+4. Na komputerze klienckim, który nie jest podłączony do sieci, dopóki komputer jest połączony z siecią **stan agenta** kolumna pokazuje stan **oczekująca aktualizacja**.
 
-  Po podłączeniu komputera klienckiego do sieci, **aktualizacji agenta** kolumny dla komputera klienckiego wskazuje stan **aktualizacji**.
+  Po komputer kliencki jest połączony z siecią **aktualizacji agenta** kolumny dla komputera klienckiego wskazuje stan **aktualizowanie**.
   
-### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>Przenoszenie starszych grup ochrony z starszą wersję i zsynchronizuj nowej wersji przy użyciu platformy Azure
+### <a name="move-legacy-protection-groups-from-old-version-and-sync-the-new-version-with-azure"></a>Przenoś starszych grup ochrony ze starej wersji i synchronizowanie nowej wersji przy użyciu platformy Azure
 
-Gdy aktualizacji są zarówno serwer kopii zapasowej Azure i systemu operacyjnego, można przystąpić do ochrony nowych źródeł danych przy użyciu nowoczesnych magazynu kopii zapasowej. Będzie jednak już chronione źródła danych mają być chronione w sposób starszej wersji w porównaniu z serwera usługi Kopia zapasowa Azure, ale wszystkie nowe ochrony będzie używać nowoczesnych magazynu kopii zapasowej.
+Gdy aktualizacji są zarówno usługi Azure Backup Server i systemu operacyjnego, można przystąpić do ochrony nowych źródeł danych przy użyciu Modern Backup Storage. Jednak już chronione źródła danych będą w dalszym ciągu być chronione w starszy sposób znajdowały się w usłudze Azure Backup Server, ale wszystkie nowe ochrony użyje Modern Backup Storage.
 
-Następujące czynności są do migracji źródeł danych z ze starszej wersji trybu ochrony na nowoczesnych magazynu kopii zapasowej.
+Poniższe kroki dotyczą migracji źródła danych z ze starszej wersji trybu ochrony do funkcji Modern backup storage.
 
-• Dodaj nowe woluminy do puli magazynu programu DPM i przypisz przyjazną tagi źródła danych i nazwy, w razie potrzeby.
-• Dla każdego źródła danych, która jest w trybie starszej wersji, Zatrzymaj ochronę źródła danych i "Zachowaj chronione dane".  Pozwoli to odzyskiwania starych punktów odzyskiwania po migracji.
+• Dodawanie nowych woluminów do puli magazynów programu DPM i przypisz przyjazną tagi źródła nazwiska i dane, w razie potrzeby.
+• Dla każdego źródła danych, który jest w trybie starszej wersji, Zatrzymaj ochronę źródła danych i "Zachowaj chronione dane".  Umożliwi to odzyskiwanie starych punktów odzyskiwania po migracji.
 
-• Tworzenie nowych PG i wybierz źródło danych, które mają być przechowywane przy użyciu nowego formatu.
-• Program DPM wykona kopia repliki ze starszej wersji magazynu kopii zapasowej do woluminu nowoczesnych magazynu kopii zapasowych lokalnie.
-Uwaga: To będą widoczne jako • zadania po odzyskiwaniu operacji wszystkie nowe synchronizacji i punktów odzyskiwania będą następnie przechowywane w nowoczesnych magazynu kopii zapasowej.
-• Stare punkty odzyskiwania będą usuwane limit wygaśnie i ostatecznie wolnego miejsca na dysku.
-• Usunięcie wszystkich starszych woluminów z starego magazynu, dysk można usunąć z kopii zapasowej systemu Azure i systemu.
-• Wykonaj kopię zapasową bazy danych dpmdb Azure.
+• Tworzenie nowych PG i wybierz źródła danych, które mają być przechowywane przy użyciu nowego formatu.
+• Program DPM wykona kopię repliki ze starszej wersji magazynu kopii zapasowych do woluminu Modern Backup Storage lokalnie.
+Uwaga: Ta będzie widoczna jako czynności po odzyskiwaniu: • zadania, wszystkie nowe synchronizacji i punktów odzyskiwania będą następnie przechowywane w Modern Backup Storage.
+• Stare punkty odzyskiwania będą usuwane się, jak wygasa, a ostatecznie wolnego miejsca na dysku.
+• Po wszystkich starszych woluminów, które są usuwane z starego magazynu, dysk można usunąć z usługi Azure backup i systemu.
+• Wykonaj kopię zapasową bazy danych dpmdb platformy Azure.
 
-Część 2:-ważne elementy > Nowy serwer będzie musiał nosić takie same jak oryginalny serwer usługi Kopia zapasowa Azure. Nie można zmienić nazwy nowego serwera kopii zapasowej platformy Azure, jeśli chcesz użyć starego pulę magazynu i bazy danych DPMDB do zachowania punktów odzyskiwania — musi mieć kopię zapasową bazy danych dpmdb będzie konieczne jest przywrócenie
+Część 2:-istotnych elementów > Nowy serwer będzie musiał mieć nazwę takie same jak oryginalny serwer usługi Azure Backup. Nie można zmienić nazwy nowej usługi Azure backup server, jeśli chcesz używać starego puli magazynów i bazy danych DPMDB do przechowywania punktów odzyskiwania — musi mieć kopię zapasową bazy danych DPMDB, jak będzie musiała zostać przywrócone
 
-1) Zamknięcia oryginalnego Azure tworzenie kopii zapasowej serwera lub wyłączanie przesyłania.
+1) Zamknij oryginalny Azure Utwórz kopię zapasową serwera lub zwiększyły podczas transmisji.
 2) Resetuj konta komputera w usłudze active directory.
-3) Zainstaluj serwer 2016 na nowej maszyny i nadaj jej nazwę na taką samą nazwę komputera, jak oryginalny serwer usługi Kopia zapasowa Azure.
+3) Zainstaluj Server 2016 na nowej maszyny i nadaj jej nazwę na taką samą nazwę komputera, jak oryginalny serwer usługi Azure Backup.
 4) Przyłączenia do domeny
-5) Zainstaluj serwer usługi Kopia zapasowa Azure w wersji 2 (dyski puli magazynów DPM przenieść ze starego serwera, a następnie zaimportuj)
-6) Przywróć bazę danych DPMDB pobranych z końcem część 2
-7) Dołącz magazynu z oryginalnego serwera kopii zapasowej do nowego serwera.
+5) Instalowanie usługi Azure Backup server w wersji 2 (dyski puli magazynów programu DPM przenieść ze starego serwera i import)
+6) Przywróć bazę danych DPMDB pobranych z końca część 2
+7) Dołącz magazyn z oryginalnego serwera kopii zapasowej do nowego serwera.
 8) Z bazy danych SQL należy przywrócić bazy danych DPMDB
-9) Z wiersza polecenia administratora na nowy serwer dysk cd kopia zapasowa Microsoft Azure Zainstaluj lokalizacji i otworzyć folder bin
+9) Z poziomu wiersza polecenia administratora na nowy serwer dysk cd, kopia zapasowa Microsoft Azure Zainstaluj lokalizacji i otworzyć folder bin
 
 Przykład ścieżki: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-Azure backup wykonaj polecenie DPMSYNC-SYNC
+na platformie Azure należy utworzyć kopię zapasową wykonaj polecenie DPMSYNC-SYNC
 
-10) Uruchom polecenie DPMSYNC-SYNC Uwaga Po dodaniu nowych dysków do puli magazynu programu DPM, zamiast przenoszenie starych, następnie uruchom polecenie DPMSYNC - Reallocatereplica
+10) Uruchom polecenie DPMSYNC-SYNC Uwaga Po dodaniu nowych dysków do puli magazynów programu DPM, zamiast przenoszenia stare, uruchom polecenie DPMSYNC - Reallocatereplica
 
 ## <a name="new-powershell-cmdlets-in-v2"></a>Nowe polecenia cmdlet programu PowerShell w wersji 2
 
-Po zainstalowaniu serwera usługi Kopia zapasowa Azure w wersji 2, dostępne są dwa nowe polecenia cmdlet: 
+Po zainstalowaniu usługi Azure Backup Server w wersji 2, dostępne są dwa nowe polecenia cmdlet: 
 * [Mount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787159.aspx)
 * [Dismount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787158.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak przygotować serwer lub Włącz ochronę obciążenia:
-- [Przygotowanie serwera kopii zapasowej obciążeń](backup-azure-microsoft-azure-backup.md)
-- [Użyj kopii zapasowej serwera, aby utworzyć kopię zapasową serwera VMware](backup-azure-backup-server-vmware.md)
-- [Utwórz kopię zapasową serwera umożliwia tworzenie kopii zapasowych programu SQL Server](backup-azure-sql-mabs.md)
-- [Nowoczesne magazynu kopii zapasowej za pomocą kopii zapasowej serwera](backup-mabs-add-storage.md)
+Dowiedz się, jak przygotować serwer lub rozpoczęciu ochrony obciążenia:
+- [Przygotowywanie obciążeń serwera usługi Backup](backup-azure-microsoft-azure-backup.md)
+- [Tworzenie kopii zapasowej serwera VMware przy użyciu kopii zapasowej serwera](backup-azure-backup-server-vmware.md)
+- [Tworzenie kopii zapasowych programu SQL Server przy użyciu kopii zapasowej serwera](backup-azure-sql-mabs.md)
+- [Modern Backup Storage za pomocą kopii zapasowej serwera](backup-mabs-add-storage.md)
 

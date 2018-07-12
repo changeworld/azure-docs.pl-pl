@@ -1,12 +1,12 @@
 ---
-title: "Utwórz regułę niestandardową pakietu IoT Azure | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć niestandardową regułę w pakiet IoT wstępnie skonfigurowane rozwiązanie."
-services: 
+title: Utwórz regułę niestandardową w pakiecie Azure IoT Suite | Dokumentacja firmy Microsoft
+description: Jak utworzyć niestandardową regułę w pakiecie IoT Suite wstępnie skonfigurowanego rozwiązania.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 562799dc-06ea-4cdd-b822-80d1f70d2f09
 ms.service: iot-suite
 ms.devlang: na
@@ -16,53 +16,54 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 9bf2a13035de141766fd935966ce18459dccdaab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38590520"
 ---
-# <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>Utwórz regułę niestandardową w zdalnym wstępnie skonfigurowane rozwiązanie monitorowania
+# <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>Utwórz regułę niestandardową w wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego
 
 ## <a name="introduction"></a>Wprowadzenie
 
-W przypadku wstępnie skonfigurowanych rozwiązań, można skonfigurować [wartość reguły, które są wyzwalane w razie telemetrii urządzenia osiągnie określony próg][lnk-builtin-rule]. [Użyj dynamicznych danych telemetrycznych z monitorowania zdalnego wstępnie skonfigurowane rozwiązanie] [ lnk-dynamic-telemetry] opisuje sposób dodawania wartości niestandardowych telemetrii, takich jak *ExternalTemperature* do rozwiązania. W tym artykule przedstawiono sposób tworzenia reguły niestandardowe dla typów dynamicznych telemetrii w rozwiązaniu.
+W przypadku wstępnie skonfigurowanych rozwiązań można skonfigurować [wartość reguły, które mogą powodować podczas telemetrii urządzenia osiągnie określony próg][lnk-builtin-rule]. [Użyj telemetrii dynamicznej dzięki zdalnemu monitorowaniu wstępnie skonfigurowanego rozwiązania] [ lnk-dynamic-telemetry] opisuje sposób dodawania wartości niestandardowych danych telemetrycznych, takich jak *ExternalTemperature* do rozwiązania. W tym artykule pokazano, jak utworzyć niestandardową regułę dla typów telemetrii dynamicznej w rozwiązaniu.
 
-W tym samouczku używana proste Node.js symulowane urządzenie można wygenerować dynamiczne telemetrię, aby wysłać do zaplecza wstępnie skonfigurowanego rozwiązania. Następnie dodaj niestandardowe reguły w **RemoteMonitoring** rozwiązania Visual Studio i wdrażanie tego dostosowane zaplecza do subskrypcji platformy Azure.
+W tym samouczku używa prostego urządzenia symulowanego środowiska Node.js do wygenerowania telemetrii dynamicznej do wysłania do wstępnie skonfigurowanego rozwiązania zaplecza. Następnie dodaj niestandardowe reguły w **RemoteMonitoring** rozwiązania Visual Studio i wdrażanie tego dostosowane zaplecza do subskrypcji platformy Azure.
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Aktywna subskrypcja platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure][lnk_free_trial].
 * [Node.js] [ lnk-node] wersji 0.12.x lub nowszej, aby utworzyć symulowane urządzenie.
-* Visual Studio 2015 lub Visual Studio 2017 zmodyfikować wstępnie skonfigurowane rozwiązanie ponownie kończyć się nowych reguł.
+* Visual Studio 2015 lub Visual Studio 2017, aby zmodyfikować ponownie wstępnie skonfigurowanego rozwiązania kończy się Twoje nowe zasady.
 
 [!INCLUDE [iot-suite-v1-provision-remote-monitoring](../../includes/iot-suite-v1-provision-remote-monitoring.md)]
 
-Zanotuj nazwy rozwiązania, którą wybrano dla danego wdrożenia. Należy to nazwa rozwiązania w dalszej części tego samouczka.
+Zanotuj nazwę rozwiązania, który został wybrany dla danego wdrożenia. Nazwa tego rozwiązania są potrzebne w dalszej części tego samouczka.
 
 [!INCLUDE [iot-suite-v1-send-external-temperature](../../includes/iot-suite-v1-send-external-temperature.md)]
 
-Po upewnieniu się, że jest wysyłany, można zatrzymać aplikacji konsoli Node.js **ExternalTemperature** telemetrię, aby wstępnie skonfigurowanych rozwiązań. Nie zamykaj okna konsoli ponieważ ponownie uruchom tę aplikację konsoli Node.js po dodaniu niestandardowej reguły do rozwiązania.
+Po upewnieniu się, że jest wysyłany, można zatrzymać aplikacji konsoli środowiska Node.js **ExternalTemperature** danych telemetrycznych do wstępnie skonfigurowanego rozwiązania. Nie zamykaj okna konsoli ponieważ ponownie uruchomić tę aplikację konsoli Node.js po dodaniu niestandardowej reguły do rozwiązania.
 
-## <a name="rule-storage-locations"></a>Lokalizacje magazynu reguły
+## <a name="rule-storage-locations"></a>Lokalizacje przechowywania reguły
 
-Informacje o regułach jest utrwalona w dwóch miejscach:
+Informacje o regułach są utrwalane w dwóch miejscach:
 
-* **DeviceRulesNormalizedTable** tabeli — znormalizowane odwołanie do reguły zdefiniowane przez portal rozwiązania są przechowywane w tej tabeli. Reguły urządzenia są wyświetlane w portalu rozwiązania, wysyła zapytanie tej tabeli definicji reguły.
-* **DeviceRules** obiektu blob — ten obiekt blob przechowuje wszystkie reguły zdefiniowane dla wszystkich zarejestrowanych urządzeń i jest zdefiniowany jako danych wejściowych do zadania usługi analiza strumienia Azure odwołanie.
+* **DeviceRulesNormalizedTable** tabeli — znormalizowane odwołanie od reguł zdefiniowanych w portalu rozwiązania są przechowywane w tej tabeli. Reguły urządzeń są wyświetlane w portalu rozwiązania, wysyła zapytanie tej tabeli do definicji reguł.
+* **DeviceRules** obiektów blob — ten obiekt blob przechowuje wszystkie reguły zdefiniowane dla wszystkich urządzeń zarejestrowanych i jest definiowany jako dane wejściowe do zadania usługi Azure Stream Analytics odwołania.
  
-Podczas aktualizacji istniejącej reguły lub zdefiniuj nowe reguły w portalu rozwiązania, tabelę i obiektów blob są aktualizowane zgodnie ze zmianami. Definicję reguły wyświetlana w portalu jest dostarczany z tabeli magazynu, a Definicja reguły odwołuje się zadania usługi analiza strumienia pochodzi z obiektu blob. 
+Aktualizuj istniejącą regułę, lub zdefiniować nową regułę w portalu rozwiązania, tabelę i obiektów blob są aktualizowane zgodnie ze zmianami. Definicja reguły wyświetlana w portalu pochodzą z magazynu tabel i definicji reguły przywoływane przez zadania usługi Stream Analytics pochodzą z obiektu blob. 
 
-## <a name="update-the-remotemonitoring-visual-studio-solution"></a>Aktualizacji rozwiązania RemoteMonitoring Visual Studio
+## <a name="update-the-remotemonitoring-visual-studio-solution"></a>Aktualizacja RemoteMonitoring rozwiązania Visual Studio
 
-Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie programu Visual Studio do uwzględnienia nową regułę, która używa **ExternalTemperature** danych telemetrycznych wysłanych z symulowane urządzenie:
+Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie programu Visual Studio do uwzględnienia nową regułę, która używa **ExternalTemperature** telemetrii wysyłanych z symulowanego urządzenia:
 
-1. Jeśli nie zostało to jeszcze zrobione, klonowanie **azure iot — zdalnego monitorowania** repozytorium do odpowiedniej lokalizacji na komputerze lokalnym za pomocą następujących poleceń Git:
+1. Jeśli jeszcze tego nie zrobiono, sklonuj **azure-iot-remote-monitoring** repozytorium do odpowiedniej lokalizacji na komputerze lokalnym przy użyciu następującego polecenia Git:
 
     ```
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 
-2. W programie Visual Studio Otwórz plik RemoteMonitoring.sln z lokalną kopię **azure iot — zdalnego monitorowania** repozytorium.
+2. W programie Visual Studio, otwórz plik RemoteMonitoring.sln lokalną kopię **azure-iot-remote-monitoring** repozytorium.
 
 3. Otwórz plik Infrastructure\Models\DeviceRuleBlobEntity.cs i Dodaj **ExternalTemperature** właściwości w następujący sposób:
 
@@ -80,7 +81,7 @@ Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie pr
     public string ExternalTemperatureRuleOutput { get; set; }
     ```
 
-5. Otwórz plik Infrastructure\Models\DeviceRuleDataFields.cs i Dodaj następujący **ExternalTemperature** właściwości po istniejącej **wilgotności** właściwości:
+5. Otwórz plik Infrastructure\Models\DeviceRuleDataFields.cs i Dodaj następujący kod **ExternalTemperature** właściwości po istniejącej **wilgotności** właściwości:
 
     ```csharp
     public static string ExternalTemperature
@@ -89,7 +90,7 @@ Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie pr
     }
     ```
 
-6. W tym samym pliku, należy zaktualizować **_availableDataFields** metodę w celu uwzględnienia **ExternalTemperature** w następujący sposób:
+6. W tym samym pliku, należy zaktualizować **_availableDataFields** metodę, aby uwzględnić **ExternalTemperature** w następujący sposób:
 
     ```csharp
     private static List<string> _availableDataFields = new List<string>
@@ -98,7 +99,7 @@ Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie pr
     };
     ```
 
-7. Otwórz plik Infrastructure\Repository\DeviceRulesRepository.cs i zmodyfikować **BuildBlobEntityListFromTableRows** metody w następujący sposób:
+7. Otwórz plik Infrastructure\Repository\DeviceRulesRepository.cs i modyfikować **BuildBlobEntityListFromTableRows** metody w następujący sposób:
 
     ```csharp
     else if (rule.DataField == DeviceRuleDataFields.Humidity)
@@ -113,29 +114,29 @@ Poniższe kroki pokazują sposób modyfikowania RemoteMonitoring rozwiązanie pr
     }
     ```
 
-## <a name="rebuild-and-redeploy-the-solution"></a>Ponowne skompilowanie i wdrożenie rozwiązania.
+## <a name="rebuild-and-redeploy-the-solution"></a>Ponownie skompiluj i wdróż rozwiązanie.
 
-Teraz można wdrażać zaktualizowane rozwiązanie z subskrypcją platformy Azure.
+Teraz można wdrożyć zaktualizowane rozwiązanie z subskrypcją platformy Azure.
 
-1. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i przejdź do katalogu głównego kopii lokalnej repozytorium azure iot — zdalnego monitorowania.
+1. Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i przejdź do katalogu głównego lokalnej kopii repozytorium azure-iot-remote-monitoring.
 
-2. Aby wdrożyć rozwiązanie zaktualizowane, uruchom następujące polecenie podstawiając **{Nazwa wdrożenia}** o nazwie wdrożenia wstępnie skonfigurowane rozwiązanie zanotowany wcześniej:
+2. Aby wdrożyć zaktualizowany rozwiązania, uruchom polecenie następujących, zastępując **{Nazwa wdrożenia}** o nazwie zanotowaną wcześniej wdrażania wstępnie skonfigurowanego rozwiązania:
 
     ```
     build.cmd cloud release {deployment name}
     ```
 
-## <a name="update-the-stream-analytics-job"></a>Aktualizacja zadania usługi analiza strumienia
+## <a name="update-the-stream-analytics-job"></a>Aktualizacja zadania usługi Stream Analytics
 
-Po zakończeniu wdrożenia należy zaktualizować zadania usługi analiza strumienia do używania nowych definicji reguły.
+Po zakończeniu wdrożenia należy zaktualizować zadania usługi Stream Analytics, aby użyć nowych definicji reguły.
 
-1. W portalu Azure przejdź do grupy zasobów zawiera zasoby wstępnie skonfigurowanych rozwiązań. Ta grupa zasobów ma taką samą nazwę, określone dla rozwiązania podczas wdrażania.
+1. W witrynie Azure portal przejdź do grupy zasobów, zawierającej zasobami we wstępnie skonfigurowanym rozwiązaniu. Ta grupa zasobów ma taką samą nazwę, wskazana dla rozwiązania podczas wdrażania.
 
-2. Przejdź do {Nazwa wdrożenia}-zadania usługi analiza strumienia reguły. 
+2. Przejdź do {Nazwa wdrożenia} — zadanie reguły Stream Analytics. 
 
-3. Kliknij przycisk **zatrzymać** zatrzymania zadania usługi analiza strumienia uruchamianie. (Należy poczekać na Zatrzymaj, aby można było edytować zapytanie zadania przesyłania strumieniowego).
+3. Kliknij przycisk **zatrzymać** można zatrzymać zadania usługi Stream Analytics uruchamianie. (Należy poczekać zadania przesyłania strumieniowego zatrzymać, zanim będzie można edytować zapytania).
 
-4. Kliknij przycisk **zapytania**. Edytuj zapytanie, aby uwzględnić **wybierz** instrukcji dla **ExternalTemperature**. Poniższy przykład przedstawia pełną zapytania z nowym **wybierz** instrukcji:
+4. Kliknij przycisk **zapytania**. Edytuj zapytanie, aby uwzględnić **wybierz** poufności informacji dotyczące **ExternalTemperature**. Poniższy przykład pokazuje kompletny zapytania przy użyciu nowego **wybierz** instrukcji:
 
     ```
     WITH AlarmsData AS 
@@ -190,39 +191,39 @@ Po zakończeniu wdrożenia należy zaktualizować zadania usługi analiza strumi
     FROM AlarmsData
     ```
 
-5. Kliknij przycisk **zapisać** zmienić zaktualizowane reguły zapytania.
+5. Kliknij przycisk **Zapisz** zmienić kwerendę Zaktualizowano reguły.
 
-6. Kliknij przycisk **Start** można uruchomić zadania Stream Analytics, ponowne uruchomienie.
+6. Kliknij przycisk **Start** można uruchomić zadania usługi Stream Analytics, ponowne uruchomienie.
 
 ## <a name="add-your-new-rule-in-the-dashboard"></a>Dodaj nową regułę na pulpicie nawigacyjnym
 
-Można teraz dodawać **ExternalTemperature** regułę do urządzenia, na pulpicie nawigacyjnym rozwiązania.
+Teraz możesz dodać **ExternalTemperature** zasadę, aby urządzenia na pulpicie nawigacyjnym rozwiązania.
 
 1. Przejdź do portalu rozwiązania.
 
 2. Przejdź do **urządzeń** panelu.
 
-3. Zlokalizuj urządzeń niestandardowych utworzony wysyłanej **ExternalTemperature** telemetrii i na **szczegóły urządzenia** panelu, kliknij przycisk **Dodaj regułę**.
+3. Zlokalizuj urządzenie niestandardowe utworzone, które wysyła **ExternalTemperature** telemetrii i **szczegóły urządzenia** panelu, kliknij przycisk **Dodaj regułę**.
 
 4. Wybierz **ExternalTemperature** w **pola danych**.
 
 5. Ustaw **próg** do 56. Następnie kliknij przycisk **Zapisz i Wyświetl reguły**.
 
-6. Wróć do pulpitu nawigacyjnego, aby wyświetlić historię alarm.
+6. Wróć do pulpitu nawigacyjnego w celu wyświetlenia historii alarmów.
 
-7. W oknie konsoli po lewej, Otwórz, uruchomić aplikację konsoli Node.js, aby rozpocząć wysyłanie **ExternalTemperature** danych telemetrycznych.
+7. W oknie konsoli, użytkownik pozostanie otwarte, należy uruchomić aplikację konsoli środowiska Node.js, aby rozpocząć wysyłanie **ExternalTemperature** dane telemetryczne.
 
-8. Zwróć uwagę, że **historii Alarm** tabeli przedstawiono nowe alarmy po wyzwoleniu nowej reguły.
+8. Należy zauważyć, że **Historia alarmów** tabeli przedstawiono nowe alarmy, gdy nowa reguła zostanie wyzwolony.
  
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-Zmiana operator  **>**  jest bardziej złożony i wykracza poza kroki opisane w tym samouczku. Chociaż można zmienić zadanie usługi Stream Analytics, aby użyć niezależnie od operatora Ci się podoba, odzwierciedlające operatora w portalu rozwiązania jest bardziej złożonych zadań. 
+Zmiana operator **>** jest bardziej złożona i wykracza poza kroki opisane w tym samouczku. Możesz zmienić zadania usługi Stream Analytics, niezależnie od operatora chcesz używać, odzwierciedlający tego operatora w portalu rozwiązania jest bardziej złożone zadania. 
 
-## <a name="next-steps"></a>Następne kroki
-Teraz, przedstawiono sposób tworzenia reguł niestandardowych, można dowiedzieć się więcej o wstępnie skonfigurowanych rozwiązań:
+## <a name="next-steps"></a>Kolejne kroki
+Teraz, gdy wiesz jak utworzyć reguły niestandardowe, można dowiedzieć się więcej o wstępnie skonfigurowanych rozwiązań:
 
-- [Łączenie aplikacji logiki do rozwiązania Azure IoT pakiet monitorowania zdalnego wstępnie][lnk-logic-app]
-- [Urządzenia informacji metadanych do monitorowania zdalnego wstępnie skonfigurowane rozwiązanie][lnk-devinfo].
+- [Łączenie aplikacji logiki do usługi Azure IoT Suite zdalne monitorowanie wstępnie skonfigurowanego rozwiązania][lnk-logic-app]
+- [Urządzenie informacji metadanych do zdalnego monitorowania wstępnie skonfigurowanego rozwiązania][lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-v1-remote-monitoring-device-info.md
 
