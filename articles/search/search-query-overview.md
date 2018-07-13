@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/13/2017
-ms.openlocfilehash: 50e27cbc485259ea5ce744ba71feee5e90293bcb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7b32bad8a9f1d039b17fe0f1be167cffbc86547
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792913"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006209"
 ---
 # <a name="queries-in-azure-search"></a>Zapytania w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -60,6 +60,6 @@ Dostępne w usłudze Azure Search parametry `highlight`, `highlightPreTag` i `hi
 
 Najlepszym sposobem na zrozumienie różnic w składni jest przesłanie zapytań i przejrzenie wyników.
 
-+ Użyj [Eksploratora wyszukiwania](search-explorer.md) w witrynie Azure Portal. Jeśli wdrożysz [przykładowy indeks](search-get-started-portal.md), będziesz w stanie wykonywać zapytania o indeks w ciągu minut, używając narzędzi w portalu.
++ Użyj [Eksploratora wyszukiwania](search-explorer.md) w witrynie Azure portal. Jeśli wdrożysz [przykładowy indeks](search-get-started-portal.md), będziesz w stanie wykonywać zapytania o indeks w ciągu minut, używając narzędzi w portalu.
 
 + Użyj narzędzia Telerik Fiddler lub Chrome Postman do przesyłania zapytań do indeksu przekazanego do usługi wyszukiwania. Oba narzędzia obsługują wywołania REST do punktu końcowego HTTP. 

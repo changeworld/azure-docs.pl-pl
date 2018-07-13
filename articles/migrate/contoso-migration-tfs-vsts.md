@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/12/2018
 ms.author: raynew
-ms.openlocfilehash: 02a790907908daf2db282a320f50d3a27efbd177
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05340c8504150ed568e0d5ce5c8250127e59bca0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917190"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003241"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Migracja Contoso: Refaktoryzacja wdrożenia Team Foundation Server do programu Visual Studio Team Services (VSTS)
 
@@ -33,6 +33,8 @@ Ten dokument jest jedenasta w serii artykułów, które pokazują, jak fikcyjnej
 [Artykuł 9: Refaktoryzacja aplikacji do aplikacji sieci Web platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Pokazuje, jak Contoso SmartHotel app jest migrowana do aplikacji internetowej platformy Azure opartych na kontenerach i bazy danych aplikacji jest migrowana do usługi Azure SQL Server. | Dostępne
 [Artykuł 10: Refaktoryzacja aplikacji systemu Linux w usłudze Azure App Service i Azure serwera MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Pokazuje, jak firmy Contoso jest migrowana osTicket aplikacji systemu Linux do usługi Azure App Service za pomocą kontenera platformy Docker programu PHP 7.0. Baza kodów dla wdrożenia są migrowane do usługi GitHub. Baza danych aplikacji są migrowane do usługi Azure MySQL. | Dostępne
 Artykuł 11: Refaktoryzacja wdrożenia programu TFS w usłudze VSTS | Migracja aplikacji dev TFS do usługi VSTS na platformie Azure | W tym artykule
+[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Pokazuje, jak Contoso migruje i rearchitects SmartHotel aplikacji na platformie Azure. Przekształcanie ich warstwy sieci web aplikacji jako kontenerów Windows bazy danych oraz aplikacji w usłudze Azure SQL Database. | Dostępne
+[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Pokazuje, jak Contoso przebudować ich aplikacji SmartHotel, przy użyciu różnych funkcji platformy Azure i usług, w tym usług App Services, Azure Kubernetes, usługi Azure Functions, Cognitive services i usługi Cosmos DB. | Dostępne
 
 
 ## <a name="business-drivers"></a>Czynniki biznesowe

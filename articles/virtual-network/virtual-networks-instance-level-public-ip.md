@@ -1,6 +1,6 @@
 ---
-title: Azure poziomie wystąpienia publicznego adresu IP (klasyczne) dotyczy | Dokumentacja firmy Microsoft
-description: Zrozumienie wystąpienia adresów poziomu publicznego adresu IP (ILPIP) i jak nimi zarządzać przy użyciu programu PowerShell.
+title: Azure poziomie wystąpienia publiczne adresy IP na (klasyczny) | Dokumentacja firmy Microsoft
+description: Zrozumienie adresy poziomu publicznego adresu IP (ILPIP) wystąpienie i jak nimi zarządzać przy użyciu programu PowerShell.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: genli
-ms.openlocfilehash: 4b4350e6b1616450ce45f9e947cc3b639a341ae7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a10bf96f06c3917913c479d81e8772cb86cfe36e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796024"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005270"
 ---
-# <a name="instance-level-public-ip-classic-overview"></a>Wystąpienia publicznego adresu IP (klasyczne) omówienie
-Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, które wystąpienie maszyny Wirtualnej lub roli znajdują się w. ILPIP nie została wykonana z wirtualnego adresu IP (VIP) przypisany do usługi w chmurze. Zamiast jest dodatkowy adres IP, który umożliwia bezpośrednie łączenie się z wystąpieniem maszyny Wirtualnej lub roli.
+# <a name="instance-level-public-ip-classic-overview"></a>Wystąpienie poziomu omówienie publicznego adresu IP (klasyczny)
+Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, w tej sieci maszyny Wirtualnej lub w wystąpieniu roli. ILPIP nie przyjmuje miejscem, w którym programu virtual IP (VIP) przypisany do usługi w chmurze. Jest raczej, dodatkowe adresu IP, który służy do nawiązania bezpośredniego połączenia z maszyny Wirtualnej lub w wystąpieniu roli.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca tworzenie maszyn wirtualnych za pomocą Menedżera zasobów. Upewnij się, że rozumiesz, jak [adresów IP](virtual-network-ip-addresses-overview-classic.md) pracy na platformie Azure.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca tworzenie maszyn wirtualnych przy użyciu usługi Resource Manager. Upewnij się, że rozumiesz, jak [adresów IP](virtual-network-ip-addresses-overview-classic.md) działają na platformie Azure.
 
-![Różnica między ILPIP i adresu VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
+![Różnica między ILPIP i adresów VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Jak pokazano na rysunku 1, usługa w chmurze jest dostępny przy użyciu adresu VIP, podczas gdy poszczególnych maszyn wirtualnych są zwykle dostępne przy użyciu adresu VIP:&lt;numer portu&gt;. Przypisując ILPIP do określonej maszyny Wirtualnej, że można uzyskać dostępu do maszyny Wirtualnej bezpośrednio przy użyciu tego adresu IP.
+Jak pokazano na rysunku 1, usługa w chmurze odbywa się przy użyciu adresu VIP, podczas gdy poszczególne maszyny wirtualne są zwykle dostępne przy użyciu adresu VIP:&lt;numer portu&gt;. Przypisując ILPIP do określonej maszyny Wirtualnej, że można uzyskać dostępu do maszyny Wirtualnej bezpośrednio przy użyciu tego adresu IP.
 
-Podczas tworzenia usługi w chmurze na platformie Azure, odpowiednie rekordy A systemu DNS są tworzone automatycznie, aby zezwolić na dostęp do usługi za pośrednictwem pełną nazwę domeny (FQDN) zamiast rzeczywistego adresu VIP. Ten sam proces odbywa się w ILPIP zezwalania na dostęp do maszyny Wirtualnej lub roli wystąpienia przez nazwę FQDN zamiast ILPIP. Na przykład w przypadku utworzenia usługi w chmurze o nazwie *contosoadservice*, i skonfigurować rolę sieci web o nazwie *contosoweb* z dwoma wystąpieniami Azure rejestruje następujące rekordy A wystąpień:
+Podczas tworzenia usługi w chmurze na platformie Azure, odpowiednie rekordy A systemu DNS są tworzone automatycznie zezwolić na dostęp do usługi za pośrednictwem Pełna nazwa domeny (FQDN) zamiast rzeczywistego adresu VIP. Ten sam proces ma miejsce dla ILPIP, zezwalając na dostęp do wystąpienia maszyny Wirtualnej lub roli w pełni kwalifikowaną nazwę domeny, zamiast ILPIP. Na przykład jeśli Utwórz usługę w chmurze o nazwie *contosoadservice*, i skonfiguruj rolę sieci web o nazwie *contosoweb* z dwoma wystąpieniami Azure rejestruje następujące rekordy A wystąpień:
 
 * contosoweb\_IN_0.contosoadservice.cloudapp.net
 * contosoweb\_IN_1.contosoadservice.cloudapp.net 
 
 > [!NOTE]
-> Można przypisać tylko jednego ILPIP dla każdego wystąpienia maszyny Wirtualnej lub roli. Możesz użyć maksymalnie 5 ILPIPs na subskrypcję. ILPIPs nie są obsługiwane dla maszyn wirtualnych z wieloma kartami Sieciowymi.
+> Można przypisać tylko jedną ILPIP dla każdego wystąpienia maszyny Wirtualnej lub roli. Możesz użyć maksymalnie 5 ILPIPs na subskrypcję. ILPIPs nie są obsługiwane dla maszyn wirtualnych z wieloma kartami.
 > 
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Dlaczego może zażądać ILPIP?
-Jeśli chcesz można było nawiązać połączenia z wystąpieniem maszyny Wirtualnej lub roli przy użyciu adresu IP przypisane do niego bezpośrednio, zamiast używania chmury usługi VIP:&lt;numer portu&gt;, żądania ILPIP dla maszyny Wirtualnej lub wystąpienia roli.
+Jeśli chcesz mieć możliwość nawiązania połączenia z wystąpieniem maszyny Wirtualnej lub roli przez adres IP przypisany do niego bezpośrednio, zamiast korzystać z chmury usługi adresów VIP:&lt;numer portu&gt;, żądanie ILPIP dla maszyny Wirtualnej lub wystąpienia roli.
 
-* **Aktywne FTP** -przypisując ILPIP do maszyny Wirtualnej, może odbierać ruch na dowolnym porcie. Punkty końcowe nie są wymagane dla maszyny Wirtualnej, aby odbierać ruch.  Zobacz (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[Omówienie protokołu FTP] szczegółowe informacje na temat protokołu FTP.
-* **Wychodzącego** — ruch wychodzący z maszyny Wirtualnej jest mapowany na ILPIP jako źródło i ILPIP unikatowo identyfikuje maszynę Wirtualną do jednostek zewnętrznych.
+* **Aktywne FTP** -przypisując ILPIP do maszyny Wirtualnej, może ona odbierać ruch na dowolnym porcie. Punkty końcowe nie są wymagane dla maszyny Wirtualnej do odbierania ruchu.  Zobacz [Omówienie protokołu FTP] (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) szczegółowe informacje na temat protokołu FTP.
+* **IP ruchu wychodzącego** — ruch wychodzący pochodzące z maszyny Wirtualnej jest mapowany na ILPIP jako źródła i ILPIP unikatowo identyfikuje maszyny Wirtualnej do jednostek zewnętrznych.
 
 > [!NOTE]
-> W przeszłości adres ILPIP została przekazana jako publiczny adres IP (PIP).
+> W przeszłości adres ILPIP była określana jako publiczny adres IP (PIP).
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Zarządzanie ILPIP dla maszyny Wirtualnej
-Następujące zadania umożliwiają tworzenia, przypisywania i usuwania ILPIPs z maszyn wirtualnych:
+Następujące zadania umożliwiają tworzenie i przypisywanie oraz usunąć ILPIPs z maszyn wirtualnych:
 
 ### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Jak utworzyć żądanie ILPIP podczas tworzenia maszyny Wirtualnej przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell tworzy usługi w chmurze o nazwie *FTPService*, pobiera obraz z platformy Azure, tworzy Maszynę wirtualną o nazwie *FTPInstance* przy użyciu obrazu pobrane, ustawia maszynę Wirtualną do obsługi ILPIP i dodaje maszyny Wirtualnej do nowej usługi:
+Poniższy skrypt programu PowerShell tworzy usługi w chmurze o nazwie *FTPService*, pobiera obraz z platformy Azure, utworzenie maszyny Wirtualnej o nazwie *FTPInstance* korzystając z pobrane obrazu maszyny Wirtualnej do użycia ILPIP ustawia i dodaje Maszyna wirtualna do nowej usługi:
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -66,8 +66,8 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
-### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Jak można pobrać informacji o ILPIP dla maszyny Wirtualnej
-Aby wyświetlić informacje ILPIP dla maszyny Wirtualnej utworzone z poprzednim skryptu, uruchom następujące polecenie programu PowerShell i sprawdź wartości *PublicIPAddress* i *PublicIPName*:
+### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Jak pobrać informacje ILPIP dla maszyny Wirtualnej
+Aby wyświetlić informacje ILPIP, aby maszyna wirtualna utworzona za pomocą poprzedniego skryptu, uruchom następujące polecenie programu PowerShell i sprawdź wartości *publicznego adresu IP* i *PublicIPName*:
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -103,25 +103,25 @@ Oczekiwane dane wyjściowe:
     OperationStatus             : OK
 
 ### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Jak usunąć ILPIP z maszyny Wirtualnej
-Aby usunąć ILPIP dodane do maszyny Wirtualnej w ramach poprzedniego skryptu, uruchom następujące polecenie programu PowerShell:
+Aby usunąć ILPIP dodane do maszyny Wirtualnej w poprzednim skrypcie, uruchom następujące polecenie programu PowerShell:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
 ### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Jak dodać ILPIP do istniejącej maszyny Wirtualnej
-Aby dodać ILPIP do maszyny Wirtualnej utworzone za pomocą skryptu poprzedniej, uruchom następujące polecenie:
+Aby dodać ILPIP do maszyny Wirtualnej utworzonej za pomocą poprzedniego skryptu, uruchom następujące polecenie:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
 ```
 
-## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Zarządzanie ILPIP dla wystąpienia roli usługi w chmurze
+## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Zarządzanie ILPIP dla wystąpienia roli usług Cloud Services
 
-Aby dodać ILPIP do wystąpienia roli usługi w chmurze, wykonaj następujące czynności:
+Aby dodać ILPIP wystąpienie roli usług Cloud Services, wykonaj następujące czynności:
 
-1. Pobierz plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [sposobu skonfigurowania usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
-2. Zaktualizuj plik .cscfg przez dodanie `InstanceAddress` elementu. Poniższy przykład dodaje ILPIP o nazwie *MyPublicIP* do wystąpienia roli o nazwie *WebRole1*: 
+1. Pobierz plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [jak skonfigurować usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
+2. Zaktualizuj plik .cscfg, dodając `InstanceAddress` elementu. Poniższy przykład dodaje ILPIP o nazwie *MyPublicIP* wystąpienia roli o nazwie *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -143,8 +143,8 @@ Aby dodać ILPIP do wystąpienia roli usługi w chmurze, wykonaj następujące c
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Przekaż plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [sposobu skonfigurowania usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
+3. Przekaż plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [jak skonfigurować usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zrozumienie sposobu [adresowanie IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.
+* Zrozumienie sposobu [adresowania IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.
 * Dowiedz się więcej o [zastrzeżone adresy IP](virtual-networks-reserved-public-ip.md).

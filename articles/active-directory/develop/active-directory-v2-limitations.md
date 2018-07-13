@@ -1,6 +1,6 @@
 ---
 title: Ograniczenia punktu końcowego v2.0 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Lista ograniczenia dla punktu końcowego v2.0 usługi Azure AD.
+description: Lista ograniczenia i ograniczenia dotyczące punktu końcowego v2.0 usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,56 +13,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: d7328ba8403f2415705d049d1fc7947b52aeb5c1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319563"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003962"
 ---
-# <a name="should-i-use-the-v20-endpoint"></a>Należy użyć punktu końcowego v2.0?
-Podczas tworzenia aplikacji, które integrują się z usługą Azure Active Directory, należy zdecydować, czy protokołów uwierzytelniania i punktu końcowego v2.0 odpowiadają Twoim potrzebom. Oryginalny punktu końcowego usługi Azure Active Directory firmy jest nadal w pełni obsługiwane i pod pewnymi względami jest więcej zaawansowanej funkcji niż wersja 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści](active-directory-v2-compare.md) dla deweloperów.
+# <a name="should-i-use-the-v20-endpoint"></a>Należy używać punktu końcowego v2.0?
 
-Oto nasze uproszczony zalecenia dla deweloperów w tym momencie:
+W przypadku tworzenia aplikacji, które integrują się z usługą Azure Active Directory (Azure AD), musisz zdecydować, czy v2.0 punktu końcowego i protokołów uwierzytelniania własnych potrzeb. Oryginalny punktu końcowego usługi Azure AD jest nadal w pełni obsługiwane, a pod pewnymi względami jest więcej wyposażonym niż w wersji 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści związane](active-directory-v2-compare.md) dla deweloperów.
 
-* Jeśli zachodzi potrzeba obsługi osobistego konta Microsoft w aplikacji, użyj punktu końcowego v2.0. Jednak zanim to zrobisz, należy się upewnić, że rozumiesz, ograniczenia, które omówiono w tym artykule.
-* Jeśli aplikacja wymaga tylko do kont służbowych obsługuje pracy firmy Microsoft, nie używaj punktu końcowego v2.0. Zamiast tego należy odwoływać się do naszej [przewodnik dewelopera usługi Azure AD](active-directory-developers-guide.md).
+Oto uproszczony zalecenia dla deweloperów, w tym momencie:
 
-Wraz z upływem czasu, aby wyeliminować ograniczenia wymienione w tym miejscu, tak aby tylko będą musieli używać punktu końcowego v2.0 wzrośnie punktu końcowego v2.0. Do tego czasu w tym artykule ma pomóc w określeniu, czy punktem końcowym v2.0 jest odpowiednie dla Ciebie. Firma Microsoft będzie zaktualizować ten artykuł, aby odzwierciedlały bieżący stan punktu końcowego v2.0. Sprawdź obliczyć ponownie wymagań możliwościami w wersji 2.0.
+* Jeśli w Twojej aplikacji, musi obsługiwać osobistych kont Microsoft, użyj punktu końcowego v2.0. Jednak zanim to zrobisz, pamiętaj, że znasz ograniczenia omówionych w tym artykule.
+* Jeśli aplikacja wymaga tylko do obsługi prac firmy Microsoft i kont służbowych, nie należy używać punktu końcowego v2.0. Zamiast tego należy odwoływać się do [przewodnik dewelopera usługi Azure AD](active-directory-developers-guide.md).
 
-Jeśli masz istniejącą aplikację usługi Azure AD, która nie korzysta z punktu końcowego v2.0 jest niepotrzebna od samego początku. W przyszłości firma Microsoft zapewnia łatwy sposób można użyć istniejącej aplikacji usługi Azure AD z punktem końcowym v2.0.
+Aby wyeliminować ograniczenia wymienione w tym miejscu, tak aby tylko nigdy nie będą musieli używać punktu końcowego v2.0 ewoluuje wraz z punktem końcowym v2.0. W międzyczasie Użyj w tym artykule, aby określić, czy punktem końcowym v2.0 jest odpowiedni dla Ciebie. Firma Microsoft nalicza się do aktualizacji w tym artykule, aby odzwierciedlić bieżący stan punktu końcowego v2.0. Sprawdź ponownie oceń wymagań względem możliwości w wersji 2.0.
+
+Jeśli masz istniejącą aplikację usługi Azure AD, która nie korzysta z punktu końcowego v2.0, nie ma potrzeby od samego początku. W przyszłości firma Microsoft zapewnia łatwy sposób, możesz użyć istniejącej aplikacji usługi Azure AD z punktem końcowym v2.0.
 
 ## <a name="restrictions-on-app-types"></a>Ograniczenia dotyczące typów aplikacji
-Obecnie następujące aplikacje nie są obsługiwane przez punkt końcowy w wersji 2.0. Opis typów obsługiwanych aplikacji, zobacz [typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory](active-directory-v2-flows.md).
+
+Obecnie następujące typy aplikacji nie są obsługiwane przez punkt końcowy w wersji 2.0. Opis typów obsługiwanych aplikacji, zobacz [typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory](active-directory-v2-flows.md).
 
 ### <a name="standalone-web-apis"></a>Interfejsy API sieci Web autonomiczny
-Można użyć do punktu końcowego v2.0 [kompilacji API sieci Web chronionej OAuth 2.0](active-directory-v2-flows.md#web-apis). Jednak tego interfejsu API sieci Web może odbierać tokeny tylko z aplikacji, która ma tego samego identyfikatora aplikacji Nie masz dostępu do interfejsu API sieci Web z klienta, który ma inną nazwę aplikacji. Klient będzie mógł zażądać lub uzyskać uprawnienia do interfejsu API sieci Web.
 
-Aby zobaczyć, jak utworzyć interfejs API sieci Web, który akceptuje tokeny od klienta, który ma ten sam identyfikator aplikacji, zobacz przykłady interfejsu API sieci Web punktu końcowego v2.0 w naszym [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
+Można użyć do punktem końcowym v2.0 [Tworzenie internetowego interfejsu API, który jest zabezpieczony za pomocą protokołu OAuth 2.0](active-directory-v2-flows.md#web-apis). Jednak tego interfejsu API sieci Web może odbierać tokeny tylko z aplikacji, która ma ten sam identyfikator aplikacji. Nie można uzyskać dostępu do internetowego interfejsu API z klienta, który ma inny identyfikator aplikacji. Klient nie będzie mógł żądania lub uzyskania uprawnień do internetowego interfejsu API.
 
-## <a name="restrictions-on-app-registrations"></a>Ograniczenia dotyczące rejestracji aplikacji
-Obecnie dla każdej aplikacji, który chcesz zintegrować z punktem końcowym v2.0, należy utworzyć rejestracji aplikacji w nowej [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). Istniejące usługi Azure AD lub w aplikacji konta Microsoft nie są zgodne z punktem końcowym v2.0. Aplikacje, które są zarejestrowane w żadnym portalem innych niż Portal rejestracji aplikacji nie są zgodne z punktem końcowym v2.0. W przyszłości firma Microsoft planuje umożliwiają korzystanie z istniejących aplikacji jako aplikacji w wersji 2.0. Jednak nie istnieje aktualnie nie ma ścieżki migracji dla istniejącej aplikacji do pracy z punktem końcowym v2.0.
+Aby zobaczyć, jak utworzyć internetowy interfejs API, który akceptuje tokeny od klienta, który ma ten sam identyfikator aplikacji, zobacz przykłady interfejsu API sieci Web punktu końcowego v2.0 w [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
 
-Ponadto rejestracji aplikacji, które możesz utworzyć w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) ma następujące ostrzeżenia:
+## <a name="restrictions-on-app-registrations"></a>Ograniczenia dotyczące rejestracje aplikacji
 
-* Tylko dwa klucze tajne aplikacji są dozwolone na identyfikator aplikacji.
-* Można wyświetlać i zarządzać tylko konto dewelopera pojedynczego rejestracji aplikacji zarejestrowanych przez użytkownika z osobistego konta Microsoft. Nie można współużytkować między wielu deweloperów. Jeśli chcesz udostępnić rejestracji aplikacji wśród wielu deweloperów, można utworzyć aplikacji po zalogowaniu się do portalu rejestracji przy użyciu konta usługi Azure AD.
-* Istnieje kilka ograniczeń na format przekierowania URI, który jest dozwolony. Aby uzyskać więcej informacji na temat identyfikatorów URI przekierowania zobacz następną sekcję.
+Obecnie dla każdej aplikacji, którą chcesz zintegrować z punktem końcowym v2.0, należy utworzyć rejestracji aplikacji w nowym [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). Istniejącej usługi Azure AD lub aplikacji konta Microsoft nie są zgodne z punktem końcowym v2.0. Aplikacje, które są zarejestrowane w dowolnym portalu, innych niż portalu rejestracji aplikacji nie są zgodne z punktem końcowym v2.0. W przyszłości planujemy zapewnienie sposób na korzystanie z istniejącej aplikacji jako aplikacji w wersji 2.0. Obecnie nie ma żadnych ścieżki migracji do istniejącej aplikacji do pracy z punktem końcowym v2.0.
 
-## <a name="restrictions-on-redirect-uris"></a>Ograniczenia dotyczące przekierowania URI
-Aplikacje, które są zarejestrowane w portalu rejestracji aplikacji są obecnie ograniczone do określonych wartości identyfikatora URI przekierowania. Przekierowanie URI dla usług i aplikacji sieci web musi rozpoczynać się od systemu `https`, a wszystkie wartości identyfikatora URI przekierowania musi współdzielenie jednej domeny DNS. Na przykład nie można zarejestrować aplikacji sieci web o jednym z tych identyfikatorów URI przekierowania:
+Ponadto rejestracje aplikacji, które tworzysz w [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mają następujące zastrzeżenia:
+
+* Tylko dwa wpisy tajne aplikacji są dozwolone na identyfikator aplikacji.
+* Rejestracja aplikacji zarejestrowanych przez użytkownika za pomocą osobistego konta Microsoft można wyświetlać i zarządzane tylko przez konto jednego dewelopera. Nie można udostępniać między wielu deweloperów. Jeśli chcesz udostępnić swoją rejestrację aplikacji wśród wielu deweloperów, można utworzyć aplikacji, logując się do portalu rejestracji przy użyciu konta usługi Azure AD.
+* Istnieje kilka ograniczeń dotyczących formatu przekierowania URI, który jest dozwolony. Aby uzyskać więcej informacji na temat identyfikatorów URI przekierowań zobacz następną sekcję.
+
+## <a name="restrictions-on-redirect-uris"></a>Ograniczenia dotyczące identyfikatory URI przekierowania
+
+Aplikacje, które są zarejestrowane w portalu rejestracji aplikacji są ograniczone do ograniczonego zestawu wartości identyfikatora URI przekierowania. Przekierowania URI dla aplikacji i usług internetowych musi zaczynać się od systemu `https`, a wszystkie wartości identyfikatora URI przekierowania muszą współużytkować jedną domenę DNS. Na przykład nie można zarejestrować aplikacji sieci web, która zawiera jedną z tych identyfikatorów URI przekierowania:
 
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`
 
-System rejestracji porównuje nazwę DNS cały identyfikator URI przekierowania istniejącą nazwę DNS przekierowania URI, który dodajesz. Żądanie dodania nazwy DNS zakończy się niepowodzeniem, jeśli będzie spełniony jeden z następujących warunków:  
+System rejestracji porównuje całą nazwę DNS identyfikatora URI przekierowania istniejącej nazwy DNS przekierowania URI, który chcesz dodać. Żądanie dodania nazwy DNS zakończy się niepowodzeniem, jeśli będzie spełniony jeden z następujących warunków:  
 
-* Całą nazwę DNS nowy identyfikator URI przekierowania nie jest zgodna z nazwą DNS istniejących przekierowania URI.
-* Nazwy DNS cały nowy identyfikator URI przekierowania nie jest poddomeną istniejący identyfikator URI przekierowania.
+* Cała nazwa DNS nowego identyfikatora URI przekierowania nie jest zgodna z nazwą DNS istniejącego identyfikatora URI przekierowania.
+* Cała nazwa DNS nowego identyfikatora URI przekierowania nie jest poddomeną istniejącego identyfikatora URI przekierowania.
 
 Na przykład, jeśli aplikacja ma ten identyfikator URI przekierowania:
 
@@ -76,37 +81,42 @@ W takim przypadku nazwa DNS jest idealnie zgodna. Można też zrobić tak:
 
 `https://new.login.contoso.com`
 
-W takim przypadku przywoływana jest poddomena DNS domeny login.contoso.com. Jeśli chcesz mieć aplikację, która ma logowania east.contoso.com i west.contoso.com logowania jako identyfikator URI przekierowania, należy dodać się, że te przekierowania URI w następującej kolejności:
+W takim przypadku przywoływana jest poddomena DNS domeny login.contoso.com. Jeśli chcesz utworzyć aplikację działającą login-east.contoso.com i login-west.contoso.com jako identyfikatorów URI przekierowania, musisz dodać te identyfikatory URI przekierowania w następującej kolejności:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Ponieważ są one poddomen pierwszy przekierowania URI, można dodać tych dwóch contoso.com. To ograniczenie zostanie usunięta w przyszłych wersji.
+Dwa ostatnie adresy można dodać, ponieważ są poddomenami pierwszego przekierowania URI, contoso.com. To ograniczenie zostanie usunięte w kolejnej wersji.
 
-Należy również zauważyć, może mieć tylko 20 adresy URL odpowiedzi dla określonej aplikacji.
+Należy również zauważyć, może mieć tylko 20 adresów URL odpowiedzi dla określonej aplikacji.
 
-Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplikacji, zobacz [jak zarejestrować aplikację z punktem końcowym v2.0](active-directory-v2-app-registration.md).
+Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplikacji, zobacz [jak zarejestrować aplikację za pośrednictwem punktu końcowego v2.0](active-directory-v2-app-registration.md).
 
-## <a name="restrictions-on-libraries-and-sdks"></a>Ograniczenia dotyczące biblioteki i zestawy SDK
+## <a name="restrictions-on-libraries-and-sdks"></a>Ograniczenia dotyczące bibliotek i zestawów SDK
+
 Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli chcesz używać punktu końcowego v2.0 w aplikacji produkcyjnej, masz następujące opcje:
 
-* Jeśli tworzysz aplikację sieci web bezpiecznie służy oprogramowanie pośredniczące Microsoft ogólnie dostępna po stronie serwera do sprawdzania poprawności logowania i tokenu. Obejmują one oprogramowanie pośredniczące OWIN Open ID Connect ASP.NET i Node.js usługi Passport wtyczki. Aby uzyskać przykłady kodu, korzystających z oprogramowania pośredniczącego firmy Microsoft, zobacz nasze [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
-* Jeśli tworzysz aplikację desktop lub mobile można użyć jednej z naszym podglądzie biblioteki uwierzytelniania firmy Microsoft (MSAL). Te biblioteki są w podglądzie obsługiwane w środowisku produkcyjnym, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz przeczytać dodatkowe informacje z wersji zapoznawczej i dostępnych bibliotek w naszym [dokumentacja bibliotek uwierzytelniania](active-directory-v2-libraries.md).
-* W przypadku platform nie pasuje do żadnego biblioteki Microsoft można zintegrować z punktem końcowym v2.0 przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth 2.0 [są udokumentowane](active-directory-v2-protocols.md) ułatwiające wykonanie takiej integracji.
-* Ponadto można użyć biblioteki Otwórz ID Connect i OAuth open source do integracji z punktem końcowym v2.0. Protokół v2.0 powinna być zgodna z wielu bibliotek protokołu open source bez istotne zmiany. Dostępność tego rodzaju biblioteki jest zależna od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) listę popularnych implementacje Obsługa witryn sieci Web. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](active-directory-v2-libraries.md)oraz listę bibliotek klienckich open source i przykłady, które zostały przetestowane z punktem końcowym v2.0.
+* Jeśli tworzysz aplikację sieci web bezpiecznie służy oprogramowania pośredniczącego Microsoft jest ogólnie dostępna po stronie serwera do wykonywania sprawdzania poprawności logowania i tokenu. Obejmują one oprogramowania pośredniczącego OWIN Open ID Connect platformy ASP.NET i Node.js Passport wtyczki. Aby uzyskać przykłady kodu, które używają oprogramowania pośredniczącego Microsoft, zobacz [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji.
+* Jeśli tworzysz aplikację na komputerze lub urządzeniu przenośnym, można użyć jednej z bibliotek uwierzytelniania firmy Microsoft (MSAL) w wersji zapoznawczej. Tych bibliotek znajdują się w obsługiwane w środowisku produkcyjnym wersji zapoznawczej, więc bezpiecznie z nich korzystać w aplikacjach produkcyjnych. Możesz dowiedzieć się więcej o warunkach korzystania z wersji zapoznawczej i dostępnych bibliotek w [dokumentacja bibliotek uwierzytelniania](active-directory-v2-libraries.md).
+* W przypadku platform nie są objęte biblioteki Microsoft można zintegrować z punktem końcowym v2.0 przez bezpośrednie wysyłanie i odbieranie wiadomości protokołu w kodzie aplikacji. Protokoły OpenID Connect i OAuth 2.0 [są udokumentowane](active-directory-v2-protocols.md) ułatwiające wykonanie takiej integracji.
+* Na koniec można użyć bibliotek typu open-source Otwórz ID Connect i OAuth do integracji z punktem końcowym v2.0. Protokół v2.0 powinien być zgodny z wielu bibliotek typu open-source protokołu bez znaczące zmiany. Dostępność tych rodzajów bibliotek zależy od języka i platformy. [Open ID Connect](http://openid.net/connect/) i [OAuth 2.0](http://oauth.net/2/) witryn sieci Web utrzymywać listę popularnych implementacji. Aby uzyskać więcej informacji, zobacz [biblioteki Azure Active Directory w wersji 2.0 i uwierzytelniania](active-directory-v2-libraries.md)i listy, biblioteki klienckie typu open source i przykładów, które zostały przetestowane z punktem końcowym v2.0.
 
-## <a name="restrictions-on-protocols"></a>Ograniczenia protokołów
-Punktu końcowego v2.0 nie obsługuje SAML lub WS-Federation; obsługuje tylko Open ID Connect i OAuth 2.0. Nie wszystkie funkcje i możliwości protokołów OAuth zostały włączone do punktu końcowego v2.0. Te funkcje protokołu i możliwości są obecnie *nie jest dostępny* w punkcie końcowym v2.0:
+## <a name="restrictions-on-protocols"></a>Ograniczenia dotyczące protokołów
 
-* Nie zawierają tokeny Identyfikatora, które są wydawane przez punktu końcowego v2.0 `email` oświadczenia dla użytkownika, nawet jeśli w przypadku uzyskania zgody użytkownika, aby wyświetlić swój adres e-mail.
-* Informacje o użytkowniku OpenID Connect punkt końcowy nie został zaimplementowany dla punktu końcowego v2.0. Jednak wszystkie dane profilu użytkownika, które potencjalnie będą pojawi się w tym punkcie końcowym jest dostępna z programu Microsoft Graph `/me` punktu końcowego.
-* Punktu końcowego v2.0 nie obsługuje wystawiającego oświadczeń roli lub grupy w tokenach identyfikator.
-* [2.0 właściciela zasobów hasło poświadczeń OAuth](https://tools.ietf.org/html/rfc6749#section-4.3) nie jest obsługiwany przez punktu końcowego v2.0.
+Nie obsługuje punktu końcowego v2.0, SAML lub WS-Federation; obsługuje tylko Open ID Connect i OAuth 2.0. Nie wszystkie funkcje i możliwości protokołów OAuth zostały włączone do punktu końcowego v2.0.
 
-Ponadto punktu końcowego v2.0 nie obsługuje żadnych formularza protokołów języka SAML lub WS-Federation.
+Następujące funkcje protokołu i funkcje są obecnie *nie jest dostępna* w punkcie końcowym v2.0:
+
+* Obecnie `email` oświadczeń jest zwracany tylko jeśli skonfigurowano opcjonalnego roszczenia, a zakres jest zakresem = wiadomość e-mail została określona w żądaniu. Jednak to zachowanie zmieni się zgodnie z punktem końcowym v2.0 jest aktualizowana w celu dalszego są zgodne ze standardami Open ID Connect i OAuth 2.0.
+* Informacje o użytkowniku OpenID Connect punkt końcowy nie został zaimplementowany dla punktu końcowego v2.0. Jednak wszystkie dane profilu użytkownika, które potencjalnie otrzyma tego punktu końcowego jest dostępna z programu Microsoft Graph `/me` punktu końcowego.
+* Punktu końcowego v2.0 nie obsługuje wystawiającego oświadczeń roli lub grupy w tokeny Identyfikatora.
+* [Przydział poświadczeń hasła właściciela zasobów OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) nie jest obsługiwana przez punktu końcowego v2.0.
+
+Ponadto punktu końcowego v2.0 nie obsługuje dowolnej formie protokołów SAML lub WS-Federation.
 
 Aby lepiej zrozumieć zakres protokołu funkcje obsługiwane w punkcie końcowym v2.0, zapoznaj się z artykułem naszych [referencyjne protokołu OpenID Connect i OAuth 2.0](active-directory-v2-protocols.md).
 
 ## <a name="restrictions-for-work-and-school-accounts"></a>Ograniczenia dotyczące kont służbowych
-Jeśli w aplikacjach systemu Windows była używana Active Directory Authentication Library (ADAL), może miały zaletą zintegrowanego uwierzytelniania systemu Windows, które używa grant potwierdzenia Security (Assertion Markup Language SAML). Z tym grant użytkowników federacyjnych usługi Azure AD dzierżaw dyskretnie mogą uwierzytelniać się w ich lokalnym wystąpieniem usługi Active Directory bez konieczności wprowadzania poświadczeń. Obecnie grant potwierdzenia SAML nie jest obsługiwana w punkcie końcowym v2.0.
+
+Jeśli używano Active Directory Authentication Library (ADAL) w aplikacjach Windows, należy wprowadzić jakieś zalet zintegrowanego uwierzytelniania Windows, które używa grant asercji zabezpieczeń Assertion Markup Language (SAML). Z tym przydziałem użytkowników federacyjnych usługi Azure AD mogą dyskretnie uwierzytelnianie dzierżaw za pomocą swojego wystąpienia usługi Active Directory w środowisku lokalnym bez konieczności wprowadzania poświadczeń. Obecnie grant potwierdzenie SAML nie jest obsługiwana w punkcie końcowym v2.0.

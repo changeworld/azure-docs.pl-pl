@@ -1,6 +1,6 @@
 ---
-title: Dodaj dzierżaw dotyczące użycia i rozliczeń stos Azure | Dokumentacja firmy Microsoft
-description: Kroki wymagane Dodaj użytkownika końcowego do stosu Azure zarządza dostawcy usług w chmurze.
+title: Dodaj dzierżawców za użycie i rozliczenia w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Czynności wymagane Dodaj użytkownika końcowego do usługi Azure Stack, zarządzane przez dostawcę usług chmury (CSP).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,56 +11,56 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 27473ce4057fdb06ab9faf0f46dede62b4ee2246
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ec4ef435aac65df628a8d499cd0d3f205808abcf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048843"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003184"
 ---
-# <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodaj dzierżawy użycie i rozliczenia Azure stosu
+# <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodawanie dzierżawy za użycie i rozliczenia w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-W tym artykule opisano kroki wymagane Dodaj użytkownika końcowego do stosu Azure zarządzanych przez dostawcę usług chmury (CSP). Gdy nowej dzierżawy używa zasobów, stos Azure będzie podlegać użycia swoją subskrypcję dostawcy usług Kryptograficznych.
+W tym artykule opisano procedurę dodawania użytkownika końcowego do usługi Azure Stack, zarządzane przez dostawcę usług chmury (CSP). Gdy nowa dzierżawa korzysta z zasobów, usługi Azure Stack zgłosi użycie ich subskrypcji dostawcy CSP.
 
-Dostawcy usług kryptograficznych często oferty usług dla wielu klientów (dzierżawców) na ich wdrożenia stosu Azure. Dodawanie dzierżawcy do rejestracji stosu Azure temu użycia każdego dzierżawcy zgłoszone i rozliczony odpowiednią subskrypcję dostawcy usług Kryptograficznych. Jeśli nie wykonasz kroki opisane w tym artykule, użycia przez dzierżawcę obciążających z subskrypcją użytą w początkowej rejestracji stosu Azure. Przed dodaniem odbiorcy końcowego Azure stos śledzenia użycia oraz do zarządzania swojej dzierżawy, należy skonfigurować stosu Azure jako dostawcy usług Kryptograficznych. Procedury i zasobów, zobacz [Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze](azure-stack-add-manage-billing-as-a-csp.md).
+Dostawcy usług kryptograficznych często oferty usług dla wielu klientów końcowych (dzierżawcy) na to wdrożenie usługi Azure Stack. Dodawanie dzierżawy do rejestracji w usłudze Azure Stack zapewnia użycia każdej dzierżawy zgłaszane i rozliczane w odpowiedniej subskrypcji dostawcy CSP. Jeśli nie wykonasz kroki opisane w tym artykule, wykorzystanie dzierżaw jest obciążany opłatą za subskrypcję używaną w wstępnej rejestracji usługi Azure Stack. Przed dodaniem klienta końcowego do usługi Azure Stack dla śledzenia użycia oraz zarządzanie ich dzierżawy, należy skonfigurować usługę Azure Stack jako dostawcy usług Kryptograficznych. Kroki i zasobów, zobacz [Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze](azure-stack-add-manage-billing-as-a-csp.md).
 
-Na poniższym diagramie przedstawiono kroki, które należy wykonać, aby włączyć nowego klienta, aby użyć stosu Azure i skonfigurować śledzenie klienta użycia dostawcy usług Kryptograficznych. Dodając odbiorcy końcowego będzie również do zarządzania zasobami Azure stosu. Masz dwie opcje zarządzania zasobami:
+Na poniższym diagramie przedstawiono kroki, które należy wykonać, aby włączyć nowego klienta do używania usługi Azure Stack i skonfigurować sposób użycia śledzenia dla klienta dostawcy usług Kryptograficznych. Dodając klienta końcowego, będzie można również zarządzać zasobami w usłudze Azure Stack. Masz dwie opcje do zarządzania zasobami:
 
-1. Można Obsługa zakończenia dzierżawy klienta i podaj poświadczenia na potrzeby lokalnego subskrypcji Azure stosu do odbiorcy końcowego.  
-2. Lub odbiorcy końcowego można pracować z ich subskrypcją lokalnie i dodać dostawcy usług Kryptograficznych jako gość z uprawnień właściciela.  
+1. Można zachować klienta końcowego i podanie poświadczeń w celu lokalnego subskrypcji usługi Azure Stack dla klienta końcowego.  
+2. Lub klienta końcowego może pracować lokalnie swoją subskrypcję i dodać dostawcy rozwiązań w Chmurze jako gościa z uprawnieniami właściciela.  
 
-**Kroki, aby dodać klienta zakończenia**
+**Kroki, aby dodać klienta końcowego**
 
-![Konfigurowanie dostawcy usług w chmurze dla śledzenia użycia oraz do zarządzania na koncie klienta zakończenia](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
+![Konfigurowanie dostawcy usług w chmurze, do śledzenia użycia i zarządzać kontem klienta końcowego](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
 
 ## <a name="create-a-new-customer-in-partner-center"></a>Tworzenie nowego klienta w Centrum partnerskiego
 
-W Centrum partnerskiego Utwórz nową subskrypcję platformy Azure dla klienta. Aby uzyskać instrukcje, zobacz [dodać nowego klienta](https://msdn.microsoft.com/partner-center/add-a-new-customer).
+W Centrum partnerskim należy utworzyć nową subskrypcję platformy Azure dla klienta. Aby uzyskać instrukcje, zobacz [dodać nowego klienta](https://msdn.microsoft.com/partner-center/add-a-new-customer).
 
 
 ##  <a name="create-an-azure-subscription-for-the-end-customer"></a>Utwórz subskrypcję platformy Azure dla klientów końcowych
 
-Po utworzeniu rekordu klienta w Centrum partnera, możesz je sprzedać subskrypcje produktów w katalogu. Aby uzyskać instrukcje, zobacz [tworzenia, wstrzymać lub anulować subskrypcji klienta](https://msdn.microsoft.com/partner-center/create-a-new-subscription).
+Po utworzeniu rekord klienta w Centrum partnerskim, możesz sprzedawać subskrypcje produktów w katalogu. Aby uzyskać instrukcje, zobacz [tworzenia, zawiesić lub anulować subskrypcje klientów](https://msdn.microsoft.com/partner-center/create-a-new-subscription).
 
-## <a name="create-a-guest-user-in-the-end-customer-directory"></a>Utwórz użytkownika gościa na końcu katalogu klienta
+## <a name="create-a-guest-user-in-the-end-customer-directory"></a>Tworzenie użytkownika-gościa w katalogu klientów końcowych
 
-Jeśli odbiorcy końcowego będzie zarządzać własne konto, Utwórz użytkownika gościa w ich katalogu, a następnie wysłać informacje. Użytkownik końcowy będą Dodaj gościa i podniesienia uprawnień gościa do **właściciela** na koncie Azure stosu dostawcy usług Kryptograficznych.
+Jeśli odbiorcy końcowego będą zarządzać ich własnego konta, Utwórz użytkownika-gościa w ich katalogu i wysłać im informacje. Użytkownik końcowy będzie następnie Dodaj gościa i podnieść poziom uprawnień gościa do **właściciela** do konta usługi Azure Stack dostawcy usług Kryptograficznych.
  
-## <a name="update-the-registration-with-the-end-customer-subscription"></a>Aktualizacja rejestracji w usłudze zakończenia subskrypcji klienta
+## <a name="update-the-registration-with-the-end-customer-subscription"></a>Aktualizowanie rejestracji przy użyciu subskrypcji klienta końcowego
 
-Zaktualizuj rejestrację z subskrypcją nowego klienta. Azure raporty użycia klienta przy użyciu tożsamości klienta z centralnej partnera. Ten krok zapewnia, że użycie każdego klienta jest zgłaszany w ramach poszczególnych subskrypcji dostawcy usług Kryptograficznych tego klienta. Ułatwia to śledzenie użytkownika użycia i rozliczeń znacznie.
+Zaktualizuj swoją rejestrację przy użyciu subskrypcji na nowego klienta. Azure raporty użycia przez klientów przy użyciu tożsamości odbiorcy z partnerem Central. Ten krok zapewnia, że raportowania użycia każdego klienta w ramach poszczególnych subskrypcji dostawcy CSP tego klienta. To sprawia, że śledzenie użytkownika użycia i rozliczeń znacznie łatwiejsze.
 
 > [!Note]  
-> Aby wykonać ten krok, musisz mieć [zarejestrowany stosu Azure](azure-stack-register.md).
+> Aby wykonać ten krok, musisz mieć [zarejestrowane w usłudze Azure Stack](azure-stack-register.md).
 
-1. Otwórz program Windows PowerShell z podniesionego wiersza, a następnie uruchom:  
+1. Otwórz środowiska Windows PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:  
     `Add-AzureRmAccount`
-2. Wpisz poświadczenia platformy Azure.
+2. Wpisz swoje poświadczenia platformy Azure.
 3. W sesji programu PowerShell Uruchom polecenie:
 
 ```powershell
@@ -69,27 +69,27 @@ Zaktualizuj rejestrację z subskrypcją nowego klienta. Azure raporty użycia kl
 ### <a name="new-azurermresource-powershell-parameters"></a>Parametry nowej AzureRmResource programu PowerShell
 | Parametr | Opis |
 | --- | --- | 
-|registrationSubscriptionID | Subskrypcja platformy Azure, którego użyto do pierwszej rejestracji stosu Azure. |
-| customerSubscriptionID | Subskrypcja platformy Azure (nie Azure stosu) należące do klienta, który ma zostać zarejestrowany. Musi być utworzona w ofercie dostawcy usług Kryptograficznych; w praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jednej dzierżawy usługi Azure Active Directory, należy utworzyć w dzierżawie, która będzie służyć do logowania się do stosu usługi Azure tej subskrypcji.
-| resourceGroup | Grupy zasobów na platformie Azure, w którym przechowywany jest rejestracja. 
-| registrationName | Nazwa rejestracji stosu Azure. Jest to obiekt przechowywane na platformie Azure. | 
+|registrationSubscriptionID | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji usługi Azure Stack. |
+| customerSubscriptionID | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi być utworzona w ramach oferty dostawcy usług Kryptograficznych; w praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jedną dzierżawę usługi Azure Active Directory, należy utworzyć tej subskrypcji w ramach dzierżawy, która będzie służyć do logowania się do usługi Azure Stack.
+| resourceGroup | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja. 
+| registrationName | Nazwa rejestracji usługi Azure Stack. Jest to obiekt przechowywanych na platformie Azure. | 
 | Właściwości | Określa właściwości zasobu. Ten parametr umożliwia określenie wartości właściwości, które są specyficzne dla typu zasobu.
 
 
 > [!Note]  
-> Dzierżawcy muszą być zarejestrowane przy użyciu każdego stosu Azure używają. Jeśli masz dwa wdrożenia stosu Azure i dzierżawca ma korzystać z obu z nich, musisz zaktualizować początkowej rejestracje każdego wdrożenia z subskrypcji dzierżawcy.
+> Dzierżawy muszą być zarejestrowane przy użyciu każdego używają usługi Azure Stack. Jeśli masz dwa wdrożenia usługi Azure Stack oraz dzierżawy zamierza korzystać z obu z nich należy zaktualizować początkowej rejestracje każdego wdrożenia przy użyciu subskrypcji dzierżawcy.
 
-## <a name="onboard-tenant-to-azure-stack"></a>Dołączyć dzierżawy Azure stosu
+## <a name="onboard-tenant-to-azure-stack"></a>Dołączanie dzierżawy do usługi Azure Stack
 
-Skonfiguruj stosu Azure do obsługi użytkowników z wieloma dzierżawcami usługi Azure AD, aby korzystać z usług Azure stosu. Aby uzyskać instrukcje, zobacz [włączyć wielodostępność stosu Azure](azure-stack-enable-multitenancy.md).
+Konfigurowanie usługi Azure Stack w celu obsługi użytkowników z wielu dzierżaw usługi Azure AD do korzystania z usług w usłudze Azure Stack. Aby uzyskać instrukcje, zobacz [Włączanie wielodostępu w usłudze Azure Stack](azure-stack-enable-multitenancy.md).
 
 
-## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Tworzenie zasobu lokalnego w dzierżawie klienta zakończenia w stosie Azure
+## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Tworzenie zasobu lokalnego w dzierżawie klienta końcowego w usłudze Azure Stack
 
-Po dodaniu nowego klienta do stosu Azure lub zakończenia dzierżawy klienta włączył konta gościa z uprawnieniami właściciela, sprawdź, czy można utworzyć zasobu w swojej dzierżawy. Na przykład można [Utwórz maszynę wirtualną z systemem Windows przy użyciu portalu Azure stosu](user\azure-stack-quick-windows-portal.md).
+Po dodaniu nowego klienta do usługi Azure Stack lub dzierżawie klienta końcowego została włączona na koncie gościa z uprawnieniami właściciela, sprawdź, czy można utworzyć zasobu w ramach ich dzierżawy. Na przykład mogą oni [utworzyć maszynę wirtualną Windows za pomocą portalu usługi Azure Stack](user\azure-stack-quick-windows-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
  - Aby przejrzeć komunikaty o błędach, jeśli są one wyzwalane w procesie rejestracji, zobacz [dzierżawy komunikaty o błędach rejestracji](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
- - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](/azure-stack-billing-and-chargeback.md).
- - Aby sprawdzić, jak klienta końcowy może dodać, jako dostawca usług Kryptograficznych, Menedżer ich stosu Azure dzierżawy, zobacz [włączenia dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu](user\azure-stack-csp-enable-billing-usage-tracking.md).
+ - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Aby sprawdzić, jak klienta końcowego może dodać użytkownika, jako dostawcy usług Kryptograficznych, Menedżer dla ich usługi Azure Stack dzierżawy, zobacz [włączenia dostawcy usług w chmurze do zarządzania subskrypcją usługi Azure Stack](user\azure-stack-csp-enable-billing-usage-tracking.md).

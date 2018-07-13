@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane innych krajów i języków interfejsu API wyszukiwania niestandardowego Bing na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, która krajów i języki są obsługiwane przez interfejs API wyszukiwania usługi Bing niestandardowe.
+title: Obsługiwane kraje/regiony i języki dla interfejsu API wyszukiwania niestandardowego Bing na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, które kraje/regiony i języki są obsługiwane przez interfejs API wyszukiwania niestandardowego Bing.
 services: cognitive-services
 author: mikedodaro
 manager: ronakshah
@@ -9,26 +9,26 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: v-gedod
-ms.openlocfilehash: 7ff309f9b789662c4ebd791dffaa2bc2e440763e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7009991ddd0bc8fd9fc68eaab57585b752db1fc1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347877"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006499"
 ---
-# <a name="bing-custom-search-countries-and-languages"></a>Wyszukiwania usługi Bing niestandardowe krajów i języków
+# <a name="bing-custom-search-countriesregions-and-languages"></a>Wyszukiwanie niestandardowe Bing kraje/regiony i języki
 
-Interfejsu API wyszukiwania usługi Bing niestandardowe obsługuje więcej niż trzech dwanaście krajach, wiele z więcej niż jednym języku. 
+Interfejs API wyszukiwania niestandardowego Bing obsługuje więcej niż trzech tuzina kraje/regiony, wiele z więcej niż jednym języku. 
 
-Chociaż jest to opcjonalne, należy określić żądanie [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) parametru zapytania, który identyfikuje rynku miejscu wyniki pochodzą z. Listę parametrów opcjonalnych zapytania, zobacz [parametrów zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+Chociaż jest to opcjonalne, należy określić żądanie [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) parametr zapytania, który identyfikuje na rynku, którego wyniki pochodzą. Aby uzyskać listę parametrów opcjonalnych zapytania, zobacz [parametry zapytania](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
 
-Można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kraju, należy określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka. Obsługiwane języki zależy od kraju; są one podane dla każdego kraju w **rynkach** tabeli.
+Można określić kraj/region, w którym używana jest `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka. Obsługiwane języki zależą od kraju/regionu podane są dla każdego kraju/regionu w **rynków** tabeli.
 
-`Accept-Language` Nagłówka i `setLang` parametru zapytania wykluczają się wzajemnie — nie należy określać zarówno. Aby uzyskać więcej informacji, zobacz [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language` Nagłówka i `setLang` parametr zapytania wykluczają się wzajemnie — nie określać jednocześnie. Aby uzyskać więcej informacji, zobacz [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countries"></a>Krajach
+## <a name="countries"></a>Kraje
 
-|Kraj|Kod|
+|Kraj/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -37,27 +37,27 @@ Można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kr
 |Brazylia|BRAZYLIA|
 |Kanada|Urząd certyfikacji|
 |Chile|CL|
-|Dania|K|
+|Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
 |Hongkong|HK|
-|Indie|W|
+|Indie|INDIE|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
 |Malezja|MOJE|
 |Meksyk|MX|
-|Holandia|NL|
+|Holandia|HOLANDIA|
 |Nowa Zelandia|NZ|
 |Norwegia|NIE|
-|Chiny|NAZWA POSPOLITA|
+|Chiny|CN|
 |Polska|PL|
-|Portugalia|PT|
-|Filipiny|CIĄG|
-|Rosja|RU|
-|Arabia Saudyjska|SA|
+|Portugalia|(CZAS PACYFICZNY)|
+|Filipiny|PH|
+|Rosja|JEDNOSTKA ŻĄDANIA|
+|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -68,25 +68,25 @@ Można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kr
 |Stany Zjednoczone|USA|
 
 
-## <a name="markets"></a>Rynkach
+## <a name="markets"></a>Rynki
 
-|Kraj|Język|Kod rynku|
+|Kraj/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
-|Austria|Niemiecki|Niemcy AT|
-|Belgia|Holenderski|NL-być|
-|Belgia|Francuski|FR — można|
+|Austria|Niemiecki|de-AT|
+|Belgia|Holenderski|Holandia — być|
+|Belgia|Francuski|FR — być|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
-|Dania|Duński|Ciemny da|
+|Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Finlandia|Fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|Niemiecki|de-DE|
+|Niemcy|Niemiecki|de-DE.|
 |Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN w|
+|Indie|Polski|EN-IN|
 |Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
@@ -99,16 +99,16 @@ Można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kr
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|CIĄG en|
+|Filipiny|Polski|EN PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN-ZA-|
+|Republika Południowej Afryki|Polski|EN ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR CH|
-|Szwajcaria|Niemiecki|Niemcy CH|
+|Szwajcaria|Francuski|FR-CH|
+|Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Stany Zjednoczone|Polski|pl-PL|
 |Stany Zjednoczone|Hiszpański|es-US|

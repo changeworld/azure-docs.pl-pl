@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 313f4915a8c522ae2b9fc5ebbbe85fdfb4741cc4
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ecd5f242d2dcb5662376541ac0a9e75ce533b59f
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969582"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005836"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
@@ -51,6 +51,14 @@ Jak najszybciej pliku dociera do lokalizacji Twojego magazynu i zostanie utworzo
 
 ![Typ wyzwalacza wybierz jako zdarzenie](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
+### <a name="map-trigger-properties-to-pipeline-parameters"></a>Mapowanie właściwości wyzwalacza do parametrów potoku
+
+Gdy zdarzenie wyzwalacza dla konkretnego obiektu blob, zdarzenie przechwytuje ścieżkę i nazwę folderu obiektu blob do właściwości `@triggerBody().folderPath` i `@triggerBody().fileName`. Aby użyć wartości tych właściwości w potoku, należy zamapować właściwości do parametrów potoku. Po mapowania właściwości do parametrów, można uzyskać dostęp do wartości przechwycone przez wyzwalacz za pomocą `@pipeline.parameters.parameterName` wyrażenia w całym potoku.
+
+![Mapowanie właściwości do parametrów potoku](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+Na przykład w poprzednim zrzucie ekranu. wyzwalacz jest skonfigurowany do uruchomi się, jeśli ścieżka obiektu blob, kończy się rozszerzeniem `.csv` jest tworzony na koncie magazynu. W rezultacie, gdy obiekt blob z `.csv` rozszerzenia jest tworzony w dowolnym miejscu na koncie magazynu `folderPath` i `fileName` właściwości przechwytywania lokalizacji nowy obiekt blob. Na przykład `@triggerBody().folderPath` ma wartość, takich jak `/containername/foldername/nestedfoldername` i `@triggerBody().fileName` ma wartość, takich jak `filename.csv`. Te wartości są mapowane w przykładzie do parametrów potoku `sourceFolder` i `sourceFile`. Można ich używać w całym potoku jako `@pipeline.parameters.sourceFolder` i `@pipeline.parameters.sourceFile` odpowiednio.
+
 ## <a name="json-schema"></a>Schemat JSON
 
 Poniższa tabela zawiera omówienie elementów schematu that are related to Wyzwalacze oparte na zdarzeniach:
@@ -75,14 +83,6 @@ Ta sekcja zawiera przykłady ustawień wyzwalacza opartego na zdarzeniach.
 
 > [!NOTE]
 > Musi zawierać `/blobs/` segmentu ścieżki po każdym Określ kontener oraz folder, kontener i plik lub kontener, folder i plik.
-
-## <a name="map-trigger-properties-to-pipeline-parameters"></a>Mapowanie właściwości wyzwalacza do parametrów potoku
-
-Gdy zdarzenie wyzwalacza dla konkretnego obiektu blob, zdarzenie przechwytuje ścieżkę i nazwę folderu obiektu blob do właściwości `@triggerBody().folderPath` i `@triggerBody().fileName`. Aby użyć wartości tych właściwości w potoku, należy zamapować właściwości do parametrów potoku. Po mapowania właściwości do parametrów, można uzyskać dostęp do wartości przechwycone przez wyzwalacz za pomocą `@pipeline.parameters.parameterName` wyrażenia w całym potoku.
-
-![Mapowanie właściwości do parametrów potoku](media/how-to-create-event-trigger/event-based-trigger-image4.png)
-
-Na przykład w poprzednim zrzucie ekranu. wyzwalacz jest skonfigurowany do uruchomi się, jeśli ścieżka obiektu blob, kończy się rozszerzeniem `.csv` jest tworzony na koncie magazynu. W rezultacie, gdy obiekt blob z `.csv` rozszerzenia jest tworzony w dowolnym miejscu na koncie magazynu `folderPath` i `fileName` właściwości przechwytywania lokalizacji nowy obiekt blob. Na przykład `@triggerBody().folderPath` ma wartość, takich jak `/containername/foldername/nestedfoldername` i `@triggerBody().fileName` ma wartość, takich jak `filename.csv`. Te wartości są mapowane w przykładzie do parametrów potoku `sourceFolder` i `sourceFile`. Można ich używać w całym potoku jako `@pipeline.parameters.sourceFolder` i `@pipeline.parameters.sourceFile` odpowiednio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać szczegółowe informacje na temat wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).

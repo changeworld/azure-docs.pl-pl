@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1b22357b201306ec09e586bfa52fbe9a821250da
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 912176df2681f890cf3bbe6f69395ad39c9263fc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887474"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004901"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -32,7 +32,7 @@ A *wyzwalacza* definiuje sposób wywoływania funkcji. Funkcja musi mieć dokła
 
 Dane wejściowe i wyjściowe *powiązania* zapewniają deklaratywną metodę, aby nawiązać połączenie danych z poziomu kodu. Powiązania są opcjonalne i funkcji mogą mieć wiele danych wejściowych i wyjściowych powiązania. 
 
-Wyzwalacze i powiązania pozwalają uniknąć hardcoding szczegółowe informacje o pracy z usługi. Funkcja odbiera dane (na przykład zawartość komunikatu w kolejce) w parametrach funkcji. Wysłać dane (na przykład w celu utworzenia komunikatu w kolejce) przy użyciu funkcji, wartość zwracana `out` parametru lub [obiekt moduł zbierający](functions-reference-csharp.md#writing-multiple-output-values).
+Wyzwalacze i powiązania pozwalają uniknąć hardcoding szczegółowe informacje o pracy z usługi. Funkcja odbiera dane (na przykład zawartość komunikatu w kolejce) w parametrach funkcji. Możesz wysłać danych (na przykład w celu utworzenia komunikatu w kolejce) przy użyciu wartość zwracaną przez funkcję. W języku C# i skrypt języka C#, są alternatywne sposoby wysyłania danych `out` parametrów i [obiektów modułu zbierającego](functions-reference-csharp.md#writing-multiple-output-values).
 
 Podczas tworzenia funkcji przy użyciu witryny Azure portal, wyzwalaczy i powiązań są konfigurowane w *function.json* pliku. Portal udostępnia interfejs wielokrotnego użytku tej konfiguracji, ale plik można edytować bezpośrednio, zmieniając **edytor zaawansowany**.
 
@@ -224,9 +224,11 @@ W przypadku języków, które mają wartość zwracaną wartość zwracaną moż
 * W języku C# biblioteki klas należy zastosować atrybut wiązania danych wyjściowych na wartość zwracaną metody.
 * W innych językach, należy ustawić `name` właściwość *function.json* do `$return`.
 
-Jeśli musisz zapisać więcej niż jeden element, należy użyć [obiekt moduł zbierający](functions-reference-csharp.md#writing-multiple-output-values) zamiast wartości zwróconej. W przypadku wielu powiązania danych wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
+W przypadku wielu powiązania danych wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
-Zobacz przykład specyficzny dla języka:
+W języku C# i skrypt języka C#, są alternatywne sposoby wysyłania danych do powiązania danych wyjściowych `out` parametrów i [obiektów modułu zbierającego](functions-reference-csharp.md#writing-multiple-output-values).
+
+Zobacz przykład specyficzny dla języka, przedstawiający użycie zwracanej wartości:
 
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)

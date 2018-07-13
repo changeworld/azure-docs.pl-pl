@@ -1,6 +1,6 @@
 ---
-title: Omówienie zabezpieczeń usługi Azure IoT Hub X.509 certyfikacji | Dokumentacja firmy Microsoft
-description: Przegląd — jak do uwierzytelniania urządzeń do Centrum IoT przy użyciu X.509 urzędów certyfikacji.
+title: Omówienie zabezpieczeń usługi Azure IoT Hub X.509 z urzędu certyfikacji | Dokumentacja firmy Microsoft
+description: Przegląd — sposobu uwierzytelniania urządzeń do Centrum IoT przy użyciu urzędów certyfikacji X.509.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,76 +8,76 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 690a58a939e6866bfcdf80d05e52d7bfc7fd3586
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eebaf679ada9da554f8582ad89db4e7491dcc134
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635607"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004357"
 ---
-# <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzenia za pomocą certyfikatów X.509 urzędu certyfikacji
+# <a name="device-authentication-using-x509-ca-certificates"></a>Uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji
 
-W tym artykule opisano sposób używania certyfikatów X.509 certyfikatu urzędu certyfikacji do uwierzytelniania urządzeń nawiązujących połączenie Centrum IoT.  W tym artykule dowiesz się:
+W tym artykule opisano, jak używać certyfikatów X.509 urząd certyfikacji (CA) do uwierzytelniania urządzeń nawiązujących połączenie usługi IoT Hub.  W tym artykule dowiesz się:
 
 * Jak uzyskać certyfikat X.509 urzędu certyfikacji
-* Jak zarejestrować certyfikat X.509 urzędu certyfikacji z Centrum IoT
+* Jak zarejestrować certyfikat X.509 urzędu certyfikacji do usługi IoT Hub
 * Jak zarejestrować urządzenia za pomocą certyfikatów X.509 urzędu certyfikacji
-* Sposób uwierzytelniania urządzenia podpisany z urzędem certyfikacji X.509
+* Sposób uwierzytelniania urządzeń podpisany przy użyciu X.509 urzędu certyfikacji
 
 ## <a name="overview"></a>Przegląd
 
-Funkcja X.509 urzędu certyfikacji umożliwia uwierzytelnianie urządzenia z Centrum IoT przy użyciu certyfikatu urzędu certyfikacji. Jego jest znacznie ułatwione procesu rejestracji urządzenie początkowe i logistyki łańcucha dostaw podczas produkcji urządzenia. [Dowiedz się więcej w tym artykule scenariuszu o wartości elementu za pomocą certyfikatów X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md) uwierzytelniania urządzenia.  Firma Microsoft zachęca do przeczytaj ten artykuł scenariusz przed kontynuowaniem, jak wyjaśniono, dlaczego czynności, które wykonują istnieje.
+Funkcja X.509 urzędu certyfikacji umożliwia uwierzytelnianie urządzenia w Centrum IoT przy użyciu urząd certyfikacji (CA). Proces rejestracji urządzenie początkowe i logistyki łańcucha dostaw znacznie upraszcza podczas produkcji urządzenia. [Dowiedz się więcej w tym artykule scenariusz o wartości z przy użyciu certyfikatów X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md) uwierzytelniania urządzenia.  Firma Microsoft zachęca do przeczytaj ten artykuł scenariusz, przed kontynuowaniem, ponieważ wyjaśnia, dlaczego istnieje opisanych poniżej.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Za pomocą funkcji X.509 urzędu certyfikacji wymaga konta Centrum IoT.  [Dowiedz się, jak utworzyć wystąpienia Centrum IoT](iot-hub-csharp-csharp-getstarted.md) Jeśli nie został wcześniej.
+Korzystanie z funkcji X.509 urzędu certyfikacji wymaga, że masz konto usługi IoT Hub.  [Dowiedz się, jak utworzyć wystąpienie usługi IoT Hub](iot-hub-csharp-csharp-getstarted.md) Jeśli nie masz jeszcze jeden.
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>Jak uzyskać certyfikat X.509 urzędu certyfikacji
 
-Certyfikat X.509 urzędu certyfikacji znajduje się na górze łańcucha certyfikatów dla każdego urządzenia.  Można zakupić lub utworzyć w zależności od tego, w jaki sposób chcesz użyć.
+Certyfikat X.509 urzędu certyfikacji znajduje się na górze łańcucha certyfikatów dla każdego z urządzeń.  Możesz zakupić lub utworzyć w zależności od sposobu, w których zamierzasz używać go.
 
-W środowisku produkcyjnym zaleca się zakup certyfikatu X.509 urzędu certyfikacji od głównego publicznego urzędu certyfikacji. Zakup certyfikatu urzędu certyfikacji przynosi korzyści związane z głównego urzędu certyfikacji działający jako zaufany innych firm do ciesząca dla legalności urządzenia. Rozważ użycie tej opcji, jeśli jest planowane urządzenia jako część sieci IoT których one może korzystać z innych produktów lub usług.
+W środowisku produkcyjnym zaleca się zakupienie certyfikatu X.509 urzędu certyfikacji od głównego publicznego urzędu certyfikacji. Zakup certyfikatu urzędu certyfikacji ma tę zaletę główny urząd certyfikacji działający jako dla zaufanych osób trzecich ciesząca legalności urządzeń. Rozważ użycie tej opcji, jeśli jest planowane urządzenia jako część otwartej sieci IoT gdzie one może korzystać z innych firm, produktów lub usług.
 
-Można również utworzyć podpisem certyfikacji X.509 do eksperymenty lub do wykorzystania w sieciach IoT zamknięte.
+Można również utworzyć podpisem własnym X.509 urzędu certyfikacji do eksperymentowania lub do wykorzystania w zamkniętym sieciach IoT.
 
-Niezależnie od tego, jak możesz uzyskać certyfikat X.509 urzędu certyfikacji, upewnij się zachować jego odpowiedniego prywatnego klucza klucz tajny i chronione przez cały czas.  Jest to niezbędne do tworzenia zaufania do urzędu certyfikacji X.509 uwierzytelniania zaufania. 
+Niezależnie od tego, jak uzyskać certyfikat X.509 urzędu certyfikacji, pamiętaj zachować jego odpowiedniego prywatnego klucza wpisu tajnego i chronione przez cały czas.  Jest to niezbędne do tworzenia relacji zaufania w przypadku uwierzytelniania X.509 urzędu certyfikacji zaufania. 
 
-Dowiedz się, jak [tworzenia certyfikatu urzędu certyfikacji z podpisem własnym](iot-hub-security-x509-create-certificates.md#createcerts), którego można użyć dla eksperymenty w tym opis funkcji.
+Dowiedz się, jak [tworzenia certyfikatu urzędu certyfikacji z podpisem własnym](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), używane w ramach eksperymentów w całym opis tej funkcji.
 
-## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Zaloguj się urządzeń w łańcuchu certyfikatów zaufania
+## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Rejestrowania urządzenia w usłudze łańcuch zaufania certyfikatów
 
-Właściciela certyfikatu X.509 urzędu certyfikacji można zarejestrować kryptograficznie pośredniego urzędu certyfikacji, który z kolei można zarejestrować inną pośredniego urzędu certyfikacji i itd., aż do ostatniego pośredniego urzędu certyfikacji kończy ten proces po zarejestrowaniu urządzenia. Wynik jest kaskadowa łańcuch certyfikatów znany jako łańcuch zaufania certyfikatów. W świecie rzeczywistym odgrywa jako delegowania zaufania do podpisywania urządzeń. To Delegowanie jest ważne, ponieważ tworzą kryptograficznie zmiennej łańcucha nadzoru i pozwala uniknąć udostępniania kluczy podpisywania.
+Właściciela certyfikatu X.509 urzędu certyfikacji kryptograficznie można zarejestrować pośrednich urzędów certyfikacji, który z kolei może zarejestrować innego pośredniego urzędu certyfikacji i tak dalej, aż do ostatniego pośredniego urzędu certyfikacji przerywa ten proces, rejestrując urządzenia. Wynik jest kaskadowy łańcucha certyfikatów, znane jako łańcuch zaufania certyfikatów. W realnym odgrywa jako delegowania zaufania do podpisywania urządzeń. To Delegowanie jest ważne, ponieważ ustanawia kryptograficznie zmiennej łańcuch nadzoru i pozwala uniknąć udostępniania kluczy podpisywania.
 
 ![img-Generic-CERT-Chain-of-Trust](./media/generic-cert-chain-of-trust.png)
 
-W tej części wyjaśniono sposób [utworzyć łańcuch certyfikatów](iot-hub-security-x509-create-certificates.md#createcertchain) co wykonywane podczas rejestracji urządzeń.
+Tutaj dowiesz się jak [tworzenie łańcucha certyfikatów](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) co wykonywane podczas rejestrowania urządzenia.
 
-## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Jak zarejestrować certyfikat X.509 urzędu certyfikacji z Centrum IoT
+## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Jak zarejestrować certyfikat X.509 urzędu certyfikacji do usługi IoT Hub
 
-Zarejestruj certyfikat X.509 urzędu certyfikacji z Centrum IoT, w którym będzie można użyć do uwierzytelniania urządzenia podczas rejestracji i połączenia.  Rejestrowanie certyfikatu X.509 urzędu certyfikacji jest procesem dwuetapowym, który obejmuje przekazywania pliku certyfikatu i dowodu posiadania.
+Zarejestruj certyfikat X.509 urzędu certyfikacji do Centrum IoT, w którym będzie służyć do uwierzytelniania urządzeń podczas rejestracji i połączenia.  Rejestrowanie certyfikatu X.509 urzędu certyfikacji jest procesem dwuetapowym, który składa się z dowodu posiadania i przekazywania certyfikatu.
 
-Proces przekazywania pociąga za sobą przekazywania pliku, który zawiera certyfikat.  Ten plik nie powinien zawierać dowolnych kluczy prywatnych.
+Przekazywanie pliku, który zawiera certyfikat w procesie przekazywania pociąga za sobą.  Ten plik nigdy nie powinien zawierać żadnych kluczy prywatnych.
 
-Potwierdzenie posiadania krok polega na kryptograficznych żądania i odpowiedzi procesu między użytkownikiem a Centrum IoT.  Biorąc pod uwagę, że zawartość certyfikatu cyfrowego jest publiczny i w związku z tym narażony na podsłuchiwaniu, Centrum IoT chcesz ustalić naprawdę własny certyfikat urzędu certyfikacji.  Powinna to zrobić przez Generowanie losowe żądania, które należy podpisać odpowiedni klucz prywatny certyfikatu urzędu certyfikacji.  Jeśli pozostawiono prywatnego klucza tajnego i chronione jako wcześniej poinformowany, następnie tylko będzie posiadać wiedzę do ukończenia tego kroku. Tajemnicy kluczy prywatnych jest źródłem zaufania w ramach tej metody.  Po utworzeniu żądania, ukończenia tego kroku, przekazując plik zawierający wyniki.
+Dowód przesyłany krok polega na kryptograficznych żądania i odpowiedzi procesu między Tobą i Centrum IoT Hub.  Biorąc pod uwagę, że certyfikat cyfrowy są publiczne, jak i w związku z tym podatne na podsłuchiwaniu, usługi IoT Hub chcesz upewnić się, tak naprawdę własny certyfikat urzędu certyfikacji.  Powinna to zrobić, generując wezwanie losowych, należy zalogować się przy użyciu odpowiedniego klucza prywatnego certyfikatu urzędu certyfikacji.  Jeśli pozostawiono klucza prywatnego wpisu tajnego i chronione poinformowany jak wcześniej, a następnie tylko będzie posiadać wiedzy w celu ukończenia tego kroku. Tajemnicy kluczy prywatnych jest źródłem zaufania w przypadku tej metody.  Po zarejestrowaniu wyzwanie, należy wykonać ten krok, przekazując plik zawierający wyniki.
 
-W tej części wyjaśniono sposób [zarejestrować certyfikat urzędu certyfikacji](iot-hub-security-x509-get-started.md#registercerts).
+Tutaj dowiesz się jak [zarejestrować certyfikat urzędu certyfikacji](iot-hub-security-x509-get-started.md#registercerts).
 
-## <a name="how-to-create-a-device-on-iot-hub"></a>Jak utworzyć urządzenie w Centrum IoT
+## <a name="how-to-create-a-device-on-iot-hub"></a>Jak utworzyć urządzenie w Centrum IoT Hub
 
-Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga powiadomienie go, które urządzenia mogą się spodziewać.  Można to zrobić, tworząc wpis urządzenia w rejestrze urządzeń Centrum IoT.  Ten proces jest zautomatyzowany, korzystając z Centrum IoT [usługi inicjowania obsługi urządzeń](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (punktu dystrybucji). 
+Aby wykluczyć personifikacji urządzenia, Centrum IoT wymaga Niech wiedzieć, jakie urządzenia można oczekiwać.  Możesz to zrobić, tworząc wpis urządzenia w rejestrze urządzeń usługi IoT Hub.  Proces ten jest zautomatyzować, korzystając z usługi IoT Hub [usługi Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS). 
 
-W tej części wyjaśniono sposób [ręcznie utworzyć urządzenie w Centrum IoT](iot-hub-security-x509-get-started.md#createdevice).
+Tutaj dowiesz się jak [ręcznie utworzyć urządzenie w usłudze IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
 
 ## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Uwierzytelnianie urządzeń podpisane za pomocą certyfikatów X.509 urzędu certyfikacji
 
-Zarejestrowany certyfikat X.509 urzędu certyfikacji i urządzenia z rejestracji w łańcuch zaufania certyfikatów co pozostaje jest uwierzytelnianie urządzenia w przypadku urządzenia przenośnego, nawet po raz pierwszy.  Po zalogowaniu urzędu certyfikacji X.509 urządzenia przenośnego, przekazuje on jego weryfikacji łańcucha certyfikatu. Łańcuch obejmuje wszystkie pośrednie certyfikaty urzędu certyfikacji i urządzenia.  Dzięki tym informacjom Centrum IoT uwierzytelnianie urządzenia w dwóch etapach.  Centrum IoT kryptograficznie weryfikuje łańcucha certyfikatu wewnętrznego sprawdzania spójności, a następnie generuje żądanie dowodu z posiadania na urządzeniu.  Centrum IoT deklaruje urządzenia autentyczne na odpowiedź oznaczająca Powodzenie dowód z posiadania z urządzenia.  Ta deklaracja przyjęto założenie, że urządzenia klucz prywatny jest chroniony i że tylko urządzenia pomyślnie mogą odpowiadać na ten problem.  Firma Microsoft zaleca użycie bezpiecznego mikroukłady jak sprzętu bezpiecznych modułów (HSM) na urządzeniach w celu ochrony kluczy prywatnych.
+Zarejestrowany certyfikat X.509 urzędu certyfikacji i urządzenia zalogowali się do łańcuch zaufania certyfikatów, co pozostanie, jest uwierzytelnianie urządzeń, gdy urządzenie nawiązuje połączenie, nawet po raz pierwszy.  Po zalogowaniu X.509 urzędu certyfikacji urządzenia przenośnego, przekazuje jej łańcuch certyfikatów do sprawdzania poprawności. Ciąg zawiera wszystkie certyfikaty pośrednie urzędu certyfikacji i urządzenia.  Dzięki tym informacjom usługi IoT Hub uwierzytelnia urządzenie w dwóch etapach.  Usługa IoT Hub kryptograficznie sprawdza poprawność łańcucha certyfikatów dla wewnętrznego sprawdzania spójności, a następnie generuje żądanie dowodu posiadania na urządzeniu.  Usługa IoT Hub deklaruje urządzenia autentyczne na odpowiedź oznaczająca Powodzenie dowodu posiadania z urządzenia.  Ta deklaracja zakłada ochronę klucza prywatnego na urządzeniu i że tylko urządzenie pomyślnie może odpowiadać temu wyzwaniu.  Firma Microsoft zaleca korzystanie z bezpiecznej mikroukładami takich jak sprzętu bezpiecznych modułów (HSM) na urządzeniach w celu ochrony kluczy prywatnych.
 
-Połączenie urządzenia powiodło się z Centrum IoT realizuje proces uwierzytelniania i jest także świadczy o prawidłową konfigurację.
+Połączenie urządzenia pomyślnie do Centrum IoT Hub jest również wskazuje prawidłową konfigurację i kończy proces uwierzytelniania.
 
-W tej części wyjaśniono sposób [ukończenia tego kroku połączenia urządzenia](iot-hub-security-x509-get-started.md#authenticatedevice).
+Tutaj dowiesz się jak [ukończenia tego kroku połączenia urządzenia](iot-hub-security-x509-get-started.md#authenticatedevice).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [wartość uwierzytelniania urzędu certyfikacji X.509](iot-hub-x509ca-concept.md) w IoT.
+Dowiedz się więcej o [wartość uwierzytelniania X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md) w IoT.
 
-Rozpoczynanie pracy z Centrum IoT [usługi inicjowania obsługi urządzeń](https://docs.microsoft.com/azure/iot-dps/).
+Rozpoczynanie pracy z usługą IoT Hub [usługi Device Provisioning](https://docs.microsoft.com/azure/iot-dps/).

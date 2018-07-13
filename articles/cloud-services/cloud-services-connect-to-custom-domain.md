@@ -1,9 +1,9 @@
 ---
-title: Połączenie usługi w chmurze z kontrolerem domeny niestandardowe | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak połączyć role sieć web/proces roboczy na domenę niestandardową AD przy użyciu programu PowerShell i rozszerzenia domeny usługi AD
+title: Łączenie usługi w chmurze z niestandardowym kontrolerem domeny | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć role sieć web/proces roboczy na domenę niestandardową AD przy użyciu programu PowerShell i rozszerzenie domeny usługi AD
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: jeconnoc
+ms.openlocfilehash: b05e20b5c99c6f1b5b1bf93ca781ec97284fba79
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29845659"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004919"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Łączenie role usługi w chmurze Azure z niestandardowego kontrolera domeny AD hostowana na platformie Azure
-Sieć wirtualną (VNet) zostanie najpierw skonfigurowanie na platformie Azure. Następnie dodamy kontroler domeny usługi Active Directory (obsługiwanych na maszynie wirtualnej platformy Azure) do sieci wirtualnej. Następnie firma Microsoft będzie Dodaj istniejące role usługi w chmurze do wstępnie utworzone sieci wirtualnej, a następnie podłącz je do kontrolera domeny.
+# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Role usługi w chmurze Azure nawiązywania połączenia z niestandardowego kontrolera domeny usługi AD hostowanych na platformie Azure
+Skonfiguruje możemy najpierw Virtual Network (VNet) na platformie Azure. Następnie dodamy kontrolera domeny Active Directory (obsługiwanych na maszynie wirtualnej platformy Azure) do sieci wirtualnej. Następnie firma Microsoft będzie Dodawanie istniejących ról usługi w chmurze do wstępnie utworzonej sieci wirtualnej, a następnie łączyć je z kontrolera domeny.
 
-Początek, kilka rzeczy, które należy wziąć pod uwagę:
+Zanim zaczniemy, kilka rzeczy, które należy uwzględnić:
 
-1. W tym samouczku korzysta z programu PowerShell, upewnij się, że masz programu Azure PowerShell zainstalowana i rozpocząć pracę. Aby uzyskać pomoc dotyczącą konfigurowania programu Azure PowerShell, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-2. Swoich wystąpień kontroler domeny usługi AD i roli sieć Web/proces roboczy muszą znajdować się w sieci wirtualnej.
+1. W tym samouczku jest używany program PowerShell, dlatego upewnij się, że masz programu Azure PowerShell zainstalowana i gotowa do użytku. Aby uzyskać pomoc przy konfigurowaniu programu Azure PowerShell, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+2. Kontroler domeny usługi AD i roli sieć Web/proces roboczy wystąpień muszą znajdować się w sieci wirtualnej.
 
-Wykonaj ten krok po kroku, a jeśli wystąpiły problemy, pozostaw komentarz na końcu tego artykułu. Ktoś będzie zająć się (tak, odczytano komentarzy).
+Postępuj zgodnie z tym przewodniku krok po kroku, a Jeśli napotkasz problemy, pozostaw komentarz na końcu tego artykułu. Ktoś będzie Postaramy się (tak, mamy odczyt komentarzy).
 
-Sieć, do którego odwołuje się przez usługę w chmurze musi być **klasycznej sieci wirtualnej**.
+Sieć, która odwołuje się do usługi w chmurze musi znajdować się **klasycznej sieci wirtualnej**.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-Można utworzyć sieć wirtualną na platformie Azure przy użyciu portalu Azure lub programu PowerShell. W tym samouczku jest używany programu PowerShell. Aby utworzyć sieć wirtualną przy użyciu portalu Azure, zobacz [utworzyć sieć wirtualną](../virtual-network/quick-create-portal.md). Artykuł obejmuje tworzenie sieci wirtualnej (Resource Manager), ale należy utworzyć sieć wirtualną (klasyczne) dla usług w chmurze. Aby to zrobić w portalu, wybierz **Utwórz zasób**, typ *sieci wirtualnej* w **wyszukiwania** polu, a następnie naciśnij klawisz **Enter**. W wynikach wyszukiwania w obszarze **wszystko**, wybierz pozycję **sieci wirtualnej**. W obszarze **wybierz model wdrożenia**, wybierz pozycję **klasycznego**, a następnie wybierz pozycję **Utwórz**. Można następnie wykonaj kroki opisane w artykule.
+Utworzysz sieć wirtualną na platformie Azure przy użyciu witryny Azure portal lub programu PowerShell. W tym samouczku jest używany program PowerShell. Aby utworzyć sieć wirtualną przy użyciu witryny Azure portal, zobacz [tworzenie sieci wirtualnej](../virtual-network/quick-create-portal.md). Artykuł obejmuje tworzenie sieci wirtualnej (Resource Manager), ale należy utworzyć sieć wirtualna (klasyczna) dla usług w chmurze. Aby to zrobić, w portalu wybierz **Utwórz zasób**, typ *sieci wirtualnej* w **wyszukiwania** polu, a następnie naciśnij klawisz **Enter**. W wynikach wyszukiwania w obszarze **wszystko**, wybierz opcję **sieć wirtualna**. W obszarze **wybierz model wdrożenia**, wybierz opcję **klasycznego**, a następnie wybierz **Utwórz**. Można następnie postępuj zgodnie z instrukcjami w artykule.
 
 ```powershell
 #Create Virtual Network
@@ -64,7 +64,7 @@ Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## <a name="create-a-virtual-machine"></a>Utworzenie maszyny wirtualnej
-Po zakończeniu konfigurowania sieci wirtualnej, należy utworzyć kontroler domeny usługi AD. W tym samouczku firma Microsoft będzie Trwa konfigurowanie kontrolera domeny AD na maszynie wirtualnej platformy Azure.
+Po zakończeniu konfigurowania sieci wirtualnej, należy utworzyć kontroler domeny usługi AD. Na potrzeby tego samouczka firma Microsoft będzie ustawienie konfiguracji kontrolera domeny usługi AD na maszynie wirtualnej platformy Azure.
 
 Aby to zrobić, utwórz maszynę wirtualną za pomocą programu PowerShell przy użyciu następujących poleceń:
 
@@ -85,20 +85,20 @@ $affgrp = '<your- affgrp>'
 New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
-## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Podwyższ poziom maszyny wirtualnej do poziomu kontrolera domeny
+## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Podwyższanie poziomu maszyny wirtualnej do poziomu kontrolera domeny
 Aby skonfigurować maszynę wirtualną jako kontroler domeny usługi AD, należy zalogować się do maszyny Wirtualnej i skonfigurować go.
 
-Aby zalogować się do maszyny Wirtualnej, można pobrać pliku RDP za pomocą programu PowerShell, użyj następujących poleceń:
+Aby zalogować się do maszyny Wirtualnej, można pobrać pliku RDP przy użyciu programu PowerShell, użyj następujących poleceń:
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Gdy użytkownik jest zalogowany do maszyny Wirtualnej, konfigurowanie maszyny wirtualnej jako kontrolera domeny usługi AD wykonując przewodnik krok po kroku na [sposobu konfigurowania klienta kontroler domeny usługi AD](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+Po zalogowaniu do maszyny Wirtualnej skonfigurować maszynę wirtualną jako kontroler domeny usługi AD, po przewodnik krok po kroku na [sposób konfigurowania klienta kontrolerem domeny usługi AD](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
 
-## <a name="add-your-cloud-service-to-the-virtual-network"></a>Dodaj do sieci wirtualnej usługi w chmurze
-Następnie należy dodać do nowej sieci wirtualnej wdrożenia usługi chmury. Aby to zrobić, należy zmodyfikować z cscfg usługi chmury przez dodanie odpowiednich sekcji do Twojej cscfg przy użyciu programu Visual Studio lub dowolnego edytora.
+## <a name="add-your-cloud-service-to-the-virtual-network"></a>Dodaj usługi w chmurze do sieci wirtualnej
+Następnie należy dodać wdrażania usługi w chmurze do nowej sieci wirtualnej. Aby to zrobić, należy zmodyfikować pliku cscfg usługi cloud service, dodając istotne sekcje do Twojego pliku cscfg przy użyciu programu Visual Studio lub dowolnego edytora.
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -129,10 +129,10 @@ Następnie należy dodać do nowej sieci wirtualnej wdrożenia usługi chmury. A
 </ServiceConfiguration>
 ```
 
-Następnie skompilowanie projektu usługi w chmurze i wdrożyć go na platformie Azure. Aby uzyskać pomoc dotyczącą wdrażania pakietu usługi w chmurze na platformie Azure, zobacz [sposobu tworzenia i wdrażania usługi w chmurze](cloud-services-how-to-create-deploy-portal.md)
+Następnie tworzyć projekt usług w chmurze i wdrożyć ją na platformie Azure. Aby uzyskać pomoc dotyczącą wdrażania pakietu cloud services na platformie Azure, zobacz [jak utworzyć i wdrożyć usługę w chmurze](cloud-services-how-to-create-deploy-portal.md)
 
-## <a name="connect-your-webworker-roles-to-the-domain"></a>Połącz się z domeną role sieć web/proces roboczy.
-Po wdrożeniu projekt usługi w chmurze na platformie Azure nawiązać niestandardowej domeny AD za pomocą rozszerzenia domeny AD wystąpienia roli. Dodaj rozszerzenie AD domeny do istniejącego wdrożenia usługi w chmurze i przyłączania do domeny niestandardowe, wykonaj następujące polecenia w programie PowerShell:
+## <a name="connect-your-webworker-roles-to-the-domain"></a>Role sieć web/proces roboczy połączyć się z domeną
+Wdrożenie projektu usługi w chmurze na platformie Azure, nawiązać połączenia wystąpień roli niestandardowej domeny AD przy użyciu rozszerzenia domeny usługi AD. Aby dodać rozszerzenie domenowych AD do istniejącego wdrożenia usługi w chmurze i Dołącz do domeny niestandardowej, wykonaj następujące polecenia w programie PowerShell:
 
 ```powershell
 # Initialize domain variables
@@ -148,9 +148,9 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-A to wszystko.
+I to wszystko.
 
-Usługi w chmurze powinny należeć do kontrolera domeny niestandardowej. Jeśli chcesz dowiedzieć się więcej o różnych opcjach konfigurowania rozszerzenia domeny AD, korzystanie z pomocy programu PowerShell. Kilka przykładów wykonaj:
+Usługi w chmurze powinien być połączony z kontrolerem domeny niestandardowej. Jeśli chcesz dowiedzieć się więcej o różne opcje dotyczące sposobu konfigurowania rozszerzenia domeny usługi AD, skorzystaj z pomocy programu PowerShell. Kilka przykładów wykonaj:
 
 ```powershell
 help Set-AzureServiceADDomainExtension

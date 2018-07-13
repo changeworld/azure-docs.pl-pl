@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5db1e7b9c97a0c19ef5ec0a41ea675c33c4d46fc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f73a08d14d02b4e4b441b6ac85c6ceb97b9f173
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950920"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004986"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Przenoszenie danych do i z usługi Azure Blob Storage za pomocą łączników SSIS
 [Programu SQL Server Integration Services Feature Pack dla systemu Azure](https://msdn.microsoft.com/library/mt146770.aspx) zawiera składniki do połączenia z platformą Azure, transfer danych między Azure i lokalnych źródeł danych i przetwarzania danych przechowywanych na platformie Azure.
@@ -83,7 +83,7 @@ Parametry, które używa zadania są opisane poniżej:
 > 
 
 ## <a name="download-data-from-azure-blob-storage"></a>Pobierz dane z magazynu obiektów blob platformy Azure
-Aby pobrać dane z usługi Azure blob storage do magazynu lokalnego przy użyciu funkcji SSIS, należy użyć wystąpienia [zadanie przekazywania obiektów Blob Azure](https://msdn.microsoft.com/library/mt146779.aspx).
+Aby pobrać dane z usługi Azure blob storage do magazynu lokalnego przy użyciu funkcji SSIS, należy użyć wystąpienia [zadania pobierania obiektów Blob Azure](https://msdn.microsoft.com/library/mt146779.aspx).
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>Bardziej zaawansowanych scenariuszy SSIS Azure
 Pakiet funkcji SSIS umożliwia bardziej złożonych przepływów, które mają być obsługiwane przez zadania tworzenia pakietów, razem. Na przykład danych obiektów blob można źródła danych bezpośrednio w klastrze usługi HDInsight, w której dane wyjściowe mogły zostać pobrane do obiektu blob, a następnie do lokalnego magazynu. SSIS można uruchamiać zadania Hive i Pig, w klastrze usługi HDInsight za pomocą łączników SSIS dodatkowe:

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 88bd895cb3a384f1ada0394fe2da206aca86b981
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a5a6a43c41760e22a7aeb0e97aacc145c69957ff
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670934"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006400"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
@@ -33,13 +33,13 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Tworzenie maszyny wirtualnej z dystrybucją systemu OpenSUSE Linux
 
-Najpierw utwórz grupę zasobów. W tym przykładzie firma Microsoft nazwy grupy zasobów *mySQSUSEResourceGroup* i utworzenie go w *wschodnie stany USA* regionu.
+Najpierw utwórz grupę zasobów. W tym przykładzie grupa zasobów ma nazwę *mySQSUSEResourceGroup* zostaje utworzony w *wschodnie stany USA* regionu.
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Tworzenie maszyny Wirtualnej. W tym przykładzie firma Microsoft nazewnictwa maszyny Wirtualnej *myVM*. Będziemy również rozmiar maszyny Wirtualnej *Standard_D2s_v3*, ale należy wybrać [rozmiar maszyny Wirtualnej](sizes.md) uważasz, że jest najbardziej odpowiednie dla danego obciążenia.
+Tworzenie maszyny Wirtualnej. W tym przykładzie maszyna wirtualna nazywa *myVM* i rozmiar maszyny Wirtualnej jest *Standard_D2s_v3*, ale należy wybrać [rozmiar maszyny Wirtualnej](sizes.md) uważasz, że jest najbardziej odpowiednie dla danego obciążenia.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -96,19 +96,32 @@ systemctl is-enabled mysql
 
 Powinny zostać zwrócone: włączone.
 
+Uruchom ponownie serwer.
+
+```bash
+sudo reboot
+```
+
 
 ## <a name="mysql-password"></a>Hasło programu MySQL
 
 Po zakończeniu instalacji hasła głównego MySQL jest domyślnie puste. Uruchom **mysql\_bezpiecznego\_instalacji** skrypt, aby zabezpieczyć MySQL. Skrypt wyświetli monit o zmianę hasła głównego MySQL, usunąć konta użytkownika anonimowego, wyłączyć logowania zdalnego katalogu głównego, Usuń test bazy danych i ponowne załadowanie tabeli uprawnień. 
+
+Gdy serwer jest ponownie uruchamiany, ssh z maszyną wirtualną ponownie.
+
+```azurecli-interactive  
+ssh 10.111.112.113
+```
+
 
 
 ```bash
 mysql_secure_installation
 ```
 
-## <a name="log-in-to-mysql"></a>Zaloguj się do bazy danych MySQL
+## <a name="sign-in-to-mysql"></a>Zaloguj się do bazy danych MySQL
 
-Możesz teraz zalogować się i wprowadź w wierszu polecenia MySQL.
+Możesz teraz zalogować i wprowadź w wierszu polecenia MySQL.
 
 ```bash  
 mysql -u root -p
@@ -136,7 +149,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 Bazy danych, nazwy użytkownika i hasła są używane tylko przez skrypty połączenie z bazą danych.  Nazwy kont użytkowników bazy danych nie musi to oznaczać konta użytkowników w systemie.
 
-Włącz logowanie z innego komputera. W tym przykładzie jest adres IP komputera, który chcemy, aby zalogować się z *10.112.113.114*.
+Włącz logowanie z innego komputera. W tym przykładzie jest adres IP komputera, aby umożliwić logowanie z *10.112.113.114*.
 
 ```   
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';

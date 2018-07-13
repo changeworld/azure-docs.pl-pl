@@ -1,6 +1,6 @@
 ---
-title: Odbiorcy rozliczeń i obciążenia zwrotnego w stosie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać informacji o użyciu zasobów Azure stosu.
+title: Klient Pomoc dotycząca rozliczeń i obciążeń zwrotnych w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać informacje o użyciu zasobów z usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: eca335797f48b7c44351655f17c8b6499f3d5999
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f2449176f96b18a374ff6d54fbf7e09c8f5e21cc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877487"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003581"
 ---
-# <a name="usage-and-billing-in-azure-stack"></a>Użycie i rozliczenia Azure stosu
+# <a name="usage-and-billing-in-azure-stack"></a>Użycie i rozliczenia w usłudze Azure Stack
 
-W tym artykule opisano, jak użytkownicy stosu Azure są rozliczane dotyczące użycia zasobów. Aby dowiedzieć się sposobu dostępu do informacji dotyczących rozliczeń dla analizy i wstecznego.
+W tym artykule opisano, w jaki sposób użytkownicy usługi Azure Stack zasobu za użycie będą naliczane. Nauczysz się, jak informacje rozliczeniowe jest dostępny do analizy i opłat z powrotem.
 
-Azure stosu zbiera grupuje dane użycia dla wszystkich zasobów używanych i przekazuje te dane do handlu Azure. Azure Commerce rachunków możesz dla wykorzystanie stosu Azure w taki sam sposób jak czy obciążać Cię do użycia usługi Azure.
+Usługa Azure Stack zbiera i grupuje dane użycia dla używanych zasobów. Usługi Azure Stack przekazuje te dane do handlu platformy Azure. Azure Commerce opłaty naliczane są za użycie usługi Azure Stack w taki sam sposób jak go czy opłaty za użycie platformy Azure.
 
-Można również uzyskać dane dotyczące użycia i eksportowanie własnych rozliczeń lub opłata kopii systemu za pomocą karty rozliczeń lub wyeksportować go do narzędzia analizy biznesowej, takich jak Microsoft Power BI i użyć jej do analizy.
+Można również uzyskać dane dotyczące użycia i eksportowanie go do własnych rozliczeń lub utworzyć kopię systemu za pomocą karty rozliczeń lub wyeksportować je do narzędzia analizy biznesowej, takich jak Microsoft Power BI.
 
 
 ## <a name="usage-pipeline"></a>Użycie potoku
 
-Każdy dostawca zasobów w stosie Azure emituje dane użycia na obciążenie zasobów. Usługa użycia okresowo (co godzinę i codziennie) agreguje dane dotyczące użycia i zapisuje je w bazie danych użycia. Azure operatory stosu i użytkownicy mają dostęp do danych przechowywane dane dotyczące użycia za pośrednictwem interfejsów API do użycia zasobów usługi Azure stosu. 
+Każdy dostawca zasobów w usłudze Azure Stack publikuje dane użycia na obciążenie zasobów. Usługa użycia okresowo (co godzinę i codziennie) agreguje dane dotyczące użycia i zapisuje je w bazie danych użycia. Usługa Azure Stack operatorów i użytkowników ma dostęp do danych przechowywane dane dotyczące użycia, za pośrednictwem interfejsów API do użycia zasobów usługi Azure Stack. 
 
-Jeśli masz [zarejestrowany wystąpienia stosu Azure Azure](azure-stack-register.md), stos Azure jest skonfigurowany do wysyłania danych użycia do obsługi handlu Azure. Po przekazaniu danych do platformy Azure, można do niego dostęp za pośrednictwem portalu rozliczeń lub za pomocą interfejsów API użycia zasobów Azure. Zapoznaj się [raportowania danych użycia](azure-stack-usage-reporting.md) tematu, aby dowiedzieć się więcej o korzystaniu z jakiego danych jest zgłaszany na platformie Azure.  
+Jeśli masz [zarejestrowane wystąpienie usługi Azure Stack przy użyciu usługi Azure](azure-stack-register.md), usługi Azure Stack jest skonfigurowany do wysyłania danych użycia do handlu platformy Azure. Przekazane dane na platformie Azure można do niego dostęp za pośrednictwem portalu rozliczeń lub za pomocą interfejsów API użycia zasobów platformy Azure. Zapoznaj się [raportowanie danych użycia](azure-stack-usage-reporting.md) artykuł, aby dowiedzieć się więcej o jakie użycia danych jest raportowana na platformie Azure.  
 
 Na poniższej ilustracji przedstawiono najważniejsze składniki w potoku użycia: 
 
@@ -42,31 +42,30 @@ Na poniższej ilustracji przedstawiono najważniejsze składniki w potoku użyci
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>Jakie informacje dotyczące użycia można znaleźć i w jaki sposób?
 
-Azure dostawcy zasobów stos, na przykład obliczeniowych, magazynu i sieci, generowania danych użycia co godzinę dla każdej subskrypcji. Dane użycia zawiera informacje o tym zasobie używane np. Nazwa zasobu, subskrypcji używane i ilość używane. Aby dowiedzieć się o zasobach identyfikator liczników, zapoznaj się [użycia interfejsu API często zadawane pytania dotyczące](azure-stack-usage-related-faq.md) artykułu.
+Usługa Azure dostawców zasobów stosu (na przykład obliczeń, magazynu i sieci) generowania danych użycia co godzinę dla każdej subskrypcji. Dane użycia zawiera informacje o zasobie, używane, takie jak nazwa zasobu, subskrypcja używana i użytej ilości. Aby dowiedzieć się więcej o zasobach identyfikator liczników, zobacz [— często zadawane pytania do użycia interfejsu API](azure-stack-usage-related-faq.md) artykułu.
 
-Po gromadzenia danych użycia jest [raportowanych do programu Azure](azure-stack-usage-reporting.md) do generowania rachunek, które można wyświetlić w portalu Azure rozliczeń. 
+Zebrane dane użycia po [zgłaszane na platformie Azure](azure-stack-usage-reporting.md) do wygenerowania faktury, który można wyświetlić w portalu rozliczeń systemu Azure. 
 
+> [!NOTE]  
+> Raportowanie danych użycia nie jest wymagane dla usługi Azure Stack Development Kit oraz dla użytkowników usługi Azure Stack zintegrowany system licencjonujących w ramach modelu pojemności. Aby dowiedzieć się więcej na temat licencjonowania w usłudze Azure Stack, zobacz [pakowania i ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) arkusz danych.
 
-> [!NOTE]
-> Raportowanie danych użycia nie jest wymagana dla usługi Azure stosu Development Kit i stosu Azure zintegrowany system licencjonowanych zgodnie z modelem pojemności. Aby dowiedzieć się więcej na temat licencjonowania w stosie Azure, zobacz [pakowania i cenach](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) arkusz danych.
+Portalu rozliczeń systemu Azure zawiera dane użycia dla płatnych zasobów. Oprócz obciążające zasoby usługi Azure Stack umożliwia przechwytywanie danych użycia dla szerszy zestaw zasobów, które są dostępne w danym środowisku usługi Azure Stack za pośrednictwem interfejsów API REST lub programu PowerShell. Operatorzy usługi Azure Stack można uzyskać dane użycia dla wszystkich subskrypcji użytkownika. Poszczególni użytkownicy mogą uzyskać jedynie ich szczegóły użycia. 
 
-Portal Azure rozliczeń zawiera dane użycia zasobów mogą być obciążane. Oprócz zasobów mogą być obciążane stosu Azure przechwytuje dane użycia dla szerszy zestaw zasobów, które są dostępne w środowisku Azure stosu za pośrednictwem interfejsów API REST lub programu PowerShell. Operatory stosu Azure można pobrać danych użycia dla wszystkich subskrypcji użytkownika. Poszczególni użytkownicy mogą korzystać tylko ich szczegóły użycia. 
+## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Użycie raportowanie dla wielodostępnej dostawców usług w chmurze
 
-## <a name="usage-reporting-for-multitenant-cloud-service-providers"></a>Użycie raportowanie dla wielodostępnej dostawcom usług w chmurze
+Wielodostępnej dostawca usług chmury (CSP), który ma wiele klienci korzystający z usługi Azure Stack może być oddzielnie, raport użycia przez poszczególnych klientów tak, aby dostawca może opłaty za użycie do różnych subskrypcji platformy Azure. 
 
-Wielodostępna dostawca usług chmury (CSP) mającego wielu klientów przy użyciu stosu Azure może być oddzielnie, raport każdego użycia przez klientów tak, aby dostawca naliczać użycia do innej subskrypcji platformy Azure. 
-
-Każdy klient będzie ma swoją tożsamość reprezentowany przez różne dzierżawy usługi Azure Active Directory (Azure AD). Stos Azure obsługuje przypisywanie jedną subskrypcję dostawcy usług Kryptograficznych do każdej dzierżawy usługi Azure AD. Możesz dodać dzierżawców i ich subskrypcji do podstawowej rejestracji stosu Azure. Podstawowy rejestracja została wykonana dla wszystkich stosy Azure. Jeśli subskrypcja nie jest zarejestrowany dla dzierżawy, użytkownik nadal może użyć stosu Azure i ich użycia, które zostaną wysłane do subskrypcja używana na potrzeby rejestracji podstawowej. 
+Każdy klient będzie to miało swoją tożsamość, reprezentowane przez innej dzierżawy usługi Azure Active Directory (Azure AD). Usługa Azure Stack obsługuje przypisywanie jedną subskrypcją dostawcy CSP do każdej dzierżawy usługi Azure AD. Dzierżawcy i ich subskrypcjami można dodać do podstawowej rejestracji usługi Azure Stack. Podstawowy rejestracja odbywa się dla wszystkich stosów platformy Azure. Jeśli subskrypcja nie jest zarejestrowany dla dzierżawy, użytkownik może nadal używać usługi Azure Stack, a ich użycia, które będą wysyłane do subskrypcja używana na potrzeby rejestracji podstawowej. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zarejestrować w usłudze Azure stosu](azure-stack-registration.md)
+[Rejestrowanie w usłudze Azure Stack](azure-stack-registration.md)
 
-[Raport danych użycia usługi Azure stosu na platformie Azure](azure-stack-usage-reporting.md)
+[Raport danych użycia usługi Azure Stack na platformie Azure](azure-stack-usage-reporting.md)
 
-[Użycie zasobów dostawcy interfejsu API](azure-stack-provider-resource-api.md)
+[Interfejs API użycia zasobów dostawcy](azure-stack-provider-resource-api.md)
 
-[Interfejs API użycia zasobów dzierżawcy](azure-stack-tenant-resource-usage-api.md)
+[Interfejs API użycia zasobów dzierżawy](azure-stack-tenant-resource-usage-api.md)
 
-[Często zadawane pytania dotyczące wykorzystania](azure-stack-usage-related-faq.md)
+[— Często zadawane pytania dotyczące wykorzystania](azure-stack-usage-related-faq.md)

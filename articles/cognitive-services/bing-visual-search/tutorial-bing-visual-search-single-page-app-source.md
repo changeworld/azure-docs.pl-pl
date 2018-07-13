@@ -1,7 +1,7 @@
 ---
-title: Aplikacja sieci Web jednej strony wyszukiwania usługi Bing obrazu (kodu źródłowego) | Dokumentacja firmy Microsoft
+title: Aplikacja sieci Web jednej strony wyszukiwania wizualnego Bing (kodu źródłowego) | Dokumentacja firmy Microsoft
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API wyszukiwania usługi Bing obrazu w aplikacji jednej strony sieci Web.
+description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API wyszukiwania wizualnego Bing w jednej strony aplikacji sieci Web.
 services: cognitive-services
 author: v-jerkin
 manager: ehansen
@@ -10,16 +10,16 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 636b809a1018a79f5ddd0e6d5ee91b0c34d01552
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b6164b811f897ec5cd8a67d27d3aa4f3d250f2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348705"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002596"
 ---
-# <a name="tutorial-visual-search-single-page-web-app"></a>Samouczek: Visual wyszukiwania jednostronicowej aplikacji sieci Web
+# <a name="tutorial-visual-search-single-page-web-app"></a>Samouczek: Wyszukiwanie wizualne jednej strony sieci Web aplikacji
 
-To jest kod źródłowy pełną omówione w [aplikacji sieci Web jednej strony wyszukiwania Visual](tutorial-bing-visual-search-single-page-app.md) samouczek Visual wyszukiwania usługi Bing. Aby uruchomić aplikację, skopiuj kod źródłowy w Notatniku lub w innym edytorze tekstu i zapisz go jako `bing-visual-search.html`. Następnie otwórz zapisany plik w Microsoft Edge lub innej popularne przeglądarki.
+Jest to pełnego kodu źródłowego omówione w [aplikacji sieci Web z jednej strony wyszukiwania wizualnego](tutorial-bing-visual-search-single-page-app.md) samouczek dotyczący wyszukiwania wizualnego Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do Notatnika lub innego edytora tekstu, a następnie zapisz go jako `bing-visual-search.html`. Następnie otwórz zapisany plik w Microsoft Edge lub innej przeglądarki popularne.
 
 ```html
 <!DOCTYPE html>
@@ -113,7 +113,7 @@ try {
 function getSubscriptionKey() {
     var key = retrieveValue(API_KEY_COOKIE);
     while (key.length !== 32) {
-        key = prompt("Enter Bing Search API subscription key:", "").trim();
+        key = prompt("Enter Bing Image Search API subscription key:", "").trim();
     }
     // always set the cookie in order to update the expiration date
     storeValue(API_KEY_COOKIE, key);
@@ -131,7 +131,7 @@ function escape(text) {
         replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 }
 
-// get the host portion of a URL, strpping out search result formatting and www too
+// get the host portion of a URL, stripping out search result formatting and www too
 function getHost(url) {
     return url.replace(/<\/?b>/g, "").replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
 }
@@ -270,7 +270,7 @@ function handleBingResponse() {
         // 401 is unauthorized; force re-prompt for API key for next request
         if (this.status === 401) invalidateSubscriptionKey();
 
-        // some error responses don't have a top-level errors object, so gin one up
+        // some error responses don't have a top-level errors object
         var errors = jsobj.errors || [jsobj];
         var errmsg = [];
 

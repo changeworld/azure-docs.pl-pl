@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989241"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003617"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
@@ -29,7 +29,7 @@ Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby u�
 > Aby rozwiązać zewnętrzne nazwy DNS z usługi Azure Stack (na przykład www.bing.com), musisz podać serwery DNS do przesyłania żądań DNS. Aby uzyskać więcej informacji na temat wymagań dotyczących usługi Azure Stack DNS Zobacz [Integracja z centrum danych usługi Azure Stack — DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Projekt sieci fizycznej
-Rozwiązanie usługi Azure Stack wymaga odporne i o wysokiej dostępności infrastruktury fizycznej do obsługi jej działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + multimediów i szybkości 1 GB lub 10 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Poniższy diagram przedstawia naszych zalecany projekt:
+Rozwiązanie usługi Azure Stack wymaga odporne i o wysokiej dostępności infrastruktury fizycznej do obsługi jej działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + lub SFP28 nośnika i 1 GB, 10 GB lub szybkości 25 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Na poniższym diagramie przedstawiono naszych zalecany projekt:
 
 ![Zalecany projekt sieci usługi Azure Stack](media/azure-stack-network/recommended-design.png)
 

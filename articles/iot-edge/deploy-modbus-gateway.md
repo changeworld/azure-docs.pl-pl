@@ -8,14 +8,14 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 9e69faf1b07af0e60cfd21cd6eb9f00e211ab91e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 7c0ef019536d527775e4f5b959a155db3eacebbf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031757"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006102"
 ---
-# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Podłącz urządzenia Modbus TCP za pośrednictwem bramy urządzenia IoT krawędzi
+# <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
 Jeśli chcesz połączyć urządzenia IoT korzystające z protokołów Modbus TCP lub RTU z centrum usługi Azure IoT, użyj urządzenia IoT Edge jako bramy. Urządzenie bramy odczytuje dane z urządzeń korzystających z protokołu Modbus, a następnie przekazuje te dane do chmury przy użyciu obsługiwanego protokołu. 
 
@@ -43,10 +43,10 @@ Jeśli chcesz utworzyć własny moduł i dostosować go pod kątem środowiska u
 
 ## <a name="run-the-solution"></a>Uruchamianie rozwiązania
 1. W witrynie [Azure Portal](https://portal.azure.com/) przejdź do centrum IoT Hub.
-2. Przejdź do **krawędzi IoT** i kliknij na urządzeniu IoT krawędzi.
+2. Przejdź do **usługi IoT Edge** i kliknij przycisk na urządzeniu usługi IoT Edge.
 3. Wybierz opcję **Ustaw moduły**.
 4. Dodaj moduł Modbus:
-   1. Kliknij przycisk **Dodaj** i wybierz **krawędzi IoT modułu**.
+   1. Kliknij przycisk **Dodaj** i wybierz **moduł usługi IoT Edge**.
    2. W polu **Nazwa** wpisz „modbus”.
    3. W polu **Obraz** wprowadź identyfikator URI obrazu przykładowego kontenera: `microsoft/azureiotedge-modbus-tcp:1.0-preview`.
    4. Zaznacz pole **Włącz**, aby zaktualizować żądane właściwości bliźniaczego modułu.
@@ -87,8 +87,8 @@ Jeśli chcesz utworzyć własny moduł i dostosować go pod kątem środowiska u
    ```
 
 8. Wybierz opcję **Dalej**. 
-9. W **przeglądu wdrożenia** krok, wybierz opcję **przesyłania**. 
-10. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**. Powinien zostać wyświetlony nowy **modbus** moduł uruchomiona wraz ze środowiska uruchomieniowego IoT krawędzi.
+9. W kroku **Przegląd wdrożenia** wybierz pozycję **Prześlij**. 
+10. Wróć do strony szczegółów urządzenia i wybierz opcję **Odśwież**. Zostanie wyświetlone nowe **modbus** modułu korzystania oraz środowisko uruchomieniowe usługi IoT Edge.
 
 ## <a name="view-data"></a>Wyświetlanie danych
 Wyświetlanie danych przechodzących przez moduł modbus:
@@ -96,11 +96,11 @@ Wyświetlanie danych przechodzących przez moduł modbus:
 docker logs -f modbus
 ```
 
-Możesz też wyświetlić telemetrię wysyłaną przez urządzenie przy użyciu [narzędzia eksploratora centrum IoT Hub](https://github.com/azure/iothub-explorer). 
+Można również wyświetlić dane telemetryczne urządzenie wysyła za pomocą [narzędzia Eksploratora Centrum IoT Hub](https://github.com/azure/iothub-explorer) lub [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat sposobu urządzenia IoT brzegowe może działać jako bram, zobacz [Utwórz urządzenie brzegowe IoT, który działa jako brama przezroczyste][lnk-transparent-gateway-linux]
+- Aby dowiedzieć się, jak urządzenia usługi IoT Edge mogą pełnić rolę bram, zobacz [tworzenie urządzenia usługi IoT Edge, która pełni rolę przezroczystej bramy][lnk-transparent-gateway-linux]
 - Aby uzyskać więcej informacji o działaniu modułów usługi IoT Edge, zobacz [Opis modułów usługi Azure IoT Edge](iot-edge-modules.md)
 
 <!-- Links -->

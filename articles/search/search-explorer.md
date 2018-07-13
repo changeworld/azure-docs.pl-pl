@@ -1,30 +1,23 @@
 ---
-title: Tworzenie zapytań względem indeksu (portal — usługa Azure Search) | Dokumentacja firmy Microsoft
-description: Generowanie zapytań wyszukiwania w Eksploratorze wyszukiwania witryny Azure Portal.
+title: Eksplorator wyszukiwania do wykonywania zapytań indeksów w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać Eksploratora wyszukiwania dla zapytania indeksów w usłudze Azure Search.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 07/10/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: a3592bd0c304dfb78374eeba432c0d28203980c9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790512"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004137"
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Tworzenie zapytań względem indeksu usługi Azure Search przy użyciu Eksploratora wyszukiwania w witrynie Azure Portal
-> [!div class="op_single_selector"]
-> * [Omówienie](search-query-overview.md)
-> * [Portal](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
-> 
-> 
+# <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>Jak używać Eksploratora wyszukiwania zapytania indeksów w usłudze Azure Search 
 
-W tym artykule opisano sposób tworzenia zapytań względem indeksu usługi Azure Search przy użyciu **Eksploratora wyszukiwania** w witrynie Azure Portal. Eksploratora wyszukiwania można użyć do przesyłania prostych lub pełnych ciągów zapytań Lucene do dowolnego istniejącego indeksu w usłudze.
+W tym artykule dowiesz się, jak wykonywać zapytania dla istniejącej usługi Azure Search indeksu przy użyciu **Eksploratora wyszukiwania** w witrynie Azure portal. Eksploratora wyszukiwania można użyć do przesyłania prostych lub pełnych ciągów zapytań Lucene do dowolnego istniejącego indeksu w usłudze.
 
 ## <a name="open-the-service-dashboard"></a>Otwórz pulpit nawigacyjny usługi
 1. Na pasku dostępu po lewej stronie w witrynie [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) kliknij opcję **Wszystkie zasoby**.
@@ -38,13 +31,13 @@ Z kafelka **Indeksy** wybierz indeks, który chcesz przeszukać.
 
 ## <a name="open-search-explorer"></a>Otwórz Eksplorator wyszukiwania
 
-Kliknij kafelek Eksplorator wyszukiwania, aby wysunąć pasek wyszukiwania i okienko wyników.
+Kliknij Kafelek Eksplorator wyszukiwania, aby wysunąć pasek wyszukiwania i okienko wyników.
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
 ## <a name="start-searching"></a>Rozpocznij wyszukiwanie
 
-Podczas używania Eksploratora wyszukiwania możesz określić dowolne [parametry zapytania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents), aby sformułować zapytanie.
+Podczas używania Eksploratora wyszukiwania możesz określić [parametry zapytania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) aby sformułować zapytanie.
 
 1. W polu **Ciąg zapytania** wpisz zapytanie, a następnie naciśnij klawisz **Wyszukaj**. 
 
@@ -56,7 +49,7 @@ Podczas używania Eksploratora wyszukiwania możesz określić dowolne [parametr
 
    ![](./media/search-explorer/search-bar.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W następujących zasobach udostępniono dodatkowe informacje o składni oraz przykłady.
 

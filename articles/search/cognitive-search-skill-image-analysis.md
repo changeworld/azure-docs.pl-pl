@@ -1,56 +1,54 @@
 ---
-title: Obraz analizy kognitywnych wyszukiwania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębnienie tekstu semantycznego za pomocą analizy obrazu przy użyciu umiejętności kognitywnych ImageAnalysis w potoku wzbogacenia usługi Azure Search.
+title: Obraz umiejętności wyszukiwania kognitywnego analizy (Azure Search) | Dokumentacja firmy Microsoft
+description: Wyodrębniania semantycznego tekstu za pomocą analizy obrazów przy użyciu umiejętności cognitive ImageAnalysis w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dd26dbe34cd04d1ad3184e2cd62afae5166ac914
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad1946436b2b5bab55ff53dcce09446ef1220829
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640510"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008874"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Umiejętności kognitywnych analizy obrazu
+#   <a name="image-analysis-cognitive-skill"></a>Umiejętności cognitive analizy obrazów
 
-**Analizy obrazu** umiejętności wyodrębnia bogaty zestaw funkcji visual na podstawie zawartości obrazu. Na przykład można wygenerować podpisu z obrazu, generowanie tagi lub identyfikowanie znanych osób oraz punkty.
+**Analizy obrazów** umiejętności wyodrębnia bogaty zestaw funkcji visual na podstawie zawartości obrazu. Na przykład można wygenerować podpis z obrazu, generowanie tagi lub zidentyfikować osobistości i charakterystycznych elementów krajobrazu.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
-Parametry jest rozróżniana wielkość liter.
+Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| defaultLanguageCode   |  Ciąg wskazujący język do zwrócenia. Usługa zwraca wyniki rozpoznawania w określonym języku. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/><br/>Obsługiwane języki są: <br/>*EN* -angielski (ustawienie domyślne) <br/> *zh* — chiński uproszczony|
-|visualFeatures |   Tablica ciągów wskazująca typów visual funkcji do zwrócenia. Nieprawidłowa funkcja visual typy:  <ul><li> *kategorie* -kategoryzuje zawartości obrazu zgodnie z taksonomię zdefiniowane w usługach kognitywnych [dokumentacji](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *tagi* -znaczniki obrazu o szczegółową listę słów powiązane do zawartości obrazu.</li><li>*Opis elementu* — zawiera opis obrazu zawartości z pełnym zdaniem angielskiej wersji językowej.</li><li>*Kroje* -wykrywa, czy kroje są obecne. Jeśli jest obecny, generuje współrzędne, płeć i wiek.</li><li> *ImageType* -wykrywa, czy obraz clipart lub rysowanie linii.</li><li>   *Kolor* — Określa kolor akcentu dominującą kolorów i określa, czy obraz jest czarny & białe.</li><li>*Dla dorosłych* -wykrywa, czy obraz ma pornograficznych charakteru (przedstawia nagość lub act płci). Zawartość płciowo sugerujących również została wykryta.</li></ul> Nazwy funkcji visual jest rozróżniana wielkość liter.|
-| szczegóły   | Tablica ciągów wskazująca, które specyficznego dla domeny szczegółów do zwrócenia. Nieprawidłowa funkcja visual typy: <ul><li>*Znanych osób* -identyfikuje znanych osób, w przypadku wykrycia w obrazie.</li><li>*Punkty orientacyjne* -identyfikuje punkty orientacyjne, w przypadku wykrycia w obrazie.</li></ul>
+| defaultLanguageCode   |  Ciąg wskazujący język do zwrócenia. Usługa zwraca wyniki rozpoznawania w określonym języku. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/><br/>Są obsługiwane języki: <br/>*EN* — angielski (ustawienie domyślne) <br/> *nazwy zh* — chiński (uproszczony)|
+|visualFeatures |   Tablica ciągów wskazujący typy funkcji visual do zwrócenia. Nieprawidłowa funkcja visual typy:  <ul><li> *kategorie* -klasyfikuje zawartość obrazu zgodnie z taksonomię zdefiniowane w usługach Cognitive Services [dokumentacji](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).</li><li> *tagi* — tagi obraz z szczegółową listę słów, związane z zawartością obrazu.</li><li>*Opis* — w tym artykule opisano zawartość z pełnym zdaniem angielskiej obrazu.</li><li>*Twarze* — wykrywa, czy twarzy są obecne. Jeśli jest obecny, generuje współrzędne, płeć i wieku.</li><li> *ImageType* — wykrywa, czy obrazu clipart lub rysowanie linii.</li><li>   *Kolor* -Określa kolor akcentu, dominującego koloru i tego, czy obraz jest czarno- & białe.</li><li>*Treści dla dorosłych* — wykrywa, czy obraz ma pornograficznej charakter (przedstawia nagość lub act płeć). Dwuznaczne przekleństwa zawartości jest również wykrywany.</li></ul> Nazwy funkcji visual jest rozróżniana wielkość liter.|
+| szczegóły   | Tablica ciągów, wskazujące, której specyficznego dla domeny szczegóły, aby zwrócić. Nieprawidłowa funkcja visual typy: <ul><li>*Osobistości* — identyfikuje osobistości, w przypadku wykrycia na obrazie.</li><li>*Charakterystycznych elementów krajobrazu* — identyfikuje charakterystycznych elementów krajobrazu, w przypadku wykrycia na obrazie.</li></ul>
  |
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 
 | Wprowadź nazwę      | Opis                                          |
 |---------------|------------------------------------------------------|
-| Obraz         | Typ złożony. Obecnie tylko działania z polem "/ dokumentu/normalized_images" utworzonego przez indeksator obiektów Blob platformy Azure po ```imageAction``` ma ustawioną wartość ```generateNormalizedImages```. Zobacz [próbki](#sample-output) Aby uzyskać więcej informacji.|
+| image         | Typ złożony. Obecnie działa z polem "/ dokumentu/normalized_images" utworzony przez indeksatora obiektów Blob platformy Azure po ```imageAction``` ustawiono ```generateNormalizedImages```. Zobacz [przykładowe](#sample-output) Aby uzyskać więcej informacji.|
 
 
 
-##  <a name="sample-definition"></a>Przykład definicji
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+    "context": "/document/normalized_images/*",
     "visualFeatures": [
         "Tags",
         "Faces",
@@ -238,15 +236,15 @@ W następujących przypadkach błąd są wyodrębniane żadnych elementów.
 | Kod błędu | Opis |
 |------------|-------------|
 | NotSupportedLanguage | Podany język nie jest obsługiwane. |
-| InvalidImageUrl | Adres URL obrazu jest nieprawidłowo sformatowany lub jest niedostępny.|
+| InvalidImageUrl | Adres URL obrazu jest niepoprawnie sformatowana lub jest niedostępny.|
 | InvalidImageFormat | Dane wejściowe nie jest prawidłowym obrazem. |
-| InvalidImageSize | Obraz wejściowy jest zbyt duży. |
-| NotSupportedVisualFeature  | Określona funkcja typ jest nieprawidłowy. |
-| NotSupportedImage | Nieobsługiwany obraz, na przykład pornografia. |
-| InvalidDetails | Nieobsługiwany model specyficznego dla domeny. |
+| InvalidImageSize | Obraz danych wejściowych jest za duży. |
+| NotSupportedVisualFeature  | Typ określona funkcja nie jest prawidłowy. |
+| NotSupportedImage | Nieobsługiwany obraz, na przykład pornografii dziecięcej. |
+| InvalidDetails | Nieobsługiwana modelu specyficznego dla domeny. |
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Tworzenie indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

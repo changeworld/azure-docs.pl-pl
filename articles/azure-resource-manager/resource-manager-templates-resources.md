@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 07/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1619f3bfdf49820ec529947ea02d1602a7b2aa8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723833"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007165"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja Zasoby szablonów usługi Azure Resource Manager
 
@@ -30,7 +30,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
+      "condition": "<true-to-deploy-this-resource>",
       "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
       "name": "<name-of-the-resource>",
@@ -83,7 +83,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| warunek | Nie | Wartość logiczna wskazująca, czy zasób został wdrożony. |
+| warunek | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. |
 | apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. |
 | type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). |
 | name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. |
@@ -100,7 +100,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 
 ## <a name="condition"></a>Warunek
 
-Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Gdy ma wartość true, zasób został wdrożony. Gdy wartość jest równa false, zasób nie jest wdrożona. Na przykład aby określić, czy nowe konto magazynu jest wdrożony lub istniejące konto magazynu jest używane, należy użyć:
+Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, użyj `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako wartość true lub false. Gdy ma wartość true, zasób zostanie utworzony. Gdy wartość jest równa false, nie można utworzyć zasobu. Zazwyczaj ta wartość służy w sytuacji, gdy chcesz utworzyć nowy zasób lub użyć istniejącego. Na przykład aby określić, czy nowe konto magazynu jest wdrożony lub istniejące konto magazynu jest używane, należy użyć:
 
 ```json
 {

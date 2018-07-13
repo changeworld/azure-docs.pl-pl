@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane innych krajów i języków interfejsu API wyszukiwania obrazu Bing na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, która krajów i języki są obsługiwane przez interfejs API wyszukiwania usługi Bing obrazu.
+title: Obsługiwane kraje/regiony i języki dla interfejsu API wyszukiwania obrazów Bing na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, które kraje/regiony i języki są obsługiwane przez interfejs API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: v-jerkin
 manager: jhubbard
@@ -9,31 +9,31 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d0d33ee714ba5cd1ce4e846b96c04f755933bee1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 97e2bed509146172c10aa9ac2658b99ed7610fcc
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348952"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004442"
 ---
-# <a name="bing-image-search-countries-and-languages"></a>Wyszukiwania usługi Bing obrazu krajów i języków
+# <a name="bing-image-search-countriesregions-and-languages"></a>Wyszukiwanie obrazów Bing kraje/regiony i języki
 
-Interfejs API wyszukiwania usługi Bing obrazu obsługuje więcej niż trzech dwanaście krajach, wiele z więcej niż jednym języku. Określanie kraju z zapytaniem służy głównie w celu ograniczenia wyników wyszukiwania w oparciu zainteresowań w tym kraju. Ponadto wyniki mogą zawierać łącza do usługi Bing i łącza mogą localize Bing środowisko użytkownika zgodnie z określonym kraju lub języka.
+Interfejs API wyszukiwania obrazów Bing obsługuje więcej niż trzech tuzina kraje/regiony, wiele z więcej niż jednym języku. Określanie kraj/region z zapytaniem służy przede wszystkim, aby zawęzić wyniki wyszukiwania, w oparciu o zainteresowania tego kraju/regionu. Ponadto wyniki mogą zawierać łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonych krajów/regionów lub języka.
 
-Aby określić kraju i język, ustaw `mkt` (rynku) parametru zapytania do kodu z **rynkach** w poniższej tabeli. Rynku Określa kraj i języka. Jeśli użytkownik chce zobaczyć wyświetlania tekstu w innym języku, ustaw `setLang` parametr kod odpowiedni język zapytania.
+Aby określić kraj/region i język, ustaw `mkt` parametr zapytania (rynek) do kodu ze **rynków** w poniższej tabeli. Rynek Określa kraj/region i język. Jeśli użytkownik chce zobaczyć wyświetlania tekstu w innym języku, należy ustawić `setLang` parametru w kodzie odpowiedni język zapytania.
 
-Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kraju, należy określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależy od kraju; są one podane dla każdego kraju, w tabeli rynkach.
+Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależą od kraju/regionu są one podane dla każdego kraju/regionu w tabeli rynkach.
 
 > [!NOTE]
-> Interfejs API umożliwia analizę trendów obrazy aktualnie obsługuje tylko następujące rynkach:
+> Interfejs API obrazów na popularności obecnie obsługuje tylko następujące rynki:
 > - EN US (angielski, Stany Zjednoczone) 
 > - EN-CA (angielski, Kanada) 
 > - EN-AU (angielski, Australia) 
-> - zh-CN (chińskim, Chiny)
+> - nazwy zh-CN (chińskim, Chiny)
 
-## <a name="countries"></a>Krajach
+## <a name="countries"></a>Kraje
 
-|Kraj|Kod|
+|Kraj/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -42,27 +42,27 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Brazylia|BRAZYLIA|
 |Kanada|Urząd certyfikacji|
 |Chile|CL|
-|Dania|K|
+|Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
 |Hongkong|HK|
-|Indie|W|
+|Indie|INDIE|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
 |Malezja|MOJE|
 |Meksyk|MX|
-|Holandia|NL|
+|Holandia|HOLANDIA|
 |Nowa Zelandia|NZ|
 |Norwegia|NIE|
-|Chiny|NAZWA POSPOLITA|
+|Chiny|CN|
 |Polska|PL|
-|Portugalia|PT|
-|Filipiny|CIĄG|
-|Rosja|RU|
-|Arabia Saudyjska|SA|
+|Portugalia|(CZAS PACYFICZNY)|
+|Filipiny|PH|
+|Rosja|JEDNOSTKA ŻĄDANIA|
+|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -73,25 +73,25 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Stany Zjednoczone|USA|
 
 
-## <a name="markets"></a>Rynkach
+## <a name="markets"></a>Rynki
 
-|Kraj|Język|Kod rynku|
+|Kraj/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
-|Austria|Niemiecki|Niemcy AT|
-|Belgia|Holenderski|NL-być|
-|Belgia|Francuski|FR — można|
+|Austria|Niemiecki|de-AT|
+|Belgia|Holenderski|Holandia — być|
+|Belgia|Francuski|FR — być|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
-|Dania|Duński|Ciemny da|
+|Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Finlandia|Fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|Niemiecki|de-DE|
+|Niemcy|Niemiecki|de-DE.|
 |Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN w|
+|Indie|Polski|EN-IN|
 |Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
@@ -103,19 +103,19 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|CIĄG en|
+|Filipiny|Polski|EN PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN-ZA-|
+|Republika Południowej Afryki|Polski|EN ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR CH|
-|Szwajcaria|Niemiecki|Niemcy CH|
+|Szwajcaria|Francuski|FR-CH|
+|Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Stany Zjednoczone|Polski|pl-PL|
 |Stany Zjednoczone|Hiszpański|es-US|
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o punktach końcowych wyszukiwania usługi Bing wiadomości, zobacz [odwołania w wersji 7 interfejsu API Search obrazu wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania obrazów wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).

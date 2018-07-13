@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 503dfc0c7606d44a1b9ab635aa0d479df61f3820
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f4a9c14a63e2cab84ccc20f8f36b272d21eb8332
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435477"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004188"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów systemu Linux
 
@@ -50,8 +50,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 Zainstaluj vcruntime przy użyciu polecenia:
@@ -140,7 +141,7 @@ Aby pobrać adres IP, wprowadź `ipconfig` w oknie programu PowerShell. Skopiuj 
 
 ![DockerNat][img-docker-nat]
 
-Aktualizacja **workload_uri** i **management_uri** w **connect:** sekcję pliku konfiguracji. Zastąp **\<GATEWAY_ADDRESS\>** o adresie IP, który został skopiowany. 
+Aktualizacja **workload_uri** i **management_uri** w **connect:** sekcję pliku konfiguracji. Zastąp **\<GATEWAY_ADDRESS\>** o adresie DockerNAT IP, który został skopiowany. 
 
 ```yaml
 connect:
@@ -148,7 +149,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Wprowadź ten sam adresy w **nasłuchiwania:** sekcji konfiguracji, za pomocą adresu IP jako adres bramy.
+Wprowadź ten sam adresy w **nasłuchiwania:** sekcji.
 
 ```yaml
 listen:
@@ -162,7 +163,7 @@ W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z *
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Zmienna środowiskowa ulegają zmianie podczas ponownego uruchamiania.
+Ustaw tę zmienną środowiskową jako trwałą, aby była zachowywana po ponownym uruchomieniu.
 
 ```powershell
 SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"

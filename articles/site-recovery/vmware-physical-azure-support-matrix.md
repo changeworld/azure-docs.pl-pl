@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: cb01e71ae45ae8a7e37e8ab5cdf60e3b3fcb9983
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eecf608a712e6a29180b797bbef491501653dfd6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919764"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006482"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Macierz obsługi dla oprogramowania VMware oraz replikacji serwera fizycznego do platformy Azure
 
@@ -24,13 +24,13 @@ Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia na po
 **Scenariusz** | **Szczegóły**
 --- | ---
 Maszyny wirtualne VMware | Replikacji lokalnych maszyn wirtualnych VMware na platformę Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal lub za pomocą [PowerShell](vmware-azure-disaster-recovery-powershell.md).
-Serwerów fizycznych | Replikacja fizycznych serversto systemu Windows/Linux w środowisku lokalnym platformy Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal.
+Serwerów fizycznych | Replikacji lokalnych serwerów fizycznych systemu Windows/Linux na platformie Azure. Można wdrożyć ten scenariusz, w witrynie Azure portal.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokalne serwery wirtualizacji
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-VMware | vCenter Server 6.5, 6.0 lub 5.5 lub vSphere 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hosty vSphere i vCenter Server znajdują się w tej samej sieci, co serwer przetwarzania. Domyślnie składniki serwera przetwarzania działa na serwerze konfiguracji, więc będzie to sieci, która umożliwia skonfigurowanie serwera konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu.
+VMware | 6.7 serwera vCenter 6.5, 6.0 lub 5.5 lub vSphere 6.7, 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hosty vSphere i vCenter Server znajdują się w tej samej sieci, co serwer przetwarzania. Domyślnie składniki serwera przetwarzania działa na serwerze konfiguracji, więc będzie to sieci, która umożliwia skonfigurowanie serwera konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu.
 Fizyczne | ND
 
 ## <a name="site-recovery-configuration-server"></a>Serwera konfiguracji usługi Site Recovery
@@ -61,7 +61,7 @@ Usługa Site Recovery obsługuje dowolne obciążenia uruchomione na obsługiwan
 **Składnik** | **Szczegóły**
 --- | ---
 Ustawienia komputera | Maszyny, które są replikowane do platformy Azure muszą spełniać [wymagania dotyczące usługi Azure](#azure-vm-requirements).
-System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1. Windows 2016 Nano Server nie jest obsługiwane.
+System operacyjny Windows | 64-bitowym systemie Windows Server 2016 (Server Core, serwer ze środowiskiem pulpitu), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z w co najmniej z dodatkiem SP1.</br></br>  [Windows Server 2008 z na co najmniej z dodatkiem SP2 — 32-bitowe i 64-bitowej](migrate-tutorial-windows-server-2008.md) (tylko migracji). </br></br> * *Windows 2016 Nano Server nie jest obsługiwane.*
 System operacyjny Linux | Red Hat Enterprise Linux: 5.2 do 5.11, 6.1-6.9, 7.0 wersji 7.4 <br/><br/>CentOS: 5.2 do 5.11, 6.1-6.9, 7.0 wersji 7.4 <br/><br/>Ubuntu 14.04 LTS server[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Serwer Ubuntu 16.04 LTS[ (obsługiwane wersje jądra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (obsługiwane wersje jądra)](#debian-kernel-versions)<br/><br/>Oracle Enterprise Linux 6.4, 6.5 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Uaktualnianie replikowanych maszyn z dodatkiem SP3 do SP4 nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację i włącz go ponownie po uaktualnieniu.
 
 >[!NOTE]
@@ -70,6 +70,7 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2 do 5.11, 6.1-6.9, 7.0 we
 >
 > - Uaktualnianie chronionych maszyn w głównych systemu Linux, wersji dystrybucji nie jest obsługiwane. Aby przeprowadzić uaktualnienie, wyłącz replikację, Uaktualnij system operacyjny i następnie włącz ponownie replikację.
 >
+> - Serwery z systemem Red Hat Enterprise Linux 5.2 5.11 lub CentOS 5.2 do 5.11 powinny mieć składniki Services(LIS) integracji systemu Linux zainstalowane w kolejności rozruchu na platformie Azure maszyn.
 
 ### <a name="ubuntu-kernel-versions"></a>Wersje jądra systemu Ubuntu
 

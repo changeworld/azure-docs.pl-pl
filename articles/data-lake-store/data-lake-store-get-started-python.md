@@ -9,16 +9,15 @@ editor: cgronlun
 ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 89d4110679d7a02d1468a9dab6816fb9e6b02181
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: HT
+ms.openlocfilehash: e5b04a4cfbf26011753715f02baea689ec3065b6
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39009245"
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Operacje zarządzania kontem w usłudze Azure Data Lake Store za pomocą języka Python
 > [!div class="op_single_selector"]
@@ -131,10 +130,10 @@ Poniższy fragment kodu najpierw tworzy klienta konta usługi Data Lake Store. U
     adlsAcctClient.account.delete(adlsAccountName)
     
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Operacje systemu plików w usłudze Data Lake Store za pomocą języka Python](data-lake-store-data-operations-python.md).
 
-## <a name="see-also"></a>Zobacz też
-* [Azure Data Lake Store Python (Account management) Reference](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html) (Dokumentacja języka Python dla usługi Azure Data Lake Store [zarządzanie kontem])
+## <a name="see-also"></a>Zobacz także
+
 * [Azure Data Lake Store Python (Filesystem) Reference](http://azure-datalake-store.readthedocs.io/en/latest) (Dokumentacja języka Python dla usługi Azure Data Lake Store [system plików])
 * [Open Source Big Data applications compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md) (Aplikacje danych big data typu open source zgodne z usługą Azure Data Lake Store)

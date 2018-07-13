@@ -1,99 +1,105 @@
 ---
-title: Tworzenie i zarządzanie nimi reguły zdarzenia w aplikacji Azure IoT centralnej | Dokumentacja firmy Microsoft
-description: Reguły zdarzeń w usłudze Azure IoT centralnego umożliwiają monitorowanie urządzeń w najbliższym czasie rzeczywistym i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail, gdy zasada wyzwala.
+title: Tworzenie i zarządzanie nimi reguły zdarzenia w aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
+description: Zasady zdarzeń w usłudze Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail po wyzwoleniu reguły.
+services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
-manager: peterpr
-ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.topic: article
+ms.prod: microsoft-iot-central
+manager: timlt
+ms.openlocfilehash: ede7748b1471136cf792c2b30b7c90e12b0b274a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628372"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006852"
 ---
-# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i skonfigurować powiadomienia w aplikacji Azure IoT centralnej
+# <a name="create-an-event-rule-and-set-up-an-action-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i konfigurowanie akcji w aplikacji usługi Azure IoT Central
 
-Centrum IoT Azure Microsoft umożliwia zdalne monitorowanie podłączonych urządzeń. Azure IoT centralne zasady umożliwiają monitorowanie urządzeń w najbliższym czasie rzeczywistym i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail, gdy zasada wyzwala. Za pomocą kilku kliknięć można określić warunku do monitorowania danych urządzenia i skonfiguruj akcję do wywołania. W tym artykule opisano reguły szczegółowo monitorowania zdarzeń.
+Microsoft Azure IoT Central umożliwia zdalne monitorowanie połączonych urządzeń. Reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wywołują akcje, takie jak wysyłanie wiadomości e-mail lub wyzwolenie przepływu pracy w programie Microsoft Flow po spełnieniu warunków reguły. Za pomocą kilku kliknięć można określić warunek, którego chcesz monitorować dane urządzenia i skonfiguruj akcję do wywołania. W tym artykule wyjaśniono reguły szczegółowo monitorowania zdarzeń.
 
-Używa Azure IoT centralnego [pomiaru zdarzeń](howto-set-up-template.md) do przechwytywania danych urządzenia. Każdy typ miary ma atrybutów klucza, które definiują pomiaru. Można utworzyć reguły do monitorowania każdego typu pomiaru urządzenia i generować alerty, gdy zasada wyzwala. Reguła zdarzenie jest wyzwalane po zdarzeń wybranego urządzenia został zgłoszony przez urządzenie.
+Używa usługi Azure IoT Central [pomiaru zdarzeń](howto-set-up-template.md) do przechwytywania danych urządzenia. Każdy typ miary ma kluczowych atrybutów, które definiują pomiaru. Można utworzyć reguły, aby monitorować każdego typu pomiaru urządzenia i generować alerty po wyzwoleniu reguły. Zasada zdarzeń uaktywnia zdarzeń wybrane urządzenie jest zgłaszane przez urządzenie.
 
 ## <a name="create-an-event-rule"></a>Tworzenie reguły zdarzeń
 
-W tej sekcji przedstawiono sposób tworzenia reguły zdarzeń. W tym przykładzie użyto urządzenia chłodniczych Automat zdarzenie błędu motocykla wentylator raportów. Reguła monitoruje zdarzeń zgłoszonych przez urządzenia i wysyła wiadomość e-mail, gdy zdarzenie jest zgłaszane.
+W tej sekcji pokazano, jak utworzyć regułę zdarzeń. W tym przykładzie użyto urządzenia mrożone Automat zdarzenie błędu motor wentylator raportów. Reguła monitoruje zdarzeń zgłoszonych przez urządzenia i wysyła wiadomość e-mail, gdy zdarzenie jest zgłaszane.
 
-1. Przejdź do strony szczegółów urządzenia dla urządzenia, który dodajesz reguły.
+1. Przejdź do strony szczegółów urządzenia dla urządzenia, którego dodajesz reguły.
 
-1. Jeśli jeszcze nie utworzono żadnych reguł, zostanie wyświetlony następujący ekran:
+1. Jeśli nie utworzono jeszcze żadnych reguł, zostanie wyświetlony następujący ekran:
 
-    ![Jeszcze żadnych reguł](media\howto-create-event-rules\image1.png)
+    ![Jeszcze żadnych reguł](media/howto-create-event-rules/image1.png)
 
-1. Na **reguły** , wybierz pozycję **+ nową regułę** Aby wyświetlić typy reguł można utworzyć.
+1. Na **reguły** kartę, wybrać **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
-    ![Typy reguł](media\howto-create-event-rules\image2.png)
+    ![Typy zasad](media/howto-create-event-rules/image2.png)
 
-1. Polecenie **zdarzeń** aby otworzyć formularz, aby utworzyć regułę.
+1. Kliknij pozycję **zdarzeń** aby otworzyć formularz, aby utworzyć regułę.
 
-    ![Reguły zdarzenia](media\howto-create-event-rules\image3.png)
+    ![Zasada zdarzeń](media/howto-create-event-rules/image3.png)
 
-1. Wybierz nazwę, która pomaga w identyfikacji reguły w tym szablonie urządzenia.
+1. Wybierz nazwę, która pomaga w identyfikacji reguły, w tym szablonie urządzenia.
 
-1. Aby natychmiast reguły dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę**.
+1. Aby od razu włączyć zasadę dla wszystkich urządzeń, które są tworzone na podstawie tego szablonu, Przełącz **Włącz regułę**.
 
 ### <a name="configure-the-rule-condition"></a>Konfigurowanie warunku reguły
 
-W tej sekcji przedstawiono sposób Dodaj warunek do monitorowania pomiaru zdarzenia błędów motocykla wentylator.
+W tej sekcji pokazano, jak dodać warunek do pomiaru zdarzenia błędów motor wentylator monitorowania.
 
-1. Wybierz **+** obok **warunku**.
+1. Wybierz **+** obok **warunek**.
 
-1. Wybierz miary zdarzenia z listy rozwijanej, która ma być monitorowany. W tym przykładzie **błąd motocykla wentylator** zdarzeń został wybrany.
+1. Wybierz miarę zdarzeń z listy rozwijanej, która ma być monitorowany. W tym przykładzie **błąd Motor wentylator** zdarzeń został wybrany.
 
-1. Opcjonalnie możesz także podać wartość w przypadku, gdy chcesz monitorować określonej wartości zdarzenie zgłaszane przez urządzenie. Na przykład jeśli urządzenie zgłasza zdarzenie z kodów błędów różnych podają kod błędu jako wartość warunek reguły sprawdzi, czy wyzwalaczy reguły tylko wtedy, gdy urządzenie wysyła tej określonej wartości jako ładunek zdarzenia. Pozostawienie pustego tym oznacza, że reguła wyzwoli zawsze, gdy urządzenie wysyła zdarzenia niezależnie od wartości zdarzeń.
+1. Opcjonalnie możesz także podać wartość w przypadku, gdy chcesz monitorować określonej wartości zdarzenie zgłaszane przez urządzenie. Na przykład jeśli urządzenie zgłasza te same zdarzenia z kodami błędów inny, następnie podając kod błędu: jako wartość warunku reguły będzie upewnij się, że wyzwolenie reguły tylko wtedy, gdy urządzenie wysyła tej określonej wartości jako ładunek zdarzenia. Pozostawienie to pole puste, oznacza, że reguła wyzwoli zawsze wtedy, gdy urządzenie wysyła zdarzenia, niezależnie od wartości zdarzeń.
 
-    ![Dodaj warunek zdarzenia](media\howto-create-event-rules\image4.png)
-
-    > [!NOTE]
-    > Należy wybrać co najmniej jedno zdarzenie pomiaru podczas definiowania warunek reguły zdarzeń.
-
-### <a name="configure-the-action"></a>Konfigurowanie akcji
-
-W tej sekcji przedstawiono sposób określania, jakie reguły wykonuje, gdy warunek zgodny przez dodanie akcji.
-
-1. Wybierz **+** obok **akcje**. Tutaj możesz wyświetlić listę dostępnych akcji. W publicznej wersji zapoznawczej **E-mail** jest jedyną akcją, obsługiwane.
-
-    ![Dodaj akcję](media\howto-create-event-rules\image5.png)
-
-1. Wybierz **E-mail** akcji, wprowadź prawidłowy adres e-mail w **do** pola i podaj Uwaga do występować w treści wiadomości e-mail, gdy zasada wyzwala.
+    ![Dodaj warunek zdarzenia](media/howto-create-event-rules/image4.png)
 
     > [!NOTE]
-    > Wiadomości e-mail będą wysyłane tylko do użytkowników, które zostały dodane do aplikacji i zalogowali się co najmniej raz. Dowiedz się więcej o [Zarządzanie użytkownikami](howto-administer.md) w Azure IoT centralnej.
+    > Podczas definiowania warunku reguły zdarzenia, należy wybrać co najmniej jedno zdarzenie pomiarów.
 
-   ![Konfigurowanie akcji](media\howto-create-event-rules\image6.png)
+1. Kliknij przycisk **Zapisz** można zapisać reguły. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie zdarzeń wysyłanych do aplikacji.
 
-1. Aby zapisać regułę, wybierz **zapisać**. Reguła przechodzi na żywo za kilka minut i rozpoczyna monitorowanie zdarzeń są wysyłane do aplikacji. Gdy spełnia warunek określony w regule, zasada wyzwala akcji skonfigurowanych poczty e-mail.
+### <a name="add-an-action"></a>Dodawanie akcji
+
+W tej sekcji przedstawiono sposób dodawania akcji do reguły. To pokazuje, jak dodawanie akcji poczty e-mail, ale możesz też [Dodaj akcję Microsoft Flow](howto-add-microsoft-flow.md) do reguły w taki sposób, aby uruchamiał przepływu pracy w Microsoft Flow po wyzwoleniu reguły.
+
+> [!NOTE]
+> W tej chwili może być skojarzona z jednej reguły tylko 1 akcję.
+
+1. Wybierz **+** obok **akcje**. W tym miejscu zobaczysz listę dostępnych akcji.
+
+    ![Dodawanie akcji](media/howto-create-event-rules/image5.png)
+
+1. Wybierz **E-mail** akcję, wprowadź prawidłowy adres e-mail w **do** pola, a następnie podaj notatkę pojawią się w treści wiadomości e-mail po wyzwoleniu reguły.
+
+    > [!NOTE]
+    > Wiadomości e-mail są wysyłane tylko do użytkowników, które zostały dodane do aplikacji i Logowanie zostało wykonane co najmniej raz. Dowiedz się więcej o [Zarządzanie użytkownikami](howto-administer.md) w usłudze Azure IoT Central.
+
+   ![Konfigurowanie akcji](media/howto-create-event-rules/image6.png)
+
+1. Kliknij pozycję **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie zdarzeń wysyłanych do aplikacji. Gdy spełnia warunek określony w regule, zasada wyzwala akcji dotyczącej wiadomości e-mail skonfigurowany.
 
 ## <a name="parameterize-the-rule"></a>Parametryzacja reguły
 
-Akcje można również skonfigurować za pomocą **właściwości urządzenia** jako parametr. Jeśli adres e-mail jest przechowywany jako właściwość urządzenia, a następnie mogą być używane podczas definiowania **do** adres.
+Akcje mogą być również konfigurowane przy użyciu **właściwości urządzenia** jako parametr. Jeśli adres e-mail jest przechowywany jako właściwości urządzenia, a następnie mogą być używane podczas definiowania **do** adresu.
 
 ## <a name="delete-a-rule"></a>Usuwanie reguły
 
-Jeśli reguła nie jest już potrzebny, usuń go, otwierając reguły i wybierając pozycję **usunąć**. Usuwanie reguły spowoduje usunięcie jej z szablonu urządzenia i wszystkie skojarzone urządzenia.
+Jeśli nie potrzebujesz już regułę, usuń go, otwierając reguły i wybierając pozycję **Usuń**. Usuwanie reguły spowoduje usunięcie jej z szablonu urządzenia i wszystkie skojarzone urządzenia.
 
-## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Włącza lub wyłącza regułę dla szablonu urządzenia
+## <a name="enable-or-disable-a-rule-for-a-device-template"></a>Włączanie lub wyłączanie reguły szablonu urządzenia
 
-Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełączanie **Włącz reguły dla wszystkich urządzeń z tego szablonu** przycisk w regule Włącza lub wyłącza reguły dla wszystkich urządzeń skojarzonych z szablonem urządzenia.
+Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełączanie **Włącz regułę dla wszystkich urządzeń z tego szablonu** przycisku w regule Włącza lub wyłącza regułę dla wszystkich urządzeń skojarzonych z szablonem urządzenia.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Włącz lub wyłącz reguły dla urządzenia
+## <a name="enable-or-disable-a-rule-for-a-device"></a>Włącza lub wyłącza regułę dla urządzenia
 
-Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **Włącz regułę dla tego urządzenia** przycisk, aby włączyć funkcję lub wyłączyć regułę dla tego urządzenia.
+Przejdź do urządzenia, a następnie wybierz regułę, którą chcesz włączyć lub wyłączyć. Przełącz **Włącz regułę dla tego urządzenia** przycisk, aby włączyć lub wyłączyć regułę dla tego urządzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz sposobu tworzenia reguły w aplikacji Azure IoT centralnej, Oto sugerowane następnego kroku:
+Teraz, gdy wiesz jak utworzyć zasady w aplikacji usługi Azure IoT Central, poniżej przedstawiono sugerowany następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Jak zarządzać urządzeniami](howto-manage-devices.md).
+> [Jak dodać akcję Microsoft Flow do reguły](howto-add-microsoft-flow.md)
+> [sposobu zarządzania urządzeniami](howto-manage-devices.md).

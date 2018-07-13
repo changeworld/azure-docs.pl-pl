@@ -1,84 +1,84 @@
 ---
-title: Tworzenie aplikacji usługi Azure IoT centralnej | Dokumentacja firmy Microsoft
-description: Jako administratora jak utworzyć aplikację Azure IoT centralnej.
+title: Tworzenie aplikacji usługi Azure IoT Central | Microsoft Docs
+description: Jako administratora jak utworzyć aplikację usługi Azure IoT Central.
+services: iot-central
+ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 03/20/2018
+ms.date: 07/09/2018
 ms.topic: conceptual
-ms.service: iot-central
-services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1fbe3ea142e1dd738cd341f57d2b8f48b539ac75
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629290"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003770"
 ---
-# <a name="create-your-azure-iot-central-application"></a>Tworzenie aplikacji platformy Azure IoT środkowe
+# <a name="create-your-azure-iot-central-application"></a>Tworzenie aplikacji usługi Azure IoT Central
 
-Tworzenie aplikacji Microsoft Azure IoT centralnej [tworzenie aplikacji](https://apps.microsoftiotcentral.com/create) strony. Aby utworzyć aplikację Azure IoT centralnej, musi wykonać wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Ten artykuł zawiera więcej informacji o poszczególnych pól.
+Tworzenie aplikacji systemu Microsoft Azure IoT Central [Utwórz aplikację](https://apps.microsoftiotcentral.com/create) strony. Aby utworzyć aplikację usługi Azure IoT Central, musisz wypełnić wszystkie pola na tej stronie, a następnie wybierz **Utwórz**. Przekonasz się, zawiera więcej informacji na temat każdego z poniższych pól.
 
 ![Tworzenie strony aplikacji](media\howto-create-application\image1.png)
 
 ## <a name="payment-plan"></a>Plan płatności
 
-Można utworzyć wersji próbnej lub płatnej aplikacji. Dowiedz się więcej o aplikacjach płatnych oraz wersji próbnych na tej stronie.
+Można utworzyć wersji próbnej lub płatnej aplikacji. Dowiedz się więcej o aplikacjach płatnych oraz wersji próbnych na [stronę z cennikiem usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/)...
 
 ## <a name="application-name"></a>Nazwa aplikacji
 
-Nazwa aplikacji jest wyświetlana na **Menedżer aplikacji** strony i w obrębie każdej aplikacji Azure IoT centralnej. Można wybrać dowolną nazwę aplikacji usługi Azure IoT centralnej. Wybierz nazwę, która ma sens dla Ciebie i do innych użytkowników w organizacji.
+Nazwa aplikacji jest wyświetlana na **Menedżer aplikacji** strony i w ramach każdej aplikacji usługi Azure IoT Central. Możesz wybrać dowolną nazwę aplikacji usługi Azure IoT Central. Wybierz nazwę, która ma sens dla Ciebie i innym osobom w organizacji.
 
 ## <a name="application-url"></a>Adres URL aplikacji
 
-Adres URL aplikacji jest łącze do aplikacji. Można zapisać zakładki w przeglądarce lub udostępniać innym osobom.
+Adres URL aplikacji jest link do aplikacji. Można zapisać zakładki do niego w przeglądarce lub udostępnić go innym osobom.
 
-Po wprowadzeniu nazwy aplikacji, adres URL aplikacji został wygenerowany automatycznie. Jeśli wolisz, możesz wybrać inny adres URL aplikacji. Każdy Azure IoT centralnej adres URL musi być unikatowa. Zostanie wyświetlony komunikat o błędzie, jeśli wybierzesz adres URL jest już zajęta.
+Po wprowadzeniu nazwy aplikacji, adres URL aplikacji jest generowany automatycznie. Jeśli wolisz, możesz inny adres URL aplikacji. Każdy Azure IoT Central adres URL musi być unikatowa w obrębie usługi Azure IoT Central. Zobaczysz komunikat o błędzie, jeśli wybierzesz adres URL jest już zajęta.
 
 ## <a name="directory"></a>Katalog
 
-Tylko w aplikacjach płatną.
+Tylko w aplikacje płatne.
 
-Wybierz dzierżawy usługi Azure Active Directory, aby utworzyć aplikację Azure IoT centralnej. Dzierżawy usługi Azure Active Directory zawiera tożsamości użytkownika, poświadczeń i innych informacji organizacyjnych. Wiele subskrypcji Azure może być skojarzony z pojedynczej dzierżawy usługi Azure Active Directory.
+Wybierz dzierżawę usługi Azure Active Directory, aby utworzyć aplikację usługi Azure IoT Central. Dzierżawy usługi Azure Active Directory zawiera tożsamości użytkownika, poświadczeń i innych informacji o organizacji. Wiele subskrypcji platformy Azure może być skojarzony z pojedynczej dzierżawy usługi Azure Active Directory.
 
-Jeśli nie masz dzierżawę usługi Azure Active Directory, jest on stworzony dla Ciebie podczas tworzenia subskrypcji platformy Azure.
+Jeśli nie masz dzierżawę usługi Azure Active Directory, utworzony automatycznie podczas tworzenia subskrypcji platformy Azure.
 
 Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="azure-subscription"></a>Subskrypcja platformy Azure
 
-Subskrypcja platformy Azure umożliwia tworzenie wystąpień usług platformy Azure. Azure IoT centralnego automatycznie wyszukuje wszystkie subskrypcje platformy Azure, masz dostęp do i wyświetla je na liście rozwijanej na **tworzenie aplikacji** strony. Wybierz subskrypcję platformy Azure, aby utworzyć nową aplikację centralnej IoT Azure.
+Subskrypcja platformy Azure umożliwia tworzenie wystąpienia usług platformy Azure. Azure IoT Central automatycznie znajdzie wszystkie subskrypcje platformy Azure, masz dostęp do, a następnie wyświetli je na liście rozwijanej na **Utwórz aplikację** strony. Wybierz subskrypcję platformy Azure, aby utworzyć nową aplikację Central IoT Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, można utworzyć jedną na tej stronie. Po utworzeniu subskrypcji platformy Azure, przejdź wstecz do **tworzenie aplikacji** strony. Nowej subskrypcji zostanie wyświetlony w **subskrypcji Azure** listy rozwijanej.
+Jeśli nie masz subskrypcji platformy Azure, można utworzyć jeden na [strona tworzenia konta usługi Azure](https://aka.ms/createazuresubscription). Po utworzeniu subskrypcji platformy Azure, przejdź z powrotem do **Utwórz aplikację** strony. Nowej subskrypcji jest wyświetlana w **subskrypcji platformy Azure** listy rozwijanej.
 
 Aby dowiedzieć się więcej, zobacz [subskrypcji platformy Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
 ## <a name="region"></a>Region
 
-Tylko w aplikacjach płatną.
+Tylko w aplikacje płatne.
 
-Wybierz region, w którym chcesz utworzyć aplikację Azure IoT centralnej. Zazwyczaj należy wybrać region najbliższy fizycznie urządzenia, aby uzyskać optymalną wydajność.
+Wybierz region, w którym chcesz utworzyć aplikację usługi Azure IoT centralnej. Zazwyczaj należy wybrać region znajdujący się najbliżej fizycznie urządzenia, aby uzyskać optymalną wydajność.
 
-Aby dowiedzieć się więcej, zobacz [regiony platformy Azure](https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide#azure-regions).
+Aby dowiedzieć się więcej, zobacz [regionów świadczenia usługi Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
 
-Zostanie wyświetlony regionów, w których Azure IoT centralnej jest dostępna na [produkty, które są dostępne w regionie](https://azure.microsoft.com/regions/services/) strony.
+Możesz zobaczyć regionów, w których usługa Azure IoT Central jest dostępna na [dostępność produktów według regionów](https://azure.microsoft.com/regions/services/) strony.
 
 > [!Note]
-> Po wybraniu regionu później nie można przenieść aplikację w innym regionie.
+> Po wybraniu regionu, nie możesz później przenieść aplikację do innego regionu.
 
 ## <a name="application-template"></a>Szablon aplikacji
 
-Można wybrać jeden z szablonów aplikacji dostępnych dla nowej aplikacji Azure IoT centralnej. Szablon aplikacji może zawierać wstępnie zdefiniowane elementy, takie jak szablony urządzenia i pulpity nawigacyjne ułatwiające rozpoczęcie pracy:
+Można wybrać jedną z szablonów aplikacji dostępnych w nowej aplikacji usługi Azure IoT Central. Szablon aplikacji może zawierać wstępnie zdefiniowane elementy, takie jak szablony urządzenia i pulpity nawigacyjne, aby pomóc Ci rozpocząć pracę.
 
 | Szablon aplikacji | Opis |
 | -------------------- | ----------- |
-| Aplikacji niestandardowych   | Tworzy pustą aplikację można wypełnić przy użyciu własnych urządzeń i szablony urządzenia. |
-| Przykładowe firmy Contoso       | Tworzy aplikację, która zawiera szablon urządzenia dla prostego podłączonego urządzenia. Aby rozpocząć eksplorowanie usługi Azure IoT centralną, należy użyć tego szablonu. |
-| Devkits próbki       | Tworzy aplikację z szablonami urządzenia gotowe do Podłącz urządzenie z systemem MXChip lub malina Pi. Jeśli jesteś deweloperem urządzenia eksperymentowanie z kodem na jednym z tych urządzeń, należy użyć tego szablonu. |
+| Aplikacji niestandardowej   | Tworzy pustą aplikację dla Ciebie zostać wypełniony przy użyciu własnych urządzeń i urządzeń. |
+| Przykładowe firmy Contoso       | Tworzy aplikację, która zawiera szablon urządzenia dla prostych podłączonego urządzenia. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
+| Przykładowe Devkits       | Tworzy aplikację za pomocą szablonów urządzenia gotowe do podłączenia urządzenia zestawu deweloperskiego lub urządzenia Raspberry Pi. Użyj tego szablonu, jeśli jesteś deweloperem urządzenia, eksperymentowanie z kodem na jednym z tych urządzeń. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, kiedy znasz jak utworzyć aplikację Azure IoT centralnej, Oto sugerowane następnego kroku:
+Teraz, gdy wiesz jak utworzyć aplikację usługi Azure IoT Central, poniżej przedstawiono sugerowany następnego kroku:
 
 > [!div class="nextstepaction"]
-> [Administrowanie aplikacji](howto-administer.md)
+> [Zarządzać aplikacją](howto-administer.md)

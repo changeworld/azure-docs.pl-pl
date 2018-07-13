@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4862e3aa976287512fd69fdfe9295e3f3328d5a7
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: ecd19acdeba57a29a28187d42783bbf146095190
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887780"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001909"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -107,19 +107,43 @@ Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontener�
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Przejrzyj komunikaty przechodzące przez Centrum usługi Edge
 
-Przejrzyj komunikaty przechodzące przez Centrum usługi Edge i Zbierz analizy dotyczące aktualizacji właściwości urządzenia za pomocą szczegółowych dzienników z kontenerów środowiska wykonawczego edgeAgent i edgeHub. Aby włączyć pełne dzienniki w tych kontenerach, należy ustawić `RuntimeLogLevel` zmienną środowiskową: 
+Przejrzyj komunikaty przechodzące przez Centrum usługi Edge i Zbierz analizy dotyczące aktualizacji właściwości urządzenia za pomocą szczegółowych dzienników z kontenerów środowiska wykonawczego edgeAgent i edgeHub. Aby włączyć pełne dzienniki w tych kontenerach, należy ustawić `RuntimeLogLevel` w pliku konfiguracyjnym yaml. Można otworzyć pliku:
 
 W systemie Linux:
-    
-   ```cmd
-   export RuntimeLogLevel="debug"
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
    ```
-    
+
 W systemie Windows:
-    
-   ```powershell
-   [Environment]::SetEnvironmentVariable("RuntimeLogLevel", "debug")
+
+   ```cmd
+   notepad C:\ProgramData\iotedge\config.yaml
    ```
+
+Domyślnie `agent` elementu będą wyglądać mniej więcej tak:
+
+   ```yaml
+   agent:
+     name: edgeAgent
+     type: docker
+     env: {}
+     config:
+       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       auth: {}
+   ```
+
+Zastąp `env: {}` za pomocą:
+
+> [!WARNING]
+> Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
+
+   ```yaml
+   env:
+     RuntimeLogLevel: debug
+   ```
+
+Zapisz plik i ponownie uruchom Menedżera zabezpieczeń usługi IoT Edge.
 
 Możesz także sprawdzić komunikaty przesyłane między usługą IoT Hub i urządzeniami usługi IoT Edge. Te komunikaty można wyświetlić przy użyciu rozszerzenia [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) programu Visual Studio Code. Więcej pomocy zawiera temat [Handy tool when you develop with Azure IoT (Przydatne narzędzie dla programowania w usłudze Azure IoT)](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 

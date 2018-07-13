@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 2f0996482c599a664d02e172dcb20cda4e039af5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 5ed98bb4c4f40b23988a4f73778e715bfbea2505
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341668"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004944"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -90,7 +90,7 @@ Usługa Media Services umożliwia dostarczanie zawartości szyfrowane dynamiczni
 
 W v3 usługi Media Services klucz zawartości jest skojarzony z StreamingLocator (zobacz [w tym przykładzie](protect-with-aes128.md)). Jeśli używana jest usługa dostarczania kluczy usługi Media Services, powinien automatycznie wygenerować klucz zawartości. Należy wygenerować klucz zawartości samodzielnie Jeśli używasz własnego klucza dostawy usług, czy wymagana jest obsługa scenariuszy wysokiej dostępności, którym musisz mieć ten sam klucz zawartości w dwóch centrach danych.
 
-Zleconą strumienia za pomocą odtwarzacza Media Services używa określonego klucza dynamiczne szyfrowanie zawartości przy użyciu szyfrowania otwartym kluczem AES i szyfrowania DRM. Aby odszyfrować strumienia, gracz żąda klucza z usługę dostarczania kluczy usługi Media Services lub usługę dostarczania kluczy, wskazana. Aby zdecydować, czy użytkownik jest autoryzowany do uzyskania klucza, usługa oblicza zasad autoryzacji, które podane dla klucza.
+Zleconą strumienia za pomocą odtwarzacza Media Services używa określonego klucza dynamiczne szyfrowanie zawartości przy użyciu szyfrowania otwartym kluczem AES i szyfrowania DRM. Aby odszyfrować strumienia, gracz żąda klucza z usługę dostarczania kluczy usługi Media Services lub usługę dostarczania kluczy, wskazana. Aby zdecydować, czy użytkownik jest autoryzowany do uzyskania klucza, usługa oblicza zawartości zasad kluczy, które podane dla klucza.
 
 ## <a name="aes-128-clear-key-vs-drm"></a>Vs otwartym kluczem AES-128. DRM
 

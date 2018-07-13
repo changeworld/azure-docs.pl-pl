@@ -1,85 +1,89 @@
 ---
-title: "Opis formantów zabezpieczeń stosu Azure | Dokumentacja firmy Microsoft"
-description: "Administrator usługi więcej informacji na temat opcji zabezpieczeń stosowane do stosu Azure"
+title: Zrozumienie kontroli zabezpieczeń usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Jako administrator usługi Dowiedz się więcej o kontroli bezpieczeństwa do usługi Azure Stack
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008832"
 ---
-# <a name="azure-stack-infrastructure-security-posture"></a>Stan zabezpieczeń infrastruktury w usłudze Azure stosu
+# <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Zagadnienia dotyczące zabezpieczeń i przepisy dotyczące zgodności są sterowniki głównego przy użyciu chmury hybrydowej. Stos Azure została zaprojektowana dla tych scenariuszy i ważne jest, aby zrozumieć formantów już w miejscu, przyjmując stosu Azure.
+Zagadnienia dotyczące zabezpieczeń i przepisy dotyczące zgodności są głównym sterowniki przy użyciu chmury hybrydowej. Usługa Azure Stack został zaprojektowany dla tych scenariuszy i jest ważne zrozumieć formantów już w miejscu, podczas wdrażania usługi Azure Stack.
 
-W stosie Azure istnieją dwie warstwy stan zabezpieczeń, które współistnieć. Pierwsza warstwa składa się z infrastrukturą stosu Azure, która przechodzi z składniki sprzętowe aż do usługi Azure Resource Manager i zawiera portale dzierżawy i administratora. Druga warstwa składa się z obciążeń, które dzierżawcom tworzenie, wdrażanie i zarządzanie nimi i obejmować takie rzeczy jak maszyny wirtualne lub witryny sieci web usługi aplikacji.  
+Współistnienia dwóch warstw ogólny poziom zabezpieczeń w usłudze Azure Stack. Pierwsza warstwa jest infrastruktury Azure Stack, która obejmuje składniki sprzętowe do usługi Azure Resource Manager. Pierwsza warstwa obejmuje administratora i portale dzierżawy. Druga warstwa składa się z obciążeń utworzone, wdrażania i zarządzania nimi przez dzierżawców. Druga warstwa zawiera elementy, takie jak maszyny wirtualne i usługi aplikacji, witryn sieci web.
 
-## <a name="security-approach"></a>Metoda zabezpieczeń
-Stos Azure została zaprojektowana z stan zabezpieczeń obrony pod kątem współczesnych zagrożeń i został utworzony w celu spełnienia wymagań z standardów zgodności głównych. W związku z tym stan zabezpieczeń w infrastrukturze Azure stosu jest oparty na dwóch filarach:
+## <a name="security-approach"></a>Podejście do zabezpieczeń
 
- - **Przykładowa naruszenia.**  
-Począwszy od założenia, że nastąpiło już naruszenie systemu, skupić się na *wykrywanie i ograniczanie wpływu naruszenia* i tylko w trakcie przed atakami. 
- - **Wzmocnione zabezpieczenia domyślne.**  
-Ponieważ infrastruktura działa w dobrze zdefiniowanej sprzętu i oprogramowania, firma Microsoft *włączenia, skonfigurowania i zweryfikować wszystkie funkcje zabezpieczeń* domyślnie.
+Poziom zabezpieczeń dla usługi Azure Stack jest przeznaczona do obrony przed nowoczesnymi zagrożeniami i została skompilowana do spełnienia wymagań z głównych standardami. W rezultacie ogólny poziom zabezpieczeń infrastruktury Azure Stack w oparciu dwóch filarach:
 
+ - **Założenie złamania zabezpieczeń**  
+Począwszy od przy założeniu, że system już został naruszony, skupić się na *wykrywanie i ograniczając wpływ naruszeń* a tylko chcesz uniemożliwić ataki. 
+ - **Wzmocnione domyślnie**  
+Ponieważ infrastruktura działa dobrze zdefiniowane sprzęt i oprogramowanie, usługi Azure Stack *umożliwia, konfiguruje i weryfikuje wszystkie funkcje zabezpieczeń* domyślnie.
 
+Ponieważ usługi Azure Stack jest dostarczana jako system zintegrowany, poziom zabezpieczeń infrastruktury Azure Stack jest zdefiniowana przez firmę Microsoft. Podobnie jak na platformie Azure, dzierżawców są odpowiedzialne za definiowanie stan zabezpieczeń obciążeń dzierżawcy. Ten dokument zawiera wiedzy fundamentalnych na poziom zabezpieczeń infrastruktury Azure Stack.
 
-Ponieważ stos Azure jest dostarczane jako zintegrowany system, stan zabezpieczeń w infrastrukturze Azure stosu jest zdefiniowana przez firmę Microsoft. Podobnie jak na platformie Azure dzierżaw są zobowiązani do definiowania stan zabezpieczeń ich obciążeń dzierżawców. Ten dokument zawiera on podstawowych wiedzy na stan zabezpieczeń w infrastrukturze Azure stosu.
+## <a name="data-at-rest-encryption"></a>Dane szyfrowanie rest
+Wszystkie usługi Azure Stack infrastruktury i dzierżawcy dane są szyfrowane w stanie spoczynku przy użyciu funkcji Bitlocker. To szyfrowanie zapewnia ochronę względem fizycznej utraty lub kradzieży składników magazynu usługi Azure Stack. 
 
-## <a name="data-at-rest-encryption"></a>Dane na rest szyfrowania
-Wszystkie dane stosu Azure infrastruktury i dzierżawcy jest szyfrowane, gdy za pomocą funkcji Bitlocker. Szyfrowanie chroni przed fizycznych utrata lub kradzież składników magazynu Azure stosu. 
+## <a name="data-in-transit-encryption"></a>Dane przesyłane szyfrowania
+Składniki infrastruktury usługi Azure Stack komunikacji za pomocą kanałów zaszyfrowany przy użyciu protokołu TLS 1.2. Certyfikaty szyfrowania własnym są zarządzane przez infrastrukturę. 
 
-## <a name="data-in-transit-encryption"></a>Szyfrowanie przesyłanych danych
-Składniki infrastruktury Azure stosu komunikują się za pomocą kanałów zaszyfrowane za pomocą protokołu TLS 1.2. Certyfikaty szyfrowania zarządza własnym infrastruktury. 
+Wszystkie punkty końcowe infrastruktury zewnętrznych, takich jak punkty końcowe REST lub portalu usługi Azure Stack obsługi protokołu TLS 1.2 w celu zagwarantowania bezpiecznej komunikacji. Certyfikaty szyfrowania, z innych firm lub urzędu certyfikacji przedsiębiorstwa, należy określić dla tych punktów końcowych. 
 
-Wszystkie punkty końcowe zewnętrznych infrastruktury, takich jak punkty końcowe REST lub w portalu Azure stos obsługi protokołu TLS 1.2 dla bezpiecznej komunikacji. Certyfikaty szyfrowania, z innej firmy lub urząd certyfikacji przedsiębiorstwa, należy określić dla tych punktów końcowych. 
+Chociaż mogą być używane certyfikaty z podpisem własnym dla tych zewnętrznych punktów końcowych, Microsoft zdecydowanie z informacją o tym przed ich używania. 
 
-Chociaż mogą być używane certyfikaty z podpisem własnym dla tych zewnętrzne punkty końcowe, Microsoft zdecydowanie z informacją o tym przed ich użyciem. 
+## <a name="secret-management"></a>Zarządzanie wpisami tajnymi
+Infrastruktura usługi Azure Stack używa wpisy tajne, takie jak hasła, dlatego też działać. Większość z nich są automatycznie obracane często, ponieważ są one konta usług zarządzane grupy, które Obróć co 24 godziny.
 
-## <a name="secret-management"></a>Tajny zarządzania
-Azure infrastruktura stosu używa wieloma tajemnice, takie jak hasła, do funkcji. Większość z nich są automatycznie obracane często, ponieważ są one konta usług zarządzanych grupy, które Obróć co 24 godziny.
-
-Pozostałe hasła, które nie są kont usług zarządzanych grupy można obracać ręcznie przy użyciu skryptu w uprzywilejowanych punktu końcowego.
+Pozostałe wpisy tajne, które nie są konta usług zarządzane grupy można obracać ręcznie przy użyciu skryptu w uprzywilejowanych punktu końcowego.
 
 ## <a name="code-integrity"></a>Integralność kodu
-Stos Azure korzysta z najnowszych systemu Windows Server 2016 funkcje zabezpieczeń. Jeden z nich jest systemu Windows Defender ochrony urządzeń, zawiera listę dozwolonych aplikacji podobnej i zapewnia, że tylko autoryzowani uruchamia kod w infrastrukturze Azure stosu. 
+Usługa Azure Stack, korzysta z najnowszych systemu Windows Server 2016 funkcji zabezpieczeń. Jeden z nich jest systemu Windows Defender funkcji Device Guard, zawiera listę dozwolonych aplikacji, która zapewnia, że tylko autoryzowani kod działa w ramach infrastruktury Azure Stack. 
 
-Autoryzowanego kodu jest podpisany przez firmę Microsoft lub partnerem OEM i znajduje się na liście dozwolonych oprogramowania, które jest określone w zasadach zdefiniowana przez firmę Microsoft. Innymi słowy mogą być wykonywane tylko oprogramowania, które zostały zatwierdzone do uruchamiania w infrastrukturze Azure stosu. Każda próba wykonania nieautoryzowanego kodu jest zablokowana i wygenerowaniu inspekcji.
+Autoryzowanego kodu jest podpisany przez firmę Microsoft lub partnerem OEM i znajduje się na liście dozwolonych oprogramowania, który jest określony w zasadach zdefiniowana przez firmę Microsoft. Innymi słowy mogą być wykonywane tylko w przypadku oprogramowania, które zostało zatwierdzone do uruchomienia w ramach infrastruktury Azure Stack. Każda próba wykonania nieautoryzowanego kodu jest zablokowana i inspekcji jest wygenerowany.
 
-Zasady ochrony urządzeń zapobiega także innych agentów lub oprogramowania uruchomionych w infrastrukturze Azure stosu.
+Zasady funkcji Device Guard zapobiega także agentów innych firm lub oprogramowanie działające w infrastrukturze Azure Stack.
 
-## <a name="credential-guard"></a>Ochrona poświadczeń
-Innej funkcji zabezpieczeń systemu Windows Server 2016 w stosie Azure jest Windows Defender poświadczeń Guard, który służy do ochrony Azure stosu infrastruktury poświadczeń przed atakami Pass--Ticket i Pass--Hash.
+## <a name="credential-guard"></a>Credential Guard
+Kolejną funkcją zabezpieczeń systemu Windows Server 2016 w usłudze Azure Stack jest program Windows Defender Credential Guard, który jest używany do ochrony poświadczeń infrastruktury Azure Stack z typu Pass--Hash i ataków Pass--Ticket.
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
-Każdy składnik Azure stosu (hosty funkcji Hyper-V i maszyn wirtualnych) jest chroniony za pomocą programu Windows Defender wirusami.
+Każdy składnik w usłudze Azure Stack (hosty funkcji Hyper-V i maszyn wirtualnych) jest chroniony za pomocą programu antywirusowego Windows Defender.
+
+W połączonych scenariuszach aktualizacje definicji i aparatu oprogramowania antywirusowego są stosowane wiele razy dziennie. W scenariuszach bez połączenia aktualizacji ochrony przed złośliwym kodem są stosowane w ramach comiesięcznych aktualizacji usługi Azure Stack. Zobacz [aktualizacji programu antywirusowego Windows Defender w usłudze Azure Stack](azure-stack-security-av.md) Aby uzyskać więcej informacji.
 
 ## <a name="constrained-administration-model"></a>Model administracyjny ograniczone
-Administracja w stosie Azure jest kontrolowany przy użyciu trzech punktów wejścia, każdy z określonym przeznaczeniem: 
-1. [Portalu administratora](azure-stack-manage-portals.md) zapewnia obsługę punktu i kliknij codziennych operacji zarządzania.
-2. Usługa Azure Resource Manager udostępnia wszystkie operacje zarządzania portalu administratora za pomocą interfejsu API REST, używany przez programu PowerShell i interfejsu wiersza polecenia Azure. 
-3. Z określonymi operacjami niskiego poziomu, na przykład dane Centrum integracji lub obsługi scenariuszy, stos Azure udostępnia punkt końcowy programu PowerShell o nazwie [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md). Ten punkt końcowy przedstawia tylko białej zestaw poleceń cmdlet i silnie podlega inspekcji.
+Administracja w usłudze Azure Stack jest kontrolowany przy użyciu trzech punktów wejścia, każdy z określonym przeznaczeniem: 
+1. [Portal administratora](azure-stack-manage-portals.md) udostępnia środowisko wskaż i kliknij na potrzeby codziennych operacji zarządzania.
+2. Usługa Azure Resource Manager udostępnia wszystkie operacje zarządzania z portalu administratora, interfejs API RST, używane przez program PowerShell i wiersza polecenia platformy Azure. 
+3. Dla określonych operacji niskiego poziomu, na przykład data center integration lub obsługi scenariuszy, usługi Azure Stack uwidacznia punkt końcowy programu PowerShell, nazywane [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md). Ten punkt końcowy ujawnia tylko zestaw dozwolonych poleceń cmdlet i intensywnie podlega inspekcji.
 
-## <a name="network-controls"></a>Formanty sieci
-Azure infrastruktury stosu jest dostarczany z wielu warstw List(ACL) kontroli dostępu do sieci. Listy ACL uniemożliwić nieautoryzowany dostęp do składników infrastruktury i ograniczyć infrastruktury komunikacji do ścieżek, które są wymagane do jego działania. 
+## <a name="network-controls"></a>Formanty sieciowe
+Infrastruktura usługi Azure Stack jest dostarczany za pomocą różnych warstw List(ACL) kontroli dostępu do sieci. Listy ACL zapobiegać nieautoryzowanemu dostępowi do składników infrastruktury i ograniczyć komunikacji infrastruktury do ścieżek, które są wymagane do jego funkcjonowania. 
 
-Listy kontroli dostępu w sieci są wymuszane w trzech warstw:
-1.  Zmienia początku stojak
+Listy ACL sieci są wymuszane w trzech warstwach:
+1.  Przełączniki tor
 2.  Sieć definiowana przez oprogramowanie
-3.  Zapory systemu operacyjnego hosta i maszyny Wirtualnej 
+3.  Zapory systemu operacyjnego hosta i maszyny Wirtualnej
 
+## <a name="next-steps"></a>Kolejne kroki
 
+- [Dowiedz się, jak wymienić klucze tajne w usłudze Azure Stack](azure-stack-rotate-secrets.md)

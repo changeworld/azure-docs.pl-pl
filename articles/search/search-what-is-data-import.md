@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: e54b89d31042d43a14379dea6daffd3e7763a64a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6c3756e721847a8cb746f5dc755ccd90bfebe9f0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796965"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008278"
 ---
 # <a name="indexing-in-azure-search"></a>Indeksowanie w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -59,12 +59,12 @@ Funkcja indeksatora jest udostępniona w witrynie [Azure Portal](search-import-d
 
 Zaletą korzystania z portalu jest to, że usługa Azure Search zazwyczaj może wygenerować domyślny schemat indeksu, odczytując metadane zestawu źródła danych. Wygenerowany indeks można modyfikować, dopóki indeks jest przetwarzany, po czym dozwolone są tylko te zmiany schematu, które nie wymagają ponownego indeksowania. Jeśli żądane zmiany wpływają bezpośrednio na schemat, konieczne będzie odbudowanie indeksu. 
 
-## <a name="verify-data-import-with-search-explorer"></a>Weryfikowanie importowania danych przy użyciu Eksploratora danych
+## <a name="verify-data-import-with-search-explorer"></a>Weryfikowanie importowania danych za pomocą Eksploratora wyszukiwania
 
 Szybkim sposobem wykonania wstępnego sprawdzenia przekazywania dokumentu jest użycie **Eksploratora wyszukiwania** w portalu. Eksplorator umożliwia wykonywanie zapytań względem indeksu bez konieczności pisania kodu. Środowisko wyszukiwania jest oparte na ustawieniach domyślnych, takich jak [prosta składnia](/rest/api/searchservice/simple-query-syntax-in-azure-search) i domyślny parametr zapytania [searchMode](/rest/api/searchservice/search-documents). Wyniki są zwracane w formacie JSON, co umożliwia inspekcję całego dokumentu.
 
 > [!TIP]
-> Wiele [przykładów kodu usługi Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) obejmuje osadzone lub szybko dostępne zestawy danych, oferując łatwy sposób na rozpoczęcie pracy. Portal udostępnia również przykładowy indeksator i źródło danych składające się z małego zestawu danych nieruchomości (o nazwie „realestate-us-sample”). Po uruchomieniu wstępnie skonfigurowanego indeksatora na przykładowym źródle danych indeks zostaje utworzony i załadowany przy użyciu dokumentów, które następnie można odpytywać w Eksploratorze wyszukiwania lub za pomocą napisanego kodu.
+> Wiele [przykładów kodu usługi Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) obejmuje osadzone lub szybko dostępne zestawy danych, oferując łatwy sposób na rozpoczęcie pracy. Portal udostępnia również przykładowy indeksator i źródło danych składające się z małego zestawu danych nieruchomości (o nazwie „realestate-us-sample”). Po uruchomieniu wstępnie skonfigurowanego indeksatora na źródło danych przykładowych, indeks jest utworzony i załadowany przy użyciu dokumentów, które następnie można odpytywać w Eksploratorze wyszukiwania lub przez kod, który można zapisać.
 
 ## <a name="see-also"></a>Zobacz także
 

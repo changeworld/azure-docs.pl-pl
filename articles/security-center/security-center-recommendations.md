@@ -3,7 +3,7 @@ title: Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Secu
 description: W tym dokumencie przedstawiono sposób zalecenia w usłudze Azure Security Center ułatwiają ochronę zasobów platformy Azure i pozostają zgodne z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: TerryLan
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7bb7f36338fe117a3e31834570b3ee5c3ae1b83b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.date: 07/12/2018
+ms.author: terrylan
+ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856437"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006618"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -76,7 +76,7 @@ Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych za
 | [Włącz zbieranie danych dla subskrypcji](security-center-enable-data-collection.md) |Zaleca się włączenie funkcji zbierania danych w ramach zasad zabezpieczeń dla każdej subskrypcji i wszystkich maszyn wirtualnych (VM) i komputerów spoza platformy Azure. |
 | [Korygowanie konfiguracji zabezpieczeń](security-center-remediate-os-vulnerabilities.md) |Zaleca się, że wyrównywanie konfiguracji systemu operacyjnego za pomocą reguł konfiguracji zabezpieczeń, na przykład, nie zezwalaj na zapisywanie haseł. |
 | [Zastosuj aktualizacje systemu](security-center-apply-system-updates.md) |Zaleca się wdrażanie brakujących zabezpieczeń systemu i aktualizacji krytycznych do Windows i maszyn wirtualnych systemu Linux i komputerów. |
-| [Zastosuj Just-In-Time kontrolę dostępu do sieci](security-center-just-in-time.md) | Zaleca się zastosowanie dostęp dokładnie na czas maszyny Wirtualnej. Po prostu w czasie funkcja jest dostępna w wersji zapoznawczej i dostępne w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
+| [Zastosuj Just-In-Time kontrolę dostępu do sieci](security-center-just-in-time.md) | Zaleca się zastosowanie dostęp dokładnie na czas maszyny Wirtualnej. Tylko w czasie funkcja jest dostępna w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
 | [Uruchom ponownie po zaktualizowaniu systemu](security-center-apply-system-updates.md#reboot-after-system-updates) |Zaleca ponowne uruchomienie maszyny wirtualnej w celu ukończenia procesu stosowania aktualizacji systemu. |
 | [Dodawanie zapory aplikacji internetowej](security-center-add-web-application-firewall.md) |Zaleca wdrożenie zapory aplikacji sieci web (WAF) dla punktów końcowych sieci web. Dla wszelkich publicznych umożliwiający dostęp do Internetu adresu IP (adres IP na poziomie wystąpienia lub adres IP ze zrównoważonym obciążeniem) zawierającej sieciową grupę zabezpieczeń skojarzoną z portami Otwórz przychodzącego ruchu internetowego (80,443) jest wyświetlane zalecenie zapory aplikacji sieci Web. </br>Usługa Security Center zaleca obsługi administracyjnej zapory aplikacji sieci Web, aby pomóc Ci chronić przed atakami przeznaczone dla aplikacji sieci web na maszynach wirtualnych i w środowisku App Service Environment. App Service Environment (ASE) jest [Premium](https://azure.microsoft.com/pricing/details/app-service/) usługi opcja planu usługi Azure App Service udostępniająca w pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania aplikacji w usłudze Azure App Service. Aby dowiedzieć się więcej na temat środowiska ASE, zobacz [dokumentacja środowiska usługi App Service](../app-service/environment/intro.md).</br>Możesz chronić wiele aplikacji sieci web w usłudze Security Center, dodając te aplikacje do istniejących wdrożeń zapory aplikacji sieci Web. |
 | [Finalizowanie ochrony aplikacji](security-center-add-web-application-firewall.md#finalize-application-protection) |Aby ukończyć konfigurację zapory aplikacji sieci Web, ruch musi zostać skierowany do urządzenia zapory aplikacji sieci Web. Tym zaleceniem kończy zmiany wymagane ustawienia. |
@@ -95,6 +95,7 @@ Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych za
 | [Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana](security-center-vulnerability-assessment-recommendations.md) |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
 | [Korygowanie luk w zabezpieczeniach](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umożliwia wyświetlenie luk w zabezpieczeniach systemu i aplikacji wykrytych przez rozwiązanie do oceny luk w zabezpieczeniach zainstalowane na maszynie wirtualnej. |
 | [Włączanie szyfrowania dla konta usługi Azure Storage](security-center-enable-encryption-for-storage-account.md) | Zaleca się, zostanie włączone szyfrowanie usługi Azure Storage dla danych magazynowanych. Szyfrowanie usługi Storage (SSE) działa przez szyfrowanie danych podczas są zapisywane do magazynu platformy Azure i odszyfrowuje przed pobierania. SSE jest obecnie dostępna tylko w przypadku usługi Azure Blob service i może służyć do blokowych obiektów blob, stronicowe obiekty BLOB i uzupełnialnych obiektów blob. Aby dowiedzieć się więcej, zobacz [szyfrowanie usługi Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md).</br>Funkcja SSE jest obsługiwana tylko na kontach magazynu usługi Resource Manager. |
+| [Włączyć kontrolki adaptacyjne aplikacji](security-center-adaptive-application.md) | Zaleca się zastosowanie adaptacyjne kontrole aplikacji na maszynach wirtualnych Windows. Ta funkcja jest dostępna w wersji zapoznawczej i jest dostępny w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center. |
 | Usługa App Service powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do usługi App Service przy użyciu protokołu HTTPS tylko. |
 | Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web| Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w aplikacjach sieci web.  Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |
 | Użyj domen niestandardowych dla aplikacji sieci Web | Zaleca się, użyj domen niestandardowych do ochrony aplikacji sieci web przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |

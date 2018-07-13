@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services definicję schematu (plik csdef) | Dokumentacja firmy Microsoft
+title: Azure Cloud Services, definicji schematu (plik csdef) | Dokumentacja firmy Microsoft
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,27 +10,27 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: b7735dbf-8e91-4d1b-89f7-2f17e9302469
 caps.latest.revision: 42
-author: thraka
-ms.author: adegeo
+author: jpconnock
+ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: d5e086a952e18e477177634e5c197c27d4a5cc5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: df2f7c1bf99c13779e5720e15d8d669aa4f945c0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359020"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002753"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług w chmurze Azure (plik csdef)
-Plik definicji usługi definiuje modelu usług dla aplikacji. Plik zawiera definicje dla ról, które są dostępne dla usługi w chmurze, określa punkty końcowe usługi i określa ustawienia konfiguracji dla usługi. Wartości ustawienia konfiguracji są ustawione w pliku konfiguracji usługi w sposób opisany w [schemat konfiguracji usługi w chmurze (klasyczne)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
+# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schemat definicji usług Azure Cloud Services (plik csdef)
+Plik definicji usługi definiuje model usług dla aplikacji. Plik zawiera definicje ról, które są dostępne dla usługi w chmurze, określa punkty końcowe usługi i ustanawia ustawienia konfiguracji dla usługi. Wartości ustawienia konfiguracji są ustawiane w pliku konfiguracji usługi, zgodnie z opisem w [schematu konfiguracji usługi w chmurze (klasyczne)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
 
-Domyślnie plik schematu konfiguracji diagnostyki Azure jest instalowany na `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` katalogu. Zastąp `<version>` z zainstalowaną wersją [zestawu Azure SDK](http://www.windowsazure.com/develop/downloads/).
+Domyślnie plik schematu konfiguracji diagnostyki platformy Azure jest zainstalowany na `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` katalogu. Zastąp `<version>` z zainstalowaną wersją programu [zestawu Azure SDK](http://www.windowsazure.com/develop/downloads/).
 
-Domyślne rozszerzenie pliku definicji usługi jest csdef.
+Domyślnym rozszerzeniem dla pliku definicji usługi jest csdef.
 
-## <a name="basic-service-definition-schema"></a>Podstawowa usługa definicji schematu
-Plik definicji usługi musi zawierać jeden `ServiceDefinition` elementu. Definicja usługi musi zawierać co najmniej jedną rolę (`WebRole` lub `WorkerRole`) elementu. Nazwa może zawierać maksymalnie 25 role zdefiniowane w jednej definicji i można mieszać typów roli. Definicja usługi zawiera również opcjonalne `NetworkTrafficRules` element, który ogranicza role mogą komunikować się do określonych wewnętrznych punktów końcowych. Definicja usługi zawiera również opcjonalne `LoadBalancerProbes` zdefiniowany element, który zawiera klienta sondy kondycji punktów końcowych.
+## <a name="basic-service-definition-schema"></a>Schemat definicji usług w warstwie podstawowa
+Plik definicji usługi musi zawierać jeden `ServiceDefinition` elementu. Definicja usługi musi zawierać co najmniej jedną rolę (`WebRole` lub `WorkerRole`) elementu. Nazwa może zawierać maksymalnie 25 zdefiniowanych w jednej definicji ról i możesz mieszać typy ról. Definicja usługi zawiera również opcjonalny `NetworkTrafficRules` element, który ogranicza możliwość użycia role można przekazać do określonej wewnętrznych punktów końcowych. Definicja usługi zawiera również opcjonalny `LoadBalancerProbes` zdefiniowany element, który zawiera klienta sond kondycji punktów końcowych.
 
-Podstawowy format pliku definicji usługi ma następującą składnię.
+Podstawowy format pliku definicji usługi jest w następujący sposób.
 
 ```xml
 <ServiceDefinition name="<service-name>" topologyChangeDiscovery="<change-type>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" upgradeDomainCount="<number-of-upgrade-domains>" schemaVersion="<version>">
@@ -54,7 +54,7 @@ Podstawowy format pliku definicji usługi ma następującą składnię.
 </ServiceDefinition>
 ```
 
-## <a name="schema-definitions"></a>Definicje schematów
+## <a name="schema-definitions"></a>Definicje schematu
 Schemat można znaleźć w następujących tematach:
 
 - [LoadBalancerProbe — schemat](schema-csdef-loadbalancerprobe.md)
@@ -62,7 +62,7 @@ Schemat można znaleźć w następujących tematach:
 - [WorkerRole — schemat](schema-csdef-workerrole.md)
 - [NetworkTrafficRules — schemat](schema-csdef-networktrafficrules.md)
 
-##  <a name="ServiceDefinition"></a> ServiceDefinition Element
+##  <a name="ServiceDefinition"></a> Element ServiceDefinition — Element
 `ServiceDefinition` Element jest elementem najwyższego poziomu w pliku definicji usługi.
 
 W poniższej tabeli opisano atrybuty `ServiceDefinition` elementu.
@@ -70,6 +70,6 @@ W poniższej tabeli opisano atrybuty `ServiceDefinition` elementu.
 | Atrybut               | Opis |
 | ----------------------- | ----------- |
 | name                    |Wymagany. Nazwa usługi. Nazwa musi być unikatowa w ramach konta usługi.|
-| topologyChangeDiscovery | Opcjonalny. Określa typ powiadomienia o zmianie topologii. Możliwe wartości:<br /><br /> -   `Blast` -Wysyła aktualizacji tak szybko, jak to możliwe do wszystkich wystąpień ról. Po wybraniu opcji roli powinno być możliwe do obsługi aktualizacji topologii bez ponownego uruchamiania.<br />-   `UpgradeDomainWalk` — Wysyła aktualizacji do każdego wystąpienia roli sekwencyjnie poprzednie wystąpienie pomyślnie zatwierdzenia aktualizacji.|
-| Atrybut schemaVersion           | Opcjonalny. Określa wersję schematu definicji usługi. Wersja schematu umożliwia programowi Visual Studio wybierz odpowiednie narzędzia zestawu SDK do użycia w celu weryfikacji schematu, jeśli zainstalowano więcej niż jedną wersję zestawu SDK side-by-side.|
-| upgradeDomainCount      | Opcjonalny. Określa liczbę domen uaktualnienia, w których są przydzielane role w tej usłudze. Wystąpienia ról przypisuje się do domeny uaktualnienia, podczas wdrażania usługi. Aby uzyskać więcej informacji, zobacz [aktualizacji roli usługi w chmurze lub wdrożenia](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Można określić maksymalnie 20 domen uaktualnienia. Jeśli nie zostanie określony, domyślna liczba domen uaktualnienia wynosi 5.|
+| topologyChangeDiscovery | Opcjonalny. Określa typ powiadomienia o zmianie topologii. Możliwe wartości:<br /><br /> -   `Blast` -Wysyła aktualizacji tak szybko, jak to możliwe do wszystkich wystąpień roli. Jeśli opcja jest wybrana, roli powinno być możliwe do obsługi aktualizacji topologii bez ponownego uruchamiania.<br />-   `UpgradeDomainWalk` — Wysyła je do każdego wystąpienia roli w sposób sekwencyjny poprzednie wystąpienie pomyślnie zatwierdzenia aktualizacji.|
+| schemaVersion           | Opcjonalny. Określa wersję ze schematem definicji usługi. Wersja schematu umożliwia programowi Visual Studio wybierz odpowiednie narzędzia zestawu SDK na potrzeby sprawdzania poprawności schematu, jeśli jest zainstalowana więcej niż jedna wersja zestawu SDK side-by-side.|
+| upgradeDomainCount      | Opcjonalny. Określa liczbę domen uaktualnienia, w których są przydzielane ról w tej usłudze. Wystąpienia roli są przydzielane do domeny uaktualnienia, gdy wdrażana jest usługa. Aby uzyskać więcej informacji, zobacz [zaktualizować rola usługi w chmurze lub wdrożenia](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment).<br /><br /> Można określić maksymalnie 20 domen uaktualnienia. Jeśli nie zostanie określony, domyślna liczba domen uaktualnienia wynosi 5.|

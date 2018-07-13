@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/11/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: aaa36d850516ff4d8e40b62c588347468da5c6d2
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435621"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008165"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -88,7 +88,9 @@ Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia 
 
    ![Zasoby platformy Azure użytkownika usługi Azure Active Directory](./media/role-assignments-portal/aad-user-azure-resources.png)
 
-   W bloku Zasoby platformy Azure widać przypisania ról dla wybranego użytkownika. Ta lista zawiera tylko przypisania ról dla zasobów, do odczytu których masz uprawnienia. Na przykład jeśli użytkownik ma również przypisania ról w innej subskrypcji, której nie możesz odczytywać, tych przypisań ról nie będzie na liście.
+   W bloku zasobów platformy Azure zobaczysz przypisania roli dla wybranego użytkownika i wybranej subskrypcji. Ta lista zawiera tylko przypisania roli dla zasobów, które mają uprawnienia do odczytu. Na przykład jeśli użytkownik ma również przypisania ról, których nie można odczytać, te przypisania roli nie pojawi się na liście.
+
+1. Jeśli masz wiele subskrypcji, możesz wybrać **subskrypcji** listy rozwijanej, aby zobaczyć przypisań ról w innej subskrypcji.
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
@@ -161,14 +163,6 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 1. W komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
 
 Dziedziczonych przypisań ról nie można usunąć. Aby usunąć odziedziczone przypisanie roli, należy to zrobić w zakresie, w którym je utworzono. W kolumnie **Zakres** obok pola **Dziedziczone** znajduje się link umożliwiający przejście do zasobów, w ramach których ta rola została przypisana. Przejdź do zakresu wskazanego w tym miejscu, aby usunąć przypisanie roli.
-
-## <a name="other-tools-to-manage-access"></a>Inne narzędzia do zarządzania dostępem
-
-Za pomocą poleceń Azure RBAC można przypisywać role i zarządzać dostępem w narzędziach innych niż witryna Azure Portal. Aby uzyskać więcej informacji, skorzystaj z następujących linków:
-
-* [Azure PowerShell](role-assignments-powershell.md)
-* [Interfejs wiersza polecenia platformy Azure](role-assignments-cli.md)
-* [Interfejs API REST](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
 title: Omówienie portów wysokiej dostępności na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat równoważenia obciążenia wewnętrznego modułu równoważenia obciążenia portów wysokiej dostępności.
+description: Więcej informacji o wysokiej dostępności portów równoważenia obciążenia na wewnętrznego modułu równoważenia obciążenia.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2017
+ms.date: 04/07/2018
 ms.author: kumud
-ms.openlocfilehash: 53e09498324f802ce1839d262999657d37ee973b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 716a3dafe08e896924bd28e44d69141e4c229687
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169122"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39005507"
 ---
 # <a name="high-availability-ports-overview"></a>Omówienie portów wysokiej dostępności
 
-Azure standardowy moduł równoważenia obciążenia pomaga przepływy TCP i UDP Równoważenie obciążenia na wszystkie porty jednocześnie podczas korzystania z wewnętrznego modułu równoważenia obciążenia. 
+Standardowa usługa równoważenia obciążenia Azure pomaga w przepływy TCP i UDP Równoważenie obciążenia na wszystkich portach jednocześnie podczas korzystania z wewnętrznego modułu równoważenia obciążenia. 
 
-Reguła portów wysokiej dostępności (HA) jest wariant reguły równoważenia obciążenia, skonfigurowane na wewnętrzny standardowy moduł równoważenia obciążenia. Korzystanie z usługi równoważenia obciążenia można uprościć zapewnienie jednej reguły równoważenia obciążenia wszystkie przepływy TCP i UDP, pojawiające się na wszystkie porty wewnętrzny standardowy moduł równoważenia obciążenia. Równoważenie obciążenia decyzji staje się na przepływ. Ta akcja jest oparta na następujące połączenia 5 elementowej: źródłowy adres IP, portu źródłowego, docelowego adresu IP, port docelowy i protokołu.
+Reguły portów wysokiej dostępności (HA) to wariant reguły równoważenia obciążenia, skonfigurowane na wewnętrzny standardowego modułu równoważenia obciążenia. Korzystanie z usługi równoważenia obciążenia można uprościć, podając jedną regułę równoważenia obciążenia, wszystkie protokoły TCP i UDP przepływy, pojawiające się na wszystkich portach wewnętrznego standardowego modułu równoważenia obciążenia. Decyzja równoważenia obciążenia składa się na przepływ. Ta akcja jest oparty na następujące połączenia 5-elementowe spójne kolekcje: źródłowy adres IP, port źródłowy, docelowy adres IP, port docelowy i protokołu.
 
-Funkcja porty HA pomaga scenariuszy o kluczowym znaczeniu, takie jak wysokiej dostępności i skalowalności dla sieci wirtualnych urządzeń (NVAs) w sieciach wirtualnych. Funkcja może również pomóc w przypadku dużej liczby portów musi być równoważeniem obciążenia. 
+Funkcja portów wysokiej dostępności pomaga scenariuszy o kluczowym znaczeniu, takich jak wysoka dostępność i skala dla wirtualnych urządzeń sieciowych (urządzeń WUS) w sieciach wirtualnych. Ta funkcja może również pomóc w przypadku dużej liczby portów muszą być ze zrównoważonym obciążeniem. 
 
-Funkcję wysokiej dostępności portów jest konfigurowane podczas ustawioną portów frontonu i zaplecza **0** i protokół **wszystkich**. Zasób usługi równoważenia obciążenia wewnętrznego równoważy następnie wszystkie przepływy TCP i UDP, niezależnie od tego, numer portu.
+Funkcja portów wysokiej dostępności jest skonfigurowana po ustawieniu portów frontonu i zaplecza na **0** i protokół **wszystkich**. Zasób modułu równoważenia obciążenia wewnętrznego równoważy następnie wszystkie przepływy TCP i UDP, niezależnie od tego, numer portu.
 
 ## <a name="why-use-ha-ports"></a>Dlaczego warto używać portów wysokiej dostępności?
 
-### <a name="nva"></a>Urządzenie wirtualne sieci
+### <a name="nva"></a>Wirtualne urządzenia sieciowe
 
-NVAs można użyć do zabezpieczania obciążenie platformy Azure z różnego rodzaju zagrożenia bezpieczeństwa. Gdy używasz NVAs w tych scenariuszach muszą być niezawodnych i wysokiej dostępności, a musi skalowanie na żądanie.
+Urządzenia WUS można użyć do zabezpieczania obciążeń platformy Azure, przed wieloma rodzajami zagrożenia bezpieczeństwa. Użycie urządzeń WUS w tych scenariuszach, muszą one być niezawodne i wysoko dostępnych, i należy skalować na żądanie.
 
-Można osiągnięcie tych celów poprzez dodanie wystąpienia NVA do puli zaplecza z wewnętrznego modułu równoważenia obciążenia i konfigurowanie HA porty reguły modułu równoważenia obciążenia.
+Tych celów można osiągnąć przez dodanie wystąpień urządzeń WUS w puli zaplecza modułu równoważenia obciążenia wewnętrznego i Konfigurowanie wysokiej dostępności portów reguły modułu równoważenia obciążenia.
 
-W przypadku scenariuszy NVA HA porty HA następujące zalety:
-- Zapewnić szybkie trybu failover do dobrej kondycji wystąpień sondy kondycji poszczególnych wystąpień
-- Upewnij się, większą wydajność, ale skalowalnego w poziomie do *n*-aktywnych wystąpień
-- Podaj *n*-scenariuszy aktywnej i aktywny / pasywny
-- Eliminuje potrzebę stosowania złożonych rozwiązań, takich jak Apache ZooKeeper węzły do monitorowania urządzeń
+W przypadku scenariuszy urządzeń WUS wysokiej dostępności portów HA następujące zalety:
+- Udostępnianie szybkiego trybu failover do dobrej kondycji wystąpień sond kondycji poszczególnych wystąpień
+- Upewnij się, wyższej wydajności za pomocą skalowalnego w poziomie do *n*-aktywnych wystąpień
+- Podaj *n*— scenariusze aktywnych i aktywny / pasywny
+- Eliminuje potrzebę stosowania złożonych rozwiązań, takich jak Apache ZooKeeper węzłów na potrzeby monitorowania urządzeń
 
-Na poniższym diagramie przedstawiono wdrożenia sieci wirtualnej-gwiazdy. Wymuś tunelu partnerzy ruch do sieci wirtualnej koncentratora i za pośrednictwem NVA, przed opuszczeniem zaufanych miejsca. NVAs znajdują się za wewnętrzny standardowy moduł równoważenia obciążenia z konfiguracji portów wysokiej dostępności. Cały ruch może być przetwarzane i przekazywane w związku z tym.
+Na poniższym diagramie przedstawiono wdrożenie Gwiazda — sieci wirtualnej. Wymuś tunelowanie szprychy ruch w sieci wirtualnej koncentratora i przez urządzenie WUS przed opuszczeniem zaufanych miejsca. Urządzenia WUS są za wewnętrznego standardowego modułu równoważenia obciążenia z konfiguracją portów wysokiej dostępności. Cały ruch można przetwarzane i przesyłane dalej odpowiednio.
 
-![Diagram sieci wirtualnej-gwiazdy, o NVAs wdrożone w trybie wysokiej dostępności](./media/load-balancer-ha-ports-overview/nvaha.png)
+![Diagram przedstawiający Gwiazda — sieci wirtualnej z urządzeniami WUS wdrożone w trybie wysokiej dostępności](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
-> Jeśli używasz NVAs, potwierdź u dostawców jak najlepiej użyć portów wysokiej dostępności i Dowiedz się, jakie scenariusze są obsługiwane.
+> Jeśli używasz urządzenia WUS, upewnij się, z ich dostawcami jak najlepiej wykorzystać portów wysokiej dostępności i dowiedzieć się, jakie scenariusze są obsługiwane.
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Równoważenie obciążenia dużej liczby portów
 
-Umożliwia także porty wysokiej dostępności dla aplikacji, które wymagają dużej liczby portów równoważenia obciążenia. Te scenariusze można uprościć przy użyciu wewnętrznego [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md) z portami wysokiej dostępności. Jednej reguły równoważenia obciążenia zastępuje wiele poszczególne równoważenia obciążenia reguły, po jednej dla każdego portu.
+Umożliwia także portów wysokiej dostępności dla aplikacji, które wymagają równoważenia obciążenia z dużą liczbą portów. Te scenariusze można uprościć za pomocą wewnętrznego [Balancer w warstwie standardowa](load-balancer-standard-overview.md) przy użyciu portów wysokiej dostępności. Pojedynczą regułę równoważenia obciążenia zastępuje wiele poszczególnych reguł równoważenia obciążenia, jeden dla każdego portu.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Funkcja porty HA jest dostępna we wszystkich regionach platformy Azure globalnego.
+Funkcja portów wysokiej dostępności jest dostępna we wszystkich regionach platformy Azure globalnego.
 
 ## <a name="supported-configurations"></a>Obsługiwane konfiguracje
 
-### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, niezmienny konfiguracji adresu IP (z systemem innym niż — bezpośredniego zwrotu serwera) HA-porty na wewnętrzny standardowy moduł równoważenia obciążenia
+### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, niezmienny konfiguracji portów wysokiej dostępności adresu IP (inne niż - bezpośredniego zwrotu serwera) na wewnętrznej Balancer w warstwie standardowa
 
-Ta konfiguracja jest podstawową konfigurację portów wysokiej dostępności. Można skonfigurować HA portów równoważenia obciążenia reguły pojedynczego adresu IP frontonu wykonaj następujące czynności:
-1. Podczas konfigurowania usługi równoważenia obciążenia standardowego, wybierz **porty HA** pole wyboru w konfiguracji reguły modułu równoważenia obciążenia.
-2. Aby uzyskać **pływający adres IP**, wybierz pozycję **wyłączone**.
+Ta konfiguracja jest podstawową konfigurację portów wysokiej dostępności. Można skonfigurować HA porty równoważenia obciążenia reguła pojedynczego adresu IP frontonu, wykonując następujące czynności:
+1. Podczas konfigurowania standardowego modułu równoważenia obciążenia, wybierz **portów HA** pole wyboru w konfiguracji reguły modułu równoważenia obciążenia.
+2. Aby uzyskać **pływającego adresu IP**, wybierz opcję **wyłączone**.
 
-Ta konfiguracja nie zezwala na innych konfiguracji reguły równoważenia obciążenia dla bieżącego zasobu usługi równoważenia obciążenia. Pozwala to też nie innych wewnętrzny konfiguracji usługi równoważenia obciążenia zasobów dla danego zestawu wystąpień zaplecza.
+Ta konfiguracja nie zezwala na innych konfiguracji reguły równoważenia obciążenia w bieżącym zasobu modułu równoważenia obciążenia. Umożliwia także nie innych wewnętrznych konfigurację modułu równoważenia obciążenia zasobu dla danego zestawu wystąpień zaplecza.
 
-Można jednak skonfigurować publicznego standardowego modułu równoważenia obciążenia dla wystąpień zaplecza oprócz tej reguły portów wysokiej dostępności.
+Można jednak skonfigurować publiczny standardowego modułu równoważenia obciążenia dla wystąpień zaplecza, oprócz tej reguły portów o wysokiej dostępności.
 
-### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, zmiennoprzecinkowych konfiguracji adresu IP (bezpośredniego zwrotu serwera) HA-porty na wewnętrzny standardowy moduł równoważenia obciążenia
+### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>Pojedynczy, zmiennoprzecinkowy konfiguracji portów wysokiej dostępności adresu IP (bezpośredniego zwrotu serwera) na wewnętrznego standardowego modułu równoważenia obciążenia
 
-Podobnie można skonfigurować przez moduł równoważenia obciążenia, aby zastosować regułę równoważenia obciążenia z **HA portu** z jednym frontonu przez ustawienie **pływający adres IP** do **włączone**. 
+Podobnie można skonfigurować moduł równoważenia obciążenia do użycia regułę równoważenia obciążenia za pomocą **portów HA** za pomocą pojedynczego frontonu, ustawiając **pływającego adresu IP** do **włączone**. 
 
-Za pomocą tej konfiguracji, można dodać więcej przestawne IP równoważenia obciążenia reguł i/lub publiczny moduł równoważenia obciążenia. Jednak nie można używać z systemem innym niż — pływającego adresu IP, portów HA konfiguracji równoważenia obciążenia na podstawie tej konfiguracji.
+Za pomocą tej konfiguracji, można dodać więcej zmiennoprzecinkowy IP równoważenia obciążenia reguł i/lub publiczny moduł równoważenia obciążenia. Jednak nie można używać niezmienny adres IP, portów HA konfiguracji równoważenia obciążenia na podstawie tej konfiguracji.
 
-### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Wielu portów HA konfiguracji na wewnętrzny standardowy moduł równoważenia obciążenia
+### <a name="multiple-ha-ports-configurations-on-an-internal-standard-load-balancer"></a>Wiele konfiguracji portów wysokiej dostępności dla wewnętrznego standardowego modułu równoważenia obciążenia
 
-Jeśli dany scenariusz wymaga, aby skonfigurować więcej niż jeden HA portów frontonu dla tej samej puli zaplecza, można wykonać następujące czynności: 
-- Konfigurowanie więcej niż jeden prywatny adres IP frontonu do jednego zasobu wewnętrznego modułu równoważenia obciążenia standardowego.
-- Konfigurowanie wielu reguł równoważenia obciążenia, w którym każda reguła ma jeden unikatowy adres IP frontonu wybrane.
-- Wybierz **porty HA** opcji, a następnie ustaw **pływający adres IP** do **włączone** dla wszystkich reguł równoważenia obciążenia.
+Jeśli dany scenariusz wymaga, aby skonfigurować więcej niż jeden HA port frontonu na potrzeby tej samej puli zaplecza, można wykonać następujące czynności: 
+- Skonfiguruj więcej niż jeden prywatny adres IP frontonu do jednego zasobu wewnętrznej standardowego modułu równoważenia obciążenia.
+- Skonfiguruj wiele reguł równoważenia obciążenia, w którym każda reguła ma pojedynczej unikatowy adres IP frontonu wybrane.
+- Wybierz **portów HA** opcji, a następnie ustaw **pływającego adresu IP** do **włączone** dla wszystkich reguł równoważenia obciążenia.
 
-### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Wewnętrzny moduł równoważenia obciążenia z portami wysokiej dostępności i publiczny moduł równoważenia obciążenia dla tego samego wystąpienia zaplecza
+### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Wewnętrzny moduł równoważenia obciążenia przy użyciu portów wysokiej dostępności i publiczny moduł równoważenia obciążenia dla tego samego wystąpienia zaplecza
 
-Można skonfigurować *jeden* publicznego zasobów standardowy moduł równoważenia obciążenia dla zasobów wewnętrznych, wraz z jednego wewnętrznego standardowego modułu równoważenia obciążenia z portami wysokiej dostępności.
+Można skonfigurować *jeden* zasób publicznego standardowego modułu równoważenia obciążenia dla zasobów zaplecza, wraz z jednego wewnętrznego standardowego modułu równoważenia obciążenia przy użyciu portów wysokiej dostępności.
 
 >[!NOTE]
->Ta funkcja jest obecnie dostępna za pośrednictwem szablonów usługi Azure Resource Manager, ale nie jest dostępny za pośrednictwem portalu Azure.
+>Ta funkcja jest obecnie dostępna za pośrednictwem usługi Azure Resource Manager, ale nie jest dostępna za pośrednictwem witryny Azure portal.
 
 ## <a name="limitations"></a>Ograniczenia
 
-- HA konfiguracji portów jest dostępna tylko w przypadku wewnętrzne moduły równoważenia obciążenia. Nie jest dostępna dla publiczne moduły równoważenia obciążenia.
+- Zaświadczanie o kondycji konfiguracji portów jest dostępna tylko dla wewnętrznych modułów równoważenia obciążenia. Nie jest dostępna dla publiczne moduły równoważenia obciążenia.
 
-- Łączenia HA porty reguły równoważenia obciążenia i porty bez wysokiej dostępności, reguła równoważenia obciążenia nie jest obsługiwane.
+- Łączenie z wysokiej dostępności portów reguły równoważenia obciążenia i porty bez wysokiej dostępności, reguły równoważenia obciążenia nie jest obsługiwane.
 
-- Funkcja porty wysokiej dostępności jest niedostępna dla protokołu IPv6.
+- Funkcja portów wysokiej dostępności jest niedostępna dla protokołu IPv6.
 
-- Przepływ symetrycznego dla scenariuszy NVA jest obsługiwana z tylko jedną kartę Sieciową. Zobacz opis i diagram dla [sieci wirtualnych urządzeń](#nva). Jednak jeśli miejsce docelowe pracować translatora adresów Sieciowych dla danego scenariusza, można umożliwia ona upewnij się, że wewnętrznego modułu równoważenia obciążenia wysyła zwracany ruch do tej samej NVA.
+- Symetrii przepływu dla scenariuszy urządzenie WUS jest obsługiwany tylko jedną kartę Sieciową. Zobacz opis i diagram dla [sieciowych urządzeń wirtualnych](#nva). Jednak jeśli miejsce docelowe pracować translatora adresów Sieciowych dla danego scenariusza, można go do upewnij się, że wewnętrznego modułu równoważenia obciążenia wysyła ruch powrotny do tego samego urządzenia WUS.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Skonfiguruj porty wysokiej dostępności na wewnętrzny standardowy moduł równoważenia obciążenia](load-balancer-configure-ha-ports.md)
-- [Więcej informacji na temat usługi równoważenia obciążenia standardowego](load-balancer-standard-overview.md)
+- [Konfigurowanie portów wysokiej dostępności na wewnętrznego standardowego modułu równoważenia obciążenia](load-balancer-configure-ha-ports.md)
+- [Dowiedz się więcej o standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md)

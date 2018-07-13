@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze | Dokumentacja firmy Microsoft
-description: Przejdź przez zarejestrowanie stosu Azure jako dostawcy usług w chmurze i dodawania klientów.
+title: Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze | Dokumentacja firmy Microsoft
+description: Przewodnik rejestracji usługi Azure Stack jako dostawca chmury (CSP) i dodawania klientów na potrzeby rozliczeń.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,78 +11,76 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 07/12/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 21a52af4943004789b0a9bdbe4695ab1a603c046
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c4a266644bf5288e51e01523b6033082400387d4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796703"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39009259"
 ---
-# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycie i rozliczenia Azure stosu jako dostawcy usług w chmurze 
+# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Zarządzanie użycia i rozliczeń dla usługi Azure Stack jako dostawca usług w chmurze 
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-W tym artykule przedstawiono sposób rejestrowania stosu Azure jako dostawca chmury (CSP) i dodawania klientów.
+W tym artykule opisano za pośrednictwem rejestrowania usługi Azure Stack jako dostawca chmury (CSP) i dodawania klientów.
 
-Jako dostawcy usług Kryptograficznych najprawdopodobniej będzie mieć wiele różnych klientów przy użyciu stosu Azure. Każdy klient ma subskrypcję dostawcy usług Kryptograficznych w systemie Azure i musisz przekierować użycia ze stosu Azure do subskrypcji każdego użytkownika.
+Jako dostawca CSP możesz pracować z różnych klienci korzystający z usługi Azure Stack. Każdy klient ma subskrypcją dostawcy CSP na platformie Azure. Należy kierować do użycia z usługi Azure Stack, aby każda subskrypcja użytkownika.
 
-Na poniższym diagramie przedstawiono kroki, które należy wybrać konto usług udostępnionych i zarejestrować konto platformy azure przy użyciu konta. Jeśli zostały wykonane, możesz dołączyć klientów końcowych.
+Na poniższym diagramie przedstawiono kroki, które należy wybrać konta usług udostępnionych i zarejestrować konto platformy Azure przy użyciu konta usługi Azure Stack. Zarejestrowany, można dołączyć klientów końcowych.
 
-**Kroki, aby dodać użycia śledzenie jako dostawcy usług Kryptograficznych**
+**Kroki w celu dodania śledzenia jako dostawca CSP użycia**
 
-![Proces włączania użycia i zarządzania nimi jako dostawcy usług w chmurze.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
+![Proces włączania użycia i zarządzania jako dostawca usług w chmurze.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>Utwórz subskrypcję dostawcy usług Kryptograficznych lub CSPSS
+## <a name="create-a-csp-or-cspss-subscription"></a>Tworzenie dostawcy usług Kryptograficznych lub CSPSS subskrypcji
 
 ### <a name="cloud-service-provider-subscription-types"></a>Typy subskrypcji dostawcy usług w chmurze
 
-Należy wybrać typ konta usług udostępnionych stosu Azure. Dostępne są następujące typy subskrypcji, które mogą służyć do rejestracji wielodostępnej Azure stosu:
+Należy wybrać typ konta usług udostępnionych, które jest używane dla usługi Azure Stack. Dostępne są następujące typy subskrypcji, które mogą służyć do rejestracji wielodostępnej usługi Azure Stack:
 
- - Dostawcy usług w chmurze 
- - Partnerem subskrypcji usług udostępnionych 
+ - Dostawca usług w chmurze 
+ - Subskrypcja usług udostępnionych partnera 
 
-#### <a name="csp-shared-services"></a>Dostawca usług Kryptograficznych usług udostępnionych
+#### <a name="csp-shared-services"></a>Dostawcy usług Kryptograficznych usług udostępnionych
 
-Subskrypcje w chmurze usługi dostawcy udostępnionych usług (CSPSS) są preferowane wyborem w przypadku rejestracji, gdy bezpośrednie dostawcy usług Kryptograficznych lub dostawcy usług Kryptograficznych dystrybutora działa stosu Azure.
+Subskrypcje usługi dostawcy udostępnionych usług (CSPSS) w chmurze są preferowanych przez rejestracji podczas bezpośredniego programu CSP lub dystrybutora dostawcy usług Kryptograficznych działa usługa Azure Stack.
 
-Subskrypcje CSPSS są skojarzone z dzierżawcą usług udostępnionych. Podczas rejestrowania stosu Azure, należy podać poświadczenia dla konta, które jest właścicielem subskrypcji. Konto, które służy do rejestrowania stosu Azure może różnić się od konta administratora, służące do wdrażania; wykonaj dwa *nie* muszą należeć do tej samej domenie. Innymi słowy mogą wdrażać przy użyciu dzierżawy, który jest już używana. Na przykład może użyć ContosoCSP.onmicrosoft.com następnie zarejestrować przy użyciu innej dzierżawy, na przykład IURContosoCSP.onmicrosoft.com. Należy pamiętać logowania przy użyciu ContosoCSP.onmicrosoft.com po wykonaniu administracji stosu Azure dzień do wykonania. Podczas logowania się do platformy Azure przy użyciu IURContosoCSP.onmicrosoft.com, gdy należy wykonać czynności rejestracji.
+Subskrypcje CSPSS są skojarzone z dzierżawą usług udostępnionych. Podczas rejestrowania usługi Azure Stack, musisz podać poświadczenia dla konta które jest właścicielem subskrypcji. Konto, które służy do rejestrowania usługi Azure Stack może być inne niż konto administratora, którego używasz do wdrożenia. Ponadto, wykonaj dwa konta *nie* muszą należeć do tej samej domenie. Innymi słowy mogą wdrażać przy użyciu dzierżawy, które są już używane. Może na przykład użyć ContosoCSP.onmicrosoft.com następnie zarejestrować się przy użyciu innej dzierżawy, na przykład IURContosoCSP.onmicrosoft.com. Należy pamiętać, zaloguj się przy użyciu ContosoCSP.onmicrosoft.com po wykonaniu administracji usługi Azure Stack dzień do wykonania. Po zalogowaniu do platformy Azure przy użyciu IURContosoCSP.onmicrosoft.com, gdy trzeba wykonywać operacje rejestracji.
 
-Odwołuje się do następujących opis CSPSS subskrypcje i instrukcje dotyczące sposobu tworzenia subskrypcji [Dodawanie usług udostępnionych partnera Azure](https://msdn.microsoft.com/partner-center/shared-services).
+Zapoznaj się z poniższymi opis subskrypcji CSPSS i instrukcje dotyczące sposobu tworzenia subskrypcji [Dodawanie usług udostępnionych partnerem Azure](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>Subskrypcje dostawcy usług Kryptograficznych
 
-Subskrypcje w chmurze dostawcy usług Kryptograficznych to wybór preferowanego rejestracji podczas sprzedawcą dostawcy usług Kryptograficznych lub odbiorcy końcowego działa stosu Azure.
+Subskrypcje chmury programu Service Provider (CSP) są preferowanych przez rejestracji, gdy odsprzedawca lub klienta końcowego działa usługa Azure Stack.
 
-## <a name="register-azure-stack"></a>Zarejestruj Azure stosu
+## <a name="register-azure-stack"></a>Rejestrowanie usługi Azure Stack
 
-Aby zarejestrować stosu Azure, zobacz [zarejestrować stosu Azure w ramach subskrypcji Azure](azure-stack-registration.md).
+Aby zarejestrować się przy użyciu usługi Azure Stack, zobacz [zarejestrować w usłudze Azure Stack z subskrypcją platformy Azure](azure-stack-registration.md).
 
-## <a name="add-end-customer"></a>Dodaj odbiorcę zakończenia
+## <a name="add-end-customer"></a>Dodaj klienta końcowego
 
-Aby skonfigurować stosu Azure, dzięki czemu podczas nowej dzierżawy używa zasobów ich użycie jest informowany o swoją subskrypcję dostawcy usług chmury (CSP), zobacz [Dodaj dzierżawy użycie i rozliczenia Azure stos](azure-stack-csp-howto-register-tenants.md).
+Aby skonfigurować usługę Azure Stack, gdy nową dzierżawę używa zasobów ich użycie jest informowany o swoją subskrypcję dostawcy usług chmury (CSP), zobacz [Dodaj dzierżawy na potrzeby użycia i rozliczeń w usłudze Azure Stack](azure-stack-csp-howto-register-tenants.md).
 
-## <a name="charge-the-right-subscriptions"></a>Dodatkowy prawo subskrypcji
+## <a name="charge-the-right-subscriptions"></a>Opłaty za subskrypcje w prawo
 
-Stos Azure wykorzystuje funkcję rejestracji. Rejestracja jest obiektem, przechowywane na platformie Azure, które dokumenty, które subskrypcji platformy Azure na potrzeby obciążenia dla danej stosu Azure. Ta sekcja dotyczy znaczenie rejestracji.
+Usługa Azure Stack wykorzystuje funkcję rejestracji. Rejestracja jest obiektem przechowywanych na platformie Azure. Obiekt rejestracji dokumenty, które subskrypcji platformy Azure służące do obciążenia dla danej usługi Azure Stack. W tej sekcji omówiono znaczenie rejestracji.
 
-Za pomocą rejestracji stosu Azure wykonywać następujące czynności:
- - Przesyła dane dotyczące użycia stosu Azure Azure Commerce i naliczać opłaty subskrypcji platformy Azure.
- - Raport użycia każdego klienta na inną subskrypcję z wdrożenia wielodostępnego stosu Azure. Obsługa wielu podmiotów umożliwia stosu Azure do obsługi różnych organizacji dla tego samego wystąpienia usługi Azure stosu.
+Korzystanie z rejestracji usługi Azure Stack wykonywać następujące czynności:
+ - Przesyła dane dotyczące użycia usługi Azure Stack Commerce platformy Azure i płatności subskrypcji platformy Azure.
+ - Raport użycia każdego klienta w innej subskrypcji przy użyciu wdrożenia wielodostępnego usługi Azure Stack. Wielodostępność umożliwia usłudze Azure Stack obsługiwać różne organizacje w jednym wystąpieniu usługi Azure Stack.
 
-Dla każdego stosu Azure jest jedna subskrypcja domyślne i jak wiele subskrypcji dzierżawy zgodnie z potrzebami. Domyślna subskrypcja jest subskrypcji Azure, która jest rozliczana, jeśli nie istnieje żadne subskrypcji specyficznego dla dzierżawy. Musi być pierwszą osobą, która jest zarejestrowana. Wielodostępne użycia raporty działały subskrypcji musi być dostawca usług Kryptograficznych lub CSPSS subskrypcji.
+Dla każdej usługi Azure Stack jest jedną subskrypcję domyślną i wiele dzierżawy subskrypcji. Domyślna subskrypcja jest subskrypcji platformy Azure, która jest naliczana, jeśli nie ma subskrypcji specyficznym dla dzierżawy. Musi być pierwszym dla subskrypcji zarejestrowanej. Użycie wielu obcych dzierżaw raportowania do pracy subskrypcja musi być dostawca usług Kryptograficznych lub CSPSS subskrypcji.
 
-Następnie rejestracji został zaktualizowany o subskrypcji platformy Azure dla każdego dzierżawcy, który będzie służyć stosu Azure. Subskrypcje dzierżawy musi być typu Dostawca usług Kryptograficznych i należy rzutować partnera, który jest właścicielem subskrypcji domyślne. Innymi słowy nie można zarejestrować klientów do kogoś innego.
+Następnie w rejestracji jest aktualizowany z subskrypcją platformy Azure dla każdego dzierżawcy, która będzie używać usługi Azure Stack. Subskrypcje dzierżawy musi być typu Dostawca usług Kryptograficznych i należy rzutować z partnerem, który jest właścicielem subskrypcji domyślnej. Innymi słowy nie można zarejestrować klientów innego użytkownika.
 
-Po stosu Azure przekazuje informacje o użyciu globalne Azure, usługa na platformie Azure sprawdza rejestracji i mapuje użycia każdego dzierżawcy do subskrypcji odpowiednie dzierżawy. Jeśli nie został zarejestrowany przez dzierżawcę, wykorzystanie prowadzi do subskrypcji domyślnego wystąpienia stosu Azure, z którego pochodzi.
+Gdy usługi Azure Stack przekazuje informacje o użyciu do globalnej platformy Azure, usługa na platformie Azure konsultacje dotyczące rejestracji i mapuje użycia każdego dzierżawcy subskrypcji odpowiedniego dzierżawy. Jeśli nie został zarejestrowany w dzierżawie, to użycie jest przesyłany do domyślnej subskrypcji dla wystąpienia usługi Azure Stack, z którego pochodzi.
 
-Ponieważ subskrypcji dzierżawcy subskrypcje dostawcy usług Kryptograficznych, ich rachunku są wysyłane do dostawcy usług Kryptograficznych partnera, a informacje o użyciu nie jest widoczne dla klientów końcowych.
-
-
+Ponieważ subskrypcje dzierżawy subskrypcji CSP, fakturze z rozliczeniem są wysyłane do partner programu CSP i informacje dotyczące użycia nie jest widoczne dla klientów końcowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [programu Cloud Solution Provider](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](azure-stack-billing-and-chargeback.md).
+ - Aby dowiedzieć się więcej na temat programu CSP, zobacz [programu Cloud Solution Provider](https://partnercenter.microsoft.com/en-us/partner/programs).
+ - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](azure-stack-billing-and-chargeback.md).

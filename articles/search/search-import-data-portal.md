@@ -1,22 +1,22 @@
 ---
 title: Importowanie danych do usługi Azure Search w portalu | Microsoft Docs
-description: Za pomocą kreatora importowania danych usługi Azure Search w witrynie Azure Portal przeszukuj dane platformy Azure z usługi NoSQL Azure Cosmos DB, Blob Storage, Table Storage i SQL Database oraz programu SQL Server na maszynach wirtualnych platformy Azure.
+description: Dowiedz się, jak używać Kreatora importu danych w witrynie Azure portal Przeszukuj dane platformy Azure z usługi Cosmos DB, magazynu obiektów Blob, usługi table storage, SQL Database i programu SQL Server na maszynach wirtualnych platformy Azure.
 author: HeidiSteen
 manager: cgronlun
-tags: Azure Portal
 services: search
 ms.service: search
-ms.topic: quickstart
-ms.date: 05/01/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: ee27b63a5df658ff5d575f0599dadd1cbafd3c18
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795888"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004951"
 ---
-# <a name="import-data-to-azure-search-using-the-portal"></a>Importowanie danych do usługi Azure Search przy użyciu portalu
+# <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Jak importować dane do indeksu usługi Azure Search przy użyciu witryny Azure portal
+
 W witrynie Azure Portal na pulpicie nawigacyjnym usługi Azure Search znajduje się kreator **Importuj dane**, który umożliwia ładowanie danych do indeksu. 
 
   ![Importowanie danych przy użyciu paska poleceń][1]
@@ -26,8 +26,6 @@ Kreator wewnętrznie konfiguruje i wywołuje *indeksator*, automatyzując kilka 
 * Połączenie z zewnętrznym źródłem danych w tej samej subskrypcji platformy Azure
 * Generowanie modyfikowalnego schematu indeksu na podstawie struktury źródła danych
 * Ładowanie dokumentów JSON do indeksu za pomocą zestawu wierszy pobranego ze źródła danych
-
-Ten przepływ pracy można wypróbować przy użyciu przykładowych danych w usłudze Azure Cosmos DB. Instrukcje znajdziesz na stronie [Wprowadzenie do usługi Azure Search w witrynie Azure Portal](search-get-started-portal.md).
 
 > [!NOTE]
 > W celu uproszczenia indeksowania dla danego źródła danych można uruchomić kreator **Importuj dane** na pulpicie nawigacyjnym usługi Azure Cosmos DB. Aby rozpocząć, w obszarze nawigacyjnym po lewej stronie przejdź do pozycji **Kolekcje** > **Dodaj usługę Azure Search**.
@@ -45,8 +43,10 @@ Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można d
 
 ## <a name="connect-to-your-data"></a>Nawiązywanie połączenia z danymi
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i otwórz pulpit nawigacyjny usługi. Możesz kliknąć pozycję **Wszystkie usługi** na pasku dostępu, aby poszukać istniejących usług wyszukiwania w bieżącej subskrypcji. 
-2. Kliknij przycisk **Importuj dane** na pasku poleceń, aby otworzyć blok Importuj dane.  
-3. Kliknij pozycję **Połącz z danymi**, aby określić definicję źródła danych, z której będzie korzystać indeksator. W przypadku źródeł danych wewnątrz subskrypcji kreator może zwykle wykrywać i odczytywać informacje o połączeniu, co pozwala zminimalizować wymagania dotyczące konfiguracji.
+
+1. Kliknij przycisk **Importuj dane** na pasku poleceń, aby otworzyć blok Importuj dane.
+
+1. Kliknij pozycję **Połącz z danymi**, aby określić definicję źródła danych, z której będzie korzystać indeksator. W przypadku źródeł danych wewnątrz subskrypcji kreator może zwykle wykrywać i odczytywać informacje o połączeniu, co pozwala zminimalizować wymagania dotyczące konfiguracji.
 
 |  |  |
 | --- | --- |
@@ -61,35 +61,42 @@ Wymaganymi danymi wejściowymi jest spłaszczony zestaw danych. Importu można d
 Wstępny indeks jest zazwyczaj ustalany na podstawie zestawu danych. Można uzupełnić schemat, dodając, edytując lub usuwając pola. Ponadto można ustawić atrybuty na poziomie pola, aby określić zachowanie podczas późniejszych wyszukiwań.
 
 1. W obszarze **Dostosuj indeks docelowy** określ nazwę i **Klucz** będące unikatowymi identyfikatorami poszczególnych dokumentów. Klucz musi być ciągiem znaków. Jeśli wartości pól zawierają spacje lub kreski, pamiętaj o ustawieniu opcji zaawansowanych w obszarze **Zaimportuj dane** w celu pominięcia weryfikacji tych znaków.
-2. Przejrzyj i popraw pozostałe pola. Nazwa i typ pola są zazwyczaj wypełniane automatycznie. Typ danych można zmienić do czasu utworzenia indeksu. Zmiana go później będzie wymagać odbudowania indeksu.
-3. Ustaw atrybuty indeksu dla każdego pola:
+
+1. Przejrzyj i popraw pozostałe pola. Nazwa i typ pola są zazwyczaj wypełniane automatycznie. Typ danych można zmienić do czasu utworzenia indeksu. Zmiana go później będzie wymagać odbudowania indeksu.
+
+1. Ustaw atrybuty indeksu dla każdego pola:
    
    * Atrybut Pobieranie umożliwia zwracanie pola w wynikach wyszukiwania.
    * Atrybut Filtrowanie umożliwia przywoływanie pola w wyrażeniach filtru.
    * Atrybut Sortowanie umożliwia używanie pola podczas sortowania.
    * Atrybut Tworzenie aspektów umożliwia używanie pola w nawigacji aspektowej.
    * Atrybut Wyszukiwanie umożliwia wyszukiwanie pełnotekstowe pola.
-4. Kliknij kartę **Analizator**, jeśli chcesz określić analizatora języka na poziomie pola. Obecnie można określić tylko analizatory języka. Skorzystanie z analizatorów niestandardowych lub innych niż analizatory języka, takich jak analizatory słów kluczowych, wzorców itp., będzie wymagać kodu.
+
+1. Kliknij kartę **Analizator**, jeśli chcesz określić analizatora języka na poziomie pola. Obecnie można określić tylko analizatory języka. Skorzystanie z analizatorów niestandardowych lub innych niż analizatory języka, takich jak analizatory słów kluczowych, wzorców itp., będzie wymagać kodu.
    
    * Kliknij pozycję **Możliwość wyszukiwania**, aby określić wyszukiwanie pełnotekstowe w polu i włączyć listę rozwijaną Analizator.
    * Wybierz odpowiedni analizator. Zobacz [Create an index for documents in multiple language](search-language-support.md) (Tworzenie indeksu dla dokumentów w wielu językach).
-5. Kliknij pozycję **Sugestor**, aby włączyć podpowiedzi pojawiające się w trakcie pisania w wybranych polach.
+
+1. Kliknij pozycję **Sugestor**, aby włączyć podpowiedzi pojawiające się w trakcie pisania w wybranych polach.
 
 ## <a name="import-your-data"></a>Importowanie danych
 1. W obszarze **Zaimportuj dane** podaj nazwę indeksatora. Pamiętaj, że wynikiem działania kreatora importu danych jest indeksator. Jeśli chcesz go później wyświetlić lub edytować, wybierz go z portalu zamiast ponownie uruchamiać kreatora. 
-2. Określ harmonogram oparty na strefie czasowej regionu, w którym usługa jest aprowizowana.
-3. Ustaw opcje zaawansowane, aby określić progi dotyczące możliwości dalszego indeksowania w przypadku odrzucenia dokumentu. Ponadto możesz określić, czy pola **Klucz** pola mogą zawierać spacje i ukośniki.  
-4. Kliknij przycisk **OK** w celu utworzenia indeksu i zaimportowania danych.
+
+1. Określ harmonogram oparty na strefie czasowej regionu, w którym usługa jest aprowizowana.
+
+1. Ustaw opcje zaawansowane, aby określić progi dotyczące możliwości dalszego indeksowania w przypadku odrzucenia dokumentu. Ponadto możesz określić, czy pola **Klucz** pola mogą zawierać spacje i ukośniki.  
+
+1. Kliknij przycisk **OK** w celu utworzenia indeksu i zaimportowania danych.
 
 Indeksowanie można monitorować w portalu. W miarę ładowania dokumentów liczba dokumentów dla zdefiniowanego indeksu będzie rosnąć. Czasem do odzwierciedlenia najnowszych aktualizacji na stronie portalu może minąć kilka minut.
 
 Indeks jest gotowy do obsługi zapytań od razu po załadowaniu wszystkich dokumentów.
 
-## <a name="query-an-index-using-search-explorer"></a>Tworzenie zapytań względem indeksu za pomocą Eksploratora wyszukiwania
+## <a name="query-an-index-using-search-explorer"></a>Tworzenie zapytań względem indeksu przy użyciu Eksploratora wyszukiwania
 
-Portal zawiera **Eksplorator wyszukiwania**, który umożliwia tworzenie zapytań dotyczących indeksu bez konieczności pisania kodu. [Eksploratora wyszukiwania](search-explorer.md) można używać dla dowolnego indeksu.
+Portal zawiera **Eksploratora wyszukiwania** , dzięki czemu można tworzyć zapytania indeksu bez konieczności pisania kodu. Możesz użyć [Eksploratora wyszukiwania](search-explorer.md) dla dowolnego indeksu.
 
-Środowisko wyszukiwania jest oparte na ustawieniach domyślnych, takich jak [prosta składnia](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i domyślny parametr zapytania [searchMode (https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Środowisko wyszukiwania jest oparte na ustawieniach domyślnych, takich jak [prosta składnia](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i domyślny parametr zapytania [searchMode](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 Wyniki są zwracane jako kod JSON w szczegółowym formacie, aby można było poddać inspekcji cały dokument.
 
@@ -104,7 +111,7 @@ Kreator utworzył także **indeks**. W usłudze Azure Search strukturalne aktual
 Do zmian, które nie wymagają odbudowania indeksu, należą: dodanie nowego pola, zmiana profilów oceniania, zmiana funkcji sugestii i zmiana analizatorów języka. Aby uzyskać więcej informacji, zobacz [Aktualizowanie indeksu](https://msdn.microsoft.com/library/azure/dn800964.aspx).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przejrzyj następujące linki, aby dowiedzieć się więcej o indeksatorach:
 
 * [Indeksowanie w usłudze Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 5f953cd6f33e5d46098566740efbf83a5fd80799
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9ddf44ef933270c08b42f67387866cd7a3b34719
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635320"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004083"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Dodawanie maszyny Wirtualnej do laboratorium Azure DevTest Labs
 Jeśli masz już [utworzyć pierwszą maszynę Wirtualną z](devtest-lab-create-first-vm.md), prawdopodobnie tak czy z wstępnie załadowane [obrazu z witryny marketplace](devtest-lab-configure-marketplace-images.md). Teraz, jeśli chcesz dodać kolejnych maszyn wirtualnych do środowiska laboratoryjnego, można także *podstawowy* oznacza to jedną [obrazu niestandardowego](devtest-lab-create-template.md) lub [formuły](devtest-lab-manage-formulas.md). Ten samouczek przeprowadzi Cię przez dodawanie maszyny Wirtualnej do laboratorium w usłudze DevTest Labs przy użyciu witryny Azure portal.
@@ -40,12 +40,12 @@ W tym artykule przedstawiono również sposób zarządzania artefaktów maszyny 
     ![Okienko maszyn wirtualnych laboratorium](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
 1. Wprowadź **nazwa_użytkownika** udzieleniu uprawnień administratora na maszynie wirtualnej.  
-1. Jeśli chcesz używać hasła przechowywane w swojej [magazynu wpisów tajnych](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), wybierz opcję **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). W przeciwnym razie, wprowadź hasło w polu tekstowym etykietą **wpisz wartość**.
+1. Jeśli chcesz używać hasła przechowywane w [usługi Azure key vault](devtest-lab-store-secrets-in-key-vault.md), wybierz opcję **używać hasła zapisane**i określ wartości klucza, który odpowiada klucz tajny (hasło). W przeciwnym razie, wprowadź hasło w polu tekstowym etykietą **wpisz wartość**. Aby dowiedzieć się więcej na temat zapisywania wpisów tajnych w magazynie kluczy i korzystanie z nich podczas tworzenia zasobów laboratorium, zobacz [Store wpisów tajnych w usłudze Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
 1. **Typ dysku maszyny wirtualnej** Określa typy dysku magazynu jest dozwolone dla maszyn wirtualnych w środowisku laboratoryjnym.
-1. Wybierz **rozmiar maszyny wirtualnej** i wybierz jeden z wstępnie zdefiniowanych elementów, które określają rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć.
-1. Wybierz **artefaktów** i — z listy artefaktów — wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego.
+2. Wybierz **rozmiar maszyny wirtualnej** i wybierz jeden z wstępnie zdefiniowanych elementów, które określają rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć.
+3. Wybierz **artefaktów** i — z listy artefaktów — wybierz i skonfiguruj artefaktów, które chcesz dodać do obrazu podstawowego.
     **Uwaga:** Jeśli jesteś nowym użytkownikiem usługi DevTest Labs, lub konfigurowanie artefaktów, dotyczą [Dodaj istniejący artefakt do maszyny Wirtualnej](#add-an-existing-artifact-to-a-vm) sekcji, a następnie wróć tutaj po zakończeniu.
-1. Wybierz **Zaawansowane ustawienia** skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. 
+4. Wybierz **Zaawansowane ustawienia** skonfigurować opcje wygaśnięcia i Opcje sieci maszyny Wirtualnej. 
 
    Aby ustawić opcję wygaśnięcia, wybierz ikonę kalendarza, aby określić datę, na którym maszyna wirtualna zostaną automatycznie usunięte.  Domyślnie maszyna wirtualna nigdy nie wygasa. 
 1. Aby wyświetlić lub skopiuj szablon usługi Azure Resource Manager, zapoznaj się [szablonu Zapisz Azure Resource Manager](#save-azure-resource-manager-template) sekcji, a następnie wróć tutaj po zakończeniu.

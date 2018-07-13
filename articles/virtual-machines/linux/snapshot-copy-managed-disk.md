@@ -1,6 +1,6 @@
 ---
-title: Tworzenie migawki wirtualnego dysku twardego na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć kopię dysku VHD na platformie Azure jako kopii zapasowej lub podczas rozwiązywania problemów.
+title: Tworzenie migawki dysku VHD na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzenie kopii wirtualnego dysku twardego na platformie Azure jako kopię w górę lub do rozwiązywania problemów.
 documentationcenter: ''
 author: cynthn
 manager: jeconnoc
@@ -11,31 +11,36 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: e5882b2ddc708544a7715da13c1f0d18384ce4e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30318905"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007009"
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę 
 
-Utwórz migawkę dysku systemu operacyjnego lub dane kopii zapasowej lub rozwiązywać problemy z maszyny Wirtualnej. Migawka jest pełna, tylko do odczytu kopię dysku VHD. 
+Utworzenie migawki dysku systemu operacyjnego lub dane kopii zapasowej lub rozwiązywania problemów dotyczących maszyny Wirtualnej. Migawka jest pełna, tylko do odczytu kopię dysku VHD. 
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
 
-Poniższy przykład wymaga Azure CLI 2.0 zainstalowany, a zalogowany do konta platformy Azure. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Poniższy przykład wymaga użycia [Cloud Shell](https://shell.azure.com/bash) lub masz zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
 
-Poniższe kroki przedstawiają sposób wykonania migawki za pomocą `az snapshot create` z `--source-disk` parametru. W poniższym przykładzie założono, że istnieje maszyna wirtualna o nazwie `myVM` w `myResourceGroup` grupy zasobów.
+Poniższe kroki pokazują, jak wykonać migawkę przy użyciu **Tworzenie migawki az** polecenia **— dysk źródłowy** parametru. W poniższym przykładzie założono, że istnieje Maszynę wirtualną o nazwie *myVM* w *myResourceGroup* grupy zasobów.
 
-Pobierz identyfikator dysku
-```azure-cli
-osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+Pobieranie przy użyciu Identyfikatora dysku [az vm show](/cli/azure/vm#az-vm-show).
+
+```azurecli-interactive
+osDiskId=$(az vm show \
+   -g myResourceGroup \
+   -n myVM \
+   --query "storageProfile.osDisk.managedDisk.id" \
+   -o tsv)
 ```
 
-Utworzenie migawki o nazwie *kopii zapasowej osDisk*.
+Utworzenie migawki o nazwie *kopii zapasowej osDisk* przy użyciu [Tworzenie migawki az](/cli/azure/snapshot#az-snapshot-create).
 
 ```azurecli-interactive
 az snapshot create \
@@ -45,22 +50,29 @@ az snapshot create \
 ```
 
 > [!NOTE]
-> Jeśli chcesz przechowywać w strefie odporność pamięci masowej migawki, należy utworzyć ją w regionie, który obsługuje [stref dostępności](../../availability-zones/az-overview.md) i obejmują `--sku Standard_ZRS` parametru.
+> Jeśli chcesz przechowywać migawek w strefie utworzenia niezawodnego magazynu, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują **— jednostka sku Standard_ZRS** parametru.
+
+Można wyświetlić listę migawek przy użyciu [az snapshot list](/cli/azure/snapshot#az-snapshot-list).
+
+```azurecli-interactive
+az snapshot list \
+   -g myResourceGroup \
+   - table
+```
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Począwszy od lewej górnej kliknij **Utwórz zasób** i wyszukaj **migawki**.
-3. W bloku migawki kliknij **Utwórz**.
-4. Wprowadź **nazwa** dla migawki.
-5. Wybierz istniejącą [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#resource-groups) lub wprowadź nazwę nowej grupy zasobów. 
-6. Wybierz centrum danych Azure lokalizacji.  
-7. Dla **dysku źródłowego**, wybierz zarządzany dysk do migawki.
-8. Wybierz **typ konta** do przechowywania migawki. Firma Microsoft zaleca **Standard_LRS** chyba że ma być przechowywane na dysku wysokiej wydajności.
+2. Uruchamianie w lewym górnym rogu, kliknij przycisk **Utwórz zasób** i wyszukaj **migawki**. Wybierz **migawki** w wynikach wyszukiwania.
+3. W **migawki** bloku kliknij **Utwórz**.
+4. Wprowadź **nazwa** migawki.
+5. Wybierz istniejącą grupę zasobów lub wpisz nazwę dla nowego. 
+7. Aby uzyskać **dysku źródłowego**, wybierz dysku zarządzanego do migawki.
+8. Wybierz **typ konta** służące do przechowywania migawki. Użyj **standardowych dysków Twardych** chyba że potrzebne w udziale o wysokiej wydajności dysków SSD.
 9. Kliknij przycisk **Utwórz**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- Utwórz maszynę wirtualną z migawki, tworząc dysków zarządzanych z migawki, a następnie Trwa dołączanie nowego dysku zarządzanego jako dysk systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [tworzenie maszyny Wirtualnej z migawki](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) skryptu.
+ Trwa tworzenie dysku zarządzanego z migawki, a następnie Dołączanie nowego dysku zarządzanego jako dysk systemu operacyjnego, utwórz maszynę wirtualną z migawki. Aby uzyskać więcej informacji, zobacz [tworzenie maszyny Wirtualnej na podstawie migawki](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) skryptu.
 
