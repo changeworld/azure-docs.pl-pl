@@ -3,7 +3,7 @@ title: Samouczek — instalowanie aplikacji na maszynie wirtualnej z systemem Wi
 description: Z tego samouczka dowiesz się, jak za pomocą rozszerzenia niestandardowego skryptu uruchamiać skrypty i wdrażać aplikacje na maszynach wirtualnych z systemem Windows na platformie Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 51a66d524e72968d95f3415b890567015165063a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2a365321e35c84d5b09570a7eac41bec6cdeb143
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187440"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928968"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Samouczek — wdrażanie aplikacji na maszynie wirtualnej z systemem Windows na platformie Azure za pomocą rozszerzenia niestandardowego skryptu
 

@@ -3,7 +3,7 @@ title: Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux za pomoc
 description: Z tego samouczka dowiesz się, jak za pomocą pakietu cloud-init oraz usługi Key Vault dostosować maszyny wirtualne z systemem Linux podczas ich pierwszego rozruchu na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9947ff74ac1256ab7f493697798aaf2776d19eff
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 754a5011bb139b313d3b0ffcf4e6560fde9a9474
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716503"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928475"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 

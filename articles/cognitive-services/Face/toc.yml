@@ -29,12 +29,12 @@
   items:
     - name: 'C#'
       href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Android
+      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Pierwsze aplikacje interfejsu API rozpoznawania twarzy
       items:
-        - name: Środowisko Java dla systemu Android
-          href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
         - name: Python
           href: Tutorials/FaceAPIinPythonTutorial.md
     - name: Wykrywanie twarzy na obrazie

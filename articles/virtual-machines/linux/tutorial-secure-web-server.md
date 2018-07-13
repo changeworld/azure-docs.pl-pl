@@ -3,7 +3,7 @@ title: Samouczek — zabezpieczanie serwera internetowego z systemem Linux za po
 description: W tym samouczku dowiesz się, jak używać interfejsu wiersza polecenia platformy Azure 2.0 do zabezpieczania maszyny wirtualnej z systemem Linux, na której działa internetowy serwer NGINX z certyfikatami SSL przechowywanymi w usłudze Azure Key Vault.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: f1d8576791a569007efd7d3fa446ab32a130919d
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313362"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927985"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Samouczek: zabezpieczanie internetowego serwera na maszynie wirtualnej z systemem Linux na platformie Azure z certyfikatami SSL zapisanymi w usłudze Key Vault
 Aby zabezpieczyć serwery sieci Web, można używać certyfikatu SSL (Secure Sockets Layer) do szyfrowania ruchu w sieci Web. Te certyfikaty SSL mogą być przechowywane w usłudze Azure Key Vault i umożliwiają bezpieczne wdrażanie certyfikatów na maszynach wirtualnych z systemem Linux na platformie Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -136,7 +136,7 @@ az vm open-port \
 ```
 
 
-### <a name="test-the-secure-web-app"></a>Testowanie bezpiecznej aplikacji sieci Web
+### <a name="test-the-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
 Teraz możesz otworzyć przeglądarkę sieci Web i wprowadzić ciąg *https://<publicIpAddress>*  na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-secure-web-server/browser-warning.png)

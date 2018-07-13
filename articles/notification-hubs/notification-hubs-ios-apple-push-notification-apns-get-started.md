@@ -17,11 +17,11 @@ ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
 ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778222"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681523"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -44,7 +44,7 @@ Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://gi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne](https://azure.microsoft.com/free) w zaledwie kilka minut. 
-- [strukturę Windows Azure Messaging]
+- [Struktura Windows Azure Messaging]
 - Najnowsza wersja środowiska [Xcode]
 - Urządzenie zgodne z systemem iOS 10 (lub nowszą wersją)
 - Członkostwo w [programie dla deweloperów firmy Apple](https://developer.apple.com/programs/).
@@ -93,7 +93,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz para
 
     ![Xcode — możliwości push][12]
    
-5. Pobierz [strukturę Windows Azure Messaging] i rozpakuj plik. W programie Xcode kliknij prawym przyciskiem myszy projekt i kliknij opcję **Add Files to** (Dodaj pliki do), aby dodać folder **WindowsAzureMessaging.framework** do projektu Xcode. Wybierz pozycję **Options** (Opcje), upewnij się, że pozycja **Copy items if needed** (Skopiuj elementy w razie potrzeby) jest zaznaczona, a następnie kliknij pozycję **Add** (Dodaj).
+5. Pobierz [Struktura Windows Azure Messaging] i rozpakuj plik. W programie Xcode kliknij prawym przyciskiem myszy projekt i kliknij opcję **Add Files to** (Dodaj pliki do), aby dodać folder **WindowsAzureMessaging.framework** do projektu Xcode. Wybierz pozycję **Options** (Opcje), upewnij się, że pozycja **Copy items if needed** (Skopiuj elementy w razie potrzeby) jest zaznaczona, a następnie kliknij pozycję **Add** (Dodaj).
 
     ![Rozpakowywanie zestawu SDK platformy Azure][10]
 
@@ -211,7 +211,7 @@ W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zareje
 
 
 <!-- URLs. -->
-[strukturę Windows Azure Messaging]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
+[Struktura Windows Azure Messaging]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039

@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Linux z funkcją monitorowania pakietu OMS
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cda46d250dc052b024c8f090bafe7a22b94d41ac
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098838"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37932623"
 ---
 # <a name="monitor-a-vm-with-operations-management-suite"></a>Monitorowanie maszyny wirtualnej przy użyciu pakietu Operations Management Suite
 

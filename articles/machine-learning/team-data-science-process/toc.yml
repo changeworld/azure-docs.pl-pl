@@ -218,8 +218,6 @@
           items:
             - name: Omówienie
               href: create-features.md
-            - name: Korzystanie z biblioteki Pandas
-              href: create-features-blob.md
             - name: Korzystanie z bazy danych SQL i języka Python
               href: create-features-sql-server.md
             - name: Korzystanie z zapytań Hive

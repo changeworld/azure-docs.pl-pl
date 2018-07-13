@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514006"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722817"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -37,7 +37,7 @@ W tym samouczku przekonwertujesz równolegle pliki multimedialne w formacie MP4 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zintegrowane środowisko projektowe programu Visual Studio](https://www.visualstudio.com/vs) (Visual Studio 2015 lub nowsza wersja). 
+* [Program Visual Studio 2017](https://www.visualstudio.com/vs). 
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md).
 

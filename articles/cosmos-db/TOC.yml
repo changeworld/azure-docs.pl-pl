@@ -318,8 +318,6 @@ items:
                 href: mongodb-readpreference.md
               - name: Indeksowanie
                 href: mongodb-indexing.md
-              - name: Czas wygaśnięcia w bazie danych MongoDB
-                href: mongodb-ttl.md
               - name: Wizualizacja danych przy użyciu usługi Power BI
                 href: powerbi-visualize.md
           - name: Zasoby

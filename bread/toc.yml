@@ -289,6 +289,9 @@
     - name: ExpressRoute
       tocHref: /azure/expressroute/
       topicHref: /azure/expressroute/
+    - name: Zapora
+      tocHref: /azure/firewall/
+      topicHref: /azure/firewall/
     - name: Wskazówki
       tocHref: /azure/guidance/
       topicHref: /azure/guidance/

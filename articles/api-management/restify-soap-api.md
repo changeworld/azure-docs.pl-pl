@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: 940756917c8f377e7d134818409e6287a4031e15
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935587"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38239812"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Importowanie interfejsu API SOAP i konwertowanie go na interfejs API REST
 

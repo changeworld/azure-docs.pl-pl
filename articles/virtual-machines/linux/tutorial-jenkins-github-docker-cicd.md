@@ -3,7 +3,7 @@ title: 'Samouczek: tworzenie potoku programowania na platformie Azure przy użyc
 description: Z tego samouczka dowiesz się, jak utworzyć na platformie Azure maszynę wirtualną usługi Jenkins, która przeprowadza ściąganie z usługi GitHub przy każdym zatwierdzeniu kodu i tworzy nowy kontener platformy Docker w celu uruchomienia aplikacji.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f50555775d369da7cf9321d5493bf4e1d84a7bf2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211195"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931732"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: tworzenie infrastruktury programowania na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu usług Jenkins, GitHub i Docker
 
@@ -148,8 +148,8 @@ Aby usługa Jenkins odpowiadała w usłudze GitHub na zdarzenie, takie jak zatwi
 W witrynie internetowej usługi Jenkins wybierz na stronie głównej pozycję **Utwórz nowe zadania**:
 
 - Wprowadź ciąg *HelloWorld* jako nazwę zadania. Wybierz **Projekt Freestyle**, a następnie wybierz pozycję **OK**.
-- W sekcji **Ogólne** wybierz projekt **GitHub** i wprowadź adres URL rozwidlonego repozytorium, taki jak *https://github.com/iainfoulds/nodejs-docs-hello-world*
-- W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **Git** i wprowadź adres URL *.git* rozwidlonego repozytorium, taki jak *https://github.com/iainfoulds/nodejs-docs-hello-world.git*
+- W sekcji **Ogólne** wybierz projekt **GitHub** i wprowadź adres URL rozwidlonego repozytorium, taki jak *https://github.com/cynthn/nodejs-docs-hello-world*
+- W sekcji **Zarządzanie kodem źródłowym** wybierz pozycję **Git** i wprowadź adres URL *.git* rozwidlonego repozytorium, taki jak *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - W sekcji **Kompilowanie wyzwalaczy** wybierz pozycję **Wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITscm**.
 - W sekcji **Kompilowanie** wybierz pozycję **Dodaj krok kompilacji**. Wybierz pozycję **Wykonaj powłokę**, a następnie wprowadź `echo "Testing"` w oknie wiersza polecenia.
 - Wybierz pozycję **Zapisz** w dolnej części okna zadań.

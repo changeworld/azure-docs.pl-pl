@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie maszyny wirtualnej z systemem Linux i platformą WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: iainfou
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3427f53293cb23ec4596c32456d5f156d7065b44
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1c543c2357dd31bb06a19c7d53284c65a7ca7299
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096114"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928128"
 ---
 # <a name="create-a-vm-with-wordpress"></a>Tworzenie maszyny wirtualnej z platformą WordPress
 
