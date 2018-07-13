@@ -2,30 +2,30 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — wdrażanie aplikacji
 description: Samouczek dotyczący usługi AKS — wdrażanie aplikacji
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e0e349361afaac9aec816d7f5d158322d6f4e691
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067677"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101050"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Samouczek: uruchamianie aplikacji w usłudze Azure Kubernetes Service (AKS)
 
-W tym samouczku (część czwarta z ośmiu) przykładowa aplikacja jest wdrażana w klastrze Kubernetes. Wykonano następujące czynności:
+W tym samouczku (część czwarta z siedmiu) przykładowa aplikacja jest wdrażana w klastrze Kubernetes. Wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Aktualizowanie plików manifestu Kubernetes
 > * Uruchamianie aplikacji w usłudze Kubernetes
 > * Testowanie aplikacji
 
-W kolejnych samouczkach ta aplikacja zostanie przeskalowana, zaktualizowana, a usługa Log Analytics zostanie skonfigurowana do monitorowania klastra Kubernetes.
+W kolejnych samouczkach ta aplikacja jest skalowana w poziomie i aktualizowana.
 
 Na potrzeby tego samouczka założono, że masz podstawową wiedzę na temat pojęć związanych z rozwiązaniem Kubernetes. Aby uzyskać szczegółowe informacje na jego temat, zapoznaj się z [dokumentacją rozwiązania Kubernetes][kubernetes-documentation].
 

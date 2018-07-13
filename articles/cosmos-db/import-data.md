@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 52d5977b2a454dec803ad1233fcb12cc9573521c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029608"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100355"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: narzędzie do migracji danych
 
@@ -450,7 +450,7 @@ Podczas importowania jest dostępnych kilka opcji zaawansowanych. Najpierw w prz
 
 Sekwencyjny importer rekordów usługi Azure Cosmos DB ma następujące zaawansowane opcje dodatkowe:
 
-1. Liczba żądań równoległych: domyślnie narzędzie obsługuje dwa żądania równoległe. W przypadku importowania małych dokumentów należy rozważyć zwiększenie liczby żądań równoległych. Jeśli zostanie ta liczba zostanie za bardzo zwiększona, podczas importowania mogą wystąpić ograniczenia przepustowości.
+1. Liczba żądań równoległych: domyślnie narzędzie obsługuje dwa żądania równoległe. W przypadku importowania małych dokumentów należy rozważyć zwiększenie liczby żądań równoległych. Jeśli zostanie ta liczba zostanie za bardzo zwiększona, podczas importowania mogą wystąpić ograniczenia prędkości.
 2. Wyłącz automatyczne generowanie identyfikatora: jeśli każdy dokument do zaimportowania zawiera pole identyfikatora, wybierając tę opcję, można zwiększyć wydajność. Dokumenty bez pola unikatowego identyfikatora nie są importowane.
 3. Aktualizuj istniejące dokumenty: narzędzie domyślnie nie zastępuje istniejących dokumentów z konfliktami identyfikatorów. Wybranie tej opcji pozwala na zastępowanie istniejących dokumentów z pasującymi identyfikatorami. Ta funkcja jest przydatna w przypadku planowanych migracji danych, które aktualizują istniejące dokumenty.
 4. Liczba ponownych prób przy niepowodzeniu: określa, ile razy ma zostać ponowiona próba nawiązania połączenia z usługą Azure Cosmos DB w przypadku przejściowych niepowodzeń (np. zakłócenia łączności sieciowej).

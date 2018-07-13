@@ -10,12 +10,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: aafb86e7ebc99ea48e09b34b58682c983fe9f293
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: cf98d3097128a0f8934fc114bc37a517df118234
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063109"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085392"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Szybki start: tworzenie konta magazynu usługi Azure Data Lake Storage 2. generacji w wersji zapoznawczej
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 |-----------|--------------|
 |Portal     | Brak         |
 |PowerShell | Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji **5.0.4-preview** lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby określić bieżącą wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). |
-|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchomić polecenia interfejsu wiersza polecenia platformy Azure w jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego komendy lokalnie</li></ul>|
+|Interfejs wiersza polecenia        | Możesz zalogować się do platformy Azure i uruchomić polecenia interfejsu wiersza polecenia platformy Azure w jeden z dwóch sposobów: <ul><li>Polecenia interfejsu wiersza polecenia platformy Azure możesz uruchamiać z poziomu witryny Azure Portal w usłudze Azure Cloud Shell </li><li>Możesz zainstalować interfejs wiersza polecenia i uruchamiać jego polecenia lokalnie</li></ul>|
 
 Podczas pracy w wierszu polecenia masz opcję uruchamiania powłoki chmury platformy Azure lub instalowania interfejsu wiersza polecenia lokalnie.
 
@@ -50,7 +50,7 @@ Ten przycisk służy do uruchamiania interaktywnej powłoki, której możesz uż
 
 ### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
 
-Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.38 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Omówienie tworzenia konta usługi Azure Data Lake Storage 2. generacji
 
@@ -63,7 +63,7 @@ Aby uzyskać więcej informacji dotyczących typów kont magazynu, zobacz temat 
 
 Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
 
-- Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
+- Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 - Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Tworzenie konta przy użyciu witryny Azure Portal
@@ -90,7 +90,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 > [!NOTE]
 > Hierarchiczna przestrzeń nazw jest włączona tylko w regionach Zachodnie stany USA 2 i Zachodnio-środkowe stany USA. Pamiętaj, aby podczas tworzenia konta magazynu wybrać jedną z tych lokalizacji.
 
-1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Magazyn** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
+1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Storage** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę konta magazynu.
 3. Pozostaw pole **Model wdrożenia** ustawione na wartość domyślną.
 4. Ustaw pole **Rodzaj konta** na wartość **StorageV2 (ogólnego przeznaczenia, wersja 2)**.
@@ -114,6 +114,15 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Grupy zasobów**, aby wyświetlić listę grup zasobów.
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk **Więcej** (**...** ) po prawej stronie listy.
 3. Wybierz pozycję **Usuń grupę zasobów** i potwierdź.
+
+
+## <a name="upgrade-your-powershell-module"></a>Uaktualnianie modułu PowerShell
+
+Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem programu PowerShell, musisz uaktualnić moduł do wersji zapoznawczej.
+
+Aby to zrobić, otwórz program PowerShell z podwyższonym poziomem uprawnień i wprowadź następujące polecenie: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+Następnie ponownie uruchom powłokę.
 
 ## <a name="create-an-account-using-powershell"></a>Tworzenie konta przy użyciu programu PowerShell
 
@@ -151,7 +160,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Location $location `
   -SkuName Standard_LRS `
   -Kind StorageV2 
-  -HierarchialNamespace $True
+  -EnableHierarchicalNamespace $True
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -162,6 +171,12 @@ Aby usunąć grupę zasobów i skojarzone z nią zasoby, w tym nowe konto magazy
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
+## <a name="upgrade-your-cli-module"></a>Uaktualnianie modułu interfejsu wiersza polecenia
+
+Aby zapewnić interakcję z usługą Data Lake Storage 2. generacji za pośrednictwem interfejsu wiersza polecenia, musisz dodać rozszerzenie do powłoki.
+
+Aby to zrobić: przy użyciu usługi Cloud Shell lub powłoki lokalnej, wprowadź następujące polecenie: `az extension add --name storage-preview`
+
 ## <a name="create-an-account-using-azure-cli"></a>Tworzenie konta przy użyciu interfejsu wiersza polecenia platformy Azure 
 
 Aby uruchomić usługę Azure Cloud Shell, zaloguj się do witryny [Azure Portal](https://portal.azure.com).
@@ -171,6 +186,7 @@ Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom
 ```cli
 az login
 ```
+
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Aby utworzyć nową grupę zasobów za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenia [az group create](/cli/azure/group#az_group_create). 
@@ -195,7 +211,7 @@ az storage account create \
     --location westus2 \
     --sku Standard_LRS \
     --kind StorageV2 \
-    --hierarchical-namespace true
+    --Enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów

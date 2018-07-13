@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 3b0e03d47a03411e3e6dc2d073d5087bcb42e03e
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 43b232e612f2ea4b47789e29a7f241bf4c35271d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960427"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100125"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (platforma .NET Core i program Visual Studio)
 
@@ -37,9 +37,9 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 - Program Visual Studio 2017 z zainstalowanym obciążeniem Tworzenie aplikacji internetowych. Jeśli program nie został zainstalowany, pobierz go [tutaj](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
-## <a name="set-up-azure-dev-spaces"></a>Konfigurowanie obszarów Azure Dev Spaces
+## <a name="set-up-azure-dev-spaces"></a>Konfigurowanie usługi Azure Dev Spaces
 
-Zainstaluj [rozszerzenie programu Visual Studio dla usługi Azure Dev Spaces](https://aka.ms/get-azds-visualstudio).
+Zainstaluj program [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="connect-to-a-cluster"></a>Łączenie z klastrem
 

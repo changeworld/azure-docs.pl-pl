@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047279"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082958"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,11 +113,11 @@ Aby uzyskać więcej informacji o pojęciach związanych z usługą Data Factory
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Obecnie można tworzyć fabryki danych w regionach Wschodnie stany USA, Wschodnie stany USA 2 oraz Europa Zachodnia. Jednak fabryka danych może mieć dostęp do magazynów danych i usług obliczeniowych w innych regionach świadczenia usługi Azure, aby przenosić dane między magazynami danych lub przetwarzać dane przy użyciu usług obliczeniowych.
+Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Jednak fabryka danych może mieć dostęp do magazynów danych i usług obliczeniowych w innych regionach świadczenia usługi Azure, aby przenosić dane między magazynami danych lub przetwarzać dane przy użyciu usług obliczeniowych.
 
 Sama usługa Azure Data Factory nie przechowuje żadnych danych. Usługa umożliwia tworzenie opartych na danych przepływów pracy do aranżowania przenoszenia danych między obsługiwanymi magazynami danych oraz przetwarzania danych przy użyciu usług obliczeniowych w innych regionach lub w środowisku lokalnym. Umożliwia także monitorowanie przepływów pracy i zarządzanie nimi przy użyciu zarówno mechanizmów programowych, jak i interfejsu użytkownika.
 
-Mimo iż usługa Data Factory jest dostępna tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia, usługa zapewniająca przenoszenie danych w usłudze Data Factory jest dostępna globalnie w kilku regionach. Jeśli magazyn danych znajduje się za zaporą, dane są przenoszone przez własne środowisko Integration Runtime zainstalowane w środowisku lokalnym.
+Chociaż usługa Data Factory jest dostępna tylko w wybranych regionach, to usługa zapewniająca przenoszenie danych w usłudze Data Factory jest dostępna globalnie w kilku regionach. Jeśli magazyn danych znajduje się za zaporą, dane są przenoszone przez własne środowisko Integration Runtime zainstalowane w środowisku lokalnym.
 
 Załóżmy na przykład, że środowiska obliczeniowe, takie jak klaster usługi Azure HDInsight i usługa Azure Machine Learning, są uruchamiane z regionu Europa Zachodnia. Można utworzyć i zastosować wystąpienie usługi Azure Data Factory w regionie Wschodnie stany USA lub Wschodnie stany USA 2 oraz użyć go do planowania zadań wykonywanych w środowiskach obliczeniowych w regionie Europa Zachodnia. Wyzwolenie zadania w środowisku obliczeniowym zajmuje usłudze Data Factory kilka milisekund, ale czas uruchomienia zadania w środowisku obliczeniowym nie zmienia się.
 

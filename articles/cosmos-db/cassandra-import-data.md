@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 26731d80f5917f9d21aacafb5f8a79cfb02855af
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 73c9f1fc26f5cb36cc475a66b67705c6177bebf8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795078"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095676"
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: importowanie danych bazy danych Cassandra
 

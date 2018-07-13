@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: b9cf3ae3417b993cd721460484d6228daf7b283c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd803fed4bc6a25904b2ea00a5b21af606ad7153
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627351"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097900"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Szybki start: rozpoczynanie pracy z usługami Hadoop i Hive w usłudze Azure HDInsight przy użyciu witryny Azure Portal
 
@@ -80,7 +80,7 @@ W tej sekcji utworzysz klaster usługi Hadoop w usłudze HDInsight przy użyciu 
     
     |Właściwość  |Opis  |
     |---------|---------|
-    |**Podstawowy typ magazynu**     | Na potrzeby tego artykułu wybierz pozycję **Magazyn Azure**, aby użyć usługi Azure Storage Blob jako domyślnego konta magazynu. Alternatywnie możesz użyć usługi Azure Data Lake Store jako magazynu domyślnego. |
+    |**Podstawowy typ magazynu**     | Na potrzeby tego artykułu wybierz pozycję **Magazyn Azure**, aby użyć usługi Azure Storage Blob jako domyślnego konta magazynu. Możesz też użyć usługi Azure Data Lake Storage jako magazynu domyślnego. |
     |**Metoda wybierania**     |  Na potrzeby tego artykułu wybierz pozycję **Moje subskrypcje**, aby użyć konta magazynu ze swojej subskrypcji platformy Azure. Aby użyć konta magazynu z innych subskrypcji, wybierz pozycję **Klucz dostępu**, a następnie podaj klucz dostępu dla tego konta. |
     |**Tworzenie nowego konta magazynu**     | Podaj nazwę konta magazynu.|
 
@@ -177,6 +177,7 @@ Po przeczytaniu tego samouczka umiesz utworzyć oparty na systemie Linux klaster
 Jeśli chcesz już zacząć korzystać z własnych danych i dowiedzieć się więcej o sposobie przechowywania danych w usłudze HDInsight lub sposobie pobierania danych do usługi HDInsight, zobacz następujące artykuły:
 
 * Aby uzyskać informacje o sposobie używania usługi Azure Storage przez usługę HDInsight, zobacz [Używanie usługi Azure Storage z usługą HDInsight](../hdinsight-hadoop-use-blob-storage.md).
+* Aby uzyskać informacje na temat tworzenia klastra usługi HDInsight przy użyciu usługi Data Lake Storage, zobacz [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * Aby uzyskać informacje na temat przekazywania danych do usługi HDInsight, zobacz [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md).
 
 Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDInsight, zobacz następujące artykuły:

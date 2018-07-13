@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061849"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097482"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchu wewnętrznego do maszyn wirtualnych przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -75,10 +75,10 @@ W tej sekcji utworzysz dwie maszyny wirtualne dla puli zaplecza podstawowego mod
     - *myAvailabilitySet* — jako nazwę nowego zestawu dostępności, który tworzysz.
     -  *myVNet* — jako sieć wirtualną.
     - *myBackendSubnet* — jako podsieć.
-    - *myNetworkSecurityGroup* — jako nazwę nowej grupy zabezpieczeń sieci (zapora), którą musisz utworzyć.
+5. W obszarze **Sieciowa grupa zabezpieczeń** wybierz pozycję **Zaawansowane**. Następnie dla pozycji **Sieciowa grupa zabezpieczeń (zapora)** wybierz opcję **Brak**.
 5. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
 6. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
-7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: zestawem dostępności *myAvailibilityset*, siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i sieciową grupą zabezpieczeń *myNetworkSecurityGroup*. 
+7. Korzystając z kroków 1–6, utwórz drugą maszynę wirtualną o nazwie *VM2* z następującymi ustawieniami: zestawem dostępności *myAvailibilityset*, siecią wirtualną *myVnet*, podsiecią *myBackendSubnet* i wybraną opcją **Brak** w polu **Sieciowa grupa zabezpieczeń (zapora)**. 
 
 ### <a name="install-iis-and-customize-the-default-web-page"></a>Instalowanie usług IIS i dostosowywanie domyślnej strony internetowej
 
@@ -100,33 +100,6 @@ W tej sekcji utworzysz dwie maszyny wirtualne dla puli zaplecza podstawowego mod
 5. Zamknij połączenie protokołu RDP z maszyną wirtualną *myVM1*.
 6. Powtórz kroki od 1 do 5 na maszynie wirtualnej *myVM2*, aby zainstalować usługi IIS i dostosować domyślną stronę internetową.
 
-## <a name="create-nsg-rules"></a>Tworzenie reguł sieciowej grupy zabezpieczeń
-
-W tej sekcji utworzysz reguły sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące przy użyciu protokołów HTTP i RDP.
-
-1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myNetworkSecurityGroup** znajdującą się w grupie zasobów **myResourceGroupLB**.
-2. W obszarze **Ustawienia** kliknij pozycję **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie kliknij przycisk **Dodaj**.
-3. Wprowadź następujące wartości dla reguły zabezpieczeń dla ruchu przychodzącego o nazwie *myHTTPRule*, aby umożliwić obsługę przychodzących połączeń HTTP przy użyciu portu 80:
-    - *Tag usługi* — w polu **Źródło**.
-    - *Internet* — w polu **Tag usługi źródłowej**
-    - *80* — w polu **Docelowe zakresy portów**
-    - *TCP* — w polu **Protokół**
-    - *Zezwalaj* — w polu **Akcja**
-    - *100* — w polu **Priorytet**
-    - *myHTTPRule* — jako nazwę
-    - *Zezwalaj na HTTP* —jako opis
-4. Kliknij przycisk **OK**.
- 
-5. Powtórz kroki od 2 do 4, używając następujących wartości, aby utworzyć inną regułę o nazwie *myRDPRule* zezwalającą na przychodzące połączenia RDP przy użyciu portu 3389:
-    - *Tag usługi* — w polu **Źródło**.
-    - *Internet* — w polu **Tag usługi źródłowej**
-    - *3389* — w polu **Docelowe zakresy portów**
-    - *TCP* — w polu **Protokół**
-    - *Zezwalaj* — w polu **Akcja**
-    - *200* — w polu **Priorytet**
-    - *myRDPRule* — w polu nazwy
-    - *Zezwalaj na RDP* — w polu opisu
-
 ## <a name="create-basic-load-balancer-resources"></a>Tworzenie zasobów podstawowego modułu równoważenia obciążenia
 
 W tej sekcji skonfigurujesz ustawienia modułu równoważenia obciążenia dla puli adresów zaplecza i sondy kondycji oraz określisz reguły modułu równoważenia obciążenia i reguły translatora adresów sieciowych.
@@ -139,7 +112,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myLoadBalancer**.
 2. W obszarze **Ustawienia** kliknij pozycję **Pule zaplecza**, a następnie kliknij pozycję **Dodaj**.
 3. Na stronie **Dodawanie puli zaplecza** wykonaj następujące czynności:
-    - W polu nazwy wpisz *myBackEndPool jako nazwę puli zaplecza.
+    - W polu nazwy wpisz *myBackEndPool* jako nazwę puli zaplecza.
     - W polu **Skojarzone z** kliknij w menu rozwijanym pozycję **Zestaw dostępności**
     - W polu **Zestaw dostępności** kliknij pozycję **myAvailabilitySet**.
     - Kliknij pozycję **Dodaj docelową konfigurację adresu IP sieci**, aby dodać każdą utworzoną maszynę wirtualną (*myVM1* & *myVM2*) do puli zaplecza.

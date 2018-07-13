@@ -1,120 +1,119 @@
 ---
-title: Zaawansowane monitorowanie zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób monitorowania urządzeń ze zdalnego pulpitu nawigacyjnego monitorowania rozwiązania.
+title: Monitorowanie urządzeń IoT z poziomu rozwiązania platformy Azure | Microsoft Docs
+description: W tym samouczku pokazano, jak monitorować urządzenia IoT przy użyciu akceleratora rozwiązań do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 02/22/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4d2dabd348d7fda4fa7ca3aac9975fd4179400c5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.date: 06/08/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 5f42ed0fa5362959e5619f2d550ca1ae3711ed65
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627403"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097465"
 ---
-# <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Wykonaj zaawansowanego monitorowania za pomocą rozwiązania monitorowania zdalnego
+# <a name="tutorial-monitor-your-iot-devices"></a>Samouczek: monitorowanie urządzeń IoT
 
-Ten samouczek pokazuje możliwości monitorowania zdalnego pulpitu nawigacyjnego. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania w celu monitorowania połączonych urządzeń IoT. Użyjesz pulpitu nawigacyjnego rozwiązania, aby wyświetlać dane telemetryczne, informacje na temat urządzenia, alerty i wskaźniki KPI.
 
-W tym samouczku dwa symulowanego urządzenia ciężarówka Contoso służy do Dowiedz się, jak monitorować urządzenia z poziomu pulpitu nawigacyjnego akceleratora rozwiązań. Jako operatora firmy Contoso należy monitorować lokalizacji i zachowania użytkownika pojazdów w polu.
+Aby wprowadzić te funkcje monitorowania, w samouczku wykorzystano dwa urządzenia symulowane: ciężarówki. Ciężarówki są zarządzane przez organizację Contoso i są połączone z akceleratorem rozwiązań do zdalnego monitorowania. Jako operator firmy Contoso musisz monitorować lokalizację i działanie ciężarówek w terenie.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Filtrowanie urządzeń na pulpicie nawigacyjnym
-> * Widok telemetrii w czasie rzeczywistym
-> * Wyświetl szczegóły urządzenia
-> * Wyświetl alerty z urządzeń
-> * Wyświetlanie systemu wskaźników KPI
+> * Wyświetlanie danych telemetrycznych w czasie rzeczywistym
+> * Wyświetlanie szczegółów urządzenia
+> * Wyświetlanie alertów z urządzeń
+> * Wyświetlanie wskaźników KPI
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
+Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
 
-## <a name="choose-the-devices-to-display"></a>Wybierz urządzenia do wyświetlenia
+## <a name="choose-the-devices-to-display"></a>Wybieranie urządzenia do wyświetlenia
 
-Aby wybrać, które urządzenia są wyświetlane na **pulpitu nawigacyjnego** Użyj filtrów. Aby wyświetlić tylko **ciężarówka** urządzenia, wybierz wbudowane **pojazdów** filtr w listy rozwijanej filtru:
+Aby wybrać połączone urządzenia, które mają być wyświetlane na stronie **Pulpit nawigacyjny**, użyj filtrów. Aby wyświetlić tylko urządzenia typu **Truck** (Ciężarówka), wybierz wbudowany filtr **Trucks** na liście rozwijanej filtrów:
 
-![Filtr dla pojazdów na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter.png)
+[![Filtrowanie ciężarówek na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-Po zastosowaniu filtru tylko te urządzenia, które spełniają warunki filtru wyświetlania mapy na **pulpitu nawigacyjnego** strony:
+Po zastosowaniu filtrowania na mapie na stronie **Pulpit nawigacyjny** są wyświetlane tylko te urządzenia, które odpowiadają warunkom filtrowania:
 
-![Wyświetl pojazdów na mapie](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap.png)
+[![Tylko ciężarówki są wyświetlane na mapie](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-Filtr określa również urządzeń, które widać w **Telemetrii** wykresu:
+Filtr określa również, które urządzenia są widoczne na wykresie **Telemetria**:
 
-![Wyświetla dane telemetryczne ciężarówka na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry.png)
+[![Dane telemetryczne ciężarówek są wyświetlane na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetry-expanded.png#lightbox)
 
-Aby utworzyć, edytować i usunąć filtry, wybierz **Zarządzanie filtrami**.
+Aby tworzyć, edytować i usuwać filtry, wybierz pozycję **Zarządzaj grupami urządzeń**.
 
-## <a name="view-real-time-telemetry"></a>Widok telemetrii w czasie rzeczywistym
+## <a name="view-real-time-telemetry"></a>Wyświetlanie danych telemetrycznych w czasie rzeczywistym
 
-Akcelerator rozwiązań zawiera dane szczegółowe dane telemetryczne w czasie rzeczywistym na wykresie na **pulpitu nawigacyjnego** strony. Wykres telemetrii pokazuje informacje o telemetrii dla urządzeń wybranych przez bieżący filtr:
+Akcelerator rozwiązań pokazuje dane telemetryczne w czasie rzeczywistym na wykresie na stronie **Pulpit nawigacyjny**. W górnej części wykresu z danymi telemetrycznymi pokazane są dostępne typy telemetrii dla wybranych urządzeń według bieżącego filtra:
 
-![Ciężarówka telemetrii kreślenia](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview.png)
+[![Typy danych telemetrycznych dotyczących ciężarówek](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-Wybierz wartości telemetrii, aby wyświetlić, wybierz typ telemetrii w górnej części wykresu:
+Aby wyświetlić dane telemetryczne dotyczące temperatury, kliknij pozycję **Temperature**:
 
-![Ciężarówka telemetrii kreślenia](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry.png)
+[![Wykres danych telemetrycznych dotyczących temperatury ciężarówek](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
-<!-- 05/01 - this features appears to have been removed
-To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
+## <a name="use-the-map"></a>Używanie mapy
 
-![Pause and restart telemetry display](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
+Na mapie wyświetlane są informacje dotyczące symulowanych ciężarówek wybranych przez bieżący filtr. Można powiększać i pomniejszać mapę, aby pokazać lokalizacje bardziej lub mniej szczegółowo. Kolor ikony urządzenia na mapie wskazuje, czy są aktywne jakiekolwiek **alerty** lub **ostrzeżenia** dotyczące urządzenia. Podsumowanie liczby **alertów** i **ostrzeżeń** jest wyświetlane po lewej stronie mapy.
 
-## <a name="use-the-map"></a>Użyj mapy
+Aby wyświetlić szczegóły urządzenia, powiększ lub pomniejsz mapę w celu zlokalizowania urządzenia, a następnie wybierz urządzenie na mapie. Następnie kliknij etykietę urządzenia, aby otworzyć panel **Szczegóły urządzenia**. Szczegóły urządzenia obejmują:
 
-Mapy Wyświetla informacje o pojazdów symulowane, wybrana przez bieżący filtr. Można powiększanie i przesuwanie mapę, aby wyświetlić lokalizacje mniej lub bardziej szczegółowo. Ikony urządzeń na mapie wskazuje wszelkie **alerty** lub **ostrzeżenia** działają urządzenia. Podsumowanie liczby **alerty** i **ostrzeżenia** Wyświetla z lewej strony mapy.
+* Ostatnie wartości danych telemetrycznych
+* Metody obsługiwane przez urządzenie
+* Właściwości urządzenia
 
-<!-- 05/01 - cannot select a deice on the map
-To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
+[![Wyświetlanie szczegółów urządzenia na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
-* Recent telemetry values
-* Methods the device supports
-* Device properties
+## <a name="view-alerts"></a>Wyświetlanie alertów
 
-![View device details on the dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail.png)-->
+Na panelu **Alerty** wyświetlane są szczegółowe informacje dotyczące najnowszych alertów z urządzeń:
 
-## <a name="view-alerts-from-your-devices"></a>Wyświetl alerty z urządzeń
+[![Wyświetlanie alertów urządzenia na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
-Mapy wyróżnia urządzeń w bieżący filtr z **alerty** i **ostrzeżenia**. **Alerty** panelu Wyświetla szczegółowe informacje o najnowszych alertów z urządzeń:
+Możesz użyć filtrów, aby dopasować zakres czasowy dla ostatnich alertów. Domyślne na panelu wyświetlane są alerty z ostatniej godziny:
 
-![Wyświetl alerty systemu na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms.png)
+[![Filtrowanie alertów według czasu](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter-expanded.png#lightbox)
 
-Można użyć **pulpitu nawigacyjnego** filtr, aby dopasować przedział czasu dla ostatnich alertów. Domyślnie panelu wyświetlane alerty z ostatniej godziny:
+## <a name="view-the-system-kpis"></a>Wyświetlanie wskaźników KPI
 
-![Filtrowanie alertów według czasu](./media/iot-accelerators-remote-monitoring-monitor/dashboardalarmsfilter.png)
+Na stronie **Pulpit nawigacyjny** wyświetlane są wskaźniki KPI systemu obliczane przez akcelerator rozwiązań na panelu **Analiza**:
 
-## <a name="view-the-system-kpis"></a>Wyświetlanie systemu wskaźników KPI
+[![Wskaźniki KPI na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
-**Pulpitu nawigacyjnego** zostanie wyświetlona strona system wskaźników KPI:
+Na pulpicie nawigacyjnym pokazane są trzy wskaźniki KPI dla alertów wybranych zgodnie z bieżącymi filtrami urządzeń i czasu:
 
-![Pulpit nawigacyjny wskaźników KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis.png)
+* Liczba aktywnych alertów dotyczących reguł, które wywołały najwięcej alertów.
+* Proporcje alertów według typu urządzenia.
+* Procent alertów krytycznych.
 
-Można użyć **pulpitu nawigacyjnego** filtr, aby dopasować przedział czasu dla agregacji kluczowego wskaźnika wydajności. Domyślnie panelu Wyświetla zagregowane w ciągu ostatniej godziny kluczowych wskaźników wydajności.
+Te same filtry, które wyznaczają zakres czasowy dla alertów i określają, które urządzenia są wyświetlane, wyznaczają sposób agregowania wskaźników KPI. Domyślnie na panelu wyświetlane są zagregowane wskaźniki KPI z ostatniej godziny.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym samouczku przedstawiono sposób użycia **pulpitu nawigacyjnego** strony do filtrowania i monitorować pojazdów symulowane, udostępniane w rozwiązaniu monitorowania zdalnego:
+Jeśli planujesz przejść do kolejnego samouczka, akcelerator rozwiązań do zdalnego monitorowania powinien pozostać wdrożony. Aby zmniejszyć koszty działania akceleratora rozwiązań, gdy go nie używasz, możesz zatrzymać symulowane urządzenia w panelu Ustawienia:
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * Filtrowanie urządzeń na pulpicie nawigacyjnym
-> * Widok telemetrii w czasie rzeczywistym
-> * Wyświetl szczegóły urządzenia
-> * Wyświetl alerty z urządzeń
-> * Wyświetlanie systemu wskaźników KPI
+[![Wstrzymywanie telemetrii](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/togglesimulation-expanded.png#lightbox)
 
-Teraz, kiedy znasz jak monitorować urządzenia, Sugerowane następne kroki są Aby dowiedzieć się, jak:
+Możesz ponownie uruchomić urządzenia symulowane, gdy postanowisz rozpocząć kolejny samouczek.
 
-* [Wykrywanie problemów przy użyciu reguły progu](iot-accelerators-remote-monitoring-automate.md).
-* [Konfigurowanie urządzeń oraz zarządzanie nimi](iot-accelerators-remote-monitoring-manage.md).
-* [Rozwiązywanie problemów i Korygowanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md).
-* [Testowanie rozwiązania z urządzeniami symulowane](iot-accelerators-remote-monitoring-test.md).
+Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard):
 
-<!-- Next tutorials in the sequence -->
+![Usuwanie rozwiązania](media/iot-accelerators-remote-monitoring-monitor/deletesolution.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku przedstawiono, jak korzystać ze strony **Pulpit nawigacyjny** w akceleratorze rozwiązań do zdalnego monitorowania, aby filtrować i monitorować symulowane ciężarówki. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu wykrywania problemów z połączonymi urządzeniami, przejdź do kolejnego samouczka.
+
+> [!div class="nextstepaction"]
+> [Wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania](iot-accelerators-remote-monitoring-automate.md)

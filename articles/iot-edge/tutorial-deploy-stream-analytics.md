@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ad2895a457a20632823260f2429ac95fad82089c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060199"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081391"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Samouczek: wdrażanie usługi Azure Stream Analytics jako modułu usługi IoT Edge — wersja zapoznawcza
 
@@ -128,7 +128,7 @@ Możesz teraz wdrożyć zadanie usługi Azure Stream Analytics na urządzeniu us
    Jeśli moduł tempSensor został już wcześniej wdrożony na tym urządzeniu, może on zostać automatycznie wypełniony. W przeciwnym razie dodaj moduł, wykonując następujące kroki:
 
    1. Kliknij pozycję **Dodaj** i wybierz pozycję **Moduł usługi IoT Edge**.
-   2. W polu Nazwa wpisz **tempsensor**.
+   2. W polu Nazwa wpisz **tempSensor**.
    3. W polu Identyfikator URI obrazu wpisz **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**. 
    4. Pozostaw inne ustawienia bez zmian.
    5. Wybierz pozycję **Zapisz**.

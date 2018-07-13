@@ -1,6 +1,6 @@
 ---
-title: Skalowanie klastra usługi Azure Service Fabric | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak szybko skalować klaster usługi Service Fabric.
+title: Skalowanie klastra usługi Service Fabric na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak szybko skalować klaster usługi Service Fabric na platformie Azure.
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83f7a03744e7e8819d71eae81ed8e497797bef62
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642703"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109413"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster"></a>Samouczek: skalowanie klastra usługi Service Fabric
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
 Niniejszy samouczek jest drugą częścią serii. Przedstawiono w nim skalowanie istniejącego klastra w poziomie i w pionie. Ukończenie tego samouczka pozwoli Ci uzyskać wiedzę na temat skalowania klastra i czyszczenia pozostałych zasobów.
 
@@ -41,14 +41,17 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * [Wdrażanie usługi API Management z usługą Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed rozpoczęciem tego samouczka:
-- Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
-- Utwórz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) lub [klaster systemu Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md) na platformie Azure.
-- W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj program [Visual Studio 2017](http://www.visualstudio.com), a następnie zainstaluj obciążenia **Programowanie na platformie Azure**, **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** oraz **Programowanie dla wielu platform w środowisku .NET Core**.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
-- W przypadku wdrażania klastra systemu Linux skonfiguruj środowisko projektowe Java w systemie [Linux](service-fabric-get-started-linux.md) lub [MacOS](service-fabric-get-started-mac.md).  Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md). 
+
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
+* Utwórz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) lub [klaster systemu Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md) na platformie Azure.
+* W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj program [Visual Studio 2017](http://www.visualstudio.com), a następnie zainstaluj obciążenia **Programowanie na platformie Azure**, **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** oraz **Programowanie dla wielu platform w środowisku .NET Core**.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
+* W przypadku wdrażania klastra systemu Linux skonfiguruj środowisko projektowe Java w systemie [Linux](service-fabric-get-started-linux.md) lub [MacOS](service-fabric-get-started-mac.md).  Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
 Przed wykonaniem poleceń platformy Azure zaloguj się na konto platformy Azure i wybierz subskrypcję.
 
 ```powershell
@@ -118,7 +121,7 @@ Skalowanie w pionie odbywa się tak samo jak skalowanie w poziomie, przy czym u�
 > [!NOTE]
 > Ta część dotyczy tylko warstwy trwałości *Brązowa*. Aby uzyskać więcej informacji o trwałości, zobacz [Planowanie pojemności klastra usługi Service Fabric][durability].
 
-Skalowanie w pionie zestawu skalowania maszyn wirtualnych w większości przypadków powoduje usunięcie ostatnio utworzonego wystąpienia maszyny wirtualnej. A zatem należy znaleźć niedawno utworzony, pasujący węzeł usługi Service Fabric. Można to zrobić, wyszukując największą wartość właściwości `NodeInstanceId` w węzłach usługi Service Fabric. Poniższy przykładowy kod przedstawia sortowanie według wystąpienia węzła i zwraca szczegóły wystąpienia o największej wartości identyfikatora. 
+Skalowanie w pionie zestawu skalowania maszyn wirtualnych w większości przypadków powoduje usunięcie ostatnio utworzonego wystąpienia maszyny wirtualnej. A zatem należy znaleźć niedawno utworzony, pasujący węzeł usługi Service Fabric. Można to zrobić, wyszukując największą wartość właściwości `NodeInstanceId` w węzłach usługi Service Fabric. Poniższy przykładowy kod przedstawia sortowanie według wystąpienia węzła i zwraca szczegóły wystąpienia o największej wartości identyfikatora.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -180,7 +183,7 @@ else
     # Stop node
     $stopid = New-Guid
     Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-    
+
     $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
     $loopTimeout = 10
 
@@ -191,7 +194,7 @@ else
         $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
         Write-Host "Checking state... $state found"
     }
-    
+
     if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
     {
         Write-Error "Stop transaction failed with $state"
@@ -220,13 +223,12 @@ sfctl node remove-state --node-name _nt1vm_5
 > [!TIP]
 > Następujące zapytania **sfctl** pozwalają sprawdzić stan każdego kroku
 >
-> **Sprawdzanie stanu dezaktywacji**  
+> **Sprawdzanie stanu dezaktywacji**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
-> **Sprawdzanie stanu zatrzymania**  
+> **Sprawdzanie stanu zatrzymania**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
-
 
 ### <a name="scale-in-the-scale-set"></a>Skalowanie zestawu w pionie
 
@@ -249,7 +251,6 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
-
 ## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
@@ -258,7 +259,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Odczytywanie liczby węzłów klastra
 > * Dodawanie węzłów klastra (skalowanie w poziomie)
 > * Usuwanie węzłów klastra (skalowanie w pionie)
-
 
 Przejdź do kolejnego samouczka, aby dowiedzieć się, jak uaktualnić środowisko uruchomieniowe klastra.
 > [!div class="nextstepaction"]

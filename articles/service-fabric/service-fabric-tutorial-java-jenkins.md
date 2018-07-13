@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ciągłej integracji/ciągłego wdrażania dla aplikacji Java usługi Azure Service Fabric | Microsoft Docs
+title: Konfigurowanie narzędzia Jenkins pod kątem aplikacji Java w usłudze Service Fabric na platformie Azure | Microsoft Docs
 description: W tym samouczku przedstawiono sposób konfigurowania ciągłej integracji przy użyciu narzędzia Jenkins w celu wdrożenia aplikacji Java usługi Service Fabric.
 services: service-fabric
 documentationcenter: java
@@ -15,15 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: bd986b8741b55a10018f7400c9415e7aedfbf119
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949841"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109447"
 ---
-# <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Samouczek: konfigurowanie środowiska narzędzia Jenkins przy użyciu usługi Service Fabric
-Niniejszy samouczek jest piątą częścią serii. Zawiera on informacje dotyczące sposobu wdrażania uaktualnień aplikacji za pomocą usługi Jenkins. W tym samouczku wtyczka usługi Jenkins w usłudze Service Fabric jest używana w połączeniu z repozytorium usługi Github hostującym aplikację do głosowania w celu wdrożenia aplikacji w klastrze. 
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Samouczek: konfigurowanie środowiska Jenkins w celu włączenia ciągłej integracji/ciągłego wdrażania dla aplikacji Java w usłudze Service Fabric
+
+Niniejszy samouczek jest piątą częścią serii. Zawiera on informacje dotyczące sposobu wdrażania uaktualnień aplikacji za pomocą usługi Jenkins. W tym samouczku wtyczka usługi Jenkins w usłudze Service Fabric jest używana w połączeniu z repozytorium usługi Github hostującym aplikację do głosowania w celu wdrożenia aplikacji w klastrze.
 
 Część piąta serii zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -39,15 +40,16 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * [Konfigurowanie monitorowania i diagnostyki dla aplikacji](service-fabric-tutorial-java-elk.md)
 > * Konfigurowanie ciągłej integracji/ciągłego dostarczania
 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Usługa Git zainstalowana na komputerze lokalnym ze [strony plików do pobrania usługi Git](https://git-scm.com/downloads). Aby uzyskać więcej informacji na temat usługi Git, zapoznaj się z [dokumentacją usługi Git](https://git-scm.com/docs).
-- Praktyczna wiedza na temat narzędzia [Jenkins](https://jenkins.io/).
-- Utworzone konto w serwisie [GitHub](https://github.com/) i wiedza dotycząca korzystania z serwisu GitHub.
-- Platforma [Docker](https://www.docker.com/community-edition) zainstalowana na komputerze.
+
+* Usługa Git zainstalowana na komputerze lokalnym ze [strony plików do pobrania usługi Git](https://git-scm.com/downloads). Aby uzyskać więcej informacji na temat usługi Git, zapoznaj się z [dokumentacją usługi Git](https://git-scm.com/docs).
+* Praktyczna wiedza na temat narzędzia [Jenkins](https://jenkins.io/).
+* Utworzone konto w serwisie [GitHub](https://github.com/) i wiedza dotycząca korzystania z serwisu GitHub.
+* Platforma [Docker](https://www.docker.com/community-edition) zainstalowana na komputerze.
 
 ## <a name="pull-and-deploy-service-fabric-jenkins-container-image"></a>Ściąganie i wdrażanie obrazu kontenera narzędzia Jenkins usługi Service Fabric
-Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabric lub poza nim. Poniższe instrukcje przedstawiają sposób konfigurowania go poza klastrem przy użyciu udostępnionego obrazu platformy Docker. Można jednak użyć wstępnie skonfigurowanego środowiska narzędzia Jenkins. Poniższy obraz kontenera jest instalowany z wtyczką usługi Service Fabric i jest natychmiast gotowy do użycia z usługą Service Fabric. 
+
+Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabric lub poza nim. Poniższe instrukcje przedstawiają sposób konfigurowania go poza klastrem przy użyciu udostępnionego obrazu platformy Docker. Można jednak użyć wstępnie skonfigurowanego środowiska narzędzia Jenkins. Poniższy obraz kontenera jest instalowany z wtyczką usługi Service Fabric i jest natychmiast gotowy do użycia z usługą Service Fabric.
 
 1. Ściągnij obraz kontenera narzędzia Jenkins usługi Service Fabric: ``docker pull rapatchi/jenkins:v10``. Ten obraz jest dostarczany ze wstępnie zainstalowaną wtyczką narzędzia Jenkins usługi Service Fabric.
 
@@ -68,8 +70,8 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     Jeśli identyfikator kontenera to 2d24a73b5964, użyj wartości 2d24.
     * To hasło będzie wymagane do zalogowania się do pulpitu nawigacyjnego narzędzia Jenkins z poziomu portalu, którego adres to ``http://<HOST-IP>:8080``
     * Po zalogowaniu się po raz pierwszy możesz utworzyć konto użytkownika lub użyć konta administratora.
-    
-5. Skonfiguruj usługę GitHub do pracy z narzędziem Jenkins, wykonując kroki opisane w temacie [Generating a new SSH key and adding it to the SSH agent (Generowanie nowego klucza SSH i dodawanie go do agenta SSH)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Ponieważ polecenia są uruchamiane w z kontenera Docker, postępuj zgodnie z instrukcjami dla środowiska systemu Linux. 
+
+5. Skonfiguruj usługę GitHub do pracy z narzędziem Jenkins, wykonując kroki opisane w temacie [Generating a new SSH key and adding it to the SSH agent (Generowanie nowego klucza SSH i dodawanie go do agenta SSH)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Ponieważ polecenia są uruchamiane w z kontenera Docker, postępuj zgodnie z instrukcjami dla środowiska systemu Linux.
     * Użyj instrukcji z usługi GitHub do wygenerowania klucza SSH. Następnie dodaj klucz SSH do konta usługi GitHub, które hostuje repozytorium.
     * Uruchom polecenia wymienione pod powyższym linkiem w powłoce platformy Docker narzędzia Jenkins (a nie na hoście).
     * Aby zalogować się do powłoki narzędzia Jenkins z poziomu hosta, użyj następujących poleceń:
@@ -78,7 +80,7 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
     ```
 
-    Upewnij się, że klaster lub maszyna hostujące obraz kontenera narzędzia Jenkins mają publiczny adres IP. Dzięki publicznemu adresowi IP wystąpienie narzędzia Jenkins może otrzymywać powiadomienia z usługi GitHub.    
+    Upewnij się, że klaster lub maszyna hostujące obraz kontenera narzędzia Jenkins mają publiczny adres IP. Dzięki publicznemu adresowi IP wystąpienie narzędzia Jenkins może otrzymywać powiadomienia z usługi GitHub.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Tworzenie i konfigurowanie zadania narzędzia Jenkins
 
@@ -111,9 +113,9 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
 7. W sekcji **Build** (Kompilacja) z listy rozwijanej **Add build step** (Dodaj krok kompilacji) wybierz opcję **Invoke Gradle Script** (Wywołaj skrypt Gradle). W wyświetlonym widżecie otwórz zaawansowane menu i określ ścieżkę do lokalizacji **Root build script** (Główny skrypt kompilacji) dla aplikacji. Spowoduje to wybranie elementu build.gradle z określonej ścieżki i wykonanie odpowiedniego działania.
 
     ![Akcja kompilacji narzędzia Jenkins w usłudze Service Fabric](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
-  
-8. Z listy rozwijanej **Post-Build Actions** (Akcje po kompilacji) wybierz pozycję **Deploy Service Fabric Project** (Wdróż projekt usługi Service Fabric). W tym miejscu należy podać szczegóły dotyczące klastra, w ramach którego zostanie wdrożona skompilowana aplikacja usługi Service Fabric narzędzia Jenkins. Ścieżka do certyfikatu to lokalizacja, w której zainstalowano wolumin (/tmp/myCerts). 
-   
+
+8. Z listy rozwijanej **Post-Build Actions** (Akcje po kompilacji) wybierz pozycję **Deploy Service Fabric Project** (Wdróż projekt usługi Service Fabric). W tym miejscu należy podać szczegóły dotyczące klastra, w ramach którego zostanie wdrożona skompilowana aplikacja usługi Service Fabric narzędzia Jenkins. Ścieżka do certyfikatu to lokalizacja, w której zainstalowano wolumin (/tmp/myCerts).
+
     Możesz także podać dodatkowe szczegóły dotyczące używane podczas wdrażania aplikacji. Na poniższym zrzucie ekranu przedstawiono przykład szczegółów aplikacji:
 
     ![Akcja kompilacji narzędzia Jenkins w usłudze Service Fabric](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
@@ -122,11 +124,11 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     > Określany w tym miejscu klaster może być tym samym klastrem, który hostuje aplikację kontenera narzędzia Jenkins, jeśli usługa Service Fabric jest używana do wdrożenia obrazu kontenera narzędzia Jenkins.
     >
 
-## <a name="update-your-existing-application"></a>Aktualizowanie istniejącej aplikacji 
+## <a name="update-your-existing-application"></a>Aktualizowanie istniejącej aplikacji
 
-1. Zaktualizuj tytuł pliku HTML w pliku *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* na **Service Fabric Voting Sample V2**. 
+1. Zaktualizuj tytuł pliku HTML w pliku *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* na **Service Fabric Voting Sample V2**.
 
-    ```html 
+    ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
         <div class="container-fluid">
             <div class="row">
@@ -138,7 +140,7 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     </div>
     ```
 
-2. Zaktualizuj wersje **ApplicationTypeVersion** i **ServiceManifestVersion** na **2.0.0** w pliku *Voting/VotingApplication/ApplicationManifest.xml*. 
+2. Zaktualizuj wersje **ApplicationTypeVersion** i **ServiceManifestVersion** na **2.0.0** w pliku *Voting/VotingApplication/ApplicationManifest.xml*.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -155,13 +157,13 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
              <StatelessService InstanceCount="1" ServiceTypeName="VotingWebType">
                 <SingletonPartition/>
              </StatelessService>
-          </Service>      
+          </Service>
        <Service Name="VotingDataService">
                 <StatefulService MinReplicaSetSize="3" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="3">
                     <UniformInt64Partition HighKey="9223372036854775807" LowKey="-9223372036854775808" PartitionCount="1"/>
                 </StatefulService>
             </Service>
-        </DefaultServices>      
+        </DefaultServices>
     </ApplicationManifest>
     ```
 
@@ -177,17 +179,18 @@ Narzędzie Jenkins możesz skonfigurować wewnątrz klastra usługi Service Fabr
     </CodePackage>
     ```
 
-4. Aby zainicjować zadanie narzędzia Jenkins, które wykonuje uaktualnienie aplikacji, wypchnij nowe zmiany do repozytorium GitHub. 
+4. Aby zainicjować zadanie narzędzia Jenkins, które wykonuje uaktualnienie aplikacji, wypchnij nowe zmiany do repozytorium GitHub.
 
 5. W narzędziu Service Fabric Explorer kliknij listę rozwijaną **Aplikacje**. Aby sprawdzić stan uaktualnienia, kliknij kartę **Uaktualnienia w toku**.
 
     ![Uaktualnianie w toku](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. Jeśli uzyskasz dostęp do lokalizacji**http://\<IP_hosta>:8080**, aplikacja do głosowania z pełną funkcjonalnością została uruchomiona i działa. 
+6. Jeśli uzyskasz dostęp do lokalizacji**http://\<IP_hosta>:8080**, aplikacja do głosowania z pełną funkcjonalnością została uruchomiona i działa.
 
     ![Lokalna aplikacja do głosowania](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]

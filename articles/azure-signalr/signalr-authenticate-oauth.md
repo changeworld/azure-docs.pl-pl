@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c24e3045640471ed6ee7052f877850acd8e8cf00
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37101130"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: uwierzytelnianie w usłudze Azure SignalR Service
 
@@ -45,7 +46,7 @@ Kod dla tego samouczka jest dostępny do pobrania w [repozytorium GitHub o nazwi
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Rejestrowanie nowej aplikacji OAuth za pomocą Twojego kona usługi GitHub
+> * Rejestrowanie nowej aplikacji OAuth za pomocą Twojego konta usługi GitHub
 > * Dodawanie kontrolera uwierzytelniania w celu obsługi uwierzytelniania usługi GitHub
 > * Wdrażanie aplikacji internetowej platformy ASP.NET Core na platformie Azure
 
@@ -56,7 +57,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Do ukończenia tego samouczka niezbędne są:
 
 * Konto utworzone w usłudze [GitHub](https://github.com/)
-* [Git](https://git-scm.com/)
+* [Usługa Git](https://git-scm.com/)
 * [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download/windows) 
 * [Skonfigurowana usługa Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
 * Pobrane lub sklonowane repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples)
@@ -87,9 +88,10 @@ Do ukończenia tego samouczka niezbędne są:
 
 ### <a name="update-the-startup-class-to-support-github-authentication"></a>Aktualizacja klasy Startup w celu obsługi uwierzytelniania usługi GitHub
 
-1. Dodaj odwołanie do najnowszego pakietu *Microsoft.AspNetCore.Authentication.Cookies*, a następnie przywróć wszystkie pakiety.
+1. Dodaj odwołanie do najnowszych pakietów *Microsoft.AspNetCore.Authentication.Cookies* i *AspNet.Security.OAuth.GitHub*, a następnie przywróć wszystkie pakiety.
 
         dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
 1. Otwórz plik *Startup.cs* i dodaj instrukcje `using` dla następujących przestrzeni nazw:
@@ -477,7 +479,7 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure:SignalR:ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring" 
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \

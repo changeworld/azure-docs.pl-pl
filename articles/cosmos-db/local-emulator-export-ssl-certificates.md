@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 237ab0ed99793f54574c4b81e883acb8c2bc57a9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611810"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082105"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB do użycia w językach Java, Python i Node.js
 
@@ -99,7 +99,7 @@ W tym samouczku wykonano następujące czynności:
 > * Wyeksportowano certyfikat SSL
 > * Przedstawiono sposób używania certyfikatu w językach Java, Python i Node.js
 
-Możesz teraz przejść do samouczka Tworzenie wyzwalacza HTTP usługi Azure Functions przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB.
+Teraz możesz przejść do sekcji pojęć, aby uzyskać więcej informacji na temat usługi Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
-> [Tworzenie funkcji platformy Azure przy użyciu danych wyjściowych z usługi Azure Cosmos DB](tutorial-functions-http-trigger.md) 
+>[Dostosowywalne poziomy spójności danych w usłudze Azure Cosmos DB](../cosmos-db/consistency-levels.md)

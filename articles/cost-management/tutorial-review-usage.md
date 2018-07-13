@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 79857f05505a59de94d7a6926afe38cceeac34f3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "35628721"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -27,6 +28,7 @@ Usługa Azure Cost Management umożliwia przeglądanie użycia i kosztów w celu
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
+> * Eksportowanie danych
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,7 +43,7 @@ Wszystkie informacje o użyciu i kosztach można przeglądać w portalu Cloudyn.
 
 ## <a name="track-usage-and-cost-trends"></a>Śledzenie trendów użycia i kosztów
 
-Możesz śledzić rzeczywiste pieniądze wydawane na użycie i koszty za pomocą raportów Over Time (Na przestrzeni czasu), aby identyfikować trendy. Aby rozpocząć przyglądanie się trendom, skorzystaj z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu). W menu w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Przy pierwszym otwarciu raportu nie są do niego zastosowane żadne grupy ani filtry.
+Możesz śledzić rzeczywiste pieniądze wydawane na użycie i koszty za pomocą raportów Over Time (Na przestrzeni czasu), aby identyfikować trendy. Aby rozpocząć przyglądanie się trendom, skorzystaj z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu). W lewym górnym rogu portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Przy pierwszym otwarciu raportu nie są do niego zastosowane żadne grupy ani filtry.
 
 Oto przykład raportu:
 
@@ -89,12 +91,15 @@ Alerty automatycznie powiadamiają uczestników projektu o anomaliach wydatków 
 
 Alert dotyczący dowolnego wydatku można utworzyć za pomocą dowolnego raportu kosztów. W tym przykładzie skorzystasz z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu), aby uzyskać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu budżetu całkowitego. Wszystkie poniższe kroki są wymagane do utworzenia alertu. W menu w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. W prawym górnym rogu raportu kliknij pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
 
-Skorzystaj z karty **Scheduling** (Planowanie), aby wysyłać do siebie informacje z raportu w wiadomości e-mail z wybraną częstotliwością. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtrowania będą uwzględnione w raporcie wysłanym w wiadomości e-mail. Kliknij kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). Jeśli budżet całkowity wynosi 500 000 USD i chcesz, aby powiadomienie zostało wysłane, gdy koszty zbliżą się do jego połowy, utwórz alert **Red alert** (Czerwony alert) o wartości 250 000 USD i **Yellow alert** (Żółty alert) o wartości 240 000 USD. Nie uwzględniaj przecinków we wprowadzanych wartościach. Następnie wybierz liczbę kolejnych alertów. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. Zapisz zaplanowany raport.
+W polu zapisywania lub planowania tego raportu skorzystaj z karty **Scheduling** (Planowanie), aby wysyłać do siebie informacje z raportu w wiadomości e-mail z wybraną częstotliwością. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtrowania będą uwzględnione w raporcie wysłanym w wiadomości e-mail. Kliknij kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). Jeśli budżet całkowity wynosi 500 000 USD i chcesz, aby powiadomienie zostało wysłane, gdy koszty zbliżą się do jego połowy, utwórz alert **Red alert** (Czerwony alert) o wartości 250 000 USD i **Yellow alert** (Żółty alert) o wartości 240 000 USD. Nie uwzględniaj przecinków we wprowadzanych wartościach. Następnie wybierz liczbę kolejnych alertów. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. Zapisz zaplanowany raport.
 
 ![przykładowy raport](./media/tutorial-review-usage/schedule-alert01.png)
 
 Możesz również wybrać metrykę Cost Percentage vs. Budget threshold (Procent kosztów a próg budżetu), aby utworzyć alerty. W przypadku tej metryki można używać wartości procentowych zamiast walutowych budżetu.
 
+## <a name="export-data"></a>Eksportowanie danych
+
+Podobnie do sposobu tworzenia alertów na potrzeby raportów możesz też wyeksportować dane z dowolnego raportu. Na przykład możesz wyeksportować listę kont Cloudyn lub innych danych użytkowników. Aby wyeksportować dowolny raport, otwórz raport, a następnie w prawym górnym rogu raportu kliknij opcję **Akcje**. Jedną z akcji, które możesz wykonać, jest opcja **Eksportuj wszystkie dane raportów**, która umożliwia pobranie lub wydrukowanie informacji. Możesz też wybrać opcję **Zaplanuj raport**, aby zaplanować raport i wysłać go jako wiadomość e-mail.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -104,6 +109,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Śledzenie trendów użycia i kosztów
 > * Wykrywanie przypadków niewydajnego użycia
 > * Tworzenie alertów dotyczących nietypowych wydatków i przekraczania wydatków
+> * Eksportowanie danych
 
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak prognozować wydatki przy użyciu danych historycznych.

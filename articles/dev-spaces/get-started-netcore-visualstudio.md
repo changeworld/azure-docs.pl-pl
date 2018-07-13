@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 93c1c9cb27e5eb2d56583dccaffe92e9d50ecc2d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c2d92f26bec2045e7f1e8afff189d58d8c29f25a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959278"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099480"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio
 
@@ -35,7 +35,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 1. Zainstaluj najnowszą wersję programu [Visual Studio 2017](https://www.visualstudio.com/vs/).
 1. Przy otwartym instalatorze programu Visual Studio upewnij się, że wybrano następujące obciążenie:
     * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
-1. Zainstaluj [rozszerzenie programu Visual Studio dla usługi Azure Dev Spaces](https://aka.ms/get-azds-visualstudio).
+1. Instalacja narzędzi [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio)
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Tworzenie aplikacji internetowej uruchomionej w kontenerze
 

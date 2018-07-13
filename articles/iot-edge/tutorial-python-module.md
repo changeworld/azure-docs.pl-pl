@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 884237a851461fe3d7a48708d221909804760ceb
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 42af2b5ec6b591929f37afebe6546d61b8a3a02a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063126"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082852"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w języku Python i wdrażanie go na urządzeniu symulowanym
 
@@ -34,7 +34,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Urządzenie usługi Azure IoT Edge utworzone w ramach przewodnika Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
+* Urządzenie usługi Azure IoT Edge utworzone w ramach przewodnika Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md).
+
+   >[!Note]
+   >Moduły języka Python dla usługi Azure IoT Edge nie obsługują urządzeń z systemem Windows lub ARM. 
+
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 * [Rozszerzenie języka Python dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
@@ -202,7 +206,7 @@ Do wdrożenia modułu Python na urządzeniu usługi IoT Edge możesz użyć witr
 
 1. Otwórz paletę poleceń programu VS Code, wybierając kolejno opcje **Widok** > **Paleta poleceń**.
 
-2. Wyszukaj i uruchom polecenie **Azure: zaloguj**. Postępuj zgodnie z instrukcjami, aby zalogować się na koncie platformy Azure. 
+2. Wyszukaj i uruchom polecenie **Azure: zaloguj**. Postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. 
 
 3. W palecie poleceń wyszukaj i uruchom polecenie **Azure IoT Hub: wybierz centrum IoT Hub**. 
 

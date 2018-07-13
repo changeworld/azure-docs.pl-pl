@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114977"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania środowiska App Service Environment
 
@@ -32,34 +33,49 @@ W sieci wirtualnej platformy Azure routing odbywa się na podstawie najdłuższe
 * Trasa protokołu BGP (jeśli używane są połączenia ExpressRoute)
 * Trasa systemowa
 
-Aby dowiedzieć się więcej na temat routingu w sieci wirtualnej, przeczytaj [User-defined routes and IP forwarding][routes] (Trasy zdefiniowane przez użytkownika i przesyłanie pakietów IP dalej). 
+Aby dowiedzieć się więcej na temat routingu w sieci wirtualnej, zobacz [User-defined routes and IP forwarding][routes] (Trasy zdefiniowane przez użytkownika i przesyłanie dalej pakietów IP). 
 
 Jeśli chcesz skierować ruch wychodzący środowiska ASE gdzieś indziej niż bezpośrednio do Internetu, dostępne są następujące opcje:
 
 * Zapewnienie środowisku ASE bezpośredniego dostępu do Internetu
+* Konfigurowanie podsieci środowiska ASE w celu ignorowania tras protokołu BGP
 * Skonfigurowanie podsieci środowiska ASE w celu używania punktów końcowych usług Azure SQL i Azure Storage
 * Dodanie własnych adresów IP do zapory usługi Azure SQL środowiska ASE
 
 ## <a name="enable-your-app-service-environment-to-have-direct-internet-access"></a>Zapewnianie środowisku App Service Environment bezpośredniego dostępu do Internetu
 
-Aby umożliwić środowisku ASE przechodzenie bezpośrednio do Internetu, nawet jeśli sieć wirtualną platformy Azure skonfigurowano przy użyciu usługi ExpressRoute, można użyć następujących metod:
+Aby umożliwić środowisku ASE bezpośredni dostęp do Internetu, nawet jeśli sieć wirtualną platformy Azure skonfigurowano przy użyciu usługi ExpressRoute, można użyć następujących metod:
 
 * Skonfiguruj w usłudze ExpressRoute anonsowanie adresów 0.0.0.0/0. Domyślnie powoduje to kierowanie całego ruchu wychodzącego do środowiska lokalnego.
 * Utwórz trasę zdefiniowaną przez użytkownika z prefiksem adresu 0.0.0.0/0 oraz typem następnego przeskoku Internet i zastosuj ją do podsieci środowiska ASE.
 
 Po wprowadzeniu tych dwóch zmian ruch kierowany do Internetu pochodzący z podsieci środowiska App Service Environment nie będzie w sposób wymuszony kierowany do połączenia usługi ExpressRoute.
 
-Jeśli sieć już przekierowuje ruch lokalnie, należy utworzyć podsieć w celu hostowania środowiska ASE i skonfigurować odpowiednią trasę UDR przed podjęciem próby wdrożenia środowiska ASE.  
+Jeśli sieć już przekierowuje ruch lokalnie, należy utworzyć podsieć w celu hostowania środowiska ASE i skonfigurować trasę zdefiniowaną przez użytkownika przed podjęciem próby wdrożenia środowiska ASE.  
 
 > [!IMPORTANT]
 > Trasy zdefiniowane przez użytkownika muszą być wystarczająco szczegółowe, aby miały pierwszeństwo względem wszelkich tras anonsowanych przez konfigurację usługi ExpressRoute. W poprzednim przykładzie użyto szerokiego zakresu adresów 0.0.0.0/0. Może to zostać przypadkowo zastąpione przez anonsy tras z bardziej szczegółowymi zakresami adresów.
 >
-> Środowiska App Service Environment nie są obsługiwane w przypadku konfiguracji usługi ExpressRoute z anonsowaniem krzyżowym tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Konfiguracje usługi ExpressRoute ze skonfigurowaną publiczną komunikacją równorzędną otrzymują anonsy tras od firmy Microsoft. Te anonse zawierają duży zestaw zakresów adresów platformy Microsoft Azure. W przypadku anonsowania krzyżowego zakresów adresów w ścieżce prywatnej komunikacji równorzędnej wszystkie pakiety sieciowe wychodzące z podsieci środowiska App Service Environment są kierowane do lokalnej infrastruktury sieciowej klienta. Ten przepływ sieciowy nie jest domyślnie obsługiwany w przypadku środowisk App Service Environment. Jednym z rozwiązań tego problemu jest zatrzymanie anonsowania krzyżowego tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Innym jest umożliwienie środowisku App Service Environment działania w przypadku konfiguracji wymuszonego tunelowania.
+> Środowiska App Service Environment nie są obsługiwane w przypadku konfiguracji usługi ExpressRoute z anonsowaniem krzyżowym tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Konfiguracje usługi ExpressRoute ze skonfigurowaną publiczną komunikacją równorzędną otrzymują anonsy tras od firmy Microsoft. Te anonsy zawierają duży zestaw zakresów adresów platformy Microsoft Azure. W przypadku anonsowania krzyżowego zakresów adresów w ścieżce prywatnej komunikacji równorzędnej wszystkie pakiety sieciowe wychodzące z podsieci środowiska App Service Environment są kierowane do lokalnej infrastruktury sieciowej klienta. Ten przepływ sieciowy nie jest domyślnie obsługiwany w przypadku środowisk App Service Environment. Jednym z rozwiązań tego problemu jest zatrzymanie anonsowania krzyżowego tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Innym jest umożliwienie środowisku App Service Environment działania w przypadku konfiguracji wymuszonego tunelowania.
 
 ![Bezpośredni dostęp do Internetu][1]
 
+## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurowanie podsieci środowiska ASE w celu ignorowania tras protokołu BGP ## 
+
+Można skonfigurować podsieć środowiska ASE tak, aby były w niej ignorowane wszystkie trasy protokołu BGP.  Przy takiej konfiguracji środowisko ASE może uzyskać dostęp do wszystkich zależności bez problemów.  Jednak aby umożliwić aplikacjom dostęp do zasobów lokalnych, konieczne będzie utworzenie tras zdefiniowanych przez użytkownika.
+
+Aby skonfigurować ignorowanie tras protokołu BGP w podsieci środowiska ASE:
+
+* Utwórz trasę zdefiniowaną przez użytkownika i przypisz ją do podsieci środowiska ASE (jeśli taka trasa jeszcze nie istnieje).
+* W witrynie Azure Portal otwórz interfejs użytkownika tabeli tras przypisanej do podsieci środowiska ASE.  Wybierz pozycję Konfiguracja.  Wyłącz propagację tras protokołu BGP.  Kliknij pozycję Zapisz. Informacje o wyłączaniu tej funkcji znajdziesz w dokumencie [Create a route table][routetable] (Tworzenie tabeli tras).
+
+Po wykonaniu tej czynności aplikacje nie będą mogły uzyskać dostępu do zasobów lokalnych. Aby rozwiązać ten problem, zmodyfikuj trasę zdefiniowaną przez użytkownika przypisaną do podsieci środowiska ASE, dodając trasy dla lokalnych zakresów adresów. Należy wybrać opcję Brama sieci wirtualnej jako Typ następnego przeskoku. 
+
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurowanie środowiska ASE z punktami końcowymi usługi ##
+
+ > [!NOTE]
+   > Punkty końcowe usługi z bazą danych SQL nie działają ze środowiskiem ASE w regionach dla instytucji rządowych Stanów Zjednoczonych.  Poniższe informacje dotyczą tylko publicznych regionów świadczenia usługi Azure.  
 
 Aby przekierować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wychodzącego do usług Azure SQL i Azure Storage, wykonaj następujące czynności:
 
@@ -67,7 +83,7 @@ Aby przekierować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego w
 
 2. Włączanie punktów końcowych w usługach Azure SQL i Azure Storage dla podsieci środowiska ASE.  Po wykonaniu tego kroku można skonfigurować sieć wirtualną przy użyciu wymuszonego tunelowania.
 
-Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Szczegółowe informacje na temat wdrażania środowiska ASE przy użyciu szablonu można znaleźć w temacie [Creating an App Service Environment using a template (Tworzenie środowiska App Service Environment przy użyciu szablonu)][template].
+Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Szczegółowe informacje o wdrażaniu środowiska ASE przy użyciu szablonu można znaleźć w temacie [Creating an App Service Environment using a template][template] (Tworzenie środowiska App Service Environment przy użyciu szablonu).
 
 Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
 
@@ -141,3 +157,4 @@ Oprócz zwykłego przerwania komunikacji możesz niekorzystnie wpłynąć na śr
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
 [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[routetable]: ../../virtual-network/manage-route-table.md#create-a-route-table

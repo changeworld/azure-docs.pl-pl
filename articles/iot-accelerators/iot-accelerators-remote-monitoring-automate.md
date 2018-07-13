@@ -1,155 +1,154 @@
 ---
-title: Wykrywaj problemy związane z urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób automatycznego wykrywania problemów z urządzeniami oparte na wartościach progowych w rozwiązaniu monitorowania zdalnego przy użyciu reguł i akcje.
+title: Wykrywanie problemów z urządzeniami w rozwiązaniu do zdalnego monitorowania opartym na platformie Azure | Microsoft Docs
+description: W tym samouczku pokazano, w jaki sposób korzystać z reguł i akcji do automatycznego wykrywania problemów z urządzeniami dotyczących wartości progowych w rozwiązaniu do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
-services: iot-suite
-ms.date: 05/01/2018
-ms.topic: conceptual
-ms.openlocfilehash: df1ba7909c64e8ccc24bcf3584bd28b2629f49ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+services: iot-accelerators
+ms.date: 06/08/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627317"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098485"
 ---
-# <a name="detect-issues-using-threshold-based-rules"></a>Wykrywanie problemów przy użyciu reguły progu
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Samouczek: wykrywanie problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania
 
-Ten samouczek pokazuje możliwości aparatu reguł w rozwiązaniu monitorowania zdalnego. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+W tym samouczku skonfigurujesz akcelerator rozwiązań do zdalnego monitorowania, aby wykryć problemy z połączonymi urządzeniami IoT. Aby wykryć problemy z urządzeniami, dodasz reguły alertów generujące alerty na pulpicie nawigacyjnym rozwiązania.
 
-Firma Contoso ma regułę, która generuje alert krytyczny, gdy wykorzystanie zgłoszone przez **Chłodnica** urządzenia przekracza 250 PSI. Jako operator chcesz zidentyfikować **Chłodnica** urządzeń, które mogą mieć problemy czujników, wyszukując początkowej wartości szczytowe wykorzystania. Aby zidentyfikować te urządzenia, należy utworzyć regułę, aby generować ostrzeżenia, gdy wykorzystanie przekracza 150 PSI.
+Aby wprowadzić reguły i alerty, w tym samouczku używane jest symulowane urządzenie: chłodnia. Chłodnia jest zarządzana przez organizację o nazwie Contoso i jest połączona z akceleratorem rozwiązań do zdalnego monitorowania. Firma Contoso ma już regułę, która generuje alert krytyczny, gdy ciśnienie w chłodni przekracza wartość 298 PSI. Jako operator w firmie Contoso chcesz zidentyfikować chłodnie, w których mogą występować problemy z czujnikami, szukając skoków ciśnienia. Aby zidentyfikować takie urządzenia, dodajesz regułę, która wygeneruje alert ostrzegawczy, gdy ciśnienie w chłodni przekroczy wartość 150 PSI.
 
-Możesz również została zwracali alert krytyczny musi być wyzwalane, gdy średnia wilgotność **Chłodnica** urządzenia w ciągu ostatnich 5 minut jest większa niż 80% i temperatura **Chłodnica** urządzenia w ostatnich 5 minut jest większa niż 75 f stopni.
+Poproszono Cię również o utworzenie alertu krytycznego dla chłodni w sytuacji, gdy w ciągu ostatnich pięciu minut średnia wilgotność wewnątrz urządzenia przekroczyła 80%, a temperatura urządzenia przekroczyła 75 stopni Fahrenheita.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Wyświetlanie reguł w rozwiązaniu
-> * Utwórz nową regułę
-> * Utwórz nową regułę z wieloma warunkami
-> * Edytuj istniejącą regułę
-> * Usuwanie reguły
+> * Tworzenie reguły
+> * Tworzenie reguły z wieloma warunkami
+> * Edytowanie istniejącej reguły
+> * Włączanie i wyłącznie reguł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
+Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
 
-## <a name="view-the-rules-in-your-solution"></a>Wyświetlanie reguł w rozwiązaniu
+## <a name="view-the-existing-rules"></a>Wyświetlanie istniejących reguł
 
-**Reguły** w rozwiązaniu zostanie wyświetlona lista wszystkich istniejących zasad:
+Na stronie **Reguły** akceleratora rozwiązań wyświetlana jest lista wszystkich bieżących reguł:
 
-![Strona reguł i akcji](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2.png)
+[![Strona Reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Aby wyświetlić tylko reguły, które dotyczą **Chłodnica** urządzeń, zastosuj filtr:
+Aby wyświetlić tylko te reguły, które dotyczą chłodni, zastosuj filtr:
 
-![Lista reguł filtrowania](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2.png)
+[![Filtrowanie listy reguł](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
 
-Możesz wyświetlić więcej informacji na temat regułę i go edytować, po wybraniu na liście:
+Aby wyświetlić więcej informacji na temat reguły i edytować ją, wybierz ją na liście:
 
-![Wyświetlanie szczegółów reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2.png)
+[![Wyświetlanie szczegółów reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
 
-Aby wyłączyć, włączanie lub usuwanie co najmniej jednej reguły, wybierz wiele reguł na liście:
+Aby włączyć lub wyłączyć reguły, wybierz je na liście:
 
-![Wybierz wiele reguł](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2.png)
+[Wybieranie wielu reguł![](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
-## <a name="create-a-new-rule"></a>Utwórz nową regułę
+## <a name="create-a-rule"></a>Tworzenie reguły
 
-Aby dodać nową regułę, która generuje ostrzeżenie podczas wykorzystania w **Chłodnica** urządzenia przekracza 150 PSI, wybierz **nową regułę**:
-
-![Utwórz regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2.png)
-
-Aby utworzyć regułę, należy użyć następujących wartości:
+Aby utworzyć regułę, która wygeneruje ostrzeżenie, gdy ciśnienie w chłodni przekroczy wartość 150 PSI, kliknij przycisk **Nowa reguła**. Użyj następujących wartości, aby utworzyć regułę:
 
 | Ustawienie          | Wartość                                 |
 | ---------------- | ------------------------------------- |
-| Nazwa reguły        | Ostrzeżenie Chłodnica                       |
-| Opis      | Wykorzystanie Chłodnica przekracza 150 PSI |
-| Grupy urządzeń     | **Chłodniach** grupy urządzeń             |
+| Nazwa reguły        | Ostrzeżenie o chłodni                       |
+| Opis      | Ciśnienie w chłodni przekroczyło wartość 150 PSI |
+| Grupa urządzeń     | Grupa urządzeń **Chillers** (Chłodnie)             |
 | Obliczenia      | Natychmiastowe                               |
-| Pole warunek 1| pressure                              |
-| Operator warunkowy 1 | Więcej niż                      |
-| Wartość warunku 1    | 150                               |
-| Poziom Serverity  | Ostrzeżenie                               |
+| Warunek 1 — pole| pressure                              |
+| Warunek 1 — operator | Większe niż                      |
+| Warunek 1 — wartość    | 150                               |
+| Poziom ważności  | Ostrzeżenie                               |
 
-Aby zapisać nową regułę, wybierz **Zastosuj**.
+[![Tworzenie reguły ostrzeżenia](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
 
-Można wyświetlić, gdy reguła jest wyzwalana na **reguły** strony lub na **pulpitu nawigacyjnego** strony.
+Aby zapisać nową regułę, kliknij przycisk **Zastosuj**.
 
-## <a name="create-a-new-rule-with-multiple-conditions"></a>Utwórz nową regułę z wieloma warunkami
+Gdy reguła zostanie wyzwolona, zobaczysz to na stronie **Reguły** lub na stronie **Pulpit nawigacyjny**:
 
-Aby utworzyć nową regułę z wieloma warunkami, które generuje krytyczny alert średnia wilgotność **Chłodnica** urządzenia w ciągu ostatnich 5 minut jest większa niż 80% i temperatura **Chłodnica** urządzenia w ciągu ostatnich 5 minut jest większa niż 75 f stopni, wybierz **nową regułę**:
+[![Wyzwolenie reguły ostrzeżenia](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-![Tworzenie reguły iloczyn](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2.png)
+## <a name="create-a-rule-with-multiple-conditions"></a>Tworzenie reguły z wieloma warunkami
 
-Aby utworzyć regułę, należy użyć następujących wartości:
+Aby utworzyć regułę z wieloma warunkami, która wygeneruje alert krytyczny, gdy średnia wilgotność w chłodni z ostatnich pięciu minut przekroczy 80%, a średnia temperatura przekroczy 75 stopni Fahrenheita, kliknij przycisk **Nowa reguła**. Użyj następujących wartości, aby utworzyć regułę:
 
 | Ustawienie          | Wartość                                 |
 | ---------------- | ------------------------------------- |
-| Nazwa reguły        | Chłodnica wilgoć i temp krytyczne    |
-| Opis      | Wilgotności i temperatury są krytyczne |
-| Grupy urządzeń     | **Chłodniach** grupy urządzeń             |
+| Nazwa reguły        | Wilgotność i temperatura chłodni krytyczne    |
+| Opis      | Wartości wilgotności i temperatury są krytyczne |
+| Grupa urządzeń     | Grupa urządzeń **Chillers** (Chłodnie)             |
 | Obliczenia      | Średnia                               |
-| Okres czasu      | 5                                     |
-| Pole warunek 1| wilgotność                              |
-| Operator warunkowy 1 | Więcej niż                      |
-| Wartość warunku 1    | 80                               |
-| Poziom Serverity  | Krytyczne                              |
+| Okres      | 5                                     |
+| Warunek 1 — pole| humidity                              |
+| Warunek 1 — operator | Większe niż                      |
+| Warunek 1 — wartość    | 80                                |
+| Poziom ważności  | Krytyczny                              |
 
-Aby dodać drugi warunek, kliknij pozycję "+ Dodaj warunek".
+[![Tworzenie reguł z wieloma warunkami — część pierwsza](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
-![Utwórz warunek 2](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2.png)
-
-Użyj następujących wartości na nowy warunek:
+Aby dodać drugi warunek, kliknij pozycję „+ Dodaj warunek”. Użyj następujących wartości dla nowego warunku:
 
 | Ustawienie          | Wartość                                 |
 | ---------------- | ------------------------------------- |
-| Pole warunku 2| temperature                           |
-| Operator warunkowy 2 | Więcej niż                      |
-| Wartość warunku 2    | 75                                |
+| Warunek 2 — pole| temperature                           |
+| Warunek 2 — operator | Większe niż                      |
+| Warunek 2 — wartość    | 75                                |
 
-Aby zapisać nową regułę, wybierz **Zastosuj**.
+[![Tworzenie reguł z wieloma warunkami — część druga](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
-Można wyświetlić, gdy reguła jest wyzwalana na **reguły** strony lub na **pulpitu nawigacyjnego** strony.
+Aby zapisać nową regułę, kliknij przycisk **Zastosuj**.
 
-## <a name="edit-an-existing-rule"></a>Edytuj istniejącą regułę
+Gdy reguła zostanie wyzwolona, zobaczysz to na stronie **Reguły** lub na stronie **Pulpit nawigacyjny**:
 
-Aby wprowadzić zmianę do istniejącej reguły, wybierz je w listy zasad.
+[![Wyzwolenie reguły z wieloma warunkami](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
-![Edytuj regułę](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2.png)
+## <a name="edit-an-existing-rule"></a>Edytowanie istniejącej reguły
 
-<!--## Disable a rule
+Aby wprowadzić zmiany w istniejącej regule, wybierz ją z listy reguł, a następnie kliknij przycisk **Edytuj**:
 
-To temporarily switch off a rule, you can disable it in the list of rules. Choose the rule to disable, and then choose **Disable**. The **Status** of the rule in the list changes to indicate the rule is now disabled. You can re-enable a rule that you previously disabled using the same procedure.
+[![Edytowanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
 
-![Disable rule](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable.png)
+## <a name="disable-a-rule"></a>Wyłączanie reguły
 
-You can enable and disable multiple rules at the same time if you select multiple rules in the list.-->
+Aby tymczasowo wyłączyć regułę, możesz wyłączyć ją na liście reguł. Wybierz regułę, którą chcesz wyłączyć, a następnie wybierz polecenie **Wyłącz**. Pozycja **Stan** reguły na liście zmienia się, wskazując, że reguła jest teraz wyłączona. Możesz ponownie włączyć wcześniej wyłączoną regułę, wykonując te same czynności.
 
-<!--## Delete a rule
+[![Wyłączanie reguły](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
+
+Możesz włączać i wyłączać wiele reguł jednocześnie, wybierając wiele reguł na liście.
+
+<!-- ## Delete a rule
 
 To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
 
 You can delete multiple rules at the same time if you select multiple rules in the list.-->
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym samouczku przedstawiono należy jak do:
+Jeśli planujesz przejść do kolejnego samouczka, akcelerator rozwiązań do zdalnego monitorowania powinien pozostać wdrożony. Aby zmniejszyć koszty działania akceleratora rozwiązań, gdy go nie używasz, możesz zatrzymać symulowane urządzenia w panelu Ustawienia:
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * Wyświetlanie reguł w rozwiązaniu
-> * Utwórz nową regułę
-> * Edytuj istniejącą regułę
-> * Usuwanie reguły
+[![Wstrzymywanie telemetrii](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
 
-Teraz, kiedy znasz sposobu wykrywania problemów przy użyciu reguł oparte na wartościach progowych, Sugerowane następne kroki są Aby dowiedzieć się, jak:
+Możesz ponownie uruchomić urządzenia symulowane, gdy postanowisz rozpocząć kolejny samouczek.
 
-* [Konfigurowanie urządzeń oraz zarządzanie nimi](iot-accelerators-remote-monitoring-manage.md).
-* [Rozwiązywanie problemów i Korygowanie problemów z urządzeniami](iot-accelerators-remote-monitoring-maintain.md).
-* [Testowanie rozwiązania z urządzeniami symulowane](iot-accelerators-remote-monitoring-test.md).
+Jeśli akcelerator rozwiązań nie jest już potrzebny, usuń go na stronie [Aprowizowane rozwiązania](https://www.azureiotsolutions.com/Accelerators#dashboard):
 
-<!-- Next tutorials in the sequence -->
+![Usuwanie rozwiązania](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku przedstawiono sposób korzystania ze strony **Reguły** w akceleratorze rozwiązań do zdalnego monitorowania w celu tworzenia reguł, które wywołują alerty w rozwiązaniu, i zarządzania nimi. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu konfigurowania połączonych urządzeń i zarządzania nimi, przejdź do kolejnego samouczka.
+
+> [!div class="nextstepaction"]
+> [Konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi](iot-accelerators-remote-monitoring-manage.md)

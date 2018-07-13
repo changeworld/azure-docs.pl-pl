@@ -1,95 +1,89 @@
 ---
-title: Rozwiązywanie problemów z urządzeń w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
-description: Ten samouczek pokazuje, jak rozwiązywanie problemów i Korygowanie problemów z urządzeniami w zdalnym rozwiązanie monitorowania.
+title: Używanie alertów i rozwiązywanie problemów z urządzeniem w rozwiązaniu do zdalnego monitorowania — Azure | Microsoft Docs
+description: Ten samouczek przedstawia sposób używania alertów w celu identyfikowania i rozwiązywania problemów z urządzeniami podłączonymi do akceleratora rozwiązania do zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 05/01/2018
-ms.topic: conceptual
-ms.openlocfilehash: 9a620d91238393ba0bde89f521f790b58ab35baf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.date: 06/18/2018
+ms.topic: tutorial
+ms.custom: mvc
+ms.openlocfilehash: 9607705220450b30d2ffaf0f2be9fa2a5664b879
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628076"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081792"
 ---
-# <a name="troubleshoot-and-remediate-device-issues"></a>Rozwiązywanie problemów i Korygowanie problemów z urządzeniami
+# <a name="troubleshoot-and-remediate-device-issues"></a>Rozwiązywanie i korygowanie problemów z urządzeniami
 
-Ten samouczek przedstawia sposób użycia **konserwacji** strony w rozwiązaniu Rozwiązywanie problemów i Korygowanie problemów z urządzeniami. Aby dodać tych funkcji, samouczku scenariusza aplikacji Contoso IoT.
+W tym samouczku użyjesz akceleratora rozwiązania do zdalnego monitorowania, aby zidentyfikować i naprawić problemy z połączonymi urządzeniami IoT. Alertów na pulpicie nawigacyjnym akceleratora rozwiązania używa się do identyfikowania problemów oraz uruchamiania zdalnych zadań w celu ich rozwiązywania.
 
-Firma Contoso jest testowania nowego **prototypu** urządzenie w polu. Jako operatora firmy Contoso, zauważysz podczas testowania, który **prototypu** urządzenia jest nieoczekiwanie wyzwalania alertu temperatury, na pulpicie nawigacyjnym. Musi teraz Zbadaj zachowanie tym błędny **prototypu** urządzenia.
+Firma Contoso testuje nowe **prototypowe** urządzenie w terenie. Jako operator firmy Contoso podczas testowania zauważasz, że **prototypowe** urządzenie nieoczekiwanie wyzwala alert o temperaturze na pulpicie nawigacyjnym. Teraz musisz zbadać zachowanie tego wadliwego **prototypowego** urządzenia i rozwiązać problem.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 >[!div class="checklist"]
-> * Użyj **konserwacji** strony w celu zbadania alertu
-> * Wywołanie metody urządzenia skorygowanie problemu
+> * Badanie alertu z urządzenia
+> * Rozwiązywanie problemu z urządzeniem
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, należy wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure.
+Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora rozwiązań do zdalnego monitorowania w subskrypcji platformy Azure.
 
-Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy.md) samouczka.
+Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
 
-## <a name="use-the-maintenance-dashboard"></a>Pulpit nawigacyjny obsługi
+## <a name="investigate-an-alert"></a>Badanie alertu
 
-Na **pulpitu nawigacyjnego** strony można zauważyć, że ma nieoczekiwany temperatury alertów pochodzących z regułą skojarzoną z **prototypu** urządzeń:
+Na stronie **Pulpit nawigacyjny** możesz zauważyć, że istnieją nieoczekiwane alerty temperatury pochodzące z reguły związanej z urządzeniami **prototypowymi**:
 
-![Alerty wyświetlane na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm.png)
+[![Alerty wyświetlane na pulpicie nawigacyjnym](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
 
-Aby zbadać problem, wybierz **Eksploruj Alert** opcję obok alertu:
+Aby zbadać problem, wybierz opcję **Eksploruj alert** obok alertu:
 
-![Eksploruj alert z poziomu pulpitu nawigacyjnego](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm.png)
+[![Eksplorowanie alertu z pulpitu nawigacyjnego](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
 
-Przedstawia widok szczegółów alertu:
+Szczegółowy widok alertu zawiera następujące elementy:
 
-* Kiedy alert został uruchomiony
-* Informacje o stanie o urządzeniach skojarzonych z tym alertem
-* Dane telemetryczne z urządzeń skojarzonych z tym alertem
+* Czas wyzwolenia alertu
+* Informacje o stanie urządzeń związanych z alertem
+* Telemetria z urządzeń związanych z alertem
 
-![Szczegóły alertu](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail.png)
+[![Szczegóły alertu](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-expanded.png#lightbox)
 
-Aby potwierdzić alertu, wybierz **alertów wystąpień** i wybierz polecenie **potwierdzenia**. Ta akcja umożliwia innych operatorom alertu jak już wspomniano, a następnie pracy.
+Aby potwierdzić otrzymanie alertu, wybierz wszystkie **wystąpienia alertu**, a następnie wybierz opcję **Potwierdź**. Dzięki tej akcji inni operatorzy dowiedzą się, że użytkownik zobaczył alert i pracuje nad nim:
 
-![Potwierdzić alerty](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge.png)
+[![Potwierdzanie alertów](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
-Po potwierdzeniu alertu, stan wystąpienia zmienia się na **Acknowledged**.
+Po potwierdzeniu alertu stan wystąpienia zmieni się na **Potwierdzono**.
 
-Na liście widać **prototypu** odpowiedzialny za wyzwalania alertu temperatury urządzenia:
+Na liście możesz zobaczyć urządzenie **Prototyp** odpowiedzialne za wyzwolenie alertu temperatury:
 
-![Utwórz listę urządzeń, co powoduje alertu](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+[![Lista urządzeń powodujących alert](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
-## <a name="remediate-the-issue"></a>Rozwiązania problemu
+## <a name="resolve-the-issue"></a>Rozwiązywanie problemu
 
-Do rozwiązania problemu z **prototypu** urządzenia, należy wywołać **DecreaseTemperature** metody na urządzeniu.
+Aby rozwiązać problem z urządzeniem **Prototyp**, musisz wywołać metodę **DecreaseTemperature** na urządzeniu.
 
-Do działania na urządzeniu, wybierz go na liście urządzeń, a następnie wybierz pozycję **zadania**. **Prototypu** model urządzenia określa metody musi obsługiwać urządzenia:
+Aby wykonać działania na urządzeniu, wybierz je z listy urządzeń, a następnie wybierz opcję **Zadania**. Model urządzenia **Prototyp** określa sześć metod, które urządzenie musi obsługiwać:
 
-![Wyświetl metody, które obsługuje urządzenia](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods.png)
+[![Wyświetlanie metod obsługiwanych przez urządzenie](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-Wybierz **DecreaseTemperature** i ustaw nazwę zadania **DecreaseTemperature**. Następnie wybierz pozycję **Zastosuj**:
+Wybierz metodę **DecreaseTemperature** i ustaw nazwę zadania na **DecreaseTemperature**. Następnie wybierz opcję **Zastosuj**:
 
-![Utwórz zadanie, aby zmniejszyć temperatury](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob.png)
+[![Utworzenie zadania w celu zmniejszenia temperatury](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
-Aby śledzić stan zadania na **konserwacji** wybierz pozycję **zadania**. Użyj **zadania** Wyświetl, aby śledzić wszystkie zadania i wywołuje metodę w rozwiązaniu:
+Aby śledzić stan zadania, kliknij pozycję **Wyświetl stan zadania**. Użyj widoku **Zadania**, aby śledzić wszystkie zadania i wywołania metody w rozwiązaniu:
 
-![Monitor zadania, aby zmniejszyć temperatury](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob.png)
+[![Monitorowanie zadania w celu zmniejszenia temperatury](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 
-Aby wyświetlić szczegóły określonego zadania lub wywołanie metody, wybierz go na liście w **zadania** widoku:
+Możesz sprawdzić, czy temperatura urządzenia zmniejszyła się, wyświetlając telemetrię na stronie **Pulpit nawigacyjny**:
 
-![Wyświetlanie szczegółów zadania](./media/iot-accelerators-remote-monitoring-maintain/maintenancejobdetail.png)
+[![Wyświetlanie spadku temperatury](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób:
+W tym samouczku pokazano, jak używać alertów w celu identyfikowania problemów z urządzeniami oraz jak działać na tych urządzeniach, aby rozwiązać problemy. Aby dowiedzieć się, jak połączyć urządzenie fizyczne z akceleratorem rozwiązania, przejdź do artykułów z poradami.
 
-<!-- Repeat task list from intro -->
->[!div class="checklist"]
-> * Użyj **konserwacji** strony w celu zbadania alertu
-> * Wywołanie metody urządzenia skorygowanie problemu
-
-Po zapoznaniu się Rozwiązywanie problemów dotyczących urządzenia, sugerowane następnym krokiem jest Dowiedz się, jak [przetestowany z urządzeniami symulowane](iot-accelerators-remote-monitoring-test.md).
-
-<!-- Next tutorials in the sequence -->
+Teraz wiesz już, jak zarządzać problemami z urządzeniami. Sugerujemy, aby w następnym kroku dowiedzieć się, jak [połączyć urządzenie z akceleratorem rozwiązania do zdalnego monitorowania](iot-accelerators-connecting-devices.md).

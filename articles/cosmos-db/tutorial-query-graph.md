@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: dfaf3fe1427c9069939f5421c6a87efb584ebe48
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763208"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081911"
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Samouczek: Wykonywanie zapytań w interfejsie API programu Graph w usłudze Azure Cosmos DB przy użyciu języka Gremlin
 
@@ -31,7 +31,7 @@ W tym artykule opisano następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby te zapytania działały, musisz mieć konto usługi Azure Cosmos DB i mieć dane grafu w kontenerze. Nie spełniasz tych warunków? Ukończ [5-minutowy przewodnik Szybki start](create-graph-dotnet.md) lub [samouczek dewelopera](tutorial-query-graph.md), aby utworzyć konto i wypełnić bazę danych. Poniższe zapytania możesz uruchomić przy użyciu [biblioteki programu Graph na platformie .NET w usłudze Azure Cosmos DB](graph-sdk-dotnet.md), [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) lub ulubionego sterownika Gremlin.
+Aby te zapytania działały, musisz mieć konto usługi Azure Cosmos DB i mieć dane grafu w kontenerze. Nie spełniasz tych warunków? Ukończ [5-minutowy przewodnik Szybki start](create-graph-dotnet.md) lub [samouczek dewelopera](tutorial-query-graph.md), aby utworzyć konto i wypełnić bazę danych. Poniższe zapytania możesz uruchomić przy użyciu [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) lub ulubionego sterownika Gremlin.
 
 ## <a name="count-vertices-in-the-graph"></a>Liczba wierzchołków grafu
 
@@ -80,7 +80,8 @@ W tym samouczku wykonano następujące czynności:
 > [!div class="checklist"]
 > * Przedstawiono sposób wykonywania zapytań przy użyciu programu Graph 
 
-Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
+Teraz możesz przejść do sekcji Pojęcia, aby uzyskać więcej informacji na temat usługi Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Globalna dystrybucja danych](tutorial-global-distribution-graph.md)
+> [Dystrybucja globalna](distribute-data-globally.md) 
+

@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 438aeda39c6ba9246f75f96214bb0ffa1d4d31e9
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c3774774ff220153d1af9ec9f9807414efb3f7ce
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047812"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081814"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 
@@ -30,7 +30,7 @@ Ten samouczek obejmuje następujące procedury:
 
   - Tworzenie potoku, który używa działania notesu usługi Databricks.
 
-  - Wyzwalanie uruchomienia potoku
+  - Wyzwalanie uruchomienia potoku.
 
   - Monitorowanie uruchomienia potoku.
 
@@ -72,7 +72,7 @@ Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej 
 
 2.  W obszarze **Lokalizacja** wybierz lokalizację fabryki danych.
 
-    Obecnie usługa Data Factory w wersji 2 umożliwia tworzenie fabryk danych tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
+    Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
 
 3.  Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.
 
@@ -234,6 +234,6 @@ Potok w tym przykładzie wyzwala działanie notesu usługi Databricks i przekazu
 
   - Tworzenie potoku, który używa działania notesu usługi Databricks.
 
-  - Wyzwalanie uruchomienia potoku
+  - Wyzwalanie uruchomienia potoku.
 
   - Monitorowanie uruchomienia potoku.

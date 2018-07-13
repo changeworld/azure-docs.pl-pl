@@ -1,5 +1,5 @@
 ---
-title: Tryb failover i skalowanie aplikacji kontenerów usługi Azure Service Fabric | Microsoft Docs
+title: Tryb failover i skalowanie aplikacji kontenerów w usłudze Service Fabric na platformie Azure | Microsoft Docs
 description: Korzystając z tego samouczka, dowiesz się, jak obsługiwany jest tryb failover w aplikacji kontenerów usługi Azure Service Fabric.  Dowiesz się również, jak skalować kontenery i usługi działające w klastrze.
 services: service-fabric
 documentationcenter: ''
@@ -16,25 +16,27 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29555488"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112273"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Samouczek: omówienie trybu failover i skalowania usług kontenera za pomocą usługi Service Fabric
 
 Ten samouczek jest trzecią częścią serii. Korzystając z tego samouczka, dowiesz się, jak obsługiwany jest tryb failover w aplikacjach kontenera usługi Service Fabric. Poznasz również sposób skalowania kontenerów. W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Omówienie trybu failover kontenera w klastrze usługi Service Fabric  
+> * Omówienie trybu failover kontenera w klastrze usługi Service Fabric
 > * Skalowanie kontenerów frontonu internetowego w aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aplikacja omówiona w [części 2](service-fabric-tutorial-package-containers.md) działa w aktywnym klastrze usługi Service Fabric.
 
 ## <a name="fail-over-a-container-in-a-cluster"></a>Przenoszenie kontenera do trybu failover w klastrze
+
 Usługa Service Fabric zapewnia, że wystąpienia kontenera są automatycznie przenoszone do innych węzłów w klastrze, jeśli wystąpi awaria. Można również ręcznie opróżnić węzeł z kontenerów, a następnie bezproblemowo przenieść je do innych węzłów w klastrze. Istnieje wiele sposobów skalowania usług — w tym przykładzie użyto narzędzia Service Fabric Explorer.
 
 Aby przenieść kontener frontonu do trybu failover, wykonaj następujące czynności:
@@ -42,13 +44,14 @@ Aby przenieść kontener frontonu do trybu failover, wykonaj następujące czynn
 1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`.
 2. Kliknij węzeł **fabric:/TestContainer/azurevotefront** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID). Zwróć uwagę na nazwę węzła w widoku drzewa przedstawiającym węzły, w których obecnie uruchomiono kontener — na przykład `_nodetype_1`
 3. Rozwiń węzeł **Węzły** w widoku drzewa. Kliknij wielokropek (trzy kropki) obok węzła działającego w kontenerze.
-1. Wybierz pozycję **Uruchom ponownie**, aby ponownie uruchomić ten węzeł, i potwierdź akcję ponownego uruchomienia. Ponowne uruchomienie powoduje przeniesienie kontenera do trybu failover w innym węźle klastra.
+4. Wybierz pozycję **Uruchom ponownie**, aby ponownie uruchomić ten węzeł, i potwierdź akcję ponownego uruchomienia. Ponowne uruchomienie powoduje przeniesienie kontenera do trybu failover w innym węźle klastra.
 
 ![noderestart][noderestart]
 
 Zwróć uwagę, że nazwa węzła (wskazująca, gdzie zostały uruchomione kontenery frontonu) zmienia się na nazwę innego węzła w klastrze. Po kilku chwilach powinno być możliwe ponowne przeglądanie w poszukiwaniu aplikacji, a aplikacja powinna zostać uruchomiona w innym węźle.
 
 ## <a name="scale-containers-and-services-in-a-cluster"></a>Skalowanie kontenerów i usług w klastrze
+
 Kontenery Service Fabric można skalować w klastrze w celu uwzględnienia obciążenia w usługach. Skalowanie kontenera odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze.
 
 Aby skalować fronton internetowy, wykonaj następujące czynności:
@@ -74,10 +77,10 @@ Wykonując to proste zadanie zarządzania, podwoiliśmy zasoby dostępne dla nas
 W tym samouczku zademonstrowano tryb failover kontenera oraz skalowanie aplikacji. Wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Omówienie trybu failover kontenera w klastrze usługi Service Fabric  
+> * Omówienie trybu failover kontenera w klastrze usługi Service Fabric
 > * Skalowanie kontenerów frontonu internetowego w aplikacji
 
-W tej serii samouczków zawarto informacje na temat wykonywania następujących czynności: 
+W tej serii samouczków zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie obrazów kontenerów
 > * Wypychanie obrazów kontenera do usługi Azure Container Registry

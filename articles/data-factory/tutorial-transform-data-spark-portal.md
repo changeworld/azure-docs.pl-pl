@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c9cc94cbfb7575181a65cf21fdd8d19d2fd818f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049784"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085423"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -27,7 +27,7 @@ Ten samouczek obejmuje następujące procedury:
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
@@ -98,7 +98,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 5. W obszarze **Wersja** wybierz pozycję **V2**.
 6. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. 
 
-   Obecnie usługa Data Factory w wersji 2 umożliwia tworzenie fabryk danych tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia. Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
+   Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (na przykład Azure Storage lub Azure SQL Database) i jednostki obliczeniowe (takie jak HDInsight) używane przez usługę Data Factory mogą znajdować się w innych regionach.
 7. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
 8. Wybierz pozycję **Utwórz**.
 9. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem **Wdrażanie fabryki danych**: 
@@ -243,7 +243,7 @@ Potok w tym przykładzie przekształca dane przy użyciu działania Spark i poł
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Aby dowiedzieć się, jak przekształcać dane, uruchamiając skrypt programu Hive w klastrze usługi Azure HDInsight, który znajduje się w sieci wirtualnej, przejdź do następnego samouczka: 

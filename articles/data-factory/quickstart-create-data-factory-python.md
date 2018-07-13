@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 844527fcfdcc2e0db22a322cafd81d07e5bd35e7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7d348bf2372ff3bc48590b6c5e97e8eee8a4136b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048115"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084947"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Tworzenie fabryki danych i potoku przy użyciu języka Python
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -106,7 +106,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
             print("\tErrors: {}".format(activity_run.error['message']))
 
     ```
-3. Dodaj do metody **Main** poniższy kod, który tworzy wystąpienie klasy DataFactoryManagementClient. Ten obiekt jest używany do tworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Umożliwia on również monitorowanie szczegółów uruchomienia potoku. Ustaw zmienną **subscription_id** na identyfikator swojej subskrypcji platformy Azure. Obecnie usługa Data Factory w wersji 2 umożliwia tworzenie fabryk danych tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+3. Dodaj do metody **Main** poniższy kod, który tworzy wystąpienie klasy DataFactoryManagementClient. Ten obiekt jest używany do tworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Umożliwia on również monitorowanie szczegółów uruchomienia potoku. Ustaw zmienną **subscription_id** na identyfikator swojej subskrypcji platformy Azure. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```python   
     def main():
