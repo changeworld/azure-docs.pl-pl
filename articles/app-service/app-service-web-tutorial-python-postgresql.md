@@ -13,11 +13,11 @@ ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
 ms.openlocfilehash: 49ec67d06446d6c48e45aef90e2bd528a1b541a9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203514"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38473018"
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 
@@ -251,7 +251,7 @@ Repozytorium Git zawiera już następujące pliki potrzebne do uruchomienia apli
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
 <a name="create"></a>
-### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
+### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 [!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-no-h.md)] 
 
@@ -372,9 +372,9 @@ http://<app_name>.azurewebsites.net
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację internetową.
 
-W lewym menu kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji sieci Web platformy Azure.
+W lewym menu kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej platformy Azure.
 
-![Nawigacja w portalu do aplikacji sieci Web platformy Azure](./media/app-service-web-tutorial-python-postgresql/app-resource.png)
+![Nawigacja w portalu do aplikacji internetowej platformy Azure](./media/app-service-web-tutorial-python-postgresql/app-resource.png)
 
 Domyślnie portal zawiera stronę **Omówienie** aplikacji internetowej. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Na kartach po lewej stronie strony są pokazane poszczególne strony konfiguracji, które można otworzyć.
 

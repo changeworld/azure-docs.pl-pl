@@ -10,11 +10,11 @@ ms.topic: sample
 ms.service: functions
 ms.custom: mvc
 ms.openlocfilehash: f013303cb99cc549cb0a8d72e2e9c60209008c67
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29842664"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38317917"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Tworzenie aplikacji funkcji i wdrażanie kodu funkcji z repozytorium GitHub
 

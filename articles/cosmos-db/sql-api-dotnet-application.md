@@ -13,11 +13,11 @@ ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
 ms.openlocfilehash: 193f0f74d7a8ebaee72105698c646b55a8159a3b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796999"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453454"
 ---
 # <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -225,9 +225,7 @@ W tej sekcji dodamy kod obsługujący następujące operacje:
 * [Dodawanie elementów](#_Toc395637771).
 * [Edytowanie elementów](#_Toc395637772).
 
-### 
-  <a name="_Toc395637770">
-  </a>Wyświetlanie niezakończonych elementów w aplikacji internetowej MVC
+### <a name="_Toc395637770"></a>Wyświetlanie niezakończonych elementów w aplikacji internetowej MVC
 Najpierw musisz tutaj dodać klasę, która zawiera całą logikę umożliwiającą połączenie z usługą Azure Cosmos DB i używanie jej. Na potrzeby tego samouczka umieściliśmy całą tę logikę w klasie repozytorium o nazwie DocumentDBRepository. 
 
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt, kliknij polecenie **Dodaj**, a następnie kliknij pozycję **Klasa**. Nadaj nowej klasie nazwę **DocumentDBRepository** i kliknij polecenie **Dodaj**.
