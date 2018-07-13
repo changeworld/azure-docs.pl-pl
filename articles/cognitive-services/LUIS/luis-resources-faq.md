@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 291eb9ef7d8d089b443b55ac181e9fdd65fcb413
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 55b0b40bdcb9f9be4d4d11d957f43ab35e61d759
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888861"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989942"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -52,6 +52,10 @@ Zobacz [jednostek](luis-concept-entity-types.md) i [wyodrębnianie danych](luis-
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Odmiany wypowiedź przykładu, powinien zawierać znak interpunkcyjny? 
 Dodaj różne odmiany wypowiedzi przykład z intencją albo Dodaj wzorzec wypowiedź przykład za pomocą [składni, aby zignorować](luis-concept-patterns.md#pattern-syntax) znak interpunkcyjny. 
+
+### <a name="does-luis-currently-support-cortana"></a>Czy Cortana jest aktualnie obsługuje usługi LUIS?
+
+Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r. Nie są obsługiwane. 
 
 ## <a name="luis-endpoint"></a>Punkt końcowy usługi LUIS
 

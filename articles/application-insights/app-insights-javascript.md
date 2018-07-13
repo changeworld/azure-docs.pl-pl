@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Application Insights dla aplikacji sieci Web w języku JavaScript | Microsoft Docs
+title: Usługa Azure Application Insights dla aplikacji internetowych w języku JavaScript | Microsoft Docs
 description: Pobieranie liczników wyświetleń stron i sesji, danych klienta sieci Web oraz śledzenie wzorców użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
 services: application-insights
 documentationcenter: ''
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991328"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -56,7 +57,7 @@ Ze strony Szybki start pobierz skrypt dla stron sieci Web:
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -117,16 +118,16 @@ Aby ustawić te parametry, poszukaj tego wiersza we fragmencie kodu i dodaj po n
     accountId: string,
 
 ## <a name="run"></a>Uruchamianie aplikacji
-Uruchom aplikację sieci Web, używaj jej przez pewien czas, aby wygenerować dane telemetryczne, i odczekaj kilka sekund. Aplikację możesz uruchomić za pomocą klawisza **F5** na maszynie deweloperskiej lub opublikować ją i pozwolić na korzystanie z niej przez użytkowników.
+Uruchom aplikację internetową, używaj jej przez pewien czas, aby wygenerować dane telemetryczne, i odczekaj kilka sekund. Aplikację możesz uruchomić za pomocą klawisza **F5** na maszynie deweloperskiej lub opublikować ją i pozwolić na korzystanie z niej przez użytkowników.
 
-Jeśli chcesz sprawdzić telemetrię, którą aplikacja sieci Web wysyła do usługi Application Insights, użyj narzędzi debugowania w przeglądarce (**F12** w wielu przeglądarkach). Dane są przesyłane do witryny dc.services.visualstudio.com.
+Jeśli chcesz sprawdzić telemetrię, którą aplikacja internetowa wysyła do usługi Application Insights, użyj narzędzi debugowania w przeglądarce (**F12** w wielu przeglądarkach). Dane są przesyłane do witryny dc.services.visualstudio.com.
 
 ## <a name="explore-your-browser-performance-data"></a>Eksplorowanie danych wydajności przeglądarki
 Otwórz blok Przeglądarka, aby wyświetlić agregowane dane wydajności z przeglądarek użytkowników.
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij kolejno opcje Ustawienia, Przeglądarki](./media/app-insights-javascript/03.png)
 
-*Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów ](app-insights-troubleshoot-faq.md).*
+Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md).
 
 Blok Przeglądarka jest [blokiem Eksploratora metryk](app-insights-metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
 
@@ -235,7 +236,7 @@ Nazwa strony może zawierać te same znaki co adres URL, ale wszystko po znakach
 ## <a name="usage-tracking"></a>Śledzenie użycia
 Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
-* [Informacje na temat śledzenia użycia](app-insights-web-track-usage.md)
+* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](app-insights-web-track-usage.md)
 * [Informacje o interfejsie API do monitorowania niestandardowych zdarzeń i metryk](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Wideo

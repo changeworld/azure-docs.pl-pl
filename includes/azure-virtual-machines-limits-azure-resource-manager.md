@@ -1,7 +1,7 @@
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maszyny wirtualne dla danego zestawu dostępności | 200 |
-| Certyfikaty dla subskrypcji |Nieograniczone<sup>1</sup> |
+| Maszyny wirtualne na zestaw dostępności | 200 |
+| Certyfikaty na subskrypcję |Nieograniczona liczba<sup>1</sup> |
 
-<sup>1</sup>za pomocą Menedżera zasobów Azure certyfikaty są przechowywane w magazynie kluczy Azure. Nieograniczone subskrypcji ma liczbę certyfikatów, ale występuje nadal limit 1 MB certyfikaty dla wdrożenia (która składa się z jednej maszyny Wirtualnej lub zestawu dostępności).
+<sup>1</sup>za pomocą usługi Azure Resource Manager, certyfikaty są przechowywane w usłudze Azure Key Vault. Mimo że liczby certyfikatów jest nieograniczona liczba subskrypcji, się nadal istnieje limit 1 MB certyfikatów dla wdrożenia (który składa się z jednej maszyny Wirtualnej lub zestawie dostępności).
 

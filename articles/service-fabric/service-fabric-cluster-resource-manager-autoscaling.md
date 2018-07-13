@@ -1,6 +1,6 @@
 ---
-title: Sieć szkieletowa usług Azure automatycznie skalowania usługi i kontenery | Dokumenty Microsoft
-description: Sieć szkieletowa usług Azure umożliwia ustawienie automatycznego skalowania zasady dla usługi i kontenerów.
+title: Usługa Azure Service Fabric automatyczne skalowanie usług i kontenerów | Dokumentacja firmy Microsoft
+description: Usługa Azure Service Fabric umożliwia ustawienie automatycznego skalowania zasad dla usług i kontenerów.
 services: service-fabric
 documentationcenter: .net
 author: radicmilos
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a742ac79f1152816621312e2ebc59598772ba127
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213201"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990625"
 ---
-# <a name="introduction-to-auto-scaling"></a>Wprowadzenie do skalowania automatycznego
-Automatyczne skalowanie jest dodatkowe możliwości sieci szkieletowej usług można dynamicznie skalować usług opartych na obciążenia, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowe wystąpienia lub partycji usługi na żądanie. Automatycznie cały proces skalowania jest automatyczne i przejrzysty, a po skonfigurowaniu zasad w usłudze nie jest konieczne ręczne operacji skalowania na poziomie usługi. Automatyczne skalowanie można włączyć w czasie tworzenia usługi lub w dowolnym momencie przez aktualizację usługi.
+# <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
+Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
 
-Jest typowy scenariusz, w którym automatyczne skalowanie jest przydatne w przypadku obciążenia na określonej usługi różni się w czasie. Na przykład usługi takie jak bramy można skalować na podstawie ilości zasobów potrzebnych do obsługi żądań przychodzących. Spójrzmy na przykład jak może wyglądać tych reguł skalowania:
-* Wszystkie wystąpienia bramy Moje średnio używania więcej niż dwa rdzenie, skalowanie usługi bramy się przez dodanie jednego wystąpienia więcej. W tym celu co godzinę, ale nigdy nie ma więcej niż siedmiu wystąpień w sumie.
-* Jeśli wszystkie wystąpienia Moje bramy z mniej niż 0,5 rdzeni średnio, skalować usługę w przez usunięcie jednego wystąpienia. W tym celu co godzinę, ale nigdy nie ma w sumie mniejszej liczby wystąpień.
+Typowy scenariusz, w których jest użyteczny automatyczne skalowanie jest, gdy obciążenie określonej usługi zmienia się wraz z upływem czasu. Na przykład usługi takie jak bramy można skalować na podstawie ilości zasobów potrzebnych do obsługi żądań przychodzących. Spójrzmy na przykład jak może wyglądać te reguły skalowania:
+* Jeśli wszystkie wystąpienia elementu mojej bramy średnio z więcej niż dwa rdzenie, skalować usługi bramy w poziomie przez dodanie jednego wystąpienia więcej. To co godzinę, ale nigdy nie mają więcej niż siedem wystąpień w sumie.
+* Jeśli wszystkie wystąpienia elementu mojej bramy średnio z mniej niż 0,5 rdzenia, skalować usługę w przez usunięcie jednego wystąpienia. To co godzinę, ale nigdy nie mają mniej niż trzy wystąpienia w sumie.
 
-Automatyczne skalowanie jest obsługiwana dla kontenerów i regularne usługi sieć szkieletowa usług. Dalszej części tego artykułu opisano zasady skalowania, sposób, aby włączyć lub wyłączyć automatyczne skalowanie oraz przedstawiono przykłady dotyczące sposobu używania tej funkcji.
+Automatyczne skalowanie jest obsługiwana dla kontenerów i regularnego usługi Service Fabric. W pozostałej części tego artykułu opisano zasady skalowania, sposobów, aby włączyć lub wyłączyć automatyczne skalowanie i przedstawiono przykłady dotyczące używania tej funkcji.
 
-## <a name="describing-auto-scaling"></a>Opisujące automatyczne skalowanie
-Automatyczne skalowanie zasady mogą być definiowane dla każdej usługi w klastrze usługi sieć szkieletowa usług. Każda zasada skalowania składa się z dwóch części:
-* **Skalowanie wyzwalacza** opisuje podczas skalowania usługi będą wykonywane. Aby określić, czy usługa powinien być skalowany są sprawdzane w warunki, które są zdefiniowane w wyzwalaczu okresowo.
+## <a name="describing-auto-scaling"></a>Opisujące Autoskalowanie
+Automatyczne skalowanie zasady mogą być definiowane dla poszczególnych usług w klastrze usługi Service Fabric. Wszystkie zasady skalowania składa się z dwóch części:
+* **Skalowanie wyzwalacza** opisuje, kiedy wykonać skalowanie usługi. Warunki, które są zdefiniowane w wyzwalaczu sprawdzane są okresowo ustalenie, jeśli usługa powinna być skalowana.
 
-* **Skalowanie mechanizm** w tym artykule opisano, jak skalowanie będzie można wykonać, gdy zostaje wyzwolony. Mechanizm jest stosowany tylko wtedy, gdy są spełnione warunki z wyzwalacza.
+* **Skalowanie mechanizm** w tym artykule opisano, jak skalowanie zostanie wykonane po jej wyzwoleniu. Mechanizm są stosowane tylko po spełnieniu warunków z wyzwalacza.
 
-Wszystkich wyzwalaczy, które są obecnie obsługiwane pracy za pomocą [metryki obciążenia logicznej](service-fabric-cluster-resource-manager-metrics.md), lub za pomocą fizycznych metryk, takich jak użycie procesora CPU lub pamięci. W obu przypadkach sieci szkieletowej usług będzie monitorował zgłoszone obciążenia metryki i będą oceniać wyzwalacza okresowo, aby określić, czy jest potrzebna skalowania.
+Wszystkie wyzwalacze, które są obecnie obsługiwane pracy za pomocą [miar logiczne obciążenia](service-fabric-cluster-resource-manager-metrics.md), lub za pomocą fizycznych metryk, takich jak użycie procesora CPU lub pamięci. W obu przypadkach usługi Service Fabric będzie monitorował zgłoszonych obciążenia metryki i oceni wyzwalacza okresowo, aby określić, czy skalowanie jest potrzebne.
 
-Istnieją dwa mechanizmy, które są obecnie obsługiwane przez skalowanie automatyczne. Pierwsza z nich jest przeznaczony dla usług bezstanowych lub dla kontenerów, gdy automatyczne skalowanie odbywa się przez dodanie lub usunięcie [wystąpień](service-fabric-concepts-replica-lifecycle.md). W przypadku usług zarówno stanowe i bezstanowe automatyczne skalowanie można również przeprowadzić przez dodanie lub usunięcie o nazwie [partycje](service-fabric-concepts-partitioning.md) usługi.
+Istnieją dwa mechanizmy, które są obecnie obsługiwane przez automatyczne skalowanie. Pierwsza z nich jest przeznaczona dla usługi bezstanowej lub kontenery, gdy automatyczne skalowanie odbywa się przez dodanie lub usunięcie [wystąpień](service-fabric-concepts-replica-lifecycle.md). Dla usług stanowych i bezstanowych, automatycznego skalowania można również przeprowadzić przez dodawanie lub usuwanie nazwanej [partycje](service-fabric-concepts-partitioning.md) usługi.
 
 > [!NOTE]
-> Obecnie jest obsługiwane tylko jedne zasady skalowania dla danej usługi.
+> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Wyzwalacz obciążenia partycji średnią z skalowanie wystąpienia na podstawie
-Pierwszy typ wyzwalacza, bazuje na obciążenia wystąpień w partycji usługi bezstanowej. Metryka obciążenia są najpierw wygładzane uzyskanie obciążenia dla każdego wystąpienia partycji, a następnie te wartości zostały uśrednione we wszystkich wystąpieniach partycji. Istnieją trzy czynników, które określają, kiedy skalowania usługi:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Wyzwalacz obciążenia średni partycji o skalowanie na podstawie wystąpienia
+Pierwszy typ wyzwalacza opiera się na obciążenie wystąpień w partycji o bezstanowa usługa. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdego wystąpienia partycji, a następnie te wartości są uśredniane we wszystkich wystąpieniach partycji. Istnieją trzy czynniki, które określają, kiedy będzie można skalować usługi:
 
-* _Dolny próg obciążenia_ to wartość, która określa, kiedy usługa będzie **skalowany w**. Jeśli obciążenie średnią wszystkich wystąpień partycji jest niższa niż ta wartość, usługi będą skalowane w.
-* _Próg ładowania górny_ to wartość, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli obciążenie średnią wszystkich wystąpień partycji jest niższa niż ta wartość, usługi będą skalowane wychodzących.
-* _Interwał skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Po wyzwalacza jest zaznaczone, jeśli wymagane jest skalowanie mechanizmu zostaną zastosowane. Jeśli skalowania nie jest wymagana żadna akcja ze strony nastąpi przekierowanie. W obu przypadkach wyzwalacz nie będzie sprawdzana ponownie wygaśnięcia skalowania interwał ponownie.
+* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **przeskalować w pionie**. Jeśli średnie obciążenie wszystkie wystąpienia elementu partycji jest niższa niż ta wartość, usługa będzie skalowana w.
+* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkie wystąpienia partycji jest niższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
+* _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
 
-Wyzwalacz mogą być używane tylko w usługi bezstanowej (bezstanowych kontenery lub usług sieci szkieletowej usług). W przypadku, gdy usługa ma wiele partycji, wyzwalacza jest szacowana osobno dla każdej partycji, a każda partycja będzie mieć określony mechanizm zastosować dla niego niezależnie. W związku z tym w tym przypadku jest możliwe, że niektóre partycje usługi będzie można skalować w poziomie, niektóre będą skalowane w i niektóre nie można skalować w ogóle w tym samym czasie, oparte na ich obciążenia.
+Tego wyzwalacza można używać tylko w przypadku usług bezstanowych (bezstanowe, kontenery lub usługi Service Fabric). W przypadku, gdy usługa jest podzielona na partycje, wyzwalacz jest szacowana osobno dla każdej partycji, a każda partycja będzie mieć określony mechanizm zastosowano niezależnie. W związku z tym w tym przypadku jest możliwe, że niektóre partycje usługi będzie być skalowana w poziomie, niektóre treść będzie skalowana w i niektóre nie będzie można skalować w ogóle w tym samym czasie, na podstawie ich obciążenia.
 
-Tylko mechanizm, który może być używany z tego wyzwalacza jest PartitionInstanceCountScaleMechanism. Istnieją trzy czynników, które określają, jak stosowany jest ten mechanizm:
-* _Skalowanie przyrostu_ określa liczbę wystąpień zostaną dodane lub usunięte po wyzwoleniu mechanizmu.
-* _Maksymalna liczba wystąpień_ definiuje górny limit skalowania. Jeśli liczba wystąpień partycji osiągnie ten limit, następnie usługa nie będzie skalowana, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym przypadku usługi będą skalowane out możliwie (limit to liczba węzłów, które są dostępne w klastrze).
-* _Minimalna liczba wystąpień_ definiuje dolna granica skalowania. Jeśli liczba wystąpień partycji osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
+Tylko mechanizm, który może być używany z tego wyzwalacza jest PartitionInstanceCountScaleMechanism. Istnieją trzy czynniki, które określają, jak ten mechanizm jest stosowany:
+* _Skalowanie przyrostu_ Określa, ile wystąpień zostaną dodane lub usunięte po wyzwoleniu mechanizm.
+* _Maksymalna liczba wystąpień_ definiuje górny limit skalowania. Jeśli wiele wystąpień partycji osiągnie ten limit, następnie usługa będzie nie być skalowana w poziomie, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym, że treść będzie skalowana w przypadku usługi out możliwie (limit jest liczba węzłów, które są dostępne w klastrze).
+* _Minimalna liczba wystąpień_ określa dolną granicę dla skalowania. Jeśli wiele wystąpień partycji osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
 
-## <a name="setting-auto-scaling-policy"></a>Ustawienie automatyczne skalowanie zasad
+## <a name="setting-auto-scaling-policy"></a>Ustawienie automatycznego skalowania zasad
 
 ### <a name="using-application-manifest"></a>Przy użyciu manifest aplikacji
 ``` xml
@@ -113,30 +113,33 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Średnia usługi obciążenia wyzwalacza z partycji na podstawie skalowania
-Drugi wyzwalacz zależy od obciążenia wszystkie partycje z jedną usługę. Metryka obciążenia są wygładzane najpierw uzyskać obciążenia dla każdej repliki lub wystąpienie partycji. Dla stanowych usług obciążenia partycji uważa się obciążenia repliką podstawową, gdy dla usług bezstanowych obciążenia partycji jest średnią obciążenia wszystkich wystąpień partycji. Te wartości są średnio wszystkich partycji usługi, a ta wartość służy do wyzwalania Skalowanie automatyczne. Takie same jak w poprzednich mechanizmu, istnieją trzech czynników, które określają podczas skalowania usługi:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Wyzwalacz obciążenia średniej usług o skalowanie na podstawie partycji
+Drugi wyzwalacz zależy od obciążenia wszystkich partycji w jednej usłudze. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdej repliki lub wystąpienie partycji. Dla usług stanowych obciążenia partycji jest uważana obciążenie związane z repliką podstawową, gdy w przypadku usług bezstanowych obciążenia partycji jest średnie obciążenie wszystkie wystąpienia partycji. Te wartości są we wszystkich partycjach usługi, a ta wartość jest używana do wyzwolenia automatycznego skalowania. Takie same jak w poprzednim mechanizmu, istnieją trzy czynniki, które określają, w przypadku skalowania usługi:
 
-* _Dolny próg obciążenia_ to wartość, która określa, kiedy usługa będzie **skalowany w**. Jeśli obciążenie średnią wszystkich partycji usługi jest starsza niż ta wartość, usługi będą skalowane w.
-* _Próg ładowania górny_ to wartość, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli obciążenie średnią wszystkich partycji usługi jest starsza niż ta wartość, usługi będą skalowane wychodzących.
-* _Interwał skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Po wyzwalacza jest zaznaczone, jeśli wymagane jest skalowanie mechanizmu zostaną zastosowane. Jeśli skalowania nie jest wymagana żadna akcja ze strony nastąpi przekierowanie. W obu przypadkach wyzwalacz nie będzie sprawdzana ponownie wygaśnięcia skalowania interwał ponownie.
+* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **przeskalować w pionie**. Jeśli średnie obciążenie wszystkich partycji usługi jest niższa niż ta wartość, usługa będzie skalowana w.
+* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest niższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
+* _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
 
-Wyzwalacz może być używana jednocześnie z usługami stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedParitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaniu nowej partycji i skalowania w jednym z istniejących partycji usługi zostaną usunięte. Ma ograniczeń, które będą sprawdzane podczas tworzenia lub aktualizowania usługi i usługi tworzenia/aktualizacji zakończy się niepowodzeniem, jeśli nie są spełnione następujące warunki:
-* Schemat partycji o nazwie musi być używane przez usługę.
-* Nazwy partycji muszą być liczbami kolejnych liczba całkowita, tak samo, jak "0", "1",...
-* Pierwsza partycja musi mieć nazwę "0".
+Tego wyzwalacza można używać zarówno usługi stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedParitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaje się nową partycję i podczas skalowania usługi w jednej z istniejących partycji jest usuwany. Ma ograniczeń, które będą sprawdzane, gdy usługa jest tworzony lub aktualizowany i tworzenia/aktualizacji usługi zakończy się niepowodzeniem, jeśli te warunki nie są spełnione:
+* Schemat partycji nazwanej, należy użyć dla usługi.
+* Nazwy partycji musi być liczby całkowite kolejnych, takie jak "0", "1"...
+* Pierwsza partycji musi mieć nazwę "0".
 
 Na przykład jeśli usługa jest początkowo utworzony ze trzy partycje, możliwość jedyne prawidłowe nazwy partycji jest "0", "1" i "2".
 
-Rzeczywiste automatycznego skalowania operację wykonywaną szanuje tego nazewnictwa schematu:
-* Jeśli bieżącej partycji usługi są nazywane "0", "1" i "2", następnie partycji, który zostanie dodany do skalowania będzie miał nazwę "3".
-* Jeśli bieżącej partycji usługi są nazywane "0", "1" i "2", partycja zostanie usunięta skalowania w jest partycja o nazwie "2".
+Rzeczywiste automatycznego skalowania operacji, która jest wykonywana będzie uwzględniać ta oraz schemat nazewnictwa:
+* Jeśli bieżące partycje usługi są nazywane "0", "1" i "2", następnie partycji, który zostanie dodany do skalowania w poziomie będzie miał nazwę "3".
+* Jeśli bieżące partycje usługi są nazywane "0", "1" i "2", partycji, która zostanie usunięta dla skalowania w jest partycja o nazwie "2".
 
-Takie same jak w przypadku mechanizm, który używa skalowania przez dodanie lub usunięcie wystąpień, istnieją trzy parametry, które określają, jak stosowany jest ten mechanizm:
-* _Skalowanie przyrostu_ Określa, ile partycje zostaną dodane lub usunięte po wyzwoleniu mechanizmu.
-* _Maksymalna liczba partycji_ definiuje górny limit skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa nie będzie skalowana, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym przypadku usługi będą skalowane out możliwie (limit to rzeczywista wydajność klastra).
-* _Minimalna liczba wystąpień_ definiuje dolna granica skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
+Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usuwając wystąpienia, istnieją trzy parametry, które określają, jak ten mechanizm jest stosowany:
+* _Skalowanie przyrostu_ Określa, ile partycje zostaną dodane lub usunięte po wyzwoleniu mechanizm.
+* _Maksymalna liczba partycji_ definiuje górny limit skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa będzie nie być skalowana w poziomie, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym, że treść będzie skalowana w przypadku usługi out możliwie (limit wynosi Rzeczywista wydajność klastra).
+* _Minimalna liczba wystąpień_ określa dolną granicę dla skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
 
-## <a name="setting-auto-scaling-policy"></a>Ustawienie automatyczne skalowanie zasad
+> [!WARNING] 
+> Stosowania AddRemoveIncrementalNamedParitionScalingMechanism usługi stanowej usługi Service Fabric spowoduje dodanie lub usunięcie partycji **bez powiadomienia i ostrzeżenie**. Ponowny podział danych nie zostanie wykonane po wyzwoleniu mechanizm skalowania. W przypadku, gdy operacja skalowania w górę, nowe partycje będzie pusty, a w przypadku skalowania w dół operacji **partycji zostaną usunięte wraz z danymi, które zawiera**.
+
+## <a name="setting-auto-scaling-policy"></a>Ustawienie automatycznego skalowania zasad
 
 ### <a name="using-application-manifest"></a>Przy użyciu manifest aplikacji
 ``` xml
@@ -189,7 +192,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="auto-scaling-based-on-resources"></a>Automatyczne skalowanie na podstawie zasobów
 
-Aby włączyć usługę monitor zasobów można skalować na podstawie rzeczywistych zasobów
+Aby włączyć usługę monitor zasobów w celu skalowania na podstawie rzeczywistych zasobów
 
 ``` json
 "fabricSettings": [
@@ -199,8 +202,8 @@ Aby włączyć usługę monitor zasobów można skalować na podstawie rzeczywis
     "ResourceMonitorService"
 ],
 ```
-Istnieją dwa metryk, które reprezentują rzeczywistych zasobów fizycznych. Jeden z nich jest servicefabric: / _CpuCores reprezentujące rzeczywistego użycia procesora cpu (aby 0,5 reprezentuje połowa podstawowa), a druga jest servicefabric: / _MemoryInMB, który reprezentuje użycia pamięci w MB.
-ResourceMonitorService jest odpowiedzialny za śledzenie użycia procesora cpu i pamięci użytkownika usług. Ta usługa zostanie zastosowana ważonej średniej ruchomej, aby uwzględnić potencjalną nagłego krótkim okresie. Monitorowanie zasobów jest obsługiwane zarówno konteneryzowanych, jak i konteneryzowanych aplikacji w systemie Windows oraz konteneryzowanych widocznych w systemie Linux. Automatyczne skalowanie zasobów jest włączona tylko dla usług aktywowana w [model procesu wyłącznego](service-fabric-hosting-model.md#exclusive-process-model).
+Istnieją dwie metryki, które reprezentują rzeczywistych zasobów fizycznych. Jeden z nich jest servicefabric: _CpuCores, którą reprezentują rzeczywiste użycie procesora cpu (dzięki czemu 0,5 reprezentuje wysokości równej połowie rdzenia), a drugi ma rozmiar servicefabric: / _MemoryInMB, który reprezentuje użycie pamięci w MB.
+ResourceMonitorService jest odpowiedzialny za śledzenie użycia procesora cpu i pamięci z usług użytkownika. Ta usługa zostanie zastosowana ważona średnia ruchoma aby uwzględnić potencjalnych wartości szczytowych krótkotrwałe. Monitorowanie zasobów jest obsługiwane dla aplikacji konteneryzowanych oraz niekonteneryzowanych na Windows i konteneryzowanych z nich w systemie Linux. Automatyczne skalowanie zasobów jest włączone tylko dla usług aktywowane w [model procesu wyłączne](service-fabric-hosting-model.md#exclusive-process-model).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [skalowalność aplikacji](service-fabric-concepts-scalability.md).
+Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).

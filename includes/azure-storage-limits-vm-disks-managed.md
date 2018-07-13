@@ -8,7 +8,7 @@
 
 **Zarządzane dyski maszyny wirtualnej w warstwie Premium: limity poszczególnych dysków**
 
-| Typ dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| Typ magazynu dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Rozmiar dysku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
@@ -18,5 +18,5 @@
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna liczba operacji wejścia/wyjścia na sekundę na maszynę wirtualną |80 000 IOPS z GS5 maszyny Wirtualnej |
-| Maksymalna przepływność na maszynę wirtualną |2000 MB/s GS5 maszyny Wirtualnej |
+| Maksymalna liczba operacji wejścia/wyjścia na sekundę na maszynę wirtualną |80 000 operacji We/Wy z maszyn wirtualnych GS5 |
+| Maksymalna przepływność na maszynę wirtualną |2000 MB/s przy użyciu maszyn wirtualnych GS5 |

@@ -10,25 +10,25 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: b40e2ba448236bcef72ffe501b4b14fa0dd64e1c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31434943"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38756109"
 ---
 | Zasób | Limit |
 | --- | --- |
-| Jednostki skalowania | 10 dla regionu<sup>1</sup> |
+| Jednostki skalowania | 10 na region<sup>1</sup> |
 | Pamięć podręczna | 5 GB na jednostkę<sup>1</sup> |
-| Zaplecza równoczesnych połączeń<sup>2</sup> na urzędu HTTP | 2048 na jednostkę<sup>3</sup> |
-| Rozmiar maksymalny buforowanej odpowiedzi | 10MB |
-| Zasady maksymalny rozmiar dokumentu | 256KB |
-| Maksymalna bram domen | 20 dla każdego wystąpienia usługi<sup>4</sup> |
+| Połączenia współbieżne zaplecza<sup>2</sup> na urząd HTTP | 2048 jednostkę<sup>3</sup> |
+| Rozmiar maksymalny odpowiedzi z pamięci podręcznej | 10MB |
+| Zasady maksymalnego rozmiaru dokumentu | 256KB |
+| Maksymalna bram domen | 20 za wystąpienie usługi<sup>4</sup> |
 
 
-<sup>1</sup>limity interfejsu API zarządzania są różne dla każdej warstwy cenowej. Aby wyświetlić ceny warstw i limity ich skalowania przejdź do [interfejsu API zarządzania cennik](https://azure.microsoft.com/pricing/details/api-management/).
-<sup>2</sup> połączenia są w puli i ponownego użycia, chyba że jawnie zamknięte przez wewnętrznej bazy danych.
-<sup>3</sup> na jednostkę warstw podstawowa, standardowa i Premium. Warstwa dewelopera jest ograniczony do 1024.
-<sup>4</sup> dostępne tylko w warstwie Premium.
+<sup>1</sup>limitów interfejsu API zarządzania różnią się dla każdej warstwy cenowej. Aby zobaczyć ceny warstwy i ich limitów skalowania przejdź do [API Management — cennik](https://azure.microsoft.com/pricing/details/api-management/).
+<sup>2</sup> połączenia są w puli i ponownego użycia, chyba że jawnie zamknięty przez zaplecze.
+<sup>3</sup> jednostkę warstwy podstawowa, standardowa i Premium. Warstwa Deweloper przeznaczona jest ograniczona do 1024.
+<sup>4</sup> dostępne w tylko w warstwie Premium.
 
 

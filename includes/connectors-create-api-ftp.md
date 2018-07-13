@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Wymagania wstępne
 * [FTP](https://wikipedia.org/wiki/File_Transfer_Protocol) konta  
 
-Aby korzystać z konta użytkownika FTP, w aplikacji logiki, musisz autoryzować aplikacji logiki do łączenia się z kontem FTP. Na szczęście można w tym z aplikacji logiki w portalu Azure.  
+Zanim użyjesz konta FTP w aplikacji logiki, należy autoryzować aplikację logiki, aby połączyć się z kontem FTP. Na szczęście możesz można to zrobić z poziomu aplikacji logiki w witrynie Azure Portal.  
 
-Poniżej przedstawiono kroki, aby zezwolić aplikacji logiki do łączenia się z kontem FTP:  
+Poniżej przedstawiono kroki, aby autoryzować aplikację logiki, aby połączyć się z kontem FTP:  
 
-1. Aby utworzyć połączenie FTP, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzanych interfejsów API** na liście rozwijanej wprowadź *FTP* w polu wyszukiwania. Wybierz wyzwalacz lub akcja będzie chcesz użyć:  
-   ![Krok tworzenia połączeń FTP](./media/connectors-create-api-ftp/ftp-1.png)  
-2. Jeśli nie utworzono żadnych połączeń FTP przed będzie zostanie wyświetlony monit o podanie poświadczeń FTP. Te poświadczenia będą używane do autoryzacji aplikację logiki, aby nawiązać połączenie i dostęp do danych konta FTP:  
-   ![Krok tworzenia połączeń FTP](./media/connectors-create-api-ftp/ftp-2.png)  
-3. Zwróć uwagę, utworzono połączenie i wszystko jest teraz mógł kontynuować wykonywanie innych czynności w aplikacji logiki:  
-   ![Krok tworzenia połączeń FTP](./media/connectors-create-api-ftp/ftp-3.png)  
+1. Aby utworzyć połączenie z użyciem protokołu FTP, w Projektancie aplikacji logiki, wybierz **Pokaż Microsoft zarządzane interfejsy API** na liście rozwijanej wprowadź *FTP* w polu wyszukiwania. Wybierz wyzwalacz lub akcję, którą Ci się spodoba do użycia:  
+   ![Kroku tworzenia połączenia FTP](./media/connectors-create-api-ftp/ftp-1.png)  
+2. Nie utworzono żadnych połączeń FTP przed będzie pobrać monit podaj poświadczenia usługi FTP. Te poświadczenia będą używane do autoryzowania aplikację logiki, aby nawiązać połączenie i dostęp do danych na koncie FTP:  
+   ![Kroku tworzenia połączenia FTP](./media/connectors-create-api-ftp/ftp-2.png)  
+3. Zwróć uwagę, połączenie zostanie utworzone i są teraz bezpłatne wykonaj pozostałe kroki w aplikacji logiki:  
+   ![Kroku tworzenia połączenia FTP](./media/connectors-create-api-ftp/ftp-3.png)  
 

@@ -56,11 +56,11 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 * Kopiujesz dane z pliku tekstowego i chcesz pominąć kilka początkowych wierszy, które nie zawierają żadnych danych bądź informacji nagłówka. Określ właściwość `skipLineCount`, aby wskazać liczbę wierszy do pominięcia. Jeśli pozostała część pliku zawiera wiersz nagłówka, możesz również określić właściwość `firstRowAsHeader`. Jeśli określono zarówno właściwość `skipLineCount`, jak i `firstRowAsHeader`, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego
 
 ### <a name="specifying-jsonformat"></a>Określanie formatu JsonFormat
-Aby **importu/eksportu pliki w formacie JSON jako — jest do/z bazy danych Azure rozwiązania Cosmos**, zobacz [dokumentów JSON importu/eksportu](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) sekcji w łączniku bazy danych Azure rozwiązania Cosmos ze szczegółami.
+Do **importu/eksportu pliki w formacie JSON jako — importowanie / z usługi Azure Cosmos DB**, zobacz [dokumentów JSON Import/export](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) sekcji dotyczącą łącznika usługi Azure Cosmos DB.
 
 Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw właściwość `format` `type` na wartość **JsonFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu JsonFormat](#jsonformat-example).
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | filePattern |Wskazuje wzorzec danych przechowywanych w każdym pliku JSON. Dozwolone wartości to: **setOfObjects** i **arrayOfObjects**. Wartością **domyślną** jest **setOfObjects**. Aby uzyskać szczegółowe informacje o tych wzorcach, zobacz sekcję [Wzorce plików JSON](#json-file-patterns). |Nie |
 | jsonNodeReference | Jeśli chcesz wykonać iterację i ekstrakcję danych z obiektów wewnątrz pola tablicy o tym samym wzorcu, określ ścieżkę JSON tej tablicy. Ta właściwość jest obsługiwana tylko podczas kopiowania danych z plików JSON. | Nie |
@@ -201,7 +201,7 @@ i chcesz skopiować ją do tabeli usługi Azure SQL w następującym formacie pr
 Zestaw danych wejściowych typu **JsonFormat** jest zdefiniowany następująco: (częściowa definicja zawierająca tylko stosowne fragmenty). Więcej szczegółów:
 
 - Sekcja `structure` definiuje niestandardowe nazwy kolumn i odpowiedni typ danych podczas konwersji na dane tabelaryczne. Ta sekcja jest **opcjonalna**, o ile nie trzeba wykonać mapowania kolumn. Aby uzyskać bardziej szczegółowe informacje, zobacz sekcję [Specifying structure definition for rectangular datasets](#specifying-structure-definition-for-rectangular-datasets) (Określanie definicji struktury dla prostokątnych zestawów danych).
-- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, możesz użyć składni **tablica[x].właściwość** w celu wydobycia wartości wskazanej właściwości z obiektu o numerze x albo składni **tablica[*].właściwość** w celu znalezienia wartości z wszystkich obiektów zawierających taką właściwość.
+- Właściwość `jsonPathDefinition` określa ścieżkę JSON dla każdej kolumny, wskazując, skąd mają zostać wyodrębnione dane. Aby skopiować dane z tablicy, możesz użyć **tablica [x] .właściwość** do wyodrębnienia wartości danej właściwości z obiektu wskazanej, lub możesz użyć **tablica [*] .właściwość** do znalezienia wartości z wszystkich obiektów zawierających takie Właściwość.
 
 ```json
 "properties": {

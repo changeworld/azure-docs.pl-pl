@@ -1,20 +1,20 @@
 
 
 
-## <a name="viewing-your-tags-in-the-usage-details"></a>Wyświetlanie znaczników w szczegóły użycia
-Tagi dotyczącymi obliczeniowych, sieci i zasobów magazynu w modelu wdrażania usługi Resource Manager zostanie wypełniona w Twoje dane użycia w [portal rozliczeń](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-the-usage-details"></a>Wyświetlanie tagów w szczegóły użycia
+Tagi umieszczone na mocy obliczeniowej, sieci i zasobów magazynu w modelu wdrażania usługi Resource Manager zostanie wypełniony w szczegółów użycia w [portalu rozliczeń](https://account.windowsazure.com/).
 
-Polecenie **Pobierz szczegóły użycia** Aby wyświetlić szczegóły użycia w ramach subskrypcji.
+Kliknij pozycję **Pobierz szczegółowe zestawienie użycia** Aby wyświetlić szczegóły użycia w Twojej subskrypcji.
 
-![Szczegóły użycia w portalu Azure](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Szczegóły użycia w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Wybierz instrukcji rozliczeń i **w wersji 2** Szczegóły obciążenia:
+Wybierz zestawienie rozliczeniowe i **w wersji 2** szczegóły użycia:
 
-![Szczegóły użycia podglądu w wersji 2 w portalu Azure](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Szczegóły użycia (wersja zapoznawcza) w wersji 2 w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
 Z szczegóły użycia można wyświetlić wszystkie tagi w **tagi** kolumny:
 
-![Kolumna znaczników w portalu Azure](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Kolumny tagów w witrynie Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-Analizując te znaczniki wraz z użycia organizacji będzie można uzyskać nowy wgląd w ich dane dotyczące zużycia.
+Analizując te znaczniki wraz z użycia, organizacji będą mogli nowy wgląd w swoje dane dotyczące zużycia.
 

@@ -1,8 +1,8 @@
 ---
 title: Importowanie danych do analizy w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Importuj dane statyczne, aby dołączyć za pomocą telemetrii aplikacji lub zaimportować strumienia danych do zapytania z Analytics.
+description: Importowanie danych statycznych w celu dołączenia do telemetrii aplikacji lub zaimportować strumienia osobne dane do zapytania przy użyciu usługi Analytics.
 services: application-insights
-keywords: Otwórz schematu, importowania danych
+keywords: Otwórz schemat, importowanie danych
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
@@ -13,92 +13,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293625"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989761"
 ---
-# <a name="import-data-into-analytics"></a>Importowanie danych do analityka
+# <a name="import-data-into-analytics"></a>Importowanie danych do analizy
 
-Importowanie danych tabelarycznych w [Analytics](app-insights-analytics.md), albo przyłączenie jej z [usługi Application Insights](app-insights-overview.md) dane telemetryczne z aplikacji, lub tak, aby można analizować je jako osobne strumienia. Analytics to dobrze nadaje się do analizowania oznaczony znacznikiem czasowym dużych strumieni danych telemetrycznych język zaawansowanych zapytań.
+Importowanie danych tabelarycznych w [Analytics](app-insights-analytics.md), albo aby dołączyć ją za pomocą [usługi Application Insights](app-insights-overview.md) danych telemetrycznych z Twojej aplikacji, lub tak, aby przeanalizować je jako oddzielne strumienia. Analytics to zaawansowany język zapytań dobrze nadaje się do analizowania strumieni oznaczony sygnaturą czasową dużych ilości danych telemetrycznych.
 
-Możesz zaimportować dane analizy przy użyciu własnego schematu. Nie trzeba użyć standardowe schematów usługi Application Insights, takich jak żądania lub śledzenia.
+Możesz zaimportować dane do analizy przy użyciu własnego schematu. Nie trzeba używać standardowych schematów usługi Application Insights, takich jak żądania lub śledzenia.
 
-Możesz zaimportować JSON lub widoku źródła danych (wartości rozdzielonych ogranicznikami - przecinek, średnik lub kartę) plików.
+Można zaimportować JSON lub widoku źródła danych (wartości rozdzielonych ogranicznikami - przecinek, średnik lub kartę) plików.
 
-Istnieją trzy sytuacjach, gdy importowania Analytics jest przydatna:
+Istnieją trzy sytuacje, w których jest użyteczny importowania danych do analizy:
 
-* **Dołącz z danych telemetrycznych aplikacji.** Na przykład można zaimportować tabelę, która mapuje adresy URL z witryny sieci Web był bardziej czytelny tytułów stron. W module analiz można utworzyć raport wykresu pulpitu nawigacyjnego, który zawiera dziesięć najpopularniejszych stron w witrynie sieci Web. Teraz mogą być prezentowane tytuły stron zamiast adresów URL.
-* **Korelowanie dane telemetryczne aplikacji** z innych źródeł, takie jak ruch w sieci, dane serwera lub CDN pliki dziennika.
-* **Zastosuj Analytics do strumienia danych.** Application Insights Analytics jest zaawansowane narzędzia, która współdziała również z rozrzedzony, strumienie oznaczony znacznikiem czasowym — znacznie lepszą niż SQL w wielu przypadkach. Jeśli masz takich strumienia z z innego źródła, można analizować je z Analytics.
+* **Dołącz do dzięki telemetrii aplikacji.** Na przykład można zaimportować tabelę, która mapuje adresy URL z witryny sieci Web do bardziej czytelny tytułów stron. W usłudze Analytics można utworzyć raport wykresu pulpit nawigacyjny, który zawiera dziesięć najpopularniejszych stron w witrynie sieci Web. Teraz on zawierać tytułów stron, zamiast adresów URL.
+* **Korelowanie danych telemetrycznych aplikacji** z innych źródeł, takie jak ruch w sieci, dane serwera lub CDN plików dziennika.
+* **Zastosowanie analizy do strumienia danych.** Analiza usługi Application Insights to zaawansowane narzędzie, które działa dobrze z rozrzedzony, oznaczony sygnaturą czasową strumieniami — znacznie lepsze niż SQL, w wielu przypadkach. Jeśli masz takie strumienia z innego źródła, można analizować je przy użyciu usługi Analytics.
 
-Wysyłanie danych do źródła danych jest bardzo proste. 
+Wysyłanie danych do źródła danych jest łatwe. 
 
-1. (Jeden raz) Zdefiniuj schemat danych w źródle danych.
-2. (Okresowo) Przekazywanie danych do magazynu Azure i wywołania interfejsu API REST, aby powiadomić wynika, że nowe dane oczekuje na wprowadzanie. W ciągu kilku minut dane są dostępne dla kwerendy w module analiz.
+1. (Jeden raz) Należy zdefiniować schemat danych w źródle danych.
+2. (Okresowo) Przekazywanie danych do usługi Azure storage i wywołania interfejsu API REST Powiadom nas, które czeka na pozyskiwanie nowych danych. W ciągu kilku minut dane są dostępne dla zapytania w usłudze Analytics.
 
-Częstotliwość przekazywania jest zdefiniowany przez użytkownika i jak szybko czy chcesz, aby dane były dostępne dla zapytań. Jest bardziej wydajne, aby przekazać dane w większych fragmentów, ale nie większą niż 1GB.
+Częstotliwość przekazywania jest zdefiniowany przez użytkownika i jak szybko czy dane mają być dostępne dla zapytań. Jest bardziej wydajne, aby przekazać dane w większe fragmenty, ale nie większą niż 1GB.
 
 > [!NOTE]
-> *Uzyskano wiele źródeł danych do analizowania?* [*Należy rozważyć użycie* logstash *do wysłania dane do usługi Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
+> *Masz wiele źródeł danych do analizy?* [*Należy rozważyć użycie* logstash *do wysłania dane do usługi Application Insights.*](https://github.com/Microsoft/logstash-output-application-insights)
 > 
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 Potrzebne elementy:
 
-1. Zasób usługi Application Insights w Microsoft Azure.
+1. Zasób usługi Application Insights, w systemie Microsoft Azure.
 
- * Jeśli chcesz do analizowania danych niezależnie od innych telemetrii [utworzyć nowy zasób usługi Application Insights](app-insights-create-new-resource.md).
- * Sprzęganie lub porównywanie danych za pomocą dane telemetryczne z aplikacji, która jest już skonfigurowane przy użyciu usługi Application Insights, można użyć zasobu dla danej aplikacji.
- * Współautor lub właściciela dostęp do tego zasobu.
+ * Jeśli chcesz analizować dane niezależnie od innych telemetrii [Utwórz nowy zasób usługi Application Insights](app-insights-create-new-resource.md).
+ * Jeśli dołączenie lub porównywania danych przy użyciu telemetrii z aplikacji, która jest już skonfigurowane za pomocą usługi Application Insights, można użyć zasobu dla danej aplikacji.
+ * Dostęp współautora lub właściciela do tego zasobu.
  
-2. Magazyn Azure. Możesz przekazać do magazynu Azure i analizy pobiera dane z tego miejsca. 
+2. Usługa Azure storage. Przekaż do usługi Azure storage i Analytics pobiera dane z tego miejsca. 
 
- * Zaleca się tworzenie konta magazynu dedykowane dla obiektów blob. Jeżeli obiektów blob są współużytkowane z innymi procesami, trwa dłużej dla naszych procesów do odczytu obiektów blob.
+ * Zaleca się tworzenie konta magazynu dedykowanego dla obiektów blob. Jeśli obiekty BLOB są współużytkowane z innymi procesami, zajmuje więcej czasu na naszych procesów odczytu obiektów blob.
 
 
 ## <a name="define-your-schema"></a>Definiowania schematu
 
-Przed importowaniem danych, należy zdefiniować *źródła danych* określającej schemat danych.
-Może mieć maksymalnie 50 źródeł danych w pojedynczy zasób usługi Application Insights
+Przed zaimportowaniem danych, należy zdefiniować *źródła danych* określający schemat danych.
+Może mieć maksymalnie 50 źródeł danych w pojedynczym zasobie usługi Application Insights
 
-1. Uruchom Kreatora źródła danych. Użyj przycisku "Dodaj nowe źródło danych". Alternatywnie — kliknij przycisk Ustawienia w prawym górnym rogu i wybierz w menu rozwijanym "Źródła danych".
+1. Uruchom Kreatora źródła danych. Użyj przycisku "Dodaj nowe źródło danych". Alternatywnie — kliknij przycisk Ustawienia w prawym górnym rogu i wybierz pozycję "Źródła danych" w menu rozwijanym.
 
     ![Dodaj nowe źródło danych](./media/app-insights-analytics-import/add-new-data-source.png)
 
     Podaj nazwę dla nowego źródła danych.
 
-2. Definiowanie formatu plików, które możesz przekazać.
+2. Definiowanie formatu plików, które będą przekazywać.
 
-    Można ręcznie zdefiniować format lub Przekaż plik przykładowy.
+    Można ręcznie zdefiniować format lub Przekaż przykładowy plik.
 
-    Jeśli dane są w formacie CSV, pierwszy wiersz próbki można nagłówki kolumn. Można zmienić nazwy pól w następnym kroku.
+    Jeśli dane są w formacie CSV, pierwszy wiersz przykładu można nagłówków kolumn. Można zmienić nazwy pól w następnym kroku.
 
-    Próbka powinna zawierać co najmniej 10 wierszy lub rekordów danych.
+    Plik powinien zawierać co najmniej 10 wierszy lub rekordów danych.
 
-    Nazwy kolumn lub pole ma alfanumerycznych nazw (bez spacji i znaków interpunkcyjnych).
+    Nazwy kolumn lub pola mają nazwy alfanumeryczne (bez spacji i znaków interpunkcyjnych).
 
-    ![Przekaż plik przykładowy](./media/app-insights-analytics-import/sample-data-file.png)
+    ![Przekaż przykładowy plik](./media/app-insights-analytics-import/sample-data-file.png)
 
 
-3. Przegląd schematu, do którego otrzymano kreatora. Typy z próbki go wywnioskować, może być konieczne dostosowanie wywnioskowanych typów kolumn.
+3. Przegląd schematu, który Kreator ma stało się. Typy przykładu go wywnioskować, może być konieczne dostosowanie wywnioskowane typy kolumn.
 
-    ![Przejrzyj wnioskowany schematu](./media/app-insights-analytics-import/data-source-review-schema.png)
+    ![Przegląd schematu wywnioskowane](./media/app-insights-analytics-import/data-source-review-schema.png)
 
- * (opcjonalnie) Przekaż definicji schematu. Zobacz następujący format.
+ * (opcjonalnie) Przekaż definicji schematu. Zobacz poniższy format.
 
- * Wybierz sygnatury czasowej. Wszystkie dane w module analiz musi mieć pola sygnatury czasowej. Musi mieć typ `datetime`, ale nie musi mieć nazwę "timestamp". Jeśli dane mają kolumny zawierającej daty i godziny w formacie ISO, wybierz tę opcję, jako kolumnę znaczników czasu. W przeciwnym razie wybierz pozycję "jako dane dostarczone", a proces importowania doda pola sygnatury czasowej.
+ * Wybierz sygnaturę czasową. Wszystkie dane w usłudze Analytics musi mieć pola sygnatury czasowej. Musi mieć typ `datetime`, ale nie musi mieć nazwę "timestamp". Jeśli dane mają kolumnę zawierającą datę i godzinę w formacie ISO, wybierz tę opcję jako kolumnę sygnatur czasowych. W przeciwnym razie wybierz opcję "jako dane dotarła", a proces importowania spowoduje dodanie pola sygnatury czasowej.
 
-5. Tworzenie źródła danych.
+5. Utwórz źródło danych.
 
 ### <a name="schema-definition-file-format"></a>Format pliku definicji schematu
 
-Zamiast edytowania schematu w interfejsie użytkownika, można załadować definicji schematu z pliku. Format definicji schematu jest następujący: 
+Zamiast edytowania schematu w interfejsie użytkownika, możesz załadować z pliku definicji schematu. Format definicji schematu jest w następujący sposób: 
 
-Format rozdzielanego 
+Rozdzielany formatu 
 ```
 [ 
     {"location": "0", "name": "RequestName", "type": "string"}, 
@@ -116,37 +116,38 @@ JSON format
 ]
 ```
  
-Każda kolumna jest identyfikowany przez lokalizację, nazwy i typu. 
+Każda kolumna jest identyfikowany przez lokalizację, nazwy i typu.
 
-* Lokalizacja — pliku rozdzielanego go sformatować jest pozycja mapowane wartości. JSON format jest jpath zamapowanych klucza.
-* Nazwa — Nazwa wyświetlane kolumny.
+* Lokalizacja — rozdzielonym pliku flagowana jest pozycja mapowanej wartości. Dla formatu JSON jest jpath zamapowanego klucza.
+* Nazwa — Nazwa wyświetlana kolumny.
 * Typ — typ danych tej kolumny.
  
-W przypadku użyto przykładowych danych i rozdzielana format pliku, definicji schematu należy zamapować wszystkich kolumn i dodać nowe kolumny na końcu. 
-
-JSON umożliwia mapowania częściowe, danych, w związku z tym nie ma definicji schematu w formacie JSON do mapowania każdego klucza, który znajduje się w przykładowych danych. Można również mapować kolumn, które nie są częścią przykładowych danych. 
+> [!NOTE]
+> W przypadku, gdy użyto przykładowych danych i format pliku jest rozdzielany, definicji schematu musi mapować wszystkie kolumny i dodać nowe kolumny na końcu.
+> 
+> JSON umożliwia mapowania częściowe dane, w związku z tym definicji schematu przy użyciu formatu JSON nie będą musieli mapować każdy klucz, który znajduje się w przykładowych danych. Można również mapować kolumny, które nie należą do przykładowych danych. 
 
 ## <a name="import-data"></a>Importowanie danych
 
-Aby zaimportować dane, przekaż go do magazynu Azure, Utwórz klucz dostępu dla niego i następnie wykonać wywołania interfejsu API REST.
+Aby zaimportować dane, przekaż go do usługi Azure storage, Utwórz klucz dostępu dla niego i następnie wykonywanie wywołania interfejsu API REST.
 
 ![Dodaj nowe źródło danych](./media/app-insights-analytics-import/analytics-upload-process.png)
 
-Wykonaj następujący proces ręcznie lub konfigurowania automatycznych systemu należy w regularnych odstępach czasu. Należy wykonać następujące kroki dla każdego bloku danych, które chcesz zaimportować.
+Wykonaj następujący proces ręcznie lub skonfigurować zautomatyzowany system, aby to zrobić w regularnych odstępach czasu. Należy wykonać następujące kroki dla każdego bloku danych, które chcesz zaimportować.
 
-1. Przekazywanie danych do [magazynu obiektów blob Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Przekazywanie danych do [usługi Azure blob storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
 
- * Obiekty BLOB może być dowolną rozmiaru bez kompresji do 1GB. Duże obiekty BLOB setek MB idealnie nadają się z punktu widzenia wydajności.
- * Można skompresować je z Gzip, aby zwiększyć czas przekazywania i czas oczekiwania na dane, które mają być dostępne dla zapytania. Użyj `.gz` rozszerzenie nazwy pliku.
- * Najlepiej użyć oddzielnego konta magazynu w tym celu w celu uniknięcia wywołania z różnych usług spowolnienia.
- * Podczas wysyłania danych w wysokiej częstotliwości, co kilka sekund, zaleca się użyć więcej niż jedno konto magazynu, ze względu na wydajność.
+ * Obiekty BLOB mogą być dowolnego rozmiaru bez kompresji do 1GB. Duże obiekty BLOB setek MB są idealnym rozwiązaniem z punktu widzenia wydajności.
+ * Można ją skompresować za pomocą narzędzia Gzip, aby poprawić czas przekazywania i czas oczekiwania na dane, które mają być dostępne dla zapytania. Użyj `.gz` rozszerzenie nazwy pliku.
+ * Najlepiej użyć oddzielnego konta magazynu w tym celu, aby uniknąć wywołania z różnymi usługami spowolnienia wydajności.
+ * Podczas wysyłania danych w wysokiej częstotliwości, co kilka sekund, zaleca się używać więcej niż jedno konto magazynu, ze względu na wydajność.
 
  
-2. [Utwórz klucz sygnatura dostępu współdzielonego dla obiektu blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klucz powinien mieć okres ważności jeden dzień i zapewniają dostęp do odczytu.
-3. Wykonywać wywołanie interfejsu REST w celu powiadomienia usługi Application Insights, która oczekuje na dane.
+2. [Utwórz klucz podpisu dostępu współdzielonego dla obiektu blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klucz powinien mieć okres ważności jeden dzień i zapewniają dostęp do odczytu.
+3. Wykonywać wywołanie interfejsu REST w celu powiadomienia usługi Application Insights, który oczekuje danych.
 
  * Punkt końcowy: `https://dc.services.visualstudio.com/v2/track`
- * Metoda HTTP: POST
+ * Metoda HTTP: WPIS
  * Ładunek:
 
 ```JSON
@@ -168,32 +169,32 @@ Wykonaj następujący proces ręcznie lub konfigurowania automatycznych systemu 
     }
 ```
 
-Symbole zastępcze są:
+Symbole zastępcze są następujące:
 
-* `Blob URI with Shared Access Key`: Otrzymujesz to z procedury tworzenia klucza. Jest specyficzne dla obiektu blob.
-* `Schema ID`Generowane dla określonych schemat Identyfikatora schematu. Dane w tym obiekcie blob powinna być zgodna ze schematem.
-* `DateTime`: Czas, o której zostało przesłane żądanie, UTC. Możemy zaakceptować te formaty: ISO8601 (takich jak "2016-01-01-13:45:01"); Rfc822 ("śro, 14 gru 16 14:57:01 + 0000"); RFC850 ("Środa, 16-14-gru UTC 14:57:00"); RFC1123 ("śro 14 gru 2016 14:57:00 + 0000").
+* `Blob URI with Shared Access Key`: Można uzyskać z procedury tworzenia klucza. Odnosi się do obiektu blob.
+* `Schema ID`: Schemat identyfikator wygenerowany dla zdefiniowanego schematu. Dane w tym obiekcie blob powinna być zgodna ze schematem.
+* `DateTime`: Czas przesłaniem żądania, UTC. Możemy zaakceptować te formaty: ISO8601 (np. "2016-01-01 13:45:01"); Rfc822 ("Środa, 16 gru 14 14:57:01 + 0000"); RFC850 ("Środa, 16-14-Dec 14:57:00 UTC"); RFC1123 ("Środa 14 grudnia 2016 14:57:00 + 0000").
 * `Instrumentation key` zasobu usługi Application Insights.
 
-Dane są dostępne w module analiz po kilku minutach.
+Dane są dostępne w usłudze Analytics po kilku minutach.
 
-## <a name="error-responses"></a>Błąd odpowiedzi
+## <a name="error-responses"></a>Odpowiedzi na błędy
 
-* **Nieprawidłowe żądanie 400**: oznacza, że ładunku żądania jest nieprawidłowy. Sprawdzanie:
- * Instrumentacja poprawny klucz.
- * Wartość czas ważności. Należy go czasu w formacie UTC.
+* **odpowiedź 400 Niewłaściwe żądanie**: wskazuje, że ładunek żądania jest nieprawidłowy. Sprawdź:
+ * Klucz Instrumentacji poprawne.
+ * Prawidłową wartość czasu. Powinno być teraz czasu UTC.
  * JSON zdarzenia jest zgodny ze schematem.
-* **403 Zabroniony**: wysłanych do obiektu blob nie jest dostępny. Upewnij się, że klucz dostępu współdzielonego jest prawidłowa i czy nie wygasł.
-* **Nie można odnaleźć 404**:
+* **403 Zabroniony**: wysłanych do obiektu blob nie jest dostępny. Upewnij się, czy klucz dostępu współdzielonego jest prawidłowa i czy nie wygasł.
+* **404 Nie znaleziono**:
  * Obiekt blob nie istnieje.
  * Identyfikator jest nieprawidłowy.
 
-Bardziej szczegółowe informacje są dostępne w odpowiedzi komunikat o błędzie.
+Bardziej szczegółowe informacje są dostępne w komunikacie o błędzie odpowiedzi.
 
 
 ## <a name="sample-code"></a>Przykładowy kod
 
-Ten kod zawiera [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) pakietu NuGet.
+Ten kod używa [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/9.0.1) pakietu NuGet.
 
 ### <a name="classes"></a>Klasy
 
@@ -352,7 +353,7 @@ namespace IngestionClient
 } 
 ```
 
-### <a name="ingest-data"></a>Pobieranie danych
+### <a name="ingest-data"></a>Pozyskiwanie danych
 
 Użyj tego kodu dla każdego obiektu blob. 
 
@@ -366,5 +367,5 @@ Użyj tego kodu dla każdego obiektu blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek języka zapytań usługi Analiza dzienników](app-insights-analytics-tour.md)
-* Jeśli używasz Logstash, użyj [Logstash wtyczki do przesyłania danych do usługi Application Insights](https://github.com/Microsoft/logstash-output-application-insights)
+* [Samouczek języka zapytań usługi Log Analytics](app-insights-analytics-tour.md)
+* Jeśli używasz programu Logstash, użyj [wtyczkę Logstash w celu wysyłania danych do usługi Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

@@ -1,6 +1,6 @@
 ---
-title: Dodawanie, zmienianie lub usuwanie podsieć sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dodać, zmienić lub usunąć podsieć sieci wirtualnej na platformie Azure.
+title: Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,98 +15,98 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ea16a9828bfb989c49f3cc8d656122b3083ee66a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 26e01ccab3693c672130462104078c16526aa921
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702078"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991371"
 ---
-# <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieć sieci wirtualnej
+# <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 
-Dowiedz się, jak dodać, zmienić lub usunąć podsieć sieci wirtualnej. Wszystkie zasoby Azure wdrożony w sieci wirtualnej są wdrażane w podsieci sieci wirtualnej. Jeśli jesteś nowym użytkownikiem sieci wirtualnych, możesz dowiedzieć się więcej o nich w [omówienie sieci wirtualnej](virtual-networks-overview.md) lub wykonując [samouczek](quick-create-portal.md). Aby utworzyć, zmienić, albo usunąć sieci wirtualnej, zobacz [Zarządzanie sieci wirtualnej](manage-virtual-network.md).
+Dowiedz się, jak dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej. Wszystkie zasoby platformy Azure wdrożonych w sieci wirtualnej są wdrażane w podsieci sieci wirtualnej. Jeśli dopiero zaczynasz pracę z sieciami wirtualnymi, możesz dowiedzieć się więcej o nich w [Omówienie usługi Virtual network](virtual-networks-overview.md) lub wykonując [samouczek](quick-create-portal.md). Aby utworzyć, zmienić, lub usunąć sieci wirtualnej, zobacz [zarządzanie siecią wirtualną](manage-virtual-network.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać następujące zadania:
 
-- Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
+- Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
-Konta, zaloguj się do lub z usługą Azure, musi być przypisany do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowej roli zabezpieczeń](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania na liście [uprawnień ](#permissions).
+Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
 
 ## <a name="add-a-subnet"></a>Dodawanie podsieci
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-2. Z listy sieci wirtualnych wybierz chcesz dodać podsieci do sieci wirtualnej.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją.
+2. Z listy sieci wirtualnych wybierz sieć wirtualną, o których chcesz dodać podsieć, którą chcesz.
 3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
-4. Wybierz **+ podsieci**.
+4. Wybierz **+ podsieć**.
 5. Wprowadź wartości dla następujących parametrów:
-    - **Nazwa**: Nazwa musi być unikatowa w ramach sieci wirtualnej.
-    - **Zakres adresów**: zakres musi być unikatowa w ramach przestrzeni adresowej dla sieci wirtualnej. Zakres nie może nakładać się na inne zakresy adresów podsieci w sieci wirtualnej. Przestrzeń adresowa należy określić przy użyciu notacji Classless Inter-Domain Routing (CIDR). Na przykład w sieci wirtualnej z 10.0.0.0/16 przestrzeni adresów, można zdefiniować przestrzeni adresowej podsieci 10.0.0.0/24. Najmniejszą zakres, który można określić jest /29, co umożliwia osiem adresów IP podsieci. Azure rezerwuje pierwszy i ostatni adres w każdej podsieci dla zgodności protokołu. Trzy dodatkowe adresy są zarezerwowane do użycia usługi Azure. W związku z tym Definiowanie podsieci z /29 adresów zakresu wyników w trzech można używać adresów IP w podsieci. Jeśli planowane jest połączenie wirtualnej sieci do bramy sieci VPN, należy utworzyć podsieć bramy. Dowiedz się więcej o [zagadnienia dotyczące zakresu określonego adresu podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Po dodaniu podsieci w określonych warunkach, można zmienić zakresu adresów. Aby dowiedzieć się, jak zmienić zakres adresów podsieci, zobacz [zmienić ustawienia podsieci](#change-subnet-settings).
-    - **Grupy zabezpieczeń sieci**: można skojarzyć zero lub jedną istniejącą sieciową grupę zabezpieczeń do podsieci do filtrowania ruchu sieciowego przychodzącego i wychodzącego do podsieci. Grupy zabezpieczeń sieci musi istnieć w tej samej subskrypcji i lokalizacji co sieć wirtualna. Dowiedz się więcej o [sieciowej grupy zabezpieczeń](security-overview.md) i [jak utworzyć grupę zabezpieczeń sieci](tutorial-filter-network-traffic.md).
-    - **Tabela tras**: można skojarzyć zero lub jedną istniejącą tabelę tras do podsieci, aby kontrolować routingu ruchu sieciowego z innymi sieciami. Tabela tras musi istnieć w tej samej subskrypcji i lokalizacji co sieć wirtualna. Dowiedz się więcej o [Azure routingu](virtual-networks-udr-overview.md) i [jak utworzyć tabelę tras](tutorial-create-route-table-portal.md)
-    - **Punkty końcowe usługi:** podsieci może być zerowy lub ma wiele punktów końcowych usługi włączyć dla niego. Aby włączyć punkt końcowy usługi dla usługi, wybierz usługę lub usługi, które chcesz włączyć usługi punktów końcowych z **usług** listy. Lokalizacja jest automatycznie konfigurowane dla punktu końcowego. Domyślnie punkty końcowe usługi są skonfigurowane dla regionu sieci wirtualnej. Dla magazynu Azure na potrzeby obsługi scenariuszy regionalnej pracy awaryjnej punkty końcowe są automatycznie konfigurowane do [Azure łączyć regionów](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+    - **Nazwa**: Nazwa musi być unikatowa w obrębie sieci wirtualnej. Maksymalna zgodność z innymi usługami Azure zaleca się, za pomocą litery jako pierwszy znak nazwy. Na przykład usługi Azure Application Gateway nie zostaną wdrożone do podsieci, która ma nazwę, która rozpoczyna się od numeru.
+    - **Zakres adresów**: zakres musi być unikatowa w obrębie przestrzeni adresowej dla sieci wirtualnej. Zakres nie może nakładać się na inne zakresy adresów podsieci w sieci wirtualnej. Przestrzeń adresowa, należy określić przy użyciu notacji Bezklasowego routingu międzydomenowego (CIDR). Na przykład w sieci wirtualnej przy użyciu przestrzeni adresów 10.0.0.0/16, można zdefiniować przestrzeni adresów podsieci 10.0.0.0/24. Najmniejsza zakres, który można określić jest rozmiarze/29, zapewniającą osiem adresów IP w podsieci. Platforma Azure rezerwuje pierwszy i ostatni adres w każdej podsieci na potrzeby zgodności protokołów. Trzy dodatkowe adresy są zarezerwowane do użycia usług platformy Azure. W rezultacie Definiowanie podsieci o rozmiarze/29 adresów zakresu wyniki w trzech można używać adresów IP w podsieci. Jeśli planujesz połączyć sieć wirtualną z bramą sieci VPN, należy utworzyć podsieć bramy. Dowiedz się więcej o [zakresu określonego adresu informacje dotyczące podsieci bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Można zmienić zakres adresów, po dodaniu tej podsieci, w określonych warunkach. Aby dowiedzieć się, jak zmienić zakres adresów podsieci, zobacz [zmienić ustawienia podsieci](#change-subnet-settings).
+    - **Sieciowa grupa zabezpieczeń**: można skojarzyć zero lub jeden istniejącej sieciowej grupy zabezpieczeń do podsieci do filtrowania ruchu przychodzącego i wychodzącego ruchu sieciowego dla podsieci. Sieciowa grupa zabezpieczeń muszą istnieć w tej samej subskrypcji i lokalizacji co sieć wirtualną. Dowiedz się więcej o [sieciowe grupy zabezpieczeń](security-overview.md) i [tworzenie sieciowej grupy zabezpieczeń](tutorial-filter-network-traffic.md).
+    - **Tabela tras**: można skojarzyć zero lub jeden istniejącej tabeli tras do podsieci, aby sterować routingiem ruchu sieciowego z innymi sieciami. Tabela tras, musi istnieć w tej samej subskrypcji i lokalizacji co sieć wirtualną. Dowiedz się więcej o [Azure routing](virtual-networks-udr-overview.md) i [sposób tworzenia tabeli tras](tutorial-create-route-table-portal.md)
+    - **Punkty końcowe usługi:** podsieć może mieć zero lub wielu włączonych punktów końcowych usługi dla niego. Aby włączyć punkt końcowy usługi dla usługi, wybierz usługę lub usługi, które chcesz włączyć punkty końcowe usługi z **usług** listy. Lokalizacja jest konfigurowana automatycznie dla punktu końcowego. Domyślnie punkty końcowe usługi są skonfigurowane do regionu sieci wirtualnej. Dla usługi Azure Storage na potrzeby scenariuszy rozwiązania regionalnej pracy awaryjnej, punkty końcowe są automatycznie konfigurowane do [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 
-    Aby usunąć punkt końcowy usługi, usuń zaznaczenie ma zostać usunięty punkt końcowy usługi dla usługi. Aby dowiedzieć się więcej na temat punktów końcowych usługi i mogą być włączone dla usługi, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md). Po włączeniu punktu końcowego usługi, musisz również włączyć dostęp do sieci dla podsieci zasobu utworzone za pomocą usługi. Na przykład po włączeniu punktu końcowego usługi *Microsoft.Storage*, należy również włączyć dostęp do sieci do wszystkich kont usługi Azure Storage chcesz przyznać dostęp do sieci. Aby uzyskać więcej informacji na temat dostępu do sieci z podsieciami, które punkt końcowy usługi jest włączone, aby włączyć, można znaleźć w dokumentacji dla poszczególnych usług są włączone dla punktu końcowego usługi.
+    Aby usunąć punkt końcowy usługi, usuń zaznaczenie usługi, aby usunąć punkt końcowy usługi dla. Aby dowiedzieć się więcej na temat punktów końcowych usługi i usługi mogą być włączone dla, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md). Po włączeniu punktu końcowego usługi dla usługi, musisz również włączyć dostęp do sieci dla podsieci dla zasobu utworzonych za pomocą usługi. Na przykład po włączeniu punktu końcowego usługi dla *Microsoft.Storage*, należy również włączyć dostęp sieciowy do wszystkich kont usługi Azure Storage, które chcesz przyznać dostęp do sieci. Aby uzyskać szczegółowe informacje o tym, jak włączyć dostęp sieciowy do podsieci, które włączono punkt końcowy usługi, zobacz dokumentację poszczególnych usług został włączony punkt końcowy usługi dla.
 
-    Aby sprawdzić, czy punkt końcowy usługi jest włączona dla podsieci, Wyświetl [skuteczne tras](diagnose-network-routing-problem.md) dla dowolnego interfejsu sieciowego w podsieci. Po skonfigurowaniu punktu końcowego, zobacz *domyślne* trasy z prefiksy adresów usługi i typ następnego przeskoku z **VirtualNetworkServiceEndpoint**. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-6. Aby dodać podsieci do wybranej sieci wirtualnej, wybierz **OK**.
+    Aby sprawdzić, czy punkt końcowy usługi jest włączona dla podsieci, Wyświetl [obowiązujące trasy](diagnose-network-routing-problem.md) dla dowolnego interfejsu sieciowego w podsieci. Po skonfigurowaniu punktu końcowego, zobacz *domyślne* trasy z prefiksami adresów usługi, a element nexthoptype o wartości **VirtualNetworkServiceEndpoint**. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+6. Aby dodać podsieci do sieci wirtualnej, które wybrano, wybierz **OK**.
 
 **Polecenia**
 
-- Azure CLI: [utworzyć az podsieci sieci wirtualnej](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)
+- Interfejs wiersza polecenia platformy Azure: [tworzenie az podsieci sieci wirtualnej](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)
 - PowerShell: [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig)
 
 ## <a name="change-subnet-settings"></a>Zmień ustawienia podsieci
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz sieć wirtualną, która zawiera podsieci, aby zmienić ustawienia.
 3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
 4. Na liście podsieci Wybierz podsieć, aby zmienić ustawienia. Można zmienić następujące ustawienia:
 
-    - **Zakres adresów:** zasobów nie są wdrażane w podsieci, można zmienić zakresu adresów. Jeśli istnieje wszystkie zasoby w tej podsieci, przeniesienie zasobów do innej podsieci, albo usuń je najpierw z podsieci. Czynności, które należy wykonać, aby przenieść lub usunąć zasób zależy od zasobu. Aby dowiedzieć się, jak przenieść lub usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz przenieść lub usunąć. Zobacz ograniczenia **zakres adresów** w kroku 5 [Dodaj podsieć](#add-a-subnet).
-    - **Użytkownicy**: dostęp do tej podsieci można kontrolować za pomocą wbudowanych ról lub własne niestandardowe role. Aby dowiedzieć się więcej na temat Przypisywanie ról i użytkownikom uzyskiwanie dostępu do tej podsieci, zobacz [umożliwia zarządzanie dostępem do zasobów platformy Azure przypisania roli](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access).
-    - **Grupy zabezpieczeń sieci** i **tabeli tras**: zobacz krok 5 z [Dodaj podsieć](#add-a-subnet).
-    - **Punkty końcowe usługi**: Zobacz punktów końcowych usługi w kroku 5 [Dodaj podsieć](#add-a-subnet). Po włączeniu punktu końcowego na istniejącą podsieć, upewnij się, że żadne krytyczne zadania są uruchomione na wszystkich zasobów w podsieci. Punkty końcowe usługi przełącznika tras dla każdego interfejsu sieciowego w podsieci z za pomocą trasy domyślnej z *0.0.0.0/0* prefiks i typ następnego przeskoku z adresów *Internet*, przy użyciu nowej trasy o prefiksy usługi i typ następnego przeskoku z adresów *VirtualNetworkServiceEndpoint*. Podczas przełącznika wszystkie otwarte połączenia TCP może zostać zakończona. Punkt końcowy usługi nie jest włączone, dopóki ruch usługi dla wszystkich interfejsów sieciowych są zaktualizowane o nową trasę. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+    - **Zakres adresów:** żadnych zasobów w przypadku wdrożenia w obrębie podsieci, można zmienić zakresu adresów. Jeśli istnieje żadnych zasobów w podsieci, przeniesienie zasobów do innej podsieci, albo usuń je najpierw z podsieci. Kroki, które należy wykonać, aby przenieść lub usunąć zasób różnią się zależnie od zasobu. Aby dowiedzieć się, jak przenieść lub usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz przenieść lub usunąć. Zobacz ograniczenia **zakres adresów** w kroku nr 5 procedury [Dodaj podsieć](#add-a-subnet).
+    - **Użytkownicy**: umożliwia kontrolę dostępu do tej podsieci, przy użyciu ról wbudowanych lub własnych ról niestandardowych. Aby dowiedzieć się więcej na temat przypisywania ról i użytkowników, aby uzyskać dostęp do podsieci, zobacz [zarządzanie dostępem do zasobów platformy Azure za pomocą przypisania roli](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access).
+    - **Sieciowa grupa zabezpieczeń** i **tabeli tras**: zobacz krok 5 z [Dodaj podsieć](#add-a-subnet).
+    - **Punkty końcowe usługi**: Zobacz punktów końcowych usługi w kroku 5 [Dodaj podsieć](#add-a-subnet). Po włączeniu punktu końcowego usługi do istniejącej podsieci, upewnij się, że żadne krytyczne zadania nie są uruchomione na żaden zasób w podsieci. Punkty końcowe usługi Przełącz tras każdego interfejsu sieciowego w podsieci z przy użyciu trasy domyślnej z *0.0.0.0/0* prefiksu i typ następnego przeskoku *Internet*, za pomocą nowej trasy o prefiksy usługi i typ następnego przeskoku adresów *VirtualNetworkServiceEndpoint*. Podczas przełączania może zostać rozwiązana dowolnych otwartych połączeń TCP. Punkt końcowy usługi nie jest włączone, dopóki przepływów ruchu do usługi dla wszystkich interfejsów sieciowych są aktualizowane przy użyciu nowej trasy. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
 5. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
 
-- Azure CLI: [zaktualizować podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
+- Interfejs wiersza polecenia platformy Azure: [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="delete-a-subnet"></a>Usuń podsieć
+## <a name="delete-a-subnet"></a>Usuwanie podsieci
 
-Tylko wtedy, gdy nie ma żadnych zasobów w podsieci, można usunąć podsieci. Jeśli dostępne są zasoby w tej podsieci, należy usunąć zasoby, które znajdują się w podsieci, aby można było usunąć podsieci. Czynności, które należy wykonać, aby usunąć zasób zależy od zasobu. Aby dowiedzieć się, jak usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz usunąć.
+Tylko wtedy, gdy nie ma żadnych zasobów w podsieci, można usunąć podsieci. W przypadku zasobów w podsieci, należy usunąć zasoby, które znajdują się w podsieci, aby można było usunąć podsieć. Kroki, które należy wykonać w celu usuwania zasobu różnią się zależnie od zasobu. Aby dowiedzieć się, jak usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz usunąć.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-2. Wybierz sieć wirtualną, która zawiera podsieć, którą chcesz usunąć z listy sieci wirtualnych.
+1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją.
+2. Z listy sieci wirtualnych wybierz sieć wirtualną, która zawiera podsieć, którą chcesz usunąć.
 3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
-4. Na liście podsieci, wybierz **...** , po prawej stronie podsieci chcesz usunąć
-5. Wybierz **usunąć**, a następnie wybierz **tak**.
+4. Na liście podsieci wybierz **...** , po prawej stronie podsieci chcesz usunąć
+5. Wybierz **Usuń**, a następnie wybierz pozycję **tak**.
 
 **Polecenia**
 
-- Azure CLI: [usunąć az sieci wirtualnej](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
+- Interfejs wiersza polecenia platformy Azure: [Usuń az sieci w sieci wirtualnej](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
 - PowerShell: [Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Uprawnienia
 
-Do wykonywania zadań w podsieciach, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie akcje wymienione w poniższej tabeli:
+Do wykonywania zadań w podsieciach, Twoje konto musi mieć przypisaną do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowe](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, którą przypisano odpowiednie działania wymienione w poniższej tabeli:
 
 |Akcja                                                                   |   Name (Nazwa)                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
-|Microsoft.Network/virtualNetworks/subnets/read                           |   Przeczytaj podsieć sieci wirtualnej              |
-|Microsoft.Network/virtualNetworks/subnets/write                          |   Utwórz lub zaktualizuj podsieć sieci wirtualnej  |
-|Microsoft.Network/virtualNetworks/subnets/delete                         |   Usuń podsieć sieci wirtualnej            |
+|Microsoft.Network/virtualNetworks/subnets/read                           |   Przeczytaj podsieci sieci wirtualnej              |
+|Microsoft.Network/virtualNetworks/subnets/write                          |   Utwórz lub zaktualizuj podsieci sieci wirtualnej  |
+|Microsoft.Network/virtualNetworks/subnets/delete                         |   Usuwanie podsieci sieci wirtualnej            |
 |Microsoft.Network/virtualNetworks/subnets/join/action                    |   Dołącz do sieci wirtualnej                     |
-|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Włącz punkt końcowy usługi dla podsieci     |
+|Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action  |   Włączanie punktu końcowego usługi dla podsieci     |
 |Microsoft.Network/virtualNetworks/subnets/virtualMachines/read           |   Pobierz maszyny wirtualne w podsieci       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Tworzenie sieci wirtualnej i podsieci za pomocą [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia Azure](cli-samples.md) przykładowe skrypty lub przy użyciu usługi Azure [szablonów Resource Manager](template-samples.md)
-- Tworzenie i stosowanie [Azure zasad](policy-samples.md) dla sieci wirtualnych
+- Tworzenie sieci wirtualnej i podsieci za pomocą [PowerShell](powershell-samples.md) lub [wiersza polecenia platformy Azure](cli-samples.md) przykładowe skrypty lub korzystanie z platformy Azure [szablonów usługi Resource Manager](template-samples.md)
+- Tworzenie i stosowanie [usługa Azure policy](policy-samples.md) dla sieci wirtualnych

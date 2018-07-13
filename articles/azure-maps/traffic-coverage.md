@@ -1,25 +1,25 @@
 ---
-title: Ruch pokrycia w społeczności Maps Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o ruchu pokrycia w społeczności Maps Azure
-author: kgremban
-ms.author: kgremban
+title: Ruch pokrycia w usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o pokrycie ruchem w usługi Azure Maps
+author: dsk-2015
+ms.author: dkshir
 ms.date: 11/28/2017
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a6fc1a8f050c3b1f546b4d0150f14b2cbebc31d0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37f63b719ed6137716789e3093074f50a74e4ae0
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599710"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990095"
 ---
-# <a name="azure-maps-traffic-coverage"></a>Azure pokrycia ruchu mapy
+# <a name="azure-maps-traffic-coverage"></a>Pokrycie ruchem w usłudze Azure Maps
 
-Azure Maps zawiera informacje sformatowanego ruchu w formie ruchu **przepływ** i **zdarzenia**. Te dane mogą wizualizowane w społeczności maps lub używane do generowania inteligentny tras, na których dwuetapowego w rzeczywistym warunki jazdy. 
+Usługa Azure Maps udostępnia informacje o zaawansowanych ruchu w formie ruchu **przepływ** i **zdarzenia**. Te dane można zwizualizować na mapach lub używane do generowania inteligentniejsze tras, które wziąć pod uwagę w rzeczywistym warunki jazdy. 
 
-Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich regionach. Poniższa tabela zawiera informacje dotyczące rodzaju ruchu informacji możesz poprosić z każdego regionu: 
+Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystkich regionach. Poniższa tabela zawiera informacje o jakiego rodzaju informacje o ruchu mogą żądać z każdego regionu: 
 
 |Region  |Zdarzenia  |Ruch  |
 |---------|:---------:|:---------:|
@@ -39,7 +39,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 |Egipt     |         |✓         |
 |Estonia     |         | ✓        |
 |Finlandia     |✓         |✓         |
-|+ Wyspy Åland      |✓         |✓         |
+|+ Wyspy Alandzkie      |✓         |✓         |
 |Francja     |✓         |✓         |
 |+Monaco     |✓         |✓         |
 |Niemcy     |✓         |✓         |
@@ -48,7 +48,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 |Węgry     |✓         |✓         |
 |Islandia     |         |✓         |
 |Indonezja     |✓         |✓         |
-|Irlandii (Republika)     |✓         |✓         |
+|Irlandia (Republika)     |✓         |✓         |
 |Izrael     |         |✓         |
 |Włochy     |✓         |✓        |
 |+San Marino     |✓         |✓         |
@@ -68,7 +68,7 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 |Oman     |         |✓         |
 |Polska     |✓         |✓         |
 |Portugalia     |✓         |✓         |
-|+ Azorów i Madery     |         |✓         |
+|+ Azory i Madera     |         |✓         |
 |Katar     |         |✓         |
 |Rumunia     |         |✓         |
 |Federacja Rosyjska     |✓         |✓         |
@@ -78,9 +78,9 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 |Słowenia     |✓         |✓         |
 |Republika Południowej Afryki     |✓         |✓         |
 |Hiszpania     |✓         |✓         |
-|+ Andory     |✓         |✓         |
+|+ Andora     |✓         |✓         |
 |+ Baleary     |✓         |✓         |
-|+ Element Canary Wyspy     |✓         |✓         |
+|+ Wyspy Kanaryjskie     |✓         |✓         |
 |+Gibraltar     |✓         |✓         |
 |Szwecja     |✓         |✓         |
 |Szwajcaria     |✓         |✓        |
@@ -96,4 +96,4 @@ Jednak mapy nie ma tego samego poziomu informacji i dokładność we wszystkich 
 |Stany Zjednoczone     |✓         |✓        |
 |+Puerto Rico     |✓         |✓         |
 
-Aby uzyskać więcej informacji na temat dane o ruchu Azure mapy, zobacz [ruchu](https://docs.microsoft.com/rest/api/maps/traffic) odwołania stron.
+Aby uzyskać więcej informacji na temat usługi Azure Maps ruch danych zobacz [ruchu](https://docs.microsoft.com/rest/api/maps/traffic) odwoływać się do strony.

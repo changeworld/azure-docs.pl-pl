@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: f9ab9b9af81bf1827c2da646908e204bd051706b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 6635906b6aae418fa3754f1152fae3e0d8903ffc
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970938"
+ms.locfileid: "38989770"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
@@ -188,7 +188,7 @@ Aby zautomatyzować żądania do aplikacji za pomocą transakcji syntetycznych.
 
 1. Uruchom aplikację, klikając pozycję IIS Express ![Ikona zrzut ekranu programu Visual Studio usług IIS Express](./media/app-insights-asp-net-core/004-iis-express.png)
 
-2. Skopiuj adres url z paska adresu przeglądarki. Jest w formacie http://localhost:{random numer portu}
+2. Skopiuj adres url z paska adresu przeglądarki. Jest w formacie `http://localhost:{random port number}`
 
    ![Zrzut ekranu przedstawiający paska adresu url w przeglądarce](./media/app-insights-asp-net-core/0013-copy-url.png)
 

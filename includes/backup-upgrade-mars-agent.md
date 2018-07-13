@@ -1,6 +1,6 @@
 ---
-title: Uaktualnij agenta usługi Kopia zapasowa Azure
-description: Te informacje wyjaśnia, dlaczego należy uaktualnić agenta usługi Kopia zapasowa Azure i skąd pobrać uaktualnienia.
+title: Uaktualnienie agenta usługi Azure Backup
+description: Te informacje wyjaśnia, dlaczego należy uaktualnić agenta usługi Azure Backup i skąd pobrać uaktualnienia.
 services: backup
 cloud: ''
 suite: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 3/16/2018
 ms.author: markgal
 ms.openlocfilehash: 4142f88c3ccb376acbdd2af07c5cfdf8fd275780
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29973303"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38750334"
 ---
-## <a name="upgrade-the-mars-agent"></a>Uaktualnij agenta MARS
-Wersje agenta usług odzyskiwania Azure firmy Microsoft (MARS) poniżej 2.0.9083.0 zależy od usługi Azure kontroli dostępu (ACS). W 2018 Azure będzie [zastąpić usługę Azure kontroli dostępu (ACS)](../articles/active-directory/develop/active-directory-acs-migration.md). Począwszy od 19 marca 2018 wszystkie wersje agenta MARS poniżej 2.0.9083.0 wystąpi niepowodzenie wykonywania kopii zapasowej. Aby uniknąć lub rozwiązać błędy kopii zapasowych [uaktualnienia do najnowszej wersji agenta MARS](https://go.microsoft.com/fwlink/?linkid=229525). Aby zidentyfikować serwery, które wymagają uaktualnienia agenta MARS, postępuj zgodnie z instrukcjami [blogu kopii zapasowej do uaktualniania agentów kopia zapasowa Azure](https://blogs.technet.microsoft.com/srinathv/2018/01/17/updating-azure-backup-agents/). Agenta MARS jest używana do utworzyć kopię zapasową następujących typów danych do platformy Azure:
+## <a name="upgrade-the-mars-agent"></a>Uaktualnij agenta usług MARS
+Wersje agenta usługi Microsoft Azure Recovery Service (MARS) poniżej 2.0.9083.0 są zależne od Azure Access Control service (ACS). W 2018 roku będą Azure [wycofana Azure Access Control service (ACS)](../articles/active-directory/develop/active-directory-acs-migration.md). Począwszy od 19 marca 2018 r., wszystkie wersje agenta usług MARS poniżej 2.0.9083.0 doświadczy niepowodzeniami tworzenia kopii zapasowych. Aby uniknąć lub rozwiązać niepowodzeniami tworzenia kopii zapasowych [uaktualniania agenta usług MARS do najnowszej wersji](https://go.microsoft.com/fwlink/?linkid=229525). Aby zidentyfikować serwery, które wymagają aktualizacji agenta usług MARS, wykonaj kroki opisane w [blogu kopii zapasowej dla uaktualnienie agentów usługi Azure Backup](https://blogs.technet.microsoft.com/srinathv/2018/01/17/updating-azure-backup-agents/). Agenta usług MARS jest używany do tworzenia kopii zapasowych następujących typów danych na platformę Azure:
 - Pliki 
 - Dane o stanie systemu
 - Tworzenie kopii zapasowych programu System Center DPM na platformie Azure

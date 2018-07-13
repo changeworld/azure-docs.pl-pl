@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 268b9af7835c51d78812b35aff5aaac585961b01
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 0414fa16f277c7495cc7fe4bdd7a51fc3a23ad93
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619192"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988626"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Tworzenie niestandardowych artefaktów dla swojej maszyny wirtualnej w usłudze DevTest Labs
 
@@ -113,7 +113,7 @@ Poniższy przykład pokazuje, jak używać wyrażeń i funkcji do tworzenia wart
 1. Instalowanie edytora JSON. Potrzebujesz edytora JSON do pracy z plikami definicji artefaktu. Firma Microsoft zaleca używanie [programu Visual Studio Code](https://code.visualstudio.com/), który jest dostępny dla Windows, Linux i OS X.
 2. Pobierz przykładowy plik definicji artifactfile.json. Zapoznaj się z artefaktów utworzonych przez zespół usługi DevTest Labs w naszym [repozytorium GitHub](https://github.com/Azure/azure-devtestlab). Utworzyliśmy Bogata biblioteka artefaktów, które mogą pomóc Ci tworzenie własnych artefaktów. Pobierz plik definicji artefaktu i zmodyfikować go do tworzenia własnych artefaktów.
 3. Korzystaj z funkcji IntelliSense. Użyj funkcji IntelliSense, aby wyświetlić prawidłowe elementy, które można używać do tworzenia pliku definicji artefaktu. Widać też różne opcje dla wartości elementu. Na przykład podczas edytowania **targetOsType** elementu, IntelliSense pokazuje dwie opcje dla Windows lub Linux.
-4. Store artefaktu w [repozytorium Git](devtest-lab-add-artifact-repo.md).
+4. Store artefaktu w [publicznego repozytorium Git na potrzeby usługi DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) lub [repozytorium Git](devtest-lab-add-artifact-repo.md).
    
    1. Należy utworzyć oddzielny katalog dla każdego artefaktu. Nazwa katalogu powinna być taka sama jak nazwa artefaktu.
    2. Store plik definicji artefaktu (artifactfile.json) w katalogu, który został utworzony.
@@ -122,9 +122,8 @@ Poniższy przykład pokazuje, jak używać wyrażeń i funkcji do tworzenia wart
       Poniżej przedstawiono przykładowy wygląd folderu artefaktów:
       
       ![Przykładowy folder artefaktu](./media/devtest-lab-artifact-author/git-repo.png)
-5. Dodawanie repozytorium artefaktów do laboratorium. Zobacz [Dodawanie repozytorium Git dla artefaktów i szablonów](devtest-lab-add-artifact-repo.md).
+5. Jeśli używasz własnego repozytorium do przechowywania artefaktów, Dodaj repozytorium do laboratorium postępując zgodnie z instrukcjami opisanymi w artykule: [Dodawanie repozytorium Git dla artefaktów i szablonów](devtest-lab-add-artifact-repo.md).
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Jak diagnozowanie błędów artefaktów w usłudze DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)

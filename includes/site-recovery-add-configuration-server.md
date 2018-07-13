@@ -1,5 +1,5 @@
 1. Uruchom plik instalacyjny ujednoliconego instalatora.
-2. W **przed rozpoczęciem**, wybierz pozycję **zainstalować serwer konfiguracji i serwera przetwarzania**.
+2. W **przed rozpoczęciem**, wybierz opcję **Zainstaluj serwer konfiguracji i serwer przetwarzania**.
 
     ![Przed rozpoczęciem](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 
@@ -9,11 +9,11 @@
 4. W obszarze **Rejestracja** wybierz klucz rejestracji pobrany z magazynu.
 
     ![Rejestracja](./media/site-recovery-add-configuration-server/combined-wiz3.png)
-5. W obszarze **Ustawienia internetowe** określ, jak dostawca działający na serwerze konfiguracji ma się łączyć z usługą Azure Site Recovery przez Internet. Upewnij się, że zezwolono odpowiednie adresy URL.
+5. W obszarze **Ustawienia internetowe** określ, jak dostawca działający na serwerze konfiguracji ma się łączyć z usługą Azure Site Recovery przez Internet. Upewnij się, że zezwolono wymaganego adresów URL.
 
-    - Jeśli chcesz się połączyć z serwerem proxy aktualnie skonfigurowany na komputerze, wybierz opcję **nawiązywanie połączenia z usługi Azure Site Recovery przy użyciu serwera proxy**.
+    - Jeśli chcesz się połączyć z serwerem proxy, który jest obecnie skonfigurowane na maszynie, wybierz opcję **nawiązywanie połączenia z usługi Azure Site Recovery przy użyciu serwera proxy**.
     - Jeśli chcesz, aby dostawca łączył się bezpośrednio, wybierz opcję **Połącz bezpośrednio z usługi Azure Site Recovery bez serwera proxy**.
-    - Jeśli istniejący serwer proxy wymaga uwierzytelnienia, lub jeśli chcesz użyć niestandardowego serwera proxy dla połączenia dostawcy, wybierz opcję **Połącz przy użyciu niestandardowych ustawień serwera proxy**i określ adres, port oraz poświadczenia.
+    - Jeśli istniejący serwer proxy wymaga uwierzytelniania lub chcesz użyć niestandardowego serwera proxy dla połączenia dostawcy, wybierz opcję **Połącz przy użyciu niestandardowych ustawień serwera proxy**, a następnie określ adres, port i poświadczenia.
      ![Zapora](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. W kroku **Sprawdzanie wymagań wstępnych** Instalator przeprowadza kontrolę w celu upewnienia się, że można uruchomić instalację. Jeśli zostanie wyświetlone ostrzeżenie dotyczące **kontroli synchronizacji czasu globalnego**, sprawdź, czy czas zegara systemowego (ustawienia **Data i godzina**) jest taki sam jak dla strefy czasowej.
 
@@ -21,7 +21,7 @@
 7. W obszarze **Konfiguracja programu MySQL** utwórz poświadczenia do logowania się do zainstalowanego wystąpienia serwera programu MySQL.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. W obszarze **Szczegóły środowiska** wybierz, czy zamierzasz replikować maszyny wirtualne programu VMware. Jeśli jesteś, Instalator sprawdza, czy zainstalowana jest PowerCLI 6.0.
+8. W obszarze **Szczegóły środowiska** wybierz, czy zamierzasz replikować maszyny wirtualne programu VMware. Jeśli jesteś, Instalator sprawdza, czy interfejs PowerCLI 6.0 jest zainstalowany.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
 

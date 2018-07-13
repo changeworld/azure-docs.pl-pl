@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 04/01/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9eb7f74a365b51431aabd78de3c6d36c3c969bb6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 3a7d657a21b414d51375f912513ae045adec6d6e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991312"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorowanie witryny programu SharePoint za pomocą usługi Application Insights
 Usługa Azure Application Insights monitoruje dostępność, wydajność i użycie Twoich aplikacji. Tutaj dowiesz się, jak skonfigurować je dla witryny programu SharePoint.
@@ -33,7 +34,7 @@ Okno, które zostanie otwarte, to miejsce, gdzie zobaczysz dane o wydajności i 
 
 ```HTML
 <!-- 
-To collect end-user usage analytics about your application, 
+To collect user behavior analytics tools about your application, 
 insert the following script into each page you want to track.
 Place this code immediately before the closing </head> tag,
 and before any other scripts. Your first data will appear 
@@ -83,18 +84,6 @@ Pierwsze zdarzenia będą wyświetlane w obszarze wyszukiwania.
 ![](./media/app-insights-sharepoint/09-search.png)
 
 Jeśli oczekujesz większej ilości danych, kliknij przycisk Odśwież po kilku sekundach.
-
-W bloku przeglądu kliknij pozycję **Analiza użycia**, aby wyświetlić wykresy dotyczące użytkowników, sesji i wyświetleń stron:
-
-![](./media/app-insights-sharepoint/06-usage.png)
-
-Kliknij dowolny wykres, aby wyświetlić więcej szczegółów — na przykład wyświetlenia stron:
-
-![](./media/app-insights-sharepoint/07-pages.png)
-
-Lub pozycję Użytkownicy:
-
-![](./media/app-insights-sharepoint/08-users.png)
 
 ## <a name="capturing-user-id"></a>Przechwytywanie identyfikatora użytkownika
 Fragment kodu standardowej strony sieci Web nie przechwytuje identyfikatora użytkownika z programu SharePoint, ale możesz to zrobić za pomocą niewielkiej modyfikacji.

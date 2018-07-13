@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7ea233f3d5b0e0b6ad1470af146f963fce6c4e94
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 51f64f6f74875c6afac350dc9cc235573b89c524
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970676"
+ms.locfileid: "38989592"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -367,6 +367,8 @@ Zobacz [przykłady kodu](#trigger---example) używające tych właściwości we 
 ## <a name="output"></a>Dane wyjściowe
 
 Użyj usługi Event Hubs powiązania danych wyjściowych usługi można zapisać zdarzenia do strumienia zdarzeń. Konieczne jest posiadanie uprawnień wysłania do Centrum zdarzeń do zapisywania zdarzeń.
+
+Upewnij się, odwołania do wymaganego pakietu zostały spełnione: [funkcje 1.x](#packages---functions-1.x) lub [funkcje 2.x](#packages---functions-2.x) 
 
 ## <a name="output---example"></a>Dane wyjściowe — przykład
 

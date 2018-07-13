@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 06/28/2018
 ms.author: raynew
 ms.openlocfilehash: f7d6c3f68618fec839ccff06b73ba44d106999d2
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342826"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38765542"
 ---
 | Name (Nazwa) | Adres URL komercyjnych | Adres URL dla instytucji rządowych | Opis |
 |---|---|---|---|

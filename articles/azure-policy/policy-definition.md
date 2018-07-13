@@ -1,6 +1,6 @@
 ---
 title: Struktura definicji zasad platformy Azure
-description: Opisuje, jak zasobów definicji zasad jest używane przez zasady usługi Azure ustanowienie konwencje dla zasobów w organizacji przez opisujące, gdy zasady są wymuszane i wpływ, jaki do wykonania.
+description: W tym artykule opisano, jak zasobu definicji zasad jest używany przez usługę Azure Policy do ustanawiania konwencje dla zasobów w Twojej organizacji, poprzez opisanie, gdy zasady są wymuszane i wpływ, jaki do wykonania.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,20 +8,20 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7f01464c4b9063f20a83c3626d7f92a5e0524f7a
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937336"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989129"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
-Definicja zasad zasobu używanego przez zasady usługi Azure umożliwia ustalenie Konwencji zasobów w organizacji przez opisujące, gdy zasady są wymuszane i wpływ, jaki można wykonać. Definiowanie Konwencji, można kontrolować koszty i zarządzania zasobami. Na przykład można określić, czy dozwolone są tylko niektóre typy maszyn wirtualnych. Alternatywnie można wymagać, że wszystkie zasoby mają określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Tak Jeśli zasady są stosowane do grupy zasobów, ma zastosowanie do wszystkich zasobów w danej grupie zasobów.
+Definicja zasad zasobów używane przez usługę Azure Policy umożliwia ustanawianie konwencje dla zasobów w Twojej organizacji poprzez opisanie, gdy zasady są wymuszane i wpływ, jaki do wykonania. Definiowanie Konwencji, pozwalają na nadzorowanie kosztów i zarządzania zasobami. Na przykład można określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Alternatywnie można wymagać, że wszystkie zasoby mają określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Tak Jeśli zasady są stosowane do grupy zasobów, ma zastosowanie do wszystkich zasobów w danej grupie zasobów.
 
-Schemat używany przez zasady usługi Azure można znaleźć tutaj: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
+Schemat używany przez usługę Azure Policy można znaleźć tutaj: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
-JSON służy do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
+Użyjesz JSON do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
 
 - mode
 - parameters
@@ -31,7 +31,7 @@ JSON służy do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
   - Ocena logiczne
   - Efekt
 
-Na przykład następujące JSON zawiera zasadę, która ogranicza wdrożonym zasobów:
+Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzie są wdrożone zasoby:
 
 ```json
 {
@@ -64,24 +64,24 @@ Na przykład następujące JSON zawiera zasadę, która ogranicza wdrożonym zas
 }
 ```
 
-Wszystkie przykłady zasad Azure są [Przykłady zasad](json-samples.md).
+Wszystkie przykłady usługi Azure Policy znajdują się na [Przykłady zasad](json-samples.md).
 
 ## <a name="mode"></a>Tryb
 
-**Tryb** Określa, jakie typy zasobów, które zostanie obliczone dla zasad. Obsługiwane tryby to:
+**Tryb** określa typów zasobów, które zostanie obliczone dla zasad. Obsługiwane metody to:
 
-- `all`: ocena grup zasobów i wszystkie typy zasobów
-- `indexed`: tylko ocenić typy zasobów, które obsługują tagów i lokalizacja
+- `all`: oceny grupy zasobów i wszystkie typy zasobów
+- `indexed`: tylko ocenić typy zasobów, które obsługuje tagi i lokalizacji
 
-Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, można określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartość jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w wiersza polecenia platformy Azure, który jest odpowiednikiem `indexed`, dla wstecz zgodności.
+Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasad, została utworzona za pośrednictwem portalu użycia `all` trybu. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure, możesz określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartość jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure, który jest odpowiednikiem `indexed`, dla wstecznej zgodności.
 
-`indexed` powinien być używany podczas tworzenia zasad, który będzie wymuszać znaczników lub lokalizacji. Nie jest to wymagane, ale uniemożliwi zasoby, które nie obsługują znaczniki i lokalizacje wyświetlane jako niezgodne w wyniki oceny zgodności. Jedynym wyjątkiem jest **grup zasobów**. Należy ustawić zasady, które próbują wymusić lokalizacji lub tagi dla grupy zasobów **tryb** do `all` , a w szczególności docelowej `Microsoft.Resources/subscriptions/resourceGroup` typu. Na przykład zobacz [wymusić tagi grupy zasobów](scripts/enforce-tag-rg.md).
+`indexed` należy używać podczas tworzenia zasad, który będzie wymuszać tagów lub lokalizacji. Nie jest to wymagane, ale uniemożliwi zasoby, które nie obsługują tagów i lokalizacji wyświetlane jako niezgodne w wyniki sprawdzania zgodności. Jedynym wyjątkiem jest **grup zasobów**. Należy ustawić zasady, które próbujesz wymuszanie lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroup` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](scripts/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
-Parametry ułatwić zarządzanie zasadami dzięki zmniejszeniu liczby definicje zasad. Pomyśl o parametry, takie jak pól na formularzu — `name`, `address`, `city`, `state`. Te parametry zawsze znajdują się takie same, jednak zmienić ich wartości opartych na poszczególnych wypełniania formularza. Parametry działają tak samo, podczas tworzenia zasad. Przy tym parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
+Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Reakcji parametrów, takich jak pola w formularzu — `name`, `address`, `city`, `state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza. Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
 
-Na przykład można zdefiniować zasady dla właściwości zasobów ograniczyć lokalizacje wdrożonym zasobów. W takim przypadku może zadeklarować następujące parametry podczas tworzenia zasad:
+Na przykład można zdefiniować zasady dla właściwości zasobów, ograniczyć lokalizacje, w której można wdrożyć zasoby. W takim przypadku może zadeklarować następujące parametry podczas tworzenia zasad:
 
 ```json
 "parameters": {
@@ -96,9 +96,9 @@ Na przykład można zdefiniować zasady dla właściwości zasobów ograniczyć 
 }
 ```
 
-Typ parametru może być ciągiem lub tablicą. Właściwość metadanych służy do narzędzi, takich jak portalu Azure do wyświetlania informacji przyjazną dla użytkownika.
+Typ parametru może być ciąg lub tablicy. Właściwość metadanych służy do narzędzi, takich jak witryny Azure portal do wyświetlania informacji przyjazny dla użytkownika.
 
-W ramach właściwości metadanych można użyć **strongType** zapewnienie wielokrotnego wyboru listy opcji w portalu Azure.  Dozwolone wartości **strongType** obecnie obejmują:
+W ramach właściwości metadanych, możesz użyć **strongType** zapewnienie wielokrotnego wyboru listę opcji w witrynie Azure portal.  Dozwolone wartości **strongType** obejmują:
 
 - `"location"`
 - `"resourceTypes"`
@@ -107,7 +107,7 @@ W ramach właściwości metadanych można użyć **strongType** zapewnienie wiel
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-W regule zasad możesz odwołania do parametrów przy użyciu następującej składni:
+W regule zasad możesz odwoływać się do parametrów za pomocą następującej składni:
 
 ```json
 {
@@ -118,22 +118,22 @@ W regule zasad możesz odwołania do parametrów przy użyciu następującej sk�
 
 ## <a name="definition-location"></a>Lokalizacja definicji
 
-Podczas tworzenia zasady lub inicjatywy definicji, ważne jest, aby określić lokalizację definicji.
+Podczas tworzenia definicji inicjatywy lub zasad, ważne jest, aby określić lokalizację definicji.
 
-Lokalizacja definicji określa zakres, któremu inicjatywy lub zasady definicji można przypisać do. Lokalizację można określić jako grupę zarządzania lub subskrypcji.
+Lokalizacja definicji określa zakres, do której można przypisać do definicji inicjatywy lub zasad. Lokalizację można określić jako grupę zarządzania lub subskrypcji.
 
 > [!NOTE]
-> Jeśli planujesz dotyczą tej definicji zasad wiele subskrypcji, lokalizacja musi być zawierającą subskrypcje, które będą przypisywane inicjatywy lub zasady grupy zarządzania.
+> Jeśli planowane jest zastosowanie tę definicję zasad do wielu subskrypcji, lokalizacji musi być zawierającą subskrypcje, które spowoduje przypisanie inicjatywy lub zasad grupy zarządzania.
 
 ## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
 
-Można użyć **displayName** i **opis** do identyfikowania definicji zasad i podanie gdy jest używana w kontekście.
+Możesz użyć **displayName** i **opis** do identyfikowania definicji zasad i dostarczanie kontekstu, gdy jest używany.
 
 ## <a name="policy-rule"></a>Reguła zasad
 
-Reguły składa się z **Jeśli** i **następnie** bloków. W **Jeśli** bloku, należy zdefiniować co najmniej jeden warunek, które określają, gdy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
+Reguła zasad składa się z **Jeśli** i **następnie** bloków. W **Jeśli** bloku, należy zdefiniować co najmniej jeden warunek, które określają, kiedy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
 
-W **następnie** bloku, zdefiniuj efekt, która jest wywoływana po **Jeśli** warunki są spełnione.
+W **następnie** bloku, należy zdefiniować wpływ, jaki się stanie, gdy **Jeśli** warunki są spełnione.
 
 ```json
 {
@@ -148,15 +148,15 @@ W **następnie** bloku, zdefiniuj efekt, która jest wywoływana po **Jeśli** w
 
 ### <a name="logical-operators"></a>Operatory logiczne
 
-Operatory logiczne obsługiwane są:
+Obsługiwane operatory logiczne to:
 
 - `"not": {condition  or operator}`
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-**Nie** składni odwraca wynik w warunku. **Wszystkie** składni (podobny do logicznego **i** operacji) wymaga wszystkie warunki, które muszą być spełnione. **AnyOf** składni (podobny do logicznego **lub** operacji) wymaga co najmniej jeden warunków.
+**Nie** składni odwraca wynik warunku. **Nieobsługiwanymi** składni (podobne do logicznego **i** operacji) wymaga wszystkie warunki muszą być spełnione. **AnyOf** składni (podobne do logicznego **lub** operacji) wymaga co najmniej jeden warunek to true.
 
-Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawiono **nie** operacja, która jest zagnieżdżona w **wszystkie** operacji.
+Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedstawiono **nie** operacji, która jest zagnieżdżony w **nieobsługiwanymi** operacji.
 
 ```json
 "if": {
@@ -176,7 +176,7 @@ Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawion
 
 ### <a name="conditions"></a>Warunki
 
-Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwane warunki:
+Wynikiem warunku jest czy **pola** spełnia określone kryteria. Obsługiwane warunki to:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -192,51 +192,55 @@ Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwan
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Korzystając z **jak** i **notLike** warunki, można podać symbol wieloznaczny `*` wartości.
-Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
+Korzystając z **takich jak** i **notLike** warunków, można podać symbol wieloznaczny `*` wartości.
+Wartość nie może zawierać więcej niż jeden symbol wieloznaczny `*`.
 
-Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [Zezwalaj wielu wzorce nazw](scripts/allow-multiple-name-patterns.md).
+Korzystając z **dopasowania** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` litery i znak reprezentuje rzeczywisty znaku. Aby uzyskać przykłady, zobacz [zezwolić wielu wzorców nazwy](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 
-Warunki są utworzone za pomocą pola. Pole reprezentuje właściwości w ładunku żądania zasobu, który jest używany do opisu stanu typu zasobu.  
+Warunki są tworzone przy użyciu pól. Pole reprezentuje właściwości ładunku żądania zasobów, który jest używany do opisu stan zasobu.  
 
 Obsługiwane są następujące pola:
 
 - `name`
 - `fullName`
-  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu to nazwa zasobu reprezentowana przez wszystkie nazwy zasobu nadrzędnego (na przykład "MójSerwer/mojabazadanych").
+  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu jest nazwa zasobu, dołączony przez wszystkie nazwy zasobu nadrzędnego (na przykład "myServer/Moja_baza_danych").
 - `kind`
 - `type`
 - `location`
 - `tags`
-- `tags.tagName`
-- `tags[tagName]`
-  - Ta składnia nawiasu obsługuje nazwy tagu, zawierające kropki
+- `tags.<tagName>`
+  - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
+  - Przykład: `tags.CostCenter` gdzie **CostCenter** jest nazwa tagu.
+- `tags[<tagName>]`
+  - Ta składnia nawiasu obsługuje nazwy tagów, które zawierać kropek.
+  - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
+  - Przykład: `tags.[Acct.CostCenter]` gdzie **Acct.CostCenter** jest nazwa tagu.
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
 
 ### <a name="alternative-accessors"></a>Alternatywne metody dostępu
 
-**Pole** jest akcesor głównej, używane w regułach zasad. Sprawdza on bezpośrednio zasób, który jest oceniane. Jednak zasady obsługuje jeden innych akcesor **źródła**.
+**Pole** jest podstawowym metody dostępu używane w regułach zasad. Go bezpośrednio sprawdza zasób, który jest szacowana. Jednak zasady obsługują jedną inne metody dostępu **źródła**.
 
 ```json
 "source": "action",
 "equals": "Microsoft.Compute/virtualMachines/write"
 ```
 
-**Źródło** obsługuje tylko jedną wartość, **akcji**. Akcja zwraca działanie autoryzacji żądania, które jest oceniane. Akcje autoryzacji są widoczne w sekcji autoryzacji [dziennik aktywności](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
+**Źródło** obsługuje tylko jedną wartość, **akcji**. Akcja zwraca działanie autoryzacji żądania, które jest oceniane. Działania autoryzacji są widoczne w sekcji autoryzacji [dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
 
-Gdy zasad dokonuje oceny istniejących zasobów w tle, ustawia **akcji** do `/write` akcji autoryzacji dla typu zasobu.
+W przypadku zasad dokonuje oceny istniejących zasobów w tle, ustawia **akcji** do `/write` działanie autoryzacji dla typu zasobu.
 
 ### <a name="effect"></a>Efekt
 
 Zasady obsługuje następujące typy wpływu:
 
-- **Odmów**: generuje zdarzenie w dzienniku inspekcji i niepowodzenia żądania
+- **Odmów**: generuje zdarzenie w dzienniku inspekcji i kończy się niepowodzeniem żądania
 - **Inspekcja**: generuje to zdarzenie ostrzegawcze w dzienniku inspekcji, ale nie wystąpi niepowodzenie żądania
-- **Dołącz**: dodaje zestaw określonych pól na żądanie
-- **AuditIfNotExists**: włącza inspekcji, jeśli zasób nie istnieje.
-- **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje. Obecnie ten efekt jest obsługiwana tylko przy użyciu wbudowanych zasad.
+- **Dołącz**: dodaje zestaw zdefiniowanych pól do żądania
+- **AuditIfNotExists**: umożliwia inspekcję, jeśli zasób nie istnieje.
+- **DeployIfNotExists**: wdraża zasobu, jeśli jeszcze nie istnieje. Ten efekt jest obecnie obsługiwane tylko za pomocą wbudowanych zasad.
 
 Aby uzyskać **Dołącz**, należy podać następujące informacje:
 
@@ -248,18 +252,18 @@ Aby uzyskać **Dołącz**, należy podać następujące informacje:
 }]
 ```
 
-Wartość może być ciągiem lub obiekt do formatu JSON.
+Wartość może być ciąg lub obiekt do formatu JSON.
 
-Z **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie powiązanych zasobów i Zastosuj regułę i ich wpływ, gdy ten zasób nie istnieje. Można na przykład wymagać, że dla wszystkich sieci wirtualnych jest wdrażany obserwatora sieciowego.
-Przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](scripts/audit-ext-not-exist.md).
+Za pomocą **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie powiązanego zasobu i Zastosuj regułę i odpowiedni wpływ, gdy ten zasób nie istnieje. Na przykład można wymagać, że usługi network watcher jest wdrażana dla wszystkich sieci wirtualnych.
+Aby uzyskać przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](scripts/audit-ext-not-exist.md).
 
-Aby uzyskać szczegółowe informacje dotyczące każdego skutku kolejności oceny, właściwości i przykłady, zobacz [opis zasad efekty](policy-effects.md).
+Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oceny, właściwości i przykłady, zobacz [zrozumienie zasad efekty](policy-effects.md).
 
 ## <a name="aliases"></a>Aliasy
 
-Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunki są dozwolone dla właściwości w zasobie. Każdy alias mapuje ścieżek w różnych wersjach interfejsu API dla typu zasobu. Podczas oceny zasad aparat zasad pobiera ścieżki właściwości dla tej wersji interfejsu API.
+Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunków, które są dozwolone dla właściwości do zasobu. Każdy alias mapuje do ścieżki w różnych wersjach interfejsu API dla danego typu zasobu. Podczas oceny zasad aparatu zasad pobiera ścieżkę właściwości dla danej wersji interfejsu API.
 
-Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez zasady usługi Azure, użyj jednej z następujących metod:
+Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez usługę Azure Policy, użyj jednej z następujących metod:
 
 - Azure PowerShell
 
@@ -317,9 +321,9 @@ Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie o
 
 ## <a name="initiatives"></a>Inicjatywy
 
-Inicjatyw umożliwiają grupowanie kilku definicje pokrewnych zasad, aby uprościć zadania i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad znakowania w jednym inicjatywy. Zamiast przypisywać każdej zasady pojedynczo, należy zastosować tej inicjatywy.
+Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować wszystkie powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
 
-Poniższy przykład przedstawia sposób tworzenia inicjatywą obsługi dwa tagi: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
+Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwa tagi: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
 
 ```json
 {

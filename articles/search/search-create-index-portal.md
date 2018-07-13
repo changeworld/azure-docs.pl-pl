@@ -1,48 +1,46 @@
 ---
-title: Tworzenie indeksu (portal — usługa Azure Search) | Microsoft Docs
-description: Tworzenie indeksu przy użyciu witryny Azure Portal.
+title: Tworzenie indeksu usługi Azure Search w portalu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć indeks usługi Azure Search przy użyciu wbudowanych indeks portalu projektantów.
 manager: cgronlun
 author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: quickstart
-ms.date: 06/20/2017
+ms.topic: conceptual
+ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203873"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990850"
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure Portal
+# <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure portal
 
-Użyj wbudowanego projektanta indeksów w witrynie Azure Portal, aby utworzyć [indeks wyszukiwania](search-what-is-an-index.md) lub jego prototyp w celu uruchomienia w usłudze Azure Search. 
+Usługa Azure Search zawiera indeks wbudowanego projektanta w portalu jest przydatne w przypadku prototypy lub tworzenia [indeksu wyszukiwania](search-what-is-an-index.md) hostowanych w usłudze Azure Search. To narzędzie służy do tworzenia schematów. Po zapisaniu definicji pusty indeks staje się całkowicie wyrażone w usłudze Azure Search. Jak załadować je przy użyciu danych z możliwością wyszukiwania zależy od użytkownika.
 
-Alternatywnie możesz utworzyć indeks, korzystając z interfejsów API [REST](search-create-index-rest-api.md) lub platformy [.NET](search-create-index-dotnet.md).
+Projektant indeksu jest tylko jedno podejście do tworzenia indeksu. Programowe tworzenie indeksu przy użyciu [.NET](search-create-index-dotnet.md) lub [REST](search-create-index-rest-api.md) interfejsów API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten artykuł zakłada, że użytkownik posiada [subskrypcję platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) i [usługę Azure Search](search-create-service-portal.md).  
+Ten artykuł zakłada, że użytkownik posiada [subskrypcję platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) i [usługę Azure Search](search-create-service-portal.md).
 
-## <a name="find-your-search-service"></a>Znajdowanie usługi wyszukiwania
-1. Zaloguj się na stronie witryny Azure Portal i zapoznaj z [usługami wyszukiwania powiązanymi z Twoją subskrypcją](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-2. Wybierz swoją usługę Azure Search.
+## <a name="open-index-designer-and-name-an-index"></a>Otwórz projektanta indeksów i nadaj nazwę indeksu
 
-## <a name="name-the-index"></a>Nazywanie indeksu
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i otwórz pulpit nawigacyjny usługi. Możesz kliknąć pozycję **Wszystkie usługi** na pasku dostępu, aby poszukać istniejących usług wyszukiwania w bieżącej subskrypcji. 
 
-1. Kliknij przycisk **Dodaj indeks** na pasku poleceń u góry strony.
-2. Nadaj nazwę indeksowi usługi Azure Search. 
+2.  Kliknij przycisk **Dodaj indeks** na pasku poleceń u góry strony.
+
+3. Nadaj nazwę indeksowi usługi Azure Search. Operacje indeksowania i zapytanie odwołuje się ich nazw. Nazwa indeksu staje się częścią adresu URL punktu końcowego używanego w przypadku połączeń z indeksem i wysyłania żądań HTTP za pomocą interfejsu API REST usługi Azure Search.
+
    * Wpisywanie zacznij od litery.
    * Użyj tylko małych liter, cyfr i łączników („-”).
    * Ogranicz długość nazwy do 60 znaków.
 
-  Nazwa indeksu staje się częścią adresu URL punktu końcowego używanego w przypadku połączeń z indeksem i wysyłania żądań HTTP za pomocą interfejsu API REST usługi Azure Search.
-
 ## <a name="define-the-fields-of-your-index"></a>Definiowanie pól indeksu
 
-Kompozycja indeksu obejmuje *kolekcję pól*, która definiuje dane z możliwością wyszukiwania w indeksie. Dokładniej mówiąc, określa strukturę dokumentów, które są przekazywane oddzielnie. Kolekcja pól zawiera wymagane i opcjonalne pola (nazwane i wpisane) z atrybutami indeksu określającymi, w jaki sposób pole może zostać użyte.
+Kompozycja indeksu obejmuje *kolekcję pól*, która definiuje dane z możliwością wyszukiwania w indeksie. Cała kolekcji pól określa strukturę dokumentów, które są przekazywane oddzielnie. Kolekcja pól zawiera wymagane i opcjonalne pola nazwane i wpisane z atrybutami indeksu, które określają, jak można używać pola.
 
 1. W bloku **Dodawanie indeksu** kliknij pozycję **Pola**, aby wysunąć blok definicji pola. 
 
@@ -63,6 +61,7 @@ Tworzenie indeksu w portalu jest czasochłonne. Aby maksymalnie ograniczyć licz
 2. Użyj pól wyboru w górnej części każdego atrybutu w celu zbiorczego włączenia ustawień dla wszystkich pól, a następnie wyczyść kilka wybranych pól wyboru, które tego nie wymagają. Na przykład pola ciągów zazwyczaj mogą być wyszukiwane. W związku z tym możesz kliknąć pozycje **Możliwość pobierania** i **Możliwość wyszukiwania**, aby zwrócić wartości pól w wynikach wyszukiwania, a także umożliwić wyszukiwanie pełnotekstowe pola. 
 
 <a name="design"></a>
+
 ## <a name="design-guidance-for-setting-attributes"></a>Wskazówki dotyczące projektowania ustawień atrybutów
 
 Chociaż możesz w dowolnym momencie dodać nowe pola, istniejące definicje pól są zablokowane przez cały czas istnienia indeksu. Z tego powodu deweloperzy zazwyczaj używają portalu do tworzenia prostych indeksów, testowania pomysłów lub używania stron portalu w celu wyszukania ustawień. Częsta iteracja po projekcie indeksu jest bardziej wydajna, jeśli stosujesz podejście oparte na kodzie, które pozwala na odbudowanie indeksu w prosty sposób.
@@ -92,13 +91,13 @@ Dokumentacja interfejsu API usługi Azure Search zawiera przykłady kodu korzyst
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po utworzeniu indeksu usługi Azure Search można przejść do następnego kroku: [przekazywanie danych z możliwością wyszukiwania do indeksu](search-what-is-data-import.md).
 
 Można również dowiedzieć się więcej na temat indeksów. Oprócz kolekcji pól indeks określa również analizatory, sugestory, profile oceniania i ustawienia specyfikacji CORS. Portal zawiera strony z kartami umożliwiające definiowanie najczęściej występujących elementów: pól, analizatorów i sugestorów. Aby utworzyć lub zmodyfikować inne elementy, można użyć interfejsu API REST lub zestawu .NET SDK.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Jak działa wyszukiwanie pełnotekstowe](search-lucene-query-architecture.md)  
  [Interfejs API REST usługi Search](https://docs.microsoft.com/rest/api/searchservice/) [Zestaw .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

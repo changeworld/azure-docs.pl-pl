@@ -9,27 +9,27 @@ ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
 ms.openlocfilehash: e54813896eee8a58ae456f14f76151318ac1b9fc
-ms.sourcegitcommit: ff1896b01bfcc26df3b202011bb8ec8cfdb014fa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35620530"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38766970"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
 
 ## <a name="what-are-azure-regions"></a>Co to są regiony platformy Azure?
-W określonych regionach geograficznych, takimi jak zachodnie stany USA, "Europa Północna" lub "Azja południowo-wschodnia" jest utworzenie zasobów platformy Azure. Możesz zapoznać się z [listą regionów i ich lokalizacji](https://azure.microsoft.com/regions/). W każdym regionie istnieje wiele centrów danych, co zapewnia nadmiarowość i dostępność. To podejście zapewnia elastyczność podczas projektowania aplikacji do tworzenia maszyn wirtualnych najbliżej użytkowników i spełnia wszelkie prawnych, zgodności lub podatku celów.
+Zasoby platformy Azure można tworzyć w określonych regionach geograficznych, takich jak "Zachodnie stany USA", "Europa Północna" lub "Azja południowo-wschodnia". Możesz zapoznać się z [listą regionów i ich lokalizacji](https://azure.microsoft.com/regions/). W każdym regionie istnieje wiele centrów danych, co zapewnia nadmiarowość i dostępność. Takie podejście zapewnia elastyczność podczas projektowania aplikacji do tworzenia maszyn wirtualnych najbliżej Twoich użytkowników i spełnia wszelkie prawnych, zgodności i podatków.
 
 ## <a name="special-azure-regions"></a>Specjalne regiony platformy Azure
-Platforma Azure ma niektóre regiony specjalne, które chcesz użyć podczas tworzenia Twojej aplikacji dla celów prawnych lub zgodności. Te regiony specjalne to:
+Platforma Azure ma pewne specjalne regiony, które chcesz użyć podczas kompilowania aplikacji dla celów prawnych lub zgodności. Te regiony specjalne to:
 
 * **Administracja USA — Wirginia** i **Administracja USA — Iowa**
   * Wystąpienie platformy Azure odizolowane fizycznie i na poziomie sieci logicznej dla instytucji rządowych oraz obsługiwane przez sprawdzony pod kątem bezpieczeństwa personel z obywatelstwem Stanów Zjednoczonych. Uwzględnia dodatkowe certyfikaty zgodności, takie jak [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) i [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Dowiedz się więcej o [platformie Azure Government](https://azure.microsoft.com/features/gov/).
 * **Chiny Północne** i **Chiny Wschodnie**
   * Te regiony są dostępne dzięki unikatowemu partnerstwu firm Microsoft i 21Vianet, w ramach którego firma Microsoft nie zarządza bezpośrednio centrami danych. Dowiedz się więcej na temat [platformy Microsoft Azure w Chinach](http://www.windowsazure.cn/).
 * **Niemcy Środkowe** i **Niemcy Północno-Wschodnie**
-  * Te regiony są dostępne za pośrednictwem modelu zarządca danych zgodnie z którymi klient dane pozostają w Niemczech pod kontrolą systemów T, firma Telekom marki, działając jako zarządca niemieckim danych.
+  * Te regiony są dostępne za pośrednictwem modelu powiernika danych, którym dane klientów pozostają w Niemczech pod kontrolą T-Systems, niemieckiej firmy telekomunikacyjnej działającej jako niemiecki powiernik danych.
 
 ## <a name="region-pairs"></a>Pary regionów
 Każdy region platformy Azure jest powiązany z innym regionem w obrębie tego samego obszaru geograficznego (takiego jak Stany Zjednoczone, Europa i Azja). To podejście umożliwia replikację zasobów, takich jak maszyny wirtualne, między obszarami geograficznymi, co powinno zmniejszyć prawdopodobieństwo tego, że klęski żywiołowe, niepokoje społeczne, przerwy w dostawie prądu lub awarie sieci fizycznych będą wpływać na obydwa regiony na raz. Dodatkowe korzyści wynikające z tworzenia par regionów:
@@ -49,7 +49,7 @@ Przykłady par regionów:
 Zobacz pełną [listę par regionów tutaj](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
 ## <a name="feature-availability"></a>Dostępność funkcji
-Niektóre usługi lub funkcje maszyn wirtualnych, takie jak określone rozmiary maszyn wirtualnych lub typy magazynu, są dostępne tylko w określonych regionach. Niektóre globalne usługi platformy Azure, takie jak [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) lub [Azure DNS](../articles/dns/dns-overview.md), nie wymagają wybrania określonego regionu. Aby ułatwić sobie projektowanie środowiska aplikacji, sprawdź [dostępność usług Azure w poszczególnych regionach](https://azure.microsoft.com/regions/#services). Możesz również [programowo zapytania obsługiwanych rozmiarów maszyn wirtualnych i ograniczenia w każdym regionie](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
+Niektóre usługi lub funkcje maszyn wirtualnych, takie jak określone rozmiary maszyn wirtualnych lub typy magazynu, są dostępne tylko w określonych regionach. Niektóre globalne usługi platformy Azure, takie jak [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) lub [Azure DNS](../articles/dns/dns-overview.md), nie wymagają wybrania określonego regionu. Aby ułatwić sobie projektowanie środowiska aplikacji, sprawdź [dostępność usług Azure w poszczególnych regionach](https://azure.microsoft.com/regions/#services). Możesz również [programowo wykonać zapytanie dotyczące obsługiwane rozmiary maszyn wirtualnych i ograniczenia w każdym regionie](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md).
 
 ## <a name="storage-availability"></a>Dostępność magazynu
 Zrozumienie sposobu działania regionów i obszarów geograficznych platformy Azure staje się ważne, jeśli chcesz skorzystać z dostępnych opcji replikacji magazynu. W zależności od typu magazynu masz do wyboru różne opcje replikacji.
@@ -82,19 +82,19 @@ Aby uzyskać więcej informacji, zobacz [opcje replikacji magazynu Azure Storage
 Ceny różnią się w zależności od wybranego typu magazynu i dostępności.
 
 **Azure Managed Disks**
-* Zarządzane dyski Premium bazują na Solid-State dysków (SSD) i zarządzane dyski standardowe bazują na regularne Obracająca dysków. Opłaty za dyski Managed Disks w warstwach Premium i Standardowa są naliczane zgodnie z aprowizowaną pojemnością dysku.
+* Premium Managed Disks są objęte Solid-State dyskach SSD i dysków zarządzanych w warstwie standardowa jest objęta zwykłych dyskach obrotowych. Opłaty za dyski Managed Disks w warstwach Premium i Standardowa są naliczane zgodnie z aprowizowaną pojemnością dysku.
 
 **Dyski niezarządzane**
-* Magazyn w warstwie Premium nie jest obsługiwana przez Solid-State dysków (SSD) i rozliczany w oparciu o pojemności dysku.
+* Usługa Premium storage jest wspierana przez Solid-State dyski (SSD) i jest naliczana na podstawie pojemności dysku.
 * Magazyn w warstwie Standardowa opiera się na zwykłych dyskach obrotowych, a opłaty są naliczane na podstawie używanej pojemności i żądanej dostępności magazynu.
   * W przypadku magazynów RA-GRS istnieje dodatkowa opłata za transfer danych replikacji geograficznej związana z przepustowością wykorzystywaną do replikowania tych danych do innego regionu platformy Azure.
 
 Zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/), aby uzyskać informacje na temat różnych typów magazynów i opcji dostępności.
 
 ## <a name="availability-sets"></a>Zestawy dostępności
-Zestaw dostępności to logiczne grupowanie maszyn wirtualnych w centrum danych, który umożliwia platformie Azure zrozumieć, jak aplikacja jest wbudowana w celu zapewnienia nadmiarowości i dostępności. Zaleca się, że co najmniej dwie maszyny wirtualne są tworzone w ramach zestawu do zapewnienia wysokiej dostępności aplikacji i w celu spełnienia dostępności [99,95% umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Nie ma żadnych kosztów dla zestawu dostępności samego, płacisz za każde wystąpienie maszyny Wirtualnej, który utworzono. Jeśli pojedyncza maszyna wirtualna korzysta z usługi [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md), w przypadku zdarzeń nieplanowanej konserwacji obowiązuje umowa SLA platformy Azure. 
+Zestaw dostępności to logiczne grupowanie maszyn wirtualnych w obrębie centrum danych, który umożliwia platformie Azure zrozumienie sposobu kompilacji aplikacji w celu zapewnienia nadmiarowości i dostępności. Zaleca się, że co najmniej dwie maszyny wirtualne są tworzone w zestawie w celu zapewnienia wysokiej dostępności aplikacji i w celu spełnienia dostępności [99,95% umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Nie ma żadnych kosztów dla zestawu dostępności się, zapłacisz tylko za każdym wystąpieniu maszyny Wirtualnej, którą tworzysz. Jeśli pojedyncza maszyna wirtualna korzysta z usługi [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md), w przypadku zdarzeń nieplanowanej konserwacji obowiązuje umowa SLA platformy Azure. 
 
-Zestaw dostępności składa się z dwóch dodatkowych grup, które chronić przed awariami sprzętu i zezwolić na aktualizacje, które można bezpiecznie można zastosować — fault domeny (FDs) i aktualizację domeny (UDs). Zapoznaj się z dodatkowymi informacjami na temat zarządzania dostępnością [maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/manage-availability.md) lub [maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/manage-availability.md).
+Zestaw dostępności składa się z dwa dodatkowe grupowania, które chronią przed awariami sprzętu i zezwala na aktualizacje, które można bezpiecznie stosowane — błędów domenach i Aktualizacja domeny. Zapoznaj się z dodatkowymi informacjami na temat zarządzania dostępnością [maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/manage-availability.md) lub [maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/manage-availability.md).
 
 ### <a name="fault-domains"></a>Domeny błędów
 Domena błędów to logiczne grupowanie odpowiednich elementów sprzętu, które współdzielą źródła zasilania i przełącznik sieciowy, podobnie jak w przypadku regału w lokalnym centrum danych. Podczas tworzenia maszyn wirtualnych w zestawie dostępności platforma Azure automatycznie rozdziela maszyny wirtualne między domeny błędów. To podejście ogranicza wpływ potencjalnych awarii sprzętu fizycznego, przestojów sieci lub przerw w dostawie prądu.
@@ -102,12 +102,12 @@ Domena błędów to logiczne grupowanie odpowiednich elementów sprzętu, które
 ### <a name="update-domains"></a>Domeny aktualizacji
 Domena aktualizacji to logiczne grupowanie odpowiednich elementów sprzętu, które mogą być w tym samym czasie poddawane konserwacji lub ponownie uruchamiane. Podczas tworzenia maszyn wirtualnych w zestawie dostępności platforma Azure automatycznie rozdziela maszyny wirtualne między domeny aktualizacji. To podejście zapewnia, że zawsze działa co najmniej jedno wystąpienie aplikacji, gdy platforma Azure jest poddawana okresowej konserwacji. Podczas planowanej konserwacji domeny aktualizacji mogą nie być ponownie uruchamiane kolejno, ale w danym momencie tylko jedna domena aktualizacji jest uruchamiana ponownie.
 
-### <a name="managed-disk-fault-domains"></a>Zarządzane domenach awarii dysku
-Maszyny wirtualne korzystające z usługi [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) są przydzielane do domen błędów dysków zarządzanych w przypadku korzystania z zarządzanego zestawu dostępności. Dzięki takiemu dopasowaniu wszystkie dyski zarządzane dołączone do maszyny wirtualnej działają w tej samej domenie błędów dysku zarządzanego. W zarządzanym zestawie dostępności można tworzyć tylko maszyny wirtualne z użyciem dysków zarządzanych. Liczba domen błędów dysku zarządzanego zależy od regionu — dwie lub trzy domeny błędów dysku zarządzanego na region. Możesz przeczytać dodatkowe informacje dotyczące tych zarządzanych domen błędów dysku dla [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) lub [maszyn wirtualnych systemu Windows](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
+### <a name="managed-disk-fault-domains"></a>Domeny błędów dysku zarządzanego
+Maszyny wirtualne korzystające z usługi [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) są przydzielane do domen błędów dysków zarządzanych w przypadku korzystania z zarządzanego zestawu dostępności. Dzięki takiemu dopasowaniu wszystkie dyski zarządzane dołączone do maszyny wirtualnej działają w tej samej domenie błędów dysku zarządzanego. W zarządzanym zestawie dostępności można tworzyć tylko maszyny wirtualne z użyciem dysków zarządzanych. Liczba domen błędów dysku zarządzanego zależy od regionu — dwie lub trzy domeny błędów dysku zarządzanego na region. Możesz dowiedzieć się więcej o tych zarządzanych domen błędów dysków dla [maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) lub [maszyn wirtualnych Windows](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
 
 ## <a name="availability-zones"></a>Strefy dostępności
 
-[Dostępność strefy](../articles/availability-zones/az-overview.md), ustawia zamiast dostępności, rozwiń poziom kontroli należy zachować dostępność aplikacje i dane maszyn wirtualnych. Strefa dostępności to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Istnieją trzy strefy dostępności na obsługiwany region platformy Azure. Każda strefa dostępności ma oddzielne źródło zasilania, sieć i chłodzenie. Przez projektowania rozwiązań do użycia w strefach replikowanych maszyn wirtualnych, można chronić aplikacji i danych z utraty możliwości Centrum danych. W przypadku złamania zabezpieczeń jednego strefy, następnie replikowanych aplikacje i dane są dostępne natychmiast w innej strefie. 
+[Strefy dostępności](../articles/availability-zones/az-overview.md), ustawia alternatywa dostępności, rozwiń poziom kontroli trzeba utrzymywać dostępność aplikacji i danych na maszynach wirtualnych. Strefa dostępności to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Istnieją trzy strefy dostępności na obsługiwany region platformy Azure. Każda strefa dostępności ma oddzielne źródło zasilania, sieć i chłodzenie. Za projektowanie rozwiązania do użycia replikowane maszyny wirtualne w strefach, można chronić aplikacje i dane z utraty możliwości Centrum danych. W przypadku naruszenia zabezpieczeń jedną strefę następnie replikowane aplikacje i dane są natychmiast dostępne w innej strefie. 
 
 ![Strefy dostępności](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 

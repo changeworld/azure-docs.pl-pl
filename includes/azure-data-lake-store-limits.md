@@ -3,5 +3,5 @@ Azure Data Lake Store to repozytorium w hiperskali obsługujące całe przedsię
 | **Zasób** | **Limit domyślny** | **Komentarze** |
 | --- | --- | --- |
 | Maksymalna liczba kont usługi Data Lake Store na subskrypcję na region |10 | Skontaktuj się z działem pomocy technicznej, aby poprosić o zwiększenie tego limitu |
-| Maksymalna liczba dostęp do listy kontroli dostępu, na plik lub folder |32 | Jest to nienaruszalne ograniczenie. Użyj grup do zarządzania dostępem z mniejszą liczbę wpisów |
-| Maksymalna liczba domyślnej listy kontroli dostępu, na plik lub folder |32 | Jest to nienaruszalne ograniczenie. Użyj grup do zarządzania dostępem z mniejszą liczbę wpisów |
+| Maksymalna liczba dostępu na listach ACL dla pliku lub folderu |32 | Jest to stały limit. Używanie grup do zarządzania dostępem za pomocą mniejszej liczby wpisów |
+| Maksymalna liczba domyślne na listach ACL dla pliku lub folderu |32 | Jest to stały limit. Używanie grup do zarządzania dostępem za pomocą mniejszej liczby wpisów |

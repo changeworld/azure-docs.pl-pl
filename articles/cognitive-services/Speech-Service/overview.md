@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2c1fce35749dee12caec0bcd15a9eccdf81b8d1d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: adfc854fc24b9e285c405f3038a21ec84cd2f4c2
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856777"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989339"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Co to jest usługa mowy (wersja zapoznawcza)?
 
@@ -68,7 +68,7 @@ Poniżej przedstawiono typowe przypadki użycia dla zamiany tekstu na mowę inte
 * Głos monitowania dla aplikacji w samochodzie, takie jak nawigacja
 * Interfejsy użytkownika konwersacji z usługą mowy do interfejsu API tłumaczenia tekstu
 
-Jeśli trzeba nieobsługiwany dialekt lub po prostu ma głos unikatowy dla aplikacji, zamiana tekstu na mowę interfejs API obsługuje [modeli usługi custom voice](how-to-customize-voice-font.md).
+Jeśli potrzebujesz nieobsługiwany dialekt lub po prostu ma głos unikatowy dla aplikacji, zamiana tekstu na mowę interfejs API obsługuje [modeli usługi custom voice](how-to-customize-voice-font.md).
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 

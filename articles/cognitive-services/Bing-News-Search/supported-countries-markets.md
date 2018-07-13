@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane innych krajów i języków interfejsu API wyszukiwania wiadomości Bing na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, która krajów i języki są obsługiwane przez interfejs API wyszukiwania usługi Bing obrazu.
+title: Obsługiwane kraje/regiony i języki dla interfejsu API wyszukiwania wiadomości Bing na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, które kraje/regiony i języki są obsługiwane przez interfejs API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: MikeDodaro
 manager: rosh
@@ -9,47 +9,47 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: v-gedod
-ms.openlocfilehash: 80326d66e509b64efd5d386fe793bc9942b29ae3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1cdacc82b680407814ff2d88e8ed43deacfb17d0
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347217"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001664"
 ---
-# <a name="bing-news-search-countries-and-languages"></a>Kraje wyszukiwania wiadomości Bing i języki
+# <a name="bing-news-search-countriesregions-and-languages"></a>Wyszukiwanie wiadomości Bing kraje/regiony i języki
 
-Interfejs API wyszukiwania usługi Bing wiadomości obsługuje wiele krajów, wiele z więcej niż jednym języku. Określanie kraju z zapytaniem służy głównie w celu ograniczenia wyników wyszukiwania w oparciu zainteresowań w tym kraju. Ponadto wyniki mogą zawierać łącza do usługi Bing i łącza mogą localize Bing środowisko użytkownika zgodnie z określonym kraju lub języka.
+Interfejs API wyszukiwania wiadomości Bing obsługuje wiele kraje/regiony, wiele z więcej niż jednym języku. Określanie kraj/region z zapytaniem służy przede wszystkim, aby zawęzić wyniki wyszukiwania, w oparciu o zainteresowania tego kraju/regionu. Ponadto wyniki mogą zawierać łącza do usługi Bing, a te linki mogą lokalizować Bing środowiska użytkownika zgodnie z określonego kraju/regionu lub języka.
 
-Można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kraju, należy określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależy od kraju; są one podane dla każdego kraju, w tabeli rynkach.
+Można określić kraj/region, w którym używana jest `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależą od countr/region są one podane dla każdego kraju/regionu w tabeli rynkach.
 
-Alternatywnie można określić za pomocą rynku `mkt` parametr zapytania i kod z **rynkach** tabeli. Określanie jednocześnie na rynku Określa kraj i określ preferowany język. `setLang` Parametru zapytania mogą być ustawione na kod języka w takim przypadku; zazwyczaj jest to ten sam język określony przez `mkt` , chyba że użytkownik chce zobaczyć Bing w innym języku.
+Alternatywnie, można określić przy użyciu rynku `mkt` parametr zapytania i kod z **rynków** tabeli. Określanie na rynek, jednocześnie Określa kraj/region i język preferowany. `setLang` Parametr zapytania może być ustawiona na kod języka w tym przypadku; zazwyczaj jest to ten sam język określony przez `mkt` , chyba że użytkownik chce zobaczyć Bing w innym języku.
 
-## <a name="supported-markets-for-news-search-endpoint"></a>Obsługiwane rynkach dla punktu końcowego wyszukiwania wiadomości
+## <a name="supported-markets-for-news-search-endpoint"></a>Obsługiwane rynki dla punkt końcowy wyszukiwania wiadomości
 
-Aby uzyskać `/news/search` punktu końcowego, w poniższej tabeli wymieniono wartości kodów rynku może używanych do określania `mkt` parametr zapytania. Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
+Aby uzyskać `/news/search` punktu końcowego, w poniższej tabeli wymieniono wartości kodu na rynku, które umożliwia określenie `mkt` parametr zapytania. Wyszukiwarka Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
   
-Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych](#countrycodes).  
+Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
   
-|Kraj/region|Język|Kod rynku|  
+|Kraj/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------| 
-|Dania|Duński|Ciemny da|
-|Austria|Niemiecki|Niemcy AT| 
-|Szwajcaria|Niemiecki|Niemcy CH|
-|Niemcy|Niemiecki|de-DE|
+|Dania|Duński|Akcelerator deweloperski w wersji DK|
+|Austria|Niemiecki|de-AT| 
+|Szwajcaria|Niemiecki|de-CH|
+|Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
 |Kanada|Polski|EN-CA|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Indonezja|Polski|EN-ID|
 |Irlandia|Polski|EN-IE|
-|Indie|Polski|EN w|
+|Indie|Polski|EN-IN|
 |Malezja|Polski|Moje en|
 |Nowa Zelandia|Polski|EN NZ|
-|Republika Filipin|Polski|CIĄG en|
-|Singapur|Polski|EN-SG|
+|Republika Filipin|Polski|EN PH|
+|Singapur|Polski|EN SG|
 |Stany Zjednoczone|Polski|pl-PL|
-|Polski|Ogólne|EN TT|
+|Polski|Ogólne|EN-WW|
 |Polski|Ogólne|EN XA|
-|Republika Południowej Afryki|Polski|EN-ZA-|
+|Republika Południowej Afryki|Polski|EN ZA|
 |Argentyna|Hiszpański|ES AR|
 |Chile|Hiszpański|ES-CL|
 |Hiszpania|Hiszpański|es-ES|
@@ -57,10 +57,10 @@ Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [
 |Stany Zjednoczone|Hiszpański|es-US| 
 |Hiszpański|Ogólne|ES XL|
 |Finlandia|Fiński|fi-FI|  
-|Francja|Francuski|FR — można|
+|Francja|Francuski|FR — być|
 |Kanada|Francuski|fr-CA| 
-|Belgia|Holenderski|NL-być|
-|Szwajcaria|Francuski|FR CH|
+|Belgia|Holenderski|Holandia — być|
+|Szwajcaria|Francuski|FR-CH|
 |Francja|Francuski|fr-FR|  
 |Włochy|Włoski|IT-IT| 
 |SRA Hongkong|Chiński (tradycyjny)|zh-HK|  
@@ -74,19 +74,19 @@ Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [
 |Szwecja|Szwedzki|sv-SE|  
 |Turcja|Turecki|tr-TR|  
 
-## <a name="supported-markets-for-news-endpoint"></a>Obsługiwane rynkach dla punktu końcowego wiadomości
-Aby uzyskać `/news` punktu końcowego, w poniższej tabeli wymieniono wartości kodów rynku może używanych do określania `mkt` parametr zapytania. Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
+## <a name="supported-markets-for-news-endpoint"></a>Obsługiwane rynki dla punktu końcowego wiadomości
+Aby uzyskać `/news` punktu końcowego, w poniższej tabeli wymieniono wartości kodu na rynku, które umożliwia określenie `mkt` parametr zapytania. Wyszukiwarka Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
   
-Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych](#countrycodes).  
+Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
   
-|Kraj/region|Język|Kod rynku|  
+|Kraj/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------| 
-|Dania|Duński|Ciemny da|
-|Niemcy|Niemiecki|de-DE|
+|Dania|Duński|Akcelerator deweloperski w wersji DK|
+|Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Stany Zjednoczone|Polski|pl-PL|
-|Polski|Ogólne|EN TT|
+|Polski|Ogólne|EN-WW|
 |Chile|Hiszpański|ES-CL|
 |Meksyk|Hiszpański|es-MX|
 |Stany Zjednoczone|Hiszpański|es-US| 
@@ -97,19 +97,19 @@ Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [
 |Brazylia|Portugalski|pt-BR|
 |Chińska Republika Ludowa|Chiński|zh-CN|
 
-## <a name="supported-markets-for-news-trending-endpoint"></a>Obsługiwane rynkach dla punktu końcowego trendów wiadomości
-Aby uzyskać `/news/trendingtopics` punktu końcowego, w poniższej tabeli wymieniono wartości kodów rynku może używanych do określania `mkt` parametr zapytania. Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
+## <a name="supported-markets-for-news-trending-endpoint"></a>Obsługiwane rynki dla punktu końcowego popularne wiadomości
+Aby uzyskać `/news/trendingtopics` punktu końcowego, w poniższej tabeli wymieniono wartości kodu na rynku, które umożliwia określenie `mkt` parametr zapytania. Wyszukiwarka Bing zwraca zawartość tylko tych rynkach. Lista może ulec zmianie.  
   
-Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych](#countrycodes).  
+Kodów listę kraj/region, który można określić w `cc` parametr zapytania, zobacz [numerów kierunkowych krajów](#countrycodes).  
   
-|Kraj/region|Język|Kod rynku|  
+|Kraj/region|Język|Rynek kodu|  
 |---------------------|--------------|-----------------| 
-|Niemcy|Niemiecki|de-DE|
+|Niemcy|Niemiecki|de-DE.|
 |Australia|Polski|EN-AU|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Stany Zjednoczone|Polski|pl-PL|
 |Kanada|Polski|EN-CA|
-|Indie|Polski|EN w|
+|Indie|Polski|EN-IN|
 |Francja|Francuski|fr-FR|
 |Kanada|Francuski|fr-CA|
 |Brazylia|Portugalski|pt-BR|
@@ -119,7 +119,7 @@ Lista kraju kodów, które można określić w `cc` parametr zapytania, zobacz [
 <a name="countrycodes"></a>   
 ### <a name="country-codes"></a>Kody krajów  
 
-Poniżej przedstawiono kodów kraju, które mogą być określone w `cc` parametr zapytania. Lista może ulec zmianie.  
+Poniżej przedstawiono kodów krajów/regionów, które mogą być określone w `cc` parametr zapytania. Lista może ulec zmianie.  
   
 |Kraj/region|Kod kraju|  
 |---------------------|------------------|  
@@ -130,27 +130,27 @@ Poniżej przedstawiono kodów kraju, które mogą być określone w `cc` paramet
 |Brazylia|BRAZYLIA|  
 |Kanada|Urząd certyfikacji|  
 |Chile|CL|  
-|Dania|K|  
+|Dania|DK|  
 |Finlandia|FI|  
 |Francja|PW|  
 |Niemcy|DE|  
 |SRA Hongkong|HK|  
-|Indie|W|  
+|Indie|INDIE|  
 |Indonezja|ID|  
 |Włochy|IT|  
 |Japonia|JP|  
 |Korea|KR|  
 |Malezja|MOJE|  
 |Meksyk|MX|  
-|Holandia|NL|  
+|Holandia|HOLANDIA|  
 |Nowa Zelandia|NZ|  
 |Norwegia|NIE|  
-|Chińska Republika Ludowa|NAZWA POSPOLITA|  
+|Chińska Republika Ludowa|CN|  
 |Polska|PL|  
-|Portugalia|PT|  
-|Republika Filipin|CIĄG|  
-|Rosja|RU|  
-|Arabia Saudyjska|SA|  
+|Portugalia|(CZAS PACYFICZNY)|  
+|Republika Filipin|PH|  
+|Rosja|JEDNOSTKA ŻĄDANIA|  
+|Arabia Saudyjska|AMERYKA POŁUDNIOWA|  
 |Republika Południowej Afryki|ZA|  
 |Hiszpania|ES|  
 |Szwecja|SE|  
@@ -161,4 +161,4 @@ Poniżej przedstawiono kodów kraju, które mogą być określone w `cc` paramet
 |Stany Zjednoczone|USA|
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o punktach końcowych wyszukiwania usługi Bing wiadomości, zobacz [odwołania w wersji 7 interfejsu API wyszukiwania wiadomości](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+Aby uzyskać więcej informacji na temat punktów końcowych wyszukiwania wiadomości Bing, zobacz [odwołanie do interfejsu API wyszukiwania wiadomości w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).

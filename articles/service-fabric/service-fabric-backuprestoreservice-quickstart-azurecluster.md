@@ -1,6 +1,6 @@
 ---
-title: Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Użyj usługi sieć szkieletowa okresowe kopii zapasowej i przywracania funkcji ochrony przed utratą danych aplikacji.
+title: Przewodnik Szybki Start — okresowych kopii zapasowych i przywracania w usłudze Azure Service Fabric (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Używać usługi Service Fabric okresowych kopii zapasowych i przywracania funkcji umożliwiających okresowe tworzenia kopii zapasowych danych aplikacji.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 9fbf3a6c965bb2f52b71fbac32b289555b922772
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 50ee0d91b27805e4db785e5df211660900333e7f
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113993"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990303"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Okresowe kopii zapasowej i przywracania w sieci szkieletowej usług Azure (wersja zapoznawcza)
+# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Szybki Start: Okresowych kopii zapasowych i przywracania w usłudze Azure Service Fabric (wersja zapoznawcza)
 > [!div class="op_single_selector"]
-> * [Klastry w systemie Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
-> * [Klastry autonomicznego](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
+> * [Klastry na platformie Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
+> * [Klastry autonomiczne](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Sieć szkieletowa usług to platforma systemów rozproszonych, który ułatwia tworzenie aplikacji i zarządzanie nimi mikrousług niezawodnych, rozproszonych, na podstawie chmury. Umożliwia uruchamianie zarówno bezstanowe i stanowe micro usług. Usługi stanowej można zachować stanu modyfikowalna, autorytatywnych poza żądania i odpowiedzi lub ukończyć transakcji. Jeśli usługi stanowej przestanie działać przez dłuższy czas lub utraci informacji z powodu awarii, może być konieczne można przywrócić do niektórych ostatniej kopii zapasowej stanu, aby udostępniać usługi po jego wróci do sprawności.
+Service Fabric to platforma systemów rozproszonych, która ułatwia tworzenie i zarządzanie nimi niezawodne, rozproszony mikrousług na podstawie aplikacji w chmurze. Umożliwia to uruchamianie mikrousługi stanowe i bezstanowe. Usługi stanowe może zachować modyfikowalny, autorytatywny stan poza żądaniem i odpowiedzi lub ukończoną transakcję. Jeśli usługa stanowa przestanie działać przez dłuższy czas lub traci informacji z powodu awarii, może być konieczne można przywrócić do niektórych ostatniej kopii zapasowej stanu, aby móc kontynuować świadczenie usług, po jego wróci do sprawności.
 
-Sieć szkieletowa usług replikuje stanu na wielu węzłach, aby upewnić się, że usługa jest wysokiej dostępności. Nawet w przypadku awarii jednego węzła w klastrze, usługa jest nadal dostępny. W niektórych przypadkach, jednak nadal pożądane jest wiarygodne przed awariami szerszych danych usługi.
+Usługa Service Fabric replikuje stanu w wielu węzłach, aby upewnij się, że usługa o wysokiej dostępności. Nawet w przypadku awarii jednego węzła w klastrze, usługa jest nadal dostępna. W niektórych przypadkach jednak nadal pożądane jest dane usługi wiarygodne szersze awariami.
  
-Na przykład usługa może być konieczne jego dane kopii zapasowej w celu zapewnienia ochrony przed w następujących scenariuszach:
-- W przypadku trwałą utratę całego klastra sieci szkieletowej usług.
+Na przykład usługa warto tworzyć kopie zapasowe swoich danych w celu ochrony z następujących scenariuszy:
+- W przypadku trwałą utratę cały klaster usługi Service Fabric.
 - Trwałą utratę większości replik partycji usługi
-- Błędy administracyjne zgodnie z którymi stan przypadkowo pobiera usunięte lub uszkodzony. Administrator z uprawnieniami wystarczające Usuwa błędnie usługi.
-- Usterki w usłudze, które spowodować uszkodzenie danych. Na przykład może to być spowodowane uaktualnienie kodu usługi uruchamia zapisywania danych błędny niezawodnej kolekcji. W takim przypadku zarówno kod i dane mogą mieć przywrócenie do wcześniejszego stanu.
-- Przetwarzanie danych w trybie offline. Może być wygodną mieć w trybie offline przetwarzania danych do analizy biznesowej, wykonywanej oddzielnie z usługą, która generuje dane.
+- Błędy administracyjne, według której stan przypadkowo pobiera usunięty lub uszkodzony. Administrator z uprawnieniami wystarczające Usuwa błędnie usługi.
+- Błędy w usłudze, które powodują uszkodzenie danych. Na przykład to może się zdarzyć, gdy uaktualnianie kodu usługi rozpoczyna się zapisywanie uszkodzonych danych w niezawodnej kolekcji. W takim przypadku zarówno kod, jak i danych może być konieczne można przywrócić do poprzedniego stanu.
+- Przetwarzanie danych w trybie offline. Może być wygodną mieć przetwarzanie danych dla analizę biznesową, która miejsce osobno od usługi, która generuje dane w trybie offline.
 
-Usługa Service Fabric realizuje wbudowanych API do punktu w czasie [i przywracania kopii zapasowych](service-fabric-reliable-services-backup-restore.md). Deweloperzy aplikacji mogą okresowo wykonaj kopię zapasową stanu usługi, korzystając z poniższych interfejsów API. Ponadto jeśli chcesz, aby administratorzy usługi do wyzwolenia kopii zapasowej z poza usługę w określonym czasie, takie jak przed rozpoczęciem uaktualniania aplikacji, deweloperzy muszą ujawnić kopii zapasowej (i przywrócić) jako interfejs API z usługi. Obsługa kopii zapasowych jest dodatkowych kosztów powyżej tego. Na przykład można korzystać z 5 przyrostowych kopii zapasowych co pół godziny, następuje pełnej kopii zapasowej. Po utworzeniu pełnej kopii zapasowej można usunąć poprzednich przyrostowe kopie zapasowe. Ta metoda wymaga dodatkowego kodu, co może prowadzić do dodatkowych kosztów podczas tworzenia aplikacji.
+Usługa Service Fabric udostępnia wbudowane interfejsu API do punktu w czasie [kopia zapasowa i przywracanie](service-fabric-reliable-services-backup-restore.md). Deweloperzy aplikacji może używać tych interfejsów API, aby utworzyć kopię zapasową stanu usługi okresowo. Ponadto aby administratorzy usługi wyzwalanie tworzenia kopii zapasowej z poza usługi w określonym czasie, takie jak przed uaktualnieniem aplikacji, deweloperzy muszą ujawnić kopii zapasowej (i przywracanie) jako interfejsu API z usługi. Obsługa kopii zapasowych jest dodatkowy koszt powyżej tego. Na przykład można korzystać z 5 przyrostowych kopii zapasowych co pół godziny następuje pełnej kopii zapasowej. Po pełnej kopii zapasowej można usunąć poprzednich przyrostowych kopii zapasowych. Takie podejście wymaga dodatkowego kodu, co prowadzi do dodatkowych kosztów, podczas tworzenia aplikacji.
 
-Tworzenie kopii zapasowych danych aplikacji w regularnych odstępach czasu jest podstawowe potrzebę zarządzania aplikacji rozproszonej oraz ochrona przed utratą danych lub długimi utratą dostępności usługi. Usługa Service Fabric realizuje opcjonalne tworzenia kopii zapasowej i przywracania usługi, która pozwala na skonfigurowanie okresowe kopii zapasowej stanowe niezawodnych usług (takich jak usługi aktora) bez konieczności pisania kodu dodatkowe. Ułatwia także przywrócenie poprzednio wykonane kopie zapasowe. 
+Tworzenie kopii zapasowych danych aplikacji w regularnych odstępach czasu jest podstawowe potrzebę zarządzania aplikację rozproszoną i ochrona przed utratą danych lub długotrwały utratą dostępności usługi. Usługa Service Fabric udostępnia opcjonalne tworzenia kopii zapasowych i przywracania usługi, która pozwala na konfigurowanie okresowych kopii zapasowej niezawodne usługi stanowe (w tym usług aktora) bez konieczności pisania dodatkowego kodu. Również ułatwia tworzenie, przywracanie, poprzednio wykonane kopie zapasowe. 
 
 > [!NOTE]
-> Okresowe funkcji kopii zapasowej i przywracania jest obecnie w **Podgląd** i nie są obsługiwane w przypadku obciążeń produkcyjnych. 
+> Okresowe funkcji tworzenia kopii zapasowych i przywracania jest obecnie w **Podgląd** i nie jest obsługiwany dla obciążeń produkcyjnych. 
 >
 
-Sieć szkieletowa usług zawiera zestaw interfejsów API do osiągnięcia następujące funkcje związane z okresowe tworzenie kopii zapasowej i przywracania funkcji:
+Usługa Service Fabric udostępnia zestaw interfejsów API, aby osiągnąć następujące funkcje związane z okresowe tworzenie kopii zapasowej i przywracanie funkcji:
 
-- Planowanie okresowe kopii zapasowej niezawodnej Stateful services i Reliable Actors z obsługą przekazać lokalizacje przechowywania kopii zapasowej do (zewnętrzne). Lokalizacje przechowywania
+- Zaplanować okresowe kopii zapasowej Reliable Stateful services i Reliable Actors z obsługą przekazywania lokalizacji magazynu kopii zapasowej (zewnętrznych). Obsługiwane lokalizacje
     - Azure Storage
-    - Udziału plików (lokalnego)
+    - Udziału plików (lokalny)
 - Wyliczanie kopii zapasowych
-- Wyzwól kopię zapasową ad hoc partycji
-- Przywróć partycji korzystającej z poprzedniej kopii zapasowej
-- Tymczasowo wstrzymać kopii zapasowych
+- Wyzwalanie tworzenia kopii zapasowej ad hoc partycji
+- Przywróć partycji przy użyciu poprzedniej kopii zapasowej
+- Czasowo zawieszają kopii zapasowych
 - Zarządzanie przechowywania kopii zapasowych (nadchodzących)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Klaster sieci szkieletowej usług z sieci szkieletowej wersję 6.2 i nowszych. Klastra powinna być instalacji w systemie Windows Server. Zobacz [artykułu](service-fabric-cluster-creation-via-arm.md) kroki, aby utworzyć sieć szkieletowa usług klastra przy użyciu szablonu zasobów platformy Azure.
-* Certyfikat X.509 do szyfrowania kluczy tajnych wymagane do nawiązania magazynu do przechowywania kopii zapasowych. Zobacz [artykułu](service-fabric-cluster-creation-via-arm.md) wiedzieć, jak uzyskać lub utworzyć certyfikat X.509.
-* Usługi sieć szkieletowa niezawodnej Stateful aplikacji utworzony przy użyciu zestawu SDK usług sieci szkieletowej w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych dla platformy .net Core 2.0, powinny zostać skompilowane aplikacji przy użyciu zestawu SDK usług sieci szkieletowej w wersji 3.1 lub nowszej.
-* Utwórz konto magazynu Azure do przechowywania kopii zapasowych aplikacji.
+* Klaster usługi Service Fabric za pomocą Service Fabric w wersji 6.2 i nowszych. Klaster powinien być skonfigurowany, w systemie Windows Server. Zapoznaj się [artykułu](service-fabric-cluster-creation-via-arm.md) kroki umożliwiające utworzenie usługi Service Fabric klastra za pomocą szablonu zasobów platformy Azure.
+* Certyfikat X.509 do szyfrowania wymagane do połączenia z magazynem kluczy tajnych do przechowywania kopii zapasowych. Zapoznaj się [artykułu](service-fabric-cluster-creation-via-arm.md) wiedzieć, jak pobrać lub utworzyć certyfikat X.509.
+* Aplikacja usługi Service Fabric Reliable Stateful utworzone przy użyciu zestawu SDK usługi Service Fabric w wersji 3.0 lub nowszej. Dla aplikacji przeznaczonych na.Net Core 2.0, aplikacji powinny zostać skompilowane przy użyciu zestawu SDK usługi Service Fabric w wersji 3.1 lub nowszej.
+* Utwórz konto usługi Azure Storage do przechowywania kopii zapasowych aplikacji.
 
 ## <a name="enabling-backup-and-restore-service"></a>Włączanie usługi Kopia zapasowa i przywracanie
-Najpierw trzeba włączyć _kopii zapasowej i przywracania usługi_ w klastrze. Pobierz szablon dla klastra, który chcesz wdrożyć. Można użyć [przykładowy szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) lub Utwórz szablon usługi Resource Manager. Włącz _kopii zapasowej i przywracania usługi_ następujące czynności:
+Najpierw należy włączyć _kopia zapasowa i przywracanie usługi_ w klastrze. Pobierz szablon dla klastra, który chcesz wdrożyć. Można użyć [przykładowe szablony](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) lub Utwórz szablon usługi Resource Manager. Włącz _kopia zapasowa i przywracanie usługi_ następujące czynności:
 
-1. Sprawdź, czy `apiversion` ustawiono **`2018-02-01`** dla `Microsoft.ServiceFabric/clusters` zasobów i jeśli nie, zaktualizować go jak pokazano w poniższy fragment kodu:
+1. Sprawdź, czy `apiversion` ustawiono **`2018-02-01`** dla `Microsoft.ServiceFabric/clusters` zasobów, a jeśli nie, zaktualizuj go jak pokazano w poniższym fragmencie kodu:
 
     ```json
     {
@@ -78,7 +78,7 @@ Najpierw trzeba włączyć _kopii zapasowej i przywracania usługi_ w klastrze. 
     }
     ```
 
-2. Teraz Włącz _kopii zapasowej i przywracania usługi_ przez dodanie poniższego `addonFeatures` w obszarze `properties` sekcji, jak pokazano w poniższy fragment kodu: 
+2. Teraz Włącz _kopia zapasowa i przywracanie usługi_ przez dodanie poniższego `addonFeatures` sekcji `properties` sekcji, jak pokazano w poniższym fragmencie kodu: 
 
     ```json
         "properties": {
@@ -89,7 +89,7 @@ Najpierw trzeba włączyć _kopii zapasowej i przywracania usługi_ w klastrze. 
         }
 
     ```
-3. Konfigurowanie certyfikatu X.509 do szyfrowania poświadczeń. Jest to ważne upewnić się, że wprowadzone poświadczenia do połączenia z magazynem są szyfrowane przed wprowadzeniem trwałych. Konfigurowanie certyfikatu szyfrowania przez dodanie poniższego `BackupRestoreService` w obszarze `fabricSettings` sekcji, jak pokazano w poniższy fragment kodu: 
+3. Skonfiguruj certyfikat X.509 w celu szyfrowania poświadczeń. Jest to ważne upewnić się, że poświadczenia podane do połączenia z magazynem są szyfrowane przed wprowadzeniem trwałych. Skonfigurować certyfikat szyfrowania, dodając następujące `BackupRestoreService` sekcji `fabricSettings` sekcji, jak pokazano w poniższym fragmencie kodu: 
 
     ```json
     "properties": {
@@ -106,21 +106,21 @@ Najpierw trzeba włączyć _kopii zapasowej i przywracania usługi_ w klastrze. 
     }
     ```
 
-4. Po został zaktualizowany szablon klastra z poprzednim zmian, ich zastosowania i umożliwić ukończenie wdrażania/uaktualniania. Po zakończeniu _kopii zapasowej i przywracania usługi_ uruchamiania w klastrze. Identyfikator Uri tej usługi jest `fabric:/System/BackupRestoreService` i usługa może znajdować się w sekcji usługi systemu w programie Service Fabric explorer. 
+4. Gdy zostały zaktualizowane do szablonu klastra przy użyciu zmian poprzednim, stosować je i pozwolić zakończyć wdrażania/uaktualniania. Po zakończeniu _kopia zapasowa i przywracanie usługi_ zacznie działać w klastrze. Identyfikator Uri usługi jest `fabric:/System/BackupRestoreService` i usługa może znajdować się w sekcji usługi systemowe w Eksploratorze usługi Service Fabric. 
 
-## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Włączanie okresowe tworzenie kopii zapasowej dla usługi Stateful niezawodnych i Reliable Actors
-Przejdźmy kroki, aby włączyć okresowe tworzenie kopii zapasowej dla usługi Stateful niezawodnych i Reliable Actors. Tych krokach przyjęto założenie
-- Czy klastra jest skonfigurowana przy użyciu zabezpieczeń X.509 z _kopii zapasowej i przywracania usługi_.
-- Usługa niezawodnej Stateful jest wdrażane w klastrze. Na potrzeby tego przewodnika Szybki Start jest identyfikator Uri aplikacji `fabric:/SampleApp` i identyfikator Uri usługi niezawodnego Stateful należących do tej aplikacji jest `fabric:/SampleApp/MyStatefulService`. Ta usługa jest wdrażana z jedną partycją i Identyfikatora partycji jest `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
-- Certyfikat klienta z rolą administratora jest zainstalowany w _Moje_ (_osobistych_) przechowywania nazwę _CurrentUser_ lokalizacja magazynu na komputer, z którego poniżej certyfikatów skrypty zostanie wywołany. W tym przykładzie użyto `1b7ebe2174649c45474a4819dafae956712c31d3` jako odcisk palca certyfikatu. Aby uzyskać więcej informacji o certyfikatach klientów, zobacz [kontroli dostępu opartej na rolach dla klientów usługi sieć szkieletowa](service-fabric-cluster-security-roles.md).
+## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Opcja włączania okresowych kopii zapasowych usługi Reliable Stateful i Reliable Actors
+Przejdźmy przez czynności, aby włączyć okresowe kopie zapasowe usługi Reliable Stateful i Reliable Actors. Te czynności zakładają
+- Klaster znajduje się instalację za pomocą zabezpieczeń X.509 z _kopia zapasowa i przywracanie usługi_.
+- Usługi Reliable Stateful jest wdrażana w klastrze. Na potrzeby tego przewodnika Szybki Start jest identyfikator Uri aplikacji `fabric:/SampleApp` i identyfikator Uri usługi Reliable Stateful należących do tej aplikacji jest `fabric:/SampleApp/MyStatefulService`. Ta usługa jest wdrażany z jedną partycją i identyfikator partycji jest `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
+- Certyfikat klienta z rolą administratora jest zainstalowany w _Moje_ (_osobistych_) przechowywania nazwę _CurrentUser_ certyfikatu lokalizacji magazynu na komputer, z którego poniżej skrypty zostanie wywołany. W tym przykładzie użyto `1b7ebe2174649c45474a4819dafae956712c31d3` jako odcisk palca certyfikatu. Aby uzyskać więcej informacji na temat certyfikatów klienta, zobacz [kontroli dostępu opartej na rolach dla klientów usługi Service Fabric](service-fabric-cluster-security-roles.md).
 
-### <a name="create-backup-policy"></a>Tworzenie zasad tworzenia kopii zapasowej
+### <a name="create-backup-policy"></a>Tworzenie zasad kopii zapasowych
 
-Pierwszym krokiem jest tworzenie zasad tworzenia kopii zapasowej opisujące harmonogram tworzenia kopii zapasowych, Magazyn docelowy kopii zapasowej danych, nazwę zasady i maksymalna przyrostowe kopie zapasowe mogą być, aby mogło nastąpić wyzwolenie pełnej kopii zapasowej. 
+Pierwszym krokiem jest tworzenie zasad kopii zapasowych, opisujący harmonogram tworzenia kopii zapasowych, docelowy magazyn danych kopii zapasowej, nazwa zasad i maksymalna przyrostowe kopie zapasowe mają być dozwolone przed wyzwoleniem pełnej kopii zapasowej. 
 
-W magazynie kopii zapasowej należy użyć usługi Azure Storage, konto utworzone powyżej. Kontener `backup-container` jest skonfigurowany do przechowywania kopii zapasowych. Kontener o tej nazwie jest tworzony, jeśli go jeszcze nie istnieje, podczas tworzenia kopii zapasowej przekazywania. Wypełnij `ConnectionString` z prawidłowe parametry połączenia dla konta magazynu Azure, zastępując `account-name` nazwą konta magazynu, i `account-key` kluczem konta magazynu.
+W magazynie kopii zapasowej Użyj usługi Azure Storage konta utworzonego powyżej. Kontener `backup-container` jest skonfigurowany do przechowywania kopii zapasowych. Utworzenie kontenera o tej nazwie, jeśli go jeszcze nie istnieje, podczas tworzenia kopii zapasowej przekazywania. Wypełnij `ConnectionString` z prawidłowe parametry połączenia dla konta usługi Azure Storage, zastępując `account-name` nazwą konta magazynu, i `account-key` kluczem konta magazynu.
 
-Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad. Zastąp `account-name` z nazwę konta magazynu i `account-key` kluczem konta magazynu.
+Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST do tworzenia nowych zasad. Zastąp `account-name` nazwą konta magazynu, a `account-key` kluczem konta magazynu.
 
 ```powershell
 $StorageInfo = @{
@@ -147,10 +147,10 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestor
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-### <a name="enable-periodic-backup"></a>Włącz okresowe kopii zapasowej
-Po zdefiniowaniu zasad tworzenia kopii zapasowej do spełnienia wymagań dotyczących ochrony danych aplikacji, zasad tworzenia kopii zapasowej powinna być skojarzona z aplikacją. W zależności od wymagań zasad tworzenia kopii zapasowej może być skojarzony z aplikacji, usługi lub partycji.
+### <a name="enable-periodic-backup"></a>Włącz okresowe wykonywanie kopii zapasowej
+Po zdefiniowaniu zasad tworzenia kopii zapasowej, aby spełnić wymagania dotyczące ochrony danych aplikacji, zasady tworzenia kopii zapasowej należy skojarzone z aplikacją. W zależności od wymagań zasad tworzenia kopii zapasowej może być skojarzony z aplikacją, usługi lub partycji.
 
-Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST, aby skojarzyć zasady tworzenia kopii zapasowej o nazwie `BackupPolicy1` utworzone w powyżej kroku z aplikacją `SampleApp`.
+Wykonaj następujący skrypt programu PowerShell do wywoływania wymaganego interfejsu API REST, aby skojarzyć zasady tworzenia kopii zapasowych o nazwie `BackupPolicy1` utworzoną w kroku przy użyciu aplikacji `SampleApp`.
 
 ```powershell
 $BackupPolicyReference = @{
@@ -165,15 +165,15 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Sprawdź, czy działają okresowe kopie zapasowe
 
-Po włączeniu kopii zapasowej na poziomie aplikacji, wszystkie partycje należących do niezawodnej Stateful services i Reliable Actors w aplikacji rozpocznie pobieranie kopii zapasowej okresowo zgodnie z zasadami tworzenia kopii zapasowej skojarzone. 
+Po włączeniu kopii zapasowej na poziomie aplikacji, wszystkie partycje należących do Reliable Stateful services i Reliable Actors w ramach aplikacji rozpocznie się pobieranie kopii zapasowej okresowo zgodnie z skojarzonych zasad kopii zapasowych. 
 
-![Zdarzenie kondycji BackedUp partycji][0]
+![Zdarzenie kondycji kopii zapasowej partycji][0]
 
-### <a name="list-backups"></a>Listy kopii zapasowych
+### <a name="list-backups"></a>Wykaz kopii zapasowych
 
-Kopie zapasowe skojarzone z wszystkie partycje należących do niezawodnej Stateful services i Reliable Actors aplikacji mogą być wyliczane przy użyciu _GetBackups_ interfejsu API. Kopie zapasowe mogą być wyliczane dla aplikacji, usługi lub partycji.
+Kopie zapasowe skojarzone z wszystkie partycje należących do Reliable Stateful services i Reliable Actors aplikacji mogą być wyliczane przy użyciu _GetBackups_ interfejsu API. Kopie zapasowe mogą być wyliczane dla aplikacji, usługi lub partycji.
 
-Wykonaj następujący skrypt programu PowerShell do wywołania interfejsu API HTTP wyliczyć kopie zapasowe utworzone dla wszystkich partycji wewnątrz `SampleApp` aplikacji.
+Wykonaj następujący skrypt programu PowerShell do wywołania interfejsu API protokołu HTTP, można wyliczyć kopie zapasowe utworzone dla wszystkich partycji wewnątrz `SampleApp` aplikacji.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.2-preview"
@@ -223,14 +223,15 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
-## <a name="preview-limitation-caveats"></a>Wyświetl podgląd ograniczenie / ograniczenia
-- Nie sieci szkieletowej usług wbudowany poleceń cmdlet programu PowerShell.
-- Brak obsługi interfejsu wiersza polecenia usługi sieci szkieletowej.
-- Brak obsługi automatycznego przeczyszczania kopii zapasowej. Wymaga ręcznego oczyszczania kopii zapasowych.
-- Brak obsługi sieci szkieletowej usług klastrów w systemie Linux.
+## <a name="preview-limitation-caveats"></a>Ograniczenia w wersji zapoznawczej / zastrzeżenia
+- Nie usługi Service Fabric wbudowanych poleceń cmdlet programu PowerShell.
+- Brak obsługi interfejsu wiersza polecenia usługi Service Fabric.
+- Brak obsługi Automatyczne przeczyszczanie kopii zapasowej. [Utworzyć kopię zapasową przechowywania skryptów](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript) określone ustawienia zapasowej skryptu na podstawie automation zewnętrznych przeczyszczania kopii zapasowych.
+- Klastry usługi Service Fabric nie są obsługiwane w systemie Linux.
 
-## <a name="next-steps"></a>Następne kroki
-- [Dokumentacja interfejsu API REST z kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+## <a name="next-steps"></a>Kolejne kroki
+- [Opis okresowe konfiguracji kopii zapasowej](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
+- [Dokumentacja interfejsu API REST przywracania kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
 

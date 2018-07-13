@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: cf24810c0aa414e751e55df163563f013c1a0081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969949"
+ms.locfileid: "38990833"
 ---
 # <a name="trusted-internet-connection-guidance"></a>Wskazówki dotyczące połączenia zaufany internetowy
 
@@ -30,7 +30,7 @@ Krótko mówiąc, celem tablica jest dla Agencji wiedzieć:
 
 Obecnie wszystkie połączenia zewnętrzne agencji ma być kierowany przez zatwierdzone OMB tablica. Agencje federalne są wymagane do uczestnictwa w programie Tablica jako tablica dostępu do dostawcy (TICAP) lub przez instytucje usługi z jednym z głównych warstwy 1 usługodawców internetowych, określonych jako zarządzane zaufanych Internet Protocol usługi (MTIPS) dostawców.  Tablica zawiera obowiązkowe krytyczne możliwości, które są wykonywane już dziś, agencji i MTIPS dostawcy. W bieżącej wersji tablica, wykrywanie włamań w wersji 2 EINSTEIN i EINSTEIN w wersji 3 accelerated (3A) nieautoryzowanego dostępu zapobiegania urządzeń są wdrażane na poszczególnych TICAP oraz MTIPS i agencji ustanawia ustaleń z dział Zwycięstwa zabezpieczeń (DHS) rozmieszczania możliwości EINSTEIN federalne.
 
-W ramach jego odpowiedzialność za ochronę sieci .gov DHS wymaga źródła danych pierwotnych danych Netflow agencji korelowanie zdarzeń w instytucji rządowych i wykonywania analiz przy użyciu specjalistycznych narzędzi. Routery DHS zapewniają możliwość zbierania ruchu sieciowego adresu IP, ponieważ wprowadza lub kończy działanie interfejsu. Analizując dane przepływu netto, administrator sieci można określić elementy, takie jak źródło i miejsce docelowe ruchu, klasa usługi itp. NET przepływu danych jest uznawany za "data-content" (na przykład nagłówek źródłowego adresu IP, docelowy adres IP, itp.) i umożliwia DHS poznawać informacje wokół zawartości; oznacza to, kto wykonywanych co się stanie, jak i na jak długo.
+W ramach jego odpowiedzialność za ochronę sieci .gov DHS wymaga źródła danych pierwotnych danych Netflow agencji korelowanie zdarzeń w instytucji rządowych i wykonywania analiz przy użyciu specjalistycznych narzędzi. Routery DHS zapewniają możliwość zbierania ruchu sieciowego adresu IP, ponieważ wprowadza lub kończy działanie interfejsu. Analizując netto przepływu danych w sieci, administrator może określić elementy, takie jak źródło i miejsce docelowe ruchu, klasa usługi itp. NET przepływu danych jest uznawany za "data-content" (na przykład nagłówek źródłowego adresu IP, docelowy adres IP, itp.) i umożliwia DHS poznawać informacje wokół zawartości; oznacza to, kto wykonywanych co się stanie, jak i na jak długo.
 
 Inicjatywy zawiera również zasady zabezpieczeń, wskazówek i struktur, które zakładają infrastruktury lokalnej. Agencje rządowe przeniesieniu do chmury do osiągnięcia oszczędności kosztów, wydajność operacyjną i innowacji, wymagania wdrożenia tablica są w niektórych przypadkach zmniejszają ruch sieciowy i ograniczanie szybkości i elastyczności, dzięki której dla instytucji rządowych użytkownicy mogą dostęp do swoich danych w chmurze.
 
@@ -250,4 +250,3 @@ Microsoft Azure, Office 365 i Dynamics 365 dostępu można je łatwo konfigurowa
 
 *: Publicznej wersji zapoznawczej Azure Government od maja 2018 r.  
 **: Prywatnej wersji zapoznawczej usługi Azure Government od maja 2018 r.
-

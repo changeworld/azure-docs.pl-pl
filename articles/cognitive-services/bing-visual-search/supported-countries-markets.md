@@ -1,7 +1,7 @@
 ---
-title: Obsługiwane krajach oraz języki Visual API wyszukiwania usługi Bing | Dokumentacja firmy Microsoft
+title: Obsługiwane kraje/regiony i języki dla interfejsu API wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Dowiedz się, która krajów i języków obsługiwanych przez Visual API wyszukiwania usługi Bing.
+description: Dowiedz się, które kraje/regiony i języki są obsługiwane przez interfejs API wyszukiwania wizualnego Bing.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,33 +10,33 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 4723d028cc22caf8be3eb294b52506ec112cbab5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 068459f4959bf3f8daea8fe949ec324879ee260c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348712"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001232"
 ---
-# <a name="bing-visual-search-countries-and-languages"></a>Kraje Visual wyszukiwania usługi Bing i języki
+# <a name="bing-visual-search-countriesregions-and-languages"></a>Wyszukiwanie wizualne Bing kraje/regiony i języki
 
-Visual API wyszukiwania usługi Bing obsługuje więcej niż trzech dwanaście krajach, wiele z więcej niż jednym języku. Kraju i języka użytkownika, należy uwzględnić każdego żądania. Znajomość rynku użytkownika pomaga Bing zwracają odpowiednie wartości. Jeśli nie określisz kraju i język Bing sprawia, że starań, aby określić język i kraj użytkownika. Wyniki mogą zawierać łącza do usługi Bing, kraju i języka może dostarczyć preferowanych Bing zlokalizowanych środowisko użytkownika kliknięcie łącza Bing.
+Interfejs API wyszukiwania wizualnego Bing obsługuje więcej niż trzech tuzina kraje/regiony, wiele z więcej niż jednym języku. Każde żądanie powinno obejmować kraj/region i język wybranego użytkownika. Wiedząc rynku użytkownika pomaga Bing odpowiednich wyników. Jeśli nie określisz kraj/region i język Bing sprawia, że najlepszy nakład pracy, aby określić kraj/region i język użytkownika. Ponieważ wyniki mogą zawierać łącza do usługi Bing, wiedząc, kraj/region i język może dostarczyć preferowanych Bing zlokalizowane środowisko użytkownika kliknięcie łącza Bing.
 
-Aby określić kraju i język, ustaw `mkt` (rynku) parametru zapytania do kodu z **rynkach** w poniższej tabeli. Rynku Określa kraj i języka. Jeśli użytkownik chce zobaczyć wyświetlania tekstu w innym języku, ustaw `setLang` parametr kod odpowiedni język zapytania.
+Aby określić kraj/region i język, ustaw `mkt` parametr zapytania (rynek) do kodu ze **rynków** w poniższej tabeli. Rynek Określa kraj/region i język. Jeśli użytkownik chce zobaczyć wyświetlania tekstu w innym języku, należy ustawić `setLang` parametru w kodzie odpowiedni język zapytania.
 
-Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli określisz kraju, należy określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależy od kraju; są one podane dla każdego kraju, w tabeli rynkach.
+Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania. Jeśli określisz kraju/regionu, należy także określić co najmniej jeden kod języka przy użyciu `Accept-Language` nagłówka HTTP. Obsługiwane języki zależą od kraju/regionu są one podane dla każdego kraju w tabeli rynkach.
 
 
 
 > [!NOTE]
-> Stosuje się następujące ograniczenia rynku:
+> Obowiązują następujące ograniczenia na rynku:
 > 
-> - Adnotacje rozpoznawania obrazu są dostępne w języku angielskim tylko. 
-> - Przepisu, zakupów i stron, tym szczegółowe informacje są dostępne na rynku en US. 
+> - Adnotacje rozpoznawania obrazów dostępnych w języku angielskim tylko. 
+> - Przepisu, zakupy i wgląd w tym strony są dostępne na rynku en US. 
 
 
-## <a name="countries"></a>Krajach
+## <a name="countries"></a>Kraje
 
-|Kraj|Kod|
+|Kraj/region|Kod|
 |-------|----|
 |Argentyna|AR|
 |Australia|AU|
@@ -45,27 +45,27 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Brazylia|BRAZYLIA|
 |Kanada|Urząd certyfikacji|
 |Chile|CL|
-|Dania|K|
+|Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
 |Hongkong|HK|
-|Indie|W|
+|Indie|INDIE|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
 |Malezja|MOJE|
 |Meksyk|MX|
-|Holandia|NL|
+|Holandia|HOLANDIA|
 |Nowa Zelandia|NZ|
 |Norwegia|NIE|
-|Chiny|NAZWA POSPOLITA|
+|Chiny|CN|
 |Polska|PL|
-|Portugalia|PT|
-|Filipiny|CIĄG|
-|Rosja|RU|
-|Arabia Saudyjska|SA|
+|Portugalia|(CZAS PACYFICZNY)|
+|Filipiny|PH|
+|Rosja|JEDNOSTKA ŻĄDANIA|
+|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -76,25 +76,25 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Stany Zjednoczone|USA|
 
 
-## <a name="markets"></a>Rynkach
+## <a name="markets"></a>Rynki
 
-|Kraj|Język|Kod rynku|
+|Kraj/region|Język|Rynek kodu|
 |-------|--------|-----------|
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
-|Austria|Niemiecki|Niemcy AT|
-|Belgia|Holenderski|NL-być|
-|Belgia|Francuski|FR — można|
+|Austria|Niemiecki|de-AT|
+|Belgia|Holenderski|Holandia — być|
+|Belgia|Francuski|FR — być|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
 |Chile|Hiszpański|ES-CL|
-|Dania|Duński|Ciemny da|
+|Dania|Duński|Akcelerator deweloperski w wersji DK|
 |Finlandia|Fiński|fi-FI|
 |Francja|Francuski|fr-FR|
-|Niemcy|Niemiecki|de-DE|
+|Niemcy|Niemiecki|de-DE.|
 |Hongkong|Chiński (tradycyjny)|zh-HK|
-|Indie|Polski|EN w|
+|Indie|Polski|EN-IN|
 |Indonezja|Polski|EN-ID|
 |Włochy|Włoski|IT-IT|
 |Japonia|Japoński|ja-JP|
@@ -106,16 +106,16 @@ Alternatywnie można określić za pomocą kraju `cc` parametr zapytania. Jeśli
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|CIĄG en|
+|Filipiny|Polski|EN PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN-ZA-|
+|Republika Południowej Afryki|Polski|EN ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
-|Szwajcaria|Francuski|FR CH|
-|Szwajcaria|Niemiecki|Niemcy CH|
+|Szwajcaria|Francuski|FR-CH|
+|Szwajcaria|Niemiecki|de-CH|
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
-|Wielka Brytania|Polski|pl pl.|
+|Wielka Brytania|Polski|en-GB|
 |Stany Zjednoczone|Polski|pl-PL|
 |Stany Zjednoczone|Hiszpański|es-US|

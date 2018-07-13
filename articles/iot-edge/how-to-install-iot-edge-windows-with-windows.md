@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 3d34628a5a47788bca8cdafcb6e199a0c2cb3bcc
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 18a1481b72904b0ac9c27e100271dc0fd0666baf
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437845"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001766"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows do korzystania z kontenerów Windows
 
@@ -52,8 +52,9 @@ Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.z
 Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
 Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
 rmdir C:\ProgramData\iotedge\iotedged-windows
-$env:Path += ";C:\ProgramData\iotedge"
-SETX /M PATH "$env:Path"
+$sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
+Set-ItemProperty -Path $sysenv -Name Path -Value $path
 ```
 
 Zainstaluj vcruntime przy użyciu (możesz pominąć ten krok na urządzeniu usługi IoT Edge podstawowej):
@@ -142,7 +143,7 @@ Aby pobrać adres ip, wprowadź `ipconfig` w oknie programu PowerShell i skopiuj
 
 ![nat][img-nat]
 
-Aktualizacja **workload_uri** i **management_uri** w **connect:** sekcję pliku konfiguracji. Zastąp **\<GATEWAY_ADDRESS\>** o adresie IP, który został skopiowany. 
+Aktualizacja **workload_uri** i **management_uri** w **connect:** sekcję pliku konfiguracji. Zastąp **\<GATEWAY_ADDRESS\>** o adresie IP vEthernet, który został skopiowany.
 
 ```yaml
 connect:
@@ -150,7 +151,7 @@ connect:
   workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Wprowadź ten sam adresy w **nasłuchiwania:** sekcji konfiguracji, za pomocą adresu IP jako adres bramy.
+Wprowadź ten sam adresy w **nasłuchiwania:** sekcji.
 
 ```yaml
 listen:
@@ -164,7 +165,7 @@ W oknie programu PowerShell Utwórz zmienną środowiskową **IOTEDGE_HOST** z *
 [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Zmienna środowiskowa ulegają zmianie podczas ponownego uruchamiania.
+Ustaw tę zmienną środowiskową jako trwałą, aby była zachowywana po ponownym uruchomieniu.
 
 ```powershell
 SETX /M IOTEDGE_HOST "http://<GATEWAY_ADDRESS>:15580"

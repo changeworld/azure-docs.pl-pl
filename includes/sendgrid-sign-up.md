@@ -59,11 +59,11 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
     ![key][key]
 2. Hasło zostało wcześniej ustawione podczas konfiguracji. Aby wprowadzić zmiany, możesz wybrać opcję **Zmień hasło** lub **Resetuj hasło**.
 
-Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Nastąpi przekierowanie do pulpitu nawigacyjnego SendGrid.
+Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Nastąpi przekierowanie do pulpitu nawigacyjnego usługi SendGrid.
 
 ![manage][manage]
 
-Aby uzyskać więcej informacji na wysyłanie wiadomości e-mail za pośrednictwem SendGrid, odwiedź stronę [Przegląd interfejsu API usługi poczty E-mail][Email API Overview].
+Aby uzyskać więcej informacji na temat wysyłania wiadomości e-mail za pośrednictwem usługi SendGrid, odwiedź stronę [omówienie interfejsu API usługi poczty E-mail][Email API Overview].
 
 <!--images-->
 

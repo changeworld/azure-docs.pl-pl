@@ -1,6 +1,6 @@
 ---
-title: Strukturę szablonu usługi Azure Resource Manager i składni | Dokumentacja firmy Microsoft
-description: Opis struktury i właściwości szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
+title: Strukturę szablonu usługi Azure Resource Manager i składnię | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, struktury i właściwości szablonów usługi Azure Resource Manager przy użyciu składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 826dcf13a6e29fd4631e1078dd2ac0fa65b14e14
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334802"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001688"
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Struktura i składni szablony Menedżera zasobów Azure
-W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Stanowi różne sekcje szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, które służy do tworzenia wartości na potrzeby wdrożenia. Samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
+# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
+W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Format szablonu
-W swojej najprostszej strukturze szablonu ma następujące elementy:
+W swojej najprostszej strukturze szablon zawiera następujące elementy:
 
 ```json
 {
@@ -41,15 +41,15 @@ W swojej najprostszej strukturze szablonu ma następujące elementy:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| $schema |Yes |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu. Użyj adres URL wyświetlany w poprzednim przykładzie. |
-| contentVersion |Yes |Wersja szablonu (na przykład 1.0.0.0). Musisz podać wartości dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedniego szablonu. |
-| parameters |Nie |Wartości, które są podane podczas wdrażania jest wykonywany w celu dostosowania wdrożenia zasobów. |
-| zmienne |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
+| $schema |Yes |Lokalizacja pliku schematu JSON, który zawiera opis wersji języka szablonu. Użyj adresu URL w poprzednim przykładzie. |
+| contentversion — |Yes |Wersja szablonu (na przykład 1.0.0.0). Możesz podać dowolną wartość dla tego elementu. Użyj tej wartości, aby udokumentować znaczące zmiany w szablonie. Podczas wdrażania zasobów przy użyciu szablonu, ta wartość może służyć do upewnij się, że używany jest odpowiedni szablon. |
+| parameters |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
+| Zmienne |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
 | functions |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
 | zasoby |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów. |
 | wyjścia |Nie |Wartości, które są zwracane po wdrożeniu. |
 
-Każdy element ma właściwości, które można ustawić. W poniższym przykładzie przedstawiono pełnej składni szablonu:
+Każdy element ma właściwości, które można ustawić. Poniższy przykład przedstawia pełną składnię dla szablonu:
 
 ```json
 {
@@ -159,14 +159,14 @@ Każdy element ma właściwości, które można ustawić. W poniższym przykład
 }
 ```
 
-W tym artykule opisano części szablonu większej liczby szczegółów.
+W tym artykule opisano części szablonu bardziej szczegółowo.
 
 ## <a name="syntax"></a>Składnia
-Podstawowa składnia szablonu jest JSON. Jednak wyrażeń i funkcji rozszerzyć dostępnych w szablonie wartości JSON.  Wyrażenia są zapisywane w literałach ciągu JSON, których pierwszy i ostatnie znaki są nawiasy: `[` i `]`odpowiednio. Wartość wyrażenia jest oceniane podczas wdrażania szablonu. Podczas zapisywania jako literału ciągu, wynik obliczania wyrażenia może być innego typu JSON, takich jak tablicy lub liczba całkowita, w zależności od rzeczywistej wyrażenia.  Mieć literałem rozpoczynać nawiasu `[`, ale nie została ona interpretowana jako wyrażenie, Dodaj dodatkowe nawiasu zacząć ciąg z `[[`.
+Podstawowa składnia szablonu jest JSON. Jednak wyrażeń i funkcji rozszerzyć wartości JSON, dostępnych w ramach szablonu.  Wyrażenia są zapisywane w ramach Literały ciągu JSON pierwszego którego i ostatnie znaki są nawiasy: `[` i `]`, odpowiednio. Wartość wyrażenie jest oceniane podczas wdrażania szablonu. Podczas zapisywania jako literał ciągu, wynikiem obliczenia wyrażenia może być innego typu JSON, takich jak tablica lub liczba całkowita, w zależności od rzeczywistego wyrażenia.  Być ciągiem literału, rozpoczynać się w nawiasach `[`, ale nie jest interpretowany jako wyrażenie, Dodaj nawias dodatkowych można uruchomić ciąg z `[[`.
 
-Zazwyczaj umożliwia wyrażenia funkcji wykonywać operacje związane z konfigurowaniem wdrażania. Po prostu, tak jak w języku JavaScript, wywołania funkcji są sformatowane jako `functionName(arg1,arg2,arg3)`. Możesz odwoływać się do właściwości przy użyciu operatorów kropka i [Indeks].
+Zazwyczaj należy użyć wyrażeń z funkcji do wykonywania operacji związanych z konfigurowaniem wdrażania. Po prostu, tak jak w języku JavaScript, wywołania funkcji są sformatowane jako `functionName(arg1,arg2,arg3)`. Właściwości odwoływać się za pomocą operatorów [Indeks] i kropka.
 
-Poniższy przykład przedstawia użycie kilku funkcji podczas tworzenia wartości:
+Poniższy przykład pokazuje, jak używać kilku funkcji, podczas tworzenia wartości:
 
 ```json
 "variables": {
@@ -174,12 +174,12 @@ Poniższy przykład przedstawia użycie kilku funkcji podczas tworzenia wartośc
 }
 ```
 
-Aby uzyskać pełną listę funkcji szablonu, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md). 
+Aby uzyskać pełną listę funkcji szablonów, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
-W sekcji Parametry szablonu można określić wartości, które można wprowadzić podczas wdrażania zasobów. Wartości tych parametrów umożliwiają dostosowanie wdrożenie, podając wartości, które są dostosowane określonym środowisku (na przykład deweloperów, testowego i produkcyjnego). Nie trzeba podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
+W sekcji parametrów szablonu należy określić wartości, które należy wprowadzić podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia, podając wartości, które są dostosowane do określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
 
-W poniższym przykładzie przedstawiono definicję parametru prosty:
+Poniższy przykład przedstawia definicją parametru proste:
 
 ```json
 "parameters": {
@@ -192,12 +192,12 @@ W poniższym przykładzie przedstawiono definicję parametru prosty:
 },
 ```
 
-Aby uzyskać informacji na temat definiowania parametrów, zobacz [sekcji parametrów szablonów usługi Azure Resource Manager](resource-manager-templates-parameters.md).
+Aby dowiedzieć się, jak Definiowanie parametrów, zobacz [sekcji parametrów szablonów usługi Azure Resource Manager](resource-manager-templates-parameters.md).
 
 ## <a name="variables"></a>Zmienne
-W sekcji variables można skonstruować wartości, które mogą być używane w szablonie. Nie trzeba zdefiniować zmienne, ale one często uprościć szablonu zmniejszając złożonych wyrażeń.
+W sekcji zmiennych konstruujesz wartości, których można użyć w szablonie. Nie trzeba zdefiniować zmienne, ale często upraszczają działania do szablonu, zmniejszając złożonych wyrażeń.
 
-W poniższym przykładzie przedstawiono prosty definicji zmiennej:
+Poniższy przykład przedstawia definicję zmiennej proste:
 
 ```json
 "variables": {
@@ -209,16 +209,17 @@ Aby uzyskać informacji na temat definiowania zmiennych, zobacz [sekcji zmiennyc
 
 ## <a name="functions"></a>Funkcje
 
-W szablonie można tworzyć własnych funkcji. Te funkcje są dostępne do użycia w szablonie. Zazwyczaj należy zdefiniować złożone wyrażenie, które w szablonie nie ma zostać powtórzony. Tworzenie funkcji zdefiniowanej przez użytkownika z wyrażeń i [funkcje](resource-group-template-functions.md) obsługiwane w szablonach.
+W ramach szablonu można utworzyć własne funkcje. Te funkcje są dostępne do użycia w szablonie. Zazwyczaj można zdefiniować złożone wyrażenie, które nie chcesz powtarzać w szablonie. Tworzyć funkcje zdefiniowane przez użytkownika z wyrażeń i [funkcje](resource-group-template-functions.md) , są obsługiwane w szablonach.
 
 Podczas definiowania funkcji użytkownika, istnieją pewne ograniczenia:
 
-* Funkcja nie może uzyskać dostępu do zmiennych.
+* Funkcja nie może uzyskać dostęp do zmiennych.
+* Funkcja nie może uzyskać dostęp do parametrów szablonu. Oznacza to, że [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) jest ograniczony do parametrów funkcji.
 * Funkcja nie można wywołać inne funkcje zdefiniowane przez użytkownika.
-* Nie można użyć funkcji [odwołania funkcja](resource-group-template-functions-resource.md#reference).
-* Parametrów funkcji nie może mieć wartości domyślne.
+* Nie można użyć funkcji [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
+* Parametry funkcji nie może mieć wartości domyślne.
 
-Funkcji wymagają wartości przestrzeni nazw, aby uniknąć konfliktu nazw z szablonu funkcji. Poniższy przykład przedstawia funkcję, która zwraca nazwę konta magazynu:
+Funkcje wymagają wartości przestrzeni nazw w celu uniknięcia konfliktu z funkcje szablonu nazw. Funkcja, która zwraca nazwę konta magazynu można znaleźć w poniższym przykładzie:
 
 ```json
 "functions": [
@@ -242,7 +243,7 @@ Funkcji wymagają wartości przestrzeni nazw, aby uniknąć konfliktu nazw z sza
 ],
 ```
 
-Wywołania funkcji z:
+Możesz wywołać funkcję za pomocą:
 
 ```json
 "resources": [
@@ -262,7 +263,7 @@ Wywołania funkcji z:
 ```
 
 ## <a name="resources"></a>Zasoby
-W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizowane. W tej sekcji można uzyskać skomplikowane, ponieważ należy zrozumieć typy, które jest wdrażany w celu zapewnienia właściwych wartości.
+W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizowane. W tej sekcji można uzyskać skomplikowane, ponieważ należy zapoznać się z typami, które wdrażasz podaj odpowiednie wartości.
 
 ```json
 "resources": [
@@ -278,10 +279,10 @@ W sekcji zasobów można zdefiniować zasoby, które są wdrożone lub aktualizo
 ],
 ```
 
-Aby uzyskać więcej informacji, zobacz [sekcja zasobów szablonów usługi Azure Resource Manager](resource-manager-templates-resources.md).
+Aby uzyskać więcej informacji, zobacz [sekcji zasobów usługi Azure Resource Manager](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Dane wyjściowe
-W sekcji danych wyjściowych można określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do uzyskania dostępu do zasobu wdrożone.
+W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów.
 
 ```json
 "outputs": {
@@ -292,24 +293,24 @@ W sekcji danych wyjściowych można określić wartości, które są zwracane z 
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [danych wyjściowych sekcji szablonów usługi Azure Resource Manager](resource-manager-templates-outputs.md).
+Aby uzyskać więcej informacji, zobacz [wyprowadza części szablonów usługi Azure Resource Manager](resource-manager-templates-outputs.md).
 
 ## <a name="template-limits"></a>Limity szablonu
 
-Limit rozmiaru szablon 1 MB, a każdy plik parametrów do 64 KB. Limit 1 MB jest stosowana do stanu końcowego szablonu zostanie rozwinięty definicje interakcyjnych zasobów i wartości zmiennych i parametrów. 
+Limit rozmiaru szablonu do 1 MB, a każdy plik parametrów do 64 KB. Aby stan końcowy szablonu obowiązuje limit 1 MB, po została rozszerzona o definicjach iteracyjne zasobów i wartości dla zmiennych i parametrów. 
 
 Możesz również są ograniczone do:
 
 * Parametry 256
 * zmienne 256
 * 800 zasoby (w tym liczba kopii)
-* 64 wartości danych wyjściowych
+* wartości wyjściowe 64
 * 24 576 znaków w wyrażeniu szablonu
 
-Niektóre limity szablonu może przekroczyć przy użyciu szablonu zagnieżdżonego. Aby uzyskać więcej informacji, zobacz [przy użyciu szablonów połączonych w przypadku wdrażania zasobów Azure](resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmiennych lub dane wyjściowe, można połączyć kilka wartości do obiektu. Aby uzyskać więcej informacji, zobacz [obiektów jako parametry](resource-manager-objects-as-parameters.md).
+Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych szablonów. Aby uzyskać więcej informacji, zobacz [podczas wdrażania zasobów platformy Azure, za pomocą połączonymi szablonami](resource-group-linked-templates.md). Aby zmniejszyć liczbę parametrów, zmienne ani danych wyjściowych, możesz połączyć kilka wartości do obiektu. Aby uzyskać więcej informacji, zobacz [obiektów jako parametrów](resource-manager-objects-as-parameters.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
-* Aby uzyskać więcej informacji o funkcje, których można użyć z w ramach szablonu, zobacz [funkcje szablonów usługi Azure Resource Manager](resource-group-template-functions.md).
-* Aby połączyć wiele szablonów podczas wdrażania, zobacz [za pomocą szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współdzielone przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
+* Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
+* Aby połączyć wiele szablonów podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
+* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współużytkowane przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).

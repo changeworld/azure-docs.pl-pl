@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 0f6ba76ede48502e4f3308b11d41bf141f0188fb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 43a26f9e81b788c2a110c24bf2e02c56c0714f1e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927778"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988840"
 ---
 # <a name="publish-your-trained-app"></a>Opublikuj aplikację uczonego
 Po zakończeniu tworzenia i testowania aplikacji usługi LUIS, należy go opublikować. Po opublikowaniu aplikacji, na stronie publikowania znajdują się wszystkie skojarzone HTTP [punktów końcowych](luis-glossary.md#endpoint). Te punkty końcowe na [region](luis-reference-regions.md) i [klucz](luis-how-to-manage-keys.md), następnie są zintegrowane z dowolnej aplikacji klienta, chatbot lub wewnętrznej bazy danych. 
@@ -91,9 +91,9 @@ Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcoweg
 ```
 
 ### <a name="enable-bing-spell-checker"></a>Włączanie sprawdzania pisowni Bing 
-W **ustawienia adresu url punktu końcowego**, **sprawdzania pisowni Bing Włącz** pola wyboru pozwala usługi LUIS do poprawianie błędnie napisanych wyrazów przed prognozy. To wymaga utworzenia  **[klucz sprawdzania pisowni Bing](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po utworzeniu klucza dwa parametry querystring są dodawane do adresu URL punktu końcowego, na stronie publikowania. 
+W **ustawienia adresu url punktu końcowego**, **sprawdzania pisowni Bing Włącz** pola wyboru pozwala usługi LUIS do poprawianie błędnie napisanych wyrazów przed prognozy. Tworzenie  **[klucz sprawdzania pisowni Bing](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po utworzeniu klucza dwa parametry querystring są dodawane do adresu URL punktu końcowego, na stronie publikowania. 
 
-Jeśli własne adresy URL są konstruowanie aplikacji telefonicznej usługi LUIS, upewnij się, **sprawdzania pisowni = true** parametr querystring i **bing pisowni wyboru subscription-key = {YOUR_BING_KEY_HERE}**. Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
+Dodaj **sprawdzania pisowni = true** parametr querystring i **bing pisowni wyboru subscription-key = {YOUR_BING_KEY_HERE}** . Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
 
 ```JSON
 {

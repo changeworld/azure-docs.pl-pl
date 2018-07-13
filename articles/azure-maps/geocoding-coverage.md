@@ -1,27 +1,27 @@
 ---
-title: Geokodowanie pokrycia w społeczności Maps Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Geokodowanie pokrycia w społeczności Maps Azure
-author: kgremban
-ms.author: kgremban
+title: Pokrycie geokodowaniem w usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o pokrycie Geokodowaniem w usługi Azure Maps
+author: dsk-2015
+ms.author: dkshir
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6602453abd02bf91b135980b4d2c7f99ba60c236
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600293"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989881"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Azure pokrycia geokodowanie mapy
+# <a name="azure-maps-geocoding-coverage"></a>Pokrycie geokodowaniem usługi Azure Maps
 
-Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania przyjmuje wyszukiwanych terminów i zwraca współrzędne: współrzędne geograficzne, w procesie nazywanym geokodowanie. Jednak mapy nie ma tego samego poziomu informacji i dokładność dla wszystkich regionów i krajów. Użyj w tym artykule, aby określić, jakiego rodzaju lokalizacji można niezawodnie wyszukiwać w każdym regionie. 
+Podczas wyszukiwania lokalizacji za pomocą usługi Azure Maps, Usługa wyszukiwania przyjmuje wyszukiwane terminy i zwraca współrzędne długości i szerokości geograficznej w procesie zwanym geokodowania. Jednakże mapy nie ma takiego samego poziomu informacji i dokładność dla wszystkich regionów i krajów. Użyj w tym artykule, aby określić, jakiego rodzaju lokalizacji można wiarygodnie wyszukiwać w każdym regionie. 
 
 ## <a name="americas"></a>Ameryki
 
-| Region             | Punkty adresu | Numery DOM | Ulica poziom | Poziom Miasto | Ważne |
+| Region             | Adres punktów | Numery lokalne | Poziom ulicy | Poziom Miasto | Punktów orientacyjnych |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktyda                                          |                 |                |              |      ✓     |          ✓         |
@@ -38,7 +38,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kajmany                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Wyspy Clipperton                                   |                 |                |              |      ✓     |                    |
+| Wyspa Clipperton                                   |                 |                |              |      ✓     |                    |
 | Kolumbia                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kostaryka                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -77,12 +77,12 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Stany Zjednoczone Ameryki                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Urugwaj                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wenezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Wyspy Dziewicze - Brytyjskie                            |                 |                |              |      ✓     |          ✓         |
+| Wyspy Dziewicze — Kolumbia                            |                 |                |              |      ✓     |          ✓         |
 | Wyspy Dziewicze — Stany Zjednoczone                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-| Region             | Punkty adresu |Numery DOM | Ulica poziom | Poziom Miasto | Ważne |
+| Region             | Adres punktów |Numery lokalne | Poziom ulicy | Poziom Miasto | Punktów orientacyjnych |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Samoa Amerykańskie                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Australia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -127,7 +127,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspy Salomona                                     |                 |                |              |      ✓     |          ✓         |
 | Korea Południowa                                         |                 |                |              |      ✓     |          ✓         |
-| Kurils Terytoria Południowe                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Kurils południowy                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Wyspy Spratly                                      |                 |                |              |      ✓     |                    |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Tajwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -142,7 +142,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 
 ## <a name="europe"></a>Europa
 
-| Region             | Punkty adresu |Numery DOM | Ulica poziom | Poziom Miasto | Ważne |
+| Region             | Adres punktów |Numery lokalne | Poziom ulicy | Poziom Miasto | Punktów orientacyjnych |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albania                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andora                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -169,7 +169,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Węgry                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Islandia                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Irlandii (Republika)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Irlandia (Republika)                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspa Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Włochy                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
@@ -211,7 +211,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
 
-| Region             | Punkty adresu |Numery DOM | Ulica poziom | Poziom Miasto | Ważne |
+| Region             | Adres punktów |Numery lokalne | Poziom ulicy | Poziom Miasto | Punktów orientacyjnych |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afganistan                                         |                 |                |              |      ✓     |          ✓         |
 | Algieria                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -231,7 +231,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Demokratyczna Republika Konga                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Dżibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egipt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Gwinea Gwinea, Republika                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Gwinea Równikowa, Republika Iranu                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Erytrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiopia                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Francuskie Terytoria Południowe|                 |                |              |      ✓     |          ✓         |
@@ -285,7 +285,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 | Tunezja                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zjednoczone Emiraty Arabskie                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Bank Zachodnia                                           |                 |                |              |      ✓     |          ✓         |
+| Zachodni Brzeg                                           |                 |                |              |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
@@ -294,7 +294,7 @@ Podczas wyszukiwania lokalizacji przy użyciu map Azure, Usługa wyszukiwania pr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat geokodowanie mapy Azure, zobacz [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) odwołania stron.
+Aby uzyskać więcej informacji na temat usługi Azure Maps geokodowania, zobacz [wyszukiwania](https://docs.microsoft.com/rest/api/maps/search) odwoływać się do strony.
 
-Dowiedz się więcej o [pokrycia obszarów mapy ruchu usługi](traffic-coverage.md). 
+Dowiedz się więcej o [obszary pokrycia dla mapy ruchu usługi](traffic-coverage.md). 
 

@@ -1,5 +1,5 @@
 ## <a name="issue-custom-image-provisioning-errors"></a>Problem: Niestandardowego obrazu. błędy inicjowania obsługi administracyjnej
-Błędy inicjowania obsługi administracyjnej wystąpić jeśli przekazywanie lub przechwytywania uogólniony obraz maszyny Wirtualnej jako wyspecjalizowane obrazu maszyny Wirtualnej lub na odwrót. Pierwsza spowoduje błąd limitu czasu inicjowania obsługi administracyjnej i drugie spowoduje błąd inicjowania obsługi administracyjnej. Aby wdrożyć niestandardowy obraz bez błędów, pamiętaj, że typ obrazu nie zmieniają się podczas procesu przechwytywania.
+Błędy inicjowania obsługi administracyjnej wystąpić, jeśli przekazywanie lub przechwytywania obrazu uogólnionej maszyny Wirtualnej jako obrazu wyspecjalizowanej maszyny Wirtualnej lub na odwrót. Pierwsza spowoduje błąd limitu czasu inicjowania obsługi administracyjnej i jego spowoduje błąd inicjowania obsługi administracyjnej. Aby wdrożyć niestandardowy obraz bez błędów, upewnij się, że typ obrazu nie zmienia się podczas procesu przechwytywania.
 
-W poniższej tabeli przedstawiono możliwe kombinacje ogólnych i specjalnych obrazów, typ błędu, które można napotkać i co należy zrobić, aby naprawić błędy.
+Poniższa tabela zawiera listę możliwych kombinacji uogólniony, wyspecjalizowana obrazów i typ błędu, które można napotkać, co należy zrobić, aby naprawić błędy.
 

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z analizy użycia w usłudze Azure Application Insights
+title: Rozwiązywanie problemów z narzędzi analizy zachowania użytkownika w usłudze Azure Application Insights
 description: Przewodnik rozwiązywania problemów — analizowanie danych użycia witryny i aplikacji z usługą Application Insights.
 services: application-insights
 documentationcenter: ''
@@ -9,49 +9,51 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
-ms.date: 01/16/2018
-ms.author: mbullwin;daviste
-ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 07/11/2018
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 725f67af8178c6c851999d18c771ebdd360d6d01
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991311"
 ---
-# <a name="troubleshoot-usage-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizy użycia w usłudze Application Insights
-Masz pytania dotyczące [użycia narzędzia do analizy w usłudze Application Insights](app-insights-usage-overview.md): [zdarzenia użytkowników, sesji,](app-insights-usage-segmentation.md), [Lejki](usage-funnels.md), [przepływu użytkownika](app-insights-usage-flows.md), [Przechowywania](app-insights-usage-retention.md), lub stado? Poniżej przedstawiono niektóre odpowiedzi.
+# <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Rozwiązywanie problemów z narzędzi analizy zachowania użytkownika w usłudze Application Insights
+Masz pytania dotyczące [narzędzi analizy zachowania użytkownika w usłudze Application Insights](app-insights-usage-overview.md): [użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md), [Lejki](usage-funnels.md), [przepływyużytkownika](app-insights-usage-flows.md), [Przechowywania](app-insights-usage-retention.md), lub kohorty? Poniżej przedstawiono odpowiedzi.
 
 ## <a name="counting-users"></a>Zliczanie użytkowników
-**Analiza użycia, które narzędzia pokazują, że Moja aplikacja jednej sesji użytkownika /, jednak sprawdzić Moja aplikacja ma wiele użytkowników/sesji. Jak rozwiązać te nieprawidłowe liczby?**
+**Narzędzia analizy zachowania użytkowników pokazują, że Moja aplikacja ma jednej sesji użytkownika /, ale wiadomo, że Moja aplikacja ma wiele użytkowników/sesji. Jak naprawić te liczbę niepoprawnych zliczeń:**
 
-Wszystkie zdarzenia telemetrii w usłudze Application Insights mają [identyfikator użytkownika anonimowego](application-insights-data-model-context.md) i [identyfikator sesji](application-insights-data-model-context.md) jako dwa ich właściwości standardowych. Domyślnie wszystkie narzędzia analizy użycia liczba użytkowników i sesje, w oparciu o te identyfikatory. Jeśli te standardowe właściwości nie są wypełniane przy użyciu unikatowych identyfikatorów dla każdego użytkownika i sesji aplikacji, zostanie wyświetlone niepoprawna liczba użytkowników i sesji w narzędziach do analiz użycia.
+Wszystkie zdarzenia telemetrii w usłudze Application Insights mają [identyfikator użytkownika anonimowego](application-insights-data-model-context.md) i [identyfikator sesji](application-insights-data-model-context.md) jako dwa ich właściwości standardowych. Domyślnie wszystkie narzędzia analizy użycia liczba użytkowników i sesji, w oparciu o tych identyfikatorów. Jeśli te właściwości standardowe nie jest wypełnione za pomocą unikatowych identyfikatorów dla każdego użytkownika i sesji aplikacji, zobaczysz niepoprawna liczba użytkowników i sesji w narzędziach analizy użycia.
 
-Jeśli w przypadku monitorowania aplikacji sieci web, najlepszym rozwiązaniem jest dodanie [zestaw SDK usługi Application Insights JavaScript](app-insights-javascript.md) do aplikacji i upewnij się, że załadowano fragment skrypt na każdej stronie, które chcesz monitorować. Zestaw SDK JavaScript automatycznie generuje użytkownika anonimowego i identyfikatory sesji, a następnie wypełnia zdarzenia telemetrii te identyfikatory, ponieważ są one wysyłane z aplikacji.
+Jeśli monitorujesz aplikacji sieci web Najprostszym rozwiązaniem jest dodać [zestaw JavaScript SDK Application Insights](app-insights-javascript.md) do aplikacji i upewnij się, że fragment kodu skryptu jest ładowany na każdej stronie, którą chcesz monitorować. Zestaw SDK JavaScript automatycznie generuje użytkownika anonimowego i identyfikatorów sesji, a następnie wypełnia zdarzeń telemetrii za pomocą tych identyfikatorów, ponieważ są one wysyłane z aplikacji.
 
-Jeśli w przypadku monitorowania usługi sieci web (bez interfejsu użytkownika), [utworzyć inicjatora dane telemetryczne, które wypełnia użytkownik anonimowy identyfikator sesji Identyfikatora właściwości i](app-insights-usage-send-user-context.md) zgodnie z usługą koncepcje unikatowych użytkowników i sesji.
+Jeśli monitorujesz usługi sieci web (bez interfejsu użytkownika), [tworzenie inicjatora telemetrii, który wypełnia właściwości Identyfikatora identyfikator i sesji użytkownika anonimowego](app-insights-usage-send-user-context.md) zgodnie z usługi zarządzania unikatowych użytkowników i sesji.
 
-Jeśli aplikacja jest wysyła [uwierzytelniony identyfikatory użytkowników](app-insights-api-custom-events-metrics.md#authenticated-users), może być liczona uwierzytelnionego użytkownika na podstawie identyfikatorów w narzędziu użytkownicy. Na liście rozwijanej "Pokaż" wybierz pozycję "Użytkownicy uwierzytelnieni".
+Jeśli Twoja aplikacja wysyła [uwierzytelniony użytkownik identyfikatory](app-insights-api-custom-events-metrics.md#authenticated-users), możesz liczyć na podstawie uwierzytelnionego użytkownika identyfikatorów w narzędziu użytkownicy. Na liście rozwijanej "Pokaż" Wybierz "Uwierzytelnieni użytkownicy".
 
-Narzędzia analizy użycia nie obsługuje obecnie, zliczania użytkowników lub sesji na podstawie właściwości niż identyfikator użytkownika anonimowego, Identyfikatora uwierzytelnionego użytkownika lub identyfikator sesji.
+Narzędzia do analizy zachowania użytkownika aktualnie nie obsługuje zliczania użytkowników lub sesji na podstawie właściwości innego niż identyfikator użytkownika anonimowego, identyfikator użytkownika uwierzytelnionego lub identyfikator sesji.
 
-## <a name="naming-events"></a>Zdarzenia nazewnictwa
-**Moja aplikacja ma tysiące zdarzenie niestandardowe nazwy i innej strony widoku. Trudno ich rozróżnienia i narzędzi analizy użycia często przestać odpowiadać. Jak rozwiązać te problemy nazewnictwa**
+## <a name="naming-events"></a>Nadawanie nazw zdarzeń
+**Moja aplikacja zawiera tysiące innej strony widoku i nazwy zdarzeń niestandardowych. Jest trudny do rozróżnienia między nimi i narzędzia analizy zachowania użytkowników często przestanie odpowiadać. Jak naprawić te problemy nazewnictwa**
 
-Widok strony i nazwy zdarzenie niestandardowe są używane w całej narzędzia analizy użycia. Dobrze nazw zdarzeń jest krytyczna do pobierania wartości z tych narzędzi. Celem jest kompromis między o zbyt mało zbyt ogólnym nazw ("kliknięto element Button") oraz o zbyt wiele, zbyt określonej nazwy ("kliknięty przycisk Edytuj http://www.contoso.com/index").
+Widok strony i zdarzeń niestandardowych nazw są używane w całym narzędzia analizy zachowania użytkowników. Nazewnictwo zdarzeń oraz do pobierania wartości z tych narzędzi ma krytyczne znaczenie. Celem jest kompromis między masz za mało, zbyt ogólne nazw ("kliknięto przycisk") i równoważy zbyt wiele, nadmiernie określonej nazwy ("kliknięty przycisk Edytuj http://www.contoso.com/index").
 
-Aby wprowadzić zmiany widoku i nazwy niestandardowych zdarzeń, które wysyła aplikacji, musisz zmienić kod źródłowy aplikacji i wdróż go ponownie. **Wszystkie dane telemetryczne dane w usłudze Application Insights są przechowywane przez 90 dni i nie można usunąć**, więc zmiany nazwy zdarzenia potrwa 90 dni do pełni manifestu. 90 dni po wprowadzeniu zmiany nazwy nazwy starych i nowych zdarzeń zostanie pojawiają się w obrębie telemetrii, więc Dostosuj zapytania i komunikacji w obrębie zespołów, w związku z tym.
+Aby wprowadzić zmiany do widoku strony i nazwy zdarzeń niestandardowych, które Twoja aplikacja wysyła, musisz zmienić kod źródłowy i ponownego wdrażania aplikacji. **Wszystkie dane telemetryczne danych w usłudze Application Insights są przechowywane przez 90 dni i nie można usunąć**, dzięki czemu zmiany wprowadzone do nazw zdarzeń zajmie 90 dni do w pełni manifestu. Przez 90 dni po wprowadzeniu zmiany nazwy nazwy zdarzeń stary i nowy będzie pojawiają się w ramach telemetrii, więc dostosować zapytania i komunikacji w obrębie zespołów, odpowiednio.
 
-Jeśli aplikacja wysyła zbyt wiele nazw widoku strony, sprawdź, czy te nazwy widoku strony zostały ręcznie określone w kodzie, lub jeśli kody są wysyłane automatycznie przez zestaw SDK usługi Application Insights JavaScript:
+Jeśli Twoja aplikacja wysyła za dużo nazw widoku strony, należy sprawdzić, czy te nazwy widoku strony są ręcznie określić w kodzie, lub jeśli kody są wysyłane automatycznie przez zestaw SDK języka JavaScript usługi Application Insights:
 
-* Jeśli nazwy widoku strony ręcznie zostały określone w kodu za pomocą [ `trackPageView` interfejsu API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), Zmień nazwę, aby być mniej dokładny. Unikaj typowych pomyłek, takich jak wprowadzenie adresu URL, nazwę widoku strony. Zamiast tego należy użyć parametru adresu URL `trackPageView` interfejsu API. Przenieś inne szczegóły z nazwy widoku strony do właściwości niestandardowych.
+* Jeśli nazwy widoku strony są określane ręcznie kod przy użyciu [ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md), Zmień nazwę aby być mniej dokładny. Należy unikać typowych pomyłek, takich jak wprowadzenie adresu URL, nazwę widoku strony. Zamiast tego należy użyć parametru adresu URL `trackPageView` interfejsu API. Przenieś inne szczegóły od nazwy widoku strony do właściwości niestandardowe.
 
-* Zestaw SDK usługi Application Insights JavaScript jest automatycznie wysyła nazwy widoku strony, można zmienić tytuły stron sieci lub przełącz się do ręczne wysyłanie nazwy widoku strony. Zestaw SDK wysyła [tytuł](https://developer.mozilla.org/docs/Web/HTML/Element/title) każdej strony jako nazwa widoku strony, domyślnie. Można zmienić Twojego tytułów bardziej ogólne, ale zachować ostrożność, optymalizację dla aparatów wyszukiwania i inne ta zmiana może mieć wpływ na środowisko. Ręczne określanie widok strony nazwy z `trackPageView` interfejsu API zastępuje nazwy zbierane automatycznie, więc może wysłać więcej ogólnych nazw w danych telemetrycznych bez zmiany tytułów.   
+* Zestaw SDK języka JavaScript usługi Application Insights automatycznie wysyła nazwy widoku strony, można zmienić tytułów stron sieci lub przełączyć się na wysyłanie ręcznie nazwy widoku strony. Zestaw SDK wysyła [tytuł](https://developer.mozilla.org/docs/Web/HTML/Element/title) każdej strony jako nazwa widoku strony, domyślnie. Można zmienić swoje tytułów do bardziej ogólnych, ale być w trosce o optymalizacji dla aparatów wyszukiwania i innych wpływu na środowisko, które ta zmiana nie może mieć. Ręczne określenie widoku strony nazwy z `trackPageView` API zastępuje nazw automatycznie zbierane, dzięki czemu będzie można wysłać bardziej ogólnych nazw w danych telemetrycznych, bez konieczności zmieniania tytułów stron.   
 
-Jeśli aplikacja wysyła zbyt wiele nazw zdarzenie niestandardowe, należy zmienić nazwę w szerszym kodu. Ponownie należy unikać umieszczania adresy URL i inne na stronie lub dynamiczne informacje w nazwach niestandardowych zdarzeń w bezpośrednio. Zamiast tego należy przenieść te informacje do niestandardowej właściwości niestandardowe zdarzenie z `trackEvent` interfejsu API. Na przykład zamiast z `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, zalecamy przypominać `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
+Jeśli Twoja aplikacja wysyła za dużo nazw zdarzeń niestandardowych, należy zmienić nazwę w kod, aby być mniej dokładny. Ponownie Unikaj umieszczania adresy URL i inne na stronie lub informacji dynamicznych nazw niestandardowych zdarzeń bezpośrednio. Zamiast tego należy przenieść te informacje do właściwości niestandardowe zdarzenie niestandardowe z `trackEvent` interfejsu API. Na przykład, zamiast z `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`, sugerujemy podobny `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Omówienie analizy użycia](app-insights-usage-overview.md)
+* [Omówienie narzędzia analizy zachowania użytkowników](app-insights-usage-overview.md)
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)

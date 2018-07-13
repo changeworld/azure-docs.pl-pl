@@ -1,6 +1,6 @@
 ---
-title: Konwertuj maszyny wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków - Azure zarządzanych dysków | Dokumentacja firmy Microsoft
-description: Sposób konwertowania maszyny Wirtualnej systemu Windows z dysków niezarządzanych do zarządzanych dysków za pomocą programu PowerShell w modelu wdrażania usługi Resource Manager
+title: Konwertuj maszynę wirtualną Windows z dysków niezarządzanych do usługi managed disks - usługi Azure Managed Disks | Dokumentacja firmy Microsoft
+description: Jak przekonwertować maszyny Wirtualnej z systemem Windows z dysków niezarządzanych do dysków zarządzanych przy użyciu programu PowerShell w modelu wdrażania usługi Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,37 +13,37 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6e7d4a0ab6d79e1615f921965fb3d77998eaf90c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29804219"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000951"
 ---
-# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną systemu Windows z dysków niezarządzanych do zarządzanych dysków
+# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną Windows z dysków niezarządzanych do usługi managed disks
 
-Jeśli masz istniejące Windows maszynach wirtualnych (VM) korzystające z niezarządzanego dysków, można przekonwertować maszyny wirtualne do zarządzanych dysków za pomocą [dysków zarządzanych Azure](managed-disks-overview.md) usługi. Ten proces konwersji zarówno dysk systemu operacyjnego i wszystkich dysków dołączonych danych.
+Jeśli masz istniejące Windows maszyny wirtualne (VM), które korzystają z dysków niezarządzanych, można przekonwertować maszyny wirtualne do używania dysków zarządzanych za pomocą [usługi Azure Managed Disks](managed-disks-overview.md) usługi. Ten proces konwertuje dysk systemu operacyjnego i wszelkich dołączonych dysków danych.
 
 W tym artykule przedstawiono sposób konwertowania maszyn wirtualnych przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić go, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 
-* Przegląd [planowanie migracji do zarządzanych dysków](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Przegląd [zaplanować migrację do usługi Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Przegląd [— często zadawane pytania dotyczące migracji do zarządzanych dysków](faq-for-disks.md#migrate-to-managed-disks).
+* Przegląd [— często zadawane pytania dotyczące migracji do usługi Managed Disks](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
 
 
 
-## <a name="convert-single-instance-vms"></a>Konwertuj maszyn wirtualnych z jednego wystąpienia
-W tej sekcji omówiono sposób konwertowania maszyn wirtualnych Azure jednym wystąpieniu z dysków niezarządzanych do zarządzanych dysków. (W przypadku maszyn wirtualnych w zestawie dostępności, zobacz następną sekcję). 
+## <a name="convert-single-instance-vms"></a>Konwertowanie maszyn wirtualnych z jednego wystąpienia
+W tej sekcji opisano sposób konwertowania maszyn wirtualnych platformy Azure z jednego wystąpienia z dysków niezarządzanych do dysków zarządzanych. (W przypadku maszyn wirtualnych w zestawie dostępności, zobacz następną sekcję). 
 
-1. Cofnięcie przydziału maszyny Wirtualnej za pomocą [Stop AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) polecenia cmdlet. Poniższy przykład cofa alokację maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`: 
+1. Cofnij Przydział maszyny Wirtualnej przy użyciu [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) polecenia cmdlet. Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`: 
 
   ```azurepowershell-interactive
   $rgName = "myResourceGroup"
@@ -51,7 +51,7 @@ W tej sekcji omówiono sposób konwertowania maszyn wirtualnych Azure jednym wys
   Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. Konwertuj maszynę Wirtualną do zarządzanych dysków za pomocą [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) polecenia cmdlet. Następujący proces konwertuje poprzedniej maszyny Wirtualnej, w tym dysku systemu operacyjnego i wszelkie dyski danych i uruchomienie maszyny wirtualnej:
+2. Konwertowanie maszyny Wirtualnej do usługi managed disks przy użyciu [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) polecenia cmdlet. Następujący proces konwertuje poprzedniej maszyny Wirtualnej, łącznie z dysku systemu operacyjnego i wszelkich dysków z danymi i uruchomienie maszyny wirtualnej:
 
   ```azurepowershell-interactive
   ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -59,11 +59,11 @@ W tej sekcji omówiono sposób konwertowania maszyn wirtualnych Azure jednym wys
 
 
 
-## <a name="convert-vms-in-an-availability-set"></a>Konwertuj maszyn wirtualnych w zestawie dostępności
+## <a name="convert-vms-in-an-availability-set"></a>Konwertowanie maszyn wirtualnych w zestawie dostępności
 
-Jeśli maszyny wirtualne, które ma zostać przekonwertowany na zarządzany dyski znajdują się w zestawie dostępności, należy najpierw przekonwertować zestaw z zestawem dostępności zarządzanego dostępności.
+Jeśli maszyny wirtualne, które chcesz przekonwertować zarządzane dyski znajdują się w zestawie dostępności, należy najpierw przekonwertować zestawie dostępności do zarządzanego zestawu dostępności.
 
-1. Konwertuj zestawu za pomocą dostępności [AzureRmAvailabilitySet aktualizacji](/powershell/module/azurerm.compute/update-azurermavailabilityset) polecenia cmdlet. Poniższy przykład aktualizuje zestaw o nazwie dostępności `myAvailabilitySet` w grupie zasobów o nazwie `myResourceGroup`:
+1. Konwertowanie zestawu za pomocą dostępności [Update-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/update-azurermavailabilityset) polecenia cmdlet. Poniższy przykład aktualizuje zestawu dostępności o nazwie `myAvailabilitySet` w grupie zasobów o nazwie `myResourceGroup`:
 
   ```azurepowershell-interactive
   $rgName = 'myResourceGroup'
@@ -73,14 +73,14 @@ Jeśli maszyny wirtualne, które ma zostać przekonwertowany na zarządzany dysk
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
   ```
 
-  Jeśli znajduje się regionu, w których wartość jego dostępność ma tylko 2 domen błędów zarządzanych, ale liczba domen błędów niezarządzanym jest 3, to polecenie przedstawia błąd podobny do "określona liczba domen błędów 3 musi należeć do zakresu od 1 do 2." Aby rozwiązać problem, zaktualizuj domeny błędów 2 i aktualizacji `Sku` do `Aligned` w następujący sposób:
+  Jeśli znajduje się region, w których wartość poziomu dostępności ma tylko 2 domen błędów zarządzanych, ale liczba domen błędów niezarządzane to 3, to polecenie wyświetla błąd podobny do "Liczba domen błędów określonego 3 muszą należeć do zakresu od 1 do 2". Aby naprawić błąd, należy zaktualizować domenę błędów 2 i update `Sku` do `Aligned` w następujący sposób:
 
   ```azurepowershell-interactive
   $avSet.PlatformFaultDomainCount = 2
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Cofnięcie przydziału i przekonwertować maszyny wirtualne w zestawie dostępności. Poniższy skrypt cofa alokację każdej maszyny Wirtualnej za pomocą [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) konwertuje go za pomocą polecenia cmdlet, [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)i ponownie go uruchamia automatycznie jako od siebie procesu konwersji :
+2. Cofanie przydziału i konwertowania maszyn wirtualnych w zestawie dostępności. Poniższy skrypt powoduje cofnięcie przydziału każdej maszyny Wirtualnej przy użyciu [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) konwertuje go za pomocą polecenia cmdlet, [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)i ponownie uruchamia automatycznie jako od siebie procesu konwersji :
 
   ```azurepowershell-interactive
   $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -96,13 +96,25 @@ Jeśli maszyny wirtualne, które ma zostać przekonwertowany na zarządzany dysk
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli występuje błąd podczas konwersji lub Jeśli maszyna wirtualna jest w stanie awarii z powodu problemów dotyczących w poprzedniej konwersji, uruchom `ConvertTo-AzureRmVMManagedDisk` ponownie polecenia cmdlet. Proste ponownych prób zwykle odblokowuje sytuacji.
-Przed przekonwertowaniem, upewnij się, wszystkie rozszerzenia maszyny Wirtualnej są w stanie pomyślnie udostępnianie lub konwersji zakończy się niepowodzeniem z kodem błędu 409.
+Jeśli wystąpi błąd podczas konwersji lub maszyny Wirtualnej jest w stanie niepowodzenia ze względu na problemy z konwersją poprzedniej, uruchom `ConvertTo-AzureRmVMManagedDisk` ponownie polecenie cmdlet. Proste ponownych prób zwykle odblokowuje sytuacji.
+Przed przekonwertowaniem, upewnij się, wszystkie rozszerzenia maszyny Wirtualnej są w stanie pomyślnie aprowizacji lub konwersja zakończy się niepowodzeniem z kodem błędu 409.
 
+
+## <a name="convert-using-the-azure-portal"></a>Konwertowanie za pomocą witryny Azure portal
+
+Można również przeprowadzić konwersję dysków niezarządzanych do dysków zarządzanych przy użyciu witryny Azure portal.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz maszynę Wirtualną z listy maszyn wirtualnych w portalu.
+3. W bloku maszyny wirtualnej, wybierz **dysków** z menu.
+4. W górnej części **dysków** bloku wybierz **migracji do usługi managed disks**.
+5. Jeśli maszyna wirtualna znajduje się w zestawie dostępności, będzie ostrzeżenie na **migracji do usługi managed disks** bloku, który należy przekonwertować najpierw zestawu dostępności. Ostrzeżenie powinien mieć łącze, można kliknąć w celu konwersji zestawu dostępności. Po konwersji zestawu dostępności lub maszyna wirtualna nie znajduje się w zestawie dostępności, kliknij przycisk **migracji** można uruchomić procesu migracji dysków do usługi managed disks. 
+
+Maszyny Wirtualnej zostanie zatrzymana i uruchomiona ponownie po zakończeniu migracji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Konwertuj dyski standardowe zarządzanego na — wersja premium](convert-disk-storage.md)
+[Konwertowanie dysków zarządzanych w warstwie standardowa do warstwy premium](convert-disk-storage.md)
 
-Podjąć tylko do odczytu kopię maszyny Wirtualnej za pomocą [migawki](snapshot-copy-managed-disk.md).
+Wykonaj kopię tylko do odczytu maszyny wirtualnej przy użyciu [migawek](snapshot-copy-managed-disk.md).
 

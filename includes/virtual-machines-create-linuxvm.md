@@ -51,6 +51,6 @@
     azure vm start myVM
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Szczegółowe informacje na temat wszystkich poleceń maszyny wirtualnej interfejsu wiersza polecenia platformy Azure w wersji 1.0 można znaleźć w temacie [Using the Azure CLI 1.0 with the Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) (Korzystanie z interfejsu wiersza polecenia platformy Azure w wersji 1.0 przy użyciu interfejsu API wdrożenia klasycznego).
 

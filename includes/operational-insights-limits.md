@@ -9,11 +9,11 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307492"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38756042"
 ---
 Następujące limity dotyczą zasobów usługi Log Analytics na subskrypcję:
 
@@ -23,7 +23,7 @@ Następujące limity dotyczą zasobów usługi Log Analytics na subskrypcję:
 | Liczba płatnych obszarów roboczych na subskrypcję | ND | Ograniczeniem jest liczba zasobów w grupie zasobów i liczba grup zasobów na subskrypcję | 
 
 >[!NOTE]
->Począwszy od 2 kwietnia 2018 nowych obszarów roboczych w nowej subskrypcji będą automatycznie używać *GB na* cenową planu.  Istniejące subskrypcje utworzone przed 2 kwietnia lub subskrypcji, która została powiązana z istniejących rejestracji EA można nadal wybór między trzy warstwy cenowej dla nowych obszarów roboczych. 
+>Od 2 kwietnia 2018 r. będzie automatycznie używać nowych obszarów roboczych w nowej subskrypcji *na GB* plan cenowy.  W przypadku istniejących subskrypcji utworzony przed 2 kwietnia lub subskrypcji powiązanej z istniejącą rejestracją umowy EA można nadal wybór między trzy warstwy cenowej dla nowych obszarów roboczych. 
 >
 
 Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
@@ -35,7 +35,7 @@ Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
 
 <sup>1</sup> Gdy klienci osiągną limit dziennego transferu danych wynoszący 500 MB, analiza danych zostanie zatrzymana, a następnie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.
 
-<sup>2</sup> okres przechowywania danych dla autonomicznej, OMS i planów cenowych GB na może wzrosnąć do 730 dni.
+<sup>2</sup> okres przechowywania danych dla autonomicznej, OMS i planów cen na GB, można zwiększyć do 730 dni.
 
 | Kategoria | Limity | Komentarze
 | --- | --- | --- |

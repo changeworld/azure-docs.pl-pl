@@ -1,9 +1,9 @@
 ---
-title: Usługi i certyfikaty zarządzania w chmurze | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia i używania certyfikatów przy użyciu systemu Microsoft Azure
+title: Cloud Services i zarządzanie certyfikatami | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i używać certyfikatów z platformą Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
@@ -13,60 +13,60 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: adegeo
-ms.openlocfilehash: 6a1e4f5316cc0321c1409f9e48daeae6ee483bf6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: jeconnoc
+ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969206"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001443"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów dla usług w chmurze Azure
-Certyfikaty są używane na platformie Azure do usługi w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i do uwierzytelniania z interfejsem API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie obu typów certyfikatów, jak do [utworzyć](#create) i [wdrażanie](#deploy) je do platformy Azure.
+# <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów usług Azure Cloud Services
+Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i [wdrażanie](#deploy) je na platformie Azure.
 
-Certyfikaty używane na platformie Azure są x.509 v3 certyfikatów i może być podpisany przez inny zaufanego certyfikatu lub można je podpisem. Certyfikatu z podpisem własnym jest podpisany przez jego własnej twórcy, w związku z tym nie jest zaufany domyślnie. W większości przeglądarek, można zignorować ten problem. Należy używać tylko certyfikaty z podpisem własnym podczas tworzenia i testowania usługi w chmurze. 
+Certyfikaty używane na platformie Azure są x.509 v3 certyfikaty i może być podpisany przez inny zaufanego certyfikatu, lub może być podpisem. Certyfikat z podpisem własnym jest podpisany przez własny twórcy, w związku z tym nie jest zaufany przez domyślny. W większości przeglądarek, można zignorować ten problem. Należy używać tylko certyfikatów z podpisem własnym podczas tworzenia i testowania usługi w chmurze. 
 
-Certyfikaty używane przez usługę Azure może zawierać prywatnej lub klucza publicznego. Certyfikaty mają odcisku palca, które pozwala zidentyfikować je w sposób jednoznaczny. Odciskiem palca jest używany w Azure [pliku konfiguracyjnego](cloud-services-configure-ssl-certificate-portal.md) do identyfikowania należy używać który certyfikatów usługi w chmurze. 
+Certyfikaty używane przez platformę Azure może zawierać prywatnej lub klucza publicznego. Certyfikaty muszą odcisku palca, zapewniająca oznacza, że można je zidentyfikować w jednoznaczny sposób. To odcisk palca jest używany na platformie Azure [pliku konfiguracji](cloud-services-configure-ssl-certificate-portal.md) do identyfikowania należy używać certyfikatu której usługa w chmurze. 
 
-## <a name="what-are-service-certificates"></a>Co to są certyfikaty usługi?
-Usługi certyfikatów są dołączone do usługi w chmurze i komunikacja zabezpieczona do i z usługi. Na przykład jeśli wdrożono rolę sieci web, czy chcesz dostarczyć certyfikat, który może uwierzytelniać narażonych punkt końcowy HTTPS. Usługi certyfikatów, zdefiniowane w definicji usługi, są automatycznie wdrażane na maszynę wirtualną, która jest uruchomione wystąpienie roli użytkownika. 
+## <a name="what-are-service-certificates"></a>Co to są usługi certyfikatów?
+Certyfikaty usług są dołączone do usług w chmurze i Włącz bezpieczną komunikację do i z usługi. Na przykład jeśli wdrożono rolę sieci web, należy podać certyfikat, który może uwierzytelniać narażonych punktu końcowego HTTPS. Certyfikaty usługi, jest zdefiniowany w definicji usługi, są automatycznie wdrażane na maszynę wirtualną, która jest uruchomione wystąpienie roli użytkownika. 
 
-Możesz przekazać certyfikaty usług Azure za pomocą portalu Azure lub przy użyciu klasycznego modelu wdrażania. Usługi certyfikatów skojarzonych z usługą w chmurze określonych. Są one przypisane do wdrożenia w pliku definicji usługi.
+Możesz przekazać certyfikaty usług na platformie Azure za pomocą witryny Azure portal lub za pomocą klasycznego modelu wdrażania. Certyfikaty usług są skojarzone z usługą w chmurze. Są one przypisane do wdrożenia w pliku definicji usługi.
 
-Usługi certyfikatów mogą być zarządzana oddzielnie od usługi i mogą być zarządzane przez różne osoby. Na przykład deweloper może przekazać pakietu usługi, który odwołuje się do certyfikatu, który jest Menedżer został wcześniej przekazany do platformy Azure. Menedżer można zarządzać i odnawianie certyfikatu (zmiana konfiguracji usługi) bez konieczności przekazać nowy pakiet usługi. Aktualizowanie bez nowego pakietu usługi jest możliwe, ponieważ nazwa logiczna nazwa magazynu i lokalizację certyfikatu znajduje się w pliku definicji usługi, a podczas odcisk palca certyfikatu jest określony w pliku konfiguracji usługi. Aby zaktualizować certyfikat, tylko jest to konieczne przekazać nowy certyfikat i zmień wartość odcisku palca w pliku konfiguracji usługi.
+Certyfikaty usługi może być zarządzany oddzielnie od usług i mogą być zarządzane przez inne osoby. Na przykład deweloper może przekazać pakiet usługi, która odwołuje się do certyfikatu, który jest Menedżer wcześniej został przekazany na platformę Azure. Menedżer IT, można zarządzać i odnawiania certyfikatu (zmienianie konfiguracji usługi) bez konieczności przekazywania nowego pakietu usługi. Aktualizowanie bez nowego pakietu usługi jest możliwe, ponieważ nazwa logiczna nazwa magazynu i lokalizację certyfikatu znajduje się w pliku definicji usługi, i gdy odcisk palca certyfikatu jest określona w pliku konfiguracji usługi. Aby zaktualizować certyfikat, jest tylko niezbędne do przekazania nowego certyfikatu, a następnie zmień wartość odcisku palca w pliku konfiguracji usługi.
 
 >[!Note]
->[Usługi w chmurze — często zadawane pytania](cloud-services-faq.md) artykuł zawiera niektóre przydatne informacje na temat certyfikatów.
+>[Usług w chmurze często zadawane pytania](cloud-services-faq.md) artykuł zawiera pewne przydatne informacje dotyczące certyfikatów.
 
 ## <a name="what-are-management-certificates"></a>Co to są certyfikaty zarządzania?
-Certyfikaty zarządzania pozwalają do uwierzytelniania w klasycznym modelu wdrażania. Wiele programów i narzędzia (np. programu Visual Studio lub zestawu Azure SDK) korzystały z tych certyfikatów można zautomatyzować konfigurowanie i wdrażanie różnych usług platformy Azure. Te nie są naprawdę związane z usługami w chmurze. 
+Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania. Wiele programów i narzędzi (takich jak Visual Studio lub zestawu SDK platformy Azure) Automatyzuj Konfigurowanie i wdrażanie różnych usług platformy Azure przy użyciu funkcji tych certyfikatów. Te nie są naprawdę związane z usługami w chmurze. 
 
 > [!WARNING]
-> Ostrożnie. Te typy certyfikatów umożliwiają każdego, kto jest uwierzytelniany w usłudze ich do zarządzania subskrypcją, które są skojarzone. 
+> Ostrożnie! Zezwalaj na tych typów certyfikatów, każdy, kto uwierzytelnia się za pomocą ich do zarządzania subskrypcją, które są skojarzone. 
 > 
 > 
 
 ### <a name="limitations"></a>Ograniczenia
-Istnieje limit 100 certyfikatów zarządzania dla subskrypcji. Istnieje również limit 100 certyfikatów zarządzania dla wszystkich subskrypcji w obszarze Nazwa użytkownika administratora określonej usługi. Jeśli istnieje potrzeba więcej certyfikatów można dodać 100 certyfikaty zarządzania został już użyty identyfikator użytkownika dla konta administratora, możesz dodać współadministrator można dodać dodatkowych certyfikatów. 
+Obowiązuje limit 100 certyfikatów zarządzania na subskrypcję. Istnieje również limit 100 certyfikaty zarządzania dla wszystkich subskrypcji w ramach identyfikatora administratora usługi określonego użytkownika. Identyfikator użytkownika administratora konta został już użyty do dodania 100 certyfikaty zarządzania, jeśli ma potrzeby certyfikatów, można dodać administratora współpracującego, aby dodać dodatkowych certyfikatów. 
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Utwórz nowy certyfikat z podpisem własnym
-Można użyć dowolnego narzędzia, które są dostępne do utworzenia certyfikatu z podpisem własnym, tak długo, jak stosować się do tych ustawień:
+Można użyć dowolnego narzędzia, które są dostępne utworzyć certyfikat z podpisem własnym, tak długo, jak stosować się do tych ustawień:
 
 * Certyfikat X.509.
 * Zawiera klucz prywatny.
-* Utworzone dla wymiany kluczy (pfx).
-* Nazwa podmiotu musi odpowiadać domeny używane do uzyskania dostępu do usługi w chmurze.
+* Utworzone na potrzeby wymiany kluczy (plik pfx).
+* Nazwa podmiotu musi odpowiadać domena używana do uzyskania dostępu do usługi w chmurze.
 
-    > Nie można pobrać certyfikatu SSL dla cloudapp.net (lub jakichkolwiek związanych z platformy Azure) domeny; Nazwa podmiotu certyfikatu musi odpowiadać nazwie domeny niestandardowej, umożliwiające dostęp do aplikacji. Na przykład **contoso.net**, a nie **contoso.cloudapp.net**.
+    > Nie można uzyskać certyfikatu SSL dla cloudapp.net (ani dotyczących platformy Azure) domeny. Nazwa podmiotu certyfikatu musi odpowiadać niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład **"contoso.NET"**, a nie **contoso.cloudapp.net**.
 
-* Co najmniej 2048-bitowego szyfrowania.
+* Co najmniej szyfrowanie 2048-bitowe.
 * **Usługi certyfikatów tylko**: po stronie klienta, certyfikat musi znajdować się w *osobistych* magazynu certyfikatów.
 
-Istnieją dwa sposoby łatwe, aby utworzyć certyfikat w systemie Windows, za pomocą `makecert.exe` narzędzia lub usług IIS.
+Istnieją dwa sposoby łatwo można utworzyć certyfikatu na Windows, za pomocą `makecert.exe` narzędzia lub usługi IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
-Narzędzie to jest przestarzała i nie jest już opisanych tutaj. Aby uzyskać więcej informacji, zobacz [ten artykuł w witrynie MSDN](https://msdn.microsoft.com/library/windows/desktop/aa386968).
+Narzędzie to jest przestarzała i nie jest już opisanych tutaj. Aby uzyskać więcej informacji, zobacz [w tym artykule MSDN](https://msdn.microsoft.com/library/windows/desktop/aa386968).
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
@@ -76,23 +76,23 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ```
 
 > [!NOTE]
-> Jeśli chcesz użyć certyfikatu z adresem IP, a nie do domeny, użyj adresu IP w parametrze - DnsName.
+> Jeśli chcesz użyć certyfikatu z adresem IP, a nie do domeny, należy użyć adresu IP w parametrze - DnsName.
 
 
-Jeśli chcesz użyć tej funkcji [certyfikatu za pomocą portalu zarządzania](../azure-api-management-certs.md), eksportowania ich do **.cer** pliku:
+Jeśli chcesz użyć tej funkcji [certyfikatu za pomocą portalu zarządzania](../azure-api-management-certs.md), wyeksportować je do **cer** pliku:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### <a name="internet-information-services-iis"></a>Internetowe usługi informacyjne (IIS)
-Istnieje wiele stron w Internecie, które opisano, jak to zrobić w programie IIS. [W tym miejscu](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) jest doskonałym udało mi się znaleźć traktować go wyjaśniono również. 
+Istnieje wiele stron w Internecie, które opisano, jak to zrobić za pomocą programu IIS. [W tym miejscu](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) to fantastyczne uczucie udało mi się znaleźć traktować wyjaśnia on również. 
 
 ### <a name="linux"></a>Linux
-[To](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykuł opisuje sposób tworzenia certyfikatów przy użyciu protokołu SSH.
+[To](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artykule opisano sposób tworzenia certyfikatów przy użyciu protokołu SSH.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przekaż certyfikat usługi do portalu Azure](cloud-services-configure-ssl-certificate-portal.md).
+[Przekaż certyfikat usługi do witryny Azure portal](cloud-services-configure-ssl-certificate-portal.md).
 
-Przekaż [certyfikat interfejsu API zarządzania](../azure-api-management-certs.md) do portalu Azure.
+Przekaż [certyfikatu interfejsu API zarządzania](../azure-api-management-certs.md) do witryny Azure portal.
 

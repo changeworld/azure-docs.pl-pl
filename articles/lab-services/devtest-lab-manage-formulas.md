@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c30958c5e0e24f2b35475848c1828df4a40d0c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b7a68f545f60829e5da83f0734c57a4d210cb843
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "33787612"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39001485"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Zarządzanie formułami Azure DevTest Labs
 
@@ -61,7 +61,7 @@ Poniższe kroki ułatwiają tworzenie formuły z niestandardowego obrazu, obrazu
     * **Nazwa formuły** — wprowadź nazwę swojej formule. Ta wartość jest wyświetlana na liście obrazy podstawowe, podczas tworzenia maszyny Wirtualnej. Nazwa jest weryfikowana, wpisz ją, a jeśli to nie jest prawidłowa, komunikat wskazuje, wymagania dotyczące prawidłową nazwę.
     * **Opis** — Podaj znaczący opis formuły. Ta wartość jest dostępne z menu kontekstowego w formule podczas tworzenia maszyny Wirtualnej.
     * **Nazwa użytkownika** — wprowadź nazwę użytkownika, któremu udzielono uprawnień administratora.
-    * **Hasło** — wprowadź — lub wybierz z listy rozwijanej - wartość, która jest skojarzona z klucz tajny (hasło), którego chcesz użyć dla określonego użytkownika. Aby uzyskać więcej informacji na temat wpisy tajne, zobacz [usługi Azure DevTest Labs: osobiste magazynu wpisów tajnych](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/).
+    * **Hasło** — wprowadź — lub wybierz z listy rozwijanej - wartość, która jest skojarzona z klucz tajny (hasło), którego chcesz użyć dla określonego użytkownika. Aby dowiedzieć się więcej na temat zapisywania wpisów tajnych w magazynie kluczy i korzystanie z nich podczas tworzenia zasobów laboratorium, zobacz [Store wpisów tajnych w usłudze Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
     * **Typ dysku maszyny wirtualnej** — określ albo HDD (dysk twardy) lub dysk SSD (SSD), aby wskazać typ dysku magazynu, które jest dozwolone w przypadku maszyn wirtualnych aprowizowane za pomocą tego obrazu podstawowego.
     * ** Maszyna wirtualna rozmiar ** — wybierz jedną z wstępnie zdefiniowane elementy, które Określ rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć. 
     * **Artefakty** — wybierz, aby otworzyć **Dodaj artefakty** bloku, w którym można wybrać i skonfigurować artefaktów, które chcesz dodać do obrazu podstawowego. Aby uzyskać więcej informacji na temat artefaktów, zobacz [Tworzenie niestandardowych artefaktów dla maszyny wirtualnej usługi Azure DevTest Labs](devtest-lab-artifact-author.md).

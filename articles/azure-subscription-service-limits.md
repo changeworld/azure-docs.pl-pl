@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: aecb687ea2352b482a97226219e9a075070c50a6
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610776"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990679"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -69,6 +69,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Usługa migracji bazy danych](#database-migration-service-limits)
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
+* [Zaporę platformy Azure](#azure-firewall-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Usługa IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Usługa Key Vault](#key-vault-limits)
@@ -152,6 +153,9 @@ W poniższej tabeli przedstawiono funkcje i limity Basic, Standard i Premium [wa
 
 #### <a name="dns-limits"></a>Limity DNS
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
+
+#### <a name="azure-firewall-limits"></a>Limity zapory platformy Azure
+[!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
 ### <a name="storage-limits"></a>Limity przestrzeni dyskowej
 Więcej informacji na temat limitów konta magazynu, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage/common/storage-scalability-targets.md).

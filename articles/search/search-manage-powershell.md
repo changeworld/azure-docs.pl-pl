@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie za pomocą skryptów środowiska Powershell usługi Azure Search | Dokumentacja firmy Microsoft
-description: Zarządzanie za pomocą skryptów środowiska PowerShell usługi Azure Search. Tworzenie lub aktualizowanie usługi Azure Search i zarządzania kluczami administratora usługi Azure Search
+title: Zarządzane usługi Azure Search za pomocą skryptów programu Powershell | Dokumentacja firmy Microsoft
+description: Zarządzanie usługą Azure Search za pomocą skryptów programu PowerShell. Tworzenie lub aktualizowanie usługi Azure Search i zarządzanie nimi klucze administratora usługi Azure Search
 author: HeidiSteen
 manager: cgronlun
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181991"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39000994"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -24,30 +24,30 @@ ms.locfileid: "32181991"
 > 
 > 
 
-W tym temacie opisano poleceń programu PowerShell do wykonywania wielu zadań zarządzania dla usługi Azure Search. Firma Microsoft przeprowadzi tworzenia usługi wyszukiwania, jej skalowania i zarządzania jego kluczy interfejsu API.
-Te polecenia równoległe opcji zarządzania dostępnych w [interfejsu API REST usługi Azure Search zarządzania](https://docs.microsoft.com/rest/api/searchmanagement).
+W tym temacie opisano poleceń programu PowerShell do wykonywania wielu zadań zarządzania dla usług Azure Search. Omówimy proces tworzenia usługi wyszukiwania, skalowanie i zarządzania jego klucze interfejsu API.
+Te polecenia równoległe opcji zarządzania dostępnych w [interfejsu API REST zarządzania usługi Azure Search](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Musi mieć programu Azure PowerShell 1.0 lub nowszego. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-* Należy być zalogowanym do subskrypcji platformy Azure w programie PowerShell, zgodnie z poniższym opisem.
+* Konieczne jest posiadanie programu Azure PowerShell 1.0 lub nowszy. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+* Użytkownik musi być zalogowany do subskrypcji platformy Azure w programie PowerShell, zgodnie z poniższym opisem.
 
-Po pierwsze, należy najpierw zaloguj się do platformy Azure za pomocą tego polecenia:
+Najpierw musisz zalogować się do platformy Azure za pomocą następującego polecenia:
 
     Connect-AzureRmAccount
 
-Określ adres e-mail konta platformy Azure i jego hasło w oknie dialogowym logowania do programu Microsoft Azure.
+W oknie dialogowym logowania do programu Microsoft Azure, należy określić adres e-mail swojego konta platformy Azure i jego hasło.
 
-Alternatywnie możesz [logowania nieinteraktywnie przy użyciu nazwy głównej usługi](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Alternatywnie możesz [logowania nieinteraktywnego przy użyciu nazwy głównej usługi](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-Jeśli masz wiele subskrypcji Azure, należy ustawić subskrypcji platformy Azure. Aby wyświetlić listę bieżące subskrypcje, uruchom następujące polecenie.
+Jeśli masz wiele subskrypcji platformy Azure, musisz ustawić subskrypcję platformy Azure. Aby wyświetlić listę bieżące subskrypcje, uruchom następujące polecenie.
 
     Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
-Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie Nazwa subskrypcji jest `ContosoSubscription`.
+Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie jest nazwa subskrypcji `ContosoSubscription`.
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-## <a name="commands-to-help-you-get-started"></a>Polecenia ułatwiające rozpoczęcie pracy
+## <a name="commands-to-help-you-get-started"></a>Polecenia, aby pomóc Ci rozpocząć pracę.
     $serviceName = "your-service-name-lowercase-with-dashes"
     $sku = "free" # or "basic" or "standard" for paid services
     $location = "West US"
@@ -126,11 +126,11 @@ Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przyk
     $resource | Remove-AzureRmResource
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy usługa jest tworzona, należy wykonać kolejne kroki: tworzenie [indeksu](search-what-is-an-index.md), [tworzenie zapytań względem indeksu](search-query-overview.md), a na koniec tworzenie i zarządzanie nimi własnych aplikacji wyszukiwania, która używa usługi Azure Search.
+Teraz, gdy usługa zostanie utworzony, można wykonać kolejne kroki: tworzenie [indeksu](search-what-is-an-index.md), [tworzenie zapytań względem indeksu](search-query-overview.md), a na koniec tworzenie i zarządzanie nimi własnych aplikacji wyszukiwania, która korzysta z usługi Azure Search.
 
-* [Tworzenie indeksu usługi Azure Search w portalu Azure](search-create-index-portal.md)
-* [Zapytanie indeksu usługi Azure Search przy użyciu Eksploratora wyszukiwania w portalu Azure](search-explorer.md)
+* [Tworzenie indeksu usługi Azure Search w witrynie Azure portal](search-create-index-portal.md)
+* [Tworzenie zapytań względem indeksu usługi Azure Search przy użyciu Eksploratora wyszukiwania w witrynie Azure portal](search-explorer.md)
 * [Skonfiguruj indeksator do ładowania danych z innych usług](search-indexer-overview.md)
 * [Jak używać usługi Azure Search na platformie .NET](search-howto-dotnet-sdk.md)
-* [Analiza ruchu w sieci usługi Azure Search](search-traffic-analytics.md)
+* [Analizowanie ruchu usługi Azure Search](search-traffic-analytics.md)
 

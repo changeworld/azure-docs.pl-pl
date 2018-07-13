@@ -1,23 +1,23 @@
-Maszyna wirtualna platformy Azure obsługuje dołączanie wielu dysków danych. W tym artykule opisano elementy docelowe skalowalności i wydajności dla dysków danych maszyny Wirtualnej. Użyj następujących elementów docelowych, aby określić liczbę i rodzaj muszą spełniać wymagania dotyczące wydajności i pojemności dysku. 
+Maszyna wirtualna platformy Azure obsługuje dołączanie wielu dysków danych. W tym artykule opisano cele dotyczące skalowalności i wydajności dla dysków z danymi maszyny Wirtualnej. Aby zdecydować, liczba i typ dysku, który konieczną do spełnienia wymagań dotyczących wydajności i pojemności, należy użyć następujących elementów docelowych. 
 
 > [!IMPORTANT]
-> Aby uzyskać optymalną wydajność ograniczyć liczbę wysokiej wykorzystywanych dysków dołączonych do maszyny wirtualnej, aby uniknąć możliwych ograniczania. Jeśli wysokiej wszystkich dołączonych dysków nie są używane w tym samym czasie, maszyna wirtualna może obsługiwać większą liczbę dysków.
+> Aby uzyskać optymalną wydajność należy ograniczyć liczbę intensywnie używanych dysków dołączonych do maszyny wirtualnej w celu uniknięcia potencjalnego ograniczania. Jeśli wysoce wszystkich dołączonych dysków nie są używane w tym samym czasie, maszyna wirtualna może obsługiwać większą liczbę dysków.
 
-* **Dyskach zarządzanych Azure:** 
+* **Dyski zarządzane Azure:** 
 
 > | Zasób | Limit domyślny | Limit maksymalny |
 > | --- | --- | --- |
 > | Dyski Managed Disks w warstwie Standardowa | 10 000 | 50,000 |
 > | Usługa Managed Disks z dyskami SSD w warstwie Standardowa | 10 000 | 50,000 |
 > | Dyski Managed Disks w warstwie Premium | 10 000 | 50,000 |
-> | Standard_LRS migawki | 10 000 | 50,000 |
-> | Standard_ZRS migawki | 10 000 | 50,000 |
-> | Premium_LRS migawki | 10 000 | 50,000 |
-> | Zarządzanego obrazu | 10 000 | 50,000 |
+> | Standard_LRS migawek | 10 000 | 50,000 |
+> | Standard_ZRS migawek | 10 000 | 50,000 |
+> | Premium_LRS migawek | 10 000 | 50,000 |
+> | Zarządzany obraz | 10 000 | 50,000 |
 
 * **Konto magazynu w warstwie Standardowa:** maksymalna całkowita liczba żądań dla konta magazynu w warstwie Standardowa to 20 000 operacji wejścia/wyjścia na sekundę (IOPS). Łączna liczba IOPS na wszystkich dyskach maszyny wirtualnej w koncie magazynu w warstwie Standardowa nie powinna przekroczyć tego limitu.
   
-    Możesz orientacyjnie obliczyć liczbę intensywnie używanych dysków obsługiwanych przez jedno konto magazynu w warstwie Standardowa na podstawie limitu liczby żądań. Na przykład podstawowa warstwy maszyny Wirtualnej, maksymalna liczba dysków wysokiej wykorzystywanych jest o 66 (20 000/300 IOPS dla każdego dysku) oraz dla maszyny Wirtualnej warstwy standardowa, jest około 40 (20 000/500 IOPS dla każdego dysku). 
+    Możesz orientacyjnie obliczyć liczbę intensywnie używanych dysków obsługiwanych przez jedno konto magazynu w warstwie Standardowa na podstawie limitu liczby żądań. Na przykład dla podstawowej warstwy maszyny Wirtualnej, maksymalna liczba intensywnie używanych dysków to 66 (20 000/300 IOPS na dysk), a dla maszyny Wirtualnej warstwy standardowa, to około 40 (20 000/500 IOPS na dysk). 
 
 * **Konta magazynu w warstwie Premium:** maksymalna całkowita przepływność konta magazynu w warstwie Premium to 50 Gb/s. Całkowita przepływność na wszystkich dyskach maszyny wirtualnej nie powinna przekroczyć tego limitu.
 
