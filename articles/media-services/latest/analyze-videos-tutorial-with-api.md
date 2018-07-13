@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/28/2018
 ms.author: juliako
-ms.openlocfilehash: e5b8cc9285d9637a04c4bec47b0185652aa7c84e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 314ffce8a9f8dde62cac670099afbc2223df37e4
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114228"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972002"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Samouczek: analizowanie wideo za pomocą usługi Azure Media Services 
 
@@ -112,7 +112,7 @@ Podczas tworzenia obiektu **Transform** należy najpierw sprawdzić, czy taki ob
 
 #### <a name="job"></a>Zadanie
 
-Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/en-us/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Istnieje możliwość określenia lokalizacji pliku wideo za pomocą adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
+Jak wspomniano powyżej, obiekt [Transform](https://docs.microsoft.com/rest/api/media/transforms) jest przepisem, a obiekt [Job](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie skierowane do usługi Media Services i mające na celu zastosowanie obiektu **Transform** do określonej wejściowej zawartości wideo lub dźwiękowej. Obiekt **Job** określa informacje takie jak lokalizacja wejściowego pliku wideo oraz danych wyjściowych. Istnieje możliwość określenia lokalizacji pliku wideo za pomocą adresów URL protokołu HTTPS, adresów URL sygnatury dostępu współdzielonego lub zasobów znajdujących się na koncie usługi Media Service. 
 
 W tym przykładzie dane wejściowe zadania to lokalny film wideo.  
 
@@ -120,7 +120,7 @@ W tym przykładzie dane wejściowe zadania to lokalny film wideo.
 
 ### <a name="wait-for-the-job-to-complete"></a>Oczekiwanie na zakończenie zadania
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Są dostępne różne opcje powiadamiania o ukończeniu [zadania](https://docs.microsoft.com/en-us/rest/api/media/jobs). Najprostsza opcja (przedstawiona tutaj) to użycie sondowania. 
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Są dostępne różne opcje powiadamiania o ukończeniu [zadania](https://docs.microsoft.com/rest/api/media/jobs). Najprostsza opcja (przedstawiona tutaj) to użycie sondowania. 
 
 Sondowanie nie jest najlepszym rozwiązaniem w przypadku zastosowań produkcyjnych ze względu na możliwe opóźnienia. Jeśli sondowanie będzie nadużywane w ramach konta, może zostać ograniczone. Deweloperzy zamiast niego powinni używać usługi Event Grid.
 

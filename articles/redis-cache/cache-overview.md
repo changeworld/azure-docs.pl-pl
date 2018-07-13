@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 585dcd120c42562b1520d4454f9d04e445553101
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062763"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096196"
 ---
 # <a name="what-is-azure-redis-cache"></a>Co to jest usługa Azure Redis Cache
 
@@ -27,7 +27,7 @@ Usługa Azure Redis Cache jest oparta na popularnej [pamięci podręcznej Redis]
 
 Usługa Azure Redis Cache może także służyć jako magazyn struktury danych w pamięci, rozproszona nierelacyjna baza danych i broker komunikatów. Wydajność aplikacji jest zwiększana dzięki wykorzystaniu małego opóźnienia i wysokiej przepustowości aparatu Redis.
 
-Usługa Azure Redis Cache zapewnia dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Redis zarządzanej przez firmę Microsoft, która jest hostowana na platformie Azure i dostępna z dowolnej aplikacji na platformie Azure.
+Usługa Azure Redis Cache zapewnia dostęp do zabezpieczonej, dedykowanej pamięci podręcznej Redis zarządzanej przez firmę Microsoft, która jest hostowana na platformie Azure i dostępna z dowolnej aplikacji na platformie Azure lub poza nią.
 
 ## <a name="why-use-azure-redis-cache"></a>Dlaczego warto korzystać z usługi Azure Redis Cache
 

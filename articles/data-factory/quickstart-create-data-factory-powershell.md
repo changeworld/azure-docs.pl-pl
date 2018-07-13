@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 17be4668bacaf94b0421f6cce83dfcf98f302f60
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081144"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38237750"
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>Tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

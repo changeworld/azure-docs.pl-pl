@@ -11,12 +11,12 @@
   items:
     - name: Tworzenie funkcji — portal
       href: functions-create-first-azure-function.md
-    - name: Tworzenie funkcji — interfejs wiersza polecenia platformy Azure
-      href: functions-create-first-azure-function-azure-cli.md
     - name: Tworzenie funkcji — program Visual Studio
       href: functions-create-your-first-function-visual-studio.md
     - name: Tworzenie funkcji — Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Tworzenie funkcji — interfejs wiersza polecenia platformy Azure
+      href: functions-create-first-azure-function-azure-cli.md
     - name: Tworzenie funkcji — Linux
       href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Wyzwalacze
@@ -97,6 +97,8 @@
       items:
         - name: Omówienie
           href: durable-functions-overview.md
+        - name: Typy i cechy funkcji
+          href: durable-functions-types-features-overview.md
         - name: Powiązania
           href: durable-functions-bindings.md
         - name: Punkt kontrolny i powtarzanie

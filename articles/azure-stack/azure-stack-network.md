@@ -1,6 +1,6 @@
 ---
-title: Sieci integracji zagadnienia dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaplanować integracji sieci centrum danych z wieloma węzłami Azure stosu.
+title: Sieci integracji zagadnienia dotyczące usługi Azure Stack zintegrowane systemy | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak planować Integracja sieci centrum danych z wieloma węzłami usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,80 +12,80 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 07/11/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 2d16d1dc7a53ca388b00ba02b6447e178a9f6edb
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936521"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989241"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
-Ten artykuł zawiera informacje infrastruktury sieci stosu Azure, aby ułatwić wybór najlepiej integrowanie stosu Azure z istniejącym środowiskiem sieci. 
+Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
 
 > [!NOTE]
-> Do rozpoznawania nazw DNS zewnętrznych ze stosu Azure (na przykład www.bing.com), musisz podać serwerów DNS, aby przekazywała żądania DNS. Aby uzyskać więcej informacji o wymaganiach usługi Azure DNS stosu, zobacz [integracja centrum danych Azure stosu - DNS](azure-stack-integrate-dns.md).
+> Aby rozwiązać zewnętrzne nazwy DNS z usługi Azure Stack (na przykład www.bing.com), musisz podać serwery DNS do przesyłania żądań DNS. Aby uzyskać więcej informacji na temat wymagań dotyczących usługi Azure Stack DNS Zobacz [Integracja z centrum danych usługi Azure Stack — DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Projekt sieci fizycznej
-Rozwiązanie stosu Azure wymaga odporne i wysokiej dostępności infrastruktury fizycznej do obsługi swoich operacji i usług. Poniższy diagram przedstawia naszych zalecany projekt:
+Rozwiązanie usługi Azure Stack wymaga odporne i o wysokiej dostępności infrastruktury fizycznej do obsługi jej działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + multimediów i szybkości 1 GB lub 10 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Poniższy diagram przedstawia naszych zalecany projekt:
 
-![Zalecany projekt sieci Azure stosu](media/azure-stack-network/recommended-design.png)
+![Zalecany projekt sieci usługi Azure Stack](media/azure-stack-network/recommended-design.png)
 
 
 ## <a name="logical-networks"></a>Sieci logiczne
-Sieci logiczne stanowią abstrakcję powiązanej z nimi infrastruktury sieci fizycznej. Są one używane do organizacji i uproszczenia przypisań sieci hostów, maszyn wirtualnych i usług. W ramach tworzenia sieci logicznej Lokacje sieciowe są tworzone na definiowanie wirtualnych sieci lokalnych (VLAN), podsieci IP i IP pary podsieci/sieci VLAN, które są skojarzone z sieci logicznej w każdej lokalizacji fizycznej.
+Sieci logiczne stanowią abstrakcję podstawowej infrastruktury sieci fizycznej. Służą one do organizacji i uproszczenia przypisań sieci dla hostów, maszyn wirtualnych i usług. W ramach tworzenia sieci logicznej Lokacje sieciowe są tworzone na definiowanie wirtualnych sieci lokalnych (VLAN), podsieci IP i adresów IP pary podsieć/VLAN, które są skojarzone z siecią logiczną, w każdej lokalizacji fizycznej.
 
-W poniższej tabeli przedstawiono sieci logiczne i skojarzone zakresy podsieci IPv4, które należy zaplanować:
+W poniższej tabeli przedstawiono sieci logiczne i skojarzone podsieci zakresy adresów IPv4 należy zaplanować:
 
 | Sieć logiczna | Opis | Rozmiar | 
 | -------- | ------------- | ------------ | 
-| Publiczny adres VIP | Stos Azure używa łącznie 32 adresów z tą siecią. Osiem publiczne adresy IP są używane do niewielki zestaw usług Azure stosu, a pozostałe są używane przez maszyny wirtualne dzierżawców. Jeśli zamierzasz korzystać z usługi aplikacji i dostawców zasobów SQL, używane są adresy więcej 7. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
-| Infrastruktura przełączników | Point-to-Point adresy IP do celów routingu dedykowanego przełącznika interfejsów zarządzania i adresy sprzężenia zwrotnego przypisane do tego przełącznika. | /26 | 
-| Infrastruktura | Używane składniki wewnętrzne stosu Azure do komunikacji. | /24 |
-| Private | Używane dla sieci magazynu i prywatne adresy VIP. | /24 | 
+| Publicznych adresów VIP | Korzysta z usługi Azure Stack daje w sumie 32 adresów z tą siecią. Osiem publiczne adresy IP są używane dla małej grupy usługi Azure Stack, a pozostałe są używane przez maszyny wirtualne dzierżawcy. Jeśli planujesz używać usługi App Service i dostawców zasobów SQL 7 większej liczby adresów są używane. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
+| Przełącznik infrastruktury | Point-to-Point adresów IP dla celów routingu dedykowanego przełącznika/interfejsów zarządzania i adresy sprzężenia zwrotnego przypisany do przełącznika. | /26 | 
+| Infrastruktura | Używane przez usługę Azure Stack wewnętrznych składników do komunikacji. | /24 |
+| Private | Używane dla sieci magazynu i prywatnych adresów VIP. | /24 | 
 | BMC | Używany do komunikacji ze składnikami bmc na hostach fizycznych. | /27 | 
 | | | |
 
 ## <a name="network-infrastructure"></a>Infrastruktura sieciowa
-Infrastruktura sieci Azure stosu składa się z kilku sieci logiczne, które są skonfigurowane na przełączników. Na poniższym diagramie przedstawiono te sieci logiczne oraz sposób ich integracji z top-of-rack (TOR), kontrolera zarządzania płytą główną (BMC) i obramowania przełączników (sieci klienta).
+Infrastruktura sieci dla usługi Azure Stack składa się z kilku sieci logicznych, które są skonfigurowane na temat parametrów. Na poniższym diagramie przedstawiono te sieci logiczne oraz sposób ich integracji z top-of-rack (TOR) kontrolera zarządzania płytą główną (BMC) i obramowanie przełączników (sieci klienta).
 
 ![Połączenia diagram i przełącznik sieci logicznej](media/azure-stack-network/NetworkDiagram.png)
 
-### <a name="bmc-network"></a>Sieci BMC
-Ta sieć jest dedykowany do łączenia wszystkich kontrolerów zarządzania płytą główną (znanej także jako service procesory, na przykład iDRAC iLO, iBMC, itp.) do sieci zarządzania. Jeśli jest obecny, hosta cyklu życia sprzętu (HLH) znajduje się w tej sieci i może udostępniać określone oprogramowanie OEM konserwacji sprzętu lub monitorowania. 
+### <a name="bmc-network"></a>Sieci kontrolera zarządzania płytą GŁÓWNĄ
+Ta sieć jest dedykowany do procesu łączenia wszystkie kontrolery zarządzania płytą główną (znany także jako service procesorów, na przykład iDRAC iLO, iBMC, itp.) do sieci zarządzania. Jeśli jest obecny, Host cyklu życia sprzętu (HLH) znajduje się w tej sieci i może dostarczyć oprogramowanie specyficzne dla producenta OEM konserwacji sprzętu lub monitorowania. 
 
-HLH hostuje również wdrożenia maszyny Wirtualnej (Menedżer DVM). Menedżer DVM jest używany podczas wdrażania usługi Azure stosu i zostanie usunięta po zakończeniu wdrożenia. Menedżer DVM wymaga dostępu do Internetu w scenariuszach wdrażania podłączonej do testowania, sprawdzanie poprawności i uzyskać dostęp przez kilka składników. Te składniki mogą być wewnątrz i poza siecią firmową; na przykład NTP, DNS i Azure. Aby uzyskać więcej informacji na temat wymagań dotyczących łączności, zobacz [NAT części Integracja z zaporą stosu Azure](azure-stack-firewall.md#network-address-translation). 
+HLH obsługuje również wdrażanie maszyny Wirtualnej (Menedżer DVM). Menedżer DVM jest używany podczas wdrażania usługi Azure Stack i zostanie usunięta po zakończeniu wdrożenia. Menedżer DVM wymaga dostępu do Internetu w scenariuszach wdrażania podłączonych do testowania, weryfikacji i dostęp do wielu składników. Te składniki mogą być i spoza sieci firmowej. na przykład NTP, DNS i platformy Azure. Aby uzyskać więcej informacji na temat wymagań dotyczących łączności, zobacz [sekcji translatora adresów Sieciowych w usłudze Azure Stack Integracja z zaporą](azure-stack-firewall.md#network-address-translation). 
 
 ### <a name="private-network"></a>Sieć prywatna
-Ta prefiksie/24 254 hosta w sieci IP jest prywatna w regionie Azure stosu (nie zwiększa poza urządzeń przełącznika obramowania regionu Azure stosu) i jest podzielony na dwie podsieci:
+Ta prefiksie/24 (254 hostów adresy IP) sieci jest prywatna w regionie usługi Azure Stack (nie jest powiększony, poza urządzeń przełącznika obramowanie obszaru usługi Azure Stack) i jest podzielony na dwie podsieci:
 
-- **Sieć magazynowania**. Migracja na żywo /25 126 hosta w sieci IP używane do obsługi ruchu sieciowego magazynu Direct spacje i bloku komunikatów serwera (SMB) i maszyny wirtualnej. 
-- **Wewnętrzna sieć wirtualna IP**. A/25 sieciowych dedykowanych do wewnętrznych adresów VIP usługi równoważenia obciążenia oprogramowania.
+- **Sieć magazynowania**. /25 (host 126 adresów IP) sieci używanej do obsługi ruchu sieciowego magazynu bezpośrednich miejsc do magazynowania i bloku komunikatów serwera (SMB) i migracji na żywo maszyny wirtualnej. 
+- **Wewnętrzną siecią wirtualną IP**. A/25 sieci dedykowanych do wewnętrznych adresów VIP dla równoważenia obciążenia oprogramowania.
 
-### <a name="azure-stack-infrastructure-network"></a>Sieć platformy Azure infrastruktury stosu
-To/24 sieć jest przeznaczona do wewnętrznych składników stosu Azure, dzięki czemu mogą komunikować się i wymieniać dane między sobą. Ta podsieć wymaga rutowalne adresy IP, ale polega ochrona poufności do rozwiązania przy użyciu list kontroli dostępu (ACL). Oczekuje nie być kierowane poza przełączniki obramowania, z wyjątkiem zakresu mały rozmiar odpowiednikiem /27 sieci wykorzystana przez niektóre z tych usług, gdy potrzebują dostępu do zasobów zewnętrznych i/lub Internetu. 
+### <a name="azure-stack-infrastructure-network"></a>Sieci infrastruktury w usłudze Azure Stack
+To/24 sieć jest przeznaczona do obsługi wewnętrznych składników usługi Azure Stack, tak aby komunikować się i wymieniać dane między sobą. Ta podsieć wymaga rutowalne adresy IP, ale pozostaje kluczem prywatnym do rozwiązania przy użyciu list kontroli dostępu (ACL). Nie powinien być kierowany poza przełączników obramowanie, z wyjątkiem niewielki zakres równoważne rozmiar/27 sieci wykorzystywane przez niektóre z tych usług, gdy potrzebują dostępu do zasobów zewnętrznych i/lub Internetu. 
 
 ### <a name="public-infrastructure-network"></a>Sieć publicznych infrastruktury
-To/27 sieci jest niewielki zakres z podsieci infrastruktury Azure stosu wspomniano wcześniej, nie wymaga publiczne adresy IP, ale wymagają dostępu do Internetu za pośrednictwem NAT lub przezroczystego obiektu pośredniczącego. Ta sieć zostanie przydzielone dla systemu konsoli odzyskiwania awaryjnego (ERCS), ERCS maszyna wirtualna wymaga dostępu do Internetu, podczas rejestracji na platformie Azure oraz infrastruktury kopii zapasowych. Maszyna wirtualna ERCS powinny obsługiwać routing do sieci zarządzania na potrzeby rozwiązywania problemów.
+To/27 sieci jest niewielki zakres z podsieci infrastruktury Azure Stack wspomniano wcześniej, nie wymaga publiczne adresy IP, ale konieczny jest dostęp do Internetu za pośrednictwem translatora adresów Sieciowych lub przezroczystym serwerem Proxy. Ta sieć zostanie przydzielony do systemu konsoli odzyskiwania awaryjnego (ERCS), ERCS maszyna wirtualna wymaga dostępu do Internetu, podczas rejestracji na platformie Azure i infrastruktury kopii zapasowych. Maszyna wirtualna ERCS powinny obsługiwać routing do sieci zarządzania na potrzeby rozwiązywania problemów.
 
-### <a name="public-vip-network"></a>Sieć publiczna VIP
-Sieć publiczna adresu VIP jest przypisany do kontrolera sieci w stosie Azure. Nie jest sieć logiczna na przełączniku. Programowego używa puli adresów i przypisuje/32 sieci dla obciążeń dzierżawców. W tabeli routingu przełącznika tych 32 adresów IP są rozgłaszane jako dostępny za pośrednictwem protokołu BGP. Ta sieć zawiera zewnętrzne dostępny lub publicznych adresów IP. Infrastruktury Azure stosu rezerwuje najpierw 31 adresy z tą siecią publicznego adresu VIP, podczas gdy pozostała jest używany przez dzierżawione maszyny wirtualne. Rozmiar sieci w tej podsieci może należeć do zakresu od co najmniej /26 (64 hostów) do maksymalnie /22 (1022 hostów), zaleca się zaplanowanie prefiksie/24 sieci.
+### <a name="public-vip-network"></a>Sieci publicznych adresów VIP
+Sieci publicznych adresów VIP jest przypisany do kontrolera sieci w usłudze Azure Stack. Nie jest sieć logiczną na przełączniku. SLB korzysta z puli adresów i przypisuje/32 sieci dla obciążenia dzierżaw. W tabeli routingu przełącznika tych 32 adresów IP są anonsowane jako trasę w protokole dostępne za pośrednictwem protokołu BGP. Ta sieć zawiera adresy IP dostępne zewnętrznego lub publicznej. Infrastruktury Azure Stack rezerwuje pierwszych 31 adresów z tej sieci publicznych adresów VIP, podczas gdy reszta jest używany przez dzierżawione maszyny wirtualne. Rozmiar sieci w tej podsieci może wynosić od co najmniej /26 (64 hostów), maksymalnie /22 (1022 hostów), zaleca się planowanie prefiksie/24 sieci.
 
 ### <a name="switch-infrastructure-network"></a>Przełącznik sieci infrastruktury
-To 26 sieć jest podsieci, która zawiera podsieci /30 IP routingu point-to-point (2 IP hosta w) i sprzężenia zwrotne, które są przeznaczone wyłącznie/32 podsieci dla wewnątrzpasmowe przełącznik zarządzania i identyfikator routera BGP Ten zakres adresów IP musi obsługiwać Routing zewnętrznie z rozwiązania Azure stosu centrum danych, mogą być prywatnych lub publicznych adresów IP.
+To/26 sieć jest podsieci, która zawiera podsieci (host 2 adresy IP) / 30 IP Routing typu punkt-punkt i sprzężenia zwrotne, które są zasobami dedykowanymi/32 podsieci wewnątrzpasmowe przełącznika zarządzania i identyfikator protokołu BGP routera. Ten zakres adresów IP muszą być routowalne zewnętrznie z rozwiązania usługi Azure Stack w swoim centrum danych, mogą być prywatne lub publiczne adresy IP.
 
-### <a name="switch-management-network"></a>Sieć zarządzania przełącznika
-Ta /29 (host 6 adresów IP) sieć jest przeznaczona do łączenia porty zarządzania przełączników. Umożliwia dostęp poza pasmem dla wdrażania, zarządzania i rozwiązywania problemów. Jest on obliczany od przełącznika sieci infrastruktury wymienionych powyżej.
+### <a name="switch-management-network"></a>Przełącz sieć zarządzania
+Tym rozmiarze/29 (host 6 adresów IP) sieci jest dedykowany do procesu łączenia porty zarządzania przełączników. Umożliwia dostęp poza pasmem dla wdrażania, zarządzania i rozwiązywania problemów. Jest ona obliczana od przełącznika sieci infrastruktury wymienionych powyżej.
 
-## <a name="publish-azure-stack-services"></a>Publikowanie usług Azure stosu
-Należy udostępnić usług Azure stosu użytkowników z zewnętrznego stosu Azure. Stos Azure konfiguruje różnych punktów końcowych dla jego role infrastruktury. Te punkty końcowe są przypisywane wirtualne adresy IP z puli publicznych adresów IP. Wpis DNS jest tworzony dla każdego punktu końcowego w zewnętrznych strefę DNS, który określono w czasie wdrażania. Na przykład aplikacji portal użytkowników jest przypisany wpis hosta DNS portalu.  *&lt;region >.&lt; Nazwa FQDN >*.
+## <a name="publish-azure-stack-services"></a>Publikowanie usługi Azure Stack
+Należy udostępnić usługi Azure Stack użytkownikom z zewnętrznej usługi Azure Stack. Usługa Azure Stack konfiguruje różne punkty końcowe dla jego role infrastruktury. Te punkty końcowe są przypisywane adresy VIP z puli publicznych adresów IP. Wpis DNS jest tworzony dla każdego punktu końcowego w strefie DNS zewnętrznego została określona w czasie wdrażania. Na przykład portal użytkowników jest przypisany wpis hosta DNS w portalu.  *&lt;region >.&lt; Nazwa FQDN >*.
 
 ### <a name="ports-and-urls"></a>Porty i adresy URL
-Aby usługi Azure stosu (takich jak portali usługi Azure Resource Manager, DNS, itp) dostępny dla zewnętrznych sieci, musisz zezwolić na ruch przychodzący z tymi punktami końcowymi dla określonych adresów URL, porty i protokoły.
+Usługi Azure Stack (takich jak portale, usługi Azure Resource Manager, DNS, itp.) dostępne z sieciami zewnętrznymi, musisz zezwolić na ruch przychodzący do tych punktów końcowych dla określonych adresów URL, porty i protokoły.
  
-We wdrożeniu w przypadku, gdy pasm przezroczystego obiektu pośredniczącego na serwer proxy tradycyjnych, musisz zezwolić na określone porty i adresy URL dla obu [przychodzących](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) i [wychodzących](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikacji. Obejmują one porty i adresy URL dla tożsamości, zespolonego marketplace poprawek i aktualizacji, rejestracji i dane użycia.
+W przypadku wdrożenia w przypadku, gdy pasm przezroczystym serwerem proxy, aby serwer proxy tradycyjnych musisz zezwolić na określone porty i adresy URL dla obu [dla ruchu przychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) i [wychodzącego](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikacji. Obejmują one porty i adresy URL dla tożsamości, syndykacji portalu marketplace, poprawek i aktualizacji, rejestracji i dane użycia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Łączność obramowania](azure-stack-border-connectivity.md)

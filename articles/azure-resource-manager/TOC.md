@@ -13,6 +13,7 @@
 ## [Dostawcy zasobów i ich typy](resource-manager-supported-services.md)
 ## [Grupy zarządzania](management-groups-overview.md)
 ## [Nadzór subskrypcji](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+## [Szablony pozwalające zachować spójność w chmurze](templates-cloud-consistency.md)
 
 # Instrukcje
 ## Tworzenie szablonów

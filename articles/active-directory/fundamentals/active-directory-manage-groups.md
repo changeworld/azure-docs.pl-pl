@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: ae97a41835c61155fe3fc7174fd93be00eb22873
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce3b4f15acbcc6ce78ea0623c6b9f3c23941cb0
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767456"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859629"
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory
 Usługa Azure Active Directory (Azure AD) to kompleksowe rozwiązanie do zarządzania tożsamościami i dostępem, które oferuje niezawodny zestaw funkcji służących do zarządzania dostępem do aplikacji i zasobów lokalnie oraz w chmurze, w tym do usług online firmy Microsoft, takich jak Office 365, a także działających w modelu SaaS aplikacji firm innych niż Microsoft. Ten artykuł zawiera omówienie tematu, ale jeśli chcesz rozpocząć korzystanie z grup usługi Azure AD już teraz, wykonaj czynności zawarte w artykule [Managing security groups in Azure AD (Zarządzanie grupami zabezpieczeń w usłudze Azure AD)](active-directory-groups-create-azure-portal.md). Jeśli chcesz się dowiedzieć, jak zarządzać grupami w usłudze Azure Active Directory za pomocą programu PowerShell, możesz przeczytać więcej na ten temat w artykule [Azure Active Directory cmdlets for group management (Polecenia cmdlet do zarządzania grupami w usłudze Azure Active Directory)](../users-groups-roles/groups-settings-v2-cmdlets.md).
@@ -74,7 +74,7 @@ Chcesz zacząć? Wypróbuj kilka podstawowych zadań, które można wykonać w g
 ## <a name="next-steps"></a>Następne kroki
 Podstawowe kwestie związane z zarządzaniem dostępem są już jasne. Oto kilka dodatkowych zaawansowanych funkcji zarządzania dostępem do aplikacji i zasobów w usłudze Azure Active Directory.
 
-* [Using attributes to create advanced rules (Używanie atrybutów do tworzenia reguł zaawansowanych)](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [Using attributes to create advanced rules (Używanie atrybutów do tworzenia reguł zaawansowanych)](../users-groups-roles/groups-dynamic-membership.md)
 * [Managing security groups in Azure AD (Zarządzanie grupami zabezpieczeń w usłudze Azure AD)](active-directory-groups-create-azure-portal.md)
 * [Graph API reference for groups (Dokumentacja interfejsu API programu Graph dla grup)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 * [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md)

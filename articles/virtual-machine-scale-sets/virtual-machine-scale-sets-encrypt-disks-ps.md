@@ -1,9 +1,9 @@
 ---
-title: Szyfrowanie dysków dla zestawach skali Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak szyfrowanie wystąpień maszyn wirtualnych i dołączonych dysków w zestawie skalowania maszyn wirtualnych systemu Windows przy użyciu programu Azure PowerShell
+title: Szyfrowanie dysków dla zestawów skalowania platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak szyfrowanie wystąpień maszyn wirtualnych i dołączonych dysków w zestawie skalowania maszyn wirtualnych Windows za pomocą programu Azure PowerShell
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,51 +14,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: iainfou
-ms.openlocfilehash: 91138ffad0fd906061e0b0ce5cdb251f402d3341
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cynthn
+ms.openlocfilehash: 850140404d95b77b3494754666e118b3566221c1
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630236"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Szyfrowanie systemu operacyjnego i dysków dołączonych danych w skali maszyny wirtualnej ustawić przy użyciu programu Azure PowerShell (wersja zapoznawcza)
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Szyfrowanie systemu operacyjnego i dołączonych dysków z danymi w maszynie wirtualnej zestawu skalowania przy użyciu programu Azure PowerShell (wersja zapoznawcza)
 
-Aby chronić pliki i ochrony danych magazynowanych przy użyciu technologii szyfrowania standardowego w branży, zestawy skalowania maszyny wirtualnej obsługuje szyfrowanie dysków Azure (ADE). Szyfrowanie można włączyć dla maszyny wirtualnej systemu Windows i Linux skalowanie zestawów. Aby uzyskać więcej informacji, zobacz [Azure dysku szyfrowanie dla systemu Windows i Linux](../security/azure-security-disk-encryption.md).
+Aby chronić pliki i chronić dane magazynowane przy użyciu technologii szyfrowania standardowych w branży, zestawy skalowania maszyn wirtualnych obsługują szyfrowania dysków Azure (ADE). Szyfrowanie można włączyć dla maszyny wirtualnej Windows i Linux zestawów skalowania. Aby uzyskać więcej informacji, zobacz [Azure szyfrowania dysku dla Windows i Linux](../security/azure-security-disk-encryption.md).
 
 > [!NOTE]
->  Szyfrowanie dysków Azure dla zestawy skalowania maszyny wirtualnej jest obecnie w publicznej wersji zapoznawczej, dostępne we wszystkich regionach publicznej Azure.
+>  Usługa Azure disk encryption dla zestawów skalowania maszyn wirtualnych jest obecnie w publicznej wersji zapoznawczej dostępne we wszystkich publicznych regionach platformy Azure.
 
-Szyfrowanie dysków Azure jest obsługiwane:
-- Skala zestawów utworzonych za pomocą dysków zarządzanych i nieobsługiwane dla zestawów skalowania dysk lokalny (lub niezarządzanego).
-- w przypadku woluminów systemu operacyjnego i danych w zestawach skali systemu Windows. Wyłącz szyfrowanie jest obsługiwane w woluminach systemu operacyjnego i danych dla zestawów skalowania systemu Windows.
-- woluminy danych w zestawach skali systemu Linux. Szyfrowanie dysku systemu operacyjnego nie jest obsługiwane w bieżącej wersji zapoznawczej dla zestawów skalowania systemu Linux.
+Usługa Azure disk encryption jest obsługiwane:
+- Skalowanie zestawów utworzonych za pomocą dysków zarządzanych i nie jest obsługiwane dla zestawów skalowania dysku natywnego (lub niezarządzanego).
+- w przypadku woluminów systemu operacyjnego i danych w zestawach skalowania Windows. Wyłącz szyfrowanie jest obsługiwane w przypadku woluminów systemu operacyjnego i danych dla zestawów skalowania Windows.
+- woluminy danych w zestawach skalowania systemu Linux. Szyfrowanie dysku systemu operacyjnego nie jest obsługiwane w bieżącej wersji zapoznawczej dla zestawów skalowania systemu Linux.
 
-Zestaw maszyn wirtualnych odtworzenia z obrazu i uaktualniania operacji skalowania nie są obsługiwane w bieżącej wersji zapoznawczej. Szyfrowanie dysków Azure dla podglądu zestawy skalowania maszyny wirtualnej jest zalecane tylko w środowiskach testowych. W wersji zapoznawczej nie należy włączać szyfrowanie dysków w środowiskach produkcyjnych, w których konieczne może być uaktualnienia obrazu systemu operacyjnego w zestawie skalowania zaszyfrowane.
+Zestaw maszyn wirtualnych odtworzenia z obrazu i uaktualniania, operacje skalowania nie są obsługiwane w bieżącej wersji zapoznawczej. Usługa Azure disk encryption dla wersji zapoznawczej zestawów skalowania maszyn wirtualnych jest zalecane tylko w środowiskach testowych. W wersji zapoznawczej nie włączaj szyfrowania dysków w środowiskach produkcyjnych, w których konieczne może być uaktualnienia obrazu systemu operacyjnego w zestawie skalowania zaszyfrowane.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli wybierzesz do zainstalowania i używania programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
-## <a name="register-for-disk-encryption-preview"></a>Zarejestruj w wersji zapoznawczej szyfrowania dysku
+## <a name="register-for-disk-encryption-preview"></a>Rejestrowanie na potrzeby szyfrowania dysku w wersji zapoznawczej
 
-Szyfrowanie dysków Azure w wersji zapoznawczej zestawach skali maszyn wirtualnych wymaga własnym rejestracji subskrypcji z [AzureRmProviderFeature rejestru](/powershell/module/azurerm.resources/register-azurermproviderfeature). Musisz użycie tej funkcji podglądu dysku po raz pierwszy należy wykonać następujące czynności:
+Usługa Azure disk encryption dla zestawów skalowania maszyn wirtualnych w wersji zapoznawczej, musisz zarejestrować się samodzielnie subskrypcji za pomocą [element Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature). Wystarczy użycie funkcji w wersji zapoznawczej szyfrowania dysku po raz pierwszy należy wykonać następujące czynności:
 
 ```azurepowershell-interactive
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-Może potrwać do 10 minut na propagację żądania rejestracji. Możesz sprawdzić stan rejestracji z [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Gdy `RegistrationState` raporty *zarejestrowanej*, ponownie zarejestrować *Mirosoft.Compute* dostawcy z [AzureRmResourceProvider rejestru](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+Może upłynąć do 10 minut dla żądania rejestrowania do propagowania. Można sprawdzić stanu rejestracji za pomocą [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Gdy `RegistrationState` raporty *zarejestrowanej*, ponownie zarejestrować *Mirosoft.Compute* dostawcy o [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Utwórz włączone szyfrowanie dysków Azure Key Vault
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Tworzenie usługi Azure Key Vault umożliwia szyfrowania dysków
 
-Usługa Azure Key Vault można przechowywać kluczy, kluczy tajnych lub haseł, które umożliwiają bezpieczne wdrożenie ich w aplikacji i usług. Klucze szyfrowania są przechowywane w usługi Azure Key Vault przy użyciu ochrony oprogramowania, lub możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM) certyfikowane do FIPS 140-2 poziom 2 standardów. Te klucze szyfrowania są używane do szyfrowania i odszyfrowywania wirtualnych dysków dołączonych do maszyny Wirtualnej. Zachowanie kontroli nad tych kluczy kryptograficznych i przeprowadzić inspekcję ich używania.
+Usługa Azure Key Vault można przechowywać klucze, wpisy tajne lub haseł, które umożliwiają bezpieczne wdrożenie ich w aplikacji i usług. Klucze szyfrowania są przechowywane w usłudze Azure Key Vault przy użyciu ochrony oprogramowania lub można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM) certyfikowane zgodnych ze standardami FIPS 140-2 poziom 2 standardy. Te klucze szyfrowania są używane do szyfrowania i odszyfrowywania dyski wirtualne dołączone do maszyny Wirtualnej. Zachowanie kontroli nad te klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie.
 
-Tworzenie magazynu kluczy o [nowy AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Aby zezwolić na magazyn kluczy do szyfrowania dysku, *EnabledForDiskEncryption* parametru. W poniższym przykładzie zdefiniowano także zmienne dla nazwy grupy zasobów, klucz magazynu nazwy i lokalizacji. Podaj własną unikatową nazwę usługi Key Vault:
+Tworzenie magazynu kluczy przy użyciu [nowy AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). Aby umożliwić usługi Key Vault ma być używany do szyfrowania dysku, należy ustawić *EnabledForDiskEncryption* parametru. W poniższym przykładzie zdefiniowano także zmienne dla nazwy grupy zasobów, nazwa usługi Key Vault i lokalizacji. Podaj swoją własną unikatową nazwę usługi Key Vault:
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -71,9 +72,9 @@ New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $
 
 ### <a name="use-an-existing-key-vault"></a>Użyj istniejącego magazynu kluczy
 
-Ten krok jest tylko wymagane, jeśli masz istniejący magazyn kluczy, którego chcesz użyć z szyfrowania dysków. Pomiń ten krok, jeśli magazyn kluczy został utworzony w poprzedniej sekcji.
+Ten krok jest tylko wymagane, jeśli masz istniejące usługi Key Vault, którą chcesz za pomocą szyfrowania dysków. Pomiń ten krok, jeśli magazyn kluczy został utworzony w poprzedniej sekcji.
 
-Można włączyć istniejącego magazynu kluczy w tej samej subskrypcji i regionu jako zestaw szyfrowanie dysków z skalowania [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy). Zdefiniuj nazwę istniejącego magazynu kluczy, w *$vaultName* zmiennej w następujący sposób:
+Można włączyć istniejącego magazynu kluczy w tej samej subskrypcji i regionie jako zestaw dotyczące szyfrowania dysku przy użyciu skalowania [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy). Zdefiniuj nazwę istniejącego magazynu kluczy w *$vaultName* zmiennej w następujący sposób:
 
 ```azurepowershell-interactive
 $vaultName="myexistingkeyvault"
@@ -107,7 +108,7 @@ New-AzureRmVmss `
 
 ## <a name="enable-encryption"></a>Włącz szyfrowanie
 
-Aby zaszyfrować wystąpień maszyny Wirtualnej w zestawie skalowania, należy najpierw pobrać niektóre informacje w identyfikatorze URI magazynu kluczy i zasobów z [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault). Te zmienne są używane do następnie rozpocznij proces szyfrowania z [AzureRmVmssDiskEncryptionExtension zestaw](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
+Aby zaszyfrować wystąpień maszyn wirtualnych w zestawie skalowania, należy najpierw uzyskać pewne informacje o identyfikator URI magazynu klucz i identyfikator zasobu z [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault). Te zmienne są używane do następnie rozpocznij proces szyfrowania za pomocą [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension):
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -117,9 +118,9 @@ Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetNam
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
 
-Po wyświetleniu monitu wpisz *y* aby kontynuować proces szyfrowania dysku na skali ustawić wirtualna wystąpienia.
+Po wyświetleniu monitu wpisz *y* aby kontynuować proces szyfrowania dysku na skali maszyny Wirtualnej zestawu wystąpień.
 
-## <a name="check-encryption-progress"></a>Sprawdzić postęp szyfrowania
+## <a name="check-encryption-progress"></a>Sprawdzanie postępu szyfrowania
 
 Aby sprawdzić stan szyfrowania dysku, należy użyć [Get-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption):
 
@@ -127,7 +128,7 @@ Aby sprawdzić stan szyfrowania dysku, należy użyć [Get-AzureRmVmssDiskEncryp
 Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
 
-Gdy wystąpień maszyn wirtualnych są szyfrowane, *EncryptionSummary* kodu raporty *powiodło się/ProvisioningState* jak pokazano w poniższym przykładzie danych wyjściowych:
+W przypadku wystąpień maszyn wirtualnych są szyfrowane, *EncryptionSummary* kodu raporty *powiodło się/ProvisioningState* jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```powershell
 ResourceGroupName            : myResourceGroup
@@ -147,9 +148,9 @@ EncryptionEnabled            : True
 EncryptionExtensionInstalled : True
 ```
 
-## <a name="disable-encryption"></a>Wyłączenie szyfrowania
+## <a name="disable-encryption"></a>Wyłącz szyfrowanie
 
-Jeśli nie chcesz już używać zaszyfrowanych dysków wystąpień maszyny Wirtualnej, można wyłączyć szyfrowania z [AzureRmVmssDiskEncryption Wyłącz](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) w następujący sposób:
+Jeśli nie chcesz już korzystać z zaszyfrowanych dysków wystąpień maszyny Wirtualnej, można wyłączyć szyfrowania przy użyciu [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) w następujący sposób:
 
 ```azurepowershell-interactive
 Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
@@ -157,4 +158,4 @@ Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vm
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule programu Azure PowerShell jest używany do szyfrowania zestaw skali maszyny wirtualnej. Można również użyć [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) lub szablonów dla [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) lub [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+W tym artykule programu Azure PowerShell jest używany do szyfrowania zestawu skalowania maszyn wirtualnych. Można również użyć [interfejsu wiersza polecenia platformy Azure w wersji 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) lub szablonów dla [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) lub [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).

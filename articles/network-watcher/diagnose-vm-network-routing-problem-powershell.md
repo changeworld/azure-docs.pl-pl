@@ -1,6 +1,6 @@
 ---
-title: Diagnozowanie maszyny wirtualnej routingu problem z siecią - programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: W tym artykule Dowiedz się jak zdiagnozować problem routingu sieci maszyny wirtualnej przy użyciu funkcji w następnym przeskoku obserwatora sieci platformy Azure.
+title: Diagnozowanie maszyny wirtualnej problemu z routingiem sieciowym - programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: W tym artykule dowiesz się, jak diagnozować maszyny wirtualnej problemu z routingiem sieciowym za pomocą następnego przeskoku możliwości usługi Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: jimdial
@@ -18,30 +18,31 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299028"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnozowanie maszyny wirtualnej routingu problem z siecią - programu Azure PowerShell
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnozowanie maszyny wirtualnej problemu z routingiem sieciowym - programu Azure PowerShell
 
-W tym artykule należy wdrożyć maszynę wirtualną (VM), a następnie sprawdź komunikacji z adresu IP i adres URL. Należy określić przyczynę awarii łączności i jak można go usunąć.
+W tym artykule Wdróż maszynę wirtualną (VM), a następnie sprawdź komunikaty do adresu IP i adres URL. Określisz przyczynę niepowodzenia komunikacji oraz sposób rozwiązania problemu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli użytkownik chce zainstalować i używać środowiska PowerShell lokalnie, w tym artykule wymaga środowiska AzureRM PowerShell wersji modułu 5.4.1 lub nowszym. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli zdecydujesz się zainstalować program PowerShell i używać lokalnie, ten artykuł wymaga AzureRM PowerShell w module w wersji 5.4.1 lub nowszej. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Przed utworzeniem maszyny Wirtualnej, należy utworzyć grupę zasobów, aby zawierała maszyny Wirtualnej. Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed utworzeniem maszyny wirtualnej musisz utworzyć grupę zasobów, która będzie zawierała maszynę wirtualną. Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-Tworzenie maszyny Wirtualnej z [nowe AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
+Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
 
 ```azurepowershell-interactive
 $vM = New-AzureRmVm `
@@ -50,15 +51,15 @@ $vM = New-AzureRmVm `
     -Location "East US"
 ```
 
-W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie Kontynuuj pozostałe kroki dopiero po utworzeniu maszyny Wirtualnej i programu PowerShell zwraca dane wyjściowe.
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Wykonywanie pozostałych kroków możesz zacząć dopiero wtedy, gdy maszyna wirtualna zostanie utworzona i program PowerShell zwróci dane wyjściowe.
 
-## <a name="test-network-communication"></a>Test łączności sieciowej
+## <a name="test-network-communication"></a>Testowanie komunikacji sieciowej
 
-Aby przetestować komunikacji sieciowej z obserwatora sieciowego, należy najpierw włączyć obserwatora sieciowego, w regionie, w którym znajduje się w maszynie Wirtualnej, która ma zostać przetestowana, a następnie użyć obserwatora sieciowego następnego przeskoku możliwości do testowania łączności.
+Aby przetestować komunikacji sieciowej przy użyciu usługi Network Watcher, należy najpierw włączyć usługi network watcher w regionie, w którym znajduje się w maszynie Wirtualnej, która ma zostać przetestowana i następnie za pomocą usługi Network Watcher następnego przeskoku możliwości testowania komunikacji.
 
-## <a name="enable-network-watcher"></a>Włącz obserwatora sieciowego
+## <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
-Jeśli masz już obserwatora sieciowego, włączona w regionie wschodnie stany USA, użyj [Get AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) można pobrać obserwatora sieciowego. Poniższy przykład pobiera istniejących obserwatora sieciowego o nazwie *NetworkWatcher_eastus* w *NetworkWatcherRG* grupy zasobów:
+Jeśli masz już usługę Network Watcher włączoną w regionie Wschodnie stany USA, użyj polecenia [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher), aby pobrać usługę Network Watcher. Poniższy przykład pobiera istniejącą usługę Network Watcher o nazwie *NetworkWatcher_eastus* znajdującą się w grupie zasobów *NetworkWatcherRG*:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzureRmNetworkWatcher `
@@ -66,7 +67,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Jeśli nie masz jeszcze obserwatora sieciowego, włączona w regionie wschodnie stany USA, użyj [AzureRmNetworkWatcher nowy](/powershell/module/azurerm.network/new-azurermnetworkwatcher) utworzyć obserwatora sieciowego w regionie wschodnie stany USA:
+Jeśli nie masz jeszcze usługi Network Watcher włączonej w regionie Wschodnie stany USA, użyj polecenia [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher), aby utworzyć usługę Network Watcher w regionie Wschodnie stany USA:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzureRmNetworkWatcher `
@@ -75,11 +76,11 @@ $networkWatcher = New-AzureRmNetworkWatcher `
   -Location "East US"
 ```
 
-### <a name="use-next-hop"></a>Użyj następnego skoku
+### <a name="use-next-hop"></a>Korzystanie z funkcji Następny przeskok
 
-Azure automatycznie tworzy trasy do domyślnej lokalizacji docelowych. Można utworzyć trasy niestandardowe, które zastępują trasy domyślnej. Czasami trasy niestandardowe może spowodować, że komunikacja się nie powieść. Aby przetestować routingu z maszyny Wirtualnej, użyj [Get AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) polecenie w celu ustalenia następnego przeskoku routingu ruchu jest przeznaczony dla określonego adresu.
+Na platformie Azure są automatycznie tworzone trasy do domyślnych miejsc docelowych. Możesz tworzyć trasy niestandardowe zastępujące domyślne trasy. Czasami użycie tras niestandardowych może spowodować niepowodzenie komunikacji. Aby przetestować routing z maszyny Wirtualnej, użyj [Get AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) polecenie, aby określić następnego przeskoku routingu, gdy ruch jest przeznaczony dla określonego adresu.
 
-Test komunikacji wychodzącej z maszyny Wirtualnej do jednego z adresów IP dla www.bing.com:
+Przetestuj komunikację wychodzącą z maszyny wirtualnej do jednego z adresów IP domeny www.bing.com:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkWatcherNextHop `
@@ -89,9 +90,9 @@ Get-AzureRmNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Po kilku sekundach, dane wyjściowe informuje o który **Typ następnego przeskoku** jest **Internet**oraz że **RouteTableId** jest **trasa systemowa**. Wynik tego informuje o tym, czy jest prawidłową trasę do miejsca docelowego.
+Po kilku sekundach, dane wyjściowe informujący o tym, **Typ następnego przeskoku** jest **Internet**oraz że **RouteTableId** jest **trasa systemowa**. Ten wynik poinformuje Cię o tym, że jest prawidłową trasę do lokalizacji docelowej.
 
-Przetestuj komunikacja wychodząca z maszyny Wirtualnej 172.31.0.100:
+Przetestuj komunikację wychodzącą z maszyny wirtualnej do adresu 172.31.0.100:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkWatcherNextHop `
@@ -101,11 +102,11 @@ Get-AzureRmNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Dane wyjściowe zwrócone informuje o który **Brak** jest **Typ następnego przeskoku**oraz że **RouteTableId** jest również **trasa systemowa**. Wynik tego informuje o tym, gdy istnieje trasa prawidłowego systemu docelowego, brak nie następnego przeskoku do kierowania ruchem do miejsca docelowego.
+Dane wyjściowe zwracane informujący o tym, **Brak** jest **Typ następnego przeskoku**oraz że **RouteTableId** jest również **trasa systemowa**. Ten wynik oznacza, że istnieje prawidłowa trasa systemowa do miejsca docelowego, ale nie ma następnego przeskoku umożliwiającego kierowanie ruchu do miejsca docelowego.
 
-## <a name="view-details-of-a-route"></a>Wyświetl szczegóły trasy
+## <a name="view-details-of-a-route"></a>Wyświetlanie szczegółów trasy
 
-Do analizy, dalsze routingu, przejrzyj skuteczne trasy dla interfejsu sieciowego z [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) polecenia:
+Aby analizować dalsze routingu, zapoznaj się z obowiązujące trasy dla interfejsu sieciowego z [Get AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) polecenia:
 
 ```azurepowershell-interactive
 Get-AzureRmEffectiveRouteTable `
@@ -114,7 +115,7 @@ Get-AzureRmEffectiveRouteTable `
   Format-table
 ```
 
-Zwrócono dane wyjściowe, który zawiera następujący tekst:
+Jest zwracany danych wyjściowych, który zawiera następujący tekst:
 
 ```powershell
 Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
@@ -126,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Jak widać w poprzednim danych wyjściowych z trasą **AaddressPrefix** z **0.0.0.0/0** rozsyła cały ruch, które nie są przeznaczone dla adresów w obrębie prefiksy adresów innych tras z następnego przeskoku **Internet**. Jak również widoczna w danych wyjściowych, jednak istnieje trasa domyślna do prefiksu 172.16.0.0/12, który zawiera 172.31.0.100 adres **Typ następnego przeskoku** jest **Brak**. Azure tworzy trasę domyślną elementom 172.16.0.0/12, ale nie określono typu następnego przeskoku, dopóki ma powodu do. Jeśli na przykład zakres adresów 172.16.0.0/12 dodano do przestrzeni adresowej sieci wirtualnej, Azure zmiany **Typ następnego przeskoku** do **sieci wirtualnej** dla danej trasy. Sprawdzenie czy następnie następuje wyświetlenie **sieci wirtualnej** jako **Typ następnego przeskoku**.
+Jak widać w danych wyjściowych poprzedniego, z trasą **AaddressPrefix** z **0.0.0.0/0** kieruje cały ruch, które nie są przeznaczone dla adresów w obrębie innej trasy prefiksy adresów z następnym przeskokiem **Internet**. Jak widać również w danych wyjściowych, mimo że ma domyślną trasę do prefiksu 172.16.0.0/12, która zawiera 172.31.0.100 adres, **Typ następnego przeskoku** jest **Brak**. Platforma Azure tworzy domyślną trasę dla zakresu adresów 172.16.0.0/12, ale nie określa typu następnego przeskoku, jeśli nie jest to wymagane. Jeśli na przykład dodano 172.16.0.0/12 zakresu adresów przestrzeni adresowej sieci wirtualnej, zmieni się Azure **Typ następnego przeskoku** do **sieć wirtualna** dla danej trasy. Następnie pokazywałaby sprawdzenie **sieć wirtualna** jako **Typ następnego przeskoku**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -138,6 +139,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzyć Maszynę wirtualną i zdiagnozować, routingu sieciowego z maszyny Wirtualnej. Wiesz, że Azure tworzy kilka tras domyślnych i przetestowane routingu do dwóch różnych miejsc docelowych. Dowiedz się więcej o [routing na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oraz sposób [tworzenia niestandardowych tras](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+W tym artykule utworzono Maszynę wirtualną i zdiagnozować, routing w sieci z maszyny Wirtualnej. Uzyskano informacje o tworzeniu tras domyślnych na platformie Azure i przetestowano routing do dwóch różnych miejsc docelowych. Uzyskaj więcej informacji na temat [routingu na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dowiedz się, jak [tworzyć trasy niestandardowe](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Dla połączeń wychodzących maszyny Wirtualnej, można również określić opóźnienie i dozwolonych i zabronionych ruch sieciowy między maszyny Wirtualnej i punktu końcowego za pomocą Monitora sieci [Rozwiązywanie problemów z połączenia](network-watcher-connectivity-powershell.md) możliwości. Można monitorować komunikację między maszyny Wirtualnej i punktu końcowego, takie jak adres IP lub adres URL, w czasie przy użyciu możliwości monitor połączenia obserwator sieci. Aby dowiedzieć się więcej, zobacz temat [monitorować połączenia sieciowego](connection-monitor.md).
+Dla połączeń wychodzących maszyny Wirtualnej, można również określić opóźnienie i dozwolonych i niedozwolonych ruch sieciowy między maszyną Wirtualną i punkt końcowy korzystający z usługi Network Watcher [Rozwiązywanie problemów z połączeniami](network-watcher-connectivity-powershell.md) możliwości. Można monitorować komunikację między maszyny Wirtualnej i punktu końcowego, takie jak adres IP lub adres URL, wraz z upływem czasu przy użyciu funkcji monitor połączeń usługi Network Watcher. Aby dowiedzieć się więcej, zobacz temat [monitorowanie połączenia sieciowego](connection-monitor.md).

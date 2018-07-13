@@ -1,6 +1,6 @@
 ---
-title: Dołączenie dysku danych do maszyny Wirtualnej systemu Windows na platformie Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Jak można dołączyć danych do nowego lub istniejącego dysku do maszyny Wirtualnej systemu Windows przy użyciu programu PowerShell z modelu wdrażania usługi Resource Manager.
+title: Dołączanie dysku danych do maszyny Wirtualnej z systemem Windows na platformie Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Jak dołączyć nowy lub istniejący dysk danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell przy użyciu modelu wdrażania usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,29 +16,30 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: cynthn
 ms.openlocfilehash: 384203134d1588053f91b66d32e9b0bf1ec69306
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38680919"
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Dołączenie dysku danych do maszyny Wirtualnej systemu Windows przy użyciu programu PowerShell
+# <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Dołączanie dysku danych do maszyny Wirtualnej Windows przy użyciu programu PowerShell
 
-W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszyny wirtualnej systemu Windows przy użyciu programu PowerShell. 
+W tym artykule pokazano, jak dołączyć istniejących i nowych dysków na maszynę wirtualną Windows przy użyciu programu PowerShell. 
 
-Zanim to zrobisz, przejrzyj następujące wskazówki:
-* Rozmiar maszyny wirtualnej Określa, ile można dołączać dysków z danymi. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Aby użyć magazyn w warstwie Premium, będziesz potrzebować magazyn w warstwie Premium włączone rozmiar maszyny Wirtualnej, takie jak serii DS lub GS-series maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [magazyn w warstwie Premium: magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej Azure](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Zanim to zrobisz, przejrzyj te wskazówki:
+* Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Aby korzystać z usługi Premium storage, musisz mieć usługi Premium Storage włączone rozmiar maszyny Wirtualnej, takich jak maszyny wirtualne serii DS lub GS. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli wybierzesz do zainstalowania i używania programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell modułu w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 
-## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Dodaj dysk danych puste do maszyny wirtualnej
+## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Dodawanie pustego dysku danych do maszyny wirtualnej
 
-Ten przykład przedstawia sposób dodawania dysku pusty danych do istniejącej maszyny wirtualnej.
+Ten przykład przedstawia sposób dodawania pustego dysku danych do istniejącej maszyny wirtualnej.
 
-### <a name="using-managed-disks"></a>Za pomocą dysków zarządzanych
+### <a name="using-managed-disks"></a>Używanie dysków zarządzanych
 
 ```azurepowershell-interactive
 $rgName = 'myResourceGroup'
@@ -56,8 +57,8 @@ $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Ma
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ```
 
-### <a name="using-managed-disks-in-an-availability-zone"></a>Za pomocą dysków zarządzanych w strefie dostępności
-Aby utworzyć dysk w strefie dostępności, użyj [AzureRmDiskConfig nowy](/powershell/module/azurerm.compute/new-azurermdiskconfig) z `-Zone` parametru. W poniższym przykładzie tworzony jest dysk w strefie *1*.
+### <a name="using-managed-disks-in-an-availability-zone"></a>Używanie dysków zarządzanych w strefie dostępności
+Aby utworzyć dysk w strefie dostępności, należy użyć [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) z `-Zone` parametru. Poniższy przykład tworzy dysk w strefie *1*.
 
 
 ```powershell
@@ -79,7 +80,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>Zainicjuj dysk
 
-Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjalizować dysk, możesz zalogować się do maszyny Wirtualnej i użyj przystawki Zarządzanie dyskami. Jeśli usługi WinRM i certyfikatu na maszynie Wirtualnej jest włączona podczas jego tworzenia, można użyć zdalnego programu PowerShell, aby zainicjalizować dysk. Można także użyć niestandardowego rozszerzenia skryptu: 
+Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjować dysk, możesz zalogować się do maszyny Wirtualnej i użyj przystawki Zarządzanie dyskami. Jeśli włączono usługę WinRM i certyfikatu na maszynie Wirtualnej podczas jego tworzenia, można użyć zdalnego programu PowerShell, aby zainicjalizować dysk. Można również użyć rozszerzenia niestandardowego skryptu: 
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -88,7 +89,7 @@ Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjalizować dysk, możes
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
         
-Plik skryptu może zawierać przypominać ten kod, aby zainicjować dyski:
+Plik skryptu może zawierać podobny do tego kodu, aby zainicjować dyski:
 
 ```azurepowershell-interactive
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
@@ -108,9 +109,9 @@ Plik skryptu może zawierać przypominać ten kod, aby zainicjować dyski:
 ```
 
 
-## <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołączanie istniejącego dysku danych do maszyny Wirtualnej
+## <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołącz istniejący dysk danych do maszyny Wirtualnej
 
-Jako dysk danych, można dołączyć istniejącego dysku zarządzanego z maszyną wirtualną. 
+Można dołączyć istniejącego dysku zarządzanego do maszyny Wirtualnej jako dysk z danymi. 
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -128,4 +129,4 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Utwórz [migawki](snapshot-copy-managed-disk.md).
+Tworzenie [migawki](snapshot-copy-managed-disk.md).

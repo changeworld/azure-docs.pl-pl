@@ -1,6 +1,6 @@
 ---
-title: Jak używać wtyczki programu Apache Cordova dla usługi Azure Mobile Apps
-description: Jak używać wtyczki programu Apache Cordova dla usługi Azure Mobile Apps
+title: Jak używać wtyczki Apache Cordova dla usługi Azure Mobile Apps
+description: Jak używać wtyczki Apache Cordova dla usługi Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152590"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38467890"
 ---
-# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak używać oprogramowania Apache Cordova biblioteki klienta usługi Azure Mobile Apps
+# <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej Apache Cordova dla usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Ten przewodnik zawiera wskazówki do wykonywania typowych scenariuszy przy użyciu najnowszych [Apache wtyczki Cordova dla usługi Azure Mobile Apps]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonać [Azure Mobile Apps Szybki Start] tworzenie zaplecza, Utwórz tabelę i Pobierz wstępnie skompilowanym projektem Apache Cordova. W tym przewodniku możemy skupić się na wtyczki po stronie klienta Apache Cordova.
+Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [Wtyczka Apache Cordova dla usługi Azure Mobile Apps]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure mobilnych: aplikacje Szybki Start] Aby utworzyć zaplecze, utworzyć tabelę, a następnie Pobierz wstępnie skompilowanym projektem Apache Cordova. W tym przewodniku skupimy się na wtyczkę Apache Cordova po stronie klienta.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
-Zestaw SDK obsługuje Apache Cordova 6.0.0 i później z systemem iOS, Android i Windows urządzeń.  Obsługa platform wygląda następująco:
+Ten zestaw SDK obsługuje v6.0.0 Apache Cordova i później dla systemu iOS, Android i Windows urządzenia.  Obsługa platform jest następująca:
 
-* Interfejs API systemu android 19 – 24 (KitKat za pośrednictwem nugacie).
-* System iOS w wersji 8.0 lub nowszej.
+* Interfejs API systemu android 19 – 24 (KitKat za pośrednictwem określić wersję Nougat).
+* dla systemu iOS w wersji 8.0 lub nowszej.
 * Windows Phone 8.1.
-* Platforma uniwersalna systemu Windows.
+* Platforma Universal Windows.
 
 ## <a name="Setup"></a>Instalacji i wymagania wstępne
-W tym przewodniku założono, że utworzono wewnętrznej bazie danych z tabeli. W tym przewodniku założono, że tabela ma ten sam schemat jako tabele w tych samouczkach. W tym przewodniku założono również, że dodano wtyczki Apache Cordova w kodzie.  Jeśli użytkownik nie zostało zrobione, można dodawać wtyczki oprogramowania Apache Cordova do projektu w wierszu polecenia:
+W tym przewodniku założono, że utworzono zaplecza za pomocą tabeli. W tym przewodniku założono, że tabela ma ten sam schemat, jak tabele w tych samouczkach. W tym przewodniku założono również, że dodano wtyczki programu Apache Cordova w kodzie.  Jeśli użytkownik nie zostało zrobione, można dodawać wtyczki programu Apache Cordova do projektu w wierszu polecenia:
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Aby uzyskać więcej informacji na temat tworzenia [pierwszej aplikacji platformy Apache Cordova], ich w dokumentacji.
+Aby uzyskać więcej informacji na temat tworzenia [Twoja pierwsza aplikacja Apache Cordova], zobacz ich dokumentację.
 
-## <a name="ionic"></a>Konfigurowanie aplikacji jonowych v2
+## <a name="ionic"></a>Konfigurowanie aplikacji platformy Ionic 2
 
-Aby poprawnie skonfigurować projekt jonowych v2, utworzona Podstawowa aplikacja i dodawanie wtyczki Cordova:
+Aby poprawnie skonfigurować projekt środowiska Ionic w wersji 2, utworzysz podstawową aplikację i dodawanie wtyczki Cordova:
 
 ```
 ionic start projectName --v2
@@ -53,78 +53,78 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-Dodaj następujące wiersze do `app.component.ts` można utworzyć obiektu klienta:
+Dodaj następujące wiersze do `app.component.ts` do utworzenia obiektu klienta:
 
 ```
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
 
-Teraz możesz skompilować i uruchomić projekt w przeglądarce:
+Teraz można tworzyć i uruchomić projekt w przeglądarce:
 
 ```
 ionic platform add browser
 ionic run browser
 ```
 
-Wtyczka Cordova aplikacji mobilnej Azure obsługuje zarówno jonowych aplikacje v1 i v2.  Tylko aplikacje jonowych v2 wymagają dodatkowych deklaracji `WindowsAzure` obiektu.
+Wtyczka usługi Azure Mobile Apps Cordova obsługuje obie platformy Ionic aplikacje v1 i v2.  Tylko aplikacje platformy Ionic 2 wymagają dodatkowej deklaracji pod kątem `WindowsAzure` obiektu.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Porady: uwierzytelnianie użytkowników
-Usługa aplikacji Azure obsługuje uwierzytelniania i autoryzacji użytkowników aplikacji przy użyciu różnych dostawców tożsamości zewnętrznych: Facebook, Google, Microsoft Account i Twitter. Tabele, aby ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników można ustawić uprawnienia. Umożliwia także tożsamość uwierzytelnionych użytkowników do zaimplementowania reguły autoryzacji w skryptach serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
+## <a name="auth"></a>Instrukcje: uwierzytelnianie użytkowników
+Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, Account Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
 
-Korzystając z uwierzytelniania w aplikacji oprogramowania Apache Cordova, następujące wtyczki Cordova muszą być dostępne:
+Podczas uwierzytelniania w aplikacji Apache Cordova, następujące wtyczki Cordova muszą być dostępne:
 
 * [cordova wtyczka urządzenie]
 * [cordova wtyczka inappbrowser]
 
-Obsługiwane są dwa przepływy uwierzytelniania: przepływu serwera i klienta przepływu.  Przepływ server zapewnia najprostszą środowisko uwierzytelniania, zależy od interfejsu uwierzytelniania sieci web dostawcy. Przepływ klienta zezwala lepszą integrację z możliwości specyficznych dla urządzeń, takich jak single-sign-on jako opiera się na zestawy SDK urządzenia specyficznego dla dostawcy.
+Obsługiwane są dwa przepływy uwierzytelniania: przepływ serwera i klienta przepływu.  Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejs uwierzytelniania sieci web dostawcy. Przepływ klienta pozwala na lepszą integrację z funkcjami specyficznych dla urządzenia, takich jak logowanie jednokrotne ponieważ opiera się na zestawy SDK specyficzne dla urządzenia specyficzny dla dostawcy.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Porady: Konfigurowanie usługi Mobile App Service dla adresy URL przekierowań zewnętrznych.
-Kilka typów aplikacji oprogramowania Apache Cordova używania możliwości sprzężenia zwrotnego na potrzeby obsługi przepływu OAuth interfejsu użytkownika.  Przepływu OAuth interfejsu użytkownika na hoście lokalnym spowodować problemy, ponieważ usługa uwierzytelniania tylko potrafi mogą korzystać z usługi domyślnie.  Przykłady problematyczne przepływu OAuth interfejs użytkownika:
+### <a name="configure-external-redirect-urls"></a>Porady: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
+Kilka typów aplikacji Apache Cordova używać możliwości sprzężenia zwrotnego do obsługi uwierzytelniania OAuth interfejsu użytkownika przepływów.  Przepływy uwierzytelniania OAuth interfejsu użytkownika na hoście lokalnym powodować problemy, ponieważ usługa uwierzytelniania wie jedynie, sposób wykorzystywania usługi domyślnie.  Przykłady problematyczne przepływów uwierzytelniania OAuth interfejsu użytkownika:
 
 * Ripple emulator.
-* Załaduj ponownie z Ionic na żywo.
-* Uruchomienie zaplecze aplikacji mobilnej lokalnie
-* Uruchomiony zaplecza aplikacji mobilnych w innej usłudze Azure App Service niż jeden zapewniający uwierzytelnianie.
+* Ponowne ładowanie dzięki zastosowaniu środowiska Ionic na żywo.
+* Działająca lokalnie zaplecza aplikacji mobilnych
+* Uruchamianie zaplecza aplikacji mobilnych w innej usłudze Azure App Service niż jeden zapewniający uwierzytelnianie.
 
-Wykonaj te instrukcje, aby dodać ustawienia lokalne dla konfiguracji:
+Wykonaj te instrukcje, aby dodać ustawienia lokalne do konfiguracji:
 
 1. Zaloguj się do witryny [Azure Portal].
-2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę aplikacji mobilnej.
+2. Wybierz **wszystkie zasoby** lub **App Services** kliknij nazwę swojej aplikacji mobilnej.
 3. Kliknij przycisk **narzędzia**
-4. Kliknij przycisk **Eksploratora zasobów** w OBSERVE menu, następnie kliknij przycisk **Przejdź**.  Powoduje otwarcie nowego okna lub karty.
-5. Rozwiń węzeł **config**, **authsettings** węzłów witryny w obszarze nawigacji po lewej stronie.
+4. Kliknij przycisk **Eksploratora zasobów** w OBSERVE menu, następnie kliknij przycisk **Przejdź**.  Zostanie otwarte nowe okno lub kartę.
+5. Rozwiń **config**, **authsettings** węzłów do lokacji w obszarze nawigacji po lewej stronie.
 6. Kliknij przycisk **edycji**
-7. Wyszukaj element "allowedExternalRedirectUrls".  Może zostać ustawiony na zero lub tablicy wartości.  Zmień wartość na następującą wartość:
+7. Zwróć uwagę na element "allowedExternalRedirectUrls".  Może zostać ustawiony na wartość null lub tablicę wartości.  Zmień wartość na następującą wartość:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Zastąp adresy URL adresy URL usługi.  Przykłady obejmują "http://localhost:3000" (w przypadku usługi próbki Node.js) lub "http://localhost:4400" (dla usługi Ripple).  Jednak te adresy URL są przykłady - sytuacji, w tym dla usług wymienionych w przykładach, mogą być inne.
+    Zastąp adresy URL przy użyciu adresów URL usługi.  Przykłady obejmują "http://localhost:3000" (dla środowiska Node.js przykładowej usługi), lub "http://localhost:4400" (dla usługi Ripple).  Jednak te adresy URL są przykłady — w sytuacji, w tym dla usług wymienionych w przykładach, mogą być inne.
 8. Kliknij przycisk **odczytu/zapisu** przycisk w prawym górnym rogu ekranu.
-9. Kliknij zielony **PUT** przycisku.
+9. Kliknij zielony **umieścić** przycisku.
 
-Ustawienia są zapisywane w tym momencie.  Nie zamykaj okna przeglądarki, aż do zakończenia ustawienia zapisywania.
-Te adresy URL sprzężenia zwrotnego należy również dodać do ustawienia mechanizmu CORS usługi aplikacji:
+Ustawienia są zapisywane w tym momencie.  Nie zamykaj okna przeglądarki do czasu zakończenia ustawienia zapisywania.
+Te adresy URL sprzężenia zwrotnego można również dodać ustawienia mechanizmu CORS usługi App Service:
 
 1. Zaloguj się do witryny [Azure Portal].
-2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę aplikacji mobilnej.
-3. Automatycznie zostanie otwarty blok ustawień.  Jeśli nie kliknij przycisk **wszystkie ustawienia**.
-4. Kliknij przycisk **CORS** w menu interfejsu API.
+2. Wybierz **wszystkie zasoby** lub **App Services** kliknij nazwę swojej aplikacji mobilnej.
+3. Automatycznie zostanie otwarty blok ustawienia.  Jeśli nie kliknij przycisk **wszystkie ustawienia**.
+4. Kliknij przycisk **CORS** menu interfejsu API.
 5. Wprowadź adres URL, który chcesz dodać w polu pod warunkiem i naciśnij klawisz Enter.
 6. Wprowadź dodatkowe adresy URL, zgodnie z potrzebami.
 7. Kliknij polecenie **Zapisz**, aby zapisać ustawienia.
 
 Trwa około 10 – 15 sekund nowe ustawienia zaczęły obowiązywać.
 
-## <a name="register-for-push"></a>Porady: rejestrowanie do powiadomień wypychanych
-Zainstaluj [phonegap wtyczka wypychanie] do obsługi powiadomień wypychanych.  Ten dodatek plug-in można łatwo dodać przy użyciu `cordova plugin add` polecenie w wierszu polecenia lub za pomocą Instalatora dodatku Git w programie Visual Studio.  Następujący kod w aplikacji platformy Apache Cordova rejestruje urządzenie dla powiadomień wypychanych:
+## <a name="register-for-push"></a>Porady: zarejestrować odbieranie powiadomień wypychanych
+Zainstaluj [phonegap wtyczka push] do obsługi powiadomień wypychanych.  Ta wtyczka można łatwo dodać przy użyciu `cordova plugin add` polecenia w wierszu polecenia lub za pomocą Instalatora wtyczki usługi Git w programie Visual Studio.  Poniższy kod w swojej aplikacji Apache Cordova wykonywana jest rejestracja urządzenia dla powiadomień wypychanych:
 
 ```
 var pushOptions = {
@@ -163,22 +163,22 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-Zestaw SDK usługi Notification Hubs umożliwia wysyłanie powiadomień wypychanych z serwera.  Nigdy nie wysyłaj powiadomienia wypychane bezpośrednio od klientów. Dzięki temu może służyć do wyzwolenia odmowa atak usługi Notification Hubs lub systemu powiadomień platformy.  System powiadomień platformy można zakaz ruchu wyniku takich ataków.
+Zestaw SDK usługi Notification Hubs umożliwia wysyłanie powiadomień wypychanych z serwera.  Nigdy nie wysyłaj powiadomienia wypychane bezpośrednio od klientów. Ten sposób może służyć do wyzwolenia "odmowa usługi" przeciwko usługi Notification Hubs lub system powiadomień platformy.  System powiadomień platformy można zablokować ruch sieciowy w wyniku takich ataków.
 
 ## <a name="more-information"></a>Więcej informacji
 
-Można znaleźć szczegółowe szczegóły interfejsu API w naszym [dokumentacji interfejsu API](http://azure.github.io/azure-mobile-apps-js-client/).
+Można znaleźć szczegółowe szczegółów interfejsu API w naszym [dokumentacji interfejsu API](http://azure.github.io/azure-mobile-apps-js-client/).
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com
-[Azure Mobile Apps Szybki Start]: app-service-mobile-cordova-get-started.md
+[Azure mobilnych: aplikacje Szybki Start]: app-service-mobile-cordova-get-started.md
 [Rozpoczynanie pracy z uwierzytelnianiem]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Apache wtyczki Cordova dla usługi Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[pierwszej aplikacji platformy Apache Cordova]: http://cordova.apache.org/#getstarted
+[Wtyczka Apache Cordova dla usługi Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
+[Twoja pierwsza aplikacja Apache Cordova]: http://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[phonegap wtyczka wypychanie]: https://www.npmjs.com/package/phonegap-plugin-push
+[phonegap wtyczka push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova wtyczka urządzenie]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova wtyczka inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

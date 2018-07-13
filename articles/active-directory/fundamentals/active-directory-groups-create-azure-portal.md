@@ -14,12 +14,12 @@ ms.date: 08/04/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767527"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857727"
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ W tym artykule wyjaśniono, jak utworzyć i wypełnić nową grupę w usłudze A
 
    ![Wybieranie polecenia Dodaj](./media/active-directory-groups-create-azure-portal/add-group-command.png)
 5. W bloku **Grupa** dodaj nazwę i opis grupy.
-6. Aby wybrać członków do dodania do grupy, wybierz pozycję **Przypisane** w polu **Typ członkostwa**, a następnie wybierz pozycję **Członkowie**. Aby uzyskać więcej informacji o sposobie zarządzania członkostwem w grupie dynamicznej, zobacz [Tworzenie zaawansowanych reguł członkostwa w grupie przy użyciu atrybutów](../active-directory-groups-dynamic-membership-azure-portal.md).
+6. Aby wybrać członków do dodania do grupy, wybierz pozycję **Przypisane** w polu **Typ członkostwa**, a następnie wybierz pozycję **Członkowie**. Aby uzyskać więcej informacji o sposobie zarządzania członkostwem w grupie dynamicznej, zobacz [Tworzenie zaawansowanych reguł członkostwa w grupie przy użyciu atrybutów](../users-groups-roles/groups-dynamic-membership.md).
 
    ![Wybieranie członków do dodania](./media/active-directory-groups-create-azure-portal/select-members.png)
 7. W bloku **Członkowie** wybierz co najmniej jednego użytkownika lub urządzenie w celu dodania do grupy, a następnie kliknij przycisk **Wybierz** w dolnej części bloku, aby dodać te pozycje do grupy. Pole **Użytkownik** służy do filtrowania wyświetlanych danych na podstawie dopasowania wpisanej wartości do dowolnej części nazwy użytkownika lub urządzenia. W tym polu nie są akceptowane żadne symbole wieloznaczne.
@@ -56,4 +56,4 @@ Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 * [Zarządzanie ustawieniami grupy](active-directory-groups-settings-azure-portal.md)
 * [Zarządzanie członkami grupy](active-directory-groups-members-azure-portal.md)
 * [Zarządzanie członkostwem w grupie](active-directory-groups-membership-azure-portal.md)
-* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../users-groups-roles/groups-dynamic-membership.md)

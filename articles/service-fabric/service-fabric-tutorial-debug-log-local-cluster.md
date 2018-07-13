@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a0a50c4315540fba014c4f152f108a61b328a936
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109430"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652706"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Samouczek: debugowanie aplikacji Java wdrożonej w lokalnym klasterze usługi Service Fabric
 
@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 4. Zaktualizuj plik entryPoint.sh usługi do debugowania, tak aby uruchamiał proces języka Java z parametrami debugowania zdalnego. W tym samouczku jest używany fronton bezstanowy: *Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*. W tym przykładzie na potrzeby debugowania ustawiono port 8001.
 
     ```bash
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
     ```
 
 5. Zaktualizuj manifest aplikacji, ustawiając liczbę wystąpień lub liczbę replik dla debugowanej usługi na jeden. To ustawienie pozwala uniknąć konfliktów z portem używanym podczas debugowania. Na przykład w przypadku usług bezstanowych ustaw ``InstanceCount="1"``, a dla usług stanowych ustaw docelowy i minimalny rozmiar zestawu replik na 1 w następujący sposób: ``TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
@@ -116,7 +116,7 @@ Poniższe kroki przedstawiają sposób przekierowywania dzienników aplikacji z 
     W poniższym przykładzie pokazano próbkę wykonania:
 
     ```bash
-    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar
+    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar
     ```
 
 Na tym etapie zapoznano się ze sposobem debugowania i uzyskiwać dostęp do dzienników aplikacji podczas tworzenia aplikacji Java w usłudze Service Fabric.

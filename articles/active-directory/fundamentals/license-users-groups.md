@@ -17,12 +17,12 @@ ms.date: 08/22/2017
 ms.author: lizross
 ms.reviewer: jeffgilb
 custom: it-pro
-ms.openlocfilehash: 738e96bf631833b8d35847114ee08fc3f5bec2a4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767463"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856093"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Szybki start: przypisywanie licencji do użytkowników w usłudze Azure Active Directory
 Usługi Azure AD oparte na licencjach wymagają aktywowania subskrypcji usługi Azure Active Directory (Azure AD) w dzierżawie platformy Azure. Po aktywowaniu subskrypcji administratorzy usługi Azure AD zarządzają funkcjami usługi, a licencjonowani użytkownicy korzystają z nich. Gdy kupisz rozwiązanie Enterprise Mobility + Security, Azure AD — wersja Premium lub Azure AD — wersja Podstawowa, Twoja dzierżawa zostanie zaktualizowana w celu uwzględnienia nowej subskrypcji, w tym jej okresu ważności oraz licencji przedpłaconych. Informacje dotyczące subskrypcji, w tym liczby przypisanych lub dostępnych licencji, są dostępne w obszarze **Azure Active Directory** w witrynie Azure Portal po otwarciu kafelka **Licencje**. Blok **Licencje** to również najlepsze miejsce do zarządzania przypisaniami licencji.
@@ -35,7 +35,7 @@ Możesz użyć [przypisywania licencji opartego na grupach](active-directory-lic
 * Możesz delegować decyzję do innych kierowników w organizacji (korzystając z [grup samoobsługi](../users-groups-roles/groups-self-service-management.md))
 
 > [!TIP]
-> Aby zapoznać się ze szczegółowym omówieniem przypisywania licencji do grup, w tym ze scenariuszami zaawansowanymi oraz scenariuszami dotyczącymi licencjonowania usługi Office 365, zobacz [Assign licenses to users by group membership in Azure Active Directory (Przypisywanie licencji do użytkowników przez członkostwo w grupie w usłudze Azure Active Directory)](../active-directory-licensing-group-assignment-azure-portal.md).
+> Aby zapoznać się ze szczegółowym omówieniem przypisywania licencji do grup, w tym ze scenariuszami zaawansowanymi oraz scenariuszami dotyczącymi licencjonowania usługi Office 365, zobacz [Assign licenses to users by group membership in Azure Active Directory (Przypisywanie licencji do użytkowników przez członkostwo w grupie w usłudze Azure Active Directory)](../users-groups-roles/licensing-groups-assign.md).
 
 ## <a name="assign-licenses-to-users-and-groups"></a>Przypisywanie licencji do użytkowników i grup
 Korzystając z aktywnej subskrypcji, należy najpierw przypisać licencję sobie, a następnie odświeżyć przeglądarkę, aby mieć pewność, że wyświetlane są wszystkie oczekiwane funkcje subskrypcji. Kolejnym krokiem jest przypisanie licencji do użytkowników, którzy potrzebują dostępu do płatnych funkcji usługi Azure AD. Łatwym sposobem przypisywania licencji jest przypisanie licencji do grup użytkowników zamiast do poszczególnych użytkowników. Po przypisaniu licencji do grupy wszyscy członkowie grupy otrzymają licencję. Po dodaniu użytkowników do grupy lub ich usunięciu właściwa licencja zostanie automatycznie przypisana lub usunięta. 

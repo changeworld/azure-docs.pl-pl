@@ -10,6 +10,8 @@
   items:
     - name: Wdrażanie rozwiązania do zdalnego monitorowania
       href: quickstart-remote-monitoring-deploy.md
+    - name: Wdrażanie rozwiązania do konserwacji zapobiegawczej
+      href: quickstart-predictive-maintenance-deploy.md
     - name: Wdrażanie rozwiązania do symulacji urządzeń
       href: quickstart-device-simulation-deploy.md
 - name: Samouczki

@@ -150,6 +150,16 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zasoby
   items:
+    - name: 'Przykłady usługi Azure IoT dla języka C# (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: Przykłady usługi Azure IoT dla platformy Node.js
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: Przykłady usługi Azure IoT dla języka Java
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: Przykłady usługi Azure IoT dla języka Python
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: Przykłady usługi Azure IoT dla platformy iOS
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Certyfikat platformy Microsoft Azure dla IoT — wykaz urządzeń
       href: 'https://catalog.azureiotsuite.com/'
     - name: Centrum deweloperów Azure IoT

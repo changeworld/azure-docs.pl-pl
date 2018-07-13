@@ -1,6 +1,6 @@
 ---
-title: Jak używać tematów i subskrypcji Azure Service Bus za pomocą języka Node.js | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać tematów usługi Service Bus i subskrypcji platformy Azure z poziomu aplikacji Node.js.
+title: Jak używać usługi Azure Service Bus tematów i subskrypcji przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać tematów usługi Service Bus i subskrypcji na platformie Azure z poziomu aplikacji Node.js.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
 ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641309"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38705000"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Sposób użycia usługi Service Bus tematów i subskrypcji za pomocą języka Node.js
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Sposób użycia usługi Service Bus tematów i subskrypcji przy użyciu środowiska Node.js
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym przewodniku opisano, jak używać tematów usługi Service Bus i subskrypcji z poziomu aplikacji Node.js. Omówione scenariusze obejmują:
+Ten przewodnik opisuje sposób używania tematów usługi Service Bus i subskrypcje, z poziomu aplikacji Node.js. Omówione scenariusze obejmują:
 
 - Tworzenie tematów i subskrypcji 
 - Tworzenie filtrów subskrypcji 
@@ -38,15 +38,15 @@ Aby uzyskać więcej informacji o tematach i subskrypcjach, zobacz [następne kr
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
-Utwórz pustą aplikację Node.js. Instrukcje dotyczące tworzenia aplikacji Node.js, zobacz [tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure], [usługi w chmurze Node.js] [ Node.js Cloud Service] przy użyciu programu Windows PowerShell lub witryny sieci Web za pomocą programu WebMatrix.
+Tworzenie pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js, zobacz [Tworzenie i wdrażanie aplikacji w technologii Node.js do witryny sieci Web platformy Azure], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu Windows Program PowerShell lub witryny sieci Web za pomocą programu WebMatrix.
 
-## <a name="configure-your-application-to-use-service-bus"></a>Skonfigurować aplikację do użycia z magistralą usług
-Aby korzystać z usługi Service Bus, Pobierz pakiet Node.js Azure. Ten pakiet zawiera zestaw bibliotek, które komunikują się z usługi Service Bus REST.
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus
+Aby korzystać z usługi Service Bus, Pobierz pakiet Node.js platformy Azure. Ten pakiet zawiera zbiór bibliotek, które komunikują się z usługami interfejsu REST usługi Service Bus.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Umożliwia uzyskanie pakietu węzeł Menedżera pakietów (NPM)
-1. Otwórz interfejs wiersza polecenia, takich jak **PowerShell** (system Windows), **terminali** (Mac), lub **Bash** (Unix).
-2. Przejdź do folderu, w którym utworzono przykładowej aplikacji.
-3. Typ **azure instalacji narzędzia npm** w oknie wiersza polecenia, co powinno spowodować następujące dane wyjściowe:
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Uzyskiwanie pakietu przy użyciu Node Package Manager (NPM)
+1. Otwórz interfejs wiersza polecenia, takie jak **PowerShell** (Windows), **terminalu** (Mac) lub **Bash** (Unix).
+2. Przejdź do folderu, w której utworzono aplikację przykładową.
+3. Typ **npm zainstalować azure** w oknie wiersza polecenia, co powinno spowodować następujące dane wyjściowe:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -61,30 +61,30 @@ Aby korzystać z usługi Service Bus, Pobierz pakiet Node.js Azure. Ten pakiet z
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. Możesz ręcznie uruchomić **ls** polecenie, aby sprawdzić, czy **węzła\_modułów** folder został utworzony. W tym folderze znaleźć **azure** pakiet, który zawiera biblioteki, musisz mieć dostęp tematów usługi Service Bus.
+3. Można ręcznie uruchomić **ls** polecenie, aby sprawdzić, czy **węzła\_modułów** folder został utworzony. Wewnątrz tego folderu Znajdź **azure** pakiet, który zawiera biblioteki, musisz mieć dostęp tematów usługi Service Bus.
 
 ### <a name="import-the-module"></a>Zaimportuj moduł
-Za pomocą Notatnika lub innego edytora tekstu, Dodaj następujący element do góry **server.js** pliku aplikacji:
+Za pomocą Notatnika lub innego edytora tekstu, Dodaj następujący kod do górnej części **server.js** pliku aplikacji:
 
 ```javascript
 var azure = require('azure');
 ```
 
-### <a name="set-up-a-service-bus-connection"></a>Skonfiguruj połączenie usługi Service Bus
-Moduł Azure odczytuje zmiennej środowiskowej `AZURE_SERVICEBUS_CONNECTION_STRING` ciągu połączenia, który uzyskane w poprzednim kroku, "uzyskać poświadczenia". Jeśli nie ustawiono tej zmiennej środowiskowej, należy określić informacje o koncie podczas wywoływania metody `createServiceBusService`.
+### <a name="set-up-a-service-bus-connection"></a>Konfigurowanie połączenia usługi Service Bus
+Moduł Azure odczytuje zmiennej środowiskowej `AZURE_SERVICEBUS_CONNECTION_STRING` parametrów połączenia, które zostały uzyskane w poprzednim kroku, "Uzyskiwanie poświadczeń". Jeśli nie ustawiono tej zmiennej środowiskowej, należy określić informacje o koncie podczas wywoływania `createServiceBusService`.
 
-Na przykład ustawienia zmiennych środowiskowych dla usługi w chmurze platformy Azure, zobacz [Node.js usługi chmury z magazynem][Node.js Cloud Service with Storage].
+Aby uzyskać przykład Ustawianie zmiennych środowiskowych dla usługi Azure Cloud Service, zobacz [Node.js usługi w chmurze z usługą Storage][Node.js Cloud Service with Storage].
 
 
 
 ## <a name="create-a-topic"></a>Tworzenie tematu
-**ServiceBusService** obiektu umożliwia pracę z tematów. Poniższy kod tworzy **ServiceBusService** obiektu. Dodaj ją w górnej części **server.js** pliku po instrukcji, aby zaimportować moduł azure:
+**ServiceBusService** obiekt umożliwia pracę z obsługą tematów. Poniższy kod tworzy **ServiceBusService** obiektu. Dodaj ją w górnej części **server.js** pliku po instrukcji, aby zaimportować moduł platformy azure:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Jeśli należy wywołać `createTopicIfNotExists` na **ServiceBusService** obiektu określonego tematu jest zwracany (jeśli istnieje) lub utworzono nowy temat o określonej nazwie. Poniższy kod używa `createTopicIfNotExists` można utworzyć lub połączyć się z tematem o nazwie `MyTopic`:
+Jeśli wywołasz `createTopicIfNotExists` na **ServiceBusService** obiektu określonego tematu jest zwracany (jeśli istnieje) lub jest tworzony nowy temat o określonej nazwie. Poniższy kod używa `createTopicIfNotExists` do tworzenia lub połączenia do tematu o nazwie `MyTopic`:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -95,9 +95,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` Metoda obsługuje również dodatkowe opcje, które umożliwiają zastąpienie domyślnych ustawień tematu, takie jak czas wygaśnięcia wiadomości lub temat maksymalny rozmiar. 
+`createServiceBusService` Metoda obsługuje również dodatkowe opcje, które pozwalają na zastąpienie domyślnych ustawień tematu, takie jak czas wygaśnięcia komunikatu lub rozmiar maksymalny tematu. 
 
-Poniższy przykład przedstawia rozmiar maksymalny tematu 5 GB z czasem wygaśnięcia jednej minuty:
+Poniższy przykład ustawia rozmiar maksymalny tematu do 5 GB z czasem wygaśnięcia jedną minutę:
 
 ```javascript
 var topicOptions = {
@@ -113,21 +113,21 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>Filtry
-Opcjonalne operacjach filtrowania może odnosić się do operacji wykonywanych przy użyciu **ServiceBusService**. Filtrowanie operacje mogą obejmować rejestrowania, Automatyczne ponawianie próby itp. Obiekty, które implementują metodę o sygnaturze są następujące filtry:
+Opcjonalne filtrowania operacje mogą być stosowane do operacji wykonywanych przy użyciu **ServiceBusService**. Filtrowanie operacji mogą obejmować rejestrowanie automatyczne ponawianie, itp. Filtry to obiekty, które implementują metodę o następującej sygnaturze:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Po wykonaniu przetwarzanie wstępne opcje żądania, wywołuje metodę `next`i przekazuje wywołania zwrotnego z następującą sygnaturą:
+Po wykonaniu przetwarzania wstępnego na temat opcji żądania, wywołuje metodę `next`, a następnie przekazuje wywołanie zwrotne z następującą sygnaturą:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-W tym wywołania zwrotnego, a po zakończeniu przetwarzania `returnObject` (odpowiedzi z żądania do serwera), wywołania zwrotnego należy wywołać obok (jeśli istnieje), aby kontynuować przetwarzanie inne filtry albo wywołania `finalCallback` na koniec wywołania usługi.
+W tym wywołaniu zwrotnym, a po zakończeniu przetwarzania `returnObject` (odpowiedź z żądania do serwera), wywołanie zwrotne musisz wywołać następne (jeśli istnieje) kontynuować przetwarzanie innych filtrów lub wywołania `finalCallback` do końca wywołania usługi.
 
-Dwa filtry, które implementują logikę ponawiania wchodzą w skład zestawu Azure SDK dla środowiska Node.js, **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Tworzy następujące **ServiceBusService** obiekt, który używa **ExponentialRetryPolicyFilter**:
+Dwa filtry, które implementują logikę ponawiania prób, wchodzą w skład zestawu Azure SDK dla platformy Node.js: **ExponentialRetryPolicyFilter** i **LinearRetryPolicyFilter**. Tworzy następujące **ServiceBusService** obiektu, który używa **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -135,15 +135,15 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="create-subscriptions"></a>Tworzenie subskrypcji
-Subskrypcje tematu są również tworzone za pomocą **ServiceBusService** obiektu. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów dostarczonych do wirtualnej kolejki subskrypcji.
+Subskrypcje tematu są również tworzone przy użyciu **ServiceBusService** obiektu. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów dostarczane do wirtualnej kolejki subskrypcji.
 
 > [!NOTE]
-> Subskrypcje są trwałe, dopóki albo one lub temat są skojarzone z, zostaną usunięte. Jeśli Twoja aplikacja logiki, aby utworzyć subskrypcję, jej należy najpierw sprawdź, czy subskrypcja istnieje przy użyciu `getSubscription` metody.
+> Subskrypcje są trwałe, dopóki albo ich lub temat są skojarzone, są usuwane. Jeśli Twoja aplikacja logiki, aby utworzyć subskrypcję, jej powinny najpierw sprawdzić, czy subskrypcja istnieje przy użyciu `getSubscription` metody.
 >
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
-**MatchAll** filtru jest filtrem domyślnym, używane podczas tworzenia subskrypcji. Kiedy używasz filtru **MatchAll**, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie AllMessages i używa domyślnej **MatchAll** filtru.
+**MatchAll** filtru jest filtrem domyślnym, używane podczas tworzenia subskrypcji. Kiedy używasz filtru **MatchAll**, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie AllMessages i używa domyślnego **MatchAll** filtru.
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -154,18 +154,18 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Tworzenie subskrypcji z filtrami
-Istnieje również możliwość utworzenia filtrów, które zezwalają na zakresu, które komunikaty wysyłane do tematu powinny być widoczne w subskrypcji określonego tematu.
+Można również utworzyć filtry, które zezwalają na zakresie, które komunikaty wysyłane do tematu powinny być widoczne w subskrypcji określonego tematu.
 
 Najbardziej elastycznym typem filtru obsługiwanym przez subskrypcje jest **SqlFilter**, która implementuje podzbiór standardu SQL92. Filtry SQL działają na właściwościach komunikatów, które są publikowane do tematu. Aby uzyskać więcej informacji na temat wyrażeń, które mogą być używane z filtrem SQL, przejrzyj [SqlFilter.SqlExpression] [ SqlFilter.SqlExpression] składni.
 
 Filtry można dodać do subskrypcji przy użyciu `createRule` metody **ServiceBusService** obiektu. Ta metoda umożliwia dodawanie nowych filtrów do istniejącej subskrypcji.
 
 > [!NOTE]
-> Ponieważ domyślnego filtru jest automatycznie stosowane do wszystkich nowych subskrypcji, należy najpierw usunąć domyślny filtr lub **MatchAll** zastępują inne filtry, można określić. Należy usunąć domyślną regułę przy użyciu `deleteRule` metody **ServiceBusService** obiektu.
+> Ponieważ domyślny filtr jest automatycznie stosowane do wszystkich nowych subskrypcji, należy najpierw usunąć domyślny filtr lub **MatchAll** spowoduje zastąpienie innych filtrów można określić. Możesz usunąć domyślną regułę przy użyciu `deleteRule` metody **ServiceBusService** obiektu.
 >
 >
 
-Poniższy przykład tworzy subskrypcję o nazwie `HighMessages` z **SqlFilter** który wybiera tylko komunikaty, które mają niestandardowy `messagenumber` właściwości wyższej niż 3:
+Poniższy przykład tworzy subskrypcję o nazwie `HighMessages` z **SqlFilter** wybiera tylko komunikaty o niestandardowej `messagenumber` właściwość wyższej niż 3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -200,7 +200,7 @@ var rule={
 }
 ```
 
-Podobnie poniższy przykład tworzy subskrypcję o nazwie `LowMessages` z **SqlFilter** który wybiera tylko komunikaty, które mają `messagenumber` właściwości mniej niż 3:
+Podobnie poniższy przykład tworzy subskrypcję o nazwie `LowMessages` z **SqlFilter** wybiera tylko komunikaty, które mają `messagenumber` właściwość mniejszą lub równą 3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -235,14 +235,14 @@ var rule={
 }
 ```
 
-Teraz wysłania komunikatu do `MyTopic`, będą dostarczane do odbiorców `AllMessages` subskrypcję tematu i selektywnie dostarczany do odbiorców mających subskrypcję `HighMessages` i `LowMessages` subskrypcje tematu (w zależności od zawartość komunikatu).
+Kiedy wiadomość jest teraz wysyłane do `MyTopic`, zostaną dostarczone do odbiorców mających `AllMessages` subskrypcji tematu i selektywnie dostarczany do odbiorców mających subskrypcję `HighMessages` i `LowMessages` subskrypcje tematu (w zależności zawartość komunikatu).
 
-## <a name="how-to-send-messages-to-a-topic"></a>Sposób wysyłania komunikatów do tematu
+## <a name="how-to-send-messages-to-a-topic"></a>Jak wysyłać komunikaty do tematu
 Aby wysłać komunikat do tematu usługi Service Bus, aplikacja musi używać `sendTopicMessage` metody **ServiceBusService** obiektu.
 Komunikaty wysyłane do tematów usługi Service Bus są **BrokeredMessage** obiektów.
-**BrokeredMessage** obiekty mają zestaw właściwości standardowych (takich jak `Label` i `TimeToLive`), słownik, który jest używany do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść danych ciągu. Aplikacja możne ustawić treść komunikatu przez przekazanie wartości ciągu na `sendTopicMessage` i wszystkie wymagane właściwości standardowych zostaną wypełnione przez wartości domyślne.
+**BrokeredMessage** obiekty mają zestaw właściwości standardowych (takich jak `Label` i `TimeToLive`), słownik, który jest używany do przechowywania niestandardowych właściwości specyficzne dla aplikacji oraz treść danych ciągu. Aplikacja możne ustawić treść komunikatu przez przekazanie wartości ciągu na `sendTopicMessage` i wszystkie wymagane właściwości standardowe zostanie wypełniony przez wartości domyślne.
 
-W poniższym przykładzie pokazano sposób wysyłania pięciu testowych komunikatów do `MyTopic`. `messagenumber` Wartość właściwości każdego komunikatu różni się w iteracji pętli (określa subskrypcje, które go otrzymają):
+Poniższy przykład pokazuje sposób wysyłania pięciu testowych komunikatów do `MyTopic`. `messagenumber` Wartości właściwości każdego komunikatu różni się w iteracji pętli (określa subskrypcje, które go otrzymają):
 
 ```javascript
 var message = {
@@ -263,17 +263,17 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w tematu, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
+Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nagłówek, który zawiera standardowe i niestandardowe właściwości aplikacji, może mieć maksymalny rozmiar 64 KB. Nie ma żadnego limitu liczby komunikatów w temacie, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez temat. Rozmiar tematu jest definiowany w czasie tworzenia, z górnym limitem 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Odbieranie komunikatów z subskrypcji
-Komunikaty są odbierane z subskrypcją za pomocą `receiveSubscriptionMessage` metoda **ServiceBusService** obiektu. Domyślnie komunikaty są usuwane z subskrypcji one są w trybie odczytu. Jednak można ustawić opcjonalny parametr `isPeekLock` do **true** do odczytu (peek) i Zablokuj wiadomość bez usuwania go z subskrypcji.
+Komunikaty są odbierane z subskrypcji przy użyciu `receiveSubscriptionMessage` metody **ServiceBusService** obiektu. Domyślnie komunikaty są usuwane z subskrypcji, ponieważ są odczytywane. Jednak można ustawić opcjonalny parametr `isPeekLock` do **true** do odczytu (peek) i blokowanie wiadomość bez usuwania go z subskrypcji.
 
-Domyślne zachowanie odczytywanie i usuwanie wiadomości w ramach operacji receive jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby zrozumieć to zachowanie, Rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Usługa Service Bus zostanie oznaczona komunikat jako wykorzystany, a następnie po uruchomieniu i rozpocznie korzystanie z komunikatów ponownie aplikacji, pominie utracony komunikat, który został wykorzystany przed awarią.
+Domyślne zachowanie odczytywanie i usuwanie wiadomości jako część operacji odbierania jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby zrozumieć zachowania, Rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługi Service Bus będą oznaczyła komunikat jako wykorzystany, a następnie, gdy aplikacja ponownie uruchamia i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
 
-Jeśli `isPeekLock` ustawiono parametr **true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Kiedy Usługa Service Bus odbiera żądanie, znajduje następny komunikat korzystać, blokuje go, aby uniemożliwić innym klientom odebrania go i zwraca go do aplikacji.
-Kiedy aplikacja przetwarzania komunikatu (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez wywołanie metody **deleteMessage** metody i przekazuje komunikat, aby usunąć jako parametr. **DeleteMessage** metoda oznacza komunikat jako wykorzystany i usuwa go z subskrypcji.
+Jeśli `isPeekLock` parametr ma wartość **true**, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy Usługa Service Bus odbiera żądanie, znajduje następny komunikat do korzystania, blokuje go, aby uniemożliwić innym klientom odebrania go i zwraca go do aplikacji.
+Po skopiowaniu aplikacji przetwarza komunikat (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez wywołanie metody **deleteMessage** metody i przekazuje komunikat do usunięcia jako parametr. **DeleteMessage** metoda oznacza komunikat jako wykorzystany i usuwa go z subskrypcji.
 
-W poniższym przykładzie pokazano, jak mogą być odbierane wiadomości i przetworzone przy użyciu `receiveSubscriptionMessage`. Przykład otrzymuje najpierw i usuwa komunikat z subskrypcji "LowMessages" i otrzyma komunikat z subskrypcji "HighMessages" przy użyciu `isPeekLock` ustawioną na true. Następnie usuwa komunikat przy użyciu `deleteMessage`:
+W poniższym przykładzie pokazano, jak mogą być odbierane wiadomości i przetworzone przy użyciu `receiveSubscriptionMessage`. Przykład otrzymuje najpierw usuwa komunikat z subskrypcji "LowMessages" i odbiera wiadomości z subskrypcji "HighMessages" przy użyciu `isPeekLock` ma wartość true. Następnie usuwa komunikat przy użyciu `deleteMessage`:
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -297,14 +297,14 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metoda **ServiceBusService** obiektu. Ta metoda powoduje to odblokowanie komunikatu w subskrypcji i udostępnienie go do ponownego odbioru usługę Service Bus. W takim przypadku przez tę samą lub inną odbierającą aplikację.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody **ServiceBusService** obiektu. Ta metoda powoduje to odblokowanie komunikatu w subskrypcji i udostępnienie go do ponownego odbioru usługę Service Bus. W tym wypadku przez tę samą lub inną odbierającą aplikację.
 
-Istnieje również limit czasu skojarzony z komunikatem zablokowanym w subskrypcji. Jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli wystąpiła awaria aplikacji), usługi Service Bus automatycznie odblokowuje komunikat i udostępnia go do ponownego odbioru.
+Istnieje również limit czasu skojarzony z komunikatem zablokowanym w subskrypcji. Jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady, (na przykład jeśli wystąpiła awaria aplikacji), Service Bus automatycznie odblokowuje komunikat i udostępnia go do ponownego odbioru.
 
-W przypadku gdy aplikacja przestaje działać po przetworzeniu komunikatu, ale przed wysłaniem `deleteMessage` metoda jest wywoływana, komunikat jest dostarczony do aplikacji po jej ponownym uruchomieniu. To zachowanie jest często nazywana *co najmniej raz przetwarzania*. Oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, należy dodać logikę do Twojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Można użyć **MessageId** właściwości wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` metoda jest wywoływana, komunikat jest przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. To zachowanie jest często określany mianem *co najmniej jednokrotne przetwarzanie*. Oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, należy dodać logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Możesz użyć **MessageId** właściwości komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
-Tematy i subskrypcje są trwałe i musi zostać jawnie usunięte przez [portalu Azure] [ Azure portal] lub programowo.
+Tematy i subskrypcje są trwałe i musi zostać jawnie usunięte za pomocą [witryny Azure portal] [ Azure portal] lub programowo.
 W poniższym przykładzie pokazano sposób usuwania tematu o nazwie `MyTopic`:
 
 ```javascript
@@ -315,7 +315,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem. Subskrypcje mogą być również usuwane niezależnie. Poniższy przykład przedstawia sposób usuwania subskrypcji o nazwie `HighMessages` z `MyTopic` tematu:
+Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem. Subskrypcje mogą być również usuwane niezależnie. Poniższy przykład pokazuje, jak usunąć subskrypcję o nazwie `HighMessages` z `MyTopic` tematu:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -338,6 +338,6 @@ Teraz, kiedy znasz już podstawy tematów usługi Service Bus, skorzystaj z poni
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Tworzenie i wdrażanie aplikacji Node.js do witryny sieci Web Azure]: ../app-service/app-service-web-get-started-nodejs.md
+[Tworzenie i wdrażanie aplikacji w technologii Node.js do witryny sieci Web platformy Azure]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

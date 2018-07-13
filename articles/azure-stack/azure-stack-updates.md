@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie aktualizacjami w stosie Azure — omówienie | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zarządzania aktualizacjami stosu Azure zintegrowanych systemów.
+title: Zarządzanie aktualizacjami w usłudze Azure Stack — omówienie | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat rozwiązania update management dla usługi Azure Stack, zintegrowanych systemów.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,60 +12,60 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: 23b05909bda7785b45aeaeed0bd75a90de9ffe50
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e80c114b06390a72dcdcc614dffaa97b9761381e
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2018
-ms.locfileid: "27620927"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38988912"
 ---
-# <a name="manage-updates-in-azure-stack-overview"></a>Zarządzanie aktualizacjami w stosie Azure — omówienie
+# <a name="manage-updates-in-azure-stack-overview"></a>Zarządzanie aktualizacjami w usłudze Azure Stack — omówienie
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Firma Microsoft będzie udostępniać pakietów aktualizacji dla systemów stosu Azure zintegrowane w regularnych okresach, który będzie zazwyczaj dzielą czwarty wtorek każdego miesiąca, zaczynając od ogólnej dostępności. Poproś o ich procesu określonych powiadomień, aby zapewnić reach powiadomienia o aktualizacji organizacji OEM lub sprawdź, w tym miejscu w systemach Notes\Integrated Overview\Release informacje o wersji, aby uzyskać więcej informacji na temat określonych wersji.
+Nowe pakiety aktualizacji dla zazwyczaj zintegrowane systemy usługi Azure Stack wersji wokół czwarty wtorek każdego miesiąca. Zadaj producent OEM dotyczące procesu ich powiadomień określonych w taki sposób, aby zapewnić powiadomienia o aktualizacji dotrzeć do Twojej organizacji. Możesz również sprawdzić w tej bibliotece dokumentacji w obszarze **Przegląd** > **informacje o wersji** informacji o wersjach, które są aktywne pomocy technicznej. 
 
-Każde wydanie aktualizacji oprogramowania firmy Microsoft jest powiązane jako jedna aktualizacja pakietu. Jako operator stosu Azure można łatwo importować, instalacji i Monitoruj postęp instalacji tych aktualizacji pakietów z portalu administratora. 
+Wszystkie wersje aktualizacji oprogramowania firmy Microsoft jest zawarte w pakiecie jako pakiet jedną aktualizację. Jako operatorów usługi Azure Stack można zaimportować, instalacji i Monitoruj postęp instalacji tych aktualizacji dla pakietów z portalu administratora. 
 
-Dostawca sprzętu producenta sprzętu (OEM) zostanie również zwolnić aktualizacji, na przykład aktualizacje sterowników i oprogramowania układowego. Te aktualizacje są dostarczane jako osobne pakiety przez producenta OEM komputera i są zarządzane oddzielnie z usługi Microsoft updates.
+Z dostawcą sprzętu producenta sprzętu (OEM) będzie również aktualizacje, takich jak aktualizacje oprogramowania układowego i sterowników. Te aktualizacje są dostarczane jako osobne pakiety przez dostawcę sprzętu OEM i są zarządzane oddzielnie od aktualizacji firmy Microsoft.
 
-Aby zachować system w obszarze pomocy technicznej, należy dysponować stosu Azure aktualizowane na poziomie określonej wersji. Upewnij się, że należy sprawdzić [stosu Azure obsługi zasad](azure-stack-servicing-policy.md).
+Aby zapewnić systemu w ramach pomocy technicznej, należy dysponować zaktualizowany do poziomu określonej wersji w usłudze Azure Stack. Upewnij się, że przeglądu [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).
 
 > [!NOTE]
-> Nie można zastosować pakietów aktualizacji stosu Azure Azure stosu Development Kit. Pakiety aktualizacji są przeznaczone dla zintegrowanych systemów.
+> Pakiety aktualizacji usługi Azure Stack nie można zastosować do usługi Azure Stack Development Kit. Pakiety aktualizacji są przeznaczone dla systemów zintegrowanych. Aby uzyskać informacje, zobacz [ponownie wdrożyć ASDK](https://docs.microsoft.com/en-us/azure/azure-stack/asdk).
 
 ## <a name="the-update-resource-provider"></a>Dostawca zasobów aktualizacji
 
-Stos Azure obejmuje dostawcy zasobów aktualizacji, który organizuje stosowania aktualizacji oprogramowania firmy Microsoft. Ten dostawca zasobów gwarantuje, że aktualizacje zostały zastosowane wszystkie hosty fizyczne, aplikacji usługi Service Fabric i środowisk uruchomieniowych i wszystkich maszyn wirtualnych infrastruktury i ich skojarzonych usług.
+Usługa Azure Stack obejmuje dostawcy zasobów aktualizacji, która zarządza procesem stosowania aktualizacji oprogramowania firmy Microsoft. Tego dostawcę zasobów gwarantuje, że aktualizacje są stosowane na wszystkie hosty fizyczne, aplikacje usługi Service Fabric i środowisk uruchomieniowych oraz wszystkich maszyn wirtualnych infrastruktury i ich skojarzone usługi.
 
-Jak zainstalować aktualizacje, można łatwo wyświetlić stan wysokiego poziomu jako miejsca docelowe proces aktualizacji różne podsystemy w stosie Azure (na przykład hostów fizycznych i maszyn wirtualnych infrastruktury).
+Jak zainstalować aktualizacje, można wyświetlić stan wysokiego poziomu jako elementy docelowe proces aktualizacji różnych podsystemów w usłudze Azure Stack (na przykład hostów fizycznych i maszyn wirtualnych infrastruktury).
 
 ## <a name="plan-for-updates"></a>Planowanie aktualizacji
 
-Zalecamy powiadomienie użytkowników wszystkie operacje obsługi, i Zaplanuj konserwacji systemu windows podczas poza godzinami pracy możliwie. Operacje konserwacji może mieć wpływ na zarówno obciążeń dzierżawców i działania portalu.
+Zdecydowanie zalecamy powiadomienie użytkowników dowolne operacje konserwacji oraz zaplanowanie konserwacji systemu windows podczas poza godzinami, jeśli jest to możliwe. Operacje konserwacji może mieć wpływ na obciążeniami dzierżawy i operacje w portalu.
 
-## <a name="using-the-update-tile-to-manage-updates"></a>Zarządzanie aktualizacjami za pomocą kafelka aktualizacji
-Zarządzanie aktualizacjami w portalu administratora jest prosty proces. Operator stosu Azure można przejść do aktualizacji kafelka na pulpicie nawigacyjnym, aby:
+## <a name="using-the-update-tile-to-manage-updates"></a>Za pomocą kafelka aktualizacji do zarządzania aktualizacjami
+Zarządzanie aktualizacjami z portalu administratora. Jako operatorów usługi Azure Stack umożliwia Aktualizuj Kafelek na pulpicie nawigacyjnym, aby:
 
-- Wyświetl ważne informacje, takie jak bieżącej wersji.
-- Zainstaluj aktualizacje, a następnie monitorować postęp.
-- Przejrzyj historię aktualizacji dla poprzednio zainstalowanych aktualizacji.
+- Wyświetl ważne informacje, takie jak bieżąca wersja.
+- Instalowanie aktualizacji, a następnie monitorować postęp.
+- Przejrzyj historię aktualizacji dla wcześniej zainstalowanych aktualizacji.
  
 ## <a name="determine-the-current-version"></a>Określić bieżącej wersji
 
-Na kafelku aktualizacji pokazuje bieżącą wersję programu Azure stosu. Na kafelku aktualizacji można uzyskać przy użyciu jednej z następujących metod w portalu administratora:
+Aktualizuj Kafelek pokazuje bieżącą wersję usługi Azure Stack. Aktualizuj Kafelek można uzyskać, przy użyciu jednej z poniższych metod w portalu administratora:
 
-- Na pulpicie nawigacyjnym, Wyświetl bieżącą wersję w **aktualizacji** kafelka.
+- Na pulpicie nawigacyjnym wyświetlić bieżącą wersję **aktualizacji** kafelka.
  
-   ![Kafelek aktualizacje na domyślnego pulpitu nawigacyjnego](./media/azure-stack-updates/image1.png)
+   ![Aktualizacje kafelków na domyślny pulpit nawigacyjny](./media/azure-stack-updates/image1.png)
  
-- Na **zarządzania Region** kafelka, kliknij nazwę regionu. Wyświetl bieżącą wersję w **aktualizacji** kafelka.
+- Na **zarządzanie regionami** kafelków, kliknij nazwę regionu. Wyświetl bieżącą wersję **aktualizacji** kafelka.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Azure stos obsługi zasad](azure-stack-servicing-policy.md) 
-- [Zarządzanie regionu Azure stosu](azure-stack-region-management.md)     
+- [Obsługa zasad z usługi Azure Stack](azure-stack-servicing-policy.md) 
+- [Zarządzanie regionami w usłudze Azure Stack](azure-stack-region-management.md)     
 
 

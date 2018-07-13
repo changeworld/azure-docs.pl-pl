@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie klastra sieci szkieletowej usług zabezpieczonych w stosie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć klaster sieci szkieletowej usług zabezpieczonych w stosie Azure
+title: Wdrażanie zabezpieczonego klastra usługi Service Fabric w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć klaster usługi Service Fabric zabezpieczone w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,49 +14,49 @@ ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: a88d8dd2af94ac796a3b2e3c667fd40a308f02a1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: acf850bdc56e55d13b13a40ef343f2f20c4a77ca
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33883025"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969116"
 ---
-# <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi sieć szkieletowa usług Azure stosu
+# <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
-Użyj **klastra sieci szkieletowej usług** elementu z portalu Azure Marketplace do wdrożenia klastra sieci szkieletowej usług zabezpieczonych w stosie Azure. 
+Użyj **klastra usługi Service Fabric** elementu w witrynie Azure Marketplace, aby wdrożyć klaster usługi Service Fabric zabezpieczone w usłudze Azure Stack. 
 
-Aby uzyskać więcej informacji na temat pracy z sieci szkieletowej usług, zobacz [Omówienie usługi Azure Service Frabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) i [scenariusze zabezpieczeń klastra sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), w dokumentacji platformy Azure.
+Aby uzyskać więcej informacji na temat pracy z usługą Service Fabric, zobacz [Omówienie usługi Azure Service Frabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) i [scenariusze zabezpieczeń klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), w dokumentacji platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Poniższe elementy są wymagane do wdrożenia klastra sieci szkieletowej usług:
+Następujące czynności są wymagane do wdrożenia klastra usługi Service Fabric:
 1. **Certyfikat klastra**  
-   Jest to certyfikat serwera X.509 dodane do parametru KeyVault podczas wdrażania sieci szkieletowej usług. 
-   - **CN** tego certyfikatu musi odpowiadać pełni kwalifikowanej domeny nazwę (FQDN) tworzenia klastra usługi sieć szkieletowa usług. 
+   Jest to certyfikat X.509, dodanych do magazynu kluczy, podczas wdrażania usługi Service Fabric. 
+   - **CN** tego certyfikatu musi odpowiadać w pełni kwalifikowanej domeny nazwę (FQDN) klastra usługi Service Fabric, możesz utworzyć. 
    - Format certyfikatu musi być PFX, ponieważ wymagane są klucze publiczne i prywatne. 
    Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu po stronie serwera.
 
     > [!NOTE]  
-    > Inplace certyfikatu z podpisem własnym, certyfikatu x.509, serwera służy do celów testowych. Certyfikaty z podpisem własnym musi być zgodny z nazwą FQDN klastra.
+    > Inplace certyfikatu z podpisem własnym x.509 certyfikatu serwera służy do celów testowych. Certyfikaty z podpisem własnym nie muszą odpowiadać nazwie FQDN klastra.
 
-2.  **Certyfikat klienta administrator** jest certyfikat, który będzie używany przez klienta do uwierzytelniania w klastrze usługi sieć szkieletowa, może być podpisany. Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu klienta.
+2.  **Certyfikat klienta administracyjnego** jest to certyfikat, który będzie używany przez klienta do uwierzytelniania w klastrze usługi Service Fabric, co może być z podpisem własnym. Zobacz [wymagania](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) do tworzenia tego certyfikatu klienta.
 
-3.  **Następujące elementy muszą być dostępne w portalu Azure Marketplace stosu:**
-     - **Windows Server 2016** — szablon używa obrazu systemu Windows Server 2016 w celu utworzenia klastra.  
-     - **Rozszerzenie skryptu klienta** — rozszerzenie maszyny wirtualnej firmy Microsoft.  
-     - **Konfiguracja etap żądanego programu PowerShell** — rozszerzenie maszyny wirtualnej firmy Microsoft.
+3.  **Następujące elementy muszą być dostępne w witrynie Azure Marketplace stosu:**
+     - **System Windows Server 2016** — szablon używa obrazu systemu Windows Server 2016 w celu utworzenia klastra.  
+     - **Rozszerzenia skryptów klienta** — rozszerzenie maszyny wirtualnej od firmy Microsoft.  
+     - **PowerShell Desired Configuration etapu** — rozszerzenie maszyny wirtualnej od firmy Microsoft.
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Dodawanie wpisu tajnego do usługi Key Vault
-Aby wdrożyć klaster sieci szkieletowej usług, należy określić poprawną KeyVault *identyfikator klucza tajnego* lub adres URL klastra sieci szkieletowej usług. Szablon usługi Azure Resource Manager pobiera KeyVault jako dane wejściowe, a następnie pobierze certyfikatu klastra podczas instalacji klastra sieci szkieletowej usług. 
+Aby wdrożyć klaster usługi Service Fabric, należy określić poprawny magazyn kluczy *identyfikator wpisu tajnego* lub adres URL dla klastra usługi Service Fabric. Szablon usługi Azure Resource Manager przyjmuje KeyVault jako dane wejściowe, a następnie pobiera certyfikat klastra podczas instalacji klastra usługi Service Fabric. 
 
 > [!IMPORTANT]  
-> Aby dodać klucz tajny do parametru KeyVault do użycia z usługi Service Fabric, należy użyć programu PowerShell. Nie należy używać portalu.  
+> Należy dodać wpis tajny do magazynu kluczy do użycia z usługą Service Fabric za pomocą programu PowerShell. Nie należy używać portalu.  
 
-Użyj następującego skryptu, aby utworzyć KeyVault i dodać *certyfikatu klastra* do niego. (Zobacz [wymagania wstępne](#prerequisites).) Przed uruchomieniem skryptu Przejrzyj przykładowy skrypt i zaktualizować wskazanych parametrów do danego środowiska. Ten skrypt zostanie również output wartości, które należy podać do szablonu usługi Azure Resource Manager. 
+Użyj następującego skryptu, aby utworzyć magazyn kluczy i dodać *certyfikatu klastra* do niego. (Zobacz [wymagania wstępne](#prerequisites).) Przed uruchomieniem skryptu Przejrzyj przykładowy skrypt, a następnie zaktualizuj parametry wskazany pod kątem danego środowiska. Ten skrypt również danych wyjściowych dla wartości, które należy podać do szablonu usługi Azure Resource Manager. 
 
 > [!TIP]  
-> Zanim będzie możliwe skryptu, musi być publicznej oferty, która obejmuje usługi dla zasobów obliczeniowych, sieci, magazynu i KeyVault. 
+> Zanim będzie możliwe skryptu, musi być publiczny oferta, która obejmuje usługi zasobów obliczeniowych, sieci, magazynu i magazynu kluczy. 
 
   ```PowerShell
     function Get-ThumbprintFromPfx($PfxFilePath, $Password) 
@@ -116,97 +116,97 @@ Użyj następującego skryptu, aby utworzyć KeyVault i dodać *certyfikatu klas
    ``` 
 
 
-Aby uzyskać więcej informacji, zobacz [Zarządzanie KeyVault na stosie Azure przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze Azure Stack przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
 
 ## <a name="deploy-the-marketplace-item"></a>Wdrażanie elementu portalu Marketplace
 
-1. W portalu użytkowników, przejdź do **nowy** > **obliczeniowe** > **klastra sieci szkieletowej usług**. 
+1. W portalu użytkowników przejdź do **New** > **obliczenia** > **klastra usługi Service Fabric**. 
 
-   ![Wybierz klastra sieci szkieletowej usług](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
+   ![Wybierz klaster usługi Service Fabric](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
-2. Dla każdej strony takich jak *podstawy*, wypełnij formularz wdrożenia. Użyj wartości domyślnych, jeśli nie masz pewności wartości. Wybierz **OK** aby przejść do następnej strony:
+2. Dla każdej strony takich jak *podstawy*, wypełnij formularz wdrożenia. Jeśli nie masz pewności, wartości, należy użyć wartości domyślnych. Wybierz **OK** aby przejść do następnej strony:
 
    ![Podstawy](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
-3. Na *ustawienia sieciowe* , można określić określonych portów w celu otwarcia aplikacji:
+3. Na *ustawienia sieciowe* strony, można określić określone porty otworzyć dla swojej aplikacji:
 
-   ![Ustawienia sieci](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
+   ![Ustawienia sieciowe](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
-4. Na *zabezpieczeń* Dodaj wartości otrzymanych [tworzenie Azure KeyVault](#add-a-secret-to-key-vault) i przekazać klucz tajny.
+4. Na *zabezpieczeń* strony, Dodaj wartości, które masz od [tworzenia magazynu kluczy Azure](#add-a-secret-to-key-vault) i przekazywanie klucza tajnego.
 
-   Dla *odcisk palca certyfikatu klienta administrator*, wprowadź odcisk palca *certyfikatu klienta administrator*. (Zobacz [wymagania wstępne](#prerequisites).)
+   Aby uzyskać *odcisk palca certyfikatu klienta administrator*, wprowadź odcisk palca *certyfikat klienta administracyjnego*. (Zobacz [wymagania wstępne](#prerequisites).)
    
-   - Źródłowy magazyn kluczy: Określ cały *identyfikator keyVault* ciąg z wyników skryptu. 
-   - Adres URL certyfikatu klastra: Określ cały adres URL z *identyfikator klucza tajnego* z wyników skryptu. 
-   - Klaster odcisk palca certyfikatu: Określ *odcisk palca certyfikatu klastra* z wyników skryptu.
-   - Odciski palców certyfikatów klienta administracyjnego: Określ *odcisk palca certyfikatu klienta administrator* zostały utworzone w wymaganiach wstępnych. 
+   - Źródło usługi Key Vault: Określ cały *identyfikator magazynu kluczy* ciąg z wyniki skryptu. 
+   - Adres URL certyfikatu klastra: Określ cały adres URL z *identyfikator wpisu tajnego* z wyników skryptu. 
+   - Odcisk palca certyfikatu klastra: Określ *odcisk palca certyfikatu klastra* z wyników skryptu.
+   - Klient administracyjny odcisków palca certyfikatu: Określ *odcisk palca certyfikatu klienta administrator* zostały utworzone w wymaganiach wstępnych. 
 
    ![Dane wyjściowe skryptu](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
    ![Bezpieczeństwo](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
 
-5. Ukończ pracę kreatora, a następnie wybierz **Utwórz** do wdrożenia klastra sieci szkieletowej usług.
+5. Ukończ pracę kreatora, a następnie wybierz **Utwórz** wdrożyć klaster usługi Service Fabric.
 
 
 
-## <a name="access-the-service-fabric-cluster"></a>Dostęp do klastra sieci szkieletowej usług
-Można uzyskać dostępu do klastra sieci szkieletowej usług za pomocą Eksploratora usługi sieć szkieletowa lub usługa sieci szkieletowej w programie PowerShell.
+## <a name="access-the-service-fabric-cluster"></a>Dostęp do klastra usługi Service Fabric
+Za dostęp do klastra usługi Service Fabric przy użyciu narzędzia Service Fabric Explorer lub Service Fabric programu PowerShell.
 
 
-### <a name="use-service-fabric-explorer"></a>Użyj Eksploratora usługi sieć szkieletowa
-1.  Sprawdź, czy przeglądarki sieci Web ma dostęp do swojego administratora certyfikatu klienta i mogą uwierzytelniać do klastra usługi sieć szkieletowa usług.  
+### <a name="use-service-fabric-explorer"></a>Użyj narzędzia Service Fabric Explorer
+1.  Sprawdź, czy przeglądarka sieci Web ma dostęp do Twój certyfikat klienta administracyjnego i może wykonać uwierzytelnienie do klastra usługi Service Fabric.  
 
     a. Otwórz program Internet Explorer i przejdź do **Opcje internetowe** > **zawartości** > **certyfikaty**.
   
-    b. Na certyfikatach, wybierz **importu** uruchomić *Kreatora importu certyfikatów*, a następnie kliknij przycisk **dalej**. Na *plik do zaimportowania* kliknij **Przeglądaj**i wybierz **certyfikatu klienta administrator** dostarczone do szablonu usługi Azure Resource Manager.
+    b. Na certyfikatach, wybierz **importu** można uruchomić *Kreatora importu certyfikatów*, a następnie kliknij przycisk **dalej**. Na *plik do zaimportowania* kliknij **Przeglądaj**i wybierz **certyfikat klienta administracyjnego** dostarczane z szablonem usługi Azure Resource Manager.
         
        > [!NOTE]  
-       > Ten certyfikat nie jest certyfikat klastra, który został wcześniej dodane do parametru KeyVault.  
+       > Ten certyfikat nie jest certyfikat klastra, który wcześniej został dodany do magazynu kluczy.  
 
-    c. Upewnij się, że masz "Wymiana informacji osobistych" wybrane na liście rozwijanej rozszerzenia okna Eksploratora plików.  
+    c. Upewnij się, że masz "Wymiana informacji osobistych" wybrana na liście rozwijanej rozszerzenia w oknie Eksploratora plików.  
 
        ![Wymiana informacji osobistych](media/azure-stack-solution-template-service-fabric-cluster/image8.png)  
 
-    d. Na *magazyn certyfikatów* wybierz pozycję **osobistych**, a następnie Zakończ pracę kreatora.  
+    d. Na *Store certyfikatu* wybierz opcję **osobistych**, a następnie ukończ jego pracę.  
        ![Magazyn certyfikatów](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
-2. Aby znaleźć nazwę FQDN klastra sieci szkieletowej usług:  
+2. Aby znaleźć nazwę FQDN klastra usługi Service Fabric:  
 
-    a. Przejdź do grupy zasobów, który jest skojarzony z sieci szkieletowej usług klastra, a następnie zlokalizuj *publicznego adresu IP* zasobów. Wybierz obiekt skojarzony z adresem publicznego adresu IP, aby otworzyć *publicznego adresu IP* bloku.  
+    a. Przejdź do grupy zasobów, który jest skojarzony z usługą Service Fabric klaster, a następnie zlokalizuj *publiczny adres IP* zasobów. Wybierz obiekt skojarzonych z tym adresem publicznym adresem IP, aby otworzyć *publiczny adres IP* bloku.  
 
       ![Publiczny adres IP](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
 
-    b. W bloku adres publiczny adres IP, nazwa FQDN będzie wyświetlany jako *nazwy DNS*.  
+    b. W bloku adres publiczny adres IP, nazwy FQDN jest wyświetlany jako *nazwy DNS*.  
 
       ![Nazwa DNS](media/azure-stack-solution-template-service-fabric-cluster/image11.png)  
 
-3. Aby znaleźć adres URL Eksploratora usługi sieć szkieletowa i punktu końcowego połączenia klienta, przejrzyj wyniki wdrożenia szablonu.
+3. Aby znaleźć adres URL narzędzia Service Fabric Explorer, a punkt końcowy połączenia klienta, należy przejrzeć wyniki wdrażania szablonu.
 
-4. W przeglądarce przejdź do https://*FQDN*: 19080. Zastąp *FQDN* z nazwą FQDN klastra sieci szkieletowej usług w kroku 2.   
-   Jeśli używano certyfikatu z podpisem własnym, zostanie wyświetlone ostrzeżenie, połączenie nie jest bezpieczne. Aby przejść do witryny sieci web, wybierz **więcej informacji o**, a następnie **przejdź do strony sieci Web**. 
+4. W przeglądarce przejdź do https://*FQDN*: 19080. Zastąp *FQDN* nazwą FQDN klastra usługi Service Fabric w kroku 2.   
+   Jeśli używano certyfikatu z podpisem własnym, otrzymasz ostrzeżenie, że połączenie nie jest bezpieczne. Aby przejść do witryny sieci web, wybierz **więcej informacji o**, a następnie **przejdź do strony sieci Web**. 
 
-5. Aby uwierzytelniać się na stronie należy wybrać certyfikat do użycia. Wybierz **więcej opcji**, wybierz odpowiedni certyfikat, a następnie kliknij przycisk **OK** nawiązać połączenia z programem Service Fabric Explorer. 
+5. Aby uwierzytelniać się w witrynie należy wybrać certyfikat do użycia. Wybierz **więcej opcji**, wybierz odpowiedni certyfikat, a następnie kliknij **OK** połączyć się z narzędzia Service Fabric Explorer. 
 
    ![Uwierzytelnianie](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 
-## <a name="use-service-fabric-powershell"></a>Za pomocą programu PowerShell sieci szkieletowej usług
+## <a name="use-service-fabric-powershell"></a>Użyj programu PowerShell usługi Service Fabric
 
-1. Zainstaluj *zestawu SDK usługi Microsoft Azure Service Fabric* z [przygotowywanie środowiska projektowego w systemie Windows](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) w dokumentacji usługi Azure Service Fabric.  
+1. Zainstaluj *zestawu SDK usługi Microsoft Azure Service Fabric* z [przygotowanie środowiska projektowego w Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started#install-the-sdk-and-tools) w dokumentacji usługi Azure Service Fabric.  
 
-2. Po zakończeniu instalacji skonfiguruj zmiennych środowiskowych systemu, aby upewnić się, że polecenia cmdlet usługi sieć szkieletowa usług są dostępne z programu PowerShell.  
+2. Po zakończeniu instalacji należy skonfigurować zmienne środowiskowe systemu, aby upewnić się, że polecenia cmdlet usługi Service Fabric są dostępne z poziomu programu PowerShell.  
     
-    a. Przejdź do **Panelu sterowania** > **System i zabezpieczenia** > **systemu**, a następnie wybierz **Zaawansowane ustawienia systemu**.  
+    a. Przejdź do **Panelu sterowania** > **System i zabezpieczenia** > **systemu**, a następnie wybierz pozycję **Zaawansowane ustawienia systemu**.  
     
       ![Panel sterowania](media/azure-stack-solution-template-service-fabric-cluster/image15.png) 
 
-    b. Na **zaawansowane** karcie *właściwości systemu*, wybierz pozycję **zmiennych środowiskowych**.  
+    b. Na **zaawansowane** karcie *właściwości systemu*, wybierz opcję **zmienne środowiskowe**.  
 
-    c. Dla *zmienne systemowe*, Edytuj **ścieżki** i upewnij się, że **C:\\Program Files\\sieć szkieletowa usług Microsoft\\bin\\sieci szkieletowej \\Fabric.Code** znajduje się na górze listy zmiennych środowiskowych.  
+    c. Dla *zmiennych systemowych*, Edytuj **ścieżki** i upewnij się, że **C:\\Program Files\\Microsoft Service Fabric\\bin\\sieci szkieletowej \\Fabric.Code** u góry listy zmiennych środowiskowych.  
 
-      ![Listy zmiennych środowiska](media/azure-stack-solution-template-service-fabric-cluster/image16.png)
+      ![Lista zmiennych środowiskowych](media/azure-stack-solution-template-service-fabric-cluster/image16.png)
 
-3. Po zmianie kolejności zmiennych środowiskowych, ponowne uruchomienie programu PowerShell, a następnie uruchom następujący skrypt programu PowerShell w celu uzyskania dostępu do klastra usługi sieć szkieletowa usług:
+3. Po zmianie kolejności zmiennych środowiskowych, ponownie uruchom program PowerShell, a następnie uruchom poniższy skrypt programu PowerShell w celu uzyskania dostępu do klastra usługi Service Fabric:
 
    ````PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
@@ -222,5 +222,5 @@ Można uzyskać dostępu do klastra sieci szkieletowej usług za pomocą Eksplor
    ````
    
    > [!NOTE]  
-   > Brak nie *https://* przed nazwą klastra w skrypcie. Port 19000 jest wymagany.
+   > Istnieje nie *https://* przed nazwą klastra w skrypcie. Port 19000 jest wymagany.
  

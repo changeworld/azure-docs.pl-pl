@@ -8,6 +8,8 @@
       href: cheat-sheet.md
 - name: Informacje o wersji
   items:
+    - name: Czerwiec 2018 r.
+      href: release-notes-june-2018.md
     - name: Maj 2018 r.
       href: release-notes-may-2018.md
     - name: "Kwiecień 2018\_r."

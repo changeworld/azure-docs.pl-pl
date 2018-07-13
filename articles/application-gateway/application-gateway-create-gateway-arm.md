@@ -1,5 +1,5 @@
 ---
-title: Utwórz bramę aplikacji - programu Azure PowerShell | Dokumentacja firmy Microsoft
+title: Tworzenie bramy aplikacji — program Azure PowerShell | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu programu Azure PowerShell.
 services: application-gateway
 author: vhorne
@@ -13,24 +13,25 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
 ms.openlocfilehash: 1ad0fcd135e664b2b97fd16ebe851c817f567d7f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38468210"
 ---
-# <a name="create-an-application-gateway-using-azure-powershell"></a>Utwórz bramę aplikacji przy użyciu programu Azure PowerShell
+# <a name="create-an-application-gateway-using-azure-powershell"></a>Tworzenie bramy aplikacji przy użyciu programu Azure PowerShell
 
-Można użyć programu Azure PowerShell do tworzenia lub zarządzać bramy aplikacji z poziomu wiersza polecenia lub w skryptach. Ta opcja szybkiego startu przedstawia tworzenie zasobów sieciowych, serwerów wewnętrznej bazy danych oraz bramy aplikacji.
+Za pomocą programu Azure PowerShell do utworzenia lub zarządzanie nimi bramy application Gateway z wiersza polecenia lub skryptów. Ten przewodnik Szybki Start dowiesz się, jak utworzyć zasoby sieciowe, serwerów wewnętrznej bazy danych i bramy aplikacji.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable AzureRM` . Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Tworzenie grupy zasobów platformy Azure przy użyciu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -38,7 +39,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Tworzenie konfiguracji podsieci przy użyciu [AzureRmVirtualNetworkSubnetConfig nowy](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Tworzenie sieci wirtualnych za pomocą funkcji [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) z konfiguracjami podsieci. I na koniec Utwórz publiczny adres IP przy użyciu [AzureRmPublicIpAddress nowy](/powershell/module/azurerm.network/new-azurermpublicipaddress). Te zasoby są używane do zapewnienia możliwości połączenia sieci z bramy aplikacji i jej skojarzonych zasobów.
+Utwórz konfiguracje podsieci za pomocą polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) z konfiguracjami podsieci. Na koniec utwórz publiczny adres IP, korzystając z polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Te zasoby służą do zapewniania łączności sieciowej z bramą aplikacji i skojarzonymi z nią zasobami.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -61,11 +62,11 @@ New-AzureRmPublicIpAddress `
 ```
 ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
-W tym przykładzie utworzysz dwie maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Należy również zainstalować usług IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
+W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako serwery zaplecza dla bramy aplikacji. Zainstaluj również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
 ### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
 
-Tworzenie interfejsu sieciowego z [AzureRmNetworkInterface nowy](/powershell/module/azurerm.network/new-azurermnetworkinterface). Tworzenie konfiguracji maszyny wirtualnej z [AzureRmVMConfig nowy](/powershell/module/azurerm.compute/new-azurermvmconfig). Po uruchom następujące polecenia, zostanie wyświetlony monit o poświadczenia. Wprowadź *azureuser* dla nazwy użytkownika i *Azure123456!* hasła. Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Utwórz interfejs sieciowy za pomocą polecenia [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Utwórz konfigurację maszyny wirtualnej za pomocą polecenia [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). W przypadku uruchamiania poniższych poleceń będą wyświetlane monity o poświadczenia. Wprowadź *azureuser* jako nazwę użytkownika i *Azure123456!* jako hasło. Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -112,9 +113,9 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i port serwera sieci Web
+### <a name="create-the-ip-configurations-and-frontend-port"></a>Tworzenie konfiguracji adresów IP i portu frontonu
 
-Użyj [AzureRmApplicationGatewayIPConfiguration nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) do utworzenia konfiguracji, które kojarzy podsieci, która wcześniej została utworzona z bramy aplikacji. Użyj [AzureRmApplicationGatewayFrontendIPConfig nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) do utworzenia konfiguracji, który przypisuje publicznego adresu IP również wcześniej utworzony na bramie aplikacji. Użyj [AzureRmApplicationGatewayFrontendPort nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport) można przypisać portu 80, które ma być używany do uzyskania dostępu bramy aplikacji.
+Użyj polecenia [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration), aby utworzyć konfigurację, która kojarzy utworzoną wcześniej podsieć z bramą aplikacji. Użyj polecenia [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig), aby utworzyć konfigurację, która przypisuje utworzony wcześniej publiczny adres IP do bramy aplikacji. Użyj polecenia [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport), aby przypisać port 80, który będzie używany podczas uzyskiwania dostępu do bramy aplikacji.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -131,9 +132,9 @@ $frontendport = New-AzureRmApplicationGatewayFrontendPort `
   -Port 80
 ```
 
-### <a name="create-the-backend-pool"></a>Tworzenie puli wewnętrznej bazy danych
+### <a name="create-the-backend-pool"></a>Tworzenie puli zaplecza
 
-Użyj [AzureRmApplicationGatewayBackendAddressPool nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool) można utworzyć puli zaplecza bramy aplikacji. Skonfiguruj ustawienia dla puli wewnętrznej bazy danych za pomocą [AzureRmApplicationGatewayBackendHttpSettings nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
+Użyj polecenia [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool), aby utworzyć pulę zaplecza dla bramy aplikacji. Skonfiguruj ustawienia dla puli zaplecza przy użyciu polecenia [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings).
 
 ```azurepowershell-interactive
 $address1 = Get-AzureRmNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -149,9 +150,9 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-the-listener-and-add-a-rule"></a>Utworzenie obiektu nasłuchującego, a następnie dodaj regułę
+### <a name="create-the-listener-and-add-a-rule"></a>Tworzenie odbiornika i dodawanie reguły
 
-Odbiornik wymaganego do włączenia usługi Brama aplikacji w celu kierowania ruchu odpowiednio do puli wewnętrznej bazy danych. Utwórz odbiornik przy użyciu [AzureRmApplicationGatewayHttpListener nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) z konfiguracji serwera sieci Web i portu frontonu, która została wcześniej utworzona. Reguła jest wymagana dla odbiornika wiedzieć, który puli wewnętrznej bazy danych mają być używane dla ruchu przychodzącego. Użyj [AzureRmApplicationGatewayRequestRoutingRule nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) do utworzenia reguły o nazwie *rule1*.
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. Utwórz odbiornik przy użyciu polecenia [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener), stosując wcześniej utworzone konfiguracje i port frontonu. Reguła jest wymagana, aby odbiornik wiedział, której puli zaplecza używać dla ruchu przychodzącego. Użyj polecenia [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) do utworzenia reguły o nazwie *rule1*.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzureRmApplicationGatewayHttpListener `
@@ -169,7 +170,7 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Teraz, gdy utworzono niezbędne dodatkowe zasoby, używać [AzureRmApplicationGatewaySku nowy](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) określić parametry dla bramy aplikacji, a następnie użyć [AzureRmApplicationGateway nowy](/powershell/module/azurerm.network/new-azurermapplicationgateway) do Czy chcesz go utworzyć.
+Teraz, gdy utworzono niezbędne dodatkowe zasoby, użyj polecenia [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) w celu określenia parametrów dla bramy aplikacji, a następnie użyj polecenia [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) w celu jej utworzenia.
 
 ```azurepowershell-interactive
 $sku = New-AzureRmApplicationGatewaySku `
@@ -192,17 +193,17 @@ New-AzureRmApplicationGateway `
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Użyj [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) uzyskać publiczny adres IP bramy aplikacji. Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, użyj polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![Brama aplikacji w testu](./media/application-gateway-create-gateway-arm/application-gateway-iistest.png)
+![Testowanie bramy aplikacji](./media/application-gateway-create-gateway-arm/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, można użyć [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) polecenia, aby usunąć grupę zasobów, bramy aplikacji i wszystkie powiązane zasoby.
+Jeśli nie będą już potrzebne, możesz użyć [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) polecenia, aby usunąć grupę zasobów, usługa application gateway i wszystkie pokrewne zasoby.
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroupAG
@@ -210,5 +211,5 @@ Remove-AzureRmResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do tworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+W tym przewodniku Szybki start utworzono grupę zasobów, zasoby sieciowe i serwery zaplecza. Te zasoby są następnie używane do utworzenia bramy aplikacji. Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.
 

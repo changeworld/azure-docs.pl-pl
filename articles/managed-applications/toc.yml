@@ -31,6 +31,8 @@
       href: update-managed-resources.md
     - name: Publikowanie za pomocą portalu
       href: publish-portal.md
+    - name: Używanie wpisu tajnego z usługi Key Vault
+      href: key-vault-access.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
