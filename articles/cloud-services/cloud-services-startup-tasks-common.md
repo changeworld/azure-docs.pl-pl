@@ -1,9 +1,9 @@
 ---
-title: Typowe zadania uruchamiania usługi w chmurze | Dokumentacja firmy Microsoft
-description: Niektóre przykłady typowych zadań uruchomienia, które można wykonywać w roli sieci web usługi w chmurze lub roli proces roboczy.
+title: Typowe zadania uruchamiania usług Cloud Services | Dokumentacja firmy Microsoft
+description: Zawiera kilka przykładów typowych zadań uruchamiania, który chcesz wykonać w roli sieci web usług w chmurze lub roli procesu roboczego.
 services: cloud-services
 documentationcenter: ''
-author: Thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: adegeo
-ms.openlocfilehash: cee23da5b089b02bfc0ef10afd60f0f2272585b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeconnoc
+ms.openlocfilehash: 0737738bfd0ab27898631263f57302d15ee11d53
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843700"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39006550"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Typowe zadania uruchamiania usługi w chmurze
-Ten artykuł zawiera kilka przykładów typowych zadań uruchomienia, które można wykonywać w usłudze w chmurze. Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Operacje, które można wykonać to instalowania składnika, rejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchamia proces wymagającą dużo czasu. 
+# <a name="common-cloud-service-startup-tasks"></a>Popularne zadania uruchamiania usługi w chmurze
+W tym artykule przedstawiono kilka przykładów typowych zadań uruchamiania, które można wykonywać w usłudze w chmurze. Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. Operacje, które można wykonać obejmują instalowanie składnika, rejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchamiania długotrwałych procesu. 
 
-Zobacz [w tym artykule](cloud-services-startup-tasks.md) zrozumieć sposób działania uruchamiania zadań, a w szczególności, jak tworzyć wpisów, które definiują zadanie uruchamiania.
+Zobacz [w tym artykule](cloud-services-startup-tasks.md) , aby zrozumieć sposób działania uruchamiania zadań i wyraźnie, jak utworzyć wpisy, które definiują zadania uruchamiania.
 
 > [!NOTE]
-> Uruchamianie zadania nie są stosowane do maszyn wirtualnych, tylko do sieci Web usługi chmury i roli proces roboczy.
+> Zadania uruchamiania nie są stosowane do maszyn wirtualnych, tylko do usługi sieci Web i chmury ról procesów roboczych.
 > 
 
-## <a name="define-environment-variables-before-a-role-starts"></a>Zdefiniuj zmienne środowiskowe, przed rozpoczęciem roli
-Zmienne środowiskowe zdefiniowane dla określonego zadania, należy użyć [środowiska] element wewnątrz [zadań] elementu.
+## <a name="define-environment-variables-before-a-role-starts"></a>Definiowanie zmiennych środowiskowych, przed rozpoczęciem roli
+Zmienne środowiskowe zdefiniowane dla określonego zadania, należy użyć [Środowisko] element wewnątrz [Zadanie podrzędne] elementu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -48,7 +48,7 @@ Zmienne środowiskowe zdefiniowane dla określonego zadania, należy użyć [śr
 </ServiceDefinition>
 ```
 
-Zmienne można również użyć [prawidłową wartość wyrażenia XPath Azure](cloud-services-role-config-xpath.md) do odwołania elementu dotyczących wdrożenia. Zamiast `value` atrybutu, zdefiniuj [RoleInstanceValue] element podrzędny.
+Zmienne można również użyć [prawidłową wartość wyrażenia XPath Azure](cloud-services-role-config-xpath.md) k odkazu coś o wdrożeniu. Zamiast używania `value` atrybutu, zdefiniuj [RoleInstanceValue] elementu podrzędnego.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -57,23 +57,23 @@ Zmienne można również użyć [prawidłową wartość wyrażenia XPath Azure](
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurowanie uruchomienia usług IIS przy użyciu AppCmd.exe
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) narzędzia wiersza polecenia może służyć do zarządzania ustawieniami usług IIS podczas uruchamiania na platformie Azure. *AppCmd.exe* umożliwia wygodne, wiersza polecenia dostęp do ustawień konfiguracji do użycia w zadania uruchamiania na platformie Azure. Przy użyciu *AppCmd.exe*, ustawienia witryny sieci Web mogą być dodane, zmodyfikowane lub usunięte dla witryn i aplikacji.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurowanie uruchamiania usług IIS przy użyciu AppCmd.exe
+[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) narzędzie wiersza polecenia może służyć do zarządzania ustawieniami usługi IIS podczas uruchamiania na platformie Azure. *AppCmd.exe* zapewnia wygodne, wiersza polecenia dostęp do ustawień konfiguracji do użycia w zadaniach uruchamiania na platformie Azure. Za pomocą *AppCmd.exe*, ustawienia witryny sieci Web mogą być dodane, zmodyfikowane lub usunięte, aby aplikacje i witryny.
 
-Istnieje jednak kilka istotnych Zwróć uwagę na użycie *AppCmd.exe* jako zadanie uruchamiania:
+Istnieje jednak kilka kwestii, które Zwróć uwagę na użycie *AppCmd.exe* jako zadania uruchamiania:
 
-* Uruchamianie zadania mogą być uruchamiane w więcej niż raz między ponownego uruchomienia. Na przykład, gdy rola odtwarzana.
-* Jeśli *AppCmd.exe* akcja jest wykonywana więcej niż raz, może generować wystąpił błąd. Na przykład próba dodania sekcji, aby *Web.config* dwukrotnie można wygenerować wystąpił błąd.
-* Uruchamianie zadań zakończy się niepowodzeniem, jeśli zwracają kod wyjścia równy zero lub **errorlevel**. Na przykład, jeśli *AppCmd.exe* generuje błąd.
+* Zadania uruchamiania może działać więcej niż jeden raz między ponownymi uruchomieniami. Na przykład, gdy rola jest odtwarzana.
+* Jeśli *AppCmd.exe* więcej niż jeden raz wykonać akcji, może on wygenerować błąd. Na przykład spróbujesz dodać sekcję, aby *Web.config* dwa razy, można wygenerować błąd.
+* Uruchamianie zadań zakończy się niepowodzeniem, jeśli ich zwróci kod zakończenia różny od zera lub **errorlevel**. Na przykład, gdy *AppCmd.exe* generuje błąd.
 
-Dobrym rozwiązaniem do sprawdzenia jest **errorlevel** po wywołaniu *AppCmd.exe*, który jest łatwo zrobić, jeśli zawijanie wywołanie *AppCmd.exe* z *cmd* pliku. W przypadku wykrycia znanego **errorlevel** odpowiedzi, możesz go zignorować lub przekaż go ponownie.
+Jest dobrą praktyką, aby sprawdzić **errorlevel** po wywołaniu *AppCmd.exe*, który jest łatwo zrobić, jeśli opakować wywołanie *AppCmd.exe* z *.cmd* pliku. Jeśli wykryje znanego **errorlevel** odpowiedzi, możesz go zignorować lub przekazać go ponownie.
 
-Errorlevel zwrócony przez *AppCmd.exe* są wymienione w pliku winerror.h pliku, a także będą widoczne na [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
+Zmienna środowiskowa errorlevel zwrócony przez *AppCmd.exe* są wymienione w pliku winerror.h, a także będą widoczne na [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx).
 
-### <a name="example-of-managing-the-error-level"></a>Przykład zarządzanie poziom błędu
-W tym przykładzie dodaje sekcji kompresji i wpis kompresji dla formatu JSON do *Web.config* pliku z powodu błędu obsługi i rejestrowania.
+### <a name="example-of-managing-the-error-level"></a>Przykład zarządzania poziom błędu
+Ten przykład dodaje sekcji kompresji i wpis kompresji dla formatu JSON do *Web.config* pliku z obsługi i rejestrowania błędów.
 
-Istotne sekcje [ServiceDefinition.csdef] plików są wyświetlane w tym miejscu, które obejmują ustawienia [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) atrybutu `elevated` umożliwiają *AppCmd.exe* wystarczających uprawnień do zmiany ustawień w *Web.config* pliku:
+Istotne sekcje [ServiceDefinition.csdef] plików są wyświetlane w tym miejscu, które obejmują ustawienia [kontekście wykonywania](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) atrybutu `elevated` zapewnienie *AppCmd.exe* wystarczających uprawnień do zmiany ustawień w *Web.config* pliku:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -86,7 +86,7 @@ Istotne sekcje [ServiceDefinition.csdef] plików są wyświetlane w tym miejscu,
 </ServiceDefinition>
 ```
 
-*Startup.cmd* partii używa pliku *AppCmd.exe* można dodać sekcję kompresji i wpis kompresji dla formatu JSON do *Web.config* pliku. Oczekiwana **errorlevel** 183 jest ustawiony na wartość zero korzystanie z VERIFY. Wywołanie pliku EXE programu wiersza polecenia. Nieoczekiwany errorlevels StartupErrorLog.txt są rejestrowane.
+*Startup.cmd* usługi batch używa pliku *AppCmd.exe* do dodania dla formatu JSON do sekcji kompresji i wpis kompresji *Web.config* pliku. Oczekiwana **errorlevel** 183 jest ustawiony na wartość zero korzystanie z VERIFY. Plik EXE programu wiersza polecenia. Nieoczekiwany errorlevels są rejestrowane StartupErrorLog.txt.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -124,14 +124,14 @@ ECHO An error occurred during startup. ERRORLEVEL = %ERRORLEVEL% >> "%TEMP%\Star
 EXIT %ERRORLEVEL%
 ```
 
-## <a name="add-firewall-rules"></a>Dodawanie reguł zapory
-Na platformie Azure czy skutecznie dwóch zapory. Pierwszy zapory steruje połączeń między maszyną wirtualną a publicznie. Zapora jest kontrolowany przez [punkty końcowe] element [ServiceDefinition.csdef] pliku.
+## <a name="add-firewall-rules"></a>Dodawanie reguły zapory
+Na platformie Azure istnieją skutecznie dwiema zaporami. Pierwszy Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez [Punkty końcowe] element [ServiceDefinition.csdef] pliku.
 
-Drugi zapory steruje połączeń między maszyną wirtualną i procesów w tej maszynie wirtualnej. Zapora może być kontrolowane przez `netsh advfirewall firewall` narzędzia wiersza polecenia.
+Drugi Zapora kontroluje połączenia między maszyną wirtualną a procesów w obrębie tej maszyny wirtualnej. Ta zapora może być kontrolowane przez `netsh advfirewall firewall` narzędzie wiersza polecenia.
 
-Platforma Azure tworzy reguły zapory dla procesów uruchomiona w ramach poszczególnych ról. Na przykład po uruchomieniu usługi lub program Azure automatycznie tworzy reguły zapory niezbędne, aby zezwolić tej usługi do komunikacji z Internetem. Jednak w przypadku utworzenia usługę, która jest uruchamiana przez proces poza roli użytkownika (np. usługi COM + lub zaplanowanych zadań systemu Windows), należy ręcznie utworzyć regułę zapory, aby zezwolić na dostęp do tej usługi. Te reguły zapory można tworzyć za pomocą zadania uruchamiania.
+Platforma Azure tworzy reguły zapory dla procesów uruchomionych w ramach usługi ról. Na przykład po uruchomieniu usługi lub programu Azure automatycznie tworzy reguły zapory niezbędne, aby umożliwić tej usługi do komunikacji z Internetem. Jednak jeśli tworzysz usługi, który jest uruchamiany w procesie poza roli użytkownika (np. usług COM + lub Windows zaplanowane zadanie), należy ręcznie utworzyć regułę zapory, aby zezwolić na dostęp do tej usługi. Tych reguł zapory można utworzyć za pomocą zadania uruchamiania.
 
-Zadanie uruchamiania, która tworzy regułę zapory muszą mieć [executionContext][zadań] z **z podwyższonym poziomem uprawnień**. Dodaj następujące zadanie uruchamiania do [ServiceDefinition.csdef] pliku.
+Zadania uruchamiania, który tworzy regułę zapory muszą mieć [kontekście wykonywania][zadanie podrzędne] z **z podwyższonym poziomem uprawnień**. Dodaj następujące zadanie uruchamiania w celu [ServiceDefinition.csdef] pliku.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -144,7 +144,7 @@ Zadanie uruchamiania, która tworzy regułę zapory muszą mieć [executionConte
 </ServiceDefinition>
 ```
 
-Aby dodać regułę zapory, należy użyć odpowiedniej `netsh advfirewall firewall` poleceń w pliku wsadowym uruchamiania. W tym przykładzie zadanie uruchamiania wymaga zabezpieczeń i szyfrowania dla portu TCP 80.
+Aby dodać reguły zapory, należy użyć odpowiedniej `netsh advfirewall firewall` poleceń w pliku wsadowym uruchamiania. W tym przykładzie zadanie uruchamiania wymaga zabezpieczeń i szyfrowania na porcie 80 protokołu TCP.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -156,12 +156,12 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="block-a-specific-ip-address"></a>Blok określonego adresu IP
-Możesz ograniczyć dostęp roli sieci web platformy Azure na zestaw określonych adresów IP, modyfikując programu IIS **web.config** pliku. Należy również użyć pliku polecenia, który umożliwia odblokowanie **ipSecurity** sekcji **ApplicationHost.config** pliku.
+## <a name="block-a-specific-ip-address"></a>Blokuj określonego adresu IP
+Zestaw określonych adresów IP można ograniczyć dostęp roli sieci web platformy Azure, modyfikując usługi IIS **web.config** pliku. Należy również użyć pliku polecenia, który umożliwia odblokowanie **ipSecurity** części **ApplicationHost.config** pliku.
 
-Aby odblokować **ipSecurity** sekcji **ApplicationHost.config** plików, tworzenie pliku poleceń, który jest uruchamiany podczas uruchamiania roli. Utwórz folder na głównym poziomie roli sieci web o nazwie **uruchamiania** i, w tym folderze utwórz plik wsadowy o nazwie **startup.cmd**. Dodaj ten plik do projektu programu Visual Studio i ustaw właściwości **zawsze Kopiuj** aby upewnić się, że jest dołączony do pakietu.
+Aby odblokować **ipSecurity** części **ApplicationHost.config** plików, tworzenie pliku poleceń, który jest uruchamiany podczas uruchamiania roli. Utwórz folder na głównym poziomie roli sieci web o nazwie **uruchamiania** i, w tym folderze utwórz plik wsadowy o nazwie **startup.cmd**. Dodaj ten plik do projektu programu Visual Studio, a następnie ustaw właściwości na **zawsze Kopiuj** aby upewnić się, że jest uwzględniony w pakiecie.
 
-Dodaj następujące zadanie uruchamiania do [ServiceDefinition.csdef] pliku.
+Dodaj następujące zadanie uruchamiania w celu [ServiceDefinition.csdef] pliku.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -184,11 +184,11 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-To zadanie sprawia, że **startup.cmd** plik wsadowy do uruchomienia za każdym razem, gdy roli sieci web został zainicjowany, upewniając się, że wymagane **ipSecurity** sekcja jest odblokowane.
+To zadanie sprawia, że **startup.cmd** plik wsadowy uruchamiana za każdym razem, gdy rola sieci web jest inicjowany, upewniając się, że wymagane **ipSecurity** sekcja jest odblokowane.
 
-Na koniec zmodyfikuj [sekcja system.webServer](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) roli sieci web **web.config** plik, aby dodać listę adresów IP, które mają prawo dostępu, jak pokazano w poniższym przykładzie:
+Na koniec zmodyfikuj [sekcja system.webServer](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) roli sieci web **web.config** plik, aby dodać listę adresów IP, które mają dostęp, jak pokazano w poniższym przykładzie:
 
-Ten przykładowy konfiguracji **umożliwia** wszystkie adresy IP na dostęp do serwera, z wyjątkiem dwóch zdefiniowany
+Ta konfiguracja przykładowe **umożliwia** wszystkie adresy IP na potrzeby uzyskiwania dostępu do serwera, z wyjątkiem dwóch zdefiniowane
 
 ```xml
 <system.webServer>
@@ -203,7 +203,7 @@ Ten przykładowy konfiguracji **umożliwia** wszystkie adresy IP na dostęp do s
 </system.webServer>
 ```
 
-Ten przykładowy konfiguracji **nie zezwala na** wszystkie adresy IP do serwera, z wyjątkiem dwóch zdefiniowane.
+Ta konfiguracja przykładowe **nie zezwala na** wszystkie adresy IP do serwera, z wyjątkiem dwóch zdefiniowane.
 
 ```xml
 <system.webServer>
@@ -219,9 +219,9 @@ Ten przykładowy konfiguracji **nie zezwala na** wszystkie adresy IP do serwera,
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>Utwórz zadanie uruchamiania programu PowerShell
-Nie można wywołać skryptów programu Windows PowerShell bezpośrednio z [ServiceDefinition.csdef] pliku, ale może być wywoływany z w pliku wsadowym uruchamiania.
+Skrypty programu Windows PowerShell nie mogą być wywoływane bezpośrednio z [ServiceDefinition.csdef] pliku, ale mogą być wywoływane z w ramach uruchamiania pliku wsadowego.
 
-PowerShell (domyślnie) uruchamiać niepodpisane skrypty. Jeśli nie zarejestrujesz skryptu, należy skonfigurować PowerShell, aby uruchamiać niepodpisane skrypty. Aby uruchamiać niepodpisane skrypty **ExecutionPolicy** musi mieć ustawioną **bez ograniczeń**. **ExecutionPolicy** ustawienie Użyj jest oparty na wersji środowiska Windows PowerShell.
+PowerShell (domyślnie) uruchamiać niepodpisane skrypty. Jeśli nie możesz utworzyć skrypt, należy skonfigurować programu PowerShell, aby uruchamiać niepodpisane skrypty. Aby uruchamiać niepodpisane skrypty **ExecutionPolicy** musi być równa **Unrestricted**. **ExecutionPolicy** ustawienie użycia opiera się na wersję środowiska Windows PowerShell.
 
 ```cmd
 REM   Run an unsigned PowerShell script and log the output
@@ -231,7 +231,7 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-Jeśli używasz systemu operacyjnego gościa, który uruchamia program PowerShell 2.0 jest lub 1.0, możesz wymusić w wersji 2 do uruchomienia, a jeśli jest niedostępny, użyj wersji 1.
+Jeśli używasz systemu operacyjnego gościa, który uruchamia program PowerShell 2.0 jest lub 1.0, można wymusić w wersji 2 do uruchomienia, a jeśli jest niedostępny, należy użyć wersji 1.
 
 ```cmd
 REM   Attempt to set the execution policy by using PowerShell version 2.0 syntax.
@@ -247,14 +247,14 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="create-files-in-local-storage-from-a-startup-task"></a>Tworzenie plików w magazynie lokalnym z zadanie uruchamiania
-Zasób lokalnego magazynu służy do przechowywania plików utworzonych przez zadanie uruchamiania, który jest dostępny później przez aplikację.
+## <a name="create-files-in-local-storage-from-a-startup-task"></a>Tworzenie plików w magazynie lokalnym z zadania uruchamiania
+Zasób magazynu lokalnego służy do przechowywania plików utworzonych przez użytkownika zadania uruchamiania, który jest dostępny później przez aplikację.
 
-Aby utworzyć zasób magazynu lokalnego, Dodaj [LocalResources] sekcji do [ServiceDefinition.csdef] pliku, a następnie dodaj [LocalStorage] element podrzędny. Nadaj unikatową nazwę i odpowiedni rozmiar zasobu magazynu lokalnego uruchomienia zadania.
+Aby utworzyć zasób magazynu lokalnego, Dodaj [LocalResources] sekcji [ServiceDefinition.csdef] pliku, a następnie dodaj [LocalStorage] elementu podrzędnego. Nadaj unikatową nazwę i odpowiedni rozmiar zasobu lokalnego magazynu zadania uruchamiania.
 
-Do użycia zasobów magazynu lokalnego w uruchomienia zadania, należy utworzyć zmienną środowiskową, aby odwołać lokalizacji zasobów magazynu lokalnego. Następnie zadanie uruchamiania i aplikacji mogą odczytywać i zapisywać pliki do zasobu magazynu lokalnego.
+Aby użyć zasobu magazynu lokalnego zadania uruchamiania, należy utworzyć zmienną środowiskową, aby odwoływać się do lokalizacji zasobów magazynu lokalnego. Następnie zadanie uruchamiania i aplikacji mogą odczytywać i zapisywać pliki do zasobu magazynu lokalnego.
 
-Istotne sekcje **ServiceDefinition.csdef** plików są wyświetlane tutaj:
+Istotne sekcje **ServiceDefinition.csdef** pliku przedstawiono poniżej:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -278,7 +278,7 @@ Istotne sekcje **ServiceDefinition.csdef** plików są wyświetlane tutaj:
 </ServiceDefinition>
 ```
 
-Na przykład to **Startup.cmd** partii używa pliku **PathToStartupStorage** zmiennej środowiskowej, aby utworzyć plik **MyTest.txt** w lokalizacji magazynu lokalnego.
+Na przykład to **Startup.cmd** usługi batch używa pliku **PathToStartupStorage** zmiennej środowiskowej, aby utworzyć plik **MyTest.txt** w lokalizacji magazynu lokalnego.
 
 ```cmd
 REM   Create a simple text file.
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-Magazyn lokalny folder mogą korzystać z zestawu SDK platformy Azure, za pomocą [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metody.
+Dostępny Magazyn lokalny folder z zestawu SDK platformy Azure przy użyciu [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metody.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -302,11 +302,11 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ```
 
 ## <a name="run-in-the-emulator-or-cloud"></a>Uruchamianie w emulatorze lub w chmurze
-Program może wykonywać inne czynności działającego w chmurze, gdy jest on w emulatora obliczeń w porównaniu do uruchomienia zadania. Na przykład można użyć świeżą kopię danych SQL tylko wtedy, gdy działa w emulatorze. Lub może być w celu optymalizacji wydajności dla chmury, który nie należy wykonać podczas uruchamiania w emulatorze.
+Może mieć wykonanie innych czynności działającego w chmurze, gdy jest on w emulatorze obliczeń w porównaniu do zadania uruchamiania. Na przykład można użyć świeżą kopię danych SQL, tylko wtedy, gdy jest uruchomiona w emulatorze. Lub możesz chcieć wykonać kilka optymalizacji wydajności w chmurze, które trzeba wykonać, gdy jest uruchomiona w emulatorze.
 
-Ta możliwość wykonywania różnych działań na emulator obliczeń i chmury można osiągnąć, tworząc zmienną środowiskową w [ServiceDefinition.csdef] pliku. Następnie można przetestować tej zmiennej środowiskowej dla wartości w zadania uruchamiania.
+Ta możliwość wykonywania różnych działań w emulatorze obliczeń i w chmurze można osiągnąć, tworząc zmienną środowiskową w [ServiceDefinition.csdef] pliku. Następnie testujesz tej zmiennej środowiskowej dla wartości z zadania uruchamiania.
 
-Aby utworzyć zmienną środowiskową, dodać [zmiennej]/[RoleInstanceValue] element i utworzyć wartość wyrażenia XPath `/RoleEnvironment/Deployment/@emulated`. Wartość **ComputeEmulatorRunning %** jest zmienna środowiskowa `true` podczas uruchamiania emulatora obliczeń i `false` podczas uruchamiania w chmurze.
+Aby utworzyć zmienną środowiskową, Dodaj [Zmienna]/[RoleInstanceValue] elementu i utworzyć wartość XPath `/RoleEnvironment/Deployment/@emulated`. Wartość **ComputeEmulatorRunning %** jest zmienna środowiskowa `true` podczas uruchamiania w emulatorze obliczeń i `false` podczas uruchamiania w chmurze.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +328,7 @@ Aby utworzyć zmienną środowiskową, dodać [zmiennej]/[RoleInstanceValue] ele
 </ServiceDefinition>
 ```
 
-Teraz można sprawdzić zadania **ComputeEmulatorRunning %** zmiennej środowiskowej do wykonywania różnych akcji w oparciu Określa, czy jest uruchomiona rola w chmurze lub emulator. Oto .cmd skrypt powłoki, który sprawdza, czy tej zmiennej środowiskowej.
+Zadania mogą teraz sprawdzić **ComputeEmulatorRunning %** zmiennej środowiskowej, aby wykonywać różne akcje oparte na tego, czy jest uruchomiona rola w chmurze lub w emulatorze. Oto .cmd skrypt powłoki, który sprawdza, czy dla tej zmiennej środowiskowej.
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -341,10 +341,10 @@ IF "%ComputeEmulatorRunning%" == "true" (
 ```
 
 
-## <a name="detect-that-your-task-has-already-run"></a>Wykryj, czy zadanie zostało już uruchomione
-Rola może odtworzyć bez ponownego uruchomienia komputera powoduje ponowne uruchomienie zadania uruchamiania. Nie ma żadnych flagę wskazującą, czy zadanie zostało już uruchomione na hostingu maszyny Wirtualnej. Może być niektórych zadań, których nie ma znaczenia, że uruchomione wiele razy. Jednak może wystąpić sytuacja, w których należy uniemożliwić zadania uruchomione w więcej niż raz.
+## <a name="detect-that-your-task-has-already-run"></a>Wykrywa, że zadanie zostało już uruchomione
+Rola może odzyskać bez ponownego uruchomienia systemu, powodując swoje zadania uruchamiania ponownie uruchomić. Nie ma żadnych flagę wskazującą, czy zadanie zostało już uruchomione na hostingu maszyn wirtualnych. Może być niektóre zadania, których nie ma znaczenia, czy działają wiele razy. Jednak można uruchamiać w sytuacji, w których trzeba uniemożliwienie zadania więcej niż jeden raz.
 
-Najprostszym sposobem, aby wykryć, czy zadanie zostało już uruchomione jest utworzenie pliku w **% TEMP %** folderu, gdy zadanie zakończy się pomyślnie i wyszukać go na początku zadania. Poniżej przedstawiono przykładowy skrypt powłoki cmd nie.
+Najprostszym sposobem, aby wykryć, czy zadanie zostało już uruchomione, jest utworzenie pliku w **% TEMP %** folderu, gdy zadanie zakończy się pomyślnie i zwróć uwagę na jego przy uruchamianiu zadania. Poniżej przedstawiono przykładowy skrypt powłoki cmd robi to za Ciebie.
 
 ```cmd
 REM   If Task1_Success.txt exists, then Application 1 is already installed.
@@ -379,19 +379,19 @@ REM   Exit normally.
 EXIT /B 0
 ```
 
-## <a name="task-best-practices"></a>Najlepsze rozwiązania w zakresie zadania
-Poniżej przedstawiono najważniejsze wskazówki, które należy wykonać podczas konfigurowania zadania dla roli użytkownika sieci web lub procesu roboczego.
+## <a name="task-best-practices"></a>Najlepsze rozwiązania zadania
+Poniżej przedstawiono kilka najlepszych zasad, które należy wykonać podczas konfigurowania zadania dla roli sieci web lub proces roboczy.
 
-### <a name="always-log-startup-activities"></a>Zawsze dziennika uruchomienia działania
-Program Visual Studio nie zapewnia debugera do wykonania kroków opisanych pliki wsadowe, dlatego warto uzyskać jak najwięcej danych w operacji pliki wsadowe, jak to możliwe. Rejestrowanie dane wyjściowe pliki wsadowe, zarówno **stdout** i **stderr**, umożliwiają ważne informacje podczas próby debugowanie i Usuń pliki wsadowe. Do logowania zarówno **stdout** i **stderr** do StartupLog.txt pliku w katalogu wskazanym przez **% TEMP %** zmiennej środowiskowej, Dodaj tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` na końcu określonych wierszy, które mają być rejestrowane. Na przykład, aby wykonać setup.exe w **PathToApp1Install %** katalogu:
+### <a name="always-log-startup-activities"></a>Zawsze działań podczas uruchamiania dziennika
+Program Visual Studio nie zapewnia debugera do kroku za pomocą plików usługi batch, więc warto uzyskać jak najwięcej danych operacji plików wsadowych, jak to możliwe. Rejestrowanie danych wyjściowych w plikach wsadowych zarówno **stdout** i **stderr**, udzieli Ci ważne informacje podczas próby debugowania i Usuń pliki wsadowe. Do logowania zarówno **stdout** i **stderr** do StartupLog.txt pliku w katalogu wskazanym przez **% TEMP %** zmiennej środowiskowej, Dodaj tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` do końca poszczególne wiersze, które mają być rejestrowane. Na przykład, aby wykonać setup.exe w **PathToApp1Install %** katalogu:
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-Aby uprościć kod xml, należy utworzyć otoka *cmd* pliku, który wywołuje wszystkie uruchamiania zadań wraz z rejestrowania i zapewnia każdego zadania podrzędnego współużytkują tego samego zmiennych środowiskowych.
+Aby uprościć kod xml, należy utworzyć otokę *cmd* pliku, który wywołuje wszystkie uruchamiania zadań wraz z rejestrowania i zapewnia każde zadanie podrzędne udostępnia ten sam zmiennych środowiskowych.
 
-Może być irytujące do użycia `>> "%TEMP%\StartupLog.txt" 2>&1` na końcu każdego uruchomienia zadania. Rejestrowanie zadania można wymusić przez utworzenie otoka obsługuje rejestrowanie dla Ciebie. Tej otoki wywołuje plik wsadowy prawdziwe, który chcesz uruchomić. Wszystkie dane wyjściowe z pliku wsadowego docelowej, zostanie przekierowany do *Startuplog.txt* pliku.
+Może być irytujące do użycia `>> "%TEMP%\StartupLog.txt" 2>&1` na końcu każdego zadania uruchamiania. Rejestrowanie zadania można wymusić przez tworzenie otok, który obsługuje rejestrowania dla Ciebie. Tę otokę wywołuje plik wsadowy rzeczywistego, który chcesz uruchomić. Wszelkie dane wyjściowe z pliku wsadowego docelowej, zostanie przekierowany do *Startuplog.txt* pliku.
 
-Poniższy przykład pokazuje, jak przekierować wszystkie dane wyjściowe z pliku wsadowego uruchamiania. W tym przykładzie plik ServerDefinition.csdef tworzy zadanie uruchamiania, który wywołuje *logwrap.cmd*. *logwrap.cmd* wywołania *Startup2.cmd*, wszystkie dane wyjściowe do przekierowywania **% TEMP %\\StartupLog.txt**.
+Poniższy przykład pokazuje, jak przekierować wszystkie dane wyjściowe z uruchamiania pliku wsadowego. W tym przykładzie plik ServerDefinition.csdef tworzy zadanie uruchamiania, który wywołuje *logwrap.cmd*. *logwrap.cmd* wywołania *Startup2.cmd*, przekierowanie wszystkie dane wyjściowe do **% TEMP %\\StartupLog.txt**.
 
 ServiceDefinition.cmd:
 
@@ -469,49 +469,49 @@ Przykładowe dane wyjściowe w **StartupLog.txt** pliku:
 > 
 > 
 
-### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Ustaw executionContext odpowiednio do uruchamiania zadań
-Ustaw uprawnienia odpowiednio do uruchomienia zadania. Czasami uruchamiania zadań należy uruchomić z podwyższonym poziomem uprawnień, nawet jeśli roli jest uruchamiany z normalnym uprawnieniami.
+### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Ustaw w kontekście wykonywania odpowiednio do zadania uruchamiania
+Ustaw uprawnienia odpowiednio dla zadania uruchamiania. Czasami zadania uruchamiania należy uruchomić z podwyższonym poziomem uprawnień, mimo że roli jest uruchamiany z normalnym uprawnieniami.
 
-[ExecutionContext][zadań] atrybut ustawia poziom uprawnień uruchamiania zadania. Przy użyciu `executionContext="limited"` oznacza, że zadanie uruchamiania ma taki sam poziom uprawnień jako rolę. Przy użyciu `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, dzięki czemu zadanie uruchamiania do wykonywania zadań administratora bez udzielania uprawnień administratora do roli użytkownika.
+[Kontekście wykonywania][zadanie podrzędne] atrybut ustawia poziom uprawnień zadania uruchamiania. Za pomocą `executionContext="limited"` oznacza, że zadanie uruchamiania ma taki sam poziom uprawnień jako rolę. Za pomocą `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, co pozwala zadania uruchamiania do wykonywania zadań administratora bez udzielania uprawnień administratora do Twojej roli.
 
-Przykładem zadanie uruchamiania, który wymaga pełnych uprawnień jest zadanie uruchamiania, która używa **AppCmd.exe** do skonfigurowania usług IIS. **AppCmd.exe** wymaga `executionContext="elevated"`.
+Przykładem zadania uruchamiania, który wymaga podniesionych uprawnień jest zadanie uruchamiania, który używa **AppCmd.exe** do skonfigurowania usług IIS. **AppCmd.exe** wymaga `executionContext="elevated"`.
 
-### <a name="use-the-appropriate-tasktype"></a>Użyć odpowiednich taskType
-[TaskType][zadań] atrybut określa sposób uruchamiania zadań jest wykonywany. Istnieją trzy wartości: **proste**, **tła**, i **pierwszego planu**. Zadania tła i pierwszego planu są uruchamiane asynchronicznie, a następnie prostych zadań są wykonywane synchronicznie pojedynczo.
+### <a name="use-the-appropriate-tasktype"></a>Użyj odpowiedniego taskType
+[TaskType][zadanie podrzędne] atrybut określa sposób zadanie uruchamiania jest wykonywany. Istnieją trzy wartości: **proste**, **tła**, i **pierwszego planu**. Pierwszego planu i tła zadania są uruchamiane asynchronicznie, a następnie proste zadania są wykonywane synchronicznie pojedynczo.
 
-Z **proste** uruchomienia zadania, można ustawić kolejność uruchamiania zadań, według kolejności, w którym zadania są wymienione w pliku ServiceDefinition.csdef. Jeśli **proste** zadań kończy się z kodem zakończenia inną niż zero, a następnie zatrzymuje procedury uruchamiania i roli nie uruchomi się.
+Za pomocą **proste** zadań uruchamiania można ustawić kolejność uruchamiania zadań, które według kolejności, w którym zadania są wymienione w pliku ServiceDefinition.csdef. Jeśli **proste** zadań kończy się kod zakończenia różny od zera, a następnie zatrzymuje procedury uruchamiania i roli nie rozpoczyna się.
 
-Różnica między **tła** uruchamiania zadań i **pierwszego planu** uruchomienia zadania oznacza, że **pierwszego planu** zadania zachować roli uruchomiony, dopóki nie **pierwszego planu** zakończeniem zadania. Oznacza to również, że jeśli **pierwszego planu** zawiesza się zadania lub awarii (Crash), rola nie jest odtwarzana do **pierwszego planu** wymusza zadań zamknięte. Z tego powodu **tła** zadania są zalecane dla asynchronicznego uruchamiania zadań, chyba że potrzebne danej funkcji **pierwszego planu** zadań.
+Różnica między **tła** zadań uruchamiania i **pierwszego planu** zadania uruchamiania jest to, że **pierwszego planu** zadania zachować roli działał do czasu  **pierwszy plan** zakończeniem zadania. Oznacza to również, że jeśli **pierwszego planu** zadanie zawiesza się lub awarie, rola nie zostanie odtwarzanie aż do **pierwszego planu** zadania jest wymuszone zamknięte. Z tego powodu **tła** zadania są zalecane dla asynchronicznego uruchamiania zadań, chyba że potrzebujesz tej funkcji **pierwszego planu** zadania.
 
 ### <a name="end-batch-files-with-exit-b-0"></a>Pliki wsadowe zakończenia z /B zakończenia 0
-Rola uruchamia się tylko wtedy, jeśli **errorlevel** z każdej z prostego uruchamiania zadań wynosi zero. Nie wszystkie programy ustawić **errorlevel** (kod zakończenia) poprawnie, więc plik wsadowy powinien kończyć się `EXIT /B 0` Jeżeli wszystko działa prawidłowo.
+Rola uruchamia się tylko wtedy, gdy **errorlevel** każdego z nich Twój startup prostych zadań ma wartość zero. Nie wszystkie programy ustaw **errorlevel** (kod zakończenia) poprawnie, więc plik wsadowy powinien kończyć się `EXIT /B 0` Jeśli wszystko zostało wykonane prawidłowo.
 
-Brak `EXIT /B 0` na końcu partii uruchamiania pliku jest częstą przyczyną ról, które nie są uruchamiane.
+Brak `EXIT /B 0` na końcu partii uruchamiania plików jest częstą przyczyną ról, które nie rozpoczynają się.
 
 > [!NOTE]
-> I zaobserwowany tej partii zagnieżdżone pliki czasami rozłączaj po użyciu `/B` parametru. Może zajść potrzeba upewnij się, że ten problem zawieszenie nie odbywa się jeśli inny plik wsadowy wymaga bieżącego pliku wsadowego, takich jak użycie [otoki dziennika](#always-log-startup-activities). Można pominąć `/B` parametru w tym przypadku.
+> Czy mogę zaobserwowany tej partii zagnieżdżone pliki Rozłącz czasami przy użyciu `/B` parametru. Warto upewnić się, że ten problem zawieszenia nie odbywa się jeśli inny plik wsadowy wywołuje bieżący plik wsadowy, takich jak użycie [otoki dziennika](#always-log-startup-activities). Możesz pominąć `/B` parametru, w tym przypadku.
 > 
 > 
 
-### <a name="expect-startup-tasks-to-run-more-than-once"></a>Oczekiwane uruchomienia zadania mają działać więcej niż raz
-Nie wszystkie odtwarza roli obejmować ponowne uruchomienie komputera, ale wszystkie odtwarza roli obejmują uruchomione wszystkie zadania uruchamiania. Oznacza to, że uruchamiania zadań muszą zostać można uruchamiać wiele razy między uruchamiany ponownie bez problemów. Jest to omówione w [powyższej sekcji](#detect-that-your-task-has-already-run).
+### <a name="expect-startup-tasks-to-run-more-than-once"></a>Oczekiwane zadania uruchamiania, aby uruchomić więcej niż raz
+Nie wszystkie odtwarzanie roli dotyczyć ponowne uruchomienie komputera, ale uruchomione wszystkie zadania uruchamiania wszystkich odtwarzanie roli. Oznacza to, że zadania uruchamiania musi być w stanie uruchomić wiele razy między ponownymi uruchomieniami bez problemów. Ta czynność została omówiona [poprzedniej sekcji](#detect-that-your-task-has-already-run).
 
-### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Użyj lokalnego magazynu do przechowywania plików, które muszą być dostępne w roli
-Jeśli chcesz skopiować lub tworzenie pliku podczas uruchamiania zadania, który jest dostępny dla Twojej roli tego pliku muszą znajdować się w magazynie lokalnym. Zobacz [powyższej sekcji](#create-files-in-local-storage-from-a-startup-task).
+### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Używany Magazyn lokalny do przechowywania plików, które muszą być dostępne w tej roli
+Jeśli chcesz skopiować lub utworzyć plik podczas swoje zadania uruchamiania, który następnie jest dostępny dla Twojej roli ten plik należy umieścić w magazynie lokalnym. Zobacz [poprzedniej sekcji](#create-files-in-local-storage-from-a-startup-task).
 
-## <a name="next-steps"></a>Następne kroki
-Przejrzyj chmury [z modelu i pakietu](cloud-services-model-and-package.md)
+## <a name="next-steps"></a>Kolejne kroki
+Przejrzyj chmury [model i pakiet usługi](cloud-services-model-and-package.md)
 
-Dowiedz się więcej na temat [zadania](cloud-services-startup-tasks.md) pracy.
+Dowiedz się więcej o tym, jak [zadania](cloud-services-startup-tasks.md) pracy.
 
-[Tworzenie i wdrażanie](cloud-services-how-to-create-deploy-portal.md) pakietu usługi w chmurze.
+[Tworzenie i wdrażanie](cloud-services-how-to-create-deploy-portal.md) pakiet usługi w chmurze.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[zadań]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[środowiska]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[zmiennej]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Zmienna]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [Punkty końcowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints

@@ -337,7 +337,7 @@ Następnie w sekcji **ServiceManifestImport** pliku VotingWebPkg skonfiguruj zas
 
 ## <a name="run-the-application-locally"></a>Uruchamianie aplikacji lokalnie
 
-W Eksploratorze rozwiązań wybierz aplikację **Voting** i ustaw właściwość **Adres URL aplikacji** na wartość „https://localhost:443”.
+W Eksploratorze rozwiązań wybierz aplikację **Voting** i ustaw właściwość **Adres URL aplikacji** na wartość ” https://localhost:443 ” .
 
 Zapisz wszystkie pliki i naciśnij klawisz F5, aby uruchomić aplikację lokalnie.  Po wdrożeniu aplikacji zostanie otwarta przeglądarka internetowa z wyświetloną stroną [https://localhost:443](https://localhost:443). Jeśli używasz certyfikatu z podpisem własnym, zobaczysz ostrzeżenie, że komputer nie ufa zabezpieczeniom tej witryny internetowej.  Kontynuuj przechodzenie do strony internetowej.
 
