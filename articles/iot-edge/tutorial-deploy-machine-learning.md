@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afc9e7c0635f9920aa3ec7c9e6012aa4e41edb9d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8e6873f45beac281adbc7a9669504f1703a9eaf5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062045"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345495"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge — wersja zapoznawcza
 
@@ -60,7 +60,7 @@ Edytuj plik konfiguracji demona usługi IoT Edge:
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Zaktualizuj sekcję **connect** konfiguracji. Na przykład:
+Zaktualizuj sekcję **zawartości** konfiguracji przy użyciu adresu IP. Na przykład:
 ```yaml
 connect:
   management_uri: "http://172.17.0.1.1:15580"
@@ -125,7 +125,7 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrz
 1. Jeśli moduł tempSensor został już wcześniej wdrożony na urządzeniu usługi IoT Edge, może on zostać automatycznie wypełniony. Jeśli nie znajduje się on jeszcze na liście modułów, dodaj go.
 
     1. Kliknij pozycję **Dodaj** i wybierz pozycję **Moduł usługi IoT Edge**.
-    2. W polu **Nazwa** wprowadź wartość `tempsensor`.
+    2. W polu **Nazwa** wprowadź wartość `tempSensor`.
     3. W polu **Identyfikator URI obrazu** wprowadź wartość `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
     4. Wybierz pozycję **Zapisz**.
 

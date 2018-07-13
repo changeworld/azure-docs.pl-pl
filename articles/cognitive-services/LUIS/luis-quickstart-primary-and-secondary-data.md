@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/26/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061251"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130896"
 ---
-# <a name="tutorial-create-app-that-uses-simple-entity"></a>Samouczek: tworzenie aplikacji używającej jednostki prostej
+# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Samouczek: 6. Dodawanie jednostki prostej i listy fraz
 W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębniania danych nauczonych maszynowo z wypowiedzi za pomocą jednostki **Simple** (prostej).
 
 <!-- green checkmark -->
@@ -45,7 +45,7 @@ Ta aplikacja pokazuje, jak wydobyć dane z wypowiedzi. Przeanalizujmy następuj�
 |Please submit my resume for the engineering position.|engineering|
 |Fill out application for job 123456|123456|
 
-W tym samouczku dodasz nową jednostkę w celu wyodrębnienia nazwy zadania. Możliwość wyodrębniania określonego numeru zadania została przedstawiona w [samouczku](luis-quickstart-intents-regex-entity.md) dotyczącym wyrażeń regularnych. 
+W tym samouczku dodasz nową jednostkę w celu wyodrębnienia nazwy zadania. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Przeznaczenie jednostki prostej
 Celem jednostki prostej w tej aplikacji LUIS jest nauczenie usługi LUIS, co to jest numer zadania i gdzie można go znaleźć w wypowiedzi. Część wypowiedzi, która jest zadaniem, może się zmienić dla różnych wypowiedzi i jest zależna od doboru wyrazów i długości wypowiedzi. Usługa LUIS potrzebuje przykładów zadań w dowolnej wypowiedzi we wszystkich intencjach.  
@@ -85,7 +85,7 @@ Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wy
 
     ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Zadanie) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz „engineering” jako jednostkę Job (Zadanie). Zaznacz wyraz „engineering”, a następnie wybierz pozycję Job (Zadanie) w menu podręcznym. 
+5. W wypowiedzi `Submit resume for engineering position` oznacz etykietą wyraz `engineering` jako jednostkę Job (Zadanie). Zaznacz wyraz `engineering`, a następnie wybierz pozycję **Job** (Zadanie) w menu podręcznym. 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu usługi LUIS z wyróżnioną etykietą jednostki Job (Zadanie)")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
@@ -292,7 +292,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Jeśli chcesz dodać więcej wyrazów do listy fraz, przejrzyj zalecane wyrazy i dodaj odpowiednie w Twojej sytuacji. 
+    Jeśli chcesz dodać więcej wyrazów do listy fraz, przejrzyj pozycję **Powiązane wartości** i dodaj odpowiednie pozycje. 
 
 4. Wybierz pozycję **Save** (Zapisz), aby aktywować listę fraz.
 
@@ -369,7 +369,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
 Dodanie listy frazy wzmocniło sygnał wyrazów na liście, ale **nie** jest ona używana jako dokładne dopasowanie. Lista fraz ma kilka zadań z pierwszym wyrazem `lead` i zadanie `welder`, ale nie ma zadania `lead welder`. Ta lista fraz dla zadań może być niekompletna. W miarę regularnego [przeglądania wypowiedzi punktu końcowego](label-suggested-utterances.md) i wyszukiwania innych wyrazów dotyczących zadań można dodawać je do listy fraz. Następnie należy ponownie nauczyć i opublikować aplikację.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, zawierająca prostą jednostkę i listę fraz powiązanych z wyrazami, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane wiadomości. 
+Ta aplikacja, zawierająca prostą jednostkę i listę fraz z wyrazami, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane zadania. 
 
 Twój czatbot ma teraz dość informacji, aby określić akcję główną ubiegania się o pracę i parametr tej akcji — przywoływane zadanie. 
 
@@ -377,9 +377,9 @@ Twój czatbot ma teraz dość informacji, aby określić akcję główną ubiega
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent oraz dane z jednostki, aby użyć interfejsu API innej firmy do wysłania informacji o zadaniu do przedstawiciela działu zasobów ludzkich. Jeśli istnieją inne opcje programowe dla bota lub aplikacji wywołującej, usługa LUIS nie obsłuży ich. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak dodać wstępnie skompilowaną jednostkę KeyPhrase](luis-quickstart-intent-and-key-phrase.md)
+> [Dodawanie wstępnie skompilowanej jednostki KeyPhrase](luis-quickstart-intent-and-key-phrase.md)

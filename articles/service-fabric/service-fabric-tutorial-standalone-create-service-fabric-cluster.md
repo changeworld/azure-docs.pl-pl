@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 7ba5fa1d4c5b87d1c4828ee98dae36f415d37c20
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248439"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344159"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: instalowanie i tworzenie klastra usługi Service Fabric
 
@@ -61,13 +61,7 @@ Zaktualizowane węzły będą wyglądać następująco:
         }
 ```
 
-Następnie należy zaktualizować kilka właściwości.  W wierszu 34 zmodyfikuj parametry połączenia magazynu diagnostycznego. Po modyfikacji powinny wyglądać następująco, z Twoim adresem IP w wierszu `"connectionstring": "\\\\172.31.27.1\\c$\\DiagnosticsStore"`
-
-Po zaktualizowaniu parametrów połączenia należy utworzyć folder.  W tym celu użyj następującego polecenia, zamieniając poniższy adres IP na adres IP wprowadzony w parametrach połączenia:
-
-```powershell
-mkdir \\172.31.27.1\c$\DiagnosticsStore
-```
+Następnie należy zaktualizować kilka właściwości.  W wierszu 34 zmodyfikuj parametry połączenia magazynu diagnostycznego. Po modyfikacji powinny wyglądać następująco: `"connectionstring": "C:\\ProgramData\\SF\\DiagnosticsStore"`
 
 Na koniec w sekcji `nodeTypes` konfiguracji należy dodać nową sekcję na potrzeby mapowania portów efemerycznych używanych przez system Windows.  Plik konfiguracji powinien wyglądać następująco:
 

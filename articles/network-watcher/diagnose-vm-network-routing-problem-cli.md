@@ -1,6 +1,6 @@
 ---
-title: Diagnozowanie maszyny wirtualnej routingu problem z siecią - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: W tym artykule Dowiedz się jak zdiagnozować problem routingu sieci maszyny wirtualnej przy użyciu funkcji w następnym przeskoku obserwatora sieci platformy Azure.
+title: Diagnozowanie maszyny wirtualnej problemu z routingiem sieciowym — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule dowiesz się, jak diagnozować maszyny wirtualnej problemu z routingiem sieciowym za pomocą następnego przeskoku możliwości usługi Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: jimdial
@@ -18,31 +18,31 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: fcb7ec2e40b5c0e8794d2f4d70395dcbecca019c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182500"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618954"
 ---
-# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnozowanie maszyny wirtualnej routingu problem z siecią - wiersza polecenia platformy Azure
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnozowanie maszyny wirtualnej problemu z routingiem sieciowym — interfejs wiersza polecenia platformy Azure
 
-W tym artykule należy wdrożyć maszynę wirtualną (VM), a następnie sprawdź komunikacji z adresu IP i adres URL. Należy określić przyczynę awarii łączności i jak można go usunąć.
+W tym artykule Wdróż maszynę wirtualną (VM), a następnie sprawdź komunikaty do adresu IP i adres URL. Określisz przyczynę niepowodzenia komunikacji oraz sposób rozwiązania problemu.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym artykule, wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Po zweryfikowaniu wersji interfejsu wiersza polecenia, uruchom `az login` można utworzyć połączenia z platformą Azure. Polecenia interfejsu wiersza polecenia, w tym artykule są sformatowane do uruchamiania w powłoki Bash.
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Po zweryfikowaniu wersji interfejsu wiersza polecenia uruchom polecenie `az login`, aby utworzyć połączenie z platformą Azure. Polecenia interfejsu wiersza polecenia, w tym artykule są formatowane do uruchamiania w powłoce Bash.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Przed utworzeniem maszyny Wirtualnej, należy utworzyć grupę zasobów, aby zawierała maszyny Wirtualnej. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Przed utworzeniem maszyny wirtualnej musisz utworzyć grupę zasobów, która będzie zawierała maszynę wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm*:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
 
 ```azurecli-interactive
 az vm create \
@@ -52,15 +52,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie Kontynuuj pozostałe kroki dopiero po utworzeniu maszyny Wirtualnej i interfejsu wiersza polecenia zwraca dane wyjściowe.
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Wykonywanie pozostałych kroków możesz zacząć dopiero wtedy, gdy maszyna wirtualna zostanie utworzona, a interfejs wiersza polecenia zwróci dane wyjściowe.
 
-## <a name="test-network-communication"></a>Test łączności sieciowej
+## <a name="test-network-communication"></a>Testowanie komunikacji sieciowej
 
-Aby przetestować komunikacji sieciowej z obserwatora sieciowego, należy najpierw włączyć obserwatora sieciowego, w regionie, w którym znajduje się w maszynie Wirtualnej, która ma zostać przetestowana, a następnie użyć obserwatora sieciowego następnego przeskoku możliwości do testowania łączności.
+Aby przetestować komunikacji sieciowej przy użyciu usługi Network Watcher, należy najpierw włączyć usługi network watcher w regionie, w którym znajduje się w maszynie Wirtualnej, która ma zostać przetestowana i następnie za pomocą usługi Network Watcher następnego przeskoku możliwości testowania komunikacji.
 
-### <a name="enable-network-watcher"></a>Włącz obserwatora sieciowego
+### <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
-Jeśli masz już obserwatora sieciowego, włączona w regionie wschodnie stany USA, przejdź do [Użyj następnego przeskoku](#use-next-hop). Użyj [skonfigurować obserwatora sieciowego az](/cli/azure/network/watcher#az-network-watcher-configure) polecenie, aby utworzyć obserwatora sieciowego w regionie wschodnie stany USA:
+Jeśli masz już usługę network watcher włączone w regionie wschodnie stany USA, przejdź do [użycia miejsca docelowego następnego skoku](#use-next-hop). Użyj [Konfigurowanie usługi network watcher az](/cli/azure/network/watcher#az-network-watcher-configure) polecenie, aby utworzyć usługę network watcher w regionie wschodnie stany USA:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -69,11 +69,11 @@ az network watcher configure \
   --enabled
 ```
 
-### <a name="use-next-hop"></a>Użyj następnego skoku
+### <a name="use-next-hop"></a>Korzystanie z funkcji Następny przeskok
 
-Azure automatycznie tworzy trasy do domyślnej lokalizacji docelowych. Można utworzyć trasy niestandardowe, które zastępują trasy domyślnej. Czasami trasy niestandardowe może spowodować, że komunikacja się nie powieść. Aby przetestować routingu z maszyny Wirtualnej, użyj [az sieci obserwatora Pokaż następnego przeskoku](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) ustalenie następnego przeskoku routingu ruchu jest przeznaczony dla określonego adresu.
+Na platformie Azure są automatycznie tworzone trasy do domyślnych miejsc docelowych. Możesz tworzyć trasy niestandardowe zastępujące domyślne trasy. Czasami użycie tras niestandardowych może spowodować niepowodzenie komunikacji. Aby przetestować routing z maszyny Wirtualnej, użyj [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) do określenia następnego przeskoku routingu, gdy ruch jest przeznaczony dla określonego adresu.
 
-Test komunikacji wychodzącej z maszyny Wirtualnej do jednego z adresów IP dla www.bing.com:
+Przetestuj komunikację wychodzącą z maszyny wirtualnej do jednego z adresów IP domeny www.bing.com:
 
 ```azurecli-interactive
 az network watcher show-next-hop \
@@ -85,9 +85,9 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Po kilku sekundach, dane wyjściowe informuje o który **Typ następnego przeskoku** jest **Internet**oraz że **routeTableId** jest **trasa systemowa**. Wynik tego informuje o tym, czy jest prawidłową trasę do miejsca docelowego.
+Po kilku sekundach, dane wyjściowe informujący o tym, **Typ następnego przeskoku** jest **Internet**oraz że **routeTableId** jest **trasa systemowa**. Ten wynik poinformuje Cię o tym, że jest prawidłową trasę do lokalizacji docelowej.
 
-Przetestuj komunikacja wychodząca z maszyny Wirtualnej 172.31.0.100:
+Przetestuj komunikację wychodzącą z maszyny wirtualnej do adresu 172.31.0.100:
 
 ```azurecli-interactive
 az network watcher show-next-hop \
@@ -99,11 +99,11 @@ az network watcher show-next-hop \
   --out table
 ```
 
-Dane wyjściowe zwrócone informuje o który **Brak** jest **Typ następnego przeskoku**oraz że **routeTableId** jest również **trasa systemowa**. Wynik tego informuje o tym, gdy istnieje trasa prawidłowego systemu docelowego, brak nie następnego przeskoku do kierowania ruchem do miejsca docelowego.
+Dane wyjściowe zwracane informujący o tym, **Brak** jest **Typ następnego przeskoku**oraz że **routeTableId** jest również **trasa systemowa**. Ten wynik oznacza, że istnieje prawidłowa trasa systemowa do miejsca docelowego, ale nie ma następnego przeskoku umożliwiającego kierowanie ruchu do miejsca docelowego.
 
-## <a name="view-details-of-a-route"></a>Wyświetl szczegóły trasy
+## <a name="view-details-of-a-route"></a>Wyświetlanie szczegółów trasy
 
-Do analizy, dalsze routingu, przejrzyj skuteczne trasy dla interfejsu sieciowego z [az sieci karty sieciowej Pokaż obowiązującej--tabeli tras](/cli/azure/network/nic#az-network-nic-show-effective-route-table) polecenia:
+Aby analizować dalsze routingu, zapoznaj się z obowiązujące trasy dla interfejsu sieciowego z [az network nic show obowiązywać route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) polecenia:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -111,7 +111,7 @@ az network nic show-effective-route-table \
   --name myVmVMNic
 ```
 
-Następujący tekst jest uwzględniany w dane wyjściowe:
+Poniższy tekst znajduje się w dane wyjściowe:
 
 ```azurecli
 {
@@ -129,9 +129,9 @@ Następujący tekst jest uwzględniany w dane wyjściowe:
 },
 ```
 
-Kiedy używać `az network watcher show-next-hop` polecenia komunikacja wychodząca 13.107.21.200 w [Użyj następnego przeskoku](#use-next-hop), trasa o **prefiks adresu** 0.0.0.0/0** była używana do kierowania ruchem na adres, ponieważ nie innych tras w danych wyjściowych zawiera adres. Domyślnie wszystkie adresy, które nie zostały określone w prefiksu adresu innej trasy są kierowane do Internetu.
+Kiedy użyć `az network watcher show-next-hop` polecenie, aby przetestować komunikacja wychodząca 13.107.21.200 w [użycia miejsca docelowego następnego skoku](#use-next-hop), trasa o **addressPrefix** 0.0.0.0/0** został użyty do kierowania ruchu do adresu, ponieważ nie innej trasy w danych wyjściowych zawiera adres. Domyślnie wszystkie adresy, które nie zostały określone w prefiksie adresu innej trasy, są kierowane do Internetu.
 
-Kiedy używać `az network watcher show-next-hop` polecenia do przetestowania komunikacja wychodząca 172.31.0.100 jednak, wynik poinformowana, że nie ma żadnych Typ następnego przeskoku. Dane wyjściowe można również zawiera następujący tekst:
+Kiedy użyć `az network watcher show-next-hop` polecenia do przetestowania komunikacja wychodząca 172.31.0.100 jednak, wynik informować, że nie ma żadnych typu następnego przeskoku. W dane wyjściowe zostanie również wyświetlony następujący tekst:
 
 ```azurecli
 {
@@ -149,7 +149,7 @@ Kiedy używać `az network watcher show-next-hop` polecenia do przetestowania ko
 },
 ```
 
-Jak widać w danych wyjściowych z `az network watcher nic show-effective-route-table` polecenia, ale istnieje trasa domyślna do prefiksu 172.16.0.0/12, który zawiera 172.31.0.100 adres **Typ następnego przeskoku** jest **Brak**. Azure tworzy trasę domyślną elementom 172.16.0.0/12, ale nie określono typu następnego przeskoku, dopóki ma powodu do. Jeśli na przykład zakres adresów 172.16.0.0/12 dodano do przestrzeni adresowej sieci wirtualnej, Azure zmiany **Typ następnego przeskoku** do **sieci wirtualnej** dla danej trasy. Sprawdzenie czy następnie następuje wyświetlenie **sieci wirtualnej** jako **Typ następnego przeskoku**.
+Jak widać w danych wyjściowych `az network watcher nic show-effective-route-table` polecenia, chociaż istnieje trasa domyślna, prefiks 172.16.0.0/12, która zawiera 172.31.0.100 adres **Typ następnego przeskoku** jest **Brak**. Platforma Azure tworzy domyślną trasę dla zakresu adresów 172.16.0.0/12, ale nie określa typu następnego przeskoku, jeśli nie jest to wymagane. Jeśli na przykład dodano 172.16.0.0/12 zakresu adresów przestrzeni adresowej sieci wirtualnej, zmieni się Azure **Typ następnego przeskoku** do **sieć wirtualna** dla danej trasy. Następnie pokazywałaby sprawdzenie **sieć wirtualna** jako **Typ następnego przeskoku**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -161,6 +161,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzyć Maszynę wirtualną i zdiagnozować, routingu sieciowego z maszyny Wirtualnej. Wiesz, że Azure tworzy kilka tras domyślnych i przetestowane routingu do dwóch różnych miejsc docelowych. Dowiedz się więcej o [routing na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) oraz sposób [tworzenia niestandardowych tras](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+W tym artykule utworzono Maszynę wirtualną i zdiagnozować, routing w sieci z maszyny Wirtualnej. Uzyskano informacje o tworzeniu tras domyślnych na platformie Azure i przetestowano routing do dwóch różnych miejsc docelowych. Uzyskaj więcej informacji na temat [routingu na platformie Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dowiedz się, jak [tworzyć trasy niestandardowe](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Dla połączeń wychodzących maszyny Wirtualnej, można również określić opóźnienie i dozwolonych i zabronionych ruch sieciowy między maszyny Wirtualnej i punktu końcowego za pomocą Monitora sieci [Rozwiązywanie problemów z połączenia](network-watcher-connectivity-cli.md) możliwości. Można monitorować komunikację między maszyny Wirtualnej i punktu końcowego, takie jak adres IP lub adres URL, w czasie przy użyciu możliwości monitor połączenia obserwator sieci. Aby dowiedzieć się więcej, zobacz temat [monitorować połączenia sieciowego](connection-monitor.md).
+Dla połączeń wychodzących maszyny Wirtualnej, można również określić opóźnienie i dozwolonych i niedozwolonych ruch sieciowy między maszyną Wirtualną i punkt końcowy korzystający z usługi Network Watcher [Rozwiązywanie problemów z połączeniami](network-watcher-connectivity-cli.md) możliwości. Można monitorować komunikację między maszyny Wirtualnej i punktu końcowego, takie jak adres IP lub adres URL, wraz z upływem czasu przy użyciu funkcji monitor połączeń usługi Network Watcher. Aby dowiedzieć się więcej, zobacz temat [monitorowanie połączenia sieciowego](connection-monitor.md).

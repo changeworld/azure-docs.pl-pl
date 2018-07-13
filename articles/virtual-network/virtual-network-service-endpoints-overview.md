@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e7e79d51b59d82ebf91d68f0714b8eb7bcaafbe6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824690"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443634"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -28,11 +28,13 @@ Punkty końcowe usługi sieci wirtualnej rozszerzają prywatną przestrzeń adre
 
 Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure:
 
-- **Azure Storage**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure
-- **Azure SQL Database**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure
-- **Azure Cosmos DB**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure 
-- **Azure SQL Data Warehouse**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: ogólnie dostępna we wszystkich regionach chmury publicznej Azure. 
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej we wszystkich regionach chmury publicznej Azure.
 - **Usługi bazy danych platformy Azure dla baz danych PostgreSQL i MySQL**: dostępne w wersji zapoznawczej w tych regionach świadczenia usługi Azure, w których dostępna jest usługa bazy danych.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: dostępna w wersji zapoznawczej.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -68,7 +70,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Punkty końcowe usługi są konfigurowane w podsieci sieci wirtualnej. Punkty końcowe współpracują z wystąpieniami obliczeniowymi dowolnego typu uruchomionymi w danej podsieci.
 - W podsieci można skonfigurować wiele punktów końcowych usługi dla wszystkich obsługiwanych usług platformy Azure (na przykład Azure Storage lub Azure SQL Database).
-- W przypadku usługi Azure SQL sieci wirtualne muszą znajdować się w tym samym regionie, co zasób usługi platformy Azure. Jeśli korzystasz z magazynów GRS i RA-GRS w usłudze Azure Storage, konto podstawowe powinno znajdować się w tym samym regionie, co sieć wirtualna. W przypadku wszystkich innych usług zasoby usługi platformy Azure mogą być chronione w sieciach wirtualnych w dowolnym regionie. 
+- W przypadku usługi Azure SQL Database sieci wirtualne muszą znajdować się w tym samym regionie, co zasób usługi platformy Azure. Jeśli korzystasz z magazynów GRS i RA-GRS w usłudze Azure Storage, konto podstawowe powinno znajdować się w tym samym regionie, co sieć wirtualna. W przypadku wszystkich innych usług zasoby usługi platformy Azure mogą być chronione w sieciach wirtualnych w dowolnym regionie. 
 - Sieć wirtualna, w której konfigurowany jest punkt końcowy, może należeć do tej samej subskrypcji, co zasób usługi platformy Azure, lub innej. Aby uzyskać więcej informacji na temat uprawnień wymaganych do konfigurowania punktów końcowych i zabezpieczania usług platformy Azure, zobacz [Aprowizowanie](#Provisioning).
 - W przypadku obsługiwanych usług można zabezpieczyć nowe lub istniejące zasoby w sieciach wirtualnych za pomocą punktów końcowych usługi.
 
@@ -80,7 +82,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 - Dzięki punktom końcowym usług wpisy systemu DNS dla usług platformy Azure są obecnie zachowywane w aktualnej postaci i będą nadal rozpoznawać adresy IP przypisane do usługi platformy Azure.
 - Sieciowe grupy zabezpieczeń z punktami końcowymi usługi:
   - Domyślnie sieciowe grupy zabezpieczeń zezwalają na ruch wychodzący z Internetu, a także na ruch z sieci wirtualnej do usług platformy Azure. Ta opcja będzie nadal współdziałać z punktami końcowymi usługi w ten sposób. 
-  - Jeśli chcesz odrzucić cały ruch wychodzący z Internetu i zezwolić tylko na ruch do określonych usług platformy Azure, możesz to zrobić za pomocą opcji __„Tagi usług platformy Azure”__ w sieciowej grupie zabezpieczeń. Obsługiwane usługi platformy Azure można określić jako miejsce docelowe w regułach sieciowych grup zabezpieczeń, a konserwacją adresów IP w obrębie każdego tagu zajmuje się platforma Azure. Aby uzyskać więcej informacji, zobacz [Azure Service tags for NSGs (Tagi usług platformy Azure dla sieciowych grup zabezpieczeń)](https://aka.ms/servicetags). 
+  - Jeśli chcesz odrzucić cały wychodzący ruch internetowy i zezwolić tylko na ruch do określonych usług platformy Azure, możesz to zrobić za pomocą [tagów usług](security-overview.md#service-tags) w sieciowej grupie zabezpieczeń. Obsługiwane usługi platformy Azure można określić jako miejsce docelowe w regułach sieciowych grup zabezpieczeń, a konserwacją adresów IP w obrębie każdego tagu zajmuje się platforma Azure. Aby uzyskać więcej informacji, zobacz [Azure Service tags for NSGs (Tagi usług platformy Azure dla sieciowych grup zabezpieczeń)](security-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Scenariusze
 

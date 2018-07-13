@@ -1,23 +1,23 @@
 ---
-title: Szybki Start — Ustawianie logowania dla aplikacji jednej strony, za pomocą usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Uruchamianie przykładowej aplikacji jednej strony, która używa usługi Azure Active Directory B2C, aby zapewnić logowania konta.
+title: Szybki start — konfigurowanie logowania dla aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C | Microsoft Docs
+description: Uruchamianie przykładowej aplikacji jednostronicowej, która używa usługi Azure Active Directory B2C do obsługi funkcji logowania na koncie.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: quickstart
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
-ms.translationtype: MT
+ms.openlocfilehash: 7e600f55b9eeb2682b005b8c84c74ec25e054c36
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293285"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447255"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Szybki Start: Konfigurowanie logowania dla aplikacji jednej strony, za pomocą usługi Azure Active Directory B2C
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 
 Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamościami w chmurze, chroniąc Twoją aplikację, firmę i klientów. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie względem kont społecznościowych i firmowych za pomocą protokołów zgodnych z otwartymi standardami.
 
@@ -97,7 +97,7 @@ Przykładowa aplikacja jednostronicowa uwzględnia token dostępu usługi Azure 
 
 Jeśli planujesz wypróbować inne przewodniki Szybki start lub samouczki usługi Azure AD B2C, możesz użyć swojej dzierżawy usługi Azure AD B2C. Możesz [usunąć dzierżawę usługi Azure AD B2C](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant), gdy nie będzie już potrzebna.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start użyto przykładowej aplikacji platformy ASP.NET z obsługą usługi Azure AD B2C do logowania za pomocą niestandardowej strony logowania, logowania za pomocą dostawcy tożsamości dla sieci społecznościowej, utworzenia konta usługi Azure AD B2C i wywołania internetowego interfejsu API chronionego przez usługę Azure AD B2C. 
 

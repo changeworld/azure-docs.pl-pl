@@ -9,23 +9,23 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: df22040de398810fd9250ef46da2f95b6915c4a9
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 11b2fccf3c02555f50f48252f2cd9968c9ec90d7
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030662"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436093"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Szybki start: wdrażanie pierwszego modułu IoT Edge z witryny Azure Portal do urządzenia z systemem Windows — wersja zapoznawcza
 
-W tym przewodniku Szybki start użyjesz interfejsu chmury usługi Azure IoT Edge do zdalnego wdrożenia wstępnie utworzonego kodu na urządzeniu z usługą IoT Edge. Aby wykonać to zadanie, użyj najpierw urządzenia z systemem Windows do symulacji urządzenia z usługą IoT Edge, co pozwoli wdrożyć na nim moduł.
+W tym przewodniku Szybki start użyjesz interfejsu chmury usługi Azure IoT Edge do zdalnego wdrożenia wstępnie utworzonego kodu na urządzeniu z usługą IoT Edge. Aby wykonać to zadanie, użyj najpierw urządzenia z systemem Windows do symulacji urządzenia usługi IoT Edge, co pozwoli wdrożyć na nim moduł.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
 1. Tworzenie centrum IoT Hub.
 2. Rejestrowanie urządzenia usługi IoT Edge w centrum IoT Hub.
 3. Instalowanie i uruchamianie środowiska uruchomieniowego usługi IoT Edge na urządzeniu.
-4. Zdalne wdrażanie modułu do urządzenia usługi IoT Edge i wysyłanie telemetrii do usługi IoT Hub.
+4. Zdalne wdrażanie modułu na urządzeniu usługi IoT Edge i wysyłanie telemetrii do usługi IoT Hub.
 
 ![Architektura samouczka][2]
 
@@ -52,26 +52,26 @@ Na maszynie używanej z urządzeniem usługi IoT Edge zapewnij spełnienie nast�
 
 Podczas wykonywania wielu kroków tego przewodnika Szybki start jest używany interfejs wiersza polecenia platformy Azure, a usługa Azure IoT ma rozszerzenie umożliwiające włączenie dodatkowych funkcji. 
 
-Dodaj rozszerzenie usługi Azure IoT do wystąpienia powłoki chmury.
+Dodaj rozszerzenie usługi Azure IoT do wystąpienia usługi Cloud Shell.
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 Rozpocznij pracę z przewodnikiem Szybki start, tworząc centrum IoT Hub w witrynie Azure Portal.
 ![Tworzenie centrum IoT Hub][3]
 
-W tym przewodniku Szybki start wystarcza warstwa bezpłatna usługi IoT Hub. Jeśli w przeszłości używano usługi IoT Hub i masz już utworzone bezpłatne centrum, możesz używać tego centrum IoT Hub. Każda subskrypcja może zawierać tylko jedno bezpłatne centrum IoT. 
+W tym przewodniku Szybki start wystarcza warstwa bezpłatna usługi IoT Hub. Jeśli w przeszłości używano usługi IoT Hub i masz już utworzone bezpłatne centrum, możesz używać tego centrum IoT Hub. Każda subskrypcja może zawierać tylko jedno bezpłatne centrum IoT Hub. 
 
-1. W powłoce chmury platformy Azure utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **TestResources** w regionie **Zachodnie stany USA**. Dzięki wprowadzeniu wszystkich zasobów dla przewodników Szybki start i samouczków do grupy można nimi zarządzać jednocześnie. 
+1. W usłudze Cloud Shell platformy Azure utwórz grupę zasobów. Poniższy kod tworzy grupę zasobów o nazwie **TestResources** w regionie **Zachodnie stany USA**. Dzięki wprowadzeniu wszystkich zasobów dla przewodników Szybki start i samouczków do grupy można nimi zarządzać jednocześnie. 
 
    ```azurecli-interactive
    az group create --name TestResources --location westus
    ```
 
-1. Utwórz centrum IoT w nowej grupie zasobów. Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **TestResources**. Zastąp nazwę *{hub_name}* unikatową nazwą centrum IoT Hub.
+1. Utwórz centrum IoT Hub w nowej grupie zasobów. Poniższy kod tworzy bezpłatne centrum **F1** w grupie zasobów **TestResources**. Zastąp nazwę *{hub_name}* unikatową nazwą centrum IoT Hub.
 
    ```azurecli-interactive
    az iot hub create --resource-group TestResources --name {hub_name} --sku F1 
@@ -103,7 +103,7 @@ Utwórz tożsamość urządzenia symulowanego, aby umożliwić mu komunikowanie 
 Zainstaluj i uruchom środowisko uruchomieniowe usługi Azure IoT Edge na urządzeniu usługi IoT Edge. 
 ![Rejestrowanie urządzenia][5]
 
-Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demon zabezpieczeń usługi IoT Edge** jest uruchamiany przy każdym uruchomieniu urządzenia Edge przez rozpoczęciu działania agenta usługi IoT Edge. Agent usługi **IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge, w tym centrum usługi IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub. 
+Środowisko uruchomieniowe usługi IoT Edge jest wdrażane na wszystkich urządzeniach usługi IoT Edge. Składa się ono z trzech składników. **Demon zabezpieczeń usługi IoT Edge** jest uruchamiany przy każdym uruchomieniu urządzenia Edge przez rozpoczęciu działania agenta usługi IoT Edge. Agent usługi **IoT Edge** ułatwia wdrażanie i monitorowanie modułów na urządzeniu usługi IoT Edge, w tym centrum usługi IoT Edge. **Centrum usługi IoT Edge** zarządza komunikacją między modułami na urządzeniu usługi IoT Edge oraz między urządzeniem a usługą IoT Hub. 
 
 >[!NOTE]
 >Kroki instalacji w tej sekcji są obecnie wykonywane ręcznie — trwa praca nad przygotowaniem skryptu instalacji. 
@@ -157,7 +157,7 @@ Instrukcje w tej sekcji służą do konfigurowania środowiska uruchomieniowego 
    "TypesSupported"=dword:00000007
    ```
 
-8. Przejdź do pliku w Eksploratorze plików, a następnie kliknij dwukrotnie, aby zaimportować zmiany do rejestru systemu Windows. 
+8. Przejdź do pliku w Eksploratorze plików, a następnie kliknij go dwukrotnie, aby zaimportować zmiany do rejestru systemu Windows. 
 
 ### <a name="configure-the-iot-edge-runtime"></a>Konfigurowanie środowiska uruchomieniowego usługi IoT Edge 
 
@@ -185,24 +185,31 @@ Skonfiguruj środowisko uruchomieniowe przy użyciu parametrów połączenia urz
 
 5. Utwórz zmienną środowiskową o nazwie **IOTEDGE_HOST**, zastępując element *\<ip_address\>* adresem IP urządzenia usługi IoT Edge. 
 
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
+  ```powershell
+  [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
+  ```
+  
+  Ustaw tę zmienną środowiskową jako trwałą, aby była zachowywana po ponownym uruchomieniu.
 
-6. W pliku `config.yaml` znajdź sekcję **Ustawienia połączenia**. Zaktualizuj wartości **management_uri** i **workload_uri** przy użyciu adresu IP i portów otwartych w poprzedniej sekcji. 
+  ```powershell
+  SETX /M IOTEDGE_HOST "http://<ip_address>:15580"
+  ```
+
+
+6. W pliku `config.yaml` znajdź sekcję **Ustawienia połączenia**. Zaktualizuj wartości **management_uri** i **workload_uri** przy użyciu adresu IP i portów otwartych w poprzedniej sekcji. Zastąp element **\<GATEWAY_ADDRESS\>** swoim adresem IP. 
 
    ```yaml
    connect: 
-     management_uri: "http://<ip_address>:15580"
-     workload_uri: "http://<ip_address>:15581"
+     management_uri: "http://<GATEWAY_ADDRESS>:15580"
+     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
 7. Znajdź sekcję **Ustawienia nasłuchiwania** i dodaj te same wartości elementów **management_uri** i **workload_uri**. 
 
    ```yaml
    listen:
-     management_uri: "http://<ip_address>:15580"
-     workload_uri: "http://<ip_address:15581"
+     management_uri: "http://<GATEWAY_ADDRESS>:15580"
+     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
 8. Znajdź sekcję **Ustawienia środowiska uruchomieniowego kontenera Moby** i sprawdź, czy wartość **network** została ustawiona na `nat`.
@@ -285,7 +292,7 @@ Skonfigurowane w tym przewodniku Szybki start urządzenie symulowane może słu�
    docker rm -f $(docker ps -aq)
    ```
 
-Jeśli nie ma potrzebujesz już utworzonych zasobów platformy Azure, możesz użyć poniższego polecenia do usunięcia utworzonej grupę zasobów i wszystkich skojarzonych z nią zasobów:
+Jeśli nie potrzebujesz już utworzonych zasobów platformy Azure, możesz użyć poniższego polecenia do usunięcia utworzonej grupy zasobów i wszystkich skojarzonych z nią zasobów:
 
    ```azurecli-interactive
    az group delete --name TestResources

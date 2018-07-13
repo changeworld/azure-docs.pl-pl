@@ -6,37 +6,32 @@ documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af8b91ee20ccb4d16e7666c317ea7d08a265e6d6
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360108"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435548"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
-Program Visual Studio i zestaw [Azure SDK](https://azure.microsoft.com/downloads/) umożliwiają utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host sieci Web, witrynę sieci Web i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Można również zdefiniować maszynę wirtualną, usługę Virtual Network i konto usługi Storage, a następnie wdrożyć tę infrastrukturę wraz ze skryptem wykonywanym na maszynie wirtualnej. Projekt wdrożenia **grupy zasobów platformy Azure** umożliwia wdrożenie wszystkich niezbędnych zasobów w ramach pojedynczej i powtarzalnej operacji. Aby uzyskać więcej informacji dotyczących wdrażania zasobów i zarządzania nimi, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
+Program Visual Studio umożliwia utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host internetowy, witrynę internetową i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Program Visual Studio zapewnia wiele różnych szablonów początkowych do wdrażania typowych scenariuszy. Ten artykuł dotyczy wdrażania aplikacji internetowej i bazy danych SQL Database.  
 
-Projekty grupy zasobów platformy Azure zawierają szablony JSON usługi Azure Resource Manager, które określają zasoby wdrażane na platformie Azure. Aby uzyskać informacje na temat elementów szablonu usługi Resource Manager, zobacz [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md) (Tworzenie szablonów usługi Azure Resource Manager). Program Visual Studio umożliwia edytowanie tych szablonów i oferuje narzędzia ułatwiające pracę z szablonami.
-
-Ten artykuł dotyczy wdrażania aplikacji sieci Web i bazy danych SQL Database. Jednak kroki są prawie identyczne dla dowolnego typu zasobu. Równie łatwo możesz wdrożyć maszynę wirtualną i powiązane zasoby. Program Visual Studio zapewnia wiele różnych szablonów początkowych do wdrażania typowych scenariuszy.
-
-W tym artykule przedstawiono program Visual Studio 2017. Jeśli używasz programu Visual Studio 2015 Update 2 i zestawu Microsoft Azure SDK dla środowiska .NET 2.9 lub programu Visual Studio 2013 z zestawem Azure SDK 2.9, czynności są w większości takie same. Możesz korzystać z zestawu Azure SDK w wersji 2.6 lub nowszej, jednak interfejs użytkownika może różnić się od przedstawionego w tym artykule. Zdecydowanie zalecamy zainstalowanie najnowszej wersji zestawu [Azure SDK](https://azure.microsoft.com/downloads/) przed rozpoczęciem wykonywania tych kroków. 
+W tym artykule pokazano, jak używać programu [Visual Studio 2017 z zainstalowanymi pakietami roboczymi programowania dla platformy Azure i ASP.NET](/dotnet/azure/dotnet-tools). Jeśli używasz programu Visual Studio 2015 Update 2 i zestawu Microsoft Azure SDK dla środowiska .NET 2.9 lub programu Visual Studio 2013 z zestawem Azure SDK 2.9, czynności są w większości takie same.
 
 ## <a name="create-azure-resource-group-project"></a>Tworzenie projektu grupy zasobów platformy Azure
-W tej procedurze omówiono tworzenie projektu grupy zasobów platformy Azure przy użyciu szablonu **Aplikacja sieci Web i baza danych SQL**.
+W tej sekcji omówiono tworzenie projektu grupy zasobów platformy Azure przy użyciu szablonu **Aplikacja internetowa i baza danych SQL**.
 
-1. W programie Visual Studio wybierz **Plik**, **Nowy projekt**, następnie wybierz pozycję **C#** lub **Visual Basic** (wybór języka nie ma wpływu na późniejszym etapie, ponieważ te projekty zawierają tylko zawartość JSON i zawartość programu PowerShell). Wybierz pozycję **Chmura**, a następnie wybierz projekt **Grupa zasobów platformy Azure**.
+1. W programie Visual Studio wybierz kolejno pozycje **Plik**, **Nowy projekt**, następnie wybierz pozycję **C#** lub **Visual Basic** (wybór języka nie ma wpływu na późniejszym etapie, ponieważ te projekty zawierają tylko zawartość JSON i zawartość programu PowerShell). Wybierz pozycję **Chmura**, a następnie wybierz projekt **Grupa zasobów platformy Azure**.
    
     ![Projekt wdrażania w chmurze](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
-2. Wybierz szablon, który ma zostać wdrożony w usłudze Azure Resource Manager. Należy zauważyć, że dostępnych jest wiele różnych opcji zależnie od typu projektu, który chcesz wdrożyć. Na potrzeby tego artykułu wybierz szablon **Aplikacja sieci Web i baza danych SQL**.
+2. Wybierz szablon, który ma zostać wdrożony w usłudze Azure Resource Manager. Należy zauważyć, że dostępnych jest wiele różnych opcji, zależnie od typu projektu, który chcesz wdrożyć. Na potrzeby tego artykułu wybierz szablon **Aplikacja internetowa i baza danych SQL**.
    
     ![Wybieranie szablonu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
@@ -47,23 +42,23 @@ W tej procedurze omówiono tworzenie projektu grupy zasobów platformy Azure prz
    > 
    > 
    
-    Program Visual Studio tworzy projekt wdrożenia grupy zasobów dla aplikacji sieci Web i Bazy danych SQL.
+    Program Visual Studio tworzy projekt wdrożenia grupy zasobów dla aplikacji internetowej i bazy danych SQL.
 3. Aby wyświetlić utworzone elementy, sprawdź węzeł w projekcie wdrożenia.
    
     ![Wyświetlanie węzłów](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
    
-    Ponieważ w tym przykładzie wybrano szablon Aplikacja sieci Web i baza danych SQL, zostaną wyświetlone następujące pliki: 
+    Ponieważ w tym przykładzie wybrano szablon Aplikacja internetowa i baza danych SQL, zostaną wyświetlone następujące pliki: 
    
    | Nazwa pliku | Opis |
    | --- | --- |
-   | Deploy-AzureResourceGroup.ps1 |Skrypt programu PowerShell, który wywołuje polecenia w celu wdrożenia do usługi Azure Resource Manager.<br />**Uwaga:** program Visual Studio używa tego skryptu programu PowerShell do wdrażania szablonu. Należy zachować ostrożność, ponieważ wszystkie zmiany wprowadzone w tym skrypcie mają wpływ na wdrożenie w programie Visual Studio. |
+   | Deploy-AzureResourceGroup.ps1 |Skrypt programu PowerShell, który uruchamia polecenia w celu wdrożenia do usługi Azure Resource Manager.<br />**Uwaga:** program Visual Studio używa tego skryptu programu PowerShell do wdrażania szablonu. Należy zachować ostrożność, ponieważ wszystkie zmiany wprowadzone w tym skrypcie mają wpływ na wdrożenie w programie Visual Studio. |
    | WebSiteSQLDatabase.json |Szablon usługi Resource Manager określający infrastrukturę, którą chcesz wdrożyć na platformie Azure, oraz parametry, które można podać podczas wdrażania. Umożliwia on również definiowanie zależności między zasobami, tak aby usługa Resource Manager wdrożyła je w odpowiedniej kolejności. |
    | WebSiteSQLDatabase.parameters.json |Plik parametrów zawierający wartości wymagane przez szablon. Poszczególne wdrożenia są dostosowywane za pomocą przekazywanych wartości parametrów. |
    
     Wszystkie projekty wdrażania grup zasobów zawierają te podstawowe pliki. Inne projekty mogą zawierać dodatkowe pliki do obsługi innych funkcji.
 
 ## <a name="customize-the-resource-manager-template"></a>Dostosowywanie szablonu usługi Resource Manager
-Można dostosować projekt wdrożenia, modyfikując szablony JSON określające zasoby, które chcesz wdrożyć. JSON (JavaScript Object Notation) jest łatwym w użyciu formatem serializowanych danych. Pliki JSON używają schematu, do którego odwołujesz się w górnej części każdego pliku. Aby zrozumieć schemat, możesz go pobrać i przeanalizować. Schemat określa prawidłowe elementy, typy i formaty pól, dopuszczalne wartości wyliczane itd. Aby uzyskać informacje na temat elementów szablonu usługi Resource Manager, zobacz [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md) (Tworzenie szablonów usługi Azure Resource Manager).
+Można dostosować projekt wdrożenia, modyfikując szablony JSON określające zasoby, które chcesz wdrożyć. JSON (JavaScript Object Notation) jest łatwym w użyciu formatem serializowanych danych. Pliki JSON używają schematu, do którego odwołujesz się w górnej części każdego pliku. Aby zrozumieć schemat, możesz go pobrać i przeanalizować. Schemat określa prawidłowe elementy, typy i formaty pól, a także dopuszczalne wartości właściwości. Aby uzyskać informacje na temat elementów szablonu usługi Resource Manager, zobacz [Authoring Azure Resource Manager templates (Tworzenie szablonów usługi Azure Resource Manager)](resource-group-authoring-templates.md).
 
 Aby rozpocząć pracę nad szablonem, otwórz plik **WebSiteSQLDatabase.json**.
 
@@ -139,9 +134,9 @@ Teraz można przystąpić do wdrażania projektu. Projekt grupy zasobów platfor
    
     Parametr **hostingPlanName** określa nazwę [planu usługi App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) do utworzenia. 
    
-    Parametr **administratorLogin** określa nazwę użytkownika dla administratora programu SQL Server. Nie należy używać wspólnych nazw administratorów, takich jak **sa** lub **admin**. 
+    Parametr **administratorLogin** określa nazwę użytkownika dla administratora programu SQL Server. Nie należy używać typowych nazw administratorów, takich jak **sa** lub **admin**. 
    
-    Parametr **administratorLoginPassword** określa hasło administratora programu SQL Server. Opcja **Zapisz hasła jako czysty tekst w pliku parametrów** nie jest bezpieczna, dlatego nie należy jej wybierać. Ponieważ hasło nie jest zapisywane w postaci zwykłego tekstu, należy podać to hasło ponownie podczas wdrażania. 
+    Parametr **administratorLoginPassword** określa hasło administratora programu SQL Server. Opcja **Zapisz hasła jako zwykły tekst w pliku parametrów** nie jest bezpieczna, dlatego nie należy jej wybierać. Ponieważ hasło nie jest zapisywane w postaci zwykłego tekstu, należy podać to hasło ponownie podczas wdrażania. 
    
     Parametr **databaseName** określa nazwę bazy danych do utworzenia. 
    
@@ -167,36 +162,36 @@ Teraz można przystąpić do wdrażania projektu. Projekt grupy zasobów platfor
     ![wdrożona grupa zasobów platformy Azure](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
 ## <a name="deploy-code-with-your-infrastructure"></a>Wdrażanie kodu przy użyciu infrastruktury
-Do tej pory wdrożono infrastrukturę aplikacji, ale z projektem nie został wdrożony rzeczywisty kod. W tym artykule przedstawiono sposób wdrażania aplikacji sieci Web i tabel bazy danych SQL Database podczas wdrażania. Jeśli wdrażasz maszynę wirtualną zamiast aplikacji sieci Web, w ramach wdrożenia konieczne będzie uruchomienie kodu na maszynie. Proces wdrażania kodu dla aplikacji sieci Web lub konfigurowania maszyny wirtualnej jest niemal taki sam.
+Wdrożono już infrastrukturę aplikacji, ale z projektem nie został wdrożony rzeczywisty kod. W tym artykule przedstawiono sposób wdrażania aplikacji internetowej i tabel bazy danych SQL Database podczas wdrażania. Jeśli wdrażasz maszynę wirtualną zamiast aplikacji internetowej, w ramach wdrożenia konieczne będzie uruchomienie kodu na maszynie. Proces wdrażania kodu dla aplikacji internetowej lub konfigurowania maszyny wirtualnej jest niemal taki sam.
 
 1. Dodaj projekt do rozwiązania programu Visual Studio. Kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycje **Dodaj** > **Nowy projekt**.
    
     ![dodawanie projektu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
-2. Dodaj **aplikację sieci Web ASP.NET**. 
+2. Dodaj **aplikację internetową ASP.NET**. 
    
-    ![dodawanie aplikacji sieci Web](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
+    ![dodawanie aplikacji internetowej](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
 3. Wybierz pozycję **MVC**.
    
     ![wybieranie pozycji MVC](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
-4. Po utworzeniu aplikacji sieci Web przez program Visual Studio oba projekty są wyświetlane w rozwiązaniu.
+4. Po utworzeniu aplikacji internetowej przez program Visual Studio oba projekty są wyświetlane w rozwiązaniu.
    
     ![wyświetlanie projektów](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
 5. Musisz teraz upewnić się, że projekt grupy zasobów wie o nowym projekcie. Wróć do projektu grupy zasobów (AzureResourceGroup1). Kliknij prawym przyciskiem myszy pozycję **Odwołania** i wybierz polecenie **Dodaj odwołanie**.
    
     ![dodawanie odwołania](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
-6. Wybierz projekt aplikacji sieci Web, który został utworzony.
+6. Wybierz projekt aplikacji internetowej, który został utworzony.
    
     ![dodawanie odwołania](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
    
-    Dodanie odwołania powoduje połączenie projektu aplikacji sieci Web z projektem grupy zasobów i automatyczne ustawienie trzech głównych właściwości. Te właściwości będą wyświetlane w oknie **Właściwości** odwołania.
+    Dodanie odwołania powoduje połączenie projektu aplikacji internetowej z projektem grupy zasobów i automatyczne ustawienie trzech głównych właściwości. Te właściwości będą wyświetlane w oknie **Właściwości** odwołania.
    
       ![wyświetlanie odwołania](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
    
     Właściwości są następujące:
    
-   * Właściwość **Additional Properties** zawiera tymczasową lokalizację pakietu wdrażania w sieci Web, który zostanie przekazany do usługi Azure Storage. Zanotuj folder (ExampleApp) i plik (package.zip). Musisz znać te wartości, ponieważ są one podawane jako parametry podczas wdrażania aplikacji. 
+   * Właściwość **Additional Properties** zawiera tymczasową lokalizację pakietu wdrożeniowego, który zostanie przekazany do usługi Azure Storage. Zanotuj folder (ExampleApp) i plik (package.zip). Musisz znać te wartości, ponieważ są one podawane jako parametry podczas wdrażania aplikacji. 
    * Właściwość **Include File Path** zawiera ścieżkę, w której zostanie utworzony pakiet. Właściwość **Include Targets** zawiera polecenie, które zostanie wykonane podczas wdrażania. 
-   * Wartość domyślna właściwości **Build;Package** umożliwia skompilowanie i utworzenie pakietu wdrażania w sieci Web (pakiet.zip) podczas wdrażania.  
+   * Wartość domyślna właściwości **Build;Package** umożliwia skompilowanie i utworzenie pakietu wdrożeniowego (pakiet.zip) podczas wdrażania.  
      
      Profil publikowania nie jest wymagany, ponieważ wdrożenie pobiera niezbędne informacje z właściwości w celu utworzenia pakietu.
 7. Wróć do pliku WebSiteSQLDatabase.json i dodaj zasób do szablonu.
@@ -210,19 +205,19 @@ Do tej pory wdrożono infrastrukturę aplikacji, ale z projektem nie został wdr
     ![dodawanie narzędzia web deploy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/set-new-parameters.png)
    
     Jako **Konto magazynu artefaktów** wybierz konto wdrożone z tą grupą zasobów.
-10. Po zakończeniu wdrażania wybierz aplikację sieci Web w witrynie portalu. Wybierz adres URL, aby przejść do lokacji.
+10. Po zakończeniu wdrażania wybierz aplikację internetową w witrynie portalu. Wybierz adres URL, aby przejść do lokacji.
     
      ![przeglądanie lokacji](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
-11. Zobacz, że domyślna aplikacja ASP.NET została pomyślnie wdrożona.
+11. Zobaczysz, że domyślna aplikacja ASP.NET została pomyślnie wdrożona.
     
      ![wyświetlanie wdrożonej aplikacji](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
 ## <a name="add-an-operations-dashboard-to-your-deployment"></a>Dodawanie pulpitu nawigacyjnego operacji do wdrożenia
-Po utworzeniu rozwiązania można wykonać ostatni krok — sprawić, aby działało. Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu programu Visual Studio. Możesz wykorzystać udostępnione pulpity nawigacyjne, które są definiowane jako zasoby w formacie JSON. Odbywa się to przez edycję szablonu i dodanie zasobu niestandardowego. 
+Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu programu Visual Studio. Można dostosować wdrożenie, dodając do szablonu zasoby niestandardowe. Aby zobaczyć, jak działa dodawanie zasobu, dodasz operacyjny pulpit nawigacyjny w celu zarządzania wdrożonymi zasobami.
 
-1. Otwórz plik WebsiteSqlDeploy.json i dodaj następujący blok kodu w formacie JSON po zasobie konta magazynu, ale przed zamykającym znakiem „]” sekcji zasobów.
+1. Otwórz plik WebsiteSqlDeploy.json i dodaj następujący kod JSON po zasobie konta magazynu, ale przed zamykającym znakiem `]` sekcji zasobów.
 
-```json
+  ```json
     ,{
       "properties": {
         "lenses": {
@@ -297,23 +292,19 @@ Po utworzeniu rozwiązania można wykonać ostatni krok — sprawić, aby dział
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-}
-```
+  }
+  ```
 
-2. Ponownie wdróż grupę zasobów, a na pulpicie nawigacyjnym w witrynie Azure Portal udostępniony pulpit nawigacyjny będzie widoczny jako dodany do listy wyborów. 
+2. Ponownie wdróż grupę zasobów. Spójrz na pulpit nawigacyjny w witrynie Azure Portal. Zobaczysz, że udostępniony pulpit nawigacyjny został dodany do listy wybranych elementów.
 
-    ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+   ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
 
+3. Wybierz ten pulpit nawigacyjny.
 
+   ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
 
-   > [!NOTE] 
-   > Dostępem do pulpitu nawigacyjnego można zarządzać przy użyciu grup kontroli dostępu opartej na rolach, a dostosowania można publikować w ramach zasobu po jego wdrożeniu. Należy pamiętać, że ponowne wdrożenie grupy zasobów spowoduje zresetowanie jej do wartości domyślnych w szablonie. Należy rozważyć aktualizowanie szablonu za pomocą dostosowań. Aby uzyskać pomoc dotyczącą sposobu wykonywania tych czynności, zobacz [Programowe tworzenie pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards-create-programmatically.md)
+Możesz zarządzać dostępem do pulpitu nawigacyjnego, korzystając z grup kontroli dostępu opartej na rolach. Po wdrożeniu pulpitu nawigacyjnego możesz też dostosowywać jego wygląd. Jeśli jednak ponownie wdrożysz grupę zasobów, pulpit nawigacyjny wróci do domyślnego stanu określonego w szablonie. Aby uzyskać więcej informacji na temat tworzenia pulpitów nawigacyjnych, zobacz [Programmatically create Azure Dashboards (Programowe tworzenie pulpitów nawigacyjnych platformy Azure)](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
-
-    ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
-    
-    
 ## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać informacje dotyczące zarządzania zasobami przy użyciu portalu, zobacz [Korzystanie z witryny Azure Portal do zarządzania zasobami Azure](resource-group-portal.md).
-* Aby uzyskać więcej informacji o szablonach, zobacz [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md) (Tworzenie szablonów usługi Azure Resource Manager).
+* Aby uzyskać więcej informacji o szablonach, zobacz [Authoring Azure Resource Manager templates (Tworzenie szablonów usługi Azure Resource Manager)](resource-group-authoring-templates.md).
 

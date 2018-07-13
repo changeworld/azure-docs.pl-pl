@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Azure Service Fabric | Microsoft Docs
-description: W ramach tego scenariusza skonfigurujesz monitorowanie i diagnostykę kontenerów systemu Windows zorganizowanych w usłudze Azure Service Fabric.
+title: Monitorowanie i diagnostyka kontenerów systemu Windows w usłudze Service Fabric na platformie Azure | Microsoft Docs
+description: W ramach tego scenariusza skonfigurujesz usługę Log Analytics pod kątem monitorowania i diagnostyki kontenerów systemu Windows w usłudze Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b013627c5a0dc596c9897d7fa2c5bf2b2a79ee40
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300860"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114010"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Samouczek: monitorowanie kontenerów systemu Windows w usłudze Service Fabric przy użyciu usługi Log Analytics
 
@@ -34,13 +34,16 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie agenta usługi Log Analytics na potrzeby pobierania metryk kontenerów i węzłów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed rozpoczęciem tego samouczka należy:
-- Mieć klaster na platformie Azure lub [utworzyć go za pomocą tego samouczka](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- [Wdrożyć w nim konteneryzowaną aplikację](service-fabric-host-app-in-a-container.md)
+
+* Mieć klaster na platformie Azure lub [utworzyć go za pomocą tego samouczka](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* [Wdrożyć w nim konteneryzowaną aplikację](service-fabric-host-app-in-a-container.md)
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Konfigurowanie usługi Log Analytics na potrzeby klastra w szablonie usługi Resource Manager
 
 Jeśli używasz [szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) dostarczonego w pierwszej części tego samouczka, powinien on zawierać następujące dodatki do ogólnego szablonu usługi Azure Resource Manager w ramach usługi Service Fabric. Jeśli masz własny klaster, który chcesz skonfigurować w celu monitorowania kontenerów za pomocą usługi Log Analytics:
+
 * Wprowadź następujące zmiany w szablonie usługi Resource Manager.
 * Wdróż je przy użyciu programu PowerShell w celu uaktualnienia klastra przez [wdrożenie szablonu](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm). Usługa Azure Resource Manager potrafi rozpoznać istniejący zasób, więc wdroży go jako uaktualnienie.
 
@@ -49,7 +52,7 @@ Jeśli używasz [szablonu](https://github.com/ChackDan/Service-Fabric/tree/maste
 Wprowadź następujące zmiany w szablonie *template.json*:
 
 1. Dodaj lokalizację i nazwę obszaru roboczego usługi Log Analytics w sekcji *parameters*:
-    
+
     ```json
     "omsWorkspacename": {
       "type": "string",
@@ -74,8 +77,8 @@ Wprowadź następujące zmiany w szablonie *template.json*:
 
     Aby zmienić wartość dla dowolnego z tych elementów, dodaj te same parametry do pliku *template.parameters.json* i zmień używane w nim wartości.
 
-2. Dodaj nazwę rozwiązania oraz rozwiązanie do sekcji *variables*: 
-    
+2. Dodaj nazwę rozwiązania oraz rozwiązanie do sekcji *variables*:
+
     ```json
     "omsSolutionName": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
     "omsSolution": "ServiceFabric"
@@ -102,7 +105,7 @@ Wprowadź następujące zmiany w szablonie *template.json*:
     ```
 
 4. Dodaj obszar roboczy usługi Log Analytics jako pojedynczy zasób. W obszarze *resources* po zasobie zestawów skalowania maszyn wirtualnych dodaj następujący kod:
-    
+
     ```json
     {
         "apiVersion": "2015-11-01-preview",
@@ -193,21 +196,21 @@ Aby skonfigurować rozwiązanie kontenera w obszarze roboczym, wyszukaj wyrażen
 
 Po wyświetleniu monitu o *obszar roboczy usługi Log Analytics* wybierz obszar roboczy, który został utworzony w grupie zasobów, i kliknij pozycję **Utwórz**. Spowoduje to dodanie *rozwiązania do monitorowania kontenerów* do obszaru roboczego, co wywoła automatyczne zbieranie dzienników i statystyk platformy Docker przez agenta usługi Log Analytics wdrożonego w ramach szablonu. 
 
-Przejdź z powrotem do *grupy zasobów*, gdzie powinno zostać wyświetlone nowo dodane rozwiązanie do monitorowania. Po jego kliknięciu na stronie docelowej powinna wyświetlić się liczba uruchomionych obrazów kontenera. 
+Przejdź z powrotem do *grupy zasobów*, gdzie powinno zostać wyświetlone nowo dodane rozwiązanie do monitorowania. Po jego kliknięciu na stronie docelowej powinna wyświetlić się liczba uruchomionych obrazów kontenera.
 
 *Zwróć uwagę, że zostało uruchomionych 5 wystąpień kontenera fabrikam z [części drugiej](service-fabric-host-app-in-a-container.md) samouczka*
 
 ![Strona docelowa rozwiązania kontenera](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Po kliknięciu pozycji **Rozwiązanie do monitorowania kontenerów** nastąpi przejście do bardziej szczegółowego pulpitu nawigacyjnego, który umożliwia przewijanie wielu paneli, a także uruchamianie zapytań w usłudze w Log Analytics. 
+Po kliknięciu pozycji **Rozwiązanie do monitorowania kontenerów** nastąpi przejście do bardziej szczegółowego pulpitu nawigacyjnego, który umożliwia przewijanie wielu paneli, a także uruchamianie zapytań w usłudze w Log Analytics.
 
 *Pamiętaj, że od września 2017 r. w rozwiązaniu są wprowadzane aktualizacje. W związku z tym ignoruj wszelkie błędy dotyczące zdarzeń Kubernetes, które mogą wystąpić, ponieważ trwają prace nad zintegrowaniem wielu orkiestratorów w jednym rozwiązaniu.*
 
-W związku z tym, że agent pobiera dzienniki platformy Docker, domyślnie wyświetla elementy *stdout* i *stderr*. Po przewinięciu w prawo zostanie wyświetlony spis obrazów kontenera, stan, metryki i przykładowe zapytania, które można uruchomić, aby uzyskać bardziej użyteczne dane. 
+W związku z tym, że agent pobiera dzienniki platformy Docker, domyślnie wyświetla elementy *stdout* i *stderr*. Po przewinięciu w prawo zostanie wyświetlony spis obrazów kontenera, stan, metryki i przykładowe zapytania, które można uruchomić, aby uzyskać bardziej użyteczne dane.
 
 ![Pulpit nawigacyjny rozwiązania kontenera](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Po kliknięciu jednego z tych paneli nastąpi przeniesienie do zapytania usługi Log Analytics, które generuje wyświetlaną wartość. Zmień zapytanie na *\**, aby zobaczyć wszystkie rodzaje zbieranych dzienników. W tym miejscu można wysyłać zapytania dotyczące wydajności kontenerów i dzienników lub filtrować je albo wyszukiwać zdarzenia platformy usługi Service Fabric. Poza tym agenci stale emitują puls z każdego widocznego węzła, aby upewnić się, że dane ze wszystkich maszyn są zbierane nawet w przypadku zmiany konfiguracji klastra.   
+Po kliknięciu jednego z tych paneli nastąpi przeniesienie do zapytania usługi Log Analytics, które generuje wyświetlaną wartość. Zmień zapytanie na *\**, aby zobaczyć wszystkie rodzaje zbieranych dzienników. W tym miejscu można wysyłać zapytania dotyczące wydajności kontenerów i dzienników lub filtrować je albo wyszukiwać zdarzenia platformy usługi Service Fabric. Poza tym agenci stale emitują puls z każdego widocznego węzła, aby upewnić się, że dane ze wszystkich maszyn są zbierane nawet w przypadku zmiany konfiguracji klastra.
 
 ![Zapytanie dotyczące kontenera](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
@@ -222,10 +225,9 @@ Spowoduje to przejście do obszaru roboczego usługi Log Analytics, w którym mo
 
 Po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.
 
-*Uwaga: upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.* 
+*Uwaga: upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.*
 
 ![Liczniki wydajności 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
-
 
 ## <a name="next-steps"></a>Następne kroki
 

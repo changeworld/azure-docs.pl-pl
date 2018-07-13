@@ -1,4 +1,4 @@
-Jeśli chcesz włączyć tylko rejestracji w aplikacji, możesz użyć **rejestracji** zasad. Ta zasada opisano procesy, które klientów podąża podczas tworzenia konta i zawartość tokeny, których aplikacja odbiera na pomyślne napędza rejestracje.
+Jeśli chcesz włączyć tylko rejestracji w swojej aplikacji, możesz użyć **rejestracji** zasad. Te zasady opisują procesy, które klienci przechodzą przez podczas tworzenia konta i zawartość tokenów, które aplikacja otrzyma po pomyślnej rejestracji.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

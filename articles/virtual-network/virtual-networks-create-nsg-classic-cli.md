@@ -1,6 +1,6 @@
 ---
-title: Utwórz grupę zabezpieczeń sieci (klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i wdrożyć grupę zabezpieczeń sieci (klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure.
+title: Utwórz grupę zabezpieczeń sieci (klasyczne) przy użyciu interfejsu wiersza polecenia platformy Azure 1.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i wdrożyć sieciową grupę zabezpieczeń (wersja klasyczna) przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,35 +16,35 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: 5468801e56849498d712f51e71cfb31bf068398a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792481"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696622"
 ---
-# <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Tworzenie grupy zabezpieczeń sieci (wdrożenia klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
+# <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Utwórz sieciową grupę zabezpieczeń (model klasyczny) przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano klasyczny model wdrażania. Możesz również [tworzenia grup NSG w modelu wdrażania usługi Resource Manager](tutorial-filter-network-traffic-cli.md).
+W tym artykule opisano klasyczny model wdrażania. Możesz również [tworzenie sieciowych grup zabezpieczeń w modelu wdrażania usługi Resource Manager](tutorial-filter-network-traffic-cli.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Następujące przykładowe polecenia interfejsu wiersza polecenia Azure oczekiwać środowisku niezłożonym już utworzone w zależności od scenariusza. Do uruchomienia poleceń wyświetlaną w tym dokumencie, najpierw utworzyć środowisko testowe przez [tworzenia sieci wirtualnej](virtual-networks-create-vnet-classic-cli.md).
+Następujące przykładowe polecenia wiersza polecenia platformy Azure oczekują proste środowisko już utworzone w zależności od scenariusza. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe, [tworzenia sieci wirtualnej](virtual-networks-create-vnet-classic-cli.md).
 
-## <a name="create-an-nsg-for-the-front-end-subnet"></a>Tworzenie grupy NSG dla podsieci frontonu
+## <a name="create-an-nsg-for-the-front-end-subnet"></a>Tworzenie sieciowej grupy zabezpieczeń dla podsieci frontonu
 
-1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure](../cli-install-nodejs.md).
+1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure](../cli-install-nodejs.md).
 2. Przełącz do trybu klasycznego:
 
     ```azurecli
     azure config mode asm
     ```   
 
-3. Tworzenie grupy NSG::
+3. Tworzenie sieciowej grupy zabezpieczeń::
    
     ```azurecli   
      azure network nsg create -l uswest -n NSG-FrontEnd
@@ -56,39 +56,39 @@ Następujące przykładowe polecenia interfejsu wiersza polecenia Azure oczekiwa
     azure network nsg rule create -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
    ```
 
-5. Utworzyć regułę, która zezwala na dostęp do portu 80 (HTTP) z Internetu:
+5. Utwórz regułę, która zezwala na dostęp do portu 80 (HTTP) z Internetu:
    
     ```azurecli
     azure network nsg rule create -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
     ```   
 
-6. Kojarzenie grupy NSG do podsieci frontonu:
+6. Kojarzenie sieciowej grupy zabezpieczeń do podsieci frontonu:
    
     ```azurecli
     azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd
    ```
 
-## <a name="create-the-nsg-for-the-back-end-subnet"></a>Tworzenie grupy NSG podsieci wewnętrznej
+## <a name="create-the-nsg-for-the-back-end-subnet"></a>Tworzenie sieciowej grupy zabezpieczeń dla podsieci zaplecza
 
-1. Utwórz grupy NSG:
+1. Tworzenie sieciowej grupy zabezpieczeń:
    
     ```azurecli
     azure network nsg create -l uswest -n NSG-BackEnd
    ```
 
-2. Utworzyć regułę, która umożliwia dostęp do portu 1433 (SQL) z podsieci frontonu:
+2. Utwórz regułę, która umożliwia dostęp do portu 1433 (SQL) z podsieci frontonu:
    
     ```azurecli
     azure network nsg rule create -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
    ```
 
-3. Utworzyć regułę, która nie zezwala na dostęp do Internetu:
+3. Utwórz regułę, która nie zezwala na dostęp do Internetu:
    
     ```azurecli
     azure network nsg rule create -a NSG-BackEnd -n web-rule -c Deny -p Tcp -r Outbound -y 200 -f * -o * -e Internet -u 80
    ```
 
-4. Kojarzenie grupy NSG do podsieci wewnętrznej:
+4. Kojarzenie sieciowej grupy zabezpieczeń do podsieci zaplecza:
    
     ```azurecli
     azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd

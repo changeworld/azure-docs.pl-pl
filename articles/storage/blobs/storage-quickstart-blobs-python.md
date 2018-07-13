@@ -9,11 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 88f148e7ea175e928ee9f35b8728994a738e10da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b3735380105bca8421e3f1d654425eea465918e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37767479"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
 
@@ -52,7 +53,11 @@ block_blob_service = BlockBlobService(account_name='accountname', account_key='a
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 Ta aplikacja przykładowa tworzy plik testowy w folderze „Documents”. Aplikacja przykładowa przesyła plik testowy do usługi Blob Storage, wyświetla listę obiektów blob w kontenerze i pobiera plik z nową nazwą. 
 
-Uruchom przykład. Poniższej przedstawiono przykładowe dane wyjściowe zwracane po uruchomieniu aplikacji:
+Najpierw zainstaluj zależności, uruchamiając polecenie `pip install`:
+
+    pip install azure-storage
+
+Następnie uruchom przykład. Poniższej przedstawiono przykładowe dane wyjściowe zwracane po uruchomieniu aplikacji:
   
 ```
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -136,9 +141,9 @@ Pobierz listę plików w kontenerze, używając metody **list_blobs**. Ta metoda
 ```python
 # List the blobs in the container
 print("\nList blobs in the container")
-    generator = block_blob_service.list_blobs(container_name)
-    for blob in generator:
-        print("\t Blob name: " + blob.name)
+generator = block_blob_service.list_blobs(container_name)
+for blob in generator:
+    print("\t Blob name: " + blob.name)
 ```
 
 ### <a name="download-the-blobs"></a>Pobieranie obiektów blob

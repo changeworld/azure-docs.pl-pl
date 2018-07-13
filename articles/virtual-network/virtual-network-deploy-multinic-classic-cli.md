@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej (klasyczne) z wieloma kartami sieciowymi — 1.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Maszynę wirtualną (klasyczne) z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure (CLI) 1.0.
+title: Tworzenie maszyny Wirtualnej (klasycznej) z wieloma kartami sieciowymi — interfejs wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć maszynę Wirtualną (wersja klasyczna) z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure (CLI) 1.0.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -17,48 +17,48 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0b56ab474ff23748487c50bd34487c80242c6429
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792083"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38651990"
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Tworzenie maszyny Wirtualnej (klasyczne) z wieloma kartami sieciowymi przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
+# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Tworzenie maszyny Wirtualnej (klasycznej) z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-Można tworzyć maszyn wirtualnych (VM) na platformie Azure i dołączyć wiele interfejsów sieciowych (NIC) do wszystkich maszyn wirtualnych. Wiele kart sieciowych włączać rozdzielenie typów ruchu sieciowego między kart sieciowych. Na przykład jednej karcie Sieciowej może komunikować się z Internetem, podczas gdy inny komunikuje się tylko z wewnętrznych zasobów nie jest połączony z Internetem. Do rozdzielania ruchu sieciowego między wiele kart sieciowych jest wymaganych dla wielu urządzeń wirtualnych sieci, takich jak dostarczania aplikacji i rozwiązań Optymalizacja sieci WAN.
+Można utworzyć maszyny wirtualne (VM) na platformie Azure i dołączanie wielu interfejsów sieciowych (NIC) do wszystkich maszyn wirtualnych. Wiele kart sieciowych umożliwia rozdzielenie typów ruchu między kartami sieciowymi. Na przykład jedną kartą Sieciową może komunikować się z Internetu, podczas gdy inny komunikuje się tylko z wewnętrznych zasobów, które nie jest połączony z Internetem. Do rozdzielania ruchu sieciowego między wiele kart sieciowych jest wymagany do wielu wirtualnych urządzeń sieciowych, takich jak dostarczanie aplikacji i rozwiązań Optymalizacja sieci WAN.
 
 > [!IMPORTANT]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak wykonać te czynności przy użyciu [modelu wdrażania usługi Resource Manager](../virtual-machines/linux/multiple-nics.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak wykonać te kroki przy użyciu [modelu wdrażania usługi Resource Manager](../virtual-machines/linux/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-Poniższe kroki Użyj grupy zasobów o nazwie *IaaSStory* dla serwerów sieci WEB i grupy zasobów o nazwie *IaaSStory zaplecza* dla serwerów baz danych.
+Użyto grupę zasobów o nazwie *IaaSStory* serwerów sieci WEB oraz grupę zasobów o nazwie *zaplecza IaaSStory* dla serwerów bazy danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem serwerów bazy danych, należy utworzyć *IaaSStory* grupy zasobów z wszystkie niezbędne zasoby dotyczące tego scenariusza. Aby utworzyć tych zasobów, wykonaj kroki, które należy wykonać. Tworzenie sieci wirtualnej, wykonując kroki opisane w [utworzyć sieć wirtualną](virtual-networks-create-vnet-classic-cli.md) artykułu.
+Przed utworzeniem serwerów bazy danych, musisz utworzyć *IaaSStory* grupę zasobów za pomocą wszystkich niezbędnych zasobów dla tego scenariusza. Aby utworzyć te zasoby, wykonaj poniższe kroki. Tworzenie sieci wirtualnej, wykonując kroki opisane w [tworzenie sieci wirtualnej](virtual-networks-create-vnet-classic-cli.md) artykułu.
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
 ## <a name="deploy-the-back-end-vms"></a>Wdrażanie maszyn wirtualnych zaplecza
-Maszyny wirtualne zaplecza są zależne od utworzenie następujących zasobów:
+Maszyny wirtualne zaplecza, zależą od utworzenia następujące zasoby:
 
-* **Konto magazynu dla dysków z danymi**. W celu poprawy wydajności dysków danych na serwerach bazy danych będzie używać półprzewodnikowych (SSD) dysku technologii, która wymaga konta magazynu w warstwie premium. Upewnij się, lokalizacja platformy Azure, można wdrożyć na obsługuje usługi premium storage.
-* **Karty sieciowe**. Każda maszyna wirtualna będzie mieć dwie karty sieciowe, jeden dla dostępu do bazy danych, a drugi do zarządzania.
-* **Zestaw dostępności**. Wszystkie serwery baz danych zostanie dodany do jednej dostępności ustawić, aby upewnić się, że co najmniej jeden z maszynami wirtualnymi i systemem podczas konserwacji.
+* **Konto magazynu dla dysków z danymi**. Dla lepszej wydajności dysków z danymi na serwerach bazy danych użyje pełny stan dysku (SSD) technologii, która wymaga konta magazynu premium storage. Upewnij się, lokalizacja platformy Azure, wdrażanie do obsługi magazynu w warstwie premium.
+* **Karty sieciowe**. Każda maszyna wirtualna będzie mieć dwie karty sieciowe, jeden dla dostępu do bazy danych, a drugi dla zarządzania.
+* **Zestaw dostępności**. Wszystkie serwery baz danych zostaną dodane do pojedynczego dostępności ustawić, aby upewnić się, że co najmniej jedną z maszyn wirtualnych i uruchamianie podczas konserwacji.
 
 ### <a name="step-1---start-your-script"></a>Krok 1 — Uruchom skrypt
-Możesz pobrać skrypt pełna bash używany [tutaj](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Wykonaj poniższe kroki, aby zmienić skryptu do pracy w środowisku:
+Możesz pobrać skrypt pełną powłoki bash używane [tutaj](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Wykonaj poniższe kroki, aby zmienić skrypt zadziałał w Twoim środowisku:
 
-1. Zmienianie wartości zmiennych poniżej oparte na istniejącej grupie zasobów wdrożone powyżej w [wymagania wstępne](#Prerequisites).
+1. Zmień wartości zmiennych poniżej istniejącej grupy zasobów wdrożonymi powyżej w oparciu o [wymagania wstępne](#Prerequisites).
 
     ```azurecli
     location="useast2"
     vnetName="WTestVNet"
     backendSubnetName="BackEnd"
     ```
-2. Zmienianie wartości zmiennych poniżej na podstawie wartości, który ma być używany dla danego wdrożenia wewnętrznej bazy danych.
+2. Zmień wartości zmiennych poniżej na podstawie wartości, których chcesz używać dla danego wdrożenia wewnętrznej bazy danych.
 
     ```azurecli
     backendCSName="IaaSStory-Backend"
@@ -77,15 +77,15 @@ Możesz pobrać skrypt pełna bash używany [tutaj](https://raw.githubuserconten
     numberOfVMs=2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2 — Tworzenie niezbędne zasoby dla maszyn wirtualnych
-1. Utwórz nową usługę chmury dla wszystkich maszyn wirtualnych wewnętrznej bazy danych. Zwróć uwagę na `$backendCSName` zmiennej dla nazwy grupy zasobów i `$location` dla regionu platformy Azure.
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Krok 2 — Tworzenie zasobów niezbędnych dla maszyn wirtualnych
+1. Utwórz nową usługę w chmurze dla wszystkich maszyn wirtualnych zaplecza. Zwróć uwagę na `$backendCSName` zmienną dla nazwy grupy zasobów i `$location` dla regionu platformy Azure.
 
     ```azurecli
     azure service create --serviceName $backendCSName \
         --location $location
     ```
 
-2. Utwórz konto magazynu premium dysków systemu operacyjnego i danych ma być używany przez Twoje maszyn wirtualnych.
+2. Utwórz konto magazynu premium storage dla dysków systemu operacyjnego i danych, który będzie używany przez Twoje maszyny wirtualne.
 
     ```azurecli
     azure storage account create $prmStorageAccountName \
@@ -94,14 +94,14 @@ Możesz pobrać skrypt pełna bash używany [tutaj](https://raw.githubuserconten
     ```
 
 ### <a name="step-3---create-vms-with-multiple-nics"></a>Krok 3 — Tworzenie maszyn wirtualnych z wieloma kartami sieciowymi
-1. Uruchom pętli do utworzenia wielu maszyn wirtualnych, na podstawie `numberOfVMs` zmiennych.
+1. Rozpocznij pętli, aby utworzyć wiele maszyn wirtualnych na podstawie `numberOfVMs` zmiennych.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
     do
     ```
 
-2. Dla każdej maszyny Wirtualnej Określ nazwę i adres IP każdego dwie karty sieciowe.
+2. Dla każdej maszyny Wirtualnej Określ nazwę i adres IP każdego z dwiema kartami sieciowymi.
 
     ```azurecli
     nic1Name=$vmNamePrefix$suffixNumber-DA
@@ -113,7 +113,7 @@ Możesz pobrać skrypt pełna bash używany [tutaj](https://raw.githubuserconten
     ipAddress2=$ipAddressPrefix$x
     ```
 
-3. Tworzenie maszyny Wirtualnej. Zwróć uwagę, użycie `--nic-config` parametr zawierający listę wszystkich kart sieciowych podsieci, adresów IP i nazwy.
+3. Tworzenie maszyny Wirtualnej. Zwróć uwagę, użycie `--nic-config` parametr zawierający listę wszystkich kart sieciowych z nazwą, podsieci i adresu IP.
 
     ```azurecli
     azure vm create $backendCSName $image $username $password \
@@ -140,10 +140,10 @@ Możesz pobrać skrypt pełna bash używany [tutaj](https://raw.githubuserconten
     done
     ```
 
-### <a name="step-4---run-the-script"></a>Krok 4 — Uruchom skrypt
-Pobrane i zmienić skryptu na podstawie Twoich potrzeb, należy uruchomić skrypt w celu utworzenia wewnętrznej bazy danych maszyn wirtualnych z wieloma kartami sieciowymi.
+### <a name="step-4---run-the-script"></a>Krok 4 — uruchamianie skryptu
+Teraz, gdy został pobrany i zmieniony skryptów, w zależności od potrzeb, uruchom skrypt, aby utworzyć wewnętrznej bazy danych, maszyny wirtualne z wieloma kartami sieciowymi.
 
-1. Zapisz skrypt i uruchom go z Twojego **Bash** terminala. Zobaczysz początkowej danych wyjściowych, jak pokazano poniżej.
+1. Zapisz skrypt i uruchom go z Twojego **Bash** terminala. Zobaczysz wstępnych danych wyjściowych, jak pokazano poniżej.
 
         info:    Executing command service create
         info:    Creating cloud service
@@ -160,7 +160,7 @@ Pobrane i zmienić skryptu na podstawie Twoich potrzeb, należy uruchomić skryp
         info:    Looking up deployment
         info:    Creating VM
 
-2. Po kilku minutach zakończy wykonywanie i będzie zobaczyć pozostałą część danych wyjściowych, jak pokazano poniżej.
+2. Po kilku minutach zakończy się wykonywanie i pozostałej części danych wyjściowych zostanie wyświetlony, jak pokazano poniżej.
 
         info:    OK
         info:    vm create command OK
@@ -192,4 +192,4 @@ Pobrane i zmienić skryptu na podstawie Twoich potrzeb, należy uruchomić skryp
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Krok 5 — Konfigurowanie routingu w ramach systemu operacyjnego maszyny Wirtualnej
 
-Azure DHCP przypisuje do pierwszego interfejsu sieciowego (podstawowe) dołączonych do maszyny wirtualnej bramy domyślnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowych interfejsów sieciowych można jednak komunikować się z zasobami spoza ich podsieci. Aby skonfigurować routing dla dodatkowych interfejsów sieciowych, zobacz [routingu w systemie operacyjnym maszyny wirtualnej z wieloma interfejsami sieciowymi](virtual-network-network-interface-vm.md).
+Usługa Azure DHCP przypisuje domyślnej bramy do pierwszego interfejsu sieciowego (podstawowy) dołączonych do maszyny wirtualnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowymi interfejsami sieciowymi mogą jednak komunikować się z zasobami poza ich podsieciami. Aby skonfigurować routing dla dodatkowych interfejsów sieciowych, zobacz [routingu w ramach systemu operacyjnego maszyny wirtualnej z wieloma interfejsami sieciowymi](virtual-network-network-interface-vm.md).

@@ -17,8 +17,8 @@ Aby zarejestrować tego dostawcę zasobów, wykonaj następujące czynności w w
 Po zarejestrowaniu dostawcy zasobów *Microsoft.insights* spróbuj ponownie skonfigurować diagnostykę.
 
 
-W programie PowerShell Jeśli zostanie wyświetlony następujący komunikat o błędzie, należy zaktualizować używanej wersji programu PowerShell:
+W programie PowerShell Jeśli zostanie wyświetlony następujący komunikat o błędzie, należy zaktualizować wersję programu PowerShell:
 
 `Set-AzureRmDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Zaktualizuj swoją wersję programu PowerShell do listopada 2016 (v2.3.0) lub nowszych wersji przy użyciu instrukcji w [wprowadzenie do poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) artykułu.
+Zaktualizuj swoją wersję programu PowerShell do listopada 2016 r. (v2.3.0) lub nowszych wersji, zgodnie z instrukcjami przedstawionymi w [wprowadzenie do poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) artykułu.

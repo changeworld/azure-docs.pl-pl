@@ -1,4 +1,4 @@
-Jeśli chcesz umożliwić edytowanie profilu dla aplikacji, użyj **edycji profilu** zasad. Ta zasada opisano procesy, które podczas edycji profilu i zawartość aplikacji zostanie wyświetlony po pomyślnym ukończeniu tokeny przeszli przez klientów.
+Jeśli chcesz włączyć edytowania profilu w swojej aplikacji, możesz użyć **edytowania profilu** zasad. Te zasady opisują procesy, które klienci uzyskują podczas edytowania profilu i zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

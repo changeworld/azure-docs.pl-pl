@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42f7d767162f2f403b2cf921e31a38b711a3c773
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657244"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438238"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Samouczek: informacje o zarządzaniu maszynami wirtualnymi z systemem Windows za pomocą programu Azure PowerShell
 
@@ -55,7 +55,7 @@ W przypadku zarządzania rozwiązaniami maszyn wirtualnych dostępne są 3 role 
 * [Współautor sieci](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Współautor konta magazynu](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
+Zamiast przypisywać role poszczególnym użytkownikom, często łatwiej jest [utworzyć grupę usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy muszą wykonywać podobne działania. Następnie należy przypisać tę grupę do odpowiedniej roli. Aby uprościć ten artykuł, utwórz grupę usługi Azure Active Directory bez członków. Nadal możesz przypisać tę grupę do roli w zakresie. 
 
 W poniższym przykładzie zostanie utworzona grupa usługi Azure Active Directory o nazwie *VMDemoContributors* i pseudonimie pocztowym *vmDemoGroup*. Pseudonim pocztowy służy jako alias dla grupy.
 
@@ -194,7 +194,7 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 
 ### <a name="find-resources-by-tag"></a>Znajdowanie zasobów według tagów
 
-Aby znaleźć zasoby z wartością i nazwą tagu, użyj polecenia [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
+Aby znaleźć zasoby według wartości i nazwy tagu, użyj polecenia [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource):
 
 ```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Environment="Test"}).Name

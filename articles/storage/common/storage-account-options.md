@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/22/2018
+ms.date: 07/03/2018
 ms.author: hux
-ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6efc50bfee54c38511fb3346f1341f81741d14eb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335775"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445432"
 ---
 # <a name="azure-storage-account-options"></a>Opcje konta usługi Azure Storage
 
@@ -46,7 +46,10 @@ Konta magazynu GPv2 uwidaczniają atrybut **Warstwa dostępu** na poziomie konta
 
 ### <a name="upgrade-a-storage-account-to-gpv2"></a>Podnoszenie poziomu konta magazynu do wersji GPv2
 
-Użytkownicy mogą podnieść poziom konta GPv1 lub usługi Blob Storage do wersji GPv2 w dowolnej chwili za pomocą interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Tej zmiany nie można cofnąć i żadne inne zmiany nie są dozwolone.
+Użytkownicy mogą uaktualnić konto w wersji GPv1 lub konto usługi Blob Storage do wersji GPv2 w dowolnej chwili za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Tej zmiany nie można cofnąć i żadne inne zmiany nie są dozwolone.
+
+#### <a name="upgrade-with-azure-portal"></a>Uaktualnianie za pomocą witryny Azure Portal
+Aby uaktualnić konto w wersji GPv1 lub konto usługi Blob Storage do wersji GPv2 przy użyciu witryny Azure Portal, najpierw zaloguj się do [witryny Azure Portal](https://portal.azure.com) i wybierz konto magazynu. Wybierz pozycję **Ustawienia** > **Konfiguracja**. Zobaczysz przycisk **Uaktualnij** wraz z uwagą dotyczącą procesu uaktualniania.
 
 #### <a name="upgrade-with-powershell"></a>Podnoszenie poziomu przy użyciu programu PowerShell
 
@@ -262,9 +265,9 @@ Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage mo
 
 ## <a name="migrating-existing-data"></a>Migrowanie istniejących danych
 
-Poziom konta GPv1 można łatwo podnieść do wersji GPv2 bez przestojów ani zmian interfejsów API oraz bez konieczności migrowania danych. Z tego powodu usilnie zaleca się migrację kont GPv1 do kont GPv2, a nie do kont usługi Blob Storage.
+Konto w wersji GPv1 lub konto usługi Blob Storage można łatwo uaktualnić do wersji GPv2 bez przestojów ani zmian interfejsów API oraz bez konieczności migrowania danych. Z tego powodu usilnie zaleca się migrację kont GPv1 do kont GPv2, a nie do kont usługi Blob Storage. Aby uzyskać więcej informacji na temat uaktualniania do wersji GPv2, zobacz [Uaktualnianie konta magazynu do wersji GPv2](#upgrade-a-storage-account-to-gpv2).
 
-Jeśli jednak chcesz przeprowadzić migrację do konta usługi Blob Storage i nie możesz korzystać z kont GPv2, postępuj według następujących instrukcji. 
+Jeśli jednak potrzebujesz przeprowadzić migrację z wersji GPv1 do konta usługi Blob Storage i nie możesz korzystać z kont w wersji GPv2, postępuj według następujących instrukcji. 
 
 Konto usługi Blob Storage jest przeznaczone do przechowywania tylko blokowych obiektów blob i uzupełnialnych obiektów blob. Istniejących kont magazynu ogólnego przeznaczenia, które umożliwiają przechowywanie tabel, kolejek, plików, dysków, a także obiektów blob, nie można konwertować na konta usługi Blob Storage. Aby użyć warstw magazynowania, należy utworzyć nowe konta usługi Blob Storage i przeprowadzić migrację istniejących danych do nowo utworzonych kont. 
 

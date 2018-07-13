@@ -1,6 +1,6 @@
 ---
-title: Centrum IoT Azure migrację do ustawień diagnostycznych | Dokumentacja firmy Microsoft
-description: Jak zaktualizować Centrum IoT Azure, aby użyć ustawień diagnostycznych platformy Azure zamiast operacje monitorowania do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
+title: Usługa Azure IoT Hub Migrowanie to ustawień diagnostyki | Dokumentacja firmy Microsoft
+description: Jak zaktualizować usługi Azure IoT Hub, aby użyć ustawień diagnostyki platformy Azure zamiast operacji monitoring do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -9,49 +9,49 @@ ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: kgremban
 ms.openlocfilehash: 85bdb4b4802283c591e4d7a9e8b14ae74fa44e8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633591"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666726"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie Centrum IoT z operacji monitorowania do ustawień diagnostycznych
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie usługi IoT Hub z działania monitorowania to ustawień diagnostyki
 
-Klienci korzystający z [operacje monitorowania] [ lnk-opsmon] do śledzenia stanu operacji w Centrum IoT można migrować na ten przepływ pracy do [ustawień diagnostyki Azure] [ lnk-diagnostics-settings], funkcja Azure monitora. Ustawienia diagnostyki, podaj informacje diagnostyczne poziom zasobów dla wielu usług Azure.
+Klienci korzystający z [monitorowanie operacji] [ lnk-opsmon] umożliwia śledzenie stanu operacji w usłudze IoT Hub można migrować na ten przepływ pracy do [ustawień diagnostyki Azure] [ lnk-diagnostics-settings], funkcja usługi Azure Monitor. Ustawienia diagnostyczne podać poziom zasobów informacje diagnostyczne dotyczące wielu usług platformy Azure.
 
-Operacje funkcji monitorowania w Centrum IoT jest przestarzałe i zostanie usunięte w przyszłości. Ten artykuł zawiera kroki umożliwiające przeniesienie obciążeń od działań monitorowania do ustawień diagnostycznych. Aby uzyskać więcej informacji na temat osi czasu przestarzałą zobacz [monitorować rozwiązań Azure IoT z monitorem Azure oraz kondycja zasobów Azure][lnk-blog-announcement].
+Operacje monitorowania funkcji usługi IoT Hub jest przestarzały i zostanie usunięte w przyszłości. Ten artykuł zawiera kroki umożliwiające przeniesienie obciążeń od działań monitorowania to ustawień diagnostyki. Aby uzyskać więcej informacji na temat osi czasu wycofywania, zobacz [Monitoruj rozwiązania Azure IoT za pomocą usługi Azure Monitor i Azure Resource Health][lnk-blog-announcement].
 
-## <a name="update-iot-hub"></a>Zaktualizuj Centrum IoT
+## <a name="update-iot-hub"></a>Aktualizowanie usługi IoT Hub
 
-Aby zaktualizować Centrum IoT w portalu Azure, najpierw należy włączyć ustawienia diagnostyki, a następnie wyłącz operacje monitorowania.  
+Aby zaktualizować Centrum IoT Hub w witrynie Azure portal, najpierw należy włączyć ustawienia diagnostyki, a następnie wyłącz monitorowanie operacji.  
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="turn-off-operations-monitoring"></a>Wyłącz operacje monitorowania
+### <a name="turn-off-operations-monitoring"></a>Wyłącz monitorowanie operacji
 
-Po przetestowaniu nowe ustawienia diagnostyki w przepływie pracy, można wyłączyć operacji funkcji monitorowania. 
+Po przetestowaniu nowego ustawienia diagnostyki w przepływie pracy, można wyłączyć monitorowanie funkcji operacji. 
 
-1. W menu Centrum IoT, wybierz **operacje monitorowania**.
-1. W każdej kategorii monitorowania, wybierz **Brak**.
+1. W menu Centrum IoT Hub, wybierz **monitorowanie operacji**.
+1. W ramach każdej kategorii monitorowania, wybierz **Brak**.
 1. Zapisz operacje monitorowania zmian.
 
-## <a name="update-applications-that-use-operations-monitoring"></a>Aktualizowanie aplikacji, które używają operacje monitorowania
+## <a name="update-applications-that-use-operations-monitoring"></a>Aktualizowanie aplikacji, które używają monitorowanie operacji
 
-Schematy działań monitorowania i ustawień diagnostycznych się nieco różnić. Koniecznie zaktualizowanie aplikacje korzystające z operacji monitorowania dzisiaj do mapowania do schematu używane przez ustawienia diagnostyki. 
+Schematów na potrzeby monitorowania operacji i ustawień diagnostyki się nieco różnić. Jest ważne, aktualizację aplikacji, które umożliwia monitorowanie dzisiaj operacji mapowania na schemat używany przez ustawienia diagnostyczne. 
 
-Ponadto diagnostyki ustawienia oferty śledzenie pięć nowych kategorii. Po zaktualizowaniu aplikacji dla istniejącego schematu, należy dodać również nowe kategorie:
+Ponadto diagnostyki ustawienia oferty śledzenia dla pięciu nowych kategorii. Po zaktualizowaniu aplikacji dla istniejącego schematu, Dodaj również nowe kategorie:
 
-- Operacje dwie chmury do urządzenia
-- Operacje dwie urządzenia do chmury
-- Dwie zapytań
+- Operacje bliźniaczej reprezentacji chmury do urządzenia
+- Operacje bliźniaczej reprezentacji urządzenia do chmury
+- Zapytania dotyczące bliźniaczych reprezentacji
 - Operacje zadań
-- Bezpośrednie metody
+- Metody bezpośrednie
 
-W strukturach schematu, zobacz [zrozumieć schematu ustawień diagnostycznych][lnk-diagnostics-schema].
+W strukturach określonego schematu, zobacz [zrozumieć schematu dla ustawień diagnostycznych][lnk-diagnostics-schema].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Monitorowanie kondycji Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]
+- [Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów][lnk-monitor]
 
 [lnk-opsmon]: iot-hub-operations-monitoring.md
 [lnk-diagnostics-settings]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md

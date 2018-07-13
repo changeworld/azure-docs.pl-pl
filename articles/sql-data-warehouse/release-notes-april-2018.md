@@ -1,5 +1,5 @@
 ---
-title: Informacje o wersji magazynu danych Azure SQL, kwietnia 2018 | Dokumentacja firmy Microsoft
+title: Usługa Azure SQL Data Warehouse — informacje o wersji z kwietnia 2018 r | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: twounder
@@ -10,22 +10,20 @@ ms.component: manage
 ms.date: 05/28/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 49ffc3ddfd586964ae8a9688aeb48fffdd327b45
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ae3d4c3e732024baae29f75fda6f6e821af701a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738937"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630347"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Nowości w systemie Azure SQL Data Warehouse (kwiecień 2018)
-Usługa Azure SQL Data Warehouse stale odbiera ulepszenia. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w 2018 kwietnia.
+# <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Kwiecień 2018 r.
+Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w kwietniu 2018.
 
-## <a name="features"></a>Funkcje
+## <a name="ability-to-truncate-a-partition-before-a-switch"></a>Możliwość obciąć partycję przed wykonaniem Switch
+Klienci często używają przełączania jako wzorzec partycji do ładowania danych z jednej tabeli do innej, zmieniając metadanych tabeli za pośrednictwem `ALTER TABLE SourceTable SWITCH PARTITION X TO TargetTable PARTITION X` składni. Usługa SQL Data Warehouse nie obsługuje przełączanie partycji, gdy partycja docelowa zawiera dane. Jeśli partycja docelowa zawiera już dane, klient musi obciąć partycji docelowej, a następnie wykonaj przełącznika.
 
-### <a name="ability-to-truncate-a-partition-before-a-switch"></a>Możliwość obcięcia partycji przed przełącznik
-Klienci często używane przełączania jako wzorzec partycji do ładowania danych z jednej tabeli do innego, zmieniając metadanych tabeli za pomocą `ALTER TABLE SourceTable SWITCH PARTITION X TO TargetTable PARTITION X` składni. Usługi SQL Data Warehouse nie obsługuje przełączenie partycji, gdy partycja docelowa zawiera dane. Jeśli partycja docelowa zawiera już dane, klient musi obcięcia partycja docelowa, a następnie wykonaj przełącznika.
-
-Magazyn danych SQL obsługuje teraz tej operacji w jednej instrukcji T-SQL.
+Usługa SQL Data Warehouse obsługuje teraz tej operacji w pojedynczą instrukcję języka T-SQL.
 
 ```sql
 ALTER TABLE SourceTable 
@@ -34,28 +32,26 @@ ALTER TABLE SourceTable
 ```
 Aby uzyskać więcej informacji, zobacz [instrukcji ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) artykułu.
 
-### <a name="improved-query-compilation-performance"></a>Wydajność kompilacji ulepszone zapytań
-Usługa SQL Data Warehouse wprowadzono zmian do zwiększenia kroku kompilacji zapytania zapytań rozproszonych. Te zmiany skrócić czas kompilacji zapytania do **10 x** zmniejszenie ogólnego zapytania wykonywania środowisk uruchomieniowych. Te zmiany są bardziej widoczne w hurtowni danych z dużą liczbą obiektów (tabel, funkcji, widoki, procedury).
+## <a name="improved-query-compilation-performance"></a>Wydajność kompilacji ulepszone zapytań
+Usługa SQL Data Warehouse wprowadza zestaw zmian do zwiększenia kroku kompilacji zapytań rozproszonych zapytań. Te zmiany poprawić czasy kompilacji zapytania do **10 x** ogólne zmniejszenie zapytania wykonywania środowisk uruchomieniowych. Te zmiany są bardziej widoczne na magazyny danych z dużą liczbą obiektów (tabele, funkcje, widoki, procedury).
 
-## <a name="behavior-changes"></a>Zmiany sposobu działania
+## <a name="dbcc-commands-do-not-consume-concurrency-slots-behavior-change"></a>Polecenia DBCC nie używają gniazd współbieżności (Zmiana zachowania)
+Usługa SQL Data Warehouse obsługuje podzbiór języka T-SQL [polecenia DBCC](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) takich jak [DBCC DROPCLEANBUFFERS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropcleanbuffers-transact-sql). Wcześniej, będzie używać tych poleceń [miejsca współbieżności](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#concurrency-slots) zmniejszenie liczby obciążeń/zapytania użytkowników, które mogą być wykonywane. `DBCC` Polecenia są teraz uruchamiane w kolejce lokalne, które nie zużywają zasobów miejsca poprawę ogólnej wydajności wykonywania zapytań.
 
-### <a name="dbcc-commands-do-not-consume-concurrency-slots"></a>Polecenia DBCC nie korzystać z miejsc współbieżności
-Magazyn danych SQL obsługuje podzbiór T-SQL [polecenia DBCC](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) takich jak [DBCC DROPCLEANBUFFERS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropcleanbuffers-transact-sql). Wcześniej, będzie używać tych poleceń [miejsca współbieżności](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#concurrency-slots) zmniejszenie liczby użytkownika obciążeń/kwerendy, które mogą być wykonywane. `DBCC` Polecenia teraz są uruchamiane w kolejce lokalnego, który zużywa gnieździe zasobów poprawy ogólną wydajność wykonywania zapytań.
-
-### <a name="updated-error-message-for-excessive-literals"></a>Zaktualizowano komunikat dla literałów nadmiernego
-Wcześniej, to SQL Data Warehouse *przybliżonej* liczba podczas zapytania zawiera zbyt wiele literały.
+## <a name="updated-error-message-for-excessive-literals-behavior-change"></a>Komunikat o błędzie zaktualizowane nadmierne literałów (Zmiana zachowania)
+Wcześniej usługa SQL Data Warehouse zawierałoby *przybliżony* count, gdy zapytanie zawierało literały zbyt wiele.
 ```
 Msg 100086
 Cannot have more than 20,000 literals in the query. The query contains [n] literals.
 ```
 
-Komunikat o błędzie została zaktualizowana, aby wskazać tylko osiągnięto limit literałów.
+Komunikat o błędzie został zaktualizowany do tylko wskazuje, że osiągnięto limit literału.
 ```
 Msg 100086
 The number of literals in the query is beyond the limit. Please rewrite your query.
 ```
 
-Aby uzyskać więcej informacji, zobacz [zapytania](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-service-capacity-limits#queries) sekcji [limity pojemności](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-service-capacity-limits) artykułu, aby uzyskać więcej informacji na granicach.
+Aby uzyskać więcej informacji, zobacz [zapytania](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-service-capacity-limits#queries) części [limitów pojemności](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-service-capacity-limits) artykuł, aby uzyskać więcej informacji na temat maksymalnych limitów.
 
-### <a name="removed-the-syspdwdatabasemappings-view"></a>Usunięte SYS. Widok PDW_DATABASE_MAPPINGS
-To `sys.pdw_database_mappings` widok jest nieużywane w usłudze SQL Data Warehouse. Wybierz tego widoku czy wcześniej, nie zwracała żadnych wyników. Widok został usunięty. 
+## <a name="removed-the-syspdwdatabasemappings-view-behavior-change"></a>Usunięte SYS. Widok PDW_DATABASE_MAPPINGS (Zmiana zachowania)
+To `sys.pdw_database_mappings` widok jest nieużywana w usłudze SQL Data Warehouse. Wcześniej wybierz ten widok zwróci żadnych wyników. Widok został usunięty. 

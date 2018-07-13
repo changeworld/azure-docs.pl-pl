@@ -2,25 +2,25 @@
 title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra
 description: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 04/05/2018
-ms.author: nepeters
+ms.date: 06/29/2018
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0886d13b62b6b8ad1c0dcd430ce48bcc51d6d465
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d66197b69a0804a49fabb72e9b97c77e000bdf88
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933835"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131647"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Samouczek: uaktualnianie rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Klaster usługi Azure Kubernetes Service (AKS) można uaktualnić za pomocą interfejsu wiersza polecenia platformy Azure. Podczas procesu uaktualniania węzły rozwiązania Kubernetes są dokładnie [odizolowywane i opróżniane][kubernetes-drain], aby zminimalizować zakłócenia dla działających aplikacji.
+Klaster usługi Azure Kubernetes Service (AKS) można uaktualnić za pomocą interfejsu wiersza polecenia platformy Azure. Aby zminimalizować przestój uruchomionych aplikacji, węzły Kubernetes są dokładnie [odizolowywane i opróżniane][kubernetes-drain] w ramach procesu uaktualniania.
 
-W tym samouczku (część ósma z ośmiu) uaktualniany jest klaster Kubernetes. Zadania do wykonania to na przykład:
+W tym samouczku (część siódma z siedmiu) jest uaktualniany klaster Kubernetes. Zadania do wykonania to na przykład:
 
 > [!div class="checklist"]
 > * Identyfikowanie bieżącej i dostępnych wersji rozwiązania Kubernetes
@@ -33,90 +33,58 @@ W poprzednich samouczkach aplikacja została spakowana w postaci obrazu kontener
 
 Jeśli te kroki nie zostały wykonane, a chcesz skorzystać z tej części samouczka, wróć do części [Samouczek 1 — tworzenie obrazów kontenera][aks-tutorial-prepare-app].
 
-
 ## <a name="get-cluster-versions"></a>Uzyskiwanie wersji klastrów
 
-Przed uaktualnieniem klastra użyj polecenia `az aks get-upgrades`, aby sprawdzić, która wersja rozwiązania Kubernetes jest dostępna do uaktualnienia.
+Przed uaktualnieniem klastra użyj polecenia [az aks get-upgrades][], aby sprawdzić, która wersja rozwiązania Kubernetes jest dostępna na potrzeby uaktualnienia.
 
 ```azurecli
 az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
-W tym przykładzie bieżąca wersja węzła to `1.7.9`, a dostępne wersje uaktualnień są wyświetlane w kolumnie z uaktualnieniami.
+W poniższym przykładzie bieżąca wersja węzła to *1.9.6*, a dostępne wersje są wyświetlone w kolumnie *Uaktualnienia*.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------------------------------
-default  myResourceGroup  1.7.9            1.7.9              1.7.12, 1.8.1, 1.8.2, 1.8.6, 1.8.7
+-------  ---------------  ---------------  -----------------  ----------
+default  myResourceGroup  1.9.6            1.9.6              1.10.3
 ```
 
 ## <a name="upgrade-cluster"></a>Uaktualnianie klastra
 
-Użyj polecenia `az aks upgrade` w celu uaktualnienia węzłów klastra. W poniższym przykładzie klaster zostaje zaktualizowany do wersji `1.8.2`.
+Użyj polecenia [az aks upgrade][], aby uaktualnić węzły klastra. W poniższym przykładzie klaster jest aktualizowany do wersji *1.10.3*.
 
 ```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.10.3
 ```
 
-Dane wyjściowe:
+Poniższe skrócone przykładowe dane wyjściowe pokazują, że parametr *kubernetesVersion* ma teraz wartość *1.10.3*:
 
 ```json
 {
+  "agentPoolProfiles": [
+    {
+      "count": 3,
+      "maxPods": 110,
+      "name": "nodepool1",
+      "osType": "Linux",
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS1_v2",
+    }
+  ],
+  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
+  "enableRbac": false,
+  "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
+  "kubernetesVersion": "1.10.3",
   "location": "eastus",
   "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.8.2",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
 ```
 
 ## <a name="validate-upgrade"></a>Weryfikowanie uaktualnienia
 
-Potwierdź, że uaktualnienie powiodło się, używając polecenia `az aks show`.
+Potwierdź, że uaktualnienie powiodło się, używając polecenia [az aks show][].
 
 ```azurecli
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table
@@ -127,7 +95,7 @@ Dane wyjściowe:
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.10.3               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Następne kroki
@@ -150,3 +118,6 @@ Skorzystaj z tego linku, aby dowiedzieć się więcej o usłudze AKS.
 <!-- LINKS - internal -->
 [aks-intro]: ./intro-kubernetes.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[az aks show]: /cli/azure/aks#az-aks-show
+[az aks get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az aks upgrade]: /cli/azure/aks#az-aks-upgrade

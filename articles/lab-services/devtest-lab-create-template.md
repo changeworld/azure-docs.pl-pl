@@ -1,6 +1,6 @@
 ---
-title: Tworzenie obrazu niestandardowego Azure DevTest Labs na podstawie pliku VHD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć obraz niestandardowy w usłudze Azure DevTest Labs z pliku VHD za pomocą portalu Azure
+title: Tworzenie niestandardowego obrazu usługi Azure DevTest Labs na podstawie pliku VHD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć obraz niestandardowy w usłudze Azure DevTest Labs z pliku VHD za pomocą witryny Azure portal
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787465"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38687812"
 ---
-# <a name="create-a-custom-image-from-a-vhd-file"></a>Tworzenie niestandardowego obrazu z pliku VHD
+# <a name="create-a-custom-image-from-a-vhd-file"></a>Tworzenie niestandardowego obrazu z pliku wirtualnego dysku twardego
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -31,58 +31,58 @@ ms.locfileid: "33787465"
 
 ## <a name="step-by-step-instructions"></a>Instrukcje krok po kroku
 
-W poniższych krokach objaśniono przez proces tworzenia niestandardowego obrazu z pliku VHD za pomocą portalu Azure:
+W poniższych krokach objaśniono proces tworzenia obrazu niestandardowego z pliku VHD za pomocą witryny Azure portal:
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy.
+1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 
-1. Z listy labs wybierz żądany laboratorium.  
+1. Z listy labs wybierz żądane laboratorium.  
 
-1. W okienku głównym laboratorium, wybierz **konfiguracji i zasadach**. 
+1. W okienku głównym laboratorium, wybierz **konfiguracji i zasad**. 
 
-1. Na **konfiguracji i zasadach** okienku wybierz **niestandardowych obrazów**.
+1. Na **konfiguracji i zasad** okienku wybierz **niestandardowych obrazów**.
 
 1. Na **niestandardowych obrazów** okienku wybierz **+ Dodaj**.
 
-    ![Dodaj niestandardowy obraz](./media/devtest-lab-create-template/add-custom-image.png)
+    ![Dodaj obraz niestandardowy](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Wprowadź nazwę niestandardowego obrazu. Ta nazwa będzie wyświetlana na liście podstawowej obrazów, podczas tworzenia maszyny Wirtualnej.
+1. Wprowadź nazwę niestandardowego obrazu. Ta nazwa jest wyświetlana na liście obrazy podstawowe, podczas tworzenia maszyny Wirtualnej.
 
-1. Wprowadź opis niestandardowego obrazu. Ten opis jest wyświetlany na liście obrazów podstawowej podczas tworzenia maszyny Wirtualnej.
+1. Wprowadź opis obrazu niestandardowego. Ten opis jest wyświetlany na liście obrazy podstawowe, podczas tworzenia maszyny Wirtualnej.
 
-1. Dla **typ systemu operacyjnego**, wybierz opcję **Windows** lub **Linux**.
+1. Aby uzyskać **typ systemu operacyjnego**, wybierz opcję **Windows** lub **Linux**.
 
-    - W przypadku wybrania **Windows**, określ za pomocą pola wyboru czy *sysprep* zostało uruchomione na tym komputerze. 
-    - W przypadku wybrania **Linux**, określ za pomocą pola wyboru czy *deprovision* zostało uruchomione na tym komputerze. 
+    - Jeśli wybierzesz **Windows**, określ za pomocą pola wyboru czy *sysprep* została uruchomiona na komputerze. 
+    - Jeśli wybierzesz **Linux**, określ za pomocą pola wyboru czy *deprovision* została uruchomiona na maszynie. 
 
-1. Wybierz **wirtualnego dysku twardego** z menu rozwijanego. Jest to wirtualny dysk twardy, który będzie używany do utworzenia nowego obrazu niestandardowego. Jeśli to konieczne, umożliwia **przekazania dysku VHD za pomocą programu PowerShell**.
+1. Wybierz **wirtualnego dysku twardego** z menu rozwijanego. Jest to wirtualny dysk twardy, która będzie służyć do tworzenia nowego niestandardowego obrazu. W razie potrzeby zaznacz, aby **przekazania dysku VHD za pomocą programu PowerShell**.
 
-1. Jeśli obraz używany do tworzenia niestandardowego obrazu nie jest obrazem licencjonowane (opublikowane przez firmę Microsoft), można wprowadzić nazwę planu, oferty planu i plan wydawcy.
+1. Jeśli obraz użyty do utworzenia niestandardowego obrazu nie jest licencjonowanego obrazu (opublikowane przez firmę Microsoft), można wprowadzić nazwę planu, oferty planu i wydawcy planu.
 
-   - **Nazwa planu:** wprowadź nazwę obrazu z witryny Marketplace (SKU) z jest tworzony ten obraz niestandardowy 
-   - **Planowanie oferta:** wprowadź produktu (Oferta) z obrazu witryny Marketplace, z którego utworzono ten obraz niestandardowy 
-   - **Planowanie wydawcy:** wprowadź wydawcy obrazu witryny Marketplace, z którego utworzono ten obraz niestandardowy
+   - **Nazwa planu:** wprowadź nazwę obrazu z witryny Marketplace (SKU), z którym zostanie utworzony niestandardowy obraz 
+   - **Plan oferty:** wprowadź produkt (oferty) obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz 
+   - **Planowanie wydawcy:** wprowadź wydawcę obrazu portalu Marketplace, z którego jest utworzony niestandardowy obraz
 
    > [!NOTE]
-   > Jeśli używasz, aby utworzyć obraz niestandardowy obraz jest **nie** licencjonowanego obrazu, a następnie te pola są puste, mogą być wypełniane w przypadku wybrania. Jeśli obraz **jest** licencjonowanego obrazu, a następnie pola są automatycznie wypełniane przy użyciu informacji o planie. Jeśli spróbujesz zmienić ich w takim przypadku zostanie wyświetlony komunikat ostrzegawczy.
+   > Jeśli obraz używasz, aby utworzyć niestandardowy obraz jest **nie** licencjonowanego obrazu, a następnie te pola są puste, może być wypełnione, jeśli wybierzesz. Jeśli obraz **jest** licencjonowanego obrazu, a następnie pola są automatycznie wypełniane przy użyciu informacji o planie. Jeśli spróbujesz zmienić je w tym przypadku zostanie wyświetlony komunikat ostrzegawczy.
    >
    >
 
-1. Wybierz **OK** można utworzyć niestandardowego obrazu.
+1. Wybierz **OK** do utworzenia obrazu niestandardowego.
 
-Po kilku minutach obraz niestandardowy jest tworzony i jest przechowywany w laboratorium należy utworzyć konta magazynu. Jeśli laboratorium użytkownik chce, aby utworzyć nową maszynę Wirtualną, są dostępne na liście obrazów podstawowej.
+Po kilku minutach niestandardowego obrazu zostanie utworzony i jest przechowywany w laboratorium, konta magazynu. Jeśli laboratorium użytkownik chce utworzyć nową maszynę Wirtualną, są dostępne na liście obrazy podstawowe.
 
-![Obraz niestandardowy dostępne na liście podstawowej obrazów](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+![Obraz niestandardowy, które są dostępne na liście obrazy podstawowe](./media/devtest-lab-create-template/custom-image-available-as-base.png)
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Wpisy na blogu pokrewne
+## <a name="related-blog-posts"></a>Wpisy w blogu pokrewne
 
-- [Niestandardowe obrazy lub formuł?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Kopiowanie obrazów niestandardowych między Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Obrazy niestandardowe lub formuł?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Kopiowanie obrazów niestandardowych między usłudze Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Dodaj Maszynę wirtualną do laboratorium](./devtest-lab-add-vm.md)
+- [Dodaj Maszynę wirtualną do środowiska laboratoryjnego](./devtest-lab-add-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: Użyć do trenowania Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure DevTest Labs scenariusze szkoleniowe.
+title: Korzystanie z usługi Azure DevTest Labs potrzeby szkolenia | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure DevTest Labs na potrzeby scenariuszy szkoleniowych.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,91 +14,91 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 85eddaaf101c3e85eca7514b04660163d23c1c80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787997"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666798"
 ---
-# <a name="use-azure-devtest-labs-for-training"></a>Użyć do trenowania Azure DevTest Labs
-Azure DevTest Labs umożliwia wdrożenie wielu kluczowych scenariuszy, oprócz: tworzenie i testowanie. Jest jednym z tych scenariuszy skonfigurować laboratorium do trenowania. Azure DevTest Labs umożliwia tworzenie laboratorium, w którym można podać szablonów niestandardowych, które każdego szkoleniowych służy do tworzenia środowisk identyczne i izolowane szkolenia. Można zastosować zasad w celu zapewnienia, że szkolenie środowiska są dostępne dla każdego szkoleniowych tylko wtedy, gdy są potrzebne i zawiera za mało zasobów — takich jak maszyny wirtualne - wymagane szkolenia. Na koniec można łatwo udostępniać laboratorium uczestnikom, które mogą uzyskiwać dostęp do za pomocą jednego kliknięcia.
+# <a name="use-azure-devtest-labs-for-training"></a>Korzystanie z usługi Azure DevTest Labs potrzeby szkolenia
+Usługa Azure DevTest Labs może służyć do implementowania wielu kluczowych scenariuszy, oprócz tworzenia i testowania. Jest jednym z tych scenariuszy konfigurowania laboratorium na potrzeby szkolenia. Usługa Azure DevTest Labs umożliwia tworzenie laboratorium, w którym mogą udostępniać szablony niestandardowe, które każdy szkoleniowych można użyć do utworzenia identyczne i wyizolowanego środowiska do trenowania. Można zastosować zasad w celu zapewnienia środowiska szkoleń są dostępne dla każdego szkoleniowych, tylko wtedy, gdy są potrzebne i zawiera za mało zasobów — takich jak virtual machines — wymagana na szkolenia. Na koniec laboratorium mogą łatwo udostępniać za pomocą Zaleć, które mogą oni uzyskać dostęp za pomocą jednego kliknięcia.
 
-![Użyć do trenowania DevTest Labs](./media/devtest-lab-training-lab/devtest-lab-training.png)
+![Korzystanie DevTest Labs na potrzeby szkolenia](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Azure DevTest Labs spełnia następujące wymagania, które są wymagane do prowadzenia szkoleń w dowolnym środowisku wirtualnym: 
+Usługa Azure DevTest Labs, spełnia następujące wymagania, które są wymagane do prowadzenia szkoleń w dowolnym środowisku wirtualnym: 
 
-* Stażyści nie widzi maszyn wirtualnych utworzonych przez inne stażyści
-* Każdym komputerze szkolenia powinny być identyczne
-* Stażyści można szybko ustanowić środowiskami szkolenia
-* Kontrolowanie kosztów przez zapewnienie, że stażyści nie można pobrać więcej maszyn wirtualnych, niż jest to wymagane dla szkolenia, a także zamykania maszyn wirtualnych nie używają ich
-* Można łatwo udostępnić laboratorium szkolenia każdego szkoleniowych
-* Ponowne użycie laboratorium szkolenia wielokrotnie
+* Maszyny wirtualne utworzone przez innych Zaleć Zaleć nie są widoczne.
+* Do każdej maszyny szkolenia powinny być identyczne
+* Zaleć można szybko inicjować obsługę środowisk szkolenia
+* Kontrolowanie kosztów przez zapewnienie, że Zaleć nie można pobrać więcej maszyn wirtualnych, niż jest to wymagane dla szkoleń, a także zamykania maszyn wirtualnych, jeśli ich nie używają
+* Łatwe udostępnianie laboratorium szkolenia każda szkoleniowych
+* Ponowne użycie laboratorium szkolenia ponownego
 
-W tym artykule dowiesz się o różnych funkcjach Azure DevTest Labs, których można użyć w celu spełnienia wymagań opisany wcześniej szkolenia i szczegółowy opis kroków, które możesz wykonać, aby skonfigurować laboratorium do trenowania.  
+W tym artykule poznasz różne funkcje usługi Azure DevTest Labs, których można użyć w celu spełnienia wymagań dotyczących szkoleń opisany wcześniej i szczegółowy opis kroków, które można wykonać, aby skonfigurować laboratorium na potrzeby szkolenia.  
 
-## <a name="implementing-training-with-azure-devtest-labs"></a>Implementowanie szkolenia Azure DevTest Labs
+## <a name="implementing-training-with-azure-devtest-labs"></a>Implementowanie szkolenie przy użyciu usługi Azure DevTest Labs
 1. **Tworzenie laboratorium** 
    
-    Laboratoria stanowią punkt początkowy w usłudze Azure DevTest Labs. Po utworzeniu laboratorium umożliwia wykonywanie zadań takich jak dodawanie użytkowników (stażyści) do laboratorium, określanie zasad w celu kontrolę kosztów, zdefiniuj obrazów maszyn wirtualnych, które można szybko utworzyć i inne.   
+    Laboratoria stanowią punkt początkowy w usłudze Azure DevTest Labs. Po utworzeniu laboratorium, można wykonywać zadania takie jak dodawanie użytkowników (Zaleć) do laboratorium, ustawienia zasad w celu kontrolowania kosztów, zdefiniuj obrazów maszyn wirtualnych, które mogą szybko tworzyć i nie tylko.   
    
     Dowiedz się więcej, klikając łącza w poniższej tabeli:
    
    | Zadanie | Omawiane zagadnienia |
    | --- | --- |
-   | [Tworzenie laboratorium w usłudze Azure DevTest Labs](devtest-lab-create-lab.md) |Dowiedz się, jak tworzenie laboratorium w usłudze Azure DevTest Labs w portalu Azure. |
-2. **Tworzenie maszyn wirtualnych szkolenia w kilka minut przy użyciu gotowych marketplace obrazów i niestandardowych obrazów** 
+   | [Tworzenie laboratorium w usłudze Azure DevTest Labs](devtest-lab-create-lab.md) |Dowiedz się, jak tworzenie laboratorium w usłudze Azure DevTest Labs w witrynie Azure portal. |
+2. **Tworzenie maszyn wirtualnych szkolenia w ciągu kilku minut przy użyciu gotowych do użycia w portalu marketplace, obrazy i obrazy niestandardowe** 
    
-    Można pobrania gotowych obrazów z szerokiej gamy obrazów w portalu Azure Marketplace i udostępnić je stażystów w laboratorium. Jeśli gotowe do użycia obrazy nie spełniają wymagań, można utworzyć niestandardowego obrazu, tworząc laboratorium maszyny Wirtualnej przy użyciu gotowych obrazu z portalu Azure Marketplace, instalowanie całe oprogramowanie wymagane do szkolenia i zapisywanie maszyny Wirtualnej jako obraz niestandardowy w laboratorium. 
-   
-    Dowiedz się więcej, klikając łącza w poniższej tabeli:
-   
-   | Zadanie | Omawiane zagadnienia |
-   | --- | --- |
-   | [Konfigurowanie portalu Azure Marketplace obrazów](devtest-lab-configure-marketplace-images.md) |Dowiedz się, jak obrazy portalu Azure Marketplace listy dozwolonych adresów IP; wprowadzenie do wyboru dostępne tylko obrazy mają szkolenia. |
-   | [Tworzenie niestandardowego obrazu](devtest-lab-create-template.md) |Tworzenie niestandardowego obrazu wstępnie instalując oprogramowanie potrzebnych szkolenia, dzięki czemu stażyści może szybko utworzyć Maszynę wirtualną przy użyciu niestandardowego obrazu. |
-3. **Tworzenie szablonów wielokrotnego użytku maszyn szkolenia** 
-   
-    Formuła w usłudze Azure DevTest Labs znajduje się lista domyślnych wartości właściwości używany do tworzenia maszyny Wirtualnej. Wybieranie obrazu, rozmiar maszyny Wirtualnej (kombinacja Procesora i pamięci RAM) i sieć wirtualną można utworzyć formuły w laboratorium. Każdego szkoleniowych można zobaczyć formułę laboratorium i go użyć do utworzenia maszyny Wirtualnej. 
+    Można wybrać gotowych do użycia obrazy z szerokiej gamy obrazów w portalu Azure Marketplace i udostępnić je Zaleć w środowisku laboratoryjnym. Jeśli gotowych do użycia obrazy nie spełniają Twoich wymagań, możesz utworzyć niestandardowy obraz, od utworzenia laboratorium na maszynę Wirtualną przy użyciu gotowych do użycia obrazu z witryny Azure Marketplace, instalowania oprogramowania potrzebnych na szkolenie i zapiszesz maszynę Wirtualną jako obraz niestandardowy w środowisku laboratoryjnym. 
    
     Dowiedz się więcej, klikając łącza w poniższej tabeli:
    
    | Zadanie | Omawiane zagadnienia |
    | --- | --- |
-   | [Zarządzanie DevTest Labs formuły można utworzyć maszyny wirtualne](devtest-lab-manage-formulas.md) |Dowiedz się, jak utworzyć formuły przez przechwycenie obrazu, rozmiar maszyny Wirtualnej (kombinację procesora CPU i pamięci RAM) i sieci wirtualnej. |
-4. **Kontrolę kosztów**
+   | [Konfigurowanie obrazów z portalu Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Dowiedz się, jak można umieścić na liście dozwolonych obrazów portalu Azure Marketplace; co do wyboru dostępne tylko obrazy mają szkolenia. |
+   | [Tworzenie obrazu niestandardowego](devtest-lab-create-template.md) |Tworzenie niestandardowego obrazu, instalując wstępnie oprogramowanie, potrzebnych szkolenia, dzięki czemu Zaleć można szybko utworzyć Maszynę wirtualną przy użyciu niestandardowego obrazu. |
+3. **Tworzenie szablonów wielokrotnego użycia dla maszyn szkolenia** 
    
-    Azure DevTest Labs umożliwia ustawienie zasad w środowisku laboratoryjnym, aby określić maksymalną liczbę maszyn wirtualnych, które mogą być tworzone przez szkoleniowych w laboratorium. 
-   
-    Jeśli są przeprowadzenie szkolenia wielodniowego i zatrzymanie wszystkich maszyn wirtualnych o określonej godzinie dnia, a następnie automatycznie uruchomić je ponownie następnego dnia, można łatwo realizacji tego przez ustawienie automatyczne zamykanie i automatyczne uruchamianie zasad w środowisku laboratoryjnym. 
-   
-    Na koniec po zakończeniu szkolenia można usunąć wszystkich maszyn wirtualnych jednocześnie za pomocą jednego skryptu środowiska PowerShell. 
+    Formuły w usłudze Azure DevTest Labs znajduje się lista domyślnych wartości właściwości, używany do tworzenia maszyny Wirtualnej. Aby utworzyć formułę w środowisku laboratoryjnym, pobrania obrazu, rozmiar maszyny Wirtualnej (kombinację procesora CPU i pamięci RAM) i sieci wirtualnej. Każdy szkoleniowych można wyświetlić formuły w laboratorium i użyć go do utworzenia maszyny Wirtualnej. 
    
     Dowiedz się więcej, klikając łącza w poniższej tabeli:
    
    | Zadanie | Omawiane zagadnienia |
    | --- | --- |
-   | [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) |Kontrolę kosztów przez ustawienie zasad w środowisku laboratoryjnym. |
-   | [Usuń wszystkie laboratorium maszyn wirtualnych za pomocą skryptu programu PowerShell](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Po zakończeniu szkolenia, należy usunąć wszystkie laboratoriów w ramach jednej operacji. |
-5. **Udostępnij każdego szkoleniowych laboratorium**
+   | [Zarządzanie formułami laboratorium do tworzenia maszyn wirtualnych](devtest-lab-manage-formulas.md) |Dowiedz się, jak można utworzyć formułę, wybierając obrazu, rozmiar maszyny Wirtualnej (kombinację procesora CPU i pamięci RAM) i sieci wirtualnej. |
+4. **Kontrolowanie kosztów**
    
-    Laboratoria są bezpośrednio dostępne przy użyciu łącza, które możesz udostępniać stażyści Twojego. Stażyści Twojego nie nawet muszą mieć konta platformy Azure, jak długo mają [konta Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Stażyści nie widzi utworzonych przez inne stażyści maszyn wirtualnych.  
+    Usługa Azure DevTest Labs umożliwia ustawienie zasad w środowisku laboratoryjnym, aby określić maksymalną liczbę maszyn wirtualnych, które mogą być tworzone przez szkoleniowych w środowisku laboratoryjnym. 
    
-    Dowiedz się więcej, klikając łącza w poniższej tabeli:
+    Jeśli przeprowadzamy wielodniowe szkoleniowych i do zatrzymania wszystkich maszyn wirtualnych o określonej porze dnia, a następnie automatycznie uruchom je ponownie następnego dnia, możesz łatwo to zrobić przez ustawienie automatycznego zamykania i automatycznego uruchamiania zasad w środowisku laboratoryjnym. 
    
-   | Zadanie | Omawiane zagadnienia |
-   | --- | --- |
-   | [Dodaj szkoleniowych do laboratorium w usłudze Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Użyj portalu Azure, aby dodać stażyści do laboratorium szkolenia. |
-   | [Dodaj stażyści do laboratorium za pomocą skryptu programu PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Za pomocą programu PowerShell można zautomatyzować Dodawanie stażyści do laboratorium szkolenia. |
-   | [Uzyskaj link do laboratorium](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Dowiedz się, jak laboratorium jest bezpośrednio dostępny za pośrednictwem hiperłącza. |
-6. **Ponowne użycie laboratorium wielokrotnie** 
-   
-    Można zautomatyzować tworzenie laboratorium, m.in. przez tworzenie szablonu usługi Resource Manager i używanie go ponownie i ponownie utworzyć labs identyczne ustawienia niestandardowe. 
+    Na koniec po zakończeniu szkolenia można usunąć wszystkich maszyn wirtualnych jednocześnie, uruchamiając skrypt programu PowerShell jednym. 
    
     Dowiedz się więcej, klikając łącza w poniższej tabeli:
    
    | Zadanie | Omawiane zagadnienia |
    | --- | --- |
-   | [Tworzenie laboratorium przy użyciu szablonu usługi Resource Manager](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Utwórz laboratoriów w usłudze Azure DevTest Labs za pomocą szablonów usługi Resource Manager. |
+   | [Definiowanie zasad laboratorium](devtest-lab-set-lab-policy.md) |Kontrolowanie kosztów przez ustawienie zasad w środowisku laboratoryjnym. |
+   | [Usuń wszystkie laboratorium maszyn wirtualnych przy użyciu skryptu programu PowerShell](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Po zakończeniu szkolenia, należy usunąć wszystkie laboratoriów w ramach jednej operacji. |
+5. **Udostępnianie laboratorium każdego szkoleniowych**
+   
+    Laboratoria są bezpośrednio dostępne przy użyciu łącza, które możesz udostępniać swoje Zaleć. Twoje Zaleć nie nawet muszą mieć konto platformy Azure, tak długo, jak długo mają [konta Microsoft](devtest-lab-faq.md#what-is-a-microsoft-account). Maszyny wirtualne utworzone przez innych Zaleć Zaleć nie są widoczne.  
+   
+    Dowiedz się więcej, klikając łącza w poniższej tabeli:
+   
+   | Zadanie | Omawiane zagadnienia |
+   | --- | --- |
+   | [Dodawanie szkoleniowych do laboratorium Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Użyj witryny Azure portal, aby dodać Zaleć do środowiska laboratoryjnego szkolenia. |
+   | [Dodaj Zaleć do laboratorium przy użyciu skryptu programu PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Aby zautomatyzować Dodawanie Zaleć do środowiska laboratoryjnego szkolenie za pomocą programu PowerShell. |
+   | [Utwórz link pozwalający laboratorium](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Dowiedz się, jak laboratorium są bezpośrednio dostępne hiperłącze. |
+6. **Ponowne użycie laboratorium ponownego** 
+   
+    Można zautomatyzować tworzenie laboratorium, w tym ustawienia niestandardowe, tworząc szablon usługi Resource Manager i użycia w celu ponownego tworzenia laboratoriów identyczne. 
+   
+    Dowiedz się więcej, klikając łącza w poniższej tabeli:
+   
+   | Zadanie | Omawiane zagadnienia |
+   | --- | --- |
+   | [Tworzenie laboratorium przy użyciu szablonu usługi Resource Manager](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Tworzenie laboratoriów w usłudze Azure DevTest Labs przy użyciu szablonów usługi Resource Manager. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

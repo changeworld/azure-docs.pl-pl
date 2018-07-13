@@ -1,6 +1,6 @@
 ---
-title: Sprawdź połączenie bramy sieci VPN | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób sprawdzania, połączenie sieci VPN bramy sieci wirtualnej.
+title: Weryfikowanie połączenia bramy sieci VPN | Dokumentacja firmy Microsoft
+description: W tym artykule pokazano, jak zweryfikować połączenie sieci VPN bramy sieci wirtualnej.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
 ms.openlocfilehash: 037c1c7dd73f668bd8ad95568743b223b1e11c79
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750201"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38706001"
 ---
-# <a name="verify-a-vpn-gateway-connection"></a>Sprawdź połączenie bramy sieci VPN
+# <a name="verify-a-vpn-gateway-connection"></a>Weryfikowanie połączenia bramy sieci VPN
 
-W tym artykule przedstawiono sposób sprawdzić połączenie bramy sieci VPN dla modeli wdrażania usługi Resource Manager i klasycznym.
+W tym artykule pokazano, jak zweryfikować połączenie bramy sieci VPN dla wdrożeń klasycznych, jak i modelem wdrażania usługi Resource Manager.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -32,24 +32,24 @@ W tym artykule przedstawiono sposób sprawdzić połączenie bramy sieci VPN dla
 
 ## <a name="powershell"></a>PowerShell
 
-Aby sprawdzić połączenie bramy sieci VPN dla modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell, należy zainstalować najnowszą wersję [poleceń cmdlet programu PowerShell usługi Azure Resource Manager](/powershell/azure/overview).
+Aby sprawdzić połączenie bramy sieci VPN w przypadku modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell, zainstaluj najnowszą wersję [poleceń cmdlet programu PowerShell usługi Resource Manager platformy Azure](/powershell/azure/overview).
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby sprawdzić połączenie bramy sieci VPN dla modelu wdrażania usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, zainstaluj najnowszą wersję [polecenia interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0 lub nowszej).
+Aby sprawdzić połączenie bramy sieci VPN w przypadku modelu wdrażania usługi Resource Manager przy użyciu wiersza polecenia platformy Azure, zainstalować najnowszą wersję [poleceń interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0 lub nowszą).
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 
-## <a name="azure-portal-classic"></a>Portalu Azure (klasyczne)
+## <a name="azure-portal-classic"></a>Witryna Azure portal (klasyczny)
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
 ## <a name="powershell-classic"></a>PowerShell (klasyczny)
 
-Aby sprawdzić połączenie bramy sieci VPN dla klasycznym modelu wdrażania przy użyciu programu PowerShell, należy zainstalować najnowsze wersje poleceń cmdlet programu Azure PowerShell. Pamiętaj pobrać i zainstalować [zarządzania usługami](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modułu. Użyj "Add-AzureAccount", aby zalogować się w klasycznym modelu wdrażania.
+Aby sprawdzić połączenie bramy sieci VPN dla klasycznego modelu wdrażania przy użyciu programu PowerShell, należy zainstalować najnowsze wersje poleceń cmdlet programu Azure PowerShell. Pamiętaj pobrać i zainstalować [zarządzania usługami](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modułu. Użyj "Add-AzureAccount", aby zalogować się do klasycznego modelu wdrażania.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 

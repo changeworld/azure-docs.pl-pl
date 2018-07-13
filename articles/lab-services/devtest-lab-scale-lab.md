@@ -1,5 +1,5 @@
 ---
-title: Skalowanie przydziały i limity w laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
+title: Skalowanie limity przydziału i ograniczenia w laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skalować laboratorium w usłudze Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -14,57 +14,57 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787479"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38675969"
 ---
-# <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie przydziały i limity w usłudze DevTest Labs
-Podczas pracy w usłudze DevTest Labs, można zauważyć, że istnieją pewne domyślne limity do niektórych zasobów platformy Azure, co może wpłynąć na usługę DevTest Labs. Ograniczenia te są określane jako **przydziały**.
+# <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie w usłudze DevTest Labs limity przydziału i ograniczenia
+Podczas pracy w usłudze DevTest Labs, może się okazać, że nie istnieją pewne domyślne limity do niektórych zasobów platformy Azure, które mogą mieć wpływ na usługi DevTest Labs. Limity te są nazywane **przydziały**.
 
 > [!NOTE]
-> Usługa DevTest Labs nie nakładają żadnych przydziałów. Wszelkie przydziałów, które mogą wystąpić są domyślne ograniczenia ogólne Azure subskrypcji.
+> Usługa DevTest Labs nie nakłada żadnych limitów przydziału. Przydziały, które mogą wystąpić są domyślne ograniczenia subskrypcja ogólna platformy Azure.
 
-Można użyć każdego zasobów platformy Azure, aż dojdziesz limit przydziału. Każda subskrypcja ma oddzielne przydziały i użycia są śledzone na subskrypcję.
+Można użyć poszczególnych zasobów platformy Azure, aż osiągniesz limit przydziału. Każda subskrypcja ma oddzielne limity przydziału i użycie jest śledzone oddzielnie dla każdej subskrypcji.
 
-Na przykład każda subskrypcja ma domyślnego przydziału rdzeni 20. Dlatego w przypadku tworzenia maszyn wirtualnych w laboratorium z czterech rdzeni, następnie można tworzyć tylko pięć maszyn wirtualnych. 
+Przykładowo Każda subskrypcja ma domyślny limit przydziału rdzeni 20. Dlatego w przypadku tworzenia maszyn wirtualnych w środowisku laboratoryjnym przy użyciu cztery rdzenie, następnie można tylko utworzyć pięciu maszyn wirtualnych. 
 
-[Azure subskrypcji i ograniczenia usługi](https://docs.microsoft.com/azure/azure-subscription-service-limits) przedstawiono niektóre z najczęściej przydziały dla zasobów platformy Azure. Zasoby najczęściej używane w laboratorium, a dla mogą wystąpić przydziały, zawierają rdzeni maszyny Wirtualnej, publiczne adresy IP interfejsu sieciowego, dysków zarządzanych, przypisanie roli RBAC i obwody usługi ExpressRoute.
+[Limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits) wymieniono niektóre z najbardziej typowych limitów przydziału dla zasobów platformy Azure. Zasoby są najczęściej używane w laboratorium, a dla mogą wystąpić przydziałów, zawierają rdzeni maszyn wirtualnych, publiczne adresy IP, interfejs sieciowy, dyski zarządzane, przypisania ról RBAC i obwodów usługi ExpressRoute.
 
-## <a name="view-your-usage-and-quotas"></a>Wyświetlanie Twoich użycia i przydziały
-Te kroki pokazują, jak wyświetlić bieżący przydziały w subskrypcji dla określonych zasobów platformy Azure i zobacz, jaki procent każdego przydziału zostały użyte.
+## <a name="view-your-usage-and-quotas"></a>Wyświetlanie użycia i przydziałów
+Te kroki pokazują, jak wyświetlić bieżące limity przydziału w subskrypcji dla określonych zasobów platformy Azure i zobacz, jaki procent każdy przydział były używane.
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **więcej usług**, a następnie wybierz **rozliczeń** z listy.
+1. Wybierz **więcej usług**, a następnie wybierz pozycję **rozliczeń** z listy.
 1. W bloku rozliczenia Wybierz subskrypcję.
-4. Wybierz **użycia + przydziały**.
+4. Wybierz **użycie i przydziały**.
 
-   ![Przycisk użycia i przydziały](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
+   ![Przycisk użycie i przydziały](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
-   Użycie + przydziały zostanie wyświetlony blok, listę różnych dostępnych zasobów w subskrypcji i procent przydziału, który jest używany dla zasobów.
+   Użycie i przydziały zostanie wyświetlony blok, listę różnych zasobów dostępnych w tej subskrypcji i procent przydziału, który jest używany dla każdego zasobu.
 
-   ![Przydziały i użycia](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
+   ![Limity przydziału i użycia](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
 
-## <a name="requesting-more-resources-in-your-subscription"></a>Żąda więcej zasobów w Twojej subskrypcji
-Przekroczenie limitu przydziału domyślny limit zasobów w subskrypcji można zwiększyć maksymalnego limitu, zgodnie z opisem w [subskrypcji platformy Azure i ograniczenia usługi](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+## <a name="requesting-more-resources-in-your-subscription"></a>Żądanie więcej zasobów w ramach subskrypcji
+Jeśli przekroczysz limit przydziału, domyślny limit zasobów w ramach subskrypcji można zwiększyć do maksymalnego limitu, zgodnie z opisem w [limity usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-Tych krokach przedstawiono sposób zażądać zwiększenia limitu przydziału przez [portalu Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+Te kroki pokazują, jak można zażądać zwiększenia limitu przydziału, za pośrednictwem [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Wybierz **więcej usług**, wybierz pozycję **rozliczeń**, a następnie wybierz **użycia + przydziały**.
-1. Użycie + przydziały bloku, wybierz opcję **żądanie zwiększenia** przycisku.
+1. Wybierz **więcej usług**, wybierz opcję **rozliczeń**, a następnie wybierz pozycję **użycie i przydziały**.
+1. W użycie i przydziały bloku wybierz **żądanie zwiększenia** przycisku.
 
-   ![Przycisk Zwiększ żądania](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
+   ![Przycisk wzrost żądania](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. Aby zakończyć i przesłać żądanie, wypełnij wymagane informacje na wszystkich trzech kartach **nowy obsługuje żądania** formularza.
+1. Aby wypełnić oraz przesłać żądanie, wypełnij wymagane informacje, na wszystkich trzech kartach **nowe żądanie obsługi** formularza.
 
-   ![Zwiększ formularz żądania](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
+   ![Formularz wniosku o zwiększenie](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 
-[Opis ograniczeń Azure i zwiększa](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) zawiera więcej informacji o skontaktowaniu się z pomocą techniczną platformy Azure, aby zażądać zwiększenia limitu przydziału.
+[Informacje o limitach usługi Azure i zwiększa](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) zawiera więcej informacji na temat kontaktując się z pomocą techniczną platformy Azure, aby zażądać zwiększenia limitu przydziału.
 
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Kolejne kroki
-* Eksploruj [galerię szablonów DevTest Labs Azure Resource Manager — Szybki Start](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Zapoznaj się z [galerii szablonów DevTest Labs Azure Resource Manager QuickStart](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

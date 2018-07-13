@@ -1,22 +1,22 @@
-## <a name="customize-and-extend-the-device-management-actions"></a>Dostosowywanie i rozszerzanie urządzenia akcje zarządzania
+## <a name="customize-and-extend-the-device-management-actions"></a>Dostosowywanie i rozszerzanie akcje z zakresu zarządzania urządzeniami
 
-Z rozwiązania IoT można rozwinąć zdefiniowanym zestawem wzorców zarządzanie urządzeniami lub włączyć wzorce niestandardowych za pomocą urządzenia dwie i podstawowych metody chmury do urządzenia. Inne akcje zarządzania urządzeniami przykładami Resetowanie do ustawień fabrycznych, aktualizacji oprogramowania układowego, aktualizacji oprogramowania, zarządzania energią, Zarządzanie sieciami i łączności i szyfrowania danych.
+Rozwiązania IoT można rozwinąć zdefiniowanym zestawem wzorców zarządzania urządzeniami lub włączyć wzorców niestandardowych za pomocą bliźniaczej reprezentacji urządzenia i podstawowych metoda chmury do urządzenia. Inne akcje z zakresu zarządzania urządzeniami przykładami resetowania do ustawień fabrycznych, aktualizacja oprogramowania układowego, aktualizacji oprogramowania, zarządzania energią, Zarządzanie sieciami i łączności i szyfrowania danych.
 
 ## <a name="device-maintenance-windows"></a>Okna obsługi urządzeń
 
-Zwykle możesz skonfigurować urządzenia do wykonywania akcji w określonym czasie zminimalizować przestoje i przestoje. Okna obsługi urządzenia są często używane wzorzec do czasu, gdy urządzenia należy zaktualizować jej konfiguracji. Rozwiązań zaplecza służy odpowiednie właściwości dwie urządzenia do definiowania i aktywować zasad na urządzeniu, który umożliwia okna obsługi. Gdy urządzenie otrzyma zasady okna konserwacji, służy zgłoszone właściwość dwie urządzenia do raportowania stanu zasady. Urządzenie dwie kwerendy następnie można użyć aplikacji zaplecza do potwierdzają zgodności urządzeń i każdej zasady.
+Zwykle możesz skonfigurować urządzenia do wykonywania akcji w czasie, które minimalizuje przestoje i przestoje. Okna obsługi urządzenia są często używane wzorzec do zdefiniowania czasu, gdy urządzenie powinno zaktualizuje konfigurację swojej. Rozwiązania zaplecza umożliwia żądane właściwości bliźniaczej reprezentacji urządzenia zdefiniować i aktywować zasad na urządzeniu, umożliwiająca okna obsługi. Gdy urządzenie otrzyma zasady okna obsługi, służy zgłoszonych właściwości bliźniaka urządzenia zgłoszenia stanu zasad. Aplikacja wewnętrzna następnie można użyć zapytań bliźniaczych reprezentacji urządzeń potwierdzać zgodności urządzenia i każdej zasady.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku metoda bezpośrednia jest użyty do wyzwolenia zdalnego ponownego uruchomienia na urządzeniu. Używane właściwości zgłoszony do zgłaszania podczas ostatniego rozruchu z urządzenia, a zapytanie dwie urządzenia, aby dowiedzieć się, czas ostatniego ponownego uruchomienia urządzenia z chmury.
+W tym samouczku użyto metody bezpośredniej wyzwolić ponowne uruchomienie komputera zdalnego na urządzeniu. Używane zgłaszanych właściwości do raportowania czasu ostatniego ponownego uruchomienia z urządzenia, a następnie proszeni bliźniaczej reprezentacji urządzenia, aby odnaleźć ostatniego ponownego uruchomienia urządzenia w chmurze.
 
-Aby kontynuować, wprowadzenie do korzystania z Centrum IoT i urządzenia zarządzania wzorców, takich jak zdalnego za pośrednictwem aktualizacji oprogramowania układowego udziału użytkownika, zobacz:
+Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, zobacz:
 
-[Samouczek: Sposób wykonywania aktualizacji oprogramowania układowego][lnk-fwupdate]
+[Samouczek: Jak zaktualizować oprogramowanie układowe][lnk-fwupdate]
 
-Aby dowiedzieć się, jak rozszerzyć IoT, Twoje rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach, zobacz [emisji zadania i harmonogramu] [ lnk-tutorial-jobs] samouczka.
+Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach IoT, zobacz [harmonogramu i zadań emisji] [ lnk-tutorial-jobs] samouczka.
 
-Aby kontynuować, wprowadzenie do korzystania z Centrum IoT, zobacz [wprowadzenie krawędzi IoT][lnk-iot-edge].
+Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi IoT Edge][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md

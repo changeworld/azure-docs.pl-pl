@@ -1,6 +1,6 @@
 ---
-title: Tworzenie sieci wirtualnej (klasyczne) przy użyciu portalu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć sieć wirtualną (klasyczne) przy użyciu portalu Azure.
+title: Tworzenie sieci wirtualnej (klasycznej) przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć sieć wirtualną (klasycznego) przy użyciu witryny Azure portal.
 services: virtual-network
 documentationcenter: ''
 author: genlin
@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 60e9aa1daaa2edea534dabd549ed666fdcdd1940
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790223"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688846"
 ---
-# <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Tworzenie sieci wirtualnej (wdrożenia klasyczne) przy użyciu portalu Azure
+# <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Tworzenie sieci wirtualnej (model klasyczny) przy użyciu witryny Azure portal
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym dokumencie opisano tworzenie sieci wirtualnej przy użyciu klasycznego modelu wdrażania. Możesz również [utworzyć sieć wirtualną w modelu wdrażania usługi Resource Manager przy użyciu portalu Azure](quick-create-portal.md).
+W tym dokumencie opisano tworzenie sieci wirtualnej przy użyciu klasycznego modelu wdrażania. Możesz również [tworzenie sieci wirtualnej w modelu wdrażania usługi Resource Manager przy użyciu witryny Azure portal](quick-create-portal.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

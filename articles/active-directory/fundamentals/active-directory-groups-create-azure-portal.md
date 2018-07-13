@@ -1,59 +1,59 @@
 ---
-title: Utwórz grupę dla użytkowników w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak utworzyć grupę w usłudze Azure Active Directory i dodawanie członków do grupy
+title: Tworzenie grupy dla użytkowników w usłudze Azure AD | Microsoft Docs
+description: Jak utworzyć grupę w usłudze Azure Active Directory i dodać członków do grupy
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: eross-msft
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/04/2017
-ms.author: curtand
+ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 0a757ff93531e95da632086c2526dd36406f94c2
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
-ms.translationtype: MT
+ms.openlocfilehash: 82d475e5adadb4e7670f24a6193348c9e1b37a16
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35664804"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37767527"
 ---
-# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Utwórz grupy i Dodaj elementy członkowskie w usłudze Azure Active Directory
+# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-groups-create-azure-portal.md)
-> * [Program PowerShell](../active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+> * [Program PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-W tym artykule opisano sposób tworzenia i wypełniania nową grupę w usłudze Azure Active Directory. Grupa służy do wykonywania zadań zarządzania, takich jak przypisywanie licencji lub uprawnień do liczby użytkowników lub urządzeń naraz.
+W tym artykule wyjaśniono, jak utworzyć i wypełnić nową grupę w usłudze Azure Active Directory. Grupa służy do wykonywania zadań zarządzania, takich jak przypisywanie licencji lub uprawnień do kilku użytkowników lub urządzeń jednocześnie.
 
 ## <a name="how-do-i-create-a-group"></a>Jak utworzyć grupę?
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz **wszystkie usługi**, wprowadź **użytkowników i grup** w polu tekstowym, a następnie wybierz **Enter**.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
+2. Wybierz pozycję **Wszystkie usługi**, w polu tekstowym wprowadź filtr **Użytkownicy i grupy**, a następnie naciśnij klawisz **Enter**.
 
-   ![Otwieranie Zarządzanie użytkownikami](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. Na **użytkowników i grup** bloku, wybierz opcję **wszystkich grup**.
+   ![Otwieranie okna zarządzania użytkownikami](./media/active-directory-groups-create-azure-portal/search-user-management.png)
+3. W bloku **Użytkownicy i grupy** wybierz pozycję **Wszystkie grupy**.
 
-   ![Otwieranie bloku grupy](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. Na **użytkowników i grup — wszystkie grupy** bloku, wybierz opcję **Dodaj** polecenia.
+   ![Otwieranie bloku grup](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
+4. W bloku **Użytkownicy i grupy — Wszystkie grupy** wybierz polecenie **Dodaj**.
 
-   ![Dodaj polecenie](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. Na **grupy** bloku, Dodaj nazwę i opis grupy.
-6. Aby wybrać elementy członkowskie, aby dodać do grupy, wybierz **przypisane** w **Typ członkostwa** , a następnie wybierz **członków**. Aby uzyskać więcej informacji o sposobie zarządzania członkostwa w grupie dynamicznie, zobacz [tworzenie zaawansowanych reguł członkostwa w grupie za pomocą atrybutów](../active-directory-groups-dynamic-membership-azure-portal.md).
+   ![Wybieranie polecenia Dodaj](./media/active-directory-groups-create-azure-portal/add-group-command.png)
+5. W bloku **Grupa** dodaj nazwę i opis grupy.
+6. Aby wybrać członków do dodania do grupy, wybierz pozycję **Przypisane** w polu **Typ członkostwa**, a następnie wybierz pozycję **Członkowie**. Aby uzyskać więcej informacji o sposobie zarządzania członkostwem w grupie dynamicznej, zobacz [Tworzenie zaawansowanych reguł członkostwa w grupie przy użyciu atrybutów](../active-directory-groups-dynamic-membership-azure-portal.md).
 
    ![Wybieranie członków do dodania](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. Na **członków** bloku, wybierz jeden lub więcej użytkowników lub urządzeń do dodania do grupy, a następnie wybierz **wybierz** przycisk w dolnej części bloku, aby dodać je do grupy. **Użytkownika** okno filtry wyświetlania na podstawie zgodności wpis do dowolnej części nazwy użytkownika lub urządzenia. Nie symbole wieloznaczne są akceptowane w tym polu.
-8. Po zakończeniu dodawania członków do grupy, wybierz **Utwórz** na **grupy** bloku.    
+7. W bloku **Członkowie** wybierz co najmniej jednego użytkownika lub urządzenie w celu dodania do grupy, a następnie kliknij przycisk **Wybierz** w dolnej części bloku, aby dodać te pozycje do grupy. Pole **Użytkownik** służy do filtrowania wyświetlanych danych na podstawie dopasowania wpisanej wartości do dowolnej części nazwy użytkownika lub urządzenia. W tym polu nie są akceptowane żadne symbole wieloznaczne.
+8. Po zakończeniu dodawania członków do grupy wybierz pozycję **Utwórz** w bloku **Grupa**.    
 
-   ![Tworzenie grupy potwierdzenia](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
+   ![Potwierdzenie utworzenia grupy](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
-* [Zobacz istniejących grup](active-directory-groups-view-azure-portal.md)
+* [Wyświetlanie istniejących grup](active-directory-groups-view-azure-portal.md)
 * [Zarządzanie ustawieniami grupy](active-directory-groups-settings-azure-portal.md)
-* [Elementy członkowskie grupy zarządzania](active-directory-groups-members-azure-portal.md)
-* [Zarządzanie członkostwami grup](active-directory-groups-membership-azure-portal.md)
-* [Dynamiczne reguły dla użytkowników w grupie zarządzania](../active-directory-groups-dynamic-membership-azure-portal.md)
+* [Zarządzanie członkami grupy](active-directory-groups-members-azure-portal.md)
+* [Zarządzanie członkostwem w grupie](active-directory-groups-membership-azure-portal.md)
+* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../active-directory-groups-dynamic-membership-azure-portal.md)

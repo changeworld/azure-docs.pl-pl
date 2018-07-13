@@ -1,6 +1,6 @@
 ---
-title: Azure ograniczone rozmiary vCPU — Windows | Dokumentacja firmy Microsoft
-description: Wyświetla listę rozmiarów maszyn wirtualnych, z możliwością o liczba vCPU ograniczone.
+title: Azure ograniczone rozmiary procesora wirtualnego vCPU — Windows | Dokumentacja firmy Microsoft
+description: Wyświetla listę rozmiarów maszyn wirtualnych, które są w stanie konieczności liczba procesorów wirtualnych ograniczone.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: 0ed14cc0978baaea5e334eef14d0354d8d6edcfb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29877038"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652184"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Rozmiary maszyn wirtualnych z funkcją ograniczonego vCPU
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Rozmiary maszyn wirtualnych z możliwością ograniczonego procesorów wirtualnych
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
 
 
-## <a name="other-sizes"></a>Innych rozmiarach
+## <a name="other-sizes"></a>O innych rozmiarach
 - [Optymalizacja pod kątem obliczeń](../windows/sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](sizes-memory.md)
 - [Optymalizacja pod kątem magazynu](sizes-storage.md)
@@ -35,5 +35,5 @@ ms.locfileid: "29877038"
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat [jednostki (ACU) rozwiązań usługi obliczenia Azure](acu.md) ułatwia porównanie wydajności obliczeniowej różnych jednostki SKU Azure.
+Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
 

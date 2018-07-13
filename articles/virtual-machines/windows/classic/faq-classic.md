@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania dotyczące klasycznych maszyn wirtualnych systemu Windows | Dokumentacja firmy Microsoft
-description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące systemu Windows Azure maszyny wirtualne utworzone za pomocą klasycznym modelu wdrażania.
+title: Często zadawane pytania dla klasycznych maszyn wirtualnych Windows | Dokumentacja firmy Microsoft
+description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące maszyn wirtualnych Windows Azure utworzonych za pomocą klasycznego modelu wdrażania.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 ms.openlocfilehash: 6e40d9269206b82fefbcdb3ecc80a1ca23c7c0ae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917745"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630253"
 ---
-# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>Często zadawane pytania dotyczące utworzone za pomocą klasycznym modelu wdrażania maszyn wirtualnych Azure Windows
+# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>Często zadawane pytania dotyczące maszyn wirtualnych Windows Azure utworzonych za pomocą klasycznego modelu wdrażania
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule omówiono przy użyciu klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dla FAQ, korzystając z modelu Resource Manager, zobacz [tutaj](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Często zadawane pytania przy użyciu modelu usługi Resource Manager, można zobaczyć [tutaj](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../../../includes/virtual-machines-common-classic-faq.md)]
 

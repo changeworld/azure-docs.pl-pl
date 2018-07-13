@@ -1,6 +1,6 @@
 ---
-title: Planowanie zadań z Centrum IoT Azure (Python) | Dokumentacja firmy Microsoft
-description: Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośrednio na wielu urządzeniach. Zestawy SDK IoT Azure dla języka Python umożliwia wdrożenie symulowane urządzenie aplikacje i usługi aplikacji w celu uruchomienia zadania.
+title: Planowanie zadań za pomocą usługi Azure IoT Hub (Python) | Dokumentacja firmy Microsoft
+description: Jak zaplanować zadanie usługi Azure IoT Hub do wywołania metody bezpośredniej na wielu urządzeniach. Przy użyciu zestawów SDK usługi Azure IoT dla języka Python aplikacji urządzenia symulowanego i app service, aby uruchomić zadanie.
 author: kgremban
 manager: timlt
 ms.service: iot-hub
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: kgremban
 ms.openlocfilehash: 7cbfe289f662987d85f0f2678e4971492ed8cd80
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635172"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666958"
 ---
-# <a name="schedule-and-broadcast-jobs-python"></a>Zadania harmonogramu i emisji (Python)
+# <a name="schedule-and-broadcast-jobs-python"></a>Planowanie i emitowanie zadań (Python)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Centrum IoT Azure jest w pełni zarządzaną usługę, która umożliwia aplikacji zaplecza utworzyć i śledzenia zadań, które zaplanować i zaktualizuj milionów urządzeń.  Zadania mogą służyć do następujących czynności:
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która umożliwia aplikacji zaplecza utworzyć i śledzić zadania, które planować i aktualizowania milionów urządzeń.  Zadania mogą służyć do następujących czynności:
 
 * Aktualizowanie żądanych właściwości
-* Tagi aktualizacji
-* Wywołanie metody bezpośredniego
+* Aktualizacji tagów
+* Wywoływanie metod bezpośrednich
 
-Koncepcyjnie zadanie opakowuje jedną z następujących czynności i śledzi postęp wykonywania pod kątem zestawu urządzeń, jest zdefiniowany przez zapytanie dwie urządzenia.  Na przykład aplikacji zaplecza zadanie służy do wywoływania metody ponownego uruchomienia na 10 000 urządzeń, określonych przez zapytanie dwie urządzenia i zaplanowanych w przyszłości.  Aplikację można następnie śledzić każde z tych urządzeń odbierają i wykonaj metodę ponownego uruchomienia.
+Model zadanie opakowuje jedną z następujących czynności i śledzi postęp wykonywania względem zbiór urządzeń, która jest zdefiniowana przez zapytanie w bliźniaczej reprezentacji urządzenia.  Na przykład aby wywołać metodę ponownego uruchomienia na 10 000 urządzeń, określonych przez zapytanie bliźniacza reprezentacja urządzenia i zaplanować w czasie przyszłych zadań można użyć aplikacji zaplecza.  Tej aplikacji można śledzić postęp, zgodnie z każdego z tych urządzeń odbierania i wykonać metodę ponownego uruchomienia.
 
-Dowiedz się więcej na temat każdego z tych funkcji w tych artykułach:
+Dowiedz się więcej na temat każdego z tych możliwości w następujących artykułach:
 
-* Dwie urządzeń i właściwości: [Rozpoczynanie pracy z urządzenia twins] [ lnk-get-started-twin] i [samouczek: sposób użycia właściwości dwie urządzenia][lnk-twin-props]
-* Bezpośrednie metody: [przewodnik dewelopera Centrum IoT — metody bezpośredniego] [ lnk-dev-methods] i [samouczek: bezpośrednie metody][lnk-c2d-methods]
+* Bliźniacza reprezentacja urządzenia i właściwości: [wprowadzenie do bliźniaków urządzeń] [ lnk-get-started-twin] i [samouczek: jak korzystać z właściwości bliźniaczych reprezentacji urządzeń][lnk-twin-props]
+* Metody bezpośrednie: [usługi IoT Hub developer guide - metod bezpośrednich] [ lnk-dev-methods] i [samouczek: metody bezpośrednie][lnk-c2d-methods]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Tworzenie aplikacji symulowane urządzenie Python, który ma bezpośredni metodę, która umożliwia **lockDoor**, który może być wywoływany przez zaplecza rozwiązania.
-* Utwórz aplikację konsoli języka Python, który wywołuje **lockDoor** metoda bezpośrednia w aplikacji symulowane urządzenie przy użyciu zadania i aktualizacje żądanej właściwości, za pomocą zadania urządzenia.
+* Tworzenie aplikacji symulowanego urządzenia w języku Python został bezpośrednie metody, która umożliwia **lockDoor**, który można wywoływać za pomocą zaplecza rozwiązania.
+* Tworzenie aplikacji konsoli języka Python, który wywołuje **lockDoor** bezpośrednie metody w aplikacji symulowanego urządzenia za pomocą zadania i aktualizacje żądane właściwości przy użyciu zadania urządzeń.
 
-Na końcu tego samouczka znajdują się dwie aplikacje Python:
+Na końcu tego samouczka będziesz mieć dwie aplikacje Python:
 
-**simDevice.py**, która łączy się z Centrum IoT z tożsamości urządzenia i odbiera **lockDoor** metoda bezpośrednia.
+**simDevice.py**, który nawiązuje połączenie z Centrum IoT przy użyciu tożsamości urządzenia i odbiera **lockDoor** bezpośrednie metody.
 
-**scheduleJobService.py**, która wywołuje metodę bezpośrednio w aplikacji symulowane urządzenie i aktualizuje dwie urządzenia żądanego właściwości przy użyciu zadania.
+**scheduleJobService.py**, która wywołuje metody bezpośredniej w symulowanej aplikacji urządzenia i aktualizacji bliźniaczej reprezentacji urządzenia żądane właściwości przy użyciu zadania.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -53,7 +53,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
 > [!NOTE]
-> **Azure IoT SDK dla języka Python** nie obsługuje bezpośrednio **zadania** funkcji. Zamiast tego w tym samouczku oferuje alternatywne rozwiązanie przy użyciu asynchronicznych wątków i czasomierze. Dodatkowe aktualizacje, zobacz **zestawu SDK klienta usługi** lista funkcji na [Azure IoT SDK dla języka Python](https://github.com/Azure/azure-iot-sdk-python) strony. 
+> **Azure IoT SDK for Python** nie obsługuje bezpośrednio **zadań** funkcji. Zamiast tego w tym samouczku oferuje rozwiązanie alternatywne, wykorzystując asynchronicznego wątków i czasomierzy. Więcej aktualizacji, zobacz **zestawu SDK klienta usługi** lista funkcji na [Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) strony. 
 > 
 > 
 
@@ -63,17 +63,17 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
-W tej sekcji Tworzenie aplikacji konsoli języka Python, które odpowiada metoda bezpośrednia wywoływane przez chmury, co jest wyzwalane symulowane **lockDoor** metody.
+W tej sekcji utworzysz aplikację konsoli języka Python, która reaguje na metodę bezpośrednią wywołaną przez chmurę, co powoduje wyzwolenie symulowanego **lockDoor** metody.
 
-1. Z wiersza polecenia, uruchom następujące polecenie, aby zainstalować **urządzenia klienta, azure iot w-** pakietu:
+1. W wierszu polecenia, uruchom następujące polecenie, aby zainstalować **azure-iot-device-client** pakietu:
    
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-1. Za pomocą edytora tekstu, Utwórz nową **simDevice.py** pliku w katalogu roboczym.
+1. Za pomocą edytora tekstu Utwórz nowy **simDevice.py** pliku w katalogu roboczym.
 
-1. Dodaj następujące `import` instrukcje i zmienne na początku **simDevice.py** pliku. Zastąp `deviceConnectionString` z parametrami połączenia urządzenia utworzone powyżej:
+1. Dodaj następujący kod `import` instrukcji i zmienne na początku **simDevice.py** pliku. Zastąp `deviceConnectionString` przy użyciu parametrów połączenia urządzenia zostały utworzone powyżej:
    
     ```python
     import time
@@ -104,7 +104,7 @@ W tej sekcji Tworzenie aplikacji konsoli języka Python, które odpowiada metoda
             return device_method_return_value
     ```
 
-1. Dodaj inny funkcja wywołania zwrotnego do obsługi aktualizacji twins urządzenia:
+1. Dodaj inny funkcji wywołania zwrotnego do obsługi aktualizacji bliźniaczych reprezentacji urządzeń:
 
     ```python
     def device_twin_callback(update_state, payload, user_context):
@@ -113,7 +113,7 @@ W tej sekcji Tworzenie aplikacji konsoli języka Python, które odpowiada metoda
         print ( "payload: %s" % payload )
     ```
 
-1. Dodaj następujący kod, aby zarejestrować obsługi dla **lockDoor** metody. Obejmuje to też `main` procedury:
+1. Dodaj następujący kod, aby zarejestrować program obsługi dla **lockDoor** metody. Również obejmować `main` procedury:
    
     ```python
     def iothub_jobs_sample_run():
@@ -154,18 +154,18 @@ W tej sekcji Tworzenie aplikacji konsoli języka Python, które odpowiada metoda
 > 
 
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planowanie zadań dla wywołania metody bezpośredniego i aktualizowanie właściwości dwie urządzenia
-W tej sekcji, Utwórz aplikację konsoli języka Python, która inicjuje zdalnej **lockDoor** na urządzeniu za pomocą innej metody bezpośredniego i aktualizowania właściwości dwie urządzenia.
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planowanie zadań do wywoływania metody bezpośredniej i aktualizowanie właściwości bliźniaczej reprezentacji urządzenia
+W tej sekcji utworzysz aplikację konsoli języka Python, która inicjuje zdalnej **lockDoor** na urządzeniu przy użyciu metody bezpośredniej i aktualizowania właściwości bliźniaczej reprezentacji urządzenia.
 
-1. Z wiersza polecenia, uruchom następujące polecenie, aby zainstalować **usługi klienta, azure iot w-** pakietu:
+1. W wierszu polecenia, uruchom następujące polecenie, aby zainstalować **azure-iot-service-client** pakietu:
    
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-1. Za pomocą edytora tekstu, Utwórz nową **scheduleJobService.py** pliku w katalogu roboczym.
+1. Za pomocą edytora tekstu Utwórz nowy **scheduleJobService.py** pliku w katalogu roboczym.
 
-1. Dodaj następujące `import` instrukcje i zmienne na początku **scheduleJobService.py** pliku:
+1. Dodaj następujący kod `import` instrukcji i zmienne na początku **scheduleJobService.py** pliku:
    
     ```python
     import sys
@@ -187,7 +187,7 @@ W tej sekcji, Utwórz aplikację konsoli języka Python, która inicjuje zdalnej
     WAIT_COUNT = 5
     ```
 
-1. Dodaj następujące funkcji, która jest używana do zapytań dla urządzeń:
+1. Dodaj następującą funkcję, która jest używana do wykonywania zapytań w przypadku urządzeń:
    
     ```python
     def query_condition(device_id):
@@ -204,7 +204,7 @@ W tej sekcji, Utwórz aplikację konsoli języka Python, która inicjuje zdalnej
         return 0
     ```
 
-1. Dodaj następujące metody do uruchomienia zadania, które wywołanie bezpośrednie dwie metody i urządzeń:
+1. Dodaj następujące metody do uruchamiania zadań, które wywołują bezpośrednie bliźniaczej reprezentacji metody i urządzeń:
    
     ```python
     def device_method_job(job_id, device_id, wait_time, execution_time):
@@ -234,7 +234,7 @@ W tej sekcji, Utwórz aplikację konsoli języka Python, która inicjuje zdalnej
             print ( "Device twin updated." )
     ```
 
-1. Dodaj następujący kod, aby zaplanować zadania i stan zadania aktualizacji. Obejmuje to też `main` procedury:
+1. Dodaj następujący kod do planowania zadań i zaktualizuj stan zadania. Również obejmować `main` procedury:
    
     ```python
     def iothub_jobs_sample_run():
@@ -295,33 +295,33 @@ W tej sekcji, Utwórz aplikację konsoli języka Python, która inicjuje zdalnej
 ## <a name="run-the-applications"></a>Uruchamianie aplikacji
 Teraz można uruchomić aplikacje.
 
-1. W wierszu polecenia w katalogu roboczym uruchom następujące polecenie Rozpoczęcie nasłuchiwania metoda bezpośrednia ponownego rozruchu:
+1. W wierszu polecenia w katalogu roboczym uruchom następujące polecenie, aby rozpocząć nasłuchiwanie metody bezpośredniej ponowne uruchomienie komputera:
    
     ```cmd/sh
     python simDevice.py
     ```
 
-1. W wierszu innego polecenia w katalogu roboczym, uruchom następujące polecenie, aby wyzwolić zadań, aby zablokować drzwi i zaktualizować dwie:
+1. W wierszu innego polecenia w katalogu roboczym, uruchom następujące polecenie, aby wyzwolić zadania, aby zablokować drzwi biblioteki i zaktualizować bliźniaczej reprezentacji:
    
     ```cmd/sh
     python scheduleJobService.py
     ```
 
-1. Zobaczysz odpowiedź urządzenia do bezpośredniego metody i urządzenia twins aktualizacji w konsoli.
+1. Zostanie wyświetlona odpowiedź urządzenia, do metody bezpośredniej i bliźniacze reprezentacje urządzeń aktualizacji w konsoli.
 
-    ![urządzenia wyjściowego][1]
+    ![dane wyjściowe urządzenia][1]
 
-    ![usługi danych wyjściowych][2]
+    ![Usługa danych wyjściowych][2]
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku użyto zadanie można zaplanować metoda bezpośrednia urządzenia i aktualizacji właściwości dwie urządzenia.
+W tym samouczku użyto zadania można zaplanować metody bezpośredniej do urządzenia i aktualizację właściwości bliźniaczej reprezentacji urządzenia.
 
-Aby kontynuować, wprowadzenie do korzystania z Centrum IoT i urządzenia zarządzania wzorców, takich jak zdalnego za pośrednictwem aktualizacji oprogramowania układowego udziału użytkownika, zobacz:
+Aby kontynuować wprowadzenie do usługi IoT Hub i wzorców zarządzania urządzeniami, takich jak zdalne za pośrednictwem aktualizacji oprogramowania układowego air, zobacz:
 
-[Samouczek: Sposób wykonywania aktualizacji oprogramowania układowego][lnk-fwupdate]
+[Samouczek: Jak zaktualizować oprogramowanie układowe][lnk-fwupdate]
 
-Aby kontynuować, wprowadzenie do korzystania z Centrum IoT, zobacz [wprowadzenie do korzystania z usługi Azure IoT krawędzi][lnk-iot-edge].
+Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi Azure IoT Edge][lnk-iot-edge].
 
 [lnk-get-started-twin]: iot-hub-python-twin-getstarted.md
 [lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md

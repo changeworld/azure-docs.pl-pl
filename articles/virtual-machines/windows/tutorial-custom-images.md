@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a449c1f9781ffc86de4786eaab3cb83999b86a72
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 930f5dc0369c998039b9cc0c089f60de17993be0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188052"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435165"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Samouczek: tworzenie niestandardowego obrazu maszyny wirtualnej na platformie Azure za pomocą programu Azure PowerShell
 
@@ -121,12 +121,12 @@ New-AzureRmVm `
 
 ## <a name="image-management"></a>Zarządzanie obrazami 
 
-Oto kilka przykładów typowych zadań zarządzania obrazami i tego, jak można je wykonać za pomocą programu PowerShell.
+Oto kilka przykładów typowych zadań zarządzania obrazami i sposoby ich wykonania za pomocą programu PowerShell.
 
 Wyświetl listę wszystkich obrazów według nazwy.
 
 ```azurepowershell-interactive
-$images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
+$images = Get-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 

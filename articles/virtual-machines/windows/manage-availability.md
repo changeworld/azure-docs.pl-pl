@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj dostępnością maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Używanie wielu maszyn wirtualnych, aby zapewnić wysoką dostępność dla aplikacji systemu Windows na platformie Azure
+title: Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać wielu maszyn wirtualnych, aby zapewnić wysoką dostępność dla aplikacji Windows na platformie Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -17,17 +17,17 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7631205943efc827edd80d3a89ea68804d94153d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323189"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38688134"
 ---
-# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Zarządzaj dostępnością maszyn wirtualnych systemu Windows na platformie Azure 
+# <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure 
 
-Informacje o sposobach konfigurowania i zarządzania nią wiele maszyn wirtualnych, aby zapewnić wysoką dostępność dla aplikacji systemu Windows Azure. Możesz również [Zarządzaj dostępnością maszyn wirtualnych systemu Linux](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dowiedz się, jak skonfigurować i zarządzać wieloma maszynami wirtualnymi, aby zapewnić wysoką dostępność dla aplikacji Windows na platformie Azure. Możesz również [Zarządzanie dostępnością maszyn wirtualnych systemu Linux](../linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Aby uzyskać instrukcje na temat tworzenia i przy użyciu zestawów dostępności przy użyciu klasycznego modelu wdrażania, zobacz [Konfigurowanie zestawu dostępności](classic/configure-availability-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Aby uzyskać instrukcje dotyczące tworzenia i używania zestawów dostępności, korzystając z klasycznego modelu wdrażania, zobacz [jak skonfigurować zestaw dostępności](classic/configure-availability-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 5f9681841b2704f58b5c36036b8b71eef4b967b9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927795"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38681349"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Sieci wirtualne i maszyny wirtualnej na platformie Azure 
 

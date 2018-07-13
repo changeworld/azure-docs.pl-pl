@@ -8,60 +8,60 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629324"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38666947"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
-Usługa inicjowania obsługi urządzeń Centrum IoT Azure jest oparte na interfejsu API REST usługi w chmurze celem przedsiębiorstwa umożliwiający bezproblemowe, automatycznej bezobsługową inicjowania obsługi urządzeń Centrum IoT Azure z zabezpieczeniami, który zaczyna się od urządzenia i kończy się wraz z chmury.
+Azure IoT Hub Device Provisioning Service jest oparte na interfejsie API REST usługi w chmurze przeznaczona dla klientów korporacyjnych umożliwiającą bezproblemowe i automatyczne bezdotykową automatyczną aprowizację urządzeń w usłudze Azure IoT Hub przy użyciu zabezpieczeń, który rozpoczyna się na urządzeniu i kończąca na chmurze.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-Poszczególne urządzenia są przypisywane rejestracji identyfikator i identyfikator urządzenia przez administratora dzierżawy. Dane z i o tych urządzeń są oparte na tych identyfikatorów. Firma Microsoft zachowuje żadnych informacji i nie ma dostępu do danych, która umożliwiałaby korelacji te urządzenia do osoby.
+Poszczególne urządzenia są przypisane rejestracji identyfikator i Identyfikatora urządzenia przez administratora dzierżawy. Dane z i dotyczących tych urządzeń jest oparty na tych identyfikatorów. Firma Microsoft zachowuje żadnych informacji i nie ma dostępu do danych, które pozwoliłoby korelacji tych urządzeń, z określoną osobą.
 
-Wiele urządzeń zarządzanych w usłudze udostępniania urządzenia nie są urządzeń osobistych, na przykład office robota Termostat lub do ustawień fabrycznych. Klienci mogą jednak wziąć pod uwagę niektórych urządzeń osobistych i według własnego uznania może utrzymać własnych zasobów lub metody, które powiązanie urządzeń do osób śledzenia spisu. Usługa inicjowania obsługi urządzeń zarządza i przechowuje wszystkie dane skojarzone z urządzenia, tak jakby był on dane osobowe.
+Wiele urządzeń zarządzanych w usłudze Device Provisioning nie są urządzeń osobistych, na przykład robota Termostat lub fabryki pakietu office. Klienci mogą jednak wziąć pod uwagę niektóre urządzenia jako osobiste i według własnego uznania mogą utrzymać ich własnych zasobów magazynu śledzenia metody, które powiązanie urządzeń fizycznych. Usługi Device Provisioning Service zarządza i przechowuje wszystkie dane skojarzone z urządzeń, jak w przypadku danych osobowych.
 
-Administratorzy dzierżawy może używać portalu Azure lub interfejsów API REST usługi do spełnienia żądania informacji przez eksportowanie lub usuwanie danych skojarzonych z Identyfikatorem urządzenia lub identyfikator rejestracji.
+Administratorzy dzierżawy za pomocą witryny Azure portal lub interfejsów API REST usługi można wykonać żądania informacji przez wyeksportowanie lub usuwania danych skojarzonych z Identyfikatorem urządzenia lub identyfikator rejestracji.
 
 > [!NOTE]
-> Urządzenia, które zostały udostępnione w Centrum IoT Azure za pośrednictwem usługi inicjowania obsługi urządzeń ma dodatkowe dane przechowywane w usłudze Azure IoT Hub. Zobacz [dokumentacji Centrum IoT Azure](../iot-hub/iot-hub-customer-data-requests.md) w celu wykonania pełnej żądania dla danego urządzenia.
+> Urządzenia, które zostały udostępnione w usłudze Azure IoT Hub przy użyciu usługi Device Provisioning Service ma dodatkowe dane przechowywane w usłudze Azure IoT Hub. Zobacz [dokumentacja usługi Azure IoT Hub](../iot-hub/iot-hub-customer-data-requests.md) w celu wykonania pełnego żądania dla danego urządzenia.
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
 
-Usługi inicjowania obsługi urządzeń są przechowywane rekordy rejestracji i rejestracji. Rejestracji zawierają informacje dotyczące urządzeń, które mogą być udostępniane i pokazać rekordy rejestracji, które urządzenia już przeszły procesu inicjowania obsługi administracyjnej.
+Usługi Device Provisioning przechowuje rejestracji i rejestracji rekordów. Rejestracje zawierają informacje dotyczące urządzeń, które są dozwolone do aprowizacji i rejestracji rekordy pokazują, które urządzenia już przeszły proces inicjowania obsługi administracyjnej.
 
-Administratorzy dzierżawy mogą usunąć rejestracji z portalu Azure i spowoduje to usunięcie wszystkich rekordów skojarzone rejestracji.
+Administratorzy dzierżawy mogą usunąć rejestracje w witrynie Azure portal, a spowoduje to usunięcie wszystkich rekordów rejestracji skojarzony.
 
-Aby uzyskać więcej informacji, zobacz [jak zarządzać rejestracji urządzeń](how-to-manage-enrollments.md).
+Aby uzyskać więcej informacji, zobacz [jak zarządzanie rejestracjami urządzeń](how-to-manage-enrollments.md).
 
-Istnieje również możliwość wykonywania operacji usuwania dla rejestracji i rejestracji rekordów przy użyciu interfejsów API REST:
+Istnieje również możliwość wykonywania operacji usuwania rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby usunąć informacje o rejestracji na jednym urządzeniu, można użyć [rejestracji urządzeń — Usuń](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
-* Aby usunąć informacje dotyczące rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — Usuń](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
-* Aby usunąć informacje o urządzeniach, które zostały udostępnione, można użyć [stan rejestracji — Usuń stan rejestracji](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
+* Aby usunąć informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — usuwanie](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
+* Aby usunąć informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń — usuwanie](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
+* Aby usunąć informacje o urządzeniach, które zostały udostępnione, można użyć [stanu rejestracji — usuwanie stanu rejestracji](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Usługi inicjowania obsługi urządzeń są przechowywane rekordy rejestracji i rejestracji. Rejestracji zawierają informacje dotyczące urządzeń, które mogą być udostępniane i pokazać rekordy rejestracji, które urządzenia już przeszły procesu inicjowania obsługi administracyjnej.
+Usługi Device Provisioning przechowuje rejestracji i rejestracji rekordów. Rejestracje zawierają informacje dotyczące urządzeń, które są dozwolone do aprowizacji i rejestracji rekordy pokazują, które urządzenia już przeszły proces inicjowania obsługi administracyjnej.
 
-Administratorzy dzierżawy można wyświetlać rekordy rejestracji za pomocą portalu Azure i rejestracji i wyeksportować je przy użyciu kopiowania i wklejania.
+Administratorzy dzierżawy mogą wyświetlić rejestracje i rekordy rejestracji za pośrednictwem witryny Azure portal i wyeksportować je za pomocą kopiowania i wklejania.
 
-Aby uzyskać więcej informacji na temat zarządzania rejestracji, zobacz [jak zarządzać rejestracji urządzeń](how-to-manage-enrollments.md).
+Aby uzyskać więcej informacji na temat zarządzania rejestracji, zobacz [jak zarządzanie rejestracjami urządzeń](how-to-manage-enrollments.md).
 
-Istnieje także możliwość wykonywania operacji eksportowania do rejestracji i rejestracji rekordów przy użyciu interfejsów API REST:
+Istnieje również możliwość wykonywania operacji eksportowania do rejestracji i rekordów rejestracji przy użyciu interfejsów API REST:
 
-* Aby wyeksportować informacje o rejestracji na jednym urządzeniu, można użyć [rejestracji urządzeń - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
+* Aby wyeksportować informacje o rejestracji dla jednego urządzenia, możesz użyć [rejestrowanie urządzeń — Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
 * Aby wyeksportować informacje o rejestracji dla grupy urządzeń, można użyć [grupy rejestracji urządzeń - Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
-* Aby wyeksportować informacje o urządzeniach, które już zostały udostępnione, można użyć [stan rejestracji — stan rejestracji Get](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+* Aby wyeksportować informacje o urządzeniach, które już zostały udostępnione, można użyć [stanu rejestracji — stan rejestracji Get](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
 
 > [!NOTE]
-> Korzystając z usług dla przedsiębiorstw firmy Microsoft, Microsoft generuje niektórych informacji, znane jako dzienniki generowane przez system. Niektóre usługi inicjowania obsługi urządzeń dzienniki generowanych przez system nie są dostępne lub można eksportować przez administratorów dzierżawy. Te dzienniki stanowią faktyczne akcje dokonywanych w ramach usługi i danych diagnostycznych dotyczących poszczególnych urządzeń.
+> Korzystając z usług firmy Microsoft dla przedsiębiorstw firmy Microsoft generuje pewnych informacji, znane jako dzienniki generowane przez system. Niektóre usługi Device Provisioning dzienniki generowane przez system nie są dostępne lub który można eksportować przez administratorów dzierżawy. Te dzienniki stanowią odzwierciedlenie faktycznych działań przeprowadzanych w ramach usługi i dane diagnostyczne, które dotyczą poszczególnych urządzeń.
 
 ## <a name="links-to-additional-documentation"></a>Linki do dodatkowej dokumentacji
 
-Pełną dokumentację dla interfejsów API usługi inicjowania obsługi urządzeń znajduje się pod adresem [ https://docs.microsoft.com/rest/api/iot-dps ](https://docs.microsoft.com/rest/api/iot-dps).
+Pełną dokumentację dotyczącą interfejsów API usługi aprowizacji urządzeń znajduje się w [ https://docs.microsoft.com/rest/api/iot-dps ](https://docs.microsoft.com/rest/api/iot-dps).
 
-Centrum IoT Azure [danych klienta żądania funkcji](../iot-hub/iot-hub-customer-data-requests.md).
+Usługa Azure IoT Hub [funkcje na żądanie danych klienta](../iot-hub/iot-hub-customer-data-requests.md).

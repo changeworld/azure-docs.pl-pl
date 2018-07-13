@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
 ms.openlocfilehash: ade47c59a8db673869ce8c60a062a2a6a6656ca2
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916313"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38689004"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>Konfigurowanie dodatkowych serwerów przetwarzania w przypadku skalowalności
 

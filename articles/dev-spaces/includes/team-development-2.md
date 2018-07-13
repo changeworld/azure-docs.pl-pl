@@ -11,16 +11,16 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: 85f8632aae8a70b1282155881dbca6b25734a6c5
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936401"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37933208"
 ---
-### <a name="run-the-service"></a>Uruchom usługę
+### <a name="run-the-service"></a>Uruchamianie usługi
 
-1. Naciśnij klawisz F5 (lub typu `azds up` okno terminalu) do uruchamiania usługi. Usługa zostanie automatycznie wykonane w nowo wybranego obszaru `default/scott`. 
-1. Można potwierdzić, że usługa działa w jego własnej przestrzeni, uruchamiając `azds list` ponownie. Po pierwsze można zauważyć wystąpienia `mywebapi` działa teraz w `default/scott` miejsca (w wersji `default` jest nadal uruchomiony, ale nie ma na liście). Po drugie, adres URL z punktem dostępu `webfrontend` jest prefiksem tekst "scott.s.". Ten adres URL jest unikatowy dla `default/scott` miejsca. Adres URL specjalne oznacza, że żądania wysyłane na "scott URL" spróbuje pierwszy trasy w usługach `default/scott` miejsca, ale jeśli ten sposób również zawiedzie, będzie wracają do usług w `default` miejsca.
+1. Naciśnij klawisz F5 (lub wpisz polecenie `azds up` w oknie terminalu), aby uruchomić usługę. Usługa jest uruchamiana automatycznie w nowo wybranej przestrzeni `default/scott`. 
+1. Aby potwierdzić, że usługa działa we własnej przestrzeni, możesz ponownie uruchomić polecenie `azds list`. Po pierwsze możesz zauważyć, że wystąpienie usługi `mywebapi` działa teraz w przestrzeni `default/scott` (wersja uruchomiona w przestrzeni `default` nadal działa, ale nie ma jej na liście). Po drugie adres URL punktu dostępu usługi `webfrontend` ma prefiks „scott.s.”. Ten adres URL jest unikatowy dla przestrzeni `default/scott`. Specjalny adres URL oznacza, że żądania wysyłane na adres URL Scotta będą najpierw kierowane do usług w przestrzeni `default/scott`, a jeśli to się nie powiedzie, zostaną użyte usługi w przestrzeni `default`.
 
 ```
 Name         Space          Chart              Ports   Updated     Access Points
@@ -31,9 +31,9 @@ webfrontend  default        webfrontend-0.1.0  80/TCP  5h ago      http://scott.
 
 ![](../media/common/space-routing.png)
 
-Tej wbudowanej funkcji miejsca do deweloperów Azure umożliwia testowanie kodu w udostępnionej przestrzeni bez konieczności wszystkich deweloperów ponownie utworzyć pełnego stosu usług w ich miejscu. Marszruty wymaga kodu aplikacji do nagłówków propagacji do przodu, jak pokazano w poprzednim kroku w tym przewodniku.
+Ta wbudowana funkcja usługi Azure Dev Spaces umożliwia testowanie kodu w udostępnionej przestrzeni bez konieczności ponownego tworzenia pełnych stosów usług przez wszystkich deweloperów w ich przestrzeniach. Taki routing wymaga, aby kod aplikacji przekazywał nagłówki propagowania, jak pokazano w poprzednim kroku tego przewodnika.
 
-### <a name="test-code-in-a-space"></a>Kod testu w miejscu
-Aby przetestować nową wersję pakietu `mywebapi` z `webfrontend`, Otwórz w przeglądarce adres URL punktu dostępu publicznego dla `webfrontend` i przejdź do strony informacje. Wyświetlane nowe wiadomości powinna zostać wyświetlona.
+### <a name="test-code-in-a-space"></a>Testowanie kodu w przestrzeni
+Aby przetestować nową wersję usługi `mywebapi` z usługą `webfrontend`, otwórz w przeglądarce adres URL publicznego punktu dostępu dla usługi `webfrontend` i przejdź do strony Informacje. Powinien zostać wyświetlony Twój nowy komunikat.
 
-Teraz Usuń "scott.s." część adresu URL i Odśwież przeglądarkę. Powinny pojawić się stare zachowanie (z `mywebapi` wersji działającej `default`)
+Teraz usuń część „scott.s.” z adresu URL, a następnie odśwież przeglądarkę. Powinno zostać zastosowane stare zachowanie (z wersją usługi `mywebapi` działającą w przestrzeni `default`)

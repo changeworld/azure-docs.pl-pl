@@ -1,7 +1,7 @@
 ---
 title: Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) w funkcji Azure Web App for Containers przy użyciu konfiguracji narzędzia Docker Compose
-description: Wdrażanie pierwszej aplikacji wielokontenerowej w funkcji Azure Web App for Containers w ciągu kilku minut
-keywords: azure app service, web app, linux, docker, compose, multicontainer, container, kubernetes
+description: Wdróż swoją pierwszą aplikację wielokontenerową w funkcji Azure Web App for Containers w ciągu kilku minut.
+keywords: azure app service, aplikacja internetowa, linux, docker, compose, wielokontenerowe, wielokontenerowa, web app for containers, wiele kontenerów, kontener, kubernetes, wordpress, azure db dla mysql, produkcyjna baza danych z kontenerami
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: ec5c92415668c925fe360c0c8887fd792a121842
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: bf567402a66f9152c7eb9b97925fec2a159ffe56
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753721"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127424"
 ---
-# <a name="create-a-multicontainer-preview-app-using-web-app-for-containers"></a>Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
+# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
-Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers w obrębie usługi [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) przy użyciu konfiguracji narzędzia Docker Compose. W przypadku platformy Kubernetes postępuj zgodnie z odpowiednimi instrukcjami w [samouczku dotyczącym środowiska wielu kontenerów](tutorial-multi-container-app.md).
+Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose. Instrukcje dotyczące platformy Kubernetes oraz pełne rozwiązanie z użyciem usługi Azure DB dla MySQL zawiera [samouczek dotyczący aplikacji wielokontenerowych](tutorial-multi-container-app.md).
 
-Ten przewodnik Szybki start można wykonać w usłudze Cloud Shell, ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). W tym przewodniku Szybki start będzie używany plik konfiguracji narzędzia Docker Compose.
+Użyjesz tego przewodnika Szybki start w usłudze Cloud Shell, ale możesz również uruchomić te polecenia lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). 
 
 ![Przykładowa aplikacja wielokontenerowa funkcji Web App for Containers][1]
 
@@ -36,7 +36,7 @@ Ten przewodnik Szybki start można wykonać w usłudze Cloud Shell, ale można t
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-Na potrzeby tego przewodnika Szybki start będziesz używać pliku Compose platformy [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), modyfikując go w celu uwzględnienia usługi Azure Database for MySQL, magazynu trwałego i usługi Redis. Plik konfiguracji można znaleźć na stronie z [przykładami dla platformy Azure](https://github.com/Azure-Samples/multicontainerwordpress).
+W tym przewodniku Szybki Start używany jest plik Compose usługi [Docker](https://docs.docker.com/compose/wordpress/#define-the-project). Plik konfiguracji można znaleźć na stronie z [przykładami dla platformy Azure](https://github.com/Azure-Samples/multicontainerwordpress).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -48,10 +48,12 @@ mkdir quickstart
 cd quickstart
 ```
 
-Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
+Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny. Następnie zmień katalog na `multicontainerwordpress`.
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress
+
+cd multicontainerwordpress
 ```
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
@@ -66,7 +68,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 Zasadniczo grupy zasobów i zasoby są tworzone w pobliskim regionie.
 
-Po zakończeniu działania polecenia zostanę wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
+Po zakończeniu działania polecenia zostaną wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
 
 ## <a name="create-an-azure-app-service-plan"></a>Tworzenie planu usługi Azure App Service
 
@@ -100,11 +102,9 @@ Po utworzeniu planu usługi App Service interfejs wiersza polecenia platformy Az
 
 ## <a name="create-a-docker-compose-app"></a>Tworzenie aplikacji narzędzia Docker Compose
 
-W terminalu usługi Cloud Shell zmień katalog na `multicontainerwordpress`. Utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w `myAppServicePlan`planie usługi App Service za pomocą polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Pamiętaj o zastąpieniu ciągu _\<app_name>_ unikatową nazwą aplikacji.
+W terminalu usługi Cloud Shell utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Pamiętaj o zastąpieniu ciągu _\<app_name>_ unikatową nazwą aplikacji.
 
 ```bash
-cd multicontainerwordpress
-
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 

@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: service-bus-messaging
+author: sethmanheim
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 06/29/2018
+ms.author: sethm
+ms.custom: include file
+ms.openlocfilehash: bad7e87cb194fb7d8846e7e675881658a1d33b1e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138164"
+---
 Upewnij się, że masz już utworzoną przestrzeń nazw usługi Service Bus, jak opisano [tutaj][namespace-how-to].
 
 1. Zaloguj się w witrynie [Azure Portal][azure-portal].

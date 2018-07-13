@@ -1,35 +1,35 @@
 ---
-title: Limity pamięci i - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Wyświetl limitów pamięci i przydzielone do różnych poziomów wydajności i klasy zasobu w usłudze Azure SQL Data Warehouse.
+title: Limity pamięci i współbieżności — Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 05/07/2018
+ms.date: 07/10/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 46d41e3ee85deb20f189bc9c82a255178f3d7eee
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 802dbcdf797147d4f4dcf7835aea9c952127113e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942261"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38652272"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i magazyn danych SQL Azure
-Wyświetl limitów pamięci i przydzielone do różnych poziomów wydajności i klasy zasobu w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i dotyczą te możliwości planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md). 
+# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
+Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 
 
-Obecnie dostępne są dwie generacje z magazynu danych SQL — Gen1 i Gen2. Zaleca się wykorzystać Gen2 z usługi SQL Data Warehouse można uzyskać najlepszą wydajność dla obciążenia magazynu danych. Gen2 wprowadza nową pamięć podręczną NVMe pełny stan dysku podtrzymujące najczęściej używanych danych bliski procesorów CPU. Spowoduje to usunięcie zdalnego we/wy dla znacznym i najbardziej wymagających obciążeń. Oprócz wydajności Gen2 oferuje najwyższego poziomu skali, dzięki któremu można skalować do 30 000 jednostki magazynu danych i podając nieograniczony magazyn kolumnowym. Firma Microsoft będzie nadal obsługuje poprzedniej generacji (Gen1) usługi SQL Data Warehouse i zachować te same funkcje; Jednak firma Microsoft zachęca do [uaktualnienia do Gen2](upgrade-to-latest-generation.md) najwcześniejszą wygodne. 
+Obecnie istnieją dwie generacje z usługą SQL Data Warehouse — Gen1 i Gen2. Zaleca się, że wykorzystać Gen2 SQL Data Warehouse w celu uzyskania najlepszej wydajności dla obciążenia magazynu danych. Gen2 wprowadza nowej pamięci podręcznej NVMe Solid State Disk, który utrzymuje często używanych danych w pobliżu procesorów CPU. Spowoduje to usunięcie zdalnego operacji We/Wy o znacznym wykorzystaniu i najbardziej wymagających obciążeń. Oprócz wydajności Gen2 oferuje najwyższy poziom skali, dzięki któremu można skalować do 30 000 jednostek magazynu danych i zapewniając nieograniczony magazyn kolumnowy. Firma Microsoft nadal obsługuje poprzedniej generacji (Gen1) usługi SQL Data Warehouse i zachować te same funkcje; Jednak firma Microsoft zachęca do [Przeprowadź uaktualnienie do Gen2](upgrade-to-latest-generation.md) przy najbliższej sposobności. 
 
 ## <a name="data-warehouse-capacity-settings"></a>Ustawienia pojemności magazynu danych
-Maksymalna pojemność magazynu danych na różne poziomy wydajności można znaleźć w poniższych tabelach. Aby zmienić poziom wydajności, zobacz [skalowanie możliwości obliczeniowych - portalu](quickstart-scale-compute-portal.md).
+W poniższej tabeli przedstawiono maksymalną pojemność magazynu danych na różne poziomy wydajności. Aby zmienić poziom wydajności, zobacz [skalowanie zasobów obliczeniowych — portal](quickstart-scale-compute-portal.md).
 
 ### <a name="gen2"></a>Druga generacja
 
-Gen2 zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatkowa pamięć pomaga Gen2 dostarczania jego duża wydajność.  Poziomy wydajności zakres Gen2 z DW1000c DW30000c. 
+Gen2 — zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatkowa pamięć pomaga Gen2 dostarczać jego wysoka wydajność.  Poziomy wydajności dla zakresu Gen2 od DW1000c do DW30000c. 
 
-| Poziom wydajności | Węzły obliczeniowe | Dystrybucje w każdym węźle obliczeń | Ilość pamięci na magazynie danych (GB) |
+| Poziom wydajności | Węzły obliczeniowe | Dystrybucje na węzeł obliczeniowy | Ilość pamięci na magazyn danych (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
@@ -43,13 +43,13 @@ Gen2 zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatko
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-Wartość maksymalna DWU Gen2 jest DW30000c, który ma 60 węzłów obliczeniowych i jeden dystrybucji na węźle obliczeń. Na przykład 600 TB magazynu danych na DW30000c przetwarza około 10 TB na każdym węźle obliczeń.
+Maksymalna jednostka DWU Gen2 jest DW30000c, która ma 60 węzłów obliczeniowych i jednym dystrybucję na węźle obliczeniowym. Na przykład 600 TB magazynu danych na DW30000c przetwarza około 10 TB na każdym węźle obliczeniowym.
 
 ### <a name="gen1"></a>Pierwsza generacja
 
 Poziomy usług Gen1 należą do zakresu od DW100 do DW6000. 
 
-| Poziom wydajności | Węzły obliczeniowe | Dystrybucje w każdym węźle obliczeń | Ilość pamięci na magazynie danych (GB) |
+| Poziom wydajności | Węzły obliczeniowe | Dystrybucje na węzeł obliczeniowy | Ilość pamięci na magazyn danych (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100             | 1             | 60                             |  24                            |
 | DW200             | 2             | 30                             |  48                            |
@@ -65,21 +65,21 @@ Poziomy usług Gen1 należą do zakresu od DW100 do DW6000.
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Maksymalne wartości współbieżności
-Aby zapewnić, że każde zapytanie ma za mało zasobów do wykonania wydajnie, SQL Data Warehouse śledzi wykorzystania zasobów przypisując współbieżności miejsc do każdego zapytania. System umieszcza zapytania kolejki gdzie poczekaj aż do wystarczającej ilości [miejsc współbieżności](resource-classes-for-workload-management.md#concurrency-slots) są dostępne. Współbieżność miejsc również określić priorytety procesora CPU. Aby uzyskać więcej informacji, zobacz [analizowanie obciążenia](analyze-your-workload.md)
+Aby upewnić się, że każde zapytanie ma za mało zasobów do wydajnego wykonywania, usługa SQL Data Warehouse śledzi wykorzystanie zasobów przez przypisywanie gniazd współbieżności każda kwerenda. System umieszcza zapytania z kolejką gdzie będą oni czekać do momentu wystarczająco dużo [gniazd współbieżności](resource-classes-for-workload-management.md#concurrency-slots) są dostępne. Priorytet procesora CPU można również określić w gniazd współbieżności. Aby uzyskać więcej informacji, zobacz [analizowanie obciążenia](analyze-your-workload.md)
 
 ### <a name="gen2"></a>Druga generacja
  
-**Klasy statyczne zasobów**
+**Statycznych klas zasobów**
 
-W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gniazda współbieżności dla każdego [klasy statyczne zasobów](resource-classes-for-workload-management.md).  
+W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [klasy zasobów statycznych](resource-classes-for-workload-management.md).  
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Współbieżność dostępnych |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
@@ -87,16 +87,16 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gnia
 | DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-**Klasy zasobu dynamicznego**
+**Zasób dynamiczny klas**
 
 > [!NOTE]
-> Klasa zasobów smallrc na Gen2 dynamicznie dodaje pamięci zgodnie z poziomu usługi zwiększa i obsługuje tylko maksymalny 32 zapytania jednoczesne.  Gniazda współbieżności i pamięci używanej przez zwiększa smallrc wraz ze wzrostem poziomu usługi. 
+> Klasa zasobów smallrc na Gen2 dynamicznie dodaje pamięć zwiększa poziom usług, i obsługuje tylko 32 maksymalna liczba jednoczesnych kwerend.  Gniazd współbieżności i użycie pamięci przez smallrc rośnie wraz ze wzrostem poziomu usługi. 
 >
 >
 
-W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gniazda współbieżności dla każdego [klasy zasobu dynamicznego](resource-classes-for-workload-management.md). W odróżnieniu od Gen1 klasy zasobu dynamicznego na Gen2 są naprawdę dynamiczne.  Gen2 używa alokacji 3-10-22 — 70 procent pamięci dla klasy zasobu małych — średni — duże xlarge na wszystkich poziomów usług.
+W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [dynamicznej klasy zasobów](resource-classes-for-workload-management.md). W odróżnieniu od Gen1 klasach zasobów dynamicznych na Gen2 są naprawdę dynamiczne.  Gen2 używa alokacji 3-10-22 — 70 procent pamięci dla klasy małych medium dużych xlarge zasobów we wszystkich poziomów usług.
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Współbieżność dostępnych | Używane przez smallrc gniazd | Używane przez mediumrc gniazd | Używane przez largerc gniazd | Używane przez xlargerc gniazd |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | Używane przez smallrc gniazd | Używane przez mediumrc gniazd | Używane przez largerc gniazd | Gniazda posługują się xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
@@ -114,11 +114,11 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gnia
 
 #### <a name="gen1"></a>Pierwsza generacja
 
-Klasy statyczne zasobów
+Statycznych klas zasobów
 
-W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gniazda współbieżności dla każdego [klasy statyczne zasobów](resource-classes-for-workload-management.md) na **Gen1**.
+W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [klasy zasobów statycznych](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Maksymalna współbieżności gniazd |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Gniazd współbieżności maksymalną |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -133,15 +133,15 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gnia
 | DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-Klasy zasobu dynamicznego
+Zasób dynamiczny klas
 > [!NOTE]
-> Klasa zasobów smallrc na Gen1 przydziela stałej ilości pamięci dla kwerendy, w podobny sposób staticrc10 klasy statyczne zasobów.  Ponieważ smallrc jest statyczny, ma możliwość skalowania do 128 zapytania jednoczesne. 
+> Klasa zasobów smallrc na Gen1 przydziela stałą ilość pamięci na zapytanie, w podobny sposób do staticrc10 klasy zasobów statycznych.  Ponieważ smallrc są statyczne, ma możliwość skalowania do nawet 128 zapytań jednoczesnych. 
 >
 >
 
-W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gniazda współbieżności dla każdego [klasy zasobu dynamicznego](resource-classes-for-workload-management.md) na **Gen1**.
+W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [dynamicznej klasy zasobów](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Współbieżność dostępnych | smallrc | mediumrc | largerc | xlargerc |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | smallrc | mediumrc | largerc | xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
@@ -157,11 +157,11 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend i gnia
 | DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
 
 
-Po spełnieniu jednego z tych progów, nowego zapytania są umieszczone w kolejce i wykonywane na podstawie FIFO pierwszy w.  Kończy zapytania i liczba zapytań i gniazda spadną poniżej limitów, SQL Data Warehouse zwalnia umieszczonych w kolejce zapytań. 
+Po spełnieniu jednego z tych progów nowych zapytań są umieszczane w kolejce i są stosowane na podstawie first-out pierwszy w.  Zgodnie z zakończeniem zapytania i liczby zapytań i gniazd dzielą się poniżej granic, usługa SQL Data Warehouse zwalnia umieszczonych w kolejce zapytań. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o tym, jak skorzystać z klasy zasobów w celu zoptymalizowania dodatkowe obciążenie Przejrzyj następujące artykuły:
-* [Klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md)
-* [Analiza obciążenia](analyze-your-workload.md)
+Aby dowiedzieć się więcej o tym, jak korzystać z klasy zasobów na potrzeby optymalizacji dalsze obciążenia sprawdź następujące artykuły:
+* [Klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md)
+* [Analizowanie obciążenia](analyze-your-workload.md)
 

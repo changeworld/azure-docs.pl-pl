@@ -7,16 +7,16 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335826"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127859"
 ---
-# <a name="tutorial-create-app-using-a-list-entity"></a>Samouczek: tworzenie aplikacji przy użyciu jednostki listy
+# <a name="tutorial-4-add-list-entity"></a>Samouczek 4. Dodawanie jednostki listy
 W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą. 
 
 <!-- green checkmark -->
@@ -25,17 +25,17 @@ W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne 
 > * Tworzenie nowej aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) z intencją MoveEmployee
 > * Dodawanie jednostki listy w celu wyodrębnienia pracowników z wypowiedzi
 > * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
 Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [domeny niestandardowej](luis-quickstart-intents-regex-entity.md) jednostek wyrażeń regularnych, [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) usługi Github.
+Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki wyrażenia regularnego](luis-quickstart-intents-regex-entity.md), [zaimportuj](create-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) usługi Github.
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `list`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
 ## <a name="purpose-of-the-list-entity"></a>Przeznaczenie jednostki listy
-Ta aplikacja prognozuje wypowiedzi dotyczące przenoszenia pracownika z jednego budynku do innego budynku. Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, numeru telefonu, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
+Ta aplikacja prognozuje wypowiedzi dotyczące przenoszenia pracownika z jednego budynku do innego. Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, numeru telefonu, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
 
 Jednostka listy może zawierać wiele elementów z synonimami każdego z nich. W małej lub średniej firmie jednostka listy służy do wyodrębniania informacji o pracownikach. 
 
@@ -44,8 +44,8 @@ Nazwa kanoniczna każdego elementu to numer pracownika. Przykłady synonimów w 
 |Cel synonimu|Wartość synonimu|
 |--|--|
 |Name (Nazwa)|John W. Smith|
-|Adres e-mail|john.w.smith@mycompany.com|
-|Numer wewnętrzny|x12345|
+|Email address (Adres e-mail)|john.w.smith@mycompany.com|
+|Phone extension (Numer wewnętrzny)|x12345|
 |Numer osobistego telefonu komórkowego|425-555-1212|
 |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 
@@ -98,8 +98,6 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
     [ ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z wyróżnionymi nowymi wypowiedziami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-    Ta aplikacja zawiera wstępnie skompilowaną jednostkę numeru dodaną w poprzednim samouczku, dlatego każdy numer jest otagowany. Te informacje mogą być wystarczające w przypadku aplikacji klienckiej, ale numer nie jest oznaczany etykietą typu. Utworzenie nowej jednostki z odpowiednią nazwę umożliwia aplikacji klienckiej przetworzenie jednostki zwróconej z usługi LUIS.
-
 ## <a name="create-an-employee-list-entity"></a>Tworzenie jednostki listy pracowników
 Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 
 
@@ -111,7 +109,7 @@ Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć
 
     [![Zrzut ekranu przedstawiający stronę Entities (Jednostki) z wyróżnioną pozycją Create new entity (Utwórz nową jednostkę)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png#lightbox)
 
-3. W oknie podręcznym jednostki wprowadź `Employee` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
+3. W oknie podręcznym jednostki wprowadź ciąg `Employee` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
     [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Zrzut ekranu przedstawiający podręczne okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
@@ -124,8 +122,8 @@ Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć
     |Cel synonimu|Wartość synonimu|
     |--|--|
     |Name (Nazwa)|John W. Smith|
-    |Adres e-mail|john.w.smith@mycompany.com|
-    |Numer wewnętrzny|x12345|
+    |Email address (Adres e-mail)|john.w.smith@mycompany.com|
+    |Phone extension (Numer wewnętrzny)|x12345|
     |Numer osobistego telefonu komórkowego|425-555-1212|
     |Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
 
@@ -138,8 +136,8 @@ Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć
     |Cel synonimu|Wartość synonimu|
     |--|--|
     |Name (Nazwa)|Jill Jones|
-    |Adres e-mail|jill-jones@mycompany.com|
-    |Numer wewnętrzny|x23456|
+    |Email address (Adres e-mail)|jill-jones@mycompany.com|
+    |Phone extension (Numer wewnętrzny)|x23456|
     |Numer osobistego telefonu komórkowego|425-555-0000|
     |Federalny numer ubezpieczenia społecznego (USA)|234-56-7891|
 
@@ -284,10 +282,10 @@ Aby uzyskać przewidywania usługi LUIS w czatbocie lub innej aplikacji, należy
 }
 ```
 
-Pracownik został znaleziony i zwrócony jako typ `Employee` o wartości rozwiązania `Employee-24612`.
+Pracownik został znaleziony i zwrócony jako typ `Employee` o rozpoznanej wartości `Employee-24612`.
 
-## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>W którym miejscu jednostki listy jest wykonywane przetwarzanie języka naturalnego? 
-Jednostka listy jest dokładnym dopasowaniem tekstu, dlatego nie opiera się na przetwarzaniu języka naturalnego (ani na uczeniu maszynowym). Aplikacja LUIS korzysta z przetwarzania języka naturalnego (lub uczenia maszynowego), aby wybrać właściwą najwyżej ocenianą intencję. Ponadto wypowiedź może zawierać kilka jednostek lub nawet kilka typów jednostek. Każda wypowiedź jest przetwarzana po kątem wszystkich jednostek w aplikacji, w tym jednostek przetwarzania języka naturalnego (lub nauczonych maszynowo).
+## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Gdzie jest wykonywane przetwarzanie języka naturalnego w jednostce listy? 
+Jednostka listy jest dokładnym dopasowaniem tekstu, dlatego nie opiera się na przetwarzaniu języka naturalnego (ani na uczeniu maszynowym). Aplikacja LUIS korzysta z przetwarzania języka naturalnego (lub uczenia maszynowego), aby wybrać właściwą najwyżej ocenianą intencję. Ponadto wypowiedź może zawierać kilka jednostek lub nawet kilka typów jednostek. Każda wypowiedź jest przetwarzana pod kątem wszystkich jednostek w aplikacji, w tym jednostek przetwarzania języka naturalnego (nauczonych maszynowo).
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
 Ta aplikacja z jednostką listy wyodrębniła właściwego pracownika. 
@@ -298,10 +296,10 @@ Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję g�
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak dodać jednostkę hierarchiczną](luis-quickstart-intent-and-hier-entity.md)
+> [Dodawanie jednostki hierarchicznej do aplikacji](luis-quickstart-intent-and-hier-entity.md)
 

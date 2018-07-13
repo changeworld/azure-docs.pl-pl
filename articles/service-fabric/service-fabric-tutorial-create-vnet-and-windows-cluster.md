@@ -15,15 +15,16 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 0f07bb9a245b9f38fd734c97fe9a3dca836c28d9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 91bb57f49f8c92967275d340410e22381adad19e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367236"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114279"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
-Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric, na którym działa system Windows w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/security-overview.md) za pomocą programu PowerShell i szablonu. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje.  Aby utworzyć klaster z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie bezpiecznego klastra z systemem Linux na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+
+Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric, na którym działa system Windows w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/virtual-networks-nsg.md) za pomocą programu PowerShell i szablonu. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje.  Aby utworzyć klaster z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie bezpiecznego klastra z systemem Linux na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 W tym samouczku opisano scenariusz produkcyjny.  Jeśli chcesz szybko utworzyć niewielki klaster do celów testowych, zobacz [Tworzenie klastra testowego z trzema węzłami](./scripts/service-fabric-powershell-create-test-cluster.md).
 
@@ -45,14 +46,17 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * [Wdrażanie usługi API Management z usługą Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed rozpoczęciem tego samouczka:
-- Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Zainstaluj [zestaw SDK usługi Service Fabric i moduł programu PowerShell](service-fabric-get-started.md)
-- Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
+
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Zainstaluj [zestaw SDK usługi Service Fabric i moduł programu PowerShell](service-fabric-get-started.md)
+* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
 
 Poniższe procedury umożliwiają utworzenie klastra usługi Service Fabric z pięcioma węzłami. Aby obliczyć koszt działania klastra usługi Service Fabric na platformie Azure, skorzystaj z [Kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="key-concepts"></a>Kluczowe pojęcia
+
 [Klaster usługi Service Fabric](service-fabric-deploy-anywhere.md) jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym wdraża się mikrousługi i nimi zarządza. Klastry mogą obejmować nawet tysiące maszyn. Maszyna lub maszyna wirtualna, która jest częścią klastra, jest nazywana węzłem. Każdy węzeł ma przypisaną nazwę węzła (ciąg). Węzły mają swoje właściwości — na przykład właściwości dotyczące umieszczania.
 
 Typ węzła definiuje rozmiar, liczbę i właściwości zestawu maszyn wirtualnych w klastrze. Każdy zdefiniowany typ węzła jest konfigurowany jako [zestaw skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets/), czyli zasób obliczeniowy platformy Azure używany do wdrażania kolekcji maszyn wirtualnych i zarządzania nimi. Następnie każdy typ węzła może być niezależnie skalowany w górę lub w dół oraz może mieć różne zestawy otwartych portów i różne metryki pojemności. Typy węzłów służą do definiowania ról zestawu węzłów klastra, takich jak „fronton” lub „zaplecze”.  Klaster może mieć więcej niż jeden typ węzła, ale podstawowy typ węzła musi obejmować co najmniej pięć maszyn wirtualnych w przypadku klastrów produkcyjnych (lub co najmniej trzy maszyny wirtualne w przypadku klastrów testowych).  [Usługi systemowe Service Fabric](service-fabric-technical-overview.md#system-services) są umieszczane w węzłach podstawowego typu.
@@ -61,66 +65,76 @@ Klaster jest zabezpieczony przy użyciu certyfikatu klastra. Certyfikat klastra 
 
 Certyfikat klastra musi spełniać następujące wymagania:
 
-- Zawiera klucz prywatny.
-- Został utworzony na potrzeby wymiany kluczy, co umożliwia eksport do pliku wymiany informacji osobistych (pfx).
-- Ma nazwę podmiotu zgodną z domeną używaną w celu uzyskiwania dostępu do klastra usługi Service Fabric. To dopasowanie jest wymagane, aby można było zapewnić protokół SSL dla punktów końcowych zarządzania protokołu HTTPS klastra i dla narzędzia Service Fabric Explorer. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji dla domeny .cloudapp.azure.com. Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla danego klastra.
+* Zawiera klucz prywatny.
+* Został utworzony na potrzeby wymiany kluczy, co umożliwia eksport do pliku wymiany informacji osobistych (pfx).
+* Ma nazwę podmiotu zgodną z domeną używaną w celu uzyskiwania dostępu do klastra usługi Service Fabric. To dopasowanie jest wymagane, aby można było zapewnić protokół SSL dla punktów końcowych zarządzania protokołu HTTPS klastra i dla narzędzia Service Fabric Explorer. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji dla domeny .cloudapp.azure.com. Musisz uzyskać niestandardową nazwę domeny dla klastra. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną dla danego klastra.
 
 Usługa Azure Key Vault służy do zarządzania certyfikatami klastrów usługi Service Fabric na platformie Azure.  Po wdrożeniu klastra na platformie Azure dostawca zasobów platformy Azure odpowiedzialny za utworzenie klastrów usługi Service Fabric pobiera certyfikaty z usługi Key Vault i instaluje je w klastrze maszyn wirtualnych.
 
 W tym samouczku przedstawiono wdrożenie klastra z pięcioma węzłami o tym samym typie. Ważnym etapem wdrożeń produkcyjnych jest [planowanie pojemności](service-fabric-cluster-capacity.md). Poniżej przedstawiono niektóre zagadnienia, które należy uwzględnić w ramach tego procesu.
 
-- Liczba węzłów oraz typy węzłów wymagane dla danego klastra 
-- Właściwości poszczególnych typów węzłów (np. rozmiar, typ podstawowy, połączenie z Internetem i liczba maszyn wirtualnych)
-- Charakterystyka niezawodności i trwałości klastra
+* Liczba węzłów oraz typy węzłów wymagane dla danego klastra
+* Właściwości poszczególnych typów węzłów (np. rozmiar, typ podstawowy, połączenie z Internetem i liczba maszyn wirtualnych)
+* Charakterystyka niezawodności i trwałości klastra
 
 ## <a name="download-and-explore-the-template"></a>Pobieranie i eksplorowanie szablonu
-Pobierz poniższe pliki szablonu usługi Resource Manager:
-- [vnet-cluster.json][template]
-- [vnet-cluster.parameters.json][parameters]
 
-Plik [vnet-cluster.json][template] umożliwia wdrożenie szeregu zasobów, w tym następujących. 
+Pobierz poniższe pliki szablonu usługi Resource Manager:
+
+* [vnet-cluster.json][template]
+* [vnet-cluster.parameters.json][parameters]
+
+Plik [vnet-cluster.json][template] umożliwia wdrożenie szeregu zasobów, w tym następujących.
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
+
 Klaster z systemem Windows jest wdrażany z następującą charakterystyką:
-- Jeden typ węzła 
-- Pięć węzłów o podstawowym typie (z możliwością konfiguracji za pomocą parametrów szablonu)
-- System operacyjny: Windows Server 2016 Datacenter z kontenerami (z możliwością konfiguracji za pomocą parametrów szablonu)
-- Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu)
-- [Odwrotny serwer proxy](service-fabric-reverseproxy.md) jest włączony
-- [Usługa DNS](service-fabric-dnsservice.md) jest włączona
-- [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster): Brązowy (z możliwością konfiguracji za pomocą parametrów szablonu)
-- [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster): Srebrny (z możliwością konfiguracji za pomocą parametrów szablonu)
-- Punkt końcowy połączenia klienta: 19000 (z możliwością konfiguracji za pomocą parametrów szablonu)
-- Punkt końcowy bramy protokołu HTTP: 19080 (z możliwością konfiguracji za pomocą parametrów szablonu)
+
+* Jeden typ węzła
+* Pięć węzłów o podstawowym typie (z możliwością konfiguracji za pomocą parametrów szablonu)
+* System operacyjny: Windows Server 2016 Datacenter z kontenerami (z możliwością konfiguracji za pomocą parametrów szablonu)
+* Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu)
+* [Odwrotny serwer proxy](service-fabric-reverseproxy.md) jest włączony
+* [Usługa DNS](service-fabric-dnsservice.md) jest włączona
+* [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster): Brązowy (z możliwością konfiguracji za pomocą parametrów szablonu)
+* [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster): Srebrny (z możliwością konfiguracji za pomocą parametrów szablonu)
+* Punkt końcowy połączenia klienta: 19000 (z możliwością konfiguracji za pomocą parametrów szablonu)
+* Punkt końcowy bramy protokołu HTTP: 19080 (z możliwością konfiguracji za pomocą parametrów szablonu)
 
 ### <a name="azure-load-balancer"></a>Moduł równoważenia obciążenia platformy Azure
+
 Wdrażany jest moduł równoważenia obciążenia i konfigurowane są sondy oraz reguły dla następujących portów:
-- Punkt końcowy połączenia klienta: 19000
-- Punkt końcowy bramy protokołu HTTP: 19080 
-- Port aplikacji: 80
-- Port aplikacji: 443
-- Odwrotny serwer proxy usługi Service Fabric: 19081
+
+* Punkt końcowy połączenia klienta: 19000
+* Punkt końcowy bramy protokołu HTTP: 19080
+* Port aplikacji: 80
+* Port aplikacji: 443
+* Odwrotny serwer proxy usługi Service Fabric: 19081
 
 Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasoby Microsoft.Network/loadBalancers i Microsoft.Network/networkSecurityGroups, aby umożliwić ruch przychodzący.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Sieć wirtualna, podsieć i sieciowa grupa zabezpieczeń
+
 Nazwy sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu:
-- Przestrzeń adresowa sieci wirtualnej: 172.16.0.0/20
-- Przestrzeń adresowa podsieci usługi Service Fabric: 172.16.2.0/23
+
+* Przestrzeń adresowa sieci wirtualnej: 172.16.0.0/20
+* Przestrzeń adresowa podsieci usługi Service Fabric: 172.16.2.0/23
 
 W sieciowej grupie zabezpieczeń są włączane poniższe reguły ruchu przychodzącego. Wartości portów można zmienić, modyfikując zmienne szablonu.
-- ClientConnectionEndpoint (TCP): 19000
-- HttpGatewayEndpoint (HTTP/TCP): 19080
-- SMB: 445
-- Internodecommunication: 1025, 1026, 1027
-- Zakres portów efemerycznych: od 49152 do 65534 (wymaganych jest co najmniej 256 portów)
-- Porty do użytku aplikacji: 80 i 443
-- Zakres portów aplikacji: od 49152 do 65534 (używane do komunikacji między usługami, ale nie są otwarte w przypadku modułu równoważenia obciążenia)
-- Wszystkie pozostałe porty są zablokowane
+
+* ClientConnectionEndpoint (TCP): 19000
+* HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
+* Internodecommunication: 1025, 1026, 1027
+* Zakres portów efemerycznych: od 49152 do 65534 (wymaganych jest co najmniej 256 portów)
+* Porty do użytku aplikacji: 80 i 443
+* Zakres portów aplikacji: od 49152 do 65534 (używane do komunikacji między usługami, ale nie są otwarte w przypadku modułu równoważenia obciążenia)
+* Wszystkie pozostałe porty są zablokowane
 
 Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasoby Microsoft.Network/loadBalancers i Microsoft.Network/networkSecurityGroups, aby umożliwić ruch przychodzący.
 
 ## <a name="set-template-parameters"></a>Ustawianie parametrów szablonu
+
 Plik parametrów [vnet-cluster.parameters.json][parameters] deklaruje wiele wartości służących do wdrażania klastra i skojarzonych zasobów. Niektóre parametry, które być może będzie trzeba zmodyfikować na potrzeby danego wdrożenia:
 
 |Parametr|Przykładowa wartość|Uwagi|
@@ -129,18 +143,19 @@ Plik parametrów [vnet-cluster.parameters.json][parameters] deklaruje wiele wart
 |adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra.|
 |clusterName|mojklastersf123| Nazwa klastra. |
 |location|southcentralus| Lokalizacja klastra. |
-|certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”</p>. | 
+|certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”</p>. |
 |certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta. </p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
-
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Wdrażanie sieci wirtualnej i klastra
+
 Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Szablon [vnet-cluster.json][template] usługi Resource Manager umożliwia utworzenie sieci wirtualnej, podsieci oraz sieciowej grupy zabezpieczeń dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Tworzenie klastra przy użyciu istniejącego certyfikatu
-Poniższy skrypt wdraża nowy klaster na platformie Azure za pomocą polecenia cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) i szablonu. Polecenie cmdlet powoduje także utworzenie nowego magazynu kluczy na platformie Azure i przekazanie danego certyfikatu. 
+
+Poniższy skrypt wdraża nowy klaster na platformie Azure za pomocą polecenia cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) i szablonu. Polecenie cmdlet powoduje także utworzenie nowego magazynu kluczy na platformie Azure i przekazanie danego certyfikatu.
 
 ```powershell
 # Variables.
@@ -169,7 +184,8 @@ New-AzureRmServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$t
 ```
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Tworzenie klastra przy użyciu nowego certyfikatu z podpisem własnym
-Poniższy skrypt wdraża nowy klaster na platformie Azure za pomocą polecenia cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) i szablonu. Polecenie cmdlet tworzy również nowy magazyn kluczy na platformie Azure, dodaje nowy certyfikat z podpisem własnym do magazynu kluczy i pobiera plik certyfikatu do środowiska lokalnego. 
+
+Poniższy skrypt wdraża nowy klaster na platformie Azure za pomocą polecenia cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) i szablonu. Polecenie cmdlet tworzy również nowy magazyn kluczy na platformie Azure, dodaje nowy certyfikat z podpisem własnym do magazynu kluczy i pobiera plik certyfikatu do środowiska lokalnego.
 
 ```powershell
 # Variables.
@@ -200,6 +216,7 @@ New-AzureRmServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$t
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
+
 Nawiąż połączenie z klastrem za pomocą modułu programu PowerShell dla usługi Service Fabric instalowanego wraz z zestawem SDK usługi Service Fabric.  Najpierw zainstaluj certyfikat w magazynie osobistym (Mój) bieżącego użytkownika na komputerze.  Uruchom następujące polecenie programu PowerShell:
 
 ```powershell
@@ -228,6 +245,7 @@ Get-ServiceFabricClusterHealth
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
 W pozostałych artykułach z tej serii samouczków jest używany utworzony klaster. Jeśli nie chcesz od razu przejść do następnego artykułu, rozważ usunięcie klastra i magazynu kluczy, aby uniknąć naliczania opłat. Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
 
 Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia cmdlet [Remove-AzureRMResourceGroup](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup).  Usuń również grupę zasobów zawierającą magazyn kluczy.
@@ -238,6 +256,7 @@ Remove-AzureRmResourceGroup -Name $vaultgroupname -Force
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -251,7 +270,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do kolejnego samouczka, aby dowiedzieć się, jak skalować klaster.
 > [!div class="nextstepaction"]
 > [Skalowanie klastra](service-fabric-tutorial-scale-cluster.md)
-
 
 [template]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-cluster.json
 [parameters]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-cluster.parameters.json

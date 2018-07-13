@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 06/29/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5d13c565302ae16b6fb2894f6a5a3843f47f9547
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235502"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342229"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -177,7 +177,7 @@ Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny 
 
 Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
 
-Jeśli rekord CNAME na nieprawidłowy format, firma DigiCert weryfikuje nazwę domeny niestandardowej i dodaje ją do certyfikatu alternatywnych nazw podmiotów (SAN, Subject Alternative Names). Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
+Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
 
 Automatyczna walidacja przeważnie trwa kilka minut. Jeśli w ciągu godziny nie zobaczysz zweryfikowanej domeny, otwórz bilet pomocy technicznej.
 
@@ -214,7 +214,7 @@ Postępuj zgodnie z instrukcjami w formularzu. Dostępne są dwie opcje weryfika
 
 - Możesz zatwierdzać tylko nazwę określonego hosta używaną w tym żądaniu. W przypadku kolejnych żądań będzie wymagane dodatkowe zatwierdzanie.
 
-Po zatwierdzeniu firma DigiCert dodaje nazwę domeny niestandardowej do certyfikatu SAN. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem.
+Po zatwierdzeniu firma DigiCert kończy tworzenie certyfikatu dla niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem.
 
 ## <a name="wait-for-propagation"></a>Oczekiwanie na propagację
 
@@ -288,11 +288,11 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
 1. *Kto jest dostawcą certyfikatów i jaki typ certyfikatu jest używany?*
 
-    W przypadku usługi **Azure CDN from Verizon** używany jest certyfikat alternatywnych nazw podmiotów (SAN) firmy DigiCert. Jeden certyfikat SAN może zabezpieczać wiele w pełni kwalifikowanych nazw domen. W przypadku usługi **Azure CDN Standard from Microsoft** używany jest pojedynczy certyfikat firmy DigiCert.
+    Zarówno w przypadku **usługi Azure CDN od firmy Verizon**, jak i **usługi Azure CDN od firmy Microsoft**, dla domeny niestandardowej jest używany dedykowany/pojedynczy certyfikat dostarczony przez firmę Digicert. 
 
-2. Używasz protokołu TLS/SSL SNI, czy opartego na protokole IP?
+2. *Czy używasz protokołu TLS/SSL opartego na protokole IP, czy z rozszerzeniem SNI?*
 
-    **Usługa Azure CDN from Verizon** używa protokołu TLS/SSL opartego na protokole IP. **Usługa Azure CDN Standard from Microsoft** używa protokołu TLS/SSL SNI.
+    Zarówno usługa **Azure CDN od firmy Verizon**, jak i **usługa Azure CDN Standard od firmy Microsoft**, używają protokołu TLS/SSL z rozszerzeniem SNI.
 
 3. *Co zrobić, jeśli nie otrzymam wiadomości e-mail weryfikującej domenę od firmy DigiCert?*
 
@@ -309,6 +309,10 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 6. *Czy muszę mieć rekord autoryzacji urzędu certyfikacji z moim dostawcą DNS?*
 
     Nie, rekord autoryzacji urzędu certyfikacji nie jest obecnie wymagany. Jeśli jednak istnieje, musi zawierać firmę DigiCert jako prawidłowy urząd certyfikacji.
+
+7. *20 czerwca 2018 r. usługa Azure CDN od firmy Verizon rozpoczęła korzystanie z dedykowanego certyfikatu domyślnie używającego protokołu TLS/SSL z rozszerzeniem SNI. Co się stanie z moimi istniejącymi domenami niestandardowymi używającymi certyfikatu SAN (Subject Alternative Names) lub protokołu TLS/SSL opartego na protokole IP?*
+
+    Istniejące domeny będą stopniowo migrowane do pojedynczego certyfikatu w ciągu najbliższych miesięcy, jeśli analiza przeprowadzona przez firmę Microsoft określi, że żądania skierowane do Twojej aplikacji wykonują tylko klienci SNI. Jeśli firma Microsoft wykryje żądania skierowane do aplikacji inne niż korzystające z rozszerzenia SNI, Twoje domeny będą w dalszym ciągu korzystać z certyfikatu SAN i protokołu TLS/SSL opartego na protokole IP. W każdym przypadku dostęp do Twojej usługi będzie odbywał się bez przestojów, a żądania klientów będą obsługiwane niezależnie od tego, czy korzystają z rozszerzenia SNI.
 
 
 ## <a name="next-steps"></a>Następne kroki

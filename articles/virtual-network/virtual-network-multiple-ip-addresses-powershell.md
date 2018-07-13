@@ -1,6 +1,6 @@
 ---
-title: Wiele adresów IP dla maszyn wirtualnych platformy Azure - PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu programu PowerShell | Menedżer zasobów.
+title: Wiele adresów IP dla maszyn wirtualnych platformy Azure — PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisać wiele adresów IP do maszyny wirtualnej przy użyciu programu PowerShell | Menedżer zasobów.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,26 +16,26 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
 ms.openlocfilehash: 4c74833933642ec67bdd2a77d073b083d54a3038
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602844"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38678616"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Przypisz wielu adresów IP do maszyn wirtualnych przy użyciu programu PowerShell
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu programu PowerShell
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-W tym artykule opisano sposób tworzenia maszyny wirtualnej (VM) za pośrednictwem modelu wdrażania usługi Azure Resource Manager przy użyciu programu PowerShell. Nie można przypisać wiele adresów IP do zasobów została utworzona za pośrednictwem klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, przeczytaj [zrozumieć modele wdrażania](../resource-manager-deployment-model.md) artykułu.
+W tym artykule wyjaśniono, jak utworzyć maszynę wirtualną (VM) za pomocą modelu wdrażania usługi Azure Resource Manager przy użyciu programu PowerShell. Wiele adresów IP nie można przypisać do zasobów utworzonych za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, przeczytaj [omówienie modeli wdrażania](../resource-manager-deployment-model.md) artykułu.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Utwórz maszynę Wirtualną z wielu adresów IP
+## <a name = "create"></a>Tworzenie maszyny Wirtualnej z wieloma adresami IP
 
-Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wirtualnej z wielu adresów IP, zgodnie z opisem w scenariuszu. Zmienianie wartości zmiennych, co jest wymagane dla implementacji.
+Poniższe kroki wyjaśniają, jak Utwórz przykładowy maszyny Wirtualnej z wieloma adresami IP zgodnie z opisem w tym scenariuszu. Zmień wartości zmiennych, co jest wymagane dla implementacji.
 
-1. Otwórz wiersz polecenia programu PowerShell i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji programu PowerShell. Jeśli nie masz jeszcze programu PowerShell zainstalowany i skonfigurowany, wykonaj kroki [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) artykułu.
-2. Zaloguj się do konta z `Connect-AzureRmAccount` polecenia.
+1. Otwórz wiersz polecenia programu PowerShell i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji programu PowerShell. Jeśli nie masz jeszcze programu PowerShell, zainstalowane i skonfigurowane, wykonaj kroki [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) artykułu.
+2. Zaloguj się do Twojego konta za pomocą `Connect-AzureRmAccount` polecenia.
 3. Zastąp *myResourceGroup* i *westus* przy użyciu nazwy i lokalizacji wybrane. Utwórz grupę zasobów. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
     ```powershell
@@ -68,7 +68,7 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
     ```
 
-5. Utwórz grupę zabezpieczeń sieci (NSG) i zasady. Grupa NSG zabezpiecza maszyny Wirtualnej za pomocą reguł ruchu przychodzącego i wychodzącego. W tym przypadku jest tworzona reguła ruchu przychodzącego dla portu 3389, która umożliwia nawiązywanie przychodzących połączeń pulpitu zdalnego.
+5. Utwórz sieciową grupę zabezpieczeń (NSG) i reguły. Sieciowa grupa zabezpieczeń zabezpiecza maszyny Wirtualnej za pomocą reguł ruchu przychodzącego i wychodzącego. W tym przypadku jest tworzona reguła ruchu przychodzącego dla portu 3389, która umożliwia nawiązywanie przychodzących połączeń pulpitu zdalnego.
 
     ```powershell
     
@@ -92,9 +92,9 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     -SecurityRules $NSGRule
     ```
 
-6. Zdefiniuj podstawową konfigurację protokołu IP dla karty sieciowej. Zmień 10.0.0.4 na prawidłowy adres w podsieci, w której zostały utworzone, jeśli nie używasz wartość zdefiniowana wcześniej. Przed przypisaniem statycznego adresu IP, zalecane jest, że należy najpierw upewnij się, że nie jest już używana. Wprowadź polecenie `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Jeśli adres jest dostępny, zwraca dane wyjściowe *True*. Jeśli nie jest dostępna, zwraca dane wyjściowe *False* oraz listę adresów, które są dostępne. 
+6. Zdefiniuj podstawowa konfiguracja adresu IP dla karty sieciowej. Zmień 10.0.0.4 na prawidłowy adres w podsieci, w której został utworzony, jeśli użyty przez Ciebie wartość zdefiniowana wcześniej. Przed przypisaniem statyczny adres IP, zalecane jest, że należy najpierw upewnij się, że nie jest już używana. Wprowadź polecenie `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Jeśli adres jest dostępny, zwraca dane wyjściowe *True*. Jeśli nie jest dostępna, zwraca dane wyjściowe *False* i listę adresów, które są dostępne. 
 
-    W poniższych poleceniach **Zamień < Zamień z your unikatowy nazwa-> unikatowa nazwa DNS do użycia.** Nazwa musi być unikatowa w publicznych adresów IP w obrębie regionu platformy Azure. Jest to parametr opcjonalny. Można usunąć, jeśli chcesz się połączyć z maszyną wirtualną za pomocą publicznego adresu IP.
+    W poniższych poleceniach **Zamień < Zastąp-przy użyciu your unikatowy name > unikatową nazwę DNS do użycia.** Nazwa musi być unikatowa we wszystkich publicznych adresów IP w obrębie regionu platformy Azure. Jest to parametr opcjonalny. Można usunąć, jeśli chcesz się połączyć z maszyną wirtualną przy użyciu publicznego adresu IP.
 
     ```powershell
     
@@ -116,12 +116,12 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     -Primary
     ```
 
-    Po przypisaniu wielu konfiguracji adresów IP do karty Sieciowej, należy przypisać jedną konfigurację jako *— podstawowy*.
+    Po przypisaniu wielu konfiguracji adresu IP do karty Sieciowej w jednej konfiguracji musi być przypisany jako *-głównej*.
 
     > [!NOTE]
-    > Publiczne adresy IP ma nominalnego opłatą. Aby dowiedzieć się więcej o cenach adresu IP, przeczytaj [cennik adres IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje ograniczona liczba publicznych adresów IP, których można użyć w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
+    > Publiczne adresy IP mają nominalnej. Aby dowiedzieć się więcej o cenach adresów IP, przeczytaj [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
 
-7. Zdefiniuj dodatkowej konfiguracji adresów IP dla karty sieciowej. Można dodawać i usuwać konfiguracje w razie potrzeby. Każdej konfiguracji adresu IP musi mieć przypisany prywatny adres IP. Każdej konfiguracji opcjonalnie może mieć przypisany jeden publiczny adres IP.
+7. Zdefiniuj konfiguracje pomocniczych adresów IP dla karty sieciowej. Można dodawać i usuwać konfiguracje zgodnie z potrzebami. Każdej konfiguracji IP musi mieć przypisany prywatny adres IP. Każda konfiguracja mogą opcjonalnie mieć przypisany jeden publiczny adres IP.
 
     ```powershell
     
@@ -147,7 +147,7 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     -PrivateIpAddress 10.0.0.6
     ```
 
-8. Utwórz kartę Sieciową i skojarz trzech konfiguracji IP do niej:
+8. Utwórz kartę Sieciową i skojarz trzech konfiguracji IP do niego:
 
     ```powershell
     
@@ -160,7 +160,7 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     ```
 
     >[!NOTE]
-    >Chociaż wszystkie konfiguracje są przypisane do jednej karty Sieciowej, w tym artykule, można przypisać wielu konfiguracji adresów IP do każdej karty Sieciowej podłączony do maszyny Wirtualnej. Aby dowiedzieć się, jak utworzyć Maszynę wirtualną z wieloma kartami sieciowymi, przeczytaj [tworzenia maszyn wirtualnych z wieloma kartami sieciowymi](../virtual-machines/windows/multiple-nics.md) artykułu.
+    >Chociaż wszystkie konfiguracje są przypisane do jednej karty Sieciowej w tym artykule, wielu konfiguracji adresu IP można przypisać każdą kartą Sieciową dołączoną do maszyny Wirtualnej. Aby dowiedzieć się, jak utworzyć maszynę Wirtualną z wieloma kartami sieciowymi, przeczytaj [Utwórz Maszynę wirtualną z wieloma kartami sieciowymi](../virtual-machines/windows/multiple-nics.md) artykułu.
 
 9. Tworzenie maszyny Wirtualnej, wprowadzając następujące polecenia:
 
@@ -191,14 +191,14 @@ Czynności, które wykonują wyjaśniono, jak utworzyć przykładowy maszyny Wir
     -VM $VmConfig
     ```
 
-10. Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki odpowiednie dla systemu operacyjnego w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu. Nie dodawaj publiczne adresy IP do systemu operacyjnego.
+10. Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonując czynności opisane w systemie operacyjnym w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu. Nie należy dodawać publiczne adresy IP do systemu operacyjnego.
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure, wykonując kroki, które należy wykonać. Przykłady w poniższych sekcjach założono, że już istnieje maszyna wirtualna z tych trzech konfiguracji adresu IP, opisane w [scenariusza](#Scenario) w tym artykule, ale nie jest to wymagane wykonanie.
+Możesz dodać prywatnych i publicznych adresów IP do interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady podane w poniższych sekcjach przyjęto założenie, że masz już Maszynę wirtualną przy użyciu trzech konfiguracji adresów IP, opisane w [scenariusza](#Scenario) w tym artykule, ale nie jest to wymagane, możesz zrobić.
 
-1. Otwórz wiersz polecenia programu PowerShell i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji programu PowerShell. Jeśli nie masz jeszcze programu PowerShell zainstalowany i skonfigurowany, wykonaj kroki [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) artykułu.
-2. Zmień nazwę karty Sieciowej, aby dodać adres IP do grupy zasobów i lokalizacja, którą karta sieciowa istnieje w "wartości" $Variables następujące:
+1. Otwórz wiersz polecenia programu PowerShell i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji programu PowerShell. Jeśli nie masz jeszcze programu PowerShell, zainstalowane i skonfigurowane, wykonaj kroki [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview) artykułu.
+2. Zmień nazwę karty Sieciowej, aby dodać adres IP i grupę zasobów i lokalizacji, w której karta sieciowa istnieje w "values" $Variables następujące:
 
     ```powershell
     $NicName  = "MyNIC"
@@ -206,58 +206,58 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
     $Location = "westus"
     ```
 
-    Jeśli nie znasz nazwy karty sieciowej, aby zmienić, wpisz następujące polecenia, następnie zmienić wartości zmiennych poprzedniego:
+    Jeśli nie znasz nazwy karty sieciowej, o których chcesz zmienić, wprowadź następujące polecenia, następnie zmień wartości zmiennych poprzedniej:
 
     ```powershell
     Get-AzureRmNetworkInterface | Format-Table Name, ResourceGroupName, Location
     ```
-3. Utwórz zmienną i ustaw ją istniejącej karty NIC, wpisując następujące polecenie:
+3. Utwórz zmienną i ustawić w niej istniejącą kartę Sieciową, wpisując następujące polecenie:
 
     ```powershell
     $MyNIC = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $RgName
     ```
-4. W poniższych poleceniach zmienić *MyVNet* i *MySubnet* do nazwy sieci wirtualnej i karty interfejsu Sieciowego jest podłączony do podsieci. Wprowadź poleceń, aby pobrać obiekty sieci wirtualnej i podsieci, karta sieciowa jest połączona z:
+4. W poniższych poleceniach zmienić *MyVNet* i *MySubnet* do nazwy sieci wirtualnej i podsieci, karta sieciowa jest połączona. Wprowadź polecenia, aby pobrać obiekty sieci wirtualnej i podsieci, którą jest połączona karta sieciowa:
 
     ```powershell
     $MyVNet = Get-AzureRMVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
     $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
     ```
-    Jeśli nie znasz nazwy sieci wirtualnej lub podsieci, karta sieciowa jest połączona z, wprowadź następujące polecenie:
+    Jeśli nie znasz nazwę sieci wirtualnej lub podsieci, którą jest połączona karta sieciowa, wpisz następujące polecenie:
     ```powershell
     $MyNIC.IpConfigurations
     ```
-    W wynikach wyszukiwania tekstu, podobnie jak w poniższym przykładzie danych wyjściowych:
+    W wynikach wyszukiwania tekstu podobne do następujących przykładowych danych wyjściowych:
     
     ```
     "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
     ```
-    W tym danych wyjściowych *MyVnet* jest sieci wirtualnej i *MySubnet* jest karta sieciowa jest podłączony do podsieci.
+    W poniższych danych wyjściowych *MyVnet* jest sieć wirtualna i *MySubnet* podsieć jest połączona karta sieciowa.
 
-5. Wykonaj kroki jednego z następujących sekcji, w zależności od wymagań:
+5. Wykonaj kroki opisane w jednej z następujących sekcji, w zależności od wymagań:
 
-    **Dodaj prywatnego adresu IP**
+    **Dodaj prywatny adres IP**
 
-    Aby dodać prywatnego adresu IP do karty Sieciowej, należy utworzyć konfigurację protokołu IP. Poniższe polecenie tworzy konfiguracji ze statycznym adresem IP 10.0.0.7. Określanie statycznego adresu IP, musi być nieużywany adres podsieci. Zaleca się przetestowanie adres, aby upewnić się, jest dostępna, wprowadzając `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` polecenia. Jeśli adres IP jest dostępny, zwraca dane wyjściowe *True*. Jeśli nie jest dostępna, zwraca dane wyjściowe *False*oraz listę adresów, które są dostępne.
+    Aby dodać prywatny adres IP do karty Sieciowej, należy utworzyć konfigurację adresu IP. Następujące polecenie tworzy konfigurację ze statycznym adresem IP 10.0.0.7. Podczas określania statyczny adres IP, musi ona nieużywany adres podsieci. Zaleca się przetestowanie adresu, aby upewnić się, jest on dostępny, wprowadzając `Test-AzureRmPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` polecenia. Jeśli adres IP jest dostępny, zwraca dane wyjściowe *True*. Jeśli nie jest dostępna, zwraca dane wyjściowe *False*oraz listę adresów, które są dostępne.
 
     ```powershell
     Add-AzureRmNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
     $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
     ```
-    Tworzenie konfiguracji tyle, ile potrzebujesz, przy użyciu nazwy konfiguracji unikatowy i prywatnych adresów IP (w przypadku konfiguracji statycznych adresów IP).
+    Utwórz konfiguracje tyle, ile jest potrzebne, przy użyciu nazwy unikatowej konfiguracji i prywatnymi adresami IP (w przypadku konfiguracji za pomocą statycznych adresów IP).
 
-    Dodaj prywatnego adresu IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki odpowiednie dla systemu operacyjnego w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu.
+    Dodaj jako prywatny adres IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki dla systemu operacyjnego w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu.
 
-    **Dodaj publiczny adres IP**
+    **Dodawanie publicznego adresu IP**
 
-    Publiczny adres IP jest dodawany przez skojarzenie publicznego zasobu adresu IP do nowej konfiguracji IP lub istniejącej konfiguracji adresu IP. Wykonaj kroki opisane w sekcji, które należy wykonać, ile potrzebujesz.
+    Publiczny adres IP jest dodawany przez skojarzenie publicznego zasobu adresu IP na konfigurację adresu IP nowej lub istniejącej konfiguracji adresu IP. Wykonaj kroki opisane w sekcji, które należy wykonać, ile potrzebujesz.
 
     > [!NOTE]
-    > Publiczne adresy IP ma nominalnego opłatą. Aby dowiedzieć się więcej o cenach adresu IP, przeczytaj [cennik adres IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje ograniczona liczba publicznych adresów IP, których można użyć w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
+    > Publiczne adresy IP mają nominalnej. Aby dowiedzieć się więcej o cenach adresów IP, przeczytaj [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
     >
 
-    - **Skojarz zasób publicznego adresu IP nowej konfiguracji adresu IP**
+    - **Skojarz zasób publicznego adresu IP do nowej konfiguracji adresu IP**
     
-        Po dodaniu publicznego adresu IP w nowej konfiguracji adresu IP, musisz również dodać prywatnego adresu IP, ponieważ wszystkie konfiguracje adresów IP muszą mieć prywatnego adresu IP. Możesz dodać istniejący zasób publiczny adres IP lub Utwórz nową. Aby utworzyć nową, wprowadź następujące polecenie:
+        Zawsze, gdy publiczny adres IP zostanie dodana nowa konfiguracja adresu IP, możesz również dodać prywatny adres IP, ponieważ wszystkie konfiguracje adresów IP musi mieć prywatny adres IP. Możesz dodać istniejący zasób publicznego adresu IP lub Utwórz nową. Aby utworzyć nowe konto, wprowadź następujące polecenie:
     
         ```powershell
         $myPublicIp3 = New-AzureRmPublicIpAddress `
@@ -267,7 +267,7 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
         -AllocationMethod Static
         ```
 
-        Aby utworzyć nową konfigurację adresu IP za pomocą statycznego prywatnego adresu IP oraz skojarzonych z nimi *myPublicIp3* publicznego adresu IP adresów zasobów, wprowadź następujące polecenie:
+        Aby utworzyć nową konfigurację adresu IP za pomocą statycznego prywatnego adresu IP i skojarzonej *myPublicIp3* publiczny adres IP adresów zasobów, wpisz następujące polecenie:
 
         ```powershell
         Add-AzureRmNetworkInterfaceIpConfig `
@@ -280,13 +280,13 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
 
     - **Skojarz zasób publicznego adresu IP do istniejącej konfiguracji adresu IP**
 
-        Zasób publicznego adresu IP może być skojarzony tylko konfiguracją protokołu IP, który nie ma jeszcze skojarzone. Można określić, czy konfiguracja IP ma skojarzone publicznego adresu IP, wprowadzając następujące polecenie:
+        Zasób publicznego adresu IP można skojarzyć tylko do konfiguracji adresu IP, który nie ma jeszcze skojarzone. Można określić, czy konfiguracja adresu IP ma skojarzony publiczny adres IP, wprowadzając następujące polecenie:
 
         ```powershell
         $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
         ```
 
-        Zostaną wyświetlone dane wyjściowe podobne do następującego:
+        Zostaną wyświetlone dane wyjściowe podobne do następujących:
 
         ```     
         Name       PrivateIpAddress PublicIpAddress                                           Primary
@@ -296,7 +296,7 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
         IpConfig-3 10.0.0.6                                                                     False
         ```
 
-        Ponieważ **publicznego adresu IP** kolumny dla *IpConfig 3* jest puste, żaden z zasobów publiczny adres IP jest obecnie z nią skojarzona. Dodaj istniejący zasób publicznego adresu IP do IpConfig 3 lub wprowadź następujące polecenie, aby go utworzyć:
+        Ponieważ **publicznego adresu IP** kolumny *IpConfig 3* jest pusta, nie zasób publicznego adresu IP jest aktualnie powiązany do niego. Możesz dodać istniejący zasób publicznego adresu IP do IpConfig 3 lub wprowadź następujące polecenie, aby go utworzyć:
 
         ```powershell
         $MyPublicIp3 = New-AzureRmPublicIpAddress `
@@ -305,7 +305,7 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
         -Location $Location -AllocationMethod Static
         ```
 
-        Wprowadź następujące polecenie, aby skojarzyć zasób publicznego adresu IP do istniejącej konfiguracji IP o nazwie *IpConfig 3*:
+        Wprowadź następujące polecenie, aby skojarzyć zasób publicznego adresu IP do istniejącej konfiguracji adresu IP o nazwie *IpConfig 3*:
     
         ```powershell
         Set-AzureRmNetworkInterfaceIpConfig `
@@ -315,17 +315,17 @@ Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure
         -PublicIpAddress $myPublicIp3
         ```
 
-6. Ustaw kartę Sieciową przy użyciu nowej konfiguracji adresu IP, wprowadzając następujące polecenie:
+6. Ustaw karty Sieciowej przy użyciu nowej konfiguracji adresu IP, wprowadzając następujące polecenie:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $MyNIC
     ```
 
-7. Wyświetl prywatnych adresów IP i zasoby adresów publicznych adresów IP przypisanych do karty Sieciowej, wprowadzając następujące polecenie:
+7. Wyświetl prywatne adresy IP i publicznych zasoby adresów IP przypisanych do karty Sieciowej, wprowadzając następujące polecenie:
 
     ```powershell   
     $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
     ```
-8. Dodaj prywatnego adresu IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki odpowiednie dla systemu operacyjnego w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu. Publiczny adres IP nie należy dodawać do systemu operacyjnego.
+8. Dodaj jako prywatny adres IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki dla systemu operacyjnego w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu. Nie należy dodawać publicznego adresu IP do systemu operacyjnego.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

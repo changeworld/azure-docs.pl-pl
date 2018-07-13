@@ -1,6 +1,6 @@
 ---
 title: Kierować ruchem sieciowym programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: W tym artykule Dowiedz się, jak można kierować ruchem sieciowym z tabelą tras za pomocą programu PowerShell.
+description: W tym artykule Dowiedz się, jak kierować ruchem sieciowym za pomocą tabeli tras przy użyciu programu PowerShell.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -18,13 +18,13 @@ ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 2aca1de567dbd4d37daf7f9dd7c407b669396a47
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "31603712"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38630330"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Kierować ruchem sieciowym z tabelą tras za pomocą programu PowerShell
+# <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Kierowanie ruchem sieciowym za pomocą tabeli tras przy użyciu programu PowerShell
 
 Platforma Azure automatycznie domyślnie kieruje ruchem między wszystkimi podsieciami w sieci wirtualnej. Możesz tworzyć własne trasy zastępujące domyślne trasy platformy Azure. Możliwość tworzenia niestandardowych tras jest przydatna, jeśli na przykład chcesz kierować ruchem między podsieciami za pomocą wirtualnego urządzenia sieciowego (NVA). W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -44,13 +44,13 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten 
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-Przed utworzeniem tabelę tras, Utwórz grupę zasobów o [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* dla wszystkich zasobów utworzone w tym artykule. 
+Zanim będzie można utworzyć tabelę tras, Utwórz grupę zasobów za pomocą [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* dla wszystkich zasobów utworzonych w tym artykule. 
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Utwórz tabelę tras z [AzureRmRouteTable nowy](/powershell/module/azurerm.network/new-azurermroutetable). Poniższy przykład tworzy tabelę tras o nazwie *myRouteTablePublic*.
+Utwórz tabelę tras z [New AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable). Poniższy przykład tworzy tabelę tras o nazwie *myRouteTablePublic*.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzureRmRouteTable `
@@ -61,7 +61,7 @@ $routeTablePublic = New-AzureRmRouteTable `
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
-Tworzona jest trasa, pobierając obiekt tabeli tras z [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable), tworzona jest trasa z [AzureRmRouteConfig Dodaj](/powershell/module/azurerm.network/add-azurermrouteconfig), następnie zapisu konfiguracji tras na tabelę tras z [AzureRmRouteTable zestawu](/powershell/module/azurerm.network/set-azurermroutetable). 
+Tworzona jest trasa przez pobranie obiektu tabeli tras z [Get AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable), utworzyć trasę z [AzureRmRouteConfig Dodaj](/powershell/module/azurerm.network/add-azurermrouteconfig), następnie Zapisz konfigurację trasy w tabeli tras z [AzureRmRouteTable zestaw](/powershell/module/azurerm.network/set-azurermroutetable). 
 
 ```azurepowershell-interactive
 Get-AzureRmRouteTable `
@@ -77,7 +77,7 @@ Get-AzureRmRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Aby móc skojarzyć tabelę tras z podsiecią, należy utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork* z prefiksem adresu *10.0.0.0/16*.
+Zanim skojarzysz tabelę tras z podsiecią, należy utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork* z prefiksem adresu *10.0.0.0/16*.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -87,7 +87,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Utwórz trzy podsieci, tworząc trzy konfiguracje podsieci z [AzureRmVirtualNetworkSubnetConfig nowy](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Poniższy przykład tworzy trzy konfiguracje podsieci *publicznego*, *prywatnej*, i *DMZ* podsieci:
+Utwórz trzy podsieci, tworząc trzech konfiguracji podsieci za pomocą [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Poniższy przykład tworzy trzy konfiguracje podsieci dla *publicznych*, *prywatnej*, i *DMZ* podsieci:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -106,13 +106,13 @@ $subnetConfigDmz = Add-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Zapisać konfiguracje podsieci sieci wirtualnej z [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), co powoduje podsieci w sieci wirtualnej:
+Zapisz konfiguracje podsieci sieci wirtualnej za pomocą [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), co powoduje utworzenie podsieci w sieci wirtualnej:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-Skojarz *myRouteTablePublic* tabeli tras do *publicznego* podsieć o [AzureRmVirtualNetworkSubnetConfig zestaw](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) , a następnie zapisać konfiguracji podsieci sieci wirtualnej z [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
+Skojarz *myRouteTablePublic* tabelę tras w celu *publicznych* podsieć o [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) , a następnie Zapisz konfigurację podsieci do sieć wirtualna z [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork).
 
 ```azurepowershell-interactive
 Set-AzureRmVirtualNetworkSubnetConfig `
@@ -127,11 +127,11 @@ Set-AzureRmVirtualNetwork
 
 Urządzenie NVA jest maszyną wirtualną, która realizuje funkcje sieci, takie jak routing, zapora lub optymalizacja sieci WAN.
 
-Przed utworzeniem maszyny Wirtualnej, Utwórz nowy interfejs sieciowy.
+Przed utworzeniem maszyny Wirtualnej, Utwórz interfejs sieciowy.
 
-### <a name="create-a-network-interface"></a>Tworzenie interfejsu sieciowego
+### <a name="create-a-network-interface"></a>Utwórz interfejs sieciowy
 
-Przed utworzeniem karty sieciowej, należy pobrać wirtualnej sieci z identyfikatorem odpowiadającym [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork), następnie identyfikator podsieci z [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig). Tworzenie interfejsu sieciowego z [AzureRmNetworkInterface nowy](/powershell/module/azurerm.network/new-azurermnetworkinterface) w *DMZ* podsieci IP przesyłanie dalej:
+Przed utworzeniem interfejsu sieciowego, należy pobrać wirtualny identyfikator za pomocą sieci [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork), następnie identyfikator podsieci za pomocą [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig). Utwórz interfejs sieciowy z [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) w *DMZ* podsieci z włączonym przekazywaniem adresu IP:
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -155,7 +155,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ### <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Aby utworzyć Maszynę wirtualną i dołączenia do istniejącego interfejsu sieciowego, należy najpierw utworzyć konfiguracji maszyny Wirtualnej z [AzureRmVMConfig nowy](/powershell/module/azurerm.compute/new-azurermvmconfig). Konfiguracja obejmuje interfejs sieciowy utworzony w poprzednim kroku. Po wyświetleniu monitu o nazwę użytkownika i hasło, wybierz nazwę użytkownika i hasło, które chcesz zalogować się do maszyny Wirtualnej z. 
+Aby utworzyć Maszynę wirtualną i do niej dołączyć istniejący interfejs sieciowy, należy najpierw utworzyć konfigurację maszyny Wirtualnej za pomocą [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Ta konfiguracja obejmuje interfejs sieciowy utworzony w poprzednim kroku. Po wyświetleniu monitu o nazwę użytkownika i hasło, wybierz nazwę użytkownika i hasło, które chcesz zalogować się do maszyny Wirtualnej za pomocą. 
 
 ```azurepowershell-interactive
 # Create a credential object.
@@ -176,7 +176,7 @@ $vmConfig = New-AzureRmVMConfig `
   Add-AzureRmVMNetworkInterface -Id $nic.Id
 ```
 
-Tworzenie maszyny Wirtualnej za pomocą konfiguracji maszyny Wirtualnej z [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVmNva*. 
+Tworzenie maszyny Wirtualnej za pomocą konfiguracji maszyny Wirtualnej za pomocą [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVmNva*. 
 
 ```azurepowershell-interactive
 $vmNva = New-AzureRmVM `
@@ -190,9 +190,9 @@ $vmNva = New-AzureRmVM `
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-Utwórz dwie maszyny wirtualne w sieci wirtualnej, aby móc weryfikować tego ruchu z *publicznego* podsieci jest kierowany do *prywatnej* podsieci za pośrednictwem sieci urządzenia wirtualnego w kolejnym kroku. 
+Utwórz dwie maszyny wirtualne w sieci wirtualnej, dzięki czemu można sprawdzić, czy ruch z *publicznych* podsieci jest kierowany do *prywatnej* podsieci za pośrednictwem wirtualnego urządzenia sieciowego w późniejszym kroku. 
 
-Utwórz maszynę Wirtualną w *publicznego* podsieć o [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVmPublic* w *publicznego* podsieć *myVirtualNetwork* sieci wirtualnej. 
+Utwórz Maszynę wirtualną w *publicznych* podsieć o [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVmPublic* w *publicznych* podsieci *myVirtualNetwork* sieci wirtualnej. 
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -205,7 +205,7 @@ New-AzureRmVm `
   -AsJob
 ```
 
-Utwórz maszynę Wirtualną w *prywatnej* podsieci.
+Utwórz Maszynę wirtualną w *prywatnej* podsieci.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -217,11 +217,11 @@ New-AzureRmVm `
   -Name "myVmPrivate"
 ```
 
-W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie Kontynuuj do następnego kroku, dopiero po utworzeniu maszyny Wirtualnej i Azure zwraca dane wyjściowe do programu PowerShell.
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie Kontynuuj do następnego kroku, dopóki maszyna wirtualna jest tworzona i Azure zwraca dane wyjściowe do programu PowerShell.
 
 ## <a name="route-traffic-through-an-nva"></a>Kierowanie ruchem za pośrednictwem urządzenia NVA
 
-Użyj [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) do zwrócenia publicznego adresu IP *myVmPrivate* maszyny Wirtualnej. Poniższy przykład zwraca publicznego adresu IP *myVmPrivate* maszyny Wirtualnej:
+Użyj [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) aby zwrócić publiczny adres IP *myVmPrivate* maszyny Wirtualnej. Poniższy przykład zwraca publiczny adres IP *myVmPrivate* maszyny Wirtualnej:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress `
@@ -230,7 +230,7 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Użyj następującego polecenia, aby utworzyć sesję pulpitu zdalnego z *myVmPrivate* maszyny Wirtualnej z komputera lokalnego. Zastąp ciąg `<publicIpAddress>` adresem IP zwróconym w poprzednim poleceniu.
+Użyj następującego polecenia, aby utworzyć sesję usług pulpitu zdalnego z *myVmPrivate* maszyny Wirtualnej z komputera lokalnego. Zastąp ciąg `<publicIpAddress>` adresem IP zwróconym w poprzednim poleceniu.
 
 ```
 mstsc /v:<publicIpAddress>
@@ -240,17 +240,17 @@ Otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 
 Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej (może okazać się konieczne wybranie pozycji **Więcej opcji** oraz **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej), a następnie wybierz przycisk **OK**. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Wybierz pozycję **Tak**, aby nawiązać połączenie. 
 
-W kolejnym kroku polecenia tracert.exe służy do testowania, routingu. Tracert używa kontrolki komunikat protokołu protokołu ICMP (Internet), której odmówiono przez zaporę systemu Windows. Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPrivate*:
+W kolejnym kroku polecenie tracert.exe jest używane do testowania routingu. Tracert używa kontroli komunikat ICMP (Internet Protocol), który jest blokowany przez zaporę Windows. Wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, wprowadzając następujące polecenie w programie PowerShell na maszynie wirtualnej *myVmPrivate*:
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-Chociaż trasy śledzenia służy do testowania routingu w tym artykule, nie zaleca się stosowanie protokołu ICMP przez zaporę systemu Windows dla wdrożeń produkcyjnych.
+Chociaż narzędzie śledzenia trasy jest używane do testowania routingu w tym artykule, dzięki czemu protokołu ICMP przez zaporę Windows we wdrożeniach produkcyjnych nie jest zalecane.
 
-Przekazywanie dalej adresu IP w obrębie platformy Azure dla interfejsu sieciowego maszyny wirtualnej zostało włączone w sekcji [Włączanie przekazywania dalej adresu IP](#enable-ip-forwarding). W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włącz przesyłanie dalej IP w ramach systemu operacyjnego *myVmNva*.
+Przekazywanie dalej adresu IP w obrębie platformy Azure dla interfejsu sieciowego maszyny wirtualnej zostało włączone w sekcji [Włączanie przekazywania dalej adresu IP](#enable-ip-forwarding). W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włączanie przekazywania adresów IP w ramach systemu operacyjnego *myVmNva*.
 
-W wierszu polecenia na *myVmPrivate* pulpitu zdalnego do maszyny Wirtualnej *myVmNva*:
+W wierszu polecenia na *myVmPrivate* Pulpit zdalny dla maszyny Wirtualnej *myVmNva*:
 
 ``` 
 mstsc /v:myvmnva
@@ -321,7 +321,7 @@ Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, użyj [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) można usunąć grupy zasobów i wszystkie zasoby zawiera.
+Gdy nie jest już potrzebny, należy użyć [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -329,6 +329,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule możesz utworzyć tabelę tras i skojarzone go do podsieci. Prosta sieć urządzenie wirtualne, które kierowany ruch z publicznego podsieci do podsieci prywatnej została utworzona. Wdrażanie różnych wstępnie skonfigurowanej sieci wirtualnych urządzeń wykonujących funkcji sieciowych, takich jak zapory i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Routing overview (Omówienie routingu)](virtual-networks-udr-overview.md) i [Manage a route table (Zarządzanie tabelą tras)](manage-route-table.md).
+W tym artykule utworzono tabelę tras i skojarzono ją z podsiecią. Utworzono proste sieciowe urządzenie wirtualne, które kierowało ruch z podsieci publicznej do podsieci prywatnej. Wdrażanie różnych wstępnie skonfigurowanych sieciowych urządzeniach wirtualnych, wykonujące funkcje sieciowe, takie jak Zapora i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Routing overview (Omówienie routingu)](virtual-networks-udr-overview.md) i [Manage a route table (Zarządzanie tabelą tras)](manage-route-table.md).
 
-Chociaż możesz wdrożyć wiele zasobów platformy Azure w ramach sieci wirtualnej, zasobów dla niektórych usług PaaS platformy Azure nie można wdrożyć w sieci wirtualnej. Nadal możesz ograniczyć dostęp do zasobów niektórych usług PaaS platformy Azure tylko do ruchu z podsieci sieci wirtualnej. Aby dowiedzieć się więcej, zobacz temat [ograniczenie dostępu do sieci do zasobów PaaS](tutorial-restrict-network-access-to-resources-powershell.md).
+Chociaż możesz wdrożyć wiele zasobów platformy Azure w ramach sieci wirtualnej, zasobów dla niektórych usług PaaS platformy Azure nie można wdrożyć w sieci wirtualnej. Nadal możesz ograniczyć dostęp do zasobów niektórych usług PaaS platformy Azure tylko do ruchu z podsieci sieci wirtualnej. Aby dowiedzieć się więcej, zobacz temat [ograniczanie dostępu sieciowego do zasobów PaaS](tutorial-restrict-network-access-to-resources-powershell.md).

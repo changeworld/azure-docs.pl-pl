@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: d9720377beb1973b8ae4e9423fc991aa82646924
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061600"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344711"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks
 
@@ -117,7 +117,7 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
 4. Wprowadź następujący kod w pierwszej komórce i wykonaj go:
 
-    ```python
+    ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
@@ -132,11 +132,14 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
 Następnym krokiem jest przekazanie na konto magazynu przykładowego pliku danych, które zostaną później przekształcone w usłudze Azure Databricks. 
 
-1. Jeśli nie masz jeszcze utworzonego konta usługi Data Lake Storage 2. generacji, skorzystaj z przewodnika Szybki start, aby je utworzyć.
-2. Przykładowe dane (**small_radio_json.json**) są dostępne w repozytorium [U-SQL Examples and Issue Tracking (Przykłady języka U-SQL i rejestr problemów)](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). Pobierz plik JSON i zanotuj ścieżkę zapisu pliku.
-3. Przekaż dane na konto magazynu. Metoda używana do przekazywania danych na konto magazynu różni się w zależności od tego, czy została włączona usługa hierarchicznej przestrzeni nazw (HNS).
+> [!NOTE]
+> Jeśli nie masz jeszcze konta usługi Azure Data Lake Storage generacji 2, postępuj zgodnie [przewodnikiem Szybki start, aby je utworzyć](./quickstart-create-account.md).
 
-    Jeśli włączono usługę hierarchicznej przestrzeni nazw na koncie usługi ADLS 2. generacji, możesz przekazać dane przy użyciu usługi Azure Data Factory, narzędzia Distcp lub narzędzia AzCopy (wersja 10). Narzędzie AzCopy w wersji 10 jest dostępne tylko dla klientów korzystających z wersji zapoznawczej. Aby użyć narzędzia AzCopy w usłudze Cloud Shell:
+1. Pobierz plik (**small_radio_json.json**) z repozytorium [Przykłady języka U-SQL i śledzenie problemów](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json), a następnie zanotuj ścieżkę, w której zostanie zapisany plik.
+
+2. Następnie przekaż przykładowe dane do konta magazynu. Metoda używana do przekazywania danych na konto magazynu różni się w zależności od tego, czy została włączona usługa hierarchicznej przestrzeni nazw.
+
+    Jeśli włączono usługę hierarchicznej przestrzeni nazw na koncie usługi Azure Storage 2. generacji, możesz przekazać dane przy użyciu usługi Azure Data Factory, narzędzia Distcp lub narzędzia AzCopy (wersja 10). Narzędzie AzCopy w wersji 10 jest dostępne tylko dla klientów korzystających z wersji zapoznawczej. Aby użyć narzędzia AzCopy, wklej poniższy kod w oknie polecenia:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -150,7 +153,7 @@ Wróć do notesu usługi DataBricks i wprowadź następujący kod w nowej komór
 
 1. W pustej komórce kodu dodaj poniższy fragment kodu i zastąp wartości symboli zastępczych zapisanymi wcześniej wartościami dotyczącymi konta magazynu.
 
-    ```python
+    ```scala
     dbutils.widgets.text("storage_account_name", "STORAGE_ACCOUNT_NAME", "<YOUR_STORAGE_ACCOUNT_NAME>")
     dbutils.widgets.text("storage_account_access_key", "YOUR_ACCESS_KEY", "<YOUR_STORAGE_ACCOUNT_SHARED_KEY>")
     ```
@@ -159,13 +162,13 @@ Wróć do notesu usługi DataBricks i wprowadź następujący kod w nowej komór
 
 2. Teraz możesz załadować przykładowy plik json jako ramkę danych w usłudze Azure Databricks. Wklej poniższy kod w nowej komórce, a następnie naciśnij klawisze **SHIFT + ENTER** (pamiętaj o zastąpieniu wartości symboli zastępczych):
 
-    ```python
+    ```scala
     val df = spark.read.json("abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/data/small_radio_json.json")
     ```
 
 3. Uruchom poniższy kod, aby wyświetlić zawartość ramki danych.
 
-    ```python
+    ```scala
     df.show()
     ```
 
@@ -190,7 +193,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
 
 1. Zacznij od pobrania tylko kolumn *firstName*, *lastName*, *gender*, *location* i *level* z utworzonej wcześniej ramki danych.
 
-    ```python
+    ```scala
     val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
     ```
 
@@ -225,7 +228,7 @@ Przykładowe dane nieprzetworzone **small_radio_json.json** rejestrują odbiorc�
 
 2.  Możesz dalej przekształcać te dane, aby zmienić nazwę kolumny **level** na **subscription_type**.
 
-    ```python
+    ```scala
     val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
     renamedColumnsDF.show()
     ```
@@ -267,28 +270,28 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
 1. Podaj konfigurację umożliwiającą uzyskanie dostępu do konta usługi Azure Storage z usługi Azure Databricks.
 
-    ```python
+    ```scala
     val storageURI = "<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net"
-    val fileSystemName = "<FILE_SYSTEM_NJAME>"
+    val fileSystemName = "<FILE_SYSTEM_NAME>"
     val accessKey =  "<ACCESS_KEY>"
     ```
 
 2. Określ folder tymczasowy, który będzie używany podczas przenoszenia danych między usługami Azure Databricks i Azure SQL Data Warehouse.
 
-    ```python
+    ```scala
     val tempDir = "abfs://" + fileSystemName + "@" + storageURI +"/tempDirs"
     ```
 
 3. Uruchom poniższy fragment kodu, aby zapisać klucze dostępu usługi Azure Blob Storage w konfiguracji. Dzięki temu nie trzeba będzie przechowywać klucza dostępu w notesie w postaci zwykłego tekstu.
 
-    ```python
+    ```scala
     val acntInfo = "fs.azure.account.key."+ storageURI
     sc.hadoopConfiguration.set(acntInfo, accessKey)
     ```
 
 4. Podaj wartości, aby nawiązać połączenie z wystąpieniem usługi Azure SQL Data Warehouse. Musisz mieć utworzony magazyn danych SQL w ramach wymagań wstępnych.
 
-    ```python
+    ```scala
     //SQL Data Warehouse related settings
     val dwDatabase = "<DATABASE NAME>"
     val dwServer = "<DATABASE SERVER NAME>" 
@@ -302,7 +305,7 @@ Jak wspomniano wcześniej, łącznik magazynu danych SQL korzysta z usługi Azur
 
 5. Uruchom poniższy fragment kodu, aby załadować przekształconą ramkę danych **renamedColumnsDF** jako tabelę w magazynie danych SQL. Ten fragment kodu tworzy tabelę o nazwie **SampleTable** w bazie danych SQL.
 
-    ```python
+    ```scala
     spark.conf.set(
         "spark.sql.parquet.writeLegacyFormat",
         "true")

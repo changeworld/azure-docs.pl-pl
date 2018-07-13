@@ -1,23 +1,23 @@
 ---
 title: Wysyłanie zdarzeń niestandardowych dla usługi Azure Event Grid do połączenia hybrydowego | Microsoft Docs
-description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Połączenie hybrydowe jest używane dla punktu końcowego.
+description: Za pomocą usługi Azure Event Grid i interfejsu wiersza polecenia platformy Azure można opublikować temat i zasubskrybować dane zdarzenie. Dla punktu końcowego jest używane Połączenie hybrydowe.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ee504f805c536ba9a6186514206546c3df1f0f1a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302981"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127717"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kierowanie zdarzeń niestandardowych do połączeń hybrydowych usługi Azure Relay za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jedne z obsługiwanych procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. Połączenia hybrydowe usługi Azure Relay to jeden z obsługiwanych typów procedur obsługi zdarzeń. Połączeń hybrydowych można używać jako procedur obsługi zdarzeń, jeśli zachodzi potrzeba przetwarzania zdarzeń z aplikacji, które nie mają publicznego punktu końcowego. Te aplikacje mogą znajdować się w sieci korporacyjnej firmy. W tym artykule omówiono tworzenie tematu niestandardowego, subskrybowanie go i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. Zdarzenia wysyła się do połączenia hybrydowego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -73,9 +73,25 @@ az eventgrid event-subscription create \
   --endpoint $hybridid
 ```
 
+## <a name="create-application-to-process-events"></a>Tworzenie aplikacji do przetwarzania zdarzeń
+
+Potrzebujesz teraz aplikacji, która będzie pobierać zdarzenia z połączenia hybrydowego. [Przykładowa aplikacja odbiorcy połączenia hybrydowego usługi Microsoft Azure Event Grid w języku C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) wykonuje tę operację. Wymagane wstępnie czynności zostały już wykonane.
+
+1. Upewnij się, że masz program Visual Studio 2017 w wersji 15.5 lub nowszej.
+
+1. Sklonuj repozytorium na komputerze lokalnym.
+
+1. Załaduj projekt HybridConnectionConsumer w programie Visual Studio.
+
+1. W pliku Program.cs zastąp wartości `<relayConnectionString>` i `<hybridConnectionName>` parametrami połączenia usługi Relay i nazwą utworzonego połączenia hybrydowego.
+
+1. Skompiluj i uruchom aplikację w programie Visual Studio.
+
 ## <a name="send-an-event-to-your-topic"></a>Wysyłanie zdarzenia do tematu
 
-Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego. Ponownie jako `<topic_name>` użyj nazwy tematu.
+Wyzwólmy zdarzenie, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego. W tym artykule pokazano, jak wyzwalać zdarzenia za pomocą interfejsu wiersza polecenia platformy Azure. Możesz także użyć [aplikacji wydawcy usługi Event Grid](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridPublisher).
+
+Po pierwsze uzyskajmy adres URL i klucz tematu niestandardowego. Ponownie użyj nazwy tematu dla wartości `<topic_name>`.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)

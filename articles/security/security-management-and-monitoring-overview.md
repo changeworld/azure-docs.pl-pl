@@ -1,6 +1,6 @@
 ---
-title: Omówienie monitorowania i zarządzania zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie funkcji zabezpieczeń i usług, które platforma Azure udostępnia ułatwiających zarządzanie i monitorowanie usług w chmurze Azure i maszyn wirtualnych.
+title: Omówienie monitorowania i zarządzania zabezpieczeniami platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie funkcji zabezpieczeń i usług udostępnianych przez platformę Azure do pomocy w zakresie zarządzania i monitorowania usług Azure cloud services i maszyn wirtualnych.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 9e538ac39af5b6df44860a4a70b0fd1e058c060c
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 10c2ed359fa77ad00945ddcfbc55dc0901ba8bff
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752292"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697109"
 ---
-# <a name="azure-security-management-and-monitoring-overview"></a>Omówienie monitorowania i zarządzania zabezpieczeń platformy Azure
-Azure zapewnia mechanizmy zabezpieczeń ułatwiające zarządzanie i monitorowanie usług w chmurze Azure oraz maszynach wirtualnych (VM). W tym artykule omówiono te podstawowe funkcje zabezpieczeń i usług. Zostały podane linki do artykułów, które zapewniają informacje na temat każdej, aby dowiedzieć się więcej.
+# <a name="azure-security-management-and-monitoring-overview"></a>Omówienie monitorowania i zarządzania zabezpieczeniami platformy Azure
+Platforma Azure zapewnia mechanizmy zabezpieczeń ułatwiające zarządzanie i monitorowanie usług Azure cloud services i maszyn wirtualnych (VM). Ten artykuł zawiera omówienie tych podstawowych funkcji zabezpieczeń i usług. Podano linki do artykułów, które Podaj szczegóły każdego z nich, aby dowiedzieć się więcej.
 
-Zabezpieczenia usług w chmurze firmy Microsoft jest powiązanie i udostępnionych odpowiedzialność między Tobą a firmą Microsoft. Microsoft jest odpowiedzialny za platformy Azure i zabezpieczenia fizyczne jego centrów danych (przy użyciu ochrony zabezpieczeń, takich jak drzwi zablokowanym wpis wskaźnika, ogrodzenia i osłony). Platforma Azure udostępnia silne poziomów zabezpieczeń chmurze w warstwie oprogramowania, które zaspokoi potrzeby zabezpieczeń, prywatności i zgodności klientów.
+Zabezpieczenia usług w chmurze firmy Microsoft jest nawiązanie partnerstwa i wspólna odpowiedzialność między użytkownikiem a firmą Microsoft. Firma Microsoft jest odpowiedzialna za platformę Azure i zabezpieczenia fizyczne w jej centrów danych (za pomocą zabezpieczenia, takie jak zablokowane wpis wskaźnika drzwi, ogrodzenia i osłony). Platforma Azure zapewnia silne poziomów zabezpieczeń chmury w warstwie oprogramowania, który spełnia wymagania bezpieczeństwa, prywatności i zgodności jej klientów.
 
-Jesteś właścicielem danych i tożsamości, odpowiedzialność za ochrony ich zabezpieczeń zasobów lokalnych i bezpieczeństwa składniki chmury, nad którymi zarządzasz. Firma Microsoft daje opcji zabezpieczeń i możliwości, aby pomóc w ochronie danych oraz aplikacji. Twoje stopień odpowiedzialność za bezpieczeństwo jest oparty na typie usługi w chmurze.
+Jesteś właścicielem, danych i tożsamości, odpowiedzialność za ochronę ich bezpieczeństwa zasobów w środowisku lokalnym i zabezpieczeń składników chmura, przez jaką masz pełną kontrolę. Firma Microsoft zapewnia środki kontroli bezpieczeństwa i możliwości, aby pomóc w ochronie danych i aplikacji. Twoje stopień odpowiedzialność za zabezpieczeń opiera się na typ usługi w chmurze.
 
-Poniżej znajduje się podsumowanie saldo odpowiedzialność między firmą Microsoft a klienta.
+Poniższej tabeli podsumowano saldo odpowiedzialność między firmami Microsoft i klienta.
 
 ![Wspólna odpowiedzialność][1]
 
-Aby uzyskać więcej informacji dotyczących zarządzania zabezpieczeniami, zobacz [Zarządzanie zabezpieczeniami na platformie Azure](azure-security-management.md).
+Aby uzyskać więcej informacji na temat zarządzania zabezpieczeniami, zobacz [Zarządzanie zabezpieczeniami na platformie Azure](azure-security-management.md).
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
-Kontroli dostępu opartej na rolach (RBAC) zapewnia zarządzanie szczegółowe dostępu do zasobów platformy Azure. Za pomocą RBAC, można przyznać osób tylko takiego dostępu, które są niezbędne do wykonywania swoich zadań. RBAC ułatwia również upewnij się, że gdy użytkownicy opuszczają organizację, utracą dostęp do zasobów w chmurze.
+Kontrola dostępu oparta na rolach (RBAC) umożliwia zarządzanie dostępem szczegółowe dla zasobów platformy Azure. Za pomocą funkcji RBAC, można przyznać osób tylko takiego dostępu, których potrzebują do wykonywania swoich zadań. RBAC może również pomóc upewnić się, że gdy ludzie opuszczenie organizacji, stracą dostęp do zasobów w chmurze.
 
 Więcej informacji:
 
-* [Blog zespołu usługi Active Directory na RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Blog zespołu usługi Active Directory na ROLACH](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
-Przy użyciu platformy Azure można użyć ochrony przed złośliwym oprogramowaniem z dostawców głównych zabezpieczeń, takich jak Microsoft, firmy Symantec, Trend Micro, McAfee i Kaspersky. To oprogramowanie chroni maszyny wirtualne z złośliwych plików, adware i innymi zagrożeniami.
+Za pomocą platformy Azure można użyć ochrony przed złośliwym oprogramowaniem przez najważniejszych dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro, McAfee i Kaspersky. To oprogramowanie pomaga chronić Twoje maszyny wirtualne przed złośliwymi plikami, oprogramowaniem reklamowym i innymi zagrożeniami.
 
-Antimalware firmy Microsoft dla usług Azure Cloud Services i maszyn wirtualnych zapewnia możliwość zainstalowania agenta ochrony przed złośliwym kodem dla ról PaaS i maszyny wirtualne. W oparciu o System Center Endpoint Protection, ta funkcja przełącza sprawdzonych lokalnymi technologii zabezpieczeń w chmurze.
+Microsoft Antimalware dla usług Azure Cloud Services i Virtual Machines oferuje możliwość instalowania agenta ochrony przed złośliwym kodem dla maszyn wirtualnych i ról PaaS. Oparte na System Center Endpoint Protection, ta funkcja udostępnia sprawdzone w środowisku lokalnym technologii zabezpieczeń w chmurze.
 
-Oferujemy również głęboką integrację dla trendu [głębokie zabezpieczeń](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) i [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produktów platformy Azure. Głębokie zabezpieczeń to rozwiązanie w zakresie oprogramowania antywirusowego i SecureCloud to rozwiązanie do szyfrowania. Głębokie zabezpieczeń jest wdrażany wewnątrz maszyn wirtualnych za pomocą modelu rozszerzenia. Przy użyciu interfejsu użytkownika portalu Azure i programu PowerShell, można używać bezpośrednich zabezpieczeń wewnątrz nowych maszyn wirtualnych, które są jest uruchomione lub istniejących maszyn wirtualnych, które są już wdrożone.
+Oferujemy również ścisłą integrację dla trendu [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) i [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) produktów na platformie Azure. Deep Security jest rozwiązanie antywirusowe i SecureCloud to rozwiązanie do szyfrowania. Deep Security jest wdrażana wewnątrz maszyn wirtualnych za pośrednictwem modelu rozszerzeń. Za pomocą interfejsu użytkownika witryny Azure portal i programu PowerShell, można użyć Deep Security wewnątrz nowych maszyn wirtualnych, które są uruchamiane są lub istniejących maszyn wirtualnych, które są już wdrożone.
 
-Symantec Endpoint Protection (wrz) jest również obsługiwany na platformie Azure. Dzięki integracji portalu możesz określić, czy zamierzasz używać wrz na maszynie Wirtualnej. WRZ można zainstalować w nowej maszyny Wirtualnej za pośrednictwem portalu Azure, lub można ją zainstalować na istniejącej maszyny Wirtualnej za pomocą programu PowerShell.
+Symantec Endpoint Protection (SEP) jest również obsługiwana na platformie Azure. Dzięki integracji z portalu można określić, czy zamierzasz używać wrz na maszynie Wirtualnej. WRZ można zainstalować w nowej maszyny Wirtualnej w witrynie Azure portal lub może być zainstalowana na istniejącej maszyny Wirtualnej za pomocą programu PowerShell.
 
 Więcej informacji:
 
 * [Wdrażanie rozwiązań do ochrony przed złośliwym kodem na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Ochrony przed złośliwym oprogramowaniem firmy Microsoft dla usług w chmurze Azure i maszyn wirtualnych](azure-security-antimalware.md)
-* [Jak zainstalować i skonfigurować Trend Micro głębokie zabezpieczeń jako usługa na maszynie Wirtualnej systemu Windows](../virtual-machines/windows/classic/install-trend.md)
-* [Jak zainstalować i skonfigurować Symantec Endpoint Protection na maszynie Wirtualnej systemu Windows](../virtual-machines/windows/classic/install-symantec.md)
-* [Nowe opcje ochrony przed złośliwym kodem ochrony maszyn wirtualnych platformy Azure](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
+* [Microsoft Antimalware dla usług Azure Cloud Services i Virtual Machines](azure-security-antimalware.md)
+* [Jak zainstalować i skonfigurować Trend Micro Deep Security as a Service, na maszynie Wirtualnej Windows](../virtual-machines/windows/classic/install-trend.md)
+* [Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszyny Wirtualnej z systemem Windows](../virtual-machines/windows/classic/install-symantec.md)
+* [Nowe opcje ochrony przed złośliwym kodem na potrzeby ochrony maszyn wirtualnych platformy Azure](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Usługa Azure Multi-Factor Authentication to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji. Dodaje kluczową drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. 
 
-Usługi Multi-Factor Authentication ułatwia zabezpieczenie dostępu do danych i aplikacji, spełniając zapotrzebowanie na prosty proces logowania. Zapewnia silne uwierzytelnianie za pomocą zakresu opcji weryfikacji (połączenie telefoniczne, wiadomość tekstowa lub kodu weryfikacji lub powiadamiania aplikacji mobilnej) i tokenów OATH innej firmy.
+Multi-Factor Authentication zabezpiecza dostęp do danych i aplikacji, jednocześnie spełnia wymagania użytkowników dotyczące prostoty procesu logowania. Zapewnia ona silne uwierzytelnianie za pomocą zakresu, opcje weryfikacji (połączenie telefoniczne, wiadomość SMS lub powiadomień lub weryfikacji kodu aplikacji mobilnej) i tokenów OATH innej firmy.
 
 Więcej informacji:
 
@@ -71,62 +71,62 @@ Więcej informacji:
 * [Jak działa usługa Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
-Usługa Azure ExpressRoute umożliwia rozszerzanie sieci lokalnej w Microsoft Cloud przez dedykowane połączenie prywatne, które umożliwiają to dostawca połączenia. Z usługi ExpressRoute można ustanowić połączenia z usługami w chmurze Microsoft Azure, Office 365 i CRM Online. Łączność może pochodzić z:
+Usługa Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na Microsoft Cloud za pośrednictwem specjalnego połączenia prywatnego, który jest zapewniana przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usług chmurowych firmy Microsoft, takich jak Azure, Office 365 i CRM Online. Łączność może być z zakresu:
 
-- Dowolny z każdym sieci (IP sieci VPN).
-- Sieć Ethernet point-to-point.
-- Cross połączenia wirtualnego przez dostawcę łączność w zakładzie wspólnej lokalizacji. 
+- Sieć dowolna dowolna (IP VPN).
+- Sieć Ethernet typu punkt-punkt.
+- Wiele połączeń wirtualnych za pośrednictwem dostawcy łączności, we wspólnej lokalizacji. 
 
-Połączenia ExpressRoute nie go za pośrednictwem publicznej sieci internet. Można oferują więcej niezawodności, szybkości szybsze, niższe opóźnienia i lepsze zabezpieczenia niż typowe połączenia za pośrednictwem Internetu.
+Połączenia ExpressRoute omijają publiczny internet. Może zaoferować więcej niezawodność, większe szybkości, krótsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez internet.
 
 Więcej informacji:
 
-* [Opis techniczny ExpressRoute](../expressroute/expressroute-introduction.md)
+* [ExpressRoute — opis techniczny](../expressroute/expressroute-introduction.md)
 
 ## <a name="virtual-network-gateways"></a>Bramy sieci wirtualnej
-Bramy sieci VPN, nazywany również bramy sieci wirtualnej platformy Azure, są używane do wysyłania ruchu sieciowego między sieciami wirtualnymi i lokalizacji lokalnej. Są one również używane do wysyłania ruchu między wieloma sieciami wirtualnymi w obrębie platformy Azure (sieci). Bramy sieci VPN zapewniają łączność bezpiecznego między lokalizacjami platformy Azure i infrastruktury.
+Bramy sieci VPN, nazywany również bramy sieci wirtualnej platformy Azure są używane do wysyłania ruchu sieciowego między sieciami wirtualnymi i lokalizacjami lokalnymi. Służą one także wysyłać ruch sieciowy między wieloma sieciami wirtualnymi na platformie Azure (sieci). Bramy sieci VPN zapewniają bezpiecznego połączenia obejmującego wiele lokalizacji — między platformą Azure i infrastruktury.
 
 Więcej informacji:
 
 * [Temat bram sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Przegląd zabezpieczeń sieci platformy Azure](security-network-overview.md)
+* [Omówienie zabezpieczeń sieci platformy Azure](security-network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
-Czasami użytkownicy muszą wykonać operacje uprzywilejowane w zasobów platformy Azure lub innych aplikacji SaaS. Często oznacza to, że organizacjom nadanie im stałe uprzywilejowanego dostępu w usłudze Azure Active Directory (Azure AD). 
+Czasami użytkownicy potrzebują do wykonania uprzywilejowanych operacji korzystających z zasobów platformy Azure lub innych aplikacji SaaS. Często oznacza to, że organizacje ciągowych trwałego dostępu uprzywilejowanego w usłudze Azure Active Directory (Azure AD). 
 
-Jest to zagrożenie bezpieczeństwa rosnącym zasobów hostowanych w chmurze, ponieważ organizacje wystarczająco nie można monitorować, co robią tych użytkowników z ich uprzywilejowanego dostępu. Ponadto w przypadku złamania zabezpieczeń konta użytkownika z dostępem uprzywilejowanym tego naruszenia co może mieć wpływ na ogólne bezpieczeństwo chmury w organizacji. Azure AD Privileged Identity Management pomaga Rozwiąż to zagrożenie, co zmniejsza czas ekspozycji uprawnień i zwiększając wydajność wgląd w użycie.  
+Jest to rosnący zagrożenie bezpieczeństwa dla zasobów hostowanych w chmurze, ponieważ organizacje wystarczająco nie można monitorować, użytkownicy ci korzystają z ich uprzywilejowanego dostępu. Ponadto w przypadku naruszenia zabezpieczeń konta użytkownika z dostępem uprzywilejowanym tego jednego naruszenie może mieć wpływ na ogólne bezpieczeństwo chmury w organizacji. Usługa Azure AD Privileged Identity Management pomaga rozwiązać to zagrożenie, zmniejszyć czas narażenia uprawnień i zwiększyć wgląd w użycie.  
 
-Zarządzanie tożsamościami uprzywilejowanymi pojęcia związane z tymczasowego administratora dla roli lub "just in time" dostępu administratora. Tego rodzaju administratora jest użytkownik, który musi ukończyć proces aktywacji dla przypisania roli. Proces aktywacji zmienia przypisanie użytkownika do roli w usłudze Azure AD z okresu nieaktywne na aktywny w wyznaczonym czasie.
+Privileged Identity Management wprowadza koncepcję tymczasowe administratora dla roli lub "just in time" dostępu administratora. Tego rodzaju administratora jest użytkownik, który musi zakończyć proces aktywacji dla przypisania roli. Proces aktywacji zmienia przypisanie użytkownika do roli w usłudze Azure AD z okresu nieaktywne na aktywny, przez wyznaczony czas.
 
 Więcej informacji:
 
-* [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-* [Wprowadzenie do usługi Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-getting-started.md)
+* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
+* [Rozpoczynanie pracy z usługą Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-getting-started.md)
 
 ## <a name="identity-protection"></a>Identity Protection
-Azure AD Identity Protection zawiera skonsolidowanego widoku podejrzanych działań logowania i potencjalnych luk w zabezpieczeniach w celu ochrony firmy. Identity Protection wykrywa podejrzane działania dla użytkowników i tożsamości uprzywilejowanych (Administrator), oparte na sygnały, takich jak:
+Usługa Azure AD Identity Protection udostępnia skonsolidowany widok podejrzanych działań logowania i potencjalnych luk w zabezpieczeniach, aby pomóc chronić Twoją firmę. Identity Protection wykrywa podejrzane działania dla użytkowników i tożsamości uprzywilejowane (Administrator), w oparciu o sygnały, takie jak:
 
 - Ataków siłowych.
 - Ujawnione poświadczenia.
 - Logowania z nieznanych lokalizacji i zainfekowanych urządzeń.
 
-Zapewniając powiadomień i zalecanych czynności naprawczych, Identity Protection pomaga ograniczyć ryzyko w czasie rzeczywistym. Obliczanie ważność ryzyka użytkownika. Można skonfigurować zasady oparte na ryzyko automatycznie ułatwia zabezpieczenie aplikacji dostępu przed zagrożeniami w przyszłości.
+Dostarczając powiadomień i zalecanych czynności naprawczych, Identity Protection pomaga ograniczyć ryzyko w czasie rzeczywistym. Obliczany jest ważność ryzyka użytkownika. Można skonfigurować zasady oparte na ryzyku, aby automatycznie aplikacji zabezpieczenie dostępu przez przyszłymi zagrożeniami.
 
 Więcej informacji:
 
-* [Ochronę tożsamości usługi Azure Active Directory](../active-directory/active-directory-identityprotection.md)
-* [Kanał 9: Usługi Azure AD i Pokaż tożsamości: Podgląd ochrony tożsamości](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Usługa Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
+* [Witrynie Channel 9: Usługi Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
-Centrum zabezpieczeń Azure ułatwia zapobieganie, wykrywania i reagowania na zagrożenia. Centrum zabezpieczeń zapewnia należy zwiększyć widoczność i skuteczniejszą kontrolę zabezpieczeń zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure. Pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
+Usługa Azure Security Center pomaga zapobiegać, wykrywanie ich i reagowanie na zagrożenia. Usługa Security Center zapewnia możesz zwiększyć wgląd w i skuteczniejszą kontrolę ich zabezpieczeń zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure. Pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
 
-Centrum zabezpieczeń ułatwia optymalizacji i monitorowania zabezpieczeń zasobów platformy Azure przez:
+Usługa Security Center pomaga optymalizować i monitorować zabezpieczenia zasobów platformy Azure przez:
 
-* Dzięki któremu można zdefiniować zasady dla zasobów subskrypcji platformy Azure zgodnie z tym:
-  * W zakresie zabezpieczeń w firmie.
-  * Typ aplikacji oraz poufności danych w każdej subskrypcji.
-* Monitorowanie stanu sieci maszyn wirtualnych platformy Azure, sieci i aplikacji.
-* Dostarcza listę alertów zabezpieczeń uporządkowanych według priorytetu, między innymi alertów ze zintegrowanych rozwiązań partnerskich. Zapewnia także informacje potrzebne do szybkiego analizowania ataku i zalecenia dotyczące sposobu jego rozwiązania.
+* Włączanie można zdefiniować zasady dla zasobów subskrypcji platformy Azure na podstawie:
+  * W zakresie zabezpieczeń firmy.
+  * Typ aplikacji lub wrażliwości danych w ramach każdej subskrypcji.
+* Monitorowanie stanu maszynach wirtualnych platformy Azure, sieci i aplikacji.
+* Dostarczanie listy alertów zabezpieczeń uporządkowanych według priorytetu, między innymi alertów ze zintegrowanych rozwiązań partnerskich. Zapewnia również informacje, potrzebne do szybkiego analizowania ataku i zalecenia dotyczące sposobu jego rozwiązania.
 
 Więcej informacji:
 

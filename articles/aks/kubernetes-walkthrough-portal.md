@@ -2,19 +2,19 @@
 title: Szybki start — klaster Azure Kubernetes
 description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą witryny Azure Portal.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/29/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 90d01ed7cc2483c8467d646ebf9ad056ea1a4baf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: aa8a1cccd4eeb45e829cd8df73f128dd6cca416d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286600"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344478"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Szybki start: wdrażanie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -28,11 +28,9 @@ W tym przewodniku Szybki start założono, że masz podstawową wiedzę na temat
 
 Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
-
-
 ## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
 
-Wybierz pozycję **Utwórz zasób** > wybierz pozycję **Kubernetes Service** > **Utwórz**.
+Wybierz pozycję **Utwórz zasób** > **Kubernetes Service**.
 
 Wykonaj poniższe kroki pod każdym nagłówkiem formularza tworzenia klastra AKS.
 

@@ -9,11 +9,11 @@ ms.date: 04/03/2018
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 9d48e3c3fc54e6f019b64ecff727ba92a2f3f0cc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "30845081"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38946255"
 ---
 > [!IMPORTANT]
-Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat standardowe usługi równoważenia obciążenia, zobacz [Omówienie usługi równoważenia obciążenia standardowego](https://aka.ms/AzureLoadBalancerStandard).
+Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat Balancer w warstwie standardowa, zobacz [omówienie Standard Load Balancer](https://aka.ms/AzureLoadBalancerStandard).

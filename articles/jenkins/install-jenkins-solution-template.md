@@ -11,11 +11,11 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29936581"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38635462"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Tworzenie serwera Jenkins na maszynie wirtualnej z systemem Linux platformy Azure przy użyciu witryny Azure Portal
 
@@ -29,7 +29,7 @@ W tym przewodniku Szybki start pokazano, jak zainstalować usługę [Jenkins](ht
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Tworzenie maszyny wirtualnej z usługą Jenkins za pomocą szablonu rozwiązania
-Wpięć obsługuje model, w którym Wpięć delegatów serwera działa na co najmniej jeden Agent umożliwia jednej instalacji Wpięć do obsługi wielu projektów lub w celu zapewnienia różnych środowiskach potrzebne do kompilacji lub testów. Kroki opisane w tej sekcji przeprowadzają użytkownika przez proces instalowania i konfigurowania serwera Wpięć na platformie Azure.
+Jenkins obsługuje model, w którym kompilacji Jenkins delegatów serwera działają do jednego lub więcej agentów, aby zezwolić na jednej instalacji usługi Jenkins obsługiwać dużą liczbę projektów lub udostępniają różne środowiska służące do lub testów. Kroki opisane w tej sekcji przeprowadzają użytkownika przez proces instalowania i konfigurowania serwera Jenkins na platformie Azure.
 
 [!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
@@ -45,7 +45,7 @@ Skonfiguruj tunel przy użyciu polecenia `ssh` na stronie z wiersza polecenia, z
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Po uruchomieniu tunelu przejdź do adresu http://localhost:8080/ na maszynie lokalnej. 
+Po uruchomieniu tunelu przejdź do http://localhost:8080/ na komputerze lokalnym. 
 
 Uzyskaj hasło początkowe, uruchamiając następujące polecenie w wierszu polecenia przy aktywnym połączeniu z maszyną wirtualną z usługą Jenkins za pośrednictwem powłoki SSH.
 

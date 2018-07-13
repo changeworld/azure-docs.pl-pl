@@ -1,6 +1,6 @@
 ---
-title: Utwórz zadania importowania platformy Azure importu/eksportu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć importu dla usługi Import/Eksport Microsoft Azure.
+title: Tworzenie zadania importu usługi Azure Import/Export | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć import dla usługi Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: syadav
@@ -15,98 +15,98 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365886"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697642"
 ---
-# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Import/Eksport Azure
+# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
-Tworzenie zadania importu za pomocą interfejsu API REST usługi Import/Eksport Microsoft Azure obejmuje następujące kroki:
+Tworzenie zadania importu dla usługi Microsoft Azure Import/Export, za pomocą interfejsu API REST obejmuje następujące czynności:
 
--   Przygotowywanie dysków za pomocą narzędzia importu/eksportu Azure.
+-   Przygotowywanie dysków za pomocą narzędzia Azure Import/Export.
 
--   Uzyskiwanie lokalizacji, do której należy wysłać dysku.
+-   Uzyskiwanie lokalizacji, do którego należy dostarczyć dysk.
 
 -   Tworzenie zadania importu.
 
--   Wysyłania dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
+-   Wysyłanie dysków do firmy Microsoft za pośrednictwem usługi obsługiwane operatora.
 
--   Uaktualnianie zadania importu szczegóły dotyczące wysyłki.
+-   Aktualizowanie zadania importu o szczegółach wysyłki.
 
- Zobacz [za pomocą usługi Import/Eksport Microsoft Azure przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) Omówienie usługi Import/Eksport i samouczek, który demonstruje sposób użycia [portalu Azure](https://portal.azure.com/) do tworzenia i zarządzania importowanie i eksportowanie zadań.
+ Zobacz [przy użyciu usługi Microsoft Azure Import/Export przesyłanie danych do magazynu obiektów Blob](storage-import-export-service.md) z omówieniem usługi Import/Export a samouczek, w którym pokazano, jak używać [witryny Azure portal](https://portal.azure.com/) do utworzenia Zarządzanie Importuj i Eksportuj zadania.
 
-## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Przygotowywanie dysków za pomocą narzędzia importu/eksportu Azure
+## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Przygotowywanie dysków za pomocą narzędzia Azure Import/Export
 
-Kroki, aby przygotować dyski dla zadania importu, są takie same, czy utworzyć jobvia portalu lub za pośrednictwem interfejsu API REST.
+Kroki, aby przygotować dyski do zadania importu, są takie same, czy tworzysz jobvia portalu lub za pośrednictwem interfejsu API REST.
 
-Poniżej znajduje się krótki przegląd Przygotowanie stacji. Zapoznaj się [odwołania ExportTool importu Azure](storage-import-export-tool-how-to-v1.md) Aby uzyskać pełne instrukcje. Narzędzie importu/eksportu Azure można pobrać [tutaj](http://go.microsoft.com/fwlink/?LinkID=301900).
+Poniżej przedstawiono krótkie omówienie przygotowania dysku. Zapoznaj się [odwołanie do usługi Azure Import ExportTool](storage-import-export-tool-how-to-v1.md) pełne instrukcje. Narzędzie importu/eksportu platformy Azure można pobrać [tutaj](http://go.microsoft.com/fwlink/?LinkID=301900).
 
 Przygotowywanie dysku obejmuje:
 
--   Identyfikowanie dane do zaimportowania.
+-   Identyfikowanie danych do zaimportowania.
 
--   Identyfikowanie przeznaczenia obiekty BLOB w magazynie Windows Azure.
+-   Identyfikowanie przeznaczenia obiektów blob w Windows Azure Storage.
 
--   Za pomocą narzędzia importu/eksportu Azure, aby skopiować dane do jednego lub więcej dysków twardych.
+-   Za pomocą narzędzie importu/eksportu platformy Azure, aby skopiować dane do jednego lub więcej dysków twardych.
 
- Narzędzie importu/eksportu Azure również spowoduje wygenerowanie pliku manifestu dla poszczególnych dysków, jak jest przygotowana. Plik manifestu zawiera:
+ Narzędzie importu/eksportu platformy Azure także generuje plik manifestu dla każdego z stacje podczas jego przygotowywania. Zawiera plik manifestu:
 
--   Wyliczenie wszystkich plików przeznaczonych do przekazywania i mapowania z tych plików do obiektów blob.
+-   Wyliczenie wszystkich plików, które są przeznaczone do przekazywania i mapowania tych plików do obiektów blob.
 
--   Sum kontrolnych segmentów każdego pliku.
+-   Sumy kontrolne segmentów każdego pliku.
 
--   Informacje o właściwości do skojarzenia z każdy obiekt blob i metadanych.
+-   Informacje o metadanych i właściwości do skojarzenia z każdego obiektu blob.
 
--   Lista działanie w przypadku obiektów blob, który jest przekazywanych ma taką samą nazwę jak istniejącym obiektem blob w kontenerze. Dostępne są opcje:) zastępowania obiektu blob z plikiem, (b) aktualizowanie istniejących obiektów blob i Pomiń przekazywania pliku, c) dodać sufiks nazwy nie powoduje konfliktu z innymi plikami.
+-   Lista akcję do wykonania, jeśli obiekt blob, który jest przekazywany ma taką samą nazwę jak istniejący obiekt blob w kontenerze. Możliwe opcje to:) zastąpić obiekt blob z plikiem, (b) Zachowaj istniejący obiekt blob i Pomiń przekazywania pliku, c) Dodaj sufiks do nazwy, aby nie powoduje konfliktu z innymi plikami.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
 
-Przed utworzeniem zadania importu, należy uzyskać wysyłanie nazwy lokalizacji i adres wywołując [lokalizacje listy](/rest/api/storageimportexport/listlocations) operacji. `List Locations` Zwraca listę lokalizacje i ich adres wysyłkowy. Możesz wybrać lokalizację z listy zwróconych i wysłać dyskach twardych na ten adres. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
+Przed utworzeniem zadania importu, należy uzyskać nazwę lokalizacji wysyłki i adres, wywołując [listy lokalizacji](/rest/api/storageimportexport/listlocations) operacji. `List Locations` Spowoduje to zwrócenie listy lokalizacje i swoje adresy pocztowe. Można wybrać lokalizację z listy zwracane i wysłania dysków twardych do tego adresu. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
 
  Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 
--   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w **lokalizacji** na konto magazynu **pulpitu nawigacyjnego** na platformie Azure, w portalu lub, którego dotyczy kwerenda dla za pomocą operacji interfejsu API zarządzania usługami [Get właściwości konta magazynu](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w obszarze **lokalizacji** pola na koncie magazynu **pulpit nawigacyjny** w witrynie Azure portal lub kwerendy dla za pomocą operacji interfejsu API zarządzania usługi [pobrać konta magazynu Właściwości](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   Pobieranie lokalizacji, która jest dostępnych do przetworzenia tego konta magazynu przez wywołanie metody `Get Location` operacji.
+-   Pobieranie lokalizacji, która jest dostępny do przetworzenia tego konta magazynu przez wywołanie metody `Get Location` operacji.
 
--   Jeśli `AlternateLocations` właściwość lokalizacji zawiera samą lokalizację, a następnie można użyć tej lokalizacji. W przeciwnym razie wywołać `Get Location` ponownie operację, używając jednej z lokalizacji alternatywnej. Oryginalnej lokalizacji może być tymczasowo zamknięte konserwacji.
+-   Jeśli `AlternateLocations` właściwość lokalizacji zawiera sama lokalizacja, a następnie można użyć tej lokalizacji. W przeciwnym razie wywołanie `Get Location` ponownie operację, używając jednej z lokalizacji alternatywnej. Oryginalnej lokalizacji może być tymczasowo zamknięte w celu przeprowadzenia konserwacji.
 
 ## <a name="creating-the-import-job"></a>Tworzenie zadania importu
-Aby utworzyć zadanie importu, należy wywołać [zawiesić zadanie](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji. Należy podać następujące informacje:
+Aby utworzyć zadanie importu, wywołaj [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji. Należy podać następujące informacje:
 
 -   Nazwa zadania.
 
 -   Nazwa konta magazynu.
 
--   Wysyłanie nazwy lokalizacji, uzyskanych w poprzednim kroku.
+-   Wysyłanie nazwy lokalizacji, uzyskanego w poprzednim kroku.
 
 -   Typ zadania (Importuj).
 
--   Adres zwrotny, gdzie dyski mają być wysyłane po zakończeniu zadania importu.
+-   Adres zwrotny, których dyski mają być wysyłane po zakończeniu zadania importu.
 
--   Lista dysków w zadaniu. Dla każdego dysku musi zawierać następujące informacje, które jest prefiksem uzyskanym w kroku przygotowania dysku:
+-   Na liście dysków w ramach zadania. Dla każdego dysku musi zawierać następujące informacje, które zostały pobrane podczas wykonywania kroku przygotowania dysku:
 
-    -   Identyfikator dysku
+    -   Identyfikator napędu
 
-    -   Klucza funkcji BitLocker
+    -   Klucz funkcji BitLocker
 
-    -   Względna ścieżka pliku manifestu na dysku twardym
+    -   Ścieżka względna pliku manifestu na dysku twardym
 
-    -   Base16 algorytmem wyznaczania wartości skrótu MD5 w pliku manifestu
+    -   Base16 zakodowane wyznaczania wartości skrótu MD5 w pliku manifestu
 
-## <a name="shipping-your-drives"></a>Wysyłanie dysków
-Muszą dostarczać dysków na adres, który został uzyskany z poprzedniego kroku, a usługi Import/Eksport należy podać numer śledzenia pakietu.
+## <a name="shipping-your-drives"></a>Wysyłanie z stacje dysków
+Należy dostarczyć dysków na adres, który został uzyskany z poprzedniego kroku i musi świadczyć usługi Import/Export za pomocą numeru śledzenia pakietu.
 
 > [!NOTE]
->  Muszą dostarczać dysków za pomocą usługi obsługiwane operatora, który dostarczy numer identyfikacyjny pakietu.
+>  Należy dostarczyć dysków za pośrednictwem usługi obsługiwane operatora, który dostarczy numer śledzenia dla pakietu.
 
-## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizowanie zadania importu z informacjami o wysyłki
-Po utworzeniu numer śledzenia wywołań [właściwości zadania aktualizacji](/api/storageimportexport/jobs#Jobs_Update) Operacja aktualizowania wysyłanie Nazwa operatora, numer zadania i operatora numer konta do wysyłki zwracany. Opcjonalnie można określić liczbę dysków, a także data wysyłki.
+## <a name="updating-the-import-job-with-your-shipping-information"></a>Trwa aktualizowanie zadania importu o informacje dotyczące wysyłki
+Po umieszczeniu numeru śledzenia wywołań [Aktualizuj właściwości zadania](/api/storageimportexport/jobs#Jobs_Update) operację, aby zaktualizować wysyłki Nazwa operatora, numer śledzenia dla zadania i numer konta operatora dla wysyłki zwrotnej. Opcjonalnie możesz określić liczbę dysków i także data wysyłki.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Przy użyciu interfejsu API REST usługi Import/Eksport](storage-import-export-using-the-rest-api.md)
+* [Przy użyciu interfejsu API REST usługi Import/Export](storage-import-export-using-the-rest-api.md)

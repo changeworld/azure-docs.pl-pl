@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: f3808620c4527f2971d8eb6d53a09c893b162b59
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063412"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340954"
 ---
-# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>Samouczek: instrukcje zwracania danych z jednostki keyPhrase 
+# <a name="tutorial-7-add-keyphrase-entity"></a>Samouczek: 7. Dodawanie jednostki keyPhrase 
 W tym samouczku użyjesz aplikacji, która pokazuje, jak wyodrębniać kluczowe treści z wypowiedzi.
 
 <!-- green checkmark -->
@@ -201,10 +201,10 @@ Twój czatbot ma teraz wystarczająco dużo informacji, aby określić następny
 Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane jednostki keyPhrase z wypowiedzi, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Aby to zrobić, wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz menu z trzema kropkami (...) po prawej stronie nazwy aplikacji na liście aplikacji i wybierz polecenie **Delete** (Usuń). W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie aplikacji, która zwraca opinię wraz z przewidywaną intencją](luis-quickstart-intent-and-sentiment-analysis.md)
+> [Dodawanie analizy tonacji do aplikacji](luis-quickstart-intent-and-sentiment-analysis.md)
 

@@ -1,7 +1,7 @@
 
-1. W [portalu Azure](https://portal.azure.com/), wybierz pozycję **Przeglądaj wszystko** > **usługi aplikacji**. Następnie wybierz aplikacji mobilnej zaplecza. W obszarze **ustawienia**, wybierz pozycję **aplikacji usługi wypychania**. Następnie wybierz nazwę Centrum powiadomień.
-2. Przejdź do **systemu Windows (WNS)**. Następnie wprowadź **klucz zabezpieczeń** (klucz tajny klienta) i **identyfikatora SID pakietu** uzyskany z witryna usług Live. Następnie wybierz pozycję **zapisać**.
+1. W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Przeglądaj wszystkie** > **App Services**. Następnie wybierz usługę Mobile Apps zapleczem. W obszarze **ustawienia**, wybierz opcję **wypychania usługi App Service**. Następnie wybierz nazwę Centrum powiadomień.
+2. Przejdź do **Windows (WNS)**. Następnie wprowadź **klucz zabezpieczeń** (klucz tajny klienta) i **identyfikator SID pakietu** uzyskany witryna usług Live. Następnie wybierz pozycję **Zapisz**.
 
     ![Ustaw klucz usługi WNS w portalu](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-Sieci wewnętrznej jest skonfigurowany do używania usługi WNS do wysyłania powiadomień wypychanych.
+Zapleczem jest teraz skonfigurowane do wysyłania powiadomień wypychanych za pomocą WNS.

@@ -1,4 +1,4 @@
-Aby włączyć funkcję resetowania w swojej aplikacji szczegółowych hasła, należy użyć **resetowania hasła** zasad. Pamiętaj, że opcja resetowania haseł na poziomie całej dzierżawy została określona [tutaj](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Ta zasada opisano procesy, które przechodzą klientów za pośrednictwem podczas resetowania hasła i zawartość aplikacji zostanie wyświetlony po pomyślnym ukończeniu tokeny.
+Aby włączyć precyzyjne resetowanie haseł w aplikacji, należy użyć **resetowania hasła** zasad. Pamiętaj, że opcja resetowania haseł na poziomie całej dzierżawy została określona [tutaj](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Te zasady opisują procesy, które klienci uzyskują podczas resetowania hasła oraz zawartość tokenów, które aplikacja otrzyma po pomyślnym ukończeniu.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

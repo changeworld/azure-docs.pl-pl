@@ -1,6 +1,6 @@
 ---
-title: Utwórz grupę zabezpieczeń sieci (klasyczne) przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i wdrożyć grupę zabezpieczeń sieci (klasyczne) przy użyciu programu PowerShell
+title: Utwórz sieciową grupę zabezpieczeń (wersja klasyczna) przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i wdrożyć sieciową grupę zabezpieczeń (wersja klasyczna) przy użyciu programu PowerShell
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,37 +16,37 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: ecb977660ed99a3cea2a71a867f50822b23e568c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793195"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634200"
 ---
-# <a name="create-a-network-security-group-classic-using-powershell"></a>Tworzenie grupy zabezpieczeń sieci (wdrożenia klasyczne) przy użyciu programu PowerShell
+# <a name="create-a-network-security-group-classic-using-powershell"></a>Utwórz sieciową grupę zabezpieczeń (model klasyczny) przy użyciu programu PowerShell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano klasyczny model wdrażania. Możesz również [tworzenia grup NSG w modelu wdrażania usługi Resource Manager](tutorial-filter-network-traffic.md).
+W tym artykule opisano klasyczny model wdrażania. Możesz również [tworzenie sieciowych grup zabezpieczeń w modelu wdrażania usługi Resource Manager](tutorial-filter-network-traffic.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-W powyższym scenariuszu na podstawie próbek PowerShell poniższe polecenia oczekiwać środowisku niezłożonym już utworzone. Do uruchomienia poleceń wyświetlaną w tym dokumencie, najpierw utworzyć środowisko testowe przez [tworzenia sieci wirtualnej](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Przykład programu PowerShell, poniższe polecenia oczekiwać proste środowisko już utworzone na podstawie powyższego scenariusza. Jeśli chcesz uruchamiać polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw utworzyć środowisko testowe, [tworzenia sieci wirtualnej](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="create-an-nsg-for-the-front-end-subnet"></a>Tworzenie grupy NSG dla podsieci frontonu
+## <a name="create-an-nsg-for-the-front-end-subnet"></a>Tworzenie sieciowej grupy zabezpieczeń dla podsieci frontonu
 
-1. Jeśli nie znasz programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+1. Jeśli po raz pierwszy używasz programu Azure PowerShell, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
-2. Utwórz grupę zabezpieczeń sieci o nazwie *frontonu NSG*:
+2. Utwórz sieciową grupę zabezpieczeń o nazwie *sieciowa grupa zabezpieczeń frontonu*:
 
     ```powershell   
     New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `
       -Label "Front end subnet NSG"
    ```
 
-3. Utwórz regułę zabezpieczeń, umożliwiając dostęp z Internetu do portu 3389:
+3. Utwórz regułę zabezpieczeń, zezwalając na dostęp z Internetu do portu 3389:
 
     ```powershell   
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -56,7 +56,7 @@ W powyższym scenariuszu na podstawie próbek PowerShell poniższe polecenia ocz
       -DestinationAddressPrefix '*' -DestinationPortRange '3389'
    ```
 
-4. Utwórz regułę zabezpieczeń, umożliwiając dostęp z Internetu do portu 80:
+4. Utwórz regułę zabezpieczeń, zezwalając na dostęp z Internetu na porcie 80:
 
     ```powershell   
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
@@ -66,16 +66,16 @@ W powyższym scenariuszu na podstawie próbek PowerShell poniższe polecenia ocz
       -DestinationAddressPrefix '*' -DestinationPortRange '80'
     ```
 
-## <a name="create-an-nsg-for-the-back-end-subnet"></a>Tworzenie grupy NSG podsieci wewnętrznej
+## <a name="create-an-nsg-for-the-back-end-subnet"></a>Tworzenie sieciowej grupy zabezpieczeń dla podsieci zaplecza
 
-1. Utwórz grupę zabezpieczeń sieci o nazwie *zaplecza NSG*:
+1. Utwórz sieciową grupę zabezpieczeń o nazwie *sieciowej grupy zabezpieczeń zaplecza*:
    
     ```powershell
     New-AzureNetworkSecurityGroup -Name "NSG-BackEnd" -Location uswest `
       -Label "Back end subnet NSG"
     ```
 
-2. Utwórz regułę zabezpieczeń zezwalania na dostęp z podsieci frontonu do portu 1433 (domyślny port używany przez program SQL Server):
+2. Utwórz regułę zabezpieczeń, zezwalając na dostęp z podsieci frontonu do portu 1433 (domyślnym portem używanym przez program SQL Server):
    
     ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `

@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu migawek przyrostowych kopii zapasowych i odzyskiwania niezarządzane dysków maszyny Wirtualnej systemu Windows Azure | Dokumentacja firmy Microsoft
-description: Tworzenie niestandardowego rozwiązania kopii zapasowych i odzyskiwania przy użyciu przyrostowej migawek dysków maszyny wirtualnej systemu Windows Azure.
+title: Używaj migawek przyrostowych kopii zapasowych i odzyskiwania niezarządzanych dysków maszyn wirtualnych Windows Azure | Dokumentacja firmy Microsoft
+description: Utwórz niestandardowe rozwiązanie kopii zapasowych i odzyskiwania dysków maszyn wirtualnych Windows Azure przy użyciu migawek przyrostowych.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 ms.openlocfilehash: aea91f4d402e88d74cc1917efe1b368c458f1322
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879890"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696711"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

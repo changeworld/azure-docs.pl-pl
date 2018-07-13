@@ -10,6 +10,6 @@
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|maxBatchSize|64|Liczba zdarzeń maksymalna, odebranych na pętla odbierania.|
-|prefetchCount|Brak|Wartość domyślna PrefetchCount używanego przez EventProcessorHost podstawowej.| 
+|maxBatchSize|64|Maksymalna otrzymana liczba zdarzeń na pętli odbioru.|
+|prefetchCount|Nie dotyczy|Domyślnie PrefetchCount używanej przez podstawowej klasy EventProcessorHost.| 
 |batchCheckpointFrequency|1|Liczba zdarzeń wsadów przetwarzana przed utworzeniem punktu kontrolnego EventHub kursora.| 

@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj aktualizację 0,5 w macierzy wirtualnego StorSimple | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania interfejsu użytkownika sieci web tablicy wirtualnego StorSimple do stosowania aktualizacji za pomocą metody Azure portal i poprawki
+title: Instalowanie aktualizacji Update 0.5 na macierz wirtualną StorSimple | Dokumentacja firmy Microsoft
+description: Opisuje sposób używania interfejsu użytkownika sieci web rozwiązania StorSimple Virtual Array do stosowania aktualizacji za pomocą usługi Azure portal i poprawki — metoda
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,109 +15,109 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: c47da5b90c16e2d5b5709e2a6affc026238b9468
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875662"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704525"
 ---
-# <a name="install-update-05-on-your-storsimple-virtual-array"></a>Zainstaluj aktualizację 0,5 na tablica wirtualnego StorSimple
+# <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalowanie aktualizacji Update 0.5 na rozwiązania StorSimple Virtual Array
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym artykule opisano kroki wymagane do zainstalowania aktualizacji 0,5 Tablica wirtualnego StorSimple, za pośrednictwem lokalnego interfejsu użytkownika sieci web i portalu Azure. Należy zastosować aktualizacje oprogramowania lub poprawek, aby zapewnić aktualność tablica wirtualne StorSimple.
+W tym artykule opisano kroki wymagane do zainstalowania aktualizacji Update 0.5 na rozwiązania StorSimple Virtual Array przy użyciu witryny Azure portal i za pomocą lokalnego Interfejsu w przeglądarce. Należy zastosować aktualizacje oprogramowania lub poprawek, aby zapewnić aktualność rozwiązania StorSimple Virtual Array.
 
-Przed zainstalowaniem aktualizacji zalecamy wykonanie woluminy lub udziały w trybie offline na hoście pierwszy, a następnie urządzenia. Pozwala to zmniejszyć możliwości uszkodzenie danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
+Przed zastosowaniem aktualizacji zaleca się wykonanie woluminy lub udziały w tryb offline na hoście pierwszy i następnie urządzenia. W ten sposób możliwości uszkodzenie danych. Po woluminy lub udziały są w trybie offline, należy również wziąć ręcznego tworzenia kopii zapasowych urządzenia.
 
 > [!IMPORTANT]
-> - Aktualizacja 0,5 odpowiada **10.0.10290.0** wersji oprogramowania na urządzeniu. Aby uzyskać informacji na temat nowości w ramach tej aktualizacji, przejdź do [informacje o wersji dla aktualizacji 0,5](storsimple-virtual-array-update-05-release-notes.md).
+> - Odnosi się do aktualizacji Update 0.5 **10.0.10290.0** wersję oprogramowania na urządzeniu. Aby uzyskać informacji na temat nowości w tej aktualizacji, przejdź do [informacje o wersji dla aktualizacji Update 0.5](storsimple-virtual-array-update-05-release-notes.md).
 >
-> - Jeśli używasz wersji Update 0.2 lub później, zaleca się, że musisz zainstalować aktualizacje za pomocą portalu Azure. Jeśli używasz Update 0.1 lub GA wersje oprogramowania, należy użyć metody poprawek za pomocą lokalnego interfejsu użytkownika sieci web do zainstalowania aktualizacji 0,5.
+> - Jeśli korzystasz z aktualizacji 0.2 lub nowszej, zaleca się, że możesz zainstalować aktualizacje za pośrednictwem witryny Azure portal. Jeśli korzystasz z aktualizacji 0.1 lub wersji oprogramowania, musi być instalowanie aktualizacji Update 0.5 metodę poprawkę, za pomocą lokalnego Interfejsu w przeglądarce.
 >
-> - Należy pamiętać, polegające na zainstalowanie aktualizacji lub poprawki ponownym uruchomieniu urządzenia. Biorąc pod uwagę, że tablica wirtualne StorSimple jest urządzeniem jeden węzeł, wszystkie operacje We/Wy w toku jest zakłócona i urządzenia napotyka przestoju.
+> - Należy pamiętać, który, instalowania aktualizacji lub poprawki powoduje ponowne uruchomienie urządzenia. Biorąc pod uwagę, że macierz wirtualna StorSimple jest urządzenie o jednym węźle, jest przerwane wszelkie operacje We/Wy w toku i urządzenie, wystąpi Przestój.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Z aktualizacji, 0,2 i nowszymi wersjami, zaleca się zainstalowanie aktualizacji za pośrednictwem portalu Azure. Procedury portalu wymaga od użytkownika skanowania, Pobierz i zainstaluj aktualizacje. Ta procedura trwa około 7 minut do wykonania. Wykonaj poniższe kroki, aby zainstalować aktualizacja lub poprawka.
+Jeśli z aktualizacją Update 0,2 lub nowszy, zaleca się zainstalowanie aktualizacji w witrynie Azure portal. Procedury portalu wymaga od użytkownika skanowania, pobieranie i instalowanie aktualizacji. Ta procedura trwa około 7 minut. Wykonaj następujące czynności w celu zainstalowania aktualizacji lub poprawki.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Po zakończeniu instalacji, przejdź do usługi Menedżer StorSimple urządzenia. Wybierz **urządzeń** , a następnie wybierz i kliknij przycisk po zaktualizowaniu urządzenia. Przejdź do **Ustawienia > Zarządzaj > aktualizacji urządzenia**. Wersja oprogramowania wyświetlane **10.0.10290.0**.
+Po zakończeniu instalacji przejdź do usługi Menedżer urządzeń StorSimple. Wybierz **urządzeń** a następnie wybierz i kliknij urządzenie właśnie został zaktualizowany. Przejdź do **Ustawienia > Zarządzaj > aktualizacje urządzeń**. Wersja oprogramowania wyświetlane powinna być **10.0.10290.0**.
 
-## <a name="use-the-local-web-ui"></a>Użyj lokalnego interfejsu użytkownika sieci web
+## <a name="use-the-local-web-ui"></a>Użyj lokalnego internetowego interfejsu użytkownika
 
-Istnieją dwa kroki, korzystając z lokalnego interfejsu użytkownika sieci web:
+Istnieją dwa kroki, korzystając z lokalnego Interfejsu w przeglądarce:
 
-* Pobieranie aktualizacji lub poprawek
-* Zainstalowanie aktualizacji lub poprawek
+* Pobieranie aktualizacji lub poprawki
+* Zainstalowanie aktualizacji lub poprawki
 
-### <a name="download-the-update-or-the-hotfix"></a>Pobieranie aktualizacji lub poprawek
+### <a name="download-the-update-or-the-hotfix"></a>Pobieranie aktualizacji lub poprawki
 
 Wykonaj następujące kroki, aby pobrać aktualizację oprogramowania z Wykazu usługi Microsoft Update.
 
-#### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawek
+#### <a name="to-download-the-update-or-the-hotfix"></a>Aby pobrać aktualizacji lub poprawki
 
-1. Uruchom program Internet Explorer i przejdź pod adres [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Uruchom program Internet Explorer i przejdź do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 
 2. Jeśli po raz pierwszy używasz Wykazu usługi Microsoft Update na danym komputerze, po wyświetleniu monitu o zainstalowanie dodatku Wykazu usługi Microsoft Update kliknij pozycję **Zainstaluj**.
 
-3. W polu wyszukiwania z wykazu usługi Microsoft Update wprowadź numer bazy wiedzy Knowledge Base (KB) poprawki, którą chcesz pobrać. Wprowadź **4021576** aktualizacja 0,5, a następnie kliknij przycisk **wyszukiwania**.
+3. W polu wyszukiwania wykazu usługi Microsoft Update wprowadź numer bazy wiedzy Knowledge Base (KB) poprawki, którą chcesz pobrać. Wprowadź **4021576** for Update 0.5, a następnie kliknij przycisk **wyszukiwania**.
    
-    Poprawka zostanie wyświetlona na liście, na przykład **aktualizacji tablicy wirtualne StorSimple 0,5**.
+    Lista poprawek zawierająca pojawia się na przykład **StorSimple Virtual Array Update 0,5**.
    
     ![Przeszukiwanie wykazu](./media/storsimple-virtual-array-install-update-05/download1.png)
 
 4. Kliknij pozycję **Pobierz**. 
 
-5. Powinny pojawić się dwa pliki do pobrania, *msu* i *cab* pliku. Pobieranie każdej z tych plików w folderze. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
+5. Powinien zostać wyświetlony dwa pliki do pobrania, *msu* i *cab* pliku. Pobierz każdego z tych plików do folderu. Folder można też skopiować do udziału sieciowego osiągalnego z urządzenia.
 
 6. Otwórz folder, w którym znajdują się pliki.
     ![Pliki w pakiecie](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     Zobacz:
-    -  Plik pakietu autonomicznego aktualizacji firmy Microsoft `WindowsTH-KB3011067-x64`. Ten plik jest używany do aktualizacji oprogramowania urządzenia.
-    - Plik pakietu agenta monitorowania serwera Geneva `GenevaMonitoringAgentPackageInstaller`. Ten plik jest używany do aktualizacji agenta usługi (MDS) monitorowania i diagnostyki. Kliknij dwukrotnie plik cab. Msi jest wyświetlany. Wybierz plik, kliknij prawym przyciskiem myszy, a następnie **wyodrębnić** pliku. Użyjesz _.msi_ plik, aby zaktualizować agenta.
+    -  Plik pakietu autonomicznego usługi Microsoft Update `WindowsTH-KB3011067-x64`. Ten plik jest używany do aktualizacji oprogramowania urządzenia.
+    - Plik pakietu agenta monitorowania w Genewie `GenevaMonitoringAgentPackageInstaller`. Ten plik jest używany do zaktualizowania agenta usługi (MDS) monitorowania i diagnostyki. Kliknij dwukrotnie plik cab. Msi jest wyświetlany. Wybierz plik, kliknij prawym przyciskiem myszy, a następnie **wyodrębnić** pliku. Użyjesz _.msi_ pliku do zaktualizowania agenta.
 
         ![Wyodrębnij plik aktualizacji agenta usług MDS](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
     
 
-### <a name="install-the-update-or-the-hotfix"></a>Zainstalowanie aktualizacji lub poprawek
+### <a name="install-the-update-or-the-hotfix"></a>Zainstalowanie aktualizacji lub poprawki
 
-Przed instalacją aktualizacji lub poprawki upewnij się, że aktualizacja lub poprawka pobierane lokalnie na hoście lub dostępny za pośrednictwem udziału sieciowego.
+Przed instalacją aktualizacji lub poprawki upewnij się, że aktualizacja lub poprawka pobierane lokalnie na hoście ani dostępne za pośrednictwem udziału sieciowego.
 
-Ta metoda umożliwia instalowanie aktualizacji na urządzeniu z systemem GA lub zaktualizuj 0,1 wersje oprogramowania. Ta procedura może zająć mniej niż 2 minut. Wykonaj poniższe kroki, aby zainstalować aktualizacja lub poprawka.
+Ta metoda umożliwia instalowanie aktualizacji na urządzeniu z systemem GA lub zaktualizuj 0,1 wersje oprogramowania. Ta procedura ma mniej niż 2 minut. Wykonaj następujące czynności w celu zainstalowania aktualizacji lub poprawki.
 
-#### <a name="to-install-the-update-or-the-hotfix"></a>Do zainstalowania aktualizacji lub poprawek
+#### <a name="to-install-the-update-or-the-hotfix"></a>Do zainstalowania aktualizacji lub poprawki
 
-1. W lokalnej sieci web interfejsu użytkownika, przejdź do **konserwacji** > **aktualizacji oprogramowania**.
+1. W lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji** > **aktualizacji oprogramowania**.
    
     ![aktualizowanie urządzenia](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. W **ścieżka pliku aktualizacji**, wprowadź nazwę pliku dla aktualizacji lub poprawek. Możesz również przejść do lokalizacji pliku instalacyjnego aktualizacja lub poprawka umieszczony w udziale sieciowym. Kliknij przycisk **Zastosuj**.
+2. W **ścieżka pliku aktualizacji**, wprowadź nazwę pliku aktualizacji lub poprawki. Możesz także przejść do lokalizacji pliku instalacyjnego aktualizacja lub poprawka umieszczony w udziale sieciowym. Kliknij przycisk **Zastosuj**.
    
     ![aktualizowanie urządzenia](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
-3. Zostanie wyświetlone ostrzeżenie. Biorąc pod uwagę te to urządzenie jednego węzła, po zastosowaniu aktualizacji, ponownym uruchomieniu urządzenia i brak przestojów. Kliknij ikonę znacznika wyboru.
+3. Zostanie wyświetlone ostrzeżenie. Po zastosowaniu aktualizacji i ponownym uruchomieniu urządzenia wystąpi Przestój, biorąc pod uwagę te jest urządzenie o jednym węźle. Kliknij ikonę znacznika wyboru.
    
    ![aktualizowanie urządzenia](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
-4. Aktualizacja zostanie uruchomiony. Po pomyślnym zaktualizowaniu urządzenia ponownego uruchomienia. Lokalnego interfejsu użytkownika nie jest dostępny w tym przedziale czasu.
+4. Aktualizacja zostanie uruchomiony. Po pomyślnym zaktualizowaniu urządzenia, jego uruchomieniu. Lokalny interfejs użytkownika jest niedostępny w tym czasie.
    
     ![aktualizowanie urządzenia](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po ponownym uruchomieniu komputera, zostają przeniesieni do **Zaloguj** strony. Aby zweryfikować, że oprogramowanie urządzenia został zaktualizowany w lokalnej sieci web interfejsu użytkownika, przejdź do **konserwacji** > **aktualizacji oprogramowania**. Wersja oprogramowania wyświetlane **10.0.0.0.0.10290.0** aktualizacji 0,5.
+5. Po ponownym uruchomieniu, nastąpi przekierowanie do **Zaloguj** strony. Aby zweryfikować, że oprogramowanie urządzenia został zaktualizowany w lokalnym internetowym interfejsie użytkownika, przejdź do **konserwacji** > **aktualizacji oprogramowania**. Wersja oprogramowania wyświetlane powinna być **10.0.0.0.0.10290.0** dla aktualizacji Update 0.5.
    
    > [!NOTE]
-   > Wersje oprogramowania Microsoft raport w sposób nieco inne w lokalnym interfejsu użytkownika sieci web i portalu Azure. Na przykład raporty lokalnego interfejsu użytkownika sieci web **10.0.0.0.0.10290** i raporty portalu Azure **10.0.10290.0** dla tej samej wersji.
+   > Firma Microsoft raport wersje oprogramowania w nieco inny sposób w lokalnym internetowym interfejsie użytkownika, jak i portalu Azure. Na przykład raporty lokalnego Interfejsu w przeglądarce **10.0.0.0.0.10290** i Azure portal raporty **10.0.10290.0** dla tej samej wersji.
    
     ![aktualizowanie urządzenia](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
-6. Następnym krokiem jest aktualizacja agenta usług MDS. W **aktualizacji oprogramowania** strony, przejdź do **ścieżka pliku aktualizacji** i przejdź do `GenevaMonitoringAgentPackageInstaller.msi` pliku. Powtórz kroki od 2 do 4. Po ponownym uruchomieniu wirtualnego tablicy, zaloguj się do lokalnego interfejsu użytkownika sieci web.
+6. Następnym krokiem jest, aby zaktualizować agenta usług MDS. W **aktualizacji oprogramowania** strony, przejdź do **ścieżka pliku aktualizacji** i przejdź do `GenevaMonitoringAgentPackageInstaller.msi` pliku. Powtórz kroki 2 – 4. Po ponownym uruchomieniu macierzy wirtualnej, zaloguj się do lokalnego Interfejsu w przeglądarce.
 
-Aktualizacja jest teraz ukończona.
+Aktualizacja została zakończona.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o [administrowanie tablica wirtualnego StorSimple](storsimple-ova-web-ui-admin.md).
+Dowiedz się więcej o [administrowanie rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

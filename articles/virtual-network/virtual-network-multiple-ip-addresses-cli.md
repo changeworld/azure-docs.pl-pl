@@ -1,6 +1,6 @@
 ---
-title: Adresy maszynę Wirtualną za pomocą wielu IP przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure (CLI).
+title: Maszyny Wirtualnej przy użyciu wielu adresów IP adresy przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisać wiele adresów IP do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia (CLI) platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,28 +16,28 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
 ms.openlocfilehash: c11883156f53ab53ebe6f84d66232f81f8cf31ff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528294"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38697368"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Przypisz wielu adresów IP do maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Przypisywanie wielu adresów IP do maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-W tym artykule opisano sposób tworzenia maszyny wirtualnej (VM) za pośrednictwem modelu wdrażania usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure. Nie można przypisać wiele adresów IP do zasobów została utworzona za pośrednictwem klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, przeczytaj [zrozumieć modele wdrażania](../resource-manager-deployment-model.md) artykułu.
+W tym artykule wyjaśniono, jak utworzyć maszynę wirtualną (VM) za pomocą modelu wdrażania usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure. Wiele adresów IP nie można przypisać do zasobów utworzonych za pomocą klasycznego modelu wdrażania. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, przeczytaj [omówienie modeli wdrażania](../resource-manager-deployment-model.md) artykułu.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Utwórz maszynę Wirtualną z wielu adresów IP
+## <a name = "create"></a>Tworzenie maszyny Wirtualnej z wieloma adresami IP
 
-Czynności, które wykonują wyjaśniono, jak można utworzyć maszyny wirtualnej w przykładzie z wielu adresów IP, zgodnie z opisem w scenariuszu. Zmienianie wartości zmiennej "" i typy adresów IP, zgodnie z wymaganiami, implementacji. 
+Poniższe kroki wyjaśniają, jak można utworzyć maszyny wirtualnej w przykładzie z wieloma adresami IP zgodnie z opisem w tym scenariuszu. Zmienianie wartości zmiennej "" i typy adresów IP, zgodnie z wymaganiami, implementacji. 
 
-1. Zainstaluj [Azure CLI 2.0](/cli/azure/install-az-cli2) Jeśli nie masz już zainstalowany.
-2. Tworzenie SSH publiczne i prywatne parę kluczy dla maszyn wirtualnych systemu Linux, wykonując kroki opisane w [tworzenie SSH publiczne i prywatne parę kluczy dla maszyn wirtualnych systemu Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-3. Z powłoki poleceń, zaloguj się za pomocą polecenia `az login` i wybierz subskrypcję używasz.
-4. Wykonywanie skryptu, znajdujący się na komputerze z systemem Linux lub Mac, aby utworzyć maszynę Wirtualną. Skrypt tworzy grupę zasobów, jedną sieć wirtualną (VNet), jedną kartą Sieciową o trzy konfiguracje adresów IP i maszyny Wirtualnej z dwie karty sieciowe podłączone do niego. Karta sieciowa, publiczny adres IP, wirtualnych sieci i zasobów maszyny Wirtualnej musi istnieć w tej samej subskrypcji i lokalizacji. Jeśli zasoby nie ma występować w tej samej grupie zasobów, w poniższym skrypcie robią.
+1. Zainstaluj [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) Jeśli już nie jest ona zainstalowana.
+2. Tworzenie publicznego i prywatnego pary kluczy SSH dla maszyn wirtualnych systemu Linux, wykonując kroki opisane w [tworzenie prywatnych i publicznych pary kluczy SSH dla maszyn wirtualnych systemu Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+3. Z powłoki poleceń, zaloguj się przy użyciu polecenia `az login` i wybierz subskrypcję, w przypadku używania.
+4. Wykonywanie skryptu, który następuje na komputerze z systemem Linux lub Mac, aby utworzyć maszynę Wirtualną. Skrypt tworzy grupę zasobów, jednej sieci wirtualnej (VNet), jedną kartą Sieciową z trzech konfiguracji adresów IP i Maszynę wirtualną z dwiema kartami sieciowymi, dołączono do niego. Karta sieciowa, publiczny adres IP, sieci wirtualnej i zasobów maszyny Wirtualnej musi istnieć w tej samej lokalizacji i subskrypcji. Chociaż zasoby nie muszą istnieć w tej samej grupie zasobów, w poniższym skrypcie im.
 
 ```bash
     
@@ -155,28 +155,28 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-Oprócz tworzenia maszyny Wirtualnej z kartą Sieciową z 3 konfiguracje adresów IP, tworzy skrypt:
+Oprócz tworzenia maszyny Wirtualnej z kartą Sieciową z 3. konfiguracje adresów IP, skrypt tworzy:
 
-- Pojedynczy premium zarządzać dysku domyślnie, ale ma inne opcje typu dysku, które można utworzyć. Odczyt [Utwórz Maszynę wirtualną systemu Linux przy użyciu programu Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu, aby uzyskać szczegółowe informacje.
-- Sieć wirtualną z jedną podsiecią i dwa publiczne adresy IP. Alternatywnie można użyć *istniejących* sieci wirtualnej, podsieci, karta sieciowa lub zasobów publicznych adresów IP. Aby dowiedzieć się, jak korzystać z istniejących zasobów sieciowych, a nie tworzenia dodatkowych zasobów, wprowadź `az vm create -h`.
+- Premium jednego dysku zarządzanego domyślnie, ale ma inne opcje typ dysku, które można utworzyć. Odczyt [Utwórz Maszynę wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykuł, aby uzyskać szczegółowe informacje.
+- Sieć wirtualną z jedną podsiecią i dwa publiczne adresy IP. Alternatywnie, można użyć *istniejących* sieci wirtualnej, podsieci, karta sieciowa lub zasobów publicznych adresów IP. Aby dowiedzieć się, jak korzystać z istniejącymi zasobami sieciowymi, a nie tworzenia dodatkowych zasobów, wprowadź `az vm create -h`.
 
-Publiczne adresy IP ma nominalnego opłatą. Aby dowiedzieć się więcej o cenach adresu IP, przeczytaj [cennik adres IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje ograniczona liczba publicznych adresów IP, których można użyć w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
+Publiczne adresy IP mają nominalnej. Aby dowiedzieć się więcej o cenach adresów IP, przeczytaj [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
 
-Po utworzeniu maszyny Wirtualnej, wprowadź `az network nic show --name MyNic1 --resource-group myResourceGroup` polecenie, aby wyświetlić konfigurację karty Sieciowej. Wprowadź `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` Aby wyświetlić listę konfiguracji adresów IP powiązanych z karty sieciowej.
+Po utworzeniu maszyny Wirtualnej, wprowadź `az network nic show --name MyNic1 --resource-group myResourceGroup` polecenie, aby wyświetlić konfigurację karty Sieciowej. Wprowadź `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` Aby wyświetlić listę konfiguracji adresów IP skojarzone z karty sieciowej.
 
-Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonując kroki odpowiednie dla systemu operacyjnego w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu.
+Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonując czynności opisane w systemie operacyjnym w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu.
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfejsu sieci platformy Azure, wykonując kroki, które należy wykonać. Przykłady opracowano na [scenariusza](#Scenario) opisane w tym artykule.
+Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfejsu sieci platformy Azure, wykonując poniższe kroki. Przykłady opracowano na [scenariusza](#Scenario) opisanych w tym artykule.
 
-1. Otwórz powłokę poleceń i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji. Jeśli nie masz jeszcze interfejsu wiersza polecenia Azure zainstalowany i skonfigurowany, wykonaj kroki [instalacji Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu i logowania do platformy Azure konta `az-login` polecenia.
+1. Otwórz powłokę wiersza polecenia i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji. Jeśli nie masz jeszcze wiersza polecenia platformy Azure zainstalowany i skonfigurowany, wykonaj kroki opisane w [instalacji interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu i zaloguj się do subskrypcji platformy Azure, konto z `az-login` polecenia.
 
-2. Wykonaj kroki jednego z następujących sekcji, w zależności od wymagań:
+2. Wykonaj kroki opisane w jednej z następujących sekcji, w zależności od wymagań:
 
-    **Dodaj prywatnego adresu IP**
+    **Dodaj prywatny adres IP**
     
-    Aby dodać prywatnego adresu IP do karty Sieciowej, należy utworzyć konfigurację protokołu IP za pomocą polecenia poniżej. Statyczny adres IP musi być nieużywany adres podsieci.
+    Aby dodać prywatny adres IP do karty Sieciowej, należy utworzyć konfigurację adresu IP przy użyciu poniższego polecenia. Statyczny adres IP musi być nieużywany adres podsieci.
 
     ```bash
     az network nic ip-config create \
@@ -186,17 +186,17 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
     --name IPConfig-4
     ```
     
-    Tworzenie konfiguracji tyle, ile potrzebujesz, przy użyciu nazwy konfiguracji unikatowy i prywatnych adresów IP (w przypadku konfiguracji statycznych adresów IP).
+    Utwórz konfiguracje tyle, ile jest potrzebne, przy użyciu nazwy unikatowej konfiguracji i prywatnymi adresami IP (w przypadku konfiguracji za pomocą statycznych adresów IP).
 
-    **Dodaj publiczny adres IP**
+    **Dodawanie publicznego adresu IP**
     
-    Publiczny adres IP jest dodawany przez kojarzenie go z nową konfigurację adresu IP lub istniejącej konfiguracji adresu IP. Wykonaj kroki opisane w sekcji, które należy wykonać, ile potrzebujesz.
+    Publiczny adres IP jest dodawany przez skojarzeniem go z nową konfigurację adresu IP lub istniejącej konfiguracji adresu IP. Wykonaj kroki opisane w sekcji, które należy wykonać, ile potrzebujesz.
 
-    Publiczne adresy IP ma nominalnego opłatą. Aby dowiedzieć się więcej o cenach adresu IP, przeczytaj [cennik adres IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje ograniczona liczba publicznych adresów IP, których można użyć w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
+    Publiczne adresy IP mają nominalnej. Aby dowiedzieć się więcej o cenach adresów IP, przeczytaj [cennik adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. Istnieje limit liczby publicznych adresów IP, które mogą być używane w ramach subskrypcji. Aby uzyskać więcej informacji o limitach, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md#networking-limits).
 
     - **Skojarz zasób nowej konfiguracji adresu IP**
     
-        Po dodaniu publicznego adresu IP w nowej konfiguracji adresu IP, musisz również dodać prywatnego adresu IP, ponieważ wszystkie konfiguracje adresów IP muszą mieć prywatnego adresu IP. Możesz dodać istniejący zasób publiczny adres IP lub Utwórz nową. Aby utworzyć nową, wprowadź następujące polecenie:
+        Zawsze, gdy publiczny adres IP zostanie dodana nowa konfiguracja adresu IP, możesz również dodać prywatny adres IP, ponieważ wszystkie konfiguracje adresów IP musi mieć prywatny adres IP. Możesz dodać istniejący zasób publicznego adresu IP lub Utwórz nową. Aby utworzyć nowe konto, wprowadź następujące polecenie:
     
         ```bash
         az network public-ip create \
@@ -206,7 +206,7 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
         --dns-name mypublicdns3
         ```
 
-        Aby utworzyć nową konfigurację adresu IP za pomocą statycznego prywatnego adresu IP oraz skojarzonych z nimi *myPublicIP3* publicznego adresu IP adresów zasobów, wprowadź następujące polecenie:
+        Aby utworzyć nową konfigurację adresu IP za pomocą statycznego prywatnego adresu IP i skojarzonej *myPublicIP3* publiczny adres IP adresów zasobów, wpisz następujące polecenie:
 
         ```bash
         az network nic ip-config create \
@@ -217,7 +217,7 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
         --public-ip-address myPublicIP3
         ```
 
-    - **Skojarz zasób do istniejącej konfiguracji IP** zasób publicznego adresu IP może być skojarzony tylko konfiguracją protokołu IP, który nie ma jeszcze skojarzone. Można określić, czy konfiguracja IP ma skojarzone publicznego adresu IP, wprowadzając następujące polecenie:
+    - **Skojarz zasób do istniejącej konfiguracji adresu IP** zasób publicznego adresu IP można skojarzyć tylko do konfiguracji adresu IP, który nie ma jeszcze skojarzone. Można określić, czy konfiguracja adresu IP ma skojarzony publiczny adres IP, wprowadzając następujące polecenie:
 
         ```bash
         az network nic ip-config list \
@@ -234,7 +234,7 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        Ponieważ **PublicIpAddressId** kolumny dla *IpConfig 3* jest puste w danych wyjściowych, żaden z zasobów publiczny adres IP jest obecnie z nią skojarzona. Dodaj istniejący zasób publicznego adresu IP do IpConfig 3 lub wprowadź następujące polecenie, aby go utworzyć:
+        Ponieważ **PublicIpAddressId** kolumny *IpConfig 3* jest puste w danych wyjściowych, nie zasobu publicznego adresu IP jest aktualnie powiązany do niego. Możesz dodać istniejący zasób publicznego adresu IP do IpConfig 3 lub wprowadź następujące polecenie, aby go utworzyć:
 
         ```bash
         az network public-ip create \
@@ -245,7 +245,7 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
         --allocation-method Static
         ```
     
-        Wprowadź następujące polecenie, aby skojarzyć zasób publicznego adresu IP do istniejącej konfiguracji IP o nazwie *IPConfig 3*:
+        Wprowadź następujące polecenie, aby skojarzyć zasób publicznego adresu IP do istniejącej konfiguracji adresu IP o nazwie *IPConfig 3*:
     
         ```bash
         az network nic ip-config update \
@@ -255,7 +255,7 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
         --public-ip myPublicIP3
         ```
 
-3. Wyświetl prywatnych adresów IP i zasobu publicznego adresu IP identyfikatory przypisane do karty Sieciowej, wprowadzając następujące polecenie:
+3. Wyświetl prywatne adresy IP i zasób publicznego adresu IP identyfikatory przypisane do karty Sieciowej, wprowadzając następujące polecenie:
 
     ```bash
     az network nic ip-config list \
@@ -273,6 +273,6 @@ Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfej
         IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
-4. Dodaj prywatnych adresów IP dodany do karty Sieciowej do maszyny Wirtualnej systemu operacyjnego, zgodnie z instrukcjami w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu. Nie dodawaj publiczne adresy IP do systemu operacyjnego.
+4. Dodaj prywatnych adresów IP został dodany do karty Sieciowej w systemie operacyjnym maszyny Wirtualnej, postępując zgodnie z instrukcjami wyświetlanymi w [adresy IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) dalszej części tego artykułu. Nie należy dodawać publiczne adresy IP do systemu operacyjnego.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

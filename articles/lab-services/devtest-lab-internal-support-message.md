@@ -1,6 +1,6 @@
 ---
-title: Dodaj instrukcję wewnętrznej pomocy technicznej do laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można opublikować instrukcji wewnętrznej pomocy technicznej do laboratorium w usłudze Azure DevTest Labs
+title: Dodaj instrukcję wewnętrznej pomocy technicznej do laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak publikować instrukcji wewnętrznej pomocy technicznej do laboratorium Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787430"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38696254"
 ---
-# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Dodaj instrukcję wewnętrznej pomocy technicznej do laboratorium w usłudze Azure DevTest Labs
+# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Dodaj instrukcję wewnętrznej pomocy technicznej do laboratorium Azure DevTest Labs
 
-Azure DevTest Labs umożliwia dostosowanie środowiska laboratoryjnego za pomocą instrukcji wewnętrznej pomocy technicznej, która dostarcza użytkownikom informacje techniczne dotyczące laboratorium. Na przykład można określić informacje kontaktowe, co użytkownik zna możliwości dotarcia wewnętrznej pomocy technicznej, jeśli potrzebna jest pomoc dotyczącą rozwiązywania problemów oraz uzyskiwania dostępu do zasobów w środowisku laboratoryjnym. Można też podać łącza do wewnętrznej witryny sieci Web lub często zadawane pytania, których dostęp zespołu przed kontaktu z pomocą techniczną.
+Usługa Azure DevTest Labs pozwala dostosować swoje laboratorium za pomocą instrukcji wewnętrznej pomocy technicznej, która dostarcza użytkownikom informacje techniczne dotyczące laboratorium. Na przykład można określić informacje kontaktowe, co użytkownik wie, jak nawiązać wewnętrznej pomocy technicznej, gdy ich potrzebujesz pomocy przy rozwiązywaniu problemów lub uzyskiwania dostępu do zasobów w środowisku laboratoryjnym. Można również zawierają linki do wewnętrznych witryn sieci Web lub często zadawanych pytań, które Twój zespół ma dostęp, skontaktuj się z pomocą techniczną.
 
-Instrukcja wewnętrznej pomocy technicznej jest przeznaczona do umożliwiają ogłaszanie informacji laboratoryjnych, która zazwyczaj nie zmienia zbyt często. Aby powiadomić użytkowników o informacji laboratorium, które jest bardziej tymczasowy charakter — takie jak najnowsze aktualizacje zasad laboratorium — zobacz [anons w laboratorium](devtest-lab-announcements.md).
+Instrukcja wewnętrznej pomocy technicznej jest przeznaczona do umożliwiają ogłaszanie informacji laboratoryjnych, które zazwyczaj nie zmienia się zbyt często. Aby powiadomić użytkowników o informacje laboratorium, który jest bardziej miał charakter przejściowy — takich jak najnowsze aktualizacje zasad laboratorium — zobacz [publikowanie anonsu w laboratorium](devtest-lab-announcements.md).
 
 Łatwo można wyłączyć lub edytować oświadczenie pomocy technicznej, po jej nie ma już zastosowania.
 
-## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Kroki, aby dodać do istniejącego laboratorium oświadczenie pomocy technicznej
+## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Kroki pozwalające dodawać oświadczenie pomocy technicznej do istniejącego laboratorium
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. W razie potrzeby wybierz **wszystkie usługi**, a następnie wybierz **DevTest Labs** z listy. (Laboratorium może być jest wyświetlana na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
-1. Z listy labs wybierz laboratorium, w której chcesz dodać oświadczenie pomocy technicznej.  
-1. W laboratorium **omówienie** wybierz opcję **konfiguracji i zasadach**.  
+1. W razie potrzeby zaznacz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy. (Laboratorium może być już wyświetlane na pulpicie nawigacyjnym w obszarze **wszystkie zasoby**).
+1. Zaznacz na liście laboratoriów laboratorium, w której chcesz dodać oświadczenie pomocy technicznej.  
+1. W laboratorium **Przegląd** wybierz opcję **konfiguracji i zasad**.  
 
-    ![Przycisk zasad i konfiguracji](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
+    ![Przycisk konfiguracji i zasad](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. Po lewej stronie w obszarze **ustawienia**, wybierz pozycję **wewnętrznej pomocy technicznej**.
-
-    ![Przycisk wewnętrznej pomocy technicznej](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
-
-1. Aby utworzyć komunikat wewnętrznej pomocy technicznej dla użytkowników, w tym laboratorium, ustaw włączone **tak**.
-
-1. W **komunikat pomocy technicznej** wprowadź instrukcji wewnętrznej pomocy technicznej, które mają być przedstawiane użytkownikom laboratorium. Komunikat pomocy technicznej akceptuje Markdown. Tekst komunikatu jest wprowadzana, można wyświetlić **Podgląd** obszarze u dołu ekranu, aby zobaczyć, jak komunikat zostanie wyświetlony dla użytkowników.
-
-    ![Ekran wewnętrznej pomocy technicznej można utworzyć komunikatu.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
-
-
-1. Wybierz **zapisać** po instrukcji pomocy technicznej jest gotowy do publikowania.
-
-Jeśli nie chcesz już nie pokazuj tego komunikatu pomocy technicznej dla użytkowników w laboratorium, wróć do **wewnętrznej pomocy technicznej** strony i ustaw **włączone** do **nr**.
-
-## <a name="steps-for-users-to-view-the-support-message"></a>Kroki do wyświetlania komunikatu pomocy technicznej
-
-1. Z [portalu Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
-
-1. W laboratorium **omówienie** wybierz opcję **wewnętrznej pomocy technicznej**.  
+1. Po lewej stronie w obszarze **ustawienia**, wybierz opcję **wewnętrznej pomocy technicznej**.
 
     ![Przycisk wewnętrznej pomocy technicznej](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
+1. Aby utworzyć wiadomość wewnętrznej pomocy technicznej dla użytkowników, w tym środowisku laboratoryjnym, ustaw włączone **tak**.
 
-1. Jeśli publikowania wiadomości pomocy technicznej, użytkownik może przeglądać go z okienka wewnętrznej pomocy technicznej.
+1. W **komunikat o pomocy technicznej** pole, wprowadź informacje o prawach wewnętrznej pomocy technicznej, którą chcesz przedstawić użytkownikom laboratorium. Komunikat o pomocy technicznej akceptuje języka znaczników Markdown. Podczas wprowadzania tekstu wiadomości można wyświetlić **Podgląd** obszar w dolnej części ekranu, aby zobaczyć, jak pojawi się komunikat do użytkowników.
 
-    ![Okienko obsługi wewnętrznej zaksięgowany komunikat pomocy technicznej](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
+    ![Ekran wewnętrznej pomocy technicznej do utworzenia wiadomości.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
+
+
+1. Wybierz **Zapisz** po instrukcji obsługi jest gotowy do opublikowania.
+
+Jeśli nie chcesz już nie pokazuj tego komunikatu pomocy technicznej do laboratorium użytkowników, wróć do **wewnętrznej pomocy technicznej** strony, a następnie ustaw **włączone** do **nie**.
+
+## <a name="steps-for-users-to-view-the-support-message"></a>Kroki dla użytkowników wyświetlić komunikat o pomocy technicznej
+
+1. Z [witryny Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), wybierz laboratorium.
+
+1. W laboratorium **Przegląd** wybierz opcję **wewnętrznej pomocy technicznej**.  
+
+    ![Przycisk wewnętrznej pomocy technicznej](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+
+
+1. Jeśli wiadomość pomocy technicznej zostanie opublikowana, użytkownik może przeglądać je z poziomu okienka wewnętrznej pomocy technicznej.
+
+    ![Okienko obsługi wiadomości opublikowanej w wewnętrznej pomocy technicznej](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Oświadczenia dotyczące pomocy technicznej wewnętrzne są zwykle używane do zapewniają informacje pomocy technicznej, które nie zmieniają się który często. Możesz też dowiedzieć się, jak [post anonsu do laboratorium](devtest-lab-announcements.md) aby informować użytkowników o tymczasowej zmiany lub aktualizacje do laboratorium.
-* [Ustaw zasady i harmonogramy](devtest-lab-set-lab-policy.md) wyjaśniono, jak można stosować inne ograniczenia i konwencje między subskrypcją za pomocą niestandardowych zasad.
+* Oświadczenia dotyczące pomocy technicznej wewnętrzne są zazwyczaj używane do informacje pomocy technicznej, które nie zmieniają się, często. Możesz też dowiedzieć się, jak [publikowanie anonsu do laboratorium](devtest-lab-announcements.md) aby informować użytkowników o tymczasowej zmiany lub aktualizacji do laboratorium.
+* [Ustawianie zasad i harmonogramów](devtest-lab-set-lab-policy.md) zawiera informacje dotyczące sposobu można zastosować inne ograniczenia i konwencje w ramach subskrypcji za pomocą zasad niestandardowych.

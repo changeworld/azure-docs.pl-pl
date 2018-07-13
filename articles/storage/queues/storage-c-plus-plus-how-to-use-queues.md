@@ -1,6 +1,6 @@
 ---
-title: Jak używać magazynu kolejek (C++) | Dokumentacja firmy Microsoft
-description: Informacje o sposobie korzystania z usługi magazyn kolejek na platformie Azure. Przykłady są napisane w języku C++.
+title: Jak używać usługi queue storage (C++) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi queue storage na platformie Azure. Przykłady są napisane w języku C++.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
 ms.openlocfilehash: 5e81d5e0af9871099b7f921f355cf94249e4d30c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874052"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38618470"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Jak używać magazynu kolejek w języku C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Omówienie
-W tym przewodniku opisano sposób wykonywania typowych scenariuszy przy użyciu usługi magazynu kolejek Azure. Przykłady są napisane w C++ i użyj [biblioteki klienta usługi Azure Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują **wstawianie**, **wybierania**, **pobierania**, i **usuwanie** kolejki komunikatów, a także **tworzenie i usuwanie kolejek**.
+## <a name="overview"></a>Przegląd
+W przewodniku opisano, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie i usuwanie kolejek**.
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony dla biblioteki klienta magazynu Azure dla języka C++ w wersji 1.0.0 i powyżej. Zalecana wersja jest biblioteka klienta usługi Storage 2.2.0, który jest dostępny za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](http://github.com/Azure/azure-storage-cpp/).
+> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](http://www.nuget.org/packages/wastorage) lub witryny [GitHub](http://github.com/Azure/azure-storage-cpp/).
 > 
 > 
 
@@ -38,22 +38,22 @@ W tym przewodniku opisano sposób wykonywania typowych scenariuszy przy użyciu 
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-c-application"></a>Tworzenie aplikacji C++
-W tym przewodniku użyje funkcji magazynu, które mogą być uruchamiane w ramach aplikacji C++.
+## <a name="create-a-c-application"></a>Tworzenie aplikacji języka C++
+W tym przewodniku użyje funkcji magazynu, które mogą być uruchamiane w ramach aplikacji w języku C++.
 
-Aby to zrobić, należy zainstalować bibliotekę klienta usługi Azure Storage dla języka C++ i Utwórz konto magazynu Azure w ramach subskrypcji platformy Azure.
+W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla języka C++ i utworzyć konto usługi Azure Storage w ramach subskrypcji platformy Azure.
 
-Aby zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, można użyć następujących metod:
+Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
-* **Linux:** postępuj zgodnie z instrukcjami [biblioteki klienta usługi Azure Storage dla języka C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
-* **System Windows:** w programie Visual Studio, kliknij przycisk **Narzędzia > Menedżera pakietów NuGet > konsoli Menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
+* **Linux:** wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
+* **Windows:** w programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
 
 ```  
 Install-Package wastorage
 ```
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurowanie aplikacji dostęp do kolejki magazynu
-Dodaj następujące instrukcje na początku pliku C++, których chcesz użyć interfejsów API magazynu Azure można uzyskać dostępu do kolejek obejmują:  
+## <a name="configure-your-application-to-access-queue-storage"></a>Umożliwia skonfigurowanie aplikacji dostęp do usługi Queue Storage
+Dodaj następujące obejmują instrukcji na górze pliku C++, której chcesz umożliwia dostęp do kolejek usługi Azure storage interfejsów API:  
 
 ```cpp
 #include <was/storage_account.h>
@@ -61,26 +61,26 @@ Dodaj następujące instrukcje na początku pliku C++, których chcesz użyć in
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure storage
-Klienta usługi Azure storage używa parametrów połączenia magazynu do przechowywania punktów końcowych i poświadczeń do uzyskiwania dostępu do danych usługi zarządzania. Podczas uruchamiania w aplikacji klienckiej, należy podać parametry połączenia magazynu w następującym formacie, przy użyciu nazwy konta magazynu i klucz dostępu do magazynu dla konta magazynu na liście [Azure Portal](https://portal.azure.com) dla *AccountName* i *AccountKey* wartości. Aby uzyskać informacje dotyczące kont magazynu i klucze dostępu, zobacz [o kontach magazynu Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Ten przykład przedstawia, jak można zadeklarować pola statycznego do przechowywania parametrów połączenia:  
+W kliencie usługi Azure Storage punkty końcowe i poświadczenia wymagane do uzyskania dostępu do usług zarządzania danymi są przechowywane w parametrach połączenia magazynu. Podczas uruchamiania w aplikacji klienckiej, należy podać parametry połączenia magazynu w następującym formacie, przy użyciu nazwy konta magazynu oraz klucz dostępu do magazynu dla konta magazynu na liście [witryny Azure Portal](https://portal.azure.com) dla *AccountName* i *AccountKey* wartości. Aby uzyskać informacje na temat kont magazynu i klucze dostępu, zobacz [o kontach magazynu Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia:  
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Aby przetestować aplikację w lokalnym komputerze z systemem Windows, można użyć Microsoft Azure [emulatora magazynu](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) zainstalowane z [zestawu Azure SDK](https://azure.microsoft.com/downloads/). Emulator magazynu jest narzędziem, która symuluje dostępnej na platformie Azure na komputerze deweloperskim lokalnych usług obiektów Blob, kolejki i tabeli. W poniższym przykładzie pokazano, jak można zadeklarować pole statyczne, aby mógł pomieścić parametry połączenia z lokalnym emulatorze magazynu:  
+Aby przetestować aplikację na lokalnym komputerze Windows, należy użyć Microsoft Azure [emulatora magazynu](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) który został zainstalowany przy użyciu [zestawu Azure SDK](https://azure.microsoft.com/downloads/). Emulator magazynu jest narzędziem, która symuluje sieć usługi obiektów Blob, kolejek i tabel, które muszą być dostępne na platformie Azure na lokalnej maszynie do programowania. W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia z lokalnym emulatorem magazynu:  
 
 ```cpp
 // Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Aby uruchomić emulatora magazynu Azure, wybierz **Start** przycisk lub naciśnij przycisk **Windows** klucza. Rozpocznij wpisywanie **emulatora magazynu Azure**i wybierz **emulatora magazynu Azure Microsoft** z listy aplikacji.
+Aby uruchomić emulatora usługi Azure storage, zaznacz **Start** przycisk lub naciśnij klawisz **Windows** klucza. Rozpocznij wpisywanie ciągu **emulatora usługi Azure Storage**i wybierz **emulatora systemu Microsoft Azure Storage** z listy aplikacji.
 
-Poniższe przykłady założono użycie jednej z tych dwóch metod można pobrać parametry połączenia magazynu.
+W poniższych przykładach założono, że uzyskano parametry połączenia za pomocą jednej z tych dwóch metod.
 
-## <a name="retrieve-your-connection-string"></a>Pobranie parametrów połączenia
-Można użyć **cloud_storage_account** klasy do reprezentowania informacje o koncie magazynu. Aby uzyskać informacje o koncie magazynu z parametrów połączenia magazynu, można użyć **przeanalizować** metody.
+## <a name="retrieve-your-connection-string"></a>Pobieranie parametrów połączenia
+Możesz użyć **cloud_storage_account** klasy do reprezentowania informacje o Twoim koncie magazynu. Aby pobrać informacje o koncie magazynu z parametrów połączenia usługi Storage, użyj metody **parse**.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -88,7 +88,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>Porady: Tworzenie kolejki
-A **cloud_queue_client** obiektu pozwala pobierać obiekty odwołań do kolejki. Poniższy kod tworzy **cloud_queue_client** obiektu.
+A **cloud_queue_client** obiektu pozwala uzyskać obiekty odwołanie do kolejki. Poniższy kod tworzy **cloud_queue_client** obiektu.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -98,7 +98,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 ```
 
-Użyj **cloud_queue_client** obiekt, aby pobrać odwołanie do kolejki, którego chcesz użyć. Można utworzyć kolejkę, jeśli nie istnieje.
+Użyj **cloud_queue_client** obiektu, aby pobrać odwołanie do kolejki, w której chcesz użyć. Można utworzyć kolejkę, jeśli nie istnieje.
 
 ```cpp
 // Retrieve a reference to a queue.
@@ -109,7 +109,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Porady: wstawianie komunikatu do kolejki
-Aby wstawić komunikat do istniejącej kolejki, najpierw utwórz nową **cloud_queue_message**. Następnie wywołaj **add_message** metody. A **cloud_queue_message** można tworzyć przy użyciu dowolnego ciągu lub **bajtów** tablicy. Oto kod, który tworzy kolejkę (jeśli kolejka nie istnieje) i wstawia komunikat „Hello, World”:
+Aby wstawić komunikat do istniejącej kolejki, najpierw utwórz nowe **cloud_queue_message**. Następnie wywołaj **add_message** metody. A **cloud_queue_message** można utworzyć przy użyciu dowolnego ciągu lub **bajtów** tablicy. Oto kod, który tworzy kolejkę (jeśli kolejka nie istnieje) i wstawia komunikat „Hello, World”:
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -130,7 +130,7 @@ queue.add_message(message1);
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
-Możesz uzyskać wgląd w komunikat z przodu kolejki bez jego usuwania z kolejki, wywołując **peek_message** metody.
+Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **peek_message** metody.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -176,7 +176,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>Porady: usuwanie następnego komunikatu z kolejki
-Twój kod usuwa komunikat z kolejki w dwóch etapach. Podczas wywoływania **get_message**, Pobierz następnej wiadomości w kolejce. Komunikat zwrócony z **get_message** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **delete_message**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Twój kod wywołuje **delete_message** natychmiast po przetworzeniu komunikatu.
+Twój kod usuwa komunikat z kolejki w dwóch etapach. Gdy wywołujesz **get_message**, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z **get_message** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **delete_message**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Twój kod wywołuje **delete_message** natychmiast po przetworzeniu komunikatu.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -197,7 +197,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Porady: wykorzystanie dodatkowych opcji do usuwania komunikatów z kolejek
-Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu wykorzystuje **get_messages** metodę, aby pobrać 20 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu **dla** pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu. Należy pamiętać, że 5 minut rozpoczyna się dla wszystkich wiadomości w tym samym czasie, więc po 5 minut przekazany od czasu wywołania **get_messages**, wszystkie komunikaty, które nie zostały usunięte, będą widoczne ponownie.
+Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu wykorzystuje **get_messages** metodę, aby pobrać 20 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu **dla** pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu. Należy zauważyć, że 5 minut rozpoczyna się dla wszystkich komunikatów w tym samym czasie, dlatego po 5 minut ma minęło od wywołania **get_messages**, wszystkie komunikaty, które nie zostały usunięte, będą widoczne ponownie.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -225,7 +225,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Porady: pobieranie długości kolejki
-Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **Download_attributes** metody prosi usługę kolejki o pobranie atrybutów kolejki, w tym liczby komunikatów. **Approximate_message_count** metoda pobiera przybliżoną liczbę wiadomości w kolejce.
+Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **Download_attributes** metoda prosi usługę kolejki o pobranie atrybutów kolejki, w tym liczby komunikatów. **Approximate_message_count** metoda pobiera przybliżona liczba komunikatów w kolejce.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -248,7 +248,7 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
-Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **delete_queue_if_exists** metody dla obiekt kolejki.
+Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **delete_queue_if_exists** metody na obiekcie kolejki.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -264,11 +264,11 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już podstawy magazynu kolejek, skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure Storage.
+## <a name="next-steps"></a>Kolejne kroki
+Teraz, kiedy znasz już podstawy usługi Queue storage, skorzystaj z poniższych linków, aby dowiedzieć się więcej o usłudze Azure Storage.
 
 * [Jak używać magazynu obiektów Blob w języku C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Jak używać magazynu tabel w języku C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Lista zasobów magazynu Azure w języku C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [Biblioteka klienta usługi Storage for C++ — dokumentacja](http://azure.github.io/azure-storage-cpp)
+* [Lista zasobów usługi Azure Storage w języku C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Biblioteka klienta usługi Storage for C++ Concepts](http://azure.github.io/azure-storage-cpp)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

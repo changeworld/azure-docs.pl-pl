@@ -2,19 +2,19 @@
 title: Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA | Microsoft Docs
 description: Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: d0954627978c7725059e0b678783c8c6ffb9e827
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308887"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346845"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA
 
@@ -88,7 +88,7 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 8. Zaakceptuj warunki wersji zapoznawczej, aby użyć opcji **dodatkowego magazynu**. 
 
    > [!IMPORTANT]
-   > Więcej niż 1 TB pamięci w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem poniższych: Północne Zjednoczone Królestwo, Zachodnio-środkowe stany USA, Południowe Zjednoczone Królestwo 2, Chiny Wschodnie, USDoDCentral, Niemcy Środkowe, USDoDEast, Południowo-Zachodnie Stany USA US Gov, Południowo-środkowe stany USA US Gov, Niemcy Północno-Wschodnie, Chiny Północne, Wschodnie stany USA US Gov. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Więcej niż 1 TB pamięci w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem poniższych: Zachodnio-środkowe stany USA, Chiny Wschodnie, USDoDCentral, US Gov Iowa, Niemcy Środkowe, USDoDEast, US Gov Southwest, Niemcy Północno-Wschodnie, Chiny Północne. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  
 

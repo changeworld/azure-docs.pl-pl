@@ -1,6 +1,6 @@
 ---
-title: Pojęcia dotyczące DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej podstawowych pojęć dotyczących DevTest Labs i jak może być łatwe do tworzenia, zarządzania i monitorowania maszyn wirtualnych platformy Azure
+title: DevTest Labs — pojęcia | Dokumentacja firmy Microsoft
+description: Podstawowe informacje na temat usługi DevTest Labs i jak ją mogą znacznie ułatwiają tworzenie, zarządzanie i monitorowanie maszyn wirtualnych platformy Azure
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787528"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38676474"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs — pojęcia
 ## <a name="overview"></a>Przegląd
-Poniższa lista zawiera podstawowe pojęcia DevTest Labs i definicje:
+Poniższa lista zawiera kluczowe DevTest Labs — pojęcia i definicje:
 
 ## <a name="labs"></a>Laboratoria
-Laboratorium jest infrastrukturę, która obejmuje grupy zasobów, takich jak maszyn wirtualnych (VM), które umożliwiają lepsze zarządzanie tych zasobów, określając ograniczenia i limity przydziału.
+Laboratorium jest infrastrukturę, która obejmuje grupę zasobów, takich jak maszyny wirtualne (VM), które umożliwia lepsze zarządzanie tymi zasobami przez określenie ograniczeń i przydziałów.
 
 ## <a name="virtual-machine"></a>Maszyna wirtualna
-Maszyny Wirtualnej platformy Azure jest jednym z kilku typów [na żądanie, skalowalnych zasobów obliczeniowych](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) udostępniającej Azure. Maszyny wirtualne platformy Azure zapewniają elastyczność wirtualizacji bez konieczności kupowania i utrzymywania sprzętem fizycznym, który uruchamia go, mimo że można nadal należy obsługiwać maszynę Wirtualną za wykonywanie określonych zadań, takich jak konfigurowanie, poprawki i instalacji oprogramowania, które działa na go.
+Maszynę wirtualną platformy Azure jest jednym z kilku typów [na żądanie, skalowalnych zasobów obliczeniowych](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm) pozwalającą na platformie Azure. Maszyny wirtualne platformy Azure zapewniają elastyczność wirtualizacji bez konieczności kupowania i utrzymywania fizycznego sprzętu potrzebnego do działa, mimo że nadal trzeba utrzymywać w maszynie Wirtualnej, wykonując pewnych zadań, takich jak konfigurowania, poprawiania i instalowanie oprogramowania, które jest uruchamiane na go.
 
-[Omówienie maszyn wirtualnych systemu Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) zapewnia informacje o kwestiach należy rozważyć przed Utwórz Maszynę wirtualną, jak utworzyć i jak zarządzać.
+[Omówienie maszyn wirtualnych Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) zapewnia możesz dowiedzieć się, jakie należy rozważyć przed Utwórz Maszynę wirtualną, jak utworzyć i jak można zarządzać.
 
-## <a name="claimable-vm"></a>Claimable maszyny Wirtualnej
-Claimable maszyny Wirtualnej platformy Azure jest maszyny wirtualnej, która jest dostępna do użycia przez każdy laboratorium użytkownik z uprawnieniami. Administrator laboratorium można przygotować maszyn wirtualnych z określonych obrazów podstawowej i artefakty i zapisywać je do współużytkowanej puli. Użytkownik laboratorium następnie mogą rezerwować pracy maszyny Wirtualnej z puli, jeśli wymagany jest jeden z tej konkretnej konfiguracji.
+## <a name="claimable-vm"></a>Przejęcia maszyn wirtualnych
+Przejęcia maszyn wirtualnych platformy Azure jest maszyny wirtualnej, która jest dostępna do użycia przez dowolnego użytkownika laboratorium przy użyciu uprawnień. Administratorem laboratorium można przygotować maszyn wirtualnych przy użyciu określonych obrazy podstawowe i artefaktów i zapisywać je do współużytkowanej puli. Użytkownik laboratorium następnie może przyjąć działającą maszynę Wirtualną z puli, kiedy ich potrzebują przy użyciu tej określonej konfiguracji.
 
-Maszynę Wirtualną, która jest claimable początkowo nie jest przypisana do żadnych określonego użytkownika, ale będą widoczne w obszarze "Claimable maszyny wirtualnej" na liście każdego użytkownika. Po maszyny Wirtualnej jest określona przez użytkownika, jest przenoszony do ich obszarze "Moje maszyny wirtualne" i nie jest już claimable przez innego użytkownika.
+Maszynę Wirtualną, która jest przejęcia początkowo nie jest przypisany do żadnym określonym użytkownikiem, ale pojawią się na liście każdego użytkownika w obszarze "Przejęcia maszyny wirtualne". Po maszyny Wirtualnej jest zgłoszone przez użytkownika, zostanie przeniesiony do ich obszaru "Mój maszyny wirtualne" i nie jest już przejęcia przez innych użytkowników.
 
 ## <a name="environment"></a>Środowisko
-W usłudze DevTest Labs środowisku odwołuje się do kolekcji zasobów platformy Azure w laboratorium. [Ten wpis w blogu](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) omówiono sposób tworzenia środowisk wielu maszyn wirtualnych z szablonów usługi Azure Resource Manager.
+W usłudze DevTest Labs środowiska odnosi się do kolekcji zasobów platformy Azure w laboratorium. [Ten wpis w blogu](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) w tym artykule omówiono sposób tworzenia środowisk z wieloma Maszynami wirtualnymi za pomocą szablonów usługi Azure Resource Manager.
 
 ## <a name="base-images"></a>Obrazy podstawowe
-Podstawowy obrazy są obrazy maszyny Wirtualnej ze wszystkimi narzędzia i ustawienia wstępnie zainstalowane i skonfigurowane, aby szybko utworzyć Maszynę wirtualną. Maszyny Wirtualnej można udostępnić pobrania istniejących podstawowej i dodając artefaktu, aby zainstalować agenta testowego. Następnie można zapisać zainicjowana VM jako podstawa tak, aby podstawowym może być używany bez konieczności ponownej instalacji agenta testowego do każdego inicjowania obsługi maszyny wirtualnej.
+Podstawowe obrazy są obrazy maszyny Wirtualnej z wszystkie narzędzia i ustawienia wstępnie zainstalowane i skonfigurowane, aby szybko utworzyć Maszynę wirtualną. Pobrania istniejących base i dodając artefakt, aby zainstalować agenta testowego można aprowizować maszynę Wirtualną. Tak, aby base mogą być używane bez konieczności ponownej instalacji agenta testowego w każdym aprowizacji maszyny Wirtualnej, jako podstawa można zapisać aprowizowanej maszyny Wirtualnej.
 
 ## <a name="artifacts"></a>Artefakty
-Artefakty służą do wdrażania i konfigurowania aplikacji po zainicjowaniu obsługi maszyny Wirtualnej. Artefaktami mogą być:
+Artefakty są używane do wdrażania i konfigurowania aplikacji po zaaprowizowaniu maszyny Wirtualnej. Artefaktami mogą być:
 
-* Narzędzia, które chcesz zainstalować na maszynie Wirtualnej — np. agenci, program Fiddler i program Visual Studio.
-* Akcje, które chcesz uruchomić na maszynie Wirtualnej — np. klonowanie repozytorium.
+* Narzędzia, które chcesz zainstalować na maszynie Wirtualnej — np. agenci, narzędzie Fiddler i Visual Studio.
+* Akcje, które chcesz uruchomić na maszynie Wirtualnej — takimi jak klonowanie repozytorium.
 * Aplikacje, które chcesz przetestować.
 
-Artefakty [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pliki JSON, które zawierają instrukcje, aby wykonać wdrożenie, a następnie zastosować konfigurację.
+Artefakty są [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pliki w formacie JSON, które zawierają instrukcje, aby wykonać wdrożenie, a następnie zastosować konfigurację.
 
-## <a name="artifact-repositories"></a>Repozytoria artefaktów
-Repozytoria artefaktu są repozytoria git, gdzie artefakty są sprawdzane w. Repozytoria artefaktu można dodać do wielu laboratoriów w Twojej organizacji, udostępniania i włączanie ponownego użycia.
+## <a name="artifact-repositories"></a>Repozytoria artefaktu
+Repozytoria artefaktów są repozytoria git, w których artefakty są ewidencjonowane. Repozytoria artefaktów można dodać do wielu laboratoriów w Twojej organizacji, umożliwiając ponowne używanie i udostępnianie.
 
 ## <a name="formulas"></a>Formuły
-Formuły, oprócz obrazy podstawowe mechanizm umożliwiający szybkiej obsługi maszyny Wirtualnej. Formuły w usłudze DevTest Labs znajduje się lista domyślnych wartości właściwości używany do tworzenia maszyny Wirtualnej laboratorium.
-Mogą być tworzone z formułami, maszyn wirtualnych przy użyciu tych samych właściwości — takie jak podstawowy obraz, rozmiar maszyny Wirtualnej, sieci wirtualnej i artefakty — bez konieczności określenie tych właściwości za każdym razem. Podczas tworzenia maszyny Wirtualnej z formuły, wartości domyślne mogą pełnić- lub zmodyfikowany.
+Formuły, oprócz podstawowe obrazy zawierają mechanizm szybka aprowizacja maszyn wirtualnych. Formuły w usłudze DevTest Labs znajduje się lista domyślnych wartości właściwości, używany do tworzenia maszyn wirtualnych laboratorium.
+Mogą być tworzone za pomocą formuł, maszyn wirtualnych przy użyciu tego samego zestawu właściwości — takich jak obraz podstawowy, rozmiar maszyny Wirtualnej, sieci wirtualnej i artefakty — bez konieczności określania tych właściwości za każdym razem. Podczas tworzenia maszyny Wirtualnej z formuły, wartości domyślne może służyć jako — lub zmodyfikowany.
 
 ## <a name="policies"></a>Zasady
-Pomoc dotycząca zasad kontrolowania kosztów w laboratorium. Na przykład można utworzyć zasad, aby automatycznie zamknąć maszyn wirtualnych na podstawie zdefiniowanego harmonogramu.
+Zasady pomóc w kontrolowaniu kosztów w środowisku laboratoryjnym. Na przykład można utworzyć zasad w celu automatycznego wyłączania maszyn wirtualnych na podstawie zdefiniowanego harmonogramu.
 
-## <a name="caps"></a>Cap
-Włączony klawisz Caps jest mechanizm, aby zminimalizować odpady w laboratorium. Na przykład można ustawić zakończenia, aby ograniczyć liczbę maszyn wirtualnych, które mogą być tworzone dla poszczególnych użytkowników lub w laboratorium.
+## <a name="caps"></a>Wielkości graniczne
+Limity jest mechanizm umożliwiający minimalizowanie strat w środowisku laboratoryjnym. Na przykład można ustawić limit, aby ograniczyć liczbę maszyn wirtualnych, które mogą być tworzone dla każdego użytkownika lub w laboratorium.
 
 ## <a name="security-levels"></a>Poziomy zabezpieczeń
-Dostęp zabezpieczeń jest określany przez based kontroli dostępu (RBAC). Aby zrozumieć, jak działa dostęp, warto poznać różnice między uprawnienia roli i zakresu, zgodnie z definicją RBAC.
+Zabezpieczenia dostępu jest określany przez based kontroli dostępu (RBAC). Aby zrozumieć, jak działa dostęp, warto poznać różnice między uprawnienia, roli i zakresu, zgodnie z definicją RBAC.
 
-* Uprawnienie - uprawnienie jest zdefiniowane dostępu do określonej akcji (np. dostęp do odczytu do wszystkich maszyn wirtualnych).
-* Rola: Rola to zestaw uprawnień, które mogą być grupowane i przypisana do użytkownika. Na przykład *właściciel subskrypcji* rola ma dostęp do wszystkich zasobów w ramach subskrypcji.
-* Zakres - zakres jest poziom w hierarchii zasobów platformy Azure, takich jak grupy zasobów, pojedynczy laboratorium lub całej subskrypcji.
+* Uprawnienia — uprawnienia są zdefiniowane dostępu do określonej akcji (np.-dostęp do odczytu do wszystkich maszyn wirtualnych).
+* Role - rola to zestaw uprawnień, które mogą być grupowane i przypisane do użytkownika. Na przykład *właściciela subskrypcji* rola ma dostęp do wszystkich zasobów w ramach subskrypcji.
+* Zakres - zakres jest poziom w hierarchii zasobu platformy Azure, takich jak grupy zasobów, jednym laboratorium lub całej subskrypcji.
 
-W zakresie DevTest Labs, istnieją dwa typy ról do definiowania uprawnień użytkownika: laboratorium właściciela i użytkownika laboratorium.
+W zakresie usługi DevTest Labs, istnieją dwa typy ról, aby zdefiniować uprawnienia użytkownika: właściciel laboratorium i użytkowników laboratorium.
 
-* Właściciela laboratorium — właściciela laboratorium ma dostęp do wszystkich zasobów w ramach laboratorium. W związku z tym właściciela laboratorium można modyfikować zasady, zapisywania i odczytywania żadnej maszyny wirtualnej, zmień sieci wirtualnej, a itd.
-* Użytkownik laboratorium —, użytkownik laboratorium mogą wyświetlać wszystkie zasoby laboratorium, takich jak maszyny wirtualne, zasady i sieci wirtualne, ale nie można zmodyfikować zasady lub żadnych maszyn wirtualnych utworzonych przez innych użytkowników.
+* Właściciel laboratorium - właściciel laboratorium ma dostępu do żadnych zasobów w środowisku laboratoryjnym. W związku z tym właściciel laboratorium można modyfikować zasady, odczytu i zapisu wszelkie maszyny wirtualne, zmień sieć wirtualną i tak dalej.
+* Użytkownik laboratorium —, użytkownik laboratorium można wyświetlić wszystkie zasoby laboratorium, takie jak maszyny wirtualne, zasad i sieciami wirtualnymi, ale nie można zmodyfikować zasady lub wszystkie maszyny wirtualne utworzone przez innych użytkowników.
 
-Aby zobaczyć, jak utworzyć niestandardowe role w usłudze DevTest Labs, zapoznaj się z artykułem [udzielić użytkownikowi uprawnień do laboratorium określonych zasad](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+Aby zobaczyć, jak utworzyć niestandardowe role w usłudze DevTest Labs, zapoznaj się z artykułem [udzielić użytkownikowi uprawnień do zasad określonych laboratorium](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
-Ponieważ zakresy są hierarchiczne, jeśli użytkownik ma uprawnienia w zakresie niektórych, automatycznie otrzymują tych uprawnień w zakresie niższego poziomu, co razem. Na przykład jeśli użytkownik jest przypisany do roli właściciela subskrypcji, następnie mają dostęp do wszystkich zasobów w ramach subskrypcji, które obejmują wszystkie maszyny wirtualne, wszystkie sieci wirtualne i laboratoriów wszystkie. W związku z tym właściciela subskrypcji automatycznie przejmuje rolę właściciela laboratorium. Jednak przeciwieństwem nie jest prawdziwe. Właściciela laboratorium ma dostęp do laboratorium jest zakresem niższym niż poziom subskrypcji. W związku z tym właściciela laboratorium nie będzie mógł wyświetlić maszyn wirtualnych lub sieciami wirtualnymi lub wszystkie zasoby, które znajdują się poza laboratorium.
+Ponieważ zakresy są hierarchiczne, jeśli użytkownik ma uprawnienia w określonym zakresie, automatycznie otrzymują te uprawnienia w każdym zakresie niższego poziomu wchodzących w skład. Na przykład jeśli użytkownik jest przypisany do roli właściciela subskrypcji, następnie mają dostęp do wszystkich zasobów w ramach subskrypcji, obejmujące wszystkie maszyny wirtualne, wszystkie sieci wirtualne i wszystkie labs. W związku z tym właściciel subskrypcji automatycznie dziedziczy roli właściciel laboratorium. Odwrotny jest true. Właściciel laboratorium ma dostęp do laboratorium, która jest zakresem niższym niż poziom subskrypcji. W związku z tym właściciel laboratorium nie będzie można zobaczyć maszyn wirtualnych lub sieciami wirtualnymi lub wszystkie zasoby, które znajdują się poza laboratorium.
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
-Wszystkie omówione w tym artykule można skonfigurować przy użyciu szablonów usługi Azure Resource Manager, które umożliwiają definiowanie infrastruktury/konfiguracji rozwiązania Azure i wielokrotnie wdrażać w spójnym stanie.
+Wszystkie omówione w tym artykule można skonfigurować przy użyciu szablonów usługi Azure Resource Manager, które umożliwiają definiowanie infrastruktury/Konfiguracja rozwiązania platformy Azure i wdrażać je w spójnym stanie.
 
-[Struktura i składni szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) opisano strukturę szablonu usługi Azure Resource Manager i właściwości, które są dostępne w różnych części szablonu.
+[Omówienie struktury i składni szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) opisujący strukturę szablonu usługi Azure Resource Manager i właściwości, które są dostępne w różnych części szablonu.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

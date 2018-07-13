@@ -1,29 +1,28 @@
 ---
 title: Uruchamianie próbnego odzyskiwania po awarii maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
 description: Informacje o uruchamianiu próbnego odzyskiwania po awarii ze środowiska lokalnego na platformę Azure przy użyciu usługi Azure Site Recovery
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c706474018bd0751872381c6d28f0ad579ba772b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286583"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437216"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure
 
 W tym artykule pokazano, jak uruchomić próbne odzyskiwanie po awarii dla maszyny lokalnej na platformie Azure, korzystając z testowego przełączania w tryb failover. Próba pozwala zweryfikować działanie strategii replikacji bez ryzyka utraty danych.
 
-Jest to czwarty samouczek z serii opisującej, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych WMware.
+Jest to czwarty samouczek z serii opisującej, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware lub Hyper-V.
 
 W tym samouczku przyjęto założenie, że wykonano trzy pierwsze samouczki: 
-    - W [pierwszym samouczku](tutorial-prepare-azure.md) skonfigurowaliśmy składniki Azure potrzebne do odzyskiwania po awarii w przypadku maszyn wirtualnych VMware.
-    - W [drugim samouczku](vmware-azure-tutorial-prepare-on-premises.md) przygotowaliśmy składniki lokalne do odzyskiwania po awarii oraz sprawdziliśmy wymagania wstępne.
-    - W [trzecim samouczku](vmware-azure-tutorial.md) skonfigurowaliśmy i włączyliśmy replikację dla naszych lokalnych maszyn wirtualnych VMware.
+    - W [pierwszym samouczku](tutorial-prepare-azure.md) [przygotowano składniki Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii w przypadku maszyn wirtualnych VMware lub Hyper-V.
+    - W drugim samouczku przygotowano składniki lokalne do odzyskiwania po awarii w przypadku maszyn wirtualnych [VMware](vmware-azure-tutorial-prepare-on-premises.md) lub [Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
+    - W trzecim samouczku zostanie skonfigurowana i włączona replikacja lokalnych [maszyn wirtualnych VMware](vmware-azure-tutorial.md), [maszyn wirtualnych Hyper-V z programem System Center VMM](hyper-v-vmm-azure-tutorial.md) lub [Maszyn wirtualnych Hyper-V bez programu VMM](hyper-v-azure-tutorial.md).
 - Samouczki mają za zadanie przedstawić najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. We wszystkich tych samouczkach skonfigurowano usługę Site Recovery przy użyciu najprostszych ustawień, stosując wartości domyślne, gdzie było to możliwe. Jeśli chcesz lepiej poznać kroki testowego przełączania w tryb failover, przeczytaj [How To Guide](site-recovery-test-failover-to-azure.md) (Przewodnik z instrukcjami).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -37,7 +36,7 @@ Ten samouczek umożliwia opanowanie następujących czynności:
 
 ## <a name="verify-vm-properties"></a>Sprawdzanie właściwości maszyn wirtualnych
 
-Przed uruchomieniem testowego przełączenia w tryb failover sprawdź właściwości maszyny wirtualnej VMware i upewnij się, że [maszyna wirtualna Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) lub [maszyna wirtualna VMware/serwer fizyczny](vmware-physical-azure-support-matrix.md#replicated-machines) spełnia wymagania platformy Azure.
+Przed uruchomieniem testowego przełączenia w tryb failover sprawdź właściwości maszyny wirtualnej i upewnij się, że [maszyna wirtualna Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) lub [maszyna wirtualna VMware](vmware-physical-azure-support-matrix.md#replicated-machines) spełnia wymagania platformy Azure.
 
 1. W obszarze **Chronione elementy** kliknij kolejno pozycje **Zreplikowane elementy** > i Maszyna wirtualna.
 2. Okienko **Zreplikowany element** zawiera podsumowanie informacji na temat maszyny wirtualnej, jej kondycję oraz najnowsze dostępne punkty odzyskiwania. Kliknij przycisk **Właściwości**, aby wyświetlić więcej szczegółów.
@@ -69,4 +68,5 @@ W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, któ
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uruchamianie trybu failover i powrotu po awarii dla lokalnych maszyn wirtualnych VMware](vmware-azure-tutorial-failover-failback.md).
+> [Przechodzenie do trybu failover i powrót po awarii lokalnych maszyn wirtualnych VMware](vmware-azure-tutorial-failover-failback.md).
+> [Run a failover and failback for on-premises Hyper-V VMs (Przechodzenie do trybu failover i powrót po awarii lokalnych maszyn wirtualnych Hyper-V)](hyper-v-azure-failover-failback-tutorial.md).

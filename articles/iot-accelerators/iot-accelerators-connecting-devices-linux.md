@@ -1,6 +1,6 @@
 ---
-title: Zapewnij urządzeniami z systemem Linux do monitorowania zdalnego w języku C - Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób urządzenie podłączone do akcelerator rozwiązań monitorowania zdalnego przy użyciu Aplikacja napisana w języku C uruchomiony w systemie Linux.
+title: Aprowizowanie urządzeniami z systemem Linux do zdalnego monitorowania w języku C — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób łączenia urządzenia do akceleratora rozwiązania monitorowania zdalnego przy użyciu aplikacji napisanych w języku C, działającej w systemie Linux.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dobett
 ms.openlocfilehash: 5d7d6522dc663f13ce40cc638ba90ac4043d435c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626381"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38611416"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Podłącz urządzenie do monitorowania zdalnego akcelerator rozwiązań (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku przedstawiono sposób nawiązywania akcelerator rozwiązań monitorowania zdalnego urządzenia fizycznego.
+W tym samouczku dowiesz się, jak połączyć urządzenie fizyczne do akceleratora rozwiązania monitorowania zdalnego.
 
 ## <a name="create-a-c-client-project-on-linux"></a>Utwórz projekt klienta C w systemie Linux
 
-Podobnie jak w przypadku najbardziej osadzonych aplikacji na urządzeniach ograniczone, kodu klienta dla aplikacji urządzenia są zapisywane w C. W tym samouczku tworzenia aplikacji na maszynie z systemem Ubuntu (Linux).
+Podobnie jak w przypadku najbardziej osadzone aplikacje działają na urządzeniach ograniczone, kod klienta dla aplikacji urządzeń są zapisywane w C. W tym samouczku utworzysz aplikację na komputerze z systemem Ubuntu (Linux).
 
-Aby wykonać te kroki, należy na urządzenie z systemem Ubuntu wersji 15.04 lub nowszej. Przed kontynuowaniem należy zainstalować wstępnie wymagane pakiety na urządzenie Ubuntu przy użyciu następującego polecenia:
+Aby wykonać te kroki, należy na urządzenie z systemem Ubuntu wersji 15.04 lub nowszej. Przed kontynuowaniem należy zainstalować wstępnie wymagane pakiety na urządzeniu z systemem Ubuntu przy użyciu następującego polecenia:
 
 ```sh
 sudo apt-get install cmake gcc g++
 ```
 
-### <a name="install-the-client-libraries-on-your-device"></a>Zainstaluj biblioteki klienta na urządzeniu
+### <a name="install-the-client-libraries-on-your-device"></a>Instalowanie bibliotek klienta na urządzeniu z systemem
 
-Biblioteki klienta Centrum IoT Azure są dostępne w pakiecie można zainstalować przy użyciu urządzenia Ubuntu **stanie get** polecenia. Wykonaj poniższe kroki, aby zainstalować pakiet, który zawiera Centrum IoT biblioteki i nagłówek pliki klienta na komputerze Ubuntu:
+Biblioteki klienta usługi Azure IoT Hub są dostępne jako pakiet, który można zainstalować na Twoim Ubuntu urządzenia za pomocą **polecenia apt-get** polecenia. Wykonaj poniższe kroki, aby zainstalować pakiet, który zawiera usługi IoT Hub biblioteki i nagłówek pliki klienta na komputerze z systemem Ubuntu:
 
 1. W powłoce Dodaj repozytorium AzureIoT do komputera:
 
@@ -42,28 +42,28 @@ Biblioteki klienta Centrum IoT Azure są dostępne w pakiecie można zainstalowa
     sudo apt-get update
     ```
 
-1. Zainstaluj pakiet azure-iot-sdk-c deweloperów
+1. Zainstaluj pakiet azure-iot-sdk-c-dev
 
     ```sh
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-### <a name="install-the-parson-json-parser"></a>Zainstaluj analizatora składni Parson JSON
+### <a name="install-the-parson-json-parser"></a>Zainstaluj analizatora Parson JSON
 
-Centrum IoT bibliotek klienckich użyć analizatora składni Parson JSON do analizowania ładunek komunikatu. W odpowiednich folderu na komputerze klonowanie repozytorium Parson GitHub przy użyciu następującego polecenia:
+Biblioteki klienta usługi IoT Hub umożliwia analizowanie ładunków komunikat analizatora składni Parson JSON. W odpowiedni folder na komputerze sklonuj repozytorium Parson GitHub, używając następującego polecenia:
 
 ```sh
 git clone https://github.com/kgabis/parson.git
 ```
 
-### <a name="prepare-your-project"></a>Przygotowanie projektu
+### <a name="prepare-your-project"></a>Przygotowanie projektu programu
 
-Na komputerze Ubuntu Utwórz folder o nazwie `remote_monitoring`. W `remote_monitoring` folderu:
+Na maszynie z systemem Ubuntu, Utwórz folder o nazwie `remote_monitoring`. W `remote_monitoring` folderu:
 
-- Utwórz cztery pliki `main.c`, `remote_monitoring.c`, `remote_monitoring.h`, i `CMakeLists.txt`.
+- Utworzyć cztery pliki `main.c`, `remote_monitoring.c`, `remote_monitoring.h`, i `CMakeLists.txt`.
 - Utwórz folder o nazwie `parson`.
 
-Skopiuj pliki `parson.c` i `parson.h` z kopii lokalnej do repozytorium Parson `remote_monitoring/parson` folderu.
+Skopiuj pliki `parson.c` i `parson.h` z lokalnej kopii repozytorium Parson do `remote_monitoring/parson` folderu.
 
 W edytorze tekstu Otwórz `remote_monitoring.c` pliku. Dodaj następujące instrukcje `#include`:
 
@@ -107,7 +107,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
 
 1. W edytorze tekstu Otwórz **CMakeLists.txt** w pliku `remote_monitoring` folderu.
 
-1. Dodaj następujące instrukcje, aby zdefiniować sposób kompilowania aplikacji klienta:
+1. Dodaj następujące instrukcje, aby zdefiniować sposób kompilowania aplikacji klienckiej:
 
     ```cmake
     macro(compileAsC99)
@@ -156,7 +156,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
     )
     ```
 
-1. W `remote_monitoring` folderu, Utwórz folder do przechowywania *upewnij* pliki, które generuje CMake. Następnie uruchom **cmake** i **upewnij** polecenia w następujący sposób:
+1. W `remote_monitoring` folderze utwórz folder do przechowywania *wprowadzić* pliki, które narzędzie CMake generuje. Następnie uruchom **cmake** i **wprowadzić** poleceń w następujący sposób:
 
     ```sh
     mkdir cmake
@@ -165,7 +165,7 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
     make
     ```
 
-1. Uruchom aplikację klienta oraz wysyłania danych telemetrycznych do Centrum IoT:
+1. Uruchom aplikację klienta i wysyłanie danych telemetrycznych do Centrum IoT Hub:
 
     ```sh
     ./sample_app

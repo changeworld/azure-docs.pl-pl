@@ -1,8 +1,8 @@
 ---
 title: Wysyłanie powiadomień wypychanych bezpiecznego przy użyciu usługi Azure Notification Hubs
-description: Dowiedz się, jak wysyłać powiadomienia wypychane bezpieczny do aplikacji systemu Android na platformie Azure. Przykłady kodu napisane w języku Java i C#.
+description: Dowiedz się, jak wysyłać powiadomienia wypychane bezpiecznych aplikacji systemu Android na platformie Azure. Przykłady kodu napisane w języku Java i C#.
 documentationcenter: android
-keywords: Wypychanie powiadomień, powiadomienia wypychane push wiadomości, powiadomień wypychanych systemu android
+keywords: powiadomienie wypychane, powiadomienia wypychane, wypychanie wiadomości, powiadomienia wypychane w systemie android
 author: dimazaid
 manager: kpiteira
 editor: spelluru
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
 ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776764"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38698032"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Wysyłanie powiadomień wypychanych bezpiecznego przy użyciu usługi Azure Notification Hubs
 > [!div class="op_single_selector"]
@@ -36,41 +36,41 @@ ms.locfileid: "33776764"
 > 
 > 
 
-Obsługa powiadomień wypychanych w Microsoft Azure pozwala uzyskać dostęp, łatwy w użyciu multiplatform, infrastruktury wiadomości wypychanych skalowanej, co znacznie upraszcza implementację powiadomień wypychanych zarówno konsumenckie i korporacyjne aplikacji dla systemu platformy urządzeń przenośnych.
+Obsługę powiadomień wypychanych w systemie Microsoft Azure pozwala na dostęp, łatwy w użyciu dla wielu platform, infrastruktury komunikatów powiadomień wypychanych skalowanych w poziomie, co znacznie upraszcza implementację powiadomienia wypychane dla aplikacji firmowych i komercyjnych dla platformy urządzeń przenośnych.
 
-Z powodu przepisami ograniczeń dotyczących zabezpieczeń, czasami aplikacji może mają zostać uwzględnione coś w powiadomienie, które nie są przesyłane za pośrednictwem infrastruktury powiadomień wypychanych standardowa. Ten przewodnik opisuje sposób do osiągnięcia w tym samym środowisku, wysyłając informacje poufne za pośrednictwem uwierzytelnionego bezpiecznego połączenia między urządzeniem z systemem Android klienta i zaplecza aplikacji.
+Ze względu na przepisami ograniczenia zabezpieczeń, czasami aplikacja może mają zostać uwzględnione coś powiadomienia, które nie mogą być przekazywane za pośrednictwem infrastruktury powiadomień wypychanych standardowych. W tym samouczku opisano sposób osiągnięcia tego samego środowiska poprzez wysłanie informacji poufnych przez bezpieczne, uwierzytelnione połączenie między urządzeniu z systemem Android klienta i zaplecza aplikacji.
 
-Na wysokim poziomie przepływ wygląda następująco:
+Na wysokim poziomie przepływ jest następująca:
 
-1. Zaplecza aplikacji:
-   * Magazyny bezpiecznego ładunku w wewnętrznej bazie danych.
-   * Wysyła identyfikator tego powiadomienia na urządzeniu z systemem Android (nie informacji o są wysyłane).
-2. Aplikacją na urządzeniu, podczas odbierania powiadomienia:
-   * Urządzenie z systemem Android kontaktuje się z zaplecza żąda bezpiecznego ładunku.
-   * Aplikację można wyświetlić ładunku jako powiadomienie na urządzeniu.
+1. Zaplecze aplikacji:
+   * Ładunek bezpiecznego magazynów w wewnętrznej bazie danych.
+   * Wysyła identyfikator tego powiadomienia na urządzeniu z systemem Android (nie informacji poufnych są wysyłane).
+2. Aplikacja na urządzeniu, podczas odbierania powiadomienia:
+   * Urządzenie z systemem Android kontaktuje się z zaplecza bezpiecznego ładunku żądania.
+   * Aplikację można wyświetlić ładunku powiadomienie na urządzenie.
 
-Należy pamiętać, że w poprzednim przepływu (i w tym samouczku), zakłada się, że urządzenia są przechowywane token uwierzytelniania w magazynie lokalnym, po zalogowaniu się użytkownika. Takie podejście gwarantuje bezproblemowe, jak urządzenia mogą pobierać ładunku bezpiecznego powiadomienia za pomocą tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia wypychane powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Następnie aplikacja uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
+Należy zauważyć, że w poprzednim przepływu (i w ramach tego samouczka) zakłada się, że urządzenie przechowuje token uwierzytelniania w magazynie lokalnym, po użytkownik loguje. Ta metoda gwarantuje nie zakłóca pracy jako urządzenia mogą pobierać ładunku bezpieczne powiadomień, używające tego tokenu. Jeśli aplikacja nie przechowuje tokeny uwierzytelniania na urządzeniu lub tokeny te mogą wygasnąć, aplikacji urządzenia, po otrzymaniu powiadomienia wypychanego powinien być wyświetlany ogólny powiadomienie monitowania użytkownika do uruchomienia aplikacji. Aplikacja następnie uwierzytelnia użytkownika i zawiera ładunek powiadomienia.
 
-Ten samouczek pokazuje, jak wysyłać powiadomienia wypychane bezpieczne. Opiera się na [Powiadom użytkowników](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) samouczku, dlatego należy wykonać kroki opisane w tym samouczku najpierw Jeśli jeszcze.
+W tym samouczku pokazano, jak wysyłać powiadomienia wypychane bezpieczne. Opiera się na [powiadamianie użytkowników](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) samouczek, więc należy wykonać kroki opisane w tym samouczku najpierw Jeśli jeszcze go.
 
 > [!NOTE]
-> Ten samouczek zakłada, że utworzony i skonfigurowany Centrum powiadomień, zgodnie z opisem w [wprowadzenie do korzystania z usługi Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> W tym samouczku przyjęto założenie, że utworzone i skonfigurowane Centrum powiadomień, zgodnie z opisem w [wprowadzenie do usługi Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-android-project"></a>Modyfikowanie projektu dla systemu Android
-Teraz, aby modyfikować Twojej aplikacji zaplecza wysłać tylko *identyfikator* powiadomienia wypychane, należy zmienić aplikacji systemu Android w celu obsługi tego powiadomienia i wywołania zwrotnego z zaplecza można pobrać zabezpieczoną wiadomość, który będzie wyświetlany.
-Na osiągnięcie tego celu, należy upewnić się, że aplikacji systemu Android potrafi do samodzielnego uwierzytelnienia z poziomu zaplecza, gdy odbiera powiadomienia wypychane.
+## <a name="modify-the-android-project"></a>Modyfikowanie projektu systemu Android
+Teraz, gdy został zmodyfikowany z poziomu aplikacji zaplecza do wysyłania tylko *identyfikator* powiadomienia wypychane, trzeba zmienić aplikacji systemu Android do obsługi powiadomienia i wywołania zwrotnego zaplecza do pobrania zabezpieczoną wiadomość, która ma być wyświetlany.
+Aby osiągnąć ten cel, należy upewnić się, że aplikacja dla systemu Android wie, jak można uwierzytelniać za pomocą usługi zaplecza, po odebraniu powiadomienia wypychane.
 
-Teraz, zmodyfikować *logowania* przepływu, aby zapisać wartości nagłówka uwierzytelniania w udostępnionych preferencji aplikacji. Mechanizmy analogiczne może służyć do przechowywania wszelkich token uwierzytelniania (na przykład tokenów OAuth), która aplikacja ma używać bez konieczności wprowadzania poświadczeń użytkownika.
+Teraz, zmodyfikować *logowania* przepływu, aby zapisać wartości nagłówka uwierzytelniania w udostępnionych preferencji aplikacji. Mechanizmy analogiczne może służyć do przechowywania dowolnego token uwierzytelniania (na przykład tokenów protokołu OAuth), która aplikacja ma korzystać bez poświadczeń użytkownika.
 
-1. W projekcie aplikacji systemu Android, Dodaj następujące ograniczenia w górnej części **MainActivity** klasy:
+1. W projekcie aplikacji dla systemu Android, Dodaj następujące stałe w górnej części **MainActivity** klasy:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Nadal **MainActivity** klasy, zaktualizuj `getAuthorizationHeader()` metoda zawiera następujący kod:
+2. Nadal w **MainActivity** klasy, zaktualizuj `getAuthorizationHeader()` metoda zawiera następujący kod:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -83,20 +83,20 @@ Teraz, zmodyfikować *logowania* przepływu, aby zapisać wartości nagłówka u
    
             return basicAuthHeader;
         }
-3. Dodaj następujące `import` instrukcje w górnej części **MainActivity** pliku:
+3. Dodaj następujący kod `import` instrukcji na górze **MainActivity** pliku:
    
         import android.content.SharedPreferences;
 
-Teraz Zmień obsługi, które jest wywoływane w przypadku otrzymania powiadomienia.
+Teraz zmienić program obsługi, który jest wywoływane w przypadku otrzymania powiadomienia.
 
-1. W **MyHandler** klasy zmiany `OnReceive()` metoda zawiera:
+1. W **MyHandler** klasy zmiany `OnReceive()` metodę, aby zawierać:
    
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
             String secureMessageId = bundle.getString("secureId");
             retrieveNotification(secureMessageId);
         }
-2. Następnie dodaj `retrieveNotification()` metoda zastępuje symbol zastępczy `{back-end endpoint}` z punktem końcowym zaplecza uzyskane podczas wdrażania sieci wewnętrznej:
+2. Następnie dodaj `retrieveNotification()` metody, zastępując symbol zastępczy `{back-end endpoint}` z punktem końcowym zaplecza uzyskanego podczas wdrażania usługi zaplecza:
    
         private void retrieveNotification(final String secureMessageId) {
             SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
@@ -125,15 +125,15 @@ Teraz Zmień obsługi, które jest wywoływane w przypadku otrzymania powiadomie
             }.execute(null, null, null);
         }
 
-Ta metoda wywołuje Twojej aplikacji zaplecza do pobierania zawartości powiadomienia przy użyciu poświadczeń przechowywanych w udostępnionych preferencji i wyświetla je jako normalne powiadomienie. Wygląda powiadomienie dla użytkownika aplikacji, dokładnie tak samo jak inne powiadomień wypychanych.
+Ta metoda wywołuje Twojej aplikacji zaplecza do pobierania zawartości powiadomień przy użyciu poświadczeń przechowywanych w udostępnionych preferencji i wyświetla je jako normalny powiadomień. Wygląda powiadomienie dla użytkownika aplikacji, tak samo jak inne powiadomienia wypychanego.
 
-Zaleca się do obsługi przypadków brakujących właściwości nagłówka uwierzytelniania lub odrzucenia przez zaplecza. Obsługę określonych przypadkach zależy przede wszystkim użytkowników docelowych. Jedną z opcji jest powiadomienia z monitem ogólnego dla użytkownika do uwierzytelniania można pobrać rzeczywiste powiadomienia mają być wyświetlane.
+Zaleca się do obsługi przypadków brakuje właściwości nagłówka uwierzytelniania lub odrzucenie przez serwer zaplecza. Określone obsługi tych przypadkach zależy przede wszystkim środowiska użytkownika docelowego. Jedną z opcji jest powiadomienia wraz z monitem o ogólnych w celu uwierzytelnienia użytkownika można pobrać rzeczywiste powiadomień.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 Aby uruchomić aplikację, wykonaj następujące czynności:
 
-1. Upewnij się, że **AppBackend** jest wdrożona na platformie Azure. Jeśli używasz programu Visual Studio, uruchom **AppBackend** aplikacji interfejsu API sieci Web. Zostanie wyświetlona strona sieci web ASP.NET.
-2. W środowisku Eclipse Uruchom aplikację na fizyczne urządzenie z systemem Android lub emulator.
+1. Upewnij się, że **AppBackend** jest wdrażana na platformie Azure. Jeśli używasz programu Visual Studio, uruchom **AppBackend** aplikacji internetowego interfejsu API. Zostanie wyświetlona strona sieci web platformy ASP.NET.
+2. W środowisku Eclipse Uruchom aplikację na urządzenie fizyczne systemu Android lub w emulatorze.
 3. W aplikacji systemu Android interfejsu użytkownika wprowadź nazwę użytkownika i hasło. Mogą to być dowolny ciąg, ale muszą one mieć taką samą wartość.
-4. W aplikacji systemu Android interfejsu użytkownika, kliknij przycisk **Zaloguj**. Następnie kliknij przycisk **wysyłania wypychania**.
+4. W aplikacji systemu Android interfejsu użytkownika, kliknij przycisk **Zaloguj**. Następnie kliknij przycisk **wysyłania wypychanych**.
 

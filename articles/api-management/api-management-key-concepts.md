@@ -14,16 +14,16 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0410e0176d5c853e1110fe3460c7d9314e7fd397
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29712376"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436014"
 ---
 # <a name="what-is-api-management"></a>Co to jest API Management?
 
-Usługa API Management (APIM) pomaga organizacjom publikować interfejsy API dla deweloperów zewnętrznych, partnerskich i wewnętrznych, aby w pełni wykorzystać potencjał danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management zapewnia podstawowe możliwości, które pozwalają na pomyślne programowanie interfejsów API przez zaangażowanych deweloperów, a także udostępnia wgląd w kwestie biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
+Usługa API Management (APIM) pomaga organizacjom publikować interfejsy API dla deweloperów zewnętrznych, partnerskich i wewnętrznych, aby w pełni wykorzystać potencjał danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management udostępnia podstawowe funkcje wymagane do tworzenia skutecznych interfejsów API przez zaangażowanych deweloperów, a także zapewnia informacje biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
 
 Ten artykuł zawiera omówienie typowych scenariuszy dotyczących usługi APIM.  Omówiono w nim też krótko główne składniki systemu usługi APIM. W dalszej części artykułu bardziej szczegółowo omówiono poszczególne składniki.
 
@@ -45,7 +45,7 @@ System składa się z następujących składników:
   * Przekształcanie interfejsu API na bieżąco, bez modyfikacji kodu.
   * Buforowanie odpowiedzi zaplecza w skonfigurowanym miejscu.
   * Rejestrowanie w dzienniku metadanych wywołań w celu analizy.
-* Witryna **Azure Portal** to interfejs administracyjny, w którym konfiguruje się program interfejsu API. Jego zastosowania to:
+* Witryna **Azure Portal** to interfejs administracyjny, w którym konfiguruje się program rozwoju interfejsów API. Jego zastosowania to:
   
   * Definiowanie lub importowanie schematu interfejsu API.
   * Tworzenie pakietów interfejsów API do produktów.
@@ -54,12 +54,12 @@ System składa się z następujących składników:
   * Zarządzanie użytkownikami.
 * **Portal deweloperów** służy jako główna witryna internetowa dla deweloperów, która umożliwia im:
   
-  * Czytanie dokumentacji interfejsu API.
+  * Czytanie dokumentacji interfejsów API.
   * Wypróbowanie interfejsu API za pośrednictwem interakcyjnej konsoli.
   * Tworzenie konta i subskrybowanie, aby uzyskać klucze interfejsu API.
   * Zyskanie dostępu do analiz własnego użycia.
 
-Aby uzyskać więcej informacji, zobacz oficjalny dokument PDF [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (Oparta na chmurze usługa API Management: wykorzystanie możliwości interfejsów API). Ten wprowadzający oficjalny dokument dotyczący usługi API Management opracowany przez firmę CITO Research obejmuje następujące tematy: 
+Aby uzyskać więcej informacji, zobacz oficjalny dokument PDF [Cloud-based API Management: Harnessing the Power of APIs (Oparta na chmurze usługa API Management: wykorzystanie możliwości interfejsów API)](http://j.mp/ms-apim-whitepaper). Ten wprowadzający oficjalny dokument dotyczący usługi API Management opracowany przez firmę CITO Research obejmuje następujące tematy: 
  
  * Typowe wymagania i wyzwania związane z interfejsem API
  * Rozdzielanie interfejsów API i prezentowanie fasad
@@ -92,7 +92,7 @@ Oprócz tych grup systemowych administratorzy mogą tworzyć niestandardowe grup
 Aby uzyskać więcej informacji, zobacz [How to create and use groups][How to create and use groups] (Jak utworzyć grupy i używać ich).
 
 ## <a name="developers"> </a> Deweloperzy
-Deweloperzy reprezentują konta użytkowników w wystąpieniu usługi API Management. Konta deweloperów mogą być tworzone lub dołączane na zaproszenie administratorów. Ponadto deweloperzy mogą się zarejestrować w [Portalu dla deweloperów][Developer portal]. Każdy deweloper jest członkiem jednej lub wielu grup i może subskrybować produkty, które mają przyznaną widoczność w tych grupach.
+Deweloperzy reprezentują konta użytkowników w wystąpieniu usługi API Management. Konta deweloperów mogą być tworzone lub dołączane na zaproszenie administratorów. Ponadto deweloperzy mogą się zarejestrować w [Portalu dla deweloperów][Developer portal]. Każdy deweloper jest członkiem co najmniej jednej grupy i może subskrybować produkty widoczne w tych grupach.
 
 Kiedy deweloperzy subskrybują produkt, otrzymują klucz podstawowy i pomocniczy produktu. Ten klucz jest używany podczas wywołań interfejsów API produktu.
 
@@ -108,7 +108,7 @@ Pełna lista zasad usługi API Management znajduje się w artykule [Policy refer
 
 
 ## <a name="developer-portal"> </a> Portal dla deweloperów
-Portal dla deweloperów jest miejscem, gdzie deweloperzy mogą poznawać interfejsy API, wyświetlać i wywoływać operacje oraz subskrybować produkty. Potencjalni klienci mogą odwiedzić portal dla deweloperów, wyświetlić interfejsy API i operacje oraz zarejestrować się. Adres URL do portalu dla deweloperów znajduje się na pulpicie nawigacyjnym w witrynie Azure Portal danego wystąpienia usługi API Management.
+Portal dla deweloperów jest miejscem, gdzie deweloperzy mogą poznawać interfejsy API, wyświetlać i wywoływać operacje oraz subskrybować produkty. Potencjalni klienci mogą odwiedzić portal dla deweloperów, wyświetlić interfejsy API i operacje oraz zarejestrować się. Adres URL portalu dla deweloperów znajduje się na pulpicie nawigacyjnym w witrynie Azure Portal danego wystąpienia usługi API Management.
 
 Wygląd swojego portalu dla deweloperów możesz dostosować, dodając niestandardową zawartość, dostosowując style i dodając znak marki.
 

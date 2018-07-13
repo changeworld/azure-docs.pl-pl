@@ -17,12 +17,12 @@ ms.workload: big-data
 ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a76dbb9a232d99615629d1a3fec6010b37e73247
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046782"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446609"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH
 
@@ -137,7 +137,19 @@ Informacje dotyczące zmiany hasła użytkownika konta SSH można znaleźć w se
 
 ## <a id="domainjoined"></a>Uwierzytelnianie: przyłączony do domeny klaster usługi HDInsight
 
-Jeśli używasz __przyłączonego do domeny klastra usługi HDInsight__, po nawiązaniu połączenia przy użyciu protokołu SSH musisz uruchomić polecenie `kinit`. Spowoduje to wyświetlenie monitu o podanie nazwy użytkownika domeny i hasła oraz uwierzytelnienie sesji w domenie usługi Azure Active Directory skojarzonej z klastrem.
+Jeśli używasz __przyłączonego do domeny klastra usługi HDInsight__, po nawiązaniu połączenia z lokalnym użytkownikiem przy użyciu protokołu SSH musisz uruchomić polecenie `kinit`. Spowoduje to wyświetlenie monitu o podanie nazwy użytkownika domeny i hasła oraz uwierzytelnienie sesji w domenie usługi Azure Active Directory skojarzonej z klastrem.
+
+Możesz również włączyć uwierzytelnianie Kerberos w każdym węźle dołączonym do domeny (na przykład węźle głównym, węźle brzegowym), aby nawiązać połączenie protokołu SSH przy użyciu konta domeny. Aby to zrobić, należy edytować plik konfiguracji sshd:
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+usuń znaczniki komentarza dla parametru `KerberosAuthentication` i zmień jego wartość na `yes`
+
+```bash
+sudo service sshd restart
+```
+
+W dowolnym momencie możesz użyć polecenia `klist`, aby sprawdzić, czy uwierzytelnianie Kerberos zakończyło się powodzeniem.
 
 Aby uzyskać więcej informacji, zobacz [Configure domain-joined HDInsight](./domain-joined/apache-domain-joined-configure.md) (Konfigurowanie przyłączonej do domeny usługi HDInsight).
 
