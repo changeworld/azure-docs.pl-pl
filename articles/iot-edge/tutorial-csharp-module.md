@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8cd4f87e690d64e1f69ef39f3422ebc73d79974a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 73b6397ecc97b9e289749aabddfdc4c6161375d4
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053096"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38667349"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Samouczek: opracowywanie modułu usługi IoT Edge w języku C# i wdrażanie go na urządzeniu symulowanym
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 * Urządzenie usługi Azure IoT Edge utworzone w ramach przewodnika Szybki start dla urządzeń z systemem [Linux](quickstart-linux.md) lub [Windows](quickstart.md).
 * Parametry połączenia klucza podstawowego dla urządzenia usługi IoT Edge.  
 * [Program Visual Studio Code](https://code.visualstudio.com/) 
-* [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) dla programu Visual Studio Code.
+* [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [Rozszerzenie usługi Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) dla programu Visual Studio Code. 
 * [Zestaw .NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 * [Program Docker CE](https://docs.docker.com/install/) na maszynie deweloperskiej. 

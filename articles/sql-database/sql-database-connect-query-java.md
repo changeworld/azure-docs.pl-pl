@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: andrela
 ms.openlocfilehash: e19006d177777b18e1665ec5039f9c28f7e54df5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363676"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38704644"
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Korzystanie z języka Java do wykonywania zapytań w bazie danych Azure SQL
 

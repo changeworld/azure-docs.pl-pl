@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 04/06/2018
 ms.author: dimazaid
 ms.openlocfilehash: 00d6a2de3f51ef8ade50f29b14a4bc944ae5fee6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778413"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700867"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Samouczek: wysyłanie powiadomień push do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -254,7 +254,7 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
 
 Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu i dokonywać rejestracji przy użyciu centrum powiadomień za każdym razem, gdy użytkownik zmieni wybór kategorii.
 
-## <a name="register-for-notifications"></a>Rejestrowanie powiadomień
+## <a name="register-for-notifications"></a>Rejestrowanie do otrzymywania powiadomień
 Te kroki umożliwiają zarejestrowanie przy użyciu centrum powiadomień przy uruchamianiu przy użyciu kategorii przechowywanych w magazynie lokalnym.
 
 > [!NOTE]

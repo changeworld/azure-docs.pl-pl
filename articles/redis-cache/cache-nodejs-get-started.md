@@ -16,11 +16,11 @@ ms.date: 05/21/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: 8f71feb610884af29bdfbf170cfc411f32c50233
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640852"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38700786"
 ---
 # <a name="quickstart-how-to-use-azure-redis-cache-with-nodejs"></a>Szybki start: jak korzystać z usługi Redis Azure Cache w środowisku Node.js
 
@@ -32,7 +32,7 @@ W tym temacie opisano sposób rozpoczęcia pracy z pamięcią podręczną Redis 
 
 Do wykonania kroków tego przewodnika Szybki start możesz użyć dowolnego edytora kodu. Doskonałym wyborem jest program [Visual Studio Code](https://code.visualstudio.com/), dostępny na platformach Windows, macOS i Linux.
 
-![Ukończono tworzenie pamięci podręcznej aplikacji](./media/cache-nodejs-get-started/cache-app-complete.png)
+![Ukończono tworzenie aplikacji pamięci podręcznej](./media/cache-nodejs-get-started/cache-app-complete.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -126,7 +126,7 @@ node redistest.js
 
 W poniższym przykładzie widać, że klucz `Message` miał już w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
 
-![Ukończono tworzenie pamięci podręcznej aplikacji](./media/cache-nodejs-get-started/cache-app-complete.png)
+![Ukończono tworzenie aplikacji pamięci podręcznej](./media/cache-nodejs-get-started/cache-app-complete.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -156,7 +156,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 W tym Szybkim starcie przedstawiono sposób użycia usługi Redis Azure Cache z poziomu aplikacji Node.js. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono użycie usługi Redis Cache z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
-> [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Redis Azure Cache.](./cache-web-app-howto.md)
+> [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Redis Cache.](./cache-web-app-howto.md)
 
 
 

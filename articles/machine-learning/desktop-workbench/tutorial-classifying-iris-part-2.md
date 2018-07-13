@@ -7,15 +7,17 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 24ac4d699a511cc99936cb2cd4b245de01984163
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77dcad0f3e49b601110f8700245aaf479bde1c4e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722783"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Samouczek 2: klasyfikowanie irysów — kompilowanie modelu
 Usługi Azure Machine Learning (wersja zapoznawcza) stanowią zintegrowane rozwiązanie do przetwarzania danych i do przeprowadzania zaawansowanych analiz. Jest ono przeznaczone dla profesjonalnych analityków, którzy będą z niego korzystać w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.

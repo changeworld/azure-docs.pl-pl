@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — szyfrowanie maszyny wir
 description: Przykładowy skrypt programu Azure PowerShell — szyfrowanie maszyny wirtualnej z systemem Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: iainfou
-ms.openlocfilehash: 6bdf884a357fa1fb0dd174cda4b512ed11d92084
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: cynthn
+ms.openlocfilehash: af12630839d31bd5e3baa4c67cdd881f936e9d19
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658404"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37927533"
 ---
 # <a name="encrypt-a-windows-virtual-machine-with-azure-powershell"></a>Szyfrowanie maszyny wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 

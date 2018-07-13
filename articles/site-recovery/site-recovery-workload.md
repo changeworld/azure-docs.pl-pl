@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/02/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 4d6d3b776995233f3729a76788504678dc8979d7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e0094b48bc602a1b59339458b430319f4a705d44
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894072"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920113"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery?
 
@@ -53,7 +53,7 @@ Usługa Site Recovery może replikować dowolną aplikację uruchomioną na obs�
 | **Obciążenie** |**Replikacja maszyn wirtualnych platformy Azure na platformę Azure** |**Replikacja maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej** | **Replikacja maszyn wirtualnych funkcji Hyper-V do platformy Azure** | **Replikacja maszyn wirtualnych VMware do lokacji dodatkowej** | **Replikacja maszyn wirtualnych VMware do platformy Azure** |
 | --- | --- | --- | --- | --- |---|
 | Active Directory, DNS |Tak |Tak |Tak |Tak |Tak|
-| Aplikacje sieci Web (IIS, SQL) |Tak |Tak |Tak |Tak |Tak|
+| Aplikacje internetowe (IIS, SQL) |Tak |Tak |Tak |Tak |Tak|
 | System Center Operations Manager |Tak |Tak |Tak |Tak |Tak|
 | Sharepoint |Tak |Tak |Tak |Tak |Tak|
 | SAP<br/><br/>Replikacja lokacji SAP do platformy Azure, bez klastra |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
@@ -146,7 +146,7 @@ Usługa Azure Site Recovery zapewnia odzyskiwanie po awarii przez replikowanie k
 -   Obsługa sekwencji wyłączania i włączania maszyn wirtualnych w różnych warstwach.
 -   Dodawanie skryptów umożliwiających aktualizację zależności i powiązań aplikacji na maszynach wirtualnych po ich uruchomieniu. Skrypty mogą też służyć do aktualizacji serwera DNS w taki sposób, aby wskazywał lokację odzyskiwania.
 -   Przydzielanie adresów IP do maszyn wirtualnych przed przełączeniem do trybu failover przez zamapowanie podstawowej oraz dodatkowej sieci odzyskiwania i użycie skryptów, których nie trzeba aktualizować po przełączeniu do trybu failover.
--   Możliwość przełączania do trybu failover jednym kliknięciem dla wielu aplikacji sieci Web na serwerach sieci Web i w ten sposób wyeliminowanie pomyłek w przypadku awarii.
+-   Możliwość przełączania do trybu failover jednym kliknięciem dla wielu aplikacji internetowych na serwerach internetowych i w ten sposób wyeliminowanie pomyłek w przypadku awarii.
 -   Możliwość testowania planów odzyskiwania w izolowanym środowisku na potrzeby próbnego odzyskiwania po awarii.
 
 [Dowiedz się więcej](https://aka.ms/asr-iis) o ochronie farmy sieci Web usług IIS.
