@@ -1,0 +1,52 @@
+- name: Dokumentacja usługi Azure Firewall
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest usługa Azure Firewall?
+      href: overview.md
+- name: Samouczki
+  items:
+    - name: 1. Wdrażanie i konfigurowanie
+      href: tutorial-firewall-deploy-portal.md
+    - name: 2. Monitorowanie dzienników diagnostycznych
+      href: tutorial-diagnostics.md
+- name: Przykłady
+  items:
+    - name: Azure PowerShell
+      href: sample-powershell.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Rejestracja w celu skorzystania z publicznej wersji zapoznawczej
+      href: public-preview.md
+    - name: Wdrażanie przy użyciu szablonu
+      href: deploy-template.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zasoby
+  items:
+    - name: Tworzenie szablonów
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablony społeczności
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'

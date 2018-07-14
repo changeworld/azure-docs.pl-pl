@@ -9,12 +9,12 @@ ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 0dcb608553d4455403c073e34e83bccb81cc64db
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31532502"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38750093"
 ---
-Zadanie uruchomione w partii zadań Azure może tworzyć dane wyjściowe po uruchomieniu. Zadanie dane wyjściowe często wymaga mają być przechowywane do pobrania przez inne zadania w zadaniu aplikacji klienckiej, która jest wykonywane zadanie lub oba. Zadania zapisywanie danych wyjściowych w systemie pliku wsadowego węzła obliczeń, ale wszystkie dane w węźle zostaną utracone w przypadku, gdy jest on odtworzyć z obrazu lub gdy węzeł opuszcza puli. Zadania mogą także mieć okresu przechowywania plików, po upływie którego pliki utworzonej przez zadanie są usuwane. Z tego względu, ważne jest, aby utrwalić danych wyjściowych zadania, które będą potrzebne później w magazynie danych takich jak [usługi Azure Storage](https://docs.microsoft.com/azure/storage/).
+Zadanie uruchamiania w usłudze Azure Batch mogą generować dane wyjściowe po jego uruchomieniu. Zadanie dane wyjściowe często musi być przechowywane przez pobieranie przez inne zadania w ramach zadania wykonywanego zadania i / lub aplikacji klienta. Zadań zapisu danych wyjściowych do systemu plików z węzła obliczeniowego usługi Batch, ale wszystkie dane w węźle zostaną utracone w przypadku, gdy go jest odtwarzany z obrazu lub gdy węzeł opuści pulę. Zadania mogą również mieć plik okres przechowywania, po którym plików utworzonych przez zadanie są usuwane. Z tego względu warto utrwalanie danych wyjściowych zadania, które będą będą potrzebne później do magazynu danych takich jak [usługi Azure Storage](https://docs.microsoft.com/azure/storage/).
 
-Dla opcji konta magazynu w partii, zobacz [Przegląd funkcji partii](../articles/batch/batch-api-basics.md#azure-storage-account).
+Opis opcji konta magazynu w usłudze Batch można znaleźć w temacie [Omówienie funkcji usługi Batch](../articles/batch/batch-api-basics.md#azure-storage-account).

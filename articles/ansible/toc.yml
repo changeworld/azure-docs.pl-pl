@@ -24,6 +24,12 @@
     - name: Zarządzanie spisami dynamicznymi
       href: ./ansible-manage-azure-dynamic-inventories.md
       maintainContext: true
+    - name: Tworzenie i konfigurowanie zestawu skalowania maszyn wirtualnych
+      href: ./ansible-create-configure-vmss.md
+    - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych
+      href: ./ansible-deploy-app-vmss.md
+    - name: Tworzenie i konfigurowanie klastrów usługi AKS
+      href: ./ansible-create-configure-aks.md
 - name: Dokumentacja
   items:
     - name: Role elementu playbook

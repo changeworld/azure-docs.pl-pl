@@ -28,6 +28,8 @@
       href: visual-search-sdk-python.md
 - name: Samouczki
   items:
+    - name: Przekazywanie obrazu za pomocą wyszukiwania wizualnego
+      href: tutorial-visual-search-image-upload.md
     - name: Jednostronicowa aplikacja internetowa
       href: tutorial-bing-visual-search-single-page-app.md
     - name: Jednostronicowa aplikacja internetowa (kod źródłowy)

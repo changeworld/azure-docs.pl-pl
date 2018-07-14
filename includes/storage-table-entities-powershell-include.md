@@ -3,18 +3,18 @@
 
 ## <a name="managing-table-entities"></a>Zarządzanie jednostkami tabeli
 
-Teraz, gdy masz tabelę Przyjrzyjmy się jak zarządzać jednostek lub wierszy w tabeli. 
+Teraz, gdy masz tabelę, Przyjrzyjmy się jak zarządzać jednostki lub wiersze w tabeli. 
 
-Jednostka może mieć maksymalnie 255 właściwości, w tym 3 Właściwości systemowe: **PartitionKey**, **RowKey**, i **sygnatury czasowej**. Jest odpowiedzialny za wstawiania i aktualizowania wartości **PartitionKey** i **RowKey**. Serwer zarządza wartością **sygnatury czasowej**, która nie może być modyfikowany. Razem **PartitionKey** i **RowKey** jednoznacznie zidentyfikować każdej jednostki w tabeli.
+Jednostka może mieć maksymalnie 255 właściwości, w tym 3 Właściwości systemowe: **PartitionKey**, **RowKey**, i **sygnatura czasowa**. Odpowiedzialność za wstawiania i aktualizowania wartości **PartitionKey** i **RowKey**. Serwer zarządza wartością **sygnatura czasowa**, który nie może być modyfikowany. Razem **PartitionKey** i **RowKey** jednoznacznie zidentyfikować każda jednostka w obrębie tabeli.
 
-* **PartitionKey**: Określa jednostki przechowywanego w partycji.
-* **RowKey**: unikatowo identyfikuje jednostek w partycji.
+* **PartitionKey**: Określa jednostki przechowywane w partycji.
+* **RowKey**: jednoznacznie identyfikują jednostkę w ramach partycji.
 
 Można zdefiniować maksymalnie 252 właściwości niestandardowych dla jednostki. 
 
-### <a name="add-table-entities"></a>Dodaj jednostki tabeli
+### <a name="add-table-entities"></a>Dodawanie jednostki do tabeli
 
-Dodaj jednostki do tabeli za pomocą **StorageTableRow Dodaj**. Te przykłady użycia kluczy partycji z wartości "Partycja1" i "Partycja2" i klucze wierszy równa skróty stanu. Właściwości w każdej jednostki są nazwy użytkownika i identyfikator użytkownika. 
+Dodawanie jednostki do tabeli przy użyciu **StorageTableRow Dodaj**. Te przykłady użycia kluczy partycji o wartości "Partycja1" i "Partycja2" oraz kluczy wierszy równa zawierający skróty nazw stanów. Właściwości w każdej jednostce są nazwy użytkownika i identyfikator użytkownika. 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -42,44 +42,44 @@ Add-StorageTableRow `
     -rowKey ("TX") -property @{"username"="Steven";"userid"=4}
 ```
 
-### <a name="query-the-table-entities"></a>Zapytanie jednostek tabeli
+### <a name="query-the-table-entities"></a>Zapytanie jednostki tabeli
 
-Istnieje kilka różnych sposobów, aby zbadać jednostek w tabeli.
+Istnieje kilka różnych sposobów, aby wysłać zapytanie jednostki w tabeli.
 
 #### <a name="retrieve-all-entities"></a>Pobieranie wszystkich jednostek
 
-Aby uzyskać dostęp do wszystkich obiektów, użyj **Get-AzureStorageTableRowAll**.
+Aby pobrać wszystkie jednostki, użyj **Get AzureStorageTableRowAll**.
 
 ```powershell
 Get-AzureStorageTableRowAll -table $storageTable | ft
 ```
 
-To polecenie zwraca wyniki podobne do poniższej tabeli:
+To polecenie daje wyniki podobne do poniższej tabeli:
 
-| Nazwa użytkownika | nazwa użytkownika | partycja | rowkey |
+| Identyfikator użytkownika | nazwa użytkownika | partycja | rowkey |
 |----|---------|---------------|----|
-| 1 | Krzysztof | Partycja1 | Urząd certyfikacji |
+| 1 | Chris | Partycja1 | Urząd certyfikacji |
 | 3 | Christine | Partycja1 | WA |
-| 2 | Joasia | Partycja2 | NM |
+| 2 | Jessie | Partycja2 | NM |
 | 4 | Steven | Partycja2 | TX |
 
 #### <a name="retrieve-entities-for-a-specific-partition"></a>Pobieranie jednostek dla określonej partycji
 
-Aby uzyskać dostęp do wszystkich jednostek w określonej partycji, użyj **Get-AzureStorageTableRowByPartitionKey**.
+Aby pobrać wszystkie jednostki w określonej partycji, użyj **Get AzureStorageTableRowByPartitionKey**.
 
 ```powershell
 Get-AzureStorageTableRowByPartitionKey -table $storageTable -partitionKey $partitionKey1 | ft
 ```
 Wyniki wyglądać podobnie do poniższej tabeli:
 
-| Nazwa użytkownika | nazwa użytkownika | partycja | rowkey |
+| Identyfikator użytkownika | nazwa użytkownika | partycja | rowkey |
 |----|---------|---------------|----|
-| 1 | Krzysztof | Partycja1 | Urząd certyfikacji |
+| 1 | Chris | Partycja1 | Urząd certyfikacji |
 | 3 | Christine | Partycja1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Pobieranie jednostek dla określonej wartości w określonej kolumnie
 
-Aby uzyskać dostęp do jednostki, której wartość w określonej kolumnie równa określonej wartości, należy użyć **Get-AzureStorageTableRowByColumnName**.
+Aby pobrać jednostki, w którym wartość w określonej kolumnie jest równa określonej wartości, użyj **Get AzureStorageTableRowByColumnName**.
 
 ```powershell
 Get-AzureStorageTableRowByColumnName -table $storageTable `
@@ -92,14 +92,14 @@ To zapytanie pobiera jeden rekord.
 
 |Pole|wartość|
 |----|----|
-| Nazwa użytkownika | 1 |
-| nazwa użytkownika | Krzysztof |
+| Identyfikator użytkownika | 1 |
+| nazwa użytkownika | Chris |
 | PartitionKey | Partycja1 |
 | RowKey      | Urząd certyfikacji |
 
-#### <a name="retrieve-entities-using-a-custom-filter"></a>Pobieranie jednostek przy użyciu niestandardowego filtru 
+#### <a name="retrieve-entities-using-a-custom-filter"></a>Pobieranie jednostki przy użyciu niestandardowego filtru 
 
-Aby pobrać jednostek przy użyciu niestandardowego filtru, należy użyć **Get-AzureStorageTableRowByCustomFilter**.
+Aby pobrać jednostki przy użyciu niestandardowego filtru, użyj **Get AzureStorageTableRowByCustomFilter**.
 
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
@@ -111,16 +111,16 @@ To zapytanie pobiera jeden rekord.
 
 |Pole|wartość|
 |----|----|
-| Nazwa użytkownika | 1 |
-| nazwa użytkownika | Krzysztof |
+| Identyfikator użytkownika | 1 |
+| nazwa użytkownika | Chris |
 | PartitionKey | Partycja1 |
 | RowKey      | Urząd certyfikacji |
 
 ### <a name="updating-entities"></a>Aktualizowanie jednostek 
 
-Istnieją trzy kroki dla aktualizowanie jednostek. Najpierw należy pobrać jednostki można zmienić. Po drugie wprowadzić zmiany. Trzecie, Zatwierdź zmiany przy użyciu **AzureStorageTableRow aktualizacji**.
+Istnieją trzy kroki w celu zaktualizowania jednostki. Najpierw należy pobrać jednostkę którą chcesz zmienić. Po drugie wprowadzić zmiany. Po trzecie, Zatwierdź zmiany, przy użyciu **AzureStorageTableRow aktualizacji**.
 
-Aktualizowanie jednostki z nazwą użytkownika = Joasia, aby nazwa użytkownika = "Jessie2". W tym przykładzie przedstawiono również inny sposób tworzenia niestandardowego filtru przy użyciu typów .NET. 
+Aktualizowanie jednostki przy użyciu nazwy użytkownika = "Jessie", aby nazwa użytkownika = "Jessie2". Ten przykład pokazuje także innym sposobem tworzenia niestandardowego filtru przy użyciu typów .NET. 
 
 ```powershell
 # Create a filter and get the entity to be updated.
@@ -146,18 +146,18 @@ Wyniki wskazują rekord Jessie2.
 
 |Pole|wartość|
 |----|----|
-| Nazwa użytkownika | 2 |
+| Identyfikator użytkownika | 2 |
 | nazwa użytkownika | Jessie2 |
 | PartitionKey | Partycja2 |
 | RowKey      | NM |
 
-### <a name="deleting-table-entities"></a>Usuwanie jednostek tabeli
+### <a name="deleting-table-entities"></a>Usuwanie jednostek tablic
 
 Można usunąć jednego lub wszystkich jednostek w tabeli.
 
-#### <a name="deleting-one-entity"></a>Usuwanie jedną jednostkę
+#### <a name="deleting-one-entity"></a>Usuwanie jednej jednostki
 
-Aby usunąć pojedynczą jednostkę, odwołać się do tej jednostki i przekazać go do **AzureStorageTableRow Usuń**.
+Aby usunąć pojedynczą jednostkę, Pobierz odwołanie do tej jednostki i przekazać go do **AzureStorageTableRow Usuń**.
 
 ```powershell
 # Set filter.
@@ -177,7 +177,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 #### <a name="delete-all-entities-in-the-table"></a>Usuń wszystkie jednostki w tabeli 
 
-Aby usunąć wszystkich jednostek w tabeli, pobrać je i przekazać wyników w potoku do polecenia cmdlet remove. 
+Aby usunąć wszystkie jednostki w tabeli, je pobrać i przekazać wyniki do polecenia cmdlet remove. 
 
 ```powershell
 # Get all rows and pipe the result into the remove cmdlet.

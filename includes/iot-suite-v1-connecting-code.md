@@ -2,7 +2,7 @@
 
 Biblioteka kliencka serializatora usługi IoT Hub korzysta z modelu do określania formatu komunikatów wymienianych między urządzeniem a usługą IoT Hub.
 
-1. Dodaj następujące deklaracje zmiennych po instrukcji `#include`. Zastąp symbole zastępcze [identyfikator urządzenia] i [klucz urządzenia] wartościami zauważyć do urządzenia zdalnego pulpitu nawigacyjnego monitorowania rozwiązania. Użyj nazwy hosta usługi IoT Hub z pulpitu nawigacyjnego rozwiązania w celu zastąpienia wartości zastępczej [Nazwa usługi IoTHub]. Jeśli na przykład host usługi IoT Hub ma nazwę **contoso.azure-devices.net**, zastąp wartość zastępczą [Nazwa usługi IoTHub] ciągiem **contoso**:
+1. Dodaj następujące deklaracje zmiennych po instrukcji `#include`. Zastąp wartości zastępcze [identyfikator urządzenia] i [klucz urządzenia] wartościami wymienionymi dla urządzenia z systemem w zdalnym pulpicie nawigacyjnym rozwiązania. Użyj nazwy hosta usługi IoT Hub z pulpitu nawigacyjnego rozwiązania w celu zastąpienia wartości zastępczej [Nazwa usługi IoTHub]. Jeśli na przykład host usługi IoT Hub ma nazwę **contoso.azure-devices.net**, zastąp wartość zastępczą [Nazwa usługi IoTHub] ciągiem **contoso**:
    
     ```c
     static const char* deviceId = "[Device Id]";
@@ -11,7 +11,7 @@ Biblioteka kliencka serializatora usługi IoT Hub korzysta z modelu do określan
 
 1. Dodaj następujący kod w celu zdefiniowania modelu umożliwiającego komunikację między urządzeniem a usługą IoT Hub. Ten model określa następujące właściwości urządzenia:
 
-   - Można wysłać temperatury, zewnętrznych temperatury wilgoć i identyfikator urządzenia jako telemetrii.
+   - Umożliwia wysyłanie temperatury, temperatury zewnętrznej, wilgotności i Identyfikatora urządzenia jako dane telemetryczne.
    - Może wysyłać metadane dotyczące urządzenia do usługi IoT Hub. Podczas uruchamiania urządzenie wysyła podstawowe metadane w obiekcie **DeviceInfo**.
    - Może wysyłać zgłaszane właściwości do bliźniaczej reprezentacji urządzenia w usłudze IoT Hub. Te zgłaszane właściwości są podzielone na następujące grupy: właściwości konfiguracji, urządzeń i systemu.
    - Może odbierać i przetwarzać żądane właściwości ustawione w bliźniaczej reprezentacji urządzenia w usłudze IoT Hub.

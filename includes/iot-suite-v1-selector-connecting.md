@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "38756430"
+---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-suite/iot-suite-v1-connecting-devices.md)
 > * [C w systemie Linux](../articles/iot-suite/iot-suite-v1-connecting-devices-linux.md)
@@ -24,13 +41,13 @@ Przed przystąpieniem do pisania jakiegokolwiek kodu dla urządzenia musisz prze
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Aprowizowanie wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego
 Urządzenie, które utworzysz w ramach tego samouczka, będzie wysyłać dane do wystąpienia wstępnie skonfigurowanego rozwiązania do [monitorowania zdalnego][lnk-remote-monitoring]. Jeśli jeszcze nie przeprowadzono aprowizacji wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego na Twoim koncie platformy Azure, wykonaj poniższe kroki:
 
-1. Na stronie <https://www.azureiotsuite.com/> kliknij pozycję **+**, aby utworzyć rozwiązanie.
+1. Na <https://www.azureiotsolutions.com/> kliknij **+** do tworzenia rozwiązań.
 2. Kliknij pozycję **Wybierz** w panelu **Monitorowanie zdalne**, aby utworzyć rozwiązanie.
 3. Na stronie **Tworzenie rozwiązania do monitorowania zdalnego** w polu **Nazwa rozwiązania** wprowadź wybraną nazwę rozwiązania, w polu **Region** wybierz region, w którym chcesz przeprowadzić wdrożenie, a następnie wybierz subskrypcję platformy Azure, której chcesz użyć. Następnie kliknij pozycję **Utwórz rozwiązanie**.
 4. Zaczekaj na ukończenie procesu aprowizowania.
 
 > [!WARNING]
-> Wstępnie skonfigurowane rozwiązania korzystają z płatnych usług platformy Azure. Pamiętaj o usunięciu wstępnie skonfigurowanego rozwiązania ze swojej subskrypcji po zakończeniu pracy z nim, aby uniknąć wszelkich zbędnych opłat. Możesz całkowicie usunąć wstępnie skonfigurowane rozwiązanie ze swojej subskrypcji, odwiedzając stronę <https://www.azureiotsuite.com/>.
+> Wstępnie skonfigurowane rozwiązania korzystają z płatnych usług platformy Azure. Pamiętaj o usunięciu wstępnie skonfigurowanego rozwiązania ze swojej subskrypcji po zakończeniu pracy z nim, aby uniknąć wszelkich zbędnych opłat. Można całkowicie usunąć wstępnie skonfigurowane rozwiązanie z subskrypcji, odwiedzając <https://www.azureiotsolutions.com/> strony.
 > 
 > 
 

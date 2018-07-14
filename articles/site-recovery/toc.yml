@@ -51,6 +51,8 @@
           href: tutorial-prepare-azure.md
         - name: Migrowanie maszyn lokalnych do platformy Azure
           href: migrate-tutorial-on-premises-azure.md
+        - name: Migrowanie serwerów systemów Windows Server 2008 i 2008 R2 na platformę Azure
+          href: migrate-tutorial-windows-server-2008.md
         - name: Migrowanie wystąpień usługi AWS na platformę Azure
           href: migrate-tutorial-aws-azure.md
         - name: Migrowanie maszyn wirtualnych platformy Azure do innego regionu

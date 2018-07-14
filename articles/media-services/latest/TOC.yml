@@ -28,7 +28,7 @@
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
-      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
 - name: Pojęcia
@@ -95,12 +95,14 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Schematy zdarzeń
       href: media-services-event-schemas.md
-    - name: Schematy licencji DRM
+    - name: Licencje DRM
       items:
         - name: Szablon licencji PlayReady
           href: playready-license-template-overview.md
         - name: Szablon licencji Widevine
           href: widevine-license-template-overview.md
+        - name: Wymagania licencyjne technologii FairPlay
+          href: fairplay-license-overview.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

@@ -7,18 +7,10 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Wypróbuj wyszukiwanie kognitywne
-      href: cognitive-search-quickstart-blob.md
     - name: Tworzenie usługi
       href: search-create-service-portal.md
-    - name: Portal
-      items:
-        - name: Tworzenie indeksu
-          href: search-create-index-portal.md
-        - name: Importowanie danych
-          href: search-import-data-portal.md
-        - name: Eksplorator wyszukiwania
-          href: search-explorer.md
+    - name: Wypróbuj wyszukiwanie kognitywne
+      href: cognitive-search-quickstart-blob.md
     - name: .NET
       items:
         - name: Tworzenie indeksu
@@ -39,18 +31,18 @@
           href: search-fiddler.md
 - name: Samouczki
   items:
+    - name: Korzystanie z wbudowanych narzędzi
+      href: search-get-started-portal.md
     - name: Opracowywanie wyszukiwania kognitywnego
       href: cognitive-search-tutorial-blob.md
-    - name: Indeksowanie usługi Azure SQL Database
-      href: search-indexer-tutorial.md
     - name: Indeksowanie obiektów blob platformy Azure
       href: search-semi-structured-data.md
+    - name: Indeksowanie usługi Azure SQL Database
+      href: search-indexer-tutorial.md
     - name: Dodawanie synonimów na platformie .NET
       href: search-synonyms-tutorial-sdk.md
     - name: Dodawanie funkcji automatycznego uzupełniania na platformie .NET
       href: search-autocomplete-tutorial.md
-    - name: Przewodnik po portalu
-      href: search-get-started-portal.md
 - name: Przykłady
   items:
     - name: Przykłady kodu platformy Azure
@@ -129,6 +121,8 @@
       items:
         - name: Definicja indeksu
           href: search-what-is-an-index.md
+        - name: Tworzenie indeksu (portal)
+          href: search-create-index-portal.md
         - name: Analizatory
           items:
             - name: Analizatory tekstu
@@ -151,6 +145,8 @@
       items:
         - name: Wypychanie a Indeksowanie przez ściąganie
           href: search-what-is-data-import.md
+        - name: Kreator importu (portal)
+          href: search-import-data-portal.md
         - name: Ponowne kompilowanie indeksu
           href: search-howto-reindex.md
         - name: Indeksowanie dużych zestawów danych
@@ -181,6 +177,8 @@
       items:
         - name: Budowa podstawowych zapytań
           href: search-query-overview.md
+        - name: Eksplorator wyszukiwania (portal)
+          href: search-explorer.md
         - name: Prosta składnia zapytań
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Składnia zapytań Lucene

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859784"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38990119"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczania informacji usługi Azure Log Analytics do uzupełnienia informacji o [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
@@ -37,6 +37,24 @@ Usługa Log Analytics bezpiecznie zarządza dane oparte na chmurze przy użyciu 
 * Certyfikaty standardów zabezpieczeń
 
 Skontaktuj się z nami za pomocą jakiekolwiek pytania, sugestie lub problemy dotyczące dowolnej z następujących informacji zgodnie z zasadami zabezpieczeń w tym [opcje pomocy technicznej platformy Azure](http://azure.microsoft.com/support/options/).
+
+## <a name="sending-data-securely-using-tls-12"></a>Wysyłanie danych przy użyciu protokołu TLS 1.2 
+
+Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log Analytics, zdecydowanie zachęcamy do konfigurowania agenta do użycia w co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**, i branży szybko rozwijających się do porzucenia pomocy technicznej dla tych starszych protokołów. 
+
+[Rady standardami bezpieczeństwa PCI](https://www.pcisecuritystandards.org/) ustawił [terminu 30 czerwca 2018 r.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) wyłączyć starsze wersje protokołu TLS/SSL i uaktualniania, aby lepiej zabezpieczyć protokołów. Gdy starsze obsługuje jest już w Azure, jeśli Twoi agenci nie mogą komunikować się za pośrednictwem co najmniej protokołu TLS 1.2, nie będzie mogła wysyłać dane do usługi Log Analytics. 
+
+Firma Microsoft nie zaleca się jawne ustawienie agenta można używać tylko protokołu TLS 1.2, chyba że absolutnie konieczne, ponieważ może to spowodować awarię funkcji zabezpieczenia na poziomie platformy, które pozwalają na automatyczne wykrywanie i korzystać z zalet nowszej bardziej bezpieczne protokoły jako staną się dostępne takie jako TLS 1.3. 
+
+### <a name="platform-specific-guidance"></a>Wskazówki dotyczące określonej platformy
+
+|Języka/platformy | Pomoc techniczna | Więcej informacji |
+| --- | --- | --- |
+|Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|
+| Windows 8.0 10 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [domyślne ustawienia](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [ustawienia domyślne](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 | Obsługiwane, ale nie jest włączony domyślnie. | Zobacz [zabezpieczeń TLS (Transport Layer), ustawień rejestru](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) strony, aby uzyskać szczegółowe informacje o sposobie włączania.  |
+| Windows Server 2008 SP2 | Obsługa protokołu TLS 1.2 wymaga aktualizacji. | Zobacz [aktualizacji, aby dodać obsługę protokołu TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
 
 ## <a name="data-segregation"></a>Podział danych
 Po Twoje dane są pozyskiwane przez usługę Log Analytics, dane są logicznie oddzielone dla każdego składnika w całej usłudze. Wszystkie dane są otagowane obszaru roboczego. To tagowanie jest obecne przez cały cykl życia danych i jest wymuszane w każdej warstwie usługi. Dane są przechowywane w dedykowany bazy danych w klastrze magazynu w regionie, który wybrano.
@@ -134,13 +152,13 @@ Dla Twojej organizacji w celu wysyłania danych do usługi Log Analytics można 
 * [Identyfikator organizacji](../active-directory/fundamentals/sign-up-organization.md)
 * [Konto Microsoft — program Outlook, usługi Office Live, MSN](https://account.microsoft.com/account)
 
-Obszar roboczy usługi Log Analytics to, gdzie dane są zbierane, agregowane, analizowane i przedstawiane. Obszar roboczy jest używany głównie jako środek do partycjonowania danych, a każdy obszar roboczy jest unikatowy. Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać bezpłatna warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać płatnych warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 720 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.
+Obszar roboczy usługi Log Analytics to, gdzie dane są zbierane, agregowane, analizowane i przedstawiane. Obszar roboczy jest używany głównie jako środek do partycjonowania danych, a każdy obszar roboczy jest unikatowy. Na przykład możesz chcieć mieć danych produkcyjnych zarządzanych za pomocą jednego obszaru roboczego i dane zarządzanych za pomocą innego obszaru roboczego. Obszary robocze również pomóc administratora kontroli dostępu użytkownika do danych. Każdy obszar roboczy może mieć wiele kont użytkowników skojarzonych z nim, a wszystkie konta użytkowników mogą uzyskiwać dostęp do wielu obszarów roboczych usługi Log Analytics. Możesz utworzyć obszary robocze oparte na region centrum danych. Każdy obszar roboczy jest replikowany do innych centrach danych w regionie, przede wszystkim dla dostępności usługi Log Analytics.
 
-Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r. Usługa Log Analytics umożliwia dostęp do danych Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS.
+Dla programu Operations Manager grupy zarządzania programu Operations Manager ustanawia połączenie z usługą Log Analytics. Następnie należy skonfigurować systemów zarządzanych przez agentów w grupie zarządzania mogą wysyłają i zbierają dane do usługi. W zależności od rozwiązania zostało włączone, dane z tych rozwiązań są albo wysyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Log Analytics lub ze względu na ilość danych zebranych przez system zarządzany przez agenta są wysyłane bezpośrednio z agent z usługą. W systemach, które nie są monitorowane przez program Operations Manager każdy bezpiecznie łączy się z usługi Log Analytics bezpośrednio.
 
-Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte.  Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane.
+Cała komunikacja między połączone systemy i usługi Log Analytics jest szyfrowana. Protokół TLS (HTTPS) jest używany do szyfrowania.  Proces SDL firmy Microsoft jest zakończony, aby upewnić się, że usługi Log Analytics jest aktualny i najnowsze osiągnięcia w protokołów kryptograficznych.
 
-Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony. Dowiedz się, jak zbierać dane z usługą Log Analytics na potrzeby Twojego następujące maszyny wirtualne platformy Azure [Szybki Start maszyna wirtualna platformy Azure](log-analytics-add-solutions.md). Jeśli chcesz zbierać dane z fizycznych i wirtualnych komputerów Windows lub Linux w środowisku, zobacz szybkiego startu dla komputerów z systemem Linux lub komputerów Szybki Start dla Windows Rozwiązanie to pakiet wstępnie zdefiniowanych widoków, zapytań funkcji przeszukiwania dzienników, reguł zbierania danych i logiki przetwarzania. Tylko administratorzy mogą używać usługi Log Analytics, aby zaimportować rozwiązania. Po zaimportowaniu rozwiązania jest przenoszony do serwerów zarządzania programu Operations Manager (jeśli jest używany), a następnie do agentów, które zostały wybrane. W efekcie agentów zbierania danych.
+Każdy rodzaj agenta służy do zbierania danych usługi Log Analytics. Typ danych, które są zbierane to zależy od typów rozwiązań używane. Zostanie wyświetlone podsumowanie zbierania danych o [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md). Ponadto bardziej szczegółowe informacje o kolekcji jest dostępna w przypadku większości rozwiązań. Rozwiązanie to pakiet wstępnie zdefiniowanych widoków, zapytań funkcji przeszukiwania dzienników, reguł zbierania danych i logiki przetwarzania. Tylko administratorzy mogą używać usługi Log Analytics, aby zaimportować rozwiązania. Po zaimportowaniu rozwiązania jest przenoszony do serwerów zarządzania programu Operations Manager (jeśli jest używany), a następnie do agentów, które zostały wybrane. W efekcie agentów zbierania danych.
 
 ## <a name="2-send-data-from-agents"></a>2. Wyślij dane z agentów
 Zarejestruj wszystkie typy agenta przy użyciu klucza rejestracji i ustanowieniu bezpiecznego połączenia między agentem i usługę Log Analytics przy użyciu uwierzytelniania opartego na certyfikatach oraz protokołu SSL przy użyciu portu 443. Usługi log Analytics używa magazynu wpisów tajnych, aby wygenerować i Obsługa kluczy. Klucze prywatne są obracane co 90 dni i są przechowywane na platformie Azure i są zarządzane przy użyciu operacji platformy Azure, którzy postępuj zgodnie z ograniczeniami rozwiązania w zakresie przepisów i zgodności.

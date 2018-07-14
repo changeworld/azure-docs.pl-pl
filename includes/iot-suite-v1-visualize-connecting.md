@@ -26,7 +26,7 @@ Pulpit nawigacyjny w rozwiązaniu do monitorowania zdalnego umożliwia wywoływa
 
     ![Wyświetlanie historii metod][img-method-history]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W artykule [Dostosowywanie wstępnie skonfigurowanych rozwiązań][lnk-customize] opisano niektóre sposoby pozwalające rozszerzyć ten przykład. Możliwe rozszerzenia obejmują użycie rzeczywistych czujników i implementację dodatkowych poleceń.
 
 Więcej informacji na temat [uprawnień podano w witrynie azureiotsuite.com][lnk-permissions].

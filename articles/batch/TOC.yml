@@ -87,8 +87,6 @@
           href: batch-job-prep-release.md
         - name: Równoczesne zadania węzła
           href: batch-parallel-node-tasks.md
-        - name: Liczba zadań według stanu
-          href: batch-get-task-counts.md
         - name: Zależności zadań
           href: batch-task-dependencies.md
         - name: Konta użytkowników do uruchamiania zadań
@@ -119,7 +117,9 @@
           href: batch-diagnostics.md
         - name: Monitorowanie za pomocą usługi Application Insights
           href: monitor-application-insights.md
-        - name: Wydajne zapytania dotyczące list
+        - name: Zliczanie zasobów według stanu
+          href: batch-get-resource-counts.md
+        - name: Efektywne tworzenie zapytań dotyczących zasobów
           href: batch-efficient-list-queries.md
     - name: Korzystanie z narzędzi deweloperskich
       items:
