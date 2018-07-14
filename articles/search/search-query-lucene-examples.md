@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: liamca
-ms.openlocfilehash: a3baa17906e3bfede8a7fc5f8a0bfbde9d2a57ce
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 24fa427ad67a953020370a16b4d156c82a0a1cf6
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951026"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036670"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Przykłady składni zapytań Lucene do tworzenia zapytań w usłudze Azure Search
 Podczas tworzenia zapytań do usługi Azure Search, możesz użyć albo domyślnie [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) lub alternatywne [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analizator składni zapytań Lucene obsługuje bardziej złożonych konstrukcje zapytań, takich jak zapytania należące do pola, Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie, promowanie terminów i wyszukiwanie wyrażenia regularnego.
@@ -69,7 +69,7 @@ Pole określone w **fieldname:searchterm** musi być polu możliwym do przeszuka
 ## <a name="fuzzy-search-example"></a>Przykład wyszukiwania rozmytego
 Wyszukiwanie rozmyte znajduje dopasowań w warunkach, które mają podobne konstrukcji. Na [dokumentacji Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), Wyszukiwanie rozmyte opierają się na [odległość Damerau Levenshtein](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
-Aby wykonać wyszukiwanie rozmyte, należy dołączyć tylda "~" symbolu na końcu pojedynczego wyrazu z opcjonalnym parametrem, wartość z zakresu od 0 do 2, określającą odległość edycji. Na przykład "niebieski ~" lub "niebieski ~ 1" zwróci niebieski, blues i przyklej.
+Aby wykonać wyszukiwanie rozmyte, należy dołączyć tylda `~` symbolu na końcu pojedynczego wyrazu z opcjonalnym parametrem, wartość z zakresu od 0 do 2, określającą odległość edycji. Na przykład `blue~` lub `blue~1` zwróci niebieski, blues i przyklej.
 
 **Przykład 3** — kliknij prawym przyciskiem myszy poniższy fragment zapytania. To zapytanie wyszukuje zadań z skojarzenia termin (gdzie go jest błędnie wpisana):
 

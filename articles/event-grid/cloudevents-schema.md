@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: f3541fb3dbca6243f6c10611aa968603745f97a1
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 41e7be80eb67deaf7a8189aa0d9f62c48b88799a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38314434"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036241"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
@@ -74,8 +74,6 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 Aby uzyskać więcej informacji, zobacz [Specyfikacja CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurowanie usługi Event Grid dla CloudEvents
-
-Obecnie usługa Azure Event Grid ma wersji zapoznawczej pomoc techniczna dotycząca danych wejściowych z formatu CloudEvents JSON i dane wyjściowe w **zachodnio-środkowe stany USA**, **środkowe stany USA**, i **Europa Północna**.
 
 Zarówno dla danych wejściowych i danych wyjściowych, zdarzeń w schematu CloudEvents, można użyć usługi Event Grid. Można użyć CloudEvents dla zdarzenia systemowe, takie jak zdarzenia usługi Blob Storage i zdarzeń usługi IoT Hub i zdarzeń niestandardowych. Można również przekształcać tych zdarzeń, jak i z powrotem.
 

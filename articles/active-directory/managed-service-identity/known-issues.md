@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 05096050dfc29aebd2859b298eef884dcd9a1111
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c48d03b6e8a3d850d02d2c36c35915f8214b00e8
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908077"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035816"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Często zadawane pytania i znane problemy z tożsamość usługi zarządzanej (MSI) dla usługi Azure Active Directory
 
@@ -85,7 +85,7 @@ Gdzie:
 
 Po włączeniu tożsamości usługi zarządzanej maszyny wirtualnej, podczas próby korzystania z funkcji "Skrypt automatyzacji" dla maszyny Wirtualnej lub jej grupy zasobów jest wyświetlany następujący błąd:
 
-![Błąd eksportowania skryptów automatyzacji Instalatora MSI](../media/msi-known-issues/automation-script-export-error.png)
+![Błąd eksportowania skryptów automatyzacji Instalatora MSI](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
 
 Zarządzane usługi tożsamości rozszerzenia maszyny Wirtualnej nie obsługuje obecnie możliwość eksportowania jego schematu do szablonu grupy zasobów. W rezultacie w wygenerowany szablon nie są wyświetlane parametry konfiguracji, aby włączyć tożsamości usługi zarządzanej dla zasobu. Poniższe sekcje mogą być dodawane ręcznie, wykonując na potrzeby przykładów w [Konfigurowanie tożsamości usługi zarządzanej maszyny Wirtualnej przy użyciu szablonu](qs-configure-template-windows-vm.md).
 

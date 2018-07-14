@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: cbd5a0ea5fbeb7becbfc33bf72af73425630bff6
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970724"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036942"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -148,7 +148,7 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
-|TaskApprovalPolicy   |Wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)
+|TaskApprovalPolicy   |Wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | ciąg<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: True)                 | Ta flaga umożliwia instalację aktualizacji systemu operacyjnego Windows.            |
@@ -304,19 +304,36 @@ PYTANIA I ODPOWIEDZI. **Co mogę zrobić, jeśli mój klaster jest w złej kondy
 
 A. Aplikacji patch orchestration nie instaluje aktualizacji, podczas gdy klaster jest w złej kondycji. Spróbuj przełączyć klaster do stanu prawidłowego, aby odblokować poprawki aplikacji przepływu pracy.
 
-PYTANIA I ODPOWIEDZI. **Dlaczego poprawek w klastrach podąża tak długo do uruchomienia?**
+PYTANIA I ODPOWIEDZI. **Należy ustawić TaskApprovalPolicy jako "NodeWise" lub "UpgradeDomainWise" dla mojego klastra?**
 
-A. Czas potrzebny przez aplikację patch orchestration przede wszystkim jest zależna od następujących czynników:
+A. "UpgradeDomainWise" sprawia, że ogólny klastra poprawki szybciej poprzez wdrażanie poprawek wszystkie węzły należące do domeny uaktualnienia równoległe. Oznacza to, węzłach należących do całej domeny uaktualnienia byłyby niedostępne (w [wyłączone](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) stanu) podczas procesu stosowania poprawek.
 
-- Zasady usługi koordynatora. 
-  - Domyślne zasady `NodeWise`, powoduje stosowanie poprawek tylko jeden węzeł w danym momencie. Szczególnie w przypadku większego klastra, firma Microsoft zaleca użycie `UpgradeDomainWise` zasady, aby osiągnąć szybciej poprawek w klastrach.
-- Liczba dostępnych do pobrania i zainstalowania aktualizacji. 
-- Średni czas potrzebny do pobrania i zainstalowania aktualizacji, które nie powinna przekraczać kilka godzin.
-- Wydajność maszyny Wirtualnej i sieci przepustowość.
+W odróżnieniu od nich "NodeWise" zasady poprawki tylko jeden węzeł w czasie, oznacza to, ogólną poprawek klastrów może potrwać dłuższy czas. Jednak w przypadku osiągnięcia maksymalnej liczby tylko jeden węzeł byłyby niedostępne (w [wyłączone](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled) stanu) podczas procesu stosowania poprawek.
+
+Jeśli klaster może tolerować systemem n-1-Liczba domen uaktualnienia podczas stosowania poprawek cyklu (gdzie N to liczba domen uaktualnienia w klastrze), a następnie ustawić zasady "UpgradeDomainWise", w przeciwnym razie ustaw ją na "NodeWise".
+
+PYTANIA I ODPOWIEDZI. **Ile czasu zajmuje take zastosowania poprawki względem węzła?**
+
+A. Stosowanie poprawek węzła może potrwać (na przykład: [aktualizacje definicji usługi Windows Defender](https://www.microsoft.com/wdsi/definitions)) do godzin (na przykład: [aktualizacji zbiorczej Windows](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Czas wymagany do poprawiania węzła zależy przede wszystkim na 
+ - Rozmiar aktualizacji
+ - Liczba aktualizacji, które ma być stosowana w okno stosowania poprawek
+ - Czas wymagany do zainstalowania aktualizacji, ponowny rozruch węzła (jeśli jest to wymagane) i Zakończ kroki instalacji po ponownym uruchomieniu.
+ - Wydajność maszyny Wirtualnej/machine i warunki sieciowe.
+
+PYTANIA I ODPOWIEDZI. **Jak długo trwa stosowanie poprawek do całego klastra?**
+
+A. Czas potrzebny na stosowanie poprawek do całego klastra zależy od następujących czynników:
+
+- Czas potrzebny do poprawiania węzła.
+- Zasady usługi koordynatora. Domyślne zasady `NodeWise`, powoduje stosowanie poprawek tylko jeden węzeł w momencie, która będzie wolniejszy niż `UpgradeDomainWise`. Na przykład: Jeśli węzeł przyjmuje ~ 1 godziny do poprawienia, wyłączność zastosowania poprawki względem 20 (ten sam typ węzłów) węzeł klastra z 5 domenami uaktualniania, każdy z nich zawierający 4 węzły.
+    - Jeśli zasady powinno zająć ~ 20 godzin zastosowania poprawki względem całego klastra `NodeWise`
+    - Jeśli zasady powinno zająć ~ 5 godzin `UpgradeDomainWise`
+- Obciążenie klastra — każda operacja stosowania poprawek wymaga przenoszenie obciążenia klientów do innych dostępnych węzłów w klastrze. Węzeł w trakcie poprawki będą miały [wyłączenie](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) stanu, w tym czasie. Jeśli klaster działa w pobliżu szczytowego obciążenia, wyłączenie procesu zajęłoby dłuższy czas. Dlatego całego procesu stosowania poprawek może wydawać się wolno w takich warunkach stressed.
+- Wszelkie klastra błędy kondycji podczas stosowania poprawek - [degradacji](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) w [kondycji klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) spowoduje przerwanie procesu stosowania poprawek. Spowoduje to dodanie całkowity czas wymagany do poprawiania całego klastra.
 
 PYTANIA I ODPOWIEDZI. **Dlaczego widzę niektórych aktualizacji w aktualizacji Windows wyniki uzyskane za pośrednictwem interfejsu API REST, ale nie w obszarze Historia Windows Update na komputerze?**
 
-A. Niektóre aktualizacje produktu pojawią się tylko w ich historii odpowiednich aktualizacji/poprawek. Na przykład aktualizacje programu Windows Defender nie są wyświetlane w historii Windows Update w systemie Windows Server 2016.
+A. Niektóre aktualizacje produktu pojawią się tylko w ich historii odpowiednich aktualizacji/poprawek. Na przykład aktualizacje programu Windows Defender może lub nie może być wyświetlany w historii aktualizacji Windows w systemie Windows Server 2016.
 
 PYTANIA I ODPOWIEDZI. **Może służyć do poprawiania Mój klaster dev (klastra z jednym węzłem) Orkiestracji poprawek aplikacji?**
 

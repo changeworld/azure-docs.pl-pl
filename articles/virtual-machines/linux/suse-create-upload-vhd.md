@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i przekazywanie SUSE Linux wirtualnego dysku twardego na platformie Azure
+title: Utwórz i przekaż dysk VHD SUSE Linux na platformie Azure
 description: Dowiedz się utworzyć i przekazać Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym SUSE Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,95 +15,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3bdd3f4d67fcaae37736022c3c59af19eb04bec7
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653437"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036653"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu SLES lub openSUSE dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że zainstalowano już SUSE lub openSUSE systemu operacyjnego Linux do wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcja Hyper-V. Aby uzyskać instrukcje, zobacz [Instalowanie roli funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
+W tym artykule założono, że zainstalowano już SUSE lub dystrybucją systemu openSUSE Linux system operacyjny na wirtualnym dysku twardym. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](http://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="sles--opensuse-installation-notes"></a>SLES / openSUSE instalacji uwagi
-* Zobacz także [ogólne informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) więcej porad na przygotowanie systemu Linux na platformie Azure.
-* VHDX format jest nieobsługiwane w systemie Azure, tylko **stały VHD**.  Dysk można przekonwertować na format wirtualnego dysku twardego za pomocą Menedżera funkcji Hyper-V lub polecenia cmdlet convert-vhd.
-* Zalecane jest użycie standardowe partycje, a nie LVM (często domyślnie dla wielu instalacji), podczas instalowania systemu Linux. Pozwoli to uniknąć konfliktów nazw LVM sklonowany maszyn wirtualnych, szczególnie, jeśli dysk systemu operacyjnego kiedykolwiek musi być dołączony do innej maszyny Wirtualnej do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używany dla dysków z danymi, jeśli preferowane.
-* Nie należy konfigurować wymiany partycji na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysku zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
-* Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1MB. Podczas konwersji z pierwotnych dysku VHD musi upewnij się, że rozmiar dysku pierwotnych jest wielokrotnością liczby 1MB przed konwersją. Zobacz [informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
+### <a name="sles--opensuse-installation-notes"></a>SLES / uwagi dotyczące instalacji openSUSE
+* Zobacz również [ogólne informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) więcej porad na temat przygotowywania systemu Linux na platformie Azure.
+* VHDX format jest nieobsługiwane na platformie Azure, tylko **stałej wirtualnego dysku twardego**.  Dysk można przekonwertować na format VHD za pomocą Menedżera funkcji Hyper-V lub polecenia cmdlet convert-vhd.
+* Podczas instalowania systemu Linux zalecane jest użycie standardowe partycje, a nie LVM (często domyślnie w przypadku instalacji wielu). Pozwoli to uniknąć LVM wystąpił konflikt między nazwą sklonowany w przypadku maszyn wirtualnych, szczególnie w przypadku, gdy dysk systemu operacyjnego nigdy nie musi być dołączony do innej maszyny Wirtualnej do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi, jeśli preferowane.
+* Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
 
-## <a name="use-suse-studio"></a>Użyj SUSE Studio
-[SUSE Studio](http://www.susestudio.com) można łatwo tworzyć i zarządzać obrazów SLES i openSUSE platformy Azure i funkcji Hyper-V. Jest to zalecane podejście do dostosowywania własnych obrazów SLES i openSUSE.
+## <a name="use-suse-studio"></a>Użyj programu Studio SUSE
+[SUSE Studio](http://www.susestudio.com) można łatwo tworzyć i zarządzać z obrazów SLES i openSUSE dla platformy Azure i funkcji Hyper-V. Jest to zalecane podejście do dostosowywania własnych obrazów SLES i openSUSE.
 
-Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE publikuje również obrazów BYOS (Bring Your własnej subskrypcji) dla SLES na [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
+Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE, publikuje również obrazów BYOS (Bring Your własnej subskrypcji) dla systemu SLES o [repozytorium VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Przygotowanie SUSE Linux Enterprise Server 11 z dodatkiem SP4
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
-2. Kliknij przycisk **Connect** można otworzyć okna dla maszyny wirtualnej.
-3. Zarejestruj systemu SUSE Linux Enterprise, aby zezwolić na aktualizacje pobierania i instalowania pakietów.
-4. Zaktualizuj system z najnowszych poprawek:
+2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.
+3. Zarejestruj systemu SUSE Linux Enterprise, aby zezwalała na pobieranie aktualizacji i zainstaluj pakiety.
+4. Aktualizowanie systemu przy użyciu najnowszych poprawek:
    
         # sudo zypper update
-5. Zainstaluj agenta systemu Linux platformy Azure z repozytorium SLES:
+5. Zainstaluj agenta systemu Linux platformy Azure z repozytorium w systemie SLES:
    
         # sudo zypper install WALinuxAgent
-6. Sprawdź, czy agenta waagent jest ustawiony na "on" w chkconfig, a jeśli nie, ją włączyć automatyczne uruchamianie:
+6. Sprawdź Jeśli waagent ma wartość "włączone" w folderze chkconfig, a jeśli nie, włącz ją do automatycznego uruchamiania:
    
         # sudo chkconfig waagent on
-7. Sprawdź, czy Usługa agenta waagent jest uruchomiona i jeśli nie, uruchom go: 
+7. Sprawdź, czy usługa waagent jest uruchomiona i jeśli nie, uruchom go: 
    
         # sudo service waagent start
-8. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. Aby zrobić to open "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna zawiera następujące parametry:
+8. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby zrobić to open "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna obejmuje następujące parametry:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-    Dzięki konsoli komunikaty są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów.
-9. Upewnij się, że /boot/grub/menu.lst i /etc/fstab zarówno odwołanie dysku za pomocą jego identyfikatora UUID (przez uuid) zamiast identyfikator dysku (według identyfikatora). 
+    Daje to pewność, wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów.
+9. Upewnij się, że /boot/grub/menu.lst i/etc/fstab zarówno odwoływać się do dysku za pomocą jego identyfikatora UUID (przez uuid) zamiast identyfikator dysku (według identyfikatora). 
    
-    Pobierz identyfikator UUID
+    Uzyskaj identyfikator UUID dysku
    
         # ls /dev/disk/by-uuid/
    
-    Jeśli /dev/disk/by-id / jest używany, aktualizacji zarówno /boot/grub/menu.lst i/etc/fstab przy użyciu wartości odpowiednich przez uuid
+    Jeśli /dev/disk/by-id / jest używany, zaktualizuj /boot/grub/menu.lst i/etc/fstab przy użyciu wartości odpowiednich przez uuid
    
-    Przed zmianą
+    Przed wprowadzeniem zmiany
    
         root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
    
     Po zmianie
    
         root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-10. Modyfikuj reguły udev, aby uniknąć generowania statyczne reguły dla interfejsów Ethernet. Te reguły może spowodować problemy podczas klonowania maszyny wirtualnej w Microsoft Azure lub funkcji Hyper-V:
+10. Zmodyfikuj zasady usługi udev, aby uniknąć generowania reguł statycznej interfejsy sieci Ethernet. Te reguły, które może powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Jest zalecane, aby edytować plik "/ etc/sysconfig/sieci/dhcp" i zmień `DHCLIENT_SET_HOSTNAME` parametru do następującego:
+11. Zalecane jest, aby edytować plik "/ etc/sysconfig/sieci/dhcp" i zmień `DHCLIENT_SET_HOSTNAME` parametru do następującego:
     
      DHCLIENT_SET_HOSTNAME="no"
-12. Komentarz "/ etc/sudoers", lub usuń następujące linie, jeśli istnieją:
+12. "/ Etc/sudo" komentarz lub usuń następujące wiersze, jeśli nie istnieją:
     
-     Ustawienia domyślne targetpw # podanie hasła użytkownika docelowego to główny wszystkich ALL=(ALL) wszystkie # ostrzeżenie! Użyj tylko wtedy, wraz z 'Targetpw wartości domyślnych'!
-13. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to wartość domyślna.
+     Wartość domyślna targetpw # poprosić o podanie hasła użytkownika docelowego, czyli głównego wszystkich ALL=(ALL) wszystkich # ostrzeżenie! Użyj tylko wtedy, wraz z "Domyślne targetpw"!
+13. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.
 14. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
     
-    Agent systemu Linux platformy Azure mogą automatycznie konfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowego* na dysku i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) i zmodyfikuj odpowiednio w /etc/waagent.conf następujące parametry:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w /etc/waagent.conf odpowiednio:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę wartość na dowolnym należy się.
-15. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę pozycję na czegokolwiek potrzebujesz się.
+15. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. Kliknij przycisk **akcji -> zamykania w dół** w Menedżerze funkcji Hyper-V. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
+16. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 - - -
 ## <a name="prepare-opensuse-131"></a>Przygotowanie openSUSE 13.1 +
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
-2. Kliknij przycisk **Connect** można otworzyć okna dla maszyny wirtualnej.
-3. W powłoce, uruchom polecenie "`zypper lr`". Jeśli to polecenie zwraca dane wyjściowe podobne do następujących, a następnie repozytoria są skonfigurowane zgodnie z oczekiwaniami — bez korekt są niezbędne (należy pamiętać, że numery wersji może się różnić):
+2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.
+3. W powłoce, uruchom polecenie "`zypper lr`". Jeśli to polecenie zwraca dane wyjściowe podobne do następujących, a następnie repozytoriów są skonfigurowane zgodnie z oczekiwaniami — konieczne są nie zmiany (Zwróć uwagę, że numery wersji mogą się różnić):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -111,53 +111,53 @@ Jako alternatywę do tworzenia własnych wirtualnego dysku twardego, SUSE publik
         2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
         3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
    
-    Jeśli polecenie zwróci "Nie zdefiniowano... repozytoria" Użyj następujących poleceń, aby dodać te repozytoriów:
+    Jeśli polecenie zwraca "Żadnych repozytoriów zdefiniowane...", użyj następujących poleceń do dodania tych repozytoriów:
    
         # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
         # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Następnie należy sprawdzić repozytoria zostały dodane, uruchamiając polecenie "`zypper lr`" ponownie. W przypadku, gdy jeden z repozytoriami odpowiednich aktualizacji nie jest włączona, należy je włączyć, wprowadzając następujące polecenie:
+    Następnie należy sprawdzić repozytoriów zostały dodane, uruchamiając polecenie "`zypper lr`" ponownie. W przypadku, gdy w jednym z repozytoriów aktualizacji nie jest włączona, należy ją włączyć za pomocą następującego polecenia:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
-4. Aktualizacja jądra do najnowszej dostępnej wersji:
+4. Zaktualizuj jądro do najnowszej dostępnej wersji:
    
         # sudo zypper up kernel-default
    
-    Lub zaktualizuj system z najnowszych poprawek:
+    Lub aktualizowanie systemu przy użyciu najnowszych poprawek:
    
         # sudo zypper update
-5. Zainstaluj agenta systemu Linux platformy Azure.
+5. Zainstaluj agenta systemu Linux dla platformy Azure.
    
         # sudo zypper install WALinuxAgent
-6. Zmodyfikuj wiersza rozruchu jądra w konfiguracji chodników uwzględnienie jądra dodatkowe parametry dla platformy Azure. W tym celu należy otworzyć "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna zawiera następujące parametry:
+6. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby to zrobić, Otwórz "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna obejmuje następujące parametry:
    
      Konsola = ttyS0 earlyprintk = ttyS0 rootdelay = 300
    
-   Dzięki konsoli komunikaty są wysyłane do pierwszego portu szeregowego może pomóc Azure pomocy dotyczącej debugowanie problemów. Ponadto należy usunąć następujące parametry z wiersza rozruchu jądra Jeśli istnieją:
+   Daje to pewność, wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Ponadto Usuń następujące parametry z wiersza rozruchu jądra, jeśli istnieją:
    
-     Rezerwacja libata.atapi_enabled=0 = 0x1f0, 0x8
-7. Jest zalecane, aby edytować plik "/ etc/sysconfig/sieci/dhcp" i zmień `DHCLIENT_SET_HOSTNAME` parametru do następującego:
+     Rezerwa libata.atapi_enabled=0 = 0x1f0, 0x8
+7. Zalecane jest, aby edytować plik "/ etc/sysconfig/sieci/dhcp" i zmień `DHCLIENT_SET_HOSTNAME` parametru do następującego:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Ważne:** "/ etc/sudoers", komentarz lub usuń następujące linie, jeśli istnieją:
+8. **Ważne:** w "/ etc/sudo", komentarz lub usuń następujące wiersze, jeśli nie istnieją:
    
-     Ustawienia domyślne targetpw # podanie hasła użytkownika docelowego to główny wszystkich ALL=(ALL) wszystkie # ostrzeżenie! Użyj tylko wtedy, wraz z 'Targetpw wartości domyślnych'!
-9. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to wartość domyślna.
+     Wartość domyślna targetpw # poprosić o podanie hasła użytkownika docelowego, czyli głównego wszystkich ALL=(ALL) wszystkich # ostrzeżenie! Użyj tylko wtedy, wraz z "Domyślne targetpw"!
+9. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.
 10. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
     
-    Agent systemu Linux platformy Azure mogą automatycznie konfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowego* na dysku i może opróżnić, gdy maszyna wirtualna jest anulowana. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) i zmodyfikuj odpowiednio w /etc/waagent.conf następujące parametry:
+    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w /etc/waagent.conf odpowiednio:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę wartość na dowolnym należy się.
-11. Uruchom następujące polecenia, aby anulowanie zastrzeżenia maszyny wirtualnej i przygotowywania ich do inicjowania obsługi administracyjnej na platformie Azure:
+     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Uwaga: Ustaw tę pozycję na czegokolwiek potrzebujesz się.
+11. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-12. Upewnij się, że Agent systemu Linux platformy Azure jest uruchamiany podczas uruchamiania:
+12. Upewnij się, że agenta systemu Linux dla platformy Azure jest uruchamiane podczas uruchamiania:
     
         # sudo systemctl enable waagent.service
-13. Kliknij przycisk **akcji -> zamykania w dół** w Menedżerze funkcji Hyper-V. Dysk VHD systemu Linux jest teraz gotowy do przekazania do platformy Azure.
+13. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz możesz używać wirtualnego dysku twardego SUSE Linux do tworzenia nowych maszyn wirtualnych na platformie Azure. Jeśli jest to czy jest przekazywanie pliku VHD na platformę Azure po raz pierwszy, zobacz [Utwórz Maszynę wirtualną systemu Linux na podstawie niestandardowych dysku](upload-vhd.md#option-1-upload-a-vhd).
+Teraz możesz przystąpić do wirtualnego dysku twardego systemu SUSE Linux umożliwia tworzenie nowych maszyn wirtualnych na platformie Azure. Jeśli po raz pierwszy, w przypadku przekazywania pliku VHD na platformie Azure, zobacz [Utwórz Maszynę wirtualną systemu Linux z niestandardowego dysku](upload-vhd.md#option-1-upload-a-vhd).

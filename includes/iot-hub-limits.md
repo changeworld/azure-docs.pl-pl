@@ -14,9 +14,9 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 
 | Zasób | Limit |
 | --- | --- |
-| Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |10 |
+| Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |50 |
 | Maksymalna liczba bezpłatnych centrów IoT na subskrypcję platformy Azure |1 |
-| Maksymalna liczba znaków w identyfikator urządzenia | 128 |
+| Maksymalna liczba znaków w identyfikatorze urządzenia | 128 |
 | Maksymalna liczba tożsamości urządzeń<br/> zwróconych w pojedynczym wywołaniu |1000 |
 | Maksymalny okres przechowywania komunikatów usługi IoT Hub dla komunikatów przesyłanych z urządzenia do chmury |7 dni |
 | Maksymalny rozmiar komunikatu przesyłanego z urządzenia do chmury |256 KB |
@@ -38,24 +38,24 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 
 
 > [!NOTE]
-> Jeśli potrzebujesz więcej niż 10 płatnych centrów IoT w subskrypcji platformy Azure, skontaktuj się z pomocą techniczną firmy Microsoft.
+> Jeśli potrzebujesz więcej niż 50 płatnych centrów IoT w subskrypcji platformy Azure, skontaktuj się z pomocą techniczną firmy Microsoft.
 
 
 > [!NOTE]
-> Maksymalna liczba urządzeń, którymi możesz połączyć się z jednego centrum IoT jest obecnie, 500 000. Jeśli chcesz podwyższyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Obecnie maksymalna liczba urządzeń, którymi można nawiązać połączenie w jednym centrum IoT to 500 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 Usługa IoT Hub ogranicza żądania po przekroczeniu następujących limitów przydziału:
 
 | Ograniczenie | Wartość na centrum |
 | --- | --- |
-| Operacje rejestru tożsamości <br/> (tworzenie, przywracanie, wyświetlanie, usuwanie), <br/> import/eksport zbiorczy lub pojedynczy |83.33/sec/Unit (jednostka-5000/min) (dla S3) <br/> 1.67/sec/Unit (jednostka/100/min) (dla S1 i S2). |
+| Operacje rejestru tożsamości <br/> (tworzenie, przywracanie, wyświetlanie, usuwanie), <br/> import/eksport zbiorczy lub pojedynczy |83.33/sec/Unit (5000/min/jednostkę) (w przypadku S3) <br/> 1.67/sec/Unit (100/min/jednostkę) (dla warstwy S1 i S2). |
 | Połączenia urządzenia |6000/sek/jednostkę (warstwa S3), 120/sek/jednostkę (warstwa S2), 12/sek/jednostkę (warstwa S1). <br/>Minimum 100/sek. |
 | Liczba elementów wysłanych z urządzenia do chmury |6000/sek/jednostkę (warstwa S3), 120/sek/jednostkę (warstwa S2), 12/sek/jednostkę (warstwa S1). <br/>Minimum 100/sek. |
-| Liczba elementów wysłanych z chmury do urządzenia | 83.33/sec/Unit (5000/min/jednostka) (S3) 1.67/sec/unit (jednostka/100/min) (dla S1 i S2). |
-| Liczba odebranych elementów wysłanych z chmury do urządzenia |16.67/sec/unit (50000/min/jednostka) (S3) 833.33/sec/Unit (1000/min/jednostka) (S1 i S2). |
-| Operacje przekazywania plików |Plik 83.33 przekazywania s powiadomienia jednostki 1.67 (5000/min/jednostka) (S3), plik przekazywania powiadomień/s/jednostka (jednostka/100/min) (S1 i S2). <br/> Jednocześnie może istnieć 10 000 identyfikatorów URI sygnatury dostępu współdzielonego dla konta usługi Azure Storage.<br/> Jednocześnie może istnieć 10 identyfikatorów URI sygnatury dostępu współdzielonego. |
-| Metody bezpośrednie | 24MB/s/jednostki (w przypadku S3), 480KB/s/jednostka (S2) 160KB/s/jednostki (S1)<br/> Oparte na 8KB ograniczania rozmiaru miernika. |
+| Liczba elementów wysłanych z chmury do urządzenia | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla warstwy S1 i S2). |
+| Liczba odebranych elementów wysłanych z chmury do urządzenia |16.67/sec/unit (50000/min/jednostkę) (warstwa S3), 833.33/sec/Unit (1000/min/jednostkę) (warstwy S1 i S2). |
+| Operacje przekazywania plików |83.33 pliku przekazywania powiadomień/sek/jednostkę (5000/min/jednostkę) (warstwa S3), 1.67 pliku przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) (warstwy S1 i S2). <br/> Jednocześnie może istnieć 10 000 identyfikatorów URI sygnatury dostępu współdzielonego dla konta usługi Azure Storage.<br/> Jednocześnie może istnieć 10 identyfikatorów URI sygnatury dostępu współdzielonego. |
+| Metody bezpośrednie | 24MB/sek/jednostkę (warstwa S3), 480KB/sek/jednostkę (warstwa S2), 160KB/s/jednostkę (warstwa S1)<br/> Oparta na rozmiarze 8KB ograniczenie rozmiaru miernika. |
 | Liczba odczytów bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
 | Liczba aktualizacji bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
-| Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 83.33/sec/Unit (5000/min/jednostka) (S3) 1.67/sec/unit (jednostka/100/min) (dla S2), 1.67/sec/unit (jednostka/100/min) (dla S1) |
+| Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla S2), 1.67/sec/unit (100/min/jednostkę) (dla S1) |
 | Przepływność operacji zadań poszczególnych urządzeń | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |

@@ -8,261 +8,261 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066088"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39030022"
 ---
-# <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy
+# <a name="internet-of-things-security-architecture"></a>Architektura zabezpieczeń Internet of Things
 
-Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu, a Dodaj odpowiednie zabezpieczenia w związku z tym system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od początku z myślą o bezpieczeństwie, ponieważ Opis ułatwia sposób atakujący może być w stanie naruszyć bezpieczeństwo systemu, upewnij się, że odpowiednie środki zaradcze są stosowane od początku.
+Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu i dodanie odpowiednich mechanizmów obronnych w związku z tym, ponieważ system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od samego początku z myślą o bezpieczeństwie, ponieważ zrozumienie, jak atakujący może być w stanie naruszyć bezpieczeństwo systemu, pomaga upewnić się, że odpowiednie środki zaradcze są stosowane od samego początku.
 
-## <a name="security-starts-with-a-threat-model"></a>Zabezpieczenia rozpoczyna się od modelu zagrożeń
+## <a name="security-starts-with-a-threat-model"></a>Zabezpieczenia zaczyna się od model zagrożeń
 
-Firma Microsoft długo został użyty modeli zagrożenie dla swoich produktów i wprowadził procesu publicznie dostępnych modelowania zagrożeń firmy. Doświadczenie firmy pokazuje, że modelowania ma nieoczekiwany korzyści po zrozumienia bezpośrednim jakie zagrożenia są najbardziej dotyczące. Na przykład tworzy również ścieżek Otwórz omówienie osobom spoza zespół deweloperów, co może prowadzić do nowe pomysły i ulepszenia produktu.
+Firma Microsoft długo została użyta modele zagrożeń dla swoich produktów i podejścia biznesowego uczyniło zagrożeń firmy modelowanie procesu dostępny publicznie. Środowisko firmy pokazuje, że modelowania ma nieoczekiwany korzyści po bezpośrednim znajomości jakie zagrożenia są najbardziej dotyczących. Na przykład tworzy również ścieżek Otwórz omówienie z innymi osobami spoza zespołu rozwoju, co może prowadzić do nowych pomysłów i ulepszenia produktu.
 
-Celem modelowanie zagrożeń jest zrozumienie, jak osoba atakująca może być może naruszyć bezpieczeństwo systemu i upewnij się, że są stosowane odpowiednie środki zaradcze. Wymusza modelowania zagrożeń zespół projektowy wziąć pod uwagę czynniki, ponieważ system został zaprojektowany, a nie po system jest wdrażana. Ten fakt jest bardzo ważny, ponieważ modernizacji zabezpieczenia różnych urządzeń w tym polu jest praktyce, błąd podatnych na błędy i pozostawia klientów na ryzyko.
+Celem modelowanie zagrożeń jest zrozumienie, jak osoba atakująca może być w stanie naruszyć bezpieczeństwo systemu, a następnie upewnij się, że zostały spełnione odpowiednie środki zaradcze. Wymusza modelowania zagrożeń, zespół projektowy, należy wziąć pod uwagę czynniki identycznie systemu, a nie po system jest wdrażany. Ten fakt ma kluczowe znaczenie, ponieważ modernizacji zabezpieczeń mechanizmów obronnych w celu wiele urządzeń, w tym polu jest niewykonalne, występowania błędów i pozostawia klientów na ryzyko.
 
-Wiele zespołów deweloperów czy znakomity zadanie przechwytywania wymagania funkcjonalne dla systemu, które korzystać klienci. Jednak identyfikowanie-oczywisty sposób czy ktoś może niewłaściwym użyciem systemu jest trudniejsze. Modelowanie zagrożeń może pomóc zrozumieć, co może zrobić osoba atakująca zespoły deweloperów i dlaczego. Modelowanie zagrożeń jest procesem strukturalnego, który tworzy decyzji projektowych Omówienie zabezpieczeń w systemie, a także zmiany do projektu, który zgłosił wzdłuż sposób zabezpieczenia wpływ. Gdy modelu zagrożeń jest po prostu dokumentu, tej dokumentacji reprezentuje również idealny w celu zapewnienia ciągłości wiedzy, przechowywania wnioski uzyskane i pomocy nowego zespołu dołączyć szybko. Na koniec wyniku modelowanie zagrożeń jest umożliwienie należy rozważyć inne aspekty zabezpieczeń, takich jak zobowiązań zabezpieczeń, jakie chcesz zapewnić klientom. Te zobowiązania w połączeniu z modelowanie zagrożeń informuje i dysków testowania rozwiązania Internetu rzeczy (IoT).
+Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego. Modelowanie zagrożeń jest strukturą procesu, który tworzy decyzji projektowych dyskusji na temat zabezpieczeń w systemie, a także zmiany w projekcie zostaną wprowadzone po drodze wpływ na zabezpieczenia. Model zagrożeń jest po prostu dokumentu, niniejszy reprezentuje również idealny sposób, aby zapewnić ciągłość działalności biznesowej wiedzy, przechowywania lekcji pokazaliśmy i pomocy nowego zespołu dołączyć szybko. Na koniec wynikiem modelowanie zagrożeń jest umożliwienie innych aspektów zabezpieczeń, takich jak zobowiązań zabezpieczeń, jakie chcesz zapewnić klientom. Te zobowiązania w połączeniu z modelowanie zagrożeń informuje i dysku testowania rozwiązania Internetu rzeczy (IoT).
 
-### <a name="when-to-threat-model"></a>Kiedy zagrożenia modelu
+### <a name="when-to-threat-model"></a>Kiedy model zagrożeń
 
-[Modelowanie zagrożeń](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy należy zastosować w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminowanie zagrożeń zgodnie z projektem jest rezultat. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Staje się przeszkodę w celu wyeliminowania zagrożenia produktu staje się bardziej dojrzałe i z kolei ostatecznie wymaga więcej pracy i znacznie trudniejsze wady i zalety niż zagrożeń na wczesnym etapie modelowania do tworzenia.
+[Modelowanie zagrożeń](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) zapewnia największą wartość w przypadku, gdy dołączyć go w fazie projektowania. Podczas projektowania, masz największą elastyczność, aby wprowadzić zmiany w celu wyeliminowania zagrożenia. Eliminując zagrożenia zgodnie z projektem jest pożądanego rezultatu. Jest znacznie prostsze niż dodawanie środki zaradcze, ich testowania i zapewnienia są zawsze aktualne, a ponadto takie eliminacji nie zawsze jest możliwe. Trudniej można eliminować zagrożenia, ponieważ produkt staje się bardziej dojrzałych i z kolei ostatecznie wymaga więcej pracy i kompromisy znacznie trudniejsze niż zagrożeń na wczesnym etapie modelowania w trakcie opracowywania.
 
-### <a name="what-to-threat-model"></a>Co należy modelu zagrożeń
+### <a name="what-to-threat-model"></a>Co należy model zagrożeń
 
-Należy zagrożenia modelu rozwiązania jako całość i również skupić się w następujących obszarach:
+Należy zagrożeń modelu rozwiązania jako całości, a także skupić się w następujących obszarach:
 
 * Funkcje zabezpieczeń i prywatności
 * Funkcje, których błędy są istotne zabezpieczeń
-* Funkcje, które touch granicy zaufania
+* Funkcje, które w ogóle granicy zaufania
 
-### <a name="who-threat-models"></a>Kto zagrożenia modele
+### <a name="who-threat-models"></a>Modele kto zagrożeń
 
-Modelowanie zagrożeń jest procesem, jak każdy inny. Jest dobrym pomysłem jest traktować dokument modelu zagrożeń, podobnie jak inne składnik rozwiązania i sprawdzić jego poprawność. Wiele zespołów deweloperów czy znakomity zadanie przechwytywania wymagania funkcjonalne dla systemu, które korzystać klienci. Jednak identyfikowanie-oczywisty sposób czy ktoś może niewłaściwym użyciem systemu jest trudniejsze. Modelowanie zagrożeń może pomóc zrozumieć, co może zrobić osoba atakująca zespoły deweloperów i dlaczego.
+Modelowanie zagrożeń jest procesem, jak każdy inny. To dobry pomysł, aby traktować dokument modelu zagrożeń, takich jak jakikolwiek inny składnik rozwiązania i zweryfikuje go. Wiele zespołów programistycznych do doskonałą zadanie przechwytywania wymagań funkcjonalności dla systemu, które korzystną dla klientów. Jednak zidentyfikowanie-oczywisty sposób czy ktoś może wykorzystywać system jest trudniejsze. Modelowanie zagrożeń może pomóc zespołom programistycznym zrozumieć do czego służą osoba atakująca może i dlaczego.
 
-### <a name="how-to-threat-model"></a>Jak modelu zagrożeń
+### <a name="how-to-threat-model"></a>Jak model zagrożeń
 
-To zagrożenie, proces modelowania składa się z czterech kroków; dostępne są następujące kroki:
+Zagrożenia, modelowanie procesu składa się z czterech krokach; dostępne są następujące czynności:
 
 * Model aplikacji
-* Wyliczanie zagrożeń
-* Zmniejszenie zagrożeń związanych
-* Sprawdź poprawność środki zaradcze
+* Wyliczanie zagrożenia
+* Eliminuj zagrożenia
+* Sprawdź poprawność środkach ograniczania ryzyka
 
 #### <a name="the-process-steps"></a>Kroki procesu
 
-Trzy zasady przyjąć należy wziąć pod uwagę podczas tworzenia modelu zagrożeń:
+Trzy reguły akceptacji pamiętać podczas tworzenia modelu zagrożeń:
 
-1. Tworzenie diagramu poza architektura referencyjna struktury.
-1. Uruchom najpierw szerokości. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy bezpośrednich. To rozwiązanie pomaga zapewnić, że należy szczegółowo w odpowiednich miejscach.
-1. Dysk procesu, niech procesu dysk należy. Jeśli znaleźć problemu w fazie modelowania i aby eksplorować go, przejdź na jej! Nie możesz się slavishly wykonaj następujące kroki.
+1. Utwórz diagram poza architektury referencyjnej.
+1. Uruchom najpierw szeroki zakres. Zapoznaj się z omówieniem i zrozumieć system jako całość, przed rozpoczęciem pracy głębokiego. Takie podejście pomaga upewnić się, że zostanie rozszerzony w odpowiednich miejscach.
+1. Proces dysku, nie przegap proces dysku, możesz. Znajdowanie problemu w fazie modelowania, aby go eksplorować. Rozpocznij! Nie zatwierdzanych slavishly wykonaj następujące kroki.
 
 #### <a name="threats"></a>Zagrożenia
 
-Są cztery podstawowe elementy modelu zagrożeń:
+Cztery podstawowe elementy model zagrożeń są:
 
-* Procesy, takie jak usługi sieci web, usług Win32, i * nix demonów. Niektóre jednostki złożonych (na przykład pole bram i czujników) może być usunięte zgodnie z procesu, gdy techniczne przechodzenia w tych obszarach nie jest możliwe.
-* Dane przechowywane (tam, gdzie dane są przechowywane, takich jak plik konfiguracji lub bazy danych)
+* Procesy, takie jak usługi sieci web, usług systemu Win32, i * nix demonów. Niektóre jednostki złożone (na przykład bram działających w terenie i czujniki) może być usunięte, jako proces, gdy techniczne w Przechodzenie do szczegółów w tych obszarach nie jest możliwe.
+* Magazyny danych (wszędzie tam, gdzie dane są przechowywane, np. plik konfiguracji lub bazy danych)
 * Przepływ danych (gdzie dane są przenoszone między innymi elementami w aplikacji)
 * Podmioty zewnętrzne (wszystkie elementy, które wchodzi w interakcję z systemem, ale nie jest pod kontrolą aplikacji, przykłady obejmują użytkowników oraz urządzeń źródła danych)
 
-Wszystkie elementy na diagramie architektury podlegają różne zagrożenia; w tym artykule skrót klawiszowy krok. Odczyt [modelowania zagrożeń ponownie, krok](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Aby dowiedzieć się więcej o elementach krok.
+Wszystkie elementy na diagramie architektury podlegają zagrożenia; w tym artykule skrót klawiszowy krok. Odczyt [modelowania zagrożeń ponownie, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) Aby dowiedzieć się więcej o elementach krok.
 
-Różne elementy na diagramie aplikacji mogą ulec niektórych zagrożeń krok:
+Różne elementy na diagramie aplikacja jest zależna od niektórych zagrożenia krok:
 
-* Procesy podlegają krok
-* Przepływy danych podlegają TID
-* Magazyny danych podlegają TID i czasami R, gdy w magazynie danych są pliki dziennika.
-* Jednostek zewnętrznych podlegają SRD
+* Procesy podlegają STRIDE
+* Przepływ danych jest zależna od identyfikatora TID
+* Magazyny danych podlegają TID, a czasami R, w przypadku magazynów danych plików dziennika.
+* Podmiotów zewnętrznych jest zależna od SRD
 
 ## <a name="security-in-iot"></a>Zabezpieczenia w IoT
 
-Połączonych urządzeń specjalnych dokonano znaczących potencjalnych obszarów powierzchni interakcji i wzorce interakcji, które należy rozważyć zapewniające strukturę zabezpieczanie cyfrowego dostępu do tych urządzeń. Termin "cyfrowego dostępu" jest używany tutaj do odróżnienia od wszystkich operacji wykonywanych za pośrednictwem urządzeń bezpośrednio interakcji gdzie zabezpieczenia dostępu jest zapewniana za pomocą sterowania dostępem fizycznym. Na przykład wprowadzenie urządzenia do miejsca z blokadą na drzwi. Gdy nie można odmówić dostępu fizycznej przy użyciu oprogramowania i sprzętu, mogą środki w celu uniemożliwić fizyczny dostęp od początku do systemu zakłóceń.
+Połączone urządzenia specjalnych dokonano znaczących potencjalnych obszarów interakcji i wzorce interakcji, które należy rozważyć udostępnia platformę do zabezpieczania cyfrowego dostępu do tych urządzeń. Termin "access cyfrowego" jest używany tutaj do odróżnienia od żadnych operacji, które są przeprowadzane za pośrednictwem urządzenia bezpośrednie interakcje gdzie zabezpieczenia dostępu jest oferowana w ramach kontroli fizyczny dostęp. Na przykład umieszczenie na urządzeniu w pomieszczeniu z blokadą na drzwi biblioteki. Gdy nie można odmówić dostępu fizycznych przy użyciu oprogramowania i sprzętu, można podjąć środki w celu uniemożliwić fizyczny dostęp z wiodących na zakłócenia systemu.
 
-Jak należy zapoznać się z wzorców interakcji, przyjrzeć się "kontroli urządzeń" i "dane urządzenie" o tym samym poziomie uwagi. "Urządzenie control" mogą być klasyfikowane jako żadnych informacji, który został dostarczony do urządzenia przez stronę w celu zmiany lub mające wpływ na jego zachowanie w kierunku jej stan lub stanu jego środowiska. "Urządzenie danych" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do innych firm dotyczące stanu i obserwowanych stanu jego środowiska.
+Gdy eksplorujesz wzorce interakcji Przyjrzyj się "control urządzenia" i "dane urządzenie" na tym samym poziomie uwagi. "Urządzenie control" mogą być klasyfikowane jako wszelkie informacje, który został dostarczony do urządzenia przez każdą stronę w celu zmiany lub wywieranie wpływu na jego zachowanie w kierunku jej stan lub stan swojego środowiska. "Dane urządzenie" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do drugiej strony, o stanie i zaobserwowanego stanie jego środowiska.
 
-Aby zoptymalizować najlepszych rozwiązań dotyczących zabezpieczeń, zaleca się, że typowy architektury IoT jest podzielony na kilku składników/stref jako część zagrożeń modelowania wykonywania. Te strefy są całkowicie opisane w tej sekcji i obejmują:
+W celu optymalizacji najlepszych rozwiązań dotyczących zabezpieczeń, zalecane jest, że typowej architektury IoT jest podzielony na kilku składników/stref jako część zagrożeń modelowania wykonywania. Te strefy są w pełni opisane w tej sekcji i obejmują:
 
-* Urządzenie,
-* Brama pola
-* Bramy, w chmurze i
+* Urządzenia,
+* Bramy w terenie
+* Bramy w chmurze i
 * Usługi.
 
-Strefy są szerokie sposób posegmentować rozwiązania; każdej strefy ma często wymagania danych i uwierzytelniania i autoryzacji. Strefy można służyć do uszkodzenia izolacji i ograniczyć wpływ niski zaufania strefy na wyższe zaufania strefy.
+Strefy są szerokie sposób podzielić rozwiązania; Każda strefa często ma własne wymagania dotyczące danych i uwierzytelniania i autoryzacji. Strefy można służyć do uszkodzenia izolacji i ograniczyć wpływ niski zaufania strefy na wyższe zaufania strefy.
 
-Każdej strefy są rozdzielone przez granicę zaufania, który jest rejestrowany jako linia kropkowana red na poniższym diagramie. Reprezentuje przejście informacje o i danych z jednego źródła do innego. Podczas tego przejścia danych może podlegać Spoofing, Tampering, Repudiation, ujawnienie informacji, odmowa usługi i podniesienie uprawnień (krok).
+Każda strefa jest rozdzielone przez granicę zaufania, który jest rejestrowany jako kropkowana czerwona linia na poniższym diagramie. Reprezentuje przejście/informacje o danych z jednego źródła do innego. Podczas tego przejścia/informacje o danych może podlegać Spoofing, Tampering, Repudiation, ujawnienie informacji, "odmowa usługi" i podniesienia uprawnień (krok).
 
 ![Strefy zabezpieczeń IoT](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-Składniki przedstawione w obrębie każdej granicy również są poddawane krok, włączenie pełnego 360 widoku rozwiązania modelowania zagrożeń. Poniższe sekcje rozwinięcia wszystkich składników i zagadnienia dotyczące zabezpieczeń określone i rozwiązań, które powinny znajdować się w miejscu.
+KROK, włączenie pełnego 360 poddawane są również składniki przedstawiony w ramach każdego widoku rozwiązanie do modelowania zagrożeń. Poniższe sekcje rozwinięcia poszczególne składniki i określonych bezpieczeństwem oraz rozwiązań, które należy wprowadzić w miejscu.
 
-W poniższych sekcjach omówiono standardowymi elementami, które zwykle znajdują się w tych strefach.
+W poniższych sekcjach omówiono składniki standardowe, które zwykle znajdują się w tych strefach.
 
-### <a name="the-device-zone"></a>Strefy urządzenia
+### <a name="the-device-zone"></a>Strefę urządzenia
 
-Środowisko urządzenia jest natychmiastowe fizycznego miejsca wokół urządzenia w przypadku, gdy fizycznego dostępu i/lub "sieci lokalnej" peer-to-peer cyfrowego dostępu do urządzenia jest możliwe. "Sieci lokalnej" zakłada się, że sieci, która jest odrębny i odizolowanego od — ale potencjalnie mostkowania do — publicznego Internetu i zawiera wszystkie urządzenia bezprzewodowego radia technologie, które umożliwia komunikację peer-to-peer urządzeń. Robi *nie* obejmują innych technologii wirtualizacji sieci tworzenie wrażenie sieci lokalnej i również nie zawiera operator publiczny sieci, które wymagają żadne dwa urządzenia komunikują się za pośrednictwem sieci publicznej przestrzeni Jeśli były wprowadź relacji komunikacji peer-to-peer.
+Środowisko urządzenia jest natychmiastowe fizycznych ilość wolnego miejsca wokół urządzenia w przypadku, gdy jest to fizyczny dostęp i/lub "sieci lokalnej" peer-to-peer dostęp do wersji cyfrowej na urządzeniu jest możliwe. "Sieć lokalna" zakłada się, że sieć jest odrębna i odizolowanego od — ale potencjalnie mostkowania do publicznej sieci Internet, która obejmuje wszystkie technologię urządzenia bezprzewodowego radiowego, która zezwala na komunikację peer-to-peer urządzeń. Robi *nie* obejmują dowolnej technologii wirtualizacji sieci, tworzenia żądającym sieci lokalnej i również nie obejmować sieci operator publiczny, które wymagają żadne dwa urządzenia komunikują się przez sieć publiczna przestrzeń, jeśli były wprowadź relacji komunikacji peer-to-peer.
 
-### <a name="the-field-gateway-zone"></a>Pole strefy bramy
+### <a name="the-field-gateway-zone"></a>Strefa bramy pola
 
-Brama pole jest urządzeń/urządzenia lub niektóre oprogramowania komputera ogólnego przeznaczenia serwera, który działa jako czynnik komunikacji oraz w razie potrzeby jako system kontroli urządzeń i centrum przetwarzania danych urządzenia. Strefa bramy pola obejmuje brama pola i wszystkie urządzenia, które są dołączone do niego. Jak nazwa wskazuje, bram pola działania urządzenia poza dedykowanych przetwarzania danych, są zwykle lokalizacja powiązana potencjalnie podlegają fizycznych nieautoryzowanego dostępu i ma ograniczoną operacyjne nadmiarowości. Aby powiedzieć, że brama pole jest często przedmiotu jedna touch i przeszkadzają a jest jego funkcji.
+Bramy w terenie jest urządzeń/urządzenia lub niektóre oprogramowanie komputerowe serwera ogólnego przeznaczenia, który działa jako włącznik komunikacji oraz w razie potrzeby jako system kontroli urządzenia, a następnie centrum przetwarzania danych urządzenia. Strefa bramy pola obejmuje bramy w terenie, sama i wszystkie urządzenia, które są dołączone do niego. Jak wskazuje nazwa, bram działających w terenie działają urządzenia zewnętrzne dedykowane przetwarzania danych, są zazwyczaj powiązane lokalizacji, potencjalnie podlegają fizycznymi włamaniami i ma ograniczoną nadmiarowości operacyjnej. Wszystko na powiedzieć, że bramy w terenie często jest to jedna touch i przeszkadzają codzienne jego funkcją jest.
 
-Bramy pola różni się od routera sam ruch, że posiada ona aktywną rolę w zarządzaniu dostępu i przepływem informacji, co oznacza, że jest to aplikacja rozwiązany jednostki i połączenie sieciowe lub sesję terminalu. Urządzenie NAT lub zaporą, natomiast nie kwalifikuje się pole bram, ponieważ nie są jawne połączenie lub terminale sesji, ale raczej połączeń trasy (lub blok) lub wprowadzane za pośrednictwem ich sesji. Brama pole ma dwa różne obszary powierzchni. Jeden skierowany urządzeń, które są dołączone do niego i reprezentuje wewnątrz strefy, a druga skierowany wszystkich podmiotów zewnętrznych i krawędzi strefy.
+Bramy w terenie różni się od routera ledwie ruchu, że posiada ona aktywną rolę w zarządzaniu dostępem i przepływem informacji, co oznacza, że jest to aplikacja rozwiązany jednostki i połączenie sieciowe lub sesję terminalu. Urządzenie NAT lub zaporą, natomiast nie kwalifikuje się jako bram działających w terenie, ponieważ nie są one jawne połączenie lub terminale sesji, ale raczej połączeń trasy (lub blok) lub za pośrednictwem ich sesji. Bramy w terenie ma dwa różne obszary powierzchni. Jeden twarzy urządzeń, które są dołączone do niego i reprezentuje wewnątrz strefy, a druga twarzy wszystkie podmioty zewnętrzne co stanowi krawędzi strefy.
 
-### <a name="the-cloud-gateway-zone"></a>Strefy bramy chmury
+### <a name="the-cloud-gateway-zone"></a>Strefa bramy chmury
 
-Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzeń lub bram pola z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle kierunku kontroli opartej na chmurze i systemu analizy danych, Federacji takich systemów. W niektórych przypadkach brama chmury mogą natychmiast ułatwienia dostępu na urządzeniach specjalnych z terminali, np. tabletów i telefonów. W kontekście omówione w tym miejscu "chmura" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, który nie jest powiązany z tej samej lokacji co podłączone urządzenia lub pola bramy. Również w strefie chmury środki operacyjne zapobiec docelowe dostęp fizyczny i niekoniecznie nie są widoczne dla infrastruktury "w chmurze publicznej".  
+Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzenia lub bram działających w terenie z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle w kierunku kontroli opartej na chmurze i system analizy danych, biuro w Federacji takich systemów. W niektórych przypadkach brama chmury może natychmiast ułatwienia dostępu do urządzeń specjalnych z terminali, takich jak tablety lub telefony. W kontekście omówionych w tym miejscu "chmura" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, który nie jest powiązany z tym samym miejscu co podłączonych urządzeń lub bram działających w terenie. Również w strefie chmury, środki operacyjne uniemożliwić docelowych fizyczny dostęp i niekoniecznie nie są widoczne w infrastrukturze "chmura publiczna".  
 
-Brama chmury potencjalnie mogą być mapowane do nakładki wirtualizacji sieci, aby zabezpieczyć bramy chmury oraz wszystkie jego podłączonych urządzeń i bram pole od innego ruchu sieciowego. Brama chmury nie jest system kontroli urządzeń lub przetwarzania lub magazynu dla danych urządzenia. Interfejs te urządzenia bramy chmury. Strefa bramy chmury obejmuje bramy chmury wraz ze wszystkich bram pola i bezpośrednio lub pośrednio dołączone do niego urządzenia. Krawędź strefy jest różne powierzchni gdzie wszystkich podmiotów zewnętrznych komunikują się za pośrednictwem.
+Brama chmury potencjalnie mogą być mapowane na nakładce wirtualizacji sieci, aby uwolnić przez bramę chmury i wszystkich podłączonych urządzeń lub bram działających w terenie od innego ruchu sieciowego. Brama chmury nie jest systemem kontroli urządzenia lub przetwarzania lub magazynu danych dotyczących urządzeń; Interfejs tych urządzeń przy użyciu bramy w chmurze. Strefa bramy chmury obejmuje brama chmury wraz ze wszystkich bram działających w terenie i bezpośrednio lub pośrednio dołączone do niego urządzenia. Krawędzi strefy jest różne obszar powierzchni, gdzie komunikują się za pośrednictwem wszystkich podmiotów zewnętrznych.
 
 ### <a name="the-services-zone"></a>Strefa usługi
 
-"Usługa" jest zdefiniowany dla tego kontekstu jako części oprogramowania lub moduł, który jest relacje z urządzeniami za pośrednictwem bramy pola lub chmury do zbierania danych i analizy, a także polecenia i kontroli. Usługi są mediatorów. One działa na podstawie tożsamości bramy i innych podsystemów, przechowywania i analizowania danych autonomicznie wydać polecenia urządzenia na podstawie wgląd w danych lub harmonogramy i ujawnienie informacji i kontrolowanie możliwości autoryzowanym użytkownikom końcowym.
+"Usługa" jest zdefiniowany dla tego kontekstu jako części oprogramowania lub moduł, który komunikuje się z urządzeniami za pośrednictwem bramy pola lub chmury i przeanalizuje dane, a także dla poleceń i kontroli. Usługi są mediatorów. One działa na podstawie ich tożsamości kierunku bram i innych podsystemów, przechowywanie i analizowanie danych, autonomicznie wysyłania poleceń do urządzeń na podstawie analizy danych lub harmonogramów i spowodować ujawnienie informacji i kontrolowanie możliwości do autoryzowanych użytkowników końcowych.
 
-### <a name="information-devices-versus-special-purpose-devices"></a>I specjalnych informacji urządzenia
+### <a name="information-devices-versus-special-purpose-devices"></a>Informacje o urządzeniach a specjalnymi urządzeniami
 
-Komputery, telefony i tablety to przede wszystkim interakcyjne informacji urządzenia. Telefony i tablety jawnie są zoptymalizowane wokół maksymalizacja baterii istnienia. One najlepiej wyłączyć częściowo, gdy nie jest od razu interakcji z osoby lub gdy nie dostarcza usługi, takie jak odtwarzanie muzyki lub skierowanie ich właściciela w określonej lokalizacji. Z punktu widzenia systemy te urządzenia technologii informacji głównie działają jako serwery proxy do osób. Są one "osób siłowniki" sugerowanie "osób czujniki" zbieranie danych wejściowych i akcje.
+Komputery, telefony i tablety są głównie interaktywne informacji urządzenia. Telefony komórkowe i tablety są jawnie zoptymalizowane pod kątem wokół maksymalizując okres istnienia baterii. One najlepiej wyłączyć częściowo podczas nie od razu interakcji z osobą, lub gdy nie udostępniają usługi takie jak odtwarzanie muzyki lub przeprowadzi ich właściciela do określonej lokalizacji. Z punktu widzenia systemy te informacje o technologii urządzenia głównie pełnią funkcję serwerów proxy do osób. Są to "ludzie elementy wykonawcze" sugerujące, akcje i "osoby czujniki" zbieranie danych wejściowych.
 
-Urządzenia specjalnych z czujnikami temperatury proste do wierszy produkcyjnego złożonych fabryki z tysiącami elementów zawartych w nich, są różne. W celu bardziej ograniczone tych urządzeń i nawet wtedy, gdy udostępniają część interfejsu użytkownika znacznym stopniu dostosowanych do powiązania z lub można zintegrować zasoby w świecie rzeczywistym. One mierzyć i raportu okoliczności środowiska, Włącz zawory, kontroli servos, dźwiękowej alarmy, przełącznika świateł i wykonywać inne zadania. Do pracy pomagają, dla których urządzenie informacji jest zbyt ogólne, zbyt drogie, za duży lub zbyt łamliwa. Konkretnego celu natychmiast nakazują ich projektu technicznego jako również dostępnego budżetu pieniężnego ich produkcji i okres istnienia zaplanowanych operacji. Kombinacja tych dwóch kluczowych czynników ogranicza dostępne operacyjne budżetu energii, fizycznego miejsca i w związku z tym dostępny magazyn, zasobów obliczeniowych i funkcje zabezpieczeń.
+Specjalnymi urządzeniami, od czujników temperatury proste linii produkcyjnych fabryki złożonych z tysiącami elementów wewnątrz nich różnią się. Te urządzenia są bardziej ograniczone w celu, a nawet wtedy, gdy zapewniają część interfejsu użytkownika, dużej mierze są ograniczone do komunikacji z usługą lub być zintegrowane z zasobami w świecie fizycznym. Ich pomiaru i zgłaszać okoliczności środowiska, Włącz zawory, kontrolować servos, dźwiękowych alarmy, Przełącz światła i wykonywać inne zadania. Aby pracować z nimi pomagają, dla których urządzenie z systemem informacji jest zbyt ogólna, zbyt kosztowne, zbyt duże lub zbyt kruchy. Natychmiast konkretnego celu decyduje o ich projektu technicznego, również dostępne pieniężnych budżet ich produkcji i okresu istnienia zaplanowanych operacji. Kombinacja tych dwóch czynników klucza ogranicza dostępne operacyjnej budżetu energii, zużycia fizycznych i związku z tym dostępną pamięć, obliczeń i funkcje zabezpieczeń.
 
-Jeśli coś "umieszczane niewłaściwy" Automatyczna lub z zdalnego urządzenia kontrolowane, na przykład wad fizycznego lub logicznego sterowania wady willful próby uzyskania nieautoryzowanego dostępu i manipulowania nimi. Niszczone mogą partie produkcji, budynki może looted lub kiedyś w dół i osób może być struktury poszkodowanej lub nawet. To jest klasa różni uszkodzenia niż ktoś maxing się limit kradzieży karty kredytowej. Poziom zabezpieczeń dla urządzeń, które należy przenieść elementy, a także do danych czujnika, który ostatecznie powoduje poleceń, które powodują rzeczy, które należy przenieść, musi być wyższy niż w handlu elektronicznego lub scenariusz bankowości.
+Jeśli coś "zbliża się problem" Automatyczna lub z zdalnego kontrolowania urządzeń, na przykład wady fizycznych lub logicznych kontroli wady willful nieautoryzowanego dostępu i manipulowania. Wiele produkcyjnych może zostać zniszczone, budynki może być looted lub wbudowany w dół i osób może być poszkodowana, a nawet struktury. Jest to zupełnie inne klasy szkodę niż ktoś maxing się limit skradzionej karty kredytowej. Na pasku zabezpieczeń dla urządzeń, które należy przenieść elementy, a także do danych z czujników, które ostatecznie powoduje przekroczenie poleceń, które powodują rzeczy przenieść, musi być wyższa niż w handlu elektronicznego lub scenariusz bankowości.
 
-### <a name="device-control-and-device-data-interactions"></a>Kontroli urządzeń i ich interakcje danych urządzenia
+### <a name="device-control-and-device-data-interactions"></a>Kontroli urządzeń i interakcje z danymi urządzenia
 
-Połączonych urządzeń specjalnych dokonano znaczących potencjalnych obszarów powierzchni interakcji i wzorce interakcji, które należy rozważyć zapewniające strukturę zabezpieczanie cyfrowego dostępu do tych urządzeń. Termin "cyfrowego dostępu" jest używany tutaj do odróżnienia od wszystkich operacji wykonywanych za pośrednictwem urządzeń bezpośrednio interakcji gdzie zabezpieczenia dostępu jest zapewniana za pomocą sterowania dostępem fizycznym. Na przykład wprowadzenie urządzenia do miejsca z blokadą na drzwi. Gdy nie można odmówić dostępu fizycznej przy użyciu oprogramowania i sprzętu, mogą środki w celu uniemożliwić fizyczny dostęp od początku do systemu zakłóceń.
+Połączone urządzenia specjalnych dokonano znaczących potencjalnych obszarów interakcji i wzorce interakcji, które należy rozważyć udostępnia platformę do zabezpieczania cyfrowego dostępu do tych urządzeń. Termin "access cyfrowego" jest używany tutaj do odróżnienia od żadnych operacji, które są przeprowadzane za pośrednictwem urządzenia bezpośrednie interakcje gdzie zabezpieczenia dostępu jest oferowana w ramach kontroli fizyczny dostęp. Na przykład umieszczenie na urządzeniu w pomieszczeniu z blokadą na drzwi biblioteki. Gdy nie można odmówić dostępu fizycznych przy użyciu oprogramowania i sprzętu, można podjąć środki w celu uniemożliwić fizyczny dostęp z wiodących na zakłócenia systemu.
 
-Jak należy zapoznać się z wzorców interakcji, przyjrzeć się "kontroli urządzeń" i "urządzenie danych" o tym samym poziomie uwagi podczas modelowania zagrożeń. "Urządzenie control" mogą być klasyfikowane jako żadnych informacji, który został dostarczony do urządzenia przez stronę w celu zmiany lub mające wpływ na jego zachowanie w kierunku jej stan lub stanu jego środowiska. "Urządzenie danych" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do innych firm dotyczące stanu i obserwowanych stanu jego środowiska.
+Gdy eksplorujesz wzorce interakcji, Przyjrzyj się "control urządzenia" i "urządzenie danych" na tym samym poziomie uwagi podczas modelowania zagrożeń. "Urządzenie control" mogą być klasyfikowane jako wszelkie informacje, który został dostarczony do urządzenia przez każdą stronę w celu zmiany lub wywieranie wpływu na jego zachowanie w kierunku jej stan lub stan swojego środowiska. "Dane urządzenie" mogą być klasyfikowane jako wszystkie informacje, które urządzenia emituje do drugiej strony, o stanie i zaobserwowanego stanie jego środowiska.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Zagrożenia modelowania architektura referencyjna Azure IoT
+## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Architektura referencyjna IoT platformy Azure do modelowania zagrożeń
 
-Firma Microsoft używa framework opisane wcześniej przeprowadzenie modelowania dla Azure IoT zagrożeń. Poniższa sekcja używa konkretny przykład architektura referencyjna IoT platformy Azure, aby zademonstrować sposób pomyśleć o zagrożeń modelowania dla IoT i eliminowania zagrożeń zidentyfikowane. W tym przykładzie identyfikuje cztery główne obszary fokus:
+Firma Microsoft używa framework opisane wcześniej w celu dla usługi Azure IoT do modelowania zagrożeń. Poniższa sekcja używa konkretny przykład architektura referencyjna IoT platformy, aby zademonstrować, jak wziąć pod uwagę dla IoT do modelowania zagrożeń i jak rozwiązać zagrożeniami zidentyfikowanymi. W tym przykładzie identyfikuje cztery główne obszary koncentracji uwagi:
 
-* Urządzenia i źródeł danych
+* Urządzeniami i źródłami danych
 * Transport danych
 * Urządzenia i przetwarzania zdarzeń i
 * Prezentacja
 
-![Zagrożenia modelowania dla Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png)
+![Dla usługi Azure IoT do modelowania zagrożeń](media/iot-security-architecture/iot-security-architecture-fig2.png)
 
-Na poniższym diagramie przedstawiono uproszczony widok architektury IoT firmy Microsoft przy użyciu modelu Diagram przepływu danych, który jest używany przez narzędzie modelowania zagrożeń firmy Microsoft:
+Na poniższym diagramie przedstawiono uproszczony widok architektury IoT firmy Microsoft przy użyciu modelu Diagram przepływu danych, który jest używany przez narzędzie do modelowania zagrożeń firmy Microsoft:
 
-![Zagrożenia modelowania dla Azure IoT przy użyciu narzędzia do modelowania zagrożeń MS](media/iot-security-architecture/iot-security-architecture-fig3.png)
+![Dla usługi Azure IoT przy użyciu narzędzia do modelowania zagrożeń MS do modelowania zagrożeń](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-Należy pamiętać, że architektura oddziela możliwości urządzenia i bramy. Takie podejście umożliwia użytkownikowi korzystać z urządzenia bramy, które są bardziej bezpieczne: mogą komunikować się z bramy chmury przy użyciu protokołów bezpieczny, co zwykle wymaga większej przetwarzania czy natywnego urządzenie — takie jak termostacie — można Podaj samodzielnie. W strefie usługi Azure założenie, że brama chmury jest reprezentowany przez usługę Azure IoT Hub.
+Należy zauważyć, że architektura oddziela możliwości urządzenia i bramy. Takie podejście umożliwia użytkownikowi korzystanie z urządzenia bramy, które są bardziej bezpieczne: są w stanie komunikować się z bramy w chmurze przy użyciu protokołów bezpieczny, co zwykle wymaga większej przetwarzania, natywne urządzenia — na przykład termostat — można Podaj samodzielnie. W strefie usługi Azure założono, że bramy w chmurze jest reprezentowana przez usługę Azure IoT Hub.
 
 ### <a name="device-and-data-sourcesdata-transport"></a>Transport źródeł/danych urządzenia i danych
 
-W tej sekcji opisuje architektura opisane wcześniej przez obiektyw modelowanie zagrożeń i zawiera omówienie sposobu rozwiązania niektórych problemów związanych z. W tym przykładzie koncentruje się na podstawowych składników modelu zagrożeń:
+W tej sekcji przedstawiono architekturę opisanych zapewniający modelowanie zagrożeń i zawiera omówienie sposobu rozwiązać niektóre problemy związane. Ten przykład koncentruje się na podstawowych elementów modelu zagrożeń:
 
-* Przetwarza (zarówno w obszarze elementów zewnętrznych i większej kontroli)
-* Komunikacja (nazywanych również przepływów danych)
-* Magazyn (nazywanych również magazyny danych)
+* Przetwarza (zarówno w obszarze usługi kontroli i elementy zewnętrzne)
+* Komunikacja (nazywane również przepływów danych)
+* Magazyn (nazywany także magazyny danych)
 
 #### <a name="processes"></a>Procesy
 
-W każdej kategorii, opisane w architektury Azure IoT, w tym przykładzie próbuje ograniczyć liczbę różnych zagrożeń na różnych etapach informacje o i danych istnieje w: proces, komunikację i magazynu. Poniżej przedstawiono omówienie najbardziej typowe dla kategorii "proces", następuje przegląd jak te zagrożenia mogą najlepiej skorygowane:
+W każdej kategorii, opisane w architekturze usługi Azure IoT, w tym przykładzie próbuje zmniejszyć liczbę różnych zagrożeń na różnych etapach/informacje o danych istnieje w: proces, komunikacji i magazynu. Poniżej przedstawiono omówienie najbardziej typowymi dla kategorii "procesu", następuje omówienie, jak te zagrożenia mogą najlepiej skorygowane:
 
-**Fałszowanie zawartości (S)**: osoba atakująca może wyodrębnić materiał kluczy kryptograficznych z urządzenia, albo na poziomie oprogramowania lub sprzętu i późniejszego dostępu do systemu z innego urządzenia fizyczne lub wirtualne z tożsamością urządzenia materiału klucza podjęto z. Dobrym ilustracja to zdalnego sterowania, który można włączyć wszystkie TV i które są prankster popularne narzędzia.
+**Fałszowanie (S)**: osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, na poziomie oprogramowania lub sprzętu i następnie uzyskać dostęp do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
-**Odmowa usługi (D)**: urządzenie może być renderowana niezdolne do funkcjonowania lub komunikacji przez zakłócać częstotliwości lub wycinanie przewodów. Na przykład aparatu nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie dane raportu, w ogóle.
+**Odmowa usługi (D)**: urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
 
-**Manipulowanie (T)**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowania działającego na urządzeniu, potencjalnie stosowanie zastąpionego oprogramowania wykorzystać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub funkcji kryptograficznych, zawierający klucza materiały były dostępne do nielegalnego program. Na przykład osoba atakująca może wykorzystać wyodrębnionego materiału klucza przechwycenia i Pomiń danych z urządzenia w ścieżce komunikacji i zamień ją na wartość false dane, które są uwierzytelniani kradzieży materiału klucza.
+**Manipulowanie (T)**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub kryptograficznych urządzeń, przytrzymując klawisz materiały były dostępne do nielegalnego programu. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
-**Ujawnienie informacji, (I)**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować może potencjalnie wycieku danych do osoby nieupoważnione. Na przykład osoba atakująca może wykorzystać wyodrębnionego materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i brama kontrolera lub pola lub brama chmury do Lewarek poza informacji.
+**Ujawnienie informacji, (I)**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom. Na przykład osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między urządzenia i bramy kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Podniesienie uprawnień (E)**: urządzenie, które wykonuje określoną funkcję można wymusić, aby zrobić coś innego. Na przykład zawór zaprogramowane w taki sposób, aby otworzyć połowie można zamiarem otworzyć całej procedury.
+**Podniesienie poziomu uprawnień (E)**: urządzenia, która wykonuje określoną funkcję aktualizację można wymusić robić coś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
-| **Składnik** | **Zagrożenia** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
+| **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
-| Urządzenie |S |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Zastępując urządzenia lub częścią urządzenia inne urządzenie. Skąd wiadomo, że mówimy na odpowiednim urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinna obsługiwać przy użyciu klucza wstępnego (PSK) na tych urządzeniach, które nie może obsłużyć pełnej asymetrycznego kryptografii. Wykorzystanie usługi Azure AD, [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
-|| TRID |Zastosować tamperproof mechanizmy do urządzenia, na przykład, utrudniając się niemożliwe do wyodrębnienia kluczy i innych materiałów kryptograficznych z urządzenia. |Ryzyko jest, jeśli ktoś jest manipulowanie nimi urządzenia (zakłócenia fizycznych). Jak są należy się upewnić, czy urządzenie ma nie został zmodyfikowany. |Optymalne ograniczenie jest TPM możliwości module (TPM), która umożliwia przechowywanie kluczy w specjalne obwody w układzie, z którego nie można odczytać klawiszy, ale można używać tylko dla operacji kryptograficznych, które używają klucza, ale nigdy nie ujawniają klucz. Szyfrowanie pamięci urządzenia. Zarządzanie kluczami dla urządzenia. Podpisywanie kodu. | |
-|| E |Zapewniający kontrolę dostępu do urządzenia. Schemat autoryzacji. |Jeśli urządzenie zezwala poszczególnych czynności do wykonania oparte na polecenia ze źródła zewnętrznego lub nawet złamany czujników, umożliwia ataku w celu wykonania operacji nie dostępne. |Po autoryzacji schematu dla urządzenia | |
-| Pole bramy |S |Uwierzytelnianie bramy pola do bramy chmury (takie jak certyfikatu na podstawie, PSK, lub oparta na oświadczeniach). |Jeśli ktoś może spreparować pola bramy, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same klucza magazynu i zaświadczania dotyczy urządzeń, na ogół — najlepszy jest użyć modułu TPM. Rozszerzenie 6LowPAN dla protokołu IPSec do obsługi bezprzewodowej sieci czujnik (WSN). |
-|| TRID |Ochrona bramy pola przed naruszeniem (module TPM)? |Fałszowanie atakami wymuszać planowania bramy chmury, które rozmawia pola bramy może spowodować ujawnienie informacji i modyfikowaniu danych |Pamięć szyfrowania, modułu TPM firmy, uwierzytelniania. | |
-|| E |Mechanizmu kontroli dostępu dla pola bramy | | | |
+| Urządzenie |S |Przypisywanie tożsamości na urządzeniu i uwierzytelniania urządzenia |Wymiana urządzenia lub częścią urządzenia za pomocą innego urządzenia. Skąd wiadomo, że mówienia na właściwym urządzeniu? |Uwierzytelniania urządzenia, za pomocą zabezpieczeń TLS (Transport Layer) lub protokołu IPSec. Infrastruktura powinien obsługiwać za pomocą klucz wstępny (PSK) na tych urządzeniach, które nie obsługują pełne asymetrycznego kryptografii. Korzystać z usługi Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+|| TRID |Zastosować tamperproof mechanizmy do urządzenia, na przykład, co utrudnia się niemożliwe do wyodrębnienia z urządzenia kluczy i innymi materiałami kryptograficznymi. |Ryzyko jest, jeśli ktoś jest manipulowanie nimi urządzeń (zakłócenia fizycznej). Jak na pewno, że urządzenie nie została naruszona. |Najbardziej efektywne środki zaradcze jest TPM możliwości module (TPM), która umożliwia przechowywanie kluczy w specjalnych obwody na układ, z którego nie można odczytać kluczy, ale można używać tylko dla operacji kryptograficznych, które używają klucza, ale nigdy nie ujawni klucz. Szyfrowanie pamięci urządzenia. Zarządzanie kluczami dla tego urządzenia. Podpisywanie kodu. | |
+|| E |Zapewniający kontrolę dostępu do urządzenia. Schemat autoryzacji. |Jeśli urządzenie umożliwia poszczególne akcje do wykonania zależnie od polecenia ze źródła zewnętrznego lub nawet ze złamanymi zabezpieczeniami czujniki, umożliwia ataku wykonywać operacje gdzie indziej dostępny. |Posiadanie schemat autoryzacji dla urządzenia | |
+| Bramy w terenie |S |Uwierzytelnianie bramy w terenie bramy w chmurze (takie jak certyfikat na podstawie, klucza Wstępnego, lub oparta na oświadczeniach). |Jeśli ktoś podszywały się pod bramy w terenie, następnie go może być wyświetlany jako dowolnego urządzenia. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Te same Najważniejsze kwestie magazynu i zaświadczenie urządzeń znajdujących się w ogólne — Najlepszy przypadek jest używanie modułu TPM. Rozszerzenie 6LowPAN protokołu IPSec do obsługi bezprzewodowej sieci czujników (WSN). |
+|| TRID |Ochrona bramy w terenie przed naruszeniem (TPM)? |Fałszowanie atakami nakłonienia myśleć bramy chmury, które rozmawia bramy w terenie może spowodować ujawnienie informacji i nieuprawnionej modyfikacji danych |Pamięć szyfrowania, modułu TPM firmy, uwierzytelniania. | |
+|| E |Mechanizm kontroli dostępu dla bramy w terenie | | | |
 
-Poniżej przedstawiono przykładowe zagrożenia w tej kategorii:
+Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
-Fałszowanie: Osoba atakująca może wyodrębnić materiał kluczy kryptograficznych z urządzenia, albo w oprogramowania lub sprzętu poziomu, a następnie dostępu do sieci z innego urządzenia fizyczne lub wirtualne z tożsamością urządzenia materiału klucza jest zajęta z.
+Fałszowanie: Osoba atakująca może wyodrębnić materiału klucza kryptograficznego z urządzenia, albo w oprogramowania lub poziomie sprzętu, a następnie dostępu do systemu za pomocą innego urządzenia fizycznego lub wirtualnego z tożsamością urządzenia materiału klucza jest zajęty z.
 
-**Odmowa usługi**: urządzenie może być renderowana niezdolne do funkcjonowania lub komunikacji przez zakłócać częstotliwości lub wycinanie przewodów. Na przykład aparatu nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie dane raportu, w ogóle.
+**Odmowa usługi**: urządzenie może być renderowany zdolny do funkcjonowania lub komunikacji przez nie zakłócają częstotliwości lub cuttinga przewodów. Na przykład kamery nadzoru, który miał jego zasilania lub połączenia sieciowego celowo wycinane nie danych raportu, w ogóle.
 
-**Manipulowanie**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowania działającego na urządzeniu, potencjalnie stosowanie zastąpionego oprogramowania wykorzystać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub funkcji kryptograficznych, zawierający klucza materiały były dostępne do nielegalnego program.
+**Manipulowanie**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub kryptograficznych urządzeń, przytrzymując klawisz materiały były dostępne do nielegalnego programu.
 
-**Manipulowanie**: fotografia takie korytarz może mieć na celu kamery nadzoru, który jest wyświetlany obraz widoczne spektrum korytarz pusty. Czujnik dymu lub fire może być raportowania ktoś zawierający jaśniejszego w nim. W obu przypadkach urządzenie może być technicznie pełni zaufanego do systemu, ale raporty manipulować informacji.
+**Manipulowanie**: kamera nadzoru, która jest wyświetlany obraz widoczne spektrum pusty korytarzowych może mieć na celu fotografii takich korytarzowych. Czujnik dymu lub ognia może zgłaszać ktoś zawierający jaśniejszego pod nim. W obu przypadkach urządzenie może być z technicznego punktu widzenia pełni godna zaufania do systemu, ale zgłasza manipulować informacji.
 
-**Manipulowanie**: osoba atakująca może wykorzystać wyodrębnionego materiału klucza przechwycenia i Pomiń danych z urządzenia w ścieżce komunikacji i zamień ją na wartość false dane, które są uwierzytelniani kradzieży materiału klucza.
+**Manipulowanie**: osoba atakująca może wykorzystać wyodrębnione materiału klucza do przechwycenia i pominąć dane z urządzenia do ścieżki komunikacji i zastąp go false dane, które jest uwierzytelniana przy użyciu skradzionych materiału klucza.
 
-**Manipulowanie**: osoba atakująca może częściowo lub całkowicie zastąpić oprogramowania działającego na urządzeniu, potencjalnie stosowanie zastąpionego oprogramowania wykorzystać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub funkcji kryptograficznych, zawierający materiały klucza były dostępne do nielegalnego program.
+**Manipulowanie**: osoba atakująca może całkowicie lub częściowo zastąpić oprogramowanie działające na urządzeniu, potencjalnie umożliwiając zamieniono oprogramowania wykorzystywać oryginalnego tożsamości urządzenia, jeśli materiału klucza lub funkcji kryptograficznych przytrzymanie klucza materiały były dostępne do nielegalnego programu.
 
-**Ujawnienie informacji**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować może potencjalnie wycieku danych do osoby nieupoważnione.
+**Ujawnienie informacji**: Jeśli urządzenie działa manipulować oprogramowania, takie oprogramowanie manipulować potencjalnie mogą spowodować przeciek tych danych nieautoryzowanym osobom.
 
-**Ujawnienie informacji**: osoba atakująca może wykorzystać wyodrębnionego materiału klucza iniekcję się do ścieżki komunikacji między bramy urządzenia i kontrolera lub pola lub brama chmury do Lewarek poza informacji.
+**Ujawnienie informacji**: osoba atakująca może wykorzystać wyodrębnione materiału klucza iniekcję się do ścieżki komunikacji między bramy urządzenia i kontrolera lub pola lub brama chmury do Lewarek poza informacji.
 
-**Odmowa usługi**: wyłączone lub włączone w trybie, gdy komunikacja nie jest możliwe (która jest zamierzone, w wielu maszyn przemysłowych) urządzenia.
+**Odmowa usługi**: urządzenia można wyłączyć lub przekształcane w trybie, gdy komunikacja nie jest możliwe (jest to zamierzone, w wielu maszyn przemysłowych).
 
-**Manipulowanie**: urządzenie można tak skonfigurować, aby w stan nieznany system kontroli (poza odwzorowania znane parametry) i w związku z tym świadczenia dane, które mogą zostać błędnie zinterpretowane
+**Manipulowanie**: urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane
 
-**Podniesienie uprawnień**: urządzenie, które wykonuje określoną funkcję można wymusić, aby zrobić coś innego. Na przykład zawór zaprogramowane w taki sposób, aby otworzyć połowie można zamiarem otworzyć całej procedury.
+**Podniesienie uprawnień**: urządzenia, która wykonuje określoną funkcję aktualizację można wymusić robić coś innego. Na przykład można zwiódł już zawór, który jest zaprogramowane, aby otworzyć połowie, aby otworzyć aż.
 
-**Odmowa usługi**: urządzenie można włączyć w stanie, w których komunikacja nie jest możliwe.
+**Odmowa usługi**: urządzenia mogą być uwzględniane w stanie, gdy komunikacja nie jest możliwe.
 
-**Manipulowanie**: urządzenie można tak skonfigurować, aby w stan nieznany system kontroli (poza odwzorowania znane parametry) i w związku z tym świadczenia dane, które mogą zostać błędnie zinterpretowane.
+**Manipulowanie**: urządzenie można tak skonfigurować, aby działają w stan nieznany system kontroli (poza odwzorowania znane parametry), a zatem mogą udostępniać dane, które mogą zostać błędnie zinterpretowane.
 
-**Fałszowanie/Tampering/Repudiation**: Jeśli nie jest zabezpieczone (czyli rzadko w przypadku klienta zdalnego sterowania), osoba atakująca może manipulować stan urządzenia anonimowo. Dobrym ilustracja to zdalnego sterowania, który można włączyć wszystkie TV i które są prankster popularne narzędzia.
+**Fałszowanie/Tampering/odrzucenie**: Jeśli nie jest zabezpieczone (czyli rzadko w przypadku klienta zdalnego sterowania), osoba atakująca może anonimowo manipulowania stan urządzenia. Dobre ilustracja to zdalnego sterowania, który można wyłączyć wszelkie TV i które są prankster popularnych narzędzi.
 
 #### <a name="communication"></a>Komunikacja
 
-Zagrożenia ścieżkę komunikacji między urządzeniami, urządzeń i bram pola i bramy urządzenia i w chmurze. Poniższa tabela zawiera wskazówek wokół otwarte gniazda na urządzeniu lub sieć VPN:
+Zagrożenia wokół ścieżka komunikacji między urządzeniami, urządzeń i bram działających w terenie i bramy urządzeń i w chmurze. Poniższa tabela zawiera pewne wskazówki wokół otwarte gniazda na urządzenie/sieci VPN:
 
-| **Składnik** | **Zagrożenia** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
+| **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
-| Centrum IoT urządzenia |TID |(D) TLS (PSK/RSA) do szyfrowania ruchu |Podsłuchiwaniu lub konfliktu komunikacji między urządzeniem i bramy |Zabezpieczenia na poziomie protokołu. Z protokoły niestandardowe należy dowiedzieć się, jak chronić je. W większości przypadków komunikacja odbywa się z urządzenia z Centrum IoT (urządzenie inicjuje połączenie). |
-| Urządzenie urządzenie |TID |(D) (PSK/RSA) do szyfrowania ruchu TLS. |Odczytywanie danych przesyłanych między urządzeniami. Manipulowanie danymi. Przeciążanie urządzenia o nowe połączenia |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP. Z protokoły niestandardowe należy dowiedzieć się, jak chronić je. Środki zaradcze na zagrożenie DoS jest elementu równorzędnego urządzeń za pośrednictwem bramy chmury lub pola i niech act tylko jako klientów do sieci. Komunikację równorzędną może spowodować bezpośrednie połączenie między komputerami równorzędnymi po o została przeprowadzana przez bramę |
-| Urządzenie zewnętrznej jednostki |TID |Silne parowanie zewnętrznej jednostki do urządzenia |Podsłuchiwaniu połączenie z urządzeniem. Konfliktu komunikacji z urządzeniem |Bezpiecznie parowanie zewnętrznej jednostki do LE NFC/Bluetooth urządzenia. Kontrolowanie panelu operacyjny urządzenia (fizycznych) |
-| Brama chmury bramy pola |TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub konfliktu komunikacji między urządzeniem i bramy |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Z protokoły niestandardowe należy dowiedzieć się, jak chronić je. |
-| Urządzenia bramy chmury |TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub konfliktu komunikacji między urządzeniem i bramy |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Z protokoły niestandardowe należy dowiedzieć się, jak chronić je. |
+| Urządzenia IoT Hub |IDENTYFIKATORA TID |(D) TLS (PSK/RSA) do szyfrowania ruchu sieciowego |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu. Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. W większości przypadków komunikacja odbywa się z urządzenia do Centrum IoT Hub (urządzenie inicjuje połączenie). |
+| Urządzenia |IDENTYFIKATORA TID |(D) (PSK/RSA) do szyfrowania ruchu TLS. |Odczytywanie danych przesyłanych między urządzeniami. Manipulowanie danymi. Przeciążanie urządzenia przy użyciu nowych połączeń |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP. Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. Ograniczania ryzyka dla zagrożeń DoS ma nawiązać komunikację równorzędną między urządzeniami za pośrednictwem bramy chmury lub pola i je tylko act jako klientów do sieci. Komunikacja równorzędna może spowodować bezpośrednie połączenie między komputerami równorzędnymi po o zostały obsługiwanych przez brokera przez bramę |
+| Urządzenie zewnętrznej jednostki |IDENTYFIKATORA TID |Silne parowania z zewnętrznej jednostki do urządzenia |Podsłuchiwaniu połączenia z urządzeniem. Zakłóca komunikacji z urządzeniem |Bezpiecznie parowanie zewnętrznej jednostki na urządzeniu NFC/Bluetooth LE. Kontrolowanie panelu operacyjnej urządzenia (fizyczny) |
+| Bramy w terenie bramy chmury |IDENTYFIKATORA TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. |
+| Urządzenie bramy w chmurze |IDENTYFIKATORA TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. |
 
-Poniżej przedstawiono przykładowe zagrożenia w tej kategorii:
+Poniżej przedstawiono kilka przykładów zagrożenia w tej kategorii:
 
-**Odmowa usługi**: ograniczonego urządzenia są zazwyczaj zagrożona DoS podczas ich aktywnie nasłuchiwać połączeń przychodzących lub niechciane datagramy w sieci, ponieważ atakujący można otwierać wiele połączeń równolegle, a nie ich usługi lub usługi ich powoli, lub urządzenie może zostać przeciążony niepożądanego ruchu. W obu przypadkach urządzenia mogą skutecznie przestać działać w sieci.
+**Odmowa usługi**: ograniczone urządzeń z systemem ogólnie DoS zagrożeń podczas ich aktywnie nasłuchuje połączeń przychodzących lub niechciane datagramów w sieci, ponieważ osoba atakująca może otwierać wiele połączeń w sposób równoległy i nie ich usługi lub usług ich powoli, lub urządzenie może zostać przeciążony niepożądanym ruchem sieciowym. W obu przypadkach urządzenia mogą skutecznie przestać działać w sieci.
 
-**Fałszowania, ujawnienia informacji**: ograniczone i urządzenia specjalnych często mają zabezpieczeń co dla wszystkich urządzeń, takich jak hasła lub numeru PIN ochrony lub całkowicie opierają się na ufające sieci, co oznacza przyznają dostęp do informacje, gdy urządzenie jest w tej samej sieci, a sieci często tylko jest chroniony przez klucz udostępniony. Oznacza to, że gdy przekazywanych wspólny klucz tajny dla urządzenia lub sieci jest możliwość sterowania urządzeniem lub obserwować dane wysyłanego z urządzenia.  
+**Fałszowania, ujawnienia informacji**: ograniczone i urządzenia specjalnych często mają zabezpieczeń jeden dla wszystkich urządzeń, takich jak hasła lub numeru PIN ochrony lub całkowicie opierają się na ufanie sieci, co oznacza powodują udzielenie dostępu do informacje, gdy urządzenie jest w tej samej sieci, a tej sieci często tylko jest chroniony przy użyciu klucza wstępnego. Oznacza to, gdy nie są ujawniane wspólny klucz tajny na urządzeniu lub w sieci, istnieje możliwość kontrolę na urządzeniem lub obserwować dane emitowane przez urządzenie.  
 
-**Fałszowanie**: osoba atakująca może przechwycić lub częściowo zastąpić emisji i sfałszowanie inicjatorem (man w środku)
+**Fałszowanie**: osoba atakująca może przechwycić lub częściowo zastąpić emisji i podszywały się pod inicjatorem (człowiek pośrodku)
 
 **Manipulowanie**: osoba atakująca może przechwycić lub częściowo zastąpić emisji i wysłać fałszywe informacje 
 
-**Ujawnienie informacji:** osoba atakująca może podsłuchiwać emisji i uzyskiwanie informacji bez autoryzacji **"odmowa usługi":** osoba atakująca może zablokowania emisji sygnału i odmowy dystrybucji informacji
+**Ujawnienie informacji:** osoba atakująca może podsłuchiwać emisji i uzyskiwania informacji bez autoryzacji **"odmowa usługi":** osoba atakująca może jam emisji sygnału i odmawiać go dystrybucji informacji
 
 #### <a name="storage"></a>Magazyn
 
-Co brama urządzenia i pole ma jakiegoś magazynu (tymczasowy dla usługi kolejkowania wiadomości danych, magazynu obrazu systemu operacyjnego (OS)).
+Każdego urządzenia i pole brama ma jakiegoś typu magazynu (tymczasowe dla usługi kolejkowania danych, magazyn obrazów systemu operacyjnego (OS)).
 
-| **Składnik** | **Zagrożenia** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
+| **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
-| Urządzenia magazynu |TRID |Szyfrowanie magazynu, podpisywania dzienniki |Odczytywanie danych z magazynu (dane osobowe dane), manipulowanie danymi telemetrii. Manipulowanie Zakolejkowane lub polecenia kontroli danych w pamięci podręcznej. Wprowadzanie zmian w konfiguracji lub oprogramowania układowego pakietów aktualizacji w pamięci podręcznej lub lokalnie w kolejce może prowadzić do składników systemu operacyjnego i/lub system naruszenia bezpieczeństwa |Szyfrowanie, kod uwierzytelniania wiadomości (MAC) lub podpisu cyfrowego. Gdzie kontroli dostępu możliwości, silne za pośrednictwem dostęp do zasobów kontroli list (kontroli dostępu ACL) lub uprawnienia. |
-| Obraz systemu operacyjnego urządzenia |TRID | |Manipulowanie systemu operacyjnego / zastępowania składników systemu operacyjnego |Tylko do odczytu partycji systemu operacyjnego, podpisany obrazu systemu operacyjnego, szyfrowania |
-| Magazyn bramy pola (kolejkowania danych) |TRID |Szyfrowanie magazynu, podpisywania dzienniki |Odczytywanie danych z magazynu (dane osobowe dane), manipulowanie danymi telemetrii ingerencji w kolejce lub polecenia kontroli danych w pamięci podręcznej. Wprowadzanie zmian w konfiguracji lub oprogramowania układowego pakietów aktualizacji (przeznaczonych dla urządzenia lub pola bramy) podczas buforowane lub lokalnie w kolejce może prowadzić do składników systemu operacyjnego i/lub system naruszenia bezpieczeństwa |BitLocker |
-| Obraz systemu operacyjnego bramy pola |TRID | |Manipulowanie systemu operacyjnego / zastępowania składników systemu operacyjnego |Tylko do odczytu partycji systemu operacyjnego, podpisany obrazu systemu operacyjnego, szyfrowania |
+| Urządzenia pamięci masowej |TRID |Szyfrowanie magazynu, podpisywania dzienniki |Odczytywanie danych z magazynu (dane osobowe), manipulowanie danymi telemetrii. Manipulowanie w kolejce lub polecenia kontroli danych w pamięci podręcznej. Manipulowanie pakietów aktualizacji konfiguracji lub oprogramowania układowego podczas buforowane lub lokalnie w kolejce może prowadzić do składników systemu operacyjnego i/lub system naruszenia bezpieczeństwa |Szyfrowanie, kod uwierzytelniania wiadomości (MAC) lub podpis cyfrowy. Gdy kontrola dostępu możliwa, silne za pośrednictwem dostępu do zasobów kontrolować list (kontroli dostępu ACL) lub uprawnień. |
+| Obraz systemu operacyjnego urządzenia |TRID | |Manipulowanie systemu operacyjnego / zastępowanie składników systemu operacyjnego |Tylko do odczytu partycji systemu operacyjnego podpisany obrazu systemu operacyjnego, szyfrowania |
+| Magazyn bramy w terenie (kolejkowania danych) |TRID |Szyfrowanie magazynu, podpisywania dzienniki |Odczytywanie danych z magazynu (dane osobowe), manipulowanie danymi telemetrii ingerencji w kolejce lub polecenia kontroli danych w pamięci podręcznej. Manipulowanie pakietów aktualizacji konfiguracji lub oprogramowania układowego, (przeznaczone dla urządzeń lub bramy w terenie) podczas buforowane lub lokalnie w kolejce może prowadzić do składników systemu operacyjnego i/lub system naruszenia bezpieczeństwa |BitLocker |
+| Obraz systemu operacyjnego bramy pola |TRID | |Manipulowanie systemu operacyjnego / zastępowanie składników systemu operacyjnego |Tylko do odczytu partycji systemu operacyjnego podpisany obrazu systemu operacyjnego, szyfrowania |
 
-### <a name="device-and-event-processingcloud-gateway-zone"></a>Urządzenia i zdarzenia strefy bramy przetwarzania/w chmurze
+### <a name="device-and-event-processingcloud-gateway-zone"></a>Urządzeń i zdarzeń strefy bramy przetwarzania/w chmurze
 
-Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzeń lub bram pola z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle kierunku kontroli opartej na chmurze i systemu analizy danych, Federacji takich systemów. W niektórych przypadkach brama chmury mogą natychmiast ułatwienia dostępu na urządzeniach specjalnych z terminali, np. tabletów i telefonów. W kontekście omówione w tym miejscu "w chmurze" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, nie jest powiązany z tą samą witryną jako podłączone urządzenia lub pola bramy, a gdy środki operacyjne uniemożliwić docelowe fizyczny dostęp, ale nie jest zawsze do " Infrastruktura chmury publicznej". Brama chmury potencjalnie mogą być mapowane do nakładki wirtualizacji sieci, aby zabezpieczyć bramy chmury oraz wszystkie jego podłączonych urządzeń i bram pole od innego ruchu sieciowego. Brama chmury nie jest system kontroli urządzeń lub przetwarzania lub magazynu dla danych urządzenia. Interfejs te urządzenia bramy chmury. Strefa bramy chmury obejmuje bramy chmury wraz ze wszystkich bram pola i bezpośrednio lub pośrednio dołączone do niego urządzenia.
+Brama chmury to system, który umożliwia zdalnej komunikacji z i do urządzenia lub bram działających w terenie z wielu różnych lokacji w sieci publicznej przestrzeni, zwykle w kierunku kontroli opartej na chmurze i system analizy danych, biuro w Federacji takich systemów. W niektórych przypadkach brama chmury może natychmiast ułatwienia dostępu do urządzeń specjalnych z terminali, takich jak tablety lub telefony. W kontekście omówionych w tym miejscu "chmura" jest przeznaczona do odwoływania się do systemu dedykowanych przetwarzania danych, który nie jest powiązany z tym samym miejscu co podłączonych urządzeń lub bram działających w terenie i gdzie środki operacyjne uniemożliwić docelowych fizyczny dostęp, ale nie jest koniecznie do " Infrastruktura chmury publicznej". Brama chmury potencjalnie mogą być mapowane na nakładce wirtualizacji sieci, aby uwolnić przez bramę chmury i wszystkich podłączonych urządzeń lub bram działających w terenie od innego ruchu sieciowego. Brama chmury nie jest systemem kontroli urządzenia lub przetwarzania lub magazynu danych dotyczących urządzeń; Interfejs tych urządzeń przy użyciu bramy w chmurze. Strefa bramy chmury obejmuje brama chmury wraz ze wszystkich bram działających w terenie i bezpośrednio lub pośrednio dołączone do niego urządzenia.
 
-Brama chmury jest głównie niestandardowych wbudowanych oprogramowanie jako usługa z punktami końcowymi narażonych, z którymi się łączyć pola bramy i urządzeń. Jako takie muszą być zaprojektowane z myślą o bezpieczeństwie. Postępuj zgodnie z [SDL](http://www.microsoft.com/sdl) proces projektowania i tworzenia tej usługi.
+Brama chmury jest przede wszystkim niestandardowych utworzonych oprogramowanie jako usługa z udostępniane punkty końcowe, do których łączenie bramy w terenie i urządzeń. Jako takie muszą być zaprojektowane z myślą o bezpieczeństwie. Postępuj zgodnie z [SDL](http://www.microsoft.com/sdl) proces projektowania i tworzenia tej usługi.
 
 #### <a name="services-zone"></a>Strefa usługi
 
-System kontroli (lub kontrolera) jest rozwiązaniem oprogramowania, które z urządzeń, lub brama pola lub brama chmury na potrzeby kontrolowania jednego lub wielu urządzeń i/lub do zbierania i/lub przechowywania i/lub analizowania danych urządzeń do prezentacji, lub celów kolejnych kontroli. Systemów kontroli są jednostkami tylko w zakresie tej dyskusji, która może ułatwić natychmiast interakcji z użytkownikami. Wyjątki są pośredniego fizycznych powierzchni na urządzeniach, takich jak przełącznik, który umożliwia użytkownikowi wyłączyć urządzenie lub zmienić inne właściwości i dla którego nie ma odpowiednika funkcjonalności, które mogą uzyskiwać cyfrowo.
+System kontroli (lub kontroler) jest rozwiązanie programowe, z urządzenia, lub bramy w terenie lub brama chmury na potrzeby kontrolowania jednego lub wielu urządzeń i/lub do zbierania i/lub przechowywać i/lub analizować dane urządzenie, aby obejrzeć prezentację, interfejsem lub cele kolejne kontrolki. Systemy kontroli są tylko jednostki w zakresie tej dyskusji, która natychmiast może ułatwić interakcji z użytkownikami. Wyjątki są pośrednich fizycznych powierzchni na urządzeniach, takich jak przełącznik, który umożliwia użytkownikowi wyłączanie urządzenia lub zmieniać jej inne właściwości i dla których nie ma odpowiednika funkcjonalności, który jest możliwy cyfrowo.
 
-Są pośredniego powierzchni kontroli fizycznej w przypadku, gdy regulujące logiki ogranicza funkcji powierzchni fizycznych odpowiedniki może zostać uruchomiona zdalnie lub można uniknąć konfliktów wejściowego przy użyciu zdalnego danych wejściowych — przykład intermediated Sterowanie koncepcyjnie są dołączone do system kontroli lokalnego, który korzysta z funkcji podstawowych innym systemom zdalnego sterowania, jaki urządzenie może zostać dołączony do równolegle. Górny zagrożeń dotyczących chmury obliczeniowej, może być odczytany przy [chmury zabezpieczeń Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) strony.
+Pośredni powierzchnie kontroli fizycznej dotyczą w przypadku, gdy regulujące logiki ogranicza funkcji powierzchni fizyczny, taki sposób, że zdalne mogą być inicjowane equivalent — funkcja lub można uniknąć konfliktów danych wejściowych z danymi wejściowymi zdalnego — przykład intermediated Sterowanie pod względem koncepcyjnym są dołączone do systemu lokalnym systemie kontroli, który korzysta z taką samą funkcjonalność podstawowego, jak inne systemy zdalnego sterowania, które urządzenia mogą być dołączone do równolegle. Najważniejszych zagrożeń bezpieczeństwa chmury obliczeniowej, może być odczytany przy [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) strony.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Narzędzie modelowania zagrożeń SDL](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-* [Architektura referencyjna IoT Azure firmy Microsoft](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
+* [Narzędzie do modelowania zagrożeń SDL](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
+* [Architektura referencyjna IoT platformy Azure firmy Microsoft](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

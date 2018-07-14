@@ -1,6 +1,6 @@
 ---
-title: Adnotacje dla usługi Application Insights o wersji | Dokumentacja firmy Microsoft
-description: Dodaj wdrożenie lub kompilacji znaczników w wykresach Eksploratora metryk w usłudze Application Insights.
+title: Adnotacje dotyczące usługi Application Insights wersji | Dokumentacja firmy Microsoft
+description: Dodaj wdrożenie lub utworzyć znaczniki do wykresy Eksploratora metryk w usłudze Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,80 +13,80 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293439"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036401"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresach metryki w usłudze Application Insights
-Adnotacje w [Eksploratora metryk](app-insights-metrics-explorer.md) wdrożonym nowej kompilacji lub innego istotnego zdarzenia na wykresach. Ułatwiają one Zobacz, czy zmiany będzie miało wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [systemu kompilacji programu Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez flagi [tworzenie je z programu PowerShell](#create-annotations-from-powershell).
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresy metryk w usłudze Application Insights
+Adnotacje na [Eksploratora metryk](app-insights-metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [system kompilacji Visual Studio Team Services](https://docs.microsoft.com/vsts/pipelines/tasks/). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez [ich tworzenia za pomocą programu PowerShell](#create-annotations-from-powershell).
 
 ![Przykład adnotacje z korelacją widoczne z czas odpowiedzi serwera](./media/app-insights-annotations/00.png)
 
 
 
-## <a name="release-annotations-with-vsts-build"></a>Adnotacje wydania z kompilacji programu VSTS
+## <a name="release-annotations-with-vsts-build"></a>Adnotacji dotyczących wersji kompilacji usługi VSTS
 
-Adnotacje wersji to funkcja oparta na chmurze kompilacji i wersję usługi Visual Studio Team Services. 
+Adnotacji dotyczących wersji to funkcja oparta na chmurze kompilacji i wersji usługi Visual Studio Team Services. 
 
-### <a name="install-the-annotations-extension-one-time"></a>Zainstaluj rozszerzenie adnotacji (jeden raz)
-Aby móc tworzyć adnotacji wersji, należy zainstalować jedną wiele rozszerzeń zespołu usługi dostępne w witrynie Marketplace programu Visual Studio.
+### <a name="install-the-annotations-extension-one-time"></a>Zainstaluj rozszerzenie adnotacji (raz)
+Aby można było utworzyć adnotacji dotyczących wersji, należy zainstalować jedną z wielu rozszerzeń Team Service dostępnych w witrynie Visual Studio Marketplace.
 
-1. Zaloguj się do Twojego [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
-2. W programie Visual Studio Marketplace [uzyskać rozszerzenie wersji adnotacje](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)i dodaj go do konta usługi Team Services.
+1. Zaloguj się do Twojej [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
+2. W witrynie Visual Studio Marketplace [Pobierz rozszerzenie adnotacji dotyczących wersji](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)i dodaj go do konta usługi Team Services.
 
-![AT z góry po prawej stronie sieci web usługi Team Services, otwórz Marketplace. Wybierz Visual Team Services, a następnie w obszarze kompilacji i wydania, wybierz pozycję Zobacz więcej.](./media/app-insights-annotations/10.png)
+![W prawym górnym rogu strony sieci web usługi Team Services, Otwórz w portalu Marketplace. Wybierz Visual Team Services, a następnie w obszarze kompilacji i wydania wybierz Zobacz więcej.](./media/app-insights-annotations/10.png)
 
-Należy w tym celu raz dla Twojego konta Visual Studio Team Services. Adnotacje wersji można teraz skonfigurować dla każdego projektu w ramach Twojego konta. 
+Wystarczy zrobić to raz dla swojego konta programu Visual Studio Team Services. Teraz można skonfigurować adnotacji dotyczących wersji dla każdego projektu w ramach Twojego konta. 
 
-### <a name="configure-release-annotations"></a>Skonfiguruj adnotacje zlecenia
+### <a name="configure-release-annotations"></a>Konfigurowanie adnotacji dotyczących wersji
 
-Potrzebujesz oddzielnych klucz interfejsu API dla każdego szablonu wersji usługi VSTS.
+Należy uzyskać osobne klucz interfejsu API dla każdego szablonu wydania usługi VSTS.
 
-1. Zaloguj się do [portalu Microsoft Azure](https://portal.azure.com) , a następnie otwórz zasobu usługi Application Insights, który monitoruje aplikacji. (Lub [teraz utworzyć](app-insights-overview.md), jeśli nie zostało to jeszcze zrobione jeszcze.)
-2. Otwórz **dostępu do interfejsu API**, **Application Insights identyfikator**.
+1. Zaloguj się do [portalu Microsoft Azure](https://portal.azure.com) , a następnie otwórz zasób usługi Application Insights monitoruje aplikację. (Lub [utwórz ją teraz](app-insights-overview.md), jeśli nie zostało to zrobione jeszcze.)
+2. Otwórz **dostęp do interfejsu API**, **Application Insights identyfikator**.
    
-    ![Portal.azure.com Otwórz zasobu usługi Application Insights i wybierz polecenie Ustawienia. Otwórz dostępu do interfejsu API. Skopiuj identyfikator aplikacji](./media/app-insights-annotations/20.png)
+    ![W witrynie portal.azure.com otwórz zasób usługi Application Insights, a następnie wybierz pozycję Ustawienia. Otwórz dostęp do interfejsu API. Skopiuj identyfikator aplikacji](./media/app-insights-annotations/20.png)
 
-4. W osobnym oknie przeglądarki otworzyć lub utworzyć szablon zlecenia, który zarządza wdrożeń z Visual Studio Team Services. 
+4. W osobnym oknie przeglądarki Otwórz (lub Utwórz) szablon wydania, która zarządza wdrożeń z programu Visual Studio Team Services. 
    
-    Dodać zadanie, a następnie wybierz zadanie Application Insights wersji adnotacji z menu.
+    Dodaj zadanie, a następnie wybierz zadanie adnotację dotyczącą wersji widoczną Application Insights z menu.
    
-    Wklej **identyfikator aplikacji** skopiowany z bloku dostępu do interfejsu API.
+    Wklej **identyfikator aplikacji** skopiowany z bloku dostęp do interfejsu API.
    
-    ![W programie Visual Studio Team Services otwórz wersji, wybierz definicji wersji i wybierz polecenie Edytuj. Kliknij pozycję Dodaj zadanie, a następnie wybierz Application Insights wersji adnotacji. Wklej identyfikator aplikacji szczegółowych informacji.](./media/app-insights-annotations/30.png)
-4. Ustaw **APIKey** pole do zmiennej `$(ApiKey)`.
+    ![W programie Visual Studio Team Services otwórz wersji, wybierz definicję wydania, a następnie wybierz edycji. Kliknij przycisk Dodaj zadanie, a następnie wybierz adnotację dotyczącą wersji widoczną Application Insights. Wklej identyfikator aplikacji szczegółowych informacji.](./media/app-insights-annotations/30.png)
+4. Ustaw **APIKey** pola do zmiennej `$(ApiKey)`.
 
-5. W oknie Azure Utwórz nowy klucz interfejsu API i wykonać jego kopię.
+5. W oknie platformy Azure Utwórz nowy klucz interfejsu API, a następnie utwórz jego kopię.
    
-    ![W bloku dostępu do interfejsu API w oknie Azure kliknij przycisk Utwórz klucz interfejsu API. Podaj komentarz, sprawdź adnotacje zapisu, a następnie kliknij przycisk Wygeneruj klucz. Skopiuj nowy klucz.](./media/app-insights-annotations/40.png)
+    ![W bloku dostęp do interfejsu API, w oknie platformy Azure kliknij przycisk Utwórz klucz interfejsu API. Podaj komentarz, sprawdź adnotacje zapisu, a następnie kliknij przycisk Generuj klucz. Skopiuj nowy klucz.](./media/app-insights-annotations/40.png)
 
-6. Otwórz kartę Konfiguracja szablonu zlecenia.
+6. Otwórz kartę Konfiguracja szablonu wydania.
    
-    Tworzenie definicji zmiennej `ApiKey`.
+    Utwórz definicję zmiennej `ApiKey`.
    
-    Wklej klucz interfejsu API ApiKey definicji zmiennej.
+    Wklej swój klucz interfejsu API, aby ApiKey definicji zmiennej.
    
-    ![W oknie usługi Team Services wybierz kartę Konfiguracja, a następnie kliknij przycisk Dodaj zmienną. Ustaw nazwę ApiKey i na wartość, Wklej klucz, który wygenerowane przed chwilą, a następnie kliknij ikonę blokady.](./media/app-insights-annotations/50.png)
-7. Na koniec **zapisać** definicji wersji.
+    ![W oknie Team Services wybierz kartę Konfiguracja, a następnie kliknij przycisk Dodaj zmienną. Ustaw nazwę, aby ApiKey i do wartości, Wklej klucz, który został wygenerowany, a następnie kliknij ikonę blokady.](./media/app-insights-annotations/50.png)
+7. Na koniec **Zapisz** definicji wydania.
 
 
-## <a name="view-annotations"></a>Adnotacje widoku
-Teraz gdy wdrażania nowej wersji przy użyciu szablonu wersji, adnotacja będą wysyłane do usługi Application Insights. Adnotacje będą wyświetlane na wykresach w Eksploratorze metryk.
+## <a name="view-annotations"></a>Wyświetlaj adnotacje
+Teraz zawsze, gdy używasz szablonu wydania do wdrażania nowej wersji, adnotacja będą wysyłane do usługi Application Insights. Adnotacje będą wyświetlane na wykresach w Eksploratorze metryk.
 
-Kliknij znacznik żadnych adnotacji w taki sposób, aby otworzyć szczegółowe informacje o wersji, m.in. obiekt żądający, Rozgałęzienie kontroli źródła, wersji definicji, środowisko i inne.
+Kliknięcie dowolnego znacznik adnotacji, aby otworzyć szczegółowe informacje o wersji, m.in. obiekt żądający, gałęzi kontroli źródła, wersji definicji, środowiska i nie tylko.
 
-![Kliknij znacznik adnotacji dowolnej wersji.](./media/app-insights-annotations/60.png)
+![Kliknij znacznik adnotacji w dowolnej wersji.](./media/app-insights-annotations/60.png)
 
-## <a name="create-custom-annotations-from-powershell"></a>Tworzenie niestandardowych adnotacje z programu PowerShell
-Można również utworzyć adnotacje z żaden proces, który chcesz (bez użycia programu VS Team System). 
+## <a name="create-custom-annotations-from-powershell"></a>Tworzenie niestandardowych adnotacje za pomocą programu PowerShell
+Adnotacje można również utworzyć z żaden proces, który chcesz (bez użycia programu VS Team System). 
 
 
-1. Utwórz lokalne kopie z [skrypt programu Powershell z usługi GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Utwórz lokalne kopie z [skrypt programu Powershell z serwisu GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
 
-2. Uzyskiwanie Identyfikatora aplikacji i Utwórz klucz interfejsu API w bloku dostępu do interfejsu API.
+2. Uzyskiwanie Identyfikatora aplikacji i Utwórz klucz interfejsu API z poziomu bloku dostęp do interfejsu API.
 
 3. Wywołanie skryptu następująco:
 
@@ -101,7 +101,7 @@ Można również utworzyć adnotacje z żaden proces, który chcesz (bez użycia
           "TriggerBy"="My Name" }
 ```
 
-Jest łatwy w celu zmodyfikowania skryptu, na przykład do tworzenia adnotacji w ciągu ostatnich.
+To proste w celu zmodyfikowania skryptu, na przykład aby utworzyć adnotacje w ciągu ostatnich.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

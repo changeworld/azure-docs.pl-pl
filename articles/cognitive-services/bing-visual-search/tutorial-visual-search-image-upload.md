@@ -10,12 +10,12 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: a5ec7142fccb900a7095a0c67623d560d3bc00d7
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009534"
+ms.locfileid: "39036544"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: Potężne przekazywania wyszukiwania wizualnego Bing
 
@@ -24,7 +24,7 @@ W tym samouczku dzieli proces przekazywania obrazu do usługi Bing i ponownie uz
 W tym samouczku jest udostępniana dla deweloperów, który chce, aby zbadać zawartość odpowiedzi usługi Bing. Zastosuj wszystkie przypadki użycia i nie wyświetlają wymagania dotyczące (na przykład nie zapewnia łącza do zasady zachowania poufności informacji firmy Microsoft). Aby uzyskać wszystkie wymagania dotyczące użycia, zobacz [Bing użycia i wymagania dotyczące wyświetlania](./use-and-display-requirements.md).
 
 
-### <a name="where-to-start"></a>Gdzie zacząć?
+## <a name="where-to-start"></a>Gdzie zacząć?
 
 Zacznijmy od strony HTML, która wysyła Bing obrazu i otrzymuje szczegółowych informacji i wyświetla je. W ulubionym edytorze Utwórz plik o nazwie uploaddemo.html. Dodaj podstawowe następującą strukturę kodu HTML do pliku.
 
@@ -50,7 +50,7 @@ Aby rozpocząć, możemy podzielić strony sekcji żądania, w którym użytkown
         <div id="responseSection"></div>
 ```
 
-### <a name="get-the-file-to-upload"></a>Pobierz plik do przekazania
+## <a name="get-the-file-to-upload"></a>Pobierz plik do przekazania
 
 Aby umożliwić użytkownikowi wybranie obrazu do przekazania, używa pokaz \<wejściowych\> tag z atrybutem typu zestawu do pliku. Interfejs użytkownika musi być Wyczyść, że wersja demonstracyjna używa Bing w celu uzyskania wyników wyszukiwania. 
 
@@ -126,7 +126,7 @@ Poniżej przedstawiono procedurę obsługi, który przechwytuje wybranego obrazu
 ```
 
 
-### <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co jeszcze jest wymagana przed wykonaniem wywołania do usługi Bing?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Co jeszcze jest wymagana przed wykonaniem wywołania do usługi Bing?
 
 Wersja demonstracyjna nadal wymaga klucza subskrypcji. W praktyce prawdopodobnie otrzymamy klucz subskrypcji z bezpiecznego magazynu, ale dla uproszczenia ten pokaz, musisz podać go w interfejsie użytkownika. Dodaj następujący kod \<wejściowych\> tag (w atrybucie type z ustawioną wartość text) \<treści\> tuż poniżej pliku \<dane wyjściowe\> tagu.
 
@@ -226,7 +226,7 @@ Wersja demonstracyjna ukrywa listach zwijany div, które są kontrolowane przez 
 ```
 
 
-### <a name="making-the-call"></a>Wywołania
+## <a name="making-the-call"></a>Wywołania
 
 Dodaj poniższy przycisk insights Get poniżej div opcje w treści. Ten przycisk pozwala użytkownikowi na zainicjowanie połączenia. Gdy użytkownik kliknie przycisk, kursor zostanie zmieniony na obrotowych kursor oczekiwania i program obsługi jest wywoływana.
 
@@ -291,7 +291,7 @@ Funkcja wysłanie formatów adresu URL punktu końcowego, ustawia dla nagłówka
         }
 ```
 
-### <a name="handling-the-response"></a>Obsługa odpowiedzi
+## <a name="handling-the-response"></a>Obsługa odpowiedzi
 
 Funkcja handleResponse obsługuje odpowiedzi z wywołania wyszukiwania wizualnego Bing. Jeśli wywołanie zakończy się powodzeniem, analizuje odpowiedź JSON do poszczególnych tagów, które zawierają szczegółowe informacje. Następnie dodaje ciąg, wyniki wyszukiwania w Internecie Bing, do strony, aby poinformować użytkownika o tym, że dane pochodzą z usługi Bing.
 
@@ -676,7 +676,7 @@ Należy pamiętać, że istnieje minimalnej ilości danych, który musi być wy�
 
 
 
-### <a name="adding-styles-to-make-the-page-display-correctly"></a>Dodawanie style stronę poprawnego wyświetlania
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Dodawanie style stronę poprawnego wyświetlania
 
 Dodaj następujący kod \<styl\> sekcji \<head\> tagu.
 
@@ -1328,3 +1328,7 @@ Oto kompletny przykład kodu HTML i JavaScript.
     </body>
 </html>      
 ```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby zobaczyć, jak działa uzyskiwanie szczegółowych danych przy użyciu i szczegółowe informacje Zobacz tokenu, [samouczek ImageInsightsToken SDK wyszukiwania wizualnego Bing](.\tutorial-visual-search-insights-token.md).

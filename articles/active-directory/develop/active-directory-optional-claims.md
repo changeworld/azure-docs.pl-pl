@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dd436fb431351b41c61af5ef99f11fce470386a8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003600"
+ms.locfileid: "39036755"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczeń w usłudze Azure AD (wersja zapoznawcza)
 
@@ -66,7 +66,7 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 | `enfpolids`                | Identyfikatory wymuszanych zasad. Lista zasad identyfikatorów, które zostały ocenione dla bieżącego użytkownika.  | JWT |  |  |
 | `vnet`                     | Informacje o specyfikator sieci Wirtualnej.    | JWT        |           |      |
 | `fwd`                      | Adres IP.| JWT    |   | Dodaje oryginalny adres IPv4 klienta (wewnątrz sieci Wirtualnej) |
-| `ctry`                     | Kraj użytkownika | JWT |           | |
+| `ctry`                     | Kraj użytkownika | JWT |           | Usługa Azure AD zwraca `ctry` opcjonalnego roszczenia, jeśli jest obecny, a wartość oświadczenia jest kod standardowa kraju dwuliterowych, takich jak FR, JP, SZ i tak dalej. |
 | `tenant_ctry`              | Kraj zasobów dzierżawy | JWT | | |
 | `xms_pdl`          | Preferowana lokalizacja danych   | JWT | | W przypadku dzierżaw wielu regionów geograficznych jest 3-literowy kod, przedstawiający regionu geograficznego, użytkownik znajduje się w.  Aby uzyskać więcej informacji, zobacz [program Azure AD Connect dokumentacji dotyczącej Preferowana lokalizacja danych](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Na przykład: `APC` dla Azja. |
 | `xms_pl`                   | Preferowany język  | JWT ||Użytkownik preferowanego języka, jeśli ustawiona.  Źródło ich głównej dzierżawy w scenariuszach dostęp gościa.  Sformatowana LL DW ("en-us"). |

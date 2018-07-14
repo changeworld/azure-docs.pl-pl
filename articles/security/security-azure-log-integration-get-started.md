@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do integracji dziennika Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować usługę Azure dziennika integracji oraz integrowanie dzienniki z usługi Azure Storage, dzienników inspekcji platformy Azure i alerty Centrum zabezpieczeń Azure.
+title: Rozpoczynanie pracy z usługą Azure Log Integration | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować usługę Azure Log Integration i integrowanie dzienników z usługi Azure Storage, dzienniki inspekcji platformy Azure i alertów usługi Azure Security Center.
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,171 +15,171 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 5aab890340fcdd87e1b3788d8bcca903c43da1da
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235750"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39036806"
 ---
-# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Integracja dziennika Azure z rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń systemu Windows
+# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration rejestrowania diagnostyki Azure i funkcji przekazywania zdarzeń Windows
 
 
 >[!IMPORTANT]
-> Funkcja integracji Azure dziennika zostaną wycofane przez 2019-06/01. Pliki do pobrania AzLog zostanie wyłączone przez 27 cze 2018. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu post [monitor Azure używana do integracji z narzędzia SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkcja integracji dziennika Azure zostaną wycofane 06/01/2019 r. Pliki do pobrania AzLog zostanie wyłączony przez 27 cze 2018 r. Aby uzyskać wskazówki dotyczące co należy zrobić przenoszenie do przodu przeglądu wpis [użycia w usłudze Azure monitor do integracji z narzędziami rozwiązania SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Integracja z dzienników Azure należy używać tylko, jeśli [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) łącznik nie jest dostępna z dostawcą zdarzenia zabezpieczeń i zarządzania zdarzenia (SIEM).
+Integracja dzienników platformy Azure należy używać tylko, jeśli [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) łącznik nie jest dostępna z dostawcą zdarzeń naruszenia zabezpieczeń i Event Management (SIEM).
 
-Integracja z usługą Azure dziennika udostępnia Azure dzienniki do rozwiązania SIEM, można utworzyć pulpitu nawigacyjnego ujednoliconego zabezpieczeń dla wszystkich zasobów.
-Aby uzyskać więcej informacji o stanie łącznika usługi Azure monitora skontaktuj się z dostawcą SIEM.
+Integracja dzienników platformy Azure udostępnia dzienniki platformy Azure do rozwiązania SIEM aby można było utworzyć pulpit nawigacyjny ujednoliconego zabezpieczeń wszystkich zasobów.
+Aby uzyskać więcej informacji na temat stanu łącznika usługi Azure Monitor skontaktuj się z dostawcą rozwiązania SIEM.
 
 > [!IMPORTANT]
-> Większość dostawców rozwiązań SIEM zainteresowanie podstawowy jest zbierania dzienników maszyny wirtualnej, dołączyć tę opcję w ich rozwiązania. Przy użyciu SIEM dostawcy łącznik jest zawsze preferowanych alternatywnej.
+> Jeśli zainteresowanie podstawowy jest zbieranie dzienników maszyny wirtualnej, większość dostawców rozwiązania SIEM uwzględnić tę opcję w swoich rozwiązaniach. Za pomocą rozwiązania SIEM dostawcy łącznik jest zawsze preferowana alternatywa.
 
-Ten artykuł ułatwia rozpoczęcie pracy z integracją dziennika Azure. Go koncentruje się na instalowanie usługi integracji dziennika Azure i Integrowanie usługi z diagnostyki Azure. Usługa Azure dziennika integracji następnie zbiera informacje dziennika zdarzeń systemu Windows z kanału zdarzeń zabezpieczeń systemu Windows z maszyn wirtualnych wdrożonych w Azure infrastruktura jako usługa. Jest to podobne do *funkcji przekazywania zdarzeń* używanego w systemie lokalnym.
+Ten artykuł ułatwia rozpoczynanie pracy z usługą Azure Log Integration. Koncentruje się ona na instalowanie usługi Azure Log Integration i Integrowanie usługi za pomocą diagnostyki Azure. Usługa Azure Log Integration następnie zbiera informacje w dzienniku zdarzeń Windows z kanału Windows zdarzenie zabezpieczeń z maszyn wirtualnych wdrożonych w infrastrukturze platformy Azure jako usługa. Jest to podobne do *funkcji przekazywania zdarzeń* używanego w systemie w środowisku lokalnym.
 
 > [!NOTE]
-> Integrowanie danych wyjściowych Azure dziennika integracji z rozwiązania SIEM odbywa się przez sam SIEM. Aby uzyskać więcej informacji, zobacz [integracji Azure dziennika integracji z lokalnymi system SIEM](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/).
+> Integracja danych wyjściowych usługi Azure Log Integration rozwiązania SIEM odbywa się przez samego rozwiązania SIEM. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Log Integration z lokalnego systemu SIEM](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/).
 
-Usługa integracji dziennika Azure działa na fizycznego lub wirtualnego komputerze z systemem Windows Server 2008 R2 lub nowszy (z systemem Windows Server 2016 lub Windows Server 2012 R2 jest preferowana).
+Usługa Azure Log Integration działa na fizyczny lub wirtualny komputer z systemem Windows Server 2008 R2 lub nowszy (Windows Server 2016 lub Windows Server 2012 R2 jest preferowana).
 
-Komputer fizyczny można uruchomić lokalnie lub w witrynie hostingu. Jeśli chcesz uruchomić usługę Azure dziennika integracji na maszynie wirtualnej, maszyna wirtualna może być znajdujących się lokalnie lub w chmurze publicznej, takich jak Microsoft Azure.
+Komputer fizyczny, można uruchomić w środowisku lokalnym lub w witrynie hostingu. Jeśli użytkownik chce uruchomić usługę Azure Log Integration na maszynie wirtualnej, maszyna wirtualna może być znajdujących się lokalnie lub w chmurze publicznej, takich jak Microsoft Azure.
 
-Maszyny fizycznej lub wirtualnej uruchomiona usługa integracji dziennika Azure wymaga połączenia sieciowego chmurze publicznej Azure. Ten artykuł zawiera szczegółowe informacje o wymaganej konfiguracji.
+Fizyczne lub maszyny wirtualnej, w którym działa usługa Azure Log Integration wymaga łączności sieciowej do chmury publicznej platformy Azure. Ten artykuł zawiera szczegółowe informacje o wymaganej konfiguracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Co najmniej instalowanie integracji dziennika Azure wymaga następujących elementów:
+Jako minimum Instalowanie usługi Azure Log Integration wymaga następujących elementów:
 
 * **Subskrypcji platformy Azure**. Jeśli go nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/).
-* A **konta magazynu** które mogą być używane dla systemu Windows Azure Diagnostics (WAD) rejestrowania. Można użyć konta magazynu wstępnie skonfigurowane lub utworzyć nowe konto magazynu. W dalszej części tego artykułu firma Microsoft opisano sposób konfigurowania konta magazynu.
+* A **konta magazynu** mogą służyć do Windows Azure Diagnostics (WAD) rejestrowania. Można użyć konta wstępnie skonfigurowanego magazynu lub Utwórz nowe konto magazynu. W dalszej części tego artykułu opisano sposób konfigurowania konta magazynu.
 
   > [!NOTE]
-  > W zależności od scenariusza konto magazynu nie może być wymagane. Diagnostyka Azure scenariusza omówione w tym artykule wymagane jest konto magazynu.
+  > Zależnie od scenariusza konto magazynu nie może być wymagane. W scenariuszu diagnostyki platformy Azure, omówione w tym artykule konto magazynu jest wymagana.
 
 * **Dwa systemy**: 
-  * Komputerze, na którym działa usługa Azure dziennika integracji. Ta maszyna zbiera wszystkie informacje dziennika, który później został zaimportowany do rozwiązania SIEM. Ten system:
+  * Maszyna, na którym uruchomiona jest usługa Azure Log Integration. Ta maszyna zbiera wszystkie informacje dziennika, który później został zaimportowany do rozwiązania SIEM. Ten system:
     * Może być lokalnej lub hostowanej na platformie Microsoft Azure.  
-    * Musi być uruchomiona x64 wersji systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszej, i program Microsoft .NET 4.5.1 zainstalowane. Aby określić wersji platformy .NET, zobacz [ustalić, które wersje programu .NET Framework są zainstalowane](https://msdn.microsoft.com/library/hh925568).  
-    * Musi mieć łączność z konta magazynu Azure, który został użyty do rejestrowania diagnostyki Azure. W dalszej części tego artykułu możemy opisują sposób potwierdzić łączność.
-  * Na komputerze, który chcesz monitorować. To jest uruchomione jako maszyny Wirtualnej [maszyny wirtualnej platformy Azure](../virtual-machines/virtual-machines-windows-overview.md). Rejestrowanie informacji z tego komputera są wysyłane do komputera Usługa integracji dziennika Azure.
+    * X64 musi być uruchomiona wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszego, i Microsoft .NET 4.5.1 zainstalowane. Aby ustalić zainstalowaną wersję platformy .NET, zobacz [ustalić, które wersje programu .NET Framework są zainstalowane](https://msdn.microsoft.com/library/hh925568).  
+    * Musi mieć połączenie z kontem usługi Azure Storage, która została użyta do rejestrowania diagnostyki platformy Azure. W dalszej części tego artykułu opisano sposób potwierdzić łączność.
+  * Maszyna, na który chcesz monitorować. Jest to maszyna wirtualna jako [maszyny wirtualnej platformy Azure](../virtual-machines/virtual-machines-windows-overview.md). Rejestrowanie informacji z tego komputera są wysyłane do komputera usługi Azure Log Integration.
 
-Pokaz szybkiego tworzenia maszyny wirtualnej za pomocą portalu Azure, aby uzyskać Spójrz na poniższe wideo:<br /><br />
+Szybkie demonstracyjne jak utworzyć maszynę wirtualną przy użyciu witryny Azure portal Przyjrzyj się poniższy film wideo:<br /><br />
 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Create-a-Virtual-Machine/player]
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Podczas testowania, można użyć dowolnego systemu, który spełnia minimalne wymagania systemu operacyjnego. W środowisku produkcyjnym, obciążenie może być konieczna planowanie skalowanie w i skalowania.
+Podczas testowania, możesz użyć dowolnego systemu, który spełnia wymagania minimalnej wersji systemu operacyjnego. W środowisku produkcyjnym, obciążenia może być konieczna planowanie skalowanie w górę i skalowania w poziomie.
 
-Można uruchomić wiele wystąpień usługi integracji dziennika Azure. Można jednak uruchomić tylko jedno wystąpienie usługi na maszynie fizycznej lub wirtualnej. Ponadto można kont magazynu diagnostyki Azure Równoważenie obciążenia dla WAD. Liczba subskrypcji zapewnienie wystąpienia jest oparta na wydajność.
+Możesz uruchomić wiele wystąpień usługi Azure Log Integration. Można jednak uruchomić tylko jedno wystąpienie usługi na maszynie fizycznej lub wirtualnej. Ponadto można kont magazynu usługi Azure Diagnostics Równoważenie obciążenia dla WAD. Liczba subskrypcji, aby zapewnić do wystąpień jest oparty na pojemności.
 
 > [!NOTE]
-> Obecnie nie mamy szczegółowe zalecenia o tym, kiedy do skalowania w poziomie wystąpień maszyn integracji dziennika Azure (czyli maszyny uruchomiona usługa integracji dziennika Azure) lub dla konta magazynu lub subskrypcji. Decyzje skalowania na podstawie obserwacji Twojej wydajności w każdym z tych obszarów.
+> Obecnie nie mamy zalecenia o tym, kiedy skalować wystąpień maszyn Azure Log Integration (czyli komputerów z systemem usługi Azure Log Integration) lub dla kont magazynu lub subskrypcji. Decyzje dotyczące skalowania na podstawie obserwacji Twojej wydajności w każdej z tych obszarów.
 
-W celu zwiększenia wydajności, również mieć możliwość skalować usługę Azure dziennika integracji. Następujące metryki wydajności mogą pomóc rozmiaru maszyny, które chcesz uruchomić usługę Azure dziennika integracji:
+Aby zwiększyć wydajność, również mieć możliwość skalowania usługi Azure Log Integration. Następujące metryki wydajności mogą pomóc w rozmiarze maszyn, które postanowisz uruchomić usługę Azure Log Integration:
 
-* Na maszynie procesor 8 (podstawowe) jedno wystąpienie integracji dziennika Azure może przetworzyć około 24 miliony zdarzeń na dzień (około 1 miliona zdarzeń na godzinę).
-* Na komputerze 4-procesora (podstawowe) jedno wystąpienie integracji dziennika Azure może przetworzyć około 1,5 miliona zdarzeń na dzień (około 62,500 zdarzeń na godzinę).
+* Na maszynie 8-procesorowe (rdzenie) pojedynczego wystąpienia usługi Azure Log Integration może przetworzyć około 24 mln zdarzeń każdego dnia (około 1 milion zdarzeń na godzinę).
+* Na komputerze 4 procesory (core) pojedyncze wystąpienie usługi Azure Log Integration może przetwarzać zdarzenia około 1,5 miliona na dzień (około 62,500 zdarzeń na godzinę).
 
-## <a name="install-azure-log-integration"></a>Zainstaluj integracji dzienników Azure
+## <a name="install-azure-log-integration"></a>Zainstaluj integracja dzienników platformy Azure
 
-Aby zainstalować Azure dziennika integracji, Pobierz [integracji dziennika Azure](https://www.microsoft.com/download/details.aspx?id=53324) pliku instalacyjnego. Zakończenie procesu instalacji. Określ, czy podać informacje w danych telemetrycznych do firmy Microsoft.
+Aby zainstalować program Azure Log Integration, Pobierz [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324) pliku instalacyjnego. Zakończ proces instalacji. Wybierz, czy podać informacje o telemetrii do firmy Microsoft.
 
-Usługa Azure dziennika integracji zbiera dane telemetryczne z komputera, na którym jest zainstalowany.  
+Usługa Azure Log Integration zbiera dane telemetryczne z komputera, na którym jest zainstalowany.  
 
-Dane telemetryczne zbierane obejmuje następujące funkcje:
+Dane telemetryczne, które są zbierane obejmuje następujące funkcje:
 
-* Wyjątki występujących podczas wykonywania integracji dziennika Azure.
+* Wyjątki, które występują podczas wykonywania funkcji integracji dzienników Azure.
 * Metryki dotyczące liczby zapytań i przetwarzania zdarzeń.
-* Statystyka, o które Azlog.exe służą opcje wiersza polecenia. 
+* Statystyki, o które Azlog.exe są używane opcje wiersza polecenia. 
 
 > [!NOTE]
-> Firma Microsoft zaleca, aby zezwolić firmie Microsoft na zbieranie danych telemetrycznych. Zbieranie danych telemetrycznych można wyłączyć, usuwając zaznaczenie **Zezwalaj firmie Microsoft na zbieranie danych telemetrycznych** pole wyboru.
+> Firma Microsoft zaleca, aby umożliwić firmie Microsoft na zbieranie danych telemetrycznych. Zbieranie danych telemetrycznych można wyłączyć, usuwając zaznaczenie **Zezwalaj firmie Microsoft na zbieranie danych telemetrycznych** pole wyboru.
 >
 
-![Zrzut ekranu okienka instalacji z zaznaczonym polem wyboru telemetrii](./media/security-azure-log-integration-get-started/telemetry.png)
+![Zrzut ekranu przedstawiający okienko instalacji, zaznaczone pole wyboru telemetrii](./media/security-azure-log-integration-get-started/telemetry.png)
 
 
-Proces instalacji jest uwzględnione w poniższym klipie wideo:<br /><br />
+Proces instalacji został omówiony w poniższym klipie wideo:<br /><br />
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Install-Azure-Log-Integration/player]
 
-## <a name="post-installation-and-validation-steps"></a>Czynności po instalacji i sprawdzania poprawności
+## <a name="post-installation-and-validation-steps"></a>Kroki po instalacji i sprawdzaniu poprawności
 
-Po zakończeniu konfiguracji podstawowej, możesz przystąpić do wykonania po instalacji i weryfikacja kroków:
+Po zakończeniu podstawowej konfiguracji możesz przystąpić do wykonania po instalacji i sprawdzaniu poprawności kroków:
 
-1. Otwórz program PowerShell jako administrator. Następnie przejdź do C:\Program Files\Microsoft Azure dziennika integracji.
-2. Zaimportuj polecenia cmdlet programu Azure dziennika integracji. Aby zaimportować polecenia cmdlet, uruchom skrypt `LoadAzlogModule.ps1`. Wprowadź `.\LoadAzlogModule.ps1`, a następnie naciśnij klawisz Enter (Zwróć uwagę na użycie **.\\**  w tym poleceniu). Powinien zostać wyświetlony ekran podobny do wyświetlaną na poniższej ilustracji:
+1. Otwórz program PowerShell jako administrator. Następnie przejdź do C:\Program Files\Microsoft Azure Log Integration.
+2. Zaimportować polecenia cmdlet usługi Azure Log Integration. Aby zaimportować polecenia cmdlet, uruchom skrypt `LoadAzlogModule.ps1`. Wprowadź `.\LoadAzlogModule.ps1`, a następnie naciśnij klawisz Enter (Zwróć uwagę na użycie **.\\**  w tym poleceniu). Powinien zostać wyświetlony podobny do wyświetlanych na poniższej ilustracji:
 
   ![Zrzut ekranu przedstawiający dane wyjściowe polecenia LoadAzlogModule.ps1](./media/security-azure-log-integration-get-started/loaded-modules.png)
-3. Skonfiguruj integrację dziennika Azure do użycia w określonym środowisku platformy Azure. *Środowiska platformy Azure* jest typem centrum danych chmury Azure, którego chcesz używać. Mimo że istnieją obecnie kilku środowiskach Azure, odpowiednie opcje są **AzureCloud** lub **AzureUSGovernment**. Uruchamianie programu PowerShell jako administrator, upewnij się, że jesteś w C:\Program Files\Microsoft Azure dziennika Integration\. Następnie uruchom następujące polecenie:
+3. Następnie skonfiguruj integracji dzienników platformy Azure do użycia w danym środowisku platformy Azure. *Środowiska platformy Azure* jest typem centrum danych w chmurze platformy Azure, którą chcesz pracować. Chociaż istnieje kilka środowisk platformy Azure, obecnie, odpowiednie opcje są **AzureCloud** lub **AzureUSGovernment**. Uruchamianie programu PowerShell jako administrator, upewnij się, że jesteś w C:\Program Files\Microsoft Azure dziennika Integration\. Następnie uruchom następujące polecenie:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (dla **AzureCloud**)
+  `Set-AzlogAzureEnvironment -Name AzureCloud` (Aby uzyskać **AzureCloud**)
   
-  Aby stosować usługi w chmurze Azure dla instytucji rządowych nam, należy użyć **AzureUSGovernment** dla **— nazwa** zmiennej. Obecnie nie są obsługiwane inne chmury Azure.  
+  Jeśli chcesz korzystać z chmury Azure dla instytucji rządowych USA, użyj **AzureUSGovernment** dla **— nazwa** zmiennej. Obecnie nie są obsługiwane inne chmury platformy Azure.  
 
   > [!NOTE]
-  > Nie otrzymasz opinię, jeśli polecenie powiedzie się. 
+  > Nie otrzymasz opinii, gdy polecenie powiedzie się. 
 
-4. Zanim będzie możliwe monitorowanie systemu, potrzebna jest nazwa konta magazynu, które jest używane diagnostyki Azure. W portalu Azure, przejdź do **maszyn wirtualnych**. Poszukaj maszyny wirtualnej systemu Windows, który będzie monitorował. W **właściwości** zaznacz **ustawień diagnostycznych**.  Następnie wybierz opcję **agenta**. Zanotuj nazwę konta magazynu, który jest określony. Nazwa tego konta w późniejszym kroku jest konieczne.
+4. Aby można było monitorować system, potrzebna jest nazwa konta magazynu, który jest używany dla usługi Azure Diagnostics. W witrynie Azure portal przejdź do **maszyn wirtualnych**. Wyszukaj maszynę wirtualną Windows, która będzie monitorować. W **właściwości** zaznacz **ustawień diagnostycznych**.  Następnie wybierz **agenta**. Zanotuj nazwę konta magazynu, który jest określony. Należy tę nazwę konta w późniejszym kroku.
 
   ![Zrzut ekranu okienka ustawień diagnostyki Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
-  ![Zrzut ekranu Włącz przycisk monitorowania poziomie gościa](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+  ![Zrzut ekranu włączyć przycisk monitorowania poziomie gościa](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
 
   > [!NOTE]
-  > Jeśli monitorowanie nie zostało włączone, podczas tworzenia maszyny wirtualnej, można włączyć jak pokazano na powyższej ilustracji.
+  > Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć pokazany na wcześniejszej ilustracji.
 
-5. Teraz przejdź wstecz do integracji dziennika Azure maszyny. Sprawdź, czy łączności z kontem magazynu z systemu, w którym zainstalowano integracji dziennika Azure. Komputera z uruchomioną usługą integracji dziennika Azure wymaga dostępu do konta magazynu, aby pobrać informacje diagnostyki Azure rejestrowane w każdym monitorowanym systemie. Aby sprawdzić połączenia: 
-  1. [Pobierz Eksploratora usługi Azure Storage](http://storageexplorer.com/).
-  2. Zakończenie instalacji.
+5. Teraz wróć do maszyny integracji dzienników Azure. Sprawdź, czy masz połączenie z kontem usługi storage z systemu zainstalowanym Azure Log Integration. Komputera z uruchomioną usługą Azure Log Integration wymaga dostępu do konta magazynu, aby pobrać informacje, które jest rejestrowane przez diagnostykę platformy Azure na wszystkich monitorowanych systemach. Aby sprawdzić połączenie: 
+  1. [Pobierz bezpłatnie Eksplorator magazynu Azure](http://storageexplorer.com/).
+  2. Przeprowadź instalację.
   3. Po zakończeniu instalacji wybierz **dalej**. Pozostaw **Uruchom Eksploratora usługi Microsoft Azure Storage** zaznaczone pole wyboru.  
   4. Zaloguj się do platformy Azure.
-  5. Sprawdź, czy widzisz konta magazynu, które skonfigurowano diagnostyki Azure: 
+  5. Sprawdź, czy można wyświetlić konto magazynu, który został skonfigurowany dla usługi Azure Diagnostics: 
 
-   ![Zrzut ekranu przedstawiający kont magazynu w Eksploratorze usługi Storage](./media/security-azure-log-integration-get-started/storage-explorer.png)
+   ![Zrzut ekranu przedstawiający kont magazynu w programie Storage Explorer](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-  6. Kilka opcji są wyświetlane w obszarze kont magazynu. W obszarze **tabel**, powinny pojawić się tabeli o nazwie **WADWindowsEventLogsTable**.
+  6. Jest kilka opcji są wyświetlane w ramach kont magazynu. W obszarze **tabel**, powinien zostać wyświetlony tabeli o nazwie **WADWindowsEventLogsTable**.
 
-  Jeśli monitorowanie nie zostało włączone, podczas tworzenia maszyny wirtualnej, możesz je włączyć, zgodnie z wcześniejszym opisem.
+  Jeśli nie zostało włączone monitorowanie, gdy maszyna wirtualna została utworzona, można włączyć, zgodnie z wcześniejszym opisem.
 
 
-## <a name="integrate-windows-vm-logs"></a>Integracja dzienniki maszyny Wirtualnej systemu Windows
+## <a name="integrate-windows-vm-logs"></a>Integrowanie dzienników maszyn wirtualnych Windows
 
-W tym kroku skonfigurujesz komputerze, na którym działa usługa Azure dziennika integracji do nawiązania połączenia konta magazynu, który zawiera pliki dziennika.
+W tym kroku skonfigurujesz maszynie usługi Azure Log Integration, aby połączyć się z kontem magazynu, który zawiera pliki dziennika.
 
-Aby ukończyć ten krok, należy kilka rzeczy:  
-* **FriendlyNameForSource**: przyjaznej nazwy, które można zastosować do konta magazynu, czy skonfigurowano dla maszyny wirtualnej do przechowywania informacji z diagnostyki Azure.
-* **StorageAccountName**: Nazwa konta magazynu określony podczas konfigurowania diagnostyki Azure.  
-* **Atrybutu StorageKey**: Klucz magazynu dla konta magazynu, w którym przechowywane są informacje diagnostyki Azure dla tej maszyny wirtualnej.  
+Aby ukończyć ten krok, konieczne jest kilka rzeczy:  
+* **FriendlyNameForSource**: Przyjazna nazwa, które można zastosować do konta magazynu, czy skonfigurowano dla maszyny wirtualnej do przechowywania informacji z usługi Azure Diagnostics.
+* **StorageAccountName**: Nazwa konta magazynu, które zostały określone podczas konfigurowania usługi Azure Diagnostics.  
+* **Atrybutu StorageKey**: Klucz magazynu dla konta magazynu, w którym przechowywane są informacje diagnostyczne platformy Azure dla tej maszyny wirtualnej.  
 
-Aby uzyskać klucz magazynu, wykonaj następujące kroki:
+Aby uzyskać klucz magazynu, wykonaj następujące czynności:
 1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
-2. W okienku nawigacji wybierz **wszystkie usługi**.
-3. W **filtru** wprowadź **magazynu**. Następnie wybierz opcję **kont magazynu**.
+2. W okienku nawigacji wybierz **wszystkich usług**.
+3. W **filtru** wprowadź **magazynu**. Następnie wybierz **kont magazynu**.
 
   ![Zrzut ekranu pokazujący kont magazynu w wszystkie usługi](./media/security-azure-log-integration-get-started/filter.png)
 
-4. Zostanie wyświetlona lista kont magazynu. Kliknij dwukrotnie konto przypisane do logowania magazynu.
+4. Zostanie wyświetlona lista kont magazynu. Kliknij dwukrotnie konto które są przypisane do rejestrowania magazynu.
 
-  ![Zrzut ekranu pokazujący listę kont magazynu](./media/security-azure-log-integration-get-started/storage-accounts.png)
+  ![Zrzut ekranu przedstawiający listę kont magazynu](./media/security-azure-log-integration-get-started/storage-accounts.png)
 
 5. W obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**.
 
-  ![Zrzut ekranu pokazujący opcji klucze dostępu w menu](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+  ![Zrzut ekranu pokazujący opcja klucze dostępu w menu](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
 
-6. Kopiuj **klucz1**, a następnie zapisz go w bezpiecznej lokalizacji, w której będziesz mieć dostęp do następny krok.
-7. Na serwerze, w którym zainstalowano integracji dziennika Azure Otwórz okno wiersza polecenia z uprawnieniami administratora. (Pamiętaj otworzyć okno wiersza polecenia jako administrator, a nie programu PowerShell).
-8. Przejdź do C:\Program Files\Microsoft Azure dziennika integracji.
-9. Uruchom to polecenie: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
+6. Kopiuj **klucz1**, a następnie zapisz go w bezpiecznej lokalizacji, w której będziesz mieć dostęp na potrzeby następnego kroku.
+7. Na serwerze, na którym zostanie zainstalowany Azure Log Integration Otwórz okno wiersza polecenia jako administrator. (Pamiętaj otworzyć okno wiersza polecenia jako administrator, a nie programu PowerShell).
+8. Przejdź do C:\Program Files\Microsoft Azure Log Integration.
+9. Uruchom następujące polecenie: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
  
   Przykład:
   
   `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
-  Jeśli chcesz, aby identyfikator subskrypcji wyświetlani w zdarzeniu XML, Dołącz identyfikator subskrypcji do przyjaznej nazwy:
+  Jeśli chcesz, aby identyfikator subskrypcji do wyświetlenia w zdarzeniu XML, Dołącz identyfikator subskrypcji przyjazną nazwę:
 
   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
@@ -188,65 +188,66 @@ Aby uzyskać klucz magazynu, wykonaj następujące kroki:
   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
 > [!NOTE]
-> Poczekaj do 60 minut, a następnie wyświetlać zdarzenia, które są pobierane z konta magazynu. Aby wyświetlić zdarzenia, integracja dziennika Azure, wybierz **Podgląd zdarzeń** > **dzienniki systemu Windows** > **zdarzenia przekazane**.
+> Poczekaj do 60 minut, a następnie przeglądać zdarzenia, które są pobierane z konta magazynu. Zaznacz, aby wyświetlić zdarzenia, w usłudze Azure Log Integration **Podgląd zdarzeń** > **Dzienniki Windows** > **zdarzenia przesyłane dalej**.
 
-Poniższe wideo omawia powyższych kroków:<br /><br />
+Poniższy film wideo omawia powyższych kroków:<br /><br />
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Enable-Diagnostics-and-Storage/player]
 
 
-## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Jeśli dane nie jest wyświetlana w folderze zdarzenia przekazane
-Jeśli dane nie jest wyświetlana w folderze zdarzenia przekazane po upływie godziny, wykonaj następujące kroki:
+## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>Jeśli dane nie są wyświetlane w folderze zdarzenia przesyłane dalej
+Jeśli dane nie są wyświetlane w folderze zdarzenia przesyłane dalej po upływie godziny, wykonaj następujące kroki:
 
-1. Sprawdź maszyny, na którym uruchomiona jest usługa Azure dziennika integracji. Upewnij się, że można uzyskać dostępu do platformy Azure. Aby przetestować połączenie, w przeglądarce, spróbuj przejść do [portalu Azure](http://portal.azure.com).
-2. Upewnij się, że konto użytkownika Azlog ma uprawnienie do zapisu dla folderu users\Azlog.
+1. Sprawdź, czy komputer, na którym działa usługa Azure Log Integration Upewnij się, że mają dostęp do platformy Azure. Aby przetestować łączność, w przeglądarce, spróbuj przejść do [witryny Azure portal](http://portal.azure.com).
+2. Upewnij się, że konto użytkownika Azlog ma uprawnienia do zapisu dla users\Azlog folderu.
   1. Otwórz Eksploratora plików.
   2. Przejdź do C:\users.
   3. Kliknij prawym przyciskiem myszy C:\users\Azlog.
   4. Wybierz **zabezpieczeń**.
-  5. Wybierz **NT Service\Azlog**. Sprawdź uprawnienia dla konta. Jeśli konto nie ma na tej karcie lub odpowiednie uprawnienia, które nie są wyświetlane, można przyznać uprawnień dostępu dla konta na tej karcie.
-3. Po uruchomieniu polecenia `Azlog source list`, upewnij się, że magazyn kontem, które dodano w poleceniu `Azlog source add` znajduje się w danych wyjściowych.
-4. Aby sprawdzić, czy z usługi Azure dziennika integracji są zgłoszone żadne błędy, przejdź do **Podgląd zdarzeń** > **dzienniki systemu Windows** > **aplikacji**.
+  5. Wybierz **NT Service\Azlog**. Sprawdź uprawnienia dla konta. Jeśli konto nie ma na tej karcie lub odpowiednie uprawnienia nie są wyświetlane, można przyznać uprawnień konta na tej karcie.
+3. Po uruchomieniu polecenia `Azlog source list`, upewnij się, że konto magazynu, który został dodany w poleceniu `Azlog source add` znajduje się w danych wyjściowych.
+4. Aby zobaczyć, jeśli błędy są zgłaszane z usługi Azure Log Integration, przejdź do **Podgląd zdarzeń** > **Dzienniki Windows** > **aplikacji**.
 
-Jeśli wystąpiły problemy podczas instalacji i konfiguracji, można utworzyć [żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md). Dla usługi, wybierz **integracji dziennika**.
+Jeśli napotkasz problemy podczas instalacji i konfiguracji, możesz utworzyć [żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md). Usługi, wybierz **integracji dzienników**.
 
-Inną opcją pomocy technicznej jest [forum MSDN integracji dziennika Azure](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Forum MSDN społeczności może zapewnić obsługę udzielenie odpowiedzi na pytania i udostępniając porady i wskazówki dotyczące sposobu maksymalne wykorzystanie integracji dziennika Azure. Zespół Azure dziennika integracji monitoruje również tym forum. Pomaga on zawsze, gdy to możliwe.
+Inną możliwością obsługi [forum MSDN integracji dziennika Azure](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Forum MSDN społeczności może zapewnić obsługę przez udostępnianie porady i wskazówki dotyczące w pełni wykorzystać usługi Azure Log Integration i udzielenie odpowiedzi na pytania. Zespół Azure Log Integration również monitoruje to forum. Pomagają w każdym przypadku, gdy to możliwe.
 
-## <a name="integrate-azure-activity-logs"></a>Integracja Dzienniki aktywności platformy Azure
+## <a name="integrate-azure-activity-logs"></a>Integrowanie dzienników aktywności platformy Azure
 
-Dziennik aktywności platformy Azure jest Dziennik subskrypcji, która zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji na zdarzenia kondycji usługi. Alerty Centrum zabezpieczeń Azure znajdują się również w tym dzienniku.
+Dziennik aktywności platformy Azure jest Dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które miały miejsce w systemie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Alerty Centrum zabezpieczeń Azure znajdują się również do tego dziennika.
 > [!NOTE]
-> Przed podjęciem próby kroki opisane w tym artykule, należy przejrzeć [wprowadzenie](security-azure-log-integration-get-started.md) artykułu i wykonaj kroki istnieje.
+> Przed rozpoczęciem kroków opisanych w tym artykule, należy przejrzeć [wprowadzenie](security-azure-log-integration-get-started.md) i wykonaj kroki istnieje.
 
-### <a name="steps-to-integrate-azure-activity-logs"></a>Kroki integracji Dzienniki aktywności platformy Azure
+### <a name="steps-to-integrate-azure-activity-logs"></a>Kroki, aby zintegrować Dzienniki aktywności platformy Azure
 
-1. Otwórz wiersz polecenia i uruchom to polecenie:  ```cd c:\Program Files\Microsoft Azure Log Integration```
+1. Otwórz wiersz polecenia i uruchom następujące polecenie:  ```cd c:\Program Files\Microsoft Azure Log Integration```
 2. Uruchom następujące polecenie:  ```azlog createazureid```
 
-    To polecenie wyświetla monit o podanie logowania do systemu Azure. Polecenie następnie tworzy usługi Azure Active Directory nazwy głównej usługi w dzierżaw usługi Azure AD, które subskrypcji platformy Azure, w których zalogowany użytkownik jest administratora, administratora współpracującego lub właściciela hosta. Polecenie zakończy się niepowodzeniem, jeśli tylko użytkownik-Gość w dzierżawie usługi Azure AD jest zalogowanego użytkownika. Uwierzytelnianie na platformie Azure odbywa się za pośrednictwem usługi Azure AD. Tworzenie nazwy głównej usługi integracji dziennika Azure tworzy tożsamości usługi Azure AD, która uzyskuje dostęp do odczytu z subskrypcji platformy Azure.
-3.  Uruchom następujące polecenie, aby autoryzować nazwy głównej usługi integracji dziennika Azure, które zostały utworzone w poprzednich krok dostęp do odczytu dziennika aktywności subskrypcji. Musisz być właścicielem subskrypcji o uruchomienie polecenia.
+    To polecenie wyświetli monit o podanie logowania do systemu Azure. Polecenie utworzy usługi Azure Active Directory nazwy głównej usługi w dzierżawach usługi Azure AD, obsługujące subskrypcji platformy Azure, w których zalogowanego użytkownika jest administrator, administrator współpracujący lub właściciela. Polecenie zakończy się niepowodzeniem, jeśli użytkownik zalogowany jest tylko użytkownik-Gość w dzierżawie usługi Azure AD. Uwierzytelnianie na platformie Azure odbywa się za pośrednictwem usługi Azure AD. Tworzenie nazwy głównej usługi Azure Log Integration tworzy tożsamości usługi Azure AD, która otrzymuje dostęp do odczytu z subskrypcji platformy Azure.
+3.  Uruchom następujące polecenie, aby autoryzować nazwę główną usługi Azure Log Integration, które zostały utworzone w kroku poprzedniego możliwość odczytu dziennika aktywności dla subskrypcji. Musisz być właścicielem subskrypcji do uruchomienia polecenia.
 
     ```Azlog.exe authorize subscriptionId``` Przykład:
 
 ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+
 4.  Sprawdź następujące foldery, aby upewnić się, że pliki JSON dziennika inspekcji usługi Azure Active Directory są tworzone w nich:
     - C:\Users\azlog\AzureResourceManagerJson
     - C:\Users\azlog\AzureResourceManagerJsonLD
 
 > [!NOTE]
-> Aby uzyskać szczegółowe instrukcje dotyczące przełączania informacji w plikach JSON do informacji o zabezpieczeniach i zdarzeń systemu zarządzania (SIEM) skontaktuj się z dostawcą SIEM.
+> Aby uzyskać szczegółowe instrukcje zapewniania informacji w plikach JSON security information and event management (SIEM) systemu skontaktuj się z dostawcą rozwiązania SIEM.
 
-Społeczność pomoc jest dostępna za pośrednictwem [Forum MSDN integracji dziennika Azure](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Forum to umożliwia użytkownikom w społeczności integracji dziennika Azure do obsługi siebie z pytania, odpowiedzi, porady i wskazówki. Ponadto zespół Azure dziennika integracji monitoruje tym forum i pomaga zawsze, gdy mogą go.
+Pomoc społeczności jest dostępna za pośrednictwem [forum MSDN dotyczącym usługi Azure Log Integration](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). To forum temu inni członkowie społeczności integracji dzienników platformy Azure do obsługi innych za pomocą pytań, odpowiedzi, porady i wskazówki. Ponadto zespół Azure Log Integration monitoruje to forum i pomaga w każdym przypadku, gdy jest to możliwe.
 
-Można również otworzyć [żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md). Wybierz Dziennik integracji usługi żądania pomocy technicznej.
+Możesz również otworzyć [żądania pomocy technicznej](../azure-supportability/how-to-create-azure-support-request.md). Wybierz integracji dzienników jako usługi, dla której zażądano pomocy technicznej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat integracji dziennika Azure, zobacz następujące artykuły: przed podjęciem próby kroki opisane w tym artykule, należy przejrzeć artykuł Uruchomiono Get i wykonaj kroki.
+Aby dowiedzieć się więcej na temat integracji dzienników platformy Azure, zobacz następujące artykuły: przed próbą kroki opisane w tym artykule należy zapoznaj się z artykułem wprowadzenie Get i kroki istnieje.
 
-* [Integracja dziennika Azure dla dzienników Azure](https://www.microsoft.com/download/details.aspx?id=53324). Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje dotyczące instalacji integracji dziennika Azure.
-* [Wprowadzenie do integracji dzienników Azure](security-azure-log-integration-overview.md). W tym artykule przedstawiono integracji dziennika Azure, jego kluczowych możliwości i jak działa.
-* [Czynności konfiguracyjnych partnera](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ten wpis w blogu pokazano, jak skonfigurować integrację dziennika Azure do pracy z rozwiązań partnerskich Splunk HP ArcSight i IBM QRadar. Opisuje nasze Bieżące wskazówki dotyczące sposobu konfigurowania składników SIEM. Skontaktuj się z dostawcą SIEM, aby uzyskać dodatkowe szczegóły.
-* [Integracja dziennika Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Często zadawane pytania odpowiedzi na często zadawane pytania dotyczące integracji dziennika Azure.
-* [Integrowanie alerty Centrum zabezpieczeń Azure z integracji dziennika Azure](../security-center/security-center-integrating-alerts-with-log-integration.md). W tym artykule przedstawiono sposób synchronizować alerty Centrum zabezpieczeń i zdarzenia zabezpieczeń maszyny wirtualnej, które są zbierane przez diagnostyki Azure i działanie Azure dzienniki. Dzienniki są synchronizowane przy użyciu rozwiązania Azure Log Analytics lub SIEM.
-* [Nowe funkcje diagnostyki Azure i Azure dzienniki inspekcji](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/). Ten wpis w blogu stanowi wprowadzenie do dzienników inspekcji platformy Azure i inne funkcje, które mogą pomóc Ci wgląd w działania zasobów platformy Azure.
+* [Usługa Azure Log Integration dzienników platformy Azure](https://www.microsoft.com/download/details.aspx?id=53324). Centrum pobierania zawiera szczegółowe informacje, wymagania systemowe i instrukcje instalacji integracji dzienników Azure.
+* [Wprowadzenie do integracji dziennika Azure](security-azure-log-integration-overview.md). Ten artykuł stanowi wprowadzenie do integracji dzienników platformy Azure, jego kluczowych możliwości i jak to działa.
+* [Partner czynności konfiguracyjnych](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ten wpis w blogu dowiesz się, jak skonfigurować program Azure Log Integration do pracy z rozwiązaniami partnerów Splunk, HP ArcSight i QRadar firmy IBM. Opisano w nim nasze Bieżące wskazówki dotyczące sposobu konfigurowania składników rozwiązania SIEM. Skontaktuj się z dostawcą rozwiązania SIEM, aby uzyskać więcej informacji.
+* [Integracja dzienników platformy Azure — często zadawane pytania (FAQ)](security-azure-log-integration-faq.md). Tych często zadawanych PYTAŃ, odpowiedzi na często zadawane pytania dotyczące usługi Azure Log Integration.
+* [Integrowanie alertów usługi Azure Security Center z usługą Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). W tym artykule pokazano, jak można zsynchronizować alertów usługi Security Center i zdarzenia zabezpieczeń maszyny wirtualnej, które są zbierane przez usługi Azure Diagnostics i aktywności platformy Azure dzienników. Dzienniki są synchronizowane przy użyciu rozwiązania Azure Log Analytics lub rozwiązania SIEM.
+* [Dzienniki inspekcji nowe funkcje dla usługi Azure Diagnostics i Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/). Ten wpis w blogu zawiera wprowadzenie do dzienników inspekcji platformy Azure oraz inne funkcje, które mogą pomóc Ci uzyskać wgląd w operacje zasobów platformy Azure.

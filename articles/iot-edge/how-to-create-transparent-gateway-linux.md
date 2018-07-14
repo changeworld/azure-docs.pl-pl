@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 789958874784f19169e79a177beb0d811d9f60d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2b4e2a19b5d5f6491ff3db24489b361040a52280
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005710"
+ms.locfileid: "39035578"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Tworzenie urządzenia usługi IoT Edge w systemie Linux, która pełni rolę przezroczystej bramy
 
@@ -22,8 +22,8 @@ Ten artykuł zawiera szczegółowe instrukcje dotyczące korzystania z urządzen
 >[!NOTE]
 >Obecnie:
 > * Jeśli brama zostanie odłączony od usługi IoT Hub, podrzędnym urządzenia nie mogą uwierzytelniać za pomocą bramy.
-> * Urządzenia usługi IoT Edge nie można nawiązać połączenia bramy usługi IoT Edge.
-> * Podrzędne urządzeń nie można użyć przekazywania plików.
+> * Urządzenia z włączoną obsługą usługi Edge nie można nawiązać połączenia bramy usługi IoT Edge. 
+> * Podrzędne urządzenia nie mogą używać przekazywania plików.
 
 Trudnym o tworzeniu przezroczystej bramy jest możliwość bezpiecznego łączenia z bramy do podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych do skonfigurowania nawiązywać bezpieczne połączenia TLS między tymi urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy.  Aby zachować bezpieczeństwo uzasadnione, podrzędne urządzenia należy się upewnić tożsamość urządzenia usługi Edge, ponieważ mają tylko urządzenia nawiązywania połączenia z bramami i potencjalnie złośliwych bramy.
 

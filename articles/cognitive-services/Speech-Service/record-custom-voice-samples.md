@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ca25aaefee6c9746ff79bdca7668b510df9ac6c3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 11d96ce0c92916e1975e0cb403aabf057ab8b825
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002045"
+ms.locfileid: "39036833"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Jak rejestrować próbki głosu dla niestandardowych voice
 
@@ -93,7 +93,7 @@ Format podstawowe skrypt zawiera trzy kolumny:
 ![Przykładowy skrypt](media/custom-voice/script.png)
 
 > [!NOTE]
-> Większość studios rekord w skrócie segmenty, określane jako "zajmuje", każdy ypically ttake zawierający wypowiedzi dziesięć do 24. Po prostu można zauważyć, że liczba take będą wystarczające, aby znaleźć później danego wypowiedź. Niektóre studios korzystniejsze może dłużej nagrania. W takim przypadku można zauważyć przesunięcie czasu do pliku (kod czasu). Studio będzie wyświetlana wyraźną czasu.
+> Większość studios rekord w skrócie segmenty nazywane "zajmuje", każdy take ogół obejmujący wypowiedzi dziesięć do 24. Po prostu można zauważyć, że liczba take będą wystarczające, aby znaleźć później danego wypowiedź. Niektóre studios może chcieć wprowadzić nagrania dłużej. W takim przypadku można zauważyć przesunięcie czasu do pliku (kod czasu). Studio będzie wyświetlana wyraźną czasu.
 
 Po każdym wierszu, aby zapisać informacje o, należy pozostawić wystarczającej ilości miejsca. Pamiętaj, że nie wypowiedź jest podzielony między stronami. Numer strony i Drukuj skryptu po jednej stronie papieru.
 
@@ -105,7 +105,7 @@ Prawa autorskiego aktora odczytywanie chronionych prawem autorskim tekstu może 
 
 Na szczęście istnieje możliwość całkowicie uniknąć tych problemów. Dostępnych jest wiele źródeł tekstu, których można używać bez zgody lub licencji.
 
-|||
+|Tekst źródłowy|Opis|
 |-|-|
 |[Korpus Combat CMU](http://festvox.org/cmu_arctic/)|Około 1100 zdania wybrana w zaufanym działa poza o prawach autorskich przeznaczone dla projektów synteza mowy. Doskonałe punkt początkowy.|
 |Już nie działa<br>w ramach praw autorskich|Zazwyczaj działa opublikowane przed 1923. Dla języka angielskiego Gutenberg projektu oferuje dziesiątki tysięcy takiego działania. Możesz skoncentrować się na nowsze działa jako język będzie bliżej nowoczesny język angielski.|
@@ -129,7 +129,7 @@ Korzystać z mikrofonu zwrotną studio wysokiej jakości ("mic") przeznaczony dl
 
 Można także użyć analogowy mikrofonu. Wiele domów wypożyczeń oferują wyposażona we znak głosowe, ich mikrofon "zbioru". Należy pamiętać, profesjonalnych narzędzi analogowy używa o zrównoważonym obciążeniu XLR łączników, a nie 1/4" Podłącz, używane w urządzeniach konsumenta. Jeśli przejdziesz analogowy, należy także preamp oraz interfejs audio komputera za pomocą tych łączników.
 
-Zainstaluj mikrofonu na autonomicznych lub nagle i użyć pop filtru w frot mikrofonu w celu wyeliminowania hałas "plosive" dźwięki, np. "p" i "b". Niektóre mikrofon są dostarczane z instalacji zawieszenia, który izoluje ich od wibracje w autonomicznych, co jest przydatne.
+Zainstaluj mikrofonu na autonomicznych lub nagle i użyć pop filtr przed mikrofonu w celu wyeliminowania hałas "plosive" dźwięki, np. "p" i "b". Niektóre mikrofon są dostarczane z instalacji zawieszenia, który izoluje ich od wibracje w autonomicznych, co jest przydatne.
 
 Talent głosu musi pozostać w odległości spójne z mikrofonu. W systemie taśmy Zaokrąglenie w dół do oznaczania, gdzie powinna występować. Preferuje talent siedzieć, należy zwrócić szczególną uwagę do monitorowania odległość sprawdzanie integralności komunikatu i uniknij szumu spowodowanego krzesło.
 
@@ -144,7 +144,7 @@ Nagrywanie powinna zawierać jako szumu, jak to możliwe, mając na celu 80 wsp�
 > [!TIP]
 > W niektórych przypadkach można użyć korektor lub oprogramowania redukcji szumów wtyczki do usuwania szumu z nagrań, chociaż jest zawsze najlepiej, zatrzymaj ją w jego źródle, gdy jest to możliwe.
 
-Poziomy powinna być ustawiona, tak że większość dostępne dynamicznym zakresie rejestracja cyfrowa jest używany bez overdriving do zakłóceń. Oznacza to, głos, ale nie więc głos, zniekształci audio. Poniżej przedstawiono przykładowy przebiegu dobre nagranie.
+Poziomy powinna być ustawiona, tak że większość dostępne dynamicznym zakresie rejestracja cyfrowa jest używany bez overdriving. Oznacza to, głos, ale nie więc głos, zniekształci audio. Poniżej przedstawiono przykładowy przebiegu dobre nagranie.
 
 ![dobre nagranie dźwiękowe](media/custom-voice/good-recording.png)
 
@@ -172,13 +172,13 @@ Bezpośrednie talent wyraźnie Wymowa słów. Każdy wyraz skrypt powinien wyst�
 |nigdy nie będzie można zrezygnować|nigdy nie będzie można zrezygnować|
 |Istnieją cztery światła|dostępne są cztery światła|
 |w jaki sposób dane pogody już dzisiaj|jak jest th "pogodowe już dziś|
-|Moje pony mały|Moje lil "pony|
+|Zacznij korzystać Moje nieco znajomego|Załóżmy, że hello do mojego lil "friend|
 
 Należy talent *nie* dodać różne pauzy między wyrazami. Zdania nadal przepływu naturalnie, nawet podczas podawania nieco formalnych. Poprawnie wykonywania tego rozróżnienia może potrwać kilka rozwiązaniem, aby uzyskać odpowiednie.
 
 ### <a name="the-recording-session"></a>Sesji nagrywania
 
-Utwórz odwołanie rejestrowania, lub *pliku dopasowania* z typowym wypowiedź na początku sesji. Poproś talent, aby powtórzyć ten wiersz w każdej strony lub strony i pół i porównaj nowe nagranie do odwołania. Ułatwi to talent, pozostają spójne w woluminu, tempo, gęstość centralnej i szczytowa pomysłu i krzemowa. W tym samym czasie serwisant pliku można użyć dopasowania jako odwołanie dla poziomów i ogólną spójność dźwięku. 
+Utwórz odwołanie rejestrowania, lub *pliku dopasowania* z typowym wypowiedź na początku sesji. Poproś talent, aby powtórzyć ten wiersz w każdej strony lub strony i pół. Za każdym razem, porównaj nowe nagranie do odwołania. Ta technika ułatwia talent, pozostają spójne w woluminie, tempo, skoku i maksimów. W tym samym czasie serwisant pliku można użyć dopasowania jako odwołanie dla poziomów i ogólną spójność dźwięku.
 
 Plik dopasowanie jest szczególnie ważne w przypadku wznawiania rejestrowania po podziale lub na kolejny dzień. Można go odtworzyć kilka razy for talent, i poproś powtórzyć za każdym razem, dopóki nie są one również dopasowania.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/05/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: abf10177f8ce86309043da92d1f2b690775b6d89
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f203e056df00fb1a9b1e7e43930955040dfce4aa
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37909933"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39029977"
 ---
 Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności, wydajności i zabezpieczeń infrastruktury hostowania maszyn wirtualnych. Te aktualizacje obejmują poprawki składników oprogramowania w środowisku hostingu (na przykład systemu operacyjnego, funkcji hypervisor i różnych agentów wdrożonych na hoście), uaktualnienia składników sieciowych i likwidację sprzętu. Większość tych aktualizacji jest przeprowadzana bez żadnego wpływu na obsługiwanych maszynach wirtualnych. Jednakże istnieją przypadki, w których aktualizacje mają wpływ:
 
@@ -21,9 +21,9 @@ Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności,
 
 - Jeśli przeprowadzenia konserwacji wymagane jest ponowne uruchomienie komputera, otrzymasz powiadomienie o podczas planowanej konserwacji. W takich przypadkach będziesz również mieć przedział czasu, w którym można uruchomić konserwację samodzielnie, w czasie, który Ci odpowiada.
 
-Na tej stronie opisano, jak Microsoft Azure wykonuje oba rodzaje konserwacji. Aby uzyskać więcej informacji o zdarzeniach nieplanowane (awarii), zobacz Zarządzanie dostępnością maszyn wirtualnych [systemu Windows] (../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Na tej stronie opisano, jak Microsoft Azure wykonuje oba rodzaje konserwacji. Aby dowiedzieć się więcej o nieplanowanych zdarzeń (awarii), zobacz Zarządzanie dostępnością maszyn wirtualnych w celu [Windows](../articles/virtual-machines/windows/manage-availability.md) lub [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Aplikacje działające na maszynie wirtualnej umożliwia zebranie informacji o nadchodzących aktualizacji za pomocą usługi Azure metadanych dla [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) lub [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
+Aplikacje działające na maszynie wirtualnej umożliwia zebranie informacji o przyszłych aktualizacjach przy użyciu usługi Azure Metadata Service, aby uzyskać [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) lub [Linux](../articles/virtual-machines/linux/instance-metadata-service.md).
 
 Aby uzyskać "porad" informacji o zarządzaniu planowanej konserwacji, zobacz "Obsługa Planned maintenance notifications zaplanowanej" dla [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) lub [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 

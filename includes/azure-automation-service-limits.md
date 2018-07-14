@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 6b6e4afa7c8b18c8ce9af8c6abd371b4321e3343
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b71e6d41dcdd7efb2d179486f9195c14dae97194
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38756280"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39037519"
 ---
 | Zasób | Limit maksymalny |Uwagi|
 | --- | --- |---|
@@ -23,8 +23,9 @@ ms.locfileid: "38756280"
 | Maksymalny rozmiar modułu |100 MB ||
 | Czas wykonywania zadania — warstwa bezpłatna |500 minut na subskrypcję na miesiąc kalendarzowy ||
 | Maksymalna ilość miejsca na dysku, które może istnieć piaskownicy**<sup>1</sup>** |1 GB |Dotyczy tylko piaskownic platformy Azure|
-| Maksymalna ilość pamięci do piaskownicy**<sup>1</sup>** |400 MB |Dotyczy tylko piaskownic platformy Azure|
-| Maksymalna liczba gniazd sieciowych może istnieć piaskownicy**<sup>1</sup>** |1000 |Dotyczy tylko piaskownic platformy Azure|
+| Maksymalna ilość pamięci do piaskownicy  **<sup>1</sup>** |400 MB |Dotyczy tylko piaskownic platformy Azure|
+| Maksymalna liczba gniazd sieciowych może istnieć piaskownicy  **<sup>1</sup>** |1000 |Dotyczy tylko piaskownic platformy Azure|
+| Maksymalny czas wykonywania dozwolonych dla jednego elementu runbook  **<sup>1</sup>** |3 godziny |Dotyczy tylko piaskownic platformy Azure|
 | Maksymalna liczba kont usługi Automation w ramach subskrypcji |Bez ograniczeń ||
 |Maksymalna liczba równoczesnych zadań, które można uruchomić na jednym hybrydowego procesu roboczego elementu Runbook|50 ||
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 37710015904c8112e5d2de504ed5b42895ffb809
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 54bb2466a99569c124128ad3e08f276a0bc0262d
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38610318"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035269"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurowanie maszyny Wirtualnej tożsamość usługi zarządzanej (MSI) przy użyciu witryny Azure portal
 
@@ -52,7 +52,7 @@ Jeśli masz maszynę Wirtualną, która pierwotnie została zainicjowana bez Ins
 
 2. Kliknij stronę "Konfiguracja", Włącz MSI na maszynie Wirtualnej, wybierając pozycję "Yes" w obszarze "Tożsamość usługi zarządzane", a następnie kliknij **Zapisz**. Ta operacja może potrwać 60 sekund lub więcej, aby wykonać:
 
-   ![Zrzut ekranu strony konfiguracji](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Zrzut ekranu strony konfiguracji](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Usuń plik MSI z maszyny Wirtualnej platformy Azure
 
@@ -64,7 +64,7 @@ Jeśli masz maszyny wirtualnej, która nie wymaga Instalatora MSI:
 
 3. Kliknij stronę "Konfiguracja", usuń plik MSI z maszyny Wirtualnej, wybierając pozycję "No", w obszarze "Tożsamość usługi zarządzane", a następnie kliknij **Zapisz**. Ta operacja może potrwać 60 sekund lub więcej, aby wykonać:
 
-   ![Zrzut ekranu strony konfiguracji](~/articles/active-directory/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+   ![Zrzut ekranu strony konfiguracji](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
 
 ## <a name="related-content"></a>Powiązana zawartość
 

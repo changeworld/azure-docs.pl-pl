@@ -1,6 +1,6 @@
 ---
-title: Stosowanie aktualizacji w stosie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zaimportować i zainstaluj pakiety aktualizacji firmy Microsoft dla systemu Azure stosu zintegrowany.
+title: Stosowanie aktualizacji w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak importować i instalowania pakietów aktualizacji programu Microsoft system zintegrowany z usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29802655"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39035337"
 ---
-# <a name="apply-updates-in-azure-stack"></a>Stosowanie aktualizacji w stosie Azure
+# <a name="apply-updates-in-azure-stack"></a>Stosowanie aktualizacji w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Jako operator stosu Azure można stosować przez Kafelek pakietów na stos Azure za pomocą aktualizacji w portalu administratora usługi Microsoft update. Musi pobrać pakiet aktualizacji programu Microsoft, importowanie plików pakietu do stosu usługi Azure i następnie zainstalować pakiet aktualizacji. 
+Jako operatorów usługi Azure Stack można zastosować firmy Microsoft lub pakiety aktualizacji OEM dla usługi Azure Stack przy użyciu aktualizacji kafelka w portalu administratora. Należy Pobierz pakiet aktualizacji, importowania plików pakietu do usługi Azure Stack, a następnie zainstaluj pakiet aktualizacji. 
 
-## <a name="download-the-update-package"></a>Pobierz pakiet aktualizacji programu
+## <a name="download-the-update-package"></a>Pobierz pakiet aktualizacji
 
-Jeśli pakiet aktualizacji programu Microsoft Azure stosu jest dostępny, Pobierz pakiet do lokalizacji, która jest dostępny ze stosu Azure, a następnie przejrzyj zawartość pakietu. Pakiet aktualizacji obejmuje zazwyczaj następujące pliki:
+Gdy dostępny jest pakiet aktualizacji firmy Microsoft lub producentem OEM dla usługi Azure Stack, Pobierz pakiet w lokalizacji, który jest dostępny z poziomu usługi Azure Stack, a następnie przejrzyj zawartość pakietu. Pakiet aktualizacji na ogół składa się z następujących plików:
 
-- Samowyodrębniający *PackageName*pliku .exe. Ten plik zawiera ładunek dla tej aktualizacji, na przykład najnowszej aktualizacji zbiorczej dla systemu Windows Server.   
-- Odpowiadającego *PackageName*bin plików. Pliki te zapewniają kompresja ładunku, z którym skojarzony jest *PackageName*pliku .exe. 
-- Pliku Metadata.xml. Ten plik zawiera ważne informacje o aktualizacji, na przykład wydawcy, nazwa, wymagań wstępnych, rozmiar i adres URL pomocy technicznej ścieżki.
+- Samowyodrębniający *Nazwa_pakietu*pliku .exe. Ten plik zawiera ładunek do aktualizacji, na przykład najnowszej aktualizacji zbiorczej dla systemu Windows Server.   
+- Odpowiadające *Nazwa_pakietu*pliki bin. Pliki te zapewniają kompresja ładunek, który jest skojarzony z *Nazwa_pakietu*pliku .exe. 
+- Pliku Metadata.xml. Ten plik zawiera podstawowe informacje dotyczące aktualizacji, na przykład wydawcy, nazwa, wstępnie wymaganego składnika, rozmiar i adres URL pomocy technicznej ścieżki.
 
 ## <a name="import-and-install-updates"></a>Importowanie i zainstaluj aktualizacje
 
-Poniższa procedura przedstawia sposób importowania i instalowania pakietów aktualizacji w portalu administratora.
+Poniższa procedura pokazuje, jak zaimportować, a następnie zainstaluj pakiety aktualizacji w portalu administratora.
 
 > [!IMPORTANT]
-> Zalecamy powiadomienie użytkowników wszystkie operacje obsługi, i Zaplanuj konserwacji systemu windows podczas poza godzinami pracy możliwie. Operacje konserwacji może mieć wpływ na zarówno obciążeń użytkownika, jak i działania portalu.
+> Zdecydowanie zalecamy powiadomienie użytkowników dowolne operacje konserwacji i planowania konserwacji systemu windows podczas poza godzinami możliwie. Operacje konserwacji może mieć wpływ na użytkownika obciążeń i operacje w portalu.
 
-1. W portalu administratora, wybierz **więcej usług**. Następnie w obszarze **dane i magazyn** kategorii, wybierz opcję **kont magazynu**. (Lub, w polu filtru zacznij pisać **kont magazynu**i zaznacz go.)
+1. W portalu administratora wybierz **więcej usług**. Następnie w obszarze **dane + magazyn** kategorii, wybierz opcję **kont magazynu**. (Lub w polu filtru zacznij wpisywać ciąg **kont magazynu**, a następnie wybierz ją.)
 
-    ![Wskazuje, gdzie można znaleźć konta magazynu w portalu](media/azure-stack-apply-updates/ApplyUpdates1.png)
+    ![Pokazuje, gdzie można znaleźć konta magazynu w portalu](media/azure-stack-apply-updates/ApplyUpdates1.png)
 
 2. W polu filtru wpisz **aktualizacji**i wybierz **updateadminaccount** konta magazynu.
 
-    ![Przedstawiono sposób wyszukiwania updateadminaccount](media/azure-stack-apply-updates/ApplyUpdates2.png)
+    ![Pokazuje, jak wyszukiwać updateadminaccount](media/azure-stack-apply-updates/ApplyUpdates2.png)
 
-3. W magazynie konta szczegółów, w obszarze **usług**, wybierz pozycję **obiekty BLOB**.
+3. W magazynie ekranu szczegóły konta, w obszarze **usług**, wybierz opcję **obiektów blob**.
  
     ![Pokazuje, jak uzyskać dostęp do obiektów blob dla konta magazynu](media/azure-stack-apply-updates/ApplyUpdates3.png) 
  
-4. W obszarze **usługa Blob**, wybierz pozycję **+ kontener** do utworzenia kontenera. Wprowadź nazwę (na przykład *1709 aktualizacji*), a następnie wybierz **OK**.
+4. W obszarze **usługi Blob service**, wybierz opcję **+ kontener** do utworzenia kontenera. Wprowadź nazwę (na przykład *1709 aktualizacji*), a następnie wybierz pozycję **OK**.
  
      ![Pokazuje, jak dodać kontener na koncie magazynu](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
-5. Po utworzeniu kontenera, kliknij nazwę kontenera, a następnie kliknij przycisk **przekazać** przekazywania plików pakietu do kontenera.
+5. Po utworzeniu kontenera, kliknij nazwę kontenera, a następnie kliknij przycisk **przekazywanie** przekazywania plików pakietu do kontenera.
  
     ![Pokazuje sposób przekazywania plików pakietu](media/azure-stack-apply-updates/ApplyUpdates5.png)
 
-6. W obszarze **przekazywanie obiektu blob**, kliknij ikonę folderu, wskaż lokalizację pliku .exe pakiet aktualizacji, a następnie kliknij **Otwórz** w oknie Eksploratora plików.
+6. W obszarze **przekazywanie obiektu blob**, kliknij ikonę folderu, wskaż lokalizację pakietu aktualizacji plik .exe, a następnie kliknij przycisk **Otwórz** w oknie Eksploratora plików.
   
-7. W obszarze **przekazywanie obiektu blob**, kliknij przycisk **przekazać**. 
+7. W obszarze **przekazywanie obiektu blob**, kliknij przycisk **przekazywanie**. 
  
-    ![Wskazuje, gdzie można przekazać pliku każdego pakietu](media/azure-stack-apply-updates/ApplyUpdates6.png)
+    ![Wskazuje, gdzie w celu przekazania wszystkich plików pakietu](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Powtórz kroki 6 i 7 dla *PackageName*bin i pliki Metadata.xml. Nie należy importować plik Notice.txt uzupełniające, jeśli uwzględniona.
-9. Na koniec można przejrzeć powiadomienia (ikonę dzwonka w prawym górnym rogu portalu). Powiadomienia powinny wskazywać, że przekazywania została ukończona. 
-10. Przejdź z powrotem do aktualizacji kafelka na pulpicie nawigacyjnym. Kafelek powinny wskazywać, że dostępna jest aktualizacja. Kliknij Kafelek, aby przejrzeć pakietu aktualizacji nowo dodany.
-11. Aby zainstalować tę aktualizację, wybierz pakiet, który jest oznaczony jako **gotowe** i albo kliknij prawym przyciskiem myszy pakiet i wybierz **Aktualizuj**, lub kliknij przycisk **Aktualizuj** akcji u góry .
-12. Po kliknięciu instalowania pakietu aktualizacji, można wyświetlić stan w **szczegóły uruchomienia aktualizacji** obszaru. W tym miejscu możesz także kliknąć **pobrać dzienniki pełnej** do pobierania plików dziennika.
-13. Po ukończeniu aktualizacji kafelka aktualizacji zawiera zaktualizowaną wersję stosu Azure.
+8. Powtórz kroki 6 i 7 dla *Nazwa_pakietu*bin i pliki Metadata.xml. Nie należy importować plik uzupełniające plik Notice.txt, jeśli uwzględniony.
+9. Gdy skończysz, możesz przejrzeć powiadomienia (ikonę dzwonka w prawym górnym rogu portalu). Powiadomienia powinny wskazywać, że przekazywanie ukończone. 
+10. Przejdź z powrotem do Aktualizuj Kafelek na pulpicie nawigacyjnym. Kafelek powinno wskazywać, że dostępna jest aktualizacja. Kliknij Kafelek, aby przejrzeć pakiet aktualizacji nowo dodane.
+11. Aby zainstalować aktualizację, wybierz pakiet, który jest oznaczony jako **gotowe** a albo kliknij prawym przyciskiem myszy pakiet i wybierz **teraz zaktualizować**, lub kliknij przycisk **teraz zaktualizować** akcji w prawym górnym .
+12. Po kliknięciu instalowania pakietu aktualizacji, można wyświetlić stan w **szczegóły przebiegu aktualizacji** obszaru. W tym miejscu możesz również kliknąć **Pobierz pełne dzienniki** do pobierania plików dziennika.
+13. Po zakończeniu aktualizacji, Aktualizuj Kafelek zawiera zaktualizowaną wersję usługi Azure Stack.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zarządzanie aktualizacjami w stosie Azure — omówienie](azure-stack-updates.md)
-- [Azure stos obsługi zasad](azure-stack-servicing-policy.md)
+- [Zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md)
+- [Obsługa zasad z usługi Azure Stack](azure-stack-servicing-policy.md)

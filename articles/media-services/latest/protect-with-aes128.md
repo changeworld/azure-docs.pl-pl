@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 07/12/2018
 ms.author: juliako
-ms.openlocfilehash: da2df60e3111055729bbae2c6684ccbb9671272e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b62c528716d9386b9da6ddee260fd1ec382fb4a5
+ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007867"
+ms.locfileid: "39036789"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy
 
 Usługa Media Services umożliwia dostarczanie HTTP Live Streaming (HLS), MPEG-DASH i Smooth Streaming, zaszyfrowany przy użyciu AES przy użyciu kluczy szyfrowania 128-bitowego. Media Services udostępnia również usługa dostarczania kluczy, która dostarcza kluczy szyfrowania do autoryzowanych użytkowników. Chcąc usługi Media Services zaszyfrować element zawartości, należy skojarzyć klucz szyfrowania z StreamingLocator, a także skonfigurować zasad klucza zawartości. Zleconą strumienia za pomocą odtwarzacza Media Services używa określonego klucza dynamiczne szyfrowanie zawartości przy użyciu szyfrowania AES. Aby odszyfrować strumienia, gracz żądań klucz usługi dostarczania kluczy. Aby ustalić, czy użytkownik jest autoryzowany do uzyskania klucza, usługa oblicza zawartości zasad kluczy, które podane dla klucza.
 
-Artykuł jest oparty na [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) próbki. Przykład przedstawia sposób tworzenia kodowania transformacji, który używa wbudowanego ustawienie wstępne kodowania z adaptacyjną szybkością transmisji bitów i pozyskuje pliku bezpośrednio z [HTTPs źródłowy adres URL](job-input-from-http-how-to.md). Następnie elementu zawartości wyjściowej została opublikowana, za pomocą szyfrowania AES (ClearKey). Dane wyjściowe z przykładu jest adres URL usługi Azure Media Player, w tym zarówno DASH manifest, jak i token AES, potrzebne do odtwarzania zawartości. Przykład termin wygaśnięcia tokenu JWT do 1 godziny. Możesz otworzyć przeglądarkę i wkleić wynikowy adres URL, aby uruchomić stronę pokaz usługi Azure Media Player przy użyciu adresu URL i tokenu wypełniona już (w następującym formacie: ``` https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.)
+Artykuł jest oparty na [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) próbki. Przykład przedstawia sposób tworzenia kodowania transformacji, który używa wbudowanego ustawienie wstępne kodowania z adaptacyjną szybkością transmisji bitów i pozyskuje pliku bezpośrednio z [HTTPs źródłowy adres URL](job-input-from-http-how-to.md). Następnie elementu zawartości wyjściowej została opublikowana, za pomocą szyfrowania AES (ClearKey). Dane wyjściowe z przykładu jest adres URL usługi Azure Media Player, w tym zarówno DASH manifest, jak i token AES, potrzebne do odtwarzania zawartości. Przykład termin wygaśnięcia tokenu JWT do 1 godziny. Możesz otworzyć przeglądarkę i wkleić wynikowy adres URL, aby uruchomić stronę pokaz usługi Azure Media Player przy użyciu adresu URL i tokenu wypełniona już w następującym formacie: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```.
 
 > [!NOTE]
 > Umożliwia ona szyfrowanie każdego zasobu ze wszystkimi wiele typów szyfrowania (AES-128, PlayReady, Widevine i FairPlay). Zobacz [protokoły i typy szyfrowania przesyłania strumieniowego](content-protection-overview.md#streaming-protocols-and-encryption-types), aby zobaczyć, co ma sens połączyć.
