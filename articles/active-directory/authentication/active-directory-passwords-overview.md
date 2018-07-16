@@ -1,6 +1,6 @@
 ---
-title: Azure AD samoobsługowego resetowania hasła omówienie | Dokumentacja firmy Microsoft
-description: Do czego może usługi Azure AD hasła samodzielnego resetowania dla Twojej organizacji?
+title: Usługa Azure AD samoobsługowego resetowania haseł — omówienie | Dokumentacja firmy Microsoft
+description: Co robią resetowania haseł mogą usługi Azure AD dla Twojej organizacji?
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,60 +10,60 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 77d26d860462b1a82315bf1385bccf62047e3da3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e28918fe9e26221738fe234ad41923c58a6ac260
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866672"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049025"
 ---
-# <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Azure AD samodzielnego resetowania haseł dla specjalistów IT
+# <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Usługa Azure AD Samoobsługowe resetowanie haseł dla specjalistów IT
 
-Z usługi Azure Active Directory (Azure AD) samoobsługowego resetowania hasła (SSPR) użytkownicy mogą zresetować swoje hasła na ich własnych when i gdzie muszą. W tym samym czasie Administratorzy mogą kontrolować sposób pobiera resetowania hasła użytkownika. Użytkownicy nie muszą już wywołać pomocy technicznej, po prostu do zresetowania swojego hasła. Azure AD SSPR obejmuje:
+Za pomocą usługi Azure Active Directory (Azure AD) samoobsługowego resetowania haseł (SSPR) użytkownicy mogą resetować swoje hasła na ich własnych tam, gdzie istnieje potrzeba. W tym samym czasie Administratorzy mogą kontrolować sposób pobiera resetowania hasła użytkownika. Użytkownicy nie muszą już do wywołania pomocy technicznej, po prostu do zresetowania swojego hasła. Usługa Azure AD SSPR, obejmuje:
 
-* **Zmiana hasła samoobsługi**: użytkownik zna hasło, ale chce zmienić ją na inną.
-* **Samoobsługowego resetowania hasła**: użytkownik nie może się zalogować i chce do zresetowania swojego hasła przy użyciu co najmniej jeden z następujących metod uwierzytelniania zweryfikowanych:
-   * Wyślij wiadomość SMS do zweryfikowanych telefonu komórkowego.
-   * Rozpoczynanie rozmowy telefonicznej na zweryfikowanych telefon komórkowy lub pakietu office.
-   * Wysłanie wiadomości e-mail do konta zweryfikowanych dodatkowej poczty e-mail.
+* **Zmiana hasła samoobsługi**: użytkownik zna hasło, ale chce ją zmienić na coś nowego.
+* **Samoobsługowe resetowanie haseł**: użytkownik nie można się zalogować i chce, aby zresetować swoje hasło za pomocą co najmniej jeden z następujących metod uwierzytelniania zweryfikowanych:
+   * Wyślij wiadomość SMS na zweryfikowanych telefon komórkowy.
+   * Połączenie telefoniczne należy dokonać zweryfikowanych telefonu komórkowego lub pakietu office.
+   * Wyślij wiadomość e-mail na konto zweryfikowanych pomocniczego adresu e-mail.
    * Odpowiedzi na pytania zabezpieczające.
-* **Odblokowywanie kont samoobsługi**: użytkownik nie może zalogować się przy użyciu hasła i zostało zablokowane. Użytkownik chce, aby odblokować konto bez interwencji administratora przy użyciu ich metod uwierzytelniania.
+* **Odblokowywanie kont samoobsługi**: użytkownik nie będzie mógł zalogować się przy użyciu hasła i zostało zablokowane. Użytkownik chce, aby odblokować konto bez interwencji administratora przy użyciu metody ich uwierzytelniania.
 
 > [!VIDEO https://www.youtube.com/embed/hc97Yx5PJiM]
 
-## <a name="why-choose-azure-ad-sspr"></a>Dlaczego usługi Azure AD SSPR
+## <a name="why-choose-azure-ad-sspr"></a>Dlaczego warto wybrać usługę Azure AD SSPR
 
-Azure AD SSPR ułatwia:
+Usługa Azure AD SSPR ułatwi Ci:
 
-* **Obniżenie kosztów** jako pomocy technicznej asystowaną resetowania haseł zwykle konta 20% wywołań obsługi organizacji IT. 
-* **Poprawę środowiska użytkownika końcowego** i **ograniczyć liczbę pomocy technicznej** , zapewniając użytkownikom uprawnienia do rozwiązania problemów hasła. Nie istnieje potrzeba połączeń telefonicznych pomocy technicznej lub Otwórz żądanie pomocy technicznej.
-* **Dysk mobilności** jak użytkownicy mogą resetować hasła w dowolnym miejscu.
-* **Obsługa kontroli** zasad zabezpieczeń. Administratorzy mogą w dalszym ciągu egzekwowanie zasad, które już dziś.
+* **Obniżenie kosztów** jako pomocy technicznej asystowanej resetowania haseł zazwyczaj konta 20% wywołania pomocy technicznej IT w organizacji. 
+* **Ulepszenie środowiska użytkownika końcowego** i **ograniczyć liczbę pomocy technicznej** , zapewniając użytkownikom możliwości, aby rozwiązać problemy z ich własnych haseł. Nie ma potrzeby wywołania dział pomocy technicznej lub Otwórz żądanie obsługi.
+* **Dysk mobilności** jak użytkownicy mogą resetować swoje hasła niezależnie od miejsca.
+* **Obsługa kontroli** zasad zabezpieczeń. Administratorzy mogą w dalszym ciągu wymuszać zasady, które mają już dziś.
 
-Jeśli wszystko jest gotowe, możesz rozpocząć pracę z usługi Azure AD SSPR za pomocą naszych [szybki start wskazówki](quickstart-sspr.md). Można szybko zapewnić użytkownikom możliwość resetowania haseł.
+Gdy wszystko będzie gotowe, możesz zacząć korzystać z usługi Azure AD SSPR za pomocą naszych [szybki start wskazówki](quickstart-sspr.md). Użytkownicy mogą szybko oferowanie opcję resetowania ich własnych haseł.
 
 ## <a name="azure-ad-sspr-availability"></a>Dostępność usługi Azure AD SSPR
 
-Azure AD SSPR są dostępne w trzech warstwach w zależności od Twojej subskrypcji:
+Samoobsługowe Resetowanie HASEŁ usługi Azure AD jest dostępna w ramach trzech warstw w zależności od Twojej subskrypcji:
 
-* **Azure AD wolne**: tylko w chmurze, Administratorzy mogą resetować swoje hasła.
-* **Azure AD podstawowa** lub **płatnej subskrypcji usługi Office 365**: tylko w chmurze, użytkownicy mogą resetować swoje hasła.
-* **Azure AD Premium**: dowolnego użytkownika lub administratora, w tym tylko w chmurze, federacyjnych, przekazywanego uwierzytelniania, czy użytkownicy synchronizacji skrótów haseł mogą resetować swoje hasła. Hasłami lokalnymi wymagają funkcji zapisywania zwrotnego haseł jest włączony.
+* **Azure AD bezpłatna**: Administratorzy tylko do chmury mogą resetować swoje hasła.
+* **Usługa Azure AD — warstwa podstawowa** lub dowolnego **płatnej subskrypcji usługi Office 365**: tylko w chmurze, użytkownicy mogą resetować swoje hasła.
+* **Usługa Azure AD Premium**: dowolnego użytkownika lub administratora, w tym tylko w chmurze, federacyjnego, przekazywanego uwierzytelniania lub użytkowników synchronizację skrótów haseł mogą resetować swoje hasła. Hasłami lokalnymi wymagają funkcji zapisywania zwrotnego haseł, aby włączyć.
 
-## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD cennik, umowy SLA, aktualizacji i plan
+## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD cen, umowy SLA, aktualizacji i plan
 
-Więcej informacji dotyczących licencjonowania, ceny i przyszłych planów można znaleźć w następujących witrynach:
+Więcej szczegółów na temat licencjonowania, cennik i plany na przyszłość można znaleźć w następujących witrynach:
 
-* [Azure AD szczegóły cennika](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Szczegółach cennika usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Cennik usługi Office 365](https://products.office.com/compare-all-microsoft-office-products?tab=2)
 * [Umowy dotyczące poziomu usług platformy Azure](https://azure.microsoft.com/support/legal/sla/)
-* [Umowa dotycząca poziomu usług Microsoft Online Services](http://go.microsoft.com/fwlink/?LinkID=272026&clcid=0x409)
+* [Umowa dotycząca poziomu usług dla Microsoft Online Services](http://go.microsoft.com/fwlink/?LinkID=272026&clcid=0x409)
 * [Aktualizacje platformy Azure](https://azure.microsoft.com/updates/)
 * [Harmonogram działania dla platformy Azure](https://www.microsoft.com/cloud-platform/roadmap-recently-available)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Czy chcesz teraz rozpocząć pracę z SSPR? [Konfigurowanie usługi Azure AD samoobsługi hasła zresetować](quickstart-sspr.md).
-* Planowanie pomyślne wdrożenie SSPR do użytkowników przy użyciu wskazówek w naszym [przewodnik wdrażania](howto-sspr-deployment.md).
-* [Resetowanie lub zmienianie hasła](../active-directory-passwords-update-your-own-password.md).
-* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../active-directory-passwords-reset-register.md).
+* Czy chcesz zacząć korzystać z funkcji samoobsługowego resetowania HASEŁ? [Konfigurowanie haseł usługi Azure AD resetowania](quickstart-sspr.md).
+* Zaplanować pomyślne wdrożenie funkcji samoobsługowego resetowania HASEŁ dla użytkowników, korzystając z informacji przedstawionych w naszym [Przewodnik wdrożenia](howto-sspr-deployment.md).
+* [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md).
+* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md).

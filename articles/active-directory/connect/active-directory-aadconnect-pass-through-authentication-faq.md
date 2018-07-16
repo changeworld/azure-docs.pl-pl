@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e62117ee98b1d47600141249dcd3b17ec58a9654
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 6d5cd79a6336b2e5c4b3c5c6f5765d92cd602552
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918159"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048972"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory uwierzytelnianie przekazywane: Często zadawane pytania
 
@@ -60,7 +60,7 @@ Ta funkcja działała, potrzebujesz wersji 1.1.486.0 później w celu usługi Az
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Co się stanie, jeśli upłynął hasło tego użytkownika, a także próby logowania przy użyciu uwierzytelniania przekazywanego?
 
-Jeśli skonfigurowano [funkcji zapisywania zwrotnego haseł](../active-directory-passwords-update-your-own-password.md) dla określonego użytkownika, i jeśli użytkownik loguje się przy użyciu uwierzytelniania przekazywanego, można zmienić lub resetowanie haseł. Hasła są zapisywane z powrotem do lokalnej usługi Active Directory zgodnie z oczekiwaniami.
+Jeśli skonfigurowano [funkcji zapisywania zwrotnego haseł](../user-help/active-directory-passwords-update-your-own-password.md) dla określonego użytkownika, i jeśli użytkownik loguje się przy użyciu uwierzytelniania przekazywanego, można zmienić lub resetowanie haseł. Hasła są zapisywane z powrotem do lokalnej usługi Active Directory zgodnie z oczekiwaniami.
 
 Jeśli nie skonfigurowano funkcję zapisywania zwrotnego haseł dla określonego użytkownika lub jeśli użytkownik nie ma prawidłową usługi Azure AD licencją, użytkownik nie może zaktualizować swoje hasło w chmurze. Nie mogą aktualizować swojego hasła nawet wtedy, gdy ich hasło wygasło. Użytkownik zobaczy zamiast tego komunikatu: "Twoja organizacja nie zezwala na zaktualizować swoje hasło w tej witrynie. Zaktualizuj go zgodnie z metodą zalecaną przez organizację lub skontaktuj się z administratorem Jeśli potrzebujesz pomocy." Użytkownik lub administrator zresetować swoje hasło w usłudze Active Directory w środowisku lokalnym.
 

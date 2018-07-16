@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z przeglądem wyczyść | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i wyczyść przeglądu.
+title: 'Samouczek: Integracja usługi Azure Active Directory z przeglądem Clear | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i wyczyść przeglądu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: aa3514d348b812a96b55c4d47950cd064d391dc1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6ce6661bf6d3841f7ade78a74d50a1d6eeefbdaf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231546"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047998"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Samouczek: Integracji Azure Active Directory z przeglądem wyczyść
+# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Samouczek: Integracja usługi Azure Active Directory z przeglądem wyczyść
 
-Z tego samouczka dowiesz się sposobu integracji z usługą Azure Active Directory (Azure AD) Wyczyść przeglądu.
+W tym samouczku dowiesz się, jak zintegrować wyczyść przeglądu przy użyciu usługi Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD wyczyść przeglądu zapewnia następujące korzyści:
+Integrowanie wyczyść przeglądu z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do przeglądu Wyczyść.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do przeglądu Wyczyść (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do przeglądu Wyczyść.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do zwykłego przeglądu (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,203 +46,203 @@ Aby skonfigurować integrację usługi Azure AD z przeglądem Wyczyść, potrzeb
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie wyczyść przeglądu z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie przeglądu Wyczyść z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-clear-review-from-the-gallery"></a>Dodawanie wyczyść przeglądu z galerii
-Aby skonfigurować integrację usługi Azure AD wyczyść przeglądu, należy dodać wyczyść przeglądu z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-clear-review-from-the-gallery"></a>Dodawanie przeglądu Wyczyść z galerii
+Aby skonfigurować integrację wyczyść przeglądu w usłudze Azure AD, należy dodać wyczyść przeglądu z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać wyczyść przeglądu z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **wyczyść przeglądu**, wybierz pozycję **wyczyść przeglądu** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Przeglądanie wyczyść**, wybierz opcję **Przeglądanie wyczyść** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Wyczyść przeglądu na liście wyników](./media/clearreview-tutorial/tutorial_clearreview_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przeglądu zwykłego użytkownika testowego o nazwie "Britta Simona".
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą wyczyść przeglądu, w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w przeglądzie wyczyść jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w przeglądzie wyczyść musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w przeglądzie wyczyść do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w przeglądzie wyczyść musi zostać nawiązane.
 
-W przeglądzie Wyczyść, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W przeglądzie Wyczyść, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przeglądem Wyczyść, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z przeglądem Wyczyść, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego wyczyść przeglądu](#create-a-clear-review-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta wyczyść przeglądu, połączonej z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Przeglądanie wyczyść](#create-a-clear-review-test-user)**  — aby odpowiednikiem Britta Simon w wyczyść przeglądu, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji wyczyść przeglądu.
+W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji wyczyść przeglądu.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z przeglądem Wyczyść, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z przeglądem Wyczyść, wykonaj następujące czynności:**
 
-1. W portalu Azure na **wyczyść przeglądu** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Przeglądanie wyczyść** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/clearreview-tutorial/tutorial_clearreview_samlbase.png)
 
-3. Na **adresy URL i wyczyść domeny przeglądu** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IdP zainicjował** tryb:
+3. Na **wyczyść przeglądu domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości inicjowane** trybu:
 
-    ![Wyczyść domeny przeglądu i adresów URL jednym informacje logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_url.png)
+    ![Wyczyść przeglądu domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.clearreview.com/sso/metadata/`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<customer name>.clearreview.com/sso/acs/`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<customer name>.clearreview.com/sso/acs/`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Wyczyść domeny przeglądu i adresów URL jednym informacje logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
+    ![Wyczyść przeglądu domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/clearreview-tutorial/tutorial_clearreview_url_sp.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<customer name>.clearreview.com`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej wyczyść przeglądu](https://clearreview.com/contact/) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi. Skontaktuj się z pomocą [wyczyść zespołu pomocy technicznej](https://clearreview.com/contact/) do uzyskania tych wartości.
 
-5. Wyczyść aplikacji przejrzyj oczekiwać, że wartość identyfikatora unikatowego użytkownika oświadczenia identyfikatora nazwy. Należy zmapować wartość identyfikatora użytkownika do **user.mail**.
+5. Wyczyść przeglądanie aplikacji oczekiwać, że wartość identyfikatora unikatowego użytkownika oświadczenia identyfikator nazwy. Należy zamapować wartość identyfikatora użytkownika do **user.mail**.
 
-    ![W sekcji atrybutu](./media/clearreview-tutorial/attribute.png)
+    ![W sekcji atrybut](./media/clearreview-tutorial/attribute.png)
 
 
-6. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+6. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
+    ![Link pobierania certyfikatu](./media/clearreview-tutorial/tutorial_clearreview_certificate.png)
 
-7. Kliknij przycisk **zapisać** przycisku.
+7. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/clearreview-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/clearreview-tutorial/tutorial_general_400.png)
 
-8. Na **wyczyść Przejrzyj konfigurację** , kliknij przycisk **skonfigurować wyczyść przeglądu** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+8. Na **wyczyść Przejrzyj konfigurację** , kliknij przycisk **skonfigurować Przeglądanie wyczyść** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Wyczyść Przejrzyj konfigurację](./media/clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-9. Skonfigurować logowanie jednokrotne w **wyczyść przeglądu** po stronie Otwórz **wyczyść przeglądu** portalu przy użyciu poświadczeń administratora.
+9. Aby skonfigurować logowanie jednokrotne na **Przeglądanie wyczyść** po stronie Otwórz **Przeglądanie wyczyść** portalu przy użyciu poświadczeń administracyjnych.
 
-10. Wybierz **Admin** z lewym pasku nawigacyjnym.
+10. Wybierz **administratora** w lewym obszarze nawigacji.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 11. Wybierz **zmiany** w dolnej części strony.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-12. Wykonaj następujące kroki **ustawień rejestracji jednokrotnej** strony
+12. Wykonaj poniższe czynności **ustawienia rejestracji jednokrotnej** strony
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. W **adres URL wystawcy** pole tekstowe, Wklej wartość **identyfikator jednostki SAML** którego została skopiowana z portalu Azure.
+    a. W **adres URL wystawcy** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
 
-    b. W **punktu końcowego SAML** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.    
+    b. W **punktem końcowym SAML** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal.    
 
-    c. W **punktu końcowego SLO** pole tekstowe, Wklej wartość **adres URL logowania jednokrotnego usługi** którego została skopiowana z portalu Azure. 
+    c. W **punktu końcowego SLO** pola tekstowego, Wklej wartość **adres URL logowania jednokrotnego usługi** skopiowanej w witrynie Azure portal. 
 
-    d. Otwórz pobranego certyfikatu w programie Notatnik i Wklej zawartość **certyfikatu X.509** pola tekstowego.   
+    d. Otwórz pobranego certyfikatu w programie Notatnik i Wklej zawartość **certyfikat X.509** pola tekstowego.   
 
 13. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/clearreview-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/clearreview-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/clearreview-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/clearreview-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/clearreview-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
   
 ### <a name="create-a-clear-review-test-user"></a>Tworzenie użytkownika testowego wyczyść przeglądu
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w przeglądzie Wyczyść. We współpracy z [zespołem pomocy technicznej wyczyść przeglądu](https://clearreview.com/contact/) Aby dodać użytkowników na platformie wyczyść przeglądu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w przeglądzie Wyczyść. Skontaktuj się z [wyczyść zespołu pomocy technicznej](https://clearreview.com/contact/) Aby dodać użytkowników na platformie wyczyść przeglądu.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do przeglądu Wyczyść.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do przeglądu Wyczyść.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta wyczyść przeglądu, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon wyczyść przeglądu, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **wyczyść przeglądu**.
+2. Na liście aplikacji wybierz **Przeglądanie wyczyść**.
 
-    ![Wyczyść przeglądu łącza na liście aplikacji](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
+    ![Wyczyść przeglądu łącze na liście aplikacji](./media/clearreview-tutorial/tutorial_clearreview_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka przeglądu wyczyść w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji wyczyść przeglądu.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka przeglądu zwykłego panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do wyczyść przeglądu aplikacji.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a13057769bad7fcad5f95e49102adac234ebcdb4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868943"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056838"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy pakietu OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy pakietu OMS, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramę pakietu OMS, czyli do przodu serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  
@@ -89,8 +89,8 @@ W poniższej tabeli wymieniono obsługiwane liczbę agentów komunikacji z serwe
 
 |Brama |O liczbę agentów, obsługiwane|  
 |--------|----------------------------------|  
-|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 o częstotliwości 2,6 GHz, 2 rdzenie<br> -Pamięci: 4 GB<br> — Przepustowość sieci: 1 GB/s| 600|  
-|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 o częstotliwości 2,6 GHz 4 rdzenie<br> -Pamięci: 8 GB<br> — Przepustowość sieci: 1 GB/s| 1000|  
+|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz, 2 rdzenie<br> -Pamięci: 4 GB<br> — Przepustowość sieci: 1 GB/s| 600|  
+|-Procesor CPU: Intel XEON E5 Procesora 2660 v3 \@ 2,6 GHz 4 rdzenie<br> -Pamięci: 8 GB<br> — Przepustowość sieci: 1 GB/s| 1000|  
 
 ## <a name="download-the-oms-gateway"></a>Pobierz bramę pakietu OMS
 

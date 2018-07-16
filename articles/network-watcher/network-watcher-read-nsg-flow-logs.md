@@ -1,6 +1,6 @@
 ---
-title: Dzienniki przepływu NSG odczytu | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób analizowania dzienników przepływu NSG
+title: Dzienniki przepływów sieciowych grup zabezpieczeń odczytu | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób analizowania dzienników przepływu sieciowych grup zabezpieczeń
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,73 +13,74 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 58474286352ff3f00b31e65a565c2b64a656a177
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29149638"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056804"
 ---
-# <a name="read-nsg-flow-logs"></a>Dzienniki przepływu odczytu NSG
+# <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
-Dowiedz się, jak można odczytać wpisów dziennika przepływu NSG przy użyciu programu PowerShell.
+Dowiedz się, jak odczytać wpisy dzienników przepływu sieciowych grup zabezpieczeń przy użyciu programu PowerShell.
 
-Grupa NSG przepływu dzienniki są przechowywane na koncie magazynu w [blokowe obiekty BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Blokowe obiekty BLOB składają się z mniejszych bloków. Każdy dziennik jest oddzielne blokowych obiektów blob, który jest generowany co godzinę. Nowe dzienniki są generowane co godzinę, dzienniki są aktualizowane przy użyciu nowych wpisów co kilka minut przy użyciu najnowszych danych. W tym artykule dowiesz się jak odczytanie części dzienniki przepływu.
+Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie magazynu w [blokowe obiekty BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Blokowe obiekty BLOB składają się z mniejszych bloków. Każdy dziennik jest oddzielnym blokowych obiektów blob, który jest generowany co godzinę. Nowe dzienniki są generowane co godzinę, dzienniki są aktualizowane przy użyciu nowych wpisów, co kilka minut przy użyciu najnowszych danych. W tym artykule dowiesz się, jak odczytać części dzienników przepływów.
 
 ## <a name="scenario"></a>Scenariusz
 
-W poniższym scenariuszu należy dziennika przepływu przykład, który jest przechowywany na koncie magazynu. Firma Microsoft kroków opisanych w sposób selektywnie odczytu najnowszych zdarzeń w dziennikach przepływu NSG. W tym artykule używamy środowiska PowerShell, jednak omówione w artykule nie są ograniczone do języka programowania i mają zastosowanie do wszystkich językach obsługiwanych przez interfejsy API magazynu Azure
+W poniższym scenariuszu znajduje się przykład dziennika przepływu, który jest przechowywany na koncie magazynu. Firma Microsoft przejrzeć jak selektywnie odczytu najnowszych zdarzeń w dzienników przepływu sieciowych grup zabezpieczeń. W tym artykule używamy programu PowerShell, jednak kwestie omówione w artykule, nie są ograniczone do języka programowania i mają zastosowanie do wszystkich językach obsługiwanych przez interfejsy API usługi Azure Storage
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
-Przed rozpoczęciem, musi mieć sieci grupy przepływu rejestrowanie zabezpieczeń włączone w jednej lub wielu grup zabezpieczeń sieci na Twoim koncie. Instrukcje dotyczące włączania zabezpieczenia sieci przepływu dzienniki, zapoznaj się z następującym artykułem: [wprowadzenie do przepływu rejestrowania dla grup zabezpieczeń sieci](network-watcher-nsg-flow-logging-overview.md).
+Przed przystąpieniem do wykonywania, konieczne jest posiadanie sieci grupy przepływu rejestrowanie zabezpieczeń włączone w jednej lub wielu grup zabezpieczeń sieci w ramach Twojego konta. Aby uzyskać instrukcje na temat włączania zabezpieczeń sieci dzienniki przepływu, zapoznaj się z następującym artykułem: [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
 ## <a name="retrieve-the-block-list"></a>Pobieranie listy zablokowanych
 
-Następujące środowiska PowerShell ustawia zmienne, konieczne jest lista bloków i zapytania blob dziennika przepływu NSG [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokowych obiektów blob. Zaktualizuj skrypt zawierają prawidłowe wartości dla danego środowiska.
+Następujące polecenie programu PowerShell konfiguruje zmienne wymagane do wykonywania zapytań blob dzienników przepływu sieciowej grupy zabezpieczeń i listy bloki w [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) blokowych obiektów blob. Zaktualizuj skrypt, który ma zawierać prawidłowe wartości dla danego środowiska.
 
 ```powershell
-# The SubscriptionID to use
-$subscriptionId = "00000000-0000-0000-0000-000000000000"
+function Get-NSGFlowLogBlockList {
+    [CmdletBinding()]
+    param (
+        [string] [Parameter(Mandatory=$true)] $subscriptionId,
+        [string] [Parameter(Mandatory=$true)] $NSGResourceGroupName,
+        [string] [Parameter(Mandatory=$true)] $NSGName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountName,
+        [string] [Parameter(Mandatory=$true)] $storageAccountResourceGroup,
+        [string] [Parameter(Mandatory=$true)] $macAddress,
+        [datetime] [Parameter(Mandatory=$true)] $logTime
+    )
 
-# Resource group that contains the Network Security Group
-$resourceGroupName = "<resourceGroupName>"
+    process {
+        # Retrieve the primary storage account key to access the NSG logs
+        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
-# The name of the Network Security Group
-$nsgName = "NSGName"
+        # Setup a new storage context to be used to query the logs
+        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
-# The storage account name that contains the NSG logs
-$storageAccountName = "<storageAccountName>" 
+        # Container name used by NSG flow logs
+        $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
-# The date and time for the log to be queried, logs are stored in hour intervals.
-[datetime]$logtime = "06/16/2017 20:00"
+        # Name of the blob that contains the NSG flow log
+        $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
-# Retrieve the primary storage account key to access the NSG logs
-$StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
+        # Gets the storage blog
+        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-# Setup a new storage context to be used to query the logs
-$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
-# Container name used by NSG flow logs
-$ContainerName = "insights-logs-networksecuritygroupflowevent"
+        # Stores the block list in a variable from the block blob.
+        $blockList = $CloudBlockBlob.DownloadBlockList()
 
-# The MAC Address of the Network Interface
-$macAddress = "000D3AFA8650"
-
-# Name of the blob that contains the NSG flow log
-$BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
-
-# Gets the storage blog
-$Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
-
-# Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-$CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
-
-# Stores the block list in a variable from the block blob.
-$blockList = $CloudBlockBlob.DownloadBlockList()
+        # Return the Block List
+        $blockList
+    }
+}
+$blockList = Get-NSGFlowLogBlockList -subscriptionId "00000000-0000-0000-0000-000000000000" -NSGResourceGroupName "resourcegroupname" -storageAccountName "storageaccountname" -storageAccountResourceGroup "sa-rg" -macAddress "000D3AF8196E" -logTime "03/07/2018 22:00"
 ```
 
-`$blockList` Zmiennej zwraca listę bloków w obiekcie blob. Każdy obiekt blob blokowy zawiera co najmniej dwa bloki.  Pierwszy blok ma długość `21` bajtów, ten blok zawiera otwierające nawiasy dziennika json. Inne bloku jest zamykających nawiasów kwadratowych i o długości `9` bajtów.  Jak widać w dzienniku następujący przykład zawiera wpisy siedmiu, każda z nich pojedynczy wpis. Wszystkie nowe wpisy w dzienniku są dodawane na końcu bezpośrednio poprzedzający bloku końcowego.
+`$blockList` Zmiennej zwraca listę bloków w obiekcie blob. Każdy blokowy obiekt blob zawiera co najmniej dwa bloki.  Pierwszy blok może się składać z `21` bajtów, ten blok zawiera otwierające nawiasy dziennika json. Inne bloku jest zamykających nawiasów kwadratowych i może się składać z `9` bajtów.  Jak widać następujący dziennik przykładzie zawiera siedem wpisów, jest pojedynczy wpis. Wszystkie nowe wpisy w dzienniku są dodawane na końcu bezpośrednio przed ostatnim blokiem.
 
 ```
 Name                                         Length Committed
@@ -95,9 +96,9 @@ Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
 ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ```
 
-## <a name="read-the-block-blob"></a>Odczytu dla blokowych obiektów blob
+## <a name="read-the-block-blob"></a>Przeczytaj blokowych obiektów blob
 
-Następnie należy odczytać `$blocklist` zmienną do pobierania danych. W tym przykładzie, który mamy iterację blocklist odczytywać bajty każdego bloku i Wątek je w tablicy. Używamy [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody do pobierania danych.
+Następnie należy odczytać `$blocklist` zmiennej w celu pobrania danych. W tym przykładzie, który możemy wykonać iterację listy blokowania odczytu bajtów z każdego bloku i ich historii w tablicy. Używamy [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody do pobierania danych.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -131,9 +132,9 @@ $valuearray += $value
 }
 ```
 
-Teraz `$valuearray` tablica zawiera wartość ciągu każdego bloku. Aby sprawdzić, zapis, uzyskać drugi ostatnią wartość z tablicy, uruchamiając `$valuearray[$valuearray.Length-2]`. Firma Microsoft nie chcę ostatnią wartość jest po prostu nawiasu zamykającego.
+Teraz `$valuearray` tablica zawiera wartość ciągu każdy blok. Aby sprawdzić, czy wpis, Pobierz drugi na ostatnią wartość z tablicy, uruchamiając `$valuearray[$valuearray.Length-2]`. Firma Microsoft nie chcę ostatnią wartość jest po prostu nawias zamykający.
 
-Wyniki tej wartości są przedstawione w poniższym przykładzie:
+Wyniki tej wartości zostaną wyświetlone w następującym przykładzie:
 
 ```json
         {
@@ -155,11 +156,11 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
         }
 ```
 
-Ten scenariusz jest przykładem Odczytaj wpisy w dziennikach przepływu NSG bez konieczności przeanalizować cały dziennik. Nowe wpisy w dzienniku mogą odczytywać, ponieważ są one zapisywane za pomocą identyfikator bloku lub śledzenia długość bloki przechowywane w blokowych obiektów blob. Dzięki temu można odczytać tylko nowe wpisy.
+Ten scenariusz jest przykładem sposobu odczytywania wpisów dzienników przepływu sieciowych grup zabezpieczeń bez konieczności przeanalizować cały dziennik. Może odczytywać nowe wpisy w dzienniku, jak zostały napisane przy użyciu Identyfikatora bloku lub przez śledzenie długość bloki przechowywane w blokowych obiektów blob. Dzięki temu można odczytać tylko nowe wpisy.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź stronę [wizualizacji dzienników przepływu NSG obserwatora sieci Azure przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) Aby dowiedzieć się więcej na temat innych sposobów wyświetlania dzienników przepływu NSG.
+Odwiedź stronę [wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) dowiedzieć się więcej o innych sposobach wyświetlania dzienników przepływu sieciowych grup zabezpieczeń.
 
-Aby dowiedzieć się więcej na temat magazynu obiektów blob można znaleźć: [powiązania magazynu obiektów Blob platformy Azure funkcji](../azure-functions/functions-bindings-storage-blob.md)
+Aby dowiedzieć się więcej na temat obiektów blob usługi storage można znaleźć: [powiązania magazynu obiektów Blob platformy Azure Functions](../azure-functions/functions-bindings-storage-blob.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory ze wskazówkami firmy Microsoft | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i wskazówkami w systemie Microsoft.
+title: 'Samouczek: Integracja usługi Azure Active Directory ze wskazówkami firmy Microsoft | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i wskazówkami na firmy Microsoft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 282869295f26f85683a2d28706280c4bf62fa54b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b83f452300295078e4edf797ec2ef2f0c5223031
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221380"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047477"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Samouczek: Integracji Azure Active Directory ze wskazówkami firmy Microsoft
+# <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Samouczek: Integracja usługi Azure Active Directory ze wskazówkami firmy Microsoft
 
-Z tego samouczka dowiesz sposobu integracji z usługą Azure Active Directory (Azure AD) kierunkach firmy Microsoft.
+W tym samouczku dowiesz się, jak zintegrować kierunkach na firmie Microsoft za pomocą usługi Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD instrukcjami w systemie Microsoft zapewnia następujące korzyści:
+Integrowanie kierunkach firmy Microsoft z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do wskazówek w systemie Microsoft
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do kierunkach firmy Microsoft (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do wskazówek na firmie Microsoft
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do kierunkach firmy Microsoft (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD ze wskazówkami firmy Microsoft, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD, ze wskazówkami firmy Microsoft, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Wskazówki na Microsoft logowanie jednokrotne włączone subskrypcji
+- Kierunki na Microsoft logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie kierunki na firmy Microsoft z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie kierunkach na firmie Microsoft za pomocą galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-directions-on-microsoft-from-the-gallery"></a>Dodawanie kierunki na firmy Microsoft z galerii
-Aby skonfigurować integrację z kierunków firmy Microsoft do usługi Azure AD, należy dodać instrukcjami w systemie Microsoft z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-directions-on-microsoft-from-the-gallery"></a>Dodawanie kierunkach na firmie Microsoft za pomocą galerii
+Aby skonfigurować integrację z instrukcjami firmy Microsoft do usługi Azure AD, należy dodać kierunkach na firmie Microsoft w galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać instrukcjami w systemie Microsoft z galerii, wykonaj następujące czynności:**
+**Aby dodać kierunkach na firmie Microsoft w galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację z kierunków firmy Microsoft do usługi Azure AD,
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -79,79 +79,79 @@ Aby skonfigurować integrację z kierunków firmy Microsoft do usługi Azure AD,
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej ze wskazówkami firmy Microsoft na podstawie użytkownika testowego, nazywany "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne ze wskazówkami firmy Microsoft, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w kierunkach firmy Microsoft jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w kierunkach w systemie Microsoft.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w kierunkach firmy Microsoft do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w kierunkach Microsoft musi można ustanowić.
 
-W kierunkach firmy Microsoft, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W kierunkach firmy Microsoft, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej ze wskazówkami firmy Microsoft, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego ze wskazówkami firmy Microsoft, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie kierunki na użytkownika testowego Microsoft](#creating-a-directions-on-microsoft-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta kierunkach firmy Microsoft, który jest połączony z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie kierunkach na użytkownika testowego Microsoft](#creating-a-directions-on-microsoft-test-user)**  — aby odpowiednikiem Britta Simon w kierunkach firmy Microsoft, który jest połączony z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w z instrukcjami w aplikacji Microsoft.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w sieci kierunkach aplikacji firmy Microsoft.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej ze wskazówkami firmy Microsoft, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowania jednokrotnego, ze wskazówkami firmy Microsoft, wykonaj następujące czynności:**
 
-1. W portalu Azure na **kierunkach Microsoft** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **kierunkach Microsoft** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_samlbase.png)
 
-3. Na **kierunkach adresy URL i Domain Microsoft** sekcji, wykonaj następujące czynności:
+3. Na **kierunkach Domain firmy Microsoft i adresów URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
     | `https://<subdomain>.devcloud.acquia-sites.com/<companyname>` |
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
     |  |
     | --- |
     | `https://rhelmdirectionsonmicrosoftcomtest.devcloud.acquia-sites.com/simplesaml/<companyname>` |
     | `https://www.directionsonmicrosoft.com/simplesaml/<companyname>` |
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołu obsługi kierunkach Microsoft Client](mailto:service@DirectionsOnMicrosoft.com) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołu pomocy technicznej kierunkach Microsoft Client](mailto:service@DirectionsOnMicrosoft.com) do uzyskania tych wartości. 
  
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/directions-microsoft-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/directions-microsoft-tutorial/tutorial_general_400.png)
 
-6. Skonfigurować logowanie jednokrotne w **kierunkach Microsoft** stronie, musisz wysłać pobrany **XML metadanych** do [kierunkach Microsoft obsługują zespołu](mailto:service@DirectionsOnMicrosoft.com). Aby włączyć kierunki zespołu pomocy technicznej firmy Microsoft można znaleźć członkostwem w witrynie federacyjnych, obejmują informacje o Twojej firmie w wiadomości e-mail.
+6. Aby skonfigurować logowanie jednokrotne na **kierunkach Microsoft** stronie, musisz wysłać pobrany **XML metadanych** do [kierunkach Microsoft zespołu pomocy technicznej](mailto:service@DirectionsOnMicrosoft.com). Aby włączyć kierunkach zespołu pomocy technicznej firmy Microsoft do zlokalizowania członkostwem w witrynie federacyjnego, obejmują informacje o firmie w wiadomości e-mail.
     
     >[!NOTE]
-    >Logowanie jednokrotne dla kierunków Microsoft musi być włączona przez [kierunkach Microsoft Client obsługuje zespołu](mailto:service@DirectionsOnMicrosoft.com). Otrzymasz powiadomienie podczas logowania jednokrotnego została włączona.
+    >Logowanie jednokrotne dla kierunkach Microsoft musi być włączona przez [zespołu pomocy technicznej kierunkach Microsoft Client](mailto:service@DirectionsOnMicrosoft.com). Otrzymasz powiadomienie podczas logowania jednokrotnego została włączona.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/directions-microsoft-tutorial/create_aaduser_01.png) 
 
@@ -159,69 +159,69 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/directions-microsoft-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/directions-microsoft-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/directions-microsoft-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="creating-a-directions-on-microsoft-test-user"></a>Tworzenie kierunki na użytkownika testowego firmy Microsoft
+### <a name="creating-a-directions-on-microsoft-test-user"></a>Tworzenie kierunkach na użytkownika testu firmy Microsoft
 
-Nie ma elementu akcji do skonfigurowania użytkownika inicjowania obsługi administracyjnej kierunkach firmy Microsoft.  
+Brak elementu działania umożliwiające skonfigurowanie aprowizacji kierunkach Microsoft użytkowników.  
 
-Gdy przypisany użytkownik próbuje zalogować się do wskazówek na korzystanie z panelu dostępu firmy Microsoft, kierunkach Microsoft sprawdza, czy użytkownik istnieje. Jeśli nie jest Brak konta użytkownika dostępny jeszcze, są tworzone przez kierunkach firmy Microsoft.
+Gdy przypisany użytkownik próbuje zalogować się do wskazówek na firmie Microsoft za pomocą panelu dostępu, kierunkach Microsoft sprawdza, czy użytkownik istnieje. Jeśli nie ma użytkownika konta dostępne jeszcze, są tworzone przez kierunkach firmy Microsoft.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu kierunkach firmy Microsoft.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do kierunkach firmy Microsoft.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta kierunkach firmy Microsoft, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon kierunkach firmy Microsoft, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **kierunkach Microsoft**.
+2. Na liście aplikacji wybierz **kierunkach Microsoft**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/directions-microsoft-tutorial/tutorial_directionsonmicrosoft_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
  
-Po kliknięciu kierunki na kafelku firmy Microsoft w panelu dostępu należy należy pobrać automatycznie zalogowane się z instrukcjami w aplikacji Microsoft.
+Po kliknięciu kierunkach na kafelku firmy Microsoft, w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do z instrukcjami w aplikacji Microsoft.
 
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

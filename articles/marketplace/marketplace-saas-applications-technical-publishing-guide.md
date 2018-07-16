@@ -1,76 +1,77 @@
 ---
-title: Technical aplikacji SaaS witrynę Azure Marketplace Podręcznik publikowania
-description: Przewodnik krok po kroku i publikowanie list kontrolnych publikowanie aplikacji SaaS w portalu Azure Marketplace
+title: Portal Azure Marketplace SaaS Applications technicznych, Podręcznik publikowania
+description: Przewodnik krok po kroku i publikowania listy kontrolne dotyczące publikowania aplikacji SaaS w portalu Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 documentationcenter: ''
-author: BrentL-Collabera
-manager: ''
-editor: BrentL-Collabera
+author: keithcharlie
+manager: nunoc
+editor: keithcharlie
 ms.assetid: ''
 ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 07/09/2018
+ms.author: keithcharlie
+ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809475"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056406"
 ---
-# <a name="saas-applications-technical-publishing-guide"></a>Podręcznik techniczny publikowania aplikacji SaaS
+# <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 
-Witamy w portalu Azure Marketplace techniczne aplikacji SaaS Podręcznik publikowania. Ten przewodnik ułatwia candidate i istniejących wydawców, aby wyświetlić listę aplikacji i usług w portalu Azure Marketplace przy użyciu aplikacji SaaS oferty. 
-
-Aby lepiej zrozumieć, jak opublikować ofertę SaaS, w tym przewodniku jest podzielona na następujące sekcje:
-* Przegląd oferty
-* Wymagania biznesowe
-* Wymagania techniczne
-* Proces publikowania
-* Aby włączyć prób przy użyciu usługi Azure Active Directory
-* Poświadczania integracją usługi Azure AD dla witryny Marketplace
+Aplikacje SaaS mogą być publikowane w witrynie marketplace przy użyciu trzech wywołań różnych akcji: "Skontaktuj się ze mną," "Wypróbuj teraz" i "Pobierz teraz." W tym przewodniku wyjaśniono te trzy opcje, łącznie z wymaganiami dla każdego. 
 
 ## <a name="offer-overview"></a>Przegląd oferty  
 
-W obu sklepy Azure dostępnych aplikacji SaaS w poniższej tabeli opisano bieżący dostępne opcje:
+Aplikacje SaaS są dostępne w obu sklepów platformy Azure w poniższej tabeli opisano bieżący dostępne opcje:
 
-| Opcja sklepu | Wyświetlanie listy | Wersja próbna/Transact |  
+| StoreFront — opcja | Wyświetlanie listy | Przeprowadzaj transakcje/wersji próbnej |  
 | --- | --- | --- |  
-| AppSource | Tak (skontaktować się ze mną) | Tak (Power BI/Dynamics) |
-| Rynek platformy Azure | Nie | Tak (aplikacji SaaS) |   
+| AppSource | Tak (kontakt ze mną) | Tak (w usłudze Power BI na Dynamics) |
+| Rynek platformy Azure | Nie | Tak (aplikacje SaaS) |   
 
-**Lista:** opcji publikowania listy składa się z kontaktu mnie typu oferty i jest używany, gdy udział wersji próbnej lub poziomu transakcji nie jest możliwe. Zaletą tej metody jest możliwość wydawców z rozwiązanie na rynek natychmiast rozpocząć odbieranie potencjalnych klientów, które mogą być uwzględniane w transakcji, aby zwiększyć firmy.  
-**Wersja próbna/Transact:** klient ma bezpośrednio kupić, czy żądanie korzystania z wersji próbnej dla rozwiązania. Zapewnianie obsługi wersji próbnej powoduje podwyższenie poziomu zaangażowania zaoferowane dla klientów i umożliwia klientom zapoznać się przed zakupem rozwiązania. Środowisko wersji próbnej będzie mieć lepszą szanse podwyższania poziomu w sklepy i należy oczekiwać większej i bardziej rozbudowane potencjalnych klientów z promujących zaangażowanie klienta. Wersje próbne musi zawierać bezpłatna pomoc techniczna co najmniej na czas trwania okresu próbnego.  
+**Lista:** opcji publikowania listy składa się z kontakt ze mną typ oferty i jest używany podczas uczestnictwa poziomu wersji próbnej lub transakcji nie jest możliwe. Zaletą tego podejścia jest umożliwienie wydawców za pomocą rozwiązania na rynek od razu zacząć odbierać potencjalnych klientów, które mogą być uwzględniane w transakcji, aby zwiększyć swoją firmę.  
+**Wersja próbna/transakcja:** klient ma możliwość bezpośrednio kupowania i Zamów wersję próbną rozwiązania. Wersja próbna środowiska pracy zwiększa poziom zaangażowania oferowane klientom i umożliwia klientom do zbadania rozwiązania przed zakupem. W środowisku wersji próbnej będziesz mieć lepszą szanse podwyższania poziomu w sklepów i możesz spodziewać się więcej oraz dokładniejsze potencjalni klienci zaangażowaniu klientów. Wersje próbne musi zawierać bezpłatną pomoc techniczną dotyczącą co najmniej na czas trwania okresu próbnego.  
 
-| Oferta aplikacji SaaS | Wymagania biznesowe | Wymagania techniczne |  
+| Oferty aplikacji SaaS | Wymagania biznesowe | Wymagania techniczne |  
 | --- | --- | --- |  
-| **Skontaktuj się z nami** | Yes | Nie |  
-| **Usługa Power BI / Dynamics** | Yes | Tak (integracji z usługą Azure AD) |  
-| **Aplikacji SaaS**| Yes | Tak (integracji z usługą Azure AD) |     
+| **Kontakt z nami** | Yes | Nie |  
+| **Usługi Power BI / Dynamics** | Yes | Tak (Integracja usługi Azure AD) |  
+| **Aplikacje SaaS**| Yes | Tak (Integracja usługi Azure AD) |     
 
-Aby uzyskać więcej informacji na temat sklepy Marketplace oraz opis poszczególnych opcji publikowania, zobacz [Marketplace wydawca przewodnika](https://aka.ms/sellerguide) i [opcje publikowania](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
+## <a name="saas-list"></a>Lista SaaS
 
-## <a name="business-requirements"></a>Wymagania biznesowe
-W modelu SaaS oferują wymagania biznesowe można wykonać równolegle z wymaganiami technicznymi. Większość wymagań biznesowych i informacje są zbierane podczas tworzenia oferty SaaS w portalu dla partnerów chmury. Wymagania biznesowe są następujące: 
-* Wyrażenie zgody na uczestnictwo zasad
-* Integracja z programem Microsoft 
-* Zidentyfikuj odbiorców oferty
-* Definiowanie i określić zarządzania potencjalnych klientów do użycia
-* Trwa konfigurowanie zasady zachowania poufności informacji i warunki użytkowania
-* Definiowanie kontaktów pomocy technicznej  
+Wywołanie akcji, aby uzyskać listę SaaS z nie udostępniania wersji próbnych i żadne funkcje rozliczeń jest "Skontaktuj się z pomocą Me." 
 
-Aby uzyskać więcej informacji, możesz można znaleźć w temacie [wymagania wstępne dotyczące publikowania witryny marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
+Nie ma potrzeby konfigurowania usługi Azure Active Directory, aby wyświetlić listę aplikacji SaaS. 
 
-## <a name="technical-requirements"></a>Wymagania techniczne
+|Wymagania  |Szczegóły  |
+|---------|---------|
+|Twoja aplikacja jest oferta SaaS  |   Rozwiązanie to usługa SaaS oferty i oferują wielodostępne produktów SaaS.      |
 
-Wymagania techniczne dla aplikacji SaaS są proste. Wydawcy są wymagane tylko powinny zostać włączone w usłudze Azure Active Directory (Azure AD) do opublikowania. Integracja usługi Azure AD z aplikacjami jest dobrze udokumentowane i firma Microsoft udostępnia wiele zestawów SDK i zasobów, w tym celu.  
 
-Aby rozpocząć, firma Microsoft zaleca mających subskrypcję przeznaczonego do publikowania portalu Azure Marketplace, co umożliwia izolowanie pracy z innych inicjatyw. Gdy jest to realizowane możesz przystąpić do wdrażania aplikacji SaaS w ramach tej subskrypcji do rozpoczęcia pracy programowania.  
+## <a name="saas-trial"></a>Wersja próbna SaaS
 
-Najlepsze dokumentacji usługi Azure Active Directory, przykłady i wskazówki znajdują się w następujących lokalizacjach: 
+Podaj rozwiązania lub aplikacji za pomocą bezpłatnych do try, oprogramowanie jako usługa (SaaS) — na podstawie wersji próbnej. Bezpłatna wersja próbna oferty mogą być przedstawiane jako konto wersji próbnej ograniczonej lub ograniczony czas. 
+
+
+|Wymagania  |Szczegóły  |
+|---------|---------|
+|Twoja aplikacja jest oferta SaaS  |   Rozwiązanie to usługa SaaS oferty i oferują wielodostępne produktów SaaS.      |
+|Twoja aplikacja jest włączone w usłudze AAD     |   Klient będzie skierowana do domeny, a będzie transact z klientem bezpośrednio       |
+
+
+## <a name="saas-trial-technical-requirements"></a>Wymagania techniczne wersja próbna SaaS
+
+Wymagania techniczne dla aplikacji SaaS są proste. Wydawcy wystarczy tylko można zintegrować z usługą Azure Active Directory (Azure AD), które zostaną opublikowane. Integracja usługi Azure AD za pomocą aplikacji jest dobrze udokumentowany, a firma Microsoft udostępnia wiele zestawów SDK i zasobów, w tym celu.  
+
+Aby rozpocząć, zaleca się mieć subskrypcję w wersji dedykowanej dla usługi publikowania w portalu Azure Marketplace, umożliwiając izolowania pracy z innymi inicjatywami. Po tej operacji możesz przystąpić do wdrażania aplikacji SaaS w ramach tej subskrypcji do rozpoczęcia pracy programowania.  
+
+Dokumentacja usługi Azure Active Directory najlepsze, przykłady i wskazówki dotyczące znajdują się w następujących witrynach: 
 
 * [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
@@ -78,79 +79,76 @@ Najlepsze dokumentacji usługi Azure Active Directory, przykłady i wskazówki z
 
 * [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
-* [Mapa usługi Azure - bezpieczeństwo i tożsamość](https://azure.microsoft.com/roadmap/?category=security-identity)
+* [Plan usługi Azure — zabezpieczenia i tożsamość](https://azure.microsoft.com/roadmap/?category=security-identity)
 
 Samouczki sprawdź następujące kwestie:
 
-* [Uwierzytelniania usługi Azure Active Directory za pomocą Vittorio Bertocci](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
+* [Uwierzytelnianie usługi Azure Active Directory za pomocą Vittorio Bertocci](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
 
-* [Usługa Azure Active Directory tożsamości techniczna widoków — część 1 z 2](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
+* [Usługa Azure Active Directory Identity techniczne widoków — część 1 z 2](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
 
-* [Usługa Azure Active Directory tożsamości techniczna widoków — część 2 z 2](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
+* [Usługa Azure Active Directory Identity techniczne widoków — część 2 z 2](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
 
-* [Tworzenie aplikacji z usługą Microsoft Azure Active Directory](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
+* [Tworzenie aplikacji na platformie Microsoft Azure Active Directory](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
 
-* [Microsoft Azure wideo koncentruje się na usłudze Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
+* [Microsoft Azure wideo poświęcone usłudze Active Directory](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
-Bezpłatne szkolenia usługi Azure Active Directory znajduje się w temacie  
-* [Microsoft Azure dla serii zawartości specjalistom IT: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+Bezpłatne szkolenia Azure Active Directory znajduje się w temacie  
+* [Platforma Microsoft Azure dla seria specjalistów IT: Usługa Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
-Ponadto usługi Azure Active Directory zapewnia lokacji, aby wyszukać aktualizacje usług   
-* [Aktualizacje usługi Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
+Ponadto usługi Azure Active Directory zapewnia lokacji pod kątem aktualizacji usługi   
+* [Aktualizacje usługi Azure AD](https://azure.microsoft.com/updates/?product=active-directory)|
 
-Aby uzyskać pomoc można użyć następujących zasobów:
-* [Fora MSDN](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+## <a name="using-azure-active-directory-to-enable-trials"></a>Wersje próbne przy użyciu usługi Azure Active Directory  
 
-## <a name="publishing-process"></a>Proces publikowania
+Microsoft uwierzytelnia wszystkich użytkowników witryny Marketplace z usługą Azure AD, dlatego uwierzytelniony użytkownik kliknie za pośrednictwem oferty próbnej w witrynie Marketplace i jest przekierowywany do środowiska próbnego, możesz zaprowizować użytkownika bezpośrednio do korzystania z wersji próbnej bez konieczności Dodatkowe logowania krok. Token, który aplikacja otrzymuje z usługi Azure AD podczas uwierzytelniania zawiera informacje o użytkowniku cenne, która umożliwia tworzenie konta użytkownika w swojej aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie zobacz [tokenów przykładowe](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
-SaaS procesu publikowania zawiera kroki techniczne i biznesowe.  Większość pracy, który odbywa się tworzenie i Integrowanie usługi Azure Active Directory może odbywać się równolegle z pracy, wymaganych do spełnienia wymagań biznesowych oferty. Większość wymagań biznesowych są częścią konfiguracji ofertę aplikacji SaaS portalu dla partnerów chmury.  
-Na poniższym diagramie przedstawiono, że główne kroki publikowania dla wersji próbnej/Transact zaoferować:  
+Aby włączyć uwierzytelnianie 1 kliknięcia do aplikacji lub wersji próbnej za pomocą usługi Azure AD zapewnia następujące funkcje:  
+* Usprawnia obsługę klientów z witryny Marketplace w wersji próbnej.  
+* Przechowuje działania środowiska w ramach produktu nawet w po użytkownik jest przekierowywany z portalu Marketplace na do domeny lub środowisko w wersji próbnej.  
+* Zmniejsza prawdopodobieństwo porzucania na przekierowanie, ponieważ nie jest dodatkowy krok logowania.  
+* Zmniejsza bariery wdrożenia dla dużych populacji użytkowników usługi Azure AD.  
 
-![Kroki publikowania SaaS](./media/marketplace-saas-applications-technical-publishing-guide/saaspublishingsteps.png)  
+## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Certyfikowanie integracji usługi Azure AD w portalu Marketplace  
 
-W poniższej tabeli opisano poszczególne kroki publikowania główne:  
+Można certyfikować integracji usługi Azure AD w na kilka różnych sposobów, w zależności od tego, czy aplikacja jest pojedynczej dzierżawy lub wielodostępne i dopiero zaczynasz do usługi Azure AD federacyjnego pojedynczego logowania jednokrotnego (SSO), czy już jego obsługi.  
 
-| Krok publikowania | Opis |   
-| --- | --- |  
-| **Tworzenie aplikacji SaaS** | Zaloguj się do portalu dla partnerów chmury, wybierz **nowy**, a następnie wybierz **aplikacji SaaS** oferty. |  
-| **Utwórz integrację z usługą Azure AD** | Wymagań technicznych opisanych w poprzedniej sekcji do integracji z SaaS oferty z usługą Azure AD. |  
-| **Ustawienia oferty**| Wprowadź wszystkie SaaS oferty początkowej informacje. Identyfikator oferty i oferują nazwę chcesz użyć. |     
-| **Ustaw informacje techniczne** | Wprowadź informacje techniczne dotyczące oferty. Dla aplikacji SaaS identyfikator URI tego rozwiązania i typ oferty zakupu przycisku (wolne, dziennika lub skontaktuj się z Me) są wymagane. |  
-| **Drive(Optional) testu** | To opcjonalny typ wersji próbnej, potrzebne przede wszystkim do innych typów z witryny Marketplace oferty. Umożliwia ona zostały wdrożone w ramach subskrypcji wydawcy lub odbiorcy końcowego wersji próbnej. |  
-| **Ustaw materiałów sklepu oferty**| W tej sekcji wydawcy będzie link i przekazać logo, materiałów, dokumenty prawne marketingowych i skonfigurować system zarządzania potencjalnych klientów. |
-| **Ustaw kontakty oferty** | Wprowadź Engineering kontakty i informacje kontaktowe pomocy technicznej dla oferty SaaS. |  
-| **Sprawdź integracji z usługą AD SaaS aplikacji Azure** | Przed przesłaniem do publikowania aplikacji SaaS, należy sprawdzić, czy aplikacja jest zintegrowana z usługą Azure AD |  
-| **Publikuj ofertę**| Po ukończeniu ofertę i zasobów technicznych, możesz przesłać oferty. Spowoduje to uruchomienie procesu publikowania, w którym szablon rozwiązania jest testowana, zweryfikowane, certyfikowane i zatwierdzone do opublikowania. |
+**W przypadku aplikacji wielodostępnych:**  
 
-## <a name="using-azure-active-directory-to-enable-trials"></a>Aby włączyć prób przy użyciu usługi Azure Active Directory  
+Jeśli możesz już obsługuje usługi Azure AD, wykonaj następujące czynności:
+1.  Zarejestruj swoją aplikację w witrynie Azure portal
+2.  Włącz funkcję obsługi wielu dzierżawców w usłudze Azure AD, aby korzystać z jednego kliknięcia wersji próbnej. Bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
-Microsoft uwierzytelnia wszyscy użytkownicy portalu Marketplace z usługą Azure AD, dlatego uwierzytelniony użytkownik kliknie za pośrednictwem listy Twojej wersji próbnej w witrynie Marketplace i jest przekierowywany do środowiska wersji próbnej, można udostępnić użytkownika bezpośrednio do korzystania z wersji próbnej, bez konieczności Dodatkowe logowania kroku. Token, który odbiera aplikacji z usługi Azure AD podczas uwierzytelniania zawiera użytkownika cenne informacje, które umożliwia tworzenie konta użytkownika w aplikacji, dzięki któremu można zautomatyzować proces inicjowania obsługi administracyjnej oraz zwiększyć prawdopodobieństwo konwersji. Aby uzyskać więcej informacji o tokenie, zobacz [tokeny próbki](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Jeśli jesteś nowym użytkownikiem usługi Azure AD Federacyjna usługa rejestracji Jednokrotnej, wykonaj następujące czynności: 
+1.  Zarejestruj swoją aplikację w witrynie Azure portal
+2.  Tworzenie logowania jednokrotnego przy użyciu usługi Azure AD przy użyciu [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
+3.  Włącz obsługę wielu dzierżawców funkcji w usłudze AAD, aby uzyskać wersję próbną interfejsu jednego kliknięcia bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
 
-Używanie programu Azure AD do włączenia uwierzytelniania kliknij 1 do aplikacji lub wersji próbnej wykonuje następujące czynności:  
-* Usprawnia wrażenia z witryny Marketplace do wersji próbnej.  
-* Przechowuje działania obsługi produktu nawet po zostanie przekierowany użytkownik w witrynie Marketplace do domeny lub środowisko wersji próbnej.  
-* Zmniejsza to prawdopodobieństwo porzucania na przekierowanie, ponieważ nie ma dodatkowych czynności logowania.  
-* Zmniejsza bariery wdrożenia dla dużej liczby użytkowników usługi Azure AD.  
+**Dla jednej dzierżawy aplikacji użyj dowolnej z następujących opcji:**  
+* Dodawanie użytkowników do katalogu jako użytkowników-gości za pomocą [B2B w usłudze Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Ręcznie umożliwić prób dla klientów za pomocą "Skontaktuj się z pomocą Me"
+* Twórz na klienta "W wersji testowej"
+* Tworzenie aplikacji wielodostępnych przykładowe pokaz przy użyciu logowania jednokrotnego
 
-## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Poświadczania integracją usługi Azure AD dla witryny Marketplace  
+## <a name="saas-subscriptions"></a>Subskrypcje SaaS
 
-Można certyfikować integracją usługi Azure AD w na kilka różnych sposobów, w zależności od tego, czy aplikacja jest dzierżawy jednym lub wieloma dzierżawcami i dopiero zaczynasz Single federacyjnych usługi Azure AD logowania jednokrotnego (SSO), czy już jego obsługi.  
+Aby włączyć klienta kupować rozwiązania SaaS, technicznego subskrypcji, należy użyć typu oferty aplikacji SaaS. Dla aplikacji SaaS, muszą być spełnione następujące wymagania:
+- Ceny i opłata za usługę stałą, miesięczne stawki.
+- Udostępnia metody, aby uaktualnić lub anulować usługę w dowolnym momencie.
+Microsoft obsługuje transakcji handlowych. Firma Microsoft rozlicza klientów w Twoim imieniu. Aby użyć aplikacji SaaS subskrypcji, należy włączyć możesz interfejs API usługi zarządzania własnej subskrypcji. Interfejs API usługi zarządzania subskrypcji musi komunikować się bezpośrednio za pomocą interfejsów API usługi Azure Resource Manager. Interfejs API usługi zarządzania subskrypcji musi obsługiwać usługi aprowizacji, uaktualnianie i anulowanie.
 
-**W przypadku aplikacji wielodostępne:**  
+| Wymaganie | Szczegóły |  
+|:--- |:--- |  
+|Rozliczeń oraz metod pomiarów | Twoja oferta jest rozliczana miesięczne stałej stawki. Na podstawie użycia cenach i możliwościach "wartość true w górę" na podstawie użycia nie są obsługiwane w tej chwili. |  
+|Anulowanie subskrypcji | Twoja oferta jest cancelable przez klienta w dowolnym momencie. |  
+|Strona docelowa transakcji | Możesz hostować Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzać ich konta usługi SaaS. |   
+| Subskrypcja interfejsu API | Należy udostępnić to usługa, która mogą wchodzić w interakcje z subskrypcją SaaS, tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Okresowo będą wydawane niekrytyczne zmiany interfejsu API. |  
 
-Jeśli już obsługują usługi Azure AD, wykonaj następujące czynności:
-1.  Zarejestrować aplikację w portalu Azure
-2.  Włącz funkcję obsługi wielu dzierżawców w usłudze Azure AD, aby uzyskać środowisko wersji próbnej jednego kliknięcia. Bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+## <a name="next-steps"></a>Następne kroki
+Jeśli użytkownik jeszcze tego nie zrobiono, 
 
-Jeśli jesteś nowym użytkownikiem usługi Azure AD federacyjnej usługi logowania jednokrotnego, wykonaj następujące czynności: 
-1.  Zarejestrować aplikację w portalu Azure
-2.  Opracowywanie logowania jednokrotnego przy użyciu usługi Azure AD [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) lub [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Włącz obsługę wielu dzierżawców funkcji w usłudze AAD, aby uzyskać środowisko wersji próbnej jednego kliknięcia bardziej szczegółowe informacje można znaleźć [tutaj](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) w portalu marketplace
 
-**Dla pojedynczej dzierżawy aplikacji należy użyć dowolnego z następujących opcji:**  
-* Dodawanie użytkowników do katalogu jako goście przy użyciu [B2B usługi Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-* Ręcznie Zapewnij prób dla klientów przy użyciu "Skontaktuj się z Me"
-* Tworzenie dla klienta "Test dysk"
-* Tworzenie wielodostępnych przykładową aplikację pokaz logowania jednokrotnego
+Jeśli jesteś zarejestrowanym i tworzysz nową ofertę czy działa na podstawie istniejącego
 
+- [Zaloguj się do portalu Cloud Partner](https://cloudpartner.azure.com) do utworzenia lub zakończyć oferty

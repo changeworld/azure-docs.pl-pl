@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c1bf5ba68d8242a0ef0831987ac6fd041c62ace9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eafd7998e5bc21a539b6709794fe3cd70d9e3179
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969371"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą łuk publikowania — Usługa rejestracji Jednokrotnej
 
@@ -239,7 +239,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu łuk publikowania — Kafelek rejestracji Jednokrotnej w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do Twojej łuk publikowania — Usługa rejestracji Jednokrotnej w aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

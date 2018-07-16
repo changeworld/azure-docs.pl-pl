@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z pakietem CX przewidywany jest | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługi Azure Active Directory i pakiet CX przewidzieć.
+title: 'Samouczek: Integracja usługi Azure Active Directory z pakietem CX przewiduje | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i przewiduje się pakiet CX.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,207 +15,207 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: e27bc853db6236165d77f2fb3418bab1170400b2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c126b3bf08174886b3668cd54c76b72d113ba76
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227707"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047114"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Samouczek: Integracji Azure Active Directory z przewidzieć Suite CX
+# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Samouczek: Integracja usługi Azure Active Directory z pakietem przewiduje CX
 
-Z tego samouczka dowiesz sposobu integracji z usługą Azure Active Directory (Azure AD) przewidzieć Suite CX.
+W tym samouczku dowiesz się, jak zintegrować przewiduje CX Suite z usługą Azure Active Directory (Azure AD).
 
-Integrowanie przewidzieć Suite CX z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie zestawu CX przewiduje się z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do zestawu CX przewidzieć.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane przewidzieć CX pakietu (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do zestawu CX przewidzieć.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do przewiduje Suite CX (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z pakietem CX przewidzieć, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z pakietem CX przewiduje się, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Przewidują CX pakiet rejestracji jednokrotnej włączone subskrypcji
+- Przewiduje się Suite CX logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie pakietu CX przewidzieć z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie pakietu CX przewiduje się za pomocą galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-foresee-cx-suite-from-the-gallery"></a>Dodawanie pakietu CX przewidzieć z galerii
-Aby skonfigurować integrację usługi Azure AD przewidzieć Suite CX, należy dodać pakiet CX przewidzieć z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-foresee-cx-suite-from-the-gallery"></a>Dodawanie pakietu CX przewiduje się za pomocą galerii
+Aby skonfigurować integrację pakietu CX przewiduje się do usługi Azure AD, należy dodać pakiet CX przewiduje się z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać pakiet CX przewidzieć z galerii, wykonaj następujące czynności:**
+**Aby dodać pakiet CX przewiduje się z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **przewidzieć Suite CX**, wybierz pozycję **przewidzieć Suite CX** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **przewiduje Suite CX**, wybierz opcję **przewiduje Suite CX** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Przewidują CX pakiet z listy wyników](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_addfromgallery.png)
+    ![Pakiet CX przewiduje się na liście wyników](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z pakietem CX przewidywany jest oparty na koncie użytkownika testu o nazwie "Britta Simona".
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą zestawu CX przewiduje oparte na użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednikiem pakietu przewidzieć CX jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi pakietu przewidzieć CX musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w zestawie CX przewiduje się do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w zestawie CX przewiduje się musi nawiązać.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z pakietem CX przewidzieć, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z pakietem CX przewiduje się, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego przewidzieć Suite CX](#create-a-foresee-cx-suite-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta przewidzieć CX pakiet, który jest połączony z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego przewiduje Suite CX](#create-a-foresee-cx-suite-test-user)**  — aby odpowiednikiem Britta Simon pakietu przewiduje CX połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji przewidzieć Suite CX.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji pakietu CX przewiduje się.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z pakietem CX przewidzieć, wykonaj następujące czynności:**
+**Aby skonfigurować usługi Azure AD logowanie jednokrotne z pakietem CX przewiduje się, wykonaj następujące czynności:**
 
-1. W portalu Azure na **przewidzieć Suite CX** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **przewiduje Suite CX** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
     ![Okno dialogowe rejestracji jednokrotnej](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_samlbase.png)
 
-3. Na **adresy URL i przewidzieć domeny Suite CX** sekcji, jeśli masz **pliku metadanych dostawcy usług**, wykonaj następujące czynności:
+3. Na **przewiduje CX Suite domena i adresy URL** sekcji, jeśli masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
 
-    ![Przewidują CX Suite domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/upload.png)
+    ![Przewiduje się CX Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/upload.png)
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
-    ![Przewidują CX Suite domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/tutorial_foreseen_uploadconfig.png)
+    ![Przewiduje się CX Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/tutorial_foreseen_uploadconfig.png)
 
-    b. Polecenie **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazać**.
+    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
 
-    c. Po pomyślnym zakończeniu przekazywania **pliku metadanych dostawcy usług** **identyfikator** wartości get automatycznie wypełnione **adresy URL i przewidzieć domeny Suite CX** sekcji pole tekstowe, jak pokazano poniżej:
+    c. Po pomyślnym ukończeniu przekazywania **plik metadanych usługodawcy** **identyfikator** wartość get automatycznie wypełnione w **przewiduje CX Suite domena i adresy URL** sekcji pole tekstowe, jak pokazano poniżej:
 
-    ![Przewidują CX Suite domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/urlupload.png)
+    ![Przewiduje się CX Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/urlupload.png)
 
-4. Jeśli nie masz **pliku metadanych dostawcy usług**, wykonaj następujące czynności:
+4. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
 
-    ![Przewidują CX Suite domeny i adres URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
+    ![Przewiduje się CX Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://cxsuite.foresee.com/`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://cxsuite.foresee.com/`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://www.okta.com/saml2/service-provider/<UniqueID>`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.okta.com/saml2/service-provider/<UniqueID>`
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej przewidzieć CX pakiet klienta](mailto:support@foresee.com) aby zyskać tę wartość.
+    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywistego identyfikatora. Skontaktuj się z pomocą [zespołem pomocy technicznej przewiduje CX pakietu klienta](mailto:support@foresee.com) aby zyskać tę wartość.
 
 5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_certificate.png)
+    ![Link pobierania certyfikatu](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_certificate.png)
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/foreseecxsuite-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/foreseecxsuite-tutorial/tutorial_general_400.png)
 
-7. Skonfigurować logowanie jednokrotne w **przewidzieć Suite CX** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej przewidzieć Suite CX](mailto:support@foresee.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+7. Do konfigurowania logowania jednokrotnego na **przewiduje Suite CX** stronie, musisz wysłać pobrany **XML metadanych** do [przewiduje Suite CX zespołem pomocy technicznej](mailto:support@foresee.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/foreseecxsuite-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/foreseecxsuite-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/foreseecxsuite-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/foreseecxsuite-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/foreseecxsuite-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
 
-### <a name="create-a-foresee-cx-suite-test-user"></a>Tworzenie użytkownika testowego przewidzieć Suite CX
+### <a name="create-a-foresee-cx-suite-test-user"></a>Tworzenie użytkownika testowego przewiduje Suite CX
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta pakietu przewidzieć CX. Praca z [zespołem pomocy technicznej przewidzieć Suite CX](mailto:support@foresee.com) do dodawania użytkowników lub domeny, w których są potrzebne, aby być białej platformy przewidzieć Suite CX. Jeśli domeny zostanie dodany przez zespół, użytkownicy będą uzyskać automatycznie przygotowana do platformy przewidzieć Suite CX. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w zestawie CX przewidzieć. Praca z [przewiduje Suite CX zespołem pomocy technicznej](mailto:support@foresee.com) można dodać użytkowników lub domeny, który jest wymagany do listy dozwolonych na platformie przewiduje Suite CX. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę przewiduje Suite CX. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do zestawu CX przewidzieć.
+W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do zestawu CX przewiduje się za pomocą platformy Azure logowania jednokrotnego.
 
 ![Przypisanie roli użytkownika][200]
 
-**Aby przypisać Simona Britta przewidzieć pakietu CX, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon przewiduje Suite CX, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji zaznacz **przewidzieć Suite CX**.
+2. Na liście aplikacji wybierz **przewiduje Suite CX**.
 
-    ![Łącze Suite CX przewidywany jest na liście aplikacji](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_app.png)
+    ![Link Suite CX przewiduje się na liście aplikacji](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka przewidzieć Suite CX w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane przewidzieć CX pakiet aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Suite CX przewiduje się w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do przewiduje CX pakietu aplikacji.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

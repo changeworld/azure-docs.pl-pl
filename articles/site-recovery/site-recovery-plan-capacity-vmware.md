@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 905798acd5836c31953714d7984cfb19f16cecab
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920801"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056345"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Planowanie wydajności i skalowanie na potrzeby replikacji oprogramowania VMware za pomocą usługi Azure Site Recovery
 
@@ -34,9 +34,9 @@ Zbieranie informacji o środowisku replikacji, uruchamiając [planista wdrażani
 
 **CPU** | **Pamięć** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny**
 --- | --- | --- | --- | ---
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie @ 2,5 GHz [GHz]) | 16 GB | 300 GB | 500 GB lub mniej | Replikowanie maszyn mniej niż 100.
-12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni @ 2,5 GHz) | 18 GB | 600 GB | Od 500 GB do 1 TB | Replikacja między maszynami 100 150.
-16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz) | 32 GB | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 – 200.
+8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz [GHz]) | 16 GB | 300 GB | 500 GB lub mniej | Replikowanie maszyn mniej niż 100.
+12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) | 18 GB | 600 GB | Od 500 GB do 1 TB | Replikacja między maszynami 100 150.
+16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 – 200.
 Wdrażanie na inny serwer process server | | | > 2 TB | Wdrażanie dodatkowych serwerów przetwarzania, Jeśli replikujesz ponad 200 maszyn lub w przypadku zmiany danych dotyczących dziennego współczynnika przekracza 2 TB.
 
 Gdzie:
@@ -60,9 +60,9 @@ W poniższej tabeli opisano scenariusz, w którym:
 
 **Serwer konfiguracji** | **Dodatkowym serwerze przetwarzania** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny**
 --- | --- | --- | --- | ---
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie @ 2,5 GHz), 16 GB pamięci RAM | 4 Vcpu (2 sockets * 2 rdzenie @ 2,5 GHz), 8 GB pamięci RAM | 300 GB | 250 GB lub mniej | Replikowanie maszyn 85 lub mniej.
-8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie @ 2,5 GHz), 16 GB pamięci RAM | 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie @ 2,5 GHz), 12 GB pamięci RAM | 600 GB | 250 GB do 1 TB | Replikacja między maszynami 85 150.
-12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni @ 2,5 GHz), 18 GB pamięci RAM | 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni @ 2,5 GHz) 24 GB pamięci | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 225.
+8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 16 GB pamięci RAM | 4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci RAM | 300 GB | 250 GB lub mniej | Replikowanie maszyn 85 lub mniej.
+8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 16 GB pamięci RAM | 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM | 600 GB | 250 GB do 1 TB | Replikacja między maszynami 85 150.
+12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz), 18 GB pamięci RAM | 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci | 1 TB | 1 TB do 2 TB | Replikacja między maszynami 150 225.
 
 Sposób, w którym możesz skalować serwery w zależy od preferencjami dla modelu, skalowanie w pionie lub poziomie.  Skalowanie w górę, wdrażając kilka zaawansowanych konfiguracji i serwerów przetwarzania lub skalowania w poziomie poprzez wdrożenie kolejnych serwerów przy użyciu mniejszej ilości zasobów. Na przykład jeśli musisz chronić 220 maszyny, wykonaj jedną z następujących czynności:
 

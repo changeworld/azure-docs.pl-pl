@@ -1,6 +1,6 @@
 ---
-title: Wyszukiwanie w całym zasobów przy użyciu usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji.
+title: Wyszukiwanie w zasobach za pomocą usługi Azure Log Analytics | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w Twojej subskrypcji.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,63 +15,63 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a8d5465a2a9aaf9cf686a8e135a1f537cc60c6b5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e7ca3bcb3c3322c0eba12d7f9eb2ee2bc7b7600c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129255"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049851"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wyszukiwanie zasobów między dziennika w analizy dzienników  
+# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wykonaj wyszukiwanie w dzienniku między zasobami w usłudze Log Analytics  
 
-Wcześniej z Azure Log Analytics tylko przeanalizowanie danych z poziomu bieżący obszar roboczy, a ono ograniczone możliwości zapytań przez wiele obszarów roboczych, zdefiniowane w ramach subskrypcji.  Ponadto można przeszukiwać tylko elementy dane telemetryczne zebrane z aplikacji sieci web z usługą Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio.  To również go wyzwanie natywnie analizowanie operacyjne i dane aplikacji jednocześnie.   
+Wcześniej przy użyciu usługi Azure Log Analytics można było tylko analizować dane z bieżącego obszaru roboczego i jego ograniczoną możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji.  Ponadto można przeszukiwać tylko elementy danych telemetrycznych zebranych z aplikacji sieci web za pomocą usługi Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio.  To również on żądania do natywnie analizy operacyjnej i dane aplikacji ze sobą.   
 
-Teraz można badać nie tylko przez wiele obszarów roboczych usługi Analiza dzienników, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, w innej grupie zasobów lub w innej subskrypcji. Udostępnia systemowe widoku danych.  Można wykonać tylko te typy zapytań w [portal zaawansowane](log-analytics-log-search-portals.md#advanced-analytics-portal), a nie w portalu Azure. Liczba zasobów (analizy dzienników obszarów roboczych i aplikacji usługi Application Insights), które można uwzględnić w jednym zapytaniu jest ograniczona do 100. 
+Teraz można tworzyć zapytania nie tylko między wiele obszarów roboczych usługi Log Analytics, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Zapewnia widok całego systemu danych.  Można wykonać tylko te typy zapytań w [portalem zaawansowanym](log-analytics-log-search-portals.md#advanced-analytics-portal), a nie w witrynie Azure portal. Liczba zasobów (obszary robocze usługi Log Analytics i aplikacji usługi Application Insights), które można uwzględnić w ramach pojedynczego zapytania jest ograniczona do 100. 
 
-## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytania między obszarami roboczymi analizy dzienników i z usługi Application Insights
-Aby odwołać się do innego obszaru roboczego w kwerendzie użyć [ *obszaru roboczego* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identyfikator i dla aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identyfikator.  
+## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytań w obszarach roboczych usługi Log Analytics i z usługi Application Insights
+Aby odwoływać się do innego obszaru roboczego w zapytaniu, należy użyć [ *obszaru roboczego* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identyfikatora w przypadku aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identyfikatora.  
 
 ### <a name="identifying-workspace-resources"></a>Identyfikowanie zasobów obszaru roboczego
-W poniższych przykładach pokazano zapytań przez obszar roboczy analizy dzienników, aby zwraca podsumowanie liczby aktualizacji z tabeli aktualizacji w obszarze roboczym o nazwie *contosoretail it*. 
+W poniższych przykładach pokazano zapytania w obszarach roboczych usługi Log Analytics, aby zwrócić podsumowania liczby dzienników z tabeli aktualizacji w obszarze roboczym o nazwie *contosoretail it*. 
 
-Identyfikowanie obszaru roboczego można zakończonej co kilka sposobów:
+Identyfikowanie obszar roboczy można wykonać jeden z kilku sposobów:
 
-* Nazwa zasobu — jest zrozumiałą nazwę obszaru roboczego, czasami określane jako *nazwa składnika*. 
+* Nazwa zasobu — jest zrozumiałą nazwę obszaru roboczego, czasami nazywane *nazwa składnika*. 
 
     `workspace("contosoretail").Update | count`
  
     >[!NOTE]
-    >Identyfikowanie obszaru roboczego według nazwy zakłada unikatowości we wszystkich dostępnych subskrypcji. Jeśli masz wiele aplikacji o określonej nazwie, zapytanie kończy się niepowodzeniem z powodu niejednoznaczności. W takim przypadku należy użyć jednego z innych identyfikatorów.
+    >Identyfikowanie obszar roboczy o nazwie zakłada unikatowości we wszystkich subskrypcjach dostępne. Jeśli masz wiele aplikacji o określonej nazwie, zapytanie kończy się niepowodzeniem z powodu niejednoznaczności. W takim przypadku należy użyć jednego z innych identyfikatorów.
 
-* Nazwa kwalifikowana — jest "Pełna nazwa" obszaru roboczego, zawierający nazwę subskrypcji, grupy zasobów i nazwy składnika w następującym formacie: *NazwaSkładnika-Nazwa subskrypcji/resourceGroup*. 
+* Kwalifikowana nazwa - jest "Pełna nazwa" w obszarze roboczym składa się z nazwy subskrypcji, grupy zasobów i nazwy składnika w następującym formacie: *componentName-subscriptionName/resourceGroup*. 
 
-    `workspace('contoso/contosoretail/development').requests | count `
+    `workspace('contoso/contosoretail/contosoretail-it').Update | count `
 
     >[!NOTE]
     >Ponieważ nazwy subskrypcji platformy Azure nie są unikatowe, ten identyfikator może być niejednoznaczna. 
     >
 
-* Identyfikator obszaru roboczego - identyfikator obszaru roboczego jest unikatowy, modyfikować, identyfikator przypisany do każdego obszaru roboczego reprezentowane jako unikatowy identyfikator globalny (GUID).
+* Identyfikator obszaru roboczego — identyfikator obszaru roboczego jest unikatowy, niemodyfikowalny identyfikator przypisany do każdego obszaru roboczego, reprezentowane jako unikatowy identyfikator globalny (GUID).
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Azure Resource ID — definicja Azure unikatową tożsamość obszaru roboczego. Identyfikator zasobu jest używany, gdy nazwa zasobu jest niejednoznaczna.  Obszary robocze, jest format: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. OperationalInsights/workspaces/NazwaSkładnika*.  
+* Usługa Azure Resource ID — zdefiniowane Azure unikatowa tożsamość obszaru roboczego. Za pomocą Identyfikatora zasobu Nazwa zasobu jest niejednoznaczna.  W przypadku obszarów roboczych, format to: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Obszary robocze/OperationalInsights/componentName*.  
 
     Na przykład:
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Event | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>Identyfikowanie aplikacji
-Poniższe przykłady zwróciło podsumowanie liczby żądań wysyłanych z aplikacji o nazwie *fabrikamapp* w usłudze Application Insights. 
+Poniższe przykłady zwrócić podsumowane liczbę żądania skierowanego do aplikacji o nazwie *fabrikamapp* w usłudze Application Insights. 
 
-Identyfikowanie aplikacji w usłudze Application Insights można wdrożyć, stosując *app(Identifier)* wyrażenia.  *Identyfikator* argument określa aplikacji przy użyciu jednej z następujących czynności:
+Identyfikowanie aplikacji w usłudze Application Insights można osiągnąć za pomocą *app(Identifier)* wyrażenia.  *Identyfikator* argument określa aplikacji przy użyciu jednej z następujących czynności:
 
-* Nazwa zasobu — jest człowieka dla użytkownika nazwę aplikacji, czasami określane jako *nazwa składnika*.  
+* Nazwa zasobu — jest ludzi czytelna Nazwa aplikacji, czasami nazywane *nazwa składnika*.  
 
     `app("fabrikamapp")`
 
-* Nazwa kwalifikowana — jest "Pełna nazwa" aplikacja składa się z nazwy subskrypcji, grupy zasobów i nazwy składnika w następującym formacie: *NazwaSkładnika-Nazwa subskrypcji/resourceGroup*. 
+* Kwalifikowana nazwa - nazywa się "pełne" aplikacja składa się z nazwy subskrypcji, grupy zasobów i nazwy składnika w następującym formacie: *componentName-subscriptionName/resourceGroup*. 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
 
@@ -83,13 +83,24 @@ Identyfikowanie aplikacji w usłudze Application Insights można wdrożyć, stos
 
     `app("b459b4f6-912x-46d5-9cb1-b43069212ab4").requests | count`
 
-* Azure identyfikator zasobu - zdefiniowane Azure unikatową tożsamość aplikacji. Identyfikator zasobu jest używany, gdy nazwa zasobu jest niejednoznaczna. Format: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. NazwaSkładnika OperationalInsights/składniki*.  
+* Usługa Azure identyfikator zasobu - zdefiniowane Azure unikatowa tożsamość aplikacji. Za pomocą Identyfikatora zasobu Nazwa zasobu jest niejednoznaczna. Format to: */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft. Składniki/OperationalInsights/componentName*.  
 
     Na przykład:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
 
+### <a name="performing-a-query-across-multiple-resources"></a>Wykonywanie zapytania w wielu zasobach
+Można tworzyć zapytania wielu zasobów za pomocą dowolnego wystąpienia zasobów, mogą to być obszarów roboczych i aplikacji w połączeniu.
+    
+Przykład zapytania w dwóch obszarach roboczych:    
+    ```
+    union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
+    | where TimeGenerated >= ago(1h)
+    | where UpdateState == "Needed"
+    | summarize dcount(Computer) by Classification
+    ```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przegląd [analizy dzienników dziennika odwołanie wyszukiwania](https://docs.loganalytics.io/docs/Language-Reference) Aby wyświetlić wszystkie dostępne w analizy dzienników Opcje składni zapytania.    
+Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](https://docs.loganalytics.io/docs/Language-Reference) Aby wyświetlić wszystkie opcje składni zapytań dostępnych w usłudze Log Analytics.    

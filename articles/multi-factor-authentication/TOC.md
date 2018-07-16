@@ -56,7 +56,7 @@
 ## [Raportowanie](../active-directory/authentication/howto-mfa-reporting.md)
 ### [Zbieranie danych](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
-## [Podręcznik użytkownika uwierzytelniania wieloskładnikowego](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user.md)
+## [Podręcznik użytkownika uwierzytelniania wieloskładnikowego](../active-directory/user-help/multi-factor-authentication-end-user.md)
 
 ## Rozwiązywanie problemów
 ### [Często zadawane pytania](../active-directory/authentication/multi-factor-authentication-faq.md)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 4e6884bdcbc0d9921186ec9ff11a701b707faeef
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: cae9e5f2a50bc97be7c5cb42e490d8ba44666c91
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921301"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056882"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Wyniki testu dla replikacji funkcji Hyper-V do lokacji dodatkowej
 
@@ -108,7 +108,7 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 
 | Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |4 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST11<br />ESTLAB HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 ma 256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Lokacja dodatkowa
@@ -120,9 +120,9 @@ Wyniki wyraźnego wyświetlania informacji dotyczących odzyskiwania lokacji, w 
 
 | Serwer | Pamięć RAM | Modelowanie | Procesor | Liczba procesorów | NIC | Oprogramowanie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Firmy Dell™ PowerEdge R720 |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 @ 2.30GHz |2 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
-| ESTLAB HOST17 |128 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
-| ESTLAB-HOST24 |256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 @ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| Serwery funkcji Hyper-V w klastrze: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Firmy Dell™ PowerEdge R720 |Intel(R) Xeon(R) E5 procesora CPU — 2630 0 \@ 2.30 GHz |2 |Czy mogę GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB HOST17 |128 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
+| ESTLAB-HOST24 |256 |Firmy Dell™ PowerEdge R820 |Intel(R) Xeon(R) E5 procesora CPU — 4620 0 \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) i roli Hyper-V |
 | Serwer programu VMM |2 | | |2 |1 Gb/s |System Windows Server Database 2012 R2 (x 64) i program VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Obciążenie serwera

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c2a7278f4ee6861a1e47610c06fdc6ffcec52247
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 99d69c7e49179a7849e274c830d539833da33786
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931086"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049456"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -34,7 +34,7 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
-| wilgotność       | %      | 0       | 100     | 0              |
+| humidity       | %      | 0       | 100     | 0              |
 | Temp           | C     | -40     | 120     | 0              |
 | pressure       | hPa pakietu    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
@@ -128,7 +128,7 @@ Aby przygotować urządzenie Mxchip:
     - Twoje hasło dostępu do sieci Wi-Fi 
     - Kod PIN na urządzeniu LCD 
     - Parametry połączenia urządzenia. 
-      Można znaleźć parametrów połączenia @ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (w prawym górnym rogu) 
+      Parametry połączenia można znaleźć \@ `https://apps.iotcentral.com`  ->  `Device Explorer`  ->  `Device`  ->  `Select or Create a new Real Device`  ->  `Connect this device` (w prawym górnym rogu) 
     - Wybierz wszystkie dostępne dane telemetryczne pomiary! 
 
 1. Po wybraniu **Konfigurowanie urządzenia**, zostanie wyświetlona następująca strona:

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z usługi Zendesk | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usługi Zendesk.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą systemu Zendesk | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i systemu Zendesk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c34deca7b8248ff8c12433a0d0967fcc3e8e2b4c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e5ef74329e2adb6f3b8b60f547231a245a03b1fe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221038"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050599"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Samouczek: Integracji Azure Active Directory z usługi Zendesk
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą systemu Zendesk
 
-Z tego samouczka dowiesz się Integrowanie usługi Zendesk w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować systemu Zendesk w usłudze Azure Active Directory (Azure AD).
 
-Integrowanie usługi Zendesk z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie systemu Zendesk z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do usługi Zendesk.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Zendesk (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do systemu Zendesk.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do systemu Zendesk (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługi Zendesk, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą systemu Zendesk, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Zendesk logowanie jednokrotne włączone subskrypcji
@@ -46,115 +46,115 @@ Aby skonfigurować integrację usługi Azure AD z usługi Zendesk, potrzebne są
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Zendesk z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie systemu Zendesk z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-zendesk-from-the-gallery"></a>Dodawanie Zendesk z galerii
-Aby skonfigurować integrację usługi Zendesk w usłudze Azure Active Directory, należy dodać Zendesk z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-zendesk-from-the-gallery"></a>Dodawanie systemu Zendesk z galerii
+Aby skonfigurować integrację programu Zendesk w usłudze Azure AD, należy dodać systemu Zendesk z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Zendesk z galerii, wykonaj następujące czynności:**
+**Aby dodać systemu Zendesk z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Zendesk**, wybierz pozycję **Zendesk** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **systemu Zendesk**, wybierz opcję **Zendesk** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Zendesk na liście wyników](./media/zendesk-tutorial/tutorial_zendesk_addfromgallery.png)
+    ![Systemu Zendesk, na liście wyników](./media/zendesk-tutorial/tutorial_zendesk_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z usługi Zendesk w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą systemu Zendesk w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Zendesk jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Zendesk musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w systemie Zendesk dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w usłudze Zendesk musi nawiązać.
 
-W Zendesk, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W systemie Zendesk, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z usługi Zendesk, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą systemu Zendesk, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Zendesk](#create-a-zendesk-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Zendesk połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego systemu Zendesk](#create-a-zendesk-test-user)**  — aby odpowiednikiem Britta Simon w systemie Zendesk, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Zendesk.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji systemu Zendesk.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z usługi Zendesk, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą systemu Zendesk, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Zendesk** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Zendesk** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/zendesk-tutorial/tutorial_zendesk_samlbase.png)
 
-3. Na **Zendesk domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **systemu Zendesk, domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Adresy URL i domeny Zendesk pojedynczy informacje logowania jednokrotnego](./media/zendesk-tutorial/tutorial_zendesk_url.png)
+    ![Domena systemu Zendesk i adresy URL pojedynczego logowania jednokrotnego informacji](./media/zendesk-tutorial/tutorial_zendesk_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.zendesk.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.zendesk.com`
 
-    b. W **identyfikator** tekstowym, wpisz wartość, przy użyciu następującego wzorca: `<subdomain>.zendesk.com`
+    b. W **identyfikator** polu tekstowym wpisz wartość, przy użyciu następującego wzorca: `<subdomain>.zendesk.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Zendesk](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespół obsługi klienta systemu Zendesk](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) do uzyskania tych wartości.
 
-4. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartości certyfikatu.
+4. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
 
-    ![Łącze pobierania certyfikatu](./media/zendesk-tutorial/tutorial_zendesk_certificate.png)
+    ![Link pobierania certyfikatu](./media/zendesk-tutorial/tutorial_zendesk_certificate.png)
 
-5. Zendesk oczekuje potwierdzenia języka SAML w określonym formacie. Nie obowiązkowych atrybutów SAML, ale Opcjonalnie można dodać atrybutu z **atrybuty użytkownika** sekcji, wykonując następujące czynności: 
+5. Zendesk oczekuje twierdzenia SAML w określonym formacie. Istnieją żadnych obowiązkowych atrybutów SAML, ale Opcjonalnie można dodać atrybut z **atrybutów użytkownika** sekcji, wykonując poniższe kroki: 
 
-     ![Konfigurowanie rejestracji jednokrotnej](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
+     ![Konfigurowanie logowania jednokrotnego](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/zendesk-tutorial/tutorial_attribute_04.png)
+    ![Konfigurowanie logowania jednokrotnego Dodaj](./media/zendesk-tutorial/tutorial_attribute_04.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej addattb](./media/zendesk-tutorial/tutorial_attribute_05.png)
+    ![Konfigurowanie logowania jednokrotnego addattb](./media/zendesk-tutorial/tutorial_attribute_05.png)
 
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
 
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
     d. Kliknij przycisk **OK**.
 
     > [!NOTE]
-    > Atrybuty rozszerzenia umożliwia dodawanie atrybutów, które nie znajdują się w usłudze Azure AD domyślnie. Kliknij przycisk [atrybutów użytkowników, które można ustawić w SAML](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) Aby uzyskać pełną listę SAML atrybuty, które **Zendesk** akceptuje.
+    > Atrybuty rozszerzenia umożliwiają dodawanie atrybutów, które nie są dostępne w usłudze Azure AD domyślnie. Kliknij przycisk [atrybutów użytkowników, które można ustawić w SAML](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) Aby uzyskać pełną listę SAML atrybuty, które **Zendesk** akceptuje.
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/zendesk-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/zendesk-tutorial/tutorial_general_400.png)
 
-7. Na **konfiguracji Zendesk** , kliknij przycisk **skonfigurować Zendesk** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+7. Na **konfiguracji systemu Zendesk** kliknij **konfigurowania systemu Zendesk** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfiguracja usługi Zendesk](./media/zendesk-tutorial/tutorial_zendesk_configure.png) 
+    ![Konfiguracja systemu Zendesk](./media/zendesk-tutorial/tutorial_zendesk_configure.png) 
 
-8. W oknie przeglądarki innej witryny sieci web Zaloguj się do witryny firmy Zendesk jako administrator.
+8. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy systemu Zendesk, jako administrator.
 
-9. Kliknij przycisk **Admin**.
+9. Kliknij przycisk **administratora**.
 
 10. W okienku nawigacji po lewej stronie kliknij **ustawienia**, a następnie kliknij przycisk **zabezpieczeń**.
 
-11. Na **zabezpieczeń** wykonaj następujące czynności: 
+11. Na **zabezpieczeń** strony, wykonaj następujące czynności: 
 
      ![Zabezpieczenia](./media/zendesk-tutorial/ic773089.png "zabezpieczeń")
 
@@ -162,113 +162,113 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
      a. Kliknij przycisk **Admin & agentów** kartę.
 
-     b. Wybierz **logowanie jednokrotne (SSO) oraz SAML**, a następnie wybierz **SAML**.
+     b. Wybierz **logowanie jednokrotne (SSO) i SAML**, a następnie wybierz pozycję **SAML**.
 
-     c. W **adres URL logowania jednokrotnego SAML** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure. 
+     c. W **adres URL logowania jednokrotnego SAML** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal. 
 
-     d. W **zdalnego adresu URL wylogowania** pole tekstowe, Wklej wartość **Sign-Out URL** którego została skopiowana z portalu Azure.
+     d. W **zdalny adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal.
 
-     e. W **odcisk palca certyfikatu** pole tekstowe, Wklej **odcisk palca** wartość certyfikatów, które zostały skopiowane z portalu Azure.
+     e. W **odcisk palca certyfikatu** pola tekstowego, Wklej **odcisk palca** wartości certyfikatów, które zostały skopiowane z witryny Azure portal.
 
      f. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/zendesk-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/zendesk-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/zendesk-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/zendesk-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/zendesk-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
 
-### <a name="create-a-zendesk-test-user"></a>Tworzenie użytkownika testowego Zendesk
+### <a name="create-a-zendesk-test-user"></a>Tworzenie użytkownika testowego systemu Zendesk
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Zendesk. Zendesk obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](zendesk-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w systemie Zendesk. Zendesk obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](zendesk-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
 
-**Jeśli trzeba ręcznie utworzyć użytkownika, wykonaj następujące kroki:**
+**Jeśli potrzebujesz ręcznie utworzyć użytkownika, wykonaj poniższe czynności:**
 
 > [!NOTE]
-> **Użytkownik końcowy** konta są automatycznie konfigurowani podczas logowania. **Agent** i **Admin** należy ręcznie udostępniane w kont **Zendesk** przed zarejestrowaniem się.
+> **Użytkownik końcowy** kont są automatycznie konfigurowani podczas logowania. **Agent** i **administratora** konta, które muszą zostać aprowizowane ręcznie w **Zendesk** przed zalogowaniem się.
 
-1. Zaloguj się do Twojego **Zendesk** dzierżawy.
+1. Zaloguj się do Twojej **Zendesk** dzierżawy.
 
-2. Wybierz **listy odbiorców** kartę.
+2. Wybierz **listy klientów** kartę.
 
-3. Wybierz **użytkownika** , a następnie kliknij pozycję **Dodaj**.
+3. Wybierz **użytkownika** kartę, a następnie kliknij przycisk **Dodaj**.
 
     ![Dodaj użytkownika](./media/zendesk-tutorial/ic773632.png "Dodaj użytkownika")
-4. Typ **nazwa** i **E-mail** istniejącego konta usługi Azure AD do udostępniania, a następnie kliknij przycisk **zapisać**.
+4. Typ **nazwa** i **E-mail** istniejącego konta usługi Azure AD do aprowizowania, a następnie kliknij przycisk **Zapisz**.
 
     ![Nowy użytkownik](./media/zendesk-tutorial/ic773633.png "nowego użytkownika")
 
 > [!NOTE]
-> Możesz użyć innych Zendesk użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez Zendesk do kont użytkowników usługi AAD.
+> Można użyć dowolnego innego systemu Zendesk użytkownika konta narzędzi do tworzenia lub interfejsów API dostarczonych przez systemu Zendesk do aprowizacji kont użytkowników usługi AAD.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji musisz włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do usługi Zendesk.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do systemu Zendesk.
 
 ![Przypisanie roli użytkownika][200]
 
-**Aby przypisać Simona Britta Zendesk, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon systemu Zendesk, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji zaznacz **Zendesk**.
+2. Na liście aplikacji wybierz **Zendesk**.
 
-    ![Łącze Zendesk na liście aplikacji](./media/zendesk-tutorial/tutorial_zendesk_app.png)
+    ![Łącze systemu Zendesk, na liście aplikacji](./media/zendesk-tutorial/tutorial_zendesk_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Zendesk w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji usługi Zendesk.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Zendesk w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji systemu Zendesk.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Skonfiguruj Inicjowanie obsługi użytkowników](zendesk-provisioning-tutorial.md)
+* [Konfigurowanie Aprowizowania użytkowników](zendesk-provisioning-tutorial.md)
 
 <!--Image references-->
 

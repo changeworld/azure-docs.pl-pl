@@ -2,7 +2,7 @@
 
 W usłudze DNS platformy Azure rekordy są określane przy użyciu nazw względnych. *W pełni kwalifikowana* nazwa domeny (FQDN) zawiera nazwę strefy, której nie zawiera nazwa *względna*. Na przykład względna nazwa rekordu „www” w strefie „contoso.com” daje w pełni kwalifikowaną nazwę rekordu www.contoso.com.
 
-Rekord *wierzchołka* to rekord DNS w katalogu głównym (*wierzchołku*) strefy DNS. Na przykład w strefie DNS „contoso.com” rekord wierzchołka ma także w pełni kwalifikowaną nazwę „contoso.com” (jest to czasami nazywane *samą* domeną).  Zgodnie z konwencją nazwa względna '@' jest używana do reprezentowania rekordów wierzchołków.
+Rekord *wierzchołka* to rekord DNS w katalogu głównym (*wierzchołku*) strefy DNS. Na przykład w strefie DNS „contoso.com” rekord wierzchołka ma także w pełni kwalifikowaną nazwę „contoso.com” (jest to czasami nazywane *samą* domeną).  Zgodnie z Konwencją nazwa względna '\@"jest używana do reprezentowania rekordów wierzchołków.
 
 ### <a name="record-types"></a>Typy rekordów
 

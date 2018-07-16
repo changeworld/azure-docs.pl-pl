@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z EBSCO | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i EBSCO.
+title: 'Samouczek: Integracja usługi Azure Active Directory z EBSCO | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i EBSCO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,185 +15,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 993d03e05c7d97634b7ed12c50d248643ce9e51d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 50e9a65f881981964270e0a8bbc7af46a9dfd27a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221288"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39047729"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Samouczek: Integracji Azure Active Directory z EBSCO
+# <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Samouczek: Integracja usługi Azure Active Directory z EBSCO
 
-Z tego samouczka dowiesz się integrowanie EBSCO z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować EBSCO w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD EBSCO zapewnia następujące korzyści:
+Integrowanie EBSCO z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do EBSCO.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do EBSCO (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do EBSCO.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do EBSCO (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z EBSCO, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą EBSCO, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- EBSCO jednokrotnego włączone subskrypcji
+- Logowania jednokrotnego EBSCO włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie EBSCO z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-ebsco-from-the-gallery"></a>Dodawanie EBSCO z galerii
-Aby skonfigurować integrację usługi Azure AD EBSCO, należy dodać EBSCO z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację EBSCO w usłudze Azure AD, należy dodać EBSCO z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać EBSCO z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **EBSCO**, wybierz pozycję **EBSCO** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **EBSCO**, wybierz opcję **EBSCO** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![EBSCO na liście wyników](./media/ebsco-tutorial/tutorial_ebsco_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z EBSCO w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą EBSCO w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w EBSCO jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w EBSCO musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w EBSCO do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w EBSCO musi można ustanowić.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z EBSCO, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą EBSCO, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego EBSCO](#create-an-ebsco-test-user)**  — można zautomatyzować EBSCOhost udostępniania/Personalizacja użytkowników. EBSCO obsługuje Just In Time Inicjowanie obsługi użytkowników.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego EBSCO](#create-an-ebsco-test-user)**  — można zautomatyzować EBSCOhost aprowizacji/Personalizacja użytkowników. EBSCO obsługuje Just-In-Time Inicjowanie obsługi użytkowników.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji EBSCO.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji EBSCO.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z EBSCO, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z EBSCO, wykonaj następujące czynności:**
 
-1. W portalu Azure na **EBSCO** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **EBSCO** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/ebsco-tutorial/tutorial_ebsco_samlbase.png)
 
-3. Na **EBSCO domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+3. Na **EBSCO domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Adresy URL i domeny EBSCO pojedynczy informacje logowania jednokrotnego](./media/ebsco-tutorial/tutorial_ebsco_url.png)
+    ![EBSCO domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/ebsco-tutorial/tutorial_ebsco_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL: `pingsso.ebscohost.com`
+    W **identyfikator** pole tekstowe, wpisz adres URL: `pingsso.ebscohost.com`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Adresy URL i domeny EBSCO pojedynczy informacje logowania jednokrotnego](./media/ebsco-tutorial/tutorial_ebsco_url1.png)
+    ![EBSCO domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/ebsco-tutorial/tutorial_ebsco_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
      
     > [!NOTE] 
-    > Wartość adres URL logowania nie jest prawdziwe. Zaktualizuj tę wartość z adresem URL logowania rzeczywistych. Skontaktuj się z [zespołem pomocy technicznej klienta EBSCO](mailto:sso@ebsco.com) można uzyskać wartość. 
+    > Wartość adres URL logowania nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta EBSCO](mailto:sso@ebsco.com) można uzyskać wartość. 
 
     o **unikatowych elementów:**  
 
-    o **IDKlienta** = wprowadź unikatowy identyfikator klienta EBSCO 
+    o **Custid** = wprowadź unikatowy identyfikator klienta EBSCO 
 
-    o **profilu** = klientów można dostosować łącze, aby przekierować użytkowników do określonego profilu (w zależności od tego, jakie zakupić z EBSCO). Mogą oni wprowadzić identyfikator określonego profilu. Identyfikatory główne są eds (usługi odnajdywania EBSCO) i ehost (EBSOCOhost bazy danych). Podano instrukcje dla tego samego [tutaj](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
+    o **profilu** = klientów można dostosować link, aby przekierować użytkowników do konkretnego profilu (zależnie od tego, jakie mogą kupić od EBSCO). Mogą wprowadzić identyfikator określonego profilu. Główne identyfikatory są zewnętrznego źródła danych (Usługa odnajdywania EBSCO) i ehost (EBSOCOhost baz danych). Podano instrukcje dla tego samego [tutaj](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
-5. Aplikacja EBSCO oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z "**atrybuty użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+5. Aplikacja EBSCO oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ebsco-tutorial/tutorial_ebsco_attribute.png)
 
     > [!Note]
-    > **Nazwa** atrybut jest obowiązkowy i jest zamapowana z **identyfikator użytkownika** w EBSCO aplikacji. To jest domyślnie dodawany dzięki czemu nie trzeba Dodaj ją ręcznie.
+    > **Nazwa** atrybut jest obowiązkowy i jest mapowany za pomocą **identyfikator użytkownika** EBSCO aplikacji. To jest dodawany domyślnie, więc nie ma potrzeby dodaj ją ręcznie.
     
-6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |    
-    | Imię   | user.givenname |
-    | Nazwisko   | user.surname |
+    | FirstName   | user.givenname |
+    | LastName   | user.surname |
     | Email   | User.mail |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ebsco-tutorial/tutorial_officespace_04.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ebsco-tutorial/tutorial_officespace_04.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/ebsco-tutorial/tutorial_attribute_05.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/ebsco-tutorial/tutorial_attribute_05.png)
     
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
     
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
     d. Kliknij przycisk **Ok**
 
 7. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/ebsco-tutorial/tutorial_ebsco_certificate.png) 
+    ![Link pobierania certyfikatu](./media/ebsco-tutorial/tutorial_ebsco_certificate.png) 
 
-8. Kliknij przycisk **zapisać** przycisku.
+8. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/ebsco-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/ebsco-tutorial/tutorial_general_400.png)
     
-9. Do konfigurowania rejestracji jednokrotnej na **EBSCO** stronie, musisz wysłać pobrany **XML metadanych** do [EBSCO obsługuje zespołu](mailto:sso@ebsco.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+9. Aby skonfigurować logowanie jednokrotne na **EBSCO** stronie, musisz wysłać pobrany **XML metadanych** do [zespołu pomocy technicznej EBSCO](mailto:sso@ebsco.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/ebsco-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/ebsco-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/ebsco-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/ebsco-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/ebsco-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -201,63 +201,63 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 W przypadku EBSCO Inicjowanie obsługi użytkowników odbywa się automatycznie.
 
-**Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
+**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
 
-Usługi Azure AD przekazuje wymagane dane do aplikacji EBSCO. Inicjowanie obsługi użytkowników w EBSCO można automatyczne lub wymagają jednorazowe formularza. To zależy od tego, czy klient ma wiele istniejące konta EBSCOhost z zapisane ustawienia osobiste. Taki sam zostać omówione z [EBSCO obsługuje zespołu](mailto:sso@ebsco.com) w trakcie realizacji. W obu przypadkach klient nie trzeba tworzyć kont EBSCOhost przed testowania.
+Usługa Azure AD przekazuje wymagane dane do aplikacji EBSCO. Inicjowanie obsługi użytkowników EBSCO firmy mogą być automatyczne lub wymagają jednorazowe formularza. To zależy od tego, czy klient ma wiele wstępnie istniejących kont EBSCOhost za pomocą ustawienia osobiste zapisane. Taki sam można podawać przy użyciu [zespołu pomocy technicznej EBSCO](mailto:sso@ebsco.com) podczas wdrożenia. W obu przypadkach klient nie ma do tworzenia kont EBSCOhost przed testowania.
 
    >[!Note]
-   >Można zautomatyzować EBSCOhost udostępniania/Personalizacja użytkowników. Skontaktuj się z [EBSCO obsługuje zespołu](mailto:sso@ebsco.com) o Just In Time Inicjowanie obsługi użytkowników. 
+   >Można zautomatyzować EBSCOhost aprowizacji/Personalizacja użytkowników. Skontaktuj się z pomocą [zespołu pomocy technicznej EBSCO](mailto:sso@ebsco.com) o Just-In-Time Inicjowanie obsługi użytkowników. 
  
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu EBSCO.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do EBSCO.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta EBSCO, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon EBSCO, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **EBSCO**.
+2. Na liście aplikacji wybierz **EBSCO**.
 
-    ![Łącze EBSCO na liście aplikacji](./media/ebsco-tutorial/tutorial_ebsco_app.png)  
+    ![Link EBSCO na liście aplikacji](./media/ebsco-tutorial/tutorial_ebsco_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-1. Po kliknięciu kafelka EBSCO w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji EBSCO.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+1. Po kliknięciu kafelka EBSCO w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji EBSCO.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
-2. Po zalogować się do aplikacji, kliknij na **Zaloguj** przycisk w prawym górnym rogu.
+2. Po zalogowaniu się do aplikacji, kliknij pozycję **Zaloguj** przycisk w prawym górnym rogu.
 
     ![Rejestrowanie EBSCO na liście aplikacji](./media/ebsco-tutorial/tutorial_ebsco_signin.png)
  
-3. Zostanie wyświetlony monit o jednorazowy pary nazwa instytucjonalnych/SAML logowania z **teraz Połącz z istniejącym kontem MyEBSCOhost ze swoim kontem instytucji** lub **Utwórz nowe konto MyEBSCOhost i połączenie jej z sieci Konto instytucji**. Konto jest używane na potrzeby personalizacji EBSCOhost aplikacji. Wybierz opcję **Utwórz nowe konto** i zostanie wyświetlony formularz na potrzeby personalizacji jest wstępnie wypełniony wartościami z odpowiedzi saml, jak pokazano na poniższym zrzucie ekranu. Kliknij przycisk **'Kontynuuj'** można zapisać tego zaznaczenia.
+3. Zostanie wyświetlony monit o jednorazowy pair instytucjonalnych/SAML, zaloguj się za pomocą **teraz Połącz z istniejącym kontem MyEBSCOhost ze swoim kontem instytucji** lub **Utwórz nowe konto MyEBSCOhost i połączyć go do usługi rachunek instytucji**. Konto jest używane na potrzeby personalizacji w aplikacji EBSCOhost. Wybierz opcję **Utwórz nowe konto** i zostanie wyświetlony formularz na potrzeby personalizacji jest wstępnie wypełniony wartościami z odpowiedzi saml, jak pokazano na poniższym zrzucie ekranu. Kliknij przycisk **'Kontynuuj'** można zapisać w zaznacz to pole wyboru.
     
      ![Użytkownik EBSCO na liście aplikacji](./media/ebsco-tutorial/tutorial_ebsco_user.png)
 
-4. Po zakończeniu instalacji powyższych wyczyścić pamięci podręcznej na pliki cookie/i zaloguj się ponownie. Nie trzeba ręcznie zarejestrować ponownie i są zapamiętywane ustawienia personalizacji
+4. Po zakończeniu instalacji powyżej, wyczyść pliki cookie/pamięci podręcznej i zaloguj się ponownie. Nie musisz ręcznie zarejestrować ponownie i ustawienia personalizacji zostaną zapamiętane.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

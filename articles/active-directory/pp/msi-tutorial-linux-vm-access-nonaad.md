@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 95a9530c02bbf7b1cd9d137129f96ff4ee016966
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 95f54cf9cda2bf6dede6e7bfb72471b22707c1c2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007669"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056076"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Umożliwia dostęp do usługi Azure Key Vault Linux VM tożsamość usługi zarządzanej (MSI) 
 
@@ -88,7 +88,7 @@ Najpierw musimy utworzyć usługę Key Vault i Udziel dostępu tożsamości nasz
 7. Kliknij przycisk **OK** do zakończenia dodawania nowych zasad dostępu i **OK** aby ukończyć wybieranie zasad dostępu. 
 8. Kliknij przycisk **Utwórz** aby zakończyć tworzenie usługi Key Vault. 
 
-    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
+    ![Tekst ALT obrazu](../managed-service-identity/media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
 
 Następnie dodaj wpis tajny do usługi Key Vault, tak aby później można pobrać klucza tajnego przy użyciu kodu działającego na maszynie wirtualnej: 
 

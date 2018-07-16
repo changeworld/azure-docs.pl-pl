@@ -1,6 +1,6 @@
 ---
-title: Bezpieczne sieci VPN platformy Azure bramy uwierzytelniania RADIUS z serwerem zasad Sieciowych uwierzytelniania wieloskładnikowego | Dokumentacja firmy Microsoft
-description: W tym artykule opisano integracji Azure bramy uwierzytelniania RADIUS z serwera NPS uwierzytelnianie wieloskładnikowe.
+title: Bezpieczne sieci VPN platformy Azure brama uwierzytelnianie usługi RADIUS za pomocą serwera NPS do uwierzytelniania wieloskładnikowego | Dokumentacja firmy Microsoft
+description: W tym artykule opisano integrowanie uwierzytelniania RADIUS brama platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego.
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
@@ -15,71 +15,71 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: c9985f6ad8721460e973d3c43f1f035506ae697c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 70c760cd0cb571cc95250ab793829b060341e0ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100078"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056582"
 ---
-# <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure z serwerem zasad Sieciowych uwierzytelnianie wieloskładnikowe 
+# <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrowanie uwierzytelniania RADIUS bramy sieci VPN platformy Azure za pomocą serwera NPS do uwierzytelniania wieloskładnikowego 
 
-Artykuł opisuje sposób integrowania serwera zasad sieciowych (NPS) z uwierzytelnianiem RADIUS bramy sieci VPN platformy Azure do świadczenia usługi Multi-Factor Authentication (MFA) dla połączeń sieci VPN punkt lokacja. 
+W artykule opisano sposób integracji serwera zasad sieciowych (NPS) z uwierzytelnianiem RADIUS bramy sieci VPN platformy Azure, aby dostarczać usługi Multi-Factor Authentication (MFA) dla połączeń VPN typu punkt lokacja. 
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Aby włączyć uwierzytelnianie wieloskładnikowe, użytkowników musi być w usłudze Active Directory (Azure AD), który musi być synchronizowane z lokalnie lub w chmurze środowiska. Ponadto użytkownik musi już zakończył proces automatycznej rejestracji dla usługi MFA.  Aby uzyskać więcej informacji, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../active-directory/authentication/end-user/current/multi-factor-authentication-end-user-first-time.md)
+Aby włączyć uwierzytelnianie wieloskładnikowe, użytkownicy muszą być w usłudze Active Directory (Azure AD), które muszą zostać zsynchronizowane z lokalnie lub w chmurze, środowisku. Ponadto użytkownik musi wykonano już procesu automatycznej rejestracji usługi MFA.  Aby uzyskać więcej informacji, zobacz [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="detailed-steps"></a>Szczegółowe procedury
 
 ### <a name="step-1-create-a-virtual-network-gateway"></a>Krok 1: Tworzenie bramy sieci wirtualnej
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W sieci wirtualnej, który będzie obsługiwał bramy sieci wirtualnej, wybierz **podsieci**, a następnie wybierz **podsieci bramy** Aby utworzyć podsieć. 
+2. W sieci wirtualnej, który będzie hostował bramy sieci wirtualnej, wybierz **podsieci**, a następnie wybierz pozycję **podsieci bramy** utworzyć podsieć. 
 
-    ![Obraz o sposobie dodawania podsieci bramy](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
-3. Tworzenie bramy sieci wirtualnej przez określenie następujących ustawień:
+    ![Obraz o tym, jak dodać podsieć bramy](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
+3. Utwórz bramę sieci wirtualnej, określając następujące ustawienia:
 
     - **Typ bramy**: Wybierz pozycję **Sieć VPN**.
-    - **Typ sieci VPN**: Wybierz **opartej na trasach**.
+    - **Typ sieci VPN**: Wybierz **oparte na trasach**.
     - **Jednostka SKU**: Wybierz typ jednostki SKU zgodnie z wymaganiami.
     - **Sieć wirtualna**: Wybierz sieć wirtualną, w której utworzono podsieć bramy.
 
-        ![Obraz o ustawieniach bramy sieci wirtualnej](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
+        ![Obraz dotyczący ustawień bramy sieci wirtualnej](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
 
  
-### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2: Konfigurowanie zasad Sieciowych dla usługi Azure MFA
+### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Krok 2 skonfiguruj serwer NPS dla usługi Azure MFA
 
-1. Na serwerze NPS [zainstalować rozszerzenie serwera zasad Sieciowych dla usługi Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Otwórz konsolę NSP, kliknij prawym przyciskiem myszy **klientów RADUIS**, a następnie wybierz **nowy**. Tworzenie klienta RADUIS przez określenie następujących ustawień:
+1. Na serwerze NPS [zainstalować rozszerzenia serwera NPS dla usługi Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
+2. Otwórz konsolę NSP, kliknij prawym przyciskiem myszy **klientów RADUIS**, a następnie wybierz pozycję **New**. Tworzenie klienta RADUIS, określając następujące ustawienia:
 
     - **Przyjazna nazwa**: wpisz dowolną nazwę.
     - **Adres (IP lub DNS)**: wpisz podsieć bramy, który został utworzony w kroku 1.
-    - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je do późniejszego użycia.
+    - **Wspólny klucz tajny**: wpisz wszelkie klucz tajny i Zapamiętaj je w celu późniejszego użycia.
 
-    ![Obraz o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+    ![Obraz informacje o ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
-3.  Na **zaawansowane** karcie należy ustawić nazwę dostawcy **RADIUS Standard** i upewnij się, że **dodatkowe opcje** nie zaznaczono pola wyboru.
+3.  Na **zaawansowane** karcie należy ustawić nazwę dostawcy **RADIUS Standard** i upewnij się, że **dodatkowe opcje** nie zaznaczono pole wyboru.
 
-    ![Obraz o zaawansowanych ustawieniach klienta RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![Obraz o zaawansowanych ustawieniach RADUIS](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. Przejdź do **zasady** > **zasady sieciowe**, kliknij dwukrotnie **połączenia z serwerem programu Microsoft Routing i dostęp zdalny** zasady, wybierz  **Udziel dostępu**, a następnie kliknij przycisk **OK**.
+4. Przejdź do **zasady** > **zasad sieciowych**, kliknij dwukrotnie **połączenia z serwerem programu Microsoft Routing i dostęp zdalny** zasad, wybierz opcję  **Udzielanie dostępu**, a następnie kliknij przycisk **OK**.
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>Krok 3 Konfigurowanie bramy sieci wirtualnej
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Otwórz bramy sieci wirtualnej, który został utworzony. Upewnij się, że typ bramy jest ustawiona na **VPN** , a typ sieci VPN jest **opartej na trasach**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com).
+2. Otwórz bramy sieci wirtualnej, który został utworzony. Upewnij się, że typ bramy jest ustawiona na **VPN** i czy typ sieci VPN jest **oparte na trasach**.
 3. Kliknij przycisk **wskaż konfigurację witryny** > **teraz skonfigurować**, a następnie określ następujące ustawienia:
 
     - **Pula adresów**: wpisz podsieć bramy, utworzony w kroku 1.
     - **Typ uwierzytelniania**: Wybierz **uwierzytelnianie usługi RADIUS**.
     - **Adres IP serwera**: wpisz adres IP serwera NPS.
 
-    ![Obraz o punkcie ustawień lokacji](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+    ![Obraz dotyczący wskaż Ustawienia witryny](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uwierzytelnianie wieloskładnikowe platformy Azure](../active-directory/authentication/multi-factor-authentication.md)
+- [Usługa Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 - [Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)

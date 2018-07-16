@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 8b0a591f84dd8ece0f6a8e2de19cddfee21b28e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e304242718478cae2670372a06abe07f926fbed2
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450113"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054747"
 ---
 # <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji, zobacz [Integrowanie tożsamości lokalnych z u
 
 **Odpowiedź:** tak, usługa Azure AD zapewnia [Panel dostępu usługi Azure AD](http://myapps.microsoft.com) do samoobsługi użytkowników i dostępu do aplikacji. Jeśli korzystasz z usługi Office 365, możesz znaleźć wiele tych samych funkcji w portalu usługi Office 365.
 
-Aby uzyskać więcej informacji, zobacz [Wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji, zobacz [Wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 - - -
 **Pytanie: czy usługa Azure AD pomaga w zarządzaniu infrastrukturą lokalną?**

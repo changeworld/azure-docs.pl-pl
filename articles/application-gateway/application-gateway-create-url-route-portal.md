@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z adresu URL na podstawie ścieżki reguły routingu - portalu Azure
-description: Dowiedz się, jak utworzyć adres URL na podstawie ścieżki reguły routingu dla bramy aplikacji i skalowania maszyny wirtualnej ustawić za pomocą portalu Azure.
+title: Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL — witryna Azure portal
+description: Dowiedz się, jak utworzyć oparty na ścieżkach reguł routingu adresów URL dla bramy aplikacji i maszyn wirtualnych zestawu skalowania przy użyciu witryny Azure portal.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,25 +10,25 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 3fcbcbe5d5f8dab956f40cde112f3536e1ae668c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5bec7be5f7ad744960d2602aaf24fec51d869267
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263996"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056253"
 ---
-# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu ścieżki na podstawie reguł routingu przy użyciu portalu Azure
+# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Tworzenie bramy aplikacji przy użyciu opartego na ścieżkach reguł routingu, za pomocą witryny Azure portal
 
-Azure portal umożliwiają skonfigurowanie [reguł routingu na podstawie ścieżki adresu URL](application-gateway-url-route-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza przy użyciu maszyn wirtualnych. Następnie można utworzyć reguły routingu, które upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w pulach.
+Witryna Azure portal służy do konfigurowania [reguł routingu opartego na ścieżkach URL](application-gateway-url-route-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz pule zaplecza przy użyciu maszyn wirtualnych. Następnie można utworzyć reguły routingu, które upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w puli.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
 > * Tworzenie maszyn wirtualnych dla serwerów wewnętrznej bazy danych
-> * Tworzenie puli wewnętrznej bazy danych z serwerami wewnętrznej bazy danych
+> * Utwórz pule zaplecza z serwerami wewnętrznej bazy danych
 > * Utwórz odbiornik wewnętrznej bazy danych
-> * Utwórz regułę routingu na podstawie ścieżki
+> * Utwórz regułę routingu opartego na ścieżkach
 
 ![Przykład routingu adresów URL](./media/application-gateway-create-url-route-portal/scenario.png)
 
@@ -40,9 +40,9 @@ Zaloguj się do witryny Azure Portal pod adresem [http://portal.azure.com](http:
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można utworzyć. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
+Sieć wirtualna jest wymagane do komunikacji między zasobami, które tworzysz. W tym przykładzie są tworzone dwie podsieci: jedna dla bramy aplikacji i druga dla serwerów zaplecza. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji.
 
-1. Kliknij przycisk **nowy** znaleziono w lewym górnym rogu portalu Azure.
+1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 3. Wprowadź następujące wartości dla bramy aplikacji:
 
@@ -52,7 +52,7 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
     ![Tworzenie nowej bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
 
 4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-5. Kliknij przycisk **wybierz sieć wirtualną**, kliknij przycisk **Utwórz nowy**, a następnie wprowadź wartości dla sieci wirtualnej:
+5. Kliknij przycisk **wybierz sieć wirtualną**, kliknij przycisk **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
 
     - *myVNet* — jako nazwę sieci wirtualnej.
     - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
@@ -62,9 +62,9 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
     ![Tworzenie sieci wirtualnej](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
 6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
-7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nowy**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-8. Zaakceptuj wartości domyślne w konfiguracji odbiornika, pozostaw zapory aplikacji sieci Web, które są wyłączone, a następnie kliknij **OK**.
-9. Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **OK** tworzyć zasoby sieciowe i bramy aplikacji. Może upłynąć kilka minut dla bramy aplikacji można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
+7. Kliknij przycisk **wybierz publiczny adres IP**, kliknij przycisk **Utwórz nową**, a następnie wprowadź nazwę publicznego adresu IP. W tym przykładzie publiczny adres IP nosi nazwę *myAGPublicIPAddress*. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
+8. Zaakceptuj wartości domyślne dla konfiguracji odbiornika, pozostaw zapory aplikacji sieci Web, które są wyłączone, a następnie kliknij przycisk **OK**.
+9. Przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **OK** do tworzenia zasobów sieciowych i bramy aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
 
 ### <a name="add-a-subnet"></a>Dodawanie podsieci
 
@@ -77,10 +77,10 @@ Sieć wirtualna jest wymagany dla komunikacji między zasobami, które można ut
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serwery zaplecza bramy aplikacji. Zainstaluj również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
+W tym przykładzie utworzysz trzy maszyny wirtualne do użycia jako serwery zaplecza w usłudze application gateway. Zainstaluj również usługi IIS na maszynach wirtualnych, aby sprawdzić, czy brama aplikacji została pomyślnie utworzona.
 
 1. Kliknij przycisk **Nowy**.
-2. Kliknij przycisk **obliczeniowe** , a następnie wybierz **systemu Windows Server 2016 Datacenter** na liście duży.
+2. Kliknij przycisk **obliczenia** , a następnie wybierz **systemu Windows Server 2016 Datacenter** na liście proponowany.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
 
     - *myVM1* — jako nazwę maszyny wirtualnej.
@@ -103,7 +103,7 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -115,36 +115,36 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
       -Settings $publicSettings
     ```
 
-3. Utwórz dwie maszyny wirtualne i zainstaluj usługi IIS przy użyciu kroków, które właśnie zostało zakończone. Wprowadź nazwy *myVM2* i *myVM3* dla nazwy i wartości VMName w AzureRmVMExtension zestawu.
+3. Utwórz dwie maszyny wirtualne z więcej i zainstalować usługi IIS, wykonując kroki, które właśnie zostało zakończone. Wprowadź nazwy *myVM2* i *myVM3* dla nazwy i wartości VMName w Set-AzureRmVMExtension.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Tworzenie puli wewnętrznej bazy danych z maszynami wirtualnymi
 
-1. Kliknij przycisk **wszystkie zasoby** , a następnie kliknij przycisk **myAppGateway**.
+1. Kliknij przycisk **wszystkie zasoby** a następnie kliknij przycisk **myAppGateway**.
 2. Kliknij pozycję **Pule zaplecza**. Domyślna pula została utworzona automatycznie podczas tworzenia bramy aplikacji. Kliknij pozycję **appGatewayBackendPool**.
-3. Kliknij przycisk **docelowy Dodaj** można dodać *myVM1* do appGatewayBackendPool.
+3. Kliknij przycisk **Add target** dodać *myVM1* do appGatewayBackendPool.
 
     ![Dodawanie serwerów zaplecza](./media/application-gateway-create-url-route-portal/application-gateway-backend.png)
 
 4. Kliknij pozycję **Zapisz**.
-5. Kliknij przycisk **pul zaplecza** , a następnie kliknij przycisk **Dodaj**.
-6. Wprowadź nazwę *imagesBackendPool* i Dodaj *myVM2* przy użyciu **docelowy Dodaj**.
+5. Kliknij przycisk **pule zaplecza** a następnie kliknij przycisk **Dodaj**.
+6. Wprowadź nazwę *imagesBackendPool* i Dodaj *myVM2* przy użyciu **Add target**.
 7. Kliknij przycisk **OK**.
-8. Kliknij przycisk **Dodaj** ponownie, aby dodać innej puli wewnętrznej bazy danych o nazwie *videoBackendPool* i Dodaj *myVM3* do niego.
+8. Kliknij przycisk **Dodaj** ponownie, aby dodać innej puli zaplecza o nazwie *videoBackendPool* i Dodaj *myVM3* do niego.
 
 ## <a name="create-a-backend-listener"></a>Utwórz odbiornik wewnętrznej bazy danych
 
-1. Kliknij przycisk **odbiorników** , a następnie kliknij pozycję **podstawowe**.
-2. Wprowadź *myBackendListener* nazwę *myFrontendPort* dla nazwy portu frontonu, a następnie *8080* jako numer portu odbiornika.
+1. Kliknij przycisk **odbiorników** i kliknięcie **podstawowe**.
+2. Wprowadź *myBackendListener* dla nazwy *myFrontendPort* nazwy port frontonu, a następnie *8080* jako port odbiornika.
 3. Kliknij przycisk **OK**.
 
-## <a name="create-a-path-based-routing-rule"></a>Utwórz regułę routingu na podstawie ścieżki
+## <a name="create-a-path-based-routing-rule"></a>Utwórz regułę routingu opartego na ścieżkach
 
-1. Kliknij przycisk **reguły** , a następnie kliknij przycisk **na podstawie ścieżki**.
-2. Wprowadź *rule2* dla nazwy.
-3. Wprowadź *obrazów* dla nazwy pierwszej ścieżki. Wprowadź */images/* \* dla ścieżki. Wybierz **imagesBackendPool** puli wewnętrznej bazy danych.
-4. Wprowadź *wideo* nazwę drugiego ścieżki. Wprowadź */video/* \* dla ścieżki. Wybierz **videoBackendPool** puli wewnętrznej bazy danych.
+1. Kliknij przycisk **reguły** a następnie kliknij przycisk **opartego na ścieżkach**.
+2. Wprowadź *reguły rule2* dla nazwy.
+3. Wprowadź *obrazów* nazwy pierwszej ścieżki. Wprowadź */images/* \* dla ścieżki. Wybierz **imagesBackendPool** dla puli zaplecza.
+4. Wprowadź *wideo* jako nazwę drugiej ścieżki. Wprowadź */video/* \* dla ścieżki. Wybierz **videoBackendPool** dla puli zaplecza.
 
-    ![Tworzenie reguły na podstawie ścieżki](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
+    ![Utwórz regułę bazującą na ścieżce](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 
 5. Kliknij przycisk **OK**.
 
@@ -158,11 +158,11 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 
     ![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Zmień adres URL do http://&lt;adres ip&gt;: 8080/images/test.htm, zastępując &lt;adres ip&gt; z IP adresów, a powinien zostać wyświetlony ekran podobny do następującego:
+3. Zmień adres URL na http://&lt;adresu ip&gt;: 8080/images/test.htm, zastępując &lt;adresu ip&gt; za pomocą Twojego adresu IP adres i powinny zostać wyświetlone informacje jak w poniższym przykładzie:
 
     ![Testowanie adresu URL obrazów w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
-4. Zmień adres URL do http://&lt;adres ip&gt;: 8080/video/test.htm, zastępując &lt;adres ip&gt; z IP adresów, a powinien zostać wyświetlony ekran podobny do następującego:
+4. Zmień adres URL na http://&lt;adresu ip&gt;: 8080/video/test.htm, zastępując &lt;adresu ip&gt; za pomocą Twojego adresu IP adres i powinny zostać wyświetlone informacje jak w poniższym przykładzie:
 
     ![Testowanie adresu URL wideo w bramie aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
@@ -173,8 +173,8 @@ W tym artykule przedstawiono sposób
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji
 > * Tworzenie maszyn wirtualnych dla serwerów wewnętrznej bazy danych
-> * Tworzenie puli wewnętrznej bazy danych z serwerami wewnętrznej bazy danych
+> * Utwórz pule zaplecza z serwerami wewnętrznej bazy danych
 > * Utwórz odbiornik wewnętrznej bazy danych
-> * Utwórz regułę routingu na podstawie ścieżki
+> * Utwórz regułę routingu opartego na ścieżkach
 
-Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.

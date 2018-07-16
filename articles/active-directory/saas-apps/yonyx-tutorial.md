@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z przewodników interaktywnych Yonyx | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i przewodników interaktywnych Yonyx.
+title: 'Samouczek: Integracja usługi Azure Active Directory z przewodników interaktywnych Yonyx | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i przewodników interaktywnych Yonyx.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,153 +15,153 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e8873a15653bfaca5ea4da8fecf0edcd7b6f8af
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1f337f453a5721792527d5494e8faf9ba47437f7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212318"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050633"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Samouczek: Integracji Azure Active Directory z przewodników interaktywnych Yonyx
+# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Samouczek: Integracja usługi Azure Active Directory z przewodników interaktywnych Yonyx
 
-Z tego samouczka dowiesz się integrowanie przewodników interaktywnych Yonyx z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować przewodników interaktywnych Yonyx za pomocą usługi Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD przewodników interaktywnych Yonyx zapewnia następujące korzyści:
+Integrowanie przewodników interaktywnych Yonyx z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do przewodników interaktywnych Yonyx
-- Umożliwia użytkownikom automatycznie pobrać zalogowane Yonyx prowadnic interakcyjne (logowanie jednokrotne) z konta usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do przewodników interaktywnych Yonyx
+- Użytkowników, aby automatycznie uzyskać zalogowanych do przewodników interaktywnych Yonyx (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z przewodników interaktywnych Yonyx, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD przy użyciu przewodników interaktywnych Yonyx, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Yonyx przewodniki interakcyjne logowanie jednokrotne włączone subskrypcji
+- Przewodniki interaktywne Yonyx logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie przewodników interaktywnych Yonyx z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-yonyx-interactive-guides-from-the-gallery"></a>Dodawanie przewodników interaktywnych Yonyx z galerii
-Aby skonfigurować integrację usługi Azure AD Yonyx przewodników interaktywnych, należy dodać przewodników interaktywnych Yonyx z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Yonyx przewodniki interakcyjne w usłudze Azure AD, należy dodać przewodników interaktywnych Yonyx z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać przewodników interaktywnych Yonyx z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **przewodników interaktywnych Yonyx**, wybierz pozycję **przewodników interaktywnych Yonyx** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **przewodników interaktywnych Yonyx**, wybierz pozycję **przewodników interaktywnych Yonyx** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Przewodniki interakcyjne Yonyx na liście wyników](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_addfromgallery.png)
+    ![Przewodniki interaktywne Yonyx na liście wyników](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przewodników interaktywnych Yonyx w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji możesz skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Yonyx przewodników interaktywnych oparte na użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w przewodnikach interakcyjne Yonyx jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi w przewodnikach interakcyjne Yonyx musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w przewodnikach interaktywne Yonyx do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w przewodnikach interaktywne Yonyx musi można ustanowić.
 
-W przewodnikach interakcyjne Yonyx, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W przewodnikach interaktywne Yonyx, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z przewodników interaktywnych Yonyx, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu przewodników interaktywnych Yonyx, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego przewodników interaktywnych Yonyx](#create-a-yonyx-interactive-guides-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Yonyx przewodników interaktywnych połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego przewodników interaktywnych Yonyx](#create-a-yonyx-interactive-guides-test-user)**  — aby odpowiednikiem Britta Simon w Yonyx przewodników interaktywnych, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Yonyx przewodników interaktywnych.
+W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Yonyx przewodników interaktywnych.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z przewodników interaktywnych Yonyx, wykonaj następujące czynności:**
+**Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu przewodników interaktywnych Yonyx, wykonaj następujące czynności:**
 
-1. W portalu Azure na **przewodników interaktywnych Yonyx** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **przewodników interaktywnych Yonyx** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_samlbase.png)
 
-3. Na **Yonyx interakcyjne przewodniki domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Yonyx interaktywne przewodniki domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Yonyx interakcyjne przewodniki domeny i adres URL z jednym informacje logowania jednokrotnego](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_url.png)
+    ![Yonyx interaktywne przewodniki domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.yonyx.com`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company name>.yonyx.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Yonyx interakcyjne przewodników klienta](mailto:support@yonyx.com) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej Yonyx interaktywne przewodników klienta](mailto:support@yonyx.com) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_certificate.png) 
+    ![Link pobierania certyfikatu](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/yonyx-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/yonyx-tutorial/tutorial_general_400.png)
 
-6. Na **Yonyx interakcyjne przewodniki konfiguracji** , kliknij przycisk **skonfigurować przewodników interaktywnych Yonyx** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **Yonyx interaktywne przewodniki konfiguracji** , kliknij przycisk **skonfigurować przewodników interaktywnych Yonyx** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Yonyx interakcyjne przewodniki konfiguracji](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_configure.png) 
+    ![Yonyx interaktywne przewodniki konfiguracji](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_configure.png) 
 
-7. Skonfigurować logowanie jednokrotne w **przewodników interaktywnych Yonyx** stronie, musisz wysłać pobrany **Certificate(Base64)**, **Sign-Out adres URL**, **pojedynczego SAML Adres URL logowania jednokrotnego usługi** **identyfikator jednostki SAML** do [zespołu obsługi przewodników interaktywnych Yonyx](mailto:support@yonyx.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+7. Aby skonfigurować logowanie jednokrotne na **przewodników interaktywnych Yonyx** stronie, musisz wysłać pobrany **Certificate(Base64)**, **adres URL wylogowania**, **jednego języka SAML Adres URL logowania jednokrotnego usługi** **identyfikator jednostki SAML** do [zespołu pomocy technicznej przewodników interaktywnych Yonyx](mailto:support@yonyx.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
   ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory](./media/yonyx-tutorial/create_aaduser_01.png) 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/yonyx-tutorial/create_aaduser_02.png) 
+    !["Użytkownicy i grupy" i "All users" linki](./media/yonyx-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Przycisk Dodaj](./media/yonyx-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Okno dialogowe użytkownika](./media/yonyx-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -169,54 +169,54 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="create-a-yonyx-interactive-guides-test-user"></a>Tworzenie użytkownika testowego przewodników interaktywnych Yonyx
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Yonyx przewodników interaktywnych. Przewodniki interakcyjne Yonyx obsługę w czasie, który jest domyślnie włączone.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon Yonyx interaktywne przewodników. Przewodniki interaktywne Yonyx obsługę just-in-time, który jest domyślnie włączona.
 
-Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu Yonyx przewodników interaktywnych, jeśli go jeszcze nie istnieje.
+Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Yonyx przewodników interaktywnych, jeśli go jeszcze nie istnieje.
 
 >[!NOTE]
->Jeśli trzeba ręcznie utworzyć użytkownika, musisz skontaktuj się z zespołem pomocy technicznej przewodników interaktywnych Yonyx za pośrednictwem <mailto:support@yonyx.com>. 
+>Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z zespołem pomocy technicznej przewodników interaktywnych Yonyx za pośrednictwem <mailto:support@yonyx.com>. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do interaktywnego prowadnic Yonyx.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do przewodników interaktywnych Yonyx.
 
 ![Przypisanie roli użytkownika][200]
 
-**Aby przypisać Simona Britta Yonyx przewodników interaktywnych, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Yonyx przewodników interaktywnych, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **przewodników interaktywnych Yonyx**.
+2. Na liście aplikacji wybierz **przewodników interaktywnych Yonyx**.
 
-    ![Łącze przewodników interaktywnych Yonyx na liście aplikacji](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_app.png) 
+    ![Link przewodników interaktywnych Yonyx na liście aplikacji](./media/yonyx-tutorial/tutorial_yonyxinteractiveguides_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka przewodników interaktywnych Yonyx w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji przewodników interaktywnych Yonyx.
+Po kliknięciu kafelka przewodników interaktywnych Yonyx w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do Yonyx przewodników interaktywnych aplikacji.
 
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

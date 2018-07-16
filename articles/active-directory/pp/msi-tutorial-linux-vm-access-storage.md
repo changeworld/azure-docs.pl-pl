@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ba4c4525899e82b4dd93fc46d9e9bbc1850500dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: afa65cec0d00f2063be05a48085183da72af9048
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003040"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049398"
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Użyj użytkownik przypisany tożsamość usługi zarządzanej (MSI) na maszynie Wirtualnej systemu Linux dostępu do magazynu Azure
 
@@ -114,7 +114,7 @@ Jeśli nie masz jeszcze jeden, Utwórz teraz konto magazynu. Można również po
 5. Upewnij się, **subskrypcji** i **grupy zasobów** są zgodne z typami, które zostały określone podczas tworzenia maszyny Wirtualnej w poprzednim kroku.
 6. Kliknij przycisk **Utwórz**.
 
-    ![Utwórz nowe konto magazynu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Utwórz nowe konto magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Utwórz kontener obiektów blob na koncie magazynu
 
@@ -125,11 +125,11 @@ Ponieważ pliki wymagają magazynu obiektów blob, należy utworzyć kontener ob
 3. Kliknij przycisk **+ kontener** u góry strony i "nowy kontener" panelu wysuwa się.
 4. Nadaj nazwę kontenera, wybierz poziom dostępu, a następnie kliknij przycisk **OK**. Podana nazwa jest również używany w dalszej części tego samouczka. 
 
-    ![Tworzenie kontenera magazynu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Tworzenie kontenera magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 5. Przekazywanie pliku do nowo utworzony kontener, klikając nazwę kontenera, a następnie **przekazywanie**, wybierz plik, a następnie kliknij przycisk **przekazywanie**.
 
-    ![Przekaż plik tekstowy](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+    ![Przekaż plik tekstowy](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-user-assigned-msi-access-to-an-azure-storage-container"></a>Udziel dostępu MSI przypisać użytkownika do kontenera usługi Azure Storage
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z BambooHR | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i BambooHR.
+title: 'Samouczek: Integracja usługi Azure Active Directory z BambooHR | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i BambooHR.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,52 +15,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: d31d8d92590f665b847bb92370967e88ef4590ff
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210707"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048042"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Samouczek: Integracji Azure Active Directory z BambooHR
+# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Samouczek: Integracja usługi Azure Active Directory z BambooHR
 
-Z tego samouczka dowiesz się integrowanie BambooHR z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować BambooHR w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD BambooHR zapewnia następujące korzyści:
+Integrowanie BambooHR z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do BambooHR.
-- Można umożliwić użytkownikom automatycznie pobrać zalogowany do BambooHR przy użyciu rejestracji jednokrotnej (SSO) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji, portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do BambooHR.
+- Aby umożliwić użytkownikom automatycznie pobrać zalogowany do BambooHR przy użyciu logowania jednokrotnego (SSO) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji, witryny Azure portal.
 
-Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z BambooHR, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą BambooHR, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Włączyć logowanie Jednokrotne BambooHR subskrypcji
+- Subskrypcja z obsługą logowania jednokrotnego BambooHR
 
 > [!NOTE]
-> Podczas testowania czynności w tym samouczku, firma Microsoft zaleca, aby nie używać do środowiska produkcyjnego.
+> Podczas testowania kroki opisane w tym samouczku, zaleca się nie używać do środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
+Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać bezpłatne, jeden miesiąc wersję próbną](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [uzyskiwanie bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
 
-Scenariusz, w tym samouczku przedstawiono składa się z dwóch głównych elementów:
+W tym samouczku opisano scenariusz składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie BambooHR z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="add-bamboohr-from-the-gallery"></a>Dodaj BambooHR z galerii
-Aby skonfigurować integrację usługi Azure AD BambooHR, Dodaj BambooHR z galerii do listy zarządzane aplikacje SaaS w następujący sposób:
+Aby skonfigurować integrację BambooHR w usłudze Azure AD, Dodaj BambooHR z galerii z listą zarządzanych aplikacji SaaS, wykonując następujące czynności:
 
-1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -68,68 +68,68 @@ Aby skonfigurować integrację usługi Azure AD BambooHR, Dodaj BambooHR z galer
 
     ![W okienku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać aplikację, wybierz **nowej aplikacji**.
+3. Aby dodać aplikację, wybierz pozycję **nową aplikację**.
 
-    !["Nowa aplikacja" przycisku][3]
+    !["Nowa aplikacja" przycisk][3]
 
-4. W polu wyszukiwania wpisz **BambooHR**. Na liście wyników wybierz **BambooHR**, a następnie wybierz **Dodaj**.
+4. W polu wyszukiwania wpisz **BambooHR**. Na liście wyników wybierz **BambooHR**, a następnie wybierz pozycję **Dodaj**.
 
     ![BambooHR na liście wyników](./media/bamboo-hr-tutorial/tutorial_bamboohr_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz skonfigurować i przetestować Azure AD SSO z BambooHR przy użyciu użytkownika testowego "Britta Simona".
+W tej sekcji możesz skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą BambooHR za pomocą użytkownika testowego "Britta Simon."
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, co jego odpowiednik użytkownika znajduje się w BambooHR. Innymi słowy musisz ustanowić łącze relacji między użytkownikiem usługi Azure AD i danemu użytkownikowi w BambooHR.
+Logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, co użytkownik jego odpowiednika znajduje się w BambooHR. Innymi słowy należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanych użytkownikiem w BambooHR.
 
-Ustanowienie relacji łącze w BambooHR, przypisz usługi Azure AD **nazwy użytkownika** wartość jako BambooHR **Username** wartość.
+Aby ustanowić relację łącza w BambooHR, przypisz usługi Azure AD **nazwy użytkownika** wartość jako BambooHR **Username** wartość.
 
-Aby konfiguracja i testowanie usługi Azure AD SSO z BambooHR, należy wykonać bloków konstrukcyjnych w następnych pięciu sekcjach.
+Aby konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą BambooHR, należy wykonać bloki konstrukcyjne w pięć następnych sekcjach.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azure AD w portalu Azure i konfigurowanie logowania jednokrotnego do aplikacji BambooHR w następujący sposób:
+W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azure AD w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji BambooHR, wykonując następujące czynności:
 
-1. W portalu Azure na **BambooHR** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie Azure portal na **BambooHR** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. W **logowanie jednokrotne** okna w **tryb** listy rozwijanej wybierz **na języku SAML logowania jednokrotnego**.
+2. W **logowanie jednokrotne** okna w **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
  
     ![Okno rejestracji jednokrotnej](./media/bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. W obszarze **BambooHR domeny i adres URL**, wykonaj następujące czynności:
+3. W obszarze **BambooHR domena i adresy URL**, wykonaj następujące czynności:
 
-    ![W sekcji BambooHR domeny i adres URL](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
+    ![W sekcji BambooHR domena i adresy URL](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
-    a. W **Zaloguj się na adres URL** wpisz adres URL w następującym formacie: `https://<company>.bamboohr.com`.
+    a. W **adres URL logowania** wpisz adres URL w następującym formacie: `https://<company>.bamboohr.com`.
 
     b. W **identyfikator** wpisz wartość: `BambooHR-SAML`.
 
     > [!NOTE] 
-    > **Zaloguj się na adres URL** wartość nie jest prawdziwe. Zaktualizuj go z adresem URL rzeczywisty logowania jednokrotnego. Aby uzyskać wartość, skontaktuj się z [zespołem pomocy technicznej klienta BambooHR](https://www.bamboohr.com/contact.php). 
+    > **Adres URL logowania** wartość nie jest prawdziwe. Zaktualizuj go z adresem URL rzeczywistej logowania jednokrotnego. Aby uzyskać wartość, skontaktuj się z pomocą [zespołem pomocy technicznej klienta BambooHR](https://www.bamboohr.com/contact.php). 
  
-4. W obszarze **SAML certyfikat podpisywania**, wybierz pozycję **certyfikatu (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
+4. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
+    ![Link pobierania certyfikatu](./media/bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
 5. Wybierz pozycję **Zapisz**.
 
     ![Przycisk Zapisz](./media/bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. W obszarze **konfiguracji BambooHR**, wybierz pozycję **skonfigurować BambooHR** otworzyć **Konfigurowanie logowania jednokrotnego** okna. W **krótkimi opisami** sekcji, skopiuj **SAML pojedynczy znak na adres URL usługi** do późniejszego użycia.
+6. W obszarze **konfiguracji BambooHR**, wybierz opcję **skonfigurować BambooHR** otworzyć **Konfigurowanie logowania jednokrotnego** okna. W **krótki** sekcji, skopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do późniejszego użycia.
 
     ![Konfiguracja BambooHR](./media/bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
-7. W nowym oknie należy zalogować się jako administrator do witryny firmy BambooHR.
+7. W nowym oknie Zaloguj się w witrynie firmy BambooHR jako administrator.
 
-8. Na stronie głównej wykonaj następujące czynności:
+8. Na stronie głównej należy wykonać następujące czynności:
    
-    ![Strona BambooHR rejestracji jednokrotnej](./media/bamboo-hr-tutorial/ic796691.png "rejestracji jednokrotnej")   
+    ![Na stronie BambooHR logowania jednokrotnego](./media/bamboo-hr-tutorial/ic796691.png "logowania jednokrotnego")   
 
     a. Wybierz **aplikacji**.
    
-    b. W **aplikacje** okienku wybierz **rejestracji jednokrotnej**.
+    b. W **aplikacje** okienku wybierz **logowania jednokrotnego**.
    
     c. Wybierz **SAML logowania jednokrotnego**.
 
@@ -137,31 +137,31 @@ W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azur
    
     ![W okienku SAML logowania jednokrotnego](./media/bamboo-hr-tutorial/IC796692.png "SAML logowania jednokrotnego")
    
-    a. Do **adres Url logowania jednokrotnego logowania** Wklej **SAML pojedynczy znak na adres URL usługi** skopiowany z portalu Azure w kroku 6.
+    a. Do **adres Url logowania SSO** pole, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowaną z witryny Azure portal w kroku 6.
       
-    b. W programie Notatnik Otwórz base-64 zakodowanego certyfikatu, który został pobrany z portalu Azure, kopiować jego zawartości, a następnie wklej go do **certyfikatu X.509** pole.
+    b. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **certyfikat X.509** pole.
    
     c. Wybierz pozycję **Zapisz**.
 
 > [!TIP]
-> Gdy podczas konfigurowania aplikacji, możesz przeczytać zwięzły wersji tych instrukcji w [portalu Azure](https://portal.azure.com). Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** po prostu zaznacz **rejestracji jednokrotnej** karcie, a następnie przejść osadzone dokumentacji za pośrednictwem **konfiguracji** sekcji u dołu. Aby uzyskać informacje, zobacz [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Gdy konfigurujesz aplikacji może odczytywać zwięzłe wersji tych instrukcji w [witryny Azure portal](https://portal.azure.com). Po dodaniu aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** sekcji, po prostu zaznacz **logowania jednokrotnego** kartę, a następnie przejść Dokumentacja za pośrednictwem Embedded **konfiguracji** sekcji u dołu. Aby uzyskać informacje, zobacz [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego o nazwie Simona Britta w portalu Azure.
+Celem tej sekcji jest tworzenie użytkownika testowego o nazwie Britta Simon w witrynie Azure portal.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD Simona Britta][100]
+   ![Tworzenie użytkownika testowego w usłudze Azure AD Britta Simon][100]
 
 Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:
 
-1. W portalu Azure, w lewym okienku wybierz **usługi Azure Active Directory**.
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**.
 
     ![Przycisk usługi Azure Active Directory](./media/bamboo-hr-tutorial/create_aaduser_01.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz **wszyscy użytkownicy**.
+2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/bamboo-hr-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/bamboo-hr-tutorial/create_aaduser_02.png)
 
 3. W górnej części **wszyscy użytkownicy** okienku wybierz **Dodaj**.
 
@@ -169,62 +169,62 @@ Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące 
 
 4. W **użytkownika** okna, wykonaj następujące czynności:
 
-    ![Okno użytkownika](./media/bamboo-hr-tutorial/create_aaduser_04.png)
+    ![W oknie użytkownika](./media/bamboo-hr-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
  
 ### <a name="create-a-bamboohr-test-user"></a>Tworzenie użytkownika testowego BambooHR
 
-Aby umożliwić użytkownikom usługi Azure AD do logowania się na BambooHR, skonfigurować je ręcznie w BambooHR w następujący sposób:
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do BambooHR, skonfigurować je ręcznie w BambooHR, wykonując następujące czynności:
 
-1. Zaloguj się do Twojego **BambooHR** lokacji jako administrator.
+1. Zaloguj się do Twojej **BambooHR** lokacji jako administrator.
 
 2. Na pasku narzędzi u góry wybierz **ustawienia**.
    
-    ![Przycisk ustawień](./media/bamboo-hr-tutorial/IC796694.png "ustawienie")
+    ![Przycisk Ustawienia](./media/bamboo-hr-tutorial/IC796694.png "ustawienie")
 
 3. Wybierz pozycję **Przegląd**.
 
 4. W okienku po lewej stronie wybierz **zabezpieczeń** > **użytkowników**.
 
-5. Wpisz nazwę użytkownika, hasło i adres e-mail prawidłowe usługi Azure AD konta chcesz skonfigurować.
+5. Wpisz nazwę użytkownika, hasło i adres e-mail, prawidłowy usługi Azure AD konta chcesz skonfigurować.
 
 6. Wybierz pozycję **Zapisz**.
         
 >[!NOTE]
 >Aby skonfigurować konta użytkowników usługi Azure AD, umożliwia także BambooHR narzędzia do tworzenia konta użytkownika lub interfejsów API.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Włącz Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu BambooHR użytkownika.
+Umożliw Britta Simon do udzielania dostępu do BambooHR za pomocą logowania jednokrotnego usługi Azure.
 
 ![Przypisanie roli użytkownika][200] 
 
-Aby przypisać użytkownika Simona Britta BambooHR, wykonaj następujące czynności:
+Aby przypisać użytkownika Britta Simon BambooHR, wykonaj następujące czynności:
 
-1. W portalu Azure Otwórz widok aplikacji, przejdź do widoku katalogu, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, przejdź do widoku katalogu, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. W **aplikacje dla przedsiębiorstw** listy, wybierz **BambooHR**.
+2. W **aplikacje dla przedsiębiorstw** listy wybierz **BambooHR**.
 
-    ![Łącze BambooHR na liście aplikacje dla przedsiębiorstw](./media/bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
+    ![Link BambooHR na liście aplikacji dla przedsiębiorstw](./media/bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
 
 3. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Wybierz **Dodaj** przycisk, a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+4. Wybierz **Dodaj** przycisk a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. W **użytkowników i grup** okna w **użytkowników** listy, wybierz **Simona Britta**.
+5. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
 
 6. Wybierz **wybierz** przycisku.
 
@@ -232,15 +232,15 @@ Aby przypisać użytkownika Simona Britta BambooHR, wykonaj następujące czynno
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Przetestować konfigurację programu Azure AD z logowania jednokrotnego za pomocą panelu dostępu.
+Test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
 
-Po wybraniu **BambooHR** kafelka w panelu dostępu użytkownik powinien pobrać automatycznie zalogowany do aplikacji BambooHR.
+Po wybraniu **BambooHR** kafelka w panelu dostępu, należy uzyskać automatycznie zalogowano się do aplikacji BambooHR.
 
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

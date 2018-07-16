@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a195fa62efa7332f7268c195a3edfb0a8b1d0a7c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 81b508661ac7195f690739fe7961691ddbedc9b0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007686"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049364"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Umożliwia dostęp do usługi Azure Storage za pomocą klucza dostępu Windows VM tożsamości usługi zarządzanej
 
@@ -82,7 +82,7 @@ Jeśli nie masz jeszcze jeden, teraz utworzysz konto magazynu. Można również 
 5. Upewnij się, **subskrypcji** i **grupy zasobów** są zgodne z typami, które zostały określone podczas tworzenia maszyny Wirtualnej w poprzednim kroku.
 6. Kliknij przycisk **Utwórz**.
 
-    ![Utwórz nowe konto magazynu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Utwórz nowe konto magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Utwórz kontener obiektów blob na koncie magazynu
 
@@ -93,7 +93,7 @@ Firma Microsoft będzie później Przekaż i pobierze plik do nowego konta magaz
 3. Kliknij przycisk **+ kontener** u góry strony i "nowy kontener" panelu wysuwa się.
 4. Nadaj nazwę kontenera, wybierz poziom dostępu, a następnie kliknij przycisk **OK**. Podana nazwa będzie używana w dalszej części tego samouczka. 
 
-    ![Tworzenie kontenera magazynu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
+    ![Tworzenie kontenera magazynu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udzielanie dostępu tożsamości usługi Zarządzanej maszyny Wirtualnej do używania kluczy dostępu do konta magazynu 
 
@@ -107,7 +107,7 @@ Usługa Azure Storage nie obsługuje natywnie uwierzytelniania usługi Azure AD.
 6. Następnie upewnij się, odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej, a następnie ustaw **grupy zasobów** na "Wszystkie grupy zasobów".  
 7. Na koniec w obszarze **wybierz** wybierz maszynę wirtualną Windows na liście rozwijanej, a następnie kliknij przycisk **Zapisz**. 
 
-    ![Tekst ALT obrazu](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
+    ![Tekst ALT obrazu](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
 

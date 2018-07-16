@@ -9,25 +9,25 @@ ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: b9484336add0719749e9f0af56bdd70fa3906ef5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29532345"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38752663"
 ---
-Aby dodać dwa tagi do grupy zasobów, użyj [Aktualizacja grupy az](/cli/azure/group#az_group_update) polecenia:
+Aby dodać dwa tagi do grupy zasobów, użyj polecenia [az group update](/cli/azure/group#az_group_update):
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Environment=Test tags.Dept=IT
 ```
 
-Załóżmy, że chcesz dodać tag trzecich. Ponownie uruchom polecenie z nowego tagu. Zostanie ono dodane do istniejących tagów.
+Załóżmy, że chcesz dodać trzeci tag. Uruchom ponownie polecenie z nowym tagiem. Zostanie on dołączony do istniejących tagów.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.Project=Documentation
 ```
 
-Zasoby nie dziedziczy tagi grupy zasobów. Obecnie grupa zasobów zawiera trzy znaczniki, ale zasoby nie ma żadnych znaczników. Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów i zachować istniejące znaczniki zasobów, użyj następującego skryptu:
+Zasoby nie dziedziczą tagów z grupy zasobów. Obecnie Twoja grupa zasobów zawiera trzy tagi, ale zasoby nie mają żadnych tagów. Aby zastosować wszystkie tagi z grupy zasobów do jej zasobów i zachować tagi istniejące w zasobach, użyj następującego skryptu:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -53,7 +53,7 @@ do
 done
 ```
 
-Alternatywnie można zastosować tagi z grupy zasobów do zasobów bez zachować istniejące znaczniki:
+Alternatywnie możesz zastosować tagi z grupy zasobów do zasobów bez zachowania istniejących tagów:
 
 ```azurecli-interactive
 # Get the tags for the resource group
@@ -73,13 +73,13 @@ do
 done
 ```
 
-Aby połączyć kilka wartości w jeden tag, użyj ciągu JSON.
+Aby połączyć kilka wartości w jednym tagu, użyj ciągu JSON.
 
 ```azurecli-interactive
 az group update -n myResourceGroup --set tags.CostCenter='{"Dept":"IT","Environment":"Test"}'
 ```
 
-Aby usunąć wszystkie tagi na grupę zasobów, należy użyć:
+Aby usunąć wszystkie tagi w grupie zasobów, użyj następującego polecenia:
 
 ```azurecli-interactive
 az group update -n myResourceGroup --remove tags

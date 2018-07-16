@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 240f5270d083fa5f4742f3ed2cd61feee2b635ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718961"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39056763"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -38,9 +38,9 @@ Wymagania w zakresie rozmiaru serwera konfiguracji zależą od potencjalnych wsp
 
 | **CPU** | **Pamięć** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny** |
 | --- | --- | --- | --- | --- |
-| 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie @ 2,5 GHz) |16 GB |300 GB |500 GB lub mniej |Replikowanie maszyn mniej niż 100. |
-| 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni @ 2,5 GHz) |18 GB |600 GB |Od 500 GB do 1 TB |Replikowanie maszyn 100 150. |
-| 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz) |32 GB |1 TB |1 TB do 2 TB |Replikowanie maszyn 150 – 200. |
+| 8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz) |16 GB |300 GB |500 GB lub mniej |Replikowanie maszyn mniej niż 100. |
+| 12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) |18 GB |600 GB |Od 500 GB do 1 TB |Replikowanie maszyn 100 150. |
+| 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni \@ 2,5 GHz) |32 GB |1 TB |1 TB do 2 TB |Replikowanie maszyn 150 – 200. |
 
 Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się z [zagadnienia dotyczące planowania pojemności](/site-recovery-plan-capacity-vmware.md). Uruchom [narzędzie planista wdrażania](site-recovery-deployment-planner.md) potrzeby replikacji oprogramowania VMWare.
 

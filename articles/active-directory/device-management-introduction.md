@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d5ddd83a2335e7a08bac587aa627f1dcae9738c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1a2b32e7e0e86608f879941485395ebe379a5c1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970904"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048865"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory
 
@@ -181,8 +181,8 @@ Zgodnie z zasadą kciuka należy użyć:
 - Aby dowiedzieć się więcej na temat dostępu warunkowego opartego na urządzeniach, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 - Do instalacji:
-    - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](device-management-azuread-registered-devices-windows10-setup.md)
-    - Urządzenia przyłączone do usługi Azure Active Directory, zobacz [urządzeń przyłączonych do konfigurowania usługi Azure Active Directory](device-management-azuread-joined-devices-setup.md)
+    - Usługa Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10, zobacz [sposób konfigurowania usługi Azure Active Directory zarejestrowanych urządzeń z systemem Windows 10](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+    - Urządzenia przyłączone do usługi Azure Active Directory, zobacz [urządzeń przyłączonych do konfigurowania usługi Azure Active Directory](user-help/device-management-azuread-joined-devices-setup.md)
     - Hybrydowe urządzeń przyłączonych do usługi Azure AD, zobacz [w jaki sposób skonfigurować hybrydowych urządzeń w przyłączonych do usługi Azure Active Directory](device-management-hybrid-azuread-joined-devices-setup.md).
 
 

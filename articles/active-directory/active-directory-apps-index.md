@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 76430fa5652e98cba86c41433f376e27dbb1639a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446864"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054883"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów, zapisywane o różnych funkcjach związane z aplikacją w usłudze Azure Active Directory (Azure AD).
@@ -112,7 +112,7 @@ Po skonfigurowaniu logowania jednokrotnego do aplikacji i zasobów, możesz doda
 | Jak włączyć dostęp warunkowy dla następujących typów zasobów |[Dostęp warunkowy dla aplikacji SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Dostęp warunkowy dla usługi Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych](active-directory-conditional-access-azure-portal.md)<br /><br />[Dostęp warunkowy dla aplikacji lokalnych opublikowanych za pośrednictwem serwera Proxy aplikacji usługi Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Jak rejestrować urządzenia z usługą Azure Active Directory, aby włączyć zasady dostępu warunkowego opartego na urządzeniach |[Omówienie usługi Azure Active Directory rejestracji urządzenia](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Urządzenia Windows przyłączone do włączania automatycznej rejestracji urządzeń dla domeny](active-directory-conditional-access-automatic-device-registration.md)<br />— [Urządzeń kroki dla Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Urządzeń kroki dla Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
-| Jak używać aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuetapowej | [Aplikację Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Jak używać aplikacji Microsoft Authenticator na potrzeby weryfikacji dwuetapowej | [Aplikację Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 Dostęp warunkowy jest [usługi Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkcji.
 
@@ -180,7 +180,7 @@ Panel dostępu usługi Azure AD jest, gdzie użytkownicy końcowi mogą uruchami
 | Artykuł przewodnik |  |
 |:---:| --- |
 | Porównanie różnych opcji dostępnymi na potrzeby wdrażania aplikacji pojedynczego logowania jednokrotnego dla użytkowników |[Wdrażanie usługi Azure AD zintegrowanych aplikacji do użytkowników](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
-| Omówienie panelu dostępu i jego przenośnych MyApps równoważne |[Wprowadzenie do panelu dostępu i MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Dla systemu android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| Omówienie panelu dostępu i jego przenośnych MyApps równoważne |[Wprowadzenie do panelu dostępu i MyApps](user-help/active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Dla systemu android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Jak uzyskać dostęp do aplikacji usługi Azure AD w witrynie sieci Web usługi Office 365 |[Za pomocą uruchamianie aplikacji usługi Office 365](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Jak uzyskać dostęp do aplikacji usługi Azure AD z aplikacjami mobilnymi usługi Intune Managed Browser |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Dla systemu android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Jak uzyskać dostęp do aplikacji usługi Azure AD za pomocą linków bezpośrednich do zainicjowania logowania jednokrotnego |[Wprowadzenie łącza bezpośrednie logowanie jednokrotne do aplikacji](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |

@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości — umiarkowane tekstu przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Jak średnie tekst przy użyciu zestawu SDK moderatora zawartości platformy Azure dla platformy .NET
+title: Usługa Azure Content Moderator — Moderowanie tekstu przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+description: Jak Moderowanie tekstu dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,37 +9,37 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 238d086e87b0e52f0887af5c4db58e8f72796b49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347745"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049885"
 ---
-# <a name="moderate-text-using-net"></a>Umiarkowany tekstu przy użyciu platformy .NET
+# <a name="moderate-text-using-net"></a>Moderowanie tekstu przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady ułatwiające rozpoczęcie pracy korzystać z zawartości moderatora zestawu SDK dla platformy .NET:
-- Wykrywanie potencjalnych niestosownych wyrażeń w tekście z filtrowanie na podstawie terminu
-- Użyj machine learning na podstawie modeli do [klasyfikowania tekst](text-moderation-api.md#classification) na trzy kategorie.
-- Wykryj dane osobowe lub informacje takie jak USA i Wielka Brytania numery telefonów, adresy e-mail i Stanów Zjednoczonych, adresów pocztowych.
-- Normalizuj tekst i Autokorekty błędów pisowni
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci rozpocząć korzystanie z Content Moderator zestawu SDK dla platformy .NET do:
+- Wykrywać potencjalne wulgaryzmy w tekście do filtrowania na podstawie terminu
+- Modele oparte na nauce maszyny, aby użyć [klasyfikowania tekst](text-moderation-api.md#classification) na trzy kategorie.
+- Wykryj identyfikowalne dane osobowe (PII), takich jak Stany Zjednoczone i Zjednoczone Królestwo numery telefonów, adresy e-mail i Stanów Zjednoczonych, adresów pocztowych.
+- Normalizuj literówki tekstu i Autokorekty
 
-W tym artykule przyjęto założenie, że znasz już program Visual Studio i C#.
+W tym artykule założono, że znasz już program Visual Studio i języka C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Załóż moderatora zawartości usług
+## <a name="sign-up-for-content-moderator-services"></a>Załóż konto usługi Content Moderator
 
-Zanim użyjesz usługi moderatora zawartości za pośrednictwem interfejsu API REST lub zestawu SDK, należy klucza subskrypcji.
-Zapoznaj się [szybkiego startu](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
+Zanim użyjesz usługi Content Moderator za pośrednictwem interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
+Zapoznaj się [Szybki Start](quick-start.md) Aby dowiedzieć się, jak można uzyskać klucz.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-1. Dodaj nową **aplikacji konsoli (.NET Framework)** projektu do rozwiązania.
+1. Dodaj nową **Aplikacja konsoli (.NET Framework)** projektu do rozwiązania.
 
-   W przykładowym kodzie nazwij projekt **TextModeration**.
+   W przykładowym kodzie, nadaj projektowi nazwę **TextModeration**.
 
-1. Wybierz ten projekt jako projekt startowy pojedynczego dla rozwiązania.
+1. Wybierz ten projekt jako pojedynczy projekt startowy rozwiązania.
 
-1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [szybkiego startu pomocnika klienta moderatora zawartości](content-moderator-helper-quickstart-dotnet.md).
+1. Dodaj odwołanie do **ModeratorHelper** projektu zestawu, który został utworzony w [pakietu Content Moderator klienta pomocnika Przewodnik Szybki Start](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
@@ -49,9 +49,9 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizacja programu użytkownika za pomocą instrukcji
+### <a name="update-the-programs-using-statements"></a>Aktualizacja programu za pomocą instrukcji
 
-Zmodyfikuj program użytkownika przy użyciu instrukcji.
+Modyfikowanie programu za pomocą instrukcji.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -65,7 +65,7 @@ Zmodyfikuj program użytkownika przy użyciu instrukcji.
 
 ### <a name="initialize-application-specific-settings"></a>Inicjowanie ustawienia specyficzne dla aplikacji
 
-Dodaj następujące pola statycznego do **Program** klasy w pliku Program.cs.
+Dodaj następujące pola statyczne do **Program** klasy w pliku Program.cs.
 
     /// <summary>
     /// The name of the file that contains the text to evaluate.
@@ -80,16 +80,16 @@ Dodaj następujące pola statycznego do **Program** klasy w pliku Program.cs.
     /// <remarks>Relative paths are ralative the execution directory.</remarks>
     private static string OutputFile = "TextModerationOutput.txt";
 
-Użyliśmy następującego tekstu do generowania danych wyjściowych dla tego przewodnika Szybki Start:
+Użyliśmy poniższy tekst do generowania danych wyjściowych dla tego przewodnika Szybki Start:
 
 > [!NOTE]
-> Nieprawidłowy numer ubezpieczenia społecznego w następujący przykładowy tekst jest zamierzone. Ma na celu przedstawienia przykładowe dane wejściowe i wyjściowe formatu.
+> Nieprawidłowy numer ubezpieczenia społecznego w następujący przykładowy tekst jest celowe. Celem jest przekazać przykładowe dane wejściowe i wyjściowe formatu.
 
     Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
     These are all UK phone numbers, the last two being Microsoft UK support numbers: +44 870 608 4000 or 0344 800 2400 or 
     0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 
-## <a name="add-code-to-load-and-evaluate-the-input-text"></a>Dodaj kod, aby załadować i ocena wejściowego tekstu
+## <a name="add-code-to-load-and-evaluate-the-input-text"></a>Dodaj kod, aby załadować i ocena tekst wejściowy
 
 Dodaj następujący kod do **Main** metody.
 
@@ -117,13 +117,13 @@ Dodaj następujący kod do **Main** metody.
     }
 
 > [!NOTE]
-> Klucz usługi moderatora zawartości ma żądań na drugi limit szybkości (RPS), a Jeśli przekroczysz limit zestawu SDK zgłasza wyjątek z kodem błędu 429.
+> Klucz usługi Content Moderator ma żądań na drugi limit szybkości (jednostek Uzależnionych), a Jeśli przekroczysz limit, zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Klucz warstwa bezpłatna ma limit szybkości jeden RPS.
+> Jeśli za pomocą klucza warstwy bezpłatnej, liczba żądań jest ograniczona do jednego żądania na sekundę.
 
 ## <a name="run-the-program-and-review-the-output"></a>Uruchom program i przejrzyj dane wyjściowe
 
-Przykładowe dane wyjściowe w przypadku programu podczas zapisywania do pliku dziennika to:
+Przykładowe dane wyjściowe dla programu, gdyż zapisany w pliku dziennika to:
 
     Autocorrect typos, check for matching terms, PII, and classify.
     {
@@ -211,4 +211,4 @@ Przykładowe dane wyjściowe w przypadku programu podczas zapisywania do pliku d
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Pobierz rozwiązania Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) to i inne elementy zawartości moderatora szybkiego startu dla platformy .NET i rozpocząć pracę na integracją.
+[Pobierz rozwiązanie programu Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dla tego programu oraz inne Przewodniki Szybki Start pakietu Content Moderator dla platformy .NET i Rozpocznij pracę nad integracją.

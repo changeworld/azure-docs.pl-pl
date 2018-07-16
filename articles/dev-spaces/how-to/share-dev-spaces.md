@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 9345015a8732da02ea68711cd807556a543d8d01
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6fb50f985f6d4f3c5d8644498316fb6229e2eaee
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930148"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054682"
 ---
 # <a name="share-azure-dev-spaces"></a>Miejsca do magazynowania udziału usługi Azure Dev
 
@@ -25,7 +25,7 @@ Za pomocą usługi Azure Dev miejsca do magazynowania można udostępnić obszar
 ## <a name="set-up-a-dev-space-for-multiple-developers"></a>Konfigurowanie miejsca dev dla wielu deweloperów
 
 1. Tworzenie przestrzeni deweloperów na platformie Azure. Wybierz [platformy .NET Core i programu VS Code](../get-started-netcore.md), [platformy .NET Core i Visual Studio](../get-started-netcore-visualstudio.md), lub [środowiska Node.js i program VS Code](../get-started-nodejs.md). Musisz mieć dostęp właściciela lub współautora do wybranej subskrypcji platformy Azure.
-1. Skonfiguruj miejsce Azure Dev na **grupy zasobów** do [przyznać prawa współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając następujące polecenie: `azds list`
+1. Skonfiguruj miejsce Azure Dev na **grupy zasobów** do [przyznać prawa współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając następujące polecenie: `azds list-up`
 1. Poproś członków zespołu, aby **wybierz miejsce dev** aby tworzyć w nim.
      * **Wiersz polecenia lub programu VS Code**: Aby wyświetlić istniejące usługi Azure Dev miejsca do magazynowania ma dostęp do: `azds space list`. Aby wybrać miejsce dev: `azds space select`.
      * **Środowiska IDE programu Visual Studio**: Otwórz projekt w programie Visual Studio, wybierz **miejsca do magazynowania Azure Dev** z uruchamiania ustawienia listy rozwijanej. W wyświetlonym oknie dialogowym Wybierz istniejący klaster.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: d862cd0223609d80c511362edbcc0ed6dd512b1f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5cdaba2a280221fa5fa9274ebfa6cafa18e7690c
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859151"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39055019"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Wyrażenia i funkcje w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,14 +41,14 @@ Wartości JSON w definicji może być literałem lub wyrażeń, które są oceni
 ```
 
 ## <a name="expressions"></a>Wyrażenia  
-Wyrażenia może występować w dowolnym miejscu w wartości ciągu JSON i zawsze skutkuje inną wartość JSON. Jeśli wartość JSON jest wyrażeniem, treść wyrażenia jest wyodrębniany, usuwając znaku (\@). Jeśli potrzebne jest ciągiem literału, zaczynający się od @, należy użyć znaków ucieczki, za pomocą@. W poniższych przykładach pokazano, jak są obliczane wyrażenia.  
+Wyrażenia może występować w dowolnym miejscu w wartości ciągu JSON i zawsze skutkuje inną wartość JSON. Jeśli wartość JSON jest wyrażeniem, treść wyrażenia jest wyodrębniany, usuwając znaku (\@). Jeśli potrzebne jest ciągiem literału, zaczynający się od \@, należy użyć znaków ucieczki, za pomocą \@ \@. W poniższych przykładach pokazano, jak są obliczane wyrażenia.  
   
 |Wartość JSON|Wynik|  
 |----------------|------------|  
 |"parameters"|Znaki "parameters" są zwracane.|  
 |"parametry [1]"|Zwracane są znaki "parameters [1]".|  
-|"\@@"|Ciąg znaków: 1, który zawiera "@" jest zwracany.|  
-|" \@"|Ciąg znaków 2, który zawiera "@" jest zwracany.|  
+|"\@\@"|Ciąg znaków: 1, który zawiera "\@" jest zwracany.|  
+|" \@"|Ciąg znaków 2, który zawiera " \@" jest zwracany.|  
   
  Wyrażenia może również wystąpić wewnątrz ciągów, przy użyciu funkcji o nazwie *Interpolacja ciągów* którym określeń są opakowane w `@{ ... }`. Na przykład: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -62,7 +62,7 @@ Wyrażenia może występować w dowolnym miejscu w wartości ciągu JSON i zawsz
 |"\@{potoku ().parameters.myNumber}"| Zwraca `42` jako *ciąg*.|  
 |"Odpowiedź brzmi: @{potoku ().parameters.myNumber}"| Zwraca ciąg `Answer is: 42`.|  
 |"\@concat (" odpowiedź brzmi: ", string(pipeline().parameters.myNumber))"| Zwraca ciąg `Answer is: 42`|  
-|"Odpowiedź brzmi: \@@{potoku ().parameters.myNumber}"| Zwraca ciąg `Answer is: @{pipeline().parameters.myNumber}`.|  
+|"Odpowiedź brzmi: \@ \@{potoku ().parameters.myNumber}"| Zwraca ciąg `Answer is: @{pipeline().parameters.myNumber}`.|  
   
 ### <a name="examples"></a>Przykłady
 
@@ -168,9 +168,9 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
 |Nazwa funkcji|Opis|  
 |-------------------|-----------------|  
 |zawiera|Zwraca wartość PRAWDA, jeśli słownik zawiera listę kluczy, zawiera wartość lub ciąg zawiera podciąg. Na przykład poniższe wyrażenie zwraca `true:``contains('abacaba','aca')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: w ramach kolekcji<br /><br /> **Opis**: wymagane. Kolekcja do przeszukania.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: obiekcie Find<br /><br /> **Opis**: wymagane. Obiekt do wyszukiwania wewnątrz **w obrębie kolekcji**.|  
-|długość|Zwraca liczbę elementów w tablicy lub ciągu. Na przykład poniższe wyrażenie zwraca `3`:  `length('abc')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis**: wymagane. Kolekcja do uzyskania długości.|  
+|Długość|Zwraca liczbę elementów w tablicy lub ciągu. Na przykład poniższe wyrażenie zwraca `3`:  `length('abc')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis**: wymagane. Kolekcja do uzyskania długości.|  
 |pusty|Zwraca wartość PRAWDA, jeśli obiekt, tablica lub ciąg jest pusty. Na przykład poniższe wyrażenie zwraca `true`:<br /><br /> `empty('')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis**: wymagane. Kolekcja do sprawdzenia, czy jest pusta.|  
-|część wspólna|Zwraca pojedynczą tablicę lub obiekt z wspólne elementy między przekazanymi tablicami i obiektami do niego. Na przykład, ta funkcja zwraca `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry dla tej funkcji może być zestawem obiektów lub zestawem tablic (nie ich kombinacją). Jeśli istnieją dwa obiekty o tej samej nazwie, ostatni obiekt o danej nazwie jest wyświetlany w obiekcie końcowym.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis**: wymagane. Kolekcje do wyliczenia wartości. Obiekt musi być w wszystkich przekazanych kolekcjach, aby są wyświetlane w wynikach.|  
+|Część wspólna|Zwraca pojedynczą tablicę lub obiekt z wspólne elementy między przekazanymi tablicami i obiektami do niego. Na przykład, ta funkcja zwraca `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry dla tej funkcji może być zestawem obiektów lub zestawem tablic (nie ich kombinacją). Jeśli istnieją dwa obiekty o tej samej nazwie, ostatni obiekt o danej nazwie jest wyświetlany w obiekcie końcowym.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis**: wymagane. Kolekcje do wyliczenia wartości. Obiekt musi być w wszystkich przekazanych kolekcjach, aby są wyświetlane w wynikach.|  
 |Unia|Zwraca pojedynczą tablicę lub obiekt z wszystkich elementów w tablicy lub obiektu są przekazywane do niego. Na przykład ta funkcja zwraca `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> Parametry dla tej funkcji może być zestawem obiektów lub zestawem tablic (nie ich kombinacją). Jeśli istnieją dwa obiekty o tej samej nazwie w końcowych danych wyjściowych, ostatni obiekt o danej nazwie jest wyświetlany w obiekcie końcowym.<br /><br /> **Liczba parametrów**: 1... *n*<br /><br /> **Nazwa**: kolekcja *n*<br /><br /> **Opis**: wymagane. Kolekcje do wyliczenia wartości. Obiekt, który pojawia się w dowolnej kolekcji, pojawia się w wyniku.|  
 |pierwszy|Zwraca pierwszy element w tablicy lub ciągu przekazany. Na przykład, ta funkcja zwraca `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis**: wymagane. Kolekcja, aby pobrać pierwszy obiekt.|  
 |ostatni|Zwraca ostatni element w tablicy lub ciągu przekazany. Na przykład, ta funkcja zwraca `3`:<br /><br /> `last('0123')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis**: wymagane. Kolekcja, aby pobrać ostatni obiekt.|  
@@ -203,7 +203,7 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
   
 -   wartość logiczna  
   
--   tablice  
+-   Tablice  
   
 -   słowniki  
   
@@ -246,7 +246,7 @@ W poniższym przykładzie potok przyjmuje **inputPath** i **outputPath** paramet
 |dzielenie modulo|Zwraca wynik resztę po wykonaniu dzielenia dwóch liczb (modulo). Na przykład poniższe wyrażenie zwraca `2`:<br /><br /> `mod(10,4)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: dzielna<br /><br /> **Opis**: wymagane. Liczba do podzielenia przez **dzielnik**.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: dzielnik.<br /><br /> **Opis**: wymagane. Liczba do podzielenia **dzielna** przez. Po wykonaniu dzielenia reszta jest zajęta.|  
 |min.|Istnieją dwa różne wzorce wywoływania tej funkcji: `min([0,1,2])` tutaj min pobiera tablicę. To wyrażenie zwraca `0`. Alternatywnie, może to trwać listę wartości rozdzielonych przecinkami: `min(0,1,2)` ta funkcja zwraca wartość 0. Należy pamiętać, że wszystkie wartości muszą być liczbami, więc jeśli parametr jest tablicą musi zawierać wyłącznie cyfry w nim.<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcja lub wartość<br /><br /> **Opis**: wymagane. Może być on tablicę wartości, aby znaleźć wartości minimalnej lub pierwsza wartość zestawu.<br /><br /> **Liczba parametrów**: 2... *n*<br /><br /> **Nazwa**: wartość *n*<br /><br /> **Opis**: opcjonalne. Jeśli wartość jest pierwszy parametr, następnie można przekazać dodatkowe wartości i minimum wszystkich wartości przekazane są zwracane.|  
 |maks.|Istnieją dwa różne wzorce wywoływania tej funkcji:  `max([0,1,2])`<br /><br /> W tym miejscu max pobiera tablicę. To wyrażenie zwraca `2`. Alternatywnie, może to trwać listę wartości rozdzielonych przecinkami: `max(0,1,2)` ta funkcja zwraca wartość 2. Należy pamiętać, że wszystkie wartości muszą być liczbami, więc jeśli parametr jest tablicą musi zawierać wyłącznie cyfry w nim.<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcja lub wartość<br /><br /> **Opis**: wymagane. Może być on tablicę wartości, aby znaleźć wartości maksymalnej lub pierwsza wartość zestawu.<br /><br /> **Liczba parametrów**: 2... *n*<br /><br /> **Nazwa**: wartość *n*<br /><br /> **Opis**: opcjonalne. Jeśli wartość jest pierwszy parametr, następnie można przekazać dodatkowe wartości, a maksimum wszystkich wartości przekazane są zwracane.|  
-|zakres| Generuje tablicę wartości całkowitych, zaczynając od konkretnej liczby, i zdefiniowania długości zwróconej tablicy. Na przykład, ta funkcja zwraca `[3,4,5,6]`:<br /><br /> `range(3,4)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: indeks początkowy<br /><br /> **Opis**: wymagane. Jest to pierwsza liczba całkowita w tablicy.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: liczba<br /><br /> **Opis**: wymagane. Liczb całkowitych, które znajdują się w tablicy.|  
+|Zakres| Generuje tablicę wartości całkowitych, zaczynając od konkretnej liczby, i zdefiniowania długości zwróconej tablicy. Na przykład, ta funkcja zwraca `[3,4,5,6]`:<br /><br /> `range(3,4)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: indeks początkowy<br /><br /> **Opis**: wymagane. Jest to pierwsza liczba całkowita w tablicy.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: liczba<br /><br /> **Opis**: wymagane. Liczb całkowitych, które znajdują się w tablicy.|  
 |RAND| Generuje losową wartość całkowitą z określonego zakresu (włącznie z wartościami na obu końcach. Na przykład może to zwrócić `42`:<br /><br /> `rand(-1000,1000)`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: co najmniej<br /><br /> **Opis**: wymagane. Najmniejsza liczba całkowita możliwej do zwrócenia.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: maksymalna<br /><br /> **Opis**: wymagane. Największej liczbie całkowitej możliwej do zwrócenia.|  
   
 ## <a name="date-functions"></a>Funkcje daty  

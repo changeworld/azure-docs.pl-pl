@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z TimeOffManager | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i TimeOffManager.
+title: 'Samouczek: Integracja usługi Azure Active Directory z TimeOffManager | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i TimeOffManager.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308245"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39050616"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Samouczek: Integracji Azure Active Directory z TimeOffManager
+# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Samouczek: Integracja usługi Azure Active Directory z TimeOffManager
 
-Z tego samouczka dowiesz się integrowanie TimeOffManager z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować TimeOffManager w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD TimeOffManager zapewnia następujące korzyści:
+Integrowanie TimeOffManager z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do TimeOffManager
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do TimeOffManager (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do TimeOffManager
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do TimeOffManager (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z TimeOffManager, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą TimeOffManager, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - TimeOffManager logowanie jednokrotne włączone subskrypcji
@@ -46,21 +46,21 @@ Aby skonfigurować integrację usługi Azure AD z TimeOffManager, potrzebne są 
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj TimeOffManager z galerii
-2. Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+2. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 ## <a name="add-timeoffmanager-from-the-gallery"></a>Dodaj TimeOffManager z galerii
-Aby skonfigurować integrację usługi Azure AD TimeOffManager, należy dodać TimeOffManager z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację TimeOffManager w usłudze Azure AD, należy dodać TimeOffManager z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać TimeOffManager z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -68,61 +68,61 @@ Aby skonfigurować integrację usługi Azure AD TimeOffManager, należy dodać T
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **TimeOffManager**, wybierz pozycję **TimeOffManager** z panelu wyników, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **TimeOffManager**, wybierz opcję **TimeOffManager** panel wyników i kliknij **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dodaj z galerii](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z TimeOffManager w oparciu o nazwie "Britta Simona" użytkownika testowego.
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą TimeOffManager w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w TimeOffManager jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w TimeOffManager musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w TimeOffManager do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w TimeOffManager musi można ustanowić.
 
-W TimeOffManager, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W TimeOffManager, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z TimeOffManager, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TimeOffManager, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego TimeOffManager](#create-a-timeoffmanager-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta TimeOffManager połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego TimeOffManager](#create-a-timeoffmanager-test-user)**  — aby odpowiednikiem Britta Simon w TimeOffManager połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji TimeOffManager.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji TimeOffManager.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z TimeOffManager, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z TimeOffManager, wykonaj następujące czynności:**
 
-1. W portalu Azure na **TimeOffManager** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **TimeOffManager** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![SAML na podstawie logowania jednokrotnego](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
+    ![SAML logowania opartego na](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
 
-3. Na **TimeOffManager domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **TimeOffManager domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-     ![Sekcja TimeOffManager domeny i adresy URL](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
+     ![Sekcja TimeOffManager domena i adresy URL](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
-    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
+    W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL odpowiedzi. Można uzyskać wartość tego parametru **logowania jednokrotnego strony ustawień** którym znajduje się w dalszej części samouczka lub skontaktuj się z [zespołem pomocy technicznej TimeOffManager](https://www.purelyhr.com/contact-us).
+    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywistego adresu URL odpowiedzi. Możesz uzyskać tę wartość z **logowania jednokrotnego na stronie ustawienia** co jest opisane w dalszej części samouczka lub skontaktuj się z [zespołem pomocy technicznej TimeOffManager](https://www.purelyhr.com/contact-us).
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Sekcja certyfikat podpisywania SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
+    ![Sekcji certyfikat podpisywania SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
-5. Celem tej sekcji jest przedstawiają sposób umożliwić użytkownikom uwierzytelnianie na TimeOffManger do swojego konta w usłudze Azure AD przy użyciu federacyjnego na podstawie protokołu SAML.
+5. Celem tej sekcji jest opisują, jak umożliwić użytkownikom na uwierzytelnianie TimeOffManger za pomocą konta w usłudze Azure AD przy użyciu Federacji, na podstawie protokołu SAML.
     
-    Aplikacja TimeOffManger oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Poniższy zrzut ekranu przedstawia przykład tego.
+    Aplikacja TimeOffManger oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego.
 
-    ![atrybuty tokenu SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_attrb.png "atrybuty tokenu saml")
+    ![atrybuty tokenu języka SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_attrb.png "atrybuty tokenu języka saml")
     
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |
@@ -130,65 +130,65 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | nazwisko |User.surname |
     | Email |User.mail |
     
-    a.  Dla każdego wiersza danych w tabeli powyżej, kliknij przycisk **Dodaj atrybut użytkownika**.
+    a.  Dla każdego wiersza danych w powyższej tabeli, kliknij przycisk **Dodaj atrybut użytkownika**.
     
-    ![atrybuty tokenu SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "atrybuty tokenu saml")
+    ![atrybuty tokenu języka SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "atrybuty tokenu języka saml")
     
-    ![atrybuty tokenu SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb1.png "atrybuty tokenu saml")
+    ![atrybuty tokenu języka SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb1.png "atrybuty tokenu języka saml")
     
-    b.  W **nazwa atrybutu** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b.  W **nazwa atrybutu** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
     
-    c.  W **wartość atrybutu** pole tekstowe, wybierz wartość atrybutu wyświetlany dla danego wiersza.
+    c.  W **wartość atrybutu** pola tekstowego, wybierz wartość atrybutu wyświetlanego dla tego wiersza.
     
     d.  Kliknij przycisk **OK**.
     
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/timeoffmanager-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/timeoffmanager-tutorial/tutorial_general_400.png)
 
-7. Na **konfiguracji TimeOffManager** , kliknij przycisk **skonfigurować TimeOffManager** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+7. Na **konfiguracji TimeOffManager** , kliknij przycisk **skonfigurować TimeOffManager** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Sekcja konfiguracji TimeOffManager](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_configure.png) 
 
-8. W oknie przeglądarki innej witryny sieci web Zaloguj się do witryny firmy TimeOffManager jako administrator.
+8. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy TimeOffManager, jako administrator.
 
-9. Przejdź do **konta \> konta opcje \> Single Sign-On ustawienia**.
+9. Przejdź do **konta \> konta opcje \> pojedynczy ustawień logowania jednokrotnego**.
    
-   ![Single Sign-On ustawienia](./media/timeoffmanager-tutorial/ic795917.png "Single Sign-On ustawienia")
-7. W **ustawień rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
+   ![Pojedynczy ustawień logowania jednokrotnego](./media/timeoffmanager-tutorial/ic795917.png "pojedynczy ustawień logowania jednokrotnego")
+7. W **ustawienia rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
    
-   ![Single Sign-On ustawienia](./media/timeoffmanager-tutorial/ic795918.png "Single Sign-On ustawienia")
+   ![Pojedynczy ustawień logowania jednokrotnego](./media/timeoffmanager-tutorial/ic795918.png "pojedynczy ustawień logowania jednokrotnego")
    
-   a. Otwórz w Notatniku certyfikatu zakodowanego base-64, skopiuj zawartość go do Schowka, a następnie wklej cały certyfikat do **certyfikatu X.509** pola tekstowego.
+   a. Otwórz swój certyfikat zakodowany base-64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej cały certyfikat do **certyfikat X.509** pola tekstowego.
    
-   b. W **wystawcy Idp** pole tekstowe, Wklej wartość **identyfikator jednostki SAML** którego została skopiowana z portalu Azure.
+   b. W **wystawca dostawcy tożsamości** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal.
    
-   c. W **adres URL punktu końcowego IdP** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
+   c. W **adresu URL punktu końcowego protokołu IdP** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal.
    
-   d. Jako **wymusić SAML**, wybierz pozycję **nr**.
+   d. Jako **wymusić SAML**, wybierz opcję **nie**.
    
-   e. Jako **automatyczne tworzenie użytkowników**, wybierz pozycję **tak**.
+   e. Jako **automatyczne tworzenie użytkowników**, wybierz opcję **tak**.
    
-   f. W **adresu URL wylogowania** pole tekstowe, Wklej wartość **Sign-Out URL** którego została skopiowana z portalu Azure.
+   f. W **adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal.
    
-   g. Kliknij przycisk **zapisać zmiany**.
+   g. Kliknij przycisk **Zapisz zmiany**.
 
-11. W **logowania jednokrotnego ustawienia** strony, skopiować wartość **adres URL usługi klienta potwierdzenia** i wklej go w **adres URL odpowiedzi** pole tekstowe w obszarze **TimeOffManager Adresy URL i domeny** sekcji w portalu Azure. 
+11. W **funkcji logowania jednokrotnego ustawienia** stronie, skopiuj wartość **adres URL usługi konsumenta potwierdzenie** i wklej go w **adres URL odpowiedzi** polu tekstowym w obszarze **TimeOffManager Domena i adresy URL** sekcji w witrynie Azure portal. 
 
-      ![Single Sign-On ustawienia](./media/timeoffmanager-tutorial/ic795915.png "Single Sign-On ustawienia")
+      ![Pojedynczy ustawień logowania jednokrotnego](./media/timeoffmanager-tutorial/ic795915.png "pojedynczy ustawień logowania jednokrotnego")
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/timeoffmanager-tutorial/create_aaduser_01.png) 
 
@@ -196,17 +196,17 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Użytkownicy i grupy--> Wszyscy użytkownicy](./media/timeoffmanager-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Dodawanie przycisku](./media/timeoffmanager-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Strony okna dialogowego użytkownika](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -214,29 +214,29 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="create-a-timeoffmanager-test-user"></a>Tworzenie użytkownika testowego TimeOffManager
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do TimeOffManager, muszą one być przygotowana do TimeOffManager.  
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do TimeOffManager, musi być obsługiwana na TimeOffManager.  
 
-TimeOffManager obsługuje tylko w czasie Inicjowanie obsługi użytkowników. Nie ma elementu akcji dla Ciebie.  
+Obsługuje TimeOffManager dokładnie na czas Inicjowanie obsługi użytkowników. Brak elementu akcji dla Ciebie.  
 
-Użytkownicy są automatycznie dodawane podczas pierwszego logowania się przy użyciu rejestracji jednokrotnej w.
+Użytkownicy są dodawani automatycznie podczas pierwszego logowania przy użyciu logowania jednokrotnego na.
 
 >[!NOTE]
->Możesz użyć innych TimeOffManager użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez TimeOffManager do udostępnienia konta użytkownika usługi Azure AD.
+>Można użyć jakichkolwiek innych TimeOffManager użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez TimeOffManager można uaktywniać ich konta usługi Azure AD.
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu TimeOffManager.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do TimeOffManager.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta TimeOffManager, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon TimeOffManager, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **TimeOffManager**.
+2. Na liście aplikacji wybierz **TimeOffManager**.
 
     ![TimeOffManager listy aplikacji](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_app.png) 
 
@@ -244,25 +244,25 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka TimeOffManager w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji TimeOffManager. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka TimeOffManager w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji TimeOffManager. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 45dedd8c4d6ae2f9b54873d87f82c2e605a8c2aa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38451703"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39049473"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Usługa Azure Active Directory weryfikacji koncepcji Podręcznik: bloki konstrukcyjne
 
@@ -157,7 +157,7 @@ Przybliżony czas wykonania: 60 minut
 | Postępuj zgodnie z instrukcjami, aby skonfigurować usługi ServiceNow |  |
 | W bloku aplikacji ServiceNow "Aprowizowanie" Włącz "Automatyczny" Inicjowanie obsługi administracyjnej | [Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w nowej witrynie Azure portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Poczekaj kilka minut, podczas inicjowania obsługi administracyjnej.  W międzyczasie można sprawdzić, czy w raportach inicjowania obsługi administracyjnej |  |
-| Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp | [Co to jest panelu dostępu?](active-directory-saas-access-panel-introduction.md) |
+| Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp | [Co to jest panelu dostępu?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kliknij Kafelek dla aplikacji, która właśnie została utworzona. Potwierdzanie dostępu |  |
 | Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 
@@ -188,8 +188,8 @@ Przybliżony czas wykonania: 15 minut
 | Skonfigurować hasło logowania jednokrotnego | [Zarządzanie logowania jednokrotnego dla aplikacji korporacyjnych w nowej witrynie Azure portal: opartego na hasłach logowanie jednokrotne](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Przypisywanie aplikacji do grupy określonej w wymaganiach wstępnych | [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Zaloguj się do https://myapps.microsoft.com/ konto użytkownika testowego, który ma dostęp |  |
-| Kliknij Kafelek dla aplikacji, która właśnie została utworzona. | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Podaj poświadczenia aplikacji | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Kliknij Kafelek dla aplikacji, która właśnie została utworzona. | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Podaj poświadczenia aplikacji | [Co to jest panelu dostępu?: opartego na hasłach logowania jednokrotnego bez tożsamości inicjowania obsługi administracyjnej.](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zamknij przeglądarkę i powtórz logowania. Użytkownik powinien go zobaczyć bezproblemowy dostęp do aplikacji. |  |
 | Opcjonalnie można sprawdzić w raportach dotyczących użycia aplikacji. Należy pamiętać, że istnieje pewne opóźnienie, więc należy zaczekać trochę czasu, aby wyświetlić dane w raportach. | [Raporty dotyczące logowań w portalu usługi Azure Active Directory: użycie zarządzanych aplikacji](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory report retention policies](active-directory-reporting-retention.md) (Zasady przechowywania raportów w usłudze Azure Active Directory) |
 
@@ -308,7 +308,7 @@ Przybliżony czas wykonania: 10 minut
 | Aplikacja SaaS (Federacyjna usługa rejestracji Jednokrotnej lub hasło logowania jednokrotnego) został już skonfigurowany | Blok konstrukcyjny: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) |
 | Grupa chmury, który jest przypisany dostęp do aplikacji w #1 jest identyfikowana | Blok konstrukcyjny: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Tworzenie grupy i dodawać członków w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Dostępne są poświadczenia dla właściciela grupy | [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
-| Wykryto poświadczenia na potrzeby uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest panelu dostępu?](active-directory-saas-access-panel-introduction.md) |
+| Wykryto poświadczenia na potrzeby uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest panelu dostępu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroki
@@ -318,7 +318,7 @@ Przybliżony czas wykonania: 10 minut
 | Identyfikator grupy, która ma zostać przyznany dostęp do aplikacji i skonfigurować właścicielem danej grupy| [Zarządzaj ustawieniami dla grupy w usłudze Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Zaloguj się jako właściciel grupy, zobacz członkostwa w grupach w grupy na karcie panelu dostępu | [Strona zarządzania grupami w usłudze Active Directory Azure](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Dodaj Pracownik przetwarzający informacje, które mają zostać przetestowane |  |
-| Zaloguj się jako pracownik przetwarzający informacje, upewnij się, że Kafelek jest dostępny | [Co to jest panelu dostępu?](active-directory-saas-access-panel-introduction.md) |
+| Zaloguj się jako pracownik przetwarzający informacje, upewnij się, że Kafelek jest dostępny | [Co to jest panelu dostępu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -332,7 +332,7 @@ Jeśli aplikacja ma aprowizacji, włączone, może być konieczne Poczekaj kilka
 | --- | --- |
 | Aplikacja SaaS (Federacyjna usługa rejestracji Jednokrotnej lub hasło logowania jednokrotnego) został już skonfigurowany | Blok konstrukcyjny: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) |
 | Grupa chmury, który jest przypisany dostęp do aplikacji w #1 jest identyfikowana | Blok konstrukcyjny: [SaaS Federacyjna usługa rejestracji Jednokrotnej w konfiguracji](#saas-federated-sso-configuration) <br/>[Tworzenie grupy i dodawać członków w usłudze Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Wykryto poświadczenia na potrzeby uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest panelu dostępu?](active-directory-saas-access-panel-introduction.md) |
+| Wykryto poświadczenia na potrzeby uzyskiwania dostępu do aplikacji Pracownik przetwarzający informacje | [Co to jest panelu dostępu?](user-help/active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroki
@@ -380,7 +380,7 @@ Przybliżony czas wykonania: 15 minut
 
 | Wymagania wstępne | Zasoby |
 | --- | --- |
-| Włącz samoobsługowe zarządzanie hasłami w swojej dzierżawie. | [Usługa Azure Active Directory resetowania hasła dla administratorów IT](active-directory-passwords-update-your-own-password.md) |
+| Włącz samoobsługowe zarządzanie hasłami w swojej dzierżawie. | [Usługa Azure Active Directory resetowania hasła dla administratorów IT](user-help/active-directory-passwords-update-your-own-password.md) |
 | Włączanie zapisywania zwrotnego haseł do zarządzania hasłami ze środowiska lokalnego. Uwaga ta migracja wymaga określonej usługi Azure AD Connect w wersji | [Wymagania wstępne dotyczące funkcji zapisywania zwrotnego haseł](authentication/howto-sspr-writeback.md) |
 | Zidentyfikuj użytkowników weryfikacji koncepcji, które będą korzystać z tej funkcji i upewnij się, że są członkami grupy zabezpieczeń. Użytkownicy muszą być użytkowników innych niż administratorzy w pełni prezentować możliwości | [Dostosowywanie: Zarządzanie hasłami usługi AD platformy Azure: ograniczanie dostępu do resetowania hasła](authentication/howto-sspr-writeback.md) |
 
@@ -395,7 +395,7 @@ Przybliżony czas wykonania: 15 minut
 | Podaj dane samoobsługowego resetowania hasła, zgodnie z konfiguracją dla kroku 2 | https://aka.ms/ssprsetup |
 | Zamknij przeglądarkę |  |
 | Zacznij od początku procesu logowania jako pracownik przetwarzający informacje, których użyto w kroku 4 |  |
-| Resetowanie hasła | [Aktualizowanie hasła: resetowanie hasła](active-directory-passwords-update-your-own-password.md) |
+| Resetowanie hasła | [Aktualizowanie hasła: resetowanie hasła](user-help/active-directory-passwords-update-your-own-password.md) |
 | Spróbuj zalogować się przy użyciu nowego hasła do usługi Azure AD, jak również do zasobów lokalnych |  |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
@@ -428,7 +428,7 @@ Przybliżony czas wykonania: 10 minut
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
 1. Kroki weryfikacji koncepcji w tym bloku tworzenia jawne ustawienie uwierzytelniania Wieloskładnikowego dla użytkownika na wszystkie nazwy logowania. Innych narzędzi, takich jak dostęp warunkowy i Identity Protection, które przyciągną usługi MFA na więcej określonych scenariuszach. Jest to coś, co należy wziąć pod uwagę podczas przenoszenia z weryfikacji Koncepcji w środowisku produkcyjnym.
-2. Kroki weryfikacji koncepcji w tym bloku konstrukcyjnego są jawnie przy użyciu połączeń telefonicznych jako metoda uwierzytelniania Wieloskładnikowego w celu expedience. Przejście od weryfikacji Koncepcji do środowiska produkcyjnego, zaleca się przy użyciu aplikacji, takich jak [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako swojej drugiego składnika, jeśli to możliwe.
+2. Kroki weryfikacji koncepcji w tym bloku konstrukcyjnego są jawnie przy użyciu połączeń telefonicznych jako metoda uwierzytelniania Wieloskładnikowego w celu expedience. Przejście od weryfikacji Koncepcji do środowiska produkcyjnego, zaleca się przy użyciu aplikacji, takich jak [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) jako swojej drugiego składnika, jeśli to możliwe.
 Dowiedz się więcej: [publikacji specjalne narzędzia DRAFT NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>Dostęp warunkowy usługi MFA dla aplikacji SaaS
@@ -553,7 +553,7 @@ Przybliżony czas trwania: 20 minut
 | --- | --- |
 | Urządzenia przy użyciu certyfikatu użytkownika zainicjowano obsługę administracyjną (Windows, iOS lub Android) z Enterprise PKI | [Wdrażanie certyfikatów użytkowników](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Domena usługi Azure AD Sfederowane za pomocą usług AD FS | [Program Azure AD Connect a federacja](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Omówienie usług certyfikatów Active Directory](https://technet.microsoft.com/library/hh831740.aspx)|
-| Dla urządzeń z systemem iOS należy mieć zainstalowaną aplikację Microsoft Authenticator | [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Dla urządzeń z systemem iOS należy mieć zainstalowaną aplikację Microsoft Authenticator | [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroki
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 962f33a178048c459e8c6c2948eb17f0e78904ae
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: b695783c6d68876d39482ed5abec24f45087603d
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930994"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054866"
 ---
 # <a name="improve-app-with-batch-test"></a>Ulepszaniu aplikacji z testem usługi batch
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Napraw błędy do intencji
 * Przetestowanie usługi batch
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website) w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Jeśli nie masz zarządzania zasobami ludzkimi firmy [Przejrzyj wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) usługi Github.
@@ -52,7 +52,7 @@ Wymagania dotyczące testowania usługi batch:
 * Dozwolone typy jednostek: proste i złożone.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Utwórz plik wsadowy z wypowiedzi
-1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). Lub Pobierz [pliku](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json) z repozytorium Github Samples usługi LUIS.
+1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). 
 
 2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. 
 
@@ -189,7 +189,7 @@ Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponowni
 Dokładność prognozowania tej aplikacji został zwiększony, znajdowanie błędów w partii i poprawianie modelu, dodając więcej wypowiedzi przykład poprawne intencji i szkolenia. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz **Moje aplikacje** w górnym menu po lewej stronie. Wybierz przycisk wielokropka **...**  po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
+Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz przycisk wielokropka **...**  po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
