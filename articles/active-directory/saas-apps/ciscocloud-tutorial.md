@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 79b0aa9ae435defa980b4da0c8d376fdb69542f3
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28576452ab982896614af5527a0237ca4ab275f0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866563"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39043877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z chmurą firmy Cisco
 
@@ -130,8 +130,8 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| ----------------|
-    | kraj      |User.country |
-    | firmy      |user.companyname |
+    | Kraj      |User.country |
+    | Firmy      |user.companyname |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -228,7 +228,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Cisco, chmura w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji w chmurze firmy Cisco.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

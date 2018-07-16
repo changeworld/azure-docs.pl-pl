@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 88d5eb22186248024a356610addab0d43f68a961
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: dd5bea791fed0c16195eadca03ba2f9a8c11da1b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887134"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044955"
 ---
 # <a name="prediction-score"></a>Współczynnik przewidywania
 Wynik prognozowania wskazuje stopień zaufania, LUIS, ma dla wyników przewidywań. 
@@ -57,6 +57,9 @@ Wyniki prognozowania można używać notacji wykładnika *pojawiające się* pow
 Możesz później tego samego modelu w innej aplikacji, gdy wyniki nie są tym samym, jest to, ponieważ ma elementu losowości w szkolenia. Po drugie wszelkie nakładania się numerów wypowiedź na intencje więcej niż jeden oznacza, że najważniejsze przeznaczenie tego samego wypowiedź można zmienić w zależności od szkolenia.
 
 Jeśli Twoje chatbot wymaga określonych oceny usługi LUIS do wskazania zaufania intencji, należy w zamian użyć wynik różnicy dwa najważniejsze intencji. Zapewnia to elastyczność dla zmian w szkoleniu. 
+
+## <a name="punctuation"></a>Znaki interpunkcyjne
+Znak interpunkcyjny jest tokenu oddzielnych w usługi LUIS. Wypowiedź, która zawiera znak kropki na końcu, a wypowiedź, która nie są dwa oddzielne wypowiedzi i może uzyskać dwa różne prognozy. Upewnij się, że model obsługuje znaki interpunkcyjne, albo w [wypowiedzi przykład](luis-concept-utterance.md) (istnienie i nie ma znaków interpunkcyjnych) lub w [patterns}(luis-concept-patterns.md), gdzie jest łatwiej Ignoruj znaków interpunkcyjnych przy użyciu specjalnej składni: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z pakietem G | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługi Azure Active Directory i pakiet G.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą usługi G Suite | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i usługi G Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,127 +15,127 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: jeedes
-ms.openlocfilehash: ce1549231157712ff7421b85685ae796388e77f9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a8478436bfae20ee729ce41bcb134bd3a77fb26e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225099"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053475"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Samouczek: Azure Active Directory integracji z pakietem G
+# <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi G Suite
 
-Z tego samouczka dowiesz sposobu integracji z usługą Azure Active Directory (Azure AD) pakiet G.
+W tym samouczku dowiesz się, jak zintegrować usługi G Suite z usługą Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD G Suite zapewnia następujące korzyści:
+Integrowanie usługi G Suite z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do zestawu G.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane pakietu G (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do usługi G Suite.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do usługi G Suite (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z pakietem G, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą usługi G Suite, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Pakiet G logowanie jednokrotne włączone subskrypcji
-- Subskrypcja usługi Google Apps lub subskrypcji usługi Google Cloud Platform.
+- G Suite logowanie jednokrotne włączone subskrypcji
+- Google Apps subskrypcję lub Google Cloud Platform.
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-1.  **Pytanie: czy obsługi tej integracji Usługa rejestracji Jednokrotnej w Google Cloud Platform integracji z usługą Azure AD?**
+1.  **Pytanie: czy ta Obsługa integracji Google Cloud Platform Usługa rejestracji Jednokrotnej integracji z usługą Azure AD?**
     
-    Odp. Tak. Usługi Google Cloud Platform i usługi Google Apps współużytkują tę samą platformę uwierzytelniania. Tak, aby zrobić integracji GCP, należy skonfigurować logowanie Jednokrotne z usługi Google Apps.
+    Odp. Tak. Google Cloud Platform i Google Apps współdzielą tę samą platformę uwierzytelniania. Dlatego w przypadku wykonywania integracji GCP, należy skonfigurować logowanie Jednokrotne za pomocą usługi Google Apps.
 
 
-2. **Pytanie: czy Chromebooks i innych urządzeniach Chrome zgodne z usługą Azure AD rejestracji jednokrotnej?**
+2. **P: czy Chromebooks i innych urządzeń dla programu Chrome zgodny z usługi Azure AD logowania jednokrotnego?**
    
-    Odpowiedź: tak, użytkownicy będą mogli zalogować się do swoich urządzeń Chromebook przy użyciu swoich poświadczeń usługi Azure AD. Zobacz to [artykuł pomocy technicznej pakietu G](https://support.google.com/chrome/a/answer/6060880) informacji o tym, dlaczego użytkownicy mogą się monit o poświadczenia dwa razy.
+    Odp. tak, użytkownicy będą mogli logować się do swoich urządzeń Chromebook przy użyciu swoich poświadczeń usługi Azure AD. Zobacz ten [artykuł pomocy technicznej usługi G Suite](https://support.google.com/chrome/a/answer/6060880) informacji o tym, dlaczego użytkownicy mogą się monit o poświadczenia dwa razy.
 
-3. **Pytanie: czy włączyć logowanie jednokrotne, użytkownicy będą mogli używać swoich poświadczeń usługi Azure AD do logowania się do żadnego produktu Google, takich jak klasy Google, GMail, dysk Google, YouTube i tak dalej?**
+3. **Pyt. Czy włączyć logowanie jednokrotne, użytkownicy będą mogli korzystać z poświadczeń usługi Azure AD do logowania się do dowolnego produktu Google, takich jak Google Classroom, GMail, dysk Google, YouTube i tak dalej?**
    
-    Odpowiedź: tak, w zależności od [o zestawie G](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) chcesz włączyć lub wyłączyć w Twojej organizacji.
+    Odp. tak, w zależności od [które usługi G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) chcesz włączyć lub wyłączyć dla Twojej organizacji.
 
-4. **Pytanie: czy można włączyć logowanie jednokrotne dla tylko podzestaw użytkowników G Suite?**
+4. **P: czy można włączyć logowanie jednokrotne dla tylko podzbiór Moi użytkownicy usługi G Suite?**
    
-    A: wymaga włączenia logowania jednokrotnego natychmiast nie wszyscy użytkownicy G Suite do uwierzytelniania przy użyciu poświadczeń usługi Azure AD. Ponieważ G pakiet nie obsługuje posiadanie wielu dostawców tożsamości, dostawca tożsamości w danym środowisku G pakiet może być usługi Azure AD lub Google —, ale nie oba jednocześnie.
+    Odp.: nie Włączanie logowania jednokrotnego natychmiast wymaga od wszystkich użytkowników usługi G Suite do uwierzytelniania przy użyciu poświadczeń usługi Azure AD. Ponieważ usługi G Suite nie obsługuje wielu dostawców tożsamości, dostawcy tożsamości w danym środowisku usługi G Suite może być usługa Azure AD lub Google — ale nie obu jednocześnie.
 
-5. **Pytanie: czy użytkownik jest zalogowany przy użyciu systemu Windows, czy na pewno automatycznie uwierzytelniają pakietu G bez pobierania zostanie wyświetlony monit o podanie hasła?**
+5. **Pyt.: Jeśli użytkownik jest zalogowany przy użyciu Windows, czy automatycznie uwierzytelniają do usługi G Suite bez pobierania zostanie wyświetlony monit o podanie hasła?**
    
-    Odpowiedź: istnieją dwie opcje dotyczące włączania tego scenariusza. Najpierw użytkownicy mogą zalogować się do urządzeń z systemem Windows 10 za pomocą [usługi Azure Active Directory Join](../device-management-introduction.md). Alternatywnie użytkownicy mogą zalogować się do urządzeń z systemem Windows, które są przyłączone do domeny do lokalnej usługi Active Directory, który został włączony dla pojedynczego logowania do usługi Azure AD za pomocą [Active Directory Federation Services (AD FS)](../connect/active-directory-aadconnect-user-signin.md) wdrożenia. Obie te opcje wymagają należy wykonać czynności opisane w następujących samouczkiem, aby włączyć logowanie jednokrotne między usługą Azure AD i pakiet G.
+    Odp.: istnieją dwie opcje dotyczące włączania tego scenariusza. Po pierwsze, użytkownicy mogą logować się do urządzeń z systemem Windows 10 za pośrednictwem [usługi Azure Active Directory Join](../device-management-introduction.md). Alternatywnie użytkownicy mogą logować się do urządzenia Windows, które są przyłączone do domeny do usługi Active Directory w środowisku lokalnym, który został włączony dla logowania jednokrotnego do usługi Azure AD za pomocą [Active Directory Federation Services (AD FS)](../connect/active-directory-aadconnect-user-signin.md) wdrożenia. Obie opcje wymagają, należy wykonać czynności opisane w poniższego samouczka, aby włączyć logowanie jednokrotne między usługą Azure AD i usługi G Suite.
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie pakietu G z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie usługi G Suite z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-g-suite-from-the-gallery"></a>Dodawanie pakietu G z galerii
-Aby skonfigurować integrację usługi Azure AD G Suite, należy dodać pakiet G z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-g-suite-from-the-gallery"></a>Dodawanie usługi G Suite z galerii
+Aby skonfigurować integrację usługi G Suite w usłudze Azure AD, należy dodać usługi G Suite z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać pakiet G z galerii, wykonaj następujące czynności:**
+**Aby dodać usługi G Suite z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **G Suite**, wybierz pozycję **G Suite** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **usługi G Suite**, wybierz opcję **usługi G Suite** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Pakiet G na liście wyników](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
+    ![G Suite na liście wyników](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z pakietem G w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi G Suite w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednikiem pakietu G jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi pakietu G musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w usłudze G Suite dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w usłudze G Suite musi zostać ustanowione.
 
-W zestawie G, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W usłudze G Suite, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z pakietem G, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi G Suite, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego zestawu G](#create-a-g-suite-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta G pakiet, który jest połączony z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego usługi G Suite](#create-a-g-suite-test-user)**  — aby odpowiednikiem Britta Simon w usłudze G Suite, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji pakietu G.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji usługi G Suite.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z pakietem G, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą usługi G Suite, wykonaj następujące czynności:**
 
-1. W portalu Azure na **G Suite** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **usługi G Suite** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
     ![Okno dialogowe rejestracji jednokrotnej](./media/google-apps-tutorial/tutorial_googleapps_samlbase.png)
 
-3. Na **G Suite domeny i adres URL** sekcji, aby skonfigurować dla **Gmail** należy wykonać następujące czynności:
+3. Na **G Suite domena i adresy URL** sekcji, jeśli chcesz skonfigurować dla **Gmail** wykonaj następujące czynności:
 
-    ![Adresy URL i domeny Suite G pojedynczy informacje logowania jednokrotnego](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
+    ![G Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL adresu URL przy użyciu następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL adresu URL przy użyciu następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: 
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: 
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
@@ -144,15 +144,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | `http://google.com/a/<yourdomain.com>` |
  
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Suite G](https://www.google.com/contact/) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej G Suite klienta](https://www.google.com/contact/) do uzyskania tych wartości.
 
-4. Na **G Suite domeny i adres URL** sekcji, aby skonfigurować dla **usługi Google Cloud Platform** należy wykonać następujące czynności:
+4. Na **G Suite domena i adresy URL** sekcji, jeśli chcesz skonfigurować dla **Google Cloud Platform** wykonaj następujące czynności:
 
-    ![Adresy URL i domeny Suite G pojedynczy informacje logowania jednokrotnego](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
+    ![G Suite domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL adresu URL przy użyciu następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL adresu URL przy użyciu następującego wzorca: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: 
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: 
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
@@ -161,27 +161,27 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     | `http://google.com/a/<yourdomain.com>` |
     
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta Suite G](https://www.google.com/contact/) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej G Suite klienta](https://www.google.com/contact/) do uzyskania tych wartości. 
 
-5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na tym komputerze.
+5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
+    ![Link pobierania certyfikatu](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/google-apps-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/google-apps-tutorial/tutorial_general_400.png)
 
-7. Na **G pakiet konfiguracji** kliknij **skonfigurować pakiet G** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, SAML pojedynczy znak na adres URL usługi i zmień adres URL hasła** z **sekcji krótkimi opisami.**
+7. Na **Konfiguracja usługi G Suite** kliknij **Konfigurowanie usługi G Suite** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, SAML pojedynczego logowania jednokrotnego adres URL usługi i zmień adres URL hasła** z **krótki przewodnik po sekcji.**
 
-    ![G pakietu konfiguracji](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
+    ![Konfiguracja usługi G Suite](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
 
-8. Otwórz nową kartę w przeglądarce i zaloguj się do [konsoli administracyjnej Suite G](http://admin.google.com/) przy użyciu konta administratora.
+8. Otwórz nową kartę w przeglądarce i zaloguj się do [konsoli administracyjnej usługi G Suite](http://admin.google.com/) przy użyciu konta administratora.
 
-9. Kliknij przycisk **zabezpieczeń**. Jeśli nie widzisz łącza może być ukryty w obszarze **więcej formantów** menu u dołu ekranu.
+9. Kliknij przycisk **zabezpieczeń**. Jeśli nie widzisz łącza może być ukryty pod przyciskiem **więcej formantów** menu wyświetlanym u dołu ekranu.
    
     ![Kliknij pozycję Zabezpieczenia.][10]
 
-10. Na **zabezpieczeń** kliknij przycisk **Konfigurowanie rejestracji jednokrotnej (SSO).**
+10. Na **zabezpieczeń** kliknij **Konfigurowanie logowania jednokrotnego (SSO).**
    
     ![Kliknij przycisk logowania jednokrotnego.][11]
 
@@ -189,103 +189,103 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     ![Konfigurowanie logowania jednokrotnego][12]
    
-    a. Wybierz **Instalatora Usługa rejestracji Jednokrotnej z dostawcy tożsamości innych firm**.
+    a. Wybierz **konfiguracji logowania jednokrotnego, za pomocą dostawcy tożsamości innych firm**.
 
-    b. W **adres URL logowania strony** pole w zestawie G, Wklej wartość **pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
+    b. W **adres URL logowania strony** pola w usłudze G Suite, Wklej wartość **pojedynczy znak na adres URL usługi** skopiowanej w witrynie Azure portal.
 
-    c. W **adres URL strony wylogowania** pole w zestawie G, Wklej wartość **Sign-Out URL** którego została skopiowana z portalu Azure. 
+    c. W **adres URL strony wylogowania** pola w usłudze G Suite, Wklej wartość **adres URL wylogowania** skopiowanej w witrynie Azure portal. 
 
-    d. W **zmienić adres URL hasła** pole w zestawie G, Wklej wartość **zmienić adres URL hasła** którego została skopiowana z portalu Azure. 
+    d. W **zmienić adres URL hasła** pola w usłudze G Suite, Wklej wartość **zmienić adres URL hasła** skopiowanej w witrynie Azure portal. 
 
-    e. W zestawie G dla **certyfikatu weryfikacji**, Przekaż certyfikat, który został pobrany z portalu Azure.
+    e. W usłudze G Suite dla **certyfikatu weryfikacji**, Przekaż certyfikat, który został pobrany z witryny Azure portal.
 
-    f. Wybierz **użyć konkretnego wystawcę domeny**.
+    f. Wybierz **Użyj wystawcy do określonej domeny**.
 
-    g. Kliknij przycisk **zapisać zmiany**.
+    g. Kliknij przycisk **Zapisz zmiany**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/google-apps-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/google-apps-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/google-apps-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/google-apps-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/google-apps-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-g-suite-test-user"></a>Tworzenie użytkownika testowego zestawu G
+### <a name="create-a-g-suite-test-user"></a>Tworzenie użytkownika testowego usługi G Suite
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w G pakietu oprogramowania. Pakiet G obsługuje automatyczne Inicjowanie obsługi administracyjnej, który jest domyślnie włączone. Brak akcji można w tej sekcji. Jeśli użytkownik nie istnieje w G pakiet oprogramowania, nowy jest tworzony podczas próby dostępu G pakietu oprogramowania.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon G Suite oprogramowania. G Suite obsługuje automatycznej aprowizacji, który jest domyślnie włączona. Nie ma akcji dla Ciebie w tej sekcji. Jeśli użytkownik jeszcze nie istnieje w G Suite Software, nowy katalog jest tworzony przy próbie uzyskania dostępu do pakietu G Suite Software.
 
 >[!NOTE] 
->Jeśli trzeba ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej usługi Google](https://www.google.com/contact/).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej firmy Google](https://www.google.com/contact/).
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do zestawu G.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi G Suite.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta G Suite, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon usługi G Suite, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **G Suite**.
+2. Na liście aplikacji wybierz **usługi G Suite**.
 
-    ![Łącze G Suite na liście aplikacji](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
+    ![Link usługi G Suite na liście aplikacji](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka G Suite w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane G pakiet aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka usługi G Suite w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługi G Suite.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

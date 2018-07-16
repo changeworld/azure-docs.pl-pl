@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Jobscience | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Jobscience.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Jobscience | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Jobscience.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 12dbf4483e3f049948df6b825b0e0937a79ad826
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0d717c9a70d078300b59a4e3fd6df08e971e8075
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211900"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042966"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Samouczek: Integracji Azure Active Directory z Jobscience
+# <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Samouczek: Integracja usługi Azure Active Directory z Jobscience
 
-Z tego samouczka dowiesz się integrowanie Jobscience z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Jobscience w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD Jobscience zapewnia następujące korzyści:
+Integrowanie Jobscience z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Jobscience
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Jobscience (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Jobscience
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Jobscience (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Jobscience, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Jobscience, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Jobscience logowanie jednokrotne włączone subskrypcji
@@ -45,21 +45,21 @@ Aby skonfigurować integrację usługi Azure AD z Jobscience, potrzebne są nast
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna tutaj: [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj: [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Jobscience z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-jobscience-from-the-gallery"></a>Dodawanie Jobscience z galerii
-Aby skonfigurować integrację usługi Azure AD Jobscience, należy dodać Jobscience z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Jobscience w usłudze Azure AD, należy dodać Jobscience z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Jobscience z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację usługi Azure AD Jobscience, należy dodać Jobsc
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -79,134 +79,134 @@ Aby skonfigurować integrację usługi Azure AD Jobscience, należy dodać Jobsc
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Jobscience na podstawie użytkownika testowego, nazywany "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Jobscience w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Jobscience jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Jobscience musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Jobscience do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Jobscience musi można ustanowić.
 
-W Jobscience, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W Jobscience, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Jobscience, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Jobscience, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Jobscience](#creating-a-jobscience-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Jobscience połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Jobscience](#creating-a-jobscience-test-user)**  — aby odpowiednikiem Britta Simon w Jobscience połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Jobscience.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Jobscience.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Jobscience, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Jobscience, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Jobscience** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Jobscience** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
-3. Na **Jobscience domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Jobscience domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_jobscience_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:  `http://<company name>.my.salesforce.com`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Uzyskać tę wartość za pomocą [zespołem pomocy technicznej klienta Jobscience](https://www.jobscience.com/support) lub w profilu rejestracji Jednokrotnej zostanie utworzona, który znajduje się w dalszej części tego samouczka. 
+    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Uzyskać tę wartość [zespołem pomocy technicznej klienta Jobscience](https://www.jobscience.com/support) lub z logowania jednokrotnego profilu zostanie utworzona, co jest opisane w dalszej części tego samouczka. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Jobscience** , kliknij przycisk **skonfigurować Jobscience** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji Jobscience** , kliknij przycisk **skonfigurować Jobscience** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 7. Zaloguj się do witryny firmy Jobscience jako administrator.
 
 8. Przejdź do **Instalatora**.
    
-   ![Instalator](./media/jobscience-tutorial/IC784358.png "Instalatora")
+   ![Instalator](./media/jobscience-tutorial/IC784358.png "instalacji")
 
-9. W okienku nawigacji po lewej stronie w **Administruj** , kliknij przycisk **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moje domeny** otworzyć **Moje domeny** strony. 
+9. W okienku nawigacji po lewej stronie w **administrowanie** kliknij **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** strony. 
    
-   ![Mojej domeny](./media/jobscience-tutorial/ic767825.png "mojej domeny")
+   ![Moja domena](./media/jobscience-tutorial/ic767825.png "mojej domeny")
 
-10. Aby sprawdzić, czy domeny nie został skonfigurowany prawidłowo, upewnij się, że jest on "**krok 4 wdrożone dla użytkowników**" i zapoznaj się z "**Moje ustawienia domeny**".
+10. Aby sprawdzić, czy domenę zostało skonfigurowane prawidłowo, upewnij się, że jest on "**kroku 4 wdrożone dla użytkowników**" i zapoznaj się z "**Moje ustawienia domeny**".
 
-    ![Wdrożonego dla użytkownika domeny](./media/jobscience-tutorial/ic784377.png "wdrożonego dla użytkownika domeny")
+    ![Nie wdrożono użytkownika domeny](./media/jobscience-tutorial/ic784377.png "domeny wdrożenia użytkownika")
 
-11. W witrynie firmy Jobscience kliknij przycisk **kontroli bezpieczeństwa**, a następnie kliknij przycisk **ustawień rejestracji jednokrotnej**.
+11. W witrynie firmy Jobscience kliknij **środki kontroli bezpieczeństwa**, a następnie kliknij przycisk **ustawienia rejestracji jednokrotnej**.
     
-    ![Opcje zabezpieczeń](./media/jobscience-tutorial/ic784364.png "środki zabezpieczające.")
+    ![Środki kontroli bezpieczeństwa](./media/jobscience-tutorial/ic784364.png "kontroli zabezpieczeń")
 
-12. W **ustawień rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
+12. W **ustawienia rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
     
-    ![Single Sign-On ustawienia](./media/jobscience-tutorial/ic781026.png "Single Sign-On ustawienia")
+    ![Pojedynczy ustawień logowania jednokrotnego](./media/jobscience-tutorial/ic781026.png "pojedynczy ustawień logowania jednokrotnego")
     
     a. Wybierz **SAML włączone**.
 
     b. Kliknij przycisk **Nowy**.
 
-13. Na **SAML pojedynczego logowania jednokrotnego ustawienie Edytuj** okna dialogowego, wykonaj następujące czynności:
+13. Na **SAML pojedynczego logowania jednokrotnego ustawienie Edytuj** okno dialogowe, należy wykonać następujące czynności:
     
-    ![SAML pojedynczy znak na ustawienie](./media/jobscience-tutorial/ic784365.png "SAML pojedynczy znak na ustawienie")
+    ![SAML pojedynczego logowania jednokrotnego ustawienia](./media/jobscience-tutorial/ic784365.png "SAML pojedynczego logowania jednokrotnego ustawienia")
     
-    a. W **nazwa** tekstowym, wpisz nazwę dla danej konfiguracji.
+    a. W **nazwa** polu tekstowym wpisz nazwę dla danej konfiguracji.
 
-    b. W **wystawcy** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure.
+    b. W **wystawcy** pola tekstowego, Wklej wartość **identyfikator jednostki SAML**, który skopiowano z witryny Azure portal.
 
-    c. W **identyfikator jednostki** pole tekstowe, typ `https://salesforce-jobscience.com`
+    c. W **identyfikator jednostki** pole tekstowe, wpisz `https://salesforce-jobscience.com`
 
-    d. Kliknij przycisk **Przeglądaj** można przekazać certyfikatu usługi Azure AD.
+    d. Kliknij przycisk **Przeglądaj** Aby przekazać certyfikat usługi Azure AD.
 
-    e. Jako **typ tożsamości SAML**, wybierz pozycję **potwierdzenia zawiera identyfikator federacji z obiektu użytkownika**.
+    e. Jako **typu tożsamości SAML**, wybierz opcję **potwierdzenie zawiera identyfikator federacji z obiektu użytkownika**.
 
-    f. Jako **lokalizacji tożsamości SAML**, wybierz pozycję **jest tożsamość w elemencie NameIdentfier instrukcji podmiotu**.
+    f. Jako **lokalizacji tożsamości SAML**, wybierz opcję **tożsamość jest w elemencie NameIdentfier instrukcji podmiotu**.
 
-    g. W **adresu URL logowania do dostawcy tożsamości** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+    g. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
 
-    h. W **adres URL wylogowania dostawcy tożsamości** pole tekstowe, Wklej wartość **Sign-Out adres URL**, które zostały skopiowane z portalu Azure.
+    h. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
 
     i. Kliknij pozycję **Zapisz**.
 
-14. W okienku nawigacji po lewej stronie w **Administruj** , kliknij przycisk **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moje domeny** otworzyć **Moje domeny** strony. 
+14. W okienku nawigacji po lewej stronie w **administrowanie** kliknij **Zarządzanie domenami** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena** otworzyć **Moja domena** strony. 
     
-    ![Mojej domeny](./media/jobscience-tutorial/ic767825.png "mojej domeny")
+    ![Moja domena](./media/jobscience-tutorial/ic767825.png "mojej domeny")
 
-15. Na **Moje domeny** strony w **znakowanie strony logowania** kliknij **Edytuj**.
+15. Na **Moja domena** stronie **znakowanie strony logowania** kliknij **Edytuj**.
     
-    ![Znakowanie strony logowania](./media/jobscience-tutorial/ic767826.png "znakowanie strony logowania")
+    ![Strona logowania znakowania](./media/jobscience-tutorial/ic767826.png "strony logowania, znakowania")
 
-16. Na **znakowanie strony logowania** strony w **usługi uwierzytelniania** sekcji Nazwa Twojej **ustawienia logowania jednokrotnego SAML** jest wyświetlany. Wybierz go, a następnie kliknij przycisk **zapisać**.
+16. Na **znakowanie strony logowania** strony w **usługi uwierzytelniania** sekcji Nazwa Twojej **ustawień logowania jednokrotnego SAML** jest wyświetlana. Zaznacz go, a następnie kliknij przycisk **Zapisz**.
     
-    ![Znakowanie strony logowania](./media/jobscience-tutorial/ic784366.png "znakowanie strony logowania")
+    ![Strona logowania znakowania](./media/jobscience-tutorial/ic784366.png "strony logowania, znakowania")
 
-17. Aby uzyskać PS zainicjować funkcji logowania jednokrotnego kliknij adres URL logowania na **ustawień rejestracji jednokrotnej** w **kontroli bezpieczeństwa** części menu.
+17. Można pobrać PS inicjować logowanie po kliknięciu adres URL logowania na **ustawień logowania jednokrotnego** w **środki kontroli bezpieczeństwa** sekcji menu.
 
-    ![Opcje zabezpieczeń](./media/jobscience-tutorial/ic784368.png "środki zabezpieczające.")
+    ![Środki kontroli bezpieczeństwa](./media/jobscience-tutorial/ic784368.png "kontroli zabezpieczeń")
     
-    Kliknij profil rejestracji Jednokrotnej, utworzony w poprzednim kroku. Ta strona zawiera rejestracji jednokrotnej na adres URL dla Twojej firmy (na przykład [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
+    Kliknij profil rejestracji Jednokrotnej, utworzonej w poprzednim kroku. Ta strona zawiera pojedynczy znak w adresie URL w firmie (na przykład [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/jobscience-tutorial/create_aaduser_01.png) 
 
@@ -214,17 +214,17 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/jobscience-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/jobscience-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/jobscience-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -232,87 +232,87 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="creating-a-jobscience-test-user"></a>Tworzenie użytkownika testowego Jobscience
 
-Aby umożliwić użytkownikom zalogować się do Jobscience usługi Azure AD, musi być przygotowana do Jobscience. W przypadku Jobscience Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Jobscience, musi być obsługiwana w Jobscience. W przypadku Jobscience Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 >[!NOTE]
->Możesz użyć innych Jobscience użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez Jobscience do świadczenia usługi Azure Active Directory kont użytkowników.
+>Można użyć jakichkolwiek innych Jobscience użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Jobscience do świadczenia usługi Azure Active Directory kont użytkowników.
 >  
         
-**Aby skonfigurować, inicjowanie obsługi użytkowników, wykonaj następujące czynności:**
+**Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojego **Jobscience** witryny firmy jako administrator.
+1. Zaloguj się do Twojej **Jobscience** witryny firmy jako administrator.
 
 2. Przejdź do instalacji.
    
-   ![Instalator](./media/jobscience-tutorial/ic784358.png "Instalatora")
+   ![Instalator](./media/jobscience-tutorial/ic784358.png "instalacji")
 3. Przejdź do **Zarządzanie użytkownikami \> użytkowników**.
    
    ![Użytkownicy](./media/jobscience-tutorial/ic784369.png "użytkowników")
 4. Kliknij przycisk **nowego użytkownika**.
    
-   ![Wszyscy użytkownicy](./media/jobscience-tutorial/ic784370.png "wszyscy użytkownicy")
-5. Na **Edytowanie użytkownika** okna dialogowego, wykonaj następujące czynności:
+   ![Wszyscy użytkownicy](./media/jobscience-tutorial/ic784370.png "wszystkich użytkowników")
+5. Na **Edytowanie użytkownika** okno dialogowe, należy wykonać następujące czynności:
    
    ![Edycja użytkownika](./media/jobscience-tutorial/ic784371.png "Edycja użytkownika")
    
-   a. W **imię** tekstowym, wpisz imię użytkownika, takich jak Britta.
+   a. W **imię** polu tekstowym wpisz imię użytkownika, takich jak Britta.
    
-   b. W **nazwisko** tekstowym, wpisz nazwisko użytkownika, takich jak Simona.
+   b. W **nazwisko** polu tekstowym wpisz nazwisko użytkownika, takich jak Simon.
    
-   c. W **Alias** tekstowym, wpisz nazwę użytkownika, takich jak brittas aliasu.
+   c. W **Alias** polu tekstowym wpisz nazwę aliasu użytkownika, takich jak brittas.
 
-   d. W **E-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak Brittasimon@contoso.com.
+   d. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak Brittasimon@contoso.com.
 
-   e. W **nazwy użytkownika** tekstowym, wpisz nazwę użytkownika użytkownika, takich jak Brittasimon@contoso.com.
+   e. W **nazwa_użytkownika** pole tekstowe, wpisz nazwę użytkownika, takie jak Brittasimon@contoso.com.
 
-   f. W **pseudonim** tekstowym, wpisz nazwę użytkownika, takich jak Simona nick.
+   f. W **pseudonim** polu tekstowym wpisz nazwę użytkownika, takich jak Simon nick.
 
    g. Kliknij pozycję **Zapisz**.
 
     
 > [!NOTE]
-> Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail i następuje łącze, aby potwierdzić swoje konto, zanim staje się aktywny.
+> Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail, a także następujące łącze, aby potwierdzić swoje konto, zanim stanie się aktywny.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Jobscience.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Jobscience.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta Jobscience, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Jobscience, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Jobscience**.
+2. Na liście aplikacji wybierz **Jobscience**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Jobscience w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Jobscience.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka Jobscience w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Jobscience.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

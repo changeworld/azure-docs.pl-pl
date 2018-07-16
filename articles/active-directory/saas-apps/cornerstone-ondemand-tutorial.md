@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z OnDemand podstawy | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i na żądanie podstawy.
+title: 'Samouczek: Integracja usługi Azure Active Directory z OnDemand podstawy | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i OnDemand podstawy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6928242f39e079af0238b21f6e06c2afbb4eca22
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cfbf431f8fa483b9a34beb71d9b1dbe3e691cdba
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219408"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053248"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Samouczek: Integracji Azure Active Directory z OnDemand podstawy
+# <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Samouczek: Integracja usługi Azure Active Directory z OnDemand podstawy
 
-Z tego samouczka dowiesz się sposobu integracji z usługą Azure Active Directory (Azure AD) OnDemand podstawy.
+W tym samouczku dowiesz się, jak zintegrować OnDemand podstawy w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD OnDemand podstawy zapewnia następujące korzyści:
+Integrowanie OnDemand podstawy z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do OnDemand podstawy
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do podstawy OnDemand (logowanie jednokrotne) z konta usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do OnDemand podstawy
+- Użytkowników, aby automatycznie uzyskać zalogowanych do OnDemand podstawy (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z OnDemand podstawy, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą OnDemand podstawy, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Podstawy OnDemand logowanie jednokrotne włączone subskrypcji
+- OnDemand podstawy logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie atrybutu podstawy z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie OnDemand podstawy z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie atrybutu podstawy z galerii
-Aby skonfigurować integrację usługi Azure AD OnDemand podstawy, należy dodać OnDemand podstawy z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie OnDemand podstawy z galerii
+Aby skonfigurować integrację OnDemand podstawy w usłudze Azure AD, należy dodać OnDemand podstawy z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać OnDemand podstawy z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację usługi Azure AD OnDemand podstawy, należy doda�
 
     ![Aplikacje][2]
 
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -79,68 +79,68 @@ Aby skonfigurować integrację usługi Azure AD OnDemand podstawy, należy doda�
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z OnDemand podstawy na podstawie użytkownika testowego, nazywany "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą OnDemand podstawy oparte na użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w OnDemand podstawy jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w OnDemand podstawy.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w OnDemand podstawy dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w OnDemand podstawy musi zostać ustanowione.
 
-Podstawy na żądanie, przypisywanie wartości **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W OnDemand podstawy, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z OnDemand podstawy, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą OnDemand podstawy, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego podstawy OnDemand](#creating-a-cornerstone-ondemand-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta OnDemand podstawy, połączonej z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego OnDemand podstawy](#creating-a-cornerstone-ondemand-test-user)**  — aby odpowiednikiem Britta Simon w OnDemand podstawy, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji OnDemand podstawy.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji OnDemand podstawy.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z OnDemand podstawy, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z OnDemand podstawy, wykonaj następujące czynności:**
 
-1. W portalu Azure na **OnDemand podstawy** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **OnDemand podstawy** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
 
-3. Na **podstawy OnDemand domeny i adres URL** sekcji, wykonaj następujące kroki:
+3. Na **domena OnDemand podstawy i adresy URL** sekcji, wykonaj następujące kroki:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company>.csod.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company>.csod.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company>.csod.com`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company>.csod.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta OnDemand podstawy](mailTo:moreinfo@csod.com) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta OnDemand podstawy](mailTo:moreinfo@csod.com) do uzyskania tych wartości.
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_general_400.png)
 
-6. Na **podstawy konfiguracji OnDemand** , kliknij przycisk **skonfigurować OnDemand podstawy** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adresu URL i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji OnDemand podstawy** kliknij **skonfigurować OnDemand podstawy** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_configure.png) 
 
-7. Skonfigurować logowanie jednokrotne w **OnDemand podstawy** stronie, musisz wysłać pobrany **certyfikatu**, **Sign-Out adres URL** i **SAML pojedynczy znak na adres URL usługi** do [zespołem pomocy technicznej OnDemand podstawy](mailTo:moreinfo@csod.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+7. Aby skonfigurować logowanie jednokrotne na **OnDemand podstawy** stronie, musisz wysłać pobrany **certyfikatu**, **adres URL wylogowania** i **SAML logowania jednokrotnego Adres URL usługi** do [zespołem pomocy technicznej OnDemand podstawy](mailTo:moreinfo@csod.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/cornerstone-ondemand-tutorial/create_aaduser_01.png)
 
@@ -148,17 +148,17 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/cornerstone-ondemand-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/cornerstone-ondemand-tutorial/create_aaduser_03.png)
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/cornerstone-ondemand-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -166,57 +166,57 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 ### <a name="creating-a-cornerstone-ondemand-test-user"></a>Tworzenie użytkownika testowego OnDemand podstawy
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w OnDemand podstawy. Podstawy OnDemand obsługę automatycznego użytkownika, który jest domyślnie włączone. Więcej informacji można znaleźć [tutaj](cornerstone-ondemand-provisioning-tutorial.md) na temat konfigurowania użytkowników automatycznego inicjowania obsługi administracyjnej.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w OnDemand podstawy. OnDemand podstawy obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](cornerstone-ondemand-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
 
-**Jeśli trzeba ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
+**Jeśli potrzebujesz ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
 
-Aby skonfigurować, inicjowanie obsługi użytkowników, należy wysłać informacje (np.: nazw, Wyślij wiadomość E-mail) o użytkownika usługi Azure AD należy obsługiwać [OnDemand podstawy zespołem pomocy technicznej](mailTo:moreinfo@csod.com).
+Skonfigurować aprowizację użytkowników, wysyłać informacje (np.: nazwa, Wyślij wiadomość E-mail) o użytkownika usługi Azure AD należy obsługiwać je na [zespołem pomocy technicznej OnDemand podstawy](mailTo:moreinfo@csod.com).
 
 >[!NOTE]
->Możesz użyć innych podstawy na żądanie użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez OnDemand podstawy do kont użytkowników usługi AAD.
+>Można użyć jakichkolwiek innych OnDemand podstawy użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez OnDemand podstawy do aprowizacji kont użytkowników usługi AAD.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do podstawy OnDemand.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do OnDemand podstawy.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta OnDemand podstawy, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon OnDemand podstawy, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **OnDemand podstawy**.
+2. Na liście aplikacji wybierz **OnDemand podstawy**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka podstawy na żądanie w panelu dostępu użytkownik powinien uzyskać automatycznie zalogowane do aplikacji OnDemand podstawy.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka OnDemand podstawy w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji OnDemand podstawy.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Skonfiguruj Inicjowanie obsługi użytkowników](cornerstone-ondemand-provisioning-tutorial.md)
+* [Konfigurowanie Aprowizowania użytkowników](cornerstone-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

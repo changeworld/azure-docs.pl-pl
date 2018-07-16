@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Wizergos oprogramowanie | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Wizergos wydajności oprogramowania.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą oprogramowania dotyczącego produktywności Wizergos | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Wizergos oprogramowania dotyczącego produktywności.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,219 +15,219 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 7eeb843a44fde53e6146084055607fe1fd6fc57c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96d028c1e18762f5a58234792271ce3eb1aed6a0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228421"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041759"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Samouczek: Integracji Azure Active Directory z Wizergos wydajności oprogramowania
+# <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą oprogramowania dotyczącego produktywności Wizergos
 
-Z tego samouczka dowiesz się integrowanie Wizergos wydajności oprogramowania z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Wizergos oprogramowania dotyczącego produktywności przy użyciu usługi Azure Active Directory (Azure AD).
 
-Integrowanie Wizergos wydajności oprogramowania z usługi Azure AD zapewnia następujące korzyści:
+Integracja oprogramowania dotyczącego produktywności Wizergos z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Wizergos wydajności oprogramowania.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane Wizergos wydajności oprogramowania (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do oprogramowania dotyczącego produktywności Wizergos.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do oprogramowania zwiększającego produktywność Wizergos (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z oprogramowaniem wydajność Wizergos, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą oprogramowania dotyczącego produktywności Wizergos, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Oprogramowanie Wizergos logowanie jednokrotne włączone subskrypcji
+- Oprogramowanie biurowe Wizergos logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Wizergos oprogramowanie z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie oprogramowania dotyczącego produktywności Wizergos z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Dodawanie Wizergos oprogramowanie z galerii
-Aby skonfigurować integrację usługi Azure AD Wizergos oprogramowanie, należy dodać Wizergos oprogramowanie z poziomu galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>Dodawanie oprogramowania dotyczącego produktywności Wizergos z galerii
+Aby skonfigurować integrację Wizergos oprogramowania zwiększającego produktywność w usłudze Azure AD, należy dodać Wizergos oprogramowania dotyczącego produktywności z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Wizergos oprogramowanie z poziomu galerii, wykonaj następujące czynności:**
+**Aby dodać pakiet biurowy Wizergos z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Wizergos oprogramowanie**, wybierz pozycję **Wizergos oprogramowanie** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **oprogramowania dotyczącego produktywności Wizergos**, wybierz opcję **oprogramowania dotyczącego produktywności Wizergos** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Oprogramowanie Wizergos na liście wyników](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_addfromgallery.png)
+    ![Oprogramowanie biurowe Wizergos na liście wyników](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Wizergos wydajności oprogramowania w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania dotyczącego produktywności Wizergos w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Wizergos oprogramowanie jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi Wizergos wydajności oprogramowania.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika Wizergos wydajności oprogramowania dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w oprogramowaniu produktywność Wizergos musi nawiązać.
 
-W Wizergos oprogramowanie, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W oprogramowaniu produktywność Wizergos, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Wizergos wydajności oprogramowania, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą oprogramowania dotyczącego produktywności Wizergos, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego oprogramowanie Wizergos](#create-a-wizergos-productivity-software-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Wizergos wydajności oprogramowania, które jest połączone z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego oprogramowania dotyczącego produktywności Wizergos](#create-a-wizergos-productivity-software-test-user)**  — aby odpowiednikiem Britta Simon w Wizergos wydajność oprogramowania, które jest połączone z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Wizergos wydajności oprogramowania.
+W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Wizergos oprogramowania dotyczącego produktywności.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Wizergos oprogramowanie, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą oprogramowania dotyczącego produktywności Wizergos, wykonaj następujące czynności:**
 
-1. W portalu Azure na **oprogramowanie Wizergos** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **oprogramowania dotyczącego produktywności Wizergos** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_samlbase.png)
 
-3. Na **Wizergos wydajności oprogramowania domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Wizergos wydajności oprogramowania domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Adresy URL i Wizergos wydajności oprogramowania domeny pojedynczy informacje logowania jednokrotnego](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
+    ![Wizergos wydajności oprogramowania domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL: `http://www.wizergos.net`
+    W **identyfikator** pole tekstowe, wpisz adres URL: `http://www.wizergos.net`
 
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_certificate.png) 
+    ![Link pobierania certyfikatu](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/wizergosproductivitysoftware-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/wizergosproductivitysoftware-tutorial/tutorial_general_400.png)
 
-6. Na **Wizergos wydajności oprogramowania Configuration** , kliknij przycisk **oprogramowanie skonfigurować Wizergos** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji oprogramowania produktywność Wizergos** , kliknij przycisk **Konfigurowanie oprogramowania dotyczącego produktywności Wizergos** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Wizergos wydajności oprogramowania konfiguracji](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_configure.png) 
+    ![Konfiguracja oprogramowania produktywność Wizergos](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_configure.png) 
 
-7. W oknie przeglądarki innej witryny sieci web logowanie do dzierżawy Wizergos wydajności oprogramowania jako administrator.
+7. W oknie przeglądarki internetowej innej logowanie jednokrotne do swojej dzierżawy oprogramowania dotyczącego produktywności Wizergos jako administrator.
 
-8. Wybierz z hamburger menu **Admin**.
+8. Wybierz z menu "hamburger" **administratora**.
 
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
-9. Na stronie Administracja w menu po lewej stronie wybierz **uwierzytelniania** i wybierz polecenie **usługi Azure AD**.
+9. Na stronie administratora, w menu po lewej stronie ekranu wybierz **uwierzytelniania** i kliknij pozycję **usługi Azure AD**.
 
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
 10. Wykonaj następujące czynności na **uwierzytelniania** sekcji.
 
-    ![Konfigurowanie jednej logowania w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego w aplikacji po stronie](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a. Kliknij przycisk **przekazać** przycisk, aby przekazać certyfikat pobrany z usługi Azure AD.
+    a. Kliknij przycisk **przekazywanie** przycisk, aby przekazać certyfikat pobrany z usługi Azure AD.
     
-    b. W **adres URL wystawcy** pole tekstowe, Wklej **identyfikator jednostki SAML** wartość, która została skopiowana z portalu Azure.
+    b. W **adres URL wystawcy** pola tekstowego, Wklej **identyfikator jednostki SAML** wartości, które zostały skopiowane z witryny Azure portal.
     
-    c. W **URL rejestracji jednokrotnej** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** wartość, która została skopiowana z portalu Azure.
+    c. W **pojedynczy adres URL logowania** pola tekstowego, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane z witryny Azure portal.
     
-    d. W **pojedynczego adresu URL Sign-Out** pole tekstowe, Wklej **Sign-Out URL** wartość, która została skopiowana z portalu Azure.
+    d. W **adres URL wylogowania jednokrotnego** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal.
     
-    e. Kliknij przycisk **zapisać** przycisku.
+    e. Kliknij przycisk **Zapisz** przycisku.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/wizergosproductivitysoftware-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/wizergosproductivitysoftware-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/wizergosproductivitysoftware-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/wizergosproductivitysoftware-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/wizergosproductivitysoftware-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-wizergos-productivity-software-test-user"></a>Tworzenie użytkownika testowego Wizergos wydajności oprogramowania
+### <a name="create-a-wizergos-productivity-software-test-user"></a>Tworzenie użytkownika testowego Wizergos oprogramowania dotyczącego produktywności
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta Wizergos wydajności oprogramowania. We współpracy z [zespołem pomocy technicznej Wizergos oprogramowanie](mailTo:support@wizergos.com) Aby dodać użytkowników na platformie Wizergos wydajności oprogramowania.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon Wizergos wydajności oprogramowania. Skontaktuj się z [Wizergos oprogramowania dotyczącego produktywności zespołu pomocy technicznej](mailTo:support@wizergos.com) Aby dodać użytkowników na platformie Wizergos oprogramowania dotyczącego produktywności.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do Wizergos wydajności oprogramowania.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do oprogramowania dotyczącego produktywności Wizergos.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Wizergos oprogramowanie, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Wizergos oprogramowania zwiększającego produktywność, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Wizergos oprogramowanie**.
+2. Na liście aplikacji wybierz **oprogramowania dotyczącego produktywności Wizergos**.
 
-    ![Łącze Wizergos oprogramowanie na liście aplikacji](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_app.png)  
+    ![Łącze oprogramowania dotyczącego produktywności Wizergos na liście aplikacji](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Wizergos oprogramowanie w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Wizergos wydajności oprogramowania.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Wizergos oprogramowania zwiększającego produktywność w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji oprogramowania dotyczącego produktywności Wizergos.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

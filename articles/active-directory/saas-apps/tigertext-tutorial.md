@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z TigerText Secure Messenger | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i TigerText Secure Messenger.
+title: 'Samouczek: Integracja usługi Azure Active Directory z TigerText Secure Messenger | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i TigerText Secure Messenger.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: aef5338b5bc47879dfbe97f14d35d55ca58ddf7f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 09f04ab4d289eb7fb6664d192404f719f8604e1e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219510"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041351"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Samouczek: Integracji Azure Active Directory z TigerText Secure Messenger
+# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Samouczek: Integracja usługi Azure Active Directory z TigerText Secure Messenger
 
-W tym samouczku Dowiedz się integrowanie TigerText Secure Messenger z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować TigerText Messenger zabezpieczyć za pomocą usługi Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD TigerText Secure Messenger zapewnia następujące korzyści:
+Integrowanie TigerText Secure Messenger z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do programu Messenger TigerText Secure
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do programu Messenger Secure TigerText (logowanie jednokrotne) z konta usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do TigerText Secure Messenger
+- Użytkowników, aby automatycznie uzyskać zalogowanych do programu Messenger Secure TigerText (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z TigerText Secure Messenger, potrzebne są następujące elementy:
+Do konfigurowania integracji z usługą Azure AD z TigerText Secure Messenger, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - TigerText Secure Messenger logowanie jednokrotne włączone subskrypcji
@@ -45,21 +45,21 @@ Aby skonfigurować integrację usługi Azure AD z TigerText Secure Messenger, po
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj TigerText Secure Messenger z galerii
-2. Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+2. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
 ## <a name="add-tigertext-secure-messenger-from-the-gallery"></a>Dodaj TigerText Secure Messenger z galerii
-Aby skonfigurować integrację usługi Azure AD TigerText Secure Messenger, należy dodać TigerText Secure Messenger z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu TigerText Secure Messenger w usłudze Azure AD, należy dodać TigerText Secure Messenger z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać TigerText Secure Messenger z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,76 +67,76 @@ Aby skonfigurować integrację usługi Azure AD TigerText Secure Messenger, nale
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **TigerText Secure Messenger**, wybierz pozycję **TigerText Secure Messenger** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **TigerText Secure Messenger**, wybierz opcję **TigerText Secure Messenger** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dodaj z galerii](./media/tigertext-tutorial/tutorial_tigertext_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z TigerText Messenger zabezpieczenia oparte na koncie użytkownika testu o nazwie "Britta Simona".
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą TigerText Messenger zabezpieczenia oparte na użytkownika testu o nazwie "Britta Simon".
 
-Do rejestracji jednokrotnej do pracy usługi Azure AD musi ustalić użytkownika odpowiednik w programie Messenger TigerText bezpieczny do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązane użytkownika w programie Messenger TigerText Secure musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w programie TigerText Secure Messenger do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w programie TigerText Secure Messenger musi nawiązać.
 
-W programie Messenger Secure TigerText, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W programie TigerText Secure Messenger przypisze się wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **nazwy użytkownika** do ustanawiania relacji łączy.
 
-Do konfigurowania i testowania usługi Azure AD rejestracji jednokrotnej z TigerText Secure Messenger, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą TigerText Secure Messenger, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego TigerText Secure Messenger](#create-a-tigertext-secure-messenger-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta TigerText Secure programu Messenger połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego TigerText Secure Messenger](#create-a-tigertext-secure-messenger-test-user)**  — aby odpowiednikiem Britta Simon w zabezpieczanie Messenger TigerText, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji TigerText Secure Messenger.
+W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji TigerText Secure Messenger.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z TigerText Secure Messenger, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z TigerText Secure Messenger, wykonaj następujące czynności:**
 
-1. W portalu Azure na **TigerText Secure Messenger** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **TigerText Secure Messenger** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Logowanie na podstawie protokołu SAML](./media/tigertext-tutorial/tutorial_tigertext_samlbase.png)
 
-3. Na **TigerText Secure Messenger domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **TigerText Secure Messenger domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Sekcja TigerText Secure Messenger domeny i adresy URL](./media/tigertext-tutorial/tutorial_tigertext_url.png)
+    ![Sekcja TigerText Secure Messenger domena i adresy URL](./media/tigertext-tutorial/tutorial_tigertext_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wprowadź adres URL jako: `https://home.tigertext.com`
+    a. W **adres URL logowania** polu tekstowym wprowadź adres URL jako: `https://home.tigertext.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość z rzeczywistego identyfikatora. Skontaktuj się z [zespołem pomocy technicznej kliencie Secure TigerText](mailTo:prosupport@tigertext.com) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywistego identyfikatora. Skontaktuj się z pomocą [zespołem pomocy technicznej w kliencie Secure TigerText](mailTo:prosupport@tigertext.com) aby zyskać tę wartość. 
  
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Sekcja certyfikat podpisywania SAML](./media/tigertext-tutorial/tutorial_tigertext_certificate.png) 
+    ![Sekcji certyfikat podpisywania SAML](./media/tigertext-tutorial/tutorial_tigertext_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
     ![Przycisk Zapisz](./media/tigertext-tutorial/tutorial_general_400.png)
 
-6. Aby uzyskać rejestracji jednokrotnej skonfigurowana dla aplikacji, skontaktuj się z [TigerText Secure Messenger zespołem pomocy technicznej](mailTo:prosupport@tigertext.com) i udostępniać je **metadanych pobrane**.
+6. Aby uzyskać logowanie jednokrotne skonfigurowane pod kątem swojej aplikacji, skontaktuj się z [zespołem pomocy technicznej TigerText Secure Messenger](mailTo:prosupport@tigertext.com) i zapewnić im **metadanych pobrane**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tigertext-tutorial/create_aaduser_01.png) 
 
@@ -144,65 +144,65 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Użytkownicy i grupy -> Wszyscy użytkownicy](./media/tigertext-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Dodawanie przycisku](./media/tigertext-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Okno dialogowe użytkownika](./media/tigertext-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-tigertext-secure-messenger-test-user"></a>Tworzenie użytkownika testowego TigerText zabezpieczenia w programie Messenger
+### <a name="create-a-tigertext-secure-messenger-test-user"></a>Tworzenie użytkownika testowego TigerText Secure Messenger
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w TigerText. Sprawdź dotrzeć do [zespołem pomocy technicznej kliencie Secure TigerText](mailTo:prosupport@tigertext.com) Aby dodać użytkowników do platformy TigerText.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w TigerText. Skontaktuj się z [zespołem pomocy technicznej w kliencie Secure TigerText](mailTo:prosupport@tigertext.com) Aby dodać użytkowników na platformie TigerText.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do programu Messenger TigerText bezpieczny.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do TigerText Secure Messenger.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta TigerText Secure Messenger, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon TigerText Secure Messenger, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **TigerText Secure Messenger**.
+2. Na liście aplikacji wybierz **TigerText Secure Messenger**.
 
-    ![TigerText Secure Messenger listy aplikacji](./media/tigertext-tutorial/tutorial_tigertext_app.png) 
+    ![Zabezpieczanie Messenger TigerText listy aplikacji](./media/tigertext-tutorial/tutorial_tigertext_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka TigerText w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji TigerText. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka TigerText w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji TigerText. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji usługi Azure Active Directory z logowania jednokrotnego Procore | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Procore logowania jednokrotnego.
+title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Procore | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Procore logowania jednokrotnego.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 380b7e8fc48b88449cf43fda92af7f9503771777
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: bd84224f4c3a8a498a296ff50190713111895472
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287228"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051619"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Samouczek: Integracji Azure Active Directory z Procore logowania jednokrotnego
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Procore
 
-Z tego samouczka dowiesz się integrowanie Procore logowania jednokrotnego w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Procore logowanie Jednokrotne z usługą Azure Active Directory (Azure AD).
 
-Integrowanie Procore rejestracji Jednokrotnej z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie Procore logowanie Jednokrotne z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Procore logowania jednokrotnego
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Procore SSO (logowanie jednokrotne) z konta usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu zarządzania Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Procore logowania jednokrotnego
+- Użytkowników, aby automatycznie uzyskać zalogowanych do Procore SSO (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Procore logowania jednokrotnego, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD przy użyciu logowania jednokrotnego Procore, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Procore logowania jednokrotnego jednokrotnego włączone subskrypcji
+- Procore logowania jednokrotnego logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
@@ -46,20 +46,20 @@ Aby skonfigurować integrację usługi Azure AD z Procore logowania jednokrotneg
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Procore rejestracji Jednokrotnej z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie Procore logowania jednokrotnego za pomocą galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-procore-sso-from-the-gallery"></a>Dodawanie Procore rejestracji Jednokrotnej z galerii
-Aby skonfigurować integrację Procore logowania jednokrotnego do usługi Azure AD, należy dodać Procore rejestracji Jednokrotnej z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-procore-sso-from-the-gallery"></a>Dodawanie Procore logowania jednokrotnego za pomocą galerii
+Aby skonfigurować integrację Procore logowania jednokrotnego w usłudze Azure AD, należy dodać Procore logowania jednokrotnego z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Procore rejestracji Jednokrotnej z galerii, wykonaj następujące czynności:**
+**Aby dodać Procore logowania jednokrotnego z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu zarządzania Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[portalu zarządzania systemu Azure](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację Procore logowania jednokrotnego do usługi Azure 
 
     ![Aplikacje][2]
     
-3. Kliknij przycisk **Dodaj** przycisk w górnej części okna dialogowego.
+3. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -79,70 +79,70 @@ Aby skonfigurować integrację Procore logowania jednokrotnego do usługi Azure 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej Procore logowaniem jednokrotnym w oparciu o użytkownika testowego o nazwie "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Procore Usługa rejestracji Jednokrotnej w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Do rejestracji jednokrotnej do pracy usługi Azure AD musi ustalić użytkownika odpowiednika w Procore rejestracji Jednokrotnej dla użytkownika w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Procore logowania jednokrotnego.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Procore logowania jednokrotnego do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Procore logowania jednokrotnego musi nawiązać.
 
-Ta relacja łącza zostanie nawiązane, przypisując wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** w Procore logowania jednokrotnego.
+Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w Procore logowania jednokrotnego.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Procore logowania jednokrotnego, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Procore, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Procore logowania jednokrotnego](#creating-a-procore-sso-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Procore Usługa rejestracji Jednokrotnej jest połączona z jej reprezentacji usługi Azure AD.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Procore logowania jednokrotnego](#creating-a-procore-sso-test-user)**  — aby odpowiednikiem Britta Simon w Procore logowanie Jednokrotne połączonej z usługi Azure AD reprezentacja jej.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu zarządzania Azure i skonfigurować logowanie jednokrotne w aplikacji Procore logowania jednokrotnego.
+W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu zarządzania platformy Azure i konfigurowanie logowania jednokrotnego w aplikacji Procore logowania jednokrotnego.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Procore logowania jednokrotnego, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu logowania jednokrotnego Procore, wykonaj następujące czynności:**
 
-1. W portalu zarządzania Azure na **Procore logowania jednokrotnego** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W portalu zarządzania platformy Azure na **Procore logowania jednokrotnego** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Włącz funkcji logowania jednokrotnego.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** na włączanie logowania jednokrotnego.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_procoresso_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
-3. Na **Procore domena logowania jednokrotnego i adresy URL** sekcji, użytkownik nie trzeba wykonywać żadnych czynności, jak aplikacja już jest wstępna Integracja z usługą Azure.
+3. Na **Procore domena logowania jednokrotnego i adresy URL** sekcji, użytkownik nie ma do wykonywania żadnych czynności, jak aplikacja już jest wstępnie zintegrowana z platformą Azure.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_procoresso_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_procoresso_url.png)
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_procoresso_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_general_400.png)
 
-6. Na **Procore konfiguracji logowania jednokrotnego** kliknij **Konfigurowanie logowania jednokrotnego Procore** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **Procore konfiguracji logowania jednokrotnego** kliknij **Konfigurowanie logowania jednokrotnego Procore** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_procoresso_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_procoresso_configure.png) 
 
-7. Aby skonfigurować logowanie jednokrotne w **Procore logowania jednokrotnego** strona, zaloguj się do witryny procore firmy jako administrator.
+7. Aby skonfigurować logowanie jednokrotne na **Procore logowania jednokrotnego** strona, zaloguj się do witryny firmy procore jako administrator.
 
-8. Z listy przybornika w dół, kliknij pozycję **Admin** aby otworzyć stronę ustawienia logowania jednokrotnego.
+8. Z listy przybornika w dół, kliknij pozycję **administratora** o otwarcie strony ustawień logowania jednokrotnego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/procore_tool_admin.png)
 
-9. Wklej wartości w polach, zgodnie z opisem poniżej-
+9. Wklej wartość w polach, zgodnie z opisem poniżej-
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a. W **pojedynczy znak na adres URL wystawcy** okno, wklej identyfikator jednostki SAML skopiowany z portalu Azure.
+    a. W **pojedynczy znak na adres URL wystawcy** pole, wklej identyfikator jednostki SAML skopiowane z portalu Azure.
 
-    b. W **SAML logowania na docelowy adres URL** okno, Wklej SAML pojedynczy znak na adres URL usługi skopiowany z portalu Azure.
+    b. W **SAML logowania na docelowy adres URL** pole, Wklej SAML pojedynczego logowania jednokrotnego usługi adres URL skopiowany z witryny Azure portal.
 
-    c. Teraz otworzyć **XML metadanych** pobrane wcześniej z portalu Azure i skopiuj certyfikat w tagu o nazwie **X509Certificate**. Wklej skopiowane wartości do **certyfikatu rejestracji jednokrotnej x509** pole.
+    c. Teraz Otwórz **XML metadanych** pobrane powyżej w witrynie Azure portal i skopiować rozszyfrować przy jego użyciu w tagu o nazwie **X509Certificate**. Wklej skopiowany wartość do **certyfikatu logowania jednokrotnego x509** pole.
 
-10. Polecenie **zapisać zmiany**.
+10. Kliknij pozycję **Zapisz zmiany**.
 
-11. Po tych ustawień, użytkownik musi wysłać **nazwy domeny** (np. **contoso.com**) za pomocą którego logujesz się do Procore do [zespołem pomocy technicznej Procore](https://support.procore.com/) i zostaną one Aktywuj federacyjną rejestracją Jednokrotną dla tej domeny.
+11. Po tych ustawień musi wysyłać **nazwy domeny** (np. **contoso.com**) za pomocą którego logujesz się do Procore do [zespołem pomocy technicznej Procore](https://support.procore.com/) i będą oni mogli Aktywuj federacyjnego logowania jednokrotnego dla tej domeny.
 
 <!--### Next steps
 
@@ -158,17 +158,17 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania platformy Azure o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu zarządzania Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **portalu zarządzania Azure**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/procoresso-tutorial/create_aaduser_01.png) 
 
-2. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlenia na liście Użytkownicy.
+2. Przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy** do wyświetlania listy użytkowników.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/procoresso-tutorial/create_aaduser_02.png) 
 
@@ -176,13 +176,13 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania Az
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/procoresso-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/procoresso-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -190,75 +190,75 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania Az
  
 ### <a name="creating-a-procore-sso-test-user"></a>Tworzenie użytkownika testowego Procore logowania jednokrotnego
 
-Wykonaj następujące czynności, aby utworzyć użytkownika testowego Procore w bok.
+Wykonaj poniższe kroki, aby utworzyć użytkownika testowego Procore po ich stronie.
 
-1. Zaloguj się do witryny procore firmy jako administrator.  
+1. Zaloguj się do witryny firmy procore jako administrator.  
 
-2. Z listy przybornika w dół, kliknij pozycję **katalogu** aby otworzyć stronę katalogu firmy.
+2. Z listy przybornika w dół, kliknij pozycję **katalogu** o otwarcie strony katalogu firmy.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. Polecenie **dodać osobę** opcję, aby otworzyć formularz i wprowadzić wykonania następujących opcji -
+3. Kliknij pozycję **dodać osobę** opcję, aby otworzyć formularz, a następnie wprowadź wykonywać następujące opcje —
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. W **imię** pole tekstowe, imię użytkownika typu, takich jak **Britta**.
+    a. W **imię** pola tekstowego, imię typ użytkownika, takich jak **Britta**.
 
-    b. W **nazwisko** pole tekstowe, nazwisko użytkownika typu, takich jak **Simona**.
+    b. W **nazwisko** pola tekstowego, nazwisko typ użytkownika, takich jak **Simon**.
 
     c. W **adres E-mail** , adres e-mail użytkownika typu pole tekstowe, takich jak **BrittaSimon@contoso.com**.
 
-    d. Wybierz **szablon uprawnień** jako **później Zastosuj szablon uprawnień**.
+    d. Wybierz **szablon uprawnień** jako **Zastosuj szablon uprawnień później**.
 
     e. Kliknij przycisk **Utwórz**.
 
-4. Sprawdź i zaktualizuj szczegóły dla nowo dodanego kontaktu.
+4. Sprawdź i aktualizowanie szczegółów dla nowo dodanego kontaktu.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Polecenie **zapisywanie i wysyłanie Invitiation** (Jeśli wymagane jest zaproszenia pocztą) lub **zapisać** (Zapisz bezpośrednio) do ukończenia rejestracji użytkownika.
+5. Kliknij pozycję **zapisywanie i wysyłanie Invitiation** (Jeśli wymagane jest za pośrednictwem wiadomości e-mail) lub **Zapisz** (zapisane bezpośrednio), aby ukończyć rejestrację użytkownika.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/Procore_user_save.png)  
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/Procore_user_save.png)  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do udostępnienia jej Procore logowania jednokrotnego za pomocą platformy Azure rejestracji jednokrotnej.
+W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udostępnienie jej Procore logowania jednokrotnego.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta Procore logowania jednokrotnego, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Procore logowania jednokrotnego, wykonaj następujące czynności:**
 
-1. Otwórz widok aplikacji w portalu zarządzania Azure, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W portalu zarządzania platformy Azure powoduje ono otwarcie widoku aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Procore logowania jednokrotnego**.
+2. Na liście aplikacji wybierz **Procore logowania jednokrotnego**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/procoresso-tutorial/tutorial_procoresso_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/procoresso-tutorial/tutorial_procoresso_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Jeśli chcesz przetestować jednego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). Po kliknięciu kafelka Procore logowania jednokrotnego w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Procore logowania jednokrotnego.
+Jeśli chcesz przetestować pojedynczego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej szczegółów na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). Po kliknięciu kafelka Procore logowania jednokrotnego w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Procore logowania jednokrotnego.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

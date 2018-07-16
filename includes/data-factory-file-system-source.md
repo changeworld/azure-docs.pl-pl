@@ -1,6 +1,6 @@
-W przypadku działania kopiowania, gdy źródłem jest typu **FileSystemSource**, w sekcji typeProperties dostępne są następujące właściwości:
+W działaniu kopiowania, gdy źródłem jest typu **FileSystemSource**, w sekcji typeProperties dostępne są następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| Cykliczne |Wskazuje, czy dane są odczytywane rekursywnie z folderów sub lub tylko określonego folderu. |Wartość true, False (ustawienie domyślne) |Nie |
+| cykliczne |Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
 

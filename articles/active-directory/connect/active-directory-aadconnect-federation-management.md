@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5597d75da50853e85d6e94f1a5c7b5114068f671
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4bba72e0761553c81acda7609898c1b032bdf28a
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917000"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044423"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowywanie Active Directory Federation Services przy użyciu usługi Azure AD Connect
 W tym artykule opisano, jak zarządzanie i dostosowywanie Active Directory Federation Services (AD FS) przy użyciu usługi Azure Active Directory (Azure AD) Connect. Zawiera on również innych typowych zadań usług AD FS, które może być konieczne na pełną konfigurację farmy usług AD FS.
@@ -189,7 +189,7 @@ Poniższe sekcje zawierają szczegółowe informacje o niektórych typowych zada
 Aby zmienić logo firmy, która jest wyświetlana na **logowania** strony, należy użyć następującego polecenia cmdlet programu Windows PowerShell i składni.
 
 > [!NOTE]
-> Zalecane wymiary logo to 260 x 35 rozdzielczości 96 dpi w pliku o rozmiarze nie większym niż 10 KB.
+> Zalecane wymiary logo to 260 x 35 \@ rozdzielczości 96 dpi w pliku o rozmiarze nie większym niż 10 KB.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 

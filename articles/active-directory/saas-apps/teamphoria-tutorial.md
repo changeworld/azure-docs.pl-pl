@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Teamphoria | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Teamphoria.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Teamphoria | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Teamphoria.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ff053b88a718c152d31b593a7759b034347f3ef
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293674"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041912"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Samouczek: Integracji Azure Active Directory z Teamphoria
+# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Samouczek: Integracja usługi Azure Active Directory z Teamphoria
 
-Z tego samouczka dowiesz się integrowanie Teamphoria z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Teamphoria w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD Teamphoria zapewnia następujące korzyści:
+Integrowanie Teamphoria z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Teamphoria
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Teamphoria (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Teamphoria
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Teamphoria (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Teamphoria, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Teamphoria, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Teamphoria jednokrotnego włączone subskrypcji
+- Teamphoria logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Teamphoria z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-teamphoria-from-the-gallery"></a>Dodawanie Teamphoria z galerii
-Aby skonfigurować integrację usługi Azure AD Teamphoria, należy dodać Teamphoria z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Teamphoria w usłudze Azure AD, należy dodać Teamphoria z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Teamphoria z galerii, wykonaj następujące czynności:**
 
-1. W  **[Azure Portal](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+1. W  **[witryny Azure Portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Usługa Active Directory][1]
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację usługi Azure AD Teamphoria, należy dodać Teamp
 
     ![Aplikacje][2]
     
-3. Kliknij przycisk **Dodaj** przycisk w górnej części okna dialogowego.
+3. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -80,86 +80,86 @@ Aby skonfigurować integrację usługi Azure AD Teamphoria, należy dodać Teamp
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Teamphoria w oparciu o nazwie "Britta Simona" użytkownika testowego.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Teamphoria w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Teamphoria jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Teamphoria musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Teamphoria do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Teamphoria musi można ustanowić.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Teamphoria, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Teamphoria, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Teamphoria](#creating-a-teamphoria-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Teamphoria połączonego z jej reprezentacji usługi Azure AD.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Teamphoria](#creating-a-teamphoria-test-user)**  — aby odpowiednikiem Britta Simon w Teamphoria połączonego z jej reprezentacji usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Teamphoria.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Teamphoria.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Teamphoria, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Teamphoria, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Teamphoria** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Teamphoria** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
-3. Na **Teamphoria domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Teamphoria domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<sub-domain>.teamphoria.com/login`   
+    W **adres URL logowania** pole tekstowe, wpisz adres URL, za pomocą następującego wzorca: `https://<sub-domain>.teamphoria.com/login`   
 
     > [!NOTE] 
-    > Wartość adres URL logowania nie jest prawdziwe. Należy zaktualizować tę wartość z adresem URL logowania rzeczywistych. Skontaktuj się z [zespołem pomocy technicznej klienta Teamphoria](https://www.teamphoria.com/) Aby uzyskać adres URL logowania jednokrotnego.
+    > Wartość adres URL logowania nie jest prawdziwe. Musisz zaktualizować tę wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Teamphoria](https://www.teamphoria.com/) można pobrać adresu URL logowania jednokrotnego.
 
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie Zapisz certyfikat na komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie Zapisz certyfikat na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Teamphoria** , kliknij przycisk **skonfigurować Teamphoria** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji Teamphoria** , kliknij przycisk **skonfigurować Teamphoria** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
-7. Aby skonfigurować logowanie jednokrotne w **Teamphoria** strony logowania do aplikacji Teamphoria jako administrator.
+7. Aby skonfigurować logowanie jednokrotne na **Teamphoria** strony logowania do aplikacji Teamphoria jako administrator.
 
-8. Przejdź do **ustawienia administratora** kliknij opcję na lewym pasku narzędzi oraz na karcie Konfigurowanie **POJEDYNCZEGO logowania** otworzyć okno konfiguracji logowania jednokrotnego.
+8. Przejdź do **ustawienia administratora** kliknij opcję w pasku narzędzi po lewej stronie i na karcie Konfigurowanie **logowanie Jednokrotne** można otworzyć okna konfiguracji logowania jednokrotnego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/admin_sso_configure.png)
 
-9. Polecenie **Dodaj nowego DOSTAWCĘ tożsamości** opcję w prawym górnym rogu, aby otworzyć formularz dodawania ustawienia logowania jednokrotnego.
+9. Kliknij pozycję **Dodaj nowego DOSTAWCĘ tożsamości** opcję w prawym górnym rogu, aby otworzyć formularz służący do dodawania ustawień logowania jednokrotnego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
-10. Wprowadź dane w polach zgodnie z opisem poniżej-
+10. Wprowadź szczegółowe informacje w polach, zgodnie z opisem poniżej-
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **Nazwa WYŚWIETLANA**: Wprowadź nazwę wyświetlaną wtyczki na stronie Administracja.
+    a. **Nazwa WYŚWIETLANA**: Wprowadź nazwę wyświetlaną wtyczki na stronę administratora.
 
-    b. **Nazwa przycisku**: Nazwa karty, która będzie wyświetlana na stronie logowania dla logowania za pośrednictwem rejestracji Jednokrotnej.
+    b. **Nazwa przycisku**: Nazwa kartę która będzie wyświetlana na stronie logowania dla logowania za pomocą logowania jednokrotnego.
 
-    c. **CERTYFIKAT**: Otwórz certyfikat wcześniej pobrany z portalu Azure w programie Notatnik, skopiuj zawartość tego samego i wklej go w tym miejscu w polu.
+    c. **CERTYFIKAT**: Certyfikat pobrany wcześniej z witryny Azure portal w programie Notatnik, Open skopiuj zawartość tego samego i wklej go w tym miejscu w polu.
 
-    d. **PUNKT wejścia**: Wklej **SAML pojedynczy znak na adres URL usługi** skopiowane wcześniej z portalu Azure.
+    d. **PUNKT wejścia**: Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowany wcześniej z witryny Azure portal.
 
-    e. Przełącz opcję **ON** i wybierz polecenie **ZAPISAĆ**.
+    e. Przełącz opcję **ON** i kliknij pozycję **ZAPISZ**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamphoria-tutorial/create_aaduser_01.png) 
 
@@ -171,13 +171,13 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamphoria-tutorial/create_aaduser_03.png)
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/teamphoria-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -185,71 +185,71 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 ### <a name="creating-a-teamphoria-test-user"></a>Tworzenie użytkownika testowego Teamphoria
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do Teamphoria, musi być przygotowana do Teamphoria. W przypadku Teamphoria Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do Teamphoria, musi być obsługiwana w Teamphoria. W przypadku Teamphoria Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
+**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy Teamphoria jako administrator.
 
-2. Polecenie **ADMIN** ustawień na lewym pasku narzędzi i w obszarze **ZARZĄDZAJ** karcie kliknij na **użytkowników** aby otworzyć stronę administratora dla użytkowników.
+2. Kliknij pozycję **administratora** ustawień na pasku narzędzi po lewej stronie i w obszarze **ZARZĄDZAJ** karcie kliknij **użytkowników** o otwarcie strony administratora dla użytkowników.
 
     ![Dodawanie pracownika](./media/teamphoria-tutorial/admin_manage_users.png)
 
-3. Polecenie **ZAPROSIĆ RĘCZNEGO** opcji.
+3. Kliknij pozycję **ZAPROSIĆ ręczne** opcji.
 
     ![Zaproś inne osoby](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
-4. Na tej stronie należy wykonać następujące działania.
+4. Na tej stronie wykonaj następujące działania.
     
     ![Zaproś inne osoby](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a. W **adres E-mail** pole tekstowe, **adres e-mail** z BrittaSimon.
+    a. W **adres E-mail** polu tekstowym **adres e-mail** z BrittaSimon.
 
-    b. W **imię** pole tekstowe, typ **Britta**.
+    b. W **imię** polu tekstowym wpisz **Britta**.
 
-    c. W **nazwisko** pole tekstowe, typ **Simona**.
+    c. W **nazwisko** polu tekstowym wpisz **Simon**.
 
-    d. Kliknij przycisk **użytkownika zaproszenia 1**. Użytkownik musi zaakceptować zaproszenie tworzone w systemie.
+    d. Kliknij przycisk **zaproszenia 1 użytkownika**. Użytkownik musi zaakceptować zaproszenie tworzone w systemie.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Teamphoria.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Teamphoria.
 
 ![Przypisz użytkownika][200]
 
-**Aby przypisać Simona Britta Teamphoria, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Teamphoria, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201]
 
-2. Na liście aplikacji zaznacz **Teamphoria**.
+2. Na liście aplikacji wybierz **Teamphoria**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
 
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Jeśli chcesz przetestować jednego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Jeśli chcesz przetestować pojedynczego ustawienia logowania jednokrotnego, otwórz Panel dostępu. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

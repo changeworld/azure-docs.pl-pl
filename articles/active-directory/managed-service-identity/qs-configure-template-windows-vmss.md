@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 9f550af869ccfc44ba4d840f54503ad017cdaf95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: cc7bfebd24da0d69e4b42b1a3afd7a640016dd35
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901215"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39052095"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej zestawu skalowania maszyn wirtualnych przy użyciu szablonu
 
@@ -55,7 +55,7 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane do tożsamości pr
 
 1. Załadować szablon do edytora, odszukaj `Microsoft.Compute/virtualMachineScaleSets` zasobów zainteresowania w ramach `resources` sekcji. Należy do Ciebie mogą się nieznacznie różnić od Poniższy zrzut ekranu, w zależności od edytor, którego używasz, i czy edytujesz szablon dla nowego wdrożenia lub istniejącą grupę.
    
-   ![Zrzut ekranu przedstawiający szablon — Znajdź maszynę Wirtualną](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
+   ![Zrzut ekranu przedstawiający szablon — Znajdź maszynę Wirtualną](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
 2. Aby umożliwić tożsamości przypisanej w systemie, Dodaj `"identity"` właściwości w tym samym poziomie co `"type": "Microsoft.Compute/virtualMachineScaleSets"` właściwości. Należy użyć następującej składni:
 
@@ -91,7 +91,7 @@ W tej sekcji zostanie włączony i Wyłącz system przypisane do tożsamości pr
 
 4. Gdy wszystko będzie gotowe, szablon powinien wyglądać podobnie do poniższej:
 
-   ![Zrzut ekranu przedstawiający szablon po aktualizacji](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
+   ![Zrzut ekranu przedstawiający szablon po aktualizacji](../managed-service-identity/media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
 ### <a name="disable-a-system-assigned-identity-from-an-azure-virtual-machine-scale-set"></a>Wyłączanie tożsamości przypisanej w systemie, z zestawu skalowania maszyn wirtualnych platformy Azure
 

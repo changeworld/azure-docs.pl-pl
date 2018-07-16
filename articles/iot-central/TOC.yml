@@ -37,10 +37,12 @@
   items:
     - name: Administrator
       items:
-        - name: Tworzenie aplikacji
-          href: howto-create-application.md
+        - name: Tworzenie aplikacji i zarządzanie nią jako dostawca CSP
+          href: howto-create-and-manage-applications-as-CSP.md
         - name: Administrowanie aplikacją
           href: howto-administer.md
+        - name: Eksportowanie danych
+          href: howto-export-data.md
     - name: Konstruktor
       items:
         - name: Konfigurowanie szablonu urządzenia
@@ -49,6 +51,10 @@
           href: howto-version-devicetemplate.md
         - name: Tworzenie reguły telemetrii
           href: howto-create-telemetry-rules.md
+        - name: Tworzenie reguły zdarzeń
+          href: howto-create-event-rules.md
+        - name: Tworzenie przepływów pracy w usłudze Microsoft Flow
+          href: howto-add-microsoft-flow.md
         - name: Konfigurowanie strony głównej
           href: howto-configure-homepage.md
         - name: Przygotowywanie i przekazywanie obrazów

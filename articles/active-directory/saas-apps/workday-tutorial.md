@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z produktem Workday | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i dzień roboczy.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Workday | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Workday.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,211 +15,211 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: d3d85dd3ec074d01d597e34a45f27434214fc0ad
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 641f2e19791be48d014eeb61fb2848fc2a33a9cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212268"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042048"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workday"></a>Samouczek: Azure Active Directory integracji z produktem Workday
+# <a name="tutorial-azure-active-directory-integration-with-workday"></a>Samouczek: Integracja usługi Azure Active Directory z produktem Workday
 
-Z tego samouczka dowiesz się integrowanie pracy z usługą Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować pracy z usługą Azure Active Directory (Azure AD).
 
 Integrowanie pracy z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do produktu Workday.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do produktu Workday (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do produktu Workday.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do produktu Workday (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z produktem Workday, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Workday, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Produktu Workday jednokrotnego włączone subskrypcji
+- Dzień roboczy logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie produktu Workday z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie produktu Workday za pomocą galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-workday-from-the-gallery"></a>Dodawanie produktu Workday z galerii
-Aby skonfigurować integrację z produktu Workday do usługi Azure AD, należy dodać produktu Workday z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-workday-from-the-gallery"></a>Dodawanie produktu Workday za pomocą galerii
+Aby skonfigurować integrację z produktu Workday do usługi Azure AD, należy dodać produktu Workday za pomocą galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać produktu Workday z galerii, wykonaj następujące czynności:**
+**Aby dodać produktu Workday w galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **produktu Workday**, wybierz pozycję **produktu Workday** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Workday**, wybierz opcję **Workday** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dzień roboczy na liście wyników](./media/workday-tutorial/tutorial_workday_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z produktu Workday w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą produktu Workday w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w produktu Workday jest dla użytkownika, w usłudze Azure AD. Innymi słowy musi można ustanowić łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w pracy.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w produkcie Workday do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w produkcie Workday musi zostać nawiązane.
 
-W pracy, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W produkcie Workday, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z produktem Workday, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z aplikacją Workday, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego produktu Workday](#create-a-workday-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta produktu Workday połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Workday](#create-a-workday-test-user)**  — aby odpowiednikiem Britta Simon w produkcie Workday, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji produktu Workday.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji produktu Workday.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z produktem Workday, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z aplikacją Workday, wykonaj następujące czynności:**
 
-1. W portalu Azure na **produktu Workday** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Workday** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/workday-tutorial/tutorial_workday_samlbase.png)
 
-3. Na **produktu Workday domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **Workday, domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Adresy URL i domeny WORKDAY pojedynczy informacje logowania jednokrotnego](./media/workday-tutorial/tutorial_workday_url.png)
+    ![WORKDAY domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL: `http://www.workday.com`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL: `http://www.workday.com`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
 
-    ![Adresy URL i domeny WORKDAY pojedynczy informacje logowania jednokrotnego](./media/workday-tutorial/tutorial_workday_url1.png)
+    ![WORKDAY domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/workday-tutorial/tutorial_workday_url1.png)
 
-    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://impl.workday.com/<tenant>/login-saml.htmld`
+    W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
-    > Wartości te nie są rzeczywistych. Rzeczywisty adres URL logowania i adres URL odpowiedzi, należy zaktualizować te wartości. Adres URL odpowiedzi muszą mieć poddomeny na przykład: www, wd2, wd3, wd3 impl, wd5, wd5 impl). Przy użyciu przypominać "*http://www.myworkday.com*" działa, ale "*http://myworkday.com*" nie ma. Skontaktuj się z [zespołem pomocy technicznej klienta produktu Workday](https://www.workday.com/en-us/partners-services/services/support.html) uzyskać te wartości.  
+    > Te wartości nie są rzeczywiste. Rzeczywisty adres URL logowania i adres URL odpowiedzi, należy zaktualizować te wartości. Adres URL odpowiedzi muszą mieć poddomeny na przykład: www, wd2, wd3, wd3 impl, wd5, wd5 impl). Przy użyciu polecenia podobnego "*http://www.myworkday.com*" działa, ale "*http://myworkday.com*" nie ma. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) do uzyskania tych wartości.  
 
-5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+5. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/workday-tutorial/tutorial_workday_certificate.png) 
+    ![Link pobierania certyfikatu](./media/workday-tutorial/tutorial_workday_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/workday-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/workday-tutorial/tutorial_general_400.png)
     
-7. Na **konfiguracji produktu Workday** kliknij **Konfigurowanie produktu Workday** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+7. Na **konfiguracji produktu Workday** kliknij **Konfigurowanie produktu Workday** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![WORKDAY konfiguracji](./media/workday-tutorial/tutorial_workday_configure.png) 
+    ![Konfiguracja WORKDAY](./media/workday-tutorial/tutorial_workday_configure.png) 
 
-8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy produktu Workday.
+8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Workday.
 
-9. W **pole wyszukiwania** wyszukiwania o nazwie **Edytuj ustawienia dzierżawy — zabezpieczeń** u góry po lewej stronie strony głównej.
+9. W **pole wyszukiwania** wyszukiwania o nazwie **Edytuj Konfiguracja dzierżawy — zabezpieczenia** u góry po lewej stronie strony głównej.
    
     ![Edytuj zabezpieczenia dzierżawy](./media/workday-tutorial/IC782925.png "Edytuj zabezpieczenia dzierżawy")
 
-10. W **adresów URL przekierowań** sekcji, wykonaj następujące czynności:
+10. W **adresy URL przekierowania** sekcji, wykonaj następujące czynności:
    
-    ![Adresy URL przekierowania](./media/workday-tutorial/IC7829581.png "adresów URL przekierowań")
+    ![Adresy URL przekierowania](./media/workday-tutorial/IC7829581.png "adresy URL przekierowania")
    
     a. Kliknij przycisk **Dodaj wiersz**.
    
-    b. W **Przekierowywanie adresu URL logowania do** pole tekstowe i **adresem URL przekierowania Mobile** pole tekstowe, typ **adres URL logowania** zostały wprowadzone na **produktu Workday domeny i adres URL** części portalu Azure.
+    b. W **Przekierowywanie adresu URL logowania do** pole tekstowe i **adresu URL przekierowania Mobile** polu tekstowym wpisz **adres URL logowania** zostały wprowadzone na **Workday, domena i adresy URL** części witryny Azure portal.
    
-    c. W portalu Azure na **konfigurowania rejestracji** okna, kopiowania **Sign-Out adres URL**, a następnie wklej go do **adresem URL przekierowania wylogowania** pola tekstowego.
+    c. W witrynie Azure portal na **Konfigurowanie logowania jednokrotnego** okna, kopia **adres URL wylogowania**, a następnie wklej go do **adres URL przekierowania wylogowania** pola tekstowego.
 
-    d. W **używane dla środowisk** pole tekstowe, wybierz nazwę środowiska.  
+    d. W **używane w środowiskach** pola tekstowego, wybierz nazwę środowiska.  
 
     >[!NOTE]
-    > Wartość atrybutu środowisko jest powiązany z wartością adres URL dzierżawy:  
-    >— Czy nazwy domeny adresu URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), **środowiska** atrybut musi mieć ustawioną implementacji.  
-    >— Jeśli nazwa domeny rozpoczynają się od czegoś innego, należy skontaktować się [zespołem pomocy technicznej klienta produktu Workday](https://www.workday.com/en-us/partners-services/services/support.html) uzyskanie odpowiedniego **środowiska** wartość.
+    > Wartość atrybutu środowisko jest powiązana wartość adres URL dzierżawy:  
+    >-Czy nazwa domeny adres URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), **środowiska** atrybut należy skonfigurować do implementacji.  
+    >— Jeśli nazwa domeny rozpoczyna się czymś innym, musisz skontaktować się z [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) można pobrać dopasowywania **środowiska** wartość.
 
-11. W **Instalatora SAML** sekcji, wykonaj następujące czynności:
+11. W **konfiguracji SAML** sekcji, wykonaj następujące czynności:
    
-    ![Instalator SAML](./media/workday-tutorial/IC782926.png "Instalatora SAML")
+    ![Ustawienia języka SAML](./media/workday-tutorial/IC782926.png "ustawienia języka SAML")
    
     a.  Wybierz **włączyć uwierzytelnianie SAML**.
    
     b.  Kliknij przycisk **Dodaj wiersz**.
 
-12. W **dostawców tożsamości SAML** sekcji, wykonaj następujące czynności:
+12. W **dostawcy tożsamości SAML** sekcji, wykonaj następujące czynności:
    
-    ![Dostawców tożsamości SAML](./media/workday-tutorial/IC7829271.png "dostawców tożsamości SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829271.png "SAML dostawcy tożsamości")
    
-    a. W **Nazwa dostawcy tożsamości** tekstowym, wpisz nazwę dostawcy (na przykład: *SPInitiatedSSO*).
+    a. W **nazwę dostawcy tożsamości** polu tekstowym wpisz nazwę dostawcy (na przykład: *SPInitiatedSSO*).
    
-    b. W portalu Azure na **Konfigurowanie logowania jednokrotnego** okna, kopiowania **identyfikator jednostki SAML** wartość, a następnie wklej ją do **wystawcy** pola tekstowego.
+    b. W witrynie Azure portal na **Konfigurowanie logowania jednokrotnego** okna, kopia **identyfikator jednostki SAML** wartość, a następnie wklej go do **wystawcy** pola tekstowego.
 
-    ![Dostawców tożsamości SAML](./media/workday-tutorial/IC7829272.png "dostawców tożsamości SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829272.png "SAML dostawcy tożsamości")
    
-    c. W portalu Azure na **Konfigurowanie logowania jednokrotnego** okna, kopiowania **Sign-Out URL** wartość, a następnie wklej ją do **adres URL wylogowania odpowiedzi** pola tekstowego.
+    c. W witrynie Azure portal na **Konfigurowanie logowania jednokrotnego** okna, kopia **adres URL wylogowania** wartość, a następnie wklej go do **adres URL wylogowania odpowiedzi** pola tekstowego.
 
-    d. W portalu Azure na **Konfigurowanie logowania jednokrotnego** okna, kopiowania **SAML pojedynczy znak na adres URL usługi** wartość, a następnie wklej ją do **adres URL usługi logowania jednokrotnego IdP** pola tekstowego.
+    d. W witrynie Azure portal na **Konfigurowanie logowania jednokrotnego** okna, kopia **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartość, a następnie wklej go do **adres URL usługi logowania jednokrotnego dostawcy tożsamości** pola tekstowego.
 
-    e. W **używane dla środowisk** pole tekstowe, wybierz nazwę środowiska.
+    e. W **używane w środowiskach** pola tekstowego, wybierz nazwę środowiska.
 
     f. Kliknij przycisk **certyfikatu klucza publicznego dostawcy tożsamości**, a następnie kliknij przycisk **Utwórz**. 
 
-    ![Utwórz](./media/workday-tutorial/IC782928.png "tworzenie")
+    ![Tworzenie](./media/workday-tutorial/IC782928.png "tworzenie")
 
-    g. Kliknij przycisk **x509 Utwórz klucz publiczny**. 
+    g. Kliknij przycisk **tworzenie x509 klucza publicznego**. 
 
-    ![Utwórz](./media/workday-tutorial/IC782929.png "tworzenie")
+    ![Tworzenie](./media/workday-tutorial/IC782929.png "tworzenie")
 
 13. W **klucza publicznego widoku x509** sekcji, wykonaj następujące czynności: 
    
     ![Klucz publiczny widoku x509](./media/workday-tutorial/IC782930.png "widoku x509 klucza publicznego") 
    
-    a. W **nazwa** tekstowym, wpisz nazwę dla certyfikatu (na przykład: *ŚOI\_SP*).
+    a. W **nazwa** polu tekstowym wpisz nazwę certyfikatu (na przykład: *PPE\_SP*).
    
-    b. W **ważny od** tekstowym, wpisz poprawna wartość atrybutu certyfikatu.
+    b. W **ważny od** polu tekstowym wpisz prawidłowe wartości atrybutu certyfikatu.
    
-    c.  W **ważny do** tekstowym, wpisz prawidłową wartość atrybutu certyfikatu.
+    c.  W **ważny do** polu tekstowym wpisz prawidłową wartość atrybutu certyfikatu.
    
     > [!NOTE]
-    > Możesz uzyskać prawidłową z datę i poprawna data z pobranego certyfikatu, kliknij go dwukrotnie.  Daty są wyświetlane w obszarze **szczegóły** kartę.
+    > Możesz uzyskać prawidłowe daty i prawidłowe, do tej pory z pobranego certyfikatu, klikając go dwukrotnie.  Daty są wyświetlane w obszarze **szczegóły** kartę.
     > 
     >
    
-    d.  Otwórz w Notatniku certyfikatu zakodowanego base-64, a następnie skopiuj zawartość tego.
+    d.  Otwórz swój certyfikat zakodowany base-64 w Notatniku, a następnie skopiuj zawartość go.
    
-    e.  W **certyfikatu** pole tekstowe, Wklej zawartość Schowka.
+    e.  W **certyfikatu** pola tekstowego, Wklej zawartość Schowka.
    
     f.  Kliknij przycisk **OK**.
 
 14. Wykonaj następujące czynności: 
    
-    ![Konfiguracja rejestracji Jednokrotnej](./media/workday-tutorial/WorkdaySSOConfiguratio.png "konfiguracji logowania jednokrotnego")
+    ![Konfiguracja logowania jednokrotnego](./media/workday-tutorial/WorkdaySSOConfiguratio.png "konfiguracji logowania jednokrotnego")
    
-    a.  W **identyfikator dostawcy usługi** pole tekstowe, typ **http://www.workday.com**.
+    a.  W **identyfikator dostawcy usługi** polu tekstowym wpisz **http://www.workday.com**.
    
-    b. Wybierz **nie Deflate żądania uwierzytelnienia zainicjowane SP**.
+    b. Wybierz **nie Deflate żądania zainicjowanego przez dostawcę usług uwierzytelniania**.
    
-    c. Jako **podpisu żądania uwierzytelnienia**, wybierz pozycję **SHA256**. 
+    c. Jako **podpisu żądania uwierzytelnienia**, wybierz opcję **SHA256**. 
    
     ![Metoda podpisu żądania uwierzytelniania](./media/workday-tutorial/WorkdaySSOConfiguration.png "metoda podpisu żądania uwierzytelniania") 
    
@@ -229,80 +229,80 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/workday-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/workday-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/workday-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/workday-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/workday-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-workday-test-user"></a>Tworzenie użytkownika testowego produktu Workday
+### <a name="create-a-workday-test-user"></a>Tworzenie użytkownika testowego Workday
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w pracy. Praca z [zespołem pomocy technicznej klienta produktu Workday](https://www.workday.com/en-us/partners-services/services/support.html) Aby dodać użytkowników do platformy produktu Workday. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej. 
+W tej sekcji utworzysz użytkownika w usłudze WORKDAY aplikacja o nazwie Britta Simon. Praca z [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) Aby dodać użytkowników na platformie produktu Workday. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do produktu Workday.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do produktu Workday.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta do produktu Workday, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon w produkcie Workday, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **produktu Workday**.
+2. Na liście aplikacji wybierz **Workday**.
 
-    ![Łącze produktu Workday na liście aplikacji](./media/workday-tutorial/tutorial_workday_app.png)  
+    ![Link Workday, na liście aplikacji](./media/workday-tutorial/tutorial_workday_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka produktu Workday w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji produktu Workday.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka produktu Workday w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych z aplikacją Workday.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

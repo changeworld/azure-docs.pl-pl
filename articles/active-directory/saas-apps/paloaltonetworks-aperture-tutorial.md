@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z sieciami Palo Alto - otwarcie | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i sieciami Palo Alto - otwarcie.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Palo Alto Networks - przysłony | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Palo Alto Networks - przysłony.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,230 +15,230 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 07c0e5558a35d846f8d1333e110e73f6dd37dd58
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 20292c06cf336a0245b5f5db6b1cb4894df0f1ae
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218235"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051585"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Samouczek: Azure Active Directory integracji z sieciami Palo Alto - otwarcie
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Samouczek: Integracja usługi Azure Active Directory z Palo Alto Networks - przysłony
 
-Z tego samouczka dowiesz się Integrowanie sieci Palo Alto - otwarcie w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Palo Alto Networks - przysłony w usłudze Azure Active Directory (Azure AD).
 
-Integracja sieci Palo Alto - otwarcie z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie Palo Alto Networks — przysłony z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do sieci Palo Alto - otwarcie.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do sieci Palo Alto - otwarcie (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Palo Alto Networks - przysłony.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Palo Alto Networks - przysłony (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z sieciami Palo Alto - otwarcie, potrzebne są następujące elementy:
+Do konfigurowania integracji z usługą Azure AD z Palo Alto Networks - przysłony, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Sieci Palo Alto — otwarcie logowanie jednokrotne włączone subskrypcji
+- Palo Alto Networks — przysłony logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie sieci Palo Alto - otwarcie z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie Palo Alto Networks - przysłony z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Dodawanie sieci Palo Alto - otwarcie z galerii
-Aby skonfigurować integrację sieci Palo Alto - otwarcie do usługi Azure AD, należy dodać Palo Alto Networks - otwarcie z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Dodawanie Palo Alto Networks - przysłony z galerii
+Aby skonfigurować integrację Palo Alto Networks - przysłony w usłudze Azure AD, należy dodać Palo Alto Networks - przysłony z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Palo Alto Networks - otwarcie Galerii, wykonaj następujące czynności:**
+**Aby dodać Palo Alto Networks - przysłony z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Palo Alto Networks - otwarcie**, wybierz pozycję **Palo Alto Networks - otwarcie** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Palo Alto Networks - przysłony**, wybierz opcję **Palo Alto Networks - przysłony** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Sieci Palo Alto - otwarcie listy wyników](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_addfromgallery.png)
+    ![Palo Alto Networks - przysłony na liście wyników](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto — otwarcie w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Palo Alto Networks — przysłony oparte na użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w sieciach Palo Alto - otwarcie jest dla użytkownika, w usłudze Azure AD. Innymi słowy łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w sieciach Palo Alto - otwarcie musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Palo Alto Networks - przysłony do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Palo Alto Networks — przysłony musi zostać ustanowione.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto - otwarcie, należy wykonać poniższe bloki konstrukcyjne:
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Palo Alto Networks - przysłony, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie sieci Palo Alto - użytkownika testowego otwarcie](#create-a-palo-alto-networks---aperture-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Palo Alto Networks - otwarcie połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Utwórz Palo Alto Networks - użytkownika testowego przysłony](#create-a-palo-alto-networks---aperture-test-user)**  — aby odpowiednikiem Britta Simon w Palo Alto Networks - przysłony połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w sieci Palo Alto - otwarcie aplikacji.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w sieci Palo Alto - przysłony aplikacji.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z sieciami Palo Alto - otwarcie, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD w logowanie jednokrotne za pomocą Palo Alto Networks - przysłony, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Palo Alto Networks - otwarcie** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Palo Alto Networks - przysłony** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_samlbase.png)
 
-3. Na **Palo Alto Networks - otwarcie domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+3. Na **Palo Alto Networks - przysłony domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Informacje logowania jednokrotnego pojedynczy Palo Alto sieci - otwarcie domeny i adresy URL](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
+    ![Palo Alto Networks - przysłony domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Informacje logowania jednokrotnego pojedynczy Palo Alto sieci - otwarcie domeny i adresy URL](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url1.png)
+    ![Palo Alto Networks - przysłony domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
      
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [Palo Alto Networks - zespołem pomocy technicznej klienta otwarcie](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [Palo Alto Networks - zespół obsługi klienta przysłony](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) do uzyskania tych wartości. 
 
-5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+5. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_certificate.png) 
+    ![Link pobierania certyfikatu](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/paloaltonetworks-aperture-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/paloaltonetworks-aperture-tutorial/tutorial_general_400.png)
 
 
-7. Na **Palo Alto Networks - otwarcie konfiguracji** , kliknij przycisk **Konfigurowanie sieci Palo Alto - otwarcie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+7. Na **Palo Alto Networks — Konfiguracja przysłony** , kliknij przycisk **skonfigurować Palo Alto Networks - przysłony** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![Łącze Konfiguruj](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_configure.png)
 
-8. W oknie przeglądarki innej witryny sieci web, zaloguj się do sieci Palo Alto - otwarcie jako Administrator.
+8. W oknie przeglądarki internetowej innej, zaloguj się do Palo Alto Networks - przysłony jako Administrator.
 
 9. Na pasku menu u góry kliknij **ustawienia**.
 
     ![Karta Ustawienia](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-10. Przejdź do **aplikacji** kliknij sekcję **uwierzytelniania** stanowią w lewej części menu.
+10. Przejdź do **aplikacji** kliknij sekcję **uwierzytelniania** tworzą menu po lewej stronie.
 
     ![Na karcie uwierzytelniania](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
-11. Na **uwierzytelniania** strony wykonaj następujące czynności:
+11. Na **uwierzytelniania** strony należy wykonać następujące czynności:
     
     ![Karta uwierzytelnianie](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. Sprawdź **włączyć pojedynczy znak-On(Supported SSP Providers are Okta, Onelogin)** z **rejestracji jednokrotnej** pola.
+    a. Sprawdź **Włącz pojedynczy znak-On(Supported SSP Providers are Okta, Onelogin)** z **logowania jednokrotnego** pola.
 
-    b. W **identyfikator dostawcy tożsamości** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure.
+    b. W **identyfikator dostawcy tożsamości** pola tekstowego, Wklej wartość **SAML identyfikator jednostki**, które zostały skopiowane z witryny Azure portal.
 
-    c. Kliknij przycisk **wybierz plik** można przekazać certyfikatu pobrane z usługi Azure AD w **certyfikat dostawcy tożsamości** pola.
+    c. Kliknij przycisk **wybierz plik** można przekazać certyfikatu pobrany z usługi Azure AD w **certyfikatu dostawcy tożsamości** pola.
 
-    d. W **adres URL logowania jednokrotnego dostawcy tożsamości** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+    d. W **adres URL logowania jednokrotnego dostawcy tożsamości** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego adres URL usługi**, które zostały skopiowane z witryny Azure portal.
 
-    e. Zapoznaj się z informacjami IdP z **informacje o otwarcie** sekcji i Pobierz certyfikat z **klucza otwarcie** pola.
+    e. Zapoznaj się z informacjami o tożsamości z **informacje przysłony** sekcji i Pobierz certyfikat z **klucz przysłony** pola.
 
     f. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/paloaltonetworks-aperture-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/paloaltonetworks-aperture-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/paloaltonetworks-aperture-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/paloaltonetworks-aperture-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/paloaltonetworks-aperture-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-palo-alto-networks---aperture-test-user"></a>Tworzenie sieci Palo Alto - otwarcie użytkownika testowego
+### <a name="create-a-palo-alto-networks---aperture-test-user"></a>Utwórz Palo Alto Networks - przysłony użytkownika testowego
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w sieciach Palo Alto - otwarcie. Praca z [Palo Alto Networks - zespołem pomocy technicznej klienta otwarcie](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) Aby dodać użytkowników w sieci Palo Alto - otwarcie platformy. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Palo Alto Networks - przysłony. Praca z [Palo Alto Networks - zespół obsługi klienta przysłony](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) Aby dodać użytkowników w Palo Alto Networks - przysłony platformy. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do sieci Palo Alto - otwarcie.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Palo Alto Networks - przysłony.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Palo Alto Networks - otwarcie, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Palo Alto Networks - przysłony, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Palo Alto Networks - otwarcie**.
+2. Na liście aplikacji wybierz **Palo Alto Networks - przysłony**.
 
-    ![Sieci Palo Alto - otwarcie łącza na liście aplikacji](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_app.png)  
+    ![Sieci Palo Alto - przysłony łącze na liście aplikacji](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu Palo Alto Networks - otwarcie kafelka w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane z sieciami Palo Alto - otwarcie aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu Palo Alto Networks - przysłony kafelka w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do Twojej Palo Alto Networks - przysłony aplikacji.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację z serwerem Tableau | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i serwera Tableau.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Tableau Server | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Tableau Server.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: be600fa6707e86e483e21f638d0d80515f9372b4
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 4c88d6a8b22e4c5c19112c30e15bc960bc8ed1b5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294996"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39045227"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Samouczek: Azure Active Directory integrację z serwerem Tableau
+# <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Samouczek: Integracja usługi Azure Active Directory z Tableau Server
 
-Z tego samouczka dowiesz się integrowanie Tableau serwera z usługą Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Tableau Server w usłudze Azure Active Directory (Azure AD).
 
-Integrowanie Tableau serwera z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie Tableau Server z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do serwera Tableau
-- Umożliwia użytkownikom automatycznie pobrać zalogowane serwerowi Tableau (logowanie jednokrotne) z konta usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Tableau Server
+- Użytkowników, aby automatycznie uzyskać zalogowanych do Tableau Server (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z serwerem Tableau, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Tableau Server, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Serwer Tableau logowanie jednokrotne włączone subskrypcji
+- Serwer firmy Tableau logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodanie serwera Tableau z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie Tableau Server z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Dodanie serwera Tableau z galerii
-Aby skonfigurować integrację serwera Tableau do usługi Azure AD, należy dodać serwer Tableau z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-tableau-server-from-the-gallery"></a>Dodawanie Tableau Server z galerii
+Aby skonfigurować integrację Tableau Server w usłudze Azure AD, należy dodać Tableau Server z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać serwer Tableau z galerii, wykonaj następujące czynności:**
+**Aby dodać serwer firmy Tableau z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,65 +67,65 @@ Aby skonfigurować integrację serwera Tableau do usługi Azure AD, należy doda
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **serwera Tableau**.
+4. W polu wyszukiwania wpisz **Tableau Server**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/tutorial_tableauserver_search.png)
 
-5. W panelu wyników wybierz **serwera Tableau**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+5. W panelu wyników wybierz **Tableau Server**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/tutorial_tableauserver_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z serwerem Tableau oparte na koncie użytkownika testu o nazwie "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Tableau Server, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Tableau serwera jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi na serwerze Tableau musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Tableau Server dla użytkownika w usłudze Azure AD. Oznacza to relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika Tableau Server musi zostać ustanowione.
 
-Na serwerze Tableau, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+Serwer firmy Tableau przypisywanie wartości **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z serwerem Tableau, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Tableau Server, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego serwera Tableau](#creating-a-tableau-server-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Tableau serwera, który jest połączony z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Tableau Server](#creating-a-tableau-server-test-user)**  — aby odpowiednikiem Britta Simon w serwer firmy Tableau, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji serwera Tableau.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji serwer firmy Tableau.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z serwerem Tableau, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Tableau Server, wykonaj następujące czynności:**
 
-1. W portalu Azure na **serwera Tableau** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Tableau Server** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_tableauserver_samlbase.png)
 
-3. Na **adresy URL i domeną serwera Tableau** sekcji, wykonaj następujące czynności:
+3. Na **Tableau Server domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_tableauserver_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://azure.<domain name>.link`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://azure.<domain name>.link`
     
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://azure.<domain name>.link`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://azure.<domain name>.link`
 
-    c. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
      
     > [!NOTE] 
-    > Poprzednie wartości nie są wartości rzeczywistych. Później należy zaktualizować wartości z rzeczywistego adresu URL i identyfikator ze strony konfiguracji serwera Tableau. 
+    > Powyższe wartości nie są rzeczywiste wartości. Później należy zaktualizować wartości przy użyciu rzeczywistego adresu URL i identyfikator na stronie konfiguracji serwer firmy Tableau. 
 
-4. Aplikacja serwera TABLEAU oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z **"Atrybuty użytkownika"** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład dla tego samego.
+4. TABLEAU Server aplikacja oczekuje twierdzenia SAML, w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **"Atrybuty użytkownika"** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego samego.
     
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/3.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/3.png)
     
-5. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+5. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |    
@@ -133,61 +133,61 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_officespace_04.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_officespace_04.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_officespace_05.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_officespace_05.png)
     
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
     
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
     d. Kliknij przycisk **Ok**
 
 
 6. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_tableauserver_certificate.png) 
 
-7. Kliknij przycisk **zapisać** przycisku.
+7. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_general_400.png)
 <CS>
-8. Aby uzyskać logowania jednokrotnego skonfigurowane dla aplikacji, musisz logowanie do serwera Tableau dzierżawy z uprawnieniami administratora.
+8. Aby uzyskać logowanie Jednokrotne skonfigurowane pod kątem swojej aplikacji, musisz logowanie jednokrotne do swojej dzierżawy Tableau Server jako administrator.
    
-   a. W konfiguracji serwera Tableau, kliknij przycisk **SAML** kartę.
+   a. W konfiguracji Tableau Server kliknij **SAML** kartę.
   
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_tableauserver_001.png) 
   
-   b. Zaznacz pole wyboru z **SAML używana dla logowania jednokrotnego**.
+   b. Zaznacz pole wyboru z **SAML użycia dla logowania jednokrotnego**.
    
-   c. Serwer TABLEAU adres zwrotny URL — adres URL, który serwer Tableau użytkownicy będą uzyskiwać dostęp do, takich jak http://tableau_server. Przy użyciu http://localhost nie jest zalecane. Przy użyciu adresu URL znakiem ukośnika (na przykład http://tableau_server/) nie jest obsługiwane. Kopia **serwera Tableau zwrotnego adresu URL** i wklej go do usługi Azure AD **na adres URL logowania** textbox w **adresy URL i domeną serwera Tableau** sekcji.
+   c. Serwer firmy TABLEAU zwrotny adres URL — adres URL, który serwer firmy Tableau użytkownicy będą uzyskiwać dostęp do, takich jak http://tableau_server. Za pomocą http://localhost nie jest zalecane. Przy użyciu adresu URL kończących się ukośnikiem (na przykład http://tableau_server/) nie jest obsługiwane. Kopiuj **Tableau Server zwrotny adres URL** i wkleić go do usługi Azure AD **na adres URL logowania** polu tekstowym w **Tableau Server domena i adresy URL** sekcji.
    
-   d. Identyfikator jednostki SAML — identyfikator jednostki jednoznacznie identyfikuje instalacją serwera Tableau do dostawców tożsamości. Możesz wprowadzić adres URL serwera Tableau ponownie, jeśli chcesz, ale nie musi być adres URL serwera Tableau. Kopiuj **SAML identyfikator jednostki** i wklej go do usługi Azure AD **identyfikator** textbox w **adresy URL i domeną serwera Tableau** sekcji.
+   d. Identyfikator jednostki SAML — identyfikator jednostki jednoznacznie identyfikuje serwer firmy Tableau instalacji dostawcy tożsamości. Możesz wprowadzić adres URL serwera Tableau ponownie, jeśli chcesz, ale nie musi być adresem URL Twojej Tableau Server. Kopiowanie **identyfikator jednostki SAML** i wkleić go do usługi Azure AD **identyfikator** polu tekstowym w **Tableau Server domena i adresy URL** sekcji.
      
-   e. Kliknij przycisk **Eksportuj plik metadanych** i otwórz go w aplikacji, Edytor tekstu. Znajdź adres URL usługi klienta potwierdzenia z Http Post i indeksu 0 i skopiuj adres URL. Teraz wklej go do usługi Azure AD **adres URL odpowiedzi** textbox w **adresy URL i domeną serwera Tableau** sekcji.
+   e. Kliknij przycisk **Eksportuj plik metadanych** i otwórz go w aplikacji edytora tekstu. Znajdź adres URL usługi konsumenta potwierdzenia z żądania Http Post i indeks 0 i skopiuj adres URL. Teraz wklej go do usługi Azure AD **adres URL odpowiedzi** polu tekstowym w **Tableau Server domena i adresy URL** sekcji.
    
-   f. Zlokalizuj plik metadanych Federacji pobrany z portalu Azure, a następnie przekaż go w **pliku metadanych SAML Idp**.
+   f. Zlokalizuj plik metadanych Federacji, pobrany z witryny Azure portal, a następnie przekaż go w **plik metadanych SAML dostawcy tożsamości**.
    
-   g. Kliknij przycisk **OK** przycisku na stronie Konfiguracja serwera Tableau.
+   g. Kliknij przycisk **OK** przycisk na stronie Konfiguracja serwera Tableau.
    
     >[!NOTE] 
-    >Trzeba przekazać dowolny certyfikat w konfiguracji logowania jednokrotnego SAML serwera Tableau i zostaną uzyskać pominięte w procesie logowania jednokrotnego.
-    >Jeśli konieczne pomoc w konfigurowaniu SAML na serwerze Tableau, można znaleźć w tym artykule [skonfigurować SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
+    >Klient musi przekazać dowolny certyfikat w konfiguracji logowania jednokrotnego SAML serwer firmy Tableau i będą Pobierz ignorowane w przepływie logowania jednokrotnego.
+    >Jeśli potrzebujesz pomoc dotyczącą konfigurowania SAML na serwer firmy Tableau można znaleźć w tym artykule [skonfigurować SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm).
     >
 <CE>
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/create_aaduser_01.png) 
 
@@ -195,73 +195,73 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauserver-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="creating-a-tableau-server-test-user"></a>Tworzenie użytkownika testowego Tableau serwera
+### <a name="creating-a-tableau-server-test-user"></a>Tworzenie użytkownika testowego Tableau Server
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Tableau serwera. Należy udostępnić wszystkich użytkowników na serwerze Tableau. 
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon Tableau Server. Należy aprowizować wszystkich użytkowników na serwerze Tableau. 
 
-Że nazwa użytkownika powinna być zgodna wartość, które zostały skonfigurowane w atrybucie niestandardowym usługi Azure AD z **username**. Z mapowaniem poprawną integrację powinny działać [Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on).
+Że nazwa użytkownika powinna odpowiadać wartości, które zostały skonfigurowane w atrybucie niestandardowym usługi Azure AD z **username**. Za pomocą mapowania poprawne integracji powinny działać [usługi Azure AD Konfigurowanie logowania jednokrotnego](#configuring-azure-ad-single-sign-on).
 
 >[!NOTE]
->Należy ręcznie utworzyć użytkownika, należy skontaktować się z administratorem serwera Tableau w Twojej organizacji.
+>Jeśli musisz ręcznie utworzyć użytkownika, należy skontaktować się z administratorem Tableau Server w Twojej organizacji.
 > 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do serwera Tableau.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do serwera Tableau.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta Tableau serwera, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Tableau Server, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **serwera Tableau**.
+2. Na liście aplikacji wybierz **Tableau Server**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauserver-tutorial/tutorial_tableauserver_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Tableau serwera w panelu dostępu należy powinien pobrać automatycznie podpisany w przypadku aplikacji serwera Tableau.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Tableau Server w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Tableau Server.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

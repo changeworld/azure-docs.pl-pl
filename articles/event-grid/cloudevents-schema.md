@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 41e7be80eb67deaf7a8189aa0d9f62c48b88799a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036241"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044553"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Używanie schematu CloudEvents za pomocą usługi Event Grid
 
@@ -73,6 +73,8 @@ CloudEvents v0.1 ma następujące właściwości dostępne:
 
 Aby uzyskać więcej informacji, zobacz [Specyfikacja CloudEvents](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
+Wartości nagłówków zapewniane przez schemat usługi Event Grid i schematu CloudEvents zdarzenia są takie same, z wyjątkiem produktów `content-type`. Dla schematu CloudEvents, ta wartość nagłówka jest `"content-type":"application/cloudevents+json; charset=utf-8"`. Dla schematu usługi Event Grid, że wartość nagłówka jest `"content-type":"application/json; charset=utf-8"`.
+
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurowanie usługi Event Grid dla CloudEvents
 
 Zarówno dla danych wejściowych i danych wyjściowych, zdarzeń w schematu CloudEvents, można użyć usługi Event Grid. Można użyć CloudEvents dla zdarzenia systemowe, takie jak zdarzenia usługi Blob Storage i zdarzeń usługi IoT Hub i zdarzeń niestandardowych. Można również przekształcać tych zdarzeń, jak i z powrotem.
@@ -89,7 +91,7 @@ Dla wszystkich schematów zdarzeń usługi Event Grid wymaga weryfikacji podczas
 
 ### <a name="input-schema"></a>Schemat danych wejściowych
 
-Aby zdefiniować schemat danych wejściowych na niestandardowego tematu, aby CloudEvents, należy użyć następującego parametru w interfejsie wiersza polecenia platformy Azure podczas tworzenia tematu `--input-schema cloudeventv01schema`. Niestandardowy temat oczekuje teraz zdarzeń przychodzących w formacie v0.1 CloudEvents.
+Aby zdefiniować schemat danych wejściowych na niestandardowego tematu, aby CloudEvents, należy użyć następującego parametru w interfejsie wiersza polecenia platformy Azure podczas tworzenia niestandardowego tematu `--input-schema cloudeventv01schema`. Niestandardowy temat oczekuje teraz zdarzeń przychodzących w formacie v0.1 CloudEvents.
 
 Aby utworzyć temat usługi event grid, należy użyć:
 

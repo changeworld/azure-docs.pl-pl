@@ -18,6 +18,6 @@ Aby dowiedzieć się, jak rozszerzyć rozwiązanie i harmonogram metoda wywołuj
 
 Aby kontynuować wprowadzenie do usługi IoT Hub, zobacz [wprowadzenie do usługi IoT Edge][lnk-iot-edge].
 
-[lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
+[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
 [lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

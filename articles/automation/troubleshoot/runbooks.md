@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z elementami run
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b96d723f6c7ca423343c0586f59770abb55ada9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 286a777e16dea72e38b316e86ba57e1811888eec
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929353"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044870"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -94,6 +94,31 @@ Jeśli masz usługę uwierzytelnianie wieloskładnikowe na koncie platformy Azur
 Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu platformy Azure, zapoznaj się [tworzenie i dodawanie certyfikatu do zarządzania usługami platformy Azure.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Aby użyć jednostki usługi przy użyciu poleceń cmdlet usługi Azure Resource Manager, zapoznaj się [Tworzenie nazwy głównej, przy użyciu witryny Azure portal usługi](../../azure-resource-manager/resource-group-create-service-principal-portal.md) i [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager.](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Typowe błędy podczas pracy z elementami runbook
+
+### <a name="not-recognized-as-cmdlet"></a>Scenariusz: Element runbook zakończy się niepowodzeniem ze względu na brak polecenia cmdlet
+
+#### <a name="issue"></a>Problem
+
+Element runbook nie powiedzie się z powodu błędu podobnego do poniższego przykładu:
+
+```
+The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd może być spowodowany przez następujących przyczyn:
+
+1. Moduł zawierający polecenie cmdlet nie jest zaimportowany do konta usługi automation
+2. Containg modułu polecenia cmdlet jest zaimportowane, ale jest nieaktualna
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Ten błąd można rozwiązać, wykonując jedną z następujących czynności:
+
+Jeśli moduł jest moduł platformy Azure, zobacz [jak aktualizowanie modułów programu Azure PowerShell w usłudze Azure Automation](../automation-update-azure-modules.md) dowiesz się, jak zaktualizować moduły na koncie usługi automation.
+
+Jeśli jest oddzielny moduł, upewnij się, moduł w zaimportowane na koncie usługi Automation.
 
 ### <a name="job-attempted-3-times"></a>Scenariusz: Podjęto próbę rozpoczęcia zadania elementu runbook trzy razy, ale nie można uruchomić w każdym
 

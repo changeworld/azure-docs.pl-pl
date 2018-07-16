@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z SAP Business obiektu chmury | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i SAP Business obiektu chmury.
+title: 'Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem SAP Business obiektu Cloud | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i obiektu chmury dla oprogramowania SAP Business.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,177 +15,177 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ffd4480a13549caba17becff27a43f51fcaa1988
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308303"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39041742"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Samouczek: Integracji Azure Active Directory z SAP Business obiektu chmury
+# <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem SAP Cloud obiektu biznesowych
 
-Z tego samouczka dowiesz się integrowanie SAP Business obiektu chmury w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować SAP Business obiektu chmury za pomocą usługi Azure Active Directory (Azure AD).
 
-Po zintegrowaniu z usługą Azure AD SAP Business obiektu chmury można uzyskać następujące korzyści:
+Uzyskasz następujące korzyści, w ramach obiektu chmury dla oprogramowania SAP Business integracji z usługą Azure AD:
 
-- W usłudze Azure AD można kontrolować, kto ma dostęp do programu SAP Business obiektu chmury.
-- Użytkownikom programu SAP Business obiektu chmury mogą automatycznie zaloguj przy użyciu rejestracji jednokrotnej i konta usługi Azure AD.
-- Możesz zarządzać kont w jednej, centralnej lokalizacji, portalu Azure.
+- W usłudze Azure AD można kontrolować, kto ma dostęp do obiektu chmury dla oprogramowania SAP Business.
+- Użytkownicy do obiektu chmury dla oprogramowania SAP Business może automatycznie podpisywać za pomocą logowania jednokrotnego i konta usługi Azure AD.
+- Możesz zarządzać konta w jednej, centralnej lokalizacji, witryny Azure portal.
 
-Aby dowiedzieć się więcej na temat oprogramowania jako usługa (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej na temat oprogramowania jako usługi (SaaS) integracji aplikacji z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z SAP Business obiektu chmury, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD za pomocą obiektu chmury dla oprogramowania SAP Business, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Chmura obiektu SAP Business, z logowanie jednokrotne włączone
+- SAP Business obiektu chmury, za pomocą logowania jednokrotnego włączona
 
 > [!NOTE]
-> W przypadku testowania czynności w tym samouczku, zaleca się nie przetestować ich w środowisku produkcyjnym.
+> Jeśli testujesz kroki opisane w tym samouczku firma Microsoft zaleca, że nie Testuj je w środowisku produkcyjnym.
 
-Zalecenia dotyczące testowania czynności w tym samouczku:
+Zalecenia dotyczące testowania kroki opisane w tym samouczku:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [Pobierz bezpłatną wersję próbną miesięcznego](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [bezpłatna wersja próbna miesięcznej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
 
-Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodaj SAP Business obiektu chmury z galerii.
-2. Instalowanie i testowanie usługi Azure AD rejestracji jednokrotnej.
+1. Dodaj obiekt chmury dla oprogramowania SAP Business z galerii.
+2. Zainstaluj i przetestuj usługę Azure AD logowania jednokrotnego.
 
-## <a name="add-sap-business-object-cloud-from-the-gallery"></a>Dodaj SAP Business obiektu chmury z galerii
-Aby skonfigurować integrację SAP Business obiektu chmury z usługą Azure AD w galerii, należy dodać SAP Business obiektu chmury do listy zarządzanych aplikacji SaaS.
+## <a name="add-sap-business-object-cloud-from-the-gallery"></a>Dodaj obiekt chmury dla oprogramowania SAP Business z galerii
+Aby skonfigurować integrację programu SAP Business obiektów chmury z usługą Azure AD w galerii, Dodaj obiekt chmury dla oprogramowania SAP Business z listą zarządzanych aplikacji SaaS.
 
-Aby dodać SAP Business obiektu chmury z galerii:
+Aby dodać obiekt chmury dla oprogramowania SAP Business z galerii:
 
-1. W [portalu Azure](https://portal.azure.com), w menu po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie wybierz **usługi Azure Active Directory**. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
-2. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+2. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![Strona aplikacji przedsiębiorstwa][2]
+    ![Strony aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, zaznacz **nowej aplikacji**.
+3. Aby dodać nową aplikację, wybierz **nową aplikację**.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wprowadź **SAP Business obiektu chmury**.
+4. W polu wyszukiwania wprowadź **obiektu chmury dla oprogramowania SAP Business**.
 
     ![Pole wyszukiwania](./media/sapboc-tutorial/tutorial_sapboc_search.png)
 
-5. W panelu wyników wybierz **SAP Business obiektu chmury**, a następnie wybierz **Dodaj**.
+5. W panelu wyników wybierz **obiektu chmury dla oprogramowania SAP Business**, a następnie wybierz pozycję **Dodaj**.
 
-    ![SAP Business obiektu chmury na liście wyników](./media/sapboc-tutorial/tutorial_sapboc_addfromgallery.png)
+    ![Chmura SAP Business obiektu, na liście wyników](./media/sapboc-tutorial/tutorial_sapboc_addfromgallery.png)
 
-##  <a name="set-up-and-test-azure-ad-single-sign-on"></a>Instalowanie i testowanie usługi Azure AD rejestracji jednokrotnej
+##  <a name="set-up-and-test-azure-ad-single-sign-on"></a>Instalowanie i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz zdefiniować i test usługi Azure AD rejestracji jednokrotnej z SAP Business obiektu chmury w oparciu o nazwie użytkownika testowego *Simona Britta*.
+W tej sekcji można skonfigurować i test usługi Azure AD logowanie jednokrotne za pomocą obiektu chmury dla oprogramowania SAP Business w oparciu o nazwie użytkownika testowego *Britta Simon*.
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi znać użytkownika odpowiednikiem usługi Azure AD w chmurze programu SAP Business obiektu. Należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w chmurze programu SAP Business obiektu.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika usługi Azure AD w chmurze obiektu firmy SAP. Należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w chmurze obiektu firmy SAP.
 
-Ustanowienie relacji link, w chmurze obiektu biznesowych SAP, dla **Username**, przypisz wartość **nazwy użytkownika** w usłudze Azure AD.
+Ustanowienie relacji łączy, w chmurze obiektu firmy SAP, dla **Username**, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z SAP Business obiektu chmury, należy wykonać następujące zadania:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z rozwiązaniem SAP Cloud obiektu biznesowych, należy wykonać następujące zadania:
 
-1. [Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#set-up-azure-ad-single-sign-on). Ustawia użytkownika, aby użyć tej funkcji.
-2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user). Testy usługi Azure AD rejestracji jednokrotnej z użytkownikiem Simona Britta.
-3. [Tworzenie użytkownika testowego SAP Business obiektu chmury](#create-an-sap-business-object-cloud-test-user). Tworzy odpowiednikiem Simona Britta SAP Business obiektu chmury połączonego z usługi Azure AD reprezentację użytkownika.
-4. [Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user). Konfiguruje Simona Britta przy użyciu usługi Azure AD logowanie jednokrotne.
-5. [Test rejestracji jednokrotnej](#test-single-sign-on). Sprawdza, czy konfiguracja działa.
+1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#set-up-azure-ad-single-sign-on). Konfiguruje użytkownika, aby użyć tej funkcji.
+2. [Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user). Testy usługi Azure AD logowanie jednokrotne z użytkownikiem Britta Simon.
+3. [Tworzenie użytkownika testowego obiektu chmury dla oprogramowania SAP Business](#create-an-sap-business-object-cloud-test-user). Tworzy odpowiednikiem Britta Simon w chmurze obiektu firmy SAP, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user). Skonfigurowanie Britta Simon używać usługi Azure AD logowanie jednokrotne.
+5. [Testowanie logowania jednokrotnego](#test-single-sign-on). Sprawdza, czy konfiguracja działa.
 
-### <a name="set-up-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="set-up-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji możesz włączyć usługi Azure AD pojedynczego logowania w portalu Azure. Następnie skonfigurowaniu rejestracji jednokrotnej w aplikacji SAP Business obiektu chmury.
+W tej sekcji możesz włączyć pojedynczej usługi Azure AD, logowania jednokrotnego w witrynie Azure portal. Następnie w skonfigurowaniu logowania jednokrotnego w aplikacji w chmurze obiektu firmy SAP.
 
-Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z SAP Business obiektu chmury:
+Aby skonfigurować usługę Azure AD logowanie jednokrotne z rozwiązaniem SAP Cloud obiektu biznesowych:
 
-1. W portalu Azure na **SAP Business obiektu chmury** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie Azure portal na **obiektu chmury dla oprogramowania SAP Business** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Wybierz rejestracji jednokrotnej][4]
+    ![Wybierz opcję logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** strony, dla **tryb**, wybierz pozycję **na języku SAML logowania jednokrotnego**.
+2. Na **logowanie jednokrotne** strony dla **tryb**, wybierz opcję **opartej na SAML logowania jednokrotnego**.
  
-    ![Wybierz na języku SAML logowania jednokrotnego](./media/sapboc-tutorial/tutorial_sapboc_samlbase.png)
+    ![Wybierz opartej na SAML logowania jednokrotnego](./media/sapboc-tutorial/tutorial_sapboc_samlbase.png)
 
-3. W obszarze **SAP Business obiektu chmury domeny i adres URL**, wykonaj następujące czynności:
+3. W obszarze **SAP Business obiektu chmury domena i adresy URL**, wykonaj następujące czynności:
 
-    1. W **adres URL logowania** wprowadź adres URL, który ma następujący wzór: 
+    1. W **adres URL logowania** wprowadź adres URL z następującym wzorcem: 
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    2. W **identyfikator** wprowadź adres URL, który ma następujący wzór:
+    2. W **identyfikator** wprowadź adres URL z następującym wzorcem:
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
     | `<sub-domain>.sapanalytics.cloud` |
 
-    ![Adresy URL i SAP Business obiektu chmury domeny adresów URL stron](./media/sapboc-tutorial/tutorial_sapboc_url.png)
+    ![SAP Business obiektu chmury domena i adresy URL adresów URL](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > Wartości te adresy URL są do pokazania tylko. Zaktualizuj wartości z rzeczywisty adres URL logowania i adres URL identyfikatora. Aby uzyskać adres URL logowania, skontaktuj się z [zespołem pomocy technicznej SAP Business obiektu chmury klienta](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Adres URL identyfikatora można uzyskać, pobierając metadanych SAP Business obiektu chmury z poziomu konsoli administracyjnej. Wyjaśnienie jest zawarte w dalszej części tego samouczka. 
+    > Wartości w tych adresów URL są tylko demonstracyjne. Zaktualizuj wartości z rzeczywistych adres URL logowania i adres URL identyfikatora. Aby uzyskać adres URL logowania, skontaktuj się z pomocą [zespołem pomocy technicznej SAP Business obiektu Cloud Client](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Adres URL identyfikatora można uzyskać, pobierając metadane obiektu chmury dla oprogramowania SAP Business z poziomu konsoli administracyjnej. Jest to wyjaśnione w dalszej części tego samouczka. 
 
-4. W obszarze **certyfikat podpisywania SAML**, wybierz pozycję **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
+4. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**. Następnie zapisz plik metadanych na tym komputerze.
 
-    ![Wybierz XML metadanych](./media/sapboc-tutorial/tutorial_sapboc_certificate.png) 
+    ![Wybierz kod XML metadanych](./media/sapboc-tutorial/tutorial_sapboc_certificate.png) 
 
 5. Wybierz pozycję **Zapisz**.
 
     ![Wybierz opcję Zapisz](./media/sapboc-tutorial/tutorial_general_400.png)
 
-6. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy SAP Business obiektu chmury.
+6. W oknie przeglądarki internetowej innej należy zalogować się jako administrator do witryny firmy SAP Business obiektu chmury.
 
 7. Wybierz **Menu** > **systemu** > **administracji**.
     
-    ![Wybierz Menu, a następnie systemu, a następnie administracji](./media/sapboc-tutorial/config1.png)
+    ![Wybierz opcję Menu, a następnie systemu i Administracja](./media/sapboc-tutorial/config1.png)
 
-8. Na **zabezpieczeń** wybierz opcję **Edytuj** ikona (pióra).
+8. Na **zabezpieczeń** zaznacz **Edytuj** ikonę (pióra).
     
     ![Na karcie Zabezpieczenia wybierz ikonę edycji](./media/sapboc-tutorial/config2.png)  
 
-9. Aby uzyskać **metodę uwierzytelniania**, wybierz pozycję **SAML pojedynczego logowania jednokrotnego (SSO)**.
+9. Aby uzyskać **metodę uwierzytelniania**, wybierz opcję **SAML pojedynczego logowania jednokrotnego (SSO)**.
 
-    ![Wybierz SAML logowania jednokrotnego dla metody uwierzytelniania](./media/sapboc-tutorial/config3.png)  
+    ![Wybierz metodę uwierzytelniania SAML logowania jednokrotnego](./media/sapboc-tutorial/config3.png)  
 
-10. Aby pobrać metadane dostawcy usługi (krok 1), wybierz **Pobierz**. W pliku metadanych, należy znaleźć i skopiować **entityID** wartości. W portalu Azure w obszarze **adresy URL i SAP Business obiektu chmury domeny**, Wklej wartość **identyfikator** pole.
+10. Aby pobrać metadane dostawcy usługi (krok 1), zaznacz **Pobierz**. W pliku metadanych, Znajdź i skopiuj **entityID** wartości. W witrynie Azure portal w obszarze **SAP Business obiektu chmury domena i adresy URL**, Wklej wartość w **identyfikator** pole.
 
-    ![Skopiuj i Wklej wartość identyfikator jednostki](./media/sapboc-tutorial/config4.png)  
+    ![Skopiuj i Wklej wartość entityID](./media/sapboc-tutorial/config4.png)  
 
-11. Aby przekazać metadane dostawcy usługi (krok 2) w pliku, który został pobrany z portalu Azure w obszarze **metadanych Przekaż dostawcy tożsamości**, wybierz pozycję **przekazać**.  
+11. Można przekazać metadane dostawcy usługi (krok 2) w pliku, który został pobrany z witryny Azure portal w obszarze **metadanych przekazywanie dostawcy tożsamości**, wybierz opcję **przekazywanie**.  
 
-    ![W obszarze metadanych Przekaż dostawcy tożsamości wybierz przekazywania](./media/sapboc-tutorial/config5.png)
+    ![W obszarze metadane przekazywanie dostawcy tożsamości Wybieranie pozycji Przekaż](./media/sapboc-tutorial/config5.png)
 
-12. W **atrybut użytkownika** wybierz atrybut użytkownika (krok 3), który ma być używany dla implementacji. Ten atrybut użytkownika mapuje dostawcy tożsamości. Aby wprowadzić atrybutów niestandardowych na stronie użytkownika, należy użyć **niestandardowe mapowanie SAML** opcji. Alternatywnie można wybrać **poczty E-mail** lub **identyfikator użytkownika** jako atrybut użytkownika. W naszym przykładzie wybrano **E-mail** możemy mapowane oświadczenia identyfikatora użytkownika z **userprincipalname** atrybutu w **atrybuty użytkownika** części platformy Azure Portal. Zapewnia to adres e-mail użytkownika unikatowy, który jest wysyłany do aplikacji SAP Business obiektu chmury w każdym pomyślnym odpowiedzi SAML.
+12. W **atrybutu użytkownika** wybierz atrybut użytkownika (krok 3), który chcesz użyć dla wdrożenia. Ten atrybut użytkownika mapuje do dostawcy tożsamości. Aby wprowadzić niestandardowy atrybut, na stronie użytkownika, należy użyć **mapowania niestandardowej SAML** opcji. Lub możesz wybrać opcję **E-mail** lub **identyfikator użytkownika** jako atrybut użytkownika. W tym przykładzie Wybraliśmy **E-mail** ponieważ możemy zamapowane oświadczenia identyfikatora użytkownika z **userprincipalname** atrybutu w **atrybutów użytkownika** sekcję na platformie Azure Portal. Dzięki temu wiadomości e-mail unikatowych użytkowników, który jest wysyłany do aplikacji w chmurze obiektu firmy SAP w każdej pomyślnej odpowiedzi SAML.
 
     ![Wybierz atrybut użytkownika](./media/sapboc-tutorial/config6.png)
 
-13. Aby zweryfikować konto z dostawcy tożsamości (krok 4) w **poświadczeń logowania (Poczta E-mail)** wprowadź adres e-mail użytkownika. Następnie wybierz opcję **Sprawdź konto**. System dodaje poświadczenia logowania do konta użytkownika.
+13. Aby zweryfikować konto za pomocą dostawcy tożsamości (krok 4) w **poświadczenia danych logowania (adres E-mail)** wprowadź adres e-mail użytkownika. Następnie wybierz **Sprawdź konto**. System dodaje poświadczenia logowania do konta użytkownika.
 
-    ![Wprowadź adres e-mail, a następnie wybierz zweryfikować konta](./media/sapboc-tutorial/config7.png)
+    ![Wprowadź adres e-mail, a następnie wybierz pozycję Sprawdź konto](./media/sapboc-tutorial/config7.png)
 
-14. Wybierz **zapisać** ikony.
+14. Wybierz **Zapisz** ikony.
 
-    ![Zapisz](./media/sapboc-tutorial/save.png)
+    ![Ikona zapisu](./media/sapboc-tutorial/save.png)
 
 > [!TIP]
-> Możesz przeczytać zwięzły wersji tych instrukcji w [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji! Po dodaniu aplikacji przez wybranie **usługi Active Directory** > **aplikacje dla przedsiębiorstw**, wybierz pozycję **rejestracji jednokrotnej** kartę. Są dostępne w dokumentacji osadzony w **konfiguracji** sekcji w dolnej części strony. Aby uzyskać więcej informacji, zobacz [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Może odczytywać zwięzłe wersji tych instrukcji w [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji! Po dodaniu aplikacji, wybierając **usługi Active Directory** > **aplikacje dla przedsiębiorstw**, wybierz opcję **logowania jednokrotnego** kartę. Możesz uzyskać dostęp z dokumentacją osadzone w **konfiguracji** sekcji w dolnej części strony. Aby uzyskać więcej informacji, zobacz [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-W tej sekcji utworzysz użytkownika testu o nazwie Simona Britta w portalu Azure.
+W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
 
 Aby utworzyć użytkownika testowego w usłudze Azure AD:
 
-1. W portalu Azure, w menu po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W witrynie Azure portal w menu po lewej stronie wybierz **usługi Azure Active Directory**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/sapboc-tutorial/create_aaduser_01.png) 
 
-2. Aby wyświetlić listę użytkowników, wybierz **użytkowników i grup**, a następnie wybierz **wszyscy użytkownicy**.
+2. Aby wyświetlić listę użytkowników, wybierz **użytkowników i grup**, a następnie wybierz pozycję **wszyscy użytkownicy**.
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/sapboc-tutorial/create_aaduser_02.png) 
 
@@ -193,25 +193,25 @@ Aby utworzyć użytkownika testowego w usłudze Azure AD:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/sapboc-tutorial/create_aaduser_03.png) 
 
-4. W **użytkownika** okna dialogowego należy wykonać następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
  
     1. W **nazwa** wprowadź **BrittaSimon**.
 
-    2. W **nazwy użytkownika** wprowadź adres e-mail użytkownika Simona Britta.
+    2. W **nazwa_użytkownika** wprowadź adres e-mail użytkownika Britta Simon.
 
-    3. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    3. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     4. Wybierz pozycję **Utwórz**.
 
         ![Okno dialogowe użytkownika](./media/sapboc-tutorial/create_aaduser_04.png) 
 
-    ![Tworzenie użytkowników usługi Azure AD][100]
+    ![Utwórz użytkownika usługi Azure AD][100]
 
-### <a name="create-an-sap-business-object-cloud-test-user"></a>Tworzenie użytkownika testowego SAP Business obiektu chmury
+### <a name="create-an-sap-business-object-cloud-test-user"></a>Tworzenie użytkownika testowego obiektu chmury dla oprogramowania SAP Business
 
-Użytkownicy usługi Azure AD należy udostępnić w chmurze programu SAP Business obiektu, aby móc zalogować się do programu SAP Business obiektu chmury. W chmurze obiektu biznesowych SAP Inicjowanie obsługi to zadanie ręczne.
+Użytkownicy usługi Azure AD musi być obsługiwana w chmurze obiektu firmy SAP, aby zalogować się do obiektu chmury dla oprogramowania SAP Business. W chmurze obiektu firmy SAP Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-Aby udostępnić konta użytkownika:
+Aby aprowizować konto użytkownika:
 
 1. Zaloguj się do witryny firmy SAP Business obiektu chmury jako administrator.
 
@@ -219,70 +219,70 @@ Aby udostępnić konta użytkownika:
 
     ![Dodawanie pracownika](./media/sapboc-tutorial/user1.png)
 
-3. Na **użytkowników** , aby dodać nowe szczegóły użytkownika, wybierz **+**. 
+3. Na **użytkowników** strony, aby dodać nowe szczegóły użytkownika, wybierz **+**. 
 
     ![Strona dodawania użytkowników](./media/sapboc-tutorial/user4.png)
 
     Następnie należy wykonać następujące czynności:
 
-    1. W **identyfikator użytkownika** wprowadź identyfikator użytkownika, nazwa użytkownika, takie jak **Britta**.
+    1. W **identyfikator użytkownika** wprowadź identyfikator użytkownika, takie jak **Britta**.
 
     2. W **imię** Wprowadź imię użytkownika, takie jak **Britta**.
 
-    3. W **nazwisko** wprowadź nazwisko użytkownika, takie jak **Simona**.
+    3. W **nazwisko** wprowadź nazwisko użytkownika, takie jak **Simon**.
 
-    4. W **nazwa WYŚWIETLANA** wpisz pełną nazwę użytkownika, takie jak **Simona Britta**.
+    4. W **nazwę WYŚWIETLANĄ** wprowadź pełną nazwę użytkownika, takie jak **Britta Simon**.
 
     5. W **E-MAIL** wprowadź adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
 
-    6. Na **Wybieranie ról** , wybierz odpowiednią rolę dla użytkownika, a następnie wybierz **OK**.
+    6. Na **Wybieranie ról** strony, wybierz odpowiednią rolę dla użytkownika, a następnie wybierz pozycję **OK**.
 
       ![Wybór roli](./media/sapboc-tutorial/user3.png)
 
-    7. Wybierz **zapisać** ikony.    
+    7. Wybierz **Zapisz** ikony.    
 
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji musisz zezwolić na użytkownika Simona Britta na przyznanie dostępu kontu użytkownika SAP Business obiektu chmury za pomocą usługi Azure AD rejestracji jednokrotnej.
+W tej sekcji możesz zezwolić użytkownikowi Britta Simon, aby korzystać z usługi Azure AD logowania jednokrotnego przez przyznanie dostępu kontu użytkownika do obiektu chmury dla oprogramowania SAP Business.
 
-Aby przypisać Simona Britta SAP Business obiektu chmury:
+Aby przypisać Britta Simon do obiektu chmury dla oprogramowania SAP Business:
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **SAP Business obiektu chmury**.
+2. Na liście aplikacji wybierz **obiektu chmury dla oprogramowania SAP Business**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/sapboc-tutorial/tutorial_sapboc_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/sapboc-tutorial/tutorial_sapboc_app.png) 
 
 3. W menu po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Wybierz użytkowników i grup][202] 
+    ![Wybierz użytkowników i grupy][202] 
 
-4. Wybierz pozycję **Dodaj**. Następnie na **Dodaj przydziału** wybierz pozycję **użytkowników i grup**.
+4. Wybierz pozycję **Dodaj**. Następnie na **Dodaj przydziału** wybierz opcję **użytkowników i grup**.
 
-    ![Strona Dodawanie przypisania][203]
+    ![Na stronie Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** strony, na liście użytkowników, wybierz opcję **Simona Britta**.
+5. Na **użytkowników i grup** strony, z listy użytkowników, wybierz opcję **Britta Simon**.
 
-6. Na **użytkowników i grup** wybierz pozycję **wybierz**.
+6. Na **użytkowników i grup** wybierz opcję **wybierz**.
 
-7. Na **Dodaj przydziału** wybierz pozycję **przypisać**.
+7. Na **Dodaj przydziału** wybierz opcję **przypisać**.
 
 ![Przypisanie roli użytkownika][200] 
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po wybraniu kafelka SAP Business obiektu chmury w panelu dostępu należy powinny być automatycznie zalogowany do aplikacji SAP Business obiektu chmury.
+Po wybraniu kafelka SAP Business obiektu chmury w panelu dostępu, powinny być automatycznie zarejestrowaniu w usłudze aplikacji w chmurze obiektu firmy SAP.
 
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

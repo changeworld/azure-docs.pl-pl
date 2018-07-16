@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z ClickTime | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ClickTime.
+title: 'Samouczek: Integracja usługi Azure Active Directory z ClickTime | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ClickTime.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: fe8dd3f0771a2692488ddea2000b06d0ed212faf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: adf3b1310a3e79b12be5294fe9d7a012bfc0d433
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216450"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042942"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Samouczek: Integracji Azure Active Directory z ClickTime
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Samouczek: Integracja usługi Azure Active Directory z ClickTime
 
-Z tego samouczka dowiesz się integrowanie ClickTime z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować ClickTime w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD ClickTime zapewnia następujące korzyści:
+Integrowanie ClickTime z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do ClickTime
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do ClickTime (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do ClickTime
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do ClickTime (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z ClickTime, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą ClickTime, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - ClickTime logowanie jednokrotne włączone subskrypcji
@@ -46,92 +46,92 @@ Aby skonfigurować integrację usługi Azure AD z ClickTime, potrzebne są nast�
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie ClickTime z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-clicktime-from-the-gallery"></a>Dodawanie ClickTime z galerii
-Aby skonfigurować integrację usługi Azure AD ClickTime, należy dodać ClickTime z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację ClickTime w usłudze Azure AD, należy dodać ClickTime z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać ClickTime z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **ClickTime**, wybierz pozycję **ClickTime** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **ClickTime**, wybierz opcję **ClickTime** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![ClickTime na liście wyników](./media/clicktime-tutorial/tutorial_clicktime_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z ClickTime w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą ClickTime w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w ClickTime jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w ClickTime musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w ClickTime do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w ClickTime musi można ustanowić.
 
-W ClickTime, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W ClickTime, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z ClickTime, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą ClickTime, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego ClickTime](#create-a-clicktime-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta ClickTime połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego ClickTime](#create-a-clicktime-test-user)**  — aby odpowiednikiem Britta Simon w ClickTime połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji ClickTime.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji ClickTime.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z ClickTime, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z ClickTime, wykonaj następujące czynności:**
 
-1. W portalu Azure na **ClickTime** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **ClickTime** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/clicktime-tutorial/tutorial_clicktime_samlbase.png)
 
-3. Na **ClickTime domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **ClickTime domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Adresy URL i domeny ClickTime pojedynczy informacje logowania jednokrotnego](./media/clicktime-tutorial/tutorial_clicktime_url.png)
+    ![ClickTime domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL jako: `https://app.clicktime.com/sp/`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL jako: `https://app.clicktime.com/sp/`
     
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców: 
 
     | |
     |--|
     | `https://app.clicktime.com/Login/` |
     | `https://app.clicktime.com/App/Login/Consume.aspx` |
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/clicktime-tutorial/tutorial_clicktime_certificate.png) 
+    ![Link pobierania certyfikatu](./media/clicktime-tutorial/tutorial_clicktime_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/clicktime-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/clicktime-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji ClickTime** , kliknij przycisk **skonfigurować ClickTime** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji ClickTime** , kliknij przycisk **skonfigurować ClickTime** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja ClickTime](./media/clicktime-tutorial/tutorial_clicktime_configure.png) 
 
-7. W oknie przeglądarki innej witryny sieci web Zaloguj się do witryny firmy ClickTime jako administrator.
+7. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy ClickTime, jako administrator.
 
 8. Na pasku narzędzi u góry kliknij **preferencje**, a następnie kliknij przycisk **ustawienia zabezpieczeń**.
 
@@ -139,43 +139,43 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     ![Ustawienia zabezpieczeń](./media/clicktime-tutorial/tic777280.png "ustawienia zabezpieczeń")
    
-    a.  Wybierz **Zezwalaj** Zaloguj się przy użyciu pojedynczego logowania jednokrotnego (SSO) z **usługi Azure AD**.
+    a.  Wybierz **Zezwalaj** Zaloguj się przy użyciu pojedynczego logowania jednokrotnego (SSO) przy użyciu **usługi Azure AD**.
    
-    b. W **punktu końcowego dostawcy tożsamości** pole tekstowe, Wklej **SAML pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
+    b. W **punkt końcowy dostawcy tożsamości** pola tekstowego, Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowanej w witrynie Azure portal.
    
-    c.  Otwórz **certyfikatu algorytmem base-64** pobrany z portalu Azure w **Notatnik**, skopiuj zawartość, a następnie wklej go do **certyfikatu X.509** pola tekstowego.
+    c.  Otwórz **certyfikat szyfrowany algorytmem base-64** pobranego z witryny Azure portal w **Notatnik**, skopiuj zawartość, a następnie wklej go do **certyfikat X.509** pola tekstowego.
    
     d.  Kliknij pozycję **Zapisz**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
 ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/clicktime-tutorial/create_aaduser_01.png) 
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
     
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/clicktime-tutorial/create_aaduser_02.png) 
+    !["Użytkownicy i grupy" i "All users" linki](./media/clicktime-tutorial/create_aaduser_02.png) 
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
  
     ![Przycisk Dodaj](./media/clicktime-tutorial/create_aaduser_03.png) 
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
  
     ![Okno dialogowe użytkownika](./media/clicktime-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
@@ -183,73 +183,73 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
  
 ### <a name="create-a-clicktime-test-user"></a>Tworzenie użytkownika testowego ClickTime
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do ClickTime, musi być przygotowana do ClickTime.  
-W przypadku ClickTime Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do ClickTime, musi być obsługiwana w ClickTime.  
+W przypadku ClickTime Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 > [!NOTE]
-> Możesz użyć innych ClickTime użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez ClickTime do udostępnienia konta użytkownika usługi Azure AD.
+> Można użyć jakichkolwiek innych ClickTime użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez ClickTime można uaktywniać ich konta usługi Azure AD.
 
-**Aby udostępnić konta użytkownika, wykonaj następujące czynności:**
-1. Zaloguj się do Twojego **ClickTime** dzierżawy.
+**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+1. Zaloguj się do Twojej **ClickTime** dzierżawy.
 2. Na pasku narzędzi u góry kliknij **firmy**, a następnie kliknij przycisk **osób**.
    
-    ![Osoby](./media/clicktime-tutorial/tic777282.png "osób")
-3. Kliknij przycisk **Dodaj osobę**.
+    ![Osoby](./media/clicktime-tutorial/tic777282.png "osoby")
+3. Kliknij przycisk **osobę**.
    
-    ![Dodaj osobę](./media/clicktime-tutorial/tic777283.png "Dodaj osobę")
-4. W sekcji nowej osoby wykonaj następujące czynności:
+    ![Dodaj osobę](./media/clicktime-tutorial/tic777283.png "osobę")
+4. W sekcji nową osobę wykonaj następujące czynności:
    
-    ![Osoby](./media/clicktime-tutorial/tic777284.png "osób")
+    ![Osoby](./media/clicktime-tutorial/tic777284.png "osoby")
    
-    a.  W **Pełna nazwa** pole tekstowe, typ Pełna nazwa użytkownika, takich jak **Simona Britta**. 
+    a.  W **Pełna nazwa** pola tekstowego, typ Pełna nazwa użytkownika, takich jak **Britta Simon**. 
   
-    b.  W **adres e-mail** tekstowym, wpisz adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    b.  W **adres e-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak **brittasimon@contoso.com**.
        
     > [!NOTE]
-    > Jeśli chcesz, można ustawić dodatkowe właściwości dla nowego obiektu osoby.
+    > Jeśli chcesz, można ustawić dodatkowe właściwości nowego obiektu osoby.
    
     c.  Kliknij pozycję **Zapisz**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu ClickTime.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do ClickTime.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta ClickTime, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon ClickTime, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **ClickTime**.
+2. Na liście aplikacji wybierz **ClickTime**.
 
-    ![Łącze ClickTimne na liście aplikacji](./media/clicktime-tutorial/tutorial_clicktime_app.png) 
+    ![Link ClickTimne na liście aplikacji](./media/clicktime-tutorial/tutorial_clicktime_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202] 
+    ![Link "Użytkownicy i grupy"][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka ClickTime w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji ClickTime.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka ClickTime w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji ClickTime.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

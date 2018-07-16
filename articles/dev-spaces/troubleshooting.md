@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: fdf195d96bb455334cb4e898e560813ee8709a50
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 4dee39b56cf0f6494f6e79c70b85bbf711d33d65
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035656"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044598"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -49,6 +49,19 @@ Ten błąd oznacza, że tego azds.exe nie znajduje się w zmiennej środowiskowe
 ### <a name="try"></a>Wypróbuj:
 
 Uruchom program VS Code z poziomu wiersza polecenia, w którym zmiennej środowiskowej PATH jest prawidłowo.
+
+## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Błąd "azds" nie jest rozpoznawana jako polecenie wewnętrzne lub zewnętrzne, program wykonywalny lub plik wsadowy
+ 
+Można napotkać ten błąd, jeśli azds.exe nie jest zainstalowane lub prawidłowo skonfigurowane.
+
+### <a name="try"></a>Wypróbuj:
+
+1. Sprawdź %ProgramFiles%/Microsoft lokalizacji SDKs\Azure\Azure Dev miejsca do magazynowania interfejs wiersza polecenia (wersja zapoznawcza) dla azds.exe. Jeśli jest określony, dodanie jej do zmiennej środowiskowej PATH.
+2. Jeśli nie zainstalowano azds.exe, uruchom następujące polecenie:
+
+    ```cmd
+    az aks use-dev-spaces -n <cluster-name> -g <resource-group>
+    ```
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Błąd "nadrzędne błąd połączenia lub odłącz/reset przed nagłówki"
 Podczas próby uzyskania dostępu do usługi, zostanie wyświetlony ten błąd. Na przykład, gdy nastąpi przejście do adresu URL usługi, w przeglądarce. 

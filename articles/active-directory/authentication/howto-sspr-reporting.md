@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: df46a4de32482f9da46b81e6b0fbc55c2cc1af35
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e2c4c59e52f277358027f5d228fdf43822822992
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37444246"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044532"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -49,7 +49,7 @@ W środowisku witryny Azure portal firma Microsoft ulepszyła sposobu można wy�
 1. Przejdź do [witryny Azure portal](https://portal.azure.com).
 2. Wybierz **wszystkich usług** w okienku po lewej stronie.
 3. Wyszukaj **usługi Azure Active Directory** na liście usług i wybierz ją.
-4. Wybierz **użytkowników i grup**.
+4. Wybierz pozycję **Użytkownicy i grupy**.
 5. Wybierz **dzienników inspekcji** z **użytkowników i grup** menu. To pokazuje wszystkie zdarzenia inspekcji, które wystąpiły dla wszystkich użytkowników w katalogu. Możesz filtrować ten widok, aby zobaczyć wszystkie zdarzenia związane z hasłami.
 6. Aby odfiltrować ten widok, aby wyświetlić tylko zdarzenia dotyczące resetowania hasła, wybierz **filtru** znajdujący się u góry okienka.
 7. Z **filtru** menu, wybierz opcję **kategorii** listy rozwijanej listy i zmień ją na **samoobsługowego zarządzania hasłami** typu kategorii.
@@ -173,8 +173,8 @@ Poniżej opisano to działanie szczegółowo:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
-* [Resetowanie lub zmienianie hasła](../active-directory-passwords-update-your-own-password.md).
-* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../active-directory-passwords-reset-register.md).
+* [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md).
+* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md).
 * [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
 * [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)

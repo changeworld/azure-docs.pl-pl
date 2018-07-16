@@ -1,6 +1,6 @@
 ---
-title: Schemat języka definicji przepływu pracy — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zapisać definicji niestandardowego przepływu pracy dla usługi Azure Logic Apps język definicji przepływu pracy
+title: Schemat języka definicji przepływów pracy — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zapisz definicje niestandardowego przepływu pracy dla usługi Azure Logic Apps za pomocą języka definicji przepływu pracy
 services: logic-apps
 author: ecfan
 manager: jeconnoc
@@ -14,22 +14,22 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: babe21db6acc2f7154857b4eb0a02356e89a8ca7
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300185"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39060579"
 ---
-# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicji przepływu pracy aplikacji logiki ze schematem język definicji przepływu pracy
+# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicje przepływów pracy usługi Logic Apps ze schematem język definicji przepływów pracy
 
-Po utworzeniu przepływu pracy aplikacji logiki z [Azure Logic Apps](../logic-apps/logic-apps-overview.md), rzeczywiste logiki uruchomionym aplikacji logiki zawiera opis podstawowej definicji do przepływu pracy. Ten opis następuje strukturą, która ma zdefiniowany i sprawdzone przez schemat język definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/) format. 
+Podczas tworzenia przepływu pracy aplikacji logiki za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawową definicję Twój przepływ pracy w tym artykule opisano rzeczywiste logikę, która jest uruchamiana dla aplikacji logiki. Ten opis jest zgodna to struktura, która została zdefiniowana i zweryfikowane przez schemat języka definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/) formatu. 
   
 ## <a name="workflow-definition-structure"></a>Struktura definicji przepływu pracy
 
-Definicji przepływu pracy ma przynajmniej jeden wyzwalacz, który tworzy aplikację logiki, a także co najmniej jednej akcji, które uruchamia aplikację logiki. 
+Definicja przepływu pracy ma co najmniej jeden wyzwalacz, który tworzy wystąpienie aplikacji logiki, a także co najmniej jednej akcji, których Twoja aplikacja logiki działa. 
 
-Oto ogólny struktura definicji przepływu pracy:  
+Poniżej przedstawiono ogólną strukturę dla definicji przepływu pracy:  
   
 ```json
 "definition": {
@@ -44,18 +44,18 @@ Oto ogólny struktura definicji przepływu pracy:
   
 | Element | Wymagane | Opis | 
 |---------|----------|-------------| 
-| definicja | Yes | Element początkowy definicji przepływu pracy | 
-| $schema | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który zawiera opis wersji języka definicji przepływu pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
-| contentVersion | Nie | Numer wersji definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Do identyfikacji i Potwierdź prawidłowe definicji podczas wdrażania przepływu pracy, należy określić wartość do użycia. | 
-| parameters | Nie | Definicje dla jednego lub więcej parametrów, które przekazują dane do przepływu pracy <p><p>Parametry maksymalna: 50 | 
-| Wyzwalacze | Nie | Definicje dla jednego lub więcej wyzwalaczy, które wystąpienia przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko przy użyciu języka definicji przepływu pracy, nie będzie poprzez projektanta aplikacji logiki. <p><p>Wyzwalacze maksymalna: 10 | 
-| Akcje | Nie | Definicje dla co najmniej jednej akcji do wykonania w czasie wykonywania przepływu pracy <p><p>Osiągnięto maksymalną liczbę akcji: 250 | 
-| wyjścia | Nie | Definicje danych wyjściowych, które zwracają z przepływu pracy Uruchom <p><p>Wyniki maksymalna: 10 |  
+| definicja | Yes | Element początkowy dla swojej definicji przepływu pracy | 
+| $schema | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który opisuje wersję język definicji przepływów pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
+| contentversion — | Nie | Numer wersji dla definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Aby ułatwić identyfikowanie i Potwierdź poprawną definicję, wdrażając przepływu pracy, należy określić wartość do użycia. | 
+| parameters | Nie | Definicje dla jednego lub więcej parametrów, które przekazują dane do Twojego przepływu pracy <p><p>Parametry maksymalna: 50 | 
+| Wyzwalacze | Nie | Definicje dla co najmniej jeden wyzwalacze, które wystąpienia przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko za pomocą języka definicji przepływu pracy, nie wizualnie za pomocą projektanta aplikacji logiki. <p><p>Wyzwalacze maksymalna: 10 | 
+| Akcje | Nie | Definicje dla co najmniej jedną akcję do wykonania w czasie wykonywania przepływu pracy <p><p>Maksymalną liczbę akcji: 250 | 
+| wyjścia | Nie | Definicje dla danych wyjściowych, które zwracają z przebiegu przepływu pracy <p><p>Dane wyjściowe maksymalna: 10 |  
 |||| 
 
 ## <a name="parameters"></a>Parametry
 
-W `parameters` sekcji, zdefiniuj wszystkie parametry przepływu pracy, używane przez aplikację logiki w wdrożenia dla akceptowanie danych wejściowych. Zarówno deklaracji parametrów i wartości parametrów są wymagane na wdrożenie. Przed użyciem tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
+W `parameters` sekcji, określ wszystkie parametry przepływu pracy używanych przez aplikację logiki we wdrożeniu do akceptowania dane wejściowe. Deklaracji parametru i wartości parametrów są wymagane podczas wdrażania. Przed za pomocą tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach. 
 
 Poniżej przedstawiono ogólną strukturę dla definicji parametru:  
 
@@ -76,24 +76,24 @@ Poniżej przedstawiono ogólną strukturę dla definicji parametru:
 
 | Element | Wymagane | Typ | Opis |  
 |---------|----------|------|-------------|  
-| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: wszystkie hasła, klucze i klucze tajne, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. | Typ parametru |
-| Wartość domyślna | Nie | Identyczny `type` | Wartość domyślna parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy | 
-| allowedValues | Nie | Identyczny `type` | Tablica z wartościami, które może zaakceptować parametru |  
-| metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis aplikacji logiki lub używane przez program Visual Studio lub innych narzędzi danych czasu projektowania |  
+| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: w przypadku wszystkich haseł, kluczy i wpisów tajnych, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. | Typ parametru |
+| defaultValue | Nie | Takie same jak `type` | Domyślna wartość parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy | 
+| allowedValues | Nie | Takie same jak `type` | Tablica wartości akceptujące parametr |  
+| metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis dla swojej aplikacji logiki lub danych czasu projektowania używanych przez program Visual Studio lub innych narzędzi |  
 ||||
 
 ## <a name="triggers-and-actions"></a>Wyzwalacze i akcje  
 
-W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania, które mają miejsce podczas wykonywania do przepływu pracy. Informacje o składni i więcej informacji na temat tych sekcji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
+W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania, które występują podczas wykonywania Twój przepływ pracy. Informacje o składni i dowiedzieć się więcej o tych sekcji, zobacz [wyzwalaczy przepływu pracy i działań](../logic-apps/logic-apps-workflow-actions-triggers.md).
   
 ## <a name="outputs"></a>Dane wyjściowe 
 
-W `outputs` sekcji, zdefiniuj danych przepływu pracy mogą zwracać po zakończeniu uruchamiania. Na przykład aby śledzić stan określonego lub wartość z każdym uruchomieniu, należy określić zwracanych danych wyjściowych przepływu pracy. 
+W `outputs` sekcji, definiują dane, które może zwracać przepływu pracy, po zakończeniu uruchamiania. Na przykład aby śledzić stan określonego lub wartości z poszczególnymi uruchomieniami, określić czy dane wyjściowe przepływu pracy zwraca dane. 
 
 > [!NOTE]
-> Gdy odpowiada na przychodzące żądania z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
+> Podczas odpowiadania na żądania przychodzące z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [wyzwalaczy przepływu pracy i działań](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-Poniżej przedstawiono ogólną strukturę dla definicji danych wyjściowych: 
+Poniżej przedstawiono ogólną strukturę definicji danych wyjściowych dla: 
 
 ```json
 "outputs": {
@@ -106,18 +106,18 @@ Poniżej przedstawiono ogólną strukturę dla definicji danych wyjściowych:
 
 | Element | Wymagane | Typ | Opis | 
 |---------|----------|------|-------------| 
-| <*Nazwa klucza*> | Yes | Ciąg | Wartość zwracana nazwę klucza dla danych wyjściowych |  
+| <*Nazwa klucza*> | Yes | Ciąg | Nazwa klucza dla produktu wyjściowego zwracają wartość |  
 | type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych | 
-| wartość | Yes | Identyczny `type` | Wartość zwracana danych wyjściowych |  
+| wartość | Yes | Takie same jak `type` | Wartość zwracana w danych wyjściowych |  
 ||||| 
 
-Aby uzyskać dane wyjściowe z przepływu pracy, Przejrzyj historię wykonywania aplikacji logiki i szczegółowe informacje w portalu Azure lub użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługi Power BI, dzięki czemu można tworzyć pulpity nawigacyjne. 
+Aby uzyskać dane wyjściowe z przebiegu przepływu pracy, Przejrzyj historię uruchomień aplikacji logiki i szczegółowe informacje w witrynie Azure portal lub [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługi Power BI, dzięki czemu można tworzyć pulpity nawigacyjne. 
 
 <a name="expressions"></a>
 
 ## <a name="expressions"></a>Wyrażenia
 
-Z formatu JSON może mieć wartości literałów, które istnieją w czasie projektowania, na przykład:
+Za pomocą formatu JSON może mieć wartości literału, które istnieją w czasie projektowania, na przykład:
 
 ```json
 "customerName": "Sophia Owen", 
@@ -125,64 +125,64 @@ Z formatu JSON może mieć wartości literałów, które istnieją w czasie proj
 "rainbowColorsCount": 7 
 ```
 
-Może także zawierać wartości, które nie znajdują się do czasu wykonywania. Do reprezentowania tych wartości, można użyć *wyrażenia*, które są oceniane w czasie wykonywania. Wyrażenie jest sekwencją, która może zawierać jeden lub więcej [funkcje](#functions), [operatory](#operators), zmienne, jawne wartości lub stałymi. W definicji przepływu pracy, można użyć wyrażenia dowolne miejsce w wartości ciągu JSON, prefiksu wyrażenia znaku (@). Podczas obliczania wyrażenia, który reprezentuje wartość JSON, treść wyrażenia jest wyodrębniany przez usunięcie @ znaków i zawsze powoduje inną wartość JSON. 
+Również może mieć wartości, które nie istnieją do czasu wykonywania. Do reprezentowania tych wartości, można użyć *wyrażenia*, które są oceniane w czasie wykonywania. Wyrażenie jest sekwencji, który może zawierać jeden lub więcej [funkcje](#functions), [operatory](#operators), zmiennych, jawne wartości lub stałe. W definicji przepływu pracy, można użyć wyrażenia dowolnym miejscu w wartości ciągu JSON przez dodanie przedrostka wyrażenia ze znakiem w (\@). Podczas obliczania wyrażenia, która reprezentuje wartość JSON, treści wyrażenia jest wyodrębniany, usuwając \@ znaków i zawsze skutkuje inną wartość JSON. 
 
-Na przykład w uprzednio zdefiniowanej `customerName` właściwości, można pobrać wartości właściwości, za pomocą [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) funkcji w wyrażeniu i przypisać tę wartość do `accountName` właściwości:
+Na przykład uprzednio zdefiniowany `customerName` właściwości, można pobrać wartości właściwości, za pomocą [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) działać w wyrażeniach, a następnie przypisać tę wartość do `accountName` właściwości:
 
 ```json
 "customerName": "Sophia Owen", 
 "accountName": "@parameters('customerName')"
 ```
 
-*Ciąg interpolacji* również pozwala używać wielu wyrażeń wewnątrz ciągów, które są kodowane przez @ znaków i nawiasy klamrowe ({}). Oto składnia:
+*Interpolacja ciągów* również pozwala używać wielu wyrażeń wewnątrz ciągów, które zostaną opakowane przy \@ znaków i nawiasy klamrowe ({}). Poniżej przedstawiono składnię:
 
 ```json
 @{ "<expression1>", "<expression2>" }
 ```
 
-Wynik jest zawsze typu string, co ta możliwość podobny do `concat()` funkcji, na przykład: 
+Wynik to zawsze ciąg wprowadzania tej możliwości podobne do `concat()` funkcji, na przykład: 
 
 ```json
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Jeśli masz literałem, który rozpoczyna się znakiem @, prefiks @-znak z inną @-znak jako znak ucieczki: @@
+Jeśli masz ciąg literału, który rozpoczyna się od \@ znak, prefiks \@ znak z inną \@ znak jako znak ucieczki: \@\@
 
-Poniższe przykłady pokazują, jak są analizowane wyrażeń:
+Poniższe przykłady pokazują, jak są obliczane wyrażenia:
 
 | Wartość JSON | Wynik |
 |------------|--------| 
 | "Sophia Owen" | Zwraca następujące znaki: "Sophia Owen" |
-| "array [1]" | Zwraca następujące znaki: "array [1]" |
-| "\@\@" | Zwraca te znaki jako ciąg o jeden znak: " \@" |   
-| " \@" | Zwraca jako ciąg znaków dwóch następujących znaków: " \@" |
+| "tablica [1]" | Zwraca następujące znaki: "array [1]" |
+| "\@\@" | Zwraca te znaki jako ciąg jednego znaku: "\@" |   
+| " \@" | Zwracają te znaki jako ciąg dwóch znaków: " \@" |
 |||
 
-Te przykłady Załóżmy, że zdefiniujesz "myBirthMonth" równa się "Stycznia" i "myAge" równa liczbie 42:  
+W poniższych przykładach Załóżmy, że należy zdefiniować "myBirthMonth" równa się "Stycznia" i "myAge" równą liczbie 42:  
   
 ```json
 "myBirthMonth": "January",
 "myAge": 42
 ```
 
-Poniższe przykłady pokazują, jak są analizowane następujących wyrażeń:
+Poniższe przykłady pokazują, jak są obliczane następujących wyrażeń:
 
 | Wyrażenie JSON | Wynik |
 |-----------------|--------| 
-| "@parameters(myBirthMonth)" | Zwraca ciąg: "Stycznia" |  
-| "@{parameters('myBirthMonth')}" | Zwraca ciąg: "Stycznia" |  
-| "@parameters(myAge)" | Zwraca to liczba: 42 |  
-| "@{parameters('myAge')}" | Zwraca to liczba jako ciąg: "42" |  
-| "Mój wiek jest @{parameters('myAge')}" | Zwraca ciąg: "Mój wiek jest 42" |  
-| "@concat("Mój wiek jest", string(parameters('myAge')))" | Zwraca ciąg: "Mój wiek jest 42" |  
-| "Mój wiek jest @@ {parameters('myAge')}" | Ten ciąg, który zawiera wyrażenie zwraca: "Mój wiek jest @{parameters('myAge')}" | 
+| "\@parameters('myBirthMonth')" | Zwraca następujący ciąg: "Stycznia" |  
+| "\@{parameters('myBirthMonth')}" | Zwraca następujący ciąg: "Stycznia" |  
+| "\@parameters('myAge')" | Zwraca to numer: 42 |  
+| "\@{parameters('myAge')}" | Zwraca ten numer jako ciąg znaków: "42" |  
+| "Mój wiek to \@{parameters('myAge')}" | Zwraca następujący ciąg: "Mój wiek to 42" |  
+| "\@concat ("Mój wiek to", string(parameters('myAge')))" | Zwraca następujący ciąg: "Mój wiek to 42" |  
+| "Mój wiek to \@ \@{parameters('myAge')}" | Ten ciąg, który zawiera wyrażenie zwraca: "Mój wiek to \@{parameters('myAge')}" | 
 ||| 
 
-Podczas pracy wizualnie w Projektancie aplikacji logiki, na przykład można utworzyć wyrażenia za pośrednictwem Konstruktora wyrażeń: 
+Podczas pracy wizualnie w Projektancie aplikacji logiki, możesz utworzyć wyrażenia przez Konstruktor wyrażeń na przykład: 
 
 ![Projektant aplikacji logiki > Konstruktor wyrażeń](./media/logic-apps-workflow-definition-language/expression-builder.png)
 
-Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiadających im właściwości w definicji przepływu pracy, na przykład, `searchQuery` właściwości w tym miejscu:
+Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiednich właściwości w definicji przepływu pracy, na przykład, `searchQuery` właściwości w tym miejscu:
 
 ```json
 "Search_tweets": {
@@ -206,81 +206,81 @@ Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiadających im w�
 
 ## <a name="operators"></a>Operatory
 
-W [wyrażenia](#expressions) i [funkcje](#functions), Operatorzy wykonywania określonych zadań, takich jak odwołanie do właściwości lub wartości w tablicy. 
+W [wyrażeń](#expressions) i [funkcje](#functions), operatory wykonywania określonych zadań, takich jak odwołanie do właściwości lub wartość w tablicy. 
 
 | Operator | Zadanie | 
 |----------|------|
-| ' | Aby użyć literału ciągu jako dane wejściowe lub wyrażeń i funkcji, zawijać ciąg tylko w pojedynczy cudzysłów, na przykład `'<myString>'`. Nie używaj podwójnego cudzysłowu (""), które powodują konflikt z formatowaniem JSON wokół całego wyrażenia. Na przykład: <p>**Tak**: length('Hello') </br>**Nie**: length("Hello") <p>Jeśli tablice lub liczb, nie trzeba zawijania znaków interpunkcyjnych. Na przykład: <p>**Tak**: długość ([1, 2, 3]) </br>**Nie**: długość ("[1, 2, 3]") | 
-| [] | Aby odwołać się do wartości w określonej pozycji (indeks) w tablicy, użyj nawiasy kwadratowe. Na przykład, aby uzyskać drugiego elementu w tablicy: <p>`myArray[1]` | 
-| . | Aby odwołać się do właściwości w obiekcie użycia kropki. Na przykład, aby pobrać `name` właściwość `customer` obiekt JSON: <p>`"@parameters('customer').name"` | 
-| ? | Aby odwołać właściwości w obiekcie bez błędów czasu wykonywania o wartości null, należy użyć operatora znaku zapytania. Na przykład do obsługi null wyników z wyzwalaczy, można użyć tego wyrażenia: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` | 
+| ' | Aby użyć literału ciągu jako dane wejściowe lub w wyrażeniach i funkcje, opakowywanie ciąg tylko pojedynczy cudzysłów, na przykład `'<myString>'`. Nie należy używać podwójnego cudzysłowu (""), które powodują konflikt z formatowaniem JSON wokół całe wyrażenie. Na przykład: <p>**Tak**: length('Hello') </br>**Nie**: length("Hello") <p>Jeśli przekazujesz, tablic lub liczby, nie trzeba zawijanie znaków interpunkcyjnych. Na przykład: <p>**Tak**: długość ([1, 2, 3]) </br>**Nie**: długość ("[1, 2, 3]") | 
+| [] | Aby odwołać się do wartości w określonym położeniu (indeks) w tablicy, Użyj nawiasów kwadratowych. Na przykład, aby uzyskać drugi element w tablicy: <p>`myArray[1]` | 
+| . | Aby odwoływać się do właściwości w obiekcie, użyj operatora kropki. Na przykład, aby uzyskać `name` właściwość `customer` obiekt JSON: <p>`"@parameters('customer').name"` | 
+| ? | Odwoływanie się do wartości null właściwości w obiekcie bez błędów środowiska uruchomieniowego, użyj operatora znaku zapytania. Na przykład do obsługi o wartości null dane wyjściowe z wyzwalaczem, możesz użyć tego wyrażenia: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` | 
 ||| 
 
 <a name="functions"></a>
 
 ## <a name="functions"></a>Funkcje
 
-Niektóre wyrażenia pobrać wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje*](../logic-apps/workflow-definition-language-functions-reference.md). Na przykład możesz użyć matematyczne funkcji do obliczeń, takich jak [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkcji, która zwraca sumę liczb całkowitych lub elementów przestawnych. Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
-Lub kontynuować zapoznawanie funkcji i ich ogólnego przeznaczenia.
+Niektóre wyrażenia, Uzyskaj ich wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać się i pracować z tych wartości w wyrażeniach, można użyć [ *funkcje*](../logic-apps/workflow-definition-language-functions-reference.md). Na przykład, można użyć funkcje matematyczne do obliczeń, takich jak [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkcji, która zwraca sumę liczb całkowitych lub wartości zmiennoprzecinkowe. Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
+Można też uzyskać więcej informacji o funkcji i ich ogólnego przeznaczenia.
 
-Poniżej przedstawiono kilka przykład zadań, które można wykonywać za pomocą funkcji: 
+Poniżej przedstawiono kilka zadań przykładu, które można wykonywać za pomocą funkcji: 
 
 | Zadanie | Składnia funkcji | Wynik | 
 | ---- | --------------- | -------------- | 
-| Zwraca ciąg w formacie małe litery. | toLower ("<*tekst*>") <p>Na przykład: toLower('Hello') | tekst "hello" | 
+| Zwraca ciąg w formacie małe litery. | toLower ('<*tekstu*> ") <p>Na przykład: toLower('Hello') | "hello" | 
 | Zwraca unikatowy identyfikator globalny (GUID). | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
 |||| 
 
-W tym przykładzie pokazano, jak można uzyskać wartości z `customerName` parametru i przypisz, że wartość do `accountName` właściwości przy użyciu [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) funkcja w wyrażeniu:
+Ten przykład przedstawia, jak można uzyskać wartości z `customerName` parametru i przypisanie tej wartości do `accountName` właściwości przy użyciu [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) funkcji w wyrażeniu:
 
 ```json
 "accountName": "@parameters('customerName')"
 ```
 
-Oto kilka innych metod ogólnych użyć funkcji w wyrażeniach:
+Oto kilka innych sposobów ogólne używane funkcje w wyrażeniach:
 
-| Zadanie | Funkcja składni w wyrażeniu | 
+| Zadanie | Składnia funkcji w wyrażeniu | 
 | ---- | -------------------------------- | 
-| Wykonaj pracę z elementem przez przekazanie do funkcji tego elementu. | "@<*functionName*> (<*elementu*>)" | 
-| 1. Pobierz *parameterName*przez wartość przy użyciu zagnieżdżone `parameters()` funkcji. </br>2. Wykonaj pracę z wynikiem przekazując tę wartość do *functionName*. | "@<*functionName*> (parametry (" <*parameterName*>')) " | 
-| 1. Pobierz wynik z funkcji zagnieżdżonej wewnętrzny *functionName*. </br>2. Przekazać wynik do funkcji zewnętrznej *functionName2*. | "@<*functionName2*> (<*functionName*> (<*elementu*>))" | 
-| 1. Uzyskanie wyniku z *functionName*. </br>2. Biorąc pod uwagę, że wynik jest obiektu z właściwością *propertyName*, pobrać wartości tej właściwości. | "@<*functionName*>(<*item*>). <*propertyName*>" | 
+| Wykonaj pracy za pomocą elementu przez przekazanie tego elementu do funkcji. | "\@<*functionName*> (<*elementu*>)" | 
+| 1. Pobierz *parameterName*firmy wartości za pomocą zagnieżdżonego `parameters()` funkcji. </br>2. Wykonywać pracę z wynikiem, przekazując wartość tego do *functionName*. | "\@<*functionName*> (parametry (" <*parameterName*> "))" | 
+| 1. Uzyskiwanie wyników zagnieżdżonych funkcji wewnętrznej *functionName*. </br>2. Przekazać wynik do funkcji zewnętrznej *functionName2*. | "\@<*functionName2*> (<*functionName*> (<*elementu*>))" | 
+| 1. Pobierz wynik z *functionName*. </br>2. Biorąc pod uwagę, że wynik jest obiekt z właściwością *propertyName*, wartość tej właściwości. | "\@<*functionName*>(<*item*>). <*propertyName*>" | 
 ||| 
 
-Na przykład `concat()` funkcja może zająć dwie lub więcej wartości ciągu jako parametry. Ta funkcja scala te ciągi w jeden ciąg. Użytkownik może przekazać w literałach ciągu, na przykład "Sophia" i "Owen", aby uzyskać ciąg Scalonej "SophiaOwen":
+Na przykład `concat()` funkcji może potrwać co najmniej dwóch wartości ciągu jako parametry. Ta funkcja łączy te ciągi w jeden ciąg. Możesz albo przekazać Literały ciągu, na przykład "Sophia" i "Owen", aby uzyskać ciąg połączone "SophiaOwen":
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
 ```
 
-Alternatywnie można pobrać wartości ciągu z parametrów. W tym przykładzie użyto `parameters()` funkcji w każdym `concat()` parametru i `firstName` i `lastName` parametrów. Przekazuj wynikowy ciągi do `concat()` funkcjonować tak, aby pobrać połączony ciąg, na przykład "SophiaOwen":
+Alternatywnie można uzyskać wartości parametrów z parametrów. W tym przykładzie użyto `parameters()` funkcji w każdym `concat()` parametru i `firstName` i `lastName` parametrów. Następnie przekaż wynikowy ciągi, które `concat()` funkcji tak, aby uzyskać ciąg połączone, przykładowo "SophiaOwen":
 
 ```json
 "customerName": "@concat(parameters('firstName'), parameters('lastName'))"
 ```
 
-W obu przypadkach zarówno przykłady Przypisz wynik do `customerName` właściwości. 
+W obu przypadkach oba przykłady Przypisz wynik do `customerName` właściwości. 
 
-Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
-Lub kontynuować zapoznawanie funkcje oparte na ich ogólnego przeznaczenia.
+Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
+Można też uzyskać więcej informacji o funkcji, w oparciu o ich ogólnego przeznaczenia.
 
 <a name="string-functions"></a>
 
 ### <a name="string-functions"></a>Funkcje ciągów
 
-Aby pracować z ciągami, można używać tych funkcji ciąg, a także niektóre [kolekcji funkcji](#collection-functions). Funkcje ciągów działa tylko na ciągach. 
+Aby pracować z ciągów, można użyć tych funkcji ciąg, a także niektóre [kolekcji funkcji](#collection-functions). Funkcje ciągów działa tylko na ciągi. 
 
 | String — funkcja | Zadanie | 
 | --------------- | ---- | 
-| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Połącz co najmniej dwa ciągi i zwraca połączony ciąg. | 
-| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg kończy się wyrazem wskazany podciąg. | 
-| [Identyfikator GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Wygeneruj Unikatowy identyfikator globalny (GUID) jako ciąg. | 
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Łączenie dwóch lub więcej ciągów, a następnie zwraca połączony ciąg. | 
+| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg kończy się podanym podciągiem. | 
+| [Identyfikator GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generuj Unikatowy identyfikator globalny (GUID) jako ciąg. | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwraca pozycję początkową podciąg. | 
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwraca pozycję końcową dla podciąg. | 
-| [Zamień](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zastąp podciągu określonego ciągu i zwraca ciąg zaktualizowane. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwróć pozycji końcowej dla podciąg. | 
+| [Zastąp](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zamień podciąg określony ciąg i zwraca ciąg zaktualizowane. | 
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę, która ma wszystkich znaków z ciągu i oddziela każdego znaku znakiem określonego ogranicznika. | 
-| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg rozpoczyna się od określonego podciąg. | 
-| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwracanie znaków z ciągu, zaczynając od określonej pozycji. | 
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg zaczyna się od określonego podciąg. | 
+| [podciąg](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwraca znaki ciągu, zaczynając od określonej pozycji. | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Zwraca ciąg w formacie małe litery. | 
 | [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Zwraca ciąg w formacie wielkie litery. | 
 | [TRIM](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Usuń spacje wiodące i końcowe z ciągu i zwraca ciąg zaktualizowane. | 
@@ -290,37 +290,37 @@ Aby pracować z ciągami, można używać tych funkcji ciąg, a także niektóre
 
 ### <a name="collection-functions"></a>Kolekcja funkcji
 
-Aby pracować z kolekcji, zazwyczaj tablic ciągów i czasami słowników, możesz użyć tych funkcji kolekcji. 
+Aby pracować z kolekcji, zazwyczaj tablice, ciągi i czasami słowników, można użyć tych funkcji w kolekcji. 
 
-| Funkcja kolekcji | Zadanie | 
+| Kolekcja funkcji | Zadanie | 
 | ------------------- | ---- | 
-| [zawiera](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Sprawdź, czy kolekcja zawiera konkretny element. |
+| [zawiera](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Sprawdź, czy kolekcja zawiera określony element. |
 | [pusty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Sprawdź, czy kolekcja jest pusta. | 
 | [pierwszy](../logic-apps/workflow-definition-language-functions-reference.md#first) | Zwraca pierwszy element z kolekcji. | 
-| [część wspólną](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwraca kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji. | 
-| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który ma *wszystkie* elementy z tablicy, oddzielonych określony znak. | 
+| [Część wspólna](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwraca kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji. | 
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który ma *wszystkie* elementy z tablicy, oddzielone od określonego znaku. | 
 | [ostatni](../logic-apps/workflow-definition-language-functions-reference.md#last) | Zwraca ostatni element z kolekcji. | 
-| [długość](../logic-apps/workflow-definition-language-functions-reference.md#length) | Zwraca liczbę elementów w string lub array. | 
-| [Pomiń](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Usuwanie elementów z na początku kolekcji, a następnie wróć *wszystkie inne* elementów. | 
-| [podejmij](../logic-apps/workflow-definition-language-functions-reference.md#take) | Zwraca elementy z przodu kolekcji. | 
-| [Unii](../logic-apps/workflow-definition-language-functions-reference.md#union) | Zwraca kolekcję, która ma *wszystkie* elementy z określonymi kolekcjami. | 
+| [Długość](../logic-apps/workflow-definition-language-functions-reference.md#length) | Zwraca liczbę elementów w tablicy lub ciągu. | 
+| [Pomiń](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Usuń elementy z przodu kolekcji i zwracają *znajdują się wszystkie inne* elementów. | 
+| [Wypełnij](../logic-apps/workflow-definition-language-functions-reference.md#take) | Zwraca elementy z przodu kolekcji. | 
+| [Unia](../logic-apps/workflow-definition-language-functions-reference.md#union) | Zwraca kolekcję, która ma *wszystkie* elementy z określonymi kolekcjami. | 
 ||| 
 
 <a name="comparison-functions"></a>
 
-### <a name="comparison-functions"></a>Porównanie funkcji
+### <a name="comparison-functions"></a>Funkcje porównania
 
-Do pracy z warunkami, porównać wartości i wyniki wyrażenia lub oceny różnego rodzaju logiki, możesz użyć tych funkcji porównania. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Do pracy z warunkami, Porównaj wartości i wyniki wyrażenia lub obliczyć różnego rodzaju logiki, można użyć tych funkcji porównywania. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Porównanie funkcji | Zadanie | 
 | ------------------- | ---- | 
-| [I](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość true. | 
+| [i](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość true. | 
 | [równa się](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. | 
-| [większa](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa od drugiej wartości. | 
-| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Sprawdź, czy pierwsza wartość jest większa niż lub równa drugiej wartości. | 
-| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie jest równa true lub false. Na podstawie wyniku, zwrócić określoną wartość. | 
-| [mniej](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza niż wartość drugiej. | 
-| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Sprawdź, czy pierwsza wartość jest mniejsza niż lub równa drugiej wartości. | 
+| [większa](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa niż wartość drugiego. | 
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Sprawdź, czy pierwsza wartość jest większa lub równa wartości drugiego. | 
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie jest prawdziwe lub fałszywe. Na podstawie wyniku, zwrócić określoną wartość. | 
+| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości. | 
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Sprawdź, czy pierwsza wartość jest mniejsza niż lub równa wartości drugiego. | 
 | [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Sprawdź, czy wyrażenie jest fałszywe. | 
 | [lub](../logic-apps/workflow-definition-language-functions-reference.md#or) | Sprawdź, czy co najmniej jedno wyrażenie ma wartość true. |
 ||| 
@@ -329,31 +329,31 @@ Do pracy z warunkami, porównać wartości i wyniki wyrażenia lub oceny różne
 
 ### <a name="conversion-functions"></a>Funkcje konwersji
 
-Aby zmienić typ lub format wartości, możesz użyć tych funkcji konwersji. Na przykład można zmienić wartości z wartością logiczną na liczbę całkowitą. Aby dowiedzieć się, jak aplikacje logiki obsługuje typy zawartości podczas konwersji, zobacz [obsługi typów zawartości](../logic-apps/logic-apps-content-type.md). Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Aby zmienić typ lub format wartości, można użyć tych funkcji konwersji. Na przykład można zmienić wartości z wartością logiczną na liczbę całkowitą. Aby dowiedzieć się, jak Logic Apps obsługuje typy zawartości podczas konwersji, zobacz [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md). Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Funkcja konwersji | Zadanie | 
 | ------------------- | ---- | 
 | [Tablica](../logic-apps/workflow-definition-language-functions-reference.md#array) | Zwraca tablicę z jednej z określonych danych wejściowych. Dla wielu danych wejściowych, zobacz [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). | 
-| [Base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Zwraca ciąg wersji algorytmem Base64. | 
-| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwróć binarnej wersji dla ciągu zakodowanego algorytmem base64. | 
+| [Base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Zwraca wersję algorytmem Base64 dla ciągu. | 
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwraca binarną wersję ciągu zakodowanego algorytmem base64. | 
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Zwraca ciąg wersji ciąg kodowany w formacie base64. | 
-| [Binarne](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwróć binarnej wersji dla wartości wejściowej. | 
-| [wartość logiczna](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwracany Boolean wersji wartości wejściowej. | 
+| [dane binarne](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwraca binarną wersję dla wartości wejściowej. | 
+| [wartość logiczna](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwróć logiczna wersja dla wartości wejściowej. | 
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Zwraca tablicę z wielu danych wejściowych. | 
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Zwraca identyfikator URI danych wartości wejściowej. | 
-| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwróć binarnej wersji danych identyfikatora URI. | 
-| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Zwraca ciąg wersji danych identyfikatora URI. | 
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwraca binarną wersję dla identyfikatora URI danych. | 
+| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Zwraca wersję ciągu dla identyfikatora URI danych. | 
 | [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Zwraca ciąg wersji ciąg kodowany w formacie base64. | 
-| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwróć binarnej wersji danych identyfikatora URI. | 
-| [decodeuricomponent —](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwracany ciąg czy zastępuje Usuń znaki dekodowane wersje. | 
-| [encodeuricomponent —](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje znaki niezabezpieczony adres URL znaki specjalne. | 
-| [Float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwraca zmiennoprzecinkową punktu liczba wartości wejściowych. | 
-| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwraca ciąg wersji liczby całkowitej. | 
-| [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwraca wartość typu JavaScript Object Notation (JSON) lub obiekt string lub XML. | 
-| [Ciąg](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca ciąg wersji wartości wejściowej. | 
-| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Zwróć wersja kodowany w formacie identyfikatora URI dla wartości wejściowej przez zamianę znaków niezabezpieczony adres URL znaki specjalne. | 
-| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Zwróć binarnej wersji na ciąg kodowany w formacie identyfikatora URI. | 
-| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Zwraca ciąg wersji ciąg kodowany w formacie identyfikatora URI. | 
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwraca binarną wersję dla identyfikatora URI danych. | 
+| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwróć ciąg, zastępuje znak ucieczki znaków zdekodowanego wersje. | 
+| [encodeuricomponent —](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje adres URL niebezpiecznych znaków ze znakami ucieczki. | 
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwraca zmiennoprzecinkową punktu numer dla wartości wejściowej. | 
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwróć wersja liczby całkowitej, ciągu. | 
+| [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwraca wartość typu JavaScript Object Notation (JSON) lub obiekt ciągu lub kodu XML. | 
+| [ciąg](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca wersję ciągu dla wartości wejściowej. | 
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Zwraca wersję zakodowany jako identyfikator URI dla wartości wejściowej, zastępując znaki niebezpieczne adresu URL znaki ucieczki. | 
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Zwraca binarną wersję na ciąg kodowany w formacie identyfikatora URI. | 
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Zwraca ciąg wersji ciąg zakodowany jako identyfikator URI. | 
 | [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Zwraca ciąg w wersji XML. | 
 ||| 
 
@@ -361,49 +361,49 @@ Aby zmienić typ lub format wartości, możesz użyć tych funkcji konwersji. Na
 
 ### <a name="math-functions"></a>Funkcje matematyczne
 
-Aby pracować z liczbami całkowitymi i elementów przestawnych, można użyć tych funkcje matematyczne. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Aby pracować z liczbami całkowitymi i wartości zmiennoprzecinkowe, można użyć tych funkcji matematycznych. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Math — funkcja | Zadanie | 
 | ------------- | ---- | 
-| [Dodaj](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwraca wynik z dodanie dwóch liczb. | 
+| [Dodaj](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwróć wynik dodawania dwóch liczb. | 
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Zwraca wynik dzielenia dwóch liczb. | 
-| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca największą wartość ze zbioru liczb lub tablicy. | 
-| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwraca najmniejszą wartość z zestawu liczb lub tablicy. | 
-| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwraca resztę z dzielenia liczby dwa. | 
-| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwraca produktu z pomnożenie dwóch liczb. | 
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca najwyższą wartość z zestawu numerów lub tablicy. | 
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwraca najmniejszą wartość z zestawu numerów lub tablicy. | 
+| [dzielenie modulo](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwraca resztę z dzielenia dwóch liczb. | 
+| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwraca iloczyn mnożenia dwóch liczb. | 
 | [RAND](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową liczbę całkowitą z określonego zakresu. | 
-| [Zakres](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwraca tablicę liczba całkowita, która rozpoczyna się od określonej wartości całkowitej. | 
-| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik z odjęcie druga liczba od pierwszej liczby. | 
+| [Zakres](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwraca tablicę liczb całkowitych, który rozpoczyna się od określonej wartości całkowitej. | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik odejmowania drugą liczbę od pierwszej liczby. | 
 ||| 
 
 <a name="date-time-functions"></a>
 
 ### <a name="date-and-time-functions"></a>Funkcje daty i godziny
 
-Aby pracować z dat i godzin, można użyć tych funkcji daty i godziny.
-Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Aby pracować z datami i godzinami, można użyć tych funkcji daty i godziny.
+Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Funkcja daty lub godziny | Zadanie | 
 | --------------------- | ---- | 
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Dodaj liczbę dni do sygnatury czasowej. | 
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Dodaj liczbę godzin do sygnatury czasowej. | 
 | [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Dodaj liczbę minut do sygnatury czasowej. | 
-| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Dodaj liczba sekund do sygnatury czasowej. |  
+| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Dodaj liczbę sekund do sygnatury czasowej. |  
 | [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Dodaj liczbę jednostek czasu do sygnatury czasowej. Zobacz też [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). | 
-| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Konwertuj sygnaturę czasową z uniwersalny czas koordynowany (UTC) zgodnie ze strefą czasową docelowej. | 
-| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Przekonwertować sygnatury czasowej ze źródłową strefą czasową zgodnie ze strefą czasową docelowej. | 
-| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konwertuj sygnaturę czasową ze źródłową strefą czasową uniwersalny czas koordynowany (UTC). | 
-| [DayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zwróć dzień składnik miesiąca z sygnatury czasowej. | 
-| [DayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zwróć dzień tygodnia składnika z sygnatury czasowej. | 
-| [Dzieńroku](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zwróć dzień składnik roku z sygnatury czasowej. | 
-| [FormatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zwraca daty z sygnatury czasowej. | 
-| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Zwraca bieżącą sygnaturę czasową plus jednostki określonego czasu. Zobacz też [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
-| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Zwraca bieżącą sygnaturę czasową minus jednostki określonego czasu. Zobacz też [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
-| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zwróć początek dnia dla sygnatury czasowej. | 
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Docelową strefę czasową, należy przekonwertować sygnatury czasowej względem uniwersalnego czasu koordynowanego (UTC). | 
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową. | 
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konwertowanie sygnatury czasowej ze źródłowej strefy czasowej uniwersalny czas koordynowany (UTC). | 
+| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zwraca składnik dnia miesiąca z sygnatury czasowej. | 
+| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zwraca składnik dnia tygodnia z sygnatury czasowej. | 
+| [Dzieńroku](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zwraca składnik dnia roku z sygnatury czasowej. | 
+| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zwracanie dnia z sygnatury czasowej. | 
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Zwraca bieżącą sygnaturę czasową, a także jednostek w określonym czasie. Zobacz też [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Zwraca bieżącą sygnaturę czasową minus jednostek w określonym czasie. Zobacz też [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zwróć początek dnia sygnaturę czasową. | 
 | [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Zwróć początek godziny dla sygnatury czasowej. | 
-| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zwraca początek miesiąca dla sygnatury czasowej. | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zwróć początek miesiąca dla sygnatury czasowej. | 
 | [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odjęcie liczby jednostek czasu z sygnatury czasowej. Zobacz też [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). | 
-| [znaczniki osi](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Zwraca `ticks` wartości właściwości dla określonej sygnatury czasowej. | 
+| [znaczniki](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Zwróć `ticks` wartości właściwości dla określonej sygnatury czasowej. | 
 | [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Zwraca bieżącą sygnaturę czasową jako ciąg. | 
 ||| 
 
@@ -411,70 +411,70 @@ Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu
 
 ### <a name="workflow-functions"></a>Funkcje przepływów pracy
 
-Te funkcje przepływu pracy można:
+Te funkcje przepływów pracy mogą pomóc:
 
-* Uzyskiwanie szczegółowych informacji o wystąpienia przepływu pracy w czasie wykonywania. 
-* Współpraca z dane wejściowe, używane do tworzenia wystąpienia aplikacji logiki.
-* Odwołują się dane wyjściowe z wyzwalacze i akcje.
+* Uzyskaj szczegółowe informacje dotyczące wystąpienia przepływu pracy w czasie wykonywania. 
+* Praca z danych wejściowych używana podczas tworzenia wystąpienia aplikacji logiki.
+* Przywołują dane wyjściowe z wyzwalaczy i akcji.
 
-Na przykład można odwoływać się dane wyjściowe z jedną akcję i użyć tych danych w późniejszym akcji. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Można na przykład przywołują dane wyjściowe z jedną akcję i użyć tych danych w późniejszym akcji. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
-| Funkcja przepływ pracy | Zadanie | 
+| Funkcja przepływu pracy | Zadanie | 
 | ----------------- | ---- | 
-| [Akcja](../logic-apps/workflow-definition-language-functions-reference.md#action) | Zwraca dane wyjściowe bieżącej akcji w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz też [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
-| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Akcja zwrotu `body` danych wyjściowych w czasie wykonywania. Zobacz też [treści](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
+| [Akcja](../logic-apps/workflow-definition-language-functions-reference.md#action) | Zwraca wynik bieżącej akcji, w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz też [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Akcja zwrotu `body` dane wyjściowe w czasie wykonywania. Zobacz też [treści](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Zwraca wynik akcji w czasie wykonywania. Zobacz [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
-| [Akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Zwraca wynik akcji w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz też [akcji](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
-| [body](#body) | Akcja zwrotu `body` danych wyjściowych w czasie wykonywania. Zobacz też [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
-| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Utworzyć tablicy o wartości, które odpowiadają nazwy klucza w *dane formularza* lub *postać zakodowanych* wyniki akcji. | 
-| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Zwraca pojedynczą wartość, który odpowiada nazwie klucza w akcji *dane formularza* lub *wynik zakodowany w postaci*. | 
-| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz identycznych działania dotyczące tablicy, zwraca bieżący element w tablicy podczas akcji bieżącej iteracji. | 
-| [Elementy](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gdy wewnątrz dla każdego lub czy do pętli, zwracany bieżący element z określonym pętli.| 
-| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Zwróć "wywołania zwrotnego adresu URL" wywołuje wyzwalacz lub akcji. | 
-| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwróć wynik akcji, który ma wiele części treści dla określonej części. | 
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość dla parametru, który jest opisany w definicji aplikacji logiki. | 
-| [Wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe tego wyzwalacza, w czasie wykonywania, lub z innych pary nazwa wartość JSON. Zobacz też [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca wyzwalacza `body` danych wyjściowych w czasie wykonywania. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
-| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwraca pojedynczą wartość dopasowania nazwy klucza w *dane formularza* lub *postać zakodowanych* wyzwolenia danych wyjściowych. | 
-| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Zwróć dla określonej części treści wieloczęściowej dane wyjściowe tego wyzwalacza. | 
-| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Utworzenie tablicy, których wartości odpowiada nazwie klucza w *dane formularza* lub *postać zakodowanych* wyzwolenia danych wyjściowych. | 
-| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Zwraca dane wyjściowe tego wyzwalacza w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
-| [zmienne](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Zwraca wartość określonej zmiennej. | 
-| [przepływ pracy](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Zwróć wszystkie szczegółowe informacje o sam przepływ pracy w czasie wykonywania. | 
+| [Akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Zwraca wynik akcji, w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz też [akcji](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
+| [body](#body) | Akcja zwrotu `body` dane wyjściowe w czasie wykonywania. Zobacz też [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Utwórz tablicę przy użyciu wartości, które odpowiadają nazwę klucza w *dane formularza* lub *zakodowany w postaci* danych wyjściowych akcji. | 
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Zwraca jedną wartość, która pasuje do nazwy klucza w celu wykonania akcji *dane formularza* lub *wynik zakodowany w postaci*. | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz powtarzającej się akcji, za pośrednictwem tablicy, zwraca bieżący element w tablicy podczas iteracji bieżącej akcji. | 
+| [Elementy](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gdy komputer znajduje się wewnątrz for-each lub wykonaj aż do pętli, zwracany bieżący element określonej pętli.| 
+| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Zwróć "adres URL wywołania zwrotnego" wywołuje wyzwalacz lub akcję. | 
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwraca treść dla konkretnego fragmentu w danych wyjściowych akcji, która ma wiele części. | 
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość parametru, który jest opisany w definicji aplikacji logiki. | 
+| [Wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca wynik tego wyzwalacza, w czasie wykonywania, lub z innych par nazw i wartości JSON. Zobacz też [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Wróć do tego wyzwalacza `body` dane wyjściowe w czasie wykonywania. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwraca pojedynczą wartość odpowiadającą nazwę klucza w *dane formularza* lub *zakodowany w postaci* wyzwalacza danych wyjściowych. | 
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Zwraca treść dla określonej części w wieloczęściowych danych wyjściowych wyzwalacza. | 
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Utwórz tablicę, których wartości pasują nazwę klucza w *dane formularza* lub *zakodowany w postaci* wyzwalacza danych wyjściowych. | 
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Zwracanie danych wyjściowych wyzwalacza, w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [Zmienne](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Zwraca wartość określonej zmiennej. | 
+| [Przepływ pracy](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Zwraca wszystkie szczegóły samego przepływu pracy w czasie wykonywania. | 
 ||| 
 
 <a name="uri-parsing-functions"></a>
 
 ### <a name="uri-parsing-functions"></a>Funkcje analizy identyfikatora URI
 
-Identyfikatory uniform resource identifier (URI) i uzyskać różne wartości właściwości dla tych identyfikatorów URI, można użyć tych analizy funkcji identyfikatora URI. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Aby pracować z uniform resource identifier (URI) i uzyskać różne wartości właściwości te identyfikatory URI, można użyć te funkcje analizy identyfikatora URI. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Funkcja analizy identyfikatora URI | Zadanie | 
 | -------------------- | ---- | 
-| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Zwraca `host` wartość Identyfikator uniform resource identifier (URI). | 
-| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Zwraca `path` wartość Identyfikator uniform resource identifier (URI). | 
-| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Zwraca `path` i `query` wartości Identyfikator uniform resource identifier (URI). | 
-| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Zwraca `port` wartość Identyfikator uniform resource identifier (URI). | 
-| [Właściwość uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Zwraca `query` wartość Identyfikator uniform resource identifier (URI). | 
-| [UriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Zwraca `scheme` wartość Identyfikator uniform resource identifier (URI). | 
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Zwróć `host` wartość dla identyfikatora uniform resource identifier (URI). | 
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Zwróć `path` wartość dla identyfikatora uniform resource identifier (URI). | 
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Zwróć `path` i `query` wartości dla identyfikatora uniform resource identifier (URI). | 
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Zwróć `port` wartość dla identyfikatora uniform resource identifier (URI). | 
+| [Właściwość uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Zwróć `query` wartość dla identyfikatora uniform resource identifier (URI). | 
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Zwróć `scheme` wartość dla identyfikatora uniform resource identifier (URI). | 
 ||| 
 
 <a name="manipulation-functions"></a>
 
 ### <a name="json-and-xml-functions"></a>Funkcje JSON i XML
 
-Do pracy z obiektami JSON i XML węzłów, można użyć funkcji manipulowania. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Aby pracować z obiektami JSON i XML węzłów, można użyć tych funkcji manipulowania. Aby uzyskać pełną dokumentację o każdej z nich, zobacz [artykułu alfabetyczny](../logic-apps/workflow-definition-language-functions-reference.md).
 
 | Funkcję manipulowania | Zadanie | 
 | --------------------- | ---- | 
-| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Dodaj właściwość i jej wartość lub pary nazwa wartość do obiektu JSON, a następnie wróć zaktualizowany obiekt. | 
-| [połączenie](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Zwraca pierwszą wartość inną niż null z co najmniej jeden parametr. | 
-| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Usuń właściwość z obiektu JSON i zwracać zaktualizowany obiekt. | 
-| [Metoda setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. | 
-| [wyrażenie XPath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Sprawdź, czy XML węzły lub wartości zgodne wyrażenie XPath (XML Path Language) i zwracają pasującego węzłów lub wartości. | 
+| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Dodaj właściwość i jego wartość lub pary nazwa wartość w obiekcie JSON i zwraca zaktualizowany obiekt. | 
+| [COALESCE](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Zwraca pierwszą wartość inną niż null z co najmniej jeden parametr. | 
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Usuwanie właściwości z obiektu JSON i zwróć zaktualizowany obiekt. | 
+| [Metoda setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Ustaw wartość właściwości w obiekcie JSON i zwraca zaktualizowany obiekt. | 
+| [wyrażenie XPath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Sprawdź XML węzłów lub wartości, które odpowiadają wyrażenie XPath (XML Path Language), a następnie zwracają pasujące węzły lub wartości. | 
 ||| 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [akcje język definicji przepływu pracy i wyzwalaczy](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* Dowiedz się więcej o programowe tworzenie i zarządzanie nimi logiki aplikacji za pomocą [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)
+* Dowiedz się więcej o [język definicji przepływów pracy akcji i wyzwalaczy](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* Dowiedz się więcej o programowe tworzenie i zarządzanie aplikacjami logiki za pomocą [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)

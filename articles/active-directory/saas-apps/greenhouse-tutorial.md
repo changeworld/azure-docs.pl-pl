@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z cieplarnianych | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i cieplarnianych.
+title: 'Samouczek: Integracja usługi Azure Active Directory z cieplarnianych | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i cieplarnianych.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 617487acb396828d3d9515b084901aec6d8deced
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b8c224c6c2178e82b7130715df1bfa8b3a0096a5
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230322"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39042915"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Samouczek: Integracji Azure Active Directory z cieplarnianych
+# <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Samouczek: Integracja usługi Azure Active Directory z cieplarnianych
 
-Z tego samouczka dowiesz się integrowanie cieplarnianych w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować cieplarnianych w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD cieplarnianych zapewnia następujące korzyści:
+Integrowanie cieplarnianych z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do cieplarnianych.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do cieplarnianych (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, który ma dostęp do cieplarnianych.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do cieplarnianych (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z cieplarnianych, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą cieplarnianych, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Cieplarnianych logowanie jednokrotne włączone subskrypcji
@@ -46,195 +46,195 @@ Aby skonfigurować integrację usługi Azure AD z cieplarnianych, potrzebne są 
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie cieplarnianych z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>Dodawanie cieplarnianych z galerii
-Aby skonfigurować integrację usługi Azure AD cieplarnianych, należy dodać cieplarnianych z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację cieplarnianych w usłudze Azure AD, należy dodać cieplarnianych z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać cieplarnianych z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **cieplarnianych**, wybierz pozycję **cieplarnianych** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **cieplarnianych**, wybierz opcję **cieplarnianych** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Cieplarnianych na liście wyników](./media/greenhouse-tutorial/tutorial_greenhouse_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z cieplarnianych w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą cieplarnianych w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w cieplarnianych jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w cieplarnianych musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w cieplarnianych do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w cieplarnianych musi można ustanowić.
 
-W szklarni, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W szklarni, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z cieplarnianych, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą cieplarnianych, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego cieplarnianych](#create-a-greenhouse-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta cieplarnianych połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego cieplarnianych](#create-a-greenhouse-test-user)**  — aby odpowiednikiem Britta Simon w cieplarnianych połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji cieplarnianych.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji cieplarnianych.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z cieplarnianych, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z cieplarnianych, wykonaj następujące czynności:**
 
-1. W portalu Azure na **cieplarnianych** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **cieplarnianych** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/greenhouse-tutorial/tutorial_greenhouse_samlbase.png)
 
-3. Na **cieplarnianych domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **cieplarnianych domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Adresy URL i domeny cieplarnianych pojedynczy informacje logowania jednokrotnego](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
+    ![Cieplarnianych domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.greenhouse.io`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.greenhouse.io`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.greenhouse.io`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.greenhouse.io`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta cieplarnianych](https://www.greenhouse.io/contact) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta cieplarnianych](https://www.greenhouse.io/contact) do uzyskania tych wartości. 
  
 
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/greenhouse-tutorial/tutorial_greenhouse_certificate.png) 
+    ![Link pobierania certyfikatu](./media/greenhouse-tutorial/tutorial_greenhouse_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/greenhouse-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/greenhouse-tutorial/tutorial_general_400.png)
 
-6. Skonfigurować logowanie jednokrotne w **cieplarnianych** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej cieplarnianych](http://www.greenhouse.io/contact).
+6. Aby skonfigurować logowanie jednokrotne na **cieplarnianych** stronie, musisz wysłać pobrany **XML metadanych** do [cieplarnianych zespołem pomocy technicznej](http://www.greenhouse.io/contact).
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/greenhouse-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/greenhouse-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/greenhouse-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/greenhouse-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/greenhouse-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
 ### <a name="create-a-greenhouse-test-user"></a>Tworzenie użytkownika testowego cieplarnianych
 
-Aby włączyć użytkowników usługi Azure AD zalogować się do cieplarnianych, muszą mieć przydzielone do cieplarnianych. W przypadku szklarni Inicjowanie obsługi to zadanie ręczne.
+Aby umożliwić użytkownikom usługi Azure AD zalogować się do cieplarnianych, musi być obsługiwana w cieplarnianych. W przypadku szklarni Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 >[!NOTE]
->Możesz użyć innych cieplarnianych użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez cieplarnianych do kont użytkowników usługi AAD. 
+>Można użyć jakichkolwiek innych cieplarnianych użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez cieplarnianych do aprowizacji kont użytkowników usługi AAD. 
 
 **Aby udostępnić konta użytkowników, wykonaj następujące czynności:**
 
-1. Zaloguj się do Twojego **cieplarnianych** witryny firmy jako administrator.
+1. Zaloguj się do Twojej **cieplarnianych** witryny firmy jako administrator.
 
 2. W menu u góry kliknij **Konfiguruj**, a następnie kliknij przycisk **użytkowników**.
    
    ![Użytkownicy](./media/greenhouse-tutorial/ic790791.png "użytkowników")
 
-3. Kliknij przycisk **nowych użytkowników**.
+3. Kliknij przycisk **nowi użytkownicy**.
    
    ![Nowy użytkownik](./media/greenhouse-tutorial/ic790792.png "nowego użytkownika")
 
 4. W **Dodaj nowego użytkownika** sekcji, wykonaj następujące czynności:
    
-   ![Dodaj nowego użytkownika](./media/greenhouse-tutorial/ic790793.png "Dodaj nowego użytkownika")
+   ![Dodawanie nowego użytkownika](./media/greenhouse-tutorial/ic790793.png "Dodaj nowego użytkownika")
 
-   a. W **wprowadź wiadomości e-mail użytkownika** tekstowym, wpisz adres e-mail prawidłowe konto usługi Azure Active Directory, aby udostępnić.
+   a. W **wprowadź adresy e-mail użytkowników** pole tekstowe, wpisz adres e-mail prawidłowego konta usługi Azure Active Directory do aprowizowania.
 
    b. Kliknij pozycję **Zapisz**.    
    
       >[!NOTE]
-      >Posiadaczy konta usługi Azure Active Directory zostanie wysłana wiadomość e-mail, łącznie z łączem do potwierdzenia konta, zanim staje się aktywny.
+      >Posiadacze kont usługi Azure Active Directory zostanie wysłana wiadomość e-mail, w tym link do potwierdzenia konta, zanim stanie się aktywny.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu cieplarnianych.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do cieplarnianych.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta cieplarnianych, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon cieplarnianych, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **cieplarnianych**.
+2. Na liście aplikacji wybierz **cieplarnianych**.
 
-    ![Łącze cieplarnianych na liście aplikacji](./media/greenhouse-tutorial/tutorial_greenhouse_app.png)  
+    ![Link cieplarnianych na liście aplikacji](./media/greenhouse-tutorial/tutorial_greenhouse_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka cieplarnianych w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji cieplarnianych.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka cieplarnianych w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji cieplarnianych.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Netsuite | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Netsuite.
+title: 'Samouczek: Integracja usługi Azure Active Directory z NetSuite | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i NetSuite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,301 +12,319 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 07/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 55ee7f6b496def5669160f5cfafed7bc6d7eab11
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5a20af1130d50209b29ad44195c14f30cba30c43
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219374"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39051857"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Samouczek: Integracji Azure Active Directory z Netsuite
+# <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Samouczek: Integracja usługi Azure Active Directory z NetSuite
 
-Z tego samouczka dowiesz się integrowanie Netsuite z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować NetSuite w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD Netsuite zapewnia następujące korzyści:
+Integrowanie NetSuite z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Netsuite
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Netsuite (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do NetSuite
+- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do NetSuite (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Netsuite, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą NetSuite, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Netsuite logowanie jednokrotne włączone subskrypcji
+- NetSuite logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Netsuite z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie NetSuite z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-netsuite-from-the-gallery"></a>Dodawanie Netsuite z galerii
-Aby skonfigurować integrację usługi Azure AD Netsuite, należy dodać Netsuite z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-netsuite-from-the-gallery"></a>Dodawanie NetSuite z galerii
+Aby skonfigurować integrację NetSuite w usłudze Azure AD, należy dodać NetSuite z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać Netsuite z galerii, wykonaj następujące czynności:**
+**Aby dodać NetSuite z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
-    
-3. Kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+
+3. Kliknij przycisk **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **Netsuite**.
+4. W polu wyszukiwania wpisz **NetSuite**, wybierz opcję **NetSuite** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/tutorial_netsuite_search.png)
+    ![NetSuite na liście wyników](./media/netsuite-tutorial/tutorial_netsuite_addfromgallery.png)
 
-5. W panelu wyników wybierz **Netsuite**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą NetSuite w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/tutorial_netsuite_addfromgallery.png)
+Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w NetSuite to dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w NetSuite musi można ustanowić.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Netsuite na podstawie użytkownika testowego, nazywany "Britta Simona".
+Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w NetSuite.
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Netsuite jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Netsuite musi się.
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą NetSuite, należy wykonać poniższe bloki konstrukcyjne:
 
-Ta relacja łącza zostanie nawiązane, przypisując wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** w Netsuite.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego NetSuite](#creating-a-netsuite-test-user)**  — aby odpowiednikiem Britta Simon w NetSuite połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Netsuite, należy wykonać poniższe bloki konstrukcyjne:
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Netsuite](#creating-a-netsuite-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Netsuite połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji NetSuite.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z NetSuite, wykonaj następujące czynności:**
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Netsuite.
+1. W witrynie Azure portal na **NetSuite** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Netsuite, wykonaj następujące czynności:**
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-1. W portalu Azure na **Netsuite** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_NetSuite_samlbase.png)
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_netsuite_samlbase.png)
+3. Na **NetSuite domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-3. Na **Netsuite domeny i adres URL** sekcji, wykonaj następujące czynności:
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_NetSuite_url.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_netsuite_url.png)
+    W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
 
-    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:   `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
+    `https://<tenant-name>.NetSuite.com/saml2/acs`
 
-    > [!NOTE] 
-    > Nie są to rzeczywiste wartości. Rzeczywisty adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Netsuite](http://www.netsuite.com/portal/services/support.shtml) uzyskać te wartości.
- 
+    `https://<tenant-name>.na1.NetSuite.com/saml2/acs`
+
+    `https://<tenant-name>.na2.NetSuite.com/saml2/acs`
+
+    `https://<tenant-name>.sandbox.NetSuite.com/saml2/acs`
+
+    `https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs`
+
+    `https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs`
+    
+    > [!NOTE]
+    > Nie są to rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej NetSuite](http://www.NetSuite.com/portal/services/support.shtml) do uzyskania tych wartości.
+
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_netsuite_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_NetSuite_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji Netsuite** , kliknij przycisk **skonfigurować Netsuite** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **konfiguracji NetSuite** , kliknij przycisk **skonfigurować NetSuite** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_netsuite_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_NetSuite_configure.png)
 
-7. Otwórz nową kartę w przeglądarce i zaloguj się do witryny firmy Netsuite jako administrator.
+7. Otwórz nową kartę w przeglądarce i zaloguj się do witryny firmy NetSuite jako administrator.
 
-8. Na pasku narzędzi w górnej części strony kliknij **Instalator**, następnie kliknij przycisk **Menedżer instalacji**.
+8. Na pasku narzędzi w górnej części strony kliknij **instalacji**, a następnie przejdź do **firmy** i kliknij przycisk **Włączanie funkcji**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-setup.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-9. Z **zadań konfiguracyjnych** listy, wybierz **integracji**.
+9. Na pasku narzędzi w środkowej części strony kliknij **SuiteCloud**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-integration.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-10. W **Zarządzanie uwierzytelniania** kliknij **SAML logowania jednokrotnego**.
+10. W obszarze **Zarządzanie uwierzytelniania** zaznacz **SAML logowanie Jednokrotne** Aby włączyć opcję SAML logowanie Jednokrotne w NetSuite.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-saml.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-11. Na **Instalatora SAML** wykonaj następujące czynności:
-   
-    a. Kopia **SAML pojedynczy znak na adres URL usługi** wartość z **krótkimi opisami** sekcji **Konfigurowanie logowania jednokrotnego** i wklej ją do **strony logowania dostawcy tożsamości** w Netsuite.
+11. Na pasku narzędzi w górnej części strony kliknij **Instalatora**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-saml-setup.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setup.png)
+
+12. Z **zadań dotyczących jej konfiguracji** kliknij **integracji**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-integration.png)
+
+13. W **Zarządzanie uwierzytelniania** kliknij **SAML logowania jednokrotnego**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-saml.png)
+
+14. Na **konfiguracji SAML** w obszarze **konfiguracji NetSuite** sekcji należy wykonać następujące czynności:
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-saml-setup.png)
   
-    b. Netsuite, wybierz **podstawowej metody uwierzytelniania**.
+    a. Wybierz **podstawową METODĘ uwierzytelniania**.
 
-    c. W polu z etykietą **metadanych dostawcy tożsamości SAMLV2**, wybierz pozycję **Przekaż plik metadanych IDP**. Następnie kliknij przycisk **Przeglądaj** można przekazać pliku metadanych, który został pobrany z portalu Azure.
+    b. Pola oznaczone **METADANYCH dostawcy tożsamości SAMLV2**, wybierz opcję **PRZEKAŻ plik METADANYCH dostawcy tożsamości**. Następnie kliknij przycisk **Przeglądaj** można przekazać plik metadanych, który został pobrany z witryny Azure portal.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-sso-setup.png)
+    c. Kliknij przycisk **przesłać**.
 
-    d. Kliknij przycisk **przesłać**.
+15. W usłudze Azure AD, kliknij pozycję **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pole wyboru i dodać atrybut.
 
-12. W usłudze Azure AD, kliknij **widoku i edytować wszystkie atrybuty użytkowników** pole wyboru i dodać atrybut.
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-attributes.png)
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-attributes.png)
+16. Aby uzyskać **nazwa atrybutu** wpisz w `account`. Aby uzyskać **wartość atrybutu** wpisz w Twojego identyfikatora konta NetSuite. Ta wartość jest stała i zmian przy użyciu konta. Poniżej znajdują się instrukcje na temat znajdowania Twój identyfikator konta:
 
-13. Aby uzyskać **nazwa atrybutu** wpisz w `account`. Aby uzyskać **wartość atrybutu** wpisz w identyfikatora konta Netsuite Ta wartość jest stała i zmianę konta. Poniżej znajdują się instrukcje dotyczące sposobu Znajdź identyfikator konta:
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-add-attribute.png)
 
-      ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-add-attribute.png)
+    a. NetSuite, kliknij **instalacji** a następnie przejdź do **firmy** i kliknij przycisk **informacje o firmie** w górnym menu nawigacji.
 
-    a. W Netsuite, kliknij przycisk **Instalator** w menu górnym menu nawigacyjnym.
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-com.png)
 
-    b. Kliknięcie w obszarze **zadań konfiguracyjnych** części menu nawigacji po lewej stronie wybierz **integracji** sekcji, a następnie kliknij polecenie **preferencje usług sieci Web**.
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-account-id.png)
 
-    c. Identyfikator konta Netsuite skopiuj i wklej ją do **wartość atrybutu** pole w usłudze Azure AD.
+    b. W **informacje o firmie** strony na kopii kolumna po prawej stronie **Accountid**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-account-id.png)
+    c. Wklej **Accountid** który skopiowano z konta NetSuite go do **wartość atrybutu** pola w usłudze Azure AD. 
 
-14. Zanim użytkownicy mogą wykonywać logowania jednokrotnego do Netsuite, ich należy przypisać odpowiednie uprawnienia w Netsuite. Postępuj zgodnie z instrukcjami poniżej, aby przypisać te uprawnienia.
+17. Zanim użytkownicy mogą wykonywać logowanie jednokrotne do NetSuite, ich należy przypisać odpowiednie uprawnienia w NetSuite. Postępuj zgodnie z poniższymi instrukcjami, aby przypisać te uprawnienia.
 
-    a. W menu górnym menu nawigacyjnym kliknij **Instalator**, następnie kliknij przycisk **Menedżer instalacji**.
-      
-      ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-setup.png)
+    a. W menu górnym menu nawigacyjnym kliknij **Instalatora**.
 
-    b. W menu nawigacji po lewej stronie wybierz **użytkownicy i role**, następnie kliknij przycisk **Zarządzanie rolami**.
-      
-      ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-manage-roles.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setup.png)
+
+    b. W menu nawigacji po lewej stronie wybierz **użytkowników/role**, następnie kliknij przycisk **Zarządzanie rolami**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. Kliknij przycisk **nową rolę**.
 
-    d. Wpisz w **nazwa** dla roli nowego użytkownika.
-      
-      ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-new-role.png)
+    d. Wpisz **nazwa** dla nowej roli.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. Kliknij pozycję **Zapisz**.
 
     f. W menu u góry kliknij **uprawnienia**. Następnie kliknij przycisk **Instalatora**.
-      
-       ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-sso.png)
 
-    g. Wybierz **ustawić zapasowej SAML logowania jednokrotnego**, a następnie kliknij przycisk **Dodaj**.
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-sso.png)
+
+    g. Wybierz **SAML logowania jednokrotnego**, a następnie kliknij przycisk **Dodaj**.
 
     h. Kliknij pozycję **Zapisz**.
 
-    i. W menu górnym menu nawigacyjnym kliknij **Instalator**, następnie kliknij przycisk **Menedżer instalacji**.
-      
-       ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-setup.png)
+    i. W menu górnym menu nawigacyjnym kliknij **instalacji**, następnie kliknij przycisk **Menedżera instalacji**.
 
-    j. W menu nawigacji po lewej stronie wybierz **użytkownicy i role**, następnie kliknij przycisk **Zarządzanie użytkownikami**.
-      
-       ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-manage-users.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-setup.png)
 
-    k. Wybierz użytkownika testowego. Następnie kliknij przycisk **Edytuj**.
-      
-       ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-edit-user.png)
+    j. W menu nawigacji po lewej stronie wybierz **użytkowników/role**, następnie kliknij przycisk **Zarządzanie użytkownikami**.
 
-    l. W oknie dialogowym ról, wybierz rolę, którą utworzono i kliknij przycisk **Dodaj**.
-      
-       ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/ns-add-role.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-manage-users.png)
+
+    k. Wybierz użytkownika testowego. Następnie kliknij przycisk **Edytuj** , a następnie przejdź do **dostępu** kartę.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-edit-user.png)
+
+    l. W oknie dialogowym role przypisać odpowiednie role, które zostały utworzone.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. Kliknij pozycję **Zapisz**.
-    
+ 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/create_aaduser_01.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/NetSuite-tutorial/create_aaduser_01.png) 
 
 2.  Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
     
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/create_aaduser_02.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/NetSuite-tutorial/create_aaduser_02.png) 
 
-3. W górnej części okna dialogowego, kliknij przycisk **Dodaj** otworzyć **użytkownika** okna dialogowego.
+3. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
  
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/create_aaduser_03.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/NetSuite-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/netsuite-tutorial/create_aaduser_04.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](./media/NetSuite-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
     d. Kliknij przycisk **Utwórz**. 
 
-### <a name="creating-a-netsuite-test-user"></a>Tworzenie użytkownika testowego Netsuite
+### <a name="creating-a-netsuite-test-user"></a>Tworzenie użytkownika testowego NetSuite
 
-W tej sekcji użytkownika o nazwie Simona Britta jest tworzony w Netsuite. Netsuite obsługę w czasie, który jest domyślnie włączona.
-Nie ma elementu akcji można w tej sekcji. Jeśli użytkownik nie istnieje w Netsuite, nowy jest tworzony podczas próby uzyskania dostępu Netsuite.
+W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w NetSuite. NetSuite obsługę just-in-time, który jest domyślnie włączona.
+Brak elementu akcji dla Ciebie w tej sekcji. Jeśli użytkownik jeszcze nie istnieje w NetSuite, nowy katalog jest tworzony podczas próby uzyskania dostępu NetSuite.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Netsuite.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do NetSuite.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta Netsuite, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon NetSuite, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Netsuite**.
+2. Na liście aplikacji wybierz **NetSuite**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/netsuite-tutorial/tutorial_netsuite_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/NetSuite-tutorial/tutorial_NetSuite_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Aby przetestować jednego ustawienia logowania jednokrotnego, otwórz Panel dostępu w [ https://myapps.microsoft.com ](https://myapps.microsoft.com/), zaloguj się do konta testowego i kliknij przycisk **Netsuite**.
+Aby przetestować pojedynczego ustawienia logowania jednokrotnego, otwórz Panel dostępu w [ https://myapps.microsoft.com ](https://myapps.microsoft.com/), zaloguj się do konta testowego, a kliknij **NetSuite**.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Skonfiguruj Inicjowanie obsługi użytkowników](netsuite-provisioning-tutorial.md)
+* [Konfigurowanie Aprowizowania użytkowników](NetSuite-provisioning-tutorial.md)
 
 <!--Image references-->
 
-[1]: ./media/netsuite-tutorial/tutorial_general_01.png
-[2]: ./media/netsuite-tutorial/tutorial_general_02.png
-[3]: ./media/netsuite-tutorial/tutorial_general_03.png
-[4]: ./media/netsuite-tutorial/tutorial_general_04.png
+[1]: ./media/NetSuite-tutorial/tutorial_general_01.png
+[2]: ./media/NetSuite-tutorial/tutorial_general_02.png
+[3]: ./media/NetSuite-tutorial/tutorial_general_03.png
+[4]: ./media/NetSuite-tutorial/tutorial_general_04.png
 
-[100]: ./media/netsuite-tutorial/tutorial_general_100.png
+[100]: ./media/NetSuite-tutorial/tutorial_general_100.png
 
-[200]: ./media/netsuite-tutorial/tutorial_general_200.png
-[201]: ./media/netsuite-tutorial/tutorial_general_201.png
-[202]: ./media/netsuite-tutorial/tutorial_general_202.png
-[203]: ./media/netsuite-tutorial/tutorial_general_203.png
+[200]: ./media/NetSuite-tutorial/tutorial_general_200.png
+[201]: ./media/NetSuite-tutorial/tutorial_general_201.png
+[202]: ./media/NetSuite-tutorial/tutorial_general_202.png
+[203]: ./media/NetSuite-tutorial/tutorial_general_203.png
 

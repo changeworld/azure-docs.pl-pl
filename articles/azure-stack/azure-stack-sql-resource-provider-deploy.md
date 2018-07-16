@@ -11,37 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b06f53b0169e3afd140be81d9d633844a5876c09
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f53b1e08da1cb2d0dc02381bf47c27e8f84cb1d0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38487651"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044836"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów programu SQL Server w usłudze Azure Stack
-
 Użyj dostawcy zasobów usługi Azure Stack programu SQL Server do udostępnienia baz danych SQL jako usługi Azure Stack. Dostawcy zasobów bazy danych SQL działa jako usługa na maszynie wirtualnej (VM) systemu Windows Server 2016 Server Core.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Istnieje kilka wymagań wstępnych, które muszą zostać spełnione przed wdrożeniem dostawcy zasobów usługi Azure Stack SQL. Aby spełnić te wymagania, wykonaj następujące czynności na komputerze, na których mogą uzyskiwać dostęp uprzywilejowany punktu końcowego maszyny Wirtualnej:
 
-- Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](.\azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
-- Należy zainstalować moduły platformy Azure i usługi Azure Stack PowerShell na wywoływanie system będzie działać ta instalacja. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
+- Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
+- Moduły platformy Azure i usługi Azure Stack PowerShell należy zainstalować w systemie, w którym będzie uruchamiany tej instalacji. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
 - Dodaj wymagane core systemu Windows Server maszyny Wirtualnej w portalu Marketplace usługi Azure Stack, pobierając **systemu Windows Server 2016 Datacenter — instalacja Server Core** obrazu. 
-
-  >[!NOTE]
-  >Jeśli musisz zainstalować aktualizację, można umieścić pojedynczy pakiet MSU w ścieżce lokalnej zależności. Jeśli więcej niż jeden plik MSU zostanie znaleziony, instalacja dostawcy zasobów SQL zakończy się niepowodzeniem.
-
-- Pobierz binarne dostawcy zasobów bazy danych SQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego. Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz.
+- Pobierz binarne dostawcy zasobów bazy danych SQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego. Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz:
 
     |Wersja usługi Azure Stack|Wersja SQL RP|
     |-----|-----|
     |W wersji 1804 (1.0.180513.1)|[SQL RP wersji 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
     |W wersji 1802 (1.0.180302.1)|[SQL RP wersji 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |     |     |
+
+- Upewnij się, że zostały spełnione wymagania wstępne integrację centrum danych:
+
+    |Wymagania wstępne|Informacje ogólne|
+    |-----|-----|
+    |Przesyłanie warunkowe DNS jest prawidłowo.|[Usługa Azure Stack Integracja z centrum danych — DNS](azure-stack-integrate-dns.md)|
+    |Porty dla ruchu przychodzącego dla dostawców zasobów są otwarte.|[Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)<br>[Usługa Azure Stack PaaS certyfikatu wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Certyfikaty
 
@@ -51,7 +56,7 @@ _Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS P
 
 Jeśli masz wszystkie wstępnie wymagane składniki zainstalowane, uruchomić **DeploySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych SQL. Skrypt DeploySqlProvider.ps1 jest wyodrębniany jako część SQL plik binarny dostawcy zasobów, który został pobrany dla używanej wersji programu Azure Stack.
 
-Aby wdrożyć dostawcy zasobów bazy danych SQL, otwórz **nowe** oknie konsoli programu PowerShell z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów programu SQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
+Aby wdrożyć dostawcy zasobów bazy danych SQL, otwórz **nowe** z podwyższonym poziomem uprawnień okno programu PowerShell (nie PowerShell ISE) i zmiany do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów programu SQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
 
 Uruchom skrypt DeploySqlProvider.ps1, który wykonuje następujące zadania:
 
@@ -60,8 +65,7 @@ Uruchom skrypt DeploySqlProvider.ps1, który wykonuje następujące zadania:
 - Publikuje pakietu galerii do wdrażania serwerów hostingu.
 - Wdraża maszynę Wirtualną przy użyciu obrazu systemu Windows Server 2016 core pobrany, a następnie instaluje dostawcy zasobów bazy danych SQL.
 - Rejestruje lokalne rekord DNS, który jest mapowany do Twojego dostawcę zasobów maszyny Wirtualnej.
-- Rejestruje dostawcę zasobów za pomocą lokalnej usługi Azure Resource Manager dla operatora i kontami użytkowników.
-- Opcjonalnie instaluje jedną aktualizację systemu Windows Server podczas instalacji dostawcy zasobów.
+- Rejestruje dostawcę zasobów za pomocą lokalnej usługi Azure Resource Manager dla konta operatora.
 
 > [!NOTE]
 > Po rozpoczęciu wdrażania dostawcy zasobów programu SQL, **system.local.sqladapter** zostanie utworzona grupa zasobów. Może upłynąć do 75 minut na zakończenie wymaganych wdrożeń do tej grupy zasobów.

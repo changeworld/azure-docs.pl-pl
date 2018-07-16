@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5ffb758fe5fa42be6323de06afbfb38068ae1926
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: b1cd2e8d7649de48f34efb0c7d839e17906a29bf
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969174"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044989"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia .NET w usłudze Application Insights
 Jeśli używasz NLog, log4Net lub System.Diagnostics.Trace do śledzenia diagnostycznego w aplikacji programu ASP.NET może mieć dzienniki wysyłane do [usługi Azure Application Insights][start], gdzie możesz eksplorować i wyszukiwania je. Dzienniki zostaną scalone z innych danych telemetrycznych pochodzących z aplikacji, tak, aby zidentyfikować dane śledzenia skojarzony z obsługi każdego żądania użytkownika i skoreluj je z innymi zdarzeń i raporty o wyjątkach.
@@ -65,7 +65,7 @@ Ta metoda swój typ projektu nie jest obsługiwana przez Instalatora usługi App
 
    * Microsoft.ApplicationInsights.TraceListener (w celu przechwycenia System.Diagnostics.Trace wywołań)
    * Microsoft.ApplicationInsights.EventSourceListener (w celu przechwytywania zdarzeń EventSource)
-   * Microsoft.ApplicationInsights.EtwListener (Aby przechwytywać zdarzenia ETW)
+   * Microsoft.ApplicationInsights.EtwCollector (Aby przechwytywać zdarzenia ETW)
    * Microsoft.ApplicationInsights.NLogTarget
    * Microsoft.ApplicationInsights.Log4NetAppender
 

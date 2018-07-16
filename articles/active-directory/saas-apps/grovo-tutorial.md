@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z Grovo | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Grovo.
+title: 'Samouczek: Integracja usługi Azure Active Directory z Grovo | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Grovo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f43a0270a1c9211c71f92311c3c024b14bd4e77a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b5ab8a87fe3075951b3fb9935c9a06d9c99e3f85
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230492"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39053390"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Samouczek: Integracji Azure Active Directory z Grovo
+# <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Samouczek: Integracja usługi Azure Active Directory z Grovo
 
-Z tego samouczka dowiesz się integrowanie Grovo z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować Grovo w usłudze Azure Active Directory (Azure AD).
 
-Integracja z usługą Azure AD Grovo zapewnia następujące korzyści:
+Integrowanie Grovo z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do Grovo.
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do Grovo (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Grovo.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Grovo (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z Grovo, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD za pomocą Grovo, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
 - Grovo logowanie jednokrotne włączone subskrypcji
@@ -46,234 +46,234 @@ Aby skonfigurować integrację usługi Azure AD z Grovo, potrzebne są następuj
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Grovo z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-grovo-from-the-gallery"></a>Dodawanie Grovo z galerii
-Aby skonfigurować integrację usługi Azure AD Grovo, należy dodać Grovo z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Grovo w usłudze Azure AD, należy dodać Grovo z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Grovo z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **Grovo**, wybierz pozycję **Grovo** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Grovo**, wybierz opcję **Grovo** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Grovo na liście wyników](./media/grovo-tutorial/tutorial_grovo_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Grovo w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Grovo w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Dla rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w Grovo jest dla użytkownika, w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w Grovo musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Grovo do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Grovo musi można ustanowić.
 
-W Grovo, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W Grovo, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Grovo, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Grovo, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego Grovo](#create-a-grovo-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta Grovo połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Grovo](#create-a-grovo-test-user)**  — aby odpowiednikiem Britta Simon w Grovo połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Grovo.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Grovo.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Grovo, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Grovo, wykonaj następujące czynności:**
 
-1. W portalu Azure na **Grovo** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **Grovo** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/grovo-tutorial/tutorial_grovo_samlbase.png)
 
-3. Na **Grovo domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
+3. Na **Grovo domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Adresy URL i domeny Grovo pojedynczy informacje logowania jednokrotnego](./media/grovo-tutorial/tutorial_grovo_url.png)
+    ![Grovo domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/grovo-tutorial/tutorial_grovo_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, wykonaj następujące kroki:
 
-    ![Adresy URL i domeny Grovo pojedynczy informacje logowania jednokrotnego](./media/grovo-tutorial/tutorial_grovo_url1.png)
+    ![Grovo domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/grovo-tutorial/tutorial_grovo_url1.png)
 
-    a. W **przekazywania stanu** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.grovo.com`
+    a. W **przekazywania stanu** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:`https://<subdomain>.grovo.com`
 
-    b. Jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb, wykonaj następujące czynności:
+    b. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, wykonaj następujące czynności:
 
-    ![Adresy URL i domeny Grovo pojedynczy informacje logowania jednokrotnego](./media/grovo-tutorial/tutorial_grovo_url2.png)
+    ![Grovo domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/grovo-tutorial/tutorial_grovo_url2.png)
     
-    W **Zaloguj się na adres URL** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Znakiem rzeczywisty identyfikator, adres URL odpowiedzi, na adres URL i przekazywania stanu, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Grovo](https://www.grovo.com/contact-us) uzyskać te wartości.
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego logowania identyfikator, adres URL odpowiedzi, stan adresu URL i przekazywania. Skontaktuj się z pomocą [zespołem pomocy technicznej Grovo](https://www.grovo.com/contact-us) do uzyskania tych wartości.
  
-5. Aplikacja Grovo oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z "**atrybuty użytkownika**" sekcji na stronie integracji aplikacji. Zamapuj **identyfikator użytkownika** z **user.mail** i skonfigurować inne atrybuty, zgodnie z poniższym zrzucie ekranu.
+5. Aplikacja Grovo oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Zamapuj **identyfikator użytkownika** z **user.mail** i skonfigurować inne atrybuty, jak pokazano w poniższy zrzut ekranu.
     
-    ![Konfigurowanie rejestracji jednokrotnej attb](./media/grovo-tutorial/tutorial_grovo_attribute.png)
+    ![Konfigurowanie logowania jednokrotnego attb](./media/grovo-tutorial/tutorial_grovo_attribute.png)
     
-6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano w obrazie i wykonaj następujące czynności:
+6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |    
     | Imię          | user.givenname |
     | Nazwisko           | user.surname |
     | Adres e-mail       | User.mail    |
-    | Identyfikator pracownika          | user.employeeid |
+    | employeeID          | user.employeeid |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie rejestracji jednokrotnej Dodaj](./media/grovo-tutorial/tutorial_attribute_04.png)
+    ![Konfigurowanie logowania jednokrotnego Dodaj](./media/grovo-tutorial/tutorial_attribute_04.png)
 
-    ![Skonfiguruj Addattb rejestracji jednokrotnej](./media/grovo-tutorial/tutorial_attribute_05.png)
+    ![Konfigurowanie Addattb rejestracji jednokrotnej](./media/grovo-tutorial/tutorial_attribute_05.png)
 
-    b. W **nazwa** tekstowym, wpisz nazwę atrybut wyświetlany dla danego wiersza.
+    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
 
-    c. Z **wartość** listy, wpisz wartość atrybutu wyświetlany dla danego wiersza.
+    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
     d. Pozostaw **Namespace** puste.
     
     e. Kliknij przycisk **OK**.
 
 
-7. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+7. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/grovo-tutorial/tutorial_grovo_certificate.png) 
+    ![Link pobierania certyfikatu](./media/grovo-tutorial/tutorial_grovo_certificate.png) 
 
-8. Kliknij przycisk **zapisać** przycisku.
+8. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/grovo-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/grovo-tutorial/tutorial_general_400.png)
 
-9. Na **konfiguracji Grovo** , kliknij przycisk **skonfigurować Grovo** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+9. Na **konfiguracji Grovo** , kliknij przycisk **skonfigurować Grovo** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja Grovo](./media/grovo-tutorial/tutorial_grovo_configure.png) 
 
-10. W oknie przeglądarki innej witryny sieci web, zaloguj się do Grovo jako Administrator.
+10. W oknie przeglądarki internetowej innej, zaloguj się do Grovo jako Administrator.
 
-11. Przejdź do **Admin** > **integracji**.
+11. Przejdź do **administratora** > **integracje**.
  
     ![Konfiguracja Grovo](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
-12. Kliknij przycisk **SET UP** w obszarze **SP zainicjował SAML 2.0** sekcji.
+12. Kliknij przycisk **SET UP** w obszarze **SP zainicjowane SAML 2.0** sekcji.
 
     ![Konfiguracja Grovo](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
-13. W **SP zainicjował SAML 2.0** oknie podręcznym wykonaj następujące czynności:
+13. W **SP zainicjowane SAML 2.0** okna podręcznego, wykonaj następujące czynności:
 
     ![Konfiguracja Grovo](./media/grovo-tutorial/tutorial_grovo_saml.png)
 
-    a. W **identyfikator jednostki** pole tekstowe, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure.
+    a. W **identyfikator jednostki** pole tekstowe, Wklej wartość **SAML identyfikator jednostki**, które zostały skopiowane z witryny Azure portal.
 
-    b. W **Rejestracja jednokrotna w punkcie końcowym usługi** pole tekstowe, Wklej wartość **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure.
+    b. W **pojedynczy znak w punkcie końcowym usługi** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
 
-    c. Wybierz **Rejestracja jednokrotna w powiązaniu punktu końcowego usługi** jako `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`.
+    c. Wybierz **pojedynczy znak na powiązanie punktu końcowego usługi** jako `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`.
     
-    d. Otwórz pobrany **certyfikatu szyfrowania Base64** z portalu Azure w programie Notatnik, wklej ją do **klucz publiczny** pola tekstowego.
+    d. Otwórz pobrany **certyfikatu szyfrowania Base64** z witryny Azure portal w programie Notatnik, wklej go do **klucza publicznego** pola tekstowego.
 
     e. Kliknij przycisk **Dalej**.
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/grovo-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/grovo-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/grovo-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/grovo-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/grovo-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
   
 ### <a name="create-a-grovo-test-user"></a>Tworzenie użytkownika testowego Grovo
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Grovo. Grovo obsługę w czasie, który jest domyślnie włączone. Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu Grovo, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Grovo. Grovo obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Grovo, jeśli go jeszcze nie istnieje.
 >[!Note]
->Jeśli trzeba ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Grovo](https://www.grovo.com/contact-us).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Grovo](https://www.grovo.com/contact-us).
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Grovo.
+W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Grovo.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta Grovo, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon Grovo, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **Grovo**.
+2. Na liście aplikacji wybierz **Grovo**.
 
-    ![Łącze Grovo na liście aplikacji](./media/grovo-tutorial/tutorial_grovo_app.png)  
+    ![Link Grovo na liście aplikacji](./media/grovo-tutorial/tutorial_grovo_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Grovo w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Grovo.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Grovo w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Grovo.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

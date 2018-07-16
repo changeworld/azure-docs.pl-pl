@@ -1,6 +1,6 @@
 ---
 title: Wskazówki dotyczące zabezpieczeń dla usługi Azure Multi-Factor Authentication
-description: Ten dokument zawiera wskazówki związane z kontami Azure przy użyciu usługi Azure MFA
+description: Ten dokument zawiera wskazówki dotyczące korzystania z usługi Azure MFA przy użyciu konta platformy Azure
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
@@ -10,101 +10,101 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 1e143c8c17d5cbc3403d90f7a354d5300265d679
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: f1df6544ea7ca5a0f84bfb164982d816633d7fbe
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100389"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054407"
 ---
-# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Wskazówki dotyczące zabezpieczeń korzystania z konta usługi Azure AD przy użyciu usługi Azure Multi-Factor Authentication
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Wskazówki dotyczące zabezpieczeń dla przy użyciu usługi Azure Multi-Factor Authentication przy użyciu konta usługi Azure AD
 
-Weryfikacja dwuetapowa to preferowane wyborem w przypadku większości organizacji, które chcesz zwiększyć ich procesu uwierzytelniania. Usługa Azure Multi-Factor Authentication (MFA) pomaga firm, które spełnia ich wymagania dotyczące zabezpieczeń i zgodności, zapewniając prostych środowiska logowania dla użytkowników. W tym artykule przedstawiono kilka wskazówek, które należy wziąć pod uwagę podczas planowania przyjęcia usługi Azure MFA.
+Weryfikacji dwuetapowej jest preferowane wyborem dla większości organizacji, które chcesz zwiększyć ich procesu uwierzytelniania. Usługa Azure Multi-Factor Authentication (MFA) pomaga firmom spełnia ich wymagań bezpieczeństwa i zgodności przy jednoczesnym zapewnieniu proste środowisko logowania dla użytkowników. Ten artykuł zawiera pewne wskazówki, które należy wziąć pod uwagę podczas planowania wdrożenia usługi Azure MFA.
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>Wdrażanie usługi Azure MFA w chmurze
 
-Istnieją dwa sposoby [włączyć usługi Azure MFA dla wszystkich użytkowników](howto-mfa-getstarted.md).
+Istnieją dwa sposoby [włączyć uwierzytelnianie wieloskładnikowe Azure dla wszystkich użytkowników](howto-mfa-getstarted.md).
 
 * Kupowanie licencji dla każdego użytkownika (albo usługi Azure MFA, Azure AD Premium lub Enterprise Mobility + Security)
-* Tworzenie dostawcy uwierzytelniania wieloskładnikowego i płatności dla poszczególnych użytkowników lub uwierzytelnienia
+* Tworzenie dostawcy usługi Multi-Factor Authentication i płatność na użytkownika lub wg uwierzytelnienia
 
 ### <a name="licenses"></a>Licencje
 ![PAKIET EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-Jeśli masz Azure AD Premium lub pakietu Enterprise Mobility + Security licencji, masz już usługi Azure MFA. Twoja organizacja nie wymaga żadnych dodatkowych, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Należy przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
+Jeśli masz usługi Azure AD Premium lub pakietu Enterprise Mobility + Security licencji, masz już usługę Azure MFA. Twoja organizacja nie musi nic więcej, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Musisz przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
 
 Podczas konfigurowania uwierzytelniania wieloskładnikowego, należy wziąć pod uwagę następujące wskazówki:
 
-* Nie należy tworzyć dostawcę uwierzytelniania wieloskładnikowego na uwierzytelniania. Jeśli to zrobisz, może się okazać płatności weryfikacji żądań od użytkowników, którzy już mają licencje.
-* Jeśli nie masz wystarczającą liczbę licencji dla wszystkich użytkowników, można utworzyć użytkownika usługi Dostawca usługi MFA, aby pokrywał się z resztą organizacji. 
-* Azure AD Connect jest tylko wymagane, jeśli synchronizacji w lokalnym środowisku usługi Active Directory z katalogu usługi Azure AD. Jeśli używasz katalog usługi Azure AD, która nie jest zsynchronizowany z lokalnego wystąpienia usługi Active Directory, nie trzeba Azure AD Connect.
+* Nie należy tworzyć dostawcy usługi Multi-Factor Authentication na uwierzytelnienie. Jeśli to zrobisz, może wystąpić płacić za weryfikację żądań od użytkowników, które już masz licencje.
+* Jeśli nie masz wystarczającą liczbę licencji dla wszystkich użytkowników, można utworzyć dostawcy usługi Multi-Factor Authentication na użytkownika, aby pokrywał pozostałej części organizacji. 
+* Program Azure AD Connect jest tylko wymagane, jeśli synchronizacji w lokalnym środowisku usługi Active Directory z katalogiem usługi Azure AD. Jeśli używasz katalog usługi Azure AD, która nie jest zsynchronizowany z lokalnym wystąpieniem usługi Active Directory, nie trzeba program Azure AD Connect.
 
-### <a name="multi-factor-auth-provider"></a>Dostawca uwierzytelniania MFA
-![Dostawca uwierzytelniania MFA](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+### <a name="multi-factor-auth-provider"></a>Dostawcy usługi Multi-Factor Authentication
+![Dostawcy usługi Multi-Factor Authentication](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-Jeśli nie masz licencji, które obejmują usługi Azure MFA, a następnie możesz [Tworzenie dostawcy uwierzytelniania MFA](concept-mfa-authprovider.md).
+Jeśli nie masz licencji, które obejmują usługi Azure MFA, a następnie możesz [utworzyć dostawcę usługi MFA](concept-mfa-authprovider.md).
 
-Podczas tworzenia dostawcy uwierzytelniania, musisz wybrać katalog i należy wziąć pod uwagę następujące informacje:
+Podczas tworzenia dostawcy usługi, musisz wybierz katalog, a następnie należy wziąć pod uwagę następujące informacje:
 
-* Nie trzeba katalog usługi Azure AD, aby utworzyć dostawcy uwierzytelniania wieloskładnikowego, ale uzyskać więcej funkcji z jednym. Następujące funkcje są włączone, gdy dostawca usługi MFA można skojarzyć z katalogu usługi Azure AD:
-  * Rozszerzanie weryfikacji dwuetapowej dla wszystkich użytkowników
-  * Oferują dodatkowe funkcje, takie jak portalu zarządzania, niestandardowe pozdrowienia i raporty z administratorów globalnych.
-* Po zsynchronizowaniu w lokalnym środowisku usługi Active Directory z katalogiem Azure AD, należy narzędzia DirSync i AAD Sync. Jeśli używasz katalog usługi Azure AD, która nie jest zsynchronizowany z lokalnego wystąpienia usługi Active Directory, nie trzeba narzędzia DirSync i AAD Sync.
-* Wybierz model zużycie, który najlepiej odpowiada firmy. Po wybraniu model zastosowania, nie można go zmienić. Są dwa modele:
-  * Na uwierzytelniania: można opłaty za każdy weryfikacji. Ten model należy użyć, jeśli włączono weryfikację dwuetapową dla każdego, który uzyskuje dostęp do niektórych aplikacji, a nie dla konkretnych użytkowników.
-  * Każdego włączonego użytkownika: użytkownik opłaty za każdy użytkownik, który można włączyć usługi Azure MFA. Ten model użycia w przypadku niektórych użytkowników z usługi Azure AD Premium lub pakietu Enterprise Mobility Suite licencji, a niektóre bez.
+* Nie jest potrzebny katalog usługi Azure AD, do utworzenia dostawcy usługi Multi-Factor Authentication, ale uzyskać więcej funkcji przy użyciu jednego. Następujące funkcje są włączone, jeśli użytkownik jest kojarzony z katalogiem usługi Azure AD dostawcy uwierzytelniania:
+  * Rozszerzanie weryfikację dwuetapową dla wszystkich użytkowników
+  * Oferują administratorów globalnych dodatkowe funkcje, takie jak portal zarządzania, niestandardowe pozdrowienia i raporty.
+* Jeśli w lokalnym środowisku usługi Active Directory z katalogiem usługi Azure AD, należy narzędzia DirSync i AAD Sync. Jeśli używasz katalog usługi Azure AD, która nie jest zsynchronizowany z lokalnym wystąpieniem usługi Active Directory, nie trzeba narzędzia DirSync i AAD Sync.
+* Wybierz model zużycie, najlepiej pasujące do działalności. Po wybraniu modelu użycia, nie możesz go zmienić. Są dwa modele:
+  * Na uwierzytelnienie: nalicza opłaty za każdy weryfikację. Jeśli chcesz, aby Weryfikacja dwuetapowa dla każdego, kto uzyskuje dostęp do niektórych aplikacji, a nie dla konkretnych użytkowników, należy użyć tego modelu.
+  * Na włączonego użytkownika: pobiera opłaty dla poszczególnych użytkowników, pozwalających na korzystanie z usługi Azure MFA. Użyj tego modelu, w przypadku niektórych użytkowników przy użyciu usługi Azure AD Premium lub pakietu Enterprise Mobility Suite licencji, a inne nie.
 
 ### <a name="supportability"></a>Możliwości obsługi
-Ponieważ większość użytkowników są zapoznanie się przy użyciu tylko hasła do uwierzytelnienia, ważne jest, że firmy oferuje pogłębianie wiedzy na temat wszystkich użytkowników dotyczące tego procesu. Tego pogłębianie wiedzy na temat zmniejszyć prawdopodobieństwo, że użytkownicy wywołania dział pomocy technicznej dla drobne problemy związane z usługi MFA. Istnieją sytuacje, w których czasowo wyłączyć uwierzytelnianie wieloskładnikowe jest konieczne. Skorzystaj z poniższych wskazówek, aby zrozumieć sposób obsługi tych scenariuszy:
+Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko hasła do uwierzytelniania, ważne jest, czy Twoja firma udostępnia rozpoznawanie dla wszystkich użytkowników dotyczące tego procesu. Informowanie o tym, można zmniejszyć prawdopodobieństwo, że użytkownicy wywołania pomocy technicznej dla drobne problemy związane z usługi MFA. Jednak istnieją pewne scenariusze, w których tymczasowo wyłączyć uwierzytelnianie wieloskładnikowe jest konieczne. Skorzystaj z poniższych wskazówek, aby zrozumieć sposób obsługi tych scenariuszy:
 
-* Szkolenie działu pomocy technicznej do obsługi scenariuszy, w których użytkownik nie może zalogować, ponieważ aplikacji mobilnej lub telefon nie odbiera powiadomienia lub połączeń telefonicznych. Pomoc techniczna może [włączyć jednorazowe obejście](howto-mfa-mfasettings.md#one-time-bypass) Aby zezwolić na uwierzytelnianie tylko raz, pomijając"" weryfikacji dwuetapowej. Obejście jest tymczasowe i wygasa po upływie określonej liczby sekund.
-* Należy wziąć pod uwagę [możliwości zaufanych adresów IP](howto-mfa-mfasettings.md#trusted-ips) w usługi Azure MFA w sposób, aby zminimalizować weryfikacji dwuetapowej. Przy użyciu tej funkcji Administratorzy dzierżawy zarządzane lub federacyjnych można pominąć weryfikacji dwuetapowej dla użytkowników, którzy są logujący się z lokalny intranet firmy. Funkcje są dostępne dla dzierżaw usługi Azure AD, którzy mają licencje usługi Azure AD Premium, Enterprise Mobility Suite lub Azure Multi-Factor Authentication.
+* Szkolenie działu pomocy technicznej do obsługi scenariuszy, w których użytkownik nie może zalogować, ponieważ aplikacja mobilna lub telefon nie odbiera powiadomienie lub połączenie telefoniczne. Pomoc techniczna może [Włącz jednorazowe obejście](howto-mfa-mfasettings.md#one-time-bypass) umożliwia użytkownikowi uwierzytelnienie jeden raz, pomijając"" weryfikacji dwuetapowej. Obejście jest tymczasowe i wygasa po określonej liczbie sekund.
+* Należy wziąć pod uwagę [możliwości zaufane adresy IP](howto-mfa-mfasettings.md#trusted-ips) w usłudze Azure MFA jako sposób, aby zminimalizować weryfikacji dwuetapowej. Dzięki tej funkcji Administratorzy dzierżawy zarządzanych lub federacyjnego można pominąć weryfikacji dwuetapowej dla użytkowników, którzy logują z lokalnej sieci intranet. Funkcje są dostępne dla dzierżaw usługi Azure AD, które mają licencje usług Azure AD Premium, pakietu Enterprise Mobility Suite lub usługi Azure Multi-Factor Authentication.
 
-## <a name="best-practices-for-an-on-premises-deployment"></a>Najlepsze rozwiązania dotyczące wdrożenia lokalnego
-Jeśli firma zdecydowała się korzystać z własnej infrastruktury, aby włączyć uwierzytelnianie wieloskładnikowe, konieczna [wdrażanie Azure aplikacji serwer Multi-Factor Authentication lokalnej](howto-mfaserver-deploy.md). W poniższym diagramie przedstawiono składniki serwera usługi MFA:
+## <a name="best-practices-for-an-on-premises-deployment"></a>Najlepsze rozwiązania dotyczące wdrażania w środowisku lokalnym
+Jeśli Twoja firma zdecydowała się wykorzystać własną infrastrukturę, aby włączyć usługę MFA, a następnie należy [wdrożenia usługi Azure Multi-Factor Authentication w środowisku lokalnym](howto-mfaserver-deploy.md). Składniki serwera usługi MFA są pokazane na poniższym diagramie:
 
-![Domyślne składniki serwera usługi MFA: konsoli, aparatu synchronizacji, portalu zarządzania usługą w chmurze](./media/multi-factor-authentication-security-best-practices/server.png) \*nie jest instalowany domyślnie \** zainstalowany, lecz nie jest włączona domyślnie
+![Domyślnie składniki serwera usługi MFA: konsoli, aparat synchronizacji, w portalu zarządzania, usługi w chmurze](./media/multi-factor-authentication-security-best-practices/server.png) \*niezainstalowanych domyślnie \** zainstalowany, lecz nie jest włączona domyślnie
 
-Azure aplikacji serwer Multi-Factor Authentication można zabezpieczyć chmury zasobów lokalnych i w zasoby przy użyciu federacji. Musisz mieć usług AD FS i jego Sfederowanych z dzierżawy usługi Azure AD.
+Usługa Azure Multi-Factor Authentication można zabezpieczyć chmury zasobów lokalnych i w zasoby przy użyciu federacji. Konieczne jest posiadanie programu AD FS oraz jest Sfederowane za pomocą dzierżawy usługi Azure AD.
 Podczas konfigurowania serwera Multi-Factor Authentication, należy wziąć pod uwagę następujące informacje:
 
-* Jeśli to zabezpieczania zasobów usługi Azure AD przy użyciu usługi Active Directory Federation Services (AD FS), a następnie w pierwszym krokiem weryfikacji jest wykonywane lokalnie za pomocą usług AD FS. Drugi etap odbywa się lokalnie i polega na uznaniu oświadczenia.
-* Nie trzeba instalować serwera usługi Azure Multi-Factor Authentication serwera federacyjnego usług AD FS. Jednak karty uwierzytelniania wieloskładnikowego usług AD FS musi być zainstalowany w systemie Windows Server 2012 R2 uruchomionymi usługami AD FS. Można zainstalować serwer na innym komputerze, tak długo, jak jest obsługiwana wersja i oddzielnie zainstalować adapter AD FS na serwerze federacyjnym usług AD FS. 
-* Uwierzytelnianie wieloskładnikowe AD FS karty Kreator instalacji tworzy grupę zabezpieczeń o nazwie PhoneFactor Admins w usłudze Active Directory, a następnie dodanie konta usługi AD FS do tej grupy. Sprawdź, czy grupa PhoneFactor Admins została utworzona na kontrolerze domeny oraz czy konto usług AD FS jest członkiem tej grupy. W razie potrzeby ręcznie dodaj konto usług AD FS do grupy PhoneFactor Admins na kontrolerze domeny.
+* Jeśli są zabezpieczanie zasobów usługi Azure AD przy użyciu usługi Active Directory Federation Services (AD FS), a następnie pierwszy etap weryfikacji odbywa się lokalnie przy użyciu usług AD FS. Drugi etap odbywa się lokalnie i polega na uznaniu oświadczenia.
+* Nie masz zainstalować serwer Azure Multi-Factor Authentication serwerze federacyjnym usług AD FS. Jednak Adapter uwierzytelniania Multi-Factor Authentication dla usług AD FS musi być zainstalowany w systemie Windows Server 2012 R2 uruchomionymi usługami AD FS. Możesz zainstalować serwer na innym komputerze, tak długo, jak jego wersja jest obsługiwana i oddzielnie zainstalować adapter AD FS na serwerze federacyjnym usług AD FS. 
+* Uwierzytelnianie wieloskładnikowe AD FS karty Kreator instalacji tworzy grupę zabezpieczeń o nazwie PhoneFactor Admins w usłudze Active Directory, a następnie dodaje swoje konto usług AD FS do tej grupy. Sprawdź, czy grupa PhoneFactor Admins została utworzona na kontrolerze domeny oraz czy konto usług AD FS jest członkiem tej grupy. W razie potrzeby ręcznie dodaj konto usług AD FS do grupy PhoneFactor Admins na kontrolerze domeny.
 
 ### <a name="user-portal"></a>Portal użytkowników
-Portal użytkowników umożliwia funkcji samoobsługi i zapewnia pełny zestaw możliwości administrowania użytkownika. Działa on w witrynie sieci web usług Internet Information Server (IIS). Aby skonfigurować ten składnik, skorzystaj z poniższych wskazówek:
+Portal użytkowników umożliwia usługi możliwości samoobsługi i zapewnia pełny zestaw możliwości administracyjnych na użytkowników. Działa w witrynie sieci web usług Internet Information Server (IIS). Aby skonfigurować ten składnik, skorzystaj z poniższych wskazówek:
 
 * Korzystanie z usług IIS 6 lub nowszego
-* Zainstaluj i zarejestruj ASP.NET v2.0.507207
+* Instalowanie i rejestrowanie v2.0.507207 platformy ASP.NET
 * Upewnij się, że ten serwer można wdrożyć w sieci obwodowej
 
 ### <a name="app-passwords"></a>Hasła aplikacji
-Jeśli Twoja organizacja jest Sfederowane dla rejestracji Jednokrotnej z usługą Azure AD i zamierzasz używać usługi Azure MFA, następnie należy pamiętać o następujących szczegółach:
+Jeśli Twoja organizacja jest sfederowana z logowania jednokrotnego z usługą Azure AD i zamierzasz używać usługi Azure MFA, następnie należy pamiętać o następujących szczegółach:
 
-* Hasła aplikacji jest weryfikowany przez usługę Azure AD i w związku z tym pomija federacji. Federacyjnej jest używana tylko podczas konfigurowania haseł aplikacji.
-* Dla użytkowników federacyjnych (SSO) hasła są przechowywane w identyfikatora organizacyjnego. Gdy użytkownik opuści firmę, że informacje zostaną przekazane do identyfikatora organizacyjnego przy użyciu narzędzia DirSync. Wyłączenie/usunięcie konta może potrwać do trzech godzin synchronizacji opóźnienie wyłączenia/usunięcia hasła aplikacji w usłudze Azure AD.
+* Hasło aplikacji jest weryfikowana przez usługę Azure AD i w związku z tym pomija federacji. Federacyjny jest używana tylko podczas konfigurowania hasła aplikacji.
+* Dla użytkowników federacyjnych (SSO) hasła są przechowywane w identyfikatora organizacyjnego. Jeśli użytkownik opuści firmę, że informacje o musi przepływać do identyfikatora organizacyjnego przy użyciu narzędzia DirSync. Wyłączenie/usunięcie konta może potrwać do trzech godzin do synchronizacji, w którym opóźnienie wyłączenia/usunięcia haseł aplikacji w usłudze Azure AD.
 * Ustawienia lokalnej kontroli dostępu klienta nie są uznawane przez hasło aplikacji.
 * Możliwość rejestrowania/inspekcji nie lokalnego uwierzytelniania jest dostępna dla hasła aplikacji.
-* Niektóre zaawansowane architektury projekty mogą wymagać przy użyciu kombinacji organizacji nazwy użytkownika i hasła i haseł aplikacji, gdy z klientami, w zależności od tego, gdzie uwierzytelniania przy użyciu weryfikacji dwuetapowej. Dla klientów, którzy uwierzytelniania względem infrastruktury lokalnej użyje organizacyjnej nazwy użytkownika i hasła. Dla klientów, którzy uwierzytelniania usługi Azure AD można użyć hasła aplikacji.
-* Domyślnie użytkownicy nie mogą tworzyć hasła aplikacji. Jeśli chcesz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz opcję **Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji korzystających z przeglądarki** opcji.
+* Niektóre zaawansowane architektury projekty mogą wymagać przy użyciu kombinacji organizacji nazwy użytkownika i hasła oraz haseł aplikacji, gdy z klientami, w zależności od tego, gdzie się uwierzytelniają przy użyciu weryfikacji dwuetapowej. Dla klientów, którzy uwierzytelniać się na infrastrukturę lokalną należy użyć organizacji użytkownika i hasło. W przypadku klientów, które przeprowadzają uwierzytelnianie w usłudze Azure AD należy użyć hasła aplikacji.
+* Domyślnie użytkownicy nie mogą tworzyć hasła aplikacji. Jeśli chcesz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz opcję **Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji niekorzystających z przeglądarki** opcji.
 
-## <a name="additional-considerations"></a>Dodatkowe uwagi
-Użyj tej listy, aby uzyskać dodatkowe informacje i wskazówki dotyczące każdego składnika, który jest wdrożony na lokalnym:
+## <a name="additional-considerations"></a>Dodatkowe zagadnienia
+Użyj tej listy, aby uzyskać dodatkowe informacje i wskazówki dla każdego składnika, który jest wdrożony w środowisku lokalnym:
 
 - Konfigurowanie usługi Multi-Factor Authentication w usługach [Active Directory Federation Services](multi-factor-authentication-get-started-adfs.md).
 - Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [uwierzytelniania usługi RADIUS](howto-mfaserver-dir-radius.md).
-- Instalowanie i konfigurowanie serwera usługi Azure MFA z [uwierzytelniania usług IIS](howto-mfaserver-iis.md).
-- Instalowanie i konfigurowanie serwera usługi Azure MFA z [uwierzytelniania systemu Windows](howto-mfaserver-windows.md).
-- Instalowanie i konfigurowanie serwera usługi Azure MFA z [uwierzytelniania LDAP](howto-mfaserver-dir-ldap.md).
-- Instalowanie i konfigurowanie serwera usługi Azure MFA z [bramy usług pulpitu zdalnego i Azure przy użyciu usługi RADIUS serwera Multi-Factor Authentication](howto-mfaserver-nps-rdg.md).
-- Instalowanie i Konfigurowanie synchronizacji między serwera usługi Azure MFA i [usługi Active Directory systemu Windows Server](howto-mfaserver-dir-ad.md).
+- Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [uwierzytelnianie usług IIS](howto-mfaserver-iis.md).
+- Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [uwierzytelniania Windows](howto-mfaserver-windows.md).
+- Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [uwierzytelniania LDAP](howto-mfaserver-dir-ldap.md).
+- Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [bramy usług pulpitu zdalnego i korzystanie z usługi RADIUS serwera Azure Multi-Factor Authentication](howto-mfaserver-nps-rdg.md).
+- Instalowanie i Konfigurowanie synchronizacji między serwera usługi Azure MFA i [Windows Server Active Directory](howto-mfaserver-dir-ad.md).
 - [Wdrażanie usługi sieci Web aplikacji mobilnej serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-mobileapp.md).
-- [Zaawansowana konfiguracja sieci VPN z uwierzytelnianiem wieloskładnikowym Azure](howto-mfaserver-nps-vpn.md) dla urządzenia Cisco ASA, Citrix Netscaler i Juniper/Pulse Secure VPN przy użyciu protokołu LDAP lub serwera RADIUS.
+- [Zaawansowana konfiguracja sieci VPN za pomocą usługi Azure Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) dla urządzenia Cisco ASA, Netscaler firmy Citrix i Juniper/Pulse Secure w sieci VPN przy użyciu protokołu LDAP lub serwera RADIUS.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Chociaż ten artykuł zawiera opis najlepsze rozwiązania dla usługi Azure MFA, istnieją inne zasoby, które można również użyć podczas planowania wdrożenia usługi MFA. Na poniższej liście zawiera niektóre klucza artykuły, które mogą pomóc w trakcie tego procesu:
+Chociaż w tym artykule opisano najlepsze rozwiązania dla usługi Azure MFA, istnieją inne zasoby, które można również użyć podczas planowania wdrożenia usługi MFA. Poniższa lista zawiera niektóre kluczowe artykułów, które mogą pomóc w trakcie tego procesu:
 
-* [Raporty w uwierzytelnianie wieloskładnikowe platformy Azure](howto-mfa-reporting.md)
-* [Środowisko rejestracji weryfikacji dwuetapowej](end-user/current/multi-factor-authentication-end-user-first-time.md)
-* [Uwierzytelnianie wieloskładnikowe platformy Azure — często zadawane pytania](multi-factor-authentication-faq.md)
+* [Raporty w usłudze Azure Multi-Factor Authentication](howto-mfa-reporting.md)
+* [Proces rejestracji weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md)
+* [Uwierzytelnianie wieloskładnikowe systemu Azure — często zadawane pytania](multi-factor-authentication-faq.md)

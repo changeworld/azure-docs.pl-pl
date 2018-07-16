@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integracji z niektórych SSO Admin | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i niektórych Admin logowania jednokrotnego.
+title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu wybranych administratora logowania jednokrotnego. | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i niektóre administratora logowania jednokrotnego.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,196 +14,196 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
-ms.openlocfilehash: cf23620eb3a3b0a9cb8e5877f517281a9c21809c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: e465518f5526dcf581afab77e30d0af33aaae88e
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320618"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39054043"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Samouczek: Integracji Azure Active Directory z niektórych administratora rejestracji Jednokrotnej
+# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu wybranych administratora logowania jednokrotnego
 
-Z tego samouczka dowiesz integrowanie niektórych administratora rejestracji Jednokrotnej z usługi Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować niektóre administratora logowanie Jednokrotne z usługą Azure Active Directory (Azure AD).
 
-Integrowanie niektórych administratora rejestracji Jednokrotnej z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie niektóre administratora logowanie Jednokrotne z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, kto ma dostęp do niektórych Admin logowania jednokrotnego.
-- Umożliwia użytkownikom automatycznie pobrać podpisany w przypadku niektórych Admin SSO (logowanie jednokrotne) z konta usługi Azure AD.
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure.
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do niektórych administratora logowania jednokrotnego.
+- Użytkowników, aby automatycznie uzyskać zalogowanych do niektórych administratora jednokrotnego (-) można włączyć za pomocą kont usługi Azure AD.
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z niektórych Admin logowania jednokrotnego, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD przy użyciu wybranych administratora logowania jednokrotnego, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Niektórych Admin logowanie Jednokrotne logowanie jednokrotne włączone subskrypcji
+- Niektóre administratora logowanie Jednokrotne logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodanie niektórych administratora rejestracji Jednokrotnej z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie wybranych administrator rejestracji Jednokrotnej z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-certain-admin-sso-from-the-gallery"></a>Dodanie niektórych administratora rejestracji Jednokrotnej z galerii
-Aby skonfigurować integrację niektórych Admin logowania jednokrotnego do usługi Azure AD, należy dodać niektórych administratora rejestracji Jednokrotnej z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-certain-admin-sso-from-the-gallery"></a>Dodawanie wybranych administrator rejestracji Jednokrotnej z galerii
+Aby skonfigurować integrację z niektórych administrator rejestracji Jednokrotnej w usłudze Azure AD, należy dodać niektórych administrator rejestracji Jednokrotnej z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać niektórych administratora rejestracji Jednokrotnej z galerii, wykonaj następujące czynności:**
+**Aby dodać niektóre administrator rejestracji Jednokrotnej z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Blok aplikacje przedsiębiorstwa][2]
+    ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
-4. W polu wyszukiwania wpisz **niektórych Admin logowania jednokrotnego**, wybierz pozycję **niektórych Admin logowania jednokrotnego** z panelu wyników kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **niektóre administrator rejestracji Jednokrotnej**, wybierz opcję **niektóre administrator rejestracji Jednokrotnej** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Usługa rejestracji Jednokrotnej w niektórych administratora na liście wyników](./media/certainadminsso-tutorial/tutorial_certainadminsso_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z niektórych administratora rejestracji Jednokrotnej w oparciu o nazwie "Britta Simona" użytkownika testowego.
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą niektórych administratora Usługa rejestracji Jednokrotnej w oparciu o użytkownika testu o nazwie "Britta Simon".
 
-Do rejestracji jednokrotnej do pracy usługi Azure AD musi ustalić użytkownika odpowiednika w niektórych Admin logowania jednokrotnego do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i danemu użytkownikowi w niektórych Admin logowania jednokrotnego musi określone.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w niektórych administratora logowanie Jednokrotne do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkownika, w niektórych administratora logowania jednokrotnego musi można ustanowić.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z niektórych Admin logowania jednokrotnego, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu wybranych administratora logowania jednokrotnego, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie użytkownika testowego niektórych SSO Admin](#create-a-certain-admin-sso-test-user)**  — w celu zapewnienia odpowiednikiem Simona Britta niektórych logowania jednokrotnego administratora połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Test rejestracji jednokrotnej](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego niektóre administrator rejestracji Jednokrotnej](#create-a-certain-admin-sso-test-user)**  — aby odpowiednikiem Britta Simon w niektórych logowania jednokrotnego administratora, połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w niektórych SSO administratora aplikacji.
+W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji niektórych administratora logowania jednokrotnego.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z niektórych Admin logowania jednokrotnego, wykonaj następujące czynności:**
+**Aby skonfigurować usługę Azure AD logowania jednokrotnego przy użyciu wybranych administratora logowania jednokrotnego, wykonaj następujące czynności:**
 
-1. W portalu Azure na **niektórych SSO Admin** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **niektóre administrator rejestracji Jednokrotnej** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
     ![Okno dialogowe rejestracji jednokrotnej](./media/certainadminsso-tutorial/tutorial_certainadminsso_samlbase.png)
 
-3. Na **niektórych domena logowania jednokrotnego administratora i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na **niektóre administrator rejestracji Jednokrotnej domena i adresy URL** sekcji, wykonaj następujące czynności:
 
-    ![Niektórych administratora domeny logowania jednokrotnego i adresów URL jednym informacje logowania jednokrotnego](./media/certainadminsso-tutorial/tutorial_certainadminsso_url.png)
+    ![Niektóre administrator rejestracji Jednokrotnej domena i adresy URL pojedynczego logowania jednokrotnego informacje](./media/certainadminsso-tutorial/tutorial_certainadminsso_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.certain.com`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<SUBDOMAIN>.certain.com`
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej niektórych klienta logowania jednokrotnego Admin](mailto:integrations@certain.com) uzyskać te wartości. 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [niektóre klienta logowania jednokrotnego administratora zespołu pomocy technicznej](mailto:integrations@certain.com) do uzyskania tych wartości. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Raw)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Raw)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/certainadminsso-tutorial/tutorial_certainadminsso_certificate.png) 
+    ![Link pobierania certyfikatu](./media/certainadminsso-tutorial/tutorial_certainadminsso_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/certainadminsso-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/certainadminsso-tutorial/tutorial_general_400.png)
 
-6. Na **niektórych konfiguracji logowania jednokrotnego administratora** , kliknij przycisk **Konfigurowanie logowania jednokrotnego niektórych Admin** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **niektórych konfiguracji logowania jednokrotnego administratora** , kliknij przycisk **Konfigurowanie logowania jednokrotnego niektóre administratora** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Niektórych konfiguracji logowania jednokrotnego administratora](./media/certainadminsso-tutorial/tutorial_certainadminsso_configure.png) 
 
-7. Skonfigurować logowanie jednokrotne w **niektórych SSO Admin** stronie, musisz wysłać pobrany **certyfikatu (Raw)**, **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi**do [zespołem pomocy technicznej niektórych SSO Admin](mailto:integrations@certain.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+7. Aby skonfigurować logowanie jednokrotne na **niektóre administrator rejestracji Jednokrotnej** stronie, musisz wysłać pobrany **certyfikatu (Raw)**, **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**do [niektóre SSO administratora zespołu pomocy technicznej](mailto:integrations@certain.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
    ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W portalu Azure, w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku.
+1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory](./media/certainadminsso-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "Wszyscy użytkownicy" łącza](./media/certainadminsso-tutorial/create_aaduser_02.png)
+    !["Użytkownicy i grupy" i "All users" linki](./media/certainadminsso-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
     ![Przycisk Dodaj](./media/certainadminsso-tutorial/create_aaduser_03.png)
 
-4. W **użytkownika** okna dialogowego wykonaj następujące czynności:
+4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
     ![Okno dialogowe użytkownika](./media/certainadminsso-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
+    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
-### <a name="create-a-certain-admin-sso-test-user"></a>Tworzenie użytkownika testowego niektórych administratora rejestracji Jednokrotnej
+### <a name="create-a-certain-admin-sso-test-user"></a>Tworzenie użytkownika testowego niektóre administrator rejestracji Jednokrotnej
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w niektórych Admin logowania jednokrotnego. Praca z [zespołem pomocy technicznej niektórych Admin logowania jednokrotnego](mailto:integrations@certain.com) Aby dodać użytkowników na platformie niektórych Admin logowania jednokrotnego. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w niektórych administratora logowania jednokrotnego. Praca z [niektóre SSO administratora zespołu pomocy technicznej](mailto:integrations@certain.com) Aby dodać użytkowników na platformie niektóre administratora logowania jednokrotnego. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do niektórych Admin logowania jednokrotnego.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do niektórych administratora logowania jednokrotnego.
 
 ![Przypisanie roli użytkownika][200] 
 
-**Aby przypisać Simona Britta niektórych Admin logowania jednokrotnego, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon niektóre administrator rejestracji Jednokrotnej, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **niektórych SSO Admin**.
+2. Na liście aplikacji wybierz **niektóre administrator rejestracji Jednokrotnej**.
 
-    ![Łącze niektórych SSO administratora na liście aplikacji](./media/certainadminsso-tutorial/tutorial_certainadminsso_app.png)  
+    ![Link niektóre administratora logowanie Jednokrotne na liście aplikacji](./media/certainadminsso-tutorial/tutorial_certainadminsso_app.png)  
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Łącze "Użytkownicy i grupy"][202]
+    ![Link "Użytkownicy i grupy"][202]
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
-    ![W okienku Dodaj przydziału][203]
+    ![Okienko Dodawanie przypisania][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
+W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka niektórych administratora rejestracji Jednokrotnej w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji niektórych Admin logowania jednokrotnego.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka niektóre administrator rejestracji Jednokrotnej w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do niektórych administratora logowania jednokrotnego aplikacji.
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

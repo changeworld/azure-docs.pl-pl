@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 07/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: e4af3dc8aa7a656fd0020285c3f73ce414ba039c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 645fa89bede1311215f1d67c64a2388e4de5c1b1
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38305900"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044887"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Wdrażanie dostawcy zasobów MySQL w usłudze Azure Stack
 
@@ -30,23 +30,30 @@ Dostawcy zasobów MySQL Server umożliwia udostępnianie baz danych MySQL jako u
 Istnieje kilka wymagań wstępnych, które muszą być spełnione przed wdrożeniem dostawcy zasobów usługi Azure Stack bazy danych MySQL. Aby spełnić te wymagania, wykonaj kroki opisane w tym artykule, na komputerze, na których mogą uzyskiwać dostęp uprzywilejowany punktu końcowego maszyny Wirtualnej.
 
 * Jeśli użytkownik jeszcze tego nie zrobiono, [rejestrowania usługi Azure Stack](.\azure-stack-registration.md) z platformą Azure, dzięki czemu można pobrać elementów portalu Azure marketplace.
-* Należy zainstalować moduły platformy Azure i usługi Azure Stack PowerShell na wywoływanie system będzie działać ta instalacja. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
+* Moduły platformy Azure i usługi Azure Stack PowerShell należy zainstalować w systemie, w którym będzie uruchamiany tej instalacji. Ten system musi być obrazem systemu Windows 10 lub Windows Server 2016 z najnowszą wersją środowiska uruchomieniowego .NET. Zobacz [zainstalować program PowerShell dla usługi Azure Stack](.\azure-stack-powershell-install.md).
 * Dodaj wymagane core systemu Windows Server maszyny Wirtualnej w portalu Marketplace usługi Azure Stack, pobierając **systemu Windows Server 2016 Datacenter — instalacja Server Core** obrazu.
-
-  >[!NOTE]
-  >Jeśli musisz zainstalować aktualizację Windows, można umieścić jednego. Pakiet MSU w ścieżce lokalnej zależności. Jeśli istnieje więcej niż jedna. Plik MSU zostanie znaleziony, spowoduje niepowodzenie instalacji dostawcy zasobów MySQL.
 
 * Pobierz binarne dostawcy zasobów bazy danych MySQL, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego.
 
   >[!NOTE]
   >Aby wdrożyć dostawcy bazy danych MySQL w systemie, który nie ma dostępu do Internetu, skopiuj [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) pliku na ścieżkę lokalną. Dostarcza przy użyciu nazwy ścieżki **DependencyFilesLocalPath** parametru.
 
-* Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz.
+* Dostawca zasobów ma minimalne odpowiednie usługi Azure Stack kompilacji. Upewnij się, że pobrano prawidłowy plik binarny dla wersji usługi Azure Stack, której używasz:
 
     | Wersja usługi Azure Stack | Wersja MySQL RP|
     | --- | --- |
     | W wersji 1804 (1.0.180513.1)|[MySQL RP wersji 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | W wersji 1802 (1.0.180302.1) | [MySQL RP wersji 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
+    | W wersji 1802 (1.0.180302.1) | [MySQL RP wersji 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
+    |     |     |
+
+- Upewnij się, że zostały spełnione wymagania wstępne integrację centrum danych:
+
+    |Wymagania wstępne|Informacje ogólne|
+    |-----|-----|
+    |Przesyłanie warunkowe DNS jest prawidłowo.|[Usługa Azure Stack Integracja z centrum danych — DNS](azure-stack-integrate-dns.md)|
+    |Porty dla ruchu przychodzącego dla dostawców zasobów są otwarte.|[Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |Podmiot certyfikatu PKI i SAN są prawidłowo ustawione.|[Usługa Azure Stack obowiązkowe infrastruktury kluczy publicznych wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#mandatory-certificates)<br>[Usługa Azure Stack PaaS certyfikatu wymagania wstępne dotyczące wdrażania](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |     |     |
 
 ### <a name="certificates"></a>Certyfikaty
 
@@ -56,7 +63,7 @@ _Zintegrowane systemy tylko dla instalacji_. Musisz podać certyfikat SQL PaaS P
 
 Jeśli masz wszystkie wstępnie wymagane składniki zainstalowane, uruchomić **DeployMySqlProvider.ps1** skrypt w celu wdrożenia dostawcy zasobów bazy danych MYSQL. Skrypt DeployMySqlProvider.ps1 jest wyodrębniany jako część plik binarny w dostawcy zasobów MySQL, który został pobrany dla używanej wersji programu Azure Stack.
 
-Aby wdrożyć dostawcy zasobów bazy danych MySQL, Otwórz okno konsoli programu PowerShell nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów MySQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
+Aby wdrożyć dostawcy zasobów bazy danych MySQL, Otwórz okno programu PowerShell (nie PowerShell ISE) nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów MySQL. Zalecamy używanie nowe okno programu PowerShell, aby uniknąć potencjalnych problemów, spowodowane przez moduły programu PowerShell, które zostały już załadowane.
 
 Uruchom **DeployMySqlProvider.ps1** skryptu, który wykonuje następujące zadania:
 
@@ -65,8 +72,7 @@ Uruchom **DeployMySqlProvider.ps1** skryptu, który wykonuje następujące zadan
 * Publikuje pakietu galerii do wdrażania serwerów hostingu.
 * Wdraża maszynę Wirtualną przy użyciu obrazu systemu Windows Server 2016 core pobrany, a następnie instaluje dostawcy zasobów bazy danych MySQL.
 * Rejestruje lokalne rekord DNS, który jest mapowany do Twojego dostawcę zasobów maszyny Wirtualnej.
-* Rejestruje dostawcę zasobów za pomocą lokalnej usługi Azure Resource Manager dla operatora i kontami użytkowników.
-* Opcjonalnie instaluje jedną aktualizację systemu Windows Server podczas instalacji dostawcy zasobów.
+* Rejestruje dostawcę zasobów za pomocą lokalnej usługi Azure Resource Manager dla konta operatora.
 
 > [!NOTE]
 > Po rozpoczęciu wdrażania dostawcy zasobów MySQL, **system.local.mysqladapter** zostanie utworzona grupa zasobów. Może upłynąć do 75 minut na zakończenie wdrożenia wymagane do tej grupy zasobów.
