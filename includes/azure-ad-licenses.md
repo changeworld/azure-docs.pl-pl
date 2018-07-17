@@ -1,3 +1,3 @@
 > [!NOTE]
-> Aby dowiedzieć się, jeśli określone funkcje są obsługiwane przez użytkownika typu licencji, sprawdź [informacji z usługi Azure Active Directory cennik](https://azure.microsoft.com/pricing/details/active-directory/) strony. 
+> Aby dowiedzieć się, czy konkretne funkcje są obsługiwane przez Twój typ licencji, zajrzyj na stronę [z informacjami o cenach usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). 
 
