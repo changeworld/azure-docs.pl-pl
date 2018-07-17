@@ -1,6 +1,6 @@
 ---
-title: Użyj mowy na tekst | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać funkcji rozpoznawania mowy na tekst w usłudze mowy
+title: Używaj mowy na tekst | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać zamiana mowy na tekst w usłudze rozpoznawania mowy
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -8,61 +8,62 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 878a31992415b1f8688afcfb186fcd94ce2567b4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 26cecedfc3ad2d472b9686e25054fe08253cee77
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356228"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068526"
 ---
-# <a name="use-speech-to-text-in-the-speech-service"></a>Użyj "Mowy Text" w usłudze mowy
+# <a name="use-speech-to-text-in-the-speech-service"></a>Użyj "Mowy na tekst" usługi mowy
 
-Można użyć **mowy na tekst** w aplikacjach na dwa różne sposoby.
+Możesz użyć **zamiana mowy na tekst** w aplikacjach na dwa różne sposoby.
 
 | Metoda | Opis |
 |-|-|
-| [SDK](speech-sdk.md) | Najprostszą metodą deweloperzy C/C++, C# i Java * |
-| [REST](rest-apis.md) | Rozpoznaje krótkich zniesławiających za pomocą żądania HTTP POST | 
-
-\* *Zestaw SDK Java jest częścią [mowy urządzeń SDK](speech-devices-sdk.md).*
+| [SDK](speech-sdk.md) | Najprostszą metodą dla deweloperów języka C/C++, C# i Java |
+| [REST](rest-apis.md) | Rozpoznawanie krótkich wypowiedzi za pomocą żądania HTTP POST | 
 
 ## <a name="using-the-sdk"></a>Używanie zestawu SDK
 
-[Mowy SDK](speech-sdk.md) zapewnia Najprostszym sposobem użycia **mowy na tekst** w aplikacji z zachowaniem pełnej funkcjonalności.
+[Zestaw SDK rozpoznawania mowy](speech-sdk.md) zapewnia Najprostszym sposobem użycia **zamiana mowy na tekst** w aplikacji z pełnym zestawem funkcji.
 
-1. Utwórz fabrykę mowy udostępnianie klucz mowy usługi subskrypcji lub token autoryzacji. Można również skonfigurować opcje, takie jak język rozpoznawania lub niestandardowe punktu końcowego dla własnych modeli rozpoznawania mowy, w tym momencie.
+1. Tworzenie fabryki mowy, zapewniając klucz subskrypcji usługi rozpoznawania mowy i [region](regions.md) lub token autoryzacji. Można również skonfigurować opcje, takie jak język rozpoznawania lub niestandardowy punkt końcowy dla własnych modeli rozpoznawania mowy, w tym momencie.
 
-2. Pobierz aparat rozpoznawania z fabryki. Dostępne są trzy różne typy aparatów rozpoznawania. Każdy typ aparatu rozpoznawania służy mikrofon domyślnego urządzenia, strumieniem audio lub audio z pliku.
+2. Pobierz aparat rozpoznawania z fabryki. Dostępne są trzy różne typy aparatów rozpoznawania gestów. Każdy typ żądającego aparatu rozpoznawania służy mikrofon domyślnego urządzenia, strumień audio lub dźwięk z pliku.
 
     Aparat rozpoznawania | Funkcja
     -|-
-    Aparat rozpoznawania mowy|Udostępnia przekształcania tekstu mowy
-    Aparat rozpoznawania konwersji|Pochodzi zamiar prelegenta za pośrednictwem [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) po rozpoznawania\*
-    Aparat rozpoznawania tłumaczenia|Wykonuje translację transcribed tekst na inny język (zobacz [tłumaczenia mowy](how-to-translate-speech.md))
+    Aparat rozpoznawania mowy|Zawiera tekst transkrypcja mowy
+    Aparat rozpoznawania elementu Intent|Pochodzi zamiar osoby mówiącej za pośrednictwem [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) po rozpoznawania\*
+    Aparat rozpoznawania tłumaczenia|Wykonuje translację uzyskanego tekstu na inny język (zobacz [tłumaczenia mowy](how-to-translate-speech.md))
 
-    \* *Rozpoznawania konwersji należy użyć oddzielnych klucza subskrypcji LUIS podczas tworzenia fabryki mowy dla konwersji aparatu rozpoznawania.*
+    \* *Dla rozpoznawanie intencji należy użyć oddzielnych klucz subskrypcji usługi LUIS podczas tworzenia fabryka mowy dla rozpoznawania intencji.*
     
-4. W razie potrzeby pochłaniać zdarzenia dla operacji asynchronicznej. Aparat rozpoznawania następnie wywołuje programu obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe. W przeciwnym razie aplikacja będzie odbierać końcowego przekształcania wyniku.
+4. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne. Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe. W przeciwnym razie aplikacji zostanie wyświetlony wynik końcowy transkrypcji.
 
-5. Uruchom rozpoznawania.
+5. Rozpocznij rozpoznawania.
+   Rozpoznawanie pojedynczego zrzutu, takich jak rozpoznawanie polecenie lub zapytanie, można użyć `RecognizeAsync()`, która zwraca pierwszy wypowiedź, które są rozpoznawane.
+   Rozpoznawanie długotrwałych, takich jak transkrypcji, można użyć `StartContinuousRecognitionAsync()` , blokując zdarzenia asynchroniczne rozpoznawanie wyników.
 
 ### <a name="sdk-samples"></a>Przykłady zestawu SDK
 
-Dla zestawu najnowsze przykłady, zobacz [repozytorium GitHub próbki SDK kognitywnych usług mowy](https://aka.ms/csspeech/samples).
+Aby uzyskać najnowszy zestaw przykładów, zobacz [Cognitive Services mowy SDK przykładowe repozytorium usługi GitHub](https://aka.ms/csspeech/samples).
 
-## <a name="using-the-rest-api"></a>Przy użyciu interfejsu API REST
+## <a name="using-the-rest-api"></a>Za pomocą interfejsu API REST
 
-Interfejs API REST jest najprostszym sposobem rozpoznawanie mowy, jeśli nie jest używany język obsługiwany przez zestaw SDK. Wprowadzone żądanie HTTP POST do punktu końcowego usługi przekazywanie całego utterance w treści żądania. Otrzymasz odpowiedź rozpoznany tekst.
+Interfejs API REST jest najprostszym sposobem na rozpoznawanie mowy, jeśli nie używasz języka obsługiwanych przez zestaw SDK. Wprowadzone żądanie HTTP POST do punktu końcowego usługi przekazywania całego wypowiedź w treści żądania. Otrzymasz odpowiedź rozpoznany tekst.
 
 > [!NOTE]
-> Zniesławiających są ograniczone do 15 sekund lub mniej, korzystając z interfejsu API REST.
+> Wypowiedzi są ograniczone do 15 sekund lub mniej, korzystając z interfejsu API REST.
 
-
-Aby uzyskać więcej informacji na temat **mowy na tekst** interfejsu API REST, zobacz [interfejsów API REST](rest-apis.md#speech-to-text). Aby zobaczyć ją w akcji, Pobierz [przykłady interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST) z usługi GitHub.
+Aby uzyskać więcej informacji na temat **zamiana mowy na tekst** interfejsu API REST, zobacz [interfejsów API REST](rest-apis.md#speech-to-text). Aby zobaczyć go w działaniu, Pobierz [przykładów interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST) z usługi GitHub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+- [Rozpoznawanie mowy, języka C++](quickstart-cpp-windows.md)
+- [Jak rozpoznawać mowę w języku C#](quickstart-csharp-dotnet-windows.md)
+- [Rozpoznawanie mowy w języku Java](quickstart-java-android.md)

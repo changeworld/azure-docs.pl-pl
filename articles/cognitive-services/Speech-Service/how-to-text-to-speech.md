@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 0ace89e04baf81776f82edd002b93b944c752051
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5eb0839cb973ba2f8bc56dc240fc60817b24b3b6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860136"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068866"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
@@ -95,5 +95,7 @@ Aby uzyskać więcej informacji na tekście interfejsu API REST usługi rozpozna
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+- [Rozpoznawanie mowy, języka C++](quickstart-cpp-windows.md)
+- [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+- [Rozpoznawanie mowy w języku Java](quickstart-java-android.md)

@@ -1,6 +1,6 @@
 ---
-title: O mowy kognitywnych usługi SDK | Dokumentacja firmy Microsoft
-description: Przegląd zestawów SDK dostępne dla usługi mowy.
+title: Temat mowy usług Cognitive Services SDK | Dokumentacja firmy Microsoft
+description: Przegląd zestawy SDK dostępne dla usługi mowy.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -8,36 +8,30 @@ manager: noellelacharite
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: b9b7b8af5ce3d75788fd2c4f5e0309b5ca561a8f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bf37ffa9b5a185845c8eeafa7e00d352486fdce2
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349716"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069468"
 ---
-# <a name="about-the-cognitive-services-speech-sdk"></a>O mowy kognitywnych usługi SDK
+# <a name="about-the-cognitive-services-speech-sdk"></a>Temat mowy usług Cognitive Services SDK
 
-Kognitywnych usług mowy Software Development Kit (SDK) umożliwia aplikacji natywnych dostęp do funkcji usługi mowy ułatwiając opracowywania oprogramowania. Obecnie, zestaw SDK udostępnia **mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawania zamiar**.
+Cognitive Services mowy Software Development Kit (SDK) udostępnia aplikacje natywne funkcje usługi rozpoznawania mowy, ułatwia tworzenie oprogramowania. Obecnie, zestaw SDK zapewnia dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
 
-Tabela zawiera listę aktualnie obsługiwanych języków programowania i systemów operacyjnych.
+[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-|Obsługiwany system operacyjny|Język programowania|
-|-|-|
-|Windows|C/C++, C#|
-|Linux|C/C++|
-|Urządzenia|Java\*|
+[!include[License Notice](includes/license-notice.md)]
 
-\* *Zestaw SDK Java jest częścią [mowy urządzeń SDK](speech-devices-sdk.md).*
+## <a name="get-the-windows-sdk"></a>Pobierz Windows SDK
 
-## <a name="get-the-windows-sdk"></a>Zestaw SDK systemu Windows
-
-Wersja Windows SDK mowy zawiera 32-bitowe i 64-bitowych bibliotek klienckich C/C++, a także bibliotek zarządzanych (.NET) do użytku w języku C#. Można zainstalować zestawu SDK programu Visual Studio przy użyciu narzędzia NuGet; po prostu wyszukaj `Microsoft.CognitiveServices.Speech`.
+Zestaw SDK rozpoznawania mowy w wersji Windows zawiera 32-bitowych i 64-bitowych bibliotek klienta języka C/C++, a także zarządzane biblioteki (.NET) do użycia w języku C#. Zestaw SDK można zainstalować w programie Visual Studio za pomocą narzędzia NuGet; po prostu wyszukać `Microsoft.CognitiveServices.Speech`.
 
 ## <a name="get-the-linux-sdk"></a>Pobierz zestaw SDK systemu Linux
 
-Upewnij się, że masz wymagane kompilator i biblioteki, uruchamiając następujące polecenia powłoki:
+Upewnij się, że masz wymagany kompilator i biblioteki, uruchamiając następujące polecenia powłoki:
 
 ```sh
 sudo apt-get update
@@ -45,25 +39,36 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 ```
 
 > [!NOTE]
-> W instrukcjach przyjęto założenie, że używasz Ubuntu 16.04 na komputerze (x86 lub x64). Na innej wersji Ubuntu lub różnych dystrybucji systemu Linux dostosować te kroki dla danego środowiska.
+> W instrukcjach przyjęto założenie, że korzystasz z systemu Ubuntu 16.04 na komputerze (x86 lub x64). Na innej wersji systemu Ubuntu lub różnych dystrybucji systemu Linux należy dostosować te kroki dla danego środowiska.
 
-Następnie [Pobierz zestaw SDK](https://aka.ms/csspeech/linuxbinary) i Rozpakuj pliki w wybranym katalogu. W poniższej tabeli zamieszczono struktury folderu zestawu SDK.
+Następnie [Pobierz zestaw SDK](https://aka.ms/csspeech/linuxbinary) i Rozpakowywanie plików do wybranego katalogu. Poniższej tabeli przedstawiono strukturę folderu zestawu SDK.
 
 |Ścieżka|Opis|
 |-|-|
 |`license.md`|Licencja|
 |`third-party-notices.md`|Uwagi dotyczące innych firm|
-|`include`|Pliki nagłówkowe dla C i C++|
+|`include`|Pliki nagłówkowe dla języków C i C++|
 |`lib/x64`|X64 natywnej biblioteki do łączenia się z aplikacją|
 |`lib/x86`|X86 natywnej biblioteki do łączenia się z aplikacją|
 
-Aby utworzyć aplikację, skopiować lub przenieść wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego i uwzględnić je zgodnie z wymaganiami w procesie kompilacji.
+Do tworzenia aplikacji, skopiuj lub Przenieś wymagane pliki binarne (i biblioteki) do środowiska deweloperskiego i włączyć je zgodnie z potrzebami w procesie kompilacji.
 
-## <a name="get-the-java-sdk"></a>Pobierz Java SDK
+## <a name="get-the-java-sdk"></a>Pobierz wersję oprogramowania Java SDK
 
-Zestaw SDK Java jest częścią [mowy urządzeń SDK](speech-devices-sdk.md).
+Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), która obejmuje niezbędnych bibliotek, a także wymagane uprawnienia dla systemu Android dotyczące korzystania z niego.
+Znajduje się w repozytorium narzędzia Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako pakiet `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`.
+
+* W projekcie programu Android Studio Dodaj
+
+  ```text
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:0.5.0'
+  ```
+
+  w `dependencies` sekcji poziomu modułu `build.gradle` pliku.
+
+Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

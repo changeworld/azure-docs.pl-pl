@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 69991a0b805b5502fc96fab4ce902b3d8bc77baf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056362"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070876"
 ---
 # <a name="understand-load-balancer-probes"></a>Opis sond modułu równoważenia obciążenia
 
@@ -28,7 +28,7 @@ Usługa Azure Load Balancer używa sondy kondycji, aby określić, które wystą
 
 Sondy kondycji określają, czy nowych przepływów są ustanowione do wystąpień zaplecza w dobrej kondycji. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.  Ustanowionych połączeń TCP nadal po niepowodzeniu sondy kondycji.  Istniejące przepływy UDP zostanie przesunięty w złej kondycji wystąpieniu do innego wystąpienia w puli zaplecza.
 
-W przypadku awarii wszystkich sondy dla puli zaplecza, podstawowe usługi równoważenia obciążenia spowoduje przerwanie działania wszystkie istniejące przepływy TCP do puli zaplecza, standardowego modułu równoważenia obciążenia będzie pozwalać na ustanowionych przepływy TCP, aby kontynuować; nie nowych przepływów będą wysyłane do puli zaplecza.
+W przypadku awarii wszystkich sondy dla puli zaplecza, podstawowe usługi równoważenia obciążenia spowoduje przerwanie działania wszystkie istniejące przepływy TCP do puli zaplecza, standardowego modułu równoważenia obciążenia będzie pozwalać na ustanowionych przepływy TCP, aby kontynuować; nie nowych przepływów będą wysyłane do puli zaplecza.  Wszystkie istniejące przepływy UDP zostanie zakończona warstwy podstawowa i standardowa usługi równoważenia obciążenia, gdy wszystkie sondy zaplecza w puli kończyć się niepowodzeniem.
 
 Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby monitorowania sondowania. Musi być skonfigurowany protokół TCP lub HTTP niestandardowe sondy kondycji, gdy używasz usługi w chmurze przy użyciu maszyn wirtualnych IaaS za modułem równoważenia obciążenia.
 

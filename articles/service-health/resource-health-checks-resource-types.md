@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane typy zasobów za pośrednictwem kondycji zasobów platformy Azure | Dokumentacja firmy Microsoft
-description: Obsługiwane typy zasobów za pośrednictwem kondycji zasobów platformy Azure
+title: Obsługiwane typy zasobów w usłudze Azure Resource Health | Dokumentacja firmy Microsoft
+description: Obsługiwane typy zasobów w usłudze Azure Resource health
 services: Resource health
 documentationcenter: ''
 author: BernardoAMunoz
@@ -14,129 +14,129 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 4e1f6cb8a383569b80386e090b15c59988510d0f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112847"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069214"
 ---
-# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kondycji sprawdza w kondycji zasobów platformy Azure
-Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja zasobów według typów zasobów.
+# <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
+Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest serwer działa prawidłowo?</li><li>Serwer zabrakło pamięci?</li><li>Serwer uruchamiania?</li><li>Trwa odzyskiwanie serwera?</li></ul>|
+|<ul><li>Jest serwerem pracę?</li><li>Serwer zabrakło pamięci?</li><li>Serwer uruchamiania?</li><li>Odzyskuje serwer</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Działa usługa Api Management i systemem?</li></ul>|
+|<ul><li>Działa usługa Api Management, a następnie uruchomiona?</li></ul>|
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Czy wszystkie węzły w pamięci podręcznej działa prawidłowo?</li><li>Pamięć podręczna jest osiągalna z wewnątrz centrum danych?</li><li>Pamięć podręczna osiągnęła maksymalną liczbę połączeń?</li><li> Pamięć podręczna wyczerpała jego dostępnej pamięci? </li><li>Pamięć podręczna występują dużej liczby błędów stron?</li><li>Pamięć podręczna jest mocno obciążony?</li></ul>|
+|<ul><li>Czy wszystkie węzły w pamięci podręcznej działa?</li><li>Pamięć podręczna jest osiągalna z w obrębie centrum danych?</li><li>Pamięć podręczna osiągnęła maksymalną liczbę połączeń?</li><li> Pamięć podręczna wyczerpało jego dostępnej pamięci? </li><li>Pamięć podręczna występuje duża liczba błędów strony?</li><li>Jest to pamięć podręczna pod dużym obciążeniem?</li></ul>|
 
 ## <a name="microsoftcdnprofile"></a>Microsoft.CDN/profile
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul> <li>Wszelkie punkty końcowe została zatrzymana, usunięte lub jest niepoprawnie skonfigurowany?</li><li>Uzupełniające portalu jest dostępny dla operacji konfiguracji sieci CDN?</li><li>Czy istnieją dostarczania bieżących problemów z punktami końcowymi usługi CDN?</li><li>Użytkownicy, można zmienić konfigurację z zasobami w sieci CDN?</li><li>Zmiany konfiguracji propagują szybkością oczekiwanego?</li><li>Użytkownicy, można zarządzać konfiguracją CDN przy użyciu portalu Azure, programu PowerShell lub interfejsu API?</li> </ul>|
+|<ul> <li>Portal dodatkowy jest dostępny dla operacji konfiguracji sieci CDN?</li><li>Czy istnieją problemy ciągłego dostarczania z punktami końcowymi usługi CDN?</li><li>Użytkownicy konfigurację można zmienić ich zasobów sieci CDN?</li><li>Są zmiany w konfiguracji propagowanie zgodnie ze stawką oczekiwanego?</li><li>Użytkownicy, można zarządzać konfiguracji sieci CDN, za pomocą witryny Azure portal, programu PowerShell lub interfejsu API?</li> </ul>|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest serwerem hosta działa prawidłowo?</li><li>Rozruch systemu operacyjnego hosta ukończono?</li><li>Są udostępniane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch system operacyjny gościa ukończono?</li><li>Istnieje już uruchomione zaplanowanej konserwacji?</li></ul>|
+|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Rozruch systemu operacyjnego hosta zakończonych?</li><li>Są aprowizowane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch systemu operacyjnego gościa zakończonych?</li><li>Czy istnieje planowanej konserwacji?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Konto jest osiągalna z wewnątrz centrum danych?</li><li>Kognitywnych dostawcy zasobów usługi jest dostępny?</li><li>Kognitywnych usługi jest dostępna w regionie odpowiednie?</li><li>Może być odczytany można wykonać operacji na koncie magazynu zawierający metadane zasobu?</li><li>Został osiągnięty limit przydziału wywołania interfejsu API?</li><li>Wywołanie interfejsu API odczytu — limit został osiągnięty?</li></ul>|
+|<ul><li>To konto jest osiągalna z w obrębie centrum danych?</li><li>Dostawca zasobów usługi Cognitive Services jest dostępna?</li><li>Cognitive Service jest dostępna w regionie odpowiednie?</li><li>Może odczytywać można wykonać operacji na koncie magazynu, zawierający metadane zasobu?</li><li>Został osiągnięty limit przydziału wywołania interfejsu API?</li><li>Wywołanie interfejsu API odczytu limit zostanie osiągnięty?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest serwer obsługujący tej maszyny wirtualnej w górę i systemem</li><li>Rozruch systemu operacyjnego hosta ukończono?</li><li>Są udostępniane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch system operacyjny gościa ukończono?</li><li>Istnieje już uruchomione zaplanowanej konserwacji?</li></ul>|
+|<ul><li>Ma serwera hostingu tej maszyny wirtualnej w górę i uruchomiona</li><li>Rozruch systemu operacyjnego hosta zakończonych?</li><li>Są aprowizowane kontenera maszyny wirtualnej i włączone?</li><li>Czy istnieje połączenie sieciowe między hostem i konto magazynu?</li><li>Rozruch systemu operacyjnego gościa zakończonych?</li><li>Czy istnieje planowanej konserwacji?</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Występują problemy doświadczeni użytkownicy przesyłania lub listę zadań usługi Data Lake Analytics?</li><li>Możemy ukończyć błędów systemowych zadań usługi Data Lake Analytics?</li></ul>|
+|<ul><li>Masz problemy doświadczonym użytkownikom przesyłania lub wyświetlania listy zadań usługi Data Lake Analytics?</li><li>Są w stanie wykonać, aby błędy systemu zadań usługi Data Lake Analytics?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Użytkownicy wystąpić problemy przekazywanie danych do usługi Data Lake Store?</li><li>Użytkownicy wystąpić problemy pobieranie danych z usługi Data Lake Store?</li></ul>|
+|<ul><li>Użytkownicy wystąpiły problemy z przekazywaniem danych do usługi Data Lake Store?</li><li>Użytkownicy wystąpiły problemy, pobieranie danych z programu Data Lake Store?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>To Centrum IoT działa prawidłowo?</li></ul>|
+|<ul><li>Jest usługa IoT hub działa?</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Zostały jeszcze żądań bazy danych lub kolekcji nie jest wyświetlona z powodu niedostępności usługi bazy danych Azure rozwiązania Cosmos?</li><li>Zostały jeszcze żądań dokumentu nie jest wyświetlona z powodu niedostępności usługi bazy danych Azure rozwiązania Cosmos?</li></ul>|
+|<ul><li>Zostały wszystkie żądania bazy danych lub kolekcji nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li><li>Zostały wszystkie żądania dokumentu nie jest obsługiwany z powodu niedostępności usługi Azure Cosmos DB?</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Żądania do magazynu kluczy występują problemy z platformy Azure KeyVault?</li><li>Są ograniczane żądania do magazynu kluczy z powodu zbyt wiele żądań wysyłanych przez klienta?</li></ul>|
+|<ul><li>Czy żądania do usługi key vault kończy się niepowodzeniem z powodu problemów z platformy Azure KeyVault?</li><li>Są ograniczane ze względu na zbyt wiele żądań podjęte przez klienta żądania do usługi key vault?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Tunel VPN jest podłączony?</li><li>Połączenia są konflikty konfiguracji?</li><li>Klucze wstępne poprawnie skonfigurowanych?</li><li>Lokalnego urządzenia sieci VPN jest dostępny?</li><li>Zasady zabezpieczeń IPSec i IKE czy niezgodności?</li><li>Prawidłowo zainicjowana lub w stanie niepowodzenia, jest połączenie sieci VPN S2S?</li><li>Jest połączenia do Wirtualnymi prawidłowo zainicjowana lub w stanie niepowodzenia?</li></ul>|
+|<ul><li>Tunel VPN jest podłączony?</li><li>Czy istnieją konflikty konfiguracji połączenia?</li><li>Klucze wstępne prawidłowo skonfigurowano?</li><li>Lokalne urządzenie sieci VPN jest dostępny?</li><li>Zasady zabezpieczeń protokołu IPSec/IKE są niezgodności?</li><li>Czy połączenia sieci VPN S2S poprawnie udostępniane w stanie niepowodzenia?</li><li>Czy połączenia sieć wirtualna-sieć wirtualna poprawnie udostępniane w stanie niepowodzenia?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Brama sieci VPN jest dostępny z Internetu?</li><li>Brama sieci VPN jest w trybie gotowości?</li><li>Usługa sieci VPN jest uruchomiona w bramie?</li></ul>|
+|<ul><li>Bramy sieci VPN jest dostępny z Internetu?</li><li>Bramy sieci VPN jest w trybie rezerwy?</li><li>Usługa VPN działa w ramach bramy?</li></ul>|
 
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li> Środowisko uruchomieniowe operacje, takie jak rejestracji, instalacji lub wysyłania można wykonać w przestrzeni nazw?</li></ul>|
+|<ul><li> Można wykonać operacji środowiska uruchomieniowego, takich jak rejestracji, instalacji lub wysyłania w przestrzeni nazw?</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest systemu operacyjnego hosta działa prawidłowo?</li><li>WorkspaceCollection jest dostępny z poza centrum danych?</li><li>Dostawcy zasobów usługi PowerBI jest dostępny?</li><li>Usługi Power BI jest dostępna w regionie odpowiednie?</li></ul>|
+|<ul><li>Jest system operacyjny hosta działa?</li><li>WorkspaceCollection jest osiągalny z poza centrum danych?</li><li>Dostawca zasobów usługi Power BI jest dostępny?</li><li>Usługa Power BI jest dostępna w odpowiedni region?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
-|Wykonanie testów|
+|Wykonane testy|
 |---|
 |<ul><li>Można wykonać operacji diagnostyki w klastrze?</li></ul>|
 
 ## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li> Nie ma w niej logowania do bazy danych?</li></ul>|
+|<ul><li> Zostały logowania do bazy danych?</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Żądania do odczytywania danych z konta magazynu występują problemy z platformy Azure Storage?</li><li>Żądania do zapisywania danych na koncie magazynu występują problemy z platformy Azure Storage?</li><li>Klastra magazynów, w którym znajduje się konto magazynu jest niedostępny?</li></ul>|
+|<ul><li>Czy żądania odczytu danych z konta magazynu kończy się niepowodzeniem z powodu problemów z platformy Azure Storage?</li><li>Czy żądania zapisu danych do konta magazynu kończy się niepowodzeniem z powodu problemów z platformy Azure Storage?</li><li>Klaster magazynu, w której znajduje się konto magazynu jest niedostępne?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Czy wszystkie hosty, w którym wykonywania w górę i uruchomione zadanie?</li><li>Nie można uruchomić zadania?</li><li>Czy istnieją bieżące środowisko uruchomieniowe uaktualnienia?</li><li>Zadanie w oczekiwanym stanem (np. uruchomiona lub zatrzymana przez klienta)?</li><li>Zadanie napotkał limit pamięci wyjątków?</li><li>Dostępne są aktualizacje trwającą obliczeń zaplanowane?</li><li>Menedżera wykonywania (plan kontroli) jest dostępny?</li></ul>|
+|<ul><li>Czy wszystkie hosty, których wykonanie się i uruchamianie zadania?</li><li>Nie można uruchomić zadania?</li><li>Czy istnieją bieżące środowisko uruchomieniowe uaktualnienia?</li><li>To zadanie w oczekiwanym stanie (na przykład uruchomiona lub zatrzymana przez klienta)?</li><li>Zadanie napotkał się wyjątków pamięci?</li><li>Dostępne są aktualizacje bieżące zaplanowane obliczeniowych?</li><li>Menedżera wykonywania (planu kontroli) jest dostępny?</li></ul>|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest serwerem hosta działa prawidłowo?</li><li>Internetowe usługi informacyjne jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Plan usługi aplikacji jest osiągalna z wewnątrz centrum danych?</li><li>Konto magazynu jest hostem zawartość witryny serverFarm dostępne?</li></ul>|
+|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Internet Information Services jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Plan usługi App Service jest osiągalna z w obrębie centrum danych?</li><li>Konto magazynu obsługuje zawartość witryny serverFarm dostępne?</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
-|Wykonanie testów|
+|Wykonane testy|
 |---|
-|<ul><li>Jest serwerem hosta działa prawidłowo?</li><li>Internet Information server jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Aplikacja sieci Web jest osiągalna z wewnątrz centrum danych?</li><li>Konto magazynu jest hostem dostępnej zawartości witryny?</li></ul>|
+|<ul><li>Serwer hosta należy została uruchomiona i działa?</li><li>Internet Information server jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Aplikacja sieci Web jest osiągalna z w obrębie centrum danych?</li><li>Konto magazynu obsługuje zawartość witryny?</li></ul>|
 
 # <a name="next-steps"></a>Następne kroki
--  Zobacz [wprowadzenie do pulpit nawigacyjny kondycji usługi Azure](service-health-overview.md) i [wprowadzenie do kondycji zasobów Azure](resource-health-overview.md) Aby dowiedzieć się więcej o nich. 
--  [Często zadawane pytania dotyczące kondycji zasobów platformy Azure](resource-health-faq.md)
-- Konfigurowanie alertów, więc użytkownik jest powiadamiany o kondycji problemy. Aby uzyskać więcej informacji, zobacz [skonfiguruj alerty dla zdarzenia kondycji usługi](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+-  Zobacz [wprowadzenie do pulpitu nawigacyjnego usługi Azure Service Health](service-health-overview.md) i [wprowadzenie do usługi Azure Resource Health](resource-health-overview.md) Aby dowiedzieć się więcej o nich. 
+-  [Często zadawane pytania dotyczące usługi Azure Resource Health](resource-health-faq.md)
+- Konfigurowanie alertów, dzięki czemu użytkownik jest powiadamiany o problemów z kondycją. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dla zdarzeń kondycji usługi](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 

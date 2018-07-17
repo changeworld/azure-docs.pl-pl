@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z wielu lokacji hosting - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramy aplikacji, która obsługuje wiele lokacji przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie bramy aplikacji za pomocą hostowanie wielu witryn — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji, który obsługuje wielu witryn przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,29 +10,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 7728ade5f84cd97f3ff0cebd0d5545d68d0ebd79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2f78cfc9918222fd22c2894b5e920a5c07efe522
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355206"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069897"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Utwórz bramę aplikacji z wielu lokacji hostingu za pomocą wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą hostowanie wielu witryn przy użyciu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure umożliwiają skonfigurowanie [obsługujący wiele witryn sieci web](application-gateway-multi-site-overview.md) podczas tworzenia [brama aplikacji w](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza przy użyciu zestawów skalowania maszyn wirtualnych. Następnie skonfiguruj odbiorników i reguły na podstawie domen, do których należą do upewnij się, że ruch w sieci web dociera do odpowiednich serwerów w pulach. Ten samouczek zakłada, że masz wiele domen i używa przykłady *www.contoso.com* i *www.fabrikam.com*.
+Można użyć wiersza polecenia platformy Azure, aby skonfigurować [hostingu wielu witryn sieci web](application-gateway-multi-site-overview.md) po utworzeniu [bramy application gateway](application-gateway-introduction.md). W tym samouczku utworzysz pul zaplecza za pomocą zestawów skalowania maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Tworzenie odbiorników i reguły routingu
-> * Utwórz zestawy skalowania maszyny wirtualnej z pul zaplecza
-> * Utwórz rekord CNAME w domenie
+> * Tworzenie reguł routingu i odbiorników
+> * Tworzenie zestawów skalowania maszyn wirtualnych z pulami zaplecza
+> * Tworzenie rekordu CNAME w domenie
 
-![Przykład routingu obejmujący wiele lokacji](./media/tutorial-multisite-cli/scenario.png)
+![Przykład routingu obejmujący wiele witryn](./media/tutorial-multisite-cli/scenario.png)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -42,9 +42,9 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Tworzenie grupy zasobów przy użyciu [Tworzenie grupy az](/cli/azure/group#create).
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#create).
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastus* lokalizacji.
+W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -52,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane serwerów wewnętrznej bazy danych przy użyciu [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az_net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +74,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć [utworzyć az sieci z bramy aplikacji](/cli/azure/application-gateway#create) Utwórz bramę aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu wiersza polecenia platformy Azure, należy określić informacje o konfiguracji, takie jak pojemności, jednostki sku i ustawienia protokołu HTTP. Brama aplikacji jest przypisany do *myAGSubnet* i *myAGPublicIPAddress* wcześniej utworzony. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/application-gateway#create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -92,17 +92,17 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworzeniu bramy aplikacji, można wyświetlić te nowe funkcje:
+Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplikacji możesz zauważyć następujące nowe funkcje:
 
-- *appGatewayBackendPool* -bramę aplikacji musi mieć co najmniej jedna pula adresów zaplecza.
-- *appGatewayBackendHttpSettings* — Określa, że portu 80 oraz protokołu HTTP jest używany do komunikacji.
-- *appGatewayHttpListener* -odbiornika domyślne skojarzone z *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
-- *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
+- *appGatewayBackendPool* — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+- *appGatewayBackendHttpSettings* — określa, że port 80 i protokół HTTP są używane do komunikacji.
+- *appGatewayHttpListener* — domyślny odbiornik skojarzony z pulą *appGatewayBackendPool*.
+- *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
+- *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
 ### <a name="add-the-backend-pools"></a>Dodawanie pul zaplecza
 
-Dodawanie pul zaplecza o nazwie *contosoPool* i *fabrikamPool* niezbędnych do serwerów wewnętrznej bazy danych przy użyciu zawierają [az brama aplikacji w puli adresów sieciowych — tworzenie](/cli/azure/application-gateway#az_network_application_gateway_address_pool_create).
+Dodawanie pul zaplecza o nazwie *contosoPool* i *fabrikamPool* wymagane zawierać serwerów wewnętrznej bazy danych przy użyciu [az bramy application gateway puli adresów sieciowych — tworzenie](/cli/azure/application-gateway#az_network_application_gateway_address_pool_create).
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -115,11 +115,11 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-listeners"></a>Dodawanie obiektów nasłuchujących
+### <a name="add-listeners"></a>Dodawanie odbiorników
 
-Odbiornik wymaganego do włączenia usługi Brama aplikacji w celu kierowania ruchu odpowiednio do puli wewnętrznej bazy danych. W tym samouczku utworzysz dwa odbiorniki dla dwóch domen. W tym przykładzie odbiorników są tworzone dla domen z *www.contoso.com* i *www.fabrikam.com*. 
+Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen *www.contoso.com* i *www.fabrikam.com*. 
 
-Dodaj odbiorników o nazwie *contosoListener* i *fabrikamListener* niezbędnych do kierowania ruchu przy użyciu [utworzyć az sieci bramy aplikacji odbiornik http](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create).
+Dodaj odbiorników o nazwie *contosoListener* i *fabrikamListener* niezbędnych do kierowania ruchu przy użyciu [tworzenie az sieci application-gateway http-listener](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -138,11 +138,11 @@ az network application-gateway http-listener create \
   --host-name www.fabrikam.com   
   ```
 
-### <a name="add-routing-rules"></a>Dodaj zasady routingu
+### <a name="add-routing-rules"></a>Dodawanie reguł routingu
 
-Reguły są przetwarzane w kolejności, w której zostały utworzone, a ruch jest przekierowywany przy użyciu pierwszej reguły, która odpowiada adresowi URL wysłanych do bramy aplikacji. Na przykład jeśli utworzono regułę przy użyciu odbiornika podstawowe i regułę przy użyciu odbiornika obejmujący wiele lokacji zarówno w tym samym porcie, reguły z wieloma lokacjami odbiornika musi być wymieniona przed regułę przy użyciu podstawowego odbiornika w kolejności reguły obejmujący wiele lokacji, aby działać zgodnie z oczekiwaniami. 
+Reguły są przetwarzane w kolejności, w którym są tworzone, a ruch jest kierowany za pomocą pierwszej reguły, który jest zgodny z adresem URL wysłanych do usługi application gateway. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
 
-W tym przykładzie utworzenie dwóch nowych reguł i usunąć domyślnej reguły, który został utworzony podczas tworzenia bramy aplikacji. Można dodać reguły przy użyciu [Tworzenie reguły brama aplikacji w sieci az](/cli/azure/application-gateway#az_network_application_gateway_rule_create).
+W tym przykładzie utworzysz dwie nowe reguły i usuniesz domyślną regułę, która została utworzona podczas tworzenia bramy aplikacji. Regułę możesz dodać przy użyciu polecenia [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -165,9 +165,9 @@ az network application-gateway rule delete \
   --resource-group myResourceGroupAG
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Utwórz zestawy skalowania maszyny wirtualnej
+## <a name="create-virtual-machine-scale-sets"></a>Tworzenie zestawów skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz trzy zestawy skalowania maszyn wirtualnych obsługujących trzy pule zaplecza bramy aplikacji. Zestawy skalowania, które możesz utworzyć są nazywane *myvmss1*, *myvmss2*, i *myvmss3*. Każdy zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, na które należy zainstalować NGINX.
+W tym przykładzie utworzysz trzy zestawy skalowania maszyn wirtualnych do obsługi trzech pul zaplecza w bramie aplikacji. Utworzone zestawy skalowania będą miały nazwy *myvmss1*, *myvmss2* i *myvmss3*. Każdy zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, na których instaluje się serwer NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -206,14 +206,14 @@ for i in `seq 1 2`; do
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
     --settings '{
-  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 done
 ```
 
-## <a name="create-a-cname-record-in-your-domain"></a>Utwórz rekord CNAME w domenie
+## <a name="create-a-cname-record-in-your-domain"></a>Tworzenie rekordu CNAME w domenie
 
-Po utworzeniu bramy aplikacji z publicznego adresu IP można pobrać adresu DNS i użyj go, aby utworzyć rekord CNAME w domenie. Można użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show) można pobrać adresu DNS bramy aplikacji. Kopiuj *fqdn* wartość DNSSettings i używać go jako wartość rekord CNAME, który utworzono. 
+Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i użyć go w celu utworzenia rekordu CNAME w domenie. Aby uzyskać adres DNS bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj wartość *fqdn* ustawienia DNSSettings i użyj jej jako wartości tworzonego rekordu CNAME. 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -223,17 +223,17 @@ az network public-ip show \
   --output tsv
 ```
 
-Użycie rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
+Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Wpisz nazwę domeny na pasku adresu przeglądarki. Takie jak http://www.contoso.com.
+Wpisz nazwę swojej domeny na pasku adresu przeglądarki. Na przykład http://www.contoso.com.
 
-![Lokacja contoso testu bramy aplikacji](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
+![Testowanie witryny contoso w bramie aplikacji](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 
-Zmienić adres na inne domeny i powinny zostać wyświetlone informacje, jak w następującym przykładzie:
+Zmień adres na drugą domenę. Powinny zostać wyświetlone informacje, jak w następującym przykładzie:
 
-![Testowanie witryny firmy fabrikam w bramy aplikacji](./media/tutorial-multisite-cli/application-gateway-nginxtest2.png)
+![Testowanie witryny fabrikam w bramy aplikacji](./media/tutorial-multisite-cli/application-gateway-nginxtest2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -242,9 +242,9 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Tworzenie odbiorników i reguły routingu
-> * Utwórz zestawy skalowania maszyny wirtualnej z pul zaplecza
-> * Utwórz rekord CNAME w domenie
+> * Tworzenie reguł routingu i odbiorników
+> * Tworzenie zestawów skalowania maszyn wirtualnych z pulami zaplecza
+> * Tworzenie rekordu CNAME w domenie
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o co można zrobić z bramy aplikacji](application-gateway-introduction.md)
+> [Więcej informacji na temat funkcji bramy aplikacji](application-gateway-introduction.md)

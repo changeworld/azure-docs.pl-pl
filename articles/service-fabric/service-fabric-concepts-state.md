@@ -1,6 +1,6 @@
 ---
-title: Definine i zarządzania stanem w programie Azure mikrousług | Dokumentacja firmy Microsoft
-description: Definiowanie i zarządzaniu stanu usługi w sieci szkieletowej usług
+title: Zarządzanie stanem w mikrousługach w usłudze Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Jak Definiowanie stanu usługi i zarządzanie w usłudze Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 46d2e27b9cdcb03213648982c7e9a0576838bc92
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eaa38e864da2525b640fa101ecc807f89de8eeaf
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213099"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072201"
 ---
 # <a name="service-state"></a>Stan usługi
-**Usługa stanu** odnosi się do w pamięci lub na dysku danych, którego usługa wymaga, aby funkcja. Zawiera, na przykład struktury danych i zmienne Członkowskie, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana on może również obejmować plików lub innych zasobów, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.
+**Stan usługi** odnosi się do w pamięci lub na dysku dane usługi wymaga funkcji. Obejmuje, na przykład struktury danych i zmiennych składowych, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana może to również obejmować pliki lub inne zasoby, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.
 
-Jako przykład usługi zastanówmy Kalkulator. Kalkulator podstawowe usługi ma dwie liczby i zwraca ich sumę. Wykonywanie tego obliczenia pociąga za sobą żadnych zmiennych Członkowskich lub inne informacje.
+Jako usługa przykład rozważmy Kalkulator. Usługa podstawowe Kalkulator przyjmuje dwie liczby i zwraca ich suma. Wykonanie tego obliczenia pociąga za sobą żadnych zmiennych Członkowskich ani innych informacji.
 
-Teraz należy wziąć pod uwagę tego samego Kalkulator, ale z dodatkową metodę przechowywania i zwracanie ostatniego suma jest obliczana. Ta usługa jest teraz stanowych. Stateful oznacza, że zawiera niektóre stan, który zapisuje do oblicza sumę nowy i odczytuje z podczas możesz poprosić Zwróć ostatni Suma obliczanej.
+Teraz należy wziąć pod uwagę samej Kalkulator, ale z dodatkową metodę do przechowywania i zwracanie sumy ostatni ma obliczanej. Ta usługa jest teraz stanowych. Stanowa oznacza, że zawiera on pewnego stanu, która zapisuje do oblicza nowy sum i odczytuje z kiedy możesz zadawać pytania do zwrócenia ostatniego obliczona suma.
 
-Sieć szkieletowa usług Azure pierwszej usługi nosi usługę bezstanową. Drugi usługi nosi nazwę usługi stanowej.
+W usłudze Azure Service Fabric nosi nazwę pierwszej usługi bezstanowej usługi. Druga usługa nosi nazwę usługi stanowej.
 
 ## <a name="storing-service-state"></a>Przechowywanie stanu usługi
-Stan można externalized lub wspólnie z kodem, który jest manipulowanie stanu. Externalization stan jest zazwyczaj wykonywane za pomocą zewnętrznej bazy danych lub innym magazynie danych, wykonywana na różnych komputerach za pośrednictwem sieci lub z procesu na tym samym komputerze. W naszym przykładzie Kalkulator magazynu danych może być bazy danych SQL lub wystąpienie magazynu tabel Azure. Każde żądanie do obliczenia sumy przeprowadzi aktualizację na tych danych i żądań do usługi do zwrócenia wyniku wartości w bieżącej wartości są pobierane z magazynu. 
+Stan może zostać zewnętrznych albo wspólnie z kodem, który jest manipulowanie stanu. O eksternalizację stanu jest zazwyczaj wykonywane za pomocą zewnętrznej bazy danych lub innym magazynie danych, która działa na różnych maszynach, za pośrednictwem sieci lub poza procesem na tym samym komputerze. W naszym przykładzie kalkulatora magazynu danych może być bazy danych SQL database lub wystąpienia Store tabeli platformy Azure. Każde żądanie, aby obliczyć sumę przeprowadzi aktualizację, oparte na tych danych, a żądania do usługi do zwrócenia wyniku wartości w bieżącej wartości, które są pobierane z magazynu. 
 
-Stan może być również znajduje się kod, który zmienia stan. Stanowych usług w sieci szkieletowej usług są zazwyczaj tworzone przy użyciu tego modelu. Sieć szkieletowa usług zapewnia infrastrukturę do zapewnienia, że ten stan jest wysoko dostępnych, spójne i trwałe i że usługi utworzone w ten sposób można łatwo skalować.
+Stan może być również wspólnie z kodem, który obsługuje stan. Usług stanowych w usłudze Service Fabric są zazwyczaj tworzone przy użyciu tego modelu. Usługa Service Fabric udostępnia infrastrukturę, aby upewnić się, że ten stan jest wysoko dostępna, spójne i niezawodne i że usługi utworzonych w ten sposób można łatwo skalować.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji dotyczących pojęć sieci szkieletowej usług zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat pojęć usługi Service Fabric zobacz następujące artykuły:
 
-* [Dostępność usług sieci szkieletowej usług](service-fabric-availability-services.md)
-* [Skalowalność usługi sieci szkieletowej usług](service-fabric-concepts-scalability.md)
-* [Partycjonowanie usług sieci szkieletowej usług](service-fabric-concepts-partitioning.md)
-* [Niezawodne usługi sieci szkieletowej usług](service-fabric-reliable-services-introduction.md)
+* [Dostępność usługi Service Fabric](service-fabric-availability-services.md)
+* [Skalowalność usługi Service Fabric](service-fabric-concepts-scalability.md)
+* [Partycjonowanie usługi Service Fabric](service-fabric-concepts-partitioning.md)
+* [Usług usługi Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

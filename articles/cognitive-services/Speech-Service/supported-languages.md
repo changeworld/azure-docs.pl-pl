@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 17d84718c6adab8b2bd4f130f380edc12498102b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 06350decd9d9f15db7226b6f2c3580feb49a59d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346046"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069578"
 ---
 # <a name="supported-languages-for-speech-service"></a>Obsługiwane języki dla usługi mowy
 
@@ -220,7 +220,7 @@ Można uzyskać listy języków albo programowo lub za pomocą punktu końcowego
 | Yucatec Maya      | `yua`          |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

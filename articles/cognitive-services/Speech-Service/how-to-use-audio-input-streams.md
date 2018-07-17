@@ -10,72 +10,72 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: fmegen
-ms.openlocfilehash: 528356473c4221a815fa68cbec3426866c4cbd23
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 0eafa7e88df5d00a67646ca7f82ca027602a40b3
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356292"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071450"
 ---
-# <a name="about-the-audio-input-stream-api"></a>O wejście audio strumienia interfejsu API
+# <a name="about-the-audio-input-stream-api"></a>Temat audio danych wejściowych interfejsu API usługi stream
 
-**Strumienia danych wejściowych Audio** interfejsu API umożliwia strumienia strumieni audio w aparatów rozpoznawania zamiast mikrofon lub interfejsów API plików wejściowych.
+**Stream dane wejściowe dźwięk** interfejs API umożliwia przesyłanie strumieniowe strumieni audio do aparatów rozpoznawania gestów zamiast korzystać z mikrofonu lub pliku wejściowego interfejsów API.
 
 ## <a name="api-overview"></a>Przegląd interfejsu API
 
 Interfejs API korzysta z dwóch składników `AudioInputStream` (nieprzetworzone dane audio) i `AudioInputStreamFormat`.
 
-`AudioInputStreamFormat` Definiuje format danych audio. Mogą być porównywane ze standardem `WAVEFORMAT` struktury plików wave w systemie Windows.
+`AudioInputStreamFormat` Definiuje format danych audio. Można porównać ze standardem `WAVEFORMAT` struktury pliki wave na Windows.
 
   - `FormatTag`
 
-    Format audio. Zestaw SDK mowy aktualnie obsługuje tylko `format 1` (PCM - little endian).
+    Format audio. Zestaw SDK rozpoznawania mowy aktualnie obsługuje tylko `format 1` (PCM - little-endian).
 
   - `Channels`
 
-    Liczba kanałów. Bieżąca usługa mowy obsługuje tylko jeden kanał (mono) materiałów audio.
+    Liczba kanałów. Bieżąca usługa mowy obsługuje tylko jeden kanał (mono) materiały audio.
 
   - `SamplesPerSec`
 
-    Częstotliwość próbkowania. Nagrywanie mikrofon typowe ma 16000 próbek na sekundę.
+    Częstotliwość próbkowania. Nagrywanie z mikrofonu typowe ma 16000 próbki na sekundę.
 
   - `AvgBytesPerSec`
 
-    Średnią liczbę bajtów na sekundę, obliczany jako `SamplesPerSec * Channels * ceil(BitsPerSample, 8)`. Średnią liczbę bajtów na sekundę mogą być różne dla strumieni audio, które używają zmiennej szybkości transmisji bitów.
+    Średnia liczba bajtów na sekundę, obliczany jako `SamplesPerSec * Channels * ceil(BitsPerSample, 8)`. Średnia liczba bajtów na sekundę mogą być różne dla strumieni audio, które używają zmiennej szybkości transmisji.
 
   - `BlockAlign`
 
-    Rozmiar jedną ramkę w przeliczeniu na `Channels * ceil(wBitsPerSample, 8)`. Z powodu wypełnienia, rzeczywista wartość może być większa niż wartość.
+    Rozmiar jednej ramce, obliczany jako `Channels * ceil(wBitsPerSample, 8)`. Ze względu na dopełnienie, rzeczywista wartość może być wyższy niż ta wartość.
 
   - `BitsPerSample`
 
-    Bity na próbkę. Typowy strumieniem audio używa 16 bitów na próbkę (jakość CD).
+    Bitów na próbkę. Typowe strumienia audio używa 16 bitów na próbkę (CD jakość).
 
-`AudioInputStream` Klasy podstawowej zostaną przesłonięte przez Twojego adaptera niestandardowych strumieni. Ta karta ma do wykonania tych funkcji:
+`AudioInputStream` Klasy podstawowej zostaną zastąpione przez karty niestandardowej strumienia. Ta karta ma do implementacji tych funkcji:
 
    - `GetFormat()`
 
-     Ta funkcja jest wywoływana uzyskanie format strumieniem audio. Pobiera wskaźnik do buforu AudioInputStreamFormat.
+     Ta funkcja jest wywoływana, aby pobrać format strumienia audio. Pobiera wskaźnik do buforu AudioInputStreamFormat.
 
    - `Read()`
 
-     Ta funkcja jest wywoływana można pobrać danych z strumieniem audio. Jeden parametr ma postać wskaźnika do buforu można skopiować danych do. Drugi parametr jest rozmiar buforu. Funkcja zwraca liczbę bajtów kopiowania do buforu. Zwracana wartość `0` wskazuje koniec strumienia.
+     Ta funkcja jest wywoływana, aby pobrać dane ze strumienia audio. Jeden parametr jest wskaźnikiem do buforu, który można skopiować danych do. Drugi parametr jest rozmiar buforu. Funkcja zwraca liczbą bajtów skopiowanych w buforze. Zwracana wartość wynosząca `0` wskazuje koniec strumienia.
 
    - `Close()`
 
-     Ta funkcja jest wywoływana, aby zamknąć strumieniem audio.
+     Ta funkcja jest wywoływana, aby zamknąć strumień audio.
 
 ## <a name="usage-examples"></a>Przykłady użycia
 
 Korzystając z strumienie wejściowe audio ogólnie rzecz biorąc, obejmuje następujące kroki:
 
-  - Określ format strumieniem audio. Format musi obsługiwany przez zestaw SDK i usługi rozpoznawania mowy. Aktualnie obsługiwana jest następująca konfiguracja:
+  - Określ format strumienia audio. Format muszą być obsługiwane przez zestaw SDK i usługi rozpoznawania mowy. Obecnie obsługiwane jest następująca konfiguracja:
 
-    Znacznik jeden format audio (PCM), jeden kanał, 16000 próbek na sekundę, 32000 bajtów na sekundę, dwa bloku Dopasuj (w tym dopełnienie przykładowe 16 bitów), 16 bitów na próbkę
+    Tag formatu audio (PCM), jednego kanału, 16000 próbki na sekundę, 32000 bajtów na sekundę, blok dwóch align (16-bitowych tym dopełnienie przykład), 16 bitów na próbkę
 
-  - Upewnij się, że kod może zapewnić nieprzetworzonych danych audio dotyczące specyfikacji określonych powyżej. Jeśli dane źródłowe audio nie odpowiada obsługiwanych formatów, nagrania audio musi być przekodowane w wymaganym formacie.
+  - Upewnij się, że Twój kod może zapewnić pierwotne dane audio do specyfikacji określonych powyżej. Jeśli Twoje źródło audio nie są zgodne z obsługiwanych formatów, audio, musi być transkodowane na wymagany format.
 
-  - Pochodzi z klasy niestandardowej strumienia wejściowego audio `AudioInputStream`. Implementowanie `GetFormat()`, `Read()`, i `Close()` operacji. Podpis dokładne funkcja jest zależne od języka, ale kod będzie wyglądać podobnie do poniższego przykładu kodu::
+  - Pochodzi z klasy niestandardowej audio strumienia wejściowego z `AudioInputStream`. Implementowanie `GetFormat()`, `Read()`, i `Close()` operacji. Podpis funkcji Porównaj jest zależne od języka, ale kod będzie wyglądać podobnie do tego przykładu kodu::
 
     ```
      public class ContosoAudioStream : AudioInputStream {
@@ -102,7 +102,7 @@ Korzystając z strumienie wejściowe audio ogólnie rzecz biorąc, obejmuje nast
      };
     ```
 
-  - Użyj strumienia wejściowego audio:
+  - Użyj audio strumienia danych wejściowych:
 
     ```
     var contosoStream = new ContosoAudioStream(contosoConfig);
@@ -119,7 +119,7 @@ Korzystając z strumienie wejściowe audio ogólnie rzecz biorąc, obejmuje nast
     // delete contosoStream;
     ```
 
-  - W przypadku niektórych języków `contosoStream` muszą zostać jawnie usunięte po zakończeniu uznania. Nie można zwolnić AudioStream, zanim zakończenie danych wejściowych jest do odczytu. W scenariuszu przy użyciu `StopContinuousRecognitionAsync` i `StopContinuousRecognitionAsync` wymaga koncepcji przedstawione w tym przykładzie:
+  - W przypadku niektórych języków `contosoStream` muszą zostać jawnie usunięte po zakończeniu rozpoznawanie. Nie można zwolnić AudioStream, zanim pełną danych wejściowych jest do odczytu. W scenariuszu za pomocą `StopContinuousRecognitionAsync` i `StopContinuousRecognitionAsync` wymaga koncepcji przedstawionych w tym przykładzie:
 
     ```
     var contosoStream = new ContosoAudioStream(contosoConfig);
@@ -141,5 +141,5 @@ Korzystając z strumienie wejściowe audio ogólnie rzecz biorąc, obejmuje nast
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z zestawu skalowania maszyn wirtualnych - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji o skali maszyny wirtualnej ustawić za pomocą wiersza polecenia platformy Azure.
+title: Tworzenie bramy aplikacji za pomocą zestawu skalowania maszyn wirtualnych — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,25 +8,25 @@ editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/25/2018
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2016a719b3e1135d8c0e51eb3747334260803dd3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7221132db90cfceb77795356466776936cf696c8
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356311"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071151"
 ---
-# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Utwórz bramę aplikacji o skali maszyny wirtualnej ustawić za pomocą wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) używającą [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla serwerów wewnętrznej bazy danych. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
+Można użyć wiersza polecenia platformy Azure, aby utworzyć [bramy application gateway](application-gateway-introduction.md) , który używa [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla serwerów wewnętrznej bazy danych. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,9 +36,9 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Tworzenie grupy zasobów przy użyciu [Tworzenie grupy az](/cli/azure/group#az_group_create). 
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). 
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastus* lokalizacji.
+W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane serwerów wewnętrznej bazy danych przy użyciu [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az_net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć [utworzyć az sieci z bramy aplikacji](/cli/azure/application-gateway#az_application_gateway_create) Utwórz bramę aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu wiersza polecenia platformy Azure, należy określić informacje o konfiguracji, takie jak pojemności, jednostki sku i ustawienia protokołu HTTP. Brama aplikacji jest przypisany do *myAGSubnet* i *myPublicIPSddress* wcześniej utworzony. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -86,17 +86,17 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworzeniu bramy aplikacji, można wyświetlić te nowe funkcje:
+ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplikacji możesz zauważyć następujące nowe funkcje:
 
-- *appGatewayBackendPool* -bramę aplikacji musi mieć co najmniej jedna pula adresów zaplecza.
-- *appGatewayBackendHttpSettings* — Określa, że portu 80 oraz protokołu HTTP jest używany do komunikacji.
-- *appGatewayHttpListener* -odbiornika domyślne skojarzone z *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
-- *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
+- *appGatewayBackendPool* — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+- *appGatewayBackendHttpSettings* — określa, że port 80 i protokół HTTP są używane do komunikacji.
+- *appGatewayHttpListener* — domyślny odbiornik skojarzony z pulą *appGatewayBackendPool*.
+- *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
+- *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz zestaw skali maszyny wirtualnej, oferująca serwerów do puli zaplecza bramy aplikacji. W zestawie skalowania maszyn wirtualnych są skojarzone z *myBackendSubnet* i *appGatewayBackendPool*. Aby utworzyć skali zestaw, możesz użyć [az vmss utworzyć](/cli/azure/vmss#az_vmss_create).
+W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych, który zapewnia serwery dla puli zaplecza w bramie aplikacji. Maszyny wirtualne w zestawie skalowania są kojarzone z podsiecią *myBackendSubnet* i pulą *appGatewayBackendPool*. Aby utworzyć zestaw skalowania, możesz użyć polecenia [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \
@@ -123,12 +123,12 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -138,7 +138,7 @@ az network public-ip show \
   --output tsv
 ```
 
-![Podstawowy adres URL testu bramy aplikacji](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
+![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-create-vmss-cli/tutorial-nginxtest.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -147,6 +147,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Konfigurowanie sieci
 > * Tworzenie bramy aplikacji
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
-Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.

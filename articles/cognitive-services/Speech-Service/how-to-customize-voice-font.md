@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: b9218600db8bd3e20528e61e411bb64c10dd9c84
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 011358e223db419f31e0181b05ce6f89479dba81
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917639"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070947"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -65,10 +65,10 @@ Pliki audio powinna być przygotowana w następujący sposób. Inne formaty są 
 | ------------ | --------- |
 | Format pliku  | RIFF (WAV)|
 | Częstotliwość próbkowania| co najmniej 16 000 Hz |
-| Przykładowy Format| PCM, 16-bitowych |
+| Format próbki| PCM, 16-bitowych |
 | Nazwa pliku    | Numeryczne, za pomocą `.wav` rozszerzenia |
 | Format archiwum| Zip      |
-| Rozmiar maksymalny archiwum|200 MB|
+| Maksymalny rozmiar archiwum|200 MB|
 
 Umieść zbiór plików audio w pojedynczy folder bez podkatalogów i utworzyć pakiet całego zestawu jako pojedynczego pliku archiwum ZIP.
 
@@ -235,5 +235,5 @@ Niestandardowy punkt końcowy jest funkcjonalnie identyczny standardowy punkt ko
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+- [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

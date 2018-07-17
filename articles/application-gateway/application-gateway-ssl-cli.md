@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji z kończenia żądań SSL - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie bramy aplikacji za pomocą kończenia żądań SSL — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,26 +8,26 @@ editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/18/2018
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 03b5d0447ef732586fe2104690c609a3adec2b6c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5104b1ffa12e35f18ba0843718afb6d697df6c39
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356141"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068883"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Utwórz bramę aplikacji z kończenia żądań SSL przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą kończenia żądań SSL przy użyciu wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) przy użyciu certyfikatu dla [kończenia żądań SSL](application-gateway-backend-ssl.md) używającą [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla serwerów wewnętrznej bazy danych. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
+Interfejs wiersza polecenia platformy Azure umożliwia tworzenie [bramy aplikacji](application-gateway-introduction.md) z certyfikatem [terminacji SSL](application-gateway-backend-ssl.md), która korzysta z [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) na potrzeby serwerów zaplecza. W tym przykładzie zestaw skalowania zawiera dwa wystąpienia maszyny wirtualnej, które są dodawane do domyślnej puli zaplecza bramy aplikacji.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Utwórz certyfikat z podpisem własnym
+> * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
-> * Utwórz bramę aplikacji przy użyciu certyfikatu
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie bramy aplikacji z certyfikatem
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -35,27 +35,27 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik szybkiego startu będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
-W środowisku produkcyjnym należy zaimportować certyfikat podpisane przez zaufanego dostawcę. W tym samouczku Utwórz certyfikat z podpisem własnym i pliku pfx za pomocą polecenia biblioteki openssl.
+Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym samouczku utworzysz certyfikat z podpisem własnym i plik pfx za pomocą polecenia biblioteki openssl.
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
-Wprowadź wartości odpowiednich dla certyfikatu. Można zaakceptować wartości domyślne.
+Wprowadź wartości odpowiednie dla Twojego certyfikatu. Możesz zaakceptować wartości domyślne.
 
 ```azurecli-interactive
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-Wprowadź hasło dla certyfikatu. W tym przykładzie *Azure123456!* jest używany.
+Wprowadź hasło certyfikatu. W tym przykładzie używane jest hasło *Azure123456!* .
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Tworzenie grupy zasobów przy użyciu [Tworzenie grupy az](/cli/azure/group#create).
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#create).
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastus* lokalizacji.
+W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane serwerów wewnętrznej bazy danych przy użyciu [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az_net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -85,9 +85,9 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć [utworzyć az sieci z bramy aplikacji](/cli/azure/application-gateway#create) Utwórz bramę aplikacji. Podczas tworzenia bramy aplikacji przy użyciu wiersza polecenia platformy Azure, należy określić informacje o konfiguracji, takie jak pojemności, jednostki sku i ustawienia protokołu HTTP. 
+Aby utworzyć bramę aplikacji, możesz użyć polecenia [az network application-gateway create](/cli/azure/application-gateway#create). Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. 
 
-Brama aplikacji jest przypisany do *myAGSubnet* i *myAGPublicIPAddress* wcześniej utworzony. W tym przykładzie należy skojarzyć utworzony certyfikat i jego hasło po utworzeniu bramy aplikacji. 
+Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. W tym przykładzie podczas tworzenia bramy aplikacji należy skojarzyć utworzony certyfikat i jego hasło. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -108,17 +108,17 @@ az network application-gateway create \
 
 ```
 
- Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworzeniu bramy aplikacji, można wyświetlić te nowe funkcje:
+ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplikacji możesz zauważyć następujące nowe funkcje:
 
-- *appGatewayBackendPool* -bramę aplikacji musi mieć co najmniej jedna pula adresów zaplecza.
-- *appGatewayBackendHttpSettings* — Określa, że portu 80 oraz protokołu HTTP jest używany do komunikacji.
-- *appGatewayHttpListener* -odbiornika domyślne skojarzone z *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
-- *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
+- *appGatewayBackendPool* — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+- *appGatewayBackendHttpSettings* — określa, że port 80 i protokół HTTP są używane do komunikacji.
+- *appGatewayHttpListener* — domyślny odbiornik skojarzony z pulą *appGatewayBackendPool*.
+- *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
+- *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
-W tym przykładzie utworzysz zestaw skali maszyny wirtualnej, zapewniający serwerów domyślnej puli zaplecza bramy aplikacji. W zestawie skalowania maszyn wirtualnych są skojarzone z *myBackendSubnet* i *appGatewayBackendPool*. Aby utworzyć skali zestaw, możesz użyć [az vmss utworzyć](/cli/azure/vmss#az_vmss_create).
+W tym przykładzie utworzysz zestaw skalowania maszyn wirtualnych, który zapewnia serwery dla domyślnej puli zaplecza w bramie aplikacji. Maszyny wirtualne w zestawie skalowania są kojarzone z podsiecią *myBackendSubnet* i pulą *appGatewayBackendPool*. Aby utworzyć zestaw skalowania, możesz użyć polecenia [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \
@@ -145,13 +145,13 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -161,20 +161,20 @@ az network public-ip show \
   --output tsv
 ```
 
-![Ostrzeżenie bezpieczne](./media/application-gateway-ssl-cli/application-gateway-secure.png)
+![Ostrzeżenie o zabezpieczeniach](./media/application-gateway-ssl-cli/application-gateway-secure.png)
 
-Aby zaakceptować zabezpieczeń ostrzeżenie, jeśli używasz certyfikatu z podpisem własnym, wybierz **szczegóły** , a następnie **przejdź do strony sieci Web**. Zostanie wyświetlona zabezpieczona witryna serwera NGINX, tak jak w poniższym przykładzie:
+Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z podpisem własnym, wybierz pozycję **Szczegóły**, a następnie pozycję **Przejdź do strony internetowej**. Zostanie wyświetlona zabezpieczona witryna serwera NGINX, tak jak w poniższym przykładzie:
 
-![Podstawowy adres URL testu bramy aplikacji](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
+![Testowanie podstawowego adresu URL w bramie aplikacji](./media/application-gateway-ssl-cli/application-gateway-nginx.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz certyfikat z podpisem własnym
+> * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
-> * Utwórz bramę aplikacji przy użyciu certyfikatu
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie bramy aplikacji z certyfikatem
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
-Aby dowiedzieć się więcej na temat bram aplikacji i ich skojarzonych zasobów, nadal artykuły.
+Aby dowiedzieć się więcej na temat bramy aplikacji i skojarzonych z nimi zasobów, przejdź do artykuły z poradami.

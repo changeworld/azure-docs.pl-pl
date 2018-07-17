@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 90ea591137b306069c1a5c184aea07375c72ce5c
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036544"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068672"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Samouczek: Potężne przekazywania wyszukiwania wizualnego Bing
 
 W tym samouczku dzieli proces przekazywania obrazu do usługi Bing i ponownie uzyskiwanie szczegółowych danych. Pokazano również, jak uzyskać dostęp, i wyświetlić szczegółowe informacje w odpowiedzi JSON. Aby uzyskać kompletny przykład kodu HTML i JavaScript, zobacz [uzupełnianie kodu](#complete-code).
 
-W tym samouczku jest udostępniana dla deweloperów, który chce, aby zbadać zawartość odpowiedzi usługi Bing. Zastosuj wszystkie przypadki użycia i nie wyświetlają wymagania dotyczące (na przykład nie zapewnia łącza do zasady zachowania poufności informacji firmy Microsoft). Aby uzyskać wszystkie wymagania dotyczące użycia, zobacz [Bing użycia i wymagania dotyczące wyświetlania](./use-and-display-requirements.md).
+W tym samouczku jest udostępniana dla deweloperów, który chce, aby zbadać zawartość odpowiedzi wyszukiwania wizualnego Bing. Zastosuj wszystkie przypadki użycia i nie wyświetlają wymagania dotyczące (na przykład nie zapewnia łącza do zasady zachowania poufności informacji firmy Microsoft). Aby uzyskać wszystkie wymagania dotyczące użycia, zobacz [Bing użycia i wymagania dotyczące wyświetlania](./use-and-display-requirements.md).
 
 
 ## <a name="where-to-start"></a>Gdzie zacząć?

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: 5ed98bb4c4f40b23988a4f73778e715bfbea2505
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004944"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068788"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -54,9 +54,9 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
   
     Odtwarzacz można utworzyć za pomocą [interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/). Użyj [interfejsu API usługi Azure Media Player ProtectionInfo](http://amp.azure.net/libs/amp/latest/docs/) do określenia technologii DRM na różnych platformach DRM.
 
-    Do testowania AES lub CENC (Widevine + PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź AES i podać token.
+    Do testowania AES lub CENC (Widevine i/lub technologii PlayReady) zaszyfrowany zawartość, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Upewnij się, kliknij pozycję "Opcje zaawansowane" i sprawdź opcje szyfrowania.
 
-    Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](http://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. Należy wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Chrome/Opera/Firefox Widevine, MS Edge/IE11 dla technologii PlayReady, Safari na maOS dla technologii FairPlay.
+    Jeśli chcesz przetestować FairPlay zaszyfrowana zawartość, użyj [tego odtwarzacza testu](http://aka.ms/amtest). Odtwarzacz obsługuje Widevine, PlayReady, i protokołów technologii FairPlay DRM, a także AES-128 szyfrowania otwartym kluczem. Należy wybrać odpowiednie przeglądarce w celu przetestowania różnych protokołów DRM: Chrome/Opera/Firefox Widevine, MS Edge/IE11 dla technologii PlayReady, Safari w systemie macOS dla technologii FairPlay.
 
 3. Secure Token Service (STS), która wystawia Token sieci Web JSON (JWT) jako token dostępu, aby uzyskać dostęp do zasobów w wewnętrznej bazie danych. Za pomocą usług dostarczania licencji usługi AMS jako zasobów wewnętrznej bazy danych. Usługa tokenu Zabezpieczającego musi definiują następujące elementy:
 
@@ -122,18 +122,6 @@ Za pomocą tokenu zawartości klucza zasad klucz zawartości jest wysyłane tylk
 
 Po skonfigurowaniu zasadzie ograniczenia tokenu, należy określić podstawowy klucz weryfikacji wystawcy i parametry odbiorców. Podstawowy klucz weryfikacji zawiera klucz, który token został podpisany za pomocą. Wystawca jest usługa bezpiecznych tokenów, który wystawia token. Grupy odbiorców, czasami nazywane zakresu, opisuje przeznaczenie tokenu lub zasób tokenu autoryzuje dostępu do. Usługa dostarczania kluczy Media Services sprawdza, czy te wartości w tokenie pasuje do wartości w szablonie.
 
-## <a name="streaming-urls"></a>Adresy URL przesyłania strumieniowego
-
-Jeśli element zawartości został zaszyfrowany za pomocą więcej niż jeden DRM, użycie znacznika szyfrowania w adresu URL przesyłania strumieniowego: (format = "m3u8-aapl" szyfrowania = "xxx").
-
-Mają zastosowanie następujące kwestie:
-
-* Typ szyfrowania nie ma określonego w adresie URL, jeśli tylko jeden szyfrowania została zastosowana do zasobu.
-* Typ szyfrowania jest uwzględniana wielkość liter.
-* Można określić następujące typy szyfrowania:
-  * **cenc**: dla PlayReady lub Widevine (common encryption)
-  * **cbcs-aapl**: dla technologii FairPlay (szyfrowanie AES-CBC)
-  * **CBC**: AES dla koperty szyfrowania
 
 ## <a name="next-steps"></a>Kolejne kroki
 

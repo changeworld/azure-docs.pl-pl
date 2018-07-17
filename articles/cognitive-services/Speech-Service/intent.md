@@ -1,74 +1,67 @@
 ---
-title: Przykład dla opcji rozpoznawania | Dokumentacja firmy Microsoft
+title: Przykład rozpoznawanie intencji | Dokumentacja firmy Microsoft
 titleSuffix: Microsoft Cognitive Services
-description: Poniżej przedstawiono przykładowe rozpoznawania konwersji.
+description: Oto przykład rozpoznawanie intencji.
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 1c9c1e2d54ccb200ef009be3566f6da9ced01175
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 4cf3bbfa24e102c544b0e3215a20b73d323f15df
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111171"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070964"
 ---
-# <a name="sample-for-intent-recognition"></a>Przykładowe rozpoznawania konwersji
+# <a name="sample-for-intent-recognition"></a>Przykład rozpoznawanie intencji
 
-> [!NOTE]
-> Aby uzyskać instrukcje dotyczące pobierania w tym przykładzie i innych użytkowników, zobacz [przykłady dotyczące zestawu SDK mowy](samples.md).
+Najpierw Uzyskaj klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK rozpoznawania mowy usługi usługi Cognitive services rozpoznawanie intencji wymaga klucza określonej subskrypcji. [W tym miejscu](https://www.luis.ai) możesz znaleźć dodatkowe informacje na temat technologii funkcja rozpoznawania celu, a także informacje o tym, jak uzyskać klucz subskrypcji. Zastąp własnym kluczem subskrypcji Language Understanding [region subskrypcji](regions.md)i AppId intencji modelu w odpowiednich miejscach w przykładach.
 
-> [!NOTE]
-> Najpierw uzyskać klucz subskrypcji. W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK kognitywnych mowy usługi usługi rozpoznawania zamiar wymaga klucza określonej subskrypcji. [W tym miejscu](https://www.luis.ai) można znaleźć dodatkowe informacje na temat technologii rozpoznawania konwersji, a także informacje o sposobie pozyskania klucza subskrypcji. Zastąp własnego klucza subskrypcji [regionie Twojej subskrypcji](regions.md)i AppId konwersji modelu w odpowiednich miejscach w przykładach.
+## <a name="top-level-declarations"></a>Deklaracje najwyższego poziomu
 
-> [!NOTE]
-> Dla wszystkich przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:
->
-> [!code-cpp[](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#toplevel)]
->
-> - - -
+Wszystkie przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:
 
-## <a name="intent-recognition-using-microphone"></a>Rozpoznawanie konwersji przy użyciu mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-Poniższy fragment kodu ilustruje sposób rozpoznawania zamiar z mikrofon wejścia w języku domyślnym (`en-US`).
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#toplevel)]
 
-[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#toplevel)]
 
-- - -
+## <a name="intent-recognition-using-microphone"></a>Funkcja rozpoznawania celu przy użyciu mikrofonu
 
-## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Rozpoznawanie konwersji w języku określonym za pomocą mikrofon
+Poniższy fragment kodu pokazuje, jak rozpoznawać intencję z mikrofonu wejścia w języku domyślnym (`en-US`).
 
-Poniższy fragment kodu ilustruje sposób rozpoznawania zamiar z mikrofon wejścia w określonym języku, w tym przypadku w języku niemieckim (`de-de`).
+[!code-csharp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithMicrophone)]
 
-[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
+[!code-cpp[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithMicrophone)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithMicrophone)]
 
-## <a name="intent-recognition-from-a-file"></a>Rozpoznawanie konwersji z pliku
+## <a name="intent-recognition-using-microphone-in-a-specified-language"></a>Funkcja rozpoznawania celu przy użyciu mikrofonu w określonym języku.
 
-Poniższy fragment kodu rozpoznaje zamiar z pliku audio w języku domyślnym (`en-US`), obsługiwanego formatu jest jeden kanał (mono) WAV / PCM z 16 KHz próbkowania.
+Poniższy fragment kodu pokazuje, jak rozpoznać intencje z mikrofonu wejścia w określonym języku, w tym przypadku w języku niemieckim (`de-de`).
 
-[!include[Sample Audio](includes/sample-audio.md)]
+[!code-csharp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentRecognitionWithLanguage)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentRecognitionWithLanguage)]
 
-- - -
+[!code-java[Intent Recognition Using Microphone In A Specified Language](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentRecognitionWithLanguage)]
 
-## <a name="intent-recognition-using-events"></a>Rozpoznawanie konwersji za pomocą zdarzeń
+## <a name="intent-recognition-from-a-file-using-events"></a>Funkcja rozpoznawania celu z plikiem za pomocą zdarzeń
 
-Fragment kodu pokazano, jak rozpoznać zamiar w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak pośrednich wyników. 
+Fragment kodu pokazuje, jak rozpoznawać intencję w języku domyślnym (`en-US`) w sposób ciągły. Ten kod umożliwia dostęp do dodatkowych informacji, takich jak wyniki pośrednie. Dane wejściowe są brane z z pliku audio, obsługiwany format WAV jednego kanału (mono) / PCM z 16 KHz próbkowania.
 
-[!code-cpp[Intent Recognition Using Events](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentContinuousRecognitionUsingEvents)]
+[!code-csharp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-- - -
+[!code-cpp[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/intent_recognition_samples.cpp#IntentContinuousRecognitionWithFile)]
 
-## <a name="sample-source-code"></a>Przykładowy kod źródłowy
+[!code-java[Intent Recognition Using Events From a File](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/IntentRecognitionSamples.java#IntentContinuousRecognitionWithFile)]
 
-Dla zestawu najnowsze przykłady, zobacz [repozytorium GitHub próbki SDK kognitywnych usług mowy](https://aka.ms/csspeech/samples).
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

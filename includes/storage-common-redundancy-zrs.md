@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/03/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 056007ba9d28280a6055ca3312e2aa53e635d1d3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a88588497919d6cce17ced6d94de3bcbbb6a3019
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859798"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069636"
 ---
 Magazyn strefowo nadmiarowy (ZRS) replikuje Twoje dane synchronicznie w trzech klastrach magazynu w jednym regionie. Każdy klaster magazynu są fizycznie oddzielone od innych i znajduje się w jego własnej strefie dostępności (AZ). Każda strefa dostępności i klaster magazynu ZRS, to jest autonomicznego, przy użyciu osobnych narzędzi i funkcji sieciowych.
 
@@ -24,7 +24,7 @@ Magazyn ZRS należy wziąć pod uwagę scenariusze, które wymagają wysokiego p
 Aby uzyskać więcej informacji o strefach dostępności, zobacz [Przegląd stref dostępności](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 ## <a name="support-coverage-and-regional-availability"></a>Zakres pomocy technicznej i dostępność regionalna
-Magazyn ZRS obsługuje obecnie standard [ogólnego przeznaczenia w wersji 2 (GPv2)](../articles/storage/common/storage-account-options.md#general-purpose-v2) typów kont. Magazyn ZRS jest dostępny dla blokowych obiektów blob, -disk stronicowe obiekty BLOB, pliki, tabele i kolejki. Ponadto wszystkie swoje [Storage Analytics](../articles/storage/common/storage-analytics.md) dzienniki i [metryk usługi Storage](../articles/storage/common/storage-enable-and-view-metrics.md)
+Magazyn ZRS obsługuje obecnie standard [ogólnego przeznaczenia w wersji 2 (GPv2)](../articles/storage/common/storage-account-options.md#general-purpose-v2-accounts) typów kont. Magazyn ZRS jest dostępny dla blokowych obiektów blob, -disk stronicowe obiekty BLOB, pliki, tabele i kolejki. Ponadto wszystkie swoje [Storage Analytics](../articles/storage/common/storage-analytics.md) dzienniki i [metryk usługi Storage](../articles/storage/common/storage-enable-and-view-metrics.md)
 
 Magazyn ZRS jest ogólnie dostępna w następujących regionach:
 
@@ -85,7 +85,7 @@ Działu pomocy technicznej następnie Tobą skontaktuje. Osoba będzie dostępne
 >[!NOTE]
 > Gdy magazyn ZRS jest [jest ogólnie dostępna](#support-coverage-and-regional-availability) w regionie, nie będzie już mógł utworzyć konta klasycznego magazynu ZRS w portalu, w tym samym regionie. Jednak można nadal utworzyć jedną za pomocą innych metod, takich jak Microsoft PowerShell i interfejsu wiersza polecenia platformy Azure, oznacza to, aż klasyczny magazyn ZRS jest przestarzała.
 
-Klasyczny magazyn ZRS asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Replika może być niedostępna, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w [ogólnego przeznaczenia w wersji 1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1) kont magazynu. Nie można przekonwertować konta klasycznego magazynu ZRS na konto magazynu LRS lub GRS ani odwrotnie, a ponadto konto klasycznego magazynu ZRS nie ma metryk ani funkcji rejestrowania.
+Klasyczny magazyn ZRS asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Replika może być niedostępna, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w [ogólnego przeznaczenia w wersji 1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1-accounts) kont magazynu. Nie można przekonwertować konta klasycznego magazynu ZRS na konto magazynu LRS lub GRS ani odwrotnie, a ponadto konto klasycznego magazynu ZRS nie ma metryk ani funkcji rejestrowania.
 
 Nie można przekonwertować konta klasycznego magazynu ZRS, do lub z magazynu LRS, GRS lub RA-GRS. Konta klasycznego magazynu ZRS nie obsługują także metryk i rejestrowania.
 

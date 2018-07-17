@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: ghogen
-ms.openlocfilehash: c97f75e0a41a4bf314963dc26c6424a0b773822b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb9730f785b01a620e36a265216488c401eac63a
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38665234"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068492"
 ---
 # <a name="connect-to-the-text-analytics-service-by-using-connected-services-in-visual-studio"></a>Połączenia z usługą Analiza tekstu przy użyciu usług połączonych programu Visual Studio
 
@@ -193,7 +193,7 @@ W tym artykule i umieszczanych tam artykułach pomocnika należy podać szczegó
     }
     ```
 
-1. Dodaj widok, który przedstawia analizowany tekst, języka, określane i wynik, który reprezentuje poziom ufności do analizy.
+1. Dodaj widok, aby wyświetlić analizowany tekst, języka, określane i wynik, który reprezentuje poziom ufności do analizy. Aby to zrobić, kliknij prawym przyciskiem myszy **widoków** folderu, wybierz **Dodaj**, następnie **widoku**. W oknie dialogowym podaj nazwę _TextAnalyzeResult_, zaakceptuj ustawienia domyślne, aby dodać nowy plik o nazwie _TextAnalyzeResult.cshtml_ w **widoków** folder i Skopiuj poniższą zawartość do niego:
     
     ```cshtml
     @using System

@@ -1,6 +1,6 @@
 ---
-title: Utwórz bramę aplikacji przy użyciu certyfikatu — wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji i Dodaj certyfikat dla zakończenia połączenia SSL przy użyciu wiersza polecenia platformy Azure.
+title: Tworzenie bramy aplikacji przy użyciu certyfikatu — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji i dodać certyfikat terminacji SSL przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,27 +8,27 @@ editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2e72417b51e60f404f89b92a64678ce67b56a5e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2fda86d072d441a55f99cf6ebc47740f3b9744fa
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355881"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070396"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Utwórz bramę aplikacji protokołu HTTP do przekierowywania HTTPS przy użyciu wiersza polecenia platformy Azure
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu wiersza polecenia platformy Azure
 
-Interfejsu wiersza polecenia Azure umożliwia tworzenie [brama aplikacji w](application-gateway-introduction.md) certyfikat dla zakończenia połączenia SSL. Reguły routingu jest używana do przekierowywania ruchu HTTP z portem HTTPS w Centrum aplikacji. W tym przykładzie tworzymy [zestaw skali maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) puli zaplecza bramy aplikacji, która zawiera dwa wystąpienia maszyny wirtualnej.
+Można użyć wiersza polecenia platformy Azure, aby utworzyć [bramy application gateway](application-gateway-introduction.md) przy użyciu certyfikatu dla kończenia żądań SSL. Reguła routingu jest używany do przekierowywania ruchu HTTP do portu HTTPS w Twojej bramy application gateway. W tym przykładzie tworzymy [zestawu skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) dla puli zaplecza usługi application gateway, która zawiera dwa wystąpienia maszyn wirtualnych.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Utwórz certyfikat z podpisem własnym
+> * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
-> * Utwórz bramę aplikacji przy użyciu certyfikatu
-> * Dodaj regułę odbiornika i Przekierowanie
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie bramy aplikacji z certyfikatem
+> * Dodaj regułę odbiornik i Przekierowanie
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,27 +36,27 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik szybkiego startu będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Utwórz certyfikat z podpisem własnym
+## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
 
-W środowisku produkcyjnym należy zaimportować certyfikat podpisane przez zaufanego dostawcę. W tym samouczku Utwórz certyfikat z podpisem własnym i pliku pfx za pomocą polecenia biblioteki openssl.
+Do użycia w środowisku produkcyjnym należy zaimportować prawidłowy certyfikat podpisany przez zaufanego dostawcę. W tym samouczku utworzysz certyfikat z podpisem własnym i plik pfx za pomocą polecenia biblioteki openssl.
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
-Wprowadź wartości odpowiednich dla certyfikatu. Można zaakceptować wartości domyślne.
+Wprowadź wartości odpowiednie dla Twojego certyfikatu. Możesz zaakceptować wartości domyślne.
 
 ```azurecli-interactive
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
-Wprowadź hasło dla certyfikatu. W tym przykładzie *Azure123456!* jest używany.
+Wprowadź hasło certyfikatu. W tym przykładzie używane jest hasło *Azure123456!* .
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Tworzenie grupy zasobów przy użyciu [Tworzenie grupy az](/cli/azure/group#create).
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#create).
 
-Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupAG* w *eastus* lokalizacji.
+W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane serwerów wewnętrznej bazy danych przy użyciu [Utwórz podsieć sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu [utworzyć az sieci publicznej ip](/cli/azure/public-ip#az_network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az_net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -86,9 +86,9 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć [utworzyć az sieci z bramy aplikacji](/cli/azure/network/application-gateway#az_network_application_gateway_create) Utwórz bramę aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu wiersza polecenia platformy Azure, należy określić informacje o konfiguracji, takie jak pojemności, jednostki sku i ustawienia protokołu HTTP. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. 
 
-Brama aplikacji jest przypisany do *myAGSubnet* i *myAGPublicIPAddress* wcześniej utworzony. W tym przykładzie należy skojarzyć utworzony certyfikat i jego hasło po utworzeniu bramy aplikacji. 
+Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. W tym przykładzie podczas tworzenia bramy aplikacji należy skojarzyć utworzony certyfikat i jego hasło. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -109,19 +109,19 @@ az network application-gateway create \
 
 ```
 
- Może upłynąć kilka minut dla bramy aplikacji ma zostać utworzony. Po utworzeniu bramy aplikacji, można wyświetlić te nowe funkcje:
+ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplikacji możesz zauważyć następujące nowe funkcje:
 
-- *appGatewayBackendPool* -bramę aplikacji musi mieć co najmniej jedna pula adresów zaplecza.
-- *appGatewayBackendHttpSettings* — Określa, że portu 80 oraz protokołu HTTP jest używany do komunikacji.
-- *appGatewayHttpListener* -odbiornika domyślne skojarzone z *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -przypisuje *myAGPublicIPAddress* do *appGatewayHttpListener*.
-- *rule1* — domyślna routingu regułę, która jest skojarzona z *appGatewayHttpListener*.
+- *appGatewayBackendPool* — brama aplikacji musi mieć co najmniej jedną pulę adresów zaplecza.
+- *appGatewayBackendHttpSettings* — określa, że port 80 i protokół HTTP są używane do komunikacji.
+- *appGatewayHttpListener* — domyślny odbiornik skojarzony z pulą *appGatewayBackendPool*.
+- *appGatewayFrontendIP* — przypisuje adres *myAGPublicIPAddress* do odbiornika *appGatewayHttpListener*.
+- *rule1* — domyślna reguła routingu skojarzona z odbiornikiem *appGatewayHttpListener*.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Dodaj regułę odbiornika i Przekierowanie
+## <a name="add-a-listener-and-redirection-rule"></a>Dodaj regułę odbiornik i Przekierowanie
 
 ### <a name="add-the-http-port"></a>Dodaj HTTP port
 
-Można użyć [tworzenie frontonu — port az brama aplikacji w sieci](/cli/azure/network/application-gateway/frontend-port#az_network_application_gateway_frontend_port_create) Aby dodać HTTP port na bramie aplikacji.
+Możesz użyć [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway/frontend-port#az_network_application_gateway_frontend_port_create) Aby dodać HTTP port do usługi application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -131,9 +131,9 @@ az network application-gateway frontend-port create \
   --name httpPort
 ```
 
-### <a name="add-the-http-listener"></a>Dodaj odbiornika HTTP
+### <a name="add-the-http-listener"></a>Dodawanie odbiornika HTTP
 
-Można użyć [utworzyć az sieci bramy aplikacji odbiornik http](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) można dodać odbiornik o nazwie *myListener* na bramie aplikacji.
+Możesz użyć [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create) do dodania odbiornika o nazwie *myListener* do usługi application gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -144,9 +144,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-redirection-configuration"></a>Dodawanie konfiguracji przekierowania
+### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj do konfiguracji przekierowania protokołu HTTPS przy użyciu bramy aplikacji HTTP [utworzyć brama aplikacji w sieci az przekierowania config](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
+Dodaj HTTP do HTTPS konfiguracji przekierowania do bramy aplikacji przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Dodaj regułę routingu
 
-Dodaj regułę routingu o nazwie *rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły brama aplikacji w sieci az](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
+Dodaj regułę routingu o nazwie *reguły rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -175,7 +175,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych
 
-W tym przykładzie, Utwórz zestaw o nazwie skalowania maszyny wirtualnej *myvmss* zapewnia serwery w puli zaplecza bramy aplikacji. W zestawie skalowania maszyn wirtualnych są skojarzone z *myBackendSubnet* i *appGatewayBackendPool*. Aby utworzyć skali zestaw, możesz użyć [az vmss utworzyć](/cli/azure/vmss#az_vmss_create).
+W tym przykładzie tworzenia maszyny wirtualnej zestawu skalowania o nazwie *myvmss* zapewnia serwerów w puli zaplecza w usłudze application gateway. Maszyny wirtualne w zestawie skalowania są kojarzone z podsiecią *myBackendSubnet* i pulą *appGatewayBackendPool*. Aby utworzyć zestaw skalowania, możesz użyć polecenia [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \
@@ -204,13 +204,13 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, można użyć [az sieci ip publicznego Pokaż](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -220,22 +220,22 @@ az network public-ip show \
   --output tsv
 ```
 
-![Ostrzeżenie bezpieczne](./media/tutorial-http-redirect-cli/application-gateway-secure.png)
+![Ostrzeżenie o zabezpieczeniach](./media/tutorial-http-redirect-cli/application-gateway-secure.png)
 
-Aby zaakceptować zabezpieczeń ostrzeżenie, jeśli używasz certyfikatu z podpisem własnym, wybierz **szczegóły** , a następnie **przejdź do strony sieci Web**. Zostanie wyświetlona zabezpieczona witryna serwera NGINX, tak jak w poniższym przykładzie:
+Aby zaakceptować ostrzeżenie o zabezpieczeniach, jeśli używasz certyfikatu z podpisem własnym, wybierz pozycję **Szczegóły**, a następnie pozycję **Przejdź do strony internetowej**. Zostanie wyświetlona zabezpieczona witryna serwera NGINX, tak jak w poniższym przykładzie:
 
-![Podstawowy adres URL testu bramy aplikacji](./media/tutorial-http-redirect-cli/application-gateway-nginxtest.png)
+![Testowanie podstawowego adresu URL w bramie aplikacji](./media/tutorial-http-redirect-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz certyfikat z podpisem własnym
+> * Tworzenie certyfikatu z podpisem własnym
 > * Konfigurowanie sieci
-> * Utwórz bramę aplikacji przy użyciu certyfikatu
-> * Dodaj regułę odbiornika i Przekierowanie
-> * Utwórz zestaw z domyślnej puli zaplecza skali maszyny wirtualnej
+> * Tworzenie bramy aplikacji z certyfikatem
+> * Dodaj regułę odbiornik i Przekierowanie
+> * Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu domyślnej puli zaplecza
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o co można zrobić z bramy aplikacji](application-gateway-introduction.md)
+> [Więcej informacji na temat funkcji bramy aplikacji](application-gateway-introduction.md)

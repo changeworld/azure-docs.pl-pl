@@ -1,180 +1,212 @@
 ---
-title: Rozwiąż typowe błędy wdrożenia usługi Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób rozwiązania typowych błędów, podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager.
+title: Rozwiąż typowe błędy wdrażania na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób rozwiązywania typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: Błąd wdrażania, wdrożenia usługi azure wdrażanie na platformie azure
+keywords: Błąd wdrażania, wdrażania platformy azure, wdrażanie na platformie azure
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
+ms.date: 07/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ecc1a9557c7854a0771decb3cc7f7597bcd87dd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7313ea1ff26d9c732d04b02f8b88f14e2aa4dd2f
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360023"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072055"
 ---
-# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrożenia usługi Azure z usługą Azure Resource Manager
+# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
-W tym artykule opisano niektóre typowe błędy wdrożenia usługi Azure może wystąpić, a także informacje umożliwiające rozwiązanie błędów. Jeśli nie możesz znaleźć kod błędu dla błędu wdrożenia, zobacz [znaleźć kodu błędu](#find-error-code).
+W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure, mogą wystąpić i zawiera informacje, aby naprawić błędy. Jeśli nie możesz znaleźć kod błędu dla błędu wdrożenia, zobacz [znaleźć kod błędu:](#find-error-code).
 
 ## <a name="error-codes"></a>Kody błędów
 
 | Kod błędu | Środki zaradcze | Więcej informacji |
 | ---------- | ---------- | ---------------- |
-| AccountNameInvalid | Wykonaj ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznanie nazwy konta magazynu](resource-manager-storage-account-name-errors.md) |
-| AccountPropertyCannotBeSet | Sprawdź właściwości konta magazynu dostępne. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Klaster lub regionie nie ma dostępu do zasobów lub nie może obsługiwać żądany rozmiar maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub zwróć inny rozmiar maszyny Wirtualnej. | [Problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z przydziałem](../virtual-machines/windows/allocation-failure.md)|
-| AnotherOperationInProgress | Poczekaj na zakończenie operacji współbieżnych. | |
-| AuthorizationFailed | Twoje konto lub nazwy głównej usługi nie ma wystarczające prawa dostępu do wdrażania. Sprawdź używane konto należy do roli, a jego dostępu dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md) |
-| BadRequest | Wysłano wartości wdrożenia, które nie są zgodne, czego oczekuje się za pomocą Menedżera zasobów. Sprawdź komunikat o stanie wewnętrzny Aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Odwołanie do szablonu](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |
-| Konflikt | Zażądano operacji, które nie są dozwolone w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
-| DeploymentActive | Poczekaj, aż równoczesnych wdrożenia do tej grupy zasobów, aby zakończyć. | |
-| Niepowodzenia wdrożenia | Błąd niepowodzenia wdrożenia jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz poprawić błąd. Sprawdź szczegóły błędu dla kodu błędu, zawierający więcej informacji. | [Znajdź kod błędu:](#find-error-code) |
-| DeploymentQuotaExceeded | Jeśli użytkownik osiągnie limit 800 wdrożeń dla grupy zasobów, usunięcie wdrożeń z historii, które nie są już potrzebne. Możesz usunąć pozycji z historii kodu za pomocą [usunąć wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_delete) dla wiersza polecenia platformy Azure, lub [AzureRmResourceGroupDeployment Usuń](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
-| DnsRecordInUse | Nazwa rekordu DNS musi być unikatowa. Podaj inną nazwę, albo zmodyfikować istniejący rekord. | |
+| AccountNameInvalid | Postępuj zgodnie z ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
+| AccountPropertyCannotBeSet | Sprawdź właściwości konta dostępnego magazynu. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| AllocationFailed | Klaster lub regionie nie ma dostępnych zasobów, lub nie obsługuje żądanego rozmiaru maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub żądania innego rozmiaru maszyny Wirtualnej. | [Problemy z aprowizacji i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z aprowizacji i alokacji w Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z błędami alokacji](../virtual-machines/windows/allocation-failure.md)|
+| AnotherOperationInProgress | Poczekaj na zakończenie operacji jednoczesnych. | |
+| AuthorizationFailed | Twoje konto lub jednostki usługi nie ma wystarczające uprawnienia dostępu do ukończenia wdrażania. Sprawdź, Twoje konto należy do roli, a jego dostęp dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md) |
+| BadRequest | Wysłano wartości wdrożenia, które nie spełniają oczekiwań przez usługę Resource Manager. Sprawdź komunikat o stanie wewnętrzny, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Dokumentacja dotycząca szablonów](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |
+| Konflikt | Zażądano operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
+| DeploymentActive | Poczekaj, aż współbieżnych wdrożenie do tej grupy zasobów, aby zakończyć. | |
+| Niepowodzenia wdrożenia | Błąd niepowodzenia wdrożenia jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Sprawdź szczegóły błędu dla kodu błędu, który zawiera więcej informacji. | [Znajdź kod błędu:](#find-error-code) |
+| DeploymentQuotaExceeded | Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_delete) wiersza polecenia platformy Azure lub [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
+| DnsRecordInUse | Nazwa rekordu DNS musi być unikatowa. Podaj inną nazwę lub zmodyfikować istniejący rekord. | |
 | ImageNotFound | Sprawdź ustawienia obrazu maszyny Wirtualnej. |  |
 | InUseSubnetCannotBeDeleted | Błąd może się pojawić podczas próby zaktualizowania zasobu, ale żądanie jest przetwarzane przez usunięcie i utworzenie zasobu. Upewnij się określić wszystkie wartości bez zmian. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| InvalidAuthenticationTokenTenant | Uzyskaj token dostępu dla odpowiedniego dzierżawcy. Tokenu można uzyskać tylko konta należącego do dzierżawy. | |
-| InvalidContentLink | Prawdopodobnie podjęto próbę połączyć zagnieżdżony szablon, który nie jest dostępny. Sprawdź identyfikator URI przewidzianych szablon zagnieżdżony. Jeśli szablon istnieje w ramach konta magazynu, upewnij się, że identyfikator URI jest dostępny. Należy przekazać tokenu sygnatury dostępu Współdzielonego. | [Szablony połączonego](resource-group-linked-templates.md) |
-| InvalidParameter | Jedna z wartości podane dla zasobu nie jest zgodna z oczekiwaną wartością. Ten błąd może wynikać z wielu różnych warunkach. Na przykład hasła mogą być niewystarczające lub nazwa obiektu blob może być nieprawidłowa. Sprawdź komunikat o błędzie, aby określić wartość, która musi zostać usunięty. | |
-| InvalidRequestContent | Wartości wdrożenia zawierają wartości, które nie powinny lub brakuje wymaganych wartości. Potwierdź wartości dla danego typu zasobu. | [Odwołanie do szablonu](/azure/templates/) |
-| InvalidRequestFormat | Włączenie rejestrowania debugowania, podczas wykonywania wdrożenia i Sprawdź treść żądania. | [Funkcję rejestrowania debugowania](#enable-debug-logging) |
-| InvalidResourceNamespace | Sprawdź przestrzeni nazw zasobu określony w **typu** właściwości. | [Odwołanie do szablonu](/azure/templates/) |
-| InvalidResourceReference | Zasób jeszcze nie istnieje lub jest niepoprawnie odwołuje się do. Sprawdź, czy konieczne jest dodanie zależności. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametry wymagane dla danego scenariusza. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
-| InvalidResourceType | Typ wyboru zasób określony w **typu** właściwości. | [Odwołanie do szablonu](/azure/templates/) |
-| InvalidSubscriptionRegistrationState | Zarejestrować subskrypcji u dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| InvalidTemplate | Sprawdź składnię szablonu błędów. | [Nieprawidłowy szablon rozwiązania](resource-manager-invalid-template-errors.md) |
-| InvalidTemplateCircularDependency | Usuń zbędne zależności. | [Rozwiązanie zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
-| LinkedAuthorizationFailed | Sprawdź, czy używane konto należy do tej samej dzierżawy jako grupa zasobów, które wdrażasz. | |
-| LinkedInvalidPropertyId | Identyfikator zasobu dla zasobu nie jest poprawnie rozpoznawania. Sprawdź, podaj wartości wszystkich wymaganych identyfikatorów zasobów, w tym identyfikator subskrypcji, nazwa grupy zasobów, typ zasobu, nazwa zasobu nadrzędnego (Jeśli to konieczne) i nazwa zasobu. | |
-| LocationRequired | Podaj lokalizację dla zasobu. | [Ustawianie lokalizacji](resource-manager-templates-resources.md#location) |
-| MismatchingResourceSegments | Upewnij się, że zasób ma nieprawidłową liczbę segmentów w nazwę i typ zagnieżdżony. | [Rozwiąż segmenty zasobu](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
-| MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów i obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| MissingSubscriptionRegistration | Zarejestrować subskrypcji u dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| NoRegisteredProviderFound | Sprawdzaj stan rejestracji dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| Nie odnaleziono | Może być próby wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy konieczne jest dodanie zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
-| OperationNotAllowed | Wdrożenie próbuje operację, która przekracza limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Popraw danego wdrożenia, aby pozostać w przydziałów. W przeciwnym razie należy wziąć pod uwagę żądania zmiany przydziałami. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
-| ParentResourceNotFound | Upewnij się, że istnieje zasób nadrzędnego przed utworzeniem zasoby podrzędne. | [Rozwiąż zasobu nadrzędnego](resource-manager-parent-resource-errors.md) |
-| PrivateIPAddressInReservedRange | Określony adres IP zawiera zakres adresów wymagane przez platformę Azure. Zmienianie adresu IP, aby uniknąć zarezerwowany zakres. | [Adresy IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | Określony adres IP jest spoza zakresu podsieci. Zmienianie adresu IP, aby przypadał zakresu podsieci. | [Adresy IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PropertyChangeNotAllowed | Niektóre właściwości nie można zmienić na wdrożonych zasobów. Podczas aktualizowania zasobu, należy ograniczyć zmiany właściwości dozwolone. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| RequestDisallowedByPolicy | Twoja subskrypcja obejmuje zasadę zasobu, która uniemożliwia akcję, którą próbujesz wykonać podczas wdrażania. Znajdź zasad, która blokuje akcji. Jeśli to możliwe zmodyfikuj wdrożenie do spełnienia ograniczenia z zasad. | [Zasady rozwiązania](resource-manager-policy-requestdisallowedbypolicy-error.md) |
-| ReservedResourceName | Podaj nazwę zasobu, która nie zawiera zastrzeżoną nazwą. | [Nazw zarezerwowanych zasobów](resource-manager-reserved-resource-name.md) |
-| ResourceGroupBeingDeleted | Poczekaj do usunięcia zakończyć. | |
-| ResourceGroupNotFound | Sprawdź nazwę grupy zasobów docelowych wdrożenia. Musi już istnieć w ramach subskrypcji. Sprawdź kontekst subskrypcji. | [Azure CLI](/cli/azure/account?#az_account_set) [programu PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
-| ResourceNotFound | Wdrożenie odwołuje się do zasobu, którego nie można rozwiązać. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametrów wymaganych dla danego scenariusza. | [Rozpoznawania odwołań](resource-manager-not-found-errors.md) |
-| ResourceQuotaExceeded | Wdrożenie próbuje utworzyć zasoby, które przekraczają limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Popraw infrastruktury ma pozostać w ramach przydziałów. W przeciwnym razie należy wziąć pod uwagę żądania zmiany przydziałami. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
-| SkuNotAvailable | Wybierz jednostki SKU (takich jak rozmiar maszyny Wirtualnej) dostępnej dla wybranej lokalizacji. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |
-| StorageAccountAlreadyExists | Podaj unikatową nazwę konta magazynu. | [Rozpoznanie nazwy konta magazynu](resource-manager-storage-account-name-errors.md)  |
-| StorageAccountAlreadyTaken | Podaj unikatową nazwę konta magazynu. | [Rozpoznanie nazwy konta magazynu](resource-manager-storage-account-name-errors.md) |
-| StorageAccountNotFound | Sprawdź subskrypcji, grupy zasobów i nazwy konta magazynu, którego próbujesz użyć. | |
+| InvalidAuthenticationTokenTenant | Uzyskiwanie tokenu dostępu do odpowiedniego dzierżawy. Tokenu można pobierać tylko z której Twoje konto należy do dzierżawy. | |
+| InvalidContentLink | Prawdopodobnie podjęto próbę połączyć zagnieżdżony szablon, który nie jest dostępny. Sprawdź identyfikator URI podany dla zagnieżdżonych szablonów. Jeśli szablon istnieje w ramach konta magazynu, upewnij się, że identyfikator URI jest dostępny. Może być konieczne przekazać token sygnatury dostępu Współdzielonego. | [Połączone szablony](resource-group-linked-templates.md) |
+| InvalidParameter | Jedna z wartości podanych dla zasobu jest niezgodna z oczekiwaną wartością. Ten błąd może wynikać z wielu różnych warunków. Na przykład hasła mogą być niewystarczające lub nazwa obiektu blob może być nieprawidłowa. Sprawdź komunikat o błędzie, aby określić wartość, która musi zostać poprawione. | |
+| InvalidRequestContent | Wartości wdrożenia zawierają wartości, które nie powinny lub brakuje wymaganych wartości. Upewnij się, wartości dla danego typu zasobu. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidRequestFormat | Włączenie rejestrowania debugowania, podczas wykonywania wdrożenia, a następnie sprawdź treść żądania. | [Rejestrowanie debugowania](#enable-debug-logging) |
+| InvalidResourceNamespace | Sprawdź przestrzeń nazw zasobów, które określiłeś w **typu** właściwości. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidResourceReference | Zasób jeszcze nie istnieje lub jest niepoprawnie przywoływane. Sprawdź, czy należy dodać zależność. Upewnij się, że korzystanie z **odwołania** funkcja zawiera wymagane parametry dla danego scenariusza. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
+| InvalidResourceType | Typ wyboru zasób określony w **typu** właściwości. | [Dokumentacja dotycząca szablonów](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
+| InvalidTemplate | Sprawdź błędy składni szablonu. | [Nieprawidłowy szablon rozwiązania](resource-manager-invalid-template-errors.md) |
+| InvalidTemplateCircularDependency | Usuń niepotrzebne zależności. | [Rozwiąż zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
+| LinkedAuthorizationFailed | Sprawdź, czy Twoje konto należy do tej samej dzierżawie, co grupa zasobów, które są wdrażane do. | |
+| LinkedInvalidPropertyId | Identyfikator zasobu dla zasobu nie jest rozpoznawana poprawnie. Należy sprawdzić, możesz podać wartości wszystkich wymaganych dla Identyfikatora zasobu, w tym identyfikator subskrypcji, nazwę grupy zasobów, typ zasobu, nazwa zasobu nadrzędnego (jeśli jest to konieczne) i nazwę zasobu. | |
+| LocationRequired | Podaj lokalizację zasobu bazy danych. | [Ustawianie lokalizacji](resource-manager-templates-resources.md#location) |
+| MismatchingResourceSegments | Upewnij się, że zagnieżdżone zasób ma poprawną liczbę segmentów w nazwie i typie. | [Rozwiąż segmenty zasobu](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
+| MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów oraz obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
+| MissingSubscriptionRegistration | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
+| NoRegisteredProviderFound | Sprawdź stan rejestracji dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
+| Nie odnaleziono | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
+| OperationNotAllowed | Wdrożenie próbuje operacji, która przekracza limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Sprawdź, czy wdrożenie w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
+| ParentResourceNotFound | Upewnij się, że zasób nadrzędny znajduje się przed utworzeniem elementu podrzędnego zasobów. | [Rozwiąż zasób nadrzędny](resource-manager-parent-resource-errors.md) |
+| PrivateIPAddressInReservedRange | Określony adres IP obejmuje zakres adresów, wymagane przez platformę Azure. Zmienianie adresu IP, aby uniknąć zarezerwowany zakres. | [Adresy IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressNotInSubnet | Określony adres IP jest spoza zakresu podsieci. Zmień adres IP, który wchodzi w zakres podsieci. | [Adresy IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PropertyChangeNotAllowed | Nie można zmienić niektóre właściwości wdrożony zasób. Podczas aktualizowania zasobu, należy ograniczyć zmiany właściwości dozwolone. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| RequestDisallowedByPolicy | Twoja subskrypcja obejmuje zasady zasobów, które uniemożliwiają akcję, którą próbujesz wykonać podczas wdrażania. Znaleźć zasady, która blokuje akcji. Jeśli to możliwe zmodyfikuj wdrożenie spełnia ograniczenia z zasad. | [Rozwiąż zasad](resource-manager-policy-requestdisallowedbypolicy-error.md) |
+| ReservedResourceName | Podaj nazwę zasobu, który nie obejmuje nazwą zastrzeżoną. | [Nazw zarezerwowanych zasobów](resource-manager-reserved-resource-name.md) |
+| ResourceGroupBeingDeleted | Oczekiwanie na usunięcie zakończyć. | |
+| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az_account_set) [programu PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceNotFound | Wdrożenie odwołuje się do zasobu, którego nie można rozpoznać. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametrów wymaganych dla danego scenariusza. | [Rozpoznawania odwołań](resource-manager-not-found-errors.md) |
+| ResourceQuotaExceeded | Wdrożenie próbuje utworzyć zasoby, które przekraczają limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe poprawić swoją infrastrukturę, aby w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
+| Komunikatu SkuNotAvailable | Wybierz jednostkę SKU (np. rozmiar maszyny Wirtualnej), który jest dostępny dla lokalizacji, który wybrano. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |
+| StorageAccountAlreadyExists | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md)  |
+| StorageAccountAlreadyTaken | Podaj unikatową nazwę konta magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
+| StorageAccountNotFound | Sprawdź subskrypcji, grupy zasobów i nazwę konta magazynu, którą próbujesz użyć. | |
 | SubnetsNotInSameVnet | Maszyna wirtualna może mieć tylko jedną sieć wirtualną. W przypadku wdrażania wielu kart sieciowych, upewnij się, że należą one do tej samej sieci wirtualnej. | [Wiele kart sieciowych](../virtual-machines/windows/multiple-nics.md) |
-| TemplateResourceCircularDependency | Usuń zbędne zależności. | [Rozwiązanie zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
+| TemplateResourceCircularDependency | Usuń niepotrzebne zależności. | [Rozwiąż zależności cykliczne](resource-manager-invalid-template-errors.md#circular-dependency) |
 | TooManyTargetResourceGroups | Zmniejsz liczbę grup zasobów dla pojedynczego wdrożenia. | [Wdrażanie krzyżowe w grupach zasobów](resource-manager-cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>Znajdź kod błędu:
 
 Istnieją dwa typy błędów, które mogą odbierać:
 
-* Błędy sprawdzania poprawności
-* Błędy wdrożenia
+* błędy sprawdzania poprawności
+* błędy związane z wdrażaniem
 
-Błędy sprawdzania poprawności wynikają z scenariusze, które można określić przed przystąpieniem do wdrożenia. Obejmują one błędy składniowe w szablonie lub w trakcie wdrażania zasobów, które może spowodować przekroczenie przydziałami subskrypcji. Błędy wdrożenia wynikają z warunków, które występują w trakcie procesu wdrażania. Obejmują one próby uzyskania dostępu do zasobu, który jest wdrażany jednocześnie.
+Błędy sprawdzania poprawności wynikają z scenariusze, które można określić przed przystąpieniem do wdrożenia. Obejmują one błędy składniowe w szablonie lub w trakcie wdrażania zasobów, które spowoduje przekroczenie limity przydziału subskrypcji. Błędy związane z wdrażaniem wynikają z warunków, które występują podczas procesu wdrażania. Obejmują one, próby uzyskania dostępu do zasobu, który jest wdrażany w sposób równoległy.
 
-Oba typy błędów zwraca kod błędu, który umożliwia rozwiązywanie problemów z wdrażaniem. Oba typy błędy są wyświetlane w [dziennik aktywności](resource-group-audit.md). Błędy sprawdzania poprawności nie pojawiają się jednak w historii wdrożenia, ponieważ wdrożenie nigdy nie jest uruchomiony.
+Oba rodzaje błędów zwraca kod błędu, która umożliwia rozwiązywanie problemów z wdrożenia. Oba rodzaje błędy są wyświetlane w [dziennika aktywności](resource-group-audit.md). Jednak błędy walidacji nie występują na liście historii wdrożenia, ponieważ wdrożenie nigdy nie jest uruchomiony.
 
 ### <a name="validation-errors"></a>Błędy weryfikacji
 
-W przypadku wdrażania za pośrednictwem portalu, zobaczysz błąd sprawdzania poprawności po przesłaniu wartości.
+Podczas wdrażania za pośrednictwem portalu, zobaczysz błąd sprawdzania poprawności po przesłaniu własnymi wartościami.
 
-![Pokaż błąd sprawdzania poprawności portalu](./media/resource-manager-common-deployment-errors/validation-error.png)
+![Pokaż błąd sprawdzania poprawności w portalu](./media/resource-manager-common-deployment-errors/validation-error.png)
 
-Zaznacz wiadomość, aby uzyskać więcej informacji. Na poniższej ilustracji, zobacz **InvalidTemplateDeployment** błąd i komunikat informujący zasad zablokowane wdrożenia.
+Zaznacz wiadomość, aby uzyskać więcej informacji. Na poniższej ilustracji widać **InvalidTemplateDeployment** błąd i komunikat informujący, zasady jest blokowany wdrożenia.
 
 ![Pokaż szczegóły sprawdzania poprawności](./media/resource-manager-common-deployment-errors/validation-details.png)
 
-### <a name="deployment-errors"></a>Błędy wdrożenia
+### <a name="deployment-errors"></a>Błędy związane z wdrażaniem
 
-Podczas operacji pozytywnej weryfikacji, ale nie powiodło się podczas wdrażania, zostanie wyświetlony błąd w powiadomieniach. Wybierz powiadomienie.
+Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdrażania, zobaczysz błąd w powiadomieniach. Wybierz powiadomienie.
 
 ![Błąd powiadomienia](./media/resource-manager-common-deployment-errors/notification.png)
 
-Możesz wyświetlić więcej szczegółów dotyczących wdrożenia. Wybierz opcję, aby uzyskać więcej informacji o tym błędzie.
+Zostanie wyświetlone więcej szczegółów dotyczących wdrożenia. Wybierz opcję, aby uzyskać więcej informacji o błędzie.
 
 ![Wdrażanie nie powiodło się](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Zostanie wyświetlony komunikat o błędzie i kody błędów. Należy zauważyć, że istnieją dwa kody błędów. Pierwszy kod błędu (**niepowodzenia wdrożenia**) jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz poprawić błąd. Drugi kod błędu (**StorageAccountNotFound**) zawiera szczegółowe informacje, należy. 
+Zostanie wyświetlony komunikat o błędzie i kody błędów. Należy zauważyć, że istnieją dwa kody błędów. Pierwszy kod błędu: (**niepowodzenia wdrożenia**) jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Drugi kod błędu: (**StorageAccountNotFound**) zawiera szczegółowe informacje, potrzebujesz. 
 
 ![szczegóły błędu](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Włączenie rejestrowania debugowania
 
-Czasami możesz uzyskać więcej informacji dotyczących żądania i odpowiedzi, aby dowiedzieć się, co poszło źle. Przy użyciu programu PowerShell lub interfejsu wiersza polecenia Azure, mogą żądać, aby uzyskać dodatkowe informacje jest rejestrowane podczas wdrażania.
+Czasami potrzebujesz więcej informacji na temat żądań i odpowiedzi, aby dowiedzieć się, co poszło źle. Podczas wdrażania możesz poprosić, że dodatkowe informacje są rejestrowane podczas wdrażania. 
 
-- PowerShell
+### <a name="powershell"></a>PowerShell
 
-   W programie PowerShell, należy ustawić **DeploymentDebugLogLevel** parametr do wszystkich, obiektu ResponseContent lub RequestContent.
+W programie PowerShell, należy ustawić **DeploymentDebugLogLevel** parametr do wszystkich, obsah ResponseContent lub RequestContent.
 
-  ```powershell
-  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
-  ```
+```powershell
+New-AzureRmResourceGroupDeployment `
+  -Name exampledeployment `
+  -ResourceGroupName examplegroup `
+  -TemplateFile c:\Azure\Templates\storage.json `
+  -DeploymentDebugLogLevel All
+```
 
-   Sprawdź żądanie zawartości za pomocą następującego polecenia cmdlet:
+Sprawdź żądanie zawartości za pomocą następującego polecenia cmdlet:
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.request `
+| ConvertTo-Json
+```
 
-   Lub zawartości z odpowiedzi:
+Lub zawartość odpowiedzi:
 
-  ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
-  ```
+```powershell
+(Get-AzureRmResourceGroupDeploymentOperation `
+-DeploymentName exampledeployment `
+-ResourceGroupName examplegroup).Properties.response `
+| ConvertTo-Json
+```
 
-   Te informacje mogą pomóc w określeniu, czy wartość w szablonie jest są ustawione niepoprawnie.
+Te informacje może pomóc w określeniu, czy wartość w szablonie ustawiono jest niepoprawnie.
 
-- Interfejs wiersza polecenia platformy Azure
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-   Sprawdź operacje wdrażania przy użyciu następującego polecenia:
+Obecnie nie obsługuje interfejsu wiersza polecenia platformy Azure, włączenie rejestrowania debugowania, ale można pobrać rejestrowania debugowania.
 
-  ```azurecli
-  az group deployment operation list --resource-group ExampleGroup --name vmlinux
-  ```
+Sprawdź operacji wdrażania przy użyciu następującego polecenia:
 
-- Szablon zagnieżdżony
+```azurecli
+az group deployment operation list \
+  --resource-group examplegroup \
+  --name exampledeployment
+```
 
-   Rejestrowanie informacji debugowania dla szablonu zagnieżdżonego, należy użyć **debugSetting** elementu.
+Sprawdź żądanie zawartości za pomocą następującego polecenia:
 
-  ```json
-  {
-      "apiVersion": "2016-09-01",
-      "name": "nestedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-          "mode": "Incremental",
-          "templateLink": {
-              "uri": "{template-uri}",
-              "contentVersion": "1.0.0.0"
-          },
-          "debugSetting": {
-             "detailLevel": "requestContent, responseContent"
-          }
-      }
-  }
-  ```
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.request
+```
+
+Sprawdź odpowiedzi zawartości za pomocą następującego polecenia:
+
+```azurecli
+az group deployment operation list \
+  --name exampledeployment \
+  -g examplegroup \
+  --query [].properties.response
+```
+
+### <a name="nested-template"></a>Zagnieżdżony szablon
+
+Aby rejestrować informacje debugowania dla zagnieżdżonych szablonów, należy użyć **debugSetting** elementu.
+
+```json
+{
+    "apiVersion": "2016-09-01",
+    "name": "nestedTemplate",
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+            "uri": "{template-uri}",
+            "contentVersion": "1.0.0.0"
+        },
+        "debugSetting": {
+           "detailLevel": "requestContent, responseContent"
+        }
+    }
+}
+```
 
 ## <a name="create-a-troubleshooting-template"></a>Tworzenie szablonu rozwiązywania problemów
 
-W pewnych sytuacjach Najprostszym sposobem Rozwiązywanie problemów z szablonu jest przetestowanie jej części. Uproszczona można utworzyć szablonu, który pozwala skupić się na części podejrzenie, że przyczyną jest błąd. Na przykład załóżmy, że otrzymujesz błąd podczas odwoływania się do zasobu. Zamiast dotyczącą całą szablonu, utworzyć szablon, który zwraca składnik, który może być przyczyną tego problemu. Możesz określić, czy jest przekazywany w parametrach prawo poprawnie, przy użyciu funkcji szablonu i pobieranie zasobu oczekiwać może pomóc.
+W niektórych przypadkach Najprostszym sposobem rozwiązywania problemów z szablonu jest przetestowanie jej części. Możesz utworzyć uproszczona szablon, który pozwala skupić się na części, które Twoim zdaniem jest przyczyną błędu. Na przykład załóżmy, że wyświetlany jest błąd podczas odwoływania się do zasobu. Zamiast radzenia sobie z szablonem całego, należy utworzyć szablon, który zwraca składnik, który może być przyczyną problemu. Możesz określić, czy przekazujesz odpowiednie parametry, za pomocą funkcji szablonu prawidłowo, i pobieranie zasobu oczekujesz, że może pomóc.
 
 ```json
 {
@@ -199,9 +231,9 @@ W pewnych sytuacjach Najprostszym sposobem Rozwiązywanie problemów z szablonu 
 }
 ```
 
-Lub Załóżmy, że pojawiły się błędy wdrożenia, które Twoim zdaniem są związane z niepoprawnie ustawione zależności. Przetestuj szablonu przez podzielenie go na uproszczonej szablonów. Najpierw Utwórz szablon, który wdraża jednego zasobu (np. programu SQL Server). Podczas pracy upewnić się, że ten zasób zdefiniowany prawidłowo, Dodaj zasób zależy od niego (na przykład baza danych SQL). Jeśli te dwa zasoby zdefiniowany prawidłowo, należy dodać inne zasoby zależne (na przykład zasady inspekcji). Between każdego wdrożenia testu Usuń grupę zasobów, aby mieć pewność, że odpowiednio testowania zależności.
+Możesz też Załóżmy, że występują błędy związane z wdrażaniem, które Twoim zdaniem są powiązane próbę ustawienia nieprawidłowej zależności. Testowanie szablonu przez podzielenie go na uproszczonej szablonów. Najpierw Utwórz szablon, który wdraża pojedynczego zasobu (np. SQL Server). Po upewnieniu się, że masz poprawnie zdefiniowana zasobu, Dodaj zasób, który zależy od niego (np. bazy danych SQL). Jeśli masz te dwa zasoby poprawnie zdefiniowana, należy dodać inne zasoby zależne (na przykład zasady inspekcji). Między każdym wdrożeniu testu Usuń grupę zasobów, aby upewnić się, że testy odpowiednio zależności.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej o inspekcji akcji, zobacz [inspekcji operacji za pomocą Menedżera zasobów](resource-group-audit.md).
-* Aby dowiedzieć się więcej o akcjach, aby określić błędy podczas wdrażania, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).
+* Aby dowiedzieć się więcej na temat inspekcji akcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](resource-group-audit.md).
+* Aby dowiedzieć się więcej o akcjach, aby określić błędy podczas wdrażania, zobacz [wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).

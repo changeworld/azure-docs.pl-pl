@@ -1,6 +1,6 @@
 ---
 title: Zdalne monitorowanie akcelerator rozwiązań — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące monitorowania zdalnego akcelerator rozwiązań
+description: Często zadawane pytania dotyczące zdalnego monitorowania akceleratora rozwiązań
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,41 +8,41 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 094bb4b781bb554d340580377ec343f33579299e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21e02a9ae4679c1f9521cc188a6f72878276fb93
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627658"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39076313"
 ---
-# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Często zadawane pytania dotyczące monitorowania zdalnego akcelerator rozwiązań
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Często zadawane pytania dotyczące zdalnego monitorowania akceleratora rozwiązań
 
 Zobacz też ogólne [— często zadawane pytania](iot-accelerators-faq.md).
 
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Ile kosztuje udostępnić nowe rozwiązanie monitorowania zdalnego?
+### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Ile kosztuje aprowizować nowe rozwiązanie monitorowania zdalnego?
 
 Nowy akcelerator rozwiązań udostępnia dwie opcje wdrożenia:
 
-* A *podstawowe* — opcja przeznaczona dla deweloperów wyszukiwanie niższe koszty rozwoju lub klienci, którzy chcą do kompilacji pokaz lub weryfikacji koncepcji.
-* A *standardowe* — opcja przeznaczona dla przedsiębiorstw, która pragnie wdrożyć infrastrukturę gotowe do produkcji.
+* A *podstawowe* opcja przeznaczona dla deweloperów szukających niższe koszty tworzenia lub klienci, którzy chcą tworzyć obsługi demonstracji i weryfikacji koncepcji.
+* A *standardowa* opcja przeznaczona dla przedsiębiorstw, które chcą wdrożyć infrastrukturę gotowe do produkcji.
 
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Jak I upewnij się, że moje kosztów I utrzymywanie niskich podczas opracowywania I Moje rozwiązanie?
+### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Jak mogę upewnij się, że mogę niskich Moje kosztów, podczas gdy tworzyć moje rozwiązanie?
 
-Oprócz zapewnienia dwa wdrożenia zróżnicowanych, nowe rozwiązanie monitorowania zdalnego ma ustawienie, aby włączyć lub wyłączyć wszystkie symulowanego urządzenia, na żądanie. Wyłączanie symulacji zmniejsza danych pozyskanych w rozwiązaniu i w związku z tym całkowity koszt.
+Oprócz zapewniania dwa wdrożenia zróżnicowanej, nowe rozwiązanie monitorowania zdalnego ma ustawienia, aby włączyć lub wyłączyć wszystkie symulowane urządzenia, na żądanie. Wyłączanie symulacji zmniejsza dane pozyskane w rozwiązaniu i dlatego całkowity koszt.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Jaka jest różnica między opcjami wdrażania w wersji podstawowej i standardowej? Jak wybieranie opcji dwa wdrożenia?
+### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Jaka jest różnica między opcjami wdrożenia podstawowa i standardowa? Jak określić jedną z opcji wdrażania dwóch
 
-Każdej opcji wdrażania odnosi się do różnych potrzeb. Podstawy wdrażania jest przeznaczona do rozpoczęcia pracy i rozwój fazy weryfikacji koncepcji i małych wdrożeń pilotażowych. Usługa udostępnia udoskonalone architektura minimalne zasoby potrzebne i niższe koszty. Standardowe wdrożenie jest przeznaczony do tworzenia i dostosowywania rozwiązania gotowe do produkcji i umożliwia wdrożenie z należy pamiętać, że niezbędne elementy. Niezawodności i skalowania aplikacji mikrousług są tworzone jako kontenery Docker i wdrażane za pomocą usługi orchestrator (Kubernetes domyślnie). Orchestrator jest odpowiedzialny za wdrożenie skalowania i zarządzania aplikacji. Należy wybrać opcję na podstawie Twoich potrzeb bieżącej. Można użyć jednego, innych lub obu w zależności od etapu Twojego projektu.
+Każdej opcji wdrażania odnosi się do różnych potrzeb. Podstawowe wdrożenie zaprojektowano do rozpoczęcia pracy i opracowanie Weryfikacja koncepcji i małych pilotażowych. Usprawniona architektura zapewnia minimalne wymagane zasoby i niższe koszty. Standardowe wdrożenie jest przeznaczony do tworzenia i dostosowywania rozwiązania gotowe do produkcji i wdrożenia przy użyciu wymaganych elementów, należy pamiętać, że. Dla niezawodności i skali mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą programu orchestrator (Kubernetes domyślnie). Program orchestrator jest odpowiedzialny za wdrażania, skalowania i zarządzania aplikacji. Należy wybrać opcję zgodnie z potrzebami bieżącego. Można na przykład jeden, drugi lub jako kombinację obu tych w zależności od etapu Twojego projektu.
 
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Jak skonfigurować dynamicznej mapy na pulpicie nawigacyjnym?
+### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Jak skonfigurować dynamiczne mapy na pulpicie nawigacyjnym?
 
-Aby uzyskać więcej informacji, zobacz [klucza uaktualnienia mapy Aby wyświetlić urządzenia na mapie dynamiczne](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
+Aby uzyskać więcej informacji, zobacz [uaktualnienia mapy klawisz, aby wyświetlić urządzenia na mapie dynamiczne](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
 ### <a name="next-steps"></a>Kolejne kroki
 
 Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
-* [Poznaj możliwości akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-explore.md)
+* [Poznaj możliwości akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-remote-monitoring-explore.md)
 * [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
-* [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-accelerators-connected-factory-overview.md)
-* [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)
+* [Wdrażanie akceleratora rozwiązania połączonej fabryki](quickstart-connected-factory-deploy.md)
+* [Zabezpieczenia IoT od podstaw](/azure/iot-fundamentals/iot-security-ground-up)

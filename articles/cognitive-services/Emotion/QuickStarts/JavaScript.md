@@ -1,6 +1,6 @@
 ---
-title: Szybki start API JavaScript rozpoznawania emocji — warstwa | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API rozpoznawania emocji — warstwa JavaScript w usługach kognitywnych.
+title: Szybki start JavaScript interfejs API rozpoznawania emocji | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API rozpoznawania emocji, za pomocą języka JavaScript w usługach Cognitive Services.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,34 +9,34 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 2578b0212f9b4a6483402074d7c9eff73e51ca6b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347552"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072096"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>Szybki Start API JavaScript rozpoznawania emocji — warstwa
+# <a name="emotion-api-javascript-quick-start"></a>JavaScript interfejs API rozpoznawania emocji — Szybki Start
 
 > [!IMPORTANT]
-> Interfejs API podglądu kończy się 30 października 2017 r. Testowanie nowego [wideo indeksatora interfejsu API w wersji zapoznawczej](https://azure.microsoft.com/services/cognitive-services/video-indexer/) można łatwo wyodrębnić szczegółowych informacji z wideo i celu ułatwienia pracy funkcję odnajdowania zawartości, takich jak wyniki wyszukiwania został określony poprzez wykrycie słowa rozmowy, kroje znaków i emocji. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Wersja zapoznawcza interfejsu API wideo zakończy się 30 października 2017 r. Wypróbuj nowy [wersji zapoznawczej interfejsu API indeksatora wideo](https://azure.microsoft.com/services/cognitive-services/video-indexer/) łatwe prowadzenie analiz materiałów wideo i ulepszanie środowiska odnajdywania zawartości, takie jak wyniki wyszukiwania oparte na wykrywaniu wypowiedzianych słów, twarzy, znaki i emocje. [Dowiedz się więcej](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Ten artykuł zawiera informacje i przykłady kodu, aby szybko rozpocząć korzystanie z [metody rozpoznaje interfejsu API rozpoznawania emocji — warstwa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) JavaScript do rozpoznawania emocji wyrażonych przez osoby na obrazie.
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu [metoda rozpoznaje interfejsu API rozpoznawania emocji](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) za pomocą języka JavaScript do rozpoznawania emocji, wyrażonych przez co najmniej jedną osobę w obrazie.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
-* Uzyskaj swój klucz bezpłatnej subskrypcji [tutaj](https://azure.microsoft.com/try/cognitive-services/), lub jeśli masz subskrypcję platformy Azure tworzenie zasobu interfejsu API rozpoznawania emocji — warstwa i Uzyskaj klucz subskrypcji i punktu końcowego.
+* Pobierz klucz subskrypcji bezpłatnych [tutaj](https://azure.microsoft.com/try/cognitive-services/), lub jeśli masz subskrypcję platformy Azure Utwórz zasób usługi interfejsu API rozpoznawania emocji i dostać się tam Twoje klucz subskrypcji i punktu końcowego.
 
-![Utwórz zasób interfejsu API rozpoznawania emocji — warstwa](../Images/create-resource.png)
+![Tworzenie zasobu interfejsu API rozpoznawania emocji](../Images/create-resource.png)
 
-## <a name="recognize-emotions-javascript-example-request"></a>Rozpoznaje emocji JavaScript przykładowe żądanie
+## <a name="recognize-emotions-javascript-example-request"></a>Rozpoznawanie emocji JavaScript przykładowe żądanie
 
-Skopiuj następujące i zapisz go w pliku takich jak `test.html`. Żądanie zmiany `url` lokalizacji, w którym uzyskać klucze subskrypcji i zastąp wartość "Ocp-Apim-subskrypcji — klucz" po klucz ważnej subskrypcji. Te można znaleźć w portalu Azure w sekcji Przegląd i klucze interfejsu API rozpoznawania emocji — warstwa zasobu, odpowiednio. 
+Skopiuj następujące i takie jak zapisać do pliku `test.html`. Żądanie zmiany `url` Użyj lokalizacji, gdzie uzyskać klucze subskrypcji i zastąp wartość symbolu "Ocp-Apim-Subscription-Key" klucz ważnej subskrypcji. Te można znaleźć w witrynie Azure portal, w sekcjach Przegląd i klucze zasobu interfejsu API rozpoznawania emocji, odpowiednio. 
 
 ![Punkt końcowy interfejsu API](../Images/api-url.png)
 
-![Klucz interfejsu API subskrypcji](../Images/keys.png)
+![Klucz subskrypcji interfejsu API](../Images/keys.png)
 
-i zmień treść żądania do lokalizacji obrazu, który ma być używany. Aby uruchomić przykładowe, przeciągnij i upuść plik w przeglądarce.
+Zmień treść żądania do lokalizacji pliku obrazu, którego chcesz użyć. Aby uruchomić próbki, a następnie przeciągnij i upuść plik w przeglądarce.
 
 ```html
 <!DOCTYPE html>
@@ -105,10 +105,10 @@ i zmień treść żądania do lokalizacji obrazu, który ma być używany. Aby u
 </html>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Rozpoznaje emocji przykładowa odpowiedź
-Pomyślnego połączenia zwraca tablicę wpisów krój oraz wyniki emocji skojarzony, uszeregowane według rozmiaru prostokąt krój w kolejności malejącej. Pustą odpowiedź wskazuje, że zostały wykryte nie kroje. Wpis emocji zawiera następujące pola:
-* faceRectangle - lokalizacji prostokąta powierzchni w obrazie.
-* wyniki - emocji wyniki dla każdej powierzchni w obrazie. 
+## <a name="recognize-emotions-sample-response"></a>Rozpoznawanie emocji przykładowa odpowiedź
+Pomyślne wywołanie zwraca tablicę wpisy twarzy oraz wyniki skojarzone rozpoznawania emocji, uporządkowanych według rozmiaru prostokąt twarzy w kolejności malejącej. Pustą odpowiedź wskazuje, czy nie wykryto żadnych twarzy. Wpis rozpoznawania emocji zawiera następujące pola:
+* faceRectangle — lokalizacja prostokąt twarzy na obrazie.
+* wyniki — wyniki rozpoznawania emocji dla każdej twarzy na obrazie. 
 
 ```json
 application/json 

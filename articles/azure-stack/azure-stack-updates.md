@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: mabrigg
-ms.openlocfilehash: e80c114b06390a72dcdcc614dffaa97b9761381e
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 43ec962c91b354d8f07f1be8885b89424d00e452
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988912"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069863"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Zarządzanie aktualizacjami w usłudze Azure Stack — omówienie
 
 *Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Nowe pakiety aktualizacji dla zazwyczaj zintegrowane systemy usługi Azure Stack wersji wokół czwarty wtorek każdego miesiąca. Zadaj producent OEM dotyczące procesu ich powiadomień określonych w taki sposób, aby zapewnić powiadomienia o aktualizacji dotrzeć do Twojej organizacji. Możesz również sprawdzić w tej bibliotece dokumentacji w obszarze **Przegląd** > **informacje o wersji** informacji o wersjach, które są aktywne pomocy technicznej. 
+Pakiety aktualizacji firmy Microsoft dla zazwyczaj zintegrowane systemy usługi Azure Stack wersji wokół czwarty wtorek każdego miesiąca. Zadaj producent OEM dotyczące procesu ich powiadomień określonych w taki sposób, aby zapewnić powiadomienia o aktualizacji dotrzeć do Twojej organizacji. Możesz również sprawdzić w tej bibliotece dokumentacji w obszarze **Przegląd** > **informacje o wersji** informacji o wersjach, które są aktywne pomocy technicznej. 
 
 Wszystkie wersje aktualizacji oprogramowania firmy Microsoft jest zawarte w pakiecie jako pakiet jedną aktualizację. Jako operatorów usługi Azure Stack można zaimportować, instalacji i Monitoruj postęp instalacji tych aktualizacji dla pakietów z portalu administratora. 
 
-Z dostawcą sprzętu producenta sprzętu (OEM) będzie również aktualizacje, takich jak aktualizacje oprogramowania układowego i sterowników. Te aktualizacje są dostarczane jako osobne pakiety przez dostawcę sprzętu OEM i są zarządzane oddzielnie od aktualizacji firmy Microsoft.
+Z dostawcą sprzętu producenta sprzętu (OEM) będzie również aktualizacje, takich jak aktualizacje oprogramowania układowego i sterowników. Chociaż te aktualizacje są dostarczane jako oddzielne pakiety przez dostawcę sprzętu OEM, ich są importowane, zainstalowane i zarządzane te same pakiety aktualizacji sposób od firmy Microsoft, pakiety aktualizacji są importowane, zainstalowane i zarządzane.
 
 Aby zapewnić systemu w ramach pomocy technicznej, należy dysponować zaktualizowany do poziomu określonej wersji w usłudze Azure Stack. Upewnij się, że przeglądu [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76b2b1983cc5a6cedfcff204871e0b0f985fef95
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 897681cda31b2f187fca64e77621b7dc5ed4dfae
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900787"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072113"
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilowanie konfiguracji w usłudze Azure Automation DSC
 
@@ -235,7 +235,7 @@ Odwołania do zasobów są takie same, w konfiguracji usługi Azure Automation D
 
 ### <a name="credential-assets"></a>Zasobów poświadczeń
 
-Podczas konfiguracji DSC w usłudze Azure Automation mogą odwoływać się do zasobów poświadczeń przy użyciu **Get-AutomationPSCredential**, zasobów poświadczeń mogą również być przekazane za pośrednictwem parametrów, w razie potrzeby. Jeśli konfiguracja przyjmuje parametr **PSCredential** typ, a następnie musisz przekazać nazwę ciągu elementu zasób poświadczenia usługi Azure Automation jako wartość tego parametru, a nie obiekt PSCredential. Za kulisami zasób poświadczenia usługi Azure Automation, o tej nazwie jest pobierane i przekazywane do konfiguracji.
+Konfiguracje DSC w usłudze Azure Automation mogą odwoływać się do zasobów poświadczeń usługi Automation przy użyciu `Get-AutomationPSCredential`. Jeśli konfiguracja ma parametr, który ma **PSCredential** typ, a następnie można użyć `Get-AutomationPSCredential` polecenia cmdlet, przekazując nazwę ciągu elementu zasób poświadczenia usługi Azure Automation do polecenia cmdlet, aby pobrać poświadczenie. Możesz następnie użyć a następnie użyć obiektu wymagająca parametr **PSCredential** obiektu. Za kulisami zasób poświadczenia usługi Azure Automation, o tej nazwie jest pobierane i przekazywane do konfiguracji. W poniższym przykładzie pokazano to w działaniu.
 
 Przechowywanie poświadczeń zabezpieczone w konfiguracji węzła (pliku MOF konfiguracji dokumenty) wymaga szyfrowania poświadczeń w pliku MOF konfiguracji węzła. Jednak obecnie musisz poinformować DSC programu PowerShell nie jest akceptowalne o poświadczenia, które mają zostać zwrócone w postaci zwykłego tekstu podczas generowania pliku MOF konfiguracji węzła, ponieważ DSC programu PowerShell nie wie, że usługi Azure Automation będzie można szyfrowanie całego pliku MOF po jej generacji za pomocą zadania kompilacji.
 

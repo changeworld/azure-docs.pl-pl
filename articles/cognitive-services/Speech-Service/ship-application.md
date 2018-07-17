@@ -1,6 +1,6 @@
 ---
-title: Dokumentacja interfejsu API dokumentacji — samouczki, mowy interfejsu API zestawu SDK usług kognitywnych usług Azure, kognitywnych | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia i opracowywania aplikacji z zestawem SDK kognitywnych mowy usługi
+title: Usługi Azure Cognitive Services, Cognitive Services — zestaw SDK interfejsu API rozpoznawania mowy dokumentacja — samouczki i dokumentacja interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i twórz aplikacje z zestawem SDK mowy usług Cognitive
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
@@ -10,33 +10,33 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: d410dda09fdd30181b633c454b1d44610b10c472
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fe171ba9f6f0ff36a7c23c47f145d83f7a94fb5d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35356236"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069492"
 ---
 # <a name="shipping-an-application"></a>Wysyłanie aplikacji
 
-Obserwować [licencji SDK mowy](license.md), jak również [powiadomienia oprogramowania innych firm](third-party-notices.md) do rozpowszechniania kognitywnych Services SDK mowy. Sprawdź również [zasady zachowania poufności informacji firmy Microsoft](https://aka.ms/csspeech/privacy).
+Sprawdź [licencja pakietu SDK rozpoznawania mowy](license.md), jak również [uwagi dotyczące oprogramowania innych firm](third-party-notices.md) podczas dystrybucji Cognitive Services SDK rozpoznawania mowy. Ponadto przejrzyj [zasady zachowania poufności informacji firmy Microsoft](https://aka.ms/csspeech/privacy).
 
-W zależności od platformy różnych zależności istnieje wykonania aplikacji.
+W zależności od platformy różnych składników zależnych istnieje uruchomić aplikację.
 
 ## <a name="windows"></a>Windows
 
-Zestaw SDK kognitywnych mowy usługi jest testowany w systemie Windows 10 i Windows Server 2016.
+Cognitive Services SDK rozpoznawania mowy jest testowana w systemie Windows 10 i systemie Windows Server 2016.
 
-Zestaw SDK kognitywnych mowy usług wymaga [Microsoft Visual C++ Redistributable dla Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) w systemie. Możesz pobrać instalatorów do najnowszej wersji `Microsoft Visual C++ Redistributable for Visual Studio 2017` tutaj:
+Cognitive Services SDK mowy wymaga [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) w systemie. Możesz pobrać pliki instalacyjne, aby uzyskać najnowszą wersję `Microsoft Visual C++ Redistributable for Visual Studio 2017` tutaj:
 
 - [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
 
-Jeśli aplikacja korzysta z kodu zarządzanego `.Net Framework 4.6.1` lub nowszy jest wymagany na komputerze docelowym.
+Jeśli aplikacja korzysta z kodu zarządzanego, `.Net Framework 4.6.1` lub nowszy jest wymagany na komputerze docelowym.
 
-Dane wejściowe mikrofonu Media Foundation biblioteki muszą być zainstalowane. Te biblioteki są częścią systemu Windows 10 i Windows Server 2016. Użytkownik może korzystać z zestawu SDK mowy bez te biblioteki tak długo, jak mikrofon nie są używane jako urządzenia wejściowego audio.
+Dane wejściowe mikrofonu Media Foundation biblioteki muszą być zainstalowane. Biblioteki te są częścią systemu Windows 10 i Windows Server 2016. Istnieje możliwość używania zestawu SDK mowy bez tych bibliotek, tak długo, jak mikrofon nie jest używana jako urządzenie wejściowe audio.
 
-Wymagane pliki mowy zestawu SDK można wdrożyć w tym samym katalogu co aplikacja. W ten sposób aplikacji można uzyskać dostęp do biblioteki. Upewnij się, że należy wybrać prawidłową wersję (Win32/x64) dopasowania aplikacji.
+W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK rozpoznawania mowy. Dzięki temu aplikacja można uzyskać dostęp do biblioteki. Upewnij się, że wybierz poprawną wersję — Win32/x64 64 dopasowania aplikacji.
 
 | Name (Nazwa) | Funkcja
 |:-----|:----|
@@ -46,15 +46,15 @@ Wymagane pliki mowy zestawu SDK można wdrożyć w tym samym katalogu co aplikac
 
 ## <a name="linux"></a>Linux
 
-Dla natywnych aplikacji, musisz wysłać biblioteki SDK mowy `libMicrosoft.CognitiveServices.Speech.core.so`.
-Upewnij się, że zostanie wybrana wersja (x86, x64) dopasowania aplikacji. W zależności od wersji systemu Linux należy również uwzględnić następujące zależności:
+Dla natywnych aplikacji, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy `libMicrosoft.CognitiveServices.Speech.core.so`.
+Upewnij się, zostanie wybrana wersja (x86, x64) Dopasowywanie aplikacji. W zależności od wersji systemu Linux może być również konieczne obejmują następujące zależności:
 
-* Współużytkowanych bibliotekach biblioteki C GNU (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
+* Biblioteki udostępnione biblioteki C GNU (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
 * Biblioteki OpenSSL (`libssl.so.1.0.0`)
-* Biblioteka cURL (`libcurl.so.4`)
+* Biblioteka programu cURL (`libcurl.so.4`)
 * Biblioteki udostępnionej dla aplikacji ALSA (`libasound.so.2`)
 
-Na 16.04 Ubuntu na przykład bibliotek GNU C powinno być już zainstalowane domyślnie. Ostatnich trzech można zainstalować przy użyciu tych poleceń:
+Na Ubuntu 16.04 na przykład bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować przy użyciu następujących poleceń:
 
 ```sh
 sudo apt-get update
@@ -63,5 +63,5 @@ sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

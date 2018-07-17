@@ -1,6 +1,6 @@
 ---
-title: Co zrobić w przypadku awarii usługi Azure Storage | Dokumentacja firmy Microsoft
-description: Co zrobić w przypadku awarii usługi Azure Storage
+title: Co należy zrobić w przypadku awarii usługi Azure Storage | Dokumentacja firmy Microsoft
+description: Co należy zrobić w przypadku awarii usługi Azure Storage
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,62 +12,61 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 1/19/2017
+ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323155"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072038"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Azure Storage
-Firma Microsoft pracujemy nad twardego upewnij się, że naszych usług są zawsze dostępne. Czasami wymusza poza naszych wpływ kontroli nam w sposób, aby spowodować usługi nieplanowanych przestojów w jednym lub więcej regionów. Aby ułatwić obsługę tych zdarzeń w rzadkich, udostępniamy wysokiego poziomu dotyczące usługi Azure Storage.
+W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne. Czasami wymusza poza naszym wpływ kontroli nam w sposób, aby spowodować przerwy w działaniu usługi nieplanowane w jednym lub kilku regionach. Aby obsługiwać te rzadko, firma Microsoft zapewnia następujące wskazówki wysokiego poziomu usługi Azure Storage.
 
 ## <a name="how-to-prepare"></a>Jak przygotować
-Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Starań, aby dokonać odzyskiwania po awarii magazynu zwykle obejmuje zarówno personel, jak i zautomatyzowane procedury, aby ponownie uaktywnić aplikacji w działającym stanie. Zapoznaj się z dokumentacją Azure poniżej, aby utworzyć własnego planu odzyskiwania po awarii:
+Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Próba odzyskiwanie po awarii magazynu zwykle obejmuje personel i zautomatyzowanych procedur, aby ponownie aktywować swoje aplikacje w działającym stanie. Zapoznaj się z dokumentacją Azure poniżej, aby utworzyć własny plan odzyskiwania po awarii:
 
 * [Lista kontrolna dotycząca dostępności](https://docs.microsoft.com/azure/architecture/checklist/availability)
 * [Projektowanie aplikacji odpornych na błędy dla platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 * [Usługa Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)
 * [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-* [Usługa Kopia zapasowa Azure](https://azure.microsoft.com/services/backup/)
+* [Usługa Azure Backup](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>Jak wykryć
-Zalecanym sposobem określić stanu usługi Azure jest subskrybować [pulpit nawigacyjny kondycji usługi Azure](https://azure.microsoft.com/status/).
+Zalecanym sposobem określenia stanu usługi platformy Azure jest do subskrybowania [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/).
 
-## <a name="what-to-do-if-a-storage-outage-occurs"></a>Co zrobić, jeśli wystąpi awaria magazynu
-Jeśli co najmniej jednej usługi magazynu są tymczasowo niedostępne na jeden lub więcej regionów, dostępne są dwie opcje należy wziąć pod uwagę. Jeśli chcesz natychmiastowy dostęp do danych, należy rozważyć opcję 2.
+## <a name="what-to-do-if-a-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Storage
+Jeśli co najmniej jedna usługa magazynu jest tymczasowo niedostępny w jednym lub wielu regionach, istnieją dwie opcje należy wziąć pod uwagę. Jeśli chcesz uzyskać natychmiastowy dostęp do danych należy rozważyć opcja 2.
 
 ### <a name="option-1-wait-for-recovery"></a>Opcja 1: Poczekaj, aż odzyskiwanie
-W takim przypadku jest wymagana żadna akcja ze strony użytkownika. Pracujemy nad dokładnie do przywrócenia dostępności usług Azure. Można monitorować stan usługi na [pulpit nawigacyjny kondycji usługi Azure](https://azure.microsoft.com/status/).
+W takim wypadku żadna akcja ze strony użytkownika jest wymagana. Pracujemy, aby przywrócić dostępność usługi platformy Azure. Możesz monitorować stan usługi na [pulpit nawigacyjny kondycji usługi platformy Azure](https://azure.microsoft.com/status/).
 
 ### <a name="option-2-copy-data-from-secondary"></a>Opcja 2: Kopiowanie danych z pomocniczego
-Jeśli została wybrana opcja [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane) dla konta magazynu, konieczne będzie dostęp do odczytu danych z regionu pomocniczego. Można użyć narzędzia, takie jak [AzCopy](storage-use-azcopy.md), [programu Azure PowerShell](storage-powershell-guide-full.md)i [Biblioteka przenoszenia danych Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) na skopiowanie danych z regionu pomocniczego do innego konta magazynu w regionie unimpacted, a następnie wskaż aplikacji do tego konta magazynu dla odczytu i zapisu dostępności.
+Jeśli została wybrana opcja [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane) dla konta magazynu, masz dostęp do odczytu do danych z regionu pomocniczego. Użyj narzędzi takich jak [AzCopy](storage-use-azcopy.md), [programu Azure PowerShell](storage-powershell-guide-full.md)i [Biblioteka przenoszenia danych usługi Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) do skopiowania danych z regionu pomocniczego do innego konta magazynu w unimpacted regionu, a następnie punktu aplikacji do tego magazynu konta dla obu dostępność odczytu i zapisu.
 
-## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Czego można oczekiwać, jeśli magazyn pracy awaryjnej
-Jeśli została wybrana opcja [magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md) lub [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane), usługi Azure Storage będzie przechowywać swoje dane trwałe w dwóch regionach (podstawowych i pomocniczych). W obu regionów usługi Magazyn Azure przechowuje stale wiele replik danych.
+## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Czego można oczekiwać, jeśli do przechowywania pracy awaryjnej
+Jeśli została wybrana opcja [magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md) lub [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane), usługi Azure Storage będą przechowywane dane trwałe w dwóch regionach (podstawowych i pomocniczych). W obu regionach usługi Azure Storage obsługuje stale wiele replik danych.
 
-W przypadku regionalnej awarii wpływa regionu podstawowego, spróbujemy najpierw przywrócić usługę w tym regionie. Zależne od charakteru po awarii i jej wpływ na środowisko, w niektórych rzadkich firma Microsoft nie można przywrócić regionu podstawowego. W tym momencie zostaną wykonane geograficznie trybu failover. Replikacja danych między region jest proces asynchroniczny, które obejmują opóźnienia, więc jest to możliwe, że zmiany, które nie zostały jeszcze zreplikowane w regionie pomocniczym mogą zostać utracone. Można zbadać ["Czas ostatniej synchronizacji" konta magazynu](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) Aby uzyskać szczegółowe informacje o stanie replikacji.
+W przypadku regionalnej awarii wpływa Twojego regionu podstawowego, spróbujemy najpierw przywrócić usługę, w tym regionie. W zależności od charakteru po awarii i jej wpływ na środowisko, w niektórych sytuacjach rzadko firma Microsoft może nie można przywrócić regionu podstawowego. W tym momencie kolejności wykonamy geograficznie trybu failover. Replikacja danych między regionami jest proces asynchroniczny, które może obejmować opóźnienie, więc istnieje możliwość, że zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone. Można tworzyć zapytania ["Czas ostatniej synchronizacji" konta usługi storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) Aby uzyskać szczegółowe informacje o stanie replikacji.
 
-Kilka punktów dotyczących środowiska pracy awaryjnej geo magazynu:
+Kilku kwestiach dotyczących środowiska pracy awaryjnej geo magazynu:
 
-* Magazyn geograficznie pracy w trybie failover tylko zostanie wywołane przez zespół usługi Azure Storage — nie jest wymagane żadne akcje klienta.
-* Istniejące punkty końcowe usługi magazynu, dla obiektów blob, tabel, kolejek i plików jest taka sama po trybu failover; wpis DNS oferowanych przez firmę Microsoft będzie muszą zostać zaktualizowane przejść z regionu podstawowego w regionie pomocniczym.  Microsoft przeprowadzi aktualizację automatycznie w ramach procesu pracy awaryjnej geo.
-* Przed i w trybie failover geograficznie nie będziesz mieć dostęp do zapisu do konta magazynu ze względu na wpływ po awarii, ale można nadal odczytywać z lokacji dodatkowej Jeśli Twoje konto magazynu został skonfigurowany jako RA-GRS.
-* Po zakończeniu trybu failover z magazynu geograficznie i zmiany DNS rozpropagowane, zostanie wznowione odczytu i zapisu do konta magazynu; to wskazuje na przeznaczenie jako dodatkowej punktu końcowego. 
-* Należy pamiętać, że będzie miał dostęp zapisu, jeśli masz GRS lub RA-GRS skonfigurowanych dla konta magazynu. 
-* Można zbadać ["Geograficznie trybu Failover ostatniego" konta magazynu](https://msdn.microsoft.com/library/azure/ee460802.aspx) Aby uzyskać więcej szczegółów.
-* Po pracy awaryjnej konta magazynu będzie można w pełni funkcjonalne, ale w stanie "obniżeniem", ponieważ faktycznie znajduje się w regionie autonomiczny z nie możliwości replikacja geograficzna. Aby zmniejszyć to zagrożenie, firma Microsoft będzie przywrócić oryginalny regionu podstawowego i wykonaj geograficznie-powrotu po awarii do przywrócenia pierwotnego stanu. W przypadku oryginalnego regionu podstawowego jest nieodwracalny, firma Microsoft będzie przydzielić inny region pomocniczy.
-  Więcej szczegółów na infrastrukturze replikacja geograficzna usługi Azure Storage, można znaleźć w artykule na blogu zespołu magazynu o [Opcje nadmiarowości i RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+* Magazyn geograficznie pracy w trybie failover będzie wyzwalany tylko przez zespół usługi Azure Storage — użytkownik nie jest wymagana żadna akcja klienta.
+* Istniejące punkty końcowe usługi magazynu, dla obiektów blob, tabel, kolejek i plików nie ulegną zmianie po włączeniu trybu failover; wpis DNS dostarczanego przez firmę Microsoft, należy zaktualizować, aby przełączyć się z regionu podstawowego do regionu pomocniczego.  Firma Microsoft przeprowadzi aktualizację, automatycznie jako część procesu pracy awaryjnej geo.
+* Przed, a podczas pracy awaryjnej geo nie masz dostęp do zapisu do swojego konta magazynu ze względu na wpływ po awarii, ale nadal można odczytywać z pomocniczym w przypadku konta magazynu została skonfigurowana jako RA-GRS.
+* Podczas pracy awaryjnej geo zostało ukończone i propagowane zmian systemu DNS, zostanie wznowione odczytu i zapisu do swojego konta magazynu; to wskazuje na przeznaczenie do pomocniczego punktu końcowego. 
+* Należy pamiętać, że będziesz mieć dostęp do zapisu Jeśli masz GRS lub RA-GRS skonfigurowany dla konta magazynu. 
+* Można tworzyć zapytania ["Ostatniej geograficznej czas pracy awaryjnej" konta magazynu](https://msdn.microsoft.com/library/azure/ee460802.aspx) Aby uzyskać więcej szczegółów.
+* Po włączeniu trybu failover konto magazynu będzie można w pełni funkcjonalne, ale w stanie "obniżonej sprawności", ponieważ faktycznie znajduje się w region autonomiczny z nie możliwości replikacji geograficznej. Aby zmniejszyć to zagrożenie, firma Microsoft będzie przywrócić oryginalny regionu podstawowego i wykonaj geo-powrotu po awarii do przywrócenia stanu pierwotnego. Jeśli oryginalna region podstawowy jest nieodwracalny, firma Microsoft będzie przydzielić innego regionu pomocniczego.
+  Aby uzyskać szczegółowe informacje na temat infrastruktury replikacji geograficznej usługi Azure Storage, można znaleźć w artykule na blogu magazynu zespołu o [opcji nadmiarowości i RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ## <a name="best-practices-for-protecting-your-data"></a>Najlepsze rozwiązania w zakresie ochrony danych
-Brak niektórych zalecane sposoby kopii zapasowej danych magazynu na bieżąco.
+Istnieją pewne zalecanych sposobów, aby utworzyć kopię zapasową danych magazynu w regularnych odstępach czasu.
 
-* Dyski maszyny Wirtualnej — [usługi Kopia zapasowa Azure](https://azure.microsoft.com/services/backup/) do tworzenia kopii zapasowych dysków maszyny Wirtualnej, z maszyn wirtualnych platformy Azure.
-* Blokowych obiektów blob — Utwórz [migawki](https://msdn.microsoft.com/library/azure/hh488361.aspx) każdego blokowania obiektów blob lub kopiowania obiektów blob na inne konto magazynu przy użyciu innego regionu [AzCopy](storage-use-azcopy.md), [programu Azure PowerShell](storage-powershell-guide-full.md), lub [Biblioteka przenoszenia danych Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* Użyj tabel — [AzCopy](storage-use-azcopy.md) Aby wyeksportować dane w tabeli na innym koncie magazynu w innym regionie.
-* Pliki — [AzCopy](storage-use-azcopy.md) lub [programu Azure PowerShell](storage-powershell-guide-full.md) do kopiowania plików na inne konto magazynu w innym regionie.
+* Dyski maszyny Wirtualnej — używają [usługi Azure Backup](https://azure.microsoft.com/services/backup/) do tworzenia kopii zapasowych dysków maszyny Wirtualnej, z usługi Azure virtual machines.
+* Blokowe obiekty BLOB — Włączanie [usuwania nietrwałego](../blobs/storage-blob-soft-delete.md) do ochrony przed usuwania na poziomie obiektu i zastępuje lub obiekty BLOB zostaną skopiowane do innego konta magazynu w innym regionie przy użyciu [AzCopy](storage-use-azcopy.md), [platformy Azure Program PowerShell](storage-powershell-guide-full.md), lub [Biblioteka przenoszenia danych usługi Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* Tabele — używają [AzCopy](storage-use-azcopy.md) do wyeksportowania danych tabeli do innego konta magazynu w innym regionie.
+* Pliki — używają [AzCopy](storage-use-azcopy.md) lub [programu Azure PowerShell](storage-powershell-guide-full.md) Aby skopiować pliki do innego konta magazynu w innym regionie.
 
-Aby uzyskać informacje o tworzeniu aplikacji, które korzystają z funkcji RA-GRS, zapoznaj się [Projektowanie wysoce dostępnych aplikacji przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
-
+Aby uzyskać informacje o tworzeniu aplikacji, które umożliwiają pełne wykorzystywanie zalet funkcji RA-GRS, zapoznaj [projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)

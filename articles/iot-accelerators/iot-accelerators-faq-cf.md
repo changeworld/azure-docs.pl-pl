@@ -1,6 +1,6 @@
 ---
-title: Połączone fabryki rozwiązania często zadawane pytania — Azure | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
+title: Połączone rozwiązania fabryki często zadawane pytania — Azure | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące akcelerator rozwiązania połączonej fabryki
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,75 +8,75 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d1002fd5131ca97f7bc1b9d081ae1471191a6cf
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627505"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39076337"
 ---
-# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązań połączone fabryki
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązania połączonej fabryki
 
-Zobacz też ogólne [— często zadawane pytania](iot-accelerators-faq.md) dla akceleratorów rozwiązania IoT.
+Zobacz też ogólne [— często zadawane pytania](iot-accelerators-faq.md) dla akceleratorów rozwiązań IoT.
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Gdzie można znaleźć kodu źródłowego dla akcelerator rozwiązań?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Gdzie znaleźć kod źródłowy dla akceleratora rozwiązań
 
-Kod źródłowy jest przechowywane w następujących repozytorium GitHub:
+Kod źródłowy jest przechowywane w repozytorium GitHub na następujący:
 
-* [Połączone akcelerator rozwiązań fabryki](https://github.com/Azure/azure-iot-connected-factory)
+* [Akcelerator rozwiązań usługi połączonej fabryki](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Co to jest OPC UA?
 
-OPC Ujednolicona architektura (UA), wydane w ramach 2008, jest niezależne od platformy, zorientowane na usługę współdziałanie standardowa. OPC UA jest używany przez różnych systemów przemysłowych i urządzeń, takich jak czujniki branży komputerów i układy logiczne. OPC UA integruje funkcjonalność OPC klasycznego specyfikacji jeden rozszerzalne środowisko z wbudowanych zabezpieczeń. Jest to standardowy, który jest wymuszany przez OPC Foundation. [OPC Foundation](http://opcfoundation.org/) jest organizacją nie dla zysków z więcej niż 440 elementów członkowskich. Celem organizacji jest stosować specyfikacje OPC ułatwia współdziałanie wielu dostawców, obejmującego wiele platform, bezpieczny i niezawodny przy użyciu:
+OPC Unified architektury (UA), wydanej w 2008 roku jest niezależny od platformy, zorientowane na usługę współdziałanie standardowych. OPC UA jest używany przez różne systemy przemysłowych i urządzeń, takich jak branży komputery, czujniki i układy logiczne. OPC UA integruje funkcjonalność specyfikacji OPC klasycznego jeden rozszerzalna struktura zawiera wbudowane zabezpieczenia. Jest to standardowy, który jest wymuszany przez organizację OPC Foundation. [Organizację OPC Foundation](http://opcfoundation.org/) jest organizacją not for zyski z ponad 440 elementów członkowskich. Celem organizacji jest na potrzeby specyfikacji OPC w ułatwienia współdziałanie wielu dostawców, dla wielu platform, bezpieczny i niezawodny przy użyciu:
 
 * Infrastruktura
 * Specyfikacje
 * Technologia
 * Procesy
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Dlaczego Microsoft został wybrany OPC UA dla fabryki połączone akcelerator rozwiązań?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Dlaczego Microsoft został wybrany OPC UA dla akceleratora rozwiązania połączonej fabryki?
 
-Microsoft postanowiono OPC UA, ponieważ jest to platforma otwarty, niezastrzeżonych, standard niezależne, branży i sprawdzone. Jest wymagane dla rozwiązań architektura odwołanie Industrie 4.0 (RAMI4.0) zapewniające współdziałanie szeroką gamę wytwarzania i urządzeń. Microsoft widzi żądanie z klientów do tworzenia rozwiązań Industrie 4.0. Obsługa OPC UA pomaga zmniejszyć bariery dla klientów do ich celach i udostępnia natychmiastowe wartość do nich.
+Microsoft wybrała OPC UA, ponieważ jest standardem otwartym, niezastrzeżonych, platformy niezależnie od branży i sprawdzone. To wymaganie Industrie 4.0 (RAMI4.0) odwołanie do architektury rozwiązań, zapewnienie współdziałania między szeroką gamę procesów produkcyjnych i urządzeń. Uruchomiono żądanie od swoich klientów do tworzenia rozwiązań Industrie 4.0. Obsługa OPC UA pomaga zmniejszyć barierę dla klientów osiągnąć swoje cele i zapewnia natychmiastowe wymierne efekty do nich.
 
-### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Jak dodać publicznego adresu IP na symulacyjnych maszyny Wirtualnej?
+### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Jak dodać publiczny adres IP na symulację maszyny Wirtualnej?
 
-Dostępne są dwie opcje, aby dodać adres IP:
+Masz dwie opcje, aby dodać adres IP:
 
-* Użyj skryptu programu PowerShell `Simulation/Factory/Add-SimulationPublicIp.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory). Podaj nazwę wdrożenia jako parametr. Dla wdrożenia lokalnego, należy użyć `<your username>ConnFactoryLocal`. Skrypt do drukowania adres IP maszyny wirtualnej.
+* Użyj skryptu programu PowerShell `Simulation/Factory/Add-SimulationPublicIp.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory). Przekaż nazwę wdrożenia, jako parametr. W przypadku wdrożenia lokalnego, użyj `<your username>ConnFactoryLocal`. Skrypt do drukowania adres IP maszyny Wirtualnej.
 
-* W portalu Azure Znajdź wdrożenia grupy zasobów. Z wyjątkiem wdrożenia lokalnego grupa zasobów ma nazwę określone jako rozwiązanie lub wdrożenia. W przypadku wdrożenia lokalnego przy użyciu skryptu kompilacji Nazwa grupy zasobów jest `<your username>ConnFactoryLocal`. Teraz Dodaj nową **publicznego adresu IP** zasobów do grupy zasobów.
+* W witrynie Azure portal Znajdź grupę zasobów wdrożenia. Z wyjątkiem lokalne wdrożenie grupy zasobów ma nazwę określoną jako rozwiązanie lub nazwa wdrożenia. Lokalne wdrażanie przy użyciu skryptu kompilacji, nazwę grupy zasobów jest `<your username>ConnFactoryLocal`. Teraz Dodaj nową **publiczny adres IP** zasobów w grupie zasobów.
 
 > [!NOTE]
-> W obu przypadkach upewnij się, zainstaluj najnowsze poprawki zgodnie z instrukcjami [Ubuntu witryny sieci Web](https://wiki.ubuntu.com/Security/Upgrades). Aktualizowanie instalacji dla tak długo, jak długo maszyny Wirtualnej jest dostępna za pośrednictwem publicznego adresu IP.
+> W obu przypadkach upewnij się, należy zainstalować najnowsze poprawki zgodnie z instrukcjami [witryny sieci Web w systemie Ubuntu](https://wiki.ubuntu.com/Security/Upgrades). Aktualizowanie instalacji dla tak długo, jak Twoja maszyna wirtualna jest dostępna za pośrednictwem publicznego adresu IP.
 
-### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Jak usunąć publicznego adresu IP na symulacyjnych maszyny Wirtualnej?
+### <a name="how-do-i-remove-the-public-ip-address-to-the-simulation-vm"></a>Jak usunąć publiczny adres IP na symulację maszyny Wirtualnej?
 
-Dostępne są dwie opcje, aby usunąć adres IP:
+Masz dwie opcje, aby usunąć adres IP:
 
-* Użyj programu PowerShell skryptu Simulation/Factory/Remove-SimulationPublicIp.ps1 z [repozytorium](https://github.com/Azure/azure-iot-connected-factory). Podaj nazwę wdrożenia jako parametr. Dla wdrożenia lokalnego, należy użyć `<your username>ConnFactoryLocal`. Skrypt do drukowania adres IP maszyny wirtualnej.
+* Użyj programu PowerShell script Simulation/Factory/Remove-SimulationPublicIp.ps1 z [repozytorium](https://github.com/Azure/azure-iot-connected-factory). Przekaż nazwę wdrożenia, jako parametr. W przypadku wdrożenia lokalnego, użyj `<your username>ConnFactoryLocal`. Skrypt do drukowania adres IP maszyny Wirtualnej.
 
-* W portalu Azure Znajdź wdrożenia grupy zasobów. Z wyjątkiem wdrożenia lokalnego grupa zasobów ma nazwę określone jako rozwiązanie lub wdrożenia. W przypadku wdrożenia lokalnego przy użyciu skryptu kompilacji Nazwa grupy zasobów jest `<your username>ConnFactoryLocal`. Teraz usunąć **publicznego adresu IP** zasobu z grupy zasobów.
+* W witrynie Azure portal Znajdź grupę zasobów wdrożenia. Z wyjątkiem lokalne wdrożenie grupy zasobów ma nazwę określoną jako rozwiązanie lub nazwa wdrożenia. Lokalne wdrażanie przy użyciu skryptu kompilacji, nazwę grupy zasobów jest `<your username>ConnFactoryLocal`. Teraz usunąć **publiczny adres IP** zasobu z grupy zasobów.
 
-### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Jak zalogować się na symulacyjnych maszyny Wirtualnej?
+### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Jak Zaloguj się do symulacji maszyny Wirtualnej?
 
-Logowanie do symulacji maszyny Wirtualnej jest obsługiwana tylko jeśli wdrożono rozwiązanie przy użyciu skryptu środowiska PowerShell `build.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory).
+Logowanie do symulacji maszyny Wirtualnej jest obsługiwana tylko jeśli wdrożono rozwiązania przy użyciu skryptu programu PowerShell `build.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory).
 
-Jeśli wdrożono rozwiązanie z www.azureiotsolutions.com nie logowania się do maszyny Wirtualnej. Nie można zalogować się, ponieważ hasło jest generowany losowo i nie można zresetować go.
+Jeśli wdrożono rozwiązanie z www.azureiotsolutions.com, nie możesz się zarejestrować do maszyny Wirtualnej. Nie można zalogować się, ponieważ hasło jest generowany losowo i nie można zresetować je.
 
-1. Dodaj publiczny adres IP do maszyny Wirtualnej. Zobacz [jak dodać publicznego adresu IP na symulacyjnych maszyny Wirtualnej?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
-1. Tworzenie sesji SSH maszyny Wirtualnej przy użyciu adresu IP maszyny wirtualnej.
+1. Dodaj publiczny adres IP do maszyny Wirtualnej. Zobacz [jak dodać publiczny adres IP do symulacji maszyny Wirtualnej?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
+1. Utwórz sesję SSH z maszyną wirtualną przy użyciu adresu IP maszyny wirtualnej.
 1. Nazwa użytkownika do użycia: `docker`.
-1. Hasło do użycia zależy od wersji, który został użyty do wdrożenia:
-    * Wdrożenie za pomocą skryptu build.ps1 przed 1 czerwca 2017 rozwiązań, jest hasło: `Passw0rd`.
-    * Wdrożenie za pomocą skryptu build.ps1 po 1 czerwca 2017 rozwiązania, można znaleźć hasło w `<name of your deployment>.config.user` pliku. Hasło jest zapisywane w **VmAdminPassword** ustawienie. Hasło jest generowane losowo w czasie wdrażania chyba że zostanie określony za pomocą `build.ps1` skryptu parametru `-VmAdminPassword`
+1. Hasło do użycia zależy od wersji, używane do wdrożenia:
+    * W przypadku rozwiązań wdrożonych za pomocą skryptu build.ps1 przed 1 czerwca 2017 roku, hasło jest: `Passw0rd`.
+    * W przypadku rozwiązań wdrożonych przy użyciu skryptu build.ps1 po 1 czerwca 2017, możesz znaleźć hasło w `<name of your deployment>.config.user` pliku. Hasło jest przechowywane w **VmAdminPassword** ustawienie. Hasło jest generowany losowo w czasie wdrażania, chyba że określisz go za pomocą `build.ps1` parametru skryptu `-VmAdminPassword`
 
-### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Jak zatrzymać i uruchomić wszystkie procesy docker w symulacji maszyny Wirtualnej?
+### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Jak zatrzymać i uruchomić wszystkie procesy platformy docker w symulacji maszyny Wirtualnej?
 
-1. Zaloguj się na symulacyjnych maszyny Wirtualnej. Zobacz [jak zarejestrować się celu symulacji maszyny Wirtualnej?](#how-do-i-sign-in-to-the-simulation-vm)
+1. Zaloguj się do symulacji maszyny Wirtualnej. Zobacz [jak zalogować się do symulacji maszyny Wirtualnej?](#how-do-i-sign-in-to-the-simulation-vm)
 1. Aby sprawdzić, kontenery, które są aktywne, uruchom: `docker ps`.
 1. Aby zatrzymać wszystkie kontenery symulacji, uruchom: `./stopsimulation`.
 1. Aby uruchomić wszystkie kontenery symulacji:
-    * Eksportuj powłoki zmiennej o nazwie **IOTHUB_CONNECTIONSTRING**. Należy użyć wartości **IotHubOwnerConnectionString** w `<name of your deployment>.config.user` pliku. Na przykład:
+    * Eksportowanie z nazwą zmiennej powłoki **IOTHUB_CONNECTIONSTRING**. Użyj wartości **IotHubOwnerConnectionString** ustawienie w `<name of your deployment>.config.user` pliku. Na przykład:
 
         ```
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -84,17 +84,17 @@ Jeśli wdrożono rozwiązanie z www.azureiotsolutions.com nie logowania się do 
 
     * Uruchom polecenie `./startsimulation`.
 
-### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Jak zaktualizować symulacji w maszynie Wirtualnej?
+### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Jak zaktualizować symulacji na maszynie wirtualnej?
 
-Jeśli wprowadzono zmiany do symulacji, możesz użyć skryptu programu PowerShell `build.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory) przy użyciu `updatedimulation` polecenia. Ten skrypt tworzy wszystkie składniki symulacji, zatrzymuje symulacji w maszynie Wirtualnej przekazuje, instaluje i można je uruchomić.
+Jeśli wszystkie zmiany zostały wprowadzone na symulację, możesz użyć skryptu programu PowerShell `build.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory) przy użyciu `updatedimulation` polecenia. Ten skrypt tworzy wszystkie składniki symulacji, zatrzymuje symulacji na maszynie wirtualnej, przekazuje, instaluje i uruchamia je.
 
-### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Jak sprawdzić parametry połączenia używane przez Moje rozwiązanie Centrum IoT
+### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Jak sprawdzić parametry połączenia Centrum IoT używanego przez rozwiązanie?
 
-Jeśli wdrożono rozwiązanie z `build.ps1` skryptu w [repozytorium](https://github.com/Azure/azure-iot-connected-factory), ciąg połączenia jest wartość **IotHubOwnerConnectionString** w `<name of your deployment>.config.user` pliku.
+Jeśli wdrożono rozwiązanie za pomocą `build.ps1` skryptu w [repozytorium](https://github.com/Azure/azure-iot-connected-factory), ciąg połączenia jest wartością **IotHubOwnerConnectionString** w `<name of your deployment>.config.user` pliku.
 
-Można również znaleźć parametrów połączenia przy użyciu portalu Azure. W zasobie Centrum IoT w grupie zasobów wdrożenia zlokalizuj ustawień parametrów połączenia.
+Można również znaleźć parametry połączenia przy użyciu witryny Azure portal. W zasobie usługi IoT Hub w grupie zasobów w danym wdrożeniu Znajdź ustawienia parametrów połączenia.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Centrum IoT urządzeń, które używa symulacji fabryka połączenia?
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Które urządzenia usługi IoT Hub używa symulacji połączonej fabryki?
 
 Symulacja samodzielnie rejestruje następujące urządzenia:
 
@@ -111,23 +111,23 @@ Symulacja samodzielnie rejestruje następujące urządzenia:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Przy użyciu [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) narzędzia, można sprawdzić, które urządzenia są zarejestrowane w usłudze Centrum IoT używa rozwiązania. Za pomocą Eksploratora urządzenia, należy parametry połączenia dla Centrum IoT w danym wdrożeniu. Aby użyć rozszerzenia IoT Azure CLI 2.0, należy nazwę Centrum IoT.
+Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension) narzędzie, można sprawdzić, które urządzenia są zarejestrowane w usłudze IoT hub, Twoje rozwiązanie używa. Aby użyć Eksplorator urządzeń, należy parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Aby użyć rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0, należy nazwę Centrum IoT Hub.
 
-### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak uzyskać dane dzienników ze składników symulacji
+### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak uzyskać dane dzienników z składniki symulacji?
 
-Wszystkie składniki w symulacji rejestrowania informacji plikach dziennika. Te pliki znajdują się w maszynie Wirtualnej w folderze `home/docker/Logs`. Aby pobrać dzienniki, można użyć skryptu programu PowerShell `Simulation/Factory/Get-SimulationLogs.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory).
+Wszystkie składniki symulacji rejestrowania informacji plikach dziennika. Te pliki znajdują się na maszynie wirtualnej w folderze `home/docker/Logs`. Aby pobrać dzienniki, można użyć skryptu programu PowerShell `Simulation/Factory/Get-SimulationLogs.ps1` w [repozytorium](https://github.com/Azure/azure-iot-connected-factory).
 
-Ten skrypt należy zalogować się do maszyny Wirtualnej. Może być konieczne podanie poświadczeń przy logowaniu. Zobacz [jak zarejestrować się celu symulacji maszyny Wirtualnej?](#how-do-i-sign-in-to-the-simulation-vm) można znaleźć poświadczenia.
+Ten skrypt musi zalogować się do maszyny Wirtualnej. Może być konieczne podanie poświadczeń logowania. Zobacz [jak zalogować się do symulacji maszyny Wirtualnej?](#how-do-i-sign-in-to-the-simulation-vm) można znaleźć poświadczenia.
 
-Skrypt dodaje i usuwa publiczny adres IP do maszyny Wirtualnej, jeśli jeszcze nie ma jeden i usuwa go. Skrypt umieszcza wszystkie pliki dziennika w archiwum i pobierane pliki archiwum na deweloperskiej stacji roboczej.
+Skrypt dodaje/usuwa publicznego adresu IP do maszyny Wirtualnej, jeśli nie ma jeszcze jeden i usuwa go. Skrypt umieszcza wszystkie pliki dziennika w archiwum i pobiera archiwum na deweloperskiej stacji roboczej.
 
-Możesz też zalogować się do maszyny Wirtualnej za pośrednictwem SSH i sprawdzić pliki dziennika w czasie wykonywania.
+Możesz też zalogować się do maszyny Wirtualnej za pośrednictwem protokołu SSH, a przeglądanie plików dziennika w czasie wykonywania.
 
-### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak można sprawdzić, czy symulacji wysyła dane w chmurze?
+### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak sprawdzić, jeśli Symulacja wysyła dane do chmury?
 
-Z [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [explorer Centrum iothub](https://github.com/azure/iothub-explorer) narzędzia, możesz sprawdzić dane wysyłane do Centrum IoT z określonymi urządzeniami. Aby korzystać z tych narzędzi, musisz wiedzieć, ciąg połączenia dla Centrum IoT w danym wdrożeniu. Zobacz [jak sprawdzić parametry połączenia Centrum IoT używane przez Moje rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [narzędzia iothub-explorer](https://github.com/azure/iothub-explorer) narzędzie, można sprawdzić dane wysyłane do usługi IoT Hub z niektórych urządzeń. Aby użyć tych narzędzi, musisz znać parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Zobacz [jak mogę znaleźć parametry połączenia Centrum IoT używanego przez rozwiązanie?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
-Sprawdź dane wysyłane przez jednego z urządzeń wydawcy:
+Sprawdzanie danych wysłanych przez jedno z urządzeń wydawcy:
 
 * publisher.beijing.corp.contoso
 * publisher.capetown.corp.contoso
@@ -136,53 +136,53 @@ Sprawdź dane wysyłane przez jednego z urządzeń wydawcy:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Jeśli zostanie wyświetlone żadne dane wysyłane do Centrum IoT, oznacza to, że wystąpił problem z symulacji. Pierwszym krokiem analizy powinien analizowanie plików dziennika składników symulacji. Zobacz [jak można uzyskać danych dziennika z składniki symulacji?](#how-can-i-get-log-data-from-the-simulation-components) Spróbuj dalej zatrzymać i uruchomić symulacji i jeśli nie ma jeszcze żadnych danych wysyłane, zaktualizuj symulacji całkowicie. Zobacz [jak zaktualizować symulacji w maszynie Wirtualnej?](#how-do-i-update-the-simulation-in-the-vm)
+Jeśli są wyświetlane żadne dane wysyłane do usługi IoT Hub, występuje problem z symulacji. Pierwszym krokiem analizy należy analizowanie plików dziennika składniki symulacji. Zobacz [jak mogę uzyskać dane dzienników z składniki symulacji?](#how-can-i-get-log-data-from-the-simulation-components) Następnie spróbuj zatrzymać i uruchomić symulację i jeśli nie ma jeszcze żadnych danych, wysyłane, należy zaktualizować symulacji całkowicie. Zobacz [jak zaktualizować symulacji na maszynie wirtualnej?](#how-do-i-update-the-simulation-in-the-vm)
 
-### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak włączyć mapy interakcyjnej w Moje rozwiązanie fabryka połączenia?
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak włączyć mapę interaktywną w mojej rozwiązania połączonej fabryki?
 
-Aby włączyć mapy interakcyjnej w rozwiązaniu fabryki połączone, musi mieć istniejącego interfejsu API map Bing planu przedsiębiorstwa.
+Aby włączyć mapę interaktywną w rozwiązaniu połączonej fabryki, konieczne jest posiadanie istniejącego interfejsu API map Bing planu Enterprise.
 
-W przypadku wdrażania z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces wdrażania sprawdza ma włączone interfejsu API map Bing Enterprise planu subskrypcji i automatycznie wdraża mapy interakcyjnej do fabryki połączony. Jeśli nie jest to możliwe, można włączyć mapy interakcyjnej we wdrożeniu w następujący sposób:
+W przypadku wdrażania z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces wdrażania sprawdza, czy Twoja subskrypcja ma włączone interfejsu API map Bing planu Enterprise i automatycznie wdraża mapę interaktywną do połączonej fabryki. Jeśli nie jest tak, można włączyć mapę interaktywną we wdrożeniu w następujący sposób:
 
-Podczas wdrażania przy użyciu `build.ps1` skryptów w witrynie GitHub fabryki połączone repozytorium i ma interfejsu API map Bing planu przedsiębiorstwa, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji, aby klucz zapytania planu. Mapy interakcyjnej jest włączana automatycznie.
+Podczas wdrażania za pomocą `build.ps1` skryptu w usłudze GitHub fabryki połączone repozytorium i mieć interfejsu API map Bing planu Enterprise, ustaw zmienną środowiskową `$env:MapApiQueryKey` w oknie kompilacji klucza zapytania określonego planu. Interaktywnej mapie jest włączana automatycznie.
 
-Jeśli nie masz interfejsu API map Bing Enterprise planu wdrażania rozwiązania fabryki połączone z [www.azureiotsolutions.com](http://www.azureiotsolutions.com) lub przy użyciu `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing Enterprise planu subskrypcji, zgodnie z objaśnieniem w [sposób utworzenia interfejsu API map Bing dla konta organizacji?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, zgodnie z objaśnieniem w [Uzyskiwanie interfejsu API map Bing dla przedsiębiorstwa QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do portalu Azure i uzyskać dostęp do zasobu usługi aplikacji w danym wdrożeniu połączone fabryki. Przejdź do **ustawienia aplikacji**, gdzie można znaleźć sekcji **ustawień aplikacji**. Ustaw **MapApiQueryKey** klucza zapytania został uzyskany. Zapisz ustawienia, a następnie przejdź do **omówienie** i uruchom ponownie usługę aplikacji.
+Jeśli nie masz interfejsu API map Bing planu Enterprise należy wdrażać rozwiązania połączonej fabryki z [www.azureiotsolutions.com](http://www.azureiotsolutions.com) lub za pomocą `build.ps1` skryptu. Następnie dodaj interfejsu API map Bing planu Enterprise z subskrypcją, zgodnie z objaśnieniem w [jak utworzyć interfejsu API map Bing dla przedsiębiorstw konta?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Wyszukiwanie klucza zapytania tego konta, jak wyjaśniono w [uzyskiwania Twojego interfejsu API usługi mapy Bing dla elementu QueryKey Enterprise](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) i Zapisz ten klucz. Przejdź do witryny Azure portal i uzyskać dostęp do zasobu usługi App Service w danym wdrożeniu połączonej fabryki. Przejdź do **ustawienia aplikacji**, gdzie znaleźć sekcję **ustawienia aplikacji**. Ustaw **MapApiQueryKey** uzyskany klucz zapytania. Zapisz ustawienia, a następnie przejdź do **Przegląd** i uruchom ponownie usługi App Service.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak utworzyć interfejsu API map Bing dla konta organizacji
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Jak utworzyć interfejsu API map Bing dla przedsiębiorstw konta
 
-Możesz uzyskać bezpłatne *wewnętrzne transakcje poziom 1 mapy Bing dla przedsiębiorstwa* planu. Jednak można tylko dodać dwa te plany z subskrypcją platformy Azure. Jeśli nie masz interfejsu API map Bing dla konta organizacji, utworzyć w portalu Azure, klikając **+ Utwórz zasób**. Następnie wyszukaj **interfejsu API map Bing dla przedsiębiorstwa** i postępuj zgodnie z monitami, aby go utworzyć.
+Możesz uzyskać bezpłatne *wewnętrzne transakcje poziomu 1 mapy Bing dla przedsiębiorstw* planu. Jednak można jedynie dodać dwa z tych planów z subskrypcją platformy Azure. Jeśli nie masz interfejsu API map Bing dla przedsiębiorstw konta, zrób to w witrynie Azure portal, klikając **+ Utwórz zasób**. Następnie wyszukaj **interfejsu API usługi mapy Bing dla przedsiębiorstw** i postępuj zgodnie z monitami, aby go utworzyć.
 
 ![Klucz usługi Bing](./media/iot-accelerators-faq-cf/bing.png)
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Jak uzyskać interfejsu API map Bing dla QueryKey przedsiębiorstwa
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Jak uzyskać Twojego interfejsu API usługi mapy Bing dla elementu QueryKey przedsiębiorstwa
 
-Po utworzeniu interfejsu API map Bing planu przedsiębiorstwa, należy dodać mapy Bing dla zasobów przedsiębiorstwa do grupy zasobów rozwiązania fabryki połączone w portalu Azure.
+Po utworzeniu usługi interfejsu API map Bing planu Enterprise usługi mapy Bing dla przedsiębiorstw zasobu należy dodać do grupy zasobów w witrynie Azure portal rozwiązania połączonej fabryki.
 
-1. W portalu Azure przejdź do grupy zasobów, zawierającą interfejsu API map Bing planu przedsiębiorstwa.
+1. W witrynie Azure portal przejdź do grupy zasobów, który zawiera interfejs API map Bing planu Enterprise.
 
 1. Kliknij przycisk **wszystkie ustawienia**, następnie **zarządzanie kluczami**.
 
-1. Dostępne są dwa klucze: **umożliwia** i **QueryKey**. Kopiuj **QueryKey** wartości.
+1. Dostępne są dwa klucze: **MasterKey** i **QueryKey**. Kopiuj **QueryKey** wartości.
 
-1. Do pobrania przez klucz `build.ps1` skryptów, ustaw zmienną środowiskową `$env:MapApiQueryKey` w środowisku PowerShell w celu **QueryKey** planu. Skrypt kompilacji następnie automatycznie dodaje wartość do ustawienia usługi App Service.
+1. Znajdować się klucz odebrane przez `build.ps1` skryptu, ustaw zmienną środowiskową `$env:MapApiQueryKey` w środowisku PowerShell w celu **QueryKey** planu. Skrypt kompilacji następnie automatycznie doda wartość do ustawienia usługi App Service.
 
-1. Uruchom lokalnie lub w chmurze przy użyciu wdrożenia `build.ps1` skryptu.
+1. Przeprowadź wdrożenie lokalne lub w chmurze przy użyciu wdrożenia `build.ps1` skryptu.
 
-### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Jak włączyć mapy interakcyjnej przy debugowaniu lokalnym?
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Jak włączyć interaktywnej mapie podczas lokalnego debugowania?
 
-Aby włączyć interakcyjne mapy, podczas lokalnego debugowania, ustaw wartość ustawienia `MapApiQueryKey` w plikach `local.user.config` i `<yourdeploymentname>.user.config` w katalogu wdrożenia z wartością **QueryKey** skopiowane wcześniej.
+Aby włączyć interaktywnej mapie podczas lokalnego debugowania, ustaw wartość ustawienia `MapApiQueryKey` w plikach `local.user.config` i `<yourdeploymentname>.user.config` w katalogu głównym danego wdrożenia, wartość **QueryKey** skopiowane wcześniej.
 
 ### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Jak używać innego obrazu na stronie głównej Mój pulpit nawigacyjny?
 
-Aby zmienić statyczny obraz wyświetlany we/wy strony głównej pulpitu nawigacyjnego, Zamień obraz `WebApp\Content\img\world.jpg`. Następnie ponowne skompilowanie i wdrożenie aplikacji sieci Web.
+Aby zmienić obraz statyczny wyświetlane we/wy strony głównej pulpitu nawigacyjnego i zamienić obraz `WebApp\Content\img\world.jpg`. Następnie należy ponownie skompilować i ponowne wdrażanie aplikacji internetowej.
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Jak używać urządzeń z systemem innym niż UA OPC z fabryką połączenia?
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Jak używać urządzenia inne niż OPC UA z połączonej fabryki?
 
-Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń do fabryki połączenia:
+Do wysyłania danych telemetrycznych z innych OPC UA urządzeń do połączonej fabryki:
 
-1. [Konfigurowanie nowej stacji w topologii połączone fabryki](iot-accelerators-connected-factory-configure.md) w `ContosoTopologyDescription.json` pliku.
+1. [Konfigurowanie nowej stacji w topologii połączonej fabryki](iot-accelerators-connected-factory-configure.md) w `ContosoTopologyDescription.json` pliku.
 
-1. Pozyskiwania danych telemetrii w formacie JSON zgodne fabryka połączenia:
+1. Odbieranie danych telemetrycznych w zgodnym formacie JSON połączonej fabryki:
 
     ```json
     [
@@ -200,12 +200,12 @@ Do wysyłania danych telemetrycznych z innych niż UA OPC urządzeń do fabryki 
 
 1. Format `<timestamp>` jest: `2017-12-08T19:24:51.886753Z`
 
-1. Uruchom ponownie usługę fabryki połączonych aplikacji.
+1. Uruchom ponownie usługę aplikacji połączonej fabryki.
 
 ### <a name="next-steps"></a>Kolejne kroki
 
 Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
 * [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
-* [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-accelerators-connected-factory-overview.md)
-* [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)
+* [Wdrażanie akceleratora rozwiązania połączonej fabryki](quickstart-connected-factory-deploy.md)
+* [Zabezpieczenia IoT od podstaw](/azure/iot-fundamentals/iot-security-ground-up)

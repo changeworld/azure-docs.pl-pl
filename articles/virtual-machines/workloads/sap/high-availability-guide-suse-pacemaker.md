@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: cac2f91a25907be824e3fd3517736d921c3fde64
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921507"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070347"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -38,6 +38,11 @@ Urządzenie interwencja wymaga dodatkowych maszyn wirtualnych działa jako serwe
 Jeśli nie chcesz inwestować w dodatkowych maszyn wirtualnych, można również użyć agent Odgradzający Azure. Minusem jest to, że przejścia w tryb failover może potrwać od 10 do 15 minut, jeśli stop zasobów ulegnie awarii lub węzłów klastra nie może komunikować się które sobie nawzajem już.
 
 ![Program pacemaker w systemie SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
+
+>[!IMPORTANT]
+> Za pomocą urządzenia interwencja klastra program Pacemaker, ma zasadnicze znaczenie dla ogólnej niezawodności całego klastra, który routingu między maszynami wirtualnymi związane i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez wszystkie inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy związane z urządzenia WUS może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, zbadaj reguł routingu urządzeń WUS i [reguł routingu zdefiniowane użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) podczas planowania i wdrażania interwencja urządzeń.
+>
+
 
 ## <a name="sbd-fencing"></a>Preferowane interwencja
 

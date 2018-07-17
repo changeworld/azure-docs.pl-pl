@@ -1,7 +1,7 @@
 ---
-title: Szybki Start Java Visual wyszukiwania usługi Bing interfejsu API | Dokumentacja firmy Microsoft
+title: 'Szybki Start: Java API wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft'
 titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Pokazuje, jak przekazać obraz Visual API wyszukiwania usługi Bing i wrócić szczegółowych informacji o obrazie.
+description: Pokazuje, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskanie szczegółowych informacji o obrazie.
 services: cognitive-services
 author: swhite-msft
 manager: rosh
@@ -10,18 +10,18 @@ ms.technology: bing-visual-search
 ms.topic: article
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8160302faa373d69b65afe6b68a8efb44442850d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 41e0855b126ca6e54d0a487a88fe59a0be6f72f6
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349373"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071999"
 ---
-# <a name="your-first-bing-visual-search-query-in-java"></a>Pierwszego zapytania Visual wyszukiwania usługi Bing w języku Java
+# <a name="your-first-bing-visual-search-query-in-java"></a>Pierwsze zapytanie wyszukiwania wizualnego Bing w języku Java
 
-Visual API wyszukiwania usługi Bing zwraca informacje dotyczące obrazu, który podasz. Musisz podać obrazu przy użyciu adresu URL obrazu, insights token, lub przekazując obrazu. Aby uzyskać informacje o tych opcjach, zobacz [co to jest Visual API wyszukiwania usługi Bing?](../overview.md) W tym artykule przedstawiono przekazywanie obrazu. Przekazywanie obrazu może być przydatne w scenariuszach mobilnych, gdzie obrazu dzielnicę dobrze znanych i odzyskać informacje o nim. Na przykład szczegółowych danych może zawierać elementy towarzyszące składni o punkty. 
+Interfejs API wyszukiwania wizualnego Bing zwraca informacje o obrazie, który należy podać. Aby przekazać obraz, przy użyciu adresu URL obrazu usługi insights tokenu, lub przekazanie obrazu. Aby uzyskać informacje o tych opcjach, zobacz [co to jest interfejs API wyszukiwania wizualnego Bing?](../overview.md) W tym artykule przedstawiono przekazywania obrazu. Przekazywanie obrazu może być przydatne w scenariuszach mobilnych, gdzie Zrób zdjęcie dobrze znanych charakterystycznych elementów krajobrazu i uzyskanie informacji na jego temat. Na przykład szczegółowe informacje zawiera elementy towarzyszące składni o charakterystycznych elementów krajobrazu. 
 
-Jeśli Przekaż obraz lokalnych, poniżej przedstawiono dane formularza należy uwzględnić w treści POST. Dane formularza musi zawierać nagłówek Content-Disposition. Jego `name` parametr musi być ustawiony na "obrazu" i `filename` parametr może być ustawiony na dowolny ciąg. Zawartość formularza jest plikiem binarnym obrazu. Rozmiar maksymalny obrazu, które mogą przekazać to 1 MB. 
+Jeśli załadujesz lokalny obraz, poniżej przedstawiono dane formularza należy uwzględnić w treści wpisu. Dane mogą zawierać nagłówek Content-Disposition. Jego `name` parametru musi być równa "image" i `filename` parametru może być ustawiona na dowolny ciąg. Zawartość formularza jest plik binarny obrazu. Rozmiar maksymalny obrazu, którą możesz przekazać to 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,26 +32,26 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Ten artykuł zawiera prostej aplikacji konsolowej wysyła żądanie Visual API wyszukiwania usługi Bing i wyświetla wyniki wyszukiwania JSON. Ta aplikacja jest napisany w języku Java, interfejsu API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+Ten artykuł zawiera prostą aplikację konsolową, która wysyła żądanie interfejsu API wyszukiwania wizualnego Bing i wyświetla wyniki wyszukiwania JSON. Podczas tej aplikacji został napisany w języku Java, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz element ulubiony, ale wystarczy edytora tekstu, może używać IDE języka Java.
+Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz Ulubione, ale wystarczy edytora tekstów, można użyć Java IDE.
 
-Dla tego przewodnika Szybki Start, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klawisz płatną subskrypcję lub subskrypcji.
+W tym przewodniku Szybki Start, możesz użyć [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klawisz płatna subskrypcja lub subskrypcja.
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 
-Poniżej przedstawiono sposób przekazywania obrazu przy użyciu MultipartEntityBuilder w języku Java.
+Poniżej przedstawiono sposób przekazywania obrazów przy użyciu MultipartEntityBuilder w języku Java.
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki:
 
-1. Pobierz i zainstaluj [gson biblioteki](https://github.com/google/gson). Mogą również uzyskać za pośrednictwem Maven.
-2. Utwórz nowy projekt języka Java w ulubionych IDE lub edytora.
+1. Pobierz i zainstaluj [biblioteki gson](https://github.com/google/gson). Może również uzyskać za pomocą narzędzia Maven.
+2. Utwórz nowy projekt języka Java w Twoim ulubionym środowiskiem IDE lub edytora.
 3. Dodaj kod podany w pliku o nazwie `VisualSearch.java`.
-4. Zastąp `subscriptionKey` wartości z klucza subskrypcji.
-4. Zastąp `imagePath` wartości o ścieżce obrazu do przekazania.
+4. Zastąp `subscriptionKey` wartość z kluczem subskrypcji.
+4. Zastąp `imagePath` na ścieżkę obrazu do przekazania.
 5. Uruchom program.
 
 
@@ -146,10 +146,11 @@ public class UploadImage2 {
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Uzyskiwanie szczegółowych informacji o obrazie przy użyciu tokenu insights](../use-insights-token.md)  
-[Samouczek aplikacji jednej strony Visual wyszukiwania usługi Bing](../tutorial-bing-visual-search-single-page-app.md)  
-[Omówienie Visual wyszukiwania usługi Bing](../overview.md)  
+[Uzyskiwanie szczegółowych informacji o pliku obrazu przy użyciu tokenu usługi insights](../use-insights-token.md)  
+[Samouczek przekazywania obrazów wyszukiwania wizualnego Bing](../tutorial-visual-search-image-upload.md)
+[samouczek dotyczący aplikacji jednostronicowej wyszukiwania wizualnego Bing](../tutorial-bing-visual-search-single-page-app.md)  
+[Przegląd wyszukiwania wizualnego Bing](../overview.md)  
 [Wypróbuj](https://aka.ms/bingvisualsearchtryforfree)  
-[Pobierz klucz bezpłatnej wersji próbnej dostępu](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Odwołanie do Visual API wyszukiwania usługi Bing](https://aka.ms/bingvisualsearchreferencedoc)
+[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Dokumentacja interfejsu API wyszukiwania wizualnego Bing](https://aka.ms/bingvisualsearchreferencedoc)
 

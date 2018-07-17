@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 07/13/2018
 ms.author: marsma
-ms.openlocfilehash: ff94a250ca40aa546ebb07faa96563f49dea974a
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887695"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072079"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
@@ -92,31 +92,21 @@ Jenkins jest teraz skonfigurowane i gotowe do kompilowania i wdrażania kodu. W 
 
 ## <a name="create-a-build-job"></a>Tworzenie zadania kompilacji
 
-Podczas korzystania z obrazu kontenera, jak Jenkins kompilacji docelowej, należy określić obraz, który obejmuje wszystkie narzędzia niezbędne do pomyślnej kompilacji. Do określenia obrazu:
+Zadania kompilacji usługi Jenkins jest gotowy pokazują, że usługi Jenkins jest oparta na wystąpieniu kontenera platformy Azure.
 
-1. Wybierz **Zarządzaj serwerem Jenkins** > **Konfiguruj System** i przewiń w dół do **chmury** sekcji. W tym przykładzie Zaktualizuj wartość obrazu platformy Docker do **microsoft/java na azure podrzędna rozwiązania jenkins**.
-
-   Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz** aby powrócić do pulpitu nawigacyjnego usługi Jenkins.
-
-   ![Konfiguracja chmury narzędzia Jenkins](./media/container-instances-jenkins/jenkins-aci-image.png)
-
-2. Teraz można tworzyć zadania kompilacji usługi Jenkins. Wybierz **nowy element**, nazwij projekt kompilacji takich jak **aci-java-demo**, wybierz opcję **projekt Freestyle**i wybierz **OK**.
+1. Wybierz **nowy element**, nazwij projekt kompilacji takich jak **aci-demo**, wybierz opcję **projekt Freestyle**i wybierz **OK**.
 
    ![Pole nazwy zadania kompilacji i listy typów projektów](./media/container-instances-jenkins/jenkins-new-job.png)
 
-3. W obszarze **ogólne**, upewnij się, że **ograniczanie, gdzie można uruchomić tego projektu** jest zaznaczone. Wprowadź **linux** wyrażenia etykiety. Ta konfiguracja gwarantuje, że to zadanie kompilacji jest uruchamiany w chmurze ACI.
+2. W obszarze **ogólne**, upewnij się, że **ograniczanie, gdzie można uruchomić tego projektu** jest zaznaczone. Wprowadź **linux** wyrażenia etykiety. Ta konfiguracja gwarantuje, że to zadanie kompilacji jest uruchamiany w chmurze ACI.
 
    ![Kartę "Ogólne" ze szczegółami konfiguracji](./media/container-instances-jenkins/jenkins-job-01.png)
 
-4. W obszarze **zarządzania kodem źródłowym**, wybierz opcję **Git** i wprowadź **https://github.com/spring-projects/spring-petclinic.git** dla adresu URL repozytorium. Tego repozytorium GitHub zawiera przykładowy kod aplikacji.
+3. W obszarze **kompilacji**, wybierz opcję **Dodaj krok kompilacji** i wybierz **wykonaj powłokę**. Wprowadź `echo "aci-demo"` jako polecenie.
 
-   ![Karty "Zarządzanie kodem źródłowym" przy użyciu informacji dotyczących kodu źródłowego](./media/container-instances-jenkins/jenkins-job-02.png)
+   !["Kompilacja" kartę z opcjami dla kroku kompilacji](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. W obszarze **kompilacji**, wybierz opcję **Dodaj krok kompilacji** i wybierz **wywołania najwyższego poziomu elementów docelowych narzędzia Maven**. Wprowadź **pakietu** jako cel kroku kompilacji.
-
-   !["Kompilacja" kartę z opcjami dla kroku kompilacji](./media/container-instances-jenkins/jenkins-job-03.png)
-
-6. Wybierz pozycję **Zapisz**.
+5. Wybierz pozycję **Zapisz**.
 
 ## <a name="run-the-build-job"></a>Uruchamianie zadania kompilacji
 

@@ -1,6 +1,6 @@
 ---
-title: Język znaczników syntezy mowy | Dokumentacja firmy Microsoft
-description: Przy użyciu języka mowy syntezy znaczników do kontrolowania wymowy i prosody w tekst na mowę.
+title: Język znaczników synteza mowy | Dokumentacja firmy Microsoft
+description: W celu kontrolowania Wymowa i prosody w zamiany tekstu na mowę, przy użyciu języka znaczników synteza mowy.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,22 +10,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d955e7fd7805688ba103897c0d900c44f16514f8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4074ba91f5029d6c132982d1d81a4888a5e42721
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348924"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39071219"
 ---
-# <a name="speech-synthesis-markup-language"></a>Język znaczników syntezy mowy
+# <a name="speech-synthesis-markup-language"></a>Język znaczników synteza mowy
 
-Mowy syntezy Markup Language (SSML) jest języka znaczników opartych na języku XML, który umożliwia sterowanie Wymowa i *prosody* z tekst na mowę. (Prosody odwołuje się do rytm i wysokością mowy — muzyki, jeśli będzie). Można określić słowa fonetycznie, podawanie wskazówek dotyczących interpretowania liczb, Wstaw pauzy, wysokość formantu woluminu, a szybkość i więcej.
+Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. (Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli wykonasz). Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej.
 
-Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) na W3C.
+Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) w W3C.
 
-Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mowy syntezy SSML.
+Poniższe przykłady pokazują, jak używać SSML typowe potrzeby synteza mowy.
 
-## <a name="add-a-break"></a>Dodawanie podziału
+## <a name="add-a-break"></a>Dodaj podział
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
@@ -33,7 +33,7 @@ Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mow
 </voice> </speak>
 ```
 
-## <a name="change-speaking-rate"></a>Wymowy szybkość zmian
+## <a name="change-speaking-rate"></a>Zmień częstotliwość wypowiedzi
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
@@ -42,7 +42,7 @@ Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mow
 </prosody></voice> </speak>
 ```
 
-## <a name="pronunciation"></a>Wymowy
+## <a name="pronunciation"></a>Wymowa
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
@@ -50,7 +50,7 @@ Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mow
 </voice> </speak>
 ```
 
-## <a name="change-volume"></a>Zmień woluminu
+## <a name="change-volume"></a>Zmiany woluminu
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
@@ -59,7 +59,7 @@ Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mow
 </prosody></voice> </speak>
 ```
 
-## <a name="change-pitch"></a>Zmiana wysokości
+## <a name="change-pitch"></a>Zmień wysokość
 ```xml
 <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
     <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
@@ -78,5 +78,5 @@ Następujące przykłady przedstawiają sposób użycia na potrzeby typowych mow
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

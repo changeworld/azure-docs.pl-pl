@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2018
+ms.date: 07/16/2018
 ms.author: magoedte
-ms.openlocfilehash: a94f7289c75a4f4d466542c608d81cf5b954f4b1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37917345"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069155"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
@@ -290,21 +290,41 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-performance-utilization"></a>Widok wydajności użycia
-Po otwarciu kondycji kontenera, strony natychmiast przedstawia informacje o wykorzystaniu wydajności węzły klastra.  Wyświetlanie informacji na temat klastra usługi AKS jest podzielony na trzy perspektyw:
+Po otwarciu kondycji kontenera, strony natychmiast przedstawia informacje o wykorzystaniu wydajność całego klastra.  Wyświetlanie informacji na temat klastra usługi AKS jest podzielony na cztery perspektywy:
 
+- Klaster
 - Węzły 
 - Kontrolery  
 - Containers
 
-Hierarchia wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze.  Rozwiń węzeł i zostanie wyświetlona co najmniej jeden zasobników, uruchomione w węźle, a jeśli istnieje więcej niż jednego kontenera grupowania zasobnik, są wyświetlane jako ostatni wiersz w hierarchii.<br><br> ![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-health/container-performance-and-health-view-03.png)
+Na karcie klastra wykresy wydajności liniowe pokazują kluczowe metryki wydajności klastra.  
 
-Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Użyj pola listy rozwijanej w górnej części ekranu, aby filtrować według przestrzeni nazw, usługi i języka node. Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci, od **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**.  **Pamięć RSS** jest obsługiwana tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie zostaną wyświetlone wartości dla **AVG %** wyświetlane jako *NaN %*, która jest wartością typu dane liczbowe, reprezentującą wartość niezdefiniowana lub wyniku. 
+![Przykładowe wykresy wydajności na karcie klastra](./media/monitoring-container-health/container-health-cluster-perfview.png)
 
-![Widok wydajności węzłów wydajności kontenera](./media/monitoring-container-health/container-performance-and-health-view-04.png)
+Poniżej przedstawiono podział prezentowane metryki wydajności:
 
-Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale można zmienić okno z **zakres czasu** odnaleźć listy rozwijanej w prawym górnym rogu strony. W tej chwili strony nie automatycznego odświeżania, więc musisz ręcznie odświeżyć je. 
+- Procesor CPU % wykorzystania — tego wykresu reprezentuje węzeł perspektywy zagregowane wykorzystanie procesora CPU dla całego klastra.  Wyniki zakresu czasu można filtrować, wybierając *Avg*, *Min*, *Max*, *50.*, *90*, i *95* z selektora percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
+- % Wykorzystania pamięci węzła — tego wykresu reprezentuje perspektywy zagregowane wykorzystanie pamięci dla całego klastra.  Wyniki zakresu czasu można filtrować, wybierając *Avg*, *Min*, *Max*, *50.*, *90*, i *95* z selektora percentyle nad wykresem, albo indywidualnie lub w połączeniu. 
+- Liczba węzłów — ten wykres przedstawia liczbę węzłów i stan z zakresu od Kubernetes.  Stan reprezentowany węzły klastra są *wszystkich*, *gotowe*, i *niegotowe* i może być filtrowana indywidualnie lub w połączeniu z selektora powyżej wykresu.    
+- Liczba zasobników działań — ten wykres przedstawia stan i Liczba zasobników z zakresu od rozwiązania Kubernetes.  Stan zasobników reprezentowane to *wszystkich*, *oczekujące*, *systemem*, i *nieznany* i może być filtrowana indywidualnie lub w połączeniu z Selektor powyżej wykresu.  
 
-W poniższym przykładzie można zauważyć dla węzła *aks-obiektu agentpool-3402399-0*, wartość **kontenery** wynosi 10, który stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.<br><br> ![Pakiet zbiorczy kontenerów na przykład węzeł](./media/monitoring-container-health/container-performance-and-health-view-07.png)<br><br> Ułatwia ona szybkie ustalenie, czy nie ma właściwej równowagi kontenerów między węzłami w klastrze.  
+Przełączenie na karcie węzłów, hierarchia wiersz poniżej model obiektów usługi Kubernetes, począwszy od węzła w klastrze.  Rozwiń węzeł i zostanie wyświetlona co najmniej jeden zasobników, uruchomione w węźle, a jeśli istnieje więcej niż jednego kontenera grupowania zasobnik, są wyświetlane jako ostatni wiersz w hierarchii. Jesteś w stanie zobaczyć, jak wiele powiązanych obciążeniach-pod są uruchomione na hoście, w przypadku, gdy host ma procesor lub dużego wykorzystania pamięci.
+
+![Przykładowa hierarchia Kubernetes węzeł w widoku wydajności](./media/monitoring-container-health/container-health-nodes-view.png)
+
+Można wybrać kontrolery lub kontenerów w górnej części strony i sprawdź stan i użycia zasobów dla tych obiektów.  Użyj pola listy rozwijanej w górnej części ekranu, aby filtrować według przestrzeni nazw, usługi i języka node. Jeśli zamiast tego chcesz przejrzeć wykorzystanie pamięci, od **metryki** listy rozwijanej wybierz **RSS pamięci** lub **zestaw roboczy pamięci**.  **Pamięć RSS** jest obsługiwana tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie zostaną wyświetlone wartości dla **MIN %** wyświetlane jako *NaN %*, która jest wartością typu dane liczbowe, reprezentującą wartość niezdefiniowana lub wyniku. 
+
+![Widok wydajności węzłów kontenerów](./media/monitoring-container-health/container-health-node-metric-dropdown.png)
+
+Domyślnie dane dotyczące wydajności opiera się na ostatnie 6 godzin, ale można zmienić okno z **zakres czasu** odnaleźć listy rozwijanej w prawym górnym rogu strony. W tej chwili strony nie automatycznego odświeżania, więc musisz ręcznie odświeżyć je. Można również filtrować wyniki do zakresu, wybierając *Avg*, *Min*, *Max*, *50.*, *90*, i *95* z selektora percentyl. 
+
+![Wybór percentyl filtrowanie danych](./media/monitoring-container-health/container-health-metric-percentile-filter.png)
+
+W poniższym przykładzie można zauważyć dla węzła *3977305-aks-nodepool*, wartość **kontenery** wynosi 5, która stanowi pakiet zbiorczy całkowita liczba kontenerów wdrożonych.
+
+![Pakiet zbiorczy kontenerów na przykład węzeł](./media/monitoring-container-health/container-health-nodes-containerstotal.png)
+
+Ułatwia ona szybkie ustalenie, czy nie ma właściwej równowagi kontenerów między węzłami w klastrze.  
 
 W poniższej tabeli opisano informacje znajdujące się po wyświetleniu węzłów.
 
@@ -312,54 +332,80 @@ W poniższej tabeli opisano informacje znajdujące się po wyświetleniu węzł�
 |--------|-------------|
 | Name (Nazwa) | Nazwa hosta |
 | Stan | Widok stanu węzła usługi Kubernetes |
-| % ŚREDNI | Średni procent węzła opartego na wybranej metryki dla wybranych czas trwania. |
-| ŚREDNIA | Średnia węzłów na podstawie rzeczywistej wartości wybrane metryki dla wybrany czas trwania.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla węzła; dla zasobników i kontenerów to wartość średnia zgłaszaną przez hosta. |
+| ŚREDNI %, MIN %, MAX %, 50%, 90% | Średni procent węzła, w oparciu o procentowy podczas tego okresu czasu wybrany. |
+| AVG, MIN, MAX, 50., 90 | Węzły średnia wartość rzeczywista oparciu o procentowy podczas tego okresu czasu wybrany.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla węzła; dla zasobników i kontenerów to wartość średnia zgłaszaną przez hosta. |
 | Containers | Liczba kontenerów. |
 | Czas pracy | Reprezentuje czas, ponieważ węzeł uruchomiony lub został ponownie uruchomiony. |
-| Zasobnik | Tylko w przypadku kontenerów. Pokazuje, które pods go znajdującej się. |
 | Kontrolery | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. Nie wszystkie zasobników będą w kontrolerze, więc niektóre z nich mogą być wyświetlane n/d. | 
-| Trend AVG % | Trend wykres słupkowy w oparciu metryki % avg kontenera i języka node. |
+| Trend AVG %, MIN %, MAX %, 50%, 90% | Trend wykres słupkowy prezentowanie percentyla metryk % kontrolera. |
 
 
-W obszarze wyboru wybierz **kontrolerów**.<br><br> ![Wybierz kontrolerów widoku](./media/monitoring-container-health/container-performance-and-health-view-08.png)
+W obszarze wyboru wybierz **kontrolerów**.
 
-Tutaj można zobaczyć kondycję wydajności kontrolerów.<br><br> ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-performance-and-health-view-05.png)
+![Wybierz kontrolerów widoku](./media/monitoring-container-health/container-health-controllers-tab.png)
 
-Hierarchii wiersz rozpoczyna się od kontrolera i rozwija kontrolera i zobacz, co najmniej jeden zasobników lub co najmniej jeden kontener.  Rozwiń zasobnik i ostatni wiersz Pokaż kontener grupowania zasobnik.  
+Tutaj można zobaczyć kondycję wydajności kontrolerów.
+
+![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-health-controllers-view.png)
+
+Hierarchia wiersz rozpoczyna się od kontrolera i rozwija kontrolera i zostanie wyświetlony jeden lub co najmniej jeden kontener.  Rozwiń zasobnik i ostatni wiersz Pokaż kontener grupowania zasobnik.  
 
 W poniższej tabeli opisano informacje znajdujące się po wyświetleniu kontrolerów.
 
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera|
-| Stan | Stan kontenery po ukończeniu uruchomione o stanie, takie jak *zwolniony*, *zatrzymane*, lub *Paused*. Jeśli kontener jest uruchomiony, ale stan był nie zostało prawidłowo prezentowane lub nie została pobrana przez agenta nie odpowiedział ponad 30 minut, będzie w stanie *nieznany*. |
-| % ŚREDNI | Przedstawia średnią średni procent każdej jednostki wybranej metryki. |
-| ŚREDNIA | Przedstawia średnią Procesora pamięci lub millicore wydajności kontenera.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
+| Stan | Pakiet zbiorczy stan kontenery po ukończeniu uruchomione o stanie, takie jak *OK*, *zwolniony*, *niepowodzenie* *zatrzymane*, lub  *Wstrzymano*. Jeśli kontener jest uruchomiony, ale stan był albo nie zostało prawidłowo prezentowane lub nie została pobrana przez agenta i nie odpowiedział ponad 30 minut, stan jest *nieznany*. W poniższej tabeli znajdują się dodatkowe szczegóły ikonę stanu.|
+| ŚREDNI %, MIN %, MAX %, 50%, 90% | Przedstawia średnią średni procent każdej jednostki dla wybranej metryki i percentyl. |
+| AVG, MIN, MAX, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
 | Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |
 | Ponowne uruchomienie | Rzutowanie liczby ponowne uruchomienie z kontenerów. |
 | Czas pracy | Reprezentuje czas od momentu uruchomienia kontenera. |
-| Zasobnik | Tylko w przypadku kontenerów. Pokazuje, które pods go znajdującej się. |
 | Węzeł | Tylko w przypadku kontenerów i zasobników. Przedstawia on kontrolera, który jest znajdującej się. | 
-| Trend AVG % | Trend wykres słupkowy prezentowanie średni procent metryki kontenera. |
+| Trend AVG %, MIN %, MAX %, 50%, 90%| Trend wykresu słupkowego, reprezentujący metryki percentyl kontrolera. |
 
-W obszarze wyboru wybierz **kontenery**.<br><br> ![Wybierz kontenery widoku](./media/monitoring-container-health/container-performance-and-health-view-09.png)
+W polu Stan wskazują stan online kontenerów:
+ 
+| Ikona | Stan | 
+|--------|-------------|
+| ![Gotowe uruchomionej ikona stanu](./media/monitoring-container-health/container-health-ready-icon.png) | Uruchamianie (gotowe)|
+| ![Ikona stanu oczekuje lub wstrzymana](./media/monitoring-container-health/container-health-waiting-icon.png) | Oczekuje lub wstrzymana|
+| ![Ikona stanu uruchomiona po raz ostatni informowało](./media/monitoring-container-health/container-health-grey-icon.png) | Ostatnie zgłaszane uruchomiona, ale nie odpowiedział w ponad 30 minut|
+| ![Ikona stanu zakończone](./media/monitoring-container-health/container-health-green-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
 
-Tutaj widzimy kondycji wydajności kontenerów.<br><br> ![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-performance-and-health-view-06.png)
+Ikona stanu pokazuje liczbę oparte na zasobnik udostępnia. Pokazuje niższa dwóch stanów i po umieszczeniu stanu przedstawia zbiorcze informacje o stanie ze wszystkich zasobników w kontenerze.  Jeśli nie ma stanu gotowości, zostaną wyświetlone wartości stanu **(0)**.  
+
+W obszarze wyboru wybierz **kontenery**.
+
+![Wybierz kontenery widoku](./media/monitoring-container-health/container-health-containers-tab.png)
+
+Tutaj widzimy kondycji wydajności kontenerów.
+
+![Widok wydajności kontrolerów < nazwa >](./media/monitoring-container-health/container-health-containers-view.png)
 
 W poniższej tabeli opisano informacje znajdujące się po wyświetleniu kontenerów.
 
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera|
-| Stan | Zbiorczy stan kontenerów, jeśli istnieje. |
-| % ŚREDNI | Przedstawia średnią średni procent każdej jednostki wybranej metryki. |
-| ŚREDNIA | Przedstawia średnią Procesora pamięci lub millicore wydajności kontenera. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
-| Containers | Łączna liczba kontenerów dla kontrolera.|
+| Stan | Stan kontenerów, jeśli istnieje. W poniższej tabeli znajdują się dodatkowe szczegóły ikonę stanu.|
+| ŚREDNI %, MIN %, MAX %, 50%, 90% | Przedstawia średnią średni procent każdej jednostki dla wybranej metryki i percentyl. |
+| AVG, MIN, MAX, 50., 90  | Zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl.  Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
+| Zasobnik | Kontener, w którym znajduje się pod.| 
+| Węzeł |  Węzeł, w którym znajduje się kontener. | 
 | Ponowne uruchomienie | Reprezentuje czas od momentu uruchomienia kontenera. |
 | Czas pracy | Reprezentuje czas, ponieważ kontener został uruchomiony lub ponownie uruchomiony. |
-| Zasobnik | Informacje, w którym znajduje się pod. |
-| Węzeł |  Węzeł, w którym znajduje się kontener.  | 
-| Trend AVG % | Trend wykres słupkowy prezentowanie średni procent metryki kontenera. |
+| Trend AVG %, MIN %, MAX %, 50%, 90% | Trend wykresu słupkowego, reprezentujący średni procent metryki kontenera. |
+
+W polu Stan wskazują stan online zasobników:
+ 
+| Ikona | Stan | 
+|--------|-------------|
+| ![Gotowe uruchomionej ikona stanu](./media/monitoring-container-health/container-health-ready-icon.png) | Uruchamianie (gotowe)|
+| ![Ikona stanu oczekuje lub wstrzymana](./media/monitoring-container-health/container-health-waiting-icon.png) | Oczekuje lub wstrzymana|
+| ![Ikona stanu uruchomiona po raz ostatni informowało](./media/monitoring-container-health/container-health-grey-icon.png) | Ostatnie zgłaszane uruchomiona, ale nie odpowiedział w ponad 30 minut|
+| ![Ikona stanu zakończone](./media/monitoring-container-health/container-health-terminated-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
+| ![Ikona stanu nie powiodło się](./media/monitoring-container-health/container-health-failed-icon.png) | Stan niepowodzenia |
 
 ## <a name="container-data-collection-details"></a>Szczegóły zbierania danych kontenera
 Kondycji kontenera zbiera różne dane metryk i dzienników wydajności hostach kontenerów i kontenery. Dane są gromadzone co trzy minuty.
@@ -387,7 +433,9 @@ W poniższej tabeli przedstawiono przykłady rekordów zbieranych przez kondycji
 ## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizy danych
 Usługa log Analytics może pomóc wyszukiwania trendach, diagnozowanie wąskich gardeł, prognozy lub korelowanie danych, które mogą pomóc ustalić, czy bieżąca konfiguracja klastra działa optymalnie.  Wstępnie zdefiniowane wyszukiwań w dziennikach znajdują się od razu rozpocząć korzystanie z lub dostosować w celu zwracania informacji w żądany sposób. 
 
-W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **Wyświetl dziennik** opcja jest dostępna na końcu po prawej stronie po rozwinięciu kontenera.  **Wyszukiwania w dzienniku** prawo powyżej strony wcześniej w portalu zostanie wyświetlona strona.<br><br> ![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-health/container-performance-and-health-view-logs-01.png)   
+W obszarze roboczym można wykonywać interakcyjne analizy danych, zaznaczając **Wyświetl dziennik** opcja jest dostępna na końcu po prawej stronie po rozwinięciu kontrolera lub kontenera.  **Wyszukiwania w dzienniku** prawo powyżej strony wcześniej w portalu zostanie wyświetlona strona.
+
+![Analizowanie danych w usłudze Log Analytics](./media/monitoring-container-health/container-health-view-logs.png)   
 
 Dane wyjściowe dzienników kontenera, które zostały przekazane do usługi Log Analytics to STDOUT i STDERR. Ponieważ usługa Azure Kubernetes zarządzanych (AKS) jest monitorowanie kondycji kontenera, systemu Kubernetes nie są zbierane już dziś z powodu dużej ilości danych wygenerowanych.     
 
@@ -470,7 +518,9 @@ Jeśli została wybrana opcja używania wiersza polecenia platformy Azure, nale�
     }
     ```
 
-4. Edytuj wartość dla **aksResourceId** i **aksResourceLocation** przy użyciu wartości klastra AKS, który można znaleźć na **właściwości** strona dla wybranego klastra.<br><br> ![Strona właściwości kontenera](./media/monitoring-container-health/container-properties-page.png)<br>
+4. Edytuj wartość dla **aksResourceId** i **aksResourceLocation** przy użyciu wartości klastra AKS, który można znaleźć na **właściwości** strona dla wybranego klastra.
+
+    ![Strona właściwości kontenera](./media/monitoring-container-health/container-properties-page.png)
 
     Gdy jesteś w **właściwości** strony, również skopiować **identyfikator zasobu obszaru roboczego**.  Ta wartość jest wymagana, jeśli zdecydujesz, że chcesz usunąć obszar roboczy analizy dzienników później, który nie jest wykonywane jako część tego procesu.  
 
@@ -549,7 +599,8 @@ Jeśli kondycji kontenera, została pomyślnie włączona i skonfigurowana, ale 
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. Sprawdź dzienniki agenta. Gdy agent konteneryzowanych zostanie wdrożona, uruchamia szybkie sprawdzenie, uruchamiając polecenia OMI i wyświetla wersję agenta i dostawcy platformy Docker. Aby sprawdzić, czy agent zakończy się powodzeniem dołączone, uruchom następujące polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
+4. Sprawdź dzienniki agenta. Gdy konteneryzowanych agent zostanie wdrożona, jest ono wykonywane szybkie sprawdzanie przez uruchomienie OMI polecenia i wyświetla wersję agenta i 
+5.  Dostawca. Aby sprawdzić, czy agent zakończy się powodzeniem dołączone, uruchom następujące polecenie: `kubectl logs omsagent-484hw --namespace=kube-system`
 
     Stan powinien wyglądać w następujący sposób:
 

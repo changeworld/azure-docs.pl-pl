@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: db57e0bd0f7afcfa836ef6446cdfd74e5d61c440
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ad4b31fa7b4f4b062f01935c34f7cacf82f99106
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345264"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072130"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service — często zadawane pytania
 
@@ -57,7 +57,7 @@ Po zakończeniu przetwarzania stan będzie mieć stan "Powodzenie".
 
 Stare i nowe zestawy danych muszą można połączyć w pojedynczy plik zip (jeśli jest dane akustyczne) lub plik z rozszerzeniem txt, jeśli są to dane języka. Po dostosowaniu odbywa się nowych musi aktualizowanego modelu można cofnąć wdrożone do uzyskania nowego punktu końcowego
 
-**Pytanie**: co zrobić, jeśli potrzebujesz wyższej współbieżności dla mojego modelu deloyed niż treści oferowanych w portalu. 
+**Pytanie**: co zrobić, jeśli potrzebujesz wyższej współbieżności dla mojego wdrożony model niż treści oferowanych w portalu. 
 
 **Odpowiedź**: można zwiększać z przyrostem równym 20 równoczesnych żądań modelu. 
 
@@ -90,7 +90,7 @@ Jeśli większość wypowiedzi dane akustyczne i języka zestawu (na przykład >
 
 **Pytanie**: ile dane akustyczne potrzebuję?
 
-**Odpowiedź**: zalecamy Rozpoczynanie od 30 minut do 1 godziny dane akustyczne
+**Odpowiedź**: zalecamy Rozpoczynanie od 30 minut do 1 godziny dane akustyczne.
 
 **Pytanie**: jakie dane należy zbierać?
 
@@ -116,18 +116,18 @@ Można również utworzyć wersję aplikacji, który rejestruje dane audio i uż
 
 **Odpowiedź**: tak, wystarczy wybrać niestandardowy model akustyczny w menu rozwijanym, podczas konfigurowania testu w trybie offline.
 
-**Pytanie**: co to jest współczynnik błędów programu Word i jak jest ona obliczana?
+**Pytanie**: co to jest współczynnik błędów programu Word (WER, Windows Management Instrumentation) i jak jest ona obliczana?
 
-**Odpowiedź**: Częstotliwość błędów programu Word to metryki oceny funkcji rozpoznawania mowy. Jest ona traktowana jako liczba błędów, w tym liczba operacji wstawienia, usuwania i podstawienia, podzielona przez całkowitą liczbę słów w transkrypcji odwołania. Tryb szczegółów [tutaj](https://en.wikipedia.org/wiki/Word_error_rate)
+**Odpowiedź**: współczynnik błędów programu Word (WER, Windows Management Instrumentation) jest metryki oceny funkcji rozpoznawania mowy. Jest ona traktowana jako liczba błędów, w tym liczba operacji wstawienia, usuwania i podstawienia, podzielona przez całkowitą liczbę słów w transkrypcji odwołania. Więcej szczegółów można znaleźć [tutaj](https://en.wikipedia.org/wiki/Word_error_rate).
 
 **Pytanie**: jak ustalić, czy wyniki testu dokładności jest dobra?
 
 **Odpowiedź**: Wyniki pokazują porównania między modelem linii bazowej i co można dostosować.
-Należy dążyć do zapewniała modelu odniesienia umożliwiają dostosowanie zwiększonej
+Należy dążyć do zapewniała modelu odniesienia umożliwiają dostosowanie cenna.
 
-**Pytanie**: jak wiem, raportowanie błędów systemu Windows, podstawowy modeli, aby można było zobaczyć jeśli było poprawy jakości obsługi? 
+**Pytanie**: jak wiem, współczynnik błędów programu Word z modeli bazowych, aby można było zobaczyć jeśli było poprawy jakości obsługi? 
 
-**Odpowiedź**: wyniki testu w trybie offline Pokaż dokładność linii bazowej dokładności modelu niestandardowego, a także ulepszanie względem punktu odniesienia
+**Odpowiedź**: wyniki testu w trybie offline Pokaż dokładność linii bazowej dokładności modelu niestandardowego, a także ulepszanie względem punktu odniesienia.
 
 ## <a name="creating-lm"></a>Tworzenie LM
 
@@ -140,7 +140,7 @@ Należy dążyć do zapewniała modelu odniesienia umożliwiają dostosowanie zw
 **Odpowiedź**: przekazywanie listę słów, które będą wyrazów do słownika, ale uczą system jak wyrazy są zwykle używane.
 Dostarczając pełnej lub częściowej wypowiedzi (zdań lub fraz rzeczy, które użytkownicy mogą podać) model języka można Dowiedz się nowych słów i jak są one używane. Model języka niestandardowego jest dobra, nie tylko w celu uzyskania nowych wyrazów w systemie, ale także dostosowywania prawdopodobieństwo znanych wyrazy dla aplikacji. Zapewnienie pełnej wypowiedzi pomaga systemu, Dowiedz się, lepiej. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Rozwiązywanie problemów](troubleshooting.md)
 * [Informacje o wersji](releasenotes.md)

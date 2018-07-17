@@ -1,6 +1,6 @@
 ---
-title: Akceleratorów rozwiązania w usłudze Azure IoT — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące akceleratorów rozwiązania IoT
+title: Akceleratory rozwiązań IoT platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,85 +8,85 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: decae2fee0d040d0857950bec507df173e2820b9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ac5c00aa0c617659f7ac5d386003b8bc34aac81
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627163"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39076242"
 ---
-# <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązania IoT
+# <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
-Zobacz też [połączone — często zadawane pytania dotyczące fabryki](iot-accelerators-faq-cf.md) i [— często zadawane pytania dotyczące monitorowania zdalnego](iot-accelerators-faq-rm-v2.md) .
+Zobacz też [połączone specyficzne dla fabryka — często zadawane pytania](iot-accelerators-faq-cf.md) i [— często zadawane pytania dotyczące monitorowania zdalnego](iot-accelerators-faq-rm-v2.md) .
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Gdzie można znaleźć kodu źródłowego dla akceleratorów rozwiązania?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Gdzie znaleźć kod źródłowy dla akceleratorów rozwiązań
 
-Kod źródłowy jest przechowywane w następujących repozytoriów GitHub:
+Kod źródłowy znajduje się w następujących repozytoriów GitHub:
 
-* [Zdalne monitorowanie akcelerator rozwiązań (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Zdalne monitorowanie akcelerator rozwiązań (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Akcelerator rozwiązań konserwacji predykcyjnej](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Połączone akcelerator rozwiązań fabryki](https://github.com/Azure/azure-iot-connected-factory)
+* [Akcelerator rozwiązań Monitorowanie zdalne (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Akcelerator rozwiązań zdalnego monitorowania (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Predykcyjne akcelerator rozwiązań konserwacji](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Akcelerator rozwiązań usługi połączonej fabryki](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jakie zestawy SDK można użyć do opracowywania klientów urządzeń dla akceleratorów rozwiązania?
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jakie zestawy SDK można używać do tworzenia urządzeń klientów Akceleratory rozwiązań?
 
-Linki do zestawów SDK urządzenia IoT inny język (C, .NET, Java, Node.js, Python) można znaleźć w [zestawów SDK programu Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdks) repozytoriów GitHub.
+Można znaleźć linki do zestawów SDK urządzeń IoT innym języku (C, .NET, Java, Node.js, Python) w [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) repozytoriów GitHub.
 
-Jeśli korzystasz z urządzenia zestaw deweloperski, można znaleźć zasobów i próbek w [SDK zestaw deweloperski IoT](https://github.com/Microsoft/devkit-sdk) repozytorium GitHub.
+Jeśli używasz urządzenia Mxchip znajdziesz zasoby i próbek w [zestawu SDK usługi IoT DevKit](https://github.com/Microsoft/devkit-sdk) repozytorium GitHub.
 
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Nowa architektura mikrousług jest dostępna dla wszystkich trzech solution Accelerator?
+### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Architektura mikrousług jest dostępna dla wszystkich trzech solution Accelerator?
 
-Obecnie tylko rozwiązanie zdalnego monitorowanie używa architektura mikrousług obejmuje najszerszych scenariusza.
+Obecnie tylko rozwiązania do zdalnego monitorowania używa architektura mikrousług obejmuje największą scenariusza.
 
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jakie korzyści nowej powierzając jej ich konserwację otwarte na podstawie mikrousług architektury oferuje w nową aktualizację?
+### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jakie korzyści są dostępne nowe open source opartych na mikrousługach architektury w nowej aktualizacji?
 
-W ciągu ostatnich dwóch lat znacznie powstał architektury chmury. Jako dużą wzorzec do osiągnięcia skalowalność i elastyczność, bez ograniczania szybkości programowanie związane Mikrousług. Ten wzorzec architektury jest używana w wielu usługach Microsoft wewnętrznie z dużą niezawodność i skalowalność wyników. Wprowadzamy te uczenia w praktyce, umożliwiając klientom korzystać z nich.
+W ciągu ostatnich dwóch lat znacznie powstał architektury w chmurze. Mikrousługi mają uznana doskonałe wzorzec do osiągnięcia skali i elastyczności, bez obniżania oczekiwanego poziomu prędkość opracowywania. Ten wzorzec architektury jest używana w kilku usługach Microsoft wewnętrznie z doskonałą niezawodność i skalowalność wyników. Firma Microsoft korzystają z tych uczenia w praktyce, dzięki czemu nasze klienci mogli korzystać z nich.
 
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Nowy akcelerator rozwiązań jest dostępna w tym samym regionie geograficznym, jak istniejące rozwiązanie?
+### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Nowy akcelerator rozwiązań jest dostępna w tym samym regionie geograficznym co istniejące rozwiązanie?
 
-Tak, nowe monitorowania zdalnego są dostępne w tej samej regionów geograficznych.
+Tak, nowe monitorowania zdalnego jest dostępna w tych samych regionach geograficznych.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaka jest różnica między usunięcie grupy zasobów w portalu Azure i klikając polecenie Usuń na akcelerator rozwiązań w azureiotsuite.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Jaka jest różnica między usunięciem grupy zasobów w witrynie Azure portal a usunięciem akceleratora rozwiązań w witrynie azureiotsuite.com?
 
-* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), należy usunąć wszystkie zasoby, które zostały udostępnione po utworzeniu akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
-* Usunięcie grupy zasobów w [portalu Azure](https://portal.azure.com), należy usunąć tylko zasoby w tej grupie zasobów. Należy również usunąć aplikacji usługi Azure Active Directory skojarzonej z akcelerator rozwiązań.
+* Jeśli usuniesz akcelerator rozwiązań w [azureiotsuite.com](https://www.azureiotsolutions.com/), możesz usunąć wszystkie zasoby, których przeprowadzono aprowizację podczas tworzenia akcelerator rozwiązań. Dodatkowe zasoby są dodawane do grupy zasobów, te zasoby są także usuwane.
+* W przypadku usunięcia grupy zasobów w [witryny Azure portal](https://portal.azure.com), możesz usunąć tylko zasoby w tej grupie zasobów. Należy również usunąć aplikację usługi Azure Active Directory skojarzone z akceleratora rozwiązań.
 
-### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Czy można kontynuować korzystanie z mojego istniejących inwestycji w akceleratorów rozwiązania Azure IoT?
+### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Czy mogę nadal korzystać z moich istniejących inwestycji w akceleratorów rozwiązań Azure IoT?
 
-Tak. Żadne rozwiązanie występującego w dalszym ciągu działać w ramach subskrypcji platformy Azure i kod źródłowy jest nadal dostępny w witrynie GitHub.
+Tak. Wszystkie rozwiązania, które obecnie istnieje w dalszym ciągu działać w ramach subskrypcji platformy Azure i kod źródłowy pozostaje dostępna w witrynie GitHub.
 
-### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Jak wiele wystąpień Centrum IoT można udostępnić w ramach subskrypcji?
+### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Ile wystąpień usługi IoT Hub można aprowizować w ramach subskrypcji?
 
-Domyślnie można udostępnić [10 centra IoT na subskrypcję](../azure-subscription-service-limits.md#iot-hub-limits). Można utworzyć [biletu pomocy technicznej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby podnieść ten limit. W rezultacie od każdego rozwiązania akceleratora przepisy nowego centrum IoT umożliwia tylko obsługę maksymalnie 10 akceleratorów rozwiązania w ramach danej subskrypcji.
+Domyślnie można aprowizować [10 centrów IoT na subskrypcję](../azure-subscription-service-limits.md#iot-hub-limits). Możesz utworzyć [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby podnieść ten limit. W rezultacie od każdego przepisy akcelerator rozwiązań nowego centrum IoT pozwala aprowizować maksymalnie 10 akceleratorów rozwiązań w ramach danej subskrypcji.
 
-### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Jak wiele wystąpień bazy danych Azure rozwiązania Cosmos można udostępnić w ramach subskrypcji?
+### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Ile wystąpień usługi Azure Cosmos DB można aprowizować w ramach subskrypcji?
 
-50. Można utworzyć [biletu pomocy technicznej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby podnieść ten limit, ale domyślnie umożliwia tylko obsługę 50 wystąpień rozwiązania Cosmos bazy danych na subskrypcję.
+50. Możesz utworzyć [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby podnieść ten limit, ale domyślnie można aprowizować tylko 50 wystąpień usługi Cosmos DB na subskrypcję.
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Ile bezpłatnych interfejsów API usługi Mapy Bing można aprowizować w ramach subskrypcji?
 
-Dwa. W subskrypcji platformy Azure można utworzyć tylko dwa wewnętrzne transakcje poziom 1 mapy Bing dla planów organizacji. To rozwiązanie monitorowanie zdalnego jest udostępniana domyślnie z planem wewnętrzny poziom 1 transakcji. W związku z tym można udostępnić tylko do dwóch monitorowania zdalnego rozwiązań w ramach subskrypcji bez żadnych modyfikacji.
+Dwa. Można utworzyć tylko dwa wewnętrzne transakcje poziom 1 map Bing za plany Enterprise z subskrypcją platformy Azure. Rozwiązanie monitorowania zdalnego jest domyślnie aprowizowane przy użyciu planu wewnętrzne transakcje poziomu 1. Co w efekcie pozwala aprowizować maksymalnie dwie zdalne monitorowanie rozwiązań w ramach subskrypcji bez żadnych modyfikacji.
 
-### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Jeśli dla DreamSpark Microsoft Azure można utworzyć akcelerator rozwiązań?
+### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Czy mogę utworzyć akceleratora rozwiązań, jeśli mam Microsoft Azure dla programu DreamSpark?
 
 > [!NOTE]
-> Microsoft Azure dla programu DreamSpark jest teraz nazywany Imagine firmy Microsoft dla uczniów lub studentów.
+> Platforma Microsoft Azure dla programu DreamSpark jest teraz nazywany Microsoft Imagine dla studentów.
 
-Obecnie nie można utworzyć akcelerator rozwiązań z [Microsoft Azure dla programu DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) konta. Można jednak utworzyć [bezpłatnego konta wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut, umożliwiająca tworzenie akcelerator rozwiązań.
+Obecnie nie można utworzyć za pomocą akceleratora rozwiązań [Microsoft Azure dla programu DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) konta. Jednakże, możesz utworzyć [konto bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut umożliwiająca tworzenie akcelerator rozwiązań.
 
-### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Jeśli subskrypcja Cloud Solution Provider (CSP) można utworzyć akcelerator rozwiązań?
+### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Akcelerator rozwiązań można utworzyć, jeśli mam obecnie subskrypcję Cloud Solution Provider (CSP)?
 
-Obecnie nie można utworzyć akcelerator rozwiązań z subskrypcją Cloud Solution Provider (CSP). Można jednak utworzyć [bezpłatnego konta wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut, umożliwiająca tworzenie akcelerator rozwiązań.
+Obecnie nie można utworzyć akcelerator rozwiązań dzięki subskrypcji programu Cloud Solution Provider (CSP). Jednakże, możesz utworzyć [konto bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut umożliwiająca tworzenie akcelerator rozwiązań.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Jak usunąć dzierżawę usługi AAD?
 
-Zobacz Golpe marek blogu [wskazówki usunięcia dzierżawy usługi Azure AD](http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx).
+Zobacz wpis w blogu Erica [Walkthrough of Deleting dzierżawy usługi Azure AD](http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx).
 
 ### <a name="next-steps"></a>Kolejne kroki
 
 Możesz także wypróbować niektóre inne funkcje i możliwości akceleratorów rozwiązań IoT:
 
-* [Poznaj możliwości akcelerator rozwiązań monitorowania zdalnego](iot-accelerators-remote-monitoring-explore.md)
+* [Poznaj możliwości akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-remote-monitoring-explore.md)
 * [Omówienie akceleratora rozwiązań do konserwacji zapobiegawczej](iot-accelerators-predictive-overview.md)
-* [Akceleratora rozwiązań połączonych fabryki — omówienie](iot-accelerators-connected-factory-overview.md)
-* [Zabezpieczenia IoT od podstaw](securing-iot-ground-up.md)
+* [Wdrażanie akceleratora rozwiązania połączonej fabryki](quickstart-connected-factory-deploy.md)
+* [Zabezpieczenia IoT od podstaw](/azure/iot-fundamentals/iot-security-ground-up)

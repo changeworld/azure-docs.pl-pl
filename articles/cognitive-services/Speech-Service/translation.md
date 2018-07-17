@@ -1,56 +1,56 @@
 ---
-title: Przykładowe translacji | Dokumentacja firmy Microsoft
+title: Przykład tłumaczenie | Dokumentacja firmy Microsoft
 titleSuffix: Microsoft Cognitive Services
-description: Poniżej przedstawiono przykładowe translacji mowy.
+description: Oto przykład tłumaczenia mowy.
 services: cognitive-services
 author: wolfma61
 manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 1151628ed695e74e2196c20b08e33fa5eaf33282
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 66d26181334a71578f1a94000cb942a6a87398bc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028391"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070795"
 ---
-# <a name="sample-for-translation"></a>Próbka do tłumaczenia
+# <a name="sample-for-translation"></a>Przykład tłumaczenia
 
-> [!NOTE]
-> Aby uzyskać instrukcje dotyczące pobierania w tym przykładzie i innych użytkowników, zobacz [przykłady dotyczące zestawu SDK mowy](samples.md).
+[!include[Get a Subscription Key](../../../includes/cognitive-services-speech-service-get-subscription-key.md)]
 
-[!include[Get a Subscription Key](includes/get-subscription-key.md)]
+## <a name="top-level-declarations"></a>Deklaracje najwyższego poziomu
 
-> [!NOTE]
-> Dla wszystkich przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:
->
-> [!code-csharp [Using Statements](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#toplevel)]
->
-> - - -
+Wszystkie przykłady poniżej następujące deklaracje najwyższego poziomu powinny być stosowane:
 
-## <a name="translation-using-the-microphone"></a>Tłumaczenie przy użyciu mikrofon
+[!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#toplevel)]
 
-Poniższy fragment kodu przedstawia sposób Przetłumacz wejście mowy z języka angielskiego na język niemiecki i również uzyskać dane wyjściowe głosu przetłumaczony tekst. Używa ona mikrofon.
+[!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/translation_samples.cpp#toplevel)]
 
-[!code-csharp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#TranslationWithMicrophoneAsync)]
+[!code-java[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#toplevel)]
 
-- - -
+## <a name="translation-using-the-microphone"></a>Tłumaczenie przy użyciu mikrofonu
 
-## <a name="translation-using-file-input"></a>Tłumaczenie przy użyciu pliku danych wejściowych
+Poniższy fragment kodu przedstawia sposób tłumaczenie mowy dane wejściowe z angielskiego na niemiecki i również pobierać dane wyjściowe głosu przetłumaczonego tekstu. Używa mikrofonu.
 
-Poniższy fragment kodu przedstawia sposób tłumaczenie mowy danych wejściowych z angielski, niemiecki i francuski.
-Używa pliku jako dane wejściowe.
+[!code-csharp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#TranslationWithMicrophoneAsync)]
 
-[!code-csharp[Translation Using File Input](~/samples-cognitive-services-speech-sdk/Windows/csharp_samples/translation_samples.cs#TranslationWithFileAsync)]
+[!code-cpp[Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/translation_samples.cpp#TranslationWithMicrophone)]
 
-- - -
+[!code-java [Translation Using Microphone](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#TranslationWithMicrophoneAsync)]
 
-## <a name="sample-source-code"></a>Przykładowy kod źródłowy
+## <a name="translation-using-file-input"></a>Tłumaczenie przy użyciu pliku wejściowego
 
-Najnowszą wersję przykłady i jeszcze bardziej zaawansowane przykłady znajdują się w dedykowanej [repozytorium GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk).
+Poniższy fragment kodu pokazuje, jak przekształcać dane wejściowe mowy z angielskiego na niemiecki i francuski.
+Plik używa jako dane wejściowe.
+
+[!code-csharp[Translation Using File Input](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/translation_samples.cs#TranslationWithFileAsync)]
+
+[!code-java [Translation Using File Input](~/samples-cognitive-services-speech-sdk/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/TranslationSamples.java#TranslationWithFileAsync)]
+
+[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

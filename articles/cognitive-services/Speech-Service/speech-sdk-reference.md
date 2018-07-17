@@ -10,28 +10,21 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e0037cc8701c88325c3d55f6b3ab0eccf2fbd28
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9ee7cc2db7ad6e2914d3916ad1aa578a9746e287
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348673"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072235"
 ---
-# <a name="speech-sdk-reference"></a>Odwołanie do zestawu SDK mowy
+# <a name="speech-sdk-reference"></a>Odwołanie do zestawu SDK rozpoznawania mowy
 
-Mowy Software Development Kit (SDK) zapewnia dostęp aplikacji do funkcji usługi mowy, co ułatwia tworzenie oprogramowania obsługującego mowy. Obecnie, zestawy SDK zapewniają dostęp do **mowy na tekst** i **tłumaczenia mowy**. Tekst na mowę wykorzystuje [REST] (https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) POST połączeń za pośrednictwem protokołu HTTP.
+Mowy Software Development Kit (SDK) zapewnia aplikacji dostępu do funkcji usługi rozpoznawania mowy, co ułatwia tworzenie oprogramowania dla komputerów z obsługą mowy. Obecnie zestawy SDK zapewniają dostęp do **zamiana mowy na tekst**, **tłumaczenia mowy**, i **rozpoznawanie intencji**.
 
-W poniższej tabeli opisano aktualnie obsługiwanych języków programowania i systemów operacyjnych.
-
-|Język programowania|Platforma|Dokumentacja interfejsu API|
-|-|-|-|
-|C#|Windows|[Przeglądaj](https://aka.ms/csspeech/csharpref)
-|C/C++|Windows, Linux|[Przeglądaj](https://aka.ms/csspeech/cppref)
-|Java\*|Urządzenia|[Przeglądaj](https://aka.ms/csspeech/javaref)
-
-\* *Zestaw SDK Java jest częścią [mowy urządzeń SDK](speech-devices-sdk.md).*
+[!include[Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz rozpoznawanie mowy w języku C#](quickstart-csharp-windows.md)
+* [Wypróbuj bezpłatnie usługę rozpoznawania mowy](get-started.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

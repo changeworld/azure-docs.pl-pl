@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 55b083ac5384e749098338d2f3b7b24bfe16fe8f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fd13dc94e0199aac04ae86aaf003ea9a70fa50d5
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696569"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070559"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Rozpoczynanie pracy z usługą Azure Blob storage i Visual Studio podłączone usługi (ASP.NET)
 
@@ -135,11 +135,11 @@ Poniższe kroki ilustrują Tworzenie kontenera obiektów blob:
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy **widoków** folderu.
 
-2. Z menu kontekstowego wybierz **Dodaj** > **nowy Folder**. Nadaj nazwę nowego folderu *obiektów blob*. 
+1. Jeśli nie ma **obiektów blob** folderu, utwórz je. Z menu kontekstowego wybierz **Dodaj** > **nowy Folder**. Nadaj nazwę nowego folderu *obiektów blob*. 
  
 1. W **Eksploratora rozwiązań**, rozwiń węzeł **widoków** folder, a następnie kliknij prawym przyciskiem myszy **obiektów blob**.
 
-4. Z menu kontekstowego wybierz **Dodaj** > **widoku**.
+1. Z menu kontekstowego wybierz **Dodaj** > **widoku**.
 
 1. W **Dodaj widok** okna dialogowego wprowadź **CreateBlobContainer** dla nazwy widoku, a następnie wybierz **Dodaj**.
 

@@ -10,18 +10,37 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 891206e88173d72a0bacf6694a331c4ad8cc9acc
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867957"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069451"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
 Ten artykuł ułatwia korzystanie rozwiązania Change Tracking można łatwo zidentyfikować zmiany w danym środowisku. Rozwiązanie umożliwia śledzenie zmian do oprogramowania Windows i Linux, Windows i Linux, pliki, klucze rejestru Windows, usługi Windows i demony systemu Linux. Identyfikowanie zmian w konfiguracji ułatwia identyfikowanie problemów operacyjnych.
 
 Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Log Analytics w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
+
+## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
+
+Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
+
+* Windows Server 2008 Service Pack 1 (SP1) lub nowszy
+* Windows 7 z dodatkiem SP1 lub nowszy.
+
+## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
+
+Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta systemu Linux może być również uruchomić na inne dystrybucje nie na liście. Jeśli nie określono inaczej, wszystkie wersje pomocnicze są obsługiwane w przypadku wszystkich wersji głównych, na liście.  
+
+* Linux Amazon 2012.09 do 2015.09 — x86/x64 64
+* CentOS Linux 5, 6 i 7 — x86/x64 64  
+* Oracle Linux 5, 6 i 7 — x86/x64 64
+* Red Hat Enterprise Linux Server 5, 6 i 7 — x86/x64 64
+* Debian GNU/Linux 6, 7 i 8 — x86/x64 64
+* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 i 12 — x86/x64 64
 
 ## <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 

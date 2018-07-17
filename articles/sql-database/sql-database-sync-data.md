@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/01/2018
+ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 56117953c6cd11b952a312e15cd4515895021e10
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 81616522f479175dc58188bd6acc4db4f9007756
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342661"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069390"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -24,6 +24,16 @@ SQL Data Sync to usługa oparta na usłudze Azure SQL Database, która umożliwi
 ## <a name="architecture-of-sql-data-sync"></a>Architektura SQL Data Sync
 
 Synchronizacja danych opiera się wokół koncepcji grupą synchronizacji. Grupa synchronizacji jest grupą baz danych, które mają być synchronizowane.
+
+Synchronizacja danych używa topologii gwiazdy, aby synchronizować dane. Należy zdefiniować jedną z baz danych w grupy synchronizacji jako baza danych koncentratora. Pozostała część bazy danych to element członkowski bazy danych. Synchronizacja występuje tylko między Centrum i poszczególnych elementów członkowskich.
+-   **Baza danych koncentratora** musi być bazą danych Azure SQL Database.
+-   **Bazy danych elementu członkowskiego** może być baz danych SQL, bazy danych programu SQL Server w środowisku lokalnym lub wystąpienia programu SQL Server na maszynach wirtualnych platformy Azure.
+-   **Baza danych synchronizacji** zawiera metadane i dziennika w celu synchronizacji danych. Baza danych synchronizacji ma być bazą danych Azure SQL Database znajduje się w tym samym regionie, co baza danych koncentratora. Baza danych synchronizacji jest klient utworzył i należące do klientów.
+
+> [!NOTE]
+> Jeśli używasz w lokalnej bazy danych jako element członkowski bazy danych, musisz [instalowania i konfigurowania agenta synchronizacji lokalnego](sql-database-get-started-sql-data-sync.md#add-on-prem).
+
+![Synchronizowanie danych między bazami danych](media/sql-database-sync-data/sync-data-overview.png)
 
 Grupa synchronizacji ma następujące właściwości:
 
@@ -35,16 +45,6 @@ Grupa synchronizacji ma następujące właściwości:
 
 -   **Zasady rozwiązywania konfliktów** poziomu zasad grupy, który może być *wins Centrum* lub *wins elementu członkowskiego*.
 
-Synchronizacja danych używa topologii gwiazdy, aby synchronizować dane. Należy zdefiniować jedną z baz danych w grupie jako baza danych koncentratora. Pozostała część bazy danych to element członkowski bazy danych. Synchronizacja występuje tylko między Centrum i poszczególnych elementów członkowskich.
--   **Baza danych koncentratora** musi być bazą danych Azure SQL Database.
--   **Bazy danych elementu członkowskiego** może być baz danych SQL, bazy danych programu SQL Server w środowisku lokalnym lub wystąpienia programu SQL Server na maszynach wirtualnych platformy Azure.
--   **Baza danych synchronizacji** zawiera metadane i dziennika w celu synchronizacji danych. Baza danych synchronizacji ma być bazą danych Azure SQL Database znajduje się w tym samym regionie, co baza danych koncentratora. Baza danych synchronizacji jest klient utworzył i należące do klientów.
-
-> [!NOTE]
-> Jeśli używasz w lokalnej bazy danych jako element członkowski bazy danych, musisz [instalowania i konfigurowania agenta synchronizacji lokalnego](sql-database-get-started-sql-data-sync.md#add-on-prem).
-
-![Synchronizowanie danych między bazami danych](media/sql-database-sync-data/sync-data-overview.png)
-
 ## <a name="when-to-use-data-sync"></a>Kiedy należy używać synchronizacji danych
 
 Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych SQL Azure lub baz danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
@@ -55,7 +55,7 @@ Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być pr
 
 -   **Globalnie rozproszone aplikacje:** wiele firm rozciągają się kilku regionach i nawet kilku krajach. Aby zminimalizować opóźnienie sieci, najlepiej jest mieć swoje dane w regionie bliską. Z opcją synchronizacji danych można pracować z bazami danych w regionach na całym świecie zsynchronizowane.
 
-Synchronizacja danych nie jest najlepszym rozwiązaniem w następujących scenariuszach:
+Synchronizacja danych nie jest preferowanym rozwiązaniem w następujących scenariuszach:
 
 | Scenariusz | Niektóre zalecane rozwiązania |
 |----------|----------------------------|

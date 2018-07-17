@@ -1,7 +1,7 @@
 ---
-title: Azure DB rozwiązania Cosmos indeksowania zasad | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania dla automatycznego indeksowania i zwiększyć wydajność.
-keywords: Indeksowanie działania, automatycznego indeksowania, indeksowania bazy danych
+title: Usługa Azure Cosmos DB zasady indeksowania | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak działa indeksowanie w usłudze Azure Cosmos DB. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania do automatycznego indeksowania i większą wydajność.
+keywords: Indeksowanie działania, automatycznego indeksowania, indeksowanie bazy danych
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -10,41 +10,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: d867079b9a5546dc9555697a9066472e4e470977
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 240c0e1f39833e4dc4c4ad410f50ff03df0b5734
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298301"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072167"
 ---
-# <a name="how-does-azure-cosmos-db-index-data"></a>Jak dane indeksu bazy danych rozwiązania Cosmos Azure?
+# <a name="how-does-azure-cosmos-db-index-data"></a>Jakie usługi Azure Cosmos DB indeksuje dane?
 
-Domyślnie wszystkie dane z bazy danych Azure rozwiązania Cosmos jest indeksowany. Choć wielu klientów chętnie let DB rozwiązania Cosmos Azure automatycznie obsługiwać wszystkie aspekty indeksowania, można określić niestandardowego *indeksowania zasad* kolekcji podczas tworzenia w usłudze Azure DB rozwiązania Cosmos. Zasady indeksowania w usłudze Azure DB rozwiązania Cosmos są bardziej elastyczne i wydajne niż indeksów pomocniczych, które są oferowane na innych platformach, bazy danych. W usłudze Azure DB rozwiązania Cosmos można projektować i dostosować kształt indeksu bez ograniczania elastyczność schematu. 
+Domyślnie wszystkie dane z usługi Azure Cosmos DB jest indeksowana. Mimo że wielu klientów są ucieszy wiadomość umożliwić usłudze Azure Cosmos DB automatycznie obsługiwać wszystkie aspekty indeksowania, można określić niestandardowego *zasad indeksowania* kolekcji podczas tworzenia w usłudze Azure Cosmos DB. Zasady indeksowania w usłudze Azure Cosmos DB są bardziej elastyczne i wydajne niż indeksów pomocniczych, które są oferowane na innych platformach, bazy danych. W usłudze Azure Cosmos DB można projektować i Dostosuj kształt indeksu, bez obniżania oczekiwanego poziomu elastyczność schematu. 
 
-Aby dowiedzieć się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos, jest wziąć pod uwagę podczas zarządzania zasady indeksowania, można oznaczyć szczegółowych kompromis między narzut na przechowywanie indeksu, zapisu i przepływności zapytania i spójności zapytania.  
+Aby dowiedzieć się, jak działa indeksowanie w usłudze Azure Cosmos DB, ważne jest zrozumienie, że zasady indeksowania można zarządzać, można tworzyć szczegółową kompromis między narzut na przechowywanie indeksu, zapisu i przepływności zapytań oraz spójności zapytań.  
 
-Poniższe wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure pokazuje DB rozwiązania Cosmos Azure automatycznego indeksowania możliwości i sposobu dostrojenie i skonfigurować zasady indeksowania w kontenerze Twojej bazy danych Azure rozwiązania Cosmos. 
+W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu pokazuje automatycznego indeksowania możliwości i sposobu dostosowywania i konfigurowania zasad indeksowania w kontenerze usługi Azure Cosmos DB usługi Azure Cosmos DB. 
 
 >[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
-W tym artykule firma Microsoft Przyjrzyjmy się zamknięcia bazy danych Azure rozwiązania Cosmos indeksowania zasad, jak dostosować zasady indeksowania i skojarzone kompromisy. 
+W tym artykule będziemy Przyjrzyj się Zamknij usługę Azure Cosmos DB zasady, jak dostosować zasady indeksowania, skojarzone wady i zalety indeksowania. 
 
 Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania:
 
-* Jak można zastąpić właściwości, aby uwzględnić lub wykluczyć indeksowania?
-* Jak można skonfigurować indeksu ostatecznego aktualizacji?
-* Jak skonfigurować indeksowania do wykonywania zapytań ORDER BY i zakres?
-* Jak dokonać zmiany do zbioru zasady indeksowania
-* Jak porównać magazynu i wydajności różnych zasad indeksowania
+* Jak można zastąpić właściwości do dołączania lub wykluczania z indeksowania
+* Jak można skonfigurować indeksu ostatecznej aktualizacji?
+* Jak skonfigurować indeksowanie w celu wykonywania zapytań ORDER BY i zakresu?
+* Jak dokonać zmian do zasady indeksowania kolekcji
+* Jak porównać magazynu oraz wydajności różnych zasad indeksowania
 
-## Dostosuj zasady indeksowania w kolekcji <a id="CustomizingIndexingPolicy"></a>  
-Zastępowanie domyślnego indeksowania zasad w kolekcji usługi Azure DB rozwiązania Cosmos można dostosować kompromis między magazynu, zapisu i wydajność zapytań i spójności zapytania. Można skonfigurować następujące aspekty:
+## Dostosuj zasady indeksowania kolekcji <a id="CustomizingIndexingPolicy"></a>  
+Kompromis między magazynu, zapisu i wydajności zapytań oraz spójności zapytań można dostosować poprzez zastąpienie domyślnej indeksowania zasad w kolekcji usługi Azure Cosmos DB. Można skonfigurować następujące aspekty:
 
-* **Dołącz lub Wyklucz dokumentów i ścieżki z indeksem i**. Można wyłączyć lub włączyć określonych dokumentów w indeksie, gdy Wstawianie lub zastępowanie dokumentów w kolekcji. Można również uwzględnić lub wykluczyć określone właściwości JSON, nazywany również *ścieżki*, zostać pomyślnie zindeksowane wszystkich dokumentów, które znajdują się w indeksie. Ścieżki obejmują wzorców symboli wieloznacznych.
-* **Skonfigurować różne typy indeksu**. Dla każdej ścieżki dołączone można określić typ indeksu, który wymaga ścieżki dla kolekcji. Można określić typ indeksu na podstawie ścieżki danych, obciążenie oczekiwanego zapytania i numeryczne/ciąg "dokładności."
-* **Konfigurowanie trybów aktualizacji indeksu**. Azure DB rozwiązania Cosmos obsługuje trzy tryby indeksowania: spójny, opóźnieniem i brak. Można skonfigurować indeksowania tryby za pomocą zasady indeksowania na kolekcji usługi Azure DB rozwiązania Cosmos. 
+* **Dołącz lub Wyklucz dokumentów i ścieżki do i z indeksu**. Można wyłączyć lub włączyć określonych dokumentów w indeksie, gdy wstawiasz lub Zamień dokumenty w kolekcji. Można również dołączyć lub wykluczyć określone właściwości kodu JSON, nazywany również *ścieżki*, mają być indeksowane wszystkich dokumentów, które znajdują się w indeksie. Ścieżki obejmują wzorców symboli wieloznacznych.
+* **Skonfigurować różne typy indeksu**. Dla każdej ścieżki dołączone można określić typ indeksu, wymaganych przez ścieżkę dla kolekcji. Można określić typ indeksu na podstawie ścieżki danych, zapytanie oczekiwanego obciążenia i numeryczne/ciąg "dokładności."
+* **Konfigurowanie trybów aktualizacji indeksu**. Usługa Azure Cosmos DB obsługuje trzy tryby indeksowania: spójny i leniwa, więc i None. Można skonfigurować tryby indeksowania za pośrednictwem zasad indeksowania w kolekcji usługi Azure Cosmos DB. 
 
-Poniższy fragment kodu platformy Microsoft .NET przedstawiono sposób ustawiania niestandardowe zasady indeksowania, podczas tworzenia kolekcji. W tym przykładzie mamy ustawioną zasad z indeksem zakresu dla ciągów i numery precyzja maksymalna. Ta zasada służy do wykonywania zapytań ORDER BY ciągów.
+Poniższy fragment kodu programu Microsoft .NET przedstawiono sposób ustawiania niestandardowych zasad indeksowania, podczas tworzenia kolekcji. W tym przykładzie ustawimy zasad z indeksem zakresu dla ciągi i liczby w maksymalna dokładność. Ta zasada służy do wykonywania zapytania w klauzuli ORDER BY, w odniesieniu do ciągów.
 
     DocumentCollection collection = new DocumentCollection { Id = "myCollection" };
 
@@ -55,59 +55,59 @@ Poniższy fragment kodu platformy Microsoft .NET przedstawiono sposób ustawiani
 
 
 > [!NOTE]
-> Schematu JSON dla zasady indeksowania zmienione w wersji interfejsu API REST wersji 2015-06-03. W tej wersji schematu JSON dla zasady indeksowania obsługuje indeksów zakresu względem ciągów. Zestaw .NET SDK 1.2.0 i Java, Python i Node.js SDK 1.1.0 obsługuje nowego schematu zasad. Wcześniejszych wersji zestawu SDK za pomocą interfejsu API REST wersji 2015-04-08. Obsługują one wcześniejszych schematu dla zasady indeksowania.
+> Schemat JSON dla zasad indeksowania zmiany w wersji interfejsu API REST w wersji 2015-06-03. Z tą wersją schematu JSON dla zasad indeksowania obsługuje indeksy zakresu względem ciągów. Zestaw SDK platformy .NET 1.2.0 lub nowszej i Java, Python i Node.js SDK 1.1.0 obsługuje nowy schemat zasad. Wcześniejsze wersje zestawu SDK, użyj interfejsu API REST w wersji 2015-04-08. Obsługiwane są też wcześniejszych schematu dla zasad indeksowania.
 > 
-> Domyślnie bazy danych Azure rozwiązania Cosmos indeksuje wszystkie właściwości ciągu w dokumentach spójne z indeksem wyznaczania wartości skrótu. Wszystkie właściwości liczbowe w dokumentach go indeksuje spójne z indeksem typu zakres.  
+> Domyślnie usługi Azure Cosmos DB indeksuje wszystkie właściwości ciągu w dokumentach spójne z indeksem wyznaczania wartości skrótu. Serwer ten indeksuje wszystkie właściwości liczbowe w dokumentach spójnie na indeks zakresu.  
 > 
 > 
 
 ### <a name="customize-the-indexing-policy-in-the-portal"></a>Dostosuj zasady indeksowania w portalu
 
-Można zmienić zasady indeksowania w kolekcji w portalu Azure: 
+Można zmienić zasady indeksowania kolekcji w witrynie Azure portal: 
 
-1. W portalu przejdź do swojego konta bazy danych rozwiązania Cosmos platformy Azure, a następnie wybierz kolekcji. 
-2. W menu nawigacji po lewej stronie wybierz **ustawienia**, a następnie wybierz **zasady indeksowania**. 
+1. W portalu przejdź na swoje konto usługi Azure Cosmos DB, a następnie wybierz kolekcję. 
+2. W menu nawigacji po lewej stronie wybierz **ustawienia**, a następnie wybierz pozycję **zasady indeksowania**. 
 3. W obszarze **zasady indeksowania**, zmienić zasady indeksowania, a następnie wybierz **OK**. 
 
 ### Tryby indeksowania bazy danych <a id="indexing-modes"></a>  
-Azure DB rozwiązania Cosmos obsługuje trzy tryby indeksowania, które można skonfigurować za pomocą zasady indeksowania w kolekcji usługi Azure DB rozwiązania Cosmos: spójny, opóźnieniem i brak.
+Usługa Azure Cosmos DB obsługuje trzy tryby indeksowania, które można skonfigurować za pomocą zasad indeksowania w kolekcji usługi Azure Cosmos DB: spójny i leniwa, więc i None.
 
-**Spójne**: zasady zbierania bazy danych Azure rozwiązania Cosmos jest spójne, zapytania w określonej kolekcji bazy danych Azure rozwiązania Cosmos wykonaj poziomu spójności określone dla odczytów punktu (silne, nieaktualność, sesji lub ostatecznego). Indeks jest aktualizowana synchronicznie, w ramach aktualizacji dokumentu (insert, replace, update i delete dokumentów w kolekcji usługi Azure DB rozwiązania Cosmos).
+**Spójne**: Jeśli zasady kolekcji usługi Azure Cosmos DB jest spójność, kwerend w określonej kolekcji usługi Azure Cosmos DB, wykonaj ten sam poziom spójności w określonych dla odczytów punktu (silne, powiązana nieaktualność, "session" lub ostateczna). Indeks jest aktualizowana synchronicznie, w ramach aktualizacji dokumentu (insert, Zastąp, update i delete dokumentów w kolekcji usługi Azure Cosmos DB).
 
-Spójne indeksowania obsługuje zapytania spójne kosztem możliwe zmniejszenie przepływność zapisu. Obniżenie to funkcja unikatowy ścieżek, które muszą zostać pomyślnie zindeksowane i "poziom zgodności". Spójne tryb indeksowania jest przeznaczona dla obciążeń "write szybkiego zapytań od razu".
+Spójne indeksowania obsługuje spójne zapytania kosztem możliwe zmniejszenie przepływności zapisu. Obniżenie to funkcja unikatowych ścieżek, które muszą zostać pomyślnie zindeksowane i "poziom spójności". Spójne tryb indeksowania jest zaprojektowana dla obciążeń "write szybkiego zapytań od razu".
 
-**Opóźnieniem**: indeks jest aktualizowany asynchronicznie, gdy kolekcji usługi Azure DB rozwiązania Cosmos jest spoczynku, oznacza to, gdy przepływności kolekcji nie jest w pełni wykorzystane do obsługi żądań użytkownika.  Należy pamiętać, że można uzyskać niespójne wyników, ponieważ dane są pozyskanych i indeksowane powoli. Oznacza to, że Twoje liczby zapytań lub wyników określonego zapytania mogą nie być zgodne lub repeatable na podany czas. 
+**Lazy**: zaktualizowaniu indeksu asynchronicznie, gdy kolekcji usługi Azure Cosmos DB jest spoczynku, oznacza to, gdy przepływność kolekcji nie jest w pełni wykorzystywany do obsługi żądań użytkowników.  Należy pamiętać, że może pobrać niespójne wyniki, ponieważ dane są pozyskiwane i indeksowane powoli. Oznacza to, że liczba zapytaniach ani wyników zapytania określonego może nie być zgodne lub repeatable w danej chwili. 
 
-Indeks jest zazwyczaj w trybie wyrównującej pozyskiwane danych. Z opóźnieniem indeksowania czas wygaśnięcia (TTL) zmienia wynik w indeksie jest porzucona i utworzona ponownie. Dzięki temu wyniki zapytania i liczba niespójne w danym okresie czasu. Większość kont Azure DB rozwiązania Cosmos używać spójne trybu indeksowania.
+Indeks znajduje się zwykle w trybie wyrównującej z pozyskiwanych danych. Z opóźnieniem, indeksowanie czas wygaśnięcia (TTL) zmieni wynik w indeksie jest porzucona i utworzona ponownie. To sprawia, że wyniki zapytania i liczba niespójna w okresie czasu. Większość kont usługi Azure Cosmos DB, należy używać spójnego trybu indeksowania.
 
-**Brak**: kolekcja, która ma wartość None tryb indeksu nie ma indeksu skojarzonych z nim. Jest ona powszechnie stosowana w przypadku bazy danych Azure rozwiązania Cosmos jest używana jako magazyn kluczy i wartości i dokumenty są dostępne tylko dla ich właściwość Identyfikatora. 
+**Brak**: kolekcja, która nie ma żadnego indeksu trybie nie ma indeksu skojarzonych z nim. Jest to często używane, jeśli usługi Azure Cosmos DB jest używany jako magazyn kluczy i wartości, a dostęp do dokumentów tylko przez ich właściwości Identyfikatora. 
 
 > [!NOTE]
-> Skonfigurowanie zasady indeksowania z None ma efektem ubocznym usunięcie wszelkich istniejący indeks. Użyj, jeśli Twoich wzorców dostępu wymagają tylko Identyfikatora lub link do samego siebie.
+> Konfigurowanie zasad indeksowania za pomocą None powoduje po stronie porzucenie dowolnego istniejącego indeksu. Użyj, jeżeli Twoich wzorców dostępu wymagają tylko identyfikator lub link do samego siebie.
 > 
 > 
 
-W poniższej tabeli przedstawiono spójności dla zapytań na podstawie tryb indeksowania (spójność i Lazy) skonfigurowane dla kolekcji i poziomu spójności określonego dla żądania zapytania. Dotyczy to zapytań przy użyciu dowolnego interfejsu: REST API, zestawy SDK, lub z poziomu procedury składowane i wyzwalaczy. 
+W poniższej tabeli przedstawiono spójności zapytań na podstawie tryb indeksowania (spójność i leniwy) skonfigurowane dla kolekcji i poziomu spójności, określony dla żądań zapytań. Dotyczy to zapytań przy użyciu dowolnego interfejsu: interfejsu API, SDK, REST, lub z poziomu procedur składowanych i wyzwalaczy. 
 
 |Spójność|Tryb indeksowania: zgodne|Tryb indeksowania: powolne|
 |---|---|---|
 |Silna|Silna|Ostateczna|
-|Spójność powiązanej nieaktualności|Spójność powiązanej nieaktualności|Ostateczna|
+|Powiązana nieaktualność|Powiązana nieaktualność|Ostateczna|
 |Sesja|Sesja|Ostateczna|
 |Ostateczna|Ostateczna|Ostateczna|
 
-Azure DB rozwiązania Cosmos zwraca błąd dla zapytań w kolekcji, których nie masz żadnej indeksowania tryb. Nadal można wykonać zapytania jako skanowania za pomocą jawnych **x-ms-documentdb Włącz — skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** żądanie opcja przy użyciu zestawu .NET SDK. Niektóre funkcje zapytania, takie jak ORDER BY nie są obsługiwane jako skanowania z **EnableScanInQuery**.
+Usługa Azure Cosmos DB zwraca błąd dla zapytań w kolekcji, które Brak indeksowania w trybie. Nadal można wykonać zapytania jako skanowania za pomocą jawnego **x-ms-bazy danych documentdb — enable skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** zażądać opcja przy użyciu zestawu .NET SDK. Niektóre funkcje zapytań, takich jak ORDER BY nie są obsługiwane jako skanowania za pomocą **EnableScanInQuery**.
 
-W poniższej tabeli przedstawiono spójności dla zapytań na podstawie trybu indeksowania (spójność opóźnieniem i None) podczas **EnableScanInQuery** jest określona.
+W poniższej tabeli przedstawiono spójności zapytań na podstawie indeksowania trybu (spójność, opóźnieniem i None) podczas **EnableScanInQuery** jest określony.
 
-|Spójność|Tryb indeksowania: zgodne|Tryb indeksowania: powolne|Tryb indeksowania: Brak|
+|Spójność|Indeksowanie tryb: zgodne|Indeksowanie tryb: powolne|Indeksowanie tryb: Brak|
 |---|---|---|---|
 |Silna|Silna|Ostateczna|Silna|
-|Spójność powiązanej nieaktualności|Spójność powiązanej nieaktualności|Ostateczna|Spójność powiązanej nieaktualności|
+|Powiązana nieaktualność|Powiązana nieaktualność|Ostateczna|Powiązana nieaktualność|
 |Sesja|Sesja|Ostateczna|Sesja|
 |Ostateczna|Ostateczna|Ostateczna|Ostateczna|
 
-Następujące Pokaż przykładowy kod tworzenia kolekcji usługi Azure DB rozwiązania Cosmos przy użyciu zestawu .NET SDK indeksowania spójna na wszystkich wstawienia dokumentu.
+Poniższych pokazano przykładowy kod jak utworzyć kolekcję usługi Azure Cosmos DB przy użyciu zestawu .NET SDK spójne indeksowanie wszystkich wstawienia dokumentu.
 
      // Default collection creates a Hash index for all string fields and a Range index for all numeric    
      // fields. Hash indexes are compact and offer efficient performance for equality queries.
@@ -120,30 +120,31 @@ Następujące Pokaż przykładowy kod tworzenia kolekcji usługi Azure DB rozwi�
 
 
 ### <a name="index-paths"></a>Indeks ścieżki
-Azure DB rozwiązania Cosmos modele dokumentów JSON i indeksu jako drzewa. Można dostosować do zasad dla ścieżki w drzewie. W dokumentach można wybrać ścieżki do dołączania lub wykluczania indeksowania. To oferują zapisu lepszą wydajność i dolnym indeksu magazynu w scenariuszach, w których wiadomo wcześniej wzorcami zapytań.
+Usługa Azure Cosmos DB modeluje dokumenty JSON i indeks jako drzewa. Możesz określić zasad dla ścieżek w drzewie. W dokumentach możesz wybrać ścieżki do dołączania lub wykluczania z indeksowania. To może zaoferować zapisu ulepszoną wydajność i niższe magazyn indeksów dla scenariuszy, w których wzorców zapytań są znane wcześniej.
 
-Indeks ścieżek rozpoczynać się od katalogu głównego (/) i zwykle kończyć? operator symboli wieloznacznych. Oznacza to, istnieje wiele możliwych wartości dla prefiksu. Na przykład, aby obsługiwać SELECT * z F.familyName WHERE rodzin F = "Andersen" musi zawierać ścieżkę indeksu /familyName/? w zasadach indeks kolekcji.
+Ścieżki indeksu rozpoczynać root (/) i zazwyczaj kończy się? operator symboli wieloznacznych. Oznacza to, czy istnieje wiele możliwych wartości dla prefiksu. Na przykład, aby obsługiwać SELECT * FROM F.familyName gdzie rodzin F = "Andersen" musi zawierać ścieżkę indeksu dla /familyName/? w kolekcji indeks zasadach.
 
-Umożliwia także ścieżek w indeksie \* symbolu wieloznacznego operatora, aby określić zachowanie dla ścieżki rekursywnie w obszarze prefiks. Na przykład/ładunku / * można wykluczyć wszystkie elementy w obszarze właściwości ładunku z indeksowania.
+Indeks ścieżki można również użyć \* operator symbolu wieloznacznego do określania zachowania rekursywnie ścieżki w ramach prefiksu. Na przykład/ładunku / * można wykluczyć wszystkie elementy w ramach właściwości ładunku z indeksowania.
 
-Poniżej przedstawiono typowe wzorce służący do określania ścieżki indeksu:
+Poniżej przedstawiono typowe wzorce do określania ścieżek indeksu:
 
-| Ścieżka                | Przypadek użycia/opis                                                                                                                                                                                                                                                                                         |
+| Ścieżka                | Opis elementu/użycia                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /                   | Domyślna ścieżka dla kolekcji. Cykliczne i ma zastosowanie do całego dokumentu drzewa.                                                                                                                                                                                                                                   |
-| / prop /?             | Wymagane do obsługi zapytań, podobnie do następującej ścieżki indeksu (o typach skrótu lub zakres, odpowiednio):<br><br>Wybierz z kolekcji c WHERE c.prop = "value"<br><br>Wybierz z kolekcji c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop                                                                       |
-| / prop / *             | Ścieżka indeksu dla wszystkich ścieżek w ramach określonej etykiety. Działa z następujące kwerendy<br><br>Wybierz z kolekcji c WHERE c.prop = "value"<br><br>Wybierz z kolekcji c WHERE c.prop.subprop > 5<br><br>Wybierz z kolekcji c WHERE c.prop.subprop.nextprop = "value"<br><br>Wybierz z kolekcji c ORDER BY c.prop         |
-| [] / właściwości / /?         | Ścieżka indeksu wymagane do obsługi iteracji, a następnie dołącz zapytań dotyczących tablic wartości skalarne, takie jak ["a", "b", "c"]:<br><br>Wybierz znacznik z collection.props w tagu WHERE tag = "value"<br><br>Wybierz znacznik z kolekcji c sprzężenia tagu w c.props gdzie tagu > 5                                                                         |
-| /props/ /subprop/ []? | Ścieżka indeksu wymaganych do obsłużenia iteracji i sprzężenia zapytania względem tablice obiektów, takich jak [{subprop: ""}, {subprop: "b"}]:<br><br>Wybierz znacznik z collection.props w tagu WHERE tag.subprop = "value"<br><br>Wybierz znacznik z kolekcji c sprzężenia tagu w c.props WHERE tag.subprop = "value"                                  |
-| / prop/subprop /?     | Ścieżka indeksu wymaganych do obsłużenia zapytania (z typami skrótu lub zakres, odpowiednio):<br><br>Wybierz z kolekcji c WHERE c.prop.subprop = "value"<br><br>Wybierz z kolekcji c WHERE c.prop.subprop > 5                                                                                                                    |
+| /                   | Domyślna ścieżka dla kolekcji. Cykliczne oraz będzie miało zastosowanie do drzewa całego dokumentu.                                                                                                                                                                                                                                   |
+| / prop /?             | Ścieżka indeksu jest wymagana do obsługi zapytań, podobnie do następującej (w przypadku typów wyznaczania wartości skrótu lub zakresu, odpowiednio):<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop                                                                       |
+| / prop / *             | Ścieżka indeksu dla wszystkich ścieżek w ramach określonej etykiety. Działa z następujących zapytań<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop.subprop > 5<br><br>Wybierz z kolekcji języka c WHERE c.prop.subprop.nextprop = "value"<br><br>Wybierz z kolekcji c ORDER BY c.prop         |
+| / Właściwości / [] /?         | Ścieżka indeksu są wymagane do obsługi iteracji, a następnie dołącz zapytania względem tablic wartości skalarnych, takich jak ["a", "b", "c"]:<br><br>Wybierz tag z collection.props w tagu, gdzie tag = "value"<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props gdzie tag > 5                                                                         |
+| /subprop/ [] /props/? | Ścieżka indeksu wymagane do obsługi iteracji i zapytań sprzężenia dla tablic obiektów, takich jak [{subprop: ""}, {subprop: "b"}]:<br><br>Wybierz tag z tagu w collection.props tag.subprop gdzie = "value"<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props tag.subprop gdzie = "value"                                  |
+| / prop/subprop /?     | Ścieżka indeksu jest wymagana do obsługi zapytań (w przypadku typów wyznaczania wartości skrótu lub zakresu, odpowiednio):<br><br>Wybierz z kolekcji języka c WHERE c.prop.subprop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop.subprop > 5                                                                                                                    |
 
 > [!NOTE]
-> Po ustawieniu ścieżek w indeksie niestandardowym jest wymagane do określenia indeksowania reguły domyślnej dla drzewa całego dokumentu, która jest oznaczona specjalne ścieżka "/ *". 
+> Podczas ustawiania indeksu niestandardowej ścieżki jest wymagane do określenia zasadę domyślną indeksowania drzewa całego dokumentu, która jest oznaczona przy użyciu specjalnych ścieżki "/ *". 
 > 
 > 
 
-Poniższy przykład umożliwia skonfigurowanie określonej ścieżki z indeksem typu zakres i wartość niestandardowego dokładności 20 bajtów:
+Poniższy przykład umożliwia skonfigurowanie określonej ścieżki przy użyciu początkowemu indeksowi i wartość niestandardowego dokładności 20 bajtów:
 
+```
     var collection = new DocumentCollection { Id = "rangeSinglePathCollection" };    
 
     collection.IndexingPolicy.IncludedPaths.Add(
@@ -164,48 +165,115 @@ Poniższy przykład umożliwia skonfigurowanie określonej ścieżki z indeksem 
         });
 
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), pathRange);
+```
 
+Po dodaniu ścieżki do indeksowania liczb i ciągów w ramach tych ścieżek są indeksowane. Dlatego nawet jeśli zdefiniujesz indeksowanie tylko ciągi, usługi Azure Cosmos DB dodaje definicji domyślnej w przypadku liczb, jak również. Innymi słowy, usługi Azure Cosmos DB ma możliwość wyłączenia ścieżki z zasad indeksowania, ale nie wpisać wykluczenia z określonej ścieżki. Oto przykład, pamiętaj, że tylko jeden indeks jest określona dla obu ścieżek (ścieżka = "/ *" i ścieżka = "/\"attr1\"/?"), ale liczba typ danych jest także dodawane do wyniku.
 
-### <a name="index-data-types-kinds-and-precisions"></a>Typy danych, typy i opisie
-Masz wiele opcji, konfigurując zasady indeksowania dla ścieżki. Można określić co najmniej jedną definicję indeksowania dla każdej ścieżki:
+```
+var indices = new[]{
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 }// <- note: only 1 index specified
+                    },
+                    Path =  "/*"
+                },
+                new IncludedPath  {
+                    Indexes = new Collection<Index>
+                    {
+                        new RangeIndex(DataType.String) { Precision = 3 } // <- note: only 1 index specified
+                    },
+                    Path =  "/\"attr1\"/?"
+                }
+            };...
 
-* **Typ danych**: ciąg, liczbę, punktu, wielokąta lub LineString (może zawierać tylko jeden wpis dla typu danych na ścieżki).
-* **Indeks typu**: wyznaczania wartości skrótu (zapytań o równość), zakresu (równości, zakres lub zapytań ORDER BY) lub przestrzennym (przestrzennych kwerendy).
-* **Dokładność**: indeks dla skrótu to różni się od 1 do 8 dla liczb i ciągów. Wartość domyślna to 3. Zakres indeksu ta wartość może być -1 (maksymalna dozwolona dokładność). Może się różnić znajdujące 1 do 100 (maksymalna dozwolona dokładność) na ciąg lub wartości liczbowe.
+            foreach (var index in indices)
+            {
+                documentCollection.IndexingPolicy.IncludedPaths.Add(index);
+            }
+```
+
+Wynik utworzenia indeksu:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        },
+        {
+            "path": "/\"attr\"/?",
+            "indexes": [
+                {
+                    "kind": "Range",
+                    "dataType": "String",
+                    "precision": 3
+                },
+                {
+                    "kind": "Range",
+                    "dataType": "Number",
+                    "precision": -1
+                }
+            ]
+        }
+    ],
+}
+```
+
+### <a name="index-data-types-kinds-and-precisions"></a>Typy danych, rodzajów i opisie
+Istnieje wiele opcji, podczas konfigurowania zasad indeksowania dla ścieżki. Można określić jedną lub więcej definicji indeksowania dla każdej ścieżki:
+
+* **Typ danych**: ciąg, liczba, punkt, wielokąta lub LineString (może zawierać tylko jeden wpis dla typu danych na każdej ścieżce).
+* **Indeks rodzaj**: wyznaczania wartości skrótu (zapytań o równość), zakresu (równości, zakresu lub zapytania w klauzuli ORDER BY) lub przestrzenne (zapytań przestrzennych).
+* **Dokładność**: indeks do wyznaczania wartości skrótu, to różni się od 1 do 8 na ciągi i liczby. Wartość domyślna to 3. Indeks zakresu ta wartość może być -1 (maksymalna dozwolona dokładność). Może się różnić znajdujące 1 do 100 (maksymalna dozwolona dokładność) dla parametrów lub wartości liczbowe.
 
 #### <a name="index-kind"></a>Typ indeksu
-Azure DB rozwiązania Cosmos obsługuje indeksu skrótu i rodzaje indeks zakresu dla każdej ścieżki skonfigurowanego dla ciąg lub liczba typów danych lub obu.
+Usługa Azure Cosmos DB obsługuje indeksu skrótu i rodzajów indeks zakresu dla każdej ścieżce, które można skonfigurować ciąg lub liczba typów danych lub obu.
 
-* **Skrót** obsługuje równości wydajne i sprzężenia zapytania. W większości przypadków użycia większą dokładność niż domyślna wartość 3 bajtów nie ma potrzeby indeksów skrótu. Typ danych może być ciąg lub liczba.
-* **Zakres** obsługuje zapytań o równość wydajne, kwerendy zakresu (przy użyciu >, <>, =, < =,! =) oraz zapytań ORDER BY. Zapytań ORDER By domyślnie wymagają również precyzja maksymalna wartość indeksu (-1). Typ danych może być ciąg lub liczba.
+* **Skrót** obsługuje wydajne równości i łączenia zapytań. W większości przypadków użycia większą precyzję niż domyślna wartość 3 bajtów nie ma potrzeby indeksów skrótu. Typ danych może być ciąg lub liczba.
+* **Zakres** obsługuje zapytań o równość wydajne, zapytań o zakres (przy użyciu >, <>, =, < =,! =) i zapytania w klauzuli ORDER BY. Zapytania w klauzuli ORDER By, domyślnie wymagają także precyzja maksymalna wartość indeksu (-1). Typ danych może być ciąg lub liczba.
 
-Azure DB rozwiązania Cosmos obsługuje również rodzaj indeks przestrzenny dla każdej ścieżki, który może być określony dla typów danych punktu wielokąta i LineString. Wartość w określonej ścieżce musi być prawidłowy fragment GeoJSON, takich jak `{"type": "Point", "coordinates": [0.0, 10.0]}`.
+Usługa Azure Cosmos DB obsługuje również rodzaj indeks przestrzenny dla każdej ścieżki, który może być określony dla typów danych punkt, wielokąta lub LineString. Wartość w określonej ścieżce musi być prawidłowy fragment GeoJSON, takich jak `{"type": "Point", "coordinates": [0.0, 10.0]}`.
 
-* **Przestrzenne** obsługuje wydajne przestrzennych (w ramach i odległość) zapytania. Typ danych może być punkt, wielokąta lub LineString.
+* **Przestrzenne** obsługuje wydajne przestrzennego (w ramach i odległość) zapytania. Typ danych może być punkt, wielokąta lub LineString.
 
 > [!NOTE]
-> Azure DB rozwiązania Cosmos obsługuje automatycznego indeksowania punktu wielokąta i LineString typów danych.
+> Usługa Azure Cosmos DB obsługuje automatyczne indeksowanie punkt wielokąta i LineString typów danych.
 > 
 > 
 
-Poniżej przedstawiono typy obsługiwanych indeksu i przykłady zapytań, które mogą być używane do obsługi:
+Poniżej przedstawiono typy obsługiwanych indeksu i przykłady kwerend, które mogą być używane do udostępniania:
 
-| Typ indeksu | Przypadek użycia/opis                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Typ indeksu | Opis elementu/użycia                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Skrót       | Hash — za pośrednictwem/prop /? (lub /) umożliwia wydajne służą następujące zapytania:<br><br>Wybierz z kolekcji c WHERE c.prop = "value"<br><br>Skrót za pośrednictwem/właściwości / [] /? (i / lub/właściwości /) umożliwia wydajne służą następujące zapytania:<br><br>Wybierz znacznik z kolekcji c sprzężenia tagu w c.props WHERE tag = 5                                                                                                                       |
-| Zakres      | Zakres za pośrednictwem/prop /? (lub /) umożliwia wydajne służą następujące zapytania:<br><br>Wybierz z kolekcji c WHERE c.prop = "value"<br><br>Wybierz z kolekcji c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop                                                                                                                                                                                                              |
-| Przestrzenne     | Zakres za pośrednictwem/prop /? (lub /) umożliwia wydajne służą następujące zapytania:<br><br>Wybierz z c kolekcji<br><br>GDZIE ST_DISTANCE (c.prop, {"type": "Punkt", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji c gdzie ST_WITHIN(c.prop, {"type": "Polygon",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji c gdzie ST_WITHIN({"type": "Point",...}, c.prop) — za pomocą indeksowania na wielokątów włączone              |
+| Skrót       | Wyznaczania wartości skrótu, za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Skrót/właściwości / [] /? (i / lub/właściwości /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz tag z kolekcji c sprzężenia tagu w c.props, gdzie tag = 5                                                                                                                       |
+| Zakres      | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c WHERE c.prop = "value"<br><br>Wybierz z kolekcji języka c WHERE c.prop > 5<br><br>Wybierz z kolekcji c ORDER BY c.prop                                                                                                                                                                                                              |
+| Przestrzenne     | Zakres za pośrednictwem/prop /? (lub /) może służyć do efektywnie obsługiwać następujące zapytania:<br><br>Wybierz z kolekcji języka c<br><br>GDZIE ST_DISTANCE (c.prop, {"type": "Punkt", "coordinates": [0.0, 10.0]}) < 40<br><br>Wybierz z kolekcji c gdzie ST_WITHIN(c.prop, {"type": "Polygon",...}) — za pomocą indeksowania w punktach włączone<br><br>Wybierz z kolekcji c gdzie ST_WITHIN({"type": "Point",...}, c.prop) — za pomocą indeksowanie włączone wielokątów              |
 
-Domyślnie, zwracany jest błąd dla zapytania z zakres operatorów, takich jak > = w przypadku nie zakresu indeks (żadnych precyzja) która sygnalizuje, że skanowania może być niezbędne do obsługi zapytań. Za pomocą można wykonywać bez indeksu zakres kwerendy zakresu **x-ms-documentdb Włącz — skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** żądanie opcja przy użyciu zestawu .NET SDK. Jeśli istnieją inne filtry w zapytaniu bazy danych rozwiązania Cosmos Azure za pomocą indeks filtru względem, jest zwracany błąd braku.
+Domyślnie, zwracany jest błąd dla zapytania z zakresu operatorów, takich jak > = w przypadku nie zakresu indeks (wszystkie precyzji) do sygnalizowania, że skanowanie może być niezbędne do obsługi zapytań. Można wykonać zapytania zakresowe bez indeks zakresu przy użyciu **x-ms-bazy danych documentdb — enable skanowania** nagłówka w interfejsie API REST lub **EnableScanInQuery** zażądać opcja przy użyciu zestawu .NET SDK. Jeśli istnieją inne filtry w zapytaniu usługi Azure Cosmos DB można użyć indeksu do filtrowania względem, nie błąd jest zwracany.
 
-Te same zasady mają zastosowanie dla zapytania przestrzennych. Domyślnie jeśli istnieje nie indeks przestrzenny, a nie filtrów, które mogą być przekazywane z indeksu, przestrzennych zapytań zostanie zwrócony błąd. Mogą być wykonywane podczas skanowania za pomocą **x-ms-documentdb Włącz — skanowania** lub **EnableScanInQuery**.
+Te same zasady mają zastosowanie dla zapytań przestrzennych. Domyślnie błąd jest zwracany dla zapytań przestrzennych, jeśli istnieje nie indeksów przestrzennych, a nie filtrów, które mogą być udostępniane przez indeks. Może zostać wykonana jako skanowania za pomocą **x-ms-bazy danych documentdb — enable skanowania** lub **EnableScanInQuery**.
 
-#### <a name="index-precision"></a>Dokładność indeksu
-Dokładność indeksu umożliwia upewnij kompromis między narzut magazynu indeksu i wydajności zapytania. W przypadku numerów zalecamy użycie domyślnej konfiguracji precision-1 (maksymalna). Ponieważ liczby 8 bajtów w formacie JSON, co jest równoważne konfiguracji 8 bajtów. Wybieranie niższa wartość precyzji, takich jak 1 do 7, oznacza, że wartości w niektórych zakresy mapowane do tej samej pozycja indeksu. W związku z tym można zmniejszyć miejsce do magazynowania indeksu, ale wykonanie kwerendy może być konieczne przetwarzać więcej dokumentów. W rezultacie zużywa więcej przepustowości w jednostkach żądań.
+#### <a name="index-precision"></a>Precyzja indeksu
+Indeks dokładności umożliwia kompromisu między magazyn indeksów obciążenie i wydajność zapytań. W przypadku liczb zaleca się przy użyciu domyślnej konfiguracji precision-1 (maksimum). Ponieważ cyfry 8 bajtów w formacie JSON, jest to równoważne do konfiguracji 8 bajtów. Wybieranie niższa wartość dokładności, np. od 1 do 7, oznacza, że wartości w niektórych zakresach mapy do tej samej pozycja indeksu. W związku z tym można zmniejszyć miejsce do magazynowania indeksu, ale wykonanie zapytania może być konieczne przetwarzanie więcej dokumentów. W związku z tym zużywa więcej przepływności w jednostkach żądania.
 
-Konfiguracja dokładności indeksu zawiera bardziej praktyczne aplikacji z zakresami ciągu. Ciągi znaków mogą być dowolnego dowolnej długości, wybór dokładność indeks może wpłynąć na wydajność kwerend zakresu ciągu. On również może mieć wpływ na ilość miejsca do magazynowania indeksu, która jest wymagana. Indeksy zakresu ciągu można skonfigurować za pomocą od 1 do 100 lub wartość -1 (maksymalna). Jeśli chcesz wykonać zapytań ORDER BY właściwości ciągów, należy określić precision-1 dla odpowiednich ścieżek.
+Konfiguracja dokładności indeks ma praktyczniejsze w aplikacji przy użyciu ciągu zakresów. Ponieważ ciągi mogą być każdej dowolnej długości, wybór dokładności indeks może mieć wpływ na wydajność zapytań o zakres ciągu. To również może wpłynąć na ilość miejsca do magazynowania indeksów, które są wymagane. Można skonfigurować indeksy ciąg zakresu od 1 do 100 lub wartość -1 (maksimum). Jeśli chcesz wykonywać zapytania w klauzuli ORDER BY, w odniesieniu do właściwości ciągów, należy określić dokładności-1 dla odpowiednich ścieżek.
 
-Indeksy przestrzenne zawsze używać dokładność indeksu domyślnego dla wszystkich typów (punkt, LineString i wielokąta). Nie można zastąpić domyślne dokładność indeks przestrzenny. 
+Indeksy przestrzenne zawsze używaj domyślna dokładność indeksu dla wszystkich typów (punkt, LineString i wielokąta). Nie można zastąpić domyślną precyzję indeksu dla indeksów przestrzennych. 
 
 Poniższy przykład pokazuje, jak zwiększyć dokładność dla indeksów zakresu w kolekcji przy użyciu zestawu .NET SDK. 
 
@@ -220,11 +288,11 @@ Poniższy przykład pokazuje, jak zwiększyć dokładność dla indeksów zakres
 
 
 > [!NOTE]
-> Azure DB rozwiązania Cosmos zwraca błąd, gdy zapytanie używa ORDER BY, ale nie ma indeksu zakresu względem ścieżki, którego dotyczy kwerenda za precyzja maksymalna. 
+> Usługa Azure Cosmos DB zwraca błąd, gdy zapytanie używa klauzuli ORDER BY, ale nie ma indeksu zakresu na ścieżce kwerendy z maksymalną dokładnością. 
 > 
 > 
 
-Podobnie można całkowicie Wyklucz ścieżki indeksowania. W kolejnym przykładzie pokazano, jak wykluczyć całą sekcję dokumentów ( *poddrzewo*) indeksowania przy użyciu \* operator symboli wieloznacznych.
+Podobnie można całkowicie wykluczać ścieżki z indeksowania. W kolejnym przykładzie pokazano, jak wykluczyć całą sekcję dokumentów ( *poddrzewo*) z indeksowania za pomocą \* operator symboli wieloznacznych.
 
     var excluded = new DocumentCollection { Id = "excludedPathCollection" };
     excluded.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
@@ -234,12 +302,12 @@ Podobnie można całkowicie Wyklucz ścieżki indeksowania. W kolejnym przykład
 
 
 
-## <a name="opt-in-and-opt-out-of-indexing"></a>Zgódź się i zrezygnować z indeksowania
-Można wybrać, czy ma kolekcję do automatycznego indeksowania wszystkie dokumenty. Domyślnie wszystkie dokumenty są automatycznie indeksowane, ale można wyłączyć automatycznego indeksowania. Po wyłączeniu indeksowania dokumentów jest możliwy tylko za pomocą ich linki do samego siebie lub przez zapytania za pomocą dokumentów identyfikator.
+## <a name="opt-in-and-opt-out-of-indexing"></a>Zgoda i zrezygnować z indeksowania
+Można wybrać, czy mają kolekcja do automatycznego indeksowania wszystkich dokumentów. Domyślnie wszystkie dokumenty są automatycznie indeksowane, ale możesz wyłączyć automatyczne indeksowanie. Po wyłączeniu indeksowanie dokumentów można uzyskać dostęp tylko za pośrednictwem ich linków do samego siebie lub przez zapytania za pomocą dokumentów identyfikator.
 
-Z automatycznego indeksowania wyłączone, nadal selektywnie można dodać tylko dokumenty do indeksu. Z drugiej strony można pozostawić automatycznego indeksowania na i selektywnie wybrać wykluczanie określonych dokumentów. Indeksowanie lub wyłącza konfiguracje są przydatne, gdy masz tylko podzbiór dokumentów, które trzeba można wykonać zapytania.
+Za pomocą automatycznego indeksowania, wyłączona, nadal selektywnie można dodać tylko do określonych dokumentów do indeksu. Z drugiej strony możesz pozostawić automatyczne indeksowanie i selektywnie wskazać, które mają zostać wykluczone z określonych dokumentów. Indeksowanie i wyłączanie konfiguracji są przydatne, jeśli masz tylko podzbiór dokumentów, które muszą zostać wykonane zapytanie.
 
-Poniższy przykład przedstawia sposób jawnie zawierały dokumentu za pomocą [zestawu SDK .NET interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) i [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) właściwości.
+Poniższy przykład pokazuje, jak dołączyć dokument jawnie za pomocą [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) i [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) właściwości.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -248,29 +316,29 @@ Poniższy przykład przedstawia sposób jawnie zawierały dokumentu za pomocą [
         new { id = "AndersenFamily", isRegistered = true },
         new RequestOptions { IndexingDirective = IndexingDirective.Include });
 
-## <a name="modify-the-indexing-policy-of-a-collection"></a>Zmodyfikuj zasady indeksowania w kolekcji
-W usłudze Azure DB rozwiązania Cosmos można wprowadzić zmiany, aby zasady indeksowania w kolekcji na bieżąco. Zmiana indeksowania zasad w kolekcji usługi Azure DB rozwiązania Cosmos może prowadzić do zmiany w kształcie indeksu. Dotyczy ścieżek, które mogą być indeksowane, ich dokładność i modelu spójności indeksu samej siebie. Zmiana skutecznie indeksowania zasad wymaga transformacji starego indeksu na nowego indeksu. 
+## <a name="modify-the-indexing-policy-of-a-collection"></a>Zmodyfikuj zasady indeksowania kolekcji
+W usłudze Azure Cosmos DB możesz wprowadzić zmiany do zasady indeksowania kolekcji na bieżąco. Zmiana zasad w kolekcji usługi Azure Cosmos DB indeksowania może prowadzić do zmian w kształcie indeksu. Wpływa ścieżek, które mogą być indeksowane, ich dokładności i modelu spójności samego indeksu. Zmiana zasad indeksowania skutecznie wymaga transformacji starego indeksu do nowego indeksu. 
 
 **Przekształcenia indeksu w trybie online**
 
-![Indeksowanie działania — przekształcenia indeksu w trybie online bazy danych Azure rozwiązania Cosmos](./media/indexing-policies/index-transformations.png)
+![Jak działa indeksowanie — przekształcenia indeksu w trybie online w usłudze Azure Cosmos DB](./media/indexing-policies/index-transformations.png)
 
-Indeks przekształceń są wykonywane online. Oznacza to, że indeksowane dla poszczególnych zasad stare dokumenty są wydajnie przekształcone na nowe zasady *bez wpływu na dostępność zapisu lub zainicjowaną przepływności* kolekcji. Spójność odczytu i zapisu przy użyciu interfejsu API REST, zestawy SDK, lub z poziomu procedury składowane i wyzwalaczy nie występuje podczas transformacji indeksu. Nie jest brak spadku wydajności ani przestoju do aplikacji po wprowadzeniu zmian zasad indeksowania.
+Indeks przekształcenia są przełączyć do trybu online. Oznacza to, że dokumentów indeksowanych na stare zasady wydajne są przekształcane na nowe zasady *bez wywierania wpływu na dostępność zapisu lub aprowizowanej przepływności* kolekcji. Spójności operacji odczytu i zapisu przy użyciu interfejsu API REST zestawów SDK, lub z poziomu procedur składowanych i wyzwalaczy nie występuje podczas przekształcania indeksu. Brak spadku wydajności i przestojów aplikacji po wprowadzeniu zmian zasad indeksowania.
 
-Jednak w czasie, który przekształcenie indeksu jest postęp zapytania są ostatecznie spójne niezależnie od konfiguracji trybu indeksowania (spójność lub Lazy). Dotyczy to również zapytania ze wszystkich interfejsów: REST API, zestawy SDK, a z poziomu procedury składowane i wyzwalaczy. Podobnie jak z opóźnieniem indeksowania, przekształcania indeksu jest wykonywane asynchronicznie w tle repliki przy użyciu zapasowe zasoby, które są dostępne dla określonego repliki. 
+W czasie, będącego przekształcania indeksu w toku, zapytania są jednak ostatecznie spójne bez względu na konfigurację trybu indeksowania (spójność lub leniwy). Dotyczy to również zapytania ze wszystkich interfejsów: interfejsu API, SDK, REST i z poziomu procedur składowanych i wyzwalaczy. Podobnie jak z opóźnieniem, indeksowanie, przekształcania indeksu jest wykonywana asynchronicznie w tle repliki przy użyciu wolnym zasoby, które są dostępne dla określonych repliki. 
 
-Indeks przekształceń są również w miejscu. Azure DB rozwiązania Cosmos nie obsługiwać dwie kopie indeksu i wymiany limit starego indeksu nowym. Oznacza to, że nie dodatkowe miejsce na dysku jest wymagane lub używane w kolekcji, a indeks przekształcenia.
+Indeks przekształcenia są również w miejscu. Usługa Azure Cosmos DB nie Obsługa dwie kopie indeksu i wymiany się stary indeks nowym plikiem. Oznacza to, że nie dodatkowe miejsce na dysku jest wymagane lub używane w kolekcji, gdy indeks przekształcenia występują.
 
-Jeśli zmienisz zasady indeksowania, zmiany zostaną zastosowane do przenoszenia z starego indeksu na nowego przede wszystkim oparte na indeksowania konfiguracji trybu. Indeksowania konfiguracji trybu pełnić rolę większych niż inne wartości, takie jak ścieżki uwzględniony/wykluczony, rodzaje indeksu i opisie. 
+Po zmianie zasad indeksowania, zmiany zostaną zastosowane przenoszenia ze starego indeksu do nowych przede wszystkim na podstawie indeksowania tryb konfiguracji. Indeksowanie konfiguracji trybu mają znaczenie większych niż inne wartości, takich jak ścieżki uwzględniony/wykluczony, rodzaje indeksu i opisie. 
 
-Użycie zasad zarówno stary i nowy spójne indeksowania, bazy danych Azure rozwiązania Cosmos wykonuje transformację indeksu w trybie online. Nie można zastosować innej indeksowania z trybem spójne indeksowania w trakcie transformacja zmiany zasad. Jednak możesz przejść do opóźnieniem lub brak indeksowania tryb podczas przekształcenia jest w toku: 
+Użycie zasad zarówno stare i nowe spójne indeksowania, usługę Azure Cosmos DB wykonuje przekształcenie indeksu w trybie online. Nie można zastosować inny zmiany zasad indeksowania, z trybem spójne indeksowania w trakcie przekształcenia. Jednak można przenieść do leniwy lub brak indeksowania tryb podczas transformacji jest w toku: 
 
-* Po przeniesieniu do opóźnieniem, zmiana zasad indeksu zaczyna się natychmiast. Azure DB rozwiązania Cosmos uruchamia ponownie utworzyć indeks asynchronicznie. 
-* W przypadku przenoszenia None indeksu zostało przerwane natychmiast. Przenoszenie na brak jest przydatne, gdy chcesz anulować transformację w toku i rozpocząć od nowa pracę z różnych zasad indeksowania. 
+* Gdy przeniesiesz się na leniwy zmiany zasad indeksu, zacznie ona obowiązywać natychmiast. Usługa Azure Cosmos DB uruchamia ponownie utworzyć indeks asynchronicznie. 
+* Gdy przesuniesz None, indeks zostało porzucone od razu. Przenoszenie na brak jest przydatne w przypadku, gdy chcesz anulować przekształcania w toku i zacznij od różnych zasad indeksowania. 
 
-Poniższy fragment kodu przedstawia sposób zmodyfikować zasady indeksowania w kolekcji z trybu indeksowania spójne opóźnieniem tryb indeksowania. Jeśli używasz zestawu .NET SDK, należy rozpocząć się poza indeksowania zmian zasad przy użyciu nowej **ReplaceDocumentCollectionAsync** metody.
+Poniższy fragment kodu przedstawia sposób modyfikowania zasad indeksowania kolekcji z trybu indeksowania spójne z opóźnieniem tryb indeksowania. Jeśli korzystasz z zestawu .NET SDK, możesz uruchamiał indeksowania zmiany zasad, za pomocą nowego **ReplaceDocumentCollectionAsync** metody.
 
-**Zmodyfikuj zasady indeksowania z spójność opóźnieniem**
+**Modyfikowanie zasad indeksowania z spójność leniwy**
 
     // Switch to Lazy indexing mode.
     Console.WriteLine("Changing from Default to Lazy IndexingMode.");
@@ -279,9 +347,9 @@ Poniższy fragment kodu przedstawia sposób zmodyfikować zasady indeksowania w 
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-**Śledź postęp przekształcania indeksu**
+**Śledzenie postępu przekształcania indeksu**
 
-Można śledzić postęp procent transformacji indeksu spójne indeksu przy użyciu **IndexTransformationProgress** właściwość odpowiedzi z **ReadDocumentCollectionAsync** wywołania. Inne zestawy SDK i interfejsu API REST, obsługuje równoważne właściwości i metod do indeksowania zmiany zasad. Możesz sprawdzić postęp przekształcenia indeksu spójne indeksu przez wywołanie metody **ReadDocumentCollectionAsync**: 
+Możesz śledzić postępy procent, przekształcenia indeksu do spójnego indeksu za pomocą **IndexTransformationProgress** właściwości odpowiedzi z **ReadDocumentCollectionAsync** wywołania. Inne zestawy SDK i interfejsu API REST, obsługa równoważne właściwości i metody wprowadzania zmian zasad indeksowania. Można sprawdzić postęp przekształcania indeksu do spójnego indeksu przez wywołanie metody **ReadDocumentCollectionAsync**: 
 
     long smallWaitTimeMilliseconds = 1000;
     long progress = 0;
@@ -297,13 +365,13 @@ Można śledzić postęp procent transformacji indeksu spójne indeksu przy uży
     }
 
 > [!NOTE]
-> * **IndexTransformationProgress** właściwość jest stosowana tylko wtedy, gdy Przekształcanie spójne indeksu. Użyj **ResourceResponse.LazyIndexingProgress** właściwości śledzenia przekształceń do indeksu opóźnieniem.
-> * **IndexTransformationProgress** i **LazyIndexingProgress** właściwości są wypełniane tylko dla kolekcji niepartycjonowany, oznacza to, że kolekcja, która została utworzona bez klucza partycji.
+> * **IndexTransformationProgress** właściwość ma zastosowanie tylko wtedy, gdy przekształcenie do spójnego indeksu. Użyj **ResourceResponse.LazyIndexingProgress** właściwości do śledzenia przekształcenia do indeksu z opóźnieniem.
+> * **IndexTransformationProgress** i **LazyIndexingProgress** właściwości są wypełniane tylko w przypadku kolekcja niepartycjonowana, oznacza to, kolekcję, która została utworzona bez klucza partycji.
 >
 
-Przenosząc None indeksowania w trybie, musisz porzucić indeksu dla kolekcji. Może to być przydatne narzędzie operational, aby anulować transformację w toku, a następnie natychmiast rozpocząć nową.
+Można usunąć indeksu dla kolekcji, przenosząc None indeksowania w trybie. Może to być przydatne narzędzie operacyjnej, jeśli chcesz anulować przekształcania w toku i od razu rozpocząć nową.
 
-**Indeks kolekcji**
+**Usuń indeks dla kolekcji**
 
     // Switch to Lazy indexing mode.
     Console.WriteLine("Dropping index by changing to to the None IndexingMode.");
@@ -312,24 +380,24 @@ Przenosząc None indeksowania w trybie, musisz porzucić indeksu dla kolekcji. M
 
     await client.ReplaceDocumentCollectionAsync(collection);
 
-Podczas czy wprowadzania zmian zasad indeksowania do kolekcji bazy danych rozwiązania Cosmos Azure? Poniżej przedstawiono typowe przypadki użycia:
+Kiedy będzie wprowadzeniu zmiany zasad indeksowania do kolekcji usługi Azure Cosmos DB? Poniżej przedstawiono najbardziej typowe przypadki użycia:
 
-* Obsługiwać spójne wyniki podczas normalnego działania, ale powrotu do trybu indeksowania opóźnieniem podczas importowania danych zbiorczego.
-* Uruchom przy użyciu nowych funkcji indeksowania w kolekcji bieżącej bazy danych Azure rozwiązania Cosmos. Można na przykład użyć dane geograficzne zapytań, który wymaga typu indeksu przestrzennego lub ORDER BY / ciągu kwerendy zakresu, wymagających ciągu rodzaju indeks zakresu.
-* Ręcznie, zaznacz właściwości, które mają być indeksowane i ulec zmianie.
-* Dostosuj indeksowania dokładności poprawić wydajność zapytań, lub Zmniejsz magazynu używane.
+* Obsługiwać spójne wyniki podczas normalnego działania, ale podczas importu danych zbiorczego przełączyć się na tryb indeksowania z opóźnieniem.
+* Rozpocznij korzystanie z nowych funkcji indeksowania w bieżącej kolekcji usługi Azure Cosmos DB. Na przykład można użyć zapytania geoprzestrzenne, co wymaga rodzaju indeks przestrzenny, lub ORDER BY opcji / ciąg kwerendy zakresu, wymagających ciągu rodzaju indeks zakresu.
+* Ręcznie wybierz opcję właściwości, które mają być indeksowane i zmień je wraz z upływem czasu.
+* Dostosowywanie indeksowania dokładności, aby poprawić wydajność zapytań, lub aby ograniczyć wykorzystanie magazynu.
 
 > [!NOTE]
-> Aby zmodyfikować zasady indeksowania przy użyciu **ReplaceDocumentCollectionAsync**, musisz użyć wersji 1.3.0 lub nowszej wersji zestawu .NET SDK.
+> Aby zmodyfikować zasady indeksowania za pomocą **ReplaceDocumentCollectionAsync**, należy użyć wersji 1.3.0 lub nowszej wersji zestawu SDK platformy .NET.
 > 
-> Dla indeksu transformacji do pomyślnego zakończenia Sprawdź, czy jest wystarczająco dużo wolnego miejsca dostępne w kolekcji. Jeśli kolekcja osiągnie przydział magazynowania, transformacja indeksu jest wstrzymana. Przekształcenie indeksu automatycznie zostanie wznowione, gdy miejsca do magazynowania jest dostępna, na przykład, jeśli usuniesz niektórych dokumentów.
+> W przypadku przekształcania indeksu do pomyślnego zakończenia upewnij się, że jest wystarczająco dużo wolnego miejsca dostępna w kolekcji. Jeśli kolekcja osiągnie przydział magazynowania, przekształcania indeksu zostało wstrzymane. Przekształcenie indeksu zostanie automatycznie wznowione, gdy miejsce do magazynowania jest dostępna, na przykład, jeśli usuniesz niektóre dokumenty.
 > 
 > 
 
 ## <a name="performance-tuning"></a>Dostosowywanie wydajności
-Interfejsy API SQL zawierają informacje dotyczące metryki wydajności, takich jak magazyny indeksu używane i kosztów przepustowości (jednostki żądania) dla każdej operacji. Te informacje umożliwiają porównanie różnych zasad indeksowania i dostrajania wydajności.
+Interfejsy API SQL zawierają informacje dotyczące metryk wydajności, takich jak magazyn indeksów używane i kosztów przepustowości (w jednostkach żądania) dla każdej operacji. Można użyć tych informacji do porównania różnych zasad indeksowania i dotyczące dostosowywania wydajności.
 
-Aby sprawdzić przydział pamięci masowej i użycia kolekcji, uruchom **HEAD** lub **UZYSKAĆ** żądania dotyczącego zasobu kolekcji. Następnie należy sprawdzić **x-ms żądania przydziału** i **x-ms żądania użycia** nagłówków. W zestawie SDK .NET [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) i [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości w [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) zawierają te wartości.
+Aby sprawdzić limit przydziału magazynu i użycia kolekcji, należy uruchomić **HEAD** lub **UZYSKAĆ** żądania dotyczącego zasobu kolekcji. Następnie należy sprawdzić **x-ms zażądać przydziału** i **x-ms żądania — użycie** nagłówków. W zestawie SDK platformy .NET [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) i [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) właściwości w [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) zawierają te odpowiadające im wartości.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -337,7 +405,7 @@ Aby sprawdzić przydział pamięci masowej i użycia kolekcji, uruchom **HEAD** 
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-Do mierzenia koszty indeksowania na każdej operacji zapisu (Tworzenie, aktualizowanie lub usuwanie), sprawdzić **x-ms żądania — opłata** nagłówka (lub odpowiednik [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) właściwości w [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) zestawu .NET SDK) do mierzenia liczby jednostek żądania, które są używane przez te operacje.
+Do mierzenia obciążenie indeksowanie każdej operacji zapisu (Tworzenie, aktualizowanie lub usuwanie), sprawdzić **x-ms żądanie — opłata** nagłówka (lub odpowiednik [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) właściwości w [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) w zestawie .NET SDK) do mierzenia liczby jednostek żądania, które są używane przez te operacje.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              
@@ -356,22 +424,22 @@ Do mierzenia koszty indeksowania na każdej operacji zapisu (Tworzenie, aktualiz
 
      Console.WriteLine("Query consumed {0} request units in total", totalRequestCharge);
 
-## <a name="changes-to-the-indexing-policy-specification"></a>Zmiany w specyfikacji zasady indeksowania
-Zmiany w schemacie indeksowania zasad została wprowadzona 7 lipca 2015 z interfejsu API REST wersji 2015-06-03. Z odpowiednich klas w wersji zestawu SDK ma nowe implementacje odpowiadające schematu. 
+## <a name="changes-to-the-indexing-policy-specification"></a>Zmiany w specyfikacji zasad indeksowania
+Zmiany schematu dla zasad indeksowania wprowadzono 7 lipca 2015 za pomocą interfejsu API REST w wersji 2015-06-03. Odpowiednich klas w wersji zestawu SDK ma nowy implementacji w celu dostosowania do schematu. 
 
-Następujące zmiany zostały wprowadzone w specyfikacji JSON:
+Następujące zmiany zostały wprowadzone w specyfikacji formatu JSON:
 
-* Zasady indeksowania obsługuje indeksów zakresu dla ciągów.
+* Zasady dotyczące indeksowania obsługuje indeksy zakresu dla ciągów.
 * Każda ścieżka może mieć wiele definicji indeksu. Może mieć jeden dla każdego typu danych.
-* Indeksowanie dokładności obsługuje od 1 do 8 dla liczb, od 1 do 100 dla ciągów i -1 (maksymalna dozwolona dokładność).
-* Segmenty ścieżki nie wymagają cudzysłowu ucieczki poszczególnych ścieżek. Na przykład można dodać ścieżki dla   **/tytuł /?** zamiast **/ "title" /?**.
+* Indeksowanie dokładności obsługuje od 1 do 8 w przypadku liczb, od 1 do 100 dla ciągów i -1 (maksymalna dozwolona dokładność).
+* Segmenty ścieżki nie wymagają cudzysłowu jako znak ucieczki dla każdej ścieżki. Na przykład można dodać ścieżkę   **/tytuł /?** zamiast **/ "title" /?**.
 * Ścieżka katalogu głównego, który reprezentuje "wszystkie ścieżki" może być reprezentowana jako **/ \*** (oprócz **/**).
 
-Jeśli masz kod tej kolekcji przepisy z niestandardowe zasady indeksowania napisany za pomocą zestawu .NET SDK w wersji 1.1.0 lub starszej wersji, aby przejść do zestawu SDK w wersji 1.2.0, należy zmienić kod aplikacji w celu obsługi tych zmian. Jeśli nie masz kod, który konfiguruje zasady indeksowania, lub jeśli zamierzasz nadal używać starszej wersji zestawu SDK, zmiany nie są wymagane.
+Jeśli masz kod tej kolekcji przepisów za pomocą niestandardowych zasad indeksowania napisane przy użyciu zestawu SDK .NET w wersji 1.1.0 lub wcześniejszej wersji, aby przejść do zestawu SDK w wersji 1.2.0 lub nowszej, należy zmienić kod aplikacji do obsługi tych zmian. Jeśli nie masz kodu, który konfiguruje zasad indeksowania lub jeśli planujesz kontynuować korzystanie z wcześniejszej wersji zestawu SDK są wymagane nie zmiany.
 
-Porównanie praktyczne Oto przykład niestandardowe zasady indeksowania napisane przy użyciu interfejsu API REST wersji 2015-06-03, a następnie te same zasady indeksowania napisane przy użyciu interfejsu API REST wcześniejszych wersji 2015-04-08.
+Dla porównania praktycznych poniżej przedstawiono przykład niestandardowych zasad indeksowania napisane przy użyciu interfejsu API REST w wersji 2015-06-03, a następnie te same zasady indeksowania napisane przy użyciu interfejsu API REST wcześniejszych wersji 2015-04-08.
 
-**Bieżąca indeksowania zasad JSON (interfejsu API REST wersji 2015-06-03)**
+**Bieżące zasady JSON (interfejs API REST w wersji 2015-06-03) indeksowania**
 
     {
        "automatic":true,
@@ -401,7 +469,7 @@ Porównanie praktyczne Oto przykład niestandardowe zasady indeksowania napisane
     }
 
 
-**Wcześniej indeksowania zasad JSON (interfejsu API REST wersji 2015-04-08)**
+**Indeksowanie wcześniej zasad JSON (interfejs API REST w wersji 2015-04-08)**
 
     {
        "automatic":true,
@@ -421,9 +489,9 @@ Porównanie praktyczne Oto przykład niestandardowe zasady indeksowania napisane
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dla indeksu zasad zarządzania przykładów i dowiedzieć się więcej o języku kwerend bazy danych Azure rozwiązania Cosmos zobacz następujące linki:
+Indeks zasadach zarządzania przykładów i dowiedzieć się więcej na temat języka zapytań usługi Azure Cosmos DB zobacz następujące linki:
 
-* [Przykłady kodu zarządzania indeksu SQL interfejs API .NET](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
+* [Przykłady kodu zarządzania indeksem .NET interfejsu API SQL](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
 * [Operacje kolekcji SQL interfejsu API REST](https://msdn.microsoft.com/library/azure/dn782195.aspx)
-* [Zapytania SQL](sql-api-sql-query.md)
+* [Zapytania przy użyciu języka SQL](sql-api-sql-query.md)
 

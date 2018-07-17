@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 43fadadc92e9562e1e9abe6d971f85d37a9825c2
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3eca9e416a18e7389a6ce45cccd3cc99707e9806
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437086"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39070438"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -84,7 +84,7 @@ Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglą
 
 ---  
 
-## <a name="issue-dev-center-registration"></a>Problem: Centrum deweloperów rejestracji  
+## <a name="get-help-with-dev-center-registration"></a>Uzyskaj pomoc dotyczącą Centrum deweloperów rejestracji  
 Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać następujące kroki, aby przesłać bilet pomocy technicznej.  
 1.  Przejdź do Centrum deweloperów działu pomocy technicznej.  
     *   Dostęp do pomocy technicznej, odwiedź stronę Windows stronę pomocy technicznej developer znajdujący się w [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support).  
@@ -151,6 +151,41 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać nast�
 *   **Gdy się z pomocą techniczną, problemy dotyczące rejestracji w Centrum deweloperów?**
 Dostęp do pomocy technicznej, odwiedź stronę Windows stronę pomocy technicznej developer znajdujący się w [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
 
+## <a name="issue-add-bank-and-tax-information-for-publisher-payouts"></a>Problem: Dodaj informacje o wydawcy wypłaty bank i podatku  
+Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy użyciu języka transact typ oferty.  
+*   W przypadku publikowania oferty komercyjnej do zakupu, następnie należy dodać informacje dotyczące wypłat i informacje podatkowe i weryfikację żądań w Centrum deweloperów.  
+    >[!IMPORTANT]
+    >W przypadku ofert komercyjnych (transact) bank i informacje podatkowe należy wykonać, zanim będzie możliwe wypchnąć swoje oferty do środowiska produkcyjnego.  
+
+*   Jeśli jesteś oferuje publikowania tylko bezpłatne lub BYOL, a następnie nie należy dodawać informacje. Możesz dodać te informacje później, ale weryfikacji informacji podatkowych dopiero po pewnym czasie. Jeśli planujesz oferty komercyjnej oferty zakupu, należy dodać informacje jak najszybciej.  
+
+## <a name="add-bank-information"></a>Dodaj informacje o nazwie bank  
+1.  Zaloguj się do Centrum deweloperów za pomocą usługi Microsoft ID.  
+    *   Aby zalogować się do Centrum deweloperów, odwiedź stronę znajdującym się w Centrum deweloperów Windows [dev.windows.com](https://dev.windows.com).  
+2.  Wybierz konto informacje dotyczące wypłat w menu po lewej stronie.
+3.  Na `Choose payment method` wybierz opcję `Bank account` lub `PayPal`.  
+    >[!IMPORTANT]
+    >Jeśli masz komercyjnych oferty, które klienci dokonywać zakupów w portalu Marketplace, Twoje konto informacje dotyczące wypłat jest, który otrzymujesz informacje dotyczące wypłat na zakupy.  
+
+4.  Wprowadź informacje o płatności. Po upewnieniu się, że informacje są poprawne, kliknij przycisk Zapisz.  
+    >[!IMPORTANT]
+    >Jeśli zaktualizować lub zmienić ustawienia konta informacje dotyczące wypłat, należy wykonać te same czynności, zastępując bieżące informacje o nowe informacje. Zmiany do swojego konta informacje dotyczące wypłat może opóźnić płatności maksymalnie jednej płatności cyklu. To opóźnienie występuje, ponieważ zmiana konta należy sprawdzić, Microsoft, jest taka sama jak podczas pierwszej konfiguracji konta informacje dotyczące wypłat. Po zweryfikowaniu konta Pobierz zapłacili całej kwoty. Płatności powodu z bieżącej płatności cyklu są dodawane do następnego cyklu.  
+
+4.  Kliknij przycisk Dalej. 
+
+---   
+
+## <a name="add-tax-information"></a>Dodaj informacje podatkowe  
+1.  Zaloguj się do Centrum deweloperów za pomocą usługi Microsoft ID.  
+    *   Aby zalogować się do Centrum deweloperów, odwiedź stronę znajdującym się w Centrum deweloperów Windows [dev.windows.com](https://dev.windows.com).  
+2.  Wybierz profil podatku w menu po lewej stronie. 
+3.  Na `Set up your tax form` wybierz kraj lub region, w którym masz stały rezydencji.  
+    
+    Wybierz kraj lub region, gdzie przechowywać obywatelstwa podstawowego.  
+    
+    Kliknij przycisk Dalej. 
+4.  Wprowadź szczegóły podatku.  
+5.  Kliknij przycisk Dalej.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 *   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
