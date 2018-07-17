@@ -143,9 +143,9 @@
 ## Zarządzanie hasłami
 ### [Omówienie haseł](authentication/active-directory-passwords-overview.md)
 ### Dokumenty użytkowników
-#### [Resetowanie lub zmienianie hasła](active-directory-passwords-update-your-own-password.md)
+#### [Resetowanie lub zmienianie hasła](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Najlepsze rozwiązania w zakresie haseł](active-directory-secure-passwords.md)
-#### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md)
+#### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](user-help/active-directory-passwords-reset-register.md)
 ### [Samoobsługowe resetowanie haseł — zobacz, jak to działa](authentication/concept-sspr-howitworks.md)
 ### [Podręcznik wdrażania samoobsługowego resetowania haseł](authentication/howto-sspr-deployment.md)
 ### [SSPR i Windows 10](authentication/tutorial-sspr-windows.md)
@@ -174,8 +174,8 @@
 ### [Planowanie dołączenia do usługi Azure AD](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Często zadawane pytania](device-management-faq.md)
 ### Zadania
-#### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](device-management-azuread-joined-devices-setup.md)
+#### [Konfigurowanie urządzeń z systemem Windows 10 zarejestrowanych w usłudze Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
+#### [Konfigurowanie urządzeń przyłączonych do usługi Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Konfigurowanie urządzeń przyłączonych do hybrydowej usługi Azure AD](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Wdrażanie lokalnie](active-directory-device-registration-on-premises-setup.md)
 #### [Przyłączanie do usługi Azure AD podczas pierwszego uruchomienia systemu Windows 10](device-management-azuread-joined-devices-frx.md)
