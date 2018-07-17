@@ -1,6 +1,6 @@
 ---
-title: Zarejestruj dzierżaw użycia śledzenia stosu Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje na temat operacji narzędzia używane do zarządzania rejestracji dzierżawcy i sposób śledzenia użycia przez dzierżawcę w stosie Azure.
+title: Zarejestruj dzierżaw, aby zobaczyć sposób użycia śledzenia w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Szczegółowe informacje na temat operacji narzędzia używane do zarządzania rejestracji dzierżawy i sposób śledzenia użycia przez dzierżawcę w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,44 +11,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mabrigg
+ms.date: 06/08/2018
+ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159115"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093127"
 ---
-# <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy Azure stosu
+# <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy w usłudze Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Ten artykuł zawiera szczegółowe informacje o operacjach, który służy do zarządzania rejestracji dzierżawcy i sposób śledzenia użycia przez dzierżawcę. Można znaleźć szczegółowe informacje dotyczące sposobu dodawania, listy, lub Usuń mapowania dzierżawy. Do zarządzania Używanie śledzenia, można użyć programu PowerShell lub rozliczeń punkty końcowe interfejsu API.
+Ten artykuł zawiera szczegółowe informacje o operacjach, których można użyć do zarządzania rejestracje dzierżawy i sposób śledzenia użycia przez dzierżawcę. Można znaleźć szczegółowe informacje na temat dodawania listy, lub usunąć mapowania dzierżawy. Do zarządzania użytkowanie śledzenia, można użyć programu PowerShell lub punkty końcowe interfejsu API rozliczeń.
 
-## <a name="add-tenant-to-registration"></a>Dodaj dzierżawę do rejestracji
+## <a name="add-tenant-to-registration"></a>Dodawanie dzierżawy do rejestracji
 
-Ta operacja jest używane, gdy chcesz dodać nową dzierżawę do rejestracji, tak aby ich użycie jest zgłaszany w ramach subskrypcji platformy Azure, związanych z ich dzierżawy usługi Azure Active Directory (Azure AD).
+Należy użyć tej operacji, gdy chcesz dodać nową dzierżawę do rejestracji, dzięki czemu ich użycie jest zgłaszana w ramach subskrypcji platformy Azure związanych ze swojej dzierżawy usługi Azure Active Directory (Azure AD).
 
-Umożliwia także tej operacji, jeśli chcesz zmienić subskrypcję skojarzoną z dzierżawą, można ponownie wywołać metodę PUT/New-AzureRMResource. Mapowanie starego zostanie zastąpiona.
+Umożliwia także tę operację, jeśli chcesz zmienić subskrypcję skojarzonych dzierżawę, można wywołać PUT/New-AzureRMResource ponownie. Stary mapowanie zostanie zastąpiona.
 
-Należy pamiętać, że tylko jedną subskrypcją platformy Azure może być skojarzony z dzierżawą. Próba dodania drugiego subskrypcji do istniejącej dzierżawy pierwszej subskrypcji jest zastąpiona. 
+Należy zauważyć, że tylko jedną subskrypcję platformy Azure może być skojarzony z dzierżawą. Jeśli spróbujesz dodać drugi subskrypcji do istniejącej dzierżawy, pierwszy subskrypcja jest nadmiernie napisane. 
 
 
 | Parametr                  | Opis |
 |---                         | --- |
-| registrationSubscriptionID | Subskrypcja platformy Azure, którego użyto do pierwszej rejestracji. |
-| customerSubscriptionID     | Subskrypcja platformy Azure (nie Azure stosu) należące do klienta, który ma zostać zarejestrowany. Należy utworzyć w ofercie dostawcy usług chmury (CSP). W praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jednej dzierżawy, należy utworzyć tej subskrypcji w dzierżawie, która będzie służyć do logowania się do stosu Azure. |
-| resourceGroup              | Grupy zasobów na platformie Azure, w którym przechowywany jest rejestracja. |
-| registrationName           | Nazwa rejestracji stosu Azure. Jest to obiekt przechowywane na platformie Azure. Nazwa jest zazwyczaj azurestack formularza-CloudID, gdzie CloudID to identyfikator chmury Azure stosu wdrożenia. |
+| registrationSubscriptionID | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji. |
+| customerSubscriptionID     | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi zostać utworzona w ramach oferty dostawcy usług chmury (CSP). W praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jednej dzierżawy, należy utworzyć tej subskrypcji w ramach dzierżawy, która będzie służyć do logowania się do usługi Azure Stack. |
+| resourceGroup              | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja. |
+| registrationName           | Nazwa rejestracji usługi Azure Stack. Jest to obiekt przechowywanych na platformie Azure. Nazwa jest zwykle azurestack formularza-CloudID, gdzie CloudID jest identyfikator chmurze wdrożenia usługi Azure Stack. |
 
 > [!Note]  
-> Dzierżawcy muszą być zarejestrowane przy użyciu każdego stosu Azure używają. Jeśli dzierżawca korzysta z więcej niż jeden stos Azure, musisz zaktualizować początkowej rejestracje każdego wdrożenia z subskrypcji dzierżawcy.
+> Dzierżawy muszą być zarejestrowane przy użyciu każdego używają usługi Azure Stack. Jeśli dzierżawa korzysta z więcej niż jednej usługi Azure Stack, musisz zaktualizować początkowej rejestracje każdego wdrożenia przy użyciu subskrypcji dzierżawcy.
 
 ### <a name="powershell"></a>PowerShell
 
-Użyj polecenia cmdlet New-AzureRmResource można zaktualizować zasobu rejestracji. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
+Użyj polecenia cmdlet New-AzureRmResource na aktualizację zasobu rejestracji. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Oto przykład sposobu dodawania dzierżawy:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -56,30 +56,30 @@ Użyj polecenia cmdlet New-AzureRmResource można zaktualizować zasobu rejestra
 
 ### <a name="api-call"></a>Wywołanie interfejsu API
 
-**Operacja**: umieszczanie  
+**Operacja**: Umieść  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
 {customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **Odpowiedź**: 201 utworzone  
 **Treść odpowiedzi**: pusty  
 
-## <a name="list-all-registered-tenants"></a>Wyświetl listę wszystkich zarejestrowanych dzierżawcy
+## <a name="list-all-registered-tenants"></a>Lista wszystkich zarejestrowanych dzierżaw
 
-Pobierz listę wszystkich dzierżawców, które zostały dodane do rejestracji.
+Zostanie wyświetlona lista wszystkich dzierżaw, które zostały dodane do rejestracji.
 
  > [!Note]  
- > Jeśli nie zarejestrowano żadnych dzierżawcy, nie otrzymał odpowiedzi.
+ > Jeśli nie zarejestrowano żadnych dzierżawy, nie otrzyma odpowiedzi.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr                  | Opis          |
 |---                         | ---                  |
-| registrationSubscriptionId | Subskrypcja platformy Azure, którego użyto do pierwszej rejestracji.   |
-| resourceGroup              | Grupy zasobów na platformie Azure, w którym przechowywany jest rejestracja.    |
-| registrationName           | Nazwa rejestracji stosu Azure. Jest to obiekt przechowywane na platformie Azure. Ta nazwa jest zwykle w postaci **azurestack**-***CloudID***, gdzie ***CloudID*** jest identyfikator chmury Azure stosu wdrożenia.   |
+| registrationSubscriptionId | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji.   |
+| resourceGroup              | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja.    |
+| registrationName           | Nazwa rejestracji usługi Azure Stack. Jest to obiekt przechowywanych na platformie Azure. Nazwa jest zwykle w formie **azurestack**-***CloudID***, gdzie ***CloudID*** jest identyfikator chmurze wdrożenia usługi Azure Stack.   |
 
 ### <a name="powershell"></a>PowerShell
 
-Aby wyświetlić listę wszystkich zarejestrowanych dzierżawcy, należy użyć polecenia cmdlet Get-AzureRmResovurce. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
+Aby wyświetlić listę wszystkich zarejestrowanych dzierżaw, należy użyć polecenia cmdlet Get-AzureRmResovurce. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Oto przykład sposobu dodawania dzierżawy:
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -87,9 +87,9 @@ Aby wyświetlić listę wszystkich zarejestrowanych dzierżawcy, należy użyć 
 
 ### <a name="api-call"></a>Wywołanie interfejsu API
 
-Zostanie wyświetlona lista wszystkich mapowań dzierżawcy przy użyciu operacji GET
+Możesz uzyskać listę wszystkich mapowań dzierżawy przy użyciu operacji GET
 
-**Operacja**: GET  
+**Operacja**: pobieranie  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
@@ -115,16 +115,16 @@ api-version=2017-06-01 HTTP/1.1`
 }
 ```
 
-## <a name="remove-a-tenant-mapping"></a>Usuń mapowanie dzierżawcy
+## <a name="remove-a-tenant-mapping"></a>Usuń mapowanie dzierżawy
 
-Możesz usunąć dzierżawy, który został dodany do rejestracji. Jeśli tej dzierżawy nadal korzysta z zasobów na stosie Azure, ich użycia obciążających z subskrypcją użytą w początkowej rejestracji stosu Azure.
+Istnieje możliwość usunięcia dzierżawy, który został dodany do rejestracji. Jeśli w tej dzierżawie nadal korzysta z zasobów w usłudze Azure Stack, ich użycie jest obciążany opłatą za subskrypcję używaną podczas początkowej rejestracji usługi Azure Stack.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr                  | Opis          |
 |---                         | ---                  |
 | registrationSubscriptionId | Identyfikator subskrypcji dla rejestracji.   |
-| resourceGroup              | Grupa zasobów dla rejestracji.   |
+| resourceGroup              | Grupa zasobów o rejestrację.   |
 | registrationName           | Nazwa rejestracji.  |
 | customerSubscriptionId     | Identyfikator subskrypcji klienta.  |
 
@@ -136,7 +136,7 @@ Możesz usunąć dzierżawy, który został dodany do rejestracji. Jeśli tej dz
 
 ### <a name="api-call"></a>Wywołanie interfejsu API
 
-Można usunąć mapowania dzierżawcy przy użyciu operacji DELETE.
+Możesz usunąć mapowania dzierżawy przy użyciu operacji usuwania.
 
 **Operacja**: usuwanie  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
@@ -147,4 +147,4 @@ Można usunąć mapowania dzierżawcy przy użyciu operacji DELETE.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Aby dowiedzieć się więcej o tym, jak można pobrać informacji o użyciu zasobów ze stosu Azure, zobacz [użycie i rozliczenia Azure stosu](/azure-stack-billing-and-chargeback.md).
+ - Aby dowiedzieć się więcej o tym, jak pobrać informacje o użyciu zasobów z usługi Azure Stack, zobacz [użycie i rozliczenia w usłudze Azure Stack](/azure-stack-billing-and-chargeback.md).

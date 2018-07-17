@@ -42,9 +42,9 @@
 ### [Uruchamianie przeglądu dostępu](pim-resource-roles-start-access-review.md)
 ### [Kończenie przeglądu dostępu](pim-resource-roles-complete-access-review.md)
 
-# Często zadawane pytania
-## Usługa PIM dla ról zasobów
-### [Typy przypisań](pim-resource-roles-eligible-visibility.md)
+# Pojęcia
+## [Typy przypisań](pim-resource-roles-eligible-visibility.md)
+## [Powiadomienia e-mail](pim-email-notifications.md)
 
 # Dokumentacja
 ## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=active-directory)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 3ef910cc588b095b0c10f5e0928d7fadf17113f6
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ba162a04d41d9ce6f0bf00e377b7717f78967e7f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989813"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091776"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizacja usługi Azure Stack 1805
 
@@ -78,7 +78,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji   
 - Podczas instalacji aktualizacji 1805, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu aktualizacji do 1805.   
 
-- <!-- 2489559 - IS --> Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, seSe [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
+- <!-- 2489559 - IS --> Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
