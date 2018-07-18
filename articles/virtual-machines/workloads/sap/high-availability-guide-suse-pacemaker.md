@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: sedusch
-ms.openlocfilehash: 1fa69cc09772b9f90e6de05820c823f0409d926e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9ce95bcf15d0186c1baea3df407d0fc0c4200f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070347"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115480"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -40,7 +40,7 @@ Jeśli nie chcesz inwestować w dodatkowych maszyn wirtualnych, można również
 ![Program pacemaker w systemie SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Za pomocą urządzenia interwencja klastra program Pacemaker, ma zasadnicze znaczenie dla ogólnej niezawodności całego klastra, który routingu między maszynami wirtualnymi związane i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez wszystkie inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy związane z urządzenia WUS może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, zbadaj reguł routingu urządzeń WUS i [reguł routingu zdefiniowane użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) podczas planowania i wdrażania interwencja urządzeń.
+> Przy planowaniu i wdrażaniu program Pacemaker w systemie Linux w klastrze węzłów i interwencja urządzeń jest niezbędne dla ogólną niezawodność kompletna Konfiguracja klastra zaangażowane routingu między maszynami wirtualnymi i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy i obsługi zdarzeń za pomocą urządzenia NVA może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, nie definiują reguły routingu urządzeń WUS lub [reguł routingu zdefiniowane użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) tego kierowanie ruchu między węzłami klastra i interwencja za pośrednictwem urządzenia WUS i podobne urządzenia podczas planowania i wdrażania systemu Linux Program pacemaker klastrowane węzły i interwencja urządzeń. 
 >
 
 

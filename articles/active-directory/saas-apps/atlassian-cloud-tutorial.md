@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 07/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f0ad879bb084a8d3a50a0934557eae64621c0160
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054261"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Samouczek: Integracja usługi Azure Active Directory z chmurą Atlassian
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji na temat oprogramowania jako usługi (SaaS) inte
 Aby skonfigurować integrację usługi Azure AD przy użyciu chmury Atlassian, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD.
-- Aby włączyć zabezpieczeń Assertion Markup Language (SAML) logowanie jednokrotne dla produktów w chmurze Atlassian, musisz skonfigurować Identity Manager. Dowiedz się więcej o [programu Identity Manager]( https://www.atlassian.com/enterprise/cloud/identity-manager).
+- Aby włączyć zabezpieczeń Assertion Markup Language (SAML) logowanie jednokrotne dla produktów w chmurze Atlassian, musisz ustawić Atlassian dostępu w usłudze. Dowiedz się więcej o [dostępu Atlassian]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 > [!NOTE]
 > Podczas testowania kroki opisane w tym samouczku, zaleca się nie używać do środowiska produkcyjnego.
@@ -99,22 +99,27 @@ Aby skonfigurować usługi Azure AD logowania jednokrotnego przy użyciu chmury 
 
     ![Okno rejestracji jednokrotnej](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
-3. Aby skonfigurować aplikację w trybie inicjowane przez dostawcę tożsamości, w obszarze **Atlassian chmury domena i adresy URL**, wykonaj następujące czynności:
+3. Aby skonfigurować aplikację w **inicjowane przez dostawcę tożsamości** tryb, w obszarze **Atlassian chmury domena i adresy URL**, wykonaj następujące czynności:
 
     ![Adresy URL i domena chmury Atlassian pojedynczy informacje logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. W **identyfikator** wpisz **`https://auth.atlassian.com/saml/<unique ID>`**.
+    a. W **identyfikator** wpisz adres URL z następującym wzorcem: `https://auth.atlassian.com/saml/<unique ID>`.
     
-    b. W **adres URL odpowiedzi** wpisz **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
+    b. W **adres URL odpowiedzi** wpisz adres URL z następującym wzorcem: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`.
 
-    c. W **tan przekaźnika** wpisz adres URL z następującą składnią: **`https://<instancename>.atlassian.net`**.
+    c. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**.
 
-4. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Pokaż zaawansowane ustawienia adresu URL** a następnie w **adres URL logowania** wpisz adres URL z następującą składnią: **`https://<instancename>.atlassian.net`** .
+    d. W **tan przekaźnika** wpisz adres URL z następującym wzorcem: `https://<instancename>.atlassian.net`.
+
+    > [!NOTE]
+    > Powyższe wartości nie są prawdziwe. Zaktualizuj te wartości z rzeczywistego identyfikatora, a adres URL odpowiedzi. Otrzymasz te wartości rzeczywiste z ekranu konfiguracji SAML Atlassian w chmurze, co zostało wyjaśnione w dalszej części tego samouczka.
+
+4. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Pokaż zaawansowane ustawienia adresu URL** a następnie w **adres URL logowania** wpisz adres URL z następującym wzorcem: `https://<instancename>.atlassian.net`.
 
     ![Adresy URL i domena chmury Atlassian pojedynczy informacje logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
     > [!NOTE]
-    > Powyższe wartości nie są prawdziwe. Zaktualizuj je z rzeczywistego identyfikatora, adres URL odpowiedzi i logowania jednokrotnego wartości adresu URL. Rzeczywiste wartości można uzyskać z ekranu konfiguracji SAML Atlassian w chmurze. Wyjaśnijmy, wartości w dalszej części tego samouczka.
+    > Poprzedni znak na wartość adresu URL nie jest prawdziwe. Zaktualizuj wartość za pomocą logowania rzeczywisty adres URL. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta chmury Atlassian](https://support.atlassian.com/) aby zyskać tę wartość.
 
 5. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **Certificate(Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 

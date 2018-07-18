@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: cd9b8eaf84ac4c1227c521628fd4156eec4506bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38746271"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094301"
 ---
 # <a name="enable-write-accelerator"></a>Włączyć akcelerator zapisu
 
@@ -67,7 +67,7 @@ Następujące wymagania wstępne dotyczą użytkowania akceleratorem zapisu w ty
 - Dyski, o których chcesz zastosować akcelerator zapisu platformy Azure, przed muszą być [usługi Azure managed disks](https://azure.microsoft.com/services/managed-disks/) w magazynie Premium Storage.
 - Konieczne jest korzystanie z maszyn wirtualnych serii M
 
-### <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Włączanie akcelerator zapisu platformy Azure przy użyciu programu Azure PowerShell
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Włączanie akcelerator zapisu platformy Azure przy użyciu programu Azure PowerShell
 
 Moduł usługi Azure Power Shell w wersji 5.5.0 obejmują zmiany do odpowiednich poleceń cmdlet, aby włączyć lub wyłączyć akceleratorem zapisu dla określonych dysków Azure Premium Storage.
 Aby włączyć lub wdrażanie dysków obsługiwanych przez akcelerator zapisu, następujące polecenia powłoki Power Shell stało się zmienić, a rozszerzony do akceptowania parametr dla akceleratorem zapisu.
@@ -108,7 +108,7 @@ Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 
 Dwa główne scenariusze mogą być uwzględnione w skryptach, jak pokazano w poniższych sekcjach.
 
-#### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>Dodawanie nowego dysku obsługiwane przez akcelerator zapisu przy użyciu programu PowerShell
+### <a name="adding-a-new-disk-supported-by-write-accelerator-using-powershell"></a>Dodawanie nowego dysku obsługiwane przez akcelerator zapisu przy użyciu programu PowerShell
 
 Ten skrypt można użyć, aby dodać nowy dysk do maszyny Wirtualnej. Dysków utworzonych za pomocą tego skryptu korzysta z akceleratorem zapisu.
 
@@ -133,9 +133,9 @@ Add-AzureRmVMDataDisk -CreateOption empty -DiskSizeInGB $size -Name $vmname-$dat
 Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 ```
 
-#### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Włączanie akceleratorem zapisu na istniejącym dysku platformy Azure przy użyciu programu PowerShell
+### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>Włączanie akceleratorem zapisu na istniejącym dysku platformy Azure przy użyciu programu PowerShell
 
-Aby włączyć akcelerator zapisu w istniejącego dysku, można użyć tego skryptu. Zastąp `myVM`, `myWAVMs`, i `test-log001` przy użyciu wartości odpowiednich dla określonego wdrożenia. Skrypt ten dodaje akceleratorem zapisu do istniejącego dysku, którego wartość $newstatus ustawiono "$true". Przy użyciu wartości "$false" spowoduje wyłączenie akceleratorem zapisu na danym dysku.
+Aby włączyć akcelerator zapisu w istniejącego dysku, można użyć tego skryptu. Zastąp `myVM`, `myWAVMs`, i `test-log001` przy użyciu wartości odpowiednich dla określonego wdrożenia. Skrypt ten dodaje akceleratorem zapisu do istniejącego dysku gdzie wartość **$newstatus** jest ustawiona na "$true". Przy użyciu wartości "$false" spowoduje wyłączenie akceleratorem zapisu na danym dysku.
 
 ```PowerShell
 #Specify your VM Name
@@ -157,15 +157,15 @@ Update-AzureRmVM -ResourceGroupName $rgname -VM $vm
 > [!Note]
 > Wykonywanie skryptu powyżej zostanie odłączenia określony dysk, włączyć akcelerator zapisu na dysku i ponownie podłączyć dysk
 
-### <a name="enabling-write-accelerator-using-the-azure-portal"></a>Włączanie akceleratorem zapisu przy użyciu witryny Azure portal
+## <a name="enabling-write-accelerator-using-the-azure-portal"></a>Włączanie akceleratorem zapisu przy użyciu witryny Azure portal
 
-Należy włączyć akcelerator zapisu za pośrednictwem portalu, w której możesz określić ustawienia buforowania dysku: 
+Należy włączyć akcelerator zapisu za pośrednictwem portalu, w której możesz określić ustawienia buforowania dysku:
 
 ![Akcelerator zapisu w witrynie Azure portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-write-accelerator-using-the-azure-cli"></a>Włączanie akceleratorem zapisu przy użyciu wiersza polecenia platformy Azure
+## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Włączanie akceleratorem zapisu przy użyciu wiersza polecenia platformy Azure
 
-Możesz użyć [wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) włączyć akcelerator zapisu. 
+Możesz użyć [wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) włączyć akcelerator zapisu.
 
 Aby włączyć akcelerator zapisu dla istniejącego dysku, należy użyć [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), może użyć poniższych przykładów, jeżeli wymienisz diskName VMName i grupie zasobów przy użyciu własnych wartości: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
@@ -173,11 +173,11 @@ Można dołączyć dysku z akceleratorem zapisu włączone użycie [dołączanie
 
 Aby wyłączyć akceleratorem zapisu, należy użyć [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), ustawienie wartości false dla właściwości: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
-### <a name="enabling-through-rest-apis"></a>Włączanie za pośrednictwem interfejsów API Rest
+## <a name="enabling-write-accelerator-using-rest-apis"></a>Włączanie akceleratorem zapisu przy użyciu interfejsów API Rest
 
 Aby wdrożyć za pomocą interfejsu API Rest platformy Azure, musisz zainstalować armclient platformy Azure.
 
-#### <a name="install-armclient"></a>Zainstaluj armclient
+### <a name="install-armclient"></a>Zainstaluj armclient
 
 Aby uruchomić armclient, należy go zainstalować za pomocą narzędzia Chocolatey. Należy ją zainstalować, za pośrednictwem cmd.exe lub programu powershell. Podwyższonym poziomem uprawnień na użytek tych poleceń ("Uruchom jako Administrator").
 
@@ -187,7 +187,7 @@ Korzystanie z powłoki Power Shell, uruchom następujące polecenie: `Set-Execut
 
 Teraz można zainstalować armclient przy użyciu następujące polecenie w program cmd.exe lub programu PowerShell `choco install armclient`
 
-#### <a name="getting-your-current-vm-configuration"></a>Pobieranie bieżącej konfiguracji maszyny Wirtualnej
+### <a name="getting-your-current-vm-configuration"></a>Pobieranie bieżącej konfiguracji maszyny Wirtualnej
 
 Aby zmienić atrybuty konfiguracji dysku, należy najpierw pobrać bieżącą konfigurację w pliku JSON. Bieżącą konfigurację można uzyskać, wykonując następujące polecenie: `armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 

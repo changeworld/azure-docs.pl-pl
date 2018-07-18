@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 11/07/2017
+ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793025"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950686"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
@@ -29,8 +29,8 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 ## <a name="find-azure-search"></a>Znajdowanie usługi Azure Search
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Kliknij znak plus („+”) w lewym górnym rogu.
-3. Wybierz kolejno pozycje **Sieć Web + aplikacje mobilne** > **Azure Search**.
+2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
+3. Wybierz pozycję **Internet** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
@@ -77,12 +77,14 @@ Tworzenie usługi może potrwać kilka minut (15 minut lub dłużej w zależnoś
 
 ***Repliki*** umożliwiają usłudze obsługę większego obciążenia zapytaniami wyszukiwania.
 
+Dodawanie zasobów wiąże się z dodaniem opłat do rachunku miesięcznego. [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) pomaga w określeniu, jaki wpływ na rozliczenia będzie miało dodanie zasobów. Pamiętaj, że możesz też dostosowywać zasoby do obciążenia. Możesz na przykład zwiększyć ilość zasobów na czas początkowego tworzenia pełnego indeksu, a następnie zmniejszyć ją do poziomu dostosowanego do potrzeb indeksowania przyrostowego.
+
 > [!Important]
 > Usługa musi mieć [2 repliki w ramach umowy SLA tylko do odczytu oraz 3 repliki w ramach umowy SLA do odczytu/zapisu](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Przejdź do strony usługi wyszukiwania w witrynie Azure Portal.
 2. W okienku nawigacji po lewej wybierz kolejno pozycje **Ustawienia** > **Skalowanie**.
-3. Użyj suwaka, aby dodać repliki lub partycje.
+3. Użyj suwaka, aby dodać zasoby wybranego typu.
 
 ![](./media/search-create-service-portal/settings-scale.png)
 

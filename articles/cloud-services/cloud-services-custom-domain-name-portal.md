@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7488bfbabaf2ce12d2f7315f5142ffea93f584c2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001637"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39044819"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze platformy Azure
 Podczas tworzenia usługi w chmurze, platforma Azure przypisuje go do domeny podrzędnej **cloudapp.net**. Na przykład, jeśli usługa w chmurze ma nazwę "contoso", użytkownicy będą mogli korzystać z aplikacji na adres URL podobny http://contoso.cloudapp.net. Platforma Azure przypisuje także wirtualnego adresu IP.
@@ -124,7 +124,7 @@ Na przykład następujący rekord przekazuje cały ruch z **contoso.com** do **1
 
 | Nazwa hosta/poddomeny | Adres IP |
 | --- | --- |
-| @ |137.135.70.239 |
+| \@ |137.135.70.239 |
 
 W przykładzie pokazano tworzenie rekordu A dla domeny katalogu głównego. Jeśli chcesz utworzyć wpis symboli wieloznacznych, aby pokrywał wszystkimi domenami podrzędnymi, wpisz "***" jako domenę podrzędną.
 

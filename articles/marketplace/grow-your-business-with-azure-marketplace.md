@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9554fef34eee2769c9ef41352a134df8c3a2558
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888499"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115929"
 ---
 # <a name="grow-your-business-on-marketplace"></a>Rozwijaj swoją działalność w witrynie marketplace 
 Po opublikowaniu oferty w usłudze AppSource lub witrynie Azure Marketplace, można użyć swojej listy jako doskonała dla wspólnych działań (GTM wprowadzenie) go-to-market z firmą Microsoft. Kierowania ruchu do oferty w portalu marketplace i pielęgnacji potencjalnych klientów w witrynie marketplace, na przykład, są skuteczne sposoby Przyspiesz rozwój swojej firmy. W tym artykule udostępnimy szereg najlepszych praktyk marketingu Rozwijaj działalność w witrynie marketplace.
@@ -214,7 +214,240 @@ Aby promować oferty sieci Web lub aplikacji, skorzystaj z poniższej tabeli, do
 | Zdobądź również z kompetencją Cloud Platform | Zarabiać kompetencją pomaga odróżnić samodzielnie między innymi partnerami firmy Microsoft. Zarabiać kompetencją pomaga też prezentację wiedzy technicznej i sukces klientów na rynku. Kompetencja jest wymaganiem wstępnym dla wielu programów kluczowy partner, takich jak wspólnej sprzedaży.<br /> Aby uzyskać więcej informacji na temat kompetencję Cloud Platform, odwiedź stronę [kompetencję Cloud Platform](https://partner.microsoft.com/membership/cloud-platform-competency). |
 | Zostań gotowości do wspólnej sprzedaży adresu IP | Możesz kwalifikować się do programu IP współpracy sprzedażowej, dzięki czemu można współpracować bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami, na docelowy potencjalnymi klientami i planowania konta. Rozwiązanie staje się widoczna dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. Sprzedawcami firmy Microsoft są przez współpracy i zdobywania Tobie.<br /> Aby uzyskać więcej informacji o gotowości do wspólnej sprzedaży, w tym wymagania kwalifikacyjne, odwiedź stronę [podwyższanie poziomu firmy](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
-## <a name="next-steps"></a>Następne kroki
+
+# <a name="azure-partner-revenue-attribution"></a>Uznanie autorstwa przychód partnerów platformy Azure
+
+Jako partner typu oprogramowania na platformie Azure rozwiązania wymagają składniki platformy Azure lub jest wdrażany bezpośrednio w infrastrukturze platformy Azure.  Już dziś gdy rozwiązania partnerskiego jest wdrażane przez klienta i korzysta z zasobów platformy Azure, obsługiwana przez klienta, jest trudne dla partnera uzyskać wgląd w stan tych wdrożeń i problemy z uzyskaniem optyką do wpływ na rozwój platformy Azure do wyrównania z zespołami sprzedaży firmy Microsoft i środków dla programów partnerskich firmy Microsoft.   
+
+Firma Microsoft tworzy nową metodę w celu ułatwiania partnerom lepiej śledzić użycie platformy Azure, która wynika z klientem, wdrażania oprogramowania na platformie Azure. Ta nowa metoda opiera się na temat korzystania z usługi Azure Resource Manager do organizowania wdrożenia usług platformy Azure.
+
+Jako partner firmy Microsoft można skojarzyć użycia platformy Azure z zasobami platformy Azure, którą możesz aprowizować w imieniu klienta.  Można to zrobić za pośrednictwem portalu Azure Marketplace, repozytorium Szybki Start, repozytoriów prywatnych usługi github i nawet 1 na 1 podczas pracy z klientami.  Aby je włączyć, dostępne są dwie metody:
+
+ 1. Szablony usługi Azure Resource Manager: Szablony usługi Azure Resource Manager lub szablony rozwiązań do wdrożenia usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy, można utworzyć szablon usługi Azure Resource Manager, który definiuje infrastrukturę i konfigurację, które rozwiązania platformy Azure. Tworzenie szablonu usługi Azure Resource Manager pozwala i klientów wielokrotnie wdrażać rozwiązania przez cały cykl życia, zapewniając spójny stan wdrożenia zasobów. 
+
+ 2. Interfejsy API Azure Resource Manager: partnerów można wywołać interfejsów API usługi Azure Resource Manager bezpośrednio z albo wdrażanie szablonu usługi Azure Resource Manager lub do generowania interfejsu API wywołuje bezpośrednio świadczenia usług platformy Azure. 
+
+## <a name="method-1-azure-resource-manager-templates"></a>Metoda 1: Azure szablonów usługi Resource Manager 
+Dzisiaj wielu rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy użyciu szablonów usługi Azure Resource Manager.  Jeśli masz już szablon usługi Azure Resource Manager, które jest dostępne w witrynie Azure Marketplace, w usłudze GitHub lub jako Szybki Start, proces modyfikowania szablon, aby włączyć tej nowej metody śledzenia powinna być bardzo proste.  Jeśli nie używasz szablonu usługi Azure Resource Manager już dziś poniżej przedstawiono kilka linków ułatwiających lepsze zrozumienie szablonów usługi Azure Resource Manager oraz jak utworzyć: 
+
+*   [Tworzenie i wdrażanie pierwszego szablonu usługi Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)
+*   [Przewodnik, aby utworzyć szablon rozwiązań dla witryny Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
+
+## <a name="instructions-add-a-guid-to-your-existing-azure-resource-manager-template"></a>Instrukcje: Dodawanie identyfikatora GUID do istniejącego szablonu usługi Azure Resource Manager
+
+Dodawanie identyfikatora GUID jest pojedynczy modyfikacji pliku głównego szablonu:
+ 1. Utwórz identyfikator GUID, załóżmy, że wygenerowaną wartość jest eb7927c8-dd66-43e1-b0cf-c346a422063
+ 2. Otwórz szablon usługi Azure Resource Manager
+ 3. Dodaj nowy zasób w pliku głównym szablonu. Zasób musi jedynie mieć w mainTemplate.json lub azuredeploy.json, nie w żadnym zagnieżdżone lub połączone szablony.
+ 4. Wprowadź identyfikator GUID po "identyfikator pid-", jak pokazano powyżej.
+
+   Powinien on wyglądać podobnie jak w tym przykładzie: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
+
+ 5. Szablon sprawdzania pod kątem błędów
+ 6. Ponownie opublikowanie szablonu w odpowiednich repozytoriach
+
+## <a name="sample-template-code"></a>Przykładowy kod szablonu
+
+```
+
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+      "apiVersion": "2018-02-01",
+      "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    } // remove all comments from the file when done
+
+```
+
+## <a name="method-2-azure-resource-manager-apis"></a>Metoda 2: Interfejsy API Azure Resource Manager
+
+W niektórych przypadkach partnerów wolą wywoływać bezpośrednio w odniesieniu do interfejsów API REST usługi Azure Resource Manager do wdrażania usług platformy Azure. [Platforma Azure obsługuje wiele zestawów SDK](https://docs.microsoft.com/en-us/azure/#pivot=sdkstools) Aby włączyć tę opcję.  Możesz użyć jednego z zestawów SDK lub wywoływać interfejsy API REST bezpośrednio do wdrażania zasobów.
+
+Jeśli używasz szablonu usługi Azure Resource Manager należy oznaczyć rozwiązania przy użyciu powyższych instrukcji.  Jeśli nie przy użyciu szablonu usługi Azure Resource Manager i wykonanie bezpośrednich wywołań interfejsu API możesz oznaczyć danego wdrożenia, aby skojarzyć użycia zasobów platformy Azure. 
+
+**Jak oznaczyć wdrażania przy użyciu interfejsów API usługi Azure Resource Manager:** w tym podejściu podczas projektowania wywołania interfejsu API będzie zawierać identyfikator GUID w nagłówku agenta użytkownika w żądaniu. Identyfikator GUID powinny zostać dodane dla każdej oferty lub jednostki SKU.  Ciąg musi być sformatowany z prefiksem identyfikatora pid —, a następnie dołącz partnera wygenerowany identyfikator GUID.   
+
+>[!Note] 
+>Format identyfikatora GUID w celu wstawienia go do agenta użytkownika: pid-eb7927c8-dd66-43e1-b0cf-c346a422063 / / enter Twojego identyfikatora GUID po "identyfikator pid-"
+
+Format ciągu jest ważne. Jeśli prefiks "identyfikator pid-" nie jest dołączony firma Microsoft nie będzie można wysłać zapytanie dotyczące danych. Różne zestawy SDK to zrobić inaczej.  Aby zaimplementować tę metodę należy przejrzeć pomocy technicznej i podejścia do preferowanego zestawu SDK usługi Azure. 
+
+**Przykład korzystający z zestawu SDK języka Python:** dla języka Python, musisz użyć atrybutu "konfiguracji". Tylko można dodać UserAgent (nadal chcemy pewnego rodzaju kontrola). Jest to:
+
+```python
+
+client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
+        client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
+
+
+```
+
+>Musi to być wykonywane dla każdego klienta, brak globalnej konfiguracji statycznego (można zrobić fabryka klientów, należy upewnić się, że każdy klient jest już działa. 
+>[Dodatkowe informacje](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
+
+## <a name="registering-a-guid"></a>Rejestrowanie identyfikator GUID: 
+
+Jak oznaczyć wdrażania przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure: Wdrażanie zasobów za pośrednictwem AzurePowerShell można dołączyć Twojego identyfikatora GUID za pomocą następującej metody:
+
+```
+
+[Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
+
+
+```
+
+Aby dołączyć Twojego identyfikatora GUID, korzystając z wiersza polecenia platformy Azure, należy ustawić zmienną środowiskową AZURE_HTTP_USER_AGENT.  Możesz ustawić w zakresie skryptu lub globalnie, ustawić do użytku zakresu powłoki:
+
+```
+
+export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
+
+
+```
+
+## <a name="registering-guidsoffers"></a>Rejestrowanie identyfikatorów GUID/oferty
+
+Aby identyfikator GUID, które mają zostać uwzględnione w naszej śledzenia muszą być zarejestrowane.  
+
+Wszystkich rejestracji dla identyfikatorów GUID szablonu będzie odbywać się za pośrednictwem usługi Azure Marketplace Cloud Partner portalu (CPP). 
+
+Dotyczą [portalu Azure Marketplace](http://aka.ms/listonazuremarketplace) dzisiaj i uzyskiwać dostęp do portalu dla partnerów w chmurze.
+
+*   Partnerzy będą musieli [mieć profil w CPP](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) i zachęca do listy oferty w portalu Azure Marketplace lub w usłudze AppSource 
+*   Partnerzy będą mogli zarejestrować wiele identyfikatorów GUID 
+*   Partnerzy również będą mogli zarejestrować identyfikator GUID dla rozwiązania spoza witryny Marketplace szablony/oferty
+
+Po dodaniu identyfikator GUID szablonu lub agenta użytkownika i zarejestrowany identyfikator GUID w CPP będą śledzone wszystkie wdrożenia. 
+
+## <a name="verification-of-guid-deployment"></a>Weryfikacja wdrożenia identyfikatora GUID 
+
+Po modyfikacji szablonu i wykonać wdrożenia testowego służy poniższy skrypt programu PowerShell do pobrania resrouces, które zostały wdrożone i oznaczony. 
+
+Można użyć go, aby sprawdzić, w przypadku identyfikatora GUID została dodana do szablonu usługi Azure Resource Manager pomyślnie. Nie ma zastosowania do wdrażania interfejsu API usługi Azure Resource Manager.
+
+Zaloguj się do platformy Azure i wybierz subskrypcję, która zawiera wdrożenia, które chcesz sprawdzić przed uruchomieniem skryptu. Muszą być uruchamiane w ramach subskrypcji wdrożenia.
+
+Identyfikator GUID i grupie zasobów nazwę wdrożenia są wymagane parametry.
+
+Można znaleźć oryginalnego skryptu [tutaj](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1).
+
+```
+
+Param(
+    [GUID][Parameter(Mandatory=$true)]$guid,
+    [string][Parameter(Mandatory=$true)]$resourceGroupName'
+)
+
+#get the correlationId of the pid deployment
+
+$correlationId = (Get-AzureRmResourceGroupDeployment -ResourceGroupName 
+$resourceGroupName -Name "pid-$guid").correlationId
+
+#find all deployments with that correlationId
+
+$deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
+
+#find all deploymentOperations in a deployment by name (since PowerShell does not surface outputResources on the deployment or correlationId on the deploymentOperation)
+
+foreach ($deployment in $deployments){
+
+#get deploymentOperations by deploymentName and then the resourceId for any create operation
+
+($deployment | Get-AzureRmResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
+
+}
+
+
+```
+
+## <a name="guidance-on-creating-guids"></a>Wskazówki dotyczące tworzenia identyfikatorów GUID
+
+Identyfikator GUID (unikatowy identyfikator globalny) jest unikatowy numer 32 cyfry szesnastkowej. Aby utworzyć identyfikator GUID partnera należy użyć GUID generator do utworzenia ich identyfikatorów GUID dla śledzenia.  Dostępnych jest wiele [online generatorów GUID](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) można użyć.
+
+Partnerzy są zachęcani do tworzenia Unikatowy identyfikator GUID dla każdego kanału oferty i dystrybucji.  Na przykład partnerem, który ma dwa rozwiązania w zakresie, a oba są wdrażane za pomocą szablonu i są dostępne na rynku platformy Azure i w witrynie GitHub.  Partner, należy utworzyć 4 identyfikatorów GUID:
+
+*   Oferty w portalu Azure Marketplace 
+*   Oferty, A w witrynie GitHub
+*   Oferta B w witrynie Azure Marketplace 
+*   Oferta B w witrynie GitHub
+
+Zgłoszenie będzie wykonywana przez partnera (identyfikator partnera firmy Microsoft) i identyfikator GUID. 
+
+Możesz również śledzić identyfikatorów GUID na bardziej szczegółowym poziomie czyli jednostka SKU (których jednostek SKU są wariantów oferty).
+
+## <a name="guidance-on-privacy-and-data-collection"></a>Wskazówki dotyczące ochrony prywatności i gromadzenia danych
+
+Partnerzy powinien zapewniać komunikatów poinformowanie klientów, ich zezwalające wdrożeń obejmujących śledzenia identyfikator GUID Menedżera zasobów Azure firmy Microsoft do raportowania wykorzystania platformy Azure skojarzone z tym wdrożeniom na partnera.  Niektóre języka przykład znajduje się poniżej. Ponadto partnerzy upewnić się, że jest to zgodne z własnymi danymi zasady ochrony prywatności i kolekcji, włącznie z opcjami dla klientów, które mają być wykluczone z śledzenie: 
+
+**Dla wdrożeń szablonu usługi Azure Resource Manager**
+
+Podczas wdrażania tego szablonu firmy Microsoft będzie można zidentyfikować instalacji oprogramowania [nazwa oprogramowania partnera insert] z zasobami platformy Azure wdrożone.  Microsoft będzie mieć możliwość skorelowania zasobów platformy Azure używane do obsługi oprogramowania.  Firma Microsoft zbiera te informacje, aby zapewnić subskrybentom w maksymalnym swoich produktów i wykorzystywać swoją działalność. Te dane będą zbierane i zarządzane przez zasady ochrony prywatności firmy Microsoft, które można znaleźć w folderze https://www.microsoft.com/en-us/trustcenter. 
+
+**W przypadku wdrożeń zestawu SDK lub interfejsu API**
+
+Podczas wdrażania oprogramowania firmy Microsoft będzie należy zidentyfikować instalacji oprogramowania [nazwa oprogramowania partnera insert] z zasobami platformy Azure wdrożone.  Microsoft będzie mieć możliwość skorelowania zasobów platformy Azure używane do obsługi oprogramowania.  Firma Microsoft zbiera te informacje, aby zapewnić subskrybentom w maksymalnym swoich produktów i wykorzystywać swoją działalność. Te dane będą zbierane i zarządzane przez zasady ochrony prywatności firmy Microsoft, które można znaleźć w folderze https://www.microsoft.com/en-us/trustcenter.
+
+## <a name="support"></a>Pomoc techniczna
+
+Aby uzyskać pomoc, wykonaj następujące czynności:
+ 1. Odwiedź stronę pomocy technicznej znajduje się w [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
+ 2. W przypadku problemów z użycia skojarzenie — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **innych** a następnie kliknij przycisk **uruchom żądanie.**
+
+Problemy związane z dostępem do portalu Azure Marketplace Cloud Partner — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **Problem z dostępem** a następnie kliknij przycisk **uruchom żądanie.**
+ 3. Wypełnij wymagane pola na następnej stronie, a następnie kliknij przycisk **Kontynuuj.**
+ 4. Wypełnij pola dowolny tekst na następnej stronie.  
+ 
+>[!Important] 
+>Wprowadź tytuł zdarzenia z **"Śledzenia użycia niezależnego dostawcy oprogramowania"** i opisz swój problem szczegółowo w polu dużych dowolny tekst po.  Ukończenia pozostałej części formularza, a następnie kliknij przycisk **przesyłania**.
+
+## <a name="faqs"></a>Często zadawane pytania
+
+**Co to jest korzyść dodawania identyfikatora GUID do szablonu?**
+
+Firma Microsoft zapewni partnerom widok wdrożeń klientów swoje szablony i szczegółowe informacje na ich użycia.  Microsoft i partnerów umożliwia również tych informacji do zwiększania zaangażowania bliżej między partnerami i zespołami sprzedaży firmy Microsoft i bardziej spójny widok partnera usługi wpływ na rozwój platformy Azure. 
+
+**Identyfikator GUID, kto może dodawać do szablonu?**
+
+Zasób śledzenia ma na celu łączenie rozwiązania partnera do klientów platformy Azure użycia.  Dane użycia jest powiązany z partnerem firmy Microsoft Partner Network tożsamości (identyfikator MPN), a następnie reporting będą dostępne dla partnerów w chmurze partnerem portalu (CPP).  
+
+**Po dodaniu identyfikator GUID można je zmienić?**
+ 
+Tak, klienta lub implementacji partnera może dostosować szablon i można zmienić lub usunąć identyfikator GUID. Zaleca się, że partnerzy aktywnie opisywania roli zasobów i identyfikator GUID dla ich klientów i partnerów, aby uniemożliwić usunięcie lub edycji do śledzenia identyfikator GUID.  Należy pamiętać, że zmiana identyfikatora GUID mają wpływ tylko na nowe, nie istniejących wdrożeń i zasobów.
+
+**Kiedy reporting będą dostępne?**
+
+Wersja beta, raportowania powinien być dostępny wkrótce.  Zgłoszenie zostanie zintegrowana w portalu partnerów chmury (CPP).
+
+**Czy mogę śledzić szablony wdrażany z repozytorium firmy Microsoft, takich jak GitHub**
+
+Tak, tak długo, jak identyfikator GUID jest obecny, podczas wdrażania szablonu, to użycie będą śledzone.  
+Partnerzy musi mieć profil w portalu Cloud Partner, aby zarejestrować powiązanych szablonów opublikowane poza portalem Azure Marketplace. 
+
+**Czy istnieje różnica w przypadku wdrażania szablonu z portalu Azure Marketplace i innych repozytoriów, takich jak GitHub?**
+
+Tak, partner, który publikowanie ofert w portalu Azure Marketplace może zostać wyświetlony bardziej szczegółowych danych we wdrożeniach w portalu Azure Marketplace.  Partnerzy będą mogli korzystać z udostępnianie ich oferta dla klientów w portalu Azure Marketplace i w portalu zarządzania systemu Azure. Oferty w witrynie Azure marketplace również generować potencjalnych klientów dla partnera.
+
+**Co zrobić, jeśli utworzyć niestandardowy szablon dla poszczególnych zaangażowania?**
+
+Nadal zachęcamy Dodaj identyfikator GUID do szablonu.  Jeśli używasz istniejący identyfikator GUID, który został zarejestrowany zostanie uwzględniony w raportach.  Jeśli tworzysz nowy identyfikator GUID, musisz zarejestrować nowy identyfikator GUID można pobrać on uwzględniony w śledzeniu.
+
+**Klient jednocześnie, oraz raportowania?**
+
+Klienci są obecnie w stanie śledzić ich użycie funkcji pojedyncze zasoby lub grupy zasobów zdefiniowanych przez klienta w portalu zarządzania systemu Azure.   
+
+**Przypomina tym do cyfrowego partnera z rekordu (partnera DPOR)?**
+
+Tej nowej metody nawiązywania połączenia z wdrożenia i użycia rozwiązania partnerskiego jest zapewnienie mechanizmu połączyć rozwiązania partnerskiego do użycia platformy Azure.  Jako uprawniony partner CYFROWY jest przeznaczona do skojarzenia z konsultacji (Integrator systemów) lub partnera zarządzania (Managed Service Provider) z subskrypcją Azure klienta.   
+
+
+## <a name="next-steps"></a>Kolejne kroki
 Odwiedź stronę [pozycji na rynku usług](https://partner.microsoft.com/reach-customers/gtm) Aby dowiedzieć się więcej na temat usług witryny Marketplace. 
 
 ---

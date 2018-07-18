@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 6ea55f5d329a037ef35984cb9276b27a532824ec
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1488f95296bcc11a55a45aff56cee83b7708a789
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347422"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39072218"
 ---
 # <a name="speech-scenarios"></a>Scenariusze z zastosowaniem mowy
 
@@ -32,11 +32,11 @@ Wielu użytkowników chcesz włączyć wprowadzania danych głosowych w swoich a
 
 ### <a name="voice-triggered-apps-with-baseline-models"></a>Głos wyzwalane aplikacji przy użyciu modeli podstawowych
 
-Jeśli aplikacja ma służyć oglądu przez ogół w środowiskach, w którym hałas w tle nie jest zbyt duża, sposób najłatwiejszych i najszybszych obecnie w tym celu po prostu odbywać się pobieranie naszych [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [ Przykłady](quickstart-csharp-windows.md). Obsługiwane przez zestaw SDK usługi [klucz subskrypcji platformy Azure](https://azure.microsoft.com/try/cognitive-services/) umożliwia deweloperom i przekaż plik audio do linii bazowej modeli rozpoznawania mowy, które stanowią podstawę Cortana i Skype. Mdoels są najnowszych osiągnięć i są używane przez wyżej produktów. Możesz rozpocząć pracę w ciągu kilku minut.
+Jeśli aplikacja ma służyć oglądu przez ogół w środowiskach, w którym hałas w tle nie jest zbyt duża, sposób najłatwiejszych i najszybszych obecnie w tym celu po prostu odbywać się pobieranie naszych [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [ Przykłady](quickstart-csharp-dotnet-windows.md). Obsługiwane przez zestaw SDK usługi [klucz subskrypcji platformy Azure](https://azure.microsoft.com/try/cognitive-services/) umożliwia deweloperom i przekaż plik audio do linii bazowej modeli rozpoznawania mowy, które stanowią podstawę Cortana i Skype. Mdoels są najnowszych osiągnięć i są używane przez wyżej produktów. Możesz rozpocząć pracę w ciągu kilku minut.
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Głos wyzwalane aplikacji za pomocą niestandardowych modeli
 
-Jeśli aplikacja adresy określonej domeny, (chemia powiedzieć, związane z biologią lub specjalnymi potrzebami diecie), a następnie warto wziąć pod uwagę w celu dostosowania [modelu językowego](how-to-customize-language-model.md). Dostosowanie modelu języka nauczy dekodera o najbardziej typowych fraz i słów używanych przez aplikację. Dekoder będzie także dokładniej głosowych danych wejściowych z modelu języka niestandardowego dla określonej domeny, a nie w modelu odniesienia. Podobnie jeśli szumu tła, gdzie aplikacja ma być używany jest wyraźną możesz dostosować model akustyczny. Zapoznaj się z dokumentacją w pozostałych przypadkach, w którym [dostosowania języka](how-to-customize-language-model.md) i [akustyczna](how-to-customize-acoustic-models.md) Podaj wartość, a następnie odwiedź nasze [dostosowanie portalu](https://customspeech.ai) dla błędach z informacją środowisko tworzenia modelu. Podobnie jak modeli podstawowych, niestandardowe modele są wywoływane za pośrednictwem naszego [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [przykłady](quickstart-csharp-windows.md).
+Jeśli aplikacja adresy określonej domeny, (chemia powiedzieć, związane z biologią lub specjalnymi potrzebami diecie), a następnie warto wziąć pod uwagę w celu dostosowania [modelu językowego](how-to-customize-language-model.md). Dostosowanie modelu języka nauczy dekodera o najbardziej typowych fraz i słów używanych przez aplikację. Dekoder będzie także dokładniej głosowych danych wejściowych z modelu języka niestandardowego dla określonej domeny, a nie w modelu odniesienia. Podobnie jeśli szumu tła, gdzie aplikacja ma być używany jest wyraźną możesz dostosować model akustyczny. Zapoznaj się z dokumentacją w pozostałych przypadkach, w którym [dostosowania języka](how-to-customize-language-model.md) i [akustyczna](how-to-customize-acoustic-models.md) Podaj wartość, a następnie odwiedź nasze [dostosowanie portalu](https://customspeech.ai) dla błędach z informacją środowisko tworzenia modelu. Podobnie jak modeli podstawowych, niestandardowe modele są wywoływane za pośrednictwem naszego [zestaw SDK rozpoznawania mowy](speech-sdk.md) i zgodnie z odpowiednią [przykłady](quickstart-csharp-dotnet-windows.md).
 
 ## <a name="transcribe-call-center-audio-calls"></a>Transkrypcja rozmów audio Centrum wywołania
 
@@ -62,5 +62,5 @@ Ponadto dla użytkowników, które chcesz dodać więcej osobowość i unikatowo
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
 * [Uruchom przy użyciu zestawu SDK funkcji rozpoznawania mowy](speech-sdk.md)

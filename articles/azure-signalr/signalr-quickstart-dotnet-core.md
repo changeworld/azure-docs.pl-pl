@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
-ms.date: 04/17/2018
+ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: b742dc94b6f6bea76a0809114f300287633c2a67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38674856"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Szybki start: tworzenie pokoju rozmów za pomocą usługi SignalR Service
 
@@ -86,18 +87,18 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
 
 1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.SignalR`, wykonując następujące polecenie:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview1-10009
+        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla swojego projektu.
 
         dotnet restore
 
-3. Dodaj wpis tajny o nazwie *Azure:SignalR:ConnectionString* do narzędzia Secret Manager. Ten wpis tajny będzie zawierać parametry połączenia umożliwiające dostęp do zasobu usługi SignalR Service. *Azure:SignalR:ConnectionString* to domyślny klucz konfiguracji, którego usługa SignalR szuka w celu nawiązania połączenia. Zastąp wartość w poleceniu poniżej parametrami połączenia dla Twojego zasobu usługi SignalR Service.
+3. Dodaj wpis tajny o nazwie *Azure__SignalR__ConnectionString* do narzędzia Secret Manager. Ten wpis tajny jest hierarchiczną wartością konfiguracji. Znak dwukropka (:) może nie działać na wszystkich platformach. Podwójny znak podkreślenia (__), użyty w tym wpisie tajnym, jest obsługiwany przez wszystkie platformy.  Ten wpis tajny będzie zawierać parametry połączenia umożliwiające dostęp do zasobu usługi SignalR Service. *Azure__SignalR__ConnectionString* to domyślny klucz konfiguracji, którego usługa SignalR szuka w celu nawiązania połączenia. Zastąp wartość w poleceniu poniżej parametrami połączenia dla Twojego zasobu usługi SignalR Service.
 
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     Narzędzie Secret Manager będzie służyć do testowania aplikacji internetowej, tylko gdy będzie hostowana lokalnie. W późniejszym samouczku wdrożysz aplikację internetową do rozmów na platformie Azure. Po wdrożeniu aplikacji internetowej na platformie Azure użyjesz ustawienia aplikacji zamiast zapisywania parametrów połączenia za pomocą narzędzia Secret Manager.
@@ -112,7 +113,7 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
     }
     ```
 
-    Gdy parametr nie zostanie przekazany do metody `AddAzureSignalR()`, ten kod użyje domyślnego klucza konfiguracji *Azure:SignalR:ConnectionString* dla parametrów połączenia z zasobem usługi SignalR Service.
+    Gdy parametr nie zostanie przekazany do metody `AddAzureSignalR()`, ten kod użyje domyślnego klucza konfiguracji *Azure__SignalR__ConnectionString* dla parametrów połączenia z zasobem usługi SignalR Service.
 
 5. Oprócz tego w pliku *Startup.cs* zaktualizuj metodę `Configure`, zastępując wywołanie metody `app.UseStaticFiles()` następującym kodem, i zapisz plik.
 

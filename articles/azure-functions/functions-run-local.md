@@ -1,6 +1,6 @@
 ---
-title: Praca z usługę Azure Functions podstawowe narzędzia | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kod i przetestować usługę Azure functions z wiersza polecenia lub terminalu na komputerze lokalnym, przed uruchomieniem funkcji platformy Azure.
+title: Praca z usługą Azure Functions podstawowe narzędzia | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kodowanie i testowanie usługi Azure functions z wiersza polecenia lub terminalu na komputerze lokalnym, przed uruchomieniem w usłudze Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -14,93 +14,93 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 5c582b080ec6f2cff801758fc4bff4f7d07fd7df
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 44485d04dad3ff9dfc6067a3737989c5d273541f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083073"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116184"
 ---
-# <a name="work-with-azure-functions-core-tools"></a>Praca z usługę Azure Functions podstawowe narzędzia
+# <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
-Azure funkcje podstawowe narzędzia umożliwia opracowanie i przetestowanie funkcji na komputerze lokalnym z wiersza polecenia lub terminalu. Funkcji lokalnego może nawiązać połączenie na żywo usług Azure, a na komputerze lokalnym przy użyciu pełnego środowisko uruchomieniowe Functions można debugować funkcji. Nawet można wdrożyć aplikacji funkcji do subskrypcji platformy Azure.
+Podstawowe narzędzia usługi Azure Functions umożliwia opracowywanie i testowanie funkcji na komputerze lokalnym z wiersza polecenia lub terminalu. Funkcji lokalnych można nawiązać połączenie na żywo usług platformy Azure, a następnie można debugować funkcje na komputerze lokalnym przy użyciu pełne środowisko uruchomieniowe usługi Functions. Możesz nawet wdrożyć aplikację funkcji do subskrypcji platformy Azure.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
 ## <a name="core-tools-versions"></a>Podstawowe narzędzia wersji
 
-Istnieją dwie wersje narzędzi podstawowych funkcji platformy Azure. Wersja używanego zależy od sieci lokalne Środowisko deweloperskie, wybór języka i poziom obsługi wymagane:
+Istnieją dwie wersje podstawowych narzędzi usługi Azure Functions. Wersji, którego używasz, zależy od swoje lokalne Środowisko deweloperskie, wybór języka, a poziom obsługi wymagane:
 
-+ [Wersja 1.x](#v1): obsługuje wersja 1.x środowiska uruchomieniowego, które jest ogólnie dostępna (GA). Ta wersja narzędzia jest obsługiwany tylko na komputerach z systemem Windows i jest instalowany z [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm). W tej wersji można utworzyć funkcji w eksperymentalnym języki, które oficjalnie nie są obsługiwane. Aby uzyskać więcej informacji, zobacz [obsługiwanych języków w usługi Azure Functions](supported-languages.md)
++ [W wersji 1.x](#v1): obsługuje wersję 1.x środowiska uruchomieniowego, która jest ogólnie dostępna (GA). Ta wersja narzędzia jest obsługiwana tylko na komputerach Windows i została zainstalowana ze [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm). Za pomocą tej wersji można tworzyć funkcje w języków eksperymentalnych, które nie są oficjalnie obsługiwane. Aby uzyskać więcej informacji, zobacz [obsługiwanych języków w usłudze Azure Functions](supported-languages.md)
 
-+ [Wersja 2.x](#v2): obsługuje wersję 2.x środowiska uruchomieniowego. Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów specyficzne dla platformy pakietu lub programu npm dla instalacji. Podobnie jak 2.x środowiska uruchomieniowego ta wersja narzędzia core jest obecnie w przeglądzie.
++ [W wersji 2.x](#v2): obsługuje wersji 2.x środowiska uruchomieniowego. Ta wersja obsługuje [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Używa menedżerów pakietów określonych platform lub npm dla instalacji. Takich jak środowisko uruchomieniowe 2.x tę wersję narzędzi core jest obecnie w wersji zapoznawczej.
 
-Jeśli nie podano inaczej, przykłady w tym artykule dotyczą wersji 2.x.
+Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 2.x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
-[Środowisko Azure Functions podstawowe narzędzia] zawiera wersję tego samego środowiska uruchomieniowego obsługującego środowisko uruchomieniowe usługi Azure Functions, które można uruchomić na komputerze deweloperskim lokalnego. Umożliwia także polecenia do tworzenia funkcji, połączenia z platformą Azure i wdrażanie funkcji projektów.
+[Podstawowe narzędzia usługi Azure Functions] obejmuje wersję tego samego środowiska uruchomieniowego, zapewniająca środowisko uruchomieniowe usługi Azure Functions, którą można uruchamiać na lokalnym komputerze deweloperskim. Umożliwia także polecenia, aby tworzyć funkcje, łączenie z platformą Azure i wdrażać projekty funkcji.
 
-### <a name="v1"></a>Wersja 1.x
+### <a name="v1"></a>W wersji 1.x
 
-Z oryginalną wersją narzędzi używa środowiska wykonawczego 1.x funkcji. Ta wersja programu .NET Framework (4.7.1) używa i jest obsługiwana tylko na komputerach z systemem Windows. Przed zainstalowaniem wersji narzędzia 1.x musi [zainstalować NodeJS](https://docs.npmjs.com/getting-started/installing-node), która obejmuje npm.
+Środowisko uruchomieniowe 1.x funkcji korzysta z oryginalną wersję narzędzia. Ta wersja programu .NET Framework (4.7.1) i jest obsługiwana tylko na komputerach z Windows. Przed zainstalowaniem wersji 1.x narzędzia, należy najpierw [zainstalować oprogramowanie NodeJS](https://docs.npmjs.com/getting-started/installing-node), która obejmuje npm.
 
-Aby zainstalować wersję narzędzia 1.x, użyj następującego polecenia:
+Aby zainstalować narzędzia 1.x do wersji, użyj następującego polecenia:
 
 ```bash
 npm install -g azure-functions-core-tools
 ```
 
-### <a name="v2"></a>Wersja 2.x
+### <a name="v2"></a>W wersji 2.x
 
 >[!NOTE]
-> Środowisko uruchomieniowe Functions Azure 2.0 jest w wersji zapoznawczej i obecnie nie wszystkie funkcje usługi Azure Functions są obsługiwane. Aby uzyskać więcej informacji, zobacz [wersje usługi Azure Functions](functions-versions.md) 
+> Środowisko uruchomieniowe funkcji platformy Azure 2.0 jest w wersji zapoznawczej i obecnie nie wszystkie funkcje usługi Azure Functions są obsługiwane. Aby uzyskać więcej informacji, zobacz [wersje usługi Azure Functions](functions-versions.md) 
 
-Wersja środowiska uruchomieniowego usługi Azure Functions używa 2.x narzędzi 2.x, który jest wbudowany w program .NET Core. Ta wersja jest obsługiwana na wszystkich platformach obsługuje 2.x .NET Core, w tym [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux).
+Wersja środowiska uruchomieniowego usługi Azure Functions korzysta z 2.x narzędzia 2.x, która jest oparta na module .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core 2.x obsługuje, w tym [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux).
 
 #### <a name="windows-npm"></a>Windows
 
-Następujące kroki umożliwiają npm zainstalować narzędzia Core w systemie Windows. Można również użyć [Chocolatey](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+Następujące kroki umożliwiają instalowanie podstawowych narzędzi na Windows npm. Można również użyć [Chocolatey](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Zainstaluj [.NET Core 2.0 w systemie Windows](https://www.microsoft.com/net/download/windows).
+1. Zainstaluj [.NET Core 2.1 dla Windows](https://www.microsoft.com/net/download/windows).
 
-2. Zainstaluj [Node.js], która obejmuje npm. Dla wersji 2.x narzędzia tylko Node.js 8.5 i nowsze wersje są obsługiwane.
+2. Zainstaluj [Node.js], która obejmuje npm. W wersji 2.x narzędzia tylko 8.5 środowiska Node.js i nowsze wersje są obsługiwane.
 
-3. Instalacja pakietu podstawowe narzędzia:
+3. Zainstaluj pakiet podstawowych narzędzi:
 
     ```bash
     npm install -g azure-functions-core-tools@core
     ```
 
-#### <a name="brew"></a>System MacOS z oprogramowania Homebrew
+#### <a name="brew"></a>System MacOS przy użyciu Homebrew
 
-Poniższe kroki należy zainstalować podstawowe narzędzia na macOS przez oprogramowania Homebrew.
+Poniższe kroki umożliwiają instalowanie podstawowych narzędzi w systemie macOS Homebrew.
 
-1. Zainstaluj [.NET Core 2.0 dla macOS](https://www.microsoft.com/net/download/macos).
+1. Zainstaluj [platformy .NET Core 2.1 dla systemu macOS](https://www.microsoft.com/net/download/macos).
 
-2. Zainstaluj [Homebrew](https://brew.sh/), jeśli to nie jest jeszcze zainstalowana.
+2. Zainstaluj [Homebrew](https://brew.sh/), jeśli nie jest jeszcze zainstalowana.
 
-3. Instalacja pakietu podstawowe narzędzia:
+3. Zainstaluj pakiet podstawowych narzędzi:
 
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools 
     ```
 
-#### <a name="linux"></a> Linux (Ubuntu/Debian) z APT
+#### <a name="linux"></a> Linux (Ubuntu/Debian) przy użyciu APT
 
-Następujące kroki użyj [APT](https://wiki.debian.org/Apt) zainstalować podstawowe narzędzia na dystrybucji Ubuntu/Debian Linux. Dla innych dystrybucje systemu Linux, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
+Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania podstawowych narzędzi w Twojej dystrybucji systemu Ubuntu/Debian Linux. Inne dystrybucje systemu Linux, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Zainstaluj [.NET Core 2.0 w systemie Linux](https://www.microsoft.com/net/download/linux).
+1. Zainstaluj [platformy .NET Core 2.1 dla systemu Linux](https://www.microsoft.com/net/download/linux).
 
-2. Zarejestruj klucz produktu firmy Microsoft jako zaufany:
+2. Zarejestruj klucz produktu firmy Microsoft jako zaufaną:
 
     ```bash
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-3. Sprawdź, czy serwer Ubuntu działa jeden z odpowiedniej wersji z poniższej tabeli. Aby dodać stanie źródła, uruchom polecenie:
+3. Sprawdź, czy serwer Ubuntu z jednym z odpowiedniej wersji z poniższej tabeli. Aby dodać źródła apt, uruchom następujące polecenie:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -113,7 +113,7 @@ Następujące kroki użyj [APT](https://wiki.debian.org/Apt) zainstalować podst
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux trudniej zdobyć 18    | `xenial`  |
 
-4. Instalacja pakietu podstawowe narzędzia:
+4. Zainstaluj pakiet podstawowych narzędzi:
 
     ```bash
     sudo apt-get install azure-functions-core-tools
@@ -121,17 +121,17 @@ Następujące kroki użyj [APT](https://wiki.debian.org/Apt) zainstalować podst
 
 ## <a name="create-a-local-functions-project"></a>Tworzenie projektu funkcji lokalnej
 
-Funkcje katalogu projektu zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wzdłuż podfolderów, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat struktury folderów funkcji, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
+Katalog projektu funkcji zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wzdłuż podfoldery, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat funkcji strukturę folderów, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
 
-Wersja 2.x, musisz wybrać domyślny język projektu, gdy jest on zainicjowany, a wszystkie funkcje dodane Użyj domyślnych szablonów języka. W wersji 1.x, należy określić język w przypadku tworzenia funkcji.
+W wersji 2.x, musisz wybrać język domyślny dla projektu, gdy zostanie zainicjowany, a wszystkie funkcje dodane Użyj domyślnego języka szablonów. W wersji 1.x, należy także określić język, w przypadku tworzenia funkcji.
 
-W oknie terminalu lub z wiersza polecenia Uruchom następujące polecenie, aby utworzyć projekt i lokalne repozytorium Git:
+W oknie terminalu lub wierszu polecenia Uruchom następujące polecenie, aby utworzyć projekt i lokalnego repozytorium Git:
 
 ```bash
 func init MyFunctionProj
 ```
 
-W wersji 2.x, po uruchomieniu polecenia musisz wybrać środowisko uruchomieniowe dla projektu. Jeśli planujesz tworzenie funkcji JavaScript, wybierz **węzła**:
+W wersji 2.x, po uruchomieniu polecenia musisz wybrać środowisko uruchomieniowe dla Twojego projektu. Jeśli zamierzasz utworzyć funkcje języka JavaScript, wybierz opcję **węzła**:
 
 ```output
 Select a worker runtime:
@@ -139,7 +139,7 @@ dotnet
 node
 ```
 
-Górę/dół klawisze strzałek, aby wybrać język, naciśnij klawisz Enter. Dane wyjściowe wyglądają jak w następującym przykładzie dla projektu w języku JavaScript:
+Górę/dół klawiszy strzałek, aby wybrać język, naciśnij klawisz Enter. Dane wyjściowe wyglądają jak w poniższym przykładzie dla projektu w języku JavaScript:
 
 ```output
 Select a worker runtime: node
@@ -154,15 +154,15 @@ Aby utworzyć projekt bez lokalnego repozytorium Git, użyj `--no-source-control
 
 ## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
 
-W wersji 2.x środowiska uruchomieniowego usługi Azure Functions, należy jawnie zarejestrować używanych w aplikacji funkcję rozszerzeń powiązanie (typ powiązania).
+W wersji 2.x środowisko uruchomieniowe usługi Azure Functions, należy jawnie zarejestrować rozszerzenia powiązanie (typ powiązania) używanych w aplikacji funkcji.
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-Aby uzyskać więcej informacji, zobacz [usługi Azure Functions wyzwalaczy i powiązań pojęcia](functions-triggers-bindings.md#register-binding-extensions).
+Aby uzyskać więcej informacji, zobacz [pojęcia powiązania i Wyzwalacze usługi Azure Functions](functions-triggers-bindings.md#register-binding-extensions).
 
 ## <a name="local-settings-file"></a>Plik ustawień lokalnych
 
-Local.settings.json pliku przechowuje ustawienia Azure funkcje podstawowe narzędzia, parametry połączenia i ustawień aplikacji. Składa się z następującej struktury:
+Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączenia i ustawień dla podstawowych narzędzi usługi Azure Functions. Ma następującą strukturę:
 
 ```json
 {
@@ -184,53 +184,53 @@ Local.settings.json pliku przechowuje ustawienia Azure funkcje podstawowe narzę
 
 | Ustawienie      | Opis                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | Jeśli wartość **true**, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to **false**. |
-| **Wartości** | Kolekcja ustawień aplikacji i parametrów połączeń używanych podczas uruchamiania lokalnego. Te wartości odpowiadają ustawieniom aplikacji w aplikacji funkcji na platformie Azure, takich jak **AzureWebJobsStorage** i **AzureWebJobsDashboard**. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak **połączenia** dla [wyzwalacza magazynu obiektów Blob](functions-bindings-storage-blob.md#trigger---configuration). Dla takich właściwości, należy ustawienie aplikacji zdefiniowane w **wartości** tablicy. <br/>**AzureWebJobsStorage** ustawienie — aplikacja wymagana wyzwalaczy innych niż HTTP. Jeśli masz [emulatora magazynu Azure](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, można ustawić **AzureWebJobsStorage** do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas programowania, ale należy przetestować z połączeniem rzeczywistego magazynu przed wdrożeniem. |
-| **Host** | Ustawienia w tej sekcji dostosować funkcje procesu hosta podczas uruchamiania lokalnego. |
-| **LocalHttpPort** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tej wartości. |
-| **CORS** | Definiuje źródeł dozwolony dla [współużytkowanie zasobów między źródłami (CORS) do udostępniania](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są określane jako listę rozdzielaną przecinkami, nie może zawierać spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwana, która zezwala na żądania pochodzące z dowolnego źródła. |
-| **ConnectionStrings** | Nie używaj tej kolekcji parametry połączenia używane przez powiązania funkcji. Ta kolekcja jest używana tylko przez platformy, które należy pobrać parametry połączenia z **ConnectionStrings** pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości **parametry połączenia** sekcji **ustawienia aplikacji** dla funkcji aplikacji. |
+| **IsEncrypted** | Po ustawieniu **true**, wszystkie wartości są szyfrowane za pomocą klucza komputera lokalnego. Używane z `func settings` poleceń. Wartość domyślna to **false**. |
+| **Wartości** | Kolekcja ustawień aplikacji i parametry połączenia używane podczas uruchamiania lokalnego. Te wartości odpowiadają ustawienia aplikacji w aplikacji funkcji na platformie Azure, takich jak **AzureWebJobsStorage** i **AzureWebJobsDashboard**. Wiele wyzwalaczy i powiązań ma właściwość, która odwołuje się do aplikacji ustawienie parametrów połączenia, takich jak **połączenia** dla [wyzwalacz usługi Blob storage](functions-bindings-storage-blob.md#trigger---configuration). W przypadku takich właściwości potrzebne ustawienie aplikacji zdefiniowane w **wartości** tablicy. <br/>**AzureWebJobsStorage** ustawienie wymaganą aplikację dla wyzwalaczy innych niż HTTP. Jeśli masz [emulatora usługi Azure storage](../storage/common/storage-use-emulator.md) zainstalowane lokalnie, możesz ustawić **AzureWebJobsStorage** do `UseDevelopmentStorage=true` i podstawowe narzędzia używa emulatora. Jest to przydatne podczas tworzenia aplikacji, ale należy przetestować za pomocą połączenia rzeczywisty magazyn, przed przystąpieniem do wdrożenia. |
+| **Host** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
+| **LocalHttpPort** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |
+| **CORS** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
+| **ConnectionStrings** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które należy uzyskać parametry połączenia z **ConnectionStrings** pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby **parametry połączenia** części **ustawienia aplikacji** dla aplikacji funkcji. |
 
-Wartości ustawienia aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy dokumentacji specyficzny dla języka:
+Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
-+ [Wstępnie skompilowana C#](functions-dotnet-class-library.md#environment-variables)
++ [Wstępnie skompilowany C#](functions-dotnet-class-library.md#environment-variables)
 + [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
 + [F#](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-Ustawienia w pliku local.settings.json są używane tylko przez narzędzia funkcji podczas uruchamiania lokalnego. Domyślnie te ustawienia nie są migrowane automatycznie po opublikowaniu projektu na platformie Azure. Użyj `--publish-local-settings` przełącznika [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Wartości w **ConnectionStrings** nigdy nie są publikowane.
+Ustawienia w pliku local.settings.json są używane tylko przez funkcje narzędzia, podczas uruchamiania lokalnego. Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt zostanie opublikowany na platformie Azure. Użyj `--publish-local-settings` Przełącz [po opublikowaniu](#publish) się upewnić, że te ustawienia są dodawane do aplikacji funkcji na platformie Azure. Wartości w **ConnectionStrings** nigdy nie są publikowane.
 
-Jeśli nie parametry połączenia magazynu prawidłowy ma wartość dla **AzureWebJobsStorage** i emulatora nie jest używana, jest wyświetlany następujący komunikat o błędzie:  
+Jeśli ustawiono nie prawidłowych parametrów połączenia magazynu dla **AzureWebJobsStorage** i emulatora nie jest używana, jest wyświetlany następujący komunikat o błędzie:  
 
->Brak wartości dla AzureWebJobsStorage w local.settings.json. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić "func azure functionapp pobierania aplikacji ustawień <functionAppName>" lub określić parametry połączenia w local.settings.json.
+>Brak wartości dla AzureWebJobsStorage w local.settings.json. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić "azure functionapp func pobierania aplikacji settings <functionAppName>" lub Podaj parametry połączenia w local.settings.json.
 
-### <a name="get-your-storage-connection-strings"></a>Pobrać parametry połączenia magazynu
+### <a name="get-your-storage-connection-strings"></a>Pobierz parametry połączenia magazynu
 
-Nawet wtedy, gdy do tworzenia aplikacji przy użyciu emulatora magazynu, można przetestować z połączeniem rzeczywistego magazynu. Zakładając, że masz już [utworzono konto magazynu](../storage/common/storage-create-storage-account.md), można uzyskać magazynu prawidłowe parametry połączenia w jednym z następujących sposobów:
+Nawet w przypadku korzystania z emulatora magazynu do tworzenia aplikacji, można przetestować za pomocą połączenia rzeczywisty magazyn. Przy założeniu, że już [utworzono konto magazynu](../storage/common/storage-create-storage-account.md), prawidłowych parametrów połączenia magazynu można uzyskać w jednym z następujących sposobów:
 
-+ Z [Azure Portal]. Przejdź do swojego konta magazynu, wybierz opcję **klucze dostępu** w **ustawienia**, następnie skopiować jeden z **ciąg połączenia** wartości.
++ Z [Azure Portal]. Przejdź do swojego konta magazynu, wybierz opcję **klucze dostępu** w **ustawienia**, a następnie skopiuj jeden z **parametry połączenia** wartości.
 
-  ![Skopiuj parametry połączenia z portalu Azure](./media/functions-run-local/copy-storage-connection-portal.png)
+  ![Skopiuj parametry połączenia z witryny Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Użyj [Eksploratora usługi Storage Azure](http://storageexplorer.com/) do łączenia się z kontem platformy Azure. W **Explorer**, rozwiń subskrypcji, wybierz konto magazynu, a następnie skopiuj parametry połączenia podstawowej lub dodatkowej. 
++ Użyj [Eksploratora usługi Azure Storage](http://storageexplorer.com/) nawiązać połączenia z kontem platformy Azure. W **Explorer**, rozwinąć swoją subskrypcję, wybierz konto magazynu i skopiuj parametry połączenia podstawowej lub dodatkowej. 
 
   ![Skopiuj parametry połączenia z Eksploratora usługi Storage](./media/functions-run-local/storage-explorer.png)
 
-+ Użyj podstawowe narzędzia, aby pobrać parametry połączenia z platformy Azure z jednym z następujących poleceń:
++ Użyj podstawowych narzędzi, aby pobrać parametry połączenia z platformy Azure przy użyciu jednego z następujących poleceń:
 
     + Pobierz wszystkie ustawienia z istniejącej aplikacji funkcji:
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    + Pobierz ciąg połączenia dla konta określonego magazynu:
+    + Pobieranie parametrów połączenia dla konta określonego magazynu:
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
     
-    Po możesz nie są już podpisane Azure, zostanie wyświetlony monit, aby to zrobić.
+    Po użytkownik są nie już zalogowany na platformie Azure, czy zostanie wyświetlony monit, aby to zrobić.
 
 ## <a name="create-func"></a>Tworzenie funkcji
 
@@ -255,7 +255,7 @@ Service Bus Topic trigger
 Timer trigger
 ```
 
-Kod funkcji jest generowany w podfolderze o nazwie określona funkcja, jak widać w następujących danych wyjściowych wyzwalacza kolejki:
+Kod funkcji jest generowany w podfolderze o nazwie podanej funkcji, jak pokazano w następujących danych wyjściowych wyzwalacza kolejki:
 
 ```output
 Select a language: Select a template: Queue trigger
@@ -266,29 +266,29 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 ```
 
-Te opcje można również określić w poleceniu przy użyciu następujących argumentów:
+Te opcje można również określić w poleceniu za pomocą następujących argumentów:
 
 | Argument     | Opis                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--language -l`**| Szablon język programowania, na przykład C#, F # lub języka JavaScript. Ta opcja jest wymagana w wersji 1.x. W wersji 2.x, użyj tej opcji nie lub wybierz domyślny język projektu. |
+| **`--language -l`**| Szablon, język programowania, takich jak C#, F # lub JavaScript. Ta opcja jest wymagana w wersji 1.x. W wersji 2.x, użyj tej opcji, lub nie wybierz domyślny język projektu. |
 | **`--template -t`** | Nazwa szablonu może być jedna z wartości:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
 | **`--name -n`** | Nazwa funkcji. |
 
-Na przykład można utworzyć wyzwalacza JavaScript HTTP za pomocą jednego polecenia, uruchom polecenie:
+Na przykład aby utworzyć wyzwalacz JavaScript HTTP za pomocą jednego polecenia, uruchom polecenie:
 
 ```bash
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Aby utworzyć funkcja wyzwalana kolejki za pomocą jednego polecenia, uruchom polecenie:
+Tworzenie funkcji wyzwalanej przez kolejkę za pomocą jednego polecenia, uruchom polecenie:
 
 ```bash
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
-## <a name="start"></a>Lokalnie uruchamiać funkcje
+## <a name="start"></a>Uruchom funkcje lokalnie
 
-Aby uruchomić projekt funkcji, należy uruchomić hosta funkcji. Host umożliwia Wyzwalacze dla wszystkich funkcji w projekcie:
+Aby uruchomić projektu usługi Functions, uruchom hosta funkcji. Host włącza wyzwalaczy dla wszystkich funkcji w projekcie:
 
 ```bash
 func host start
@@ -298,16 +298,16 @@ func host start
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | Port lokalny do nasłuchiwania. Wartość domyślna: 7071. |
-| **`--debug <type>`** | Uruchamia hosta z portem debugowania otworzyć tak, aby można dołączyć do **func.exe** procesu z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) lub [programu Visual Studio 2017](functions-dotnet-class-library.md). *\<Typu\>* są opcje `VSCode` i `VS`.  |
-| **`--cors`** | Rozdzielana przecinkami lista źródeł CORS, nie może zawierać spacji. |
-| **`--nodeDebugPort -n`** | Numer portu debugera węzła do użycia. Wartość domyślna: Wartość z launch.json lub 5858. |
-| **`--debugLevel -d`** | Poziom śledzenia konsoli (wyłączony, pełne, info, warning lub error). Domyślne: informacji.|
-| **`--timeout -t`** | Limit czasu dla funkcji hosta można uruchomić w sekundach. Wartość domyślna: 20 sekund.|
-| **`--useHttps`** | Powiązać `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na tym komputerze.|
-| **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe przed zakończeniem procesu. Używane podczas uruchamiania podstawowych narzędzi Visual Studio lub kodzie VS.|
+|**`--port -p`** | Lokalny port do nasłuchiwania. Wartość domyślna: 7071. |
+| **`--debug <type>`** | Uruchamia hosta z portu debugowania Otwórz tak, aby można dołączyć do **func.exe** procesu z [programu Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) lub [programu Visual Studio 2017](functions-dotnet-class-library.md). *\<Typu\>* są opcje `VSCode` i `VS`.  |
+| **`--cors`** | Rozdzielana przecinkami lista źródeł CORS, bez spacji. |
+| **`--nodeDebugPort -n`** | Port do użycia w debugerze węzła. Wartość domyślna: Wartość z pliku launch.json lub 5858. |
+| **`--debugLevel -d`** | Poziom śledzenia konsoli (wyłączony, pełne, info, warning lub error). Domyślne: Info.|
+| **`--timeout -t`** | Limit czasu dla hosta funkcji, które można uruchomić w ciągu kilku sekund. Wartość domyślna: 20 sekund.|
+| **`--useHttps`** | Powiąż z `https://localhost:{port}` , a nie do `http://localhost:{port}`. Domyślnie ta opcja tworzy zaufanego certyfikatu na komputerze.|
+| **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe, zanim proces zostanie zakończony. Używany podczas uruchamiania narzędzia Core przy użyciu programu Visual Studio lub programu VS Code.|
 
-Po uruchomieniu funkcji hosta danych wyjściowych funkcji wyzwalanych przez URL HTTP:
+Podczas uruchamiania hosta funkcje, dane wyjściowe funkcji wyzwalanych przez adres URL protokołu HTTP:
 
 ```bash
 Found the following functions:
@@ -319,43 +319,43 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 ### <a name="passing-test-data-to-a-function"></a>Przekazywanie danych testowych do funkcji
 
-Aby przetestować funkcje lokalnie, możesz [uruchomieniu hosta funkcji](#start) i Wywołaj punktów końcowych na serwerze lokalnym za pomocą żądania HTTP. Punkt końcowy, który można wywołać zależy od typu funkcji.
+Aby przetestować funkcje lokalnie, możesz [start hosta funkcji](#start) i wywoływanie punktów końcowych na serwerze lokalnym za pomocą żądania HTTP. Punkt końcowy, który można wywołać zależy od typu funkcji.
 
 >[!NOTE]  
-> Przykłady w tym temacie narzędzie cURL wysyłanie żądania HTTP z terminala lub wiersza polecenia. Można użyć dowolnego narzędzia do wysyłania żądań HTTP na serwerze lokalnym. Narzędzie cURL jest dostępna w systemach opartych na systemie Linux. W systemie Windows, należy najpierw pobrać i zainstalować [narzędzie cURL](https://curl.haxx.se/).
+> Przykłady w tym temacie narzędzie cURL do wysłania żądania HTTP z poziomu terminalu lub wierszu polecenia. Można użyć dowolnego narzędzia do wysyłania żądań HTTP na serwerze lokalnym. Narzędzie cURL jest dostępna domyślnie na komputerach z systemem Linux. W Windows, musisz najpierw pobrać i zainstalować [narzędzie cURL](https://curl.haxx.se/).
 
-Aby uzyskać więcej ogólnych informacji na temat testowania funkcji, zobacz [strategii do testowania kodu w usługi Azure Functions](functions-test-a-function.md).
+Aby uzyskać więcej ogólnych informacji na temat testowania funkcji, zobacz [strategii testowania kodu w usłudze Azure Functions](functions-test-a-function.md).
 
-#### <a name="http-and-webhook-triggered-functions"></a>Funkcje wyzwalane, HTTP i elementu webhook
+#### <a name="http-and-webhook-triggered-functions"></a>HTTP i elementu webhook funkcji wyzwalanych
 
-Wywołaj następujące punktu końcowego do uruchomienia lokalnie, HTTP i elementu webhook wyzwalane funkcje:
+Wywołaj następujących funkcji wyzwalanych przez punkt końcowy, aby lokalnie uruchomić HTTP i elementy webhook:
 
     http://localhost:{port}/api/{function_name}
 
-Upewnij się korzystać z tej samej nazwy serwera i portu nasłuchiwania na hoście funkcji. Zobacz to w danych wyjściowych wygenerowanych przy uruchamianiu hosta funkcji. Można wywołać tego adresu URL przy użyciu dowolnej metody HTTP obsługiwane przez wyzwalacz. 
+Upewnij się korzystać z tej samej nazwy serwera i portu nasłuchiwania na hoście funkcji. Zobacz to w danych wyjściowych wygenerowanych podczas uruchamiania hosta funkcji. Możesz wywołać ten adres URL przy użyciu dowolnej metody HTTP obsługiwane przez wyzwalacz. 
 
-Wyzwalacze polecenia cURL następujące `MyHttpTrigger` funkcji szybkiego startu żądanie GET z _nazwa_ przekazany parametr ciągu zapytania. 
+Następujące cURL wyzwalaczy polecenia `MyHttpTrigger` funkcji szybkiego startu z żądania GET _nazwa_ przekazany przez parametr ciągu zapytania. 
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
-Poniższy przykład jest taką samą funkcję wywołana w żądaniu POST przekazywanie _nazwa_ w treści żądania:
+Poniższy przykład jest w tej samej funkcji, które są wywoływane z żądaniem POST, przekazując _nazwa_ w treści żądania:
 
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Możesz wprowadzić pobrać żądań z przeglądarki, przekazywanie danych w ciągu zapytania. Dla wszystkich innych metod HTTP musisz użyć cURL, Fiddler, Postman lub podobnego narzędzia testowania HTTP.  
+Można wprowadzać żądania GET z przeglądarki, przekazując dane w ciągu zapytania. W przypadku innych metod HTTP należy użyć programu cURL, narzędzie Fiddler, Postman lub podobnego narzędzia testowania HTTP.  
 
-#### <a name="non-http-triggered-functions"></a>Funkcje wyzwalanych bez HTTP
+#### <a name="non-http-triggered-functions"></a>Funkcji wyzwalanych bez HTTP
 
-Dla wszystkich rodzajów funkcji innych niż HTTP wyzwalaczy i elementów webhook można przetestować funkcji lokalnie, wywołując punkt końcowy administracji. Wywoływanie ten punkt końcowy z żądaniem HTTP POST na lokalnym serwerze wyzwala funkcji. Dane testowe można przekazać opcjonalnie do wykonania w treści żądania POST. Ta funkcja jest podobny do **testu** kartę w portalu Azure.  
+Dla wszystkich rodzajów funkcji innych niż HTTP wyzwalaczami i elementami webhook można przetestować funkcje lokalnie, wywołując punkt końcowy administracji. Wywołanie tego punktu końcowego za pomocą żądania HTTP POST na lokalnym serwerze wywołuje funkcję. Można przekazać dane testowe do wykonania w treści żądania POST. Ta funkcja jest podobne do **testu** kartę w witrynie Azure portal.  
 
-Należy wywołać następujący punkt końcowy administratora, aby wyzwolić funkcje protokołu HTTP:
+Możesz wywołać następujący punkt końcowy administratora, aby wyzwolić funkcje protokołu HTTP:
 
     http://localhost:{port}/admin/functions/{function_name}
 
-Aby przekazać dane testowe do punktu końcowego administratora funkcji, należy podać dane w treści komunikatu żądania POST. Treść komunikatu musi mieć następujący format JSON:
+Aby przekazać dane testowe do punktu końcowego administratora funkcji, musisz podać dane w treści komunikatu żądania POST. Treść wiadomości musi mieć następujący format JSON:
 
 ```JSON
 {
@@ -363,30 +363,30 @@ Aby przekazać dane testowe do punktu końcowego administratora funkcji, należy
 }
 ````
 
-`<trigger_input>` Wartość zawiera dane w formacie oczekiwany przez funkcję. W poniższym przykładzie cURL jest POST `QueueTriggerJS` funkcji. W takim przypadku danych wejściowych jest ciągiem, który jest odpowiednikiem wiadomości powinien znajdować się w kolejce.
+`<trigger_input>` Wartość zawiera dane w formacie oczekiwanego przez funkcję. W poniższym przykładzie narzędzie cURL jest POST `QueueTriggerJS` funkcji. W tym przypadku dane wejściowe to ciąg, który jest odpowiednikiem to wiadomość oczekiwana znajdują się w kolejce.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>Przy użyciu `func run` w wersji 1.x
+#### <a name="using-the-func-run-command-in-version-1x"></a>Za pomocą `func run` polecenia w wersji 1.x
 
 >[!IMPORTANT]  
-> `func run` Polecenie nie jest obsługiwane w wersji 2.x narzędzi. Aby uzyskać więcej informacji, zobacz temat [jak korzystać z wersji środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
+> `func run` Polecenie nie jest obsługiwane w wersji 2.x narzędzia. Aby uzyskać więcej informacji, zobacz temat [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
 
-Można także wywoływać bezpośrednio za pomocą funkcji `func run <FunctionName>` i podaj dane wejściowe dla funkcji. To polecenie jest podobny do uruchamiania przy użyciu funkcji **testu** kartę w portalu Azure. 
+Można także wywoływać bezpośrednio przy użyciu funkcji `func run <FunctionName>` i podaj dane wejściowe dla funkcji. To polecenie jest podobne do uruchamiania przy użyciu funkcji **testu** kartę w witrynie Azure portal. 
 
 `func run` obsługuje następujące opcje:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | Zawartość śródwierszową. |
-| **`--debug -d`** | Dołącz debuger do procesu hosta, przed uruchomieniem funkcji.|
-| **`--timeout -t`** | Czas oczekiwania (w sekundach), do czasu lokalnego hosta funkcji jest gotowy.|
-| **`--file -f`** | Nazwa pliku, który ma być używana jako zawartości.|
-| **`--no-interactive`** | Nie jest wyświetlany monit o wprowadzenie danych. Przydatne w scenariuszach automatyzacji.|
+| **`--content -c`** | Zawartości śródwierszowej. |
+| **`--debug -d`** | Dołącz debuger do procesu hosta przed uruchomieniem funkcji.|
+| **`--timeout -t`** | Czas oczekiwania (w sekundach), aż lokalnego hosta funkcji będzie gotowa.|
+| **`--file -f`** | Nazwa pliku do użycia jako zawartości.|
+| **`--no-interactive`** | Nie monituje o wprowadzenie danych. Przydatne w scenariuszach automatyzacji.|
 
-Na przykład do wywołania funkcji wyzwalanych przez protokół HTTP i przekaż zawartość treści, uruchom następujące polecenie:
+Na przykład wywołanie funkcji wyzwalanej przez HTTP i przekazywanie zawartość, uruchom następujące polecenie:
 
 ```bash
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
@@ -398,7 +398,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Publikowanie na platformie Azure
 
-Aby opublikować projekt funkcje aplikacji funkcji na platformie Azure, użyj `publish` polecenia:
+Aby opublikować projekt funkcje do aplikacji funkcji na platformie Azure, użyj `publish` polecenia:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
@@ -408,16 +408,16 @@ Można użyć następujących opcji:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie Zastąp, jeśli ustawienie już istnieje. Jeśli używasz emulatora magazynu, Zmień ustawienia aplikacji na [połączenia z magazynem rzeczywiste](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | Musi być używany z `-i`. Zastępuje AppSettings na platformie Azure wartości lokalnej, jeśli jest inny. Domyślnie jest monitu.|
+| **`--publish-local-settings -i`** |  Ustawienia publikowania w local.settings.json na platformie Azure, monitowanie o zastąpienie, jeżeli ustawienie już istnieje. Jeśli używasz emulatora magazynu, zmień ustawienie aplikacji, aby [połączenia rzeczywisty magazyn](#get-your-storage-connection-strings). |
+| **`--overwrite-settings -y`** | Może być używany z `-i`. Jeśli jest inna zastępuje lokalna wartość AppSettings na platformie Azure. Wartość domyślna to monitu.|
 
-To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Błąd występuje, gdy `<FunctionAppName>` nie istnieje w subskrypcji. Informacje na temat tworzenia aplikacji funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenia aplikacji funkcji wykonywania niekorzystającą](./scripts/functions-cli-create-serverless.md).
+To polecenie publikuje do istniejącej aplikacji funkcji na platformie Azure. Błąd występuje, gdy `<FunctionAppName>` nie istnieje w Twojej subskrypcji. Aby dowiedzieć się, jak utworzyć aplikację funkcji z wiersza polecenia lub okno terminalu przy użyciu wiersza polecenia platformy Azure, zobacz [tworzenie aplikacji funkcji do wykonywania bezserwerowego](./scripts/functions-cli-create-serverless.md).
 
-`publish` Polecenia przekazuje zawartość katalogu projektu funkcji. Po usunięciu plików lokalnie, `publish` nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzie Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [Azure Portal].  
+`publish` Polecenie przesyła zawartość katalogu projektu funkcji. W przypadku usunięcia plików lokalnie, `publish` polecenie nie powoduje usunięcia ich z platformy Azure. Możesz usunąć pliki na platformie Azure przy użyciu [narzędzia Kudu](functions-how-to-use-azure-function-app-settings.md#kudu) w [Azure Portal].  
 
 >[!IMPORTANT]  
-> Podczas tworzenia aplikacji funkcji na platformie Azure, używa wersji 1.x funkcji środowiska uruchomieniowego domyślnie. Aby funkcja aplikacji używana wersja 2.x środowiska uruchomieniowego, Dodaj ustawienie aplikacji `FUNCTIONS_EXTENSION_VERSION=beta`.  
-Aby dodać ustawienie aplikacji funkcji, należy użyć poniższego kodu wiersza polecenia platformy Azure:
+> Po utworzeniu aplikacji funkcji na platformie Azure używa wersji 1.x środowiska uruchomieniowego funkcji domyślnie. Aby funkcja aplikacji użyj wersji 2.x środowiska uruchomieniowego, Dodaj ustawienie aplikacji `FUNCTIONS_EXTENSION_VERSION=beta`.  
+Użyj poniższego kodu wiersza polecenia platformy Azure, aby dodać to ustawienie do aplikacji funkcji:
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
@@ -427,11 +427,11 @@ az functionapp config appsettings set --name <function_app> \
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Azure funkcje podstawowe narzędzia jest [otworzyć źródła i w usłudze GitHub](https://github.com/azure/azure-functions-cli).  
-W pliku żądanie usterki lub funkcji [Otwórz problem GitHub](https://github.com/azure/azure-functions-cli/issues).
+Podstawowe narzędzia usługi Azure Functions jest [oprogramowanie typu open source oraz hostowane w serwisie GitHub](https://github.com/azure/azure-functions-cli).  
+Aby zgłosić żądanie usterki lub funkcji [Otwórz problem w usłudze GitHub](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 
-[Środowisko Azure Functions podstawowe narzędzia]: https://www.npmjs.com/package/azure-functions-core-tools
+[Podstawowe narzędzia usługi Azure Functions]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

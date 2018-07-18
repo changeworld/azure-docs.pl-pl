@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/23/2017
+ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a9f1e66a4c55d866d9f174528eb4912c3b9391c0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c0aa042f97e10f90787b1cdf8e03cd6d849441e
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714519"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461643"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Samouczek: mapowanie istniejącej niestandardowej nazwy DNS na aplikacje internetowe platformy Azure
 
@@ -35,12 +35,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Mapowanie poddomeny (na przykład `www.contoso.com`) przy użyciu rekordu CNAME
 > * Mapowanie domeny katalogu głównego (na przykład `contoso.com`) przy użyciu rekordu A
 > * Mapowanie domeny z symbolami wieloznacznymi (na przykład `*.contoso.com`) przy użyciu rekordu CNAME
+> * Przekierowywanie domyślnego adresu URL do katalogu niestandardowego
 > * Automatyzacja mapowania domen przy użyciu skryptów
-
-Do mapowania niestandardowej nazwy DNS na usługę App Service możesz użyć **rekordu CNAME** lub **rekordu A**. 
-
-> [!NOTE]
-> Zalecane jest użycie rekordu CNAME dla wszystkich niestandardowych nazw DNS z wyjątkiem domeny katalogu głównego (na przykład `contoso.com`).
 
 Aby przeprowadzić migrację aktywnej witryny oraz jej nazwy domeny DNS do usługi App Service, zobacz [Migrate an active DNS name to Azure App Service](app-service-custom-domain-name-migrate.md) (Migrowanie aktywnej nazwy DNS do usługi Azure App Service).
 
@@ -104,13 +100,26 @@ Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalow
 
 <a name="cname"></a>
 
-## <a name="map-a-cname-record"></a>Mapowanie rekordu CNAME
+## <a name="map-your-domain"></a>Mapowanie domeny
+
+Do mapowania niestandardowej nazwy DNS na usługę App Service możesz użyć **rekordu CNAME** lub **rekordu A**. Postępuj zgodnie z odpowiednimi instrukcjami:
+
+- [Mapowanie rekordu CNAME](#map-a-cname-record)
+- [Mapowanie rekordu A](#map-an-a-record)
+- [Mapowanie domeny z symbolami wieloznacznymi przy użyciu rekordu CNAME](#map-a-wildcard-domain)
+
+> [!NOTE]
+> W przypadku wszystkich niestandardowych nazw DNS z wyjątkiem domen katalogu głównego (na przykład `contoso.com`) należy używać rekordów CNAME. Dla domen katalogu głównego należy używać rekordów A.
+
+### <a name="map-a-cname-record"></a>Mapowanie rekordu CNAME
 
 W przykładzie znajdującym się w tym samouczku dodasz rekord CNAME dla poddomeny `www` (na przykład `www.contoso.com`).
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Uzyskiwanie dostępu do rekordów DNS u dostawcy domen
 
-### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
 
 Dodaj rekord CNAME, aby zmapować poddomenę na domyślną nazwę hosta aplikacji (`<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji).
 
@@ -120,7 +129,7 @@ Po dodaniu tego rekordu CNAME strona rekordów DNS wygląda podobnie jak w nast�
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-azure"></a>Włączanie mapowania rekordów CNAME na platformie Azure
+#### <a name="enable-the-cname-record-mapping-in-azure"></a>Włączanie mapowania rekordów CNAME na platformie Azure
 
 W lewym obszarze nawigacji na stronie aplikacji w witrynie Azure Portal wybierz pozycję **Domeny niestandardowe**. 
 
@@ -136,7 +145,7 @@ Wpisz w pełni kwalifikowaną nazwę domeny, dla której dodano rekord CNAME, na
 
 Wybierz przycisk **Weryfikuj**.
 
-Zostanie aktywowany przycisk **Dodaj nazwę hosta**. 
+Zostanie wyświetlona strona **Dodawanie nazwy hosta**. 
 
 Upewnij się, że opcja **Typ rekordu nazwy hosta** jest ustawiona na wartość **CNAME (www.example.com lub dowolna poddomena)**.
 
@@ -148,19 +157,22 @@ Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona 
 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
+> [!NOTE]
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
 ![Błąd weryfikacji](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a"></a>
 
-## <a name="map-an-a-record"></a>Mapowanie rekordu A
+### <a name="map-an-a-record"></a>Mapowanie rekordu A
 
 W przykładzie znajdującym się w tym samouczku dodasz rekord A dla domeny katalogu głównego (na przykład `contoso.com`). 
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address"></a>Kopiowanie adresu IP aplikacji
+#### <a name="copy-the-apps-ip-address"></a>Kopiowanie adresu IP aplikacji
 
 Aby móc zamapować rekord A, musisz znać zewnętrzny adres IP aplikacji. Ten adres IP można znaleźć na stronie **Domeny niestandardowe** aplikacji w witrynie Azure Portal.
 
@@ -172,9 +184,11 @@ Na stronie **Domeny niestandardowe** skopiuj adres IP aplikacji.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Uzyskiwanie dostępu do rekordów DNS u dostawcy domen
 
-### <a name="create-the-a-record"></a>Tworzenie rekordu A
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-a-record"></a>Tworzenie rekordu A
 
 Aby móc zmapować rekord A na aplikację, usługa App Service wymaga **dwóch** rekordów DNS:
 
@@ -194,7 +208,7 @@ Po dodaniu tych rekordów strona rekordów DNS wygląda podobnie jak w następuj
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-the-app"></a>Włączanie mapowania rekordu A w aplikacji
+#### <a name="enable-the-a-record-mapping-in-the-app"></a>Włączanie mapowania rekordu A w aplikacji
 
 Ponownie na stronie **Domeny niestandardowe** aplikacji w witrynie Azure Portal dodaj do listy w pełni kwalifikowaną niestandardową nazwę DNS (na przykład `contoso.com`).
 
@@ -206,7 +220,7 @@ Wpisz w pełni kwalifikowaną nazwę domeny, dla której skonfigurowano rekord A
 
 Wybierz przycisk **Weryfikuj**.
 
-Zostanie aktywowany przycisk **Dodaj nazwę hosta**. 
+Zostanie wyświetlona strona **Dodawanie nazwy hosta**. 
 
 Upewnij się, że opcja **Typ rekordu nazwy hosta** jest ustawiona na wartość **Rekord A (example.com)**.
 
@@ -218,19 +232,24 @@ Może upłynąć trochę czasu, zanim nowa nazwa hosta zostanie odzwierciedlona 
 
 ![Dodany rekord A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
+> [!NOTE]
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 Jeśli pominięto jakiś krok lub popełniono gdzieś błąd w pisowni, w dolnej części strony zostanie wyświetlony komunikat o błędzie weryfikacji.
 
 ![Błąd weryfikacji](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
 <a name="wildcard"></a>
 
-## <a name="map-a-wildcard-domain"></a>Mapowanie domeny z symbolami wieloznacznymi
+### <a name="map-a-wildcard-domain"></a>Mapowanie domeny z symbolami wieloznacznymi
 
 W przykładzie znajdującym się w tym samouczku zmapujesz [wieloznaczną nazwę DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (na przykład `*.contoso.com`) na aplikację usługi App Service przez dodanie rekordu CNAME. 
 
-[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
+#### <a name="access-dns-records-with-domain-provider"></a>Uzyskiwanie dostępu do rekordów DNS u dostawcy domen
 
-### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+#### <a name="create-the-cname-record"></a>Tworzenie rekordu CNAME
 
 Dodaj rekord CNAME, aby zmapować wieloznaczną nazwę na domyślną nazwę hosta aplikacji (`<app_name>.azurewebsites.net`).
 
@@ -240,7 +259,7 @@ Po dodaniu tego rekordu CNAME strona rekordów DNS wygląda podobnie jak w nast�
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-the-app"></a>Włączanie mapowania rekordów CNAME w aplikacji
+#### <a name="enable-the-cname-record-mapping-in-the-app"></a>Włączanie mapowania rekordów CNAME w aplikacji
 
 Teraz możesz do aplikacji dodać dowolną poddomenę zgodną z wieloznaczną nazwą (na przykład nazwy `sub1.contoso.com` i `sub2.contoso.com` są zgodne z nazwą `*.contoso.com`). 
 
@@ -268,13 +287,16 @@ Wybierz ponownie ikonę **+**, aby dodać inną nazwę hosta zgodną z domeną z
 
 ![Dodany rekord CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
+> [!NOTE]
+> Jeśli chcesz dodać powiązanie SSL, zobacz [Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+
 ## <a name="test-in-browser"></a>Testowanie w przeglądarce
 
 Przejdź do nazw DNS, które zostały wcześniej skonfigurowane (na przykład `contoso.com`, `www.contoso.com`, `sub1.contoso.com` lub `sub2.contoso.com`).
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-## <a name="resolve-404-error-web-site-not-found"></a>Naprawianie błędu 404 „Nie można odnaleźć witryny internetowej”
+## <a name="resolve-404-not-found"></a>Błąd 404 — „Nie znaleziono”
 
 Jeśli podczas przechodzenia do adresu URL domeny niestandardowej występuje błąd HTTP 404 (Nie znaleziono), sprawdź, czy domena jest rozstrzygana na adres IP aplikacji, korzystając z witryny <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>. Jeśli nie, może to być spowodowane jedną z następujących przyczyn:
 
@@ -283,7 +305,7 @@ Jeśli podczas przechodzenia do adresu URL domeny niestandardowej występuje bł
 
 <a name="virtualdir"></a>
 
-## <a name="direct-default-url-to-a-custom-directory"></a>Kierowanie domyślnego adresu URL do katalogu niestandardowego
+## <a name="redirect-to-a-custom-directory"></a>Przekierowywanie do katalogu niestandardowego
 
 Domyślnie usługa App Service kieruje żądania internetowe do katalogu głównego w kodzie aplikacji. Jednak niektóre platformy internetowe nie uruchamiają się z poziomu katalogu głównego. Na przykład platforma [Laravel](https://laravel.com/) uruchamia się w podkatalogu `public`. W przypadku używanej tu przykładowej nazwy DNS `contoso.com` taka aplikacja byłaby dostępna w katalogu `http://contoso.com/public`, ale zamiast tego lepiej byłoby przekierować nazwę `http://contoso.com` do katalogu `public`. W tym kroku nie opisano rozpoznawania nazw DNS tylko dostosowywanie katalogu wirtualnego.
 
@@ -333,10 +355,10 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Mapowanie poddomeny przy użyciu rekordu CNAME
 > * Mapowanie domeny katalogu głównego przy użyciu rekordu A
 > * Mapowanie domeny z symbolami wieloznacznymi przy użyciu rekordu CNAME
+> * Przekierowywanie domyślnego adresu URL do katalogu niestandardowego
 > * Automatyzacja mapowania domen przy użyciu skryptów
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak powiązać niestandardowy certyfikat SSL z aplikacją internetową.
 
 > [!div class="nextstepaction"]
-> 
-  [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
