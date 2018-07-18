@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: 4d08c4c7a76d7ed16ec57590ee0fd4ee978e5258
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263154"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37918275"
 ---
 # <a name="archive-azure-monitoring-data"></a>Archiwizowanie danych monitorowania platformy Azure
 
@@ -136,6 +136,11 @@ Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magazynu.
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Wyświetlanie danych monitorowania na koncie magazynu
+
+> [!WARNING]
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+>
+> 
 
 Jeśli wykonano powyższe kroki, dane zaczęły już przepływać do konta magazynu.
 

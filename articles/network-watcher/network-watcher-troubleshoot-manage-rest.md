@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2c65b595e4c56b8c69d38a6e2f30ae8e57bba3f4
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: e3c172a0e88988acfb0244fff4603dc644aee03f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344108"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091027"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Rozwiązywanie problemów z bramą sieci wirtualnej i połączeń przy użyciu usługi Azure Network Watcher
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [Program PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Interfejs wiersza polecenia 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-troubleshoot-manage-cli.md)
+> - [Interfejs wiersza polecenia platformy Azure](network-watcher-troubleshoot-manage-cli.md)
 > - [Interfejs API REST](network-watcher-troubleshoot-manage-rest.md)
 
 Usługa Network Watcher udostępnia wiele możliwości, w odniesieniu do zrozumienia zasobów sieciowych na platformie Azure. Jedną z tych funkcji jest zasobem rozwiązywania problemów. Rozwiązywanie problemów z zasobu może być wywoływany za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST. Po wywołaniu usługi Network Watcher sprawdza kondycję bramy sieci wirtualnej lub połączenie i zwraca jej ustaleń.

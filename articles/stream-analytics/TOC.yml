@@ -20,6 +20,8 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript
       href: stream-analytics-javascript-user-defined-functions.md
+    - name: 4 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze VSTS
+      href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: Przykłady
   items:
     - name: Przykłady kodu

@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 05/25/2018
+ms.date: 07/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 558480d0e58a92277a0c56d0f197ee3b5c1c3f60
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fcc860daddbaa0b3275116027136bcde9dbcf256
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35648860"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092031"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -42,7 +42,7 @@ Możesz użyć tych kopii zapasowych:
 > 
 
 ## <a name="how-long-are-backups-kept"></a>Jak długo są przechowywane kopie zapasowe?
-Każda kopia zapasowa bazy danych SQL ma domyślny okres przechowywania, zależy od warstwy usługi bazy danych, która różni się między [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [(wersja zapoznawcza)modeluzakupuopartegonardzeniachwirtualnych](sql-database-service-tiers-vcore.md). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych. Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
+Każda kopia zapasowa bazy danych SQL ma domyślny okres przechowywania, zależy od warstwy usługi bazy danych, która różni się między [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Można zaktualizować okresu przechowywania kopii zapasowej dla bazy danych. Zobacz [okres przechowywania kopii zapasowej zmiany](#how-to-change-backup-retention-period) Aby uzyskać więcej informacji.
 
 Jeśli usuniesz bazę danych, SQL Database zostanie zachowana kopie zapasowe w taki sam sposób jak dla bazy danych online. Na przykład po usunięciu podstawowej bazy danych zawierającej okresu przechowywania siedmiu dni, kopii zapasowej, która jest cztery dni zostanie zapisany przez trzy kolejne dni.
 
@@ -61,11 +61,6 @@ Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakup
 Czy można zmniejszyć bieżącym okresem przechowywania Odzyskiwanie, wszystkie istniejące kopie zapasowe starsze niż nowy okres przechowywania nie będzie już dostępna. 
 
 Jeśli zwiększysz bieżącym okresem przechowywania Odzyskiwanie bazy danych SQL Database zostanie zachowana istniejące kopie zapasowe, aż do osiągnięcia dłuższy okres przechowywania danych.
-
-### <a name="pitr-retention-for-the-vcore-based-service-tiers-preview"></a>Odzyskiwanie przechowywania dla warstwy usług oparte na rdzeniach wirtualnych (wersja zapoznawcza)
-
-W trakcie okresu zapoznawczego Odzyskiwanie okres przechowywania dla bazy danych utworzone przy użyciu modelu zakupu opartego na rdzeniach wirtualnych jest ustawiona na 7 dni. Skojarzony magazyn jest dostępny bezpłatnie.    
-
 
 ## <a name="how-often-do-backups-happen"></a>Jak często stanie kopie zapasowe?
 ### <a name="backups-for-point-in-time-restore"></a>Tworzenie kopii zapasowych do punktu w czasie przywracania

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: be94a508a10fdbbed194fb71e28fd7c3b72a080c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 8b32b241c4122893bb07993402a22d2223053f3d
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989482"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115181"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -84,22 +84,13 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |privacyMode|Podział usługi może mieć jedną z następujących trybów: **prywatnej**, **publicznych**. **Publiczne** — film wideo jest widoczny dla wszystkich użytkowników w swoje konto i każda osoba, która zawiera link do filmu wideo. **Prywatne** — film wideo jest widoczny dla wszystkich użytkowników na Twoim koncie.|
 |czas trwania|Zawiera jeden czas trwania, opisujący godzina wystąpienia w szczegółowe informacje. Czas trwania to w ciągu kilku sekund.|
 |thumbnailUrl|Miniatura wideo pełny adres URL. Na przykład "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Należy zauważyć, że jeśli wideo jest prywatny, adres URL zawiera token dostępu jedną godzinę. Po upływie godziny, adres URL nie będzie już prawidłowy i należy uzyskać podział ponownie, podając nowy adres url lub wywołać GetAccessToken uzyskać nowy token dostępu i ręcznie utworzyć pełny adres url ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [accessToken] ").|
-|twarzy|Może zawierać jeden lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
-|Tematy|Może zawierać jeden lub więcej tematów. Aby uzyskać więcej informacji, zobacz [tematy](#topics).|
-|opinie|Może zawierać co najmniej jeden tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
-|audioEffects| Może zawierać jeden lub więcej audioEffects. Aby uzyskać więcej informacji, zobacz [audioEffects](#audioeffects).|
+|twarzy|Może zawierać zero lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
+|słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać więcej informacji, zobacz [słowa kluczowe](#keywords).|
+|opinie|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
+|audioEffects| Może zawierać zero lub więcej audioEffects. Aby uzyskać więcej informacji, zobacz [audioEffects](#audioeffects).|
+|etykiety| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe więcej informacji, zobacz [etykiety](#labels).|
 |marek| Może zawierać zero lub więcej marek. Aby uzyskać więcej informacji, zobacz [marek](#brands).|
 |statystyki | Aby uzyskać więcej informacji, zobacz [statystyki](#statistics).|
-
-### <a name="statistics"></a>statystyki
-
-|Name (Nazwa)|Opis|
-|---|---|
-|CorrespondenceCount|Liczba korelacji w trakcie filmu wideo.|
-|WordCount|Liczba słów na osoby mówiącej.|
-|SpeakerNumberOfFragments|Ilość fragmenty osoby mówiącej ma w filmie wideo.|
-|SpeakerLongestMonolog|Najdłuższy produktu monolog osoby mówiącej. Jeśli osoby mówiącej silences wewnątrz produktu monolog jest dołączony. Wyciszenia na początku i końcu produktu monolog zostaną usunięte.| 
-|SpeakerTalkToListenRatio|Obliczanie opiera się na czas spędzony na produktu monolog osoby mówiącej (bez wyciszenia pomiędzy) podzielony przez łącznego czasu filmu wideo. Czas jest zaokrąglana do trzeciego punktu dziesiętnego.|
 
 ## <a name="videos"></a>wideo
 
@@ -116,7 +107,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |externalUrl|Wideo zewnętrznego adresu url (jeśli jest określony przez użytkownika).|
 |metadane|Wideo metadane zewnętrznych (jeśli jest określony przez użytkownika).|
 |isAdult|Wskazuje, czy wideo został ręcznie przejrzeć i zidentyfikowane jako przeznaczonej dla osób dorosłych wideo.|
-|szczegółowe informacje|Obiekt szczegółowych informacji.|
+|szczegółowe informacje|Obiekt szczegółowych informacji. Aby uzyskać więcej informacji, zobacz [insights](#insights).|
 |thumbnailUrl|Miniatura wideo pełny adres URL. Na przykład "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Należy zauważyć, że jeśli wideo jest prywatny, adres URL zawiera token dostępu jedną godzinę. Po upływie godziny, adres URL nie będzie już prawidłowy i należy uzyskać podział ponownie, podając nowy adres url lub wywołać GetAccessToken uzyskać nowy token dostępu i ręcznie utworzyć pełny adres url ("https://www.videoindexer.ai/api/Thumbnail/[shortId] / [ThumbnailId]? accessToken = [accessToken] ").|
 |publishedUrl|Adres url do przesyłania strumieniowego wideo.|
 |publishedUrlProxy|Adres url do przesyłania strumieniowego wideo z (dla urządzeń firmy Apple).|
@@ -166,7 +157,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |transkrypcji|[Transkrypcji](#transcript) wymiaru.|
 |optyczne rozpoznawanie znaków|[Optyczne rozpoznawanie znaków](#ocr) wymiaru.|
 |słowa kluczowe|[Słowa kluczowe](#keywords) wymiaru.|
-| bloki|Może zawierać jeden lub więcej [bloków](#blocks)|
+|bloki|Może zawierać jeden lub więcej [bloków](#blocks)|
 |twarzy|[Twarzy](#faces) wymiaru.|
 |etykiety|[Etykiety](#labels) wymiaru.|
 |zrzuty|[Zrzuty](#shots) wymiaru.|
@@ -201,16 +192,8 @@ Przykład:
 
 Atrybut | Opis
 ---|---
-id|Identyfikator bloku.
-wiersze|Może zawierać jeden lub więcej [wierszy](#lines)
-sentimentIds|**SentimentIds** atrybutu jest zarezerwowana do użytku w przyszłości.
-thumbnailIds|**ThumbnailIds** atrybutu jest zarezerwowana do użytku w przyszłości.
-wskaźniki nastrojów klientów|Wskaźniki nastrojów klientów w bloku (0 – 1, dodatnia lub ujemna).
-twarzy|Może zawierać jeden lub więcej [twarzy](#faces).
-ocrs|Może zawierać jeden lub więcej [ocrs](#ocrs).
-audioEffectInstances|Może zawierać jeden lub więcej [audioEffectInstances](#audioEffectInstances).
-sceny|Może zawierać jeden lub więcej [sceny](#scenes).
-Adnotacje|Może zawierać zero lub więcej [adnotacje](#annotations).
+id|Identyfikator bloku.|
+wystąpienia|Lista zakresów czasu tego bloku.|
 
 #### <a name="transcript"></a>transkrypcji
 
@@ -563,6 +546,16 @@ Firmy i produkt nazw marek wykryte w zamiana mowy na tekst transkrypcji i/lub op
 ]
 ```
 
+#### <a name="statistics"></a>statystyki
+
+|Name (Nazwa)|Opis|
+|---|---|
+|CorrespondenceCount|Liczba korelacji w trakcie filmu wideo.|
+|WordCount|Liczba słów na osoby mówiącej.|
+|SpeakerNumberOfFragments|Ilość fragmenty osoby mówiącej ma w filmie wideo.|
+|SpeakerLongestMonolog|Najdłuższy produktu monolog osoby mówiącej. Jeśli osoby mówiącej silences wewnątrz produktu monolog jest dołączony. Wyciszenia na początku i końcu produktu monolog zostaną usunięte.| 
+|SpeakerTalkToListenRatio|Obliczanie opiera się na czas spędzony na produktu monolog osoby mówiącej (bez wyciszenia pomiędzy) podzielony przez łącznego czasu filmu wideo. Czas jest zaokrąglana do trzeciego punktu dziesiętnego.|
+
 #### <a name="audioeffects"></a>audioEffects
 
 |Name (Nazwa)|Opis|
@@ -599,12 +592,14 @@ Opinie są agregowane według ich pola sentimentType (neutralna/plus/minus). Na 
 |id|Identyfikator opinii.|
 |Średnia |Średnia wszystkie wyniki wszystkich wystąpień tego typu tonacji - neutralna/plus/minus|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tym wskaźniki nastrojów klientów.|
+|sentimentType |Typ może być "Pozytywny", "Neutralnym" lub "Ujemne".|
 
 ```json
 "sentiments": [
 {
     "id": 0,
     "averageScore": 0.87,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:23",
@@ -614,6 +609,7 @@ Opinie są agregowane według ich pola sentimentType (neutralna/plus/minus). Na 
 }, {
     "id": 1,
     "averageScore": 0.11,
+    "sentimentType": "Positive",
     "instances": [
     {
         "start": "00:00:13",

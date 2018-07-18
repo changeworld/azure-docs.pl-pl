@@ -9,18 +9,18 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529978"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38740594"
 ---
-[Zasady usługi Azure](/azure/azure-policy/) firmowej standardów pomocy należy upewnić się, wszystkie zasoby w subskrypcji. Zasady umożliwiają zmniejszenie kosztów przez ograniczenie opcje wdrażania tych typów zasobów i jednostki magazynowe, które zostały zatwierdzone. Definiowanie reguł i akcji dla zasobów, a te reguły są automatycznie wprowadzane podczas wdrażania. Na przykład można kontrolować typów zasobów, które zostały wdrożone. Lub, można ograniczyć lokalizacje zatwierdzone dla zasobów. Niektóre zasady dotyczące akcji odmowy, a niektóre zasady dotyczące — Konfiguracja inspekcji akcji.
+[Zasady platformy Azure](/azure/azure-policy/) ułatwiają zapewnienie, że wszystkie zasoby w subskrypcji spełniają standardy firmy. Zasady umożliwiają obniżenie kosztów przez ograniczenie opcji wdrażania do tych typów zasobów i jednostek SKU, które zostały zatwierdzone. Dla zasobów są definiowane akcje i reguły, które są automatycznie wymuszane podczas wdrażania. Można na przykład kontrolować typy wdrażanych zasobów. Można też ograniczyć zatwierdzone lokalizacje dla zasobów. Niektóre zasady uniemożliwiają wykonanie akcji, a inne służą do konfigurowania inspekcji akcji.
 
-Zasady są uzupełniające do kontroli dostępu opartej na rolach (RBAC). RBAC koncentruje się na dostęp użytkowników, i jest domyślnie odmowy jawne i zezwolić systemu. Zasady koncentruje się na właściwości zasobu, podczas i po wdrożeniu. Jego domyślny Zezwalaj jawne i odmawianie systemu.
+Zasady są uzupełnieniem kontroli dostępu opartej na rolach (RBAC). Funkcja RBAC koncentruje się na dostępie użytkowników. Jest to system z domyślnym odmawianiem i wyraźnym zezwalaniem. Zasady skupiają się na właściwościach zasobów podczas ich wdrażania i po wdrożeniu. Jest to system z domyślnym zezwalaniem i wyraźnym zabranianiem.
 
-Istnieją dwa pojęć z zasadami - *definicje zasad* i *przypisania zasad*. Definicję zasad w tym artykule opisano warunków zarządzania, które mają zostać wymuszone. Przypisanie zasad umieszcza definicję zasad w akcji dla określonego zakresu.
+W kontekście zasad funkcjonują dwa pojęcia, które należy zrozumieć, *definicje zasad* i *przypisania zasad*. Definicja zasad zawiera opis warunków zarządzania, które mają być wymuszane. Przypisanie zasad wprowadza definicję zasad do akcji w określonym zakresie.
 
-![Przypisać zasady](./media/resource-manager-governance-policy/policy-concepts.png)
+![Przypisywanie zasad](./media/resource-manager-governance-policy/policy-concepts.png)
 
-Platforma Azure udostępnia kilka definicje zasad wbudowanych, których można używać bez żadnych modyfikacji. Należy podać wartości parametrów, aby określić wartości, które są dozwolone w zakresie Twoich obowiązków. Jeśli definicji wbudowanych zasad nie spełniają wymagań, możesz [utworzyć zasady niestandardowe definicje](../articles/azure-policy/create-manage-policy.md).
+Platforma Azure udostępnia kilka wbudowanych definicji zasad, których można używać bez żadnych modyfikacji. Wystarczy przekazać wartości parametrów, aby określić wartości, które są dozwolone w Twoim zakresie. Jeśli wbudowane definicje zasad nie spełniają wymagań, można [utworzyć niestandardowe definicje zasad](../articles/azure-policy/create-manage-policy.md).

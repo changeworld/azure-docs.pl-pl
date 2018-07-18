@@ -10,6 +10,8 @@
   items:
     - name: Wdrażanie rozwiązania do zdalnego monitorowania
       href: quickstart-remote-monitoring-deploy.md
+    - name: Wdrażanie rozwiązania połączonej fabryki
+      href: quickstart-connected-factory-deploy.md
     - name: Wdrażanie rozwiązania do konserwacji zapobiegawczej
       href: quickstart-predictive-maintenance-deploy.md
     - name: Wdrażanie rozwiązania do symulacji urządzeń
@@ -35,7 +37,7 @@
           href: iot-accelerators-remote-monitoring-device-schema.md
         - name: Zachowanie modelu urządzenia
           href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: Konserwacja zapobiegawcza
+    - name: Konserwacja predykcyjna
       href: iot-accelerators-predictive-walkthrough.md
     - name: Połączona fabryka
       href: iot-accelerators-connected-factory-features.md
@@ -135,14 +137,14 @@
               href: ../iot-suite/iot-suite-v1-custom-rule.md
             - name: Informacje o urządzeniu w rozwiązaniu do zdalnego monitorowania
               href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: Konserwacja zapobiegawcza
+    - name: Konserwacja predykcyjna
       items:
         - name: Wdrażanie akceleratora rozwiązań
           href: iot-accelerators-predictive-overview.md
     - name: Połączona fabryka
       items:
-        - name: Wdrażanie akceleratora rozwiązań
-          href: iot-accelerators-connected-factory-overview.md
+        - name: Korzystanie z pulpitu nawigacyjnego
+          href: iot-accelerators-connected-factory-dashboard.md
         - name: Wdrażanie bramy
           href: iot-accelerators-connected-factory-gateway-deployment.md
         - name: Korzystanie z wydawcy OPC

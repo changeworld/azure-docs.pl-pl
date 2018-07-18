@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: fe9292459134972b44037a58235cdd817030a956
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eea7e2779a169fa9a64cc7a5695e91999f219277
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968936"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112835"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -24,12 +24,20 @@ Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu bezpiecznego im
 Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do usługi Azure Blob Storage, należy dokładnie przejrzyj i ukończ Poniższa lista wymagań wstępnych dla tej usługi. Musisz mieć:
 
 - Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
-- Ma co najmniej jedno konto usługi Azure Storage z kontenera magazynu. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account). Aby uzyskać informacji na temat kontenera magazynu, przejdź do [utworzyć kontenera magazynu](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
+- Ma co najmniej jedno konto usługi Azure Storage z kontenera magazynu. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). 
+    - Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account). 
+    - Aby uzyskać informacji na temat kontenera magazynu, przejdź do [utworzyć kontenera magazynu](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems). 
 - Włącz funkcję BitLocker w systemie Windows. Zobacz [jak włączyć funkcję BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Pobierz WAImportExport wersji 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
-
+- Mieć konto FedEx/DHL w sprawie.  
+    - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
+    - Generowanie numer śledzenia, zadanie eksportu.
+    - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane.
+    - Jeśli nie masz konto przewoźnika, przejdź do strony:
+        - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
+        - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowanie dysków
 
@@ -107,7 +115,10 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
     - Wybierz nośnik, z listy rozwijanej.
     - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. Jeśli nie masz numeru konta, Utwórz [FedEx](http://www.fedex.com/us/oadr/) lub [przez firmę DHL](http://www.dhl.com/) konto przewoźnika.
-    - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
+    - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region. 
+        
+        > [!TIP] 
+        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
 
     ![Tworzenie zadania importu — krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
@@ -116,7 +127,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
     - Przejrzyj informacje o zadaniu, podane w informacjach. Zanotuj nazwę zadania i centrum danych platformy Azure, wysyłania adres odeślij dyski do platformy Azure. Te informacje są używane w dalszej części na etykietę wysyłkową.
     - Kliknij przycisk **OK** do utworzenia zadania importu.
 
-    ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+    ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>Krok 3: Dostarczaj dyski 
 
@@ -127,6 +138,9 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Sprawdzenie przekazywania danych na platformie Azure
+
+Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 951ce8947d113eaad2ea0e3b5df5e9714aa33dd8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723191"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Samouczek: przygotowanie zaawansowanych danych za pomocą usługi Azure Machine Learning Workbench (dane udostępniania roweru)
 Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane, kompleksowe rozwiązanie do nauki o danych i do zaawansowanych analiz przeznaczone dla profesjonalnych analityków. Będą oni korzystać z tego rozwiązania w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
@@ -253,7 +255,7 @@ Nie potrzebujesz już kolumny __REPORTTYPE__. Kliknij prawym przyciskiem myszy n
    ![Opcja Usuń kolumnę](media/tutorial-bikeshare-dataprep/weatherremovereporttype.png)
 
 ## <a name="change-datatypes-and-remove-errors"></a>Zmienianie typów danych i usuwanie błędów
-1. Naciśnij klawisz Ctrl (polecenie ⌘ dla komputerów Mac) podczas wybierania nagłówków kolumn, aby wybrać wiele kolumn jednocześnie. Użyj tej techniki, aby wybrać następujące nagłówki kolumn:
+1. Naciśnij klawisz Ctrl (klawisz Command ⌘ na komputerze Mac) podczas wybierania nagłówków kolumn, aby jednocześnie zaznaczyć wiele kolumn. Użyj tej techniki, aby wybrać następujące nagłówki kolumn:
 
    * **HOURLYDRYBULBTEMPF**
 
@@ -452,7 +454,7 @@ Podczas przygotowywania danych są dostępne użyteczne wizualizacje, zwane insp
 1. Wybierz wiele kolumn **szerokość geograficzna stacji początkowej** i **długość geograficzna stacji początkowej**. Kliknij prawym przyciskiem myszy jedną z kolumn, a następnie wybierz pozycję **Mapa**.
 
     > [!TIP]
-    > Aby włączyć wybór wielokrotny, przytrzymaj klawisz Ctrl (polecenie ⌘ dla komputerów Mac) i wybierz nagłówek każdej kolumny.
+    > Aby włączyć możliwość zaznaczania wielu elementów, naciśnij i przytrzymaj klawisz Ctrl (klawisz Command ⌘ na komputerze Mac) i wybierz nagłówek dla każdej kolumny.
 
     ![Wizualizacja mapy](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
@@ -635,7 +637,7 @@ Aby dołączyć dane pogody do danych podróży, wykonaj następujące kroki:
 
     ![Kolumna okresu](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. Aby usunąć kolumny **Zakres daty godziny** i **Zakres r_daty godziny**, naciśnij klawisz Ctrl (polecenie ⌘ dla komputerów Mac) i zaznacz nagłówek każdej kolumny. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
+3. Aby usunąć kolumny **Zakres daty godziny** i **r_Zakres daty godziny**, naciśnij klawisz Ctrl (klawisz Command ⌘ na komputerze Mac), a następnie zaznacz poszczególne nagłówki kolumn. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Usuń kolumnę**.
 
 ## <a name="read-data-from-python"></a>Odczytywanie danych z języka Python
 

@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 5740586eca902fa63ca7b8590b07f4b276d21e4d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b08b461ceccbdf5e79d7bb4320bdc15d09c4b859
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071372"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114246"
 ---
 # <a name="sample-for-speech-to-text"></a>Przykład mowy na tekst
 
@@ -55,7 +55,7 @@ Poniższy fragment kodu pokazuje, jak rozpoznawanie mowy wprowadzania z mikrofon
 
 Poniższy fragment kodu stale rozpoznaje wejście mowy z pliku audio w języku domyślnym (`en-US`), obsługiwany format to WAV jednego kanału (mono) / PCM z 16 KHz próbkowania.
 
-[!include[Sample Audio](includes/sample-audio.md)]
+[!include[Sample Audio](../../../includes/cognitive-services-speech-service-sample-audio.md)]
 
 [!code-csharp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#recognitionContinuousWithFile)]
 

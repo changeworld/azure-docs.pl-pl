@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 71ccae1951020a522fbbdddcdce0bbeeea5f1fb9
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235794"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869585"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -41,6 +41,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wyświetlanie symulowanego stanu
 > * Korzystanie z właściwości urządzenia
 > * Korzystanie z ustawień urządzenia
+> * Korzystanie z poleceń
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -50,23 +51,29 @@ Do ukończenia tego samouczka potrzebna jest aplikacja usługi Azure IoT Central
 
 2. Podaj adres e-mail i hasło umożliwiające dostęp do subskrypcji platformy Azure:
 
-   ![Określanie konta organizacji](media/tutorial-define-device-type/sign-in.png)
+   ![Określanie konta organizacji](./media/tutorial-define-device-type/sign-in.png)
 
 3. Aby rozpocząć tworzenie nowej aplikacji usługi Azure IoT Central, wybierz pozycję **Nowa aplikacja**:
 
-    ![Strona Menedżer aplikacji usługi Azure IoT Central](media/tutorial-define-device-type/iotcentralhome.png)
+    ![Strona Menedżer aplikacji usługi Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. Aby utworzyć nową aplikację usługi Azure IoT Central:
 
     * Wybierz przyjazną nazwę aplikacji, taką jak **Klimatyzatory Contoso**. Usługa Azure IoT Central wygeneruje unikatowy prefiks adresu URL. Ten prefiks adresu URL możesz zmienić na łatwiejszy do zapamiętania.
+    
     * Wybierz usługę Azure Active Directory i subskrypcję platformy Azure do użycia. Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zobacz [Tworzenie aplikacji usługi Azure IoT Central](howto-create-application.md).
+    
     * Użyj istniejącej grupy zasobów lub utwórz nową grupę zasobów o wybranej nazwie. Na przykład **contoso-rg**.
+    
     * Wybierz najbliższy Tobie region geograficzny.
+    
     * Wybierz szablon aplikacji **Aplikacja niestandardowa**.
+    
     * Wybierz plan płatności **30-dniowa bezpłatna wersja próbna aplikacji**.
+    
     * Wybierz pozycję **Utwórz**.
 
-    ![Strona Tworzenie aplikacji usługi Azure IoT Central](media/tutorial-define-device-type/iotcentralcreate.png)
+    ![Strona Tworzenie aplikacji usługi Azure IoT Central](./media/tutorial-define-device-type/iotcentralcreate.png)
 
 Aby uzyskać więcej informacji, zobacz [Jak utworzyć aplikację usługi Azure IoT Central](howto-create-application.md).
 
@@ -74,9 +81,9 @@ Aby uzyskać więcej informacji, zobacz [Jak utworzyć aplikację usługi Azure 
 
 Jako konstruktor możesz tworzyć i edytować szablony urządzenia w aplikacji. Podczas tworzenia szablonu urządzenia usługa Azure IoT Central generuje symulowane urządzenie na podstawie szablonu. Symulowane urządzenie generuje dane telemetryczne, który umożliwiają testowanie zachowania aplikacji przed podłączeniem urządzenia fizycznego.
 
-Aby dodać nowy szablon urządzenia do aplikacji, należy przejść na stronę **Konstruktor aplikacji**. W tym celu wybierz pozycję **Konstruktor aplikacji** z menu nawigacji po lewej stronie:
+Aby dodać nowy szablon urządzenia do aplikacji, należy przejść na stronę **Konstruktor aplikacji**. W tym celu wybierz pozycję **Konstruktor aplikacji** z menu nawigacji po lewej stronie.
 
-    ![Application Builder page](media/tutorial-define-device-type/builderhome.png)
+![Strona Konstruktor aplikacji](./media/tutorial-define-device-type/builderhome.png)
 
 ## <a name="add-a-device-and-define-telemetry"></a>Dodawanie urządzenia i definiowanie telemetrii
 
@@ -84,37 +91,43 @@ Poniższe kroki przedstawiają sposób tworzenia nowego szablonu urządzenia **P
 
 1. Na stronie **Konstruktor aplikacji** wybierz pozycję **Utwórz szablon urządzenia**:
 
-    ![Strona Konstruktor aplikacji, Utwórz szablon urządzenia](media/tutorial-define-device-type/builderhomedevices.png)
+    ![Strona Konstruktor aplikacji, Utwórz szablon urządzenia](./media/tutorial-define-device-type/builderhomedevices.png)
 
 2. Na stronie **Szablony urządzenia** wybierz pozycję **Niestandardowy**. Szablon urządzenia **Niestandardowy** umożliwia zdefiniowanie wszystkich cech i zachowań połączonego klimatyzatora:
 
-    ![Urządzenia](media/tutorial-define-device-type/builderhomedevicescustom.png)
+    ![Urządzenia](./media/tutorial-define-device-type/builderhomedevicescustom.png)
 
 3. Na stronie **Nowy szablon urządzenia** podaj ciąg **Połączony klimatyzator** jako nazwę urządzenia, a następnie wybierz polecenie **Utwórz**. Istnieje możliwość przekazania obrazu urządzenia widocznego dla operatorów w eksploratorze urządzeń:
 
-    ![Urządzenie niestandardowe](media/tutorial-define-device-type/createcustomdevice.png)
+    ![Urządzenie niestandardowe](./media/tutorial-define-device-type/createcustomdevice.png)
 
 4. Upewnij się, że dla szablonu urządzenia **Połączony klimatyzator** jest wyświetlona strona **Miary**, na której definiuje się telemetrię. Każdy szablon urządzenia ma oddzielne strony umożliwiające:
 
     * określenie miar wysyłanych przez urządzenie, takich jak telemetria, zdarzenie i stan;
+    
     * definiowanie ustawień używanych do kontrolowania urządzenia;
+    
     * definiowanie właściwości używanych do rejestrowania informacji o urządzeniu;
+    
     * definiowanie reguł skojarzonych z urządzeniem;
+    
     * dostosowanie pulpitu nawigacyjnego urządzenia dla operatorów.
 
-    ![Miary klimatyzatora](media/tutorial-define-device-type/airconmeasurements.png)
+    ![Miary klimatyzatora](./media/tutorial-define-device-type/airconmeasurements.png)
 
     > [!NOTE]
     > Aby zmienić nazwę urządzenia lub szablonu urządzenia, kliknij tekst w górnej części strony.
 
 5. Aby dodać miarę telemetrii dla temperatury, wybierz pozycję **Nowa miara**. Następnie wybierz pozycję **Telemetria** jako typ miary:
 
-    ![Miary połączonego klimatyzatora](media/tutorial-define-device-type/airconmeasurementsnew.png)
+    ![Miary połączonego klimatyzatora](./media/tutorial-define-device-type/airconmeasurementsnew.png)
 
 6. Każdy typ telemetrii zdefiniowany dla szablonu urządzenia obejmuje [opcje konfiguracji](howto-set-up-template.md), takie jak:
 
     * opcje wyświetlania,
+
     * szczegółowe informacje o telemetrii,
+
     * parametry symulacji.
 
     Aby skonfigurować miarę telemetrii **Temperatura**, skorzystaj z informacji w poniższej tabeli:
@@ -130,15 +143,15 @@ Poniższe kroki przedstawiają sposób tworzenia nowego szablonu urządzenia **P
 
     Istnieje także możliwość wyboru koloru na potrzeby wyświetlania danych telemetrii. Aby zapisać definicję telemetrii, wybierz polecenie **Zapisz**:
 
-    ![Konfigurowanie symulacji temperatury](media/tutorial-define-device-type/temperaturesimulation.png)
+    ![Konfigurowanie symulacji temperatury](./media/tutorial-define-device-type/temperaturesimulation.png)
 
 7. Po krótkiej chwili na stronie **Miary** zostanie wyświetlony wykres danych telemetrii temperatury pochodzących z symulowanego połączonego klimatyzatora. Do zarządzania widocznością lub agregacją albo do edytowania definicji telemetrii użyj kontrolek:
 
-    ![Wyświetlenie symulacji temperatury](media/tutorial-define-device-type/viewsimulation.png)
+    ![Wyświetlenie symulacji temperatury](./media/tutorial-define-device-type/viewsimulation.png)
 
 8. Istnieje także możliwość dostosowania wykresu przy użyciu kontrolek **Wiersz**, **Skumulowany** i **Edytuj zakres czasu**:
 
-    ![Dostosowywanie wykresu](media/tutorial-define-device-type/customizechart.png)
+    ![Dostosowywanie wykresu](./media/tutorial-define-device-type/customizechart.png)
 
 ## <a name="define-event-measurement"></a>Definiowanie miary zdarzenia
 
@@ -146,13 +159,15 @@ Zdarzenie umożliwia zdefiniowanie danych punktu w czasie wysyłanych przez urz�
 
 1. Aby dodać miarę zdarzenia **Błąd silnika wentylatora**, wybierz pozycję **Nowa miara**. Następnie wybierz pozycję **Zdarzenie** jako typ miary:
 
-    ![Miary połączonego klimatyzatora](media/tutorial-define-device-type/eventnew.png)
+    ![Miary połączonego klimatyzatora](./media/tutorial-define-device-type/eventnew.png)
 
 2. Każdy typ zdarzenia zdefiniowany dla szablonu urządzenia obejmuje [opcje konfiguracji](howto-set-up-template.md), takie jak:
 
-    * Nazwa wyświetlana
-    * Nazwa pola
-    * Ważność
+   * Nazwa wyświetlana
+
+   * Nazwa pola
+
+   * Ważność
 
     Aby skonfigurować pozycję telemetrii **Błąd silnika wentylatora**, skorzystaj z informacji w poniższej tabeli:
 
@@ -164,15 +179,15 @@ Zdarzenie umożliwia zdefiniowanie danych punktu w czasie wysyłanych przez urz�
 
     Aby zapisać definicję zdarzenia, wybierz polecenie **Zapisz**:
 
-    ![Konfigurowanie miary zdarzenia](media/tutorial-define-device-type/eventconfiguration.png)
+    ![Konfigurowanie miary zdarzenia](./media/tutorial-define-device-type/eventconfiguration.png)
 
 3. Po krótkiej chwili na stronie **Miary** zostanie wyświetlony wykres dla zdarzeń wygenerowanych losowo przez symulowany połączony klimatyzator. Do zarządzania widocznością lub edytowania definicji zdarzenia użyj kontrolek:
 
-    ![Wyświetlanie symulacji zdarzenia](media/tutorial-define-device-type/eventview.png)
+    ![Wyświetlanie symulacji zdarzenia](./media/tutorial-define-device-type/eventview.png)
 
 1. Aby wyświetlić dodatkowe szczegóły dotyczące zdarzenia, kliknij zdarzenie na wykresie:
 
-    ![Wyświetlanie szczegółów zdarzenia](media/tutorial-define-device-type/eventviewdetail.png)
+    ![Wyświetlanie szczegółów zdarzenia](./media/tutorial-define-device-type/eventviewdetail.png)
 
 ## <a name="define-state-measurement"></a>Definiowanie miary stanu
 
@@ -180,14 +195,17 @@ Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składn
 
 1. Aby dodać miarę **Tryb wentylatora**, wybierz pozycję **Nowa miara**. Następnie wybierz pozycję **Stan** jako typ miary:
 
-    ![Miary stanu połączonego klimatyzatora](media/tutorial-define-device-type/statenew.png)
+    ![Miary stanu połączonego klimatyzatora](./media/tutorial-define-device-type/statenew.png)
 
 2. Każdy typ stanu zdefiniowany dla szablonu urządzenia obejmuje [opcje konfiguracji](howto-set-up-template.md), takie jak:
 
-    * Nazwa wyświetlana
-    * Nazwa pola
-    * Wartości z opcjonalnymi etykietami
-    * Kolor dla każdej wartości
+   * Nazwa wyświetlana
+
+   * Nazwa pola
+
+   * Wartości z opcjonalnymi etykietami
+
+   * Kolor dla każdej wartości
 
     Aby skonfigurować stan **Tryb wentylatora**, skorzystaj z informacji w poniższej tabeli:
 
@@ -202,19 +220,19 @@ Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składn
 
     Aby zapisać definicję miary stanu, wybierz polecenie **Zapisz**:
 
-    ![Konfigurowanie miary stanu](media/tutorial-define-device-type/stateconfiguration.png)
+    ![Konfigurowanie miary stanu](./media/tutorial-define-device-type/stateconfiguration.png)
 
 3. Po krótkiej chwili na stronie **Miary** zostanie wyświetlony wykres stanów wygenerowanych losowo przez symulowany połączony klimatyzator. Do zarządzania widocznością lub edytowania definicji stanu użyj kontrolek:
 
-    ![Widok symulacji stanu](media/tutorial-define-device-type/stateview.png)
+    ![Widok symulacji stanu](./media/tutorial-define-device-type/stateview.png)
 
 4. Jeśli w krótkim okresie urządzenie wyśle za dużo punktów danych, miara stanu będzie wyświetlana za pomocą innej wizualizacji, jak pokazano poniżej. Jeśli klikniesz wykres, wszystkie punkty danych w danym okresie zostaną wyświetlone w kolejności chronologicznej. Zakres czasu można także zawęzić, aby wyświetlić miarę wykreśloną na wykresie.
 
-    ![Wyświetlanie szczegółów stanu](media/tutorial-define-device-type/stateviewdetail.png)
+    ![Wyświetlanie szczegółów stanu](./media/tutorial-define-device-type/stateviewdetail.png)
 
-## <a name="properties-device-properties-and-settings"></a>Właściwości, właściwości urządzenia i ustawienia
+## <a name="settings-properties-and-commands"></a>Ustawienia, właściwości i polecenia
 
-Właściwości, właściwości urządzenia oraz ustawienia to różne wartości zdefiniowane w szablonie urządzenia i skojarzone z poszczególnymi urządzeniami:
+Ustawienia, właściwości, właściwości urządzenia oraz polecenia to różne wartości zdefiniowane w szablonie urządzenia i skojarzone z poszczególnymi urządzeniami:
 
 * _Ustawienia_ umożliwiają wysyłanie danych konfiguracji do urządzenia z aplikacji. Na przykład operator może użyć ustawienia do zmiany interwału telemetrii urządzenia z dwóch na pięć sekund. Gdy operator zmieni ustawienie, jest ono oznaczone jako oczekujące w interfejsie użytkownika, dopóki urządzenie nie potwierdzi, że wykonało odpowiednie działanie dla zmiany ustawień.
 
@@ -222,13 +240,15 @@ Właściwości, właściwości urządzenia oraz ustawienia to różne wartości 
 
 * _Właściwości urządzenia_ umożliwiają urządzaniu wysyłanie wartości właściwości do aplikacji. Te właściwości może zmienić tylko urządzenie. Dla operatora właściwości urządzenia są tylko do odczytu.
 
+* _Polecenia_ służą do zdalnego zarządzania urządzeniem z poziomu aplikacji. Polecenia można uruchamiać z chmury bezpośrednio na urządzeniu, aby sterować urządzeniami. Na przykład operator może uruchamiać polecenia, takie jak reboot, aby natychmiast ponownie uruchomić urządzenie.
+
 ## <a name="use-settings"></a>Używanie ustawień
 
 *Ustawienia* umożliwiają operatorowi wysyłanie danych konfiguracji do urządzenia. W tej sekcji do szablonu urządzenia **Połączony klimatyzator** jest dodawane ustawienie, które umożliwia operatorowi ustawienie temperatury docelowej połączonego klimatyzatora.
 
 1. Przejdź do strony **Ustawienia** szablonu urządzenia **Połączony klimatyzator**:
 
-    ![Przygotowanie do dodania ustawienia](media/tutorial-define-device-type/deviceaddsetting.png)
+    ![Przygotowanie do dodania ustawienia](./media/tutorial-define-device-type/deviceaddsetting.png)
 
     Istnieje możliwość utworzenia ustawień różnych typów, takich jak tekst lub liczby.
 
@@ -249,24 +269,24 @@ Właściwości, właściwości urządzenia oraz ustawienia to różne wartości 
 
     Następnie wybierz polecenie **Zapisz**:
 
-    ![Konfigurowanie ustawienia Ustaw temperaturę](media/tutorial-define-device-type/configuresetting.png)
+    ![Konfigurowanie ustawienia Ustaw temperaturę](./media/tutorial-define-device-type/configuresetting.png)
 
     > [!NOTE]
     > Gdy urządzenie potwierdzi zmianę ustawień, stan ustawienia zostanie zmieniony na **zsynchronizowane**.
 
 4. Układ strony **Ustawienia** możesz dostosować przez przeniesienie i zmianę rozmiaru kafelków ustawień:
 
-    ![Dostosowywanie układu ustawień](media/tutorial-define-device-type/settingslayout.png)
+    ![Dostosowywanie układu ustawień](./media/tutorial-define-device-type/settingslayout.png)
 
-## <a name="use-properties"></a>Korzystanie z właściwości
+## <a name="use-properties--device-properties"></a>Korzystanie z właściwości/właściwości urządzenia
 
-*Właściwości* umożliwiają przechowywanie informacji o urządzeniu w aplikacji. W tej sekcji do szablonu urządzenia **Połączony klimatyzator** dodawane są właściwości do przechowywania numeru seryjnego i wersji oprogramowania układowego dla każdego urządzenia.
-
+*Właściwości* umożliwiają przechowywanie informacji o urządzeniu w aplikacji. W tej sekcji do szablonu urządzenia **Połączony klimatyzator** dodawane są właściwości urządzenia do przechowywania numeru seryjnego i wersji oprogramowania układowego. Należy pamiętać, że są to właściwości tylko do odczytu zgłaszane przez urządzenie — nie można przypisać do nich wartości. Właściwości, do których można przypisać wartości, obejmują lokalizację urządzenia, informacje o własności i datę/godzinę ostatniej usługi dla urządzenia.
+ 
 1. Przejdź do strony **Właściwości** szablonu urządzenia **Połączony klimatyzator**:
 
-    ![Przygotowanie do dodania właściwości](media/tutorial-define-device-type/deviceaddproperty.png)
+    ![Przygotowanie do dodania właściwości](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Istnieje możliwość utworzenia właściwości różnych typów, takich jak tekst lub liczby. Aby dodać właściwość numeru seryjnego do szablonu urządzenia, wybierz pozycję **Tekst**.
+    Istnieje możliwość utworzenia właściwości urządzenia różnych typów, takich jak tekst lub liczby. Aby dodać właściwość numeru seryjnego do szablonu urządzenia, wybierz pozycję **Tekst**.
 
 2. Aby skonfigurować właściwość numeru seryjnego, skorzystaj z informacji w poniższej tabeli:
 
@@ -279,13 +299,13 @@ Właściwości, właściwości urządzenia oraz ustawienia to różne wartości 
 
     Pozostaw wartości domyślne w pozostałych polach.
 
-    ![Konfigurowanie właściwości urządzenia](media/tutorial-define-device-type/configureproperties.png)
+    ![Konfigurowanie właściwości urządzenia](./media/tutorial-define-device-type/configureproperties.png)
 
-    Następnie wybierz polecenie **Zapisz**.
+    Wybierz pozycję **Zapisz**.
 
-3. Aby dodać właściwość wersji oprogramowania układowego, wybierz pozycję **Tekst**.
+3. Aby dodać wersję oprogramowania układowego do właściwości urządzenia dla szablonu urządzenia, wybierz pozycję **Tekst**.
 
-4. Aby skonfigurować właściwość wersji oprogramowania układowego, skorzystaj z informacji w poniższej tabeli:
+4. Aby skonfigurować właściwość wersji oprogramowania układowego dla urządzenia, skorzystaj z informacji w poniższej tabeli:
 
     | Pole                | Wartość                   |
     | -------------------- | ----------------------- |
@@ -294,13 +314,44 @@ Właściwości, właściwości urządzenia oraz ustawienia to różne wartości 
     | Wartość początkowa        | 0.1                     |
     | Opis          | Wersja oprogramowania układowego urządzenia |
 
-    ![Konfigurowanie właściwości urządzenia](media/tutorial-define-device-type/configureproperties2.png)
+    ![Konfigurowanie właściwości urządzenia](./media/tutorial-define-device-type/configureproperties2.png)
 
-    Następnie wybierz polecenie **Zapisz**.
+    Wybierz pozycję **Zapisz**.
 
 5. Układ strony **Właściwości** możesz dostosować przez przeniesienie i zmianę rozmiaru kafelków właściwości:
 
-    ![Dostosowanie układu właściwości](media/tutorial-define-device-type/propertieslayout.png)
+    ![Dostosowanie układu właściwości](./media/tutorial-define-device-type/propertieslayout.png)
+
+
+## <a name="use-commands"></a>Korzystanie z poleceń
+
+Za pomocą _poleceń_ można umożliwić operatorowi uruchamianie poleceń bezpośrednio na urządzeniu. W tej sekcji dodasz polecenie do szablonu urządzenia **Połączony klimatyzator**, który umożliwia operatorowi obsługiwanie echo niektórych komunikatów na ekranie połączonego klimatyzatora (ta funkcja działa z przykładowym kodem MxChip).
+
+1. Przejdź do strony **Polecenia** szablonu urządzenia **Połączony klimatyzator**:
+
+    ![Przygotowanie do dodania ustawienia](media/tutorial-define-device-type/commandsecho.png)
+
+    Możesz tworzyć polecenia różnych typów, w zależności od wymagań. 
+
+1. Kliknij pozycję **Nowe polecenie**, aby dodać polecenie do urządzenia.
+
+1. Aby skonfigurować nowe polecenie, skorzystaj z informacji w poniższej tabeli:
+
+    | Pole                | Wartość           |
+    | -------------------- | -----------     |
+    | Nazwa wyświetlana         | Polecenie echo    |
+    | Nazwa pola           | echo            |
+    | Domyślny limit czasu      | 30              |
+    | Nazwa wyświetlana         | Tekst wyświetlany    |
+    | Typ wyświetlany         | tekst            |  
+
+Możesz dodać dodatkowe dane wejściowe do polecenia, klikając pozycję **+** dla danych wejściowych.
+
+2. Wybierz pozycję **Zapisz**.
+
+3. Układ strony **Polecenia** możesz dostosować przez przeniesienie i zmianę rozmiaru kafelków poleceń:
+
+    ![Dostosowywanie układu ustawień](media/tutorial-define-device-type/commandstileresize.png)
 
 ## <a name="view-your-simulated-device"></a>Wyświetlanie symulowanego urządzenia
 
@@ -308,11 +359,11 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
 
 1. Wybierz stronę **Pulpit nawigacyjny** dla szablonu urządzenia **Połączony klimatyzator**:
 
-    ![Pulpity nawigacyjne połączonego klimatyzatora](media/tutorial-define-device-type/aircondashboards.png)
+    ![Pulpity nawigacyjne połączonego klimatyzatora](./media/tutorial-define-device-type/aircondashboards.png)
 
 2. Wybierz pozycję **Wykres liniowy**, aby dodać składnik do **pulpitu nawigacyjnego**:
 
-    ![Składniki pulpitu nawigacyjnego](media/tutorial-define-device-type/dashboardcomponents1.png)
+    ![Składniki pulpitu nawigacyjnego](./media/tutorial-define-device-type/dashboardcomponents1.png)
 
 3. Skonfiguruj składnik **Wykres liniowy**, korzystając z informacji w poniższej tabeli:
 
@@ -322,7 +373,7 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary | temperatura (wybierz element **Widoczność** obok elementu **temperatura**) |
 
-    ![Ustawienia wykresu liniowego](media/tutorial-define-device-type/linechartsettings.png)
+    ![Ustawienia wykresu liniowego](./media/tutorial-define-device-type/linechartsettings.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
@@ -334,7 +385,7 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary | Błąd silnika wentylatora (wybierz element **Widoczność** obok elementu **Błąd silnika wentylatora**) |
 
-    ![Ustawienia wykresu liniowego](media/tutorial-define-device-type/dashboardeventchartsetting.png)
+    ![Ustawienia wykresu liniowego](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
@@ -346,13 +397,13 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Zakres czasu   | Ostatnie 30 minut |
     | Miary | Tryb wentylatora (wybierz element **Widoczność** obok elementu **Tryb wentylatora**) |
 
-    ![Ustawienia wykresu liniowego](media/tutorial-define-device-type/dashboardstatechartsetting.png)
+    ![Ustawienia wykresu liniowego](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
 6. Aby dodać ustawienie Ustaw temperaturę do pulpitu nawigacyjnego, wybierz pozycję **Ustawienia i właściwości**:
 
-    ![Składniki pulpitu nawigacyjnego](media/tutorial-define-device-type/dashboardcomponents4.png)
+    ![Składniki pulpitu nawigacyjnego](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
 7. Skonfiguruj składnik **Ustawienia i właściwości**, korzystając z informacji w poniższej tabeli:
 
@@ -361,13 +412,13 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Tytuł                   | Ustaw temperaturę docelową |
     | Ustawienia i właściwości | Ustaw temperaturę |
 
-    ![Ustawienia właściwości numeru seryjnego](media/tutorial-define-device-type/propertysettings3.png)
+    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings3.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
 8. Aby dodać numer seryjny urządzenia do pulpitu nawigacyjnego, wybierz pozycję **Ustawienia i właściwości**:
 
-    ![Składniki pulpitu nawigacyjnego](media/tutorial-define-device-type/dashboardcomponents3.png)
+    ![Składniki pulpitu nawigacyjnego](./media/tutorial-define-device-type/dashboardcomponents3.png)
 
 9. Skonfiguruj składnik **Ustawienia i właściwości**, korzystając z informacji w poniższej tabeli:
 
@@ -376,13 +427,13 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Tytuł                   | Numer seryjny |
     | Ustawienia i właściwości | Numer seryjny |
 
-    ![Ustawienia właściwości numeru seryjnego](media/tutorial-define-device-type/propertysettings1.png)
+    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings1.png)
 
     Następnie wybierz polecenie **Zapisz**.
 
 10. Aby dodać wersję oprogramowania układowego do pulpitu nawigacyjnego, wybierz pozycję **Ustawienia i właściwości**:
 
-    ![Składniki pulpitu nawigacyjnego](media/tutorial-define-device-type/dashboardcomponents4.png)
+    ![Składniki pulpitu nawigacyjnego](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
 11. Skonfiguruj składnik **Ustawienia i właściwości**, korzystając z informacji w poniższej tabeli:
 
@@ -391,7 +442,7 @@ Po zdefiniowaniu szablonu urządzenia **Połączony klimatyzator** możesz dosto
     | Tytuł                   | Wersja oprogramowania układowego |
     | Ustawienia i właściwości | Wersja oprogramowania układowego |
 
-    ![Ustawienia właściwości numeru seryjnego](media/tutorial-define-device-type/propertysettings2.png)
+    ![Ustawienia właściwości numeru seryjnego](./media/tutorial-define-device-type/propertysettings2.png)
 
     Następnie wybierz polecenie **Zapisz**.
 

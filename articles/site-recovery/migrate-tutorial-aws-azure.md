@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737616"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37922661"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -34,10 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że na maszynach wirtualnych, które mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane wersje to: 
     - Windows Server 2016
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - 64-bitowa wersja systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszym
-    - Red Hat Enterprise Linux 6.7 (tylko zwirtualizowane wystąpienia HVM) ze sterownikiem Citrix Paravirtual lub AWS Paravirtual. Instancje, na których uruchomione są sterowniki Red Hat Paravirtual *nie są* obsługiwane.
+    - Red Hat Enterprise Linux 6.7 (tylko wystąpienia z wirtualizacją sprzętową) wyłącznie ze sterownikami Citrix PV lub AWS PV. Wystąpienia ze sterownikami Red Hat PV **nie są** obsługiwane.
 
 - Na każdej maszynie wirtualnej, która ma być replikowana, musi być zainstalowana usługa mobilności. 
 

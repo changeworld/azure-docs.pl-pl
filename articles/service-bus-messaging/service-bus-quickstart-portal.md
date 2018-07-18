@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
 ms.author: sethm
-ms.openlocfilehash: b970fe1d9d705bd91e616f19a6ef133d6cfd7dd2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660636"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867209"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Szybki start: wysyłanie i odbieranie komunikatów przy użyciu witryny Azure Portal i platformy .NET
 
@@ -40,7 +40,7 @@ Przejdź do witryny [Azure Portal][Azure portal] i zaloguj się przy użyciu sub
 
 ## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
 
-Przestrzeń nazw obsługi komunikatów usługi Service Bus oferuje unikatowy kontener zakresu przywoływany przy użyciu jego [w pełni kwalifikowanej nazwy domeny][], w którym można utworzyć co najmniej jedną kolejkę, temat i subskrypcję. W poniższym przykładzie jest tworzona przestrzeń nazw obsługi komunikatów usługi Service Bus w nowej lub istniejącej [grupie zasobów](/azure/azure-resource-manager/resource-group-portal):
+Przestrzeń nazw obsługi komunikatów w usłudze Service Bus udostępnia unikatowy kontener zakresu przywoływany przy użyciu jego [w pełni kwalifikowanej nazwy domeny][], w którym można utworzyć co najmniej jedną kolejkę, temat i subskrypcję. W poniższym przykładzie jest tworzona przestrzeń nazw obsługi komunikatów w usłudze Service Bus w nowej lub istniejącej [grupie zasobów](/azure/azure-resource-manager/resource-group-portal):
 
 1. W lewym okienku nawigacji portalu kliknij kolejno pozycje **+ Utwórz zasób**, **Integracja w przedsiębiorstwie** i **Service Bus**.
 2. W oknie dialogowym **Tworzenie przestrzeni nazw** wprowadź nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
@@ -105,7 +105,7 @@ Aby uruchomić kod, wykonaj następujące czynności:
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
    ``` 
 
-8. Obserwuj 10 komunikatów wysłanych do kolejki, a następnie odebranych z kolejki:
+8. Obserwuj 10 komunikatów wysłanych do kolejki, a następnie odebranych z niej:
 
    ![dane wyjściowe programu](./media/service-bus-quickstart-portal/dotnet.png)
 
@@ -204,7 +204,7 @@ static void RegisterOnMessageHandlerAndReceiveMessages()
 
 ### <a name="send-messages"></a>Wysyłanie komunikatów
 
-Operacje tworzenia i wysyłania komunikatów są wykonywane w ramach metody `SendMessagesAsync()`:
+Operacje tworzenia i wysyłania komunikatów są wykonywane w metodzie `SendMessagesAsync()`:
 
 ```csharp
 static async Task SendMessagesAsync(int numberOfMessagesToSend)

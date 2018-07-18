@@ -15,12 +15,12 @@ ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 9350d2556ff4b178ec15f4213c89ee46d4f604d5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6b25712d660c26f2e7206b361c443b8f97aad361
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128425"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867617"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Wyświetlanie i analizowanie zebranych danych za pomocą wyszukiwania w dziennikach usługi Log Analytics
 

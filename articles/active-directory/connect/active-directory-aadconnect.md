@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d866a6b068e9f6b8a46e53d60653d55e35a2ffd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f56ac74c62334ef64fca45a6430a539e3c4c372c
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594027"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38442540"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrowanie katalogów lokalnych z usługą Azure Active Directory
 Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.
@@ -33,8 +33,9 @@ Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą
 
 > 
 > - Synchronizowanie użytkowników z usługą Azure AD jest **bezpłatną funkcją** i nie wymaga posiadania jakiejkolwiek płatnej subskrypcji od klientów.
->- Zsynchronizowanym użytkownikom **nie przydziela się automatycznie** *żadnej* licencji. Administratorzy nadal mają całkowitą kontrolę nad przydzielaniem licencji. 
+> - Zsynchronizowanym użytkownikom **nie przydziela się automatycznie** *żadnej* licencji. Administratorzy nadal mają całkowitą kontrolę nad przydzielaniem licencji. 
 > - Firma Microsoft zaleca, aby administratorzy IT zsynchronizowali wszystkich swoich użytkowników. Dzięki temu nie tylko odblokowuje się dostęp użytkowników do wszelkich zintegrowanych zasobów usługi Azure AD, ale też zapewnia się znacznie szerszy widok dla administratorów IT, którzy mogą zobaczyć, do których aplikacji uzyskują dostęp użytkownicy. 
+> - Firma Microsoft zdecydowanie odradza synchronizowanie użytkowników z rolami administratorów w usłudze Azure AD.
 
 ![Co to jest program Azure AD Connect](media/active-directory-aadconnect/arch.png)
 

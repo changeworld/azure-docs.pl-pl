@@ -1,43 +1,44 @@
-
-<!--
-includes/sql-database-include-ip-address-22-v12portal.md
-
-Latest Freshness check:  2016-03-21 , daleche.
-
-As of circa 2015-09-04, the following topics might include this include:
-articles/sql-database/sql-database-configure-firewall-settings.md
-articles/sql-database/sql-database-connect-query.md
-
-
-## Server-level firewall rules
-
-### Add a server-level firewall rule through the new Azure portal
--->
-
-
+---
+title: Reguły zapory na poziomie serwera
+description: Reguły zapory na poziomie serwera
+keywords: połączenie z SQL, ciąg połączenia
+services: sql-database
+author: dalechen
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: include
+ms.date: 07/13/2018
+ms.author: ninarn
+ms.openlocfilehash: 07bbba28b7e1b048ef3a4e1afa4db255967dc093
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117277"
+---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-2. Na liście po lewej stronie wybierz **wszystkie usługi**. 
+2. Na liście po lewej stronie wybierz **wszystkich usług**.
 
-3. Przewiń i wybierz **serwerów SQL**. 
-   
-    ![Znaleźć serwera bazy danych SQL Azure w portalu][b21-FindServerInPortal]
-5. W polu filtru zacznij wpisywać nazwę serwera. Twoje wiersz jest wyświetlany.
+3. Przewiń i wybierz **serwerów SQL**.
 
-6. Wybierz wiersz dla serwera. Zostanie wyświetlony blok serwera.
+    ![Znajdowanie serwera usługi Azure SQL Database w witrynie portal][b21-FindServerInPortal]
+5. W polu tekstowym filtru Rozpocznij wpisywanie nazwy serwera. Wyświetlany jest wiersz usługi.
 
-7. W bloku serwera, wybierz **ustawienia**. 
+6. Wybierz wiersz dla Twojego serwera. Zostanie wyświetlony blok dla Twojego serwera.
 
-8. Wybierz **zapory**. 
-   
-    ![Wybierz ustawienia > zapory][b31-SettingsFirewallNavig]
-9. Wybierz **Dodawanie klienta IP**. W pierwszym polu tekstowym, wpisz nazwę nowej reguły.
+7. W bloku serwera wybierz **ustawienia**.
 
-10. Wpisz wartości adresu IP niski i wysoki dla zakresu, który ma zostać włączony.
-    
-    * Może być przydatny zakończeń niskiej wartości z **.0** i wysokiej wartości kończyć **.255**.
-    
-    ![Dodaj zakres adresów IP, aby umożliwić][b41-AddRange]
+8. Wybierz **zapory**.
+
+    ![Wybierz pozycję Ustawienia > zapory][b31-SettingsFirewallNavig]
+9. Wybierz **Dodaj klienta IP**. W pierwszym polu tekstowym, wpisz nazwę nowej reguły.
+
+10. Wpisz małe i duże wartości adresów IP dla zakresu, który chcesz włączyć.
+
+    * Może być przydatna mają niską wartość kończyć **.0** i o wysokiej wartości, które kończy się **.255**.
+
 11. Wybierz pozycję **Zapisz**.
 
 <!-- Image references. -->

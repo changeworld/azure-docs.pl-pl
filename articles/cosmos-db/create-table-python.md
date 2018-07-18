@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: f23d7441a2abc6b66e95e226ef0d17d29ed25c9d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 3bad2e8c8011f82ab4daf75e73b1c71c46436882
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796002"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38407024"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API tabel przy użyciu języka Python i usługi Azure Cosmos DB
 
@@ -31,9 +31,8 @@ Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy
 
 Ponadto:
 
-* Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
-* Narzędzia Python Tools for Visual Studio pobrane z witryny [GitHub](http://microsoft.github.io/PTVS/). W tym samouczku są używane narzędzia Python Tools for VS 2015.
-* Środowisko Python w wersji 2.7 pobrane z witryny [python.org](https://www.python.org/downloads/release/python-2712/)
+* Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że wybrano pakiety robocze **Programowanie na platformie Azure** i **Opracowywanie zawartości w języku Python**.
+* Wybierz również opcję języka Python 2 w pakiecie roboczym **Opracowywanie zawartości w języku Python** lub pobierz środowisko Python 2.7 z witryny [python.org](https://www.python.org/downloads/release/python-2712/).
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 

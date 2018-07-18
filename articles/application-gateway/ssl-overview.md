@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: b1b6cec8cfeee2253ccd62f764ce4da4cb1b459d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c94bc7fb97902c9d44392d2eb9bf4ee29f72af6
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160532"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949751"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Omówienie kompleksowej usługi SSL z usługą Application Gateway
 
@@ -42,7 +42,7 @@ Usługa Application Gateway komunikuje się tylko ze znanymi wystąpieniami zapl
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zapoznaniu się z kompleksową usługą SSL zapoznaj się z informacjami dotyczącymi [włączania kompleksowej usługi SSL w bramie aplikacji](tutorial-ssl-powershell.md), aby utworzyć bramę aplikacji korzystającą z kompleksowej usługi SSL.
+Po zapoznaniu się z kompleksową usługą SSL przejdź do tematu [Configure an application gateway with SSL termination using the Azure portal (Konfigurowanie bramy aplikacji z kończeniem żądań SSL za pomocą witryny Azure Portal)](create-ssl-portal.md), aby utworzyć bramę aplikacji korzystającą z kompleksowej usługi SSL.
 
 <!--Image references-->
 

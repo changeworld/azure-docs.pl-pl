@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: b46cd5cf8f730a680078dde06b58eb31846e0a76
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5293ac55fdb13bba85996f5ed81034d4ebeeff12
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161316"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722885"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>Przykład interfejsu wiersza polecenia: tworzenie subskrypcji usługi Azure Event Grid 
 
@@ -27,7 +27,7 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje spos
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.20 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.20 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Przykładowy skrypt
 

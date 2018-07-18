@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: fc978c6ad9776271c790796f26912c63f9edcf74
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009385"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114348"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Konfigurowanie wirtualnej sieci WAN automatyzacji — partnerzy wirtualne sieci WAN (wersja zapoznawcza)
 
-Ten artykuł ułatwia zrozumienie, jak skonfigurować envorionment automatyzacji, aby nawiązać połączenie i skonfigurować urządzenie gałęzi (urządzenia sieci VPN klienta w środowisku lokalnym lub SDWAN) dla usługi Azure wirtualnego WAN. Jeśli jesteś dostawcę, który zawiera urządzenia gałęzi, które może obsłużyć połączenia sieci VPN za pośrednictwem protokołu IPsec/IKEv2, ten artykuł jest dla Ciebie.
+Ten artykuł pomaga zrozumieć sposób konfigurowania środowiska automatyzacji, aby nawiązać połączenie i skonfigurować urządzenie gałęzi (urządzenia sieci VPN klienta w środowisku lokalnym lub SDWAN) dla usługi Azure wirtualnego WAN. Jeśli jesteś dostawcę, który zawiera urządzenia gałęzi, które może obsłużyć połączenia sieci VPN za pośrednictwem protokołu IPsec/IKEv2, ten artykuł jest dla Ciebie.
 
 Rozwiązania w zakresie połączeń zdefiniowanych przez oprogramowanie zazwyczaj używane do zarządzania urządzeniami gałęzi kontrolera lub urządzenia, inicjowanie obsługi administracyjnej Centrum. Kontroler można użyć interfejsów API usługi Azure do zautomatyzowania połączenie WAN wirtualnych platformy Azure. Ten typ połączenia wymaga SDWAN lub sieci VPN urządzenia znajdujące się w środowisku lokalnym, do których ma zewnętrzny publiczny adres IP przypisany do niego.
 

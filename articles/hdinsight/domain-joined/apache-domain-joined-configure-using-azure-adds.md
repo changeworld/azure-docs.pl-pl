@@ -1,75 +1,77 @@
 ---
-title: Konfigurowanie domeny klastrów usługi HDInsight przy użyciu usługi AAD DS
-description: Informacje o sposobie instalowania i konfigurowania klastrów HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory
+title: Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure AD DS
+description: Dowiedz się, jak instalowanie i konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services
 services: hdinsight
 author: omidm1
+ms.author: omidm
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: omidm
-ms.openlocfilehash: 8064940e0d0f035010a2521752d6f32f3f9ccd9f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 07/17/2018
+ms.openlocfilehash: d38148181aa18404e45f6efc029117573570e6bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849836"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115429"
 ---
-# <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurowanie klastrów HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory
+# <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services
 
-Klastry przyłączonych do domeny zapewniają dostęp wielu użytkowników w klastrach usługi HDInsight. Klastry HDInsight przyłączonych do domeny są połączone z domeną, aby użytkownicy domeny mogli używać swoich poświadczeń domeny do uwierzytelniania z klastrów i uruchamianie zadań danych big data. 
+Klastry przyłączone do domeny zapewniają dostęp wielu użytkowników w klastrach usługi Azure HDInsight. Klastry HDInsight przyłączone do domeny są podłączone do domeny, tak, aby użytkownicy domeny mogą używać swoich poświadczeń domeny przy użyciu klastrów i uruchamiać zadania obsługi danych big data. 
 
-W tym artykule Dowiedz się jak skonfigurować klaster HDInsight przyłączonych do domeny za pomocą usług domenowych Azure Active Directory.
+W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services (Azure AD DS).
 
-## <a name="create-azure-adds"></a>Utwórz DODAJE Azure
+## <a name="enable-azure-ad-ds"></a>Włączanie usług Azure AD DS
 
-Włączanie usług domenowych Azure AD (AAD DS) jest wymagane, przed rozpoczęciem tworzenia klastra usługi HDInsight przyłączonych do domeny. Aby włączyć wystąpienie usługi AAD DS, zobacz [sposób włączania usługi AAD-DS przy użyciu portalu Azure](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
-
-> [!NOTE]
-> Tylko Administratorzy dzierżawy mają uprawnienia do utworzenia wystąpienia usługi AAD DS. Jeśli używasz usługi Azure Data Lake magazyn (ADLS) jako domyślny magazyn dla usługi HDInsight, upewnij się, że domyślna dzierżawa usługi Azure AD dla ADLS jest taka sama jak domena klastra usługi HDInsight. Sincde Hadoop korzysta z protokołu Kerberos i uwierzytelnianie podstawowe, uwierzytelnianie wieloskładnikowe musi być wyłączona dla użytkowników mających dostęp do klastra.
-
-Po zainicjowano wystąpienia usługi AAD DS, należy utworzyć konto usługi w usłudze AAD (który będą synchronizowane z usługi AAD DS) z odpowiednich uprawnień. Jeśli to konto usługi już istnieje, należy zresetować hasło i poczekaj, aż synchronizowanych AAD DS (resetowania spowoduje tworzenia skrótu hasła protokołu kerberos i może potrwać do 30 min do synchronizacji usługi AAD DS). To konto usługi musi mieć następujące uprawnienia:
-
-- Przyłączanie komputerów do domeny i umieścić podmiotów maszyny w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
-- Utwórz jednostki usługi w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
+Włączanie usługi Azure AD DS jest wymaganiem wstępnym, przed utworzeniem klastra HDInsight przyłączone do domeny. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 > [!NOTE]
-> Ponieważ Apache Zeppelin użyta zostanie nazwa domeny do uwierzytelniania konta usługi administracyjnej, konto usługi musi mieć taką samą nazwę domeny, jak jego sufiks nazwy UPN Zeppelin Apache działać prawidłowo.
+> Tylko Administratorzy dzierżawy mają uprawnienia do tworzenia wystąpienia usługi Azure AD DS. Jeśli używasz usługi Azure Data Lake Storage Gen1 jako magazynem domyślnym dla HDInsight, upewnij się, że dzierżawy usługi Azure AD domyślny dla Data Lake Storage Gen1 jest taka sama jak domena klastra HDInsight. Ponieważ Hadoop korzysta z protokołu Kerberos i uwierzytelnianie podstawowe, uwierzytelnianie wieloskładnikowe musi wyłączony dla użytkowników, którzy będą uzyskiwać dostęp do klastra.
 
-Aby dowiedzieć się więcej na temat jednostek organizacyjnych i jak nimi zarządzać, zobacz [utworzyć jednostkę Organizacyjną na DS AAD](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md). 
+Po zainicjowaniu wystąpienia usługi Azure AD DS, należy utworzyć konto usługi Azure Active Directory (Azure AD) przy użyciu odpowiednich uprawnień. Jeśli to konto usługi już istnieje, to należy zresetować jego hasło i zaczekaj, aż synchronizowanych usługi Azure AD DS. Spowoduje to zresetowanie do tworzenia skrótu hasła protokołu Kerberos i może potrwać do 30 minut do synchronizacji usługi Azure AD DS. 
 
-Bezpiecznego protokołu LDAP dla domeny zarządzane AAD DS jest wymagana. Aby włączyć bezpiecznego protokołu LDAP, zobacz [domeny zarządzane jak skonfigurować bezpiecznego protokołu LDAP (LDAPS) dla usługi AAD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
+Konto usługi musi mieć następujące uprawnienia:
 
-## <a name="create-a-domain-joined-hdinsight-cluster"></a>Tworzenie klastra HDInsight przyłączonych do domeny
+- Przyłączanie maszyn do domeny i umieścić podmiotów maszyn w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
+- Tworzenie jednostek usługi w jednostce Organizacyjnej, który jest określany podczas tworzenia klastra.
 
-Następnym krokiem jest do tworzenia klastra usługi HDInsight przy użyciu usługi Katalogowej usługi AAD i konto usługi utworzony w poprzedniej sekcji.
+> [!NOTE]
+> Ponieważ Apache Zeppelin używa nazwy domeny do uwierzytelniania konta usługi administracyjnej, konto usługi *musi* mają taką samą nazwę domeny jako jego sufiks nazwy UPN dla Zeppelin Apache działać prawidłowo.
 
-Łatwiej można umieścić AAD DS wraz z klastrem usługi HDInsight w tej samej network(VNet) wirtualnych platformy Azure. W przypadku, gdy wybrano opcję umieść je w innej sieci wirtualnych, dzięki czemu HDI maszyny wirtualne muszą procesów z wiersza do kontrolera domeny za dołączenie do maszyn wirtualnych musi elementu równorzędnego tych sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [równorzędna sieci wirtualnej](../../virtual-network/virtual-network-peering-overview.md).
+Aby dowiedzieć się więcej o jednostkach organizacyjnych i jak nimi zarządzać, zobacz [Utwórz jednostkę Organizacyjną w domenie zarządzanej usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md). 
 
-Podczas tworzenia klastra usługi HDInsight przyłączonych do domeny, należy podać następujące parametry:
+Jest protokół Secure LDAP dla domeny zarządzanej usług Azure AD DS. Aby uzyskać więcej informacji, zobacz [domeny zarządzanej przez konfigurowanie protokołu secure LDAP dla usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
-- **Nazwa domeny**: nazwa domeny skojarzony z usługi AAD DS. Na przykład contoso.onmicrosoft.com
-- **Nazwa użytkownika domeny**: konto usługi w ramach domeny zarządzanej, która jest tworzona w poprzedniej sekcji. Na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administrator tego klastra usługi HDInsight.
-- **Hasła domeny**: hasło konta usługi.
-- **Jednostka organizacyjna**: nazwę wyróżniającą jednostki Organizacyjnej, do którego chcesz używać z klastrem usługi HDInsight. Na przykład: OU = HDInsightOU, DC = contoso, DC = onmicrosohift, DC = com. Jeśli nie istnieje tej jednostki Organizacyjnej, klastra usługi HDInsight próbuje utworzyć jednostkę Organizacyjną, korzystając z uprawnień, który ma konto usługi. (Na przykład, jeśli konto usługi jest w grupie administratorów usługi AAD DS, ma odpowiednie uprawnienia, aby utworzyć jednostkę Organizacyjną, w przeciwnym razie należy najpierw utworzyć jednostkę Organizacyjną i najpierw nadaj konta usługi pełną kontrolę nad tej jednostce Organizacyjnej — zobacz [utworzyć jednostkę Organizacyjną na AAD-DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)).
+## <a name="create-a-domain-joined-hdinsight-cluster"></a>Tworzenie klastra HDInsight przyłączone do domeny
+
+Następnym krokiem jest do utworzenia klastra HDInsight przy użyciu usługi Azure AD DS i konto usługi, który został utworzony w poprzedniej sekcji.
+
+Łatwiej można umieścić wystąpienia usługi Azure AD DS wraz z klastrów HDInsight w tej samej sieci wirtualnej platformy Azure. Jeśli zdecydujesz się umieścić je w różnych sieciach wirtualnych, tak aby maszyny wirtualne HDInsight mają linii wzroku do kontrolera domeny do przyłączania maszyn wirtualnych musi komunikacji równorzędnej tych sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [komunikacja równorzędna sieci wirtualnych](../../virtual-network/virtual-network-peering-overview.md).
+
+Kiedy tworzysz klaster HDInsight przyłączone do domeny, należy podać następujące parametry:
+
+- **Nazwa domeny**: nazwa domeny, która jest skojarzona z usługi Azure AD DS. Przykładem jest contoso.onmicrosoft.com.
+- **Domena nazwa użytkownika**: konto usługi w domenie zarządzanej, który został utworzony w poprzedniej sekcji. Może to być na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administratorem tego klastra HDInsight.
+- **Hasło domeny**: hasło konta usługi.
+- **Jednostka organizacyjna**: nazwa wyróżniająca jednostki Organizacyjnej, która ma być używany z klastrem HDInsight. Przykładem jest OU = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Jeśli nie ma tej jednostki Organizacyjnej, klaster HDInsight próbuje utworzyć jednostkę Organizacyjną przy użyciu uprawnień, które ma konto usługi. Na przykład jeśli konto usługi jest w grupie Administratorzy usługi Azure AD DS, ma odpowiednie uprawnienia, aby utworzyć jednostkę Organizacyjną. W przeciwnym razie może być konieczne najpierw utworzyć jednostkę Organizacyjną i oferuje usługi konta pełną kontrolę nad tej jednostce Organizacyjnej. Aby uzyskać więcej informacji, zobacz [Utwórz jednostkę Organizacyjną w domenie zarządzanej usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 
     > [!IMPORTANT]
-    > Należy dołączyć wszystkie sepearated kontrolerów domeny przez przecinek po jednostki Organizacyjnej (. przykład: OU = HDInsightOU, DC = contoso, DC = onmicrosohift, DC = com).
+    > Obejmuje wszystkie kontrolery domeny, oddzielone przecinkami, po jednostki Organizacyjnej (na przykład, jednostki Organizacyjnej HDInsightOU, DC = = contoso, DC = onmicrosoft, DC = com).
 
-- **Adres URL LDAPS**: na przykład ldaps://contoso.onmicrosoft.com:636
+- **Adres URL protokołu LDAPS**: są to na przykład ldaps://contoso.onmicrosoft.com:636.
 
     > [!IMPORTANT]
-    > Wprowadź pełny adres url, w tym ldaps: / / i numer portu (: 636)
+    > Wprowadź pełny adres URL, w tym "ldaps: / /" i numer portu (: 636).
 
-- **Grupy użytkowników dostępu**: grupy zabezpieczeń użytkowników, którzy mają być synchronizowane z klastrem. Na przykład HiveUsers. Jeśli chcesz określić wiele grup użytkowników, oddziel je przecinkami ','.
+- **Dostęp do grupy użytkowników**: grup zabezpieczeń, której użytkownicy mają być synchronizowane z klastrem. Na przykład HiveUsers. Jeśli chcesz określić wiele grup użytkowników, oddziel je średnikami ";".
  
-Poniższy zrzut ekranu przedstawia konfiguracje w portalu Azure:
+Poniższy zrzut ekranu przedstawia konfiguracje w witrynie Azure portal:
 
-![Azure HDInsight przyłączonych do domeny konfiguracji usług domenowych w usłudze Active Directory](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
+![Usługa Azure HDInsight przyłączone do domeny Active Directory Domain Services konfiguracji](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby znaleźć informacje na temat konfigurowania zasad Hive i uruchamiania kwerend Hive, zobacz [Konfigurowanie zasad usługi Hive dla przyłączonych do domeny klastrów usługi HDInsight](apache-domain-joined-run-hive.md).
-* Aby uzyskać przy użyciu protokołu SSH, aby połączyć się z klastrami HDInsight przyłączonych do domeny, zobacz [używanie SSH z opartą na systemie Linux platformą Hadoop w usłudze HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Konfigurowanie zasad usługi Hive i uruchamiania zapytań programu Hive, zobacz [Konfigurowanie zasad usługi Hive dla przyłączonych do domeny klastrów HDInsight](apache-domain-joined-run-hive.md).
+* Aby uzyskać przy użyciu protokołu SSH, aby połączyć się z przyłączonym do domeny klastrami HDInsight, zobacz [używanie protokołu SSH z opartą na systemie Linux platformą Hadoop w HDInsight z systemów Linux, Unix lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 

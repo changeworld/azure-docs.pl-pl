@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 43b232e612f2ea4b47789e29a7f241bf4c35271d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 91302f21f3b3f9db50dc0c930a4cdfc02749d151
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100125"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951009"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (platforma .NET Core i program Visual Studio)
 
@@ -31,7 +31,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.9.6 w regionach EastUS, WestEurope lub CanadaEast z włączonym routingiem aplikacji protokołu HTTP.
+- Klaster Kubernetes z uruchomioną platformą Kubernetes 1.10.3 w regionach EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral lub CanadaEast z włączonym routingiem aplikacji protokołu HTTP.
 
   ![Pamiętaj, aby włączyć routing aplikacji protokołu HTTP.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -117,4 +117,4 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](get-started-netcore-visualstudio.md#call-another-container)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](team-development-netcore-visualstudio.md)

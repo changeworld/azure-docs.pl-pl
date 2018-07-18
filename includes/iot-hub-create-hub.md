@@ -9,40 +9,40 @@ ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9a29406b92f7d2e2ce8171974efb5a264e112d1d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371154"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38724919"
 ---
 1. Zaloguj się w witrynie [Azure Portal][lnk-portal].
 1. Wybierz pozycję **Utwórz zasób** > **Internet rzeczy** > **IoT Hub**.
    
-    ![Zrzut ekranu Azure nawigacji w portalu do Centrum IoT][1]
+    ![Zrzut ekranu przedstawiający nawigację do centrum IoT Hub w witrynie Azure Portal][1]
 
 1. W okienku **IoT Hub** wprowadź następujące informacje dotyczące centrum IoT Hub:
 
-   * **Subskrypcja**: Wybierz subskrypcję, która ma być używana do tworzenia tego Centrum IoT.
+   * **Subskrypcja**: wybierz subskrypcję, która ma zostać użyta do utworzenia tego centrum IoT Hub.
 
-   * **Grupa zasobów**: utwórz grupę zasobów do hostowania centrum IoT Hub lub użyj istniejącej grupy zasobów. Aby uzyskać więcej informacji, zobacz [używanie grup zasobów do zarządzania zasobami Azure][lnk-resource-groups].
+   * **Grupa zasobów**: utwórz grupę zasobów do hostowania centrum IoT Hub lub użyj istniejącej grupy zasobów. Aby uzyskać więcej informacji, zobacz [Używanie grup zasobów do zarządzania zasobami platformy Azure][lnk-resource-groups].
 
-   * **Region**: Wybierz najbliższą lokalizację do Ciebie.
+   * **Region**: wybierz lokalizację znajdującą się najbliżej Ciebie.
 
-   * **Nazwa**: utwórz nazwę centrum IoT Hub. Jeśli wprowadzona nazwa jest dostępny, zostanie wyświetlony zielony znacznik wyboru.
+   * **Nazwa**: utwórz nazwę centrum IoT Hub. Jeśli wprowadzona nazwa jest dostępna, zostanie wyświetlony zielony znacznik wyboru.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Centrum IoT podstawy okna][2]
+   ![Okno podstawowych informacji o centrum IoT Hub][2]
 
-2. Wybierz **dalej: rozmiaru i skali** aby kontynuować tworzenie Centrum IoT. 
+2. Wybierz pozycję **Dalej: rozmiar i skala**, aby kontynuować tworzenie centrum IoT Hub. 
 
-3. Wybierz użytkownika **warstwa cenowa i skali**. W tym artykule, wybierz **F1 – wolnego** warstwy, jeśli jest on nadal dostępny w ramach subskrypcji. Aby uzyskać więcej informacji, zobacz [Ceny i warstwa skalowania][lnk-pricing].
+3. Wybierz wartość pozycji **Warstwa cenowa i warstwa skali**. Na potrzeby tego artykułu wybierz warstwę **F1 — Bezpłatna**, jeśli jest ona nadal dostępna w ramach subskrypcji. Aby uzyskać więcej informacji, zobacz [Ceny i warstwa skalowania][lnk-pricing].
 
-   ![Centrum IoT okna rozmiaru i skali][3]
+   ![Okno rozmiaru i skali centrum IoT Hub][3]
 
-4. Wybierz **przeglądu + Utwórz**.
+4. Wybierz pozycję **Przegląd + utwórz**.
 
-1. Przejrzyj informacje o Centrum IoT, a następnie kliknij przycisk **Utwórz**. Proces tworzenia centrum IoT Hub może potrwać kilka minut. Postępy możesz monitorować w okienku **Powiadomienia**.
+1. Przejrzyj informacje o centrum IoT Hub, a następnie kliknij pozycję **Utwórz**. Proces tworzenia centrum IoT Hub może potrwać kilka minut. Postępy możesz monitorować w okienku **Powiadomienia**.
 <!-- Images -->
 [1]: ./media/iot-hub-create-hub/create-iot-hub1.png
 [2]: ./media/iot-hub-create-hub/create-iot-hub2.png

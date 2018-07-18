@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e197a251df3f34e5416bafacfd54a3fc7f51d503
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928220"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091142"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -38,41 +38,18 @@ To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu A
 
 ### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
 
-Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim dostęp do pulpitu nawigacyjnego. Bez powiązania roli, wiersza polecenia platformy Azure zwraca błąd podobny do poniższego przykładu:
+Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim poprawnie możesz uzyskać dostęp do pulpitu nawigacyjnego. Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding] [ kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
 
-```
-error: unable to forward port because pod is not running. Current status=Pending
-```
+> [!WARNING]
+> To powiązanie przykładowych nie obejmuje wszystkie składniki dodatkowego uwierzytelniania i może prowadzić do metody use niezabezpieczone. Pulpit nawigacyjny platformy Kubernetes jest otwarta dla każda osoba z dostępem do adresu URL. Nie ujawniaj pulpit nawigacyjny platformy Kubernetes publicznie.
+>
+> Można użyć mechanizmów, takich jak tokenów elementu nośnego lub nazwy użytkownika/hasła do kontroli, kto może uzyskiwać dostęp do pulpitu nawigacyjnego i ich uprawnień. Umożliwia to bardziej bezpieczne korzystanie z pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat korzystania z różnych metod uwierzytelniania, zobacz wiki pulpitu nawigacyjnego rozwiązania Kubernetes na [kontrole dostępu][dashboard-authentication].
 
-Aby utworzyć powiązanie, Utwórz plik o nazwie *admin.yaml pulpit nawigacyjny* i wklej poniższy przykład. To przykładowe powiązanie nie ma zastosowania składników dodatkowego uwierzytelniania. Można użyć mechanizmów, takich jak tokenów elementu nośnego lub nazwy użytkownika/hasła do kontroli, kto może uzyskiwać dostęp do pulpitu nawigacyjnego i ich uprawnień. Aby uzyskać więcej informacji na temat metod uwierzytelniania, zobacz wiki pulpit nawigacyjny platformy Kubernetes w [kontrole dostępu][dashboard-authentication].
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-```
-
-Zastosuj powiązanie o [zastosować kubectl] [ kubectl-apply] i określ swoje *admin.yaml pulpit nawigacyjny*, jak pokazano w poniższym przykładzie:
-
-```
-$ kubectl apply -f dashboard-admin.yaml
-
-clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+```console
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
 Pulpit nawigacyjny rozwiązania Kubernetes można teraz uzyskać dostęp w klastrze z włączoną funkcją RBAC. Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks] [ az-aks-browse] polecenia zgodnie z opisem w poprzednim kroku.
-
 
 ## <a name="run-an-application"></a>Uruchamianie aplikacji
 
@@ -120,6 +97,7 @@ Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kube
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->

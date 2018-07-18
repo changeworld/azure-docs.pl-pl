@@ -1,45 +1,48 @@
 ---
 title: Zarządzanie grupami baz danych Azure SQL | Dokumentacja firmy Microsoft
-description: Przeprowadzenie tworzenie i zarządzanie elastycznej zadania.
+description: Przeprowadzenie tworzenia i zarządzania nimi elastycznych zadań.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: 4a25543fd9cbcd0928f06419c6ddb9b5ed2e2488
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645287"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093141"
 ---
-# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Tworzenie i zarządzanie nimi skalowanej baz danych SQL Azure za pomocą zadania elastyczne (wersja zapoznawcza)
+# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Tworzenie i zarządzanie nimi skalowanych w poziomie bazy danych SQL Azure za pomocą zadań elastycznych (wersja zapoznawcza)
 
 
-**Zadania elastyczne bazy danych** uprościć zarządzanie grupy baz danych, wykonując operacje administracyjne, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych odwołania, gromadzenia danych wydajności lub telemetrii dzierżawy (klienta) Kolekcja. Zadania elastyczne bazy danych jest obecnie dostępna za pośrednictwem portalu Azure i poleceń cmdlet programu PowerShell. Niemniej jednak Azure powierzchni portalu zmniejszony ograniczone do wykonania dla wszystkich baz danych w funkcji [puli elastycznej (wersja zapoznawcza)](sql-database-elastic-pool.md). Dostęp do dodatkowych funkcji i wykonywanie skryptów między grupą baz danych w tym niestandardowy kolekcji lub fragmentacji Ustaw (utworzony za pomocą [biblioteki klienta elastycznej bazy danych](sql-database-elastic-scale-introduction.md)), zobacz [tworzenie i zarządzanie nimi zadania przy użyciu programu PowerShell](sql-database-elastic-jobs-powershell.md). Aby uzyskać więcej informacji o zadaniach, zobacz [omówienie zadania elastycznej bazy danych](sql-database-elastic-jobs-overview.md). 
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Zadania elastic Database** uprościć zarządzanie grupami baz danych, wykonując operacje administracyjne, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbierania danych o wydajności lub dane telemetryczne dzierżaw (klientów) Kolekcja. Zadania elastic Database jest obecnie dostępna za pośrednictwem witryny Azure portal i poleceń cmdlet programu PowerShell. Jednakże powierzchnie portalu Azure zmniejszona ograniczone do wykonania dla wszystkich baz danych w funkcji [puli elastycznej](sql-database-elastic-pool.md). Dostęp do dodatkowych funkcji i wykonywania skryptów w grupie baz danych w tym kolekcji niestandardowy lub fragment zestawu (utworzone za pomocą [Biblioteka kliencka Elastic Database](sql-database-elastic-scale-introduction.md)), zobacz [tworzenie i zarządzanie nimi zadania przy użyciu programu PowerShell](sql-database-elastic-jobs-powershell.md). Aby uzyskać więcej informacji o zadaniach, zobacz [Przegląd zadań Elastic Database](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
-* Puli elastycznej. Zobacz [o pule elastyczne](sql-database-elastic-pool.md).
-* Instalacja składników usługi zadania elastycznej bazy danych. Zobacz [instalowania usługi zadania elastycznej bazy danych](sql-database-elastic-jobs-service-installation.md).
+* Subskrypcja platformy Azure. Bezpłatnej wersji próbnej, zobacz [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Pula elastyczna. Zobacz [o elastycznych pulach](sql-database-elastic-pool.md).
+* Instalowanie składników usługi zadania elastycznych baz danych. Zobacz [Instalowanie usługi zadania elastycznych baz danych](sql-database-elastic-jobs-service-installation.md).
 
-## <a name="creating-jobs"></a>Tworzenie zadania
-1. Przy użyciu [portalu Azure](https://portal.azure.com), z istniejącej elastycznej puli baz danych zadania, kliknij przycisk **Utwórz zadanie**.
-2. Wpisz nazwę użytkownika i hasło administratora bazy danych (utworzone podczas instalacji zadania) dla bazy danych kontroli zadania (magazynu metadanych dla zadania).
+## <a name="creating-jobs"></a>Tworzenie zadań
+1. Za pomocą [witryny Azure portal](https://portal.azure.com), z istniejącej puli zadania elastycznych baz danych, kliknij przycisk **zadania Utwórz**.
+2. Wpisz nazwę użytkownika i hasło administratora bazy danych (utworzona podczas instalacji zadania) dla bazy danych kontroli zadania (Magazyn metadanych dla zadań).
    
-    ![Nazwa zadania, wpisz lub Wklej w kodzie i kliknij przycisk Uruchom][1]
-3. W **Utwórz zadanie** bloku, wpisz nazwę zadania.
-4. Wpisz nazwę użytkownika i hasło, aby połączyć się z docelowymi bazami danych z wystarczającymi uprawnieniami do pomyślnego wykonania skryptów.
-5. Wklej lub typ skryptu T-SQL.
-6. Kliknij przycisk **zapisać** , a następnie kliknij przycisk **Uruchom**.
+    ![Nadaj nazwę zadaniu, wpisz lub Wklej kod i kliknij przycisk Uruchom][1]
+3. W **Utwórz zadanie** bloku, wpisz nazwę dla zadania.
+4. Wpisz nazwę użytkownika i hasło, aby nawiązać połączenie z docelowymi bazami danych z wystarczającymi uprawnieniami do pomyślnego wykonania skryptów.
+5. Wklej lub wpisz skryptu T-SQL.
+6. Kliknij przycisk **Zapisz** a następnie kliknij przycisk **Uruchom**.
    
-    ![Tworzenie zadań i uruchom][5]
+    ![Tworzenie zadań i uruchamianie][5]
 
-## <a name="run-idempotent-jobs"></a>Uruchamianie zadań idempotentności
-Po uruchomieniu skryptu na podstawie zestawu baz danych, należy się upewnić, że skrypt jest idempotentności. Oznacza to, że skryptu musi być można uruchamiać wielokrotnie, nawet jeśli go nie powiodło się przed niekompletna. Na przykład, jeśli skrypt zakończy się niepowodzeniem, zadanie będzie automatycznie ponawiana dopóki próba powiedzie się (w granicach, jako retry logiki ostatecznie przestaną ponawianie próby). Sposób, w tym celu jest użycie klauzuli "Jeśli ISTNIEJE" i usunąć wszystkie znalezione wystąpienia przed utworzeniem nowego obiektu. Przykładem jest następujący:
+## <a name="run-idempotent-jobs"></a>Uruchamianie zadań idempotentne
+Jeśli uruchamiasz skrypt zestawu baz danych, należy się upewnić, że skrypt jest idempotentny. Oznacza to, że skryptu musi być można uruchamiać wiele razy, nawet wtedy, gdy go nie powiodła się przed niekompletna. Na przykład, jeśli skrypt zakończy się niepowodzeniem, zadanie zostanie automatycznie ponowione aż do skutku (w granicach, jako ponownych prób logiki po pewnym czasie przestanie ponawianie próby). Sposobem wykonania tych czynności jest użycie klauzuli "Jeśli ISTNIEJE" i Usuń wszystkie znalezione wystąpienia przed utworzeniem nowego obiektu. Poniżej przedstawiono przykład:
 
     IF EXISTS (SELECT name FROM sys.indexes
             WHERE name = N'IX_ProductVendor_VendorID')
@@ -48,7 +51,7 @@ Po uruchomieniu skryptu na podstawie zestawu baz danych, należy się upewnić, 
     CREATE INDEX IX_ProductVendor_VendorID
     ON Purchasing.ProductVendor (VendorID);
 
-Alternatywnie można użyć klauzuli "Jeśli nie ISTNIEJE" przed utworzeniem nowego wystąpienia:
+Można również użyć klauzuli "Jeśli nie ISTNIEJE" przed utworzeniem nowego wystąpienia:
 
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
     BEGIN
@@ -62,7 +65,7 @@ Alternatywnie można użyć klauzuli "Jeśli nie ISTNIEJE" przed utworzeniem now
     INSERT INTO TestTable(InsertionTime) VALUES (sysutcdatetime());
     GO
 
-Ten skrypt aktualizacji następnie tabeli utworzone wcześniej.
+Ten skrypt następnie aktualizuje tabelę utworzoną wcześniej.
 
     IF NOT EXISTS (SELECT columns.name FROM sys.columns INNER JOIN sys.tables on columns.object_id = tables.object_id WHERE tables.name = 'TestTable' AND columns.name = 'AdditionalInformation')
     BEGIN
@@ -78,14 +81,14 @@ Ten skrypt aktualizacji następnie tabeli utworzone wcześniej.
 
 
 ## <a name="checking-job-status"></a>Sprawdzanie stanu zadania
-Po rozpoczęciu zadania, można sprawdzić jego postępu.
+Po rozpoczęciu zadania, można sprawdzić postęp.
 
-1. Na stronie puli elastycznej kliknij **zarządzać zadaniami**.
+1. Na stronie elastycznej puli, kliknij **Zarządzanie zadaniami**.
    
     ![Kliknij pozycję "Zarządzaj zadania"][2]
-2. Kliknij nazwę () zadania. **Stan** może być "Ukończone" lub "Nie powiodło się." Szczegóły zadania zostaną wyświetlone (b) z jego datę i godzinę tworzenia i uruchamiania. Listy (c) poniżej się, że będzie wyświetlany postęp skryptu dla każdej bazy danych w puli, podając jego szczegóły daty i godziny.
+2. Kliknij nazwę () zadania. **Stan** może być "Ukończone" lub "Nie powiodło się." Szczegóły zadania są wyświetlane (b) za pomocą jego datę i godzinę tworzenia i uruchamiania. Listy (c) poniżej przedstawia postęp skryptu dla każdej bazy danych w puli, dzięki czemu jego szczegóły daty i godziny.
    
-    ![Zakończono zadania sprawdzania][3]
+    ![Sprawdzanie zakończone zadania][3]
 
 ## <a name="checking-failed-jobs"></a>Sprawdzanie zadania zakończone niepowodzeniem
 Jeśli zadanie nie powiedzie się, można znaleźć w dzienniku wykonywania. Kliknij nazwę zadania nie powiodło się, aby wyświetlić jego szczegóły.

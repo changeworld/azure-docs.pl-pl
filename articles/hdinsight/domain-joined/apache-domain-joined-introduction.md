@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight — klastry usługi HDInsight przyłączonych do domeny —
-description: Dowiedz się...
+title: Wprowadzenie do zabezpieczeń usługi Hadoop z przyłączonym do domeny klastrów usługi Azure HDInsight
+description: Dowiedz się, jak przyłączonych do domeny usługi Azure HDInsight klastry obsługują cztery filarów zabezpieczeń przedsiębiorstwa.
 services: hdinsight
 author: omidm1
 manager: jhubbard
@@ -12,44 +12,59 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 6f2c41aff8aaa389a8f2288cbb445e1ba2e7fd14
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019492"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112540"
 ---
-# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Wprowadzenie do zabezpieczeń Hadoop z klastrami HDInsight przyłączonych do domeny
+# <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Wprowadzenie do zabezpieczeń usługi Hadoop przy użyciu klastrów HDInsight przyłączone do domeny
 
-Do tej pory usługa Azure HDInsight obsługiwała tylko jednego użytkownika z uprawnieniami lokalnego administratora. Bardzo dobrze funkcjonowało to dla mniejszych zespołów aplikacji lub działów. Jako Hadoop oparte na obciążeń zdobytych więcej popularne sektora przedsiębiorstwa, potrzebę funkcji klasy przedsiębiorstwa, takich jak active directory uwierzytelniania, obsługa wielu użytkowników i kontroli dostępu opartej na rolach stał się coraz bardziej ważne. Za pomocą przyłączonych do domeny klastrów usługi HDInsight można utworzyć klaster usługi HDInsight przyłączony do domeny usługi Active Directory i skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pomocą usługi Azure Active Directory podczas logowania się do klastra usługi HDInsight. Żadna osoba spoza przedsiębiorstwa nie może zalogować się lub uzyskać dostępu do klastra usługi HDInsight. Administratorzy przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach dla gałęzi zabezpieczeń przy użyciu [zakres Apache](http://hortonworks.com/apache/ranger/), w związku z tym ograniczanie dostępu do danych tylko jako wymagane. Poza tym administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian w zasadach kontroli dostępu, osiągając w ten sposób wysoki poziom nadzoru nad zasobami firmy.
+W przeszłości, Azure HDInsight obsługuje tylko jednego użytkownika: administratora lokalnego. Bardzo dobrze funkcjonowało to dla mniejszych zespołów aplikacji lub działów. Jak obciążeń opartych na usłudze Hadoop zwiększania popularności w sektorze przedsiębiorstw potrzeba do obsługi funkcji przeznaczonych dla przedsiębiorstw, takich jak uwierzytelnianie oparte na usłudze Active Directory, wielu użytkowników i kontroli dostępu opartej na rolach, staje się coraz ważniejsza. 
+
+Można utworzyć klaster usługi HDInsight, który jest przyłączony do domeny usługi Active Directory. Następnie można skonfigurować listę pracowników przedsiębiorstwa, którzy mogą uwierzytelniać się za pośrednictwem usługi Azure Active Directory do logowania do klastra HDInsight. Żadna osoba spoza przedsiębiorstwa nie może zalogować się lub uzyskać dostęp do klastra HDInsight. 
+
+Administrator przedsiębiorstwa można skonfigurować kontroli dostępu opartej na rolach (RBAC) dla zabezpieczeń Hive przy użyciu [struktury Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurowanie funkcji RBAC ogranicza dostęp do danych tylko potrzebne elementy. Na koniec administrator może przeprowadzać inspekcje dostępu do danych przez pracowników oraz wszystkich zmian zasad kontroli dostępu. Administrator może następnie osiągnąć wysoki stopień nadzoru nad zasobami firmy.
 
 > [!NOTE]
-> Nowe funkcje opisane w tym artykule są dostępne w wersji zapoznawczej tylko na następujące typy klastrów: Hadoop, Spark i interaktywne zapytania. Oozie jest teraz włączony w klastrach przyłączonych do domeny. Aby uzyskać dostęp do Oozie użytkowników interfejsu użytkownika sieci web należy włączyć [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md)
+> Nowe funkcje opisane w tym artykule są dostępne w wersji zapoznawczej tylko w następujących typów klastrów: Hadoop, Spark i interakcyjnych zapytań. Oozie jest teraz włączony na klastry przyłączone do domeny. Aby uzyskać dostęp do interfejsu użytkownika sieci web programu Oozie, należy włączyć użytkowników [tunelowania](../hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="benefits"></a>Korzyści
-Enterprise zabezpieczeń zawiera cztery główne słupków — granicznej zabezpieczeń, uwierzytelniania, autoryzacji i szyfrowania.
+Zabezpieczenia przedsiębiorstwa składają się czterech głównych filarów: zabezpieczenia brzegowe, uwierzytelnianie, autoryzacja i szyfrowanie.
 
-![Filary korzyści z zastosowania przyłączonych do domeny klastrów usługi HDInsight](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png).
+![Korzyści z przyłączonym do domeny klastrów HDInsight w czterech filarach zabezpieczeń przedsiębiorstwa](./media/apache-domain-joined-introduction/hdinsight-domain-joined-four-pillars.png).
 
-### <a name="perimeter-security"></a>Zabezpieczenia brzegowe
-Zabezpieczenia brzegowe w usłudze HDInsight są realizowane za pomocą sieci wirtualnych i usługi bramy. Obecnie administrator przedsiębiorstwa można tworzenia klastra usługi HDInsight w sieci wirtualnej i używać grup zabezpieczeń sieci (reguł zapory) do ograniczania dostępu do sieci wirtualnej. Tylko adresy IP określone w regułach zapory dla ruchu przychodzącego będą mogły nawiązać połączenia z klastrem usługi HDInsight, zapewniając w ten sposób działanie zabezpieczeń brzegowych. Inna warstwa zabezpieczeń brzegowych jest realizowana przy użyciu usługi bramy. Brama jest usługi, która działa jako pierwszą linię obrony dla wszystkie żądania przychodzące do klastra usługi HDInsight. Akceptuje żądanie, sprawdza jego poprawność, a następnie zezwala na przekazanie go do innych węzłów w klastrze, zapewniając w ten sposób zabezpieczenia brzegowe dla innych węzłów nazw i danych w klastrze.
+## <a name="perimeter-security"></a>Zabezpieczenia brzegowe
+Zabezpieczenia brzegowe w HDInsight odbywa się za pośrednictwem sieci wirtualne i usługi Azure VPN Gateway. Administrator przedsiębiorstwa może utworzyć klaster usługi HDInsight wewnątrz sieci wirtualnej i Użyj grup zabezpieczeń sieci (reguły zapory), aby ograniczyć dostęp do sieci wirtualnej. Tylko adresy IP określone w regułach zapory dla ruchu przychodzącego będzie można nawiązać połączenia z klastrem HDInsight. Ta konfiguracja zapewnia zabezpieczenia brzegowe.
 
-### <a name="authentication"></a>Authentication
-Administrator przedsiębiorstwa może utworzyć klaster HDInsight przyłączonych do domeny w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Węzły klastra usługi HDInsight zostaną dołączone do domeny zarządzanej przez przedsiębiorstwo. Jest to realizowane poprzez użycie [usług Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). Wszystkie węzły w klastrze są przyłączone do domeny, którą zarządza przedsiębiorstwo. W przypadku takiej konfiguracji pracownicy przedsiębiorstwa mogą logować się do węzłów klastra przy użyciu poświadczeń domeny. Mogą również wykorzystać swoich poświadczeń domeny do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoki Ambari, ODBC JDBC, programu PowerShell i interfejsów API REST na interakcję z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników wchodzących w interakcję z klastrem za pośrednictwem tych punktów końcowych.
+Kolejna warstwa zabezpieczeń brzegowych odbywa się za pośrednictwem usługi bramy sieci VPN. Brama działa jako pierwsza linia obrony w przypadku wszystkich żądań przychodzących do klastra HDInsight. Go akceptuje żądanie, sprawdza jego poprawność, a następnie zezwala na przekazanie go do innych węzłów w klastrze. W ten sposób brama zapewnia zabezpieczenia brzegowe dla innych węzłów nazw i danych w klastrze.
 
-### <a name="authorization"></a>Autoryzacja
-Najlepsze rozwiązanie stosowane przez większość przedsiębiorstw polega na tym, że nie każdy pracownik ma dostęp do wszystkich zasobów organizacji. Podobnie w tym wydaniu Administrator można zdefiniować zasady kontroli dostępu opartej na rolach dla zasobów klastra. Na przykład administrator może skonfigurować środowisko [Apache Ranger](http://hortonworks.com/apache/ranger/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia, że pracownicy będą mieli dostęp tylko do tych danych, które są im potrzebne do skutecznego wykonywania swoich zadań. Także dostęp do klastra przy użyciu protokołu SSH jest ograniczony tylko do administratora.
+## <a name="authentication"></a>Authentication
+Administrator przedsiębiorstwa może utworzyć klaster HDInsight przyłączone do domeny w [sieci wirtualnej](https://azure.microsoft.com/services/virtual-network/). Wszystkie węzły klastra HDInsight są przyłączone do domeny, którą zarządza przedsiębiorstwo. Jest to osiągane za pośrednictwem [usługi Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-### <a name="auditing"></a>Inspekcja
-Wraz z ochroną zasobów klastra usługi HDInsight przed dostępem ze strony nieautoryzowanych użytkowników oraz zabezpieczaniem danych niezbędna jest inspekcja wszystkich przypadków dostępu do zasobów klastra i danych w celu śledzenia prób nieautoryzowanego lub niezamierzonego dostępu do zasobów. Administrator można wyświetlać i zgłoś dostęp do danych i zasobów klastra usługi HDInsight. Administrator może także przeglądać i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu poprzez punkty końcowe obsługiwane przez środowisko Apache Ranger. Przyłączony do domeny klaster usługi HDInsight używa znanego interfejsu użytkownika środowiska Apache Ranger do wyszukiwania dzienników inspekcji. W wewnętrznej bazie danych do przechowywania i wyszukiwania dzienników środowisko Ranger używa rozwiązania [Apache Solr](http://hortonworks.com/apache/solr/).
+W przypadku takiej konfiguracji pracownicy przedsiębiorstwa mogą logować do węzłów klastra przy użyciu swoich poświadczeń domeny. Mogą również użyć poświadczeń domeny, do uwierzytelniania za pomocą innych zatwierdzonych punktów końcowych, takich jak widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST do interakcji z klastrem. Administrator ma pełną kontrolę nad ograniczaniem liczby użytkowników, którzy współpracują z klastrem za pośrednictwem tych punktów końcowych.
 
-### <a name="encryption"></a>Szyfrowanie
-Ochrona danych ma duże znaczenie dla spełniania wymagań organizacyjnych w zakresie zgodności z przepisami i zabezpieczeń, dlatego poza ograniczaniem dostępu do danych przez nieautoryzowanych pracowników powinna uwzględniać również ich szyfrowanie. Oba rodzaje magazynów danych dla klastrów usługi HDInsight, czyli magazyn usługi Azure Storage Blob i magazyn usługi Azure Data Lake, obsługują przezroczyste [szyfrowanie danych](../../storage/common/storage-service-encryption.md) po stronie serwera w odniesieniu do danych magazynowanych. Bezpiecznych klastrów HDInsight bezproblemowo będzie działać z szyfrowania po stronie serwera danych na możliwość rest.
+## <a name="authorization"></a>Autoryzacja
+Najlepszym rozwiązaniem należy wykonać większość przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów organizacji. Analogicznie administrator może zdefiniować zasady kontroli dostępu opartej na rolach dla zasobów klastra. 
+
+Na przykład administrator może skonfigurować środowisko [Apache Ranger](http://hortonworks.com/apache/ranger/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia, że pracownicy mogą uzyskać dostęp tylko tych danych, musi być skutecznego wykonywania swoich zadań. Dostęp protokołu SSH z klastrem również jest ograniczony do tylko przez administratora.
+
+## <a name="auditing"></a>Inspekcja
+Inspekcja wszystkich dostępu do zasobów klastra i danych, jest niezbędne do śledzenia prób nieautoryzowanego lub niezamierzonego dostępu do zasobów. Jest tak ważna jak ochrona zasobów klastra HDInsight przed nieautoryzowanymi użytkownikami oraz zabezpieczaniem danych. 
+
+Administrator można przeglądać i raportować wszystkie przypadki dostępu do danych i zasobów klastra usługi HDInsight. Administrator można przeglądać i raportować wszystkie zmiany wprowadzane do zasad kontroli dostępu, które są tworzone w struktury Apache Ranger obsługiwanych punktów końcowych. 
+
+Klaster HDInsight przyłączone do domeny używa znanego użytkownika Apache Ranger do wyszukiwania dzienników inspekcji. Na zapleczu, środowisko Ranger używa [Apache Solr](http://hortonworks.com/apache/solr/) do przechowywania i wyszukiwania dzienników.
+
+## <a name="encryption"></a>Szyfrowanie
+Ochrona danych jest ważne dla spotkania zabezpieczeń i zgodności wymagań organizacyjnych. Poza ograniczaniem dostępu do danych nieautoryzowanych pracowników, należy go zaszyfrować. 
+
+Magazyny danych, zarówno w przypadku klastrów HDInsight — usługi Azure Blob storage i Azure Data Lake magazynu Gen1 — obsługę przezroczystego po stronie serwera [szyfrowanie danych](../../storage/common/storage-service-encryption.md) magazynowanych. Zabezpieczonych klastrów HDInsight funkcjonuje bezproblemowo przy użyciu tej funkcji po stronie serwera szyfrowanie danych magazynowanych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Planowanie przyłączonych do domeny w usłudze hdinsight](apache-domain-joined-architecture.md).
-* [Konfigurowanie klastrów HDInsight przyłączonych do domeny](apache-domain-joined-configure.md).
-* [Zarządzanie klastrami HDInsight przyłączonych do domeny](apache-domain-joined-manage.md).
-* [Konfigurowanie zasad gałęzi dla klastrów HDInsight przyłączonych do domeny](apache-domain-joined-run-hive.md).
-* [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Planowanie klastrów HDInsight przyłączone do domeny](apache-domain-joined-architecture.md)
+* [Konfigurowanie przyłączonych do domeny klastrów HDInsight](apache-domain-joined-configure.md)
+* [Zarządzanie klastrami HDInsight przyłączone do domeny](apache-domain-joined-manage.md)
+* [Konfigurowanie zasad usługi Hive dla przyłączonych do domeny klastrów HDInsight](apache-domain-joined-run-hive.md)
+* [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
 

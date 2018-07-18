@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 4c7487957e6dc354c2b8aa1beb8a9ca1e9651c97
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0901abe6f973d525220c948f8c32c0b4f342b11a
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346124"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092090"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a baza danych programu SQL Server 
 
@@ -125,7 +125,7 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Yes |
 | [Program SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [zdarzeniom rozszerzonym](sql-database-xevent-db-diff-from-svr.md) | Yes |
-| [Replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) |
+| [Replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | Tak — [replikację za pomocą wystąpienia zarządzanego SQL Database (publiczna wersja zapoznawcza)](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nie — [zobaczyć usługę Power BI](https://docs.microsoft.com/power-bi/) | Nie — [zobaczyć usługę Power BI](https://docs.microsoft.com/power-bi/) |
 | [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Yes | Yes |
 | [Systemowe funkcje składowane](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [składowane, funkcje, wyzwala różnice](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
@@ -142,7 +142,7 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [Windows Server Failover Clustering](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) |
 | [Indeksy XML](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Yes | Yes |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacje na temat usługi Azure SQL Database, zobacz [Co to jest SQL Database?](sql-database-technical-overview.md)
 - Aby uzyskać informacje na temat wystąpienia zarządzanego, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md).

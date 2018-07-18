@@ -1,6 +1,6 @@
 ---
 title: Wbudowane role na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Wyświetla listę akcji, notActions, elementy dataActions i notDataActions.
+description: W tym artykule opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC) na platformie Azure. Wyświetla listę akcji, NotActions, elementy DataActions i NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,20 +15,20 @@ ms.date: 06/28/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c5624de13d5d31320beb85aff67c61addaffcbea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437930"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116082"
 ---
 # <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne [ról niestandardowych](custom-roles.md).
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
 
 Wbudowane role zawsze wciąż ewoluuje. Aby uzyskać najnowsze definicje ról, użyj [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) lub [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list).
 
 ## <a name="built-in-role-descriptions"></a>Opisy ról wbudowanych
-Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, aby wyświetlić listę `actions`, `notActions`, `dataActions`, i `notDataActions` dla każdej roli.
+Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, aby wyświetlić listę `Actions`, `NotActions`, `DataActions`, i `NotDataActions` dla każdej roli.
 
 
 | Wbudowana rola | Opis |

@@ -1,6 +1,6 @@
 ---
-title: Analizowanie zabezpieczeń sieci z widokiem grupy obserwatorów zabezpieczeń Azure sieci - interfejsu API REST | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób analizowania zabezpieczeń maszyn wirtualnych z widokiem grupy zabezpieczeń przy użyciu programu PowerShell.
+title: Analizowanie zabezpieczeniami sieci na platformie Azure obserwatora widok sieciowych grup zabezpieczeń — interfejs API REST | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób analizować zabezpieczenia maszyn wirtualnych przy użyciu widoku grupy zabezpieczeń za pomocą programu PowerShell.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,34 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0eec45630fe3467db26620787038f6dd5a05cc72
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0fd96f9bd3027568e81e9c56ddb095297c699683
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23864322"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089778"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analizowanie zabezpieczeń maszyny wirtualnej z widoku grupy zabezpieczeń przy użyciu interfejsu API REST
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analizowanie zabezpieczeń maszyny wirtualnej przy użyciu widoku grupy zabezpieczeń przy użyciu interfejsu API REST
 
 > [!div class="op_single_selector"]
 > - [Program PowerShell](network-watcher-security-group-view-powershell.md)
-> - [Interfejs wiersza polecenia 1.0](network-watcher-security-group-view-cli-nodejs.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-security-group-view-cli.md)
+> - [Interfejs wiersza polecenia platformy Azure](network-watcher-security-group-view-cli.md)
 > - [Interfejs API REST](network-watcher-security-group-view-rest.md)
 
-Widok grupy zabezpieczeń zwraca reguły zabezpieczeń sieci skonfigurowane i skuteczne, które są stosowane do maszyny wirtualnej. Ta funkcja jest przydatna do inspekcji i diagnostyki sieciowych grup zabezpieczeń i reguł, które są skonfigurowane na maszynie Wirtualnej dla zapewnienia ruchu jest poprawnie dozwolony lub niedozwolony. W tym artykule firma Microsoft opisano, jak pobrać zasady zabezpieczeń skuteczne i zastosowane do maszyny wirtualnej przy użyciu interfejsu API REST
+Widok grup zabezpieczeń zwraca reguły zabezpieczeń sieci skonfigurowane i obowiązujące, które są stosowane do maszyny wirtualnej. Ta możliwość jest przydatna do inspekcji i diagnozowania sieciowych grup zabezpieczeń i reguł, które są skonfigurowane na maszynie Wirtualnej, aby upewnić się, ruch jest prawidłowo dozwolony lub blokowany. W tym artykule pokazujemy, jak można pobrać reguł zabezpieczeń efektywny i zastosowane do maszyny wirtualnej przy użyciu interfejsu API REST
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu można wywołać interfejsu API Rest obserwatora sieciowego można pobrać widoku grupy zabezpieczeń dla maszyny wirtualnej. ARMclient służy do wywołania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na chocolatey w [ARMClient na Chocolatey](https://chocolatey.org/packages/ARMClient)
+W tym scenariuszu możesz wywołać interfejs API Rest obserwatora sieci można pobrać widoku grupy zabezpieczeń dla maszyny wirtualnej. ARMclient jest używane do wywołania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na chocolatey na [ARMClient na narzędzia Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-W tym scenariuszu przyjęto zostały już wykonane kroki przedstawione w [utworzyć obserwatora sieciowego](network-watcher-create.md) utworzyć obserwatora sieciowego. Scenariusz również założono, że grupa zasobów o prawidłową maszynę wirtualną istnieje ma być używany.
+W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisane w [utworzyć usługę Network Watcher](network-watcher-create.md) utworzyć usługę Network Watcher. Scenariusz również założenie, że grupa zasobów o prawidłową maszyna wirtualna istnieje ma być używany.
 
 ## <a name="scenario"></a>Scenariusz
 
-Scenariusz omówione w tym artykule pobiera reguły zabezpieczeń skuteczne i zastosowane dla podanej maszyny wirtualnej.
+Scenariusz, w tym artykule pobiera zasady zabezpieczeń efektywny i zastosowanych dla danej maszyny wirtualnej.
 
-## <a name="log-in-with-armclient"></a>Zaloguj się za pomocą ARMClient
+## <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
 
 ```PowerShell
 armclient login
@@ -49,9 +48,9 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Pobieranie maszyny wirtualnej
 
-Uruchom następujący skrypt, aby zwrócić wirtualnego machineThe następujący kod wymaga zmiennych:
+Poniższy kod, uruchom następujący skrypt, aby zwrócić machineThe wirtualnego musi zmienne:
 
-- **Identyfikator subskrypcji** — identyfikator subskrypcji można również pobrać z **Get-AzureRMSubscription** polecenia cmdlet.
+- **subscriptionId** — identyfikator subskrypcji można również pobrać za pomocą **Get-AzureRMSubscription** polecenia cmdlet.
 - **resourceGroupName** — Nazwa grupy zasobów, która zawiera maszyny wirtualne.
 
 ```powershell
@@ -61,7 +60,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Informacje potrzebne jest **identyfikator** w obszarze typu `Microsoft.Compute/virtualMachines` w odpowiedzi, jak pokazano w poniższym przykładzie:
+Informacje, które jest wymagane jest **identyfikator** typ `Microsoft.Compute/virtualMachines` w odpowiedzi, jak pokazano w poniższym przykładzie:
 
 ```json
 ...,
@@ -93,7 +92,7 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 
 ## <a name="get-security-group-view-for-virtual-machine"></a>Pobierz widok grupy zabezpieczeń dla maszyny wirtualnej
 
-Poniższy przykład żądań widok grupy zabezpieczeń docelowej maszyny wirtualnej. Wyniki z tego przykładu może służyć do porównania zasad i zdefiniowanych przez inicjowanie do wyszukania odejście konfiguracji zabezpieczeń.
+Poniższy przykład żądań widok grup zabezpieczeń, docelowej maszyny wirtualnej. Wyniki z tego przykładu może służyć do porównania z zasadami i zdefiniowanych przez pochodzenia do wyszukania nieaktualną konfigurację zabezpieczeń.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -110,9 +109,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/securityGroupView?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="view-the-response"></a>Widok odpowiedzi
+## <a name="view-the-response"></a>Wyświetlanie odpowiedzi
 
-Poniższy przykład jest odpowiedź zwrócona z poprzedniego polecenia. Wyniki Pokaż wszystkie reguły zabezpieczeń skuteczne i zastosowane na maszynie wirtualnej podziale grupy **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, i **EffectiveSecurityRules**.
+Następujące przykładowe dane stanowią odpowiedź zwrócona z poprzedniego polecenia. Wyniki pokazują wszystkich reguł zabezpieczeń efektywny i zastosowane na maszynie wirtualnej w grupach w podziale **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, i  **EffectiveSecurityRules**.
 
 ```json
 
@@ -182,6 +181,6 @@ Poniższy przykład jest odpowiedź zwrócona z poprzedniego polecenia. Wyniki P
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź stronę [inspekcji sieci zabezpieczeń grupy (NSG) z obserwatora sieciowego](network-watcher-security-group-view-powershell.md) sposób automatyzacji sprawdzania poprawności grup zabezpieczeń sieci.
+Odwiedź stronę [inspekcji sieciowych grup zabezpieczeń przy użyciu usługi Network Watcher](network-watcher-security-group-view-powershell.md) dowiesz się, jak zautomatyzować Weryfikacja sieciowych grup zabezpieczeń.
 
 

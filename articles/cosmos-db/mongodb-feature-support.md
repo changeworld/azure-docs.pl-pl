@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 9202e8eb328f098f7ab68a18f4629a95ecc10991
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2c86cbe2ac9a0611873aca35480af92304abe5b5
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796359"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37928696"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB dla funkcji i składni bazy danych MongoDB
 
@@ -23,14 +23,19 @@ Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firm
 
 Używając interfejsu API bazy danych MongoDB usługi Azure Cosmos DB, można korzystać z dobrze znanych zalet interfejsów API bazy danych MongoDB oraz wszystkich funkcji na poziomie korporacyjnym dostarczanych przez usługę Azure Cosmos DB: [globalnej dystrybucji](distribute-data-globally.md), [automatycznego fragmentowania](partition-data.md), gwarancji dostępności i opóźnień, automatycznego indeksowania każdego pola, szyfrowania magazynowanego, tworzenia kopii zapasowych itd.
 
+## <a name="mongodb-protocol-support"></a>Obsługa protokołów bazy danych MongoDB
+
+Interfejs API bazy danych MongoDB w usłudze Azure Cosmos DB jest domyślnie zgodny z wersją **3.2** serwera MongoDB. Poniżej wymieniono obsługiwane operacje wraz z ewentualnymi ograniczeniami lub wyjątkami. Funkcje i operatory zapytań dodane w wersji **3.4** bazy danych MongoDB są obecnie dostępne w wersji zapoznawczej. Każdy sterownik klienta, który rozumie te protokoły, powinien umożliwiać połączenie z usługą Cosmos DB za pomocą interfejsu API bazy danych MongoDB.
+
+[Potok agregacji usługi MongoDB](#aggregation-pipeline) również jest obecnie dostępny jako oddzielna funkcja w wersji zapoznawczej.
+
 ## <a name="mongodb-query-language-support"></a>Obsługa języka zapytań bazy danych MongoDB
 
 Interfejs API bazy danych MongoDB usługi Azure Cosmos DB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej można znaleźć szczegółową listę obecnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
 
-
 ## <a name="database-commands"></a>Polecenia bazy danych
 
-Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na wszystkich kontach interfejsu API bazy danych MongoDB. 
+Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na wszystkich kontach interfejsu API bazy danych MongoDB.
 
 ### <a name="query-and-write-operation-commands"></a>Polecenia operacji zapytań i zapisu
 - delete
@@ -287,7 +292,11 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` | 
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
-$text |  | Nieobsługiwane. Zamiast tego użyj operatora $regex 
+$text |  | Nieobsługiwane. Zamiast tego użyj operatora $regex.
+
+## <a name="unsupported-operators"></a>Nieobsługiwane operatory
+
+Operatory ```$where``` i ```$eval``` nie są obsługiwane w usłudze Azure Cosmos DB.
 
 ### <a name="methods"></a>Metody
 
@@ -316,6 +325,10 @@ Usługa Azure Cosmos DB nie obsługuje jeszcze użytkowników i ról. Usługa Az
 ## <a name="replication"></a>Replikacja
 
 Usługa Azure Cosmos DB obsługuje automatyczną, natywną replikację na najniższych warstwach. Ta logika została rozszerzona, aby osiągnąć małe opóźnienia oraz replikację globalną. Usługa Azure Cosmos DB nie obsługuje poleceń dotyczących replikacji ręcznej.
+
+## <a name="write-concern"></a>Ustawienie Write Concern
+
+Niektóre interfejsy API bazy danych MongoDB obsługują ustawienie [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), określające liczbę odpowiedzi wymaganych podczas operacji zapisu. Ze względu na sposób obsługi replikacji w tle w usłudze Cosmos DB wszystkie operacje zapisu mają domyślnie automatycznie ustawioną opcję Quorum (Kworum). Ustawienia Write Concern określone w kodzie klienta są ignorowane. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
 

@@ -402,6 +402,8 @@
           href: sql-database-cloud-migrate.md
         - name: Migrowanie do wystąpienia zarządzanego
           href: sql-database-managed-instance-migrate.md
+        - name: Migrowanie certyfikatu TDE do wystąpienia zarządzanego
+          href: sql-database-managed-instance-migrate-tde-certificate.md
         - name: Zarządzanie usługą SQL Database po migracji
           href: sql-database-manage-after-migration.md
     - name: Ładowanie i przenoszenie danych

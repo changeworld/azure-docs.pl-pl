@@ -1,12 +1,12 @@
 ---
-title: "Wprowadzenie do wstępnie skonfigurowanych rozwiązań | Microsoft Docs"
-description: "Wykonaj czynności opisane w tym samouczku, aby dowiedzieć się, jak wdrożyć wstępnie skonfigurowane rozwiązanie Pakiet IoT Azure."
-services: 
+title: Wprowadzenie do wstępnie skonfigurowanych rozwiązań | Microsoft Docs
+description: Wykonaj czynności opisane w tym samouczku, aby dowiedzieć się, jak wdrożyć wstępnie skonfigurowane rozwiązanie pakiet Azure IoT Suite.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6ab38d1a-b564-469e-8a87-e597aa51d0f7
 ms.service: iot-suite
 ms.devlang: na
@@ -16,14 +16,15 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 12eb858f0be4220419300019497070a081e58249
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38723021"
 ---
 # <a name="get-started-with-the-preconfigured-solutions"></a>Wprowadzenie do wstępnie skonfigurowanych rozwiązań
 
-[Wstępnie skonfigurowane rozwiązania][lnk-preconfigured-solutions] Pakietu IoT Azure obejmują wiele usług Azure IoT, co pozwala dostarczać kompleksowe rozwiązania, które umożliwiają implementowanie typowych scenariuszy biznesowych IoT. Wstępnie skonfigurowane rozwiązanie do *monitorowania zdalnego* łączy i monitoruje urządzenia. Rozwiązanie to umożliwia analizowanie strumienia danych z urządzeń oraz poprawianie wyników biznesowych dzięki zautomatyzowaniu odpowiedzi procesów na ten strumień danych.
+[Wstępnie skonfigurowane rozwiązania][lnk-preconfigured-solutions] pakietu Azure IoT Suite obejmują wiele usług Azure IoT, co pozwala dostarczać kompleksowe rozwiązania, które umożliwiają implementowanie typowych scenariuszy biznesowych IoT. Wstępnie skonfigurowane rozwiązanie do *monitorowania zdalnego* łączy i monitoruje urządzenia. Rozwiązanie to umożliwia analizowanie strumienia danych z urządzeń oraz poprawianie wyników biznesowych dzięki zautomatyzowaniu odpowiedzi procesów na ten strumień danych.
 
 W tym samouczku przedstawiono sposób aprowizowania wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego. Dostępny jest również opis podstawowych funkcji wstępnie skonfigurowanego rozwiązania. Dostęp do wielu z tych funkcji można uzyskać z *pulpitu nawigacyjnego* rozwiązania, który jest wdrażany jako część wstępnie skonfigurowanego rozwiązania:
 
@@ -283,7 +284,7 @@ Dla nowo dodanego urządzenia nie zostały określone żadne reguły. W tej sekc
     ![Wyświetlanie listy akcji urządzenia][img-actions]
 
 > [!NOTE]
-> Istnieje możliwość zdefiniowania akcji, które umożliwiają wysyłanie wiadomości e-mail lub SMS w odpowiedzi na działanie reguły albo pozwalają na integrację z systemem biznesowym za pośrednictwem [aplikacji logiki][lnk-logic-apps]. Aby uzyskać więcej informacji, zobacz [Łączenie aplikacji logiki ze wstępnie skonfigurowanym rozwiązaniem do zarządzania zdalnego Pakietu IoT Azure][lnk-logicapptutorial].
+> Istnieje możliwość zdefiniowania akcji, które umożliwiają wysyłanie wiadomości e-mail lub SMS w odpowiedzi na działanie reguły albo pozwalają na integrację z systemem biznesowym za pośrednictwem [aplikacji logiki][lnk-logic-apps]. Aby uzyskać więcej informacji, zobacz [Łączenie aplikacji logiki ze wstępnie skonfigurowanym rozwiązaniem do zarządzania zdalnego pakietu Azure IoT Suite][lnk-logicapptutorial].
 
 ### <a name="manage-filters"></a>Zarządzanie filtrami
 

@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 531aeaacf0bd70521d70afb45d141fc3296ebb04
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a302cdcf94baa869e55262c4cd380fc05bf64299
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461609"
 ---
 # <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-build"></a>Samouczek: automatyzowanie kompilacji obrazu w ramach aktualizacji obrazu podstawowego za pomocą usługi Azure Container Registry Build
 
@@ -32,7 +33,7 @@ Ten samouczek, będący ostatnią częścią serii, obejmuje:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure lokalnie, musisz zainstalować wersję **2.0.32** interfejsu wiersza polecenia platformy Azure lub nowszą. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0][azure-cli].
+Jeśli chcesz użyć interfejsu wiersza polecenia platformy Azure lokalnie, musisz zainstalować wersję **2.0.32** interfejsu wiersza polecenia platformy Azure lub nowszą. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja interfejsu wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

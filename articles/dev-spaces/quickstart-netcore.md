@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 21b94544105f55cbb8cb77c28d8c546ffcf7f8c0
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 3bb190570cbdf795668dd6e9f9d36630b6f3201b
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945860"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949870"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (platforma .NET Core i program VS Code)
 
@@ -32,7 +32,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Klaster Kubernetes](https://ms.portal.azure.com/#create/microsoft.aks) z uruchomioną platformą Kubernetes 1.9.6 we Wschodnich stanach USA, Europie Zachodniej lub we Wschodnim regionie Kanady z włączonym **routingiem aplikacji protokołu HTTP**.
+- [Klaster Kubernetes](https://ms.portal.azure.com/#create/microsoft.aks) z uruchomioną platformą Kubernetes 1.10.3 w regionach EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral lub CanadaEast z włączonym **routingiem aplikacji protokołu HTTP**.
 
   ![Pamiętaj, aby włączyć routing aplikacji protokołu HTTP.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
@@ -42,8 +42,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) (w wersji 2.0.38 lub nowszej).
 1. Skonfiguruj usługę Dev Spaces na klastrze AKS:`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. Pobierz [rozszerzenie usługi Azure Dev Spaces](https://aka.ms/get-azds-code) dla programu VS Code.
-1. Zainstaluj rozszerzenie: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. Pobierz [rozszerzenie usługi Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) dla programu VS Code. Kliknij pozycję Zainstaluj najpierw na stronie rozszerzenia w witrynie Marketplace, a następnie w programie VS Code.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 
@@ -89,7 +88,7 @@ W tej sekcji użyjesz programu VS Code do bezpośredniego debugowania naszego ko
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicjowanie zasobów debugowania za pomocą rozszerzenia programu VS Code
 Najpierw skonfiguruj projekt kodu tak, aby program VS Code komunikował się z obszarem deweloperskim na platformie Azure. Rozszerzenie programu VS Code dla usługi Azure Dev Spaces udostępnia polecenie pomocnika w celu ustawienia konfiguracji debugowania. 
 
-Otwórz okno **Paleta poleceń** (za pomocą menu **Widok | Paleta poleceń**) i przy użyciu autouzupełniania wpisz i wybierz to polecenie: `Azure Dev Spaces: Create configuration files for connected development`. 
+Otwórz okno **Paleta poleceń** (za pomocą menu **Widok | Paleta poleceń**) i przy użyciu autouzupełniania wpisz i wybierz to polecenie: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. 
 
 Spowoduje to dodanie konfiguracji debugowania dla usługi Azure Dev Spaces w obszarze folderu `.vscode`.
 
@@ -143,4 +142,4 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 Dowiedz się, jak usługa Azure Dev Spaces pomaga tworzyć bardziej złożone aplikacje w wielu kontenerach i jak można uprościć programowanie zespołowe przez pracę z różnymi wersjami lub gałęziami kodu w różnych obszarach. 
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](get-started-netcore.md#call-a-service-running-in-a-separate-container)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](team-development-netcore.md)

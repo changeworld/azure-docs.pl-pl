@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2018
+ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7313ea1ff26d9c732d04b02f8b88f14e2aa4dd2f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072055"
+ms.locfileid: "39091326"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -61,7 +61,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure, 
 | MissingRegistrationForLocation | Sprawdź stan rejestracji dostawcy zasobów oraz obsługiwane lokalizacje. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zarejestruj swoją subskrypcję dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Sprawdź stan rejestracji dostawcy zasobów. | [Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
-| Nie odnaleziono | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
+| NotFound | Może być próba wdrożenia zasób zależny równolegle z zasobu nadrzędnego. Sprawdź, czy wymagane można dodać zależności. | [Rozwiąż zależności](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Wdrożenie próbuje operacji, która przekracza limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe Sprawdź, czy wdrożenie w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Upewnij się, że zasób nadrzędny znajduje się przed utworzeniem elementu podrzędnego zasobów. | [Rozwiąż zasób nadrzędny](resource-manager-parent-resource-errors.md) |
 | PrivateIPAddressInReservedRange | Określony adres IP obejmuje zakres adresów, wymagane przez platformę Azure. Zmienianie adresu IP, aby uniknąć zarezerwowany zakres. | [Adresy IP](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
@@ -104,7 +104,21 @@ Zaznacz wiadomość, aby uzyskać więcej informacji. Na poniższej ilustracji w
 
 ### <a name="deployment-errors"></a>Błędy związane z wdrażaniem
 
-Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdrażania, zobaczysz błąd w powiadomieniach. Wybierz powiadomienie.
+Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdrażania, otrzymasz błąd wdrażania.
+
+Aby wyświetlić kody błędów wdrażania i wiadomości za pomocą programu PowerShell, należy użyć:
+
+```azurepowershell-interactive
+(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+```
+
+Aby wyświetlić kody błędów wdrażania i komunikatów za pomocą wiersza polecenia platformy Azure, należy użyć:
+
+```azurecli-interactive
+az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+```
+
+W portalu wybierz powiadomienie.
 
 ![Błąd powiadomienia](./media/resource-manager-common-deployment-errors/notification.png)
 

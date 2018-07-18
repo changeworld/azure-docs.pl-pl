@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/15/2018
+ms.date: 07/16/2018
 ms.author: marsma
-ms.openlocfilehash: da78d388c8e9fc9684942342f48902c2a248e3b1
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: cb7b27b178197cde040e1d106ed5a5ee20905823
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072303"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115799"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfiguracja sieci w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,8 +27,7 @@ Węzły w klastrze AKS skonfigurowany dla podstawowych sieci [wtyczki kubenet] [
 
 ## <a name="advanced-networking"></a>Zaawansowane funkcje sieciowe
 
-**Zaawansowane** sieci umieszcza zasobników w usługi Azure Virtual Network (VNet), można skonfigurować, dostarczając im automatyczne połączenie z zasobami sieci wirtualnej i integracji bogaty zbiór możliwości tę ofertę sieci wirtualnych.
-Zaawansowane funkcje sieciowe jest dostępna podczas wdrażania usługi AKS klastrów przy użyciu [witryny Azure portal][portal], wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager.
+**Zaawansowane** sieci umieszcza zasobników w usługi Azure Virtual Network (VNet), można skonfigurować, dostarczając im automatyczne połączenie z zasobami sieci wirtualnej i integracji bogaty zbiór możliwości tę ofertę sieci wirtualnych. Zaawansowane funkcje sieciowe jest dostępna podczas wdrażania usługi AKS klastrów przy użyciu [witryny Azure portal][portal], wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager.
 
 Węzły w klastrze AKS skonfigurowane dla zaawansowanych sieci [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes.
 
@@ -45,9 +44,6 @@ Zaawansowane funkcje sieciowe zapewnia następujące korzyści:
 * Zasobników w podsieci, które mają włączone punkty końcowe usługi można bezpiecznie łączyć się z usługami platformy Azure, na przykład Azure Storage i bazą danych SQL.
 * Użyj trasy zdefiniowane przez użytkownika (UDR) do kierowania ruchu z zasobników do wirtualnego urządzenia sieciowego.
 * Zasobników dostęp do zasobów w publicznym Internecie. Także funkcja podstawowe operacje sieciowe.
-
-> [!IMPORTANT]
-> Każdy węzeł w klastrze AKS skonfigurowany na potrzeby zaawansowanego sieci może obsługiwać maksymalnie **30 zasobników** w przypadku skonfigurowania w witrynie Azure portal.  Maksymalna wartość można zmienić tylko przez modyfikację właściwości maxPods w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager. Każda sieć wirtualna aprowizowanych dla użycia za pomocą wtyczki wtyczki Azure CNI jest ograniczona do **4096 skonfigurowane adresy IP**.
 
 ## <a name="advanced-networking-prerequisites"></a>Zaawansowane sieci wymagań wstępnych
 
@@ -67,19 +63,36 @@ Planowanie adres IP klastra AKS składa się z siecią wirtualną, co najmniej j
 
 | Zakres adresów / Azure zasobów | Limity i zmianę rozmiaru |
 | --------- | ------------- |
-| Sieć wirtualna | Sieci wirtualnej platformy Azure może być tak duże jak /8, ale może być tylko 4096 skonfigurowano adresów IP. |
-| Podsieć | Musi być wystarczająco duży, aby pomieścić węzłów i zasobników. Aby obliczyć rozmiar minimalny podsieci: (liczba węzłów) + (liczba węzłów * zasobników na węzeł). W przypadku klastra 50 węzła: (50) + (50 * 30) = 1550, podsieć musi być /21 lub większy. |
+| Sieć wirtualna | Sieci wirtualnej platformy Azure może być tak duże jak /8, ale może być tylko 16 000 skonfigurowano adresów IP. |
+| Podsieć | Musi być wystarczająco duży, aby pomieścić węzłów, zasobników i wszystkich Kubernetes i Azure zasoby, które mogą być udostępniane w klastrze. Na przykład w przypadku wdrożenia wewnętrznego modułu równoważenia obciążenia platformy Azure, jego frontonu adresy IP są przydzielane z podsieci klastra nie publicznych adresów IP. <p/>Aby obliczyć *minimalne* rozmiar podsieci: `(number of nodes) + (number of nodes * pods per node)` <p/>Przykład klaster z węzłami 50: `(50) + (50 * 30) = 1,550` (/ 21 lub większej) |
 | Zakres adresów usługi Kubernetes | Ten zakres nie należy używanych przez dowolny element sieci lub podłączone do tej sieci wirtualnej. Usługa adres CIDR musi być mniejszy niż /12. |
 | Adres IP usługi DNS platformy Kubernetes | Adres IP w ramach rozwiązania Kubernetes usługi zakres adresów, który będzie używany przez odnajdywanie usługi klastrowania (klastra kubernetes w usłudze dns). |
 | Adres mostka platformy docker | Adres IP (w notacji CIDR), używane jako mostka platformy Docker adresu IP w węzłach. Domyślnie 172.17.0.1/16. |
 
-Jak wspomniano wcześniej, każda sieć wirtualna aprowizowanych dla użycia za pomocą wtyczki wtyczki Azure CNI jest ograniczona do **4096 skonfigurowane adresy IP**. Każdy węzeł w klastrze, który został skonfigurowany na potrzeby zaawansowanego sieci może obsługiwać maksymalnie **30 zasobników**.
+Każda sieć wirtualna aprowizowanych dla użycia za pomocą wtyczki wtyczki Azure CNI jest ograniczona do **16 000 skonfigurowane adresy IP**.
+
+## <a name="maximum-pods-per-node"></a>Maksymalna zasobników na węzeł
+
+Domyślne maksymalną liczbę zasobników w każdym węźle w klastrze AKS waha się między podstawowymi i zaawansowanymi sieci i metody wdrażania klastra.
+
+### <a name="default-maximum"></a>Domyślna wartość maksymalna
+
+* Podstawowe operacje sieciowe: **110 zasobników na węzeł**
+* Zaawansowany siecią **30 zasobników na węzeł**
+
+### <a name="configure-maximum"></a>Skonfiguruj maksymalny
+
+W zależności od metody wdrażania można zmodyfikować maksymalna liczba zasobników w każdym węźle w klastrze AKS.
+
+* **Wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia.
+* **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager.
+* **Witryna Azure portal**: nie można zmodyfikować maksymalna liczba zasobników w każdym węźle, w przypadku wdrażania klastra za pomocą witryny Azure portal. Zaawansowane sieci klastrów mogą zawierać maksymalnie 30 zasobniki w każdym węźle po wdrożeniu w witrynie Azure portal.
 
 ## <a name="deployment-parameters"></a>Parametry wdrożenia
 
 Podczas tworzenia klastra usługi AKS, można skonfigurować, aby uzyskać zaawansowane funkcje sieciowe są następujące parametry:
 
-**Sieć wirtualna**: sieci wirtualnej, w której chcesz wdrożyć klaster usługi Kubernetes. Aby utworzyć nową sieć wirtualną dla klastra, należy zaznaczyć *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz sieć wirtualną* sekcji.
+**Sieć wirtualna**: sieci wirtualnej, w której chcesz wdrożyć klaster usługi Kubernetes. Aby utworzyć nową sieć wirtualną dla klastra, należy zaznaczyć *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz sieć wirtualną* sekcji. Sieć wirtualna jest ograniczony do 16 000 skonfigurowanych adresów IP.
 
 **Podsieci**: podsieci w sieci wirtualnej, w której chcesz wdrożyć w klastrze. Jeśli chcesz utworzyć nową podsieć w sieci wirtualnej dla klastra, wybierz opcję *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz podsieć* sekcji.
 
@@ -135,7 +148,7 @@ Zestaw poniższych pytań i odpowiedzi dotyczą **zaawansowane** konfiguracji si
 
 * *Maksymalna liczba zasobników jest możliwy do wdrożenia na węzeł można skonfigurować?*
 
-  Domyślnie każdy węzeł może obsługiwać maksymalnie 30 zasobników. Maksymalna wartość można zmienić tylko przez modyfikację `maxPods` właściwości w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager.
+  Tak, w przypadku wdrażania klastra przy użyciu wiersza polecenia platformy Azure lub w szablonie usługi Resource Manager. Zobacz [zasobników maksymalnie na węzeł](#maximum-pods-per-node).
 
 * *Jak skonfigurować dodatkowe właściwości dla podsieci, utworzonego podczas tworzenia klastra AKS Na przykład punktów końcowych usługi.*
 
@@ -173,3 +186,4 @@ Klastry Kubernetes, utworzone za pomocą aparatu usługi ACS obsługują zarówn
 <!-- LINKS - Internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md
+[ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object

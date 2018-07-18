@@ -1,6 +1,6 @@
 ---
-title: Ponownie ucz modelu uczenia maszynowego | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ponownie ucz modelu i usługi sieci Web, aby użyć nowo uczonego modelu w usłudze Azure Machine Learning aktualizacji.
+title: Ponowne szkolenie modelu uczenia maszynowego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci Web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -15,87 +15,87 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: ca7ad5a46c1401a283879f8aba80c781a88fc089
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 46aa2c209f782706357f9a928ddbaa6321abdd77
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835433"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115531"
 ---
-# <a name="retrain-a-machine-learning-model"></a>Ponownie ucz modelu uczenia maszynowego
-W ramach procesu operationalization modeli uczenia maszyny w usłudze Azure Machine Learning modelu są uczone i zapisać. Następnie należy go utworzyć predicative usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacji mobilnych. 
+# <a name="retrain-a-machine-learning-model"></a>Ponowne szkolenie modelu uczenia maszynowego
+W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
 
-Modele utworzone za pomocą uczenia maszynowego zwykle nie są statyczne. Wraz ze wzrostem dostępności nowych danych lub gdy konsumenta interfejsu API ma własne dane modelu musi być retrained. 
+Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained. 
 
-Ponownego trenowania może występować często. Z funkcją programowe ponownego trenowania interfejsu API można programowo retrain modelu przy użyciu interfejsów API ponownego trenowania i aktualizować usługi sieci Web z nowo trenowanego modelu. 
+Ponowne szkolenie może często występować. Dzięki funkcji programowe ponowne Trenowanie interfejsu API możesz programowo Ponowne szkolenie modelu przy użyciu interfejsów API do ponownego trenowania i zaktualizować usługę sieci Web przy użyciu nowo trenowanego modelu. 
 
-Tym dokumencie opisano proces ponownego trenowania i przedstawiono sposób użycia interfejsów API ponownego trenowania.
+W tym dokumencie opisano proces ponownego trenowania i dowiesz się, jak używać interfejsów API do ponownego trenowania.
 
-## <a name="why-retrain-defining-the-problem"></a>Dlaczego ponownie ucz: Definiowanie problemu
-W ramach procesu szkolenia uczenia maszynowego model jest uczony przy użyciu zestawu danych. Modele utworzone za pomocą uczenia maszynowego zwykle nie są statyczne. Wraz ze wzrostem dostępności nowych danych lub gdy konsumenta interfejsu API ma własne dane modelu musi być retrained.
+## <a name="why-retrain-defining-the-problem"></a>Dlaczego Ponowne szkolenie: Definiowanie problemu
+W ramach uczenia procesu uczenia maszynowego model jest uczony przy użyciu zestawu danych. Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained.
 
-W tych scenariuszach Programistyczny interfejs API udostępnia wygodny sposób pozwalającej użytkownikowi lub konsumenta swoje interfejsy API do tworzenia klienta, który może na podstawie jednorazowe lub regularne retrain modelu przy użyciu własnych danych. Następnie mogą oceniać wyniki ponownego trenowania i aktualizacji interfejsu API usługi sieci Web, aby użyć nowo trenowanego modelu.
+W tych scenariuszach programowego interfejsu API zapewnia wygodny sposób lub konsumenta interfejsów API można utworzyć klienta, które mogą na podstawie jednorazowe lub regularne Ponowne szkolenie modelu przy użyciu własnych danych. Są następnie oceniać wyniki ponownego trenowania i zaktualizuj interfejs API usługi sieci Web do korzystania z nowo uczonego modelu.
 
 > [!NOTE]
-> Jeśli masz istniejące eksperyment uczenia i usługi sieci Web nowego można wyewidencjonować ponownego próbkowania istniejącej usługi sieci Web predykcyjnej zamiast następujące wskazówki wymienionych w poniższej sekcji.
+> Jeśli masz istniejące eksperymentu szkolenia i usługi sieci Web nowej można wyewidencjonować ponownego próbkowania istniejącej usługi internetowej predykcyjne zamiast wykonać czynności opisane w przewodniku wymienione w poniższej sekcji.
 > 
 > 
 
 ## <a name="end-to-end-workflow"></a>Kompletny przepływ pracy
-Ten proces obejmuje następujące składniki: A eksperyment uczenia i eksperyment predykcyjny publikowane jako usługę sieci Web. Aby włączyć ponownego trenowania trenowanego modelu, eksperyment uczenia musi zostać opublikowany jako usługę sieci Web, przy czym dane wyjściowe trenowanego modelu. Dzięki temu dostęp API do modelu do ponownego trenowania. 
+Proces obejmuje następujące składniki: eksperymentu szkolenia i eksperyment predykcyjny publikowane jako usługi sieci Web. Aby włączyć ponownym szkoleniem trenowanego modelu, eksperymentu szkolenia muszą być publikowane jako usługi sieci Web z danymi wyjściowymi uczonego modelu. Dzięki temu dostęp do interfejsu API do modelu do ponownego trenowania. 
 
-Poniższe kroki dotyczą zarówno nowe, jak i klasycznych sieci Web usług:
+Poniższe kroki dotyczą zarówno nowe oraz klasyczne usługi sieci Web:
 
-Tworzenie początkowej usługi sieci Web predykcyjnej:
+Tworzenie początkowej predykcyjną usługę sieci Web:
 
 * Tworzenie eksperymentu szkolenia
-* Tworzenie eksperymentu predykcyjnej sieci web
-* Wdrażanie usługi sieci web predykcyjnej
+* Tworzenie eksperymentu predykcyjnego sieci web
+* Wdrażanie predykcyjna usługa internetowa
 
-Ponownie ucz usługi sieci Web:
+Ponowne szkolenie usługi sieci Web:
 
-* Eksperyment uczenia aktualizacji, aby umożliwić ponownego trenowania
+* Aktualizuj eksperymentu szkolenia, aby umożliwić ponowne trenowanie
 * Wdrażanie ponownego trenowania usługi sieci web
-* Ponownie ucz modelu za pomocą kodu usługi wykonywania wsadowego
+* Ponowne szkolenie modelu przy użyciu kodu usługę wykonywania wsadowego
 
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Retrain Machine Learning programowo modele](retrain-models-programmatically.md).
+Aby uzyskać wskazówki poprzednich kroków, zobacz [Retrain Machine Learning models programowo](retrain-models-programmatically.md).
 
 > [!NOTE] 
-> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia do subskrypcji, do którego należy wdrożyć usługę sieci web. Aby uzyskać więcej informacji, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md). 
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
 
-Jeśli wdrożono klasycznym usługi sieci Web:
+Jeśli wdrożono klasycznej usługi sieci Web:
 
-* Utwórz nowy punkt końcowy usługi sieci Web predykcyjnej
-* Pobierz adres URL poprawki i kod
-* Użyj adresu URL PATCH, aby wskazywały nowy punkt końcowy na retrained modelu 
+* Utwórz nowy punkt końcowy na predykcyjną usługę sieci Web
+* Stosowanie poprawek do adresu URL i kodu
+* Użyj adresu URL poprawki, aby wskazywały nowy punkt końcowy retrained modelu 
 
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Retrain usługi sieci Web klasycznego](retrain-a-classic-web-service.md).
+Aby uzyskać wskazówki poprzednich kroków, zobacz [Ponowne szkolenie klasyczna usługa sieci Web](retrain-a-classic-web-service.md).
 
-Jeśli wystąpiły problemy podczas ponownego trenowania usługi sieci Web klasycznego, zobacz [Rozwiązywanie problemów z ponownego trenowania usługi sieci Web Azure Machine Learning klasycznego](troubleshooting-retraining-models.md).
+Jeśli napotkasz problemy, ponownego trenowania klasyczna usługa sieci Web, zobacz [Rozwiązywanie problemów z ponownym szkoleniem usługi Azure Machine Learning klasyczna usługa sieci Web](troubleshooting-retraining-models.md).
 
-Jeśli wdrożono usługę sieci Web nowe:
+Jeśli wdrożono usługę sieci Web nowy:
 
-* Zaloguj się do konta usługi Azure Resource Manager
+* Zaloguj się do swojego konta usługi Azure Resource Manager
 * Pobierz definicję usługi sieci Web
-* Eksportowanie definicji usługi sieci Web w formacie JSON
-* Aktualizacja odwołania do `ilearner` obiektu blob w formacie JSON
-* Zaimportuj dane JSON do definicji usługi sieci Web
-* Aktualizacja usługi sieci Web z nowego definicji usługi sieci Web
+* Eksportowanie definicji usługi sieci Web jako dane JSON
+* Aktualizuj odwołanie do `ilearner` obiektów blob w formacie JSON
+* Importuj dane JSON w definicji usługi sieci Web
+* Aktualizacja usługi sieci Web za pomocą nowych definicji usługi sieci Web
 
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Retrain usługi nowej sieci Web przy użyciu poleceń cmdlet programu PowerShell do zarządzania Machine Learning](retrain-new-web-service-using-powershell.md).
+Aby uzyskać wskazówki poprzednich kroków, zobacz [Ponowne szkolenie przy użyciu poleceń cmdlet programu PowerShell usługi Machine Learning zarządzania usługi nowej sieci Web](retrain-new-web-service-using-powershell.md).
 
-Proces konfigurowania ponownego trenowania dla usługi sieci Web klasycznego obejmuje następujące kroki:
+Proces konfigurowania szkoleniem klasyczna usługa sieci Web obejmuje następujące czynności:
 
-![Omówienie procesu ponownego trenowania][1]
+![Ponowne szkolenie Przegląd procesu][1]
 
-Proces konfigurowania ponownego trenowania dla usługi sieci Web nowego obejmuje następujące kroki:
+Proces konfigurowania szkoleniem usługi sieci Web nowej obejmuje następujące czynności:
 
-![Omówienie procesu ponownego trenowania][7]
+![Ponowne szkolenie Przegląd procesu][7]
 
 ## <a name="other-resources"></a>Inne zasoby
-* [Modele ponownego trenowania i aktualizowania usługi Azure Machine Learning z fabryką danych Azure](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
-* [Tworzenie wielu modeli uczenia maszynowego i sieci web punktów końcowych usługi z doświadczenia przy użyciu programu PowerShell](create-models-and-endpoints-with-powershell.md)
-* [AML ponownego trenowania modeli przy użyciu interfejsów API](https://www.youtube.com/watch?v=wwjglA8xllg) wideo pokazuje, jak ponownie ucz modele uczenia maszynowego utworzone w usłudze Azure Machine Learning przy użyciu ponownego trenowania interfejsów API i programu PowerShell.
+* [Ponowne szkolenie i aktualizowania usługi Azure Machine Learning modeli przy użyciu usługi Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
+* [Tworzenie wielu modeli usługi Machine Learning i sieci web punktów końcowych usługi podstawie jednego eksperymentu przy użyciu programu PowerShell](create-models-and-endpoints-with-powershell.md)
+* [AML ponowne Trenowanie modeli przy użyciu interfejsów API](https://www.youtube.com/watch?v=wwjglA8xllg) wideo pokazano, jak ponowne trenowanie modeli uczenia maszynowego utworzonych w usłudze Azure Machine Learning za pomocą ponownego trenowania interfejsów API i programu PowerShell.
 
 <!--image links-->
 [1]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png

@@ -1,116 +1,116 @@
 ---
-title: Monitorowanie środowiska uruchomieniowego integracji w fabryce danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować różne typy środowiska uruchomieniowego integracji w fabryce danych Azure.
+title: Monitorowanie środowiska integration runtime w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować różne typy infrastruktury integration runtime w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: ''
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2017
+ms.date: 07/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 523d50623257d3944342cb174174e27bd4731248
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4da9696761747874395ec90cb3b446e3621650ba
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045249"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113261"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitor środowiska uruchomieniowego integracji w fabryce danych Azure  
-**Integracja środowiska uruchomieniowego** jest używany przez fabryki danych Azure zapewnienie różne funkcje integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Istnieją trzy typy środowisk uruchomieniowych integracji oferowane przez fabrykę danych:
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorowanie środowiska integration runtime w usłudze Azure Data Factory  
+**Środowisko Integration runtime** jest infrastruktura obliczeniowa używana przez usługę Azure Data Factory, aby zapewnić różne możliwości integracji danych w różnych środowiskach sieciowych. Istnieją trzy typy środowiska integration Runtime oferowane przez usługę Data Factory:
 
 - Środowisko uruchomieniowe integracji Azure
 - Infrastruktura Integration Runtime (Self-hosted)
 - Azure SSIS Integration Runtime
 
-Aby uzyskać stan wystąpienia środowiska uruchomieniowego integracji (IR), uruchom następujące polecenie programu PowerShell: 
+Aby uzyskać stan wystąpienia środowiska integration Runtime (IR), uruchom następujące polecenie programu PowerShell: 
 
 ```powershell
 Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
-Polecenie cmdlet zwraca informacje różne dla różnych typów środowiska uruchomieniowego integracji. W tym artykule opisano właściwości i stanów dla każdego typu środowiska uruchomieniowego integracji.  
+Polecenie cmdlet zwraca różne informacje dla różnych typów środowiska integration runtime. W tym artykule opisano, właściwości i Stany dla każdego typu środowiska integration runtime.  
 
 ## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
-Zasób obliczeniowy dla środowiska uruchomieniowego integracji Azure pełni odbywa się elastycznie na platformie Azure. Poniższa tabela zawiera opisy właściwości zwrócony przez **Get-AzureRmDataFactoryV2IntegrationRuntime** polecenia:
+Zasób obliczeniowy do środowiska Azure integration runtime jest w pełni zarządzana elastycznie na platformie Azure. Poniższa tabela zawiera opis właściwości zwrócony przez **Get-AzureRmDataFactoryV2IntegrationRuntime** polecenia:
 
 ### <a name="properties"></a>Właściwości
-Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet do obsługi integracji Azure:
+Poniższa tabela zawiera opisy właściwości zwracany przez polecenie cmdlet środowiska Azure integration Runtime:
 
 | Właściwość | Opis |
 -------- | ------------- | 
-| Name (Nazwa) | Nazwa środowiska uruchomieniowego integracji platformy Azure. |  
-| Stan | Stan środowiska uruchomieniowego integracji platformy Azure. | 
-| Lokalizacja | Lokalizacja środowiska uruchomieniowego integracji platformy Azure. Aby uzyskać więcej informacji o lokalizacji środowiska uruchomieniowego integracji platformy Azure, zobacz [wprowadzenie do integracji środowiska uruchomieniowego](concepts-integration-runtime.md). |
-| DataFactoryName | Nazwa środowiska uruchomieniowego integracji Azure należącej do fabryki danych. | 
-| ResourceGroupName | Nazwa grupy zasobów, do której należy fabryki danych.  |
-| Opis | Opis elementu środowiska uruchomieniowego integracji.  |
+| Name (Nazwa) | Nazwa środowiska Azure integration runtime. |  
+| Stan | Stan środowiska Azure integration runtime. | 
+| Lokalizacja | Lokalizacja IR platformy Azure. Aby uzyskać szczegółowe informacje o lokalizacji środowiska Azure integration runtime, zobacz [wprowadzenie do produktu integration runtime](concepts-integration-runtime.md). |
+| DataFactoryName | Nazwa fabryki danych, do której należy produkt Azure integration runtime. | 
+| ResourceGroupName | Nazwa grupy zasobów, do której należy z fabryką danych.  |
+| Opis | Opis produktu integration runtime.  |
 
 ### <a name="status"></a>Stan
-W poniższej tabeli przedstawiono możliwe stany ze środowiska uruchomieniowego integracji Azure:
+W poniższej tabeli przedstawiono możliwe stany środowiska Azure integration runtime:
 
-| Stan | Komentarz/scenariuszy | 
+| Stan | Komentarze/scenariusze | 
 | ------ | ------------------ |
-| Online | Środowiska uruchomieniowego integracji Azure jest dostępna i gotowa do użycia. | 
-| Offline | Środowisko uruchomieniowe integracja Azure jest w trybie offline z powodu błędu wewnętrznego. |
+| Online | Środowisko uruchomieniowe integracji platformy Azure jest dostępna online i gotowa do użycia. | 
+| Offline | Produkt Azure integration runtime jest w trybie offline z powodu błędu wewnętrznego. |
 
 ## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
-Ta sekcja zawiera opisy zwracany przez polecenie cmdlet Get-AzureRmDataFactoryV2IntegrationRuntime właściwości. 
+Ta sekcja zawiera opis właściwości zwracany przez polecenie cmdlet Get-AzureRmDataFactoryV2IntegrationRuntime. 
 
 > [!NOTE] 
-> Zwróconych właściwości i stan zawierają informacje o ogólną siebie integrację środowiska uruchomieniowego i każdego węzła w czasie wykonywania.  
+> Zwrócone właściwości i stan zawierają informacje dotyczące ogólnej własnego środowiska integration runtime i każdego węzła w środowisku uruchomieniowym.  
 
 ### <a name="properties"></a>Właściwości
 
-Poniższa tabela zawiera opisy monitorowania właściwości **każdego węzła**:
+Poniższa tabela zawiera opis monitorowania właściwości **każdy węzeł**:
 
 | Właściwość | Opis | 
 | -------- | ----------- | 
-| Name (Nazwa) | Nazwa środowiska uruchomieniowego integracji siebie i skojarzonych z nim węzłów. Węzeł jest na lokalnej maszynie systemu Windows ma środowiska uruchomieniowego integracji siebie na nim zainstalowany. |  
-| Stan | Stan środowiska uruchomieniowego ogólną integrację siebie i każdego węzła. Przykład: Online/Offline/Limited/itp. Aby uzyskać informacje o tych stanów zobacz następną sekcję. | 
-| Wersja | Wersja środowiska uruchomieniowego integracji siebie i każdego węzła. Wersja środowiska uruchomieniowego integracji hostowania samoobsługowego jest określana na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnych wersji w konfiguracji środowiska uruchomieniowego integracji siebie tylko węzły z tym samym numerem wersji jako logiczny hosta samodzielnego funkcji środowiska uruchomieniowego integracji poprawnie. Inne osoby włączony jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku automatycznej aktualizacji nie powiedzie się). | 
-| Dostępna pamięć | Dostępna pamięć na węźle środowiska uruchomieniowego integracji siebie. Ta wartość jest blisko migawka w czasie rzeczywistym. | 
-| Użycie procesora CPU | Użycie procesora CPU przez siebie integracji środowiska uruchomieniowego węzła. Ta wartość jest blisko migawka w czasie rzeczywistym. |
-| Sieć (We/Wy) | Użycie sieci węzła środowiska uruchomieniowego integracji siebie. Ta wartość jest blisko migawka w czasie rzeczywistym. | 
-| Równoczesnych zadań (systemem / Limit) | Liczba zadań lub zadania uruchomione w każdym węźle. Ta wartość jest blisko migawka w czasie rzeczywistym. Limit oznacza maksymalny współbieżnych zadań dla każdego węzła. Ta wartość jest określona na podstawie rozmiaru maszyny. Można zwiększyć limit skalowanie w górę wykonywania zadań jednoczesnych w zaawansowanych scenariuszach, w których procesora CPU i pamięci/sieci jest używane w obszarze, ale limit czasu są działania. Ta funkcja jest również dostępna o środowisku uruchomieniowym integracji siebie jednym węzłem. |
-| Rola | Istnieją dwa typy ról wielowęzłowego integracji hostowanie Samoobsługowe środowisko uruchomieniowe — dyspozytora i proces roboczy. Wszystkie węzły są pracowników, co oznacza, że ich wszystkich służy do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora służąca do ściągnięcia zadania/zadań z usługi w chmurze i wysyłania ich do węzłów innego procesu roboczego. Węzeł dyspozytora jest również węzłem procesu roboczego. |
+| Name (Nazwa) | Nazwa własnego środowiska integration runtime i skojarzonych z nim węzłów. Węzeł to maszyna Windows w środowisku lokalnym, który ma własne środowisko integration runtime na nim zainstalowany. |  
+| Stan | Stan ogólny własnego środowiska integration runtime i każdego węzła. Przykład: Online/Offline/Limited/itd. Dla informacji o tych stanów zobacz następną sekcję. | 
+| Wersja | Wersja własnego środowiska integration runtime i każdego węzła. Wersja własnego środowiska integration runtime jest określana na podstawie wersji Większość węzłów w grupie. W przypadku węzłów z różnymi wersjami w instalacji Self-Hosted integration runtime tylko węzły numerem wersji jako logicznej może być samodzielnie hostowane funkcji środowiska uruchomieniowego integracji prawidłowo. Innym jest tryb ograniczony i należy ręcznie zaktualizować (tylko w przypadku, gdy aktualizacje automatyczne nie powiedzie się). | 
+| Dostępna pamięć | Dostępna pamięć na węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. | 
+| Użycie procesora CPU | Użycie procesora CPU węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. |
+| Sieć (We/Wy) | Wykorzystanie sieci węzeł Self-Hosted integration runtime. Ta wartość jest niemal w czasie rzeczywistym migawki. | 
+| Równoczesne zadania (uruchomione / Limit) | Numer zadania lub podzadania uruchomione w każdym węźle. Ta wartość jest niemal w czasie rzeczywistym migawki. Limit oznacza maksymalna liczba równoczesnych zadań dla każdego węzła. Ta wartość jest określona na podstawie rozmiaru maszyny. Możesz zwiększyć limit, aby skalować w górę do wykonywania zadań jednoczesnych w zaawansowanych scenariuszach, gdzie Procesora/pamięci/IZ niewykorzystywanych, ale działania przekraczają limit. Ta funkcja jest również dostępne z pojedynczym węzłem własnego środowiska integration runtime. |
+| Rola | Istnieją dwa typy ról wielowęzłowego własnego środowiska integration runtime — dyspozytora i proces roboczy. Wszystkie węzły są pracowników, co oznacza, że ich można wszystkie służyć do wykonywania zadań. Istnieje tylko jeden węzeł dyspozytora, który jest używany do pobierania zadania/zadań z usług cloud services i wysyłać je do innego procesu roboczego węzłów. Ten węzeł dyspozytora również jest węzłem procesu roboczego. |
 
-Niektóre ustawienia właściwości będą bardziej zrozumiałe, gdy istnieją co najmniej dwa węzły (skalowanie w poziomie scenariusz) w środowisku wykonawczym siebie integracji. 
+Niektóre ustawienia właściwości należy bardziej zrozumiałe, gdy co najmniej dwa węzły (skalowanie w poziomie scenariusza) znajduje się w własnego środowiska integration runtime. 
   
-### <a name="status-per-node"></a>Stan (na każdym węźle)
-W poniższej tabeli przedstawiono możliwe stany węzła środowiska uruchomieniowego integracji hostowania samoobsługowego:
+### <a name="status-per-node"></a>Stan (na węzeł)
+W poniższej tabeli przedstawiono możliwe stany węzeł Self-Hosted integration runtime:
 
 | Stan | Opis |
 | ------ | ------------------ | 
-| Online | Węzeł jest podłączony do usługi fabryki danych. |
+| Online | Węzeł jest połączony z usługą Data Factory. |
 | Offline | Węzeł jest w trybie offline. |
 | Uaktualnianie | Węzeł jest aktualizowane automatycznie. |
-| Ograniczone | Spowodowane problemem z łącznością. Może być z powodu problemu z synchronizacją poświadczeń, problem dotyczący łączności magistrali usługi lub problem 8050 portu HTTP. |
-| Nieaktywna | Węzeł znajduje się w różnych konfiguracji innych węzłów większość konfiguracji. |
+| Ograniczone | Ze względu na problem z łącznością. Może być spowodowane problemem 8050 portu HTTP, problem łączności z usługą Service bus lub problemu z synchronizacją poświadczeń. |
+| Nieaktywna | Węzeł znajduje się w konfiguracji różni się od konfiguracji innych większości węzłów. |
 
-Węzeł może być nieaktywne, gdy nie można połączyć do innych węzłów.
+Węzeł może być nieaktywne, gdy nie można nawiązać z innych węzłów.
 
-### <a name="status-overall-self-hosted-integration-runtime"></a>Stan (ogólną integrację siebie środowiska wykonawczego)
-W poniższej tabeli przedstawiono możliwe stany runtime siebie integracji. Ten stan jest zależna od statusy wszystkich węzłów, które należą do środowiska wykonawczego. 
+### <a name="status-overall-self-hosted-integration-runtime"></a>Stan (ogólną własnego środowiska integration runtime)
+W poniższej tabeli przedstawiono możliwe stany własnego środowiska integration runtime. Ten stan jest zależna od stany wszystkie węzły, które należą do środowiska uruchomieniowego. 
 
 | Stan | Opis |
 | ------ | ----------- | 
-| Wymagają rejestracji | Żaden węzeł nie jest jeszcze zarejestrowana do tego środowiska uruchomieniowego integracji siebie. |
-| Online | Wszystkie węzły są online. |
+| Potrzebujesz rejestracji | Żaden węzeł nie jest jeszcze zarejestrowany ten własnego środowiska integration runtime. |
+| Online | Wszystkie węzły są w trybie online. |
 | Offline | Żaden węzeł nie jest w trybie online. |
-| Ograniczone | Nie wszystkie węzły w środowisku uruchomieniowym tej integracji siebie są w dobrej kondycji. Ten stan jest ostrzeżenie, że niektóre węzły mogą nie działać. Ten stan może wynikać z problemu z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy. |
+| Ograniczone | Nie wszystkie węzły w tym własne środowisko integration runtime jest w dobrej kondycji. Ten stan jest ostrzeżenie, że niektóre węzły mogą być wyłączone. Ten stan może wynikać z problemu z synchronizacją poświadczeń na węzeł dyspozytora/procesu roboczego. |
 
-Użyj **Get-AzureRmDataFactoryV2IntegrationRuntimeMetric** polecenia cmdlet, aby pobrać ładunek JSON zawierający szczegółowe hosta samodzielnego właściwości środowiska uruchomieniowego integracji i ich migawki wartości w czasie wykonywania polecenia cmdlet.
+Użyj **Get AzureRmDataFactoryV2IntegrationRuntimeMetric** polecenia cmdlet, aby pobrać ładunek JSON zawierającego szczegółowe Self-Hosted integration runtime właściwości i ich migawki wartości w czasie wykonywania polecenie cmdlet.
 
 ```powershell
 Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
-Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojarzone z tego środowiska uruchomieniowego integracji siebie):
+Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojarzone z tym własnego środowiska integration runtime):
 
 ```json
 {
@@ -145,64 +145,82 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS Integration Runtime
-Środowiska uruchomieniowego integracji usług SSIS Azure jest pełni zarządzanego klastra Azure maszyny wirtualnej (lub węzły) dedykowane do uruchamiania pakietów SSIS. Działa on żadnych innych działań fabryki danych Azure. Po zainicjowaniu obsługi, można zbadać jego właściwości i monitorować jego stanów specyficzne dla ogólnych/węzła.
+Środowisko Azure-SSIS integration runtime jest w pełni zarządzany klaster Azure maszyny wirtualne (lub węzły) uruchamianie pakietów SSIS w wersji dedykowanej. Nie powoduje uruchomienia wszelkie inne działania usługi Azure Data Factory. Po zainicjowaniu obsługi administracyjnej, można zbadać jego właściwości, a także monitorować stany jej całkowitego/odnoszące się do węzła.
 
 ### <a name="properties"></a>Właściwości
 
 | Właściwość/Status | Opis |
 | --------------- | ----------- |
-| CreateTime | Czas UTC utworzenia Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| Węzły | Przydzielone dostępne węzły Twojego środowiska uruchomieniowego integracji usług SSIS Azure z właściwym dla węzła stanów (uruchamianie/dostępne/recykling/niedostępna) i błędy można wykonać. |
-| OtherErrors | Błędy można wykonać z systemem innym niż danego węzła na Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| LastOperation | Wynik ostatniej operacji uruchamiania i zatrzymywania na Twojego środowiska uruchomieniowego integracji Azure SSIS z możliwością wykonania akcji błędy, jeśli go nie powiodła się. |
-| Stan | Ogólny stan (początkowego/uruchamianie/uruchomiona/zatrzymywania/zatrzymany) programu Azure SSIS integracji runtime. |
-| Lokalizacja | Lokalizacja Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| NodeSize | Rozmiar każdego węzła Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| NodeCount | Liczba węzłów w środowisku uruchomieniowym programu Azure SSIS integracji. |
-| MaxParallelExecutionsPerNode | Liczba równoległych wykonaniami każdy węzeł w środowisku uruchomieniowym programu Azure SSIS integracji. |
-| CatalogServerEndpoint | Punkt końcowy istniejącego serwera wystąpienia zarządzanego/bazy danych SQL Azure (wersja zapoznawcza) na host usług SSIS. |
-| CatalogAdminUserName | Nazwa użytkownika z istniejącego serwera Azure SQL bazy danych/zarządzane wystąpienia (wersja zapoznawcza). Usługi fabryka danych używa tych informacji do przygotowania i zarządzanie nimi SSISDB w Twoim imieniu. |
-| CatalogAdminPassword | Hasło administratora serwera istniejącego wystąpienia zarządzanego/bazy danych SQL Azure (wersja zapoznawcza). |
-| CatalogPricingTier | Warstwa cenowa SSISDB należące do istniejącego serwera bazy danych SQL Azure.  Nie dotyczy Azure zarządzane wystąpienia SQL (wersja zapoznawcza) hosting usług SSIS. |
-| VNetId | Sieć wirtualna identyfikator zasobu dla Twojego środowiska uruchomieniowego integracji usług SSIS Azure do przyłączenia. |
-| Podsieć | Nazwa podsieci dla Twojego środowiska uruchomieniowego integracji Azure SSIS do przyłączenia. |
-| ID | Identyfikator zasobu Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| Typ | Typ (zarządzanego/niezależne-Hosted) programu Azure SSIS integracji runtime. |
-| ResourceGroupName | Nazwa grupy zasobów Azure, w którym zostały utworzone z fabryki danych i środowiska uruchomieniowego integracji usług SSIS Azure. |
-| DataFactoryName | Nazwa użytkownika fabryki danych Azure. |
-| Name (Nazwa) | Nazwa Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| Opis | Opis programu runtime integracji usług SSIS Azure. |
+| CreateTime | Czas UTC, podczas tworzenia środowiska Azure-SSIS integration runtime. |
+| Węzły | Przydzielone dostępne węzły Twojego środowiska Azure-SSIS integration Runtime z możliwością wykonywania akcji błędów i stanów dla węzła (uruchamianie/dostępne/odtwarzanie/niedostępna). |
+| OtherErrors | Błędy informacje z możliwością działania bez określonego węzła na środowiska Azure-SSIS integration runtime. |
+| LastOperation | Wynik ostatniej operacji uruchomienia/zatrzymania na środowiska Azure-SSIS integration runtime z możliwością wykonywania akcji błędów, jeśli go nie powiodła się. |
+| Stan | Ogólny stan (początkowy/uruchamianie/uruchomienia/zatrzymywania/zatrzymane) środowiska Azure-SSIS integration runtime. |
+| Lokalizacja | Lokalizacja środowiska Azure-SSIS integration runtime. |
+| NodeSize | Rozmiar każdego węzła środowiska Azure-SSIS integration runtime. |
+| NodeCount | Liczba węzłów w środowiska Azure-SSIS integration runtime. |
+| MaxParallelExecutionsPerNode | Liczba równoległych wykonań na węzeł w środowiska Azure-SSIS integration runtime. |
+| CatalogServerEndpoint | Punkt końcowy istniejącego serwera Azure SQL Database/wystąpienia zarządzanego (wersja zapoznawcza) do hostowania bazy SSISDB. |
+| CatalogAdminUserName | Nazwa użytkownika administratora istniejącego serwera Azure SQL Database/wystąpienia zarządzanego (wersja zapoznawcza). Usługa Data Factory używa tych informacji, aby przygotować i zarządzać nią SSISDB w Twoim imieniu. |
+| CatalogAdminPassword | Hasło administratora dla istniejącego serwera Azure SQL Database/wystąpienia zarządzanego (wersja zapoznawcza). |
+| CatalogPricingTier | Warstwa cenowa bazą danych SSISDB hostowaną przez istniejącego serwera usługi Azure SQL Database.  Nie ma zastosowania do wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) hostowania bazy SSISDB. |
+| VNetId | Identyfikator sieci wirtualnej zasobów dla Twojego środowiska Azure-SSIS integration runtime do dołączenia do. |
+| Podsieć | Nazwa podsieci dla Twojego środowiska Azure-SSIS integration runtime do dołączenia do. |
+| ID | Identyfikator zasobu środowiska Azure-SSIS integration runtime. |
+| Typ | Typ (Managed/samoobsługowego-Hosted) środowiska Azure-SSIS integration runtime. |
+| ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym zostały utworzone fabryki danych i środowiska Azure-SSIS integration runtime. |
+| DataFactoryName | Nazwa fabryki danych platformy Azure. |
+| Name (Nazwa) | Nazwa środowiska Azure-SSIS integration runtime. |
+| Opis | Opis Twojego środowiska Azure-SSIS integration runtime. |
 
   
-### <a name="status-per-node"></a>Stan (na każdym węźle)
+### <a name="status-per-node"></a>Stan (na węzeł)
 
 | Stan | Opis |
 | ------ | ----------- | 
-| Uruchamianie | Ten węzeł jest w trakcie przygotowywania. |
-| Dostępne | Ten węzeł jest gotowe do wdrożenia/wykonywania pakietów SSIS. |
-| Odtwarzanie | Ten węzeł jest on naprawiony/ponowne uruchomienie. |
-| Niedostępny | Ten węzeł nie jest gotowe do wdrożenia/wykonywania pakietów SSIS i można wykonać błędy/problemy, które można rozwiązać. |
+| Uruchamianie | Ten węzeł jest przygotowywane. |
+| Dostępne | Ten węzeł jest gotowe do wdrożenia/wykonywanie pakietów usług SSIS. |
+| Odtwarzanie | Ten węzeł jest są naprawiane/ponowne uruchomienie. |
+| Niedostępny | Ten węzeł nie jest gotowe do wdrożenia/wykonywanie pakietów usług SSIS i zawiera informacje z możliwością działania błędy/problemy, które można rozpoznać. |
 
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Stan (ogólną Azure SSIS integracji runtime)
+### <a name="status-overall-azure-ssis-integration-runtime"></a>Stan (ogólnego środowiska Azure-SSIS IR)
 
 | Stan ogólny | Opis | 
 | -------------- | ----------- | 
-| Początkowa | Węzły Twojego środowiska uruchomieniowego integracji Azure SSIS nie zostały przydzielone przygotowane. | 
-| Uruchamianie | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure są przydzielone przygotowane i rozliczeń została uruchomiona. |
-| Rozpoczęto | Węzły sieci środowiska uruchomieniowego integracji usług SSIS Azure zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywania pakiety usług SSIS. |
-| Zatrzymywanie  | Zwalnianie węzły Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
-| Zatrzymano | Węzły Twojego środowiska uruchomieniowego integracji usług SSIS Azure zostały zwolnione i rozliczeń została zatrzymana. |
+| Początkowa | Węzły środowiska Azure-SSIS integration runtime nie zostały przydzielone przygotowane. | 
+| Uruchamianie | Węzły środowiska Azure-SSIS integration runtime są przydzielane przygotowany i rozliczeń została uruchomiona. |
+| Rozpoczęto | Węzły środowiska Azure-SSIS integration runtime zostały przydzielone przygotowane i są gotowe do wdrożenia/wykonywanie pakietów usług SSIS. |
+| Zatrzymywanie  | Węzły środowiska Azure-SSIS integration runtime są udostępniane. |
+| Zatrzymano | Węzły środowiska Azure-SSIS integration runtime zostały zwolnione i rozliczeń została zatrzymana. |
 
-Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowiska uruchomieniowego integracji usług SSIS Azure:
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Monitorowanie środowiska Azure-SSIS integration runtime w witrynie Azure portal
 
-- [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowisk uruchomieniowych integracji ogólnie tym podczerwieni Azure SSIS. 
+Poniższych zrzutach ekranu przedstawiono sposób wybierania Azure-SSIS IR do monitorowania i podaj przykład wyświetlane informacje.
+
+![Wybierz środowisko Azure-SSIS integration runtime do monitorowania](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+
+![Wyświetlanie informacji dotyczących środowiska Azure-SSIS integration runtime](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>Monitorowanie środowiska Azure-SSIS integration runtime przy użyciu programu PowerShell
+
+Sprawdź stan Azure-SSIS IR. za pomocą skryptu, jak w poniższym przykładzie
+
+```powershell
+Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+```
+
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Więcej informacji na temat środowiska Azure-SSIS integration runtime
+
+Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowiska Azure-SSIS integration runtime:
+
+- [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowiska integration Runtime, ogólnie rzecz biorąc w tym Azure-SSIS IR. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
 - [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL (wersja zapoznawcza) oraz dołączania środowiska IR do sieci wirtualnej. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
-- [Join an Azure-SSIS IR to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md) (Dołączanie środowiska IR Azure SSIS do sieci wirtualnej). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska IR Azure-SSIS do sieci wirtualnej platformy Azure. Umożliwia także kroki, aby skonfigurować sieci wirtualnej, tak aby IR Azure SSIS można dołączyć do sieci wirtualnej za pomocą portalu Azure. 
+- [Join an Azure-SSIS IR to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md) (Dołączanie środowiska IR Azure SSIS do sieci wirtualnej). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska IR Azure-SSIS do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej, tak, aby dołączyć Azure-SSIS IR do sieci wirtualnej przy użyciu witryny Azure portal. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły monitorowania potoki na różne sposoby: 
+Zobacz następujące artykuły dotyczące monitorowania potoków w różny sposób: 
 
 - [Szybki Start: tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md).
-- [Użyj monitora Azure w celu monitorowania potoki fabryki danych](monitor-using-azure-monitor.md)
+- [Monitorowanie potoków usługi Data Factory przy użyciu usługi Azure Monitor](monitor-using-azure-monitor.md)

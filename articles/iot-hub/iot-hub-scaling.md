@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b4c5bf3b11c2ee661d95dc50f5c93e12fe2d56bf
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1ad2dc9d826ec42dfca8547a73117a6c967a8ae7
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901045"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113652"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -59,9 +59,9 @@ Różnica w obsługiwanych możliwości między warstwami podstawowa i standardo
 | Uzyskiwanie modułu | Yes | Yes |
 | [Zebranie statystyk, rejestru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Yes | Yes |
 | [Zebranie statystyk, usługi](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Yes | Yes |
-| [Umieść urządzenia](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Yes | Yes |
+| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Yes | Yes |
 | Umieść moduł | Yes | Yes |
-| [Zapytania urządzeń](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Yes | Yes |
+| [Zapytanie usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Yes | Yes |
 | Moduły zapytania | Yes | Yes |
 | [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Yes | Yes |
 | [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Yes | Yes |

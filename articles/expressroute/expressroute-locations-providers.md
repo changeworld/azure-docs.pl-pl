@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: 859421a2726272b07e4d09e468ba6c804db26076
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 401ffcdfa1aa84d7db4e991dd412723b2bafe6fd
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752459"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38969881"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -51,6 +51,10 @@ Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokaliza
 | **Australia — instytucje rządowe** | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 | 
 | **Indie** |Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai (Madras), Mumbaj (Bombaj) |
 | **Korea Południowa** |Korea Środkowa, Korea Południowa |Busan, Seul |
+| **Republika Południowej Afryki** |[Zachodnia RPA+, Północna RPA+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapsztad, Johannesburg |
+
+ **+** oznacza wkrótce
+
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regiony i granice geopolityczne chmur krajowych
 W poniższej tabeli zamieszczono informacje o regionach i granicach geopolitycznych chmur krajowych.
@@ -71,19 +75,19 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 ### <a name="production-azure"></a>Środowisko produkcyjne Azure
 | **Lokalizacja** | **Dostawcy usług** |
 | --- | --- |
-| **Amsterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions — Cloud Connect, Interxion, KPN, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
+| **Amsterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo |
 | **Atlanta** |Equinix |
 | **Pusan** |LG CNS |
 | **Canberra** | CDC |
 | **Canberra2** | CDC |
-| **Kapsztad** |Liquid Telecom, Teraco |
+| **Kapsztad** |Internet Solutions — Cloud Connect, Liquid Telecom, Teraco |
 | **Chennai** | Airtel+, Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chicago** |AT&T NetBond, Comcast, Coresite, Equinix, PacketFabric, Level 3 Communications, Megaport, Sprint, Verizon, Zayo |
-| **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport, Telmex Uninet+, Verizon, Zayo|
+| **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet+, Verizon, Zayo|
 | **Denver** |CoreSite, Megaport |
 | **Dublin** |Colt, eir, Equinix, Interxion, Megaport |
 | **Hongkong** |Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
-| **Johannesburg** |Liquid Telecom, Teraco |
+| **Johannesburg** |Internet Solutions — Cloud Connect, Liquid Telecom, Teraco |
 | **Las Vegas** |CenturyLink Cloud Connect, Megaport |
 | **Londyn** |AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions — Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, Tata Communications, Telehouse — KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **Los Angeles** |CoreSite, Equinix, Megaport, NTT, Zayo |

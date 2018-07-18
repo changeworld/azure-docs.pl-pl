@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5f44c634b953194ad4f112722d82f282d8c8f1a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f5a92d421bbf7bfe485252c148d5f64ae2fb8e23
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444614"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37916119"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure Portal
 
@@ -67,7 +67,7 @@ Utwórz połączenie pulpitu zdalnego z maszyną wirtualną. Te kroki pozwolą C
 
 2. Otwórz pobrany plik RDP i kliknij **Połącz**, gdy wyświetli się odpowiedni monit. 
 
-3. W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz nazwę użytkownika w formacie *nazwa_maszyny_wirtualnej*\*nazwa_użytkownika* oraz hasło utworzone dla maszyny wirtualnej, a następnie kliknij pozycję **OK**.
+3. W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz nazwę użytkownika w formacie *nazwa_maszyny_wirtualnej*\\*nazwa_użytkownika* oraz hasło utworzone dla maszyny wirtualnej, a następnie kliknij pozycję **OK**.
 
 4. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Kliknij pozycję **Tak** lub **Kontynuuj**, aby utworzyć połączenie.
 

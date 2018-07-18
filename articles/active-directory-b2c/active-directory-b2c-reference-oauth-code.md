@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6baeba9cc7e631c6dbdf2284db484dc5f95adcce
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444205"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113678"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Usługa Azure Active Directory B2C: Przepływ kodu autoryzacji OAuth 2.0
 Przyznawanie kodu autoryzacji OAuth 2.0 w aplikacje zainstalowane na urządzeniu umożliwia uzyskanie dostępu do chronionych zasobów, takich jak interfejsy API sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) implementacji protokołu OAuth 2.0, możesz dodawać rejestracji, logowania i zarządzania tożsamościami, inne zadania do aplikacji mobilnych i klasycznych. Ten artykuł jest niezależny od języka. W artykule opisano jak wysyłać i odbierać komunikaty HTTP bez użycia żadnych bibliotek typu open source.
 
 <!-- TODO: Need link to libraries -->
 
-Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Służy do uwierzytelniania i autoryzacji w większości typów aplikacji, w tym [aplikacje sieci web](active-directory-b2c-apps.md#web-apps) i [natywnie zainstalowanych aplikacji](active-directory-b2c-apps.md#mobile-and-native-apps). Przepływ kodu autoryzacji OAuth 2.0 umożliwia bezpieczne uzyskiwanie *tokeny dostępu* dla aplikacji, której można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md#the-basics).
+Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](http://tools.ietf.org/html/rfc6749). Służy do uwierzytelniania i autoryzacji w większości [typy aplikacji](active-directory-b2c-apps.md), w tym aplikacje sieci web i natywnie zainstalowanych aplikacji. Przepływ kodu autoryzacji OAuth 2.0 umożliwia bezpieczne uzyskiwanych tokenów dostępu usługi applicationss, którego można uzyskać dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md).
 
-Ten artykuł koncentruje się na **klientów publicznych** przepływ kodu autoryzacji OAuth 2.0. Publicznych klienta jest każda aplikacja kliencka, która nie jest zaufany, aby bezpiecznie zachować integralność klucza tajnego hasła. W tym aplikacje mobilne, aplikacje klasyczne i zasadniczo każda aplikacja, która jest uruchamiana na urządzeniu i należy uzyskiwanie tokenów dostępu. 
+Ten artykuł koncentruje się na **klientów publicznych** przepływ kodu autoryzacji OAuth 2.0. Publicznych klienta jest każda aplikacja kliencka, która nie jest zaufany, aby bezpiecznie zachować integralność klucza tajnego hasła. W tym aplikacje mobilne, aplikacje pulpitu i zasadniczo każda aplikacja, która jest uruchamiana na urządzeniu i należy uzyskiwanie tokenów dostępu. 
 
 > [!NOTE]
 > Aby dodać zarządzania tożsamościami do aplikacji sieci web za pomocą usługi Azure AD B2C, należy użyć [OpenID Connect](active-directory-b2c-reference-oidc.md) zamiast protokołu OAuth 2.0.
 
-Usługa Azure AD B2C rozszerza tego standardu OAuth 2.0 są przekazywane do więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametru zasad](active-directory-b2c-reference-policies.md). Przy użyciu wbudowanych zasad, można użyć protokołu OAuth 2.0 do dodania środowisk użytkowników do aplikacji, takich jak rejestracji, logowania i zarządzania profilami. W tym artykule pokazujemy, jak używać protokołu OAuth 2.0 i zasady do wdrożenia każdego z tych środowisk w natywnych aplikacjach. Możemy również pokazano, jak uzyskiwanie tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
+Usługa Azure AD B2C rozszerza tego standardu OAuth 2.0 są przekazywane do więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametru zasad](active-directory-b2c-reference-policies.md). Przy użyciu wbudowanych zasad można użyć protokołu OAuth 2.0 do dodania środowisk użytkowników do aplikacji, takich jak rejestracji, logowania i zarządzania profilami. W tym artykule pokazujemy, jak używać protokołu OAuth 2.0 i zasady do wdrożenia każdego z tych środowisk w natywnych aplikacjach. Możemy również pokazano, jak uzyskiwanie tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
 
 W żądaniach przykład HTTP, w tym artykule, stosujemy nasze przykładowe katalogu usługi Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Możemy również użyć naszych przykładowych aplikacji i zasad. Możesz spróbować żądania samodzielnie za pomocą tych wartości, lub można je zastąpić własnymi wartościami.
 Dowiedz się, jak [własnego katalogu usługi Azure AD B2C, aplikacji i zasad](#use-your-own-azure-ad-b2c-directory).
@@ -189,7 +189,7 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | Parametr | Wymagana? | Opis |

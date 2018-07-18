@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c1277484d8f8b3073ac15534110b01903c265318
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: bbe60fb6a6371551f588d5472ac304148a4a1aa7
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795887"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38453420"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: tworzenie aplikacji .NET Framework lub Core za pomocą interfejsu API programu Graph
 
@@ -86,7 +86,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku Program.cs.
     private static int port = 443;
     private static string authKey = "your-authentication-key";
     private static string database = "your-database";
-    private static string collection = "your-collection-or-graph";
+    private static string collection = "your-graph-container";
     ```
 
 * Polecenia języka Gremlin do wykonania są wyświetlane w postaci słownika (wiersz 26):
@@ -175,7 +175,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     `private static string database = "your-database";`
 
-5. Podobnie, korzystając z informacji o kolekcji utworzonej powyżej, wklej kolekcję (która jest też nazwą grafu) wewnątrz zmiennej `collection` w wierszu 23. 
+5. Podobnie, korzystając z informacji o utworzonym powyżej kontenerze, wklej nazwę kolekcji (która jest też nazwą grafu) wewnątrz zmiennej `collection` w wierszu 23. 
 
     `private static string collection = "your-collection-or-graph";`
 
@@ -193,7 +193,7 @@ Naciśnij klawisze CTRL + F5, aby uruchomić aplikację. Aplikacja będzie wyśw
 
 Teraz możesz wrócić do Eksploratora danych w witrynie Azure Portal, aby przeglądać nowe dane i wykonywać zapytania względem nich.
 
-1. W Eksploratorze danych nowa baza danych jest wyświetlana w okienku Grafy. Rozwiń węzły bazy danych i kolekcji, a następnie kliknij pozycję **Graf**.
+1. W Eksploratorze danych nowa baza danych jest wyświetlana w okienku Grafy. Rozwiń węzły bazy danych i kontenera, a następnie kliknij pozycję **Graf**.
 
 2. Kliknij polecenie **Zastosuj filtr**, aby użyć domyślnego zapytania do wyświetlenia wszystkich wierzchołków grafu. Dane wygenerowane przez przykładową aplikację zostaną wyświetlone w okienku Grafy.
 

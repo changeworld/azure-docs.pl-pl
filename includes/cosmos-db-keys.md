@@ -1,4 +1,4 @@
-  Teraz przejdź do strony konta bazy danych rozwiązania Cosmos Azure i kliknij przycisk **klucze**, jak te wartości są używane w aplikacji sieci web, możesz utworzyć obok.
+  Teraz przejdź do strony konta usługi Azure Cosmos DB i kliknij pozycję **Klucze**, ponieważ te wartości są używane w aplikacji internetowej, którą następnie utworzysz.
 
-![Zrzut ekranu przedstawiający portal Azure z przyciskiem klucze wyróżnionym na stronie konta bazy danych Azure rozwiązania Cosmos](./media/cosmos-db-keys/keys.png)
+![Zrzut ekranu witryny Azure Portal z wyróżnionym przyciskiem Klucze na stronie konta usługi Azure Cosmos DB](./media/cosmos-db-keys/keys.png)
 

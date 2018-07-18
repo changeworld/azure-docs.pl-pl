@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 826dcf13a6e29fd4631e1078dd2ac0fa65b14e14
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001688"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114616"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 W tym artykule opisano strukturę szablonu usługi Azure Resource Manager. Przedstawia on różne części szablonu i właściwości, które są dostępne w tych sekcjach. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia. Aby uzyskać samouczek krok po kroku dotyczące tworzenia szablonu, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
@@ -313,4 +313,4 @@ Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych sza
 * Aby wyświetlić pełną listę szablonów dla wielu różnych rozwiązań, zobacz [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/).
 * Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
 * Aby połączyć wiele szablonów podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
-* Może być konieczne użycie zasobów, które istnieją w innej grupie zasobów. Ten scenariusz jest typowy podczas pracy z kontami magazynu lub sieci wirtualne, które są współużytkowane przez wiele grup zasobów. Aby uzyskać więcej informacji, zobacz [funkcja resourceId](resource-group-template-functions-resource.md#resourceid).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager, używających globalnej platformy Azure, chmurach suwerennych platformy Azure i usługi Azure Stack, zobacz [szablony Tworzenie usługi Azure Resource Manager w celu zachowania spójności chmury](templates-cloud-consistency.md).

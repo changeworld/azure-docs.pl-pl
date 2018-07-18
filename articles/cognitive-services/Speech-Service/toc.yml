@@ -11,12 +11,18 @@
   items:
     - name: Wypróbuj bezpłatnie usługę rozpoznawania mowy
       href: get-started.md
-    - name: 'Rozpoznawanie mowy w języku C#'
-      href: quickstart-csharp-windows.md
+    - name: 'Rozpoznawanie mowy w języku C# (platforma .NET w systemie Windows)'
+      href: quickstart-csharp-dotnet-windows.md
+    - name: 'Rozpoznawanie mowy w języku C# (platforma .NET Core w systemie Windows)'
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: Rozpoznawanie mowy w aplikacji platformy UWP
+      href: quickstart-csharp-uwp.md
     - name: Rozpoznawanie mowy w języku C++ dla systemu Windows
       href: quickstart-cpp-windows.md
     - name: Rozpoznawanie mowy w języku C++ dla systemu Linux
       href: quickstart-cpp-linux.md
+    - name: Rozpoznawanie mowy w języku Java dla systemu Android
+      href: quickstart-java-android.md
     - name: Rozpoczynanie pracy z zestawem Speech Devices SDK
       href: speech-devices-sdk-qsg.md
 - name: Przewodniki z instrukcjami

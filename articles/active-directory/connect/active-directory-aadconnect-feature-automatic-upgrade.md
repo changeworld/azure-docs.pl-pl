@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Automatyczne uaktualnianie | Dokumentacja firmy Microsoft'
-description: W tym temacie opisano wbudowanych funkcji automatycznego uaktualniania synchronizacji Azure AD Connect.
+title: 'Usługa Azure AD Connect: Automatyczne uaktualnianie | Dokumentacja firmy Microsoft'
+description: W tym temacie opisano wbudowanej funkcji automatycznego uaktualniania w synchronizacji programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,95 +12,95 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
+ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: adfce1195a6a322e0225ee09a45148001d0167c8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592133"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39089965"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatyczne uaktualnianie
-Ta funkcja została wprowadzona z kompilacją 1.1.105.0 (wydane luty 2016).
+Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](active-directory-aadconnect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](active-directory-aadconnect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.
 
 ## <a name="overview"></a>Przegląd
-Zapewnienie instalacji programu Azure AD Connect jest zawsze aktualny jest wyjątkowo proste z **automatyczne uaktualnianie** funkcji. Ta funkcja jest włączona domyślnie w przypadku instalacji ekspresowej, a uaktualnienie narzędzia DirSync. Po wydaniu nowej wersji instalacji zostaje automatycznie uaktualnione.
-Automatyczne uaktualnianie jest domyślnie włączona dla następujących czynności:
+Zagwarantowanie, że instalacji programu Azure AD Connect jest zawsze pozostają aktualne jest łatwiejsze niż dotychczas dzięki **automatyczne uaktualnianie** funkcji. Ta funkcja jest włączona domyślnie w przypadku instalacji ekspresowej, a uaktualnienie narzędzia DirSync. Po wydaniu nowej wersji instalacji zostaje automatycznie uaktualnione.
+Automatyczne uaktualnianie jest domyślnie włączona, do wykonania poniższych czynności:
 
-* Express ustawienia instalacji i uaktualnienia narzędzia DirSync.
-* Za pomocą programu SQL Express LocalDB, czyli co ustawień ekspresowych zawsze używać. Narzędzie DirSync z programu SQL Express również użyć LocalDB.
-* Konto usługi AD jest domyślnym kontem MSOL_ tworzone przez ustawień ekspresowych i narzędzia DirSync.
+* Podczas tworzenia ekspresowych ustawienia instalacji i uaktualniania narzędzia DirSync.
+* Za pomocą programu SQL Express LocalDB, jest to, czego ustawień ekspresowych zawsze używać. Narzędzie DirSync z programu SQL Express również użyć programu LocalDB.
+* Konto usługi AD jest domyślnym kontem MSOL_ utworzonych przez ustawień ekspresowych oraz narzędzia DirSync.
 * Masz mniej niż 100 000 obiektów w magazynie metaverse.
 
-Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polecenia cmdlet programu PowerShell `Get-ADSyncAutoUpgrade`. Wybrano następujące stany:
+Bieżący stan automatycznego uaktualniania można wyświetlić za pomocą polecenia cmdlet programu PowerShell `Get-ADSyncAutoUpgrade`. Obowiązują następujące stany:
 
 | Stan | Komentarz |
 | --- | --- |
-| Enabled (Włączony) |Włączono automatyczną aktualizację. |
-| Zawieszone |Ustaw tylko w systemie. System nie jest już przysługiwać automatycznych uaktualnień. |
+| Enabled (Włączony) |Automatyczne uaktualnianie jest włączona. |
+| Wstrzymano |Ustaw tylko w systemie. System nie jest już prawo do otrzymania automatycznych uaktualnień. |
 | Disabled (Wyłączony) |Automatyczne uaktualnianie jest wyłączona. |
 
-Można przełączać się między **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko system, należy ustawić stan **zawieszone**.
+Można zmieniać **włączone** i **wyłączone** z `Set-ADSyncAutoUpgrade`. Tylko do systemu, należy ustawić stan **zawieszone**.
 
-Automatyczne uaktualnianie używa usługi Azure AD Connect Health dla uaktualnienia infrastruktury. Do automatycznego uaktualnienia do pracy, upewnij się, że adresy URL został otwarty na serwerze proxy dla **Azure AD Connect Health** zgodnie z opisem w [zakresów adresów IP i URL usługi Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Automatyczne uaktualnianie jest przy użyciu programu Azure AD Connect Health dla uaktualnienie infrastruktury. Aby uzyskać automatyczne uaktualnienie do pracy, upewnij się, adresy URL został otwarty na serwerze proxy dla **programu Azure AD Connect Health** zgodnie z opisem w [URL usługi Office 365 i zakresy adresów IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
 
-Jeśli **Menedżera usługi synchronizacji** interfejsu użytkownika jest uruchomiona na serwerze, a następnie Uaktualnianie jest wstrzymane do czasu zamknięcia interfejsu użytkownika.
+Jeśli **Menedżera usługi synchronizacji** interfejsu użytkownika jest uruchomiona na serwerze, a następnie uaktualnienia jest zawieszona do czasu zamknięcia interfejsu użytkownika.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Jeśli instalacji Connect nie uaktualnia się sam zgodnie z oczekiwaniami, postępuj te kroki, aby dowiedzieć się, co może być nieprawidłowa.
+W przypadku instalacji programu Connect nie uaktualnia się sam zgodnie z oczekiwaniami, należy wykonać następujące kroki, aby dowiedzieć się, co może być nieprawidłowa.
 
-Należy najpierw nie oczekiwać automatyczne uaktualnianie, aby podjąć pierwszy dzień, który wydana nowa wersja. Jest zamierzone losowości przed próbą uaktualnienia, więc nie alarmed instalacji nie jest od razu uaktualnienia.
+Po pierwsze nie powinno automatycznego uaktualniania, aby podjąć próbę pierwszy dzień, w których wydaniu nowej wersji. Przed próbą uaktualnienia, dzięki czemu nie przejmować, jeśli instalacja nie jest od razu uaktualnienia jest losowości zamierzone.
 
-Jeśli uważasz, że nie jest element w prawo, najpierw uruchom `Get-ADSyncAutoUpgrade` zapewnienie włączone jest automatyczne uaktualnianie.
+Jeśli Twoim zdaniem coś, co nie jest odpowiednia, najpierw uruchom `Get-ADSyncAutoUpgrade` zapewnienie jest włączone automatyczne uaktualnianie.
 
-Następnie upewnij się, że odpowiednie adresy URL został otwarty w użyciu serwera proxy lub zapory. Automatyczna aktualizacja jest przy użyciu usługi Azure AD Connect Health, zgodnie z opisem w [omówienie](#overview). Jeśli używasz serwera proxy, upewnij się, kondycji został skonfigurowany do używania [serwera proxy](../connect-health/active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Także przetestować [łączności kondycji](../connect-health/active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do usługi Azure AD.
+Następnie upewnij się, że został otwarty wymaganych adresów URL serwera proxy lub zapory. Automatyczna aktualizacja jest przy użyciu programu Azure AD Connect Health, zgodnie z opisem w [Przegląd](#overview). Jeśli używasz serwera proxy, upewnij się, kondycji został skonfigurowany do użycia [serwera proxy](../connect-health/active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Również przetestować [łączności kondycji](../connect-health/active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do usługi Azure AD.
 
-W przypadku łączności z usługą Azure AD zweryfikować z nadszedł czas do elementami EventLog. Uruchom Podgląd zdarzeń i Znajdź **aplikacji** eventlog. Dodaj filtr eventlog źródła **Azure AD Connect uaktualnienia** i zakres identyfikatora zdarzenia **300 399**.  
-![Filtr dziennika zdarzeń dla automatycznego uaktualniania](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)  
+Łączność z usługą Azure AD zweryfikować nadszedł czas na możliwość przejrzenia elementami EventLog. Uruchom Podgląd zdarzeń i Znajdź **aplikacji** dziennika zdarzeń. Dodaj filtr dziennika zdarzeń dla źródła **usługi Azure AD Connect uaktualnianie** i zakres identyfikatorów zdarzeń **300-399**.  
+![W dzienniku zdarzeń filtr dla uaktualnienie automatyczne](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)  
 
-Możesz teraz przeglądać elementami Eventlog, skojarzone ze stanem dla automatycznego uaktualniania.  
-![Filtr dziennika zdarzeń dla automatycznego uaktualniania](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)  
+Teraz widać elementami EventLog skojarzony stan dla uaktualnienie automatyczne.  
+![W dzienniku zdarzeń filtr dla uaktualnienie automatyczne](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)  
 
-Kod wyniku ma prefiks przegląd stanu.
+Kod wyniku prefiksie przegląd stanu.
 
-| Prefiks kod wyniku | Opis |
+| Prefiks kodu wyniku | Opis |
 | --- | --- |
-| Powodzenie |Pomyślnie uaktualniono instalacji. |
-| UpgradeAborted |Tymczasowy warunek zatrzymana uaktualnienia. Zostanie ona ponownie ponowione i oczekuje się, czy próba powiedzie się później. |
-| UpgradeNotSupported |System ma konfigurację, która blokuje system z uaktualniany automatycznie. Zostanie zostać powtórzone, aby zobaczyć, jeśli stan jest zmieniany, ale oczekuje się, że system musi zostać uaktualnione ręcznie. |
+| Powodzenie |Instalacja została pomyślnie uaktualniona. |
+| UpgradeAborted |Stan tymczasowy zatrzymane uaktualnienia. Zostanie ona ponownie ponowione i oczekuje się, że jego powodzenia później. |
+| UpgradeNotSupported |System ma konfiguracji, który blokuje przez system automatycznie uaktualniany. Będzie można ponowić aby zobaczyć, jeśli stan jest zmieniany, ale oczekuje się, że system musi zostać uaktualniony ręcznie. |
 
-W tym miejscu znajduje się lista typowych wiadomości, które można znaleźć. Nie wyświetla listy wszystkich, ale komunikat wynikowy powinien być wyczyść o jakie problem.
+Poniżej przedstawiono listę najbardziej typowych komunikatów, które znajdujesz. Nie wyświetla listy wszystkich, ale komunikat o wyniku powinna być jasno jaki problem jest.
 
 | Komunikat o wyniku | Opis |
 | --- | --- |
 | **UpgradeAborted** | |
-| UpgradeAbortedCouldNotSetUpgradeMarker |Nie można zapisać w rejestrze. |
-| UpgradeAbortedInsufficientDatabasePermissions |Grupy wbudowanych administratorów nie ma uprawnień do bazy danych. Przeprowadź ręczne uaktualnienie do najnowszej wersji programu Azure AD Connect, aby rozwiązać ten problem. |
-| UpgradeAbortedInsufficientDiskSpace |Nie jest wystarczająco dużo miejsca na dysku do obsługi uaktualnienia. |
-| UpgradeAbortedSecurityGroupsNotPresent |Nie można odnaleźć i rozwiązać wszystkie grupy zabezpieczeń używane przez aparat synchronizacji. |
+| UpgradeAbortedCouldNotSetUpgradeMarker |Nie można zapisać do rejestru. |
+| UpgradeAbortedInsufficientDatabasePermissions |Wbudowanej grupy Administratorzy nie ma uprawnień do bazy danych. Ręcznie Uaktualnij do najnowszej wersji programu Azure AD Connect, aby rozwiązać ten problem. |
+| UpgradeAbortedInsufficientDiskSpace |Nie ma wystarczającej ilości miejsca na dysku do obsługi uaktualnienia. |
+| UpgradeAbortedSecurityGroupsNotPresent |Nie można odnaleźć i rozwiązać wszystkie grupy zabezpieczeń używanego przez aparat synchronizacji. |
 | UpgradeAbortedServiceCanNotBeStarted |Usługa NT **Microsoft Azure AD Sync** uruchomienie nie powiodło się. |
-| UpgradeAbortedServiceCanNotBeStopped |Usługa NT **Microsoft Azure AD Sync** nie można zatrzymać. |
+| UpgradeAbortedServiceCanNotBeStopped |Usługa NT **Microsoft Azure AD Sync** udało się zatrzymać. |
 | UpgradeAbortedServiceIsNotRunning |Usługa NT **Microsoft Azure AD Sync** nie jest uruchomiona. |
 | UpgradeAbortedSyncCycleDisabled |Opcja SyncCycle w [harmonogramu](active-directory-aadconnectsync-feature-scheduler.md) została wyłączona. |
 | UpgradeAbortedSyncExeInUse |[Interfejs użytkownika Menedżera usługi synchronizacji](active-directory-aadconnectsync-service-manager-ui.md) jest otwarty na serwerze. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Kreator instalacji jest uruchomiony lub synchronizacji zostało zaplanowane poza harmonogramu. |
 | **UpgradeNotSupported** | |
 | UpgradeNotSupportedAdfsSignInMethod | Jako metodę logowania wybrano usług AD FS. | 
-| UpgradeNotSupportedCustomizedSyncRules |Dodano własne reguły niestandardowe dla konfiguracji. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Włączono [zapisu zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md) funkcji. |
+| UpgradeNotSupportedCustomizedSyncRules |Własne reguły niestandardowe zostały dodane do konfiguracji. |
+| UpgradeNotSupportedDeviceWritebackEnabled |Włączono [zapisywanie zwrotne urządzeń](active-directory-aadconnect-feature-device-writeback.md) funkcji. |
 | UpgradeNotSupportedGroupWritebackEnabled |Włączono [zapisu zwrotnego grup](active-directory-aadconnect-feature-preview.md#group-writeback) funkcji. |
 | UpgradeNotSupportedInvalidPersistedState |Instalacja nie jest ustawień ekspresowych lub uaktualnienie narzędzia DirSync. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |Masz więcej niż 100 000 obiektów w magazynie metaverse. |
-| UpgradeNotSupportedMultiForestSetup |Łączysz się z więcej niż jednego lasu. Instalacja ekspresowa tylko łączy się z jednego lasu. |
+| UpgradeNotSupportedMetaverseSizeExceeeded |Masz ponad 100 000 obiektów w magazynie metaverse. |
+| UpgradeNotSupportedMultiForestSetup |Łączysz się do więcej niż jednym lesie. Instalacja ekspresowa tylko łączy się z jednego lasu. |
 | UpgradeNotSupportedNonLocalDbInstall |Nie używasz bazy danych programu SQL Server Express LocalDB. |
 | UpgradeNotSupportedNonMsolAccount |[Konta łącznika AD](active-directory-aadconnect-accounts-permissions.md#active-directory-account) nie jest domyślnym kontem MSOL_ już. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania AAD Connect, możesz wybrać *nieskonfigurowane* podczas wybierania metody logowania jednokrotnego. | 
-| UpgradeNotSupportedPtaSignInMethod | Jako metodę logowania wybrano uwierzytelniania przekazywanego. |
-| UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiona w [Tryb przejściowy](active-directory-aadconnectsync-operations.md#staging-mode). |
-| UpgradeNotSupportedUserWritebackEnabled |Włączono [zapisu zwrotnego użytkowników](active-directory-aadconnect-feature-preview.md#user-writeback) funkcji. |
+| UpgradeNotSupportedNotConfiguredSignInMethod | Podczas konfigurowania program AAD Connect, możesz wybrać *nie należy konfigurować* podczas wybierania metody logowania jednokrotnego. | 
+| UpgradeNotSupportedPtaSignInMethod | Jako metodę logowania wybrano uwierzytelnianie przekazywane. |
+| UpgradeNotSupportedStagingModeEnabled |Serwer jest ustawiony w [Tryb przejściowy](active-directory-aadconnectsync-operations.md#staging-mode). |
+| UpgradeNotSupportedUserWritebackEnabled |Włączono [zapis zwrotny użytkowników](active-directory-aadconnect-feature-preview.md#user-writeback) funkcji. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).

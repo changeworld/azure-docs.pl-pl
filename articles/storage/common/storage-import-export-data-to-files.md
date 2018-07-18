@@ -1,61 +1,69 @@
 ---
-title: Przy użyciu Import/Eksport Azure na przesyłanie danych do usługi pliki Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć zadania importu w portalu Azure na przesyłanie danych do usługi pliki Azure.
+title: Przesyłanie danych do usługi Azure Files za pomocą usługi Azure Import/Export | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć zadania importu w witrynie Azure portal na przesyłanie danych do usługi Azure Files.
 author: alkohli
 manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 4349b471f960e7844511c473bffcd2177a34e055
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f48097fa1ece66dd9e20a7a7939ac43cb0f48b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660884"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113481"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Import/Eksport Azure umożliwia importowanie danych do usługi pliki Azure
+# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
-Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Import/Eksport Azure można bezpiecznie zaimportować dużych ilości danych do usługi pliki Azure. Aby zaimportować dane, usługa wymaga do wysłania obsługiwanych stacje dysków z danymi do centrum danych Azure.  
+Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu bezpiecznego importowania dużych ilości danych do usługi Azure Files przy użyciu usługi Azure Import/Export. Aby zaimportować dane, usługa wymaga wysłania obsługiwane dyski zawierające dane do centrum danych platformy Azure.  
 
-Do usługi Azure Storage obsługuje usługi Import/Eksport importować plików Azure. Eksportowanie plików Azure nie jest obsługiwane.
+Obsługuje usługi Import/Export importować tylko z usługą Azure Files do usługi Azure Storage. Eksportowanie do usługi Azure Files nie jest obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem zadania importu na przesyłanie danych do usługi pliki Azure uważnie Przejrzyj i ukończ poniższą listę wymagań wstępnych. Należy:
+Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do usługi Azure Files, starannie Przejrzyj i ukończ poniższą listę wymagań wstępnych. Musisz mieć:
 
-- Mieć aktywną subskrypcją platformy Azure do użycia z usługą importu i eksportu.
-- Ma co najmniej jedno konto magazynu Azure. Lista [obsługiwany konta magazynu i typów magazynu dla usługi Import/Eksport](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-create-storage-account.md#create-a-storage-account).
-- Ma odpowiedniej liczby dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
+- Mieć aktywną subskrypcję platformy Azure za pomocą usługi Import/Export.
+- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
+- Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
-- [Pobierz WAImportExport w wersji 2](https://www.microsoft.com/download/details.aspx?id=55280) w systemie Windows. Rozpakuj w domyślnym folderze `waimportexport`. Na przykład `C:\WaImportExport`.
+- [Pobierz WAImportExport w wersji 2](https://www.microsoft.com/download/details.aspx?id=55280) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.
+- Mieć konto FedEx/DHL w sprawie. 
+    - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
+    - Generowanie numer śledzenia, zadanie eksportu.
+    - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane.
+    - Jeśli nie masz konto przewoźnika, przejdź do strony:
+        - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
+        - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+ 
 
 
 ## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowanie dysków
 
-Ten krok generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak dysk numer seryjny, klucz szyfrowania i szczegóły konta magazynu.
+W tym kroku generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak numer seryjny dysku, klucz szyfrowania i szczegółów konta magazynu.
 
 Wykonaj poniższe kroki, aby przygotować dyski.
 
-1. Połącz naszych dysków do systemu Windows za pomocą łączników SATA.
+1. Połączyć z naszym z stacje dysków do systemu Windows za pomocą łączników SATA.
 2. Utwórz pojedynczy wolumin NTFS na każdym dysku. Przypisz literę dysku do woluminu. Nie należy używać punkty instalacji.
-3. Modyfikowanie *dataset.csv* pliku w folderze głównym, na którym znajduje się narzędzie. W zależności od tego, czy chcesz importować pliku lub folderu, należy dodać wpisy w *dataset.csv* pliku podobne do poniższych przykładach.  
+3. Modyfikowanie *dataset.csv* pliku w folderze głównym, w którym znajduje się narzędzie. W zależności od tego, czy chcesz importować pliku lub folderu, należy dodać wpisy w *dataset.csv* pliku podobne do poniższych przykładach.  
 
-    - **Aby zaimportować plik**: W poniższym przykładzie dane do skopiowania znajduje się na dysku C:. Plik *MyFile1.txt* jest kopiowany do katalogu głównego *MyAzureFileshare1*. Jeśli *MyAzureFileshare1* nie istnieje, jest tworzony na koncie magazynu Azure. Struktura folderów jest obsługiwana.
+    - **Aby zaimportować plik**: W poniższym przykładzie dane do skopiowania znajduje się na dysku C:. Plik *MyFile1.txt* jest kopiowany do katalogu głównego *MyAzureFileshare1*. Jeśli *MyAzureFileshare1* nie istnieje, jest tworzony w ramach konta usługi Azure Storage. Struktura folderów jest zachowywana.
 
         ```
             BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **Aby zaimportować folderu**: wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest obsługiwana.
+    - **Aby zaimportować folder**: wszystkie pliki i foldery w obszarze *MyFolder2* są rekursywnie skopiowane do udziału plików. Struktura folderów jest zachowywana.
 
         ```
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
             
         ```
-    Wiele wpisów można podjąć w tym samym pliku odpowiadający foldery lub pliki, które są importowane. 
+    Wiele wpisów mogą być wprowadzane w tym samym pliku odpowiadający foldery lub pliki, które są importowane. 
 
         ```
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
@@ -66,27 +74,27 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     Dowiedz się więcej o [przygotowania pliku CSV zestawu danych](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
 
-4. Modyfikowanie *driveset.csv* pliku w folderze głównym, na którym znajduje się narzędzie. Dodawanie wpisów w *driveset.csv* pliku podobne do poniższych przykładach. Plik driveset ma listę dysków i odpowiednich liter dysku, aby narzędzie poprawnie można pobrać listy dysków, aby przygotować.
+4. Modyfikowanie *driveset.csv* pliku w folderze głównym, w którym znajduje się narzędzie. Dodawanie wpisów w *driveset.csv* pliku podobne do poniższych przykładach. Plik driveset ma listę dysków i odpowiednie litery dysku, więc narzędzie poprawnie można pobrać listy dysków, które mają zostać przygotowane.
 
-    W tym przykładzie przyjęto założenie, że są dołączone dwa dyski i woluminy NTFS podstawowe G:\ i H:\ są tworzone. H:\is nie szyfrowane, gdy G: jest już zaszyfrowany. Narzędzie formatuje i szyfrowanie dysku, który obsługuje tylko H:\ (a nie G:\).
+    W tym przykładzie założono, że są dołączane dwa dyski i woluminy NTFS podstawowe G:\ i H:\ są tworzone. H:\is nie szyfrowane, gdy G: jest już zaszyfrowany. Narzędzie formatuje i szyfruje dysku, który obsługuje tylko H:\ (a nie G:\).
 
-    - **Dla dysku, który nie jest zaszyfrowany**: Określ *Szyfruj* Aby włączyć szyfrowanie funkcji BitLocker na dysku.
+    - **Na dysku, które nie są szyfrowane**: Określ *Szyfruj* włączyć szyfrowanie funkcji BitLocker na dysku.
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
         H,Format,SilentMode,Encrypt,
         ```
     
-    - **Dla dysku, który jest już zaszyfrowane**: Określ *AlreadyEncrypted* i podaj klucza funkcji BitLocker.
+    - **Dla dysku, który jest już zaszyfrowany**: Określ *AlreadyEncrypted* i podaj klucz funkcji BitLocker.
 
         ```
         DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
         G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
         ```
 
-    Wiele wpisów może się w tym samym pliku odpowiadający wiele dysków. Dowiedz się więcej o [przygotowania pliku CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
+    Wiele wpisów, może się w tym samym pliku, odpowiadające na wielu dyskach. Dowiedz się więcej o [przygotowania pliku CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
 
-5.  Użyj `PrepImport` opcję, aby skopiować i przygotowania danych na dysku. Dla sesji kopiowania do skopiowania katalogów i/lub pliki w nowej sesji kopiowania uruchom następujące polecenie:
+5.  Użyj `PrepImport` opcję Kopiuj i przygotowywuj danych na dysku. Dla sesji kopiowania do skopiowania katalogów i/lub plików w nowej sesji kopiowania uruchom następujące polecenie:
 
         ```
         .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
@@ -98,73 +106,80 @@ Wykonaj poniższe kroki, aby przygotować dyski.
         .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
         ```
  
-6. Plik dziennika o nazwie dostarczona z `/j:` parametru jest tworzony dla każdego uruchomienia wiersza polecenia. Każdy dysk, który należy przygotować ma w pliku dziennika, który należy przekazać podczas tworzenia zadania importu. Dyski bez dziennika, które nie są przetwarzane pliki.
+6. Plik dziennika o nazwie dostarczona z `/j:` parametru jest tworzony dla każdego uruchomienia wiersza polecenia. Każdy dysk, który należy przygotować ma w pliku dziennika, które muszą być przesłane, podczas tworzenia zadania importu. Dyski bez arkusza, w których pliki nie zostały przetworzone.
 
     > [!IMPORTANT]
-    > - Po zakończeniu przygotowywania dysków nie należy modyfikować dane na dyski lub pliku dziennika.
+    > - Po zakończeniu przygotowania dysku nie należy modyfikować dane w pliku dziennika lub dysków.
 
-Aby uzyskać dodatkowe przykłady [przykłady dla plików dziennika](#samples-for-journal-files).
+Aby uzyskać więcej przykładów, przejdź do [przykłady dla plików dziennika](#samples-for-journal-files).
 
 ## <a name="step-2-create-an-import-job"></a>Krok 2: Tworzenie zadania importu 
 
-Wykonaj poniższe kroki, aby utworzyć zadanie importu w portalu Azure.
+Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 1. Zaloguj się do https://portal.azure.com/.
-2. Przejdź do **wszystkie usługi > magazynu > zadania importu/eksportu**. 
+2. Przejdź do **wszystkie usługi > Magazyn > zadania importu/eksportu**. 
 
-    ![Przejdź do importowania i eksportowania](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Przejdź do importu/eksportu](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Kliknij przycisk **zadania importu/eksportu Utwórz**.
+3. Kliknij przycisk **Tworzenie zadania importu/eksportu**.
 
-    ![Kliknij pozycję zadania importu/eksportu](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Kliknij zadanie importu/eksportu](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. W **podstawy**:
 
-    - Wybierz **importu na platformie Azure**.
-    - Wprowadź nazwę opisową dla zadania importu. Ta nazwa jest używana do śledzenia zadań, gdy są one w toku, a po zakończeniu.
+    - Wybierz **Importuj na platformę Azure**.
+    - Wprowadź opisową nazwę zadania importowania. Ta nazwa jest używana do śledzenia zadań, gdy są one w trakcie wykonywania i po zakończeniu.
         -  Ta nazwa może zawierać tylko małe litery, cyfry, łączniki i podkreślenia.
         -  Nazwa musi zaczynać się literą i nie może zawierać spacji. 
     - Wybierz subskrypcję.
     - Wybierz grupę zasobów. 
 
-        ![Utwórz zadania importu — krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Tworzenie zadania importu — krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. W **szczegóły zadania**:
     
-    - Przekazywanie plików dziennika, które zostały utworzone w ciągu poprzednich [krok 1: przygotowanie dyski](#step-1-prepare-the-drives). 
-    - Wybierz konto magazynu, którego dane mają zostać zaimportowane. 
-    - Lokalizacja przyjmowania jest wypełniane automatycznie na podstawie regionu wybrane konta magazynu.
+    - Przekazywanie plików dziennika, utworzone w ciągu poprzednich [krok 1: przygotowanie dysków](#step-1-prepare-the-drives). 
+    - Wybierz konto magazynu, które mają zostać zaimportowane dane. 
+    - Lokalizacja nadania jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
    
-       ![Utwórz zadania importu — krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Tworzenie zadania importu — krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. W **zwraca informacje o wysyłki**:
+4. W **zwracają informacje o wysyłce**:
 
-    - Wybierz nośnik, z listy rozwijanej.
-    - Wprowadź numer konta nieprawidłowy operator, które zostały utworzone z tego nośnika. Firma Microsoft używa tego konta na potrzeby wysłania dysków powrotem po zakończeniu zadania importu. 
-    - Podaj nazwisko osoby kontaktowej w pełne i prawidłowe, telefonu, poczty e-mail, adres, Miasto, zip, Województwo i kraj/region.
+    - Wybierz operatora z listy rozwijanej.
+    - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. 
+    - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
 
-       ![Utwórz zadania importu — krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+        > [!TIP] 
+        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
+
+       ![Tworzenie zadania importu — krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
    
 5. W **Podsumowanie**:
 
-    - Podaj centrum danych Azure adresu do wysyłania Azure dysków wysyłki. Upewnij się, są wymienione nazwy zadania i pełny adres na etykiecie wysyłki.
+    - Podaj centrum danych platformy Azure adresu do wysyłki Azure dysków wysyłki. Upewnij się, czy nazwa zadania i pełnego adresu są wymienione na etykietę wysyłkową.
     - Kliknij przycisk **OK** aby zakończyć tworzenie zadania importu.
 
-        ![Utwórz zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Wyślij dysków do centrum danych Azure 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Dostarczaj dyski, centrach danych platformy Azure 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Aktualizowanie zadania ze śledzeniem informacji
+## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Aktualizacja zadania przy użyciu informacji o śledzeniu
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
+
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Sprawdzenie przekazywania danych na platformie Azure
+
+Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 
 ## <a name="samples-for-journal-files"></a>Przykłady dla plików dziennika
 
 Aby **dodawanie kolejnych dysków**, Utwórz nowy plik driveset i uruchom polecenie zgodnie z poniższymi instrukcjami. 
 
-Sesje kolejnych kopii na różnych dyskach niż określona w *CSV InitialDriveset* pliku, określ nowe driveset *CSV* plik, a następnie podaj go jako wartość parametru `AdditionalDriveSet`. Użyj **tego samego pliku dziennika** nazwy i podaj **nowy identyfikator sesji**. Format pliku AdditionalDriveset CSV jest taki sam jak InitialDriveSet format.
+Sesje kolejnych kopii na różne dyski, niż określona w *CSV InitialDriveset* plikiem, należy określić nowy driveset *CSV* pliku, a następnie podać go jako wartość parametru `AdditionalDriveSet`. Użyj **tego samego pliku dziennika** nazwę, a następnie podaj **nowy identyfikator sesji**. Format pliku AdditionalDriveset CSV jest taki sam jak InitialDriveSet format.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -177,9 +192,9 @@ Poniżej przedstawiono przykład importu.
     ```
 
 
-Aby dodać dodatkowe dane do tej samej driveset, użyj polecenia PrepImport sesji kolejnych kopii można skopiować dodatkowe pliki lub katalogu.
+Aby dodać dodatkowe dane do tej samej driveset, polecenie PrepImport sesji kolejnych kopiowania do skopiowania dodatkowe pliki/katalog.
 
-Sesje kolejnych kopii do tej samej stacje dysków twardych, określona w *InitialDriveset.csv* pliku, określ **tego samego pliku dziennika** nazwy i podaj **nowy identyfikator sesji**; nie istnieje potrzeba zapewnienie klucz konta magazynu.
+Dla sesji kolejnych kopii tych samych dysków twardych określonych w *InitialDriveset.csv* plikiem, należy określić **tego samego pliku dziennika** nazwę, a następnie podaj **nowy identyfikator sesji**; istnieje nie trzeba podawać klucza konta magazynu.
 
     ```
     WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>

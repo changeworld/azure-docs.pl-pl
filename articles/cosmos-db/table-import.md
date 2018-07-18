@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797774"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856811"
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importowanie danych do użycia z interfejsem API tabel usługi Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczej kolekcji lub dla zestawu kolekcji. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
+* Zwiększenie przepływności: czas trwania migracji danych zależy od przepływności skonfigurowanej dla pojedynczego kontenera lub dla zestawu kontenerów. Pamiętaj o zwiększeniu przepływności w przypadku większych migracji danych. Po ukończeniu migracji zmniejsz przepływność, aby ograniczyć koszty. Aby uzyskać więcej informacji na temat zwiększania przepływności w witrynie Azure Portal, zobacz Performance levels and pricing tiers in Azure Cosmos DB (Poziomy wydajności i warstwy cenowe w usłudze Azure Cosmos DB).
 
 ## <a name="data-migration-tool"></a>Narzędzie do migracji danych
 

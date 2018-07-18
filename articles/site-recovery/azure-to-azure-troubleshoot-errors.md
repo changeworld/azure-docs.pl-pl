@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 344ed971dd4a869cfbdc363222d772dcc3191199
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916044"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113858"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
@@ -177,6 +177,13 @@ Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną.
 
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Nie można wyświetlić maszyny Wirtualnej platformy Azure do wyboru w "Włącz replikację"
 
+ **Przyczyny 1: Grupa zasobów i źródłowa maszyna wirtualna znajdują się w innej lokalizacji** <br>
+Usługa Azure Site Recovery obecnie które, że źródłowa grupa zasobów region i maszyny wirtualne powinny być w tej samej lokalizacji. Jeśli nie jest to użytkownik nie będzie mogła znaleźć maszyny wirtualnej w czasie ochrony.
+
+**Przyczyny 2: Grupa zasobów nie jest częścią wybranej subskrypcji** <br>
+Nie można odnaleźć grupy zasobów w czasie ochrony, jeśli nie jest częścią danej subskrypcji. Upewnij się, że grupa zasobów należy do subskrypcji, która jest używana.
+
+ **Przyczyny 3: Nieaktualną konfigurację** <br>
 Jeśli chcesz włączyć replikację maszyny Wirtualnej nie jest widoczny, jego może z powodu nieaktualną konfigurację Site Recovery pozostać na maszynie Wirtualnej platformy Azure. Nieaktualną konfigurację, może pozostać na Maszynie wirtualnej platformy Azure w następujących przypadkach:
 
 - Włączyć replikację dla maszyny Wirtualnej platformy Azure przy użyciu usługi Site Recovery, a następnie usunąć magazyn usługi Site Recovery bez jawnie wyłączenie replikacji na maszynie Wirtualnej.
@@ -185,6 +192,11 @@ Jeśli chcesz włączyć replikację maszyny Wirtualnej nie jest widoczny, jego 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
 Możesz użyć [usuwanie starych skryptu konfiguracji usługi ASR](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) i usunąć nieaktualną konfigurację Site Recovery na maszynie Wirtualnej platformy Azure. Powinien być widoczny po usunięciu nieaktualną konfigurację maszyny Wirtualnej.
+
+## <a name="unable-to-select-virtual-machine-for-protection"></a>Nie można wybrać maszynę wirtualną do ochrony 
+ **Przyczyny 1: maszyna wirtualna ma pewne rozszerzenia instalowana w stanie nie powiodło się lub nie odpowiada** <br>
+ Przejdź do maszyny wirtualnej > Ustawienia > rozszerzenia i sprawdź, czy istnieją jakiekolwiek rozszerzenia w stanie niepowodzenia. Odinstaluj rozszerzenie nie powiodło się i spróbuj ponownie ochronę maszyny wirtualnej.<br>
+ **Przyczyny 2: [stan inicjowania obsługi administracyjnej maszyny Wirtualnej jest nieprawidłowy](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>Stan inicjowania obsługi administracyjnej maszyny Wirtualnej jest nieprawidłowy (kod błędu: 150019)
 
@@ -200,6 +212,7 @@ Aby włączyć replikację na maszynie Wirtualnej, powinna być w stanie inicjow
 
 - Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać.
 - Jeśli **provisioningState** jest **aktualizowanie**, innego rozszerzenia mogą być wprowadzenie wdrożone. Sprawdź, czy wszystkie trwające operacje na maszynie Wirtualnej, poczekaj na ukończenie i ponów próbę wykonania nie powiodło się, Usługa Site Recovery ich **włączyć replikację** zadania.
+
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ błąd usługi kopiowania woluminów w tle (kod błędu: 151025)

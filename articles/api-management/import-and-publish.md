@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722851"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importowanie i publikowanie pierwszego interfejsu API 
 
@@ -52,6 +53,8 @@ Ta sekcja przedstawia sposób importowania i publikowania interfejsu API zaplecz
 
     Możesz ustawić wartości interfejsu API podczas tworzenia lub później, przechodząc do karty **Ustawienia**. Czerwona gwiazdka obok pola wskazuje na to, że pole jest wymagane.
 
+    Użyj wartości z poniższej tabeli, aby utworzyć pierwszy interfejs API.
+
     |Ustawienie|Wartość|Opis|
     |---|---|---|
     |**Specyfikacja interfejsu OpenAPI**|http://conferenceapi.azurewebsites.net?format=json|Zawiera odwołanie do usługi implementującej interfejs API. Usługa API Management przekazuje żądania na ten adres.|
@@ -74,19 +77,21 @@ Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zap
 1. Wybierz interfejs API utworzony w poprzednim kroku (z karty **Interfejsy API**).
 2. Naciśnij kartę **Test**.  ![Testowanie interfejsu API](./media/api-management-get-started/test-api.png)
 3. Kliknij pozycję **GetSpeakers**.
-    Strona wyświetla pola parametrów zapytania, ale w tym przypadku nie ma żadnych parametrów. Ponadto strona wyświetla pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Klucz jest uzupełniany automatycznie.
+    Na stronie są wyświetlane pola parametrów zapytania (w tym przypadku nie ma żadnych parametrów) i nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Klucz jest uzupełniany automatycznie.
 4. Kliknij pozycję **Wyślij**.
 
     Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
 
 ## <a name="call-operation"> </a>Wywoływanie operacji z portalu dla deweloperów
 
-Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API. 
+Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu przetestowania interfejsów API.
 
-1. Wybierz **wersję demonstracyjną interfejsu API Conference**.
-2. Kliknij pozycję **GetSpeakers**.
+1. Przejdź do **portalu dla deweloperów**.
+![Portal dla deweloperów](./media/api-management-get-started/developer-portal.png)
+
+2. Wybierz pozycję **Interfejsy API**, kliknij interfejs **Wersja demonstracyjna interfejsu API Conference**, a następnie pozycję **GetSpeakers**.
     
-    Strona wyświetla pola parametrów zapytania, ale w tym przypadku nie ma żadnych parametrów. Ponadto strona wyświetla pola nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie.
+    Na stronie są wyświetlane pola parametrów zapytania (w tym przypadku nie ma żadnych parametrów) i nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc klucz zostanie uzupełniony automatycznie.
 3. Naciśnij pozycję **Wypróbuj**.
 4. Kliknij pozycję **Wyślij**.
     

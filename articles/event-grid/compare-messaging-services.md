@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 03/16/2018
+ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 69db32698951519c2630a0a8697e4ebe74f69b04
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303559"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930481"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wybieranie między usługami platformy Azure dostarczającymi komunikaty
 
@@ -60,6 +60,7 @@ Ma następujące cechy:
 * dynamiczna skalowalność
 * niski koszt
 * praca bezserwerowa
+* co najmniej jednokrotne dostarczanie
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -69,6 +70,7 @@ Ma następujące cechy:
 
 * małe opóźnienie
 * możliwość odbieranie i przetwarzania milionów zdarzeń na sekundę
+* co najmniej jednokrotne dostarczanie
 
 ### <a name="service-bus"></a>Service Bus
 
@@ -80,6 +82,7 @@ Ma następujące cechy:
 
 * niezawodne asynchroniczne dostarczanie komunikatów (komunikaty w przedsiębiorstwie jako usługa) wymagające sondowania
 * zaawansowane funkcje obsługi wiadomości, takie jak FIFO, tworzenie partii / sesje, transakcje, obsługa utraconych komunikatów, kontrola czasowa, routing i filtrowanie oraz wykrywanie duplikatów
+* dokładnie jednokrotne dostarczanie
 
 ## <a name="use-the-services-together"></a>Jednoczesne używanie usług
 

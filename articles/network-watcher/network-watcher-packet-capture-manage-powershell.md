@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie przechwytywania pakietów z obserwatora sieciowego Azure - PowerShell | Dokumentacja firmy Microsoft
-description: Ta strona wyjaśnia sposób zarządzania funkcja przechwytywania pakietów obserwatora sieciowego przy użyciu programu PowerShell
+title: Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher — PowerShell | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśnia, jak zarządzać funkcji przechwytywania pakietów usługi Network Watcher przy użyciu programu PowerShell
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,43 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6ffb1aec91899b54a153e264e346910caee84cc0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d13c02696c9babae9fd04233ae7d2fdc75fca25f
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186787"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39090690"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Zarządzanie przechwytywania pakietów za pomocą Monitora sieci Azure przy użyciu programu PowerShell
+# <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [Program PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [Interfejs wiersza polecenia 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-packet-capture-manage-cli.md)
-> - [Interfejs API Azure REST](network-watcher-packet-capture-manage-rest.md)
+> - [Interfejs wiersza polecenia platformy Azure](network-watcher-packet-capture-manage-cli.md)
+> - [Interfejs API REST platformy Azure](network-watcher-packet-capture-manage-rest.md)
 
-Przechwytywania pakietów obserwatora sieciowego umożliwia tworzenie sesji przechwytywania, aby śledzić ruch do i z maszyny wirtualnej. Filtry są dostępne dla sesji przechwytywania, aby upewnić się, że przechwytywać ruch, który ma. Przechwytywania pakietów ułatwia diagnozowanie anomalii sieci rozbudowy i aktywne. Innych celów obejmują zbieranie statystyk sieciowych, uzyskanie informacji na temat wtargnięcia sieci, aby debugować komunikacja klient serwer i o wiele więcej. Dzięki możliwości zdalnie wywołać przechwytywania pakietów, ta funkcja ułatwia obciążeń uruchomionych przechwytywania pakietów, ręcznie i tylko na odpowiednią maszynę, która zapisuje cenny czas.
+Przechwytywanie pakietów obserwatora sieci umożliwia tworzenie sesji przechwytywania, aby śledzić ruch do i z maszyny wirtualnej. Filtry są dostarczane dla sesji przechwytywania, aby upewnić się, że Przechwytywanie ruchu, który ma. Przechwytywanie pakietów ułatwia diagnozowanie anomalie sieci w sposób reaktywny i aktywnie. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji na temat włamań sieci, debugowanie komunikacja klient serwer i wiele więcej. Dzięki możliwości zdalnie wyzwalać Przechwytywanie pakietów, ta funkcja ułatwia obciążeń działających przechwytywania pakietów, ręcznie i tylko na odpowiednią maszynę, co pozwoli zaoszczędzić cenny czas.
 
-Ten artykuł przedstawia za pomocą zadań zarządzania różnych, które są obecnie dostępne dla przechwytywania pakietów.
+Ten artykuł przeprowadzi Cię przez zadania zarządzania różnych, które są aktualnie dostępne do przechwytywania pakietów.
 
-- [**Uruchom przechwytywania pakietów**](#start-a-packet-capture)
-- [**Zatrzymaj przechwytywania pakietów**](#stop-a-packet-capture)
-- [**Usuń przechwytywania pakietów**](#delete-a-packet-capture)
+- [**Rozpocząć przechwytywania pakietu**](#start-a-packet-capture)
+- [**Zatrzymać przechwytywania pakietu**](#stop-a-packet-capture)
+- [**Usuwanie przechwycenia pakietu**](#delete-a-packet-capture)
 - [**Pobierz przechwytywania pakietów**](#download-a-packet-capture)
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 W tym artykule przyjęto założenie, że masz następujące zasoby:
 
-* Wystąpienia obserwatora sieciowego w regionie, w którym chcesz utworzyć przechwytywania pakietów
+* Wystąpienie usługi Network Watcher w regionie, w której chcesz utworzyć przechwytywania pakietów
 
-* Maszyna wirtualna z rozszerzeniem przechwytywania pakietów włączone.
+* Maszyna wirtualna o włączeniu rozszerzenia przechwytywania pakietów.
 
 > [!IMPORTANT]
-> Rozszerzenie maszyny wirtualnej wymaga przechwytywania pakietów `AzureNetworkWatcherExtension`. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md).
+> Przechwytywanie pakietów wymaga rozszerzenia maszyny wirtualnej `AzureNetworkWatcherExtension`. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="install-vm-extension"></a>Zainstaluj rozszerzenia maszyny Wirtualnej
+## <a name="install-vm-extension"></a>Instalowanie rozszerzenia maszyny wirtualnej
 
 ### <a name="step-1"></a>Krok 1
 
@@ -60,12 +59,12 @@ $VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>Krok 2
 
-Poniższy przykład pobiera rozszerzenie informacje potrzebne do uruchomienia `Set-AzureRmVMExtension` polecenia cmdlet. To polecenie cmdlet instaluje agenta przechwytywania pakietów na maszynie wirtualnej gościa.
+Poniższy przykład umożliwia pobranie informacji o rozszerzeniu potrzebnych do uruchomienia `Set-AzureRmVMExtension` polecenia cmdlet. To polecenie cmdlet instaluje agenta przechwytywania pakietów na maszynie wirtualnej gościa.
 
 > [!NOTE]
 > `Set-AzureRmVMExtension` Polecenie cmdlet może potrwać kilka minut.
 
-W przypadku maszyn wirtualnych systemu Windows:
+W przypadku maszyn wirtualnych Windows:
 
 ```powershell
 $AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.13.0
@@ -81,7 +80,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ````
 
-Poniższy przykład jest odpowiedź oznaczająca Powodzenie po uruchomieniu `Set-AzureRmVMExtension` polecenia cmdlet.
+Poniższy przykład jest pomyślnej odpowiedzi po uruchomieniu `Set-AzureRmVMExtension` polecenia cmdlet.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -91,13 +90,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Krok 3
 
-Aby upewnić się, że agent jest zainstalowany, należy uruchomić `Get-AzureRmVMExtension` polecenia cmdlet i przekaż go nazwę maszyny wirtualnej i nazwa rozszerzenia.
+Aby upewnić się, że agent jest zainstalowany, uruchom `Get-AzureRmVMExtension` polecenia cmdlet i przekaż go nazwę maszyny wirtualnej i nazwę rozszerzenia.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Poniższy przykład jest przykładem uruchamianie odpowiedzi `Get-AzureRmVMExtension`
+Poniższy przykład jest przykładem odpowiedzi uruchamianie `Get-AzureRmVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -119,13 +118,13 @@ AutoUpgradeMinorVersion : True
 ForceUpdateTag          : 
 ```
 
-## <a name="start-a-packet-capture"></a>Uruchom przechwytywania pakietów
+## <a name="start-a-packet-capture"></a>Rozpocząć przechwytywania pakietu
 
 Po zakończeniu powyższych kroków agent przechwytywania pakietów jest zainstalowany na maszynie wirtualnej.
 
 ### <a name="step-1"></a>Krok 1
 
-Następnym krokiem jest w celu pobrania wystąpienia obserwatora sieciowego. Ta zmienna jest przekazywana do `New-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet w kroku 4.
+Następnym krokiem jest można pobrać wystąpienia usługi Network Watcher. Ta zmienna jest przekazywana do `New-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet w kroku 4.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -134,7 +133,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ### <a name="step-2"></a>Krok 2
 
-Pobierz konta magazynu. To konto magazynu jest używany do przechowywania pliku przechwytywania pakietów.
+Pobierz konto magazynu. To konto magazynu jest używane do przechowywania pliku przechwytywania pakietów.
 
 ```powershell
 $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
@@ -142,7 +141,7 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 
 ### <a name="step-3"></a>Krok 3
 
-Można używać filtrów w celu ograniczenia danych, który jest przechowywany przez przechwytywania pakietów. Poniższy przykład przedstawia dwa filtry.  Jeden filtr zbiera ruch wychodzący TCP tylko lokalny adres IP 10.0.0.3 do porty docelowe 20, 80 i 443.  Drugi filtr zbiera tylko ruch UDP.
+Filtry można ograniczyć dane, które są przechowywane przez Przechwytywanie pakietów. Poniższy przykład definiuje dwa filtry.  Jeden filtr tworzy wychodzący ruch TCP na podstawie lokalny adres IP 10.0.0.3 do portów docelowych, 20, 80 i 443.  Drugi filtr służy do zbierania tylko ruch UDP.
 
 ```powershell
 $filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -154,7 +153,7 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>Krok 4
 
-Uruchom `New-AzureRmNetworkWatcherPacketCapture` pobrać polecenia cmdlet, aby rozpocząć proces przechwytywania pakietów, przekazywanie wymagane wartości w poprzednich krokach.
+Uruchom `New-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet, aby rozpocząć proces przechwytywania pakietów, przekazywanie wymagane wartości są pobierane w poprzednich krokach.
 ```powershell
 
 New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
@@ -198,15 +197,15 @@ Filters                 : [
 
 ```
 
-## <a name="get-a-packet-capture"></a>Pobierz przechwytywania pakietów
+## <a name="get-a-packet-capture"></a>Rozpoczynanie przechwytywania pakietu
 
-Uruchomiona `Get-AzureRmNetworkWatcherPacketCapture` polecenie cmdlet pobiera stan przechwytywania pakietów aktualnie uruchomione lub zostało zakończone.
+Uruchamianie `Get-AzureRmNetworkWatcherPacketCapture` polecenie cmdlet pobiera stan aktualnie uruchomionej lub ukończonej przechwytywania pakietów.
 
 ```powershell
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-Poniższy przykład jest wynikiem `Get-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet. Poniższy przykład jest po zakończeniu przechwytywania. Wartość PacketCaptureStatus została zatrzymana z StopReason TimeExceeded. Ta wartość pokazuje, że przechwytywania pakietów zakończyła się pomyślnie i jego uruchomienia.
+Poniższy przykład przedstawia dane wyjściowe z `Get-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet. Poniższy przykład jest po ukończeniu przechwytywania. Za pomocą Przyczynazatrzymania TimeExceeded wartość PacketCaptureStatus został zatrzymany. Ta wartość pokazuje, że przechwycenie pakietu zakończyło się pomyślnie, a jego uruchomienia.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -245,7 +244,7 @@ StopReason              : TimeExceeded
 PacketCaptureError      : []
 ```
 
-## <a name="stop-a-packet-capture"></a>Zatrzymaj przechwytywania pakietów
+## <a name="stop-a-packet-capture"></a>Zatrzymać przechwytywania pakietu
 
 Uruchamiając `Stop-AzureRmNetworkWatcherPacketCapture` polecenia cmdlet, jeśli sesja przechwytywania jest w toku jest zatrzymana.
 
@@ -254,20 +253,20 @@ Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketC
 ```
 
 > [!NOTE]
-> Polecenie cmdlet nie zwraca żadnej odpowiedzi podczas uruchomionego na aktualnie uruchomionych sesji przechwytywania lub istniejącej sesji, która już została zatrzymana.
+> Polecenie cmdlet zwraca odpowiedź nie gdy uruchomiono na aktualnie uruchomionej sesji przechwytywania lub istniejącą sesję, która została już zatrzymana.
 
-## <a name="delete-a-packet-capture"></a>Usuń przechwytywania pakietów
+## <a name="delete-a-packet-capture"></a>Usuwanie przechwycenia pakietu
 
 ```powershell
 Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
-> Usunięcie przechwytywania pakietów nie powoduje usunięcia plików na koncie magazynu.
+> Usuwanie przechwycenia pakietu nie powoduje usunięcia plików na koncie magazynu.
 
 ## <a name="download-a-packet-capture"></a>Pobierz przechwytywania pakietów
 
-Po zakończeniu sesji przechwytywania pakietów, plik przechwytywania można przekazać do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest definiowany podczas tworzenia sesji. Wygodne narzędzie one dostęp do plików przechwytywania na koncie magazynu jest Microsoft Azure Eksploratora usługi Storage, który można pobrać tutaj:  http://storageexplorer.com/
+Po zakończeniu sesji przechwytywania pakietów pliku przechwytywania można przekazać do magazynu obiektów blob lub do pliku lokalnego na maszynie Wirtualnej. Lokalizacja magazynu przechwytywania pakietów jest zdefiniowany podczas tworzenia sesji. Wygodne narzędzie do nich dostęp pliki przechwytywania zapisane na koncie magazynu jest Microsoft Azure Storage Explorer, który można pobrać tutaj:  http://storageexplorer.com/
 
 Jeśli określono konto magazynu, pliki przechwytywania pakietów są zapisywane na koncie magazynu w następującej lokalizacji:
 
@@ -277,9 +276,9 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak można zautomatyzować przechwytywania pakietów z alertami maszyny wirtualnej, wyświetlając [utworzyć przechwytywania alertów wyzwalanych pakietów](network-watcher-alert-triggered-packet-capture.md)
+Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów maszyny wirtualnej, wyświetlając [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md)
 
-Znajdź, jeśli niektórych ruch jest dozwolony w orr poza maszyny Wirtualnej, odwiedzając [Sprawdź przepływ Sprawdź IP](diagnose-vm-network-traffic-filtering-problem.md)
+Dowiedz się, jeśli niektórych ruch jest dozwolony w orr poza maszyną Wirtualną, odwiedzając [weryfikowanie przepływu protokołu IP z Sprawdź](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->
 

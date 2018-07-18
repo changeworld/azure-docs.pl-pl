@@ -1,5 +1,5 @@
 > [!NOTE]
-> Aby skonfigurować niestandardową nazwę DNS aplikacjach sieci Web platformy Azure, można użyć usługi Azure DNS. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DNS, aby określić ustawienia domeny niestandardowej dla usługi Azure](../articles/dns/dns-custom-domain.md#app-service-web-apps).
+> Usługa Azure DNS umożliwia skonfigurowanie niestandardowej nazwy DNS dla aplikacji Azure Web Apps. Aby uzyskać więcej informacji, zobacz [Use Azure DNS to provide custom domain settings for an Azure service](../articles/dns/dns-custom-domain.md#app-service-web-apps) (Korzystanie z usługi Azure DNS w celu udostępnienia niestandardowych ustawień domeny dla usługi platformy Azure).
 >
 >
 

@@ -3,18 +3,18 @@ title: Przewodnik Szybki start platformy Azure — Tworzenie konta magazynu | Mi
 description: Szybko naucz się, jak utworzyć nowe konto magazynu przy użyciu witryny Azure Portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 services: storage
 author: tamram
-manager: jeconnoc
+manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752337"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856532"
 ---
 # <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -165,7 +165,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję **Wszystkie usługi**. Następnie przewiń w dół do pozycji **Magazyn** i wybierz pozycję **Konta magazynu**. W oknie **Konta magazynu**, które zostanie wyświetlone, wybierz pozycję **Dodaj**.
 2. Wprowadź nazwę konta magazynu.
 3. Ustaw pole **Rodzaj konta** na wartość **StorageV2 (ogólnego przeznaczenia, wersja 2)**.
-4. Pozostaw pole **Replikacja** ustawione na wartość **Magazyn lokalnie nadmiarowy (LRS)**. Możesz również wybrać pozycję **Magazyn strefowo nadmiarowy (ZRS) (wersja zapoznawcza)**, **Magazyn geograficznie nadmiarowy (GRS)** lub **Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)**.
+4. Pozostaw pole **Replikacja** ustawione na wartość **Magazyn lokalnie nadmiarowy (LRS)**. Możesz również wybrać pozycję **Magazyn strefowo nadmiarowy (ZRS)**, **Magazyn geograficznie nadmiarowy (GRS)** lub **Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)**.
 5. Pozostaw następujące pola ustawione na ich wartości domyślne: **Model wdrażania**, **Wydajność** i **Wymagany bezpieczny transfer**.
 6. Wybierz subskrypcję, w ramach której chcesz utworzyć konto magazynu.
 7. Z listy rozwijanej **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz grupę zasobów utworzoną w poprzedniej sekcji.

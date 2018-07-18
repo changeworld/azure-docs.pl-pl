@@ -1,7 +1,7 @@
 ---
-title: Wdrażanie aplikacji usługi Service Fabric siatki, która używa usługi Azure Files woluminu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć aplikację, która używa woluminów plików platformy Azure do usługi Service Fabric siatki, przy użyciu wiersza polecenia platformy Azure.
-services: service-fabric
+title: Store stanu przez zainstalowanie usługi Azure Files na podstawie woluminu w kontenerze w aplikacji usługi Service Fabric siatki | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przechowywać stan przez zainstalowanie usługi Azure Files na podstawie woluminu w kontenerze w aplikacji usługi Service Fabric siatki, przy użyciu wiersza polecenia platformy Azure.
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: timlt
@@ -15,84 +15,82 @@ ms.workload: NA
 ms.date: 06/26/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb9740efaa9a1033d6602180f5750f6fb550c048
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 94a4e17e6285893520a2f6482b32a69b1229e2fa
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076250"
+ms.locfileid: "39090636"
 ---
-# <a name="deploy-a-service-fabric-mesh-application-that-uses-the-azure-files-volume"></a>Wdrażanie aplikacji usługi Service Fabric siatki, używającej woluminów plików platformy Azure
-Ten przykład ilustruje użycie woluminów magazynu w kontenerze uruchomiona w usługi Azure Service Fabric siatki. W ramach tego przykładu:
+# <a name="store-state-by-mounting-azure-files-based-volume-in-service-fabric-mesh-application"></a>Stan Store przez zainstalowanie usługi Azure Files na podstawie woluminu w aplikacji usługi Service Fabric siatki
 
-- Tworzenie udziału plików za pomocą [usługi Azure Files](/azure/storage/files/storage-files-introduction) 
-- Odwołania, które współdzielą jako wolumin do wystąpienia kontenera, który wdrożymy
-  - Po uruchomieniu kontenera instaluje udziału jako określonej lokalizacji w kontenerze
-- Kod uruchomiony w kontenerze zapisuje plik tekstowy do tej lokalizacji
-- Sprawdź, czy poprawnie zapisany plik w udziale, który tworzy kopie woluminu
+W tym artykule przedstawiono sposób przechowywania stanu w usłudze Azure Files przez zainstalowanie woluminu w kontenerze aplikacji usługi Service Fabric siatki. W tym przykładzie licznik aplikacja ma usługi platformy ASP.NET Core ze stroną sieci web, która przedstawia wartość licznika w przeglądarce. 
 
-## <a name="example-json-templates"></a>Przykładowe szablony JSON
+`counterService` Perodically odczytuje wartość licznika z plikiem, zwiększa ona i zapisu je z powrotem do pliku. Plik jest przechowywany w folderze, który jest zainstalowany na woluminie, wspierane przez udział plików platformy Azure. 
 
-Linux: [https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json](https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json)
+## <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie usługi Service Fabric siatki interfejsu wiersza polecenia 
+Aby zakończyć to zadanie, można użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Instalowanie modułu rozszerzenia usługi Service Fabric siatki wiersza polecenia platformy Azure, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
 
-Windows: [https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json](https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json)
-
-## <a name="create-the-azure-files-file-share"></a>Utwórz udział plików usługi Azure Files
-
-Postępuj zgodnie z instrukcjami w [dokumentacji usługi Azure Files](/azure/storage/files/storage-how-to-create-file-share) do utworzenia udziału plików dla aplikacji do użycia.
-
-## <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie usługi Service Fabric siatki interfejsu wiersza polecenia
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
-
-Aby wykonać te kroki, można użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, musisz zainstalować wiersza polecenia platformy Azure w wersji 2.0.35 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Aby zainstalować lub uaktualnić do najnowszej wersji interfejsu wiersza polecenia, zobacz [zainstalować Azure CLI 2.0] [azure — interfejs wiersza polecenia instalacji].
-
-Zainstaluj moduł rozszerzenia usługi Service Fabric siatki wiersza polecenia platformy Azure. Dla wersji zapoznawczej usługi Service Fabric siatki wiersza polecenia platformy Azure są zapisywane jako rozszerzenie interfejsu wiersza polecenia platformy Azure.
-
-```azurecli-interactive
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
-
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Logowanie do platformy Azure i ustawić subskrypcję.
 
 ```azurecli-interactive
 az login
-az account set --subscription "<subscriptionName>"
+az account set --subscription "<subscriptionID>"
 ```
 
+## <a name="create-file-share"></a>Tworzenie udziału plików 
+Tworzenie udziału plików platformy Azure, wykonując te [instrukcje](/azure/storage/files/storage-how-to-create-file-share). Nazwa konta magazynu i klucza konta magazynu i nazwa udziału plików, które są określone jako `<storageAccountName>`, `<storageAccountKey>`, i `<fileShareName>` w poniższych instrukcjach.
+
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
-Utwórz grupę zasobów (RG) do wdrożenia w tym przykładzie, lub możesz użyć istniejącej grupy zasobów i pominąć ten krok. Podgląd jest dostępny tylko w `eastus` lokalizacji.
+Utwórz grupę zasobów, aby wdrożyć aplikację. Można użyć istniejącej grupy zasobów i pominąć ten krok. 
 
 ```azurecli-interactive
-az group create --name <resourceGroupName> --location eastus
+az group create --name myResourceGroup --location eastus 
 ```
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
-Tworzenie aplikacji i powiązanych zasobów przy użyciu jednej z następujących poleceń.
 
-Dla systemu Linux:
+Tworzenie aplikacji i powiązanych zasobów przy użyciu następującego polecenia i podaj wartości dla `storageAccountName`, `storageAccountKey` i `fileShareName` z poprzedniego kroku.
 
-```azurecli-interactive
-az mesh deployment create --resource-group <resourceGroupName> --template-uri https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.linux.json
-```
-
-W przypadku systemu Windows:
+`storageAccountKey` Parametr szablonu jest `securestring`. Go nie będą wyświetlane w stan wdrożenia i `az mesh service show` poleceń. Upewnij się, że jest poprawnie określona w następującym poleceniu.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group <resourceGroupName> --template-uri https://seabreezequickstart.blob.core.windows.net/templates/azurefiles-volume/sbz_rp.windows.json
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
-Postępuj zgodnie z monitami, aby wprowadzić nazwę udziału pliku, nazwę konta i klucz konta na potrzeby udziału plików platformy Azure, która zawiera wolumin. W około minucie, polecenia powinny zwracać z `"provisioningState": "Succeeded"`.
+Poprzednie polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json). Jeśli chcesz wdrożyć aplikację Windows, użyj [szablonu mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Obrazy kontenerów Windows są większe niż obrazy kontenerów systemu Linux i może zająć więcej czasu, aby wdrożyć.
 
-Parametr hasła w szablonie jest `string` typ łatwość użycia. Pojawi się na ekranie w postaci zwykłego tekstu i stan wdrożenia.
+W ciągu kilku minut polecenia powinny zostać zwrócone przy użyciu:
+
+`counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>` 
+
+## <a name="open-the-application"></a>Otwórz aplikację
+Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Wyświetla stronę sieci web za pomocą wartość licznika, aktualizowane co sekundę.
+
+Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Opcjonalnie można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi. 
+ 
+Nazwa zasobu sieci dla tej aplikacji jest `counterAppNetwork`, pobierania informacji o nim przy użyciu następującego polecenia. 
+
+```azurecli-interactive
+az mesh network show --resource-group myResourceGroup --name counterAppNetwork
+```
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Sprawdź, czy aplikacja jest w stanie korzystać z woluminu
-Aplikacja tworzy plik o nazwie _data.txt_ w udziale plików (jeśli go jeszcze nie istnieje). Zawartość tego pliku jest liczbą, która rośnie co 30 sekund, przez aplikację. Aby zweryfikować, że przykład działa prawidłowo, należy otworzyć _data.txt_ okresowo i sprawdzić, czy liczba jest aktualizowana.
+Aplikacja tworzy plik o nazwie `counter.txt` w pliku udostępnić wewnątrz `counter/counterService` folderu. Zawartość tego pliku jest wartość licznika są wyświetlane na stronie sieci web.
 
 Plik może zostać pobrana przy użyciu dowolnego narzędzia, które umożliwia przeglądanie udział plików usługi Azure Files. [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) jest przykładem takiego narzędzia.
 
+## <a name="delete-the-resources"></a>Usuń zasoby
+
+Aby zaoszczędzić ograniczonych zasobów przydzielonych do programu wersji zapoznawczej, Usuń zasoby często. Aby usunąć zasoby związane z tym przykładzie, Usuń grupę zasobów, w którym zostały wdrożone.
+
+```azurecli-interactive
+az group delete --resource-group myResourceGroup 
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Wyświetlanie usługi Azure Files woluminu przykładowej aplikacji na [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/azurefiles-volume).
+- Wyświetlanie usługi Azure Files woluminu przykładowej aplikacji na [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - Aby dowiedzieć się więcej o modelu zasobów sieci szkieletowej usług, zobacz [siatki modelu zasobów usługi Service Fabric](service-fabric-mesh-service-fabric-resources.md).
 - Aby dowiedzieć się więcej na temat usługi Service Fabric siatki, przeczytaj [Omówienie usługi Service Fabric siatki](service-fabric-mesh-overview.md).

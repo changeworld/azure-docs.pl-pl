@@ -8,30 +8,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 07/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: db5941528eedd10cf252607dbe2160bd498a70de
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3a43c0cd13300918979ae03c7f6c703796b65dc9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951971"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114229"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania pakietu SSIS wykonania w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory za pomocą działania wykonywanie pakietu SSIS. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
-Instrukcje przedstawione w tym artykule używa usługi Azure SQL database, który hostuje katalog usług SSIS. Można również użyć wystąpienia zarządzanego Azure SQL (wersja zapoznawcza).
+**Usługa Azure SQL Database**. Instrukcje przedstawione w tym artykule używa usługi Azure SQL database, który hostuje katalog usług SSIS. Można również użyć wystąpienia zarządzanego Azure SQL (wersja zapoznawcza).
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Tworzenie środowiska Azure SSIS Integration Runtime
 Tworzenie środowiska Azure-SSIS integration runtime, jeśli nie masz, wykonując instrukcje krok po kroku instrukcji w [samouczek: pakiety usług SSIS wdrażanie](tutorial-create-azure-ssis-runtime-portal.md).
 
-## <a name="data-factory-ui-azure-portal"></a>Interfejs użytkownika usługi Data Factory (witryna Azure portal)
+## <a name="run-a-package-in-the-azure-portal"></a>Uruchom pakiet w witrynie Azure portal
 W tej sekcji użyjesz interfejs użytkownika usługi Data Factory do tworzenia potoku usługi Data Factory z działaniem wykonywanie pakietu SSIS uruchomionym pakietu SSIS.
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
@@ -76,7 +75,7 @@ Aby utworzyć potok, w tym kroku Użyj interfejs użytkownika usługi Data Facto
     ![Strona Wprowadzenie](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 2. W **działania** przybornika, rozwiń węzeł **ogólne**i przeciągnij i upuść **wykonywanie pakietu SSIS** działania do powierzchni projektanta potoku. 
 
-   ![Przeciągnij działanie usług SSIS na powierzchnię projektanta](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   ![Przeciągnij działanie wykonywanie pakietów usług SSIS na powierzchnię projektanta](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
 3. Na **ogólne** kartę właściwości działania wykonywanie pakietu SSIS, podaj nazwę i opis działania. Ustaw opcjonalny limit czasu, a następnie spróbuj ponownie wartości.
 
@@ -98,7 +97,7 @@ Opcjonalnie można przypisać wartości, wyrażenia lub funkcji, które mogą od
 
 ![Dodaj parametry do działania wykonywanie pakietu SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
-### <a name="run-and-monitor-the-pipeline"></a>Uruchamianie i monitorowanie potoku
+### <a name="run-the-pipeline"></a>Uruchamianie potoku
 W tej sekcji możesz wyzwolić uruchomienie potoku, a następnie monitorować je. 
 
 1. Aby wyzwolić uruchomienie potoku, kliknij pozycję **wyzwalacza** na pasku narzędzi, a następnie kliknij przycisk **Wyzwól teraz**. 
@@ -107,15 +106,17 @@ W tej sekcji możesz wyzwolić uruchomienie potoku, a następnie monitorować je
 
 2. W oknie **Uruchomienie potoku** wybierz pozycję **Zakończ**. 
 
-3. Przejdź do karty **Monitorowanie** po lewej stronie. Widzisz uruchomienie potoku i jego stan, oraz inne informacje (na przykład uruchom Start czasu). Aby odświeżyć widok, kliknij przycisk **Odśwież**.
+### <a name="monitor-the-pipeline"></a>Monitorowanie potoku
+
+1. Przejdź do karty **Monitorowanie** po lewej stronie. Widzisz uruchomienie potoku i jego stan, oraz inne informacje (na przykład uruchom Start czasu). Aby odświeżyć widok, kliknij przycisk **Odśwież**.
 
     ![Uruchomienia potoków](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-4. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Zobaczysz tylko jedno działanie, Uruchom jako potok ma tylko jedno działanie (działanie wykonanie pakietu SSIS).
+2. Kliknij link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Zobaczysz tylko jedno działanie, Uruchom jako potok ma tylko jedno działanie (działanie wykonanie pakietu SSIS).
 
     ![Uruchomienia działania](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-5. Możesz uruchomić następujące polecenia, **zapytania** względem bazy danych SSISDB bazy danych serwera Azure SQL, aby sprawdzić, czy pakiet, który został wykonany. 
+3. Możesz uruchomić następujące polecenia, **zapytania** względem bazy danych SSISDB bazy danych serwera Azure SQL, aby sprawdzić, czy pakiet, który został wykonany. 
 
     ```sql
     select * from catalog.executions
@@ -123,20 +124,21 @@ W tej sekcji możesz wyzwolić uruchomienie potoku, a następnie monitorować je
 
     ![Sprawdź pakiet wykonań](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-6. Można również uzyskać identyfikator wykonywania SSISDB z danych wyjściowych uruchomienia działania potoku i użyj Identyfikatora, aby sprawdzić dzienniki wykonywania bardziej kompleksowe i komunikaty o błędach w programie SSMS.
+4. Można również uzyskać identyfikator wykonywania SSISDB z danych wyjściowych uruchomienia działania potoku i użyj Identyfikatora, aby sprawdzić dzienniki wykonywania bardziej kompleksowe i komunikaty o błędach w programie SSMS.
 
     ![Pobierz identyfikator wykonania.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
-> [!NOTE]
-> Można również utworzyć zaplanowane wyzwalanie dla potoku, tak aby potok jest uruchamiany zgodnie z harmonogramem (co godzinę, codziennie itp.). Aby uzyskać przykład, zobacz [tworzenie fabryki danych — interfejs użytkownika usługi Data Factory](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+### <a name="schedule-the-pipeline-with-a-trigger"></a>Potok za pomocą wyzwalacza harmonogramu
 
-## <a name="azure-powershell"></a>Azure PowerShell
-W tej sekcji użyjesz programu Azure PowerShell do utworzenia potoku usługi fabryka danych za pomocą działania SSIS, które uruchamia pakietu SSIS. 
+Można również utworzyć zaplanowane wyzwalanie dla potoku, tak aby potok jest uruchamiany zgodnie z harmonogramem (co godzinę, codziennie itp.). Aby uzyskać przykład, zobacz [tworzenie fabryki danych — interfejs użytkownika usługi Data Factory](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+
+## <a name="run-a-package-with-powershell"></a>Uruchom pakiet przy użyciu programu PowerShell
+W tej sekcji użyjesz programu Azure PowerShell do utworzenia potoku usługi Data Factory z działaniem wykonywanie pakietu SSIS uruchomionym pakietu SSIS. 
 
 Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
-Możesz używaj tego samego fabryki danych, który ma Azure-SSIS IR lub Utwórz fabrykę danych. Poniższa procedura zawiera kroki, aby utworzyć fabrykę danych. Utworzysz potok z działaniem usług SSIS w tej fabryce danych. Działanie usług SSIS uruchamia pakietu SSIS. 
+Możesz używaj tego samego fabryki danych, który ma Azure-SSIS IR lub Utwórz fabrykę danych. Poniższa procedura zawiera kroki, aby utworzyć fabrykę danych. Utworzysz potok z działaniem wykonywanie pakietu SSIS w tej fabryce danych. Działanie wykonanie pakietu SSIS uruchamia pakietu SSIS. 
 
 1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"adfrg"`. 
    
@@ -176,10 +178,10 @@ Pamiętaj o następujących kwestiach:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
-* Aby uzyskać listę regionów świadczenia usługi Azure, w których Data Factory jest dostępna, wybierz regiony, które Cię interesują na następującej stronie, a następnie rozwiń **Analytics** zlokalizować **usługi Data Factory**: [ Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>Tworzenie potoku za pomocą działania SSIS 
-W tym kroku utworzysz potok z działaniem usług SSIS. Działanie zostanie uruchomione pakietu SSIS. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Tworzenie potoku z działaniem wykonywanie pakietu SSIS 
+W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie zostanie uruchomione pakietu SSIS. 
 
 1. Utwórz plik JSON o nazwie **RunSSISPackagePipeline.json** w **C:\ADF\RunSSISPackage** folderze o zawartości jest podobne do poniższego przykładu:
 
@@ -279,7 +281,7 @@ W tym kroku utworzysz potok z działaniem usług SSIS. Działanie zostanie uruch
     Parameters        : {[inputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification], [outputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
     ```
 
-### <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
+### <a name="run-the-pipeline"></a>Uruchamianie potoku
 Użyj **Invoke-AzureRmDataFactoryV2Pipeline** polecenia cmdlet, aby uruchomić potok. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
 
 ```powershell
@@ -288,7 +290,7 @@ $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataF
                                              -PipelineName $DFPipeLine.Name
 ```
 
-### <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
+### <a name="monitor-the-pipeline"></a>Monitorowanie potoku
 
 Uruchom następujący skrypt programu PowerShell, aby stale sprawdzać stan uruchomienia potoku do momentu zakończenia kopiowania danych. Skopiuj/wklej poniższy skrypt w oknie programu PowerShell i naciśnij klawisz ENTER. 
 
@@ -313,7 +315,7 @@ while ($True) {
 
 Można również monitorować potok przy użyciu witryny Azure portal. Aby uzyskać instrukcje krok po kroku, zobacz [monitorowanie potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-### <a name="create-a-trigger"></a>Tworzenie wyzwalacza
+### <a name="schedule-the-pipeline-with-a-trigger"></a>Potok za pomocą wyzwalacza harmonogramu
 W poprzednim kroku uruchomiono potoku na żądanie. Można również utworzyć wyzwalacz harmonogramu, aby uruchomić potok zgodnie z harmonogramem (co godzinę, codziennie itp.).
 
 1. Utwórz plik JSON o nazwie **MyTrigger.json** w **C:\ADF\RunSSISPackage** folderu o następującej zawartości: 
@@ -379,7 +381,6 @@ W poprzednim kroku uruchomiono potoku na żądanie. Można również utworzyć w
     ```sql
     select * from catalog.executions
     ```
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujący wpis w blogu:

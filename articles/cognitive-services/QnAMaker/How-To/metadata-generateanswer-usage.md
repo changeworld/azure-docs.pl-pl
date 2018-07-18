@@ -9,12 +9,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: pchoudh
-ms.openlocfilehash: 8ad51edde1fc90329e908f8150aadcbf4f401126
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 82e3ee460309f293c9bd7eadebe139f85e241f71
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448224"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113355"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Przy użyciu metadanych i interfejsu API GenerateAnswer
 
@@ -82,6 +82,7 @@ Możesz wywołać GenerateAnswer za pomocą żądania HTTP POST. Przykładowy ko
     - **odpowiedzi** — Lista odpowiedzi na zapytanie użytkownika, sortowane malejąco według klasyfikacji wynik.
         - **wynik**: wynik klasyfikacji od 0 do 100.
         - **pytania dotyczące**: pytania, dostarczone przez użytkownika.
+        - **odpowiedź**: odpowiedź na pytanie.
         - **źródło**: nazwę źródła, z której wyjęto lub zapisany w bazie wiedzy knowledge base odpowiedź.
         - **metadane**: metadane skojarzone z odpowiedzią.
             - Nazwa: Nazwa metadanych. (string, długość maksymalna: 100, wymagane)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2018
 ms.author: jaredro
-ms.openlocfilehash: eef664877fab68fc78e9bb5717d92594900d0f5f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8fa32350412b3a27c06d218342cdd7ad99ca5245
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751115"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972421"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -51,6 +51,9 @@ Poniższa tabela zawiera mapę regionów świadczenia usługi Azure dla lokaliza
 | **Australia — instytucje rządowe** | Australia Środkowa, Australia Środkowa 2 |Canberra, Canberra2 | 
 | **Indie** |Indie Zachodnie, Indie Środkowe, Indie Południowe |Chennai (Madras), Mumbaj (Bombaj) |
 | **Korea Południowa** |Korea Środkowa, Korea Południowa |Busan, Seul |
+| **Republika Południowej Afryki** |[Zachodnia RPA+, Północna RPA+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapsztad, Johannesburg |
+
+ **+** oznacza wkrótce
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regiony i granice geopolityczne chmur krajowych
 W poniższej tabeli zamieszczono informacje o regionach i granicach geopolitycznych chmur krajowych.
@@ -95,7 +98,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[InterCloud](https://www.intercloud.com/)** |Obsługiwane |Obsługiwane |Amsterdam, Londyn, Paryż, Singapur, Waszyngton |
 | **Internet2** |Obsługiwane |Obsługiwane |Waszyngton |
 | **[Internet Initiative Japan Inc. — IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Obsługiwane |Obsługiwane |Osaka, Tokio |
-| **Internet Solutions — Cloud Connect** |Obsługiwane |Obsługiwane |Amsterdam, Londyn |
+| **[Internet Solutions — Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg, Londyn |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Obsługiwane |Obsługiwane |Amsterdam, Dublin, Londyn, Paryż |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Obsługiwane |Obsługiwane | Dolina Krzemowa, Toronto |
 | **Jisc** |Obsługiwane |Obsługiwane |Londyn |
@@ -106,7 +109,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Obsługiwane |Obsługiwane |Kapsztad, Johannesburg |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Denver, Dublin, Dolina Krzemowa, Hongkong, Las Vegas, Londyn, Los Angeles, Melbourne, Miami, miasto Quebec, Nowy Jork, San Antonio, Seattle, Singapur, Singapur2, Sydney, Toronto, Waszyngton |
 | **MTN** |Obsługiwane |Obsługiwane |Londyn |
-| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Obsługiwane |Obsługiwane |Miami, Sao Paulo |
+| **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Obsługiwane |Obsługiwane |Dallas, Miami, Sao Paulo |
 | **[Dane nowej generacji](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Obsługiwane |Obsługiwane |Newport (Walia) |
 | **NEXTDC** |Obsługiwane |Obsługiwane |Melbourne, Sydney |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Obsługiwane |Obsługiwane |Amsterdam, Hongkong, Londyn, Los Angeles, Osaka, Singapur, Sydney, Tokio, Waszyngton |

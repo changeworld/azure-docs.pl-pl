@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 8b14f06f364bde1d4c5588e60a54aefe07c821d2
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 4da5b42ddd235fa26834e582a911140116692d34
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945925"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38299563"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core
 
@@ -130,80 +130,7 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 
 **Umiesz już korzystać z metody szybkiego wprowadzania zmian w kodzie i debugowania bezpośrednio w środowisku Kubernetes.** Następnie zobaczysz, jak utworzyć i wywołać drugi kontener.
 
-## <a name="call-a-service-running-in-a-separate-container"></a>Wywoływanie usługi uruchomionej w oddzielnym kontenerze
+## <a name="next-steps"></a>Następne kroki
 
-W tej sekcji utworzysz drugą usługę, `mywebapi`, a usługa `webfrontend` ją wywoła. Każda usługa będzie działać w osobnych kontenerach. Następnie przeprowadzisz debugowanie w obu kontenerach.
-
-![Wiele kontenerów](media/common/multi-container.png)
-
-### <a name="download-sample-code-for-mywebapi"></a>Pobieranie przykładowego kodu aplikacji *mywebapi*
-Aby nie tracić czasu, pobierzmy przykładowy kod z repozytorium GitHub. Przejdź do witryny https://github.com/Azure/dev-spaces i wybierz pozycję **Clone or Download** (Sklonuj lub pobierz), aby pobrać repozytorium GitHub. Kod dla tej sekcji znajduje się w folderze `samples/dotnetcore/getting-started/mywebapi`.
-
-### <a name="run-mywebapi"></a>Uruchamianie aplikacji *mywebapi*
-1. Otwórz aplikację `mywebapi` w *osobnym oknie programu VS Code*.
-1. Naciśnij klawisz F5 i zaczekaj na skompilowanie i wdrożenie usługi. Gdy wszystko będzie gotowe, zostanie wyświetlony pasek debugowania programu VS Code.
-1. Zanotuj adres URL punktu końcowego, który będzie wyglądał mniej więcej tak: http://localhost:\<portnumber\>. **Porada: na pasku stanu programu VS Code będzie wyświetlany adres URL, który można kliknąć.** Może się wydawać, że kontener działa lokalnie, ale faktycznie jest on uruchamiany w naszym obszarze deweloperskim na platformie Azure. Adres hosta lokalnego jest tworzony, ponieważ w aplikacji `mywebapi` nie zdefiniowano żadnych publicznych punktów końcowych i dostęp do niej można uzyskać wyłącznie z poziomu wystąpienia w środowisku Kubernetes. Dla Twojej wygody i ułatwienia interakcji z usługą prywatną z komputera lokalnego usługa Azure Dev Spaces tworzy tymczasowy tunel SSH do kontenera uruchomionego na platformie Azure.
-1. Gdy aplikacja `mywebapi` jest gotowa, otwórz w przeglądarce adres hosta lokalnego. Dołącz do adresu URL część `/api/values`, aby wywołać domyślny interfejs API GET dla kontrolera `ValuesController`. 
-1. Jeśli wszystkie kroki zostały wykonane pomyślnie, powinno być możliwe wyświetlenie odpowiedzi z usługi `mywebapi`.
-
-### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Tworzenie żądania z aplikacji *webfrontend* do aplikacji *mywebapi*
-Napiszmy w aplikacji `webfrontend` kod, który będzie wysyłał żądanie do aplikacji `mywebapi`.
-1. Przełącz się na okno programu VS Code, aby uzyskać dostęp do aplikacji `webfrontend`.
-1. *Zastąp* kod metody About:
-
-    ```csharp
-    public async Task<IActionResult> About()
-    {
-        ViewData["Message"] = "Hello from webfrontend";
-        
-        using (var client = new System.Net.Http.HttpClient())
-            {
-                // Call *mywebapi*, and display its response in the page
-                var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://mywebapi/api/values/1");
-                if (this.Request.Headers.ContainsKey("azds-route-as"))
-                {
-                    // Propagate the dev space routing header
-                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
-                }
-                var response = await client.SendAsync(request);
-                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-            }
-
-        return View();
-    }
-    ```
-
-W poprzednim przykładzie kodu nagłówek `azds-route-as` jest przekazywany z żądania przychodzącego do żądania wychodzącego. Później zobaczysz, jak ułatwia to zespołom programowanie zespołowe.
-
-### <a name="debug-across-multiple-services"></a>Debugowanie w wielu usługach
-1. W tym momencie aplikacja `mywebapi` powinna być nadal uruchomiona z dołączonym debugerem. Jeśli nie jest, naciśnij klawisz F5 w projekcie `mywebapi`.
-1. Ustaw punkt przerwania w metodzie `Get(int id)` obsługującej żądania GET `api/values/{id}`.
-1. W projekcie `webfrontend` ustaw punkt przerwania tuż przed wysłaniem żądania GET do aplikacji `mywebapi/api/values`.
-1. W projekcie `webfrontend` naciśnij klawisz F5.
-1. Wywołaj aplikację internetową i wykonaj kod w obu usługach.
-1. W aplikacji internetowej na stronie Informacje zostanie wyświetlony połączony komunikat z dwóch usług: „Hello from webfrontend and Hello from mywebapi”.
-
-
-Gotowe! Teraz masz aplikację z wieloma kontenerami, z których każdy może być tworzony i wdrażany oddzielnie.
-
-## <a name="learn-about-team-development"></a>Więcej informacji na temat programowania zespołowego
-
-[!INCLUDE[](includes/team-development-1.md)]
-
-Zobaczmy, jak to działa. Przejdź do okna programu VS Code, aby uzyskać dostęp do aplikacji `mywebapi`, i zmodyfikuj kod metody `string Get(int id)`, na przykład:
-
-```csharp
-[HttpGet("{id}")]
-public string Get(int id)
-{
-    return "mywebapi now says something new";
-}
-```
-
-
-[!INCLUDE[](includes/team-development-2.md)]
-
-[!INCLUDE[](includes/well-done.md)]
-
-[!INCLUDE[](includes/clean-up.md)]
+> [!div class="nextstepaction"]
+> [Więcej informacji na temat programowania zespołowego](team-development-netcore.md)

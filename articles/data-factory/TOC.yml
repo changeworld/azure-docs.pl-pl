@@ -319,6 +319,10 @@
           href: transform-data-using-data-lake-analytics.md
         - name: Działanie notesu usługi Databricks
           href: transform-data-databricks-notebook.md
+        - name: Działanie pliku Jar usługi Databricks
+          href: transform-data-databricks-jar.md
+        - name: Działanie języka Python w usłudze Databricks
+          href: transform-data-databricks-python.md
         - name: Działanie niestandardowe
           href: transform-data-using-dotnet-custom-activity.md
         - name: Usługi połączone usługi Compute

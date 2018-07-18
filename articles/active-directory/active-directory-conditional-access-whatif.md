@@ -1,8 +1,8 @@
 ---
-title: Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory?
-description: Dowiedz się, jak zrozumienie wpływu zasad dostępu warunkowego w środowisku.
+title: Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
+description: Dowiedz się, jak może zrozumieć wpływ zasad dostępu warunkowego w swoim środowisku.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,108 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 34f6efaac00f4aa17ea6a53ab51da69b84591e35
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750086"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113033"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie dostępu warunkowego w usłudze Azure Active Directory?
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co to jest co jeśli narzędzie dostępu warunkowego usługi Azure Active Directory?
 
-[Dostęp warunkowy](active-directory-conditional-access-azure-portal.md) jest możliwości usługi Azure Active Directory (Azure AD), który umożliwia kontrolowanie sposobu autoryzacji dostępu użytkowników do aplikacji w chmurze. Skąd wiadomo, czego można oczekiwać formularza zasady dostępu warunkowego w środowisku? Aby odpowiedzieć na to pytanie, można użyć **dostępu warunkowego co zrobić, jeśli narzędzie**.
+[Dostęp warunkowy](active-directory-conditional-access-azure-portal.md) jest to funkcja usługi Azure Active Directory (Azure AD), która umożliwia kontrolowanie sposobu autoryzowany dostęp użytkowników aplikacji w chmurze. Skąd wiadomo, czego można oczekiwać, formularz zasady dostępu warunkowego w danym środowisku? Aby odpowiedzieć na to pytanie, można użyć **dostępu warunkowego narzędzie analizy warunkowej**.
 
-W tym artykule opisano, jak za pomocą tego narzędzia do testowania zasad dostępu warunkowego.
+W tym artykule wyjaśniono, jak można użyć tego narzędzia do testowania zasad dostępu warunkowego.
 
 ## <a name="what-it-is"></a>Co to jest
 
-**Warunkowego dostępu co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w środowisku. Zamiast kierowania zasad, ręcznie wykonując wielu logowania testu to narzędzie umożliwia ocenę symulowane logowanie użytkownika. Symulacja szacuje wpływu tego logowania ma na zasad i generuje raport symulacji. Raport nie tylko listy warunkowego zastosowane zasady dostępu, ale także [klasycznego zasady](active-directory-conditional-access-migration.md#classic-policies) jeżeli istnieją.    
+**Warunkowego dostępu, co, jeśli narzędzie zasad** umożliwia zrozumienie wpływu zasad dostępu warunkowego w swoim środowisku. Zamiast testu kierowania zasad, ręcznie wykonując wiele operacji logowania to narzędzie umożliwia ocenę symulowane logowania użytkownika. Symulacja szacuje wpływ tym logowania ma zasady i generuje raport symulacji. Raport nie zawiera tylko warunkowe zastosowane zasady dostępu, ale także [zasady klasyczne](active-directory-conditional-access-migration.md#classic-policies) jeśli takie istnieją.    
 
-Co jeśli narzędzia również pozwala szybko określić zasady, które są stosowane do określonego użytkownika. Możesz na przykład skorzystać z informacji, aby rozwiązać problem.  
+Co jeśli narzędzia również pozwala szybko określić zasady, które są stosowane do określonego użytkownika. Informacje, można użyć na przykład, jeśli trzeba rozwiązać problem.  
 
 ## <a name="how-it-works"></a>Jak to działa
 
-W **dostępu warunkowego co zrobić, jeśli narzędzie**, należy najpierw skonfigurować ustawienia logowania scenariusza, aby symulować. Te ustawienia obejmują:
+W **dostępu warunkowego narzędzie analizy warunkowej**, najpierw musisz skonfigurować ustawienia logowania scenariusza, które chcesz zasymulować. Te ustawienia obejmują:
 
-- Użytkownik, który ma zostać przetestowana. 
+- Użytkownik, który chcesz przetestować 
 
-- Aplikacje w chmurze, użytkownik będzie próbował uzyskać dostęp
+- Aplikacje w chmurze, które użytkownik może próbować uzyskać dostęp do
 
-- Warunki, w których dostęp do chmury konfiguruje odbywa się aplikacji
+- Warunki, w których dostęp do konfiguruje chmurze jest wykonywane w aplikacji
      
-Następnym krokiem można zainicjować symulacji Uruchom ocenia ustawień. Tylko włączone zasady są częścią oceny Uruchom.
+Kolejnym krokiem może zainicjować symulacji Uruchom ocenia ustawienia. Tylko te zasady, które są włączone są częścią uruchomić ocenę.
 
 
-Po zakończeniu oceny narzędzie generuje raport odpowiednich zasad.
+Po zakończeniu oceny narzędzie generuje raport o usterce zasad.
+
+
+> [!NOTE]
+> Obecnie co jeśli narzędzie nie obsługuje grup zagnieżdżonych. Jeśli użytkownik znajduje się w grupie i że grupa jest członkiem innej grupy, który jest używany w zasadach dostępu warunkowego, a następnie co zrobić, jeśli narzędzie nie wyświetla prawidłowo wpływu tych zasad dla użytkownika. 
 
 
 ## <a name="running-the-tool"></a>Uruchamianie narzędzia
 
-Można znaleźć **co zrobić, jeśli** narzędzia w **[dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** strony w portalu Azure.
+Możesz znaleźć **co zrobić, jeśli** narzędzie **[dostępu warunkowego — zasady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** strony w witrynie Azure portal.
 
-Aby uruchomić narzędzie, na pasku narzędzi u góry listy zasad, kliknij przycisk **co zrobić, jeśli**.
+Aby uruchomić to narzędzie, na pasku narzędzi na górze listy zasad, kliknij przycisk **co zrobić, jeśli**.
 
 ![A co jeżeli](./media/active-directory-conditional-access-whatif/01.png)
 
-Przed uruchomieniem ocenę, należy skonfigurować ustawienia.
+Zanim będzie można uruchomić oceny, należy skonfigurować ustawienia.
 
 ## <a name="settings"></a>Ustawienia
 
-Ta sekcja zawiera informacje o ustawieniach symulacji Uruchom.
+Ta sekcja zawiera przy użyciu informacji o ustawieniach uruchamiania symulacji.
 
 ![A co jeżeli](./media/active-directory-conditional-access-whatif/02.png)
 
 
 ### <a name="user"></a>Użytkownik
 
-Można wybrać tylko jeden użytkownik. To jest tylko wymaganego pola.
+Można wybrać tylko jeden użytkownik. Jest to jedyne wymagane pole.
 
 ### <a name="cloud-apps"></a>Aplikacje w chmurze
 
-Wartość domyślna to ustawienie to **wszystkich aplikacji w chmurze**. Ustawieniem domyślnym wykonuje ocenę wszystkich dostępnych zasad w środowisku. Można zawęzić zakres wpływu na aplikacje w chmurze określonych zasad.
+Wartość domyślna tego ustawienia to **wszystkie aplikacje w chmurze**. Ustawieniem domyślnym przeprowadza ocenę wszystkich dostępnych zasad w danym środowisku. Można zawęzić zakres, do wywierania wpływu na aplikacje w chmurze określonych zasad.
 
 
 ### <a name="ip-address"></a>Adres IP
 
-Adres IP jest jeden adres IPv4, aby naśladował [warunku lokalizacji](active-directory-conditional-access-locations.md). Adres reprezentuje internetowy adres urządzenia używane przez użytkownika do logowania. Możesz sprawdzić adres IP urządzenia, na przykład, przechodząc do [co to jest adresu IP](https://whatismyipaddress.com).    
+Adres IP jest jeden adres IPv4, aby mógł naśladować [warunek lokalizacji](active-directory-conditional-access-locations.md). Adres reprezentuje adres urządzenia używane przez użytkownika na potrzeby logowania z Internetem. Możesz sprawdzić adres IP urządzenia, na przykład, przechodząc do [jaki jest mój adres IP](https://whatismyipaddress.com).    
 
 ### <a name="device-platforms"></a>Platformy urządzeń
 
-To ustawienie, którego [warunku platformy urządzenia](active-directory-conditional-access-conditions.md#device-platforms) i stanowi odpowiednik **wszystkich platform (nieobsługiwane w tym)**. 
+To ustawienie naśladuje [warunek platform urządzeń](active-directory-conditional-access-conditions.md#device-platforms) i stanowi odpowiednik **wszystkich platform (w tym nieobsługiwane)**. 
 ### <a name="client-apps"></a>Aplikacje klienckie
 
-To ustawienie, którego [warunku aplikacje klienckie](active-directory-conditional-access-conditions.md#client-apps).
-Domyślnie to ustawienie powoduje, że oceny wszystkich zasad o **przeglądarki** lub **aplikacji mobilnych i klasycznych klientów** albo indywidualnie lub oba wybrane. Ta funkcja wykrywa także zasady, które wymuszają **programu Exchange ActiveSync (EAS)**. To ustawienie można zawęzić, wybierając:
+To ustawienie naśladuje [warunek aplikacje klienckie](active-directory-conditional-access-conditions.md#client-apps).
+Domyślnie to ustawienie powoduje, że ocena wszystkich zasad mających **przeglądarki** lub **aplikacje mobilne i klienci stacjonarni** albo indywidualnie lub oba wybrane. Ta funkcja wykrywa także zasady, które wymuszają **programu Exchange ActiveSync (EAS)**. To ustawienie można zawęzić, wybierając:
 
-- **Przeglądarka** do oceny wszystkich zasad o co najmniej **przeglądarki** wybrane. 
+- **Przeglądarka** do oceny, wszystkie zasady, o co najmniej **przeglądarki** wybrane. 
 
-- **Aplikacje mobilne i klienci usług pulpitu** do oceny wszystkich zasad o co najmniej **aplikacji mobilnych i klasycznych klientów** wybrane. 
+- **Aplikacje mobilne i klienci stacjonarni** do oceny, wszystkie zasady, o co najmniej **aplikacje mobilne i klienci stacjonarni** wybrane. 
 
 
 ### <a name="sign-in-risk"></a>Ryzyko logowania
 
-To ustawienie, którego [warunku logowania ryzyka](active-directory-conditional-access-conditions.md#sign-in-risk).   
+To ustawienie naśladuje [warunkiem ryzyka logowania](active-directory-conditional-access-conditions.md#sign-in-risk).   
 
 
 ## <a name="evaluation"></a>Ocena 
 
-Rozpocznij ocenę, klikając **co zrobić, jeśli**. Wynik oceny zawiera raport, który obejmuje: 
+Rozpocznij ocenę, klikając **co zrobić, jeśli**. Wynik oceny zawiera raport, który składa się z: 
 
 ![A co jeżeli](./media/active-directory-conditional-access-whatif/03.png)
 
-- Wskaźnik czy klasycznego zasady istnieją w środowisku
-- Zasady, które są stosowane do użytkownika.
-- Zasady, które nie mają zastosowanie do użytkownika.
+- Wskazuje czy istnieją zasady klasyczne w danym środowisku
+- Zasady, które są stosowane do użytkownika
+- Zasady, które nie mają zastosowania do użytkownika
 
 
-Jeśli [klasycznego zasady](active-directory-conditional-access-migration.md#classic-policies) istnieje dla wybranej chmury aplikacji, są prezentowane wskaźnika. Klikając wskaźnika, nastąpi przekierowanie do strony klasycznego zasad. Na stronie zasad klasycznego możesz migrować klasyczny zasad lub po prostu go wyłączyć. Możesz powrócić do wyników oceny zamknięciem tej strony.
+Jeśli [zasady klasyczne](active-directory-conditional-access-migration.md#classic-policies) istnieje dla aplikacji w wybranej chmurze, wskaźnik jest dołączona. Klikając pozycję wskaźnika, nastąpi przekierowanie do strony zasady klasyczne. Na stronie zasad klasycznych można migracji zasad klasycznych lub po prostu ją wyłączyć. Możesz wrócić do swojej wynik oceny, zamykając tej strony.
 
-Na liście zasad, które są stosowane do wybranego użytkownika, możesz również znaleźć listę [przyznać formanty](active-directory-conditional-access-controls.md#grant-controls) i [sesji](active-directory-conditional-access-controls.md#session-controls) kontrolki użytkownika spełnia.
+Na liście zasad, które są stosowane do wybranych użytkowników, możesz również znaleźć listę [Udziel kontroli](active-directory-conditional-access-controls.md#grant-controls) i [sesji](active-directory-conditional-access-controls.md#session-controls) kontrolki użytkownika musi spełniać.
 
-Na liście zasad, które nie dotyczą użytkowników można, a także znaleźć uzasadnienie, dlaczego nie można stosować te zasady. Dla każdej z wymienionych zasad powód reprezentuje pierwszy warunek, który nie był spełniony. Możliwych przyczyn zasady, która nie została zastosowana jest wyłączone zasady, ponieważ nie są analizowane dalsze.   
+Na liście zasad, które nie mają zastosowania do użytkownika można, a także znajdować powodów dlaczego te zasady nie mają zastosowania. Dla każdej z wymienionych zasad przyczynę reprezentuje pierwszy warunek, który nie był spełniony. Możliwa przyczyna zasady, która nie została zastosowana jest wyłączone zasady, ponieważ nie są analizowane dalsze.   
 
 
 
@@ -123,6 +127,6 @@ Na liście zasad, które nie dotyczą użytkowników można, a także znaleźć 
 
 - Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
-- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepszych rozwiązań dotyczących dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 
+- Jeśli wszystko jest gotowe do skonfigurowania zasad dostępu warunkowego dla danego środowiska, zobacz [najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md). 
 
-- Jeśli użytkownik chce migrować klasyczny zasad, zobacz [migracji klasycznego zasad w portalu Azure](active-directory-conditional-access-migration.md)  
+- Jeśli chcesz przeprowadzić migrację zasady klasyczne, zobacz [Migrowanie zasad klasycznych w witrynie Azure portal](active-directory-conditional-access-migration.md)  

@@ -1,6 +1,6 @@
 ---
-title: Ustawianie i pobieranie metadanych w usłudze Azure Storage i właściwości obiektu | Dokumentacja firmy Microsoft
-description: Przechowywania niestandardowych metadanych na obiektach w usłudze Azure Storage i ustawiania i pobierania właściwości systemu.
+title: Ustawianie i pobieranie właściwości obiektów oraz metadane w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Store niestandardowych metadanych na obiektach w usłudze Azure Storage i ustawianie i pobieranie właściwości systemu.
 services: storage
 documentationcenter: ''
 author: tamram
@@ -12,37 +12,37 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 07/16/2018
 ms.author: tamram
-ms.openlocfilehash: a3eb598b2dabd4986c72b8814926eb0944707050
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2c95139d42f42e43e2fa6e587d5b1b13afdf1e9
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873030"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112447"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Ustawianie i pobieranie właściwości oraz metadanych
 
-W właściwości systemu pomocy technicznej usługi Azure Storage i metadanych zdefiniowanych przez użytkownika, oprócz danych, które zawierają obiekty. W tym artykule omówiono zarządzanie właściwości systemu i użytkownika metadanych z [biblioteki klienta magazynu Azure dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
+Obiekty właściwości systemu pomocy technicznej usługi Azure Storage i metadane zdefiniowane przez użytkownika, oprócz danych, które zawierają. W tym artykule omówiono zarządzania właściwości systemu i metadane zdefiniowane przez użytkownika za pomocą [biblioteki klienta usługi Azure Storage dla platformy .NET](https://www.nuget.org/packages/WindowsAzure.Storage/).
 
-* **Właściwości systemu**: właściwości systemu istnieje dla każdego zasobu magazynu. Niektóre z nich można odczytać lub ustawić, podczas gdy inne dotyczą tylko do odczytu. W obszarze obejmuje niektóre właściwości systemu odpowiadają niektórych standardowymi nagłówkami HTTP. Biblioteka klienta magazynu Azure obsługuje są dla Ciebie.
+* **Właściwości systemu**: właściwości systemu istnieje dla każdego zasobu magazynu. Niektóre z nich można je odczytać lub ustawić, podczas gdy inne dotyczą tylko do odczytu. Dzieje się w tle niektóre właściwości systemu odpowiadają pewnych standardowych nagłówków HTTP. Biblioteki klienta usługi Azure Storage utrzymywać tych właściwości.
 
-* **Zdefiniowane przez użytkownika metadanych**: metadane zdefiniowane przez użytkownika są metadane, które można określić dla danego zasobu w postaci pary nazwa wartość. Metadanych umożliwiają przechowywanie dodatkowe wartości zasobów magazynu. Wartości te dodatkowe metadane służą wyłącznie do własnych, a nie wpływają na zachowanie zasobu.
+* **Metadane zdefiniowane przez użytkownika**: metadane zdefiniowane przez użytkownika, który składa się z pary nazwa wartość, które określisz dla zasobu usługi Azure Storage. Metadane służy do przechowywania dodatkowych wartości z zasobem. Wartości metadanych są wyłącznie w celach własne, a nie wpływają na sposób działania tego zasobu.
 
-Podczas pobierania wartości właściwości i metadanych dla zasobu magazynu jest procesem dwuetapowym. Przed możesz przeczytać te wartości, użytkownik musi jawnie pobrać je przez wywołanie metody **FetchAttributesAsync** metody.
+Podczas pobierania wartości właściwości i metadanych dla zasobu magazynu jest procesem dwuetapowym. Przed przeczytaniem tych wartości, musisz je wyraźnie pobrać wywołując **FetchAttributes** lub **FetchAttributesAsync** metody. Wyjątkiem jest, jeśli wywołujesz **Exists** lub **ExistsAsync** metody do zasobu. Podczas wywoływania jednej z następujących metod usługi Azure Storage, wywołuje odpowiednią **FetchAttributes** metody w sposób niewidoczny jako część wywołania **Exists** metody.
 
 > [!IMPORTANT]
-> Wartości właściwości i metadanych dla zasobów magazynu nie są wypełniane, chyba że wywoływanie jednego z **FetchAttributesAsync** metody.
+> Jeśli okaże się, że wartości właściwości lub metadanych dla zasobu magazynu nie została wypełniona, sprawdź, czy kod wywołuje **FetchAttributes** lub **FetchAttributesAsync** metody.
 >
-> Zostanie wyświetlony `400 Bad Request` Jeśli wszystkie pary nazwa/wartość zawiera znaki spoza zestawu ASCII. Pary nazwa/wartość metadanych są prawidłowe nagłówków HTTP, a więc muszą spełniać wszystkie ograniczenia dotyczące nagłówków HTTP. Dlatego zaleca się użycie kodowania adresu URL lub kodowania Base64 dla nazwy i wartości zawierające znaki spoza zestawu ASCII.
+> Metadane pary nazwa/wartość może zawierać tylko znaki ASCII. Pary nazwa/wartość metadanych są prawidłowe nagłówków HTTP, a więc muszą stosować się do wszelkich ograniczeń dotyczących nagłówków HTTP. Zalecane jest, aby używać kodowania adresu URL lub kodowanie Base64 dla nazwy i wartości zawierający znaki spoza zestawu ASCII.
 >
 
-## <a name="setting-and-retrieving-properties"></a>Ustawiania i pobierania właściwości
-Aby pobrać wartości właściwości, należy wywołać **FetchAttributesAsync** metody na obiekt blob lub kontener, aby wypełnić właściwości, następnie odczytać wartości.
+## <a name="setting-and-retrieving-properties"></a>Ustawianie i pobieranie właściwości
+Aby pobrać wartości właściwości, należy wywołać **FetchAttributesAsync** metody na obiekt blob lub kontenera, aby wypełnić właściwości, następnie zapoznaj się z wartości.
 
-Aby ustawić właściwości dla obiektu, określ właściwość value, a następnie wywołaj **SetProperties** metody.
+Aby ustawić właściwości dla obiektu, należy określić właściwość wartość, a następnie wywołaj **setproperties —** metody.
 
-Poniższy przykład kodu tworzy kontener, a następnie zapisuje niektóre z jej wartości właściwości w oknie konsoli.
+Poniższy przykład kodu tworzy kontener, a następnie zapisuje niektóre wartości właściwości z okna konsoli.
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -67,14 +67,14 @@ Console.WriteLine();
 ```
 
 ## <a name="setting-and-retrieving-metadata"></a>Ustawianie i pobieranie metadanych
-Metadane można określić jako pary nazwa wartość co najmniej jednego zasobu obiektów blob lub kontenera. Aby ustawić metadane, należy dodać pary nazwa wartość do **metadanych** kolekcji na zasobie, następnie wywołaj **SetMetadata** metody, aby zapisać wartości do usługi.
+Jako jeden lub więcej par nazwa wartość do obiektu blob lub kontenera zasobu można określić metadanych. Aby ustawić metadanych, należy dodać pary nazwa wartość do **metadanych** kolekcji na zasób, następnie wywołać **SetMetadata** lub **SetMetadataAsync** metodę, aby zapisać wartości do Usługa.
 
 > [!NOTE]
-> Nazwa metadanych musi być zgodna z konwencji nazewnictwa dla identyfikatorów języka C#.
+> Nazwa metadanych musi być zgodna z konwencji nazewnictwa identyfikatorów języka C#.
 >
 >
 
-Poniższy przykład kodu Ustawia metadane do kontenera. Jedna wartość jest ustawiona przy użyciu kolekcji **Dodaj** metody. Inne ma wartość przy użyciu składni niejawne klucza i wartości. Zarówno są prawidłowe.
+Poniższy przykład kodu Ustawia metadane w kontenerze. Jedna wartość można ustawić przy użyciu kolekcji **Dodaj** metody. Inna wartość jest ustawiona, przy użyciu składni niejawny klucz/wartość. Oba są prawidłowe.
 
 ```csharp
 public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
@@ -88,7 +88,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-Aby pobrać metadane, należy wywołać **FetchAttributes** metody na obiekt blob lub kontener, aby wypełnić **metadanych** kolekcji, następnie odczytać wartości, jak pokazano w poniższym przykładzie.
+Aby pobrać metadane, należy wywołać **FetchAttributes** lub **FetchAttributesAsync** metody na obiekt blob lub kontenera, aby wypełnić **metadanych** kolekcji, następnie zapoznaj się z wartości, jak pokazano w poniższym przykładzie.
 
 ```csharp
 public static async Task ListContainerMetadataAsync(CloudBlobContainer container)
@@ -106,6 +106,6 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* [Biblioteka klienta usługi Azure Storage dla odwołania .NET](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
+## <a name="next-steps"></a>Kolejne kroki
+* [Biblioteka klienta usługi Azure Storage dla dokumentacja platformy .NET](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
 * [Biblioteka klienta usługi Azure Storage dla pakietu NuGet programu .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)

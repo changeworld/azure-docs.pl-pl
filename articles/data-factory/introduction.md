@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: e4e90082f483720699fb029db33bc8110173c0aa
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc53d245dd814b6f9bb4edab89ddcbf841f16a8f
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082958"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38579181"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -120,6 +120,10 @@ Sama usługa Azure Data Factory nie przechowuje żadnych danych. Usługa umożli
 Chociaż usługa Data Factory jest dostępna tylko w wybranych regionach, to usługa zapewniająca przenoszenie danych w usłudze Data Factory jest dostępna globalnie w kilku regionach. Jeśli magazyn danych znajduje się za zaporą, dane są przenoszone przez własne środowisko Integration Runtime zainstalowane w środowisku lokalnym.
 
 Załóżmy na przykład, że środowiska obliczeniowe, takie jak klaster usługi Azure HDInsight i usługa Azure Machine Learning, są uruchamiane z regionu Europa Zachodnia. Można utworzyć i zastosować wystąpienie usługi Azure Data Factory w regionie Wschodnie stany USA lub Wschodnie stany USA 2 oraz użyć go do planowania zadań wykonywanych w środowiskach obliczeniowych w regionie Europa Zachodnia. Wyzwolenie zadania w środowisku obliczeniowym zajmuje usłudze Data Factory kilka milisekund, ale czas uruchomienia zadania w środowisku obliczeniowym nie zmienia się.
+
+## <a name="accessibility"></a>Ułatwienia dostępu
+
+Dostępne jest środowisko użytkownika usługi Data Factory w witrynie Azure Portal.
 
 ## <a name="compare-with-version-1"></a>Porównanie z wersją 1
 Aby uzyskać listę różnic między wersjami 1 i bieżącą usługi Data Factory, zobacz [Porównanie z wersją 1](compare-versions.md). 

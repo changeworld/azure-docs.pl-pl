@@ -13,14 +13,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/01/2018
+  ms.date: 07/16/2018
   ms.author: nolachar
-  ms.openlocfilehash: 21f67f7fcce505e18792a3be830524d64dd8045e
-  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+  ms.openlocfilehash: 2b82b50972c2c61c9dda5d1b1862c0c4cc8a9052
+  ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37045307"
+  ms.lasthandoff: 07/17/2018
+  ms.locfileid: "39070114"
 abstract:
   description: Usługa rozpoznawania mowy firmy Microsoft ułatwia deweloperom dodawanie do swoich aplikacji zaawansowanych funkcji rozpoznawania mowy, w tym sterowania za pomocą poleceń głosowych, transkrypcji, dyktowania i tłumaczenia przy użyciu <a href="rest-apis">interfejsu API REST</a> albo <a href="speech-sdk">zestawu SDK C#, C++ lub Java</a>.<p>Usługa rozpoznawania mowy firmy Microsoft umożliwia dostosowanie modeli <a href="how-to-customize-speech-models">zamiany mowy na tekst</a> w celu dopasowania do specjalistycznego słownictwa, hałaśliwych środowisk i różnych sposobów mówienia. Dostępne są również dostosowane funkcje <a href="https://cris.ai/Home/customvoice">zamiany tekstu na mowę</a> i <a href="https://www.microsoft.com/translator/customization.aspx">tłumaczenia mowy</a>.<p>Aby uzyskać więcej szczegółów, zobacz <a href="overview">Czym jest usługa rozpoznawania mowy?</a>
 sections:
@@ -32,27 +32,63 @@ sections:
     style: dataMatrix
     columns:
     - image:
+        src: media/index/uwp.jpg
+    - image:
         src: media/index/logo_csharp.svg
     - image:
         src: media/index/logo_cplusplus.svg
     - image:
-        src: media/index/logo_java.jpg
+        src: media/index/logo_netcore.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
     rows:
     - title: Windows
       values:
+      - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
+      - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
     - title: Linux
       values:
       - href: 
+      - href: 
       - href: quickstart-cpp-linux
       - href: 
-    - title: Zestaw SDK urządzeń (Android)
+      - href: 
+    - title: Android SDK
       values:
       - href: 
       - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+      - href: 
+      - href: 
+      - href: quickstart-java-android
+      - href: 
+      - href: 
+    - title: Zestaw SDK urządzeń
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: speech-devices-sdk
+      - href: 
+      - href: 
+    - title: Sieć Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: rest-apis
+      - href: rest-apis
 - title: Przykłady i dokumentacja
   items:
   - type: list
@@ -62,10 +98,8 @@ sections:
     - title: Przykłady
       html: <ul><li><a href="speech-to-text-sample.md">Rozpoznawanie mowy</a></li><li><a href="intent.md">Rozpoznawanie intencji mowy</a></li><li><a href="translation.md">Tłumaczenie</a></li></ul>
     - title: Dokumentacja interfejsu API
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">Interfejs API w języku C#</a></li><li><a href="https://aka.ms/csspeech/cppref">Interfejs API w języku C++</a></li><li><a href="https://aka.ms/csspeech/javaref">Interfejs API w języku Java (zestaw Speech Devices SDK)</a></li></ul>
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">Interfejs API języka C# (łącznie z platformami UWP i .NET Standard)</a></li><li><a href="https://aka.ms/csspeech/cppref">Interfejs API w języku C++</a></li><li><a href="https://aka.ms/csspeech/javaref">Interfejs API języka Java</a> dla zestawu SDK rozpoznawania mowy<br>i zestawu Speech Devices SDK</li></ul>
 - title: Zestaw Speech Devices SDK
   items:
   - type: paragraph
-    text: Wraz z wprowadzeniem ujednoliconej usługi rozpoznawania mowy firma Microsoft i jej partnerzy oferują teraz zintegrowaną platformę oprogramowania i sprzętową zoptymalizowaną pod kątem projektowania urządzeń z funkcją rozpoznawania mowy&#58; zestaw <b>Speech Devices SDK</b>. Ten zestaw SDK umożliwia projektowanie urządzeń z inteligentną obsługą mowy dla wszystkich typów aplikacji.
-  - type: paragraph
-    text: Zestaw <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">Speech Devices SDK</a> umożliwia projektowanie urządzeń asystujących z możliwym do dostosowania słowem aktywującym unikatowym dla Twojej marki, które wyzwala rejestrację dźwięku. Zestaw zapewnia także doskonałe przetwarzanie audio ze źródeł wielokanałowych, co zwiększa dokładność rozpoznawania mowy, a także pomijanie szumu, głos dalekiego pola i kształtowanie wiązki.
+    text: Wraz z wprowadzeniem ujednoliconej usługi rozpoznawania mowy firma Microsoft i jej partnerzy oferują teraz zintegrowaną platformę oprogramowania i sprzętową zoptymalizowaną pod kątem projektowania urządzeń z funkcją rozpoznawania mowy&#58; zestaw <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a>. Ten zestaw SDK pozwala projektować urządzenia asystujące dla wszystkich typów aplikacji oraz zdefiniować niestandardowe <I>słowo aktywujące</I> unikatowe dla danej marki. Sprzęt umożliwia doskonałe przetwarzanie audio ze źródeł wielokanałowych, co zwiększa dokładność rozpoznawania mowy, a także pomijanie szumu, głos dalekiego pola i kształtowanie wiązki.

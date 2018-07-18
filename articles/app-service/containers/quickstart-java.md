@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2018f5b7051f2b6906372dad3319c763974b93b1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 49702349b1c2476f5743122b33cb3375e54df191
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355189"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930100"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Szybki start: tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux
 
@@ -76,7 +76,7 @@ Aby przeprowadzić wdrożenie z poziomu narzędzia Maven, dodaj następującą d
       <plugin>
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-webapp-maven-plugin</artifactId> 
-        <version>1.1.0</version>
+        <version>1.2.0</version>
         <configuration> 
           <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
           <appName>YOUR_WEB_APP</appName> 
@@ -106,7 +106,39 @@ Zaktualizuj następujące symbole zastępcze w konfiguracji wtyczki:
 | `YOUR_RESOURCE_GROUP` | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja internetowa. Dzięki wprowadzeniu wszystkich zasobów dla aplikacji do grupy można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów spowodowałoby usunięcie wszystkich zasobów skojarzonych z aplikacją. Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej grupy zasobów, na przykład *TestResources*. Za pomocą tej nazwy grupy zasobów wyczyścisz wszystkie zasoby platformy Azure w późniejszej sekcji. |
 | `YOUR_WEB_APP` | Nazwa aplikacji będzie częścią nazwy hosta aplikacji internetowej po wdrożeniu na platformie Azure (APLIKACJA_INTERNETOWA.azurewebsites.net). Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej aplikacji internetowej platformy Azure, która będzie hostem aplikacji Java, na przykład *contoso*. |
 
-Element `linuxRuntime` konfiguracji określa wbudowany obraz systemu Linux używany z aplikacją.
+Element `linuxRuntime` konfiguracji określa wbudowany obraz systemu Linux używany z aplikacją. Aby zapoznać się ze wszystkimi obsługiwanymi stosami środowiska uruchomieniowego, zobacz [ten link](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin#runtime-stacks). 
+
+
+> [!NOTE] 
+> W tym artykule używane są tylko pliki WAR. Wtyczka obsługuje również aplikacje internetowe w formacie JAR, z użyciem następującej definicji wtyczki w elemencie `<build>` w pliku *pom.xml*:
+>
+>```xml
+>    <plugins>
+>      <plugin>
+>        <groupId>com.microsoft.azure</groupId> 
+>        <artifactId>azure-webapp-maven-plugin</artifactId> 
+>        <version>1.2.0</version>
+>        <configuration> 
+>          <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup> 
+>          <appName>YOUR_WEB_APP</appName> 
+>          <linuxRuntime>jre8</linuxRuntime>   
+>          <!-- This is to make sure the jar file will not be occupied during the deployment -->
+>          <stopAppDuringDeployment>true</stopAppDuringDeployment>
+>          <deploymentType>ftp</deploymentType> 
+>          <resources> 
+>              <resource> 
+>                  <directory>${project.basedir}/target</directory> 
+>                  <targetPath>webapps</targetPath> 
+>                  <includes> 
+>                      <!-- Currently it is required to set as app.jar -->
+>                      <include>app.jar</include> 
+>                  </includes>  
+>              </resource> 
+>          </resources> 
+>        </configuration>
+>      </plugin>
+>    </plugins>
+>```    
 
 Uruchom następujące polecenie i wykonaj wszystkie instrukcje, aby uwierzytelnić się w interfejsie wiersza polecenia platformy Azure:
 

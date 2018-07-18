@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do usługi Azure Resource Manager MSI maszyny Wirtualnej systemu Linux
-description: Samouczek, który przeprowadzi Cię przez proces przy użyciu systemu Linux VM zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Resource Manager.
+title: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux
+description: Samouczek przedstawiający proces użycia tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,28 +9,28 @@ editor: bryanla
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8f81e667ffd1e425527b383445f382d18233fef2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 690775bb2ff0d5ee16ec5d7f1869c4f23b3745ad
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594520"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900919"
 ---
-# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Umożliwia dostęp do usługi Azure Resource Manager Linux VM zarządzane usługi tożsamości (MSI)
+# <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Resource Manager
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ten samouczek pokazuje, jak włączyć zarządzane tożsamości usługi (MSI) dla maszyny wirtualnej systemu Linux, a następnie użyć tej tożsamości można uzyskać dostępu do interfejsu API Azure Resource Manager. Zarządzane tożsamości usługi automatycznie są zarządzane przez usługę Azure i umożliwiają uwierzytelnianie usług, które obsługują usługi Azure AD authentication bez konieczności wstawić poświadczeń do kodu. Omawiane kwestie:
+Ten samouczek przedstawia sposób włączania tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej z systemem Linux, a następnie użycia tej tożsamości do uzyskania dostępu do usługi Azure Resource Manager. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Włącz MSI w maszynie wirtualnej systemu Linux 
-> * Przyznać uprawnienia maszyny Wirtualnej do grupy zasobów w usłudze Azure Resource Manager 
-> * Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Azure Resource Manager 
+> * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux 
+> * Udzielanie maszynie wirtualnej dostępu do grupy zasobów w usłudze Azure Resource Manager 
+> * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do wywołania usługi Azure Resource Manager 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,63 +42,63 @@ Ten samouczek pokazuje, jak włączyć zarządzane tożsamości usługi (MSI) dl
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Linux w nowej grupy zasobów
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Linux w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę Wirtualną systemu Linux. Można również włączyć MSI na istniejącej maszyny Wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Linux. Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1. Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Ubuntu Server 16.04 LTS**.
-3. Wprowadź informacje o maszynie wirtualnej. Aby uzyskać **typ uwierzytelniania**, wybierz pozycję **klucz publiczny SSH** lub **hasło**. Utworzony poświadczenia umożliwiają Zaloguj się do maszyny Wirtualnej.
+3. Wprowadź informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH** lub **Hasło**. Utworzone poświadczenia umożliwiają logowanie na maszynie wirtualnej.
 
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+    ![Alternatywny tekst obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
-4. Wybierz **subskrypcji** dla maszyny wirtualnej na liście rozwijanej.
-5. Aby wybrać nowy **grupy zasobów** chcesz maszyny wirtualnej utworzone w, wybierz **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
-6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiary, wybierz **Wyświetl wszystkie** lub zmień filtr typu dysku obsługiwane. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
+4. Wybierz **subskrypcję** dla maszyny wirtualnej z listy rozwijanej.
+5. Aby wybrać nową **grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz pozycję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
+6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycję **Wyświetl wszystkie** lub zmień filtr Obsługiwany typ dysku. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej
+## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej
 
-MSI maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie zarządzania tożsamości usługi na maszynie Wirtualnej, wykonuje dwie czynności: rejestrów maszyny Wirtualnej z usługi Azure Active Directory do utworzenia zarządzanej tożsamości, a konfiguruje tożsamości na maszynie Wirtualnej.
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch czynności: zapewnia rejestrację maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz konfiguruje tożsamość na maszynie wirtualnej.
 
-1. Wybierz **maszyny wirtualnej** chcesz włączyć MSI.
-2. Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**.
-3. Zostanie wyświetlony **zarządzane tożsamość usługi**. Aby zarejestrować i włączyć MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz opcję nie.
-4. Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.
+1. Wybierz **maszynę wirtualną**, dla której chcesz włączyć tożsamość usługi zarządzanej.
+2. Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**.
+3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie.
+4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.
 
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+    ![Alternatywny tekst obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Przyznać uprawnienia maszyny Wirtualnej do grupy zasobów w usłudze Azure Resource Manager 
+## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Udzielanie maszynie wirtualnej dostępu do grupy zasobów w usłudze Azure Resource Manager 
 
-Za pomocą Instalatora MSI kodu mogą uzyskiwać tokeny dostępu do uwierzytelniania do zasobów, które obsługują uwierzytelnianie usługi Azure AD. Interfejs API Menedżera zasobów Azure obsługuje uwierzytelnianie usługi Azure AD. Najpierw należy udzielić tej maszyny Wirtualnej tożsamości dostępu do zasobów w usłudze Azure Resource Manager, w tym przypadku grupę zasobów, w którym znajduje się maszyna wirtualna.  
+Przy użyciu tożsamości usługi zarządzanej kod może uzyskać tokeny dostępu, aby uwierzytelniać zasoby obsługujące uwierzytelnianie usługi Azure AD. Interfejs API usługi Azure Resource Manager obsługuje uwierzytelnianie usługi Azure AD. Najpierw musimy zapewnić tożsamości tej maszyny wirtualnej dostęp do zasobu w usłudze Azure Resource Manager — w tym przypadku do grupy zasobów, która zawiera maszynę wirtualną.  
 
-1. Przejdź do karty dla **grup zasobów**.
-2. Wybierz konkretnych **grupy zasobów** utworzony wcześniej.
-3. Przejdź do **dostępu control(IAM)** w lewym panelu.
-4. Kliknij, aby **Dodaj** nowe przypisanie roli dla maszyny Wirtualnej. Wybierz **roli** jako **czytnika**.
-5. Na liście rozwijanej dalej **przypisany dostęp** zasobu **maszyny wirtualnej**.
-6. Następnie sprawdź odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej. I **grupy zasobów**, wybierz pozycję **wszystkich grup zasobów**.
-7. Ponadto w **wybierz** wybierz maszynę wirtualną systemu Linux w listy rozwijanej i kliknij przycisk **zapisać**.
+1. Przejdź do karty **Grupy zasobów**.
+2. Wybierz określoną **grupę zasobów**, która została utworzona wcześniej.
+3. Przejdź do pozycji **Kontrola dostępu (IAM)** w panelu po lewej stronie.
+4. Kliknij, aby **dodać** nowy przydział roli do maszyny wirtualnej. W pozycji **Rola** wybierz opcję **Czytelnik**.
+5. Na następnej liście rozwijanej **Przypisz dostęp do** zasobu **Maszyna wirtualna**.
+6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**. W pozycji **Grupa zasobów** wybierz opcję **Wszystkie grupy zasobów**.
+7. Na koniec w pozycji **Wybierz** użyj listy rozwijanej, aby wybrać maszynę wirtualną z systemem Linux, i kliknij przycisk **Zapisz**.
 
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
+    ![Alternatywny tekst obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i użyć go do wywołania usługi Resource Manager 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do wywołania usługi Resource Manager 
 
-Aby wykonać te kroki, konieczne będzie klienta SSH. Jeśli korzystasz z systemu Windows, możesz użyć klienta SSH w [podsystemu systemu Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about). Jeśli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [sposobu użycia SSH kluczy systemu Windows Azure](../../virtual-machines/linux/ssh-from-windows.md), lub [sposobu tworzenia i używania SSH publiczne i prywatne parę kluczy dla maszyn wirtualnych systemu Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Aby wykonać te kroki, będziesz potrzebować klienta SSH. Jeśli używasz systemu Windows, możesz użyć klienta SSH w pozycji [Podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about). Jeżeli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [Jak używać kluczy SSH z systemem Windows na platformie Azure](../../virtual-machines/linux/ssh-from-windows.md) lub [Jak utworzyć i użyć parę publicznego i prywatnego klucza SSH dla maszyn wirtualnych z systemem Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. W portalu przejdź do maszyny Wirtualnej systemu Linux i w **omówienie**, kliknij przycisk **Connect**.  
-2. **Połącz** do maszyny Wirtualnej przy użyciu klienta SSH wybranych przez użytkownika. 
-3. W oknie terminalu przy użyciu programu CURL, Wyślij żądanie do lokalnego punktu końcowego MSI do Uzyskaj token dostępu usługi Azure Resource Manager.  
+1. W portalu przejdź do maszyny wirtualnej z systemem Linux i w pozycji **Przegląd** kliknij opcję **Połącz**.  
+2. **Połącz** się z maszyną wirtualną przy użyciu wybranego klienta SSH. 
+3. W oknie terminalu, używając programu CURL, wyślij żądanie do lokalnego punktu końcowego tożsamości usługi zarządzanej, aby uzyskać token dostępu do usługi Azure Resource Manager.  
  
-    ZWINIĘCIE żądanie tokenu dostępu jest niższa.  
+    Żądanie programu CURL dla tokenu dostępu znajduje się poniżej.  
     
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > Wartość parametru "zasobu" musi być dokładnego dopasowania dla oczekiwano przez usługę Azure AD.  W przypadku identyfikator zasobu usługi Resource Manager należy dołączyć końcowy ukośnik w identyfikatorze URI. 
+    > Wartość parametru „resource” musi być dokładnie dopasowana do tego, czego oczekujemy od usługi Azure AD.  W przypadku użycia identyfikatora zasobu usługi Resource Manager należy uwzględnić końcowy ukośnik w identyfikatorze URI. 
     
-    Odpowiedź zawiera token dostępu, musisz mieć dostęp do usługi Azure Resource Manager. 
+    Odpowiedź zawiera token dostępu wymagany do uzyskania dostępu do usługi Azure Resource Manager. 
     
     Odpowiedź:  
 
@@ -112,24 +112,24 @@ Aby wykonać te kroki, konieczne będzie klienta SSH. Jeśli korzystasz z system
     "token_type":"Bearer"} 
     ```
     
-    Ten token dostępu umożliwia dostęp do usługi Azure Resource Manager, na przykład aby przeczytać szczegółowe informacje o grupie zasobów, do której wcześniej przyznano dostęp do tej maszyny Wirtualnej. Zastąp wartości \<identyfikator SUBSKRYPCJI\>, \<grupy zasobów\>, i \<TOKEN dostępu\> z tymi utworzony wcześniej. 
+    Możesz użyć tego tokenu dostępu w celu uzyskania dostępu do usługi Azure Resource Manager, np. aby odczytać właściwości grupy zasobów, do której wcześniej udzielono dostępu tej maszynie wirtualnej. Zastąp wartości \<IDENTYFIKATOR SUBSKRYPCJI\>, \<GRUPA ZASOBÓW\> oraz \<TOKEN DOSTĘPU\> wcześniej utworzonymi. 
     
     > [!NOTE]
-    > Adres URL jest rozróżniana wielkość liter, dlatego upewnij się, jeśli używasz tego samego dokładnej zgodnie z wcześniej używane podczas nosi nazwę grupy zasobów i wielkie litery "G" w "w grupie zasobów".  
+    > W adresie URL rozróżniana jest wielkość liter, więc upewnij się, że użyto takich samych wartości jak wcześniej, podczas nazywania grupy zasobów — z wielką literą „G” w nazwie „resourceGroup”.  
     
     ```bash 
     curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
-    Odpowiedź z powrotem określone informacje o grupie zasobów: 
+    Odpowiedz przy użyciu konkretnych informacji o grupie zasobów: 
      
     ```bash
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
     ```     
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia użytkownika przypisanego tożsamości i dołącz je do maszyny wirtualnej platformy Azure na dostęp do interfejsu API Azure Resource Manager.  Aby dowiedzieć się więcej o usłudze Azure Resource Manager, zobacz:
+W tym samouczku przedstawiono sposób tworzenia tożsamości przypisanej przez użytkownika i dołączania jej do maszyny wirtualnej platformy Azure w celu uzyskania dostępu do interfejsu API usługi Azure Resource Manager.  Aby dowiedzieć się więcej o usłudze Azure Resource Manager, zobacz:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

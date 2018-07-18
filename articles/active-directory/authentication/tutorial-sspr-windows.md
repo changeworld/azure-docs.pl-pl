@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3b767da394f6337a1110ad171f19ad789fa044d2
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867497"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38972985"
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -28,7 +28,7 @@ Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania sys
 * Aktualizacja systemu Windows 10 z kwietnia 2018 r. lub nowszy klient [dołączony do usługi Azure AD](../device-management-azure-portal.md) lub [hybrydowy dołączony do usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Włączona funkcja samoobsługowego resetowania haseł w usłudze Azure AD.
 * Skonfiguruj i wdróż ustawienie, aby włączyć link resetowania hasła przy użyciu jednej z następujących metod:
-   * [Profil konfiguracji urządzenia usługi Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
+   * [Profil konfiguracji urządzenia usługi Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune). Ta metoda wymaga rejestracji urządzenia w usłudze Intune.
    * [Klucz rejestru](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
@@ -66,7 +66,7 @@ Aby użytkownicy mogli resetować hasło usługi Azure AD z ekranu logowania sys
    * Kliknij pozycję **Wybierz**
 4. Kliknij przycisk **Utwórz**
 
-Więcej informacji na temat tworzenia grup można znaleźć w artykule [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../active-directory-manage-groups.md).
+Więcej informacji na temat tworzenia grup można znaleźć w artykule [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](../fundamentals/active-directory-manage-groups.md).
 
 #### <a name="assign-device-configuration-policy-to-device-group"></a>Przypisywanie zasad konfiguracji urządzeń do grupy urządzeń
 

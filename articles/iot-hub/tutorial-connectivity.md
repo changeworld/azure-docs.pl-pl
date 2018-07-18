@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 47d52fa412adf3f8e7f0c3c4d4afaf9009b4783e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651593"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869594"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
@@ -49,7 +49,7 @@ Możesz sprawdzić bieżącą wersję środowiska Node.js na komputerze dewelope
 node --version
 ```
 
-Pobierz przykładowy projekt symulatora urządzenia Node.js ze strony https://github.com/Azure-Samples/iot-hub-tutorials-node/archive/master.zip i wyodrębnij archiwum ZIP.
+Pobierz przykładowy projekt symulatora urządzenia Node.js ze strony https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip i wyodrębnij archiwum ZIP.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
@@ -123,6 +123,9 @@ Tym razem, gdy aplikacja spróbuje nawiązać połączenie, wyświetlony zostani
 Jeśli urządzenie korzysta z jednego z zestawów SDK urządzeń usługi IoT Hub, kod biblioteki SDK generuje token SAS używany do uwierzytelniania w centrum. Token SAS jest generowany przy użyciu nazwy centrum, nazwy urządzenia oraz klucza urządzenia.
 
 W niektórych scenariuszach, na przykład w przypadku bramy protokołu w chmurze lub w ramach niestandardowego schematu uwierzytelniania, może być konieczne samodzielne wygenerowanie tokenu SAS. Aby rozwiązać problemy z kodem generującym token SAS, warto wiedzieć, jak wygenerować znany sprawny token SAS do użycia podczas testów.
+
+> [!NOTE]
+> Przykładowy plik SimulatedDevice-2.js zawiera przykłady generowania tokenu sygnatury dostępu współdzielonego (SAS) z zestawem SDK i bez niego.
 
 Aby wygenerować znany sprawny token SAS przy użyciu interfejsu wiersza polecenia, należy uruchomić następujące polecenie:
 

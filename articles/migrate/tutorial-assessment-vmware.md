@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób odnajdowania lokalnych maszyn wirtua
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/19/2018
+ms.date: 07/09/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71d4bc0aa1ea2658c4cd40834a769eaaac649bc3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b1070e29c8dc9f088297622d16fb816a10a55c0
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228377"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38970789"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -33,10 +33,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **VMware**: do zarządzania maszynami wirtualnymi, które mają być poddane migracji, musi być używany program vCenter Server w wersji 5.5, 6.0 lub 6.5. Ponadto wymagany jest jeden host ESXi z wersją 5.0 lub nowszą w celu wdrożenia maszyny wirtualnej modułu zbierającego.
-
-> [!NOTE]
-> Obsługa funkcji Hyper-V znajduje się w planach i zostanie włączona wkrótce.
-
 - **Konto serwera vCenter**: wymagane jest konto tylko do odczytu w celu uzyskania dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: na serwerze vCenter są wymagane uprawnienia do tworzenia maszyn wirtualnych przez zaimportowanie pliku w formacie OVA.
 - **Ustawienia statystyk**: przed rozpoczęciem wdrażania należy określić poziom 3 w ustawieniach statystyk serwera vCenter. Jeśli poziom będzie niższy niż 3, ocena zostanie wykonana, ale nie zostaną zebrane dane dotyczące wydajności magazynu i sieci. W takim przypadku zalecenia dotyczące rozmiaru zostaną określone na podstawie danych dotyczących wydajności procesora i pamięci oraz danych konfiguracyjnych dysku i kart sieciowych.
@@ -49,6 +45,7 @@ Usługa Azure Migrate wymaga dostępu do serwerów VMware w celu automatycznego 
 - Uprawnienia: obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu
 - Szczegóły: użytkownik przypisany na poziomie centrum danych z dostępem do wszystkich obiektów w centrum danych.
 - Aby ograniczyć dostęp, przypisz rolę Bez dostępu z propagacją do obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).
+
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
@@ -85,6 +82,14 @@ Przed wdrożeniem pliku OVA sprawdź, czy jest on bezpieczny.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom.
+
+  OVA w wersji 1.0.9.12
+
+    **Algorytm** | **Wartość skrótu**
+    --- | ---
+    MD5 | d0363e5d1b377a8eb08843cf034ac28a
+    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
   OVA w wersji 1.0.9.8
 
@@ -143,7 +148,7 @@ Zaimportuj pobrany plik na serwer vCenter.
 5. W usłudze Azure Migrate Collector otwórz obszar **Set up prerequisites** (Skonfiguruj elementy wymagane wstępnie).
     - Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
     - Moduł zbierający sprawdzi, czy maszyna wirtualna ma dostęp do Internetu.
-    - Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, kliknij pozycję **Proxy settings** (Ustawienia serwera proxy) i wprowadź adres serwera proxy oraz port nasłuchujący. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) na temat wymagań dotyczących łączności z Internetem i listy adresów URL, do których moduł zbierający uzyskuje dostęp.
+    - Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, kliknij pozycję **Proxy settings** (Ustawienia serwera proxy) i wprowadź adres serwera proxy oraz port nasłuchujący. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) na temat wymagań dotyczących łączności z Internetem i listy adresów URL, do których moduł zbierający uzyskuje dostęp.
 
     > [!NOTE]
     > Adres serwera proxy musi zostać wprowadzony w postaci http://ProxyIPAddress lub http://ProxyFQDN. Obsługiwane są tylko serwery proxy HTTP.
@@ -157,10 +162,12 @@ Zaimportuj pobrany plik na serwer vCenter.
     - W obszarze **Collection scope** (Zakres zbierania) wybierz zakres odnajdowania maszyn wirtualnych. Moduł zbierający odnajdzie tylko maszyny wirtualne we wskazanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Zakres nie powinien zawierać więcej niż 1500 maszyn wirtualnych. [Dowiedz się więcej](how-to-scale-assessment.md) o sposobach odnajdywania większego środowiska.
 
 7. W obszarze **Specify migration project** (Określ projekt migracji) podaj identyfikator i klucz projektu usługi Azure Migrate, skopiowane z portalu. Jeśli nie zostały skopiowane, otwórz witrynę Azure Portal na maszynie wirtualnej modułu zbierającego. Na stronie **Omówienie** projektu kliknij polecenie **Odnajdź maszyny**, a następnie skopiuj wartości.  
-8. Na stronie **View collection progress** (Wyświetlanie postępu zbierania) możesz monitorować proces odnajdowania i sprawdzić, czy metadane zbierane z maszyn wirtualnych odpowiadają wymaganemu zakresowi. Moduł zbierający informuje o szacowanym czasie odnajdowania. [Dowiedz się więcej](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) o tym, jakie dane są zbierane przez usługę Azure Migrate Collector.
+8. Na stronie **View collection progress** (Wyświetlanie postępu zbierania) możesz monitorować proces odnajdowania i sprawdzić, czy metadane zbierane z maszyn wirtualnych odpowiadają wymaganemu zakresowi. Moduł zbierający informuje o szacowanym czasie odnajdowania. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o tym, jakie dane są zbierane przez usługę Azure Migrate Collector.
 
 > [!NOTE]
-> Moduł zbierający obsługuje wyłącznie „Angielski (Stany Zjednoczone)” jako język systemu operacyjnego i język interfejsu modułu zbierającego. Wkrótce zostanie dodana obsługa innych języków.
+> Moduł zbierający obsługuje wyłącznie „Angielski (Stany Zjednoczone)” jako język systemu operacyjnego i język interfejsu modułu zbierającego.
+> Jeśli zmienisz ustawienia na ocenianej maszynie, przed uruchomieniem oceny ponownie wyzwól odnajdywanie. W tym celu w module zbierającym użyj opcji **Ponownie uruchom zbieranie**. Po zakończeniu zbierania wybierz opcję **Oblicz ponownie** dla oceny w portalu, aby pobrać zaktualizowane wyniki oceny.
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu

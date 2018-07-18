@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 658588b29e65c9b1cd2f9d82c1c4528929875b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935576"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38973002"
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -58,10 +58,14 @@ Usługa API Management emituje metryki co minutę, oferując wgląd w stan i kon
 Aby uzyskać dostęp do metryk:
 
 1. Wybierz pozycję **Metryki** w menu w dolnej części strony.
-2. Z listy rozwijanej wybierz interesujące Cię metryki (można dodać wiele metryk). 
 
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+
+2. Z listy rozwijanej wybierz interesujące Cię metryki (można dodać wiele metryk).  
     Na przykład wybierz pozycje **Całkowita liczba żądań bramy** i **Żądania bramy zakończone niepowodzeniem**  z listy dostępnych metryk.
-3. Wykres przedstawia łączną liczbę wywołań interfejsu API. Pokazuje również liczbę wywołań interfejsu API zakończonych niepowodzeniem. 
+3. Wykres przedstawia łączną liczbę wywołań interfejsu API. Pokazuje również liczbę wywołań interfejsu API zakończonych niepowodzeniem.
+
+    ![wykres metryk](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Konfigurowanie reguły alertu na potrzeby nieautoryzowanego żądania
 
@@ -73,7 +77,10 @@ Można skonfigurować odbieranie alertów w oparciu o metryki i dzienniki aktywn
 
 Aby skonfigurować alerty:
 
-1. Wybierz pozycję **Reguły alertów** w menu w dolnej części strony.
+1. Wybierz pozycję **Alerty (klasyczne)** na pasku menu w dolnej części strony.
+
+    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+
 2. Wybierz pozycję **Dodaj alert dotyczący metryki**.
 3. Wprowadź **nazwę** tego alertu.
 4. Wybierz pozycję **Nieautoryzowane żądania bramy** jako metrykę do monitorowania.
@@ -100,6 +107,12 @@ Aby wyświetlić dzienniki aktywności:
 1. Wybierz wystąpienie usługi APIM.
 2. Kliknij pozycję **Dziennik aktywności**.
 
+    ![dziennik aktywności](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
+
+3. Wybierz żądany zakres filtrowania i kliknij przycisk **Zastosuj**.
+
+    ![dzienniki aktywności](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
 Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez zasób.
@@ -108,6 +121,9 @@ Aby skonfigurować dzienniki diagnostyczne:
 
 1. Wybierz wystąpienie usługi APIM.
 2. Kliknij pozycję **Dzienniki diagnostyczne**.
+
+    ![dzienniki diagnostyczne](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+
 3. Kliknij pozycję **Włącz diagnostykę**. Dzienniki diagnostyczne wraz z metrykami można zarchiwizować na koncie magazynu, przesłać strumieniowo do usługi Event Hub lub wysłać do usługi Log Analytics. 
 
 Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane w trybie wsadowym co godzinę) dotyczące poszczególnych żądań interfejsu AP. Każdy wpis jest zgodny z następującym schematem:

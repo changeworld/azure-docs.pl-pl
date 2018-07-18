@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: juliako
-ms.openlocfilehash: 49f872046ae1d62c425f058d7a6ae5220fc6c456
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e54aff6e42d19755d274393d4221578cf5595cc5
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008182"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112794"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
 
@@ -205,4 +205,4 @@ private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTem
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Omówienie](content-protection-overview.md)
+Zapoznaj się z jak [chronić za pomocą technologii DRM](protect-with-drm.md)

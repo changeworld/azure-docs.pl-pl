@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 237f0d2b25230528c64bd47edd10ebae62750a0c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345386"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115677"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -209,7 +209,7 @@ Wybierz **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejącyc
 
 ## <a name="create-or-edit-an-update-deployment"></a>Tworzenie lub edytowanie wdrożenia aktualizacji
 
-Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarte okienko. Wprowadź wartości dla właściwości opisane w poniższej tabeli:
+Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarte okienko. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
 
 | Właściwość | Opis |
 | --- | --- |
@@ -514,7 +514,7 @@ Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa na CentOS 
 
 Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wirtualnych Windows.
 

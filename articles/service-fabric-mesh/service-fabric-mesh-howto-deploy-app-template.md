@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie aplikacji w usłudze Azure Service Fabric siatki za pomocą szablonu | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć aplikację platformy .NET Core do usługi Service Fabric siatki z szablonu przy użyciu wiersza polecenia platformy Azure.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: timlt
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 11b3ad6bf83eebfc94ead6f8a730b8e6a6b8de2f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 8d813669f2f44fd64db669e9750e3bc064c7f916
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076310"
+ms.locfileid: "39090339"
 ---
 # <a name="deploy-a-service-fabric-mesh-application-to-service-fabric-mesh-using-a-template"></a>Wdrażanie aplikacji usługi Service Fabric siatki w usłudze Service Fabric siatki, przy użyciu szablonu
 W tym artykule przedstawiono sposób wdrażania aplikacji .NET Core do usługi Service Fabric siatki, przy użyciu szablonu. Gdy skończysz, masz aplikację do głosowania z internetową frontonu ASP.NET Core, zapisuje wyniki głosowania w usłudze zaplecza w klastrze. Frontonu przy użyciu serwera DNS do rozpoznawania adresów usługi zaplecza.
@@ -54,28 +54,28 @@ Poprzednie polecenie służy do wdrażania aplikacji Windows za pomocą [szablon
 
 W ciągu kilku minut polecenia powinny zostać zwrócone przy użyciu:
 
-`VotingApp has been deployed successfully on VotingAppNetwork with public ip address <IP address>.` 
-
-Na przykład adres IP jest 13.68.129.22.
+`VotingApp has been deployed successfully on VotingAppNetwork with public ip address <IP address>` 
 
 ## <a name="open-the-application"></a>Otwórz aplikację
-Po pomyślnym wdrożeniu aplikacji, połączyć się z punktem końcowym usługi (z poprzedniego przykładu 13.68.129.22) w przeglądarce.  
+Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Wyświetla następujące strony sieci web. 
 
 ![Aplikacja do głosowania](./media/service-fabric-mesh-howto-deploy-app-template/VotingApplication.png)
 
 Możesz teraz dodać Opcje głosowania do aplikacji i oddawać głosy na nim lub usunąć opcji głosowania.
+
+Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Opcjonalnie można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi. 
+
+Nazwa zasobu sieci dla tej aplikacji jest `VotingAppNetwork`, pobierania informacji o nim przy użyciu następującego polecenia. 
+
+```azurecli-interactive
+az mesh network show --resource-group myResourceGroup --name VotingAppNetwork
+```
 
 ## <a name="check-the-application-details"></a>Sprawdź szczegóły aplikacji
 Możesz sprawdzić stan aplikacji przy użyciu `app show` polecenia. Nazwa aplikacji do wdrożonej aplikacji jest "VotingApp", więc pobrać jego szczegóły. 
 
 ```azurecli-interactive
 az mesh app show --resource-group myResourceGroup --name VotingApp
-```
-
-Możesz także zbadać zasobu sieciowego, aby znaleźć adres IP kontenera, w której wdrażana jest usługa, uruchamiając polecenie "az siatki Pokaż sieci":
-
-```azurecli-interactive
-az mesh network show --resource-group myResourceGroup --name VotingAppNetwork
 ```
 
 ## <a name="list-the-deployed-applications"></a>Wyświetlanie listy wdrożonych aplikacji

@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web jednej strony wyszukiwania usługi Bing wideo (kodu źródłowego) | Dokumentacja firmy Microsoft
-description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API wyszukiwania usługi Bing wideo w aplikacji jednej strony sieci Web.
+title: Aplikacja sieci Web jednej strony wyszukiwania wideo Bing (kodu źródłowego) | Dokumentacja firmy Microsoft
+description: Kod źródłowy Samouczek przedstawiający sposób użycia interfejsu API wyszukiwania wideo Bing w jednej strony aplikacji sieci Web.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -9,18 +9,18 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: v-gedod
-ms.openlocfilehash: c0842e53cbc297c1980a9d08733d838def073835
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347068"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112464"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Samouczek: Aplikacji jednej strony wyszukiwania wideo
+# <a name="tutorial-single-page-video-search-app"></a>Samouczek: Wyszukiwania klipów wideo z jednej strony aplikacji
 
-To jest kod źródłowy pełną omówione w [samouczek aplikacji jednej strony](tutorial-bing-video-search-single-page-app.md) dla wyszukiwania usługi Bing wideo. Aby uruchomić aplikację, skopiuj kod źródłowy w Notatniku lub w innym edytorze tekstu i zapisz go jako `bing.html`. Następnie otwórz zapisany plik w Microsoft Edge lub innej popularne przeglądarki.
+Jest to pełnego kodu źródłowego omówione w [samouczek dotyczący aplikacji jednostronicowej](tutorial-bing-video-search-single-page-app.md) dla wyszukiwania wideo Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do Notatnika lub innego edytora tekstu, a następnie zapisz go jako `bing.html`. Następnie otwórz zapisany plik w Microsoft Edge lub innej przeglądarki popularne.
 
-````html
+```html
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <!-- the above Mark of the Web lets IE run this page in the Internet security zone,
@@ -615,3 +615,4 @@ function doPrevSearchPage() {
 
 </body>
 </html>
+```

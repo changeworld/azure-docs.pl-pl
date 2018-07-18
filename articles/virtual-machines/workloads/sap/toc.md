@@ -48,8 +48,19 @@
 ### SAP — wiele identyfikatorów SID
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [System Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [Podręcznik wdrażania](deployment-guide.md)
-## [Podręcznik wdrażania systemu DBMS](dbms-guide.md)
+## [Przewodnik wdrażania oprogramowania SAP NetWeaver](deployment-guide.md)
+## Wskazówki dotyczące wdrażania systemu DBMS dla obciążenia SAP
+### [Ogólne wdrażanie systemu DBMS usługi Azure Virtual Machines dla obciążenia SAP](dbms_guide_general.md)
+### [Wdrażanie systemu DBMS usługi Azure Virtual Machines programu SQL Server dla obciążenia SAP](dbms_guide_sqlserver.md)
+### [Wdrażanie systemu DBMS usługi Azure Virtual Machines oprogramowania Oracle dla obciążenia SAP](dbms_guide_oracle.md)
+### [Wdrażanie systemu DBMS usługi Azure Virtual Machines programu IBM DB2 dla obciążenia SAP](dbms_guide_ibm.md)
+### [Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP](dbms_guide_sapase.md)
+### [Wdrażanie rozwiązania SAP MaxDB, technologii liveCache i serwera zawartości na platformie Azure](dbms_guide_maxdb.md)
+### [Przewodnik obsługi oprogramowania SAP HANA na platformie Azure](hana-vm-operations.md)
+#### Dostępność rozwiązania SAP HANA w usłudze Azure Virtual Machines
+##### [Przegląd dostępności rozwiązania SAP HANA na platformie Azure](sap-hana-availability-overview.md)
+##### [Dostępność rozwiązania SAP HANA na platformie Azure w ramach jednego regionu świadczenia usługi Azure](sap-hana-availability-one-region.md)
+##### [Dostępność rozwiązania SAP HANA na platformie Azure w wielu regionach świadczenia usługi Azure](sap-hana-availability-across-regions.md)
 ## [Odzyskiwanie po awarii oprogramowania SAP za pomocą usługi Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # Integracja tożsamości usługi AAD i oprogramowania SAP oraz logowanie jednokrotne
 ## [Integracja z rozwiązaniem SAP Cloud](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 07/17/2018
 ms.author: wolfma
-ms.openlocfilehash: 71a5edfbe388f2d4bfb48255b901cb0037665252
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 50a8c183bd7f2711847ce6d0acade4cb498ef2fc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069434"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116099"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -42,12 +42,22 @@ ms.locfileid: "39069434"
 
 * Zdarzenia rozpoznawania: NoMatch typ zdarzenia zostanie scalona w zdarzeniu błędu.
 * SpeechOutputFormat w języku C# jest zmieniana na OutputFormat zapewnienie wyrównane przy użyciu języka C++.
+* Zwracany typ niektóre metody `AudioInputStream` interfejsu nieznacznie zmienione:
+   * W języku Java `read` metoda teraz zwraca `long` zamiast `int`.
+   * W języku C# `Read` metoda teraz zwraca `uint` zamiast `int`.
+   * W języku C++ `Read` i `GetFormat` teraz zwrotu metody `size_t` zamiast `int`.
+* C++: wystąpienia strumienie wejściowe audio mogą teraz być przekazywane jako `shared_ptr`.
 
 **Poprawki błędów**
 
 * Naprawiono niepoprawne wartości zwracanych w wyniku podczas `RecognizeAsync()` upłynie limit czasu.
 * Zależność od media foundation bibliotek na Windows zostanie usunięta. Zestaw SDK używa teraz podstawowe interfejsy API z Audio.
 * Poprawienie dokumentacji: dodano stronę region do opisywania, czym są obsługiwane regiony.
+
+**Znane problemy**
+
+* Zestaw SDK rozpoznawania mowy dla systemu Android nie raportuje wyniki synteza mowy do tłumaczenia.
+  Ten problem zostanie rozwiązany w następnej wersji.
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Services cognitive mowy wersji zestawu SDK 0.4.0: czerwca 2018 r.
 

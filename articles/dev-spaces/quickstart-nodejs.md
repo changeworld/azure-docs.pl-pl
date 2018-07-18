@@ -6,17 +6,17 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 06/06/2018
+ms.date: 07/09/2018
 ms.topic: quickstart
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: 99508d6e4e6502fe4fd2a81ee7aaefdde7cd2e15
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: d0cb1c113724af5d07abf75e6d3a45b54e5202dc
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945806"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37950774"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Szybki start: tworzenie obszaru deweloperskiego Kubernetes za pomocą usługi Azure Dev Spaces (Node.js)
 
@@ -32,9 +32,9 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
-- [Klaster Kubernetes](https://ms.portal.azure.com/#create/microsoft.aks) z uruchomioną platformą Kubernetes 1.9.6 we Wschodnich stanach USA, Europie Zachodniej lub we Wschodnim regionie Kanady z włączonym **routingiem aplikacji protokołu Http**.
+- [Klaster Kubernetes](https://ms.portal.azure.com/#create/microsoft.aks) z uruchomioną platformą Kubernetes 1.10.3 w regionach EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral lub CanadaEast z włączonym **routingiem aplikacji protokołu HTTP**.
 
-  ![Pamiętaj, aby włączyć routing aplikacji protokołu Http.](media/common/Kubernetes-Create-Cluster-3.PNG)
+  ![Pamiętaj, aby włączyć routing aplikacji protokołu HTTP.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
 - Narzędzie Visual Studio Code, które można pobrać [tutaj](https://code.visualstudio.com/download).
 
@@ -42,8 +42,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
 1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) (w wersji 2.0.38 lub nowszej).
 1. Skonfiguruj usługę Dev Spaces na klastrze AKS:`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. Pobierz [rozszerzenie usługi Azure Dev Spaces](https://aka.ms/get-azds-code) dla programu VS Code.
-1. Zainstaluj rozszerzenie: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`
+1. Pobierz [rozszerzenie usługi Azure Dev Spaces](https://aka.ms/get-azds-code) dla programu VS Code. Kliknij pozycję Zainstaluj najpierw na stronie rozszerzenia w witrynie Marketplace, a następnie w programie VS Code.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kompilowanie i uruchamianie kodu na platformie Kubernetes
 
@@ -182,4 +181,4 @@ W tej konfiguracji kontener uruchamia narzędzie *nodemon*. Po zmianie kodu po s
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](get-started-nodejs.md#call-a-service-running-in-a-separate-container)
+> [Working with multiple containers and team development (Praca z wieloma kontenerami i programowanie zespołowe)](team-development-nodejs.md)

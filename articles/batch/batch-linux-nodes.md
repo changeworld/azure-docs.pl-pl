@@ -1,6 +1,6 @@
 ---
-title: Węzły - partii zadań Azure obliczeniowe uruchamiania systemu Linux na maszynie wirtualnej | Dokumentacja firmy Microsoft
-description: Informacje o sposobie przetwarzania obciążeń obliczeniowych równoległe w pulach maszyn wirtualnych systemu Linux w partii zadań Azure.
+title: Uruchom systemu Linux na maszynie wirtualnej obliczeń węzłów — Azure Batch | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do przetwarzania obciążeń przetwarzania równoległego w pulach maszyn wirtualnych systemu Linux w usłudze Azure Batch.
 services: batch
 documentationcenter: python
 author: dlepow
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3faa9e811216cc930354b76903519a66f3d3587
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 713583a6a184a583145c610b4e014f56941efa4c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128815"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113515"
 ---
-# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zapewnij węzły obliczeniowe systemu Linux w puli partii
+# <a name="provision-linux-compute-nodes-in-batch-pools"></a>Aprowizowanie węzłów obliczeniowych systemu Linux w pulach usługi Batch
 
-Partia zadań Azure służy do uruchamiania obciążeń obliczeniowych równoległe w przypadku maszyn wirtualnych zarówno systemu Windows, jak i Linux. W tym artykule szczegółowo przedstawiają, jak utworzyć pule węzłów obliczeniowych systemu Linux w usługa partia zadań za pomocą obu [Python partii] [ py_batch_package] i [partiami platformy .NET] [ api_net]bibliotek klienckich.
+Azure Batch umożliwia uruchamianie obciążeń przetwarzania równoległego na maszynach wirtualnych z systemem Linux i Windows. Ten artykuł szczegółowo opisuje sposób tworzenia pul węzłów obliczeniowych systemu Linux w usłudze Batch przy użyciu zarówno [języka Python usługi Batch] [ py_batch_package] i [platformy .NET usługi Batch] [ api_net]bibliotek klienckich.
 
 > [!NOTE]
 > Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji. Aby uzyskać więcej informacji o używaniu pakietów aplikacji do wdrażania aplikacji w węzłach usługi Batch, zobacz temat [Deploy applications to compute nodes with Batch application packages (Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji usługi Batch)](batch-application-packages.md).
@@ -32,18 +32,18 @@ Partia zadań Azure służy do uruchamiania obciążeń obliczeniowych równoleg
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej
-Po utworzeniu puli węzłów obliczeniowych w partii, masz dwie opcje, które można wybierać rozmiaru węzła i systemu operacyjnego: Konfiguracja usług w chmurze i konfiguracji maszyny wirtualnej.
+Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch masz dwie opcje, z którego można wybrać rozmiar węzła i systemu operacyjnego: Konfiguracja usług Cloud Services i konfiguracji maszyny wirtualnej.
 
-**Konfiguracja usług Cloud Services** oferuje *tylko* węzły obliczeniowe systemu Windows. Rozmiary węzła obliczeń dostępne są wymienione w [rozmiary dla usług w chmurze](../cloud-services/cloud-services-sizes-specs.md), i dostępnych systemów operacyjnych znajduje się w [wersji systemu operacyjnego gościa Azure i zgodność pakietu SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Podczas tworzenia puli, która zawiera węzły usługi w chmurze Azure należy określić rozmiaru węzła i rodziny systemów operacyjnych, które zostały opisane w artykułach opisane powyżej. Dla węzły obliczeniowe pule systemu Windows, usługi w chmurze jest najczęściej używana.
+**Konfiguracja usług Cloud Services** oferuje *tylko* węzły obliczeniowe systemu Windows. Rozmiary węzłów obliczeniowych dostępne są wymienione w [rozmiary usług Cloud Services](../cloud-services/cloud-services-sizes-specs.md), i dostępnych systemów operacyjnych są wymienione w [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Podczas tworzenia puli, która zawiera węzły usług Azure Cloud Services, określ rozmiar węzła i rodziny systemów operacyjnych, które są opisane w artykułach z wymienionych wcześniej. Dla węzłów obliczeniowych w pulach systemu Windows, usług w chmurze jest najczęściej używana.
 
-**Konfiguracja maszyny wirtualnej** zawiera obrazy zarówno systemu Windows, jak i Linux dla węzły obliczeniowe. Rozmiary węzła obliczeń dostępne są wymienione w [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) i [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (system Windows). Podczas tworzenia puli, która zawiera węzły w konfiguracji maszyny wirtualnej, należy określić rozmiar węzłów, odwołanie do obrazu maszyny wirtualnej i agenta węzła partii jednostka SKU można zainstalować na węzłach.
+**Konfiguracja maszyny wirtualnej** zawiera obrazy z systemem Linux i Windows dla węzłów obliczeniowych. Rozmiary węzłów obliczeniowych dostępne są wymienione w [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) i [rozmiary maszyn wirtualnych na platformie Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Podczas tworzenia puli, która zawiera węzły konfiguracji maszyny wirtualnej, należy określić rozmiar węzłów, odwołanie do obrazu maszyny wirtualnej i usługi Batch jednostkę SKU węzła agenta do zainstalowania w węzłach.
 
 ### <a name="virtual-machine-image-reference"></a>Odwołanie do obrazu maszyny wirtualnej
-Używane przez usługę partii [zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zapewnienie węzłów obliczeniowych w konfiguracji maszyny wirtualnej. Można określić obrazu z [portalu Azure Marketplace][vm_marketplace], lub podaj niestandardowego obrazu, które zostały przygotowane. Aby uzyskać szczegółowe informacje o niestandardowych obrazów, zobacz [tworzenie puli za pomocą niestandardowego obrazu](batch-custom-images.md).
+Używane przez usługę Batch [zestawy skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zapewnienie węzłów obliczeniowych w konfiguracji maszyny wirtualnej. Można określić obrazu z [portalu Azure Marketplace][vm_marketplace], albo podać niestandardowy obraz, którego zostały przygotowane. Aby uzyskać więcej informacji o obrazach niestandardowych, zobacz [tworzenia puli za pomocą obrazu niestandardowego](batch-custom-images.md).
 
-Po skonfigurowaniu odwołanie do obrazu maszyny wirtualnej, należy określić właściwości obrazu maszyny wirtualnej. Po utworzeniu odwołanie do obrazu maszyny wirtualnej, wymagane są następujące właściwości:
+Podczas konfigurowania odwołanie do obrazu maszyny wirtualnej, należy określić właściwości obrazu maszyny wirtualnej. Następujące właściwości są wymagane, gdy tworzysz odwołanie do obrazu maszyny wirtualnej:
 
-| **Obraz właściwości odwołania** | **Przykład** |
+| **Właściwości odwołania do obrazu** | **Przykład** |
 | --- | --- |
 | Wydawca |Canonical |
 | Oferta |UbuntuServer |
@@ -51,26 +51,26 @@ Po skonfigurowaniu odwołanie do obrazu maszyny wirtualnej, należy określić w
 | Wersja |najnowsza |
 
 > [!TIP]
-> Dowiedz się więcej na temat tych właściwości i sposób wyświetlania obrazów Marketplace w [Nawigacja i wybierz obrazy maszyny wirtualnej systemu Linux na platformie Azure z interfejsu wiersza polecenia lub środowiska PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Należy pamiętać, że nie wszystkie obrazy Marketplace są obecnie zgodne z partii. Aby uzyskać więcej informacji, zobacz [agenta węzła jednostki SKU](#node-agent-sku).
+> Dowiedz się więcej na temat tych właściwości i sposób wyświetlenia listy obrazów z witryny Marketplace w [wybierz obrazów maszyn wirtualnych systemu Linux na platformie Azure przy użyciu interfejsu wiersza polecenia lub programu PowerShell i Navigate](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Należy pamiętać, że nie wszystkie obrazy z Marketplace są obecnie zgodna z usługą Batch. Aby uzyskać więcej informacji, zobacz [jednostkę SKU węzła agenta](#node-agent-sku).
 >
 >
 
-### <a name="node-agent-sku"></a>Agent węzła jednostki SKU
-Agenta węzła partii to program, który jest uruchamiany na każdym węźle w puli i udostępnia interfejs polecenia i kontroli między węzłem a usługa partia zadań. Istnieją różne implementacje agenta węzła, znany jako jednostki SKU, dla różnych systemów operacyjnych. Zasadniczo podczas tworzenia konfiguracji maszyny wirtualnej, najpierw określ odwołanie do obrazu maszyny wirtualnej, a następnie określ agenta węzeł, aby zainstalować w obrazie. Zazwyczaj każdego agenta węzła, jednostka SKU jest zgodny z wielu obrazów maszyny wirtualnej. Oto kilka przykładów agenta węzła jednostki SKU:
+### <a name="node-agent-sku"></a>Jednostkę SKU węzła agenta
+Agent węzłów usługi Batch to program, który jest uruchamiany w każdym węźle w puli i udostępnia interfejs poleceń i kontroli między węzłem, a usługa Batch. Istnieją różne implementacje agenta węzła, znane jako jednostek SKU, dla różnych systemów operacyjnych. Zasadniczo podczas tworzenia konfiguracji maszyny wirtualnej należy najpierw określić odwołanie do obrazu maszyny wirtualnej, a następnie określ węzła agenta, aby zainstalować w obrazie. Zazwyczaj każdego agenta w węźle, jednostka SKU jest zgodny z wielu obrazów maszyn wirtualnych. Poniżej przedstawiono kilka przykładów jednostki SKU agenta węzła:
 
 * batch.node.ubuntu 14.04
 * Batch.node.centos 7
 * Batch.node.Windows amd64
 
 > [!IMPORTANT]
-> Nie wszystkie obrazy maszyny wirtualnej, które są dostępne w witrynie Marketplace są zgodne z aktualnie dostępnych agentów węzła partii. Korzystaj z zestawów SDK partii, aby wyświetlić listę agenta węzła dostępne jednostki SKU i obrazy maszyny wirtualnej, z którymi są zgodne. Zobacz [obrazy listy maszyny wirtualnej](#list-of-virtual-machine-images) opisaną w tym artykule, aby uzyskać więcej informacji i przykłady można pobrać listy prawidłowy obrazów w czasie wykonywania.
+> Nie wszystkie obrazy maszyn wirtualnych, które są dostępne w witrynie Marketplace są zgodne z obecnie dostępnych agentów usługi Batch w węźle. Korzystanie z zestawów SDK usługi Batch, aby wyświetlić listę jednostek SKU agenta węzła dostępne i obrazy maszyn wirtualnych, z którymi są one zgodne. Zobacz [obrazów listy maszyn wirtualnych](#list-of-virtual-machine-images) później w tym artykule, aby uzyskać więcej informacji i przykładów jak pobrać listę prawidłowe obrazów w czasie wykonywania.
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Utwórz pulę Linux: Python partii
-Poniższy fragment kodu przedstawia przykład sposobu użycia [Biblioteka klienta usługi partia zadań Microsoft Azure dla języka Python] [ py_batch_package] można utworzyć puli Ubuntu Server węzłów obliczeniowych. Dokumentację referencyjną dla modułu Python partii znajduje się w temacie [pakietu azure.batch] [ py_batch_docs] przy odczycie dokumentów.
+## <a name="create-a-linux-pool-batch-python"></a>Tworzenie puli systemu Linux: języka Python usługi Batch
+Poniższy fragment kodu przedstawia przykład sposobu użycia [biblioteki klienta usługi Microsoft Azure Batch dla środowiska Python] [ py_batch_package] tworzenie puli systemu Ubuntu Server węzłów obliczeniowych. Dokumentacja dotycząca modułów języka Python usługi Batch, można znaleźć w folderze [pakietu azure.batch] [ py_batch_docs] przy odczycie dokumentów.
 
-Ta Wstawka kodu tworzy [elementu ImageReference] [ py_imagereference] jawnie i określa każdego z jego właściwości (Oferta, jednostka SKU, wersja wydawcy). W kodzie produkcyjnym, jednak zaleca się używanie [list_node_agent_skus] [ py_list_skus] metodę, aby określić i wybrać jeden z dostępnych obrazów i węzła agenta SKU kombinacji w czasie wykonywania.
+Ten fragment kodu tworzy [ImageReference] [ py_imagereference] jawnie i określa każdego z jego właściwości (wydawcy, oferty, jednostki SKU i wersji). W kodzie produkcyjnym, jednak firma Microsoft zaleca użycie [list_node_agent_skus] [ py_list_skus] metodę, aby określić, a następnie wybierz z dostępnych obrazów i języka node agenta jednostki SKU kombinacje w czasie wykonywania.
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Jak wspomniano wcześniej, zalecamy, aby zamiast tworzenia [elementu ImageReference] [ py_imagereference] jawnie, użyj [list_node_agent_skus] [ py_list_skus] metody na dynamiczne Wybieranie z kombinacji obrazu agenta/Marketplace węźle aktualnie obsługiwane. Poniższy fragment kodu języka Python pokazano, jak użyć tej metody.
+Jak wspomniano wcześniej, zalecamy zamiast tworzenia [ImageReference] [ py_imagereference] jawnie, użyj [list_node_agent_skus] [ py_list_skus] metody na dynamiczne Wybieranie od kombinacji obraz agenta/Marketplace węzła obecnie obsługiwane. Poniższy fragment kodu języka Python pokazuje, jak użyć tej metody.
 
 ```python
 # Get the list of node agents from the Batch service
@@ -145,10 +145,10 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Utwórz pulę Linux: partiami platformy .NET
-Poniższy fragment kodu przedstawia przykład sposobu użycia [partiami platformy .NET] [ nuget_batch_net] biblioteki klienta, aby utworzyć pulę Ubuntu Server węzłów obliczeniowych. Można znaleźć [dokumentacji partiami platformy .NET] [ api_net] w witrynie docs.microsoft.com.
+## <a name="create-a-linux-pool-batch-net"></a>Tworzenie puli systemu Linux: platforma .NET usługi Batch
+Poniższy fragment kodu przedstawia przykład sposobu użycia [platformy .NET usługi Batch] [ nuget_batch_net] biblioteki klienta, aby utworzyć pulę Ubuntu Server węzłów obliczeniowych. Możesz znaleźć [dokumentacja platformy .NET usługi Batch] [ api_net] w witrynie docs.microsoft.com.
 
-Poniższy kod używa fragment [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metoda, aby wybrać z listy aktualnie obsługiwane Marketplace obrazu i węzła agenta SKU kombinacje. Ta technika jest pożądane, ponieważ lista obsługiwanej kombinacji może ulec zmianie od czasu do czasu. Najczęściej są dodawane obsługiwanej kombinacji.
+Poniższy kod używa fragment [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metodę, aby wybrać z listy aktualnie obsługiwane portalu Marketplace obrazu i języka node agenta jednostki SKU kombinacje. Ta technika jest pożądane, ponieważ lista obsługiwane kombinacje mogą ulec zmianie od czasu do czasu. Najczęściej obsługiwane kombinacje są dodawane.
 
 ```csharp
 // Pool settings
@@ -196,7 +196,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Chociaż korzysta z poprzedniego fragmentu [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metody dynamicznie listy i wybierz z obsługiwane kombinacje jednostka SKU obrazu i węzła agenta (zalecane), można również skonfigurować [elementu ImageReference] [ net_imagereference] jawnie:
+Mimo że w poprzednim fragmencie kodu używa [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metodę, aby dynamicznie listy, a następnie wybierz z obsługiwane kombinacje jednostki SKU obrazu i języka node agenta (zalecane), można również skonfigurować [ImageReference] [ net_imagereference] jawnie:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -206,15 +206,15 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## <a name="list-of-virtual-machine-images"></a>Lista obrazów maszyny wirtualnej
-W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są zgodne z dostępnych agentów węzła partii datę ostatniej aktualizacji w tym artykule. Należy pamiętać, że ta lista nie jest ostatecznym, ponieważ obrazów i agentów węzła może dodać lub usunąć w dowolnej chwili. Firma Microsoft zaleca, aby partii aplikacje i usługi zawsze używać [list_node_agent_skus] [ py_list_skus] (Python) lub [ListNodeAgentSkus] [ net_list_skus] () Partii .NET) do określenia, a następnie wybierz z aktualnie dostępne jednostki SKU.
+## <a name="list-of-virtual-machine-images"></a>Lista obrazów maszyn wirtualnych
+Poniższa tabela zawiera listę obrazów maszyn wirtualnych portalu Marketplace, które są zgodne z dostępnych agentów usługi Batch w węźle, datę ostatniej aktualizacji w tym artykule. Należy zauważyć, że ta lista nie jest ostateczną, ponieważ obrazy i agentów węzła może dodać lub usunąć w dowolnym momencie. Firma Microsoft zaleca, aby Twoje aplikacje usługi Batch i usługi zawsze używać [list_node_agent_skus] [ py_list_skus] (Python) lub [ListNodeAgentSkus] [ net_list_skus] () Usługi Batch — .NET) do określenia, a następnie wybierz z dostępnych jednostek SKU.
 
 > [!WARNING]
-> Poniższa lista może zmienić w dowolnym momencie. Zawsze używaj **agent węzła listy SKU** metod w interfejsach API partii do listy kompatybilnej maszynie wirtualnej i agenta węzła jednostki SKU podczas wykonywania zadań wsadowych.
+> Poniższa lista mogą ulec zmianie w dowolnym momencie. Zawsze używaj **listy jednostkę SKU węzła agenta** metod w interfejsach API usługi Batch, aby wyświetlić listę zgodnych maszyn wirtualnych i jednostek SKU agenta węzła podczas uruchamiania zadań wsadowych.
 >
 >
 
-| **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agent węzła identyfikator jednostki SKU** |
+| **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agenta węzła identyfikator jednostki SKU** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
 | partia | Renderowanie centos73 | Renderowanie | najnowsza | Batch.node.centos 7 |
 | partia | Renderowanie windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |
@@ -223,18 +223,18 @@ W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są
 | credativ | Debian | 9 | najnowsza | Batch.node.debian 9 |
 | credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | Batch.node.centos 7 |
-| microsoft-ads | Standard danych nauki vm | Standard danych nauki vm | najnowsza | Batch.node.Windows amd64 |
-| Microsoft partii zadań azure | kontener centos | 7-4 | najnowsza | Batch.node.centos 7 |
-| Microsoft partii zadań azure | centos kontenera rdma | 7-4 | najnowsza | Batch.node.centos 7 |
-| Microsoft partii zadań azure | ubuntu server kontenera | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
-| Microsoft partii zadań azure | ubuntu-server kontenera rdma | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | WindowsServer | Centrum danych 2016 | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | Smalldisk-2016-centrum danych | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016 centrum danych z kontenerów | najnowsza | Batch.node.Windows amd64 |
+| microsoft-ads | Standard — — — maszyna wirtualna analizy danych | Standard — — — maszyna wirtualna analizy danych | najnowsza | Batch.node.Windows amd64 |
+| Microsoft azure batch | centos kontenera | 7-4 | najnowsza | Batch.node.centos 7 |
+| Microsoft azure batch | centos-container-rdma | 7-4 | najnowsza | Batch.node.centos 7 |
+| Microsoft azure batch | ubuntu server kontenera | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
+| Microsoft azure batch | ubuntu-server kontenera — rdma | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016 centrum danych za pomocą kontenerów | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | Smalldisk-2012-centrum danych | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | Z dodatkiem SP1 smalldisk, 2008 R2 w- | najnowsza | Batch.node.Windows amd64 |
 | OpenLogic | CentOS | 7.4 | najnowsza | Batch.node.centos 7 |
@@ -242,12 +242,12 @@ W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są
 | OpenLogic | CentOS HPC | 7.3 | najnowsza | Batch.node.centos 7 |
 | OpenLogic | CentOS HPC | 7.1 | najnowsza | Batch.node.centos 7 |
 | Oracle | Oracle-Linux | 7.4 | najnowsza | Batch.node.centos 7 |
-| SUSE | SLES-HPC | Z DODATKIEM SP2 12 | najnowsza | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12 Z DODATKIEM SP2 | najnowsza | batch.node.opensuse 42.1 |
 
-## <a name="connect-to-linux-nodes-using-ssh"></a>Podłącz do węzłów systemu Linux przy użyciu protokołu SSH
-Podczas tworzenia lub podczas rozwiązywania problemów może być konieczne logować się do węzłów w puli. W przeciwieństwie do węzłów obliczeniowych systemu Windows nie można użyć protokołu RDP (Remote Desktop) nawiązywania połączenia z węzłami systemu Linux. Zamiast tego usługa partia zadań umożliwia SSH dostępu w każdym węźle dla połączenia zdalnego.
+## <a name="connect-to-linux-nodes-using-ssh"></a>Łączenie z węzłami systemu Linux przy użyciu protokołu SSH
+Podczas tworzenia lub podczas rozwiązywania problemów może okazać się konieczne, zaloguj się do węzłów w puli. W przeciwieństwie do węzłów obliczeniowych Windows nie można użyć protokołu RDP (Remote Desktop), połączyć się z węzłów systemu Linux. Zamiast tego usługa Batch umożliwia dostęp protokołu SSH w każdym węźle połączenia zdalnego.
 
-Poniższy fragment kodu języka Python tworzy użytkownika w każdym węźle w puli, który jest wymagany dla połączenia zdalnego. Wyświetla informacje o połączeniu bezpiecznej powłoki (SSH) dla każdego węzła.
+Poniższy fragment kodu języka Python tworzy użytkownika w każdym węźle w puli, który jest wymagany do połączenia zdalnego. Go następnie wyświetla informacje o połączeniu protokołu secure shell (SSH) dla każdego węzła.
 
 ```python
 import datetime
@@ -306,7 +306,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Oto przykładowe dane wyjściowe poprzedniego kodu dla puli, która zawiera cztery węzły Linux:
+Poniżej przedstawiono przykładowe dane wyjściowe dla poprzedniego kodu dla puli, która zawiera cztery węzły z systemem Linux:
 
 ```
 Password:
@@ -316,19 +316,16 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Zamiast hasła można określić klucz publiczny SSH, podczas tworzenia użytkownika w węźle. W zestawie SDK Python za pomocą **ssh_public_key** parametru [ComputeNodeUser][py_computenodeuser]. W środowisku .NET, należy użyć [ComputeNodeUser][net_computenodeuser].[ Parametry SshPublicKey] [ net_ssh_key] właściwości.
+Zamiast hasła można określić publicznego klucza SSH podczas tworzenia użytkownika w węźle. W zestawie SDK języka Python za pomocą **ssh_public_key** parametru [ComputeNodeUser][py_computenodeuser]. Na platformie .NET, należy użyć [ComputeNodeUser][net_computenodeuser].[ Klucz publiczny SSH] [ net_ssh_key] właściwości.
 
 ## <a name="pricing"></a>Cennik
-Partia zadań Azure jest oparty na technologii usług Azure Cloud Services i maszyn wirtualnych platformy Azure. Sama usługa partii jest oferowane bezpłatnie, co oznacza, że są naliczane tylko za zasoby obliczeniowe, w że korzystać z własnych rozwiązań partii. Po wybraniu **konfiguracji usługi w chmurze**, są naliczane na podstawie [cennik usługi w chmurze] [ cloud_services_pricing] struktury. Po wybraniu **konfiguracji maszyny wirtualnej**, są naliczane na podstawie [cennik maszyn wirtualnych] [ vm_pricing] struktury. 
+Usługa Azure Batch jest oparta na technologii usług Azure Cloud Services i Azure Virtual Machines. Sama usługa Batch jest oferowana bez ponoszenia kosztów, co oznacza, że opłaty są naliczane tylko za zasoby obliczeniowe że korzysta z rozwiązań usługi Batch. Po wybraniu **konfiguracji usług Cloud Services**, jest naliczana na podstawie [cennika usług Cloud Services] [ cloud_services_pricing] struktury. Po wybraniu **konfiguracji maszyny wirtualnej**, jest naliczana na podstawie [ceny maszyn wirtualnych] [ vm_pricing] struktury. 
 
-W przypadku wdrożenia aplikacji węzły partii przy użyciu [pakietów aplikacji](batch-application-packages.md), naliczane są również opłaty za zasoby usługi Azure Storage czy używać pakietów aplikacji. Ogólnie rzecz biorąc koszty usługi Azure Storage są minimalne. 
+W przypadku wdrożenia aplikacji w węzłach usługi Batch przy użyciu [pakiety aplikacji](batch-application-packages.md), są naliczane za zasoby usługi Azure Storage, używanie pakiety aplikacji. Ogólnie rzecz biorąc kosztów usługi Azure Storage są minimalne. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-### <a name="batch-python-tutorial"></a>Samouczek języka Python dla usługi Batch
-Więcej informacji na temat samouczek dotyczący sposobu pracy z partii przy użyciu języka Python, zapoznaj się z [Rozpoczynanie pracy z klientem Python usługi partia zadań Azure](batch-python-tutorial.md). Pomocnik jego [przykładowy kod] [ github_samples_pyclient] obejmuje funkcję Pomocnika `get_vm_config_for_distro`, który pokazuje innej techniki, aby uzyskać konfigurację maszyny wirtualnej.
 
-### <a name="batch-python-code-samples"></a>Przykłady kodu Python partii
-[Przykłady kodu Python] [ github_samples_py] w [azure partii próbek] [ github_samples] repozytorium w usłudze GitHub zawierać skrypty, które opisano sposób wykonania typowych operacji wsadowych, takie jak pula, zadania i tworzenia zadań. [README] [ github_py_readme] dołączony Python próbek zawiera szczegółowe informacje dotyczące sposobu zainstalowania wymaganych pakietów.
+[Przykłady kodu Python] [ github_samples_py] w [azure-batch-samples] [ github_samples] repozytorium w serwisie GitHub zawiera skrypty, które pokazują, jak wykonać typowe operacje wsadowe, takie jak puli, zadań i tworzenie zadań. [README] [ github_py_readme] dołączony Python przykładów zawiera szczegółowe informacje na temat zainstalować wymagane pakiety.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

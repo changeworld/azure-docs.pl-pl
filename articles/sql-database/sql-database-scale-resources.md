@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 07/07/2018
+ms.date: 07/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: f55ce511f6ba90c27e149ac90bbd2c8aa0b3c742
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a6b987d9815cfabed6dd986a0d9842a97f5b5868
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921514"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092056"
 ---
 # <a name="scale-database-resources"></a>Skalowanie zasobów bazy danych
 
@@ -28,9 +28,9 @@ Nie musisz przejmować się zakupu sprzętu i zmieniając podstawowej infrastruk
 
 ![Skalowanie wydajności bazy danych](media/sql-database-scalability/scale-performance.svg)
 
-Usługa Azure SQL Database oferuje [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [(wersja zapoznawcza) modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). 
+Usługa Azure SQL Database oferuje [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). 
 -   [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje połączenie wystąpień obliczeniowych, pamięci i zasobów we/wy w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych: podstawowa, standardowa i Premium. Poziomy wydajności w każdej warstwie udostępniają różne kombinacje tych zasobów i można do nich dodawać kolejne zasoby magazynu.
--   [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) (wersja zapoznawcza) pozwala na wybór liczby rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu.
+-   [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu.
 Ponosząc niewielki miesięczny koszt, możesz utworzyć pierwszą aplikację na małej, pojedynczej bazie danych, a następnie w dowolnym momencie ręcznie lub programowo zmienić jej warstwę usług, aby spełnić wymagania rozwiązania. Wydajność można dostosować bez przestoju aplikacji i przerwy w świadczeniu usługi klientom. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów oraz płacenie tylko za potrzebne zasoby i tylko gdy są używane.
 
 

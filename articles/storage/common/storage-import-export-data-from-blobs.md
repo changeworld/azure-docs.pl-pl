@@ -2,18 +2,18 @@
 title: Eksportowanie danych z obiektów blob platformy Azure przy użyciu usługi Azure Import/Export | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak tworzyć zadania eksportu w witrynie Azure portal na przesyłanie danych z obiektów blob platformy Azure.
 author: alkohli
-manager: jeconnoc
+manager: twooley
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: alkohli
-ms.openlocfilehash: eb41708c7446b3139758678c9247ffbb11da8b40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eb714086a0142d9780bd018d77dc880a430f240e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969269"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113762"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -25,6 +25,13 @@ Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi
 - Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
 - Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks).
+- Mieć konto FedEx/DHL w sprawie.  
+    - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
+    - Generowanie numer śledzenia, zadanie eksportu.
+    - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane. 
+    - Jeśli nie masz konto przewoźnika, przejdź do strony:
+        - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
+        - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Krok 1: Tworzenie zadania eksportu
 
@@ -52,7 +59,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
     
 3. W **szczegóły zadania**:
 
-    - Wybierz konto magazynu, w której znajdują się dane, które mają zostać wyeksportowane. 
+    - Wybierz konto magazynu, w której znajdują się dane, które mają zostać wyeksportowane. Użyj konta magazynu w pobliżu lokalizacji.
     - Lokalizacja nadania jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu. 
     - Określ dane obiektów blob, który chcesz wyeksportować z konta magazynu do pustego dysku lub dysków. 
     - Możliwość **Wyeksportuj wszystkie** danych obiektu blob na koncie magazynu.
@@ -78,11 +85,18 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
     - Wybierz nośnik, z listy rozwijanej.
     - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania importu. 
     - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
+
+        > [!TIP] 
+        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
    
 5. W **Podsumowanie**:
 
     - Przejrzyj szczegóły zadania.
-    - Należy pamiętać, adres wysyłkowy nazwy, a podana centrum danych platformy Azure zadania do wysłania dysków na platformie Azure. 
+    - Zanotuj nazwę zadania i podana centrum danych platformy Azure, wysyłania adres wysyłkowy dysków na platformie Azure. 
+
+        > [!NOTE] 
+        > Zawsze wysyłaj dysków do centrum danych w witrynie Azure portal. Jeśli dyski zostaną dostarczone do niewłaściwej centrum danych, zadania nie zostaną przetworzone.
+
     - Kliknij przycisk **OK** aby zakończyć tworzenie zadania eksportu.
 
 ## <a name="step-2-ship-the-drives"></a>Krok 2: Dostarczaj dyski

@@ -12,20 +12,18 @@ ms.workload: na
 ms.date: 06/21/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 515c9917add27663e8d145fee3e1effc89291bc0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 0c8734bec1ce14a3a9692efa3a1fcf975067953a
+ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033917"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38968906"
 ---
-<!-- **TODO** Update publish config with repo paths before publishing! -->
-
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
 
 Może zaistnieć potrzeba zaktualizowania oprogramowania układowego na urządzeniach podłączonych do centrum IoT. Na przykład możesz chcieć dodać nowe funkcje do oprogramowania układowego lub zastosować poprawki zabezpieczeń. W wielu scenariuszach IoT fizyczne odwiedzanie urządzeń, a następnie ręczne stosowanie do nich aktualizacji oprogramowania układowego, jest niepraktyczne. W tym samouczku pokazano, jak uruchomić i monitorować proces aktualizacji oprogramowania układowego zdalnie przy użyciu aplikacji zaplecza podłączonej do centrum.
 
-Aby utworzyć i monitorować proces aktualizacji oprogramowania układowego, aplikacja zaplecza w tym samouczku tworzy _konfigurację_ w centrum IoT. Funkcja automatycznego zarządzania urządzeniami usługi IoT Hub używa tej konfiguracji do aktualizacji zestawu _żądanych właściwości bliźniaczej reprezentacji urządzenia_ na wszystkich urządzeniach typu „chiller” (chłodziarka). Żądane właściwości określają szczegóły wymaganej aktualizacji oprogramowania układowego. Podczas wykonywania procesu aktualizacji oprogramowania układowego urządzeń typu „chiller” (chłodziarek) urządzenia te wysyłają raporty o swoim stanie do aplikacji zaplecza za pomocą _zgłoszonych właściwości bliźniaczej reprezentacji urządzenia_. Aplikacja zaplecza może przy użyciu konfiguracji monitorować zgłoszone właściwości wysyłane z urządzenia i śledzić proces aktualizacji oprogramowania układowego do jego ukończenia:
+Aby utworzyć i monitorować proces aktualizacji oprogramowania układowego, aplikacja zaplecza w tym samouczku tworzy _konfigurację_ w centrum IoT. Funkcja [automatycznego zarządzania urządzeniami](iot-hub-auto-device-config.md) usługi IoT Hub używa tej konfiguracji do aktualizacji zestawu _żądanych właściwości bliźniaczej reprezentacji urządzenia_ na wszystkich urządzeniach typu „chiller” (chłodziarka). Żądane właściwości określają szczegóły wymaganej aktualizacji oprogramowania układowego. Podczas wykonywania procesu aktualizacji oprogramowania układowego urządzeń typu „chiller” (chłodziarek) urządzenia te wysyłają raporty o swoim stanie do aplikacji zaplecza za pomocą _zgłoszonych właściwości bliźniaczej reprezentacji urządzenia_. Aplikacja zaplecza może przy użyciu konfiguracji monitorować zgłoszone właściwości wysyłane z urządzenia i śledzić proces aktualizacji oprogramowania układowego do jego ukończenia:
 
 ![Proces aktualizacji oprogramowania układowego](media/tutorial-firmware-update/Process.png)
 
@@ -101,7 +99,7 @@ Jeśli uruchamiasz te polecenia w wierszu polecenia systemu Windows lub w wiersz
 
 ## <a name="start-the-firmware-update"></a>Rozpoczynanie aktualizacji oprogramowania układowego
 
-Utworzysz konfigurację automatycznego zarządzania urządzeniami w aplikacji zaplecza, aby rozpocząć proces aktualizacji oprogramowania układowego na wszystkich urządzeniach, których tag **devicetype** ma wartość „chiller” (chłodziarka). W tej sekcji zobaczysz, jak:
+Utworzysz [konfigurację automatycznego zarządzania urządzeniami](iot-hub-auto-device-config.md#create-a-configuration) w aplikacji zaplecza, aby rozpocząć proces aktualizacji oprogramowania układowego na wszystkich urządzeniach, których tag **devicetype** ma wartość „chiller” (chłodziarka). W tej sekcji zobaczysz, jak:
 
 * Utworzyć konfigurację z poziomu aplikacji zaplecza.
 * Monitorować zadanie do ukończenia.

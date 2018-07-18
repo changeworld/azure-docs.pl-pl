@@ -11,12 +11,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 11/29/2017
 ms.author: sngun
-ms.openlocfilehash: c83d8ad5b424be1a9a695f3b9a466d45ddf8f0b4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 42cfe71210b95732b4b69f7ca21a8b647e187a38
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700285"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858864"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza po
 |**Tworzenie konta, bazy danych i kontenerów usługi Azure Cosmos DB**||
 |[Tworzenie konta interfejsu API SQL](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Tworzy pojedyncze konto, bazę danych i kontener interfejsu API usługi Azure Cosmos DB do użytku z interfejsem API SQL. |
 | [Tworzenie konta interfejsu API bazy danych MongoDB](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kolekcję interfejsu API bazy danych MongoDB w usłudze Azure Cosmos DB. |
-| [Tworzenie konta interfejsu Gremlin API](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kolekcję interfejsu Gremlin API w usłudze Azure Cosmos DB. |
+| [Tworzenie konta interfejsu Gremlin API](scripts/create-graph-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Tworzy pojedyncze konto, bazę danych i kontener interfejsu Gremlin API w usłudze Azure Cosmos DB. |
 |**Skalowanie usługi Azure Cosmos DB**||
 | [Skalowanie przepływności kontenerów](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Zmienia aprowizowaną przepływność w kontenerze.|
 |[Replikowanie konta bazy danych usługi Azure Cosmos DB w wielu regionach i konfigurowanie priorytetów trybu failover](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|Globalnie replikuje dane konta w wielu regionach z określonym priorytetem trybu failover.|

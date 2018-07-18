@@ -1,6 +1,6 @@
 ---
-title: Jak używać systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Data Lake Store
-description: Samouczek przedstawiający sposób użycia systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI) można uzyskać dostępu do usługi Azure Data Lake Store.
+title: Używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
+description: Samouczek przedstawiający sposób uzyskiwania dostępu do usługi Azure Data Lake Store za pomocą tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,28 +9,28 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 31afe8579580ab392411aa8428f023fd52c4c4c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.author: daveba
+ms.openlocfilehash: afd35c963c2c1c4badb32f7e8f7dba1dce87481c
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595295"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904292"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Samouczek: Dostęp do usługi Azure Data Lake Store za pomocą systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ten samouczek pokazuje, jak używać zarządzanego tożsamości usługi (MSI) dla systemu Windows maszyny wirtualnej (VM) można uzyskać dostępu do usługi Azure Data Lake Store. Zarządzane tożsamości usługi automatycznie są zarządzane przez usługę Azure i umożliwiają uwierzytelniania w usłudze, które obsługują uwierzytelnianie usługi Azure AD, bez konieczności wstawić poświadczeń do kodu. Omawiane kwestie:
+W tym samouczku przedstawiono sposób używania tożsamości usługi zarządzanej (MSI) dla maszyny wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Azure Data Lake Store. Tożsamości usługi zarządzanej są automatycznie zarządzane przez platformę Azure. Umożliwiają uwierzytelnianie w usługach obsługujących uwierzytelnianie usługi Azure AD bez potrzeby wprowadzania poświadczeń do kodu. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Włącz MSI na Windows maszyny Wirtualnej 
-> * Udziel dostępu maszyny Wirtualnej do usługi Azure Data Lake Store
-> * Uzyskaj token dostępu przy użyciu tożsamości maszyny Wirtualnej i umożliwia dostęp do usługi Azure Data Lake Store
+> * Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows 
+> * Udzielanie maszynie wirtualnej praw dostępu do usługi Azure Data Lake Store
+> * Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej oraz używanie go do uzyskiwania dostępu do usługi Azure Data Lake Store
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,90 +42,90 @@ Ten samouczek pokazuje, jak używać zarządzanego tożsamości usługi (MSI) dl
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tym samouczku utworzymy nową maszynę Wirtualną systemu Windows.  Można również włączyć MSI na istniejącej maszyny Wirtualnej.
+W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz też włączyć tożsamość usługi zarządzanej na istniejącej maszynie wirtualnej.
 
 1. Kliknij przycisk **Utwórz zasób** (+) znajdujący się w lewym górnym rogu witryny Azure Portal.
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3. Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczeń umożliwia logowanie do maszyny wirtualnej.
-4. Wybierz odpowiednią **subskrypcji** dla maszyny wirtualnej na liście rozwijanej.
-5. Aby wybrać nowy **grupy zasobów** w której chcesz utworzyć maszynę wirtualną, wybrać **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
-6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na stronie ustawienia Zachowaj wartości domyślne, a następnie kliknij przycisk **OK**.
+3. Wprowadź informacje o maszynie wirtualnej. **Nazwa użytkownika** i **Hasło** utworzone w tym miejscu są poświadczeniami używanymi do logowania do maszyny wirtualnej.
+4. Wybierz odpowiednią **Subskrypcję** dla maszyny wirtualnej z listy rozwijanej.
+5. Aby wybrać nową **Grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz opcję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
+6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na stronie ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
 
-   ![Tekst alternatywny obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Alternatywny tekst obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej 
+## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
 
-MSI maszyny Wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie MSI informuje Azure w celu utworzenia tożsamości zarządzanego dla maszyny Wirtualnej. W obszarze obejmuje włączenie MSI wykonuje dwie czynności: rejestrów maszyny Wirtualnej z usługi Azure Active Directory do utworzenia zarządzanej tożsamości, a konfiguruje tożsamości na maszynie Wirtualnej.
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości usługi zarządzanej powiadamia platformę Azure o potrzebie utworzenia tożsamości zarządzanej dla maszyny wirtualnej. Włączenie tożsamości usługi zarządzanej na maszynie wirtualnej powoduje wykonanie dwóch niejawnych czynności: zarejestrowania maszyny wirtualnej w usłudze Azure Active Directory, aby utworzyć tożsamość zarządzaną, oraz skonfigurowania tożsamości na maszynie wirtualnej.
 
-1. Wybierz **maszyny wirtualnej** chcesz włączyć MSI.  
-2. Na pasku nawigacyjnym po lewej stronie kliknij **konfiguracji**. 
-3. Zostanie wyświetlony **zarządzane tożsamość usługi**. Aby zarejestrować i włączyć MSI, wybierz **tak**, jeśli chcesz ją wyłączyć, wybierz opcję nie. 
-4. Upewnij się, możesz kliknąć przycisk **zapisać** Aby zapisać konfigurację.  
-   ![Tekst alternatywny obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+1. Wybierz **maszynę wirtualną**, dla której chcesz włączyć tożsamość usługi zarządzanej.  
+2. Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**. 
+3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie. 
+4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.  
+   ![Alternatywny tekst obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
-5. Jeśli chcesz sprawdzić i sprawdź, które rozszerzenia są na tej maszynie Wirtualnej, kliknij przycisk **rozszerzenia**. Jeśli MSI jest włączona, następnie **ManagedIdentityExtensionforWindows** pojawią się na liście.
+5. Jeżeli chcesz sprawdzić i upewnić się, które rozszerzenia zainstalowano na tej maszynie wirtualnej, kliknij przycisk **Rozszerzenia**. Jeżeli tożsamość usługi zarządzanej jest włączona, na liście pojawi się pozycja **ManagedIdentityExtensionforWindows**.
 
-   ![Tekst alternatywny obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+   ![Alternatywny tekst obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udziel dostępu maszyny Wirtualnej do usługi Azure Data Lake Store
+## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udzielanie maszynie wirtualnej praw dostępu do usługi Azure Data Lake Store
 
-Teraz można przyznać dostęp do plików i folderów w usłudze Azure Data Lake — magazyn maszyny Wirtualnej.  Dla tego kroku można użyć istniejącej usługi Data Lake Store lub Utwórz nową.  Aby utworzyć nowy Data Lake Store przy użyciu portalu Azure, wykonaj to [szybkiego startu usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). Dostępne są także Przewodniki Szybki Start, którego wiersza polecenia platformy Azure i programu Azure PowerShell w programie [dokumentacji usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+Teraz możesz udzielić maszynie wirtualnej praw dostępu do plików i folderów w usłudze Azure Data Lake Store.  W tym kroku możesz użyć istniejącej usługi Data Lake Store lub utworzyć nową.  Aby utworzyć nową usługę Data Lake Store przy użyciu witryny Azure Portal, wykonaj czynności opisane w [przewodniku Szybki start dotyczącym usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). W [dokumentacji usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) są również dostępne przewodniki Szybki start, które używają interfejsu wiersza polecenia platformy Azure oraz programu Azure PowerShell.
 
-W usługi Data Lake Store Utwórz nowy folder i przyznanie uprawnień do odczytu, zapisu i wykonywania pliki w tym folderze MSI maszyny Wirtualnej:
+W usłudze Data Lake Store utwórz nowy folder, a następnie przyznaj maszynie wirtualnej uprawnienie tożsamości usługi zarządzanej do odczytu, zapisu i wykonywania plików w tym folderze:
 
-1. W portalu Azure kliknij **usługi Data Lake Store** w obszarze nawigacji po lewej stronie.
-2. Kliknij przycisk Data Lake Store, którego chcesz użyć na potrzeby tego samouczka.
-3. Kliknij przycisk **Eksploratora danych** na pasku poleceń.
-4. Wybrano folderu głównego usługi Data Lake Store.  Kliknij przycisk **dostępu** na pasku poleceń.
-5. Kliknij pozycję **Add** (Dodaj).  W **wybierz** wprowadź nazwę maszyny Wirtualnej, na przykład **DevTestVM**.  Kliknij, aby wybrać maszyny Wirtualnej w wynikach wyszukiwania, a następnie kliknij przycisk **wybierz**.
-6. Kliknij przycisk **wybierz uprawnienia**.  Wybierz **odczytu** i **Execute**, Dodaj do **ten folder**i Dodaj jako **uprawnienie**.  Kliknij przycisk **OK**.  Uprawnienie powinno być dodane pomyślnie.
-7. Zamknij **dostępu** bloku.
-8. W tym samouczku Utwórz nowy folder.  Kliknij przycisk **nowy Folder** w pasku poleceń, a także pozwalają nowy folder na przykład nazwa **TestFolder**.  Kliknij przycisk **OK**.
-9. Kliknij utworzony folder, a następnie kliknij przycisk **dostępu** na pasku poleceń.
-10. Podobne do kroku 5, kliknij przycisk **Dodaj**w **wybierz** polu wprowadź nazwę maszyny Wirtualnej, zaznacz go i kliknij **wybierz**.
-11. Podobne do kroku 6, kliknij przycisk **wybierz uprawnienia**, wybierz pozycję **odczytu**, **zapisu**, i **Execute**, Dodaj do **ten folder**i Dodaj jako **wpisu uprawnienia dostępu i wpis uprawnienia domyślne**.  Kliknij przycisk **OK**.  Uprawnienie powinno być dodane pomyślnie.
+1. W witrynie Azure Portal kliknij opcję **Data Lake Store** w obszarze nawigacyjnym po lewej stronie.
+2. Kliknij usługę Data Lake Store, której chcesz użyć na potrzeby tego samouczka.
+3. Kliknij pozycję **Eksplorator danych** na pasku poleceń.
+4. Zostanie zaznaczony folder główny usługi Data Lake Store.  Kliknij pozycję **Dostęp** na pasku poleceń.
+5. Kliknij pozycję **Add** (Dodaj).  W polu **Wybierz** wprowadź nazwę maszyny wirtualnej, na przykład **DevTestVM**.  Kliknij, aby wybrać maszynę wirtualną spośród wyników wyszukiwania, a następnie kliknij pozycję **Wybierz**.
+6. Kliknij pozycję **Wybierz uprawnienia**.  Wybierz pozycje **Odczyt** i **Wykonywanie**, dodaj do pozycji **Ten folder** i dodaj jako **Tylko uprawnienie dostępu**.  Kliknij przycisk **OK**.  Dodawanie uprawnienia powinno zakończyć się pomyślnie.
+7. Zamknij blok **Dostęp**.
+8. W tym samouczku utworzymy nowy folder.  Kliknij pozycję **Nowy folder** na pasku poleceń i nadaj folderowi nową nazwę, na przykład **TestFolder**.  Kliknij przycisk **OK**.
+9. Kliknij utworzony folder, a następnie kliknij opcję **Dostęp** na pasku poleceń.
+10. Podobnie jak w kroku 5, kliknij przycisk **Dodaj**, w polu **Wybierz** wpisz nazwę maszyny wirtualnej, wybierz ją, a następnie kliknij opcję **Wybierz**.
+11. Podobnie jak w kroku 6, kliknij opcję **Wybierz uprawnienia** i wybierz pozycje **Odczyt**, **Zapis** i **Wykonywanie**, dodaj do pozycji **Ten folder** i dodaj jako **Wpis uprawnień dostępu i wpis uprawnień domyślnych**.  Kliknij przycisk **OK**.  Dodawanie uprawnienia powinno zakończyć się pomyślnie.
 
-MSI Twojej maszyny Wirtualnej można teraz wykonywać wszystkie operacje na plikach w folderze, który został utworzony.  Dla więcej informacji na temat zarządzania dostępem do usługi Data Lake Store, przeczytaj ten artykuł na [kontroli dostępu w usłudze Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Tożsamość usługi zarządzanej maszyny wirtualnej może teraz wykonywać wszystkie operacje na plikach w utworzonym folderze.  Aby uzyskać więcej informacji na temat zarządzania dostępem do usługi Data Lake Store, przeczytaj ten artykuł w sekcji [Kontrola dostępu w usłudze Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
-## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Uzyskaj token dostępu za pomocą Instalatora MSI maszyny Wirtualnej i użyć go do wywołania w systemie plików usługi Azure Data Lake Store
+## <a name="get-an-access-token-using-the-vm-msi-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej oraz używanie go do wywoływania systemu plików usługi Azure Data Lake Store
 
-Azure Data Lake Store natywnie obsługuje usługi Azure AD uwierzytelnianie, więc bezpośrednio może akceptować tokeny dostępu uzyskany przy użyciu Instalatora MSI.  Do uwierzytelniania w systemie plików usługi Data Lake Store możesz wysłać token dostępu wystawiony przez usługę Azure AD dla usługi Data Lake Store filesystem punktu końcowego, w nagłówku autoryzacji w formacie "Bearer < ACCESS_TOKEN_VALUE >".  Aby dowiedzieć się więcej na temat usługi Data Lake Store obsługę uwierzytelniania usługi Azure AD, przeczytaj [uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
+Usługa Azure Data Lake Store natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane za pośrednictwem tożsamości usługi zarządzanej.  Aby przeprowadzić uwierzytelnianie w systemie plików usługi Data Lake Store, musisz wysłać token dostępu wydany przez usługę Azure AD do punktu końcowego systemu plików Data Lake Store w nagłówku autoryzacji w formacie „Bearer <WARTOŚĆ_TOKENU_DOSTĘPU>”.  Aby dowiedzieć się więcej na temat obsługi usługi Data Lake Store na potrzeby uwierzytelniania usługi Azure AD, przeczytaj [Authentication with Data Lake Store using Azure Active Directory (Uwierzytelnianie w usłudze Data Lake Store za pomocą usługi Azure Active Directory)](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
 
 > [!NOTE]
-> Klient systemu plików usługi Data Lake Store zestawów SDK nie jest jeszcze obsługiwany zarządzane tożsamości usługi.  W tym samouczku zostaną zaktualizowane po dodaniu obsługi do zestawu SDK.
+> Zestawy SDK klientów systemu plików usługi Data Lake Store jeszcze nie obsługują tożsamości usługi zarządzanej.  Ten samouczek zostanie zaktualizowany po dodaniu obsługi do zestawów SDK.
 
-W tym samouczku uwierzytelniania w systemie plików usługi Data Lake Store żądań interfejsu API REST wprowadzać REST przy użyciu programu PowerShell. Aby MSI maszyny Wirtualnej jest używany do uwierzytelniania, należy utworzyć żądania z maszyny Wirtualnej.
+W tym samouczku uwierzytelniasz się w interfejsie REST API dla systemu plików usługi Data Lake Store przy użyciu programu PowerShell w celu wysłania żądań REST. Aby użyć tożsamości usługi zarządzanej maszyny wirtualnej na potrzeby uwierzytelniania, musisz wysłać żądania z maszyny wirtualnej.
 
-1. W portalu, przejdź do **maszyn wirtualnych**, przejdź do maszyny Wirtualnej systemu Windows, a w **omówienie** kliknij **Connect**.
-2. Wprowadź w Twojej **Username** i **hasło** dla którego zostanie dodane po utworzeniu maszyny Wirtualnej systemu Windows. 
-3. Teraz, po utworzeniu **Podłączanie pulpitu zdalnego** z maszyną wirtualną, otwórz **PowerShell** w sesji zdalnej. 
-4. Przy użyciu programu PowerShell w `Invoke-WebRequest`, Wyślij żądanie do lokalnego punktu końcowego MSI do Uzyskaj token dostępu dla usługi Azure Data Lake Store.  Identyfikator zasobu usługi Data Lake Store jest "https://datalake.azure.net/".  Data Lake nie dokładnego dopasowania na podstawie identyfikatora zasobu i ważne jest wiodący ukośnik.
+1. W portalu przejdź do pozycji **Maszyny wirtualne**, a następnie przejdź do swojej maszyny wirtualnej z systemem Windows i w pozycji **Przegląd** kliknij przycisk **Połącz**.
+2. Wprowadź **nazwę użytkownika** i **hasło** dodane podczas tworzenia maszyny wirtualnej z systemem Windows. 
+3. Teraz, po utworzeniu **połączenia pulpitu zdalnego** z maszyną wirtualną, otwórz program **PowerShell** w sesji zdalnej. 
+4. Używając polecenia `Invoke-WebRequest` programu PowerShell, wyślij żądanie do lokalnego punktu końcowego tożsamości usługi zarządzanej, aby uzyskać token dostępu na potrzeby usługi Azure Data Lake Store.  Identyfikator zasobu usługi Data Lake Store to „https://datalake.azure.net/”.  Usługa Data Lake wykonuje dokładne dopasowanie identyfikatora zasobu — końcowy ukośnik jest ważny.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
    ```
     
-   Konwertuj odpowiedzi z obiektu JSON na obiekt programu PowerShell. 
+   Skonwertuj odpowiedź z obiektu JSON do obiektu PowerShell. 
     
    ```powershell
    $content = $response.Content | ConvertFrom-Json
    ```
 
-   Token dostępu wyodrębnienie z odpowiedzi.
+   Wyodrębnij token dostępu z odpowiedzi.
     
    ```powershell
    $AccessToken = $content.access_token
    ```
 
-5. Przy użyciu programu PowerShell w "Invoke-WebRequest", Wyślij żądanie do punktu końcowego REST usługi Data Lake Store w, aby wyświetlić listę folderów w folderze głównym.  Jest to prosty sposób sprawdzić, czy wszystko jest poprawnie skonfigurowana.  Jest ważne, czy ciągu "Bearer" w nagłówku autoryzacji ma duże "B".  Można znaleźć nazwy usługi Data Lake Store w **omówienie** części bloku Data Lake Store w portalu Azure.
+5. Za pomocą polecenia „Invoke-WebRequest” programu PowerShell wyślij żądanie do punktu końcowego REST usługi Data Lake Store, aby wyświetlić listę folderów w folderze głównym.  Jest to prosty sposób sprawdzenia, czy wszystko zostało poprawnie skonfigurowane.  Ważne jest, żeby ciąg „Bearer” w nagłówku autoryzacji rozpoczynał się wielką literą „B”.  Nazwę usługi Data Lake Store można znaleźć w sekcji **Przegląd** bloku Data Lake Store w witrynie Azure Portal.
 
    ```powershell
    Invoke-WebRequest -Uri https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS -Headers @{Authorization="Bearer $AccessToken"}
    ```
 
-   Odpowiedź oznaczająca Powodzenie wygląda następująco:
+   Odpowiedź oznaczająca powodzenie wygląda następująco:
 
    ```powershell
    StatusCode        : 200
@@ -148,19 +148,19 @@ W tym samouczku uwierzytelniania w systemie plików usługi Data Lake Store żą
    RawContentLength  : 556
    ```
 
-6. Teraz możesz spróbować przekazywanie pliku do usługi Data Lake Store.  Najpierw należy utworzyć plik do przekazania.
+6. Teraz możesz spróbować przekazać plik do usługi Data Lake Store.  Najpierw utwórz plik do przekazania.
 
    ```powershell
    echo "Test file." > Test1.txt
    ```
 
-7. Przy użyciu programu PowerShell w `Invoke-WebRequest`, Wyślij żądanie do punktu końcowego REST usługi Data Lake Store w można przekazać pliku do folderu utworzonego wcześniej.  To żądanie przyjmuje dwa kroki.  W pierwszym kroku możesz utworzyć żądanie i uzyskać przekierowanie, do której można przekazać pliku.  W drugim kroku faktycznie przekazać plik.  Pamiętaj, aby ustawić nazwę folderu i pliku odpowiednio, jeśli używasz innej wartości niż w tym samouczku. 
+7. Za pomocą polecenia `Invoke-WebRequest` programu PowerShell wyślij żądanie do punktu końcowego REST usługi Data Lake Store, aby przekazać plik do utworzonego wcześniej folderu.  To żądanie ma dwa kroki.  W pierwszym kroku tworzy się żądanie i uzyskuje przekierowanie do lokalizacji, do której należy przekazać plik.  W drugim kroku plik zostaje faktycznie przekazany.  Pamiętaj, aby odpowiednio ustawić nazwę folderu i pliku, jeżeli użyto innych wartości niż stosowanych w tym samouczku. 
 
    ```powershell
    $HdfsRedirectResponse = Invoke-WebRequest -Uri https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/TestFolder/Test1.txt?op=CREATE -Method PUT -Headers @{Authorization="Bearer $AccessToken"} -Infile Test1.txt -MaximumRedirection 0
    ```
 
-   Jeśli sprawdzenie wartości `$HdfsRedirectResponse` powinna wyglądać następującą odpowiedź:
+   W przypadku sprawdzenia wartości `$HdfsRedirectResponse` powinna ona wyglądać jak poniższa odpowiedź:
 
    ```powershell
    PS C:\> $HdfsRedirectResponse
@@ -180,13 +180,13 @@ W tym samouczku uwierzytelniania w systemie plików usługi Data Lake Store żą
    RawContentLength  : 0
    ```
 
-   Zakończyć przekazywanie, wysyłając żądanie do punktu końcowego przekierowania:
+   Zakończ przekazywanie, wysyłając żądanie do punktu końcowego przekierowania:
 
    ```powershell
    Invoke-WebRequest -Uri $HdfsRedirectResponse.Headers.Location -Method PUT -Headers @{Authorization="Bearer $AccessToken"} -Infile Test1.txt -MaximumRedirection 0
    ```
 
-   Wygląd pomyślnej odpowiedzi, takich jak:
+   Odpowiedź oznaczająca powodzenie wygląda następująco:
 
    ```powershell
    StatusCode        : 201
@@ -205,13 +205,13 @@ W tym samouczku uwierzytelniania w systemie plików usługi Data Lake Store żą
    RawContentLength  : 0
    ```
 
-Przy użyciu systemu plików inne usługi Data Lake Store interfejsów API, możesz dołączyć do plików, pobierania plików i inne.
+Za pomocą innych interfejsów API systemu plików usługi Data Lake Store można dołączać dane do plików, pobierać pliki i wykonywać inne operacje.
 
-Gratulacje!  Uwierzytelniono systemie plików usługi Data Lake Store za pomocą MSI maszyny Wirtualnej.
+Gratulacje!  Uwierzytelniono w systemie plików usługi Data Lake Store przy użyciu tożsamości usługi zarządzanej maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzania dla maszyny wirtualnej systemu Windows można uzyskać dostępu do usługi Azure Data Lake Store. Aby dowiedzieć się więcej o usłudze Azure Data Lake Store, zobacz:
+W tym samouczku przedstawiono sposób użycia tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Windows w celu uzyskania dostępu do usługi Azure Data Lake Store. Aby dowiedzieć się więcej o usłudze Azure Data Lake Store, zobacz:
 
 > [!div class="nextstepaction"]
 >[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

@@ -1,6 +1,6 @@
 ---
-title: Użyj tożsamości zarządzanych systemu Windows maszyny Wirtualnej dostępu do magazynu Azure
-description: Samouczek, który przeprowadzi Cię przez proces dostęp do magazynu Azure za pomocą tożsamości zarządzanych maszyn wirtualnych systemu Windows.
+title: Używanie tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage
+description: Samouczek przedstawiający proces użycia tożsamości zarządzanej na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,33 +9,33 @@ editor: daveba
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: 9ccc94727a18fbcd77f00000531934be57b8e132
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
-ms.translationtype: MT
+ms.openlocfilehash: a9b0ddbd8d0a348d00e57526e6d248e59a8a1e79
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801368"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37903961"
 ---
-# <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Samouczek: Korzystania z tożsamości zarządzanego maszyny Wirtualnej systemu Windows dostęp do magazynu Azure
+# <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Samouczek: używanie tożsamości zarządzanej maszyny wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Storage
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-W tym samouczku przedstawiono sposób włączyć zarządzane tożsamości dla maszyny wirtualnej systemu Windows, a dostęp do usługi Azure Storage za pomocą tej tożsamości.  Omawiane kwestie:
+Ten samouczek przedstawia sposób włączania tożsamości zarządzanej dla maszyny wirtualnej z systemem Windows, a następnie użycia tej tożsamości do uzyskania dostępu do usługi Azure Storage.  Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów 
-> * Włącz zarządzane tożsamości systemu Windows maszyny wirtualnej (VM)
+> * Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów 
+> * Włączanie tożsamości zarządzanej na maszynie wirtualnej z systemem Windows
 > * Tworzenie kontenera obiektów blob na koncie magazynu
-> * Udostępnienia maszyny Wirtualnej systemu Windows tożsamości zarządzanego konta magazynu 
-> * Uzyskiwanie dostępu i użyć go do wywołania usługi Azure Storage 
+> * Udzielenie tożsamości zarządzanej maszyny wirtualnej z systemem Windows dostępu do konta magazynu 
+> * Uzyskiwanie dostępu i używanie go do wywoływania usługi Azure Storage 
 
 > [!NOTE]
-> Azure uwierzytelniania usługi Active Directory dla usługi Azure Storage znajduje się w publicznej wersji zapoznawczej.
+> Uwierzytelnianie usługi Azure Active Directory dla usługi Azure Storage jest dostępne w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -47,76 +47,76 @@ W tym samouczku przedstawiono sposób włączyć zarządzane tożsamości dla ma
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
+## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Windows w nowej grupie zasobów
 
-W tej sekcji utworzysz maszynę Wirtualną systemu Windows, która otrzymuje później tożsamością zarządzane.
+W tej sekcji utworzysz maszynę wirtualną z systemem Windows, do której później przydzielisz tożsamość zarządzaną.
 
-1.  Kliknij przycisk **+/ Utwórz nową usługę** znaleziono przycisku w lewym górnym rogu portalu Azure.
+1.  Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
 2.  Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. 
-3.  Wprowadź informacje o maszynie wirtualnej. **Username** i **hasło** utworzony, w tym miejscu jest poświadczeń umożliwia logowanie do maszyny wirtualnej.
-4.  Wybierz odpowiednią **subskrypcji** dla maszyny wirtualnej na liście rozwijanej.
-5.  Aby wybrać nowy **grupy zasobów** chcesz maszynę wirtualną można utworzyć w, wybierz **Utwórz nowy**. Po zakończeniu kliknij przycisk **OK**.
+3.  Wprowadź informacje o maszynie wirtualnej. **Nazwa użytkownika** i **Hasło** utworzone w tym miejscu są poświadczeniami używanymi do logowania do maszyny wirtualnej.
+4.  Wybierz odpowiednią **Subskrypcję** dla maszyny wirtualnej z listy rozwijanej.
+5.  Aby wybrać nową **grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz opcję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
 6.  Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. W bloku ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
 
-    ![Tekst alternatywny obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+    ![Alternatywny tekst obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-managed-identity-on-your-vm"></a>Włącz zarządzane tożsamości na maszynie Wirtualnej
+## <a name="enable-managed-identity-on-your-vm"></a>Włączanie tożsamości zarządzanej na maszynie wirtualnej
 
-Tożsamość zarządzane maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. W obszarze obejmuje włączenie zarządzane tożsamości na maszynie wirtualnej za pośrednictwem portalu Azure wykonuje dwie czynności: rejestruje maszyny Wirtualnej z usługą Azure AD można utworzyć tożsamości zarządzanych oraz konfiguruje tożsamości na maszynie Wirtualnej. 
+Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie tokenów dostępu z usługi Azure AD bez potrzeby umieszczania poświadczeń w kodzie. Włączenie tożsamości zarządzanej na maszynie wirtualnej w witrynie Azure Portal powoduje wykonanie w niewidoczny sposób dwóch czynności: zarejestrowania maszyny wirtualnej przy użyciu usługi Azure AD w celu utworzenia tożsamości zarządzanej oraz skonfigurowania tożsamości na maszynie wirtualnej. 
 
-1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną, utworzony w poprzednim kroku.
-2. W obszarze **ustawienia** kategorii, kliknij przycisk **konfiguracji**.
-3. Aby włączyć tożsamości zarządzanego, wybierz **tak**.
-4. Kliknij przycisk **zapisać** Aby zastosować konfigurację. 
+1. Przejdź do grupy zasobów nowej maszyny wirtualnej, a następnie wybierz maszynę wirtualną utworzoną w poprzednim kroku.
+2. W kategorii **Ustawienia** kliknij pozycję **Konfiguracja**.
+3. Aby włączyć tożsamość zarządzaną, wybierz pozycję **Tak**.
+4. Kliknij przycisk **Zapisz**, aby zastosować konfigurację. 
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu 
 
 W tej sekcji utworzysz konto magazynu. 
 
-1. Kliknij przycisk **+ Utwórz zasób** znaleziono przycisku w lewym górnym rogu portalu Azure.
-2. Kliknij przycisk **magazynu**, następnie **konta magazynu — obiekt blob, plików, tabeli, kolejki**.
-3. W obszarze **nazwa**, wprowadź nazwę konta magazynu.  
-4. **Model wdrażania** i **konta rodzaju** powinien być ustawiony na **Menedżera zasobów** i **magazynu (ogólnego przeznaczenia v1)**. 
-5. Upewnij się, **subskrypcji** i **grupy zasobów** odpowiadały określony podczas tworzenia maszyny Wirtualnej w poprzednim kroku.
+1. Kliknij przycisk **+ Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure Portal.
+2. Kliknij pozycję **Storage**, a następnie pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
+3. W obszarze **Nazwa** wprowadź nazwę konta magazynu.  
+4. Opcje **Model wdrażania** i **Rodzaj konta** należy ustawić na **Resource Manager** i **Magazyn (ogólnego przeznaczenia, wersja 1)**. 
+5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.
 6. Kliknij przycisk **Utwórz**.
 
-    ![Utwórz nowe konto magazynu](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Tworzenie nowego konta magazynu](../media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Tworzenie kontenera obiektów blob i przekazywanie pliku do konta magazynu
+## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Tworzenie kontenera obiektów blob i przekazywanie pliku na konto magazynu
 
-Pliki wymagają magazynu obiektów blob, dlatego należy utworzyć kontener obiektów blob do przechowywania pliku. Następnie możesz przekazać plik do kontenera obiektów blob na koncie magazynu.
+Pliki wymagają magazynu obiektów blob, dlatego musimy utworzyć kontener obiektów blob, w którym będziemy przechowywać plik. Następnie przekaż plik do kontenera obiektów blob na nowym koncie magazynu.
 
-1. Przejdź z powrotem do użytkownika nowo utworzone konto magazynu.
-2. W obszarze **usługa Blob**, kliknij przycisk **kontenery**.
-3. Kliknij przycisk **+ kontener** górnej części strony.
-4. W obszarze **nowy kontener**, wprowadź nazwę dla kontenera, a następnie w obszarze **poziom dostępu publicznego** zachować wartość domyślną.
+1. Przejdź z powrotem do nowo utworzonego konta magazynu.
+2. W obszarze **Blob Service** kliknij pozycję **Kontenery**.
+3. Kliknij pozycję **+ Kontener** w górnej części strony.
+4. W obszarze **Nowy kontener** wprowadź nazwę kontenera, a następnie w obszarze **Poziom dostępu publicznego** zachowaj wartość domyślną.
 
     ![Tworzenie kontenera magazynu](../media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-5. Za pomocą edytora wybranym, Utwórz plik zatytułowany *hello world.txt* na komputerze lokalnym.  Otwórz plik i dodać tekst (bez cudzysłowów) "Witaj świecie! :) ", a następnie zapisz go. 
-6. Przekaż plik na nowo utworzony kontenera, klikając nazwę kontenera, następnie **Przekaż**
-7. W **przekazywanie obiektu blob** okienku w obszarze **pliki**, kliknij ikonę folderu i przejdź do pliku **hello_world.txt** na komputerze lokalnym, wybierz plik, a następnie kliknij przycisk **Przekazać**.
-    ![Przekaż plik tekstowy](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
+5. Za pomocą wybranego edytora utwórz plik o nazwie *hello world.txt* na maszynie lokalnej.  Otwórz plik i dodaj tekst (bez cudzysłowów) „Hello world! :)”, a następnie zapisz plik. 
+6. Przekaż plik do nowo utworzonego kontenera, klikając nazwę kontenera, a następnie pozycję **Przekaż**
+7. W okienku **Przekazywanie obiektu blob** w obszarze **Pliki** kliknij ikonę folderu i przejdź do pliku **hello_world.txt** na maszynie lokalnej, wybierz plik, a następnie kliknij pozycję **Przekaż**.
+    ![Przekazywanie pliku tekstowego](~/articles/active-directory/media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Przyznać uprawnienia maszyny Wirtualnej do kontenera magazynu Azure 
+## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Udzielanie maszynie wirtualnej dostępu do kontenera usługi Azure Storage 
 
-Korzystania z tożsamości zarządzanego maszyny Wirtualnej, aby pobrać dane z obiektu blob magazynu Azure.   
+Tożsamość zarządzana maszyny wirtualnej służy do pobierania danych w obiekcie blob usługi Azure Storage.   
 
-1. Przejdź z powrotem do użytkownika nowo utworzone konto magazynu.  
-2. Kliknij przycisk **(IAM) kontroli dostępu** łącze w lewym panelu.  
-3. Kliknij przycisk **+ Dodaj** u góry strony, aby dodać nowe przypisanie roli dla maszyny Wirtualnej.
-4. W obszarze **roli**, wybierz z listy rozwijanej, **czytnik danych magazynu obiektów Blob (wersja zapoznawcza)**. 
-5. Na liście rozwijanej dalej w obszarze **przypisany dostęp**, wybierz **maszyny wirtualnej**.  
-6. Następnie sprawdź odpowiednie subskrypcji znajduje się w **subskrypcji** listy rozwijanej, a następnie ustaw **grupy zasobów** do **wszystkich grup zasobów**.  
-7. W obszarze **wybierz**, wybrać maszyny Wirtualnej, a następnie kliknij przycisk **zapisać**. 
+1. Przejdź z powrotem do nowo utworzonego konta magazynu.  
+2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  
+3. Kliknij przycisk **+ Dodaj** w górnej części strony, aby dodać nowe przypisanie roli dla maszyny wirtualnej.
+4. W obszarze **Rola** wybierz z listy rozwijanej pozycję **Czytnik danych obiektu blob magazynu (wersja zapoznawcza)**. 
+5. Z następnej listy rozwijanej w obszarze **Przypisz dostęp do** wybierz pozycję **Maszyna wirtualna**.  
+6. Następnie upewnij się, że odpowiednia subskrypcja znajduje się na liście rozwijanej **Subskrypcja**, po czym ustaw opcję **Grupa zasobów** na wartość **Wszystkie grupy zasobów**.  
+7. W obszarze **Wybierz** wskaż maszynę wirtualną, a następnie kliknij pozycję **Zapisz**. 
 
     ![Przypisywanie uprawnień](~/articles/active-directory/managed-service-identity/media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Uzyskaj token dostępu i użyć go do wywołania usługi Azure Storage 
+## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Uzyskiwanie tokenu dostępu i używanie go do wywoływania usługi Azure Storage 
 
-Magazyn Azure natywnie obsługuje usługi Azure AD uwierzytelnianie, więc bezpośrednio może akceptować tokeny dostępu uzyskany przy użyciu tożsamości usługi zarządzane. To jest częścią usługi Azure Storage integracji z usługą Azure AD i różni się od podawania poświadczeń w parametrach połączenia.
+Usługa Azure Storage natywnie obsługuje uwierzytelnianie usługi Azure AD, więc może bezpośrednio akceptować tokeny dostępu pozyskane przy użyciu tożsamości zarządzanej. Jest to część integracji usługi Azure Storage z usługą Azure AD. Takie rozwiązanie różni się od podawania poświadczeń w parametrach połączenia.
 
-Oto przykład kodu .net otwarcia połączenia do magazynu Azure przy użyciu tokenu dostępu, a następnie odczytanie zawartości pliku utworzonego wcześniej. Ten kod należy uruchomić na maszynie Wirtualnej, aby można było uzyskać dostępu do punktu końcowego zarządzanych tożsamości maszyny Wirtualnej. .NET framework 4.6 lub nowszy jest wymagany przy użyciu metody tokenu dostępu. Zastąp wartość `<URI to blob file>` odpowiednio. Tę wartość można uzyskać, przechodząc do pliku utworzony i przekazania jej do magazynu obiektów blob i kopiowanie **adres URL** w obszarze **właściwości** **omówienie** strony.
+Poniżej przedstawiono przykładowy kod .Net umożliwiający otworzenie połączenia z usługą Azure Storage przy użyciu tokenu dostępu, a następnie odczytanie zawartości wcześniej utworzonego pliku. Ten kod należy uruchomić na maszynie wirtualnej, aby mógł uzyskać dostęp do punktu końcowego tożsamości zarządzanej maszyny wirtualnej. Wymagany jest program .Net Framework 4.6 (lub nowszy) w celu użycia metody tokenu dostępu. Zastąp odpowiednio wartość `<URI to blob file>`. Tę wartość można uzyskać poprzez przejście do utworzonego i przekazanego do magazynu obiektów blob pliku, a następnie skopiowanie **adresu URL** w sekcji **Właściwości** na stronie **Przegląd**.
 
 ```csharp
 using System;
@@ -190,9 +190,9 @@ Odpowiedź zawiera zawartość pliku:
 
 `Hello world! :)`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób włączenia maszyny wirtualnej systemu Windows tożsamości zarządzanego dostępu do magazynu Azure.  Aby dowiedzieć się więcej o usłudze Azure Storage, zobacz:
+W tym samouczku pokazano, jak umożliwić tożsamości zarządzanej maszyny wirtualnej z systemem Windows uzyskiwanie dostępu do usługi Azure Storage.  Aby dowiedzieć się więcej o usłudze Azure Storage, zobacz:
 
 > [!div class="nextstepaction"]
 > [Azure Storage](/azure/storage/common/storage-introduction)

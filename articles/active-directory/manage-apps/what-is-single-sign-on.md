@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 9f9ae52c5dbdf655190caaceeaa03c444526e4f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b7ea8a755f1f23c76bb0f7d8120970bb7795e95b
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044625"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39091837"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza, że będzie mogła uzyskać dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko wtedy, gdy za pomocą jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład, wpisz hasło) po raz drugi.
@@ -45,8 +45,7 @@ Gdy użytkownicy logują się do aplikacji, przejściu przez proces uwierzytelni
 Usługa Azure AD obsługuje trzy różne sposoby, aby zalogować się do aplikacji:
 
 * **Federacyjne logowanie jednokrotne** umożliwia aplikacjom przekierowanie do usługi Azure AD do uwierzytelniania użytkowników zamiast monitowania o własne hasło. Federacyjne logowanie jednokrotne jest obsługiwana w przypadku aplikacji, które obsługują protokoły, takie jak SAML 2.0, WS-Federation i OpenID Connect i jest najszerszym tryb logowania jednokrotnego.
-* **Na podstawie hasła logowania jednokrotnego** umożliwia bezpieczne przechowywanie haseł aplikacji i oparte na metodzie powtórzeń przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Na podstawie hasła logowania jednokrotnego korzysta z istniejącego 
-*  proces udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami i nie wymaga, aby użytkownik znał hasło.
+* **Na podstawie hasła logowania jednokrotnego** umożliwia bezpieczne przechowywanie haseł aplikacji i oparte na metodzie powtórzeń przy użyciu rozszerzenia przeglądarki sieci web lub aplikacji mobilnej. Oparte na hasłach logowania jednokrotnego wykorzystuje istniejący proces udostępniany przez aplikację, ale umożliwia administratorowi Zarządzanie hasłami i wymaga aby użytkownik znał hasło.
 * **Istniejące logowanie jednokrotne** umożliwia usłudze Azure AD i wykorzystać wszystkie istniejące logowanie jednokrotne zostało skonfigurowane dla aplikacji, ale umożliwia te aplikacje, być połączone z portali panelu dostępu usługi Office 365 lub Azure AD i umożliwia również dodatkowe Raportowanie w usłudze Azure AD, gdy istnieje uruchomienia aplikacji.
 
 Po użytkownik został uwierzytelniony przy użyciu aplikacji, muszą mieć rekord konta zainicjowane w aplikacji, która informuje aplikację, w których uprawnienia i poziom dostępu wewnątrz aplikacji. Aprowizacja ten rekord konta może mieć miejsce, automatycznie lub może być wykonywane ręcznie przez administratora przed dostępu rejestracji jednokrotnej jest podany przez użytkownika.
@@ -194,7 +193,7 @@ Te linki pełnić te same mechanizmy kontroli dostępu do panelu dostępu i usł
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Konfigurowanie rozwiązania Cloud Discovery](/cloud-app/security/set-up-cloud-discovery)
+* [Konfigurowanie rozwiązania Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)
 * [Wprowadzenie do zarządzania dostępem do aplikacji](what-is-access-management.md)
 * [Porównanie możliwości zarządzania tożsamości zewnętrznych w usłudze Azure AD](../active-directory-b2b-compare-b2c.md)
 

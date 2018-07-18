@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: db7a89ffa4ff1a2eb271869c93b7beb088fd13b3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076314"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114314"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologia usługi Service Fabric siatki
 
@@ -57,14 +57,14 @@ Usługi Service Fabric to technologia platformy typu open source, opartych na ki
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Macierz obsługi środowiska, framework i modelu wdrażania
 Różne środowiska mają różne poziomy wsparcia dla platformy i modele wdrażania. W poniższej tabeli opisano obsługiwane framework i kombinacji modelu wdrażania.
 
-|Frameworks\Deployment model |Model zasobów |Model manifestu | Redagowanie|
+|Frameworks\Deployment model |Model zasobów |Natywny model | Redagowanie|
 |---|---|---|---|
 |Elementy Reliable Actors oraz usług Reliable Services |Nieobsługiwane |Obsługiwane |Nieobsługiwane |
 |Dowolnych platform i języka |Obsługiwane w kontenerach |Obsługiwane jako procesy i kontenery |Obsługiwane w kontenerach |
 
 W poniższej tabeli opisano obsługiwane środowiska i kombinacji modelu wdrażania.
 
-|Environment\Deployment model |Model zasobów |Model manifestu |Redagowanie |
+|Environment\Deployment model |Model zasobów |Natywny model |Redagowanie |
 |---|---|---|---|
 |Usługa Azure Service Fabric siatki |Obsługiwane |Nieobsługiwane|Nieobsługiwane |
 |Wszystkich innych środowisk |Obsługiwane (niektóre zasoby mają wymagania wstępne dotyczące pracy w środowisku) |Obsługiwane |Ograniczona obsługa |

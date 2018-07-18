@@ -10,12 +10,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 2c919040233226818505dbafc260d56d4d0e3c9e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b5f5cdbe202b406c724a9f4f5787e566b432a66c
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070736"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39116150"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy, języka C++ w systemie Linux przy użyciu zestawu SDK rozpoznawania mowy
 
@@ -34,7 +34,7 @@ W tym artykule dowiesz się, jak utworzyć aplikację konsolową w języku C++ w
 
 ## <a name="get-the-speech-sdk"></a>Pobierz zestaw SDK funkcji rozpoznawania mowy
 
-[!include[License Notice](includes/license-notice.md)]
+[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Bieżąca wersja zestawu SDK mowy usługi Cognitive Services to `0.5.0`.
 
@@ -70,7 +70,7 @@ Pobierz i zainstaluj zestaw SDK w następujący sposób:
 
    Uwagi dotyczące innych firm — oraz plików licencji powinny być widoczne, a także `include` katalogu dla nagłówków i `lib` katalogu bibliotek.
 
-   [!include[Linux Binary Archive Content](includes/linuxbinary-content.md)]
+   [!include[Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
 ## <a name="add-the-sample-code"></a>Dodaj kod przykładowy
 

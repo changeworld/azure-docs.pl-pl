@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38722953"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API 
 
@@ -54,7 +55,7 @@ W tej sekcji przedstawiono sposób ukrywania nagłówków HTTP, które nie powin
 
 Aby zobaczyć oryginalną odpowiedź:
 
-1. Wybierz kartę **API**.
+1. W wystąpieniu usługi APIM wybierz pozycję **Interfejsy API** (w obszarze **API MANAGEMENT**).
 2. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
 3. Wybierz operację **GetSpeakers**.
 4. Kliknij kartę **Test** w górnej części ekranu.
@@ -66,24 +67,24 @@ Aby zobaczyć oryginalną odpowiedź:
 
 ### <a name="set-the-transformation-policy"></a>Ustawianie zasad przekształcania
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Wybierz opcję **Wszystkie operacje**.
-5. W górnej części ekranu wybierz kartę **Projektowanie**.
-6. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka).
-7. Wybierz pozycję **Edytor kodu**.
-    
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. W górnej części ekranu wybierz kartę **Projektowanie**.
+3. Wybierz opcję **Wszystkie operacje**.
+4. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
      ![Edycja zasad](./media/set-edit-policies/set-edit-policies01.png)
-9. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
-10. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
+5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
+6. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
 
     ![Zasady](./media/transform-api/transform-api.png)
-11. Zmodyfikuj kod **<outbound>**, aby wyglądał następująco:
+7. Zmodyfikuj kod **<outbound>**, aby wyglądał następująco:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
-                
+
+    ![Zasady](./media/transform-api/set-policy.png)
+8. Kliknij przycisk **Zapisz**.
+
+
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Zamiana oryginalnych adresów URL w treści odpowiedzi interfejsu API w adresy URL bramy APIM
 
 W tej sekcji opisano, jak ukrywać oryginalne adresy URL, które są wyświetlane w treści odpowiedzi HTTP interfejsu API, a zamiast tego przekierowywać je do bramy APIM.
@@ -92,11 +93,10 @@ W tej sekcji opisano, jak ukrywać oryginalne adresy URL, które są wyświetlan
 
 Aby zobaczyć oryginalną odpowiedź:
 
-1. Wybierz kartę **API**.
-2. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-3. Wybierz operację **GetSpeakers**.
-4. Kliknij kartę **Test** w górnej części ekranu.
-5. Naciśnij przycisk **Wyślij** u dołu ekranu. 
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Wybierz operację **GetSpeakers**.
+3. Kliknij kartę **Test** w górnej części ekranu.
+4. Naciśnij przycisk **Wyślij** u dołu ekranu. 
 
     Jak widać, oryginalna odpowiedź wygląda następująco:
 
@@ -104,16 +104,13 @@ Aby zobaczyć oryginalną odpowiedź:
 
 ### <a name="set-the-transformation-policy"></a>Ustawianie zasad przekształcania
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Wybierz opcję **Wszystkie operacje**.
-5. W górnej części ekranu wybierz kartę **Projektowanie**.
-6. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka).
-7. Wybierz pozycję **Edytor kodu**.
-8. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
-9. W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
-10. Zmodyfikuj kod **<find-and-replace** (w elemencie **<outbound>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Wybierz opcję **Wszystkie operacje**.
+3. W górnej części ekranu wybierz kartę **Projektowanie**.
+4. W oknie **Przetwarzanie danych wychodzących** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
+5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
+6. W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
+7. Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -121,22 +118,19 @@ Aby zobaczyć oryginalną odpowiedź:
 
 W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zaplecza poprzez konfigurowanie limitów szybkości. Na przykład możesz ograniczyć liczbę wywołań dla interfejsu API, aby nie był on nadmiernie obciążany przez deweloperów. W tym przykładzie limit jest ustawiony na 3 wywołania w ciągu 15 sekund dla każdego identyfikatora subskrypcji. Po 15 sekundach deweloper może ponowić próbę wywołania interfejsu API.
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Wybierz opcję **Wszystkie operacje**.
-5. W górnej części ekranu wybierz kartę **Projektowanie**.
-6. W oknie **Przychodzące przetwarzanie** kliknij trójkąt (obok ołówka).
-7. Wybierz pozycję **Edytor kodu**.
-8. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
-9. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-10. Zmodyfikuj kod **<rate-limit-by-key** (w elemencie **<inbound>**) do następującego:
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Wybierz opcję **Wszystkie operacje**.
+3. W górnej części ekranu wybierz kartę **Projektowanie**.
+4. W oknie **Przychodzące przetwarzanie** kliknij trójkąt (obok ołówka) i wybierz pozycję **Edytor kodu**.
+5. Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
+6. W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
+7. Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Testowanie przekształceń
         
-W tym momencie kod zasad wygląda następująco:
+Na tym etapie zasady w edytorze kodu powinny wyglądać następująco:
 
     <policies>
         <inbound>
@@ -161,12 +155,10 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-stripped-response-headers"></a>Testowanie usuniętych nagłówków odpowiedzi
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Kliknij operację **GetSpeakers**.
-5. Wybierz kartę **Test**.
-6. Kliknij pozycję **Wyślij**.
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Kliknij operację **GetSpeakers**.
+3. Wybierz kartę **Test**.
+4. Kliknij pozycję **Wyślij**.
 
     Jak widać, nagłówki zostały usunięte:
 
@@ -174,12 +166,10 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-replaced-url"></a>Testowanie zamienionego adresu URL
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Kliknij operację **GetSpeakers**.
-5. Wybierz kartę **Test**.
-6. Kliknij pozycję **Wyślij**.
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Kliknij operację **GetSpeakers**.
+3. Wybierz kartę **Test**.
+4. Kliknij pozycję **Wyślij**.
 
     Jak widać, adres URL został zastąpiony.
 
@@ -187,15 +177,13 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 ### <a name="test-the-rate-limit-throttling"></a>Testowanie limitu szybkości (ograniczania przepustowości)
 
-1. Przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **API**.
-3. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
-4. Kliknij operację **GetSpeakers**.
-5. Wybierz kartę **Test**.
-6. Naciśnij przycisk **Wyślij** trzykrotnie.
+1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
+2. Kliknij operację **GetSpeakers**.
+3. Wybierz kartę **Test**.
+4. Naciśnij przycisk **Wyślij** trzykrotnie.
 
     Po trzykrotnym wysłaniu żądania otrzymasz odpowiedź **429 Zbyt wiele żądań**.
-7. Poczekaj około 15 sekund i naciśnij przycisk **Wyślij** ponownie. Teraz interfejs powinien zwrócić odpowiedź **200 OK**.
+5. Poczekaj około 15 sekund i naciśnij przycisk **Wyślij** ponownie. Teraz interfejs powinien zwrócić odpowiedź **200 OK**.
 
     ![Ograniczanie przepływności](./media/transform-api/test-throttling.png)
 

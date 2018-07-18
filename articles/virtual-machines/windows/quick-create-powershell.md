@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 74b4a593e46fe7f4650306d90a65e287a6d48206
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b199d031d4aaef4c1a707199f5692c86543e6360
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187178"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767208"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Linux za pomocą programu Azure PowerShell
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z systemem Windows za pomocą programu Azure PowerShell
 
 Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Z tego przewodnika Szybki start dowiesz się, jak za pomocą modułu programu Azure PowerShell wdrożyć na platformie Azure maszynę wirtualną z systemem Windows Server 2016. Aby zobaczyć działanie maszyny wirtualnej, połączysz się z nią za pomocą protokołu RDP i zainstalujesz serwer internetowy usług IIS.
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffcce12800fae3a4d9e4930c918fcafb919b96ed
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737208"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37915973"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
 
@@ -54,11 +54,12 @@ Obrazy replikowanych maszyn są przechowywane w usłudze Azure Storage. Maszyny 
 1. W menu witryny [Azure Portal](https://portal.azure.com) wybierz kolejno opcje **Utwórz zasób** > **Magazyn** > **Konto magazynu — obiekt BLOB, plik, tabela, kolejka**.
 2. W obszarze **Tworzenie konta magazynu** wprowadź nazwę konta. Na potrzeby tych samouczków należy użyć nazwy **contosovmsacct1910171607**. Wybrana nazwa musi mieć od 3 do 24 znaków długości, zawierać wyłącznie cyfry i małe litery oraz musi być unikatowa w obrębie platformy Azure.
 3. W obszarze **Model wdrażania** wybierz opcję **Resource Manager**.
-4. W obszarze **Rodzaj konta** wybierz opcję **Magazyn (ogólnego przeznaczenia w wersji 1)**. Nie wybieraj magazynu obiektów blob. W obszarze **Wydajność** wybierz opcję **Standardowa**. 
+4. W obszarze **Rodzaj konta** wybierz opcję **Magazyn (ogólnego przeznaczenia w wersji 1)**. Nie wybieraj magazynu obiektów blob.
 5. W obszarze **Replikacja** wybierz domyślny **Magazyn geograficznie nadmiarowy z dostępem do odczytu** jako opcję nadmiarowości magazynu. Firma Microsoft pozostawia opcję **Wymagany bezpieczny transfer** z ustawieniem **Wyłączone**.
-6. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć nowe konto magazynu. 
-2. W obszarze **Grupa zasobów** wprowadź nową nazwę grupy zasobów. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Na potrzeby tych samouczków użyto nazwy **ContosoRG**.
-3. W obszarze **Lokalizacja** wybierz lokalizację geograficzną dla swojego konta magazynu. 
+6. W obszarze **Wydajność** wybierz pozycję **Standardowa**, a w obszarze **Warstwa dostępu** wybierz domyślną opcję **Gorąca**.
+7. W obszarze **Subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć nowe konto magazynu.
+8. W obszarze **Grupa zasobów** wprowadź nową nazwę grupy zasobów. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Na potrzeby tych samouczków użyto nazwy **ContosoRG**.
+9. W obszarze **Lokalizacja** wybierz lokalizację geograficzną dla swojego konta magazynu. 
 
    ![Tworzenie konta magazynu](media/tutorial-prepare-azure/create-storageacct.png)
 
@@ -98,7 +99,7 @@ Gdy maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po prze
 
 - [Dowiedz się więcej na temat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) sieci platformy Azure.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts) o typach magazynów Azure.
-- - [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) o nadmiarowości magazynu i [bezpiecznym transferze](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) dla magazynu.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) o nadmiarowości magazynu i [bezpiecznym transferze](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) dla magazynu.
 
 
 

@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 08ac75ca008f3054a85d9c90834720e26cefcfea
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: b05a16f4ecb37245eff8217ddc89b88403d346ac
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796455"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38668111"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji bazy danych Cassandra przy użyciu platformy Node.js i usługi Azure Cosmos DB
 
@@ -216,7 +216,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia kolekcji za pomocą Eksploratora danych i uruchamiania aplikacji. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB. 
+W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia kontenera za pomocą Eksploratora danych i uruchamiania aplikacji. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych bazy danych Cassandra do usługi Azure Cosmos DB](cassandra-import-data.md)

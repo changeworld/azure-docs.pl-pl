@@ -1,6 +1,6 @@
 ---
-title: Ujednolicone alertów w monitorze Azure
-description: Opis elementu ujednoliconego alertów na platformie Azure, które umożliwiają zarządzanie alerty i alerty reguły w usługach Azure.
+title: Ujednolicone alertów w usłudze Azure Monitor
+description: Opis ujednoliconego alertów na platformie Azure, które umożliwiają zarządzanie alerty i alerty reguły w usługach platformy Azure.
 author: manishsm-msft
 services: monitoring
 ms.service: azure-monitor
@@ -8,193 +8,195 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: ff2650ec7d4c2c1fffd57176327b56199335fa9d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264820"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117616"
 ---
-# <a name="unified-alerts-in-azure-monitor"></a>Ujednolicone alertów w monitorze Azure
+# <a name="unified-alerts-in-azure-monitor"></a>Ujednolicone alertów w usłudze Azure Monitor
 
 ## <a name="overview"></a>Przegląd
 
 > [!NOTE]
->  Nową ujednoliconą funkcjonalność alertów, która umożliwia zarządzanie alerty z wieloma subskrypcjami i wprowadza alert stanów i inteligentnych grup jest dostępna w publicznej wersji zapoznawczej. Zobacz [ostatniej sekcji tego artykułu](#enhanced-unified-alerts-experience-public-preview) opis to rozszerzony środowisko i włączony proces.
+>  Nowym ujednoliconym środowisku alertu, który pozwala na zarządzanie alerty z wieloma subskrypcjami i wprowadza alert stanów i inteligentne grup jest obecnie dostępna w publicznej wersji zapoznawczej. Zobacz ostatnią sekcję w tym artykule, aby uzyskać opis udoskonalone środowisko i proces Włączanie go.
 
 
-W tym artykule opisano ujednoliconym środowisku alertów w monitorze Azure. [Doświadczenia alertu](monitoring-overview-alerts.md) jest dostępna z **alertów (klasyczne)** opcji z menu Azure Monitor. 
+W tym artykule opisano ujednoliconego środowiska alertów w usłudze Azure Monitor. [Poprzednie środowisko alertów](monitoring-overview-alerts.md) jest dostępne z **alerty (klasyczne)** opcji w menu usługi Azure Monitor. 
 
-## <a name="features-of-the-unified-alert-experience"></a>Funkcje ujednoliconym środowisku alertu
+## <a name="features-of-the-unified-alert-experience"></a>Funkcje ujednoliconego środowiska alertu
 
-Środowisko unified ma następujące zalety za pośrednictwem klasycznego środowiska:
+Ujednolicone środowisko ma następujące korzyści za pośrednictwem klasycznego środowiska:
 
--   **Lepsze systemu powiadomień**: Unified Użyj alerty [grupy akcji]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), które są nazywane grup powiadomień oraz akcje, które mogą być ponownie używane w wielu alertów. 
-- **Ujednolicone i tworzenia** — alertami można zarządzać i reguły alertu dla metryki, dzienniki i działania logowania przez Azure Monitor, analizy dzienników i usługi Application Insights w jednym miejscu. 
-- **Widok generowane alerty Log Analytics w portalu Azure** -Wyświetl alerty z analizy dzienników z innych alertów z innych źródeł w portalu Azure. Wcześniej były one w oddzielnych portalu.
-- **Rozdzielenie Fired alertów i reguł alertów** -alertów, zasad teraz różnią się od alertów. Reguła alertu jest definicje warunków wyzwalania alertu. Alert jest wystąpieniem uruchamiania reguły alertów.
-- **Lepsze przepływu pracy** — ujednoliconą alert tworzenia prowadzi użytkownika przez proces konfigurowania reguły alertu.
+-   **Lepsze systemu powiadomień**: [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) są nazywane grupami powiadomienia i akcje, które mogą być ponownie używane w wielu alertów. 
+- **Ujednolicone środowisko tworzenia**: alerty i reguły alertów metryk, dzienników i dzienników aktywności usługi Azure Monitor, usługi Log Analytics i usługi Application Insights można zarządzać w jednym miejscu. 
+- **Wyświetl wyzwolone alerty usługi Log Analytics w witrynie Azure portal**: teraz można wyświetlać alerty usługi Log Analytics przy użyciu alertów z innych źródeł, w witrynie Azure portal. Wcześniej alertów z innych źródeł były związane z osobnego portalu.
+- **Oddzielanie wyzwolone alerty i reguł alertów**: reguły alertów teraz różnią się od alertów. Reguła alertu jest definicja warunek, który wyzwala alert. Alert jest wystąpieniem uruchomieniu którego reguły alertu.
+- **Lepszy przepływ pracy**: ten alert ujednolicone środowisko tworzenia przeprowadzi Cię przez proces konfigurowania reguły alertu.
  
-Metryki alerty mają następujące ulepszenia za pośrednictwem klasycznego alerty metryki:
+Alerty metryki mają następujące ulepszenia za pośrednictwem klasycznego alertów dotyczących metryk:
 
--   **Ulepszone opóźnienia**: metryki alerty można uruchomić nawet co minutę. Klasycznym metryki alerty są zawsze uruchamiane z częstotliwością wynoszącą 5 minut. Alerty dziennika jeszcze dłużej, niż jest jedna minuta z powodu czasu potrzebnego na pozyskiwania dzienniki opóźnienia. 
--   **Obsługa metryki wielowymiarowej**: można alertów na metryki wymiarów, dzięki czemu można monitorować konkretne wystąpienie metryki.
--   **Większa kontrola nad metryki warunków**: można zdefiniować bardziej rozbudowane reguły alertów, które obsługują monitorowanie maksymalnej, minimalnej, średni i całkowitej wartości metryki.
--   **Połączone monitorowanie wielu metryki**: można monitorować metryki maksymalnie dwóch przy użyciu jednej reguły. Alert zostanie wywołany, jeśli oba wskaźniki naruszenia ich odpowiednich progów w określonym przedziale czasu.
--   **Metryki z dzienników** (ograniczone publicznej wersji zapoznawczej): niektóre dziennika danych, przechodząc do analizy dzienników można teraz można wyodrębnić i przekonwertowane na metryki Azure Monitor i następnie alerty o podobnie jak inne metryki. 
+-   **Ulepszone opóźnienie**: alertów dotyczących metryk można uruchomić tak często, jak raz na minutę. Klasyczne alertów dotyczących metryk są zawsze uruchamiane z częstotliwością co 5 minut. Alerty dzienników jeszcze opóźnienie dłużej niż minutę ze względu na czas potrzebny do odbierania dzienników. 
+-   **Obsługa metryk wielowymiarowych**: może generować alerty na metryki jednowymiarowe oznacza, że można monitorować określone wystąpienie metryki.
+-   **Większa kontrola nad metryki warunki**: można zdefiniować bardziej rozbudowane reguł alertów, które obsługują monitorowanie maksymalna, minimalna, średnia i łączna liczba wartości metryk.
+-   **Monitorowanie wielu metryk w połączeniu**: można monitorować metryki do dwóch przy użyciu jednej reguły. Alert jest wyzwalany, jeśli oba wskaźniki naruszenia ich odpowiednich progów w określonym przedziale czasu.
+-   **Metryki z dzienników** (ograniczonej publicznej wersji zapoznawczej): niektóre dziennika danych, które są przesyłane do usługi Log Analytics mogą teraz można wyodrębnić i przekształcone w metryki usługi Azure Monitor i następnie alerty o podobnie jak inne metryki. 
 
 
 ## <a name="alert-rules"></a>Reguły alertów
-Środowisko unified alerty używa następujące pojęcia do oddzielania reguły alertów z alertów podczas jednorodnej obsługi tworzenia we wszystkich różnych typów alertów.
+Środowisko alertów ujednoliconego wykorzystuje następujące pojęcia do oddzielnych reguł alertów z alertów podczas jednorodnej obsługi tworzenia we wszystkich różnych typów alertów.
 
 | Element | Definicja |
 |:---|:---|
-| Reguła alertów | Definicja warunku można utworzyć alertu. Składa się z _zasób docelowy_, _sygnału_, _kryteria_, i _logiki_. Reguła alertu jest tylko wtedy, gdy znajduje się on w _włączone_ stanu.
-| Zasób docelowy | Definiuje określone zasoby i sygnalizuje dostępne alertów. Element docelowy może być dowolnym zasobem Azure.<br>Przykłady: maszyny wirtualne, konta magazynu, zestaw skali maszyny wirtualnej, obszar roboczy analizy dzienników, zasobu usługi Application Insights |
-| Sygnał | Źródło danych emitowanych przez zasób docelowy. Sygnał obsługiwane typy to *Metryka*, *dziennik aktywności*, *usługi Application Insights*, i *dziennika*. |
-| Kryteria | Kombinacja _sygnału_ i _logiki_ zastosować do zasobu docelowego.<br>Przykłady: Procent procesora CPU > 70%, czas odpowiedzi serwera > 4 ms, liczba wyników dziennika zapytania > 100 itp. |
-| Logika | Zdefiniowane przez użytkownika logikę, sprawdź, czy w ramach sygnał Oczekiwano wartości/zakresu. |
-| Akcja | Akcja do wykonania, gdy alert jest uruchamiany. Wiele działań może wystąpić po zgłoszeniu alertu. Te alerty obsługują grup działań.<br>Przykłady: wysyłanie wiadomości e-mail adres e-mail, wywoływania adresu URL elementu webhook. |
-| Stan monitora | Wskazuje, czy warunek, którego alert metryki utworzone w wyniku tego został rozwiązany. Metryki reguły alertów przykładowe określonej metryki w regularnych odstępach czasu. Spełnieniu kryteriów w regule alertu nowy alert jest tworzony z warunkiem Fired.  Jeśli metryka jest próbkowany ponownie, gdy nadal jest spełnione kryteria, a następnie nic się nie dzieje.  Jeśli jednak nie są spełnione kryteria, warunek uruchomienia alertu został zmieniony na rozwiązane. Przy następnym uruchomieniu spełnione kryteria, a następnie kolejny alert jest tworzony z warunkiem Fired. |
+| Reguła alertów | Definicja warunku w celu utworzenia alertu. Reguła alertu składa się z _zasób docelowy_, _sygnału_, _kryteria_, i _logiki_. Reguła alertu jest tylko wtedy, gdy jest on _włączone_ stanu.
+| Zasób docelowy | Definiuje określonych zasobów i sygnałów, które są dostępne dla alertów. Obiekt docelowy może być dowolnym zasobem platformy Azure.<br><br>Przykłady: maszyna wirtualna, konto magazynu, zestaw skalowania maszyn wirtualnych, obszar roboczy usługi Log Analytics, zasób usługi Application Insights |
+| Sygnał | Źródło danych emitowanych przez zasób docelowy. Sygnał obsługiwane typy to *metryki*, *dziennika aktywności*, *usługi Application Insights*, i *dziennika*. |
+| Kryteria | Kombinacja _sygnału_ i _logiki_ zastosowany do zasobu docelowego.<br><br>Przykłady: Procent procesora CPU > 70%, czas odpowiedzi serwera > 4 ms, liczba wyników dziennika zapytań > 100 i tak dalej |
+| Logic Apps | Zdefiniowane przez użytkownika logiki, aby sprawdzić, czy sygnał mieści się w oczekiwany zakres/wartości. |
+| Akcja | Akcja do wykonania po wyzwoleniu alertu. Wiele operacji może wystąpić, gdy zostanie wyzwolony alert. Te alerty obsługuje grupy akcji.<br><br>Przykłady: wysyłanie wiadomości e-mail na adres e-mail, wywoływanie adres URL elementu webhook |
+| Warunek monitora | Wskazuje, czy warunek, który utworzono alert metryki został rozwiązany. Reguły alertów metryk przykładowe określonej metryki w regularnych odstępach czasu. Jeśli są spełnione kryteria reguły alertu, nowy alert jest tworzony z warunkiem "uruchamiane".  Gdy Metryka próbkowania ponownie, gdy nadal są spełnione kryteria następnie nic się nie dzieje.  Jeśli nie są spełnione kryteria, następnie warunek uruchomienia alertu zostanie zmieniony na "rozwiązany". Przy następnym uruchomieniu kryteria zostaną spełnione, kolejny alert jest tworzony z warunkiem "uruchamiane". |
 
 
-## <a name="alert-pages"></a>Alert stron
-Ujednolicone alerty udostępniają jednego miejsca do wyświetlania i zarządzania wszystkie alerty platformy Azure. W poniższych sekcjach opisano funkcje poszczególnych stron ujednoliconym środowisku.
+## <a name="alert-pages"></a>Strony alertu
+Ujednolicone alerty zapewniają jednego miejsca można wyświetlać i zarządzać wszystkimi alertami platformy Azure. W poniższych sekcjach opisano funkcje poszczególnych stron z ujednoliconym środowisku.
 
 ### <a name="alerts-overview-page"></a>Strony Przegląd alertów
-**Alerty** strony Przegląd pokazuje zagregowane podsumowanie wszystkich alertów wypalane i łączną liczbę włączyć reguły alertów. Zmiana subskrypcji lub parametrów filtru aktualizuje agregacji i alerty generowane listy.
+**Alerty** strona przeglądu zawiera zagregowane podsumowanie wszystkich wyzwolone alerty i łączną liczbę Włącz reguły alertów. Zmiana subskrypcji lub parametrów filtru aktualizuje wartości zagregowanych i alerty wyzwalane listy.
 
  ![Przegląd alertów](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
-### <a name="alert-rules-management"></a>Zarządzania regułami alertów
-**Reguły** jest pojedynczej strony do zarządzania wszystkie reguły alertu subskrypcji platformy Azure. Zawiera listę wszystkich reguł alertów i można sortować na podstawie zasobów docelowych, grupy zasobów, nazwa reguły lub stanu. Reguły alertów można także edytowanych nd włączone lub wyłączone na tej stronie.
+### <a name="alert-rules-management"></a>Zarządzanie regułami alertów
+**Reguły** to pojedyncza strona zarządzania wszystkich reguł alertów wszystkich subskrypcji platformy Azure. On zawiera listę wszystkich reguł alertów i może być sortowane w oparciu o zasoby docelowe, grupy zasobów, nazwę reguły lub stanu. Reguły alertów można również można edytować, włączone lub wyłączone na tej stronie.
 
  ![reguły alertów](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
-## <a name="creating-an-alert-rule"></a>Tworzenie reguły alertu
-Alerty można tworzyć w sposób ciągły, niezależnie od usługi monitorowania lub sygnału typu. Wywoływane wszystkie alerty i powiązanych szczegółów są dostępne w jednej strony.
+## <a name="create-an-alert-rule"></a>Tworzenie reguły alertu
+Alerty można tworzyć w spójny sposób niezależnie od tego, usługi monitorowania lub sygnał typu. Wszystkie wyzwolone alerty i powiązanych szczegółów znajduje się w jednej strony.
  
-Możesz utworzyć nową regułę alertu następujące trzy kroki:
+Utworzysz nową regułę alertu z trzech kroków:
 1. Wybierz _docelowej_ alertu.
-1. Wybierz _sygnału_ z dostępnych sygnały dla elementu docelowego.
-1. Określ _logiki_ ma zostać zastosowany do danych z sygnału.
+1. Wybierz _sygnału_ z dostępne sygnały dla elementu docelowego.
+1. Określ _logiki_ mają być stosowane do danych z sygnałów.
  
-Uproszczony proces tworzenia już wymaga od użytkownika znajomości monitorowania źródła lub sygnały obsługiwane przed wybraniem zasobów platformy Azure. Lista sygnałów dostępne są automatycznie filtrowani w oparciu o wybrane zasobu docelowego i przeprowadza Cię przez definiowanie logiki reguły alertu.
+To uproszczony proces tworzenia pakietów administracyjnych nie wymaga już znajomości źródło monitorowania lub sygnałów, które są obsługiwane przed wybraniem zasobu platformy Azure. Lista sygnałów dostępnych jest automatycznie filtrowany według zasobu docelowego, który można wybrać i prowadzi użytkownika przez definiowanie logiki reguły alertu.
 
-Dowiedz się więcej na temat tworzenia reguł alertów w [tworzenia, wyświetlania, alerty i zarządzaj nimi za pomocą monitora Azure](monitor-alerts-unified-usage.md).
+Dowiedz się więcej na temat sposobu tworzenia reguły alertów w [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](monitor-alerts-unified-usage.md).
 
-Alerty są dostępne przez kilka Azure monitorowanie usług. Aby uzyskać informacje o tym, jak i kiedy należy używać każdego z tych usług, zobacz [Azure monitorowania aplikacji i zasobów](./monitoring-overview.md). Poniższa tabela zawiera listę typów reguł alertów, które są dostępne na platformie Azure i co to jest obecnie obsługiwane przez środowisko unified alertu.
+Alerty są dostępne przez kilka usługi monitorowania platformy Azure. Aby uzyskać informacje o tym, jak i kiedy należy używać każdego z tych usług, zobacz [monitorowania platformy Azure, aplikacje i zasoby](./monitoring-overview.md). Poniższa tabela zawiera listę typów reguł alertów, które są dostępne na platformie Azure. Zawiera również listę co to jest aktualnie obsługiwana w ujednoliconym środowisku alertu.
 
 | **Źródło monitora** | **Typ sygnału**  | **Opis** | 
 |-------------|----------------|-------------|
-| Monitor systemu Azure | Metryka  | Skrót [alerty metryki niemal czasie rzeczywistym](monitoring-near-real-time-metric-alerts.md), obsługuje sprawdzanie warunków metryki co minutę często i umożliwić reguły metryki wielu metryki i wielowymiarowych. Lista obsługiwane typy zasobów jest dostępna w [nowszej alerty metryki dla usługi Azure w portalu Azure](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klasycznym alerty metryki](monitoring-overview-alerts.md) nie są obsługiwane w nowym środowisku alerty. Można je znaleźć w obszarze alerty (klasyczne) w portalu Azure. Alerty klasycznego obsługuje niektóre typy metryk, które nie zostały przeniesione do nowszej alertów. Aby uzyskać pełną listę, zobacz [obsługiwane metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
-| Log Analytics | Dzienniki  | Otrzymywać powiadomienia, lub Uruchom akcje automatyczne, gdy zapytanie wyszukiwania dziennika spełnia określone kryteria. Alerty w analizy dzienników są [kopiowane do nowego środowiska](monitoring-alerts-extend.md). A [Podgląd *analizy dzienników rejestruje jako metryki* ](monitoring-alerts-extend-tool.md) jest dostępna. Wersja zapoznawcza umożliwia wykonać niektóre typy dzienników i przekonwertować je na metryki, gdy użytkownik może następnie alert po wystąpieniu je za pomocą nowego środowiska alertów. Podgląd jest przydatne w przypadku innych niż Azure dzienniki, które chcesz pobrać obok natywnego metryki Azure Monitor. |
-| Dzienniki aktywności | Dziennik aktywności | Zawiera rekordy wszystkich akcji tworzenia, aktualizowania lub usuwania, tworzone przez wybranego celu. |
-| Service Health | Dziennik aktywności  | Nie jest obsługiwany w ujednoliconego alerty. Zobacz [tworzyć alerty dziennika działania dotyczące powiadomień usługi](monitoring-activity-log-alerts-on-service-notifications.md).  |
-| Application Insights | Dzienniki  | Zawiera dzienniki o szczegółach wydajności aplikacji. Zapytanie analytics można zdefiniować warunki działań podejmowanych na podstawie danych aplikacji. |
-| Application Insights | Metryka | Nie jest obsługiwany w ujednoliconego alerty. Zobacz [metryki alerty]. (.. /Application-insights/App-insights-Alerts.MD) |
-| Application Insights | Badania dostępności sieci Web | Nie jest obsługiwany w ujednoliconego alerty.  Zobacz [alerty testu sieci Web](../application-insights/app-insights-monitor-web-app-availability.md). Dostępne dla wszystkich witryn sieci Web narzędzia do wysyłania danych do usługi Application Insights. Otrzymasz powiadomienie, gdy dostępność lub czasu odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
+| Azure Monitor | Metryka  | Nazywane również [alertów dotyczących metryk niemal w czasie rzeczywistym](monitoring-near-real-time-metric-alerts.md), obsługi, obliczania warunków metryki tak często, jak raz na minutę i umożliwiają wielu metryk i wielowymiarowych reguł metryk. Lista obsługiwane typy zasobów jest dostępna w [nowszych alertów metryk dla usług platformy Azure w witrynie Azure portal](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).<br>[Klasyczne alertów dotyczących metryk](monitoring-overview-alerts.md) nie są obsługiwane w nowe środowisko alertów. Można je znaleźć w obszarze alerty (klasyczne) w witrynie Azure portal. Alertów klasycznych obsługuje niektóre typy metryki, które nie zostały przeniesione do nowszych alertów. Aby uzyskać pełną listę, zobacz [metryki obsługiwane](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics). |
+| Log Analytics | Dzienniki  | Otrzymuj powiadomienia lub Uruchom automatyczne akcje, gdy zapytanie wyszukiwania w dzienniku spełnia określone kryteria. Alerty w usłudze Log Analytics są [są kopiowane do nowego środowiska](monitoring-alerts-extend.md). A [omówienie *dzienników usługi Log Analytics, jako metryki* ](monitoring-alerts-extend-tool.md) jest dostępna. (Wersja zapoznawcza) umożliwia podjęcia pewnych typów dzienników i konwertować je na metryk, w którym następnie alerty na nich za pomocą nowego środowiska alertów. Podgląd jest przydatne w przypadku dzienników spoza platformy Azure, które chcesz pobrać wraz z natywnych metryk usługi Azure Monitor. |
+| Dzienniki aktywności | Dziennik aktywności | Zawiera wszystkie rekordy tworzenie, aktualizowanie i usuwanie działań, które zostały utworzone przez wybranego obiektu docelowego. |
+| Kondycja usługi | Dziennik aktywności  | Nieobsługiwane w ujednoliconego alertów. Zobacz [Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Application Insights | Dzienniki  | Zawiera dzienników za pomocą szczegółowe informacje dotyczące wydajności aplikacji. Za pomocą zapytania usługi analytics, można określić warunki akcje do wykonania na podstawie danych aplikacji. |
+| Application Insights | Metryka | Nieobsługiwane w ujednoliconego alertów. Zobacz [alertów dotyczących metryk](../application-insights/app-insights-alerts.md). |
+| Application Insights | Testy dostępności sieci Web | Nieobsługiwane w ujednoliconego alertów.  Zobacz [alerty testu internetowego](../application-insights/app-insights-monitor-web-app-availability.md). Dostępne w dowolnej witrynie sieci Web, który został zinstrumentowany na wysyłanie danych do usługi Application Insights. Otrzymuj powiadomienie, gdy dostępności i czasu odpowiedzi witryny sieci Web znajduje się poniżej oczekiwania. |
 
-## <a name="enhanced-unified-alerts-public-preview"></a>Ulepszone ujednoliconego alerty (publicznej wersji zapoznawczej)
-> [!NOTE]
->  Funkcje w tej sekcji będzie dostępna wkrótce. Może wyglądać w wersji portalu jeszcze. 
+## <a name="enhanced-unified-alerts-public-preview"></a>Ulepszone alerty ujednoliconego (publiczna wersja zapoznawcza)
 
-Środowisko rozszerzone alerty ujednoliconego został wydany w publicznej wersji zapoznawczej monitora Azure 1 czerwca 2018. To środowisko opiera się na zalet [unified alerty](#overview) wydane 2018 marca i zapewnia możliwość zarządzania i agregowanie poszczególnych alertów Oprócz modyfikowania stan alertu. W tej sekcji opisano nowe funkcje i jak przechodzić nowych alertów stron w portalu Azure.
+Środowisko rozszerzonego, ujednoliconego alertów została wydana w publicznej wersji zapoznawczej dla usługi Azure Monitor od 1 czerwca 2018 r. To środowisko jest oparta na korzyści wynikające z [unified alerty](#overview), które zostały wydane w marcu 2018 r. i który umożliwia zarządzanie i agregowanie poszczególnych alertów i modyfikowania stan alertu. W tej sekcji opisano nowe funkcje i korzystanie z nowych stron alertów w witrynie Azure portal.
 
-### <a name="features-enhanced-unified-alerts"></a>Ulepszone funkcje unified alertów
+### <a name="enhanced-unified-alerts"></a>Ulepszone alerty ujednolicone
 
-Nowe środowisko zapewnia następujące funkcje, które nie są dostępne w klasycznym ujednoliconym środowisku:
+Nowe środowisko obejmuje następujące funkcje, które nie są dostępne w klasycznym ujednoliconego środowiska:
 
-- **Wyświetlanie alertów w subskrypcjach** — teraz można wyświetlać i zarządzać poszczególne wystąpienia alertów w wielu subskrypcji w ramach jednego widoku.
-- **Zarządzanie stanem alertów** -alertów jest już w stanie, który wskazuje, czy jego zostały potwierdzone dla zamknięte.
-- **Organizowanie alerty z grupami inteligentne** — inteligentny grup automatycznie zgrupować alerty powiązane z, więc można zarządzać ich jako zestaw zamiast pojedynczo.
+- **Wyświetlanie alertów w subskrypcjach**: można teraz wyświetlać i zarządzać poszczególne wystąpienia alerty wielu subskrypcji w ramach jednego widoku.
+- **Zarządzanie stanem alertów**: alerty mają teraz stanu, która wskazuje, czy zostały one została potwierdzona jako zamknięty.
+- **Organizowanie alertów przy użyciu inteligentnych grup**: grup inteligentne automatycznie pogrupować powiązane alerty, aby zarządzać nimi jako zestawem, nie indywidualnie.
 
 ### <a name="enable-enhanced-unified-alerts"></a>Włącz rozszerzony ujednoliconego alertów
-Włącz nowe środowisko unified alertu, klikając na banerze w górnej części strony alertów. Ten proces tworzy alert magazynu, który obejmuje ostatnich 30 dni wypalane alertów poprzez obsługiwane usługi. Po włączeniu nowego środowiska można przełączać i z powrotem nowym i starym doświadczenia, klikając na banerze.
+Włącz nowe środowisko alertów ujednolicone, wybierając na banerze w górnej części na stronie alertów. Ten proces tworzy magazyn alertu, obejmującą z ostatnich 30 dni wyzwolone alerty obsługiwanych usługach. Po włączeniu nowego środowiska pracy, można przełączać się i z powrotem między nowym i starym doświadczenia, wybierając ten transparent.
 
 > [!NOTE]
 >  Może upłynąć kilka minut, aż nowe środowisko początkowo włączenia.
 
 ![Transparent](media/monitoring-overview-unified-alerts/opt-in-banner.png)
 
-Wszystkie subskrypcje, które mają dostęp do zostanie zarejestrowane po włączeniu nowego środowiska. Mimo że całej subskrypcji jest włączone, tylko użytkownicy, którzy wybrane nowe środowisko będzie można go wyświetlić. Inni użytkownicy z dostępem do subskrypcji musisz włączyć środowisko oddzielnie.
+Wszystkie subskrypcje, które mają dostęp do zarejestrowanych, po włączeniu nowego środowiska. Chociaż cała subskrypcja jest włączona, można wyświetlić tylko użytkownicy, którzy wybierz nowe środowisko. Inni użytkownicy z dostępem do subskrypcji należy włączyć to środowisko oddzielnie.
 
-Włączanie nowe środowisko alertu nie wpływa na konfigurację grupy akcji lub powiadomienia w regułach alertów. Tylko zmienia sposób wyświetlania i Zarządzanie wystąpieniami wypalane alertów w portalu Azure.
+Włączanie nowego środowiska alertów nie ma wpływu na konfigurację grupy akcji lub powiadomienia w reguł alertu. Zmienia tylko sposób wyświetlania i zarządzania jego wystąpieniami wyzwoleń alertów w witrynie Azure portal.
 
 ### <a name="smart-groups"></a>Inteligentne grup
-Inteligentne grup redukcji szumu, umożliwiając zarządzanie jako pojedyncza jednostka nie Zarządzanie indywidualnych alertów powiązanych alertów. Możesz wyświetlić szczegóły grupy inteligentne i ustawić stan podobny do alertu. Każdy alert jest członkiem grupy inteligentne jeden i tylko jeden.
+Inteligentne grup szumu, umożliwiając zarządzanie powiązanych alertów jako pojedynczą jednostkę, a nie poszczególnych alertów. Możesz wyświetlić szczegóły grupy inteligentne i Ustaw stan podobnie jak można się z alertami. Każdy alert jest elementem członkowskim grupy jeden i tylko jeden inteligentne.
 
-Inteligentne grupy są tworzone automatycznie przy użyciu machine learning połączyć powiązanych alertów, które reprezentują jeden problem. Podczas tworzenia alertu algorytm dodaje go do nowej grupy inteligentne lub istniejącej grupy inteligentne na podstawie tych informacji jako wzorce historycznych, podobieństwa właściwości i podobieństwa struktury. Obecnie algorytm uwzględnia alertów z tej samej usługi monitor w ramach subskrypcji. Inteligentne grup można ograniczyć do 99% szumu alertów za pośrednictwem tego konsolidacji. Można wyświetlić przyczyny, że alerty zostały uwzględnione w grupie w strona szczegółów grupy inteligentnych.
+Inteligentne grupy są tworzone automatycznie za pomocą uczenia maszynowego, aby połączyć powiązanych alertów, które reprezentują pojedynczego problemu. Po utworzeniu alertu algorytm dodaje go do nowej grupy inteligentne lub istniejącej grupy inteligentne w oparciu o informacje, takie jak historyczne wzorce, podobne właściwości i podobną strukturę. 
 
-Nazwa grupy inteligentne nazywa się jego pierwszy alert. Nie można utworzyć lub zmienić nazwę grupy inteligentne.
+Obecnie algorytm uwzględnia alertów z tej samej usługi monitor w ramach subskrypcji. Inteligentne grup może zmniejszyć do 99% liczby niepotrzebnych alertów za pośrednictwem dzięki konsolidacji. Można wyświetlić przyczynę, że alerty zostały uwzględnione w grupie w strona szczegółów grupy inteligentne.
+
+Nazwa grupy inteligentne nazywa się jej pierwszy alert. Nie można utworzyć lub zmienić nazwę grupy inteligentne.
 
 
-### <a name="alert-states"></a>Stany alertu
-Rozszerzone alerty ujednoliconego wprowadzenie pojęcia stan alertu. Można ustawić stan alertu, aby określić, w której jest procesu rozpoznawania.  Podczas tworzenia alertu ma stan *nowy*. Można zmienić stan, gdy zostało potwierdzone alert, a po jego zamknięciu go. Wszelkie zmiany stanu są przechowywane w historii alertu.
+### <a name="alert-states"></a>Stany alertów
+Ulepszone alerty ujednoliconego wprowadzono koncepcję stan alertu. Można ustawić stan alertu, aby określić, gdzie są dostępne w procesie rozpoznawania. Gdy alert jest tworzony, ma ona stan *New*. Stan można zmienić, gdy użytkownik potwierdza alertu i po zamknięciu. Wszystkie zmiany stanu są przechowywane w historii alertu.
 
 Obsługiwane są następujące stany alertów.
 
 | Stan | Opis |
 |:---|:---|
-| Nowa | Problem został właśnie wykryte i jeszcze nie przejrzane. |
-| Potwierdzono | Administrator ma sprawdzone alert i zaczął działać na nim. |
-| Zamknięte | Problem został rozwiązany. Gdy alert został zamknięty, możesz uruchomić go Moje zmianę do innego stanu. |
+| Nowa | Problem został wykryty i jeszcze nie została sprawdzona. |
+| Potwierdzono | Administrator przejrzał alertu i do pracy w niej. |
+| Zamknięte | Problem został rozwiązany. Po zamknięciu alertu możesz otworzyć go ponownie, zmieniając go do innego stanu. |
 
-Stan alertu jest inny niż warunek monitora. Metryki reguły alertów można ustawić alert warunek _rozpoznać_ gdy warunek błędu nie jest już spełniany. Stan alertu jest ustawiony przez użytkownika i jest niezależna od warunek monitora. Mimo że system może ustawić warunek monitora rozwiązany, stan alertu nie ulega zmianie, do momentu zmiany przez użytkownika.
+Stan alertu jest inny niż warunek monitora. Reguły alertów metryk można ustawić warunek alertu _rozwiązane_ kiedy warunek błędu nie jest już spełniany. Stan alertu jest ustawiony przez użytkownika i jest niezależna od warunek monitora. Mimo że system można ustawić warunek monitora na "rozwiązany", stan alertu nie jest zmieniany, do momentu zmiany przez użytkownika.
 
-#### <a name="changing-the-state-of-an-alert-or-smart-group"></a>Zmiana stanu alertu lub inteligentne grupy
-Można zmienić stanu alert indywidualny lub zarządzanie wiele alertów jednocześnie przez ustawienie stanu inteligentne grupy.
+#### <a name="change-the-state-of-an-alert-or-smart-group"></a>Zmienianie stanu alertu lub inteligentne grupy
+Można zmienić stanu alert indywidualny lub zarządzanie wiele alertów jednocześnie przez ustawienie stanu grupy inteligentne.
 
-Zmień stan alertu, klikając **zmienić stan alertu** w widoku szczegółów alertu lub zmienianie stanu inteligentne grupy, klikając **zmiany stanu grupy inteligentne** w widoku szczegółów. Można zmienić stanu wielu elementów w tym samym czasie przez zaznaczenie ich w widoku listy, a następnie klikając polecenie **zmiany stanu** w górnej części strony. W obu przypadkach z listy rozwijanej wybierz opcję Nowy stan i opcjonalnie podaj komentarz. Jeśli chcesz zmienić pojedynczego elementu, następnie masz również opcję, aby zastosować te same zmiany dla wszystkich alertów w grupie inteligentne.
+Zmień stan alertu, wybierając **Zmień stan alertu** w widoku szczegółów alertu. Lub zmieniają stan grupy inteligentne przez zaznaczenie **zmiany stanu grupy inteligentne** w widoku szczegółów. Zmień stan z wielu elementów w tym samym czasie najpierw wybierając je w widoku listy, a następnie wybierając **zmiany stanu** w górnej części strony. 
+
+W obu przypadkach wybierz nowy stan z menu rozwijanego. Następnie wprowadź opcjonalny komentarz. Jeśli zmieniasz pojedynczy element masz również opcję, aby zastosować te same zmiany dla wszystkich alertów w grupie inteligentne.
 
 ![Zmień stan](media/monitoring-overview-unified-alerts/change-tate.png)
 
 ### <a name="alerts-page"></a>Strona alertów
-Domyślna strona alertów zawiera podsumowanie alertów, które są tworzone w ramach okna określonym czasie. Łączna liczba alertów dla każdego ważność Wyświetla z kolumnami identyfikowanie łączną liczbę alertów w każdym stanie dla każdego ważności. Kliknij dowolny z wag, aby otworzyć [wszystkie alerty](#all-alerts-page) strony filtrowane według tego ważności.
+Na stronie alertów domyślny zawiera podsumowanie alertów, które są tworzone w danym przedziale czasu. Wyświetla łączna liczba alertów w przypadku każdej wagi z kolumnami, które identyfikują łączną liczbę alertów w każdym stanie w przypadku każdej wagi. Wybierz dowolne ważności, aby otworzyć [wszystkie alerty](#all-alerts-page) strona jest filtrowana według tego ważności.
 
 ![Strona alertów](media/monitoring-overview-unified-alerts/alerts-page.png)
 
-Ten widok można filtrować, wybierając wartości list rozwijanych w górnej części strony.
+Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej części strony.
 
 | Kolumna | Opis |
 |:---|:---|
-| Subskrypcja | Wybierz subskrypcje platformy Azure do 5. Tylko alerty w wybranych subskrypcjach znajdują się w widoku. |
-| Grupa zasobów | Wybierz pojedyncza grupa zasobów. Tylko alerty o celach w wybranej grupy zasobów są uwzględnione w widoku. |
-| Zakres czasu | Tylko alerty generowane w oknie wybrana wartość czasu zostaną uwzględnione w widoku. Obsługiwane wartości to ostatnia godzina, po 24 godzinach, ostatnie 7 dni i ostatnie 30 dni. |
+| Subskrypcja | Wybierz maksymalnie pięć subskrypcji platformy Azure. Tylko w wybranych subskrypcjach są uwzględniane alerty w widoku. |
+| Grupa zasobów | Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. |
+| Przedział czasu | Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. |
 
-Kliknij następujące wartości w górnej części strony alerty, aby otworzyć stronę.
+Wybierz następujące wartości w górnej części strony alerty, aby otworzyć innej strony.
 
 | Wartość | Opis |
 |:---|:---|
-| Łączna liczba alertów | Całkowita liczba alertów, które spełniają wybrane kryteria. Kliknij tę wartość, aby otworzyć widoku wszystkie alerty z bez filtru. |
-| Inteligentne grup | Całkowita liczba grup inteligentne utworzone na podstawie alertów, które spełniają wybrane kryteria. Kliknij tę wartość, aby otworzyć listę grup inteligentne w widoku wszystkie alerty.
-| Łączna liczba reguł alertów | Całkowita liczba reguł alertów w wybranej grupie subskrypcji i zasobu. Kliknij tę wartość, aby otworzyć widok reguł filtrowane wg wybranych subskrypcji i grupy zasobów.
+| Łączna liczba alertów | Całkowita liczba alertów, które spełniają wybrane kryteria. Wybierz tę wartość, aby otworzyć widok wszystkich alertów z żadnego filtru. |
+| Inteligentne grup | Całkowita liczba grup inteligentne, które zostały utworzone przy użyciu alertów, które spełniają wybrane kryteria. Wybierz tę wartość, aby otworzyć listę grup inteligentne w widoku wszystkie alerty.
+| Łączna liczba reguł alertów | Całkowita liczba reguł alertów w wybranej subskrypcji i grupie zasobów. Wybierz tę wartość, aby otworzyć widok reguł filtrowane według wybranej subskrypcji i grupie zasobów.
 
 
-### <a name="all-alerts-page"></a>Wszystkie strony alertów 
-Strona wszystkich alertów umożliwia wyświetlanie listy alertów, które zostały utworzone w oknie wybrana wartość czasu. Można wyświetlić listy poszczególnych alertów lub inteligentne grup zawierających alerty. Kliknij przycisk banerze w górnej części strony, aby przełączyć między widokami.
+### <a name="all-alerts-page"></a>Wszystkie strony alerty 
+Na stronie wszystkie alerty, można wyświetlić listy alertów, które zostały utworzone w przedziale czasu wybranego. Możesz wyświetlić listę poszczególnych alertów lub listę grup inteligentne, które zawierają alertów. Wybierz Baner w górnej części strony Aby przełączać się między widokami.
 
-![Wszystkie strony alertów](media/monitoring-overview-unified-alerts/all-alerts-page.png)
+![Wszystkie strony alerty](media/monitoring-overview-unified-alerts/all-alerts-page.png)
 
-Można filtrować widok, wybierając następujące wartości w list rozwijanych w górnej części strony.
+Widok można filtrować, wybierając następujące wartości w menu rozwijanych w górnej części strony.
 
 | Kolumna | Opis |
 |:---|:---|
-| Subskrypcja | Wybierz subskrypcje platformy Azure do 5. Tylko alerty w wybranych subskrypcjach znajdują się w widoku. |
-| Grupa zasobów | Wybierz pojedyncza grupa zasobów. Tylko alerty o celach w wybranej grupy zasobów są uwzględnione w widoku. |
-| Typ zasobu | Wybierz co najmniej jeden typ zasobu. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko w przypadku, gdy określono grupę zasobów. |
-| Zasób | Wybierz zasób. Tylko alerty o tym zasoby jako element docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko w przypadku, gdy określono typ zasobu. |
-| Ważność | Wybierz alert o ważności lub *wszystkie* uwzględnienie alerty wszystkie poziomy ważności. |
-| Stan monitora | Wybierz warunek monitora lub *wszystkie* uwzględnienie alerty warunków. |
-| Stan alertu | Wybierz alert, stanu lub wybierz opcję *wszystkie* uwzględnienie alerty stanów. |
-| Monitorowanie usługi | Wybierz usługę lub wybierz *wszystkie* uwzględnienie wszystkich usług. Uwzględniane są tylko alertów tworzonych przez zasady przy użyciu usługi jako miejsce docelowe. |
-| Zakres czasu | Tylko alerty generowane w oknie wybrana wartość czasu zostaną uwzględnione w widoku. Obsługiwane wartości to ostatnia godzina, po 24 godzinach, ostatnie 7 dni i ostatnie 30 dni. |
+| Subskrypcja | Wybierz maksymalnie pięć subskrypcji platformy Azure. Tylko w wybranych subskrypcjach są uwzględniane alerty w widoku. |
+| Grupa zasobów | Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. |
+| Typ zasobu | Wybierz jeden lub więcej typów zasobów. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. |
+| Zasób | Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. |
+| Ważność | Wybierz alert o ważności lub *wszystkich* obejmujący alerty wszystkie poziomy ważności. |
+| Warunek monitora | Wybierz warunek monitora lub *wszystkich* obejmujący alerty warunków. |
+| Stan alertu | Wybierz stan alertu lub *wszystkich* obejmujący alerty stanów. |
+| Monitorowanie usługi | Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Uwzględniane są tylko alerty tworzone przez reguły, które korzystają z usługi jako element docelowy. |
+| Przedział czasu | Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. |
 
-Kliknij przycisk **kolumny** w górnej części strony, aby wybrać kolumn do wyświetlenia. Możesz usunąć wszystkie kolumny, z wyjątkiem 
+Wybierz **kolumn** w górnej części strony Aby wybrać kolumny do wyświetlenia. 
 
 ### <a name="alert-detail-page"></a>Strona szczegółów alertu
-Kliknięcie alertu, zostanie wyświetlona strona szczegółów alertu. Zawiera szczegóły dotyczące alertu i umożliwia zmianę stanu.
+Po wybraniu alertu, zostanie wyświetlona strona szczegółów alertu. Ona zawiera szczegóły dotyczące alertu i umożliwia zmianę stanu.
 
 ![Szczegóły alertu](media/monitoring-overview-unified-alerts/alert-detail.png)
 
@@ -202,27 +204,27 @@ Strona szczegółów alertu zawiera następujące sekcje.
 
 | Sekcja | Opis |
 |:---|:---|
-| Podstawy | Wyświetla właściwości oraz inne istotne informacje o alercie. |
-| Historia | Wyświetla listę każdej akcji podjętej przez alert i wszelkie zmiany wprowadzone do alertu. To jest obecnie ograniczone do zmiany stanu. |
-| Grupy inteligentnych | Zawiera informacje o grupie inteligentne alertu. **Liczbę alertów** odwołuje się do liczby alertów w grupie inteligentne. Dotyczy to również inne alerty, które znajdują się w tej samej grupie inteligentne tego samego utworzonych w ciągu ostatnich 30 dni.  Jest to niezależnie od tego, filtr czasu na stronie listy alertów. Kliknij alert, aby wyświetlić jego szczegóły. |
-| Więcej informacji | Wyświetla dalsze informacje kontekstowe alertu, który jest zwykle specyficzny dla typu źródła utworzony alert. |
+| Podstawy | Wyświetla właściwości i inne istotne informacje dotyczące alertu. |
+| Historia | Wyświetla listę każdej akcji podjętej przez alert i wszelkie zmiany wprowadzone do alertu. To jest obecnie ograniczona do zmiany stanu. |
+| Inteligentne grupy | Informacje na temat inteligentnych grupy alertu znajduje się w. *Liczba alertów* odnosi się do liczby alertów, które znajdują się w grupie inteligentne. Obejmuje to innych alertów w tej samej grupie inteligentne, które zostały utworzone w ciągu ostatnich 30 dni.  Jest to niezależnie od tego, filtr czasu na stronie listy alertów. Wybierz alert, aby wyświetlić jego szczegóły. |
+| Więcej informacji | Umożliwia wyświetlanie dodatkowych informacji kontekstowych dla alertu, który jest zazwyczaj specyficzny dla typu źródła, która utworzyła alert. |
 
 
-### <a name="smart-group-detail-page"></a>Strona szczegółów grupy inteligentnych
-Po kliknięciu inteligentne grupy, zostanie wyświetlona strona szczegółów grupy inteligentne. Zawiera szczegóły inteligentne grupy, w tym rozsądkiem użyty do utworzenia grupy i umożliwia zmianę stanu.
+### <a name="smart-group-detail-page"></a>Strona szczegółów grupy inteligentne
+Po wybraniu grupy inteligentne, zostanie wyświetlona strona szczegółów grupy inteligentne. Zapewnia szczegółowe informacje o inteligentne grupy, w tym przyczyny, dla których został użyty do utworzenia grupy, która umożliwia zmianę stanu.
  
-![Szczegóły grupy inteligentnych](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Szczegóły grupy inteligentne](media/monitoring-overview-unified-alerts/smart-group-detail.png)
 
 
-Strona szczegółów grupy inteligentne zawiera następujące sekcje.
+Strona szczegółów grupy inteligentnych zawiera następujące sekcje.
 
 | Sekcja | Opis |
 |:---|:---|
-| Alerty | Zawiera listę poszczególnych alertów, które znajdują się w grupie inteligentne. Kliknij alert, aby otworzyć jego stronę szczegółów alertu. |
-| Historia | Wyświetla listę każdej akcji podjętej przez grupę inteligentne i wszelkie zmiany wprowadzone do niego. To jest obecnie ograniczone do zmian stanu i zmiany członkostwa alertu. |
+| Alerty | Zawiera listę poszczególnych alertów, które znajdują się w grupie inteligentne. Wybierz alert, aby otworzyć jego stronę szczegółów alertu. |
+| Historia | Wyświetla listę każdej akcji podjętej przez inteligentny grupy i wszelkie zmiany, które zostały wprowadzone. To jest obecnie ograniczona do zmiany stanu i zmiany członkostwa alertu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Informacje o sposobie użycia nowego środowiska alertów do tworzenia, wyświetlania i Zarządzanie alertami](monitor-alerts-unified-usage.md)
-- [Dowiedz się więcej o alertach dziennika w środowisku alertów](monitor-alerts-unified-log.md)
-- [Dowiedz się więcej o alertach metryki środowisko alertów](monitoring-near-real-time-metric-alerts.md)
-- [Dowiedz się więcej o alertach dziennika aktywności w środowisku alertów](monitoring-activity-log-alerts-new-experience.md)
+- [Dowiedz się, jak tworzyć, wyświetlać, alerty i zarządzaj nimi za pomocą nowego środowiska alertów](monitor-alerts-unified-usage.md)
+- [Więcej informacji na temat alertów dziennika w środowisko alertów](monitor-alerts-unified-log.md)
+- [Więcej informacji na temat alertów dotyczących metryk w środowisko alertów](monitoring-near-real-time-metric-alerts.md)
+- [Więcej informacji na temat alertów dziennika aktywności w środowisko alertów](monitoring-activity-log-alerts-new-experience.md)

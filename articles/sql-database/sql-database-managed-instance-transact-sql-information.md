@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 80d06a6c40fa804c543a1cee9dc75b57b293beaf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 89544ea72a4356fb8d4f3a192e6fc546eb6b3cff
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446881"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39092014"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server 
 
@@ -267,7 +267,7 @@ Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azur
 
 ### <a name="replication"></a>Replikacja 
  
-Replikacja nie jest jeszcze obsługiwana. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication).
+Replikacja jest obsługiwana w wystąpieniu zarządzanym. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](http://review.docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>Przywracanie — instrukcja 
  
@@ -371,11 +371,11 @@ Aby uzyskać informacji na temat programu SQL Server Agent, zobacz [programu SQL
 Obsługiwane są następujące funkcje nie: 
 - `FILESTREAM` 
 - `FILETABLE` 
-- `EXTERNAL TABLE` 
+- `EXTERNAL TABLE`
 - `MEMORY_OPTIMIZED`  
 
 Aby uzyskać informacji na temat tworzenia i modyfikowania tabel, zobacz [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) i [instrukcji ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
- 
+
 ## <a name="Changes"></a> Zmiany zachowania 
  
 Następujące zmienne, funkcje i widoki zwracają różne wyniki:  

@@ -1,41 +1,41 @@
 ---
-title: Wdrażanie kontenera wielu grup wystąpień kontenera platformy Azure z wiersza polecenia platformy Azure i yaml programu
-description: Dowiedz się, jak wdrożyć grupę kontenera o wielu kontenerów w wystąpień kontenera Azure przy użyciu wiersza polecenia platformy Azure i plik yaml programu.
+title: Wdrażanie grup wielu kontenerów w usłudze Azure Container Instances za pomocą wiersza polecenia platformy Azure i YAML
+description: Dowiedz się, jak wdrożyć grupę kontenerów za pomocą wielu kontenerów w usłudze Azure Container Instances za pomocą wiersza polecenia platformy Azure i pliku YAML.
 services: container-instances
 author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 07/17/2018
 ms.author: marsma
-ms.openlocfilehash: 5dfee15e978d2dba0f50d1dc4b78953698389950
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1d1885112b8e7f7b1e187073c86d561eb57fd23f
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851331"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114467"
 ---
-# <a name="deploy-a-multi-container-container-group-with-yaml"></a>Wdrażanie grupa kontenerem usługi kontenera o yaml programu
+# <a name="deploy-a-multi-container-container-group-with-yaml"></a>Wdrożyć grupę kontenerów z obsługą wielu kontenerów przy użyciu kodu YAML
 
-Wystąpień kontenera platformy Azure obsługuje wdrażanie wielu kontenerów na jednym hoście przy użyciu [grupy kontenerów](container-instances-container-groups.md). Kontener usługi kontenera grupy są przydatne podczas kompilowania aplikacji boczną rejestrowania, monitorowania lub dowolnej innej konfiguracji gdzie usługa musi drugi dołączony proces.
+Usługa Azure Container Instances obsługuje wdrażanie wielu kontenerów na jednym hoście za pomocą [grupy kontenerów](container-instances-container-groups.md). Grupy kontenerów z obsługą wielu kontenerów są przydatne podczas tworzenia przyczepki aplikacji, rejestrowanie, monitorowanie lub dowolnej innej konfiguracji których usługa wymaga drugiego dołączony proces.
 
-Istnieją dwie metody wdrażania grup usługi kontenera przy użyciu wiersza polecenia platformy Azure:
+Istnieją dwie metody wdrażania grup wielu kontenerów przy użyciu wiersza polecenia platformy Azure:
 
-* Wdrażanie plików yaml programu (w tym artykule)
-* [Wdrożenie szablonu usługi Resource Manager](container-instances-multi-container-group.md)
+* Wdrażanie pliku YAML (w tym artykule)
+* [Wdrażanie szablonu usługi Resource Manager](container-instances-multi-container-group.md)
 
-Ze względu na format yaml programu charakter bardziej zwięzły, wdrożenia przy użyciu pliku yaml programu jest zalecana, gdy wdrożenie obejmuje *tylko* wystąpień kontenera. Jeśli zajdzie potrzeba wdrożenia usługi Azure dodatkowe zasoby (na przykład udział plików Azure) w czasie wdrażania wystąpienia kontenera, zaleca się wdrożenie szablonu usługi Resource Manager.
+Ze względu na charakter bardziej zwięzły widok formacie YAML, jest zalecane wdrożenie przy użyciu pliku YAML, gdy Twoje wdrożenie obejmuje *tylko* wystąpienia kontenera. Jeśli musisz wdrożyć zasoby dodatkowe usługi platformy Azure (na przykład udział usługi Azure Files) w czasie wdrażaniem wystąpienia kontenera, zaleca się wdrożenie szablonu usługi Resource Manager.
 
 > [!NOTE]
-> Kontener wielu grup są obecnie ograniczone do kontenerów systemu Linux. Gdy pracujemy, aby wyświetlić wszystkie funkcje w celu kontenery systemu Windows, można znaleźć bieżącej platformy różnice w [przydziały i dostępność wystąpień kontenera platformy Azure w danym regionie](container-instances-quotas.md).
+> Grup wielu kontenerów są obecnie ograniczone do kontenerów systemu Linux. Podczas gdy pracujemy, aby udostępnić wszystkie funkcje dostępne w kontenerach Windows, można znaleźć bieżące różnice dotyczące platform w [limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md).
 
-## <a name="configure-the-yaml-file"></a>Konfigurowanie pliku yaml programu
+## <a name="configure-the-yaml-file"></a>Konfigurowanie pliku YAML
 
-Aby wdrożyć grupę kontenerem usługi kontenera o [utworzyć kontener az] [ az-container-create] poleceń w wiersza polecenia platformy Azure, należy określić konfigurację grupy kontenera w pliku yaml programu, a następnie przekazać plik yaml programu jako do polecenia parametr.
+Aby wdrożyć grupę kontenerów z obsługą wielu kontenerów przy użyciu [utworzyć kontener az] [ az-container-create] polecenia w interfejsie wiersza polecenia platformy Azure, należy określić konfigurację grupy kontenerów w pliku YAML, a następnie przekazać plik YAML jako parametr w poleceniu.
 
-Uruchom kopiowanie następujące yaml programu do nowego pliku o nazwie **wdrażanie aci.yaml**.
+Zacznij od skopiowania poniższego kodu YAML do nowego pliku o nazwie **wdrażanie aci.yaml**.
 
-Ten plik yaml programu definiuje grupę kontenera o dwa kontenery, publiczny adres IP i dwa porty uwidocznione. Pierwszy kontenera w grupie działa aplikacja sieci web skierowane do Internetu. Drugi kontenera boczną, okresowo zgłasza żądania HTTP do aplikacji sieci web uruchomione w kontenerze pierwszy za pośrednictwem sieci lokalnej grupy kontenerów.
+Tego pliku YAML definiuje grupę kontenerów o nazwie "myContainerGroup" z dwóch kontenerów, publiczny adres IP i dwa ujawnionych portów. Pierwszego kontenera w grupie uruchamia aplikację sieci web dostępnym z Internetu. Drugi kontener przyczepki, okresowo tworzą żądania HTTP do aplikacji sieci web, działającej w kontenerze pierwszy za pośrednictwem sieci lokalnej grupy kontenerów.
 
 ```YAML
 apiVersion: 2018-06-01
@@ -72,31 +72,31 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-## <a name="deploy-the-container-group"></a>Wdrożenie grupy kontenera
+## <a name="deploy-the-container-group"></a>Wdrażanie grupy kontenerów
 
-Utwórz nową grupę zasobów o [Tworzenie grupy az] [ az-group-create] polecenia:
+Utwórz grupę zasobów za pomocą [Tworzenie grupy az] [ az-group-create] polecenia:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Wdrożenie grupy kontenera z [utworzyć kontener az] [ az-container-create] polecenie przekazanie pliku yaml programu jako argument:
+Wdróż grupę kontenerów z [utworzyć kontener az] [ az-container-create] polecenia, przekazanie pliku YAML jako argumentu:
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name myContainerGroup -f deploy-aci.yaml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
 W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure.
 
 ## <a name="view-deployment-state"></a>Wyświetl stan wdrożenia
 
-Aby wyświetlić stan wdrożenia, należy użyć następującego [Pokaż kontenera az] [ az-container-show] polecenia:
+Aby wyświetlić stan wdrożenia, należy użyć następującego [az container show] [ az-container-show] polecenia:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Jeśli chcesz wyświetlić działającej aplikacji, przejdź do adresu IP w przeglądarce. Na przykład adres IP jest `52.168.26.124` w tym przykładzie danych wyjściowych:
+Jeśli chcesz wyświetlić uruchomioną aplikację, przejdź do adresu IP w przeglądarce. Na przykład adres IP jest `52.168.26.124` w poniższych przykładowych danych wyjściowych:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
@@ -106,7 +106,7 @@ myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld
 
 ## <a name="view-logs"></a>Wyświetlanie dzienników
 
-Wyświetlanie danych wyjściowych dziennika przy użyciu kontenera [dzienniki kontenera az] [ az-container-logs] polecenia. `--container-name` Argument określa kontener, od którego do pobierania dzienników. W tym przykładzie pierwsze kontener jest określony.
+Wyświetl dane wyjściowe dziennika kontenera przy użyciu [dzienniki kontenerów az] [ az-container-logs] polecenia. `--container-name` Argument określa kontener, z którego ma zostać pobierania dzienników. W tym przykładzie określono pierwszego kontenera.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -121,7 +121,7 @@ listening on port 80
 ::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Aby wyświetlić dzienniki dla kontenera po stronie samochodu, uruchom tego samego polecenie, określając nazwę drugiego kontenera.
+Aby wyświetlić dzienniki dla kontenera po stronie samochód, uruchomić to samo polecenie, określając nazwę drugiego kontenera.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -147,11 +147,11 @@ Date: Tue, 09 Jan 2018 23:25:11 GMT
 Connection: keep-alive
 ```
 
-Jak widać, boczną okresowo wysłał żądanie HTTP do aplikacji głównego sieci web za pośrednictwem sieci lokalnej grupy, aby upewnić się, że jest uruchomiona. W tym przykładzie boczną można rozszerzyć do wyzwolenia alertu, jeżeli Odebrano kod odpowiedzi HTTP innych niż 200 OK.
+Jak widać, przyczepka okresowo wysłał żądanie HTTP do aplikacji internetowej głównego za pośrednictwem sieci lokalnej grupy, aby upewnić się, że jest on uruchomiony. Ten przykład przyczepka może rozszerzyć w taki sposób, aby wyzwolić alert, jeśli otrzymał kod odpowiedzi HTTP inne niż 200 OK.
 
-## <a name="deploy-from-private-registry"></a>Wdrażanie z rejestru prywatnych
+## <a name="deploy-from-private-registry"></a>Wdrożenie z rejestru prywatnego
 
-Aby użyć rejestru obrazu Kontener prywatny, obejmują następujące yaml programu z wartościami zmodyfikowane w danym środowisku:
+Aby korzystać z prywatnego obrazu rejestru kontenerów, obejmują poniższego kodu YAML wartościami zmodyfikowane w danym środowisku:
 
 ```YAML
   imageRegistryCredentials:
@@ -160,7 +160,7 @@ Aby użyć rejestru obrazu Kontener prywatny, obejmują następujące yaml progr
     password: imageRegistryPassword
 ```
 
-Na przykład następujące yaml programu wdraża grupa kontener o jeden kontener, w których obrazu są pobierane z prywatnej rejestru kontenera Azure o nazwie "myregistry":
+Na przykład poniższego kodu YAML wdraża grupę kontenerów za pomocą jednego kontenera, obraz, którego są pobierane z prywatnego rejestru kontenerów platformy Azure o nazwie "myregistry":
 
 ```YAML
 apiVersion: 2018-06-01
@@ -191,23 +191,24 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-## <a name="export-container-group-to-yaml"></a>Eksportowanie grupy kontenerów do yaml programu
+## <a name="export-container-group-to-yaml"></a>Eksportowanie grupy kontenerów do YAML
 
-Konfigurację istniejącej grupy kontenera można wyeksportować do pliku yaml programu za pomocą polecenia interfejsu wiersza polecenia Azure [eksportu kontenera az][az-container-export].
+Konfigurację istniejącej grupy kontenerów można wyeksportować do pliku YAML, za pomocą polecenia interfejsu wiersza polecenia Azure [az container eksportu][az-container-export].
 
-Przydatne w przypadku zachowania konfiguracji grupy kontenera, eksportu służy do przechowywania konfiguracji grupy kontenera w kontroli wersji dla "Konfiguracja jako kod". Możesz też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w yaml programu.
+Przydatne dla grupy kontenerów przez konfigurację zachowania eksportu umożliwia przechowywanie konfiguracje grupy kontenerów w systemie kontroli wersji dla "konfiguracji jako kodu". Możesz też użyć wyeksportowanego pliku jako punktu wyjścia podczas tworzenia nowej konfiguracji w YAML.
 
-Eksportuj konfigurację dla grupy kontenerów utworzony wcześniej przez wystawienie następujące [eksportu kontenera az] [ az-container-export] polecenia:
+Eksportuj konfigurację dla grupy kontenerów utworzone wcześniej przez wydanie następujących [az container eksportu] [ az-container-export] polecenia:
 
 ```azurecli-interactive
-az container export --resource-group rg604 --name myContainerGroup --file deployed-aci.yaml
+az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
 ```
 
-Brak danych wyjściowych jest wyświetlana, jeśli zakończyło się pomyślnie, ale mogą wyświetlać zawartość pliku, aby zobaczyć wynik. Na przykład pierwszych kilku wierszy z `head`:
+Brak danych wyjściowych jest wyświetlana, jeśli polecenie zakończy się pomyślnie, ale można wyświetlić zawartość pliku, aby wyświetlić wynik. Na przykład pierwszych kilka wierszy z `head`:
 
 ```console
 $ head deployed-aci.yaml
-apiVersion: 2018-02-01-preview
+additional_properties: {}
+apiVersion: '2018-06-01'
 location: eastus
 name: myContainerGroup
 properties:
@@ -216,15 +217,11 @@ properties:
     properties:
       environmentVariables: []
       image: microsoft/aci-helloworld:latest
-      ports:
 ```
-
-> [!NOTE]
-> Począwszy od wersji 2.0.34 Azure CLI, istnieje [znany problem] [ cli-issue-6525] w które wyeksportowane grupy kontenerów Określ starszą wersję interfejsu API **2018-02-01-preview** (widoczne w poprzednim Przykład danych wyjściowych JSON). Jeśli chcesz ponownie wdrożyć za pomocą wyeksportowanego pliku yaml programu, można bezpiecznie zaktualizować `apiVersion` wartości w wyeksportowanym pliku yaml programu do **2018-06-01**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule opisano kroki niezbędne do wdrożenia wystąpienie kontenerem usługi kontenera platformy Azure. Dla pracy wystąpień kontenera Azure end-to-end, na przykład za pomocą rejestru prywatnej kontenera platformy Azure zobacz samouczek wystąpień kontenera platformy Azure.
+W tym artykule opisano kroki wymagane do wdrożenia wystąpienia kontenera platformy Azure obsługującej wiele kontenerów. Środowisko usługi Azure Container Instances end-to-end, w tym za pomocą prywatnej usługi Azure container registry zobacz samouczek usługi Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący usługi Azure Container Instances][aci-tutorial]

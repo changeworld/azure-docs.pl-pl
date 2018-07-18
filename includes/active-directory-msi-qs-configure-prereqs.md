@@ -1,1 +1,1 @@
-Jeśli znasz MSI, zapoznaj się z [Przegląd tożsamości usługi zarządzanej](../articles/active-directory/msi-overview.md). Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+Jeśli nie znasz tożsamości usługi zarządzanej, zapoznaj się z [omówieniem tożsamości usługi zarządzanej](../articles/active-directory/msi-overview.md). Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.

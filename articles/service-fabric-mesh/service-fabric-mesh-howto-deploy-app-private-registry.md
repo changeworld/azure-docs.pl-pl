@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie aplikacji z rejestru prywatnego do usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć aplikację, która używa prywatnego rejestru kontenerów do usługi Service Fabric siatki, przy użyciu wiersza polecenia platformy Azure.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: jeconnoc
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/16/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0a70cd1bd8cd7df099250ca59b3f00b1cab29e5c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: af92d3c6ea881d00ec687a5560bf4db35aa431c5
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076301"
+ms.locfileid: "39089490"
 ---
 # <a name="deploy-a-service-fabric-mesh-app-from-a-private-container-image-registry"></a>Wdróż aplikację usługi Service Fabric siatki z prywatnego obrazu rejestru kontenerów
 
@@ -39,7 +39,7 @@ Instalowanie platformy Docker w celu obsługi konteneryzowanych aplikacji usług
 
 Pobierz i zainstaluj najnowszą wersję [Docker Community Edition for Windows][download-docker]. 
 
-Podczas instalacji należy wybrać **kontenery Windows użyj zamiast kontenerów systemu Linux** po wyświetleniu monitu. Konieczne będzie wówczas Wyloguj się i zaloguj się ponownie. Po zalogowaniu się ponownie, jeśli wcześniej nie włączać funkcji Hyper-V, monit może zostać umożliwia funkcji Hyper-V. Należy włączyć funkcji Hyper-V i ponownie uruchom komputer.
+Podczas instalacji należy wybrać **kontenery Windows użyj zamiast kontenerów systemu Linux** po wyświetleniu monitu. Konieczne będzie wówczas Wyloguj się i zaloguj się ponownie. Po zalogowaniu się ponownie, jeśli wcześniej nie włączać funkcji Hyper-V, monit może zostać umożliwia funkcji Hyper-V. Włączanie funkcji Hyper-V, a następnie ponownie uruchom komputer.
 
 Po ponownym uruchomieniu komputera, Docker zostanie wyświetlony monit, aby włączyć **kontenery** funkcji, włącz go i ponownie uruchomić komputer.
 
@@ -116,8 +116,7 @@ Result
 --------
 1.1-alpine
 ```
-
-Pokazuje to, że `azure-mesh-helloworld:1.1-alpine` obraz znajduje się w prywatnym rejestrze kontenerów.
+Dane wyjściowe poprzedniego potwierdza obecność `azure-mesh-helloworld:1.1-alpine` w prywatnym rejestrze kontenerów.
 
 ## <a name="retrieve-credentials-for-the-registry"></a>Pobieranie poświadczeń rejestru
 
@@ -135,7 +134,8 @@ az acr credential show --name <acrName> --query username
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Wartości podanych w tym celu przed poleceń jest określany jako `<acrLoginServer>`, `<acrUserName>`, i `<acrPassword>` w następującym poleceniu.
+Wartości podanych w tym celu przed polecenia są określone jako `<acrLoginServer>`, `<acrUserName>`, i `<acrPassword>` w następującym poleceniu.
+
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -144,7 +144,7 @@ Tworzenie aplikacji i powiązanych zasobów przy użyciu następującego polecen
 `registry-password` Parametr szablonu jest `securestring`. Go nie będą wyświetlane w stan wdrożenia i `az mesh service show` poleceń. Upewnij się, że jest poprawnie określona w następującym poleceniu.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.private_registry.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}, \"registry-server\": {\"value\": \"<acrLoginServer>\"}, \"registry-username\": {\"value\": \"<acrUserName>\"}, \"registry-password\": {\"value\": \"<acrPassword>\"}}" 
 ```
 
 W ciągu kilku minut polecenia powinny zostać zwrócone przy użyciu:
@@ -152,9 +152,9 @@ W ciągu kilku minut polecenia powinny zostać zwrócone przy użyciu:
 `helloWorldPrivateRegistryApp has been deployed successfully on helloWorldPrivateRegistryNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Otwórz aplikację
-Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Powinna zostać wyświetlona strony sieci web za pomocą usługi Service Fabric siatki logo.
+Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Wyświetla stronę sieci web za pomocą usługi Service Fabric siatki logo.
 
-Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi.
+Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Opcjonalnie można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi. 
  
 Nazwa zasobu sieci dla tej aplikacji jest `helloWorldPrivateRegistryNetwork`, pobierania informacji o nim przy użyciu następującego polecenia. 
 

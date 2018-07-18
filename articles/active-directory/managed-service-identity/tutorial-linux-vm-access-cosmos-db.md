@@ -1,6 +1,6 @@
 ---
-title: Umożliwia dostęp do bazy danych Azure rozwiązania Cosmos MSI maszyny Wirtualnej systemu Linux
-description: Samouczek, który przeprowadzi Cię przez proces przy użyciu System-Assigned zarządzane usługi tożsamości (MSI) na maszynie Wirtualnej systemu Linux, można uzyskać dostępu do bazy danych Azure rozwiązania Cosmos.
+title: Używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskania dostępu do usługi Azure Cosmos DB
+description: Samouczek przedstawiający proces użycia przypisanej przez system tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux do uzyskiwania dostępu do usługi Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -9,68 +9,68 @@ editor: ''
 ms.service: active-directory
 ms.component: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: skwan
-ms.openlocfilehash: c395851fbcc3e46357b390d9dfa20bd9ac944716
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.author: daveba
+ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594435"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37904428"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Samouczek: Umożliwia dostęp do bazy danych Azure rozwiązania Cosmos MSI maszyny Wirtualnej systemu Linux 
+# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Samouczek: używanie tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do uzyskania dostępu do usługi Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-W tym samouczku przedstawiono sposób tworzenia i używania MSI maszyny Wirtualnej systemu Linux. Omawiane kwestie:
+Z tego samouczka dowiesz się, jak utworzyć tożsamość usługi zarządzanej maszyny wirtualnej z systemem Linux i z niej korzystać. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Utwórz Maszynę wirtualną systemu Linux msi włączone
+> * Tworzenie maszyny wirtualnej z systemem Linux z włączoną tożsamością usługi zarządzanej
 > * Tworzenie konta usługi Cosmos DB
-> * Tworzenie kolekcji w ramach konta bazy danych rozwiązania Cosmos
-> * Udziel dostępu do pliku MSI na wystąpienie bazy danych Azure rozwiązania Cosmos
-> * Pobrać `principalID` z pliku msi maszyny Wirtualnej systemu Linux
-> * Uzyskaj token dostępu i użyć go do wywołania usługi Azure Resource Manager
-> * Uzyskaj klucze dostępu z usługi Azure Resource Manager w celu wykonywania wywołań DB rozwiązania Cosmos
+> * Tworzenie kolekcji w ramach konta usługi Cosmos DB
+> * Udzielanie dostępu tożsamości usługi zarządzanej do wystąpienia usługi Azure Cosmos DB
+> * Pobieranie elementu `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux
+> * Uzyskiwanie tokenu dostępu i używanie go do wywoływania usługi Azure Resource Manager
+> * Uzyskiwanie kluczy dostępu z usługi Azure Resource Manager w celu wykonywania wywołań usługi Cosmos DB
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com) przed kontynuowaniem.
+Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com) przed kontynuowaniem.
 
 [!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
 
-Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, w tym samouczku, masz dwie opcje:
+Aby uruchomić przykłady skryptów interfejsu wiersza polecenia w tym samouczku, masz dwie opcje:
 
-- Użyj [powłoki chmury Azure](~/articles/cloud-shell/overview.md) w portalu Azure lub za pośrednictwem **spróbuj on** przycisk znajdujący się w prawym górnym rogu każdej blok kodu.
-- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 lub nowsza), jeśli wolisz korzystać z konsoli lokalnej interfejsu wiersza polecenia.
+- Użyj usługi [Azure Cloud Shell](~/articles/cloud-shell/overview.md) w witrynie Azure Portal lub za pośrednictwem przycisku **Wypróbuj** znajdującego się w prawym górnym rogu każdego bloku kodu.
+- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Linux w nowej grupy zasobów
+## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Tworzenie maszyny wirtualnej z systemem Linux w nowej grupie zasobów
 
-W tym samouczku, Utwórz nową MSI włączone maszyny Wirtualnej systemu Linux.
+Na potrzeby tego samouczka utwórz nową maszynę wirtualną z systemem Linux z włączoną obsługą tożsamości usługi zarządzanej.
 
-Aby utworzyć maszynę Wirtualną z włączoną MSI:
+Aby utworzyć maszynę wirtualną z obsługą tożsamości usługi zarządzanej:
 
-1. Jeśli używasz interfejsu wiersza polecenia Azure w lokalnej konsoli, najpierw zaloguj się do platformy Azure przy użyciu [logowania az](/cli/azure/reference-index#az_login). Użyj konta, które jest skojarzone z subskrypcją platformy Azure, w którym chcesz wdrożyć maszyny Wirtualnej:
+1. Jeśli używasz interfejsu wiersza polecenia platformy Azure w konsoli lokalnej, najpierw zaloguj się do platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az_login). Użyj konta skojarzonego z subskrypcją platformy Azure, w ramach której chcesz wdrożyć maszynę wirtualną:
 
    ```azurecli-interactive
    az login
    ```
 
-2. Utwórz [grupy zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) zawierania i wdrażania maszyny Wirtualnej i powiązanych zasobów, przy użyciu [Tworzenie grupy az](/cli/azure/group/#az_group_create). Ten krok można pominąć, jeśli masz już grupę zasobów, które chcesz użyć:
+2. Utwórz [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az_group_create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. Utwórz maszynę Wirtualną przy użyciu [tworzenia maszyny wirtualnej az](/cli/azure/vm/#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* msi, zgodnie z żądaniem `--assign-identity` parametru. `--admin-username` i `--admin-password` parametry Określ konto użytkownika administracyjnego nazwę i hasło do logowania w maszynie wirtualnej. Zaktualizować te wartości jako odpowiednie dla danego środowiska: 
+3. Utwórz maszynę wirtualną przy użyciu polecenia [az vm create](/cli/azure/vm/#az_vm_create). W poniższym przykładzie jest tworzona maszyna wirtualna o nazwie *myVM* z tożsamością usługi zarządzanej, zgodnie z żądaniem parametru `--assign-identity`. Parametry `--admin-username` i `--admin-password` określają konto nazwy użytkownika administracyjnego i hasła na potrzeby logowania do maszyny wirtualnej. Zaktualizuj te wartości zgodnie z wymaganiami środowiska: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -78,31 +78,31 @@ Aby utworzyć maszynę Wirtualną z włączoną MSI:
 
 ## <a name="create-a-cosmos-db-account"></a>Tworzenie konta usługi Cosmos DB 
 
-Jeśli nie masz jeszcze jednego, Utwórz konto DB rozwiązania Cosmos. Można pominąć ten krok i użyj istniejącego konta DB rozwiązania Cosmos. 
+Jeśli jeszcze nie masz konta usługi Cosmos DB, utwórz je. Możesz pominąć ten krok i użyć istniejącego konta usługi Cosmos DB. 
 
-1. Kliknij przycisk **+/ Utwórz nową usługę** znaleziono przycisku w lewym górnym rogu portalu Azure.
-2. Kliknij przycisk **baz danych**, następnie **bazy danych Azure rozwiązania Cosmos**i nowy "nowe konto" Wyświetla panelu.
-3. Wprowadź **identyfikator** dla konta rozwiązania Cosmos bazy danych, które można użyć później.  
-4. **Interfejs API** powinien być ustawiony na "SQL". Podejście opisane w tym samouczku mogą być używane z innych dostępnych typów interfejsu API, ale czynności opisane w tym samouczku są dla interfejsu API SQL.
-5. Upewnij się, **subskrypcji** i **grupy zasobów** odpowiadały określony podczas tworzenia maszyny Wirtualnej w poprzednim kroku.  Wybierz **lokalizacji** gdzie dostępna jest opcja DB rozwiązania Cosmos.
+1. Kliknij przycisk **+/Utwórz nową usługę** znajdujący się w lewym górnym rogu witryny Azure Portal.
+2. Kliknij kolejno pozycje **Bazy danych** i **Azure Cosmos DB**. Zostanie wyświetlony panel „Nowe konto”.
+3. Wprowadź **identyfikator** konta usługi Cosmos DB do późniejszego użycia.  
+4. **Interfejs API** należy ustawić na „SQL”. Podejście opisane w tym samouczku można stosować w przypadku innych dostępnych typów interfejsu API, ale kroki opisane w tym samouczku dotyczą interfejsu API SQL.
+5. Upewnij się, że **Subskrypcja** i **Grupa zasobów** pasują do wartości określonych podczas tworzenia maszyny wirtualnej w poprzednim kroku.  Wybierz **lokalizację**, w której jest dostępna usługa Cosmos DB.
 6. Kliknij przycisk **Utwórz**.
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>Tworzenie kolekcji w ramach konta bazy danych rozwiązania Cosmos
+## <a name="create-a-collection-in-the-cosmos-db-account"></a>Tworzenie kolekcji w ramach konta usługi Cosmos DB
 
-Następnie dodaj zbierania danych w ramach konta rozwiązania Cosmos bazy danych, które można zbadać w kolejnych krokach.
+Następnie na koncie usługi Cosmos DB dodaj kolekcję danych, dla której możesz utworzyć zapytania w kolejnych krokach.
 
-1. Przejdź do nowo utworzonego konta DB rozwiązania Cosmos.
-2. Na **omówienie** kliknij kartę **+/ Dodaj kolekcji** przycisk i "Dodaj"kolekcji panelu slajdów wychodzących.
-3. Nadaj kolekcji select ID, identyfikator kolekcji bazy danych o pojemności, wprowadź klucz partycji, wprowadź wartość przepływności, a następnie kliknij **OK**.  W tym samouczku wystarczy użyć "Test", jak identyfikator bazy danych, identyfikator kolekcji, wybierz stały pojemności i najniższego przepływności (400 RU/s).  
+1. Przejdź do nowo utworzonego konta usługi Cosmos DB.
+2. Na karcie **Omówienie** kliknij przycisk **+/Dodaj kolekcję**. Zostanie wysunięty panel „Dodawanie kolekcji”.
+3. Nadaj kolekcji identyfikator bazy danych i identyfikator kolekcji, wybierz pojemność magazynu, wprowadź klucz partycji, wprowadź wartość przepływności, a następnie kliknij przycisk **OK**.  W tym samouczku wystarczy użyć identyfikatora bazy danych i identyfikatora kolekcji „Test”, a następnie wybrać stałą pojemność magazynu i najniższą przepływność (400 RU/s).  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Pobrać `principalID` msi maszyny Wirtualnej systemu Linux
+## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Pobieranie elementu `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux
 
-Aby uzyskać dostęp do klucze dostępu do konta DB rozwiązania Cosmos w poniższej sekcji z Menedżera zasobów, musisz pobrać `principalID` msi maszyny Wirtualnej systemu Linux.  Pamiętaj zastąpić `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (w której należy maszyna wirtualna znajduje się grupa zasobów), i `<VM NAME>` wartości parametrów z własne wartości.
+Aby uzyskać dostęp do kluczy dostępu do konta usługi Cosmos DB z poziomu usługi Resource Manager w poniższej sekcji, musisz pobrać element `principalID` tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux.  Upewnij się, że wartości parametrów `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (grupa zasobów, do której należy maszyna wirtualna) i `<VM NAME>` zostały zastąpione własnymi wartościami.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
-Odpowiedź zawiera szczegóły MSI przypisane systemu (Uwaga principalID, ponieważ jest używany w następnej sekcji):
+Odpowiedź zawiera szczegółowe informacje o przypisanej przez system tożsamości usługi zarządzanej (zanotuj identyfikator principalID, ponieważ będzie używany w następnej sekcji):
 
 ```bash  
 {
@@ -114,17 +114,17 @@ Odpowiedź zawiera szczegóły MSI przypisane systemu (Uwaga principalID, poniew
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Przyznać uprawnienia MSI maszyny Wirtualnej systemu Linux do klucze dostępu do konta DB rozwiązania Cosmos
+## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Udzielanie dostępu tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux do kluczy dostępu do konta usługi Cosmos DB
 
-Rozwiązania cosmos bazy danych nie obsługuje natywnie uwierzytelniania usługi Azure AD. Jednak można użyć Instalatora MSI można pobrać klucz dostępu DB rozwiązania Cosmos z Menedżera zasobów, a następnie za pomocą klawisza dostępu DB rozwiązania Cosmos. W tym kroku należy przyznać uprawnienia MSI kluczy do konta DB rozwiązania Cosmos.
+Usługa Cosmos DB nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD. Jednak możesz użyć tożsamości usługi zarządzanej, aby pobrać klucz dostępu konta usługi Cosmos DB z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do usługi Cosmos DB. W tym kroku udzielasz tożsamości usługi zarządzanej dostępu do kluczy do konta usługi Cosmos DB.
 
-Aby udzielić dostępu tożsamości MSI na koncie DB rozwiązania Cosmos w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure, zaktualizuj wartości dla `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<COSMOS DB ACCOUNT NAME>` dla danego środowiska. Zastąp `<MSI PRINCIPALID>` z `principalId` właściwości zwróconej przez `az resource show` w [pobrać principalID msi maszyny Wirtualnej systemu Linux](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Rozwiązania cosmos bazy danych obsługuje dwa poziomy szczegółowości klawiszy dostępu: odczytu/zapisu dostępu do konta, a także dostęp tylko do odczytu do konta.  Przypisz `DocumentDB Account Contributor` roli, jeśli chcesz pobrać klucze odczytu/zapisu dla konta lub przypisać `Cosmos DB Account Reader Role` roli, jeśli chcesz pobrać klucze tylko do odczytu dla konta:
+Aby udzielić dostępu tożsamości usługi zarządzanej do konta usługi Cosmos DB w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure, zaktualizuj wartości `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` i `<COSMOS DB ACCOUNT NAME>` dla danego środowiska. Zastąp element `<MSI PRINCIPALID>` właściwością `principalId` zwróconą przez polecenie `az resource show` w części [Pobieranie identyfikatora principalID tożsamości usługi zarządzanej maszyny wirtualnej z systemem Linux](#retrieve-the-principalID-of-the-linux-VM's-MSI).  W przypadku korzystania z kluczy dostępu usługa Cosmos DB obsługuje dwa poziomy szczegółowości: dostęp do odczytu/zapisu na koncie i dostęp tylko do odczytu do konta.  Przypisz rolę `DocumentDB Account Contributor`, jeśli chcesz uzyskać klucze odczytu/zapisu dla konta, lub przypisz rolę `Cosmos DB Account Reader Role`, jeśli chcesz uzyskać klucze tylko do odczytu dla konta:
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
 ```
 
-Odpowiedź zawiera szczegóły dotyczące przypisania roli, utworzyć:
+Odpowiedź zawiera szczegóły utworzonego przypisania roli:
 
 ```
 {
@@ -140,24 +140,24 @@ Odpowiedź zawiera szczegóły dotyczące przypisania roli, utworzyć:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Uzyskaj token dostępu za pomocą Instalatora MSI maszyny Wirtualnej systemu Linux i użyć go do wywołania usługi Azure Resource Manager
+## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Uzyskiwanie tokenu dostępu przy użyciu tożsamości maszyny wirtualnej z systemem Linux oraz używanie go do wywoływania usługi Azure Resource Manager
 
-W pozostałej części tego samouczka Praca z maszyny Wirtualnej utworzone wcześniej.
+W pozostałej części tego samouczka będziesz pracować z poziomu wcześniej utworzonej maszyny wirtualnej.
 
-Aby wykonać te kroki, należy klient SSH. Jeśli korzystasz z systemu Windows, możesz użyć klienta SSH w [podsystemu systemu Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Jeśli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [sposobu użycia SSH kluczy systemu Windows Azure](../../virtual-machines/linux/ssh-from-windows.md), lub [sposobu tworzenia i używania SSH publiczne i prywatne parę kluczy dla maszyn wirtualnych systemu Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
+Aby wykonać te kroki, potrzebujesz klienta SSH. Jeśli używasz systemu Windows, możesz użyć klienta SSH w pozycji [Podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Jeżeli potrzebujesz pomocy w konfigurowaniu kluczy klienta SSH, zobacz [Jak używać kluczy SSH z systemem Windows na platformie Azure](../../virtual-machines/linux/ssh-from-windows.md) lub [Jak utworzyć i użyć parę publicznego i prywatnego klucza SSH dla maszyn wirtualnych z systemem Linux na platformie Azure](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. W portalu Azure, przejdź do **maszyn wirtualnych**, przejdź do maszyny wirtualnej systemu Linux, następnie z **omówienie** kliknij **Connect** u góry. Skopiuj ciąg, aby nawiązać połączenie z maszyną Wirtualną. 
-2. Nawiązać połączenie z maszyną Wirtualną przy użyciu klienta SSH.  
-3. Następnie zostanie wyświetlony monit o wprowadź w Twojej **hasło** dodane podczas tworzenia **maszyny Wirtualnej systemu Linux**. Użytkownik powinien następnie można pomyślnie zarejestrowany.  
-4. Umożliwia ZWINIĘCIE Uzyskaj token dostępu usługi Azure Resource Manager: 
+1. W witrynie Azure Portal przejdź do pozycji **Maszyny wirtualne**, przejdź do maszyny wirtualnej z systemem Linux, a następnie na stronie **Przegląd** kliknij opcję **Połącz** u góry. Skopiuj ciąg, aby nawiązać połączenie z maszyną wirtualną. 
+2. Połącz się z maszyną wirtualną przy użyciu klienta SSH.  
+3. Następnie zobaczysz monit o wprowadzenie **hasła** dodanego podczas tworzenia **maszyny wirtualnej z systemem Linux**. Logowanie powinno wtedy zostać pomyślnie wykonane.  
+4. Użyj programu CURL, aby uzyskać token dostępu dla usługi Azure Resource Manager: 
      
     ```bash
     curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
  
     > [!NOTE]
-    > W żądaniu poprzedniej wartości parametru "zasobu" musi być dokładnego dopasowania dla oczekiwano przez usługę Azure AD. Podczas korzystania z usługi Azure Resource Manager identyfikator zasobu, należy dołączyć końcowy ukośnik w identyfikatorze URI.
-    > W poniższych odpowiedzi elementu ' access_token ', jak została skrócona do skrócenia.
+    > W poprzednim żądaniu wartość parametru „resource” musi być dokładnie dopasowana do tego, czego oczekujemy od usługi Azure AD. W przypadku użycia identyfikatora zasobu usługi Azure Resource Manager należy uwzględnić końcowy ukośnik w identyfikatorze URI.
+    > W poniższej odpowiedzi element access_token został skrócony, aby zapewnić zwięzłość informacji.
     
     ```bash
     {"access_token":"eyJ0eXAiOi...",
@@ -169,25 +169,25 @@ Aby wykonać te kroki, należy klient SSH. Jeśli korzystasz z systemu Windows, 
      "client_id":"1ef89848-e14b-465f-8780-bf541d325cd5"}
      ```
     
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Uzyskaj klucze dostępu z usługi Azure Resource Manager w celu wykonywania wywołań DB rozwiązania Cosmos  
+## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Uzyskiwanie kluczy dostępu z usługi Azure Resource Manager w celu wykonywania wywołań usługi Cosmos DB  
 
-Teraz można użyć CURL do wywołania usługi Resource Manager można pobrać klucz dostępu do konta rozwiązania Cosmos DB przy użyciu tokenu dostępu pobrany w poprzedniej sekcji. Gdy będziemy mieć klucz dostępu, możemy zapytania DB rozwiązania Cosmos. Pamiętaj zastąpić `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, i `<COSMOS DB ACCOUNT NAME>` wartości parametrów z własne wartości. Zastąp `<ACCESS TOKEN>` wartość przy użyciu tokenu dostępu został wcześniej pobrany.  Jeśli chcesz pobrać klucze odczytu/zapisu, użyj operacji klucza typu `listKeys`.  Jeśli chcesz pobrać klucze tylko do odczytu, użyj typu klucza operacji `readonlykeys`:
+Teraz użyj programu CURL, aby wywołać usługę Resource Manager przy użyciu tokenu dostępu pozyskanego w poprzedniej sekcji, aby pobrać klucz dostępu do usługi Cosmos DB. Gdy będziemy już mieć klucz dostępu, będzie można wykonać zapytanie dotyczące usługi Cosmos DB. Pamiętaj, aby zastąpić parametry `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` i `<COSMOS DB ACCOUNT NAME>` własnymi wartościami. Zastąp wartość `<ACCESS TOKEN>` tokenem dostępu pobranym wcześniej.  Jeśli chcesz pobrać klucze odczytu/zapisu, użyj typu operacji klucza `listKeys`.  Jeśli chcesz pobrać klucze tylko do odczytu, użyj typu operacji klucza `readonlykeys`:
 
 ```bash 
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT NAME>/<KEY OPERATION TYPE>?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 
 ```
 
 > [!NOTE]
-> Tekst w adresie URL wcześniejsze jest rozróżniana wielkość liter, dlatego upewnij się, jeśli używasz górna małe dla grupy zasobów, uwzględnienie w związku z tym. Ponadto jest ważne dowiedzieć się, że jest to żądanie POST nie żądanie GET i upewnij się, że należy przekazać wartość do przechwytywania limit długości - d, który może mieć wartości NULL.  
+> W tekście w poprzednim adresie URL rozróżniana jest wielkość liter, więc upewnij się, że stosujesz odpowiednie małe i wielkie litery dla grup zasobów, aby odpowiednio je przedstawić. Ponadto ważna informacja jest taka, że jest to żądanie POST, a nie GET. Należy upewnić się, że zostaje przekazana wartość do przechwytywania limitu długości z parametrem -d, który może mieć wartość NULL.  
 
-Odpowiedzi CURL zawiera listę kluczy.  Na przykład, jeśli zostanie wyświetlony tylko do odczytu klucze:  
+Odpowiedź programu CURL zapewnia listę kluczy.  Jeśli pobierasz klucze tylko do odczytu:  
 
 ```bash 
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
 
-Teraz, po klucz dostępu dla konta rozwiązania Cosmos bazy danych, możesz przekazać go do SDK DB rozwiązania Cosmos i wywoływać w celu uzyskania dostępu do konta.  Na przykład szybki można przekazać klucz dostępu do wiersza polecenia platformy Azure.  Możesz uzyskać <COSMOS DB CONNECTION URL> z **omówienie** kartę w bloku konta DB rozwiązania Cosmos w portalu Azure.  Zastąp <ACCESS KEY> o wartości otrzymanych powyżej:
+Teraz, gdy masz klucz dostępu do konta usługi Cosmos DB, możesz przekazać go do zestawu SDK usługi Cosmos DB i wykonywać wywołania w celu uzyskania dostępu do konta.  Szybki przykład to przekazanie klucza dostępu do wiersza polecenia platformy Azure.  Element <COSMOS DB CONNECTION URL> można uzyskać na karcie **Omówienie** karty w bloku konta usługi Cosmos DB w witrynie Azure Portal.  Zastąp element wartością <ACCESS KEY> uzyskaną powyżej:
 
 ```bash
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
@@ -253,10 +253,10 @@ To polecenie interfejsu wiersza polecenia zwraca szczegółowe informacje o kole
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób korzystania z tożsamości usługi zarządzane na maszynie wirtualnej systemu Linux można uzyskać dostępu do bazy danych rozwiązania Cosmos.  Aby dowiedzieć się więcej na temat rozwiązania Cosmos DB zobacz:
+W tym samouczku przedstawiono sposób użycia tożsamości usługi zarządzanej na maszynie wirtualnej z systemem Linux w celu uzyskania dostępu do usługi Cosmos DB.  Aby dowiedzieć się więcej o usłudze Cosmos DB, zobacz:
 
 > [!div class="nextstepaction"]
->[Omówienie usługi Azure DB rozwiązania Cosmos](/azure/cosmos-db/introduction)
+>[Omówienie usługi Azure Cosmos DB](/azure/cosmos-db/introduction)
 

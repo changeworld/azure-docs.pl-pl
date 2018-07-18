@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 46e93953ba8db141b99b14aa78674e85b343adbc
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 4a592a20d009b269f1e8f7079311caa4c33cf613
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903402"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113110"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Wdrażanie klastra Docker CE
 
@@ -30,10 +30,10 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *ukwest*.
+Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *westus2* lokalizacji.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location ukwest
+az group create --name myResourceGroup --location westus2
 ```
 
 Dane wyjściowe:
@@ -41,7 +41,7 @@ Dane wyjściowe:
 ```json
 {
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup",
-  "location": "ukwest",
+  "location": "westus2",
   "managedBy": null,
   "name": "myResourceGroup",
   "properties": {
@@ -53,17 +53,17 @@ Dane wyjściowe:
 
 ## <a name="create-docker-swarm-cluster"></a>Tworzenie klastra Docker Swarm
 
-Utwórz klaster Docker CE w usłudze Azure Container Service za pomocą polecenia [az acs create](/cli/azure/acs#az_acs_create). 
+Utwórz klaster Docker CE w usłudze Azure Container Service za pomocą polecenia [az acs create](/cli/azure/acs#az_acs_create). Aby uzyskać informacje na region availaiblity Docker CE, zobacz [regionów usługi ACS dla Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 W poniższym przykładzie tworzony jest klaster o nazwie *mySwarmCluster* z jednym węzłem głównym systemu Linux i trzema węzłami agenta systemu Linux.
 
 ```azurecli-interactive
-az acs create --name mySwarmCluster --orchestrator-type swarm --resource-group myResourceGroup --generate-ssh-keys
+az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 W niektórych przypadkach, np. ograniczonej wersji próbnej, subskrypcja platformy Azure ma ograniczony dostęp do zasobów platformy Azure. Jeśli wdrożenie nie powiedzie się z powodu ograniczonej liczby dostępnych rdzeni, zmniejsz domyślną liczbę agentów, dodając `--agent-count 1` do polecenia [az acs create](/cli/azure/acs#az_acs_create). 
 
-Po kilku minutach polecenie zostanie zakończone i zwróci informacje o klastrze sformatowanym przy użyciu formatu JSON.
+Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON.
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 

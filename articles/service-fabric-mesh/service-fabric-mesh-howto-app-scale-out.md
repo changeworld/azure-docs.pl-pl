@@ -1,7 +1,7 @@
 ---
 title: Skalowanie usług w aplikacji usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak i niezależne skalowanie usług w ramach aplikacji uruchomionej na usługi Service Fabric siatki, przy użyciu wiersza polecenia platformy Azure.
-services: service-fabric
+services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
 manager: timlt
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/26/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0350b767b65aee0c4611bb8fa6f635a651d33dc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a4260fd808643971036ad87c01bd2fdec299ccc6
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076306"
+ms.locfileid: "39089747"
 ---
 # <a name="scale-services-within-an-application-running-on-service-fabric-mesh"></a>Skalowanie usług w ramach aplikacji uruchomionej na usługi Service Fabric siatki
 
@@ -55,16 +55,16 @@ Tworzenie aplikacji w grupie zasobów przy użyciu `deployment create` polecenia
 az mesh deployment create --resource-group <resourceGroupName> --template-uri https://sfmeshsamples.blob.core.windows.net/templates/visualobjects/mesh_rp.base.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}"
   
 ```
-Poprzednie polecenie wdraża Linux przy użyciu [szablonu mesh_rp.base.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/visualobjects/mesh_rp.base.linux.json). Jeśli chcesz wdrożyć aplikację Windows, użyj [szablonu mesh_rp.base.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/visualobjects/mesh_rp.base.windows.json). Obrazy kontenerów Windows są większe niż obrazy kontenerów systemu Linux i może zająć więcej czasu, aby wdrożyć.
+Poprzednie polecenie służy do wdrażania aplikacji systemu Linux za pomocą [szablonu mesh_rp.base.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/visualobjects/mesh_rp.base.linux.json). Jeśli chcesz wdrożyć aplikację Windows, użyj [szablonu mesh_rp.base.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/visualobjects/mesh_rp.base.windows.json). Obrazy kontenerów Windows są większe niż obrazy kontenerów systemu Linux i może zająć więcej czasu, aby wdrożyć.
 
 W ciągu kilku minut polecenia powinny zostać zwrócone przy użyciu:
 
 `visualObjectsApp has been deployed successfully on visualObjectsNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Otwórz aplikację
-Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Powinna zostać wyświetlona strona sieci web za pomocą jednego trójkąt przechodzenia przez miejsce.
+Po pomyślnym wdrożeniu aplikacji, Uzyskaj publiczny adres IP punktu końcowego usługi, a następnie otwórz go w przeglądarce. Wyświetla stronę sieci web za pomocą jednego trójkąt przechodzenia przez miejsce.
 
-Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi.
+Polecenie wdrożenia zwraca publiczny adres IP punktu końcowego usługi. Opcjonalnie można także badać zasobu sieciowego, aby znaleźć publiczny adres IP punktu końcowego usługi. 
  
 Nazwa zasobu sieci dla tej aplikacji jest `visualObjectsNetwork`, pobierania informacji o nim przy użyciu następującego polecenia. 
 

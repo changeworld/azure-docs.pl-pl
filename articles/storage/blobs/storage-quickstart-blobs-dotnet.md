@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 0074e0a66ae842d798d6fd8cd2f4392644d873fa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 157fd47861857fedbe4886407ba464f886ef1be3
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650761"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767140"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą platformy .NET
 
@@ -63,7 +63,7 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwi�
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 
-Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta magazynu. Przykładowa aplikacja odczytuje parametry połączenia ze zmiennej środowiskowej i używa ich do uwierzytelniania żądań w usłudze Azure Storage.
+Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta magazynu. Przykładowa aplikacja odczytuje parametry połączenia ze zmiennej środowiskowej i używa ich do autoryzacji żądań w usłudze Azure Storage.
 
 Po skopiowaniu parametrów połączenia zapisz je w nowej zmiennej środowiskowej na komputerze, na którym uruchomiona jest aplikacja. Aby ustawić zmienną środowiskową, otwórz okno konsoli i postępuj zgodnie z instrukcjami dla systemu operacyjnego. Zastąp wartość `<yourconnectionstring>` rzeczywistymi parametrami połączenia:
 

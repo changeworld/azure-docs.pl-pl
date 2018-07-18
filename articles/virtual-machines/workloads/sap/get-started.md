@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/13/2018
+ms.date: 07/17/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81be0d2ea54729896eacab1227052cacff0a722f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a930225b1894d3d5121e6670fd0868e65c0e2eb0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072320"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114050"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598

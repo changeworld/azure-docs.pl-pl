@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 830b3d4226440a68c7de62170d2ffc28082315c2
+ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031434"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37902908"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Szybki start: tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure Portal
 
@@ -48,7 +48,7 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które bę
 
 4. Na stronie **Wszystkie zasoby** znajdź konto magazynu utworzone w poprzednim kroku. Otwórz stronę **Przegląd**, a następnie kafelek **Obiekty blob**.  
 
-5. Na stronie **Blob Service** wybierz pozycję **Kontener**, podaj **nazwę** swojego kontenera, na przykład *container1*, i zmień pozycję **Poziom dostępu publicznego** na wartość Obiekt blob (anonimowy dostęp tylko do odczytu dla obiektów blob), a następnie wybierz przycisk **OK**.  
+5. Na stronie **Blob Service** wybierz pozycję **Kontener**, podaj **nazwę** swojego kontenera, na przykład *container1*, i zmień pozycję **Poziom dostępu publicznego** na wartość Prywatny (bez dostępu anonimowego), a następnie wybierz przycisk **OK**.  
 
    ![Tworzenie kontenera](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 

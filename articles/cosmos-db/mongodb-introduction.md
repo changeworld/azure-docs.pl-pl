@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sngun
-ms.openlocfilehash: c10f1fdc7e373633298b083d1317f17cff3aa2b8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 214dfe3e676d3b07cf688fa0f7dcaf11462edfe8
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796635"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37930889"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Wprowadzenie do usługi Azure Cosmos DB: interfejs API usługi MongoDB
 
@@ -26,7 +26,7 @@ ms.locfileid: "34796635"
 
 Bazy danych usługi Azure Cosmos DB mogą służyć jako magazyn danych dla aplikacji napisanych dla usługi [MongoDB](https://docs.mongodb.com/manual/introduction/). Ta funkcja oznacza, że przy użyciu istniejących [sterowników](https://docs.mongodb.org/ecosystem/drivers/) aplikacja napisana dla usługi MongoDB może się teraz komunikować z usługą Azure Cosmos DB i używać baz danych usługi Azure Cosmos DB zamiast baz danych MongoDB. W wielu przypadkach można zastąpić usługę MongoDB usługą Azure Cosmos DB, po prostu zmieniając parametry połączenia. Dzięki tej funkcji można w prosty sposób kompilować i uruchamiać rozproszone globalnie aplikacje baz danych usługi MongoDB w chmurze platformy Azure przy użyciu usługi Azure Cosmos DB i [kompleksowych, wiodących w branży umów SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db), używając nabytych umiejętności i znanych narzędzi do pracy z usługą MongoDB.
 
-**Zgodność z bazą danych MongoDB**: można korzystać ze zdobytej już wiedzy na temat usługi MongoDB, kodu aplikacji oraz narzędzi, a usługę Azure Cosmos DB wykorzystać do wdrażania protokołu przewodowego usługi MongoDB 3.4 (w wersji 5) i obsługi [potoku agregacji usługi MongoDB](mongodb-feature-support.md#aggregation-pipeline). Można tworzyć aplikacje przy użyciu usługi MongoDB i wdrażać je do produkcji, używając w pełni zarządzanej i globalnie rozproszonej usługi Azure Cosmos DB.
+**Zgodność z bazą danych MongoDB**: można korzystać ze zdobytej już wiedzy na temat usługi MongoDB, kodu aplikacji oraz narzędzi, a usługę Azure Cosmos DB wykorzystać do wdrażania protokołu przewodowego usługi MongoDB. Można tworzyć aplikacje przy użyciu usługi MongoDB i wdrażać je do produkcji, używając w pełni zarządzanej i globalnie rozproszonej usługi Azure Cosmos DB. Aby uzyskać więcej informacji na temat obsługiwanych wersji, zobacz sekcję [Obsługa protokołów bazy danych MongoDB](mongodb-feature-support.md#mongodb-protocol-support).
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>Jakie są zalety korzystania z usługi Azure Cosmos DB do aplikacji usługi MongoDB?
 
@@ -36,7 +36,7 @@ Bazy danych usługi Azure Cosmos DB mogą służyć jako magazyn danych dla apli
 
 **Brak zarządzania serwerem**: nie trzeba zarządzać bazami danych MongoDB ani ich skalować. Azure Cosmos DB jest w pełni zarządzaną usługą, co oznacza, że nie trzeba zarządzać samodzielnie żadną infrastrukturą ani maszynami wirtualnymi. Usługa Azure Cosmos DB jest dostępna w ponad 30 [regionach świadczenia usług platformy Azure](https://azure.microsoft.com/regions/services/).
 
-**Dostosowywalne poziomy spójności:** usługa Azure Cosmos DB aktualnie wdraża bazę danych MongoDB w wersji 3.4, która ma dwa ustawienia spójności (silna i ostateczna). Ze względu na to, że usługa Azure Cosmos DB obejmuje wiele interfejsów API, ustawienia spójności mają zastosowanie na poziomie konta i wymuszanie spójności jest kontrolowane przez poszczególne interfejsy API. Przed wprowadzeniem usługi MongoDB 3.6 koncepcja spójności sesji nie istniała, więc w przypadku ustawienia konta interfejsu API usługi MongoDB do korzystania ze spójności sesji spójność zostanie obniżona do ostatecznej podczas używania interfejsów API usługi MongoDB. Jeśli potrzebujesz gwarancji odczytu własnego zapisu do konta interfejsu API usługi MongoDB, domyślny poziom spójności dla konta powinien zostać ustawiony na silny lub na powiązaną nieaktualność. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).
+**Poziomy spójności z możliwością dostosowywania**: ponieważ usługa Azure Cosmos DB obsługuje wielomodelowe interfejsy API, ustawienia spójności mają zastosowanie na poziomie konta, a wymuszanie spójności jest kontrolowane przez poszczególne interfejsy API. Przed wprowadzeniem usługi MongoDB 3.6 koncepcja spójności sesji nie istniała, więc w przypadku ustawienia konta interfejsu API usługi MongoDB do korzystania ze spójności sesji spójność zostanie obniżona do ostatecznej podczas używania interfejsów API usługi MongoDB. Jeśli potrzebujesz gwarancji odczytu własnego zapisu do konta interfejsu API usługi MongoDB, domyślny poziom spójności dla konta powinien zostać ustawiony na silny lub na powiązaną nieaktualność. Aby dowiedzieć się więcej, zobacz [Maksymalizowanie dostępności i wydajności za pomocą poziomów spójności](consistency-levels.md).
 
 | Domyślny poziom spójności usługi Azure Cosmos DB |   Interfejs API Mongo (3.4) |
 |---|---|

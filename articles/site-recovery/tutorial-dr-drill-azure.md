@@ -4,14 +4,14 @@ description: Informacje o uruchamianiu próbnego odzyskiwania po awarii ze środ
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: fa66e47715940584259e5cf555f3f6cd6f07e267
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: af8062fc0134975542c8a5ec420c790f33996154
+ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437216"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37920175"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Uruchamianie próbnego odzyskiwania na platformie Azure
 
@@ -20,10 +20,10 @@ W tym artykule pokazano, jak uruchomić próbne odzyskiwanie po awarii dla maszy
 Jest to czwarty samouczek z serii opisującej, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware lub Hyper-V.
 
 W tym samouczku przyjęto założenie, że wykonano trzy pierwsze samouczki: 
-    - W [pierwszym samouczku](tutorial-prepare-azure.md) [przygotowano składniki Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii w przypadku maszyn wirtualnych VMware lub Hyper-V.
-    - W drugim samouczku przygotowano składniki lokalne do odzyskiwania po awarii w przypadku maszyn wirtualnych [VMware](vmware-azure-tutorial-prepare-on-premises.md) lub [Hyper-V](hyper-v-prepare-on-premises-tutorial.md).
-    - W trzecim samouczku zostanie skonfigurowana i włączona replikacja lokalnych [maszyn wirtualnych VMware](vmware-azure-tutorial.md), [maszyn wirtualnych Hyper-V z programem System Center VMM](hyper-v-vmm-azure-tutorial.md) lub [Maszyn wirtualnych Hyper-V bez programu VMM](hyper-v-azure-tutorial.md).
-- Samouczki mają za zadanie przedstawić najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. We wszystkich tych samouczkach skonfigurowano usługę Site Recovery przy użyciu najprostszych ustawień, stosując wartości domyślne, gdzie było to możliwe. Jeśli chcesz lepiej poznać kroki testowego przełączania w tryb failover, przeczytaj [How To Guide](site-recovery-test-failover-to-azure.md) (Przewodnik z instrukcjami).
+    - W [pierwszym samouczku](tutorial-prepare-azure.md) skonfigurowaliśmy składniki Azure potrzebne do odzyskiwania po awarii w przypadku maszyn wirtualnych VMware.
+    - W [drugim samouczku](vmware-azure-tutorial-prepare-on-premises.md) przygotowaliśmy składniki lokalne do odzyskiwania po awarii oraz sprawdziliśmy wymagania wstępne.
+    - W [trzecim samouczku](vmware-azure-tutorial.md) skonfigurowaliśmy i włączyliśmy replikację dla naszych lokalnych maszyn wirtualnych VMware.
+    - Samouczki mają za zadanie przedstawić **najprostszą ścieżkę wdrożenia dla scenariusza**. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Jeśli chcesz lepiej poznać kroki testowego przełączania w tryb failover, przeczytaj [How To Guide](site-recovery-test-failover-to-azure.md) (Przewodnik z instrukcjami).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -49,7 +49,7 @@ Przed uruchomieniem testowego przełączenia w tryb failover sprawdź właściwo
 Po uruchomieniu próby przejścia w tryb failover wykonywane są następujące operacje:
 
 1. Uruchamiane jest sprawdzanie wymagań wstępnych, aby upewnić się, że zostały spełnione wszystkie warunki przejścia w tryb failover.
-2. Tryb failover przetwarza dane, aby umożliwić utworzenie maszyny wirtualnej platformy Azure. Jeśli zostanie wybrany najnowszy punkt odzyskiwania, punkt odzyskiwania zostanie utworzony na podstawie danych.
+2. Tryb failover przetwarza dane, aby umożliwić utworzenie maszyny wirtualnej platformy Azure. Jeśli wybierzesz najnowszy punkt odzyskiwania, punkt odzyskiwania zostanie utworzony na podstawie danych.
 3. Tworzona jest maszyna wirtualna platformy Azure przy użyciu danych przetworzonych w poprzednim kroku.
 
 Uruchom testowe przełączenie w tryb failover w następujący sposób:

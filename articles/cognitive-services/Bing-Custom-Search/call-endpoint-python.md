@@ -1,6 +1,6 @@
 ---
-title: Punkt końcowy wywołanie za pomocą usług kognitywnych Python - wyszukiwania usługi Bing niestandardowe - Microsoft
-description: Ta opcja szybkiego startu pokazano, jak żądanie wyniki wyszukiwania z wystąpienia niestandardowego wyszukiwania przy użyciu języka Python do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing.
+title: Wywoływanie punktu końcowego za pomocą języka Python — wyszukiwanie niestandardowe Bing — Microsoft Cognitive Services
+description: Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu języka Python do wywoływania punktu końcowego usługi Bing Custom Search.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -10,38 +10,38 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
 ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
+ms.lasthandoff: 07/17/2018
 ms.locfileid: "35349773"
 ---
-# <a name="call-bing-custom-search-endpoint-python"></a>Wywołanie wyszukiwania usługi Bing niestandardowe punktu końcowego (Python)
+# <a name="call-bing-custom-search-endpoint-python"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Python)
 
-Ta opcja szybkiego startu pokazano, jak żądanie wyniki wyszukiwania z wystąpienia niestandardowego wyszukiwania przy użyciu języka Python do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu języka Python do wywoływania punktu końcowego usługi Bing Custom Search. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania usługi Bing niestandardowe](quick-start.md).
+- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
 
 -  [Python](https://www.python.org/) zainstalowane.
 
-- A [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure. 
+- A [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure. 
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykonaj następujące kroki:
+Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następujące kroki:
 
 1. Utwórz folder dla kodu.
-2. Z wiersza polecenia administratora lub w terminalu przejdź do folderu utworzonego.
+2. Z wiersza polecenia administratora lub terminalu przejdź do folderu, który został utworzony.
 3. Zainstaluj **żądań** modułu python:
     <pre>
     pip install pipenv
     pipenv install requests
     </pre>
 7. Utwórz plik BingCustomSearch.py i skopiuj następujący kod do niego.
-8. Zastąp **YOUR SUBSKRYPCJI klucza** i **YOUR-niestandardowe-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
+8. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
 
     ``` Python
     import json
@@ -61,6 +61,6 @@ Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykona
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie środowiska hostowanej interfejsu użytkownika](./hosted-ui.md)
-- [Umożliwia znaczników decoration wyróżnianie tekstu](./hit-highlighting.md)
+- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
+- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
 - [Strona stron sieci Web](./page-webpages.md)

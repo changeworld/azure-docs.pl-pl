@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1b51638754287d3359eaea7bd5da3f71bf15cc89
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38461541"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Samouczek: zabezpieczanie połączenia z bazą danych SQL za pomocą tożsamości usługi zarządzanej
 
@@ -31,6 +32,9 @@ Omawiane kwestie:
 > * Udzielanie usłudze SQL Database dostępu do tożsamości usługi
 > * Konfigurowanie kodu aplikacji do uwierzytelniania w usłudze SQL Database przy użyciu uwierzytelniania usługi Azure Active Directory
 > * Przyznawanie minimalnych uprawnień tożsamości usługi w usłudze SQL Database
+
+> [!NOTE]
+> Uwierzytelnianie usługi Azure Active Directory _różni się_ od [zintegrowanego uwierzytelniania systemu Windows](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)) w lokalnej usłudze Active Directory (AD DS). W usługach AD DS i Azure Active Directory są używane całkowicie różne protokoły uwierzytelniania. Aby uzyskać więcej informacji, zobacz [The difference between Windows Server AD DS and Azure AD (Różnice między usługą AD DS w systemie Windows Server a usługą Azure AD)](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +68,7 @@ Oto przykładowe dane wyjściowe po utworzeniu tożsamości w usłudze Azure Act
 Wartości atrybutu `principalId` użyjesz w następnym kroku. Jeśli chcesz wyświetlić szczegóły nowej tożsamości w usłudze Azure Active Directory, uruchom następujące polecenie opcjonalne z wartością `principalId`:
 
 ```azurecli-interactive
-az ad sp show --id <principalid>`
+az ad sp show --id <principalid>
 ```
 
 ## <a name="grant-database-access-to-identity"></a>Udzielanie tożsamości dostępu do bazy danych
@@ -156,7 +160,7 @@ W usłudze Cloud Shell dodaj tożsamość usługi zarządzanej aplikacji do nowe
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
 msiobjectid=$(az webapp identity show --resource-group <group_name> --name <app_name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiid
+az ad group member add --group $groupid --member-id $msiobjectid
 az ad group member list -g $groupid
 ```
 

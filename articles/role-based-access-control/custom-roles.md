@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 446cb34f2de8d0de3ee52e23df6cd26644d31bba
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d7554ef46289600cd15e4675a91f42a2cd735f18
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435974"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112665"
 ---
 # <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
 
@@ -74,11 +74,11 @@ Po utworzeniu roli niestandardowej, pojawi się w witrynie Azure portal za pomoc
 1. Określ uprawnienia, których potrzebujesz
 
     Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, można użyć [polecenia Get](/powershell/module/azurerm.resources/get-azurermprovideroperation) lub [lista operacji dostawcy az](/cli/azure/provider/operation#az-provider-operation-list) poleceń.
-    Aby określić uprawnienia dla swojej roli niestandardowej, należy dodać operacje do `actions` lub `notActions` właściwości [definicji roli](role-definitions.md). Jeśli masz operacje na danych, należy dodać tych, które mają `dataActions` lub `notDataActions` właściwości.
+    Aby określić uprawnienia dla swojej roli niestandardowej, należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). Jeśli masz operacje na danych, należy dodać tych, które mają `DataActions` lub `NotDataActions` właściwości.
 
 2. Tworzenie roli niestandardowej
 
-    Aby utworzyć rolę niestandardową, można użyć programu Azure PowerShell lub wiersza polecenia platformy Azure. Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `assignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+    Aby utworzyć rolę niestandardową, można użyć programu Azure PowerShell lub wiersza polecenia platformy Azure. Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `AssignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
 
 3. Testowanie roli niestandardowej
 
@@ -95,19 +95,19 @@ Rola niestandardowa ma następujące właściwości.
 | `IsCustom` | Yes | Ciąg | Wskazuje, czy jest to rola niestandardowa. Ustaw `true` dla ról niestandardowych. |
 | `Description` | Yes | Ciąg | Opis roli niestandardowej. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków wynosi 1024. |
 | `Actions` | Yes | Ciąg] | Tablica ciągów określa operacje zarządzania, dozwolone przez rolę do wykonania. Aby uzyskać więcej informacji, zobacz [akcje](role-definitions.md#actions). |
-| `NotActions` | Nie | Ciąg] | Tablica ciągów, który określa operacje zarządzania, które są wykluczone z dozwolonych `actions`. Aby uzyskać więcej informacji, zobacz [notActions](role-definitions.md#notactions). |
-| `DataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Aby uzyskać więcej informacji, zobacz [elementy dataActions (wersja zapoznawcza)](role-definitions.md#dataactions-preview). |
-| `NotDataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, które są wykluczone z dozwolonych `dataActions`. Aby uzyskać więcej informacji, zobacz [notDataActions (wersja zapoznawcza)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Yes | Ciąg] | Tablica ciągów określa zakresów, że rola niestandardowa jest dostępne do przypisania. Nie można ustawić na zakres głównego (`"/"`). Aby uzyskać więcej informacji, zobacz [assignableScopes](role-definitions.md#assignablescopes). |
+| `NotActions` | Nie | Ciąg] | Tablica ciągów, który określa operacje zarządzania, które są wykluczone z dozwolonych `Actions`. Aby uzyskać więcej informacji, zobacz [NotActions](role-definitions.md#notactions). |
+| `DataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Aby uzyskać więcej informacji, zobacz [elementy DataActions (wersja zapoznawcza)](role-definitions.md#dataactions-preview). |
+| `NotDataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, które są wykluczone z dozwolonych `DataActions`. Aby uzyskać więcej informacji, zobacz [NotDataActions (wersja zapoznawcza)](role-definitions.md#notdataactions-preview). |
+| `AssignableScopes` | Yes | Ciąg] | Tablica ciągów określa zakresów, że rola niestandardowa jest dostępne do przypisania. Nie można ustawić na zakres głównego (`"/"`). Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="assignablescopes-for-custom-roles"></a>assignableScopes dla ról niestandardowych
 
-Podobnie jak w przypadku wbudowanych ról `assignableScopes` właściwość określa zakresów, że rola jest dostępne do przypisania. Jednak nie można używać zakres głównego (`"/"`) proces niestandardowej. Jeśli spróbujesz, otrzymasz błąd autoryzacji. `assignableScopes` Właściwość niestandardową rolę określa również, kto może tworzyć, usuwać, zmodyfikować lub wyświetlić rolę niestandardową.
+Podobnie jak w przypadku wbudowanych ról `AssignableScopes` właściwość określa zakresów, że rola jest dostępne do przypisania. Jednak nie można używać zakres głównego (`"/"`) proces niestandardowej. Jeśli spróbujesz, otrzymasz błąd autoryzacji. `AssignableScopes` Właściwość niestandardową rolę określa również, kto może tworzyć, usuwać, zmodyfikować lub wyświetlić rolę niestandardową.
 
 | Zadanie | Operacja | Opis |
 | --- | --- | --- |
-| Tworzenie/usuwanie roli niestandardowej | `Microsoft.Authorization/ roleDefinition/write` | Użytkownicy, którzy otrzymują tę operację na wszystkich `assignableScopes` roli niestandardowej można utworzyć (lub usunąć) ról niestandardowych do użytku w tych zakresach. Na przykład [właścicieli](built-in-roles.md#owner) i [Administratorzy dostępu użytkownika](built-in-roles.md#user-access-administrator) subskrypcji, grupy zasobów i zasobów. |
-| Modyfikuj rolę niestandardową | `Microsoft.Authorization/ roleDefinition/write` | Użytkownicy, którzy otrzymują tę operację na wszystkich `assignableScopes` rolę niestandardową można zmodyfikować niestandardowe role w tych zakresach. Na przykład [właścicieli](built-in-roles.md#owner) i [Administratorzy dostępu użytkownika](built-in-roles.md#user-access-administrator) subskrypcji, grupy zasobów i zasobów. |
+| Tworzenie/usuwanie roli niestandardowej | `Microsoft.Authorization/ roleDefinition/write` | Użytkownicy, którzy otrzymują tę operację na wszystkich `AssignableScopes` roli niestandardowej można utworzyć (lub usunąć) ról niestandardowych do użytku w tych zakresach. Na przykład [właścicieli](built-in-roles.md#owner) i [Administratorzy dostępu użytkownika](built-in-roles.md#user-access-administrator) subskrypcji, grupy zasobów i zasobów. |
+| Modyfikuj rolę niestandardową | `Microsoft.Authorization/ roleDefinition/write` | Użytkownicy, którzy otrzymują tę operację na wszystkich `AssignableScopes` rolę niestandardową można zmodyfikować niestandardowe role w tych zakresach. Na przykład [właścicieli](built-in-roles.md#owner) i [Administratorzy dostępu użytkownika](built-in-roles.md#user-access-administrator) subskrypcji, grupy zasobów i zasobów. |
 | Wyświetl rolę niestandardową | `Microsoft.Authorization/ roleDefinition/read` | Użytkownicy, którzy otrzymują tej operacji w zakresie można wyświetlić role niestandardowe, które są dostępne do przypisania w tym zakresie. Wszystkie wbudowane role umożliwiają ról niestandardowych, które mają być dostępne do przypisania. |
 
 ## <a name="next-steps"></a>Kolejne kroki

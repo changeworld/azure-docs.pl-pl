@@ -1,0 +1,63 @@
+- name: Dokumentacja usługi Service Fabric Mesh
+  href: index.yml
+- name: Omówienie
+  expanded: true
+  items:
+    - name: Informacje o usłudze Service Fabric Mesh
+      href: service-fabric-mesh-overview.md
+- name: Przewodniki Szybki start
+  items:
+    - name: Wdrażanie aplikacji Hello World
+      href: service-fabric-mesh-quickstart-deploy-container.md
+    - name: Tworzenie i wdrażanie aplikacji internetowej
+      href: service-fabric-mesh-quickstart-dotnet-core.md
+- name: Samouczki
+  items:
+    - name: Tworzenie i wdrażanie aplikacji internetowej dla wielu usług
+      items:
+        - name: 1 — Tworzenie aplikacji ASP.NET Core
+          href: service-fabric-mesh-tutorial-create-dotnetcore.md
+        - name: 2 — Debugowanie aplikacji
+          href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
+        - name: 3 — Wdrażanie aplikacji
+          href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+- name: Pojęcia
+  items:
+    - name: Terminologia
+      href: service-fabric-mesh-terminology.md
+    - name: Zasoby usługi Service Fabric
+      href: service-fabric-mesh-service-fabric-resources.md
+    - name: Monitorowanie i diagnostyka
+      href: service-fabric-mesh-monitoring-diagnostics.md
+    - name: Przechowywanie stanu
+      href: service-fabric-mesh-storing-state.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Konfigurowanie środowiska projektowego
+      href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - name: Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric Mesh
+      href: service-fabric-mesh-howto-setup-cli.md
+    - name: Wdrażanie aplikacji mikrousług platformy .NET Core
+      href: service-fabric-mesh-howto-deploy-app-template.md
+    - name: Wdrażanie aplikacji z rejestru prywatnego
+      href: service-fabric-mesh-howto-deploy-app-private-registry.md
+    - name: Przechowywanie stanu za pomocą woluminu usługi Azure Files
+      href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
+    - name: Niezależne skalowanie mikrousług w aplikacji
+      href: service-fabric-mesh-howto-app-scale-out.md
+- name: Zasoby
+  items:
+    - name: Często zadawane pytania
+      href: service-fabric-mesh-faq.md
+    - name: Przykładowe aplikacje
+      href: 'https://github.com/Azure-Samples/service-fabric-mesh'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=service-fabric-mesh'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'

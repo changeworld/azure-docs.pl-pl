@@ -11,12 +11,12 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054694"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866821"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -113,6 +113,7 @@ W oknie **Konfiguracja obszaru roboczego** dodaj klucze rejestru systemu Windows
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików        |
 |Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\mojplik.txt”       |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 ### <a name="add-a-linux-file"></a>Dodawanie pliku systemu Linux
 
@@ -130,6 +131,7 @@ W oknie **Konfiguracja obszaru roboczego** dodaj klucze rejestru systemu Windows
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołują<br>**Śledź** — śledzi linki symboliczne podczas rekursji i uwzględnia również pliki/katalogi, do których się odwołują<br>**Zarządzaj** — śledzi linki symboliczne i umożliwia obsługę zwracanej zawartości      |
+|Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
    > [!NOTE]   
    > Opcja linków „Zarządzaj” nie jest zalecana. Pobieranie zawartości plików nie jest obsługiwane.

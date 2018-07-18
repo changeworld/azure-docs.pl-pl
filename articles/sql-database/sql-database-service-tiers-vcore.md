@@ -1,20 +1,20 @@
 ---
 title: Usługa Azure SQL Database — rdzeń wirtualny | Dokumentacja firmy Microsoft
-description: Oparty na rdzeniach wirtualnych model zakupu (wersja zapoznawcza) umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny.
+description: Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/15/2018
+ms.date: 07/16/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: cc69d2f195006fa196491fe9bed53db499eed11f
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d18076486704d5f03acd2253650762c3bd24b0af
+ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069982"
+ms.locfileid: "39091496"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
@@ -30,11 +30,9 @@ Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 |Magazyn|Magazyn zdalny w warstwie Premium, 5 GB – 4 TB|Lokalny magazyn SSD, 5 GB – 4 TB|
 |Przepustowość operacji We/Wy (w przybliżeniu)|500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS|5000 operacji We/Wy na każdy rdzeń za pomocą 200000 maksymalna liczba IOPS|
 |Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skalę odczytywania](sql-database-read-scale-out.md), strefa nadmiarowe wysokiej dostępności|
-|Tworzenie kopii zapasowych|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)|RA-GRS, 7 – 35 dni (domyślnie co 7 dni) *|
+|Tworzenie kopii zapasowych|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)|RA-GRS, 7 – 35 dni (domyślnie co 7 dni)|
 |W pamięci|ND|Obsługiwane|
 |||
-
-\* W trakcie okresu zapoznawczego okres przechowywania kopii zapasowych nie konfiguruje się i zostanie usunięty z 7 dni.
 
 > [!IMPORTANT]
 > Jeśli potrzebujesz mniejszej niż jeden rdzeń wirtualny mocy obliczeniowej, przy użyciu modelu zakupu opartego na jednostkach DTU.
@@ -67,7 +65,7 @@ Magazyn kopii zapasowych bazy danych jest przydzielany do obsługi punktu w czas
 
 ## <a name="azure-hybrid-use-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
-Oparty na rdzeniach wirtualnych zakupu modelu (wersja zapoznawcza), mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
+Oparty na rdzeniach wirtualnych model zakupu mogą wymieniać swoich istniejących licencji do korzystania z taryf rabatowych na temat korzystania z bazy danych SQL [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Ta korzyść platformy Azure pozwala na używanie licencji programu SQL Server w środowisku lokalnym można zapisać do 30% w usłudze Azure SQL Database przy użyciu lokalnych licencji programu SQL Server z pakietem Software Assurance.
 
 ![cennik](./media/sql-database-service-tiers/pricing.png)
 

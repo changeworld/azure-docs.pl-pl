@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: cc7bfebd24da0d69e4b42b1a3afd7a640016dd35
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ab3982c85cfb008bde08495f8cb8aa86d066d8c0
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052095"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114858"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Konfigurowanie tożsamości usługi zarządzanej zestawu skalowania maszyn wirtualnych przy użyciu szablonu
 
@@ -113,6 +113,9 @@ W tej sekcji należy przypisać tożsamości przypisanych przez użytkownika do 
 
 1. W obszarze `resources` elementu, Dodaj następujący wpis do przypisywania tożsamości przypisanych przez użytkownika do Twojego zestawu skalowania maszyn wirtualnych.  Koniecznie Zastąp `<USERASSIGNEDIDENTITY>` o nazwie tożsamości przypisanych przez użytkownika został utworzony.
 
+   > [!Important]
+   > `<USERASSIGNEDIDENTITYNAME>` Pokazano w poniższym przykładzie wartość musi być przechowywany w zmiennej.  Ponadto obecnie obsługiwane wykonania przypisywania tożsamości przypisanych przez użytkownika do maszyny wirtualnej w szablonie usługi Resource Manager, wersja interfejsu api musi odpowiadać wersji w następującym przykładzie. 
+
     ```json
     {
         "name": "[variables('vmssName')]",
@@ -121,7 +124,7 @@ W tej sekcji należy przypisać tożsamości przypisanych przez użytkownika do 
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITY>'))]"
             ]
         }
 

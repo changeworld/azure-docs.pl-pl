@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 741b32f394ca2ce447826f7207f7fd9cbede9c51
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: dd92fca89e3bdb123be46a52708feec1c939f7cc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070876"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112726"
 ---
 # <a name="understand-load-balancer-probes"></a>Opis sond modułu równoważenia obciążenia
 
 Usługa Azure Load Balancer używa sondy kondycji, aby określić, które wystąpienie puli serwerów zaplecza powinien zostać wyświetlony nowych przepływów.   Za pomocą sondy kondycji do wykrywania awarii aplikacji na wystąpienie wewnętrznej bazy danych.  Odpowiedź sondy kondycji aplikacji umożliwia również zasygnalizowania do modułu równoważenia obciążenia, czy kontynuować wysyłanie nowych przepływów lub zatrzymać wysyłanie nowych przepływów do wystąpienia wewnętrznej bazy danych, aby zarządzać obciążenia lub planowanych przestojów.
 
-Sondy kondycji określają, czy nowych przepływów są ustanowione do wystąpień zaplecza w dobrej kondycji. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.  Ustanowionych połączeń TCP nadal po niepowodzeniu sondy kondycji.  Istniejące przepływy UDP zostanie przesunięty w złej kondycji wystąpieniu do innego wystąpienia w puli zaplecza.
+Sondy kondycji określają, czy nowych przepływów są ustanowione do wystąpień zaplecza w dobrej kondycji. W przypadku awarii sondę kondycji modułu równoważenia obciążenia zatrzymuje wysyłanie nowych przepływów do odpowiednich wystąpień złej kondycji.  Ustanowionych połączeń TCP nadal po niepowodzeniu sondy kondycji.  Istniejące przepływy UDP przejdzie z wystąpienia elementu złej kondycji do innego wystąpienia dobrej kondycji w puli zaplecza.
 
 W przypadku awarii wszystkich sondy dla puli zaplecza, podstawowe usługi równoważenia obciążenia spowoduje przerwanie działania wszystkie istniejące przepływy TCP do puli zaplecza, standardowego modułu równoważenia obciążenia będzie pozwalać na ustanowionych przepływy TCP, aby kontynuować; nie nowych przepływów będą wysyłane do puli zaplecza.  Wszystkie istniejące przepływy UDP zostanie zakończona warstwy podstawowa i standardowa usługi równoważenia obciążenia, gdy wszystkie sondy zaplecza w puli kończyć się niepowodzeniem.
 

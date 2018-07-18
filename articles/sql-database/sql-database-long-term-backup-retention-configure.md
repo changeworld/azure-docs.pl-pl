@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 07/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f7125a18aa2496ebe8367443a67502a7a7dbac02
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 24d453dc705eb2d0ee7cb77f2ec247845247d0a8
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969191"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113635"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
 Można skonfigurować usługi Azure SQL database za pomocą [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) zasad (od lewej do prawej) automatycznie przechowywania kopii zapasowych w magazynie obiektów blob platformy Azure przez maksymalnie 10 lat. Można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu witryny Azure portal lub programu PowerShell.
-
-> [!NOTE]
-> W ramach wstępnym wydaniu tej funkcji w październiku 2016 r w wersji zapoznawczej kopie zapasowe są przechowywane w magazynie usług odzyskiwania Azure Services. Ta aktualizacja usuwa tę zależność, ale zgodności z poprzednimi wersjami oryginalny interfejs API jest obsługiwane do 31 maja 2018 r. Jeśli zajdzie potrzeba interakcji z kopii zapasowych w magazynie usługi Azure Recovery Services, zobacz [długoterminowego przechowywania kopii zapasowych przy użyciu magazynu usług odzyskiwania Azure Services](sql-database-long-term-backup-retention-configure-vault.md). 
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Użyj witryny Azure portal, aby skonfigurować długoterminowe zasady przechowywania i przywracanie kopii zapasowych
 
@@ -32,29 +29,21 @@ Poniższe sekcje pokazują, jak skonfigurować długoterminowe przechowywanie, w
 
 Można skonfigurować bazy danych SQL [przechowywania automatycznych kopii zapasowych](sql-database-long-term-retention.md) przez okres dłuższy niż okres przechowywania w warstwie usługi. 
 
-1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **długoterminowego przechowywania kopii zapasowych**.
+1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **Zarządzanie kopiami zapasowymi**. Na **konfigurowania zasad** , a następnie wybierz bazę danych, na którym chcesz ustawić lub zmodyfikować długoterminowe zasady przechowywania kopii zapasowych.
 
-   ![link długoterminowego przechowywania kopii zapasowych](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
+   ![Zarządzanie łącze kopii zapasowych](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
 
-2. Na **konfigurowania zasad** , a następnie wybierz bazę danych, na którym chcesz ustawić lub zmodyfikować długoterminowe zasady przechowywania kopii zapasowych.
-
-   ![Wybierz bazę danych](./media/sql-database-long-term-retention/ltr-configure-select-database.png)
-
-3. W **konfigurowania zasad** okienko, określ, czy zachować co tydzień, miesięczny lub roczny kopii zapasowych i określ okres przechowywania dla każdego. 
+2. W **konfigurowania zasad** okienko, określ, czy zachować co tydzień, miesięczny lub roczny kopii zapasowych i określ okres przechowywania dla każdego. 
 
    ![Konfigurowanie zasad](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
-4. Po zakończeniu kliknij przycisk **Zastosuj**.
+3. Po zakończeniu kliknij przycisk **Zastosuj**.
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Wyświetlanie kopii zapasowych i przywracanie z kopii zapasowej za pomocą witryny Azure portal
 
 Wyświetlanie kopii zapasowych, które są zachowywane dla konkretnej bazy danych za pomocą zasad pisowni LTR i przywracania z tych kopii zapasowych. 
 
-1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **długoterminowego przechowywania kopii zapasowych**.
-
-   ![link długoterminowego przechowywania kopii zapasowych](./media/sql-database-long-term-retention/ltr-configure-ltr.png)
-
-2. Na **dostępnych kopii zapasowych** , a następnie wybierz bazę danych, dla którego chcesz wyświetlić dostępnych kopii zapasowych.
+1. W witrynie Azure portal, wybierz swój serwer SQL, a następnie kliknij przycisk **Zarządzanie kopiami zapasowymi**. Na **dostępnych kopii zapasowych** , a następnie wybierz bazę danych, dla którego chcesz wyświetlić dostępnych kopii zapasowych.
 
    ![Wybierz bazę danych](./media/sql-database-long-term-retention/ltr-available-backups-select-database.png)
 

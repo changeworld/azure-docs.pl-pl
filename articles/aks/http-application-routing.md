@@ -1,6 +1,6 @@
 ---
-title: Dodatek Routing aplikacji HTTP na usługi kontenera platformy Azure (AKS)
-description: Użyj dodatku Routing aplikacji HTTP na usługi kontenera platformy Azure (AKS)
+title: Dodatek routingu HTTP aplikacji w usłudze Azure Kubernetes Service (AKS)
+description: Użyj dodatku routing aplikacji protokołu HTTP w usłudze Azure Kubernetes Service (AKS).
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -8,45 +8,64 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 6e5a81742b4a6b21e5cfa28d8e772430f8ae30ba
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4484031b20e625f81ba8b3869110e90df189323e
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39117427"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
-Rozwiązanie Routing aplikacji HTTP można łatwo uzyskiwać dostęp do aplikacji wdrożonych do klastra AKS. Po włączeniu rozwiązania konfiguruje kontrolera ruch przychodzący w klastrze AKS. Ponadto podczas wdrażania aplikacji, rozwiązanie tworzy również publicznie dostępny nazwy DNS dla punktów końcowych aplikacji.
+Rozwiązanie routing aplikacji protokołu HTTP można łatwo uzyskiwać dostęp do aplikacji, które są wdrażane w klastrze usługi Azure Kubernetes Service (AKS). Po włączeniu rozwiązania konfiguruje kontrolera danych przychodzących w klastrze AKS. Podczas wdrażania aplikacji, to rozwiązanie tworzy również publicznie dostępne nazwy DNS dla punktów końcowych aplikacji.
 
-Włączenie tego dodatku tworzy strefę DNS w ramach subskrypcji. Aby uzyskać więcej informacji na temat koszt DNS, zobacz [cennik DNS][dns-pricing].
+Gdy dodatek jest włączona, tworzy strefę DNS w ramach subskrypcji. Aby uzyskać więcej informacji na temat kosztu DNS Zobacz [ceny DNS][dns-pricing].
 
-## <a name="http-routing-solution-overview"></a>Omówienie rozwiązania routingu HTTP
+## <a name="http-routing-solution-overview"></a>Omówienie rozwiązania routingu protokołu HTTP
 
-Dodatek wdraża dwa składniki [kontrolera wejściowych Kubernetes] [ ingress] i [zewnętrzne DNS] [ external-dns] kontrolera.
+Dodatek wdraża dwa składniki: [kontrolera danych przychodzących rozwiązania Kubernetes] [ ingress] i [DNS zewnętrznego] [ external-dns] kontrolera.
 
-- **Transfer danych przychodzących kontrolera** -kontroler transfer danych przychodzących jest połączenie z Internetem przy użyciu usługi Kubernetes typu usługi równoważenia obciążenia. Kontroler wejściowych oczekuje i implementuje [zasobów wejściowych Kubernetes][ingress-resource], co powoduje trasy do punktów końcowych aplikacji.
-- **Zewnętrzne DNS kontrolera** — oczekuje na Kubernetes wejściowych zasobów i tworzy rekordy A systemu DNS w strefie DNS specyficznych dla klastra.
+- **Kontroler danych przychodzących**: kontroler danych przychodzących jest połączenie z Internetem przy użyciu usługi Kubernetes typu usługi równoważenia obciążenia. Kontroler danych przychodzących oczekuje i implementuje [zasobów transferu danych przychodzących rozwiązania Kubernetes][ingress-resource], co powoduje utworzenie tras do punktów końcowych aplikacji.
+- **Zewnętrzne DNS kontrolera**: obserwuje Kubernetes zasobów transferu danych przychodzących i tworzy rekordy A systemu DNS w strefie DNS specyficzne dla klastra.
 
-## <a name="deploy-http-routing"></a>Wdrożenie routingu HTTP
+## <a name="deploy-http-routing-cli"></a>Wdrażanie routing protokołu HTTP: interfejs wiersza polecenia
 
-W przypadku wdrażania klastra AKS można włączyć dodatek Routing aplikacji HTTP za pośrednictwem portalu Azure.
+W przypadku wdrażania klastra usługi AKS, można włączyć dodatek routing aplikacji protokołu HTTP przy użyciu wiersza polecenia platformy Azure. Aby to zrobić, należy użyć [tworzenie az aks] [ az-aks-create] polecenia `--enable-addons` argumentu.
 
-![Włączanie funkcji routingu HTTP](media/http-routing/create.png)
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+```
 
-Po wdrożeniu klastra, przejdź do grupy zasobów AKS utworzone automatycznie, a następnie wybierz strefę DNS. Zanotuj nazwę strefy DNS. Ta nazwa jest potrzebne w przypadku wdrażania aplikacji do klastra AKS.
+Po wdrożeniu klastra za pomocą [az aks show] [ az-aks-show] polecenie, aby pobrać nazwę strefy DNS. Ta nazwa jest wymagane do wdrażania aplikacji w klastrze AKS.
+
+```azurecli
+$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+
+Result
+-----------------------------------------------------
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+```
+
+## <a name="deploy-http-routing-portal"></a>Wdrażanie routing protokołu HTTP: Portal
+
+Dodatek routing aplikacji protokołu HTTP można włączyć w witrynie Azure portal w przypadku wdrażania klastra usługi AKS.
+
+![Włączanie funkcji routingu protokołu HTTP](media/http-routing/create.png)
+
+Po wdrożeniu klastra, przejdź do grupy zasobów usługi AKS utworzony automatycznie, a następnie wybierz strefę DNS. Zanotuj nazwę strefy DNS. Ta nazwa jest wymagane do wdrażania aplikacji w klastrze AKS.
 
 ![Pobierz nazwę strefy DNS](media/http-routing/dns.png)
 
-## <a name="use-http-routing"></a>Korzystać z routingu HTTP
+## <a name="use-http-routing"></a>Użyć routing protokołu HTTP
 
-Rozwiązanie routingu aplikacji HTTP mogą być wyzwalane tylko na ruch przychodzący zasobów, które są przypisane w następujący sposób:
+Rozwiązanie routing aplikacji protokołu HTTP mogą być wyzwalane tylko na ruch przychodzący zasoby, które są przypisane w następujący sposób:
 
 ```
 annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Utwórz plik o nazwie `samples-http-application-routing.yaml` i skopiuj następujące yaml programu. W wierszu 43 zaktualizować `<CLUSTER_SPECIFIC_DNS_ZONE>` z nazwą strefy DNS zebrane w ostatnim kroku tego dokumentu.
+Utwórz plik o nazwie **przykłady http aplikacji routing.yaml** i skopiuj do poniższego kodu YAML. W wierszu 43 aktualizacji `<CLUSTER_SPECIFIC_DNS_ZONE>` z nazwą strefy DNS zebranych w ostatnim kroku w tym artykule.
 
 
 ```yaml
@@ -108,7 +127,7 @@ service "party-clippy" created
 ingress "party-clippy" created
 ```
 
-Użyj cURL lub przeglądarki, aby przejść do nazwy hosta określonej w sekcji hosta `samples-http-application-routing.yaml` pliku. Aplikacja może zająć jedną minutę, zanim będzie dostępna za pośrednictwem Internetu.
+Za pomocą programu cURL lub w przeglądarce przejdź do nazwy hosta określonej w sekcji hosta przykłady http aplikacji routing.yaml pliku. Aplikacja może zająć jedną minutę, zanim będzie dostępna za pośrednictwem Internetu.
 
 ```
 $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
@@ -131,9 +150,9 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 
 ```
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Użyj [dzienniki kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla aplikacji zewnętrznych DNS. Dzienniki należy upewnić się, że rekord TXT DNS i A został pomyślnie utworzony.
+Użyj [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla aplikacji zewnętrznych DNS. Dzienniki należy potwierdzić, czy rekordu TXT DNS i A zostały pomyślnie utworzone.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-external-dns -n kube-system
@@ -142,11 +161,11 @@ time="2018-04-26T20:36:19Z" level=info msg="Updating A record named 'party-clipp
 time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-clippy' to '"heritage=external-dns,external-dns/owner=default"' for Azure DNS zone '471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io'."
 ```
 
-Te rekordy, można także znaleźć w zasobie strefy DNS w portalu Azure.
+Te rekordy można także znaleźć w zasobie strefy DNS w witrynie Azure portal.
 
 ![Pobierz rekordy DNS](media/http-routing/clippy.png)
 
-Użyj [dzienniki kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji Nginx kontrolera wejściowych. Dzienniki należy się upewnić, utwórz zasób wejściowych i załaduj ponownie kontrolera. Wszystkie działania HTTP będą rejestrowane.
+Użyj [Dzienniki narzędzia kubectl] [ kubectl-logs] polecenie, aby wyświetlić dzienniki aplikacji dla kontrolera danych przychodzących Nginx. Należy się upewnić, dzienniki `CREATE` zasobu usługi transferu danych przychodzących i załaduj ponownie kontrolera. Wszystkie działania protokołu HTTP jest rejestrowane.
 
 ```
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -185,9 +204,9 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="cleanup"></a>Czyszczenie
+## <a name="clean-up"></a>Czyszczenie
 
-Usuń skojarzone obiekty Kubernetes utworzone w tym kroku.
+Usuń skojarzone obiekty usługi Kubernetes, utworzone w tym artykule.
 
 ```
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -199,10 +218,13 @@ ingress "party-clippy" deleted
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać informacje na temat instalowania HTTPS zabezpieczone kontrolera ruch przychodzący w AKS, zobacz [ruch przychodzący HTTPS na usługi kontenera platformy Azure (AKS)][ingress-https]
+Aby uzyskać informacje na temat sposobu instalowania kontrolera transferu danych przychodzących z zabezpieczonej przez protokół HTTPS w usłudze AKS, zobacz [ruch przychodzący protokołu HTTPS w usłudze Azure Kubernetes Service (AKS)][ingress-https].
 
 <!-- LINKS - internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/

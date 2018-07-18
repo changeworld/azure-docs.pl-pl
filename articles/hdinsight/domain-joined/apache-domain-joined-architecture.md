@@ -1,5 +1,5 @@
 ---
-title: Architektura przyłączonych do domeny usługi Azure HDInsight | Dokumentacja firmy Microsoft
+title: Architektura usługi Azure HDInsight przyłączone do domeny | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zaplanować usługę HDInsight przyłączoną do domeny.
 services: hdinsight
 documentationcenter: ''
@@ -14,45 +14,63 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1f51a1fbb38bc27d15b7a45ca4783508d863fee5
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110459"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112631"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planowanie klastrów Hadoop przyłączonych do domeny platformy Azure w usłudze HDInsight
 
-Standardowa klastra usługi HDInsight to klaster jednego użytkownika. Odpowiada to większości firm, które mają mniejsze zespoły ds. aplikacji tworzące obciążenia składające się z dużych ilości danych. Każdy użytkownik ma innego klastra dedykowane do siebie na żądanie i zniszcz go, gdy nie są już potrzebne. Jednak w wielu przedsiębiorstwach uruchomić przenoszenie kierunku modelu, w którym klastry są zarządzane przez zespoły IT i wiele aplikacji zespoły udziału klastrów. W związku z tym wielodostępnym dostęp do klastra jest wymagany w usłudze Azure HDInsight dla tych większych przedsiębiorstw.
+Klaster w warstwie standardowa usługi Azure HDInsight to klaster z jednego użytkownika. Jest ona odpowiednia dla większości firm, które mają mniejsze zespoły aplikacji tworzące obciążenia dużych ilości danych. Każdego użytkownika można tworzyć dedykowanych klastrów na żądanie i zniszcz go, gdy nie jest już potrzebne. 
 
-HDInsight polega na najbardziej popularnych dostawcy tożsamości — Active Directory (AD) w sposób zarządzanych. Dzięki integracji usługi HDInsight za pomocą [Azure Active Directory Domain Services (usługi AAD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), dostęp do klastrów przy użyciu poświadczeń domeny. Maszyny wirtualne w usłudze HDInsight są przyłączonych do domeny podana, więc cała usługi działające w usłudze HDInsight (Ambari, Hive serwera, zakres, Spark thrift serwera i inne) pracy bezproblemowo dla tego uwierzytelnionego użytkownika. Administratorzy mogą tworzyć zasady autoryzacji silne używanie Apache zakres w celu zapewnienia kontroli dostępu opartej na rolach dla zasobów w klastrze.
+Wiele przedsiębiorstw zostały przeniesione na model, w którym klastry są zarządzane przez zespoły IT, a wiele zespołów aplikacji klastrów udziału. Te większych przedsiębiorstw potrzebują wielu użytkowników dostępu do poszczególnych klastrów w usłudze Azure HDInsight.
+
+HDInsight zależy od dostawcy popularnych tożsamości — usłudze Active Directory — w zarządzany sposób. Po zintegrowaniu HDInsight przy użyciu [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), dostęp do tych klastrów przy użyciu poświadczeń domeny. 
+
+Maszyny wirtualne (VM) w HDInsight są przyłączony do domeny podana. Tak, wszystkie usługi działające na HDInsight (Ambari, Hive server, Ranger, Spark thrift server itd) bezproblemowo działały dla uwierzytelnionego użytkownika. Administratorzy mogą tworzyć zasady silnych autoryzacji przy użyciu struktury Apache Ranger w celu zapewnienia kontroli dostępu opartej na rolach dla zasobów w klastrze.
 
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>Integracja usługi HDInsight z usługą Active Directory
 
-Hadoop open source zależy od protokołu Kerberos do uwierzytelniania i zabezpieczeń. W związku z tym HDInsight węzły klastra są przyłączone do domeny do domeny zarządzanej przez usługi AAD DS. Zabezpieczeń protokołu Kerberos jest skonfigurowany do składników platformy Hadoop w klastrze. Dla poszczególnych składników Hadoop nazwy głównej usługi jest tworzone automatycznie. Tworzona jest również odpowiednią maszynę, główną dla każdego komputera, który jest przyłączony do domeny. Aby przechowywać wystawcy usługi i dla maszyn, jest wymagany do Podaj jednostki organizacyjnej (OU) w ramach kontrolera domeny (AAD DS), rozmieszczenia wystawcy. 
+Hadoop typu open-source opiera się na protokołu Kerberos do uwierzytelniania i zabezpieczeń. Dlatego węzły klastra HDInsight są przyłączone do domeny, który jest zarządzany przez usługi Azure AD DS. Zabezpieczenia protokołu Kerberos został skonfigurowany do składniki platformy Hadoop w klastrze. 
 
-Podsumowując, należy skonfigurować środowisko z:
+Dla poszczególnych składników usługi Hadoop jednostka usługi jest tworzona automatycznie. Odpowiedniej maszyny, podmiotu zabezpieczeń jest tworzona dla każdego komputera, który jest przyłączony do domeny. Do przechowywania tych usług i maszynowego podmiotów zabezpieczeń, musisz podać jednostki organizacyjnej (OU) w ramach kontrolera domeny (Azure AD DS), rozmieszczenie tych jednostek. 
 
-- Domeny usługi Active Directory (zarządzane przez usługę AAD DS)
-- Zabezpieczenia protokołu LDAP (LDAPS) włączone w usługach Domenowych AAD w.
-- Właściwe sieci łączności z usługi HDInsight w sieci Wirtualnej do sieci Wirtualnej AAD DS, w przypadku oddzielne sieci wirtualnych dla nich. Maszyny Wirtualnej w sieci Wirtualnej HDI powinien mieć procesów w wierszu, AAD usług domenowych w usłudze przy użyciu sieci Wirtualnej komunikacji równorzędnej. Zarówno HDI, jak i AAD DS są wdrażane w tej samej sieci Wirtualnej, połączenie jest teraz udostępniana automatycznie i nie dalsze akcje nie jest wymagane.
-- Jednostki organizacyjnej (OU) [utworzone w usłudze Katalogowej usługi AAD](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)
-- Konto usługi ma uprawnienia do:
-    - Tworzenie nazwy główne usług, w jednostce Organizacyjnej.
-    - Przyłączanie komputerów do domeny i utworzyć podmiotów maszyny w jednostce Organizacyjnej.
+Aby podsumować, należy skonfigurować środowisko przy użyciu:
 
-Poniższy zrzut ekranu przedstawia jednostki Organizacyjnej utworzone w domenie contoso.com. Niektóre nazwy główne usług i podmiotów zabezpieczeń komputera są wyświetlane również na zrzucie ekranu.
+- Domeny usługi Active Directory (zarządzane przez usługi Azure AD DS).
+- Bezpiecznego protokołu LDAP (LDAPS) włączone w usłudze Azure AD DS.
+- Odpowiednie sieci łączność z siecią wirtualną HDInsight, do usługi Azure AD DS sieci wirtualnej, jeśli wybierzesz oddzielne sieci wirtualnej dla nich. Maszynę wirtualną w sieci wirtualnej HDInsight mają bezpośredni kontakt z usługą Azure AD DS za pomocą komunikacji równorzędnej sieci wirtualnej. HDInsight i Azure AD DS w przypadku wdrożenia w tej samej sieci wirtualnej, połączenie jest dostarczana automatycznie i nie trzeba wykonywać dalszych akcji.
+- Jednostka Organizacyjna [utworzyć dla usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
+- Konto usługi, które ma uprawnienia do:
+    - Tworzenie jednostek usługi w jednostce Organizacyjnej.
+    - Przyłączanie maszyn do domeny i tworzenie jednostek maszyn w jednostce Organizacyjnej.
 
-![Jednostki organizacyjnej klastrów HDInsight przyłączone do domeny](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
+Poniższy zrzut ekranu przedstawia jednostki Organizacyjnej, utworzone w domenie contoso.com. Pokazuje także niektórych jednostek usługi i nazwy główne maszyny.
 
-### <a name="different-domain-controllers-setup"></a>Instalator kontrolery domeny inne:
-HDInsight aktualnie obsługuje tylko AAD DS jako kontroler domeny głównej, że klaster będzie się komunikował z Kerberise klastra. Jednak innych złożonych konfiguracji AD są również możliwe tak długo, jak prowadzi do włączania dostępu HDI AAD DS.
+![Jednostka organizacyjna dla klastrów HDInsight przyłączone do domeny](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
-- **[Azure Active Directory Domain Services (usługi AAD DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: ta usługa udostępnia domeny zarządzanej, które są całkowicie zgodne z usługi Active Directory systemu Windows Server. Microsoft odpowiada on za zarządzanie, poprawki i domeny w konfiguracji wysokiej Available(HA) monitorowania. Można wdrożyć klaster bez obaw o zachowaniu kontrolerów domeny. Użytkownicy, grupy i hasła są synchronizowane z Azure Active Directory(AAD) [jednokierunkowe Synchronizuj z usługi AAD AAD usług domenowych w usłudze], włączanie użytkownikom zalogować się do klastra przy użyciu tych samych poświadczeń firmowych. Aby uzyskać więcej informacji, zobacz [sposób konfigurowania domeny w usłudze HDInsight clusters przy użyciu usługi AAD DS](./apache-domain-joined-configure-using-azure-adds.md).
-- **Lokalnej usługi AD lub AD na maszynach wirtualnych IaaS**: Jeśli masz lokalnej usługi AD lub innych złożonych AD konfiguracje dla domeny, można zsynchronizować te tożsamości usługi AAD przy użyciu AD Connect, a następnie włącz dzierżawy usługi AAD DS na danej reklamy. Ponieważ protokół Kerberos opiera się na skrótów haseł, konieczne będzie [Włączanie synchronizacji skrótów haseł w usłudze Katalogowej AAD](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Jeśli używasz federacji z AD federation Services (AD FS), można opcjonalnie Konfiguracja synchronizacji skrótów haseł jako zapasowy na wypadek awarii infrastruktury usług AD FS. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł z synchronizacją AAD Connect](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Przy użyciu lokalnej usługi AD lub AD na maszynach wirtualnych IaaS samodzielnie, bez usługi AAD i usługa AAD DS nie jest obsługiwana konfiguracja za dołączenie do domeny klastra HDI.
+## <a name="set-up-different-domain-controllers"></a>Konfigurowanie różnych kontrolerach domeny
+HDInsight aktualnie obsługuje tylko usługi Azure AD DS jako kontrolera domeny głównej, używanego przez klaster komunikacji protokołu Kerberos. Jednak inne złożonych konfiguracji usługi Active Directory jest to możliwe, tak długo, jak takiej konfiguracji prowadzi do włączania usługi Azure AD DS dla dostępu HDInsight.
+
+### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
+[Usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) zapewnia domeny zarządzanej, która jest w pełni zgodna z usługą Active Directory systemu Windows Server. Microsoft zajmuje się zarządzaniem, obsługą jej poprawek oraz monitorowanie domeny w konfiguracji o wysokiej dostępności (HA). Możesz wdrożyć klaster bez martwienia się o utrzymania kontrolerów domeny. 
+
+Użytkownikom, grupom i hasła są synchronizowane z usługą Azure Active Directory (Azure AD). Jednokierunkowa synchronizacji z wystąpienia usługi Azure AD do usługi Azure AD DS pozwala użytkownikom logować się do klastra przy użyciu tych samych poświadczeń firmowych. 
+
+Aby uzyskać więcej informacji, zobacz [Konfiguruj HDInsight przyłączone do domeny klastrów za pomocą usługi Azure AD DS](./apache-domain-joined-configure-using-azure-adds.md).
+
+### <a name="on-premises-active-directory-or-active-directory-on-iaas-vms"></a>Lokalne usługi Active Directory lub usługi Active Directory na maszynach wirtualnych IaaS
+
+Jeśli masz wystąpienie usługi Active Directory w środowisku lokalnym lub bardziej złożonych konfiguracji usługi Active Directory dla domeny, można zsynchronizować te tożsamości do usługi Azure AD za pomocą usługi Azure AD Connect. Następnie można włączyć usługi Azure AD DS w tej dzierżawie usługi Active Directory. 
+
+Ponieważ protokół Kerberos opiera się na wartości skrótów haseł, konieczne będzie [Włączanie synchronizacji skrótów haseł w usłudze Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Jeśli używasz federacji z usługi Active Directory Federation Services (AD FS), możesz opcjonalnie skonfigurować synchronizacji skrótów haseł do przechowywania kopii zapasowych na wypadek awarii infrastruktury usług AD FS. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł za pomocą usługi Azure AD Connect sync](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). 
+
+Za pomocą lokalnej usługi Active Directory lub usługi Active Directory na maszynach wirtualnych IaaS samodzielnie, bez usługi Azure AD i Azure AD DS, konfiguracja nie jest obsługiwane w przypadku klastrów HDInsight przyłączone do domeny.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Konfigurowanie klastrów HDInsight przyłączonych do domeny](apache-domain-joined-configure-using-azure-adds.md).
-* [Konfigurowanie zasad gałęzi dla klastrów usługi HDInsight przyłączonych do domeny](apache-domain-joined-run-hive.md).
-* [Zarządzanie przyłączonych do domeny w usłudze hdinsight](apache-domain-joined-manage.md). 
+* [Konfigurowanie przyłączonych do domeny klastrów HDInsight](apache-domain-joined-configure-using-azure-adds.md)
+* [Konfigurowanie zasad usługi Hive dla przyłączonych do domeny klastrów HDInsight](apache-domain-joined-run-hive.md)
+* [Zarządzanie klastrami HDInsight przyłączone do domeny](apache-domain-joined-manage.md) 

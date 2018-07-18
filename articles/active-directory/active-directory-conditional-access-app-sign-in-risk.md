@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2018
+ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 98e2f88c85d21cde2ecc7196f93d531a80b14d13
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f1a6a11f827248d098c018390e9ae5557d9c22d1
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450159"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39113380"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
 
@@ -62,7 +62,7 @@ Celem tego kroku jest, aby upewnić się, że Twoje konto testu mają dostęp do
 
 ## <a name="create-your-conditional-access-policy"></a>Utwórz zasady dostępu warunkowego 
 
-Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przeglądarki Tor do generowania wykryte **logowania z anonimowych adresów IP** zdarzenie o podwyższonym ryzyku. Poziom ryzyka dotyczący tego zdarzenia o podwyższonym ryzyku to średni.   
+Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przeglądarki Tor do generowania wykryte **logowania z anonimowych adresów IP** zdarzenie o podwyższonym ryzyku. Poziom ryzyka dotyczący tego zdarzenia o podwyższonym ryzyku to średni. Aby odpowiedzieć na to zdarzenie o podwyższonym ryzyku, należy ustawić warunkiem ryzyka logowania średniej. W środowisku produkcyjnym należy ustawić stan ryzyka logowania wysoki lub na Średni i wysoki.     
 
 W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany. Ustaw w zasadach:
 
@@ -70,10 +70,11 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
 |---     | --- |
 | Użytkownicy i grupy | Alain Charon  |
 | Aplikacje w chmurze | Wszystkie aplikacje w chmurze |
+| Ryzyko logowania | Medium |
 | Udziel | Blokuj dostęp |
  
 
-![Tworzenie zasad](./media/active-directory-conditional-access-app-sign-in-risk/115.png)
+![Tworzenie zasad](./media/active-directory-conditional-access-app-sign-in-risk/130.png)
 
  
 
@@ -125,6 +126,26 @@ W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany
     a. Kliknij przycisk **wszystkie aplikacje w chmurze**.
 
     b. Kliknij przycisk **Gotowe**.
+
+10. Kliknij przycisk **warunki**. 
+
+    ![Kontrole dostępu](./media/active-directory-conditional-access-app-sign-in-risk/19.png)
+
+11. Na **warunki** strony:
+
+    ![Poziom ryzyka logowania](./media/active-directory-conditional-access-app-sign-in-risk/21.png)
+
+    a. Kliknij przycisk **ryzyka logowania**.
+ 
+    b. Jako **Konfiguruj**, kliknij przycisk **tak**.
+
+    c. Poziom ryzyka logowania wybrać **średni**.
+
+    d. Kliknij pozycję **Wybierz**.
+
+    e. Na **warunki** kliknij **gotowe**.
+
+
 
 10. W **kontrole dostępu** kliknij **Grant**.
 

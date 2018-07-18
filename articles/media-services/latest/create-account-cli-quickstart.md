@@ -1,5 +1,5 @@
 ---
-title: Szybki start — tworzenie konta usługi Azure Media Services za pomocą interfejsu wiersza polecenia w wersji 2.0 | Microsoft Docs
+title: Szybki start — tworzenie konta usługi Azure Media Services za pomocą interfejsu wiersza polecenia platformy Azure | Microsoft Docs
 description: Wykonaj kroki tego przewodnika Szybki start, aby utworzyć konto usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: f7e5cb28f90466e9366c0a32e2a333e6823b9396
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779722"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38767106"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Szybki start: tworzenie konta usługi Azure Media Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "33779722"
 
 Niezależnie od tego, czy jesteś deweloperem, czy też twórcą zawartości multimedialnej, w celu przechowywania, szyfrowania, kodowania i przesyłania strumieniowego zawartości multimedialnej oraz zarządzania nią na platformie Azure musisz utworzyć konto usługi Media Services. Podczas tworzenia konta usługi Media Services musisz podać identyfikator zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. Ten zasób konta magazynu musi znajdować się w tym samym regionie geograficznym co konto usługi Media Services.  
 
-W tym przewodniku Szybki start zostały opisane kroki tworzenia nowego konta usługi Azure Media Services przy użyciu interfejsu wiersza polecenia w wersji 2.0.  
+W tym przewodniku Szybki start zostały opisane kroki tworzenia nowego konta usługi Azure Media Services przy użyciu interfejsu wiersza polecenia platformy Azure.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie ur
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 ## <a name="set-the-azure-subscription"></a>Ustawianie subskrypcji platformy Azure
 

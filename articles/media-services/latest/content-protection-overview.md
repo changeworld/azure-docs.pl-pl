@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: juliako
-ms.openlocfilehash: fb8730e9074624ba1b0f0162ebf9156b758b59c2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068788"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39115234"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -45,8 +45,11 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
   > [!NOTE]
   > Umożliwia ona szyfrowanie każdego zasobu ze wszystkimi wiele typów szyfrowania (AES-128, PlayReady, Widevine i FairPlay). Zobacz [protokoły i typy szyfrowania przesyłania strumieniowego](#streaming-protocols-and-encryption-types), aby zobaczyć, co ma sens połączyć.
   
-  Następujący artykuł pokazuje kroków w celu szyfrowania zawartość przy użyciu standardu AES: [Chroń za pomocą szyfrowania AES](protect-with-aes128.md)
- 
+  Następujące artykuły pokazują kroki szyfrowanie zawartości przy użyciu standardu AES i/lub DRM: 
+  
+  * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
+  * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
+
 2. Odtwarzacz przy użyciu technologii AES lub technologii DRM klienta. Aplikacja odtwarzacza wideo, oparte na odtwarzaczu zestawu SDK (natywny lub przeglądarki) musi spełniać następujące wymagania:
   * Odtwarzacz zestaw SDK obsługuje wymagane klientów DRM
   * Player zestaw SDK obsługuje wymagane protokołów przesyłania strumieniowego: Smooth, DASH lub HLS
@@ -125,7 +128,10 @@ Po skonfigurowaniu zasadzie ograniczenia tokenu, należy określić podstawowy k
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Jak chronić przy użyciu szyfrowania AES w Media Services v3](protect-with-aes128.md)
+Zapoznaj się z następującymi artykułami:
+
+  * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
+  * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
 
 Dodatkowe informacje można znaleźć w [DRM odwoływać się do projektowania i implementacji](../previous/media-services-cenc-with-multidrm-access-control.md)
 

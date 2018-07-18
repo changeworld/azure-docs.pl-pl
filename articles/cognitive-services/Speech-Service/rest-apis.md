@@ -1,6 +1,6 @@
 ---
 title: Usługa rozpoznawania mowy interfejsów API REST | Dokumentacja firmy Microsoft
-description: Odwołanie do interfejsów API REST usługi mowy.
+description: Dokumentacja interfejsów API REST usługi mowy.
 services: cognitive-services
 author: v-jerkin
 manager: noellelacharite
@@ -9,33 +9,33 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 311d0cb7f208c0f720b8611510fb65efc65c12bc
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085375"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39112877"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
-Interfejsy API REST usługi ujednoliconego mowy są podobne do interfejsów API dostarczonych przez [API mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) (wcześniej znane jako mowy usługi Bing). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę poprzedniej mowy.
+Interfejsy API REST, ujednolicone usługi mowy są podobne do interfejsów API dostarczonych przez [interfejsu API rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) (wcześniej znane jako usługa rozpoznawania mowy Bing). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy w poprzednim.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-W mowy API tekstu tylko punktów końcowych używanych różnią się od poprzedniej mowy usługi interfejsu API rozpoznawania mowy. W poniższej tabeli przedstawiono nowe punkty końcowe. Użyj, który odpowiada regionie Twojej subskrypcji.
+W funkcji rozpoznawania mowy do interfejsu API tłumaczenia tekstu tylko punktów końcowych używanych różnią się od poprzedniej Speech service interfejs API rozpoznawania mowy. W poniższej tabeli przedstawiono nowe punkty końcowe. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
-Mowy API tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API mowy.
+Zamiana mowy na interfejs API tłumaczenia tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API rozpoznawania mowy.
 
-Mowy tekst REST API obsługuje tylko krótki zniesławiających. Żądań może zawierać maksymalnie 10 sekund dźwięku i ostatniej sekundy 14 ogólnej. Interfejs API REST zwraca tylko wyniki końcowe nie wyniki częściowe lub tymczasowe.
+Zamiana mowy na tekst REST API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca tylko wyników końcowych nie przejściowym lub częściowe wyniki.
 
 > [!NOTE]
-> Jeśli dostosowano akustycznego modelu lub model języka lub wymowy należy użyć niestandardowego punktu końcowego.
+> Jeśli dostosowany model akustyczny lub model języka lub wymowa, należy użyć niestandardowego punktu końcowego.
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
-Nowy tekst na mowę interfejs API obsługuje 24 KHz wyjścia audio. `X-Microsoft-OutputFormat` Nagłówek teraz może zawierać następujące wartości.
+Nowy tekst na mowę interfejs API obsługuje 24 KHz wyjściowego audio. `X-Microsoft-OutputFormat` Nagłówek może teraz zawierać następujące wartości.
 
 |||
 |-|-|
@@ -46,32 +46,32 @@ Nowy tekst na mowę interfejs API obsługuje 24 KHz wyjścia audio. `X-Microsoft
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
-Usługa mowy zapewnia teraz dwie głosy 24 KHz:
+Usługa rozpoznawania mowy udostępnia teraz dwa głosy 24 KHz:
 
-Ustawienia regionalne | Język   | Płeć | Mapowanie nazw usługi
+Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
 -------|------------|--------|------------
-pl-PL  | US English | Kobieta | "Microsoft Server mowy tekstu na głos mowy (en US, Jessa24kRUS)" 
-pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy tekstu na głos mowy (en US, Guy24kRUS)"
+pl pl  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" 
+pl pl  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)"
 
-Dostępne są następujące punkty końcowe REST do ujednoliconego mowy usługi tekst na mowę interfejsu API. Użyj punktu końcowego, który odpowiada regionie Twojej subskrypcji.
+Dostępne są następujące punkty końcowe REST dla ujednolicone usługi tekstu na mowę interfejsu API. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](includes/endpoints-text-to-speech.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-Zachowaj te różnice pamiętać jako odwoływać się [dokumentacja interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) poprzedniego interfejsu API mowy.
+Zachowanie tych różnic, pamiętając, jak możesz odwołać się do [dokumentację interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) poprzedniego interfejsu API rozpoznawania mowy.
 
 ## <a name="authentication"></a>Authentication
 
-Wysyłanie żądania do interfejsu API REST usługi mowy wymaga tokenu dostępu. Uzyskania tokenu zapewniając klucz subskrypcji do regionalnych usługi mowy `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użyj punktu końcowego, który odpowiada regionie Twojej subskrypcji.
+Wysyła żądanie do interfejsu API REST usługi mowy wymaga tokenu dostępu. Uzyskania tokenu, podając swój klucz subskrypcji z usługą mowy regionalnych `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
-[!include[](includes/endpoints-token-service.md)]
+[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token — w tym, jeśli chcesz tylko przed każdym żądaniem interfejsu API REST mowy. Aby zminimalizować ruch sieciowy i czas oczekiwania, jednak zaleca się przy użyciu tego samego tokenu dziewięć minut.
+Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token — w tym, jeśli chcesz, tuż przed wywołaniem każdego żądania interfejsu API REST mowy. Aby zminimalizować ruch sieciowy i czas oczekiwania, jednak zalecamy używanie tego samego tokenu na dziewięć minut.
 
-Poniższe sekcje pokazują, jak uzyskać token i jak z niego korzystać w żądaniu.
+W poniższych sekcjach opisano, jak uzyskać token i jak z niej korzystać w żądaniu.
 
-### <a name="getting-a-token-http"></a>Pobieranie tokenu: HTTP
+### <a name="getting-a-token-http"></a>Uzyskanie tokenu: HTTP
 
-Poniżej przedstawiono przykładowe żądanie HTTP do uzyskania tokenu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionu zachodnie stany USA, Zastąp `Host` nagłówka z nazwami hostów w Twoim regionie.
+Poniżej przedstawiono przykładowe żądanie HTTP, do uzyskania tokenu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionie zachodnie stany USA, należy zastąpić `Host` nagłówka z nazwą hosta w Twoim regionie.
 
 ```
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -81,11 +81,11 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Treść odpowiedzi na to żądanie jest token dostępu w formacie Java tokenów sieci Web (JWT).
+Treść odpowiedzi do tego żądania jest token dostępu w formacie Java tokenu sieci Web (JWT).
 
-### <a name="getting-a-token-powershell"></a>Pobieranie tokenu: środowiska PowerShell
+### <a name="getting-a-token-powershell"></a>Uzyskanie tokenu: PowerShell
 
-Poniższy skrypt programu Windows PowerShell ilustruje sposób uzyskać token dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionu zachodnie stany USA, należy odpowiednio zmień nazwę hosta danego identyfikatora URI.
+Poniższy skrypt programu Windows PowerShell ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest dostępne w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta danego identyfikatora URI.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -102,12 +102,12 @@ $OAuthToken
 
 ```
 
-### <a name="getting-a-token-curl"></a>Pobieranie tokenu: cURL
+### <a name="getting-a-token-curl"></a>Uzyskanie tokenu: cURL
 
-Zwinięcie jest dostępne w systemie Linux (i w podsystemie systemu Windows dla systemu Linux) Narzędzie wiersza polecenia. Poniższego polecenia cURL przedstawiono sposób uzyskiwania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionu zachodnie stany USA, należy odpowiednio zmień nazwę hosta danego identyfikatora URI.
+cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i podsystem Windows dla systemu Linux). Poniższe polecenie cURL ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest dostępne w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta danego identyfikatora URI.
 
 > [!NOTE]
-> Polecenie jest wyświetlany w wielu wierszach dla czytelności, ale należy wprowadzić w jednym wierszu w wierszu polecenia powłoki.
+> Polecenie jest wyświetlane w wielu wierszach, aby zwiększyć czytelność, ale powinny być wprowadzane w jednym wierszu w wierszu polecenia powłoki.
 
 ```
 curl -v -X POST 
@@ -117,9 +117,9 @@ curl -v -X POST
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="getting-a-token-c"></a>Pobieranie tokenu: C#
+### <a name="getting-a-token-c"></a>Uzyskanie tokenu: C#
 
-C# klasy poniżej przedstawiono sposób uzyskiwania tokenu dostępu. Podczas tworzenia wystąpienia klasy, należy przekazać klucz subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionu zachodnie stany USA, Zmień nazwę hosta `FetchTokenUri` odpowiednio.
+Klasa C# poniżej pokazano, jak można uzyskać tokenu dostępu. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionie zachodnie stany USA, Zmień nazwę hosta `FetchTokenUri` odpowiednio.
 
 ```cs
     /*
@@ -160,7 +160,7 @@ C# klasy poniżej przedstawiono sposób uzyskiwania tokenu dostępu. Podczas two
 
 ### <a name="using-a-token"></a>Za pomocą tokenu
 
-Aby użyć tokenu żądania interfejsu API REST, podaj go w `Authorization` nagłówka, po słowie `Bearer`. W tym miejscu na przykład jest przykładowy tekst REST mowy żądanie zawierające token. Zastępuje token rzeczywiste dla `YOUR_ACCESS_TOKEN` i używa poprawne nazwy hosta w `Host` nagłówka.
+Aby użyć tokenu żądania interfejsu API REST, podaj je w `Authorization` nagłówka, po słowie `Bearer`. Na przykład Oto przykład tekstu do żądania REST mowy, zawierający tokenu. Podstaw rzeczywiste token dla `YOUR_ACCESS_TOKEN` i używa poprawne nazwy hosta w `Host` nagłówka.
 
 ```xml
 POST /cognitiveservices/v1 HTTP/1.1
@@ -178,14 +178,14 @@ Connection: Keep-Alive
 
 ### <a name="renewing-authorization"></a>Odnawianie autoryzacji
 
-Token autoryzacji wygasa po upływie 10 minut. Odnów autoryzację, uzyskując nowy token, przed jego wygaśnięciem — na przykład po dziewięć minut. 
+Token autoryzacji wygasa po upływie 10 minut. Odnów autoryzację dzięki uzyskaniu nowego tokenu, przed jego wygaśnięciem — na przykład po dziewięciu minut. 
 
-Poniższy kod C# nie zastępuje dzięki wsuwanej konstrukcji klasy przedstawione wcześniej. `Authentication` Klasy automatycznie uzyskuje nowy token dostępu co dziewięć minut za pomocą czasomierza. Ta metoda gwarantuje, że prawidłowy token jest zawsze dostępna podczas działania programu.
+Poniższy kod C# jest zamiennikiem dla klasy przedstawiony wcześniej. `Authentication` Klasy automatycznie uzyskuje nowy token dostępu co dziewięć minut za pomocą czasomierza. Takie podejście zapewnia, że prawidłowy token jest zawsze dostępny podczas działania programu.
 
 > [!NOTE]
-> Zamiast używać czasomierz, można przechowywać o po tokenu bieżącego uzyskano, a następnie poprosić o nowe tylko wtedy, gdy bieżący token jest bliski wygaśnięcia. Takie podejście pozwala uniknąć niepotrzebnego żąda nowe tokeny i może być bardziej odpowiednie dla programów, które rzadko żądania mowy.
+> Zamiast używać czasomierza, można przechowywać sygnaturę czasową, gdy bieżący token zostały pobrane, a następnie poprosić o nowe tylko wtedy, gdy bieżący token jest bliski wygaśnięcia. Ta metoda pozwala uniknąć niepotrzebnego żądanie nowych tokenów i może być bardziej odpowiednie dla programów, które rzadko żądaniami funkcji rozpoznawania mowy.
 
-Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie Twojej subskrypcji. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji.
+Tak jak poprzednio, upewnij się, że `FetchTokenUri` wartość odpowiada regionie Twojej subskrypcji. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji.
 
 ```cs
     /*
@@ -265,7 +265,7 @@ Jak wcześniej, upewnij się, że `FetchTokenUri` wartość odpowiada regionie T
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz wersję próbną subskrypcji mowy](https://azure.microsoft.com/try/cognitive-services/)
-- [Dostosowywanie akustycznego modeli](how-to-customize-acoustic-models.md)
-- [Dostosowywanie modeli języka](how-to-customize-language-model.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+- [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md)
+- [Dostosowywanie modeli językowych](how-to-customize-language-model.md)
 
