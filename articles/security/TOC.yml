@@ -164,6 +164,16 @@
           href: azure-operational-security-checklist.md
 - name: Zarządzanie i zgodność
   items:
+    - name: FedRAMP
+      items:
+        - name: Analiza danych
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Magazyn danych
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: Aplikacja internetowa IaaS
+          href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: Aplikacja internetowa PaaS
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       items:
         - name: Analiza danych
@@ -184,20 +194,10 @@
           href: ./blueprints/gdpr-iaaswa-overview.md
         - name: Aplikacja internetowa PaaS
           href: ./blueprints/gdpr-paaswa-overview.md
-    - name: FedRAMP
+    - name: HIPAA/HITRUST
       items:
-        - name: Analiza danych
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: Magazyn danych
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: Aplikacja internetowa IaaS
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: Aplikacja internetowa PaaS
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Połączenia Trusted Internet Connection za pomocą platformy Azure
-          href: ./compliance/compliance-tic.md
+        - name: Dane kondycji i SI
+          href: ./blueprints/azure-health.md
     - name: PCI DSS
       items:
         - name: Analiza danych
@@ -208,6 +208,10 @@
           href: ./blueprints/pcidss-iaaswa-overview.md
         - name: Aplikacja internetowa PaaS
           href: ./blueprints/pcidss-paaswa-overview.md
+    - name: TIC
+      items:
+        - name: Połączenia Trusted Internet Connection za pomocą platformy Azure
+          href: ./compliance/compliance-tic.md
     - name: UK NHS
       items:
         - name: Analiza danych
@@ -222,8 +226,6 @@
       items:
         - name: Aplikacja internetowa IaaS
           href: ./blueprints/ukofficial-iaaswa-overview.md
-    - name: Dane kondycji HIPAA/HITRUST i SI
-      href: ./blueprints/azure-health.md
 - name: Oficjalne dokumenty
   href: security-white-papers.md
 - name: Usługi zabezpieczeń platformy Azure

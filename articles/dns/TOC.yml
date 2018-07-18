@@ -5,12 +5,13 @@
     - name: Co to jest system DNS platformy Azure?
       href: dns-overview.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Rozpoznawanie nazw — portal
       href: dns-getstarted-portal.md
-    - name: Tworzenie strefy i rekordu DNS — program PowerShell
+    - name: Rozpoznawanie nazw — PowerShell
       href: dns-getstarted-powershell.md
-    - name: Tworzenie strefy i rekordu DNS — interfejs wiersza polecenia
+    - name: Rozpoznawanie nazw — interfejs wiersza polecenia
       href: dns-getstarted-cli.md
 - name: Samouczki
   items:

@@ -551,7 +551,7 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Programowe skalowanie w poziomie
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Skalowanie w górę maszyn wirtualnych węzłów o podstawowym typie
+                - name: Skalowanie lub uaktualnianie maszyn wirtualnych węzłów o podstawowym typie
                   href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: Uaktualnienie
               href: service-fabric-cluster-upgrade.md
@@ -569,8 +569,6 @@
               href: service-fabric-cluster-delete.md
             - name: Łączenie się zdalne z maszyną wirtualną węzła klastra
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-            - name: Uaktualnienie/migracja jednostki SKU usługi VMSS
-              href: service-fabric-update-vmss-sku.md
         - name: Klastry autonomiczne
           items:
             - name: Przycisk Utwórz
