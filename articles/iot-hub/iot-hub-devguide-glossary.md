@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure IoT Hub słownik terminów | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — słownik terminów wspólnej odnoszących się do Centrum IoT Azure.
+title: Usługa Azure IoT Hub słownik terminów związanych z | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — ze słownikiem pojęć wspólnych odnoszących się do usługi Azure IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,251 +8,251 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 69bc7d71e804ca33b984699ee30a44774542803f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960495"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125924"
 ---
-# <a name="glossary-of-iot-hub-terms"></a>Słownik terminów Centrum IoT
-W tym artykule wymieniono niektóre typowe terminy używane w artykułach Centrum IoT.
+# <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
+W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
 
-## <a name="advanced-message-queueing-protocol"></a>Protokół usługi kolejkowania komunikatów zaawansowane
-[Zaawansowane protokołu usługi kolejkowania komunikatów (AMQP)](https://www.amqp.org/) jest jeden z komunikatów protokołów, które [Centrum IoT](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokoły obsługi komunikatów, które obsługuje Centrum IoT, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+## <a name="advanced-message-queueing-protocol"></a>Protokół Kolejkowanie komunikatów zaawansowane
+[Zaawansowane komunikat Kolejkowanie Protocol (AMQP)](https://www.amqp.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="automatic-device-management"></a>Zarządzanie urządzeniami automatyczne
-Automatyczne zarządzanie urządzeniami w Centrum IoT Azure pozwala zautomatyzować wiele powtarzających się i złożonych zadań związanych z zarządzaniem floty dużych urządzenia za pośrednictwem całości ich cyklów. Z automatycznego zarządzania urządzeniami docelowa zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją, a let Centrum IoT aktualizowania urządzeń, które pochodzą do zakresu.  Składa się z [konfiguracji automatycznego urządzeń](iot-hub-auto-device-config.md) i [wdrożeń automatycznych krawędzi IoT](../iot-edge/how-to-deploy-monitor.md).
+Automatyczne zarządzanie urządzeniami w usłudze Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań zarządzania flot duże urządzenia względem całej ich cykle życia. Za pomocą automatycznego zarządzania urządzeniami można docelowe zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją i umożliwić usługi IoT Hub aktualizowania urządzenia, które pochodzą one do zakresu.  Składa się z [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) i [automatycznego wdrożenia usługi IoT Edge](../iot-edge/how-to-deploy-monitor.md).
 
-## <a name="automatic-device-configuration"></a>Konfiguracja automatycznych urządzeń
-Można użyć z zaplecza rozwiązania [konfiguracji automatycznego urządzeń](iot-hub-auto-device-config.md) można przypisać odpowiednie właściwości do zestawu [twins urządzenia](#device-twin) oraz stan raportu za pomocą systemu metryki i metryki niestandardowe. 
+## <a name="automatic-device-configuration"></a>Konfiguracja urządzenia automatycznego
+Można użyć w zapleczu rozwiązania [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) można przypisać żądanych właściwości z zestawem [bliźniaczych reprezentacji urządzeń](#device-twin) i stan raportu przy użyciu metryk systemu i metryki niestandardowe. 
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-[Interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) to narzędzie do tworzenia i zarządzania zasobami na platformie Microsoft Azure i platform, open source, opartych na powłoki poleceń. Ta wersja interfejsu wiersza polecenia jest implementowane przy użyciu środowiska Node.js.
+[Wiersza polecenia platformy Azure](../cli-install-nodejs.md) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja interfejsu wiersza polecenia jest implementowany przy użyciu środowiska Node.js.
 
 ## <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) to narzędzie do tworzenia i zarządzania zasobami na platformie Microsoft Azure i platform, open source, opartych na powłoki poleceń. Ta wersja zapoznawcza interfejsu wiersza polecenia jest implementowane za pomocą języka Python.
+[Interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja zapoznawcza interfejsu wiersza polecenia jest implementowany przy użyciu języka Python.
 
 
-## <a name="azure-iot-device-sdks"></a>Urządzenia IoT Azure SDK
-Brak _urządzenia zestawów SDK_ dostępne dla wielu języków, które umożliwiają tworzenie [aplikacji dla urządzeń](#device-app) który interakcję z Centrum IoT. Samouczki Centrum IoT pokazują, jak używać tych zestawy SDK urządzenia. Kod źródłowy i uzyskać więcej informacji o urządzeniu zestawów SDK można znaleźć w tej witrynie GitHub [repozytorium](https://github.com/Azure/azure-iot-sdks).
+## <a name="azure-iot-device-sdks"></a>Zestawy SDK platformy Azure w zakresie urządzeń IoT
+Istnieją _zestawy SDK urządzeń_ dostępne dla wielu języków, które umożliwiają tworzenie [aplikacji dla urządzeń](#device-app) , które prowadzić interakcję z usługą IoT hub. Samouczki usługi IoT Hub dowiesz się, jak używać tych zestawów SDK urządzeń. Kod źródłowy i dodatkowych informacji na temat zestawów SDK urządzeń można znaleźć w tej usłudze GitHub [repozytorium](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-service-sdks"></a>Zestawy Azure IoT usługi SDK
-Brak _usługi SDK_ dostępne dla wielu języków, które umożliwiają tworzenie [zaplecza aplikacji](#back-end-app) który interakcję z Centrum IoT. Samouczki Centrum IoT pokazują, jak używać tych zestawów SDK usługi. Kod źródłowy i uzyskać więcej informacji na temat zestawów SDK usługi można znaleźć w tej witrynie GitHub [repozytorium](https://github.com/Azure/azure-iot-sdks).
+## <a name="azure-iot-service-sdks"></a>Zestawy SDK usługi Azure IoT
+Istnieją _usługi SDK_ dostępne dla wielu języków, które umożliwiają tworzenie [aplikacji zaplecza](#back-end-app) , które prowadzić interakcję z usługą IoT hub. Samouczki usługi IoT Hub dowiesz się, jak używać tych zestawów SDK usługi. Kod źródłowy i dodatkowych informacji na temat zestawów SDK usługi można znaleźć w tej usłudze GitHub [repozytorium](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-portal"></a>Azure Portal
-[Portalu Microsoft Azure](https://portal.azure.com) to centralne miejsce, w którym można udostępnić i zarządzania zasobami platformy Azure. Organizuje ona jego zawartości przy użyciu _bloków_.
+[Portalu Microsoft Azure](https://portal.azure.com) to centralne miejsce, w którym można aprowizować i zarządzania zasobami platformy Azure. Organizuje ona jego zawartości za pomocą _bloków_.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-[Program Azure PowerShell](/powershell/azure/overview) to zbiór poleceń cmdlet służy do zarządzania na platformie Azure za pomocą środowiska Windows PowerShell. Tworzenie, testowanie i wdrażanie przy użyciu poleceń cmdlet i zarządzanie rozwiązań i usług świadczonych za pośrednictwem platformy Azure.
+[Program Azure PowerShell](/powershell/azure/overview) to zbiór poleceń cmdlet, można użyć do zarządzania platformy Azure przy użyciu programu Windows PowerShell. Korzystanie z poleceń cmdlet do tworzenia, testowania, wdrażania i zarządzania rozwiązania i usługi dostarczane za pośrednictwem platformy Azure.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-[Usługa Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umożliwia pracę z zasobami w rozwiązaniu jako grupa. Można wdrożyć, zaktualizować lub usunięcie zasobów dla rozwiązania w jednej, skoordynowanej operacji.
+[Usługa Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Można wdrożyć, zaktualizować lub usunąć zasoby dla danego rozwiązania w jednej, skoordynowanej operacji.
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
-[Usługa Service Bus](../service-bus/index.md) zapewnia włączoną obsługę chmury komunikacji z obsługą wiadomości przedsiębiorstwa i obsługiwanych przez przekaźnik komunikacji, który pomaga połączyć rozwiązań lokalnych z chmurą. Niektóre samouczki Centrum IoT korzystają usługi Service Bus [kolejek](../service-bus-messaging/service-bus-messaging-overview.md).
+[Usługa Service Bus](../service-bus/index.md) zapewnia komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i obsługiwanych przez przekaźnik komunikacji, który pomoże Ci połączyć rozwiązania lokalne z chmurą. Samouczki usługi IoT Hub należy używać usługi Service Bus [kolejek](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="azure-storage"></a>Azure Storage
-[Usługa Azure Storage](../storage/common/storage-introduction.md) jest rozwiązanie magazynu w chmurze. Obejmuje on usługi magazynu obiektów Blob, używanego do przechowywania danych bez struktury. Niektóre samouczki Centrum IoT używać magazynu obiektów blob.
+[Usługa Azure Storage](../storage/common/storage-introduction.md) to rozwiązanie magazynu w chmurze. Obejmuje usługi magazynu obiektów Blob, używanego do przechowywania danych obiektów bez struktury. Samouczki usługi IoT Hub używać magazynu obiektów blob.
 
-## <a name="back-end-app"></a>Zaplecza aplikacji
-W kontekście [Centrum IoT](#iot-hub), aplikacji wewnętrznych to aplikacja, która łączy punkty końcowe Centrum IoT połączonej usługi. Na przykład aplikacji zaplecza może pobrać [urządzenia do chmury](#device-to-cloud)wiadomości lub zarządzać [rejestru tożsamości](#identity-registry). Zazwyczaj uruchamiania aplikacji zaplecza w chmurze, ale w wielu samouczków aplikacji zaplecza są konsoli aplikacje działające na komputerze deweloperskim lokalnego.
+## <a name="back-end-app"></a>Aplikacja wewnętrzna
+W kontekście [usługi IoT Hub](#iot-hub), aplikacji zaplecza, to aplikacja, która łączy się z jednego z punktów końcowych usługi skierowaną w Centrum IoT hub. Na przykład, może pobrać aplikacji zaplecza [urządzenia do chmury](#device-to-cloud)wiadomości lub zarządzać [rejestr tożsamości](#identity-registry). Zazwyczaj aplikacji zaplecza działa w chmurze, ale w wielu samouczków aplikacji zaplecza są aplikacji konsoli uruchomionych na lokalnej maszynie do programowania.
 
 ## <a name="built-in-endpoints"></a>Wbudowane punkty końcowe
-Centrum IoT, co obejmuje wbudowane [punktu końcowego](iot-hub-devguide-endpoints.md) czyli zdarzenia koncentratora zgodny. Można użyć dowolnego mechanizm, który współpracuje z usługą Event Hubs można odczytać urządzenia do chmury wiadomości z tego punktu końcowego.
+Każde wystąpienie usługi IoT hub zawiera wbudowaną [punktu końcowego](iot-hub-devguide-endpoints.md) czyli zgodnego z Centrum zdarzeń. Możesz użyć dowolnego mechanizmu, który współpracuje z usługą Event Hubs do odczytywania komunikatów z urządzenia do chmury z tego punktu końcowego.
 
 ## <a name="cloud-gateway"></a>Brama chmury
-Brama chmury umożliwia łączność w przypadku urządzeń, które nie może połączyć się bezpośrednio do [Centrum IoT](#iot-hub). Brama chmury jest hostowana w chmurze contrast do [bramy pola](#field-gateway) systemem lokalnym na urządzeniach. Typowy przypadek użycia bramy chmury jest wdrożenie translacji protokołów dla urządzeń.
+Brama chmury umożliwia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Brama chmury jest hostowana w chmurze, w przeciwieństwie do [bramy w terenie](#field-gateway) , które jest uruchamiane lokalnych do urządzeń. Typowym przypadkiem użycia dla bramy chmury jest do zaimplementowania translację protokołu dla urządzeń.
 
 ## <a name="cloud-to-device"></a>Chmura-urządzenie
-Odnosi się do wiadomości wysyłane z Centrum IoT do podłączonego urządzenia. Często komunikaty te są poleceniami, które poinstruować urządzenia, aby podejmować działanie. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+Odnosi się do komunikatów wysyłanych z usługi IoT hub do podłączonego urządzenia. Często te komunikaty są poleceń, które poinstruowanie urządzenia w celu wykonania akcji. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="configuration"></a>Konfigurowanie
-W kontekście [konfiguracji automatycznego urządzenia](iot-hub-auto-device-config.md), konfiguracji w ramach Centrum IoT definiuje żądanej konfiguracji dla urządzeń twins i zapewnia zbiór metryk do trwałego zgłaszania stanu i postępu.
+W kontekście [konfiguracji urządzenia automatycznego](iot-hub-auto-device-config.md), konfiguracji w ramach usługi IoT Hub definiują pożądaną konfigurację dla bliźniaczych reprezentacji urządzeń i oferuje zestaw metryk, aby raport status i postęp.
 
 ## <a name="connection-string"></a>Parametry połączenia
-Umożliwia parametry połączenia w kodzie aplikacji Hermetyzowanie informacje wymagane do połączenia z punktem końcowym. Ciąg połączenia zwykle obejmują adres punktu końcowego i informacji o zabezpieczeniach, ale ciąg połączenia formatów różnią się w usługach. Istnieją dwa typy parametrów połączenia skojarzony z usługą Centrum IoT:
-- *Parametry połączenia urządzenia* włączyć łączyć się urządzenia uwzględniającym punkty końcowe Centrum IoT urządzenia.
-- *Parametry połączenia Centrum IoT* Włącz aplikacji zaplecza do nawiązania połączenia usługi połączonej punkty końcowe Centrum IoT.
+Możesz używać parametrów połączenia w kodzie aplikacji do hermetyzacji informacje wymagane do połączenia z punktem końcowym. Parametry połączenia są zazwyczaj zawiera adres punktu końcowego i informacji o zabezpieczeniach, ale parametry połączenia, które formaty różnią się w usługach. Istnieją dwa typy parametrów połączenia związane z usługą IoT Hub:
+- *Parametry połączenia urządzenia* Włącz urządzeniom na łączenie się z punktami końcowymi przeznaczonych dla urządzenia w Centrum IoT hub.
+- *Parametry połączenia Centrum IoT* umożliwić aplikacji zaplecza, aby nawiązać połączenie z punktami końcowymi przeznaczonych dla usługi w Centrum IoT hub.
 
 ## <a name="custom-endpoints"></a>Niestandardowe punkty końcowe
-Można tworzyć niestandardowe [punkty końcowe](iot-hub-devguide-endpoints.md) w Centrum IoT w celu dostarczania komunikatów przez [reguły routingu](#routing-rules). Niestandardowe punkty końcowe połączyć się bezpośrednio do Centrum zdarzeń, kolejki usługi Service Bus lub tematu usługi Service Bus.
+Możesz utworzyć niestandardowe [punktów końcowych](iot-hub-devguide-endpoints.md) w Centrum IoT hub w celu dostarczania komunikatów wysłanych przez [reguły routingu](#routing-rules). Niestandardowe punkty końcowe łączyć się bezpośrednio z Centrum zdarzeń, kolejki usługi Service Bus lub tematu usługi Service Bus.
 
 ## <a name="custom-gateway"></a>Bram
-Brama umożliwia łączność w przypadku urządzeń, które nie może połączyć się bezpośrednio do [Centrum IoT](#iot-hub). Można użyć [Azure IoT krawędzi](#azure-iot-edge) do tworzenia niestandardowych bram, które implementuje niestandardowej logiki do obsługi wiadomości, konwersje protokołu niestandardowego i innego typu przetwarzania na krawędzi.
+Brama zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Możesz użyć [usługi Azure IoT Edge](#azure-iot-edge) Tworzenie niestandardowych bram, które implementują logikę niestandardową do obsługi komunikatów, konwersje niestandardowego protokołu i inne procesy przetwarzania na urządzeniach brzegowych.
 
-## <a name="data-point-message"></a>Komunikat punktu danych
-Komunikat punktu danych jest [urządzenia do chmury](#device-to-cloud) komunikat, który zawiera [telemetrii](#telemetry) dane, takie jak szybkości knie lub temperatury.
+## <a name="data-point-message"></a>Punkt danych komunikatu
+Komunikat punktu danych jest [urządzenia do chmury](#device-to-cloud) wiadomość, która zawiera [telemetrii](#telemetry) dane, takie jak prędkość wiatru lub temperatury.
 
 ## <a name="desired-configuration"></a>Wymaganą konfiguracją
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), desired configuration odwołuje się do pełny zestaw właściwości oraz metadanych w dwie urządzenia, które mają być synchronizowane z urządzeniem.
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), desired configuration odwołuje się do pełnego zestawu właściwości i metadanych w bliźniaczej reprezentacji urządzenia, które mają być synchronizowane z urządzeniem.
 
 ## <a name="desired-properties"></a>Żądane właściwości
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), żądana właściwości to podsekcji dwie urządzenia, który jest używany z [zgłosił właściwości](#reported-properties) do synchronizowania konfiguracji urządzenia lub warunku. Żądane właściwości można ustawić tylko [zaplecza aplikacji](#back-end-app) i są przestrzegane przez [aplikacji urządzenia](#device-app).
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), żądane właściwości jest podciągiem bliźniaczej reprezentacji urządzenia, który jest używany z [zgłaszanych właściwości](#reported-properties) zsynchronizować konfiguracji urządzenia lub warunek. Żądane właściwości można ustawić tylko przy [aplikacji zaplecza](#back-end-app) i są przestrzegane [aplikacji urządzenia](#device-app).
 
 ## <a name="device-to-cloud"></a>Urządzenie-chmura
-Odwołuje się do komunikatów wysyłanych z podłączonego urządzenia do [Centrum IoT](#iot-hub). Te komunikaty mogą być [punktu danych](#data-point-message) lub [interakcyjne](#interactive-message) wiadomości. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+Odwołuje się do komunikatów wysyłanych z urządzenia podłączone do [usługi IoT Hub](#iot-hub). Te komunikaty mogą być [punktu danych](#data-point-message) lub [interaktywne](#interactive-message) wiadomości. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Urządzenie
-W kontekście IoT urządzenie jest zwykle na małą skalę, autonomicznym urządzeniem może zbierać dane lub inne urządzenia. Na przykład urządzenie może być środowiska monitorowania urządzenia, lub do kontrolera nadchodzić i wentylatorów systemów w cieplarnianych. [Katalogu urządzenia](https://catalog.azureiotsuite.com/) zawiera listę urządzeń sprzętowych certyfikowane do pracy z [Centrum IoT](#iot-hub).
+W kontekście IoT urządzenie jest zazwyczaj na małą skalę, urządzenie obliczeniowe autonomicznych, które może zbierać dane lub kontrolować innych urządzeń. Na przykład urządzenie może być urządzenie monitorowania środowiska lub kontrolera dla systemów nią i wentylatorów w cieplarnianych. [— Wykaz urządzeń](https://catalog.azureiotsuite.com/) zawiera listę urządzeń sprzętowych certyfikowana do pracy z [usługi IoT Hub](#iot-hub).
 
-## <a name="device-app"></a>Urządzenia aplikacji
-Aplikacja urządzenia jest uruchamiana na Twojej [urządzenia](#device) i obsługuje komunikację z Twojej [Centrum IoT](#iot-hub). Zwykle, użyj jednej z [urządzenia Azure IoT SDK](#azure-iot-device-sdks) podczas wdrożenia aplikacji urządzenia. W wielu samouczków IoT używasz [symulowane urządzenie](#simulated-device) dla wygody.
+## <a name="device-app"></a>Aplikacja urządzenia
+Aplikacja urządzenie działa w swojej [urządzenia](#device) i obsługuje komunikację z Twojej [usługi IoT hub](#iot-hub). Zwykle, użyj jednej z [zestawy SDK urządzeń Azure IoT](#azure-iot-device-sdks) podczas implementacji aplikacji urządzenia. W wielu samouczki IoT [symulowane urządzenie](#simulated-device) dla wygody.
 
 ## <a name="device-condition"></a>Stan urządzenia
-Odwołuje się do informacji o stanie urządzenia, takich jak metoda łączności obecnie w użyciu, zgodnie z raportem [aplikacji urządzenia](#device-app). [Aplikacje urządzenia](#device-app) zgłaszać także ich możliwości. Można wysyłać zapytania dotyczące stanu i możliwości odpowiednie informacje przy użyciu twins urządzenia.
+Odwołuje się do informacji o stanie urządzenia, takie jak metoda łączności, obecnie w użyciu, zgłoszonej przez [aplikacji urządzenia](#device-app). [Aplikacje urządzenia](#device-app) zgłaszać także ich możliwości. Można tworzyć zapytania warunku i możliwości informacji za pomocą bliźniaczych reprezentacji urządzeń.
 
 ## <a name="device-data"></a>Dane urządzenia
-Dane urządzenia odwołuje się do danych na urządzeniu przechowywanych w Centrum IoT [rejestru tożsamości](#identity-registry). Istnieje możliwość importowania i eksportowania tych danych.
+Dane urządzenia, który odwołuje się do danych na urządzenie, przechowywane w usłudze IoT Hub [rejestr tożsamości](#identity-registry). Istnieje możliwość importowania i eksportowania tych danych.
 
 ## <a name="device-explorer"></a>Device Explorer
-[Explorer urządzenia](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) to narzędzie jest uruchamiana w systemie Windows, który umożliwia zarządzanie urządzeniami w [rejestru tożsamości](#identity-registry). Narzędzie można również wysyłania i odbierania wiadomości na urządzeniach.
+[Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) to narzędzie, które jest uruchamiane na Windows i umożliwia zarządzanie urządzeniami w [rejestr tożsamości](#identity-registry). Narzędzie umożliwia również wysyłanie oraz odbieranie komunikatów do urządzeń.
 
 ## <a name="device-identity"></a>Tożsamość urządzenia
-Tożsamość tego urządzenia jest unikatowy identyfikator przypisany do wszystkich urządzeń zarejestrowanych w [rejestru tożsamości](#identity-registry).
+Tożsamość urządzenia jest unikatowy identyfikator przypisany do wszystkich urządzeń zarejestrowanych w [rejestr tożsamości](#identity-registry).
 
 ## <a name="module-identity"></a>Moduł tożsamości
-Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu, który należy do urządzenia. Moduł tożsamości jest zarejestrowane w [rejestru tożsamości](#identity-registry).
+Tożsamość modułu jest unikatowy identyfikator przypisany do każdego modułu, który należy do urządzenia. Moduł tożsamości również jest zarejestrowany w [rejestr tożsamości](#identity-registry).
 
 ## <a name="device-management"></a>Zarządzanie urządzeniami
-Zarządzanie urządzeniami obejmuje pełny cykl związane z zarządzaniem urządzeniami w rozwiązania IoT, w tym planowania, inicjowania obsługi administracyjnej, konfigurowania, monitorowania i wycofywania.
+Zarządzanie urządzeniami obejmuje pełny cykl życia, związane z zarządzaniem urządzeń w rozwiązaniu IoT, w tym planowanie, inicjowania obsługi, konfigurowania, monitorowania i wycofywania.
 
 ## <a name="device-management-patterns"></a>Wzorce zarządzania urządzeniami
-[Centrum IoT](#iot-hub) umożliwia typowe wzorce zarządzania urządzenie tym ponowny rozruch, wykonywanie ustawień fabrycznych i wykonywanie aktualizacji oprogramowania układowego na urządzeniach.
+[Usługa IoT hub](#iot-hub) umożliwia typowych wzorców zarządzania urządzeniami, w tym ponowny rozruch, wykonywanie resetuje fabryki i wykonywanie aktualizacji oprogramowania układowego na urządzeniach.
 
 ## <a name="device-rest-api"></a>Urządzenia interfejsu API REST
-Można użyć [urządzenia interfejsu API REST](https://docs.microsoft.com/rest/api/iothub/device/device) z urządzenia do wysyłania wiadomości urządzenia do chmury do Centrum IoT i odbierania [chmury do urządzenia](#cloud-to-device) komunikaty z Centrum IoT. Zazwyczaj należy użyć jednej z wyższego poziomu [urządzenia zestawów SDK](#azure-iot-device-sdks) jak pokazano w samouczkach Centrum IoT.
+Możesz użyć [interfejs API REST urządzenia](https://docs.microsoft.com/rest/api/iothub/device) z urządzenia, aby wysyłać komunikaty urządzenie chmura do usługi IoT hub i odbieranie [chmury do urządzenia](#cloud-to-device) komunikaty z Centrum IoT hub. Zwykle, należy użyć jednej z wyższego poziomu [zestawy SDK urządzeń](#azure-iot-device-sdks) pokazany w ramach samouczków usługi IoT Hub.
 
 ## <a name="device-provisioning"></a>Inicjowanie obsługi administracyjnej urządzeń
-Inicjowanie obsługi administracyjnej urządzeń jest proces dodawania początkowej [danych urządzenia](#device-data) sklepów w rozwiązaniu. Aby włączyć nowe urządzenia w celu nawiązania połączenia z koncentratorem, należy dodać identyfikator urządzenia i klucze do Centrum IoT [rejestru tożsamości](#identity-registry). W ramach procesu inicjowania obsługi administracyjnej może być konieczne Inicjuj dane specyficzne dla urządzenia w innych magazynach rozwiązania.
+Inicjowanie obsługi administracyjnej urządzeń jest proces dodawania początkowej [danych urządzenia](#device-data) sklepów w rozwiązaniu. Aby włączyć nowe urządzenie nawiązać połączenie z Centrum, należy dodać identyfikator urządzenia i klucze do usługi IoT Hub [rejestr tożsamości](#identity-registry). Jako część procesu inicjowania obsługi administracyjnej może być konieczne zainicjowanie danych specyficznych dla urządzenia w innych magazynach rozwiązania.
 
 ## <a name="device-twin"></a>Bliźniak urządzenia
-A [dwie urządzenia](iot-hub-devguide-device-twins.md) jest dokumentem JSON, która przechowuje informacje o stanie urządzenia, takie jak metadanych, konfiguracji i warunki. [Centrum IoT](#iot-hub) będzie się powtarzał dwie urządzenia, dla wszystkich urządzeń, których udostępnianie w Centrum IoT. Twins urządzenia umożliwia synchronizowanie [warunki urządzenia](#device-condition) i konfiguracje między urządzeniem i rozwiązanie zaplecza. Umożliwia wysyłanie zapytań twins urządzenia, aby znaleźć określone urządzenia i zbadać stanu długotrwałej operacji.
+A [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md) to dokument JSON, która przechowuje informacje o stanie urządzenia, takie jak metadane, konfiguracje i warunki. [Usługa IoT Hub](#iot-hub) będzie nadal występował w bliźniaczej reprezentacji urządzenia dla każdego urządzenia, aprowizować w usłudze IoT hub. Bliźniacze reprezentacje urządzeń umożliwia synchronizowanie [warunki urządzenia](#device-condition) i konfiguracje wiadomości pomiędzy urządzeniem a rozwiązania zaplecza. Można tworzyć zapytania bliźniacze reprezentacje urządzeń, aby znaleźć określone urządzenia i wykonać zapytanie o stan długotrwałych operacji.
 
-## <a name="module-twin"></a>Dwie modułu
-Podobnie jak dwie urządzenia, dwie modułu jest dokument JSON, która przechowuje informacje o stanie modułu, takich jak metadanych, konfiguracji i warunki. Centrum IoT utrzymuje dwie moduł, dla każdej tożsamości modułu dostarczanym w ramach tożsamości urządzenia w Centrum IoT. Moduł twins umożliwiają synchronizowanie modułu warunków i konfiguracje między modułem i zaplecza rozwiązania. Umożliwia wysyłanie zapytań twins modułu, aby znaleźć określone moduły i zbadać stanu długotrwałej operacji.
+## <a name="module-twin"></a>Bliźniacza reprezentacja modułu
+Podobnie jak w bliźniaczej reprezentacji urządzenia, bliźniacza reprezentacja modułu to dokument JSON, która przechowuje informacje o stanie modułu, takie jak metadane, konfiguracje i warunki. Usługa IoT Hub utrzymuje bliźniaczą reprezentację modułu tożsamości każdego modułu, która obsługi administracyjnej w obszarze tożsamość urządzenia w usłudze IoT hub. Bliźniaczych reprezentacjach modułów umożliwia synchronizowanie modułu warunków i konfiguracje między modułem i zapleczem rozwiązania. Można tworzyć zapytania bliźniaczych reprezentacjach modułów, aby znaleźć określone moduły i wykonać zapytanie o stan długotrwałych operacji.
 
-## <a name="twin-queries"></a>Dwie zapytań
-[Urządzenia i modułu zapytania dwie](iot-hub-devguide-query-language.md) używać języka kwerend Centrum IoT przypominającego SQL można pobrać informacji z urządzenia twins lub twins modułu. Można użyć tego samego języka zapytań Centrum IoT można pobrać informacji o [ ](#job) uruchomiona w Centrum IoT.
+## <a name="twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji
+[Zapytania dotyczące bliźniaczych reprezentacji urządzeń i moduł](iot-hub-devguide-query-language.md) język zapytań przypominający SQL IoT Hub umożliwia pobieranie informacji z bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [ ](#job) działające w Twoim Centrum IoT hub.
 
-## <a name="twin-synchronization"></a>Dwie synchronizacji
-Dwie używa synchronizacji [żądanego właściwości](#desired-properties) w twins urządzenia lub twins modułu, aby skonfigurować moduły lub urządzeń i pobrać [zgłosił właściwości](#reported-properties) z nich do przechowywania w dwie.
+## <a name="twin-synchronization"></a>Bliźniacza reprezentacja synchronizacji
+Bliźniacza reprezentacja używa synchronizacji [żądane właściwości](#desired-properties) bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów, skonfiguruj urządzenia lub moduły i pobieranie [zgłaszanych właściwości](#reported-properties) od nich w celu przechowywania w bliźniaczej reprezentacji.
 
 ## <a name="direct-method"></a>Metoda bezpośrednia
-A [metoda bezpośrednia](iot-hub-devguide-direct-methods.md) sposób można wywołać metodę można wykonać na urządzeniu przez wywołanie interfejsu API w Centrum IoT.
+A [metoda bezpośrednia](iot-hub-devguide-direct-methods.md) sposób do wyzwolenia metodę można wykonać na urządzeniu za pomocą wywołania interfejsu API w usłudze IoT hub.
 
 ## <a name="endpoint"></a>Endpoint
-Centrum IoT udostępnia wiele [punkty końcowe](iot-hub-devguide-endpoints.md) umożliwiających aplikacji nawiązać połączenia z Centrum IoT. Istnieją punkty końcowe skierowane do urządzenia, które włączyć urządzeń do wykonywania operacji, takich jak wysyłanie [urządzenia do chmury](#device-to-cloud) wiadomości i odbieranie [chmury do urządzenia](#cloud-to-device) wiadomości. Brak punktów końcowych zarządzania połączonej usługi, które umożliwiają [zaplecza aplikacji](#back-end-app) do wykonywania operacji, takich jak [tożsamości urządzenia](#device-identity) i zarządzanie dwie urządzenia. Brak połączonej usługi [wbudowane punkty końcowe](#built-in-endpoints) do odczytywania wiadomości urządzenia do chmury. Można utworzyć [niestandardowe punkty końcowe](#custom-endpoints) do odbierania wiadomości urządzenia do chmury przez [reguły routingu](#routing-rules).
+Usługa IoT hub udostępnia wiele [punktów końcowych](iot-hub-devguide-endpoints.md) , dzięki którym aplikacje mogą połączyć się z Centrum IoT. Brak punktów końcowych przeznaczonych dla urządzeń, umożliwiające urządzeń wykonywać operacje takie jak wysyłanie [urządzenia do chmury](#device-to-cloud) wiadomości i odbieranie [chmury do urządzenia](#cloud-to-device) wiadomości. Brak punktów końcowych zarządzania przeznaczonych dla usługi, które umożliwiają [aplikacji zaplecza](#back-end-app) do wykonywania operacji takich jak [tożsamości urządzenia](#device-identity) i zarządzanie bliźniaczej reprezentacji urządzenia. Brak dostępnego z usługi [wbudowanych punktach końcowych](#built-in-endpoints) do odczytywania komunikatów z urządzenia do chmury. Możesz utworzyć [niestandardowe punkty końcowe](#custom-endpoints) do odbierania komunikatów z urządzenia do chmury przez [reguły routingu](#routing-rules).
 
 ## <a name="event-hubs-service"></a>Usługa centra zdarzeń
-[Centra zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md) jest wysoce skalowalna Usługa transferu danych, który może obsługiwać miliony zdarzeń na sekundę. Usługa umożliwia przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Dla porównania w usłudze IoT Hub, zobacz [porównania Azure IoT Hub i usługi Azure Event Hubs](iot-hub-compare-event-hubs.md).
+[Usługa Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) jest wysoce skalowalna Usługa transferu danych przychodzących, która może pozyskiwać miliony zdarzeń na sekundę. Usługa pozwala na przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Porównanie z usługą IoT Hub, zobacz [porównanie usługi Azure IoT Hub i Azure Event Hubs](iot-hub-compare-event-hubs.md).
 
 ## <a name="event-hub-compatible-endpoint"></a>Punkt końcowy zgodny z centrum zdarzeń usługi Event Hubs
-Aby odczytać [urządzenia do chmury](#device-to-cloud) wiadomości wysyłane do Centrum IoT, można połączyć z punktem końcowym na Centrum i zastosować dowolną metodę zgodnego Centrum zdarzeń można odczytać tych wiadomości. Metody zgodnych z Centrum zdarzeń obejmują użycie [zestawów SDK centra zdarzeń](../event-hubs/event-hubs-programming-guide.md) i [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
+Aby przeczytać [urządzenia do chmury](#device-to-cloud) komunikaty wysyłane do usługi IoT hub, możesz nawiązać połączenie z punktem końcowym w Centrum i zastosować dowolną metodę zgodnego z Centrum zdarzeń do odczytywania tych komunikatów. Metody zgodnego z Centrum zdarzeń obejmują użycie [Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) i [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
-## <a name="field-gateway"></a>Pole bramy
-Brama pola umożliwia łączność w przypadku urządzeń, które nie może połączyć się bezpośrednio do [Centrum IoT](#iot-hub) są zwykle wdrażane lokalnie z urządzenia. Aby uzyskać więcej informacji, zobacz [co to jest Centrum IoT Azure?](iot-hub-what-is-iot-hub.md)
+## <a name="field-gateway"></a>Bramy w terenie
+Bramy w terenie zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub) i zwykle jest wdrożone lokalnie z urządzeniami. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 
 ## <a name="free-account"></a>Bezpłatne konto
-Można utworzyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/) ukończenie samouczki Centrum IoT i wypróbować usługę Centrum IoT (i innych usług Azure).
+Możesz utworzyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/) ukończenie samouczki usługi IoT Hub i eksperymentować z usługi IoT Hub (i innych usług platformy Azure).
 
 ## <a name="gateway"></a>Brama
-Brama umożliwia łączność w przypadku urządzeń, które nie może połączyć się bezpośrednio do [Centrum IoT](#iot-hub). Zobacz też [pola bramy](#field-gateway), [chmury bramy](#cloud-gateway), i [bram](#custom-gateway).
+Brama zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Zobacz też [pola bramy](#field-gateway), [bramy w chmurze](#cloud-gateway), i [bram](#custom-gateway).
 
-## <a name="identity-registry"></a>Tożsamość rejestru
-[Rejestru tożsamości](iot-hub-devguide-identity-registry.md) wbudowany składnik Centrum IoT, która przechowuje informacje o poszczególnych urządzeniach może nawiązać połączenia z Centrum IoT.
+## <a name="identity-registry"></a>Rejestr tożsamości
+[Rejestr tożsamości](iot-hub-devguide-identity-registry.md) wbudowany składnik usługi IoT hub, która przechowuje informacje o poszczególnych urządzeniach może nawiązać połączenie z Centrum IoT hub.
 
-## <a name="interactive-message"></a>Interakcyjne wiadomości
-Interakcyjne komunikat [chmury do urządzenia](#cloud-to-device) komunikat, który wyzwala natychmiastowych akcji w zaplecza rozwiązania. Na przykład urządzenie może wysyłać alarmu o niepowodzeniu, które powinny być automatycznie zalogowany do systemu CRM.
+## <a name="interactive-message"></a>Interaktywne wiadomości
+Interaktywne komunikat [chmury do urządzenia](#cloud-to-device) komunikat, który wywołuje natychmiastowego akcji w zapleczu rozwiązania. Na przykład urządzenie może wysyłać alarmu o awarii, które powinny być automatyczne logowanie do systemu CRM.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>Usługa IoT Hub
-Centrum IoT to w pełni zarządzana usługa platformy Azure, co umożliwia komunikację dwukierunkową i niezawodności między milionów urządzeń, a zaplecze rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest Centrum IoT Azure?](iot-hub-what-is-iot-hub.md) Przy użyciu programu [subskrypcji platformy Azure](#subscription), możesz utworzyć centra IoT do obsługi sieci IoT wiadomości obciążeń.
+IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia bezpieczną i niezawodną dwukierunkową komunikację między milionami urządzeń a zapleczem rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md) Za pomocą usługi [subskrypcji platformy Azure](#subscription), możesz utworzyć centra IoT Hub do obsługi komunikatów obciążeń IoT.
 
-## <a name="iot-hub-metrics"></a>Metryki Centrum IoT
-[Centrum IoT metryki](iot-hub-metrics.md) udostępnia dane o stanie centra IoT w Twojej [subskrypcji platformy Azure](#subscription). Centrum IoT metryk umożliwiają oceny ogólnej kondycji usługi i dołączone do niego urządzenia. Metryki Centrum IoT ułatwiają Zobacz, co dzieje się z Centrum IoT i badania głównej przyczyny problemów bez konieczności skontaktuj się z pomocą techniczną platformy Azure.
+## <a name="iot-hub-metrics"></a>Metryki usługi IoT Hub
+[Metryki usługi IoT Hub](iot-hub-metrics.md) udostępnia dane o stanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription). Metryki usługi IoT Hub umożliwiają oceny ogólnej kondycji usługi i dołączone do niego urządzenia. Metryki usługi IoT Hub może pomóc w Zobacz, co się dzieje z Centrum IoT i badanie głównej przyczyny problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
 
-## <a name="iot-hub-query-language"></a>Język zapytań Centrum IoT
-[Język zapytań Centrum IoT](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, który umożliwia utworzenie zapytania z [ ](#job) i twins urządzenia.
+## <a name="iot-hub-query-language"></a>Język zapytań usługi IoT Hub
+[Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, która pozwala przesyłać zapytania usługi [ ](#job) i bliźniacze reprezentacje urządzeń.
 
-## <a name="iot-hub-resource-rest-api"></a>Centrum IoT zasobu interfejsu API REST
-Można użyć [API REST zasobów Centrum IoT](https://docs.microsoft.com/rest/api/iothub/iothubresource) do zarządzania centra IoT w Twojej [subskrypcji platformy Azure](#subscription) wykonywania operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
+## <a name="iot-hub-resource-rest-api"></a>Usługa IoT Hub zasobu interfejsu API REST
+Możesz użyć [interfejsu API REST zasobów usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) Zarządzanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription) wykonywanie operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
 
 ## <a name="iot-solution-accelerators"></a>Akceleratory rozwiązań IoT
-Azure akceleratorów rozwiązania IoT pakietu jednocześnie wiele usług platformy Azure do rozwiązania. Te rozwiązania umożliwiają szybkie rozpoczęcie pracy z implementacjami na trasie o typowych scenariuszach IoT. Aby uzyskać więcej informacji, zobacz [co to są akceleratorów rozwiązania Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
+Akceleratory rozwiązań Azure IoT pakietu ze sobą wiele usług platformy Azure do rozwiązań. Rozwiązania te umożliwiają szybkie rozpoczynanie pracy z implementacjami end-to-end typowych scenariuszy IoT. Aby uzyskać więcej informacji, zobacz [co to są Akceleratory rozwiązań Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenie IoT Azure CLI 2.0
-[Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie i platform, wiersza polecenia. Narzędzie pozwala na zarządzanie urządzeniami w [rejestru tożsamości](#identity-registry), wysyłania i odbierania wiadomości oraz pliki z urządzeń i monitorować działania Centrum IoT.
+## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0
+[Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie dla wielu platform, wiersza polecenia. To narzędzie umożliwia zarządzanie urządzeniami w [rejestr tożsamości](#identity-registry), wysyłanie i odbieranie wiadomości i plików z urządzeń i monitorowanie operacji centrum IoT.
 
 ## <a name="job"></a>Zadanie
-Można użyć z zaplecza rozwiązania [zadania](iot-hub-devguide-jobs.md) na planowanie i śledzenie działań na zbiór urządzeń zarejestrowanych w usłudze Centrum IoT. Działania obejmują aktualizowanie urządzenia dwie [żądanego właściwości](#desired-properties), aktualizowania dwie urządzenia [tagi](#tags)i wywoływanie [bezpośrednie metody](#direct-method). [Centrum IoT](#iot-hub) używa również do [importowanie do i eksportowanie](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestru tożsamości](#identity-registry).
+Można użyć w zapleczu rozwiązania [zadań](iot-hub-devguide-jobs.md) do planowania i śledzenia działań na zestawie urządzeń zarejestrowanych za pomocą usługi IoT hub. Działania obejmują aktualizacji bliźniaczej reprezentacji urządzenia [żądane właściwości](#desired-properties), zaktualizować bliźniaczą reprezentację urządzenia [tagi](#tags)i wywoływanie [metody bezpośrednie](#direct-method). [Usługa IoT Hub](#iot-hub) używa również do [zaimportować i wyeksportować](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestr tożsamości](#identity-registry).
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) jest jeden z komunikatów protokołów, które [Centrum IoT](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokoły obsługi komunikatów, które obsługuje Centrum IoT, zobacz [wysyłania i odbierania wiadomości z Centrum IoT](iot-hub-devguide-messaging.md).
+[MQTT](http://mqtt.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="operations-monitoring"></a>Monitorowanie operacji
-Centrum IoT [operacje monitorowania](iot-hub-operations-monitoring.md) umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. [Centrum IoT](#iot-hub) śledzi zdarzenia przez różne kategorie działań. Można włączyć do wysyłania zdarzeń z co najmniej jednej kategorii do punktu końcowego Centrum IoT w celu przetwarzania. Możesz monitorować dane błędy lub konfigurowanie bardziej złożonych przetwarzania na podstawie wzorców danych.
+Usługa IoT Hub [monitorowanie operacji](iot-hub-operations-monitoring.md) umożliwia monitorowanie stanu operacji w Centrum IoT w czasie rzeczywistym. [Usługa IoT Hub](#iot-hub) śledzi zdarzenia w ramach kilku kategorii operacji. Możesz zdecydować się na wysyłanie zdarzeń z jedną lub więcej kategorii do punktu końcowego usługi IoT Hub na potrzeby przetwarzania. Można monitorować dane dotyczące błędów lub skonfigurować bardziej złożone przetwarzanie na podstawie wzorców danych.
 
 ## <a name="physical-device"></a>Urządzenie fizyczne
-Urządzenie fizyczne jest prawdziwe urządzeniami, takimi jak Pi malina, w którym łączy się z Centrum IoT. Dla wygody, użyj wielu samouczki Centrum IoT [symulowane urządzeń](#simulated-device) umożliwiają uruchamianie przykładów na komputerze lokalnym.
+Urządzenie fizyczne to rzeczywistego urządzenia, takich jak Raspberry Pi, który nawiązuje połączenie z Centrum IoT hub. Dla wygody samouczki usługi IoT Hub korzystać [symulowane urządzenia](#simulated-device) umożliwiające uruchamianie przykładów na komputerze lokalnym.
 
 ## <a name="primary-and-secondary-keys"></a>Klucze podstawowe i pomocnicze
-Po podłączeniu urządzenia uwzględniającym lub połączonej usługi punktu końcowego w Centrum IoT z [ciąg połączenia](#connection-string) zawiera klucz, aby przyznać dostęp. Po dodaniu urządzenia do [rejestru tożsamości](#identity-registry) lub Dodaj [udostępnionych zasad dostępu](#shared-access-policy) do Centrum, Usługa generuje klucza podstawowego i pomocniczego. Mając dwa klucze umożliwia przerzucane z jednego klucza do innego, po zaktualizowaniu klucza bez utraty dostępu do Centrum IoT.
+Podczas nawiązywania połączenia przeznaczonych dla określonego urządzenia lub przeznaczonych dla usług punktu końcowego w Centrum IoT hub z [parametry połączenia](#connection-string) zawiera klucz, aby przyznać dostęp. Po dodaniu urządzenia do [rejestr tożsamości](#identity-registry) lub dodać [współużytkowane zasady dostępu](#shared-access-policy) z Centrum usługi generuje klucz podstawowy i pomocniczy. Mając dwa klucze umożliwia przechodzą z jednego klucza do innego, po zaktualizowaniu klucza bez utraty dostępu do usługi IoT hub.
 
 ## <a name="protocol-gateway"></a>Brama protokołu
-Brama protokołu jest zwykle wdrażana w chmurze i zapewnia protokół tłumaczeń urządzeń nawiązujących połączenie z [Centrum IoT](#iot-hub). Aby uzyskać więcej informacji, zobacz [co to jest Centrum IoT Azure?](iot-hub-what-is-iot-hub.md)
+Brama protokołu jest zazwyczaj wdrażana w chmurze i zapewnia usługi translacji dla urządzenia łączące się z protokół [usługi IoT Hub](#iot-hub). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>Limity przydziału i ograniczanie wydajności
-Istnieją różne [przydziały](iot-hub-devguide-quotas-throttling.md) przeznaczonych do używania [Centrum IoT](#iot-hub), wiele przydziały różnić w zależności od warstwy Centrum IoT. [Centrum IoT](#iot-hub) ma również zastosowanie [ogranicza](iot-hub-devguide-quotas-throttling.md) korzystanie z usługi w czasie wykonywania.
+Istnieją różne [przydziały](iot-hub-devguide-quotas-throttling.md) przeznaczonych do używania [usługi IoT Hub](#iot-hub), wiele przydziały różnią się w zależności od warstwy usługi IoT hub. [Usługa IoT Hub](#iot-hub) ma również zastosowanie [ogranicza](iot-hub-devguide-quotas-throttling.md) dotyczące używania usługi w czasie wykonywania.
 
-## <a name="reported-configuration"></a>Zgłoszony konfiguracji
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), zgłosił konfiguracji odwołuje się do pełny zestaw właściwości oraz metadanych w dwie urządzenia, które powinny być zgłaszane do zaplecza rozwiązania.
+## <a name="reported-configuration"></a>Zgłoszone konfiguracji
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), zgłaszane, konfiguracji, który odwołuje się do pełnego zestawu właściwości i metadanych w bliźniaczej reprezentacji urządzenia, które powinny być raportowane do zaplecza rozwiązania.
 
-## <a name="reported-properties"></a>Zgłoszony właściwości
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), zgłosiła właściwości jest podciągiem dwie urządzenia używane z [żądanego właściwości](#desired-properties) do synchronizowania konfiguracji urządzenia lub warunku. Zgłoszony właściwości można ustawić tylko [aplikacji urządzenia](#device-app) i może odczytywać i sprawdzać za [zaplecza aplikacji](#back-end-app).
+## <a name="reported-properties"></a>Zgłaszane właściwości
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), zgłoszone właściwości jest podciągiem bliźniaczej reprezentacji urządzenia używane z [żądane właściwości](#desired-properties) zsynchronizować konfiguracji urządzenia lub warunek. Zgłaszane właściwości można ustawić tylko przy [aplikacji urządzenia](#device-app) i może odczytywać i sprawdzać za [aplikacji zaplecza](#back-end-app).
 
 ## <a name="resource-group"></a>Grupa zasobów
-[Usługa Azure Resource Manager](#azure-resource-manager) korzysta z grup zasobów do grupowania powiązanych zasobów. Grupy zasobów służy do wykonywania operacji na wszystkie zasoby w grupie jednocześnie.
+[Usługa Azure Resource Manager](#azure-resource-manager) korzysta z grup zasobów do grupowania powiązanych zasobów. Grupa zasobów służy do wykonywania operacji na wszystkie zasoby w grupie jednocześnie.
 
 ## <a name="retry-policy"></a>Zasady ponawiania
-Używanie zasad ponawiania do obsługi [błędów przejściowych](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) przypadku połączenia z usługą w chmurze.
+Użyj zasad ponawiania do obsługi [błędów przejściowych](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) po nawiązaniu połączenia z usługą w chmurze.
 
 ## <a name="routing-rules"></a>Reguły routingu
-Możesz skonfigurować [reguły routingu](iot-hub-devguide-messages-read-custom.md) w Centrum IoT można przekierować wiadomości urządzenia do chmury [wbudowanym punktem końcowym](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez użytkownika zaplecza rozwiązania .
+Możesz skonfigurować [reguł routingu](iot-hub-devguide-messages-read-custom.md) w usłudze IoT hub do rozsyłania komunikatów z urządzenia do chmury do [wbudowany punkt końcowy](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez w zapleczu rozwiązania .
 
 ## <a name="sasl-plain"></a>ZWYKŁY SASL
-ZWYKŁY SASL jest protokołem który [AMQP](#advanced-message-queue-protocol) używa protokołu transferu tokenów zabezpieczających.
+ZWYKŁY SASL to protokół, [AMQP](#advanced-message-queue-protocol) protokół używa do przesyłania tokenów zabezpieczających.
 
 ## <a name="service-rest-api"></a>Interfejs API REST usługi
-Można użyć [interfejsu API REST usługi](https://docs.microsoft.com/rest/api/iothub/service/service) z rozwiązania zaplecza do zarządzania urządzeniami. Interfejs API umożliwia pobierania i aktualizowania [dwie urządzenia](#device-twin) właściwości, wywołaj [bezpośrednie metody](#direct-method)i harmonogram [zadania](#job). Zazwyczaj należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) jak pokazano w samouczkach Centrum IoT.
+Możesz użyć [interfejsu API REST usługi](https://docs.microsoft.com/rest/api/iothub/service) z rozwiązania zaplecza do zarządzania urządzeniami. Interfejs API umożliwia pobieranie i aktualizowanie [bliźniaczej reprezentacji urządzenia](#device-twin) wywoływanie właściwości [metody bezpośrednie](#direct-method)i harmonogram [zadań](#job). Zwykle, należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) pokazany w ramach samouczków usługi IoT Hub.
 
 ## <a name="shared-access-signature"></a>Sygnatura dostępu współdzielonego
-Udostępniony sygnatur dostępu (SAS) są mechanizmu uwierzytelniania na podstawie bezpiecznego wartości skrótu SHA-256 lub identyfikatorów URI. Uwierzytelniania sygnatury dostępu Współdzielonego ma dwa składniki: _zasad dostępu współużytkowanego_ i _sygnatura dostępu współdzielonego_ (często nazywane token). Urządzenie korzysta SAS do uwierzytelniania za pomocą Centrum IoT. [Aplikacje zaplecza](#back-end-app) również użyć do uwierzytelniania za pomocą usługi połączonej punkty końcowe Centrum IoT sygnatury dostępu Współdzielonego. Zwykle obejmują tokenu sygnatury dostępu Współdzielonego w [ciąg połączenia](#connection-string) że aplikacja używa do ustanowienia połączenia z Centrum IoT.
+Udostępnione sygnatur dostępu (SAS) to mechanizm uwierzytelniania, na podstawie bezpiecznego skróty SHA-256 lub identyfikatory URI. Uwierzytelniania sygnatury dostępu Współdzielonego ma dwa składniki: _zasady dostępu współużytkowanego_ i _sygnatura dostępu współdzielonego_ (często nazywanej tokenu). Urządzenie korzysta z sygnatury dostępu Współdzielonego do uwierzytelniania za pomocą usługi IoT hub. [Zaplecza aplikacji](#back-end-app) również użyć do uwierzytelniania za pomocą punktów końcowych przeznaczonych dla usługi w Centrum IoT hub sygnatury dostępu Współdzielonego. Zazwyczaj obejmują tokenu sygnatury dostępu Współdzielonego w [parametry połączenia](#connection-string) czy aplikacja używa do nawiązywania połączenia z Centrum IoT hub.
 
 ## <a name="shared-access-policy"></a>Zasady dostępu współużytkowanego
-Zasady dostępu współdzielonego definiuje uprawnienia przyznane dla każdego, kto ma prawidłową [klucz podstawowy lub pomocniczy](#primary-and-secondary-keys) skojarzone z tej zasady. Zasady dostępu współdzielonego i klucze można zarządzać w Centrum [portal](#azure-portal).
+Zasady dostępu współdzielonego definiuje uprawnienia nadane dla każdego, kto ma prawidłowe [klucz podstawowy lub pomocniczy](#primary-and-secondary-keys) skojarzone z tą zasadą. Możesz określić zasady dostępu współdzielonego i klucze Centrum w [portal](#azure-portal).
 
 ## <a name="simulated-device"></a>Symulowane urządzenie
-Dla wygody wiele samouczki Centrum IoT Użyj symulowanego urządzenia, aby włączyć uruchomienia próbek na komputerze lokalnym. Z kolei [urządzenie fizyczne](#physical-device) jest prawdziwe urządzeniami, takimi jak Pi malina, w którym łączy się z Centrum IoT.
+Dla wygody wiele samouczków usługi IoT Hub umożliwia symulowane urządzenia umożliwiają uruchamianie przykładów na komputerze lokalnym. Z kolei [urządzenia fizycznego](#physical-device) jest rzeczywistego urządzenia, takich jak Raspberry Pi, który nawiązuje połączenie z Centrum IoT hub.
 
 ## <a name="solution"></a>Rozwiązanie
-A _rozwiązania_ mogą odwoływać się do rozwiązania Visual Studio, który zawiera jeden lub więcej projektów. A _rozwiązania_ mogą również dotyczyć rozwiązania IoT, który zawiera elementy, takie jak urządzenia, [aplikacji dla urządzeń](#device-app), Centrum IoT, innymi usługami platformy Azure i [zaplecza aplikacji](#back-end-app).
+A _rozwiązania_ mogą odwoływać się do rozwiązania programu Visual Studio, który zawiera jeden lub więcej projektów. A _rozwiązania_ może również odnosić się do rozwiązania IoT, który zawiera elementy, takie jak urządzenia, [aplikacji dla urządzeń](#device-app), Centrum IoT hub, innych usług platformy Azure i [aplikacji zaplecza](#back-end-app).
 
 ## <a name="subscription"></a>Subskrypcja
-Jeśli karta ma miejsce jest subskrypcja platformy Azure. Tworzenie każdego zasobów platformy Azure lub usługi Azure, którego używasz jest skojarzony z jedną subskrypcją. Wiele przydziały mają zastosowanie również na poziomie subskrypcji.
+Subskrypcja platformy Azure jest o tym, gdzie odbywa się rozliczanie. Tworzenie poszczególnych zasobów platformy Azure lub usługi platformy Azure, którego używasz jest skojarzony z jedną subskrypcją. Wiele przydziały są również stosowane na poziomie subskrypcji.
 
 ## <a name="system-properties"></a>Właściwości systemu
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), system właściwości tylko do odczytu i zawierają informacje na temat użycia urządzenia, takie jak ostatni stan połączenia i czasu działania.
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), właściwości systemu są przeznaczone tylko do odczytu i zawierają informacje na temat użycia urządzenia, np. ostatni stan połączenia i czas działania.
 
 ## <a name="tags"></a>Tagi
-W kontekście [dwie urządzenia](iot-hub-devguide-device-twins.md), tagi są metadane urządzenia przechowywane i pobierane przez zaplecza rozwiązania w formie dokumentu JSON. Tagi nie są widoczne dla aplikacji na urządzeniu.
+W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), tagi są metadane urządzenia przechowywane i pobierane przez zaplecze rozwiązania w postaci dokumentów JSON. Tagi nie są widoczne dla aplikacji na urządzeniu.
 
 ## <a name="telemetry"></a>Telemetria
-Urządzenia zbierania danych telemetrycznych, takich jak szybkości knie lub temperatury i użyj [punktu danych wiadomości](#data-point-messages) do wysyłania danych telemetrycznych do Centrum IoT.
+Urządzenia zbierania danych telemetrycznych, takich jak prędkość wiatru lub temperatury i użyj [punktu danych wiadomości](#data-point-messages) do wysyłania danych telemetrycznych do Centrum IoT.
 
 ## <a name="token-service"></a>Usługa tokenu
-Usługi tokenu można użyć do zaimplementowania mechanizmu uwierzytelniania urządzeń. Używa Centrum IoT [udostępnionych zasad dostępu](#shared-access-policy) z **DeviceConnect** uprawnienia do tworzenia *zakres urządzeń* tokenów. Tokeny te włączyć w urządzeniu nawiązać połączenia z Centrum IoT. Urządzenie używa mechanizmu uwierzytelniania niestandardowego do uwierzytelniania za pomocą usługi tokenu. Jeśli urządzenie zostanie pomyślnie uwierzytelniony, usługi tokenu wystawia token sygnatury dostępu Współdzielonego dla urządzenia na potrzeby dostępu Centrum IoT.
+Usługa tokenu umożliwia zaimplementować mechanizm uwierzytelniania dla urządzeń. Używa usługi IoT Hub [współużytkowane zasady dostępu](#shared-access-policy) z **DeviceConnect** uprawnień do utworzenia *urządzenia o określonym zakresie* tokenów. Te tokeny włączyć w urządzeniu połączyć się z Centrum IoT hub. Urządzenie używa mechanizmu uwierzytelniania niestandardowego do uwierzytelniania za pomocą usługi tokenu. Jeśli urządzenie uwierzytelnia pomyślnie, usługi tokenu wystawia token SAS dla urządzenia na potrzeby dostępu do usługi IoT hub.
 
-## <a name="x509-client-certificate"></a>Certyfikat klienta X.509
-Urządzenie można użyć certyfikatu X.509 do uwierzytelniania za pomocą [Centrum IoT](#iot-hub). Za pomocą certyfikatu X.509 jest to alternatywa dla użycia [tokenu sygnatury dostępu Współdzielonego](#shared-access-signature).
+## <a name="x509-client-certificate"></a>Certyfikatu klienta X.509
+Urządzenie umożliwia uwierzytelnianie za pomocą certyfikatu X.509 [usługi IoT Hub](#iot-hub). Za pomocą certyfikatu X.509 jest alternatywa dla użycia [tokenu sygnatury dostępu Współdzielonego](#shared-access-signature).

@@ -1,6 +1,6 @@
 ---
-title: Przenieść dane z witryny Salesforce przy użyciu fabryki danych | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu przenoszenia danych z usług Salesforce przy użyciu fabryki danych Azure.
+title: Przenoszenie danych z usług Salesforce za pomocą usługi Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o sposobach przenoszenia danych z usług Salesforce za pomocą usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,134 +11,134 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a9dba65591479033a892615ff053eebd0862851e
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048291"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125674"
 ---
-# <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenieść dane z witryny Salesforce przy użyciu fabryki danych Azure
+# <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usług Salesforce za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](data-factory-salesforce-connector.md)
-> * [W wersji 2 (bieżąca wersja)](../connector-salesforce.md)
+> * [Wersja 1](data-factory-salesforce-connector.md)
+> * [Wersja 2 (bieżąca wersja)](../connector-salesforce.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [łącznika usług Salesforce w wersji 2](../connector-salesforce.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznik usługi Salesforce w wersji 2](../connector-salesforce.md).
 
 
-W tym artykule opisano, jak używasz działanie kopiowania w fabryce danych Azure można skopiować danych z usług Salesforce na dowolnym magazynem danych, który znajduje się w kolumnie zbiornika w [obsługiwanych źródeł i wychwytywanie](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. W tym artykule opiera się na [działań przepływu danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólny przegląd przenoszenia danych z kombinacji magazynu obsługiwane dane i działanie kopiowania.
+W tym artykule przedstawiono, jak użyć działania kopiowania w usłudze Azure data factory w celu skopiowania danych z usług Salesforce do dowolnego magazynu danych, który znajduje się w kolumnie obiekt Sink w [obsługiwane źródłami i ujściami](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. W tym artykule opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania i kombinacji magazynu obsługiwanych danych.
 
-Fabryka danych Azure aktualnie obsługuje tylko przenoszenia danych z usługi Salesforce, aby [obsługiwane magazyny danych zbiornika](data-factory-data-movement-activities.md#supported-data-stores-and-formats), ale nie obsługuje przenoszenia danych z innych danych przechowuje do usług Salesforce.
+Usługa Azure Data Factory obsługuje obecnie tylko przenosi dane z usług Salesforce do [obsługiwanych magazynów danych ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats), ale nie obsługuje przenoszenia danych z innych danych są przechowywane do usługi Salesforce.
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
-Ten łącznik obsługuje następujące wersje usług Salesforce: Developer Edition w wersji Professional, Enterprise Edition albo nieograniczone Edition. I obsługuje kopiowanie z Salesforce produkcji, piaskownicy i domeny niestandardowej.
+Ten łącznik obsługuje następujące wersje systemu Salesforce: Developer Edition, w wersji Professional, Enterprise Edition lub wersji bez ograniczeń. I obsługuje kopiowania z produkcji i piaskownicy usługi Salesforce, a także domeny niestandardowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Musi być włączone uprawnienia interfejsu API. Zobacz [jak włączyć dostęp do interfejsu API w usłudze Salesforce przez zestaw uprawnień?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
-* Aby skopiować dane z witryny Salesforce do lokalnych magazynów danych, użytkownik musi mieć co najmniej 2.0 bramy zarządzania danych zainstalowanej w środowisku lokalnym.
+* Musi być włączone uprawnienia do interfejsu API. Zobacz [jak włączyć dostęp do interfejsu API w usłudze Salesforce przez zestaw uprawnień?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
+* Aby skopiować dane z usług Salesforce do lokalnych magazynów danych, konieczne jest posiadanie co najmniej danych zarządzania bramy zainstalowany w wersji 2.0 w swoim środowisku w środowisku lokalnym.
 
-## <a name="salesforce-request-limits"></a>Limity żądań usług SalesForce
-Usługa SalesForce obejmuje limity dla całkowita liczba żądań interfejsu API i równoczesnych żądań interfejsu API. Pamiętaj o następujących kwestiach:
+## <a name="salesforce-request-limits"></a>Limity żądań usługi SalesForce
+Usługa SalesForce ma limity współbieżnych żądań interfejsu API i łączna liczba żądań interfejsu API. Pamiętaj o następujących kwestiach:
 
-- Jeśli liczba jednoczesnych żądań przekracza limit, ograniczanie występuje i będzie wyświetlany losowe awarie.
-- Jeśli całkowita liczba żądań przekracza limit, konta usług Salesforce jest blokowana przez 24 godziny.
+- Jeśli liczbą jednoczesnych żądań przekracza limit, wystąpi ograniczanie przepustowości, a następnie zostanie wyświetlony losowo występować usterki.
+- Jeśli całkowita liczba żądań przekracza limit, konta usług Salesforce zostanie zablokowana przez 24 godziny.
 
-W obu przypadkach może być również wyświetlony błąd "REQUEST_LIMIT_EXCEEDED". Zobacz sekcję "Limity żądań interfejsu API" w [Salesforce Developer limity](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artykułu, aby uzyskać szczegółowe informacje.
+Błąd "REQUEST_LIMIT_EXCEEDED" może również występować w obu scenariuszach. Zobacz sekcję "Limity żądań interfejsu API" w [limity dla deweloperów usługi Salesforce](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artykuł, aby uzyskać szczegółowe informacje.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Można utworzyć potok z działania kopiowania, który przenosi dane z witryny Salesforce przy użyciu różnych narzędzi/interfejsów API.
+Utworzysz potok z działaniem kopiowania, które przenosi dane z usługi Salesforce za pomocą różnych narzędzi/interfejsów API.
 
-Najprostszym sposobem, aby utworzyć potok jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybkie przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczek: tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Umożliwia także następujące narzędzia do tworzenia potoku: **portalu Azure**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejs API .NET**, i **interfejsu API REST**. Zobacz [samouczek działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Można również użyć następujących narzędzi do utworzenia potoku: **witryny Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager** , **Interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
-Czy można użyć narzędzia i interfejsy API, należy wykonać następujące kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródła do ujścia magazynu danych: 
+Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
 
-1. Utwórz **połączone usługi** Aby połączyć dane wejściowe i wyjściowe są przechowywane w fabryce danych.
-2. Utwórz **zestawów danych** do reprezentowania danych wejściowych i wyjściowych operacji kopiowania. 
-3. Utwórz **potoku** aktywnością kopiowania zestawu danych jako dane wejściowe i zestawu danych jako dane wyjściowe. 
+1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
+2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z kreatora, definicje JSON do tych jednostek fabryki danych (połączone usługi, zestawy danych i potoki) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/API (z wyjątkiem interfejs API .NET), należy zdefiniować tych jednostek fabryki danych w formacie JSON.  Dla przykładu z definicji JSON dla jednostek fabryki danych, które są używane do skopiowania danych z usług Salesforce, zobacz [przykład JSON: kopiowanie danych z usług Salesforce do obiektów Blob platformy Azure](#json-example-copy-data-from-salesforce-to-azure-blob) sekcji tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z usług Salesforce, możesz znaleźć [przykład kodu JSON: kopiowanie danych z usług Salesforce do usługi Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) dalszej części tego artykułu. 
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwości JSON, które są używane do definiowania jednostek fabryki danych określonej do usług Salesforce: 
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do usługi Salesforce: 
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
-Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usługi Salesforce połączone.
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla usługi połączonej usługi Salesforce.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Właściwość type musi mieć ustawioną: **Salesforce**. |Yes |
-| environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Domyślna to "https://login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, określ "https://test.salesforce.com". <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład "https://[domain].my.salesforce.com". |Nie |
+| type |Właściwość type musi być równa: **Salesforce**. |Yes |
+| environmentUrl | Określ wystąpienie adres URL usługi Salesforce. <br><br> -Wartością domyślną jest "https://login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, należy określić "https://test.salesforce.com". <br> — Aby skopiować dane z domeny niestandardowej, określić, na przykład "https://[domain].my.salesforce.com". |Nie |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Yes |
 | hasło |Określ hasło dla konta użytkownika. |Yes |
-| securityToken |Określ tokenu zabezpieczającego dla konta użytkownika. Zobacz [uzyskać token zabezpieczeń](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje dotyczące resetowania/Get tokenu zabezpieczającego. Aby dowiedzieć się więcej o tokeny zabezpieczające ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
+| securityToken |Określ token zabezpieczeń dla konta użytkownika. Zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje na temat sposobu resetowania/get tokenu zabezpieczającego. Aby dowiedzieć się więcej o tokenów zabezpieczających ogólnie rzecz biorąc, zobacz [zabezpieczeń i interfejsu API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zbiorów danych](data-factory-create-datasets.md) artykułu. Sekcje zawierają informacje, takie jak struktury, dostępności i zasad zestawu danych JSON są podobne dla wszystkich typów obiektów dataset (Azure SQL, obiektów blob platformy Azure, tabeli platformy Azure i tak dalej).
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md) artykułu. Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów zestawu danych (Azure SQL, obiektów blob platformy Azure, usługa Azure table i tak dalej).
 
-**TypeProperties** sekcja jest różne dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. TypeProperties sekcja dla zestawu danych typu **RelationalTable** ma następujące właściwości:
+**TypeProperties** sekcji różni się dla każdego typu zestawu danych i zawiera informacje o lokalizacji danych w magazynie danych. Zestaw danych o typie sekcji typeProperties **RelationalTable** ma następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| tableName |Nazwa tabeli w usłudze Salesforce. |Nie (Jeśli **zapytania** z **RelationalSource** jest określona) |
+| tableName |Nazwa tabeli w usłudze Salesforce. |Nie (Jeśli **zapytania** z **RelationalSource** zostanie określona) |
 
 > [!IMPORTANT]
-> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnych niestandardowych obiektów.
+> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnego obiektu niestandardowego.
 
-![Nazwa danych fabryki — połączenie usługi Salesforce — interfejs API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Nazwa interfejsu API — połączenie usługi Salesforce — usługi fabryka danych](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak tabele nazwę, opis, danych wejściowych i wyjściowych i różnych zasad są dostępne dla wszystkich typów działań.
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [tworzenia potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i dane wyjściowe tabel i różnych zasad są dostępne dla wszystkich typów działań.
 
-Właściwości, które są dostępne w sekcji typeProperties działania z drugiej strony, zależą od każdego typu działania. Dla działania kopiowania różnią się w zależności od typów źródeł i sink.
+Właściwości, które są dostępne w sekcji typeProperties działań, z drugiej strony, zależą od każdego typu działania. Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia.
 
-W przypadku działania kopiowania, gdy źródłem jest typu **RelationalSource** (która obejmuje usługi Salesforce), w sekcji typeProperties dostępne są następujące właściwości:
+W działaniu kopiowania, gdy źródłem jest typu **RelationalSource** (w tym usług Salesforce), w sekcji typeProperties dostępne są następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj niestandardowych zapytania można odczytać danych. |Zapytania SQL 92 lub [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) zapytania. Przykład: `select * from MyTable__c`. |Nie (Jeśli **tableName** z **dataset** jest określona) |
+| query |Użyj zapytania niestandardowe można odczytać danych. |Zapytanie SQL 92 lub [Salesforce obiektu Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) zapytania. Przykład: `select * from MyTable__c`. |Nie (Jeśli **tableName** z **dataset** zostanie określona) |
 
 > [!IMPORTANT]
-> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnych niestandardowych obiektów.
+> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnego obiektu niestandardowego.
 
-![Nazwa danych fabryki — połączenie usługi Salesforce — interfejs API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Nazwa interfejsu API — połączenie usługi Salesforce — usługi fabryka danych](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
-## <a name="query-tips"></a>Wskazówki zapytania
-### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Podczas pobierania danych przy użyciu where klauzuli według kolumny daty i godziny
-Gdy Określ SOQL lub SQL zapytanie, zwrócić uwagę różnica format daty/godziny. Na przykład:
+## <a name="query-tips"></a>Porady dotyczące zapytań
+### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Pobieranie danych przy użyciu gdzie klauzula w kolumnie daty/godziny
+Gdy Określ zapytanie SOQL lub SQL, zwróć uwagę na różnicę format daty/godziny. Na przykład:
 
 * **Przykładowe SOQL**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **Przykładowe SQL**:
-    * **Określ zapytanie za pomocą Kreatora kopiowania:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
-    * **Za pomocą edycji, aby określić zapytanie JSON (prawidłowo ucieczki znaku):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
+    * **Przy użyciu Kreatora kopiowania, aby określić zapytanie:** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **Przy użyciu formatu JSON edycję do określenia zapytania (znak ucieczki prawidłowo):** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
-### <a name="retrieving-data-from-salesforce-report"></a>Pobieranie danych z raportu usług Salesforce
-Można pobrać dane z raportów usług Salesforce, określając kwerendy w postaci `{call "<report name>"}`, na przykład. `"query": "{call \"TestReport\"}"`.
+### <a name="retrieving-data-from-salesforce-report"></a>Trwa pobieranie danych z raportu w usłudze Salesforce
+Można pobierać dane z raportów usług Salesforce, określając zapytania, ponieważ `{call "<report name>"}`, np. `"query": "{call \"TestReport\"}"`.
 
-### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Przywracanie usuniętych rekordów z Kosza usług Salesforce
-Kwerenda nietrwałego usuniętych rekordów z Kosza usług Salesforce, można określić **"IsDeleted = 1"** w zapytaniu. Na przykład:
+### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Przywracanie usuniętych rekordów z Kosza usługi Salesforce
+Aby wysłać zapytanie nietrwale usunięte rekordy z Kosza usługi Salesforce, można określić **"IsDeleted = 1"** w zapytaniu. Na przykład:
 
-* Aby odpytać tylko usunięte rekordy, określ "Wybierz * z MyTable__c **gdzie IsDeleted = 1**"
-* Aby wysyłać zapytania o wszystkie rekordy tym usuniętych i istniejących, określ "Wybierz * z MyTable__c **gdzie IsDeleted = 0 lub IsDeleted = 1**"
+* Aby wysłać zapytanie usuniętych rekordów, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 1**"
+* Aby zbadać wszystkie rekordy, w tym istniejące i usunięte, należy określić "Wybierz * z MyTable__c **gdzie IsDeleted = 0 lub IsDeleted = 1**"
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Przykład JSON: kopiowanie danych z usług Salesforce do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicje JSON, które można użyć, aby utworzyć potok przy użyciu [portalu Azure](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Przedstawiają sposób kopiowania danych z usług Salesforce do magazynu obiektów Blob Azure. Jednak można skopiować danych do dowolnego wychwytywanie podane [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w fabryce danych Azure.   
+## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Przykład kodu JSON: kopiowanie danych z usług Salesforce do obiektów Blob platformy Azure
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z usług Salesforce do usługi Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.   
 
-Poniżej przedstawiono artefakty fabryki danych, które należy utworzyć w celu zaimplementowania scenariusza. Sekcje listy zawierają szczegółowe informacje na temat tych kroków.
+Poniżej przedstawiono artefaktów usługi Data Factory, które należy utworzyć w celu zaimplementowania scenariusza. Sekcje listy zawierają szczegółowe informacje na temat tych kroków.
 
-* Połączonej usługi typu [Salesforce](#linked-service-properties)
-* Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Połączona usługa typu [Salesforce](#linked-service-properties)
+* Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 * Dane wejściowe [dataset](data-factory-create-datasets.md) typu [RelationalTable](#dataset-properties)
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* A [potoku](data-factory-create-pipelines.md) z działaniem kopii, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
+* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [obiektu blob platformy Azure](data-factory-azure-blob-connector.md#dataset-properties)
+* A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [RelationalSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
-**Usługa SalesForce połączone**
+**Usługi połączone usługi SalesForce**
 
-W tym przykładzie użyto **Salesforce** połączonej usługi. Zobacz [Salesforce połączona usługa](#linked-service-properties) sekcję właściwości, które są obsługiwane przez tej połączonej usługi.  Zobacz [uzyskać token zabezpieczeń](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje dotyczące resetowania/Get tokenu zabezpieczającego.
+W tym przykładzie użyto **Salesforce** połączoną usługę. Zobacz [Salesforce połączoną usługę](#linked-service-properties) sekcja dotycząca właściwości, które są obsługiwane w tej połączonej usługi.  Zobacz [uzyskać token zabezpieczający](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) instrukcje na temat sposobu resetowania/get tokenu zabezpieczającego.
 
 ```json
 {
@@ -168,7 +168,7 @@ W tym przykładzie użyto **Salesforce** połączonej usługi. Zobacz [Salesforc
     }
 }
 ```
-**Wejściowy zestaw danych usług SalesForce**
+**Wejściowy zestaw danych usługi SalesForce**
 
 ```json
 {
@@ -195,16 +195,16 @@ W tym przykładzie użyto **Salesforce** połączonej usługi. Zobacz [Salesforc
 }
 ```
 
-Ustawienie **zewnętrznych** do **true** usługi fabryka danych informuje, czy zestaw danych jest zewnętrzne do fabryki danych i nie jest generowany przez działanie w fabryce danych.
+Ustawienie **zewnętrznych** do **true** usługi Data Factory informuje, że zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
 
 > [!IMPORTANT]
-> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnych niestandardowych obiektów.
+> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnego obiektu niestandardowego.
 
-![Nazwa danych fabryki — połączenie usługi Salesforce — interfejs API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
+![Nazwa interfejsu API — połączenie usługi Salesforce — usługi fabryka danych](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Wyjściowy zestaw danych obiektów blob platformy Azure**
 
-Dane są zapisywane do nowego obiektu blob co godzinę (częstotliwość: godziny, interwał: 1).
+Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godziny, interval: 1).
 
 ```json
 {
@@ -226,9 +226,9 @@ Dane są zapisywane do nowego obiektu blob co godzinę (częstotliwość: godzin
 }
 ```
 
-**Potok wraz z działanie kopiowania**
+**Potok z działaniem kopiowania**
 
-Potok zawiera działanie kopiowania, który jest skonfigurowany do używania wejściowe i wyjściowe zestawy danych i jest zaplanowane co godzinę. W definicji JSON potoku **źródła** ustawiono typ **RelationalSource**i **zbiornika** ustawiono typ **BlobSink**.
+Potok zawiera działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource**i **ujścia** ustawiono typ **BlobSink**.
 
 Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listę właściwości, które są obsługiwane przez RelationalSource.
 
@@ -279,38 +279,38 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) listę 
 }
 ```
 > [!IMPORTANT]
-> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnych niestandardowych obiektów.
+> Część "__c" Nazwa interfejsu API jest wymagany dla dowolnego obiektu niestandardowego.
 
-![Nazwa danych fabryki — połączenie usługi Salesforce — interfejs API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+![Nazwa interfejsu API — połączenie usługi Salesforce — usługi fabryka danych](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 
-### <a name="type-mapping-for-salesforce"></a>Mapowanie typu dla usług Salesforce
+### <a name="type-mapping-for-salesforce"></a>Mapowanie typu usługi Salesforce
 | Typ Salesforce | . Typ opartej na sieci |
 | --- | --- |
-| Automatyczny numer |Ciąg |
-| pole wyboru |Wartość logiczna |
-| Waluta |podwójne |
+| Liczba automatycznie |Ciąg |
+| Zaznacz pole wyboru |Wartość logiczna |
+| Waluta |Dziesiętna |
 | Date |DateTime |
 | Data/godzina |DateTime |
 | Email |Ciąg |
-| Identyfikator |Ciąg |
-| Relacja wyszukiwania |Ciąg |
-| Lista wyboru wielokrotnego wyboru |Ciąg |
-| Liczba |podwójne |
-| Procent |podwójne |
+| Id |Ciąg |
+| Relacje odnośników |Ciąg |
+| Lista wyboru wielokrotnego |Ciąg |
+| Liczba |Dziesiętna |
+| Procent |Dziesiętna |
 | Numer telefonu |Ciąg |
-| Lista wyboru |Ciąg |
+| Listy wyboru |Ciąg |
 | Tekst |Ciąg |
 | Obszar tekstu |Ciąg |
-| Obszar tekstu (Liczba długa) |Ciąg |
-| Obszar tekstu (zaawansowana) |Ciąg |
+| Obszar tekstu (Long) |Ciąg |
+| Obszar tekstu (zaawansowane) |Ciąg |
 | Tekst (zaszyfrowane) |Ciąg |
 | Adres URL |Ciąg |
 
 > [!NOTE]
-> Aby mapować kolumn z zestawu źródła danych do kolumn z obiektu sink zestawu danych, zobacz [mapowania kolumnach dataset w fabryce danych Azure](data-factory-map-columns.md).
+> Aby zamapować kolumny z zestawu danych źródłowych do kolumn z zestawu danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
-Zobacz [wydajności działania kopiowania i dostrajania przewodnik](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego wydajność wpływ przenoszenia danych (działanie kopiowania) w usłudze fabryka danych Azure i zoptymalizować ją na różne sposoby.
+Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](data-factory-copy-activity-performance.md) Aby dowiedzieć się więcej o kluczowych czynników tego obniżenie wydajności przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją.

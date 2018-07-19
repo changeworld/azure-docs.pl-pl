@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i uruchom usługę Azure functions lokalnie | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kod i przetestować usługę Azure functions na komputerze lokalnym, przed uruchomieniem funkcji platformy Azure.
+title: Twórz i uruchamiaj lokalnie usługi Azure functions | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kodowanie i testowanie usługi Azure functions na lokalnym komputerze, przed uruchomieniem w usłudze Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -13,40 +13,40 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: glenga
-ms.openlocfilehash: 89f94be4cf624914183480362ae23c62c363622f
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: e82981471306c9a9d09751da15256e85b770eb1a
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088636"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125043"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>Kod testu Azure funkcji i lokalnie
+# <a name="code-and-test-azure-functions-locally"></a>Kodowanie i testowanie usługi Azure Functions lokalnie
 
-Gdy jesteś w stanie opracowanie i przetestowanie usługi Azure Functions w [Azure Portal], wielu deweloperów preferowane środowisko rozwoju lokalnego. Funkcje ułatwia użyj narzędzi edytora i rozwoju ulubionych kodu do tworzenia i testowania funkcji na komputerze lokalnym. Funkcji lokalnego może nawiązać połączenie na żywo usług Azure i można je debugowania na komputerze lokalnym przy użyciu pełnej obsługi funkcji.
+Gdy jesteś w stanie na opracowywanie i testowanie usługi Azure Functions w [Azure Portal], wielu programistów wolą środowisko rozwoju lokalnego. Funkcje ułatwia tworzenie i testowanie funkcji na komputerze lokalnym przy użyciu Twojego ulubionego kodu edytora i narzędzi programistycznych. Lokalnych funkcji nawiązać połączenie na żywo usług platformy Azure oraz Debuguj je na komputerze lokalnym przy użyciu pełne środowisko uruchomieniowe usługi Functions.
 
-## <a name="local-development-environments"></a>Środowisk deweloperskich lokalnego
+## <a name="local-development-environments"></a>Lokalne wdrażanie środowisk
 
-Sposób rozwijać funkcji na komputerze lokalnym zależy od użytkownika [języka](supported-languages.md) i narzędzi Preferencje. Środowisk w poniższej tabeli obsługuje lokalne działania projektowe:
+Sposób tworzenia funkcji na komputerze lokalnym jest zależna od usługi [języka](supported-languages.md) i preferencje narzędzi. Środowisk w poniższej tabeli obsługują rozwoju lokalnego:
 
 |Środowisko                              |Języki         |Opis|
 |-----------------------------------------|------------|---|
-| [Wiersz polecenia lub terminalu](functions-run-local.md) | [Skryptu C# (csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md) | [Środowisko Azure Functions podstawowe narzędzia] zapewnia podstawowego środowiska wykonawczego i szablony do tworzenia funkcje, dzięki czemu rozwoju lokalnego. Wersja 2.x programowanie pomocy technicznej w systemie Linux, MacOS i systemu Windows. Wszystkie środowiska polegają na podstawowe narzędzia lokalnego środowiska uruchomieniowego funkcji.|
-|[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [Skryptu C# (csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md) | [Rozszerzenia usługi Azure Functions dla kodu VS](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dodaje funkcji obsługi kodu programu VS. Wymaga podstawowych narzędzi. Obsługuje programowanie w systemie Linux, MacOS i systemu Windows, jeśli korzysta z wersji 2.x podstawowych narzędzi. Aby dowiedzieć się więcej, zobacz [wdrażanie na platformie Azure przy użyciu usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
-| [Visual Studio 2017](functions-develop-vs.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md) | Narzędzia usługi Azure Functions znajdują się w **Azure programowanie** obciążenie [programu Visual Studio 2017 wersji 15,5 cala](https://www.visualstudio.com/vs/) i nowszych wersjach. Umożliwia skompilowania funkcji w bibliotece klas i publikowanie biblioteki dll na platformie Azure. Zawiera podstawowe narzędzia do testowania lokalnego. Aby dowiedzieć się więcej, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md). |
-| [Maven](functions-create-first-java-maven.md) | [Java](functions-reference-java.md) | Integruje się z podstawowe narzędzia umożliwiające projektowanie funkcji języka Java. Wersja 2.x obsługuje programowanie w systemie Linux, MacOS i systemu Windows. Aby dowiedzieć się więcej, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](functions-create-first-java-maven.md).|
+| [Wiersz polecenia lub terminalu](functions-run-local.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md), [skrypt języka C# (csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [języka Java](functions-reference-java.md) | [Podstawowe narzędzia usługi Azure Functions] udostępnia podstawowe środowisko wykonawcze i szablony do tworzenia funkcji, który umożliwia tworzenie aplikacji lokalnych. W wersji 2.x obsługuje programowanie w systemie Linux, MacOS i Windows. Wszystkie środowiska zależy od podstawowych narzędzi dla lokalne środowisko uruchomieniowe usługi Functions. |
+|[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [Skrypt języka C# (csx)](functions-reference-csharp.md), [języka JavaScript](functions-reference-node.md) | [Rozszerzenie usługi Azure Functions dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) dodaje funkcji obsługi do programu VS Code. Wymaga podstawowych narzędzi. Obsługuje programowanie w systemie Linux, MacOS i Windows, w przypadku korzystania z wersji 2.x podstawowych narzędzi. Aby dowiedzieć się więcej, zobacz [Wdróż na platformie Azure przy użyciu usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
+| [Visual Studio 2017](functions-develop-vs.md) | [C# (Biblioteka klas)](functions-dotnet-class-library.md) | Narzędzia usługi Azure Functions są objęte **programowanie na platformie Azure** obciążenie [programu Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) i nowszych wersjach. Umożliwia kompilowanie funkcji w bibliotece klas i opublikować plik .dll na platformie Azure. Zawiera podstawowe narzędzia na potrzeby testowania lokalnego. Aby dowiedzieć się więcej, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md). |
+| [Maven](functions-create-first-java-maven.md) | [Java](functions-reference-java.md) | Integruje się z podstawowe narzędzia umożliwiające tworzenie aplikacji funkcji języka Java. W wersji 2.x obsługuje programowanie w systemie Linux, MacOS i Windows. Aby dowiedzieć się więcej, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](functions-create-first-java-maven.md).|
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Każdy z tych środowisk deweloperskich lokalnego umożliwia tworzenie funkcji projekty aplikacji i utworzyć nowe funkcje za pomocą wstępnie zdefiniowanych szablonów funkcji. Każda używa podstawowych narzędzi, dzięki czemu można testowanie i debugowanie funkcji przed rzeczywistym środowisko uruchomieniowe Functions na własnym komputerze, tak jak każda inna aplikacja. Można również opublikować możesz funkcja projektu aplikacji za pomocą dowolnego z tych środowisk Azure.  
+Każda z tych środowisk programowania lokalnego umożliwia tworzenie projektów aplikacji funkcji i utworzyć nowe funkcje za pomocą wstępnie zdefiniowanych szablonów funkcji. Podstawowe narzędzia każdej używane tak, aby można testowanie i debugowanie funkcji względem rzeczywiste środowisko uruchomieniowe usługi Functions na własnym komputerze, tak samo jak każdą inną aplikację. Można również opublikować możesz projektu aplikacji funkcji za pomocą dowolnego z tych środowisk na platformie Azure.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-+ Aby dowiedzieć się więcej na temat lokalne działania projektowe skompilowanych funkcji C#, za pomocą programu Visual Studio 2017, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md).
-+ Aby dowiedzieć się więcej na temat lokalne działania projektowe funkcji za pomocą VS kodu na komputerze Mac, Linux lub Windows, temacie [kodzie VS dokumentacji usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).
-+ Aby dowiedzieć się więcej o wdrażaniu funkcji z wiersza polecenia lub terminalu, zobacz [pracować z Azure funkcje podstawowe narzędzia](functions-run-local.md).
++ Aby dowiedzieć się więcej o lokalnym programowaniu skompilowanych funkcji języka C#, za pomocą programu Visual Studio 2017, zobacz [Tworzenie usługi Azure Functions przy użyciu programu Visual Studio](functions-develop-vs.md).
++ Aby dowiedzieć się więcej o lokalnym programowaniu funkcji na komputerze Mac, Linux lub Windows za pomocą programu VS Code, zobacz [dokumentacji programu VS Code dla usługi Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).
++ Aby dowiedzieć się więcej na temat tworzenia funkcji z wiersza polecenia lub terminalu, zobacz [pracy przy użyciu podstawowych narzędzi usługi Azure Functions](functions-run-local.md).
 
 <!-- LINKS -->
 
-[Środowisko Azure Functions podstawowe narzędzia]: https://www.npmjs.com/package/azure-functions-core-tools
+[Podstawowe narzędzia usługi Azure Functions]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
