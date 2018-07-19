@@ -49,7 +49,7 @@
         - name: Kopiowanie danych do usługi Data Lake Storage 2. generacji za pomocą narzędzia Distcp
           href: use-distcp.md
         - name: Kopiowanie danych do usługi Data Lake Storage 2. generacji za pomocą usługi Azure Data Factory
-          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
     - name: Łączenie z usługą Azure Databricks
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
 - name: Dokumentacja

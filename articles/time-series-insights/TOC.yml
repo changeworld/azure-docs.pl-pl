@@ -101,7 +101,7 @@
     - name: Żądania danych klienta
       href: time-series-insights-customer-data-requests.md
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
     - name: Kalkulator cen

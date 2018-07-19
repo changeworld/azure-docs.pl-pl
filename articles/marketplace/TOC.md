@@ -28,14 +28,6 @@
 ### Pomoc techniczna  
 #### [Pomoc techniczna dla witryny Azure Marketplace i usługi AppSource](./support-azure-marketplace.md)  
 
-### Przewodniki dotyczące wydawania  
-#### [Usługi konsultingowe dla witryny Azure Marketplace](consulting-services.md)  
-#### [Techniczny przewodnik po publikowaniu aplikacji SaaS w witrynie Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) 
-#### [Korzystanie z usługi Marketplace w wersji próbnej z użyciem usługi Azure Active Directory](./enable-trial-using-azure-ad.md)  
-
-### [Rozwijanie firmy dzięki witrynie Marketplace](./grow-your-business-with-azure-marketplace.md)  
-#### [Preferowane rozwiązania](./preferred-solutions.md) 
-
 ## [Portal Cloud Partner](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
 
 ## Zasoby  

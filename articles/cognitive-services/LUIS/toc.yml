@@ -17,6 +17,8 @@
           items:
             - name: 'C#'
               href: luis-get-started-cs-get-intent.md
+            - name: Przejdź
+              href: luis-get-started-go-get-intent.md
             - name: Java
               href: luis-get-started-java-get-intent.md
             - name: JavaScript
@@ -33,6 +35,8 @@
           items:
             - name: 'C#'
               href: luis-get-started-cs-add-utterance.md
+            - name: Przejdź
+              href: luis-get-started-go-add-utterance.md
             - name: Java
               href: luis-get-started-java-add-utterance.md
             - name: JavaScript
@@ -220,7 +224,7 @@
             - name: Wyświetlanie informacji o użyciu punktu końcowego przy użyciu programu PowerShell
               href: luis-how-to-manage-from-cloud-shell.md
             - name: Rozszerzanie limitu przydziału punktu końcowego między kluczami za pomocą usługi Traffic Manager
-              href: traffic-manager.md
+              href: luis-traffic-manager.md
     - name: Migrowanie do interfejsu API V2
       href: migration-v1-to-v2.md
     - name: Programowe znajdywanie regionu

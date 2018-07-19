@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: 954a67ed126b505c9ba0da81b3ace0d25e840adb
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
+ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128592"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39114545"
 ---
 # <a name="get-started-with-batch-rendering"></a>Wprowadzenie do usługi Batch Rendering 
 
@@ -108,7 +108,7 @@ W zależności od używanej aplikacji 3D istnieją różne opcje przesyłania za
 
 ### <a name="maya"></a>Maya
 
-W przypadku aplikacji Maya możesz użyć:
+W aplikacji Maya możesz użyć:
 
 - [Wtyczki usługi Batch dla aplikacji Maya](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
 - Aplikacji klasycznej [BatchLabs](https://azure.github.io/BatchLabs)
@@ -123,7 +123,7 @@ W przypadku aplikacji 3ds Max możesz użyć:
 
 Szablony 3ds Max BatchLabs umożliwiają renderowanie scen aplikacji VRay i Arnold przy użyciu usługi Batch Rendering. Istnieją dwie odmiany szablonu dla aplikacji VRay i Arnold: jeden dla standardowych scen i jeden dla bardziej złożonych scen, które wymagają pliku ścieżki aplikacji 3ds Max do zasobów i tekstur (plik mxp). Aby uzyskać więcej informacji o szablonach aplikacji 3ds Max BatchLabs, zobacz repozytorium [Dane aplikacji BatchLabs](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) w usłudze GitHub.
 
-Ponadto możesz użyć [zestawu SDK języka Python usługi Batch](https://docs.microsoft.com/azure/batch/batch-python-tutorial), aby zintegrować usługę Rendering z istniejącym potokiem.
+Ponadto możesz użyć [zestawu SDK języka Python usługi Batch](/python/api/overview/azure/batch), aby zintegrować usługę Rendering z istniejącym potokiem.
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Korzystanie z wtyczki usługi Batch dla programu Maya do przesyłania zadania renderowania

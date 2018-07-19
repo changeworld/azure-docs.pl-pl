@@ -11,14 +11,14 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: ad02c7abf42d61d5e67eefdbb42fe3501e4cfba8
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: MT
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823795"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38991007"
 ---
 Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
-- Tworzenie środowisk Kubernetes na platformie Azure, zoptymalizowana pod kątem development — _miejsca deweloperów_.
-- Wielokrotnie powtarzane Opracuj kodu w kontenerach przy użyciu kodzie VS i wiersza polecenia.
+- Tworzenie środowiska Kubernetes na platformie Azure zoptymalizowanego pod kątem programowania — _przestrzeń deweloperów_.
+- Iteracyjne tworzenie kodu w kontenerach przy użyciu programu VS Code i wiersza polecenia.
 - Efektywne tworzenie i testowanie kodu w środowisku zespołu.

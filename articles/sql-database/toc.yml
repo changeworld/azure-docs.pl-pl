@@ -135,7 +135,7 @@
         - name: Kopie zapasowe bazy danych
           href: sql-database-automated-backups.md
         - name: Długoterminowe przechowywanie kopii zapasowych
-          itmes:
+          items:
             - name: Długoterminowe przechowywanie kopii zapasowych
               href: sql-database-long-term-retention.md
             - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych — magazyn SQL

@@ -165,7 +165,7 @@
     - name: Centrum deweloperów Azure IoT
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Usługa Azure IoT Edge dla edytora VS Code
       href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
     - name: Zestaw narzędzi usługi Azure IoT dla edytora VS Code

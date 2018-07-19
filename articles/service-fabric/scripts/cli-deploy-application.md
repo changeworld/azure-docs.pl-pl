@@ -3,7 +3,7 @@ title: Interfejs wiersza polecenia usługi Azure Service Fabric (sfctl) — przy
 description: Wdrażanie aplikacji w klastrze Azure Service Fabric przy użyciu interfejsu wiersza polecenia usługi Azure Service Fabric
 services: service-fabric
 documentationcenter: ''
-author: Thraka
+author: TylerMSFT
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 04/16/2018
-ms.author: adegeo
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 7e2bd212e88b3efcf7f3aad3ef1555b3fc48ef1b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d3e619750c45ac2d8e0b942a304aadfa05301624
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641734"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39069509"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Wdrażanie aplikacji w klastrze usługi Service Fabric
 

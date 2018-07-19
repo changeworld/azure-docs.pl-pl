@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: c608c1b40c7b4cdaedb2b7e7a609ad65c6357584
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 85e67be406b3d9723476821adfb09fc4db8dc1d1
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344220"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068577"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Samouczek: tworzenie niestandardowego modelu językowego
 
@@ -115,5 +115,5 @@ Jeśli w pewnym momencie zechcesz zmienić nazwę lub opis modelu, możesz uży�
 ## <a name="next-steps"></a>Następne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-- [Jak rozpoznawać mowę w języku C#](quickstart-csharp-windows.md)
+- [Jak rozpoznawać mowę w języku C#](quickstart-csharp-dotnet-windows.md)
 - [Dane przykładowe Git](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

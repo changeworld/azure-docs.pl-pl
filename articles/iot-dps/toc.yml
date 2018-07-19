@@ -176,7 +176,7 @@
     - name: Żądania danych klienta
       href: iot-dps-customer-data-requests.md
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Narzędzie Device Explorer
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: Narzędzie iothub-diagnostics
