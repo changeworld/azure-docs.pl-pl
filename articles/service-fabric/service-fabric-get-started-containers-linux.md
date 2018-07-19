@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 657e4b212b79fec40299e639c3818fd97a339579
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213128"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126732"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
@@ -171,11 +171,11 @@ Ponieważ ten obraz ma zdefiniowany punkt wejścia obciążenia, nie musisz jawn
 
 Określ liczbę wystąpień jako „1”.
 
-Określone mapowanie portów w odpowiednim formacie. W tym artykule, należy podać ```80:4000``` jako mapowanie portów. Dzięki temu skonfigurowano który każdego przychodzącego żądania pochodzące z portem 4000 na komputerze hosta są przekierowywane do portu 80 w kontenerze.
+Określ mapowanie portów w odpowiednim formacie. W tym artykule, musisz podać ```80:4000``` jako mapowania portów. Dzięki temu skonfigurowano, wszystkie przychodzące żądania pochodzące na porcie 4000, na komputerze hosta są przekierowywane do portu 80 w kontenerze.
 
 ![Generator Yeoman usługi Service Fabric dla kontenerów][sf-yeoman]
 
-## <a name="configure-container-repository-authentication"></a>Skonfiguruj uwierzytelnianie repozytorium kontenera
+## <a name="configure-container-repository-authentication"></a>Konfigurowanie uwierzytelniania repozytorium kontenerów
  Jeśli kontener wymaga uwierzytelniania w prywatnym repozytorium, dodaj parametr `RepositoryCredentials`. Na potrzeby tego artykułu dodaj nazwę konta i hasło dla rejestru kontenerów myregistry.azurecr.io. Upewnij się, że zasady zostały dodane w tagu „ServiceManifestImport” odpowiadającym właściwemu pakietowi usług.
 
 ```xml
@@ -189,6 +189,39 @@ Określone mapowanie portów w odpowiednim formacie. W tym artykule, należy pod
     </Policies>
    </ServiceManifestImport>
 ``` 
+
+
+## <a name="configure-isolation-mode"></a>Konfigurowanie trybu izolacji
+W wersji środowiska uruchomieniowego 6.3 izolacji maszyny Wirtualnej jest obsługiwana dla kontenerów systemu Linux, w tym samym obsługuje dwa tryby izolacji dla kontenerów: procesu oraz funkcji Hyper-v. W trybie izolacji funkcji Hyper-v jądra są odizolowane dla każdego kontenera i hosta kontenera. Izolacji funkcji Hyper-v jest implementowany przy użyciu [wyczyść kontenery](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). Tryb izolacji można określić dla klastrów systemu Linux w programie `ServicePackageContainerPolicy` elementu w pliku manifestu aplikacji. Tryby izolacji, które można określić, to `process`, `hyperv` i `default`. Ustawieniem domyślnym jest w trybie izolacji procesu. Poniższy fragment kodu przedstawia sposób określania trybu izolacji w pliku manifestu aplikacji.
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0"/>
+      <Policies>
+        <ServicePackageContainerPolicy Hostname="votefront" Isolation="hyperv">
+          <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
+        </ServicePackageContainerPolicy>
+    </Policies>
+  </ServiceManifestImport>
+```
+
+
+## <a name="configure-resource-governance"></a>Konfigurowanie zarządzania zasobami
+[Zarządzanie zasobami](service-fabric-resource-governance.md) ogranicza zasoby, z których kontener może korzystać na hoście. Element `ResourceGovernancePolicy` określany w manifeście aplikacji służy do deklarowania limitów zasobów pakietu kodu usługi. Limity można ustawić dla następujących zasobów: Memory, MemorySwap, CpuShares (CPU — względna waga), MemoryReservationInMB, BlkioWeight (BlockIO — względna waga). W tym przykładzie pakiet usług Guest1Pkg otrzymuje dostęp do jednego rdzenia w węzłach klastra, w których jest umieszczony. Limity pamięci są bezwzględne, więc pakiet kodu jest ograniczony do 1024 MB pamięci (i ma rezerwację tej samej ilości ze wstępną gwarancją). Pakiety kodu (kontenery lub procesy) nie mogą przydzielać pamięci ponad ten limit. Podjęcie próby takiego przydzielenia spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
+
+```xml
+<ServiceManifestImport>
+  <ServiceManifestRef ServiceManifestName="MyServicePKg" ServiceManifestVersion="1.0.0" />
+  <Policies>
+    <ServicePackageResourceGovernancePolicy CpuCores="1"/>
+    <ResourceGovernancePolicy CodePackageRef="Code" MemoryInMB="1024"  />
+  </Policies>
+</ServiceManifestImport>
+```
+
+
+
+
 ## <a name="configure-docker-healthcheck"></a>Konfigurowanie funkcji HEALTHCHECK platformy Docker 
 Począwszy od wersji 6.1, usługa Service Fabric automatycznie integruje zdarzenia [funkcji HEALTHCHECK platformy Docker](https://docs.docker.com/engine/reference/builder/#healthcheck) z raportem o kondycji systemu. Oznacza to, że jeśli w kontenerze włączono funkcję **HEALTHCHECK**, usługa Service Fabric będzie raportować kondycję przy każdej zmianie stanu kondycji kontenera zgłoszonej przez platformę Docker. Raport kondycji **OK** pojawi się w narzędziu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), gdy wartość *health_status* będzie równa *healthy*, a raport **OSTRZEŻENIE** pojawi się, gdy wartość *health_status* będzie równa *unhealthy*. Instrukcja **HEALTHCHECK** wskazująca rzeczywisty test wykonywany w celu monitorowania kondycji kontenera musi występować w pliku Dockerfile używanym podczas generowania obrazu kontenera. 
 
@@ -343,7 +376,7 @@ W tym miejscu przedstawiono kompletne manifesty usługi i aplikacji używane w t
 Aby dodać kolejną usługę kontenera do aplikacji utworzonej już przy użyciu narzędzia Yeoman, wykonaj następujące czynności:
 
 1. Zmień katalog na katalog główny istniejącej aplikacji. Na przykład wpisz polecenie `cd ~/YeomanSamples/MyApplication`, jeśli aplikacja `MyApplication` to aplikacja utworzona przez narzędzie Yeoman.
-2. Uruchom polecenie `yo azuresfcontainer:AddService`
+2. Uruchom `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

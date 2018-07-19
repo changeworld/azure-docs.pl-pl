@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z hybrydowe usługi Azure Active Directory niższego poziomu urządzeniach przyłączonych do | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z hybrydowe usługi Azure Active Directory połączone urządzenia niższego poziomu.
+title: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory niższego poziomu urządzeń przyłączonych do | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory przyłączyć urządzenia niskiego poziomu.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3b99a82b59cbba22d30a4325e246c308a2042ad5
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714116"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136311"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowe usługi Azure Active Directory przyłączone do urządzeń niskiego poziomu 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
-Ten artykuł dotyczy wyłącznie następujące urządzenia: 
+Ten artykuł ma zastosowanie tylko dla następujących urządzeń: 
 
 - Windows 7 
 - Windows 8.1 
@@ -33,91 +33,93 @@ Ten artykuł dotyczy wyłącznie następujące urządzenia:
 - Windows Server 2012 R2 
  
 
-Dla systemu Windows 10 lub Windows Server 2016, zobacz [hybrydowego Rozwiązywanie problemów z usługą Azure Active Directory przyłączone do urządzeń z systemem Windows 10 i Windows Server 2016](device-management-troubleshoot-hybrid-join-windows-current.md).
+Dla systemu Windows 10 lub Windows Server 2016, zobacz [urządzenia systemu Windows 10 i Windows Server 2016 przyłączone do hybrydowej Rozwiązywanie problemów z usługi Azure Active Directory](device-management-troubleshoot-hybrid-join-windows-current.md).
 
-W tym artykule przyjęto założenie, że masz [urządzeniach przyłączonych do skonfigurowanego hybrydowe usługi Azure Active Directory](device-management-hybrid-azuread-joined-devices-setup.md) do obsługi następujących scenariuszy:
+W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej skonfigurowanego w usłudze Azure Active Directory](device-management-hybrid-azuread-joined-devices-setup.md) na potrzeby następujących scenariuszy:
 
-- Dostępu warunkowego opartego na urządzeniu
+- Dostęp warunkowy oparty na urządzeniu
 
-- [Enterprise roaming ustawień](active-directory-windows-enterprise-state-roaming-overview.md)
+- [Mobilny dostęp firmowy do ustawień](active-directory-windows-enterprise-state-roaming-overview.md)
 
-- [Windows Hello dla firm](active-directory-azureadjoin-passport-deployment.md) 
-
-
+- [Funkcja Windows Hello dla firm](active-directory-azureadjoin-passport-deployment.md) 
 
 
 
-Ten artykuł zawiera z rozwiązywaniem problemów wskazówki dotyczące rozwiązywania potencjalnych problemów.  
+
+
+Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu rozwiązania potencjalnych problemów.  
 
 **Co należy wiedzieć:** 
 
-- Maksymalna liczba urządzeń dla każdego użytkownika jest perspektywy skoncentrowanej na urządzeniach. Na przykład jeśli *jdoe* i *jharnett* Zaloguj się na urządzeniu, oddzielne rejestracji (DeviceID) jest tworzony dla każdego z nich w **użytkownika** kartę informacje.  
+- Maksymalna liczba urządzeń na użytkownika jest skoncentrowane na urządzeniu. Na przykład jeśli *jdoe* i *jharnett* Zaloguj się na urządzeniu z systemem rejestracji odrębnych (DeviceID) jest tworzony dla każdego z nich w **użytkownika** karta informacje.  
 
-- Początkowe rejestracyjny / przyłączenia urządzeń jest skonfigurowany do wykonania próba logowania lub blokowanie / odblokowanie. Mogą wystąpić opóźnienia 5-minutowy wyzwalane przez zadania harmonogramu zadań. 
+- Wstępnej rejestracji / przyłączenia urządzeń jest skonfigurowana do wykonywania próba logowania lub Blokowanie / odblokowywanie. Może to być opóźnienie 5-minutowych wyzwolone przez zadania harmonogramu zadań. 
 
-- Ponowna instalacja systemu operacyjnego lub ręcznego ponowna rejestracja może tworzyć nowej rejestracji w usłudze Azure AD, co powoduje wiele wpisów w karcie informacje użytkownika w portalu Azure. 
+- Ponowna instalacja systemu operacyjnego lub ręczna ponowna rejestracja może utworzyć nowej rejestracji w usłudze Azure AD, co skutkuje wiele wpisów na karcie informacje użytkownika w witrynie Azure portal. 
 
-## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Pobierz stan rejestracji 
+- Upewnij się, że [KB4284842](https://support.microsoft.com/en-us/help/4284842) jest zainstalowana w razie Windows 7 z dodatkiem SP1 lub Windows Server 2008 R2 z dodatkiem SP1. Ta aktualizacja zapobiega niepowodzeń uwierzytelniania przyszłych z powodu utraty dostępu klienta do klucze chronione po zmianie hasła.
+
+## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Pobieranie stanu rejestracji 
 
 **Aby sprawdzić stan rejestracji:**  
 
-1. Logowanie się przy użyciu konta użytkownika, który wykonał sprzężenia hybrydowe usługi Azure AD.
+1. Zaloguj się przy użyciu konta użytkownika, który wykonał dołączenie do hybrydowej usługi Azure AD.
 
 2. Otwórz wiersz polecenia jako administrator 
 
 3. Typ `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-To polecenie wyświetla okno dialogowe, która udostępnia szczegółowe informacje o stanie sprzężenia.
+To polecenie wyświetla okno dialogowe, które zapewnia więcej szczegółów na temat stanu sprzężenia.
 
-![Dołącz do miejsca pracy dla systemu Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
+![Przyłączanie do obszaru roboczego dla Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Ocena hybrydowe usługi Azure AD join stanu 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Ocena hybrydowego stan dołączania usługi Azure AD 
 
-Jeśli sprzężenie hybrydowe usługi Azure AD nie powiodło się, okno dialogowe zawiera szczegółowe informacje o problemie, który wystąpił.
+Jeśli dołączenie do hybrydowej usługi Azure AD nie powiodło się, okno dialogowe zawiera szczegółowe informacje o problemie, który wystąpił.
 
-**Najbardziej typowe problemy są:**
+**Najbardziej typowe problemy to:**
 
 - Nieprawidłowej konfiguracji usług AD FS lub Azure AD
 
-    ![Dołącz do miejsca pracy dla systemu Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/02.png)
+    ![Przyłączanie do obszaru roboczego dla Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/02.png)
 
 - Użytkownik nie jest zarejestrowany jako użytkownik domeny
 
-    ![Dołącz do miejsca pracy dla systemu Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    ![Przyłączanie do obszaru roboczego dla Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
     
-    Istnieje kilka przyczyn dlaczego taka sytuacja może wystąpić:
+    Istnieje kilka różnych powodów dlaczego taka sytuacja może wystąpić:
     
-    - Zalogowany użytkownik nie jest użytkownikiem domeny (na przykład użytkownik lokalny). Hybrydowe usługi Azure AD join na niższym poziomie urządzeń jest obsługiwane tylko dla użytkowników domeny.
+    - Zalogowany użytkownik nie jest użytkownikiem domeny (na przykład użytkownik lokalny). Na urządzeniach niskiego poziomu, dołączenie do usługi Azure AD hybrydowej jest obsługiwana tylko dla użytkowników domeny.
     
-    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane wyświetlania problemy z połączeniem sieciowym wyjściowego powiązania z adresami URL, Azure AD. Możliwe również, czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona/skonfigurowanego dla użytkownika i WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym. Inną możliwością jest stronę odnajdowania (obszaru macierzystego HRD) tego obszaru macierzystego oczekuje do interakcji z użytkownikiem, który zapobiega **autoworkplace.exe** w trybie dyskretnym uzyskiwania tokenu.
+    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane problemami z łącznością sieciową wyjściowego powiązanej na adresy URL platformy Azure AD. Możliwe również, czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym. Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym uzyskiwanie tokenu.
     
-    - Twoja organizacja korzysta z usługi Azure AD bezproblemowe logowanie jednokrotne, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są spełnione przez urządzenia IE ustawienia sieci intranet, a **Zezwalaj na pasku stanu za pomocą skryptu aktualizacji** nie jest włączone dla strefy intranetowej.
+    - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
 
 - Osiągnięto limit przydziału
 
-    ![Dołącz do miejsca pracy dla systemu Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
+    ![Przyłączanie do obszaru roboczego dla Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
 
 - Usługa nie odpowiada. 
 
-    ![Dołącz do miejsca pracy dla systemu Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
+    ![Przyłączanie do obszaru roboczego dla Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
 
-Można również znaleźć informacje o stanie w dzienniku zdarzeń: **aplikacji i usług Log\Microsoft-dołączanie do miejsca pracy**
+Możesz również znaleźć informacje o stanie w dzienniku zdarzeń w obszarze: **aplikacji i usług Log\Microsoft — dołączanie**
   
 **Najczęstszymi przyczynami sprzężenia nie powiodło się hybrydowej usługi Azure AD są:** 
 
-- Komputer nie jest podłączony do sieci wewnętrznej organizacji lub sieci VPN z połączeniem z lokalnymi kontroler domeny usługi AD.
+- Komputer nie jest podłączony do sieci wewnętrznej organizacji lub sieci VPN z połączeniem z usługą lokalną kontrolerem domeny usługi AD.
 
-- Użytkownik jest zalogowany na komputerze przy użyciu konta komputera lokalnego. 
+- Użytkownik jest zalogowany do komputera przy użyciu konta komputera lokalnego. 
 
 - Problemy z konfiguracją usługi: 
 
   - Serwer federacyjny został skonfigurowany do obsługi **WIAORMULTIAUTHN**. 
 
-  - Las komputera ma ma obiektu punktu połączenia usługi, który wskazuje nazwę domeny zweryfikowane w usłudze Azure AD 
+  - Las komputera nie ma żadnych obiektu punktu połączenia usługi, który wskazuje nazwę zweryfikowanej domeny w usłudze Azure AD 
 
   - Użytkownik osiągnął limit urządzeń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odpowiedzi na pytania, zobacz [zarządzanie urządzeniami — często zadawane pytania](device-management-faq.md)  
+Masz pytania, zobacz [zarządzanie urządzeniami — często zadawane pytania](device-management-faq.md)  

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 44485d04dad3ff9dfc6067a3737989c5d273541f
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116184"
+ms.locfileid: "39126218"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -121,7 +121,7 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
 
 ## <a name="create-a-local-functions-project"></a>Tworzenie projektu funkcji lokalnej
 
-Katalog projektu funkcji zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wzdłuż podfoldery, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat funkcji strukturę folderów, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
+Katalog projektu funkcji zawiera pliki [host.json](functions-host-json.md) i [local.settings.json](#local-settings-file), wraz z podfolderów, które zawierają kod dla poszczególnych funkcji. Ten katalog jest odpowiednikiem aplikacji funkcji na platformie Azure. Aby dowiedzieć się więcej na temat funkcji strukturę folderów, zobacz [przewodnik dla deweloperów usługi Azure Functions](functions-reference.md#folder-structure).
 
 W wersji 2.x, musisz wybrać język domyślny dla projektu, gdy zostanie zainicjowany, a wszystkie funkcje dodane Użyj domyślnego języka szablonów. W wersji 1.x, należy także określić język, w przypadku tworzenia funkcji.
 
@@ -137,6 +137,7 @@ W wersji 2.x, po uruchomieniu polecenia musisz wybrać środowisko uruchomieniow
 Select a worker runtime:
 dotnet
 node
+java
 ```
 
 Górę/dół klawiszy strzałek, aby wybrać język, naciśnij klawisz Enter. Dane wyjściowe wyglądają jak w poniższym przykładzie dla projektu w języku JavaScript:
@@ -151,6 +152,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 Aby utworzyć projekt bez lokalnego repozytorium Git, użyj `--no-source-control [-n]` opcji.
+
+> [!IMPORTANT]
+> Domyślnie w wersji 2.x podstawowe narzędzia tworzy funkcję projektów aplikacji dla środowiska uruchomieniowego .NET jako [klasy projektów języka C#](functions-dotnet-class-library.md) (.csproj). Te projekty C#, które mogą być używane z programu Visual Studio 2017 lub Visual Studio Code, są kompilowane podczas testowania i publikowania na platformie Azure. Jeśli chcesz zamiast tego do tworzenia i pracy z tym samym skrypt języka C# (csx) pliki utworzone w wersji 1.x i w portalu może zawierać `--csx` parametru podczas tworzenia i wdrażania funkcji.
 
 ## <a name="register-extensions"></a>Rejestrowanie rozszerzeń
 
@@ -177,7 +181,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
     "CORS": "*"
   },
   "ConnectionStrings": {
-    "SQLConnectionString": "Value"
+    "SQLConnectionString": "<sqlclient-connection-string>"
   }
 }
 ```
@@ -189,7 +193,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 | **Host** | Ustawienia w tej sekcji dostosować proces hosta funkcji podczas uruchamiania lokalnego. |
 | **LocalHttpPort** | Ustawia domyślny port używany podczas uruchamiania lokalnego hosta funkcji (`func host start` i `func run`). `--port` Opcji wiersza polecenia mają pierwszeństwo przed tę wartość. |
 | **CORS** | Określa pochodzenia, które mogą uzyskać [współużytkowanie zasobów między źródłami (cors)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Źródła są dostarczane jako listę rozdzielaną przecinkami, bez spacji. Wartość symbolu wieloznacznego (\*) jest obsługiwany, co pozwala żądań z dowolnego źródła. |
-| **ConnectionStrings** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które należy uzyskać parametry połączenia z **ConnectionStrings** pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby **parametry połączenia** części **ustawienia aplikacji** dla aplikacji funkcji. |
+| **ConnectionStrings** | Nie używaj tej kolekcji parametry połączenia używane przez usługi powiązania funkcji. Ta kolekcja jest używana tylko przez struktur, które zazwyczaj pobierają parametry połączenia z **ConnectionStrings** pliku sekcji konfiguracji, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Parametry połączenia, w tym obiekcie są dodawane do środowiska z typem dostawcy [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Elementy w tej kolekcji nie są publikowane na platformie Azure z innymi ustawieniami aplikacji. Należy jawnie dodać tych wartości, aby **parametry połączenia** zbiór ustawień aplikacji funkcji. Jeśli tworzysz [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** przy użyciu innych połączeń. |
 
 Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
@@ -271,8 +275,9 @@ Te opcje można również określić w poleceniu za pomocą następujących argu
 | Argument     | Opis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--language -l`**| Szablon, język programowania, takich jak C#, F # lub JavaScript. Ta opcja jest wymagana w wersji 1.x. W wersji 2.x, użyj tej opcji, lub nie wybierz domyślny język projektu. |
-| **`--template -t`** | Nazwa szablonu może być jedna z wartości:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--template -t`** | Użyj `func templates list` polecenie, aby wyświetlić pełną listę dostępnych szablonów dla każdego z obsługiwanych języków.   |
 | **`--name -n`** | Nazwa funkcji. |
+| **`--csx`** | (Wersja 2.x) Generuje tego samego języka C# (csx) Szablony skryptów używane w wersji 1.x i w portalu. |
 
 Na przykład aby utworzyć wyzwalacz JavaScript HTTP za pomocą jednego polecenia, uruchom polecenie:
 

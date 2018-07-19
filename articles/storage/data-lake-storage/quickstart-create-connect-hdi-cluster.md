@@ -2,24 +2,24 @@
 title: Klastrze konfiguracji w usłudze Hadoop, Spark, Kafka, HBase i R Server — HDInsight platformy Azure
 description: Konfigurowanie usługi Hadoop, platformy Kafka, Spark, HBase, R Server lub klastry Storm dla HDInsight z przeglądarki, wiersza polecenia platformy Azure, programu Azure PowerShell, REST lub zestawu SDK.
 keywords: Konfiguracja klastra usługi hadoop, klastra kafka instalacji, konfiguracji klastrów platformy spark, co to jest klaster na platformie hadoop
-services: hdinsight
+services: storage
 documentationcenter: ''
 author: jamesbak
 manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
-ms.service: hdinsight
+ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9c037b35af19b94b6655cf7d1d45ba6b6182879c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 725e79596a919cba4214dba8b3cc86e9bb48cc79
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346590"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136642"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki Start: Konfigurowanie klastrów w HDInsight
 
@@ -258,7 +258,7 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Sterownik systemu plików Hadoop ABFS dla usługi Azure Data Lake Storage Gen2](abfs-driver.md)
-- [Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu technologii Hive w usłudze Azure HDInsight](tutorial-extract-transform-load-hive.md)
+- [Samouczek: wyodrębnianie, przekształcanie i ładowanie danych przy użyciu oprogramowania Apache Hive w usłudze Azure HDInsight](tutorial-extract-transform-load-hive.md)
 - [Co to są HDInsight i ekosystemu platformy Hadoop oraz klastrów Hadoop?](../../hdinsight/hadoop/apache-hadoop-introduction.md)
 - [Rozpoczęcie korzystania z usługi Hadoop w usłudze HDInsight](../../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Pracowanie z platformą Hadoop w HDInsight z Windows PC](../../hdinsight/hdinsight-hadoop-windows-tools.md)
