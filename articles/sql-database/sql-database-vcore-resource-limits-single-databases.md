@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: df7633028b9bafee8f9938432c86c7d7a24e2699
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ac9070e328ef867a0b0e8d7d81f5147a50357928
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092634"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126412"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -40,7 +40,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|3072|4096|4096|
 |Maksymalny rozmiar dziennika|307|307|461|922|1229|1229|
-|Size(DB) bazy danych TempDB|32|64|128|256|384|384|
+|Bazy danych TempDB (GB)|32|64|128|256|384|384|
 |Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|7000|7000|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -62,7 +62,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
 |Maksymalny rozmiar dziennika|307|307|461|614|1229|1229|1229|1229|
-|Size(DB) bazy danych TempDB|64|128|256|384|384|384|384|384|
+|Bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
 |Docelowy operacji We/Wy (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -85,8 +85,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
 |Maksymalny rozmiar dziennika|307|307|307|307|307|307|
-|Size(DB) bazy danych TempDB|32|64|128|256|384|384|
-|Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|80000|120000|
+|Bazy danych TempDB (GB)|32|64|128|256|384|384|
+|Docelowy operacji We/Wy (64 KB)|5000|10000|20000|40000|80000|120000|
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|3200|4800|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
@@ -108,8 +108,8 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maksymalny rozmiar dziennika|307|307|307|307|614|1229|1229|1229|
-|Size(DB) bazy danych TempDB|64|128|256|384|384|384|384|384|
-|Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
+|Bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
+|Docelowy operacji We/Wy (64 KB)|5000|10000|20000|40000|60000|80000|100000|200000
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
 |Liczba replik|3|3|3|3|3|3|3|3|

@@ -1,54 +1,59 @@
 ---
-title: Zrozumienie metod bezpośredniego Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — użyj bezpośredniego metody do wywołania kodu na urządzeniach z usługi aplikacji.
+title: Omówienie usługi Azure IoT Hub metod bezpośrednich | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — Użyj metod bezpośrednich do wywołania kodu na urządzeniach z usługi app Service.
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 881262816fc8bd634b7f577fd05aa0c8c062e4ca
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736681"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126528"
 ---
-# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Informacje o funkcji i wywołanie metody bezpośrednio z Centrum IoT
-Centrum IoT daje możliwość wywołania metod bezpośrednio na urządzeniach z chmury. Bezpośrednie metody reprezentują żądanie odpowiedź interakcji z urządzeniem podobna do wywołania HTTP w tym ich powodzenie lub niepowodzenie natychmiast (po limitu określonego przez użytkownika). Ta metoda jest przydatne w scenariuszach, w którym kursu natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało mogą odpowiadać.
+# <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
+Usługa IoT Hub zapewnia możliwość wywoływanie metod bezpośrednich na urządzeniach z chmury. Metody bezpośrednie reprezentują interakcji "żądanie-odpowiedź", za pomocą urządzenia, które są podobne do wywołania HTTP, w tym ich powodzenie lub niepowodzenie natychmiast (po określonej przez użytkownika limit czasu). To podejście jest przydatne w scenariuszach, gdzie kurs natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało przygotowane.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Każda metoda urządzenia jest przeznaczony dla jednego urządzenia. [Zadania] [ lnk-devguide-jobs] umożliwiają wywołania metod bezpośrednio na wielu urządzeniach i Zaplanuj wywołania metody odłączone urządzenia.
+Każda metoda urządzenia jest przeznaczony dla jednego urządzenia. [Zadania] [ lnk-devguide-jobs] umożliwiają wywoływanie metod bezpośrednich na wielu urządzeniach i Zaplanuj wywołania metody odłączone urządzenia.
 
-Każda osoba mająca **usługa połączyć** uprawnień w Centrum IoT mogą wywołać metodę na urządzeniu.
+Każda osoba mająca **połączenie z usługą** uprawnienia w Centrum IoT Hub może wywołać metodę na urządzeniu.
 
-Bezpośrednie metody wykonaj wzorzec żądań i odpowiedzi i są przeznaczone do komunikacji, które wymagają natychmiastowego potwierdzenia ich wyników. Na przykład interakcyjne kontrolę nad urządzeniem, jak włączenie wentylatora.
+Bezpośrednie metody wzorca odpowiedź na żądanie i są przeznaczone do celów komunikacji, które wymagają natychmiastowego potwierdzenia ich wyników. Na przykład interaktywne kontroli nad urządzeniem, jak włączenie kibicem.
 
-Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] w razie wątpliwości między przy użyciu żądanej właściwości, bezpośrednie metod lub komunikaty chmury do urządzenia.
+Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] w razie wątpliwości między za pomocą odpowiednich właściwości bezpośrednie metody lub komunikatów z chmury do urządzeń.
 
 ## <a name="method-lifecycle"></a>Cykl życia — metoda
-Bezpośrednie metody są wdrożone na urządzeniu i może wymagać zero lub więcej danych wejściowych w ładunku metody, aby poprawnie utworzyć wystąpienia. Wywołaj metodę bezpośrednio za pomocą identyfikatora URI usługi połączonej (`{iot hub}/twins/{device id}/methods/`). Urządzenie odbiera metody bezpośredniego za pośrednictwem tematu MQTT specyficzne dla urządzenia (`$iothub/methods/POST/{method name}/`) lub za pośrednictwem protokołu AMQP łączy (`IoThub-methodname` i `IoThub-status` właściwości aplikacji). 
+Metody bezpośrednie są implementowane na urządzeniu i mogą wymagać zero lub więcej danych wejściowych w ładunku metody, aby prawidłowo utworzyć wystąpienie. Wywoływanie metody bezpośredniej za pomocą identyfikatora URI przeznaczonych dla usługi (`{iot hub}/twins/{device id}/methods/`). Urządzenie odbiera metod bezpośrednich za pośrednictwem tematu MQTT specyficznych dla urządzenia (`$iothub/methods/POST/{method name}/`) lub za pośrednictwem protokołu AMQP łączy (`IoThub-methodname` i `IoThub-status` właściwości aplikacji). 
 
 > [!NOTE]
-> Po wywołaniu metody bezpośrednio na urządzeniu, nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowalnych alfanumeryczne, z wyjątkiem tych z następującego zestawu: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> Po wywołaniu metody bezpośredniej o urządzeniu nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowania litery, cyfry, z wyjątkiem tych w następującym zestawie: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
 > 
 > 
 
-Bezpośrednie metody są synchroniczne i albo pomyślnie lub zakończyć się niepowodzeniem po upływie limitu czasu (domyślne: 30 sekund, można ustawić się do 3600 sekund). Bezpośrednie metody są przydatne w scenariuszach interakcyjne miejsce na urządzeniu działa tylko wtedy, gdy urządzenie jest online i odbierania poleceń. Na przykład włączenie światła przez telefon. W tych scenariuszach chcesz wyświetlić natychmiastowego powodzenie lub niepowodzenie, dlatego usługa w chmurze może działać na wynik tak szybko, jak to możliwe. Urządzenie może zwrócić niektóre treści wiadomości wyniku metody, ale nie jest wymagane dla metody to zrobić. Brak żadnej gwarancji, w kolejności lub dowolnego semantyki współbieżności na wywołania metody.
+Bezpośrednie metody są synchroniczne i albo powodzenie lub Niepowodzenie po upływie limitu czasu (domyślne: 30 sekund do ustawienia zapasowej 3600 sekund). Metody bezpośrednie są przydatne w scenariuszach interaktywne, którego urządzenia, która będzie działać tylko wtedy, gdy urządzenie jest w trybie online i odbieranie poleceń. Na przykład włączenie światła przez telefon. W tych scenariuszach chcesz zobaczyć natychmiastowego powodzenie lub niepowodzenie, więc usługę w chmurze może działać na wynik tak szybko, jak to możliwe. Urządzenie może zwrócić niektóre treści wiadomości, w wyniku metody, ale nie jest wymagana dla metody to zrobić. Brak żadnej gwarancji, w kolejności lub dowolnym semantyki współbieżności na wywołania metody.
 
-Bezpośrednie metody są HTTPS tylko po stronie chmury i MQTT lub AMQP po stronie urządzenia.
+Bezpośrednie metody to HTTPS-only z po stronie chmury i protokołu MQTT lub AMQP po stronie urządzenia.
 
-Ładunek dla metod żądań i odpowiedzi jest maksymalnie 128 KB dokument JSON.
+Ładunek metody żądania i odpowiedzi jest maksymalnie 128 KB dokument JSON.
 
-## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Wywoływanie metody bezpośrednio z aplikacji zaplecza
+## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Wywoływanie metody bezpośredniej o w aplikacji zaplecza
 ### <a name="method-invocation"></a>Wywołanie metody
-Bezpośrednie wywołania metod na urządzeniu są wywołania protokołu HTTPS, które obejmują:
+Wywołań metod bezpośrednich na urządzeniu są wywołania protokołu HTTPS, które obejmują:
 
-* *URI* specyficzne dla urządzenia (`{iot hub}/twins/{device id}/methods/`)
+* *Identyfikator URI żądania* specyficzne dla urządzenia wraz z [wersji interfejsu API](/rest/api/iothub/service/invokedevicemethod):
+
+    ```http
+    https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
+    ```
+
 * WPIS *— metoda*
-* *Nagłówki* który zawiera autoryzacji, żądań Identyfikatora, typu zawartości i kodowania zawartości
+* *Nagłówki* , zawierają autoryzację, żądania, Identyfikatora, typu zawartości i kodowania zawartości
 * Przezroczysty JSON *treści* w następującym formacie:
 
     ```json
@@ -62,13 +67,32 @@ Bezpośrednie wywołania metod na urządzeniu są wywołania protokołu HTTPS, k
     }
     ```
 
-Jest limit czasu w sekundach. Jeśli nie ustawiono limit czasu, domyślnie 30 sekund.
+Limit czasu jest w ciągu kilku sekund. Jeśli nie ustawiono limit czasu, jego wartość domyślna to 30 sekund.
+
+#### <a name="example"></a>Przykład
+
+Poniżej zamieszczono przykład barebone przy użyciu `curl`. 
+
+```bash
+curl -X POST \
+  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "methodName": "reboot",
+    "responseTimeoutInSeconds": 200,
+    "payload": {
+        "input1": "someInput",
+        "input2": "anotherInput"
+    }
+}'
+```
 
 ### <a name="response"></a>Odpowiedź
-Aplikacja zaplecza odbiera odpowiedź, która obejmuje:
+Aplikacja wewnętrzna odbiera odpowiedź, która obejmuje:
 
-* *Kod stanu HTTP*, używany dla błędów pochodzących z Centrum IoT, łącznie z błędem 404 dla urządzeń nie jest obecnie połączony
-* *Nagłówki* który zawiera element ETag, żądania Identyfikatora, typu zawartości i kodowania zawartości
+* *Kod stanu HTTP*, używany błędy pochodzące z usługi IoT Hub, w tym błąd 404 dla urządzeń nie jest obecnie połączony
+* *Nagłówki* który zawiera element ETag, żądania, Identyfikatora, typu zawartości i kodowania zawartości
 * JSON *treści* w następującym formacie:
 
     ```json
@@ -78,19 +102,19 @@ Aplikacja zaplecza odbiera odpowiedź, która obejmuje:
     }
     ```
 
-    Zarówno `status` i `body` udostępnianym przez urządzenie i używane do odpowiedzi z kodem stanu własnych urządzeń i/lub opis.
+    Zarówno `status` i `body` udostępnianym przez urządzenie oraz umożliwia odpowiedzi z kodem stanu dla urządzenia i/lub opis.
 
-### <a name="method-invocation-for-iot-edge-modules"></a>Wywołanie metody dla modułów krawędzi IoT
-Wywoływanie metody bezpośrednio za pomocą modułu identyfikator jest obsługiwany w języku C# w wersji preview SDK (dostępne [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+### <a name="method-invocation-for-iot-edge-modules"></a>Wywołania metody moduły usługi IoT Edge
+Wywoływanie metod bezpośrednich za pomocą modułu identyfikator jest obsługiwany w języku C# w wersji zapoznawczej zestawu SDK (dostępne [tutaj](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
 
-W tym celu należy użyć `ServiceClient.InvokeDeviceMethodAsync()` — metoda i przekaż `deviceId` i `moduleId` jako parametry.
+W tym celu należy użyć `ServiceClient.InvokeDeviceMethodAsync()` metody i przekaż `deviceId` i `moduleId` jako parametry.
 
-## <a name="handle-a-direct-method-on-a-device"></a>Dojście metody bezpośrednio na urządzeniu
+## <a name="handle-a-direct-method-on-a-device"></a>Dojście metody bezpośredniej o urządzeniu
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>Wywołanie metody
-Urządzenia odbierania żądań metoda bezpośrednia na temat MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`
+Urządzenia otrzymują żądań metody bezpośredniej na temat protokołu MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
-Jednostkę urządzenie otrzyma znajduje się w następującym formacie:
+Treść, która otrzymaniem przez nie znajduje się w następującym formacie:
 
 ```json
 {
@@ -104,45 +128,45 @@ Metoda żądania są QoS 0.
 #### <a name="response"></a>Odpowiedź
 Urządzenie wysyła odpowiedzi `$iothub/methods/res/{status}/?$rid={request id}`, gdzie:
 
-* `status` Właściwość jest stan wykonanie metody dostarczone przez urządzenie.
+* `status` Właściwość ma stan podczas wykonywania metody dostarczone przez urządzenie.
 * `$rid` Właściwość jest identyfikator żądania z wywołania metody odebranych z Centrum IoT.
 
-Treść jest ustawiana przez urządzenia i może być dowolnym stanie.
+Jednostka została ustawiona przez urządzenia i może być dowolny stan.
 
 ### <a name="amqp"></a>AMQP
 #### <a name="method-invocation"></a>Wywołanie metody
-Urządzenie odbiera żądania metoda bezpośrednia przez utworzenie łącza receive na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Urządzenie odbiera żądania metody bezpośredniej, tworząc link odbioru na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
-Komunikat protokołu AMQP dociera łącze receive reprezentujący żądanie metody. Ten przewodnik zawiera następujące czynności:
-* Właściwość Identyfikatora korelacji, który zawiera identyfikator żądania, które mają być przekazywane z powrotem odpowiadająca mu reakcja — metoda
-* Właściwości aplikacji o nazwie `IoThub-methodname`, który zawiera nazwę wywoływanej metody
-* Treść komunikatu protokołu AMQP zawierającego ładunek metody w formacie JSON
+Komunikat protokołu AMQP dociera przy użyciu linku receive, reprezentujący żądanie metody. Zawiera ona następujące informacje:
+* Właściwość ID korelacji, który zawiera identyfikator żądania, który powinien być przekazywany z powrotem odpowiadająca mu reakcja — metoda
+* Właściwości aplikacji o nazwie `IoThub-methodname`, który zawiera nazwę metody wywoływanej
+* Treść komunikatu protokołu AMQP, zawierający ładunku metody w formacie JSON
 
 #### <a name="response"></a>Odpowiedź
-Urządzenie tworzy łącze wysyłania zwraca odpowiedź metody na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Urządzenie tworzy łącze wysyłania do zwracania odpowiedzi metody na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
-Odpowiedź metody jest zwracana wysyłania łącze i ma następującą postać:
-* Właściwość Identyfikatora korelacji, który zawiera identyfikator żądania przekazano komunikat żądania — metoda
-* Właściwości aplikacji o nazwie `IoThub-status`, który zawiera użytkownika dostarczony stan — metoda
-* Treść komunikatu protokołu AMQP zawierająca odpowiedź metody w formacie JSON
+Odpowiedź metody jest zwracany w momencie wysyłania łącza i ma następującą postać:
+* Właściwość ID korelacji, który zawiera identyfikator żądania przekazywane w komunikacie żądania — metoda
+* Właściwości aplikacji o nazwie `IoThub-status`, która zawiera użytkownika podany stan metody
+* Odpowiedź metody jako plik JSON zawierający treść komunikatu protokołu AMQP
 
-## <a name="additional-reference-material"></a>Odwołanie dodatkowe materiały
-Inne tematy referencyjne w Podręczniku dewelopera Centrum IoT obejmują:
+## <a name="additional-reference-material"></a>Dodatkowe materiały
+Inne tematy referencyjne w przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [Punkty końcowe Centrum IoT] [ lnk-endpoints] opisano różne punkty końcowe, które udostępnia każdego centrum IoT dla operacji zarządzania i środowiska wykonawczego.
-* [Ograniczenia przepustowości i przydziały] [ lnk-quotas] opisano przydziałów, które są stosowane i ograniczania przepustowości zachowanie można oczekiwać, gdy używasz Centrum IoT.
-* [Zestawy Azure IoT urządzenia i usługi SDK] [ lnk-sdks] wymieniono języka różnych zestawów SDK, można użyć podczas opracowywania aplikacji usług i urządzeń, które współdziałają z Centrum IoT.
-* [Język zapytań Centrum IoT urządzenia twins, zadań i rozsyłania wiadomości] [ lnk-query] opisuje język zapytań Centrum IoT można pobrać z Centrum IoT informacji o twins urządzenia i zadania.
-* [Obsługa MQTT Centrum IoT] [ lnk-devguide-mqtt] zapewnia więcej informacji na temat Centrum IoT obsługi protokołu MQTT.
+* [Punkty końcowe usługi IoT Hub] [ lnk-endpoints] w tym artykule opisano różne punkty końcowe, które każde Centrum IoT hub udostępnia dla operacji zarządzania i środowiska wykonawczego.
+* [Przydziału i ograniczanie przepływności] [ lnk-quotas] opisano przydziały, które są stosowane i zachowanie ograniczania przepływności można oczekiwać, gdy używają usługi IoT Hub.
+* [Usługa Azure IoT usługi zestawy SDK urządzeń i] [ lnk-sdks] Wyświetla język różnych zestawów SDK, można użyć podczas tworzenia aplikacji usług i urządzeń, które współdziałają z usługą IoT Hub.
+* [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości] [ lnk-query] opisuje język zapytań usługi IoT Hub, można użyć, aby pobrać informacje z usługi IoT Hub o bliźniaczych reprezentacji urządzeń i zadań.
+* [Obsługa protokołu MQTT Centrum IoT] [ lnk-devguide-mqtt] zawiera więcej informacji na temat obsługi usługi IoT Hub dla protokołu MQTT.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po zapoznaniu bezpośredniego metod, mogą być zainteresowane w następującym artykule przewodnik dewelopera Centrum IoT:
+Teraz wiesz jak używanie metod bezpośrednich, mogą być zainteresowane w następującym artykule przewodnik dla deweloperów usługi IoT Hub:
 
 * [Planowanie zadań na wielu urządzeniach][lnk-devguide-jobs]
 
-Jeśli chcesz wypróbować niektóre pojęcia opisane w tym artykule, mogą być zainteresowane w następujących instrukcji Centrum IoT:
+Jeśli chcesz wypróbować niektóre pojęcia opisane w tym artykule, może być zainteresowany następującego samouczka usługi IoT Hub:
 
-* [Użyj metody bezpośredniego][lnk-methods-tutorial]
+* [Używanie metod bezpośrednich][lnk-methods-tutorial]
 
 <!-- links and images -->
 

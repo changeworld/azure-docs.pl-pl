@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 07/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8152a9934d6a280abfc75fdc74e0864053d82f45
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116082"
+ms.locfileid: "39136846"
 ---
 # <a name="built-in-roles-in-azure"></a>Wbudowane role na platformie Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -78,6 +78,8 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 | [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
 | [Współautor tożsamości zarządzanych](#managed-identity-contributor) | Tworzenie, odczytywanie, aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika |
 | [Operator tożsamości zarządzanych](#managed-identity-operator) | Odczytaj i przypisz tożsamość przypisaną przez użytkownika |
+| [Współautor grupy zarządzania](#management-group-contributor) | Rola współautora grupy zarządzania |
+| [Czytnik grupy zarządzania](#management-group-reader) | Rola czytelnika grupy zarządzania |
 | [Współautor monitorowania](#monitoring-contributor) | Może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Zobacz też [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Czytelnik monitorowania](#monitoring-reader) | Może odczytywać wszystkie dane monitorowania (metryk, dzienników itp.). Zobacz też [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Współautor sieci](#network-contributor) | Umożliwia zarządzanie sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -117,7 +119,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie wszystkim, w tym dostępem do zasobów. |
-> | **Identyfikator** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | **Id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Akcje** |  |
 > | * | Tworzenie i zarządzanie zasobami wszystkich typów |
 
@@ -126,7 +128,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
-> | **Identyfikator** | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | **Id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Akcje** |  |
 > | * | Tworzenie i zarządzanie zasobami wszystkich typów |
 > | **notActions** |  |
@@ -141,7 +143,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia wyświetlanie wszystkiego, ale nie umożliwia wprowadzania jakichkolwiek zmian. |
-> | **Identyfikator** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | **Id** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 
@@ -150,7 +152,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | osoba podpisująca obraz ACR |
-> | **Identyfikator** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
 > | Microsoft.ContainerRegistry/registries/*/write |  |
@@ -160,7 +162,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | czytnik danych kwarantanny ACR |
-> | **Identyfikator** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
 
@@ -169,7 +171,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | moduł zapisywania danych kwarantanny ACR |
-> | **Identyfikator** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/*/write |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
@@ -179,7 +181,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie usługami API Management, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
+> | **Id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/* | Tworzenie i zarządzanie nimi usługi API Management |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
@@ -194,7 +196,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może zarządzać usługą, lecz nie interfejsami API |
-> | **Identyfikator** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
+> | **Id** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/*/read | Wystąpienia usługi odczytu API Management |
 > | Microsoft.ApiManagement/service/backup/action | Kopii zapasowych usługi API Management do określonego kontenera w użytkownika podane konto magazynu |
@@ -219,7 +221,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Dostęp tylko do odczytu do usługi i interfejsów API |
-> | **Identyfikator** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | **Id** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | **Akcje** |  |
 > | Microsoft.ApiManagement/service/*/read | Wystąpienia usługi odczytu API Management |
 > | Microsoft.ApiManagement/service/read | Odczytywanie metadanych dla wystąpienia usługi API Management |
@@ -237,7 +239,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie składnikami usługi Application Insights |
-> | **Identyfikator** | ae349356-3a1b-4a5e-921d-050484c6347e |
+> | **Id** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -253,7 +255,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Nadaje użytkownikowi uprawnienie do korzystania z rozszerzenia Snapshot Debugger usługi Application Insights |
-> | **Identyfikator** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | **Id** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -267,7 +269,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Twórz zadania i zarządzaj nimi za pomocą elementów runbook usługi Automation. |
-> | **Identyfikator** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
+> | **Id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Automation/automationAccounts/jobs/read | Pobiera zadanie usługi Azure Automation |
@@ -287,7 +289,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Operatorzy automatyzacji mogą uruchamiać, zatrzymywać, wstrzymywać i wznawiać zadania |
-> | **Identyfikator** | d3881f73-407a-4167-8283-e981cbba0404 |
+> | **Id** | d3881f73-407a-4167-8283-e981cbba0404 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Odczytuje zasoby hybrydowego procesu roboczego elementu Runbook |
@@ -316,7 +318,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Odczytuj właściwości elementu runbook, aby móc tworzyć zadania tego elementu. |
-> | **Identyfikator** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
+> | **Id** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Automation/automationAccounts/runbooks/read | Pobiera element runbook usługi Automation |
@@ -330,7 +332,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie rejestracjami w usłudze Azure Stack. |
-> | **Identyfikator** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **Akcje** |  |
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Pobiera rozszerzone szczegóły produktu usługi Azure Stack w portalu Marketplace |
 > | Microsoft.AzureStack/registrations/products/read | Pobiera właściwości produktu usługi Azure Stack w portalu Marketplace |
@@ -341,7 +343,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem tworzenia magazynów i przyznawania dostępu innym osobom |
-> | **Identyfikator** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
+> | **Id** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
@@ -379,7 +381,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowych, tworzenia magazynów i przyznawania dostępu innym osobom |
-> | **Identyfikator** | 00c29273-979b-4161-815c-10b084fb9324 |
+> | **Id** | 00c29273-979b-4161-815c-10b084fb9324 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
@@ -435,7 +437,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
-> | **Identyfikator** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
+> | **Id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Zwraca stan operacji |
@@ -473,7 +475,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia odczytywanie danych dotyczących rozliczeń |
-> | **Identyfikator** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | **Id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Billing/*/read | Przeczytaj informacja o rozliczeniach |
@@ -487,7 +489,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | **Id** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.BizTalkServices/BizTalk/* | Tworzenie i zarządzanie usługą BizTalk services |
@@ -502,7 +504,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
-> | **Identyfikator** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
+> | **Id** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -518,7 +520,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
-> | **Identyfikator** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
+> | **Id** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -534,7 +536,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może zarządzać profilami usługi CDN i ich punktami końcowymi, ale nie może przyznawać dostępu innym użytkownikom. |
-> | **Identyfikator** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
+> | **Id** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -550,7 +552,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może wyświetlać profile usługi CDN i ich punkty końcowe, ale nie może wprowadzać zmian. |
-> | **Identyfikator** | 8f96442b-4075-438f-813d-ad51ab4019af |
+> | **Id** | 8f96442b-4075-438f-813d-ad51ab4019af |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -566,7 +568,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie klasycznymi sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+> | **Id** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.ClassicNetwork/* | Tworzenie i zarządzanie nimi w klasycznych sieciach |
@@ -581,7 +583,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie kontami klasycznego magazynu, ale nie dostęp do nich. |
-> | **Identyfikator** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
+> | **Id** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.ClassicStorage/storageAccounts/* | Tworzenie i zarządzanie kontami magazynu |
@@ -596,7 +598,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Operatorzy kluczy klasycznych kont magazynu mogą wyświetlać listę kluczy dla klasycznych kont magazynu i ponownie je generować |
-> | **Identyfikator** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
+> | **Id** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
 > | **Akcje** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Wyświetla klucze dostępu dla kont magazynu. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Generuje ponownie istniejące klucze dostępu dla konta magazynu. |
@@ -606,7 +608,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
-> | **Identyfikator** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | **Id** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.ClassicCompute/domainNames/* | Tworzenie i zarządzanie nazwami domen classic compute |
@@ -617,7 +619,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.ClassicNetwork/virtualNetworks/join/action | Umożliwia dołączenie do sieci wirtualnej. |
 > | Microsoft.ClassicNetwork/virtualNetworks/read | Pobiera sieć wirtualną. |
 > | Microsoft.ClassicStorage/storageAccounts/disks/read | Zwraca dysk konta magazynu. |
-> | Microsoft.ClassicStorage/storageAccounts/images/read | Zwraca obraz konta magazynu. |
+> | Microsoft.ClassicStorage/storageAccounts/images/read | Zwraca obraz konta magazynu. (Przestarzałe. Użyj "Microsoft.ClassicStorage/storageAccounts/vmImages") |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Wyświetla klucze dostępu dla kont magazynu. |
 > | Microsoft.ClassicStorage/storageAccounts/read | Zwraca konto magazynu z podanym kontem. |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -631,7 +633,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie bazami danych ClearDB MySQL, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 9106cda0-8a86-4E81-b686-29a22c54effe |
+> | **Id** | 9106cda0-8a86-4E81-b686-29a22c54effe |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -646,7 +648,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może odczytywać dane z konta usługi Azure Cosmos DB. Zobacz [Współautor konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami usługi Azure Cosmos DB. |
-> | **Identyfikator** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
+> | **Id** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról przeczytasz uprawnienia udzielone do poszczególnych użytkowników |
 > | Microsoft.DocumentDB/*/read | Przeczytaj dowolnej kolekcji |
@@ -661,7 +663,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie fabrykami danych, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
+> | **Id** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.DataFactory/dataFactories/* | Tworzenie i zarządzanie fabryki danych i zasobów podrzędnych w nich. |
@@ -677,7 +679,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
-> | **Identyfikator** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
+> | **Id** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.BigAnalytics/accounts/* |  |
@@ -708,7 +710,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Może czyścić dane analizy |
-> | **Identyfikator** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | **Id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Akcje** |  |
 > | Microsoft.Insights/components/*/read |  |
 > | Microsoft.Insights/components/purge/action | Czyszczenie danych z usługi Application Insights |
@@ -720,7 +722,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
-> | **Identyfikator** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
+> | **Id** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Compute/availabilitySets/read | Pobierz właściwości zestawu dostępności |
@@ -759,7 +761,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
-> | **Identyfikator** | befefa01-2a29-4197-83a8-272ff33ce314 |
+> | **Id** | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -774,7 +776,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
-> | **Identyfikator** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
+> | **Id** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.DocumentDb/databaseAccounts/* | Tworzenie i zarządzanie kontami usługi Azure Cosmos DB |
@@ -789,7 +791,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | **Id** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -804,7 +806,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | **Id** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -821,11 +823,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Służy do tworzenia i usuwania zarządzanych laboratoriów oraz zarządzania nimi w ramach konta usługi Azure Lab. |
-> | **Identyfikator** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | **Id** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Tworzenie laboratorium na koncie laboratorium. |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiar, w ramach konta laboratorium |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
@@ -834,7 +837,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Współautor usługi log Analytics może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia do maszyn wirtualnych; Odczytywanie kluczy kont magazynu, aby można było skonfigurować zbieranie dzienników z usługi Azure Storage; Tworzenie i konfigurowanie kont usługi Automation; Dodawanie rozwiązań. i konfigurowanie diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
-> | **Identyfikator** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
+> | **Id** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Automation/automationAccounts/* |  |
@@ -855,7 +858,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
-> | **Identyfikator** | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | **Id** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Wyszukaj przy użyciu nowego aparatu. |
@@ -869,7 +872,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie aplikacjami logiki, lecz nie dostęp do nich. |
-> | **Identyfikator** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
+> | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Wyświetla klucze dostępu dla kont magazynu. |
@@ -897,7 +900,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
-> | **Identyfikator** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | **Id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/*/read | Przeczytaj szczegółowe informacje, reguły alertów |
@@ -921,7 +924,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Tworzenie, odczytywanie, aktualizowanie i usuwanie tożsamości przypisanych przez użytkownika |
-> | **Identyfikator** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
+> | **Id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Akcje** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
@@ -937,7 +940,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Odczytaj i przypisz tożsamość przypisaną przez użytkownika |
-> | **Identyfikator** | f1a07417-d97a-45cb-824c-7a7467783830 |
+> | **Id** | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Akcje** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action |  |
@@ -947,28 +950,50 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 
+## <a name="management-group-contributor"></a>Współautor grupy zarządzania
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Rola współautora grupy zarządzania |
+> | **Id** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **Akcje** |  |
+> | Microsoft.Management/managementGroups/delete | Usuwanie grupy zarządzania. |
+> | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
+> | Microsoft.Management/managementGroups/subscriptions/delete | Kojarzy anulować subskrypcję z grupy zarządzania. |
+> | Microsoft.Management/managementGroups/subscriptions/write | Kojarzy istniejącej subskrypcji z grupą zarządzania. |
+> | Microsoft.Management/managementGroups/write | Utwórz lub zaktualizuj grupę zarządzania. |
+
+## <a name="management-group-reader"></a>Czytelnik grupy zarządzania
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Rola czytelnika grupy zarządzania |
+> | **Id** | ac63b705-f282-497d-ac71-919bf39d939d |
+> | **Akcje** |  |
+> | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
+
 ## <a name="monitoring-contributor"></a>Współautor monitorowania
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Opis** | Może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Zobacz też [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Identyfikator** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | **Id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
+> | Microsoft.Insights/actiongroups/* |  |
 > | Microsoft.Insights/AlertRules/* | Odczyt/zapis/usuwanie reguły alertu. |
 > | Microsoft.Insights/components/* | Odczyt/zapis/usuwanie składników usługi Application Insights. |
 > | Microsoft.Insights/DiagnosticSettings/* | Odczyt/zapis/usuwanie ustawień diagnostycznych. |
 > | Microsoft.Insights/eventtypes/* | Wyświetl listę zdarzeń dziennika aktywności (zdarzenia zarządzania) w ramach subskrypcji. To uprawnienie ma zastosowanie do portalu i programowy dostęp do dziennika aktywności. |
 > | Microsoft.Insights/LogDefinitions/* | To uprawnienie jest wymagane dla użytkowników, którzy potrzebują dostępu do dzienników aktywności w portalu. Lista kategorii dziennika w dzienniku aktywności. |
+> | Microsoft.Insights/metricalerts/* |  |
 > | Microsoft.Insights/MetricDefinitions/* | Przeczytaj definicje metryk (lista dostępnych typów metryki dla zasobu). |
 > | Microsoft.Insights/Metrics/* | Odczytać metryki dla zasobu. |
-> | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
-> | Microsoft.Insights/webtests/* | Testy sieci web usługi Application Insights odczytu/zapisu/usuwania. |
-> | Microsoft.Insights/actiongroups/* |  |
-> | Microsoft.Insights/metricalerts/* |  |
+> | Microsoft.Insights/Register/Action | Zarejestruj dostawcę Microsoft Insights |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
+> | Microsoft.Insights/webtests/* | Testy sieci web usługi Application Insights odczytu/zapisu/usuwania. |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Odczyt/zapis/usuwanie pakietów rozwiązań usługi Log Analytics. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Odczyt/zapis/usuwanie Log Analytics zapisane wyszukiwania. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
@@ -976,13 +1001,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfiguracje szczegółowe informacje o odczytu/zapisu/usuwanie magazynu usługi Log Analytics. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-reader"></a>Czytelnik monitorowania
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Opis** | Może odczytywać wszystkie dane monitorowania (metryk, dzienników itp.). Zobacz też [Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Identyfikator** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | **Id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
@@ -993,7 +1019,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | **Id** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1008,7 +1034,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie kontami i aplikacjami usługi New Relic Application Performance Management, ale nie umożliwia uzyskiwania dostępu do nich. |
-> | **Identyfikator** | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | **Id** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1023,7 +1049,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Pozwala przeglądać wszystko, ale nie będzie można usunąć lub utworzyć konto magazynu lub zawartego zasobu. Będzie również umożliwiać dostępu odczytu i zapisu do wszystkich danych znajdujących się na koncie magazynu za pośrednictwem dostępu do kluczy konta magazynu. |
-> | **Identyfikator** | c12c1c16-33a1-487b-954d-41c89c60f349 |
+> | **Id** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
@@ -1033,7 +1059,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie pamięciami podręcznymi Redis, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Cache/redis/* | Tworzenie i zarządzanie pamięciami podręcznymi redis Cache |
@@ -1048,7 +1074,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | (Wersja zapoznawcza) Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. |
-> | **Identyfikator** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Authorization/policyassignments/* | Tworzenie i zarządzanie nimi przypisania zasad |
@@ -1062,7 +1088,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | **Id** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1077,7 +1103,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | **Id** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1092,7 +1118,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | W usłudze Security Center tylko: można wyświetlić zasady zabezpieczeń, widoku stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlanie alertów i zaleceń, Odrzuć alerty i zalecenia |
-> | **Identyfikator** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Authorization/policyAssignments/* | Tworzenie i zarządzanie nimi przypisania zasad |
@@ -1116,7 +1142,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie składnikami zabezpieczeń, zasadami zabezpieczeń i maszynami wirtualnymi |
-> | **Identyfikator** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.ClassicCompute/*/read | Przeczytaj informacje o konfiguracji klasycznych maszyn wirtualnych |
@@ -1134,7 +1160,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | W usłudze Security Center tylko: mogą wyświetlać, zaleceń i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie może wprowadzać zmian |
-> | **Identyfikator** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1150,7 +1176,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
-> | **Identyfikator** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
+> | **Id** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1185,7 +1211,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
-> | **Identyfikator** | 494ae006-db33-4328-bf46-533a6560a3ca |
+> | **Id** | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1250,7 +1276,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
-> | **Identyfikator** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
+> | **Id** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | Operacja GetAllocatedStamp to operacja wewnętrzna używana przez usługę |
@@ -1289,7 +1315,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich. Ponadto nie można zarządzać ich zasad związanych z bezpieczeństwem ani nadrzędnymi serwerami SQL. |
-> | **Identyfikator** | 9b7fa17d-e63e-47B0-bb0a-15c516ac86ec |
+> | **Id** | 9b7fa17d-e63e-47B0-bb0a-15c516ac86ec |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
@@ -1320,7 +1346,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | **Id** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Autoryzacja Microsoft odczytu |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1356,7 +1382,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
-> | **Identyfikator** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+> | **Id** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1390,7 +1416,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
-> | **Identyfikator** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczyt wszystkich autoryzacji |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1407,7 +1433,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
-> | **Identyfikator** | 81a9662b-bebf-436f-a333-f67b29880f12 |
+> | **Id** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Generuje ponownie klucze dostępu dla podanego konta magazynu. |
@@ -1417,7 +1443,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kontenerów obiektów blob i danych usługi Azure Storage |
-> | **Identyfikator** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
@@ -1432,7 +1458,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
-> | **Identyfikator** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
 > | **Elementy DataActions** |  |
@@ -1443,7 +1469,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
-> | **Identyfikator** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Zwraca wynik usunięcia kolejki |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
@@ -1458,7 +1484,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
-> | **Identyfikator** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
 > | **Elementy DataActions** |  |
@@ -1469,7 +1495,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
-> | **Identyfikator** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
+> | **Id** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
@@ -1480,7 +1506,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
-> | **Identyfikator** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
+> | **Id** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1495,7 +1521,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie dostępem użytkowników do zasobów platformy Azure. |
-> | **Identyfikator** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | **Id** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Akcje** |  |
 > | * / Odczyt | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Authorization/* | Zarządzanie autoryzacji |
@@ -1506,7 +1532,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Wyświetl maszyny wirtualne w portalu i zaloguj się jako administrator |
-> | **Identyfikator** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
+> | **Id** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Akcje** |  |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicji adres publiczny adres ip. |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
@@ -1522,7 +1548,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
-> | **Identyfikator** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | **Id** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.Compute/availabilitySets/* | Utwórz i Zarządzaj zbiorami dostępności obliczeń |
@@ -1567,7 +1593,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Wyświetl maszyny wirtualne w portalu i zaloguj się jako zwykli użytkownicy. |
-> | **Identyfikator** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
+> | **Id** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Akcje** |  |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicji adres publiczny adres ip. |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
@@ -1582,7 +1608,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie planami sieci Web dla witryn sieci Web, ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | **Id** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
@@ -1597,7 +1623,7 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | | |
 > | --- | --- |
 > | **Opis** | Umożliwia zarządzanie witrynami sieci Web (nie planami sieci Web), ale nie umożliwia uzyskiwania do nich dostępu. |
-> | **Identyfikator** | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | **Id** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |

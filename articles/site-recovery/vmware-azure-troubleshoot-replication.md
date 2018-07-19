@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: f305f552d576f58914bc33351331f1da3c68bc23
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951652"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126021"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -74,25 +74,7 @@ Jeśli nie można się połączyć, sprawdź, czy problem dostępu z powodu zapo
 
 * **Sprawdź, czy opartego na adresach URL zapory na serwerze przetwarzania nie blokuje dostępu**: Jeśli używasz reguł zapory opartego na adresach URL na serwerze, upewnij się, następujące adresy URL są dodawane do konfiguracji zapory.
 
-  `*.accesscontrol.windows.net:` służy do kontrolowania dostępu i zarządzania tożsamościami
-
-  `*.backup.windowsazure.com:` służy do transferowania i organizowania danych replikacji
-
-  `*.blob.core.windows.net:` Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane
-
-  `*.hypervrecoverymanager.windowsazure.com:` służy do wykonywania operacji i organizowania zarządzania replikacją
-
-  `time.nist.gov` i `time.windows.com`: używany do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-
-Adresy URL **chmury platformy Azure dla instytucji rządowych**:
-
-`* .ugv.hypervrecoverymanager.windowsazure.us`
-
-`* .ugv.backup.windowsazure.us`
-
-`* .ugi.hypervrecoverymanager.windowsazure.us`
-
-`* .ugi.backup.windowsazure.us`
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 * **Sprawdź, jeśli ustawienia serwera Proxy na serwerze przetwarzania nie blokują dostęp**.  Jeśli używasz serwera Proxy, upewnij się, że nazwa serwera proxy jest rozpoznawana przez serwer DNS.
 Aby sprawdzić, jakie zostały podane podczas instalacji serwera konfiguracji. Przejdź do klucza rejestru

@@ -3,7 +3,7 @@ title: Infrastruktura usługi Backup najlepsze rozwiązania dotyczące usługi A
 description: W przypadku wdrażania i zarządzania usługi Azure Stack w Twoim centrum danych, aby ułatwić uniknięcie utraty danych, w przypadku poważnej awarii, możesz wykonać zestaw najlepszych rozwiązań.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 7/18/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 06a2d4ab12d2a7e03a538a98f5232a417fb39e4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b6153a863b0637f314b4f333b255ec8d24b5b0c
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969473"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136438"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Najlepszych rozwiązań dotyczących infrastruktury usługi Backup
 
@@ -34,7 +34,7 @@ Najlepsze rozwiązania należy przejrzeć w regularnych odstępach czasu, aby zw
 
 ### <a name="deployment"></a>Wdrożenie
 
-Włącz tworzenie kopii zapasowych po wdrożeniu poszczególnych w chmurze Azure Stack. Przy użyciu narzędzia AzureStack, można zaplanować tworzenie kopii zapasowej z dowolnego klienta/serwera z dostępem do punktu końcowego interfejsu API zarządzania operator.
+Włącz tworzenie kopii zapasowych po wdrożeniu poszczególnych w chmurze Azure Stack. Za pomocą usługi Azure Stack PowerShell można zaplanować tworzenie kopii zapasowej z dowolnego klienta/serwera z dostępem do punktu końcowego interfejsu API zarządzania operator.
 
 ### <a name="networking"></a>Networking
 

@@ -1,6 +1,6 @@
 ---
 title: Za pomocą wyszukiwania w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Wyszukaj i Filtruj nieprzetworzone dane telemetryczne wysyłane przez aplikację sieci web.
+description: Wyszukiwanie i filtrowanie nieprzetworzone dane telemetryczne wysyłane przez aplikację sieci web.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,176 +11,160 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294388"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39137375"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
-Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i eksplorować dane telemetryczne poszczególnych elementów, takich jak wyświetleń strony, wyjątki lub żądania sieci web. I ślady dziennika i zdarzenia, które mają być kodowane można wyświetlić.
+Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
 
-(W przypadku bardziej złożonych kwerend za pośrednictwem danych użyj [Analytics](app-insights-analytics-tour.md).)
+(W przypadku bardziej złożone zapytania na danych, użyj [analizy](app-insights-analytics-tour.md).)
 
-## <a name="where-do-you-see-search"></a>Gdzie możesz zobaczyć wyszukiwania?
-### <a name="in-the-azure-portal"></a>W portalu Azure
-Diagnostycznych wyszukiwania można otworzyć jawnie za pomocą bloku Application Insights Omówienie aplikacji:
+## <a name="where-do-you-see-search"></a>Gdzie można zobaczyć wyszukiwania?
 
-![Otwórz wyszukiwanie diagnostycznych](./media/app-insights-diagnostic-search/01-open-Diagnostic.png)
+### <a name="in-the-azure-portal"></a>W witrynie Azure portal
 
-Otwiera również po kliknięciu przez niektóre wykresów i elementów siatki. W takim przypadku filtrów są wstępnie ustawioną skupić się od typu wybranego elementu. 
+Wyszukiwanie diagnostyczne można otworzyć jawnie z bloku Omówienie usługi Application Insights w Twojej aplikacji:
 
-Na przykład w bloku omówienie istnieje wykres słupkowy żądań sklasyfikowane przez czas odpowiedzi. Kliknij w zakresie wydajności, aby wyświetlić listę poszczególnych żądań w tym przedziale czasu odpowiedzi:
+![Otwórz wyszukiwanie diagnostyczne](./media/app-insights-diagnostic-search/001.png)
 
-![Kliknij przycisk za pomocą żądania wydajności](./media/app-insights-diagnostic-search/07-open-from-filters.png)
+![Zrzut ekranu przedstawiający wykresy wyszukiwanie diagnostyczne](./media/app-insights-diagnostic-search/002.png)
 
-Główną diagnostycznych wyszukiwania znajduje się listę elementów telemetrii - żądań serwera strony widoki, niestandardowych zdarzeń, które mają być zakodowane i tak dalej. W górnej części listy jest podsumowanie wykres przedstawiający liczby zdarzeń w czasie.
+Główną wyszukiwanie diagnostyczne jest lista elementów danych telemetrycznych — żądania serwera stronie widoków, zdarzenia niestandardowe, które zostały zakodowane i tak dalej. W górnej części listy jest podsumowanie wykres pokazujący liczbę zdarzeń, wraz z upływem czasu.
 
 Kliknij przycisk Odśwież, aby uzyskać nowe zdarzenia.
 
 ### <a name="in-visual-studio"></a>W programie Visual Studio
 
-W programie Visual Studio jest również okno wyszukiwania usługi Application Insights. Jest to najbardziej przydatne do wyświetlania danych telemetrycznych zdarzenia generowane przez debugowanej aplikacji. Ale może także wyświetlać zdarzenia zebrane z opublikowanych aplikacji w portalu Azure.
+W programie Visual Studio jest również okno wyszukiwania usługi Application Insights. Jest to najbardziej przydatne do wyświetlania danych telemetrycznych zdarzeń generowanych przez aplikację, którą debugujesz. Jednak może również pokazać zdarzenia zebrane z opublikowanych aplikacji w witrynie Azure portal.
 
 Otwórz okno wyszukiwania w programie Visual Studio:
 
-![Visual Studio Otwórz wyszukiwanie usługi Application Insights](./media/app-insights-diagnostic-search/32.png)
+![Program Visual Studio Otwórz wyszukiwania usługi Application Insights](./media/app-insights-diagnostic-search/32.png)
 
-Okno wyszukiwania zawiera funkcje podobne do portalu sieci web:
+Okno wyszukiwania oferuje funkcje podobne do portalu sieci web:
 
-![Okno wyszukiwania w usłudze Visual Studio Application Insights](./media/app-insights-diagnostic-search/34.png)
+![Okno wyszukiwania usługi Visual Studio Application Insights](./media/app-insights-diagnostic-search/34.png)
 
-Karta śledzenie operacji jest dostępna, po otwarciu żądania lub widok strony. "Operacji" jest sekwencję zdarzeń, która jest skojarzony z widoku pojedynczego żądania lub strony. Na przykład wywołania zależności, wyjątki dzienników śledzenia i niestandardowych zdarzeń może być częścią jednej operacji. Karta śledzenie operacji wyświetlane w formie graficznej czas i czas trwania tych zdarzeń w odniesieniu do widoku żądania lub strony. 
+Karta śledzenie jest dostępna, po otwarciu żądania lub wyświetlenia strony. "Operacji" to sekwencja zdarzeń, który jest skojarzony z widoku pojedynczego żądania lub strony. Na przykład wywołania zależności, wyjątki, dzienników i zdarzeń niestandardowych, może być częścią jednej operacji. Na karcie Śledzenie wyświetlane w formie graficznej czas i czas trwania tych zdarzeń w odniesieniu do żądanie lub wyświetlenie strony. 
 
-## <a name="inspect-individual-items"></a>Przejrzyj poszczególne elementy
-Wybierz dowolny element telemetrii, aby wyświetlić pola klucza i elementy powiązane. Jeśli chcesz wyświetlić pełny zestaw pól, kliknij przycisk "...". 
+## <a name="inspect-individual-items"></a>Sprawdź poszczególne elementy
 
-![Kliknij nowy element roboczy, Edytuj pola, a następnie kliknij przycisk OK.](./media/app-insights-diagnostic-search/10-detail.png)
+Wybierz dowolny element telemetrii, aby wyświetlić pola klucza i powiązanych elementów.
 
-## <a name="filter-event-types"></a>Typy zdarzeń filtru
-Otwarcie bloku filtru, a następnie wybierz typy zdarzeń, które mają być wyświetlane. (Jeśli później, chcesz przywrócić filtry, z którymi możesz otworzyć bloku, kliknij Resetuj).
+![Zrzut ekranu przedstawiający żądanie poszczególnych zależności](./media/app-insights-diagnostic-search/003.png)
+
+Spowoduje to uruchomienie widoku szczegółów transakcji end-to-end:
+
+![Zrzut ekranu przedstawiający widok szczegółów transakcji end-to-end.](./media/app-insights-diagnostic-search/004.png)
+
+## <a name="filter-event-types"></a>Filtruj typy zdarzeń
+Otwórz blok filtru, a następnie wybierz typy zdarzeń, które mają być wyświetlane. (Jeśli później chcesz przywrócić filtrów, z którymi blok otwarty, kliknij Resetuj).
 
 ![Wybierz filtr, a następnie wybierz typy telemetrii](./media/app-insights-diagnostic-search/02-filter-req.png)
 
-Typy zdarzeń, które są:
+Dostępne są następujące typy zdarzeń:
 
-* **Śledzenia** - [dzienniki diagnostyczne](app-insights-asp-net-trace-logs.md) tym TrackTrace, log4Net, NLog i System.Diagnostic.Trace wywołania.
-* **Żądanie** -żądania HTTP odebrane przez aplikacji serwera, w tym stron, skryptów, obrazów, plików w stylu i danych. Te zdarzenia są używane do tworzenia żądań i odpowiedzi wykresów omówienie.
-* **Widok strony** - [danych Telemetrycznych wysłanych przez klienta sieci web](app-insights-javascript.md), używana do tworzenia raportów widoku strony. 
-* **Zdarzenie niestandardowe** — Jeśli dodaje wywołania funkcji TrackEvent() w celu [monitorowanie użycia](app-insights-api-custom-events-metrics.md), można je znaleźć tutaj.
-* **Wyjątek** — nieprzechwyconych [wyjątki na serwerze](app-insights-asp-net-exceptions.md)oraz te, które możesz zalogować się przy użyciu funkcji TrackException().
-* **Zależności** - [wywołania z aplikacji serwera](app-insights-asp-net-dependencies.md) do innych usług, takich jak interfejsów API REST lub baz danych i AJAX wymaga od użytkownika [kodu klienta](app-insights-javascript.md).
-* **Dostępność** -wyniki [testów dostępności](app-insights-monitor-web-app-availability.md).
+* **Śledzenie** - [dzienniki diagnostyczne](app-insights-asp-net-trace-logs.md) tym TrackTrace, log4Net, NLog i System.Diagnostic.Trace wywołania.
+* **Żądanie** -żądania HTTP odebrane przez aplikacji serwera, w tym stron, skrypty, obrazy, pliki stylów i dane. Zdarzenia te są używane do tworzenia żądań i odpowiedzi, wykresy Przegląd.
+* **Widok strony** - [dane telemetryczne wysyłane przez klienta internetowego](app-insights-javascript.md), który jest używany do tworzenia raportów widoku strony. 
+* **Zdarzenie niestandardowe** — Jeśli wstawiono wywołania poleceń TrackEvent() do [monitorować użycie](app-insights-api-custom-events-metrics.md), możesz je znaleźć tutaj.
+* **Wyjątek** — nieprzechwyconych [wyjątki na serwerze](app-insights-asp-net-exceptions.md)i tych, którzy logują się przy użyciu funkcji TrackException().
+* **Zależność** - [wywołania z aplikacji serwera](app-insights-asp-net-dependencies.md) do innych usług, takich jak interfejsy API REST lub baz danych i AJAX wywołań z Twojej [kod klienta](app-insights-javascript.md).
+* **Dostępność** — wyniki [testy dostępności](app-insights-monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrowanie według wartości właściwości
-Można filtrować zdarzenia na wartościach ich właściwości. Dostępne właściwości zależą od wybranych typów zdarzeń. 
+Można filtrować zdarzenia według wartości ich właściwości. Dostępne właściwości zależą od wybranych typów zdarzeń. 
 
-Na przykład wybierz limit żądań z kodem określoną odpowiedź. 
+Na przykład wyszukać żądań z kodem określoną odpowiedź. 
 
-![Rozwiń węzeł właściwości i wybierz wartość](./media/app-insights-diagnostic-search/03-response500.png)
+![Rozwiń właściwość, a następnie wybierz wartość](./media/app-insights-diagnostic-search/03-response500.png)
 
-Wybieranie wartości właściwości określonego działa tak samo jak wszystkie wartości. Przełączenie filtrowanie dla tej właściwości jest wyłączone.
+Wybieranie żadnych wartości danej właściwości ma taki sam skutek jak wybranie wszystkich wartości. Przełącza się filtrowanie dla tej właściwości jest wyłączone.
 
 ### <a name="narrow-your-search"></a>Zawęzić kryteria wyszukiwania
-Należy zauważyć, że liczby po prawej stronie wartości filtru Pokaż liczbę wystąpień są w bieżącym zestawie filtrowane. 
+Należy zauważyć, że liczby wartości filtru po prawej stronie pokazują, jak wiele wystąpień są w bieżącym zestawie filtrowanych. 
 
-W tym przykładzie jest jasne, czy 'Rpt/pracowników' żądania wyniki w większości "500" błędów:
+W tym przykładzie to oczywiste, że "Rpt/pracowników" prosić o wyniki w większości błędów "500":
 
-![Rozwiń węzeł właściwości i wybierz wartość](./media/app-insights-diagnostic-search/04-failingReq.png)
+![Rozwiń właściwość, a następnie wybierz wartość](./media/app-insights-diagnostic-search/04-failingReq.png)
 
-
-
-
-## <a name="find-events-with-the-same-property"></a>Znajdź zdarzenia z tej samej właściwości
+## <a name="find-events-with-the-same-property"></a>Znajdź wydarzenia z tej samej właściwości
 Znajdź wszystkie elementy z taką samą wartość właściwości:
 
-![Kliknij prawym przyciskiem myszy właściwości](./media/app-insights-diagnostic-search/12-samevalue.png)
-
+![Kliknij prawym przyciskiem myszy właściwość](./media/app-insights-diagnostic-search/12-samevalue.png)
 
 ## <a name="search-the-data"></a>Wyszukiwanie danych
 
 > [!NOTE]
-> Aby zapisać bardziej złożonych zapytań, otwórz [ **Analytics** ](app-insights-analytics-tour.md) od górnej krawędzi bloku wyszukiwania.
+> Aby napisać bardziej złożone zapytania, należy otworzyć [ **Analytics** ](app-insights-analytics-tour.md) w górnej części bloku przeszukiwania.
 > 
 
-Możesz wyszukać warunków w dowolnym wartości właściwości. Jest to szczególnie przydatne, jeśli w języku [zdarzeń niestandardowych](app-insights-api-custom-events-metrics.md) z wartości właściwości. 
+Można wyszukiwać terminy w dowolnej wartości właściwości. Jest to szczególnie przydatne, jeśli napisano [zdarzenia niestandardowe](app-insights-api-custom-events-metrics.md) przy użyciu wartości właściwości. 
 
-Można ustawić czas zakresu, są szybsze jako wyszukiwania w zakresie krótszy. 
+Można ustawić czas, zakres, są szybsze jako krótszy zakres wyszukiwania. 
 
-![Otwórz wyszukiwanie diagnostycznych](./media/app-insights-diagnostic-search/appinsights-311search.png)
+![Otwórz wyszukiwanie diagnostyczne](./media/app-insights-diagnostic-search/appinsights-311search.png)
 
-Wyszukiwanie słów pełną, nie podciągów. Użyj znaków cudzysłowu, należy ująć w znaki specjalne.
+Wyszukaj kompletne wyrazy, nie podciągów. Użyj znaków cudzysłowu, należy ująć w znaki specjalne.
 
-| ciąg | jest *nie* został znaleziony przez klasę | te znaleźć |
+| ciąg | jest *nie* znalezione przez | Jednak te go znaleźć |
 | --- | --- | --- |
-| HomeController.About |strona główna<br/>Kontrolera<br/>limit | homecontroller<br/>informacje<br/>"homecontroller.about"|
-|Stany Zjednoczone|Sygnalizowanie UNI<br/>obcięta|Zjednoczone<br/>Stany<br/>Stany Zjednoczone i<br/>"Stanów Zjednoczonych"
+| HomeController.About |strona główna<br/>Kontroler<br/>limit | homecontroller<br/>informacje<br/>"homecontroller.about"|
+|Stany Zjednoczone|Sygnalizowanie UNI<br/>ted|Zjednoczone<br/>Stany<br/>Stany Zjednoczone i<br/>"united states"
 
 Poniżej przedstawiono wyrażeniach wyszukiwania, których można użyć:
 
 | Przykładowe zapytanie | Efekt |
 | --- | --- |
-| `apple` |Znajdź wszystkie zdarzenia w zakresie czasu, w których pola Dołącz słowo "apple" |
-| `apple AND banana` |Znajdź zdarzenia, które zawierają oba słowa. Użyj kapitału "i", nie "i". |
-| `apple OR banana`<br/>`apple banana` |Znajdź zdarzenia, które zawierają program Microsoft word. Użyj "Lub", nie "lub".<br/>Krótka forma. |
-| `apple NOT banana` |Znajdź zdarzenia zawierające o jedno słowo, ale nie dla drugiego. |
-
-
+| `apple` |Znajdowanie wszystkich zdarzeń w zakresie czasu, w których pola zawierają wyraz "apple" |
+| `apple AND banana` |Znajdź wydarzenia, które zawierają zarówno słów. Użyj kapitału "i" nie "i". |
+| `apple OR banana`<br/>`apple banana` |Znajdź wydarzenia, które zawierają program Microsoft word. Użyj "OR", nie "or".<br/>Krótka. |
+| `apple NOT banana` |Znajdź wydarzenia, które zawierają jeden wyraz, ale nie drugiej. |
 
 ## <a name="sampling"></a>Próbkowanie
-Jeśli aplikacja generuje wiele telemetrii (i używasz 2.0.0-beta3 wersji zestawu SDK platformy ASP.NET lub nowszym), moduł adaptacyjną próbkowania automatycznie zmniejsza woluminu, który jest wysyłane do portalu, wysyłając reprezentatywny część zdarzeń. Zdarzenia, które są związane z tym samym żądania są zaznaczone lub, zostanie usunięte zaznaczenie jako grupa, dzięki czemu można przechodzić między powiązanych zdarzeń. 
+Jeśli aplikacja generuje wiele danych telemetrycznych (i używasz zestawu SDK platformy ASP.NET wersji 2.0.0-beta3 lub nowszej), moduł próbkowania adaptacyjnego automatycznie ogranicza ilość danych wysyłanych do portalu, wysyłając tylko reprezentatywny ułamek zdarzeń. Jednak zdarzenia, które są powiązane z tym samym żądaniem wybrane lub pominięte jako grupa, dzięki czemu można nawigować między powiązanymi zdarzeniami. 
 
 [Więcej informacji na temat próbkowania](app-insights-sampling.md).
 
-
-
 ## <a name="create-work-item"></a>Utwórz element roboczy
-Szczegóły z dowolnego elementu danych telemetrycznych można utworzyć usterki w witrynie GitHub lub Visual Studio Team Services. 
+Szczegółowe informacje z każdego elementu telemetrii, można utworzyć usterkę w usłudze GitHub lub Visual Studio Team Services. 
 
 ![Kliknij nowy element roboczy, Edytuj pola, a następnie kliknij przycisk OK.](./media/app-insights-diagnostic-search/42.png)
 
-Można to zrobić, po raz pierwszy, zostanie wyświetlona prośba o skonfigurować łącze do konta usługi Team Services i projektu.
+Możesz to zrobić, po raz pierwszy, zostanie wyświetlony monit skonfigurować łącze do konta usługi Team Services i projektu.
 
-![Wypełnienie adres URL serwera usługi Team Services i nazwę projektu, a następnie kliknij przycisk Autoryzuj](./media/app-insights-diagnostic-search/41.png)
+![Wprowadź adres URL serwera usługi Team Services i nazwę projektu, a następnie kliknij przycisk Autoryzuj](./media/app-insights-diagnostic-search/41.png)
 
 (Można również skonfigurować łącze w bloku elementów roboczych.)
 
-## <a name="save-your-search"></a>Zapisz wyszukiwanie
-Po ustawieniu wszystkie filtry, które mają wyszukiwania można zapisać jako ulubione. Jeśli współpracujesz konta organizacyjne, możesz wybrać, czy na udostępnianie innych członków zespołu.
+## <a name="send-more-telemetry-to-application-insights"></a>Wyślij większej ilości danych telemetrycznych do usługi Application Insights
+Oprócz poza pole dane telemetryczne wysyłane przez zestaw SDK usługi Application Insights możesz wykonywać następujące czynności:
 
-![Kliknij ulubiony, ustaw nazwę, a następnie kliknij przycisk Zapisz](./media/app-insights-diagnostic-search/08-favorite-save.png)
+* Przechwytywanie danych śledzenia dziennika z preferowanej struktury rejestrowania w [.NET](app-insights-asp-net-trace-logs.md) lub [Java](app-insights-java-trace-logs.md). Oznacza to, można przeszukiwać Twoje ślady dzienników i skoreluj je z wyświetleń stron, wyjątki i inne zdarzenia. 
+* [Pisanie kodu](app-insights-api-custom-events-metrics.md) wysyłać zdarzenia niestandardowe, wyświetleń stron i wyjątki. 
 
-Aby ponownie wyświetlić wyszukiwania **przejdź do bloku omówienie** , a następnie otwórz Ulubione:
+[Dowiedz się, jak wysyłać dzienniki i niestandardowych danych telemetrycznych do usługi Application Insights](app-insights-asp-net-trace-logs.md).
 
-![Ulubione kafelka](./media/app-insights-diagnostic-search/09-favorite-get.png)
-
-Jeśli został zapisany z zakresem względne czasu, ponownie otworzyć bloku ma najnowsze dane. Zapisanie z zakresem czasu bezwzględnego, możesz zobaczyć te same dane zawsze. (Jeśli 'Relative' nie jest dostępna, gdy chcesz zapisać element ulubiony, kliknij zakres czasu w nagłówku i ustaw zakres czasu nie niestandardowego zakresu.)
-
-## <a name="send-more-telemetry-to-application-insights"></a>Wysyłanie danych telemetrycznych więcej do usługi Application Insights
-Oprócz poza pola danych telemetrycznych wysłanych przez zestaw SDK usługi Application Insights można:
-
-* Śledzenie dziennika z Twojego struktury rejestrowania ulubionych w [.NET](app-insights-asp-net-trace-logs.md) lub [Java](app-insights-java-trace-logs.md). Oznacza to, można przeszukiwać ślady dziennika i skorelowania je z wyświetleń strony, wyjątków i inne zdarzenia. 
-* [Pisanie kodu](app-insights-api-custom-events-metrics.md) do wysyłania zdarzeń niestandardowych, wyświetleń strony i wyjątki. 
-
-[Wysyłanie dzienników oraz telemetrii niestandardowej z usługą Application Insights](app-insights-asp-net-trace-logs.md).
-
-## <a name="questions"></a>FUNKCJA PYTANIA I ODPOWIEDZI
+## <a name="questions"></a>PYTANIA I ODPOWIEDZI
 ### <a name="limits"></a>Jak dużo danych jest zachowywana?
 
-Zobacz [podsumowanie limity](app-insights-pricing.md#limits-summary).
+Zobacz [podsumowanie ograniczeń](app-insights-pricing.md#limits-summary).
 
-### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak wyświetlić dane POST w Moje żądania serwera
-Dane POST nie rejestrowane automatycznie, ale może użyć [TrackTrace lub dziennika wywołań](app-insights-asp-net-trace-logs.md). Umieszczanie danych POST w parametrze wiadomości. Nie można filtrować wiadomości w taki sam sposób, który można filtrować według właściwości, ale jest dłużej limit rozmiaru.
+### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak sprawdzić danych POST w Moje żądania serwera
+Firma Microsoft nie rejestruj danych POST automatycznie, ale można użyć [TrackTrace lub dziennik wywołań](app-insights-asp-net-trace-logs.md). Umieść dane POST w parametrze wiadomości. Nie można filtrować wiadomości w taki sam sposób, który można filtrować według właściwości, ale limit rozmiaru jest dłuższy.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Następne kroki
-* [Zapis złożonych zapytań w module analiz](app-insights-analytics-tour.md)
-* [Wysyłanie dzienników oraz telemetrii niestandardowej z usługą Application Insights](app-insights-asp-net-trace-logs.md)
-* [Konfigurowanie dostępności i testy czasu odpowiedzi](app-insights-monitor-web-app-availability.md)
+* [Zapisywanie złożonych zapytań w usłudze Analytics](app-insights-analytics-tour.md)
+* [Wyślij dzienniki i niestandardowych danych telemetrycznych do usługi Application Insights](app-insights-asp-net-trace-logs.md)
+* [Konfigurowanie dostępności i czasu odpowiedzi testów](app-insights-monitor-web-app-availability.md)
 * [Rozwiązywanie problemów](app-insights-troubleshoot-faq.md)

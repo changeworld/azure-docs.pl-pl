@@ -9,12 +9,12 @@ editor: cgronlun
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: d38148181aa18404e45f6efc029117573570e6bc
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115429"
+ms.locfileid: "39126038"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight przyłączone do domeny za pomocą usługi Azure Active Directory Domain Services
 
@@ -52,7 +52,7 @@ Następnym krokiem jest do utworzenia klastra HDInsight przy użyciu usługi Azu
 Kiedy tworzysz klaster HDInsight przyłączone do domeny, należy podać następujące parametry:
 
 - **Nazwa domeny**: nazwa domeny, która jest skojarzona z usługi Azure AD DS. Przykładem jest contoso.onmicrosoft.com.
-- **Domena nazwa użytkownika**: konto usługi w domenie zarządzanej, który został utworzony w poprzedniej sekcji. Może to być na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administratorem tego klastra HDInsight.
+- **Domena nazwa użytkownika**: konto usługi w ramach kontrolera domeny platforma Azure DODAJE zarządzane domeny, który został utworzony w poprzedniej sekcji. Może to być na przykład hdiadmin@contoso.onmicrosoft.com. Ten użytkownik domeny będzie administratorem tego klastra HDInsight.
 - **Hasło domeny**: hasło konta usługi.
 - **Jednostka organizacyjna**: nazwa wyróżniająca jednostki Organizacyjnej, która ma być używany z klastrem HDInsight. Przykładem jest OU = HDInsightOU, DC = contoso, DC = onmicrosoft, DC = com. Jeśli nie ma tej jednostki Organizacyjnej, klaster HDInsight próbuje utworzyć jednostkę Organizacyjną przy użyciu uprawnień, które ma konto usługi. Na przykład jeśli konto usługi jest w grupie Administratorzy usługi Azure AD DS, ma odpowiednie uprawnienia, aby utworzyć jednostkę Organizacyjną. W przeciwnym razie może być konieczne najpierw utworzyć jednostkę Organizacyjną i oferuje usługi konta pełną kontrolę nad tej jednostce Organizacyjnej. Aby uzyskać więcej informacji, zobacz [Utwórz jednostkę Organizacyjną w domenie zarządzanej usługi Azure AD DS](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 

@@ -1,55 +1,55 @@
 ---
-title: Zrozumienie wiadomości urządzenia do chmury Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera - sposobu korzystania z urządzenia do chmury do obsługi komunikatów z Centrum IoT. Zawiera informacje na temat wysyłania danych zarówno dane telemetryczne, jak i z systemem innym niż telemtry i przy użyciu routingu w celu dostarczania komunikatów.
+title: Omówienie obsługi komunikatów urządzenie chmura usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dla deweloperów — jak korzystać z urządzenia do chmury, obsługa komunikatów za pomocą usługi IoT Hub. Zawiera informacje na temat wysyłania danych telemetrii i innych telemtry i przy użyciu routingu w celu dostarczania komunikatów.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 6096d726d7a00a4ddf8047edeebb74ab3f151e51
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808261"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126446"
 ---
-# <a name="send-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów urządzenia do chmury do Centrum IoT
+# <a name="send-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów z urządzenia do chmury do Centrum IoT Hub
 
-Aby wysłać dane telemetryczne szeregów czasowych i alertów z urządzeń z zaplecza rozwiązania, wysyłać urządzenia do chmury z urządzenia do Centrum IoT. Omówienie opcji inne urządzenia do chmury, obsługiwanych przez Centrum IoT można znaleźć [wskazówki komunikację urządzenia do chmury][lnk-d2c-guidance].
+Wysyłać szeregów czasowych telemetrię i alerty z urządzeń w zapleczu rozwiązania, wysyłanie komunikatów z urządzenia do chmury z urządzenia do usługi IoT hub. Aby uzyskać omówienie inne opcje urządzenia do chmury, obsługiwane przez usługę IoT Hub, zobacz [wskazówki dotyczące komunikacji z urządzenia do chmury][lnk-d2c-guidance].
 
-Wysyłać urządzenia do chmury za pośrednictwem punktu końcowego uwzględniającym urządzenia (**/devices/ {deviceId} / wiadomości/zdarzenia**). Zasady routingu, a następnie kierować wiadomości do jednej połączonej usługi punkty końcowe Centrum IoT. Reguły routingu Użyj nagłówki i treści wiadomości urządzenia do chmury, aby ustalić, gdzie można je rozesłać. Domyślnie komunikaty są kierowane do wbudowanym punktem końcowym usługi połączonej (**wiadomości/zdarzenia**), która jest zgodna z [usługi Event Hubs][lnk-event-hubs]. W takim przypadku używane standardowe [integracji usługi Event Hubs i zestawy SDK] [ lnk-compatible-endpoint] do odbierania wiadomości urządzenia do chmury w Twojej zaplecza rozwiązania.
+Wysyłanie komunikatów z urządzenia do chmury za pośrednictwem punktu końcowego dostępnego z urządzenia (**/devices/ {deviceId} / komunikaty/zdarzenia**). Reguły routingu, a następnie kierować wiadomości do jednego z punktów końcowych przeznaczonych dla usługi w usłudze IoT hub. Reguły routingu Użyj nagłówki i treść komunikatów z urządzenia do chmury, aby ustalić, gdzie można je rozesłać. Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych dla usługi (**komunikaty/zdarzenia**), która jest zgodna z [usługi Event Hubs][lnk-event-hubs]. W związku z tym, można użyć standardowego [integracji usługi Event Hubs i zestawy SDK] [ lnk-compatible-endpoint] do odbierania komunikatów z urządzenia do chmury w w zapleczu rozwiązania.
 
-Centrum IoT implementuje wiadomości urządzenia do chmury przy użyciu przesyłania strumieniowego wzorzec przesyłania komunikatów. Przypominają komunikaty urządzenia do chmury Centrum IoT [usługi Event Hubs] [ lnk-event-hubs] *zdarzenia* niż [usługi Service Bus] [ lnk-servicebus] *wiadomości* w tym istnieje duża liczba zdarzeń przechodzącej przez usługę, która może zostać odczytany przez wielu czytników.
+IoT Hub zaimplementowano urządzenia do chmury komunikatów przy użyciu wzorca obsługi wiadomości przesyłanych strumieniowo. Przypominają komunikatów przesyłanych z chmury do urządzenia usługi IoT Hub [usługi Event Hubs] [ lnk-event-hubs] *zdarzenia* niż [usługi Service Bus] [ lnk-servicebus] *wiadomości* , istnieje duża liczba zdarzeń przekazywanych przez usługę, który może zostać odczytany przez czytniki wielu.
 
-Wiadomości z Centrum IoT urządzenia do chmury ma następującą charakterystykę:
+Obsługa komunikatów za pomocą usługi IoT Hub urządzenia do chmury ma następującą charakterystykę:
 
-* Urządzenia do chmury wiadomości są trwałe i zachowanych w Centrum IoT domyślne **wiadomości/zdarzenia** punktu końcowego do siedmiu dni.
-* Komunikaty urządzenia do chmury może mieć maksymalnie 256 KB i można grupować w partiach w celu zoptymalizowania wysyła. Partie może mieć maksymalnie 256 KB.
-* Zgodnie z objaśnieniem w [kontrolować dostęp do Centrum IoT] [ lnk-devguide-security] sekcji Centrum IoT umożliwia na urządzenie uwierzytelniania i kontroli dostępu.
-* Centrum IoT umożliwia tworzenie maksymalnie 10 niestandardowe punkty końcowe. Wiadomości są dostarczane do punktów końcowych oparte na trasach skonfigurowany w Centrum IoT. Aby uzyskać więcej informacji, zobacz [reguły routingu](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
-* Centrum IoT umożliwia miliony równocześnie połączonych urządzeń (zobacz [przydziały i ograniczenia przepustowości][lnk-quotas]).
-* Centrum IoT nie zezwala na dowolne partycjonowania. Urządzenia do chmury wiadomości są dzielone na podstawie ich źródłowych **deviceId**.
+* Komunikaty z urządzenia do chmury są trwałe i zachowane w domyślnej usługi IoT hub **komunikaty/zdarzenia** punktu końcowego dla maksymalnie siedem dni.
+* Komunikaty z urządzenia do chmury może być co najwyżej 256 KB i mogą być grupowane w partiach, aby zoptymalizować wysyła. Partie może mieć co najwyżej 256 KB.
+* Jak wyjaśniono w [kontrolować dostęp do usługi IoT Hub] [ lnk-devguide-security] sekcji usługi IoT Hub umożliwia na urządzenia uwierzytelniania i kontroli dostępu.
+* Usługa IoT Hub umożliwia tworzenie maksymalnie 10 niestandardowych punktów końcowych. Komunikaty są dostarczane do punktów końcowych, oparte na trasach skonfigurowane w usłudze IoT hub. Aby uzyskać więcej informacji, zobacz [reguły routingu](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+* Usługa IoT Hub udostępnia milionów równocześnie połączonych urządzeń (zobacz [przydziałów i dławienia][lnk-quotas]).
+* Usługi IoT Hub nie zezwala na dowolne partycjonowania. Komunikaty z urządzenia do chmury są podzielone na partycje oparte na ich pochodzące **deviceId**.
 
-Aby uzyskać więcej informacji na temat różnic między centrum IoT i usługi Event Hubs, zobacz [porównania Azure IoT Hub i usługi Azure Event Hubs][lnk-comparison].
+Aby uzyskać więcej informacji na temat różnic między centrum IoT Hub i Event Hubs, zobacz [porównanie usługi Azure IoT Hub i Azure Event Hubs][lnk-comparison].
 
-## <a name="send-non-telemetry-traffic"></a>Wysyłaj ruch z systemem innym niż telemetrii
+## <a name="send-non-telemetry-traffic"></a>Wysyłaj ruch nietelemetrycznych
 
-Często oprócz telemetrii, urządzenia wysyłają komunikaty i żądań, które wymagają oddzielnego wykonywania i obsługa w zaplecza rozwiązania. Na przykład alerty krytyczne musi wyzwalających określonej akcji w wewnętrznej. Można napisać [reguły routingu] [ lnk-devguide-custom] do wysyłania komunikatów tego typu punkt końcowy dedykowanego ich przetwarzanie na podstawie nagłówek wiadomości lub wartością w treści wiadomości.
+Często oprócz telemetrii, urządzenia wysyłają komunikaty i żądania, które wymagają wykonywania oddzielnych i obsługa w zapleczu rozwiązania. Na przykład alertów krytycznych, musi wyzwalać określonej akcji w zapleczu. Można napisać [reguły routingu] [ lnk-devguide-custom] do wysłania tego rodzaju wiadomości do punktu końcowego przeznaczone do przetwarzania, ich na podstawie nagłówka wiadomości lub wartością w treści komunikatu.
 
-Aby uzyskać więcej informacji na temat najlepszy sposób, aby przetworzyć tego rodzaju wiadomości, zobacz [samouczek: jak do przetwarzania komunikatów urządzenia do chmury Centrum IoT] [ lnk-d2c-tutorial] samouczka.
+Aby uzyskać więcej informacji na temat najlepszym sposobem przetwarzania tego rodzaju wiadomości zobacz [samouczek: jak przetwarzać komunikaty z urządzenia do chmury usługi IoT Hub] [ lnk-d2c-tutorial] samouczka.
 
-## <a name="route-device-to-cloud-messages"></a>Rozsyłanie wiadomości urządzenia do chmury
+## <a name="route-device-to-cloud-messages"></a>Kierowanie komunikatów z urządzenia do chmury
 
-Masz dwie opcje do rozesłania wiadomości urządzenia do chmury do zaplecza aplikacji:
+Masz dwie opcje służącą do rozesłania wiadomości z urządzenia do chmury do aplikacji zaplecza:
 
-* Użyj wbudowanej [punktu końcowego Centrum zdarzeń zgodnych] [ lnk-compatible-endpoint] umożliwiające zaplecza aplikacjom odczytywanie wiadomości urządzenia do chmury odbierane przez koncentratora. Aby zapoznać się z wbudowanym punktem końcowym zgodnego Centrum zdarzeń, zobacz [odczytywać wiadomości urządzenia do chmury z wbudowanym punktem końcowym][lnk-devguide-builtin].
-* Reguły routingu umożliwia wysyłanie komunikatów do niestandardowe punkty końcowe w Centrum IoT. Niestandardowe punkty końcowe Włącz aplikacji zaplecza do czytania wiadomości urządzenia do chmury przy użyciu usługi Event Hubs, kolejek usługi Service Bus lub tematów usługi Service Bus. Aby uzyskać informacje dotyczące routingu i niestandardowe punkty końcowe, zobacz [Użyj niestandardowe punkty końcowe i reguły routingu dla komunikatów urządzenia do chmury][lnk-devguide-custom].
+* Użyj wbudowanych [punktu końcowego zgodnego z Centrum zdarzeń] [ lnk-compatible-endpoint] aby umożliwić aplikacji zaplecza, aby odczytywać komunikaty urządzenie chmura odbierane przez Centrum. Aby dowiedzieć się więcej na temat wbudowany punkt końcowy zgodny z Centrum zdarzeń, zobacz [odczytywanie komunikatów z urządzenia do chmury z wbudowanego punktu końcowego][lnk-devguide-builtin].
+* Użyj reguł routingu do wysyłania komunikatów do niestandardowych punktów końcowych w usłudze IoT hub. Niestandardowe punkty końcowe umożliwiają aplikacji zaplecza do odczytywania komunikatów z urządzenia do chmury przy użyciu usługi Event Hubs, kolejki usługi Service Bus lub tematów usługi Service Bus. Aby dowiedzieć się więcej na temat routingu i niestandardowych punktów końcowych, zobacz [użyć niestandardowych punktów końcowych i reguł routingu dla komunikatów z urządzenia do chmury][lnk-devguide-custom].
 
 ## <a name="anti-spoofing-properties"></a>Ochrona przed fałszowaniem właściwości
 
-Aby uniknąć urządzenia fałszowania w komunikatach urządzenia do chmury, Centrum IoT sygnatury wszystkie komunikaty z następującymi właściwościami:
+Aby uniknąć urządzenia fałszowanie w komunikatów z urządzenia do chmury, usługi IoT Hub sygnatury wszystkie komunikaty z następującymi właściwościami:
 
 * **ConnectionDeviceId**
 * **ConnectionDeviceGenerationId**
@@ -57,7 +57,7 @@ Aby uniknąć urządzenia fałszowania w komunikatach urządzenia do chmury, Cen
 
 Zawiera dwa pierwsze **deviceId** i **generationId** urządzenia źródłowego zgodnie [właściwości tożsamości urządzenia][lnk-device-properties].
 
-**ConnectionAuthMethod** właściwość zawiera obiekt Zserializowany do postaci JSON, z następującymi właściwościami:
+**ConnectionAuthMethod** właściwość zawiera obiekt serializacji JSON z następującymi właściwościami:
 
 ```json
 {
@@ -69,15 +69,15 @@ Zawiera dwa pierwsze **deviceId** i **generationId** urządzenia źródłowego z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać informacje o zestawy SDK służy do wysyłania wiadomości urządzenia do chmury, zobacz [Azure IoT SDK][lnk-sdks].
+Aby uzyskać informacje dotyczące zestawów SDK, służy do wysyłania komunikatów urządzenie chmura, zobacz [Azure IoT SDKs][lnk-sdks].
 
-[Wprowadzenie] [ lnk-get-started] samouczki wyjaśniają, jak wysyłać urządzenia do chmury z zarówno symulowane, jak i fizycznych urządzeń. Aby uzyskać więcej szczegółów, zobacz [Centrum IoT procesu wiadomości urządzenia do chmury, za pomocą trasy] [ lnk-d2c-tutorial] samouczka.
+[Przewodników Szybki Start] [ lnk-get-started] dowiesz się, jak wysyłać komunikaty urządzenie chmura z symulowanych urządzeń. Aby uzyskać więcej informacji, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczka.
 
 [lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
 [lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
 [lnk-comparison]: iot-hub-compare-event-hubs.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: iot-hub-get-started.md
+[lnk-get-started]: quickstart-send-telemetry-node.md
 
 [lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/

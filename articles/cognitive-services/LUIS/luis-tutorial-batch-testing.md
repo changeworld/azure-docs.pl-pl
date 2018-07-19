@@ -8,14 +8,14 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 07/16/2018
 ms.author: v-geberr
-ms.openlocfilehash: b695783c6d68876d39482ed5abec24f45087603d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c146182c07c49cb73349df69c649601276a6e837
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054866"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126477"
 ---
 # <a name="improve-app-with-batch-test"></a>Ulepszaniu aplikacji z testem usługi batch
 
@@ -28,7 +28,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Utwórz plik wsadowy testu 
 * Uruchom test usługi batch
 * Przejrzyj wyniki testu
-* Napraw błędy do intencji
+* Usuń błędy 
 * Przetestowanie usługi batch
 
 Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
@@ -38,48 +38,25 @@ Jeśli nie masz zarządzania zasobami ludzkimi firmy [Przejrzyj wypowiedzi punkt
 
 Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
 
+Uczenie aplikacji.
+
 ## <a name="purpose-of-batch-testing"></a>Celem testowanie usługi batch
-Testowanie usługi Batch umożliwia zweryfikowanie stanu modelu przy użyciu znanego zestawu testów wypowiedzi i nazwie jednostki. W pliku wsadowym w formacie JSON Dodawanie wypowiedzi i ustawić etykiety jednostki, które należy przewidzieć wewnątrz wypowiedź. 
+Testowanie usługi Batch umożliwia zweryfikowanie aktywny, skonfigurowanych pod kątem stanu modelu przy użyciu znanego zestawu etykietami wypowiedzi i jednostek. W pliku wsadowym w formacie JSON Dodawanie wypowiedzi i ustawić etykiety jednostki, które należy przewidzieć wewnątrz wypowiedź. 
 
-Test zalecanych strategii LUIS używa trzech oddzielnych zestawów danych: przykład wypowiedzi do modelu, wypowiedzi testu usługi batch i wypowiedzi punktu końcowego. Na potrzeby tego samouczka upewnij się, że nie używasz wypowiedzi z obu wypowiedzi przykład (dodawane do intencji) lub wypowiedzi punktu końcowego. 
-
-Aby sprawdzić swoje wypowiedzi testu batch przed przykład wypowiedzi i wypowiedzi punktu końcowego [wyeksportować](luis-how-to-start-new-app.md#export-app) aplikacji i [Pobierz](luis-how-to-start-new-app.md#export-endpoint-logs) dziennik zapytań. Porównaj wypowiedź przykład aplikacji i wypowiedzi dziennika zapytań do wypowiedzi testu usługi batch. 
+<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Podczas korzystania z aplikacji innych niż ten samouczek, upewnij się, że jesteś *nie* przy użyciu wypowiedzi przykład już dodany do intencji. Aby sprawdzić swoje wypowiedzi testu partii względem wypowiedzi przykład [wyeksportować](luis-how-to-start-new-app.md#export-app) aplikacji. Porównaj aplikacji przykład wypowiedź firmy do wypowiedzi testu usługi batch. 
 
 Wymagania dotyczące testowania usługi batch:
 
-* 1000 wypowiedzi na test. 
+* Maksymalnie 1000 wypowiedzi na test. 
 * Bez duplikatów. 
-* Dozwolone typy jednostek: proste i złożone.
+* Dozwolone typy jednostek: tylko jednostki obrabiane przedstawiono proste hierarchicznych (tylko do nadrzędnego) i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
 
 ## <a name="create-a-batch-file-with-utterances"></a>Utwórz plik wsadowy z wypowiedzi
 1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). 
 
 2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. 
 
-    ```JSON
-    [
-        {
-        "text": "Are there any janitorial jobs currently open?",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "I would like a fullstack typescript programming with azure job",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "Is there a database position open in Los Colinas?",
-        "intent": "GetJobInformation",
-        "entities": []
-        },
-        {
-        "text": "Can I apply for any database jobs with this resume?",
-        "intent": "GetJobInformation",
-        "entities": []
-        }
-    ]
-    ```
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Uruchom partię
 
@@ -112,35 +89,33 @@ Wymagania dotyczące testowania usługi batch:
     [ ![Zrzut ekranu usługi LUIS aplikacji za pomocą usługi batch, wyników testów](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
 ## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
-Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera intencje i tylko prosty, hierarchicznych (tylko do nadrzędnego) i złożone jednostek. Po wybraniu sekcji wykresu lub punkt w obrębie wykresu, skojarzone utterance(s) wyświetlane pod wykresem. 
+Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Domyślnie filtr jest równa pierwszej intencji na liście. Filtr zawiera intencje i tylko prosty, hierarchicznych (tylko do nadrzędnego) i złożone jednostek. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem. 
 
 Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększyć lub zmniejszyć wyświetlane na wykresie. Jest to przydatne, gdy istnieje wiele punktów na wykresie klastrowane ściśle ze sobą. 
 
 Wykres jest w czterech quadrants firmy Gartner, przy użyciu dwóch sekcjach wyświetlane na czerwono. **Są to sekcje, aby skoncentrować się na**. 
 
-### <a name="applyforjob-test-results"></a>Wyniki testu ApplyForJob
-**ApplyForJob** wyniki testów wyświetlane w filtrze pokazują, czy 1 cztery prognozy zakończyła się pomyślnie. Wybierz nazwę **wynik fałszywie dodatni** powyżej górnej quadrant prawo wyświetlić wypowiedzi pod wykresem. 
+### <a name="getjobinformation-test-results"></a>Wyniki testu GetJobInformation
+**GetJobInformation** wyniki testów wyświetlane w filtrze pokazują, czy 2 cztery prognozy zakończyły się pomyślnie. Wybierz nazwę **wynik fałszywie dodatni** powyżej górnej quadrant prawo wyświetlić wypowiedzi pod wykresem. 
 
 ![Usługa LUIS partii testów wypowiedzi](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
 
-Trzy wypowiedzi miał najważniejsze celem **ApplyForJob**. Opcje określone w pliku wsadowym ma wynik niższy. Dlaczego to się stało? Dwie opcje są bardzo pokrewne pod względem wybranego programu word i rozmieszczenie programu word. Ponadto są prawie trzy razy więcej przykładów dla **ApplyForJob** niż **GetJobInformation**. Ta nierówności wypowiedzi przykład zadowalająco uwzględni wagi **ApplyForJob** Preferuj jego przeznaczenie. 
+Dlaczego są dwa wypowiedzi przewidzieć jako **ApplyForJob**, zamiast poprawne intencji **GetJobInformation**? Dwie opcje są bardzo pokrewne pod względem wybranego programu word i rozmieszczenie programu word. Ponadto są prawie trzy razy więcej przykładów dla **ApplyForJob** niż **GetJobInformation**. Ta nierówności wypowiedzi przykład zadowalająco uwzględni wagi **ApplyForJob** Preferuj jego przeznaczenie. 
 
-Zwróć uwagę, że zarówno intencji mają ten sam liczba błędów: 
+Należy zauważyć, że zarówno intencji mają ten sam liczbę błędów. Niepoprawne prognozowania w jednym profilu konwersji ma wpływ na inne zamiar także. Oba zawierają błędy, ponieważ wypowiedzi zostały nieprawidłowo przewidywany intencji jeden, a także niepoprawnie nie przewidywany inną intencji. 
 
 ![Błędy filtrów testu partii usługi LUIS](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
 
-Wypowiedź odpowiadającego górnego punktu w **wynik fałszywie dodatni** sekcja `Can I apply for any database jobs with this resume?`. Wyraz `resume` tylko została użyta w **ApplyForJob**. 
-
-Dwa punkty na wykresie ma znacznie niższe wyniki dla niewłaściwego przeznaczenie, co oznacza, że są one bliżej poprawne intencji. 
+Wypowiedzi odpowiadającego górnej do punktu w **wynik fałszywie dodatni** sekcji są `Can I apply for any database jobs with this resume?` i `Can I apply for any database jobs with this resume?`. Dla pierwszego wypowiedź, wyraz `resume` tylko została użyta w **ApplyForJob**. Dla drugiego wypowiedź, wyraz `apply` tylko została użyta w **ApplyForJob** intencji.
 
 ## <a name="fix-the-app-based-on-batch-results"></a>Usuń aplikację na podstawie wyników usługi batch
-Celem tej sekcji jest trzech wypowiedzi zostały nieprawidłowo przewidywany **ApplyForJob** do można poprawnie przewidzieć dla **GetJobInformation**po aplikacji zostanie usunięty. 
+Celem tej sekcji jest wszystkie wypowiedzi poprawnie przewidzieć dla **GetJobInformation** Napraw aplikację. 
 
 Pozornie szybka poprawka będzie można dodać te wypowiedzi pliku wsadowego na intencje poprawne. To nie co chcesz zrobić, mimo że. Chcesz, aby usługa LUIS można poprawnie przewidzieć te wypowiedzi bez dodawania ich przykłady. 
 
 Również być może zastanawiasz się o usuwaniu wypowiedzi z **ApplyForJob** aż ilość wypowiedź jest taka sama jak **GetJobInformation**. Który może naprawić wyniki testu, ale utrudniłoby usługi LUIS z precyzyjne Prognozowanie tym przeznaczeniem następnym razem. 
 
-Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformation**. Drugi obejście polega na zmniejszenie wagi wyraz `resume` kierunku **ApplyForJob** intencji. 
+Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformation**. Drugi poprawka jest zmniejszenie wagi wyrazy, takie jak `resume` i `apply` kierunku **ApplyForJob** intencji. 
 
 ### <a name="add-more-utterances-to-getjobinformation"></a>Dodawanie wypowiedzi więcej do **GetJobInformation**
 1. Zamknij panel testu usługi batch, wybierając **Test** w górnym menu nawigacyjnym panelu. 
@@ -151,25 +126,27 @@ Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformat
 
     [ ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem testu](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png)](./media/luis-tutorial-batch-testing/hr-select-intent-to-fix-1.png#lightbox)
 
-3. Dodawanie wypowiedzi więcej, które są zróżnicowane dla długości, wybór programu word i rozmieszczenie programu word, upewniając się objął `resume` i `c.v.`:
+3. Dodawanie wypowiedzi więcej, które są zróżnicowane dla długości, wybór programu word i rozmieszczenie programu word, upewniając się objął `resume`, `c.v.`, i `apply`:
 
-    ```JSON
-    Is there a new job in the warehouse for a stocker?
-    Where are the roofing jobs today?
-    I heard there was a medical coding job that requires a resume.
-    I would like a job helping college kids write their c.v.s. 
-    Here is my resume, looking for a new post at the community college using computers.
-    What positions are available in child and home care?
-    Is there an intern desk at the newspaper?
-    My C.v. shows I'm good at analyzing procurement, budgets, and lost money. Is there anything for this type of work?
-    Where are the earth drilling jobs right now?
-    I've worked 8 years as an EMS driver. Any new jobs?
-    New food handling jobs?
-    How many new yard work jobs are available?
-    Is there a new HR post for labor relations and negotiations?
-    I have a masters in library and archive management. Any new positions?
-    Are there any babysitting jobs for 13 year olds in the city today?
-    ```
+    |Przykład wypowiedzi dla **GetJobInformation** intencji|
+    |--|
+    |Nowe zadanie w magazynie stocker wymaga czy mogę stosować z życiorysu?|
+    |Gdzie dziś znajdują się zadania konstrukcji dachów?|
+    |Podobno, że było medycznych zadanie kodowania, które wymaga życiorysu.|
+    |Chcę otrzymywać zadania, pomagając dzieci college zapisu ich c.v.s. |
+    |Oto życiorysem szukasz nowego wpisu w policealnej na komputerach.|
+    |Pozycje, które są dostępne w opiekę podrzędnych i w domu?|
+    |W gazet jest technicznej serii?|
+    |Moje doświadczeń Pokazuje, że jestem dobrze wykonywać analizy zakupów, budżetów i utratę pieniędzy. Czy jest coś dla tego typu elementu roboczego?|
+    |Gdzie są ziemi przechodzenia do szczegółów zadań teraz?|
+    |Prócz tego pracowałam 8 lat jako sterownik pakietu EMS. Żadne nowe zadania?|
+    |Nowe zadania obsługi żywności wymaga aplikacji?|
+    |Jak wiele nowych zadań roboczych yard są dostępne?|
+    |Dla negocjacji i relacje pracy jest opublikowany nowy wpis HR?|
+    |Mam wzorców zarządzania biblioteką i archiwum. Wszelkie nowe pozycje?|
+    |Dostępne są wszystkie zadania babysitting dla 13 wieku roku w mieście już dzisiaj?|
+
+    Etykieta nie **zadania** jednostki w wypowiedzi. Ta część samouczka koncentruje się na tylko intencji prognozy.
 
 4. Uczenie aplikacji, wybierając **Train** w górnym kierunku prawego paska nawigacyjnego.
 
@@ -182,11 +159,70 @@ Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponowni
 
 3. Wybierz **wyniki**. Intencji powinien mieć zielony ikon po lewej stronie nazwy metody konwersji. 
 
-    [ ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem wyniki usługi batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png#lightbox)
+    ![Zrzut ekranu usługi LUIS z wyróżnionym przyciskiem wyniki usługi batch](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
 
+## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami 
+Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch. Używane są tylko maszyny do opanowania jednostki: prosty, hierarchiczne (tylko do nadrzędnego) i złożone jednostek. Nie należy dodawać jednostki przedstawiono maszyny, ponieważ one zawsze znajdują się za pomocą wyrażeń regularnych lub jawnego tekstu.
+
+Zmiany jednostki dla programu word całkowita ([tokenu](luis-glossary.md#token)) liczby mogą mieć wpływ na jakość prognozy. Upewnij się, że dane szkoleniowe dostarczane na intencje z etykietami wypowiedzi zawiera różne długości jednostki. 
+
+Po pierwsze pisaniu i testowaniu plików wsadowych, zaleca się rozpoczynać kilka wypowiedzi i jednostek, które znasz pracować, a także kilka namysłu może niepoprawnie przewidzieć. Ten pozwala skoncentrować się w sprawie obszarów problemów szybko. Po przetestowaniu **GetJobInformation** i **ApplyForJob** intencji przy użyciu kilku różnych zadań nazwy, które nie zostały przewidzieć, ten plik wsadowy w test został opracowany, aby sprawdzić, czy jest problem prognoz przy użyciu określonych wartości dla **zadania** jednostki. 
+
+Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jednego lub dwóch słów o kilka przykładów jest więcej słów. Jeśli _własne_ aplikacji kadrowej zwykle zawiera nazwy zadania wiele słów, z etykietą wypowiedzi przykład **zadania** jednostki w tej aplikacji nie będzie działać poprawnie.
+
+1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). Lub Pobierz [pliku](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) z repozytorium Github Samples usługi LUIS.
+
+
+2. W pliku wsadowym w formacie JSON, Dodaj tablicę obiektów, które zawierają wypowiedzi z **intencji** mają dostęp do przewidywanych w test, a także lokalizacje wszystkie jednostki w wypowiedź. Ponieważ jednostka jest oparte na tokenie, upewnij się, uruchamianie i zatrzymywanie każdej jednostki na znak. Nie rozpoczyna się lub kończy wypowiedź w miejscu. Powoduje to błąd podczas importowania pliku wsadowego.  
+
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+
+<!--TBD: when will the patterns fix be in for batch testing? -->
+## <a name="run-the-batch-with-entities"></a>Uruchom partię z jednostkami
+
+1. Wybierz **testu** w górnym pasku nawigacyjnym. 
+
+2. Wybierz **Batch testowania panelu** w panelu po prawej stronie. 
+
+3. Wybierz **Importowanie zestawu danych**.
+
+4. Wybierz lokalizację systemu plików `HumanResources-entities-batch.json` pliku.
+
+5. Nazwij zestaw danych `entities` i wybierz **gotowe**.
+
+6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
+
+    [ ![Zrzut ekranu usługi LUIS aplikacji z wyróżnioną pozycją uruchomiony](./media/luis-tutorial-batch-testing/hr-run-button.png)](./media/luis-tutorial-batch-testing/hr-run-button.png#lightbox)
+
+7. Wybierz **wyniki**.
+
+## <a name="review-entity-batch-results"></a>Przejrzyj wyniki partii jednostek
+Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć. Przewiń w dół w filtrze po prawej stronie można znaleźć erroring prognozy jednostki. 
+
+1. Wybierz **zadania** jednostki w filtrze.
+
+    ![Prognozy jednostki erroring w filtrze](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+
+    Aby wyświetlić prognozy jednostki zmiany wykresu. 
+
+2. Wybierz **fałszywie ujemny** w dolnym lewym quadrant wykresu. Następnie użyć klawiatury kombinacji control + E, aby przełączyć do widoku tokenu. 
+
+    [ ![Token widoku prognoz jednostki](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
+    
+    Przeglądanie wypowiedzi pod wykresem, co spowoduje wyświetlenie błędu spójne gdy nazwa zadania zawiera `SQL`. Przeglądanie wypowiedzi przykład i Job list frazy, SQL jest tylko użyty raz i tylko jako część nazwę zadania większych `sql/oracle database administrator`.
+
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Usuń aplikację na podstawie jednostki usługi batch wyników
+Naprawianie aplikacji wymaga usługi LUIS do poprawnie określania wariantów zadań SQL. Dostępnych jest kilka opcji tej poprawki. 
+
+* Jawnie dodać więcej wypowiedzi przykład, w których korzystanie z programu SQL i oznaczać je jako element zadania. 
+* Jawnie dodać więcej zadań SQL do listy fraz
+
+Te zadania są pozostawiane należy wykonać.
+
+Dodawanie [wzorzec](luis-concept-patterns.md) przed jednostki jest poprawnie przewidzieć, nie będzie można rozwiązać ten problem. Jest to spowodowane wzorzec nie będzie zgodne, dopóki nie zostaną wykryte wszystkich jednostek w wzorzec. 
 
 ## <a name="what-has-this-tutorial-accomplished"></a>Co to jest wykonywane w tym samouczku?
-Dokładność prognozowania tej aplikacji został zwiększony, znajdowanie błędów w partii i poprawianie modelu, dodając więcej wypowiedzi przykład poprawne intencji i szkolenia. 
+Dokładność prognozowania aplikacji został zwiększony, znajdowanie błędów w partii i poprawianie modelu. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Gdy aplikacja LUIS nie będzie już potrzebna, usuń ją. Wybierz pozycję **My apps** (Moje aplikacje) z menu w lewym górnym rogu. Wybierz przycisk wielokropka **...**  po prawej stronie nazwy aplikacji, na liście aplikacji wybierz **Usuń**. W wyskakującym oknie dialogowym **Delete app?** (Usunąć aplikację?) wybierz pozycję **OK**.

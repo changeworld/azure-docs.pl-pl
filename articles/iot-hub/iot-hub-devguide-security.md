@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 43eb988915fb917923ab968d22b9b7f0ee36c0f5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444399"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126327"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -35,7 +35,7 @@ Musi mieć odpowiednie uprawnienia dostępu do żadnego z punktów końcowych us
 
 Możesz nadawać [uprawnienia](#iot-hub-permissions) w następujący sposób:
 
-* **Centrum IoT na poziomie współużytkowane zasady dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#iot-hub-permissions). Można zdefiniować zasady w [witryny Azure portal][lnk-management-portal], lub programowo przy użyciu [dostawcy zasobów usługi IoT Hub interfejsów API REST][lnk-resource-provider-apis]. Nowo utworzone Centrum IoT ma następujące domyślne zasady:
+* **Centrum IoT na poziomie współużytkowane zasady dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#iot-hub-permissions). Można zdefiniować zasady w [witryny Azure portal][lnk-management-portal], programowo przy użyciu [interfejsów API REST usługi IoT Hub zasobów][lnk-resource-provider-apis], lub za pomocą [az iot hub zasad](https://docs.microsoft.com/cli/azure/iot/hub/policy?view=azure-cli-latest) interfejsu wiersza polecenia. Nowo utworzone Centrum IoT ma następujące domyślne zasady:
   
   | Zasady dostępu współużytkowanego | Uprawnienia |
   | -------------------- | ----------- |
@@ -91,7 +91,9 @@ Protokół HTTPS implementuje uwierzytelniania, umieszczając prawidłowy token 
 
 Nazwa użytkownika (identyfikatorze urządzenia rozróżniana jest wielkość liter): `iothubname.azure-devices.net/DeviceId`
 
-Hasło (Generowanie sygnatury dostępu Współdzielonego tokenu przy użyciu [Eksplorator urządzeń] [ lnk-device-explorer] narzędzie): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
+Hasło (można wygenerować token sygnatury dostępu Współdzielonego za pomocą [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia lub polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+
+`SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
 > [!NOTE]
 > [Azure IoT SDKs] [ lnk-sdks] automatycznie generować tokeny podczas nawiązywania połączenia z usługą. W niektórych przypadkach zestawami SDK Azure IoT nie obsługują wszystkich protokołów lub wszystkich metod uwierzytelniania.
@@ -268,7 +270,7 @@ Wynik, który przyznaje dostęp do wszystkich funkcji dla urządzenia 1, będzie
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą programu .NET [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia lub dla wielu platform, oparta na środowisku Python [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0] [ lnk-IoT-extension-CLI-2.0] narzędzie wiersza polecenia.
+> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą programu .NET [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia lub dla wielu platform, oparta na środowisku Python [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0] [ lnk-IoT-extension-CLI-2.0] narzędzie wiersza polecenia lub [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Użyj zasad dostępu współdzielonego
 
@@ -348,11 +350,13 @@ Obsługiwane certyfikaty obejmują:
 
 Urządzenie może użyć certyfikatu X.509 lub token zabezpieczający uwierzytelniania, ale nie obu.
 
-Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu urzędu certyfikacji, zobacz [pojęć związanych z certyfikatów X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md).
+Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu urzędu certyfikacji, zobacz [uwierzytelnianie urządzeń przy użyciu certyfikatu X.509 urzędu certyfikacji](iot-hub-x509ca-overview.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Zarejestruj certyfikat X.509 dla urządzenia
 
 [Usługa zestawu SDK Azure IoT dla języka C#] [ lnk-service-sdk] (wersja 1.0.8+) obsługuje rejestrowanie urządzeń, który używa certyfikatu X.509 do uwierzytelniania. Inne interfejsy API, takich jak importu/eksportu urządzeń obsługują także certyfikaty X.509.
+
+Można również użyć polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub — tożsamość urządzenia](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) konfigurowania certyfikatów X.509 dla urządzenia.
 
 ### <a name="c-support"></a>C\# pomocy technicznej
 

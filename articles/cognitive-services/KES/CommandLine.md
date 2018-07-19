@@ -1,6 +1,6 @@
 ---
-title: Interfejs wiersza polecenia usługi eksploracji wiedzy | Dokumentacja firmy Microsoft
-description: Tworzenie indeksu i gramatyki plików z danych strukturalnych za pomocą interfejsu wiersza polecenia KES, a następnie wdrożyć je jako usługi sieci web w usługach kognitywnych firmy Microsoft.
+title: Interfejs wiersza polecenia usługi Knowledge Exploration Service | Dokumentacja firmy Microsoft
+description: Tworzenie indeksu i gramatyki plików z danymi strukturalnymi przy użyciu interfejsu wiersza polecenia KES, a następnie wdrożyć je jako usługi sieci web w usługach Microsoft Cognitive Services.
 services: cognitive-services
 author: bojunehsu
 manager: stesp
@@ -9,15 +9,15 @@ ms.component: knowledge-exploration
 ms.topic: article
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: ffa42ac73b42a8271004d2d45d7a80f3307ef059
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347152"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136359"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
-Interfejs wiersza polecenia KES zapewnia możliwość tworzenia indeksu i gramatyki plików z danych strukturalnych i wdrażania ich jako usługi sieci web.  Używa ogólna składnia: `kes.exe <command> <required_args> [<optional_args>]`.  Można uruchomić `kes.exe` bez argumentów, aby wyświetlić listę poleceń, lub `kes.exe <command>` Aby wyświetlić listę argumentów, które są dostępne dla określonego polecenia.  Poniżej przedstawiono listę dostępnych poleceń:
+Interfejs wiersza polecenia KES umożliwia tworzenie indeksu i gramatyki plików z danymi strukturalnymi i wdrażanie ich jako usług sieci web.  Używa ona ogólnych składni: `kes.exe <command> <required_args> [<optional_args>]`.  Możesz uruchomić `kes.exe` bez argumentów, aby wyświetlić listę poleceń, lub `kes.exe <command>` do wyświetlania listy argumentów, które są dostępne dla określonego polecenia.  Poniżej przedstawiono listę dostępnych poleceń:
 * build_index
 * build_grammar
 * host_service
@@ -26,8 +26,10 @@ Interfejs wiersza polecenia KES zapewnia możliwość tworzenia indeksu i gramat
 * describe_grammar
 
 <a name="build_index-command"></a>
+
 ## <a name="buildindex-command"></a>build_index polecenia
-**Build_index** polecenie tworzy plik binarny indeksu z pliku definicji schematu i plik danych obiektów, które mają być indeksowane.  Wynikowy plik indeksu można obliczać wyrażeń structured query lub generowanie interpretacji języka naturalnego zapytań w połączeniu z pliku gramatyki skompilowany.
+
+**Build_index** polecenie powoduje utworzenie pliku binarnego indeksu z pliku definicji schematu i plik danych obiektów, które mają być indeksowane.  Wynikowy plik indeksu może służyć do oceny wyrażeń zapytań ze strukturą lub do generowania interpretacji zapytań w języku naturalnym w połączeniu z plikiem gramatyki skompilowany.
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
 
@@ -35,87 +37,97 @@ Interfejs wiersza polecenia KES zapewnia możliwość tworzenia indeksu i gramat
 |----------------|---------------------------|
 | `<schemaFile>` | Ścieżka schemat danych wejściowych |
 | `<dataFile>`   | Ścieżka danych wejściowych   |
-| `<indexFile>`  | Ścieżka wyjściowa indeksu |
+| `<indexFile>`  | Ścieżka indeksu danych wyjściowych |
 | `--description <description>` | Ciąg opisu |
-| `--remote <vmSize>`           | Rozmiar maszyny wirtualnej dla kompilacji zdalnej |
+| `--remote <vmSize>`           | Rozmiar maszyny Wirtualnej na potrzeby zdalnego kompilowania |
 
-Tych plików może zostać określona przez plik lokalny ścieżek lub adres URL do obiektów blob Azure.  Struktura obiektów indeksowany oraz działań, które mają być obsługiwane opisuje plik schematu (zobacz [Format schematu](SchemaFormat.md)).  Plik danych wylicza obiektów i atrybuty do indeksowania (zobacz [Format danych](DataFormat.md)).  Gdy kompilacja zakończy się pomyślnie, dane wyjściowe pliku indeksu zawiera skompresowany reprezentację danych wejściowych, który obsługuje żądanej operacji.  
+Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Plik schematu opisujący strukturę obiektów indeksowane, a także operacje są obsługiwane (zobacz [Format schematu](SchemaFormat.md)).  Plik danych wylicza obiektów i wartości atrybutów, które mają być indeksowane (zobacz [Format danych](DataFormat.md)).  Po pomyślnym zakończeniu kompilacji, plik wyjściowy Indeks zawiera reprezentację skompresowanych danych wejściowych, który obsługuje żądanej operacji.  
 
-Ciąg opisu można opcjonalnie określić, aby następnie zidentyfikować binarne indeksu przy użyciu **describe_index** polecenia.  
+Ciąg opisu można opcjonalnie określić, aby później zidentyfikować binarnego indeksu przy użyciu **describe_index** polecenia.  
 
-Domyślnie ten indeks jest oparty na komputerze lokalnym.  Poza środowiskiem platformy Azure lokalne kompilacje są ograniczone do maksymalnie 10 000 obiektów zawierających pliki danych.  Gdy zdalnego określono flagę, indeks zostanie utworzona na tymczasowo utworzony maszyny Wirtualnej platformy Azure o określonym rozmiarze.  Dzięki temu dużych indeksów wydajnie przy użyciu maszyn wirtualnych platformy Azure z większą ilością pamięci.  Aby uniknąć stronicowania, który spowalnia proces kompilacji, zaleca się przy użyciu maszyny Wirtualnej z 3 razy ilość pamięci RAM jako rozmiar pliku danych wejściowych.  Aby uzyskać listę dostępnych rozmiarów maszyny Wirtualnej, zobacz [rozmiary maszyn wirtualnych](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Domyślnie indeks jest oparty na komputerze lokalnym.  Poza środowiskiem platformy Azure lokalnych kompilacji są ograniczone do plików danych, zawierające do 10 000 obiektów.  Podczas zdalnego flaga zostanie określona, indeks przyniesie tymczasowo utworzonej maszyny wirtualnej platformy Azure o określonym rozmiarze.  Dzięki temu dużych indeksów efektywnie przy użyciu maszyn wirtualnych platformy Azure przy użyciu większej ilości pamięci.  Aby uniknąć stronicowania, który spowalnia proces kompilacji, zaleca się używania maszyny Wirtualnej z 3 razy ilość pamięci RAM jako dane wejściowe rozmiar pliku.  Aby uzyskać listę dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
-> Dla kompilacji szybsze presort obiektów w pliku danych, zmniejszając prawdopodobieństwo.
+> Aby przyspieszyć kompilowanie presort obiektów w pliku danych, zmniejszając prawdopodobieństwo.
 
 <a name="build_grammar-command"></a>
+
 ## <a name="buildgrammar-command"></a>build_grammar polecenia
-**Build_grammar** polecenie kompiluje gramatyki, określonym w kodzie XML w pliku binarnego gramatyki.  Wynikowy plik gramatyki można w połączeniu z plikiem indeksu pliku do generowania interpretacji języka naturalnego zapytań.
+
+**Build_grammar** polecenie kompiluje gramatyki, określone w pliku XML do pliku binarnego gramatyki.  Wynikowy plik gramatyki może służyć w połączeniu z plikiem indeksu do generowania interpretacji zapytań w języku naturalnym.
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
 
 | Parametr       | Opis               |
 |-----------------|---------------------------|
-| `<xmlFile>`     | Ścieżka specyfikacji gramatyki XML wejściowa |
+| `<xmlFile>`     | Ścieżka wejściowa specyfikacji gramatyki w XML |
 | `<grammarFile>` | Ścieżka gramatyki skompilowanych danych wyjściowych         |
 
-Tych plików może zostać określona przez plik lokalny ścieżek lub adres URL do obiektów blob Azure.  Specyfikacja gramatyki opisano zestaw wyrażeń języka naturalnego ważoną i ich interpretacji semantyki (zobacz [formatu gramatyki](GrammarFormat.md)).  Gdy kompilacja zakończy się pomyślnie, dane wyjściowe pliku gramatyki zawiera to binarna reprezentacja specyfikacji gramatyki, umożliwiające szybkie dekodowania.
+Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Specyfikacja gramatyki opisuje zestaw wyrażeń ważona języka naturalnego i ich interpretacji semantyczne (zobacz [Format gramatyki](GrammarFormat.md)).  Po pomyślnym zakończeniu kompilacji, plik wyjściowy gramatyki zawiera reprezentacja binarna specyfikacji gramatyki umożliwiające szybkie dekodowania.
 
 <a name="host_service-command"/>
+
 ## <a name="hostservice-command"></a>host_service polecenia
-**Host_service** polecenia znajduje się wystąpienie usługi KES na komputerze lokalnym.
+
+**Host_service** polecenie znajduje się wystąpienie usługi KES na komputerze lokalnym.
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
 
 | Parametr       | Opis                |
 |-----------------|----------------------------|
-| `<grammarFile>` | Ścieżka wejściowych gramatyka binarna         |
-| `<indexFile>`   | Ścieżka wejściowych Indeks binarny           |
+| `<grammarFile>` | Ścieżka gramatyki binarnych danych wejściowych         |
+| `<indexFile>`   | Ścieżka danych wejściowych binarnego indeksu           |
 | `--port <port>` | Numer portu lokalnego.  Domyślne: 8000 |
 
-Tych plików może zostać określona przez plik lokalny ścieżek lub adres URL do obiektów blob Azure.  Usługi sieci web będzie hostowany pod http://localhost:&lt; port&gt;/.  Zobacz [interfejsów API sieci Web](WebAPI.md) listę obsługiwanych operacji.
+Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Usługa sieci web będzie hostowany pod http://localhost:&lt; jest to port&gt;/.  Zobacz [interfejsów API sieci Web](WebAPI.md) Aby uzyskać listę obsługiwanych operacji.
 
-Poza platformy Azure środowiska, lokalnie hostowanych usług są ograniczone do indeksu plików maksymalnie 1 MB, rozmiar, 10 żądań na sekundę i 1000 całkowita liczba wywołań.  Aby wyeliminować te ograniczenia, uruchom **host_service** wewnątrz maszyny Wirtualnej platformy Azure lub wdrożyć usługi chmury Azure przy użyciu **deploy_service**.
+Spoza platformy Azure środowiska, lokalnie hostowanych usług są ograniczone do indeksowania plików w rozmiarze, 10 żądań na sekundę i 1000 łączna liczba wywołań do 1 MB.  Aby wyeliminować te ograniczenia, uruchom **host_service** wewnątrz maszyny Wirtualnej platformy Azure, lub wdrożyć na usługi platformy Azure w chmurze przy użyciu **deploy_service**.
 
 <a name="deploy_service-command"/>
+
 ## <a name="deployservice-command"></a>deploy_service polecenia
-**Deploy_service** polecenia wdraża wystąpienia usługi KES do usługi w chmurze Azure.
+
+**Deploy_service** polecenie wdraża wystąpienie usługi KES w usłudze w chmurze platformy Azure.
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
 
 | Parametr       | Opis                  |
 |-----------------|------------------------------|
-| `<grammarFile>` | Ścieżka wejściowych gramatyka binarna           |
-| `<indexFile>`   | Ścieżka wejściowych Indeks binarny             |
+| `<grammarFile>` | Ścieżka gramatyki binarnych danych wejściowych           |
+| `<indexFile>`   | Ścieżka danych wejściowych binarnego indeksu             |
 | `<serviceName>` | Nazwa docelowej usługi w chmurze |
 | `<vmSize>`      | Rozmiar maszyny Wirtualnej usługi w chmurze     |
-| `--slot <slot>` | Gniazdo usługi chmury: "tymczasowości" (ustawienie domyślne), "produkcyjnych" |
+| `--slot <slot>` | Miejsce usługi w chmurze: "staging" (wartość domyślna), "produkcyjne" |
 
-Tych plików może zostać określona przez plik lokalny ścieżek lub adres URL do obiektów blob Azure.  Nazwa usługi określa wstępnie skonfigurowane usługi w chmurze Azure (zobacz [sposobu tworzenia i wdrażania usługi w chmurze](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  Polecenie zostaną automatycznie wdrożone usługi KES usługą określonej chmury Azure przy użyciu maszyn wirtualnych o określonym rozmiarze.  Aby uniknąć stronicowania, który znacznie zmniejsza wydajność, firma Microsoft zaleca używanie maszyny Wirtualnej z 1 GB pamięci RAM niż rozmiar pliku wejściowego indeksu.  Aby uzyskać listę dostępnych rozmiarów maszyny Wirtualnej, zobacz [rozmiary dla usług w chmurze](../../../articles/cloud-services/cloud-services-sizes-specs.md).
+Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki adresu URL do obiektów blob platformy Azure.  Nazwa usługi określa, że usługa wstępnie skonfigurowanej chmury platformy Azure (zobacz [jak utworzyć i wdrożyć usługę w chmurze](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)).  Polecenie automatycznie wdroży usługi KES usługą określonej chmury platformy Azure przy użyciu maszyn wirtualnych o określonym rozmiarze.  Aby uniknąć stronicowania, co znacznie obniża wydajność, zaleca się używania maszyny Wirtualnej z 1 GB więcej pamięci RAM niż rozmiar pliku wejściowego indeksu.  Aby uzyskać listę dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary usług Cloud Services](../../../articles/cloud-services/cloud-services-sizes-specs.md).
 
-Domyślnie wdrażania usługi do środowiska pomostowego, opcjonalnie zastąpiony przez parametr miejsca.  Zobacz [interfejsów API sieci Web](WebAPI.md) listę obsługiwanych operacji.
+Domyślnie usługa jest wdrażana do środowiska pomostowego, opcjonalnie zastąpione za pomocą parametru--miejsca.  Zobacz [interfejsów API sieci Web](WebAPI.md) Aby uzyskać listę obsługiwanych operacji.
 
 <a name="describe_index-command"/>
+
 ## <a name="describeindex-command"></a>polecenie describe_index
-**Describe_index** polecenie wyświetla informacje o pliku indeksu, w tym schematu i opis.
+
+**Describe_index** polecenie wyświetla informacje o pliku indeksu, w tym schemacie i opis.
 
 `kes.exe describe_index <indexFile>`
 
 | Parametr     | Opis      |
 |---------------|------------------|
-| `<indexFile>` | Ścieżka wejściowych indeksu |
+| `<indexFile>` | Ścieżka danych wejściowych indeksu |
 
-Ten plik może zostać określony przez ścieżkę do pliku lokalnego lub ścieżkę URL do obiektów blob platformy Azure.  Ciąg opisu wyjściowego można określić za pomocą — Opis parametru **build_index** polecenia.
+Ten plik może być określone przez lokalną ścieżką pliku lub ścieżkę URL do obiektu blob platformy Azure.  Ciąg opisu danych wyjściowych można określić za pomocą parametru opis **build_index** polecenia.
 
 <a name="describe_grammar-command"/>
+
 ## <a name="describegrammar-command"></a>polecenie describe_grammar
-**Describe_grammar** pierwotnej specyfikacji gramatyki użytą do skompilowania gramatyka binarna danych wyjściowych polecenia.
+
+**Describe_grammar** polecenie zwraca pierwotną specyfikację gramatyki, używany do tworzenia binarne gramatyki.
 
 `kes.exe describe_grammar <grammarFile>`
 
 | Parametr       | Opis      |
 |-----------------|------------------|
-| `<grammarFile>` | Ścieżka wejściowych gramatyki |
+| `<grammarFile>` | Ścieżka danych wejściowych gramatyki |
 
-Ten plik może zostać określony przez ścieżkę do pliku lokalnego lub ścieżkę URL do obiektów blob platformy Azure.
+Ten plik może być określone przez lokalną ścieżką pliku lub ścieżkę URL do obiektu blob platformy Azure.
 

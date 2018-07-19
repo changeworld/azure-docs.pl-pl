@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 1ad2dc9d826ec42dfca8547a73117a6c967a8ae7
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113652"
+ms.locfileid: "39126698"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -53,34 +53,34 @@ Różnica w obsługiwanych możliwości między warstwami podstawowa i standardo
 
 | Interfejs API | Warstwa Podstawowa | Warstwa standardowa |
 | --- | ---------- | ------------- |
-| [Usuwanie urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/deletedevice) | Yes | Yes |
-| [Pobieranie urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdevice) | Yes | Yes |
+| [Usuwanie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Yes | Yes |
+| [Pobieranie urządzenia](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Yes | Yes |
 | Usuń moduł | Yes | Yes |
 | Uzyskiwanie modułu | Yes | Yes |
-| [Zebranie statystyk, rejestru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Yes | Yes |
-| [Zebranie statystyk, usługi](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Yes | Yes |
-| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Yes | Yes |
+| [Zebranie statystyk, rejestru](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Yes | Yes |
+| [Zebranie statystyk, usługi](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Yes | Yes |
+| [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Yes | Yes |
 | Umieść moduł | Yes | Yes |
-| [Zapytanie usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Yes | Yes |
+| [Zapytanie usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Yes | Yes |
 | Moduły zapytania | Yes | Yes |
-| [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Yes | Yes |
-| [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Yes | Yes |
-| [Wyślij zdarzenia urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/senddeviceevent) | Yes | Yes |
+| [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
+| [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |
+| [Wyślij zdarzenia urządzenia](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Yes | Yes |
 | Wysyłanie zdarzeń modułu | Yes | Yes |
-| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/updatefileuploadstatus) | Yes | Yes |
-| [Operacja urządzenia zbiorczego](https://docs.microsoft.com/en-us/rest/api/iot-dps/deviceenrollment/bulkoperation) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes | 
-| [Wyczyść kolejkę poleceń](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/purgecommandqueue) |   | Yes |
-| [Pobierz bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/gettwin) |   | Yes |
+| [Zaktualizuj stan przekazywania pliku](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Yes | Yes |
+| [Operacja urządzenia zbiorczego](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Tak, z wyjątkiem możliwości usługi IoT Edge | Yes | 
+| [Wyczyść kolejkę poleceń](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Yes |
+| [Pobierz bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Yes |
 | Pobierz bliźniaczej reprezentacji modułu |   | Yes |
-| [Wywoływanie metody urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/invokedevicemethod) |   | Yes |
-| [Zaktualizować bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/updatetwin) |   | Yes | 
+| [Wywoływanie metody urządzenia](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Yes |
+| [Zaktualizować bliźniaczej reprezentacji urządzenia](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Yes | 
 | Aktualizacji bliźniaczej reprezentacji modułu |   | Yes | 
-| [Porzuć powiadomień urządzenie powiązane](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/abandondeviceboundnotification) |   | Yes |
-| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/completedeviceboundnotification) |   | Yes |
-| [Anulowanie zadania](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/canceljob) |   | Yes |
-| [Tworzenie zadania](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/createjob) |   | Yes |
-| [Pobierz zadanie](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getjob) |   | Yes |
-| [Zapytanie zadania](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/queryjobs) |   | Yes |
+| [Porzuć powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Kompletne urządzenie powiązane powiadomień](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [Anulowanie zadania](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Yes |
+| [Tworzenie zadania](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Yes |
+| [Pobierz zadanie](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | Yes |
+| [Zapytanie zadania](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Yes |
 
 ## <a name="message-throughput"></a>Przepływność komunikatów
 

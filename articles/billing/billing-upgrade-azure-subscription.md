@@ -1,7 +1,7 @@
 ---
-title: Uaktualnienie bezpłatnej subskrypcji Azure do płatność za rzeczywiste użycie | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak płatności zgodnie z rzeczywistym uaktualnienia z bezpłatnej subskrypcji i wymagania
-keywords: Płatność zgodnie z rzeczywistym uaktualnienia
+title: Uaktualnianie bezpłatnej subskrypcji platformy Azure do płatności | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak płatność zgodnie z rzeczywistym użyciem uaktualnianie z bezpłatnej subskrypcji i wymagania
+keywords: Płatność zgodnie z rzeczywistym użyciem uaktualnienia
 services: ''
 documentationcenter: ''
 author: jlian
@@ -17,23 +17,28 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c733f138e9926fb13c2c1cb404cc9b61f4780e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769175"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39124987"
 ---
-# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Uaktualnienia subskrypcji bezpłatnej wersji próbnej lub Microsoft Azure Wyobraź sobie na płatność za rzeczywiste użycie
+# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Zmień poziom subskrypcji bezpłatnej wersji próbnej lub programu Microsoft Imagine platformy Azure rozliczana według bieżącego użycia
 
-Uaktualnienie programu [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) subskrypcji [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) w Centrum konta platformy Azure.
+Uaktualnij swoje [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) subskrypcja [płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) w Centrum konta platformy Azure.
 
 1. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/subscriptions).
-2. W sekcji Stan subskrypcji wybierz **Uaktualnij teraz** transparent.
+2. W sekcji Stan subskrypcji wybierz **Uaktualnij teraz** baner.
    
-    ![Zrzut ekranu pokazujący, gdzie kliknij, aby uaktualnić z bezpłatnej wersji próbnej na płatność za rzeczywiste użycie](./media/billing-upgrade-azure-subscription/billpage.png)
-3. Potwierdź uaktualnienia.
+    ![Zrzut ekranu przedstawiający miejsce kliknij, aby uaktualnić z bezpłatnej wersji próbnej na płatność za rzeczywiste użycie](./media/billing-upgrade-azure-subscription/billpage.png)
+3. Upewnij się, uaktualnienia.
    
-    ![Zrzut ekranu pokazujący co wybrać, aby upewnić się, że chcesz uaktualnić subskrypcję](./media/billing-upgrade-azure-subscription/Upgrade.png)
+    ![Zrzut ekranu pokazujący, co wybrać, aby upewnić się, że chcesz uaktualnić swoją subskrypcję](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
- Po uaktualnieniu z bezpłatnej wersji próbnej subskrypcji, należy dysponować swojego pozostałego kredytu pełne 30 dni, po utworzeniu subskrypcji. Masz również dostęp do zwolnienia usług przez 12 miesięcy.
+ Podczas uaktualniania z subskrypcji bezpłatnej wersji próbnej możesz Zachowaj pozostałe środki dla pełnego 30 dni po utworzeniu subskrypcji. Masz również dostęp do bezpłatnych usług przez 12 miesięcy.
+ 
+ Jeśli chcesz [przenieść subskrypcję](billing-subscription-transfer.md) po uaktualnieniu, należy poczekać, aż do oferty subskrypcji, identyfikator zmieni się na **MS-AZR - 003P**. Kiedy zmienia się Identyfikatorem oferty
+
+* Używanie wszystkie pozostałe środki lub
+* Przekaż 30 dni, od czasu uruchomienia bezpłatnej wersji próbnej

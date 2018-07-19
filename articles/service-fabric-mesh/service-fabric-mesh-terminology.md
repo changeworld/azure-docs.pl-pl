@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 672e27bf53679c52dab8d42a52378aa90eba33cb
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7c3ce5571c54d6c613114ea49999e450934c8ff4
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114314"
+ms.locfileid: "39136202"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologia usługi Service Fabric siatki
 
@@ -47,7 +47,7 @@ Natywny model nie jest obsługiwana w środowisku usługi Service Fabric siatki.
 
 ## <a name="environments"></a>Środowiska
 
-Usługi Service Fabric to technologia platformy typu open source, opartych na kilka różnych usług i produktów. Firma Microsoft udostępnia następujące opcje:
+Usługa Service Fabric to technologia platformie typu open source, opartych na kilka różnych usług i produktów. Firma Microsoft udostępnia następujące opcje:
 
  - **Usługa Service Fabric siatki**: w pełni zarządzana Usługa do uruchamiania aplikacji usługi Service Fabric w systemie Microsoft Azure.
  - **Usługa Azure Service Fabric**: Oferta klastra usługi Service Fabric hostowane w systemie Azure. Umożliwia integrację usługi Service Fabric i infrastruktury platformy Azure, wraz z uaktualniania i zarządzania konfiguracją z klastrami usługi Service Fabric.
@@ -57,17 +57,17 @@ Usługi Service Fabric to technologia platformy typu open source, opartych na ki
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Macierz obsługi środowiska, framework i modelu wdrażania
 Różne środowiska mają różne poziomy wsparcia dla platformy i modele wdrażania. W poniższej tabeli opisano obsługiwane framework i kombinacji modelu wdrażania.
 
-|Frameworks\Deployment model |Model zasobów |Natywny model | Redagowanie|
-|---|---|---|---|
-|Elementy Reliable Actors oraz usług Reliable Services |Nieobsługiwane |Obsługiwane |Nieobsługiwane |
-|Dowolnych platform i języka |Obsługiwane w kontenerach |Obsługiwane jako procesy i kontenery |Obsługiwane w kontenerach |
+| Typ aplikacji | Opisany przez | Usługa Azure Service Fabric siatki | Klastry usługi platformy Azure (dowolny system operacyjny)| Klaster lokalny — Windows | Klaster lokalny — Linux | Klaster lokalny — Mac | Klaster autonomiczny (Windows)
+|---|---|---|---|---|---|---|---|---|---|
+| Aplikacje siatki usługi Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Nieobsługiwane | Obsługiwane |Nieobsługiwane | Nieobsługiwane | Nieobsługiwane |
+|Aplikacje natywne usługi Service Fabric | Model aplikacji natywnych (XML) | Nieobsługiwane| Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|
 
-W poniższej tabeli opisano obsługiwane środowiska i kombinacji modelu wdrażania.
+W poniższej tabeli opisano modele innej aplikacji i narzędzi, który istnieje dla nich względem usługi Service Fabric.
 
-|Environment\Deployment model |Model zasobów |Natywny model |Redagowanie |
-|---|---|---|---|
-|Usługa Azure Service Fabric siatki |Obsługiwane |Nieobsługiwane|Nieobsługiwane |
-|Wszystkich innych środowisk |Obsługiwane (niektóre zasoby mają wymagania wstępne dotyczące pracy w środowisku) |Obsługiwane |Ograniczona obsługa |
+| Typ aplikacji | Opisany przez | Visual Studio 2017 | Visual Studio 2015 | Eclipse | VS Code | INTERFEJS SFCTL | INTERFEJS WIERSZA POLECENIA AZ | PowerShell
+|---|---|---|---|---|---|---|---|---|---|
+| Aplikacje siatki usługi Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Nieobsługiwane |Nieobsługiwane |Nieobsługiwane |Nieobsługiwane | Obsługiwane — tylko w środowisku siatki | Nieobsługiwane
+|Aplikacje natywne usługi Service Fabric | Model aplikacji natywnych (XML) | Obsługiwane| Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

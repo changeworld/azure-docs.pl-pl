@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: cc6837ab14aa8fb36317da52cf011ddbd7e464be
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972235"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126055"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności klastra usługi Service Fabric
 Dla wszystkich wdrożeń produkcyjnych planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę jako część tego procesu.
@@ -165,6 +165,7 @@ W przypadku obciążeń produkcyjnych:
 - Zaleca się przydzielenie dedykowanego klastrów podstawowego elementu NodeType usług systemowych i ograniczeniami dotyczącymi umieszczania Użyj wdrożyć aplikację do dodatkowej elementy NodeType.
 - Zalecane jednostki SKU maszyny Wirtualnej jest standardowa D3 lub standardowa D3_V2 lub równoważny z co najmniej 14 GB lokalny dysk SSD.
 - Minimalne użycie obsługiwane jednostki SKU maszyny Wirtualnej jest standardowa D1 lub D1_V2 standardowy lub równoważny z co najmniej 14 GB lokalny dysk SSD. 
+- 14 GB lokalny dysk SSD stanowi wymaganie minimalne. Nasze zalecenie jest co najmniej 50 GB. Dla obciążeń, szczególnie podczas korzystania z kontenerów Windows większe dyski są wymagane. 
 - Częściowe podstawowych wersji SKU maszyn wirtualnych, takich jak standard_a0 nie są obsługiwane w przypadku obciążeń produkcyjnych.
 - Standardowa A1 jednostka SKU nie jest obsługiwana w przypadku obciążeń produkcyjnych ze względu na wydajność.
 

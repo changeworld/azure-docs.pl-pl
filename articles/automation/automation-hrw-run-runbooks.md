@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 899e5dc13dfaf7d7545955e7b4b73939c3275d3f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cd2578f2fd8217d513a693ef348a5c26a4b18623
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930311"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39126511"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -160,9 +160,69 @@ Zapisz *RunAsCertificateToHybridWorker eksportu* elementu runbook do komputera z
 
 Zadania są obsługiwane nieco inaczej na hybrydowych procesów roboczych Runbook, ponad po uruchomieniu na piaskownic platformy Azure. Jedną kluczową różnicą jest to, że nie ma żadnego limitu na czas trwania zadania na hybrydowych procesów roboczych Runbook. Elementy Runbook uruchomione w systemie Azure piaskownice mogą zawierać maksymalnie 3 godziny, ze względu na [udział](automation-runbook-execution.md#fair-share). Jeśli element runbook długotrwałych chcesz upewnić się, że jest odporna na możliwe ponowne uruchomienie, na przykład jeśli ponownym rozruchu komputera, który jest hostem hybrydowy proces roboczy. Jeśli ponowne uruchomienie maszyny hosta hybrydowego procesu roboczego, wszystkie uruchomione zadania elementu runbook uruchamia ponownie od samego początku, lub z ostatniego punktu kontrolnego dla elementów runbook przepływu pracy programu PowerShell. Jeśli zadania elementu runbook jest uruchomiony ponownie więcej niż 3 razy, następnie jest zawieszony.
 
+## <a name="run-only-signed-runbooks"></a>Uruchom tylko podpisane elementów Runbook
+
+Hybrydowych procesów roboczych Runbook można skonfigurować do uruchamiania tylko podpisem elementy runbook przy użyciu pewnych czynności konfiguracyjnych. W poniższej sekcji opisano sposób konfigurowania sieci hybrydowych procesów roboczych Runbook do uruchamiania podpisanych elementów runbook i sposób rejestrowania w elementach runbook.
+
+> [!NOTE]
+> Po skonfigurowaniu hybrydowego procesu roboczego elementu Runbook do uruchamiania tylko podpisem elementy runbook, elementy runbook mają **nie** zostały podpisane spowoduje wykonanie w procesie roboczym nie powiodło się.
+
+### <a name="create-signing-certificate"></a>Tworzenie certyfikatu podpisywania
+
+Poniższy przykład tworzy certyfikat z podpisem własnym służący do podpisywania elementów runbook. Próbka tworzy certyfikat i eksportuje go. Certyfikat został zaimportowany do hybrydowych procesów roboczych Runbook później. Odcisk palca jest zwracany, jest on używany później do odwoływać się do certyfikatu.
+
+```powershell
+# Create a self signed runbook that can be used for code signing
+$SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
+                                        -Subject "CN=contoso.com" `
+                                        -KeyAlgorithm RSA `
+                                        -KeyLength 2048 `
+                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+                                        -KeyExportPolicy Exportable `
+                                        -KeyUsage DigitalSignature `
+                                        -Type CodeSigningCert
+
+
+# Export the certificate so that it can be imported to the hybrid workers
+Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Retrieve the thumbprint for later use
+$SigningCert.Thumbprint
+```
+
+### <a name="configure-the-hybrid-runbook-workers"></a>Konfigurowanie hybrydowych procesów roboczych Runbook
+
+Skopiować certyfikat utworzony do każdego hybrydowego procesu roboczego Runbook w grupie. Uruchom następujący skrypt, aby zaimportować certyfikat i skonfiguruj hybrydowy proces roboczy, aby użyć Weryfikacja podpisu w elementach runbook.
+
+```powershell
+# Install the certificate into a location that will be used for validation.
+New-Item -Path Cert:\LocalMachine\AutomationHybridStore
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\AutomationHybridStore
+
+# Import the certificate into the trusted root store so the certificate chain can be validated
+Import-Certificate -FilePath .\hybridworkersigningcertificate.cer -CertStoreLocation Cert:\LocalMachine\Root
+
+# Configure the hybrid worker to use signature validation on runbooks.
+Set-HybridRunbookWorkerSignatureValidation -Enable $true -TrustedCertStoreLocation "Cert:\LocalMachine\AutomationHybridStore"
+```
+
+### <a name="sign-your-runbooks-using-the-certificate"></a>Zaloguj się w elementach Runbook przy użyciu certyfikatu
+
+Za pomocą hybrydowego elementu Runbook pracowników skonfigurowany do używania tylko podpisane elementów runbook. Musisz zalogować się elementy runbook, które mają być używane w hybrydowym procesie roboczym elementu Runbook. Użyj poniższego przykładu z programu PowerShell do podpisania elementów runbook.
+
+```powershell
+$SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprint>)
+Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
+```
+
+Podpisany element runbook należy zaimportować do konta usługi Automation i została opublikowana z bloku podpisu. Aby dowiedzieć się, jak zaimportować elementy runbook, zobacz [importowanie elementu runbook z pliku do usługi Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Jeśli Twoje elementy runbook nie kończą się pomyślnie, a następnie w obszarze podsumowania zadania pojawi się stan **zawieszone**, przejrzyj przewodnik rozwiązywania problemów na [błędy wykonania elementu runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+Jeśli Twoje elementy runbook nie kończą się pomyślnie, zapoznaj się z przewodnik rozwiązywania problemów na [błędy wykonania elementu runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

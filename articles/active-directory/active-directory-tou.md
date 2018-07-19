@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/29/2018
+ms.date: 07/18/2018
 ms.author: rolyon
-ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856420"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136659"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano, jak zacząć korzystać z warunków użytkowania usługi Azure AD.
@@ -86,7 +86,7 @@ Po zakończeniu pracy nad zawartością dokumentu z warunkami użytkowania dodaj
 
     ![Dodawanie warunków użytkowania](media/active-directory-tou/create-tou.png)
 
-## <a name="view-who-has-accepted-and-declined"></a>Wyświetlanie użytkowników, który zaakceptowali i odrzucili warunki użytkowania
+## <a name="view-report-of-who-has-accepted-and-declined"></a>Wyświetl raport, kto został zaakceptowany i odrzucone
 W bloku Warunki użytkowania znajduje się liczba użytkowników, którzy je zaakceptowali i odrzucili. Te liczby oraz lista użytkowników, którzy zaakceptowali lub odrzucili warunki użytkowania, jest przechowywana przez cały okres istnienia warunków użytkowania.
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
@@ -97,10 +97,10 @@ W bloku Warunki użytkowania znajduje się liczba użytkowników, którzy je zaa
 
     ![Zdarzenie inspekcji](media/active-directory-tou/accepted-tou.png)
 
-## <a name="view-audit-logs"></a>Wyświetlanie dzienników inspekcji
+## <a name="view-azure-ad-audit-logs"></a>Wyświetl usługi Azure AD dzienniki inspekcji
 Jeśli chcesz wyświetlić dodatkową aktywność, warunki użytkowania usługi Azure AD zawierają dzienniki inspekcji. Każdy zgody użytkownika wyzwala zdarzenie w dziennikach inspekcji, które są przechowywane przez 30 dni. Te dzienniki możesz wyświetlić w portalu lub pobrać jako plik CSV.
 
-Aby rozpocząć pracę z dziennikami inspekcji, użyj następującej procedury:
+Aby rozpocząć pracę z usługą Azure AD dzienniki inspekcji, użyj następującej procedury:
 
 1. Zaloguj się do platformy Azure i przejdź do **warunków użytkowania** na stronie [https://aka.ms/catou](https://aka.ms/catou).
 
@@ -167,10 +167,19 @@ Zasady dostępu warunkowego zaczynają obowiązywać natychmiast. W takim przypa
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 **Pyt. Jak sprawdzić, czy i kiedy użytkownik zaakceptował warunki użytkowania?**</br>
-Odp.: zgodnie z wymaganiami bloku użycia, kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w dziennikach inspekcji. Aby uzyskać więcej informacji, zobacz [widoku, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [Wyświetl dzienniki inspekcji](#view-audit-logs).
+Odp.: zgodnie z wymaganiami bloku użycia, kliknij liczbę w obszarze **zaakceptowano**. Można również wyświetlić lub zaakceptuj działań związanych z wyszukiwaniem w usłudze Azure AD dzienniki inspekcji. Aby uzyskać więcej informacji, zobacz [wyświetlić raport, który ma zaakceptowali i odrzucili](#view-who-has-accepted-and-declined) i [usługi Azure AD Wyświetl dzienniki inspekcji](#view-azure-ad-audit-logs).
+ 
+**Pyt. Jak długo są przechowywane informacje?**</br>
+Odp.: użytkownik liczy się w warunkach w raporcie użycia i który zaakceptowane odrzucone są przechowywane przez cały okres istnienia warunki użytkowania. Inspekcja usługi Azure AD, dzienniki są przechowywane przez 30 dni.
 
-**Pyt. czy zmiana warunków użytkowania wymaga ich użytkowników o zaakceptowanie ponownie?**</br>
+**P: dlaczego widzę różne liczby zgody w warunkach użytkowania raporcie użycia a usługą Azure AD dzienników inspekcji?**</br>
+Odp.: warunki raporcie użycia są przechowywane przez okres istnienia tego warunki użytkowania, podczas inspekcji usługi Azure AD, które dzienniki są przechowywane przez 30 dni. Ponadto warunki raporcie użycia są wyświetlane tylko bieżącego stanu zgody użytkowników. Na przykład jeśli użytkownik odmówi, a następnie akceptuje, warunki raporcie użycia zostaną wyświetlone tylko ten użytkownik akceptuje. Jeśli zachodzi potrzeba wyświetlenia historii, możesz użyć usługi Azure AD dzienniki inspekcji.
+
+**Pyt. Czy zmienić warunków użytkowania wymaga ich użytkownicy mają ponownie akceptować?**</br>
 Odp. tak, administrator może zmienić warunków użytkowania, a użytkownicy muszą ponownie zaakceptowali nowe warunki.
+
+**Pyt.: Jeśli hiperłącza znajdują się w dokument z warunkami użytkowania PDF, użytkownicy końcowi będzie klikać?**</br>
+Odp.: plik PDF jest renderowany domyślnie w formacie JPEG, dzięki czemu hiperłącza nie są aktywne. Użytkownicy mają możliwość dokonania wyboru **masz problemy z wyświetlaniem? Kliknij tutaj,**, który renderuje plik PDF natywnie których hiperłącza są obsługiwane.
 
 **Pyt. Czy warunki użytkowania obsługują wiele języków?**</br>
 Odp. Tak.  Obecnie istnieje 18 różnych języków, które administrator może skonfigurować na potrzeby pojedynczych warunków użytkowania. 
@@ -189,6 +198,7 @@ Odp. Dostęp do aplikacji zostanie zablokowany dla tego użytkownika. Użytkowni
  
 **P: czy istnieje możliwość unaccept warunki użytkowania, które zostały wcześniej zaakceptowane?**</br>
 Odp.: możesz [przeglądu wcześniej zaakceptowane warunki użytkowania](#how-users-can-review-their-terms-of-use), ale obecnie nie istnieje sposób unaccept.
- 
-**Pyt. Jak długo są przechowywane informacje?**</br>
-Odp. Liczba użytkowników oraz lista użytkowników, którzy zaakceptowali lub odrzucili warunki użytkowania, jest przechowywana przez cały okres istnienia warunków użytkowania. Dzienniki inspekcji są przechowywane przez 30 dni.
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Najlepsze rozwiązania dotyczące dostępu warunkowego w usłudze Azure Active Directory](active-directory-conditional-access-best-practices.md)

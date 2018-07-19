@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki Start — wdrażanie aplikacji do usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
+title: Przewodnik Szybki Start — tworzenie i wdrażanie aplikacji sieci web do usługi Azure Service Fabric siatki | Dokumentacja firmy Microsoft
 description: Ten przewodnik Szybki Start dowiesz się, jak utworzyć witrynę sieci Web platformy ASP.NET Core i opublikowania go w usłudze Azure Service Fabric siatki.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3ce40c87bbdd2f032b399b96a3021781e0dec341
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ad8920ac01ce62eb676b495dcde2aae6b076cbe2
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091971"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125507"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Szybki Start: Tworzenie i wdrażanie aplikacji sieci web do usługi Azure Service Fabric siatki
 
@@ -46,23 +46,23 @@ Upewnij się, że **Utwórz katalog rozwiązania** jest zaznaczone, a następnie
 
 ### <a name="create-a-service"></a>Tworzenie usługi
 
-Po kliknięciu **OK**, **Nowa usługa Service Fabric** zostanie wyświetlone okno dialogowe. Wybierz **platformy ASP.NET Core** typ projektu, upewnij się, że **Container OS** jest ustawiona na **Windows** i naciśnij klawisz **OK** do utworzenia projektu platformy ASP.NET Core . 
+Po kliknięciu **OK**, **Nowa usługa Service Fabric** zostanie wyświetlone okno dialogowe. Wybierz **platformy ASP.NET Core** typ projektu, upewnij się, że **Container OS** jest ustawiona na **Windows** i kliknij przycisk **OK** do utworzenia projektu platformy ASP.NET Core . 
 
 ![Program Visual studio usługi Service Fabric siatki okna dialogowego Nowy projekt](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
-**Nowa aplikacja internetowa ASP.NET Core** zostanie wyświetlone okno dialogowe. Wybierz **aplikacji sieci Web** , a następnie naciśnij klawisz **OK**.
+**Nowa aplikacja internetowa ASP.NET Core** zostanie wyświetlone okno dialogowe. Wybierz **aplikacji sieci Web** a następnie kliknij przycisk **OK**.
 
 ![Nowa aplikacja platformy ASP.NET core programu Visual studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
 
-Visual Studio utworzy projekt aplikacji usługi Service Fabric siatki i projekt platformy ASP.NET Core.
+Program Visual Studio tworzy projekt aplikacji usługi Service Fabric siatki i projekt platformy ASP.NET Core.
 
 ## <a name="build-and-publish-to-your-local-cluster"></a>Tworzenie i publikowanie w klastrze lokalnym
 
-Obraz platformy Docker zostanie automatycznie utworzone i publikowane w klastrze lokalnym, zaraz po załadowaniu projektu. Ten proces może potrwać pewien czas. Możesz monitorować postęp narzędzi usługi Service Fabric w programie **dane wyjściowe** okienko, jeśli chcesz. Wybierz **narzędzia usługi Service Fabric** elementu w okienku. Możesz kontynuować pracę podczas wdrażania obrazu platformy docker.
+Obraz platformy Docker jest wbudowana i automatycznie publikowane w klastrze lokalnym, zaraz po załadowaniu projektu. Ten proces może potrwać pewien czas. Możesz monitorować postęp narzędzi usługi Service Fabric w programie **dane wyjściowe** okna, wybierając **narzędzia usługi Service Fabric** elementu w **dane wyjściowe** okna listy rozwijanej. Możesz kontynuować pracę podczas wdrażania obrazu platformy docker.
 
-Po utworzeniu projektu, naciśnij klawisz **F5** Aby debugować usługę lokalnie. Lokalne wdrożenie zostało zakończone, gdy program Visual Studio jest uruchomiony projektu, zostanie otwarte okno przeglądarki, za pomocą przykładowej strony sieci Web.
+Po utworzeniu projektu kliknij **F5** Aby debugować usługę lokalnie. Lokalne wdrożenie zostało zakończone, gdy program Visual Studio jest uruchomiony projektu, zostanie otwarte okno przeglądarki, za pomocą przykładowej strony sieci Web.
 
-Po zakończeniu przeglądania wdrożonej usługi, możesz zatrzymać debugowanie projektu przez naciśnięcie klawisza **Shift + F5** w programie Visual Studio.
+Po zakończeniu przeglądania wdrożonej usługi, Zatrzymaj debugowanie projektu przez naciśnięcie klawisza **Shift + F5** w programie Visual Studio.
 
 ## <a name="publish-to-azure"></a>Publikowanie na platformie Azure
 
@@ -76,30 +76,30 @@ Zostanie wyświetlony **publikowanie aplikacji usługi Service Fabric** okna dia
 
 Wybierz konto platformy Azure i subskrypcji. Wybierz **lokalizacji**. W tym artykule wykorzystano **wschodnie stany USA**.
 
-W obszarze **grupy zasobów**, wybierz opcję  **\<tworzenia nowej grupy zasobów... >**. Okno dialogowe pojawia się, gdy utworzysz nową grupę zasobów. W tym artykule wykorzystano **wschodnie stany USA** lokalizacji i nazwy grupy **sfmeshTutorial1RG** (Jeśli Twoja organizacja ma wiele osób przy użyciu tej samej subskrypcji, wybierz unikatową nazwę grupy).  Naciśnij klawisz **Utwórz** Utwórz grupę zasobów i powrócić do okna dialogowego publikowania.
+W obszarze **grupy zasobów**, wybierz opcję  **\<tworzenia nowej grupy zasobów... >**. **Tworzenie grupy zasobów** zostanie wyświetlone okno dialogowe. Ustaw **nazwy grupy zasobów** i **lokalizacji**.  Ten przewodnik Szybki Start używa **wschodnie stany USA** lokalizacji i nazwy grupy **sfmeshTutorial1RG** (Jeśli Twoja organizacja ma wiele osób przy użyciu tej samej subskrypcji, wybierz unikatową nazwą grupy zasobów).  Kliknij przycisk **Utwórz** Utwórz grupę zasobów i powrócić do okna dialogowego publikowania.
 
 ![Program Visual studio usługi Service Fabric siatki nowego zasobu grupy okna dialogowego](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Ponownie **publikowanie aplikacji usługi Service Fabric** okna dialogowego, w obszarze **usługi Azure Container Registry**, wybierz opcję  **\<Utwórz nowy rejestr kontenerów... >**. W **Tworzenie rejestru kontenerów** okno dialogowe, Użyj unikatowej nazwy dla **nazwy rejestru kontenerów**. Określ **lokalizacji** (w tym samouczku **wschodnie stany USA**). Wybierz **grupy zasobów** utworzonego w poprzednim kroku, listy rozwijanej np. **sfmeshTutorial1RG**. Ustaw **jednostki SKU** do **podstawowe** , a następnie naciśnij klawisz **Utwórz** aby powrócić do okna dialogowego publikowania.
+Ponownie **publikowanie aplikacji usługi Service Fabric** okna dialogowego, w obszarze **usługi Azure Container Registry**, wybierz opcję  **\<Utwórz nowy rejestr kontenerów... >**. W **Tworzenie rejestru kontenerów** okno dialogowe, Użyj unikatowej nazwy dla **nazwy rejestru kontenerów**. Określ **lokalizacji** (korzysta z tego przewodnika Szybki Start **wschodnie stany USA**). Wybierz **grupy zasobów** utworzonego w poprzednim kroku na liście rozwijanej, na przykład **sfmeshTutorial1RG**. Ustaw **jednostki SKU** do **podstawowe** a następnie kliknij przycisk **Utwórz** aby powrócić do okna dialogowego publikowania.
 
 Jeśli wystąpi błąd, który nie został zarejestrowany dostawca zasobów dla subskrypcji, należy zarejestrować go. Najpierw sprawdź, czy dostawca zasobów jest dostępna dla Twojej subskrypcji:
 
 ```Powershell
+Connect-AzureRmAccount
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
 Jeśli dostawca rejestru kontenerów (`Microsoft.ContainerRegistry`) jest dostępny, zarejestruj go za pomocą programu Powershell:
 
 ```Powershell
-Connect-AzureRmAccount
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ContainerRegistry
 ```
 
 ![Program Visual studio usługi Service Fabric siatki nowego zasobu grupy okna dialogowego](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
-W oknie dialogowym publikowania naciśnij **Publikuj** przycisk, aby wdrożyć aplikację usługi Service Fabric siatki na platformie Azure.
+W oknie dialogowym publikowania kliknij **Publikuj** przycisk, aby wdrożyć aplikację usługi Service Fabric siatki na platformie Azure.
 
-Podczas publikowania na platformie Azure po raz pierwszy obraz platformy docker zostanie przypisany do usługi Azure Container Registry (ACR), która zajmuje trochę czasu w zależności od rozmiaru obrazu. Kolejne publikuje tego samego projektu będzie przebiegać szybciej. Możesz monitorować postęp wdrażania, wybierając **narzędzia usługi Service Fabric** programu Visual Studio okienko **dane wyjściowe** okna. Po zakończeniu wdrożenia **narzędzia usługi Service Fabric** dane wyjściowe będą wyświetlane adresu IP i portu aplikacji w postaci adresu URL.
+Podczas publikowania na platformie Azure po raz pierwszy obraz platformy docker zostanie przypisany do usługi Azure Container Registry (ACR), która zajmuje trochę czasu w zależności od rozmiaru obrazu. Kolejne publikuje tego samego projektu będzie przebiegać szybciej. Możesz monitorować postęp wdrażania, wybierając **narzędzia usługi Service Fabric** w programie Visual Studio **dane wyjściowe** okna listy rozwijanej. Po zakończeniu wdrożenia **narzędzia usługi Service Fabric** dane wyjściowe będą wyświetlane adresu IP i portu aplikacji w postaci adresu URL.
 
 ```json
 Packaging Application...
@@ -110,23 +110,27 @@ Deploying application to remote endpoint...
 The application was deployed successfully and it can be accessed at http://...
 ```
 
-Otwórz przeglądarkę internetową i przejdź do adresu URL, aby wyświetlić witrynę sieci Web, działającej na platformie Azure.
+Otwórz przeglądarkę internetową i przejdź do adresu URL, aby wyświetlić witrynę sieci Web, działającej na platformie Azure:
+
+![Uruchamianie aplikacji usługi Service Fabric siatki w sieci Web](media/service-fabric-mesh-tutorial-deploy-dotnetcore/deployed-web-project.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie będą już potrzebne, Usuń wszystkie zasoby utworzone w tym przewodniku Szybki Start. Od momentu utworzenia nowej grupy zasobów do hostowania zasobów usługi ACR i usługi Service Fabric siatki można bezpiecznie usunąć tej grupy zasobów, które jest to prosty sposób, aby usunąć wszystkie skojarzone z nią zasoby.
+Gdy nie będą już potrzebne, Usuń wszystkie zasoby utworzone w tym przewodniku Szybki Start. Od momentu utworzenia nowej grupy zasobów do hostowania zasobów usługi ACR i usługi Service Fabric siatki można bezpiecznie usunąć tej grupy zasobów i jest to prosty sposób, aby usunąć wszystkie skojarzone z nią zasoby.
 
 ```azurecli
 az group delete --resource-group sfmeshTutorial1RG
 ```
 
 ```powershell
+Connect-AzureRmAccount
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
 Alternatywnie możesz usunąć grupę zasobów [w witrynie Azure portal](https://portal.azure.com).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby dowiedzieć się więcej na temat tworzenia i wdrażania aplikacji usługi Service Fabric siatki, przejdź do samouczka.
 > [!div class="nextstepaction"]
-> [Tworzenie i wdrażanie aplikacji sieci web z wieloma usługami](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> [Tworzenie, debugowanie i wdrażanie aplikacji internetowej z wieloma usługami usługi Service Fabric siatki](service-fabric-mesh-tutorial-create-dotnetcore.md)

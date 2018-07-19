@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 928bd4dcc51391e3832b5fea26ff8c665f768cdb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 10d6b81915432d9f41c0d4751f98cbf380ff2d13
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005676"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136574"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -100,6 +100,11 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 **Pytanie: Moja użytkownicy nie mogą wyszukiwać drukarki z usługi Azure AD urządzeń w miejscu pracy. Jak włączyć drukowanie z usługi Azure AD urządzeń w miejscu pracy?**
 
 **Odp.:** wdrażania drukarek dla usługi Azure AD urządzeń w miejscu pracy, zobacz [drukowania chmury hybrydowej](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Oparte na chmurze usługi drukowania nie jest obecnie dostępna. 
+
+---
+
+**P: jak podłączyć do zdalnej usługi Azure AD przyłączone urządzenie? ** 
+ **A:** można znaleźć w artykule https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc Aby uzyskać szczegółowe informacje.
 
 ---
 

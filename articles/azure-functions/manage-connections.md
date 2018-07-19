@@ -10,28 +10,29 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 07/13/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6c0af8f6f7e1d4aea8880a7af311aaa21f474f7e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9e5c56dc3679e9ffbd67d906ca7d971439319ee5
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969008"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125380"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Sposób zarządzania połączeniami w usłudze Azure Functions
 
-Funkcji w aplikacji funkcji udostępniania zasobów, a wśród tych zasoby udostępnione są połączenia &mdash; połączenia HTTP, połączenia z bazą danych i połączeń z usługami platformy Azure, takie jak magazyn. Po uruchomieniu wielu funkcji jednocześnie istnieje możliwość Brak dostępnych połączeń. W tym artykule wyjaśniono, jak kod funkcji uniknięcia więcej połączeń niż rzeczywiście konieczne.
+Funkcji w aplikacji funkcji udostępniania zasobów, a wśród tych zasoby udostępnione są połączenia &mdash; połączenia HTTP, połączenia z bazą danych i połączeń z usługami platformy Azure, takie jak magazyn. Wiele funkcji są uruchomione równocześnie, prawdopodobnie brak dostępnych połączeń. W tym artykule wyjaśniono, jak kod funkcji uniknięcia więcej połączeń niż rzeczywiście konieczne.
 
 ## <a name="connections-limit"></a>Limit połączeń
 
 Liczba dostępnych połączeń jest ograniczona, częściowo, ponieważ aplikacja funkcji jest uruchamiana w [piaskownicy usługi Azure App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). On ograniczenia, które piaskownicy nakłada się na kodzie [dzienny limit liczby połączeń obecnie 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Po osiągnięciu tego limitu, środowisko uruchomieniowe usługi functions tworzy dziennik z następującym komunikatem: `Host thresholds exceeded: Connections`.
 
-Zwiększyć szanse przekracza limit, kiedy [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-plan-works). Każdego wystąpienia aplikacji funkcji może być wywoływanie funkcji wiele razy na raz, a wszystkie te funkcje korzystają z połączeń, które są wliczane do limitu 300.
+Prawdopodobieństwo przekracza limit rośnie, gdy [kontrolera skalowania dodaje wystąpień aplikacji funkcji](functions-scale.md#how-the-consumption-plan-works) do obsługi liczby żądań. Każde wystąpienie aplikacji funkcji, mogą działać wiele funkcji, które korzystają z połączeń, które są wliczane do limitu 300.
 
 ## <a name="use-static-clients"></a>Przy użyciu statycznych klientów
 
-Aby uniknąć, zawierający więcej połączeń niż to konieczne, ponownie użyć wystąpienia klienta, zamiast tworzyć nowe przy każdym wywołaniu funkcji. Klienci platformy .NET, takich jak `HttpClient`, `DocumentClient`, i zarządzać połączeń klientów usługi Azure Storage, jeśli za pomocą pojedynczej, statycznej klienta.
+Aby uniknąć, zawierający więcej połączeń niż to konieczne, ponownie użyć wystąpienia klienta, zamiast tworzyć nowe przy każdym wywołaniu funkcji. Klienci platformy .NET, takich jak [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+), i zarządzać połączeń klientów usługi Azure Storage, jeśli za pomocą pojedynczej, statycznej klienta.
 
 Poniżej przedstawiono kilka wskazówek, które należy wykonać podczas przy użyciu klienta specyficzne dla usługi w aplikacji usługi Azure Functions:
 
@@ -41,7 +42,7 @@ Poniżej przedstawiono kilka wskazówek, które należy wykonać podczas przy u�
 
 ## <a name="httpclient-code-example"></a>Przykład kodu klasy HttpClient
 
-Poniżej przedstawiono przykładowy kod funkcji, który tworzy statycznego `HttpClient`:
+Poniżej przedstawiono przykładowy kod funkcji, który tworzy statycznego [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
 
 ```cs
 // Create a single, static HttpClient
@@ -54,15 +55,16 @@ public static async Task Run(string input)
 }
 ```
 
-Często zadawane pytania dotyczące programu .NET `HttpClient` jest "Powinien mogę być disposing mojego klienta?" Ogólnie rzecz biorąc, Usuń obiekty, które implementują `IDisposable` po zakończeniu korzystania z nich. Ale nie dispose statyczne klienta, ponieważ nie są wykonywane przy użyciu jej, gdy funkcja skończy działanie. Kliencki statyczny czas trwania aplikacji na żywo.
+Często zadawane pytania dotyczące programu .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) jest "Powinien mogę być disposing mojego klienta?" Ogólnie rzecz biorąc, Usuń obiekty, które implementują `IDisposable` po zakończeniu korzystania z nich. Ale nie dispose statyczne klienta, ponieważ nie są wykonywane przy użyciu jej, gdy funkcja skończy działanie. Kliencki statyczny czas trwania aplikacji na żywo.
 
 ## <a name="documentclient-code-example"></a>Przykładowy kod DocumentClient
 
-`DocumentClient` nawiązuje połączenie z wystąpieniem usługi Cosmos DB. Dokumentacja usługi Cosmos DB zaleca, aby użytkownik [okres istnienia aplikacji za pomocą klienta usługi Azure Cosmos DB pojedyncze](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Jednym ze wzorców tą operacją w funkcji można znaleźć w poniższym przykładzie.
+[Klient DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) łączy się z wystąpieniem usługi Azure Cosmos DB. Dokumentacja usługi Azure Cosmos DB zaleca, aby użytkownik [okres istnienia aplikacji za pomocą klienta usługi Azure Cosmos DB pojedyncze](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Jednym ze wzorców tą operacją w funkcji można znaleźć w poniższym przykładzie:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
-using Microsoft.Azure.Documents.Client; 
+using Microsoft.Azure.Documents.Client;
 
 private static Lazy<DocumentClient> lazyClient = new Lazy<DocumentClient>(InitializeDocumentClient);
 private static DocumentClient documentClient => lazyClient.Value;
@@ -85,6 +87,14 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+
+## <a name="sqlclient-connections"></a>Połączeń klient SQL
+
+Kod funkcji może używać .NET Framework Data Provider for SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) aby nawiązywać połączenia z relacyjnej bazy danych SQL. Dotyczy to również źródłowy dostawca struktur danych, które zależą od ADO.NET, takim jak Entity Framework. W odróżnieniu od [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) i [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) połączeń ADO.NET implementuje buforowanie połączeń, domyślnie. Jednakże ponieważ nadal można uruchomić z połączeń, należy zoptymalizować połączeń z bazą danych. Aby uzyskać więcej informacji, zobacz [programu SQL Server połączenia puli (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+
+> [!TIP]
+> Niektóre struktur danych, takich jak [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx), zazwyczaj pobrać parametry połączenia z **ConnectionStrings** sekcję pliku konfiguracji. W takim przypadku należy jawnie dodać parametry połączenia bazy danych SQL do **parametry połączenia** kolekcję ustawień aplikacji funkcji, a w [pliku local.settings.json](functions-run-local.md#local-settings-file) w projekcie lokalnym. Jeśli tworzysz [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) w kodzie funkcji należy przechowywać wartość parametrów połączenia w **ustawienia aplikacji** przy użyciu innych połączeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

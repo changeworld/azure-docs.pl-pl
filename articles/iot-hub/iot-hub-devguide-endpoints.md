@@ -1,115 +1,115 @@
 ---
-title: Zrozumienie punkty końcowe Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — informacje na temat Centrum IoT punkty końcowe skierowane do urządzenia i połączonej usługi.
+title: Omówienie punktów końcowych usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — informacje na temat usługi IoT Hub punktów końcowych przeznaczonych dla urządzeń i przeznaczonych dla usługi.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 37e1bd0b479e27f0d871495c0725fc865cbb8572
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632581"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39125780"
 ---
-# <a name="reference---iot-hub-endpoints"></a>Odwołanie — punkty końcowe Centrum IoT
+# <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>Nazwy Centrum IoT
+## <a name="iot-hub-names"></a>Nazwy Centrum IoT Hub
 
-Nazwy hostów punktów końcowych w portalu w Centrum IoT można znaleźć **omówienie** bloku. Domyślnie nazwa DNS Centrum IoT wygląda następująco: `{your iot hub name}.azure-devices.net`.
+Można znaleźć nazwy hosta usługi IoT hub, obsługujący punktów końcowych w portalu na Twoje Centrum **Przegląd** strony. Domyślnie, nazwa DNS usługi IoT hub wygląda następująco: `{your iot hub name}.azure-devices.net`.
 
-Usługi Azure DNS umożliwia utworzenie niestandardowej nazwy DNS dla Centrum IoT. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DNS, aby określić ustawienia domeny niestandardowej dla usługi Azure](../dns/dns-custom-domain.md).
+System DNS Azure umożliwia tworzenie niestandardowej nazwy DNS dla usługi IoT hub. Aby uzyskać więcej informacji, zobacz [Use Azure DNS to provide custom domain settings for an Azure service](../dns/dns-custom-domain.md) (Korzystanie z usługi Azure DNS w celu udostępnienia niestandardowych ustawień domeny dla usługi platformy Azure).
 
-## <a name="list-of-built-in-iot-hub-endpoints"></a>Lista wbudowanych punkty końcowe Centrum IoT
+## <a name="list-of-built-in-iot-hub-endpoints"></a>Lista wbudowanej punktów końcowych usługi IoT Hub
 
-Centrum IoT Azure to usługa wielodostępne, która udostępnia jego funkcje do różnych złośliwych użytkowników. Na poniższym diagramie przedstawiono różne punkty końcowe, że przedstawia Centrum IoT.
+Usługa Azure IoT Hub jest usługą wielodostępną, która udostępnia funkcję do poszczególnych podmiotów. Na poniższym diagramie przedstawiono różne punkty końcowe IoT Hub udostępnia.
 
 ![Punkty końcowe centrum IoT Hub][img-endpoints]
 
-Poniżej przedstawiono listę punktów końcowych:
+Poniższa lista zawiera punkty końcowe:
 
-* **Dostawca zasobów**. Opisuje dostawcę zasobów Centrum IoT [usługi Azure Resource Manager] [ lnk-arm] interfejsu. Ten interfejs umożliwia właściciele subskrypcji platformy Azure do tworzenia i usuwania centra IoT i aktualizowanie właściwości Centrum IoT. Centrum IoT właściwości regulują [zasad zabezpieczeń na poziomie koncentratora][lnk-accesscontrol], w przeciwieństwie do kontroli dostępu na poziomie urządzenia i funkcjonalności opcji chmury do urządzenia i urządzenia do chmury do obsługi komunikatów. Dostawca zasobów Centrum IoT umożliwia także [wyeksportować tożsamości urządzenia][lnk-importexport].
-* **Zarządzanie tożsamościami urządzenia**. Każdy Centrum IoT udostępnia zestaw punktów końcowych HTTPS REST do zarządzania tożsamościami urządzenia (Tworzenie, pobieranie, aktualizowanie i usuwanie). [Tożsamości urządzenia] [ lnk-device-identities] służą do urządzenia uwierzytelniania i kontroli dostępu.
-* **Zarządzanie urządzeniami dwie**. Każdy Centrum IoT udostępnia zestaw punkt końcowy HTTPS REST połączonej usługi do zapytania i aktualizacji [twins urządzenia] [ lnk-twins] (aktualizacja znaczniki i właściwości).
-* **Zadania zarządzania**. Każdy Centrum IoT udostępnia zestaw połączonej usługi REST protokołu HTTPS z punktu końcowego do wykonywania zapytań i zarządzanie [zadania][lnk-jobs].
-* **Punkty końcowe urządzenia**. Dla każdego urządzenia w rejestrze tożsamości Centrum IoT udostępnia zestaw punktów końcowych:
+* **Dostawca zasobów**. Dostawca zasobów usługi IoT Hub udostępnia [usługi Azure Resource Manager] [ lnk-arm] interfejsu. Ten interfejs umożliwia właściciele subskrypcji platformy Azure do tworzenia i usuwania centra IoT i aktualizowanie właściwości Centrum IoT. Właściwości usługi IoT Hub określają [zasady zabezpieczeń na poziomie koncentratora][lnk-accesscontrol], w przeciwieństwie do kontroli dostępu na poziomie urządzenia i funkcjonalności opcje do obsługi komunikatów chmura urządzenie i urządzenia do chmury. Dostawca zasobów usługi IoT Hub umożliwia także [wyeksportować tożsamości urządzeń][lnk-importexport].
+* **Zarządzanie tożsamościami urządzeń**. Każde Centrum IoT hub ujawnia zestaw punktów końcowych HTTPS REST do zarządzania tożsamościami urządzeń (Tworzenie, pobieranie, aktualizowanie i usuwanie). [Tożsamości urządzeń] [ lnk-device-identities] służą do urządzenia uwierzytelniania i kontroli dostępu.
+* **Zarządzanie bliźniaczych reprezentacji urządzeń**. Każde Centrum IoT hub ujawnia zestaw przeznaczonych dla usługi REST protokół HTTPS punktu końcowego zapytania i aktualizację [bliźniaczych reprezentacji urządzeń] [ lnk-twins] (aktualizacja tagów i właściwości).
+* **Zadania zarządzania**. Każde Centrum IoT hub ujawnia zestaw przeznaczonych dla usługi REST protokołu HTTPS z punktu końcowego do wykonywania zapytań i zarządzanie [zadania][lnk-jobs].
+* **Punkty końcowe urządzenia**. Dla każdego urządzenia w rejestrze tożsamości Centrum IoT Hub ujawnia zestaw punktów końcowych:
 
-  * *Wysyłanie komunikatów urządzenia do chmury*. Urządzenie korzysta z tego punktu końcowego do [wysyłać urządzenia do chmury][lnk-d2c].
-  * *Komunikaty chmury do urządzenia*. Urządzenie korzysta z tego punktu końcowego do odbierania docelowe [wiadomości chmury do urządzenia][lnk-c2d].
-  * *Zainicjuj przekazywania plików*. Urządzenie korzysta z tego punktu końcowego do odbierania identyfikatora URI połączenia SAS magazynu Azure z Centrum IoT na [przekazać plik][lnk-upload].
-  * *Pobierania i aktualizowania urządzenia dwie właściwości*. Urządzenie korzysta z tego punktu końcowego dostęp do jego [dwie urządzenia][lnk-twins]jego właściwości.
-  * *Odbierania żądań metoda bezpośrednia*. Urządzenie korzysta z tego punktu końcowego do nasłuchiwania [metoda bezpośrednia][lnk-methods]tego żądania.
+  * *Wysyłanie komunikatów z urządzenia do chmury*. Urządzenie korzysta z tego punktu końcowego do [wysyłać komunikaty urządzenie chmura][lnk-d2c].
+  * *Odbieranie komunikatów z chmury do urządzeń*. Urządzenie korzysta z tego punktu końcowego do odbierania docelowych [komunikatów z chmury do urządzeń][lnk-c2d].
+  * *Zainicjuj przekazywania plików*. Urządzenie korzysta z tego punktu końcowego do odbierania identyfikatora URI połączenia SAS magazynu platformy Azure z Centrum IoT Hub, aby [przekazać plik][lnk-upload].
+  * *Pobierania i aktualizowania z właściwości bliźniaczych reprezentacji urządzeń*. Urządzenie korzysta z tego punktu końcowego uzyskać dostęp do jego [bliźniaczej reprezentacji urządzenia][lnk-twins]jego właściwości.
+  * *Odbierania żądań metody bezpośredniej*. Urządzenie korzysta z tego punktu końcowego do nasłuchiwania pod kątem [metoda bezpośrednia][lnk-methods]tego żądania.
 
-    Te punkty końcowe są udostępniane za pomocą [MQTT v3.1.1][lnk-mqtt], HTTPS 1.1 i [protokołu AMQP 1.0] [ lnk-amqp] protokołów. Jest również dostępny za pośrednictwem protokołu AMQP [Websocket] [ lnk-websockets] na porcie 443.
+    Te punkty końcowe są uwidaczniane za pomocą [MQTT 3.1.1][lnk-mqtt], HTTPS 1.1 i [protokołu AMQP 1.0] [ lnk-amqp] protokołów. Jest również dostępna za pośrednictwem protokołu AMQP [WebSockets] [ lnk-websockets] na porcie 443.
 
-* **Punkty końcowe usługi**. Każdy Centrum IoT udostępnia zestaw punktów końcowych dla sieci zaplecza rozwiązania do komunikowania się z urządzeniami. Z jednym wyjątkiem te punkty końcowe są dostępne tylko za pomocą [AMQP] [ lnk-amqp] protokołu. Punkt końcowy wywołania metody jest udostępniany za pośrednictwem protokołu HTTPS.
+* **Punkty końcowe usługi**. Każde Centrum IoT hub ujawnia zestaw punktów końcowych w zapleczu rozwiązania do komunikowania się z urządzeniami. Z jednym wyjątkiem te punkty końcowe są dostępne tylko przy użyciu [AMQP] [ lnk-amqp] protokołu. Punkt końcowy z wywołania metody jest uwidaczniany za pośrednictwem protokołu HTTPS.
   
-  * *Komunikaty urządzenia do chmury*. Ten punkt końcowy jest zgodny z [Azure Event Hubs][lnk-event-hubs]. Usługi zaplecza służy do odczytu [wiadomości urządzenia do chmury] [ lnk-d2c] wysyłanych przez urządzenia. Można tworzyć niestandardowe punkty końcowe na oprócz tego wbudowanych punktu końcowego Centrum IoT.
-  * *Chmury do urządzenia wysyłać i odbierać potwierdzeń dostarczenia*. Te punkty końcowe Włącz z zaplecza rozwiązania do wysyłania niezawodnej [wiadomości chmury do urządzenia][lnk-c2d]i otrzymywanie dostarczania odpowiednich lub wygaśnięcia potwierdzenia.
-  * *Odbieranie powiadomień pliku*. Tego obsługi komunikatów punktu końcowego pozwala na otrzymywanie powiadomień o urządzeniach udało się przekazać pliku. 
-  * *Bezpośrednie wywołania metody*. Ten punkt końcowy pozwala wywoływać usługi zaplecza [metoda bezpośrednia] [ lnk-methods] na urządzeniu.
-  * *Monitorowanie zdarzeń operacji odbioru*. Ten punkt końcowy pozwala na monitorowanie zdarzeń, jeśli Centrum IoT został skonfigurowany do wysyłania ich operacji odbioru. Aby uzyskać więcej informacji, zobacz [operacji centrum IoT monitorowania][lnk-operations-mon].
+  * *Odbieranie komunikatów z urządzenia do chmury*. Ten punkt końcowy jest zgodny z [usługi Azure Event Hubs][lnk-event-hubs]. Usługa zaplecza służy do odczytywania [komunikatów z urządzenia do chmury] [ lnk-d2c] wysyłane przez urządzenie. Niestandardowe punkty końcowe można utworzyć w usłudze IoT hub, oprócz tego wbudowany punkt końcowy.
+  * *Wysyłanie komunikatów z chmury do urządzeń i otrzymywać potwierdzeń dostarczenia*. Tych punktów końcowych, Włącz w zapleczu rozwiązania do wysyłania niezawodne [komunikatów z chmury do urządzeń][lnk-c2d]oraz dostarczania odpowiednich lub potwierdzenia wygaśnięcia.
+  * *Otrzymuj powiadomienia pliku*. Tego obsługi komunikatów punktu końcowego zezwala otrzymywać powiadomienia, gdy urządzenie pomyślnie przekazać plik. 
+  * *Bezpośrednie wywołania metody*. Ten punkt końcowy umożliwia usłudze zaplecza w celu wywołania [metoda bezpośrednia] [ lnk-methods] na urządzeniu.
+  * *Monitorowanie zdarzeń operacji odbioru*. Ten punkt końcowy umożliwia monitorowanie zdarzeń, jeśli Centrum IoT hub została skonfigurowana do wysyłania ich operacji odbioru. Aby uzyskać więcej informacji, zobacz [monitorowanie operacji usługi IoT Hub][lnk-operations-mon].
 
-[Azure IoT SDK] [ lnk-sdks] artykule opisano różne sposoby dostęp do tych punktów końcowych.
+[Azure IoT SDKs] [ lnk-sdks] artykule opisano różne sposoby dostępu do tych punktów końcowych.
 
-Użyj wszystkie punkty końcowe Centrum IoT [TLS] [ lnk-tls] protokołu i żaden punkt końcowy kiedykolwiek jest uwidaczniana w postaci niezaszyfrowanej niezabezpieczone kanałach.
+Użyj wszystkich punktów końcowych usługi IoT Hub [TLS] [ lnk-tls] protokołu i żaden punkt końcowy nigdy nie jest uwidaczniany za pośrednictwem niezaszyfrowanej niezabezpieczone kanałów.
 
 ## <a name="custom-endpoints"></a>Niestandardowe punkty końcowe
 
-Możesz połączyć istniejące usługi platformy Azure w ramach subskrypcji, z Centrum IoT na działanie jako punktów końcowych do rozsyłania wiadomości. Te punkty końcowe działać jako punkty końcowe usługi i są używane jako wychwytywanie tras wiadomości. Urządzenia nie można zapisać bezpośrednio dodatkowe punkty końcowe. Aby dowiedzieć się więcej na temat tras wiadomości, zobacz wpis przewodnik dewelopera na [wysyłanie i odbieranie komunikatów z Centrum IoT][lnk-devguide-messaging].
+Możesz połączyć istniejące usługi platformy Azure w ramach subskrypcji, do usługi IoT hub jako punkty końcowe do rozsyłania wiadomości. Te punkty końcowe działają jako punkty końcowe usługi i są używane jako ujścia dla trasy wiadomości. Urządzenia nie można zapisać bezpośrednio dodatkowe punkty końcowe. Aby dowiedzieć się więcej na temat trasy wiadomości, zobacz wpis przewodnik dla deweloperów na [wysyłanie i odbieranie komunikatów za pomocą usługi IoT hub][lnk-devguide-messaging].
 
-Centrum IoT obsługuje obecnie następujących usług platformy Azure jako dodatkowe punkty końcowe:
+Usługa IoT Hub obsługuje obecnie następujących usług platformy Azure jako dodatkowe punkty końcowe:
 
-* Kontenery magazynu Azure
+* Kontenery usługi Azure Storage
 * Event Hubs
 * Kolejki usługi Service Bus
 * Tematy dotyczące usługi Service Bus
 
-Centrum IoT wymaga dostępu do tych punktów końcowych usługi zapisu do rozsyłania wiadomości do pracy. Jeśli konfigurujesz punktami końcowymi za pośrednictwem portalu Azure, niezbędne uprawnienia są dodawane dla Ciebie. Upewnij się, że konfigurowania usługi do obsługi oczekiwanych przepływności. Podczas pierwszej konfiguracji rozwiązania IoT, konieczne może być monitorowanie dodatkowych punktów końcowych i wprowadź wymagane zmiany do rzeczywistego obciążenia.
+Usługa IoT Hub wymaga dostępu do tych punktów końcowych usługi zapisu do rozsyłania wiadomości do pracy. Jeśli skonfigurujesz punktów końcowych za pośrednictwem witryny Azure portal, niezbędne uprawnienia są dodawane. Upewnij się, że konfigurowanie usługi do obsługi oczekiwanej przepływności. Podczas pierwszej konfiguracji rozwiązania IoT, może być konieczne monitorowanie dodatkowych punktów końcowych i wprowadź wymagane zmiany dotyczące rzeczywistego obciążenia.
 
-Jeśli komunikat dopasowania wielu kieruje wszystkie wskaż tego samego punktu końcowego, Centrum IoT dostarcza wiadomość do tego punktu końcowego tylko raz. W związku z tym jest konieczne konfigurowanie deduplikacji na kolejki usługi Service Bus lub tematu. W kolejkach podzielonym na partycje koligacji partycji gwarantuje porządkowania wiadomości.
+Jeśli komunikat zgodne kieruje wiele wskazujące do tego samego punktu końcowego, IoT Hub dostarczy komunikatu do określonego punktu końcowego tylko raz. W związku z tym nie ma potrzeby konfigurowania deduplikacji tematu lub kolejki usługi Service Bus. Partycjonowane kolejki koligacji partycji gwarantuje, kolejność komunikatów.
 
-Limitów liczby można dodać punktów końcowych, zobacz [przydziały i ograniczenia przepustowości][lnk-devguide-quotas].
+Limity liczby punktów końcowych, możesz dodać, zobacz [przydziałów i dławienia][lnk-devguide-quotas].
 
-### <a name="when-using-azure-storage-containers"></a>Korzystając z kontenerami usługi Azure Storage
+### <a name="when-using-azure-storage-containers"></a>Podczas korzystania z kontenerów usługi Azure Storage
 
-Centrum IoT obsługuje tylko zapisywania danych do usługi Azure Storage kontenerów jako obiekty BLOB w [Apache Avro](http://avro.apache.org/) format. Centrum IoT partii wiadomości i zapisuje dane do obiektu blob zawsze, gdy:
+Usługa IoT Hub obsługuje tylko, zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB w [Apache Avro](http://avro.apache.org/) formatu. Usługa IoT Hub partii komunikatów i zapisuje dane do obiektu blob zawsze wtedy, gdy:
 
-* Partii osiągnie określony rozmiar.
-* Lub upływie pewnego czasu.
+* Zadanie wsadowe osiągnie określony rozmiar.
+* Lub upłynął określoną ilość czasu.
 
-Centrum IoT będą zapisywane pusty obiekt typu blob, jeśli nie ma żadnych danych do zapisania.
+Usługi IoT Hub będzie zapisywać do pustego obiektu blob, jeśli nie ma żadnych danych do zapisu.
 
-Centrum IoT domyślnie następującej konwencji nazewnictwa plików:
+Usługa IoT Hub wartością domyślną jest następująca Konwencja nazewnictwa pliku:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
-Można użyć niezależnie od nazw Konwencji, które mają plików, jednak należy użyć wszystkie wyświetlone tokenów.
+Możesz użyć dowolnych nazw plików Konwencji, którą chcesz, jednak należy użyć listy wszystkich tokenów.
 
-### <a name="when-using-service-bus-queues-and-topics"></a>Korzystając z tematów i kolejek usługi Service Bus
+### <a name="when-using-service-bus-queues-and-topics"></a>Podczas korzystania z tematów i kolejek usługi Service Bus
 
-Tematy dotyczące używany jako punkty końcowe Centrum IoT nie może mieć i kolejek usługi Service Bus **sesji** lub **wykrywania duplikatów** włączone. Jeśli dowolna z tych opcji są włączone, punkt końcowy jest wyświetlany jako **informujący** w portalu Azure.
+Kolejki usługi Service Bus i tematy, używane jako punktów końcowych usługi IoT Hub nie może mieć **sesje** lub **wykrywania duplikatów** włączone. Jeśli jedno z tych opcji są włączone, punkt końcowy jest wyświetlany jako **informujący** w witrynie Azure portal.
 
-## <a name="field-gateways"></a>Pole bram
+## <a name="field-gateways"></a>Bram działających w terenie
 
-Rozwiązania IoT *bramy pola* znajduje się między urządzeniami a punktami końcowymi Centrum IoT. Jest to zazwyczaj znajduje się w pobliżu urządzenia. Urządzenia komunikują się bezpośrednio z bramą pola przy użyciu protokołu obsługiwanego przez urządzenia. Brama pola łączy do punktu końcowego Centrum IoT przy użyciu protokołu, który jest obsługiwany przez Centrum IoT. Brama pole może być dedykowanym urządzeniem sprzętowym lub niskiego poboru energii komputer z oprogramowaniem bram.
+Rozwiązania IoT *bramy w terenie* znajduje się między urządzeniami a punktami końcowymi usługi IoT Hub. Jest to zwykle znajduje się w pobliżu urządzeń. Urządzenia komunikują się bezpośrednio z bramy w terenie przy użyciu protokołu obsługiwanego przez urządzenia. Łączy się z punktem końcowym usługi IoT Hub przy użyciu protokołu, który jest obsługiwany przez usługę IoT Hub z bramy w terenie. Bramy w terenie może być dedykowanym urządzeniem sprzętowym lub komputer słabym zasilaniu z oprogramowaniem bram.
 
-Można użyć [Azure IoT krawędzi] [ lnk-iot-edge] do zaimplementowania bramy pola. Krawędź IoT oferuje funkcje, takie jak multipleksowania komunikacji z różnych urządzeń do tego samego połączenia Centrum IoT.
+Możesz użyć [usługi Azure IoT Edge] [ lnk-iot-edge] do wdrożenia bramy w terenie. Usługi IoT Edge oferuje funkcje, takie jak multipleksowania komunikacji przy użyciu wielu urządzeń do tego samego połączenia usługi IoT Hub.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Inne tematy dokumentacji, w tym przewodniku deweloperów Centrum IoT obejmują:
+Inne tematy referencyjne w tym przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [Język zapytań Centrum IoT urządzenia twins, zadań i rozsyłania wiadomości][lnk-devguide-query]
-* [Przydziały i ograniczenia przepustowości][lnk-devguide-quotas]
-* [Obsługa MQTT Centrum IoT][lnk-devguide-mqtt]
+* [Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości][lnk-devguide-query]
+* [Limity przydziału i ograniczenia przepustowości][lnk-devguide-quotas]
+* [Obsługa protokołu MQTT Centrum IoT][lnk-devguide-mqtt]
 
 [lnk-iot-edge]: https://github.com/Azure/iot-edge
 

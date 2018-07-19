@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.author: yanacai
-ms.openlocfilehash: 806b562212075375cef25a90fbcdc74730cac87d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 919ec4e26c2da945a0623e772dc00d378a583b69
+ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117441"
+ms.locfileid: "39126749"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -170,7 +170,7 @@ W niektórych przypadkach możesz chcieć dynamicznie ustawić wartość zmienne
 
 [Dowiedz się więcej o sposobie ustawiania parametrów dla skryptu U-SQL](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Uruchamianie pakietów SSIS na platformie Azure](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Usługa Azure Feature Pack dla usług Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

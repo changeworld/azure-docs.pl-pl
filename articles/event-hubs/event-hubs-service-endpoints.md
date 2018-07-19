@@ -1,6 +1,6 @@
 ---
 title: Punkty końcowe usługi sieci wirtualnej i zasady usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Dodaj punkt końcowy usługi Microsoft.ServiceBus do sieci wirtualnej.
+description: Dodaj punkt końcowy usługi elementu Microsoft.EventHub z siecią wirtualną.
 services: event-hubs
 documentationcenter: ''
 author: clemensv
@@ -10,46 +10,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: clemensv
-ms.openlocfilehash: a23e5414cd3c60192badfee65b14c49cd5e96f4e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 3746c4b7d1b53d7522f317fd2e349d31ba77f406
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036075"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136342"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Event Hubs
 
-Integracja usługi Event hubs z [punktów końcowych usługi Virtual Network (VNet)] [ vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń, takich jak maszyny wirtualne, które są powiązane do wirtualnego sieci ze ścieżką ruchu sieciowego są zabezpieczone po obu stronach. 
+Integracja usługi Event Hubs za pomocą [punkty końcowe usługi Virtual Network (VNet)] [ vnet-sep] umożliwia bezpieczny dostęp do możliwości obsługi komunikatów z obciążeń, takich jak maszyny wirtualne, które są powiązane wirtualny sieci przy użyciu ścieżki ruchu sieciowego zabezpieczonego na obu końcach. 
 
-Po skonfigurowaniu może być powiązane z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej odpowiednich centra zdarzeń w przestrzeni nazw nie akceptuje ruch z dowolnego miejsca, ale uprawnień sieci wirtualnej. Z perspektywy sieci wirtualnej powiązanie dla punktu końcowego przestrzeni nazw usługi Event Hubs umożliwia skonfigurowanie izolowane sieci tunelu w podsieci sieci wirtualnej z usługą obsługi wiadomości.
+Po skonfigurowaniu, może być powiązane z co najmniej jeden punkt końcowy usługi podsieci sieci wirtualnej, odpowiednich nazw usługi Event Hubs nie jest już akceptuje ruch z dowolnego miejsca, ale uprawnień sieci wirtualnych. Z perspektywy sieci wirtualnej powiązanie punktu końcowego usługi do przestrzeni nazw usługi Event Hubs służy do konfigurowania izolowanych sieci tunelu z podsieci sieci wirtualnej do obsługi komunikatów usługi.
 
-Wynik jest prywatny i izolowane relację między obciążeń związanych z podsieci i odpowiednich przestrzeni nazw usługi Event Hubs, mimo adres sieciowy zauważalne obsługi komunikatów usługi punktu końcowego są w zakresie publicznego adresu IP.
+Wynik jest prywatne i izolowany relacji między obciążeniami usług związanych z podsieci i odpowiednich przestrzeni nazw usługi Event Hubs, pomimo adres sieciowy dostrzegalnych obsługi komunikatów usługi punktu końcowego są w zakresie publicznych adresów IP.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez integrację sieci wirtualnej 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Scenariusze zaawansowane zabezpieczenia obsługiwane przez Integracja sieci wirtualnej 
 
-Rozwiązania wymagające zabezpieczeń ścisłej i związane i gdy podsieci sieci wirtualnej zapewniają segmentacji między usługami compartmentalized, zazwyczaj nadal konieczne ścieżki komunikacji między usługami znajdującej się w tych przedziałów.
+Rozwiązania, które wymagają bezpieczeństwa ścisłej i związane i gdzie podsieci sieci wirtualnej segmentacji między usługami compartmentalized ogólnie rzecz biorąc nadal potrzebują zaufanych ścieżek komunikacji między usługami znajdującymi się w tych przedziałów.
 
-Wszelkie natychmiastowego trasy IP między przedziałów, w tym te wartości HTTPS za pośrednictwem protokołu TCP/IP, niesie ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieci w górę. Moduł obsługi Podaj ścieżki komunikacji całkowicie izolowanych, w których wiadomości nawet są zapisywane na dysku, zgodnie z ich przechodzenie między stronami. Obciążeń w dwóch odrębnych sieci wirtualnych znajdujących się w tym samym wystąpieniu usługi Event Hubs są powiązane mogą komunikować się wydajne i niezawodne za pośrednictwem wiadomości, gdy integralności granic izolacji sieci odpowiednich są zachowywane.
+Wszelkie natychmiastowego trasy IP między przedziały, w tym te wartości protokołu HTTPS za pośrednictwem protokołu TCP/IP, niesie ze sobą ryzyko wykorzystania luk w zabezpieczeniach z warstwy sieciowej w górę. Usługi przesyłania komunikatów zapewniają zaufanych ścieżek komunikacji w pełni izolowane, gdzie komunikaty nawet są zapisywane na dysku, ponieważ ich przejść między stronami. Obciążeń z dwóch odrębnych sieci wirtualnych, które do tego samego wystąpienia usługi Event Hubs są powiązane mogą komunikować się sprawnie i niezawodnie za pośrednictwem wiadomości, gdy integralności granic izolacji sieci odpowiednich są zachowywane.
  
-Oznacza to, że compartments bezpieczeństwa poufnych rozwiązań w chmurze nie tylko dostęp do platformy Azure w branży niezawodnych i skalowalne asynchroniczne możliwości obsługi komunikatów, ale mogą teraz przy użyciu wiadomości do tworzenia ścieżek komunikacji między bezpieczne rozwiązanie, które są z założenia bezpieczniejsze niż jest to poprzez dowolny tryb komunikacji peer-to-peer, łącznie z protokołu HTTPS i innych protokołów zabezpieczonego protokołem TLS gniazda.
+Oznacza to, że compartments bezpieczeństwa poufnych rozwiązań w chmurze nie tylko dostęp do możliwości platformy Azure wiodącą w branży niezawodne i skalowalne asynchronicznej obsługi komunikatów, ale mogą teraz używać wiadomości do tworzenie zaufanych ścieżek komunikacji między bezpiecznych rozwiązań, które są natury bezpieczniejszy niż co to jest osiągalna z dowolnym trybie komunikacji peer-to-peer, łącznie z protokołu HTTPS i innych protokołów gniazda korzystającej z protokołu TLS.
 
-## <a name="bind-event-hubs-to-virtual-networks"></a>Centra zdarzeń należy powiązać sieci wirtualnych
+## <a name="bind-event-hubs-to-virtual-networks"></a>Powiązania usługi Event Hubs z sieciami wirtualnymi
 
-*Zasady sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy serwer usługi Azure Event Hubs akceptuje połączenia z podsiecią określonej sieci wirtualnej.
+*Reguły sieci wirtualnej* to funkcja zabezpieczeń zapory, która kontroluje, czy serwer usługi Azure Event Hubs akceptuje połączenia z podsieci określonej sieci wirtualnej.
 
-Powiązanie do przestrzeni nazw usługi Event Hubs do sieci wirtualnej jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi sieci wirtualnej** w podsieci sieci wirtualnej i włącz go do "Microsoft.ServiceBus", jak wyjaśniono w [omówienie punktu końcowego usługi] [ vnet-sep]. Po dodaniu punktu końcowego usługi można powiązać przestrzeni nazw usługi Event Hubs za pomocą *reguły sieci wirtualnej*.
+Powiązania przestrzeni nazw usługi Event Hubs do sieci wirtualnej jest procesem dwuetapowym. Najpierw należy utworzyć **punkt końcowy usługi sieci wirtualnej** w podsieci sieci wirtualnej i włącz ją dla elementu "Microsoft.EventHub", jak wyjaśniono w [Przegląd punktów końcowych usługi] [ vnet-sep]. Po dodaniu punktu końcowego usługi, możesz powiązać przestrzeni nazw usługi Event Hubs za pomocą *reguły sieci wirtualnej*.
 
-Reguła sieci wirtualnej jest nazwane skojarzenia centra zdarzeń w przestrzeni nazw z podsiecią sieci wirtualnej. Gdy istnieje reguła, wszystkie obciążenia związane z podsiecią udzielany jest dostęp do przestrzeni nazw usługi Event Hubs. Centra zdarzeń się nigdy nie ustanawia wychodzące połączenie, nie trzeba uzyskać dostęp i w związku z tym nigdy nie uzyskuje dostęp do podsieci, należy włączyć tę regułę.
+Reguła sieci wirtualnej jest skojarzeniem o nazwie przestrzeni nazw usługi Event Hubs za pomocą podsieci sieci wirtualnej. Gdy istnieje reguła, wszystkie obciążenia związane z podsiecią uzyskują dostęp do przestrzeni nazw usługi Event Hubs. Usługa Event Hubs sam nigdy nie ustanawia wychodzące połączenia, nie trzeba uzyskać dostęp i w związku z tym nigdy nie uzyskuje dostęp do podsieci przez włączenie tej reguły.
 
-### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Utwórz regułę sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
+### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej za pomocą szablonów usługi Azure Resource Manager
 
 Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Event Hubs.
 
 Parametry szablonu:
 
-* **Nazwa przestrzeni nazw**: przestrzeń nazw usługi Event Hubs.
-* **vnetRuleName**: nazwę reguły sieć wirtualna ma zostać utworzony.
-* **virtualNetworkingSubnetId**: w pełni kwalifikowana Menedżera zasobów dla podsieci sieci wirtualnej; na przykład `subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
+* **namespaceName**: przestrzeń nazw usługi Event Hubs.
+* **vnetRuleName**: nazwę reguły sieci wirtualnej ma zostać utworzony.
+* **virtualNetworkingSubnetId**: pełną ścieżkę Menedżera zasobów w podsieci sieci wirtualnej; na przykład `subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` domyślne podsieci sieci wirtualnej.
 
 ```json
 {  
@@ -88,14 +88,14 @@ Parametry szablonu:
 }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dla [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o sieciach wirtualnych zobacz następujące linki:
+Aby uzyskać więcej informacji na temat sieci wirtualnych zobacz następujące linki:
 
 - [Punkty końcowe usługi sieci wirtualnej platformy Azure][vnet-sep]
-- [Filtrowanie IP centra zdarzeń platformy Azure][ip-filtering]
+- [Filtrowanie adresów IP centrów zdarzeń platformy Azure][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md

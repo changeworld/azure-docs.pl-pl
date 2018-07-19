@@ -9,15 +9,19 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 849f8e4f961bcfde2bb4984185d571601060d957
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
+ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076463"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39136185"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania usługi Service Fabric siatki
 Usługa Azure Service Fabric siatki jest w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynu i sieci. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
+
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak zgłosić problem lub Zadaj pytanie?
+
+Zadawaj pytania, uzyskuj odpowiedzi od inżynierów firmy Microsoft i zgłaszania problemów w [repozytorium GitHub service-fabric siatki preview](https://aka.ms/sfmeshissues).
 
 ## <a name="quota-and-cost"></a>Limit przydziału i kosztów
 
