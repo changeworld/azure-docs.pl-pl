@@ -3,7 +3,7 @@ title: Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Ce
 description: Ten dokument ułatwia korzystanie z funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center w celu tworzenia listy dozwolonych aplikacji uruchamianych na maszynach wirtualnych platformy Azure.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/15/2018
-ms.author: yurid
-ms.openlocfilehash: 841dbbf97a7fa25aa001636ba92cc2a966be4908
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 07/10/2018
+ms.author: terrylan
+ms.openlocfilehash: fa2f3c10687a02c5d0be8d7bb0ae88b2b0c38e19
+ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777207"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38989969"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center (wersja zapoznawcza)
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 701fe17869d6e7744751d80330422ea47361b411
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff2659ed7dbdb21bccb8b5858d946b47951e40cc
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216144"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048937"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services
 W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów haseł wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji skrótów haseł użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
@@ -78,7 +78,7 @@ Poniżej znajdują się instrukcje zmieniania haseł dla użytkowników:
 Nowego hasła w usługach Azure Active Directory Domain Services można używać już kilka minut po jego zmianie. Po około 20 minutach użytkownicy będą mogli logować się na komputerach dołączonych do domeny zarządzanej przy użyciu nowo zmienionego hasła.
 
 ## <a name="related-content"></a>Powiązana zawartość
-* [Jak zaktualizować własne hasło](../active-directory/active-directory-passwords-update-your-own-password.md)
+* [Jak zaktualizować własne hasło](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 * [Wprowadzenie do zarządzania hasłami w usłudze Azure AD](../active-directory/authentication/quickstart-sspr.md)
 * [Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services dla zsynchronizowanej dzierżawy usługi Azure AD](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Administrowanie domeną zarządzaną usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-administer-domain.md)

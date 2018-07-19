@@ -1,9 +1,9 @@
 ---
 title: Przewodnik Wprowadzenie dla języka Node.js
-description: Dowiedz się, jak utworzyć prostą aplikację sieci Web Node.js, a następnie wdrożyć ją do usługi w chmurze Azure.
+description: Dowiedz się, jak utworzyć prostą aplikację internetową Node.js, a następnie wdrożyć ją do usługi w chmurze Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: thraka
+author: jpconnock
 manager: timlt
 editor: ''
 ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
-ms.author: adegeo
-ms.openlocfilehash: 5d69f83aed9160f94260b71e60fcf0e15b435569
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: jeconnoc
+ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011683"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39003456"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Tworzenie i wdrażanie aplikacji Node.js do usługi w chmurze Azure
 
@@ -28,9 +28,9 @@ Ten samouczek pokazuje, jak utworzyć prostą aplikację Node.js działającą w
 Dalsze informacje na temat usług Cloud Services oraz ich porównanie z usługami Witryny sieci Web i Maszyny wirtualne Azure można znaleźć w temacie [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines].
 
 > [!TIP]
-> Chcesz utworzyć prostą witrynę sieci Web? Jeśli scenariusz obejmuje tylko prosty fronton witryny sieci Web, rozważ użycie [korzystanie z lekkiej aplikacji sieci web]. Możesz łatwo przeprowadzić uaktualnienie do Usługi w chmurze w przypadku rozwoju witryny sieci Web lub zmiany wymagań.
+> Chcesz utworzyć prostą witrynę sieci Web? Jeśli scenariusz obejmuje tylko prosty fronton witryny internetowej, rozważ [korzystanie z lekkiej aplikacji internetowej]. Możesz łatwo przeprowadzić uaktualnienie do Usługi w chmurze w przypadku rozwoju witryny internetowej lub zmiany wymagań.
 
-Wykonując czynności opisane w tym samouczku, utworzysz prostą aplikację sieci Web hostowaną wewnątrz roli sieci Web. Będziesz testować aplikację w środowisku lokalnym przy użyciu emulatora obliczeń, a następnie wdrażać ją za pomocą narzędzi wiersza polecenia programu PowerShell.
+Wykonując czynności opisane w tym samouczku, utworzysz prostą aplikację internetową hostowaną wewnątrz roli internetowej. Będziesz testować aplikację w środowisku lokalnym przy użyciu emulatora obliczeń, a następnie wdrażać ją za pomocą narzędzi wiersza polecenia programu PowerShell.
 
 Będzie to prosta aplikacja „hello world”:
 
@@ -165,7 +165,7 @@ Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowi
 <!-- URL List -->
 
 [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines]: ../app-service/choose-web-site-cloud-service-vm.md
-[korzystanie z lekkiej aplikacji sieci web]: ../app-service/app-service-web-get-started-nodejs.md
+[korzystanie z lekkiej aplikacji internetowej]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
 [Connect PowerShell]: /powershell/azureps-cmdlets-docs#step-3-connect

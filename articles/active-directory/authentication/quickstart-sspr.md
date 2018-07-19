@@ -10,21 +10,21 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c99ae755705dddf501609c8f199d1977d0bde415
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33870026"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39057365"
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Szybkie wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
 
 > [!IMPORTANT]
-> **Jesteś tutaj, ponieważ masz problemy z logowaniem?** Jeśli tak, zobacz [Nie pamiętam swojego hasła do usługi Azure AD](../active-directory-passwords-update-your-own-password.md).
+> **Jesteś tutaj, ponieważ masz problemy z logowaniem?** Jeśli tak, zobacz [Nie pamiętam swojego hasła do usługi Azure AD](../user-help/active-directory-passwords-update-your-own-password.md).
 
 Funkcja samoobsługowego resetowania haseł pozwala administratorom IT w prosty sposób dać użytkownikom możliwość resetowania lub odblokowywania ich haseł lub kont. System obejmuje szczegółowe raporty pozwalające śledzić, kiedy użytkownicy korzystają z systemu, oraz powiadomienia ostrzegające o jego nieprawidłowym użyciu lub nadużyciach związanych z zabezpieczeniami.
 
-W tym przewodniku założono, że masz już działającą dzierżawę usługi Azure Active Directory (Azure AD) w wersji próbnej lub licencjonowanej. Jeśli potrzebujesz pomocy przy konfigurowaniu usługi Azure AD, zobacz [Wprowadzenie do usługi Azure AD](../get-started-azure-ad.md).
+W tym przewodniku założono, że masz już działającą dzierżawę usługi Azure Active Directory (Azure AD) w wersji próbnej lub licencjonowanej. Jeśli potrzebujesz pomocy przy konfigurowaniu usługi Azure AD, zobacz [Wprowadzenie do usługi Azure AD](../fundamentals/get-started-azure-ad.md).
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Włączanie funkcji samoobsługowego resetowania haseł dla dzierżawy usługi Azure AD
 
@@ -62,7 +62,7 @@ W tym przewodniku założono, że masz już działającą dzierżawę usługi Az
    * Powiadamianie użytkowników o resetowaniu hasła.
    * Powiadamianie wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło.
 
-W tym momencie skonfigurowano samoobsługowe resetowanie haseł dla używanej dzierżawy usługi Azure AD. Użytkownicy mogą teraz używać instrukcji opisanych w artykułach [Rejestrowanie na potrzeby samoobsługowego resetowania hasła](../active-directory-passwords-reset-register.md) i [Resetowanie lub zmienianie hasła](../active-directory-passwords-update-your-own-password.md) do aktualizowania swoich haseł bez interwencji administratora. Możesz się zatrzymać w tym miejscu, jeśli praca odbywa się tylko w chmurze. Możesz również przejść do następnej sekcji, aby skonfigurować synchronizację haseł na lokalną domenę usługi Active Directory.
+W tym momencie skonfigurowano samoobsługowe resetowanie haseł dla używanej dzierżawy usługi Azure AD. Użytkownicy mogą teraz używać instrukcji opisanych w artykułach [Rejestrowanie na potrzeby samoobsługowego resetowania hasła](../user-help/active-directory-passwords-reset-register.md) i [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md) do aktualizowania swoich haseł bez interwencji administratora. Możesz się zatrzymać w tym miejscu, jeśli praca odbywa się tylko w chmurze. Możesz również przejść do następnej sekcji, aby skonfigurować synchronizację haseł na lokalną domenę usługi Active Directory.
 
 > [!TIP]
 > Przetestuj samoobsługowe resetowanie haseł na koncie użytkownika, a nie koncie administratora, ponieważ firma Microsoft narzuca silne wymagania w zakresie uwierzytelniania dla kont administratorów platformy Azure. Aby uzyskać więcej informacji na temat zasad haseł administratorów, zobacz nasz [artykuł dotyczący zasad haseł](concept-sspr-policy.md#administrator-password-policy-differences).
@@ -95,8 +95,8 @@ Samoobsługowe resetowanie haseł można w łatwy sposób wyłączyć. Otwórz d
 Poniższe artykuły zawierają dodatkowe informacje dotyczące resetowania haseł za pomocą usługi Azure AD:
 
 * [Jak wykonać pomyślne wdrożenie funkcji samoobsługowego resetowania haseł?](howto-sspr-deployment.md)
-* [Resetowanie lub zmienianie hasła](../active-directory-passwords-update-your-own-password.md)
-* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../active-directory-passwords-reset-register.md)
+* [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md)
 * [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
 * [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie metody uwierzytelniania są dostępne dla użytkowników?](concept-sspr-howitworks.md#authentication-methods)

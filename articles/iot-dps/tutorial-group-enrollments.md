@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 02cc3f861864d3bfa878be6501b8563715f88dac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 79f1b299417acbfa2d9e565f0ec9aebede2508e1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971323"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39002659"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tworzenie i aprowizowanie symulowanego urządzenia X.509 za pomocą zestawu SDK usługi i urządzenia Java oraz grup rejestracji dla usługi IoT Hub Device Provisioning
 
@@ -32,7 +32,7 @@ Pamiętaj, aby wcześniej wykonać kroki przedstawione w części [Konfigurowani
 
 1. Upewnij się, że na swojej maszynie masz zainstalowane oprogramowanie `git` i że jest ono dodane do zmiennych środowiskowych dostępnych z okna poleceń. Zobacz stronę z [narzędziami klienckimi Git organizacji Software Freedom Conservancy](https://git-scm.com/download/), aby uzyskać najnowszą wersję narzędzi `git` do zainstalowania, które obejmują powłokę **Git Bash**, czyli aplikację wiersza polecenia, która może służyć do interakcji z lokalnym repozytorium Git. 
 
-1. Użyj następującego [omówienia certyfikatów](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), aby utworzyć certyfikaty testowe. Aby uzyskać bardziej szczegółowe informacje na temat tworzenia certyfikatów, zobacz [PowerShell scripts to manage CA-signed X.509 certificates (Skrypty programu PowerShell do zarządzania certyfikatami X.509 podpisanymi przez urząd certyfikacji)](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates).
+1. Użyj następującego [omówienia certyfikatów](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), aby utworzyć certyfikaty testowe.
 
     > [!NOTE]
     > Ten krok wymaga biblioteki [OpenSSL](https://www.openssl.org/), która może zostać skompilowana i zainstalowana ze źródła lub pobrana i zainstalowana od [innego podmiotu](https://wiki.openssl.org/index.php/Binaries), takiego jak [ten](https://sourceforge.net/projects/openssl/). Jeśli certyfikaty: _główny_, _pośredni_ i _urządzenia_ zostały już utworzone, możesz pominąć ten krok.

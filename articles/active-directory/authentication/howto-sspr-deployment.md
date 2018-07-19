@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3e14c51d644a29985e759da7c8a29927680d3891
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866987"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39048955"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
@@ -86,8 +86,8 @@ Samoobsługowe resetowanie haseł można w łatwy sposób wyłączyć. Otwórz d
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Resetowanie lub zmienianie hasła](../active-directory-passwords-update-your-own-password.md)
-* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../active-directory-passwords-reset-register.md)
+* [Resetowanie lub zmienianie hasła](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](../user-help/active-directory-passwords-reset-register.md)
 * [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
 * [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)

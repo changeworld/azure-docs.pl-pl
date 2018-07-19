@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: MT
+ms.openlocfilehash: 23b5373f4986c4a3d113baebe9e04ce65b9a9df0
+ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934472"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39062903"
 ---
 Do tej pory kod aplikacji był uruchamiany tak, jakby nad aplikacją pracował tylko jeden deweloper. W tej sekcji dowiesz się, jak usługa Azure Dev Spaces upraszcza programowanie zespołowe:
 * Pozwól zespołowi deweloperów pracować w tym samym środowisku: w zależności od potrzeb w udostępnionej przestrzeni deweloperskiej lub w odrębnych przestrzeniach deweloperskich.
@@ -45,7 +45,7 @@ Kiedy tworzysz kod dla swojej usługi i nie jest on jeszcze gotowy do zaewidencj
 > [!Note]
 > Zanim przejdziesz dalej, zamknij wszystkie okna programu VS Code dla obu usług, a następnie uruchom polecenie `azds up -d` w każdym z folderów głównych usługi. (Jest to ograniczenie wersji zapoznawczej).
 
-Przyjrzyjmy się, gdzie obecnie są uruchamiane usługi. Uruchom polecenie `azds list`. Zobaczysz dane wyjściowe podobne do poniższych:
+Przyjrzyjmy się, gdzie obecnie są uruchamiane usługi. Uruchom polecenie `azds list-up`. Zobaczysz dane wyjściowe podobne do poniższych:
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points

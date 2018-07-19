@@ -14,7 +14,7 @@ W programie Visual Studio utwórz nową aplikację konsoli dla systemu Windows. 
 
 Wszystkie przykłady kodu w tym samouczku można dodać do metody `Main()` w pliku `Program.cs` aplikacji konsolowej.
 
-Biblioteki klienta usługi Azure Storage można używać w aplikacjach .NET dowolnego typu , m.in. usługach w chmurze lub aplikacjach sieci Web platformy Azure, aplikacjach pulpitu i aplikacjach mobilnych. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
+Biblioteki klienta usługi Azure Storage można używać w aplikacjach .NET dowolnego typu , m.in. usługach w chmurze lub aplikacjach internetowych platformy Azure, aplikacjach pulpitu i aplikacjach mobilnych. W tym przewodniku dla uproszczenia przedstawiono aplikację konsolową.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Użycie pakietu NuGet w celu zainstalowania wymaganych pakietów
 Istnieją dwa pakiety, które trzeba przywołać w projekcie, aby ukończyć ten samouczek:
