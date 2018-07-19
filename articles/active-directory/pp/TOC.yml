@@ -1,4 +1,0 @@
-- name: Uzyskiwanie dostępu do magazynu platformy Azure przy użyciu tożsamości usługi zarządzanej
-  items:
-    - name: Z maszyny wirtualnej z systemem Linux przy użyciu klucza dostępu
-      href: msi-tutorial-linux-vm-access-storage.md
