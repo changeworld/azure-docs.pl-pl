@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4e547a97cde896acc4b6c8b19bc6c6cebf512adb
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
+ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867634"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39068747"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Tworzenie i kierowanie zdarzeń usługi Blob Storage za pomocą witryny Azure Portal i usługi Event Grid
 
@@ -27,7 +27,7 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Blob Storage](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../storage/common/storage-account-options.md#general-purpose-v2). Konta **ogólnego przeznaczenia w wersji 2 (GPv2)** to konta magazynu, które obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage. 
+Do korzystania ze zdarzeń usługi Blob Storage potrzebne jest [konto usługi Blob Storage](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) lub [konto magazynu ogólnego przeznaczenia w wersji 2](../storage/common/storage-account-options.md#general-purpose-v2-accounts). Konta **ogólnego przeznaczenia w wersji 2 (GPv2)** to konta magazynu, które obsługują wszystkie funkcje wszystkich usług magazynu, w tym usług Blobs, Files, Queues i Tables. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. W przypadku aplikacji wymagających tylko magazynu obiektów blokowych lub uzupełnialnych obiektów blob zalecamy używanie kont usługi Blob Storage. 
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 

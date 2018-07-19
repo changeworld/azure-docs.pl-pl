@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92bd7190832da6ee9da7d1679b9f27b66a15e3a4
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ce38dabbe9aa69f7c54bb49888ad83e01a7c9522
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904309"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39004884"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej dla maszyny wirtualnej z systemem Linux w celu uzyskiwania dostępu do usługi Azure Data Lake Store
 
@@ -52,7 +52,7 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Linux. Możesz te
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Ubuntu Server 16.04 LTS**.
 3. Wprowadź informacje o maszynie wirtualnej. W obszarze **Typ uwierzytelniania** wybierz pozycję **Klucz publiczny SSH** lub **Hasło**. Utworzone poświadczenia umożliwiają logowanie na maszynie wirtualnej.
 
-   ![Okienko „Podstawowe” służące do tworzenia maszyny wirtualnej](../media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
+   ![Okienko „Podstawowe” służące do tworzenia maszyny wirtualnej](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
 
 4. Na liście **Subskrypcja** wybierz subskrypcję dla maszyny wirtualnej.
 5. Aby wybrać nową grupę zasobów, w której chcesz utworzyć maszynę wirtualną, wybierz kolejno pozycje **Grupy zasobów** > **Utwórz nową**. Po zakończeniu wybierz pozycję **OK**.
@@ -65,7 +65,7 @@ Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie token�
 1. W obszarze **Maszyna wirtualna** wybierz maszynę wirtualną, na której chcesz włączyć tożsamość usługi zarządzanej.
 2. W okienku po lewej stronie wybierz pozycję **Konfiguracja**.
 3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz pozycję **Tak**. Jeśli chcesz ją wyłączyć, wybierz pozycję **Nie**.
-   ![Zaznaczanie pozycji „Rejestruj w usłudze Azure Active Directory”](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Zaznaczanie pozycji „Rejestruj w usłudze Azure Active Directory”](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Wybierz pozycję **Zapisz**.
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udzielanie maszynie wirtualnej praw dostępu do usługi Azure Data Lake Store

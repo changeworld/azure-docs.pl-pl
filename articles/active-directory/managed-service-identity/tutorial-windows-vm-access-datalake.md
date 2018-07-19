@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: afd35c963c2c1c4badb32f7e8f7dba1dce87481c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a7935aa245239ed32527d2c22fd41845c6da2ae1
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904292"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39007971"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Samouczek: używanie tożsamości usługi zarządzanej (MSI) na maszynie wirtualnej z systemem Windows do uzyskiwania dostępu do usługi Azure Data Lake Store
 
@@ -53,7 +53,7 @@ W tym samouczku utworzymy nową maszynę wirtualną z systemem Windows.  Możesz
 5. Aby wybrać nową **Grupę zasobów**, w której chcesz utworzyć maszynę wirtualną, wybierz opcję **Utwórz nową**. Po zakończeniu kliknij przycisk **OK**.
 6. Wybierz rozmiar maszyny wirtualnej. Aby wyświetlić więcej rozmiarów, wybierz pozycje **Wyświetl wszystkie** lub zmień filtr **Obsługiwany typ dysku**. Na stronie ustawień pozostaw ustawienia domyślne i kliknij przycisk **OK**.
 
-   ![Alternatywny tekst obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
+   ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
 ## <a name="enable-msi-on-your-vm"></a>Włączanie tożsamości usługi zarządzanej na maszynie wirtualnej 
 
@@ -63,11 +63,11 @@ Tożsamość usługi zarządzanej maszyny wirtualnej umożliwia uzyskanie token�
 2. Na lewym pasku nawigacyjnym kliknij opcję **Konfiguracja**. 
 3. Zobaczysz ekran **Tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć tożsamość usługi zarządzanej, wybierz opcję **Tak**. Jeśli chcesz ją wyłączyć, wybierz opcję Nie. 
 4. Pamiętaj, aby kliknąć przycisk **Zapisz** w celu zapisania konfiguracji.  
-   ![Alternatywny tekst obrazu](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+   ![Alternatywny tekst obrazu](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 5. Jeżeli chcesz sprawdzić i upewnić się, które rozszerzenia zainstalowano na tej maszynie wirtualnej, kliknij przycisk **Rozszerzenia**. Jeżeli tożsamość usługi zarządzanej jest włączona, na liście pojawi się pozycja **ManagedIdentityExtensionforWindows**.
 
-   ![Alternatywny tekst obrazu](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
+   ![Alternatywny tekst obrazu](media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udzielanie maszynie wirtualnej praw dostępu do usługi Azure Data Lake Store
 

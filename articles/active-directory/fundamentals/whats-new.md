@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9f0d0b9732b2af36a0411329cede01a9b8cc8efc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 480bbd543ddef60dc8dd84d4b454ef5a8c742636
+ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920818"
+ms.lasthandoff: 07/13/2018
+ms.locfileid: "39008396"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -35,7 +35,19 @@ Usługa Azure AD odbiera ulepszenia w sposób ciągły. Aby uzyskać najnowsze i
 
 Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie.
 
-## <a name="june-2018"></a>Czerwca 2018 r.
+## <a name="july-2018"></a>Lipca 2018 r.
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Widok starszych uwierzytelnienia za pomocą dzienników aktywności logowania
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** raportowania  
+**Możliwości produktu:** monitorowanie i raportowanie
+ 
+Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logowania, klienci mogą teraz Zobacz użytkowników, którzy używają starszej wersji uwierzytelnienia. Klienci będą mogli korzystać z tych informacji przy użyciu interfejsu API programu Graph w MS logowania lub za pośrednictwem logowania Dzienniki aktywności w portalu usługi Azure AD, w którym można korzystać z **aplikację kliencką** formantu, aby odfiltrować uwierzytelnień starszej wersji. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
+
+---
+
+## <a name="june-2018"></a>Czerwiec 2018 r.
 
 ### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Zmień powiadomienie: poprawki zabezpieczeń, aby przepływ delegowanej autoryzacji dla aplikacji przy użyciu interfejsu API usługi Azure AD działania dzienniki
 
@@ -242,16 +254,6 @@ Za pomocą zasad niestandardowych, możesz teraz dodać wspólnego punktu końco
 **Możliwości produktu:** logowania jednokrotnego
  
 Użytkownicy mogą teraz uzyskiwać dostęp do aplikacji za pomocą wewnętrznych adresów URL nawet spoza sieci firmowej przy użyciu bezpiecznego Moje aplikacje logowania rozszerzenia dla usługi Azure AD. To będzie działać z dowolnej aplikacji, która została opublikowana przy użyciu serwera Proxy aplikacji usługi Azure AD, w dowolnej przeglądarce, która także ma zainstalowane rozszerzenie przeglądarki panelu dostępu. Funkcji Przekierowywanie adresu URL jest automatycznie włączone, gdy użytkownik loguje się do rozszerzenia. Rozszerzenie jest dostępne do pobrania na [krawędzi](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367), i [Firefox](https://go.microsoft.com/fwlink/?linkid=866366).
-
----
-
-### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Widok starszych uwierzytelnienia za pomocą dzienników aktywności logowania
-
-**Typ:** nowa funkcja  
-**Kategoria usług:** raportowania  
-**Możliwości produktu:** monitorowanie i raportowanie
- 
-Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logowania, klienci mogą teraz Zobacz użytkowników, którzy używają starszej wersji uwierzytelnienia. Klienci będą mogli korzystać z tych informacji przy użyciu interfejsu API programu Graph w MS logowania lub za pośrednictwem logowania Dzienniki aktywności w portalu usługi Azure AD, w którym można korzystać z **aplikację kliencką** formantu, aby odfiltrować uwierzytelnień starszej wersji. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
 
 ---
  
