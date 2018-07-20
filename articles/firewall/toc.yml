@@ -40,6 +40,8 @@
       href: ../azure-resource-manager/resource-group-overview.md
 - name: Zasoby
   items:
+    - name: Często zadawane pytania
+      href: firewall-faq.md
     - name: Tworzenie szablonów
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Harmonogram działania dla platformy Azure
