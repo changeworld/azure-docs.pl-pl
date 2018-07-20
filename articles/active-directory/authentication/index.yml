@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentacja uwierzytelniania usługi Azure AD
+metadata:
+  document_id: 
+  title: Dokumentacja tożsamości usługi zarządzanej Azure Active Directory
+  description: Dowiedz się, jak wdrażać samoobsługowe resetowanie hasła, uwierzytelnianie wieloskładnikowe, niestandardowe listy zakazanych haseł i inteligentną blokadę usługi Azure Active Directory oraz zarządzać tymi funkcjami.
+  services: active-directory
+  ms.component: authentication
+  author: MicrosoftGuyJFlo
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/11/2018
+  ms.author: joflore
+  ms.openlocfilehash: 3830c63ec7121ddc3174b9867ca95964cde4154b
+  ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 07/19/2018
+  ms.locfileid: "39163210"
+abstract:
+  description: Dowiedz się, jak wdrażać samoobsługowe resetowanie hasła, uwierzytelnianie wieloskładnikowe, niestandardowe listy zakazanych haseł i inteligentną blokadę usługi Azure Active Directory oraz zarządzać tymi funkcjami. Te funkcje wspólnie zapewniają silne uwierzytelnianie przy użyciu szeregu metod weryfikacji, zapewniając jednocześnie organizacji prosty proces logowania.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak włączyć samoobsługowe resetowanie hasła, aby ograniczyć liczbę zgłoszeń do działu pomocy technicznej.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_protect.png
+      text: Włączanie samoobsługowego resetowania hasła
+      href: https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak włączyć prosty i bezpieczny proces logowania dla swojej organizacji.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">Enable a self-service password reset pilot (Włączanie pilotażu samoobsługowego resetowania hasła)</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">Require MFA for the Azure portal (Wymaganie uwierzytelniania wieloskładnikowego dla witryny Azure Portal)</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">Enable self-service password reset on-premises integration (Włączanie integracji samoobsługowego resetowania hasła ze środowiskiem lokalnym)</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">Enable Windows 10 password reset (Włączanie resetowania hasła systemu Windows 10)</a>
+    - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">Integrate with Azure Identity Protection (Integracja z usługą Azure Identity Protection)</a>

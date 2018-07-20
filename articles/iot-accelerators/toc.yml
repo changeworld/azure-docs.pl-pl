@@ -8,13 +8,13 @@
       href: about-iot-accelerators.md
 - name: Przewodniki Szybki start
   items:
-    - name: Wdrażanie rozwiązania do zdalnego monitorowania
+    - name: Testowanie rozwiązania do zdalnego monitorowania
       href: quickstart-remote-monitoring-deploy.md
-    - name: Wdrażanie rozwiązania połączonej fabryki
+    - name: Testowanie rozwiązania połączonej fabryki
       href: quickstart-connected-factory-deploy.md
-    - name: Wdrażanie rozwiązania do konserwacji zapobiegawczej
+    - name: Testowanie rozwiązania do konserwacji predykcyjnej
       href: quickstart-predictive-maintenance-deploy.md
-    - name: Wdrażanie rozwiązania do symulacji urządzeń
+    - name: Testowanie rozwiązania do symulacji urządzeń
       href: quickstart-device-simulation-deploy.md
 - name: Samouczki
   items:
@@ -137,10 +137,6 @@
               href: ../iot-suite/iot-suite-v1-custom-rule.md
             - name: Informacje o urządzeniu w rozwiązaniu do zdalnego monitorowania
               href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
-    - name: Konserwacja predykcyjna
-      items:
-        - name: Wdrażanie akceleratora rozwiązań
-          href: iot-accelerators-predictive-overview.md
     - name: Połączona fabryka
       items:
         - name: Korzystanie z pulpitu nawigacyjnego

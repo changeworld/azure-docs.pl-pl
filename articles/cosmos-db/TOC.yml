@@ -118,6 +118,8 @@ items:
                         href: sql-api-dotnetcore-get-started.md
                       - name: Java
                         href: sql-api-java-get-started.md
+                      - name: Java (asynchroniczny)
+                        href: sql-api-async-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
                   - name: Tworzenie aplikacji internetowej
@@ -412,38 +414,50 @@ items:
                 href: cassandra-import-data.md
   - name: Przewodniki z instrukcjami
     items:
-      - name: Klucze i spójność
-        href: manage-account.md
-      - name: Przepływność
-        href: set-throughput.md
-      - name: Obsługa zapory
-        href: firewall-support.md
-      - name: Konfigurowanie punktu końcowego usługi sieci wirtualnej
-        href: vnet-service-endpoint.md
-      - name: Metryki
-        href: use-metrics.md
-      - name: Monitorowanie umów SLA
-        href: monitor-accounts.md
+      - name: Zarządzanie
+        items:
+          - name: Zarządzanie przy użyciu programu PowerShell
+            href: manage-account-with-powershell.md
+          - name: Zarządzanie przy użyciu Eksploratora usługi Storage
+            href: storage-explorer.md
+          - name: Zarządzanie za pomocą Eksploratora danych
+            href: data-explorer.md
+          - name: Zarządzanie kluczami i poziomami spójności
+            href: manage-account.md
+          - name: Przepływność
+            href: set-throughput.md
+          - name: Automatyczne wygasanie danych
+            href: time-to-live.md
+          - name: Rejestrowanie diagnostyczne
+            href: logging.md
+      - name: Zabezpieczanie danych
+        items:
+          - name: Obsługa zapory
+            href: firewall-support.md
+          - name: Konfigurowanie punktu końcowego usługi sieci wirtualnej
+            href: vnet-service-endpoint.md
+      - name: Monitorowanie
+        items:
+          - name: Monitorowanie za pomocą metryk
+            href: use-metrics.md
+          - name: Monitorowanie umów SLA
+            href: monitor-accounts.md
       - name: Tworzenie kopii zapasowej i przywracanie
-        href: online-backup-and-restore.md
-      - name: Praca w trybie failover w regionach
-        href: regional-failover.md
-      - name: Rejestrowanie diagnostyczne
-        href: logging.md
-      - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
-        href: programming.md
-      - name: Omówienie biblioteki BulkExecutor
+        items:
+          - name: Tworzenie i przywracanie kopii zapasowych w trybie online
+            href: online-backup-and-restore.md
+          - name: Praca w trybie failover w regionach
+            href: regional-failover.md
+      - name: Automatyzacja
+        items:
+          - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
+            href: programming.md
+          - name: Konfiguracja wielu wzorców
+            href: multi-master-workaround.md
+      - name: Biblioteka funkcji wykonawczej operacji zbiorczych
         href: bulk-executor-overview.md
       - name: Ekonomiczne odczyty i zapisy
         href: key-value-store-cost.md
-      - name: Automatyczne wygasanie danych
-        href: time-to-live.md
-      - name: Zarządzanie przy użyciu programu PowerShell
-        href: manage-account-with-powershell.md
-      - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-        href: storage-explorer.md
-      - name: Konfiguracja wielu wzorców
-        href: multi-master-workaround.md
   - name: Zasoby
     items:
       - name: Ściągawka dotycząca zapytań
