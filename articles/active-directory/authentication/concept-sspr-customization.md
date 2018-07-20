@@ -1,21 +1,21 @@
 ---
-title: Samoobsługowego resetowania hasła dostosowywania - usługi Azure Active Directory
+title: Dostosowywanie usługi Azure AD samoobsługowego resetowania haseł
 description: Resetuj opcje dostosowywania dla haseł usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 23a2897142f5cba90513e8b79e4cd461f1dd25b7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 70f36447270199545ac27cf27f87f971e34ef424
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054594"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162130"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Dostosowywanie funkcji usługi Azure AD dla samoobsługowego resetowania haseł
 
@@ -24,8 +24,9 @@ Informatycy, którzy mają zostać wdrożone samoobsługowego resetowania haseł
 ## <a name="customize-the-contact-your-administrator-link"></a>Dostosuj link "Skontaktuj się z administratorem"
 
 Nawet jeśli nie włączono funkcji samoobsługowego resetowania HASEŁ, użytkownicy nadal mają link "Skontaktuj się z administratorem" hasła portal resetowania. Jeśli użytkownik wybierze ten link go albo:
-   * Wysłanie wiadomości e-mail administratorów i pyta, aby uzyskać pomoc podczas zmieniania hasła użytkownika. 
-   * Wysyła użytkowników do adresu URL, który należy określić w celu uzyskania pomocy. 
+
+   * Wysłanie wiadomości e-mail administratorów i pyta, aby uzyskać pomoc podczas zmieniania hasła użytkownika.
+   * Wysyła użytkowników do adresu URL, który należy określić w celu uzyskania pomocy.
 
 Zaleca się Ustaw ten kontakt na coś adres e-mail lub witrynę sieci Web, które użytkownicy już używane w przypadku pytań dotyczących pomocy technicznej.
 
@@ -45,9 +46,7 @@ Aby dowiedzieć się więcej o rolach innego administratora i przypisywania ich,
 
 Jeśli Twoja organizacja nie chce otrzymywać powiadomienia, żądań usługi resetowania administratorów o hasło, aby umożliwić następującej konfiguracji:
 
-* Włącz samoobsługowe resetowanie haseł dla wszystkich użytkowników końcowych. Ta opcja jest w obszarze **resetowania hasła** > **właściwości**.
-  
-  Jeśli nie chcesz, aby użytkownikom Resetowanie swoich haseł, możesz ograniczyć dostęp do pustej grupy. *Ta opcja nie jest zalecane.*
+* Włącz samoobsługowe resetowanie haseł dla wszystkich użytkowników końcowych. Ta opcja jest w obszarze **resetowania hasła** > **właściwości**. Jeśli nie chcesz, aby użytkownikom Resetowanie swoich haseł, możesz ograniczyć dostęp do pustej grupy. *Ta opcja nie jest zalecane.*
 * Dostosuj link pomocy technicznej, aby podać adres URL sieci web lub mailto: adres, z którego użytkownicy mogą uzyskać pomoc. Ta opcja jest w obszarze **resetowania hasła** > **dostosowywania** > **niestandardowe pomocy technicznej w wiadomości e-mail lub adres URL**.
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Dostosowywanie strony logowania usług AD FS dla funkcji samoobsługowego resetowania HASEŁ

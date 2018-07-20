@@ -1,45 +1,111 @@
 ---
-title: Wprowadzenie do usługi Azure MFA w chmurze | Microsoft Docs
-description: Ta strona dotyczy usługi Microsoft Azure Multi-Factor Authentication i zawiera informacje umożliwiające rozpoczęcie korzystania z usługi Azure MFA w chmurze.
+title: Uzyskaj wprowadzenie do usługi Azure MFA w chmurze
+description: Microsoft Azure Multi-Factor Authentication Rozpoczynanie pracy przy użyciu dostępu warunkowego
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/24/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 0a822d55e8d7bd0d503eb7d77f96dc9e60e1a4ba
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 0afe5ba21fe17d8aec4d72c30086c6840f9e3c8e
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33882872"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161574"
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>Wprowadzenie do usługi Azure Multi-Factor Authentication w chmurze
-W tym artykule opisano, jak rozpocząć korzystanie z usługi Azure Multi-Factor Authentication w chmurze.
+# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
-> [!NOTE]
-> Poniższa dokumentacja zawiera informacje dotyczące umożliwiania użytkownikom korzystania z **witryny Azure Portal**. Jeśli szukasz informacji na temat konfigurowania usługi Azure Multi-Factor Authentication dla użytkowników usługi O365, zobacz temat [Konfigurowanie usługi Multi-Factor Authentication dla usługi Office 365](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US).
+Wprowadzenie do usługi Azure Multi-Factor Authentication (Azure MFA) jest dość proste.
 
-![Usługa MFA w chmurze](./media/howto-mfa-getstarted/mfa_in_cloud.png)
+Przed rozpoczęciem upewnij się, że masz następujące wymagania wstępne:
 
-## <a name="prerequisite"></a>Wymagania wstępne
-[Utworzenie konta na potrzeby subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/) — jeśli nie masz jeszcze subskrypcji platformy Azure, musisz utworzyć konto. Jeśli dopiero zaczynasz pracę i używasz usługi Azure MFA, możesz skorzystać z subskrypcji wersji próbnej.
+* Konto administratora globalnego w dzierżawie usługi Azure AD. Jeśli potrzebujesz pomocy, ukończenie tego kroku, zobacz artykuł naszych [Rozpoczynanie pracy z usługą Azure AD](../get-started-azure-ad.md)
+* Prawidłowe licencje przypisane do użytkowników. Jeśli potrzebujesz więcej informacji, zobacz temat [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md)
 
-## <a name="enable-azure-multi-factor-authentication"></a>Włączanie usługi Azure Multi-Factor Authentication
-Dopóki użytkownicy będą mieli licencje obejmujące usługę Azure Multi-Factor Authentication, do jej włączenia nie będzie wymagane wykonanie żadnych czynności. Możliwe jest rozpoczęcie wymagania weryfikacji dwuetapowej dla indywidualnych użytkowników. Licencje, które umożliwiają włączenie usługi Azure MFA, to:
-- Azure Multi-Factor Authentication
-- Usługa Azure Active Directory Premium
-- Enterprise Mobility + Security
+## <a name="choose-how-to-enable"></a>Wybierz sposób włączania
 
-Jeśli nie masz żadnej z tych trzech licencji ani nie masz wystarczającej liczby licencji, aby obejmowały wszystkich użytkowników, to też nie stanowi problemu. Konieczne jest tylko wykonanie dodatkowego kroku w celu [utworzenia dostawcy usługi Multi-Factor Authentication](concept-mfa-authprovider.md) w katalogu.
+**Obsługiwane przez zasady dostępu warunkowego** — metoda ta jest omówiona w tym artykule. Jest najbardziej elastyczny sposób Włącz weryfikację dwuetapową dla użytkowników. Włączanie przy użyciu tylko zasad dostępu warunkowego działa w przypadku usługi Azure MFA w chmurze i jest funkcją premium usługi Azure AD.
 
-## <a name="turn-on-two-step-verification-for-users"></a>Włączanie weryfikacji dwuetapowej dla użytkowników
+Obsługiwane przez usługę Azure AD Identity Protection — ta metoda używa zasad ryzyka usługi Azure AD Identity Protection do weryfikacji dwuetapowej oparte tylko na ryzyko logowania dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencji usługi Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md#risky-sign-ins)
 
-Wykonaj jedną z procedur wymienionych w temacie [How to require two-step verification for a user or group (Jak wymagać weryfikacji dwuetapowej użytkownika lub grupy)](howto-mfa-userstates.md), aby rozpocząć korzystanie z usługi Azure MFA. Weryfikację dwuetapową możesz wymusić dla wszystkich logowań lub utworzyć zasady dostępu warunkowego, które wymuszają weryfikację dwuetapową tylko wtedy, gdy jest to pożądane.
+Włączone, zmieniając użytkownika stan — jest to tradycyjne metody do wymagania weryfikacji dwuetapowej. Działa z zarówno usługi Azure MFA w chmurze i serwera Azure MFA. Za pomocą tej metody wymaga od użytkowników weryfikacji dwuetapowej **za każdym razem, gdy** Zaloguj się i przesłania zasady dostępu warunkowego. Więcej informacji na temat tej metody można znaleźć w [jak, które wymuszają weryfikację dwuetapową dla użytkownika](howto-mfa-userstates.md)
 
-## <a name="next-steps"></a>Następne kroki
-Po skonfigurowaniu usługi Azure Multi-Factor Authentication w chmurze można przystąpić do konfigurowania wdrożenia. Aby uzyskać bardziej szczegółowe informacje, zobacz temat [Configuring Azure Multi-Factor Authentication](howto-mfa-mfasettings.md) (Konfigurowanie usługi Azure Multi-Factor Authentication).
+> [!Note]
+> Więcej informacji na temat licencji i ceny można znaleźć na [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
+) i [uwierzytelnianie wieloskładnikowe](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) stronach z cennikami.
 
+## <a name="choose-authentication-methods"></a>Wybieranie metod uwierzytelniania
+
+Włącz co najmniej jedną metodę uwierzytelniania dla użytkowników na podstawie wymagań Twojej organizacji. Uważamy, że po włączeniu dla użytkowników aplikacji Microsoft Authenticator oferuje najlepsze środowisko użytkownika. Jeśli chcesz poznać metody, które są dostępne i jak je ustawić artykuł [co to są methods]](concept-authentication-methods.md) uwierzytelniania.
+
+## <a name="get-users-to-enroll"></a>Zachęcenia użytkowników do rejestracji
+
+Po włączeniu zasady dostępu warunkowego, użytkownicy będą zmuszeni do zarejestrowania przy następnym używają aplikacji chronionej przy użyciu zasad. Po włączeniu zasadę, która wymaga uwierzytelniania Wieloskładnikowego dla wszystkich użytkowników na wszystkich aplikacji w chmurze tej akcji może spowodować problemy dla użytkowników i techniczną. Zaleca się Poproś użytkowników, aby zarejestrować metody uwierzytelniania wcześniej za pomocą portalu rejestracji pod [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). W wielu organizacjach znaleźć, wspomóc przyjęcie pomaga w tworzeniu plakaty, karty tabeli i wiadomości e-mail.
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Włącz uwierzytelnianie wieloskładnikowe przy użyciu dostępu warunkowego
+
+Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
+
+### <a name="choose-verification-options"></a>Wybierz opcje weryfikacji
+
+Przed włączeniem usługi Azure Multi-Factor Authentication, organizacji, należy określić opcje weryfikacji, jakie dział. Na potrzeby tego ćwiczenia możesz włączyć wywołanie telefonu i treść wiadomości na telefon są one ogólne opcje, że większość otrzymują możliwość korzystania. Więcej informacji na temat metod uwierzytelniania i ich użycia można znaleźć w artykule [metody uwierzytelniania?](concept-authentication-methods.md)
+
+1. Przejdź do **usługi Azure Active Directory**, **użytkowników**, **uwierzytelnianie wieloskładnikowe**
+   ![uzyskiwania dostępu do usługi Multi-Factor Authentication Portal w bloku użytkownicy usługi Azure AD w witrynie Azure portal](media/howto-mfa-getstarted/users-mfa.png) 
+2. W nowej karcie, która zostanie otwarta, przejdź do **ustawienia usługi**
+3. W obszarze **opcje weryfikacji**, zaznacz następujące pola wyboru dla metod, które są dostępne dla użytkowników
+   * Połączenie z telefonem
+   * SMS na telefon
+
+   ![Konfigurowanie metod weryfikacji, na karcie Ustawienia usługi Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+
+4. Kliknij pozycję **Zapisz**
+5. Zamknij **ustawienia usługi** kartę
+
+### <a name="create-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
+1. Przejdź do **usługi Azure Active Directory**, **dostępu warunkowego**
+1. Wybierz **nowych zasad**
+1. Podaj znaczącą nazwę dla zasad
+1. W obszarze **użytkowników i grup**
+   * Na **Include** zaznacz **wszyscy użytkownicy** przycisku radiowego
+   * ZALECANE: Na **wykluczyć** kartę, zaznacz pole **użytkowników i grup** i wybierz grupę służący do wykluczenia, gdy użytkownicy nie mają dostępu do metody ich uwierzytelniania.
+   * Kliknij przycisk **gotowe**
+1. W obszarze **aplikacje w chmurze**, wybierz opcję **wszystkie aplikacje w chmurze** przycisku radiowego
+   * OPCJONALNIE: Na **wykluczyć** karty, wybierz aplikacje w chmurze, które Twoja organizacja nie wymaga uwierzytelniania Wieloskładnikowego dla.
+   * Kliknij przycisk **gotowe**
+1. W obszarze **warunki** sekcji
+   * OPCJONALNIE: Po włączeniu usługi Azure Identity Protection, istnieje możliwość oceny ryzyka logowania jako część zasad.
+   * OPCJONALNIE: Jeśli masz skonfigurowane zaufanych lokalizacji lub lokalizacje z nazwą, można określić zostać dołączone lub wykluczone z tych lokalizacji z zasad.
+1. W obszarze **Grant**, upewnij się, że **udzielić dostępu** przycisk radiowy zostanie wybrany
+    * Pole wyboru dla **Wymagaj uwierzytelniania wieloskładnikowego**
+    * Kliknij pozycję **Wybierz**
+1. Pomiń **sesji** sekcji
+1. Ustaw **Włącz zasady** Przełącz, aby **na**
+1. Kliknij przycisk **Utwórz**
+
+![Tworzenie zasad dostępu warunkowego, aby włączyć usługę MFA dla użytkowników portalu platformy Azure w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+
+### <a name="test-azure-multi-factor-authentication"></a>Testowanie usługi Azure Multi-Factor Authentication
+
+Aby upewnić się, że zasady dostępu warunkowego działa, przetestuj logowanie do zasobu, który nie należy wymagać uwierzytelniania Wieloskładnikowego, a następnie do witryny Azure portal, która wymaga uwierzytelniania Wieloskładnikowego.
+
+1. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do [ https://account.activedirectory.windowsazure.com ](https://account.activedirectory.windowsazure.com).
+   * Zaloguj się użytkownika testowego utworzone w ramach sekcji wymagania wstępne w tym artykule i należy pamiętać, że powinna wymaga do zakończenia uwierzytelniania MFA.
+   * Zamknij okno przeglądarki
+2. Otwórz nowe okno przeglądarki w trybie incognito lub InPrivate i przejdź do [ https://portal.azure.com ](https://portal.azure.com).
+   * Zaloguj się za pomocą testu użytkownika utworzonego w ramach sekcji wymagania wstępne w tym artykule i zwróć uwagę, że powinno być teraz musieli zarejestrować i używać usługi Azure Multi-Factor Authentication.
+   * Zamknij okno przeglądarki
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Gratulacje, po skonfigurowaniu usługi Azure Multi-Factor Authentication w chmurze.
+
+Aby skonfigurować dodatkowe ustawienia, takie jak zaufane adresy IP, niestandardowe wiadomości głosowe i alertów oszustwa, zobacz artykuł [ustawienia skonfigurować uwierzytelnianie wieloskładnikowe systemu Azure](howto-mfa-mfasettings.md)
+
+Informacje o zarządzaniu ustawienia użytkownika dla usługi Azure Multi-Factor Authentication można znaleźć w artykule [Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze](howto-mfa-userdevicesettings.md)

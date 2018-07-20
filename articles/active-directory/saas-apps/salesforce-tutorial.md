@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 07/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 64b94baeaede9b05e953b69324648c63d97cea8e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a453e2d16edecda9753c2940a745b260a3a2b893
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045442"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Samouczek: Integracja usługi Azure Active Directory z usług Salesforce
 
@@ -60,14 +60,14 @@ Aby skonfigurować integrację usług Salesforce do usługi Azure AD, należy do
 
 **Aby dodać usługi Salesforce z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
     ![Przycisk usługi Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -103,26 +103,26 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
 3. Na **Salesforce domena i adresy URL** sekcji, wykonaj następujące czynności:
 
     ![Domena usługi SalesForce i adresy URL pojedynczego logowania jednokrotnego informacji](./media/salesforce-tutorial/tutorial_salesforce_url.png)
-    
+
     a. W **adres URL logowania** polu tekstowym wpisz wartość, przy użyciu następującego wzorca:
-    
+
     Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
 
     Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. W **identyfikator** polu tekstowym wpisz wartość, przy użyciu następującego wzorca:
-    
+
     Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
 
     Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klient Salesforce](https://help.salesforce.com/support) do uzyskania tych wartości.
 
 4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu** , a następnie zapisz plik certyfikatu na komputerze.
@@ -170,14 +170,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **wystawcy** pole, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane z witryny Azure portal.
 
     c. W **polu tekstowym identyfikator jednostki**, wpisz nazwę domeny usługi Salesforce za pomocą następującego wzorca:
-      
+
       * Konta przedsiębiorstwa: `https://<subdomain>.my.salesforce.com`
       * Konto dewelopera: `https://<subdomain>-dev-ed.my.salesforce.com`
-      
+
     d. Aby przekazać **certyfikatu dostawcy tożsamości**, kliknij przycisk **wybierz plik** do przeglądania i wybierz plik certyfikatu, który został pobrany z witryny Azure portal.
 
     e. Jako **typu tożsamości SAML**, wybierz jedną z następujących opcji:
-    
+
       * Wybierz **potwierdzenie zawiera Salesforce użytkownika**, jeśli Salesforce użytkownika jest przekazywany w potwierdzenie SAML
 
       * Wybierz **potwierdzenie zawiera identyfikator federacji z obiektu użytkownika**, jeśli identyfikator federacyjnej z obiektu użytkownika jest przekazywany w potwierdzenie SAML
@@ -189,7 +189,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     g. Dla **dostawcy inicjowane żądania powiązania usługi**, wybierz opcję **przekierowania HTTP**.
 
     h. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **pojedynczy znak na adres URL usługi**, które zostały skopiowane z witryny Azure portal
-    
+
     i. Na koniec kliknij **Zapisz** Aby zastosować SAML pojedynczego logowania jednokrotnego ustawienia.
 
 14. W okienku nawigacji po lewej stronie w usłudze Salesforce kliknij **ustawienia firmowe** rozwiń sekcję powiązane, a następnie kliknij przycisk **Moja domena**.
@@ -200,7 +200,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-16. W **konfiguracji uwierzytelniania** sekcji wyboru **strony logowania** jako **na uwierzytelnianie** z konfiguracji logowania jednokrotnego SAML, a następnie kliknij  **Zapisz**.
+16. W **konfiguracji uwierzytelniania** sekcji wyboru **AzureSSO** jako **na uwierzytelnianie** z konfiguracji logowania jednokrotnego SAML, a następnie kliknij **Zapisz** .
 
     ![Konfigurowanie logowania jednokrotnego](./media/salesforce-tutorial/sf-auth-config.png)
 

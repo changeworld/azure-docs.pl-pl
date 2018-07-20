@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d31a3e62aaabf7a865078aa2e7c6d1585466b379
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126681"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145601"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Wdrażanie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -124,7 +124,7 @@ Aby utworzyć wystawcy, użyj `kubectl create -f cluster-issuer.yaml` polecenia.
 ```
 $ kubectl create -f cluster-issuer.yaml
 
-clusterissuer.certmanager.k8s.io/letsencrypt-prod created
+clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
 
 ## <a name="create-a-certificate-object"></a>Utwórz obiekt certyfikatu

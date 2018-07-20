@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7d9b8a740c331a73ac66398be801ba3878312969
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7aa48b65423db2a3af032ed64d9d571fa603668d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969082"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144758"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Wprowadzenie do aplikację internetową środowiska Node.js usługi AD platformy Azure
 Tutaj używamy usługi Passport w celu:
@@ -62,7 +62,10 @@ Ukończona aplikacja znajduje się na końcu tego samouczka, jak również.
 
 6. Po rejestracji usługi Azure AD przypisze aplikacji Unikatowy identyfikator aplikacji. Ta wartość będzie potrzebna w poniższych sekcjach, więc skopiuj ją ze strony aplikacji.
 7. Z **ustawienia** -> **właściwości** stronie aplikacji, zaktualizuj identyfikator URI Identyfikatora aplikacji. **Identyfikator URI Identyfikatora aplikacji** to unikatowy identyfikator aplikacji. Konwencji jest użycie formatu `https://<tenant-domain>/<app-name>`, na przykład: `https://contoso.onmicrosoft.com/my-first-aad-app`.
-8. Aby utworzyć klucz tajny, przejdź do kroku 4 w [dodać poświadczenia aplikacji lub uprawnienia dostępu do interfejsów API sieci web](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+8. Z **ustawienia** -> **adresy URL odpowiedzi** stronie dla aplikacji, Dodaj adres URL dodane w adresie URL logowania jednokrotnego z kroku 5 i kliknij pozycję Zapisz.
+
+9. Aby utworzyć klucz tajny, przejdź do kroku 4 w [dodać poświadczenia aplikacji lub uprawnienia dostępu do interfejsów API sieci web](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
 
    > [!IMPORTANT]
    > Skopiuj wartość klucza aplikacji. Jest to wartość `clientSecret`, które będą potrzebne dla **kroku 3** poniżej. 
@@ -91,7 +94,7 @@ W tym miejscu możemy skonfigurować Express do używania protokołu uwierzyteln
 
   * `clientID` Jest **identyfikator aplikacji** przypisany do aplikacji w portalu rejestracji.
 
-  * `returnURL` Jest **identyfikator Uri przekierowania** wprowadzony w portalu.
+  * `returnURL` Jest **adres URL odpowiedzi** wprowadzony w portalu.
 
   * `clientSecret` Jest klucz tajny, który został wygenerowany w portalu.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: edafc2e0c11f4395540081e4b09614f2beb70696
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115929"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145244"
 ---
 # <a name="grow-your-business-on-marketplace"></a>Rozwijaj swoją działalność w witrynie marketplace 
 Po opublikowaniu oferty w usłudze AppSource lub witrynie Azure Marketplace, można użyć swojej listy jako doskonała dla wspólnych działań (GTM wprowadzenie) go-to-market z firmą Microsoft. Kierowania ruchu do oferty w portalu marketplace i pielęgnacji potencjalnych klientów w witrynie marketplace, na przykład, są skuteczne sposoby Przyspiesz rozwój swojej firmy. W tym artykule udostępnimy szereg najlepszych praktyk marketingu Rozwijaj działalność w witrynie marketplace.
@@ -215,7 +215,7 @@ Aby promować oferty sieci Web lub aplikacji, skorzystaj z poniższej tabeli, do
 | Zostań gotowości do wspólnej sprzedaży adresu IP | Możesz kwalifikować się do programu IP współpracy sprzedażowej, dzięki czemu można współpracować bezpośrednio ze sprzedawcami firmy Microsoft i innymi partnerami, na docelowy potencjalnymi klientami i planowania konta. Rozwiązanie staje się widoczna dla sprzedawców firmy Microsoft w katalogu rozwiązania sprzedawcy. Sprzedawcami firmy Microsoft są przez współpracy i zdobywania Tobie.<br /> Aby uzyskać więcej informacji o gotowości do wspólnej sprzedaży, w tym wymagania kwalifikacyjne, odwiedź stronę [podwyższanie poziomu firmy](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
 
-# <a name="azure-partner-revenue-attribution"></a>Uznanie autorstwa przychód partnerów platformy Azure
+## <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
 Jako partner typu oprogramowania na platformie Azure rozwiązania wymagają składniki platformy Azure lub jest wdrażany bezpośrednio w infrastrukturze platformy Azure.  Już dziś gdy rozwiązania partnerskiego jest wdrażane przez klienta i korzysta z zasobów platformy Azure, obsługiwana przez klienta, jest trudne dla partnera uzyskać wgląd w stan tych wdrożeń i problemy z uzyskaniem optyką do wpływ na rozwój platformy Azure do wyrównania z zespołami sprzedaży firmy Microsoft i środków dla programów partnerskich firmy Microsoft.   
 
@@ -291,8 +291,6 @@ client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
 
 >Musi to być wykonywane dla każdego klienta, brak globalnej konfiguracji statycznego (można zrobić fabryka klientów, należy upewnić się, że każdy klient jest już działa. 
 >[Dodatkowe informacje](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
-
-## <a name="registering-a-guid"></a>Rejestrowanie identyfikator GUID: 
 
 Jak oznaczyć wdrażania przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure: Wdrażanie zasobów za pośrednictwem AzurePowerShell można dołączyć Twojego identyfikatora GUID za pomocą następującej metody:
 
@@ -398,11 +396,14 @@ Podczas wdrażania oprogramowania firmy Microsoft będzie należy zidentyfikowa�
 
 Aby uzyskać pomoc, wykonaj następujące czynności:
  1. Odwiedź stronę pomocy technicznej znajduje się w [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
- 2. W przypadku problemów z użycia skojarzenie — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **innych** a następnie kliknij przycisk **uruchom żądanie.**
-
-Problemy związane z dostępem do portalu Azure Marketplace Cloud Partner — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **Problem z dostępem** a następnie kliknij przycisk **uruchom żądanie.**
+ 2. W przypadku problemów z użycia skojarzenie — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **innych** a następnie kliknij przycisk **uruchom żądanie.** 
+>[!Note]
+>Problemy związane z dostępem do portalu Azure Marketplace Cloud Partner — wybierz typ problemu: **przechodzenia do portalu Marketplace** i kategorii: **Problem z dostępem** a następnie kliknij przycisk **uruchom żądanie.**
  3. Wypełnij wymagane pola na następnej stronie, a następnie kliknij przycisk **Kontynuuj.**
  4. Wypełnij pola dowolny tekst na następnej stronie.  
+ 
+
+
  
 >[!Important] 
 >Wprowadź tytuł zdarzenia z **"Śledzenia użycia niezależnego dostawcy oprogramowania"** i opisz swój problem szczegółowo w polu dużych dowolny tekst po.  Ukończenia pozostałej części formularza, a następnie kliknij przycisk **przesyłania**.
