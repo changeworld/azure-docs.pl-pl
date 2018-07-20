@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/6/2018
+ms.date: 7/19/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 32f45b66c4b1d22da3ffc4310a8a47c17319301f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 249f473d7318051e0ce27bcc47a9fde080c4c8f6
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302827"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160319"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Tworzenie kopii zapasowej bazy danych programu SQL Server na platformie Azure
 
@@ -784,6 +784,10 @@ Nie. Podczas konfigurowania ochrony dla programu SQL server, jeśli pole wyboru 
 ### <a name="if-i-change-the-recovery-model-how-do-i-restart-protection"></a>Zmiana modelu odzyskiwania jak ponownie rozpocząć ochrony
 
 W przypadku zmiany modelu odzyskiwania Wyzwól tworzenie pełnej kopii zapasowej, a następnie rozpoczyna się tworzenie kopii zapasowych dzienników, zgodnie z oczekiwaniami.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>Czy można chronić SQL zawsze włączonych grup dostępności gdzie znajduje się replika podstawowa jest w środowisku lokalnym
+
+Nie. Usługa Azure Backup chroni serwery SQL działającej na platformie Azure. Jeśli grupy dostępności (AG) jest rozłożona się między maszynami platformy Azure i w środowisku lokalnym, AG mogą być chronione, tylko wtedy, gdy replika podstawowa jest uruchomiona na platformie Azure. Ponadto usługa Azure Backup chroni tylko węzły, w tym samym regionie platformy Azure co magazyn usługi Recovery Services.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

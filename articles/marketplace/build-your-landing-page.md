@@ -1,6 +1,6 @@
 ---
-title: Tworzenie strony docelowej | Azure
-description: Strona początkowa portalu Azure Marketplace i AppSource są wydawcy aplikacji i usług
+title: Tworzenie stroną docelową w witrynie Azure Marketplace | Azure
+description: Dowiedz się, jak utworzyć strona docelowa w portalu Azure Marketplace i Microsoft AppSource dla wydawcy aplikacji i usługi.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,48 +14,50 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc2e1e735f4d3dd97fdb291154da656b9a2c71c7
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825226"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160862"
 ---
-# <a name="build-your-landing-page"></a>Tworzenie strony docelowej  
-Strona początkowa, w witrynie sieci Web firmy jest bramy z czynności związane z generowaniem żądanie do Twojej listy w witrynie marketplace.  
+# <a name="build-your-landing-page"></a>Stroną docelową kompilacji
 
-Rozpocznij od zidentyfikowania cele. Rozwiązań wybierz klienta docelowego i akcję dla klienta do wykonania.  Rozwiązania może obejmować następujące akcje.  
-*   Przetestuj rozwiązania  
-*   Pobierz teraz rozwiązania  
-*   i więcej...  
+Strona docelowa, w witrynie sieci Web firmy jest bramy z działania związane z generowaniem popytu do Twojej listy w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com).
 
-W kilku taktyk marketingu mogą odwoływać się ze strony docelowej. Możesz użyć taktyk marketingu.  
-*   Zdarzenia  
-*   Transmisje internetowe  
-*   Media społecznościowe  
-*   Oficjalne dokumenty  
-*   Sesje techniczne  
-*   Prasowych  
+Rozpocznij od zidentyfikowania celów. Dla rozwiązań Wybierz klientów docelowych i akcji, która spowoduje przejście klientów. Rozwiązanie może obejmować następujące działania:
+*   Testuj rozwiązanie
+*   Pobierz teraz to rozwiązanie
 
-Im bardziej spójny znajdujesz się w sieci obsługi wiadomości i z wywołania do działania, łatwiejsze dla klientów można znaleźć rozwiązania.  
+W kilku taktyk marketingu mogą odwoływać się stroną docelową. Można na przykład następująca taktyka marketingowe: 
+*   Zdarzenia
+*   Transmisje internetowe
+*   Media społecznościowe
+*   Oficjalne dokumenty
+*   Sesje techniczne
+*   Informacje prasowe
 
-Jeśli masz gotowe planu kampanii, Utwórz strony docelowej. Przejrzyj poniższej tabeli, aby zmaksymalizować efektywność strony docelowej.  
+Bardziej spójny jesteś w swojej komunikatów i wywołania do akcji, łatwiej jest dla swoich klientów znaleźć rozwiązania.
 
-| Najlepsze praktyki | Co należy unikać |  
-|:--- |:--- |  
-| ***Jaki problem klienta rozwiązuje rozwiązania i jak Azure ułatwia się zdarzyć*** |  Nie komunikuje się z metod, w którym rozwiązania współpracuje z usługi Azure. |  
-| ***Utwórz krótkie, łatwych do zapamiętania adres URL*** | Przy użyciu długich adresów URL. Długie adresy URL nie są do zapamiętania i są trudne do zlokalizowania. |  
-| ***Dodaj odpowiednie visual zawartości, takich jak opinie klientów wideo lub architektury rozwiązania*** | Przy użyciu zbyt dużej ilości tekstu powoduje, że klientach zignorować zawartości i Zatrzymaj eksploracji. |  
-| ***Utworzyć czytelne wezwania do akcji, należy przekierować odwiedzin strony katalogu witryny Marketplace*** | O zbyt wiele łącza lub akcji na tej stronie. |  
-| ***Umieść z wywołania do działania w nagłówku lub wyraźnie nakreślono sekcji*** |  Osadzanie łącza do Twojej listy w witrynie marketplace akapitu tekstu. |  
-| ***Badania najlepsze słowa kluczowe i zoptymalizować strony wyszukiwania*** | Przy założeniu, że nazwa produktu generuje wyższej klasyfikacji wyszukiwania. |  
-| ***Używanie słów kluczowych z kampanii reklamowych*** |  Właściwości sieci web przy użyciu wielu innych słów kluczowych osłabia inwestycji reklamy. |  
-| ***Umieść nazw produktów i słów kluczowych `above the fold`*** | Tworzenie użytkowników przewiń produktu lub rozwiązanie, które są prezentacji. |  
-| ***Weryfikacja rozwiązania zgodnie z Microsoft znakowania wytyczne, za pomocą obrazów marki<br />takich jak Azure certyfikowane*** | Przy użyciu obrazów marki firmy Microsoft, która nie jest zatwierdzona. |  
+## <a name="recommendations"></a>Zalecenia
 
-*   Aby uzyskać więcej informacji na temat wskaźnika certyfikowane Azure, odwiedź wytycznych Microsoft Azure certyfikowane strony znajduje się w [azure.microsoft.com/support/legal/marketplace/certified-guidelines](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).  
-*   Dodatkowe zasoby dla znakowania można znaleźć strony w lokalizacji centralnej marki [microsoft.sharepoint.com/teams/brandcentral](https://microsoft.sharepoint.com/teams/brandcentral).  
-*   Aby uzyskać więcej informacji o narzędziu konstruktora Logo, odwiedź stronę konstruktora Logo strony znajduje się w [logobuilder.partner.microsoft.com](https://logobuilder.partner.microsoft.com).  
-*   Aby uzyskać więcej informacji, odwiedź stronę jak działa strony znajduje się w [partner.microsoft.com/membership/how-it-works](https://partner.microsoft.com/membership/how-it-works).  
+W przypadku kampanii gotowy plan, należy utworzyć stroną docelową w portalu Marketplace. W poniższej tabeli opisano sposoby może pomóc zmaksymalizować efektywność stroną docelową: 
 
----  
+| Najlepszym rozwiązaniem jest | Należy unikać |
+|:--- |:--- |
+| **Jaki problem klientów rozwiązuje rozwiązania i jak praca za pomocą usługi Azure** | Nie komunikuje się z metod, w którym rozwiązania współdziałają z platformą Azure. |
+| **Tworzenie krótkich, łatwa do zapamiętania adresów URL** | Przy użyciu długich adresów URL. Długich adresów URL nie są do zapamiętania i są trudne do zlokalizowania. |
+| **Dodaj odpowiednie zawartości wizualnej, takich jak wideo z opinią klienta lub architektury rozwiązania** | Przy użyciu zbyt dużej ilości tekstu powoduje to ignorowanie zawartości i Zatrzymaj eksplorację.|
+| **Utworzyć czytelne wezwania do akcji do kierowania osoby odwiedzające stronę katalogu witryny Marketplace** | Na stronie, o zbyt wiele łączy lub akcji. |
+| **Umieść swoje wezwanie do działania w nagłówku lub wyraźnie nakreślonego sekcji** | Osadzanie łączy do Twojej listy w portalu Marketplace w akapicie tekstu. |
+| **Zbadaj najlepsze słowa kluczowe i zoptymalizować strony wyszukiwania** | Przy założeniu, że nazwa produktu generuje wyższe rankingów wyszukiwania. |
+| **Użyj słowa kluczowe występujące w kampanii reklamowych** | We właściwości w sieci web przy użyciu wielu innych słów kluczowych rozmywa inwestycji reklamy. |
+| **Umieszczenie nazwy odpowiednich produktów i słów kluczowych "powyżej zwijania"** | Tworzenie użytkowników Przewinięcie w celu wyświetlenia produktu lub rozwiązania, które są zaprezentować. |
+| **Weryfikacja rozwiązania zgodnie z Microsoft znakowania wytycznych, takie jak certyfikat platformy Azure za pomocą obraz marką** | Przy użyciu obrazów marki firmy Microsoft, która nie jest zatwierdzona. |
+
+## <a name="next-steps"></a>Kolejne kroki
+
+*   Aby uzyskać więcej informacji na temat znaczek certyfikatu platformy Azure, zobacz [wytycznymi certyfikatu platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines).
+*   Aby uzyskać więcej zasobów dotyczących znakowaniu zobacz [Brand Central](https://microsoft.sharepoint.com/teams/brandcentral).
+*   Aby uzyskać więcej informacji o narzędziu Logo konstruktora, zobacz [konstruktora Logo](https://logobuilder.partner.microsoft.com).
+*   Przegląd [działa jak program Microsoft Partner program](https://partner.microsoft.com/membership/how-it-works).

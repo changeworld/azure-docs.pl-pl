@@ -4,18 +4,18 @@ description: Dane dotyczące haseł usługi Azure AD resetowania oraz sposób ic
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ea6bf503eeba9e904c492a858139490b523a10cc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044179"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159570"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania haseł bez wymagania rejestracji użytkowników końcowych
 
@@ -47,20 +47,19 @@ Administrator globalny, można ręcznie ustawić informacje kontaktowe uwierzyte
 
 ![Skontaktuj się z][Contact]
 
-Jeśli pole telefonu jest wypełniana i telefonu komórkowego jest włączony w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik będzie widział przepływ pracy resetowania numeru strony rejestracji resetowania hasła i podczas hasło. 
+Jeśli pole telefonu jest wypełniana i telefonu komórkowego jest włączony w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik będzie widział przepływ pracy resetowania numeru strony rejestracji resetowania hasła i podczas hasło.
 
 Pole alternatywny numer telefonu nie jest używane do resetowania hasła.
 
 Jeśli jest wypełniana pola adresu E-mail i wiadomości E-mail jest włączona w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik zobaczy, Wyślij wiadomość e-mail na stronie rejestracji resetowania hasła i podczas hasło przepływ pracy resetowania.
 
-Jeśli wypełnianie pola alternatywny adres e-mail i wiadomości E-mail jest włączona w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik zostanie **nie** zauważyć, że strony rejestracji resetowania poczty e-mail na hasło, lecz zostanie wyświetlony, zresetuj go podczas hasło przepływu pracy. 
-
+Jeśli wypełnianie pola alternatywny adres e-mail i wiadomości E-mail jest włączona w zasadach funkcji samoobsługowego resetowania HASEŁ, użytkownik zostanie **nie** zauważyć, że strony rejestracji resetowania poczty e-mail na hasło, lecz zostanie wyświetlony, zresetuj go podczas hasło przepływu pracy.
 
 ## <a name="security-questions-and-answers"></a>Pytania zabezpieczające i odpowiedzi
 
-Pytania zabezpieczające i odpowiedzi są bezpiecznie przechowywane w dzierżawie usługi Azure AD i są dostępne dla użytkowników za pośrednictwem jedynie [portal rejestracji SSPR](https://aka.ms/ssprsetup). Administratorzy nie mogą wyświetlić lub zmodyfikować zawartość innym użytkownikom pytań i odpowiedzi.
+Pytania zabezpieczające i odpowiedzi są bezpiecznie przechowywane w dzierżawie usługi Azure AD i są dostępne dla użytkowników za pośrednictwem jedynie [portal rejestracji SSPR](https://aka.ms/ssprsetup). Administratorzy nie zobaczą, ustawić lub zmodyfikować zawartość innym użytkownikom pytań i odpowiedzi.
 
-### <a name="what-happens-when-a-user-registers"></a>Co się stanie po użytkownik rejestruje
+## <a name="what-happens-when-a-user-registers"></a>Co się stanie po użytkownik rejestruje
 
 Gdy użytkownik rejestruje, na stronie rejestracji ustawia następujące pola:
 

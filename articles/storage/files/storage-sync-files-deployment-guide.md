@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie usługi Azure File Sync (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Wdrażanie usługi Azure File Sync | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wdrożyć usługę Azure File Sync od początku do końca.
 services: storage
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 808bc3908790c8d6dedf1d9f00a4c70b42c7c490
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b3837da26868dcf3c14fab230b4dad4aa6f531b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867073"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161400"
 ---
-# <a name="deploy-azure-file-sync-preview"></a>Wdrażanie usługi Azure File Sync (wersja zapoznawcza)
-Użyj usługi Azure File Sync (wersja zapoznawcza), aby scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
+# <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
+Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
 
 Zdecydowanie zaleca się przeczytanie [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md) i [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md) przed wykonaniem kroków opisanych w tym artykule.
 
@@ -135,7 +135,7 @@ Wdrożenie usługi Azure File Sync zaczyna się od wprowadzania **Usługa synchr
 > Usługa synchronizacji magazynu dziedziczone uprawnienia dostępu z subskrypcji i grupy zasobów, który został wdrożony w. Firma Microsoft zaleca, należy dokładnie sprawdzić kto ma do niego dostęp. Jednostki z dostępu do zapisu można uruchomić synchronizację nowych zestawów plików z serwerów zarejestrowanych ten magazyn Usługa synchronizacji i spowodować, że przepływ danych do usługi Azure storage, który jest dostępny do nich.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Aby wdrożyć usługę synchronizacji magazynu, przejdź do [witryny Azure portal](https://portal.azure.com/), kliknij przycisk *New* a następnie wyszukaj usługę Azure File Sync. W wynikach wyszukiwania wybierz **usługi Azure File Sync (wersja zapoznawcza)**, a następnie wybierz pozycję **Utwórz** otworzyć **Wdróż synchronizację magazynu** kartę.
+Aby wdrożyć usługę synchronizacji magazynu, przejdź do [witryny Azure portal](https://portal.azure.com/), kliknij przycisk *New* a następnie wyszukaj usługę Azure File Sync. W wynikach wyszukiwania wybierz **usługi Azure File Sync**, a następnie wybierz pozycję **Utwórz** otworzyć **Wdróż synchronizację magazynu** kartę.
 
 W otwartym okienku wprowadź następujące informacje:
 

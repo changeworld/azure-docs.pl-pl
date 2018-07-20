@@ -1,45 +1,47 @@
 ---
-title: Licencja samoobsługowego resetowania haseł — Azure Active Directory
+title: Licencja usługi Azure Active Directory haseł
 description: Usługa Azure AD samoobsługowego resetowania haseł wymagania licencyjne
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e185b67ae73b86b5f1c3b6cda884de05eb89c6fd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049088"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159002"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetuj wymaganiach dotyczących licencjonowania dla samoobsługowego hasła usługi Azure AD
 
-Aby funkcji, resetowania hasła usługi Azure Active Directory (Azure AD) możesz *musi mieć co najmniej jedną licencję przypisaną do organizacji* dla tego użytkownika. Wymagana jest właściwa licencja, jeśli użytkownik odnosi korzyści z dowolnej funkcji objętej licencją w sposób bezpośredni lub pośredni.
+Azure Active Directory (Azure AD) jest oferowana w czterech wersjach: bezpłatna, podstawowa, Premium P1 i Premium P2. Istnieje kilka różnych funkcji, składających się samoobsługowego resetowania haseł, zmiany, w tym resetowania, odblokuj i zapisywania zwrotnego, które są dostępne w różnych wersjach programu Azure AD. W tym artykule próbuje różnice zostały wyjaśnione w. Więcej szczegółów dotyczących funkcji dostępnych w poszczególnych wydaniach usługi Azure AD można znaleźć na [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-* **Użytkownicy tylko w chmurze**: usługi Office 365 wszystkich płatnych jednostek SKU lub usługi Azure AD podstawowa
-* **Chmura** lub **użytkowników lokalnych**: Azure AD Premium P1 lub P2, pakietu Enterprise Mobility + Security (EMS) lub Microsoft 365
+## <a name="compare-editions-and-features"></a>Porównanie wersji i funkcji
 
-## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
+Samoobsługowe haseł usługi Azure AD resetowania jest licencjonowany na użytkownika, aby zachować zgodność z organizacji są wymagane do przypisywania odpowiedniej licencji do użytkowników.
 
-**Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym jest funkcją premium usługi Azure AD**. Aby uzyskać więcej informacji na temat licencjonowania, zobacz [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
+* Samoobsługowa zmiana haseł użytkowników w chmurze
+   * Jestem **użytkowników tylko w chmurze** i swoje hasło.
+      * Chcę **zmienić** hasła do czegoś nowego.
+   * Ta funkcja znajduje się we wszystkich wersjach programu Azure AD.
 
-Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następujących licencji, które są przypisane w dzierżawie usługi:
+* Samoobsługowe resetowanie haseł użytkowników w chmurze
+   * Jestem **użytkowników tylko w chmurze** i zapomniane hasła.
+      * Chcę **resetowania** hasła na coś, co wiem.
+   * Ta funkcja jest dostępna w wersjach usługi Azure AD podstawowa, Premium P1 bądź Premium P2.
 
-* Usługa Azure AD — warstwa Premium P1
-* Usługa Azure AD — warstwa Premium P2
-* Pakiet Enterprise Mobility + Security E3 lub A3
-* Pakiet Enterprise Mobility + Security E5 lub A5
-* Rozwiązania Microsoft 365 E3 lub A3
-* Rozwiązania Microsoft 365 E5 lub A5
-* Rozwiązania Microsoft 365 F1
+* Samoobsługowe hasło Resetowanie/zmiana/odblokowywanie **przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym**
+   * Jestem **użytkownika hybrydowego** Moje konto użytkownika usługi Active Directory w środowisku lokalnym jest zsynchronizowany z moim kontem usługi Azure AD za pomocą usługi Azure AD Connect. Chcę zmienić hasło, mieć zapomniane hasła lub zostało zablokowane.
+      * Chcę zmienić hasło lub zresetować je coś o nim znać lub odblokowywanie mojego konta **i** ma czy zmiana zsynchronizowane z powrotem do lokalnej usługi Active Directory.
+   * Ta funkcja znajduje się w programie Azure AD Premium P1, albo w wersjach Premium P2.
 
 > [!WARNING]
-> Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują funkcję zapisywania zwrotnego haseł* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.
+> Licencjonowanie plany usługi Office 365 autonomiczny **nie obsługują funkcję zapisywania zwrotnego haseł** i wymagają programu Azure AD Premium P1 lub wersji Premium P2 dla tej funkcji do pracy.
 >
 
 Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na następujących stronach:

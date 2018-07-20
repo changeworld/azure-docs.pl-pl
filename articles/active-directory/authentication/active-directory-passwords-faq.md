@@ -4,18 +4,18 @@ description: Często zadawane pytania dotyczące haseł usługi Azure AD z samoo
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c006e448b8da1acaf51c8339cbcd0b6170f29874
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054815"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160746"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Zarządzanie hasłami — często zadawane pytania
 
@@ -115,7 +115,7 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
   >
 * **P: jak można Poinformuj użytkowników o tym, gdzie przejść do resetowania swoich haseł?**
 
-  > **A:** wypróbować niektóre sugestie w naszej [wdrożenie funkcji samoobsługowego resetowania HASEŁ](howto-sspr-deployment.md#email-based-rollout) artykułu.
+  > **A:** wypróbować niektóre sugestie w naszej [wdrożenie funkcji samoobsługowego resetowania HASEŁ](howto-sspr-deployment.md#sample-communication) artykułu.
   >
   >
 * **P: czy można użyć tej strony z urządzenia przenośnego?**
@@ -170,7 +170,7 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
   >
 * **P: czy mogę skonfigurować Moje zasad, aby wymagać od użytkowników użyj pytań zabezpieczających w celu zresetowania, ale administratorów platformy Azure wydaje się, że można skonfigurować inaczej.**
 
-  > **Odp.:** jest to oczekiwane zachowanie. Firma Microsoft wymusza silne domyślne zasad resetowania haseł brama dwóch dla dowolnej roli administratora platformy Azure. Zapobiega to za pomocą pytań zabezpieczających przez administratorów. Można znaleźć więcej informacji na temat tych zasad w [zasady i ograniczenia w usłudze Azure Active Directory haseł](concept-sspr-policy.md#administrator-password-policy-differences) artykułu.
+  > **Odp.:** jest to oczekiwane zachowanie. Firma Microsoft wymusza silne domyślne zasad resetowania haseł brama dwóch dla dowolnej roli administratora platformy Azure. Zapobiega to za pomocą pytań zabezpieczających przez administratorów. Można znaleźć więcej informacji na temat tych zasad w [zasady i ograniczenia w usłudze Azure Active Directory haseł](concept-sspr-policy.md) artykułu.
   >
   >
 * **Pyt.: Jeśli użytkownik został zarejestrowany w więcej niż maksymalna liczba pytań wymaganych do zresetowania, jak są pytania zabezpieczające wybranych podczas resetowania?**
@@ -274,7 +274,7 @@ Tych często zadawanych Pytaniach jest podzielona na następujące sekcje:
   >
 * **P: czy funkcja zapisywania zwrotnego haseł bezpieczne?  Jak mogę mieć pewność, że nie mogę włamania?**
 
-  > **Odp.:** tak, zapisywanie zwrotne haseł jest bezpieczne. Aby dowiedzieć się więcej na temat cztery warstwy zabezpieczeń implementowany przez usługi zapisywania zwrotnego haseł, zapoznaj się z [model zabezpieczeń funkcji zapisywania zwrotnego haseł](howto-sspr-writeback.md#password-writeback-security-model) sekcji [Przegląd funkcji zapisywania zwrotnego haseł](howto-sspr-writeback.md) artykułu.
+  > **Odp.:** tak, zapisywanie zwrotne haseł jest bezpieczne. Aby dowiedzieć się więcej na temat wielu wbudowanym warstwom zabezpieczeń implementowany przez usługi zapisywania zwrotnego haseł, zapoznaj się z [zabezpieczeń funkcji zapisywania zwrotnego haseł](concept-sspr-writeback.md#password-writeback-security) sekcji [Przegląd funkcji zapisywania zwrotnego haseł](howto-sspr-writeback.md) artykułu.
   >
   >
 

@@ -1,9 +1,9 @@
 ---
-title: Centrum zabezpieczeń Azure — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
-description: Często zadawane pytania odpowiedzi na pytania dotyczące Centrum zabezpieczeń Azure.
+title: Usługa Azure Security Center — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usługi Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2018
-ms.author: terrylan
-ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 320c7c483e865c85948d32ee2b5b70a92181920f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363965"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160073"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
-Często zadawane pytania odpowiedzi na pytania dotyczące Centrum zabezpieczeń Azure to usługa, która pomaga zapobiec, wykrywania i reagowania na zagrożenia lepszy wgląd w i kontroli w zakresie bezpieczeństwa zasobów na platformie Microsoft Azure.
+Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
 
 > [!NOTE]
-> Począwszy od początku czerwca 2017 roku, usługa Security Center będzie używać programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracji Platform Centrum zabezpieczeń Azure](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
+> Począwszy od początku czerwca 2017 roku, usługa Security Center będzie używać programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracja platformy Centrum zabezpieczeń Azure](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
 >
 >
 
@@ -33,116 +33,119 @@ Często zadawane pytania odpowiedzi na pytania dotyczące Centrum zabezpieczeń 
 ### <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 Centrum zabezpieczeń Azure ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Umożliwia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami dla wszystkich subskrypcji, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
 
-### <a name="how-do-i-get-azure-security-center"></a>Jak uzyskać Centrum zabezpieczeń Azure?
-Centrum zabezpieczeń Azure jest włączone w ramach subskrypcji Microsoft Azure i są dostępne w [portalu Azure](https://azure.microsoft.com/features/azure-portal/). ([Zaloguj się do portalu](https://portal.azure.com), wybierz pozycję **Przeglądaj**, a Przewiń **Centrum zabezpieczeń**).  
+### <a name="how-do-i-get-azure-security-center"></a>Jak uzyskać usługę Azure Security Center?
+Usługa Azure Security Center jest włączone w ramach subskrypcji Microsoft Azure i dostępne w [witryny Azure portal](https://azure.microsoft.com/features/azure-portal/). ([Zaloguj się do portalu](https://portal.azure.com), wybierz opcję **Przeglądaj**i przewiń do **usługi Security Center**).  
 
 ## <a name="billing"></a>Rozliczenia
-### <a name="how-does-billing-work-for-azure-security-center"></a>Jak działa rozliczeń dla Centrum zabezpieczeń Azure?
-Centrum zabezpieczeń jest oferowana w dwóch warstw:
+### <a name="how-does-billing-work-for-azure-security-center"></a>Jak działa rozliczanie usługi Azure Security Center?
+Usługa Security Center jest oferowana w dwóch warstwach:
 
-**Warstwę bezpłatna** zapewnia wgląd w stan zabezpieczeń zasobów platformy Azure, zasady zabezpieczeń podstawowych, zalecenia dotyczące zabezpieczeń i integracja z produktów i usług zabezpieczeń z partnerami.
+**w warstwie bezpłatna** zapewnia wgląd w stan zabezpieczeń zasobów platformy Azure, podstawowe zasady zabezpieczeń, zaleceń dotyczących zabezpieczeń i integrację z produktów i usług zabezpieczeń oferowanych przez partnerów.
 
-**Warstwy standardowa** dodaje zagrożeń zaawansowane możliwości wykrywania, takie jak zagrożenia analizy, analizy behawioralnej, wykrywania anomalii, przypadki naruszenia zabezpieczeń i zagrożenia autorstwa raportów. Korzystanie z warstwy Standardowa jest bezpłatne przez pierwszych 60 dni. Należy wybrać w dalszym ciągu korzystać z usługi ponad 60 dni, firma Microsoft automatycznie uruchomić do obciążania dla usługi.  Aby przeprowadzić uaktualnienie, wybierz [warstwy cenowej](https://docs.microsoft.com/azure/security-center/security-center-pricing) w zasadach zabezpieczeń.
+**w warstwie standardowa** dodaje zaawansowanych zagrożeń możliwości wykrywania, w tym zagrożeń analizy, analizę behawioralną, wykrywanie anomalii, zdarzenia związane z bezpieczeństwem i zagrożeń: uznanie autorstwa raportów. Korzystanie z warstwy Standardowa jest bezpłatne przez pierwszych 60 dni. Należy wybrać w dalszym ciągu używać usługi dłużej niż 60 dni, automatycznie będą naliczane za usługę.  Aby przeprowadzić uaktualnienie, wybierz [warstwy cenowej](https://docs.microsoft.com/azure/security-center/security-center-pricing) w zasadach zabezpieczeń.
 
 ## <a name="permissions"></a>Uprawnienia
-Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), która zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md) który można przypisać do użytkowników, grup i usług Azure.
+Azure Security Center korzysta z [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md), który zapewnia [wbudowane role](../role-based-access-control/built-in-roles.md) które można przypisać do użytkowników, grup i usług na platformie Azure.
 
-Centrum zabezpieczeń ocenia konfiguracji zasobów, aby zidentyfikować problemy z zabezpieczeniami i luk w zabezpieczeniach. W Centrum zabezpieczeń widoczne są tylko informacje związane z zasobem, jeśli przypisano rolę właściciela, współautora lub czytelnika subskrypcji lub grupy zasobów, do której należy zasób.
+Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować problemy dotyczące zabezpieczeń i luki w zabezpieczeniach. W usłudze Security Center widoczne są tylko informacje związane z zasobem, gdy masz przypisaną rolę właściciela, współautora lub czytelnika subskrypcji lub grupy zasobów, do której należy zasób.
 
-Zobacz [uprawnienia w Centrum zabezpieczeń Azure](security-center-permissions.md) Aby dowiedzieć się więcej o rolach i akcji dozwolonych w Centrum zabezpieczeń.
+Zobacz [uprawnień w usłudze Azure Security Center](security-center-permissions.md) Aby dowiedzieć się więcej na temat ról i dozwolonych akcji w usłudze Security Center.
 
 ## <a name="data-collection"></a>Zbieranie danych
-Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
+Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy.
 
 ### <a name="how-do-i-disable-data-collection"></a>Jak wyłączyć zbieranie danych?
-Automatyczne inicjowanie obsługi administracyjnej jest domyślnie wyłączone. Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczne udostępnianie zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zaleceń dotyczących aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
+Automatyczna aprowizacja jest domyślnie wyłączona. Można wyłączyć automatyczną aprowizację zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczna aprowizacja zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zalecenia dotyczące aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
 
-Aby wyłączyć zbieranie danych [Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **wybierz zasady**. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację. Po wybraniu subskrypcji **zasady zabezpieczeń — zbieranie danych** otwiera. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **poza**.
+Aby wyłączyć zbieranie danych [Zaloguj się do witryny Azure portal](https://portal.azure.com), wybierz opcję **Przeglądaj**, wybierz opcję **usługi Security Center**i wybierz **wybierz zasady**. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację. Po wybraniu subskrypcji **zasady zabezpieczeń — zbierania danych** zostanie otwarty. W obszarze **automatycznej aprowizacji**, wybierz opcję **poza**.
 
 ### <a name="how-do-i-enable-data-collection"></a>Jak włączyć zbieranie danych?
-Zbieranie danych można włączyć dla Twojej subskrypcji platformy Azure w zasadach zabezpieczeń. Aby włączyć zbieranie danych. [Zaloguj się do portalu Azure](https://portal.azure.com), wybierz pozycję **Przeglądaj**, wybierz pozycję **Centrum zabezpieczeń**i wybierz **zasady zabezpieczeń**. Wybierz subskrypcję, która ma zostać włączone automatyczne udostępnianie. Po wybraniu subskrypcji **zasady zabezpieczeń — zbieranie danych** otwiera. W obszarze **automatycznego inicjowania obsługi administracyjnej**, wybierz pozycję **na**.
+Można włączyć zbierania danych dla subskrypcji platformy Azure w ramach zasad zabezpieczeń. Aby włączyć zbieranie danych. [Zaloguj się do witryny Azure portal](https://portal.azure.com), wybierz opcję **Przeglądaj**, wybierz opcję **usługi Security Center**i wybierz **zasady zabezpieczeń**. Wybierz subskrypcję, której chcesz włączyć automatyczną aprowizację. Po wybraniu subskrypcji **zasady zabezpieczeń — zbierania danych** zostanie otwarty. W obszarze **automatycznej aprowizacji**, wybierz opcję **na**.
 
-### <a name="what-happens-when-data-collection-is-enabled"></a>Co się stanie po włączeniu funkcji zbierania danych?
-Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+### <a name="what-happens-when-data-collection-is-enabled"></a>Co się stanie, gdy jest włączone zbieranie danych?
+Po włączeniu automatycznej aprowizacji Security Center aprowizuje program Microsoft Monitoring Agent na wszystkich obsługiwanych maszynach wirtualnych platformy Azure i wszelkie nowe, które są tworzone. Automatycznej aprowizacji jest zdecydowanie zalecane, ale jest również dostępna ręcznej instalacji agenta. [Dowiedz się, jak można zainstalować rozszerzenia Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
-Agent umożliwia zdarzeń tworzenia procesu 4688 i *CommandLine* pole wewnątrz zdarzenia 4688. Nowe procesy utworzone na maszynie Wirtualnej są rejestrowane w dzienniku zdarzeń i monitorowane przez Centrum zabezpieczeń wykrywania usługi. Aby uzyskać informacje dotyczące szczegółów zarejestrowanych dla każdego nowego procesu, zobacz [pola Opis 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent również zbiera dane zdarzeń 4688 utworzone na maszynie Wirtualnej i przechowuje je w obszarze wyszukiwania.
+Agent umożliwia zdarzeń tworzenia procesu 4688 i *CommandLine* pola wewnątrz zdarzeń 4688. Nowe procesy utworzone na maszynie Wirtualnej są rejestrowane w dzienniku zdarzeń i monitorowana przez Centrum zabezpieczeń usługi wykrywania. Instrukcje dotyczące szczegółów dla każdego nowego procesu, zobacz [pola Opis 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent również zbiera dane zdarzeń 4688, utworzony na maszynie Wirtualnej i przechowuje je w polu wyszukiwania.
 
-Jeśli Centrum zabezpieczeń wykryje podejrzanych działań na maszynie Wirtualnej, w przypadku klienta jest powiadamiany za pośrednictwem poczty e-mail [informacje kontaktowe zabezpieczeń](security-center-provide-security-contact-details.md) podano. Alert jest również widoczne na pulpicie nawigacyjnym alerty zabezpieczeń Centrum zabezpieczeń.
+Gdy usługa Security Center wykrywa podejrzane działania na maszynie Wirtualnej, powiadomienia klienta za pośrednictwem poczty e-mail, gdy [zabezpieczeń informacji kontaktowych](security-center-provide-security-contact-details.md) zostało podane. Alert jest również widoczne w pulpicie nawigacyjnym alerty zabezpieczeń Centrum zabezpieczeń.
 
-### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Agenta monitorowania na wydajność serwerów?
-Agent wykorzystuje nominalnego ilość zasobów systemowych, a powinien mieć mały wpływ na wydajność. Aby uzyskać więcej informacji dotyczących wpływu na wydajność i agent i rozszerzenia, zobacz [przewodnik dotyczący planowania i operacje](security-center-planning-and-operations-guide.md#data-collection-and-storage).
+> [!NOTE]
+> - Aby włączyć zbieranie danych dla [adaptacyjnego sterowania aplikacjami](security-center-adaptive-application.md), usługa Security Center konfiguruje lokalne zasady funkcji AppLocker w trybie inspekcji, aby zezwolić na wszystkie aplikacje. To spowoduje, że zasady ograniczeń oprogramowania do wygenerowania zdarzenia, które następnie są pobierane i wykorzystywane przez usługę Security Center. Należy zauważyć, że te zasady nie zostaną skonfigurowane na maszynach, na których jest już skonfigurowane zasady funkcji AppLocker. 
+
+### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Czy Monitoring Agent wpływ na wydajność moich serwerów?
+Agent korzysta nominalna ilość zasobów systemowych i powinno mieć większego wpływu na wydajność. Aby uzyskać więcej informacji na temat wpływu na wydajność i agent i rozszerzenia, zobacz [przewodnik planowania i obsługi](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 ### <a name="where-is-my-data-stored"></a>Gdzie są przechowywane moje dane?
-Dane zbierane z tego agenta są przechowywane w istniejącym obszarem roboczym analizy dzienników skojarzonych z Twoją subskrypcją lub nowego obszaru roboczego. Aby uzyskać więcej informacji, zobacz [bezpieczeństwo danych](security-center-data-security.md).
+Dane zbierane z tego agenta są przechowywane w istniejącego obszaru roboczego usługi Log Analytics skojarzonych z subskrypcją lub nowy obszar roboczy. Aby uzyskać więcej informacji, zobacz [bezpieczeństwo danych](security-center-data-security.md).
 
-## <a name="using-azure-security-center"></a>Korzystanie z Centrum zabezpieczeń Azure
-### <a name="what-is-a-security-policy"></a>Co to jest zasady zabezpieczeń?
-Zasady zabezpieczeń określają zestaw kontrolek, które są zalecane dla zasobów w określonej subskrypcji. W Centrum zabezpieczeń Azure można zdefiniować zasady dla subskrypcji platformy Azure zgodnie z wymaganiami firmy dotyczącymi zabezpieczeń i typem aplikacji oraz poufności danych w każdej subskrypcji.
+## <a name="using-azure-security-center"></a>Za pomocą usługi Azure Security Center
+### <a name="what-is-a-security-policy"></a>Co to są zasady zabezpieczeń?
+Zasady zabezpieczeń określają zestaw mechanizmów kontrolnych, które są zalecane dla zasobów w ramach określonej subskrypcji. W usłudze Azure Security Center można zdefiniować zasady dla subskrypcji platformy Azure zgodnie z wymaganiami w zakresie zabezpieczeń firmy i typem aplikacji oraz poufnością danych w poszczególnych subskrypcjach.
 
-Zasady zabezpieczeń włączone w Centrum zabezpieczeń Azure dysku — zalecenia dotyczące zabezpieczeń i monitorowania. Aby dowiedzieć się więcej na temat zasad zabezpieczeń, zobacz [monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md).
+Zasady zabezpieczeń włączone w usłudze Azure Security Center dysku — zalecenia dotyczące zabezpieczeń i monitorowania. Aby dowiedzieć się więcej na temat zasad zabezpieczeń, zobacz [monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md).
 
 ### <a name="who-can-modify-a-security-policy"></a>Kto może modyfikować zasady zabezpieczeń?
-Aby zmodyfikować zasady zabezpieczeń, musi być administratorem zabezpieczeń lub właścicielem lub współautorem subskrypcji.
+Aby zmodyfikować zasady zabezpieczeń, musi być kontem administratora zabezpieczeń lub właścicielem lub współautorem subskrypcji.
 
-Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń, zobacz [Ustawianie zasad zabezpieczeń w Centrum zabezpieczeń Azure](security-center-policies.md).
+Aby dowiedzieć się, jak skonfigurować zasady zabezpieczeń, zobacz [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md).
 
-### <a name="what-is-a-security-recommendation"></a>Jaka jest zalecana ze względów bezpieczeństwa?
-Centrum zabezpieczeń Azure analizuje stan zabezpieczeń zasobów platformy Azure. Po potencjalnych luk w zabezpieczeniach, tworzone są zalecenia. Zalecenia ułatwiają konfigurowanie potrzebnego formantu. Przykłady to:
+### <a name="what-is-a-security-recommendation"></a>Co to jest zalecana ze względów bezpieczeństwa?
+Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Po zidentyfikowaniu potencjalnych luk w zabezpieczeniach tworzone są zalecenia. Zaleceń prowadzi przez proces konfigurowania wymaganych kontroli. Przykładami są:
 
-* Inicjowanie obsługi administracyjnej przed złośliwym oprogramowaniem do identyfikacji i usuwania złośliwego oprogramowania
+* Inicjowanie obsługi ochrony przed złośliwym kodem do identyfikacji i usuwania złośliwego oprogramowania
 * [Sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) i reguł sterujących ruchem do maszyn wirtualnych
-* Aprowizowanie zapory aplikacji sieci web pomagających chronić przed atakami przeznaczonych dla aplikacji sieci web
+* Inicjowanie obsługi administracyjnej zapory aplikacji sieci web, aby pomóc Ci chronić przed atakami przeznaczone dla aplikacji sieci web
 * Wdrażanie brakujących aktualizacji systemu
 * Modyfikowanie konfiguracji systemu operacyjnego, które odbiegają od zalecanych standardów
 
-Tylko te zalecenia, które są włączone w zasadach zabezpieczeń są wyświetlane tutaj.
+Tylko te zalecenia, które są włączone w zasadach zabezpieczeń są wyświetlane w tym miejscu.
 
-### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak wyświetlić bieżący stan zabezpieczeń Zasoby platformy Azure?
-**Omówienie Centrum zabezpieczeń** bloku przedstawia ogólny stan zabezpieczeń środowiska według obliczeniowych, sieci, magazynu i danych i aplikacji. Każdy typ zasobu ma przedstawiający wskaźnika, jeśli zidentyfikowano wszelkich potencjalnych luk w zabezpieczeniach. Kliknięcie każdego kafelka powoduje wyświetlenie listy problemów dotyczących zabezpieczeń, zidentyfikowane przez Centrum zabezpieczeń, razem ze spisem zasobów w ramach subskrypcji.
+### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak wyświetlić bieżący stan zabezpieczeń zasobów platformy Azure, Moje?
+**Omówienie usługi Security Center** blok ogólny stan zabezpieczeń środowiska według obliczeniowych, sieci, magazynu i danych i aplikacji. Każdy typ zasobu ma przedstawiający wskaźnik, jeśli zidentyfikowano żadnych potencjalnych luk w zabezpieczeniach. Klikając każdy Kafelek Wyświetla listę problemów z zabezpieczeniami identyfikowane przez usługę Security Center oraz spis zasobów w ramach subskrypcji.
 
-### <a name="what-triggers-a-security-alert"></a>Co to jest wyzwalane alert zabezpieczeń?
-Centrum zabezpieczeń Azure automatycznie gromadzi, analizuje i fuses dane dzienników z zasobów platformy Azure, sieci i rozwiązań partnerskich, takich jak ochrony przed złośliwym oprogramowaniem i zapory. Po wykryciu zagrożenia tworzony jest alert zabezpieczeń. Przykłady obejmują wykrywanie:
+### <a name="what-triggers-a-security-alert"></a>Co wyzwala alert zabezpieczeń?
+Usługa Azure Security Center automatycznie zbiera, analizuje i fuses dane dzienników z zasobów platformy Azure, sieci i rozwiązań partnerskich, takich jak ochrony przed złośliwym oprogramowaniem i zapory. Po wykryciu zagrożenia tworzony jest alert zabezpieczeń. Przykłady obejmują wykrywanie:
 
 * Zagrożonych maszyn wirtualnych komunikujących się ze znanymi złośliwymi adresami IP
-* Zaawansowanego złośliwego oprogramowania wykrytego za pomocą raportowanie błędów systemu Windows
+* Zaawansowanego złośliwego oprogramowania wykrytego za pomocą usługi raportowania błędów Windows
 * Ataków siłowych wobec maszyn wirtualnych
-* Alerty zabezpieczeń ze zintegrowanych zabezpieczeń rozwiązań partnerskich, takich jak przed złośliwym oprogramowaniem i zapór aplikacji sieci Web
+* Alerty zabezpieczeń z rozwiązań zabezpieczeń zintegrowanych partnerów, takich jak chroniące przed złośliwym kodem lub zapory aplikacji sieci Web
 
-### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaka jest różnica między zagrożenia wykryte i alerty o przez Microsoft Security Response Center lub Centrum zabezpieczeń Azure?
-MSRC Microsoft Security Response Center () wykonuje monitorowanie zabezpieczeń wybierz sieć platformy Azure i infrastruktury i odbiera zagrożeń analizy i nadużycia utrudnień od osób trzecich. Gdy MSRC świadomość, że dane klienta uzyskaniu przez stronę bezprawnego lub nieautoryzowane lub czy używanie klienta usługi Azure nie spełnia warunków do użycia dopuszczalne, Menedżer zdarzenia zabezpieczeń powiadamia klienta. Powiadomień zwykle występuje, wysyłając wiadomość e-mail do kontaktów zabezpieczeń określonych w Centrum zabezpieczeń Azure lub właściciela subskrypcji platformy Azure, jeśli nie określono kontaktu zabezpieczeń.
+### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaka jest różnica między zagrożenia wykryte i alerty o przez program Microsoft Security Response Center i Azure Security Center?
+Narzędzie Microsoft Security Response Center (MSRC) wykonuje monitorowania zabezpieczeń wybierz sieć platformy Azure i infrastrukturą i odbiera skarg analizy i nadużyć zagrożenia pochodzące od innych firm. Gdy MSRC uświadamia sobie, że dane klienta były używane na przez nieupoważnione lub lub że korzystanie z platformy Azure przez klienta nie jest zgodne z warunkami dopuszczalne użycie, Menedżer zdarzenia zabezpieczeń powiadamia klienta. Powiadomienia są zazwyczaj występuje, wysyłając wiadomość e-mail do kontaktów zabezpieczeń określone w usłudze Azure Security Center lub właściciel subskrypcji platformy Azure, jeśli nie określono kontaktu zabezpieczeń.
 
-Centrum zabezpieczeń jest usługą platformy Azure, która stale monitoruje klienta środowiska platformy Azure i stosuje analytics, aby automatycznie wykrywać szeroką gamę potencjalnie złośliwych działań. Wykrywane odmiany są udostępniane jako alerty zabezpieczeń w pulpicie nawigacyjnym Centrum zabezpieczeń.
+Usługa Security Center jest usługą platformy Azure, która stale monitoruje środowiska platformy Azure przez klienta i stosuje analytics, aby automatycznie wykrywać szeroką gamę potencjalnie złośliwych działań. Wykrywane odmiany są udostępniane jako alerty zabezpieczeń w pulpicie nawigacyjnym usługi Security Center.
 
-### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Zasoby platformy Azure są monitorowane przez Centrum zabezpieczeń Azure?
-Centrum zabezpieczeń Azure monitorowanie następujących zasobów platformy Azure:
+### <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Jakie zasoby platformy Azure są monitorowane przez usługę Azure Security Center?
+Usługa Azure Security Center monitoruje następujących zasobów platformy Azure:
 
-* Maszynach wirtualnych (VM) (w tym [usługi w chmurze](../cloud-services/cloud-services-choose-me.md))
+* Maszyny wirtualne (VM) (w tym [usług w chmurze](../cloud-services/cloud-services-choose-me.md))
 * Sieci wirtualne platformy Azure
-* Usługi SQL Azure
+* Usługa Azure SQL
 * Konto usługi Azure Storage
-* Aplikacje sieci Web Azure (w [środowiska usługi aplikacji](../app-service/environment/intro.md))
-* Rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure, takich jak Zapora aplikacji sieci web na maszynach wirtualnych i środowiska usługi aplikacji
+* Aplikacje sieci Web platformy Azure (w [środowiska App Service Environment](../app-service/environment/intro.md))
+* Rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure, takich jak zapory aplikacji sieci web na maszynach wirtualnych i w środowisku App Service Environment
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Jakie typy maszyn wirtualnych są obsługiwane?
-Monitorowanie i zalecenia są dostępne dla maszyn wirtualnych (VM) utworzone za pomocą obu [klasycznego i modeli wdrażania usługi Resource Manager](../azure-classic-rm.md).
+Monitorowanie i zalecenia są dostępne dla maszyn wirtualnych (VM) utworzone za pomocą obu [klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager](../azure-classic-rm.md).
 
-Zobacz [obsługiwanych platform w Centrum zabezpieczeń Azure](security-center-os-coverage.md) listę obsługiwanych platform.
+Zobacz [obsługiwanych platform w usłudze Azure Security Center](security-center-os-coverage.md) Aby uzyskać listę obsługiwanych platform.
 
-### <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Dlaczego nie rozpoznaje ochrony przed złośliwym kodem działającej na maszynie Wirtualnej platformy Azure w Centrum zabezpieczeń Azure?
-Centrum zabezpieczeń Azure ma wgląd w ochrony przed złośliwym oprogramowaniem, zainstalowanych przy użyciu rozszerzeń Azure. Na przykład Centrum zabezpieczeń nie jest w stanie wykryć ochrony przed złośliwym kodem, który został wstępnie zainstalowany na podane obrazu lub jeśli ochrony przed złośliwym kodem jest zainstalowany na maszynach wirtualnych przy użyciu własnych procesów (takich jak systemy zarządzania konfiguracją).
+### <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Dlaczego usługa Azure Security Center nie rozpoznaje rozwiązanie chroniące przed złośliwym kodem uruchomiona na maszynie Wirtualnej platformy Azure?
+Usługa Azure Security Center ma wgląd we ochrony przed złośliwym kodem zainstalowane za pomocą rozszerzeń platformy Azure. Na przykład usługa Security Center nie jest w stanie wykryć ochrony przed złośliwym kodem, który został wstępnie zainstalowane w obrazie, podane lub jeśli zainstalowano ochrony przed złośliwym oprogramowaniem na maszynach wirtualnych przy użyciu własnych procesów (na przykład systemy zarządzania konfiguracją).
 
-### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Dlaczego jest wyświetlany komunikat "Brakujących danych skanowania" Moje maszyny wirtualnej?
-Ten komunikat jest wyświetlany, gdy nie ma żadnych danych skanowania dla maszyny Wirtualnej. Może upłynąć trochę czasu (mniej niż godzinę), zanim dane skanowania do wypełnienia po włączeniu funkcji zbierania danych w Centrum zabezpieczeń Azure. Po początkowej populacji danych skanowania ponieważ nie ma żadnych danych skanowania w ogóle lub nie ma żadnych ostatnich danych skanowania może zostać wyświetlony ten komunikat. Skanowanie nie należy wypełniać dla maszyny Wirtualnej w stanie zatrzymania. Ten komunikat może również zostać wyświetlony, jeśli dane skanowania nie został wypełniony ostatnio (zgodnie z zasadami przechowywania dla agenta systemu Windows, który ma wartość domyślną w ciągu 30 dni).
+### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Dlaczego otrzymuję komunikat "Brak danych skanowania" dla mojej maszyny Wirtualnej?
+Ten komunikat pojawia się, gdy nie ma żadnych danych skanowania dla maszyny Wirtualnej. Jego może zająć trochę czasu (mniej niż godzinę) dla danych skanowania wypełnić po włączeniu zbierania danych w usłudze Azure Security Center. Po początkowego zapełniania danych skanowania może odebrane tego komunikatu, ponieważ nie ma żadnych danych skanowania w ogóle lub nie ma żadnych ostatnich danych skanowania. Skanowanie nie wypełnić dla maszyny Wirtualnej w stanie zatrzymania. Ten komunikat może również zostać wyświetlony, jeśli danych skanowania nie została wypełniona ostatnio (zgodnie z zasadami przechowywania dla agenta programu Windows, który ma wartość domyślną w ciągu 30 dni).
 
-### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Jak często Centrum zabezpieczeń skanowania w poszukiwaniu luk w zabezpieczeniach systemu operacyjnego, aktualizacji systemu i problemy z ochroną punktu końcowego?
-Czas oczekiwania w Centrum zabezpieczeń skanowania pod kątem luk w zabezpieczeniach, aktualizacje i problemów:
+### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Jak często usługa Security Center skanowanie luk w zabezpieczeniach systemu operacyjnego, aktualizacji systemu i problemy z ochroną punktu końcowego?
+Czas oczekiwania w usłudze Security Center skanuje pod kątem luk w zabezpieczeniach, aktualizacje, problemów i jest:
 
 - Konfiguracje zabezpieczeń systemu operacyjnego — danych jest aktualizowany w ciągu 48 godzin
 - Aktualizacje systemu — danych jest aktualizowany w ciągu 24 godzin
-- Problemy z ochroną punktu końcowego — dane są aktualizowane w ramach 8 godzin
+- Problemy z programem Endpoint Protection — dane są aktualizowane w ramach 8 godzin
 
-Centrum zabezpieczeń zwykle skanowania pod kątem nowych danych co godzinę. Wartości opóźnienia powyżej są scenariusz gdzie nie jest ostatnie skanowanie lub skanowania nie powiodło się.
+Usługa Security Center skanuje w poszukiwaniu nowych danych zazwyczaj co godzinę. Powyższe wartości opóźnienia są scenariusz gdzie nie jest ostatnie skanowanie lub skanowania nie powiodło się.
 
-### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Dlaczego jest wyświetlany komunikat "Brak jest Agent maszyny Wirtualnej?"
-Agent maszyny Wirtualnej musi być zainstalowany na maszynach wirtualnych, aby włączyć zbieranie danych. Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Aby uzyskać informacje dotyczące sposobu instalowania agenta maszyny Wirtualnej na innych maszynach wirtualnych, zobacz we wpisie blogu [agenta maszyny Wirtualnej i rozszerzenia](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).
+### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Dlaczego otrzymuję komunikat "Brak jest Agent maszyny Wirtualnej?"
+Musi być zainstalowany Agent maszyny Wirtualnej na maszynach wirtualnych, aby włączyć zbieranie danych. Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Aby uzyskać informacje dotyczące sposobu instalowania agenta maszyny Wirtualnej na innych maszynach wirtualnych, zobacz wpis w blogu [agenta maszyny Wirtualnej i rozszerzenia](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

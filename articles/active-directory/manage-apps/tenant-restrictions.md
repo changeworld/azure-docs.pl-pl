@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: abf7d571097aefd47c90cbd0ce4aab941c4e24c4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: b89ab77b1cd97fd501a754dbf41d1aa74ef118d9
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126664"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144996"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Ograniczenia dzierżawy do zarządzania dostępem do aplikacji SaaS działających w chmurze
 
@@ -97,7 +97,7 @@ Przykładowy użytkownik znajduje się w sieci firmy Contoso, ale próbuje uzysk
 
 Podczas konfiguracji ograniczenia dotyczące dzierżawy odbywa się na infrastrukturze firmowym serwerem proxy, Administratorzy mogą bezpośrednio dostępu do raportów ograniczenia dotyczące dzierżawy w witrynie Azure portal. Aby wyświetlić raporty, przejdź do strony Przegląd usługi Azure Active Directory, a następnie sprawdź w obszarze inne możliwości.
 
-Administrator dzierżawy określone, ponieważ ograniczeniami dostępu do kontekstu dzierżawy mogą korzystać z tego raportu, aby wyświetlić wszystkich logowań zablokowany ze względu na zasady ograniczeń dzierżawy, w tym tożsamość używana i katalog docelowy identyfikator.
+Administrator dzierżawy, określony jako dzierżawy ograniczeniami dostępu kontekstowe ten raport służy będzie zablokowany ze względu na zasady ograniczeń dzierżawy, w tym tożsamość używana logowania i katalog docelowy identyfikator. Logowania są uwzględnione, jeśli użytkownik dzierżawy lub zasobów dzierżawy dla logowania jest ustawienie ograniczenia dzierżawy.
 
 ![Umożliwia wyświetlanie ograniczeniami prób logowania w witrynie Azure portal](./media/tenant-restrictions/portal-report.png)
 

@@ -4,18 +4,18 @@ description: Wprowadzenie krok po kroku do lokalnego serwera Azure MFA
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: b882f8d8ffc818de5ec459f504965015f55897a3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031692"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159730"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -186,7 +186,7 @@ Nowy serwer jest teraz gotowy i został uruchomiony przy użyciu oryginalnych da
 
 Po uaktualnieniu do wersji 8.x lub wyższej oprogramowania MFA Server lub zainstalowaniu jej zaleca się wyłączenie lub usunięcie starszych i słabszych zestawów szyfrowania, chyba że są one wymagane przez organizację. Informacje o tym, jak wykonać to zadanie, można znaleźć w artykule [Managing SSL/TLS Protocols and Cipher Suites for AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) (Zarządzanie protokołami SSL/TLS i zestawami szyfrowania dla usług AD FS).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Instalowanie i konfigurowanie [portalu użytkowników](howto-mfaserver-deploy-userportal.md) dla użytkownika samoobsługi.
 - Instalowanie i konfigurowanie serwera usługi Azure MFA przy użyciu [usług Active Directory Federation Services](multi-factor-authentication-get-started-adfs.md), [uwierzytelniania usługi RADIUS](howto-mfaserver-dir-radius.md) lub [uwierzytelniania LDAP](howto-mfaserver-dir-ldap.md).

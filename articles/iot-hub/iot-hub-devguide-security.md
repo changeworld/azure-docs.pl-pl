@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 754449dcf759820c8bb99d082c3a5ba2792f02c8
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 227723ecea1401247f0df87bccfe058fb2273647
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126327"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145353"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -91,7 +91,7 @@ Protokół HTTPS implementuje uwierzytelniania, umieszczając prawidłowy token 
 
 Nazwa użytkownika (identyfikatorze urządzenia rozróżniana jest wielkość liter): `iothubname.azure-devices.net/DeviceId`
 
-Hasło (można wygenerować token sygnatury dostępu Współdzielonego za pomocą [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia lub polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)):
+Hasło (można wygenerować token sygnatury dostępu Współdzielonego za pomocą [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [usługi Azure IoT Rozszerzenia narzędzi programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -270,7 +270,7 @@ Wynik, który przyznaje dostęp do wszystkich funkcji dla urządzenia 1, będzie
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą programu .NET [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia lub dla wielu platform, oparta na środowisku Python [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0] [ lnk-IoT-extension-CLI-2.0] narzędzie wiersza polecenia lub [rozszerzenie Azure IoT Toolkit dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Istnieje możliwość wygenerowania tokenu sygnatury dostępu Współdzielonego, za pomocą [Eksplorator urządzeń] [ lnk-device-explorer] narzędzia polecenia interfejsu wiersza polecenia rozszerzenia [az iot hub Generowanie token sygnatury dostępu współdzielonego —](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), lub [usługi Azure IoT Rozszerzenia narzędzi programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Użyj zasad dostępu współdzielonego
 
@@ -415,7 +415,7 @@ Oto główne kroki wzorzec usługi tokenu:
 
 Usługa tokenów można ustawić wygaśnięcie tokenu zgodnie z potrzebami. Po wygaśnięciu ważności tokenu usługi IoT hub serwery połączenia urządzenia/modułu. Następnie urządzenia/modułu, należy zażądać nowego tokenu z usługi tokenu. Czas wygaśnięcia krótki zwiększa to obciążenie urządzenia i/lub modułu i usługi tokenu.
 
-Dla urządzenia/modułu, aby nawiązać połączenie z Centrum, należy nadal go dodać w rejestrze tożsamości Centrum IoT Hub — mimo że it używa token, a nie kluczem do łączenia. W związku z tym, można kontynuować korzystanie z kontroli dostępu na urządzenie/na module przez włączenie lub wyłączenie tożsamości urządzenia/modułu w [rejestr tożsamości][lnk-identity-registry]. Takie podejście zmniejsza ryzyko przy użyciu tokenów z czasem wygaśnięcia długie.
+Dla urządzenia/modułu, aby nawiązać połączenie z Centrum, należy nadal go dodać w rejestrze tożsamości Centrum IoT Hub — nawet jeśli korzysta ona z tokenu i nie klucza połączyć. W związku z tym, można kontynuować korzystanie z kontroli dostępu na urządzenie/na module przez włączenie lub wyłączenie tożsamości urządzenia/modułu w [rejestr tożsamości][lnk-identity-registry]. Takie podejście zmniejsza ryzyko przy użyciu tokenów z czasem wygaśnięcia długie.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porównanie z bramą niestandardowe
 
@@ -492,8 +492,6 @@ Jeśli chcesz wypróbować niektóre pojęcia opisane w tym artykule, zobacz nas
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
-[lnk-IoT-extension-CLI-2.0]: https://github.com/Azure/azure-iot-cli-extension
-
-[lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
+[lnk-getstarted-tutorial]: quickstart-send-telemetry-node.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-d2c-tutorial]: tutorial-routing.md

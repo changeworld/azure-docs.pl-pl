@@ -1,6 +1,6 @@
 ---
-title: Włącz udostępnianie prowadzić | Azure
-description: Włącz udostępnianie realizacji dla wydawcy aplikacji i usług Azure Marketplace i AppSource
+title: Potencjalny klient Włączanie udostępniania w witrynie Azure Marketplace | Azure
+description: Dowiedz się, jak włączyć Udostępnianie potencjalnego klienta do portalu Azure Marketplace i AppSource, wydawcy aplikacji i usługi.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,51 +14,50 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 17116b719b82fd894bf6aabf84c798cebbd13649
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3fea858f23c6b271a117f2edcc749e0c6b737e27
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825245"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159997"
 ---
-# <a name="enable-lead-sharing"></a>Włącz udostępnianie potencjalnych klientów  
-Upewnij się, że realizacji zarządzanie jest włączone dla Twojej listy w witrynie marketplace, tak, aby odbierać informacje kontaktowe dla następujących osób.
+# <a name="enable-lead-sharing"></a>Włącz udostępnianie potencjalnego klienta
+Zapewnienie włączenia Zarządzanie potencjalnymi klientami dla Twojej listy w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [Microsoft AppSource](https://appsource.microsoft.com) pomogą Ci uzyskać informacje kontaktowe dla następujących osób:
 
-| Sklepu | grupy odbiorców |  
-|:--- |:--- |  
-| AppSource | firmy |  
-| Azure Marketplace | Klienci |  
+| Witryna sklepu | Grupy odbiorców |
+|:--- |:--- |
+| AppSource | Klienci biznesowi |
+| Azure Marketplace | Wszyscy klienci |
 
-Potencjalnych klientów zapewniają podstawę zasięg dla następujących kampanie, ruchy sprzedaży personel sprzedaży pola, a informacje dotyczące sposobu wykonywania oferty lub aplikacji. 
+Potencjalnymi klientami Podaj podstawę zasięg kampanii wymienione w poniższej tabeli, powiązane ruchy sprzedaży według działu sprzedaży pola i informacje dotyczące wykonywania aplikacji lub oferty:
 
-| Sklepu | Kampanii |  
-|:--- |:--- |  
-| AppSource | Nurture |  
-| Azure Marketplace | Generowanie w żądanie |  
+| Witryna sklepu | Kampanii |
+|:--- |:--- |
+| AppSource | Informacyjna |
+| Azure Marketplace | Generowanie w żądanie. |
 
-Poniżej przedstawiono rozwiązania dla potencjalnych klientów.  
-*   Kwalifikowanie potencjalnych klientów i oceniania potencjalnych klientów jako szans sprzedaży
-*   Pielęgnacji potencjalnych klientów do wprowadzania planowanej sprzedaży
-*   Wyrównywanie wysiłków z ogólnej strategii kampanii marketingowych 
+Użyj następujących wskazówek dla potencjalnych klientów:
+*   Kwalifikują się potencjalnymi klientami i oceniać potencjalnych klientów jako szans sprzedaży.
+*   Zaspakajanie potrzeb istniejących potencjalnymi klientami, aby wprowadzić planowanej sprzedaży.
+*   Wyrównaj wysiłków z ogólnej strategii kampanii marketingowej.
 
-Potencjalnych klientów przedstawiają odsetek klientów na poniższej liście. 
+Odsetek klientów na następujących listach pokazują, potencjalnymi klientami:
 
-| Sklepu | Wyświetlanie listy |  
-|:--- |:--- |  
-| AppSource | <table> <tr><td>Aplikacja</td></tr> <tr><td>Usługi konsultingowe</td></tr> </table> |  
-| Azure Marketplace | <table> <tr><td>Oferta</td></tr> <tr><td>Technologia</td></tr> </table> |  
+| Witryna sklepu | Wyświetlanie listy |
+|:--- |:--- |
+| AppSource | <table> <tr><td>Aplikacja</td></tr> <tr><td>Usługi doradcze</td></tr> </table> |
+| Azure Marketplace | <table> <tr><td>Oferta</td></tr> <tr><td>Technologia</td></tr> </table> |
 
-Proces powinien mieć w miejscu monitowanie o potencjalnych klientów.  
+Proces powinien mieć w miejscu, aby wykonać kolejne czynności z potencjalnymi klientami zgodnie z opisem w poniższej tabeli:
 
-| Sklepu | Potencjalnych klientów |  
-|:--- |:--- |  
-| AppSource | <table> <tr><td>Twoje CRM</td></tr> <tr><td>Sprzedawcy pola Microsoft CRM</td></tr> </table> |  
-| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Sprzedawcy pola Microsoft CRM</td></tr> </table> |  
+| Witryna sklepu | Potencjalni klienci |
+|:--- |:--- |
+| AppSource | <table> <tr><td>CRM</td></tr> <tr><td>Sprzedawcy pola Microsoft CRM</td></tr> </table> |
+| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Sprzedawcy pola Microsoft CRM</td></tr> </table> |
 
-Potencjalnych klientów w sklepy w witrynie marketplace są inne niż Microsoft kwalifikowana sprzedawcy potencjalni klienci, którzy są funkcją program wspólnej sprzedaży.  
-*   Aby uzyskać więcej informacji o sposobie dostęp do programu wspólnej sprzedaży, odwiedź stronę firmy wspierania ze strony firmy Microsoft znajduje się w [wspierania —-business z — microsoft](./promote-your-business-with-microsoft.md).  
+Potencjalnych klientów w sklepów w portalu Marketplace różnią się od firmy Microsoft kwalifikowana sprzedawcy potencjalni klienci, którzy są funkcją programu wspólnej sprzedaży.
+
+Aby uzyskać więcej informacji na temat dostępu do programu wspólnej sprzedaży, zobacz [wypromuj swoją firmę z firmą Microsoft](./promote-your-business-with-microsoft.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
- 
----  
+Przegląd [Podręcznik publikowania w portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md).

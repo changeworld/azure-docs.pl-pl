@@ -4,24 +4,25 @@ description: Często zadawane pytania i odpowiedzi dotyczące usługi Azure Mult
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 00eab947120cdfa76de64536ddaa0600c2dff2ec
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.reviewer: michmcla
+ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049415"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159845"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
 Tych często zadawanych PYTAŃ, odpowiedzi na często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication i przy użyciu usługi Multi-Factor Authentication. Jego jest podzielony na pytania dotyczące usługi ogólnie rzecz biorąc, rozliczenia modelami, środowiska użytkowników i rozwiązywania problemów.
 
 ## <a name="general"></a>Ogólne
+
 **P: jak serwer usługi Azure Multi-Factor Authentication obsługuje dane użytkownika?**
 
 Z serwera Multi-Factor Authentication dane użytkownika są przechowywane tylko na serwerach lokalnych. Żadne trwałe dane użytkowników nie są przechowywane w chmurze. Gdy użytkownik przeprowadza weryfikację dwuetapową, serwer usługi Multi-Factor Authentication wysyła dane do usługi Azure Multi-Factor Authentication w chmurze do uwierzytelniania. Komunikację między serwerem Multi-Factor Authentication i usługi Multi-Factor Authentication w chmurze używa protokołu Secure Sockets Layer (SSL) lub zabezpieczeń TLS (Transport Layer) za pośrednictwem portu 443 wychodzących.
@@ -60,6 +61,7 @@ W Kanadzie, firma Microsoft używa następujących krótkich kodów SMS:
 Microsoft nie gwarantuje spójne dostarczania monitu wiadomości SMS lub uwierzytelniania wieloskładnikowego opartego na głos przez ten sam numer. W celu poprawy naszych użytkowników firmy Microsoft można dodać lub usunąć krótkich kodów w dowolnym momencie, jak możemy dostosować trasy zwiększyć skuteczność programu SMS. Firma Microsoft obsługuje krótkie kody krajów poza USA i Kanady
 
 ## <a name="billing"></a>Rozliczenia
+
 Większość pytania dotyczące rozliczeń można uzyskać, odwołując się do jednej [stronie cennika usługi Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) lub dokumentacji dotyczącej [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
 **P: czy Moja organizacja opłata za wysyłanie połączeń telefonicznych i wiadomości tekstowych, które są używane do uwierzytelniania?**
@@ -119,7 +121,6 @@ Usługa Azure Active Directory jest wymagana dla modelu licencji, ponieważ lice
 Miejmy nadzieję wszyscy użytkownicy skonfigurowani w więcej niż jednej metody weryfikacji. Poproś ich o ponowne zalogowanie przy użyciu innej metody weryfikacji wybieranej na stronie logowania.
 
 Można wskazać użytkownikom [przewodnik rozwiązywania problemów dla użytkowników końcowych](../user-help/multi-factor-authentication-end-user-troubleshoot.md).
-
 
 **P: co należy zrobić, jeśli jeden z użytkowników nie można pobrać do swojego konta?**
 
@@ -196,8 +197,8 @@ Istnieje kilka przyczyn, że użytkownicy mogą monit o zarejestrowanie swoich i
 - Organizacja ma utworzone i włączone zasady rejestracji usługi MFA, która została zastosowana do użytkownika.
 - Użytkownik wcześniej zarejestrowany do uwierzytelniania Wieloskładnikowego, ale wybraną metodę weryfikacji, ponieważ administrator wyłączył. Użytkownik w związku z tym musi przejść rejestracji w usłudze MFA ponownie, aby wybrać nowy domyślną metodę weryfikacji.
 
-
 ## <a name="errors"></a>Błędy
+
 **P: co powinni zrobić użytkownicy widzą komunikat o błędzie "żądanie uwierzytelnienia jest nie dotyczy uaktywnionego konta", używając powiadomienia z aplikacji mobilnej?**
 
 Powiedz im, aby wykonać tę procedurę, aby usunąć swoje konto z aplikacji mobilnej, a następnie dodaj go ponownie:
@@ -214,6 +215,7 @@ Błąd 0x800434D4L występuje, gdy użytkownik próbuje zarejestrować się w pr
 Obejście tego problemu dla tego błędu jest posiadanie oddzielnego konta dla administratora dotyczące i operacji bez uprawnień administratora. Później możesz połączyć skrzynek pocztowych między konta administratora i konto bez uprawnień administratora, aby zalogować się do programu Outlook przy użyciu swojego konta bez uprawnień administratora. Aby uzyskać więcej informacji o tym rozwiązaniu, Dowiedz się, jak [pozwalają administratorowi na otworzyć i wyświetlić zawartość skrzynki pocztowej użytkownika](http://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Jeśli Twoje pytanie nie ma tutaj odpowiedzi, pozostaw je w komentarzach u dołu strony. Lub, w tym miejscu są pewne dodatkowe opcje w celu uzyskania pomocy:
 
 * Wyszukiwanie [baza wiedzy pomocy technicznej firmy Microsoft](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) dla rozwiązania typowych problemów technicznych.

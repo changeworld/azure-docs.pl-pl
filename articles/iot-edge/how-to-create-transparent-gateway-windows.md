@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96a0443a66bb826496c6af42fe6479c0a53ac964
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 2a9364d77af42623946b25506e504bf0f9a3f3e3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036088"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160821"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Utwórz urządzenie Windows IoT Edge, która pełni rolę przezroczystej bramy
 
@@ -54,7 +54,7 @@ W poniższych krokach objaśniono proces tworzenia certyfikatów i instalowania 
          ```PowerShell
          .\vcpkg install openssl:x64-windows
          ```
-      1. Dodaj `$VCPKGDIR\vcpkg\packages\openssl_x64-windows\tools\openssl` do Twojej `PATH` zmiennej środowiskowej, aby `openssl.exe` plik jest dostępny do wywołania.
+      1. Dodaj `$VCPKGDIR\installed\x64-windows\tools\openssl` do Twojej `PATH` zmiennej środowiskowej, aby `openssl.exe` plik jest dostępny do wywołania.
 
 1. Przejdź do katalogu, w którym chcesz pracować. W tym miejscu na będzie nazywamy to $WRKDIR.  Wszystkie pliki zostaną utworzone w tym katalogu.
    

@@ -1,6 +1,6 @@
 ---
-title: Porównanie AppSource i portalu Azure Marketplace | Azure
-description: W tym artykule opisano sklepy AppSource i portalu Azure Marketplace.
+title: Porównanie usługi AppSource i portalu Azure Marketplace | Azure
+description: W tym artykule opisano sklepów w Microsoft AppSource i portalu Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,42 +14,41 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b0ed71efd99d55315b217686e978048712a7b7c4
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: be7c7e5ad66d6a3412b358c95f74a7d2d653a190
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825221"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158781"
 ---
-# <a name="comparing-appsource-and-azure-marketplace"></a>Porównanie AppSource i portalu Azure Marketplace  
-Sklepy obsługiwać unikatowych wymagań klientów. Sklepy Włącz przeznaczonych dla przez rolę. Może oferować odpowiednie rozwiązanie lub oparte na klienta usługi.  
+# <a name="comparing-appsource-and-the-azure-marketplace"></a>Porównanie usługi AppSource i portalu Azure Marketplace
+Sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [Microsoft AppSource](https://appsource.microsoft.com) obsługi unikatowych wymagań klientów. Użyj sklepów na skierowane do klientów przez rolę. Możesz zaoferować odpowiednich rozwiązań lub usługą opartą na klienta.
 
-## <a name="understanding-the-differences-between-the-storefronts"></a>Opis różnic między sklepy  
-Wybieranie sklepu rozpoczyna się od ciągu identyfikujący docelowych odbiorców dla danej oferty. Jeśli przeznaczona dla obu grup odbiorców, a następnie można opublikować raz sprzedaży w obu sklepy.  
+## <a name="understanding-the-differences-between-storefronts"></a>Opis różnic między sklepów
+Aby wybrać storefront, Rozpocznij od zidentyfikowania Docelowi odbiorcy oferty. Jeśli zostaną objęci odbiorcom w wielu sklepów, możesz opublikować jeden raz do sprzedaży w wielu sklepów.
  
-Należy rozważyć dodatkowe korzyści dla sklepy.   
+W poniższych tabelach opisano zalety używania Sklepu:
 
-### <a name="appsource"></a>AppSource  
+### <a name="appsource"></a>AppSource
 
-| Korzyści | Szczegóły | 
+| Korzyść | Szczegóły | 
 |:--- |:--- | 
-| ***Elastyczność rozliczeń*** | Inicjuje środowisko wersji próbnej. Nie oferuje aktualnie włączone commerce opcji publikowania. Bez dodatkowej inwestycji lub zmiany mogą używać Twojej bieżącej kolejności i rozliczeń infrastruktury. | 
-| ***Ułatwianie połączenia z innymi partnerami*** | Łącza niezależnym dostawcom oprogramowania, integratorów systemów. platforma i dostawcom usług zarządzanych przez scenariusze konkretnej implementacji. Wspólnie może je sprzedać nowych klientów. | 
-| ***Automatyzacja*** | Łącza niezależnym dostawcom oprogramowania, integratorów systemów. platforma i dostawcom usług zarządzanych przez scenariusze konkretnej implementacji. Wspólnie może je sprzedać nowych klientów. |  
-| ***Wiele typów chmury*** | Nie obsługuje obecnie stosu Azure, Azure dla instytucji rządowych lub regionalnych chmury. | 
-| ***W kontekście prezentacji dla klientów*** | Osiągnąć więcej klientów za pośrednictwem doświadczenie w aplikacji dla produktów firmy Microsoft, takich jak usługi Office 365, Dynamics 365 i usługi Power BI. |  
+| **Elastyczność rozliczeń** | Aprowizuje wersję próbną interfejsu. Obecnie nie oferuje opcji publikowania z włączoną commerce. Można użyć używanych bieżącego porządkowanie i rozliczeń infrastruktury bez dodatkowej inwestycji ani zmian. | 
+| **Połączenia z innymi partnerami** | Linki niezależnych dostawców oprogramowania, integratorzy systemów i dostawcom usług zarządzanych na potrzeby scenariuszy obejmujących konkretnej implementacji. Użytkownik może wspólnie Sprzedaj ją nowym klientom. | 
+| **Automatyzacja** | Linki niezależnych dostawców oprogramowania, integratorzy systemów i dostawcom usług zarządzanych na potrzeby scenariuszy obejmujących konkretnej implementacji. Użytkownik może wspólnie Sprzedaj ją nowym klientom. |
+| **Wiele typów chmury** | Obecnie nie obsługuje usługi Azure Stack, Azure dla instytucji rządowych lub regionalnych chmury. | 
+| **W kontekście prezentacji dla klientów** | Dotrzyj do wielu klientów za pośrednictwem środowiska aplikacji dla produktów firmy Microsoft, takich jak usługi Office 365, Dynamics 365 i usługi Power BI. |
 
-### <a name="azure-marketplace"></a>Azure Marketplace  
+### <a name="azure-marketplace"></a>Azure Marketplace
 
-| Korzyści | Szczegóły | 
+| Korzyść | Szczegóły | 
 |:--- |:--- | 
-| ***Elastyczność rozliczeń*** | Dla maszyn wirtualnych płatność za rzeczywiste użycie opcji rozliczeń użyć umowy Enterprise firmy Microsoft (EAs) i bezpośredniego modelach sprzedaży sieci web. Opcje cenową obejmują gdzie oferty jest stale bezpłatnej subskrypcji warstwa bezpłatna. Cenników także subskrypcji Spróbuj teraz. Subskrypcja Spróbuj teraz zwolnieniu promotionally ograniczony okres; Po upływie którego maszyna wirtualna jest konwertowana na subskrypcję płatną. Opcja obsługi możesz jest także Aktywacja BYOL.<br />Opcje rozliczeń i następujących ofert wirtualna aprowizowane zasoby platformy Azure są rozliczane bezpośrednio do klienta.<ul> <li>Aplikacje platformy Azure: zarządzanej aplikacji</li> <li>Aplikacje platformy Azure: szablon rozwiązania</li> </ul> | 
-| ***Ułatwianie połączenia z innymi partnerami*** | Nie jesteś obecnie mógł połączyć partnerów usługi dostarczania lub Dostawca na Twoją ofertę. Ta funkcja jest uruchamiana w 2018. | 
-| ***Automatyzacja*** | Nie jesteś obecnie mógł połączyć partnerów usługi dostarczania lub Dostawca na Twoją ofertę. Korzystać z automatycznych SaaS z inicjowaniem obsługi administracyjnej dodatek. Korzystanie z aplikacji Azure: szablon rozwiązania do automatyzowania danych SaaS scenariuszy kolekcji i wdrożenia. |  
-| ***Wiele typów chmury*** | Publikowanie na chmury publicznej i rozwiązań lokalnych przy użyciu następujących typów.<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>regionalne chmury, w tym Chin i Niemczech</li> </ul> | 
-| ***W kontekście prezentacji dla klientów*** | Udostępnij rozwiązania w środowisku w portalu Azure w wyszukiwaniu kontekstowe przy użyciu maszyn wirtualnych i aplikacje platformy Azure: szablon rozwiązania. |  
+| **Elastyczność rozliczeń** | W przypadku maszyn wirtualnych opcje rozliczania płatność za rzeczywiste użycie Użyj umowy Microsoft Enterprise Agreement (EA) lub bezpośredni modele sprzedaży w sieci web. Opcje cenowe obejmują subskrypcji warstwy bezpłatna, w jakiej oferta jest bezpłatny bezterminowo. Opcje cenowe obejmują również subskrypcji Wypróbuj teraz. Wypróbuj teraz subskrypcję jest bezpłatna w promocji przez ograniczony okres. Po zakończeniu okresu, maszyna wirtualna jest konwertowana na płatną subskrypcję. Bring Your Own License (BYOL) aktywacji jest również opcja, która umożliwia klientom.<br /><br/>Opcje rozliczania i następujących ofert maszyn wirtualnych aprowizowane zasoby platformy Azure są rozliczane bezpośrednio do klienta:<ul> <li>Aplikacje platformy Azure: aplikacja zarządzana</li> <li>Aplikacje platformy Azure: szablon rozwiązania</li> </ul> | 
+|**Połączenia z innymi partnerami** | Obecnie nie można połączyć partnerów usług dostawcy lub dostarczania oferty. | 
+| **Automatyzacja** | Obecnie nie można połączyć partnerów usług dostawcy lub dostarczania oferty. Wykorzystaj automatycznych oprogramowania jako usługa (SaaS) z dodatku inicjowania obsługi administracyjnej. Korzystanie z aplikacji platformy Azure: szablon rozwiązania publikowania możliwość Automatyzowanie scenariuszy opartych na rozwiązaniach SaaS danych kolekcji i wdrażania. |
+| **Wiele typów chmury** | Publikowanie rozwiązań dla chmury publicznej i lokalnych przy użyciu następujących typów:<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>Regionalne chmury, w tym Chiny i Niemcy</li></ul> | 
+| **W kontekście prezentacji dla klientów** | Udostępnić swoje rozwiązanie w środowisku platformy Azure w portalu dla wyszukiwania kontekstowych. Korzystanie z aplikacji i maszyn wirtualnych platformy Azure: szablon rozwiązania, opcje publikowania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
-*   
----  
+*   Przegląd [Podręcznik publikowania w portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md).
+

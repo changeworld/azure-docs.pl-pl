@@ -1,126 +1,198 @@
 ---
-title: Azure schematu zdarzeń subskrypcji zdarzeń siatki
-description: Opisuje właściwości, które są dostępne dla zdarzeń subskrypcji Azure zdarzeń siatki
+title: Schemat zdarzeń subskrypcji w usłudze Azure Event Grid
+description: Opisuje właściwości, które są dostarczane dla subskrypcji zdarzeń za pomocą usługi Azure Event Grid
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 07/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 04bcc3018346e9cf162d26b0a23147c88e902e1e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 1ee6bf2f358a24d1f36d0b5e10f3556e7037cad2
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301362"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159036"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure schematu zdarzeń siatki zdarzeń dla subskrypcji
+# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schemat zdarzeń Azure Event Grid dla subskrypcji
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń subskrypcji platformy Azure. Aby obejrzeć wprowadzenie do schematów zdarzeń, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla zdarzeń dotyczących subskrypcji platformy Azure. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
-Subskrypcje platformy Azure i grup zasobów wyemitować tych samych typów zdarzeń. Typy zdarzeń, które odnoszą się do zmian w zasobach. Podstawowa różnica polega na grupy zasobów Emituj zdarzenia dla zasobów w grupie zasobów, czy subskrypcje platformy Azure Emituj zdarzenia dla zasobów w subskrypcji.
+Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian w zasobach. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji.
 
-## <a name="available-event-types"></a>Typy dostępnych zdarzeń
+## <a name="available-event-types"></a>Zdarzenie dostępne typy
 
-Subskrypcje platformy Azure Emituj zdarzeń zarządzania z usługi Azure Resource Manager, takie jak podczas tworzenia maszyny Wirtualnej lub na konto magazynu zostało usunięte.
+Subskrypcje platformy Azure emitować zdarzenia zarządzania z usługi Azure Resource Manager, takie jak po utworzeniu maszyny Wirtualnej lub na konto magazynu zostało usunięte.
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Wywoływane, gdy zasób utworzyć ani zaktualizować operacji zakończy się pomyślnie. |
+| Microsoft.Resources.ResourceWriteSuccess | Wywoływane, gdy zasób utworzyć lub zaktualizować operacji powiedzie się. |
 | Microsoft.Resources.ResourceWriteFailure | Wywoływane, gdy tworzenie zasobu lub operacja aktualizacji nie powiedzie się. |
-| Microsoft.Resources.ResourceWriteCancel | Wywoływane, gdy zasób utworzyć ani zaktualizować operacji zostało anulowane. |
-| Microsoft.Resources.ResourceDeleteSuccess | Wywoływane, gdy operację usuwania zasobu zakończy się pomyślnie. |
-| Microsoft.Resources.ResourceDeleteFailure | Wywoływane, gdy operacja usuwania zasobu nie powiedzie się. |
-| Microsoft.Resources.ResourceDeleteCancel | Wywoływane, gdy operacja usuwania zasobów została anulowana. To zdarzenie odbywa się podczas wdrażania szablonu zostaną anulowane. |
+| Microsoft.Resources.ResourceWriteCancel | Wywoływane, gdy zasób utworzyć lub zaktualizować operacji zostało anulowane. |
+| Microsoft.Resources.ResourceDeleteSuccess | Wywoływane, gdy operacja usuwania zasobu zakończy się pomyślnie. |
+| Microsoft.Resources.ResourceDeleteFailure | Wywoływane, gdy operacja usuwania zasobu nie powiodło się. |
+| Microsoft.Resources.ResourceDeleteCancel | Wywoływane, gdy operacja usuwania zasobu zostało anulowane. To zdarzenie występuje, gdy wdrożenie szablonu zostanie anulowane. |
 
-## <a name="example-event"></a>Przykład zdarzeń
+## <a name="example-event"></a>Przykład zdarzenia
 
-W poniższym przykładzie przedstawiono schematu zasobu utworzone zdarzenie: 
-
-```json
-[
-  {
-    "topic":"/subscriptions/{subscription-id}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"{request-operation}",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-      "dataVersion": "",
-      "metadataVersion": "1"
-  }
-]
-```
-
-Schemat dla zdarzenia Usunięto zasób jest podobne:
+Poniższy przykład przedstawia schematu zasobu utworzone zdarzenie: 
 
 ```json
 [{
-  "topic":"/subscriptions/{subscription-id}",
-  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicApp0ecd6c02-2296-4d7c-9865-01532dc99c93",
-  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
-  "eventTime": "2017-11-07T21:24:19.6959483Z",
-  "id": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
+  "subject": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceWriteSuccess",
+  "eventTime": "2018-07-19T18:38:04.6117357Z",
+  "id": "4db48cba-50a2-455a-93b4-de41a3b5b7f6",
   "data": {
-    "authorization": "{azure_resource_manager_authorizations}",
-    "claims": "{azure_resource_manager_claims}",
-    "correlationId": "7995ecce-39d4-4851-b9d7-a7ef87a06bf5",
-    "httpRequest": "{request-operation}",
-    "resourceProvider": "Microsoft.EventGrid",
-    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "operationName": "Microsoft.EventGrid/eventSubscriptions/delete",
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/write",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "{expiration}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/write",
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
-    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "tenantId": "{tenant-id}"
   },
-  "dataVersion": "",
-  "metadataVersion": "1"
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}"
+}]
+```
+
+Schemat zdarzenia Usunięto zasób jest podobne:
+
+```json
+[{
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+  "eventType": "Microsoft.Resources.ResourceDeleteSuccess",
+  "eventTime": "2018-07-19T19:24:12.763881Z",
+  "id": "19a69642-1aad-4a96-a5ab-8d05494513ce",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+      "action": "Microsoft.Storage/storageAccounts/delete",
+      "evidence": {
+        "role": "Subscription Admin"
+      }
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "_claim_names": "{\"groups\":\"src1\"}",
+      "_claim_sources": "{\"src1\":{\"endpoint\":\"{URI}\"}}",
+      "http://schemas.microsoft.com/claims/authnclassreference": "1",
+      "aio": "{token}",
+      "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "{ID}",
+      "e_exp": "262800",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "{last-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "{first-name}",
+      "ipaddr": "{IP-address}",
+      "name": "{full-name}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "onprem_sid": "{ID}",
+      "puid": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",
+      "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "{user-name}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "{user-name}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "DELETE",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2018-02-01"
+    },
+    "resourceProvider": "Microsoft.Storage",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}",
+    "operationName": "Microsoft.Storage/storageAccounts/delete",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}"
 }]
 ```
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie ma następujące dane najwyższego poziomu:
+Zdarzenie zawiera następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalny. Zdarzenie siatki udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana wydawcy podmiotem zdarzeń. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzenia. |
-| eventTime | ciąg | Czas jest generowane zdarzenie oparte na czas UTC dostawcy. |
+| temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
+| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
-| dane | obiekt | Dane zdarzenia subskrypcji. |
-| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersji schematu. |
-| Element metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Zdarzenie siatki definiuje schemat właściwości najwyższego poziomu. Zdarzenie siatki udostępnia tę wartość. |
+| dane | obiekt | Dane zdarzeń dla subskrypcji. |
+| dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Autoryzacji | ciąg | Autoryzacja żądanej operacji. |
-| Oświadczenia | ciąg | Właściwości oświadczenia. |
+| Autoryzacja | ciąg | Żądana autoryzacji dla tej operacji. |
+| oświadczenia | ciąg | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | ciąg | Identyfikator operacji do rozwiązywania problemów. |
 | httpRequest | ciąg | Szczegóły operacji. |
-| resourceProvider | ciąg | Dostawca zasobów, wykonywanie operacji. |
-| resourceUri | ciąg | Identyfikator URI zasobu podczas operacji. |
+| resourceProvider | ciąg | Dostawca zasobów wykonującego operację. |
+| resourceUri | ciąg | Identyfikator URI zasobów w ramach operacji. |
 | operationName | ciąg | Operacja, która została wykonana. |
 | status | ciąg | Stan operacji. |
 | subscriptionId | ciąg | Identyfikator subskrypcji zasobu. |
-| Dla identyfikatora dzierżawcy | ciąg | Identyfikator dzierżawy zasobu. |
+| Identyfikator dzierżawy | ciąg | Identyfikator dzierżawy zasobu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do usługi Azure Event siatki, zobacz [co to jest zdarzenie siatki?](overview.md).
-* Aby uzyskać więcej informacji o tworzeniu subskrypcji platformy Azure zdarzeń siatki, zobacz [schematu subskrypcji zdarzeń siatki](subscription-creation-schema.md).
+* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md).
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

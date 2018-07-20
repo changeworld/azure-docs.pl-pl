@@ -1,31 +1,31 @@
 ---
-title: Zbierania danych użytkownika w usłudze Azure Multi-Factor Authentication
-description: Jakie informacje umożliwiają uwierzytelnianie użytkowników przez uwierzytelnianie wieloskładnikowe Azure?
+title: Zbieranie danych użytkownika w usłudze Azure Multi-Factor Authentication
+description: Jakie informacje umożliwiają uwierzytelnianie użytkowników przez usługę Azure Multi-Factor Authentication?
 services: multi-factor-authentication
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
+ms.reviewer: michmcla
 ms.service: multi-factor-authentication
 ms.workload: identity
-ms.topic: article
-ms.date: 05/01/2018
-ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: conceptual
+ms.date: 07/11/2018
+ms.openlocfilehash: 312e8a0d8281d0f951285461a0b64c0aa3e6a498
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264372"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159621"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbierania danych użytkownika w usłudze Azure Multi-Factor Authentication
+# <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkownika w usłudze Azure Multi-Factor Authentication
 
-Tym dokumencie wyjaśniono, jak można znaleźć informacje o użytkowniku zebrane przez Azure Multi-Factor Authentication serwer (MFA) i usługi Azure MFA (oparte na chmurze), w przypadku, gdy chcesz go usunąć.
+W tym dokumencie wyjaśniono, jak znaleźć informacje o użytkowniku zebrane przez serwer usługi Azure Multi-Factor Authentication (MFA Server) i usługi Azure MFA (oparte na chmurze), w przypadku, gdy chcesz go usunąć.
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>Zebrane informacje
 
-Serwera usługi MFA, rozszerzenia serwera zasad Sieciowych systemu Windows Server 2016 Azure MFA Adapter AD FS zbierać i przechowywać następujące informacje dotyczące 90 dni.
+Serwer MFA, rozszerzenia serwera NPS i systemu Windows Server 2016 usługi Azure MFA adaptera AD FS zbierać i przechowywać następujące informacje w ciągu 90 dni.
 
 Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 
@@ -35,26 +35,26 @@ Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 - Nazwisko
 - Adres e-mail
 - Grupa użytkownika
-- Metoda uwierzytelniania (połączenie telefoniczne, Token OATH tekst wiadomości, aplikacji mobilnej)
+- Metoda uwierzytelniania (połączenie telefoniczne, Token OATH komunikatów, aplikacja mobilna tekst)
 - Tryb połączenia telefonicznego (standardowy, PIN)
 - Kierunek wiadomości tekstowej (jednokierunkowe, dwukierunkowe)
-- Tryb wiadomości tekstowych (OTP, OTP + kod PIN)
+- Tryb wiadomości tekstowej (OTP, uwierzytelnianie OTP + kod PIN)
 - Tryb aplikacji mobilnej (standardowy, PIN)
 - Tryb tokenu OATH (standardowy, PIN)
 - Typ uwierzytelnienia
 - Nazwa aplikacji
-- Wywołania podstawowego numer kierunkowy kraju
-- Wywołania podstawowego numeru telefonu
-- Wywołania podstawowego rozszerzenia
-- Wywołania podstawowego uwierzytelniony
+- Wywołanie podstawowy numer kierunkowy kraju
+- Wywołanie podstawowego numeru telefonu
+- Rozszerzenie podstawowego wywołania
+- Podstawowe wywołanie uwierzytelniony
 - Wynik wywołania podstawowego
-- Kod kraju wywołania kopii zapasowej
+- Numer kierunkowy kraju wywołania kopii zapasowej
 - Numer telefonu wywołania kopii zapasowej
-- Rozszerzenie wywołania kopii zapasowej
+- Rozszerzenie kopii zapasowej wywołania
 - Uwierzytelnione wywołania kopii zapasowej
 - Wynik wywołania kopii zapasowej
-- Ogólne uwierzytelniony
-- Wynik ogólny
+- Ogólna uwierzytelniony
+- Ogólny wynik
 - Wyniki
 - Uwierzytelniony
 - Wynik
@@ -62,32 +62,32 @@ Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 - Urządzenia
 - Token urządzenia
 - Typ urządzenia
-- Wersja aplikacji na urządzenia przenośne
+- Wersja aplikacji mobilnej
 - Wersja systemu operacyjnego
 - Wynik
-- Sprawdź, czy używane powiadomień
+- Sprawdzanie używane dla powiadomień
 
-Aktywacje (próbuje aktywować konto w aplikacji mobilnej Authenticator firmy Microsoft):
+Aktywacje (próby aktywacji konta w aplikacji mobilnej Microsoft Authenticator):
 - Nazwa użytkownika
 - Nazwa konta
 - Sygnatura czasowa
-- Uzyskanie wyniku kod aktywacji
-- Aktywuj Powodzenie
-- Błąd podczas aktywowania
-- Wynik stan aktywacji
+- Pobierz wynik kod aktywacji
+- Aktywuj sukces
+- Błąd aktywacji
+- Wynik stanu aktywacji
 - Nazwa urządzenia
 - Typ urządzenia
 - Wersja aplikacji
-- Token OATH włączone
+- Token OATH, włączone
 
-Bloki (używany do określenia stanu zablokowanych oraz raportowanie):
+Bloki (używany do określenia stan blokady oraz raportowanie):
 
-- Sygnatura czasowa bloku
+- Blokuj znacznik czasu:
 - Blok według nazwy użytkownika
 - Nazwa użytkownika
 - Kod kraju
 - Numer telefonu
-- Numer telefonu sformatowany
+- Numer telefonu w formacie
 - Wewnętrzny
 - Czyszczenie rozszerzenia
 - Zablokowany
@@ -96,7 +96,7 @@ Bloki (używany do określenia stanu zablokowanych oraz raportowanie):
 - Przyczyna zakończenia
 - Blokada konta
 - Alert oszustwa
-- Alert o oszustwie nie jest zablokowany
+- Alert oszustwa nie zostało zablokowane
 - Język
 
 Pomija (używane na potrzeby raportowania):
@@ -107,7 +107,7 @@ Pomija (używane na potrzeby raportowania):
 - Nazwa użytkownika
 - Kod kraju
 - Numer telefonu
-- Numer telefonu sformatowany
+- Numer telefonu w formacie
 - Wewnętrzny
 - Czyszczenie rozszerzenia
 - Przyczyna obejścia
@@ -115,7 +115,7 @@ Pomija (używane na potrzeby raportowania):
 - Przyczyna zakończenia
 - Obejście używane
 
-Zmiany (używane do synchronizacji zmiany użytkowników do serwera usługi MFA lub AAD):
+Zmiany (używane do synchronizacji zmiany użytkowników serwera usługi MFA lub usługi AAD):
 
 - Zmiana sygnatury czasowej
 - Nazwa użytkownika
@@ -123,70 +123,70 @@ Zmiany (używane do synchronizacji zmiany użytkowników do serwera usługi MFA 
 - Nowy numer telefonu
 - Nowy numer wewnętrzny
 - Nowe zapasowy numer kierunkowy kraju
-- Nowy numer telefonu
+- Nowe zapasowego numeru telefonu
 - Nowe rozszerzenie kopii zapasowej
 - Nowy kod PIN
 - Wymagana zmiana numeru PIN
 - Stary Token urządzenia
 - Token nowego urządzenia
 
-## <a name="gather-data-from-mfa-server"></a>Zbieranie danych z serwera usługi MFA
+## <a name="gather-data-from-mfa-server"></a>Zbieranie danych z serwera MFA
 
-Dla serwera usługi MFA w wersji 8.0 lub nowszej następujący proces umożliwia administratorom wyeksportować wszystkie dane użytkowników:
+Następujący proces serwera usługi MFA w wersji 8.0 lub nowszej umożliwia Administratorzy mogą wyeksportować wszystkie dane dla użytkowników:
 
-- Zaloguj się do serwera usługi MFA, przejdź do **użytkowników** , wybierz użytkownika, a kliknij **Edytuj** przycisku. Zrzutów (Alt — PrtScn) w każdej karty, aby przyznać użytkownikowi ich bieżące ustawienia uwierzytelniania MFA.
-- Z poziomu wiersza polecenia serwera usługi MFA, uruchom następujące polecenie Zmiana ścieżki zgodnie z instalacji `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` wygenerowało JSON pliku w formacie.
-- Administratorzy mogą również wyeksportować wszystkie informacje MFA chmurze usługi, zbierane dla danego użytkownika za pomocą operacji GetUserGdpr zestawu SDK usługi sieci Web jest dostępna opcja lub zastosować w większych rozwiązanie raportowania.
-- Wyszukiwanie `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` i kopii zapasowych na potrzeby "<username>" (w wyszukiwaniu uwzględnić cudzysłowy) aby znaleźć wszystkie wystąpienia rekordu użytkownika zostanie dodane lub zmienione.
-   - Te rekordy mogą być ograniczone (ale nie została wyeliminowana) usuwając zaznaczenie pola wyboru **"Rejestruj zmiany użytkowników"** w UX serwera usługi MFA, sekcji rejestrowanie, karta pliki dziennika.
-   - Jeśli skonfigurowano syslog, i **"Rejestruj zmiany użytkowników"** ewidencjonowaniu UX serwera usługi MFA, sekcji rejestrowanie, karta dziennik systemowy, a następnie wpisów dziennika można zbierać z syslog zamiast tego.
-- Inne zdarzenia, nazwy użytkownika w MultiFactorAuthSvc.log i inny serwer usługi MFA logowania pliki należące do uwierzytelniania, który prób są traktowane jako działania i powielanymi podany przy użyciu eksportu MultiFactorAuthGdpr.exe lub zestawu SDK usług sieci Web GetUserGdpr.
+- Zaloguj się do serwera usługi MFA, przejdź do folderu **użytkowników** karty, wybierz użytkownika, a następnie kliknij przycisk **Edytuj** przycisku. Zrób zrzuty ekranu (Alt-PrtScn), każdą kartę, aby udostępniać użytkownikom ich bieżących ustawień usługi MFA.
+- Z serwera usługi MFA w wierszu polecenia wpisz następujące polecenie Zmiana ścieżki zgodnie z instalacji `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` aby wygenerować JSON w formacie pliku.
+- Administratorzy mogą również użyć operacji GetUserGdpr zestawu SDK usługi sieci Web jako opcja do wyeksportowania informacji usługi chmury usługi MFA w wszystkie zebrane dla danego użytkownika lub dołączyć do większych rozwiązanie do raportowania.
+- Wyszukiwanie `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` i wszelkich kopii zapasowych dla "<username>" (z uwzględnieniem cudzysłowów w wyszukiwaniu) aby znaleźć wszystkie wystąpienia elementu rekord użytkownika jest dodane lub zmienione.
+   - Te rekordy mogą być ograniczone (ale nie eliminuje), usuwając zaznaczenie pola **"Log zmiany wprowadzane przez użytkownika"** w Interfejsie serwera MFA, sekcja rejestrowanie, karta pliki dziennika.
+   - Skonfigurowanie usługi syslog i **"Log zmiany wprowadzane przez użytkownika"** zaznaczono w Interfejsie serwera MFA, sekcja rejestrowanie, karta dziennik systemowy, a następnie wpisy dziennika można gromadzić z syslog zamiast tego.
+- Inne zdarzenia, nazwy użytkownika w dziennikach MultiFactorAuthSvc.log i inny serwer MFA logowania pliki należące do uwierzytelniania prób są traktowane jak działa i jest niezamawianymi podany przy użyciu eksportu MultiFactorAuthGdpr.exe lub zestawu SDK usługi sieci Web GetUserGdpr.
 
-## <a name="delete-data-from-mfa-server"></a>Usuwanie danych z serwera usługi MFA
+## <a name="delete-data-from-mfa-server"></a>Usuwanie danych z serwera MFA
 
-Z poziomu wiersza polecenia serwera usługi MFA, uruchom następujące polecenie Zmiana ścieżki zgodnie z instalacji `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` można usunąć wszystkich MFA informacji usługi chmury zbierane dla tego użytkownika.
+Z serwera usługi MFA w wierszu polecenia wpisz następujące polecenie Zmiana ścieżki zgodnie z instalacji `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` można usunąć wszystkich MFA informacji usługi chmury zbieranych dla tego użytkownika.
 
-- Usunięcie danych uwzględnienie go podczas eksportu w czasie rzeczywistym, ale może potrwać do 30 dni, operacyjne lub powielanymi danych ma zostać całkowicie usunięty.
-- Administratorzy mogą również za pomocą operacji DeleteUserGdpr zestawu SDK usługi sieci Web jako opcji do usunięcia wszystkich informacji MFA chmurze usługi, zbierane dla danego użytkownika lub zastosować w większych rozwiązanie raportowania.
+- Dane zawarte w danych eksportu zostanie usunięty w czasie rzeczywistym, ale może potrwać do 30 dni dla danych operacyjnych lub niezamawianymi ma zostać całkowicie usunięty.
+- Administratorzy mogą również służy operacja DeleteUserGdpr zestawu SDK usługi sieci Web jako opcja do usuwania informacji usługi chmury usługi MFA w wszystkie zebrane dla danego użytkownika lub dołączyć do większych rozwiązanie do raportowania.
 
 ## <a name="gather-data-from-nps-extension"></a>Zbieranie danych z rozszerzenia serwera NPS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
 
-- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
-- Wystąpienia nazwę użytkownika w dziennikach zdarzeń AzureMfa/autoryzacja/AuthZOptCh AzureMfa/AuthN/AuthNOptCh, AuthZAdminCh-AzureMfa/autoryzacja i są traktowane jako działania i powielanymi dostarczony do eksportu.
+- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może potrwać, godzin lub dni, aby zakończyć.
+- Wystąpienia nazwy użytkownika w dziennikach zdarzeń AzureMfa/AuthZ/AuthZOptCh AzureMfa/AuthN/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh i są traktowane jako operacyjne i niezamawianymi z informacji podanych w danych eksportu.
 
 ## <a name="delete-data-from-nps-extension"></a>Usuwanie danych z rozszerzenia serwera NPS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbieranych dla tego użytkownika.
 
-- Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
+- Może potrwać do 30 dni dla danych ma zostać całkowicie usunięty.
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Zbieranie danych z systemu Windows Server 2016 Azure MFA Adapter AD FS
+## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Zbieranie danych z systemu Windows Server 2016 usługi Azure MFA adaptera AD FS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu. 
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu. 
 
-- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
-- Wystąpienia nazwy użytkownika w dziennikach zdarzeń AD FS śledzenie/Debug (jeśli jest włączona) są traktowane jako działania i powielanymi dostarczony do eksportu.
+- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może potrwać, godzin lub dni, aby zakończyć.
+- Wystąpienia nazwy użytkownika w dziennikach zdarzeń śledzenia/Debug dla usługi AD FS (jeśli jest włączona) są uznawane za operacyjne i niezamawianymi z informacji podanych w danych eksportu.
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Usuwanie danych z systemu Windows Server 2016 Azure MFA Adapter AD FS
+## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Usuwanie danych z systemu Windows Server 2016 usługi Azure MFA adaptera AD FS
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbieranych dla tego użytkownika.
 
-- Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
+- Może potrwać do 30 dni dla danych ma zostać całkowicie usunięty.
 
 ## <a name="gather-data-for-azure-mfa"></a>Zbieranie danych dla usługi Azure MFA
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) Wyślij żądanie eksportu.
 
-- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może zająć godziny a nawet dni.
+- Uwierzytelnianie wieloskładnikowe informacje znajdują się w pliku eksportu, co może potrwać, godzin lub dni, aby zakończyć.
 
-## <a name="delete-data-for-azure-mfa"></a>Usuń dane dla usługi Azure MFA
+## <a name="delete-data-for-azure-mfa"></a>Usuwanie danych dla usługi Azure MFA
 
-Użyj [Portal prywatności Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbierane dla tego użytkownika.
+Użyj [Portal ochrony prywatności firmy Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) żądania dla konta Zamknij, aby usunąć wszystkie MFA informacji usługi chmury zbieranych dla tego użytkownika.
 
-- Może upłynąć dane mają zostać całkowicie usunięte w ciągu 30 dni.
+- Może potrwać do 30 dni dla danych ma zostać całkowicie usunięty.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Raportowanie serwera usługi MFA](howto-mfa-reporting.md)
+[Serwer MFA raportowania](howto-mfa-reporting.md)

@@ -145,6 +145,8 @@
           href: functions-develop-vs.md
         - name: Opracowywanie podstawowych narzędzi
           href: functions-run-local.md
+        - name: Opracowywanie rozwiązania IntelliJ IDEA
+          href: functions-create-maven-intellij.md
         - name: Zarządzanie połączeniami
           href: manage-connections.md
         - name: Obsługa błędów

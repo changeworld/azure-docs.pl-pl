@@ -59,6 +59,9 @@
 #### [Kod niestandardowy](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 #### [Lokalne uruchamianie i debugowanie](data-lake-tools-for-vscode-local-run-and-debug.md)
 
+## Planowanie zadań U-SQL
+### [Planowanie zadań za pomocą usług SSIS](data-lake-analytics-schedule-jobs-ssis.md)
+
 ## Ciągła integracja i ciągłe wdrażanie
 ### [Omówienie](data-lake-analytics-cicd-overview.md)
 ### [Konfigurowanie testów](data-lake-analytics-cicd-test.md)

@@ -11,17 +11,17 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: d11ddb0bc15798187ccea22fe1a80a9c86162dcd
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866474"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160233"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
-[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync (wersja zapoznawcza) w celu zapewnienia szybkiego dostępu blisko użycia danych.
+[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Files funkcje i możliwości, łącznie z użyciem usługi Azure File Sync za pomocą usługi Azure Files. Jeśli nie widzisz odpowiedź na Twoje pytanie, możesz skontaktować się ze nam za pośrednictwem poniższych kanałów (w kolejności szybciej):
 
@@ -90,8 +90,8 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 ## <a name="azure-file-sync"></a>Usługa Azure File Sync
 
 * <a id="afs-region-availability"></a>
-**Jakie regiony są obsługiwane w przypadku usługi Azure File Sync (wersja zapoznawcza)?**  
-    Obecnie usługa Azure File Sync jest dostępna w Australia Wschodnia, Australia Południowo-Wschodnia, Kanada Środkowa, Kanada Wschodnia, środkowe stany USA, Azja Wschodnia, wschodnie stany USA, wschodnie stany USA 2, Europa Północna, Azja południowo-wschodnia, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo, Europa Zachodnia i zachodnie stany USA. Obsługa większej liczbie regionów zostaną dodane, gdy będziemy pracować w kierunku ogólnie dostępne. Aby uzyskać więcej informacji, zobacz [dostępność w poszczególnych regionach](storage-sync-files-planning.md#region-availability).
+**Jakie regiony są obsługiwane w przypadku usługi Azure File Sync?**  
+    Lista dostępnych regionów można znaleźć na [dostępność w poszczególnych regionach](storage-sync-files-planning.md#region-availability) przewodnik sekcji planowania usługi Azure File Sync. Stale dodamy Obsługa dodatkowych regionów, w tym niepublicznych regionów.
 
 * <a id="cross-domain-sync"></a>
 **W tej samej grupie synchronizacji można mieć serwerów przyłączonych do domeny i nieprzyłączonych do domeny?**  
@@ -367,4 +367,4 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 ## <a name="see-also"></a>Zobacz także
 * [Rozwiązywanie problemów z usługi Azure Files w Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Rozwiązywanie problemów z usługi Azure Files w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Rozwiązywanie problemów z usługi Azure File Sync (wersja zapoznawcza)](storage-sync-files-troubleshoot.md)
+* [Rozwiązywanie problemów z usługi Azure File Sync](storage-sync-files-troubleshoot.md)

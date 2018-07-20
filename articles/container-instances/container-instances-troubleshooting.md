@@ -1,46 +1,64 @@
 ---
-title: Rozwiązywanie problemów z wystąpień kontenera platformy Azure
-description: Dowiedz się, jak rozwiązać problemy z wystąpień kontenera platformy Azure
+title: Rozwiązywanie problemów w usłudze Azure Container Instances
+description: Dowiedz się, jak rozwiązywać problemy związane z usługą Azure Container Instances
 services: container-instances
 author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 550b53cf40133c8a67306c61cbfa7dae21be4648
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700234"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39164079"
 ---
-# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w wystąpień kontenera platformy Azure
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
-W tym artykule przedstawiono sposób rozwiązywania typowych problemów z zarządzania lub wdrażanie kontenerów do wystąpień kontenera platformy Azure.
+W tym artykule pokazano, jak rozwiązywać typowe problemy dotyczące zarządzania lub wdrażanie kontenerów w usłudze Azure Container Instances.
 
 ## <a name="naming-conventions"></a>Konwencje nazewnictwa
 
-Podczas definiowania określoną specyfikację kontenera, niektóre parametry wymagają przestrzegania ograniczeń dotyczących nazw. Poniżej znajdują się tabelę z określonych wymagań dotyczących kontenera właściwości grupy.
-Aby uzyskać więcej informacji dotyczących konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) w Centrum architektura platformy Azure.
+Podczas definiowania specyfikacji usługi kontenera, niektóre parametry wymagają gotowość do ograniczenia nazewnictwa. Poniżej przedstawiono tabelę z określonych wymagań dotyczących kontenera właściwości grupy. Aby uzyskać więcej informacji na temat konwencji nazewnictwa platformy Azure, zobacz [konwencje nazewnictwa] [ azure-name-restrictions] w Centrum architektury platformy Azure.
 
-| Zakres | Długość | Wielkość liter | Prawidłowe znaki | Sugerowane wzorca | Przykład |
+| Zakres | Długość | Wielkość liter | Prawidłowe znaki | Sugerowany wzorzec | Przykład |
 | --- | --- | --- | --- | --- | --- | --- |
-| Nazwa kontenera grupy | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Nazwa grupy kontenerów | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontenera | Od 1 do 65535 |Liczba całkowita |Liczba całkowita od 1 do 65535 |`<port-number>` |`443` |
-| Etykieta nazwy DNS | 5 – 63. |Bez uwzględniania wielkości liter |Alfanumeryczne i łączniki dowolnym z wyjątkiem pierwszy i ostatni znak |`<name>` |`frontend-site1` |
-| Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i dowolnego miejsca za pomocą chracter "_", z wyjątkiem pierwszy i ostatni znak |`<name>` |`MY_VARIABLE` |
-| Nazwa woluminu | 5 – 63. |Bez uwzględniania wielkości liter |Małe litery, cyfry i łączniki w dowolnym miejscu poza pierwszym lub ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |
+| Etykieta nazwy DNS | 5 – 63. |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`frontend-site1` |
+| Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i podkreślenia (_) w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`MY_VARIABLE` |
+| Nazwa woluminu | 5 – 63. |Bez uwzględniania wielkości liter |Małe litery i cyfry i łączniki w dowolnym miejscu poza pierwszym ani ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |
 
-## <a name="image-version-not-supported"></a>Nieobsługiwana wersja obrazu
+## <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwane
 
-Jeśli określisz obrazu, który nie obsługuje wystąpień kontenera platformy Azure, `ImageVersionNotSupported` jest zwracany błąd. Wartość błędu jest `The version of image '{0}' is not supported.`i obecnie dotyczy obrazów 1709 systemu Windows. Aby zminimalizować ten problem, należy użyć obrazu systemu Windows LTS. Obsługa obrazów systemu Windows 1709 jest przetwarzane.
+Jeśli określisz obraz, który nie obsługuje usługi Azure Container Instances, `OsVersionNotSupported` zostanie zwrócony błąd. Błąd jest podobne do następujących, gdzie `{0}` nazywa się obraz próbujesz wdrożyć:
 
-## <a name="unable-to-pull-image"></a>Nie można ściągania obrazu
+```json
+{
+  "error": {
+    "code": "OsVersionNotSupported",
+    "message": "The OS version of image '{0}' is not supported."
+  }
+}
+```
 
-W przypadku nie można ściągnąć obrazu początkowo wystąpień kontenera Azure ponowi próbę niektórych okres przed niepowodzeniem po pewnym czasie. Jeśli obraz nie może być pobierane, wynik są wyświetlane zdarzenia podobnie do następującej [Pokaż kontenera az][az-container-show]:
+Ten błąd występuje najczęściej w przypadku wdrażania obrazów Windows, które są oparte na półroczny kanał (Konsola SAC) wersji. Na przykład Windows w wersji 1709 i 1803 są wersje SAC i wygenerować ten błąd, po wdrożeniu.
+
+Usługa Azure Container Instances obsługuje Windows oparte tylko na wersji Long-Term Servicing Channel (LTSC). Aby rozwiązać ten problem, gdy wdrażanie kontenerów Windows, należy zawsze wdrażać obrazy na podstawie LTSC.
+
+Aby uzyskać szczegółowe informacje dotyczące LTSC i konsola SAC wersji systemu Windows, zobacz [Omówienie systemu Windows Server z kanału semi-Annual Channel][windows-sac-overview].
+
+## <a name="unable-to-pull-image"></a>Nie można do ściągania obrazu
+
+W przypadku początkowo nie można ściągnąć obrazu usługi Azure Container Instances ponawia próbę w okresie czasu. Jeśli operacja ściągnięcia obrazu zakończy się niepowodzeniem, ACI ostatecznie zakończy się niepomyślnie wdrożenia i może zostać wyświetlony `Failed to pull image` błędu.
+
+Aby rozwiązać ten problem, usuń wystąpienia kontenera i ponów próbę wdrożenia. Upewnij się, że obraz, który istnieje w rejestrze i że nazwa obrazu została wpisana poprawnie.
+
+Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wyświetlane w danych wyjściowych [az container show][az-container-show]:
 
 ```bash
 "events": [
@@ -71,13 +89,11 @@ W przypadku nie można ściągnąć obrazu początkowo wystąpień kontenera Azu
 ],
 ```
 
-Aby rozwiązać, usunięcie kontenera i ponów próbę wdrożenia, płatności zamknięcie uwagi prawidłowo wpisana nazwa obrazu.
-
 ## <a name="container-continually-exits-and-restarts"></a>Kontener stale kończy działanie i uruchamia ponownie
 
-Jeśli Twoje kontenera jest uruchamiane w celu ukończenia i automatyczne ponowne uruchomienie, może być konieczne ustawić [ponowne uruchomienie zasad](container-instances-restart-policy.md) z **OnFailure** lub **nigdy**. Jeśli określisz **OnFailure** i nadal Zobacz ciągłe ponowne uruchomienie, może wystąpić problem z aplikacją lub skrypt wykonywany w kontenerze sieci.
+Jeśli kontener zostaje ukończone i zostanie automatycznie uruchomiony ponownie, konieczne może być ustawiony [zasady ponownego uruchamiania](container-instances-restart-policy.md) z **OnFailure** lub **nigdy**. Jeśli określisz **OnFailure** i nadal znaleźć ciągłe ponowne uruchomienie, może to być problem z aplikacją lub skrypt wykonywany w kontenerze.
 
-Interfejs API wystąpień kontenera zawiera `restartCount` właściwości. Aby sprawdzić liczbę ponownych uruchomień kontenera, można użyć [Pokaż kontenera az] [ az-container-show] w 2.0 interfejsu wiersza polecenia platformy Azure. W poniższych przykładowe dane wyjściowe (który został obcięty do skrócenia), zobacz `restartCount` właściwości na końcu danych wyjściowych.
+Interfejs API wystąpienia kontenera obejmuje `restartCount` właściwości. Aby sprawdzić liczbę ponownych uruchomień dla kontenera, można użyć [az container show] [ az-container-show] polecenia w interfejsie wiersza polecenia platformy Azure. W poniższych przykładowych danych wyjściowych (który został obcięty dla zwięzłości), zobacz `restartCount` właściwości na końcu danych wyjściowych.
 
 ```json
 ...
@@ -118,22 +134,22 @@ Interfejs API wystąpień kontenera zawiera `restartCount` właściwości. Aby s
 ```
 
 > [!NOTE]
-> Większość obrazów kontener dla dystrybucje systemu Linux ustawić powłoki, takie jak bash, jako domyślne polecenie. Ponieważ powłoki samodzielnie nie jest usługą długotrwałe, kontenery natychmiast zamknąć i dzielą się na pętli ponownego uruchomienia, gdy skonfigurowana przy użyciu domyślnego **zawsze** ponowne uruchomienie zasad.
+> Większość obrazów kontenerów dystrybucje systemu Linux ustawić powłoki, takie jak bash, jako domyślnego polecenia. Ponieważ powłoki samodzielnie nie jest usługą długotrwałych, te kontenery natychmiast zakończyć i wpadają w pętli ponownego uruchamiania w przypadku skonfigurowania przy użyciu domyślnego **zawsze** zasady ponownego uruchamiania.
 
 ## <a name="container-takes-a-long-time-to-start"></a>Kontener zajmuje dużo czasu do uruchomienia
 
-Są dwa podstawowe czynników, które przyczyniają się do czasu uruchomienia kontenera w wystąpień kontenera platformy Azure:
+Są dwa podstawowe czynniki, które przyczyniają się do czasu uruchamiania kontenera w usłudze Azure Container Instances:
 
 * [Rozmiar obrazu](#image-size)
 * [Lokalizacja obrazu](#image-location)
 
-Obrazy systemu Windows mają [uwagi dodatkowe](#cached-windows-images).
+Windows obrazy mają [dodatkowych kwestii dotyczących](#cached-windows-images).
 
 ### <a name="image-size"></a>Rozmiar obrazu
 
-Jeśli Twoje kontenera zajmuje dużo czasu można uruchomić, ale ostatecznie zakończy się powodzeniem, przyjrzeć rozmiar obrazu kontenera. Ponieważ wystąpień kontenera platformy Azure pobiera kontener obrazu na żądanie, czas uruchamiania, które występują jest bezpośrednio powiązana z jego rozmiaru.
+Jeśli kontener zajmuje dużo czasu, aby rozpocząć, ale ostatecznie zakończy się powodzeniem, zacznij od przejrzenia rozmiar obrazu kontenera. Ponieważ usługi Azure Container Instances ściąga obraz kontenera na żądanie, czas uruchamiania, który zostanie wyświetlony jest bezpośrednio związane z jego rozmiaru.
 
-Rozmiar obrazu kontenera można wyświetlić przy użyciu `docker images` w Docker interfejsu wiersza polecenia polecenie:
+Rozmiar obrazu kontenera można wyświetlić za pomocą `docker images` polecenia w interfejsie wiersza polecenia platformy Docker:
 
 ```console
 $ docker images
@@ -141,42 +157,48 @@ REPOSITORY                  TAG       IMAGE ID        CREATED        SIZE
 microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 ```
 
-Klucz do przechowywania małych rozmiary obrazów jest zapewnienie, że ostatecznego obrazu nie zawiera żadnych czynności, które nie są wymagane w czasie wykonywania. Jednym ze sposobów czy jest on [kompilacje wieloetapowym][docker-multi-stage-builds]. Wieloetapowym kompilacje upewnij ułatwiają zapewnienie finalnego obrazu zawiera artefakty potrzebnych dla aplikacji i nie jakiekolwiek nadmiarowe zawartości, która nie jest wymagana podczas kompilacji.
+Klucz zachowanie małe rozmiary obrazów jest zapewnienie, że końcowy obraz nie zawiera wszystko, co nie jest wymagane w czasie wykonywania. Jednym ze sposobów, aby zrobić to za pomocą [kompilacje wieloetapowych][docker-multi-stage-builds]. Wieloetapowe opiera się upewnij, które ułatwiają upewnić się, że finalnego obrazu zawiera artefakty potrzebne dla aplikacji, a nie jakiekolwiek nadmiarowe zawartością, która była wymagana w czasie kompilacji.
 
 ### <a name="image-location"></a>Lokalizacja obrazu
 
-Innym sposobem zmniejszenia wpływu ściągania obrazu w chwili uruchomienia z kontenera jest do obsługi obrazów kontenera w [rejestru kontenera Azure](/azure/container-registry/) w tym samym regionie, w którym mają zostać wdrożone wystąpień kontenera. Skraca lokalizacji sieciowej, która obraz kontenera musi podróży, znacznie skrócić czas pobierania.
+Innym sposobem, aby zmniejszyć wpływ ściągania obrazów na czas uruchamiania przez kontener jest hostowanie obrazu kontenera w [usługi Azure Container Registry](/azure/container-registry/) w tym samym regionie, w którym mają zostać wdrożone wystąpienia kontenera. Skraca ścieżkę sieciową wymagającym podróż, obraz kontenera, znacznie skrócić czas pobierania.
 
-### <a name="cached-windows-images"></a>Pamięci podręcznej obrazów systemu Windows
+### <a name="cached-windows-images"></a>Pamięci podręcznej obrazów Windows
 
-Azure wystąpień kontenera używa mechanizm buforowania, aby ułatwić czas uruchamiania kontenera szybkości dla obrazów oparte na niektórych obrazów systemu Windows.
+Usługa Azure Container Instances używa mechanizm buforowania, aby pomóc szybkość czas uruchamiania kontenera obrazów opartych na obrazach niektórych Windows.
 
-Aby upewnić się o najszybszym czasie uruchomienia kontenera systemu Windows, użyj jednej z **trzech najnowszych** wersji następujących **dwa obrazy** jako obrazu podstawowego:
+Aby zapewnić najlepszy czas uruchamiania kontenera Windows, użyj jednej z **trzy najbardziej aktualne** wersje następujących **dwa obrazy** jako obraz podstawowy:
 
-* [Windows Server 2016] [ docker-hub-windows-core] (tylko LTS)
+* [System Windows Server 2016] [ docker-hub-windows-core] (tylko LTS)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
-### <a name="windows-containers-slow-network-readiness"></a>Gotowość powolnej sieci kontenery systemu Windows
+### <a name="windows-containers-slow-network-readiness"></a>Gotowość wolną sieć kontenery Windows
 
-Kontenery systemu Windows może pociągnąć za sobą łączności ruchu przychodzącego lub wychodzącego do 5 sekund po utworzeniu początkowego. Po początkowej konfiguracji należy wznowić odpowiednio kontenera sieci.
+Kontenery Windows może spowodować naliczenie bez połączenia przychodzącego i wychodzącego do 5 sekund po utworzeniu początkowego. Po przeprowadzeniu instalacji początkowej kontenerowa powinna zostać wznowiona odpowiednio.
 
-## <a name="resource-not-available-error"></a>Zasób nie jest dostępny błąd
+## <a name="resource-not-available-error"></a>Zasób błąd nie jest dostępna
 
-Z powodu różnych regionalnych zasobów obciążenia na platformie Azure, zostanie zgłoszony następujący błąd podczas próby wdrożenia wystąpień kontenera:
+Z powodu różnych regionalnych zasobów obciążenia na platformie Azure, możesz otrzymać następujący błąd podczas próby wdrożenia wystąpienia kontenera:
 
 `The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
 
-Ten błąd wskazuje, czy ze względu na duże obciążenie w regionie, w którym chcesz wdrożyć, nie można przydzielić zasoby określone dla Twojego kontenera w tym czasie. W celu rozwiązania problemu, należy użyć co najmniej jeden z następujących kroków środki zaradcze.
+Ten błąd wskazuje, że z powodu dużego obciążenia w regionie, w którym próbujesz wdrożyć, nie można przydzielić zasoby określone dla kontenera usługi w tym czasie. Aby pomóc rozwiązać problem, należy użyć co najmniej jeden z następujących czynności zaradcze.
 
-* Sprawdź ustawienia wdrożenia kontenera objęte parametrów zdefiniowanych w [przydziały i dostępność wystąpień kontenera platformy Azure w danym regionie](container-instances-quotas.md#region-availability)
+* Sprawdź ustawienia wdrożenia kontenera mieszczą się w parametrów zdefiniowanych w [limity przydziałów i dostępność regionów dla usługi Azure Container Instances](container-instances-quotas.md#region-availability)
 * Określ niższe ustawienia Procesora i pamięci dla kontenera
-* Wdrażanie w innym regionie Azure
+* Wdrażanie w innym regionie platformy Azure
 * Wdrażanie w późniejszym czasie
 
+## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nie można nawiązać połączenie z podstawowego interfejsu API Docker lub uruchamiaj kontenery uprzywilejowanych
+
+Usługa Azure Container Instances nie ujawnia bezpośredni dostęp do podstawowej infrastruktury, który jest hostem grupy kontenerów. Obejmuje to dostęp do interfejsu API platformy Docker zainstalowany na hoście kontenera, a uprzywilejowanych kontenerów. Jeśli potrzebujesz interakcji platformy Docker, sprawdź [Dokumentacja referencyjna REST](https://aka.ms/aci/rest) obsługuje interfejs API ACI. Jeśli jest coś, co jest Brak, Prześlij żądanie na [fora z opiniami ACI](https://aka.ms/aci/feedback).
+
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [pobrać dzienniki dla kontenera & zdarzenia](container-instances-get-logs.md) debugować kontenerów.
+Dowiedz się, jak [pobrać dzienniki kontenera i zdarzenia](container-instances-get-logs.md) debugować swoje kontenery.
 
 <!-- LINKS - External -->
+[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/

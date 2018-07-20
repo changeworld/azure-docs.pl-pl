@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e955973008f1ba3900deb691426d0409440ad08a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3f2480fb1068096bf77a3677ad62c886bc4774bb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917731"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160158"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Usługi Azure Active Directory uwierzytelnianie przekazywane: Agentów uwierzytelniania uaktualnienia wersji zapoznawczej
 
@@ -51,7 +51,7 @@ Aby sprawdzić wersje agentów uwierzytelniania, na każdym serwerze zidentyfiko
 
 1. Przejdź do **Panel sterowania -> programy -> programy i funkcje** na serwerze lokalnym.
 2. Jeśli istnieje wpis dla "**agenta: Microsoft Azure AD Connect uwierzytelniania**", nie trzeba podejmować żadnych działań na tym serwerze.
-3. Jeśli istnieje wpis dla "**łącznika serwera Proxy w aplikacji pakietu Microsoft Azure AD**", wersje 1.5.132.0 lub wcześniej, należy ręcznie uaktualnić na tym serwerze.
+3. Jeśli istnieje wpis dla "**łącznika serwera Proxy w aplikacji pakietu Microsoft Azure AD**", należy ręcznie uaktualnić na tym serwerze.
 
 ![Wersję zapoznawczą agenta uwierzytelniania](./media/active-directory-aadconnect-pass-through-authentication/pta6.png)
 

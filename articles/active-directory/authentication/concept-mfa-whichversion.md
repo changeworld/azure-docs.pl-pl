@@ -1,54 +1,58 @@
 ---
-title: Wybieranie między usługą Azure MFA w chmurze i na serwerze | Microsoft Docs
-description: Wybierz odpowiednie rozwiązanie zabezpieczające oparte na uwierzytelnianiu wieloskładnikowym, uwzględniając lokalizację użytkowników i zasoby, które chcesz zabezpieczyć.
+title: Azure MFA usługę lub serwer, w środowisku lokalnym lub w chmurze?
+description: Jako Administrator usługi AD Azure, należy zrozumieć, która wersja usługi MFA należy wdrożyć?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866356"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158458"
 ---
-# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Wybieranie odpowiedniego rozwiązania usługi Azure Multi-Factor Authentication
-Istnieje kilka typów usługi Azure Multi-Factor Authentication (MFA), dlatego należy udzielić odpowiedzi na kilka pytań, aby wybrać właściwą wersję tej usługi.  Oto te pytania:
+# <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Która wersja usługi Azure MFA jest odpowiednia dla mojej organizacji?
+
+Przed podjęciem decyzji, gdzie i w jaki sposób wdrożyć usługi Multi-Factor Authentication (MFA), należy odpowiedzieć na trzy podstawowe pytania.
 
 * [Co chcesz zabezpieczyć?](#what-am-i-trying-to-secure)
 * [Gdzie znajdują się użytkownicy?](#where-are-the-users-located)
 * [Jakich funkcji potrzebujesz?](#what-features-do-i-need)
 
-Wskazówki zawarte w poniższych sekcjach ułatwią znalezienie odpowiedzi na te pytania.
+Każdy z poniższych sekcji zawiera szczegółowe informacje ułatwiające uzyskaniu odpowiedzi na pytania poprzedniego.
 
 ## <a name="what-am-i-trying-to-secure"></a>Co chcesz zabezpieczyć?
-Aby wybrać odpowiednie rozwiązanie weryfikacji dwuetapowej, najpierw należy określić, co ma zostać objęte ochroną przy użyciu drugiej metody uwierzytelniania.  Czy jest to aplikacja na platformie Azure?  Czy może system z dostępem zdalnym?  Po określeniu elementów, które mają zostać zabezpieczone, będzie można znaleźć odpowiedź na pytanie o miejsce włączenia usługi Multi-Factor Authentication.  
+
+Aby określić odpowiednie rozwiązanie weryfikacji dwuetapowej, najpierw musisz odpowiedzieć na pytanie o co ma zostać objęte ochroną przy użyciu dodatkowego składnika uwierzytelniania. Czy jest to aplikacja na platformie Azure? Czy może system z dostępem zdalnym? Po określeniu, co chcesz zabezpieczyć, pozwala odpowiedzieć na pytanie, w których konieczne jest włączenie uwierzytelniania wieloskładnikowego.
 
 | Co chcesz zabezpieczyć | Usługa MFA w chmurze | Serwer MFA |
 | --- |:---:|:---:|
 | Aplikacje firmy Microsoft |● |● |
 | Aplikacje SaaS w galerii aplikacji |● |  |
-| Aplikacje sieci Web opublikowane za pośrednictwem serwera proxy aplikacji usługi Azure AD |● |  |
+| Aplikacje internetowe opublikowane za pośrednictwem serwera proxy aplikacji usługi Azure AD |● |  |
 | Aplikacje usług IIS, które nie zostały opublikowane za pośrednictwem serwera proxy aplikacji usługi Azure AD | |● |
 | Dostęp zdalny, np. sieć VPN lub brama usług pulpitu zdalnego | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Gdzie znajdują się użytkownicy
-Następnie w zależności od tego, gdzie znajdują się użytkownicy, można określić, jakie rozwiązanie będzie odpowiednie — uwierzytelnianie w chmurze czy uwierzytelnianie lokalne przy użyciu serwera MFA.
+
+Następnie należy określić, gdzie użytkownicy w organizacji znajdują się pomaga ustalić, jakie rozwiązanie będzie odpowiednie do użycia w chmurze lub lokalnie przy użyciu serwera MFA.
 
 | Lokalizacja użytkowników | Usługa MFA w chmurze | Serwer MFA |
 | --- |:---:|:---:|
 | Usługa Azure Active Directory |● | |
 | Usługa Azure AD i lokalna usługa AD przy użyciu federacji z usługami AD FS |● |● |
-| Usługa Azure AD i lokalna usługa AD używana z narzędziem DirSync, Azure AD Sync, Azure AD Connect — brak synchronizacji skrótów haseł lub uwierzytelniania przekazywanego |● |● |
-| Usługa Azure AD i lokalna usługa AD używana z narzędziem DirSync, Azure AD Sync, Azure AD Connect — z synchronizacją skrótów haseł lub uwierzytelnianiem przekazywanym |● | |
+| Usługa Azure AD i lokalnej usługi AD za pomocą usługi Azure AD Connect — nie synchronizacji skrótów haseł lub uwierzytelniania przekazywanego |● |● |
+| Usługa Azure AD i lokalnej usługi AD za pomocą usługi Azure AD Connect — hasła wyznaczania wartości skrótu synchronizacji lub uwierzytelniania przekazywanego |● | |
 | Lokalna usługa Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Jakich funkcji potrzebujesz?
+
 Poniższa tabela zawiera zestawienie funkcji dostępnych w przypadku użycia usługi Multi-Factor Authentication w chmurze na serwerze Multi-Factor Authentication.
 
 | Cecha | Usługa MFA w chmurze | Serwer MFA |
@@ -57,13 +61,12 @@ Poniższa tabela zawiera zestawienie funkcji dostępnych w przypadku użycia us�
 | Kod weryfikacyjny w aplikacji mobilnej jako drugi składnik | ● | ● |
 | Połączenie telefoniczne jako drugi składnik | ● | ● |
 | Jednokierunkowa wiadomość SMS jako drugi składnik | ● | ● |
-| Dwukierunkowa wiadomość SMS jako drugi składnik | | ●  (Przestarzałe)| 
 | Tokeny sprzętowe jako drugi składnik | | ● |
 | Hasła aplikacji dla usługi w przypadku klientów usługi Office 365, którzy nie obsługują usługi MFA | ● | |
 | Kontrola administracyjna nad metodami uwierzytelniania | ● | ● |
 | Tryb numeru PIN | | ● |
-| Alert dotyczący wykrycia oszustwa |● | ● |
-| Raporty usługi MFA |● | ● |
+| Alert dotyczący wykrycia oszustwa | ● | ● |
+| Raporty usługi MFA | ● | ● |
 | Jednorazowe obejście | | ● |
 | Niestandardowe powitania dla połączeń telefonicznych | ● | ● |
 | Możliwość dostosowania identyfikacji numeru dla połączeń telefonicznych | ● | ● |
@@ -72,7 +75,7 @@ Poniższa tabela zawiera zestawienie funkcji dostępnych w przypadku użycia us�
 | Dostęp warunkowy | ● | ● |
 | Pamięć podręczna |  | ● |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy rozumiesz różnicę między działaniem usługi Azure Multi-Factor Authentication w chmurze i serwera usługi MFA w środowisku lokalnym, nadszedł czas na skonfigurowanie usługi Azure Multi-Factor Authentication i korzystanie z niej. **Wybierz ikonę, która odpowiada Twojemu scenariuszowi**
 

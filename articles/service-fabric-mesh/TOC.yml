@@ -9,17 +9,17 @@
   items:
     - name: Wdrażanie aplikacji Hello World
       href: service-fabric-mesh-quickstart-deploy-container.md
-    - name: Tworzenie i wdrażanie aplikacji internetowej
+    - name: Tworzenie i wdrażanie aplikacji internetowych w usłudze Azure Service Fabric Mesh
       href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: Samouczki
   items:
-    - name: Tworzenie i wdrażanie aplikacji internetowej dla wielu usług
+    - name: 'Tworzenie, debugowanie i wdrażanie aplikacji internetowej usługi Service Fabric dla wielu usług'
       items:
-        - name: 1 — Tworzenie aplikacji ASP.NET Core
+        - name: 1 — Tworzenie aplikacji internetowej usługi Service Fabric Mesh
           href: service-fabric-mesh-tutorial-create-dotnetcore.md
-        - name: 2 — Debugowanie aplikacji
+        - name: 2 — Debugowanie aplikacji internetowej usługi Service Fabric Mesh
           href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-        - name: 3 — Wdrażanie aplikacji
+        - name: 3 — Wdrażanie aplikacji internetowej usługi Service Fabric Mesh
           href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
 - name: Pojęcia
   items:

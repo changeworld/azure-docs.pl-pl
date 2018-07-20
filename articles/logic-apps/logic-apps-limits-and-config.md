@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8baca0fc46489a22d587ba6e742615b1da79c19a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7726d7eae2d9b3a37ffc141e4a4cbdc9a1af459c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970231"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145041"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -79,9 +79,9 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
 | Iteracje UNTIL | 5000 | | 
-| Elementy ForEach | 100,000 | Możesz użyć [Akcja zapytania](../connectors/connectors-native-query.md) do filtrowania większych tablic zgodnie z potrzebami. | 
+| Elementy ForEach | 100 000 | Możesz użyć [Akcja zapytania](../connectors/connectors-native-query.md) do filtrowania większych tablic zgodnie z potrzebami. | 
 | Równoległość ForEach | 50 | Wartość domyślna to 20. <p>Aby zmienić to domyślny poziom w pętli ForEach, należy ustawić `runtimeConfiguration` właściwość `foreach` akcji. <p>Do uruchomienia po kolei pętli ForEach, ustaw `operationOptions` właściwość "Sekwencyjnego" w `foreach` akcji. | 
-| Elementy SplitOn | 100,000 | | 
+| Elementy SplitOn | 100 000 | | 
 |||| 
 
 <a name="throughput-limits"></a>
@@ -92,7 +92,7 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ----- | ----- | ----- | 
-| Wykonania akcji na 5 minut | 100,000 | Aby zwiększyć limit, aby 300 000, można uruchomić aplikację logiki w `High Throughput` trybu. Aby skonfigurować tryb wysokiej przepływności, w obszarze `runtimeConfiguration` zasobów przepływu pracy zestawu `operationOptions` właściwość `OptimizedForHighThroughput`. <p>**Uwaga**: Tryb wysokiej przepływności jest dostępna w wersji zapoznawczej. Ponadto można rozpowszechniać obciążenie na więcej niż jednej aplikacji, zgodnie z potrzebami. | 
+| Wykonania akcji na 5 minut | 100 000 | Aby zwiększyć limit, aby 300 000, można uruchomić aplikację logiki w `High Throughput` trybu. Aby skonfigurować tryb wysokiej przepływności, w obszarze `runtimeConfiguration` zasobów przepływu pracy zestawu `operationOptions` właściwość `OptimizedForHighThroughput`. <p>**Uwaga**: Tryb wysokiej przepływności jest dostępna w wersji zapoznawczej. Ponadto można rozpowszechniać obciążenie na więcej niż jednej aplikacji, zgodnie z potrzebami. | 
 | Akcje równoczesne połączenia wychodzące | ~2,500 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
 | Punkt końcowy środowiska uruchomieniowego: współbieżnych wywołań przychodzących | ~1,000 | Zmniejsz liczbę jednoczesnych żądań lub Skróć czas trwania, zgodnie z potrzebami. | 
 | Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut  | 60,000 | Można rozdystrybuować obciążenie więcej niż jedną aplikację zgodnie z potrzebami. | 
@@ -302,8 +302,8 @@ Do obsługi wywołania, [łączników](../connectors/apis-list.md) upewnij, tak 
 | Australia Wschodnia | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
 | Australia Południowo-Wschodnia | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
 | Brazylia Południowa | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
-| Kanada Środkowa | 13.71.170.208 — 13.71.170.223, 13.71.170.224 — 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
-| Kanada Wschodnia | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Kanada Środkowa | 13.71.170.208 — 13.71.170.223, 13.71.170.224 — 13.71.170.239 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13, 52.233.26.83 | 
+| Kanada Wschodnia | 40.69.106.240 - 40.69.106.255 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52, 52.229.120.131 | 
 | Indie Środkowe | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
 | Środkowe stany USA | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
 | Azja Wschodnia | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
@@ -316,13 +316,13 @@ Do obsługi wywołania, [łączników](../connectors/apis-list.md) upewnij, tak 
 | Środkowo-południowe stany USA | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
 | Indie Południowe | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
 | Azja Południowo-Wschodnia | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
-| Środkowo-zachodnie stany USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Środkowo-zachodnie stany USA | 13.71.195.32 - 13.71.195.47 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212, 52.161.128 | 
 | Europa Zachodnia | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
 | Indie Zachodnie | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
 | Zachodnie stany USA | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
-| Zachodnie stany USA 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
-| Południowe Zjednoczone Królestwo | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
-| Zachodnie Zjednoczone Królestwo | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
+| Zachodnie stany USA 2 | 13.66.140.128 - 13.66.140.143 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14, 13.66.221.19 | 
+| Południowe Zjednoczone Królestwo | 51.140.148.0 - 51.140.148.15, 51.140.80.51 | 
+| Zachodnie Zjednoczone Królestwo | 51.140.211.0 - 51.140.211.15, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Kolejne kroki  

@@ -4,18 +4,18 @@ description: Jest to strona poświęcona usłudze Azure Multi-Factor Authenticat
 services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.reviewer: richagi
-ms.openlocfilehash: ef090b51141e8d77f23472058f9c3a8d096ca171
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: michmcla
+ms.openlocfilehash: f5511486650d538bc136449c32babfd88efab86a
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867463"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159638"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Brama usług pulpitu zdalnego i serwer Azure Multi-Factor Authentication korzystające z usługi RADIUS
 
@@ -74,8 +74,8 @@ Serwer Azure Multi-Factor Authentication jest konfigurowany jako serwer proxy us
 
 ![Uwierzytelnianie usługi Radius](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-- Zintegruj usługę Azure MFA z [aplikacjami sieci Web usługi IIS](howto-mfaserver-iis.md)
+- Zintegruj usługę Azure MFA z [aplikacjami internetowymi usługi IIS](howto-mfaserver-iis.md)
 
 - Uzyskaj odpowiedzi z artykułu [Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication](multi-factor-authentication-faq.md)

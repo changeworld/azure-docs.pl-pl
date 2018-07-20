@@ -1,53 +1,64 @@
 ---
-title: Temat bram sieci wirtualnej ExpressRoute | Dokumentacja firmy Microsoft
+title: Temat bram sieci wirtualnej usługi Azure ExpressRoute | Dokumentacja firmy Microsoft
 description: Informacje na temat bram sieci wirtualnej dla usługi ExpressRoute.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: carmonm
-editor: ''
-tags: azure-resource-manager, azure-service-management
-ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.topic: conceptual
+ms.date: 07/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a27200803ff13ed04a194fcbe45cf5edfe62ea50
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30235329"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161727"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informacje o bramach sieci wirtualnej dla usługi ExpressRoute
-Brama sieci wirtualnej służy do wysyłania ruchu sieciowego między sieciami wirtualnymi platformy Azure i lokalnymi lokalizacji. Po skonfigurowaniu połączenia ExpressRoute, należy utworzyć i skonfigurować bramę sieci wirtualnej i połączenia bramy sieci wirtualnej.
+Brama sieci wirtualnej jest używany do wysyłania ruchu sieciowego między sieciami wirtualnymi platformy Azure i lokalizacjami lokalnymi. Można użyć wirtualnej Brama sieci może służyć do usługi ExpressRoute ruchu lub ruch sieci VPN. Ten artykuł koncentruje się na bramy sieci wirtualnej usługi ExpressRoute.
 
-Podczas tworzenia bramy sieci wirtualnej należy określić kilka ustawień. Jeden z wymaganych ustawień Określa, czy brama będzie używana dla ruchu ExpressRoute i sieci VPN typu lokacja-lokacja. W modelu wdrażania usługi Resource Manager, jest ustawienie "-elementu GatewayType".
+## <a name="gateway-types"></a>Typy bram
 
-Gdy ruch sieciowy będzie przesyłany w połączeniu sieci prywatnej, używając typu bramy "ExpressRoute". Ten typ bramy jest również określany jako brama usługi ExpressRoute. Gdy ruch sieciowy będzie przesyłany zaszyfrowane w publicznej sieci Internet, używając typu bramy "Vpn". Ten typ bramy jest określany jako brama sieci VPN. Wszystkie połączenia typu lokacja-lokacja, punkt-lokacja i połączenia między sieciami wirtualnymi używają bramy sieci VPN.
+Podczas tworzenia bramy sieci wirtualnej należy określić kilka ustawień. Jeden z wymaganych ustawień "-GatewayType", określa, czy brama jest używana w przypadku usługi ExpressRoute lub sieci VPN ruch. Dostępne są następujące typy dwóch bram: 
 
-Każda sieć wirtualna może mieć tylko jedną bramę sieci wirtualnej na typ bramy. Na przykład można mieć jedną bramę sieci wirtualnej, która używa klasy -GatewayType Vpn, oraz jednej, która używa klasy -GatewayType ExpressRoute. Ten artykuł skupia się na bramę sieci wirtualnej usługi ExpressRoute.
+* **Sieć VPN** — Aby wysyłać zaszyfrowany ruch sieciowy w publicznej sieci Internet, należy użyć typu bramy "Vpn". Jest to również nazywane bramy sieci VPN. Wszystkie połączenia typu lokacja-lokacja, punkt-lokacja i połączenia między sieciami wirtualnymi używają bramy sieci VPN.
+
+* **Usługa ExpressRoute** — do wysyłania ruchu sieciowego na połączenia prywatnego, należy użyć typu bramy "ExpressRoute". To jest również określany jako brama usługi ExpressRoute i jest to typ bramy, który zostanie użyty podczas konfigurowania usługi ExpressRoute.
+
+
+Każda sieć wirtualna może mieć tylko jedną bramę sieci wirtualnej na typ bramy. Na przykład można mieć jedną bramę sieci wirtualnej, która używa klasy -GatewayType Vpn, oraz jednej, która używa klasy -GatewayType ExpressRoute.
 
 ## <a name="gwsku"></a>Jednostki SKU bramy
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Jeśli chcesz uaktualnić bramę do bardziej zaawansowanych jednostka SKU bramy, w większości przypadków służy polecenie cmdlet programu PowerShell "Zmiany rozmiaru AzureRmVirtualNetworkGateway". Będzie działać, dotyczy uaktualnień do standardowej i wysokowydajnej jednostki SKU. Jednak aby uaktualnić do wersji UltraPerformance, należy ponownie utworzyć bramę.
+Jeśli chcesz uaktualnić brama jednostki SKU bramy bardziej wydajne, można użyć polecenia cmdlet programu PowerShell "Resize-AzureRmVirtualNetworkGateway" w większości przypadków. Będzie on działać w przypadku uaktualnień do Standard i Highperformance. Jednak aby przeprowadzić uaktualnienie do jednostki SKU UltraPerformance, należy ponownie utworzyć bramę.
 
-### <a name="aggthroughput"></a>Szacowany parametrów przez jednostka SKU bramy
-W poniższej tabeli przedstawiono typy bramy i szacowany parametrów. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
+### <a name="aggthroughput"></a>Szacowany wydajności według jednostek SKU bramy
+W poniższej tabeli przedstawiono typy bram i szacowaną parametrów. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Wydajność aplikacji zależy od wielu czynników, takich jak czas oczekiwania na trasie, a liczba przepływów ruchu sieciowego, który otwiera aplikację. Numery w tabeli reprezentuje górny limit, który aplikacja teoretycznie można uzyskać w środowisku idealne. 
+> Wydajność aplikacji zależy od wielu czynników, takich jak opóźnienie end-to-end i liczba przepływów ruchu, który aplikacja zostanie otwarta. Liczby w tabeli reprezentują górną granicę, którą aplikacji może teoretycznie osiągnąć w idealne środowisko. 
 > 
 >
 
+### <a name="zrgw"></a>Strefowo nadmiarowe bramy jednostki SKU (wersja zapoznawcza)
+
+Można także wdrożyć bramy usługi ExpressRoute w strefach dostępności platformy Azure. To fizycznie i logicznie oddzielone w różnych strefach dostępności w celu ochrony łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy.
+
+![Strefowo nadmiarowe bramę usługi ExpressRoute](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
+
+Strefowo nadmiarowe bramy używają określonych nowej jednostki SKU bramy dla bramy usługi ExpressRoute. Nowe jednostki SKU są obecnie dostępne w **publicznej wersji zapoznawczej**.
+
+* ErGw1AZ
+* ErGw2AZ
+* ErGw3AZ
+
+Nowe jednostki SKU bramy obsługują także inne opcje wdrażania, aby możliwie najlepiej odpowiadały potrzebom użytkownika. Podczas tworzenia bramy sieci wirtualnej przy użyciu nowej jednostki SKU bramy, masz również możliwość wdrożenia bramy z określonej strefy. Jest to określane jako bramy strefowych. Podczas wdrażania bramy strefowych, wszystkie wystąpienia bramy są wdrażane w tej samej strefie dostępności. Aby zarejestrować się w wersji zapoznawczej, zobacz [Tworzenie bramy sieci wirtualnej strefowo nadmiarowe](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
+
 ## <a name="resources"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST
-Aby uzyskać dodatkowe zasoby techniczne i wymagania określonej składni, korzystając z polecenia cmdlet programu PowerShell i interfejsów API REST konfiguracji bramy sieci wirtualnej zobacz następujące strony:
+Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzystając z interfejsów API REST i poleceń cmdlet programu PowerShell dla konfiguracji bramy sieci wirtualnej zobacz następujące strony:
 
 | **Wdrożenie klasyczne** | **Resource Manager** |
 | --- | --- |
@@ -55,6 +66,6 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagania określonej składni, korzy
 | [Interfejs API REST](https://msdn.microsoft.com/library/jj154113.aspx) |[Interfejs API REST](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz [omówienie ExpressRoute](expressroute-introduction.md) Aby uzyskać więcej informacji o konfiguracjach dostępnych połączeń.
+Zobacz [Omówienie usługi ExpressRoute](expressroute-introduction.md) Aby uzyskać więcej informacji o konfiguracjach dostępnego połączenia.
 
-Zobacz [Tworzenie bramy sieci wirtualnej dla usługi ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) Aby uzyskać więcej informacji o tworzeniu bram usługi ExpressRoute.
+Zobacz [Tworzenie bramy sieci wirtualnej dla usługi ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) Aby uzyskać więcej informacji o tworzeniu bramy usługi ExpressRoute.

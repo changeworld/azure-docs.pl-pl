@@ -24,7 +24,8 @@
 ## [Omówienie kopii zapasowych oprogramowania SAP HANA](sap-hana-backup-guide.md)
 ## [Kopia zapasowa oprogramowania SAP HANA na poziomie plików](sap-hana-backup-file-level.md)
 ## [Kopie zapasowe migawek magazynu oprogramowania SAP HANA](sap-hana-backup-storage-snapshots.md)
-# Oprogramowanie SAP NetWeaver na maszynach wirtualnych platformy Azure
+# SAP NetWeaver i Business One na maszynach wirtualnych platformy Azure
+## [SAP Business One na maszynach wirtualnych platformy Azure](business-one-azure.md)
 ## [Rozwiązanie SAP IDES na platformie Windows/SQL Server SAP CAL — podręcznik wdrażania](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Oprogramowanie SAP NetWeaver na maszynach wirtualnych platformy Azure z systemem Linux](suse-quickstart.md)
 ## [Planowanie i implementowanie oprogramowania SAP NetWeaver na platformie Azure](planning-guide.md)

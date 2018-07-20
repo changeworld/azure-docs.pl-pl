@@ -1,31 +1,31 @@
 ---
-title: Samoobsługowe resetowanie haseł zasadami — usługi Azure Active Directory
-description: Usługa Azure AD samoobsługowego resetowania haseł opcje zasad
+title: Zasady resetowania haseł usługi Azure AD samoobsługi
+description: Skonfiguruj opcje zasad resetowania haseł usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a851b3842e44dbb81ef80bacde645ebafdb48d86
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054764"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162052"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
 W tym artykule opisano zasady haseł i wymagań dotyczących złożoności skojarzonych kont użytkowników przechowywanych w Twojej dzierżawie usługi Azure Active Directory (Azure AD).
 
-## <a name="administrator-password-policy-differences"></a>Różnice zasad hasła administratora
+## <a name="administrator-reset-policy-differences"></a>Administrator zresetować różnice zasad
 
-Firma Microsoft wymusza silne domyślne *dwóch bram* zasady dla dowolnej roli administratora platformy Azure resetowania hasła. 
+**Firma Microsoft wymusza silne domyślne *dwóch bram* zasady dla dowolnej roli administratora platformy Azure resetowania hasła** polciy ten może być inny niż ten, który zostały zdefiniowane dla użytkowników i nie można zmienić. Należy zawsze przetestować funkcji resetowania hasła jako użytkownik bez żadnych przypisanych ról administratora platformy Azure.
 
-Za pomocą zasad dwóch bram administratorzy nie mają możliwość Użyj pytań zabezpieczających.
+Za pomocą zasad dwóch bram **administratorzy nie mają możliwość Użyj pytań zabezpieczających**.
 
  Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak adres e-mail *i* numeru telefonu. Zasada dwóch bram ma zastosowanie w następujących okolicznościach:
 
@@ -49,7 +49,7 @@ Za pomocą zasad dwóch bram administratorzy nie mają możliwość Użyj pytań
   * Administrator usługi serwera proxy aplikacji
   * Administrator usługi CRM
   * Administrator usługi Power BI
-  
+
 * Po upływie 30 dni w ramach subskrypcji wersji próbnej
 
   lub
@@ -61,18 +61,18 @@ Za pomocą zasad dwóch bram administratorzy nie mają możliwość Użyj pytań
 * Usługa Azure AD Connect synchronizuje tożsamości z katalogu lokalnego
 
 ### <a name="exceptions"></a>Wyjątki
+
 Zasada jednej bramy wymaga jednego elementu danych uwierzytelniania, takich jak adres e-mail *lub* numer telefonu. Zasada jednej bramy ma zastosowanie w następujących okolicznościach:
 
 * Jest w wersji próbnej subskrypcji przez pierwsze 30 dni
 
   lub
 
-* Domena nie jest obecny (*. onmicrosoft.com) 
+* Domena nie jest obecny (*. onmicrosoft.com)
 
-  i 
+  i
 
   Program Azure AD Connect nie jest synchronizowanie tożsamości
-
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zasady, które są stosowane do wszystkich kont użytkowników
 
@@ -109,13 +109,13 @@ Niniejsze wytyczne mają zastosowanie do innych dostawców, takich jak usługi I
 > [!NOTE]
 > Tylko hasła dla kont użytkowników, które nie są synchronizowane za pomocą synchronizacji katalogów można skonfigurować nie wygaśnie. Aby uzyskać więcej informacji na temat synchronizacji katalogów, zobacz [AD z usługą Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Ustaw lub sprawdź zasady haseł za pomocą programu PowerShell
 
 Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Po instalacji, można użyć następujące kroki konfigurowania poszczególnych pól.
 
-### <a name="how-to-check-the-expiration-policy-for-a-password"></a>Jak sprawdzić zasady wygaśnięcia hasła
+### <a name="check-the-expiration-policy-for-a-password"></a>Sprawdzanie zasad wygasania haseł
+
 1. Łączenie z programu Windows PowerShell za pomocą poświadczeń administratora firmy.
 2. Wykonaj jedną z następujących poleceń:
 

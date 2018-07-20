@@ -1,21 +1,21 @@
 ---
-title: 'Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor i grup akcji'
+title: 'Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor'
 description: Dowiedz się, jak utworzyć akcji aplikacji logiki do przetworzenia alerty usługi Azure Monitor.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 51d47b87f898aa65fe4ee76c312240a50d45231d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049191"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161510"
 ---
-# <a name="create-a-logic-app-action"></a>Tworzenie akcji aplikacji logiki
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
 W tym artykule przedstawiono sposób konfigurowania i wyzwalacza aplikacji logiki, aby utworzyć konwersacji w Microsoft Teams, gdy zostanie wyzwolony alert.
 
@@ -290,6 +290,9 @@ Proces tworzenia alertu dotyczącego metryki jest podobny do [Tworzenie alertu d
        !["Fałszywe alertu metryki wpis action"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "akcji po fałszywe alertu metryki")
 
 - Krok 15 jest taka sama. Postępuj zgodnie z instrukcjami, aby zapisać aplikację logiki i zaktualizować grupy akcji.
+
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Podczas wywoływania innych aplikacji, oprócz Microsoft Teams
+Usługa Logic Apps zawiera szereg różnych łączników, które pozwalają do wyzwalania akcji w szerokim zakresie aplikacji i baz danych. Slack, SQL Server, Oracle, Salesforce, przedstawiono kilka sposobów. Aby uzyskać więcej informacji na temat łączników, zobacz [łączników aplikacji logiki](../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Pobierz [Przegląd alertów dziennika aktywności platformy Azure](monitoring-overview-alerts.md) i Dowiedz się, jak otrzymywać alerty.  

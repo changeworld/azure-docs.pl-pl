@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ea7fb5951cd0b2925aa3dd5ae14b452292ba582c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48710bc10a57854fcbd4ffbe44bc426333baddc0
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917996"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159233"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -156,7 +156,7 @@ Aby upewnić się, że uwierzytelnianie przekazywane pozostanie bezpieczne pod w
 
 Aby odnowić relacji zaufania agenta uwierzytelniania w usłudze Azure AD:
 
-1. Agent uwierzytelniania okresowo wysyła pakiet usługi ping usługi Azure AD co kilka godzin, aby sprawdzić, czy jest może odnowić swój certyfikat. 
+1. Agent uwierzytelniania okresowo wysyła pakiet usługi ping usługi Azure AD co kilka godzin, aby sprawdzić, czy jest może odnowić swój certyfikat. Certyfikat zostanie odnowiony 30 dni przed jego wygaśnięciem.
     - To sprawdzenie odbywa się za pośrednictwem uwierzytelnionego wzajemnie kanału protokołu HTTPS i używa tego samego certyfikatu, który został wystawiony podczas rejestracji.
 2. Jeśli usługa wskazuje, że nadszedł czas na odnowienie, Agent uwierzytelniania generuje nową parę kluczy: klucz publiczny i klucz prywatny.
     - Te klucze są generowane przy użyciu standardowych szyfrowania RSA 2048-bitowego szyfrowania.

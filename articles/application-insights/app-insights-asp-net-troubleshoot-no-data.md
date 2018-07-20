@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ddc9941792b0c5d8fbf29bfdc698b16a999a3858
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: c239f2b04d8aad621adb4d31146cdc105b439889
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971044"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39159812"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje części moich danych telemetrycznych
@@ -175,8 +175,11 @@ Jeśli Twoja aplikacja wysyła dużo danych, a używasz zestawu SDK Application 
 
 Można ją wyłączyć, ale nie jest to zalecane. Próbkowanie jest zaprojektowana tak, że poprawnie powiązane dane telemetryczne są przesyłane w celach diagnostycznych. 
 
+## <a name="client-ip-address-is-0000"></a>Adres IP klienta ma wartość 0.0.0.0 
+W lutym 2018 roku firma Microsoft [ogłosiła](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , firma Microsoft usunęła rejestrowania adres IP klienta. Nie ma to wpływu na lokalizacji geograficznej.
+
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nieprawidłowe dane geograficzne w danych telemetrycznych użytkownika
-Miasto, region i kraj wymiary są uzyskiwane z adresów IP, a nie zawsze są dokładne.
+Miasto, region i kraj wymiary są uzyskiwane z adresów IP, a nie zawsze są dokładne. Te adresy IP są przetwarzane jako pierwsze dla lokalizacji, a następnie został 0.0.0.0 ma być przechowywany.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Wyjątek „nie można odnaleźć metody” podczas uruchamiania w usługach Azure Cloud Services
 Czy to kompilacja dla .NET 4.6? Wersja 4.6 nie jest automatycznie obsługiwana w rolach usług Azure Cloud Services. [Zainstaluj wersję 4.6 w każdej roli](../cloud-services/cloud-services-dotnet-install-dotnet.md) przed uruchomieniem aplikacji.

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie serwerami zarejestrowanych za pomocą synchronizacji plików Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rejestrowanie i wyrejestrowywanie systemu Windows Server z usługą Azure pliku synchronizacji magazynu synchronizacji.
+title: Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rejestrować i wyrejestrowywać systemu Windows Server za pomocą usługi Azure File Sync magazynu synchronizacji.
 services: storage
 documentationcenter: ''
 author: wmgries
@@ -12,48 +12,48 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: fde4f7eeb07dff1e44edcabec390ae2921ecf832
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738296"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160930"
 ---
-# <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Zarządzanie serwerami zarejestrowanych za pomocą synchronizacji plików Azure (wersja zapoznawcza)
-Usługa Azure File Sync (wersja zapoznawcza) umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcanie systemach Windows Servers przeznaczonych do szybkiego pamięci podręcznej udziału plików na platformę Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
+# <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync
+Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
-Artykule przedstawiono sposób rejestrowania i zarządzanie serwerem za pomocą usługi synchronizacji magazynu. Zobacz [Wdrażanie synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-deployment-guide.md) informacji na temat wdrażania synchronizacji plików Azure end-to-end.
+Następujący artykuł przedstawia sposób zarejestrować i zarządzanie serwerem za pomocą usługi synchronizacji magazynu. Zobacz [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md) informacji na temat wdrażania usługi Azure File Sync end-to-end.
 
-## <a name="registerunregister-a-server-with-storage-sync-service"></a>Register/unregister serwer z magazynu usługi synchronizacji
-Rejestrowanie serwera z funkcją synchronizacji plików Azure ustanawia relację zaufania między serwerem systemu Windows Azure. Ta relacja może następnie służyć do tworzenia *punkty końcowe serwera* na serwerze, które reprezentują określonych folderów, które powinny być zsynchronizowane z udziałem plików na platformę Azure (znanej także jako *punktu końcowego w chmurze*). 
+## <a name="registerunregister-a-server-with-storage-sync-service"></a>Zarejestrować/wyrejestrować serwer za pomocą usługi synchronizacji magazynu
+Zarejestrowanie serwera za pomocą usługi Azure File Sync ustanawia relację zaufania między systemem Windows Server i platformą Azure. Ta relacja może następnie służyć do tworzenia *punkty końcowe serwera* na serwerze, które reprezentują określonych folderów, które powinna zostać zsynchronizowana z udziału plików platformy Azure (znany także jako *punkt końcowy w chmurze*). 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Aby zarejestrować serwer z magazynu usługi synchronizacji, należy najpierw przygotować serwera z usługą wymagania wstępne:
+Aby zarejestrować serwer przy użyciu usługi synchronizacji magazynu, należy najpierw przygotować serwera przy użyciu niezbędnych wymagań wstępnych:
 
-* Na serwerze musi być uruchomiony obsługiwanych wersji systemu Windows Server. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje systemu Windows Server](storage-sync-files-planning.md#supported-versions-of-windows-server).
-* Upewnij się, że wdrożono usługę synchronizacji magazynu. Aby uzyskać więcej informacji na temat wdrażania usługi synchronizacji magazynu, zobacz [Wdrażanie synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-deployment-guide.md).
-* Upewnij się, że serwer ma połączenie z Internetem i czy Azure jest dostępna.
-* Wyłącz Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer dla administratorów przy użyciu interfejsu użytkownika Menedżera serwera.
+* Serwer musi działać obsługiwana wersja systemu Windows Server. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje systemu Windows Server](storage-sync-files-planning.md#supported-versions-of-windows-server).
+* Upewnij się, że wdrożono usługę synchronizacji magazynu. Aby uzyskać więcej informacji na temat wdrażania usługi synchronizacji magazynu, zobacz [sposób wdrażania usługi Azure File Sync](storage-sync-files-deployment-guide.md).
+* Upewnij się, że serwer jest połączony z Internetem i czy Azure jest dostępna.
+* Wyłącz Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer dla administratorów za pomocą interfejsu użytkownika Menedżera serwera.
     
-    ![Interfejs użytkownika Menedżera serwera z Konfiguracja zwiększonych zabezpieczeń wyróżnione](media/storage-sync-files-server-registration/server-manager-ie-config.png)
+    ![Interfejs użytkownika Menedżera serwera przy użyciu konfiguracji zwiększonych zabezpieczeń wyróżniony](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Upewnij się, że moduł AzureRM PowerShell jest zainstalowany na serwerze. Jeśli serwer jest członkiem klastra pracy awaryjnej, każdy węzeł w klastrze wymaga modułu AzureRM. Więcej informacji na temat instalowania modułu AzureRM można znaleźć w [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Upewnij się, że moduł AzureRM PowerShell jest zainstalowany na serwerze. Jeśli serwer jest członkiem klastra trybu Failover, wymaga modułu AzureRM każdy węzeł w klastrze. Szczegółowe informacje na temat sposobu instalowania modułu AzureRM można znaleźć na [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
     > [!Note]  
-    > Zalecamy używanie najnowszej wersji modułu programu AzureRM PowerShell zarejestrować/wyrejestrować serwera. Jeśli pakiet AzureRM został wcześniej zainstalowany na tym serwerze (i 5.* jest wersja programu PowerShell na tym serwerze lub większej), można użyć `Update-Module` polecenia cmdlet tego pakietu aktualizacji. 
-* Jeśli korzysta się z serwerem proxy sieci w środowisku, należy skonfigurować ustawienia serwera proxy na serwerze korzystanie z agenta synchronizacji.
-    1. Określić użytkownika serwera proxy IP adres i numer portu
+    > Zalecamy używanie najnowszej wersji modułu AzureRM PowerShell zarejestrować/wyrejestrować serwera. Jeśli pakiet AzureRM została wcześniej zainstalowana na tym serwerze (i wersja programu PowerShell na tym serwerze jest 5.* lub nowszej), możesz użyć `Update-Module` polecenia cmdlet tego pakietu aktualizacji. 
+* Jeśli korzystanie z serwera proxy sieci w danym środowisku, skonfiguruj ustawienia serwera proxy na serwerze dla agenta synchronizacji wykorzystanie.
+    1. Określenia użytkownika serwera proxy IP adres i numer portu
     2. Edytuj te dwa pliki:
         * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
         * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
-    3. Dodaj wiersze na rysunku 1 (poniżej tej sekcji) w obszarze /System.ServiceModel w dwóch plikach powyżej zmiana 127.0.0.1:8888 poprawny adres IP (Zastąp 127.0.0.1) i prawidłowego numeru portu (Zastąp 8888):
-    4. Ustaw ustawienia serwera proxy WinHTTP przy użyciu wiersza polecenia:
+    3. Dodaj wiersze na rysunku 1 (poniżej w tej sekcji) w obszarze /System.ServiceModel w dwóch plikach powyżej, zmieniając 127.0.0.1:8888 poprawny adres IP (Zastąp 127.0.0.1) i poprawnego numeru portu (Zastąp 8888):
+    4. Ustaw ustawienia serwera proxy WinHTTP za pomocą wiersza polecenia:
         * Pokaż serwera proxy: netsh winhttp Pokaż serwera proxy
-        * Ustaw serwer proxy: netsh winhttp ustawić 127.0.0.1:8888 serwera proxy
-        * Resetuj serwera proxy: netsh winhttp resetowania serwera proxy
-        * Jeśli jest skonfigurowana, po zainstalowaniu agenta, uruchom ponownie naszych agent synchronizacji: polecenie net stop filesyncsvc
+        * Ustaw serwer proxy: netsh winhttp Ustaw 127.0.0.1:8888 serwera proxy
+        * Resetuj serwer proxy: netsh winhttp resetowania serwera proxy
+        * Jeśli jest skonfigurowana, po zainstalowaniu agenta, uruchom ponownie naszego agenta synchronizacji: polecenie net stop filesyncsvc
     
 ```XML
     Figure 1:
@@ -64,46 +64,46 @@ Aby zarejestrować serwer z magazynu usługi synchronizacji, należy najpierw pr
     </system.net>
 ```    
 
-### <a name="register-a-server-with-storage-sync-service"></a>Zarejestruj serwer z magazynu usługi synchronizacji
-Zanim serwer może być używany jako *punkt końcowy serwera* synchronizacji plików Azure *grupy synchronizacji*, musi być zarejestrowana w *Usługa synchronizacji magazynu*. Serwer można zarejestrować tylko z jedną usługę synchronizacji magazynu naraz.
+### <a name="register-a-server-with-storage-sync-service"></a>Rejestrowanie serwera za pomocą usługi synchronizacji magazynu
+Zanim serwer może służyć jako *punkt końcowy serwera* w usłudze Azure File Sync *grupy synchronizacji*, musi być zarejestrowana w *Usługa synchronizacji magazynu*. Serwer można zarejestrować tylko przy użyciu jednej usługi synchronizacji magazynu w danym momencie.
 
-#### <a name="install-the-azure-file-sync-agent"></a>Zainstaluj agenta synchronizacji plików Azure
-1. [Pobierz agenta synchronizacji plików Azure](https://go.microsoft.com/fwlink/?linkid=858257).
-2. Uruchom Instalatora agenta synchronizacji plików Azure.
+#### <a name="install-the-azure-file-sync-agent"></a>Zainstaluj agenta usługi Azure File Sync
+1. [Pobieranie agenta usługi Azure File Sync](https://go.microsoft.com/fwlink/?linkid=858257).
+2. Uruchom Instalatora agenta usługi Azure File Sync.
     
-    ![W okienku pierwszej synchronizacji plików Azure Instalatora agenta](media/storage-sync-files-server-registration/install-afs-agent-1.png)
+    ![Pierwszego okienka Instalatora agenta usługi Azure File Sync](media/storage-sync-files-server-registration/install-afs-agent-1.png)
 
-3. Pamiętaj włączyć aktualizacje agenta synchronizacji plików Azure przy użyciu usługi Microsoft Update. Jest ważne, ponieważ poprawki błędów krytycznych i ulepszone funkcje umożliwiające pakiet serwera są wysyłane za pośrednictwem usługi Microsoft Update.
+3. Pamiętaj włączyć aktualizacje agenta usługi Azure File Sync za pomocą usługi Microsoft Update. Jest ważne, ponieważ krytycznych poprawek i ulepszone funkcje umożliwiające pakiet serwera są dostarczane za pośrednictwem usługi Microsoft Update.
 
-    ![Upewnij się, że usługa Microsoft Update jest włączona w okienku usługi Microsoft Update Instalatora agenta synchronizacji plików Azure](media/storage-sync-files-server-registration/install-afs-agent-2.png)
+    ![Upewnij się, że Microsoft Update jest włączona w okienku usługi Microsoft Update Instalatora agenta usługi Azure File Sync](media/storage-sync-files-server-registration/install-afs-agent-2.png)
 
-4. Jeśli serwer nie został wcześniej zarejestrowany, rejestrowania serwera interfejsu użytkownika wyskakującym zostanie natychmiast po zakończeniu instalacji.
+4. Jeśli serwer nie został wcześniej zarejestrowany, rejestracja serwera UI wyskakującym zostanie wyświetlona natychmiast po zakończeniu instalacji.
 
 > [!Important]  
-> Jeśli serwer jest członkiem klastra pracy awaryjnej, agent synchronizacji plików Azure musi można zainstalować na każdym węźle w klastrze.
+> Jeśli serwer jest członkiem klastra trybu Failover, agenta usługi Azure File Sync musi być zainstalowany na każdym węźle w klastrze.
 
-#### <a name="register-the-server-using-the-server-registration-ui"></a>Zarejestruj serwer przy użyciu rejestrowania serwera interfejsu użytkownika
+#### <a name="register-the-server-using-the-server-registration-ui"></a>Rejestrowanie serwera przy użyciu rejestracji serwera interfejsu użytkownika
 > [!Important]  
-> Cloud Solution Provider (CSP) subskrypcji nie można użyć interfejsu użytkownika rejestrowania serwera. Zamiast tego należy użyć programu PowerShell (poniżej tej sekcji).
+> Cloud Solution Provider (CSP) subskrypcji nie można użyć rejestracji serwera interfejsu użytkownika. Zamiast tego należy użyć programu PowerShell (poniżej w tej sekcji).
 
-1. Jeśli rejestracja serwera interfejsu użytkownika nie zostały uruchomione bezpośrednio po zakończeniu instalacji agenta synchronizacji plików Azure, można było go uruchomić ręcznie, wykonując `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`.
-2. Kliknij przycisk *logowania* można uzyskać dostępu do Twojej subskrypcji platformy Azure. 
+1. Jeśli rejestracja serwera interfejsu użytkownika nie zostały uruchomione natychmiast po zakończeniu instalacji agenta usługi Azure File Sync, może być uruchamiany ręcznie, wykonując `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`.
+2. Kliknij przycisk *logowania* na dostęp do Twojej subskrypcji platformy Azure. 
 
     ![Otwieranie okna dialogowego rejestracji serwera interfejsu użytkownika](media/storage-sync-files-server-registration/server-registration-ui-1.png)
 
-3. Wybierz poprawną subskrypcję, grupy zasobów i usługi synchronizacji magazynu z okna dialogowego.
+3. Wybierz poprawną subskrypcję, grupy zasobów i usługi synchronizacji magazynu z poziomu okna dialogowego.
 
-    ![Informacje o synchronizacji usługi magazynu](media/storage-sync-files-server-registration/server-registration-ui-2.png)
+    ![Informacje o usłudze synchronizacji magazynu](media/storage-sync-files-server-registration/server-registration-ui-2.png)
 
-4. W wersji zapoznawczej co więcej logowania jest wymagany do ukończenia procesu. 
+4. W wersji zapoznawczej co więcej logowania jest wymagane do ukończenia procesu. 
 
     ![Zaloguj się w oknie dialogowym](media/storage-sync-files-server-registration/server-registration-ui-3.png)
 
 > [!Important]  
-> Jeśli serwer jest członkiem klastra pracy awaryjnej, każdy serwer musi obsługiwać rejestrowania serwera. Po wyświetleniu zarejestrowane serwery w portalu Azure synchronizacji plików Azure automatycznie rozpoznaje każdego węzła jest członkiem tego samego klastra trybu Failover i grupuje je razem odpowiednio.
+> Jeśli serwer jest członkiem klastra trybu Failover, każdy serwer musi przeprowadzić rejestracji serwera. Po wyświetleniu zarejestrowane serwery w witrynie Azure Portal usługi Azure File Sync automatycznie rozpoznaje każdy węzeł jako członka tego samego klastra trybu Failover i grupuje je ze sobą odpowiednio.
 
-#### <a name="register-the-server-with-powershell"></a>Zarejestruj serwer przy użyciu programu PowerShell
-Można także przeprowadzić rejestracji serwera za pomocą programu PowerShell. To jest jedynym sposobem obsługiwanych serwera rejestracji subskrypcji Cloud Solution Provider (CSP):
+#### <a name="register-the-server-with-powershell"></a>Rejestrowanie serwera przy użyciu programu PowerShell
+Można również wykonać rejestrowania serwera za pomocą programu PowerShell. Jest to obsługiwana jedynie rejestracji serwera w przypadku subskrypcji Cloud Solution Provider (CSP):
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -111,14 +111,14 @@ Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<yo
 Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
 ```
 
-### <a name="unregister-the-server-with-storage-sync-service"></a>Wyrejestruj serwer z magazynu usługi synchronizacji
-Istnieje kilka czynności, które są wymagane do wyrejestrowania serwera z usługą synchronizacji magazynu. Spójrzmy how prawidłowo wyrejestrować serwera.
+### <a name="unregister-the-server-with-storage-sync-service"></a>Wyrejestruj serwer za pomocą usługi synchronizacji magazynu
+Istnieje kilka kroków, które są wymagane do Wyrejestruj serwer za pomocą usługi synchronizacji magazynu. Przyjrzyjmy się, jak poprawnie wyrejestrowywanie serwera.
 
 > [!Warning]  
-> Nie należy próbować Rozwiązywanie problemów z synchronizacji, chmury, dodając funkcje warstw lub dowolnego aspektu synchronizacji plików Azure wyrejestrowywania i rejestrowanie serwera lub usunięcie i ponowne utworzenie punktów końcowych serwera, chyba że jawnie zalecił pracownikiem firmy Microsoft. Wyrejestrowywanie serwera i usuwanie punktów końcowych serwera jest operacją destrukcyjnego i warstwowego pliki w woluminach z punktami końcowymi serwera zostanie nie "ponownie połączony" do lokalizacji w udziale plików na platformę Azure po zarejestrowanego serwera i serwera punkty końcowe utworzone ponownie, czego skutkiem będzie błędy synchronizacji. Należy również zauważyć, warstwowych pliki, które znajdują się poza nazw punktu końcowego serwera mogą być trwale utracone. Pliki warstwowych może znajdować się w ramach serwera punktów końcowych, Obsługa poziomów w chmurze nawet wtedy, gdy nigdy nie został włączony.
+> Nie należy próbować Rozwiązywanie problemów z usługą synchronizacji, obsługi warstw w chmurze lub dowolnego aspektu usługi Azure File Sync, Wyrejestrowywanie i rejestrowanie serwera lub usunięcie i ponowne utworzenie punkty końcowe serwera, chyba że jawnie zalecił inżynier z firmy Microsoft. Wyrejestrowywanie serwera i usuwanie punkty końcowe serwera jest operacją destrukcyjną, a pliki warstwowe na woluminach, które punkty końcowe serwera zostanie nie "ponownie połączony" do ich lokalizacji w udziale plików platformy Azure po zarejestrowanym serwerze i punkty końcowe serwera odtworzone, co spowoduje błędy synchronizacji. Należy również zauważyć, pliki warstwowe, które znajdują się poza obszar nazw punktu końcowego serwera może być trwale utracone. Pliki warstwowe mogą istnieć na serwerze punktów końcowych Obsługa warstw w chmurze nawet wtedy, gdy nigdy nie było włączone.
 
-#### <a name="optional-recall-all-tiered-data"></a>(Opcjonalnie) Odwołaj wszystkie dane warstwowych
-Jeśli chcesz pliki, które są aktualnie warstwowej być dostępne po usunięciu synchronizacji plików Azure (tj. jest to produkcji, nie testu, środowisko) odwołania wszystkich plików na każdym woluminie zawierającym punkty końcowe serwera. Wyłącz chmury, dodając funkcje warstw dla wszystkich punktów końcowych serwera, a następnie uruchom następujące polecenie cmdlet programu PowerShell:
+#### <a name="optional-recall-all-tiered-data"></a>(Opcjonalnie) Odwołaj wszystkie dane warstwowe
+Jeśli chcesz, aby pliki, które obecnie są organizowane w warstwy ma być dostępny po usunięciu usługi Azure File Sync (czyli to produkcyjnych, nie testowania, środowiska), należy odwołać wszystkie pliki na każdym woluminie zawierający punkty końcowe serwera. Wyłączanie obsługi warstw na wszystkie punkty końcowe serwera w chmurze, a następnie uruchom następujące polecenie cmdlet programu PowerShell:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -126,17 +126,17 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  
-> Jeśli lokalnym woluminie obsługującym punkt końcowy serwera nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowych `Invoke-StorageSyncFileRecall` polecenia cmdlet zakończy się niepowodzeniem.  
+> Jeśli lokalnym woluminie obsługującym punkt końcowy serwera nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe `Invoke-StorageSyncFileRecall` polecenie cmdlet zakończy się niepowodzeniem.  
 
-#### <a name="remove-the-server-from-all-sync-groups"></a>Usuń serwer z wszystkich grup synchronizacji
-Przed wyrejestrowywaniem serwera na usługę synchronizacji magazynu, należy usunąć wszystkie serwera punkty końcowe na tym serwerze. Można to zrobić za pośrednictwem portalu Azure:
+#### <a name="remove-the-server-from-all-sync-groups"></a>Usuń serwer ze wszystkich grup synchronizacji
+Przed wyrejestrowaniem serwer, na usługę synchronizacji magazynu, należy usunąć wszystkie punkty końcowe serwera na tym serwerze. Można to zrobić za pomocą witryny Azure portal:
 
-1. Przejdź do magazynu usługi synchronizacji, gdy serwer jest zarejestrowany.
-2. Usuń wszystkie serwera punkty końcowe dla tego serwera w każdej grupie synchronizacji przez usługę synchronizacji magazynu. Można to zrobić, klikając prawym przyciskiem myszy odpowiedni serwer punktu końcowego w okienku grupy synchronizacji.
+1. Przejdź do usługi synchronizacji magazynu, gdy serwer jest zarejestrowany.
+2. Usuń wszystkie punkty końcowe serwera dla tego serwera w każdej grupie synchronizacji w usłudze synchronizacji magazynu. Można to zrobić, klikając prawym przyciskiem myszy odpowiedni serwer punktu końcowego w okienku grup synchronizacji.
 
-    ![Usuwanie punktu końcowego serwera z grupy synchronizacji](media/storage-sync-files-server-registration/sync-group-server-endpoint-remove-1.png)
+    ![Usuwanie punktu końcowego serwera z grupą synchronizacji](media/storage-sync-files-server-registration/sync-group-server-endpoint-remove-1.png)
 
-Ponadto można to zrobić za pomocą prostego skryptu PowerShell:
+Ponadto można to zrobić za pomocą prostego skryptu programu PowerShell:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -155,45 +155,45 @@ Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEac
 ```
 
 #### <a name="unregister-the-server"></a>Wyrejestruj serwer
-Wszystkie dane zostały przypomnieć, a serwer został usunięty ze wszystkich grup synchronizacji, serwer można wyrejestrować. 
+Teraz, gdy wszystkie dane zostały przypomnieć i serwer został usunięty ze wszystkich grup synchronizacji, serwer można wyrejestrować. 
 
-1. W portalu Azure, przejdź do *zarejestrowanych serwerów* sekcji usługi synchronizacji magazynu.
-2. Kliknij prawym przyciskiem myszy na serwerze, który chcesz wyrejestrować, a następnie kliknij przycisk "Wyrejestrowywania serwera".
+1. W witrynie Azure portal przejdź do *zarejestrowane serwery* sekcji Usługa synchronizacji magazynu.
+2. Kliknij prawym przyciskiem myszy na serwerze, które chcesz wyrejestrować, a następnie kliknij przycisk "Wyrejestrowywania serwera".
 
     ![Wyrejestruj serwer](media/storage-sync-files-server-registration/unregister-server-1.png)
 
-## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zapewnienie synchronizacji plików Azure jest dobrym sąsiada w centrum danych. 
-Ponieważ synchronizacji plików Azure będzie rzadko tylko usługa działająca w centrum danych, można ograniczyć użycie sieci i magazynu Azure synchronizacji plików.
+## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zapewnianie usługi Azure File Sync jest dobrym sąsiadem w centrum danych 
+Ponieważ usługi Azure File Sync będą rzadko tylko usługi działające w Twoim centrum danych, można ograniczyć użycie sieci i magazynu usługi Azure File Sync.
 
 > [!Important]  
-> Ustawienie zbyt małej limity ma wpływ na wydajność synchronizacji synchronizacji plików Azure i odwołania.
+> Ustawienie zbyt niskich limity wpływają na wydajność synchronizacji usługi Azure File Sync i odwołania.
 
-### <a name="set-azure-file-sync-network-limits"></a>Ustaw limity sieci Azure synchronizacji plików
-Możliwość ograniczania użycia sieci synchronizacji plików Azure przy użyciu `StorageSyncNetworkLimit` polecenia cmdlet. 
+### <a name="set-azure-file-sync-network-limits"></a>Ustaw limity sieci usługa Azure File Sync
+Możliwość ograniczania użycia sieci usługi Azure File Sync za pomocą `StorageSyncNetworkLimit` polecenia cmdlet. 
 
-Na przykład można utworzyć nowy limit przepustnicy, aby upewnić się, czy synchronizacji plików Azure nie używa więcej niż 10 MB/s miedzy 9 a 17: 00 (h 17:00) w tygodniu pracy: 
+Na przykład można utworzyć nowy limit przepustowości, aby upewnić się, że usługi Azure File Sync nie korzysta z więcej niż 10 MB/s, między 9: 00 i 17: 00 (godz. 17:00) podczas tygodnia pracy: 
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
 ```
 
-Twój limit można wyświetlić za pomocą następującego polecenia cmdlet:
+Możesz zobaczyć swój limit przy użyciu następującego polecenia cmdlet:
 
 ```PowerShell
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-Aby usunąć limity sieci, należy użyć `Remove-StorageSyncNetworkLimit`. Na przykład następujące polecenie spowoduje usunięcie wszystkich limity sieci:
+Aby usunąć limity sieci, należy użyć `Remove-StorageSyncNetworkLimit`. Na przykład następujące polecenie usuwa wszystkie limity sieci:
 
 ```PowerShell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-### <a name="use-windows-server-storage-qos"></a>Użyj funkcji QoS magazynowania systemu Windows Server 
-Podczas synchronizacji plików Azure znajduje się na maszynie wirtualnej uruchomiona na hoście wirtualizacji systemu Windows Server, można użyć QoS magazynu (jakości usług magazynowania) uregulowanie zużycie we/wy magazynu. Zasad QoS magazynu można ustawić jako maksymalną (lub limit, takich jak jak StorageSyncNetwork limit jest wymuszana powyżej) lub jako minimum (lub rezerwacji). Ustawienie minimalnej zamiast maksymalnie umożliwia synchronizacji plików Azure do serii do użycia przepustowości dostępnej pamięci, jeśli inne obciążenia nie korzystają go. Aby uzyskać więcej informacji, zobacz [jakości usług magazynowania](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
+### <a name="use-windows-server-storage-qos"></a>Użyj funkcji QoS magazynu systemu Windows Server 
+Gdy usługi Azure File Sync jest hostowany w maszynie wirtualnej na hoście wirtualizacji systemu Windows Server, można użyć funkcji QoS magazynu (QoS magazynu) sposób użycia operacji We/Wy magazynu. Można ustawić jako maksymalną (lub limit, takie jak sposób wymuszania limitu StorageSyncNetwork powyżej) lub jako co najmniej (lub rezerwacji) zasad QoS magazynu. Ustawienie minimalnej zamiast maksymalnie umożliwia usługi Azure File Sync przejścia do użycia przepustowości dostępnego magazynu, jeśli inne obciążenia nie jest używany. Aby uzyskać więcej informacji, zobacz [jakości usług magazynowania](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Zobacz także
-- [Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-planning.md)
-- [Wdrażanie synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-deployment-guide.md) 
-- [Rozwiązywanie problemów z synchronizacji plików Azure (wersja zapoznawcza)](storage-sync-files-troubleshoot.md)
+- [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
+- [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md) 
+- [Rozwiązywanie problemów z usługi Azure File Sync](storage-sync-files-troubleshoot.md)

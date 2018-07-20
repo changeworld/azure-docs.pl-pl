@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bbd826b636bebca90eacba43ca879a725cddf7d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: aab03c92bee0d3b69062cdcb179eebbb5c0fc8f8
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971078"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160250"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory
 
@@ -59,6 +59,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 
 |Błąd|Opis|
 |---|---|
+|16000|Jest to szczegółowo opisuje implementacja wewnętrznego i nie jest w stanie błędu. Można bezpiecznie zignorować to odwołanie.|
 |20001|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
 |20012|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
 |20033|Wystąpił problem z Twoim dostawcą tożsamości federacyjnej. Skontaktuj się ze swoim dostawcą tożsamości, aby rozwiązać ten problem.|
@@ -174,6 +175,7 @@ W poniższej sekcji przedstawiono kompletne omówienie wszystkich możliwych bł
 |81001|Bilet Kerberos użytkownika jest zbyt duży. Może to się zdarzyć, jeśli użytkownik jest w zbyt wielu grupach i w związku z tym bilet Kerberos zawiera zbyt wiele członkostw w grupach. Zmniejsz liczbę członkostw użytkownika w grupach i spróbuj ponownie.|
 |81005|Pakiet uwierzytelniania nie jest obsługiwany|
 |81007|Dzierżawa nie jest włączona dla bezproblemowego logowania jednokrotnego|
+|81012|To nie jest w stanie błędu. Wskazuje ona, że tego użytkownika, próba zalogowania się do usługi Azure AD jest inny niż użytkownik zalogowany do urządzenia. Można bezpiecznie zignorować ten kod w dziennikach.|
 |90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wysyłane za pomocą metody nieobsługiwane żądanie (obsługiwane tylko metody POST) lub algorytm podpisywania tokenu, którego zażądano nie jest obsługiwana. Skontaktuj się z deweloperem aplikacji.|
 |90014| Brak wymaganego pola komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że wszystkie niezbędne parametry dla żądania logowania. |
 |90072| Konto musi najpierw należy dodać jako użytkownik zewnętrzny w dzierżawie. Wylogować i zalogować ponownie, używając innej usługi Azure AD konta.|

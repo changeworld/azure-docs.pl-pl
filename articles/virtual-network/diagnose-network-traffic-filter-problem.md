@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 1c33a75363eec2b4e338ba64e3d1ad877d8b1610
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 82a7449bf75cd31f8da5bb93618c4e6977ed312b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "34757231"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144938"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci
 
@@ -40,38 +40,40 @@ Poniższe kroki przyjęto założenie, że masz istniejącej maszyny Wirtualnej,
 2. W górnej części witryny Azure portal wprowadź nazwę maszyny Wirtualnej w polu wyszukiwania. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
 3. W obszarze **ustawienia**, wybierz opcję **sieć**, jak pokazano na poniższej ilustracji:
 
-    ![Wyświetl reguły zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![Wyświetl reguły zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-    Dla karty sieciowej o nazwie dostępne są następujące reguły zostanie wyświetlony na liście na poprzedniej ilustracji **myVMVMNic**. Zobaczysz, że istnieją **reguły portów wejściowych** dla interfejsu sieciowego z dwóch różnych sieciowych grup zabezpieczeń:- **mySubnetNSG**: skojarzoną z podsiecią, należącym do interfejsu sieciowego.
-        - **myVMNSG**: skojarzone z interfejsem sieciowym na maszynie Wirtualnej o nazwie **myVMVMNic**.
+   Dla karty sieciowej o nazwie dostępne są następujące reguły zostanie wyświetlony na liście na poprzedniej ilustracji **myVMVMNic**. Zobaczysz, że istnieją **reguły portów wejściowych** dla interfejsu sieciowego z dwóch różnych sieciowych grup zabezpieczeń:
+   
+   - **mySubnetNSG**: skojarzoną z podsiecią, należącym do interfejsu sieciowego.
+   - **myVMNSG**: skojarzone z interfejsem sieciowym na maszynie Wirtualnej o nazwie **myVMVMNic**.
 
-    Reguły o nazwie **DenyAllInBound** to, co uniemożliwia komunikacji przychodzącej z maszyną wirtualną za pośrednictwem portu 80, przez Internet, zgodnie z opisem w [scenariusza](#scenario). Wyświetla reguły *0.0.0.0/0* dla **źródła**, w tym Internetu. Żadna inna reguła z wyższym priorytetem (niższym numerem) zezwala na użycie portu 80 dla ruchu przychodzącego. Aby zezwolić na porcie 80 dla ruchu przychodzącego do maszyny Wirtualnej z Internetu, zobacz [rozwiązać problem](#resolve-a-problem). Aby dowiedzieć się więcej na temat reguł zabezpieczeń i jak Azure zastosuje je, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
+   Reguły o nazwie **DenyAllInBound** to, co uniemożliwia komunikacji przychodzącej z maszyną wirtualną za pośrednictwem portu 80, przez Internet, zgodnie z opisem w [scenariusza](#scenario). Wyświetla reguły *0.0.0.0/0* dla **źródła**, w tym Internetu. Żadna inna reguła z wyższym priorytetem (niższym numerem) zezwala na użycie portu 80 dla ruchu przychodzącego. Aby zezwolić na porcie 80 dla ruchu przychodzącego do maszyny Wirtualnej z Internetu, zobacz [rozwiązać problem](#resolve-a-problem). Aby dowiedzieć się więcej na temat reguł zabezpieczeń i jak Azure zastosuje je, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
 
-    W dolnej części obraz powinien być też widoczny **reguł dla ruchu WYCHODZĄCEGO portu**. Zgodnie z tym są reguły portów wyjściowych dla interfejsu sieciowego. Chociaż na ilustracji przedstawiono tylko cztery reguły dla ruchu przychodzącego dla poszczególnych sieciowych grupach zabezpieczeń, sieciowych grup zabezpieczeń może mieć wiele więcej niż cztery reguły. Na ilustracji widać **VirtualNetwork** w obszarze **źródła** i **DOCELOWY** i **AzureLoadBalancer** w obszarze  **ŹRÓDŁO**. **Sieć wirtualna** i **AzureLoadBalancer** są [tagów usług](security-overview.md#service-tags). Tagi usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń.
+   W dolnej części obraz powinien być też widoczny **reguł dla ruchu WYCHODZĄCEGO portu**. Zgodnie z tym są reguły portów wyjściowych dla interfejsu sieciowego. Chociaż na ilustracji przedstawiono tylko cztery reguły dla ruchu przychodzącego dla poszczególnych sieciowych grupach zabezpieczeń, sieciowych grup zabezpieczeń może mieć wiele więcej niż cztery reguły. Na ilustracji widać **VirtualNetwork** w obszarze **źródła** i **DOCELOWY** i **AzureLoadBalancer** w obszarze  **ŹRÓDŁO**. **Sieć wirtualna** i **AzureLoadBalancer** są [tagów usług](security-overview.md#service-tags). Tagi usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń.
 
 4. Upewnij się, że maszyna wirtualna jest uruchomiona, stan, a następnie wybierz **obowiązujących reguł zabezpieczeń**, jak pokazano na poprzedniej ilustracji, aby zobaczyć obowiązujących reguł zabezpieczeń, pokazane na poniższej ilustracji:
 
-    ![Wyświetlanie obowiązujących reguł zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![Wyświetlanie obowiązujących reguł zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-    Reguły na liście są takie same jak opisany w kroku 3, chociaż są różne karty sieciowej grupy zabezpieczeń skojarzone z interfejsu sieci i podsieci. Jak widać na ilustracji, są wyświetlane tylko pierwszych 50 reguł. Aby pobrać plik CSV, który zawiera wszystkie reguły, wybierz **Pobierz**.
+   Reguły na liście są takie same jak opisany w kroku 3, chociaż są różne karty sieciowej grupy zabezpieczeń skojarzone z interfejsu sieci i podsieci. Jak widać na ilustracji, są wyświetlane tylko pierwszych 50 reguł. Aby pobrać plik CSV, który zawiera wszystkie reguły, wybierz **Pobierz**.
 
-    Aby zobaczyć, które prefiksy każdy tag usługi reprezentuje, wybierz regułę, takie jak reguły o nazwie **AllowAzureLoadBalancerInbound**. Na poniższej ilustracji przedstawiono prefiksów **AzureLoadBalancer** tag usługi:
+   Aby zobaczyć, które prefiksy każdy tag usługi reprezentuje, wybierz regułę, takie jak reguły o nazwie **AllowAzureLoadBalancerInbound**. Na poniższej ilustracji przedstawiono prefiksów **AzureLoadBalancer** tag usługi:
 
-    ![Wyświetlanie obowiązujących reguł zabezpieczeń](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![Wyświetlanie obowiązujących reguł zabezpieczeń](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-    Chociaż **AzureLoadBalancer** tag usługi reprezentuje tylko jedną prefiksu, inne tagi usługi reprezentują kilka prefiksów.
+   Chociaż **AzureLoadBalancer** tag usługi reprezentuje tylko jedną prefiksu, inne tagi usługi reprezentują kilka prefiksów.
 
-4. Poprzednie kroki wykazało, że reguły zabezpieczeń dla interfejsu sieciowego o nazwie **myVMVMNic**, ale także w tym samouczku interfejs sieciowy o nazwie **myVMVMNic2** w niektórych poprzednich obrazów. Maszyna wirtualna, w tym przykładzie ma dwa interfejsy sieciowe podłączone do niego. Efektywne reguły zabezpieczeń mogą być różne dla każdego interfejsu sieciowego.
+5. Poprzednie kroki wykazało, że reguły zabezpieczeń dla interfejsu sieciowego o nazwie **myVMVMNic**, ale także w tym samouczku interfejs sieciowy o nazwie **myVMVMNic2** w niektórych poprzednich obrazów. Maszyna wirtualna, w tym przykładzie ma dwa interfejsy sieciowe podłączone do niego. Efektywne reguły zabezpieczeń mogą być różne dla każdego interfejsu sieciowego.
 
-    Aby wyświetlić zasady **myVMVMNic2** interfejs sieciowy, wybierz ją. Jak pokazano na ilustracji poniżej, interfejs sieciowy ma te same zasady, które są skojarzone z jego podsieci **myVMVMNic** sieci interfejsu, ponieważ oba interfejsy sieciowe znajdują się w tej samej podsieci. Po skojarzeniu sieciowej grupy zabezpieczeń z podsiecią jego reguły są stosowane do wszystkich interfejsów sieciowych w podsieci.
+   Aby wyświetlić zasady **myVMVMNic2** interfejs sieciowy, wybierz ją. Jak pokazano na ilustracji poniżej, interfejs sieciowy ma te same zasady, które są skojarzone z jego podsieci **myVMVMNic** sieci interfejsu, ponieważ oba interfejsy sieciowe znajdują się w tej samej podsieci. Po skojarzeniu sieciowej grupy zabezpieczeń z podsiecią jego reguły są stosowane do wszystkich interfejsów sieciowych w podsieci.
 
-    ![Wyświetl reguły zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![Wyświetl reguły zabezpieczeń](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-    W odróżnieniu od **myVMVMNic** interfejs sieciowy **myVMVMNic2** interfejs sieciowy ma sieciową grupę zabezpieczeń skojarzoną do niego. Każdy interfejs sieciowy i podsieć może mieć zero lub jedną sieciową grupę zabezpieczeń powiązany. Każdy interfejs sieciowy skojarzonej sieciowej grupy zabezpieczeń lub podsieć może być taka sama lub innej. Podczas wybierania, można skojarzyć tej samej grupy zabezpieczeń sieci na dowolną liczbę interfejsów sieciowych i podsieci.
+   W odróżnieniu od **myVMVMNic** interfejs sieciowy **myVMVMNic2** interfejs sieciowy ma sieciową grupę zabezpieczeń skojarzoną do niego. Każdy interfejs sieciowy i podsieć może mieć zero lub jedną sieciową grupę zabezpieczeń powiązany. Każdy interfejs sieciowy skojarzonej sieciowej grupy zabezpieczeń lub podsieć może być taka sama lub innej. Podczas wybierania, można skojarzyć tej samej grupy zabezpieczeń sieci na dowolną liczbę interfejsów sieciowych i podsieci.
 
-Chociaż obowiązujących reguł zabezpieczeń były wyświetlane za pomocą maszyny Wirtualnej, można również wyświetlić obowiązujących reguł zabezpieczeń za pomocą:
-- **Interfejs sieciowy poszczególnych**: Dowiedz się, jak [wyświetlania interfejsu sieciowego](virtual-network-network-interface.md#view-network-interface-settings).
-- **Określonej sieciowej grupy zabezpieczeń**: Dowiedz się, jak [wyświetlić sieciowej grupy zabezpieczeń](manage-network-security-group.md#view-details-of-a-network-security-group).
+Chociaż obowiązujących reguł zabezpieczeń były wyświetlane za pomocą maszyny Wirtualnej, można również wyświetlić obowiązujących reguł zabezpieczeń przez osobę:
+- **Interfejs sieciowy**: Dowiedz się, jak [wyświetlania interfejsu sieciowego](virtual-network-network-interface.md#view-network-interface-settings).
+- **Sieciowa grupa zabezpieczeń**: Dowiedz się, jak [wyświetlić sieciowej grupy zabezpieczeń](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnozowanie przy użyciu programu PowerShell
 

@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/19/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: f40fe3da6874d8656c9c0a0ddce9fed602cb25f9
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 33d23de2cd0ddae95a34c2c9f7acabdc7315cd36
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091919"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160046"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Usługa Azure SQL Database zakupu modeli i zasoby 
 
@@ -58,7 +58,7 @@ Oparty na rdzeniach wirtualnych model zakupu klienci płacą za zasoby:
 
 ## <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
 
-Jednostki przepływności bazy danych (DTU) reprezentuje mieszany pomiar procesora CPU, pamięci, odczytuje i zapisuje. Model zakupu opartego na jednostkach DTU oferuje zestaw wstępnie skonfigurowane pakiety zasobów obliczeniowych i magazynu dostosowane do różnych poziomów wydajności aplikacji w pakiecie. Klienci, którzy preferują prostotę wstępnie skonfigurowanego pakietu i płatności w stałej kwocie każdego miesiąca, może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. W oparty na jednostkach DTU model zakupu, klienci mogą wybierać między **podstawowe**, **standardowa**, i **Premium** warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md) i [pul elastycznych](sql-database-elastic-pool.md). 
+Jednostki transakcji bazy danych (DTU) reprezentuje mieszany pomiar procesora CPU, pamięci, odczytuje i zapisuje. Model zakupu opartego na jednostkach DTU oferuje zestaw wstępnie skonfigurowane pakiety zasobów obliczeniowych i magazynu dostosowane do różnych poziomów wydajności aplikacji w pakiecie. Klienci, którzy preferują prostotę wstępnie skonfigurowanego pakietu i płatności w stałej kwocie każdego miesiąca, może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. W oparty na jednostkach DTU model zakupu, klienci mogą wybierać między **podstawowe**, **standardowa**, i **Premium** warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md) i [pul elastycznych](sql-database-elastic-pool.md). 
 
 ### <a name="what-are-database-transaction-units-dtus"></a>Co to są jednostki transakcji bazy danych (Dtu)?
 Dla pojedynczej bazy danych Azure SQL na określonym poziomie wydajności w ramach [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje więc pewnego poziomu zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure), zapewniając poziom przewidywalnej wydajności. Ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub liczby jednostek Dtu i jest miarą powiązane obliczeń, magazynu i zasobów we/wy. Współczynnik obejmujący te zasoby był pierwotnie określany za [obciążenia porównawczego OLTP](sql-database-benchmark-overview.md), jest przeznaczona do typowym, rzeczywistym obciążeniom OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest ograniczone — wynikowy niska wydajność i przekroczenia limitu czasu. Zasoby używane przez obciążenie nie miało wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure, a zasoby używane przez inne obciążenia nie miało wpływu na zasoby dostępne dla usługi SQL database.

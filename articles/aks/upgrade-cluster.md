@@ -1,24 +1,24 @@
 ---
-title: Uaktualnianie klastra usługi Kubernetes Azure (AKS)
-description: Uaktualnianie klastra usługi Kubernetes Azure (AKS)
+title: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
+description: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: gabrtv
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/18/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f6b8e964f4277150e104cd6d77db092aaa8553b4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9557311c97ea0fde66790c37b08d1a22d1197405
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933278"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144588"
 ---
-# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Kubernetes Azure (AKS)
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
-Usługi Kubernetes Azure (AKS) ułatwia wykonywanie typowych zadań zarządzania tym uaktualnianie Kubernetes klastrów.
+Usługa Azure Kubernetes Service (AKS) ułatwia wykonywanie typowych zadań zarządzania, w tym uaktualniania klastrów Kubernetes.
 
 ## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
 
@@ -36,10 +36,10 @@ Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-Mamy trzy wersje dostępne do uaktualnienia: 1.9.1, 1.9.2 i pytanie 1.9.6. Możemy użyć polecenia `az aks upgrade` w celu przeprowadzenia uaktualnienia do najnowszej dostępnej wersji.  Podczas procesu uaktualniania węzły są dokładnie [cordoned i opróżnione] [ kubernetes-drain] aby zminimalizować zakłócenia dla aplikacji.  Przed zainicjowaniem uaktualniania klastra upewnij się, że masz na tyle dużo dodatkowej wydajności obliczeniowej, aby obsłużyć obciążenie podczas dodawania i usuwania węzłów klastra.
+Mamy trzy wersje dostępne do uaktualnienia: 1.9.1, 1.9.2 i pytanie 1.9.6. Możemy użyć polecenia `az aks upgrade` w celu przeprowadzenia uaktualnienia do najnowszej dostępnej wersji.  Podczas procesu uaktualniania AKS spowoduje dodanie nowego węzła do klastra, następnie dokładnie [odizolowywanie i opróżnianie] [ kubernetes-drain] jeden węzeł w czasie, aby zminimalizować zakłócenia dla działających aplikacji.
 
 > [!NOTE]
-> Podczas uaktualniania klastra AKS, nie pominięte Kubernetes wersje pomocnicze. Na przykład uaktualnia między 1.7.x > 1.8.x lub 1.8.x > 1.9.x są dozwolone, jednak 1.7 nie jest > 1.9.
+> Podczas uaktualniania klastra usługi AKS, nie pominięto pomocniczej wersji rozwiązania Kubernetes. Na przykład uaktualnienia między 1.8.x -> 1.9.x lub 1.9.x -> 1.10.x są dozwolone, jest jednak 1.8 -> 1.10.
 
 ```azurecli-interactive
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6

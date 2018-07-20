@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 14617b57f59c068aa015c9bfea9b4d18520b4152
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 34d3a5dbccf2cad7873bf6166e406c7c4817ac09
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473686"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158713"
 ---
 # <a name="create-persistent-volumes-with-azure-disks-for-azure-kubernetes-service-aks"></a>Utwórz trwałe woluminy z dyskami platformy Azure dla usługi Azure Kubernetes Service (AKS)
 
@@ -62,6 +62,9 @@ spec:
     requests:
       storage: 5Gi
 ```
+
+> [!TIP]
+> Aby utworzyć dysk, który używa magazynu w warstwie standardowa, należy użyć `storageClassName: default` zamiast *managed premium*.
 
 Tworzenie oświadczenia trwały wolumin z [zastosować kubectl] [ kubectl-apply] polecenia i podaj swoje *azure premium.yaml* pliku:
 

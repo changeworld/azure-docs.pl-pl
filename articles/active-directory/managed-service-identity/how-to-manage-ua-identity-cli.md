@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 23567c985f4f9df46ee7d80051c15dc5910a1ea8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 1989017361c148f9a6c8fcb73537be78555fd650
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904066"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160594"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-cli"></a>Utwórz listę lub usunąć użytkownika z przypisaną tożsamości przy użyciu wiersza polecenia platformy Azure
 
@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak utworzyć listę i usuwanie tożsamości przypi
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z tożsamości usługi zarządzanej, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnica między przypisanej w systemie i tożsamości przypisanych przez użytkownika](overview.md#how-does-it-work)**.
-- Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
+- Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 - Aby uruchomić przykłady skryptów interfejsu wiersza polecenia, masz trzy opcje:
 
@@ -44,7 +44,7 @@ W tym artykule dowiesz się, jak utworzyć listę i usuwanie tożsamości przypi
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie zarządzanych tożsamości przypisanych przez użytkownika 
 
-Aby utworzyć tożsamości przypisanych przez użytkownika, należy użyć [Utwórz tożsamość az](/cli/azure/identity#az-identity-create) polecenia. `-g` Parametr określa grupę zasobów, gdzie można utworzyć tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Zastąp `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` wartości parametrów własnymi wartościami:
+Aby utworzyć tożsamości przypisanych przez użytkownika, należy użyć [Utwórz tożsamość az](/cli/azure/identity#az-identity-create) polecenia. `-g` Parametr określa grupę zasobów, gdzie można utworzyć tożsamości przypisanych przez użytkownika, a `-n` parametr określa jej nazwę. Jako minimum, Twoje konto musi posiadać [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do utworzenia tożsamości przypisanych przez użytkownika. Zastąp `<RESOURCE GROUP>` i `<USER ASSIGNED IDENTITY NAME>` wartości parametrów własnymi wartościami:
 
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -53,7 +53,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-identities"></a>Lista użytkownik tożsamości przypisanych przez
 
-Aby wyświetlić listę tożsamości przypisanych przez użytkownika, użyj [listę tożsamości az](/cli/azure/identity#az-identity-list) polecenia.  `-g` Parametr określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika.  Zastąp `<RESOURCE GROUP>` swoją własną wartością:
+Aby wyświetlić listę tożsamości przypisanych przez użytkownika, użyj [listę tożsamości az](/cli/azure/identity#az-identity-list) polecenia.  `-g` Parametr określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika. Jako minimum, Twoje konto musi posiadać [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli, aby wyświetlić listę właściwości tożsamości przypisanych przez użytkownika.  Zastąp `<RESOURCE GROUP>` swoją własną wartością:
 
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
@@ -64,7 +64,7 @@ W odpowiedzi json ma tożsamości użytkowników `"Microsoft.ManagedIdentity/use
 
 ## <a name="delete-a-user-assigned-identity"></a>Usuwanie tożsamości przypisanych przez użytkownika
 
-Aby usunąć tożsamości przypisanych przez użytkownika, użyj [usuwanie tożsamości az](/cli/azure/identity#az-identity-delete) polecenia.  -N parametr określa jej nazwę, a parametr -g Określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika.  Zastąp `<USER ASSIGNED IDENTITY NAME>` i `<RESOURCE GROUP>` wartości parametrów własnymi wartościami:
+Aby usunąć tożsamości przypisanych przez użytkownika, użyj [usuwanie tożsamości az](/cli/azure/identity#az-identity-delete) polecenia.  -N parametr określa jej nazwę, a parametr -g Określa grupę zasobów, w której utworzono tożsamości przypisanych przez użytkownika.  Jako minimum, Twoje konto musi posiadać [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli do usunięcia tożsamości przypisanych przez użytkownika. Zastąp `<USER ASSIGNED IDENTITY NAME>` i `<RESOURCE GROUP>` wartości parametrów własnymi wartościami:
 
  ```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>

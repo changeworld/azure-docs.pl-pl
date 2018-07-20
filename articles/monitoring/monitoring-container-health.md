@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/16/2018
+ms.date: 07/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 1fd5ac0f9994a4dbf4365c21ac4f31ba0eccbb15
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6658eeb70e31593da5f3612ccac8685ecbb976b9
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069155"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161592"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorowanie kondycji kontenera usługi Azure Kubernetes Service (AKS) (wersja zapoznawcza)
 
@@ -78,7 +78,7 @@ Wykonaj poniższe kroki, aby włączyć monitorowanie kontenera usługi AKS w wi
 4. Na **dołączenie do kondycji kontenera i dzienniki** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji co klaster, wybierz ją z listy rozwijanej.  Listy preselects domyślnego obszaru roboczego i lokalizację kontenera w usłudze AKS jest wdrożona w ramach subskrypcji.<br><br> ![Włącz monitorowanie kondycji kontenera w usłudze AKS](./media/monitoring-container-health/container-health-enable-brownfield-02.png) 
 
 >[!NOTE]
->Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, wykonaj kroki opisane w [Cretae obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) i należy utworzyć obszar roboczy w tą samą subskrypcją, w której kontenerów AKS wdrażane.  
+>Jeśli chcesz utworzyć nowy obszar roboczy usługi Log Analytics do przechowywania danych monitorowania z klastra, wykonaj kroki opisane w [Utwórz obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md) i należy utworzyć obszar roboczy w tą samą subskrypcją, w której kontenerów AKS wdrażane.  
 >
  
 Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie możliwe wyświetlić dane operacyjne dla klastra. 
@@ -371,7 +371,7 @@ W polu Stan wskazują stan online kontenerów:
 | ![Gotowe uruchomionej ikona stanu](./media/monitoring-container-health/container-health-ready-icon.png) | Uruchamianie (gotowe)|
 | ![Ikona stanu oczekuje lub wstrzymana](./media/monitoring-container-health/container-health-waiting-icon.png) | Oczekuje lub wstrzymana|
 | ![Ikona stanu uruchomiona po raz ostatni informowało](./media/monitoring-container-health/container-health-grey-icon.png) | Ostatnie zgłaszane uruchomiona, ale nie odpowiedział w ponad 30 minut|
-| ![Ikona stanu zakończone](./media/monitoring-container-health/container-health-green-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
+| ![Ikona stanu powodzenia](./media/monitoring-container-health/container-health-green-icon.png) | Pomyślnie zatrzymano lub nie można zatrzymać|
 
 Ikona stanu pokazuje liczbę oparte na zasobnik udostępnia. Pokazuje niższa dwóch stanów i po umieszczeniu stanu przedstawia zbiorcze informacje o stanie ze wszystkich zasobników w kontenerze.  Jeśli nie ma stanu gotowości, zostaną wyświetlone wartości stanu **(0)**.  
 
@@ -489,9 +489,7 @@ Jeśli została wybrana opcja używania wiersza polecenia platformy Azure, nale�
           "addonProfiles": {
             "omsagent": {
               "enabled": false,
-              "config": {
-                "logAnalyticsWorkspaceResourceID": null
-              }
+              "config": null
             }
            }
          }

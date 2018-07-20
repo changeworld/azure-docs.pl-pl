@@ -13,51 +13,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 07/18/2018
 ms.author: genli
-ms.openlocfilehash: 604e2ee6d2ac7e30813f8b4cd02253407c2b1e3f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 0bd0fca54ae5bf4292564a15adf38b7586768450
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067439"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145455"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Anulowanie subskrypcji platformy Azure
 
-Możesz anulować subskrypcję platformy Azure jako [administratora konta](billing-subscription-transfer.md#whoisaa). Po anulowaniu subskrypcji kończy się dostępu do usług platformy Azure i zasobów.
+Możesz anulować subskrypcję platformy Azure jako [administratora konta](billing-subscription-transfer.md#whoisaa). Po anulowaniu subskrypcji kończy się dostępu do zasobów i usług platformy Azure.
 
 Zanim anulujesz subskrypcję:
 
-* Utwórz kopię zapasową danych. Na przykład jeśli dane są przechowywane w magazynu Azure i SQL, Pobierz kopię. Jeśli maszynę wirtualną, Zapisz obraz ją lokalnie.
-* Zamknij usługi. Przejdź do [zasobów strony w portalu zarządzania](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), i **zatrzymać** wszelkie uruchomione maszyny wirtualne, aplikacji lub innych usług.
-* Należy rozważyć przeprowadzenie migracji danych. Zobacz [przenoszenia zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+* Utwórz kopię zapasową danych. Na przykład jeśli one przechowywanie danych w usłudze Azure storage i SQL, należy pobrać kopię. Jeśli masz maszynę wirtualną, Zapisz obraz go lokalnie.
+* Zamknij usługi. Przejdź do [zasoby strony w portalu zarządzania](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), i **zatrzymać** dowolne uruchomione maszyny wirtualne, aplikacje lub innych usług.
+* Należy rozważyć migrację danych. Zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
 
-Jeśli anulujesz płatna [plan pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/), możesz nadal są naliczane co miesiąc w pozostałej części termin 6 miesięcy.
+Jeśli anulujesz płatnego planu pomocy technicznej systemu Azure, nadal są rozliczane w pozostałej części okres obowiązywania subskrypcji. Aby uzyskać więcej informacji, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).
 
-## <a name="cancel-subscription-using-the-azure-portal"></a>Anulowanie subskrypcji przy użyciu portalu Azure
+## <a name="cancel-subscription-using-the-azure-portal"></a>Anulowanie subskrypcji przy użyciu witryny Azure portal
 
-1. Wybierz subskrypcję z [w portalu Azure na stronie subskrypcji](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Wybierz subskrypcję, którą chcesz anulować i kliknij przycisk **anulować subskrypcję**.
+1. Wybierz swoją subskrypcję z [strony subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Wybierz subskrypcję, którą chcesz anulować, a następnie kliknij przycisk **anulować subskrypcję**.
 
-    ![Zrzut ekranu pokazujący przycisk Anuluj](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. Postępuj zgodnie z monitami i zakończenia anulowania.
+    ![Zrzut ekranu przedstawiający przycisk Anuluj](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
+1. Postępuj zgodnie z instrukcjami i zakończenia anulowania.
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>Co się stanie po I anulowanie subskrypcji?
+## <a name="what-happens-after-i-cancel-my-subscription"></a>Co się stanie po mogę anulować moją subskrypcję?
 
-Anulowanie, zatrzymaniu natychmiast rozliczeń. Jednak może potrwać do 10 minut pokazu anulowania w portalu.
+Anulowanie, rozliczanie kończy się natychmiast. Jednak może potrwać do 10 minut, zanim show anulowania w portalu.
 
-Po wykonaniu tej usługi są wyłączone. Oznacza to, maszynach wirtualnych są cofnąć przydziału, tymczasowego adresy IP są zwalniane i magazynu jest tylko do odczytu.
+Po tym usługi zostaną wyłączone. Oznacza to maszyny wirtualne są dezalokowany tymczasowe adresy IP są zwalniane, i magazynu jest tylko do odczytu.
 
-Jeśli anulujesz środku okresie rozliczeniowym, możemy wysyłać końcowego rachunku na daty faktury typowe po zakończeniu okresu. 
+Jeśli anulujesz w trakcie okresu rozliczeniowego, możemy wysyłać łączny rachunek na Data faktury typowe po upływie okresu. 
 
-Poczekamy 90 dni przed trwałe usunięcie danych w przypadku, gdy trzeba do niego dostęp, czy zmienisz zdanie. Nie możemy pobierać przechowywania danych. Aby dowiedzieć się więcej, zobacz [Microsoft Center Trust — jak możemy zarządzać danymi](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Poczekamy 90 dni przed trwałe usuwanie danych w przypadku, gdy trzeba uzyskać do niego dostęp, czy zmiany zdania. Nie opłata przechowywania danych. Aby dowiedzieć się więcej, zobacz [Microsoft Trust Center — jak Zarządzamy danych](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
-## <a name="reactivate-subscription"></a>Ponowne uaktywnianie subskrypcji
+## <a name="reactivate-subscription"></a>Ponowne aktywowanie subskrypcji
 
-Jeśli anulujesz subskrypcję z przypadkowo, możesz [uaktywnić go ponownie w Centrum konta](billing-subscription-become-disable.md).
+Jeśli anulujesz subskrypcję z płatnością za rzeczywiste użycie przypadkowo, możesz to zrobić [ją aktywować ponownie w Centrum kont](billing-subscription-become-disable.md).
 
-Jeśli Twoja subskrypcja nie jest płatność za rzeczywiste użycie, się z pomocą techniczną w ciągu 90 dni od anulowania, aby ponownie aktywować subskrypcję.
+Jeśli Twoja subskrypcja nie jest rozliczana według bieżącego użycia, skontaktuj się z działem pomocy technicznej w ciągu 90 dni od anulowania, aby ponownie aktywować swoją subskrypcję.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal masz pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal masz pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

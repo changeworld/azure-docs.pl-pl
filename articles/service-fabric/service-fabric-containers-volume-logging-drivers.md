@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: subramar
-ms.openlocfilehash: a5b75a7069375f503cbe25554eb7c04cba868413
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9bd370e8070816d62b22c1e3d5ad4b6cdd2da30a
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969609"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144955"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
@@ -36,6 +36,33 @@ Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://
 * Postępuj zgodnie z instrukcjami w [dokumentacji usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) do utworzenia udziału plików dla aplikacji kontenera usługi Service Fabric do użycia jako wolumin.
 
 * Konieczne będzie [środowiska Powershell z modułu Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) lub [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) zainstalowane.
+
+* Jeśli używasz funkcji Hyper-v kontenery poniższe fragmenty kodu należy dodać w ClusterManifest (klaster lokalny) lub element fabricSettings sekcji szablonu ARM (klastrze platformy Azure) lub ClusterConfig.json (autonomiczny klaster). Konieczne będzie nazwa woluminu i numer portu, którego nasłuchuje woluminu w klastrze. 
+
+W ClusterManifest następujące wymagania do dodania w sekcji hostingu. W tym przykładzie nazwa woluminu jest **sfazurefile** i port nasłuchuje na klastrze jest **19300**.  
+
+``` xml 
+<Section Name="Hosting">
+  <Parameter Name="VolumePluginPorts" Value="sfazurefile:19300" />
+</Section>
+```
+
+W sekcji element fabricSettings szablonu ARM (w przypadku wdrożeń na platformie Azure) lub ClusterConfig.json (w przypadku autonomicznych wdrożeniach), należy dodać poniższy fragment kodu. 
+
+```json
+"fabricSettings": [
+  {
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "VolumePluginPorts",
+          "value": "sfazurefile:19300"
+      }
+    ]
+  }
+]
+```
+
 
 ## <a name="deploy-the-service-fabric-azure-files-application"></a>Wdrażanie aplikacji usługi Service Fabric usługi Azure Files
 

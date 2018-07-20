@@ -3,7 +3,7 @@ title: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure z wielo
 description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączono do niego przy użyciu szablonów interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub usługi Resource Manager.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -12,19 +12,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
-ms.author: cynthn
-ms.openlocfilehash: 257b80c30823be41893be8659845d4fcbc922da3
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.date: 06/07/2018
+ms.author: iainfou
+ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932276"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144860"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
 Można utworzyć maszynę wirtualną (VM) na platformie Azure, która ma wiele interfejsów sieci wirtualnej (NIC) podłączone do niego. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności lub sieci z rozwiązaniem monitorowania lub tworzenia kopii zapasowych w wersji dedykowanej. Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi, dołączono do niego oraz jak dodawanie i usuwanie kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
 
-Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
+Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](multiple-nics-nodejs.md).
 
 
 ## <a name="create-supporting-resources"></a>Utwórz zasoby pomocnicze
@@ -44,9 +44,9 @@ Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli
 az network vnet create \
     --resource-group myResourceGroup \
     --name myVnet \
-    --address-prefix 192.168.0.0/16 \
+    --address-prefix 10.0.0.0/16 \
     --subnet-name mySubnetFrontEnd \
-    --subnet-prefix 192.168.1.0/24
+    --subnet-prefix 10.0.1.0/24
 ```
 
 Utwórz podsieć dla ruchu zaplecza przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Poniższy przykład tworzy podsieć o nazwie *mySubnetBackEnd*:
@@ -56,7 +56,7 @@ az network vnet subnet create \
     --resource-group myResourceGroup \
     --vnet-name myVnet \
     --name mySubnetBackEnd \
-    --address-prefix 192.168.2.0/24
+    --address-prefix 10.0.2.0/24
 ```
 
 Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
@@ -86,7 +86,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Tworzenie maszyny Wirtualnej i Dołącz kart sieciowych
-Podczas tworzenia maszyny Wirtualnej, określ karty interfejsu sieciowego utworzonego za pomocą `--nics`. Należy również zadbać o to jeśli wybrano rozmiar maszyny Wirtualnej. Istnieją limity całkowitą liczbę kart sieciowych, które można dodać do maszyny Wirtualnej. Przeczytaj więcej na temat [rozmiarów maszyn wirtualnych systemu Linux](sizes.md). 
+Podczas tworzenia maszyny Wirtualnej, określ karty interfejsu sieciowego utworzonego za pomocą `--nics`. Należy również zadbać o to jeśli wybrano rozmiar maszyny Wirtualnej. Istnieją limity całkowitą liczbę kart sieciowych, które można dodać do maszyny Wirtualnej. Przeczytaj więcej na temat [rozmiarów maszyn wirtualnych systemu Linux](sizes.md).
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
 
@@ -187,75 +187,68 @@ Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu 
 Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych
-Po dodaniu wielu kart sieciowych do maszyny Wirtualnej z systemem Linux, musisz utworzyć reguły routingu. Te reguły zezwalają na maszynę Wirtualną do wysyłania i odbierania ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruch, który należy do *eth1*, na przykład, nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej.
 
-Aby rozwiązać ten problem z routingiem, należy najpierw dodać dwie tabele routingu, aby */etc/iproute2/rt_tables* w następujący sposób:
+Poprzednie kroki tworzenia sieci wirtualnej i podsieci, kart sieciowych dołączonych, a następnie utworzono maszynę Wirtualną. Publicznego adresu IP adres i sieci reguły grupy zabezpieczeń, które zezwalają na ruch SSH nie zostały utworzone. Aby skonfigurować system operacyjny gościa do wielu kart sieciowych, musisz zezwolić na połączenia zdalne, a następnie uruchom polecenia lokalnie na maszynie Wirtualnej.
 
-```bash
-echo "200 eth0-rt" >> /etc/iproute2/rt_tables
-echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+Aby zezwolić na ruch SSH, należy utworzyć reguły sieciowej grupy zabezpieczeń z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) w następujący sposób:
+
+```azurecli
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name allow_ssh \
+    --priority 101 \
+    --destination-port-ranges 22
 ```
 
-Aby wprowadzić zmianę, trwałe i stosowane podczas aktywacji stos sieci, należy edytować */etc/sysconfig/network-scripts/ifcfg-eth0* i */etc/sysconfig/network-scripts/ifcfg-eth1*. Instrukcja ALTER wiersz *"NM_CONTROLLED = yes"* do *"NM_CONTROLLED = nie"*. Bez tego kroku dodatkowe reguły/routingu nie są automatycznie stosowane.
- 
-Następnie rozszerzenie tabele routingu. Załóżmy, że istnieje w miejscu następujące ustawienia:
+Tworzenie publicznego adresu IP za pomocą [tworzenie sieci az public-ip](/cli/azure/network/public-ip#az-network-public-ip-create) i przypisz je do pierwszej karty Sieciowej z [az sieci nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update):
 
-*Routing*
+```azurecli
+az network public-ip-address create --resource-group myResourceGroup --name myPublicIP
 
-```bash
-default via 10.0.1.1 dev eth0 proto static metric 100
-10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
-10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
-168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
-169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+az network nic ip-config update \
+    --resource-group myResourceGroup \
+    --nic-name myNic1 \
+    --name ipconfig1 \
+    --public-ip-addres myPublicIP
 ```
 
-*Interfejsy*
+Aby wyświetlić widok publiczny adres IP maszyny Wirtualnej, użyj [az vm show](/cli/azure/vm#az-vm-show) w następujący sposób:
 
-```bash
-lo: inet 127.0.0.1/8 scope host lo
-eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
-eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```azurecli
+az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Następnie będzie Utwórz następujące pliki i dodaj odpowiednie zasady i tras do poszczególnych:
-
-- */etc/sysconfig/network-scripts/rule-eth0*
-
-    ```bash
-    from 10.0.1.4/32 table eth0-rt
-    to 10.0.1.4/32 table eth0-rt
-    ```
-
-- */etc/sysconfig/network-scripts/route-eth0*
-
-    ```bash
-    10.0.1.0/24 dev eth0 table eth0-rt
-    default via 10.0.1.1 dev eth0 table eth0-rt
-    ```
-
-- */etc/sysconfig/Network-scripts/rule-eth1*
-
-    ```bash
-    from 10.0.1.5/32 table eth1-rt
-    to 10.0.1.5/32 table eth1-rt
-    ```
-
-- */etc/sysconfig/Network-scripts/route-eth1*
-
-    ```bash
-    10.0.1.0/24 dev eth1 table eth1-rt
-    default via 10.0.1.1 dev eth1 table eth1-rt
-    ```
-
-Aby zastosować zmiany, uruchom ponownie *sieci* usługi w następujący sposób:
+Teraz SSH z publicznego adresu IP maszyny Wirtualnej. Domyślna nazwa użytkownika podana w poprzednim kroku zostało *azureuser*. Podaj swoją nazwę użytkownika i publiczny adres IP:
 
 ```bash
-systemctl restart network
+ssh azureuser@137.117.58.232
 ```
 
-Reguły routingu są teraz prawidłowo w miejscu, i możesz połączyć się z dowolnym interfejsem, zgodnie z potrzebami.
+Aby wysłać do lub z pomocniczego interfejsu sieciowego, należy ręcznie dodać trasy stałe do systemu operacyjnego w każdym dodatkowy interfejs sieciowy. W tym artykule *eth1* pomocniczy interfejs. Instrukcje dotyczące dodawania trasy stałe systemowi operacyjnemu zależą od dystrybucji. W tym temacie dokumentacji dla Twojej dystrybucji, aby uzyskać instrukcje.
 
+Podczas dodawania trasy do systemu operacyjnego, adres bramy jest *.1* dla jednego z tych podsieci jest interfejs sieciowy. Na przykład, jeśli interfejs sieciowy zostanie przypisany adres *10.0.2.4*, bramy należy określić trasa jest *10.0.2.1*. Można zdefiniować sieci określonego dla trasy, lub określ lokalizację docelową z *0.0.0.0*, jeśli chcesz, aby cały ruch dla interfejsu przechodzić przez określony bramy. Brama dla każdej podsieci odbywa się przy użyciu sieci wirtualnej.
+
+Po dodaniu trasę dla interfejsu dodatkowej, sprawdź, czy trasy w tabeli tras z `route -n`. Następujące przykładowe dane wyjściowe jest tabelę tras, która ma interfejsów sieciowych dwóch, dodane do maszyny Wirtualnej, w tym artykule:
+
+```bash
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.0.1.1        0.0.0.0         UG    0      0        0 eth0
+0.0.0.0         10.0.2.1        0.0.0.0         UG    0      0        0 eth1
+10.0.1.0        0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U     0      0        0 eth1
+168.63.129.16   10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+169.254.169.254 10.0.1.1        255.255.255.255 UGH   0      0        0 eth0
+```
+
+Upewnij się, że trasy, którą dodałeś będzie nadal występować między ponownymi uruchomieniami, sprawdzając tabeli tras ponownie po ponownym uruchomieniu. Aby przetestować łączność, można wpisać następujące polecenie, na przykład, gdzie *eth1* nazywa się dodatkowy interfejs sieciowy:
+
+```bash
+ping bing.com -c 4 -I eth1
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [rozmiarów maszyn wirtualnych systemu Linux](sizes.md) podczas próby tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi. Należy zwrócić uwagę maksymalna liczba kart sieciowych obsługuje każdego rozmiaru maszyny Wirtualnej. 
+Przegląd [rozmiarów maszyn wirtualnych systemu Linux](sizes.md) podczas próby tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi. Należy zwrócić uwagę maksymalna liczba kart sieciowych obsługuje każdego rozmiaru maszyny Wirtualnej.
+
+Aby dodatkowo zabezpieczyć maszyn wirtualnych, należy użyć dostęp dokładnie na czas maszyny Wirtualnej. Ta funkcja spowoduje otwarcie reguły sieciowej grupy zabezpieczeń dla ruchu protokołu SSH w razie i zdefiniowany okres. Aby uzyskać więcej informacji, zobacz [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (Zarządzanie dostępem maszyny wirtualnej przy użyciu funkcji „dokładnie na czas”).

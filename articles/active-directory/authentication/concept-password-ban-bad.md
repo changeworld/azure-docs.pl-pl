@@ -1,74 +1,74 @@
 ---
-title: Dynamicznie zakazane haseł w usłudze Azure AD
-description: Zakaz słabe hasła ze środowiska przy użyciu usługi Azure AD dynamicznie zakazane haseł
+title: Hasła dynamicznie zakazane w usłudze Azure AD
+description: Zablokuj słabe hasła ze środowiska za pomocą haseł usługi Azure AD, dynamicznie zakazane
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: article
-ms.date: 06/11/2018
+ms.topic: conceptual
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 89cbe386d87c6ccb81df7fabd86b197bb69e41e1
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295610"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39162018"
 ---
-# <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w Twojej organizacji
+# <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
 |     |
 | --- |
-| Ochrony hasłem w usłudze Azure AD i listy zabronionych hasła niestandardowego są funkcje publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [uzupełniające warunki użytkowania dotyczącym wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrony hasłem w usłudze Azure AD i listy niestandardowej zakazanych haseł są publicznej wersji zapoznawczej funkcji usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Liderów branży informujące, nie należy używać tego samego hasła w wielu miejscach złożoną i nie wprowadzać proste jak Password123. Jak organizacje gwarantuje, że użytkowników są następujące wskazówki Jak one upewnij się, że użytkownicy nie są za pomocą wspólnego hasła lub haseł, które są znane do uwzględnienia w ostatnich naruszeń danych?
+Liderów branży zorientować się, nie należy używać tego samego hasła w wielu miejscach złożoną i nie wprowadzać proste, np. / Password123. Jak organizacje gwarantuje, że postępujesz zgodnie z użytkownikom wskazówki Jak one upewnij się, że użytkownicy nie są przy użyciu wspólnego hasła lub haseł, które są znane mają zostać uwzględnione w ostatnich naruszeń danych?
 
-## <a name="global-banned-password-list"></a>Listy globalne zabronione hasła
+## <a name="global-banned-password-list"></a>Listy globalne zakazanych haseł
 
-Aby pozostać w jednym kroku wcześniejsze przez przestępców zawsze działa firmy Microsoft. W związku z tym zespół usługi Azure AD Identity Protection stale szukać haseł powszechnie używane i którego bezpieczeństwo zostało naruszone. Następnie blokują te hasła, które zostaną uznane za zbyt często używane w tzw listy globalnego hasła zabronione. Przez przestępców również podobne strategie w ich ataków, w związku z tym Microsoft nie publikuje zawartość tej listy publicznie. Te narażone hasła są zablokowane, zanim staną się prawdziwe zagrożenia klientom firmy Microsoft. Aby uzyskać więcej informacji na temat bieżącego działania zabezpieczeń, zobacz [raportów analizy zabezpieczeń firmy Microsoft](https://www.microsoft.com/security/intelligence-report).
+Microsoft nieustannie pracuje, by pozostawać na krok przed przestępcami. W związku z tym zespół usługi Azure AD Identity Protection nieustannie szukać haseł często używane i których bezpieczeństwo zostało naruszone. Następnie blokują tych haseł, które zostaną uznane za zbyt często używany w co nosi nazwę listy globalne zakazanych haseł. Cyberprzestępcy również stosują podobne strategie w ich ataków, w związku z tym Microsoft nie publikuje zawartość tej listy publicznie. Te narażone hasła są blokowane, zanim staną się prawdziwym zagrożeniem dla klientów firmy Microsoft. Aby uzyskać więcej informacji na temat bieżącego działaniach związanych z zabezpieczeniami, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Podgląd: Niestandardowy zakazane liście haseł
+## <a name="preview-custom-banned-password-list"></a>Wersja zapoznawcza: Niestandardowe zakazane liście haseł
 
-W niektórych organizacjach może być podjęcie kolejny krok zabezpieczeń co przez dodanie dostosowania na szczycie listy globalnego hasła zabronione co Microsoft wywołuje listy zabronionych hasła niestandardowego. Klienci korporacyjni jak Contoso następnie można zdecydować się na zablokowanie wariantów swoje firmowe, warunki specyficzne dla firmy lub innych elementów.
+Niektóre organizacje mogą chcieć wykonać zabezpieczeń jeden krok dalej przez dodanie dostosowań na górze listy globalne zakazanych haseł co Microsoft wywołuje listy niestandardowej zakazanych haseł. Klientów korporacyjnych, takich jak Contoso następnie można zdecydować się na zablokowanie warianty ich nazwy na marki, warunki specyficzny dla firmy lub innych elementów.
 
-Niestandardowa niedozwolone liście haseł i możliwość włączenia lokalnego Active Directory integration odbywa się przy użyciu portalu Azure.
+Niestandardowy zablokowane lista hasła oraz możliwość włączenia Active Directory w środowisku lokalnym, integracja jest zarządzane przy użyciu witryny Azure portal.
 
-![Zmodyfikuj listę niestandardowych zabronione hasło w obszarze metod uwierzytelniania w portalu Azure](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Modyfikowanie listy niestandardowej zakazanych haseł w ramach metod uwierzytelniania w witrynie Azure portal](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="on-premises-hybrid-scenarios"></a>Scenariuszy hybrydowych lokalnej
+## <a name="on-premises-hybrid-scenarios"></a>Scenariusze hybrydowe w środowisku lokalnym
 
-Ochrona kont tylko w chmurze jest przydatne, ale w wielu organizacjach Obsługa scenariuszy hybrydowych, łącznie z lokalnego systemu Windows Server Active Directory. Istnieje możliwość zainstalowania ochrony hasłem usługi Azure AD dla systemu Windows Server Active Directory (wersja zapoznawcza) agentów lokalnego rozszerzania listy zabronionych hasła w istniejącej infrastrukturze. Teraz użytkownicy i Administratorzy, którzy zmienić, ustawiania lub resetowania haseł lokalnych są wymagane do wykonania tego samego hasła jako tylko do chmury.
+Ochrona konta tylko w chmurze jest pomocne, ale w wielu organizacjach Obsługa scenariuszy hybrydowych, w tym usługi Active Directory lokalnego systemu Windows Server. Istnieje możliwość zainstalowania ochrona za pomocą hasła usługi Azure AD dla usługi Windows Server Active Directory (wersja zapoznawcza) agentów lokalnego rozszerzenie listy zakazanych haseł w istniejącej infrastrukturze. Teraz użytkownicy i Administratorzy, którzy zmienić, ustawianie lub resetowanie haseł w środowisku lokalnym są wymagane do wykonania tych samych zasad haseł jako użytkowników tylko w chmurze.
 
-## <a name="how-does-the-banned-password-list-work"></a>Jak działa listy zabronionych hasło
+## <a name="how-does-the-banned-password-list-work"></a>Jak działa listy zakazanych haseł
 
-Lista zabronione hasła odpowiada hasła na liście przez konwertowanie ciągu na małe litery i porównywania znane haseł zabronione w edycji odległości 1 z dopasowywania rozmytego.
+Listy zakazanych haseł dopasowuje haseł na liście przez przekonwertowanie ciągu na małe litery i porównywanie do znanego zakazanych haseł w odległości edycji 1 za pomocą dopasowywania rozmytego.
 
-Przykład: Zablokowane hasła programu word w organizacji.
-   - Użytkownik próbuje ustawić hasła "P@ssword" który jest konwertowany na "password" i ponieważ jest on wariant hasła jest zablokowana.
-   - Administrator podejmuje próbę ustawienia hasła użytkowników "Password123!" przekonwertować "password123!" i ponieważ jest on wariant hasła jest zablokowany.
+Przykład: Hasło word jest zablokowana dla organizacji
+   - Użytkownik próbuje ustawić hasła "P@ssword" który jest konwertowany na "password", a ponieważ wariant hasło będzie zablokowany.
+   - Administrator próbuje ustawić użytkownicy hasło "/ Password123!" które konwertowane na "/ password123!" a ponieważ wariant hasła jest zablokowany.
 
-Każde użytkownik resetuje lub zmieni swoje hasło usługi Azure AD, który przelewa się przez ten proces, aby upewnić się, że nie jest na liście haseł zabronione. Ten test jest dołączony do hybrydowego scenariuszy przy użyciu hasła samodzielnego resetowania, synchronizacji skrótów haseł i uwierzytelnianie przekazywane.
+Każde użytkownik resetuje lub zmienia swoje hasło usługi Azure AD, który przepływa ona przez ten proces, aby upewnić się, że nie jest na listy zakazanych haseł. To sprawdzenie znajduje się w hybrydowe resetowania scenariuszy przy użyciu haseł, synchronizacji skrótów haseł i uwierzytelniania przekazywanego.
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 
-Korzyści wynikające z listy globalnego hasła zabronione mają zastosowanie do wszystkich użytkowników usługi Azure Active Directory (Azure AD).
+Korzyści wynikające z listy globalne zakazanych haseł mają zastosowanie do wszystkich użytkowników usługi Azure Active Directory (Azure AD).
 
-Na liście hasła niestandardowego zabronione wymaga licencji Azure AD podstawowa.
+Listy niestandardowe zakazanych haseł wymaga licencji usługi Azure AD podstawowa.
 
-Azure AD ochrony hasłem dla systemu Windows Server Active Directory wymaga licencji usługi Azure AD Premium. 
+Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server wymaga licencji usługi Azure AD Premium. 
 
-Dodatkowe informacje licencyjne, wraz z kosztami, można znaleźć w [usługi Azure Active Directory cennik lokacji](https://azure.microsoft.com/pricing/details/active-directory/).
+Dodatkowe informacje o licencjonowaniu, wraz z kosztami, można znaleźć na [usługi Azure Active Directory ceny witryny](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="what-do-users-see"></a>Co widzą użytkownicy
 
-Jeśli użytkownik próbuje zresetować hasło do zasobu, który będzie zakazane, zobaczy następujący komunikat o błędzie:
+Gdy użytkownik próbuje zresetować hasło do zasobu, który będzie zablokowany, zobaczą następujący komunikat o błędzie:
 
-Niestety hasło zawiera słowo, wyrażenie lub wzorca, który umożliwia łatwe do odgadnięcia hasła. Spróbuj ponownie, używając innego hasła.
+Niestety Twoje hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia. Spróbuj ponownie, używając innego hasła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie listy zabronionych hasła niestandardowego](howto-password-ban-bad.md)
-* [Włączanie usługi Azure AD hasła ochrony agentów lokalnie](howto-password-ban-bad-on-premises.md)
+* [Skonfiguruj listę niestandardowych zakazanych haseł](howto-password-ban-bad.md)
+* [Włączanie usługi Azure AD hasło ochrony agentów w środowisku lokalnym](howto-password-ban-bad-on-premises.md)

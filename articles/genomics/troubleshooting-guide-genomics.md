@@ -11,13 +11,13 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
-ms.date: 04/13/2018
-ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 07/18/2018
+ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34627368"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144180"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 W tym omówieniu opisano strategie, aby rozwiązać typowe problemy podczas korzystania z usługi Microsoft Genomics. Aby uzyskać ogólne — często zadawane pytania, zobacz [często zadawane pytania dotyczące](frequently-asked-questions-genomics.md). 
@@ -65,7 +65,7 @@ Aby rozwiązać ten problem, przejrzyj, jeśli pliki fastq przesłane do przepł
 
 
 ### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>Błąd podczas przekazywania pliku .bam. Wyjściowy obiekt blob już istnieje, a następnie opcję zastępowania została ustawiona na wartość False.
-Jeśli zostanie wyświetlony komunikat o błędzie następujących funkcji `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, folder wyjściowy zawiera już plik wyjściowy o takiej samej nazwie.  Usuń istniejący plik danych wyjściowych albo włączyć opcję zastąpienia w pliku konfiguracji. Następnie należy ponownie przesłać przepływ pracy.
+Jeśli zostanie wyświetlony następujący komunikat o błędzie `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, folder wyjściowy zawiera już plik wyjściowy o takiej samej nazwie.  Usuń istniejący plik danych wyjściowych albo włączyć opcję zastąpienia w pliku konfiguracji. Następnie należy ponownie przesłać przepływ pracy.
 
 ### <a name="when-to-contact-microsoft-genomics-support"></a>Kiedy należy się z pomocą techniczną firmy Microsoft Genomics
 Jeśli zobaczysz następujące komunikaty o błędach, wystąpił błąd wewnętrzny. 

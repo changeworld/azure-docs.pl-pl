@@ -27,9 +27,9 @@
       href: apache-spark-use-bi-tools.md
     - name: Uruchamianie zadania przesyłania strumieniowego
       href: apache-spark-eventhub-streaming.md
-    - name: Tworzenie aplikacji usługi Machine Learning
+    - name: Tworzenie aplikacji uczenia maszynowego
       href: apache-spark-ipython-notebook-machine-learning.md
-    - name: Tworzenie aplikacji platformy Spark przy użyciu programu IntelliJ
+    - name: Tworzenie aplikacji usługi Spark w programie IntelliJ
       href: apache-spark-create-standalone-application.md
 - name: Instrukcje
   items:

@@ -77,6 +77,8 @@
       items:
         - name: Za pomocą szyfrowania AES-128 — .NET
           href: protect-with-aes128.md
+        - name: Za pomocą DRM — .NET
+          href: protect-with-drm.md
 - name: Dokumentacja
   items:
     - name: Specyfikacja interfejsu OpenAPI (Swagger)
