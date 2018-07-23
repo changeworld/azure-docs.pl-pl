@@ -89,14 +89,6 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
-    - name: Zasoby szablonu
-      items:
-        - name: Subskrypcje zdarzeń
-          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
-        - name: Tematy
-          href: /azure/templates/microsoft.eventgrid/topics
-    - name: Zestawy SDK
-      href: sdk-overview.md
     - name: Schemat subskrypcji
       href: subscription-creation-schema.md
     - name: Schemat zdarzeń
@@ -106,6 +98,8 @@
           href: event-schema-subscriptions.md
         - name: Blob Storage
           href: event-schema-blob-storage.md
+        - name: Container Registry
+          href: event-schema-container-registry.md
         - name: Event Hubs
           href: event-schema-event-hubs.md
         - name: Usługa IoT Hub
@@ -116,6 +110,14 @@
           href: event-schema-resource-groups.md
         - name: Service Bus
           href: event-schema-service-bus.md
+    - name: Zasoby szablonu
+      items:
+        - name: Subskrypcje zdarzeń
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: Tematy
+          href: /azure/templates/microsoft.eventgrid/topics
+    - name: Zestawy SDK
+      href: sdk-overview.md
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

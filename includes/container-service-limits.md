@@ -3,10 +3,9 @@
 | Maksymalna liczba węzłów w klastrze | 100 |
 | Maksymalna liczba zasobników w węźle ([sieć podstawowa z rozwiązaniem Kubenet][basic-networking]) | 110 |
 | Maksymalna liczba zasobników w węźle ([sieć zaawansowana z rozwiązaniem Azure CNI][advanced-networking]) | 30<sup>1</sup> |
-| Maksymalna liczba klastrów w subskrypcji | 20<sup>2</sup> |
+| Maksymalna liczba klastrów w subskrypcji | 100 |
 
 <sup>1</sup> Tę wartość można dostosować przez wdrożenie szablonu usługi ARM. Zobacz przykłady [tutaj][arm-deployment-example].<br />
-<sup>2</sup> Aby zażądać zwiększenia limitu, utwórz [żądanie pomocy technicznej platformy Azure][azure-support].<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/networking-overview.md#basic-networking

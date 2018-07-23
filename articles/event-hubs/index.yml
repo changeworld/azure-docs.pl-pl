@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/14/2018
   ms.author: sethm
-  ms.openlocfilehash: 481a11b284f0bfba73fe8a44b640eac0cdc6f833
-  ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+  ms.openlocfilehash: 84ef019b64bba2d5b581593ae293ea612ecb4bc4
+  ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 07/02/2018
-  ms.locfileid: "37344067"
+  ms.lasthandoff: 07/20/2018
+  ms.locfileid: "39170936"
 abstract:
   description: Azure Event Hubs to usługa do przetwarzania zdarzeń i platforma strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Na potrzeby publikowania zdarzeń usługa obsługuje protokoły HTTPS i AMQP 1.0 oraz ekosystem Apache Kafka.
   aside:
@@ -56,7 +56,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://review.docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?branch=release-mvc-event-hubs">Read a stream of Event Hubs data with Azure Stream Analytics and visualize the anomalies (Odczyt strumienia danych usługi Event Hubs za pomocą usługi Azure Stream Analytics i wizualizowanie anomalii)</a>
+    - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Read a stream of Event Hubs data with Azure Stream Analytics and visualize the anomalies (Odczyt strumienia danych usługi Event Hubs za pomocą usługi Azure Stream Analytics i wizualizowanie anomalii)</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

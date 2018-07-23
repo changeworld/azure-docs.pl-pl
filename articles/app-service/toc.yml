@@ -23,8 +23,6 @@
       href: app-service-web-get-started-php.md
     - name: Tworzenie aplikacji Java
       href: app-service-web-get-started-java.md
-    - name: Tworzenie aplikacji Python
-      href: app-service-web-get-started-python.md
     - name: Tworzenie statycznej witryny HTML
       href: app-service-web-get-started-html.md
 - name: Samouczki
@@ -41,8 +39,6 @@
           href: app-service-web-tutorial-nodejs-mongodb-app.md
         - name: Java z bazą danych MySQL
           href: app-service-web-tutorial-java-mysql.md
-        - name: Python z bazą danych PostgreSQL
-          href: app-service-web-tutorial-python-postgresql.md
     - name: Bezpieczne uzyskiwanie dostępu do bazy danych SQL
       href: app-service-web-tutorial-connect-msi.md
     - name: Hostowanie interfejsu API RESTful

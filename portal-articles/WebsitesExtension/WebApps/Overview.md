@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c01fcc7e69cf5af26b127519f183062ccf4923cc
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600912"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172748"
 ---
 # <a name="app-service-documentation"></a>Dokumentacja usługi App Service
 Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i system Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Visual Studio Team Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
@@ -29,7 +29,7 @@ Dowiedz się, jak wdrożyć pierwszą aplikację w chmurze za pomocą usługi Ap
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/app-service-web-get-started-python)
+- [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
 ## <a name="step-by-step-tutorials"></a>Samouczki krok po kroku
@@ -38,9 +38,9 @@ Dowiedz się, jak wdrażać i monitorować bezpiecznie aplikacje internetowe na 
 
 - Tworzenie aplikacji za pomocą:
   - [.NET z Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
-  - [Node.js z MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
-  - [Java z MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python z PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
+  - [Środowisko Node.js z bazą danych MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [Java z bazą danych MySQL](/app-service/app-service-web-tutorial-java-mysql)
+  - [Python z PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
 - [Mapowanie istniejącej domeny niestandardowej na aplikację](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Powiązywanie istniejącego certyfikatu SSL z aplikacją](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

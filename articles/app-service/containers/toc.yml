@@ -19,6 +19,8 @@
       href: quickstart-nodejs.md
     - name: Tworzenie aplikacji Java
       href: quickstart-java.md
+    - name: Tworzenie aplikacji Python
+      href: quickstart-python.md
     - name: Tworzenie aplikacji Ruby
       href: quickstart-ruby.md
     - name: Tworzenie aplikacji Docker/Go
