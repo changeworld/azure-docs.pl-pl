@@ -1,6 +1,6 @@
 ---
-title: Symulacji urządzenia w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
-description: W tym samouczku przedstawiono sposób symulator urządzeń za pomocą zdalnego monitorowania akcelerator rozwiązań.
+title: Symulacja urządzenia w rozwiązaniu do monitorowania zdalnego — Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak za pomocą usług symulator urządzenia zdalnego akcelerator rozwiązań do monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,22 +8,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088651"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187727"
 ---
 # <a name="create-a-new-simulated-device"></a>Utwórz nowe urządzenie symulowane
 
-Ten samouczek przedstawia sposób dostosowywania mikrousługi symulator urządzeń w akcelerator rozwiązań monitorowania zdalnego. Aby pokazać możliwości symulator urządzeń dwa scenariusze w tym samouczku jest używany w aplikacji Contoso IoT.
+W tym samouczku dowiesz się, jak dostosować mikrousług symulator urządzenia w akceleratora rozwiązania monitorowania zdalnego. Pokazywanie możliwości symulator urządzeń, dwa scenariusze w tym samouczku jest używana w aplikacji IoT firmy Contoso.
 
-Poniższe wideo przedstawia Omówienie opcji dostosowywania mikrousługi symulator urządzeń:
+Poniższy klip wideo zawiera omówienie opcji dostosowywania mikrousług symulator urządzenia:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
-W pierwszego scenariusza firma Contoso chce przetestować nowe urządzenie żarówka inteligentne. Aby wykonać testów, należy utworzyć nowe symulowane urządzenie o następującej charakterystyce:
+W przypadku pierwszego scenariusza firma Contoso chce przetestować nowe urządzenie inteligentne ikony żarówki. Aby wykonać testy, należy utworzyć nowe urządzenie symulowane o następującej charakterystyce:
 
 *Właściwości*
 
@@ -31,20 +31,20 @@ W pierwszego scenariusza firma Contoso chce przetestować nowe urządzenie żar�
 | ------------------------ | --------------------------- |
 | Kolor                    | White, Red, Blue            |
 | Jasność               | 0 do 100                    |
-| Szacowany pozostały okres | Odliczania w dół od 10 000 godzin |
+| Szacowany pozostały okres | Odliczanie z 10 000 godzin |
 
-*Telemetrii*
+*Dane telemetryczne*
 
-W poniższej tabeli przedstawiono dane żarówka raportów w chmurze jako strumień danych:
+W poniższej tabeli przedstawiono dane ikonę żarówki raportów w chmurze jako strumień danych:
 
 | Name (Nazwa)   | Wartości      |
 | ------ | ----------- |
-| Stan | "na" "wyłączone" |
+| Stan | "włączone" "wyłączone" |
 | Temperatura | Stopnie F |
 | online | wartość true, false |
 
 > [!NOTE]
-> **Online** wartość telemetrii jest obowiązkowa w przypadku wszystkich symulowane typów.
+> **Online** wartość jest obowiązkowa w przypadku wszystkich symulowanych typów.
 
 *Metody*
 
@@ -52,7 +52,7 @@ W poniższej tabeli przedstawiono akcje, które obsługuje nowe urządzenie:
 
 | Name (Nazwa)        |
 | ----------- |
-| Przełącz   |
+| Przełącz się   |
 | Wyłącz  |
 
 *Stan początkowy*
@@ -63,59 +63,59 @@ W poniższej tabeli przedstawiono początkowy stan urządzenia:
 | ------------------------ | -------|
 | Kolor początkowy            | Biały  |
 | Jasność początkowej       | 75     |
-| Początkowa pozostały okres   | 10 000 |
-| Stan początkowy telemetrii | "on"   |
-| Temperatury początkowej telemetrii | 200   |
+| Początkowe pozostały okres   | 10 000 |
+| Stan początkowy telemetrii | "włączone"   |
+| Temperatura początkowej danych telemetrycznych | 200   |
 
-W drugi scenariusz, należy dodać nowy typ danych telemetrycznych do firmy Contoso jego istniejącą **Chłodnica** urządzenia.
+W drugim scenariuszu, możesz dodać nowy typ danych telemetrycznych do firmy Contoso istniejącej **Chłodnica** urządzenia.
 
-W tym samouczku przedstawiono sposób symulator urządzeń za pomocą akcelerator rozwiązań monitorowania zdalnego:
+Ten samouczek pokazuje, jak za pomocą usług symulator urządzenia akceleratora rozwiązania monitorowania zdalnego:
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 >[!div class="checklist"]
 > * Tworzenie nowego typu urządzenia
-> * Symulowanie zachowanie urządzeń niestandardowych
+> * Symulowanie urządzenia niestandardowe zachowanie
 > * Dodawanie nowego typu urządzenia do pulpitu nawigacyjnego
-> * Wysyłać dane telemetryczne niestandardowych z istniejącym typem urządzenia
+> * Wyślij niestandardowych danych telemetrycznych z istniejącego typu urządzenia
 
-Poniższe wideo przedstawia przewodnik połączenie symulowanych i rzeczywistych urządzeń do monitorowania zdalnego rozwiązania:
+W poniższym wideo pokazano krok po kroku łączyć urządzenia symulowanego i rzeczywiste rozwiązania do zdalnego monitorowania:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego samouczka, potrzebne są:
+Aby skorzystać z tego samouczka, potrzebne są:
 
-* Wdrożone wystąpienie rozwiązanie monitorowania zdalnego w ramach subskrypcji platformy Azure. Jeśli jeszcze tego nie wdrożono rozwiązanie monitorowania zdalnego jeszcze, należy wykonać [wdrażanie akcelerator rozwiązań monitorowania zdalnego](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) samouczka.
+* Wdrożone wystąpienie rozwiązania do zdalnego monitorowania w ramach subskrypcji platformy Azure. Jeśli nie zostały wdrożone rozwiązanie monitorowania zdalnego, należy wykonać [wdrażanie akceleratora rozwiązania monitorowania zdalnego](../iot-accelerators/quickstart-remote-monitoring-deploy.md) samouczka.
 
-* Program Visual Studio 2017. Jeśli nie masz programu Visual Studio 2017 r zainstalowany, możesz pobrać bezpłatną [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
+* Program Visual Studio 2017. Jeśli nie masz zainstalowanego programu Visual Studio 2017, możesz pobrać bezpłatną [programu Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
-* [Cloud Explorer dla programu Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) rozszerzenie programu Visual Studio.
+* [Eksplorator chmury dla programu Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVS15Preview) rozszerzenia programu Visual Studio.
 
-* Konto na [Centrum Docker](https://hub.docker.com/). Możesz utworzyć konto bezpłatnej rozpocząć pracę.
+* Konto na [usługi Docker Hub](https://hub.docker.com/). Możesz zarejestrować bezpłatnie rozpocząć pracę.
 
-* [Git](https://git-scm.com/downloads) zainstalowana na tym komputerze pulpitu.
+* [Git](https://git-scm.com/downloads) zainstalowane na komputerze stacjonarnym.
 
 ## <a name="prepare-your-development-environment"></a>Przygotowywanie środowiska projektowego
 
-Wykonaj następujące zadania w celu przygotowania środowiska deweloperskiego do dodawania nowych symulowane urządzenie do monitorowania zdalnego rozwiązania:
+Wykonaj następujące zadania w celu przygotowania środowiska deweloperskiego do dodawania nowych symulowanych urządzeń do rozwiązania do zdalnego monitorowania:
 
-### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurowanie dostępu SSH z maszyną wirtualną rozwiązania na platformie Azure
+### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurowanie dostępu SSH z maszyną wirtualną rozwiązanie na platformie Azure
 
-Podczas tworzenia rozwiązania monitorowania zdalnego na [www.azureiotsolutions.com](https://www.azureiotsolutions.com), wybrana nazwa rozwiązania. Nazwa rozwiązania staje się nazwa grupy zasobów platformy Azure, która zawiera różne wdrożone zasoby używane przez rozwiązanie. W poniższych poleceniach zastosowano grupę zasobów o nazwie **Contoso-01**, należy zastąpić **Contoso-01** z nazwą grupy zasobów.
+Podczas tworzenia rozwiązania do zdalnego monitorowania w [www.azureiotsolutions.com](https://www.azureiotsolutions.com), wybraną nazwę rozwiązania. Nazwa rozwiązania staje się nazwa grupy zasobów platformy Azure, który zawiera różne wdrożone zasoby, których używa rozwiązania. Następujące polecenia, użyj grupy zasobów o nazwie **Contoso-01-**, należy zastąpić **Contoso-01** nazwą grupy zasobów.
 
-Następujące polecenia, użyj `az` polecenie [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Zainstaluj na komputerze deweloperskim 2.0 interfejsu wiersza polecenia Azure, lub użyj [powłoki chmury](https://docs.microsoft.com/azure/cloud-shell/overview) w [portalu Azure](http://portal.azure.com). Azure CLI 2.0 jest wstępnie zainstalowane w powłoce chmury.
+Następujące polecenia, użyj `az` polecenia [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Możesz zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0 na komputerze deweloperskim lub użyć [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) w [witryny Azure portal](http://portal.azure.com). Interfejs wiersza polecenia platformy Azure w wersji 2.0 jest wstępnie instalowane w usłudze Cloud Shell.
 
-1. Aby sprawdzić nazwę grupy zasobów, która zawiera zasoby zdalne monitorowanie, uruchom następujące polecenie:
+1. Aby zweryfikować nazwy grupy zasobów, która zawiera zasoby zdalne monitorowanie, uruchom następujące polecenie:
 
     ```sh
     az group list | grep "name"
     ```
 
-    To polecenie wyświetla listę wszystkich grup zasobów w ramach subskrypcji. Lista powinna zawierać grupę zasobów o takiej samej nazwie jako rozwiązania monitorowania zdalnego.
+    To polecenie wyświetla listę wszystkich grup zasobów w ramach subskrypcji. Lista powinna zawierać grupę zasobów o takiej samej nazwie jako rozwiązania do zdalnego monitorowania.
 
-1. Aby zasób grupy domyślnej grupy dla kolejnych poleceń, uruchom następujące polecenie za pomocą nazwę grupy zasobów, zamiast **Contoso-01**:
+1. Aby zasób grupy domyślnej grupy używane przy kolejnych poleceniach, uruchom następujące polecenie, używając Nazwa grupy zasobów zamiast **Contoso-01-**:
 
     ```sh
     az configure --defaults group=Contoso-01
@@ -127,38 +127,38 @@ Następujące polecenia, użyj `az` polecenie [Azure CLI 2.0](https://docs.micro
     az resource list -o table
     ```
 
-    Zanotuj nazwy maszyny wirtualnej i grupy zabezpieczeń sieci. Te wartości można użyć w kolejnych krokach.
+    Zanotuj nazwy maszyny wirtualnej i sieciowej grupy zabezpieczeń. Użyjesz tych wartości w kolejnych krokach.
 
-1. Aby włączyć dostęp SSH maszyny wirtualnej, uruchom następujące polecenie, używając nazwy sieciowej grupy zabezpieczeń z poprzedniego kroku:
+1. Aby włączyć dostęp SSH z maszyną wirtualną, uruchom następujące polecenie, używając nazwy sieciowej grupy zabezpieczeń z poprzedniego kroku:
 
     ```sh
     az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
     ```
 
-    Aby wyświetlić listę reguł ruchu przychodzącego dla danej sieci, uruchom następujące polecenie:
+    Aby wyświetlić listę reguł ruchu przychodzącego dla sieci, uruchom następujące polecenie:
 
     ```sh
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
-1. Aby zmienić hasło, które znasz hasła maszyny wirtualnej, uruchom następujące polecenie. Użyj nazwy maszyny wirtualnej, który już wspomniano i wybrane hasło:
+1. Aby zmienić hasło, które znasz hasło maszyny wirtualnej, uruchom następujące polecenie. Użyj nazwy maszyny wirtualnej, która zanotowanymi wcześniej i hasła wybranych przez użytkownika:
 
     ```sh
     az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
-1. Aby znaleźć adres IP maszyny wirtualnej, użyj następującego polecenia, a następnie zanotuj publicznego adresu IP:
+1. Aby znaleźć adres IP swojej maszyny wirtualnej, użyj następującego polecenia i zanotuj publiczny adres IP:
 
     ```sh
     az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
-1. Można teraz używanie protokołu SSH, aby połączyć się z maszyną wirtualną. `ssh` Polecenie jest wstępnie zainstalowane w powłoce chmury. Użyj publicznego adresu IP z poprzedniego kroku i po wyświetleniu monitu hasło skonfigurowane dla maszyny wirtualnej:
+1. Można teraz nawiązać połączenie z maszyną wirtualną za pomocą protokołu SSH. `ssh` Polecenia jest wstępnie instalowane w usłudze Cloud Shell. Użyj publicznego adresu IP z poprzedniego kroku i po wyświetleniu monitu hasło skonfigurowane dla maszyny wirtualnej:
 
     ```sh
     ssh azureuser@public-ip-address
     ```
 
-    Masz teraz dostęp do powłoki w maszynę wirtualną, która uruchamia kontenery Docker w rozwiązaniu monitorowania zdalnego. Aby wyświetlić uruchomionych kontenery, użyj następującego polecenia:
+    Teraz masz dostęp do powłoki maszyny wirtualnej, która uruchamia kontenery platformy Docker w rozwiązaniu monitorowania zdalnego. Aby wyświetlić uruchomione kontenery, użyj następującego polecenia:
 
     ```sh
     docker ps
@@ -166,9 +166,9 @@ Następujące polecenia, użyj `az` polecenie [Azure CLI 2.0](https://docs.micro
 
 ### <a name="find-the-service-connection-strings"></a>Znajdź parametry połączenia z usługą
 
-W samouczku możesz pracować z rozwiązania Visual Studio, która łączy się z usługami rozwiązania Cosmos bazę danych i Centrum IoT rozwiązania. W następujących krokach przedstawiono jeden sposób na znalezienie połączenia wartości ciągów, które są potrzebne:
+W tym samouczku możesz pracować z rozwiązania Visual Studio, który nawiązuje połączenie z usługi Cosmos DB i Centrum IoT Hub rozwiązania. Poniższe kroki pokazują, w jednym ze sposobów, aby znaleźć wartości ciągów, które są potrzebne połączenie:
 
-1. Aby znaleźć ciąg połączenia bazy danych rozwiązania Cosmos, uruchom następujące polecenie w sesji SSH podłączony do maszyny wirtualnej:
+1. Aby znaleźć parametrów połączenia usługi Cosmos DB, uruchom następujące polecenie w sesji SSH podłączona do maszyny wirtualnej:
 
     ```sh
     sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
@@ -176,7 +176,7 @@ W samouczku możesz pracować z rozwiązania Visual Studio, która łączy się 
 
     Zanotuj parametry połączenia. Będzie potrzebna w dalszej części samouczka.
 
-1. Aby znaleźć ciąg połączenia Centrum IoT, uruchom następujące polecenie w sesji SSH podłączony do maszyny wirtualnej:
+1. Aby znaleźć parametry połączenia Centrum IoT, uruchom następujące polecenie w sesji SSH podłączona do maszyny wirtualnej:
 
     ```sh
     sudo grep IOTHUB_CONNSTRING /app/env-vars
@@ -185,21 +185,21 @@ W samouczku możesz pracować z rozwiązania Visual Studio, która łączy się 
     Zanotuj parametry połączenia. Będzie potrzebna w dalszej części samouczka.
 
 > [!NOTE]
-> Możesz również znaleźć te parametry połączenia w portalu Azure lub za pomocą `az` polecenia.
+> Możesz również znaleźć te parametry połączenia w witrynie Azure portal lub za pomocą `az` polecenia.
 
-### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Zatrzymaj usługę symulacji urządzenia w maszynie wirtualnej
+### <a name="stop-the-device-simulation-service-in-the-virtual-machine"></a>Zatrzymaj usługę symulacji urządzenia na maszynie wirtualnej
 
-Po zmodyfikowaniu usługi symulacji urządzenia można uruchomić lokalnie, aby przetestować zmiany. Przed uruchomieniem usługi symulacji urządzenia lokalnie, musisz zatrzymać wystąpienie działające na maszynie wirtualnej w następujący sposób:
+Po zmodyfikowaniu usługi symulacji urządzeń możesz uruchomić go lokalnie, aby przetestować zmiany. Przed uruchomieniem usługi symulacji urządzeń lokalnie, należy zatrzymać wystąpienie działający na maszynie wirtualnej w następujący sposób:
 
-1. Aby znaleźć **w KONTENERZE o identyfikatorze** z **urządzenia symulacji dotnet** usługi, uruchom następujące polecenie w sesji SSH podłączony do maszyny wirtualnej:
+1. Aby znaleźć **identyfikator kontenera** z **urządzeń symulacji dotnet** usługi, uruchom następujące polecenie w sesji SSH podłączona do maszyny wirtualnej:
 
     ```sh
     docker ps
     ```
 
-    Zanotuj identyfikator kontenera **urządzenia symulacji dotnet** usługi.
+    Zanotuj identyfikator kontenera **urządzeń symulacji dotnet** usługi.
 
-1. Aby zatrzymać **urządzenia symulacji dotnet** kontenera, uruchom następujące polecenie:
+1. Aby zatrzymać **urządzeń symulacji dotnet** kontener, uruchom następujące polecenie:
 
     ```sh
     docker stop container-id-from-previous-step
@@ -207,55 +207,55 @@ Po zmodyfikowaniu usługi symulacji urządzenia można uruchomić lokalnie, aby 
 
 ### <a name="clone-the-github-repositories"></a>Klonowanie repozytoriów GitHub
 
-W tym samouczku pracować z **symulacji urządzenia** i **adaptera magazynu** projektów programu Visual Studio. Można sklonować repozytoriach kodów źródłowych z usługi GitHub. Ten krok należy wykonać na komputerze deweloperskim lokalnego, gdzie masz zainstalowanego programu Visual Studio:
+W tym samouczku możesz pracować **symulacji urządzenia** i **adapter magazynu** projektów programu Visual Studio. Można sklonować repozytoriów kodu źródłowego z repozytorium GitHub. Wykonaj tę czynność na lokalnej maszynie do programowania, w którym masz zainstalowany program Visual Studio:
 
-1. Otwórz wiersz polecenia i przejdź do folderu, w którym chcesz zapisać kopię **symulacji urządzenia** i **adaptera magazynu** repozytoriów GitHub.
+1. Otwórz wiersz polecenia i przejdź do folderu, w którym chcesz zapisać kopię **symulacji urządzenia** i **adapter magazynu** repozytoriów GitHub.
 
-1. Klonowanie wersja .NET **symulacji urządzenia** repozytorium, uruchom następujące polecenie:
+1. Klonowanie wersji .NET **symulacji urządzenia** repozytorium, uruchom następujące polecenie:
 
     ```cmd
     git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-    Usługi symulacji urządzenia w rozwiązaniu monitorowania zdalnego umożliwia zmianę typów wbudowanych symulowane urządzenie i aby utworzyć nowy symulowane typów urządzeń. Typy urządzeń niestandardowych służy do testowania zachowanie rozwiązanie monitorowania zdalnego przed nawiązaniem połączenia urządzenia fizycznego.
+    Usługa symulacji urządzeń w rozwiązaniu monitorowania zdalnego umożliwia wprowadzenia zmian do typów wbudowanych symulowanego urządzenia i tworzenia nowych symulowanych typów urządzeń. Typy urządzeń niestandardowych umożliwia testowanie zachowania rozwiązania do zdalnego monitorowania, przed nawiązaniem połączenia z urządzeniami fizycznymi.
 
-1. Klonowanie wersja .NET **adaptera magazynu** repozytorium, uruchom następujące polecenie:
+1. Klonowanie wersji .NET **adapter magazynu** repozytorium, uruchom następujące polecenie:
 
     ```cmd
     git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
-    Usługa symulacji urządzeń używa usługi karty magazynu się połączyć z usługą rozwiązania Cosmos bazy danych na platformie Azure. To rozwiązanie monitorowanie zdalnego przechowuje dane konfiguracji symulowane urządzenie w bazie danych DB rozwiązania Cosmos.
+    Usługa symulacji urządzeń korzysta z usługi adapter magazynu połączyć się z usługą Cosmos DB na platformie Azure. Rozwiązania do zdalnego monitorowania przechowuje dane konfiguracji symulowane urządzenie w bazie danych Cosmos DB.
 
-### <a name="run-the-storage-adapter-service-locally"></a>Uruchom usługę karty magazynu lokalnie
+### <a name="run-the-storage-adapter-service-locally"></a>Uruchom usługę adapter magazynu lokalnie
 
-Usługa symulacji urządzeń używa usługi karty magazynu do łączenia z bazą danych DB rozwiązania Cosmos rozwiązania. Jeśli usługa symulacji urządzenia zostanie uruchomiony lokalnie, należy również uruchomić usługę karty magazynu lokalnie. Poniższe kroki pokazują, jak uruchomić usługę karty magazynu w programie Visual Studio:
+Usługa symulacji urządzeń korzysta z usługi adapter magazynu nawiązać połączenia z bazą danych Cosmos DB rozwiązania. Jeśli usługa symulacji urządzenia jest uruchamiany lokalnie, należy także uruchomić usługę karty magazyn lokalnie. Poniższe kroki pokazują, jak uruchomić usługi storage karty z programu Visual Studio:
 
-1. W programie Visual Studio Otwórz **komputerów magazynu adapter.sln** plik rozwiązania w sieci lokalnej klonu **adaptera magazynu** repozytorium.
+1. W programie Visual Studio, otwórz **komputerów storage-adapter.sln** plik rozwiązania w lokalnym klonie z **adapter magazynu** repozytorium.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **właściwości**, a następnie wybierz pozycję **debugowania**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **właściwości**, a następnie wybierz **debugowania**.
 
-1. W **zmiennych środowiskowych** sekcji, edytowanie wartości **komputerów\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** zmienną jako połączenie DB rozwiązania Cosmos ciąg, który wcześniej zapisany. Następnie zapisz zmiany.
+1. W **zmienne środowiskowe** sekcji, edytowanie wartości **komputerów\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** zmienną połączenie usługi Cosmos DB ciąg, który zanotowanymi wcześniej. Następnie zapisz zmiany.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **Usługa sieci Web** projektu, wybierz **debugowania**, a następnie wybierz pozycję **Start nowe wystąpienie**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **debugowania**, a następnie wybierz **Uruchom nowe wystąpienie**.
 
-1. Usługa zacznie działać lokalnie i otwiera `http://localhost:9022/v1/status` w domyślnej przeglądarce. Sprawdź, czy **stan** jest wartość "OK: aktywności i dobrze."
+1. Usługa zacznie działać lokalnie i otwiera `http://localhost:9022/v1/status` w domyślnej przeglądarce. Upewnij się, że **stan** wartość "OK: aktywności i dobrze."
 
-1. Pozostaw karty Usługa magazynu działa lokalnie dopiero po ukończeniu samouczka.
+1. Pozostaw usługa adapter magazynu, działa lokalnie, ukończenie tego samouczka.
 
-Masz teraz wszystko w miejscu, a wszystko będzie gotowe rozpocząć dodawanie nowego typu symulowane urządzenie do rozwiązania monitorowania zdalnego.
+Masz teraz wszystko, co w miejscu i wszystko będzie gotowe do uruchomienia, dodanie nowego typu symulowanego urządzenia do rozwiązania do zdalnego monitorowania.
 
-## <a name="create-a-simulated-device-type"></a>Tworzenie typu symulowane urządzenie
+## <a name="create-a-simulated-device-type"></a>Tworzenie typu symulowanego urządzenia
 
-Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urządzenia jest na skopiowaniu i zmodyfikowaniu istniejącego typu. Poniższe kroki pokazują sposób kopiowania wbudowane **Chłodnica** urządzenia, aby utworzyć nową **żarówka** urządzenia:
+Najprostszym sposobem utworzenia nowego typu urządzenia w usłudze symulacji urządzenia to na skopiowaniu i zmodyfikowaniu istniejącego typu. Poniższe kroki pokazują sposób kopiowania wbudowane **Chłodnica** urządzeniu, aby utworzyć nową **żarówki** urządzenia:
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **właściwości**, a następnie wybierz pozycję **debugowania**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService** projektu, wybierz **właściwości**, a następnie wybierz **debugowania**.
 
-1. W **zmiennych środowiskowych** sekcji, edytowanie wartości **komputerów\_Centrum IOTHUB\_CONNSTRING** zmiennej jako parametry połączenia Centrum IoT zanotowany wcześniej. Następnie zapisz zmiany.
+1. W **zmienne środowiskowe** sekcji, edytowanie wartości **komputerów\_IOTHUB\_CONNSTRING** zmiennej jako parametry połączenia Centrum IoT Hub zanotowanymi wcześniej. Następnie zapisz zmiany.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **symulacji urządzenia** rozwiązania i wybierz polecenie **Ustaw projekty startowe**. Wybierz **jednego projektu startowego** i wybierz **WebService**. Następnie kliknij przycisk **OK**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **symulacji urządzenia** rozwiązań i wybierz polecenie **Ustaw projekty startowe**. Wybierz **pojedynczy projekt startowy** i wybierz **WebService**. Następnie kliknij przycisk **OK**.
 
-1. Dla każdego typu urządzenia jest plikiem JSON modelu i skojarzone skrypty w **usług/data/devicemodels** folderu. W Eksploratorze rozwiązań, skopiuj **Chłodnica** pliki, aby utworzyć **żarówka** plików, jak pokazano w poniższej tabeli:
+1. Dla każdego typu urządzenia jest plik modelu w formacie JSON i skojarzone skrypty w **danych/Services/devicemodels** folderu. W Eksploratorze rozwiązań, skopiuj **Chłodnica** pliki, aby utworzyć **żarówki** plików, jak pokazano w poniższej tabeli:
 
     | Element źródłowy                      | Element docelowy                   |
     | --------------------------- | ----------------------------- |
@@ -263,11 +263,11 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     | scripts/chiller-01-state.js | scripts/lightbulb-01-state.js |
     | skrypty/ponowne uruchomienie komputera method.js    | skrypty/SwitchOn-method.js    |
 
-### <a name="define-the-characteristics-of-the-new-device-type"></a>Zdefiniowanie nowego typu urządzenia
+### <a name="define-the-characteristics-of-the-new-device-type"></a>Zdefiniuj właściwości nowego typu urządzenia
 
-**01.json żarówka** plik definiuje właściwości typu, takich jak dane telemetryczne generuje i obsługuje metod. Następujące kroki aktualizacji **01.json żarówka** pliku, aby określić **żarówka** urządzenia:
+**01.json żarówki** plik definiuje właściwości typu, takich jak dane telemetryczne generuje i obsługuje metody. Następujące kroki aktualizacji **01.json żarówki** plik, aby zdefiniować **żarówki** urządzenia:
 
-1. W **01.json żarówka** pliku, zaktualizuj metadane urządzenia, jak pokazano w poniższy fragment kodu:
+1. W **01.json żarówki** pliku, zaktualizuj metadane urządzenia, jak pokazano w poniższym fragmencie kodu:
 
     ```json
     "SchemaVersion": "1.0.0",
@@ -278,7 +278,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     "Protocol": "MQTT",
     ```
 
-1. W **01.json żarówka** plików, należy zaktualizować definicję symulacji pokazane na następujący fragment kodu:
+1. W **01.json żarówki** plików, zaktualizuj definicję symulacji, jak pokazano w poniższym fragmencie kodu:
 
     ```json
     "Simulation": {
@@ -298,7 +298,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     },
     ```
 
-1. W **01.json żarówka** plików, aktualizowanie właściwości typu urządzenia, jak pokazano w poniższy fragment kodu:
+1. W **01.json żarówki** pliku, aktualizowanie właściwości typu urządzenia, jak pokazano w poniższym fragmencie kodu:
 
     ```json
     "Properties": {
@@ -309,7 +309,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     },
     ```
 
-1. W **01.json żarówka** plików, aktualizację definicji telemetrii typu urządzenia, jak pokazano w poniższy fragment kodu:
+1. W **01.json żarówki** plików, aktualizowanie definicji danych telemetrycznych typu urządzenia, jak pokazano w poniższym fragmencie kodu:
 
     ```json
     "Telemetry": [
@@ -329,7 +329,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     ],
     ```
 
-1. W **01.json żarówka** plików, zaktualizować metody typu urządzenia, jak pokazano w poniższy fragment kodu:
+1. W **01.json żarówki** plików, aktualizowanie metod typu urządzenia, jak pokazano w poniższym fragmencie kodu:
 
     ```json
     "CloudToDeviceMethods": {
@@ -344,13 +344,13 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     }
     ```
 
-1. Zapisz **01.json żarówka** pliku.
+1. Zapisz **01.json żarówki** pliku.
 
-### <a name="simulate-custom-device-behavior"></a>Symulowanie zachowanie urządzeń niestandardowych
+### <a name="simulate-custom-device-behavior"></a>Symulowanie urządzenia niestandardowe zachowanie
 
-**Skryptów/żarówka-01-state.js** plik definiuje zachowanie symulacji **żarówka** typu. Następujące kroki aktualizacji **skryptów/żarówka-01-state.js** pliku, aby określić zachowanie **żarówka** urządzenia:
+**Skryptów/żarówki-01-state.js** plik definiuje zachowanie symulacji **żarówki** typu. Następujące kroki aktualizacji **skryptów/żarówki-01-state.js** plik, aby zdefiniować zachowanie **żarówki** urządzenia:
 
-1. Edytowanie definicji stanu w **skryptów/żarówka-01-state.js** plików, jak pokazano w poniższy fragment kodu:
+1. Edytuj definicję w stanie **skryptów/żarówki-01-state.js** pliku, jak pokazano w poniższym fragmencie kodu:
 
     ```js
     // Default state
@@ -362,7 +362,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     };
     ```
 
-1. Dodaj **Przerzuć** działanie po **różnią się** funkcji z definicji następujących:
+1. Dodaj **Przerzuć** działanie po **różnią się** funkcji przy użyciu następujących definicji:
 
     ```js
     /**
@@ -376,7 +376,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     }
     ```
 
-1. Edytuj **głównego** funkcji, aby zaimplementować zachowanie, jak pokazano w poniższy fragment kodu:
+1. Edytuj **głównego** funkcję, aby zaimplementować to zachowanie, jak pokazano w poniższym fragmencie kodu:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -397,11 +397,11 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     }
     ```
 
-1. Zapisz **skryptów/żarówka-01-state.js** pliku.
+1. Zapisz **skryptów/żarówki-01-state.js** pliku.
 
-**Skryptów/SwitchOn-method.js** pliku implementuje **przełącznika na** metody w **żarówka** urządzenia. Następujące kroki aktualizacji **skryptów/SwitchOn-method.js** pliku:
+**Skryptów/SwitchOn-method.js** pliku implementuje **przełącznika na** method in Class metoda **żarówki** urządzenia. Następujące kroki aktualizacji **skryptów/SwitchOn-method.js** pliku:
 
-1. Edytowanie definicji stanu w **skryptów/SwitchOn-method.js** plików, jak pokazano w poniższy fragment kodu:
+1. Edytuj definicję w stanie **skryptów/SwitchOn-method.js** pliku, jak pokazano w poniższym fragmencie kodu:
 
     ```js
     var state = {
@@ -409,7 +409,7 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
     };
     ```
 
-1. Aby przełączyć się na żarówka, należy edytować **głównego** działają w następujący sposób:
+1. Aby przełączyć się na ikonę żarówki, należy edytować **głównego** funkcji w następujący sposób:
 
     ```js
     function main(context, previousState) {
@@ -421,9 +421,9 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
 
 1. Zapisz **skryptów/SwitchOn-method.js** pliku.
 
-1. Utwórz kopię **skryptów/SwitchOn-method.js** plik o nazwie **skryptów/SwitchOff-method.js**.
+1. Utwórz kopię **skryptów/SwitchOn-method.js** pliku o nazwie **skryptów/SwitchOff-method.js**.
 
-1. Aby wyłączyć żarówka, należy edytować **głównego** działać w **skryptów/SwitchOff-method.js** plików w następujący sposób:
+1. Aby wyłączyć ikonę żarówki, należy edytować **głównego** działać w **skryptów/SwitchOff-method.js** pliku w następujący sposób:
 
     ```js
     function main(context, previousState) {
@@ -435,25 +435,25 @@ Najprostszym sposobem tworzenia nowego typu urządzenia w usłudze symulacji urz
 
 1. Zapisz **skryptów/SwitchOff-method.js** pliku.
 
-1. W Eksploratorze rozwiązań wybierz każdego z czterech nowych plików z kolei. W **właściwości** okna dla każdego pliku, upewnij się, że **Kopiuj do katalogu wyjściowego** ustawiono **Kopiuj, jeśli nowszy**.
+1. W Eksploratorze rozwiązań wybierz każdego z czterech nowe pliki z osobna. W **właściwości** okna dla każdego pliku, upewnij się, że **Kopiuj do katalogu wyjściowego** ustawiono **Kopiuj Jeśli nowszy**.
 
 ### <a name="configure-the-device-simulation-service"></a>Skonfiguruj usługę symulacji urządzenia
 
-Aby ograniczyć liczbę symulowanego urządzenia, podłączane do rozwiązania podczas testowania, należy skonfigurować usługę do uruchomienia jednym Chłodnica i żarówka pojedynczego urządzenia. Dane konfiguracji są przechowywane w wystąpieniu bazy danych rozwiązania Cosmos w grupie zasobów tego rozwiązania. Aby edytować dane konfiguracji, należy użyć **Eksplorator chmury** widoku w programie Visual Studio:
+Aby ograniczyć liczbę symulowanych urządzeń łączących się z rozwiązaniem podczas testowania, należy skonfigurować usługę do uruchomienia jednym Chłodnica i urządzenia jednej ikony żarówki. Dane konfiguracji są przechowywane w wystąpieniu usługi Cosmos DB w grupie zasobów rozwiązania. Aby edytować dane konfiguracji, należy użyć **programu Cloud Explorer** widok w programie Visual Studio:
 
-1. Aby otworzyć **Eksplorator chmury** w programie Visual Studio wybierz pozycję **widoku** , a następnie **Eksplorator chmury**.
+1. Aby otworzyć **programu Cloud Explorer** wyświetlić w programie Visual Studio, wybierz **widoku** a następnie **programu Cloud Explorer**.
 
-1. Można znaleźć w dokumentacji konfiguracji symulacji **wyszukiwanie zasobów** wprowadź **simualtions.1**.
+1. Aby znaleźć w dokumentacji konfiguracji symulacji **wyszukiwanie zasobów** wprowadź **simualtions.1**.
 
-1. Kliknij dwukrotnie **simulations.1** dokument, aby otworzyć do edycji.
+1. Kliknij dwukrotnie **simulations.1** dokumentu, aby go otworzyć do edycji.
 
-1. Wartości **danych**, zlokalizuj **DeviceModels** tablicy, która wygląda podobnie poniższy fragment kodu:
+1. Wartości **danych**, zlokalizuj **DeviceModels** tablicy, która wygląda podobnie do następującego fragmentu kodu:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"chiller-02\",\"Count\":1},{\"Id\":\"elevator-01\",\"Count\":1},{\"Id\":\"elevator-02\",\"Count\":1},{\"Id\":\"engine-01\",\"Count\":1},{\"Id\":\"engine-02\",\"Count\":1},{\"Id\":\"prototype-01\",\"Count\":1},{\"Id\":\"prototype-02\",\"Count\":1},{\"Id\":\"truck-01\",\"Count\":1},{\"Id\":\"truck-02\",\"Count\":1}]
     ```
 
-1. Aby określić pojedynczy Chłodnica i jednego żarówka symulowane urządzenie, należy zastąpić **DeviceModels** tablicy z następującym kodem:
+1. Aby określić pojedynczy Chłodnica i jednego żarówki symulowanego urządzenia, należy zastąpić **DeviceModels** tablicy następującym kodem:
 
     ```json
     [{\"Id\":\"chiller-01\",\"Count\":1},{\"Id\":\"lightbulb-01\",\"Count\":1}]
@@ -462,94 +462,94 @@ Aby ograniczyć liczbę symulowanego urządzenia, podłączane do rozwiązania p
     Zapisz zmiany **simulations.1** dokumentu.
 
 > [!NOTE]
-> W Eksploratorze rozwiązania Cosmos DB danych można użyć w portalu Azure, aby edytować **simulations.1** dokumentu.
+> Możesz również użyć Eksplorator danych Cosmos DB w witrynie Azure portal, do edycji **simulations.1** dokumentu.
 
-### <a name="test-the-lightbulb-device-type-locally"></a>Typ urządzenia żarówka lokalnie testu
+### <a name="test-the-lightbulb-device-type-locally"></a>Typ urządzenia żarówki lokalnie testu
 
-Teraz można przystąpić do testowania nowego typu symulowane żarówka lokalnie uruchamiając projekt symulacji urządzenia.
+Teraz można przystąpić do testowania nowego typu symulowane żarówki, uruchamiając projekt symulacji urządzenia lokalnie.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService**, wybierz **debugowania** , a następnie wybierz **Start nowe wystąpienie**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **WebService**, wybierz **debugowania** , a następnie wybierz **Uruchom nowe wystąpienie**.
 
-1. Aby sprawdzić, czy dwa symulowanego urządzenia są podłączone do Centrum IoT, otwórz Azure portal w przeglądarce.
+1. Aby sprawdzić, czy dwa symulowane urządzenia są podłączone do usługi IoT Hub, otwórz Azure portal w przeglądarce.
 
-1. Przejdź do Centrum IoT w grupie zasobów, zawierającą rozwiązanie monitorowania zdalnego.
+1. Przejdź do Centrum IoT w grupie zasobów, który zawiera rozwiązania do zdalnego monitorowania.
 
-1. W **monitorowanie** wybierz **metryki**. Sprawdź, czy liczba **urządzeń podłączonych** jest dwa:
+1. W **monitorowanie** wybierz pozycję **metryki**. Następnie upewnij się, że liczba **połączone urządzenia** wynosi dwa:
 
     ![Liczba połączonych urządzeń](./media/iot-accelerators-remote-monitoring-test/connecteddevices.png)
 
-1. W przeglądarce przejdź do **pulpitu nawigacyjnego** rozwiązania do monitorowania zdalnego. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dla wszystkich urządzeń symulowane na wykresie:
+1. W przeglądarce przejdź do **pulpit nawigacyjny** dla rozwiązania do zdalnego monitorowania. W panelu dane telemetryczne w **pulpit nawigacyjny**, wybierz opcję **temperatury**. Temperatura wszystkie symulowane urządzenia wyświetlane na wykresie:
 
-    ![Dane telemetryczne temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
+    ![Danych telemetrycznych dotyczących temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Masz teraz symulacji urządzenia żarówka uruchomionej na komputerze lokalnym. Następnym krokiem jest aby wdrożyć kod symulatora zaktualizowane do maszyny wirtualnej, która działa mikrousług monitorowania zdalnego w systemie Azure.
+Masz teraz symulacji urządzenia żarówki, które są uruchamiane lokalnie. Następnym krokiem jest, aby wdrożyć kod symulatora zaktualizowane do maszyny wirtualnej z systemem monitorowania zdalnego mikrousług na platformie Azure.
 
-Przed kontynuowaniem, można zatrzymać debugowania symulacji urządzenia i projekty karty magazynu w programie Visual Studio.
+Przed kontynuowaniem można zatrzymać debugowanie symulacji urządzenia i projekty adapter magazynu w programie Visual Studio.
 
-### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Zaktualizowano symulatora wdrażać w chmurze
+### <a name="deploy-the-updated-simulator-to-the-cloud"></a>Wdrożenie zaktualizowanego symulatora w chmurze
 
-Uruchom mikrousług w rozwiązaniu Monitorowanie zdalne w kontenerach docker. Kontenery znajdują się w maszynie wirtualnej rozwiązania na platformie Azure. W tej sekcji omówiono następujące zagadnienia:
+Mikrousługi w rozwiązaniu do zdalnego monitorowania są uruchamiane w kontenerach platformy docker. Kontenery są hostowane na maszynie wirtualnej rozwiązania na platformie Azure. W tej sekcji omówiono następujące zagadnienia:
 
-* Utwórz nowy obraz docker symulacji urządzenia.
-* Przekaż obraz do repozytorium Centrum docker.
-* Zaimportować go do rozwiązania maszyny wirtualnej.
+* Utwórz nowy obraz platformy docker symulacji urządzenia.
+* Przekaż obraz do repozytorium usługi docker hub.
+* Zaimportować go do swojego rozwiązania maszyny wirtualnej.
 
-W następujących krokach założono, że masz repozytorium o nazwie **żarówka** na Twoim koncie Centrum Docker.
+W następujących krokach założono, że masz repozytorium o nazwie **żarówki** na Twoim koncie usługi Docker Hub.
 
-1. W programie Visual Studio w **symulacji urządzenia** projekt, otwórz plik **solution\scripts\docker\build.cmd**.
+1. W programie Visual Studio w **symulacji urządzenia** projektu, otwórz plik **solution\scripts\docker\build.cmd**.
 
-1. Edytuj wiersz, który ustawia **DOCKER_IMAGE** zmiennej środowiskowej do nazwy Centrum Docker repozytorium:
-
-    ```cmd
-    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
-    ```
-
-    Zapisz zmiany.
-
-1. W programie Visual Studio w **symulacji urządzenia** projekt, otwórz plik **solution\scripts\docker\publish.cmd**.
-
-1. Edytuj wiersz, który ustawia **DOCKER_IMAGE** zmiennej środowiskowej do nazwy Centrum Docker repozytorium:
+1. Edytuj wiersz, który ustawia **DOCKER_IMAGE** zmienną środowiskową na nazwę repozytorium usługi Docker Hub:
 
     ```cmd
     SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
     ```
 
-    Zapisz zmiany.
+    Zapisz zmianę.
 
-1. Otwórz wiersz polecenia jako administrator. Następnie przejdź do folderu **scripts\docker** w Twojej klonu **symulacji urządzenia** repozytorium GitHub.
+1. W programie Visual Studio w **symulacji urządzenia** projektu, otwórz plik **solution\scripts\docker\publish.cmd**.
 
-1. Aby utworzyć obraz docker, uruchom następujące polecenie:
+1. Edytuj wiersz, który ustawia **DOCKER_IMAGE** zmienną środowiskową na nazwę repozytorium usługi Docker Hub:
+
+    ```cmd
+    SET DOCKER_IMAGE=your-docker-hub-acccount/lightbulb
+    ```
+
+    Zapisz zmianę.
+
+1. Otwórz wiersz polecenia jako administrator. Następnie przejdź do folderu **scripts\docker** w sklonowanym z **symulacji urządzenia** repozytorium GitHub.
+
+1. Aby utworzyć obraz platformy docker, uruchom następujące polecenie:
 
     ```cmd
     build.cmd
     ```
 
-1. Aby zalogować się do Centrum Docker konta, uruchom następujące polecenie:
+1. Aby zalogować się do swojego konta usługi Docker Hub, uruchom następujące polecenie:
 
     ```cmd
     docker login
     ```
 
-1. Aby przekazać nowy obraz do Centrum Docker konta, uruchom następujące polecenie:
+1. Aby przekazać nowy obraz do swojego konta usługi Docker Hub, uruchom następujące polecenie:
 
     ```cmd
     publish.cmd
     ```
 
-1. Aby sprawdzić, przekazywania, przejdź do [ https://hub.docker.com/ ](https://hub.docker.com/). Znajdź użytkownika **żarówka** repozytorium i wybierz polecenie **szczegóły**. Następnie wybierz pozycję **tagi**:
+1. Aby sprawdzić, czy przekazywania, przejdź do [ https://hub.docker.com/ ](https://hub.docker.com/). Zlokalizuj swoje **żarówki** repozytorium i wybierz polecenie **szczegóły**. Następnie wybierz **tagi**:
 
-    ![Centrum docker](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
+    ![Usługi docker hub](./media/iot-accelerators-remote-monitoring-test/dockerhub.png)
 
-    Skrypty dodane **testowania** tag obrazu.
+    Skrypty dodane **testowania** tag do obrazu.
 
-1. Używanie protokołu SSH do nawiązania połączenia tego rozwiązania maszyny wirtualnej platformy Azure. Następnie przejdź do **aplikacji** folderu i edytowanie **docker-compose.yml** pliku:
+1. Łączenie z maszyną wirtualną swoje rozwiązanie na platformie Azure za pomocą protokołu SSH. Następnie przejdź do **aplikacji** folder i Edytuj **docker-compose.yml** pliku:
 
     ```sh
     cd /app
     sudo nano docker-compose.yml
     ```
 
-1. Edytuj wpis dla usługi symulacji urządzeń do obrazu docker:
+1. Edytuj wpis dla usługi symulacji urządzenia w celu używania obrazu platformy docker:
 
     ```yaml
     devicesimulation:
@@ -558,13 +558,13 @@ W następujących krokach założono, że masz repozytorium o nazwie **żarówka
 
     Zapisz zmiany.
 
-1. Ponowne uruchomienie wszystkich usług przy użyciu nowych ustawień, uruchom następujące polecenie:
+1. Aby uruchomić ponownie wszystkie usługi z nowymi ustawieniami, uruchom następujące polecenie:
 
     ```sh
     sudo ./start.sh
     ```
 
-1. Aby sprawdzić plik dziennika z Twojego nowego kontenera symulacji urządzenia, uruchom następujące polecenie, aby znaleźć identyfikator kontenera:
+1. Aby sprawdzić plik dziennika z nowego kontenera symulacji urządzenia, uruchom następujące polecenie, aby znaleźć identyfikator kontenera:
 
     ```sh
     docker ps
@@ -576,46 +576,46 @@ W następujących krokach założono, że masz repozytorium o nazwie **żarówka
     docker logs {container ID}
     ```
 
-Teraz wykonano kroki, aby zainstalować zaktualizowaną wersję usługi symulacji urządzeń do monitorowania zdalnego rozwiązania.
+Ukończono kroki umożliwiające wdrożenie zaktualizowanej wersji usługi symulacji urządzeń do rozwiązania do zdalnego monitorowania.
 
-W przeglądarce przejdź do **pulpitu nawigacyjnego** rozwiązania do monitorowania zdalnego. W panelu dane telemetryczne w **pulpitu nawigacyjnego**, wybierz pozycję **temperatury**. Wyświetla temperatury dwóch symulowane urządzeń na wykresie:
+W przeglądarce przejdź do **pulpit nawigacyjny** dla rozwiązania do zdalnego monitorowania. W panelu dane telemetryczne w **pulpit nawigacyjny**, wybierz opcję **temperatury**. Temperatura dwa symulowane urządzenia wyświetlane na wykresie:
 
-![Dane telemetryczne temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
+![Danych telemetrycznych dotyczących temperatury](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Na **urządzeń** strony, można udostępnić wystąpienia nowego typu:
+Na **urządzeń** stronie może aprowizować wystąpień tego nowego typu:
 
-![Umożliwia wyświetlenie listy dostępnych symulacje](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
+![Wyświetl listę dostępnych symulacji](./media/iot-accelerators-remote-monitoring-test/devicesmodellist.png)
 
-Można wyświetlić dane telemetryczne z symulowane urządzenie:
+Możesz wyświetlić dane telemetryczne z symulowanych urządzeń:
 
-![Dane telemetryczne wyświetleń żarówka](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
+![Wyświetlanie danych telemetrycznych z żarówka](./media/iot-accelerators-remote-monitoring-test/devicestelemetry.png)
 
-Możesz wywołać **SwitchOn** i **SwitchOff** metod na urządzeniu:
+Możesz wywołać **SwitchOn** i **SwitchOff** metody na urządzeniu:
 
-![Wywołanie metody żarówka](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
+![Wywoływanie metod żarówka](./media/iot-accelerators-remote-monitoring-test/devicesmethods.png)
 
 ## <a name="add-a-new-telemetry-type"></a>Dodaj nowy typ telemetrii
 
 Ta sekcja opisuje sposób modyfikowania istniejącego typu symulowane urządzenie na potrzeby obsługi nowego typu danych telemetrycznych.
 
-### <a name="locate-the-chiller-device-type-files"></a>Zlokalizuj pliki Chłodnica typ urządzenia
+### <a name="locate-the-chiller-device-type-files"></a>Znajdź pliki Chłodnica typ urządzenia
 
-Następujących krokach przedstawiono sposób wyszukiwania plików, które definiują wbudowane **Chłodnica** urządzenia:
+Poniższe kroki pokazują, jak można znaleźć plików, które definiują wbudowane **Chłodnica** urządzenia:
 
-1. Jeśli nie zostało to jeszcze zrobione, użyj następującego polecenia, można sklonować **urządzenia symulacji dotnet** repozytorium GitHub na komputerze lokalnym:
+1. Jeśli jeszcze tego nie zrobiono, użyj następującego polecenia, aby sklonować **urządzeń symulacji dotnet** repozytorium GitHub na komputer lokalny:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
     ```
 
-1. Dla każdego typu urządzenia jest plikiem JSON modelu i skojarzone skrypty w `data/devicemodels` folderu. Plików, które definiują symulowane **Chłodnica** są typu urządzenia:
+1. Dla każdego typu urządzenia jest plik modelu w formacie JSON i skojarzone skrypty w `data/devicemodels` folderu. Pliki, które definiują symulowane **Chłodnica** są typu urządzenia:
 
     * **data/devicemodels/chiller-01.json**
     * **data/devicemodels/scripts/chiller-01-state.js**
 
 ### <a name="specify-the-new-telemetry-type"></a>Określ nowy typ telemetrii
 
-Następujących krokach przedstawiono sposób dodawania nowego **temperatury wewnętrznej** typ **Chłodnica** typu urządzenia:
+Poniższe kroki pokazują, jak dodać nową **temperatura wewnętrzna** typ **Chłodnica** typu urządzenia:
 
 1. Otwórz **01.json Chłodnica** pliku.
 
@@ -625,7 +625,7 @@ Następujących krokach przedstawiono sposób dodawania nowego **temperatury wew
     "SchemaVersion": "1.1.0",
     ```
 
-1. W **stan początkowy** Dodaj definicje Oto dwa:
+1. W **stan początkowy** Dodaj follwing dwie definicje:
 
     ```json
     "internal_temperature": 65.0,
@@ -653,7 +653,7 @@ Następujących krokach przedstawiono sposób dodawania nowego **temperatury wew
 
 1. Otwórz **skryptów/Chłodnica-01-state.js** pliku.
 
-1. Dodaj następujące pola do **stanu** zmienną:
+1. Dodaj następujące pola do **stanu** zmiennej:
 
     ```js
     internal_temperature: 65.0,
@@ -670,34 +670,34 @@ Następujących krokach przedstawiono sposób dodawania nowego **temperatury wew
 
 ### <a name="test-the-chiller-device-type"></a>Typ urządzenia Chłodnica testu
 
-Aby przetestować zaktualizowane **Chłodnica** typu urządzenia, najpierw uruchom lokalną kopię **urządzenia symulacji dotnet** usługi, aby przetestować danego typu urządzenia działa zgodnie z oczekiwaniami. Po przetestowane i debugować danego typu urządzenia zaktualizowane lokalnie, należy odbudować kontenera i wdrożenie **urządzenia symulacji dotnet** usługi na platformie Azure.
+Aby przetestować zaktualizowane **Chłodnica** typu urządzenia, najpierw uruchom lokalną kopię **urządzeń symulacji dotnet** usługi, aby przetestować danemu typowi urządzenia zachowuje się zgodnie z oczekiwaniami. Gdy po przetestowaniu i debugować lokalnie typu zaktualizowanych urządzeniach, może ponownego kompilowania kontenera i ponowne wdrażanie **urządzeń symulacji dotnet** usługi na platformie Azure.
 
-Po uruchomieniu **urządzenia symulacji dotnet** usługi lokalnie, wysyła dane telemetryczne do monitorowania zdalnego rozwiązania. Na **urządzeń** strony, można udostępnić wystąpienia typu zaktualizowane.
+Po uruchomieniu **urządzeń symulacji dotnet** usługę lokalnie wysyła dane telemetryczne do rozwiązania do zdalnego monitorowania. Na **urządzeń** stronie może aprowizować wystąpień typu zaktualizowane.
 
-Do testowania i debugowania zmiany lokalnie, zawiera Poprzednia sekcja [lokalnie typ urządzenia żarówka testu](#test-the-lightbulb-device-type-locally).
+Testowanie i debugowanie lokalnie zmiany, zobacz poprzednią sekcję [lokalnie typ urządzenia żarówki testu](#test-the-lightbulb-device-type-locally).
 
-Aby wdrożyć usługi symulacji zaktualizowanych urządzeniach rozwiązania maszyny wirtualnej platformy Azure, zobacz poprzednią sekcję [wdrażać zaktualizowane symulatora w chmurze](#deploy-the-updated-simulator-to-the-cloud).
+Aby wdrożyć usługi symulacji zaktualizowanych urządzeniach rozwiązania maszyny wirtualnej platformy Azure, zobacz poprzednią sekcję [wdrożenie zaktualizowanego symulatora w chmurze](#deploy-the-updated-simulator-to-the-cloud).
 
-Na **urządzeń** strony, można udostępnić wystąpienia typu zaktualizowane:
+Na **urządzeń** stronie może aprowizować wystąpień typu zaktualizowane:
 
-![Dodaj Chłodnica zaktualizowane](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
+![Dodaj zaktualizowane Chłodnica](./media/iot-accelerators-remote-monitoring-test/devicesupdatedchiller.png)
 
-Możesz wyświetlić nowy **temperatury wewnętrznej** dane telemetryczne z symulowane urządzenie.
+Możesz wyświetlić nowy **temperatura wewnętrzna** dane telemetryczne z symulowanych urządzeń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku przedstawiono należy jak do:
+Ten samouczek pokazuje, jak do:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
 > * Tworzenie nowego typu urządzenia
-> * Symulowanie zachowanie urządzeń niestandardowych
+> * Symulowanie urządzenia niestandardowe zachowanie
 > * Dodawanie nowego typu urządzenia do pulpitu nawigacyjnego
-> * Wysyłać dane telemetryczne niestandardowych z istniejącym typem urządzenia
+> * Wyślij niestandardowych danych telemetrycznych z istniejącego typu urządzenia
 
-Teraz uzyskanych jak dostosować usługę symulacji urządzenia. Sugerowane następnym krokiem jest, aby dowiedzieć się jak [fizyczne urządzenie podłączone do rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices-node.md).
+Teraz masz pokazaliśmy, jak dostosować usługę symulacji urządzenia. Sugerowane następnym krokiem jest, aby dowiedzieć się, jak [Podłączanie urządzenia fizycznego do rozwiązania do zdalnego monitorowania](iot-accelerators-connecting-devices-node.md).
 
-Aby uzyskać więcej informacji o deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
+Aby uzyskać więcej informacji dla deweloperów o rozwiązaniu monitorowania zdalnego Zobacz:
 
 * [Przewodnik informacyjny dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Przewodnik po rozwiązywaniu problemów dla deweloperów](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

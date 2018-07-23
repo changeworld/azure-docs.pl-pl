@@ -79,6 +79,10 @@
           href: luis-tutorial-batch-testing.md
         - name: Za pomocą wzorców
           href: luis-tutorial-pattern.md
+        - name: Za pomocą ról
+          href: luis-tutorial-pattern-roles.md
+        - name: Za pomocą jednostki Pattern.any
+          href: luis-tutorial-pattern-any.md
 - name: Przykłady
   items:
     - name: Przykłady kodu
@@ -194,7 +198,7 @@
     - name: Testowanie
       items:
         - name: Testowanie interakcyjne
-          href: interactive-test.md
+          href: luis-interactive-test.md
         - name: Testowanie wsadowe
           href: luis-how-to-batch-test.md
     - name: Publikowanie aplikacji
@@ -226,7 +230,7 @@
             - name: Rozszerzanie limitu przydziału punktu końcowego między kluczami za pomocą usługi Traffic Manager
               href: luis-traffic-manager.md
     - name: Migrowanie do interfejsu API V2
-      href: migration-v1-to-v2.md
+      href: luis-migration-api-v1-to-v2.md
     - name: Programowe znajdywanie regionu
       items:
         - name: 'Przy użyciu języka C#'

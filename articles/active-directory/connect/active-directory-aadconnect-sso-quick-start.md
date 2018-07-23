@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8639cbb5c7ba86b4786f3d0b913d64bad59ad66
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f0611662dfb0ad2e15f87bbe5ec5559e7d8da57d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917520"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185724"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -140,7 +140,7 @@ Upewnij się, że maszyny z systemem Mac OS jest przyłączony do usługi AD. Ab
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (wszystkie platformy)
 
-Jeśli masz przesłonięta [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) lub [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ustawienia zasad w danym środowisku, upewnij się, sytuacja: dodajesz usługę Azure AD adres URL (https://autologon.microsoftazuread-sso.com) do nich również.
+Jeśli zastępowano [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) lub [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ustawienia zasad w danym środowisku, upewnij się, sytuacja: dodajesz usługę Azure AD adres URL (https://autologon.microsoftazuread-sso.com) do nich również.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (tylko system Mac OS)
 

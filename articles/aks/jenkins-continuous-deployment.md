@@ -1,6 +1,6 @@
 ---
-title: Ciągłe wdrażanie Wpięć z Kubernetes w usłudze Azure Kubernetes
-description: Jak zautomatyzować proces ciągłego wdrażania z Wpięć do wdrożenia i uaktualnienia konteneryzowanych aplikacji na Kubernetes w usłudze Azure Kubernetes
+title: Ciągłe wdrażanie usługi Jenkins za pomocą rozwiązania Kubernetes w usłudze Azure Kubernetes Service
+description: Jak zautomatyzować proces ciągłego wdrażania przy użyciu narzędzia Jenkins, wdrażanie i uaktualnianie konteneryzowanych aplikacji w rozwiązaniu Kubernetes w usłudze Azure Kubernetes Service
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,42 +9,42 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 84baf01ce6eeed8dc569d7a856189aefba788126
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 246943b7e3df955394a6a79f9b3130633fe4ec50
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096479"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186617"
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi Kubernetes Azure
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Ciągłe wdrażanie za pomocą systemu Jenkins i usługi Azure Kubernetes Service
 
-Ten dokument pokazano, jak skonfigurować ciągłe wdrażanie podstawowych przepływ pracy między Wpięć a klastrem usługi Kubernetes Azure (AKS).
+W tym dokumencie przedstawiono sposób konfigurowania podstawowych ciągłe wdrażanie przepływu pracy, między Jenkins oraz klastra Azure Kubernetes Service (AKS).
 
 Przykładowy przepływ pracy obejmuje następujące kroki:
 
 > [!div class="checklist"]
-> * Wdróż aplikację Azure głos do klastra Kubernetes.
-> * Zaktualizuj kod aplikacji Azure głosu i wypychania do repozytorium GitHub, który uruchamia proces ciągłego wdrażania.
-> * Wpięć klonów repozytorium i tworzy nowy obraz kontenera z zaktualizowanego kodu.
-> * Ten obraz jest przypisany do rejestru kontenera platformy Azure (ACR).
-> * Aplikacja była uruchomiona w klastrze AKS został zaktualizowany o nowy obraz kontenera.
+> * Wdróż aplikację głosowania na platformie Azure w klastrze Kubernetes.
+> * Zaktualizuj kod aplikacji głosowania na platformie Azure i wypychania do repozytorium GitHub, który uruchamia proces ciągłego wdrażania.
+> * Jenkins klonuje repozytorium i tworzy nowy obraz kontenera ze zaktualizowanym kodem.
+> * Ten obraz zostanie przypisany do usługi Azure Container Registry (ACR).
+> * Nowy obraz kontenera jest aktualizowana aplikacji uruchomionych w klastrze AKS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym artykule potrzebne są następujące zasoby.
+Następujące elementy jest niezbędna, aby wykonać kroki opisane w tym artykule.
 
-- Podstawową wiedzę na temat Kubernetes, Git CI/CD i rejestru kontenera platformy Azure (ACR).
-- [Klastra usługi Kubernetes Azure (AKS)] [ aks-quickstart] i [skonfigurowane poświadczenia AKS] [ aks-credentials] w systemie deweloperskim.
-- [Rejestru rejestru kontenera platformy Azure (ACR)][acr-quickstart], nazwa ACR logowania serwera i [poświadczenia ACR] [ acr-authentication] z dostępem do wypychania i ściągania.
-- Azure CLI zainstalowane w systemie deweloperskim.
-- Docker zainstalowane w systemie deweloperskim.
-- Konto GitHub [GitHub osobisty token dostępu][git-access-token]i zainstalowane w systemie deweloperskim klienta Git.
+- Podstawową wiedzę na temat usługi Kubernetes, Git, ciągłej integracji/ciągłego Dostarczania i Azure Container Registry (ACR).
+- [Klastra Azure Kubernetes Service (AKS)] [ aks-quickstart] i [skonfigurowane poświadczenia usługi AKS] [ aks-credentials] w systemie deweloperskim.
+- [Rejestru Azure Container Registry (ACR)][acr-quickstart], nazwę serwera logowania usługi ACR i [poświadczenia rejestru Azure container Registry] [ acr-authentication] z dostępem do ściągania i wypychania.
+- Wiersza polecenia platformy Azure zainstalowany w systemie deweloperskim.
+- Platformy docker zainstalowany w systemie deweloperskim.
+- Konto usługi GitHub [osobisty token dostępu GitHub][git-access-token]i zainstalowanego w systemie deweloperskim klienta Git.
 
-## <a name="prepare-application"></a>Przygotowanie aplikacji
+## <a name="prepare-application"></a>Przygotowywanie aplikacji
 
-Aplikacja Azure głos w całym dokumencie zawiera interfejs sieci web hostowanych w stanowiskami co najmniej jednego i drugiego pod hosting Redis do przechowywania danych tymczasowych.
+Aplikacja do głosowania platformy Azure w całym dokumencie zawiera interfejs sieci web hostowanych w zasobników przynajmniej jednego i drugiego zasobnik obsługującego magazyn Redis do przechowywania danych tymczasowych.
 
-Przed zbudowaniem Wpięć / integracji AKS przygotować i wdrożyć aplikację Azure głos AKS klastra. Traktować jako wersja jednego z aplikacji.
+Przed zbudowaniem narzędzia Jenkins / Integracja usługi AKS, przygotowywania i wdrażania aplikacji Azure vote do klastra usługi AKS. Myśl o tym, jak wersja 1 aplikacji.
 
 Rozwidlenia następujące repozytorium GitHub.
 
@@ -52,7 +52,7 @@ Rozwidlenia następujące repozytorium GitHub.
 https://github.com/Azure-Samples/azure-voting-app-redis
 ```
 
-Po utworzeniu rozwidlenia ją sklonować systemie deweloperskim. Upewnij się, że używasz adresu URL rozwidlenia, w przypadku klonowania tym repozytorium.
+Po utworzeniu rozwidlenia, sklonować ten projekt systemu dla deweloperów. Upewnij się, że używasz adresu URL Twojego rozwidlenia podczas klonowania tego repozytorium.
 
 ```bash
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
@@ -64,13 +64,13 @@ Zmień katalogi, aby pracować w sklonowanym katalogu.
 cd azure-voting-app-redis
 ```
 
-Uruchom `docker-compose.yaml` pliku w celu utworzenia `azure-vote-front` obraz kontenera i uruchomienia aplikacji.
+Uruchom `docker-compose.yaml` pliku w celu utworzenia `azure-vote-front` obrazu kontenera i uruchamiania aplikacji.
 
 ```bash
 docker-compose up -d
 ```
 
-Po zakończeniu użyj [obrazy usługi docker] [ docker-images] polecenie, aby wyświetlić utworzony obraz.
+Po zakończeniu użyj [obrazów platformy docker] [ docker-images] polecenie, aby wyświetlić utworzony obraz.
 
 Zwróć uwagę, że zostały pobrane lub utworzone trzy obrazy. Obraz `azure-vote-front` zawiera aplikację i używa obrazu `nginx-flask` jako podstawy. Obraz `redis` jest używany do uruchomienia wystąpienia usługi Redis.
 
@@ -83,19 +83,19 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Pobierz ACR serwera logowania za pomocą [listy acr az] [ az-acr-list] polecenia. Upewnij się, że aktualizacja Nazwa grupy zasobów z grupą zasobów hosting rejestru ACR.
+Uzyskaj adres serwera logowania usługi ACR za pomocą [az acr list] [ az-acr-list] polecenia. Upewnij się, można zaktualizować nazwy grupy zasobów z grupą zasobów hostingu rejestru usługi ACR.
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Użyj [docker tag] [ docker-tag] polecenie, aby tag obrazu o nazwę logowania serwera i numer wersji `v1`.
+Użyj [docker tag] [ docker-tag] polecenia w celu otagowania obrazu z nazwą serwera logowania i numer wersji `v1`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Zaktualizuj wartość ACR logowania serwera o nazwę serwera ACR logowania i wypychania `azure-vote-front` obrazu w rejestrze.
+Zaktualizuj wartość serwera logowania usługi ACR za pomocą nazwy serwera logowania rejestru Azure container Registry i wypychania `azure-vote-front` obrazu do rejestru.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -103,9 +103,9 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-application-to-kubernetes"></a>Wdrażanie aplikacji w usłudze Kubernetes
 
-Kubernetes, może to być plik manifestu znalezione w katalogu głównym repozytorium Azure głosu i może służyć do wdrożenia aplikacji w klastrze Kubernetes.
+Może to być plik manifestu rozwiązania Kubernetes znalezione w folderze głównym repozytorium głosowania na platformie Azure i może służyć do wdrożenia aplikacji na klastrze platformy Kubernetes.
 
-Najpierw należy zaktualizować **azure-vote-all-in-one-redis.yaml** pliku manifestu z lokalizacji rejestru ACR. Otwórz plik w dowolnym edytorze tekstu i Zastąp `microsoft` z nazwą serwera ACR logowania. Tę wartość można znaleźć w wierszu **47** pliku manifestu.
+Najpierw należy zaktualizować **azure-vote-all-in-one-redis.yaml** pliku manifestu z lokalizacji rejestru usługi ACR. Otwórz plik za pomocą dowolnego edytora tekstów, a następnie zastąp `microsoft` nazwą serwera logowania usługi ACR. Tę wartość można znaleźć w wierszu **47** pliku manifestu.
 
 ```yaml
 containers:
@@ -113,13 +113,13 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-Następnie użyj [zastosować kubectl] [ kubectl-apply] polecenie do uruchomienia aplikacji. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
+Następnie użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby uruchomić aplikację. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.
 
 ```bash
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [usługi Kubernetes] [ kubernetes-service] utworzeniu do udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut.
+A [usługi Kubernetes] [ kubernetes-service] utworzono w celu udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut.
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 
@@ -127,7 +127,7 @@ Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z a
 kubectl get service azure-vote-front --watch
 ```
 
-Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* pojawia się jako *oczekujący*.
+Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* jest wyświetlany jako *oczekujący*.
 
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
@@ -143,18 +143,21 @@ Aby wyświetlić aplikację, przejdź do zewnętrznego adresu IP.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/aks-jenkins/azure-vote-safari.png)
 
-## <a name="deploy-jenkins-to-vm"></a>Wdrażanie Wpięć do maszyny Wirtualnej
+## <a name="deploy-jenkins-to-vm"></a>Wdrażanie usługi Jenkins na maszynie Wirtualnej
 
-Skrypt został wstępnie utworzone wdrożyć maszynę wirtualną, skonfigurować dostęp do sieci i utworzyć podstawową instalację Wpięć. Ponadto skrypt kopiuje Kubernetes pliku konfiguracji z systemu dla deweloperów systemu Wpięć. Ten plik jest używany do uwierzytelniania między Wpięć i AKS klastra.
+Skrypt został wstępnie utworzony, aby wdrożyć maszynę wirtualną, konfigurowanie dostępu do sieci i ukończyć podstawową instalację usługi jenkins. Ponadto skrypt kopiuje plik konfiguracji Kubernetes w systemie deweloperskim do systemu Jenkins. Ten plik jest używany do uwierzytelniania między Jenkins i klastra AKS.
 
-Uruchom następujące polecenia, aby pobrać i uruchom skrypt. Poniżej adres URL może również służyć do Przejrzyj zawartość skryptu.
+Uruchom następujące polecenia, aby pobrać i uruchomić skrypt. Poniższy adres URL może również służyć do Przejrzyj zawartość skryptu.
+
+> [!WARNING]
+> Ten przykładowy skrypt jest dla celów demonstracyjnych szybko aprowizować środowiska narzędzia Jenkins, które jest uruchamiane na Maszynie wirtualnej platformy Azure. Aby skonfigurować Maszynę wirtualną, a następnie Wyświetl wymagane poświadczenia używa rozszerzenia niestandardowego skryptu platformy Azure. Twoje *~/.kube/config* jest kopiowana do maszyny Wirtualnej usługi Jenkins.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
 sh azure-jenkins.sh
 ```
 
-Po ukończeniu działania skryptu generuje adres serwera Wpięć jako również klucz do odblokowywania Wpięć. Przejdź do adresu URL, wprowadź klucz, a po wyświetlanymi na ekranie w celu ukończenia konfiguracji Wpięć.
+Po zakończeniu skrypt generuje adres dla serwera Jenkins jako również klucz odblokowywanie usługi Jenkins. Przejdź do adresu URL, wprowadź klucz i zgodnie z monitami wyświetlanymi na ekranie w celu ukończenia konfiguracji usługi Jenkins.
 
 ```console
 Open a browser to http://52.166.118.64:8080
@@ -162,71 +165,71 @@ Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
 
-## <a name="jenkins-environment-variables"></a>Zmienne środowiskowe Wpięć
+## <a name="jenkins-environment-variables"></a>Zmienne środowiskowe systemu Jenkins
 
-Zmienna środowiskowa Wpięć służy do przechowywania nazwy serwera logowania rejestru kontenera platformy Azure (ACR). Ta zmienna odwołuje się podczas wykonywania zadania Wpięć ciągłego wdrażania.
+Zmienna środowiskowa Jenkins jest używane do przechowywania nazwy serwera logowania usługi Azure Container Registry (ACR). Ta zmienna odwołuje się podczas wykonywania zadania ciągłego wdrażania narzędzia Jenkins.
 
-Znajduje się w portalu administracyjnym Wpięć kliknij **Zarządzanie Wpięć** > **skonfigurować System**.
+Znajduje się w portalu administracyjnym usługi Jenkins kliknij **Zarządzaj serwerem Jenkins** > **Konfiguruj System**.
 
-W obszarze **globalnych właściwości**, wybierz pozycję **zmiennych środowiskowych**i Dodaj zmienna o nazwie `ACR_LOGINSERVER` i wartość ACR logowania serwera.
+W obszarze **globalne właściwości**, wybierz opcję **zmienne środowiskowe**i Dodaj zmienną o nazwie `ACR_LOGINSERVER` i wartość serwera logowania usługi ACR.
 
-![Zmienne środowiskowe Wpięć](media/aks-jenkins/env-variables.png)
+![Zmienne środowiskowe systemu Jenkins](media/aks-jenkins/env-variables.png)
 
-Po zakończeniu kliknij przycisk **zapisać** na stronie konfiguracji Wpięć.
+Po zakończeniu kliknij przycisk **Zapisz** na stronie Konfiguracja serwera Jenkins.
 
-## <a name="jenkins-credentials"></a>Poświadczenia Wpięć
+## <a name="jenkins-credentials"></a>Poświadczenia usługi Jenkins
 
-Teraz przechowywane poświadczenia ACR w obiekt Wpięć poświadczeń. Te poświadczenia są istnieją odwołania podczas Wpięć zadania kompilacji.
+Teraz można zapisać poświadczenia rejestru Azure container Registry w obiekt poświadczeń usługi Jenkins. Te poświadczenia są przywoływane podczas zadania kompilacji usługi Jenkins.
 
-Ponownie w portalu administracyjnym Wpięć kliknij **poświadczenia** > **Wpięć** > **poświadczeń globalnych (bez ograniczeń)**  >   **Dodawanie poświadczeń**.
+Wstecz w portalu administracyjnym usługi Jenkins kliknij **poświadczenia** > **Jenkins** > **poświadczeń globalnych (nieograniczony)**  >   **Dodaj poświadczenia**.
 
-Upewnij się, że typ poświadczeń jest **nazwy użytkownika z hasłem** , a następnie wprowadź następujące elementy:
+Upewnij się, że typ poświadczeń **nazwy użytkownika z hasłem** i wprowadź następujące elementy:
 
-- **Nazwa użytkownika** -ID użyj główną usługi dla uwierzytelniania za pomocą rejestru ACR.
-- **Hasło** — klucz tajny klienta użyj główną usługi dla uwierzytelniania za pomocą rejestru ACR.
-- **Identyfikator** — takie jak poświadczeń identyfikator `acr-credentials`.
+- **Nazwa użytkownika** — identyfikator podmiotu zabezpieczeń użytkowania usługi uwierzytelniania za pomocą rejestru usługi ACR.
+- **Hasło** — wpis tajny klienta jednostki usługi użytek uwierzytelniania za pomocą rejestru usługi ACR.
+- **Identyfikator** — takich jak poświadczenia identyfikatora `acr-credentials`.
 
-Po zakończeniu formularza poświadczenia powinien wyglądać podobnie do tego obrazu:
+Po zakończeniu formularza poświadczenia powinna wyglądać następująco:
 
-![Poświadczenia ACR](media/aks-jenkins/acr-credentials.png)
+![Poświadczenia rejestru Azure container Registry](media/aks-jenkins/acr-credentials.png)
 
-Kliknij przycisk **OK** i wróć do portalu administratora Wpięć.
+Kliknij przycisk **OK** i powróć do portalu administratora usługi Jenkins.
 
-## <a name="create-jenkins-project"></a>Utwórz projekt Wpięć
+## <a name="create-jenkins-project"></a>Utwórz projekt narzędzia Jenkins
 
-W portalu administracyjnym Wpięć kliknij **nowy element**.
+W portalu administracyjnym usługi Jenkins kliknij **nowy element**.
 
-Nazwę projektu, na przykład `azure-vote`, wybierz pozycję **projektu dowolne**i kliknij przycisk **OK**.
+Nazwij projekt, na przykład `azure-vote`, wybierz opcję **projektu dowolne**i kliknij przycisk **OK**.
 
-![Wpięć projektu](media/aks-jenkins/jenkins-project.png)
+![Projekt Jenkins](media/aks-jenkins/jenkins-project.png)
 
-W obszarze **ogólne**, wybierz pozycję **projektu GitHub** , a następnie wprowadź adres URL do rozwidlenia projektu GitHub głos platformy Azure.
+W obszarze **ogólne**, wybierz opcję **projektu GitHub** i wprowadź adres URL Twojego rozwidlenia projektu GitHub głosowania na platformie Azure.
 
-![Projekt GitHub](media/aks-jenkins/github-project.png)
+![Projektu GitHub](media/aks-jenkins/github-project.png)
 
-W obszarze **zarządzania kodem źródłowym**, wybierz pozycję **Git**, wprowadź adres URL do rozwidlenia repozytorium GitHub głos Azure.
+W obszarze **zarządzania kodem źródłowym**, wybierz opcję **Git**, wprowadź adres URL Twojego rozwidlenia repozytorium Azure Vote w witrynie GitHub.
 
-Za pomocą poświadczeń kliknij i **Dodaj** > **Wpięć**. W obszarze **rodzaj**, wybierz pozycję **tajny tekst** , a następnie wprowadź Twojej [GitHub osobisty token dostępu] [ git-access-token] jako klucz tajny.
+Za pomocą poświadczeń kliknij i **Dodaj** > **Jenkins**. W obszarze **rodzaj**, wybierz opcję **tekst wpisu tajnego** i wprowadź swoje [osobisty token dostępu GitHub] [ git-access-token] jako klucz tajny.
 
 Wybierz **Dodaj** po zakończeniu.
 
 ![Poświadczenia usługi GitHub](media/aks-jenkins/github-creds.png)
 
-W obszarze **kompilacji wyzwalaczy**, wybierz pozycję **wyzwalacza haku GitHub dla sondowania GITScm**.
+W obszarze **kompilowanie wyzwalaczy**, wybierz opcję **wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITScm**.
 
-![Wpięć kompilacji wyzwalacze](media/aks-jenkins/build-triggers.png)
+![Wyzwalacze kompilacji usługi Jenkins](media/aks-jenkins/build-triggers.png)
 
-W obszarze **Build Environment**, wybierz pozycję **tajny teksty lub plików użyć**.
+W obszarze **środowisko budowania środowiska**, wybierz opcję **za pomocą klucza tajnego teksty lub pliki**.
 
-![Wpięć środowisko kompilacji](media/aks-jenkins/build-environment.png)
+![Środowiska narzędzia Jenkins](media/aks-jenkins/build-environment.png)
 
-W obszarze **powiązania**, wybierz pozycję **Dodaj** > **nazwy użytkownika i hasła (oddzielone)**.
+W obszarze **powiązania**, wybierz opcję **Dodaj** > **nazwy użytkownika i hasło (oddzielone)**.
 
-Wprowadź `ACR_ID` dla **zmienna nazwy użytkownika**, i `ACR_PASSWORD` dla **zmiennej hasła**.
+Wprowadź `ACR_ID` dla **zmienna nazwy użytkownika**, i `ACR_PASSWORD` dla **zmienna hasła**.
 
-![Powiązania Wpięć](media/aks-jenkins/bindings.png)
+![Powiązania usługi Jenkins](media/aks-jenkins/bindings.png)
 
-Dodaj **krok kompilacji** typu **wykonywania powłoki** i skorzystaj z poniższego tekstu. Ten skrypt tworzy nowy obraz kontenera i wypchnięcia jej do rejestru ACR.
+Dodaj **krok kompilacji** typu **wykonaj powłokę** i skorzystaj z poniższego tekstu. Ten skrypt tworzy nowy obraz kontenera i wypychany do rejestru usługi ACR.
 
 ```bash
 # Build new image and push to ACR.
@@ -236,7 +239,7 @@ docker login ${ACR_LOGINSERVER} -u ${ACR_ID} -p ${ACR_PASSWORD}
 docker push $WEB_IMAGE_NAME
 ```
 
-Dodaj inny **krok kompilacji** typu **wykonywania powłoki** i skorzystaj z poniższego tekstu. Ten skrypt aktualizacji wdrożenia Kubernetes.
+Dodaj kolejną **krok kompilacji** typu **wykonaj powłokę** i skorzystaj z poniższego tekstu. Ten skrypt aktualizacji wdrożenia rozwiązania Kubernetes.
 
 ```bash
 # Update kubernetes deployment with new image.
@@ -244,39 +247,38 @@ WEB_IMAGE_NAME="${ACR_LOGINSERVER}/azure-vote-front:kube${BUILD_NUMBER}"
 kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME --kubeconfig /var/lib/jenkins/config
 ```
 
-Po ukończeniu kliknij przycisk **zapisać**.
+Po zakończeniu kliknij przycisk **Zapisz**.
 
-## <a name="test-the-jenkins-build"></a>Testowanie kompilacji Wpięć
+## <a name="test-the-jenkins-build"></a>Testowanie kompilacji usługi Jenkins
 
-Przed kontynuowaniem należy przetestować Wpięć kompilacji. Taki tryb testowania weryfikuje, czy zadania kompilacji został prawidłowo skonfigurowany, właściwy plik uwierzytelniania Kubernetes znajduje się w miejscu i że dostarczono prawidłowe poświadczenia ACR.
+Zanim przejdziesz dalej, przetestuj kompilację narzędzia Jenkins. Sprawdza to, że zadanie kompilacji został prawidłowo skonfigurowany, prawidłowego pliku uwierzytelniania Kubernetes znajduje się w miejscu, a podano prawidłowe poświadczenia rejestru Azure container Registry.
 
-Kliknij przycisk **kompilacji teraz** w menu po lewej stronie projektu.
+Kliknij przycisk **Kompiluj teraz** w menu po lewej stronie projektu.
 
-![Wpięć testów kompilacji](media/aks-jenkins/test-build.png)
+![Jenkins testów kompilacji](media/aks-jenkins/test-build.png)
 
-W trakcie tego procesu repozytorium GitHub został sklonowany z Wpięć serwerem kompilacji. Nowy obraz kontenera jest wbudowana i przypisany do rejestru ACR. Na koniec głos Azure aplikacja była uruchomiona w klastrze AKS zostało zaktualizowane do użycia nowego obrazu. Ponieważ żadne zmiany nie zostały wprowadzone do kodu aplikacji, aplikacja nie zostanie zmieniona.
+W trakcie tego procesu repozytorium GitHub został sklonowany serwer kompilacji usługi Jenkins. Nowy obraz kontenera jest utworzone i wypchnięte do rejestru usługi ACR. Na koniec uruchomionego w klastrze AKS aplikacja do głosowania platformy Azure jest aktualizowana, aby korzystała z nowego obrazu. Ponieważ wprowadzono żadnych zmian kodu aplikacji, aplikacja nie jest zmieniany.
 
-Po zakończeniu procesu kliknij **kompilacji #1** w obszarze Historia kompilacji i wybierz **dane wyjściowe konsoli** aby zobaczyć wszystkie dane wyjściowe z procesu kompilacji. Ostatnim wierszu powinna wskazywać pomyślnego utworzenia kompilacji.
+Po zakończeniu procesu kliknij **kompilacji #1** w obszarze Historia kompilacji i wybierz **dane wyjściowe konsoli** aby zobaczyć wszystkie dane wyjściowe z procesu kompilacji. Ostatni wiersz powinien wskazywać pomyślnej kompilacji.
 
 ## <a name="create-github-webhook"></a>Tworzenie elementu webhook GitHub
 
-Następnie podłącz repozytorium aplikacji do serwera kompilacji Wpięć tak, aby w dowolnym zatwierdzeniu nowej kompilacji zostanie wywołany.
+Następnie należy dołączyć repozytorium aplikacji na serwerze kompilacji usługi Jenkins, dzięki czemu na każdego zatwierdzenia nowych kompilacja zostaje wyzwolona.
 
-1. Przejdź do rozwidlonych repozytorium GitHub.
-2. Wybierz pozycję **Ustawienia**, a następnie wybierz pozycję **Integracje i usługi** po lewej stronie.
-3. Wybierz **Dodaj usługę**, wprowadź `Jenkins (GitHub plugin)` w polu filtru, a następnie wybierz wtyczki.
-4. Dla Wpięć utworzenie punktu zaczepienia adres URL, wprowadź `http://<publicIp:8080>/github-webhook/` gdzie `publicIp` to adres IP serwera Wpięć. Pamiętaj wpisać kreskę końcową /.
-5. Wybierz opcję Dodaj usługi.
+1. Przejdź do rozwidlonego repozytorium GitHub.
+2. Wybierz **ustawienia**, a następnie wybierz **elementów Webhook** po lewej stronie.
+3. Możliwość **Dodaj element webhook**. Aby uzyskać *adres URL ładunku*, wprowadź `http://<publicIp:8080>/github-webhook/` gdzie `publicIp` jest adres IP serwera Jenkins. Upewnij się, że wpisano /. Pozostaw inne wartości domyślne dla typu zawartości i wyzwalacza w *wypychania* zdarzenia.
+4. Wybierz **Dodaj element webhook**.
 
-![Element webhook GitHub](media/aks-jenkins/webhook.png)
+    ![Element webhook GitHub](media/aks-jenkins/webhook.png)
 
-## <a name="test-cicd-process-end-to-end"></a>Testowanie procesu CI/CD pełnego
+## <a name="test-cicd-process-end-to-end"></a>Testowanie procesu ciągłej integracji/ciągłego Dostarczania typu end to end
 
-Na komputerze deweloperskim otwarcie Sklonowana aplikacja za pomocą edytora kodu.
+Na komputerze deweloperskim otwierają sklonowanej aplikacji za pomocą edytora kodu.
 
-W obszarze **/azure-vote/azure-vote** katalogu, Znajdź plik o nazwie **config_file.cfg**. Zaktualizuj wartości głosowanie w tym pliku inny niż kotów i psów.
+W obszarze **/azure-vote/azure-vote** katalogu, Znajdź plik o nazwie **config_file.cfg**. Zaktualizuj wartości głosu w tym pliku na coś, innym niż koty i psy.
 
-Poniższy przykład przedstawia i zaktualizować **config_file.cfg** pliku.
+Poniższy przykład pokazuje i zaktualizować **config_file.cfg** pliku.
 
 ```bash
 # UI Configurations
@@ -286,13 +288,13 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Po zakończeniu zapisz plik, Zatwierdź zmiany i wypychania do rozwidlenia repozytorium GitHub. Po zakończeniu zatwierdzenia element webhook GitHub wyzwala nową kompilację Wpięć, która aktualizuje kontener obrazu i wdrożenie AKS. Monitorowanie procesu kompilacji w konsoli administracyjnej Wpięć.
+Po zakończeniu zapisz plik, Zatwierdź zmiany i wypchnąć je do swojego rozwidlenia repozytorium GitHub... Po zakończeniu zatwierdzenie, element webhook usługi GitHub wyzwala nowej kompilacji narzędzia Jenkins, który aktualizuje obrazu kontenera i wdrożeniu usługi AKS. Monitorowanie procesu kompilacji w konsoli administracyjnej usługi Jenkins.
 
-Po ukończeniu kompilacji, Wyszukaj ponownie punkt końcowy aplikacji można obserwować zmiany.
+Po ukończeniu kompilacji Przejdź ponownie do punktu końcowego aplikacji można obserwować zmiany.
 
-![Azure głos zaktualizowane](media/aks-jenkins/azure-vote-updated-safari.png)
+![Zaktualizowano głosowania na platformie Azure](media/aks-jenkins/azure-vote-updated-safari.png)
 
-W tym momencie proces proste ciągłe Wdrażanie zostało zakończone. Kroki i konfiguracji przedstawionych w tym przykładzie można budować automatyzacji kompilacji ciągłej bardziej niezawodny i gotowe do produkcji.
+W tym momencie proces proste ciągłe Wdrażanie zostało ukończone. Kroki i konfiguracji przedstawionych w tym przykładzie może służyć do rozbudowy automatyzacji kompilacji ciągłej bardziej niezawodna i gotowa do użycia w środowisku produkcyjnym.
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/

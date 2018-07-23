@@ -15,6 +15,13 @@
       href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
     - name: Tworzenie szablonów — program Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+- name: Samouczki
+  expanded: true
+  items:
+    - name: Tworzenie zaszyfrowanego konta magazynu
+      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+    - name: Tworzenie wielu zasobów
+      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
 - name: Pojęcia
   items:
     - name: Dostawcy zasobów i ich typy

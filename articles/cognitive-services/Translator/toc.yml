@@ -105,6 +105,10 @@
           href: quickstart-ruby-languages.md
         - name: Uzyskiwanie długości zdania w tekście
           href: quickstart-ruby-sentences.md
+- name: Samouczki
+  items:
+    - name: Tworzenie aplikacji WPF dla interfejsu API tłumaczenia tekstu w usłudze Translator
+      href: tutorial-wpf-translation-csharp.md
 - name: Pojęcia
   items:
     - name: Obsługiwane języki
@@ -125,8 +129,6 @@
       href: word-alignment.md
     - name: Korzystanie z funkcji słownika dynamicznego
       href: dynamic-dictionary.md
-    - name: Tworzenie aplikacji do tłumaczenia tekstu w usłudze Translator z użyciem podsystemu WPF
-      href: tutorial-wpf-translation-csharp.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja interfejsu API v3 tłumaczenia tekstu w usłudze Translator

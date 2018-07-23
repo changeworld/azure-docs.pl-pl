@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 91a89d5db7c763fc3fe275d6c01f5fe9dd9af3af
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 1dae926a3a368e518877b210fb1caf487688750c
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125924"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39187370"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -151,7 +151,7 @@ Usługa IoT hub udostępnia wiele [punktów końcowych](iot-hub-devguide-endpoin
 Aby przeczytać [urządzenia do chmury](#device-to-cloud) komunikaty wysyłane do usługi IoT hub, możesz nawiązać połączenie z punktem końcowym w Centrum i zastosować dowolną metodę zgodnego z Centrum zdarzeń do odczytywania tych komunikatów. Metody zgodnego z Centrum zdarzeń obejmują użycie [Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) i [usługi Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="field-gateway"></a>Bramy w terenie
-Bramy w terenie zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub) i zwykle jest wdrożone lokalnie z urządzeniami. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+Bramy w terenie zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub) i zwykle jest wdrożone lokalnie z urządzeniami. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="free-account"></a>Bezpłatne konto
 Możesz utworzyć [bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/) ukończenie samouczki usługi IoT Hub i eksperymentować z usługi IoT Hub (i innych usług platformy Azure).
@@ -168,7 +168,7 @@ Interaktywne komunikat [chmury do urządzenia](#cloud-to-device) komunikat, któ
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>Usługa IoT Hub
-IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia bezpieczną i niezawodną dwukierunkową komunikację między milionami urządzeń a zapleczem rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md) Za pomocą usługi [subskrypcji platformy Azure](#subscription), możesz utworzyć centra IoT Hub do obsługi komunikatów obciążeń IoT.
+IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia bezpieczną i niezawodną dwukierunkową komunikację między milionami urządzeń a zapleczem rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](about-iot-hub.md) Za pomocą usługi [subskrypcji platformy Azure](#subscription), możesz utworzyć centra IoT Hub do obsługi komunikatów obciążeń IoT.
 
 ## <a name="iot-hub-metrics"></a>Metryki usługi IoT Hub
 [Metryki usługi IoT Hub](iot-hub-metrics.md) udostępnia dane o stanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription). Metryki usługi IoT Hub umożliwiają oceny ogólnej kondycji usługi i dołączone do niego urządzenia. Metryki usługi IoT Hub może pomóc w Zobacz, co się dzieje z Centrum IoT i badanie głównej przyczyny problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
@@ -180,7 +180,7 @@ IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia bezpi
 Możesz użyć [interfejsu API REST zasobów usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) Zarządzanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription) wykonywanie operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
 
 ## <a name="iot-solution-accelerators"></a>Akceleratory rozwiązań IoT
-Akceleratory rozwiązań Azure IoT pakietu ze sobą wiele usług platformy Azure do rozwiązań. Rozwiązania te umożliwiają szybkie rozpoczynanie pracy z implementacjami end-to-end typowych scenariuszy IoT. Aby uzyskać więcej informacji, zobacz [co to są Akceleratory rozwiązań Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
+Akceleratory rozwiązań Azure IoT pakietu ze sobą wiele usług platformy Azure do rozwiązań. Rozwiązania te umożliwiają szybkie rozpoczynanie pracy z implementacjami end-to-end typowych scenariuszy IoT. Aby uzyskać więcej informacji, zobacz [co to są Akceleratory rozwiązań Azure IoT?](../iot-accelerators/about-iot-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0
 [Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie dla wielu platform, wiersza polecenia. To narzędzie umożliwia zarządzanie urządzeniami w [rejestr tożsamości](#identity-registry), wysyłanie i odbieranie wiadomości i plików z urządzeń i monitorowanie operacji centrum IoT.
@@ -201,7 +201,7 @@ Urządzenie fizyczne to rzeczywistego urządzenia, takich jak Raspberry Pi, któ
 Podczas nawiązywania połączenia przeznaczonych dla określonego urządzenia lub przeznaczonych dla usług punktu końcowego w Centrum IoT hub z [parametry połączenia](#connection-string) zawiera klucz, aby przyznać dostęp. Po dodaniu urządzenia do [rejestr tożsamości](#identity-registry) lub dodać [współużytkowane zasady dostępu](#shared-access-policy) z Centrum usługi generuje klucz podstawowy i pomocniczy. Mając dwa klucze umożliwia przechodzą z jednego klucza do innego, po zaktualizowaniu klucza bez utraty dostępu do usługi IoT hub.
 
 ## <a name="protocol-gateway"></a>Brama protokołu
-Brama protokołu jest zazwyczaj wdrażana w chmurze i zapewnia usługi translacji dla urządzenia łączące się z protokół [usługi IoT Hub](#iot-hub). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
+Brama protokołu jest zazwyczaj wdrażana w chmurze i zapewnia usługi translacji dla urządzenia łączące się z protokół [usługi IoT Hub](#iot-hub). Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure IoT Hub?](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>Limity przydziału i ograniczanie wydajności
 Istnieją różne [przydziały](iot-hub-devguide-quotas-throttling.md) przeznaczonych do używania [usługi IoT Hub](#iot-hub), wiele przydziały różnią się w zależności od warstwy usługi IoT hub. [Usługa IoT Hub](#iot-hub) ma również zastosowanie [ogranicza](iot-hub-devguide-quotas-throttling.md) dotyczące używania usługi w czasie wykonywania.

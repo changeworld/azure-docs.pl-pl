@@ -1,6 +1,6 @@
 ---
-title: Komunikaty chmury do urządzenia z Centrum IoT Azure (węzeł) | Dokumentacja firmy Microsoft
-description: Jak wysłać wiadomości chmury do urządzenia na urządzeniu z Centrum Azure IoT przy użyciu zestawów SDK IoT Azure dla środowiska Node.js. Możesz zmodyfikować aplikację symulowane urządzenie, aby odbierać komunikaty z chmury do urządzenia i modyfikowania aplikacji zaplecza, do wysyłania wiadomości chmury do urządzenia.
+title: Komunikaty z chmury do urządzenia z usługą Azure IoT Hub (Node) | Dokumentacja firmy Microsoft
+description: Jak wysyłanie komunikatów z chmury do urządzeń do urządzenia z usługi Azure IoT hub przy użyciu zestawów SDK usługi Azure IoT dla środowiska Node.js. Możesz zmodyfikować aplikacji symulowanego urządzenia do odbierania komunikatów z chmury do urządzeń i modyfikowania aplikacji zaplecza, do wysyłania komunikatów z chmury do urządzeń.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -9,36 +9,36 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 640a7740e3451a8bd07fdea6a82af2f5cae4c25f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61b1dd31039df0db777e7e35d849889047a6588d
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637467"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39186686"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Wysyłanie komunikatów chmury do urządzenia z Centrum IoT (węzeł)
+# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Wprowadzenie
-Centrum IoT Azure jest w pełni zarządzaną usługę, która umożliwia włączanie i niezawodności komunikację dwukierunkową między milionów urządzeń i zaplecze rozwiązania. [Rozpoczynanie pracy z Centrum IoT] samouczek przedstawia sposób tworzenia Centrum IoT, udostępnić tożsamość urządzenia w nim i kodem aplikacji symulowane urządzenie, który wysyła wiadomości urządzenia do chmury.
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która ułatwia włączanie bezpieczną i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Rozpoczynanie pracy z usługą IoT Hub] samouczek pokazuje sposób tworzenia Centrum IoT hub, aprowizować w nim tożsamości urządzenia i kodu aplikacji symulowanego urządzenia, która wysyła komunikaty z urządzenia do chmury.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-W tym samouczku opiera się na [Rozpoczynanie pracy z Centrum IoT]. Jak przedstawiono na:
+Ten samouczek opiera się [Rozpoczynanie pracy z usługą IoT Hub]. Przedstawia on sposób do:
 
-* Z sieci zaplecza rozwiązania wysyłać chmury do urządzenia do jednego urządzenia za pośrednictwem Centrum IoT.
-* Komunikaty chmury do urządzenia na urządzeniu.
-* Z sieci zaplecza rozwiązania, żądania potwierdzenia dostarczenia (*opinii*) dla wiadomości wysyłanych do urządzenia z Centrum IoT.
+* Z zapleczem rozwiązania wysyłanie komunikatów z chmury do urządzeń do pojedynczego urządzenia za pomocą usługi IoT Hub.
+* Odbieranie komunikatów z chmury do urządzeń na urządzeniu.
+* Z zapleczem rozwiązania, żądania potwierdzenia dostarczania (*opinii*) dla wiadomości wysyłanych do urządzenia z usługi IoT Hub.
 
-Można znaleźć więcej informacji na temat wiadomości chmury do urządzenia w [Centrum IoT — przewodnik dewelopera][IoT Hub developer guide - C2D].
+Można znaleźć więcej informacji na temat komunikatów z chmury do urządzeń w [usługi IoT Hub — przewodnik dewelopera][IoT Hub developer guide - C2D].
 
-Na końcu tego samouczka możesz uruchomić dwóch aplikacji konsoli Node.js:
+Na końcu tego samouczka możesz uruchomić dwie aplikacje konsolowe środowiska Node.js:
 
-* **SimulatedDevice**, zmodyfikowanej wersji aplikacji utworzonych w [Rozpoczynanie pracy z Centrum IoT], która łączy się z Centrum IoT i odbiera komunikaty chmury do urządzenia.
-* **SendCloudToDeviceMessage**, który wysyła komunikat chmury do urządzenia do aplikacji symulowane urządzenie za pomocą Centrum IoT i następnie odbiera jego potwierdzenie dostarczenia.
+* **SimulatedDevice**, zmodyfikowanej wersji aplikacji utworzonej w [Rozpoczynanie pracy z usługą IoT Hub], który nawiązuje połączenie z Centrum IoT i odbiera komunikaty z chmury do urządzenia.
+* **SendCloudToDeviceMessage**, która jest wysyłana wiadomość chmury do urządzenia w aplikacji symulowanego urządzenia za pomocą usługi IoT Hub i odbiera jego potwierdzenie dostawy.
 
 > [!NOTE]
-> Centrum IoT obsługuje zestawu SDK dla wielu platform urządzeń i języków (w tym C, Java i Javascript) za pośrednictwem zestawy SDK urządzenia Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące sposobu Podłącz urządzenie do kodu w tym samouczku i zwykle z Centrum IoT Azure, zobacz [Centrum deweloperów Azure IoT].
+> Usługa IoT Hub obsługuje zestaw SDK na wielu platformach i językach (w tym C, Java i Javascript) za pomocą zestawów SDK urządzeń Azure IoT. Aby uzyskać instrukcje krok po kroku dotyczące łączenia urządzenia do kodu w tym samouczku i ogólnie do usługi Azure IoT Hub, zobacz [Centrum deweloperów Azure IoT].
 > 
 > 
 
@@ -47,11 +47,11 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Środowisko Node.js w wersji 4.0.x lub nowszej.
 * Aktywne konto platformy Azure. (Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne][lnk-free-trial] w zaledwie kilka minut).
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Odbieranie komunikatów w aplikacji symulowane urządzenie
-W tej sekcji możesz zmodyfikować aplikację symulowane urządzenie, utworzony w [Rozpoczynanie pracy z Centrum IoT] odbierać komunikaty z chmury do urządzenia z Centrum IoT.
+## <a name="receive-messages-in-the-simulated-device-app"></a>Odbieranie wiadomości w aplikacji symulowanego urządzenia
+W tej sekcji zmodyfikujesz symulowanej aplikacji urządzenia utworzone w [Rozpoczynanie pracy z usługą IoT Hub] do odbierania komunikatów z chmury do urządzeń z usługi IoT hub.
 
-1. Za pomocą edytora tekstu, otwórz plik SimulatedDevice.js.
-2. Modyfikowanie **connectCallback** funkcji obsługi wiadomości wysyłane z Centrum IoT. W tym przykładzie zawsze wywołuje urządzenia **pełną** funkcji, aby powiadomić Centrum IoT, że został on przetworzony wiadomości. Nową wersję pakietu **connectCallback** funkcja wygląda następujący fragment kodu:
+1. Za pomocą edytora tekstu Otwórz plik SimulatedDevice.js.
+2. Modyfikowanie **connectCallback** funkcji do obsługi komunikatów wysyłanych z usługi IoT Hub. W tym przykładzie zawsze wywołuje urządzenia **pełną** funkcję, aby powiadomić usługi IoT Hub zostało przetworzone wiadomości. Nową wersję pakietu **connectCallback** funkcja wygląda jak poniższy fragment kodu:
    
     ```javascript
     var connectCallback = function (err) {
@@ -78,25 +78,25 @@ W tej sekcji możesz zmodyfikować aplikację symulowane urządzenie, utworzony 
     ```
    
    > [!NOTE]
-   > Jeśli jest używany protokół HTTPS zamiast MQTT lub AMQP do transportu **DeviceClient** wystąpienia sprawdza, czy komunikaty z Centrum IoT rzadko (mniej niż co 25 minut). Aby uzyskać więcej informacji na temat różnic między MQTT, protokołu AMQP lub HTTPS obsługi i ograniczania Centrum IoT, zobacz [Centrum IoT — przewodnik dewelopera][IoT Hub developer guide - C2D].
+   > Jeśli używasz protokołu HTTPS zamiast protokołu MQTT, AMQP jako transportu, **DeviceClient** wystąpienia sprawdza, czy komunikaty z usługi IoT Hub rzadko (mniej niż co 25 minut). Aby uzyskać więcej informacji na temat różnic między Obsługa protokołu MQTT, AMQP i protokołu HTTPS i ograniczania przepustowości usługi IoT Hub, zobacz [usługi IoT Hub — przewodnik dewelopera][IoT Hub developer guide - C2D].
    > 
    > 
 
-## <a name="send-a-cloud-to-device-message"></a>Wyślij wiadomość chmury do urządzenia
-W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chmury do urządzenia do aplikacji symulowane urządzenie. Potrzebny jest identyfikator urządzenia urządzenia dodane w [Rozpoczynanie pracy z Centrum IoT] samouczka. Należy również parametry połączenia Centrum IoT, który znajduje się w Centrum [Azure Portal].
+## <a name="send-a-cloud-to-device-message"></a>Wysyłanie komunikatów chmura urządzenie
+W tej sekcji utworzysz aplikację konsoli środowiska Node.js, która wysyła komunikaty z chmury do urządzenia w aplikacji symulowanego urządzenia. Potrzebny jest identyfikator urządzenia, które urządzenia zostały dodane w [Rozpoczynanie pracy z usługą IoT Hub] samouczka. Należy również parametry połączenia Centrum IoT Hub dla Centrum można znaleźć w [Azure Portal].
 
-1. Utwórz pusty folder o nazwie **sendcloudtodevicemessage**. W **sendcloudtodevicemessage** folderu, Utwórz plik package.json za pomocą następującego polecenia z wiersza polecenia. Zaakceptuj wszystkie ustawienia domyślne:
+1. Utwórz pusty folder o nazwie **sendcloudtodevicemessage**. W **sendcloudtodevicemessage** folderze utwórz plik Package.JSON, uruchamiając następujące polecenie w wierszu polecenia. Zaakceptuj wszystkie ustawienia domyślne:
    
     ```shell
     npm init
     ```
-2. Z wiersza polecenia w **sendcloudtodevicemessage** folderu, uruchom następujące polecenie, aby zainstalować **Centrum iothub azure** pakietu:
+2. W wierszu polecenia w **sendcloudtodevicemessage** folder, uruchom następujące polecenie, aby zainstalować **azure-iothub** pakietu:
    
     ```shell
     npm install azure-iothub --save
     ```
-3. Za pomocą edytora tekstu, Utwórz **SendCloudToDeviceMessage.js** w pliku **sendcloudtodevicemessage** folderu.
-4. Dodaj następujące `require` instrukcje na początku **SendCloudToDeviceMessage.js** pliku:
+3. Za pomocą edytora tekstów Utwórz **SendCloudToDeviceMessage.js** w pliku **sendcloudtodevicemessage** folderu.
+4. Dodaj następujący kod `require` instrukcji na początku **SendCloudToDeviceMessage.js** pliku:
    
     ```javascript
     'use strict';
@@ -104,7 +104,7 @@ W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chm
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. Dodaj następujący kod do **SendCloudToDeviceMessage.js** pliku. Zastąp wartość symbolu zastępczego "{iot hub parametry połączenia}" z Centrum IoT parametry połączenia dla koncentratora utworzony w [Rozpoczynanie pracy z Centrum IoT] samouczka. Zastąp symbol zastępczy "{identyfikator urządzenia}" o identyfikatorze urządzenia urządzenie dodane w [Rozpoczynanie pracy z Centrum IoT] samouczek:
+5. Dodaj następujący kod do **SendCloudToDeviceMessage.js** pliku. Zastąp wartość symbolu zastępczego "{Centrum parametry połączenia Centrum iot}" przy użyciu parametrów połączenia usługi IoT Hub dla Centrum utworzonego w [Rozpoczynanie pracy z usługą IoT Hub] samouczka. Zastąp symbol zastępczy "{id urządzenia}" z Identyfikatorem urządzenia, które urządzenia zostały dodane w [Rozpoczynanie pracy z usługą IoT Hub] samouczka:
    
     ```javascript
     var connectionString = '{iot hub connection string}';
@@ -112,7 +112,7 @@ W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chm
    
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
-6. Dodaj następującą funkcję Drukowanie wyników operacji do konsoli:
+6. Dodaj następującą funkcję, aby wydrukować wyniki operacji do konsoli:
    
     ```javascript
     function printResultFor(op) {
@@ -122,7 +122,7 @@ W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chm
       };
     }
     ```
-7. Dodaj następującą funkcję drukowania dostarczania komunikatów opinię do konsoli:
+7. Dodaj następującą funkcję umożliwiającą wydrukowanie dostarczanie komunikatów zwrotnych do konsoli:
    
     ```javascript
     function receiveFeedback(err, receiver){
@@ -132,7 +132,7 @@ W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chm
       });
     }
     ```
-8. Dodaj następujący kod, aby wysłać komunikat do Twojego urządzenia i obsłużyć komunikat opinii, gdy urządzenie potwierdza komunikatu chmura urządzenie:
+8. Dodaj następujący kod, aby wysłać wiadomość do Twojego urządzenia i obsłużyć komunikat opinii, gdy urządzenie potwierdza komunikatu chmura urządzenie:
    
     ```javascript
     serviceClient.open(function (err) {
@@ -154,32 +154,32 @@ W tej sekcji utworzysz aplikację konsoli Node.js, która wysyła komunikaty chm
 ## <a name="run-the-applications"></a>Uruchamianie aplikacji
 Teraz można uruchomić aplikacje.
 
-1. W wierszu polecenia w **simulateddevice** folderu, uruchom następujące polecenie, aby wysłać dane telemetryczne z Centrum IoT i nasłuchiwać komunikatów chmury do urządzenia:
+1. W wierszu polecenia w **simulateddevice** folder, uruchom następujące polecenie do wysyłania telemetrii do usługi IoT Hub oraz nasłuchiwać komunikatów z chmury do urządzeń:
    
     ```shell
     node SimulatedDevice.js 
     ```
    
-    ![Uruchamianie aplikacji symulowane urządzenie][img-simulated-device]
-2. W wierszu polecenia **sendcloudtodevicemessage** folderu, uruchom następujące polecenie, aby wysłać wiadomość chmury do urządzenia i poczekaj, aż opinii potwierdzenia:
+    ![Uruchamianie aplikacji symulowanego urządzenia][img-simulated-device]
+2. W wierszu polecenia w **sendcloudtodevicemessage** folder, uruchom następujące polecenie, aby wysłać komunikatu chmura urządzenie i poczekaj na opinie potwierdzenia:
    
     ```shell
     node SendCloudToDeviceMessage.js 
     ```
    
-    ![Uruchamianie aplikacji, aby wysłać polecenie chmury do urządzenia][img-send-command]
+    ![Uruchamianie aplikacji na wysyłanie poleceń chmura urządzenie][img-send-command]
    
    > [!NOTE]
-   > Sake na prostotę w tym samouczku nie implementuje wszystkie zasady ponawiania. W kodzie produkcyjnym, należy zaimplementować zasady ponawiania (na przykład wykładniczego wycofywania), zgodnie z sugestią podaną w artykuł w witrynie MSDN [Obsługa błędu przejściowego].
+   > Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [Obsługa błędu przejściowego].
    > 
    > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku przedstawiono sposób wysyłania i odbierania wiadomości chmury do urządzenia. 
+W tym samouczku przedstawiono sposób wysyłania i odbierania komunikatów z chmury do urządzeń. 
 
-Aby zapoznać się przykładem kompletnych rozwiązań end-to-end korzystających z Centrum IoT, zobacz [Akcelerator rozwiązań monitorowania zdalnego IoT Azure].
+Aby wyświetlić przykłady kompletne rozwiązania end-to-end, które używają usługi IoT Hub, zobacz [Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure].
 
-Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobacz [Przewodnik dewelopera Centrum IoT].
+Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub, zobacz [Przewodnik dla deweloperów usługi IoT Hub].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-node-node-c2d/receivec2d.png
@@ -187,12 +187,12 @@ Aby dowiedzieć się więcej na temat tworzenia rozwiązań z Centrum IoT, zobac
 
 <!-- Links -->
 
-[Rozpoczynanie pracy z Centrum IoT]: iot-hub-node-node-getstarted.md
+[Rozpoczynanie pracy z usługą IoT Hub]: quickstart-send-telemetry-node.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Przewodnik dewelopera Centrum IoT]: iot-hub-devguide.md
+[Przewodnik dla deweloperów usługi IoT Hub]: iot-hub-devguide.md
 [Centrum deweloperów Azure IoT]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Obsługa błędu przejściowego]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
-[Akcelerator rozwiązań monitorowania zdalnego IoT Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/

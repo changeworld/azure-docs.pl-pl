@@ -140,33 +140,13 @@
 #### [Przykłady logowania](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Używanie certyfikatów](active-directory-reporting-api-with-certificates.md)
 
-## Zarządzanie hasłami
-### [Omówienie haseł](authentication/active-directory-passwords-overview.md)
+## Zarządzanie hasłami(active-directory/authentication/concept-sspr-howitworks.md)
 ### Dokumenty użytkowników
 #### [Resetowanie lub zmienianie hasła](user-help/active-directory-passwords-update-your-own-password.md)
 #### [Najlepsze rozwiązania w zakresie haseł](active-directory-secure-passwords.md)
 #### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](user-help/active-directory-passwords-reset-register.md)
-### [Samoobsługowe resetowanie haseł — zobacz, jak to działa](authentication/concept-sspr-howitworks.md)
-### [Podręcznik wdrażania samoobsługowego resetowania haseł](authentication/howto-sspr-deployment.md)
-### [SSPR i Windows 10](authentication/tutorial-sspr-windows.md)
-### [Zasady samoobsługowego resetowania haseł](authentication/concept-sspr-policy.md)
-### [Dostosowywanie samoobsługowego resetowania haseł](authentication/concept-sspr-customization.md)
-### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](authentication/howto-sspr-authenticationdata.md)
-### [Raportowanie samoobsługowego resetowania haseł](authentication/howto-sspr-reporting.md)
-### [Inteligentna blokada](authentication/howto-password-smart-lockout.md)
-### [Eliminowanie słabych haseł](authentication/concept-password-ban-bad.md)
-### [Konfigurowanie listy zakazanych haseł](authentication/howto-password-ban-bad.md)
-### [Integracja lokalna](authentication/concept-password-ban-bad-on-premises.md)
-### [Wdrażanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises.md)
-### [Konfigurowanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
-### [Monitorowanie ochrony haseł w usłudze Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Administratorzy IT: resetowanie haseł
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Licencjonowanie funkcji samoobsługowego resetowania haseł](authentication/concept-sspr-licensing.md)
-### [Zapisywanie zwrotne haseł](authentication/howto-sspr-writeback.md)
-### [Rozwiązywanie problemów](authentication/active-directory-passwords-troubleshoot.md)
-### [Często zadawane pytania](authentication/active-directory-passwords-faq.md)
-
 
 ## Zarządzanie urządzeniami
 ### [Wprowadzenie](device-management-introduction.md)
