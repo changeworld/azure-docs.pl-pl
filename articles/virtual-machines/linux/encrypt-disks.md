@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: 75ec087536d6f833a9a2106b1fdf4ed1fd73ef8e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: HT
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932415"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38634624"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Jak zaszyfrować maszyny wirtualnej z systemem Linux na platformie Azure
 Rozszerzone maszynę wirtualną (VM), zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne, a samej maszyny Wirtualnej. Maszyny wirtualne są szyfrowane przy użyciu kluczy kryptograficznych, które są zabezpieczone w usłudze Azure Key Vault. Możesz kontrolować klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie. Ten artykuł szczegółowo opisuje sposób szyfrowania dysków wirtualnych na Maszynę wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
@@ -81,7 +81,7 @@ az provider register -n Microsoft.KeyVault
 az group create --name myResourceGroup --location eastus
 ```
 
-Usługi Azure Key Vault, zawierający klucze kryptograficzne i zasoby obliczeniowe skojarzone, takie jak storage i samej maszyny Wirtualnej muszą znajdować się w tym samym regionie. Tworzenie usługi Azure Key Vault przy użyciu [tworzenie az keyvault](/cli/azure/keyvault#az-keyvault-create) i włączyć usługi Key Vault do użytku z szyfrowania dysków. Stan teraz powinien wysyłać raporty dysku systemu operacyjnego i dysk danych jako *zaszyfrowane*.
+Usługi Azure Key Vault, zawierający klucze kryptograficzne i zasoby obliczeniowe skojarzone, takie jak storage i samej maszyny Wirtualnej muszą znajdować się w tym samym regionie. Tworzenie usługi Azure Key Vault przy użyciu [tworzenie az keyvault](/cli/azure/keyvault#az-keyvault-create) i włączyć usługi Key Vault do użytku z szyfrowania dysków. Określ unikatową nazwę usługi Key Vault *keyvault_name* w następujący sposób:
 
 ```azurecli-interactive
 keyvault_name=myuniquekeyvaultname
@@ -92,9 +92,9 @@ az keyvault create \
     --enabled-for-disk-encryption True
 ```
 
-Dodawanie dodatkowego dysku z danymi Gdy zaszyfrowanych dysków z danymi, można później dodać dodatkowe dyski wirtualne z maszyną wirtualną i również zaszyfrować. Na przykład pozwala dodać drugi dysk wirtualny z maszyną wirtualną w następujący sposób: Uruchom ponownie polecenie, aby zaszyfrować dyski wirtualne w następujący sposób: Aby uzyskać więcej informacji dotyczących zarządzania usługi Azure Key Vault, w tym usuwanie kluczy kryptograficznych i magazynów, zobacz Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia.
+Można przechowywać klucze szyfrowania przy użyciu oprogramowania lub ochrona sprzętu modelu zabezpieczeń (HSM). Przy użyciu sprzętowego modułu zabezpieczeń wymaga usługi Key Vault w wersji premium. Brak dodatkowych kosztów, do tworzenia premium usługi Key Vault, a nie standardowy usługi Key Vault, który przechowuje klucze chronione programowo. Aby utworzyć premium usługi Key Vault, w poprzednim kroku należy dodać `--sku Premium` do polecenia. W poniższym przykładzie użyto kluczy chronionych programowo, od momentu utworzenia standardowe usługi Key Vault.
 
-Aby uzyskać więcej informacji o szyfrowaniu dysku, takich jak przygotowywanie zaszyfrowanych niestandardową maszynę Wirtualną do przekazania na platformę Azure, zobacz usługi Azure Disk Encryption. Utwórz klucz kryptograficzny w usłudze Key Vault przy użyciu [tworzenie az keyvault key](/cli/azure/keyvault/key#az-keyvault-key-create). Poniższy przykład tworzy klucz o nazwie *klucze*:
+Oba modele ochrony platformy Azure musi otrzymać dostęp do zażądać kluczy kryptograficznych w przypadku, gdy maszyna wirtualna zostanie do odszyfrowania dysków wirtualnych. Utwórz klucz kryptograficzny w usłudze Key Vault przy użyciu [tworzenie az keyvault key](/cli/azure/keyvault/key#az-keyvault-key-create). Poniższy przykład tworzy klucz o nazwie *klucze*:
 
 ```azurecli-interactive
 az keyvault key create --vault-name $keyvault_name --name myKey --protection software

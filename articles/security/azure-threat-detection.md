@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie zagrożeń zaawansowane Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat ochrony tożsamości i jego możliwości.
+title: Wykrywanie zagrożeń w usłudze Azure advanced | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat usługi Azure AD Identity Protection i jej możliwości.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,420 +14,375 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0813e0f6b51c747d033ca2c44aed21cf94c32000
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113031"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856882"
 ---
-# <a name="azure-advanced-threat-detection"></a>Wykrywanie zagrożeń zaawansowane Azure
-## <a name="introduction"></a>Wprowadzenie
+# <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
-### <a name="overview"></a>Przegląd
+Platforma Azure oferuje wbudowane funkcje wykrywania zaawansowanych zagrożeń za pośrednictwem usług, takich jak Azure Active Directory (Azure AD), Azure Operations Management Suite (OMS) i usługi Azure Security Center. Ta kolekcja usług zabezpieczeń i możliwości zapewnia prosty i szybki sposób zorientować się w ramach wdrożeń na platformie Azure.
 
-Firma Microsoft opracowała szereg oficjalne dokumenty, omówienie zabezpieczeń najlepsze rozwiązania i listy kontrolne ułatwiają klientów platformy Azure o różnych funkcjach zabezpieczeń dostępnych w i otaczającego platformy Azure. Tematy zakresu pod względem szerokości i głębokość i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w poniższej sekcji abstrakcyjny.
-
-### <a name="azure-platform"></a>Platformy Azure
-
-Azure to platforma usługi chmury publicznej, która obsługuje najszerszych wybór systemów operacyjnych, programowania języków, struktury, narzędzia, baz danych i urządzeń.
-Obsługuje następujące języki programowania:
--   Uruchom kontenery Linux z integracją rozwiązania Docker.
--   Tworzenie aplikacji za pomocą języka JavaScript, Python, .NET, PHP, Java i Node.js
--   Kompilacja zapleczy dla systemu iOS, Android i Windows urządzeń.
-
-Usługi w chmurze publicznej Azure obsługuje te same technologie miliony deweloperów i informatyków już zależne i zaufania.
-
-Podczas migrowania do chmury publicznej w organizacji, czy organizacja jest odpowiedzialny do ochrony danych i zapewnienia bezpieczeństwa i nadzór nad całym systemie.
-
-Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy od obiektu po aplikacje hostujące jednocześnie miliony klientów, i zapewnia wiarygodną podstawę zaspokajania potrzeb firm w zakresie bezpieczeństwa. Platforma Azure oferuje szeroką gamę opcji, aby skonfigurować i dostosować zabezpieczeń w celu spełnienia wymagań stanu wdrożenia aplikacji. Ten dokument pomaga spełnić te wymagania.
-
-### <a name="abstract"></a>abstrakcyjny
-
-Microsoft Azure oferuje wbudowane funkcje wykrywania advanced threat za pośrednictwem usług, takich jak Azure Active Directory, Azure Operations Management Suite (OMS) i Centrum zabezpieczeń Azure. Ta kolekcja usług zabezpieczeń i możliwości umożliwia proste i szybkie zorientować się w ramach wdrożeń platformy Azure.
-
-Ten dokument zawiera informacje pomocne "Microsoft Azure zbliża się do" pod kątem luk w zabezpieczeniach w przypadku zagrożenia diagnostycznych i analizy ryzyko związane z złośliwe działania przeznaczone dla serwerów i innych zasobów platformy Azure. Pomaga w identyfikacji metod identyfikacji i luk w zabezpieczeniach zarządzanie za pomocą zoptymalizowanego rozwiązania przez platformy Azure i usługi zabezpieczeń i technologie skierowane do klienta.
-
-Ten dokument koncentruje się na technologii platformy Azure i kontrolek uwzględniającym klienta i nie jest podejmowana próba adres SLA cennik modeli i zagadnienia dotyczące praktyki DevOps.
+System Azure oferuje szeroką gamę opcji, aby skonfigurować i dostosować zabezpieczeń, aby spełnić wymagania wdrożenia aplikacji. W tym artykule omówiono sposób spełniają te wymagania.
 
 ## <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
-![Ochrona tożsamości w usłudze Azure Active Directory](./media/azure-threat-detection/azure-threat-detection-fig1.png)
+[Usługa Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) jest [usługi Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) funkcja w wersji, która zapewnia Przegląd zdarzeń o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na tożsamości w organizacji. Usługa Identity Protection używa istniejące możliwości wykrywania anomalii w usłudze Azure AD, które są dostępne za pośrednictwem [usługi Azure AD, nietypowe raporty aktywności](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)i wprowadza nowe typy zdarzeń o podwyższonym ryzyku, które mogą wykrywać anomalie w czasie rzeczywistym.
+
+![Diagram usługi Azure AD Identity Protection](./media/azure-threat-detection/azure-threat-detection-fig1.png)
+
+Usługa Identity Protection używa adaptacyjnych algorytmów uczenia maszynowego i algorytmy heurystyczne do wykrywania anomalii i podejrzanych zdarzeń, które mogą wskazywać, że tożsamość bezpieczeństwo zostało naruszone. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, dzięki czemu mogą zbadania tych zdarzeń ryzyka i podjąć odpowiednie środki zaradcze lub Akcja ograniczenia.
+
+Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. Oparte na zdarzenia o podwyższonym ryzyku, Identity Protection oblicza poziomie ryzyka użytkownika, dla każdego użytkownika, tak że można skonfigurować zasady oparte na ryzyku, aby automatycznie chronić tożsamości organizacji.
+
+Te zasady na podstawie ryzyka, oprócz innych [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) są dostarczane przez usługę Azure Active Directory i [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access), można automatycznie Blokuj lub oferują działania korygujące adaptacyjne, obejmują resetowania hasła, jak i wymuszanie uwierzytelniania wieloskładnikowego.
+
+### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości
+
+Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. W celu ochrony tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie odpowiadać na wykryte problemy, jeśli osiągnięty poziom ryzyka określony. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure Active Directory i usług EMS można automatycznie blokować lub zainicjować akcji adaptacyjne korygowania, które resetowania haseł w tym i wymuszanie uwierzytelniania wieloskładnikowego.
+
+Przykłady niektóre metody, które mogą ułatwić Azure Identity Protection Zabezpieczanie kont i tożsamości obejmują:
+
+[Wykrywanie zdarzeń o podwyższonym ryzyku i ryzykowne kont](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
+-   Wykryj sześć typów zdarzeń o podwyższonym ryzyku, przy użyciu uczenia maszynowego i reguł heurystyczne.
+-   Oblicz poziomy ryzyka użytkownika.
+-   Podaj niestandardowy zalecenia, aby poprawić ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach.
+
+[Badanie zdarzeń o podwyższonym ryzyku](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#investigation)
+-   Wyślij powiadomienia do zdarzeń o podwyższonym ryzyku.
+-   Badanie zdarzeń o podwyższonym ryzyku, korzystając z informacji istotnych i kontekstowych.
+-   Podaj podstawowych przepływów pracy do śledzenia dochodzenia.
+-   Zapewniają łatwy dostęp do akcji korygowania, takie jak resetowanie haseł.
+
+[Zasady na podstawie ryzyka, dostęp warunkowy](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#risky-sign-ins)
+-   Wyeliminowanie ryzykowne logowania za pomocą blokowania logowania bądź wymagają takiej wezwań do uwierzytelnienia Multi-Factor Authentication.
+-   Blokowanie lub Zabezpieczanie kont użytkowników ryzykowne.
+-   Wymagać od użytkowników rejestracji do uwierzytelniania wieloskładnikowego.
+
+### <a name="azure-ad-privileged-identity-management"></a>Usługa Azure AD Privileged Identity Management
+
+Za pomocą [usługi Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), można zarządzać, kontrolę i monitorowanie dostępu w organizacji. Ta funkcja obejmuje dostęp do zasobów w usłudze Azure AD i innych usług Microsoft online services, takich jak usługi Office 365 lub Microsoft Intune.
+
+![Diagram usługi Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
+
+Usługa PIM pomoże Ci:
+
+-   Pobierz alerty i raporty dotyczące administratorów usługi Azure AD i just-in-time (JIT) dostęp administracyjny do usług Microsoft online services, takich jak Office 365 i Intune.
+
+-   Uzyskaj raporty dotyczące historii dostępu administratora i zmian w przypisaniach administratora.
+
+-   Uzyskiwanie alertów dotyczących dostępu do ról uprzywilejowanych.
+
+## <a name="operations-management-suite"></a>Operations Management Suite
+
+[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) jest firmy Microsoft oparte na chmurze rozwiązanie zarządzania IT, która ułatwia zarządzanie i chronić lokalne i infrastruktury chmury. Ponieważ OMS jest zaimplementowane jako usługa w chmurze, możesz mieć ona działa szybko przy minimalnych inwestycjach w usługi infrastruktury. Nowe funkcje zabezpieczeń są dostarczane automatycznie, co rutynowej konserwacji i uaktualniania kosztów.
+
+Oprócz dostarcza wartościowych usług swój własny, OMS można zintegrować z składników programu System Center, takich jak [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), aby rozszerzyć istniejące bezpieczeństwa zarządzania inwestycji do chmury. System Center i pakiet OMS mogą pracować razem, zapewniając pełnię możliwości hybrydowego zarządzania.
+
+### <a name="holistic-security-and-compliance-posture"></a>Całościowe poziom zabezpieczeń i zgodności
+
+[Pulpit nawigacyjny pakietu OMS, zabezpieczenia i inspekcja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) zapewnia kompleksowy wgląd w Twojej organizacji stan zabezpieczeń IT, za pomocą wbudowanych zapytań wyszukujących istotne problemy, które wymagają Twojej uwagi. Pulpit nawigacyjny zabezpieczenia i inspekcja jest ekran domowy dla wszystko, co jest związane z zabezpieczeniami w pakiecie OMS. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Można również wyświetlić wszystkie zdarzenia w ciągu ostatnich 24 godzin, 7 dni lub dowolnego innego niestandardowego przedziału czasu.
+
+Pulpity nawigacyjne usługi OMS pomóc szybko i łatwo zrozumieć ogólny stan zabezpieczeń w każdym środowisku, wszystkie w kontekście operacji IT, łącznie z oprogramowaniem aktualizacji, ocena, ocena ochrony przed złośliwym oprogramowaniem i linii bazowych konfiguracji. Dane dziennika zabezpieczeń jest łatwo dostępne, aby uprościć procesy inspekcji zabezpieczeń i zgodności.
+
+![Na pulpicie nawigacyjnym pakietu OMS, zabezpieczenia i inspekcja](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+
+Na pulpicie nawigacyjnym pakietu OMS, zabezpieczenia i inspekcja jest podzielony na cztery główne kategorie:
+
+-   **Domeny zabezpieczeń**: umożliwia dalsze możesz eksplorować rekordy zabezpieczeń w czasie; oceny złośliwego oprogramowania dostępu; ocen aktualizacji zabezpieczeń sieci w widoku, tożsamość i uzyskiwać dostęp do informacji; Wyświetlanie komputerów ze zdarzeniami bezpieczeństwa; i szybko uzyskać dostęp do platformy Azure Pulpit nawigacyjny usługi Security Center.
+
+-   **Problemy godne uwagi**: umożliwia szybką identyfikację liczby aktywnych problemów i ważności problemów.
+
+-   **Wykrycia (Podgląd)**: umożliwia zidentyfikowanie wzorców ataków, wyświetlając alerty zabezpieczeń w miarę ich występowania dotyczących poszczególnych zasobów.
+
+-   **Analiza zagrożeń**: umożliwia zidentyfikowanie wzorców ataków, wyświetlając całkowita liczba serwerów z wychodzącym złośliwym ruchem IP, typu złośliwych zagrożeń oraz mapę lokalizacji adresów IP.
+
+-   **Typowe zapytania dotyczące zabezpieczeń**: zawiera listę najbardziej typowych zapytań zabezpieczeń, które służą do monitorowania środowiska. Po wybraniu dowolnego zapytania, w okienku wyszukiwania otwiera i wyświetla wyniki tego zapytania.
+
+### <a name="insight-and-analytics"></a>Usługa Insight and analytics
+W środku [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) jest repozytorium pakietu OMS, która jest hostowana przez platformę Azure.
+
+![Diagram usługi Insight and analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
+
+Możesz zbierać dane do repozytorium z połączonych źródeł przez konfigurowanie źródeł danych i dodawanie rozwiązań do subskrypcji.
+
+![Na pulpicie nawigacyjnym pakietu OMS ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+
+Źródeł danych, jak i rozwiązań należy utworzyć oddzielny rekord typy posiadają osobny zestaw właściwości, ale nadal możesz przeanalizować je razem w zapytaniach do repozytorium. Można użyć tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
 
 
-[Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) jest funkcją [Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) edition, który umożliwia przegląd zdarzeń o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach wpływających na tożsamości organizacji. Microsoft ma został zabezpieczających tożsamości opartej na chmurze za pośrednictwem dekadę i przy użyciu usługi Azure AD Identity Protection, Microsoft jest udostępnianie tych samych systemów ochrony do przedsiębiorstwa. Identity Protection korzysta z możliwości wykrywania anomalii istniejącej usługi Azure AD w dostępne za pośrednictwem [raporty dotyczące usługi Azure AD nietypowych działań](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)i wprowadza nowe typy zdarzeń ryzyka, które umożliwia wykrywanie anomalii w czasie rzeczywistym.
+Większość interakcji z usługą Log Analytics jest za pośrednictwem portalu pakietu OMS, która działa w dowolnej przeglądarce i zapewnia dostęp do ustawień konfiguracji oraz wielu narzędzi służących do analizowania i działania dotyczące zebranych danych. Z poziomu portalu możesz użyć:
+* [Przeszukiwanie dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) gdzie można tworzyć zapytania służące do analizowania zebranych danych.
+* [Pulpity nawigacyjne](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), które można dostosować za pomocą widoków graficznych dotyczących najbardziej wartościowych wyszukiwań.
+* [Rozwiązania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), które zapewniają dodatkowe funkcje i narzędzia analizy.
 
-Usługa Identity Protection używa adaptacyjnych algorytmów uczenia maszynowego i algorytmów heurystycznych na potrzeby wykrywania anomalii i podejrzanych zdarzeń, które mogą wskazywać na naruszenia tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które można zbadać zdarzenia o podwyższonym ryzyku i podjąć odpowiednie środki zaradcze lub ograniczenie akcji.
+![Narzędzia do analizy](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Ale Azure Active Directory Identity Protection jest większa niż przy użyciu narzędzi monitorowania i raportowania. Oparte na zdarzenia o podwyższonym ryzyku, Identity Protection oblicza poziom ryzyka użytkownika, dla każdego użytkownika, dzięki któremu można konfigurować zasady ryzyka, aby automatycznie chronić tożsamości organizacji.
+Rozwiązania powodują dodawanie funkcji do usługi Log Analytics. Przede wszystkim działają w chmurze i zapewniają analizę danych zebranych w repozytorium pakietu OMS. Rozwiązania mogą również definiować nowe typy rekordów do pobrania, które mogą być analizowane za pomocą funkcji wyszukiwań lub przy użyciu dodatkowego interfejsu użytkownika udostępniająca rozwiązania na pulpicie nawigacyjnym pakietu OMS.
 
-Te zasady na podstawie ryzyka, oprócz innych [kontroli dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) udostępniane przez usługi Azure Active Directory i [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access), można automatycznie blokować lub akcji korygowania adaptacyjną, które obejmują ofert Resetowanie haseł i wymuszania uwierzytelnianie wieloskładnikowe.
+Pulpit nawigacyjny zabezpieczenia i inspekcja znajduje się przykład tego typu rozwiązań.
 
-### <a name="identity-protections-capabilities"></a>Funkcje ochrony tożsamości
+### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatyzacja i kontrola: drifts Alert dla konfiguracji zabezpieczeń
 
-Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. Aby chronić tożsamości organizacji, umożliwiają konfigurowanie zasad ryzyka automatycznie odpowiadać na wykryte błędy, jeśli został osiągnięty poziom określonego ryzyka. Te zasady, oprócz innych kontroli dostępu warunkowego zapewniane przez usługę Azure Active Directory i EMS, można automatycznie blokować lub zainicjować akcji korygowania adaptacyjną, które resetowania haseł włącznie i wymuszania uwierzytelnianie wieloskładnikowe.
+Usługa Azure Automation pozwala zautomatyzować procesy administracyjne za pomocą elementów runbook, które są oparte na programie PowerShell i działają w chmurze. Elementy Runbook mogą być również wykonywane na serwerze w lokalnym centrum danych w celu zarządzania zasobami lokalnymi. Usługa Azure Automation udostępnia funkcję zarządzania konfiguracją za pomocą programu PowerShell Desired State Configuration (DSC).
 
-Przykłady niektórych metod, które mogą ułatwić ochronę tożsamości usługi Azure zabezpieczenia konta i tożsamości obejmują:
+![Usługa Azure Automation diagramu](./media/azure-threat-detection/azure-threat-detection-fig7.png)
 
-[Wykrywanie zdarzenia o podwyższonym ryzyku i ryzykowne kont:](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
--   Wykrywanie sześć typów zdarzeń ryzykiem przy użyciu uczenia maszynowego i reguł heurystyczne
--   Obliczanie poziomów ryzyka użytkownika
--   Zapewnianie niestandardowych zalecenia dotyczące poprawy ogólny stan zabezpieczeń przez wyróżnianie luk w zabezpieczeniach
-
-[Badanie zdarzenia ryzyka:](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#investigation)
--   Wysyłanie powiadomienia o zdarzeniach ryzyka
--   Badania ryzyka zdarzeń za pomocą odpowiednich i kontekstowych informacji
--   Zapewnienie podstawowych przepływów pracy do śledzenia kontroli
--   Zapewniając łatwy dostęp do akcji korygowania, takich jak Resetowanie hasła
-
-[Zasady dostępu warunkowego opartego na ryzyka:](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#risky-sign-ins)
--   Zasady złagodzić ryzykowne logowania przez blokowanie logowania lub wymaganie uwierzytelniania wieloskładnikowego wyzwania.
--   Zasady na wartość Blokuj lub kont użytkowników ryzykowne bezpieczne
--   Zasady, aby wymagać od użytkowników rejestracji w usłudze Multi-Factor authentication
-
-### <a name="azure-ad-privileged-identity-management-pim"></a>Usługa Azure AD Privileged Identity Management (PIM)
-
-Z [usługi Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure),
-
-![Usługa Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
-
-Możesz zarządzanie, sterowanie i monitorowanie dostępu w organizacji. Dotyczy to również dostępu do zasobów usługi Azure AD i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
-
-Azure AD Privileged Identity Management pomaga:
-
--   Alert zostanie wygenerowany i raport dotyczący administratorów usługi Azure AD i "just in time" dostęp administracyjny do usługi Online firmy Microsoft, takich jak usługi Office 365 i Intune
-
--   Uzyskaj raporty dotyczące historii dostępu administratora i zmian w przypisaniach administratora
-
--   Uzyskiwanie alertów dotyczących dostępu do ról uprzywilejowanych
-
-## <a name="microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS)
-
-[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) firmy Microsoft w chmurze IT rozwiązanie do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze. Ponieważ oprogramowanie OMS jest zaimplementowane jako usługa w chmurze, może być dostępne szybko przy minimalnym poziomie inwestycji w usługi infrastruktury. Nowe funkcje zabezpieczeń są przeprowadzane automatycznie, zapisywanie rutynowej konserwacji i zaktualizuj kosztów.
-
-Oprócz zapewnienia usług cenne samodzielnie, OMS można zintegrować z składników programu System Center takich jak [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) rozszerzenie zabezpieczeń istniejących inwestycji zarządzania w chmurze. System Center i pakiet OMS mogą pracować razem, zapewniając pełnię możliwości hybrydowego zarządzania.
-
-### <a name="holistic-security-and-compliance-posture"></a>Kompleksowe zabezpieczeń i stan zgodności
-
-[OMS zabezpieczeń i inspekcji pulpitu nawigacyjnego](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) daje szczegółowy wgląd w Twojej organizacji IT stan zabezpieczeń z wbudowaną zapytania dotyczące godne uwagi problemy wymagające uwagi. Pulpit nawigacyjny zabezpieczeń i inspekcji jest ekranu głównego dla wszystkich powiązanych z zabezpieczeniami w OMS. Zawiera ogólne informacje o stanie zabezpieczeń komputerów. Daje również możliwość wyświetlenia wszystkich zdarzeń z ostatnich 24 godzin, 7 dni lub dowolnego innego przedziału czasu.
-
-Pulpity nawigacyjne OMS pomóc szybko i łatwo zrozumieć stan ogólne bezpieczeństwo w innych środowiskach, w kontekście operacji IT, w tym: oceny aktualizacji oprogramowania, oceny ochrony przed złośliwym oprogramowaniem i linie bazowe konfiguracji. Ponadto danych dziennika zabezpieczeń jest łatwo dostępne, aby usprawnić procesy inspekcji zabezpieczeń i zgodności.
-
-Pulpit nawigacyjny Zabezpieczenia i inspekcja w pakiecie OMS jest podzielony na cztery główne kategorie:
-
-![Pulpit nawigacyjny Zabezpieczenia i inspekcja w pakiecie OMS](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
-
--   **Zabezpieczeń domeny:** w tym obszarze będzie dalszą analizę rekordy zabezpieczeń w czasie, dostęp do oceny złośliwego oprogramowania, aktualizacji oceny, zabezpieczenia sieci, informacje o tożsamości i dostępu, komputery ze zdarzeniami zabezpieczeń i szybko uzyskiwać dostęp do pulpitu nawigacyjnego Centrum zabezpieczeń Azure.
-
--   **Godne uwagi problemy:** ta opcja umożliwia szybką identyfikację liczba aktywnych problemów i ważność tych problemów.
-
--   **Wykryć (wersja zapoznawcza):** umożliwia identyfikowanie wzorców ataków przez wizualizacja alerty zabezpieczeń, zgodnie z ich odbywać się z zasobami.
-
--   **Analizy zagrożeń:** umożliwia identyfikowanie wzorców ataków przez wizualizacja łącznej liczby serwerów z wychodzącym ruchem złośliwego oprogramowania IP, typ złośliwe oprogramowanie i mapy, pokazujący, gdzie pochodzą z tych adresów IP.
-
--   **Typowe zapytania zabezpieczeń:** tę opcję, zawiera listę typowych zapytań zabezpieczeń, które służy do monitorowania środowiska. Po kliknięciu w jednym z tych zapytań zostanie otwarty blok wyszukiwania z wyników dla tego zapytania.
-
-### <a name="insight-and-analytics"></a>Wgląd w dane i analizy
-W Centrum [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) repozytorium OMS, która jest hostowana w chmurze Azure.
-
-![Wgląd w dane i analizy](./media/azure-threat-detection/azure-threat-detection-fig4.png)
-
-Dane są zbierane do repozytorium z połączonych źródeł przez konfigurowanie źródeł danych i dodawanie rozwiązań do subskrypcji.
-
-![subskrypcja](./media/azure-threat-detection/azure-threat-detection-fig5.png)
-
-Za pomocą źródeł danych i rozwiązań będą tworzone różne typy rekordów mających własne zestawy właściwości, ale które mogą być analizowane razem w zapytaniach do repozytorium. Pozwala to korzystać z tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
-
-
-W większości współpracy z analizy dzienników jest za pośrednictwem portalu OMS, która działa w dowolnej przeglądarce i zapewnia dostęp do ustawień konfiguracji i wiele narzędzi do analizowania i działa na zebranych danych. Z portalu, możesz użyć [dziennika wyszukiwania](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) w przypadku, gdy tworzenia zapytań do analizowania danych zebranych [pulpity nawigacyjne](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), który można dostosować za pomocą graficznego widoków najbardziej przydatne wyszukiwania i [rozwiązań](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), które zapewniają dodatkowe narzędzia funkcjonalność i analizy.
-
-![narzędzia do analizy](./media/azure-threat-detection/azure-threat-detection-fig6.png)
-
-Rozwiązania powodują dodawanie funkcji do usługi Log Analytics. Działają one głównie w chmurze i zapewniają analizę danych zebranych w repozytorium pakietu OMS. Mogą również definiować nowe typy rekordów do pobrania, które można przeanalizować za pomocą funkcji wyszukiwań w dziennikach lub przy użyciu dodatkowego interfejsu użytkownika udostępnionego przez rozwiązanie w ramach pulpitu nawigacyjnego pakietu OMS.
-Bezpieczeństwo i inspekcji jest przykładem tego rodzaju rozwiązań.
-
-
-
-### <a name="automation--control-alert-on-security-configuration-drifts"></a>Automatyzacja i kontrola: drifts alertu w konfiguracji zabezpieczeń
-
-Automatyzacja Azure pozwala zautomatyzować procesów administracyjnych z elementami runbook, które są oparte na programie PowerShell i uruchom w chmurze Azure. Elementy Runbook mogą być również wykonywane na serwerze w lokalnym centrum danych w celu zarządzania zasobami lokalnymi. Usługi Automatyzacja Azure umożliwia zarządzanie konfiguracją w usłudze Konfiguracja DSC środowiska PowerShell (konfiguracji żądanego stanu).
-
-![Azure Automation](./media/azure-threat-detection/azure-threat-detection-fig7.png)
-
-Można tworzyć i zarządzanie zasobami DSC hostowana na platformie Azure i zastosować je do chmury oraz systemów lokalnych, aby zdefiniować i automatycznie wymuszać ich konfiguracji lub pobrać raporty na kilka ułatwia zapewnienie pozostawienie konfiguracjach zabezpieczeń w ramach zasad.
+Można tworzyć i zarządzać zasobów DSC, które są hostowane na platformie Azure i zastosować je do chmury i lokalnych systemów. Wykonując, dzięki czemu można zdefiniować i automatycznego wymuszania ich konfiguracji lub uzyskaj raporty dotyczące odejściem od tego stanu w celu zapewnienia zabezpieczenia konfiguracje pozostają w ramach zasad.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Centrum zabezpieczeń Azure ułatwia ochronę zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure. W ramach usługi, to można zdefiniować zasady nie tylko z subskrypcjami platformy Azure, ale także przed [grup zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), dlatego może być bardziej szczegółowego.
+Usługa Azure Security Center pomaga w ochronie Twoich zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure. W ramach usługi, można zdefiniować zasady dla obu subskrypcji platformy Azure i [grup zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) dla większy poziom szczegółowości.
 
-![Azure Security Center](./media/azure-threat-detection/azure-threat-detection-fig8.png)
+![Diagram usługi Azure Security Center](./media/azure-threat-detection/azure-threat-detection-fig8.png)
 
 Pracownicy naukowo-badawczy firmy Microsoft stale poszukują nowych zagrożeń. Mają oni dostęp do szerokiej gamy rozwiązań telemetrycznych uzyskanych dzięki obecności firmy Microsoft na całym świecie zarówno w chmurze, jak i lokalnie. Bogata i różnorodna kolekcja zestawów danych pozwala firmie Microsoft odnajdywać nowe trendy i wzorce ataków, które pojawiają się w jej lokalnych produktach dla firm i osób prywatnych, a także usługach online.
 
-W związku z tym Centrum zabezpieczeń można szybko aktualizować algorytmy wykrywania, ponieważ osoby atakujące wersji nowy, coraz bardziej zaawansowany luki w zabezpieczeniach. Takie podejście ułatwia sprostać środowisku przenoszenia fast zagrożeń.
+W związku z tym usługa Security Center może szybko zaktualizować swoje algorytmy wykrywania, jak atakujący wprowadzają nowe i coraz bardziej zaawansowanymi luki w zabezpieczeniach. Takie podejście pomaga zmieniającego się środowiska zagrożenia zmieniających.
 
-![Security Center](./media/azure-threat-detection/azure-threat-detection-fig9.jpg)
+![Wykrywanie zagrożeń w usłudze Security Center](./media/azure-threat-detection/azure-threat-detection-fig9.jpg)
 
-Wykrywanie zagrożeń za pomocą usługi Security Center polega na automatycznym zbieraniu informacji o zabezpieczeniach uzyskanych z zasobów platformy Azure, sieci i powiązanych rozwiązań partnerskich.  Analizę te informacje korelowanie informacji z wielu źródeł, aby zidentyfikować zagrożeń.
+Wykrywanie zagrożeń za pomocą usługi Security Center polega na automatycznym zbieraniu informacji o zabezpieczeniach uzyskanych z zasobów platformy Azure, sieci i powiązanych rozwiązań partnerskich. Analizuje ona te informacje, zestawiając informacje z wielu źródeł, aby zidentyfikować zagrożenia.
+
 Alerty zabezpieczeń wraz z zaleceniami dotyczącymi usuwania zagrożeń są traktowane przez usługę Security Center priorytetowo.
 
-Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpieczeń, które wykraczają daleko poza metody bazujące na sygnaturze. Osiągnięć w danych big data i [uczenia maszynowego](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technologii są używane do analizowania zdarzenia w chmurze całej sieci szkieletowej — wykrywanie zagrożenia, które nie można wysyłać do identyfikacji przy użyciu metod ręcznych i prognozowanie rozwoju ataki. Te analizy zabezpieczeń obejmuje następujące elementy.
+Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpieczeń, które wykraczają daleko poza metody bazujące na sygnaturze. Przełomowe, danych big Data i [uczenia maszynowego](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technologie są używane do oceny zdarzeń w całej sieci szkieletowej chmury. Zaawansowane funkcje analityczne potrafi wykrywać zagrożenia, które byłyby niemożliwe do wykrycia przy użyciu ręcznych metod i prognozowanie ewolucji ataków. Te typy analizy zabezpieczeń zostały omówione w kolejnych sekcjach.
 
 ### <a name="threat-intelligence"></a>Analiza zagrożeń
 
-Firma Microsoft dysponuje ogromną ilością danych do globalnej analizy zagrożeń.
-Dane telemetryczne przechodzi w z wielu źródeł, takich jak Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft jednostki ds. przestępstw cyfrowych (DCU) i Microsoft Security odpowiedzi Center (MSRC).
+Firma Microsoft ma dostęp do ogromną ilość globalnej analizy zagrożeń.
 
-![Analiza zagrożeń](./media/azure-threat-detection/azure-threat-detection-fig10.jpg)
+Dane telemetryczne przepływu w ramach z wielu źródeł, takich jak Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, jednostki Microsoft Digital crimes Unit (DCU) i Microsoft Security Response Center (MSRC).
 
-Pracownicy naukowi otrzymują również informacje dotyczące analizy zagrożeń, które są wymieniane między największymi dostawcami usług w chmurze oraz subskrypcje źródeł analizy zagrożeń od innych firm. Usługa Azure Security Center może użyć tych informacji, aby ostrzec użytkownika przed zagrożeniami ze strony znanych złośliwych podmiotów. Oto niektóre przykłady:
+![Wyniki analizy zagrożeń](./media/azure-threat-detection/azure-threat-detection-fig10.jpg)
 
--   **Wykorzystanie mocy Machine Learning -** Centrum zabezpieczeń Azure ma dostęp do dużych ilości danych o aktywność w chmurze sieci, która może służyć do wykrywania zagrożeń przeznaczonych dla platformy Azure wdrożeń. Na przykład:
+Pracownicy naukowi otrzymują również informacje dotyczące analizy zagrożeń, który jest udostępniany między dostawcami usług w chmurze i zasubskrybowaniu źródeł analizy zagrożeń pochodzące od innych firm. Usługa Azure Security Center może użyć tych informacji, aby ostrzec użytkownika przed zagrożeniami ze strony znanych złośliwych podmiotów. Oto niektóre przykłady:
 
--   **Atak wykryć Force -** uczenia maszynowego służy do tworzenia historycznych wzorzec prób dostępu zdalnego, co umożliwia wykrywanie ataków siłowych wobec portów SSH, RDP i SQL.
+-   **Wykorzystywanie możliwości usługi machine learning**: Usługa Azure Security Center ma dostęp do ogromnej ilości danych dotyczących aktywności sieciowej w chmurze, która może służyć do wykrywania zagrożeń atakujących wdrożeń platformy Azure.
 
--   **Wychodzące DDoS i wykrywania Botnet** — typowe celem ataków przeznaczonych dla zasobów w chmurze jest użyć moc obliczeniową tych zasobów, aby wykonać inne ataki.
+-   **Wykrywanie ataków siłowych**: Machine learning służy do tworzenia historycznych wzorzec prób dostępu zdalnego, co umożliwia wykrywanie ataków siłowych na porty protokołu Secure Shell (SSH), protokołu RDP (Remote Desktop) i SQL.
 
--   **Nowe serwery analizy behawioralnej i maszyn wirtualnych -** po serwera lub maszyny wirtualnej zostanie naruszony, osoby atakujące stosować różnych technik w celu wykonania złośliwego kodu w tym systemie podczas unikanie wykrywania, zapewnienia trwałości i jak Opcje zabezpieczeń.
+-   **Wychodzące wykrywanie ataków DDoS i botnet**: wspólny cel ataków, przeznaczonych dla zasobów w chmurze jest użycie moc obliczeniową tych zasobów do wykonania innych ataków.
 
--   **Wykrywanie zagrożeń bazy danych Azure SQL -** wykrywanie zagrożeń bazy danych SQL Azure, który identyfikuje nietypowe działania bazy danych wskazujący nietypowe i potencjalnie szkodliwe próbuje uzyskać dostęp lub wykorzystać baz danych.
+-   **Nowe serwery analizy behawioralnej i maszyny wirtualne**: po serwer lub maszyna wirtualna zostanie naruszony, osoby atakujące stosować szerokiej gamy techniki, aby wykonać złośliwy kod w tym systemie podczas unikanie wykrywania, zapewnienia trwałości i eliminuje Opcje zabezpieczeń.
+
+-   **Wykrywanie zagrożeń usługi Azure SQL Database**: zagrożeń wykrywania usługi Azure SQL Database, który identyfikuje nietypowe działania bazy danych wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych.
 
 ### <a name="behavioral-analytics"></a>Analiza behawioralna
 
 Analiza behawioralna to metoda, która polega na analizie danych i porównywaniu ich z kolekcją znanych wzorców. Wzorce te nie są jednak prostymi sygnaturami. Określa się je za pośrednictwem złożonych algorytmów uczenia maszynowego, które są stosowane w przypadku wielkich zestawów danych.
 
-![Analiza behawioralna](./media/azure-threat-detection/azure-threat-detection-fig11.jpg)
+![Wyniki analizy behawioralnej](./media/azure-threat-detection/azure-threat-detection-fig11.jpg)
 
+Wzorce są też określane przy użyciu dokładnej analizy złośliwych zachowań przez doświadczonych analityków. Usługa Azure Security Center może użyć analizy behawioralnej w celu zidentyfikowania zaatakowanych zasobów na podstawie analizy dzienników maszyny wirtualnej, dzienników urządzenia sieci wirtualnej, dzienników sieci szkieletowej, zrzutów awaryjnych i innych źródeł.
 
-Są one również określane przez specjalistów od analizy, którzy dokonują dokładnej analizy złośliwych zachowań. Centrum zabezpieczeń Azure umożliwia analizy behawioralnej Zidentyfikuj złamany zasoby oparte na analizie dzienników maszyny wirtualnej, dzienniki urządzeń sieci wirtualnej, dzienniki sieci szkieletowej, zrzuty awaryjne i innych źródeł.
-
-Ponadto istnieje korelacja z innymi sygnałami, które wykrywają dowody potwierdzające istnienie szeroko zakrojonej kampanii ataku. Ta korelacja pomaga w identyfikacji zdarzeń, które są zgodne ze sprawdzonymi wskaźnikami naruszenia bezpieczeństwa.
+Ponadto wzorce są powiązane z innymi sygnałami dowody szeroko zakrojonej kampanii ataku. Ta korelacja pomaga w identyfikacji zdarzeń, które są zgodne ze sprawdzonymi wskaźnikami naruszenia bezpieczeństwa.
 
 Oto niektóre przykłady:
--   **Wykonanie procesu podejrzane:** osoby atakujące stosować kilka technik w celu wykonania złośliwego oprogramowania bez wykrywania. Na przykład osoba atakująca może zapewniają tych samych nazw pliki systemowe uzasadnionych złośliwego oprogramowania, ale umieścić te pliki w innej lokalizacji, użyj nazwy, która jest bardzo podobna niegroźne pliku lub zamaskować rozszerzenie wartość true. Usługa Security Center modeluje zachowania procesów oraz monitoruje wykonanie procesu, aby wykryć elementy odstające, takie jak w przykładzie.
+-   **Wykonanie podejrzanego procesu**: osoby atakujące stosują kilka metod, które pozwalają na niezauważalne uruchomienie złośliwego oprogramowania. Na przykład osoba atakująca może nadać złośliwemu oprogramowaniu takie same nazwy co pliki w legalnym systemie, ale umieścić te pliki w innej lokalizacji, użyj nazwy, która jest podobny do nazwy niezłośliwego pliku lub zamaskować prawdziwe rozszerzenie tego pliku. Modeli usługi Security Center przetwarzać zachowania i wykonania procesu monitora wykryć elementy odstające, takie jak te.
 
--   **Ukryte przed złośliwym oprogramowaniem i wykorzystywania prób:** zaawansowane złośliwego oprogramowania można uniknięcia produktów tradycyjnych ochrony przed złośliwym kodem, nigdy nie zapisu na dysku lub szyfrowania składników oprogramowania przechowywane na dysku. Jednak takie złośliwego oprogramowania mogą być wykrywane przy użyciu analizy pamięci, jak złośliwe oprogramowanie musi pozostać dane śledzenia w pamięci funkcji. Jeśli wystąpi awaria oprogramowania, zrzut awaryjny przechwytuje część pamięci w chwili pojawienia się awarii. Analizując pamięci w zrzutu awaryjnego, Centrum zabezpieczeń Azure wykrywa techniki wykorzystują luki w zabezpieczeniach oprogramowania, dostęp do poufnych danych i utrwalić ukryty sposób na maszynie z naruszonymi zabezpieczeniami bez wpływu na wydajność sieci maszyny.
+-   **Ukryte złośliwe oprogramowanie i próby eksploatacji**: Zaawansowane złośliwe oprogramowanie może uniknięcia produktów tradycyjnych ochrony przed złośliwym oprogramowaniem, rezygnując z zapisu na dysku lub szyfrując składniki oprogramowania zapisywane na dysku. Jednak złośliwe oprogramowanie może zostać wykryte za pomocą analizy pamięci, ponieważ musi zostawiać ślady w pamięci do funkcji. Jeśli wystąpi awaria oprogramowania, zrzut awaryjny przechwytuje część pamięci w chwili pojawienia się awarii. Analizując pamięć w zrzucie awaryjnym, usługa Azure Security Center może wykryć metody użyte w celu wykorzystania luk w zabezpieczeniach oprogramowania, dostęp do poufnych danych i dyskretnego pozostania na zainfekowanym komputerze bez wywierania wpływu na wydajność sieci maszyny.
 
--   **Penetracji przepływu i Rekonesans wewnętrzny:** Aby trwale w złamany sieci i zlokalizuj zbiorów cennych danych, osoby atakujące często usiłują penetrację z naruszonymi zabezpieczeniami maszyny do innych użytkowników w tej samej sieci. Centrum zabezpieczeń monitoruje działania procesu i logowania do odnajdywania próbuje rozwiń pozycję stopień osoba atakująca w ramach sieci, takie jak zdalne wykonywanie polecenia, sondowanie sieci i wyliczania kont.
+-   **Penetracja sieci i wewnętrzny Rekonesans**: aby utrwalić w sieci, w których bezpieczeństwo zostało naruszone, a następnie znajdź i zebrać cenne dane, osoby atakujące często usiłują przemieszczają się z zagrożoną maszynę do innych użytkowników w ramach tej samej sieci. Usługa Security Center monitoruje działania procesów i logowania do odnajdywania prób zdobycia przez osobę atakującą przyczółków w sieci, takich jak wykonanie polecenia zdalnego, sondowania sieci i wyliczania kont.
 
--   **Złośliwych skryptów środowiska PowerShell:** programu PowerShell mogą posłużyć osobom atakującym do wykonania złośliwego kodu na docelowych maszyn wirtualnych do różnych celów. Usługa Security Center sprawdza działanie programu PowerShell w poszukiwaniu dowodów na podejrzaną aktywność.
+-   **Złośliwe skrypty programu PowerShell**: PowerShell może służyć przez osoby atakujące do wykonać złośliwy kod na docelowych maszynach wirtualnych do różnych celów. Usługa Security Center sprawdza działanie programu PowerShell w poszukiwaniu dowodów na podejrzaną aktywność.
 
--   **Wychodzące ataków:** osoby atakujące często docelowych zasobów w chmurze w celu użycia tych zasobów, aby zainstalować dodatkowe ataków. Zagrożonych maszyn wirtualnych, na przykład może służyć do uruchamiania ataków siłowych wobec innych maszyn wirtualnych, wysyłania SPAMU lub skanowania otwartych portów i innych urządzeń w Internecie. Dzięki zastosowaniu uczenia maszynowego do ruchu sieciowego usługa Security Center może wykryć, kiedy wychodząca komunikacja sieciowa przekracza normy. Podczas wysyłania SPAMU, Centrum zabezpieczeń również są powiązane z ruchu nietypowe wiadomości e-mail z informacjami z usługi Office 365, aby ustalić, czy wiadomość jest prawdopodobnie nefarious lub wynik kampanii uzasadnionych poczty e-mail.
+-   **Ataki wychodzące**: dla osób atakujących częstym celem są zasoby w chmurze, ponieważ mogą one być użyte do przeprowadzenia dodatkowych ataków. Zagrożonych maszyn wirtualnych, na przykład może służyć do przeprowadzania ataków siłowych na inne maszyny wirtualne, wysyłania spamu lub skanowania otwartych portów i innych urządzeń w Internecie. Dzięki zastosowaniu uczenia maszynowego do ruchu sieciowego usługa Security Center może wykryć, kiedy wychodząca komunikacja sieciowa przekracza normy. Po wykryciu spamu usługa Security Center zestawia nietypowy ruch wiadomości e-mail z danymi analizy usługi Office 365 w celu ustalenia, czy wiadomość e-mail jest prawdopodobnie szkodliwa lub wynikiem uzasadnionej kampanii e-mail.
 
 ### <a name="anomaly-detection"></a>Wykrywanie anomalii
 
 Usługa Azure Security Center używa również wykrywania anomalii do identyfikowania zagrożeń. W przeciwieństwie do analizy behawioralnej (która zależy od znanych wzorców wyprowadzonych z dużych zestawów danych), wykrywanie anomalii jest bardziej „spersonalizowane” i koncentruje się na liniach bazowych, które są specyficzne dla przeprowadzonych wdrożeń. Uczenie maszynowe jest stosowane do określania normalnego działania wdrożeń, a następnie generowania reguł definiujących odstające warunki, które mogą reprezentować zdarzenie związane z zabezpieczeniami. Oto przykład:
 
--   **Ruchu przychodzącego protokołu RDP/SSH ataków siłowych:** wdrożeń może być zajęta maszyn wirtualnych z wielu logowania do każdego dnia i innych maszyn wirtualnych, które mają niektórych lub żadnych uprawnień do logowania. Centrum zabezpieczeń Azure można ustalić aktywność logowania linii bazowej dla tych maszyn wirtualnych i używać machine learning do definiowania wokół logowania normalnego działania. W przypadku niezgodności z linią bazową zdefiniowany dla właściwości, skojarzone z logowaniem, alert może zostać wygenerowany. To uczenie maszynowe określa co jest istotne.
+-   **Przychodzące ataki siłowe RDP/SSH**: wdrożenia może być zajęty maszyn wirtualnych przy użyciu wielu logowania każdego dnia lub innych maszyn wirtualnych, które mają kilka, nazwy logowania. Usługa Azure Security Center można ustalić linię bazową aktywności logowania dla tych maszyn wirtualnych i używać uczenia maszynowego, aby zdefiniować wokół działaniami normalnych logowania. W przypadku niezgodności z linią bazową zdefiniowana dla właściwości skojarzone z logowaniem, może zostać wygenerowany alert. To uczenie maszynowe określa co jest istotne.
 
-### <a name="continuous-threat-intelligence-monitoring"></a>Analizy zagrożeń ciągłego monitorowania
+### <a name="continuous-threat-intelligence-monitoring"></a>Ciągłe monitorowanie analizy zagrożeń
 
-Centrum zabezpieczeń Azure działa z zabezpieczeń zespoły badawczo -danych nauki na świecie które na stałe monitorowanie zmian w zagrożeń. Obejmuje to następujące inicjatywy:
+Usługa Azure Security Center działa zespołom zabezpieczeń badania i danych do analizy w całym świecie, które stale monitorują zmiany w przepisach zagrożeń. Obejmuje to następujące inicjatywy:
 
--   **Monitorowanie analizy zagrożeń:** zagrożeń analizy zawiera mechanizmy, wskaźników, wpływ i możliwością porady dotyczące istniejących lub nowych zagrożeń. Te informacje są udostępniane w branży zabezpieczeń, a firma Microsoft stale monitoruje zagrożenia płynące z wewnętrznych i zewnętrznych źródeł.
+-   **Monitorowanie analizy zagrożeń**: analiza zagrożeń obejmuje mechanizmy, wskaźniki, konsekwencje i wiarygodne porady dotyczące istniejących lub pojawiających się zagrożeń. Te informacje są udostępniane w branży zabezpieczeń, a firma Microsoft stale monitoruje zagrożenia płynące z wewnętrznych i zewnętrznych źródeł.
 
--   **Udostępnianie sygnału:** wgląd w dane dotyczące zabezpieczeń zespołów całej szerokie oferty firmy Microsoft w chmurze i lokalnych usług, serwerów i klientów urządzeń programu endpoint są udostępniane i przeanalizowane.
+-   **Udostępnianie sygnału**: wgląd w zabezpieczenia zespołów korzystających z szerokim portfolio firmy Microsoft w chmurze i lokalnych usług, serwerów i klientów urządzeń punktu końcowego są udostępniane i analizowane.
 
--   **Specjalistów zabezpieczeń firmy Microsoft:** trwającą interakcji użytkowników z zespołów przez Microsoft działające w polach zabezpieczeń specjalnych, takich jak danych dowodowych i wykrywanie ataków w sieci web.
+-   **Specjaliści ds. zabezpieczeń firmy Microsoft**: ciągłe zaangażowanie z zespołów firmy Microsoft, które działają w polach wyspecjalizowanych zabezpieczeń, takich jak analiza śledcza i wykrywanie ataków w sieci web.
 
--   **Dostrajanie wykrywania:** algorytmy są uruchamiane w odniesieniu do zestawów danych rzeczywistych klienta i bezpieczeństwa pracowników naukowo-badawczych współpracuje z klientami, aby zweryfikować wyniki. Wyniki prawdziwie i fałszywie dodatnie są używane w celu udoskonalania algorytmów uczenia maszynowego.
+-   **Dostrajanie wykrywania zagrożeń**: algorytmy są uruchamiane na rzeczywistych zestawach danych klienta i badacze zabezpieczeń pracują z klientami, aby zweryfikować wyniki. Wyniki prawdziwie i fałszywie dodatnie są używane w celu udoskonalania algorytmów uczenia maszynowego.
 
-Wszystkie te połączone wysiłki skutkują nowymi i ulepszonymi sposobami wykrywania zagrożeń, z których można korzystać od razu — użytkownik nie musi w tym kierunku nic robić.
+Wszystkie te połączone wysiłki skutkują nowe i ulepszone funkcje wykrywania, których można korzystać od razu. Nie ma akcji robić.
 
-## <a name="advanced-threat-detection-features---other-azure-services"></a>Funkcje wykrywania Advanced Threat — innymi usługami platformy Azure
+## <a name="advanced-threat-detection-features-other-azure-services"></a>Zaawansowanych funkcjach wykrywania zagrożeń: inne usługi systemu Azure
 
-### <a name="virtual-machine-microsoft-antimalware"></a>Maszyna wirtualna: Microsoft chroniące przed złośliwym kodem
+### <a name="virtual-machines-microsoft-antimalware"></a>Maszyny wirtualne: firmy Microsoft chroniąca przed złośliwym kodem
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) Azure to rozwiązanie jednego agenta do aplikacji i środowisk dzierżawy, przeznaczony do pracy w tle bez udziału człowieka. Można wdrożyć ochrony oparte na potrzeby obciążeń aplikacji, z albo podstawowe secure domyślnie lub Zaawansowane Konfiguracja niestandardowa, w tym monitorowania ochrony przed złośliwym oprogramowaniem. Azure ochrony przed złośliwym kodem jest opcja zabezpieczeń dla maszyn wirtualnych platformy Azure i jest automatycznie instalowany na wszystkich maszynach wirtualnych Azure PaaS.
+[Firmy Microsoft chroniąca przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware) for Azure to rozwiązanie jednego agenta do aplikacji i środowisk dzierżawy, zaprojektowane do uruchamiania w tle bez interwencji człowieka. Można wdrożyć ochrony odpowiednio do potrzeb obciążeń aplikacji, za pomocą obu podstawowe secure domyślnie lub zaawansowanych konfiguracji niestandardowej, włącznie z monitorowaniem ochrony przed złośliwym oprogramowaniem. Azure ochrony przed złośliwym kodem jest opcja zabezpieczeń maszyn wirtualnych platformy Azure, która jest automatycznie instalowany na wszystkich maszynach wirtualnych w modelu PaaS platformy Azure.
 
-**Funkcje platformy Azure, aby wdrożyć i włączyć Antimalware firmy Microsoft dla aplikacji**
+#### <a name="microsoft-antimalware-core-features"></a>Podstawowe funkcje w bazie wiedzy firmy Microsoft chroniące przed złośliwym kodem
 
-#### <a name="microsoft-antimalware-core-features"></a>Funkcje podstawowe ochrony przed złośliwym oprogramowaniem firmy Microsoft
+Poniżej przedstawiono funkcje systemu Azure, wdrażanie i włączanie ochrony przed złośliwym oprogramowaniem firmy Microsoft dla aplikacji, które:
 
--   **Ochrona w czasie rzeczywistym -** monitoruje aktywność usług w chmurze i maszyn wirtualnych do wykrywania i blokowania złośliwego oprogramowania wykonywania.
+-   **Ochrona w czasie rzeczywistym**: monitoruje aktywność w usługach w chmurze i na maszynach wirtualnych, aby wykrywać i blokować wykonywanie złośliwego oprogramowania.
 
--   **Zaplanowane skanowanie -** okresowo wykonuje skanowanie docelowe do wykrywania złośliwego oprogramowania, włącznie z aktywnie działającymi programy.
+-   **Zaplanowane skanowanie**: okresowo wykonuje skanowanie docelowych do wykrywania złośliwego oprogramowania, w tym aktywnie uruchomione programy.
 
--   **Korygowania złośliwego oprogramowania -** automatycznie pobiera wykrytego złośliwego oprogramowania, takich jak usuwanie lub poddawania złośliwych plików i czyszczenie wpisy rejestru złośliwych działań.
+-   **Korygowaniem złośliwego oprogramowania**: automatycznie działa na wykryte złośliwe oprogramowanie, takie jak usuwanie lub poddawania kwarantannie złośliwych plików i czyszczenie wpisy rejestru złośliwe.
 
--   **Aktualizacje podpisu —** automatycznie instaluje najnowsze podpisy ochrony (definicje wirusów) do ochrony znajduje się aktualny na wstępnie określoną częstotliwością.
+-   **Sygnatury aktualizacji**: automatycznie instaluje najnowszą podpisy ochrony (definicje wirusów) w celu zapewnienia ochrony na bieżąco z wstępnie ustaloną częstotliwością.
 
--   **Aktualizacje aparatu ochrony przed złośliwym kodem —** automatycznie aktualizuje aparat Antimalware firmy Microsoft.
+-   **Aktualizacje aparatu ochrony przed złośliwym oprogramowaniem**: automatycznie aktualizuje Microsoft Antimalware Engine.
 
--   **Aktualizacje platformy ochrony przed złośliwym kodem —** automatycznie aktualizuje platformy Microsoft Antimalware.
+-   **Aktualizacje platformy ochrony przed złośliwym oprogramowaniem**: automatycznie aktualizuje Platforma ochrony przed złośliwym oprogramowaniem firmy Microsoft.
 
--   **Active protection -** raporty telemetrii metadanych o wykrytych zagrożeń i podejrzane zasobów do systemu Microsoft Azure w celu zapewnienia szybkiego odpowiedzi na zmieniające się zagrożeń i włączenie dostarczania w czasie rzeczywistym synchroniczne podpisu za pomocą Systemu Microsoft Active Protection (MAPS).
+-   **Aktywnej ochrony**: raporty telemetrii metadane dotyczące wykrytych zagrożeń i podejrzane zasoby platformy Microsoft Azure, aby zapewnić szybką odpowiedź do stale rosnących potrzeb świat zagrożeń, umożliwiając dostarczanie w czasie rzeczywistym podpisu synchroniczne za pośrednictwem Microsoft active protection systemu.
 
--   **Przykłady raportowanie —** zapewnia i raporty próbek do usługi Microsoft Antimalware ułatwia uściślić usługi i włączyć rozwiązywania problemów.
+-   **Przykłady raportowania**: umożliwia i raportów przykłady do usługi ochrony przed złośliwym oprogramowaniem firmy Microsoft w celu pomocy usługi analizy i umożliwiają rozwiązywanie problemów.
 
--   **Wykluczenia —** pozwala na konfigurowanie niektórych plików procesów, aplikacji i Administratorzy usługi i dyski, aby wykluczyć je z ochrony i skanowanie w poszukiwaniu wydajności i/lub innych powodów.
+-   **Wykluczenia**: umożliwia aplikacji i administratorów usług, aby skonfigurować niektóre pliki, procesów i dyski do wykluczenia z ochrony i skanowanie pod kątem wydajności i innych powodów.
 
--   **Zbieranie zdarzeń ochrony przed złośliwym kodem —** rejestruje kondycję usługi ochrony przed złośliwym kodem, podejrzanych działań i korygowania akcje wykonywane w dzienniku zdarzeń systemu operacyjnego i zbiera je do konta usługi Azure Storage klienta.
+-   **Zbieranie zdarzeń ochrony przed złośliwym oprogramowaniem**: rejestruje kondycję usługi ochrony przed złośliwym oprogramowaniem, podejrzanych działań i działania korygujące w dzienniku zdarzeń systemu operacyjnego i zbiera je na konto magazynu platformy Azure przez klienta.
 
-### <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń bazy danych Azure SQL
+### <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 
-[Wykrywanie zagrożeń bazy danych w usłudze Azure SQL](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) to nowa funkcja analizy zabezpieczeń wbudowanych w usłudze Azure SQL Database. Wykrywanie zagrożeń bazy danych SQL Azure działa przez całą dobę, aby dowiedzieć się, profile i wykrywa nietypowe działania bazy danych, identyfikuje potencjalne zagrożenia bazy danych.
+[Wykrywanie zagrożeń usługi Azure SQL Database](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) to nowa funkcja analizy zabezpieczeń wbudowaną w usługę Azure SQL Database. Wykrywanie zagrożeń w usłudze Azure SQL Database działa przez całą dobę, aby dowiedzieć się, profilowanie i wykrywać nietypowe działania bazy danych, i identyfikuje reagowanie na potencjalne zagrożenia bazy danych.
 
-Funkcjonariusze lub innych administratorów wyznaczonych można uzyskać natychmiastowego wysłania powiadomienia o bazy danych podejrzanych działaniach miarę ich występowania. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zaleca jak do dalszego zbadania i ograniczyć zagrożenie.
+Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy mogą uzyskać natychmiastowego wysłania powiadomienia o podejrzanych działaniach bazy danych, w jakiej występują. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zaleca zastosowanie jak dalszego zbadania i wyeliminowania zagrożenia.
 
-Obecnie wykrywanie zagrożeń bazy danych SQL Azure wykrywa potencjalnych luk w zabezpieczeniach i ataki i wzorce dostępu nietypowych bazy danych.
+Obecnie usługa wykrywania zagrożeń bazy danych SQL Azure wykrywa potencjalnych luk w zabezpieczeniach oraz atakami polegającymi na iniekcji SQL i bazy danych nietypowe wzorce dostępu.
 
-Po otrzymaniu powiadomienia e-mail wykrywania zagrożeń, użytkownicy są możliwe do nawigowania i wyświetlanie rekordów inspekcji odpowiednich przy użyciu głębokie łącze w wiadomości e-mail, którego kliknięcie spowoduje otwarcie podglądu inspekcji i/lub wstępnie skonfigurowane, szablon programu Excel, pokazujący rekordów inspekcji odpowiednich wokół inspekcji czas podejrzane zdarzenia zgodnie z następujących czynności:
--   Magazyn danych inspekcji dla serwera bazy danych/z nietypowe działania bazy danych
+Po odebraniu powiadomienia e-mail wykrywania zagrożeń, użytkownicy mogą przejść i wyświetlanie rekordów inspekcji odpowiednie za pośrednictwem linku bezpośredniego w wiadomości e-mail. Łącze otwiera podgląd inspekcji lub wstępnie skonfigurowane inspekcji szablon programu Excel, który pokazuje rekordy inspekcji odpowiednie zbliżonym do czasu wystąpienia podejrzanego zdarzenia zgodnie z następujących czynności:
 
--   Tabeli magazynu inspekcji odpowiednich użytej w czasie zdarzenia można zapisać dziennik inspekcji
+-   Inspekcja magazynu dla serwera bazy danych/za pomocą nietypowe działania bazy danych.
 
--   Rejestruje następujące godziny inspekcji, ponieważ występuje zdarzenie.
+-   Inspekcji odpowiednie tabeli magazynu, który został użyty w czasie zdarzenia do zapisu w dzienniku inspekcji.
 
--   Rekordy inspekcji podobne zdarzenia o identyfikatorze w czasie zdarzenia (opcjonalny w przypadku niektórych detektory)
+-   Rekordy godziny natychmiast po wystąpieniu zdarzeń inspekcji.
+
+-   Inspekcji przy użyciu podobnych identyfikator zdarzenia w czasie zdarzenia (opcjonalny w przypadku niektórych detektory).
 
 Detektory zagrożeń bazy danych SQL, użyj jednej z następujących metod wykrywania:
 
--   **Wykrywanie deterministyczne —** wykrywa podejrzanych wzorców (na podstawie reguły) w zapytaniach klienta SQL zgodne znane ataki. Tej metody ma wykrywania wysoki i niski wynik fałszywie dodatni, jednak ograniczony pokrycia, ponieważ znajduje się w kategorii "wykryć atomic".
+-   **Wykrywanie deterministyczne**: wykrywa podejrzane wzorce (na podstawie reguły) w zapytania klienta SQL, które odpowiadają znane ataki. Tej metody ma wykrywania wysokie i niskie pokrycie fałszywie dodatnie, ale ograniczone, ponieważ jego mieści się w kategorii "wykrywania niepodzielne."
 
--   **Wykrywanie zachowań —** wady nietypowych działań, które jest nietypowe zachowanie bazy danych, która nie była widoczna w ciągu ostatnich 30 dni.  Przykład nietypowych działań klienta SQL mogą być kolekcji nieudanych logowań/kwerendy, duża liczba wyodrębniania danych, nietypowe canonical zapytania i nieznane adresy IP używane do dostępu do bazy danych
+-   **Wykrywanie zachowań**: wykrywa nietypowe działania, które są nietypowe zachowanie w bazie danych, które nie występowało w ciągu ostatnich 30 dni. Przykłady nietypowego działania klienta SQL może być wzrost nieudanych prób logowania lub zapytania, duże ilości danych wyodrębniania, nietypowe canonical zapytania lub nieznanego adresy IP używane do dostępu do bazy danych.
 
-### <a name="application-gateway-web-application-firewall"></a>Zapora aplikacji sieci Web bramy aplikacji
+### <a name="application-gateway-web-application-firewall"></a>Zapory aplikacji sieci Web usługi Application Gateway
 
-[Zapora aplikacji sieci Web](../app-service/environment/app-service-app-service-environment-web-application-firewall.md) jest funkcją [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview) który zapewnia ochronę do aplikacji sieci web, które używają bramy aplikacji dla standardowej [formant dostarczania aplikacji](https://kemptechnologies.com/in/application-delivery-controllers)funkcji. Zapora aplikacji sieci Web dzieje się tak, aby chronić je przed większość [OWASP pierwszych 10 znanych luk w sieci web](https://www.owasp.org/index.php/Top_10_2010-Main)
+[Zapory aplikacji (WAF) w sieci Web](../app-service/environment/app-service-app-service-environment-web-application-firewall.md) jest funkcją [usługi Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-webapplicationfirewall-overview) zapewniająca ochronę aplikacjom sieci web korzystających z bramy aplikacji standardu [kontroli dostarczania aplikacji](https://kemptechnologies.com/in/application-delivery-controllers) funkcji. Zapora aplikacji sieci Web robi to, aby chronić je przed większością z [Otwórz sieci Web aplikacji Security Project (OWASP) top 10 najpopularniejszych luk w zabezpieczeniach z sieci web](https://www.owasp.org/index.php/Top_10_2010-Main).
 
-![Firewally aplikacji sieci Web bramy aplikacji](./media/azure-threat-detection/azure-threat-detection-fig13.png)
+![Diagram zapory aplikacji sieci Web bramy aplikacji](./media/azure-threat-detection/azure-threat-detection-fig13.png)
 
--   Ochrona przed atakami polegającymi na iniekcji SQL
+Zabezpieczenia obejmują:
 
--   Ochrona przed atakami z użyciem skryptów wykorzystywanych w obrębie wielu witryn
+-   Ochrona iniekcji SQL.
 
--   Częste ataki w ramach sieci Web polegające na iniekcji poleceń, przemycaniu żądań HTTP, rozdzielaniu odpowiedzi HTTP i zdalnym dołączaniu plików
+-   Obejmujące wiele lokacji skryptów ochrony.
 
--   Ochrona przed naruszeniami protokołu HTTP
+-   Typowe sieci Web przed atakami ochrony, takie jak polegające na iniekcji poleceń, przemycaniu odpowiedzi HTTP, rozdzielaniu żądań HTTP i ataku dołączenie pliku zdalnego.
 
--   Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
+-   Ochrona przed naruszeniami protokołu HTTP.
 
--   Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
+-   Ochrona przed anomalii protokołu HTTP, takich jak brakujące hosta agenta użytkownika ani nagłówków accept.
 
--   Wykrycie typowych błędów konfiguracji aplikacji (czyli Apache usług IIS, itp.)
+-   Zapobieganie atakom robotów, przeszukiwarek i skanerów.
 
-Konfigurowanie zapory aplikacji sieci Web w aplikacji bramy miejsce następujące korzyści:
+-   Wykrywanie typowych błędów konfiguracji aplikacji (czyli Apache, usługi IIS i tak dalej).
 
--   Ochrona aplikacji internetowej przed atakami wykorzystującymi luki w zabezpieczeniach oraz atakami niewymagającymi modyfikacji kodu zaplecza.
+Konfigurowanie zapory aplikacji sieci Web w Twojej bramy application gateway zapewnia następujące korzyści:
 
--   Jednoczesna ochrona wielu aplikacji internetowych za bramą aplikacji. Pojedyncza brama aplikacji umożliwia hosting maksymalnie 20 witryn sieci Web. Wszystkie witryny za bramą są chronione przed atakami z sieci Web.
+-   Chroni aplikację sieci web z sieci web luk w zabezpieczeniach oraz atakami niewymagającymi modyfikacji kodu zaplecza.
 
--   Monitorowanie aplikacji internetowej pod kątem ataków przy użyciu raportu w czasie rzeczywistym generowanego przez dzienniki zapory aplikacji internetowej bramy aplikacji.
+-   Ochrona wielu aplikacji sieci web, w tym samym czasie za bramą aplikacji. Aplikacji umożliwia hosting maksymalnie 20 witryn sieci Web.
 
--   Niektóre środki kontrolne mające na celu zapewnienie zgodności wymagają, aby wszystkie punkty końcowe umożliwiające dostęp do Internetu były chronione z użyciem zapory aplikacji sieci Web. Korzystając z bramy aplikacji z zaporą aplikacji sieci Web, można spełnić te wymagania zgodności.
+-   Monitoruje aplikacje przed atakami sieci web za pomocą raportów w czasie rzeczywistym, które są generowane przez dzienniki zapory aplikacji sieci Web bramy aplikacji.
 
-### <a name="anomaly-detection--an-api-built-with-azure-machine-learning"></a>Wykrywanie anomalii — interfejs API skompilowanej za pomocą usługi Azure Machine Learning
+-   Ułatwia spełnianie wymagań dotyczących zgodności. Niektóre formanty zgodności wymagają wszystkie połączone z Internetem punkty końcowe mają być chronione przez rozwiązanie zapory aplikacji sieci Web.
 
-Wykrywanie anomalii to interfejs API skompilowanej za pomocą usługi Azure Machine Learning jest przydatne w przypadku wykrywania różnych typów nietypowe wzorce w danych serii czasu. Interfejs API przypisuje wynik anomalii do każdego punktu danych w szeregu czasowym, która może służyć do generowania alertów, monitorowanie za pomocą pulpitów nawigacyjnych lub nawiązać połączenie z systemu obsługi biletów.
+### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Interfejs API wykrywania anomalii: Utworzonych za pomocą usługi Azure Machine Learning
 
-[API wykrywania anomalii](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api) może wykrywać następujące typy anomalii w danych w serii. czas:
+Interfejs API wykrywania anomalii jest interfejs API, który ułatwia wykrywanie różnych nietypowe wzorce w danych szeregów czasowych. Interfejs API przypisuje wyniku anomalii do każdego punktu danych w szeregu czasowym, która może służyć do generowania alertów, monitorowania na pulpitach nawigacyjnych i nawiązywania łączności z systemami biletów.
 
--   **Wzrósł i DIP:** na przykład podczas monitorowania, liczba niepowodzeń logowania do usługi lub liczbę wyewidencjonowań w witrynie handlu elektronicznego, nietypowych wzrostów DIP może wskazywać ataki lub zakłócenia w świadczeniu usługi.
+[Interfejsu API wykrywania anomalii](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api) może wykryć następujące rodzaje anomalii w danych szeregów czasowych:
 
--   **Dodatnie i ujemne trendów:** podczas monitorowania użycia pamięci w przypadku komputerów, na przykład zmniejszanie rozmiaru wolnej pamięci jest wskaźnikiem potencjalny wyciek pamięci; podczas monitorowania usługi długość kolejki, trwałe tendencję może wskazywać podstawowej problem z oprogramowaniem.
+-   **Gwałtowne wzrosty i spadki**: podczas monitorowania liczby nieudanych prób zalogowania do usługi lub liczbę wyewidencjonowań w witrynie handlu elektronicznego, nietypowego wzrostu lub spadku może oznaczać lub przerw w działaniu usługi.
 
--   **Poziom zmiany i dynamicznych spoza zakresu:** na przykład poziom zmiany w opóźnienia usługi po usługi uaktualniania lub niższe poziomy wyjątków, po uaktualnieniu może być interesujące do monitorowania.
+-   **Trendy pozytywne i negatywne**: przypadku monitorowania użycia pamięci w przypadku komputerów, zmniejszanie wolnej pamięci rozmiar wskazuje Potencjalny przeciek pamięci. Długość kolejki usługi monitorowania stały trend wzrostowy może oznaczać problem z oprogramowaniem.
 
-Uczenie maszynowe oparte interfejsu API umożliwia:
+-   **Zmiany poziomów i zmiany w dynamicznym zakresie wartości**: zmian poziomów opóźnienia działania usługi po jej uaktualnieniu lub niższego poziomu wyjątków po uaktualnieniu może okazać się monitorowanie.
 
--   **Wykrywanie elastyczna i niezawodna:** modeli wykrywania anomalii Zezwól użytkownikom na konfigurowanie ustawień czułości i wykrywania anomalii między zestawami danych okresach i okresach. Użytkownik może zmienić model wykrywania anomalii dokonanie wykrywania interfejsu API mniej lub więcej liter zgodnie z potrzebami. Oznacza to wykrywanie anomalii widocznych mniej lub więcej danych z włączonymi i wyłączonymi okresach wzorce.
+Maszyny oparte na nauce maszynowej interfejs API umożliwia:
 
--   **Skalowalna i odpowiednim wykrywania:** tradycyjny sposób monitorowania z progami obecne określone przez ekspertów wiedzy domeny są kosztowne i nie skalowalne do milionów dynamicznie zmieniające się zestawów danych. Modele wykrywania anomalii w tym interfejsie API są rozpoznawane i modele są automatycznie dopasowane dane historyczne jak w czasie rzeczywistym.
+-   **Elastyczna i niezawodna wykrywania**: modeli wykrywania anomalii Zezwól użytkownikom na ustawień ważność i wykrywać anomalie między zestawami danych sezonowych, jak i sezonowym. Użytkownik może zmienić model wykrywania anomalii, aby ułatwić wykrywanie interfejsu API z mniej lub więcej liter zgodnie ze swoimi potrzebami. Oznacza to, czy wykrywanie anomalii widocznych mniej lub więcej danych z i bez wzorców sezonowym.
 
--   **Aktywne i można wykonać wykrywania:** trend powolne i wykrywania zmiany poziomu mogą być stosowane do wczesnego wykrywania anomalii. Wczesne sygnały nietypowe wykryto może służyć do kierowania ludzi, aby zbadać i korzystania z obszarów problemów.  Ponadto Przyczyna modeli analizy i alertów narzędzia mogą być opracowane na podstawie to wykrywanie anomalii usługi interfejsu API.
+-   **Skalowalna i terminowe wykrywania**: tradycyjnego monitorowania za pomocą progów obecne ustawione przez ekspertów znajomość domeny są kosztowne i nie jest skalowalna do milionów dynamicznie zmieniające się zestawów danych. Modele wykrywania anomalii, w tym interfejsie API są rozpoznawane i automatycznie specjalnie modeli z danych historycznych i czasu rzeczywistego.
 
-Wykrywanie anomalii interfejsu API to rozwiązanie wydajny i efektywny dla szerokiego zakresu scenariuszy, takich jak kondycja usługi & kluczowego wskaźnika wydajności monitorowania IoT, monitorowanie wydajności i monitorowanie ruchu sieciowego. Poniżej przedstawiono kilka scenariuszy popularnych, w którym ten interfejs API może być przydatna:
-- Działy IT muszą narzędzia umożliwiające śledzenie zdarzeń, kod błędu dziennika użycia i wydajności (Procesora, pamięci i tak dalej), w odpowiednim czasie.
+-   **Proaktywne i możliwością wykrywania**: powolne trendów i wykrywanie zmiany poziomu mogą być stosowane umożliwiająca wczesne wykrywanie anomalii. Wczesne sygnały nietypowe, które są wykrywane może służyć do kierowania ludzi, aby zbadać i zajmującym się obszarów problemów. Ponadto główna przyczyna modele analizy i narzędzia alertów mogą być tworzone na podstawie tej usługi interfejsu API wykrywania anomalii.
 
--   Witryn handlu online mają być śledzone działania klientów, liczba wyświetleń strony, kliknięć i tak dalej.
+Interfejs API wykrywania anomalii jest skuteczny i wydajny rozwiązanie służące do szerokiej gamy scenariuszy, takich jak usługa kondycji i kluczowych wskaźników wydajności, monitorowania, IoT, monitorowanie wydajności i monitorowanie ruchu sieciowego. Poniżej przedstawiono niektóre popularne scenariusze, w którym ten interfejs API może być przydatne:
 
--   Narzędzie firmy mają być śledzone zużycia wody, gazu, energii elektrycznej i innych zasobów.
+- Działy IT potrzebują narzędzi do zdarzenia śledzenia, kod błędu, dziennika użycia i wydajności (procesora CPU, pamięci i tak dalej) w odpowiednim czasie.
 
--   Zakładzie/budynku usług zarządzania ma być monitorowany temperatury, wilgotności, ruchu i tak dalej.
+-   Witryny handlu online chcą śledzić działania klienta, wyświetleń, kliknięć i tak dalej.
 
--   IoT/producentów mają być używane dane czujników w szeregi czasowe do przepływu pracy monitora, jakości i tak dalej.
+-   Narzędzie firmy mają być śledzone zużycie wody, gaz, energii elektrycznej i innych zasobów.
 
--   Dostawców usług, takich jak biura obsługi muszą monitorować trend żądanie usługi, liczba zdarzeń, poczekaj długość kolejki i tak dalej.
+-   Funkcji lub tworzenie usług zarządzania chcesz monitorować temperaturę, wilgotność, ruchu i tak dalej.
 
--   Grup analiz biznesowych, chcesz monitorować biznesowe wskaźniki KPI dotyczące (takie jak sprzedaż, opinie klientów, cennik) nietypowe ruchu w czasie rzeczywistym.
+-   IoT/producentów chcesz użyć danych z czujników w szeregach czasowych do przepływu pracy monitorowania, jakość i tak dalej.
+
+-   Dostawcy usług, takich jak biura obsługi potrzebne do monitorowania usługi żądanie trend, liczba zdarzeń, długość kolejki oczekiwania i tak dalej.
+
+-   Grup analiz biznesowych ma być monitorowany biznesowe wskaźniki KPI dotyczące (np. wielkość sprzedaży, opinie klientów lub cennik) nietypowy ruch w czasie rzeczywistym.
 
 ### <a name="cloud-app-security"></a>Cloud App Security
 
-[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) jest składnikiem krytycznym stosu zabezpieczeń w chmurze firmy Microsoft. To kompleksowe rozwiązanie, które mogą pomóc Twojej organizacji, w przypadku przejścia do w pełni korzystać z promise aplikacji w chmurze, ale można przechowywać w kontroli dzięki ulepszonemu wglądowi w działanie. Pomaga również zwiększenia ochrony danych krytycznych w aplikacjach w chmurze.
+[Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) to kluczowy składnik stosu usługi Microsoft Cloud Security. To kompleksowe rozwiązanie, które mogą pomóc Twojej organizacji, po przeniesieniu do w pełni korzystać z prawdziwą aplikacji w chmurze. Jego przechowuje kontroli dzięki ulepszonemu wglądowi w działanie. Pomaga również zwiększyć ochronę kluczowych danych w aplikacjach w chmurze.
 
-Z narzędzia, które ułatwiają odkrywanie tle IT, ocenie ryzyka egzekwowanie zasad, badaniu działań i zatrzymywaniu zagrożeń, organizacji można bardziej bezpiecznie przenieść się do chmury, zachowując kontrolę nad danymi krytycznymi.
+Za pomocą narzędzi, które ułatwiają odkrywanie działań IT, ocenie ryzyka, wymuszanie zasad, badaniu działań i zatrzymywaniu zagrożeń Twoja organizacja może bezpieczniej przenieść do chmury przy zachowaniu kontroli nad danymi krytycznymi.
 
-<table style="width:100%">
- <tr>
-   <td>Wykrywanie</td>
-   <td>Odkrywanie tle działu informatycznego dysponujące Cloud App Security. Zyskaj widoczność przez odnajdywanie aplikacji, działań, użytkowników, danych i plików w środowisku chmury. Odnajdywanie aplikacji innych firm, które są podłączone do chmury.</td>
- </tr>
- <tr>
-   <td>Zbadaj</td>
-   <td>Zbadaj aplikacji w chmurze przy użyciu narzędzi dowodowych chmury do szczegółowo w ryzykowne aplikacje, konkretnych użytkowników i plików w sieci. Znajdź wzorce w danych zebranych z chmury. Generuj raporty do monitorowania chmury.</td>
-
- </tr>
- <tr>
-   <td>Kontrola</td>
-   <td>Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrować użytkowników do chmury bezpiecznej, oficjalnie zaakceptowanych aplikacji alternatyw.</td>
-
- </tr>
- <tr>
-   <td>Ochrona</td>
-   <td>Umożliwiają Cloud App Security oficjalne akceptowanie lub zabrania aplikacje, wymuszać zapobieganie utracie danych, uprawnienia kontroli i udostępnianie oraz generować raporty niestandardowe i alerty.</td>
-
- </tr>
- <tr>
-   <td>Kontrola</td>
-   <td>Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrować użytkowników do chmury bezpiecznej, oficjalnie zaakceptowanych aplikacji alternatyw.</td>
-
- </tr>
-</table>
+| | |
+|---|---|
+| Wykrywanie | Odkrywanie działań IT z usługą Cloud App Security. Zyskaj widoczność przez odnajdywanie aplikacji, działań, użytkowników, danych i plików w Twoim środowisku chmury. Odkryj aplikacje innych firm, które są połączone z Twoją chmurą.|
+|Zbadaj | Badaj aplikacje w chmurze przy użyciu narzędzi dowodowych chmury w celu dokładnego przeanalizowania ryzykownych aplikacji, konkretnych użytkowników i plików w Twojej sieci. Znajduj wzorce w danych zebranych z chmury. Generuj raporty do monitorowania chmury. |
+| Kontrola | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
+| Ochrona | Usługa Cloud App Security umożliwia oficjalne akceptowanie lub ze Stanów Zjednoczonych zabraniają aplikacje, wymuszać zapobieganie utracie danych, kontrolować uprawnienia i udostępnianie oraz generować raporty niestandardowe i alerty. |
+| Kontrola | Ogranicz ryzyko przez skonfigurowanie zasad i alertów, aby osiągnąć maksymalną kontrolę ruchu sieciowego w chmurze. Usługa Cloud App Security umożliwia migrowanie użytkowników do chmury, bezpieczne alternatywnych, oficjalnie zaakceptowanych aplikacji. |
+| | |
 
 
-![Cloud App Security](./media/azure-threat-detection/azure-threat-detection-fig14.png)
+![Cloud App Security diagramu](./media/azure-threat-detection/azure-threat-detection-fig14.png)
 
-Usługa cloud App Security integruje widoczności z chmurą przez
+Usługa cloud App Security integruje widoczność z Twoją chmurą przez:
 
--   Przy użyciu funkcji Cloud Discovery w celu zamapowania i zidentyfikowania środowiska chmury i aplikacje w chmurze używa Twojej organizacji.
+-   Za pomocą rozwiązania Cloud Discovery w celu zamapowania i zidentyfikowania środowiska chmury oraz aplikacji w chmurze Twoją organizację.
 
+-   Oficjalne akceptowanie i zabronienia aplikacji w chmurze.
 
--   Oficjalne akceptowanie lub zabronienia aplikacji w chmurze.
+-   Przy użyciu łączników łatwych do wdrożenia aplikacji, które korzystają z interfejsów API dostawców w celu zapewnienia wglądu i nadzoru aplikacji łączących się z.
 
+-   Pomaganie w ciągłej kontroli przez ustawienie i stałe dostrajanie zasad.
 
+Na zbieranie danych z tych źródeł, usługa Cloud App Security uruchamia zaawansowane analizy na ich temat. Natychmiast go ostrzega o nietypowych działaniach i daje szczegółowy wgląd w Twoim środowisku chmury. Można skonfigurować zasady usługi Cloud App Security i użyć jej do ochrony wszystkiego w środowisku chmury.
 
--   Używanie łączników łatwa do wdrożenia aplikacji, które korzystają z dostawcy interfejsów API, widoczność i ładu aplikacji łączących się z.
-
--   Pomaga ma ciągła kontrola ustawienie i stałe dostrajanie, zasad.
-
-Na zbieranie danych z tych źródeł, Cloud App Security uruchamia zaawansowane analizy danych. Natychmiast go ostrzega o nietypowych działań i umożliwia dokładną widoczność w środowisku chmury. Możesz skonfigurować zasady w usłudze Cloud App Security i użyć jej do ochrony wszystkich elementów w środowisku chmury.
-
-## <a name="third-party-atd-capabilities-through-azure-marketplace"></a>Możliwości ATD innej firmy za pomocą portalu Azure Marketplace
+## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Funkcje zaawansowane wykrywanie zagrożeń innych firm w witrynie Azure Marketplace
 
 ### <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
-Zapora aplikacji sieci Web sprawdza sieci web dla ruchu przychodzącego ruchu i bloki iniekcji SQL, Cross-Site skryptów, złośliwego oprogramowania przekazywania & aplikacji przed atakami DDoS oraz inne ataki celem aplikacji sieci web. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). Aparat kontroli dostępu zintegrowane umożliwia administratorom tworzenie zasad kontroli dostępu szczegółowego dla uwierzytelniania, autoryzacji i Ewidencjonowanie, która umożliwia organizacjom silnego uwierzytelniania i kontroli użytkownika.
+Zapora aplikacji sieci Web sprawdza przychodzący ruch internetowy i blokuje SQL wstrzyknięć kodu, skryptów między witrynami i przekazywaniu złośliwym oprogramowaniem, atakami DDoS aplikacji oraz innych ataków ukierunkowanych na aplikacje sieci web. Sprawdza ono również odpowiedzi z serwerów sieci web zaplecza dla ochrony przed utratą danych (DLP). Aparat kontroli dostępu zintegrowanej umożliwia administratorom tworzenie dostępu szczegółowej kontroli zasad uwierzytelniania i autoryzacji, i ewidencjonowanie aktywności (AAA), która umożliwia organizacjom silnego uwierzytelniania i użytkownik kontroli.
 
-**Najważniejsze funkcje:**
--   Wykrywa i blokuje SQL iniekcji, skryptów krzyżowych, przekazywanie złośliwego oprogramowania, aplikacji przed atakami DDoS lub inne ataki aplikacji.
+Zapora aplikacji sieci Web zapewnia następujące korzyści:
+
+-   Wykrywa i blokuje SQL wstrzyknięć kodu, Cross-Site Scripting, przekazywanie złośliwego oprogramowania, ataki DDOS na aplikacje lub inne ataki, twoją aplikację.
 
 -   Uwierzytelnianie i kontrola dostępu.
 
--   Skanuje ruch wychodzący do wykrywania poufnych danych i można zamaskować lub blokowanie wyciek.
+-   Skanuje ruchu wychodzącego do wykrywania poufnych danych i mogą zamaskować lub Blokuj informacje z wyciek.
 
--   Przyspiesza dostarczanie zawartości aplikacji sieci web, za pomocą funkcji, takich jak pamięci podręcznej, kompresji i inne optymalizacje ruchu.
+-   Przyspiesza dostarczanie zawartości aplikacji sieci web, korzystając z możliwości, takich jak pamięci podręcznej, kompresji i inne optymalizacje ruchu.
 
-Poniżej przedstawiono przykład dostępne w usłudze Azure rynek zapory aplikacji sieci Web:
+Aby uzyskać przykłady zapory aplikacji sieci web, które są dostępne w witrynie Azure Marketplace, zobacz [zapory aplikacji internetowych Barracuda, zapory aplikacji sieci web wirtualne (vWAF) Brocade, Imperva SecureSphere i zapory adresów IP ThreatSTOP](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
-[Zapora aplikacji sieci Web barracuda, Zapora Brocade do aplikacji wirtualnych sieci Web (Brocade vWAF), Imperva SecureSphere i ThreatSTOP IP zapory.](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
+- [Funkcje wykrywania usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities): ułatwia identyfikację aktywnych zagrożeń, docelowe zasoby platformy Azure, które dają wgląd, musisz szybko reagować.
 
-- [Funkcje wykrywania usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities)
-
-Możliwości wykrywania zaawansowanych Centrum zabezpieczeń Azure pomaga w identyfikacji active zagrożenia przeznaczonych dla zasobów platformy Microsoft Azure i udostępnia szczegółowe informacje, konieczne jest szybko reagować.
-
-- [Wykrywanie zagrożeń bazy danych Azure SQL](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)
-
-Wykrywanie zagrożeń bazy danych w usłudze Azure SQL pomogła rozwiązania ich problemów dotyczących potencjalnych zagrożeń do ich bazy danych.
+- [Wykrywanie zagrożeń usługi Azure SQL Database](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): pomaga rozwiązać problemów dotyczących potencjalnych zagrożeń dla baz danych.

@@ -1,50 +1,50 @@
 ---
-title: Rozszerzenie diagnostyki Azure 1.3 i nowszym schemat konfiguracji
-description: Wersja schematu 1.3 i nowszym diagnostyki Azure dostarczana jako część 2.4 zestawu SDK programu Microsoft Azure i później.
+title: Rozszerzenie diagnostyki Azure 1.3 i nowsze schemat konfiguracji
+description: Schemat w wersji 1.3 i nowsze diagnostyki platformy Azure są dostarczane w ramach programu Microsoft Azure SDK 2.4 lub nowszy.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/15/2017
+ms.date: 06/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937917"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145387"
 ---
-# <a name="azure-diagnostics-13-and-later-configuration-schema"></a>1.3 diagnostyki Azure i nowszym schemat konfiguracji
+# <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
 > [!NOTE]
-> Rozszerzenie Azure Diagnostics jest składnik służący do zbierania liczników wydajności i innych danych statystycznych z:
+> Rozszerzenie diagnostyki platformy Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych od:
 > - Azure Virtual Machines 
 > - Zestawy skali maszyn wirtualnych
 > - Service Fabric 
 > - Cloud Services 
 > - Grupy zabezpieczeń sieci
 > 
-> Ta strona jest tylko istotne, jeśli używasz tych usług.
+> Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
 
-Ta strona jest nieprawidłowa dla wersji 1.3 i nowsze (Azure SDK 2.4 i nowszych). Nowsze sekcji konfiguracji są oznaczone jako do wyświetlenia, w jakiej wersji zostały dodane.  
+Ta strona jest prawidłowy dla wersji 1.3 i nowsze (zestaw Azure SDK 2.4 i nowszych). Aby pokazać, w jakiej wersji zostały dodane są ujęte w nowszych sekcji konfiguracji.  
 
-Plik konfiguracji opisanych tutaj służy do ustawienia konfiguracji diagnostyczne podczas uruchamiania Monitora diagnostyki.  
+Plik konfiguracji opisane w tym miejscu jest używany do określenia ustawień konfiguracyjnych diagnostyczne, podczas uruchamiania Monitora diagnostyki.  
 
-Rozszerzenie jest używany w połączeniu z innymi produktami firmy Microsoft diagnostyki, takich jak Azure monitora, usługi Application Insights i analizy dzienników.
+Rozszerzenie jest używany w połączeniu z innymi produktami firmy Microsoft diagnostyki, takich jak Azure Monitor, Application Insights i Log Analytics.
 
 
 
-Pobierz definicję schematu pliku konfiguracji publicznego, wykonując następujące polecenie programu PowerShell:  
+Pobierz definicję schematu pliku konfiguracji publicznej, wykonując następujące polecenie programu PowerShell:  
 
 ```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
-Aby uzyskać więcej informacji o korzystaniu z diagnostyki Azure, zobacz [rozszerzenia diagnostyki Azure](azure-diagnostics.md).  
+Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobacz [rozszerzenie Diagnostyka Azure](azure-diagnostics.md).  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>Przykładowy plik konfiguracji diagnostyki  
- W poniższym przykładzie przedstawiono plik konfiguracji typowych diagnostyki:  
+ Poniższy przykład przedstawia plik konfiguracji typowych diagnostyki:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>  
@@ -154,9 +154,9 @@ Aby uzyskać więcej informacji o korzystaniu z diagnostyki Azure, zobacz [rozsz
 
 ```  
 
-Wartość równoważna JSON poprzedniego pliku konfiguracyjnego XML. 
+Poprzednie plik konfiguracyjny XML w przeliczeniu na formacie JSON. 
 
-PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadków użycia json, są przekazywane jako różne zmienne. Tych przypadkach obejmują szablony Menedżera zasobów, zestawu skalowania maszyn wirtualnych programu PowerShell i programu Visual Studio. 
+PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadków użycia formatu json, są przekazywane jako różne zmienne. Te przypadki obejmują szablony usługi Resource Manager, zestawu skalowania maszyn wirtualnych programu PowerShell i programu Visual Studio. 
 
 ```json
 "PublicConfig" {
@@ -358,21 +358,21 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
 
 ```
 
-## <a name="reading-this-page"></a>Odczytywanie tej strony  
- Tagi po około znajdują się w kolejności przedstawionej w poprzednim przykładzie.  Jeśli widzisz pełny opis, których można oczekiwać, wyszukaj strony elementu lub atrybutu.  
+## <a name="reading-this-page"></a>Czytanie tej strony  
+ Znaczniki po około znajdują się w kolejności przedstawionej w poprzednim przykładzie.  Jeśli nie widzisz pełny opis, których oczekujesz, wyszukaj strony elementu lub atrybutu.  
 
 ## <a name="common-attribute-types"></a>Popularne typy atrybutów  
- **scheduledTransferPeriod** atrybutu pojawia się w kilku elementów. Jest odstęp między zaplanowanego transferu do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp)
+ **okres zaplanowanego transferu** atrybutu jest wyświetlana w kilku elementów. Jest interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp)
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration Element  
- *Drzewa: Główny - DiagnosticsConfiguration*
+ *Drzewo: Root - DiagnosticsConfiguration*
 
-Dodany w wersji 1.3.  
+Dodane w wersji 1.3.  
 
 Element najwyższego poziomu w pliku konfiguracji diagnostyki.  
 
-**Atrybut** xmlns — przestrzeń nazw XML dla pliku konfiguracji diagnostyki jest:  
+**Atrybut** xmlns — przestrzeń nazw XML w pliku konfiguracji diagnostyki jest:  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 
 
@@ -380,22 +380,22 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**PublicConfig**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**PrivateConfig**|Opcjonalny. Zobacz opis w innym miejscu na tej stronie.|  
-|**IsEnabled**|Wartość logiczna. Zobacz opis w innym miejscu na tej stronie.|  
+|**isEnabled**|Wartość logiczna. Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
- *Drzewa: PublicConfig - DiagnosticsConfiguration - katalogu głównego*
+ *Drzewa: PublicConfig główny - DiagnosticsConfiguration-*
 
- Zawiera opis konfiguracji diagnostyki publicznego.  
+ W tym artykule opisano konfiguracji publicznego diagnostyki.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**WadCfg**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
-|**StorageAccount**|Nazwa konta magazynu Azure do przechowywania danych. Można także określić jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
-|**StorageType**|Może być *tabeli*, *obiektu Blob*, lub *TableAndBlob*. Tabela jest domyślny. Po wybraniu TableAndBlob danych diagnostycznych są zapisywane dwukrotnie — raz dla każdego typu.|  
-|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, na którym Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustawić, jest używany domyślny katalog:<br /><br /> Dla roli proces roboczy/sieci web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Atrybuty wymagane są:<br /><br /> - **ścieżka** -katalogu w systemie mają być używane przez diagnostyki Azure.<br /><br /> - **expandEnvironment** — Określa, czy zmienne środowiskowe są rozwijane w nazwie ścieżki.|  
+|**StorageAccount**|Nazwa konta usługi Azure Storage do przechowywania danych. Może zostać określony jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
+|**StorageType**|Może być *tabeli*, *Blob*, lub *TableAndBlob*. Tabela jest domyślna. Po wybraniu TableAndBlob dane diagnostyczne są zapisywane dwa razy — raz dla każdego typu.|  
+|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, w którym Agent monitorowania zapisuje dane zdarzeń. Jeśli nie, ustawić, jest używany domyślny katalog:<br /><br /> Dla roli procesu roboczego/sieci web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Dostępne są następujące wymagane atrybuty:<br /><br /> - **ścieżka** -directory w systemie, który będzie używany przez usługi Azure Diagnostics.<br /><br /> - **expandEnvironment** -Określa, czy zmienne środowiskowe są rozwinięte w nazwie ścieżki.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG*
  
  Identyfikuje i konfiguruje dane telemetryczne, które mają być zbierane.  
 
@@ -407,15 +407,17 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Maksymalna ilość miejsca na dysku lokalnym, które mogą być używane przez różne rodzaje danych diagnostycznych zebranych przez diagnostyki Azure. Ustawienie domyślne to 4096 MB.<br />
-|**useProxyServer** | Skonfiguruj diagnostyki Azure, aby użyć ustawienia serwera proxy zgodnie z ustawieniami w ustawieniach programu Internet Explorer.|  
+| **overallQuotaInMB** | Maksymalna ilość miejsca na dysku lokalnym, które mogą być używane przez różne rodzaje danych diagnostycznych zebranych przez diagnostykę platformy Azure. Ustawienie domyślne to 4096 MB.<br />
+|**useProxyServer** | Konfigurowanie diagnostyki Azure do użycia ustawienia serwera proxy jako zestaw ustawień programu Internet Explorer.|
+|**Wychwytywanie** | Dodane w wersji 1.5. Opcjonalny. Wskazuje lokalizację obiektu sink, można również wysyłać dane diagnostyczne dla wszystkich elementów podrzędnych, które obsługują ujścia. Przykład obiektu sink to usługi Application Insights lub centrów zdarzeń.|  
+
 
 <br /> <br />
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**Zrzutów awaryjnych**|Zobacz opis w innym miejscu na tej stronie.|  
-|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez diagnostyki Azure. Dzienniki diagnostyczne infrastruktury są przydatne podczas rozwiązywania problemów Diagnostyka system. Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** — konfiguruje poziom ważności minimalna dzienników zbierane.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|Włącz zbieranie dzienników generowanych przez usługi Azure Diagnostics. Dzienniki infrastruktury diagnostycznej są przydatne podczas rozwiązywania problemów sam system diagnostyki. Dostępne są następujące atrybuty opcjonalne:<br /><br /> - **scheduledTransferLogLevelFilter** — Określa minimalny poziom ważności zebranych danych dzienników.<br /><br /> - **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Katalogi**|Zobacz opis w innym miejscu na tej stronie.|  
 |**EtwProviders**|Zobacz opis w innym miejscu na tej stronie.|  
 |**Metryki**|Zobacz opis w innym miejscu na tej stronie.|  
@@ -426,82 +428,82 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - zrzutów awaryjnych w katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - zrzutów awaryjnych*
  
- Włącz zbieranie zrzutów awaryjnych.  
+ Włączanie zbierania zrzutów awaryjnych.  
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
-|**containerName**|Opcjonalny. Nazwa kontenera obiektów blob na koncie magazynu Azure używanego do przechowywania zrzuty awaryjne.|  
-|**crashDumpType**|Opcjonalny.  Konfiguruje diagnostyki Azure do zbieranie zrzutów mini lub pełnej awarii.|  
-|**directoryQuotaPercentage**|Opcjonalny.  Określa procent **overallQuotaInMB** mają zostać zarezerwowane dla zrzuty awaryjne na maszynie Wirtualnej.|  
+|**containerName**|Opcjonalny. Nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania zrzuty awaryjne.|  
+|**crashDumpType**|Opcjonalny.  Umożliwia skonfigurowanie usługi Azure Diagnostics do zbierania zrzutów mini lub pełnej awarii.|  
+|**directoryQuotaPercentage**|Opcjonalny.  Określa wartość procentową **overallQuotaInMB** mają zostać zarezerwowane dla zrzuty awaryjne na maszynie Wirtualnej.|  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|Wymagany. Definiuje wartości konfiguracji dla każdego procesu.<br /><br /> Następujący atrybut jest również wymagany:<br /><br /> **Parametr** — nazwa procesu ma diagnostyki Azure, aby zbierać zrzutu awaryjnego dla.|  
+|**CrashDumpConfiguration**|Wymagany. Definiuje wartości konfiguracji dla każdego procesu.<br /><br /> Następujący atrybut jest również wymagane:<br /><br /> **processName** — nazwa procesu ma diagnostyki Azure do zbierania zrzutu awaryjnego dla.|  
 
 ## <a name="directories-element"></a>Element katalogów 
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów*
 
- Umożliwia zbieranie zawartości katalogu, dzienniki żądań dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS.  
+ Umożliwia zbieranie zawartości katalogu, dzienniki żądania dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS.  
 
- Opcjonalne **scheduledTransferPeriod** atrybutu. Zawiera wyjaśnienie wcześniej.  
+ Opcjonalnie **okres zaplanowanego transferu** atrybutu. Zobacz opis wcześniej.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**IISLogs**|W tym ten element w konfiguracji umożliwia zbieranie dzienników usług IIS:<br /><br /> **Właściwość containerName** — nazwa kontenera obiektów blob na koncie magazynu Azure używanego do przechowywania dzienników usług IIS.|   
-|**FailedRequestLogs**|W tym ten element w konfiguracji umożliwia zbieranie dzienników dotyczące żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy też włączyć śledzenie opcje w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
-|**Źródła danych**|Lista katalogi do monitorowania.| 
+|**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|   
+|**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
+|**Źródła danych**|Lista katalogów, do monitorowania.| 
 
 
 
 
-## <a name="datasources-element"></a>Element źródeł danych  
+## <a name="datasources-element"></a>Element źródła danych  
  *Drzewa: Źródła danych PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów - głównego - DiagnosticsConfiguration-*
 
- Lista katalogi do monitorowania.  
+ Lista katalogów, do monitorowania.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|Wymagany. Wymagany atrybut:<br /><br /> **Właściwość containerName** — nazwa kontenera obiektów blob w magazynie Azure konta, które ma być używany do przechowywania plików dziennika.|  
+|**DirectoryConfiguration**|Wymagany. Wymagany atrybut:<br /><br /> **containerName** — nazwa kontenera obiektów blob w usłudze Azure Storage konta, które ma być używane do przechowywania plików dziennika.|  
 
 
 
 
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration Element  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów - DataSources — DirectoryConfiguration katalogu głównego*
+ *Drzewa: DataSources PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów - głównego - DiagnosticsConfiguration - - DirectoryConfiguration*
 
- Może zawierać **bezwzględną** lub **LocalResource** elementu, ale nie oba.  
+ Może zawierać albo **bezwzględne** lub **LocalResource** elementu, ale nie oba.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
-|**LocalResource**|Ścieżka względna zasobu lokalnego do monitorowania. Atrybuty wymagane są:<br /><br /> - **Nazwa** -zasób lokalny, zawierająca katalogi do monitorowania<br /><br /> - **relativePath** -ścieżka względna nazwa zawierająca katalogi do monitorowania|  
+|**Bezwzględna**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> - **Ścieżka** — ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> - **expandEnvironment** -Określa, czy zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**LocalResource**|Ścieżka względna do monitorowania zasobów lokalnych. Dostępne są następujące wymagane atrybuty:<br /><br /> - **Nazwa** — zasób lokalny, która zawiera katalog do monitorowania<br /><br /> - **relativePath** — ścieżka względna nazwa, która zawiera katalog do monitorowania|  
 
 
 
 ## <a name="etwproviders-element"></a>EtwProviders Element  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
 
- Zbieranie zdarzeń ETW z EventSource konfiguruje i/lub ETW manifestu na podstawie dostawców.  
+ Konfiguruje zbieranie zdarzeń funkcji ETW z źródła zdarzeń i/lub manifestu ETW na podstawie dostawcy.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguruje zbierania zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzenia EventSource.<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Opcjonalne atrybuty:<br /><br /> - **scheduledTransferLogLevelFilter** -minimalny poziom ważności na transfer do konta magazynu.<br /><br /> - **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Wymagany atrybut:<br /><br /> **Dostawca** — Nazwa klasy zdarzeń EventSource.<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> - **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> - **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Wymagany atrybut:<br /><br /> **Dostawca** — identyfikator GUID dostawcy zdarzeń<br /><br /> Dostępne są następujące atrybuty opcjonalne:<br /><br /> - **scheduledTransferLogLevelFilter** — minimalny poziom ważności do przesyłania do swojego konta magazynu.<br /><br /> - **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwEventSourceProviderConfiguration katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwEventSourceProviderConfiguration*
 
- Konfiguruje zbierania zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
+ Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Atrybut opcjonalny:<br/><br/> **eventDestination** — Nazwa tabeli do przechowywania zdarzeń|  
-|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Atrybut opcjonalny:<br /><br /> **eventDestination** — Nazwa tabeli do przechowywania zdarzeń|  
+|**DefaultEvents**|Opcjonalny atrybut:<br/><br/> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
@@ -510,92 +512,92 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**DefaultEvents**|Atrybut opcjonalny:<br /><br /> **eventDestination** — Nazwa tabeli do przechowywania zdarzeń|  
-|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Atrybut opcjonalny:<br /><br /> **eventDestination** — Nazwa tabeli do przechowywania zdarzeń|  
+|**DefaultEvents**|Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
+|**Zdarzenie**|Wymagany atrybut:<br /><br /> **Identyfikator** — identyfikator zdarzenia.<br /><br /> Opcjonalny atrybut:<br /><br /> **eventDestination** — nazwę tabeli do przechowywania zdarzeń|  
 
 
 
-## <a name="metrics-element"></a>Element metryk  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - metryki katalogu głównego*
+## <a name="metrics-element"></a>Element metryki  
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration — metryki*
 
- Umożliwia generowanie tabeli licznika wydajności, która jest zoptymalizowana pod kątem szybkiego zapytania. Każdego licznika wydajności, który jest zdefiniowany w **liczniki wydajności** elementu są przechowywane w tabeli metryki oprócz tabeli licznika wydajności.  
+ Umożliwia generowanie tabeli liczników wydajności, która jest zoptymalizowana pod kątem zapytań. Każdego licznika wydajności, która jest zdefiniowana w **liczniki wydajności** elementu są przechowywane w tabeli metryk, oprócz tabeli licznika wydajności.  
 
- **ResourceId** atrybut jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyny wirtualnej diagnostyki Azure do wdrożenia. Pobierz **resourceID** z [portalu Azure](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** Kafelek i skopiuj wartości z **identyfikator** pola.  
+ **ResourceId** atrybut jest wymagany.  Identyfikator zasobu maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych są wdrażane diagnostyki platformy Azure. Pobierz **resourceID** z [witryny Azure portal](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** kafelka, a następnie skopiuj wartość z **identyfikator** pola.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Wymagany atrybut:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**MetricAggregation**|Wymagany atrybut:<br /><br /> **okres zaplanowanego transferu** — interwał między zaplanowanego transferu do magazynu zaokrąglane w górę do najbliższej minuty. Wartość jest [XML "Wpisz dane czasu trwania."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
-## <a name="performancecounters-element"></a>PerformanceCounters — Element  
- *Drzewa: DiagnosticMonitorConfiguration PublicConfig - WadCFG - głównego - DiagnosticsConfiguration - - liczniki wydajności*
+## <a name="performancecounters-element"></a>Performancecounters — Element  
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - liczniki wydajności*
 
  Umożliwia zbieranie liczników wydajności.  
 
- Atrybut opcjonalny:  
+ Opcjonalny atrybut:  
 
- Opcjonalne **scheduledTransferPeriod** atrybutu. Zawiera wyjaśnienie wcześniej.
+ Opcjonalnie **okres zaplanowanego transferu** atrybutu. Zobacz opis wcześniej.
 
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Wymagane są następujące atrybuty:<br /><br /> - **counterSpecifier** — Nazwa licznika wydajności. Na przykład `\Processor(_Total)\% Processor Time`. Aby uzyskać listę liczników wydajności na hoście, uruchom polecenie `typeperf`.<br /><br /> - **sampleRate** -częstotliwość próbkowania licznika.<br /><br /> Atrybut opcjonalny:<br /><br /> **Jednostka** — jednostka miary licznika.|  
+|**PerformanceCounterConfiguration**|Wymagane są następujące atrybuty:<br /><br /> - **counterSpecifier** — nazwę licznika wydajności. Na przykład `\Processor(_Total)\% Processor Time`. Aby uzyskać listę liczników wydajności na hoście, uruchom polecenie `typeperf`.<br /><br /> - **sampleRate** — częstotliwość próbkowania licznika.<br /><br /> Opcjonalny atrybut:<br /><br /> **Jednostka** — jednostki miary licznika.|  
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
  
  Umożliwia zbieranie dzienników zdarzeń systemu Windows.  
 
- Opcjonalne **scheduledTransferPeriod** atrybutu. Zawiera wyjaśnienie wcześniej.  
+ Opcjonalnie **okres zaplanowanego transferu** atrybutu. Zobacz opis wcześniej.  
 
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
-|**DataSource**|Dzienniki zdarzeń systemu Windows do zbierania. Wymagany atrybut:<br /><br /> **Nazwa** — Kwerenda XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> W celu gromadzenia wszystkich zdarzeń, określ "*"|  
+|**DataSource**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*"|  
 
 
 
 
-## <a name="logs-element"></a>Element dzienników  
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - dzienniki katalogu głównego*
+## <a name="logs-element"></a>Dzienniki elementu  
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - dzienników*
 
- Przedstawia w wersji 1.0, 1.1. Brak w 1.2. Dodane ponownie w 1.3.  
+ Obecne w wersji 1.0 i 1.1. Brak w 1.2. Dodane w 1.3.  
 
- Definiuje konfigurację buforu podstawowe dzienników Azure.  
+ Definiuje konfigurację buforu dla podstawowych dzienniki platformy Azure.  
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość pamięci systemu plików, która jest dostępna dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilterr**|**Ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalny. Określa interwał między zaplanowane transferów danych, zaokrąglona w górę do najbliższej minutę.<br /><br /> Wartość domyślna to PT0S.|  
-|**wychwytywanie** dodane w wersji 1.5|**Ciąg**|Opcjonalny. Wskazuje lokalizację odbioru można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights.|  
+|**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferLogLevelFilterr**|**ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**Wychwytywanie** |**ciąg**| Dodane w wersji 1.5. Opcjonalny. Wskazuje lokalizację obiektu sink, można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights lub centrów zdarzeń.|  
 
 ## <a name="dockersources"></a>DockerSources
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources katalogu głównego*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
  Dodane w 1.9.
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Statystyka**|Informuje system, aby zebrać statystykę dla kontenerów Docker|  
+|**Statystyki**|Informuje system w celu zbierania statystyk dla kontenerów Docker|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig Element  
  *Drzewa: SinksConfig PublicConfig - WadCFG - głównego - DiagnosticsConfiguration-*
 
- Lista lokalizacji wysyłanie danych diagnostycznych i konfiguracji skojarzone z tych lokalizacjach.  
+ Lista lokalizacji do przesyłania danych diagnostycznych i konfiguracji skojarzone z tych lokalizacji.  
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
+|**obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
 
-## <a name="sink-element"></a>Sink — Element
- *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - zbiornika katalogu głównego*
+## <a name="sink-element"></a>Będący ujściem — Element
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig — ujście*
 
  Dodane w wersji 1.5.  
 
- Określa lokalizacje do wysyłania danych diagnostycznych. Na przykład usługa Application Insights.  
+ Definiuje lokalizacjach w celu wysyłania danych diagnostycznych. Na przykład usługi Application Insights.  
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
@@ -603,48 +605,48 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|ciąg|Używana tylko wtedy, gdy wysyłanie danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, czy masz dostęp do.|  
-|**Kanały**|ciąg|Po jednej dla każdego dodatkowego filtrowania strumienia, który|  
+|**Application Insights**|ciąg|Używany tylko w przypadku wysyłania danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, który ma dostęp do.|  
+|**kanały**|ciąg|Jeden dla każdego dodatkowego filtrowanie strumienia|  
 
 ## <a name="channels-element"></a>Element kanałów  
- *Drzewa: Kanały SinksConfig - zbiornika - głównego - DiagnosticsConfiguration - PublicConfig - WadCFG-*
+ *Drzewa: Kanały SinksConfig - ujścia - głównego - DiagnosticsConfiguration - PublicConfig - WadCFG —*
 
  Dodane w wersji 1.5.  
 
- Definiuje filtry dla strumieni danych dziennika przechodzącej przez zbiorniku.  
+ Definiuje filtry dla strumieni danych dziennika przechodzi przez obiekt sink.  
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Channel**|ciąg|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="channel-element"></a>Element kanału
- *Drzewa: Kanały SinksConfig - zbiornika - głównego - DiagnosticsConfiguration - PublicConfig - WadCFG - — kanału*
+ *Drzewa: Kanały SinksConfig - ujścia — główny - DiagnosticsConfiguration - PublicConfig - WadCFG - - kanału*
 
  Dodane w wersji 1.5.  
 
- Określa lokalizacje do wysyłania danych diagnostycznych. Na przykład usługa Application Insights.  
+ Definiuje lokalizacjach w celu wysyłania danych diagnostycznych. Na przykład usługi Application Insights.  
 
 |Atrybuty|Typ|Opis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**Ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**Nazwa**|**Ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
+|**logLevel**|**ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element 
- *Drzewa: PrivateConfig - DiagnosticsConfiguration - katalogu głównego*
+ *Drzewa: PrivateConfig główny - DiagnosticsConfiguration-*
 
- Dodany w wersji 1.3.  
+ Dodane w wersji 1.3.  
 
  Optional (Opcjonalność)  
 
- Przechowuje prywatne informacje szczegółowe konta magazynu (nazwa, klucz i końcowy). Te informacje są wysyłane do maszyny wirtualnej, ale nie można pobrać z niego.  
+ Przechowuje prywatne szczegółów konta magazynu (nazwa, klucz i punkt końcowy). Te informacje są wysyłane do maszyny wirtualnej, ale nie można pobrać z niego.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Konta magazynu do użycia. Następujące atrybuty są wymagane<br /><br /> - **Nazwa** — nazwa konta magazynu.<br /><br /> - **klucz** — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodany 1.8.1)-tokenu sygnatury dostępu Współdzielonego, zamiast klucz konta magazynu można określić w prywatnej konfiguracji. Podany klucz konta magazynu jest ignorowana. <br />Wymagania dotyczące tokenu sygnatury dostępu Współdzielonego: <br />— Obsługuje tylko tokenu sygnatury dostępu Współdzielonego konta <br />- *b*, *t* typów usług są wymagane. <br /> - *a*, *c*, *u*, *w* uprawnienia są wymagane. <br /> - *c*, *o* typów zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> -Start i czas wygaśnięcia musi być prawidłowy.|  
+|**StorageAccount**|Konto magazynu do użycia. Wymagane są następujące atrybuty<br /><br /> - **Nazwa** -nazwa konta magazynu.<br /><br /> - **klucz** -klucza konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy, aby uzyskać dostęp do konta magazynu. <br /><br /> -**sasToken** (dodane 1.8.1)-tokenu sygnatury dostępu Współdzielonego zamiast klucza konta magazynu można określić w konfiguracji prywatnej. Podany klucz konta magazynu jest ignorowana. <br />Wymagania dotyczące tokenu sygnatury dostępu Współdzielonego: <br />— Obsługuje tylko token sygnatury dostępu Współdzielonego konta <br />- *b*, *t* wymaganych typów usług. <br /> - *a*, *c*, *u*, *w* wymagane są uprawnienia. <br /> - *c*, *o* wymaganych typów zasobów. <br /> — Obsługuje tylko protokół HTTPS <br /> — Rozpocznij i czas wygaśnięcia musi być prawidłowy.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled Element  
- *Drzewa: IsEnabled - DiagnosticsConfiguration - katalogu głównego*
+ *Drzewa: IsEnabled główny - DiagnosticsConfiguration-*
 
- Wartość logiczna. Użyj `true` umożliwiające diagnostyki lub `false` wyłączyć diagnostyki.
+ Wartość logiczna. Użyj `true` włączyć diagnostyki lub `false` wyłączenie diagnostyki.
